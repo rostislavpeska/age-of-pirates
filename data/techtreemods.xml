@@ -20021,7 +20021,7 @@
         </target>
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatBulgarianBoyar</target>
+        <target type="ProtoUnit">zpNatCataphract</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatWarriorMonk</target>

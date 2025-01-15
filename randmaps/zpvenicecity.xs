@@ -382,8 +382,15 @@ void main(void)
 	vector ControllerLoc4 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(socketID4, 0));
 
 	rmSetNuggetDifficulty(298, 298);
+
+	int islandVariation = rmRandInt(0, 1);
+	int peninsulaVariation = rmRandInt(0, 1);
+
 	// San Marco
-	int veniceSanMarco = rmCreateGrouping("bridge1", "Venice_Island_01");
+	if (islandVariation == 0)
+		int veniceSanMarco = rmCreateGrouping("bridge1", "Venice_Island_01");
+	else
+		veniceSanMarco = rmCreateGrouping("bridge1", "Venice_Island_01B");
     rmSetGroupingMinDistance(veniceSanMarco, 0.00);
     rmSetGroupingMaxDistance(veniceSanMarco, 0.01);
 	rmAddGroupingToClass(veniceSanMarco, rmClassID("classPlateau"));
@@ -391,7 +398,10 @@ void main(void)
 	int veniceInstanceID1 = rmPlaceGroupingInstanceAtLoc(veniceSanMarco, rmXMetersToFraction(xsVectorGetX(ControllerLoc1))+rmXTilesToFraction(22), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1))+rmZTilesToFraction(16), 0);
 
 	//San Giorgio
-	int veniceSanGiorgio = rmCreateGrouping("bridge2", "Venice_Island_02");
+	if (islandVariation == 0)
+		int veniceSanGiorgio = rmCreateGrouping("bridge2", "Venice_Island_02");
+	else
+		veniceSanGiorgio = rmCreateGrouping("bridge2", "Venice_Island_02B");
     rmSetGroupingMinDistance(veniceSanGiorgio, 0.00);
     rmSetGroupingMaxDistance(veniceSanGiorgio, 0.00);
 	rmAddGroupingToClass(veniceSanGiorgio, rmClassID("classPlateau"));
@@ -399,7 +409,10 @@ void main(void)
 	int veniceInstanceID2 = rmPlaceGroupingInstanceAtLoc(veniceSanGiorgio, rmXMetersToFraction(xsVectorGetX(ControllerLoc2))-rmXTilesToFraction(16), rmZMetersToFraction(xsVectorGetZ(ControllerLoc2))+rmZTilesToFraction(24), 0);
 
 	// Academia
-	int veniceAcademia = rmCreateGrouping("bridge3", "Venice_Island_03");
+	if (peninsulaVariation == 0)
+		int veniceAcademia = rmCreateGrouping("bridge3", "Venice_Island_03");
+	else
+		veniceAcademia = rmCreateGrouping("bridge3", "Venice_Island_03B");
     rmSetGroupingMinDistance(veniceAcademia, 0.00);
     rmSetGroupingMaxDistance(veniceAcademia, 0.00);
 	rmAddGroupingToClass(veniceAcademia, rmClassID("classPlateau"));
@@ -407,7 +420,10 @@ void main(void)
 	int veniceInstanceID3 = rmPlaceGroupingInstanceAtLoc(veniceAcademia, rmXMetersToFraction(xsVectorGetX(ControllerLoc3))-rmXTilesToFraction(19), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3))-rmZTilesToFraction(21), 0);
 
 	// San Polo
-	int veniceSanPolo = rmCreateGrouping("bridge4", "Venice_Island_04");
+	if (peninsulaVariation == 0)
+		int veniceSanPolo = rmCreateGrouping("bridge4", "Venice_Island_04");
+	else
+		veniceSanPolo = rmCreateGrouping("bridge4", "Venice_Island_04B");
     rmSetGroupingMinDistance(veniceSanPolo, 0.00);
     rmSetGroupingMaxDistance(veniceSanPolo, 0.01);
 	rmAddGroupingToClass(veniceSanPolo, rmClassID("classPlateau"));
@@ -892,17 +908,30 @@ void main(void)
 	int veniceBasilica4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpGreatBasilica");
 
 	int veniceProduction1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "deSPCGreatBank");
-	int veniceProduction2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpSPCCapturableFactoryMed");
-	int veniceProduction3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "deSPCGreatBank");
+	int veniceProduction2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "deSPCGreatBank");
+	int veniceProduction3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "zpSPCCapturableFactoryMed");
 	int veniceProduction4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpSPCCapturableFactoryMed");
 
-	int veniceMonastery1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCCathedral");
-	int veniceMonastery2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpJesuitCathedral");
-	int veniceMonastery3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "zpCathedralOrthodox");
-	int veniceMonastery4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpPalazoAuditore");
+	if (islandVariation ==0){
+		int veniceMonastery1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCCathedral");
+		int veniceMonastery2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpJesuitCathedral");
+	}
+	else{
+		veniceMonastery1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpJesuitCathedral");
+		veniceMonastery2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpSPCCathedral");
+	}
 
 	int veniceFixedGun1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCFixedGunBase");
 	int veniceFixedGun2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpSPCFixedGunBase");
+
+	if (peninsulaVariation ==0){
+		int veniceMonastery3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "zpCathedralOrthodox");
+		int veniceMonastery4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpPalazoAuditore");
+	}
+	else{
+		veniceMonastery3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "zpPalazoAuditore");
+		veniceMonastery4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpCathedralOrthodox");
+	}
 
 	int veniceCenter1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCWaterSpawnPoint");
 	int veniceCenter2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpSPCWaterSpawnPoint");
@@ -2160,7 +2189,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("Dist",60);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedralMaltese"); // Mercenaries
+		if (islandVariation == 0)
+			rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedralMaltese"); // Maltese
+		else
+			rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedralJesuit"); // Jesuit
 		rmSetTriggerEffectParamInt("Status",2);
 		for(x=1; <= cNumberNonGaiaPlayers) {
 			rmAddTriggerEffect("Flare Minimap");
@@ -2242,7 +2274,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("Dist",60);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpLockCathedralMaltese"); // Mercenaries
+		if (islandVariation == 0)
+			rmSetTriggerEffectParam("TechID","cTechzpLockCathedralMaltese"); // Maltese
+		else
+			rmSetTriggerEffectParam("TechID","cTechzpLockCathedralJesuit"); // Jesuit
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Flare Minimap");
 		rmSetTriggerEffectParamInt("PlayerID", k, false);
@@ -2321,7 +2356,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("Dist",60);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedralJesuit"); // Mercenaries
+		if (islandVariation == 1)
+			rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedralMaltese"); // Maltese
+		else
+			rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedralJesuit"); // Jesuit
 		rmSetTriggerEffectParamInt("Status",2);
 		for(x=1; <= cNumberNonGaiaPlayers) {
 			rmAddTriggerEffect("Flare Minimap");
@@ -2403,7 +2441,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("Dist",60);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpLockCathedralJesuit"); // Mercenaries
+		if (islandVariation == 1)
+			rmSetTriggerEffectParam("TechID","cTechzpLockCathedralMaltese"); // Maltese
+		else
+			rmSetTriggerEffectParam("TechID","cTechzpLockCathedralJesuit"); // Jesuit
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Flare Minimap");
 		rmSetTriggerEffectParamInt("PlayerID", k, false);
@@ -2486,7 +2527,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("Dist",10);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedraOrthodox"); // Mercenaries
+		if (peninsulaVariation == 0)
+			rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedraOrthodox"); // Orthodox
+		else
+			rmSetTriggerEffectParam("TechID","cTechzpUnlockPalazzoAuditore"); // Auditore
 		rmSetTriggerEffectParamInt("Status",2);
 		for(x=1; <= cNumberNonGaiaPlayers) {
 			rmAddTriggerEffect("Flare Minimap");
@@ -2571,7 +2615,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("Dist",10);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpLockCathedralOrthodox"); // Mercenaries
+		if (peninsulaVariation == 0)
+			rmSetTriggerEffectParam("TechID","cTechzpLockCathedralOrthodox"); // Orthodox
+		else
+			rmSetTriggerEffectParam("TechID","cTechzpLockPalazzoAuditore"); // Auditore
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Flare Minimap");
 		rmSetTriggerEffectParamInt("PlayerID", k, false);
@@ -2656,7 +2703,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("Dist",10);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpUnlockPalazzoAuditore"); // Mercenaries
+		if (peninsulaVariation == 1)
+			rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedraOrthodox"); // Orthodox
+		else
+			rmSetTriggerEffectParam("TechID","cTechzpUnlockPalazzoAuditore"); // Auditore
 		rmSetTriggerEffectParamInt("Status",2);
 		for(x=1; <= cNumberNonGaiaPlayers) {
 			rmAddTriggerEffect("Flare Minimap");
@@ -2741,7 +2791,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("Dist",10);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpLockPalazzoAuditore"); // Mercenaries
+		if (peninsulaVariation == 1)
+			rmSetTriggerEffectParam("TechID","cTechzpLockCathedralOrthodox"); // Orthodox
+		else
+			rmSetTriggerEffectParam("TechID","cTechzpLockPalazzoAuditore"); // Auditore
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Flare Minimap");
 		rmSetTriggerEffectParamInt("PlayerID", k, false);

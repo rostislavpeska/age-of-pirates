@@ -44821,7 +44821,6 @@
     <tech row="0" page="2" column="0">zpNatOrthodoxIcons</tech>
     <tech row="0" page="2" column="1">zpNatOrthodoxSauna</tech>
     <tech row="0" page="2" column="2">zpNatOrthodoxPatriarchy</tech>
-    <flag>FlattenGround</flag>
     <flag>Doppled</flag>
     <flag>PaintTextureWhenPlacing</flag>
     <flag>InvulnerableIfGaia</flag>
@@ -49073,6 +49072,33 @@
     <flag>VariationLocked</flag>
     <flag>Invulnerable</flag>
     <flag>InvulnerableIfGaia</flag>
+  </unit>
+   <unit id="20652" name="zpJesuitFlag">
+    <dbid>20652</dbid>
+    <displaynameid>32671</displaynameid>
+    <editornameid>302304</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <civflagoverride>objects\flags\jesuit</civflagoverride>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotSearchable</flag>
+    <flag>VariationLocked</flag>
   </unit>
 
 

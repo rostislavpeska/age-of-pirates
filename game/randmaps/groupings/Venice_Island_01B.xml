@@ -331,7 +331,7 @@
 		<unit variation="6" posx="-36.0175" posz="33.1661" orientx="1.0000" orienty="0.0000" orientz="0.0006">zpNativeHouseVenetianB</unit>
 		<unit variation="6" posx="-30.9095" posz="33.2225" orientx="-1.0000" orienty="0.0000" orientz="-0.0003">zpNativeHouseVenetianB</unit>
 		<unit variation="1" posx="-19.4906" posz="33.6590" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">zpPropMarketStall</unit>
-		<unit variation="11" posx="-7.7336" posz="38.5233" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCCathedral</unit>
+		<unit variation="11" posx="-7.7336" posz="38.5233" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpJesuitCathedral</unit>
 		<unit variation="0" posx="-49.2480" posz="36.1420" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="12.2695" posz="35.7474" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="-46.1723" posz="34.4576" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
@@ -345,7 +345,7 @@
 		<unit variation="8" posx="-25.2168" posz="35.6049" orientx="0.0005" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetianB</unit>
 		<unit variation="223" posx="-19.0356" posz="35.1581" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeUnitVenetianFemale</unit>
 		<unit variation="152" posx="-15.0288" posz="34.7100" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
-		<unit variation="6" posx="0.4201" posz="37.7855" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpMalteseFlag</unit>
+		<unit variation="6" posx="0.4201" posz="37.7855" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpJesuitFlag</unit>
 		<unit variation="12" posx="2.5407" posz="37.7987" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deNatEUPropVilGuards</unit>
 		<unit variation="69" posx="-25.6809" posz="39.3581" orientx="-0.0103" orienty="0.0000" orientz="0.9999">zpHarbourPlatform</unit>
 		<unit variation="95" posx="-51.2821" posz="39.2587" orientx="0.0026" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>

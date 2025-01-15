@@ -99,7 +99,7 @@
 		<unit variation="5" posx="35.1550" posz="-40.3599" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseVenetianB</unit>
 		<unit variation="100" posx="37.4761" posz="-40.7397" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCityStateFlag</unit>
 		<unit variation="0" posx="38.9445" posz="-35.9925" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpHarbourPathBlock3</unit>
-		<unit variation="53" posx="-13.2314" posz="-36.2685" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpJesuitCathedral</unit>
+		<unit variation="53" posx="-13.2314" posz="-36.2685" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCCathedral</unit>
 		<unit variation="6" posx="5.3338" posz="-38.6702" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNativeHouseVenetianB</unit>
 		<unit variation="8" posx="20.1235" posz="-38.7538" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">zpNativeHouseVenetianB</unit>
 		<unit variation="6" posx="38.1310" posz="-38.7826" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeHouseVenetianB</unit>
