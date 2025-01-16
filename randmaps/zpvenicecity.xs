@@ -37,13 +37,13 @@ void main(void)
     int sizeZ = 400;
 	int sizeX = 460;
 	if (cNumberNonGaiaPlayers > 2){
-		sizeX = 500;
+		sizeX = 530;
 	}
 	if (cNumberNonGaiaPlayers > 4){
-		sizeX = 560;
+		sizeX = 580;
 	}
 	if (cNumberNonGaiaPlayers > 6){
-		sizeX = 620;
+		sizeX = 640;
 	}
 
 	rmSetMapSize(sizeX, sizeZ);
@@ -303,7 +303,7 @@ void main(void)
 
     // River must be defined before the islands are placed
 	if (cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==4)
-    	int riverID = rmRiverCreate(-1, "ZP Venice Lagoon Shore", 4, 4, 68, 68); //  (-1, "new england lake", 18, 14, 5, 5)
+    	int riverID = rmRiverCreate(-1, "ZP Venice Lagoon Shore", 4, 4, 72, 72); //  (-1, "new england lake", 18, 14, 5, 5)
 	else if (cNumberNonGaiaPlayers ==5 || cNumberNonGaiaPlayers ==6)
     	riverID = rmRiverCreate(-1, "ZP Venice Lagoon Shore", 4, 4, 85, 85); //  (-1, "new england lake", 18, 14, 5, 5)
 	else if (cNumberNonGaiaPlayers >6)
@@ -360,17 +360,23 @@ void main(void)
     if (cNumberNonGaiaPlayers <=2){
 		rmPlaceObjectDefAtLoc(socketID, 0, 0.5+rmXTilesToFraction(2), 0.62);
 		rmPlaceObjectDefAtLoc(socketID2, 0, 0.5+rmXTilesToFraction(1), 0.11);
-		rmPlaceObjectDefAtLoc(socketID3, 0, 0.5-rmXTilesToFraction(19), 0.66);
-		rmPlaceObjectDefAtLoc(socketID4, 0, 0.5+rmXTilesToFraction(21), 0.35);
+		rmPlaceObjectDefAtLoc(socketID3, 0, 0.5-rmXTilesToFraction(17), 0.66);
+		rmPlaceObjectDefAtLoc(socketID4, 0, 0.5+rmXTilesToFraction(19), 0.35);
 	}
 	else if (cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==4){
 		rmPlaceObjectDefAtLoc(socketID, 0, 0.5+rmXTilesToFraction(1), 0.62);
-		rmPlaceObjectDefAtLoc(socketID2, 0, 0.5+rmXTilesToFraction(5), 0.11);
+		rmPlaceObjectDefAtLoc(socketID2, 0, 0.5-rmXTilesToFraction(2), 0.11);
 		rmPlaceObjectDefAtLoc(socketID3, 0, 0.5-rmXTilesToFraction(20), 0.66);
-		rmPlaceObjectDefAtLoc(socketID4, 0, 0.5+rmXTilesToFraction(24), 0.35);
+		rmPlaceObjectDefAtLoc(socketID4, 0, 0.5+rmXTilesToFraction(18), 0.35);
+	}
+	else if (cNumberNonGaiaPlayers ==5 || cNumberNonGaiaPlayers ==6){
+		rmPlaceObjectDefAtLoc(socketID, 0, 0.5-rmXTilesToFraction(3), 0.62);
+		rmPlaceObjectDefAtLoc(socketID2, 0, 0.5+rmXTilesToFraction(1), 0.11);
+		rmPlaceObjectDefAtLoc(socketID3, 0, 0.5-rmXTilesToFraction(24), 0.66);
+		rmPlaceObjectDefAtLoc(socketID4, 0, 0.5+rmXTilesToFraction(20), 0.35);
 	}
 	else{
-		rmPlaceObjectDefAtLoc(socketID, 0, 0.5-rmXTilesToFraction(1), 0.62);
+		rmPlaceObjectDefAtLoc(socketID, 0, 0.5-rmXTilesToFraction(0), 0.62);
 		rmPlaceObjectDefAtLoc(socketID2, 0, 0.5+rmXTilesToFraction(1), 0.11);
 		rmPlaceObjectDefAtLoc(socketID3, 0, 0.5-rmXTilesToFraction(22), 0.66);
 		rmPlaceObjectDefAtLoc(socketID4, 0, 0.5+rmXTilesToFraction(22), 0.35);
@@ -421,7 +427,7 @@ void main(void)
 
 	// San Polo
 	if (peninsulaVariation == 0)
-		int veniceSanPolo = rmCreateGrouping("bridge4", "Venice_Island_04B");
+		int veniceSanPolo = rmCreateGrouping("bridge4", "Venice_Island_04");
 	else
 		veniceSanPolo = rmCreateGrouping("bridge4", "Venice_Island_04B");
     rmSetGroupingMinDistance(veniceSanPolo, 0.00);
@@ -661,7 +667,7 @@ void main(void)
 
 	// Mines
 
-	for(i=0; < cNumberNonGaiaPlayers*1.5){
+	for(i=0; < 1+cNumberNonGaiaPlayers*1.5){
 		int northMineID = rmCreateObjectDef("north mine "+i);
 		rmAddObjectDefItem(northMineID, "Mine", 1, 0.0);
 		rmSetObjectDefMinDistance(northMineID, 0.0);
@@ -677,7 +683,7 @@ void main(void)
 
 	} 
 
-	for(i=0; < cNumberNonGaiaPlayers*1.5){
+	for(i=0; < 1+cNumberNonGaiaPlayers*1.5){
 		int southMineID = rmCreateObjectDef("south mine "+i);
 		rmAddObjectDefItem(southMineID, "Mine", 1, 0.0);
 		rmSetObjectDefMinDistance(southMineID, 0.0);
@@ -1056,16 +1062,41 @@ void main(void)
 	rmAddTriggerEffect("Trade Route Set Level");
 	rmSetTriggerEffectParamInt("TradeRoute",1);
 	rmSetTriggerEffectParamInt("Level",1);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
 
 	for(k=1; <= cNumberNonGaiaPlayers) {
-	rmCreateTrigger("AI Techs"+k);
-	rmAddTriggerCondition("ZP PLAYER Human");
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParam("MyBool", "false");
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmSetTriggerEffectParam("TechID","cTechzpSPCVeniceCityStatesAI"); // Only for the AI to train the city state units from sockets
-	rmSetTriggerEffectParamInt("Status",2);
+		rmCreateTrigger("AI Techs"+k);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpSPCVeniceCityStatesAI"); // Only for the AI to train the city state units from sockets
+		rmSetTriggerEffectParamInt("Status",2);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
+	// Set up default resource values
+	if (cNumberNonGaiaPlayers >2){
+		rmCreateTrigger("Starting Resources");
+		rmAddTriggerEffect("Modify Protounit Resource");
+		rmSetTriggerEffectParam("ProtoUnit","zpValuableSource");
+		rmSetTriggerEffectParam("Resource","Gold");
+		rmSetTriggerEffectParamInt("PlayerID",0);
+		rmSetTriggerEffectParamInt("Field",2);
+		rmSetTriggerEffectParamInt("Delta",0.5*cNumberNonGaiaPlayers);
+		rmSetTriggerEffectParamInt("Relativity",3);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
 	}
 
 	// Conversion Suspend
@@ -2922,6 +2953,7 @@ void main(void)
 		rmSetTriggerLoop(false);
 	}
 	}
+
 
 
 

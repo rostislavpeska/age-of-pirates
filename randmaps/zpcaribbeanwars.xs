@@ -913,7 +913,7 @@ for(i=1; <cNumberPlayers) {
    rmAddObjectDefConstraint(whaleID, whaleLand);
    rmAddObjectDefConstraint(whaleID, avoidRevealerLong);
    rmAddObjectDefConstraint(whaleID, avoidKOTHLong);
-   rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, 4*cNumberNonGaiaPlayers);
+   rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, 3+4*cNumberNonGaiaPlayers);
 
    // RANDOM TREES
    int randomTreeID=rmCreateObjectDef("random tree");
@@ -992,6 +992,9 @@ int TradeRouteStartID2 = rmGetUnitPlaced(fakeStopperID2, 0);
 
 int socketMinimapFlareDuration = 10;
 int victoryCountDown = 600;
+
+string guardianUnit1 = "zpBuccaneerGuard";
+string guardianUnit2 = "zpPirateGuard";
 
 // Starting techs
 
@@ -1164,8 +1167,20 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmCreateTrigger("Socket 1 Convert ON");
-rmAddTriggerCondition("Nugget Is Collectable");
-rmSetTriggerConditionParam("NuggetObject", ""+pirateNuggetMod1);
+rmAddTriggerCondition("Units in Area");
+rmSetTriggerConditionParam("DstObject",""+pirateSocketMod1);
+rmSetTriggerConditionParamInt("Player",0);
+rmSetTriggerConditionParam("UnitType",guardianUnit1);
+rmSetTriggerConditionParamInt("Dist",25);
+rmSetTriggerConditionParam("Op","==");
+rmSetTriggerConditionParamInt("Count",0);
+rmAddTriggerCondition("Units in Area");
+rmSetTriggerConditionParam("DstObject",""+pirateSocketMod1);
+rmSetTriggerConditionParamInt("Player",0);
+rmSetTriggerConditionParam("UnitType",guardianUnit2);
+rmSetTriggerConditionParamInt("Dist",25);
+rmSetTriggerConditionParam("Op","==");
+rmSetTriggerConditionParamInt("Count",0);
 rmAddTriggerEffect("Unit Action Suspend");
 rmSetTriggerEffectParam("SrcObject", ""+pirateSocketMod1, false);
 rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
@@ -1178,8 +1193,20 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmCreateTrigger("Socket 2 Convert ON");
-rmAddTriggerCondition("Nugget Is Collectable");
-rmSetTriggerConditionParam("NuggetObject", ""+pirateNuggetMod2);
+rmAddTriggerCondition("Units in Area");
+rmSetTriggerConditionParam("DstObject",""+pirateSocketMod2);
+rmSetTriggerConditionParamInt("Player",0);
+rmSetTriggerConditionParam("UnitType",guardianUnit1);
+rmSetTriggerConditionParamInt("Dist",25);
+rmSetTriggerConditionParam("Op","==");
+rmSetTriggerConditionParamInt("Count",0);
+rmAddTriggerCondition("Units in Area");
+rmSetTriggerConditionParam("DstObject",""+pirateSocketMod2);
+rmSetTriggerConditionParamInt("Player",0);
+rmSetTriggerConditionParam("UnitType",guardianUnit2);
+rmSetTriggerConditionParamInt("Dist",25);
+rmSetTriggerConditionParam("Op","==");
+rmSetTriggerConditionParamInt("Count",0);
 rmAddTriggerEffect("Unit Action Suspend");
 rmSetTriggerEffectParam("SrcObject", ""+pirateSocketMod2, false);
 rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
