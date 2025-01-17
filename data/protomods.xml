@@ -1578,7 +1578,7 @@
     <obstructionradiusx>0.2000</obstructionradiusx>
     <obstructionradiusz>0.2000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
-    <movementtype>land</movementtype>
+    <movementtype>air</movementtype>
     <animfile>buildings\native_settlement\prop_pirates.xml</animfile>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\spc\pirates\pirate_ranged_icon.png</icon>
@@ -1590,35 +1590,26 @@
     <los>9.0000</los>
     <buildpoints>20.0000</buildpoints>
     <buildingworkrate>1.0000</buildingworkrate>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
-    <unittype>Building</unittype>
-    <unittype>BuildingClass</unittype>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>StartsAtFullEfficiency</flag>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>DoNotShowOnMiniMap</flag>
-    <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
-    <flag>Doppled</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>PaintTextureWhenPlacing</flag>
-    <flag>FlattenGround</flag>
-    <flag>Invulnerable</flag>
-    <flag>PlaceAnywhere</flag>
-    <flag>TieToWaterSurface</flag>
-    <flag>InvulnerableIfGaia</flag>
-    <flag>Tracked</flag>
+    <flag>VisibleUnderFog</flag>
     <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
     <command page="10" column="0">Delete</command>
     <tactics>garrisonable.tactics</tactics>
   </unit>

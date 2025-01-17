@@ -19562,6 +19562,7 @@
       <effect type="TechStatus" status="obtainable">zpNatJesuitSmokelessPowder</effect>
       <effect type="TechStatus" status="obtainable">zpNatJesuitFlyingButtress</effect>
       <effect type="TechStatus" status="obtainable">zpNatJesuitSchools</effect>
+      <effect type="TechStatus" status="unobtainable">zpUnlockCathedralJesuit</effect>
     </effects>
   </tech>
   <tech name="zpUnlockCathedralMaltese" type="Normal">
@@ -19585,6 +19586,7 @@
       <effect type="TechStatus" status="obtainable">zpNatMalteseFishCuisine</effect>
       <effect type="TechStatus" status="obtainable">zpNatMalteseFortifications</effect>
       <effect type="TechStatus" status="obtainable">zpNatMalteseArchitecture</effect>
+      <effect type="TechStatus" status="unobtainable">zpUnlockCathedralMaltese</effect>
     </effects>
   </tech>
   <tech name="zpUnlockCathedraOrthodox" type="Normal">
@@ -19608,6 +19610,7 @@
       <effect type="TechStatus" status="obtainable">zpNatOrthodoxIcons</effect>
       <effect type="TechStatus" status="obtainable">zpNatOrthodoxSauna</effect>
       <effect type="TechStatus" status="obtainable">zpNatOrthodoxPatriarchy</effect>
+      <effect type="TechStatus" status="unobtainable">zpUnlockCathedraOrthodox</effect>
     </effects>
   </tech>
   <tech name="zpSPCArtPatronClone" type="Normal">
@@ -19954,6 +19957,7 @@
       <effect type="TechStatus" status="obtainable">zpNatBorgiaConspiracy</effect>
       <effect type="TechStatus" status="obtainable">zpNatGuerillaWarfare</effect>
       <effect type="TechStatus" status="obtainable">zpNatMasterAssassin</effect>
+      <effect type="TechStatus" status="unobtainable">zpUnlockPalazzoAuditore</effect>
     </effects>
   </tech>
   <tech name="zpLockPalazzoAuditore" type="Normal">
@@ -19972,6 +19976,7 @@
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatPavisier</target>
       </effect>
+      <effect type="TechStatus" status="unobtainable">zpLockPalazzoAuditore</effect>
     </effects>
   </tech>
   <tech name="zpLockCathedralJesuit" type="Normal">
@@ -19990,6 +19995,7 @@
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
       </effect>
+      <effect type="TechStatus" status="unobtainable">zpLockCathedralJesuit</effect>
     </effects>
   </tech>
   <tech name="zpLockCathedralMaltese" type="Normal">
@@ -20008,6 +20014,7 @@
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatMalteseGuard</target>
       </effect>
+      <effect type="TechStatus" status="unobtainable">zpLockCathedralMaltese</effect>
     </effects>
   </tech>
   <tech name="zpLockCathedralOrthodox" type="Normal">
@@ -20026,6 +20033,7 @@
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatWarriorMonk</target>
       </effect>
+      <effect type="TechStatus" status="unobtainable">zpLockCathedralOrthodox</effect>
     </effects>
   </tech>
   <tech name="zpNatBorgiaConspiracy" type="Normal">
@@ -21392,6 +21400,96 @@
       </effect>
       <effect type="SetName" proto="zpNatMercCataphract" culture="none" newname="302255" reqtech="ImpLegendaryNativesShadow">
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceUnlockIslandGroupingTechs" type="Normal">
+    <dbid>40908</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercElmeti</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercSwissPikeman</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercPistoleer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercLandsknecht</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercCannoneer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercGreatCannon</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpVeniceUnlockIslandGroupingTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceUnlockPeninsulaGroupingTechs" type="Normal">
+    <dbid>40909</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercElmeti</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercSwissPikeman</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercPistoleer</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpVeniceUnlockPeninsulaGroupingTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceLockIslandGroupingTechs" type="Normal">
+    <dbid>40910</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercElmeti</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercSwissPikeman</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercPistoleer</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercLandsknecht</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercCannoneer</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercGreatCannon</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpVeniceLockIslandGroupingTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceLockPeninsulaGroupingTechs" type="Normal">
+    <dbid>40911</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercElmeti</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercSwissPikeman</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercPistoleer</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpVeniceLockPeninsulaGroupingTechs</effect>
     </effects>
   </tech>
 
