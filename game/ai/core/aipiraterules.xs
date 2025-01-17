@@ -801,20 +801,23 @@ minInterval 30
    }
 
    // Get a list of socket fixed guns
-   int socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCFixedGunSocket, cMyID, cUnitStateAny);
-   int socketNumber = kbUnitQueryExecute(socketTowerQuery);
-   int tempSocketUnit = -1;
-   vector socketPosition= cInvalidVector;
-
-   for (i = 0; < socketNumber)
+   if (woodAmount > 100 && goldAmount > 600)
    {
-      tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
-      socketPosition = kbUnitGetPosition(tempSocketUnit);
+      int socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCFixedGunSocket, cMyID, cUnitStateAny);
+      int socketNumber = kbUnitQueryExecute(socketTowerQuery);
+      int tempSocketUnit = -1;
+      vector socketPosition= cInvalidVector;
 
-      if (getUnitCountByLocation(cUnitTypezpSPCFixedGun, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+      for (i = 0; < socketNumber)
       {
-         aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCFixedGunAIProxy);
-         return; // return here so we only build one at a time
+         tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+         socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+         if (getUnitCountByLocation(cUnitTypezpSPCFixedGun, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+         {
+            aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCFixedGunAIProxy);
+            return; // return here so we only build one at a time
+         }
       }
    }
 
@@ -847,7 +850,24 @@ minInterval 30
 
       if (getUnitCountByLocation(cUnitTypedeSPCCityTower, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
       {
-         aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCSocketCityTowerClone);
+         aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+         return;
+      }
+   }
+
+   // Get a list of venice socket towers
+   socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketCityTowerClone, cMyID, cUnitStateAny);
+   socketNumber = kbUnitQueryExecute(socketTowerQuery);
+   tempSocketUnit = -1;
+
+   for (i = 0; < socketNumber)
+   {
+      tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+      socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+      if (getUnitCountByLocation(cUnitTypedeSPCCityTower, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+      {
+         aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
          return;
       }
    }
