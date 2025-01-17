@@ -35821,8 +35821,8 @@
     <icon>resources\art\buildings\basilica\basilica_icon.png</icon>
     <minimapicon>ui\minimap\religious_small</minimapicon>
     <portraiticon>resources\art\buildings\spc\notre_dame.png</portraiticon>
-    <rollovertextid>123017</rollovertextid>
-    <shortrollovertextid>123016</shortrollovertextid>
+    <rollovertextid>302308</rollovertextid>
+    <shortrollovertextid>302307</shortrollovertextid>
     <initialhitpoints>5000.0000</initialhitpoints>
     <maxhitpoints>5000.0000</maxhitpoints>
     <los>12.0000</los>
@@ -35861,78 +35861,9 @@
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
-    <train row="0" page="0" column="0">SaloonOutlawPistol</train>
-    <train row="0" page="0" column="1">SaloonOutlawRider</train>
-    <train row="0" page="0" column="2">SaloonOutlawRifleman</train>
-    <train row="0" page="0" column="3">SaloonPirate</train>
-    <train row="0" page="0" column="0">deOutlawDesertWarrior</train>
-    <train row="0" page="0" column="1">deOutlawDesertArcher</train>
-    <train row="0" page="0" column="1">deAllegianceBarbaryMarksman</train>
-    <train row="0" page="0" column="2">deOutlawDesertRaider</train>
-    <train row="0" page="2" column="0">deSaloonDesperado</train>
-    <train row="0" page="2" column="1">deSaloonVaquero</train>
-    <train row="0" page="2" column="2">deSaloonBandido</train>
-    <train row="0" page="0" column="0">deSaloonGunslinger</train>
-    <train row="0" page="0" column="1">deSaloonOwlhoot</train>
-    <train row="0" page="0" column="2">deSaloonCowboy</train>
-    <train row="0" page="0" column="3">deSaloonOutlawBuccaneer</train>
-    <train row="0" page="0" column="4">deSaloonOutlawBlowgunner</train>
-    <train row="0" page="0" column="3">deSaloonOutlawArsonist</train>
-    <train row="0" page="0" column="0">deSaloonHajduk</train>
-    <train row="0" page="0" column="0">deSaloonInquisitor</train>
-    <train row="0" page="0" column="1">deSaloonHighwaymanRider</train>
-    <train row="0" page="0" column="2">deSaloonCrabat</train>
-    <train row="0" page="0" column="2">deSaloonOutlawCossackRider</train>
-    <train row="0" page="0" column="3">deSaloonOutlawAfricanSpearman</train>
-    <train row="0" page="0" column="4">deSaloonOutlawKnifeThrower</train>
-    <train row="0" page="0" column="5">deSaloonOutlawColoRifle</train>
-    <train row="0" page="0" column="23">MercBarbaryCorsair</train>
-    <train row="0" page="0" column="22">MercBlackRider</train>
-    <train row="0" page="0" column="21">MercElmeti</train>
-    <train row="0" page="0" column="10">MercFusilier</train>
-    <train row="0" page="0" column="24">MercGreatCannon</train>
-    <train row="0" page="0" column="17">MercHackapell</train>
-    <train row="0" page="0" column="17">deMercHarquebusier</train>
-    <train row="0" page="0" column="16">MercHighlander</train>
-    <train row="0" page="0" column="13">MercJaeger</train>
-    <train row="0" page="0" column="15">MercLandsknecht</train>
-    <train row="0" page="0" column="19">MercMameluke</train>
-    <train row="0" page="0" column="20">MercManchu</train>
-    <train row="0" page="0" column="18">MercNinja</train>
-    <train row="0" page="0" column="12">MercRonin</train>
-    <train row="0" page="0" column="14">MercStradiot</train>
-    <train row="0" page="0" column="11">MercSwissPikeman</train>
-    <train row="0" page="0" column="4">ypDacoit</train>
-    <train row="0" page="0" column="24">ypMercIronTroop</train>
-    <train row="0" page="0" column="27">ypMercArsonist</train>
-    <train row="0" page="0" column="26">ypMercJatLancer</train>
-    <train row="0" page="0" column="25">ypMercYojimbo</train>
-    <train row="0" page="0" column="5">ypThuggee</train>
-    <train row="0" page="0" column="9">ypWokouBlindMonk</train>
-    <train row="0" page="0" column="6">ypWokouPirate</train>
-    <train row="0" page="0" column="7">ypWokouWanderingHorseman</train>
-    <train row="0" page="0" column="8">ypWokouWaywardRonin</train>
-    <train row="0" page="0" column="28">deMercNapoleonGun</train>
-    <train row="0" page="0" column="29">deMercZouave</train>
-    <train row="0" page="0" column="30">deMercSudaneseRider</train>
-    <train row="0" page="0" column="31">deMercCannoneer</train>
-    <train row="0" page="0" column="32">deMercAskari</train>
-    <train row="0" page="0" column="33">deMercAmazon</train>
-    <train row="0" page="0" column="34">deMercZenata</train>
-    <train row="0" page="0" column="35">deMercGatlingCamel</train>
-    <train row="0" page="0" column="36">deMercKanuri</train>
-    <train row="0" page="0" column="37">deMercGrenadier</train>
-    <train row="0" page="0" column="38">deMercPandour</train>
-    <train row="0" page="0" column="39">deMercRoyalHorseman</train>
-    <train row="0" page="0" column="40">deMercPistoleer</train>
-    <train row="0" page="0" column="41">deMercBrigadier</train>
-    <train row="0" page="0" column="42">deMercMountedRifleman</train>
-    <train row="0" page="0" column="42">deMercBosniak</train>
-    <train row="0" page="0" column="0">MercElmeti</train>
-    <train row="0" page="0" column="1">MercSwissPikeman</train>
-    <train row="0" page="0" column="2">deMercPistoleer</train>
-    <tech row="0" page="11" column="3">DESPCPapalLegate</tech>
-    <tech row="0" page="11" column="2">DESPCExcommunication</tech>
+    <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
+    <tech row="0" page="11" column="2">DESPCPapalLegate</tech>
+    <tech row="0" page="11" column="3">DESPCExcommunication</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -35955,7 +35886,7 @@
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
     <command page="10" column="5">Eject</command>
-    <command page="11" column="1">Abilities</command>
+    <command page="11" column="4">Abilities</command>
     <tactics>parisbuilding.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
@@ -36222,73 +36153,11 @@
     <unittype>AbstractBank</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
-    <train row="0" page="0" column="0">SaloonOutlawPistol</train>
-    <train row="0" page="0" column="1">SaloonOutlawRider</train>
-    <train row="0" page="0" column="2">SaloonOutlawRifleman</train>
-    <train row="0" page="0" column="3">SaloonPirate</train>
-    <train row="0" page="0" column="0">deOutlawDesertWarrior</train>
-    <train row="0" page="0" column="1">deOutlawDesertArcher</train>
-    <train row="0" page="0" column="1">deAllegianceBarbaryMarksman</train>
-    <train row="0" page="0" column="2">deOutlawDesertRaider</train>
-    <train row="0" page="2" column="0">deSaloonDesperado</train>
-    <train row="0" page="2" column="1">deSaloonVaquero</train>
-    <train row="0" page="2" column="2">deSaloonBandido</train>
-    <train row="0" page="0" column="0">deSaloonGunslinger</train>
-    <train row="0" page="0" column="1">deSaloonOwlhoot</train>
-    <train row="0" page="0" column="2">deSaloonCowboy</train>
-    <train row="0" page="0" column="3">deSaloonOutlawBuccaneer</train>
-    <train row="0" page="0" column="4">deSaloonOutlawBlowgunner</train>
-    <train row="0" page="0" column="3">deSaloonOutlawArsonist</train>
-    <train row="0" page="0" column="0">deSaloonHajduk</train>
-    <train row="0" page="0" column="0">deSaloonInquisitor</train>
-    <train row="0" page="0" column="1">deSaloonHighwaymanRider</train>
-    <train row="0" page="0" column="2">deSaloonCrabat</train>
-    <train row="0" page="0" column="2">deSaloonOutlawCossackRider</train>
-    <train row="0" page="0" column="3">deSaloonOutlawAfricanSpearman</train>
-    <train row="0" page="0" column="4">deSaloonOutlawKnifeThrower</train>
-    <train row="0" page="0" column="5">deSaloonOutlawColoRifle</train>
-    <train row="0" page="0" column="23">MercBarbaryCorsair</train>
-    <train row="0" page="0" column="22">MercBlackRider</train>
-    <train row="0" page="0" column="21">MercElmeti</train>
-    <train row="0" page="0" column="10">MercFusilier</train>
-    <train row="0" page="0" column="24">MercGreatCannon</train>
-    <train row="0" page="0" column="17">MercHackapell</train>
-    <train row="0" page="0" column="17">deMercHarquebusier</train>
-    <train row="0" page="0" column="16">MercHighlander</train>
-    <train row="0" page="0" column="13">MercJaeger</train>
-    <train row="0" page="0" column="15">MercLandsknecht</train>
-    <train row="0" page="0" column="19">MercMameluke</train>
-    <train row="0" page="0" column="20">MercManchu</train>
-    <train row="0" page="0" column="18">MercNinja</train>
-    <train row="0" page="0" column="12">MercRonin</train>
-    <train row="0" page="0" column="14">MercStradiot</train>
-    <train row="0" page="0" column="11">MercSwissPikeman</train>
-    <train row="0" page="0" column="4">ypDacoit</train>
-    <train row="0" page="0" column="24">ypMercIronTroop</train>
-    <train row="0" page="0" column="27">ypMercArsonist</train>
-    <train row="0" page="0" column="26">ypMercJatLancer</train>
-    <train row="0" page="0" column="25">ypMercYojimbo</train>
-    <train row="0" page="0" column="5">ypThuggee</train>
-    <train row="0" page="0" column="9">ypWokouBlindMonk</train>
-    <train row="0" page="0" column="6">ypWokouPirate</train>
-    <train row="0" page="0" column="7">ypWokouWanderingHorseman</train>
-    <train row="0" page="0" column="8">ypWokouWaywardRonin</train>
-    <train row="0" page="0" column="28">deMercNapoleonGun</train>
-    <train row="0" page="0" column="29">deMercZouave</train>
-    <train row="0" page="0" column="30">deMercSudaneseRider</train>
-    <train row="0" page="0" column="31">deMercCannoneer</train>
-    <train row="0" page="0" column="32">deMercAskari</train>
-    <train row="0" page="0" column="33">deMercAmazon</train>
-    <train row="0" page="0" column="34">deMercZenata</train>
-    <train row="0" page="0" column="35">deMercGatlingCamel</train>
-    <train row="0" page="0" column="36">deMercKanuri</train>
-    <train row="0" page="0" column="37">deMercGrenadier</train>
-    <train row="0" page="0" column="38">deMercPandour</train>
-    <train row="0" page="0" column="39">deMercRoyalHorseman</train>
-    <train row="0" page="0" column="40">deMercPistoleer</train>
-    <train row="0" page="0" column="41">deMercBrigadier</train>
-    <train row="0" page="0" column="42">deMercMountedRifleman</train>
-    <train row="0" page="0" column="42">deMercBosniak</train>
+    <!--<train row="0" page="0" column="0">deSaloonInquisitor</train>
+    <train row="0" page="0" column="1">deMercPistoleer</train>
+    <train row="0" page="0" column="2">deMercMountedRifleman</train>
+    <train row="0" page="0" column="3">deMercNapoleonGun</train>
+    <train row="0" page="0" column="0">demercZouave</train>-->
     <tech row="0" page="1" column="2">DESPCBankLoan</tech>
     <tech row="0" page="1" column="3">DESPCMercenaryBounties</tech>
     <flag>VisibleUnderFog</flag>
@@ -43041,8 +42910,8 @@
     <icon>resources\art\buildings\basilica\basilica_icon.png</icon>
     <minimapicon>ui\minimap\religious_small</minimapicon>
     <portraiticon>resources\art\buildings\spc\imperial_cathedral.png</portraiticon>
-    <rollovertextid>123017</rollovertextid>
-    <shortrollovertextid>123016</shortrollovertextid>
+    <rollovertextid>302308</rollovertextid>
+    <shortrollovertextid>302307</shortrollovertextid>
     <initialhitpoints>5000.0000</initialhitpoints>
     <maxhitpoints>5000.0000</maxhitpoints>
     <los>12.0000</los>
@@ -43081,78 +42950,9 @@
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
-    <train row="0" page="0" column="0">SaloonOutlawPistol</train>
-    <train row="0" page="0" column="1">SaloonOutlawRider</train>
-    <train row="0" page="0" column="2">SaloonOutlawRifleman</train>
-    <train row="0" page="0" column="3">SaloonPirate</train>
-    <train row="0" page="0" column="0">deOutlawDesertWarrior</train>
-    <train row="0" page="0" column="1">deOutlawDesertArcher</train>
-    <train row="0" page="0" column="1">deAllegianceBarbaryMarksman</train>
-    <train row="0" page="0" column="2">deOutlawDesertRaider</train>
-    <train row="0" page="2" column="0">deSaloonDesperado</train>
-    <train row="0" page="2" column="1">deSaloonVaquero</train>
-    <train row="0" page="2" column="2">deSaloonBandido</train>
-    <train row="0" page="0" column="0">deSaloonGunslinger</train>
-    <train row="0" page="0" column="1">deSaloonOwlhoot</train>
-    <train row="0" page="0" column="2">deSaloonCowboy</train>
-    <train row="0" page="0" column="3">deSaloonOutlawBuccaneer</train>
-    <train row="0" page="0" column="4">deSaloonOutlawBlowgunner</train>
-    <train row="0" page="0" column="3">deSaloonOutlawArsonist</train>
-    <train row="0" page="0" column="0">deSaloonHajduk</train>
-    <train row="0" page="0" column="0">deSaloonInquisitor</train>
-    <train row="0" page="0" column="1">deSaloonHighwaymanRider</train>
-    <train row="0" page="0" column="2">deSaloonCrabat</train>
-    <train row="0" page="0" column="2">deSaloonOutlawCossackRider</train>
-    <train row="0" page="0" column="3">deSaloonOutlawAfricanSpearman</train>
-    <train row="0" page="0" column="4">deSaloonOutlawKnifeThrower</train>
-    <train row="0" page="0" column="5">deSaloonOutlawColoRifle</train>
-    <train row="0" page="0" column="23">MercBarbaryCorsair</train>
-    <train row="0" page="0" column="22">MercBlackRider</train>
-    <train row="0" page="0" column="21">MercElmeti</train>
-    <train row="0" page="0" column="10">MercFusilier</train>
-    <train row="0" page="0" column="24">MercGreatCannon</train>
-    <train row="0" page="0" column="17">MercHackapell</train>
-    <train row="0" page="0" column="17">deMercHarquebusier</train>
-    <train row="0" page="0" column="16">MercHighlander</train>
-    <train row="0" page="0" column="13">MercJaeger</train>
-    <train row="0" page="0" column="15">MercLandsknecht</train>
-    <train row="0" page="0" column="19">MercMameluke</train>
-    <train row="0" page="0" column="20">MercManchu</train>
-    <train row="0" page="0" column="18">MercNinja</train>
-    <train row="0" page="0" column="12">MercRonin</train>
-    <train row="0" page="0" column="14">MercStradiot</train>
-    <train row="0" page="0" column="11">MercSwissPikeman</train>
-    <train row="0" page="0" column="4">ypDacoit</train>
-    <train row="0" page="0" column="24">ypMercIronTroop</train>
-    <train row="0" page="0" column="27">ypMercArsonist</train>
-    <train row="0" page="0" column="26">ypMercJatLancer</train>
-    <train row="0" page="0" column="25">ypMercYojimbo</train>
-    <train row="0" page="0" column="5">ypThuggee</train>
-    <train row="0" page="0" column="9">ypWokouBlindMonk</train>
-    <train row="0" page="0" column="6">ypWokouPirate</train>
-    <train row="0" page="0" column="7">ypWokouWanderingHorseman</train>
-    <train row="0" page="0" column="8">ypWokouWaywardRonin</train>
-    <train row="0" page="0" column="28">deMercNapoleonGun</train>
-    <train row="0" page="0" column="29">deMercZouave</train>
-    <train row="0" page="0" column="30">deMercSudaneseRider</train>
-    <train row="0" page="0" column="31">deMercCannoneer</train>
-    <train row="0" page="0" column="32">deMercAskari</train>
-    <train row="0" page="0" column="33">deMercAmazon</train>
-    <train row="0" page="0" column="34">deMercZenata</train>
-    <train row="0" page="0" column="35">deMercGatlingCamel</train>
-    <train row="0" page="0" column="36">deMercKanuri</train>
-    <train row="0" page="0" column="37">deMercGrenadier</train>
-    <train row="0" page="0" column="38">deMercPandour</train>
-    <train row="0" page="0" column="39">deMercRoyalHorseman</train>
-    <train row="0" page="0" column="40">deMercPistoleer</train>
-    <train row="0" page="0" column="41">deMercBrigadier</train>
-    <train row="0" page="0" column="42">deMercMountedRifleman</train>
-    <train row="0" page="0" column="42">deMercBosniak</train>
-    <train row="0" page="0" column="0">MercElmeti</train>
-    <train row="0" page="0" column="1">MercSwissPikeman</train>
-    <train row="0" page="0" column="2">deMercPistoleer</train>
-    <tech row="0" page="11" column="3">DESPCPapalLegate</tech>
-    <tech row="0" page="11" column="2">DESPCExcommunication</tech>
+    <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
+    <tech row="0" page="11" column="2">DESPCPapalLegate</tech>
+    <tech row="0" page="11" column="3">DESPCExcommunication</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -43174,7 +42974,7 @@
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
     <command page="10" column="5">Eject</command>
-    <command page="11" column="1">Abilities</command>
+    <command page="11" column="4">Abilities</command>
     <tactics>parisbuilding.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
@@ -45899,8 +45699,8 @@
     <icon>resources\art\buildings\church\church_icon.png</icon>
     <minimapicon>ui\minimap\religious_small</minimapicon>
     <portraiticon>resources\art\buildings\church\church_portrait.png</portraiticon>
-    <rollovertextid>123017</rollovertextid>
-    <shortrollovertextid>123016</shortrollovertextid>
+    <rollovertextid>302308</rollovertextid>
+    <shortrollovertextid>302307</shortrollovertextid>
     <initialhitpoints>3000.0000</initialhitpoints>
     <maxhitpoints>3000.0000</maxhitpoints>
     <los>12.0000</los>
@@ -45938,78 +45738,9 @@
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
-    <train row="0" page="0" column="0">SaloonOutlawPistol</train>
-    <train row="0" page="0" column="1">SaloonOutlawRider</train>
-    <train row="0" page="0" column="2">SaloonOutlawRifleman</train>
-    <train row="0" page="0" column="3">SaloonPirate</train>
-    <train row="0" page="0" column="0">deOutlawDesertWarrior</train>
-    <train row="0" page="0" column="1">deOutlawDesertArcher</train>
-    <train row="0" page="0" column="1">deAllegianceBarbaryMarksman</train>
-    <train row="0" page="0" column="2">deOutlawDesertRaider</train>
-    <train row="0" page="2" column="0">deSaloonDesperado</train>
-    <train row="0" page="2" column="1">deSaloonVaquero</train>
-    <train row="0" page="2" column="2">deSaloonBandido</train>
-    <train row="0" page="0" column="0">deSaloonGunslinger</train>
-    <train row="0" page="0" column="1">deSaloonOwlhoot</train>
-    <train row="0" page="0" column="2">deSaloonCowboy</train>
-    <train row="0" page="0" column="3">deSaloonOutlawBuccaneer</train>
-    <train row="0" page="0" column="4">deSaloonOutlawBlowgunner</train>
-    <train row="0" page="0" column="3">deSaloonOutlawArsonist</train>
-    <train row="0" page="0" column="0">deSaloonHajduk</train>
-    <train row="0" page="0" column="0">deSaloonInquisitor</train>
-    <train row="0" page="0" column="1">deSaloonHighwaymanRider</train>
-    <train row="0" page="0" column="2">deSaloonCrabat</train>
-    <train row="0" page="0" column="2">deSaloonOutlawCossackRider</train>
-    <train row="0" page="0" column="3">deSaloonOutlawAfricanSpearman</train>
-    <train row="0" page="0" column="4">deSaloonOutlawKnifeThrower</train>
-    <train row="0" page="0" column="5">deSaloonOutlawColoRifle</train>
-    <train row="0" page="0" column="23">MercBarbaryCorsair</train>
-    <train row="0" page="0" column="22">MercBlackRider</train>
-    <train row="0" page="0" column="21">MercElmeti</train>
-    <train row="0" page="0" column="10">MercFusilier</train>
-    <train row="0" page="0" column="24">MercGreatCannon</train>
-    <train row="0" page="0" column="17">MercHackapell</train>
-    <train row="0" page="0" column="17">deMercHarquebusier</train>
-    <train row="0" page="0" column="16">MercHighlander</train>
-    <train row="0" page="0" column="13">MercJaeger</train>
-    <train row="0" page="0" column="15">MercLandsknecht</train>
-    <train row="0" page="0" column="19">MercMameluke</train>
-    <train row="0" page="0" column="20">MercManchu</train>
-    <train row="0" page="0" column="18">MercNinja</train>
-    <train row="0" page="0" column="12">MercRonin</train>
-    <train row="0" page="0" column="14">MercStradiot</train>
-    <train row="0" page="0" column="11">MercSwissPikeman</train>
-    <train row="0" page="0" column="4">ypDacoit</train>
-    <train row="0" page="0" column="24">ypMercIronTroop</train>
-    <train row="0" page="0" column="27">ypMercArsonist</train>
-    <train row="0" page="0" column="26">ypMercJatLancer</train>
-    <train row="0" page="0" column="25">ypMercYojimbo</train>
-    <train row="0" page="0" column="5">ypThuggee</train>
-    <train row="0" page="0" column="9">ypWokouBlindMonk</train>
-    <train row="0" page="0" column="6">ypWokouPirate</train>
-    <train row="0" page="0" column="7">ypWokouWanderingHorseman</train>
-    <train row="0" page="0" column="8">ypWokouWaywardRonin</train>
-    <train row="0" page="0" column="28">deMercNapoleonGun</train>
-    <train row="0" page="0" column="29">deMercZouave</train>
-    <train row="0" page="0" column="30">deMercSudaneseRider</train>
-    <train row="0" page="0" column="31">deMercCannoneer</train>
-    <train row="0" page="0" column="32">deMercAskari</train>
-    <train row="0" page="0" column="33">deMercAmazon</train>
-    <train row="0" page="0" column="34">deMercZenata</train>
-    <train row="0" page="0" column="35">deMercGatlingCamel</train>
-    <train row="0" page="0" column="36">deMercKanuri</train>
-    <train row="0" page="0" column="37">deMercGrenadier</train>
-    <train row="0" page="0" column="38">deMercPandour</train>
-    <train row="0" page="0" column="39">deMercRoyalHorseman</train>
-    <train row="0" page="0" column="40">deMercPistoleer</train>
-    <train row="0" page="0" column="41">deMercBrigadier</train>
-    <train row="0" page="0" column="42">deMercMountedRifleman</train>
-    <train row="0" page="0" column="42">deMercBosniak</train>
-    <train row="0" page="0" column="0">MercElmeti</train>
-    <train row="0" page="0" column="1">MercSwissPikeman</train>
-    <train row="0" page="0" column="2">deMercPistoleer</train>
-    <tech row="0" page="11" column="1">DESPCPapalLegate</tech>
-    <tech row="0" page="11" column="2">zpMonarchChurchAliance</tech>
+    <tech row="0" page="11" column="1">zpMonarchChurchAliance</tech>
+    <tech row="0" page="11" column="2">DESPCPapalLegate</tech>
+    <tech row="0" page="11" column="3">DESPCExcommunication</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -46031,7 +45762,7 @@
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
     <command page="10" column="5">Eject</command>
-    <command page="11" column="1">Abilities</command>
+    <command page="11" column="4">Abilities</command>
     <tactics>parisbuilding.tactics</tactics>
     <protoaction>
       <name>Autogather</name>

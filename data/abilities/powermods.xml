@@ -420,6 +420,20 @@
     <startsoundset>UI_Select_Building_Firepit</startsoundset>
     <alwaysaddtoplayer>1</alwaysaddtoplayer>
   </power>
+  <power name="zpPowerInformersFrench" type="Informers">
+    <displaynameid>62773</displaynameid>
+    <rolloverid>62768</rolloverid>
+    <icon>resources\images\icons\abilities\paris_informers.png</icon>
+    <minimapeventtime sendalertto="none">1</minimapeventtime>
+    <activetime>20</activetime>
+    <effect type="SharedLOS">
+      <target type="General">
+      </target>
+    </effect>
+    <placement forceonmap="1" ally="">full</placement>
+    <allowduringnorush>1</allowduringnorush>
+    <startsoundset>PowerInformers</startsoundset>
+  </power>
 
 
 

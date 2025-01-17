@@ -18771,6 +18771,7 @@
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
       <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
       <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
       <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
     </effects>
   </tech>
@@ -19407,6 +19408,7 @@
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
       <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
       <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
       <effect type="TechStatus" status="active">zpDisableTradeRouteUpgrade</effect>
     </effects>
   </tech>
@@ -19450,6 +19452,7 @@
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
       <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
       <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
       <effect type="TechStatus" status="active">zpDisableTradeRouteUpgrade</effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpMilitaryCamp</target>
@@ -21580,6 +21583,89 @@
         <target type="ProtoUnit">zpSPCNeptuneGalleyProxy</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">"zpPirateLockCitystateTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpBlessedCityShadow" type="Normal">
+    <dbid>40914</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCNotreDame</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCGermanCathedral</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpVerseillesChurch</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGatherXPTeam" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCNationalBank</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCTownMill</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCGoldSmelter</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCDestilery</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCForester</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCDemolisher</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+      <effect type="Data" action="AutoGatherXP" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCBlessedCity" type="Normal">
+    <dbid>40915</dbid>
+    <displaynameid>302305</displaynameid>
+    <cost resourcetype="Food">150.0000</cost>
+    <cost resourcetype="Gold">150.0000</cost>
+    <cost resourcetype="Wood">150.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\team_blessed_city.png</icon>
+    <rollovertextid>302306</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpBlessedCityShadow</effect>
     </effects>
   </tech>
 

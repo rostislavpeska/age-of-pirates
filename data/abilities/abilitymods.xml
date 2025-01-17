@@ -258,6 +258,12 @@
   <zpspcnotredame>
     <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
   </zpspcnotredame>
+  <zpspcgermancathedral>
+    <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcgermancathedral>
+  <zpverseilleschurch>
+    <ability>zpPowerInformersFrench<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpverseilleschurch>
   <zpnatconquistadormusketeer>
     <ability>dePromotionHpDMG<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpnatconquistadormusketeer>
