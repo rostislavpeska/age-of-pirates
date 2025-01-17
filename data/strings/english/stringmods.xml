@@ -2306,6 +2306,8 @@
       <string _locid="302306">All convertable city resource buildings work faster by 15% while being owned either by you or any of your team members.</string>
       <string _locid="302307">Experience Building, Team improvement building</string>
       <string _locid="302308">Experience Building, Team improvement building with special abilities</string>
+      <string _locid="302309">Team improvement building, slowly heals nearby units</string>
+      <string _locid="302310">Experience Building, team improvement building with special abilities, slowly heals nearby units</string>
 
 
       <!-- ======================================== -->

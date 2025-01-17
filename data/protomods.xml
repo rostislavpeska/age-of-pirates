@@ -35821,8 +35821,8 @@
     <icon>resources\art\buildings\basilica\basilica_icon.png</icon>
     <minimapicon>ui\minimap\religious_small</minimapicon>
     <portraiticon>resources\art\buildings\spc\notre_dame.png</portraiticon>
-    <rollovertextid>302308</rollovertextid>
-    <shortrollovertextid>302307</shortrollovertextid>
+    <rollovertextid>302310</rollovertextid>
+    <shortrollovertextid>302309</shortrollovertextid>
     <initialhitpoints>5000.0000</initialhitpoints>
     <maxhitpoints>5000.0000</maxhitpoints>
     <los>12.0000</los>
@@ -35883,11 +35883,12 @@
     <flag>NotDeleteable</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
     <flag>VisibleUnderFog</flag>
+    <flag>ShowAreaHealRate</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
     <command page="10" column="5">Eject</command>
     <command page="11" column="4">Abilities</command>
-    <tactics>parisbuilding.tactics</tactics>
+    <tactics>notre_dame.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
       <rate type="XP">4.000000</rate>
@@ -42910,8 +42911,8 @@
     <icon>resources\art\buildings\basilica\basilica_icon.png</icon>
     <minimapicon>ui\minimap\religious_small</minimapicon>
     <portraiticon>resources\art\buildings\spc\imperial_cathedral.png</portraiticon>
-    <rollovertextid>302308</rollovertextid>
-    <shortrollovertextid>302307</shortrollovertextid>
+    <rollovertextid>302310</rollovertextid>
+    <shortrollovertextid>302309</shortrollovertextid>
     <initialhitpoints>5000.0000</initialhitpoints>
     <maxhitpoints>5000.0000</maxhitpoints>
     <los>12.0000</los>
@@ -42971,11 +42972,12 @@
     <flag>Invulnerable</flag>
     <flag>NotDeleteable</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>ShowAreaHealRate</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
     <command page="10" column="5">Eject</command>
     <command page="11" column="4">Abilities</command>
-    <tactics>parisbuilding.tactics</tactics>
+    <tactics>notre_dame.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
       <rate type="XP">4.000000</rate>
