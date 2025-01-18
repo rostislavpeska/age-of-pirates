@@ -5834,6 +5834,11 @@ int counterSPCSuf = -1;
 int counterSPCJes = -1;
 int counterXmass = -1;
 int counterEzio = -1;
+int orthodoxSpawn = -1;	// 1 for north, 2 for south
+if (rmRandFloat(0,1) <= 0.50)
+    orthodoxSpawn = 1;
+else
+    orthodoxSpawn = 2;
 
 int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 //	aopNativeNumber = 11;	// for testing
@@ -5924,7 +5929,10 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 		else if(nativeChance < 0.10 && counterOrt < 1)
 		{
 			rmEchoInfo("subCiv"+i+" is Orthodox");
-			unknownVillageID = rmCreateGrouping("orthodox monastery 9"+i, "orthodox_monastery0"+rmRandInt(1,5));
+			if (orthodoxSpawn == 1)
+				unknownVillageID = rmCreateGrouping("orthodox monastery 9"+i, "orthodox_monastery0"+rmRandInt(1,5));
+			else
+				unknownVillageID = rmCreateGrouping("orthodox monastery 9"+i, "orthodox_south_0"+rmRandInt(1,3));
 			counterOrt++;
 		}
 		else if(nativeChance < 0.11 && counterWes < 1)
@@ -6351,7 +6359,10 @@ int aopNativeNumber = (rmRandInt(1,3)+(cNumberNonGaiaPlayers/4));
 		else if(nativeChance < 0.47 && counterOrt < 1)
 		{
 			rmEchoInfo("subCiv"+i+" is Orthodox");
-			unknownVillageID = rmCreateGrouping("orthodox monastery "+i, "orthodox_monastery0"+rmRandInt(1,5));
+			if (orthodoxSpawn == 1)
+				unknownVillageID = rmCreateGrouping("orthodox monastery 9"+i, "orthodox_monastery0"+rmRandInt(1,5));
+			else
+				unknownVillageID = rmCreateGrouping("orthodox monastery 9"+i, "orthodox_south_0"+rmRandInt(1,3));
 			counterOrt++;
 		}
 		else if(nativeChance < 0.48 && counterWes < 1)
