@@ -3180,13 +3180,12 @@
 			<effect type ="SetName" proto ="zpNatMercWokouPirate" culture ="none" newname ="300198"></effect>
       <effect type="SetName" proto="zpNatMercWokouPirate" culture="none" newname="300320" reqtech="ImpLegendaryNativesShadow">
       </effect>
-			<effect type ="SetName" proto ="zpNatWokouPirate" culture ="none" newname ="300198"></effect>
       <effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
 				<target type ="ProtoUnit">zpNatWokouMonk</target></effect>
 			<effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
 				<target type ="ProtoUnit">zpNatWokouMonk</target></effect>
 			<effect type ="SetName" proto ="zpNatWokouMonk" culture ="none" newname ="300211"></effect>
-      <effect type="SetName" proto="zpNatWokouPirate" culture="none" newname="300319" reqtech="ImpLegendaryNativesShadow">
+      <effect type="SetName" proto="zpNatWokouMonk" culture="none" newname="300319" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="TechStatus" status="obtainable">zpGuardMutineers</effect>
 		</effects>

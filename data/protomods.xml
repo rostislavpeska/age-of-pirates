@@ -4519,6 +4519,7 @@
     <displaynameid>62056</displaynameid>
     <editornameid>300186</editornameid>
     <subciv>Wokou</subciv>
+    <populationcount>0</populationcount>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <formationcategory>Body</formationcategory>
@@ -4564,7 +4565,6 @@
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardMilitaryScore</unittype>
-    <unittype>AbstractOutlaw</unittype>
     <unittype>AbstractCavalryInfantry</unittype>
     <unittype>AbstractHandInfantry</unittype>
     <unittype>ConvertsHerds</unittype>
@@ -4924,6 +4924,7 @@
     <maxrunvelocity>6.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <subciv>Wokou</subciv>
+    <populationcount>0</populationcount>
     <turnrate>18.0000</turnrate>
     <animfile>units\asians\mercenaries\blind_monk\blind_monk.xml</animfile>
     <impacttype>Flesh</impacttype>
@@ -4963,7 +4964,6 @@
     <unittype>Unit</unittype>
     <unittype>Military</unittype>
     <unittype>UnitClass</unittype>
-    <unittype>AbstractOutlaw</unittype>
     <unittype>AbstractArcher</unittype>
     <unittype>AbstractFootArcher</unittype>
     <unittype>AbstractArchaicInfantry</unittype>
@@ -31674,6 +31674,7 @@
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <formationcategory>Body</formationcategory>
+    <populationcount>0</populationcount>
     <maxvelocity>5.0000</maxvelocity>
     <maxrunvelocity>7.0000</maxrunvelocity>
     <movementtype>land</movementtype>
@@ -31715,7 +31716,6 @@
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardMilitaryScore</unittype>
-    <unittype>AbstractOutlaw</unittype>
     <unittype>AbstractCavalryInfantry</unittype>
     <unittype>AbstractHandInfantry</unittype>
     <unittype>ConvertsHerds</unittype>
