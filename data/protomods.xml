@@ -44500,30 +44500,27 @@
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>air</movementtype>
     <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
-    <unittype>TowerSocket</unittype>
-    <unittype>Building</unittype>
-    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>NativeBuilding</unittype>
     <unittype>EmbellishmentClass</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>NoHPBar</flag>
     <flag>NonAutoFormedUnit</flag>
-    <flag>Doppled</flag>
-    <flag>Invulnerable</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>Tracked</flag>
-    <flag>AllowSocketPlacement</flag>
-    <flag>DoNotShowOnMiniMap</flag>
-    <flag>NotDeleteable</flag>
+    <flag>VisibleUnderFog</flag>
     <flag>NotSelectable</flag>
-    <flag>PlaceAnywhere</flag>
-    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>NoUnitAI</flag>
+    <flag>Tracked</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
     <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
   </unit>
   <unit id="20593" name="zpSPCWaterSpawnPointB">
     <dbid>20593</dbid>
