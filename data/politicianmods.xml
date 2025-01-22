@@ -111,6 +111,8 @@
   </zpconsulateorthodoxconstantinopole>
   <zpconsulateorthodoxalexandria portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/orthodox_alexandria.png">
   </zpconsulateorthodoxalexandria>
+  <zpconsulatekingofbohemiahabsburg portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/bohemia_habsburg.png">
+  </zpconsulatekingofbohemiahabsburg>
 
   <zpconsulaterevjacobine portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_jacobine.png">
   </zpconsulaterevjacobine>

@@ -2312,7 +2312,22 @@
       <string _locid="302312">ZP SPC Aztec Great Temple</string>
       <string _locid="302313">ZP SPC Fire Pit</string>
       <string _locid="302314">Fire Pit</string>
-      
+      <string _locid="302315">King of Bohemia</string>
+      <string _locid="302316">ZP SPC Socket King of Bohemia</string>
+      <string _locid="302317">There is only one true King of Bohemia. Hold the kingdom until the time runs out.</string>
+      <string _locid="302318">Pick the Dynasty</string>
+      <string _locid="302319">Pick one of the Bohemian King Dynasties  \n • Initiates a special type of revolution and transforms your civilisation to Kingdom of Bohemia \n • Spawns 10 Bohemian Landsknechts to protect the city \n • Unlocks specific Royal House units, techs and abilities \n • Starts a victory countdown</string>
+      <string _locid="302320">House of Habsburg</string>
+      <string _locid="302321">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nLine Infantry, Mounted Infantry \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nVienna Congress, Crown Lands, Multinationalism, Austro-Hungarian Empire</string>
+      <string _locid="302322">Bohemian Landsknecht</string>
+      <string _locid="302323">ZP NAT Bohemian Landsknecht</string>
+      <string _locid="302324">Veteran Dynasty Armies</string>
+      <string _locid="302325">Guard Dynasty Armies</string>
+      <string _locid="302326">Veteran Bohemian Landsknecht</string>
+      <string _locid="302327">Guard Bohemian Landsknecht</string>
+      <string _locid="302328">Legendary Bohemian Landsknecht</string>
+      <string _locid="302329">Increases Bohemian Royal Dynasty Attack and Hitpoints</string>
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

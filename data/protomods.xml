@@ -1106,6 +1106,9 @@
     <train row="0" page="0" column="1">zpNatPavisier</train>
     <train row="0" page="0" column="2">zpNatAssassin</train>
 
+    <!--KING OF BOHEMIA-->
+    <train row="0" page="0" column="1">zpNatBohemianLandsknecht</train>
+
     <!-- Christmas units and techs Added by AssertiveWall-->
     <train row="0" page="0" column="1">zpNatElfsGuard</train>
     <!--<train row="0" page="0" column="2">zpNatElfsSapper</train>-->
@@ -1273,6 +1276,11 @@
     <tech row="0" page="0" column="4">zpAuditoreLighthouse</tech>
     <tech row="0" page="2" column="2">zpAuditoreExpansion</tech>
     <tech row="0" page="2" column="3">zpNatFortifiedVillas</tech>
+
+    <tech row="0" page="1" column="1">zpSPCKingOfBohemia</tech>
+    <tech row="0" page="1" column="1">zpVeteranBohemianKing</tech>
+    <tech row="0" page="1" column="1">zpGuardBohemianKing</tech>
+
 
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia1</tech>
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia2</tech>
@@ -48902,6 +48910,314 @@
       <name>Autogather</name>
       <rate type="XP">4.000000</rate>
     </protoaction>
+  </unit>
+  <unit id="20654" name="zpSPCSocketBohemianKing">
+    <dbid>20654</dbid>
+    <displaynameid>302315</displaynameid>
+    <editornameid>302316</editornameid>
+    <subciv>zpBohemianKing</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>3.0000</socketbuildrate>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\trading_post\europe_outpost_socket.xml</animfile>
+    <minimapicon>ui\minimap\t</minimapicon>
+    <portraiticon>resources\art\units\natives\bohemia_kingdom.png</portraiticon>
+    <rollovertextid>302317</rollovertextid>
+    <shortrollovertextid>302317</shortrollovertextid>
+    <los>5.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>SocketFreeBuilding</flag>
+    <flag>NotDeleteable</flag>
+    <tactics>socketcapture.tactics</tactics>
+    <command page="1" column="0">deSocketBuild</command>
+  </unit>
+  <unit id="20655" name="zpNatBohemianLandsknecht">
+    <dbid>20655</dbid>
+    <displaynameid>302322</displaynameid>
+    <editornameid>302323</editornameid>
+    <subciv>zpBohemianKing</subciv>
+    <populationcount>0</populationcount>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>4.2500</maxvelocity>
+    <maxrunvelocity>6.2500</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\mercenaries\landsknecht\landsknecht.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\mercenaries\landsknecht\landsknect_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\mercenaries\landsknecht\landsknecht_portrait.png</portraiticon>
+    <rollovertextid>22943</rollovertextid>
+    <shortrollovertextid>25647</shortrollovertextid>
+    <initialhitpoints>200.0000</initialhitpoints>
+    <maxhitpoints>200.0000</maxhitpoints>
+    <buildlimit>15</buildlimit>
+    <los>12.0000</los>
+    <unitaitype>HandCombative</unitaitype>
+    <trainpoints>33.0000</trainpoints>
+    <bounty>12.0000</bounty>
+    <buildbounty>12.0000</buildbounty>
+    <cost resourcetype="Food">50.0000</cost>
+    <cost resourcetype="Gold">80.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Hand" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractHandInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>LogicalTypeRomanTactics</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>pikeman.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>41.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CoverBuildingAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CoverHandAttack</name>
+      <damage>14.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>DefendHandAttack</name>
+      <damage>28.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>28.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="20656" name="zpNatLineInfantryProxy">
+    <dbid>20022</dbid>
+    <displaynameid>122111</displaynameid>
+    <subciv>zpBohemianKing</subciv>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <movementtype>land</movementtype>
+    <animfile>units\spc\pirates\pirates.xml</animfile>
+    <icon>resources\art\units\natives\europeans\line_infantry_icon.png</icon>
+    <portraiticon>resources\art\units\natives\europeans\line_infantry_portrait.png</portraiticon>
+    <rollovertextid>122116</rollovertextid>
+    <shortrollovertextid>25669</shortrollovertextid>
+    <trainpoints>35.0000</trainpoints>
+    <bounty>12.0000</bounty>
+    <buildbounty>12.0000</buildbounty>
+    <cost resourcetype="Food">60.0000</cost>
+    <cost resourcetype="Gold">55.0000</cost>
+    <allowedage>2</allowedage>
+    <sharedbuildlimitunit>deNatLineInfantry</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>deNatLineInfantry</unittype>
+      <unittype>zpNatLineInfantryProxy</unittype>
+    </sharedbuildlimitunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>AbstractMusketeer</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <flag>ExperienceUnit</flag>
+    <flag>UseTacticArmorOverride</flag>
+    <flag>TacticArmorUseBaseIfNotSet</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit name="deNatLineInfantry">
+      <sharedbuildlimitunittypes>
+        <unittype>deNatLineInfantry</unittype>
+        <unittype>zpNatPirateProxy</unittype>
+      </sharedbuildlimitunittypes>
+      <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit id="20657" name="zpNatMercMountedInfantryProxy">
+    <dbid>20657</dbid>
+    <displaynameid>122181</displaynameid>
+    <subciv>zpBohemianKing</subciv>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <movementtype>land</movementtype>
+    <animfile>units\spc\pirates\pirates.xml</animfile>
+    <icon>resources\art\units\natives\europeans\mounted_infantry_icon.png</icon>
+    <portraiticon>resources\art\units\natives\europeans\mounted_infantry_portrait.png</portraiticon>
+    <rollovertextid>122170</rollovertextid>
+    <shortrollovertextid>122171</shortrollovertextid>
+    <trainpoints>30.0000</trainpoints>
+    <sharedbuildlimitunit>deNatMountedInfantryRider</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>deNatMountedInfantryRider</unittype>
+      <unittype>deNatMountedInfantry</unittype>
+      <unittype>zpNatMercMountedInfantryProxy</unittype>
+    </sharedbuildlimitunittypes>
+    <bounty>12.0000</bounty>
+    <buildbounty>12.0000</buildbounty>
+    <cost resourcetype="Gold">110.0000</cost>
+    <allowedage>1</allowedage>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractRifleman</unittype>
+    <unittype>AbstractSkirmisher</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>ExperienceUnit</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit name="deNatMountedInfantry">
+    <sharedbuildlimitunittypes>
+      <unittype>deNatMountedInfantryRider</unittype>
+      <unittype>deNatMountedInfantry</unittype>
+      <unittype>zpNatMercMountedInfantryProxy</unittype>
+    </sharedbuildlimitunittypes>
+  </unit>
+  <unit name="deNatMountedInfantryRider">
+    <sharedbuildlimitunittypes>
+      <unittype>deNatMountedInfantryRider</unittype>
+      <unittype>deNatMountedInfantry</unittype>
+      <unittype>zpNatMercMountedInfantryProxy</unittype>
+    </sharedbuildlimitunittypes>
   </unit>
 
 
