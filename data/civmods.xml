@@ -621,6 +621,26 @@
         <count>1</count>
       </unitcounts>
     </multipleblocktrain>
+    <multipleblocktrain>
+      <building>TradingPost</building>
+      <multipleblockunit>zpNatLipkaTatarProxy</multipleblockunit>
+      <units>
+        <unit>deNatLipkaTatar</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>TradingPost</building>
+      <multipleblockunit>zpNatShockRiderProxy</multipleblockunit>
+      <units>
+        <unit>deNatShockRider</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
 
     <agetech>
       <age>Age0</age>
