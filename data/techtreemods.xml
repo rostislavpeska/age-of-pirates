@@ -5082,6 +5082,10 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatShockRiderProxy" culture="none" newname="122492">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercMountainTrooperProxy" culture="none" newname="122481">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatChevaulegerProxy" culture="none" newname="122482">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -21702,7 +21706,6 @@
       <effect type="TechStatus" status="obtainable">zpSPCKingOfBohemia</effect>
       <effect type="TechStatus" status="obtainable">zpGuardBohemianKing</effect>
       <effect type="TechStatus" status="obtainable">zpVeteranBohemianKing</effect>
-
       <effect type="TechStatus" status="obtainable">DENatHabsburgViennaCongress</effect>
       <effect type="TechStatus" status="obtainable">DENatHabsburgCrownLands</effect>
       <effect type="TechStatus" status="obtainable">DENatHabsburgMultinationalism</effect>
@@ -21711,6 +21714,10 @@
       <effect type="TechStatus" status="obtainable">DENatJagiellonInheritance</effect>
       <effect type="TechStatus" status="obtainable">DENatJagiellonSarmatism</effect>
       <effect type="TechStatus" status="obtainable">DENatJagiellonFolwarks</effect>
+      <effect type="TechStatus" status="obtainable">DENatWittelsbachOktoberfest</effect>
+      <effect type="TechStatus" status="obtainable">DENatWittelsbachDucalLancers</effect>
+      <effect type="TechStatus" status="obtainable">DENatWittelsbachPhilhellenism</effect>
+      <effect type="TechStatus" status="obtainable">DENatWittelsbachHuntingGear</effect>
     </effects>
   </tech>
   <tech name ="zpSPCKingOfBohemia" type ="Normal">
@@ -21848,6 +21855,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxAlexandria</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateKingOfBohemiaHabsburg</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffKingOfBohemia</effect>
     </effects>
@@ -21892,8 +21900,17 @@
       </effect>
       <effect type="SetName" proto="zpNatShockRiderProxy" culture="none" newname="122492" reqtech="ImpLegendaryNativesShadow">
       </effect>
+      <effect type="SetName" proto="zpNatMountainTrooperProxy" culture="none" newname="122477">
+      </effect>
+      <effect type="SetName" proto="zpNatMountainTrooperProxy" culture="none" newname="122481" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatMercMountainTrooperProxy" culture="none" newname="122477">
+      </effect>
+      <effect type="SetName" proto="zpNatMercMountainTrooperProxy" culture="none" newname="122481" reqtech="ImpLegendaryNativesShadow">
+      </effect>
       <effect type="TechStatus" status="active">DEVeteranHabsburg</effect>
       <effect type="TechStatus" status="active">DEVeteranJagiellon</effect>
+      <effect type="TechStatus" status="active">DEVeteranWittelsbach</effect>
     </effects>
   </tech>
   <tech name="zpGuardBohemianKing" type="Normal">
@@ -21941,8 +21958,17 @@
       </effect>
       <effect type="SetName" proto="zpNatShockRiderProxy" culture="none" newname="122492" reqtech="ImpLegendaryNativesShadow">
       </effect>
+      <effect type="SetName" proto="zpNatMountainTrooperProxy" culture="none" newname="122479">
+      </effect>
+      <effect type="SetName" proto="zpNatMountainTrooperProxy" culture="none" newname="122481" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatChevaulegerProxy" culture="none" newname="122480">
+      </effect>
+      <effect type="SetName" proto="zpNatChevaulegerProxy" culture="none" newname="122482" reqtech="ImpLegendaryNativesShadow">
+      </effect>
       <effect type="TechStatus" status="active">DEGuardHabsburg</effect>
       <effect type="TechStatus" status="active">DEGuardJagiellon</effect>
+      <effect type="TechStatus" status="active">DEGuardWittelsbach</effect>
     </effects>
   </tech>
   <tech name="zpKingOfBohemiaSetup" type="Normal">
@@ -21972,6 +21998,18 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandRemove" tech="DENatJagiellonInheritance">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatWittelsbachOktoberfest">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatWittelsbachDucalLancers">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatWittelsbachPhilhellenism">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatWittelsbachHuntingGear">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
@@ -22023,6 +22061,54 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect civ="Jagiellon" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateKingOfBohemiaWittelsbach" type="Normal">
+    <dbid>40924</dbid>
+    <displaynameid>302332</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\kingdom_bohemia_big.png</icon>
+    <rollovertextid>302333</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatChevaulegerProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMountainTrooperProxy</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCKingOfBohemia</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpSPCKingOfBohemia">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatChevaulegerProxy" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatMountainTrooperProxy" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatWittelsbachOktoberfest" page="2" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatWittelsbachDucalLancers" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatWittelsbachPhilhellenism" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatWittelsbachHuntingGear" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect civ="Wittelsbach" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>

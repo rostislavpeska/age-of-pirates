@@ -600,7 +600,6 @@
     <alliedid>26446</alliedid>
     <alliedotherid>26445</alliedotherid>
     <unalliedid>26444</unalliedid>
-
     <multipleblocktrain>
       <building>TradingPost</building>
       <multipleblockunit>zpNatMercMountedInfantryProxy</multipleblockunit>
@@ -641,7 +640,26 @@
         <count>1</count>
       </unitcounts>
     </multipleblocktrain>
-
+    <multipleblocktrain>
+      <building>TradingPost</building>
+      <multipleblockunit>zpNatChevaulegerProxy</multipleblockunit>
+      <units>
+        <unit>deNatChevauleger</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>TradingPost</building>
+      <multipleblockunit>zpNatMountainTrooperProxy</multipleblockunit>
+      <units>
+        <unit>deNatMountainTrooper</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
     <agetech>
       <age>Age0</age>
       <tech>zpNativeBohemianKing</tech>
