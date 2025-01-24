@@ -227,6 +227,7 @@ extern vector gCannonCornerLoc1 = cInvalidVector;
 extern vector gCannonCornerLoc2 = cInvalidVector;
 extern vector gCannonCornerLoc3 = cInvalidVector;
 extern vector gCannonCornerLoc4 = cInvalidVector;
+extern int gStarFortWallPlanArray = -1;
 
 //==============================================================================
 // Techs.
