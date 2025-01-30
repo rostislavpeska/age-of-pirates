@@ -952,12 +952,12 @@ minInterval 10
       }
       else if (gStrategy == cStrategyNakedFF || gStrategy == cStrategyFastIndustrial) // AssertiveWall: Naked FF
       {
-         ageUpPriority = 90;
+         ageUpPriority = 65; // settler maintain plan is 70 priority
       }
    }
    else if (age == cAge3 && gStrategy == cStrategyFastIndustrial)
    {
-      ageUpPriority = 90;
+      ageUpPriority = 65;
    }
 
    debugTechs("Our ageUpPriority (resource priority) is: " + ageUpPriority);
