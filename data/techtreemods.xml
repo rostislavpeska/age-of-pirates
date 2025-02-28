@@ -5102,7 +5102,7 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedZenClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrowers</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
@@ -5148,7 +5148,7 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedZenClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrowers</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
@@ -5194,7 +5194,7 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedZenClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrowers</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
@@ -5240,7 +5240,7 @@
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrowers</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
@@ -5289,7 +5289,7 @@
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrowers</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
@@ -5338,7 +5338,7 @@
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrowers</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
@@ -5384,7 +5384,7 @@
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrowers</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
@@ -5430,7 +5430,7 @@
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrowers</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
