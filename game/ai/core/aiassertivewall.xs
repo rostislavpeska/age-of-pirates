@@ -11348,7 +11348,11 @@ minInterval 30
             aiPlanSetActive(gForwardBaseBuildPlan);
    
             // Chat to my allies.
-            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+            if (xsGetTime() > (gLastFBMessageSend + 180 * 1000)) // 3 minute buffer
+            {
+               sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+               gLastFBMessageSend = xsGetTime();
+            }
             gForwardBaseState = cForwardBaseStateBuilding;
             if (gStartOnDifferentIslands == true)
             {  // This should no longer be used now that we have the amphibious assault rule

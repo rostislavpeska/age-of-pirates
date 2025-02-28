@@ -1979,7 +1979,7 @@ minInterval 8
       // Add wagon
       aiPlanAddUnitType(planID, cUnitTypezpJerusalemWagon, 1, 1, 1);
       aiPlanAddUnit(planID, getUnit(cUnitTypezpJerusalemWagon, cPlayerRelationSelf));
-      sendStatement(2, cAICommPromptToAllyIWillBuildMilitaryBase, testVec);
+      //sendStatement(2, cAICommPromptToAllyIWillBuildMilitaryBase, testVec);
 
       xsDisableSelf();
    }
@@ -3523,7 +3523,11 @@ minInterval 30
             aiPlanSetActive(gForwardBaseBuildPlan);
    
             // Chat to my allies.
-            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+            if (xsGetTime() > (gLastFBMessageSend + 180 * 1000)) // 3 minute buffer
+            {
+               sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+               gLastFBMessageSend = xsGetTime();
+            }
    
             gForwardBaseState = cForwardBaseStateBuilding;
             debugBuildings("");
