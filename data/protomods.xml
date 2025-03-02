@@ -49554,7 +49554,7 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\church\church_icon.png</icon>
-    <portraiticon>resources\art\units\natives\native_orthodox.png</portraiticon>
+    <portraiticon>resources\art\units\natives\yodit_portrait.png</portraiticon>
     <rollovertextid>302099</rollovertextid>
     <shortrollovertextid>302099</shortrollovertextid>
     <initialhitpoints>1500.0000</initialhitpoints>
