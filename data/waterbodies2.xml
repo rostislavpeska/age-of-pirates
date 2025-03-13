@@ -1942,4 +1942,29 @@
     <rendering scatter_color="0.255 0.662 0.596" sun_set_color="1.000 0.400 0.000" caustics_depth="6.0000" caustics_intensity="1.3200" caustics_scale="0.3000" caustics_scroll="0.0710" fft_displace="1.0500" custom_wave_scale="8.0000" reflection_normal="0.5400" refraction_normal="0.0150" scatter_amount="0.1640" fog_color_mult="0.1380" custom_wave_scatter="5.0000" surface_roughness="0.0100" fog_density="1.1020" water_color="0.578 0.773 0.918" blur_intensity="0.3000" water_brighten="1.2830" reflection_intensity="0.0650">
     </rendering>
   </lake>
+
+  <lake name="ZP Bohemian River" iconname="ui\editor\wateryellowriver" bumpmap="terrain\water\ocean1\ocean1" surface="water" bottom="great_lakes\ground_shoreline1_gls" bank="great_lakes\ground_shoreline2_gls" outerbank="great_lakes\ground_grass1_gls" slope="" color="151 126 77" deepcolor="0 0 0" depth="1.100000" fresnelscale="3.0" fresnelbias="0.109000" cliffbanks="Italian Cliff River" alphaminvalue="0.000000" alphamaxvalue="1.000000" alphamindepth="0.000000" alphamaxdepth="0.909091" minriverbankheight="0.500000" maxriverbankheight="1.000000" waterplaneoffset="1.000000" coloramount="1.000000" reflectionamount="-0.437500" bumpscale="0.230000" reflectionbumpscale="0.520000" foamscale="-0.023000" texscale="1.5" texscrollspeed="4.000" texrotation="265.0" rivertexcoords="false">
+    <objectplacement curveangle="15.0" distancebetween="30.0" distancevariation="10.0" locktowateredge="">
+    </objectplacement>
+    <shoreline>
+      <shoreobj name="RiverEdgeFlow" mindistance="3" maxdistance="8" deltawatermin="1.0" deltawatermax="2.0" randomyaw="false">
+      </shoreobj>
+      <shoreobj name="RiverRocksSmall" mindistance=".5" maxdistance="2" deltawatermin="0.0" deltawatermax="1.0" randomyaw="true">
+      </shoreobj>
+      <shoreobj name="RiverObjectsPam" mindistance="3" maxdistance="5" deltawatermin="0.0" deltawatermax="1.0" randomyaw="true">
+      </shoreobj>
+    </shoreline>
+    <riverline>
+      <riverobj name="RiverRocksSmall" minsplinedistance="30" maxsplinedistance="60" mincrossdistance="15" maxcrossdistance="50" maxpercenttoshore="0.99" mirror="false" randomyaw="false" clusterminnum="3" clustermaxnum="6" clusterspread="3.0">
+      </riverobj>
+      <riverobj name="RiverEdgeFlow" minsplinedistance="20" maxsplinedistance="40" mincrossdistance="10" maxcrossdistance="20" maxpercenttoshore="0.99" mirror="false" randomyaw="false" clusterminnum="1" clustermaxnum="1">
+      </riverobj>
+      <riverobj name="RiverRocksSmall" shallowslining="upstream" minsplinedistance="-2" maxsplinedistance="3" mincrossdistance="3" maxcrossdistance="5" maxpercenttoshore="0.99" randomyaw="false" clusterminnum="2" clustermaxnum="5" clusterspread="4.0">
+      </riverobj>
+      <riverobj name="RiverShallowsPam" shallowslining="fill" minsplinedistance="5.0" maxsplinedistance="8.0" mincrossdistance="5.0" maxcrossdistance="8.0" maxpercenttoshore="0.99" randomyaw="true">
+      </riverobj>
+    </riverline>
+    <rendering scatter_color="0.25 0.39 0.53" sun_set_color="0.000 0.000 0.000" caustics_depth="1.8000" caustics_intensity="1.2100" caustics_scale="0.1100" caustics_scroll="0.0460" fft_displace="1.0200" custom_wave_scale="8.0000" reflection_normal="0.9800" refraction_normal="0.0820" scatter_amount="0.0790" fog_color_mult="0.3330" custom_wave_scatter="1.0000" surface_roughness="0.0000" fog_density="1.1900" water_color="0.73 0.87 0.95" blur_intensity="1.6300" water_brighten="2.0000" reflection_intensity="0.3333">
+    </rendering>
+  </lake>
 </waterbodies>

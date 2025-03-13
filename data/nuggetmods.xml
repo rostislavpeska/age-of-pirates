@@ -2427,6 +2427,47 @@
       <guardian>zpGuardianRevolutionary</guardian>
       <maptype>piratehistoricalmap</maptype>
     </nugget>
+    <nugget>
+      <name>zpNuggetKingOfBohemia</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>zpNatBohemianLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatBohemianLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatBohemianLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatBohemianLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatBohemianLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatBohemianLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatBohemianLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatBohemianLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatBohemianLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatBohemianLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatBohemianLandsknecht</unit>
+      </guardianunit>
+      <difficulty>301</difficulty>
+    </nugget>
 
 
     <!--WATER NUGGETS-->

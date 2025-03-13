@@ -1400,6 +1400,7 @@
 
     <train row="0" page="0" column="115">zpNatPavisier</train>
     <train row="0" page="0" column="116">zpNatAssassin</train>
+    <train row="0" page="0" column="117">zpNatBohemianLandsknecht</train>
   </unit>
   <unit name="NativeTownObstruction">
     <flag>Invulnerable</flag>
@@ -42461,6 +42462,57 @@
     <train row="0" page="0" column="100">zpSantaHelper</train>
     <train row="0" page="0" column="101">zpTilanusGrinch</train>
     <train row="0" page="0" column="102">zpTilanusGrinchMerc</train>
+
+    <train row="0" page="0" column="81">zpNatPirate</train>
+    <train row="0" page="0" column="83">zpNatMalteseGuard</train>
+    <train row="0" page="0" column="84">zpNatMalteseKnight</train>
+    <train row="0" page="0" column="85">zpNatWokouPirate</train>
+    <train row="0" page="0" column="86">zpNatWokouMonk</train>
+    <train row="0" page="0" column="87">zpKoreanBombard</train>
+    <train row="0" page="0" column="88">zpNatSoheiProxy</train>
+    <train row="0" page="0" column="89">zpNatSoheiArcher</train>
+    <train row="0" page="0" column="89">zpNatSoheiCavalry</train>
+    <train row="0" page="0" column="90">zpNatQizilbashProxy</train>
+    <train row="0" page="0" column="91">zpNatWarElephantProxy</train>
+    <train row="0" page="0" column="91">zpNatGatlingCamel</train>
+    <train row="0" page="0" column="81">zpNatCorsair</train>
+    <train row="0" page="0" column="82">zpNatMarksman</train>
+    <train row="0" page="0" column="87">zpNatHoopThrower</train>
+    <train row="0" page="0" column="88">zpNatInuitHarpooner</train>
+    <train row="0" page="0" column="89">zpInuitTorchman</train>
+    <train row="0" page="0" column="90">zpNatConquistador</train>
+    <train row="0" page="0" column="91">zpNatConquistadorMusketeer</train>
+    <train row="0" page="0" column="92">zpNatVeniceGuard</train>
+    <train row="0" page="0" column="93">zpNatMaoriClubman</train>
+    <train row="0" page="0" column="94">zpNatMaoriSlinger</train>
+    <train row="0" page="0" column="95">zpNatWarriorMonk</train>
+    <train row="0" page="0" column="96">zpNatDvoryanin</train>
+    <train row="0" page="0" column="96">zpNatCataphract</train>
+    <train row="0" page="0" column="96">zpAlexandrianRider</train>
+    <train row="0" page="0" column="97">zpNatBulgarianBoyar</train>
+    <train row="0" page="0" column="98">zpNatMonaspa</train>
+    <train row="0" page="0" column="99">zpMountedOutlaw</train>
+    <train row="0" page="0" column="100">zpDeputy</train>
+    <train row="0" page="0" column="101">zpJamesGang</train>
+    <train row="0" page="0" column="102">zpPinkertonAgent</train>
+    <train row="0" page="0" column="103">zpStageCoach</train>
+    <train row="0" page="0" column="104">zpPhoenixMGunCarrier</train>
+    <train row="0" page="0" column="105">zpNatBoomerang</train>
+    <train row="0" page="0" column="106">zpNatAboriginalTracker</train>
+    <train row="0" page="0" column="107">zpNatSettlementMilitia</train>
+    <train row="0" page="0" column="108">zpNatColonialGuardOrig</train>
+    <train row="0" page="0" column="108">zpNatColonialGuard</train>
+    <train row="0" page="0" column="108">zpNatColonialGuardDeserted</train>
+    <train row="0" page="0" column="109">zpNatKorowaiArcher</train>
+    <train row="0" page="0" column="110">zpNatKorowaiSpearman</train>
+    <train row="0" page="0" column="111">zpNatRoyalMusketeer</train>
+    <train row="0" page="0" column="112">zpNatRoyalDragoon</train>
+    <train row="0" page="0" column="113">zpNatRevolutionary</train>
+    <train row="0" page="0" column="114">zpNatEclaireur</train>
+
+    <train row="0" page="0" column="115">zpNatPavisier</train>
+    <train row="0" page="0" column="116">zpNatAssassin</train>
+    <train row="0" page="0" column="117">zpNatBohemianLandsknecht</train>
       <!-- Techs for grinch embassy -->
     <tech row="0" page="2" column="0">zpNatGrinchTeammatePathfinding</tech>
     <tech row="0" page="2" column="1">zpNatGrinchTeammateBuildLimit</tech>
@@ -48968,7 +49020,7 @@
     <maxrunvelocity>6.2500</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\mercenaries\landsknecht\landsknecht.xml</animfile>
+    <animfile>units\natives\bohemian_landsknecht.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\mercenaries\landsknecht\landsknect_icon_64x64.png</icon>
@@ -49002,65 +49054,66 @@
     <unittype>LogicalTypeHandUnitsAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>ConvertsHerds</unittype>
-    <unittype>AbstractHandInfantry</unittype>
-    <unittype>CountsTowardMilitaryScore</unittype>
-    <unittype>AbstractCavalryInfantry</unittype>
-    <unittype>HasBountyValue</unittype>
-    <unittype>Unit</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
-    <unittype>AbstractHeavyInfantry</unittype>
-    <unittype>AbstractInfantry</unittype>
-    <unittype>LogicalTypeRomanTactics</unittype>
-    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractPikeman</unittype>
+    <unittype>AbstractArchaicInfantry</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractHandInfantry</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
     <flag>ShowGarrisonButton</flag>
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
     <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
-    <command page="10" column="7">Delete</command>
-    <command page="11" column="0">Abilities</command>
-    <tactics>pikeman.tactics</tactics>
+    <tactics>swordsman.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
-      <damage>41.000000</damage>
+      <damage>28.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
     </protoaction>
     <protoaction>
       <name>CoverBuildingAttack</name>
-      <damage>20.000000</damage>
+      <damage>14.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
     </protoaction>
     <protoaction>
       <name>CoverHandAttack</name>
-      <damage>14.000000</damage>
+      <damage>7.500000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
-      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
-      <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+      <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">2.250000</damagebonus>
     </protoaction>
     <protoaction>
       <name>DefendHandAttack</name>
-      <damage>28.000000</damage>
+      <damage>15.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
-      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
-      <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+      <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">2.250000</damagebonus>
     </protoaction>
     <protoaction>
       <name>MeleeHandAttack</name>
-      <damage>28.000000</damage>
+      <damage>15.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
-      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
-      <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+      <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">2.250000</damagebonus>
     </protoaction>
   </unit>
   <unit id="20656" name="zpNatLineInfantryProxy">
@@ -49547,7 +49600,7 @@
     <obstructionradiusz>5.5000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\native_settlement\jewish settlement.xml</animfile>
+    <animfile>buildings\native_settlement\jewish synagogue 2.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>
@@ -49614,6 +49667,222 @@
     <flag>Invulnerable</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
+  </unit>
+  <unit id="20664" name="zpInvisibleGateSocketB">
+    <dbid>20664</dbid>
+    <displaynameid>302337</displaynameid>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0.0000</los>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>Invulnerable</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>NoHPBar</flag>
+    <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>OnlyInEditor</flag>
+  </unit>
+  <unit id="20664" name="zpInvisibleGateSocketC">
+    <dbid>20664</dbid>
+    <displaynameid>302338</displaynameid>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0.0000</los>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>Invulnerable</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>NoHPBar</flag>
+    <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>OnlyInEditor</flag>
+  </unit>
+  <unit id="20665" name="zpInvisibleGateSocketD">
+    <dbid>20665</dbid>
+    <displaynameid>302339</displaynameid>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0.0000</los>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>Invulnerable</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>NoHPBar</flag>
+    <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>OnlyInEditor</flag>
+  </unit>
+  <unit id="20666" name="zpInvisibleGateSocketE">
+    <dbid>20666</dbid>
+    <displaynameid>302340</displaynameid>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0.0000</los>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>Invulnerable</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>NoHPBar</flag>
+    <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>OnlyInEditor</flag>
+  </unit>
+  <unit id="20667" name="zpInvisibleGateSocketF">
+    <dbid>20667</dbid>
+    <displaynameid>302341</displaynameid>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0.0000</los>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>Invulnerable</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>NoHPBar</flag>
+    <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>OnlyInEditor</flag>
+  </unit>
+  <unit id="20668" name="zpInvisibleGateSocketG">
+    <dbid>20668</dbid>
+    <displaynameid>302342</displaynameid>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0.0000</los>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>Invulnerable</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>NoHPBar</flag>
+    <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>OnlyInEditor</flag>
+  </unit>
+  <unit id="20669" name="zpInvisibleGateSocketH">
+    <dbid>20669</dbid>
+    <displaynameid>302343</displaynameid>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0.0000</los>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>Invulnerable</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>NoHPBar</flag>
+    <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>OnlyInEditor</flag>
+  </unit>
+
+
+
+
+
+
+  <!--KING OF BOHEMIA MAPMODS-->
+  <unit name="deField">  
+    <flag>InvulnerableIfGaia</flag>
+  </unit>
+  <unit name="zpNativePropsJewishTower">
+    <flag>NotSelectable</flag>
+  </unit>
+  <unit name="zpNatEUItalianPalaces">
+    <flag>NotSelectable</flag>
+  </unit>
+  <unit name="ypSMJesuitAccessory">
+    <flag>NotSelectable</flag>
+  </unit>
+  <unit name="zpCinematicRevealer">
+    <los>90</los>
+  </unit>
+  <unit name="SPCFortGate">
+    <unittype>ConvertsHerds</unittype>
+    <flag>PlaceAnywhere</flag>
+    <buildpoints>0.0000</buildpoints>
   </unit>
 
 

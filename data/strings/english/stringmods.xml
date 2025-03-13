@@ -1974,7 +1974,7 @@
       <string _locid="301973">ZP Fort Wall Medium Prop</string>
       <string _locid="301974">Fort Barracks</string>
       <string _locid="301975">Fort Stable</string>
-      <string _locid="301976">ZP Invisible Gate Socket</string>
+      <string _locid="301976">ZP Invisible Gate Socket A</string>
       <string _locid="301977">ZP SPC Capturable Flag Invisible</string>
       <string _locid="301978">ZP SPC Fort Flag</string>
       <string _locid="301979">Toll Station</string>
@@ -2334,6 +2334,16 @@
       <string _locid="302334">ZP Flag Bohemian</string>
       <string _locid="302335">ZP Jewish Synagogue</string>
       <string _locid="302336">Jewish Synagogue</string>
+      <string _locid="302337">ZP Invisible Gate Socket B</string>
+      <string _locid="302338">ZP Invisible Gate Socket C</string>
+      <string _locid="302339">ZP Invisible Gate Socket D</string>
+      <string _locid="302340">ZP Invisible Gate Socket E</string>
+      <string _locid="302341">ZP Invisible Gate Socket F</string>
+      <string _locid="302342">ZP Invisible Gate Socket G</string>
+      <string _locid="302343">ZP Invisible Gate Socket H</string>
+      <string _locid="302344">King of Bohemia</string>
+      <string _locid="302345">King of Bohemia Details</string>
+      <string _locid="302346">King of Bohemia Loading</string>
 
 
 

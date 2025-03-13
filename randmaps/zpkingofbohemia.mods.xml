@@ -1,0 +1,196 @@
+<?xml version="1.0"?>
+<mods>
+	<protomods>
+		<!--BELONGS TO PARIS MAPMODS-->
+		<unit name="House">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="HouseEast">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="HouseMed">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="Manor">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="TownCenter">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Market">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Barracks">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Stable">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Blockhouse">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="Outpost">
+			<placementfile>outpost_city.xml</placementfile>
+		</unit>
+		<unit name="ArtilleryDepot">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Arsenal">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="LivestockPen">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="Bank">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deTavern">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Saloon">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Capitol">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deStateCapitol">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deLivestockMarket">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="dePalace">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="NativeEmbassy">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deHouseAfrican">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="deOutpostAfrican">
+			<placementfile>outpost_city.xml</placementfile>
+		</unit>
+		<unit name="deUniversity">
+			<placementfile>university_city.xml</placementfile>
+		</unit>
+		<unit name="deWarCamp">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="deTower">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="Mill">
+			<placementfile>mill_city.xml</placementfile>
+		</unit>
+		<unit name="Plantation">
+			<placementfile>mill_city.xml</placementfile>
+		</unit>
+		<unit name="deGranary">
+			<placementfile>granary_city.xml</placementfile>
+		</unit>
+		<unit name="deField">
+			<placementfile>field_city.xml</placementfile>
+		</unit>
+		<unit name="FortFrontier">
+			<placementfile>fortfrontier_city.xml</placementfile>
+		</unit>
+		<unit name="FortFrontier">
+			<placementfile>fortfrontier_city.xml</placementfile>
+		</unit>
+		<unit name="Factory">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deLombard">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deCommandery">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit id="20330" name="zpAmericanEmbassy">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deSPCWaterlooHouseProp">
+			<flag>DoNotShowOnMiniMap</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="SPCFortGate">
+			<unittype>ConvertsHerds</unittype>
+			<flag>PlaceAnywhere</flag>
+			<buildpoints>0.0000</buildpoints>
+		</unit>
+		<unit name="Dock">
+			<placementfile>dock_city.xml</placementfile>
+		</unit>
+		<unit name="zpSPCVillageHouseProp">
+			<animfile>buildings\native_settlement\zp_native_village_houses_nosmoke.xml</animfile>
+		</unit>
+		<unit name="deEmbassyTravois">
+			<animfile>units\trade\supply_cart\supply_cart_bank.xml</animfile>
+		</unit>
+		<unit name="deNatEUPropStatue">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="deNatEUPropFence">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="ypSMJesuitAccessory">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>
+		</unit>
+		<unit name="zpNatEUVerseilles">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNativeHouseMaltese">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNatEUPropWingC">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNativeHouseVenetian">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>
+		</unit>
+		<unit name="zpNativeStatueVenetian">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNativeUnitVenetian">			
+			<flag>NoIdleActions</flag>
+		</unit>
+		<unit name="deNatEUPropVilGuards">			
+			<flag>NoIdleActions</flag>
+		</unit>
+		<unit name="deNatEUPropVilMale">			
+			<flag>NoIdleActions</flag>
+		</unit>
+		<unit name="deNatEUPropVilFemale">
+			<flag>NoIdleActions</flag>
+		</unit>
+		<unit name="deSPCTowerCapturable">
+			<minimapicon mergeMode="remove">ui\minimap\highlighted item</minimapicon>
+		</unit>
+		<unit name="deField">  
+			<flag>InvulnerableIfGaia</flag>
+		</unit>
+		<unit name="zpNativePropsJewishTower">
+			<flag>NotSelectable</flag>
+		</unit>
+		<unit name="zpNatEUItalianPalaces">
+			<flag>NotSelectable</flag>
+		</unit>
+		<unit name="ypSMJesuitAccessory">
+			<flag>NotSelectable</flag>
+		</unit>
+		<unit name="zpCinematicRevealer">
+			<los>90</los>
+		</unit>
+	</protomods>
+</mods>

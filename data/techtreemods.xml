@@ -5086,6 +5086,8 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatChevaulegerProxy" culture="none" newname="122482">
       </effect>
+       <effect mergemode="add" type="SetName" proto="zpNatBohemianLandsknecht" culture="none" newname="302328">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -22015,7 +22017,31 @@
       <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
       <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
+      <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
+      <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
       <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
+      <effect type="TechStatus" status="active">zpForbidRevolutions</effect>
+      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRowboat</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCGoldSmelter</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCDemolisher</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCTownMill</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpConsulateKingOfBohemiaJagiellon" type="Normal">
@@ -22112,6 +22138,197 @@
         <target type="Player">
         </target>
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnlockCathedralJewish" type="Normal">
+    <dbid>40925</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect civ="Jewish" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlementMilitia</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpJewishVeteranMilitia</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishGuardMilitia</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitSmokelessPowder</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishYomKippur</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishPessah</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishTorah</effect>
+    </effects>
+  </tech>
+  <tech name="zpLockCathedralJewish" type="Normal">
+    <dbid>40926</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect civ="Jewish" type="Data" amount="0.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlementMilitia</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpLockCathedralJewish</effect>
+    </effects>
+  </tech>
+  <tech name="zpLockKingOfBohemiaTechs" type="Normal">
+    <dbid>40927</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercElmeti</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercSwissPikeman</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercPistoleer</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercLandsknecht</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercCannoneer</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercGreatCannon</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpLockKingOfBohemiaTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnlockKingOfBohemiaTechs" type="Normal">
+    <dbid>40928</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercElmeti</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercSwissPikeman</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercPistoleer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercLandsknecht</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercCannoneer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercGreatCannon</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpUnlockKingOfBohemiaTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpConvertWallBohemia" type="Normal">
+    <dbid>40929</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+       <effect type="TransformUnit" toprotoid="zpSPCFortBarracks" fromprotoid="zpSPCFortBarracksProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCFortStable" fromprotoid="zpSPCFortStableProp">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConvertWallBohemia</effect>
+    </effects>
+  </tech>
+  <tech name="zpConvertWallBohemiaBack" type="Normal">
+    <dbid>40930</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpSPCFortBarracksProp" fromprotoid="zpSPCFortBarracks">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCFortStableProp" fromprotoid="zpSPCFortStable">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConvertWallBohemiaBack</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate2" type="Normal">
+    <dbid>40931</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocketB">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate2</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate3" type="Normal">
+    <dbid>40932</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocketC">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate3</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate4" type="Normal">
+    <dbid>40933</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocketD">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate4</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate5" type="Normal">
+    <dbid>40934</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocketE">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate5</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate6" type="Normal">
+    <dbid>40935</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocketF">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate6</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate7" type="Normal">
+    <dbid>40936</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocketG">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate7</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate8" type="Normal">
+    <dbid>40937</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocketH">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate8</effect>
     </effects>
   </tech>
 

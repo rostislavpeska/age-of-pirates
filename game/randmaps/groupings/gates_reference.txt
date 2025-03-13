@@ -1,0 +1,40 @@
+-- Gates in order from north to south (negative to positive z coordinate) --
+
+1. Line 140:
+<unit variation="67" posx="-0.8152" posz="-51.3150" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCFortGate</unit>
+
+2. Line 203:
+<unit variation="67" posx="34.5301" posz="-39.0015" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCFortGate</unit>
+
+3. Line 218:
+<unit variation="67" posx="-34.1302" posz="-36.8059" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">SPCFortGate</unit>
+
+4. Line 570:
+<unit variation="67" posx="50.1275" posz="-4.7489" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCFortGate</unit>
+
+5. Line 571:
+<unit variation="67" posx="-48.7694" posz="-3.1591" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCFortGate</unit>
+
+6. Line 947:
+<unit variation="67" posx="-32.6266" posz="29.2019" orientx="-0.7071" orienty="0.0000" orientz="0.7071">SPCFortGate</unit>
+
+7. Line 948:
+<unit variation="67" posx="35.0901" posz="30.3321" orientx="0.7071" orienty="0.0000" orientz="0.7071">SPCFortGate</unit>
+
+8. Line 1054:
+<unit variation="67" posx="2.5203" posz="43.8819" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCFortGate</unit>
+
+-- Gate pairs by position --
+North pair (around z=-50):
+- Center gate at z=-51.3150
+East-West pair (around z=-38):
+- East gate at z=-39.0015
+- West gate at z=-36.8059
+Central pair (around z=-4):
+- East gate at z=-4.7489
+- West gate at z=-3.1591
+South pair (around z=30):
+- West gate at z=29.2019
+- East gate at z=30.3321
+South center (z=43.8819):
+- Center gate
