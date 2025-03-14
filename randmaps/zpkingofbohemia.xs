@@ -227,7 +227,7 @@ void main(void)
 	int avoidKOTH=rmCreateTypeDistanceConstraint("avoid koth filler", "ypKingsHill", 12.0);
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
-	rmSetStatusText("",0.20);
+	rmSetStatusText("",0.10);
 
 	// ********************* Trade Route *******************************
 
@@ -263,6 +263,9 @@ void main(void)
 	rmSetObjectDefAllowOverlap(socketID, true);
 	rmSetObjectDefMinDistance(socketID, 2.0);
 	rmSetObjectDefMaxDistance(socketID, 8.0);
+
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.20);
 
 
 	//  ************************** Island and River ******************************
@@ -326,6 +329,11 @@ void main(void)
     
     rmBuildArea(northContinentID);
 
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.30);
+
+	// **************** Create continents ****************
+
     // Create south continent
     int southContinentID = rmCreateArea("south_continent");
     rmSetAreaSize(southContinentID, 0.45, 0.45);
@@ -353,6 +361,8 @@ void main(void)
     rmAddAreaInfluencePoint(southContinentID, 0.30, 0.05);
     
     rmBuildArea(southContinentID);
+
+	// Place Jesuit natives
 
 	int jesuitMonastery1Type = rmRandInt(1, 3);
 	int jesuitMonastery2Type = rmRandInt(1, 3);
@@ -422,7 +432,7 @@ void main(void)
     rmBuildArea(southElevatedID);
 
 
-// Create north cliff area
+	// Create north cliff area
     int northCliffID = rmCreateArea("north_cliff");
     rmSetAreaSize(northCliffID, 0.15, 0.15);
     rmSetAreaCoherence(northCliffID, 0.35);
@@ -463,6 +473,11 @@ void main(void)
     rmAddAreaInfluencePoint(southCliffID, 0.60, 0.10);
 
     rmBuildArea(southCliffID);
+
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.40);
+
+	// **************** Trade route sockets ****************
 
     // Get number of players and calculate sockets
     int numPlayers = cNumberNonGaiaPlayers;
@@ -546,7 +561,10 @@ void main(void)
         rmPlaceObjectDefAtPoint(socketID, 0, socketLoc2);
     }
 
-	// Place Players
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.50);
+
+	// ****************** Place Players ******************
 
 	if (cNumberNonGaiaPlayers <=2){
       rmSetPlacementSection(0.4375, 0.4365);  
@@ -655,6 +673,15 @@ void main(void)
 	rmAddObjectDefConstraint(berryID, avoidTradeRoute);
 	rmAddObjectDefConstraint(berryID, farAvoidTradeSockets);
 
+	int aiStartUrban = rmCreateObjectDef("is city map");
+	rmAddObjectDefItem(aiStartUrban, "zpAIStartUrbanMap", 1, 0.0);
+
+
+	// Fake Frouping to fix the auto-grouping TC bug
+	int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
+	rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
+	rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.65);
+
 	for(i=1; <cNumberPlayers) {
 
 		// Place town centers
@@ -667,6 +694,7 @@ void main(void)
 		rmPlaceObjectDefAtLoc(playerDeerID, 0, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 		rmPlaceObjectDefAtLoc(StartAreaTreeID, 0, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 		rmPlaceObjectDefAtLoc(berryID, 0, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
+		rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5);
 
 		// Place starting nugget
 		rmSetNuggetDifficulty(1, 1);
@@ -677,14 +705,17 @@ void main(void)
  
 	}
 
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.60);
+
 	
 	// Scattered FORESTS
 
 	int numTries = -1;
-  int forestTreeID = 0;
-  numTries=10*cNumberNonGaiaPlayers;
-  int failCount=0;
-  for (i=0; <numTries) {   
+	int forestTreeID = 0;
+	numTries=10*cNumberNonGaiaPlayers;
+	int failCount=0;
+	for (i=0; <numTries) {   
     int forest=rmCreateArea("forest "+i);
     rmSetAreaWarnFailure(forest, false);
     rmSetAreaSize(forest, rmAreaTilesToFraction(150), rmAreaTilesToFraction(150));
@@ -715,9 +746,12 @@ void main(void)
     
     else
       failCount=0; 
-  } 
+  	}
 
-  // Random Gold
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.70);
+
+	// Random Gold
 	int randomGoldID = rmCreateObjectDef("random mine");
 	rmAddObjectDefItem(randomGoldID, "Mine", 1, 0.0);
 	rmSetObjectDefMinDistance(randomGoldID, 0.0);
@@ -794,6 +828,9 @@ void main(void)
 	rmAddObjectDefConstraint(berryID2, avoidCenterPoint);
 	rmPlaceObjectDefAtLoc(berryID2, 0, 0.5, 0.5, cNumberNonGaiaPlayers); 
 
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.80);
+
 	int nuggetHardNorth= rmCreateObjectDef("nugget hard north"); 
 	rmAddObjectDefItem(nuggetHardNorth, "Nugget", 1, 0.0);
 	rmSetNuggetDifficulty(121, 121);
@@ -853,6 +890,27 @@ void main(void)
 	rmAddObjectDefConstraint(nuggetSouth, Southward);
 	rmAddObjectDefConstraint(nuggetSouth, avoidCenterPoint);
 	rmPlaceObjectDefAtLoc(nuggetSouth, 0, 0.5, 0.5, 2*cNumberNonGaiaPlayers); 
+
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>	
+	rmSetStatusText("",0.90);
+
+	//********************* GENERAL SETUP *************************
+
+	// ____________________ LOCAL MERCENARIES ____________________
+     rmDisableDefaultMercs(true);
+    rmDisableCivTypeMercRestriction(true);
+	rmEnableMerc("MercFusilier", -1);
+	rmEnableMerc("deMercPandour", -1);
+	rmEnableMerc("deMercGrenadier", -1);
+    rmEnableMerc("zpMercBohemianKnight", -1);
+    rmEnableMerc("MercGreatCannon", -1);
+    
+    rmForbidTradeMonopoly(true);
+
+	// _________________ Map Objectives ______________________________
+	rmObjectiveScreenSetTitle(302344);
+	rmObjectiveScreenSetGoal(302345);
+	rmObjectiveAdd(302357, 302358, true, true, true); // General objective
 
 	// ************************* TRIGGERS ******************************
 
