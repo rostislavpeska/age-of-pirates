@@ -36720,7 +36720,7 @@
     <impacttype>Wood</impacttype>
     <icon>resources\art\buildings\house\house_icon.png</icon>
     <portraiticon>resources\art\buildings\house\house_portrait.png</portraiticon>
-    <rollovertextid>33694</rollovertextid>
+    <rollovertextid>302350</rollovertextid>
     <shortrollovertextid>33693</shortrollovertextid>
     <initialhitpoints>6.0000</initialhitpoints>
     <maxhitpoints>6.0000</maxhitpoints>
@@ -49695,8 +49695,8 @@
     <flag>PlaceAnywhere</flag>
     <flag>OnlyInEditor</flag>
   </unit>
-  <unit id="20664" name="zpInvisibleGateSocketC">
-    <dbid>20664</dbid>
+  <unit id="20670" name="zpInvisibleGateSocketC">
+    <dbid>20670</dbid>
     <displaynameid>302338</displaynameid>
     <obstructionradiusx>5.0000</obstructionradiusx>
     <obstructionradiusz>2.0000</obstructionradiusz>
@@ -49857,6 +49857,55 @@
     <flag>PlaceAnywhere</flag>
     <flag>OnlyInEditor</flag>
   </unit>
+  <unit id="20671" name="zpShipwreckWoodLand">
+    <dbid>20671</dbid>
+    <displaynameid>301707</displaynameid>
+    <editornameid>302352</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\spc\igc_shipwreck\caravel_shipwreck.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\terrain\minerals\sunken_caravel\sunken_caravel.png</icon>
+    <portraiticon>resources\art\terrain\minerals\sunken_caravel\sunken_caravel.png</portraiticon>
+    <rollovertextid>302351</rollovertextid>
+    <shortrollovertextid>33693</shortrollovertextid>
+    <initialhitpoints>6.0000</initialhitpoints>
+    <maxhitpoints>6.0000</maxhitpoints>
+    <bounty>0.0000</bounty>
+    <initialresource resourcetype="Wood">1500.0000</initialresource>
+    <resourcesubtype>Wood</resourcesubtype>
+    <minimapcolor red="0.1900" blue="0.1800" green="0.2500">
+    </minimapcolor>
+    <gathererlimit>8</gathererlimit>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeVillagersRespondToAttack</unittype>
+    <unittype>Nature</unittype>
+    <unittype>Tree</unittype>
+    <unittype>Wood</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>Resource</unittype>
+    <unittype>HuntedResource</unittype>
+    <flag>ObscuresUnits</flag>
+    <flag>NoHPBar</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Immoveable</flag>
+    <flag>Doppled</flag>
+    <flag>ForceToGaia</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>DoppleOnlyWhenDead</flag>
+    <flag>NoIdleActions</flag>
+    <flag>RMCanRotate</flag>
+    <flag>Tracked</flag>
+    <flag>StartsAtFullEfficiency</flag>
+  </unit>
 
 
 
@@ -49864,7 +49913,7 @@
 
 
   <!--KING OF BOHEMIA MAPMODS-->
-  <unit name="deField">  
+  <!--<unit name="deField">  
     <flag>InvulnerableIfGaia</flag>
   </unit>
   <unit name="zpNativePropsJewishTower">
@@ -49883,7 +49932,7 @@
     <unittype>ConvertsHerds</unittype>
     <flag>PlaceAnywhere</flag>
     <buildpoints>0.0000</buildpoints>
-  </unit>
+  </unit>-->
 
 
 

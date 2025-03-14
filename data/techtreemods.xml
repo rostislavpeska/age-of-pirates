@@ -22332,7 +22332,7 @@
     </effects>
   </tech>
   <tech name="zpKingOfBohemiaRevShadow" type="Normal">
-    <dbid>40763</dbid>
+    <dbid>40938</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>OBTAINABLE</status>
     <flag>Shadow</flag>
