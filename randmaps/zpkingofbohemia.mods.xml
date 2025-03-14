@@ -4,111 +4,158 @@
 		<!--BELONGS TO PARIS MAPMODS-->
 		<unit name="House">
 			<placementfile>buildingsmall_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="HouseEast">
 			<placementfile>buildingsmall_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="HouseMed">
 			<placementfile>buildingsmall_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="Manor">
 			<placementfile>buildingsmall_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="TownCenter">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="Market">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="Barracks">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="Stable">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="Blockhouse">
 			<placementfile>buildingsmall_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="Outpost">
 			<placementfile>outpost_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="ArtilleryDepot">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="Arsenal">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="LivestockPen">
 			<placementfile>buildingsmall_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="Bank">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="deTavern">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="Saloon">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="Capitol">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="deStateCapitol">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="deLivestockMarket">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="dePalace">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="NativeEmbassy">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="deHouseAfrican">
 			<placementfile>buildingsmall_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="deOutpostAfrican">
 			<placementfile>outpost_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="deUniversity">
 			<placementfile>university_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="deWarCamp">
 			<placementfile>buildingsmall_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="deTower">
 			<placementfile>buildingsmall_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="Mill">
 			<placementfile>mill_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="Plantation">
 			<placementfile>mill_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="deGranary">
 			<placementfile>granary_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="deField">
 			<placementfile>field_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="FortFrontier">
 			<placementfile>fortfrontier_city.xml</placementfile>
-		</unit>
-		<unit name="FortFrontier">
-			<placementfile>fortfrontier_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="Factory">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="deLombard">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
+		</unit>
+		<unit name="deBatteryTower">
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
+		</unit>
+		<unit name="deSPCCityTower">
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
+		</unit>
+		<unit name="deSPCTowerCapturable">
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="deCommandery">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
-		<unit id="20330" name="zpAmericanEmbassy">
+		<unit name="FishingBoat">
+			<flag>DoNotAllowAllowAlliedGarrison</flag>	
+		</unit>
+		<unit name="zpSPCRowboat">
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
+		</unit>
+		<unit name="zpAmericanEmbassy">
 			<placementfile>buildinglarge_city.xml</placementfile>
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
 		<unit name="deSPCWaterlooHouseProp">
 			<flag>DoNotShowOnMiniMap</flag>
