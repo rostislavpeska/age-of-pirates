@@ -22331,6 +22331,18 @@
       <effect type="TechStatus" status="unobtainable">zpConverGate8</effect>
     </effects>
   </tech>
+  <tech name="zpKingOfBohemiaRevShadow" type="Normal">
+    <dbid>40763</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TextEffectOutput" reason="Revolution" selfmsg="302348" playermsg="302349">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpKingOfBohemiaRevShadow</effect>
+    </effects>
+  </tech>
 
   
  

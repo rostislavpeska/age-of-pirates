@@ -49864,7 +49864,7 @@
 
 
   <!--KING OF BOHEMIA MAPMODS-->
-  <!--<unit name="deField">  
+  <unit name="deField">  
     <flag>InvulnerableIfGaia</flag>
   </unit>
   <unit name="zpNativePropsJewishTower">
@@ -49877,13 +49877,13 @@
     <flag>NotSelectable</flag>
   </unit>
   <unit name="zpCinematicRevealer">
-    <los>90</los>
+    <los>75</los>
   </unit>
   <unit name="SPCFortGate">
     <unittype>ConvertsHerds</unittype>
     <flag>PlaceAnywhere</flag>
     <buildpoints>0.0000</buildpoints>
-  </unit>-->
+  </unit>
 
 
 

@@ -1,5 +1,5 @@
-// MISSISSIPPI
-// February 2024
+// KING OF BOHEMIA
+// February 2025
 
 int TeamNum = cNumberTeams;
 int PlayerNum = cNumberNonGaiaPlayers;
@@ -905,7 +905,7 @@ void main(void)
 	string guardianUnit = "zpNatBohemianLandsknecht";
 
 	// Victory Timer
-	int victoryCountDown = 480;
+	int victoryCountDown = 900;
 	int socketMinimapFlareDuration = 10;
 
 	// Starting techs
@@ -962,6 +962,7 @@ void main(void)
         rmCreateTrigger("PlayerVictory"+k);
 		rmCreateTrigger("Victory_Counter"+k);
 		rmCreateTrigger("Victory_Counter_OFF"+k);
+		rmCreateTrigger("Revolution_MusicEnd"+k);
 	}
 
     for (k=1; <= cNumberNonGaiaPlayers) {
@@ -989,6 +990,21 @@ void main(void)
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("PlayerVictory"+k));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF"+k));
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpKingOfBohemiaRevShadow");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Music Filename");
+		rmSetTriggerEffectParam("Music","ypack\music\strategy\KOTH.mp3"); // Music Filename
+		rmSetTriggerEffectParamFloat("Duration",0.5);
+		rmAddTriggerEffect("Sound Timer");
+		rmSetTriggerEffectParamInt("Time", 61000);
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd"+k));
+
+		rmAddTriggerEffect("Player : Override Civilization for Flag");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmSetTriggerEffectParam("Civilization","zpBohemianKing");
+
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
@@ -1004,9 +1020,22 @@ void main(void)
 		rmSetTriggerEffectParam("Name","VictoryCounter"+k);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter"+k));
+
+		rmAddTriggerEffect("ZP Player : Reset Civilization for Flag");
+		rmSetTriggerEffectParamInt("Player",k);
+
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Revolution_MusicEnd"+k));
+		rmAddTriggerCondition("Timer");
+		rmSetTriggerConditionParamInt("Param1",5);
+		rmAddTriggerEffect("Music Play");
+		rmSetTriggerPriority(1);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(false);
 		rmSetTriggerLoop(false);
 	}
 
@@ -1479,6 +1508,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate7_Rebuilt"+k));
 		rmAddTriggerEffect("Disable Trigger");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate8_Rebuilt"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
 
 		rmSwitchToTrigger(rmTriggerID("CastleOff_Dellayed_Player"+k));
 		rmAddTriggerEffect("Convert Units in Area");

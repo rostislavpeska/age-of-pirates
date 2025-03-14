@@ -4096,5 +4096,9 @@
       <command>}</command>
       <command>rule hdkzuzxvfrs59 active { if (true) { //</command>
     </effect>
+    <effect name="ZP Player : Reset Civilization for Flag">
+      <param name="Player" dispname="$$22301$$Player" vartype="player">1</param>
+      <command>trPlayerOverrideCivFlag(%Player%, kbGetCivName(kbGetCivForPlayer(%Player%)));</command>
+    </effect>
   </effects>
 </trigger>

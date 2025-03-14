@@ -664,6 +664,10 @@
       <age>Age0</age>
       <tech>zpNativeBohemianKing</tech>
     </agetech>
+    <homecityflagtexture>objects\flags\natives\habsburg_bohemia</homecityflagtexture>
+    <postgameflagiconwpf>resources/images/icons/flags/postgame_flag_bohemian.png</postgameflagiconwpf>
+    <homecityflagiconwpf>resources/images/icons/flags/flag_bohemian.png</homecityflagiconwpf>
+    <homecityflagbuttonwpf>resources/images/icons/flags/flag_hc_bohemian.png</homecityflagbuttonwpf> 
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
   </civ>
