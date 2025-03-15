@@ -240,6 +240,9 @@
 		<unit name="ypSMJesuitAccessory">
 			<flag>NotSelectable</flag>
 		</unit>
+		<unit name="zpNativeHousePenalColony">
+			<flag>NotSelectable</flag>
+		</unit>
 		<unit name="zpCinematicRevealer">
 			<los>90</los>
 		</unit>

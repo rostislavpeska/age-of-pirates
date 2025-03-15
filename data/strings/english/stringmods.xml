@@ -2240,7 +2240,7 @@
       <string _locid="302239">Capture &lt;color=1.0, 1.0, 0.0&gt;Bourbon:&lt;/color&gt; Palace and use Bourbon units and techs.</string>
       <string _locid="302240">Advance to the Sun King Era and get more Bourbon improvements.</string>
       <string _locid="302241">ZP SPC City State Wagon</string>
-      <string _locid="302242">ZP Socket EU SPC City Tower Clone</string>
+      <string _locid="302242">ZP Socket EU SPC City Tower 2</string>
       <string _locid="302243">A Tower may be constructed here to protect this Pirate Town.</string>
       <string _locid="302244">ZP SPC Pirate Guard Melee</string>
       <string _locid="302245">ZP SPC Pirate Guard Pistol</string>
@@ -2315,8 +2315,8 @@
       <string _locid="302315">King of Bohemia</string>
       <string _locid="302316">ZP SPC Socket King of Bohemia</string>
       <string _locid="302317">There is only one true King of Bohemia. Hold the kingdom until the time runs out.</string>
-      <string _locid="302318">Pick the Dynasty</string>
-      <string _locid="302319">Pick one of the Bohemian King Dynasties  \n • Initiates a special type of revolution and transforms your civilisation to Kingdom of Bohemia \n • Spawns 10 Bohemian Landsknechts to protect the city \n • Unlocks specific Royal House units, techs and abilities \n • Starts a victory countdown</string>
+      <string _locid="302318">Proclaim a King</string>
+      <string _locid="302319">Pick one of the Bohemian King Dynasties and proclaim yourself a King of Bohemia  \n • Initiates a special type of revolution and transforms your civilisation to Kingdom of Bohemia \n • Spawns 10 Bohemian Landsknechts to protect the city \n • Unlocks specific Royal House units, techs and abilities \n • Starts a victory countdown</string>
       <string _locid="302320">House of Habsburg</string>
       <string _locid="302321">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nLine Infantry, Mounted Infantry \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nVienna Congress, Crown Lands, Multinationalism, Austro-Hungarian Empire</string>
       <string _locid="302322">Bohemian Landsknecht</string>
@@ -2342,11 +2342,11 @@
       <string _locid="302342">ZP Invisible Gate Socket G</string>
       <string _locid="302343">ZP Invisible Gate Socket H</string>
       <string _locid="302344">King of Bohemia</string>
-      <string _locid="302345">King of Bohemia Details</string>
-      <string _locid="302346">King of Bohemia Loading</string>
+      <string _locid="302345">After the Second Defenestration of Prague in 1618, the country turned into chaos. There are many who claim the Czech crown, but only one of these can become the true King of Bohemia. \n\n&lt;color=1.0, 1.0, 0.0&gt;Game rules:&lt;/color&gt; This is a free-for-all match. Whoever proclaims himself a king and holds the King of Bohemia Socket, wins. \n\nSettlements: King of Bohemia, Jesuit \n\nShadow alliances: Maltese, Jewish, Habsburg, Jagiellon, Wittelsbach \n\nMinimum/maximum recommended players: 3-6</string>
+      <string _locid="302346">There is only one true King of Bohemia. Once you proclaim yourself a King, all the enemy players unite against you, so you need to arm the city and hold the socket until the time runs out.</string>
       <string _locid="302347">Kingdom of Bohemia</string>
-      <string _locid="302348">King of Bohemia Victory started!</string>
-      <string _locid="302349">%s became the King of Bohemia!</string>
+      <string _locid="302348">You proclaimed yourself to a King of Bohemia!</string>
+      <string _locid="302349">%s proclaimed himself to a King of Bohemia!</string>
       <string _locid="302350">House Rubble - source of Wood</string>
       <string _locid="302351">Shipwreck - source of Wood</string>
       <string _locid="302352">ZP Shipwreck Wood Land</string>
@@ -2354,8 +2354,8 @@
       <string _locid="302354">Bohemian Knight</string>
       <string _locid="302355">Powerful warrion from Bohemian countries</string>
       <string _locid="302356">Mercenary skull_knight</string>
-      <string _locid="302357">Capture and hold the King of Bohemia socket in the center of the map.</string>
-      <string _locid="302358">Once you capture the socket, all the enemy players unite against you, so you need to arm the city and hold the socket until the time runs out.</string>
+      <string _locid="302357">Capture the King of Bohemia in the center of the map and proclaim yourself a King of Bohemia. Then hold the socket until the time runs out.</string>
+      <string _locid="302358">Once you proclaim yourself a King, all the enemy players unite against you, so you need to arm the city and hold the socket until the time runs out.</string>
       <string _locid="302359">ZP Fort Convertable</string>
       <string _locid="302360">ZP Invisible Gate Socket A</string>
       <string _locid="302361">Hrad Kokořín</string>
@@ -2366,6 +2366,17 @@
       <string _locid="302366">Hrad Pernštejn</string>
       <string _locid="302367">Hrad Kost</string>
       <string _locid="302368">Hrad Loket</string>
+      <string _locid="302369">ZP SPC Carp</string>
+      <string _locid="302370">Coronation Cathedral</string>
+      <string _locid="302371">Alchemists Workshop</string>
+      <string _locid="302372">Patent of Toleration</string>
+      <string _locid="302373">Decreases all Bohemian mercenaries population cost by 1 &lt;color=1.0, 0.5, 0.0&gt;\n • Works only when you hold the socket.&lt;/color&gt;</string>
+      <string _locid="302374">ZP Socket EU SPC City Tower 3</string>
+      <string _locid="302375">ZP Socket EU SPC City Tower 4</string>
+      <string _locid="302376">ZP Socket EU SPC City Tower 5</string>
+      <string _locid="302377">ZP Socket EU SPC City Tower 6</string>
+      <string _locid="302378">ZP Socket EU SPC City Tower 7</string>
+      <string _locid="302379">ZP Socket EU SPC City Tower 8</string>
 
 
       <!-- ======================================== -->

@@ -1280,6 +1280,8 @@
     <tech row="0" page="1" column="1">zpSPCKingOfBohemia</tech>
     <tech row="0" page="1" column="1">zpVeteranBohemianKing</tech>
     <tech row="0" page="1" column="1">zpGuardBohemianKing</tech>
+    <tech row="0" page="2" column="0">zpBohemianMercenaries</tech>
+    <tech row="0" page="2" column="0">zpNatBohemianAcademy</tech>
 
 
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia1</tech>
@@ -49980,7 +49982,7 @@
     <unittype>UnitClass</unittype>
     <unittype>Unit</unittype>
     <unittype>Mercenary</unittype>
-    <unittype>IndustrialMercenary</unittype>
+    <unittype>FortressMercenary</unittype>
     <unittype>LogicalTypePickableMerc</unittype>
     <unittype>LogicalTypePickableMercOutlaw</unittype>
     <unittype>AbstractCavalry</unittype>
@@ -50327,6 +50329,294 @@
     <flag>PlaceAnywhere</flag>
     <flag>OnlyInEditor</flag>
   </unit>
+  <unit id="20675" name="zpFishCarp">
+    <dbid>20675</dbid>
+    <displaynameid>62730</displaynameid>
+    <editornameid>302369</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <idletimeout>5.0000</idletimeout>
+    <maxvelocity>3.0000</maxvelocity>
+    <maxrunvelocity>5.0000</maxrunvelocity>
+    <movementtype>air</movementtype>
+    <animfile>units\animals\fish\carp.xml</animfile>
+    <icon>resources\art\units\animals\fish\carp_icon_64.png</icon>
+    <portraiticon>resources\art\units\animals\fish\carp_icon_portrait.png</portraiticon>
+    <rollovertextid>62729</rollovertextid>
+    <shortrollovertextid>62728</shortrollovertextid>
+    <los>9.0000</los>
+    <bounty>0.0000</bounty>
+    <initialresource resourcetype="Food">500.0000</initialresource>
+    <resourcesubtype>fish</resourcesubtype>
+    <decay delay="0.0000" duration="1.0000">
+    </decay>
+    <minimapcolor red="0.5000" blue="0.5000" green="0.5000">
+    </minimapcolor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeVillagersRespondToAttack</unittype>
+    <unittype>AbstractFish</unittype>
+    <unittype>AbstractFishOrWhale</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Fish</unittype>
+    <unittype>Food</unittype>
+    <unittype>Nature</unittype>
+    <unittype>NatureClass</unittype>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>DontSortAlphaPolys</flag>
+    <flag>NonCollideable</flag>
+    <flag>NavalUnit</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NonSolid</flag>
+    <flag>Invulnerable</flag>
+    <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
+  </unit>
+  <unit id="20676" name="zpSPCSocketCityTowerClone3">
+    <dbid>20676</dbid>
+    <displaynameid>123003</displaynameid>
+    <editornameid>302374</editornameid>
+    <socketbuildprotounit>deSPCCityTower</socketbuildprotounit>
+    <socketbuildrate>20.0000</socketbuildrate>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\city_tower\city_tower_socket.xml</animfile>
+    <minimapicon>ui\minimap\indicator_small</minimapicon>
+    <portraiticon>resources\art\buildings\spc\tower\battery_tower_portrait.png</portraiticon>
+    <rollovertextid>123030</rollovertextid>
+    <shortrollovertextid>123030</shortrollovertextid>
+    <los>0.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>TowerSocket</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>AllowSocketPlacement</flag>
+    <flag>NotDeleteable</flag>
+    <command page="1" column="0">deSocketBuildCityTower</command>
+  </unit>
+  <unit id="20677" name="zpSPCSocketCityTowerClone4">
+    <dbid>20677</dbid>
+    <displaynameid>123003</displaynameid>
+    <editornameid>302375</editornameid>
+    <socketbuildprotounit>deSPCCityTower</socketbuildprotounit>
+    <socketbuildrate>20.0000</socketbuildrate>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\city_tower\city_tower_socket.xml</animfile>
+    <minimapicon>ui\minimap\indicator_small</minimapicon>
+    <portraiticon>resources\art\buildings\spc\tower\battery_tower_portrait.png</portraiticon>
+    <rollovertextid>123030</rollovertextid>
+    <shortrollovertextid>123030</shortrollovertextid>
+    <los>0.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>TowerSocket</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>AllowSocketPlacement</flag>
+    <flag>NotDeleteable</flag>
+    <command page="1" column="0">deSocketBuildCityTower</command>
+  </unit>
+  <unit id="20678" name="zpSPCSocketCityTowerClone5">
+    <dbid>20678</dbid>
+    <displaynameid>123003</displaynameid>
+    <editornameid>302376</editornameid>
+    <socketbuildprotounit>deSPCCityTower</socketbuildprotounit>
+    <socketbuildrate>20.0000</socketbuildrate>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\city_tower\city_tower_socket.xml</animfile>
+    <minimapicon>ui\minimap\indicator_small</minimapicon>
+    <portraiticon>resources\art\buildings\spc\tower\battery_tower_portrait.png</portraiticon>
+    <rollovertextid>123030</rollovertextid>
+    <shortrollovertextid>123030</shortrollovertextid>
+    <los>0.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>TowerSocket</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>AllowSocketPlacement</flag>
+    <flag>NotDeleteable</flag>
+    <command page="1" column="0">deSocketBuildCityTower</command>
+  </unit>
+  <unit id="20679" name="zpSPCSocketCityTowerClone6">
+    <dbid>20679</dbid>
+    <displaynameid>123003</displaynameid>
+    <editornameid>302377</editornameid>
+    <socketbuildprotounit>deSPCCityTower</socketbuildprotounit>
+    <socketbuildrate>20.0000</socketbuildrate>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\city_tower\city_tower_socket.xml</animfile>
+    <minimapicon>ui\minimap\indicator_small</minimapicon>
+    <portraiticon>resources\art\buildings\spc\tower\battery_tower_portrait.png</portraiticon>
+    <rollovertextid>123030</rollovertextid>
+    <shortrollovertextid>123030</shortrollovertextid>
+    <los>0.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>TowerSocket</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>AllowSocketPlacement</flag>
+    <flag>NotDeleteable</flag>
+    <command page="1" column="0">deSocketBuildCityTower</command>
+  </unit>
+  <unit id="20680" name="zpSPCSocketCityTowerClone7">
+    <dbid>20680</dbid>
+    <displaynameid>123003</displaynameid>
+    <editornameid>302378</editornameid>
+    <socketbuildprotounit>deSPCCityTower</socketbuildprotounit>
+    <socketbuildrate>20.0000</socketbuildrate>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\city_tower\city_tower_socket.xml</animfile>
+    <minimapicon>ui\minimap\indicator_small</minimapicon>
+    <portraiticon>resources\art\buildings\spc\tower\battery_tower_portrait.png</portraiticon>
+    <rollovertextid>123030</rollovertextid>
+    <shortrollovertextid>123030</shortrollovertextid>
+    <los>0.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>TowerSocket</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>AllowSocketPlacement</flag>
+    <flag>NotDeleteable</flag>
+    <command page="1" column="0">deSocketBuildCityTower</command>
+  </unit>
+  <unit id="20681" name="zpSPCSocketCityTowerClone8">
+    <dbid>20681</dbid>
+    <displaynameid>123003</displaynameid>
+    <editornameid>302379</editornameid>
+    <socketbuildprotounit>deSPCCityTower</socketbuildprotounit>
+    <socketbuildrate>20.0000</socketbuildrate>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\city_tower\city_tower_socket.xml</animfile>
+    <minimapicon>ui\minimap\indicator_small</minimapicon>
+    <portraiticon>resources\art\buildings\spc\tower\battery_tower_portrait.png</portraiticon>
+    <rollovertextid>123030</rollovertextid>
+    <shortrollovertextid>123030</shortrollovertextid>
+    <los>0.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>TowerSocket</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>AllowSocketPlacement</flag>
+    <flag>NotDeleteable</flag>
+    <command page="1" column="0">deSocketBuildCityTower</command>
+  </unit>
+  
+
 
 
 

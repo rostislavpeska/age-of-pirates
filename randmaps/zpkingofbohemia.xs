@@ -279,7 +279,7 @@ void main(void)
 	//  ************************** Island and River ******************************
 
 	// Prague Castle in the center
-	int pragueCastle = rmCreateGrouping("bridge1", "prague_castle2");
+	int pragueCastle = rmCreateGrouping("bridge1", "prague_castle");
     rmSetGroupingMinDistance(pragueCastle, 0.00);
     rmSetGroupingMaxDistance(pragueCastle, 0.00);
 	rmAddGroupingToClass(pragueCastle, rmClassID("classPlateau"));
@@ -293,7 +293,7 @@ void main(void)
 
     // Place the grouping on the island - using 0.5,0.5 as base and adjusting by -30,-24 tiles
 	rmSetNuggetDifficulty(301, 301);
-	int pragueCastleInstance = rmPlaceGroupingInstanceAtLoc(pragueCastle, 0.5-rmXMetersToFraction(2), 0.5+rmZMetersToFraction(7), 0);
+	int pragueCastleInstance = rmPlaceGroupingInstanceAtLoc(pragueCastle, 0.5-rmXMetersToFraction(2), 0.5+rmZMetersToFraction(8), 0);
 
     // Create center point to avoid
     int centerPoint = rmCreateObjectDef("center point");
@@ -1124,7 +1124,7 @@ void main(void)
 	//********************* GENERAL SETUP *************************
 
 	// ____________________ LOCAL MERCENARIES ____________________
-     rmDisableDefaultMercs(true);
+    rmDisableDefaultMercs(true);
     rmDisableCivTypeMercRestriction(true);
 	rmEnableMerc("MercFusilier", -1);
 	rmEnableMerc("deMercPandour", -1);
@@ -1164,6 +1164,15 @@ void main(void)
 	int castleGate7 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpInvisibleGateSocketG");
 	int castleGate8 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpInvisibleGateSocketH");
 
+	int castleTower1 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "deSPCSocketCityTower");
+	int castleTower2 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpSPCSocketCityTowerClone");
+	int castleTower3 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpSPCSocketCityTowerClone3");
+	int castleTower4 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpSPCSocketCityTowerClone4");
+	int castleTower5 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpSPCSocketCityTowerClone5");
+	int castleTower6 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpSPCSocketCityTowerClone6");
+	int castleTower7 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpSPCSocketCityTowerClone7");
+	int castleTower8 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpSPCSocketCityTowerClone8");
+
 	int countrysideCastleFlag1 = rmGetGroupingInstanceUnitByType(countryCastleInstance1, "zpSPCCapturableFlagInvisible");
 	int countrysideCastleFlag2 = rmGetGroupingInstanceUnitByType(countryCastleInstance2, "zpSPCCapturableFlagInvisible");
 	int countrysideCastleFlag3 = rmGetGroupingInstanceUnitByType(countryCastleInstance3, "zpSPCCapturableFlagInvisible");
@@ -1174,36 +1183,45 @@ void main(void)
 	int countrysideCastleFort2 = rmGetGroupingInstanceUnitByType(countryCastleInstance2, "zpFortConvertable");
 	int countrysideCastleFort3 = rmGetGroupingInstanceUnitByType(countryCastleInstance3, "zpFortConvertable");
 	
-	int castleGate1Mod = castleGate1+1;
-	int castleGate2Mod = castleGate2+1;
-	int castleGate3Mod = castleGate3+1;
-	int castleGate4Mod = castleGate4+1;
-	int castleGate5Mod = castleGate5+1;
-	int castleGate6Mod = castleGate6+1;
-	int castleGate7Mod = castleGate7+1;
-	int castleGate8Mod = castleGate8+1;
+	int castleGate1Mod = castleGate1+0;
+	int castleGate2Mod = castleGate2+0;
+	int castleGate3Mod = castleGate3+0;
+	int castleGate4Mod = castleGate4+0;
+	int castleGate5Mod = castleGate5+0;
+	int castleGate6Mod = castleGate6+0;
+	int castleGate7Mod = castleGate7+0;
+	int castleGate8Mod = castleGate8+0;
 
-	int castleSocketMod = castleSocket+1;
-	int castleCathedralMod = castleCathedral+1;
-	int castleFactoryMod = castleFactory+1;
-	int castleMarketMod = castleMarket+1;
-	int castleMillMod = castleMill+1;
-	int castleSmelterMod = castleSmelter+1;
-	int castleWarehouseMod = castleWarehouse+1;
-	int castleMalteseMod = castleMaltese+1;
-	int castleSynagogueMod = castleSynagogue+1;
-	int castleCanterMod = castleCanter+1;
-	int castleNuggetMod = castleNugget+1;
+	int castleTower1Mod = castleTower1+0;
+	int castleTower2Mod = castleTower2+0;
+	int castleTower3Mod = castleTower3+0;
+	int castleTower4Mod = castleTower4+0;
+	int castleTower5Mod = castleTower5+0;
+	int castleTower6Mod = castleTower6+0;
+	int castleTower7Mod = castleTower7+0;
+	int castleTower8Mod = castleTower8+0;
 
-	int countrysideCastleFlag1Mod	 = countrysideCastleFlag1+1;
-	int countrysideCastleFlag2Mod = countrysideCastleFlag2+1;
-	int countrysideCastleFlag3Mod = countrysideCastleFlag3+1;
-	int countrysideCastleNugget1Mod = countrysideCastleNugget1+1;
-	int countrysideCastleNugget2Mod = countrysideCastleNugget2+1;
-	int countrysideCastleNugget3Mod = countrysideCastleNugget3+1;
-	int countrysideCastleFort1Mod = countrysideCastleFort1+1;
-	int countrysideCastleFort2Mod = countrysideCastleFort2+1;
-	int countrysideCastleFort3Mod = countrysideCastleFort3+1;
+	int castleSocketMod = castleSocket+0;
+	int castleCathedralMod = castleCathedral+0;
+	int castleFactoryMod = castleFactory+0;
+	int castleMarketMod = castleMarket+0;
+	int castleMillMod = castleMill+0;
+	int castleSmelterMod = castleSmelter+0;
+	int castleWarehouseMod = castleWarehouse+0;
+	int castleMalteseMod = castleMaltese+0;
+	int castleSynagogueMod = castleSynagogue+0;
+	int castleCanterMod = castleCanter+0;
+	int castleNuggetMod = castleNugget+0;
+
+	int countrysideCastleFlag1Mod	 = countrysideCastleFlag1+0;
+	int countrysideCastleFlag2Mod = countrysideCastleFlag2+0;
+	int countrysideCastleFlag3Mod = countrysideCastleFlag3+0;
+	int countrysideCastleNugget1Mod = countrysideCastleNugget1+0;
+	int countrysideCastleNugget2Mod = countrysideCastleNugget2+0;
+	int countrysideCastleNugget3Mod = countrysideCastleNugget3+0;
+	int countrysideCastleFort1Mod = countrysideCastleFort1+0;
+	int countrysideCastleFort2Mod = countrysideCastleFort2+0;
+	int countrysideCastleFort3Mod = countrysideCastleFort3+0;
 
 	vector castleCanterLoc = rmGetUnitPosition(castleCanter);
 
@@ -1226,15 +1244,45 @@ void main(void)
         rmSetTriggerEffectParamInt("PlayerID", i);
         rmSetTriggerEffectParam("TechID","cTechzpKingOfBohemiaSetup"); // King of Bohemia Setup
         rmSetTriggerEffectParamInt("Status", 2);
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-        rmSetTriggerEffectParamInt("PlayerID", i);
-        rmSetTriggerEffectParam("TechID","cTechzpMapeBohemian"); // Bohemian Fort Design
-        rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("Quest Var Set");
+		rmSetTriggerEffectParam("QVName","SocketHolder"+i);
+		rmSetTriggerEffectParamInt("Value",0);
 	}
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
+
+	for(k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("AI Techs"+k);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpSPCKingOfBohemiaAI"); // Only for the AI to train the city state units from sockets
+		rmSetTriggerEffectParamInt("Status",2);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
+	// Set up default resource values
+	if (cNumberNonGaiaPlayers >2){
+		rmCreateTrigger("Starting Resources");
+		rmAddTriggerEffect("Modify Protounit Resource");
+		rmSetTriggerEffectParam("ProtoUnit","zpValuableSource");
+		rmSetTriggerEffectParam("Resource","Gold");
+		rmSetTriggerEffectParamInt("PlayerID",0);
+		rmSetTriggerEffectParamInt("Field",2);
+		rmSetTriggerEffectParamInt("Delta",0.5*cNumberNonGaiaPlayers);
+		rmSetTriggerEffectParamInt("Relativity",3);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
 
 	// Conversion Suspend
 	rmCreateTrigger("Buildings Convert OFF");
@@ -1303,6 +1351,10 @@ void main(void)
 		rmSetTriggerConditionParam("Protounit","zpSPCGermanCathedral");
 		rmSetTriggerConditionParam("Op",">=");
 		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechzpKingOfBohemiaProclaimedShadow");
+		rmSetTriggerConditionParamInt("Status",2);
 		rmAddTriggerEffect("Counter:Add Timer");
 		rmSetTriggerEffectParam("Name","VictoryCounter"+k);
 		rmSetTriggerEffectParamInt("Start", victoryCountDown);
@@ -1311,21 +1363,46 @@ void main(void)
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("PlayerVictory"+k));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF"+k));
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpKingOfBohemiaRevShadow");
-		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Music Filename");
-		rmSetTriggerEffectParam("Music","ypack\music\strategy\KOTH.mp3"); // Music Filename
+		rmSetTriggerEffectParam("Music","ypack\music\strategy\Revolootin.mp3"); // Music Filename
 		rmSetTriggerEffectParamFloat("Duration",0.5);
 		rmAddTriggerEffect("Sound Timer");
 		rmSetTriggerEffectParamInt("Time", 61000);
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd"+k));
-
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpKingOfBohemiaRevShadow");
+		rmSetTriggerEffectParamInt("Status",2);
+		for(x=1; <= cNumberNonGaiaPlayers) {
+			for(y=1; <= cNumberNonGaiaPlayers) {
+				if (x == y || x == k || y == k) {
+				}
+				else {
+					rmAddTriggerEffect("Diplomacy");
+					rmSetTriggerEffectParamInt("Player1", x);
+					rmSetTriggerEffectParamInt("Player2", y,);
+					rmSetTriggerEffectParam("Status", "Ally", false);
+					rmAddTriggerEffect("Diplomacy");
+					rmSetTriggerEffectParamInt("Player1", y);
+					rmSetTriggerEffectParamInt("Player2", x,);
+					rmSetTriggerEffectParam("Status", "Ally", false);
+				}
+			}
+		
+			if (x != k) {
+				rmAddTriggerEffect("Diplomacy");
+				rmSetTriggerEffectParamInt("Player1", k);
+				rmSetTriggerEffectParamInt("Player2", x,);
+				rmSetTriggerEffectParam("Status", "Enemy", false);
+				rmAddTriggerEffect("Diplomacy");
+				rmSetTriggerEffectParamInt("Player1", x);
+				rmSetTriggerEffectParamInt("Player2", k,);
+				rmSetTriggerEffectParam("Status", "Enemy", false);
+			}
+		}
 		rmAddTriggerEffect("Player : Override Civilization for Flag");
 		rmSetTriggerEffectParamInt("Player",k);
 		rmSetTriggerEffectParam("Civilization","zpBohemianKing");
-
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
@@ -1341,10 +1418,22 @@ void main(void)
 		rmSetTriggerEffectParam("Name","VictoryCounter"+k);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter"+k));
-
 		rmAddTriggerEffect("ZP Player : Reset Civilization for Flag");
 		rmSetTriggerEffectParamInt("Player",k);
-
+		for(x=1; <= cNumberNonGaiaPlayers) {
+			for(y=1; <= cNumberNonGaiaPlayers) {
+				if (x != y ) {
+					rmAddTriggerEffect("Diplomacy");
+					rmSetTriggerEffectParamInt("Player1", x);
+					rmSetTriggerEffectParamInt("Player2", y,);
+					rmSetTriggerEffectParam("Status", "Enemy", false);
+					rmAddTriggerEffect("Diplomacy");
+					rmSetTriggerEffectParamInt("Player1", y);
+					rmSetTriggerEffectParamInt("Player2", x,);
+					rmSetTriggerEffectParam("Status", "Enemy", false);
+				}
+			}
+		}
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -1586,6 +1675,8 @@ void main(void)
 		rmCreateTrigger("Gate7_Rebuilt"+k);
 		rmCreateTrigger("Gate8_Rebuilt"+k);
 		rmCreateTrigger("Gate_Rebuilt_Deactivator"+k);
+		rmCreateTrigger("Tolerantion_Patent_On_Plr"+k);
+		rmCreateTrigger("Tolerantion_Patent_Off_Plr"+k);
 
 		rmSwitchToTrigger(rmTriggerID("CastleOn_Player"+k));
 		rmAddTriggerCondition("Units in Area");
@@ -1600,56 +1691,106 @@ void main(void)
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","deSPCSocketCityTower");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
+
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone");
+		rmSetTriggerEffectParamInt("Dist",120);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone3");
+		rmSetTriggerEffectParamInt("Dist",120);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone4");
+		rmSetTriggerEffectParamInt("Dist",120);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone5");
+		rmSetTriggerEffectParamInt("Dist",120);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone6");
+		rmSetTriggerEffectParamInt("Dist",120);	
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone7");
+		rmSetTriggerEffectParamInt("Dist",120);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone8");
+		rmSetTriggerEffectParamInt("Dist",120);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","deMercCannoneer");
+		rmSetTriggerEffectParamInt("Dist",120);
+
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","deSPCCityTower");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
 
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","zpSPCFortBarracksProp");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","zpSPCFortStableProp");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","deField");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","deSPCFortWallLargeProp");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","deSPCFortWallSmallProp");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","SPCFortGate");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
 		rmAddTriggerEffect("Convert");
 		rmSetTriggerEffectParam("SrcObject",""+castleGate1Mod);
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -1709,39 +1850,15 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedralJewish"); // Jewish
 		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Quest Var Set");
+		rmSetTriggerEffectParam("QVName","SocketHolder"+k);
+		rmSetTriggerEffectParamInt("Value",1);
 		for(x=1; <= cNumberNonGaiaPlayers) {
 			rmAddTriggerEffect("Flare Minimap");
 			rmSetTriggerEffectParamInt("PlayerID", x, false);
 			rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
 			rmSetTriggerEffectParam("Position", ""+xsVectorGetX(castleCanterLoc)+","+xsVectorGetY(castleCanterLoc)+","+xsVectorGetZ(castleCanterLoc), false);
 			rmSetTriggerEffectParam("Flash", "True", false);
-		}
-		for(x=1; <= cNumberNonGaiaPlayers) {
-			for(y=1; <= cNumberNonGaiaPlayers) {
-				if (x == y || x == k || y == k) {
-				}
-				else {
-					rmAddTriggerEffect("Diplomacy");
-					rmSetTriggerEffectParamInt("Player1", x);
-					rmSetTriggerEffectParamInt("Player2", y,);
-					rmSetTriggerEffectParam("Status", "Ally", false);
-					rmAddTriggerEffect("Diplomacy");
-					rmSetTriggerEffectParamInt("Player1", y);
-					rmSetTriggerEffectParamInt("Player2", x,);
-					rmSetTriggerEffectParam("Status", "Ally", false);
-				}
-			}
-		
-			if (x != k) {
-				rmAddTriggerEffect("Diplomacy");
-				rmSetTriggerEffectParamInt("Player1", k);
-				rmSetTriggerEffectParamInt("Player2", x,);
-				rmSetTriggerEffectParam("Status", "Enemy", false);
-				rmAddTriggerEffect("Diplomacy");
-				rmSetTriggerEffectParamInt("Player1", x);
-				rmSetTriggerEffectParamInt("Player2", k,);
-				rmSetTriggerEffectParam("Status", "Enemy", false);
-			}
 		}
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("CastleOff_Player"+k));
@@ -1788,26 +1905,15 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmSetTriggerEffectParam("TechID","cTechzpLockCathedralJewish"); // Jewish
 		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Quest Var Set");
+		rmSetTriggerEffectParam("QVName","SocketHolder"+k);
+		rmSetTriggerEffectParamInt("Value",0);
 		for(x=1; <= cNumberNonGaiaPlayers) {
 			rmAddTriggerEffect("Flare Minimap");
 			rmSetTriggerEffectParamInt("PlayerID", x, false);
 			rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
 			rmSetTriggerEffectParam("Position", ""+xsVectorGetX(castleCanterLoc)+","+xsVectorGetY(castleCanterLoc)+","+xsVectorGetZ(castleCanterLoc), false);
 			rmSetTriggerEffectParam("Flash", "True", false);
-		}
-		for(x=1; <= cNumberNonGaiaPlayers) {
-			for(y=1; <= cNumberNonGaiaPlayers) {
-				if (x != y ) {
-					rmAddTriggerEffect("Diplomacy");
-					rmSetTriggerEffectParamInt("Player1", x);
-					rmSetTriggerEffectParamInt("Player2", y,);
-					rmSetTriggerEffectParam("Status", "Enemy", false);
-					rmAddTriggerEffect("Diplomacy");
-					rmSetTriggerEffectParamInt("Player1", y);
-					rmSetTriggerEffectParamInt("Player2", x,);
-					rmSetTriggerEffectParam("Status", "Enemy", false);
-				}
-			}
 		}
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("CastleOff_Dellayed_Player"+k));
@@ -1840,56 +1946,98 @@ void main(void)
 		rmSetTriggerEffectParamInt("SrcPlayer",k);
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","deSPCSocketCityTower");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone");
+		rmSetTriggerEffectParamInt("Dist",120);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone3");
+		rmSetTriggerEffectParamInt("Dist",120);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone4");
+		rmSetTriggerEffectParamInt("Dist",120);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone5");
+		rmSetTriggerEffectParamInt("Dist",120);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone6");
+		rmSetTriggerEffectParamInt("Dist",120);	
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone7");
+		rmSetTriggerEffectParamInt("Dist",120);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerClone8");
+		rmSetTriggerEffectParamInt("Dist",120);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
 		rmSetTriggerEffectParamInt("SrcPlayer",k);
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","deSPCCityTower");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
 		rmSetTriggerEffectParamInt("SrcPlayer",k);
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
 
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
 		rmSetTriggerEffectParamInt("SrcPlayer",k);
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","zpSPCFortBarracks");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
 		rmSetTriggerEffectParamInt("SrcPlayer",k);
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","zpSPCFortStable");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
 		rmSetTriggerEffectParamInt("SrcPlayer",k);
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","deField");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
 		rmSetTriggerEffectParamInt("SrcPlayer",k);
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","deSPCFortWallLargeProp");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
 		rmSetTriggerEffectParamInt("SrcPlayer",k);
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","deSPCFortWallSmallProp");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
 		rmSetTriggerEffectParamInt("SrcPlayer",k);
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","SPCFortGate");
-		rmSetTriggerEffectParamInt("Dist",200);
+		rmSetTriggerEffectParamInt("Dist",120);
 		rmAddTriggerEffect("Convert");
 		rmSetTriggerEffectParam("SrcObject",""+castleGate1Mod);
 		rmSetTriggerEffectParamInt("PlayerID",0);
@@ -2137,6 +2285,46 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate7_Rebuilt"+k));
 		rmAddTriggerEffect("Disable Trigger");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate8_Rebuilt"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Tolerantion_Patent_On_Plr"+k));
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechzpBohemianMercenaries");
+		rmSetTriggerConditionParamInt("Status",2);
+		rmAddTriggerCondition("Quest Var Check");
+		rmSetTriggerConditionParam("QuestVar","SocketHolder"+k);
+		rmSetTriggerConditionParam("Op","==");
+		rmSetTriggerConditionParamInt("Value",1);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBohemianMercenariesShadow");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Tolerantion_Patent_Off_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Tolerantion_Patent_Off_Plr"+k));
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechzpBohemianMercenaries");
+		rmSetTriggerConditionParamInt("Status",2);
+		rmAddTriggerCondition("Quest Var Check");
+		rmSetTriggerConditionParam("QuestVar","SocketHolder"+k);
+		rmSetTriggerConditionParam("Op","==");
+		rmSetTriggerConditionParamInt("Value",0);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBohemianMercenariesShadowBack");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Tolerantion_Patent_On_Plr"+k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -2474,7 +2662,390 @@ void main(void)
 		rmSetTriggerLoop(true);
 	}
 
+	// AI King of Bohemia Fractions
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	if (rmGetPlayerTeam(k) == 0) {
+		rmCreateTrigger("ZP_Iniciate_King"+k);
+		rmCreateTrigger("ZP_Execute_King"+k);
+		rmCreateTrigger("ZP_Timer_King"+k);
+
+		rmSwitchToTrigger(rmTriggerID("ZP_Iniciate_King"+k));
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechIndustrialize");
+		rmSetTriggerConditionParamInt("Status",2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Timer_King"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("ZP_Timer_King"+k));
+		rmAddTriggerCondition("Timer");
+		rmSetTriggerConditionParamInt("Param1",10);
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechzpNativeBohemianKing");
+		rmSetTriggerConditionParamInt("Status",2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Execute_King"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("ZP_Execute_King"+k));
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechzpNativeBohemianKing");
+		rmSetTriggerConditionParamInt("Status",2);
+
+		int revFraction=-1;
+		revFraction = rmRandInt(1,3);
+
+		if (revFraction==1)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpConsulateKingOfBohemiaHabsburg"); //operator
+			rmSetTriggerEffectParamInt("Status",2);
+		}
+		if (revFraction==2)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpConsulateKingOfBohemiaJagiellon"); //operator
+			rmSetTriggerEffectParamInt("Status",2);
+		}
+		if (revFraction==3)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpConsulateKingOfBohemiaWittelsbach"); //operator
+			rmSetTriggerEffectParamInt("Status",2);
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+	}
+
+	// AI Build Towers
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("BuildTower1_ON_Plr"+k);
+		rmCreateTrigger("BuildTower1_OFF_Plr"+k);
+		rmCreateTrigger("BuildTower2_ON_Plr"+k);
+		rmCreateTrigger("BuildTower2_OFF_Plr"+k);
+		rmCreateTrigger("BuildTower3_ON_Plr"+k);
+		rmCreateTrigger("BuildTower3_OFF_Plr"+k);
+		rmCreateTrigger("BuildTower4_ON_Plr"+k);
+		rmCreateTrigger("BuildTower4_OFF_Plr"+k);
+		rmCreateTrigger("BuildTower5_ON_Plr"+k);
+		rmCreateTrigger("BuildTower5_OFF_Plr"+k);
+		rmCreateTrigger("BuildTower6_ON_Plr"+k);
+		rmCreateTrigger("BuildTower6_OFF_Plr"+k);
+		rmCreateTrigger("BuildTower7_ON_Plr"+k);
+		rmCreateTrigger("BuildTower7_OFF_Plr"+k);
+		rmCreateTrigger("BuildTower8_ON_Plr"+k);
+		rmCreateTrigger("BuildTower8_OFF_Plr"+k);
+
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower1_ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+castleTower1Mod);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+		rmSetTriggerConditionParamInt("Dist",10);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("Socket",""+castleTower1Mod);
+		rmSetTriggerEffectParam("Protounit","deSPCCityTower");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower1_OFF_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower1_OFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower1_ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower2_ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+castleTower2Mod);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+		rmSetTriggerConditionParamInt("Dist",10);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("Socket",""+castleTower2Mod);
+		rmSetTriggerEffectParam("Protounit","deSPCCityTower");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower2_OFF_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower2_OFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower2_ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower3_ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+castleTower3Mod);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+		rmSetTriggerConditionParamInt("Dist",10);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("Socket",""+castleTower3Mod);
+		rmSetTriggerEffectParam("Protounit","deSPCCityTower");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower3_OFF_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower3_OFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower3_ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	
+		rmSwitchToTrigger(rmTriggerID("BuildTower4_ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+castleTower4Mod);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+		rmSetTriggerConditionParamInt("Dist",10);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("Socket",""+castleTower4Mod);
+		rmSetTriggerEffectParam("Protounit","deSPCCityTower");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower4_OFF_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower4_OFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower4_ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	
+		rmSwitchToTrigger(rmTriggerID("BuildTower5_ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+castleTower5Mod);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+		rmSetTriggerConditionParamInt("Dist",10);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("Socket",""+castleTower5Mod);
+		rmSetTriggerEffectParam("Protounit","deSPCCityTower");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower5_OFF_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower5_OFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower5_ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower6_ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+castleTower6Mod);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+		rmSetTriggerConditionParamInt("Dist",10);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("Socket",""+castleTower6Mod);
+		rmSetTriggerEffectParam("Protounit","deSPCCityTower");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower6_OFF_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower6_OFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower6_ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower7_ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+castleTower7Mod);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+		rmSetTriggerConditionParamInt("Dist",10);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("Socket",""+castleTower7Mod);
+		rmSetTriggerEffectParam("Protounit","deSPCCityTower");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower7_OFF_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower7_OFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower7_ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower8_ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+castleTower8Mod);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+		rmSetTriggerConditionParamInt("Dist",10);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("Socket",""+castleTower8Mod);
+		rmSetTriggerEffectParam("Protounit","deSPCCityTower");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower8_OFF_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower8_OFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower8_ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmCreateTrigger("AI_Check1_Plr"+k);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower8_ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower7_ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower6_ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower5_ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower4_ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower3_ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower2_ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower1_ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
+
+	// Testing
+
+	/*for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("ZP Test Plr"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "true");
+	rmAddTriggerEffect("Set Tech Status");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParamFloat("TechID",537);
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Set Tech Status");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParamFloat("TechID",2804);
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Set Tech Status");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParamFloat("TechID",527);
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpArmoredTrainTech");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}*/
+
 
     // Text
-	rmSetStatusText("",0.70);
+	rmSetStatusText("",0.99);
 } // END
