@@ -5,7 +5,6 @@
     <loadss>ui\random_map\kingofbohemia\kingofbohemia_01</loadss>
     <loadss>ui\random_map\kingofbohemia\kingofbohemia_02</loadss>
     <loadss>ui\random_map\kingofbohemia\kingofbohemia_03</loadss>
-    <loadss>ui\random_map\kingofbohemia\kingofbohemia_04</loadss>
     <enforcedSettings>
         <setting type="RecordGame" state="forbidden" />
         <setting type="FFA" state="enforced" />

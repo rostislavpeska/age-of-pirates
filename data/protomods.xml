@@ -37365,7 +37365,7 @@
   </unit>
   <unit id="20499" name="zpSPCFortWallProp">
     <dbid>20499</dbid>
-    <displaynameid>123010</displaynameid>
+    <displaynameid>34609</displaynameid>
     <editornameid>301865</editornameid>
     <obstructionradiusx>5.0000</obstructionradiusx>
     <obstructionradiusz>2.0000</obstructionradiusz>
@@ -37422,7 +37422,7 @@
   </unit>
   <unit id="20500" name="zpSPCFortCornerProp">
     <dbid>20500</dbid>
-    <displaynameid>123011</displaynameid>
+    <displaynameid>34676</displaynameid>
     <editornameid>301866</editornameid>
     <obstructionradiusx>2.0000</obstructionradiusx>
     <obstructionradiusz>2.0000</obstructionradiusz>
@@ -37648,7 +37648,7 @@
   </unit>
   <unit id="20504" name="zpSPCFortWallSmallProp">
     <dbid>20504</dbid>
-    <displaynameid>123010</displaynameid>
+    <displaynameid>34609</displaynameid>
     <editornameid>301875</editornameid>
     <obstructionradiusx>2.0000</obstructionradiusx>
     <obstructionradiusz>2.0000</obstructionradiusz>
@@ -40957,7 +40957,7 @@
   </unit>
   <unit id="20533" name="zpSPCFortWallMediumProp">
     <dbid>20533</dbid>
-    <displaynameid>123010</displaynameid>
+    <displaynameid>34609</displaynameid>
     <editornameid>301973</editornameid>
     <obstructionradiusx>3.0000</obstructionradiusx>
     <obstructionradiusz>2.0000</obstructionradiusz>
