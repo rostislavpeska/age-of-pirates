@@ -126,6 +126,9 @@
 			<placementfile>fortfrontier_city.xml</placementfile>
 			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
+		<unit name="zpFortConvertable">
+			<flag>DoNotAllowAllowAlliedGarrison</flag>
+		</unit>
 		<unit name="Factory">
 			<placementfile>buildinglarge_city.xml</placementfile>
 			<flag>DoNotAllowAllowAlliedGarrison</flag>
@@ -136,6 +139,7 @@
 		</unit>
 		<unit name="deBatteryTower">
 			<flag>DoNotAllowAllowAlliedGarrison</flag>
+			<flag>CannotAttackIfGaia</flag>
 		</unit>
 		<unit name="deSPCCityTower">
 			<flag>DoNotAllowAllowAlliedGarrison</flag>

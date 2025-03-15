@@ -49,6 +49,12 @@ void main(void)
 
     // Picks the map size
 	int size = 400;
+	if (cNumberNonGaiaPlayers >= 5) {
+		size = 460;
+	}
+	if (cNumberNonGaiaPlayers >= 5) {
+		size = 520;
+	}
 	rmSetMapSize(size, size);
 	
 	// Set up map elevation variation - using subtle parameters to maintain height progression
@@ -103,7 +109,7 @@ void main(void)
 	// These are used to have objects and areas avoid each other
 	
 	// Map edge constraints
-	int playerEdgeConstraint=rmCreateBoxConstraint("player edge of map", rmXTilesToFraction(12), rmZTilesToFraction(12), 1.0-rmXTilesToFraction(12), 1.0-rmZTilesToFraction(12), 0.01);
+	int playerEdgeConstraint=rmCreateBoxConstraint("player edge of map", rmXTilesToFraction(15), rmZTilesToFraction(15), 1.0-rmXTilesToFraction(15), 1.0-rmZTilesToFraction(15), 0.01);
 	int longPlayerEdgeConstraint=rmCreateBoxConstraint("long avoid edge of map", rmXTilesToFraction(20), rmZTilesToFraction(20), 1.0-rmXTilesToFraction(20), 1.0-rmZTilesToFraction(20), 0.01);
 	
     int avoidWater10 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 2.0);
@@ -207,6 +213,7 @@ void main(void)
 	int avoidMaltese=rmCreateTypeDistanceConstraint("stay away from Maltese", "zpSocketScientists", 45.0);
 	int avoidJewish=rmCreateTypeDistanceConstraint("stay away from Jewish", "zpSPCSocketWesternVillage", 25.0);
 	int avoidTownCenterFar=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 40.0);
+	int avoidFort=rmCreateTypeDistanceConstraint("avoid Fort", "zpFortConvertable", 50.0);
 	int avoidTradeSocket=rmCreateTypeDistanceConstraint("stay away from Trade Socket", "SocketTradeRoute", 40.0);
 	int avoidTradeSocketShort=rmCreateTypeDistanceConstraint("stay away from Trade Socket Short", "SocketTradeRoute", 25.0);
 	int avoidTradeRouteSocketMin = rmCreateTypeDistanceConstraint("trade route socket min", "SocketTradeRoute", 25.0);
@@ -222,6 +229,7 @@ void main(void)
 	int avoidBlock =rmCreateClassDistanceConstraint("stuff vs. blocks", rmClassID("classBlock"), 6.0);
 	int avoidBlockLong =rmCreateClassDistanceConstraint("stuff vs. blocks long", rmClassID("classBlock"), 10.0);
 	int avoidBlockMedium =rmCreateClassDistanceConstraint("stuff vs. blocks medium", rmClassID("classBlock"), 7.0);
+	int avoidJesuit=rmCreateTypeDistanceConstraint("avoid Jesuit Cathedral", "zpSocketJesuitEU", 30.0);
 
 	// KOTH
 	int avoidKOTH=rmCreateTypeDistanceConstraint("avoid koth filler", "ypKingsHill", 12.0);
@@ -233,7 +241,7 @@ void main(void)
 
     // Trade route must be always placed as first
 	int stopperID=rmCreateObjectDef("Armored Train Stopper");
-	rmAddObjectDefItem(stopperID, "zpSPCWaterSpawnPoint", 1, 0.0);
+	rmAddObjectDefItem(stopperID, "zpTrainStopper", 1, 0.0);
 	rmSetObjectDefAllowOverlap(stopperID, true);
 	rmSetObjectDefMinDistance(stopperID, 0.0);
 	rmSetObjectDefMaxDistance(stopperID, 0.0);  
@@ -303,7 +311,7 @@ void main(void)
 
     // Create north continent
     int northContinentID = rmCreateArea("north_continent");
-    rmSetAreaSize(northContinentID, 0.45, 0.45);
+    rmSetAreaSize(northContinentID, 0.55, 0.55);
     rmSetAreaCoherence(northContinentID, 0.65);
     rmSetAreaMix(northContinentID, "italy_grass_lush");
     rmSetAreaBaseHeight(northContinentID, 2.983);  // Castle structure height
@@ -336,7 +344,7 @@ void main(void)
 
     // Create south continent
     int southContinentID = rmCreateArea("south_continent");
-    rmSetAreaSize(southContinentID, 0.45, 0.45);
+    rmSetAreaSize(southContinentID, 0.55, 0.55);
     rmSetAreaCoherence(southContinentID, 0.65);
     rmSetAreaMix(southContinentID, "italy_grass_lush");
     rmSetAreaBaseHeight(southContinentID, 2.983);  // Castle structure height
@@ -361,6 +369,8 @@ void main(void)
     rmAddAreaInfluencePoint(southContinentID, 0.30, 0.05);
     
     rmBuildArea(southContinentID);
+
+	// ********************** Place natives and other objects **********************
 
 	// Place Jesuit natives
 
@@ -388,25 +398,133 @@ void main(void)
 	rmAddGroupingToClass(jesuitMonastery3ID, rmClassID("classBlock"));
 	rmAddGroupingToClass(jesuitMonastery4ID, rmClassID("classBlock"));
 
-	if (cNumberNonGaiaPlayers ==2 || cNumberNonGaiaPlayers ==4){
+	int jesuitControllerID1 = rmCreateObjectDef("jesuit controller 1");
+	rmAddObjectDefItem(jesuitControllerID1, "zpTrainStopper", 1, 0.0);
+	int jesuitControllerID2 = rmCreateObjectDef("jesuit controller 2");
+	rmAddObjectDefItem(jesuitControllerID2, "zpTrainStopper", 1, 0.0);
+	int jesuitControllerID3 = rmCreateObjectDef("jesuit controller 3");
+	rmAddObjectDefItem(jesuitControllerID3, "zpTrainStopper", 1, 0.0);
+	int jesuitControllerID4 = rmCreateObjectDef("jesuit controller 4");
+	rmAddObjectDefItem(jesuitControllerID4, "zpTrainStopper", 1, 0.0);
+
+	if (cNumberNonGaiaPlayers ==2 || cNumberNonGaiaPlayers ==4 || cNumberNonGaiaPlayers ==8){
 		rmPlaceGroupingAtLoc(jesuitMonastery1ID, 0, 0.1, 0.62, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID1, 0, 0.1, 0.62, 1);
 		rmPlaceGroupingAtLoc(jesuitMonastery2ID, 0, 0.9, 0.38, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID2, 0, 0.9, 0.38, 1);
+	}
+	if (cNumberNonGaiaPlayers ==3){
+		rmPlaceGroupingAtLoc(jesuitMonastery1ID, 0, 0.1, 0.38, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID1, 0, 0.1, 0.38, 1);
+		rmPlaceGroupingAtLoc(jesuitMonastery2ID, 0, 0.9, 0.38, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID2, 0, 0.9, 0.38, 1);
+		rmPlaceGroupingAtLoc(jesuitMonastery3ID, 0, 0.5, 0.90, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID3, 0, 0.5, 0.90, 1);
+	}
+	if (cNumberNonGaiaPlayers ==5){
+		rmPlaceGroupingAtLoc(jesuitMonastery1ID, 0, 0.5, 0.08, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID1, 0, 0.5, 0.08, 1);
+		rmPlaceGroupingAtLoc(jesuitMonastery2ID, 0, 0.7, 0.85, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID2, 0, 0.7, 0.85, 1);
+		rmPlaceGroupingAtLoc(jesuitMonastery3ID, 0, 0.3, 0.85, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID3, 0, 0.3, 0.85, 1);
+	}
+	if (cNumberNonGaiaPlayers ==6){
+		rmPlaceGroupingAtLoc(jesuitMonastery1ID, 0, 0.08, 0.5, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID1, 0, 0.08, 0.5, 1);
+		rmPlaceGroupingAtLoc(jesuitMonastery2ID, 0, 0.7, 0.85, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID2, 0, 0.7, 0.85, 1);
+		rmPlaceGroupingAtLoc(jesuitMonastery3ID, 0, 0.7, 0.15, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID3, 0, 0.7, 0.15, 1);
+	}
+	if (cNumberNonGaiaPlayers ==7){
+		rmPlaceGroupingAtLoc(jesuitMonastery1ID, 0, 0.8, 0.8, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID1, 0, 0.8, 0.8, 1);
+		rmPlaceGroupingAtLoc(jesuitMonastery2ID, 0, 0.4, 0.05, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID2, 0, 0.4, 0.05, 1);
+		rmPlaceGroupingAtLoc(jesuitMonastery3ID, 0, 0.1, 0.65, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID3, 0, 0.1, 0.65, 1);
+		rmPlaceGroupingAtLoc(jesuitMonastery4ID, 0, 0.7, 0.15, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID4, 0, 0.7, 0.15, 1);
 	}
 
-    // Create north elevated area
+	int jesuitCathedral1 = rmGetUnitPlaced(jesuitControllerID1, 0)-1;
+	int jesuitCathedral2 = rmGetUnitPlaced(jesuitControllerID2, 0)-1;
+	int jesuitCathedral3 = rmGetUnitPlaced(jesuitControllerID3, 0)-1;
+	int jesuitCathedral4 = rmGetUnitPlaced(jesuitControllerID4, 0)-1;
+
+	vector jesuitCathedralLoc1 = rmGetUnitPosition(jesuitCathedral1);
+	vector jesuitCathedralLoc2 = rmGetUnitPosition(jesuitCathedral2);
+	vector jesuitCathedralLoc3 = rmGetUnitPosition(jesuitCathedral3);
+	vector jesuitCathedralLoc4 = rmGetUnitPosition(jesuitCathedral4);
+	
+
+	// Countryside Castles
+
+	int bohemianCastle1Type = 1;
+	int bohemianCastle2Type = 1;
+	int bohemianCastle3Type = 1;
+	int bohemianCastle4Type = 1;
+
+	int castleControllerID1 = rmCreateObjectDef("castle controller 1");
+	rmAddObjectDefItem(castleControllerID1, "zpTrainStopper", 1, 0.0);
+	int castleControllerID2 = rmCreateObjectDef("castle controller 2");
+	rmAddObjectDefItem(castleControllerID2, "zpTrainStopper", 1, 0.0);
+	int castleControllerID3 = rmCreateObjectDef("castle controller 3");
+	rmAddObjectDefItem(castleControllerID3, "zpTrainStopper", 1, 0.0);
+
+	rmSetNuggetDifficulty(302, 302);
+
+	if (cNumberNonGaiaPlayers ==2 || cNumberNonGaiaPlayers ==4 || cNumberNonGaiaPlayers ==8){
+		rmPlaceObjectDefAtLoc(castleControllerID1, 0, 0.62, 0.9);
+		rmPlaceObjectDefAtLoc(castleControllerID2, 0, 0.38, 0.1);
+	}
+	if (cNumberNonGaiaPlayers ==5){
+		rmPlaceObjectDefAtLoc(castleControllerID1, 0, 0.065, 0.45);
+		rmPlaceObjectDefAtLoc(castleControllerID2, 0, 0.92, 0.45);
+	}
+	
+	if (cNumberNonGaiaPlayers ==6){
+		rmPlaceObjectDefAtLoc(castleControllerID1, 0, 0.92, 0.5);
+		rmPlaceObjectDefAtLoc(castleControllerID2, 0, 0.3, 0.85);
+		rmPlaceObjectDefAtLoc(castleControllerID3, 0, 0.3, 0.15);
+	}
+
+	if (cNumberNonGaiaPlayers ==7){
+		rmPlaceObjectDefAtLoc(castleControllerID1, 0, 0.5, 0.92);
+		rmPlaceObjectDefAtLoc(castleControllerID2, 0, 0.1, 0.35);
+		rmPlaceObjectDefAtLoc(castleControllerID3, 0, 0.9, 0.4);
+	}
+
+	
+	vector castleControllerLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(castleControllerID1, 0));
+	vector castleControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(castleControllerID2, 0));
+	vector castleControllerLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(castleControllerID3, 0));
+	
+	// Place Castles
+
+	int countrysideCastleID1 = rmCreateGrouping("Bohemian Castle 1", "Bohemian_Castle_0"+bohemianCastle1Type);
+	int countryCastleInstance1 = rmPlaceGroupingInstanceAtLoc(countrysideCastleID1, rmXMetersToFraction(xsVectorGetX(castleControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc1)), 0);
+	
+	int countrysideCastleID2 = rmCreateGrouping("Bohemian Castle 2", "Bohemian_Castle_0"+bohemianCastle2Type);
+	int countryCastleInstance2 = rmPlaceGroupingInstanceAtLoc(countrysideCastleID2, rmXMetersToFraction(xsVectorGetX(castleControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc2)), 0);
+
+	int countrysideCastleID3 = rmCreateGrouping("Bohemian Castle 3", "Bohemian_Castle_0"+bohemianCastle3Type);
+	int countryCastleInstance3 = rmPlaceGroupingInstanceAtLoc(countrysideCastleID3, rmXMetersToFraction(xsVectorGetX(castleControllerLoc3)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc3)), 0);
+
+	// Create north elevated area
     int northElevatedID = rmCreateArea("north_elevated");
-    rmSetAreaSize(northElevatedID, 0.25, 0.25);
+    rmSetAreaSize(northElevatedID, 0.3, 0.3);
     rmSetAreaCoherence(northElevatedID, 0.35);
     rmSetAreaBaseHeight(northElevatedID, 4.6);
     rmAddAreaConstraint(northElevatedID, avoidCenterPointLong);
-	rmAddAreaConstraint(northElevatedID, avoidBlock);
     rmSetAreaElevationType(northElevatedID, cElevTurbulence);
     rmSetAreaElevationVariation(northElevatedID, 6.0);
     rmSetAreaElevationPersistence(northElevatedID, 0.2);
     rmSetAreaElevationNoiseBias(northElevatedID, 1);
 	rmSetAreaObeyWorldCircleConstraint(northElevatedID, false);
     
-    rmSetAreaLocation(northElevatedID, 0.50, 0.85);
+    rmSetAreaLocation(northElevatedID, 0.50, 0.8);
     rmAddAreaInfluencePoint(northElevatedID, 0.40, 0.90);
     rmAddAreaInfluencePoint(northElevatedID, 0.60, 0.90);
     
@@ -414,33 +532,87 @@ void main(void)
 
     // Create south elevated area  
     int southElevatedID = rmCreateArea("south_elevated");
-    rmSetAreaSize(southElevatedID, 0.25, 0.25);
+    rmSetAreaSize(southElevatedID, 0.3, 0.3);
     rmSetAreaCoherence(southElevatedID, 0.35);
     rmSetAreaBaseHeight(southElevatedID, 4.6);
     rmAddAreaConstraint(southElevatedID, avoidCenterPointLong);
-	rmAddAreaConstraint(southElevatedID, avoidBlock);
     rmSetAreaElevationType(southElevatedID, cElevTurbulence);
     rmSetAreaElevationVariation(southElevatedID, 6.0);
     rmSetAreaElevationPersistence(southElevatedID, 0.2);
     rmSetAreaElevationNoiseBias(southElevatedID, 1);
     rmSetAreaObeyWorldCircleConstraint(southElevatedID, false);
     
-    rmSetAreaLocation(southElevatedID, 0.50, 0.15);
+    rmSetAreaLocation(southElevatedID, 0.50, 0.20);
     rmAddAreaInfluencePoint(southElevatedID, 0.40, 0.10);
     rmAddAreaInfluencePoint(southElevatedID, 0.60, 0.10);
     
     rmBuildArea(southElevatedID);
 
+	// Jesuit Valleys
+
+	int jesuitValley1 = rmCreateArea ("jesuitValley1");
+	rmSetAreaSize(jesuitValley1, rmAreaTilesToFraction(850.0), rmAreaTilesToFraction(850.0));
+	rmSetAreaLocation(jesuitValley1, rmXMetersToFraction(xsVectorGetX(jesuitCathedralLoc1)), rmZMetersToFraction(xsVectorGetZ(jesuitCathedralLoc1)));
+	rmSetAreaCoherence(jesuitValley1, 0.8);
+	rmSetAreaBaseHeight(jesuitValley1, 2.983);
+	rmSetAreaSmoothDistance(jesuitValley1, 15);
+	rmSetAreaHeightBlend(jesuitValley1, 2);
+	rmSetAreaElevationVariation(jesuitValley1, 0.0);
+	rmAddAreaConstraint(jesuitValley1, avoidCenterPoint);
+	rmBuildArea(jesuitValley1);
+
+	int jesuitValley2 = rmCreateArea ("jesuitValley2");
+	rmSetAreaSize(jesuitValley2, rmAreaTilesToFraction(850.0), rmAreaTilesToFraction(850.0));
+	rmSetAreaLocation(jesuitValley2, rmXMetersToFraction(xsVectorGetX(jesuitCathedralLoc2)), rmZMetersToFraction(xsVectorGetZ(jesuitCathedralLoc2)));
+	rmSetAreaCoherence(jesuitValley2, 0.8);
+	rmSetAreaBaseHeight(jesuitValley2, 2.983);
+	rmSetAreaSmoothDistance(jesuitValley2, 15);
+	rmSetAreaHeightBlend(jesuitValley2, 2);
+	rmSetAreaElevationVariation(jesuitValley2, 0.0);
+	rmAddAreaConstraint(jesuitValley2, avoidCenterPoint);
+	rmBuildArea(jesuitValley2);
+
+	int jesuitValley3 = rmCreateArea ("jesuitValley3");
+	rmSetAreaSize(jesuitValley3, rmAreaTilesToFraction(850.0), rmAreaTilesToFraction(850.0));
+	rmSetAreaLocation(jesuitValley3, rmXMetersToFraction(xsVectorGetX(jesuitCathedralLoc3)), rmZMetersToFraction(xsVectorGetZ(jesuitCathedralLoc3)));
+	rmSetAreaCoherence(jesuitValley3, 0.8);
+	rmSetAreaBaseHeight(jesuitValley3, 2.983);
+	rmSetAreaSmoothDistance(jesuitValley3, 15);
+	rmSetAreaHeightBlend(jesuitValley3, 2);
+	rmSetAreaElevationVariation(jesuitValley3, 0.0);
+	rmAddAreaConstraint(jesuitValley3, avoidCenterPoint);
+	rmBuildArea(jesuitValley3);
+
+	int jesuitValley4 = rmCreateArea ("jesuitValley4");
+	rmSetAreaSize(jesuitValley4, rmAreaTilesToFraction(850.0), rmAreaTilesToFraction(850.0));
+	rmSetAreaLocation(jesuitValley4, rmXMetersToFraction(xsVectorGetX(jesuitCathedralLoc4)), rmZMetersToFraction(xsVectorGetZ(jesuitCathedralLoc4)));
+	rmSetAreaCoherence(jesuitValley4, 0.8);
+	rmSetAreaBaseHeight(jesuitValley4, 2.983);
+	rmSetAreaSmoothDistance(jesuitValley4, 15);
+	rmSetAreaHeightBlend(jesuitValley4, 2);
+	rmSetAreaElevationVariation(jesuitValley4, 0.0);
+	rmAddAreaConstraint(jesuitValley4, avoidCenterPoint);
+	rmBuildArea(jesuitValley4);
+
 
 	// Create north cliff area
     int northCliffID = rmCreateArea("north_cliff");
-    rmSetAreaSize(northCliffID, 0.15, 0.15);
+	if (cNumberNonGaiaPlayers>=5){
+		rmSetAreaSize(northCliffID, 0.19, 0.19);
+	}
+	else{
+		rmSetAreaSize(northCliffID, 0.15, 0.15);
+	}
     rmSetAreaCoherence(northCliffID, 0.35);
     rmSetAreaBaseHeight(northCliffID, 7.136);  // Using EU bridge height for dramatic elevation
     rmAddAreaConstraint(northCliffID, avoidCenterPointUltraLong);
-	rmAddAreaConstraint(northCliffID, avoidBlock);
-	rmAddAreaConstraint(northCliffID, avoidTradeRouteFar2);
-    rmSetAreaCliffType(northCliffID, "Italian Cliff");
+	if (cNumberNonGaiaPlayers>=5){
+		rmAddAreaConstraint(northCliffID, avoidBlockLong);
+	}
+	else{
+		rmAddAreaConstraint(northCliffID, avoidBlock);
+	}
+    rmSetAreaCliffType(northCliffID, "Italian Cliff Grassy");
     rmSetAreaCliffEdge(northCliffID, 1, 1.0, 0.1, 1.0, 0);
     rmSetAreaCliffHeight(northCliffID, 0, 0.0, 1.0);
 	rmSetAreaCliffPainting(northCliffID, false, true, true, 1.5, true);
@@ -455,13 +627,23 @@ void main(void)
 
 	// Create south cliff area
     int southCliffID = rmCreateArea("south_cliff");
-    rmSetAreaSize(southCliffID, 0.15, 0.15);
+    if (cNumberNonGaiaPlayers>=5){
+		rmSetAreaSize(southCliffID, 0.19, 0.19);
+	}
+	else{
+		rmSetAreaSize(southCliffID, 0.15, 0.15);
+	}
     rmSetAreaCoherence(southCliffID, 0.35);
     rmSetAreaBaseHeight(southCliffID, 7.136);  // Using EU bridge height for dramatic elevation
     rmAddAreaConstraint(southCliffID, avoidCenterPointUltraLong);
 	rmAddAreaConstraint(southCliffID, avoidTradeRouteFar2);
-	rmAddAreaConstraint(southCliffID, avoidBlock);
-    rmSetAreaCliffType(southCliffID, "Italian Cliff");
+	if (cNumberNonGaiaPlayers>=5){
+		rmAddAreaConstraint(southCliffID, avoidBlockLong);
+	}
+	else{
+		rmAddAreaConstraint(southCliffID, avoidBlock);
+	}
+    rmSetAreaCliffType(southCliffID, "Italian Cliff Grassy");
     rmSetAreaCliffEdge(southCliffID, 1, 1.0, 0.1, 1.0, 0);
     rmSetAreaCliffHeight(southCliffID, 0, 0.0, 1.0);
 	rmSetAreaCliffPainting(southCliffID, false, true, true, 1.5, true);
@@ -473,6 +655,52 @@ void main(void)
     rmAddAreaInfluencePoint(southCliffID, 0.60, 0.10);
 
     rmBuildArea(southCliffID);
+
+	// Castle Cliffs
+
+	int castleCliff1 = rmCreateArea ("castle cliff 1");
+	rmSetAreaSize(castleCliff1, rmAreaTilesToFraction(550.0), rmAreaTilesToFraction(550.0));
+	rmSetAreaLocation(castleCliff1, rmXMetersToFraction(xsVectorGetX(castleControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc1)));
+	rmSetAreaCoherence(castleCliff1, 0.8);
+	rmAddAreaConstraint(castleCliff1, shortAvoidTradeRoute);
+	rmSetAreaSmoothDistance(castleCliff1, 5);
+	rmSetAreaBaseHeight(castleCliff1, 7.136);
+	rmSetAreaCliffType(castleCliff1, "Italian Cliff Grassy");
+	rmSetAreaCliffPainting(castleCliff1, false, true, true, 1.5, true);
+	rmSetAreaCliffEdge(castleCliff1, 1, 1.0, 0.1, 1.0, 0);
+	rmSetAreaCliffHeight(castleCliff1, 0.0, 0.0, 1.0); 
+	rmSetAreaElevationVariation(castleCliff1, 0.0);
+	rmBuildArea(castleCliff1);
+
+	int castleCliff2 = rmCreateArea ("castle cliff 2");
+	rmSetAreaSize(castleCliff2, rmAreaTilesToFraction(550.0), rmAreaTilesToFraction(550.0));
+	rmSetAreaLocation(castleCliff2, rmXMetersToFraction(xsVectorGetX(castleControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc2)));
+	rmSetAreaCoherence(castleCliff2, 0.8);
+	rmAddAreaConstraint(castleCliff2, shortAvoidTradeRoute);
+	rmSetAreaSmoothDistance(castleCliff2, 5);
+	rmSetAreaBaseHeight(castleCliff2, 7.136);
+	rmSetAreaCliffType(castleCliff2, "Italian Cliff Grassy");
+	rmSetAreaCliffPainting(castleCliff2, false, true, true, 1.5, true);
+	rmSetAreaCliffEdge(castleCliff2, 1, 1.0, 0.1, 1.0, 0);
+	rmSetAreaCliffHeight(castleCliff2, 0.0, 0.0, 1.0); 
+	rmSetAreaElevationVariation(castleCliff2, 0.0);
+	rmBuildArea(castleCliff2);
+
+	int castleCliff3 = rmCreateArea ("castle cliff 3");
+	rmSetAreaSize(castleCliff3, rmAreaTilesToFraction(550.0), rmAreaTilesToFraction(550.0));
+	rmSetAreaLocation(castleCliff3, rmXMetersToFraction(xsVectorGetX(castleControllerLoc3)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc3)));
+	rmSetAreaCoherence(castleCliff3, 0.8);
+	rmAddAreaConstraint(castleCliff3, shortAvoidTradeRoute);
+	rmSetAreaSmoothDistance(castleCliff3, 5);
+	rmSetAreaBaseHeight(castleCliff3, 7.136);
+	rmSetAreaCliffType(castleCliff3, "Italian Cliff Grassy");
+	rmSetAreaCliffPainting(castleCliff3, false, true, true, 1.5, true);
+	rmSetAreaCliffEdge(castleCliff3, 1, 1.0, 0.1, 1.0, 0);
+	rmSetAreaCliffHeight(castleCliff3, 0.0, 0.0, 1.0); 
+	rmSetAreaElevationVariation(castleCliff3, 0.0);
+	rmBuildArea(castleCliff3);
+
+
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.40);
@@ -596,13 +824,6 @@ void main(void)
 	}
 
 	// Insert Players
-	int TCfloat = -1;
-	if (cNumberTeams == 2)
-		TCfloat = 35;
-	else 
-		TCfloat = 70;
-
-
 	int TCID = rmCreateObjectDef("player TC");
 	if (rmGetNomadStart())
 		{
@@ -613,13 +834,19 @@ void main(void)
 	}
 
 	rmSetObjectDefMinDistance(TCID, 0.0);
-	rmSetObjectDefMaxDistance(TCID, 20);
+	if (cNumberNonGaiaPlayers <= 6) {
+		rmSetObjectDefMaxDistance(TCID, 20);
+	}
+	else {
+		rmSetObjectDefMaxDistance(TCID, 20);
+	}
 	rmAddObjectDefConstraint(TCID, avoidTownCenterFar);
 	rmAddObjectDefConstraint(TCID, longPlayerEdgeConstraint);
 	rmAddObjectDefConstraint(TCID, avoidImpassableLand);
 	rmAddObjectDefConstraint(TCID, farAvoidTradeSockets);
 	rmAddObjectDefConstraint(TCID, avoidWater30);
 	rmAddObjectDefConstraint(TCID, avoidTradeRoute);
+	rmAddObjectDefConstraint(TCID, avoidFort);
 
     int startingUnits = rmCreateStartingUnitsObjectDef(5.0);
 	rmSetObjectDefMinDistance(startingUnits, 5.0);
@@ -928,7 +1155,7 @@ void main(void)
 	int castleCanter = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpCinematicRevealer");
 	int castleNugget = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpNuggetInvisible");
 
-	int castleGate1 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpInvisibleGateSocket");
+	int castleGate1 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpInvisibleGateSocketA");
 	int castleGate2 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpInvisibleGateSocketB");
 	int castleGate3 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpInvisibleGateSocketC");
 	int castleGate4 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpInvisibleGateSocketD");
@@ -937,6 +1164,16 @@ void main(void)
 	int castleGate7 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpInvisibleGateSocketG");
 	int castleGate8 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpInvisibleGateSocketH");
 
+	int countrysideCastleFlag1 = rmGetGroupingInstanceUnitByType(countryCastleInstance1, "zpSPCCapturableFlagInvisible");
+	int countrysideCastleFlag2 = rmGetGroupingInstanceUnitByType(countryCastleInstance2, "zpSPCCapturableFlagInvisible");
+	int countrysideCastleFlag3 = rmGetGroupingInstanceUnitByType(countryCastleInstance3, "zpSPCCapturableFlagInvisible");
+	int countrysideCastleNugget1 = rmGetGroupingInstanceUnitByType(countryCastleInstance1, "zpNuggetInvisible");
+	int countrysideCastleNugget2 = rmGetGroupingInstanceUnitByType(countryCastleInstance2, "zpNuggetInvisible");
+	int countrysideCastleNugget3 = rmGetGroupingInstanceUnitByType(countryCastleInstance3, "zpNuggetInvisible");
+	int countrysideCastleFort1 = rmGetGroupingInstanceUnitByType(countryCastleInstance1, "zpFortConvertable");
+	int countrysideCastleFort2 = rmGetGroupingInstanceUnitByType(countryCastleInstance2, "zpFortConvertable");
+	int countrysideCastleFort3 = rmGetGroupingInstanceUnitByType(countryCastleInstance3, "zpFortConvertable");
+	
 	int castleGate1Mod = castleGate1+1;
 	int castleGate2Mod = castleGate2+1;
 	int castleGate3Mod = castleGate3+1;
@@ -957,6 +1194,16 @@ void main(void)
 	int castleSynagogueMod = castleSynagogue+1;
 	int castleCanterMod = castleCanter+1;
 	int castleNuggetMod = castleNugget+1;
+
+	int countrysideCastleFlag1Mod	 = countrysideCastleFlag1+1;
+	int countrysideCastleFlag2Mod = countrysideCastleFlag2+1;
+	int countrysideCastleFlag3Mod = countrysideCastleFlag3+1;
+	int countrysideCastleNugget1Mod = countrysideCastleNugget1+1;
+	int countrysideCastleNugget2Mod = countrysideCastleNugget2+1;
+	int countrysideCastleNugget3Mod = countrysideCastleNugget3+1;
+	int countrysideCastleFort1Mod = countrysideCastleFort1+1;
+	int countrysideCastleFort2Mod = countrysideCastleFort2+1;
+	int countrysideCastleFort3Mod = countrysideCastleFort3+1;
 
 	vector castleCanterLoc = rmGetUnitPosition(castleCanter);
 
@@ -979,6 +1226,10 @@ void main(void)
         rmSetTriggerEffectParamInt("PlayerID", i);
         rmSetTriggerEffectParam("TechID","cTechzpKingOfBohemiaSetup"); // King of Bohemia Setup
         rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+        rmSetTriggerEffectParamInt("PlayerID", i);
+        rmSetTriggerEffectParam("TechID","cTechzpMapeBohemian"); // Bohemian Fort Design
+        rmSetTriggerEffectParamInt("Status", 2);
 	}
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
@@ -989,6 +1240,18 @@ void main(void)
 	rmCreateTrigger("Buildings Convert OFF");
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject",""+castleSocketMod);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
 	rmSetTriggerEffectParam("Suspend", "True");
 	rmSetTriggerPriority(4);
@@ -1509,10 +1772,10 @@ void main(void)
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",""+castleSocketMod);
 		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParamInt("Dist",35);
 		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParamInt("Dist",35);
 		rmSetTriggerConditionParam("Op","==");
-		rmSetTriggerConditionParamFloat("Count",0);
+		rmSetTriggerConditionParamInt("Count",0);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmSetTriggerEffectParam("TechID","cTechzpLockKingOfBohemiaTechs"); // Island Techs
@@ -1729,7 +1992,7 @@ void main(void)
 		rmSetTriggerConditionParamInt("Count",0);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpConverGate"); //operator
+		rmSetTriggerEffectParam("TechID","cTechzpConverGate1"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
@@ -1909,6 +2172,307 @@ void main(void)
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(true);
+
+	// Convert Military Blocks
+
+	rmCreateTrigger("Military_Block1_Unlock");
+	rmCreateTrigger("Military_Block2_Unlock");
+	rmCreateTrigger("Military_Block3_Unlock");
+
+	rmSwitchToTrigger(rmTriggerID("Military_Block1_Unlock"));
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", ""+countrysideCastleNugget1Mod);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+countrysideCastleFlag1Mod);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","SPCFortGate");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+countrysideCastleFlag1Mod);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","zpMountainCitadel");
+	rmSetTriggerConditionParamInt("Dist",45);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "False");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Military_Block2_Unlock"));
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", ""+countrysideCastleNugget2Mod);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+countrysideCastleFlag2Mod);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","SPCFortGate");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+countrysideCastleFlag2Mod);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","zpMountainCitadel");
+	rmSetTriggerConditionParamInt("Dist",45);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "False");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Military_Block3_Unlock"));
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", ""+countrysideCastleNugget3Mod);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+countrysideCastleFlag3Mod);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","SPCFortGate");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+countrysideCastleFlag3Mod);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","zpMountainCitadel");
+	rmSetTriggerConditionParamInt("Dist",45);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "False");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Military_Block1_Plr"+k);
+		rmCreateTrigger("Military_Block2_Plr"+k);
+		rmCreateTrigger("Military_Block3_Plr"+k);
+
+		rmSwitchToTrigger(rmTriggerID("Military_Block1_Plr"+k));
+		rmAddTriggerCondition("Units Owned");
+		rmSetTriggerConditionParam("SrcObject",""+countrysideCastleFlag1Mod);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCFortWallMediumProp");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCFortWallProp");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCFortWallSmallProp");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCFortTowerProp");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCFortCornerProp");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpInvisibleGateSocket");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpParisFlagNoIcon");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpFortConvertable");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Flash Units");
+		rmSetTriggerEffectParam("SrcObject", ""+countrysideCastleFort1Mod);
+		for (i=1; <= cNumberNonGaiaPlayers) {
+			rmAddTriggerEffect("Disable Trigger");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Military_Block1_Plr"+i));
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Military_Block2_Plr"+k));
+		rmAddTriggerCondition("Units Owned");
+		rmSetTriggerConditionParam("SrcObject",""+countrysideCastleFlag2Mod);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCFortWallMediumProp");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCFortWallProp");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCFortWallSmallProp");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCFortTowerProp");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCFortCornerProp");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpInvisibleGateSocket");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpParisFlagNoIcon");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpFortConvertable");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Flash Units");
+		rmSetTriggerEffectParam("SrcObject", ""+countrysideCastleFort2Mod);
+		for (i=1; <= cNumberNonGaiaPlayers) {
+			rmAddTriggerEffect("Disable Trigger");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Military_Block2_Plr"+i));
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Military_Block3_Plr"+k));
+		rmAddTriggerCondition("Units Owned");
+		rmSetTriggerConditionParam("SrcObject",""+countrysideCastleFlag3Mod);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCFortWallMediumProp");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCFortWallProp");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCFortWallSmallProp");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCFortTowerProp");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpSPCFortCornerProp");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpInvisibleGateSocket");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpParisFlagNoIcon");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpFortConvertable");
+		rmSetTriggerEffectParamInt("Dist",35);
+		rmAddTriggerEffect("Flash Units");
+		rmSetTriggerEffectParam("SrcObject", ""+countrysideCastleFort3Mod);
+		for (i=1; <= cNumberNonGaiaPlayers) {
+			rmAddTriggerEffect("Disable Trigger");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Military_Block3_Plr"+i));
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmCreateTrigger("Walls_Transform_ON"+k);
+		rmAddTriggerCondition("Player Unit Count");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("Protounit","zpSPCFortCornerProp");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConvertWall"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpConverGate"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+	}
 
 
     // Text

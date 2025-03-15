@@ -2356,7 +2356,16 @@
       <string _locid="302356">Mercenary skull_knight</string>
       <string _locid="302357">Capture and hold the King of Bohemia socket in the center of the map.</string>
       <string _locid="302358">Once you capture the socket, all the enemy players unite against you, so you need to arm the city and hold the socket until the time runs out.</string>
-
+      <string _locid="302359">ZP Fort Convertable</string>
+      <string _locid="302360">ZP Invisible Gate Socket A</string>
+      <string _locid="302361">Hrad Kokořín</string>
+      <string _locid="302362">Hrad Karlštejn</string>
+      <string _locid="302363">Hrad Křivoklát</string>
+      <string _locid="302364">Hrad Bezděz</string>
+      <string _locid="302365">Hrad Bouzov</string>
+      <string _locid="302366">Hrad Pernštejn</string>
+      <string _locid="302367">Hrad Kost</string>
+      <string _locid="302368">Hrad Loket</string>
 
 
       <!-- ======================================== -->

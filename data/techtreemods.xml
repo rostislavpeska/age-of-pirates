@@ -18638,6 +18638,9 @@
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
         <target type ="Player"></target>
       </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpFortConvertable" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpMapEastern" type="Normal">
@@ -18645,6 +18648,9 @@
     <status>UNOBTAINABLE</status>
     <effects>
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpFortConvertable" relativity ="Absolute">
         <target type ="Player"></target>
       </effect>
     </effects>
@@ -18656,6 +18662,9 @@
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
         <target type ="Player"></target>
       </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpFortConvertable" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpMapFareast" type="Normal">
@@ -18663,6 +18672,9 @@
     <status>UNOBTAINABLE</status>
     <effects>
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpFortConvertable" relativity ="Absolute">
         <target type ="Player"></target>
       </effect>
     </effects>
@@ -18678,6 +18690,9 @@
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
         <target type ="Player"></target>
       </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpFortConvertable" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpMapAfrican" type="Normal">
@@ -18685,6 +18700,9 @@
     <status>UNOBTAINABLE</status>
     <effects>
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpFortConvertable" relativity ="Absolute">
         <target type ="Player"></target>
       </effect>
     </effects>
@@ -22057,6 +22075,9 @@
       <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCTownMill</target>
       </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCGermanCathedral</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpConsulateKingOfBohemiaJagiellon" type="Normal">
@@ -22356,6 +22377,51 @@
       <effect type="TextEffectOutput" reason="Revolution" selfmsg="302348" playermsg="302349">
       </effect>
       <effect type="TechStatus" status="unobtainable">zpKingOfBohemiaRevShadow</effect>
+    </effects>
+  </tech>
+  <tech name="StarFort">
+    <effects>
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpFortConvertable</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="StarFort">
+    <effects>
+      <effect mergemode="add" type="Data" action="CannonAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpFortConvertable</target>
+      </effect>
+      <effect mergemode="add" type="Data" action="BuildingAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpFortConvertable</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="6.00" subtype="LOS" relativity="Absolute">
+        <target type="ProtoUnit">zpFortConvertable</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpFortConvertable</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate1" type="Normal">
+    <dbid>40939</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocketA">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate1</effect>
+    </effects>
+  </tech>
+  <tech name="zpMapeBohemian" type="Normal">
+    <dbid>40940</dbid>
+    <status>UNOBTAINABLE</status>
+    <effects>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpFortConvertable" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
     </effects>
   </tech>
 

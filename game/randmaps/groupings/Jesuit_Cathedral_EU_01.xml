@@ -41,7 +41,6 @@
 		<unit variation="159" posx="-10.5282" posz="2.7596" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropWingC</unit>
 		<unit variation="190" posx="-10.9997" posz="-4.6447" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
 		<unit variation="34" posx="5.8471" posz="-0.1540" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
-		<unit variation="41" posx="-0.6123" posz="-0.4696" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpJesuitCathedral</unit>
 		<unit variation="34" posx="10.3744" posz="-0.6701" orientx="0.0000" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
 		<unit variation="34" posx="8.6615" posz="-1.3987" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
 		<unit variation="34" posx="9.4713" posz="-0.6541" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
@@ -99,6 +98,7 @@
 		<unit variation="175" posx="-9.0000" posz="16.0000" orientx="-0.1526" orienty="0.0000" orientz="0.9883">AIStart</unit>
 		<unit variation="28" posx="-9.0000" posz="16.0000" orientx="-0.5590" orienty="0.0000" orientz="0.8292">AIStart</unit>
 		<unit variation="116" posx="-9.0000" posz="16.0000" orientx="0.7966" orienty="0.0000" orientz="-0.6046">AIStart</unit>
+		<unit variation="41" posx="-0.6123" posz="-0.4696" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpJesuitCathedral</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_city_street_90_ground">

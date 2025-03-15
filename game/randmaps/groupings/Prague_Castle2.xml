@@ -1227,7 +1227,7 @@
 		<unit variation="67" posx="35.0901" posz="30.3321" orientx="0.7071" orienty="0.0000" orientz="0.7071">SPCFortGate</unit>
 		<unit variation="67" posx="2.5203" posz="43.8819" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCFortGate</unit>
 		
-		<unit variation="67" posx="-0.8152" posz="-51.3150" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpInvisibleGateSocket</unit>
+		<unit variation="67" posx="-0.8152" posz="-51.3150" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpInvisibleGateSocketA</unit>
 		<unit variation="67" posx="34.5301" posz="-39.0015" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpInvisibleGateSocketB</unit>
 		<unit variation="67" posx="-34.1302" posz="-36.8059" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpInvisibleGateSocketC</unit>
 		<unit variation="67" posx="50.1275" posz="-4.7489" orientx="1.0000" orienty="0.0000" orientz="-0.0001">zpInvisibleGateSocketD</unit>

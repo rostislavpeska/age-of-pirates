@@ -2468,6 +2468,50 @@
       </guardianunit>
       <difficulty>301</difficulty>
     </nugget>
+    <nugget>
+      <name>zpNuggetBohemianCastle</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>deGuardOutlawMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardOutlawMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardOutlawMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardOutlawMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardOutlawMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardOutlawMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardOutlawMusketeer</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianElmeti</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianElmeti</unit>
+      </guardianunit>
+      <difficulty>302</difficulty>
+    </nugget>
 
 
     <!--WATER NUGGETS-->

@@ -65,7 +65,6 @@
 		<unit variation="34" posx="0.1947" posz="2.6980" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
 		<unit variation="34" posx="-12.1369" posz="2.2568" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
 		<unit variation="52" posx="-11.3818" posz="2.8438" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushCoastalJapan</unit>
-		<unit variation="41" posx="0.2298" posz="7.4013" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpJesuitCathedral</unit>
 		<unit variation="34" posx="0.9216" posz="7.6272" orientx="-0.0000" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
 		<unit variation="34" posx="10.4713" posz="7.3459" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
 		<unit variation="34" posx="-6.2794" posz="6.6700" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
@@ -91,6 +90,7 @@
 		<unit variation="34" posx="1.6012" posz="16.2160" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
 		<unit variation="19" posx="-6.3792" posz="14.3005" orientx="0.0967" orienty="0.0000" orientz="-0.9953">deSPCTreeCypressProp</unit>
 		<unit variation="33" posx="7.5081" posz="14.0485" orientx="-0.5346" orienty="0.0000" orientz="0.8451">deSPCTreeCypressProp</unit>
+		<unit variation="41" posx="0.2298" posz="7.4013" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpJesuitCathedral</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_city_street_90_ground">

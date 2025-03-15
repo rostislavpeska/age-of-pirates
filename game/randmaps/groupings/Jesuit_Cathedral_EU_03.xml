@@ -56,7 +56,6 @@
 		<unit variation="190" posx="-11.9690" posz="-3.9968" orientx="-1.0000" orienty="0.0000" orientz="-0.0003">deNatEUPropFence</unit>
 		<unit variation="34" posx="-12.3226" posz="0.9456" orientx="0.3829" orienty="0.0000" orientz="-0.9238">NativeTownObstruction</unit>
 		<unit variation="34" posx="5.4737" posz="0.5400" orientx="-0.9238" orienty="0.0000" orientz="-0.3829">NativeTownObstruction</unit>
-		<unit variation="41" posx="-1.7429" posz="-0.0182" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpJesuitCathedral</unit>
 		<unit variation="34" posx="-4.3279" posz="1.8399" orientx="-0.9238" orienty="0.0000" orientz="-0.3829">NativeTownObstruction</unit>
 		<unit variation="133" posx="-11.5334" posz="-0.1702" orientx="0.7069" orienty="0.0000" orientz="0.7073">UnderbrushCoastalJapan</unit>
 		<unit variation="59" posx="-11.9657" posz="-2.5177" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
@@ -103,6 +102,7 @@
 		<unit variation="159" posx="3.4843" posz="13.0916" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNatEUPropWingC</unit>
 		<unit variation="159" posx="-6.0718" posz="13.1264" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNatEUPropWingC</unit>
 		<unit variation="182" posx="-1.3508" posz="12.6191" orientx="0.0196" orienty="0.0000" orientz="-0.9998">ypSMJesuitMan</unit>
+		<unit variation="41" posx="-1.7429" posz="-0.0182" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpJesuitCathedral</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_city_street_90_ground">
