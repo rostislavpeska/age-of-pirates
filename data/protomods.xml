@@ -49036,14 +49036,14 @@
     <shortrollovertextid>25647</shortrollovertextid>
     <initialhitpoints>200.0000</initialhitpoints>
     <maxhitpoints>200.0000</maxhitpoints>
-    <buildlimit>15</buildlimit>
+    <buildlimit>11</buildlimit>
     <los>12.0000</los>
     <unitaitype>HandCombative</unitaitype>
     <trainpoints>33.0000</trainpoints>
     <bounty>12.0000</bounty>
     <buildbounty>12.0000</buildbounty>
-    <cost resourcetype="Food">50.0000</cost>
-    <cost resourcetype="Gold">80.0000</cost>
+    <cost resourcetype="Food">70.0000</cost>
+    <cost resourcetype="Gold">120.0000</cost>
     <allowedage>1</allowedage>
     <armor type="Hand" value="0.2000">
     </armor>
@@ -49062,65 +49062,84 @@
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
     <unittype>AbstractInfantry</unittype>
-    <unittype>AbstractNativeWarrior</unittype>
     <unittype>AbstractHeavyInfantry</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>Military</unittype>
     <unittype>Unit</unittype>
-    <unittype>AbstractPikeman</unittype>
-    <unittype>AbstractArchaicInfantry</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractCavalryInfantry</unittype>
     <unittype>CountsTowardMilitaryScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractHandInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
     <flag>ShowGarrisonButton</flag>
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
-    <flag>VisibleUnderFogIfGaia</flag>
     <flag>Tracked</flag>
     <command page="10" column="7">Delete</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
-    <tactics>swordsman.tactics</tactics>
+    <tactics>handInfantrySplash.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
-      <damage>28.000000</damage>
+      <damage>60.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
+      <damagecap>80.000000</damagecap>
     </protoaction>
     <protoaction>
       <name>CoverBuildingAttack</name>
-      <damage>14.000000</damage>
+      <damage>30.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
     </protoaction>
     <protoaction>
       <name>CoverHandAttack</name>
-      <damage>7.500000</damage>
+      <damage>10.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
+      <damagecap>20.000000</damagecap>
       <damagebonus type="AbstractCavalry">3.000000</damagebonus>
-      <damagebonus type="AbstractLightInfantry">2.250000</damagebonus>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractLightInfantry">2.000000</damagebonus>
+      <handattackdisplayrange>1</handattackdisplayrange>
     </protoaction>
     <protoaction>
       <name>DefendHandAttack</name>
-      <damage>15.000000</damage>
+      <damage>20.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
+      <damagecap>40.000000</damagecap>
       <damagebonus type="AbstractCavalry">3.000000</damagebonus>
-      <damagebonus type="AbstractLightInfantry">2.250000</damagebonus>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractLightInfantry">2.000000</damagebonus>
+      <handattackdisplayrange>1</handattackdisplayrange>
+    </protoaction>
+    <protoaction>
+      <name>GuardianAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagecap>40.000000</damagecap>
+      <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+      <handattackdisplayrange>1</handattackdisplayrange>
     </protoaction>
     <protoaction>
       <name>MeleeHandAttack</name>
-      <damage>15.000000</damage>
+      <damage>20.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
+      <damagecap>40.000000</damagecap>
       <damagebonus type="AbstractCavalry">3.000000</damagebonus>
-      <damagebonus type="AbstractLightInfantry">2.250000</damagebonus>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractLightInfantry">2.000000</damagebonus>
+      <handattackdisplayrange>1</handattackdisplayrange>
     </protoaction>
   </unit>
   <unit id="20656" name="zpNatLineInfantryProxy">
