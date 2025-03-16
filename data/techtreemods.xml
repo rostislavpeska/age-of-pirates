@@ -22393,7 +22393,7 @@
       </effect>
     </effects>
   </tech>
-  <tech name="StarFort">
+  <tech name="Revetment">
     <effects>
       <effect mergemode="add" type="Data" action="CannonAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
         <target type="ProtoUnit">zpFortConvertable</target>
@@ -22631,7 +22631,7 @@
     </effects>
   </tech>
   <tech name="zpKingOfTheSeasShadow" type="Normal">
-    <dbid>40949</dbid>
+    <dbid>40951</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
@@ -22642,7 +22642,7 @@
     </effects>
   </tech>
   <tech name="zpNatBlanikKnights" type="Normal">
-    <dbid>40950</dbid>
+    <dbid>40952</dbid>
     <displaynameid>302383</displaynameid>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\abilities\blanik_knights.png</icon>

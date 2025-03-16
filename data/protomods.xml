@@ -50626,7 +50626,7 @@
 
 
   <!--KING OF BOHEMIA MAPMODS-->
-  <unit name="deField">  
+  <!--<unit name="deField">  
     <flag>InvulnerableIfGaia</flag>
   </unit>
   <unit name="zpNativePropsJewishTower">
@@ -50636,9 +50636,6 @@
     <flag>NotSelectable</flag>
   </unit>
   <unit name="ypSMJesuitAccessory">
-    <flag>NotSelectable</flag>
-  </unit>
-  <unit name="zpNativePropsJewishTower">
     <flag>NotSelectable</flag>
   </unit>
   <unit name="zpCinematicRevealer">
@@ -50652,23 +50649,7 @@
   <unit name="deBatteryTower">
     <flag>DoNotAllowAllowAlliedGarrison</flag>
     <flag>CannotAttackIfGaia</flag>
-  </unit>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  </unit>-->
 
 
   <!--BELONGS TO MAPMODS VENICE--> 
