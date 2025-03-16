@@ -512,6 +512,17 @@
     <usemultiple>
     </usemultiple>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpNatBlanikKnightsSmall</name>
+    <icon>resources\images\icons\abilities\blanik_knights.png</icon>
+    <associatedtech>zpNatBlanikKnights</associatedtech>
+    <associatedpower>zpNatPowerBlanikKnights</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>zpBohemianKing</subciv>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
 
   <!--
 

@@ -1126,7 +1126,7 @@ void main(void)
 	// ____________________ LOCAL MERCENARIES ____________________
     rmDisableDefaultMercs(true);
     rmDisableCivTypeMercRestriction(true);
-	rmEnableMerc("MercFusilier", -1);
+	rmEnableMerc("deMercCannoneer", -1);
 	rmEnableMerc("deMercPandour", -1);
 	rmEnableMerc("deMercGrenadier", -1);
     rmEnableMerc("zpMercBohemianKnight", -1);
@@ -1243,6 +1243,10 @@ void main(void)
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
         rmSetTriggerEffectParamInt("PlayerID", i);
         rmSetTriggerEffectParam("TechID","cTechzpKingOfBohemiaSetup"); // King of Bohemia Setup
+        rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+        rmSetTriggerEffectParamInt("PlayerID", i);
+        rmSetTriggerEffectParam("TechID","cTechzpMapBohemian"); // Bohemian assets
         rmSetTriggerEffectParamInt("Status", 2);
 		rmAddTriggerEffect("Quest Var Set");
 		rmSetTriggerEffectParam("QVName","SocketHolder"+i);
@@ -1373,6 +1377,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmSetTriggerEffectParam("TechID","cTechzpKingOfBohemiaRevShadow");
 		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Play Soundset");
+		rmSetTriggerEffectParam("Soundset","UI_Strategywarning");
 		for(x=1; <= cNumberNonGaiaPlayers) {
 			for(y=1; <= cNumberNonGaiaPlayers) {
 				if (x == y || x == k || y == k) {
@@ -1399,6 +1405,13 @@ void main(void)
 				rmSetTriggerEffectParamInt("Player2", k,);
 				rmSetTriggerEffectParam("Status", "Enemy", false);
 			}
+		}
+		for(x=1; <= cNumberNonGaiaPlayers) {
+			rmAddTriggerEffect("Flare Minimap");
+			rmSetTriggerEffectParamInt("PlayerID", x, false);
+			rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+			rmSetTriggerEffectParam("Position", ""+xsVectorGetX(castleCanterLoc)+","+xsVectorGetY(castleCanterLoc)+","+xsVectorGetZ(castleCanterLoc), false);
+			rmSetTriggerEffectParam("Flash", "True", false);
 		}
 		rmAddTriggerEffect("Player : Override Civilization for Flag");
 		rmSetTriggerEffectParamInt("Player",k);
@@ -1434,6 +1447,18 @@ void main(void)
 				}
 			}
 		}
+		rmAddTriggerEffect("Music Filename");
+		rmSetTriggerEffectParam("Music","ypack\music\strategy\Koth.mp3"); // Music Filename
+		rmSetTriggerEffectParamFloat("Duration",0.5);
+		rmAddTriggerEffect("Sound Timer");
+		rmSetTriggerEffectParamInt("Time", 61000);
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd"+k));
+		rmAddTriggerEffect("Play Soundset");
+		rmSetTriggerEffectParam("Soundset","UI_Strategywarning");
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpKingOfBohemiaFallShadow");
+		rmSetTriggerEffectParamInt("Status",2);
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -1941,6 +1966,8 @@ void main(void)
 		rmSetTriggerLoop(false);
 
 		rmSwitchToTrigger(rmTriggerID("CastleOff_Dellayed_Player"+k));
+		rmAddTriggerCondition("Timer ms");
+        rmSetTriggerConditionParamInt("Param1", 1000, false);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+castleCanterMod);
 		rmSetTriggerEffectParamInt("SrcPlayer",k);
@@ -2665,7 +2692,7 @@ void main(void)
 	// AI King of Bohemia Fractions
 
 	for (k=1; <= cNumberNonGaiaPlayers) {
-	if (rmGetPlayerTeam(k) == 0) {
+
 		rmCreateTrigger("ZP_Iniciate_King"+k);
 		rmCreateTrigger("ZP_Execute_King"+k);
 		rmCreateTrigger("ZP_Timer_King"+k);
@@ -2676,7 +2703,7 @@ void main(void)
 		rmSetTriggerConditionParam("MyBool", "false");
 		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
 		rmSetTriggerConditionParamInt("PlayerID",k);
-		rmSetTriggerConditionParam("TechID","cTechIndustrialize");
+		rmSetTriggerConditionParam("TechID","cTechFortressize");
 		rmSetTriggerConditionParamInt("Status",2);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Timer_King"+k));
@@ -2687,7 +2714,7 @@ void main(void)
 
 		rmSwitchToTrigger(rmTriggerID("ZP_Timer_King"+k));
 		rmAddTriggerCondition("Timer");
-		rmSetTriggerConditionParamInt("Param1",10);
+		rmSetTriggerConditionParamInt("Param1",20);
 		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
 		rmSetTriggerConditionParamInt("PlayerID",k);
 		rmSetTriggerConditionParam("TechID","cTechzpNativeBohemianKing");
@@ -2733,7 +2760,7 @@ void main(void)
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
-	}
+
 	}
 
 	// AI Build Towers

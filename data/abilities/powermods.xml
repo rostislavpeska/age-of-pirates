@@ -450,6 +450,23 @@
     <alwaysaddtoplayer>1</alwaysaddtoplayer>
     <soundset type="StartSound" listenertype="Caster">DENatPowerHabsburg</soundset>
   </power>
+  <power name="zpNatPowerBlanikKnights" type="TempUnit">
+    <displaynameid>302383</displaynameid>
+    <rolloverid>302384</rolloverid>
+    <icon>resources\images\icons\abilities\blanik_knights.png</icon>
+    <minimapeventtime sendalertto="ally">1</minimapeventtime>
+    <activetime>5</activetime>
+    <createunit pattern="Spawn" quantity="1" delay="0.0" permanent="">zpMercBohemianKnight</createunit>
+    <createunit pattern="Spawn" quantity="1" delay="0.0" permanent="" reqtech="DENatHabsburgAustroHungarian">deNatHungarianGrenadier</createunit>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <rangeindicatorprotoid radius="12.0" indicatorcount="16" speed="0.6">PowerRanger</rangeindicatorprotoid>
+    <powerescalation>1</powerescalation>
+    <powerescalationrate>2.0</powerescalationrate>
+    <powermaxlevel>16</powermaxlevel>
+    <allowduringnorush>1</allowduringnorush>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+    <soundset type="StartSound" listenertype="Caster">blanik_knights</soundset>
+  </power>
 
 
 

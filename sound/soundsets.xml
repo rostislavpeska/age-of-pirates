@@ -7350,4 +7350,8 @@
     <sound filename="bohemian\Bohemians_Soldier_Attack_3_AoE2.wav" volume="1.0000">
     </sound>
   </soundset>
+  <soundset name="blanik_knights" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="zp_misc\blanik.wav" volume="1.0000">
+    </sound>
+  </soundset>
 </soundsetdef>

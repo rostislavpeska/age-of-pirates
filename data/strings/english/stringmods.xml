@@ -2316,7 +2316,7 @@
       <string _locid="302316">ZP SPC Socket King of Bohemia</string>
       <string _locid="302317">There is only one true King of Bohemia. Hold the kingdom until the time runs out.</string>
       <string _locid="302318">Proclaim a King</string>
-      <string _locid="302319">Pick one of the Bohemian King Dynasties and proclaim yourself a King of Bohemia  \n • Initiates a special type of revolution and transforms your civilisation to Kingdom of Bohemia \n • Spawns 10 Bohemian Landsknechts to protect the city \n • Unlocks specific Royal House units, techs and abilities \n • Starts a victory countdown</string>
+      <string _locid="302319">Pick one of the Bohemian Royal Dynasties and proclaim the King of Bohemia  \n • Rises the Kingdom of Bohemia flag above your Town Center \n • Unlocks specific Royal House units, techs and abilities \n • Starts a victory countdown &lt;color=1.0, 0.0, 0.0&gt;\n • Once you proclaim yourself a King, the other players unite against you. Make sure the city is well defended.&lt;/color&gt;</string>
       <string _locid="302320">House of Habsburg</string>
       <string _locid="302321">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nLine Infantry, Mounted Infantry \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nVienna Congress, Crown Lands, Multinationalism, Austro-Hungarian Empire</string>
       <string _locid="302322">Bohemian Landsknecht</string>
@@ -2346,7 +2346,7 @@
       <string _locid="302346">There is only one true King of Bohemia. Once you proclaim yourself a King, all the enemy players unite against you, so you need to arm the city and hold the socket until the time runs out.</string>
       <string _locid="302347">Kingdom of Bohemia</string>
       <string _locid="302348">You proclaimed yourself to a King of Bohemia!</string>
-      <string _locid="302349">%s proclaimed himself to a King of Bohemia!</string>
+      <string _locid="302349">%s proclaimed himself to a King of Bohemia. Let's unite to take him down!</string>
       <string _locid="302350">House Rubble - source of Wood</string>
       <string _locid="302351">Shipwreck - source of Wood</string>
       <string _locid="302352">ZP Shipwreck Wood Land</string>
@@ -2370,14 +2370,19 @@
       <string _locid="302370">Coronation Cathedral</string>
       <string _locid="302371">Alchemists Workshop</string>
       <string _locid="302372">Patent of Toleration</string>
-      <string _locid="302373">Decreases all Bohemian mercenaries population cost by 1 &lt;color=1.0, 0.5, 0.0&gt;\n • Works only when you hold the socket.&lt;/color&gt;</string>
+      <string _locid="302373">Decreases Bohemian mercenaries population costs. \n • Desreases Bohemian mercenary costs by 20%. &lt;color=1.0, 0.0, 0.0&gt;\n • Works only while you're holding the King of Bohemia socket.&lt;/color&gt;</string>
       <string _locid="302374">ZP Socket EU SPC City Tower 3</string>
       <string _locid="302375">ZP Socket EU SPC City Tower 4</string>
       <string _locid="302376">ZP Socket EU SPC City Tower 5</string>
       <string _locid="302377">ZP Socket EU SPC City Tower 6</string>
       <string _locid="302378">ZP Socket EU SPC City Tower 7</string>
       <string _locid="302379">ZP Socket EU SPC City Tower 8</string>
-
+      <string _locid="302380">How can you be a King without a Kingdom?</string>
+      <string _locid="302381">The King has fallen! The race for the crown starts again.</string>
+      <string _locid="302382">King of the Seas victory started!</string>
+      <string _locid="302383">Knights of Blaník</string>
+      <string _locid="302384">Spawns Bohemian Knights. The longer you wait the more knights you get.</string>
+      <string _locid="302385">The Knights of Blaník ability now also spawns Hungarian Grenadiers.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

@@ -1041,6 +1041,15 @@ if (rmGetIsKOTH()){
    rmCreateTrigger("ConvertKotH_Player"+k);
    }
 
+   rmSwitchToTrigger(rmTriggerID("Revolution_MusicEnd"+i));
+   rmAddTriggerCondition("Timer");
+   rmSetTriggerConditionParamInt("Param1",5);
+   rmAddTriggerEffect("Music Play");
+   rmSetTriggerPriority(1);
+   rmSetTriggerActive(false);
+   rmSetTriggerRunImmediately(false);
+   rmSetTriggerLoop(false);
+
    // KotH Conversion
    for (k=1; <= cNumberNonGaiaPlayers) {
    rmSwitchToTrigger(rmTriggerID("ConvertKotH_Player"+k));
@@ -1122,6 +1131,18 @@ if (rmGetIsKOTH()){
    rmSetTriggerEffectParam("Name","VictoryCounter"+i);
    rmSetTriggerEffectParamInt("Start", victoryCountDown);
    rmSetTriggerEffectParamInt("Stop",0);
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
+   rmSetTriggerEffectParamInt("PlayerID",1);
+   rmSetTriggerEffectParam("TechID","cTechzpKingOfTheSeasShadow"); // Europen Map
+   rmSetTriggerEffectParamInt("Status",2);
+   rmAddTriggerEffect("Music Filename");
+   rmSetTriggerEffectParam("Music","ypack\music\strategy\Koth.mp3"); // Music Filename
+   rmSetTriggerEffectParamFloat("Duration",0.5);
+   rmAddTriggerEffect("Sound Timer");
+   rmSetTriggerEffectParamInt("Time", 61000);
+   rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd"+i));
+   rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","UI_Strategywarning");
    if (i==1)
       rmSetTriggerEffectParam("Msg","{302234}"); // Counter Revolutionaries
    else
