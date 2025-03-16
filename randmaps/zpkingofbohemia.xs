@@ -259,7 +259,6 @@ void main(void)
     rmAddTradeRouteWaypoint(tradeRouteID, 0.15, 0.5);    // Left
     rmAddTradeRouteWaypoint(tradeRouteID, 0.25, 0.75);   // Top Left
     rmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.85);    // Back to Top
-    rmBuildTradeRoute(tradeRouteID, "dirt");
 
     // Place train stopper, because without it the islands son't spawn
     vector socketLoc1 = rmGetTradeRouteWayPoint(tradeRouteID, 0.5);
@@ -595,6 +594,10 @@ void main(void)
 	rmBuildArea(jesuitValley4);
 
 
+	// Build land Trade Route on the terrain beneath it
+	rmBuildTradeRoute(tradeRouteID, "dirt");
+
+
 	// Create north cliff area
     int northCliffID = rmCreateArea("north_cliff");
 	if (cNumberNonGaiaPlayers>=5){
@@ -745,7 +748,7 @@ void main(void)
         rmPlaceObjectDefAtPoint(socketID, 0, socketLoc2);
         socketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID, 0.58);
         rmPlaceObjectDefAtPoint(socketID, 0, socketLoc2);
-        socketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID, 0.74);
+        socketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID, 0.72);
         rmPlaceObjectDefAtPoint(socketID, 0, socketLoc2);
         socketLoc2 = rmGetTradeRouteWayPoint(tradeRouteID, 0.90);
         rmPlaceObjectDefAtPoint(socketID, 0, socketLoc2);
@@ -1412,6 +1415,19 @@ void main(void)
 			rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
 			rmSetTriggerEffectParam("Position", ""+xsVectorGetX(castleCanterLoc)+","+xsVectorGetY(castleCanterLoc)+","+xsVectorGetZ(castleCanterLoc), false);
 			rmSetTriggerEffectParam("Flash", "True", false);
+		}
+		for(x=1; <= cNumberNonGaiaPlayers) {
+			if (x != k) {
+				for(i=1; <= cNumberNonGaiaPlayers) {
+					if (i != k && x != k) {
+						rmAddTriggerEffect("Flare Minimap");
+						rmSetTriggerEffectParamInt("PlayerID", x, false);
+						rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+						rmSetTriggerEffectParam("Position", rmXFractionToMeters(rmPlayerLocXFraction(i))+",0,"+rmXFractionToMeters(rmPlayerLocZFraction(i)), false);
+						rmSetTriggerEffectParam("Flash", "True", false);
+					}
+				}
+			}
 		}
 		rmAddTriggerEffect("Player : Override Civilization for Flag");
 		rmSetTriggerEffectParamInt("Player",k);
