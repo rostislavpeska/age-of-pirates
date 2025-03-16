@@ -21745,6 +21745,10 @@
       <effect type="TechStatus" status="obtainable">zpIndianFriendshipBohemian</effect>
       <effect type="TechStatus" status="obtainable">zpNativeTreatyBohemian</effect>
       <effect type="TechStatus" status="obtainable">zpNatBlanikKnights</effect>
+      <effect type="Data" amount="1.00" subtype="GrantsPowerDuration" protopower="zpNatPowerBlanikKnights" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
     </effects>
   </tech>
   <tech name ="zpSPCKingOfBohemia" type ="Normal">
