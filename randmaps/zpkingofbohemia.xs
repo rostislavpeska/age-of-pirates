@@ -292,7 +292,7 @@ void main(void)
 
     // Place the grouping on the island - using 0.5,0.5 as base and adjusting by -30,-24 tiles
 	rmSetNuggetDifficulty(301, 301);
-	int pragueCastleInstance = rmPlaceGroupingInstanceAtLoc(pragueCastle, 0.5-rmXMetersToFraction(2), 0.5+rmZMetersToFraction(8), 0);
+	int pragueCastleInstance = rmPlaceGroupingInstanceAtLoc(pragueCastle, 0.5-rmXMetersToFraction(2), 0.5+rmZMetersToFraction(22), 0);
 
     // Create center point to avoid
     int centerPoint = rmCreateObjectDef("center point");
@@ -1231,7 +1231,28 @@ void main(void)
 	string guardianUnit = "zpNatBohemianLandsknecht";
 
 	// Victory Timer
-	int victoryCountDown = 900;
+	int victoryCountDown = 0;
+	if (cNumberNonGaiaPlayers<=2) {
+		victoryCountDown = 900;
+	}
+	if (cNumberNonGaiaPlayers==3) {
+		victoryCountDown = 720;
+	}
+	if (cNumberNonGaiaPlayers==4) {
+		victoryCountDown = 600;
+	}
+	if (cNumberNonGaiaPlayers==5) {
+		victoryCountDown = 540;
+	}
+	if (cNumberNonGaiaPlayers==6) {
+		victoryCountDown = 480;
+	}
+	if (cNumberNonGaiaPlayers==7) {
+		victoryCountDown = 420;
+	}
+	if (cNumberNonGaiaPlayers==8) {
+		victoryCountDown = 360;
+	}
 	int socketMinimapFlareDuration = 10;
 
 	// Starting techs
@@ -1255,6 +1276,36 @@ void main(void)
 		rmSetTriggerEffectParam("QVName","SocketHolder"+i);
 		rmSetTriggerEffectParamInt("Value",0);
 	}
+	rmAddTriggerEffect("Modify Protounit Resource");
+	rmSetTriggerEffectParam("ProtoUnit","deMineCoalBuildable");
+	rmSetTriggerEffectParam("Resource","Gold");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParamInt("Field",2);
+	if (cNumberNonGaiaPlayers<=3) {
+		rmSetTriggerEffectParamFloat("Delta",1);
+	} 
+	else if (cNumberNonGaiaPlayers >= 4 && cNumberNonGaiaPlayers <= 6) {
+		rmSetTriggerEffectParamFloat("Delta",1.5);
+	}
+	else {
+		rmSetTriggerEffectParamFloat("Delta",2);
+	}
+	rmSetTriggerEffectParamInt("Relativity",3);
+	rmAddTriggerEffect("Modify Protounit Resource");
+	rmSetTriggerEffectParam("ProtoUnit","zpGrapeBush");
+	rmSetTriggerEffectParam("Resource","Food");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParamInt("Field",2);
+	if (cNumberNonGaiaPlayers<=3) {
+		rmSetTriggerEffectParamFloat("Delta",1);
+	} 
+	else if (cNumberNonGaiaPlayers >= 4 && cNumberNonGaiaPlayers <= 6) {
+		rmSetTriggerEffectParamFloat("Delta",1.5);
+	}
+	else {
+		rmSetTriggerEffectParamFloat("Delta",2);
+	}
+	rmSetTriggerEffectParamInt("Relativity",3);
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -1460,6 +1511,19 @@ void main(void)
 					rmSetTriggerEffectParamInt("Player1", y);
 					rmSetTriggerEffectParamInt("Player2", x,);
 					rmSetTriggerEffectParam("Status", "Enemy", false);
+				}
+			}
+		}
+		for(x=1; <= cNumberNonGaiaPlayers) {
+			if (x != k) {
+				for(i=1; <= cNumberNonGaiaPlayers) {
+					if (i != k && x != k) {
+						rmAddTriggerEffect("Flare Minimap");
+						rmSetTriggerEffectParamInt("PlayerID", x, false);
+						rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+						rmSetTriggerEffectParam("Position", rmXFractionToMeters(rmPlayerLocXFraction(i))+",0,"+rmXFractionToMeters(rmPlayerLocZFraction(i)), false);
+						rmSetTriggerEffectParam("Flash", "True", false);
+					}
 				}
 			}
 		}

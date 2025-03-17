@@ -1282,7 +1282,7 @@
     <tech row="0" page="1" column="1">zpGuardBohemianKing</tech>
     <tech row="0" page="2" column="0">zpBohemianMercenaries</tech>
     <tech row="0" page="2" column="0">zpNatBohemianAcademy</tech>
-    <tech row="0" page="0" column="3">zpNatBlanikKnights</tech>
+    <tech row="0" page="0" column="4">zpNatBlanikKnights</tech>
 
 
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia1</tech>
@@ -50616,6 +50616,115 @@
     <flag>AllowSocketPlacement</flag>
     <flag>NotDeleteable</flag>
     <command page="1" column="0">deSocketBuildCityTower</command>
+  </unit>
+  <unit id="20682" name="zpSPCMineTin">
+    <dbid>20682</dbid>
+    <displaynameid>44164</displaynameid>
+    <editornameid>302386</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <socketoffsetx>0.0000</socketoffsetx>
+    <socketoffsetz>0.0000</socketoffsetz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\gold_mine\tin_mine.xml</animfile>
+    <impacttype>Stone</impacttype>
+    <icon>resources\art\buildings\gold_mine\gold_mine_icon_64x64.png</icon>
+    <minimapicon>ui\minimap\minimap_gold</minimapicon>
+    <portraiticon>resources\art\buildings\gold_mine\gold_mine_portrait.png</portraiticon>
+    <rollovertextid>44163</rollovertextid>
+    <shortrollovertextid>44162</shortrollovertextid>
+    <los>18.0000</los>
+    <initialresource resourcetype="Gold">1500.0000</initialresource>
+    <resourcesubtype>Gold</resourcesubtype>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <scalingaurascale>3.0</scalingaurascale>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <minimapcolor red="0.8900" blue="0.2500" green="0.7000">
+    </minimapcolor>
+    <gathererlimit>20</gathererlimit>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>AbstractMine</unittype>
+    <unittype>MinedResource</unittype>
+    <unittype>Gold</unittype>
+    <unittype>Resource</unittype>
+    <unittype>NatureClass</unittype>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>NoHPBar</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Tracked</flag>
+    <flag>AllowSocketPlacement</flag>
+    <flag>AlwaysShowAsSocket</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20683" name="zpSPROPBuildingMixFlattenGround">
+    <dbid>20683</dbid>
+    <displaynameid>22839</displaynameid>
+    <editornameid>302387</editornameid>
+    <populationcapaddition>10</populationcapaddition>
+    <obstructionradiusx>2.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\hc_buildings\zpcity_mix.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>villagebuildingsmall.xml</placementfile>
+    <icon>resources\art\buildings\house\house_icon.png</icon>
+    <portraiticon>resources\art\buildings\house\house_portrait.png</portraiticon>
+    <civflagoverride>objects\flags\italian</civflagoverride>
+    <rollovertextid>41971</rollovertextid>
+    <shortrollovertextid>41970</shortrollovertextid>
+    <initialhitpoints>1200.0000</initialhitpoints>
+    <maxhitpoints>1200.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>10.0000</buildpoints>
+    <buildlimit>20</buildlimit>
+    <bounty>40.0000</bounty>
+    <buildbounty>20.0000</buildbounty>
+    <cost resourcetype="Wood">100.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <buildingworkrate>0.5000</buildingworkrate>
+    <unittype>BuildingClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>Invulnerable</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>FlattenGround</flag>
   </unit>
   
 

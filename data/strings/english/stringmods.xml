@@ -2354,7 +2354,7 @@
       <string _locid="302354">Bohemian Knight</string>
       <string _locid="302355">Powerful warrion from Bohemian countries</string>
       <string _locid="302356">Mercenary skull_knight</string>
-      <string _locid="302357">Capture the King of Bohemia in the center of the map and proclaim yourself a King of Bohemia. Then hold the socket until the time runs out.</string>
+      <string _locid="302357">Capture the King of Bohemia Socket in the center of the map and proclaim yourself a King. Then hold the socket until the time runs out.</string>
       <string _locid="302358">Once you proclaim yourself a King, all the enemy players unite against you, so you need to arm the city and hold the socket until the time runs out.</string>
       <string _locid="302359">ZP Fort Convertable</string>
       <string _locid="302360">ZP Invisible Gate Socket A</string>
@@ -2383,6 +2383,10 @@
       <string _locid="302383">Knights of Blaník</string>
       <string _locid="302384">Spawns Bohemian Knights. The longer you wait the more knights you get.</string>
       <string _locid="302385">The Knights of Blaník ability now also spawns Hungarian Grenadiers.</string>
+      <string _locid="302386">ZP SPC Tin Mine</string>
+      <string _locid="302387">ZP PROP Building Mix FlattenGround</string>
+      <string _locid="302388">ZP SPC Coal Mine</string>
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
