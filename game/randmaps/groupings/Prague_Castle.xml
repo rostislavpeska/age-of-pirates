@@ -641,9 +641,6 @@
 		<unit variation="177" posx="-21.4147" posz="-18.9080" orientx="-0.7099" orienty="0.0000" orientz="0.7043">UnderbrushMongolia</unit>
 		<unit variation="149" posx="-22.9955" posz="-18.9341" orientx="0.3789" orienty="0.0000" orientz="0.9254">UnderbrushCoast</unit>
 		<unit variation="177" posx="-22.6743" posz="-18.9534" orientx="-0.7086" orienty="0.0000" orientz="0.7056">UnderbrushMongolia</unit>
-		<unit variation="15" posx="-1.0000" posz="-20.0000" orientx="0.0915" orienty="0.0000" orientz="-0.9958">AIStart</unit>
-		<unit variation="197" posx="-1.0000" posz="-20.0000" orientx="0.3146" orienty="0.0000" orientz="0.9492">AIStart</unit>
-		<unit variation="78" posx="-1.0000" posz="-20.0000" orientx="0.0516" orienty="0.0000" orientz="-0.9987">AIStart</unit>
 		<unit variation="177" posx="38.9951" posz="-19.4298" orientx="0.9259" orienty="0.0000" orientz="-0.3778">UnderbrushMongolia</unit>
 		<unit variation="96" posx="38.3267" posz="-19.5900" orientx="-0.3872" orienty="0.0000" orientz="0.9220">UnderbrushForest</unit>
 		<unit variation="1" posx="43.4688" posz="-19.7026" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>

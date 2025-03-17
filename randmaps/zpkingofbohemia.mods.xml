@@ -246,5 +246,13 @@
 		<unit name="zpCinematicRevealer">
 			<los>90</los>
 		</unit>
+		<unit name="zpSPCCathedral">
+			<minimapicon>ui\minimap\military_small</minimapicon>
+            <flag mergeMode="remove">DoNotShowOnMiniMap</flag>
+        </unit>
+		<unit name="zpCathedralJewish">
+			<minimapicon>ui\minimap\military_small</minimapicon>
+            <flag mergeMode="remove">DoNotShowOnMiniMap</flag>
+        </unit>
 	</protomods>
 </mods>
