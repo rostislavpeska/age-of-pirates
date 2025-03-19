@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "302392" displayNameID = "302391" loadDetails="302393" 
+    imagepath = "ui\random_map\florence\florence_mini" cannotReplace = "" loadBackground="ui\random_map\florence\florence_map">
+    <loadss>ui\random_map\florence\florence_01</loadss>
+    <loadss>ui\random_map\florence\florence_02</loadss>
+    <loadss>ui\random_map\florence\florence_03</loadss>
+    <enforcedSettings>
+        <setting type="FFA" state="forbidden" />
+        <setting type="RecordGame" state="forbidden" />
+        <setting type="TwoTeams" state="enforced" />
+        <setting type="DefaultRules" state="enforced" />
+    </enforcedSettings>
+    <recommendedSettings>
+        <civilization>French</civilization>
+        <civilization>Spanish</civilization>
+        <civilization>DEMaltese</civilization>
+        <civilization>DEItalians</civilization>
+        <civilization>Ottomans</civilization>
+        <civilization>British</civilization>
+        <civilization>Germans</civilization>
+    </recommendedSettings>
+</mapinfo>

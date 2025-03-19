@@ -50726,7 +50726,446 @@
     <flag>StartOnNoUpdate</flag>
     <flag>FlattenGround</flag>
   </unit>
-  
+  <unit id="20684" name="zpItalianFort">
+    <dbid>20684</dbid>
+    <displaynameid>302399</displaynameid>
+    <editornameid>30239á</editornameid>
+    <obstructionradiusx>9.0000</obstructionradiusx>
+    <obstructionradiusz>7.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <civflagoverride>objects\flags\papal</civflagoverride>
+    <animfile>buildings\wonders\agra_fort\italian_fort.xml</animfile>
+    <deadreplacement>BuildingRubble6x6</deadreplacement>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>wonders.xml</placementfile>
+    <icon>resources\art\buildings\white_fort_icon_64.png</icon>
+    <minimapicon>ui\minimap\highlighted item</minimapicon>
+    <portraiticon>resources\art\buildings\white_fort_icon_portrait.png</portraiticon>
+    <rollovertextid>25269</rollovertextid>
+    <shortrollovertextid>25639</shortrollovertextid>
+    <legacyhotkeycontext>FortFrontierAccel</legacyhotkeycontext>
+    <initialhitpoints>12000.0000</initialhitpoints>
+    <maxhitpoints>12000.0000</maxhitpoints>
+    <los>34.0000</los>
+    <projectileprotounit>Cannonball</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <buildpoints>120.0000</buildpoints>
+    <buildlimit>5</buildlimit>
+    <bounty>120.0000</bounty>
+    <cost resourcetype="Wood">600.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <maxcontained>50</maxcontained>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractFort</unittype>
+    <unittype>AbstractFindFort</unittype>
+    <unittype>HCGatherPointPri2</unittype>
+    <unittype>AbstractDefensiveBuilding</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>DisableBigButtonUI</flag>
+    <flag>HeroName2</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>Tracked</flag>
+    <flag>DisplayRange</flag>
+    <flag>BuildingShowTactics</flag>
+    <notcontain>AbstractMonk</notcontain>
+    <notcontain>ExcludeFromRansom</notcontain>
+    <notcontain>AbstractFishingBoat</notcontain>
+    <contain>AbstractVillager</contain>
+    <contain>deHomesteadWagon</contain>
+    <contain>AbstractHealer</contain>
+    <contain>ypDaimyoRegicide</contain>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="2">SetGatherPointEconomy</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="1" column="6">SetBuildingAsHomeCityGatherPointEconomic</command>
+    <command page="1" column="7">SetBuildingAsHomeCityGatherPointMilitary</command>
+    <command page="1" column="5">deUSConscription</command>
+    <tactics>fort.tactics</tactics>
+    <protoaction>
+      <name>AntiShipAttack</name>
+      <damage>300.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>40.000000</maxrange>
+      <rof>3.000000</rof>
+      <projectile>Cannonball</projectile>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>CannonAttack</name>
+      <damage>150.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>26.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>300.000000</damagecap>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+      <damagearea>3.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <projectile>Cannonball</projectile>
+      <damagebonus type="AbstractArtillery">0.750000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>150.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>26.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>300.000000</damagecap>
+      <damagearea>3.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <projectile>Cannonball</projectile>
+    </protoaction>
+  </unit>
+  <unit id="20685" name="zpNativeTowerRoman">
+    <dbid>20685</dbid>
+    <displaynameid>300730</displaynameid>
+    <editornameid>302394</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <civflagoverride>objects\flags\papal</civflagoverride>
+    <animfile>buildings\native_settlement\venetian_buildings3.xml</animfile>
+    <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>BuildingClass</unittype>
+    <unittype>AbstractCityManisonB</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+  </unit>
+  <unit id="20686" name="zpNativeTowerFlorence">
+    <dbid>20686</dbid>
+    <displaynameid>300730</displaynameid>
+    <editornameid>302395</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <civflagoverride>objects\flags\florence</civflagoverride>
+    <animfile>buildings\native_settlement\venetian_buildings3.xml</animfile>
+    <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>BuildingClass</unittype>
+    <unittype>AbstractCityManisonB</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+  </unit>
+  <unit id="20687" name="zpSPCRomanFlag">
+    <dbid>20687</dbid>
+    <displaynameid>300730</displaynameid>
+    <editornameid>302396</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
+    <civflagoverride>objects\flags\papal</civflagoverride>
+    <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <flag>NotSelectable</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+  </unit>
+  <unit id="20688" name="zpSPCFlorentianFlag">
+    <dbid>20688</dbid>
+    <displaynameid>300730</displaynameid>
+    <editornameid>302397</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
+    <civflagoverride>objects\flags\florence</civflagoverride>
+    <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <flag>NotSelectable</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+  </unit>
+  <unit id="20689" name="zpItalianFortB">
+    <dbid>20689</dbid>
+    <displaynameid>302390</displaynameid>
+    <editornameid>302389</editornameid>
+    <obstructionradiusx>9.0000</obstructionradiusx>
+    <obstructionradiusz>7.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\wonders\agra_fort\italian_fort.xml</animfile>
+    <civflagoverride>objects\flags\florence</civflagoverride>
+    <deadreplacement>BuildingRubble6x6</deadreplacement>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>wonders.xml</placementfile>
+    <icon>resources\art\buildings\white_fort_icon_64.png</icon>
+    <minimapicon>ui\minimap\highlighted item</minimapicon>
+    <portraiticon>resources\art\buildings\white_fort_icon_portrait.png</portraiticon>
+    <rollovertextid>25269</rollovertextid>
+    <shortrollovertextid>25639</shortrollovertextid>
+    <legacyhotkeycontext>FortFrontierAccel</legacyhotkeycontext>
+    <initialhitpoints>12000.0000</initialhitpoints>
+    <maxhitpoints>12000.0000</maxhitpoints>
+    <los>34.0000</los>
+    <projectileprotounit>Cannonball</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <buildpoints>120.0000</buildpoints>
+    <buildlimit>5</buildlimit>
+    <bounty>120.0000</bounty>
+    <cost resourcetype="Wood">600.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <maxcontained>50</maxcontained>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractFort</unittype>
+    <unittype>AbstractFindFort</unittype>
+    <unittype>HCGatherPointPri2</unittype>
+    <unittype>AbstractDefensiveBuilding</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>DisableBigButtonUI</flag>
+    <flag>HeroName2</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>Tracked</flag>
+    <flag>DisplayRange</flag>
+    <flag>BuildingShowTactics</flag>
+    <notcontain>AbstractMonk</notcontain>
+    <notcontain>ExcludeFromRansom</notcontain>
+    <notcontain>AbstractFishingBoat</notcontain>
+    <contain>AbstractVillager</contain>
+    <contain>deHomesteadWagon</contain>
+    <contain>AbstractHealer</contain>
+    <contain>ypDaimyoRegicide</contain>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="2">SetGatherPointEconomy</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="1" column="6">SetBuildingAsHomeCityGatherPointEconomic</command>
+    <command page="1" column="7">SetBuildingAsHomeCityGatherPointMilitary</command>
+    <command page="1" column="5">deUSConscription</command>
+    <tactics>fort.tactics</tactics>
+    <protoaction>
+      <name>AntiShipAttack</name>
+      <damage>300.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>40.000000</maxrange>
+      <rof>3.000000</rof>
+      <projectile>Cannonball</projectile>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>CannonAttack</name>
+      <damage>150.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>26.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>300.000000</damagecap>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+      <damagearea>3.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <projectile>Cannonball</projectile>
+      <damagebonus type="AbstractArtillery">0.750000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>150.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>26.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>300.000000</damagecap>
+      <damagearea>3.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <projectile>Cannonball</projectile>
+    </protoaction>
+  </unit>
 
 
 

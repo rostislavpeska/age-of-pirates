@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>14</width>
+	<height>14</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="0" posx="-13.4724" posz="-13.4050" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="-12.1174" posz="-14.1058" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="-11.3549" posz="-12.0950" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="-6.1054" posz="-13.5761" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsColony</unit>
+		<unit variation="0" posx="-7.4062" posz="-13.7839" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsPoles</unit>
+		<unit variation="2" posx="-9.6306" posz="-12.3964" orientx="-1.0000" orienty="0.0000" orientz="0.0061">PropsPottedPlants</unit>
+		<unit variation="10" posx="8.1773" posz="-13.9490" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsColony</unit>
+		<unit variation="0" posx="6.1961" posz="-13.6586" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsPoles</unit>
+		<unit variation="0" posx="13.2079" posz="-12.7637" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="7" posx="14.3834" posz="-14.0322" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsColony</unit>
+		<unit variation="10" posx="-13.0821" posz="-13.9249" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsColony</unit>
+		<unit variation="1" posx="13.1251" posz="-13.9578" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsColony</unit>
+		<unit variation="133" posx="-2.9986" posz="-11.5147" orientx="-0.8057" orienty="0.0000" orientz="0.5923">deSPCTreeCypressProp</unit>
+		<unit variation="140" posx="4.8938" posz="-11.8663" orientx="0.3825" orienty="0.0000" orientz="-0.9240">zpSPCCityBuildingMix</unit>
+		<unit variation="229" posx="6.1281" posz="-10.4047" orientx="0.7070" orienty="0.0000" orientz="-0.7072">zpSPCCityBuildingMix</unit>
+		<unit variation="229" posx="2.5812" posz="-11.9517" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="140" posx="0.1054" posz="-11.6401" orientx="-0.3829" orienty="0.0000" orientz="-0.9238">zpSPCCityBuildingMix</unit>
+		<unit variation="229" posx="-0.4852" posz="-10.1127" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpSPCCityBuildingMix</unit>
+		<unit variation="0" posx="-12.1210" posz="-11.2436" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="-11.6691" posz="-11.7808" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="-9.1378" posz="-11.2727" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="-8.5014" posz="-10.3096" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="2" posx="-2.6456" posz="-11.4872" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="-1.4764" posz="-11.7548" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="-1.3790" posz="-11.5213" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="2" posx="6.1851" posz="-10.7252" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="8.2655" posz="-10.6667" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="8" posx="10.2265" posz="-10.7939" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="254" posx="-9.8231" posz="-9.9955" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">deNatEUPropStatue</unit>
+		<unit variation="2" posx="-12.2660" posz="-9.3783" orientx="-1.0000" orienty="0.0000" orientz="0.0061">PropsPottedPlants</unit>
+		<unit variation="229" posx="8.8493" posz="-7.6335" orientx="0.7070" orienty="0.0000" orientz="-0.7072">zpSPCCityBuildingMix</unit>
+		<unit variation="133" posx="11.5306" posz="-10.0176" orientx="0.8059" orienty="0.0000" orientz="-0.5921">deSPCTreeCypressProp</unit>
+		<unit variation="0" posx="-13.7995" posz="-7.3286" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">PropsPoles</unit>
+		<unit variation="0" posx="-11.0507" posz="-9.0047" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="-10.4017" posz="-8.9061" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="9.9417" posz="-8.8148" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="1" posx="14.2780" posz="-7.6873" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">PropsPoles</unit>
+		<unit variation="105" posx="-3.0411" posz="-8.5902" orientx="-0.7070" orienty="0.0000" orientz="0.7072">zpNativeStatueVenetian</unit>
+		<unit variation="229" posx="10.8574" posz="-5.6807" orientx="0.7069" orienty="0.0000" orientz="-0.7074">zpSPCCityBuildingMix</unit>
+		<unit variation="2" posx="11.9019" posz="-6.0454" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="140" posx="11.8941" posz="-5.0756" orientx="0.9238" orienty="0.0000" orientz="-0.3828">zpSPCCityBuildingMix</unit>
+		<unit variation="8" posx="-13.7187" posz="-2.6939" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsColony</unit>
+		<unit variation="229" posx="11.9335" posz="-2.2522" orientx="1.0000" orienty="0.0000" orientz="-0.0001">zpSPCCityBuildingMix</unit>
+		<unit variation="3" posx="-9.8717" posz="-1.8977" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="1" posx="-11.4429" posz="-1.9532" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="105" posx="-7.9832" posz="-3.1822" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeStatueVenetian</unit>
+		<unit variation="133" posx="-11.2636" posz="-2.5931" orientx="0.8059" orienty="0.0000" orientz="-0.5921">deSPCTreeCypressProp</unit>
+		<unit variation="229" posx="-10.0058" posz="-0.6952" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpSPCCityBuildingMix</unit>
+		<unit variation="140" posx="-11.2001" posz="0.4384" orientx="-0.9240" orienty="0.0000" orientz="-0.3825">zpSPCCityBuildingMix</unit>
+		<unit variation="3" posx="-10.4102" posz="-1.0655" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="229" posx="11.9301" posz="1.5583" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="229" posx="-11.3362" posz="2.0981" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="0" posx="-7.8651" posz="3.4447" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsPoles</unit>
+		<unit variation="1" posx="-9.2809" posz="3.0485" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="1" posx="14.2504" posz="3.7588" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">PropsPoles</unit>
+		<unit variation="0" posx="-14.0076" posz="5.1441" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">PropsPoles</unit>
+		<unit variation="241" posx="-4.5650" posz="3.0475" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeTowerFlorence</unit>
+		<unit variation="140" posx="-11.2046" posz="4.9353" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpSPCCityBuildingMix</unit>
+		<unit variation="229" posx="-9.5897" posz="6.3602" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCCityBuildingMix</unit>
+		<unit variation="229" posx="11.9406" posz="5.4623" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="8" posx="13.0929" posz="5.6618" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsPottedPlants</unit>
+		<unit variation="229" posx="-7.4352" posz="8.4569" orientx="-0.7068" orienty="0.0000" orientz="0.7074">zpSPCCityBuildingMix</unit>
+		<unit variation="0" posx="-9.6608" posz="6.8327" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="133" posx="8.6802" posz="8.1581" orientx="-0.8058" orienty="0.0000" orientz="0.5922">deSPCTreeCypressProp</unit>
+		<unit variation="229" posx="11.9561" posz="9.2289" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="229" posx="-5.5602" posz="10.4021" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCCityBuildingMix</unit>
+		<unit variation="3" posx="-10.1208" posz="8.2572" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="3" posx="-10.6472" posz="9.9582" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="9" posx="-9.6238" posz="8.3846" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="12" posx="-8.3941" posz="9.8566" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="2" posx="-7.1385" posz="10.0401" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="1" posx="-0.2437" posz="8.7622" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="3" posx="2.0821" posz="8.9087" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="2" posx="5.7220" posz="9.8688" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="3" posx="7.1542" posz="8.8170" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="133" posx="-7.7922" posz="10.4549" orientx="0.8059" orienty="0.0000" orientz="-0.5921">deSPCTreeCypressProp</unit>
+		<unit variation="229" posx="1.8253" posz="11.9914" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="229" posx="-2.1213" posz="11.8829" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="140" posx="-4.2801" posz="11.8917" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpSPCCityBuildingMix</unit>
+		<unit variation="229" posx="5.7466" posz="12.0175" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="140" posx="12.1479" posz="11.7779" orientx="0.7072" orienty="0.0000" orientz="0.7071">zpSPCCityBuildingMix</unit>
+		<unit variation="5" posx="-14.2574" posz="12.0096" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="2" posx="-11.1868" posz="10.4977" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="-4.6751" posz="11.7476" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="-5.5754" posz="11.5042" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="-9.0222" posz="11.0664" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="229" posx="9.3799" posz="12.0679" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="0" posx="-11.0167" posz="13.6071" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="1" posx="2.0709" posz="14.7776" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsPoles</unit>
+		<unit variation="8" posx="3.3248" posz="13.6199" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsPottedPlants</unit>
+		<unit variation="1" posx="-11.7099" posz="14.2608" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsPoles</unit>
+		<unit variation="41" posx="0.7072" posz="1.3818" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpItalianFortB</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="props\east_colony">
+			<block startx="-7" startz="-7" endx="-7" endz="-7"></block>
+			<block startx="-7" startz="-6" endx="-7" endz="1"></block>
+			<block startx="-6" startz="-6" endx="-6" endz="-2"></block>
+			<block startx="-5" startz="-6" endx="-5" endz="-2"></block>
+			<block startx="-5" startz="1" endx="-5" endz="1"></block>
+			<block startx="-4" startz="-6" endx="-4" endz="-3"></block>
+			<block startx="-4" startz="-1" endx="-4" endz="1"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="1"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="-4"></block>
+			<block startx="-2" startz="-2" endx="-2" endz="1"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="1"></block>
+			<block startx="0" startz="-4" endx="0" endz="1"></block>
+			<block startx="1" startz="-6" endx="1" endz="1"></block>
+			<block startx="-6" startz="-7" endx="-6" endz="-7"></block>
+			<block startx="-5" startz="-7" endx="-5" endz="-7"></block>
+			<block startx="-4" startz="-7" endx="-4" endz="-7"></block>
+			<block startx="-3" startz="-7" endx="-3" endz="-7"></block>
+			<block startx="-2" startz="-7" endx="-2" endz="-7"></block>
+			<block startx="-1" startz="-7" endx="-1" endz="-7"></block>
+			<block startx="0" startz="-7" endx="0" endz="-7"></block>
+			<block startx="1" startz="-7" endx="1" endz="-7"></block>
+			<block startx="-7" startz="2" endx="-7" endz="6"></block>
+			<block startx="-6" startz="3" endx="-6" endz="4"></block>
+			<block startx="-6" startz="6" endx="-6" endz="6"></block>
+			<block startx="-5" startz="2" endx="-5" endz="2"></block>
+			<block startx="-5" startz="6" endx="-5" endz="6"></block>
+			<block startx="-4" startz="2" endx="-4" endz="6"></block>
+			<block startx="-3" startz="2" endx="-3" endz="4"></block>
+			<block startx="-3" startz="6" endx="-3" endz="6"></block>
+			<block startx="-2" startz="2" endx="-2" endz="4"></block>
+			<block startx="-2" startz="6" endx="-2" endz="6"></block>
+			<block startx="-1" startz="2" endx="-1" endz="6"></block>
+			<block startx="0" startz="2" endx="0" endz="4"></block>
+			<block startx="0" startz="6" endx="0" endz="6"></block>
+			<block startx="1" startz="2" endx="1" endz="6"></block>
+			<block startx="2" startz="2" endx="2" endz="3"></block>
+			<block startx="2" startz="6" endx="2" endz="6"></block>
+			<block startx="3" startz="2" endx="3" endz="2"></block>
+			<block startx="3" startz="6" endx="3" endz="6"></block>
+			<block startx="4" startz="6" endx="4" endz="6"></block>
+			<block startx="5" startz="6" endx="5" endz="6"></block>
+			<block startx="6" startz="2" endx="6" endz="6"></block>
+			<block startx="2" startz="-7" endx="2" endz="-7"></block>
+			<block startx="3" startz="-7" endx="3" endz="-7"></block>
+			<block startx="4" startz="-7" endx="4" endz="-7"></block>
+			<block startx="5" startz="-7" endx="5" endz="-7"></block>
+			<block startx="6" startz="-7" endx="6" endz="-7"></block>
+			<block startx="2" startz="-5" endx="2" endz="1"></block>
+			<block startx="3" startz="-4" endx="3" endz="1"></block>
+			<block startx="4" startz="-4" endx="4" endz="1"></block>
+			<block startx="5" startz="-5" endx="5" endz="-1"></block>
+			<block startx="6" startz="-6" endx="6" endz="1"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="great_plains\ground7a_gp">
+			<block startx="-6" startz="0" endx="-6" endz="1"></block>
+			<block startx="-5" startz="-1" endx="-5" endz="0"></block>
+			<block startx="0" startz="-6" endx="0" endz="-5"></block>
+			<block startx="-6" startz="2" endx="-6" endz="2"></block>
+			<block startx="-6" startz="5" endx="-6" endz="5"></block>
+			<block startx="-5" startz="3" endx="-5" endz="5"></block>
+			<block startx="-3" startz="5" endx="-3" endz="5"></block>
+			<block startx="-2" startz="5" endx="-2" endz="5"></block>
+			<block startx="5" startz="2" endx="5" endz="2"></block>
+			<block startx="5" startz="4" endx="5" endz="5"></block>
+			<block startx="2" startz="-6" endx="2" endz="-6"></block>
+			<block startx="3" startz="-6" endx="3" endz="-5"></block>
+			<block startx="5" startz="1" endx="5" endz="1"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="great_lakes\ground_grass1_gls">
+			<block startx="0" startz="5" endx="0" endz="5"></block>
+			<block startx="2" startz="4" endx="2" endz="5"></block>
+			<block startx="3" startz="3" endx="3" endz="5"></block>
+			<block startx="4" startz="2" endx="4" endz="5"></block>
+			<block startx="5" startz="3" endx="5" endz="3"></block>
+			<block startx="4" startz="-6" endx="4" endz="-5"></block>
+			<block startx="5" startz="-6" endx="5" endz="-6"></block>
+			<block startx="5" startz="0" endx="5" endz="0"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
+			<block startx="-6" startz="-1" endx="-6" endz="-1"></block>
+			<block startx="-4" startz="-2" endx="-4" endz="-2"></block>
+			<block startx="-2" startz="-3" endx="-2" endz="-3"></block>
+		</tilegroup>
+		<cliffgroup type="ZP City">
+			<block startx="-6" startz="-2" endx="-6" endz="-2"></block>
+			<block startx="-6" startz="0" endx="-6" endz="1"></block>
+			<block startx="-5" startz="-2" endx="-5" endz="0"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="-5"></block>
+			<block startx="-1" startz="-5" endx="-1" endz="-5"></block>
+			<block startx="0" startz="-6" endx="0" endz="-5"></block>
+			<block startx="1" startz="-6" endx="1" endz="-6"></block>
+			<block startx="-6" startz="2" endx="-6" endz="2"></block>
+			<block startx="-5" startz="2" endx="-5" endz="3"></block>
+			<block startx="-4" startz="3" endx="-4" endz="4"></block>
+			<block startx="-3" startz="4" endx="-3" endz="5"></block>
+			<block startx="-2" startz="5" endx="-2" endz="5"></block>
+			<block startx="-1" startz="5" endx="-1" endz="5"></block>
+			<block startx="0" startz="5" endx="0" endz="5"></block>
+			<block startx="1" startz="5" endx="1" endz="5"></block>
+			<block startx="2" startz="5" endx="2" endz="5"></block>
+			<block startx="3" startz="5" endx="3" endz="5"></block>
+			<block startx="4" startz="4" endx="4" endz="5"></block>
+			<block startx="5" startz="2" endx="5" endz="4"></block>
+			<block startx="2" startz="-6" endx="2" endz="-5"></block>
+			<block startx="3" startz="-5" endx="3" endz="-4"></block>
+			<block startx="4" startz="-4" endx="4" endz="-3"></block>
+			<block startx="5" startz="-3" endx="5" endz="1"></block>
+		</cliffgroup>
+		<heights>
+			<tiles x="-7" z="-7">-0.206 -0.016 -0.016 -0.016 -0.206 -0.206 -0.206 -0.206 -0.206 -0.206 -0.206 -0.206 -0.206 -0.206 </tiles>
+			<tiles x="-7" z="-6">-0.016 -0.016 -0.017 0.093 0.159 -0.206 -0.206 -0.206 -0.206 -0.206 -0.206 -0.206 -0.206 -0.206 </tiles>
+			<tiles x="-7" z="-5">-0.030 0.106 0.562 0.947 1.128 2.194 -0.206 -0.206 2.194 2.194 -0.206 -0.206 0.680 0.248 </tiles>
+			<tiles x="-7" z="-4">-0.027 0.698 1.578 1.701 1.751 2.194 2.194 2.194 2.194 2.194 2.194 -0.206 -0.206 1.397 </tiles>
+			<tiles x="-7" z="-3">-0.054 1.029 1.659 1.723 1.723 1.723 1.723 1.723 1.723 1.723 2.194 2.194 -0.206 -0.206 </tiles>
+			<tiles x="-7" z="-2">-0.165 -0.206 2.194 2.194 1.723 1.723 1.723 1.723 1.723 1.723 1.723 2.194 2.194 -0.206 </tiles>
+			<tiles x="-7" z="-1">-0.165 -0.206 -0.206 2.194 1.723 1.723 1.723 1.723 1.723 1.723 1.723 1.723 2.194 -0.206 </tiles>
+			<tiles x="-7" z="0">-0.165 -0.206 -0.206 2.194 1.723 1.723 1.723 1.723 1.723 1.723 1.723 1.723 2.194 -0.206 </tiles>
+			<tiles x="-7" z="1">-0.165 -0.206 2.194 2.194 1.723 1.723 1.723 1.723 1.723 1.723 1.723 1.723 2.194 -0.206 </tiles>
+			<tiles x="-7" z="2">-0.165 -0.206 2.194 2.194 1.723 1.723 1.723 1.723 1.723 1.723 1.723 1.723 2.194 -0.206 </tiles>
+			<tiles x="-7" z="3">-0.165 -0.206 -0.206 2.194 2.194 1.723 1.723 1.723 1.723 1.723 1.723 1.723 2.194 -0.206 </tiles>
+			<tiles x="-7" z="4">-0.165 1.177 -0.206 -0.206 2.194 2.194 1.723 1.723 1.723 1.723 1.723 2.194 2.194 -0.206 </tiles>
+			<tiles x="-7" z="5">-0.204 0.947 1.676 -0.206 -0.206 2.194 2.194 2.194 2.194 2.194 2.194 2.194 -0.206 -0.206 </tiles>
+			<tiles x="-7" z="6">-0.206 0.085 0.979 1.231 -0.206 -0.206 -0.206 -0.206 -0.206 -0.206 -0.206 -0.206 -0.206 0.766 </tiles>
+		</heights>
+	</tiles>
+</grouping>
