@@ -101,7 +101,7 @@
 		<unit variation="130" posx="5.2211" posz="13.7814" orientx="0.3825" orienty="0.0000" orientz="0.9239">zpPropsFlowers</unit>
 	</units>
 	<tiles>
-		<tilegroup type="PassableLand" subtype="props\east_colony">
+		<tilegroup type="Block" subtype="props\east_colony">
 			<block startx="-7" startz="-7" endx="-7" endz="0"></block>
 			<block startx="-6" startz="-7" endx="-6" endz="0"></block>
 			<block startx="-5" startz="-7" endx="-5" endz="-6"></block>

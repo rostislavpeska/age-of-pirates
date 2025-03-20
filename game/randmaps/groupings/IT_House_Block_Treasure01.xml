@@ -113,7 +113,7 @@
 		<unit variation="0" posx="-4.4184" posz="14.6691" orientx="-0.7141" orienty="0.0000" orientz="-0.7001">PropsPoles</unit>
 	</units>
 	<tiles>
-		<tilegroup type="PassableLand" subtype="props\east_colony">
+		<tilegroup type="Block" subtype="props\east_colony">
 			<block startx="-7" startz="-7" endx="-7" endz="0"></block>
 			<block startx="-6" startz="-7" endx="-6" endz="-6"></block>
 			<block startx="-6" startz="-2" endx="-6" endz="0"></block>

@@ -195,9 +195,6 @@ void main(void)
 
 	// Big city for 6+ players
 	int bigCity = 0;
-	int oneVsAll = 0;
-	if (teamZeroCount>=7 || teamOneCount>=7)
-		oneVsAll = 1;
 	if (cNumberNonGaiaPlayers>=6)
 		bigCity = 1;
 	int citySize = 0;
@@ -206,6 +203,11 @@ void main(void)
 		citySize = 17;
 		//citySizeN = rmXTilesToFraction(34);
 	}
+
+	// One vs. All - special setup for 7 players on one side
+	int oneVsAll = 0;
+	if (teamZeroCount>=7 || teamOneCount>=7)
+		oneVsAll = 1;
 
 	rmSetAllMapReveal(true);
 	
@@ -216,7 +218,7 @@ void main(void)
    
    	// LIGHT SET
 
-	rmSetLightingSet("age3challenges09a");
+	rmSetLightingSet("Florida_Skirmish");
 
 
 	// Picks default terrain and water
@@ -231,9 +233,9 @@ void main(void)
 	rmSetMapType("grass");
 	rmSetMapType("land");
     rmSetMapType("default");
-    rmSetMapType("westEurope");
+    rmSetMapType("mediEurope");
 	rmSetMapType("piratehistoricalmap");
-    rmSetMapType("euroTradeRouteCapture");
+    rmSetMapType("euroLandRiverTradeRoute");
 
 	chooseMercs();
 
@@ -511,6 +513,7 @@ void main(void)
 
 	vector stoperLoc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID, 0));
 
+	// Define Map center
 	float mapCenter = rmZMetersToFraction(xsVectorGetZ(stoperLoc));
     float mapRatio = 1.66;
 	if (bigCity == 1)
@@ -518,7 +521,10 @@ void main(void)
 	else
 		riverCenter = mapCenter*1.58;
 
-    //  ************************** River ******************************
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.20);
+
+    // ************************** River ******************************
 
     // River must be defined before the islands are placed
     int riverID = rmRiverCreate(-1, "Italian Pond", 4, 4, 15, 15); //  (-1, "new england lake", 18, 14, 5, 5)
@@ -604,9 +610,9 @@ void main(void)
 	rmPlaceGroupingAtLoc(northWestWallTerrain, 0, 0.8, 0.0+rmZTilesToFraction(cityEdgeInner+5));
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
-	rmSetStatusText("",0.20);
+	rmSetStatusText("",0.30);
 
-	//  ************************** City Terrain ******************************
+	// ************************** City Terrain ******************************
 
 	// Streets terrain
 	int citySouth = rmCreateArea("city South");
@@ -619,9 +625,7 @@ void main(void)
 	rmAddAreaToClass(citySouth , classStreet);
 	rmAddAreaToClass(citySouth , rmClassID("classPlateau"));
     rmBuildArea(citySouth); 
-
    
-	// Streets terrain
 	int cityNorth = rmCreateArea("streets North");
     rmSetAreaSize(cityNorth, 0.7, 0.7);
     rmSetAreaLocation(cityNorth, 0.5, 0.75);		
@@ -633,7 +637,7 @@ void main(void)
 	rmAddAreaToClass(cityNorth , rmClassID("classPlateau"));
     rmBuildArea(cityNorth); 
 
-
+	// Countryside Terrain
     int countrysideTerrainSouth = rmCreateArea("countryside South");
     rmSetAreaSize(countrysideTerrainSouth, 0.3, 0.3);
     rmSetAreaLocation(countrysideTerrainSouth, 0.5, 0.5-rmXTilesToFraction(15));	
@@ -702,19 +706,12 @@ void main(void)
     rmSetAreaCoherence(gateRoad4 , 0.5);
     rmBuildArea(gateRoad4 );
 
-
-
-	// Text
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.40);
 
+	//===================set up grid locations===================
 
-    //===========dansil code start============
-
-		rmDefineClass("classBlock");
-		//Constraints
-
-
-//===================set up grid locations===================
+	// LocZ
 
 	float locZ1 = 1.0-rmZTilesToFraction(cityEdgeInner-10);
 	float locZ2 = 1.0-rmZTilesToFraction(cityEdgeInner-27);
@@ -737,6 +734,7 @@ void main(void)
 	float locZm9 = 0.0-rmZTilesToFraction(cityEdgeInner-146);
 	
 
+	// LocX
 
 	float locX0 = 0.94;
 	float locX1 = 0.851;
@@ -749,16 +747,10 @@ void main(void)
 	float locX8 = 0.15;
 	float locX9 = 0.06;
 
-	float palaceX1 = 0.615;
-	float palaceX2 = 0.4;
 
+	//===================define and place groupings========================
 
-
-
-//===================define groupings========================
-
-// Unique City Groupings
-
+	// Unique City Groupings
 
 	// Florence
 	int blockFlorence = rmCreateGrouping("florence cathedral", "IT_SPC_Florence");
@@ -774,7 +766,6 @@ void main(void)
 
     int florencePlacement1 = rmPlaceGroupingInstanceAtLoc(blockFlorence, 0.61, 1.0-rmZTilesToFraction(cityEdgeInner-36), 0);
     int romePlacement1 = rmPlaceGroupingInstanceAtLoc(blockRome, 0.4, 0.0+rmZTilesToFraction(cityEdgeInner-36), 0);
-
 
     // Define Blocks
 
@@ -825,6 +816,12 @@ void main(void)
     rmSetGroupingMinDistance(blockWarehouse, 0.00);
     rmSetGroupingMaxDistance(blockWarehouse, 0.50);
 	rmAddGroupingToClass(blockWarehouse, rmClassID("classBlock"));
+
+	// Lombard
+    int blockLombard = rmCreateGrouping("Lombard", "IT_House_Block_Lombard");
+    rmSetGroupingMinDistance(blockLombard, 0.00);
+    rmSetGroupingMaxDistance(blockLombard, 0.50);
+	rmAddGroupingToClass(blockLombard, rmClassID("classBlock"));
     
     // Trade Post
     int blockTrade = rmCreateGrouping("Trade", "IT_SPC_Block_Trade");
@@ -848,6 +845,30 @@ void main(void)
     rmSetGroupingMinDistance(blockPark, 0.00);
     rmSetGroupingMaxDistance(blockPark, 0.50);
 	rmAddGroupingToClass(blockPark, rmClassID("classBlock"));
+
+	// Menagerie
+    int blockMenagerie = rmCreateGrouping("Menagerie", "IT_Resource_Block_Menager");
+    rmSetGroupingMinDistance(blockMenagerie, 0.00);
+    rmSetGroupingMaxDistance(blockMenagerie, 0.50);
+	rmAddGroupingToClass(blockMenagerie, rmClassID("classBlock"));
+
+    // Italian Castle Rome
+    int blockCastello = rmCreateGrouping("Castello", "IT_SPC_Castello");
+    rmSetGroupingMinDistance(blockCastello, 0.00);
+    rmSetGroupingMaxDistance(blockCastello, 0.50);
+	rmAddGroupingToClass(blockCastello, rmClassID("classBlock"));
+
+	// Italian Castle Florence
+    int blockCastello2 = rmCreateGrouping("Castello 2", "IT_SPC_Castello2");
+    rmSetGroupingMinDistance(blockCastello2, 0.00);
+    rmSetGroupingMaxDistance(blockCastello2, 0.50);
+	rmAddGroupingToClass(blockCastello2, rmClassID("classBlock"));
+
+	// Construction
+    int blockConstruction = rmCreateGrouping("Construction", "IT_SPC_Block_Constr");
+    rmSetGroupingMinDistance(blockConstruction, 0.00);
+    rmSetGroupingMaxDistance(blockConstruction, 0.50);
+	rmAddGroupingToClass(blockConstruction, rmClassID("classBlock"));
 
     // House Blocks
 	int blockHouse01 = rmCreateGrouping("house1", "IT_House_Block_01");
@@ -880,30 +901,6 @@ void main(void)
     rmSetGroupingMaxDistance(blockHouse06, 0.50);
 	rmAddGroupingToClass(blockHouse06, rmClassID("classBlock"));
 
-    // Menagerie
-    int blockMenagerie = rmCreateGrouping("Menagerie", "IT_Resource_Block_Menager");
-    rmSetGroupingMinDistance(blockMenagerie, 0.00);
-    rmSetGroupingMaxDistance(blockMenagerie, 0.50);
-	rmAddGroupingToClass(blockMenagerie, rmClassID("classBlock"));
-
-    // Italian Castle Rome
-    int blockCastello = rmCreateGrouping("Castello", "IT_SPC_Castello");
-    rmSetGroupingMinDistance(blockCastello, 0.00);
-    rmSetGroupingMaxDistance(blockCastello, 0.50);
-	rmAddGroupingToClass(blockCastello, rmClassID("classBlock"));
-
-	// Italian Castle Florence
-    int blockCastello2 = rmCreateGrouping("Castello 2", "IT_SPC_Castello2");
-    rmSetGroupingMinDistance(blockCastello2, 0.00);
-    rmSetGroupingMaxDistance(blockCastello2, 0.50);
-	rmAddGroupingToClass(blockCastello2, rmClassID("classBlock"));
-
-	// Construction
-    int blockConstruction = rmCreateGrouping("Construction", "IT_SPC_Block_Constr");
-    rmSetGroupingMinDistance(blockConstruction, 0.00);
-    rmSetGroupingMaxDistance(blockConstruction, 0.50);
-	rmAddGroupingToClass(blockConstruction, rmClassID("classBlock"));
-
     // Place Groupings
 
     rmPlaceGroupingAtLoc(blockMarket, 0, locX5, locZ2);
@@ -926,9 +923,9 @@ void main(void)
 	if (teamZeroCount >= 2 && oneVsAll == 0)
 	rmPlaceGroupingAtLoc(blockAuditore, 0, locX5, locZm4);
 
-    rmSetNuggetDifficulty(299, 299);
-    rmPlaceGroupingAtLoc(blockFactory, 0, locX7, locZ2);
-    rmPlaceGroupingAtLoc(blockFactory, 0, locX2, locZm2);
+    rmSetNuggetDifficulty(305, 305);
+	int factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX7, locZ2, 0);
+	int factoryPlacement2 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX2, locZm2, 0);
 
     rmPlaceGroupingAtLoc(blockMill, 0, locX2, locZ3,);
     rmPlaceGroupingAtLoc(blockMill, 0, locX7, locZm3);
@@ -939,13 +936,16 @@ void main(void)
     rmPlaceGroupingAtLoc(blockTrade, 0, locX4, locZ1);
     rmPlaceGroupingAtLoc(blockTrade, 0, locX4, locZm1);
 
+	rmSetNuggetDifficulty(304, 304);
 	if (oneVsAll == 0)
 	{
 		rmPlaceGroupingAtLoc(blockTrade, 0, locX4, locZ5);
 		rmPlaceGroupingAtLoc(blockTrade, 0, locX4, locZm5);
+		rmPlaceGroupingAtLoc(blockLombard, 0, locX5, locZ5);
+		rmPlaceGroupingAtLoc(blockLombard, 0, locX5, locZm5);
 	}
 
-    rmSetNuggetDifficulty(192, 192);
+    rmSetNuggetDifficulty(303, 303);
     rmPlaceGroupingAtLoc(blockTreasure01, 0, locX2, locZ1);
     rmPlaceGroupingAtLoc(blockTreasure01, 0, locX7, locZm1);
 
@@ -959,147 +959,150 @@ void main(void)
     rmPlaceGroupingAtLoc(blockPark, 0, locX5, locZm1);
 
     rmSetNuggetDifficulty(98, 98);
-    rmPlaceGroupingAtLoc(blockMenagerie, 0, locX6, locZ2);
-    rmPlaceGroupingAtLoc(blockMenagerie, 0, locX3, locZm2);
+	int menageriePlacement1 = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locX6, locZ2, 0);
+	int menageriePlacement2 = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locX3, locZm2, 0);
 
-//==============================================================
-//roda player placement
-//==============================================================
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.50);
 
-if (cNumberTeams == 2){
-	if (teamOneCount == 1)				
-	{	
-		rmPlacePlayer(firstDefender, locX8, locZ2);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX7, locZ4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX8, locZ4);
-	}
-	if (teamZeroCount == 1)				
-	{	
-		rmPlacePlayer(firstAttacker, locX1, locZm2);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZm4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX2, locZm4);
-	}
-	if (teamOneCount == 2)				
-	{	
-		rmPlacePlayer(firstDefender, locX8, locZ2);
-		rmPlacePlayer(secondDefender, locX0, locZ2);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZ4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX2, locZ4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX7, locZ4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX8, locZ4);
-	}
-	if (teamZeroCount == 2)				
-	{	
-		rmPlacePlayer(firstAttacker, locX9, locZm2);
-		rmPlacePlayer(secondAttacker, locX1, locZm2);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX7, locZm4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX8, locZm4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZm4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX2, locZm4);
-	}
-	if (teamOneCount == 3)				
-	{	
-		rmPlacePlayer(firstDefender, locX8, locZ2);
-		rmPlacePlayer(secondDefender, locX0, locZ2);
-		rmPlacePlayer(thirdDefender, locX2, locZ4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX7, locZ4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX8, locZ4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZ4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX5, locZ5);
-	}
-	if (teamZeroCount == 3)				
-	{	
-		rmPlacePlayer(firstAttacker, locX9, locZm2);
-		rmPlacePlayer(secondAttacker, locX1, locZm2);
-		rmPlacePlayer(thirdAttacker, locX7, locZm4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX5, locZm5);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX8, locZm4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZm4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX2, locZm4);
-	}
-	if (teamOneCount == 4)				
-	{	
-		rmPlacePlayer(firstDefender, locX8, locZ2);
-		rmPlacePlayer(secondDefender, locX0, locZ2);
-		rmPlacePlayer(thirdDefender, locX2, locZ4);
-		rmPlacePlayer(fourthDefender, locX6, locZ4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX9, locZ1);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX8, locZ4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZ4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX0, locZ1);
-	}
-	if (teamZeroCount == 4)				
-	{	
-		rmPlacePlayer(firstAttacker, locX9, locZm2);
-		rmPlacePlayer(secondAttacker, locX1, locZm2);
-		rmPlacePlayer(thirdAttacker, locX7, locZm4);
-		rmPlacePlayer(fourthAttacker, locX3, locZm4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX9, locZm1);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX8, locZm4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZm4);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX0, locZm1);
-	}
-	if (teamOneCount == 5)				
-	{	
-		rmPlacePlayer(firstDefender, locX8, locZ1);
-		rmPlacePlayer(secondDefender, locX0, locZ1);
-		rmPlacePlayer(thirdDefender, locX2, locZ4);
-		rmPlacePlayer(fourthDefender, locX6, locZ4);
-		rmPlacePlayer(fifthDefender, locX8, locZ3);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX0, locZ3);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZ3);
-	}
-	if (teamZeroCount == 5)				
-	{	
-		rmPlacePlayer(firstAttacker, locX9, locZm1);
-		rmPlacePlayer(secondAttacker, locX1, locZm1);
-		rmPlacePlayer(thirdAttacker, locX7, locZm4);
-		rmPlacePlayer(fourthAttacker, locX3, locZm4);
-		rmPlacePlayer(fifthAttacker, locX1, locZm3);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX8, locZm3);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX9, locZm3);
-	}
-	if (teamOneCount == 6)				
-	{	
-		rmPlacePlayer(firstDefender, locX8, locZ1);
-		rmPlacePlayer(secondDefender, locX0, locZ1);
-		rmPlacePlayer(thirdDefender, locX2, locZ4);
-		rmPlacePlayer(fourthDefender, locX6, locZ4);
-		rmPlacePlayer(fifthDefender, locX8, locZ3);
-		rmPlacePlayer(sixthDefender, locX0, locZ3);
-	}
-	if (teamZeroCount == 6)				
-	{	
-		rmPlacePlayer(firstAttacker, locX9, locZm1);
-		rmPlacePlayer(secondAttacker, locX1, locZm1);
-		rmPlacePlayer(thirdAttacker, locX7, locZm4);
-		rmPlacePlayer(fourthAttacker, locX3, locZm4);
-		rmPlacePlayer(fifthAttacker, locX1, locZm3);
-		rmPlacePlayer(sixthAttacker, locX9, locZm3);
-	}
-	if (teamOneCount == 7)				
-	{	
-		rmPlacePlayer(firstDefender, locX8, locZ1);
-		rmPlacePlayer(secondDefender, locX0, locZ1);
-		rmPlacePlayer(thirdDefender, locX2, locZ4);
-		rmPlacePlayer(fourthDefender, locX6, locZ4);
-		rmPlacePlayer(fifthDefender, locX8, locZ3);
-		rmPlacePlayer(sixthDefender, locX0, locZ3);
-		rmPlacePlayer(seventhDefender, locX4, locZ4);
-	}
-	if (teamZeroCount == 7)				
-	{	
-		rmPlacePlayer(firstAttacker, locX9, locZm1);
-		rmPlacePlayer(secondAttacker, locX1, locZm1);
-		rmPlacePlayer(thirdAttacker, locX7, locZm4);
-		rmPlacePlayer(fourthAttacker, locX3, locZm4);
-		rmPlacePlayer(fifthAttacker, locX1, locZm3);
-		rmPlacePlayer(sixthAttacker, locX9, locZm3);
-		rmPlacePlayer(seventhAttacker, locX5, locZm4);
-	}
-}
+	//==============================================================
+	//roda player placement
+	//==============================================================
 
-// Player Blocks
+	if (cNumberTeams == 2){
+		if (teamOneCount == 1)				
+		{	
+			rmPlacePlayer(firstDefender, locX8, locZ2);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX7, locZ4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX8, locZ4);
+		}
+		if (teamZeroCount == 1)				
+		{	
+			rmPlacePlayer(firstAttacker, locX1, locZm2);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZm4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX2, locZm4);
+		}
+		if (teamOneCount == 2)				
+		{	
+			rmPlacePlayer(firstDefender, locX8, locZ2);
+			rmPlacePlayer(secondDefender, locX0, locZ2);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZ4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX2, locZ4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX7, locZ4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX8, locZ4);
+		}
+		if (teamZeroCount == 2)				
+		{	
+			rmPlacePlayer(firstAttacker, locX9, locZm2);
+			rmPlacePlayer(secondAttacker, locX1, locZm2);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX7, locZm4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX8, locZm4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZm4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX2, locZm4);
+		}
+		if (teamOneCount == 3)				
+		{	
+			rmPlacePlayer(firstDefender, locX8, locZ2);
+			rmPlacePlayer(secondDefender, locX0, locZ2);
+			rmPlacePlayer(thirdDefender, locX2, locZ4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX7, locZ4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX8, locZ4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZ4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX5, locZ5);
+		}
+		if (teamZeroCount == 3)				
+		{	
+			rmPlacePlayer(firstAttacker, locX9, locZm2);
+			rmPlacePlayer(secondAttacker, locX1, locZm2);
+			rmPlacePlayer(thirdAttacker, locX7, locZm4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX5, locZm5);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX8, locZm4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZm4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX2, locZm4);
+		}
+		if (teamOneCount == 4)				
+		{	
+			rmPlacePlayer(firstDefender, locX8, locZ2);
+			rmPlacePlayer(secondDefender, locX0, locZ2);
+			rmPlacePlayer(thirdDefender, locX2, locZ4);
+			rmPlacePlayer(fourthDefender, locX6, locZ4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX9, locZ1);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX8, locZ4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZ4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX0, locZ1);
+		}
+		if (teamZeroCount == 4)				
+		{	
+			rmPlacePlayer(firstAttacker, locX9, locZm2);
+			rmPlacePlayer(secondAttacker, locX1, locZm2);
+			rmPlacePlayer(thirdAttacker, locX7, locZm4);
+			rmPlacePlayer(fourthAttacker, locX3, locZm4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX9, locZm1);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX8, locZm4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZm4);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX0, locZm1);
+		}
+		if (teamOneCount == 5)				
+		{	
+			rmPlacePlayer(firstDefender, locX8, locZ1);
+			rmPlacePlayer(secondDefender, locX0, locZ1);
+			rmPlacePlayer(thirdDefender, locX2, locZ4);
+			rmPlacePlayer(fourthDefender, locX6, locZ4);
+			rmPlacePlayer(fifthDefender, locX8, locZ3);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX0, locZ3);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZ3);
+		}
+		if (teamZeroCount == 5)				
+		{	
+			rmPlacePlayer(firstAttacker, locX9, locZm1);
+			rmPlacePlayer(secondAttacker, locX1, locZm1);
+			rmPlacePlayer(thirdAttacker, locX7, locZm4);
+			rmPlacePlayer(fourthAttacker, locX3, locZm4);
+			rmPlacePlayer(fifthAttacker, locX1, locZm3);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX8, locZm3);
+			rmPlaceGroupingAtLoc(blockConstruction, 0, locX9, locZm3);
+		}
+		if (teamOneCount == 6)				
+		{	
+			rmPlacePlayer(firstDefender, locX8, locZ1);
+			rmPlacePlayer(secondDefender, locX0, locZ1);
+			rmPlacePlayer(thirdDefender, locX2, locZ4);
+			rmPlacePlayer(fourthDefender, locX6, locZ4);
+			rmPlacePlayer(fifthDefender, locX8, locZ3);
+			rmPlacePlayer(sixthDefender, locX0, locZ3);
+		}
+		if (teamZeroCount == 6)				
+		{	
+			rmPlacePlayer(firstAttacker, locX9, locZm1);
+			rmPlacePlayer(secondAttacker, locX1, locZm1);
+			rmPlacePlayer(thirdAttacker, locX7, locZm4);
+			rmPlacePlayer(fourthAttacker, locX3, locZm4);
+			rmPlacePlayer(fifthAttacker, locX1, locZm3);
+			rmPlacePlayer(sixthAttacker, locX9, locZm3);
+		}
+		if (teamOneCount == 7)				
+		{	
+			rmPlacePlayer(firstDefender, locX8, locZ1);
+			rmPlacePlayer(secondDefender, locX0, locZ1);
+			rmPlacePlayer(thirdDefender, locX2, locZ4);
+			rmPlacePlayer(fourthDefender, locX6, locZ4);
+			rmPlacePlayer(fifthDefender, locX8, locZ3);
+			rmPlacePlayer(sixthDefender, locX0, locZ3);
+			rmPlacePlayer(seventhDefender, locX4, locZ4);
+		}
+		if (teamZeroCount == 7)				
+		{	
+			rmPlacePlayer(firstAttacker, locX9, locZm1);
+			rmPlacePlayer(secondAttacker, locX1, locZm1);
+			rmPlacePlayer(thirdAttacker, locX7, locZm4);
+			rmPlacePlayer(fourthAttacker, locX3, locZm4);
+			rmPlacePlayer(fifthAttacker, locX1, locZm3);
+			rmPlacePlayer(sixthAttacker, locX9, locZm3);
+			rmPlacePlayer(seventhAttacker, locX5, locZm4);
+		}
+	}
+
+	// Player Blocks
 
 	int blockPlayerStart = rmCreateGrouping("blockPlayerStart", "IT_SPC_PlayerStart");
     rmSetGroupingMinDistance(blockPlayerStart, 0.00);
@@ -1121,9 +1124,7 @@ if (cNumberTeams == 2){
     rmSetGroupingMaxDistance(blockPlayerWood, 0.50);
 	rmAddGroupingToClass(blockPlayerWood, rmClassID("classBlock"));
 
-
-
-//place tcs
+	//place tcs
 
 	// Fake Frouping to fix the auto-grouping TC bug
 	int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
@@ -1151,6 +1152,9 @@ if (cNumberTeams == 2){
 				rmPlaceGroupingAtLoc(blockPlayerWood, i, rmPlayerLocXFraction(i)-rmXTilesToFraction(17), rmPlayerLocZFraction(i)+rmZTilesToFraction(17));
 			}
 	}
+
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.60);
 
 	// ****************** Filler Houses ***********************
 
@@ -1336,6 +1340,9 @@ if (cNumberTeams == 2){
 	rmSetAreaLocation(backForestSouth2, locX8, locZm5);		
 	rmBuildArea(backForestSouth2);
 
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.70);
+
 	// City Hill Cliff
 	for (j=0; < 8) {   
 		int wallCliffs = rmCreateArea("wallCliffs"+j);
@@ -1438,6 +1445,9 @@ if (cNumberTeams == 2){
 		failCount=0; 
     } 
 
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.80);
+
 	// Random Gold
 	int randomGoldID = rmCreateObjectDef("random mine");
 	rmAddObjectDefItem(randomGoldID, "Mine", 1, 0.0);
@@ -1505,14 +1515,475 @@ if (cNumberTeams == 2){
 	rmAddObjectDefConstraint(fishID, playerEdgeConstraint);
 	rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 25);
 
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.90);
 
+	// ____________________ LOCAL MERCENARIES ____________________
+	rmDisableDefaultMercs(true);
+	rmDisableCivTypeMercRestriction(true);
+	rmEnableMerc("MercSwissPikeman", -1);
+	rmEnableMerc("MercLandsknecht", -1);
+	rmEnableMerc("MercElmeti", -1);
+	rmEnableMerc("MercGreatCannon", -1);
+	rmEnableMerc("deMercCannoneer", -1);
+	rmEnableMerc("deMercPistoleer", -1);
 
+	rmForbidTradeMonopoly(true);
 
+	// ____________________ MAP OBJECTIVES ____________________
+    // _________________ Map Objectives ______________________________
+	rmObjectiveScreenSetTitle(302391);
+	rmObjectiveScreenSetGoal(302392);
+	rmObjectiveAdd(302402, 302406, true, true, true); // DEFEND OBJECTIVE ROME
+	rmObjectiveSetTeam(1, 1);
+	rmObjectiveAdd(302404, 302406, true, true, true); // DEFEND OBJECTIVE FLORENTINE
+	rmObjectiveSetTeam(2, 2);
+	rmObjectiveAdd(302403, 302406, true, true, true); // ATTACK OBJECTIVE ROME
+	rmObjectiveSetTeam(3, 1);
+	rmObjectiveAdd(302405, 302406, true, true, true); // ATTACK OBJECTIVE FLORENTINE
+	rmObjectiveSetTeam(4, 2);
+
+	// ************************* TRIGGERS ******************************
+
+	//----- DEFINE VARIABLES -----
+
+	int factoryBuilding1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "zpSPCCapturableFactoryFlorence");
+	int factoryNugget1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "zpNuggetInvisible");
+	int factoryBuilding2 = rmGetGroupingInstanceUnitByType(factoryPlacement2, "zpSPCCapturableFactoryFlorence");
+	int factoryNugget2 = rmGetGroupingInstanceUnitByType(factoryPlacement2, "zpNuggetInvisible");
+
+	int menagerieBuilding1 = rmGetGroupingInstanceUnitByType(menageriePlacement1, "zpSPCMenagerie");
+	int menagerieNugget1 = rmGetGroupingInstanceUnitByType(menageriePlacement1, "zpNuggetInvisible");
+	int menagerieBuilding2 = rmGetGroupingInstanceUnitByType(menageriePlacement2, "zpSPCMenagerie");
+	int menagerieNugget2 = rmGetGroupingInstanceUnitByType(menageriePlacement2, "zpNuggetInvisible");
+
+	int menagerieBuildingMod1 = menagerieBuilding1+1;
+	int menagerieBuildingMod2 = menagerieBuilding2+1;
+	int menagerieNuggetMod1 = menagerieNugget1+1;
+	int menagerieNuggetMod2 = menagerieNugget2+1;
+	int factoryBuildingMod1 = factoryBuilding1+1;
+	int factoryBuildingMod2 = factoryBuilding2+1;
+	int factoryNuggetMod1 = factoryNugget1+1;
+	int factoryNuggetMod2 = factoryNugget2+1;
 	
+	// Starting techs
 
-//================we will add the other 4 rows after the groupings are defined and the randomizer is working=========
+	rmCreateTrigger("Starting Techs");
+	rmSwitchToTrigger(rmTriggerID("Starting techs"));
+	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechdeEUMapUpdateVisuals"); // Europen Map
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+        rmSetTriggerEffectParamInt("PlayerID", i);
+        rmSetTriggerEffectParam("TechID","cTechzpEnableSPCCityStateTechsClone"); // Mercenaries
+        rmSetTriggerEffectParamInt("Status", 2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 
-rmSetStatusText("",0.70);
+	// Set up default resource values
+	rmCreateTrigger("Starting Resources");
+	rmAddTriggerEffect("Modify Protounit Resource");
+	rmSetTriggerEffectParam("ProtoUnit","deMineCoalBuildable");
+	rmSetTriggerEffectParam("Resource","Gold");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParamInt("Field",2);
+	rmSetTriggerEffectParamFloat("Delta",1*cNumberNonGaiaPlayers);
+	rmSetTriggerEffectParamInt("Relativity",3);
+	rmAddTriggerEffect("Modify Protounit Resource");
+	rmSetTriggerEffectParam("ProtoUnit","zpValuableSource");
+	rmSetTriggerEffectParam("Resource","Gold");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParamInt("Field",2);
+	rmSetTriggerEffectParamFloat("Delta",1*cNumberNonGaiaPlayers);
+	rmSetTriggerEffectParamInt("Relativity",3);
+	rmAddTriggerEffect("Modify Protounit Resource");
+	rmSetTriggerEffectParam("ProtoUnit","zpGrapeBush");
+	rmSetTriggerEffectParam("Resource","Food");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParamInt("Field",2);
+	rmSetTriggerEffectParamFloat("Delta",1*cNumberNonGaiaPlayers);
+	rmSetTriggerEffectParamInt("Relativity",3);
+	rmAddTriggerEffect("Modify Protounit Resource");
+	rmSetTriggerEffectParam("ProtoUnit","zpTreeRubble");
+	rmSetTriggerEffectParam("Resource","Wood");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParamInt("Field",2);
+	rmSetTriggerEffectParamFloat("Delta",2*cNumberNonGaiaPlayers);
+	rmSetTriggerEffectParamInt("Relativity",3);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+
+	// Resource Building Convert
+	rmCreateTrigger("Buildings Convert OFF");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+menagerieBuildingMod1);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+menagerieBuildingMod2);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+factoryBuildingMod1);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+factoryBuildingMod2);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Menagerie 1 Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+menagerieNuggetMod1);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+menagerieBuildingMod1, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Factory 1 Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+factoryNuggetMod1);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+factoryBuildingMod1, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Menagerie 2 Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+menagerieNuggetMod2);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+menagerieBuildingMod2, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Factory 2 Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+    rmSetTriggerConditionParam("NuggetObject", ""+factoryNuggetMod2);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+factoryBuildingMod2, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// ----- Victory Conditions -----
+	rmCreateTrigger("Victory_Defenders");
+	rmCreateTrigger("Victory_Attackers");
+
+	rmSwitchToTrigger(rmTriggerID("Victory_Defenders"));
+	rmAddTriggerCondition("Team Unit Count");
+	rmSetTriggerConditionParamInt("TeamID",1);
+	rmSetTriggerConditionParam("Protounit","zpItalianFort");
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerCondition("Team Unit Count");
+	rmSetTriggerConditionParamInt("TeamID",2);
+	rmSetTriggerConditionParam("Protounit","zpItalianFortB");
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("Team Victory");
+	rmSetTriggerEffectParamInt("TeamID", 2);
+	rmSetTriggerPriority(1); 
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(false);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Victory_Attackers"));
+	rmAddTriggerCondition("Team Unit Count");
+	rmSetTriggerConditionParamInt("TeamID",2);
+	rmSetTriggerConditionParam("Protounit","zpItalianFortB");
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerCondition("Team Unit Count");
+	rmSetTriggerConditionParamInt("TeamID",1);
+	rmSetTriggerConditionParam("Protounit","zpItalianFort");
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("Team Victory");
+	rmSetTriggerEffectParamInt("TeamID", 1);
+	rmSetTriggerPriority(1); 
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(false);
+	rmSetTriggerLoop(false);
+
+	//  ----- NATIVE POLITICIANS -----
+
+	// Italian Vilager Balance
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Italian Vilager Balance"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","DEItalians");
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpItalianSettlerBallance");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(2);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(false);
+	rmSetTriggerLoop(false);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Italian Gondola Balance"+k);
+	rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParam("TechID","cTechDEHCGondolas");
+	rmSetTriggerConditionParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpItalianGondolaBallance");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(2);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(false);
+	rmSetTriggerLoop(false);
+	}
+
+	// Speed Always Wins Returner
+
+		for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Cheat Returner"+k);
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamInt("Param1",10);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchIncrease");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmSetTriggerPriority(2);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(false);
+		rmSetTriggerLoop(false);
+		}
+
+	// Consulate - Tradingpost politician switcher
+
+		for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Activate Consulate Japan"+k);
+		rmAddTriggerCondition("ZP Player Civilization");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("Civilization","Japanese");
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnJapanese"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+		}
+
+		for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Activate Consulate China"+k);
+		rmAddTriggerCondition("ZP Player Civilization");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("Civilization","Chinese");
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnChinese"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+		}
+
+		for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Activate Consulate India"+k);
+		rmAddTriggerCondition("ZP Player Civilization");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("Civilization","Indians");
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnIndian"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+		}
+
+		for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Activate Consulate Khmer"+k);
+		rmAddTriggerCondition("ZP Player Civilization");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("Civilization","Khmers");
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnKhmers"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+		}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Maltese"+k);
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpMalteseCross"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffMaltese"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+}
+
+	// Specific for human players
+
+	for(k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Human Check Plr"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "true");
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpIsPirateMap"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Japan"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Khmer"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Maltese"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	// AI Maltese Fractions
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+
+	rmCreateTrigger("ZP Pick Maltese Fraction"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerCondition("Tech Status Equals");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParamInt("TechID",586);
+	rmSetTriggerConditionParamInt("Status",2);
+
+	int malteseFraction=-1;
+	malteseFraction = rmRandInt(1,2);
+
+	if (malteseFraction==1)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseFlorentians"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (malteseFraction==2)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateMalteseJerusalem"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+
+
+	//================we will add the other 4 rows after the groupings are defined and the randomizer is working=========
+
+	rmSetStatusText("",0.99);
     
 	
 } // END

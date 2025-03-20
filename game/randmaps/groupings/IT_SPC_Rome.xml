@@ -400,7 +400,7 @@
 		<unit variation="217" posx="21.2761" posz="31.7149" orientx="-0.0959" orienty="0.0000" orientz="-0.9954">UnderbrushCalifornia</unit>
 	</units>
 	<tiles>
-		<tilegroup type="PassableLand" subtype="props\east_colony">
+		<tilegroup type="Block" subtype="props\east_colony">
 			<block startx="-16" startz="-16" endx="-16" endz="-9"></block>
 			<block startx="-15" startz="-16" endx="-15" endz="-11"></block>
 			<block startx="-15" startz="-9" endx="-15" endz="-9"></block>

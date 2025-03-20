@@ -101,7 +101,7 @@
 		<unit variation="41" posx="0.7072" posz="1.3818" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpItalianFort</unit>
 	</units>
 	<tiles>
-		<tilegroup type="PassableLand" subtype="props\east_colony">
+		<tilegroup type="Block" subtype="props\east_colony">
 			<block startx="-7" startz="-7" endx="-7" endz="-7"></block>
 			<block startx="-7" startz="-6" endx="-7" endz="1"></block>
 			<block startx="-6" startz="-6" endx="-6" endz="-2"></block>

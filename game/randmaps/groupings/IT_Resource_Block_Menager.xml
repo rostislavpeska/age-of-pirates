@@ -129,7 +129,7 @@
 		<unit variation="198" posx="14.8845" posz="14.8193" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 	</units>
 	<tiles>
-		<tilegroup type="PassableLand" subtype="props\east_colony">
+		<tilegroup type="Block" subtype="props\east_colony">
 			<block startx="-7" startz="-7" endx="-7" endz="0"></block>
 			<block startx="-6" startz="-7" endx="-6" endz="-7"></block>
 			<block startx="-6" startz="-2" endx="-6" endz="-2"></block>

@@ -22661,6 +22661,46 @@
       <techstatus status="Active">Colonialize</techstatus>
     </prereqs>
   </tech>
+  <tech name="zpEnableSPCCityStateTechsClone" type="Normal">
+    <dbid>40953</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpSPCArtPatronClone</effect>
+      <effect type="TechStatus" status="obtainable">DESPCVeteranCityGuard</effect>
+      <effect type="TechStatus" status="obtainable">DESPCGuardCityGuard</effect>
+      <effect type="TechStatus" status="obtainable">DESPCImperialCityGuard</effect>
+      <effect type="TechStatus" status="obtainable">DESPCTaulaDeCanvi</effect>
+      <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
+      <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPapalBlessingClone</effect>
+      <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMediciPatronage</effect>
+      <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCVenetianFleet</effect>
+      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
+      <effect type="TechStatus" status="obtainable">zpMonarchChurchAliance</effect>
+      <effect type="CommandRemove" command="FourOfAKind">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="NativeEmbassy" relativity="Absolute">
+        <target type="ProtoUnit">deIconEuropeanEmbassy</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deEmbassyTravois" relativity="Absolute">
+        <target type="ProtoUnit">deIconEuropeanEmbassyTravois</target>
+      </effect>
+      <effect type="SetName" proto="NativeEmbassy" culture="none" newname="124945">
+      </effect>
+      <effect type="SetName" proto="deEmbassyTravois" culture="none" newname="80597" newrollover="103345" newshortrollover="103344">
+      </effect>
+      <effect type="TechStatus" status="active">deMapIsEuropean</effect>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="NativeEmbassy" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
 
   
  

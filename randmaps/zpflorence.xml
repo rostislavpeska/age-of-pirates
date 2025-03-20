@@ -9,6 +9,7 @@
         <setting type="RecordGame" state="forbidden" />
         <setting type="TwoTeams" state="enforced" />
         <setting type="DefaultRules" state="enforced" />
+        <setting type="AltTeamNames" state="enforced" />
     </enforcedSettings>
     <recommendedSettings>
         <civilization>French</civilization>

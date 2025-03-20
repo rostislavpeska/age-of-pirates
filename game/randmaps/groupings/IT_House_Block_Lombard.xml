@@ -109,7 +109,7 @@
 		<unit variation="129" posx="11.4224" posz="13.9097" orientx="0.3827" orienty="0.0000" orientz="0.9239">UnderbrushForest</unit>
 	</units>
 	<tiles>
-		<tilegroup type="PassableLand" subtype="props\east_colony">
+		<tilegroup type="Block" subtype="props\east_colony">
 			<block startx="-7" startz="-7" endx="-7" endz="0"></block>
 			<block startx="-6" startz="-7" endx="-6" endz="-1"></block>
 			<block startx="-5" startz="-7" endx="-5" endz="-5"></block>

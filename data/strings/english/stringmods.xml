@@ -2387,19 +2387,23 @@
       <string _locid="302387">ZP PROP Building Mix FlattenGround</string>
       <string _locid="302388">ZP SPC Coal Mine</string>
       <string _locid="302389">ZP SPC Florence Castle</string>
-      <string _locid="302390">Palazzo Vecchio</string>
+      <string _locid="302390">Palazzo Vecchio (Florentine Castello)</string>
       <string _locid="302391">Eternal Rivalry</string>
-      <string _locid="302392">Eternal Rivalry Description</string>
-      <string _locid="302393">Eternal Rivalry Loading</string>
+      <string _locid="302392">Florence versus Rome, ethernal rivals fighting on the opposite sides in the Italian Wars. The pope Leo X decided to cross the Arno River and attack Florence. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Starting in the City of Rome \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Starting in the City of Florence. \n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Achieve a Team Victory by destroying enemy Castello and defending your own. \n\nSettlements: Auditore, Maltese, Jesuit</string>
+      <string _locid="302393">In the early 16th century, Pope Leo X sought to reclaim Florence and restore Medici rule. As armies march and alliances tremble, the fate of Florence hangs in the balance. Will you defend its freedom or crush it under papal might?</string>
       <string _locid="302394">ZP SPC Roman Tower</string>
       <string _locid="302395">ZP SPC Florence Tower</string>
       <string _locid="302396">ZP SPC Roman Flag</string>
       <string _locid="302397">ZP SPC Florence Flag</string>
       <string _locid="302398">ZP SPC Rome Castle</string>
-      <string _locid="302399">Castel Sant'Angelo</string>
+      <string _locid="302399">Castel Sant'Angelo (Roman Castello)</string>
       <string _locid="302400">ZP SPC Great Basilica Convertable</string>
       <string _locid="302401">ZP SPC Florence Factory</string>
-
+      <string _locid="302402">Defend the Castel Sant'Angelo in the heart of the city of Rome.</string>
+      <string _locid="302403">Destroy Palazzo Vecchio in the heart of the city of Florence.</string>
+      <string _locid="302404">Defend Palazzo Vecchio in the heart of the city of Florence.</string>
+      <string _locid="302405">Destroy the Castel Sant'Angelo in the heart of the city of Rome.</string>
+      <string _locid="302406">The Castello can't be either manually repaired or improved, but slowly repairs itself automatically.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
