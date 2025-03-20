@@ -200,6 +200,12 @@
 		<unit name="Dock">
 			<placementfile>dock_city.xml</placementfile>
 		</unit>
+        <unit name="YPDockAsian">
+			<placementfile>dock_city.xml</placementfile>
+		</unit>
+        <unit name="dePort">
+			<placementfile>dock_city.xml</placementfile>
+		</unit>
 		<unit name="zpSPCEUHouseProp">
 			<animfile>buildings\native_settlement\zp_native_eu_houses_nosmoke.xml</animfile>
 		</unit>

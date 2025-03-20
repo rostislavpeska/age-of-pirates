@@ -188,21 +188,20 @@ void main(void)
 
     int sizeZ = 560;
 	int sizeX = 360;
-	if (cNumberNonGaiaPlayers>=6)
+	if (cNumberNonGaiaPlayers>=4)
 		sizeZ = 600;
+	if (cNumberNonGaiaPlayers>=6)
+		sizeZ = 640;
 	rmSetMapSize(sizeX, sizeZ);
 	// rmSetMapElevationParameters(cElevTurbulence, 0.4, 6, 0.5, 3.0);  // DAL - original
 
 	// Big city for 6+ players
 	int bigCity = 0;
-	if (cNumberNonGaiaPlayers>=6)
+	if (cNumberNonGaiaPlayers>=4)
 		bigCity = 1;
-	int citySize = 0;
-	//int citySizeN = 0.5;
-	if (bigCity == 1){
-		citySize = 17;
-		//citySizeN = rmXTilesToFraction(34);
-	}
+	if (cNumberNonGaiaPlayers>=6)
+		bigCity = 2;
+
 
 	// One vs. All - special setup for 7 players on one side
 	int oneVsAll = 0;
@@ -276,7 +275,7 @@ void main(void)
 	int playerEdgeConstraint=rmCreateBoxConstraint("player edge of map", rmXTilesToFraction(10), rmZTilesToFraction(10), 1.0-rmXTilesToFraction(10), 1.0-rmZTilesToFraction(10), 0.01);
 	int longPlayerEdgeConstraint=rmCreateBoxConstraint("long avoid edge of map", rmXTilesToFraction(20), rmZTilesToFraction(20), 1.0-rmXTilesToFraction(20), 1.0-rmZTilesToFraction(20), 0.01);
 	
-    int avoidWater10 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 2.0);
+    int avoidWater10 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 10.0);
 	int avoidWater20 = rmCreateTerrainDistanceConstraint("avoid water medium", "Land", false, 10.0);
 	int avoidWater30 = rmCreateTerrainDistanceConstraint("avoid water long", "Land", false, 30.0);
 	int avoidWater25 = rmCreateTerrainDistanceConstraint("avoid water long 25", "Land", false, 25.0);
@@ -401,6 +400,7 @@ void main(void)
     int classPatch = rmDefineClass("patch");
     int avoidPatch = rmCreateClassDistanceConstraint("avoid patch", rmClassID("patch"), 22.0);
     int avoidPlateauShort = rmCreateClassDistanceConstraint("avoid patch 1", rmClassID("classPlateau"), 2.0);
+	int avoidPlateau = rmCreateClassDistanceConstraint("avoid patch 22", rmClassID("classPlateau"), 5.0);
 	int avoidStreet = rmCreateClassDistanceConstraint("avoid street", classStreet, 10.0);
 	int avoidStreetShort = rmCreateClassDistanceConstraint("avoid street short", classStreet, 1.0);
 	int avoidStreetZero = rmCreateClassDistanceConstraint("avoid street zero", classStreet, 0.01);
@@ -516,10 +516,12 @@ void main(void)
 	// Define Map center
 	float mapCenter = rmZMetersToFraction(xsVectorGetZ(stoperLoc));
     float mapRatio = 1.66;
-	if (bigCity == 1)
-		float riverCenter = mapCenter*1.65;
+	if (bigCity == 2)
+		float riverCenter = mapCenter*1.74;
+	else if (bigCity == 1)
+		riverCenter = mapCenter*1.65;
 	else
-		riverCenter = mapCenter*1.58;
+		riverCenter = mapCenter*1.56;
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.20);
@@ -591,24 +593,6 @@ void main(void)
     //rmSetAreaCliffPainting(shoreLineNorth, false, true, true, 1.5, true);
     rmBuildArea(shoreLineNorth); 
 
-	int southEastWallTerrain = rmCreateGrouping("wall se terrain", "it_wall_se_terrain_player");
-    rmSetGroupingMinDistance(southEastWallTerrain, 0.00);
-    rmSetGroupingMaxDistance(southEastWallTerrain, 0.00);
-	rmAddGroupingToClass(southEastWallTerrain, rmClassID("classBlock"));
-
-	int northWestWallTerrain = rmCreateGrouping("wall nw terrain", "it_wall_nw_terrain_player");
-    rmSetGroupingMinDistance(northWestWallTerrain, 0.00);
-    rmSetGroupingMaxDistance(northWestWallTerrain, 0.00);
-	rmAddGroupingToClass(northWestWallTerrain, rmClassID("classBlock"));
-
-	rmPlaceGroupingAtLoc(southEastWallTerrain, 0, 0.5+rmXMetersToFraction(4), 1.0-rmZTilesToFraction(cityEdgeInner+5));
-	rmPlaceGroupingAtLoc(southEastWallTerrain, 0, 0.2, 1.0-rmZTilesToFraction(cityEdgeInner+5));
-	rmPlaceGroupingAtLoc(southEastWallTerrain, 0, 0.8, 1.0-rmZTilesToFraction(cityEdgeInner+5));
-
-	rmPlaceGroupingAtLoc(northWestWallTerrain, 0, 0.5+rmXMetersToFraction(5), 0.0+rmZTilesToFraction(cityEdgeInner+5));
-	rmPlaceGroupingAtLoc(northWestWallTerrain, 0, 0.2, 0.0+rmZTilesToFraction(cityEdgeInner+5));
-	rmPlaceGroupingAtLoc(northWestWallTerrain, 0, 0.8, 0.0+rmZTilesToFraction(cityEdgeInner+5));
-
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.30);
 
@@ -639,39 +623,95 @@ void main(void)
 
 	// Countryside Terrain
     int countrysideTerrainSouth = rmCreateArea("countryside South");
-    rmSetAreaSize(countrysideTerrainSouth, 0.3, 0.3);
+    rmSetAreaSize(countrysideTerrainSouth, 0.4, 0.4);
     rmSetAreaLocation(countrysideTerrainSouth, 0.5, 0.5-rmXTilesToFraction(15));	
     rmSetAreaCoherence(countrysideTerrainSouth, 1.0);	
     rmSetAreaBaseHeight(countrysideTerrainSouth, 2.1);
     rmAddAreaConstraint(countrysideTerrainSouth , countrysideSouthConstraintFar);
     rmAddAreaConstraint(countrysideTerrainSouth, avoidStopper);
-	rmAddAreaConstraint(countrysideTerrainSouth, avoidWallLong);
-    rmSetAreaElevationType(countrysideTerrainSouth, cElevTurbulence);
-    rmSetAreaElevationVariation(countrysideTerrainSouth, 0.0);
-    rmSetAreaElevationPersistence(countrysideTerrainSouth, 0.2);
-    rmSetAreaElevationNoiseBias(countrysideTerrainSouth, 1);
+	rmAddAreaConstraint(countrysideTerrainSouth, avoidWallMedium);
     rmSetAreaObeyWorldCircleConstraint(countrysideTerrainSouth, false);
     rmSetAreaMix(countrysideTerrainSouth, "italy_grass_lush");
     rmBuildArea(countrysideTerrainSouth); 
 
     int countrysideTerrainNorth = rmCreateArea("countryside North");
-    rmSetAreaSize(countrysideTerrainNorth, 0.3, 0.3);
+    rmSetAreaSize(countrysideTerrainNorth, 0.4, 0.4);
     rmSetAreaLocation(countrysideTerrainNorth, 0.5, 0.5+rmXTilesToFraction(15));	
     rmSetAreaCoherence(countrysideTerrainNorth, 1.0);	
     rmSetAreaBaseHeight(countrysideTerrainNorth, 2.1);
     rmAddAreaConstraint(countrysideTerrainNorth, countrysideNorthConstraintFar);
     rmAddAreaConstraint(countrysideTerrainNorth, avoidStopper);
-    rmAddAreaConstraint(countrysideTerrainNorth, avoidWallLong);
-    rmSetAreaElevationType(countrysideTerrainNorth, cElevTurbulence);
-    rmSetAreaElevationVariation(countrysideTerrainNorth, 0.0);
-    rmSetAreaElevationPersistence(countrysideTerrainNorth, 0.2);
-    rmSetAreaElevationNoiseBias(countrysideTerrainNorth, 1);
+    rmAddAreaConstraint(countrysideTerrainNorth, avoidWallMedium);
     rmSetAreaObeyWorldCircleConstraint(countrysideTerrainNorth, false);
     rmSetAreaMix(countrysideTerrainNorth, "italy_grass_lush");
     rmBuildArea(countrysideTerrainNorth); 
 
+	int elevationSouth1 = rmCreateArea("elevationSouth1");
+	rmSetAreaSize(elevationSouth1, 0.05, 0.05);
+	rmSetAreaLocation(elevationSouth1, 0.2, 0.5-rmXTilesToFraction(15));	
+	rmSetAreaElevationType(elevationSouth1, cElevTurbulence);
+    rmSetAreaElevationVariation(elevationSouth1, 5.0);
+    rmSetAreaElevationPersistence(elevationSouth1, 0.2);
+    rmSetAreaElevationNoiseBias(elevationSouth1, 1);
+	rmSetAreaBaseHeight(elevationSouth1, 2.1);
+	rmAddAreaConstraint(elevationSouth1, avoidStopper);
+	rmAddAreaConstraint(elevationSouth1, avoidBlock);
+	rmAddAreaConstraint(elevationSouth1, avoidTradeRoute);
+	rmAddAreaConstraint(elevationSouth1, avoidWater10);
+	rmAddAreaConstraint(elevationSouth1, countrysideSouthConstraintFar);
+	rmSetAreaObeyWorldCircleConstraint(elevationSouth1, false);
+	rmBuildArea(elevationSouth1);
+
+	int elevationSouth2 = rmCreateArea("elevationSouth2");
+	rmSetAreaSize(elevationSouth2, 0.05, 0.05);
+	rmSetAreaLocation(elevationSouth2, 0.8, 0.5-rmXTilesToFraction(15));	
+	rmSetAreaElevationType(elevationSouth2, cElevTurbulence);
+    rmSetAreaElevationVariation(elevationSouth2, 5.0);
+    rmSetAreaElevationPersistence(elevationSouth2, 0.2);
+    rmSetAreaElevationNoiseBias(elevationSouth2, 1);
+	rmSetAreaBaseHeight(elevationSouth2, 2.1);
+	rmAddAreaConstraint(elevationSouth2, avoidStopper);
+	rmAddAreaConstraint(elevationSouth2, avoidBlock);
+	rmAddAreaConstraint(elevationSouth2, avoidTradeRoute);
+	rmAddAreaConstraint(elevationSouth2, avoidWater10);
+	rmAddAreaConstraint(elevationSouth2, countrysideSouthConstraintFar);
+	rmSetAreaObeyWorldCircleConstraint(elevationSouth2, false);
+	rmBuildArea(elevationSouth2);
+
+	int elevationNorth1 = rmCreateArea("elevationNorth1");
+	rmSetAreaSize(elevationNorth1, 0.05, 0.05);
+	rmSetAreaLocation(elevationNorth1, 0.2, 0.5+rmXTilesToFraction(15));	
+	rmSetAreaElevationType(elevationNorth1, cElevTurbulence);
+    rmSetAreaElevationVariation(elevationNorth1, 5.0);
+    rmSetAreaElevationPersistence(elevationNorth1, 0.2);
+    rmSetAreaElevationNoiseBias(elevationNorth1, 1);
+	rmSetAreaBaseHeight(elevationNorth1, 2.1);
+	rmAddAreaConstraint(elevationNorth1, avoidStopper);
+	rmAddAreaConstraint(elevationNorth1, avoidBlock);
+	rmAddAreaConstraint(elevationNorth1, avoidTradeRoute);
+	rmAddAreaConstraint(elevationNorth1, avoidWater10);
+	rmAddAreaConstraint(elevationNorth1, countrysideNorthConstraintFar);
+	rmSetAreaObeyWorldCircleConstraint(elevationNorth1, false);
+	rmBuildArea(elevationNorth1);
+
+	int elevationNorth2 = rmCreateArea("elevationNorth2");
+	rmSetAreaSize(elevationNorth2, 0.05, 0.05);
+	rmSetAreaLocation(elevationNorth2, 0.8, 0.5+rmXTilesToFraction(15));	
+	rmSetAreaElevationType(elevationNorth2, cElevTurbulence);
+    rmSetAreaElevationVariation(elevationNorth2, 5.0);
+    rmSetAreaElevationPersistence(elevationNorth2, 0.2);
+    rmSetAreaElevationNoiseBias(elevationNorth2, 1);
+	rmSetAreaBaseHeight(elevationNorth2, 2.1);
+	rmAddAreaConstraint(elevationNorth2, avoidStopper);
+	rmAddAreaConstraint(elevationNorth2, avoidBlock);
+	rmAddAreaConstraint(elevationNorth2, avoidTradeRoute);
+	rmAddAreaConstraint(elevationNorth2, avoidWater10);
+	rmAddAreaConstraint(elevationNorth2, countrysideNorthConstraintFar);
+	rmSetAreaObeyWorldCircleConstraint(elevationNorth2, false);
+	rmBuildArea(elevationNorth2);
+
 	int gateRoad1 = rmCreateArea("gateRoad1");
-    rmSetAreaSize(gateRoad1 , 0.002, 0.002);
+    rmSetAreaSize(gateRoad1 , 0.003, 0.003);
     rmSetAreaLocation(gateRoad1 , 0.2, 0.0+rmZTilesToFraction(cityEdgeInner+5));	
 	rmSetAreaMix(gateRoad1, "italy_path");
 	rmAddAreaToClass(gateRoad1 , rmClassID("classPlateau"));
@@ -680,7 +720,7 @@ void main(void)
     rmBuildArea(gateRoad1 );
 
 	int gateRoad2 = rmCreateArea("gateRoad2");
-    rmSetAreaSize(gateRoad2 , 0.002, 0.002);
+    rmSetAreaSize(gateRoad2 , 0.003, 0.003);
     rmSetAreaLocation(gateRoad2 , 0.8, 0.0+rmZTilesToFraction(cityEdgeInner+5));	
 	rmSetAreaMix(gateRoad2, "italy_path");
 	rmAddAreaToClass(gateRoad2 , rmClassID("classPlateau"));
@@ -689,7 +729,7 @@ void main(void)
     rmBuildArea(gateRoad2 );
 
 	int gateRoad3 = rmCreateArea("gateRoad3");
-    rmSetAreaSize(gateRoad3 , 0.002, 0.002);
+    rmSetAreaSize(gateRoad3 , 0.003, 0.003);
     rmSetAreaLocation(gateRoad3 , 0.2, 1.0-rmZTilesToFraction(cityEdgeInner+5));	
 	rmSetAreaMix(gateRoad3, "italy_path");
 	rmAddAreaToClass(gateRoad3 , rmClassID("classPlateau"));
@@ -698,13 +738,31 @@ void main(void)
     rmBuildArea(gateRoad3 );
 
 	int gateRoad4 = rmCreateArea("gateRoad4");
-    rmSetAreaSize(gateRoad4 , 0.002, 0.002);
+    rmSetAreaSize(gateRoad4 , 0.003, 0.003);
     rmSetAreaLocation(gateRoad4 , 0.8, 1.0-rmZTilesToFraction(cityEdgeInner+5));	
 	rmSetAreaMix(gateRoad4, "italy_path");
 	rmAddAreaToClass(gateRoad4 , rmClassID("classPlateau"));
 	rmAddAreaInfluenceSegment(gateRoad4,0.8, 1.0-rmZTilesToFraction(cityEdgeInner+5), rmXMetersToFraction(xsVectorGetX(stoperLoc3)), rmZMetersToFraction(xsVectorGetZ(stoperLoc3)));
     rmSetAreaCoherence(gateRoad4 , 0.5);
     rmBuildArea(gateRoad4 );
+
+	int southEastWallTerrain = rmCreateGrouping("wall se terrain", "it_wall_se_terrain_player");
+    rmSetGroupingMinDistance(southEastWallTerrain, 0.00);
+    rmSetGroupingMaxDistance(southEastWallTerrain, 0.00);
+	rmAddGroupingToClass(southEastWallTerrain, rmClassID("classBlock"));
+
+	int northWestWallTerrain = rmCreateGrouping("wall nw terrain", "it_wall_nw_terrain_player");
+    rmSetGroupingMinDistance(northWestWallTerrain, 0.00);
+    rmSetGroupingMaxDistance(northWestWallTerrain, 0.00);
+	rmAddGroupingToClass(northWestWallTerrain, rmClassID("classBlock"));
+
+	rmPlaceGroupingAtLoc(southEastWallTerrain, 0, 0.5+rmXMetersToFraction(4), 1.0-rmZTilesToFraction(cityEdgeInner+5));
+	rmPlaceGroupingAtLoc(southEastWallTerrain, 0, 0.2, 1.0-rmZTilesToFraction(cityEdgeInner+5));
+	rmPlaceGroupingAtLoc(southEastWallTerrain, 0, 0.8, 1.0-rmZTilesToFraction(cityEdgeInner+5));
+
+	rmPlaceGroupingAtLoc(northWestWallTerrain, 0, 0.5+rmXMetersToFraction(5), 0.0+rmZTilesToFraction(cityEdgeInner+5));
+	rmPlaceGroupingAtLoc(northWestWallTerrain, 0, 0.2, 0.0+rmZTilesToFraction(cityEdgeInner+5));
+	rmPlaceGroupingAtLoc(northWestWallTerrain, 0, 0.8, 0.0+rmZTilesToFraction(cityEdgeInner+5));
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.40);
@@ -1410,10 +1468,12 @@ void main(void)
 
 	// Scattered FORESTS
 	int forestTreeID = 0;
-	if (bigCity == 1)
-		int numTries=18;
+	if (bigCity == 2)
+		int numTries=24;
+	else if (bigCity == 1)
+		numTries=18;
 	else
-		numTries=10;
+		numTries=12;
 	int failCount=0;
 	for (i=0; <numTries)
 		{   
@@ -1430,7 +1490,7 @@ void main(void)
 		rmAddAreaConstraint(forest, forestConstraintShort);
 		rmAddAreaConstraint(forest, avoidAll);
 		rmAddAreaConstraint(forest, shortAvoidImpassableLand); 
-		rmAddAreaConstraint(forest, avoidPlateauShort);
+		rmAddAreaConstraint(forest, avoidPlateau);
 		rmAddAreaConstraint(forest, avoidTradeRouteMin);
 		rmAddAreaConstraint(forest, avoidWallLong);
 		rmAddAreaConstraint(forest, avoidWater4);
@@ -1613,7 +1673,7 @@ void main(void)
 	rmSetTriggerEffectParam("Resource","Wood");
 	rmSetTriggerEffectParamInt("PlayerID",0);
 	rmSetTriggerEffectParamInt("Field",2);
-	rmSetTriggerEffectParamFloat("Delta",2*cNumberNonGaiaPlayers);
+	rmSetTriggerEffectParamFloat("Delta",1*cNumberNonGaiaPlayers);
 	rmSetTriggerEffectParamInt("Relativity",3);
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
