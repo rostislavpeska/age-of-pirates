@@ -2134,7 +2134,7 @@
       <string _locid="302133">San Giorgio (Venice District)</string>
       <string _locid="302134">Castello (Venice District)</string>
       <string _locid="302135">ZP Nugget Invisible</string>
-      <string _locid="302136">All Venetian Basilicas generate XP faster.</string>
+      <string _locid="302136">All City Basilicas generate XP faster.</string>
       <string _locid="302137">All TEAM units in the vicinity of a friendly Venetin District slowly heal.</string>
       <string _locid="302138">Team Victory time remaining</string>
       <string _locid="302139">Enemy Team Victory time remaining</string>
@@ -2404,6 +2404,7 @@
       <string _locid="302404">Defend Palazzo Vecchio in the heart of the city of Florence.</string>
       <string _locid="302405">Destroy the Castel Sant'Angelo in the heart of the city of Rome.</string>
       <string _locid="302406">The Castello can't be either manually repaired or improved, but slowly repairs itself automatically.</string>
+      <string _locid="302407">ZP Italian Palaces B</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

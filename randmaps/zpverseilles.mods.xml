@@ -70,6 +70,15 @@
 			<animfile>buildings\wall\barricade\wall_1x5.xml</animfile>
 			<command mergeMode='remove' page="6" column="0">Transform</command>
 		</unit>
+		<unit name="Church">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="ypChurch">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deBasilica">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
 		<unit name="House">
 			<placementfile>buildingsmall_city.xml</placementfile>
 		</unit>

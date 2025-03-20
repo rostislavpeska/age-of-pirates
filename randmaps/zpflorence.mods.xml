@@ -1,8 +1,7 @@
 <?xml version="1.0"?>
 <mods>
 	<protomods>
-		<!--BELONGS TO PARIS MAPMODS-->
-		<unit name="Church">
+        <unit name="Church">
 			<placementfile>buildinglarge_city.xml</placementfile>
 		</unit>
 		<unit name="ypChurch">
@@ -116,44 +115,18 @@
 		<unit name="deCommandery">
 			<placementfile>buildinglarge_city.xml</placementfile>
 		</unit>
-        <unit name="Dock">
-			<placementfile>dock_city.xml</placementfile>
-		</unit>
 		<unit id="20330" name="zpAmericanEmbassy">
 			<placementfile>buildinglarge_city.xml</placementfile>
 		</unit>
+    <unit name="deNatEUPropFence">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+    <unit name="zpNatEUPropWingC">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
 		<unit name="zpNativeHouseVenetian">
-			<flag>StartOnNoUpdate</flag>
-            <flag>NotSelectable</flag>
-            <flag>NoIdleActions</flag>
-		</unit>
-        <unit name="zpNativeHouseVenetianLand">
-			<flag>StartOnNoUpdate</flag>
-            <flag>NotSelectable</flag>
-            <flag>NoIdleActions</flag>
-		</unit>
-        <unit name="zpNativeHouseVenetianB">
-			<flag>StartOnNoUpdate</flag>
-            <flag>NotSelectable</flag>
-            <flag>NoIdleActions</flag>
-		</unit>
-		<unit name="zpNativeHouseVenetianC">
-			<flag>StartOnNoUpdate</flag>
-            <flag>NotSelectable</flag>
-            <flag>NoIdleActions</flag>
-		</unit>
-		<unit name="deEmbassyTravois">
-			<animfile>units\trade\supply_cart\supply_cart_bank.xml</animfile>
-		</unit>
-		<unit name="deNatEUPropStatue">
-			<flag>NoIdleActions</flag>
-			<flag>StartOnNoUpdate</flag>
-		</unit>
-        <unit name="zpNativeStatueVenetian">
-			<flag>NoIdleActions</flag>
-			<flag>StartOnNoUpdate</flag>
-		</unit>
-		<unit name="deNatEUPropFence">
 			<flag>NoIdleActions</flag>
 			<flag>StartOnNoUpdate</flag>
 		</unit>
@@ -162,84 +135,63 @@
 			<flag>StartOnNoUpdate</flag>
 			<flag>NotSelectable</flag>
 		</unit>
-		<unit name="zpNativeHouseMaltese">
+    <unit name="zpNativeStatueVenetian">
 			<flag>NoIdleActions</flag>
 			<flag>StartOnNoUpdate</flag>
 		</unit>
-		<unit name="zpNatEUPropWingC">
+    <unit name="deSPCCityStateHouseProp">
+      <flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+      <unittype>AbstractCityManison</unittype>
+		</unit>
+    <unit name="zpNativeHouseMaltese">
 			<flag>NoIdleActions</flag>
 			<flag>StartOnNoUpdate</flag>
+      <flag>NotSelectable</flag>
+      <unittype>AbstractCityManison</unittype>
 		</unit>
-		<unit name="zpNativeUnitVenetian">			
+    <unit name="zpNativeHouseOrthodoxSouth">
 			<flag>NoIdleActions</flag>
 			<flag>StartOnNoUpdate</flag>
+      <flag>NotSelectable</flag>
+      <unittype>AbstractCityManison</unittype>
 		</unit>
-        <unit name="zpNativeUnitVenetianMale">
-			<flag>NoIdleActions</flag>
+    <unit name="SPCFortGate">
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
 		</unit>
-        <unit name="zpNativeUnitVenetianFemale">
-			<flag>NoIdleActions</flag>
+    <unit name="SPCFortWallSmall">
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
 		</unit>
-        <unit name="zpNativeUnitVenetianFlag">
+    <unit name="SPCFortWallMedium">
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
+		</unit>
+    <unit name="SPCFortWallLarge">
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
+		</unit>
+    <unit name="SPCFortCorner">
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
+		</unit>
+    <unit name="deSPCEuroTower">
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
+		</unit>
+    <unit name="zpItalianFort">
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
+		</unit>
+    <unit name="zpItalianFortB">
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
+		</unit>
+    <unit name="zpNatEUItalianPalaces">
 			<flag>NoIdleActions</flag>
 			<flag>StartOnNoUpdate</flag>
-		</unit>
-        <unit name="zpNativeUnitVenetianFence">
-			<flag>NoIdleActions</flag>
-			<flag>StartOnNoUpdate</flag>
-		</unit>
-        <unit name="zpTradingPostCaptureNaval">
-			<tactics mergeMode="remove">yptradingpostcapture.tactics</tactics>
-			<minimapicon mergeMode="remove">ui\minimap\t</minimapicon>
-			<minimapicon>ui\minimap\traderoute_small</minimapicon>
-		</unit>
-		<unit name="deSPCCityTower">
-			<movementtype>air</movementtype>
-			<flag mergeMode="remove">ColorTransformNonGaia</flag>
-		</unit>
-		<unit name="deSPCSocketCityTower">
-			<flag mergeMode="remove">ColorTransformNonGaia</flag>
-		</unit>
-        <unit name="zpJesuitCathedral">
-			<minimapicon>ui\minimap\military_small</minimapicon>
-            <flag mergeMode="remove">DoNotShowOnMiniMap</flag>
-        </unit>
-        <unit name="zpSPCCathedral">
-			<minimapicon>ui\minimap\military_small</minimapicon>
-            <flag mergeMode="remove">DoNotShowOnMiniMap</flag>
-        </unit>
-        <unit name="zpCathedralOrthodox">
-			<minimapicon>ui\minimap\military_small</minimapicon>
-            <flag mergeMode="remove">DoNotShowOnMiniMap</flag>
-        </unit>
-        <unit name="zpPalazoAuditore">
-			<minimapicon>ui\minimap\military_small</minimapicon>
-            <flag mergeMode="remove">DoNotShowOnMiniMap</flag>
-        </unit>
-		<unit name="deSPCCityGuard">
-			<unitregen mergeMode="remove">-1.0000</unitregen>
-			<tactics>standground_ranged.tactics</tactics>
-			<protoaction>
-				<name>VolleyRangedAttack</name>
-				<damage>16.000000</damage>
-				<damagetype>Ranged</damagetype>
-				<maxrange>12.000000</maxrange>
-				<rof>3.000000</rof>
-				<damagebonus type="AbstractSiegeTrooper">2.000000</damagebonus>
-				<damagebonus type="AbstractVillager">0.250000</damagebonus>
-				<damagebonus type="Ship">4.000000</damagebonus>
-			</protoaction>
-		</unit>
-		<unit name="deSPCGreatBank">
-			<minimapicon>ui\minimap\city_resource</minimapicon>
-		</unit>
-		<unit name="deTradingPostWagon">
-			<icon>resources\art\buildings\trading_post\trading_post_icon.png</icon>
-			<cost resourcetype="Wood">200.0000</cost>
-			<trainpoints>10.0000</trainpoints>
-		</unit>
-		<unit name="NativeTownObstruction">
-			<flag>StartOnNoUpdate</flag>
+      <flag>NotSelectable</flag>
 		</unit>
 	</protomods>
 </mods>

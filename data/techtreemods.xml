@@ -19534,6 +19534,33 @@
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypHouseIndian</target>
       </effect>
+      <effect type="CommandRemove" proto="House">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseEast">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseMed">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deHouseAfrican">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deTorp">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseAztec">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deHouseInca">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypVillage">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypHouseIndian">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpDisableTradeRouteUpgrade" type="Normal">
@@ -19718,6 +19745,9 @@
       </effect>
       <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCSanMarco</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCGreatBasilicaConvertable</target>
       </effect>
       <effect type="TextOutputTechName">123070</effect>
     </effects>
@@ -21640,6 +21670,9 @@
     <flag>Shadow</flag>
     <effects>
       <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCGreatBasilicaConvertable</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCNotreDame</target>
       </effect>
       <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
@@ -21656,6 +21689,24 @@
       </effect>
       <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryFlorence</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryFlorence</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryFlorence</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
       </effect>
       <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCityMarket</target>
@@ -22701,6 +22752,132 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpSPCFlorenceSetup" type="Normal">
+    <dbid>40954</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpSPCArtPatronClone</effect>
+      <effect type="TechStatus" status="obtainable">DESPCVeteranCityGuard</effect>
+      <effect type="TechStatus" status="obtainable">DESPCGuardCityGuard</effect>
+      <effect type="TechStatus" status="obtainable">DESPCImperialCityGuard</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCTaulaDeCanviClone</effect>
+      <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
+      <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPapalBlessingClone</effect>
+      <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMediciPatronage</effect>
+      <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCVenetianFleet</effect>
+      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
+      <effect type="TechStatus" status="obtainable">zpMonarchChurchAliance</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
+      <effect type="CommandRemove" command="FourOfAKind">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="NativeEmbassy" relativity="Absolute">
+        <target type="ProtoUnit">deIconEuropeanEmbassy</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deEmbassyTravois" relativity="Absolute">
+        <target type="ProtoUnit">deIconEuropeanEmbassyTravois</target>
+      </effect>
+      <effect type="SetName" proto="NativeEmbassy" culture="none" newname="124945">
+      </effect>
+      <effect type="SetName" proto="deEmbassyTravois" culture="none" newname="80597" newrollover="103345" newshortrollover="103344">
+      </effect>
+      <effect type="SetName" proto="zpSPCNationalBank" culture="none" newname="123018">
+      </effect>
+      <effect type="TechStatus" status="active">deMapIsEuropean</effect>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="NativeEmbassy" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="CommandAdd" tech="DESPCMediciPatronage" page="1" column="0">
+        <target type="ProtoUnit">zpSPCNationalBank</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCTaulaDeCanviClone" page="1" column="1">
+        <target type="ProtoUnit">zpSPCNationalBank</target>
+      </effect>
+      <effect type="Data" amount="250.00" subtype="PopulationCap" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="CommandRemove" proto="House">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseEast">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseMed">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deHouseAfrican">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deTorp">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseAztec">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deHouseInca">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypVillage">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypHouseIndian">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">House</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">HouseEast</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">HouseMed</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deHouseAfrican</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deTorp</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">HouseAztec</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deHouseInca</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypVillage</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypHouseIndian</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCTaulaDeCanviClone" type="Normal">
+    <dbid>40955</dbid>
+    <displaynameid>123054</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\spc\historical_battles\team_taula_de_canvi.png</icon>
+    <rollovertextid>123053</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCNationalBank</target>
+      </effect>
+      <effect type="TextOutputTechName">123070</effect>
+    </effects>
+  </tech>
 
   
  
@@ -22743,7 +22920,7 @@
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
     <flag>DoNotQueue</flag>
-    <effects>
+    <effects
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCBlackPearlProxy</target>
       </effect>

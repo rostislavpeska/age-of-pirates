@@ -1,7 +1,15 @@
 <?xml version="1.0"?>
 <mods>
 	<protomods>
-		<!--BELONGS TO PARIS MAPMODS-->
+		<unit name="Church">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="ypChurch">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deBasilica">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
 		<unit name="House">
 			<placementfile>buildingsmall_city.xml</placementfile>
 			<flag>DoNotAllowAllowAlliedGarrison</flag>

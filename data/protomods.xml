@@ -36172,11 +36172,6 @@
     <unittype>AbstractBank</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
-    <!--<train row="0" page="0" column="0">deSaloonInquisitor</train>
-    <train row="0" page="0" column="1">deMercPistoleer</train>
-    <train row="0" page="0" column="2">deMercMountedRifleman</train>
-    <train row="0" page="0" column="3">deMercNapoleonGun</train>
-    <train row="0" page="0" column="0">demercZouave</train>-->
     <tech row="0" page="1" column="2">DESPCBankLoan</tech>
     <tech row="0" page="1" column="3">DESPCMercenaryBounties</tech>
     <flag>VisibleUnderFog</flag>
@@ -50746,8 +50741,8 @@
     <rollovertextid>25269</rollovertextid>
     <shortrollovertextid>25639</shortrollovertextid>
     <legacyhotkeycontext>FortFrontierAccel</legacyhotkeycontext>
-    <initialhitpoints>12000.0000</initialhitpoints>
-    <maxhitpoints>12000.0000</maxhitpoints>
+    <initialhitpoints>17000.0000</initialhitpoints>
+    <maxhitpoints>17000.0000</maxhitpoints>
     <los>34.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -51059,8 +51054,8 @@
     <rollovertextid>25269</rollovertextid>
     <shortrollovertextid>25639</shortrollovertextid>
     <legacyhotkeycontext>FortFrontierAccel</legacyhotkeycontext>
-    <initialhitpoints>12000.0000</initialhitpoints>
-    <maxhitpoints>12000.0000</maxhitpoints>
+    <initialhitpoints>17000.0000</initialhitpoints>
+    <maxhitpoints>17000.0000</maxhitpoints>
     <los>34.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -51166,8 +51161,8 @@
       <projectile>Cannonball</projectile>
     </protoaction>
   </unit>
-  <unit id="20670" name="zpSPCGreatBasilicaConvertable">
-    <dbid>20670</dbid>
+  <unit id="20690" name="zpSPCGreatBasilicaConvertable">
+    <dbid>20690</dbid>
     <displaynameid>302083</displaynameid>
     <editornameid>302400</editornameid>
     <obstructionradiusx>7.8000</obstructionradiusx>
@@ -51223,10 +51218,10 @@
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
-    <tech row="0" page="1" column="0">DESPCArtPatron</tech>
-    <tech row="0" page="1" column="1">DESPCPapalLegate</tech>
-    <tech row="0" page="1" column="2">DESPCPapalBlessing</tech>
-    <tech row="0" page="1" column="3">DESPCExcommunication</tech>
+    <tech row="0" page="11" column="0">zpSPCArtPatronClone</tech>
+    <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
+    <tech row="0" page="11" column="2">DESPCPapalLegate</tech>
+    <tech row="0" page="11" column="3">DESPCExcommunication</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -51256,8 +51251,8 @@
       <rate type="XP">4.000000</rate>
     </protoaction>
   </unit>
-  <unit id="20671" name="zpSPCCapturableFactoryFlorence">
-    <dbid>20671</dbid>
+  <unit id="20691" name="zpSPCCapturableFactoryFlorence">
+    <dbid>20691</dbid>
     <displaynameid>23986</displaynameid>
     <editornameid>302401</editornameid>
     <obstructionradiusx>5.0000</obstructionradiusx>
@@ -51369,12 +51364,220 @@
       <rate type="Gold">1.50000</rate>
     </protoaction>
   </unit>
+  <unit id="20692" name="zpNatEUItalianPalacesB">
+    <dbid>20692</dbid>
+    <displaynameid>62299</displaynameid>
+    <editornameid>302258</editornameid>
+    <obstructionradiusx>7.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\italian_palaces.xml</animfile>
+    <portraiticon>resources\art\units\natives\auditore_royal_house.png</portraiticon>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>RMCanRotate</flag>
+  </unit>
 
 
 
-
-
-
+  <!--Florence MAPMODS
+  <unit name="House">
+    <placementfile>buildingsmall_city.xml</placementfile>
+  </unit>
+  <unit name="HouseEast">
+    <placementfile>buildingsmall_city.xml</placementfile>
+  </unit>
+  <unit name="HouseMed">
+    <placementfile>buildingsmall_city.xml</placementfile>
+  </unit>
+  <unit name="Manor">
+    <placementfile>buildingsmall_city.xml</placementfile>
+  </unit>
+  <unit name="TownCenter">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit name="Market">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit name="Barracks">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit name="Stable">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit name="Blockhouse">
+    <placementfile>buildingsmall_city.xml</placementfile>
+  </unit>
+  <unit name="Outpost">
+    <placementfile>outpost_city.xml</placementfile>
+  </unit>
+  <unit name="ArtilleryDepot">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit name="Arsenal">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit name="LivestockPen">
+    <placementfile>buildingsmall_city.xml</placementfile>
+  </unit>
+  <unit name="Bank">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit name="deTavern">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit name="Saloon">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit name="Capitol">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit name="deStateCapitol">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit name="deLivestockMarket">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit name="dePalace">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit name="NativeEmbassy">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit name="deHouseAfrican">
+    <placementfile>buildingsmall_city.xml</placementfile>
+  </unit>
+  <unit name="deOutpostAfrican">
+    <placementfile>outpost_city.xml</placementfile>
+  </unit>
+  <unit name="deUniversity">
+    <placementfile>university_city.xml</placementfile>
+  </unit>
+  <unit name="deWarCamp">
+    <placementfile>buildingsmall_city.xml</placementfile>
+  </unit>
+  <unit name="deTower">
+    <placementfile>buildingsmall_city.xml</placementfile>
+  </unit>
+  <unit name="Mill">
+    <placementfile>mill_city.xml</placementfile>
+  </unit>
+  <unit name="Plantation">
+    <placementfile>mill_city.xml</placementfile>
+  </unit>
+  <unit name="deGranary">
+    <placementfile>granary_city.xml</placementfile>
+  </unit>
+  <unit name="deField">
+    <placementfile>field_city.xml</placementfile>
+  </unit>
+  <unit name="FortFrontier">
+    <placementfile>fortfrontier_city.xml</placementfile>
+  </unit>
+  <unit name="FortFrontier">
+    <placementfile>fortfrontier_city.xml</placementfile>
+  </unit>
+  <unit name="Factory">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit name="deLombard">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit name="deCommandery">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit id="20330" name="zpAmericanEmbassy">
+    <placementfile>buildinglarge_city.xml</placementfile>
+  </unit>
+  <unit name="deNatEUPropFence">
+    <flag>NoIdleActions</flag>
+    <flag>StartOnNoUpdate</flag>
+  </unit>
+  <unit name="zpNatEUPropWingC">
+    <flag>NoIdleActions</flag>
+    <flag>StartOnNoUpdate</flag>
+  </unit>
+  <unit name="zpNativeHouseVenetian">
+    <flag>NoIdleActions</flag>
+    <flag>StartOnNoUpdate</flag>
+  </unit>
+  <unit name="ypSMJesuitAccessory">
+    <flag>NoIdleActions</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NotSelectable</flag>
+  </unit>
+  <unit name="zpNativeStatueVenetian">
+    <flag>NoIdleActions</flag>
+    <flag>StartOnNoUpdate</flag>
+  </unit>
+  <unit name="deSPCCityStateHouseProp">
+    <flag>NoIdleActions</flag>
+    <flag>StartOnNoUpdate</flag>
+    <unittype>AbstractCityManison</unittype>
+  </unit>
+  <unit name="zpNativeHouseMaltese">
+    <flag>NoIdleActions</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NotSelectable</flag>
+    <unittype>AbstractCityManison</unittype>
+  </unit>
+  <unit name="zpNativeHouseOrthodoxSouth">
+    <flag>NoIdleActions</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NotSelectable</flag>
+    <unittype>AbstractCityManison</unittype>
+  </unit>
+  <unit name="SPCFortGate">
+    <flag>NotRepairable</flag>
+    <unitregen damagetimeout="6.0">0.2500</unitregen>
+  </unit>
+  <unit name="SPCFortWallSmall">
+    <flag>NotRepairable</flag>
+    <unitregen damagetimeout="6.0">0.2500</unitregen>
+  </unit>
+  <unit name="SPCFortWallMedium">
+    <flag>NotRepairable</flag>
+    <unitregen damagetimeout="6.0">0.2500</unitregen>
+  </unit>
+  <unit name="SPCFortWallLarge">
+    <flag>NotRepairable</flag>
+    <unitregen damagetimeout="6.0">0.2500</unitregen>
+  </unit>
+  <unit name="SPCFortCorner">
+    <flag>NotRepairable</flag>
+    <unitregen damagetimeout="6.0">0.2500</unitregen>
+  </unit>
+  <unit name="deSPCEuroTower">
+    <flag>NotRepairable</flag>
+    <unitregen damagetimeout="6.0">0.2500</unitregen>
+  </unit>
+  <unit name="zpItalianFort">
+    <flag>NotRepairable</flag>
+    <unitregen damagetimeout="6.0">0.2500</unitregen>
+  </unit>
+  <unit name="zpItalianFortB">
+    <flag>NotRepairable</flag>
+    <unitregen damagetimeout="6.0">0.2500</unitregen>
+  </unit>
+  <unit name="zpNatEUItalianPalaces">
+    <flag>NoIdleActions</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NotSelectable</flag>
+  </unit>-->
 
   <!--KING OF BOHEMIA MAPMODS-->
   <!--<unit name="deField">  
