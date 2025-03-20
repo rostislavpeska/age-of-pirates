@@ -186,7 +186,7 @@
 		<unit variation="2" posx="18.7825" posz="1.3748" orientx="0.0939" orienty="0.0000" orientz="0.9956">zpNativeWallFull</unit>
 		<unit variation="2" posx="24.3429" posz="0.8717" orientx="0.0939" orienty="0.0000" orientz="0.9956">zpNativeWallFull</unit>
 		<unit variation="0" posx="-27.8081" posz="5.5871" orientx="-0.9976" orienty="0.0000" orientz="0.0699">SPCPathBlock3</unit>
-		<unit variation="85" posx="-0.7130" posz="8.9335" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpGreatBasilica</unit>
+		<unit variation="85" posx="-0.7130" posz="8.9335" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCGreatBasilicaConvertable</unit>
 		<unit variation="11" posx="-29.4770" posz="3.4072" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="10" posx="21.6964" posz="4.2462" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsColony</unit>
 		<unit variation="11" posx="19.8802" posz="4.1635" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsColony</unit>

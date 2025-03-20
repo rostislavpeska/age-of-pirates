@@ -19722,7 +19722,7 @@
       <effect type="TextOutputTechName">123070</effect>
     </effects>
   </tech>
-  <tech name="zpEnableSPCCityStateTechsClone" type="Normal">
+  <tech name="zpVeniceCitySetup" type="Normal">
     <dbid>40835</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -19759,6 +19759,9 @@
       <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="NativeEmbassy" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
       </effect>
     </effects>
   </tech>

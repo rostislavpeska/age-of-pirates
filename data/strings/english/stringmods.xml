@@ -1825,7 +1825,7 @@
       <string _locid="301824">Liberty, equality, and justice for the people, by the people, against all tyranny!</string>
       <string _locid="301825">Sanscoulotte District</string>
       <string _locid="301826">ZP House Sansculottes</string>
-      <string _locid="301827">ZP Great Basilica</string>
+      <string _locid="301827">ZP SPC Great Basilica</string>
       <string _locid="301828">ZP SPC Paris Notre Dame</string>
       <string _locid="301829">Notre Dame Cathedral</string>
       <string _locid="301830">ZP SPC Paris Factory</string>
@@ -2397,6 +2397,8 @@
       <string _locid="302397">ZP SPC Florence Flag</string>
       <string _locid="302398">ZP SPC Rome Castle</string>
       <string _locid="302399">Castel Sant'Angelo</string>
+      <string _locid="302400">ZP SPC Great Basilica Convertable</string>
+      <string _locid="302401">ZP SPC Florence Factory</string>
 
 
       <!-- ======================================== -->

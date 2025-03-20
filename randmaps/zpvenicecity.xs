@@ -1046,7 +1046,7 @@ void main(void)
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
         rmSetTriggerEffectParamInt("PlayerID", i);
-        rmSetTriggerEffectParam("TechID","cTechzpEnableSPCCityStateTechsClone"); // Mercenaries
+        rmSetTriggerEffectParam("TechID","cTechzpVeniceCitySetup"); // Mercenaries
         rmSetTriggerEffectParamInt("Status", 2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
         rmSetTriggerEffectParamInt("PlayerID", i);

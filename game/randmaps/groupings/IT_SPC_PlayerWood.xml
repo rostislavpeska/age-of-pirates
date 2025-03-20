@@ -42,10 +42,6 @@
 		<unit variation="97" posx="11.0000" posz="-1.0000" orientx="-0.8310" orienty="0.0000" orientz="0.5563">TreeGreatPlains</unit>
 		<unit variation="220" posx="-10.2060" posz="2.0436" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpUnderbrushConstructionColony</unit>
 		<unit variation="56" posx="7.7305" posz="2.0184" orientx="-0.9696" orienty="0.0000" orientz="-0.2445">zpUnderbrushConstructionJesuit</unit>
-		<unit variation="28" posx="-1.1591" posz="0.6615" orientx="0.8521" orienty="-0.0054" orientz="0.5234">deGuardianCuirassier</unit>
-		<unit variation="65" posx="-2.5862" posz="0.7103" orientx="-0.8554" orienty="0.0006" orientz="0.5180">zpGuardianCardinalGuard</unit>
-		<unit variation="60" posx="-3.9230" posz="1.4258" orientx="0.0000" orienty="0.0124" orientz="-0.9999">zpGuardianCardinalGuard</unit>
-		<unit variation="183" posx="-4.9573" posz="0.5115" orientx="0.6916" orienty="-0.0007" orientz="0.7223">zpGuardianCardinalGuard</unit>
 		<unit variation="184" posx="2.8921" posz="3.7144" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTemporaryObstruction</unit>
 		<unit variation="249" posx="11.0000" posz="1.0000" orientx="-0.5486" orienty="0.0000" orientz="0.8361">TreeGreatPlains</unit>
 		<unit variation="128" posx="-10.5703" posz="3.3501" orientx="0.9760" orienty="0.0000" orientz="-0.2176">zpUnderbrushConstructionJesuit</unit>
@@ -58,7 +54,6 @@
 		<unit variation="174" posx="-8.1000" posz="5.6932" orientx="-0.5308" orienty="0.0000" orientz="0.8475">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="106" posx="10.2377" posz="4.3619" orientx="-0.9714" orienty="0.0000" orientz="0.2374">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="88" posx="-4.9321" posz="4.4345" orientx="0.3240" orienty="-0.0050" orientz="0.9460">Coyote</unit>
-		<unit variation="125" posx="-5.1128" posz="4.5782" orientx="-0.2193" orienty="0.0122" orientz="-0.9756">Settler</unit>
 		<unit variation="44" posx="-11.2068" posz="7.3597" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpUnderbrushConstructionColony</unit>
 		<unit variation="67" posx="-6.3913" posz="8.4527" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushConstructionColony</unit>
 		<unit variation="162" posx="-12.5785" posz="8.3834" orientx="0.9978" orienty="0.0000" orientz="0.0663">zpUnderbrushConstructionJesuit</unit>

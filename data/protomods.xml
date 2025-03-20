@@ -50742,7 +50742,7 @@
     <placementfile>wonders.xml</placementfile>
     <icon>resources\art\buildings\white_fort_icon_64.png</icon>
     <minimapicon>ui\minimap\highlighted item</minimapicon>
-    <portraiticon>resources\art\buildings\white_fort_icon_portrait.png</portraiticon>
+    <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
     <rollovertextid>25269</rollovertextid>
     <shortrollovertextid>25639</shortrollovertextid>
     <legacyhotkeycontext>FortFrontierAccel</legacyhotkeycontext>
@@ -51055,7 +51055,7 @@
     <placementfile>wonders.xml</placementfile>
     <icon>resources\art\buildings\white_fort_icon_64.png</icon>
     <minimapicon>ui\minimap\highlighted item</minimapicon>
-    <portraiticon>resources\art\buildings\white_fort_icon_portrait.png</portraiticon>
+    <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
     <rollovertextid>25269</rollovertextid>
     <shortrollovertextid>25639</shortrollovertextid>
     <legacyhotkeycontext>FortFrontierAccel</legacyhotkeycontext>
@@ -51164,6 +51164,209 @@
       <damagearea>3.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
       <projectile>Cannonball</projectile>
+    </protoaction>
+  </unit>
+  <unit id="20670" name="zpSPCGreatBasilicaConvertable">
+    <dbid>20670</dbid>
+    <displaynameid>302083</displaynameid>
+    <editornameid>302400</editornameid>
+    <obstructionradiusx>7.8000</obstructionradiusx>
+    <obstructionradiusz>8.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\basilica\venice_basilica.xml</animfile>
+    <deadreplacement>BuildingRubble6x6</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\basilica\basilica_icon.png</icon>
+    <portraiticon>resources\art\buildings\basilica\basilica_portrait.png</portraiticon>
+    <minimapicon>ui\minimap\religious_small</minimapicon>
+    <rollovertextid>302310</rollovertextid>
+    <shortrollovertextid>302309</shortrollovertextid>
+    <initialhitpoints>5000.0000</initialhitpoints>
+    <maxhitpoints>5000.0000</maxhitpoints>
+    <los>12.0000</los>
+    <displayedrange>20.0000</displayedrange>
+    <buildpoints>40.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>160.0000</bounty>
+    <buildbounty>80.0000</buildbounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>1</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractChurch</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
+    <flag>AllowAutoGarrison</flag>
+    <tech row="0" page="1" column="0">DESPCArtPatron</tech>
+    <tech row="0" page="1" column="1">DESPCPapalLegate</tech>
+    <tech row="0" page="1" column="2">DESPCPapalBlessing</tech>
+    <tech row="0" page="1" column="3">DESPCExcommunication</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>ShowAreaHealRate</flag>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="10" column="5">Eject</command>
+    <command page="11" column="4">Abilities</command>
+    <tactics>notre_dame.tactics</tactics>
+    <protoaction>
+      <name>Autogather</name>
+      <rate type="XP">4.000000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20671" name="zpSPCCapturableFactoryFlorence">
+    <dbid>20671</dbid>
+    <displaynameid>23986</displaynameid>
+    <editornameid>302401</editornameid>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <obstructionradiusz>5.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\scientists\med_lab.xml</animfile>
+    <deadreplacement>BuildingRubble5x5</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\factory\shared_factory_icon.png</icon>
+    <minimapicon>ui\minimap\city_resource</minimapicon>
+    <portraiticon>resources\art\buildings\factory\shared_factory_portrait.png</portraiticon>
+    <rollovertextid>301886</rollovertextid>
+    <shortrollovertextid>301887</shortrollovertextid>
+    <legacyhotkeycontext>FactoryAccel</legacyhotkeycontext>
+    <initialhitpoints>5000.0000</initialhitpoints>
+    <maxhitpoints>5000.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>30.0000</buildpoints>
+    <bounty>240.0000</bounty>
+    <buildbounty>0.0000</buildbounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>Economic</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractFindOtherEconomicBuilding</unittype>
+    <unittype>AbstractFindOtherMilitaryBuilding</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
+    <flag>VisibleUnderFog</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>EnterHotkeyContext</flag>
+    <flag>NotDeleteable</flag>
+    <flag>Invulnerable</flag>
+    <flag>BuildingShowTactics</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>CannotBeConvertedByAllies</flag>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="9" column="0">Tactic11</command>
+    <command page="9" column="1">Tactic12</command>
+    <command page="9" column="2">Tactic10</command>
+    <tactics>parisfactory.tactics</tactics>
+    <protoaction>
+      <name>AutoConvert</name>
+      <converttogaiaifforbidden>1</converttogaiaifforbidden>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherCoin</name>
+      <rate type="Gold">4.500000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherFood</name>
+      <rate type="Food">4.500000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherWood</name>
+      <rate type="Wood">4.500000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherFoodTeam</name>
+      <rate type="Food">1.50000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherWoodTeam</name>
+      <rate type="Wood">1.50000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherCoinTeam</name>
+      <rate type="Gold">1.50000</rate>
     </protoaction>
   </unit>
 

@@ -296,7 +296,7 @@
 		<unit variation="2" posx="23.9418" posz="11.6597" orientx="-0.9464" orienty="0.0000" orientz="-0.3231">deSPCTreeCypressProp</unit>
 		<unit variation="0" posx="-28.1119" posz="15.5322" orientx="-0.9979" orienty="0.0000" orientz="0.0645">SPCPathBlock3</unit>
 		<unit variation="0" posx="27.5677" posz="15.7284" orientx="-0.9909" orienty="0.0000" orientz="0.1348">SPCPathBlock3</unit>
-		<unit variation="236" posx="-0.9976" posz="18.5928" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpGreatBasilica</unit>
+		<unit variation="236" posx="-0.9976" posz="18.5928" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCGreatBasilicaConvertable</unit>
 		<unit variation="245" posx="-28.6680" posz="13.1730" orientx="0.9969" orienty="0.0000" orientz="-0.0784">deNatEUPropFence</unit>
 		<unit variation="0" posx="-26.1285" posz="13.5230" orientx="-0.9954" orienty="0.0000" orientz="0.0962">zpPropsFlowersBohemia</unit>
 		<unit variation="0" posx="-13.4265" posz="12.6988" orientx="-0.9954" orienty="0.0000" orientz="0.0962">zpPropsFlowersBohemia</unit>
