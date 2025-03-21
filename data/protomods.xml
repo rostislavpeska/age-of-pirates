@@ -47079,6 +47079,7 @@
     <unittype>Unit</unittype>
     <unittype>Transport</unittype>
     <unittype>Ship</unittype>
+    <unittype>LogicalTypeNavalMilitary</unittype>
     <flag>TieToWaterSurface</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>DontRotateObstruction</flag>

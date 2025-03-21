@@ -20976,10 +20976,14 @@
       <effect type="CommandRemove" proto="xpIronclad">
         <target type="ProtoUnit">Dock</target>
       </effect>
+      <effect type="CommandRemove" proto="deGalleass">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
       <effect type="TechStatus" status="unobtainable">ImperialManOWar</effect>
       <effect type="TechStatus" status="unobtainable">ypImperialManOWar</effect>
       <effect type="TechStatus" status="unobtainable">ShipHowitzers</effect>
       <effect type="TechStatus" status="unobtainable">DEShipHowitzersAmerican</effect>
+      <effect type="TechStatus" status="unobtainable">PercussionLocks</effect>
       <effect type="CommandRemove" tech="ImperialManOWar">
         <target type="ProtoUnit">Dock</target>
       </effect>
@@ -21009,6 +21013,15 @@
       </effect>
       <effect type="CommandRemove" tech="DEShipHowitzersAmerican">
         <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" tech="PercussionLocks">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" tech="PercussionLocks">
+        <target type="ProtoUnit">YPDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" tech="PercussionLocks">
+        <target type="ProtoUnit">dePort</target>
       </effect>
     </effects>
   </tech>
@@ -22856,6 +22869,13 @@
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypHouseIndian</target>
+      </effect>
+      <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
+      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRowboat</target>
       </effect>
     </effects>
   </tech>
