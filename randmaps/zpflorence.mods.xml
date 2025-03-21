@@ -203,6 +203,9 @@
 			<flag>NoIdleActions</flag>
 			<flag>StartOnNoUpdate</flag>
       <flag>NotSelectable</flag>
-		</unit>
+	</unit>
+	<unit name="zpSPCNationalBank">
+		<displaynameid>123018</displaynameid>
+	</unit>
 	</protomods>
 </mods>
