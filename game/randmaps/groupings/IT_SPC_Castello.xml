@@ -62,9 +62,9 @@
 		<unit variation="0" posx="-7.8651" posz="3.4447" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsPoles</unit>
 		<unit variation="1" posx="-9.2809" posz="3.0485" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="1" posx="14.2504" posz="3.7588" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">PropsPoles</unit>
-		<unit variation="0" posx="-14.0076" posz="5.1441" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">PropsPoles</unit>
+		<unit variation="0" posx="-14.0076" posz="5.1441" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">PropsPoles</unit>-->
 		<unit variation="241" posx="-4.5650" posz="3.0475" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeTowerRoman</unit>
-		<unit variation="140" posx="-11.2046" posz="4.9353" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpSPCCityBuildingMix</unit>
+		<!--<unit variation="140" posx="-11.2046" posz="4.9353" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpSPCCityBuildingMix</unit>
 		<unit variation="229" posx="-9.5897" posz="6.3602" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCCityBuildingMix</unit>
 		<unit variation="229" posx="11.9406" posz="5.4623" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCCityBuildingMix</unit>
 		<unit variation="8" posx="13.0929" posz="5.6618" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsPottedPlants</unit>

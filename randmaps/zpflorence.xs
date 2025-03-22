@@ -1167,6 +1167,11 @@ void main(void)
     rmSetGroupingMaxDistance(blockPlayerStart, 0.50);
 	rmAddGroupingToClass(blockPlayerStart, rmClassID("classBlock"));
 
+	int blockPlayerStartMalta = rmCreateGrouping("blockPlayerStartMalta", "IT_SPC_PlayerStartMaltese");
+    rmSetGroupingMinDistance(blockPlayerStartMalta, 0.00);
+    rmSetGroupingMaxDistance(blockPlayerStartMalta, 0.50);
+	rmAddGroupingToClass(blockPlayerStartMalta, rmClassID("classBlock"));
+
 	int blockPlayerGold = rmCreateGrouping("blockPlayerGold", "IT_SPC_PlayerGold");
     rmSetGroupingMinDistance(blockPlayerGold, 0.00);
     rmSetGroupingMaxDistance(blockPlayerGold, 0.50);
@@ -1197,6 +1202,9 @@ void main(void)
     for(i=1; <= cNumberNonGaiaPlayers) {
 			int id=rmCreateArea("Player"+i);
 			rmSetPlayerArea(i, id);
+			if (rmGetPlayerCiv(i) == rmGetCivID("DEMaltese"))
+				rmPlaceGroupingAtLoc(blockPlayerStartMalta, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			else
 			rmPlaceGroupingAtLoc(blockPlayerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 			rmPlaceObjectDefAtLoc(playerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 			if (rmGetPlayerTeam(i) == 0) {
