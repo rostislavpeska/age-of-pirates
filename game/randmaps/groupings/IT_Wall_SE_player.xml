@@ -6,37 +6,37 @@
 	<selectassingleunit>0</selectassingleunit>
 	<workonassingleunit>0</workonassingleunit>
 	<units>
-		<unit variation="57" posx="18.2064" posz="-11.1192" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCFortCorner</unit>
-		<unit variation="57" posx="-18.4886" posz="-10.4834" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCFortCorner</unit>
-		<unit variation="218" posx="-21.9876" posz="-6.4202" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">SPCFortWallLarge</unit>
-		<unit variation="218" posx="14.3524" posz="-6.7961" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">SPCFortWallLarge</unit>
-		<unit variation="218" posx="22.2219" posz="-6.6138" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCFortWallLarge</unit>
-		<unit variation="218" posx="-13.7138" posz="-5.7624" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCFortWallLarge</unit>
-		<unit variation="57" posx="25.7479" posz="-3.9031" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCFortCorner</unit>
-		<unit variation="57" posx="-10.3769" posz="-3.1039" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCFortCorner</unit>
-		<unit variation="41" posx="-26.0924" posz="-3.3352" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCFlorentianFlag</unit>
-		<unit variation="41" posx="-10.4423" posz="-2.8707" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCFlorentianFlag</unit>
-		<unit variation="41" posx="9.9567" posz="-3.6067" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCFlorentianFlag</unit>
-		<unit variation="41" posx="25.4992" posz="-3.9457" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCFlorentianFlag</unit>
-		<unit variation="57" posx="9.9247" posz="-2.8936" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">SPCFortCorner</unit>
-		<unit variation="218" posx="-11.1399" posz="1.7296" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCFortWallLarge</unit>
-		<unit variation="218" posx="10.4394" posz="1.3191" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">SPCFortWallLarge</unit>
-		<unit variation="57" posx="-26.2628" posz="-2.5217" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">SPCFortCorner</unit>
-		<unit variation="218" posx="24.7582" posz="1.6581" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCFortWallLarge</unit>
-		<unit variation="218" posx="-25.5528" posz="2.6989" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">SPCFortWallLarge</unit>
-		<unit variation="57" posx="9.9515" posz="4.8999" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">SPCFortCorner</unit>
-		<unit variation="57" posx="5.5657" posz="4.9017" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCFortCorner</unit>
-		<unit variation="57" posx="-10.4729" posz="4.6544" orientx="0.9239" orienty="0.0000" orientz="-0.3827">SPCFortCorner</unit>
-		<unit variation="57" posx="25.8167" posz="5.3377" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCFortCorner</unit>
-		<unit variation="57" posx="-6.1344" posz="5.2916" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCFortCorner</unit>
-		<unit variation="63" posx="-0.2010" posz="5.3817" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCFortGate</unit>
-		<unit variation="218" posx="29.3656" posz="6.1625" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCFortWallLarge</unit>
-		<unit variation="34" posx="7.6334" posz="5.9252" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCFortWallMedium</unit>
-		<unit variation="34" posx="-8.2502" posz="5.9258" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCFortWallMedium</unit>
-		<unit variation="57" posx="-26.3869" posz="6.4432" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">SPCFortCorner</unit>
-		<unit variation="218" posx="-30.1068" posz="7.6721" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCFortWallLarge</unit>
-		<unit variation="75" posx="-18.2652" posz="0.2896" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deSPCEuroTower</unit>
-		<unit variation="75" posx="18.8389" posz="0.3504" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deSPCEuroTower</unit>
+		<unit variation="57" posx="18.2064" posz="-9.1192" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deSPCFortCornerProp</unit>
+		<unit variation="218" posx="22.2219" posz="-4.6138" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deSPCFortWallLargeProp</unit>
+		<unit variation="218" posx="-21.9876" posz="-4.4202" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">deSPCFortWallLargeProp</unit>
+		<unit variation="57" posx="-18.4886" posz="-8.4834" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">deSPCFortCornerProp</unit>
+		<unit variation="218" posx="14.3524" posz="-4.7961" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">deSPCFortWallLargeProp</unit>
+		<unit variation="218" posx="-13.7138" posz="-3.7624" orientx="0.7071" orienty="-0.0000" orientz="-0.7071">deSPCFortWallLargeProp</unit>
+		<unit variation="57" posx="25.7479" posz="-1.9031" orientx="1.0000" orienty="-0.0000" orientz="0.0000">deSPCFortCornerProp</unit>
+		<unit variation="57" posx="-10.3769" posz="-1.1039" orientx="1.0000" orienty="-0.0000" orientz="0.0000">deSPCFortCornerProp</unit>
+		<unit variation="41" posx="9.9567" posz="-1.6067" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCFlorentianFlag</unit>
+		<unit variation="41" posx="25.4992" posz="-1.9457" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCFlorentianFlag</unit>
+		<unit variation="41" posx="-26.0924" posz="-1.3352" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCFlorentianFlag</unit>
+		<unit variation="41" posx="-10.4423" posz="-0.8707" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCFlorentianFlag</unit>
+		<unit variation="218" posx="-11.1399" posz="3.7296" orientx="1.0000" orienty="-0.0000" orientz="0.0000">deSPCFortWallLargeProp</unit>
+		<unit variation="57" posx="-26.2628" posz="-0.5217" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">deSPCFortCornerProp</unit>
+		<unit variation="218" posx="10.4394" posz="3.3191" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">deSPCFortWallLargeProp</unit>
+		<unit variation="218" posx="24.7582" posz="3.6581" orientx="1.0000" orienty="-0.0000" orientz="0.0000">deSPCFortWallLargeProp</unit>
+		<unit variation="57" posx="9.9247" posz="-0.8936" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">deSPCFortCornerProp</unit>
+		<unit variation="218" posx="-25.5528" posz="4.6989" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">deSPCFortWallLargeProp</unit>
+		<unit variation="57" posx="-10.4729" posz="6.6544" orientx="0.9239" orienty="-0.0000" orientz="-0.3827">deSPCFortCornerProp</unit>
+		<unit variation="57" posx="9.9515" posz="6.8999" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">deSPCFortCornerProp</unit>
+		<unit variation="57" posx="5.5657" posz="6.9017" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">deSPCFortCornerProp</unit>
+		<unit variation="57" posx="25.8167" posz="7.3377" orientx="0.7071" orienty="-0.0000" orientz="-0.7071">deSPCFortCornerProp</unit>
+		<unit variation="57" posx="-26.3869" posz="8.4432" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deSPCFortCornerProp</unit>
+		<unit variation="34" posx="-8.2502" posz="7.9258" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deSPCFortWallMediumProp</unit>
+		<unit variation="57" posx="-6.1344" posz="7.2916" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">deSPCFortCornerProp</unit>
+		<unit variation="34" posx="7.6334" posz="7.9252" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">deSPCFortWallMediumProp</unit>
+		<unit variation="218" posx="29.3656" posz="8.1625" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">deSPCFortWallLargeProp</unit>
+		<unit variation="63" posx="-0.2010" posz="7.3817" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCFortGate</unit>
+		<unit variation="218" posx="-30.1068" posz="9.6721" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">deSPCFortWallLargeProp</unit>
+		<unit variation="75" posx="-18.2652" posz="2.2896" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deSPCEuroTower</unit>
+		<unit variation="75" posx="18.8389" posz="2.3504" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">deSPCEuroTower</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="props\east_colony">

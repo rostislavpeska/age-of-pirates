@@ -437,12 +437,12 @@ void main(void)
 
 	// Wall placement
 
-	int southEastWall = rmCreateGrouping("wall se", "EU_wall_se_player");
+	int southEastWall = rmCreateGrouping("wall se", "IT_wall_se_player");
     rmSetGroupingMinDistance(southEastWall, 0.00);
     rmSetGroupingMaxDistance(southEastWall, 0.00);
 	rmAddGroupingToClass(southEastWall, rmClassID("classBlock"));
 
-	int northWestWall = rmCreateGrouping("wall nw", "EU_wall_nw_player");
+	int northWestWall = rmCreateGrouping("wall nw", "IT_wall_nw_player");
     rmSetGroupingMinDistance(northWestWall, 0.00);
     rmSetGroupingMaxDistance(northWestWall, 0.00);
 	rmAddGroupingToClass(northWestWall, rmClassID("classBlock"));
@@ -746,12 +746,12 @@ void main(void)
     rmSetAreaCoherence(gateRoad4 , 0.5);
     rmBuildArea(gateRoad4 );
 
-	int southEastWallTerrain = rmCreateGrouping("wall se terrain", "EU_wall_se_terrain_player");
+	int southEastWallTerrain = rmCreateGrouping("wall se terrain", "IT_wall_se_terrain_player");
     rmSetGroupingMinDistance(southEastWallTerrain, 0.00);
     rmSetGroupingMaxDistance(southEastWallTerrain, 0.00);
 	rmAddGroupingToClass(southEastWallTerrain, rmClassID("classBlock"));
 
-	int northWestWallTerrain = rmCreateGrouping("wall nw terrain", "EU_wall_nw_terrain_player");
+	int northWestWallTerrain = rmCreateGrouping("wall nw terrain", "IT_wall_nw_terrain_player");
     rmSetGroupingMinDistance(northWestWallTerrain, 0.00);
     rmSetGroupingMaxDistance(northWestWallTerrain, 0.00);
 	rmAddGroupingToClass(northWestWallTerrain, rmClassID("classBlock"));
@@ -828,84 +828,84 @@ void main(void)
     // Define Blocks
 
 	// Market
-	int blockMarket = rmCreateGrouping("market", "EU_Resource_Block_All2");
+	int blockMarket = rmCreateGrouping("market", "IT_Resource_Block_All2");
     rmSetGroupingMinDistance(blockMarket, 0.00);
     rmSetGroupingMaxDistance(blockMarket, 0.50);
 	rmAddGroupingToClass(blockMarket, rmClassID("classBlock"));
 
 	// Bank
-	int blockBank = rmCreateGrouping("bank", "EU_Resource_Block_Gold1");
+	int blockBank = rmCreateGrouping("bank", "IT_Resource_Block_Gold1");
     rmSetGroupingMinDistance(blockBank, 0.00);
     rmSetGroupingMaxDistance(blockBank, 0.50);
 	rmAddGroupingToClass(blockBank, rmClassID("classBlock"));
 
 	// Jesuit natives
-	int blockJesuit = rmCreateGrouping("jesuit natives", "EU_Native_Block_Jesuit");
+	int blockJesuit = rmCreateGrouping("jesuit natives", "IT_Native_Block_Jesuit");
     rmSetGroupingMinDistance(blockJesuit, 0.00);
     rmSetGroupingMaxDistance(blockJesuit, 0.50);
 	rmAddGroupingToClass(blockJesuit, rmClassID("classBlock"));
 
     // Maltese natives
-	int blockMaltese = rmCreateGrouping("maltese natives", "EU_Native_Block_Maltese");
+	int blockMaltese = rmCreateGrouping("maltese natives", "IT_Native_Block_Maltese");
     rmSetGroupingMinDistance(blockMaltese, 0.00);
     rmSetGroupingMaxDistance(blockMaltese, 0.50);
 	rmAddGroupingToClass(blockMaltese, rmClassID("classBlock"));
 
     // Auditore natives
-	int blockAuditore = rmCreateGrouping("Auditore natives", "EU_Native_Block_Auditore");
+	int blockAuditore = rmCreateGrouping("Auditore natives", "IT_Native_Block_Auditore");
     rmSetGroupingMinDistance(blockAuditore, 0.00);
     rmSetGroupingMaxDistance(blockAuditore, 0.50);
 	rmAddGroupingToClass(blockAuditore, rmClassID("classBlock"));
 
 	// Factory
-	int blockFactory = rmCreateGrouping("Factory", "EU_Resource_Block_All1");
+	int blockFactory = rmCreateGrouping("Factory", "IT_Resource_Block_All1");
     rmSetGroupingMinDistance(blockFactory, 0.00);
     rmSetGroupingMaxDistance(blockFactory, 0.50);
 	rmAddGroupingToClass(blockFactory, rmClassID("classBlock"));
 
 	// Mill
-	int blockMill = rmCreateGrouping("Mill", "EU_Resource_Block_Food1");
+	int blockMill = rmCreateGrouping("Mill", "IT_Resource_Block_Food1");
     rmSetGroupingMinDistance(blockMill, 0.00);
     rmSetGroupingMaxDistance(blockMill, 0.50);
 	rmAddGroupingToClass(blockMill, rmClassID("classBlock"));
 
 	// Warehouse
-	int blockWarehouse = rmCreateGrouping("Warehouse", "EU_Resource_Block_Wood1");
+	int blockWarehouse = rmCreateGrouping("Warehouse", "IT_Resource_Block_Wood1");
     rmSetGroupingMinDistance(blockWarehouse, 0.00);
     rmSetGroupingMaxDistance(blockWarehouse, 0.50);
 	rmAddGroupingToClass(blockWarehouse, rmClassID("classBlock"));
 
 	// Lombard
-    int blockLombard = rmCreateGrouping("Lombard", "EU_House_Block_Lombard");
+    int blockLombard = rmCreateGrouping("Lombard", "IT_House_Block_Lombard");
     rmSetGroupingMinDistance(blockLombard, 0.00);
     rmSetGroupingMaxDistance(blockLombard, 0.50);
 	rmAddGroupingToClass(blockLombard, rmClassID("classBlock"));
     
     // Trade Post
-    int blockTrade = rmCreateGrouping("Trade", "EU_SPC_Block_Trade");
+    int blockTrade = rmCreateGrouping("Trade", "IT_SPC_Block_Trade");
     rmSetGroupingMinDistance(blockTrade, 0.00);
     rmSetGroupingMaxDistance(blockTrade, 0.50);
 	rmAddGroupingToClass(blockTrade, rmClassID("classBlock"));
 
     // Treasures
-    int blockTreasure01 = rmCreateGrouping("Treasure1", "EU_House_Block_Treasure01");
+    int blockTreasure01 = rmCreateGrouping("Treasure1", "IT_House_Block_Treasure01");
     rmSetGroupingMinDistance(blockTreasure01, 0.00);
     rmSetGroupingMaxDistance(blockTreasure01, 0.50);
 	rmAddGroupingToClass(blockTreasure01, rmClassID("classBlock"));
 
-	int blockTreasure02 = rmCreateGrouping("Treasure2", "EU_House_Block_Treasure02");
+	int blockTreasure02 = rmCreateGrouping("Treasure2", "IT_House_Block_Treasure02");
     rmSetGroupingMinDistance(blockTreasure02, 0.00);
     rmSetGroupingMaxDistance(blockTreasure02, 0.50);
 	rmAddGroupingToClass(blockTreasure02, rmClassID("classBlock"));
 
     // Park
-    int blockPark = rmCreateGrouping("park", "EU_House_Block_Park");
+    int blockPark = rmCreateGrouping("park", "IT_House_Block_Park");
     rmSetGroupingMinDistance(blockPark, 0.00);
     rmSetGroupingMaxDistance(blockPark, 0.50);
 	rmAddGroupingToClass(blockPark, rmClassID("classBlock"));
 
 	// Menagerie
-    int blockMenagerie = rmCreateGrouping("Menagerie", "EU_Resource_Block_Menager");
+    int blockMenagerie = rmCreateGrouping("Menagerie", "EU_Resource_Block_Menagerie");
     rmSetGroupingMinDistance(blockMenagerie, 0.00);
     rmSetGroupingMaxDistance(blockMenagerie, 0.50);
 	rmAddGroupingToClass(blockMenagerie, rmClassID("classBlock"));
@@ -923,38 +923,38 @@ void main(void)
 	rmAddGroupingToClass(blockCastello2, rmClassID("classBlock"));
 
 	// Construction
-    int blockConstruction = rmCreateGrouping("Construction", "EU_SPC_Block_Constr");
+    int blockConstruction = rmCreateGrouping("Construction", "IT_SPC_Block_Constr");
     rmSetGroupingMinDistance(blockConstruction, 0.00);
     rmSetGroupingMaxDistance(blockConstruction, 0.50);
 	rmAddGroupingToClass(blockConstruction, rmClassID("classBlock"));
 
     // House Blocks
-	int blockHouse01 = rmCreateGrouping("house1", "EU_House_Block_01");
+	int blockHouse01 = rmCreateGrouping("house1", "IT_House_Block_01");
     rmSetGroupingMinDistance(blockHouse01, 0.00);
     rmSetGroupingMaxDistance(blockHouse01, 0.50);
 	rmAddGroupingToClass(blockHouse01, rmClassID("classBlock"));
 
-	int blockHouse02 = rmCreateGrouping("house2", "EU_House_Block_02");
+	int blockHouse02 = rmCreateGrouping("house2", "IT_House_Block_02");
     rmSetGroupingMinDistance(blockHouse02, 0.00);
     rmSetGroupingMaxDistance(blockHouse02, 0.50);
 	rmAddGroupingToClass(blockHouse02, rmClassID("classBlock"));
 
-	int blockHouse03 = rmCreateGrouping("house3", "EU_House_Block_03");
+	int blockHouse03 = rmCreateGrouping("house3", "IT_House_Block_03");
     rmSetGroupingMinDistance(blockHouse03, 0.00);
     rmSetGroupingMaxDistance(blockHouse03, 0.50);
 	rmAddGroupingToClass(blockHouse03, rmClassID("classBlock"));
 
-	int blockHouse04 = rmCreateGrouping("house4", "EU_House_Block_04");
+	int blockHouse04 = rmCreateGrouping("house4", "IT_House_Block_04");
     rmSetGroupingMinDistance(blockHouse04, 0.00);
     rmSetGroupingMaxDistance(blockHouse04, 0.50);
 	rmAddGroupingToClass(blockHouse04, rmClassID("classBlock"));
 
-	int blockHouse05 = rmCreateGrouping("house5", "EU_House_Block_05");
+	int blockHouse05 = rmCreateGrouping("house5", "IT_House_Block_05");
     rmSetGroupingMinDistance(blockHouse05, 0.00);
     rmSetGroupingMaxDistance(blockHouse05, 0.50);
 	rmAddGroupingToClass(blockHouse05, rmClassID("classBlock"));
 
-	int blockHouse06 = rmCreateGrouping("house6", "EU_House_Block_06");
+	int blockHouse06 = rmCreateGrouping("house6", "IT_House_Block_06");
     rmSetGroupingMinDistance(blockHouse06, 0.00);
     rmSetGroupingMaxDistance(blockHouse06, 0.50);
 	rmAddGroupingToClass(blockHouse06, rmClassID("classBlock"));
@@ -1162,22 +1162,22 @@ void main(void)
 
 	// Player Blocks
 
-	int blockPlayerStart = rmCreateGrouping("blockPlayerStart", "EU_SPC_PlayerStart");
+	int blockPlayerStart = rmCreateGrouping("blockPlayerStart", "IT_SPC_PlayerStart");
     rmSetGroupingMinDistance(blockPlayerStart, 0.00);
     rmSetGroupingMaxDistance(blockPlayerStart, 0.50);
 	rmAddGroupingToClass(blockPlayerStart, rmClassID("classBlock"));
 
-	int blockPlayerGold = rmCreateGrouping("blockPlayerGold", "EU_SPC_PlayerGold");
+	int blockPlayerGold = rmCreateGrouping("blockPlayerGold", "IT_SPC_PlayerGold");
     rmSetGroupingMinDistance(blockPlayerGold, 0.00);
     rmSetGroupingMaxDistance(blockPlayerGold, 0.50);
 	rmAddGroupingToClass(blockPlayerGold, rmClassID("classBlock"));
 
-	int blockPlayerFood = rmCreateGrouping("blockPlayerFood", "EU_SPC_PlayerFood");
+	int blockPlayerFood = rmCreateGrouping("blockPlayerFood", "IT_SPC_PlayerFood");
     rmSetGroupingMinDistance(blockPlayerFood, 0.00);
     rmSetGroupingMaxDistance(blockPlayerFood, 0.50);
 	rmAddGroupingToClass(blockPlayerFood, rmClassID("classBlock"));
 
-	int blockPlayerWood = rmCreateGrouping("blockPlayerWood", "EU_SPC_PlayerWood");
+	int blockPlayerWood = rmCreateGrouping("blockPlayerWood", "IT_SPC_PlayerWood");
     rmSetGroupingMinDistance(blockPlayerWood, 0.00);
     rmSetGroupingMaxDistance(blockPlayerWood, 0.50);
 	rmAddGroupingToClass(blockPlayerWood, rmClassID("classBlock"));

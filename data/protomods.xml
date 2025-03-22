@@ -50951,39 +50951,24 @@
     <buildingworkrate>1.0000</buildingworkrate>
     <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
     </minimapcolor>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
-    <unittype>BuildingClass</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>NativeBuilding</unittype>
-    <unittype>Building</unittype>
-    <flag>NotSelectable</flag>
-    <flag>TieToWaterSurface</flag>
-    <flag>Doppled</flag>
-    <flag>PaintTextureWhenPlacing</flag>
-    <flag>InvulnerableIfGaia</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>DoNotDieAtZeroHitpoints</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>Immoveable</flag>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>HideHitpointsIfGaia</flag>
-    <flag>RMCanRotate</flag>
-    <flag>HasGatherPoint</flag>
-    <flag>VisibleUnderFogIfGaia</flag>
-    <flag>ColorTransformNonGaia</flag>
+    <unittype>EmbellishmentClass</unittype>
     <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
     <flag>DoNotShowOnMiniMap</flag>
-    <flag>Tracked</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotSearchable</flag>
+    <flag>VariationLocked</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
   </unit>
   <unit id="20688" name="zpSPCFlorentianFlag">
     <dbid>20688</dbid>
@@ -51003,39 +50988,24 @@
     <buildingworkrate>1.0000</buildingworkrate>
     <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
     </minimapcolor>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
-    <unittype>BuildingClass</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>NativeBuilding</unittype>
-    <unittype>Building</unittype>
-    <flag>NotSelectable</flag>
-    <flag>TieToWaterSurface</flag>
-    <flag>Doppled</flag>
-    <flag>PaintTextureWhenPlacing</flag>
-    <flag>InvulnerableIfGaia</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>DoNotDieAtZeroHitpoints</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>Immoveable</flag>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>HideHitpointsIfGaia</flag>
-    <flag>RMCanRotate</flag>
-    <flag>HasGatherPoint</flag>
-    <flag>VisibleUnderFogIfGaia</flag>
-    <flag>ColorTransformNonGaia</flag>
+    <unittype>EmbellishmentClass</unittype>
     <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
     <flag>DoNotShowOnMiniMap</flag>
-    <flag>Tracked</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotSearchable</flag>
+    <flag>VariationLocked</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
   </unit>
   <unit id="20689" name="zpItalianFortB">
     <dbid>20689</dbid>
