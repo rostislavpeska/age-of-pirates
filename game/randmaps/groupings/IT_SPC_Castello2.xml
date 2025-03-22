@@ -7,7 +7,7 @@
 	<selectassingleunit>0</selectassingleunit>
 	<workonassingleunit>0</workonassingleunit>
 	<units>
-		<unit variation="0" posx="-13.4724" posz="-13.4050" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
+		<!--<unit variation="0" posx="-13.4724" posz="-13.4050" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="0" posx="-12.1174" posz="-14.1058" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="0" posx="-11.3549" posz="-12.0950" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="0" posx="-6.1054" posz="-13.5761" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsColony</unit>
@@ -97,7 +97,7 @@
 		<unit variation="0" posx="-11.0167" posz="13.6071" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="1" posx="2.0709" posz="14.7776" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsPoles</unit>
 		<unit variation="8" posx="3.3248" posz="13.6199" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsPottedPlants</unit>
-		<unit variation="1" posx="-11.7099" posz="14.2608" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsPoles</unit>
+		<unit variation="1" posx="-11.7099" posz="14.2608" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsPoles</unit>-->
 		<unit variation="41" posx="0.7072" posz="1.3818" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpItalianFortB</unit>
 	</units>
 	<tiles>

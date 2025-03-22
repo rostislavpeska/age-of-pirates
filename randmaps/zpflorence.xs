@@ -917,7 +917,7 @@ void main(void)
 	rmAddGroupingToClass(blockCastello, rmClassID("classBlock"));
 
 	// Italian Castle Florence
-    int blockCastello2 = rmCreateGrouping("Castello 2", "IT_SPC_Castello");
+    int blockCastello2 = rmCreateGrouping("Castello 2", "IT_SPC_Castello2");
     rmSetGroupingMinDistance(blockCastello2, 0.00);
     rmSetGroupingMaxDistance(blockCastello2, 0.50);
 	rmAddGroupingToClass(blockCastello2, rmClassID("classBlock"));
