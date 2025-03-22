@@ -35794,6 +35794,8 @@
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
+    <flag>NoIdleActions</flag>
+		<flag>StartOnNoUpdate</flag>
   </unit>
   <unit id="20474" name="zpSansCoulottesFlag">
     <dbid>20474</dbid>
