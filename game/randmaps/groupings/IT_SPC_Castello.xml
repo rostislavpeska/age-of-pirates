@@ -98,7 +98,7 @@
 		<unit variation="1" posx="2.0709" posz="14.7776" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsPoles</unit>
 		<unit variation="8" posx="3.3248" posz="13.6199" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsPottedPlants</unit>
 		<unit variation="1" posx="-11.7099" posz="14.2608" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsPoles</unit>
-		<unit variation="41" posx="0.7072" posz="1.3818" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpItalianFort</unit>
+		<unit variation="41" posx="0.7072" posz="1.3818" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">FortFrontier</unit>
 	</units>
 	<tiles>
 		<tilegroup type="Block" subtype="props\east_colony">

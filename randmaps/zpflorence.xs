@@ -905,19 +905,19 @@ void main(void)
 	rmAddGroupingToClass(blockPark, rmClassID("classBlock"));
 
 	// Menagerie
-    int blockMenagerie = rmCreateGrouping("Menagerie", "EU_Resource_Block_Menagerie");
+    int blockMenagerie = rmCreateGrouping("Menagerie", "IT_Resource_Block_Menager");
     rmSetGroupingMinDistance(blockMenagerie, 0.00);
     rmSetGroupingMaxDistance(blockMenagerie, 0.50);
 	rmAddGroupingToClass(blockMenagerie, rmClassID("classBlock"));
 
     // Italian Castle Rome
-    int blockCastello = rmCreateGrouping("Castello", "EU_SPC_Castello");
+    int blockCastello = rmCreateGrouping("Castello", "IT_SPC_Castello");
     rmSetGroupingMinDistance(blockCastello, 0.00);
     rmSetGroupingMaxDistance(blockCastello, 0.50);
 	rmAddGroupingToClass(blockCastello, rmClassID("classBlock"));
 
 	// Italian Castle Florence
-    int blockCastello2 = rmCreateGrouping("Castello 2", "EU_SPC_Castello2");
+    int blockCastello2 = rmCreateGrouping("Castello 2", "IT_SPC_Castello");
     rmSetGroupingMinDistance(blockCastello2, 0.00);
     rmSetGroupingMaxDistance(blockCastello2, 0.50);
 	rmAddGroupingToClass(blockCastello2, rmClassID("classBlock"));

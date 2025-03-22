@@ -15696,39 +15696,27 @@
     <buildingworkrate>1.0000</buildingworkrate>
     <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
     </minimapcolor>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
-    <unittype>BuildingClass</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>NativeBuilding</unittype>
-    <unittype>Building</unittype>
-    <flag>NotSelectable</flag>
-    <flag>TieToWaterSurface</flag>
-    <flag>Doppled</flag>
-    <flag>PaintTextureWhenPlacing</flag>
-    <flag>InvulnerableIfGaia</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>DoNotDieAtZeroHitpoints</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>Immoveable</flag>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>HideHitpointsIfGaia</flag>
-    <flag>RMCanRotate</flag>
-    <flag>HasGatherPoint</flag>
-    <flag>VisibleUnderFogIfGaia</flag>
-    <flag>ColorTransformNonGaia</flag>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>DontMarkExtraFog</flag>
     <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
     <flag>DoNotShowOnMiniMap</flag>
-    <flag>Tracked</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
   </unit>
   <unit id="20166" name="zpNativeUnitVenetianFence">
     <dbid>20166</dbid>
@@ -21999,27 +21987,26 @@
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
-    <unittype>TowerSocket</unittype>
-    <unittype>Building</unittype>
-    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>NativeBuilding</unittype>
     <unittype>EmbellishmentClass</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>NoHPBar</flag>
     <flag>NonAutoFormedUnit</flag>
-    <flag>Doppled</flag>
-    <flag>Invulnerable</flag>
-    <flag>SelectWithObstruction</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
     <flag>Tracked</flag>
-    <flag>AllowSocketPlacement</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
     <flag>DoNotShowOnMiniMap</flag>
-    <flag>NotDeleteable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
     <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
     <flag>ForceUpdateVisualWhenCnverted</flag>
   </unit>
   <unit id="20219" name="zpTrainTracks">
@@ -43825,6 +43812,7 @@
     <icon>resources\art\buildings\factory\shared_factory_icon.png</icon>
     <portraiticon>resources\art\buildings\factory\shared_factory_portrait.png</portraiticon>
     <minimapicon>ui\minimap\city_resource</minimapicon>
+    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
     <rollovertextid>301886</rollovertextid>
     <shortrollovertextid>301887</shortrollovertextid>
     <legacyhotkeycontext>FactoryAccel</legacyhotkeycontext>
@@ -51233,6 +51221,7 @@
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>buildings\native_settlement\scientists\med_lab.xml</animfile>
+    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
     <deadreplacement>BuildingRubble5x5</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Wood</impacttype>
