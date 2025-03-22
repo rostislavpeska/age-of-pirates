@@ -50761,17 +50761,17 @@
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
     <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
     <unittype>Building</unittype>
-    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
-    <unittype>MilitaryBuilding</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>BuildingClass</unittype>
-    <unittype>ConvertsHerds</unittype>
-    <unittype>AbstractCanSeeStealth</unittype>
-    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>MilitaryBuilding</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractFort</unittype>
-    <unittype>AbstractFindFort</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>AbstractCallMinutemen</unittype>
     <unittype>HCGatherPointPri2</unittype>
-    <unittype>AbstractDefensiveBuilding</unittype>
+    <flag>EnterHotkeyContext</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -50783,12 +50783,9 @@
     <flag>PaintTextureWhenPlacing</flag>
     <flag>FlattenGround</flag>
     <flag>HasGatherPoint</flag>
-    <flag>DisableBigButtonUI</flag>
-    <flag>HeroName2</flag>
-    <flag>AllowAutoGarrison</flag>
     <flag>Tracked</flag>
     <flag>DisplayRange</flag>
-    <flag>BuildingShowTactics</flag>
+    <flag>NotDeleteable</flag>
     <notcontain>AbstractMonk</notcontain>
     <notcontain>ExcludeFromRansom</notcontain>
     <notcontain>AbstractFishingBoat</notcontain>
@@ -50882,6 +50879,7 @@
     <flag>RMCanRotate</flag>
     <flag>FlattenGround</flag>
     <flag>InvulnerableIfGaia</flag>
+    <flag>NotSelectable</flag>
   </unit>
   <unit id="20686" name="zpNativeTowerFlorence">
     <dbid>20686</dbid>
@@ -50926,6 +50924,7 @@
     <flag>RMCanRotate</flag>
     <flag>FlattenGround</flag>
     <flag>InvulnerableIfGaia</flag>
+    <flag>NotSelectable</flag>
   </unit>
   <unit id="20687" name="zpSPCRomanFlag">
     <dbid>20687</dbid>
@@ -51050,17 +51049,17 @@
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
     <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
     <unittype>Building</unittype>
-    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
-    <unittype>MilitaryBuilding</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>BuildingClass</unittype>
-    <unittype>ConvertsHerds</unittype>
-    <unittype>AbstractCanSeeStealth</unittype>
-    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>MilitaryBuilding</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractFort</unittype>
-    <unittype>AbstractFindFort</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>AbstractCallMinutemen</unittype>
     <unittype>HCGatherPointPri2</unittype>
-    <unittype>AbstractDefensiveBuilding</unittype>
+    <flag>EnterHotkeyContext</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -51072,12 +51071,9 @@
     <flag>PaintTextureWhenPlacing</flag>
     <flag>FlattenGround</flag>
     <flag>HasGatherPoint</flag>
-    <flag>DisableBigButtonUI</flag>
-    <flag>HeroName2</flag>
-    <flag>AllowAutoGarrison</flag>
     <flag>Tracked</flag>
     <flag>DisplayRange</flag>
-    <flag>BuildingShowTactics</flag>
+    <flag>NotDeleteable</flag>
     <notcontain>AbstractMonk</notcontain>
     <notcontain>ExcludeFromRansom</notcontain>
     <notcontain>AbstractFishingBoat</notcontain>
