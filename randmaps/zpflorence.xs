@@ -217,7 +217,7 @@ void main(void)
    
    	// LIGHT SET
 
-	rmSetLightingSet("Seville Morning");
+	rmSetLightingSet("California_Skirmish");
 
 
 	// Picks default terrain and water

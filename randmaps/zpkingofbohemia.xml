@@ -1,6 +1,6 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <mapinfo details = "302345" displayNameID = "302344" loadDetails="302346"
-    imagepath = "ui\random_map\kingofbohemia\kingofbohemia_mini" cannotReplace = "" loadBackground="ui\random_map\eu_bohemia\eu_bohemia_map">
+    imagepath = "ui\random_map\kingofbohemia\kingofbohemia_mini" cannotReplace = "" loadBackground="ui\random_map\kingofbohemia\kingofbohemia_map">
     <filter>Historical</filter>
     <loadss>ui\random_map\kingofbohemia\kingofbohemia_01</loadss>
     <loadss>ui\random_map\kingofbohemia\kingofbohemia_02</loadss>
@@ -17,5 +17,6 @@
         <civilization>DEItalians</civilization>
         <civilization>Germans</civilization>
         <civilization>Russians</civilization>
+        <civilization>Dutch</civilization>
     </recommendedSettings>
 </mapinfo>
