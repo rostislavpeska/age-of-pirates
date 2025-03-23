@@ -217,7 +217,7 @@ void main(void)
    
    	// LIGHT SET
 
-	rmSetLightingSet("Florida_Skirmish");
+	rmSetLightingSet("Seville Morning");
 
 
 	// Picks default terrain and water
@@ -447,13 +447,13 @@ void main(void)
     rmSetGroupingMaxDistance(northWestWall, 0.00);
 	rmAddGroupingToClass(northWestWall, rmClassID("classBlock"));
 
-	rmPlaceGroupingAtLoc(southEastWall, firstDefender, 0.5+rmXMetersToFraction(4), 1.0-rmZTilesToFraction(cityEdgeInner+5));
-	rmPlaceGroupingAtLoc(southEastWall, firstDefender, 0.2, 1.0-rmZTilesToFraction(cityEdgeInner+5));
-	rmPlaceGroupingAtLoc(southEastWall, firstDefender, 0.8, 1.0-rmZTilesToFraction(cityEdgeInner+5));
+	rmPlaceGroupingAtLoc(southEastWall, firstDefender, 0.5+rmXMetersToFraction(4), 1.0-rmZTilesToFraction(cityEdgeInner+6));
+	rmPlaceGroupingAtLoc(southEastWall, firstDefender, 0.2, 1.0-rmZTilesToFraction(cityEdgeInner+6));
+	rmPlaceGroupingAtLoc(southEastWall, firstDefender, 0.8, 1.0-rmZTilesToFraction(cityEdgeInner+6));
 
-	rmPlaceGroupingAtLoc(northWestWall, firstAttacker, 0.5+rmXMetersToFraction(5), 0.0+rmZTilesToFraction(cityEdgeInner+5));
-	rmPlaceGroupingAtLoc(northWestWall, firstAttacker, 0.2, 0.0+rmZTilesToFraction(cityEdgeInner+5));
-	rmPlaceGroupingAtLoc(northWestWall, firstAttacker, 0.8, 0.0+rmZTilesToFraction(cityEdgeInner+5));
+	rmPlaceGroupingAtLoc(northWestWall, firstAttacker, 0.5+rmXMetersToFraction(5), 0.0+rmZTilesToFraction(cityEdgeInner+6));
+	rmPlaceGroupingAtLoc(northWestWall, firstAttacker, 0.2, 0.0+rmZTilesToFraction(cityEdgeInner+6));
+	rmPlaceGroupingAtLoc(northWestWall, firstAttacker, 0.8, 0.0+rmZTilesToFraction(cityEdgeInner+6));
 
 
     // ****************** Trade Routes **********************
@@ -519,7 +519,7 @@ void main(void)
 	if (bigCity == 2)
 		float riverCenter = mapCenter*1.74;
 	else if (bigCity == 1)
-		riverCenter = mapCenter*1.65;
+		riverCenter = mapCenter*1.67;
 	else
 		riverCenter = mapCenter*1.56;
 
@@ -529,7 +529,7 @@ void main(void)
     // ************************** River ******************************
 
     // River must be defined before the islands are placed
-    int riverID = rmRiverCreate(-1, "Italian Pond", 4, 4, 15, 15); //  (-1, "new england lake", 18, 14, 5, 5)
+    int riverID = rmRiverCreate(-1, "ZP Arno River Pond", 4, 4, 15, 15); //  (-1, "new england lake", 18, 14, 5, 5)
     rmRiverAddWaypoint(riverID, 0.0, riverCenter);
     rmRiverAddWaypoint(riverID, 1.0, riverCenter);
     rmRiverSetBankNoiseParams(riverID, 0.00, 0, 0.0, 0.0, 0.0, 0.0);
@@ -562,8 +562,8 @@ void main(void)
 	int cityNorthConstraint = rmCreateBoxConstraint("stay in the city north", 0.0, 1.0-rmZTilesToFraction(cityEdgeOuter), 1.0, 1.0-rmZTilesToFraction(cityEdgeInner));
     int countrysideSouthConstraint = rmCreateBoxConstraint("stay in the countryside south", 0.0, mapCenter-rmZTilesToFraction(10), 1.0, 0.0);
     int countrysideNorthConstraint = rmCreateBoxConstraint("stay in the countryside north", 0.0, mapCenter+rmZTilesToFraction(9), 1.0, 1.0);
-    int countrysideSouthConstraintFar = rmCreateBoxConstraint("stay in the countryside south far", 0.0, mapCenter-rmZTilesToFraction(12), 1.0, 0.0+rmZTilesToFraction(cityEdgeInner));
-    int countrysideNorthConstraintFar = rmCreateBoxConstraint("stay in the countryside north far", 0.0, mapCenter+rmZTilesToFraction(11), 1.0, 1.0-rmZTilesToFraction(cityEdgeInner));
+    int countrysideSouthConstraintFar = rmCreateBoxConstraint("stay in the countryside south far", 0.0, mapCenter-rmZTilesToFraction(14), 1.0, 0.0+rmZTilesToFraction(cityEdgeInner));
+    int countrysideNorthConstraintFar = rmCreateBoxConstraint("stay in the countryside north far", 0.0, mapCenter+rmZTilesToFraction(13), 1.0, 1.0-rmZTilesToFraction(cityEdgeInner));
 
     int shoreLineSouth = rmCreateArea("shore South");
     rmSetAreaSize(shoreLineSouth, 0.7, 0.7);
@@ -630,6 +630,8 @@ void main(void)
     rmAddAreaConstraint(countrysideTerrainSouth , countrysideSouthConstraintFar);
     rmAddAreaConstraint(countrysideTerrainSouth, avoidStopper);
 	rmAddAreaConstraint(countrysideTerrainSouth, avoidWallMedium);
+	rmSetAreaSmoothDistance(countrysideTerrainSouth, 10);
+	rmSetAreaHeightBlend(countrysideTerrainSouth, 2);
     rmSetAreaObeyWorldCircleConstraint(countrysideTerrainSouth, false);
     rmSetAreaMix(countrysideTerrainSouth, "italy_grass_lush");
     rmBuildArea(countrysideTerrainSouth); 
@@ -642,6 +644,8 @@ void main(void)
     rmAddAreaConstraint(countrysideTerrainNorth, countrysideNorthConstraintFar);
     rmAddAreaConstraint(countrysideTerrainNorth, avoidStopper);
     rmAddAreaConstraint(countrysideTerrainNorth, avoidWallMedium);
+    rmSetAreaSmoothDistance(countrysideTerrainNorth, 10);	
+    rmSetAreaHeightBlend(countrysideTerrainNorth, 2);
     rmSetAreaObeyWorldCircleConstraint(countrysideTerrainNorth, false);
     rmSetAreaMix(countrysideTerrainNorth, "italy_grass_lush");
     rmBuildArea(countrysideTerrainNorth); 
@@ -756,13 +760,13 @@ void main(void)
     rmSetGroupingMaxDistance(northWestWallTerrain, 0.00);
 	rmAddGroupingToClass(northWestWallTerrain, rmClassID("classBlock"));
 
-	rmPlaceGroupingAtLoc(southEastWallTerrain, 0, 0.5+rmXMetersToFraction(4), 1.0-rmZTilesToFraction(cityEdgeInner+5));
-	rmPlaceGroupingAtLoc(southEastWallTerrain, 0, 0.2, 1.0-rmZTilesToFraction(cityEdgeInner+5));
-	rmPlaceGroupingAtLoc(southEastWallTerrain, 0, 0.8, 1.0-rmZTilesToFraction(cityEdgeInner+5));
+	rmPlaceGroupingAtLoc(southEastWallTerrain, 0, 0.5+rmXMetersToFraction(4), 1.0-rmZTilesToFraction(cityEdgeInner+6));
+	rmPlaceGroupingAtLoc(southEastWallTerrain, 0, 0.2, 1.0-rmZTilesToFraction(cityEdgeInner+6));
+	rmPlaceGroupingAtLoc(southEastWallTerrain, 0, 0.8, 1.0-rmZTilesToFraction(cityEdgeInner+6));
 
-	rmPlaceGroupingAtLoc(northWestWallTerrain, 0, 0.5+rmXMetersToFraction(5), 0.0+rmZTilesToFraction(cityEdgeInner+5));
-	rmPlaceGroupingAtLoc(northWestWallTerrain, 0, 0.2, 0.0+rmZTilesToFraction(cityEdgeInner+5));
-	rmPlaceGroupingAtLoc(northWestWallTerrain, 0, 0.8, 0.0+rmZTilesToFraction(cityEdgeInner+5));
+	rmPlaceGroupingAtLoc(northWestWallTerrain, 0, 0.5+rmXMetersToFraction(5), 0.0+rmZTilesToFraction(cityEdgeInner+6));
+	rmPlaceGroupingAtLoc(northWestWallTerrain, 0, 0.2, 0.0+rmZTilesToFraction(cityEdgeInner+6));
+	rmPlaceGroupingAtLoc(northWestWallTerrain, 0, 0.8, 0.0+rmZTilesToFraction(cityEdgeInner+6));
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.40);
@@ -1423,7 +1427,7 @@ void main(void)
 		rmSetAreaCliffEdge(wallCliffs, 1, 1, 0.0, 0.0, 2); //4,.225 looks cool too
 		rmSetAreaObeyWorldCircleConstraint(wallCliffs, false);
 		rmSetAreaCliffHeight(wallCliffs, 0, 0, 0.5);
-		rmSetAreaBaseHeight(wallCliffs, 7.0);
+		rmSetAreaBaseHeight(wallCliffs, 8.0);
 		rmSetAreaHeightBlend(wallCliffs, 3);
 		rmSetAreaCoherence(wallCliffs, .93);
 		if (j == 0){
@@ -1544,21 +1548,22 @@ void main(void)
 	rmPlaceObjectDefInArea(deerID, 0, countrysideTerrainSouth, 2+cNumberNonGaiaPlayers/2);
 
 	// Nuggets
-	int nuggetSouth= rmCreateObjectDef("nugget easy south"); 
-	rmAddObjectDefItem(nuggetSouth, "Nugget", 1, 0.0);
+	int nuggetEasy= rmCreateObjectDef("nugget easy countryside"); 
+	rmAddObjectDefItem(nuggetEasy, "Nugget", 1, 0.0);
 	rmSetNuggetDifficulty(2, 3);
-	rmAddObjectDefConstraint(nuggetSouth, shortAvoidImpassableLand);
-	rmAddObjectDefConstraint(nuggetSouth, avoidNugget);
-	rmAddObjectDefConstraint(nuggetSouth, avoidBlockMedium);
-	rmAddObjectDefConstraint(nuggetSouth, avoidTownCenter);
-	rmAddObjectDefConstraint(nuggetSouth, avoidPlateauShort);
-	rmAddObjectDefConstraint(nuggetSouth, avoidMountains);
-	rmAddObjectDefConstraint(nuggetSouth, avoidStreetZero);
-	rmAddObjectDefConstraint(nuggetSouth, playerEdgeConstraint);
-	rmPlaceObjectDefInArea(nuggetSouth, 0, countrysideTerrainNorth, 2+cNumberNonGaiaPlayers/2);
-	rmPlaceObjectDefInArea(nuggetSouth, 0, countrysideTerrainSouth, 2+cNumberNonGaiaPlayers/2);
+	rmAddObjectDefConstraint(nuggetEasy, shortAvoidImpassableLand);
+	rmAddObjectDefConstraint(nuggetEasy, avoidNugget);
+	rmAddObjectDefConstraint(nuggetEasy, avoidBlockMedium);
+	rmAddObjectDefConstraint(nuggetEasy, avoidTownCenter);
+	rmAddObjectDefConstraint(nuggetEasy, avoidPlateauShort);
+	rmAddObjectDefConstraint(nuggetEasy, avoidMountains);
+	rmAddObjectDefConstraint(nuggetEasy, avoidStreetZero);
+	rmAddObjectDefConstraint(nuggetEasy, avoidTradeSocket);
+	rmAddObjectDefConstraint(nuggetEasy, playerEdgeConstraint);
+	rmPlaceObjectDefInArea(nuggetEasy, 0, countrysideTerrainNorth, 2+cNumberNonGaiaPlayers/2);
+	rmPlaceObjectDefInArea(nuggetEasy, 0, countrysideTerrainSouth, 2+cNumberNonGaiaPlayers/2);
 
-	int nuggetHard= rmCreateObjectDef("nugget hard"); 
+	int nuggetHard= rmCreateObjectDef("nugget hard countryside"); 
 	rmAddObjectDefItem(nuggetHard, "Nugget", 1, 0.0);
 	rmSetNuggetDifficulty(121, 121);
 	rmAddObjectDefConstraint(nuggetHard, shortAvoidImpassableLand);
@@ -1570,6 +1575,7 @@ void main(void)
 	rmAddObjectDefConstraint(nuggetHard, playerEdgeConstraint);
 	rmAddObjectDefConstraint(nuggetHard, avoidFixedGun);
 	rmAddObjectDefConstraint(nuggetHard, avoidTradeRouteFar);
+	rmAddObjectDefConstraint(nuggetHard, avoidTradeSocket);
 	rmAddObjectDefConstraint(nuggetHard, avoidPlateauShort);
 	rmPlaceObjectDefInArea(nuggetHard, 0, countrysideTerrainNorth, 2);
 	rmPlaceObjectDefInArea(nuggetHard, 0, countrysideTerrainSouth, 2);

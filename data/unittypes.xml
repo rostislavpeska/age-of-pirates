@@ -26,4 +26,5 @@
   <unittype>zpAbstractHeroMusketeer</unittype>
   <unittype>AbstractCityManisonB</unittype>
   <unittype>zpAbstractAssassin</unittype>
+  <unittype>AbstractTeamCitadel</unittype>
 </unittypes>

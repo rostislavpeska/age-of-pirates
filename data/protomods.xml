@@ -50771,6 +50771,8 @@
     <unittype>AbstractCanSeeStealth</unittype>
     <unittype>AbstractCallMinutemen</unittype>
     <unittype>HCGatherPointPri2</unittype>
+    <unittype>AbstractTeamCitadel</unittype>
+    <unittype>AbstractCityManison</unittype>
     <flag>EnterHotkeyContext</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -51059,6 +51061,8 @@
     <unittype>AbstractCanSeeStealth</unittype>
     <unittype>AbstractCallMinutemen</unittype>
     <unittype>HCGatherPointPri2</unittype>
+    <unittype>AbstractTeamCitadel</unittype>
+    <unittype>AbstractCityManison</unittype>
     <flag>EnterHotkeyContext</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
