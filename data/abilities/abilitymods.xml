@@ -97,6 +97,7 @@
     <ability>zpPowerBourbonExpansion<tech>zpNatBourbonBigbuttonDisableShadow</tech><subciv>SPCBourbon</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
     <ability>zpPowerSansculotteExpansion<tech>zpNatSansculotteBigbuttonDisableShadow</tech><subciv>zpSansculottes</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>    
     <ability>zpAuditoreLighthouse<tech>Colonialize</tech><subciv>Auditore</subciv><rof>120.0</rof><castonself>true</castonself></ability>
+    <ability>zpNatPowerBlanikKnights<tech>Colonialize</tech><subciv>zpBohemianKing</subciv><subcivalliancefactor>0.5</subcivalliancefactor><uicommand>uiFindNativeSiteSubCiv("zpBohemianKing")</uicommand><rof>250</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
   </tradingpost>
   <zparmoredtraingun>
     <ability>dePowerPeninsularFixedGunLongRangeAttack<rof>60</rof><tech>zpArmoredTrainImprove</tech></ability>
@@ -258,6 +259,12 @@
   <zpspcnotredame>
     <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
   </zpspcnotredame>
+  <zpspcgermancathedral>
+    <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcgermancathedral>
+  <zpverseilleschurch>
+    <ability>zpPowerInformersFrench<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpverseilleschurch>
   <zpnatconquistadormusketeer>
     <ability>dePromotionHpDMG<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpnatconquistadormusketeer>
@@ -281,6 +288,9 @@
     <ability>zpAssassinBrotherhood<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpspcclaudiaauditore>
+  <zpspcgreatbasilicaconvertable>
+    <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcgreatbasilicaconvertable>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

@@ -118,7 +118,7 @@
 		<unit variation="48" posx="37.5403" posz="-37.7615" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeStatueVenetian</unit>
 		<unit variation="3" posx="38.1923" posz="-37.1433" orientx="0.7069" orienty="-0.0000" orientz="0.7073">zpPropWaterWall</unit>
 		<unit variation="180" posx="-1.5819" posz="-37.2087" orientx="-0.0017" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
-		<unit variation="239" posx="-28.1228" posz="-30.5043" orientx="0.0001" orienty="-0.0000" orientz="1.0000">zpSPCFixedGunSocket</unit>
+		<unit variation="239" posx="-28.1605" posz="-30.4698" orientx="0.0001" orienty="-0.0000" orientz="1.0000">zpSPCFixedGunSocket</unit>
 		<unit variation="64" posx="-36.4390" posz="-29.3607" orientx="-0.9998" orienty="0.0000" orientz="0.0199">zpHarbourPlatform</unit>
 		<unit variation="69" posx="-35.6959" posz="-29.1237" orientx="-0.0089" orienty="0.0000" orientz="1.0000">zpHarbourPlatform</unit>
 		<unit variation="64" posx="36.5384" posz="-30.6422" orientx="0.9998" orienty="0.0000" orientz="-0.0196">zpHarbourPlatform</unit>

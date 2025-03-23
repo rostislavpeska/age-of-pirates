@@ -1,0 +1,208 @@
+<?xml version="1.0"?>
+<mods>
+	<protomods>
+		<unit name="Dock">
+			<placementfile>dock_city.xml</placementfile>
+		</unit>
+		<unit name="YPDockAsian">
+			<placementfile>dock_city.xml</placementfile>
+		</unit>
+		<unit name="dePort">
+			<placementfile>dock_city.xml</placementfile>
+		</unit>
+		<unit name="Church">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="ypChurch">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deBasilica">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="House">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="HouseEast">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="HouseMed">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="Manor">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="TownCenter">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Market">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Barracks">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Stable">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Blockhouse">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="Outpost">
+			<placementfile>outpost_city.xml</placementfile>
+		</unit>
+		<unit name="ArtilleryDepot">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Arsenal">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="LivestockPen">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="Bank">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deTavern">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Saloon">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Capitol">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deStateCapitol">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deLivestockMarket">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="dePalace">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="NativeEmbassy">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deHouseAfrican">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="deOutpostAfrican">
+			<placementfile>outpost_city.xml</placementfile>
+		</unit>
+		<unit name="deUniversity">
+			<placementfile>university_city.xml</placementfile>
+		</unit>
+		<unit name="deWarCamp">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="deTower">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="Mill">
+			<placementfile>mill_city.xml</placementfile>
+		</unit>
+		<unit name="Plantation">
+			<placementfile>mill_city.xml</placementfile>
+		</unit>
+		<unit name="deGranary">
+			<placementfile>granary_city.xml</placementfile>
+		</unit>
+		<unit name="deField">
+			<placementfile>field_city.xml</placementfile>
+		</unit>
+		<unit name="FortFrontier">
+			<placementfile>fortfrontier_city.xml</placementfile>
+		</unit>
+		<unit name="Factory">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deLombard">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deCommandery">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit id="20330" name="zpAmericanEmbassy">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deNatEUPropFence">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNatEUPropWingC">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNativeHouseVenetian">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="ypSMJesuitAccessory">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>
+		</unit>
+		<unit name="zpNativeStatueVenetian">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="deSPCCityStateHouseProp">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+			<unittype>AbstractCityManison</unittype>
+		</unit>
+		<unit name="zpNativeHouseMaltese">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>
+			<unittype>AbstractCityManison</unittype>
+		</unit>
+		<unit name="zpNativeHouseOrthodoxSouth">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>
+			<unittype>AbstractCityManison</unittype>
+		</unit>
+		<unit name="SPCFortGate">
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
+		</unit>
+		<unit name="SPCFortWallSmall">
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
+		</unit>
+		<unit name="SPCFortWallMedium">
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
+		</unit>
+		<unit name="SPCFortWallLarge">
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
+		</unit>
+		<unit name="SPCFortCorner">
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
+		</unit>
+		<unit name="deSPCEuroTower">
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
+		</unit>
+		<unit name="zpItalianFort">
+			<flag>NotRepairable</flag>
+			<flag>GivesLOSToAll</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
+		</unit>
+		<unit name="zpItalianFortB">
+			<flag>NotRepairable</flag>
+			<flag>GivesLOSToAll</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
+		</unit>
+		<unit name="zpNatEUItalianPalaces">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>
+		</unit>
+		<unit name="zpSPCNationalBank">
+			<displaynameid>123018</displaynameid>
+		</unit>
+	</protomods>
+</mods>

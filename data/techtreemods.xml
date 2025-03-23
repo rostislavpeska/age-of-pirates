@@ -170,6 +170,12 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCQueenAnneProxy</target>
       </effect>
+      <effect type="CommandAdd" proto="zpSPCQueenAnneProxy" page="0" column="1">
+        <target type="ProtoUnit">zpSPCPirateDock</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCQueenAnneProxy" page="0" column="1">
+        <target type="ProtoUnit">zpSPCPirateDockB</target>
+      </effect>
       <effect type="TechStatus" status="unobtainable">zpTheBlackFlag</effect>
       <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
       <effect type="CommandRemove" tech="zpTheBlackFlag">
@@ -214,6 +220,12 @@
       </effect>
       <effect type="CommandAdd" proto="zpSPCBlackPearlProxy" page="0" column="4">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCBlackPearlProxy" page="0" column="1">
+        <target type="ProtoUnit">zpSPCPirateDock</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCBlackPearlProxy" page="0" column="1">
+        <target type="ProtoUnit">zpSPCPirateDockB</target>
       </effect>
     </effects>
   </tech>
@@ -1677,6 +1689,12 @@
       </effect>
       <effect type="CommandAdd" proto="zpSPCNeptuneGalleyProxy" page="0" column="4">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCNeptuneGalleyProxy" page="0" column="1">
+        <target type="ProtoUnit">zpSPCPirateDock</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCNeptuneGalleyProxy" page="0" column="1">
+        <target type="ProtoUnit">zpSPCPirateDockB</target>
       </effect>
     </effects>
   </tech>
@@ -3162,13 +3180,12 @@
 			<effect type ="SetName" proto ="zpNatMercWokouPirate" culture ="none" newname ="300198"></effect>
       <effect type="SetName" proto="zpNatMercWokouPirate" culture="none" newname="300320" reqtech="ImpLegendaryNativesShadow">
       </effect>
-			<effect type ="SetName" proto ="zpNatWokouPirate" culture ="none" newname ="300198"></effect>
       <effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
 				<target type ="ProtoUnit">zpNatWokouMonk</target></effect>
 			<effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
 				<target type ="ProtoUnit">zpNatWokouMonk</target></effect>
 			<effect type ="SetName" proto ="zpNatWokouMonk" culture ="none" newname ="300211"></effect>
-      <effect type="SetName" proto="zpNatWokouPirate" culture="none" newname="300319" reqtech="ImpLegendaryNativesShadow">
+      <effect type="SetName" proto="zpNatWokouMonk" culture="none" newname="300319" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="TechStatus" status="obtainable">zpGuardMutineers</effect>
 		</effects>
@@ -5057,6 +5074,20 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpAlexandrianRider" culture="none" newname="302282">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercMountedInfantryProxy" culture="none" newname="122413">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatLineInfantryProxy" culture="none" newname="122415">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatLipkaTatarProxy" culture="none" newname="122491">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatShockRiderProxy" culture="none" newname="122492">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercMountainTrooperProxy" culture="none" newname="122481">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatChevaulegerProxy" culture="none" newname="122482">
+      </effect>
+       <effect mergemode="add" type="SetName" proto="zpNatBohemianLandsknecht" culture="none" newname="302328">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -5073,7 +5104,7 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedZenClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrowers</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
@@ -5102,6 +5133,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
     </effects>
   </tech>
   <tech name="AAStandardNativeTechsPI">
@@ -5117,7 +5150,7 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedZenClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrowers</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
@@ -5146,6 +5179,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
     </effects>
   </tech>
   <tech name="ypAAAsianStandardTechsPI">
@@ -5161,7 +5196,7 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedZenClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrowers</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
@@ -5190,6 +5225,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothers">
@@ -5205,7 +5242,7 @@
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrowers</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
@@ -5234,6 +5271,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
       <effect mergemode="add" type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
       </effect>
@@ -5252,7 +5291,7 @@
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrowers</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
@@ -5281,6 +5320,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
       <effect mergemode="add" type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
       </effect>
@@ -5299,7 +5340,7 @@
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrowers</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
@@ -5328,6 +5369,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
     </effects>
   </tech>
   <tech name="DEChampionNativeWarriorsAfricanShadow">
@@ -5343,7 +5386,7 @@
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrowers</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
@@ -5372,6 +5415,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialMexicans">
@@ -5387,7 +5432,7 @@
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredZenClone</effect>
       <effect mergeMode='add' type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpScientistsVeteranHoopThrowers</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrower</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpScientistsGuardHoopThrowers</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpChampionInuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranVenetians</effect>
@@ -5416,6 +5461,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
     </effects>
   </tech>
   <tech name="DEHeavyFixedGun">
@@ -14042,6 +14089,12 @@
       <effect type="CommandAdd" proto="zpSPCFlyingDutchmanProxy" page="0" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" proto="zpSPCFlyingDutchmanProxy" page="0" column="1">
+        <target type="ProtoUnit">zpSPCPirateDock</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCFlyingDutchmanProxy" page="0" column="1">
+        <target type="ProtoUnit">zpSPCPirateDockB</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOffPiratesAustralia" type="Normal">
@@ -14174,6 +14227,12 @@
       </effect>
       <effect type="CommandAdd" proto="zpSPCPirateSteamerProxy" page="0" column="4">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCPirateSteamerProxy" page="0" column="1">
+        <target type="ProtoUnit">zpSPCPirateDock</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCPirateSteamerProxy" page="0" column="1">
+        <target type="ProtoUnit">zpSPCPirateDockB</target>
       </effect>
     </effects>
   </tech>
@@ -14426,6 +14485,12 @@
       </effect>
       <effect type="CommandAdd" proto="zpSPCPirateGalleassProxy" page="0" column="4">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCPirateGalleassProxy" page="0" column="1">
+        <target type="ProtoUnit">zpSPCPirateDockB</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCPirateGalleassProxy" page="0" column="1">
+        <target type="ProtoUnit">zpSPCPirateDock</target>
       </effect>
       <effect type="CommandAdd" proto="zpNatCorsair" page="0" column="2">
         <target type="ProtoUnit">TradingPost</target>
@@ -17974,6 +18039,33 @@
       <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
         <target type="ProtoUnit">zpNatMercRevolutionary</target>
       </effect>
+      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
+        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
+        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
+        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
+      </effect>
+      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
+        <target type="ProtoUnit">deNatRoyalMusketeer</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSansculotteBastions" type="Normal">
@@ -18546,6 +18638,9 @@
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
         <target type ="Player"></target>
       </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpFortConvertable" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpMapEastern" type="Normal">
@@ -18553,6 +18648,9 @@
     <status>UNOBTAINABLE</status>
     <effects>
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpFortConvertable" relativity ="Absolute">
         <target type ="Player"></target>
       </effect>
     </effects>
@@ -18564,6 +18662,9 @@
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
         <target type ="Player"></target>
       </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpFortConvertable" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpMapFareast" type="Normal">
@@ -18571,6 +18672,9 @@
     <status>UNOBTAINABLE</status>
     <effects>
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpFortConvertable" relativity ="Absolute">
         <target type ="Player"></target>
       </effect>
     </effects>
@@ -18586,6 +18690,9 @@
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
         <target type ="Player"></target>
       </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpFortConvertable" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpMapAfrican" type="Normal">
@@ -18593,6 +18700,9 @@
     <status>UNOBTAINABLE</status>
     <effects>
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="ypKingsHill" relativity ="Absolute">
+        <target type ="Player"></target>
+      </effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpFortConvertable" relativity ="Absolute">
         <target type ="Player"></target>
       </effect>
     </effects>
@@ -18708,6 +18818,7 @@
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
       <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
       <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
       <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
     </effects>
   </tech>
@@ -19042,33 +19153,6 @@
       <effect type="CommandAdd" proto="zpNatRoyalMusketeer" page="0" column="20">
         <target type="ProtoUnit">zpMilitaryCamp</target>
       </effect>
-      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
-        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
-        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
-        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
-        <target type="ProtoUnit">deNatMercRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallConnector" page="6" column="8">
-        <target type="ProtoUnit">deNatRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallStraight2" page="255" column="1">
-        <target type="ProtoUnit">deNatRoyalMusketeer</target>
-      </effect>
-      <effect type="CommandAdd" proto="WallStraight5" page="255" column="1">
-        <target type="ProtoUnit">deNatRoyalMusketeer</target>
-      </effect>
     </effects>
 	</tech>
   <tech name="zpMilitaryCampBuildLimit" type="Normal">
@@ -19371,6 +19455,7 @@
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
       <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
       <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
       <effect type="TechStatus" status="active">zpDisableTradeRouteUpgrade</effect>
     </effects>
   </tech>
@@ -19414,10 +19499,8 @@
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
       <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
       <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
       <effect type="TechStatus" status="active">zpDisableTradeRouteUpgrade</effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpMilitaryCamp</target>
-      </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpMilitaryCamp</target>
       </effect>
@@ -19429,6 +19512,9 @@
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">HouseMed</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Manor</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">deHouseAfrican</target>
@@ -19447,6 +19533,36 @@
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypHouseIndian</target>
+      </effect>
+      <effect type="CommandRemove" proto="House">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseEast">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseMed">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deHouseAfrican">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deTorp">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseAztec">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deHouseInca">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypVillage">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypHouseIndian">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="Manor">
+        <target type="ProtoUnit">AbstractVillager</target>
       </effect>
     </effects>
   </tech>
@@ -19562,6 +19678,7 @@
       <effect type="TechStatus" status="obtainable">zpNatJesuitSmokelessPowder</effect>
       <effect type="TechStatus" status="obtainable">zpNatJesuitFlyingButtress</effect>
       <effect type="TechStatus" status="obtainable">zpNatJesuitSchools</effect>
+      <effect type="TechStatus" status="unobtainable">zpUnlockCathedralJesuit</effect>
     </effects>
   </tech>
   <tech name="zpUnlockCathedralMaltese" type="Normal">
@@ -19585,6 +19702,7 @@
       <effect type="TechStatus" status="obtainable">zpNatMalteseFishCuisine</effect>
       <effect type="TechStatus" status="obtainable">zpNatMalteseFortifications</effect>
       <effect type="TechStatus" status="obtainable">zpNatMalteseArchitecture</effect>
+      <effect type="TechStatus" status="unobtainable">zpUnlockCathedralMaltese</effect>
     </effects>
   </tech>
   <tech name="zpUnlockCathedraOrthodox" type="Normal">
@@ -19608,6 +19726,7 @@
       <effect type="TechStatus" status="obtainable">zpNatOrthodoxIcons</effect>
       <effect type="TechStatus" status="obtainable">zpNatOrthodoxSauna</effect>
       <effect type="TechStatus" status="obtainable">zpNatOrthodoxPatriarchy</effect>
+      <effect type="TechStatus" status="unobtainable">zpUnlockCathedraOrthodox</effect>
     </effects>
   </tech>
   <tech name="zpSPCArtPatronClone" type="Normal">
@@ -19630,10 +19749,13 @@
       <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCSanMarco</target>
       </effect>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCGreatBasilicaConvertable</target>
+      </effect>
       <effect type="TextOutputTechName">123070</effect>
     </effects>
   </tech>
-  <tech name="zpEnableSPCCityStateTechsClone" type="Normal">
+  <tech name="zpVeniceCitySetup" type="Normal">
     <dbid>40835</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -19670,6 +19792,9 @@
       <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="NativeEmbassy" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
       </effect>
     </effects>
   </tech>
@@ -19954,6 +20079,7 @@
       <effect type="TechStatus" status="obtainable">zpNatBorgiaConspiracy</effect>
       <effect type="TechStatus" status="obtainable">zpNatGuerillaWarfare</effect>
       <effect type="TechStatus" status="obtainable">zpNatMasterAssassin</effect>
+      <effect type="TechStatus" status="unobtainable">zpUnlockPalazzoAuditore</effect>
     </effects>
   </tech>
   <tech name="zpLockPalazzoAuditore" type="Normal">
@@ -19972,6 +20098,7 @@
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatPavisier</target>
       </effect>
+      <effect type="TechStatus" status="unobtainable">zpLockPalazzoAuditore</effect>
     </effects>
   </tech>
   <tech name="zpLockCathedralJesuit" type="Normal">
@@ -19990,6 +20117,7 @@
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
       </effect>
+      <effect type="TechStatus" status="unobtainable">zpLockCathedralJesuit</effect>
     </effects>
   </tech>
   <tech name="zpLockCathedralMaltese" type="Normal">
@@ -20008,6 +20136,7 @@
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatMalteseGuard</target>
       </effect>
+      <effect type="TechStatus" status="unobtainable">zpLockCathedralMaltese</effect>
     </effects>
   </tech>
   <tech name="zpLockCathedralOrthodox" type="Normal">
@@ -20021,11 +20150,12 @@
         </target>
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatBulgarianBoyar</target>
+        <target type="ProtoUnit">zpNatCataphract</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatWarriorMonk</target>
       </effect>
+      <effect type="TechStatus" status="unobtainable">zpLockCathedralOrthodox</effect>
     </effects>
   </tech>
   <tech name="zpNatBorgiaConspiracy" type="Normal">
@@ -20849,10 +20979,14 @@
       <effect type="CommandRemove" proto="xpIronclad">
         <target type="ProtoUnit">Dock</target>
       </effect>
+      <effect type="CommandRemove" proto="deGalleass">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
       <effect type="TechStatus" status="unobtainable">ImperialManOWar</effect>
       <effect type="TechStatus" status="unobtainable">ypImperialManOWar</effect>
       <effect type="TechStatus" status="unobtainable">ShipHowitzers</effect>
       <effect type="TechStatus" status="unobtainable">DEShipHowitzersAmerican</effect>
+      <effect type="TechStatus" status="unobtainable">PercussionLocks</effect>
       <effect type="CommandRemove" tech="ImperialManOWar">
         <target type="ProtoUnit">Dock</target>
       </effect>
@@ -20882,6 +21016,15 @@
       </effect>
       <effect type="CommandRemove" tech="DEShipHowitzersAmerican">
         <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" tech="PercussionLocks">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" tech="PercussionLocks">
+        <target type="ProtoUnit">YPDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" tech="PercussionLocks">
+        <target type="ProtoUnit">dePort</target>
       </effect>
     </effects>
   </tech>
@@ -21394,6 +21537,1376 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpVeniceUnlockIslandGroupingTechs" type="Normal">
+    <dbid>40908</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercElmeti</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercSwissPikeman</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercPistoleer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercLandsknecht</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercCannoneer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercGreatCannon</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpVeniceUnlockIslandGroupingTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceUnlockPeninsulaGroupingTechs" type="Normal">
+    <dbid>40909</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercElmeti</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercSwissPikeman</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercPistoleer</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpVeniceUnlockPeninsulaGroupingTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceLockIslandGroupingTechs" type="Normal">
+    <dbid>40910</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercElmeti</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercSwissPikeman</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercPistoleer</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercLandsknecht</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercCannoneer</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercGreatCannon</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpVeniceLockIslandGroupingTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpVeniceLockPeninsulaGroupingTechs" type="Normal">
+    <dbid>40911</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercElmeti</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercSwissPikeman</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercPistoleer</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpVeniceLockPeninsulaGroupingTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpPirateLockCitystateTechs" type="Normal">
+    <dbid>40912</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonPirate</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercBarbaryCorsair</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpPrivateerProxy</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCQueenAnneProxy</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCBlackPearlProxy</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCNeptuneGalleyProxy</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">"zpPirateLockCitystateTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpPirateUnlockCitystateTechs" type="Normal">
+    <dbid>40913</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonPirate</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercBarbaryCorsair</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpPrivateerProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCQueenAnneProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCBlackPearlProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCNeptuneGalleyProxy</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">"zpPirateLockCitystateTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpBlessedCityShadow" type="Normal">
+    <dbid>40914</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCGreatBasilicaConvertable</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCNotreDame</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCGermanCathedral</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpVerseillesChurch</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryFlorence</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryFlorence</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryFlorence</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGatherXPTeam" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCNationalBank</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCTownMill</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCGoldSmelter</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCDestilery</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCForester</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCDemolisher</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+      <effect type="Data" action="AutoGatherXP" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCBlessedCity" type="Normal">
+    <dbid>40915</dbid>
+    <displaynameid>302305</displaynameid>
+    <cost resourcetype="Food">150.0000</cost>
+    <cost resourcetype="Gold">150.0000</cost>
+    <cost resourcetype="Wood">150.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\team_blessed_city.png</icon>
+    <rollovertextid>302306</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpBlessedCityShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeBohemianKing" type="Normal">
+    <dbid>40916</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatBohemianLandsknecht</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpSPCKingOfBohemia</effect>
+      <effect type="TechStatus" status="obtainable">zpGuardBohemianKing</effect>
+      <effect type="TechStatus" status="obtainable">zpVeteranBohemianKing</effect>
+      <effect type="TechStatus" status="obtainable">DENatHabsburgViennaCongress</effect>
+      <effect type="TechStatus" status="obtainable">DENatHabsburgCrownLands</effect>
+      <effect type="TechStatus" status="obtainable">DENatHabsburgMultinationalism</effect>
+      <effect type="TechStatus" status="obtainable">DENatHabsburgAustroHungarian</effect>
+      <effect type="TechStatus" status="obtainable">DENatJagiellonPancerni</effect>
+      <effect type="TechStatus" status="obtainable">DENatJagiellonInheritance</effect>
+      <effect type="TechStatus" status="obtainable">DENatJagiellonSarmatism</effect>
+      <effect type="TechStatus" status="obtainable">DENatJagiellonFolwarks</effect>
+      <effect type="TechStatus" status="obtainable">DENatWittelsbachOktoberfest</effect>
+      <effect type="TechStatus" status="obtainable">DENatWittelsbachDucalLancers</effect>
+      <effect type="TechStatus" status="obtainable">DENatWittelsbachPhilhellenism</effect>
+      <effect type="TechStatus" status="obtainable">DENatWittelsbachHuntingGear</effect>
+      <effect type="TechStatus" status="obtainable">zpBohemianMercenaries</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBohemianAcademy</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyBohemian</effect>
+      <effect type="TechStatus" status="obtainable">zpIndianFriendshipBohemian</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyBohemian</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBlanikKnights</effect>
+      <effect type="Data" amount="1.00" subtype="GrantsPowerDuration" protopower="zpNatPowerBlanikKnights" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpSPCKingOfBohemia" type ="Normal">
+		<dbid>40917</dbid>
+		<displaynameid>302318</displaynameid>
+  	<researchpoints>100.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\kingdom_bohemia_big.png</iconwpf>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>302319</rollovertextid>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>YPInfiniteTech</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <flag>DoNotQueue</flag>
+    <flag>NativeDance</flag>
+    <flag>YPNeverLastInLine</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianFishingBoat</effect>
+      <effect type="TechStatus" status="active">zpTheBlackFlagGoldBallanceShadow</effect>
+    </effects>
+	</tech>
+  <tech name="zpConsulateKingOfBohemiaHabsburg" type="Normal">
+    <dbid>40918</dbid>
+    <displaynameid>302320</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\kingdom_bohemia_big.png</icon>
+    <rollovertextid>302321</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercMountedInfantryProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatLineInfantryProxy</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCKingOfBohemia</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpSPCKingOfBohemia">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatLineInfantryProxy" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatMercMountedInfantryProxy" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatHabsburgViennaCongress" page="2" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatHabsburgCrownLands" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatHabsburgMultinationalism" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatHabsburgAustroHungarian" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect civ="Habsburg" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpKingOfBohemiaProclaimedShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpTurnConsulateOffKingOfBohemia" type="Normal">
+    <dbid>40919</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateFrenchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateGermansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateOttomansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulatePortugueseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateDutchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateSpanishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseAlliesClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxConstantinopole</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxAlexandria</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffKingOfBohemia</effect>
+    </effects>
+  </tech>
+  <tech name="zpVeteranBohemianKing" type="Normal">
+    <dbid>40920</dbid>
+    <displaynameid>302324</displaynameid>
+    <cost resourcetype="Wood">125.0000</cost>
+    <cost resourcetype="Gold">125.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\veteran_infantry\veteran_infantry.png</icon>
+    <rollovertextid>302329</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatBohemianLandsknecht</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatBohemianLandsknecht</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMercMountedInfantryProxy" culture="none" newname="122407">
+      </effect>
+      <effect type="SetName" proto="zpNatMercMountedInfantryProxy" culture="none" newname="122413" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatBohemianLandsknecht" culture="none" newname="302326">
+      </effect>
+      <effect type="SetName" proto="zpNatBohemianLandsknecht" culture="none" newname="302328" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatLipkaTatarProxy" culture="none" newname="122487">
+      </effect>
+      <effect type="SetName" proto="zpNatLipkaTatarProxy" culture="none" newname="122491" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatShockRiderProxy" culture="none" newname="122488">
+      </effect>
+      <effect type="SetName" proto="zpNatShockRiderProxy" culture="none" newname="122492" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatMountainTrooperProxy" culture="none" newname="122477">
+      </effect>
+      <effect type="SetName" proto="zpNatMountainTrooperProxy" culture="none" newname="122481" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatMercMountainTrooperProxy" culture="none" newname="122477">
+      </effect>
+      <effect type="SetName" proto="zpNatMercMountainTrooperProxy" culture="none" newname="122481" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="TechStatus" status="active">DEVeteranHabsburg</effect>
+      <effect type="TechStatus" status="active">DEVeteranJagiellon</effect>
+      <effect type="TechStatus" status="active">DEVeteranWittelsbach</effect>
+    </effects>
+  </tech>
+  <tech name="zpGuardBohemianKing" type="Normal">
+    <dbid>40921</dbid>
+    <displaynameid>302325</displaynameid>
+    <cost resourcetype="Wood">350.0000</cost>
+    <cost resourcetype="Gold">350.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\guard_infantry\guard_infantry.png</icon>
+    <rollovertextid>302329</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">zpVeteranBohemianKing</techstatus>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatBohemianLandsknecht</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatBohemianLandsknecht</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMercMountedInfantryProxy" culture="none" newname="122410">
+      </effect>
+      <effect type="SetName" proto="zpNatMercMountedInfantryProxy" culture="none" newname="122413" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatLineInfantryProxy" culture="none" newname="122412">
+      </effect>
+      <effect type="SetName" proto="zpNatLineInfantryProxy" culture="none" newname="122414" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatBohemianLandsknecht" culture="none" newname="302327">
+      </effect>
+      <effect type="SetName" proto="zpNatBohemianLandsknecht" culture="none" newname="302328" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatLipkaTatarProxy" culture="none" newname="122489">
+      </effect>
+      <effect type="SetName" proto="zpNatLipkaTatarProxy" culture="none" newname="122491" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatShockRiderProxy" culture="none" newname="122490">
+      </effect>
+      <effect type="SetName" proto="zpNatShockRiderProxy" culture="none" newname="122492" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatMountainTrooperProxy" culture="none" newname="122479">
+      </effect>
+      <effect type="SetName" proto="zpNatMountainTrooperProxy" culture="none" newname="122481" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatChevaulegerProxy" culture="none" newname="122480">
+      </effect>
+      <effect type="SetName" proto="zpNatChevaulegerProxy" culture="none" newname="122482" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="TechStatus" status="active">DEGuardHabsburg</effect>
+      <effect type="TechStatus" status="active">DEGuardJagiellon</effect>
+      <effect type="TechStatus" status="active">DEGuardWittelsbach</effect>
+    </effects>
+  </tech>
+  <tech name="zpKingOfBohemiaSetup" type="Normal">
+    <dbid>40922</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" tech="DENatHabsburgViennaCongress">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatHabsburgCrownLands">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatHabsburgMultinationalism">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatHabsburgAustroHungarian">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatJagiellonFolwarks">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatJagiellonSarmatism">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatJagiellonPancerni">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatJagiellonInheritance">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatWittelsbachOktoberfest">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatWittelsbachDucalLancers">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatWittelsbachPhilhellenism">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatWittelsbachHuntingGear">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="deMercCannoneer" page="0" column="0">
+        <target type="ProtoUnit">zpSPCGermanCathedral</target>
+      </effect>
+      <effect type="CommandAdd" proto="deMercPandour" page="0" column="1">
+        <target type="ProtoUnit">zpSPCGermanCathedral</target>
+      </effect>
+      <effect type="CommandAdd" proto="deMercGrenadier" page="0" column="2">
+        <target type="ProtoUnit">zpSPCGermanCathedral</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpMercBohemianKnight" page="0" column="3">
+        <target type="ProtoUnit">zpSPCGermanCathedral</target>
+      </effect>
+      <effect type="CommandAdd" proto="MercGreatCannon" page="0" column="4">
+        <target type="ProtoUnit">zpSPCGermanCathedral</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
+      <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
+      <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
+      <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
+      <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
+      <effect type="TechStatus" status="active">zpForbidRevolutions</effect>
+      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRowboat</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCGoldSmelter</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCCityMarket</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCDemolisher</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCTownMill</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCGermanCathedral</target>
+      </effect>
+      <effect type="SetName" proto="zpSPCGermanCathedral" culture="none" newname="302370">
+      </effect>
+      <effect type="SetName" tech="DENatHabsburgAustroHungarian" newname="122552" newrollover="302385">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateKingOfBohemiaJagiellon" type="Normal">
+    <dbid>40923</dbid>
+    <displaynameid>302330</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\kingdom_bohemia_big.png</icon>
+    <rollovertextid>302331</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatLipkaTatarProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatShockRiderProxy</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCKingOfBohemia</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpSPCKingOfBohemia">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatShockRiderProxy" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatLipkaTatarProxy" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatJagiellonPancerni" page="2" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatJagiellonInheritance" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatJagiellonSarmatism" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatJagiellonFolwarks" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect civ="Jagiellon" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpKingOfBohemiaProclaimedShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateKingOfBohemiaWittelsbach" type="Normal">
+    <dbid>40924</dbid>
+    <displaynameid>302332</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\kingdom_bohemia_big.png</icon>
+    <rollovertextid>302333</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatChevaulegerProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMountainTrooperProxy</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCKingOfBohemia</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpSPCKingOfBohemia">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatChevaulegerProxy" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatMountainTrooperProxy" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatWittelsbachOktoberfest" page="2" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatWittelsbachDucalLancers" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatWittelsbachPhilhellenism" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatWittelsbachHuntingGear" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect civ="Wittelsbach" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpKingOfBohemiaProclaimedShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnlockCathedralJewish" type="Normal">
+    <dbid>40925</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect civ="Jewish" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlementMilitia</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpJewishVeteranMilitia</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishGuardMilitia</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitSmokelessPowder</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishYomKippur</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishPessah</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishTorah</effect>
+    </effects>
+  </tech>
+  <tech name="zpLockCathedralJewish" type="Normal">
+    <dbid>40926</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect civ="Jewish" type="Data" amount="0.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlementMilitia</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpLockCathedralJewish</effect>
+    </effects>
+  </tech>
+  <tech name="zpLockKingOfBohemiaTechs" type="Normal">
+    <dbid>40927</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercCannoneer</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercPandour</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercGrenadier</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpMercBohemianKnight</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercGreatCannon</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpLockKingOfBohemiaTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnlockKingOfBohemiaTechs" type="Normal">
+    <dbid>40928</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercCannoneer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercPandour</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercGrenadier</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpMercBohemianKnight</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercGreatCannon</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpUnlockKingOfBohemiaTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpConvertWallBohemia" type="Normal">
+    <dbid>40929</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+       <effect type="TransformUnit" toprotoid="zpSPCFortBarracks" fromprotoid="zpSPCFortBarracksProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCFortStable" fromprotoid="zpSPCFortStableProp">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConvertWallBohemia</effect>
+    </effects>
+  </tech>
+  <tech name="zpConvertWallBohemiaBack" type="Normal">
+    <dbid>40930</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpSPCFortBarracksProp" fromprotoid="zpSPCFortBarracks">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCFortStableProp" fromprotoid="zpSPCFortStable">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConvertWallBohemiaBack</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate2" type="Normal">
+    <dbid>40931</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocketB">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate2</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate3" type="Normal">
+    <dbid>40932</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocketC">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate3</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate4" type="Normal">
+    <dbid>40933</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocketD">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate4</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate5" type="Normal">
+    <dbid>40934</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocketE">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate5</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate6" type="Normal">
+    <dbid>40935</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocketF">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate6</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate7" type="Normal">
+    <dbid>40936</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocketG">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate7</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate8" type="Normal">
+    <dbid>40937</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocketH">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate8</effect>
+    </effects>
+  </tech>
+  <tech name="zpKingOfBohemiaRevShadow" type="Normal">
+    <dbid>40938</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TextEffectOutput" reason="Koth" selfmsg="302348" playermsg="302349">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpKingOfBohemiaRevShadow</effect>
+    </effects>
+  </tech>
+  <tech name="StarFort">
+    <effects>
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpFortConvertable</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="Revetment">
+    <effects>
+      <effect mergemode="add" type="Data" action="CannonAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpFortConvertable</target>
+      </effect>
+      <effect mergemode="add" type="Data" action="BuildingAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpFortConvertable</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="6.00" subtype="LOS" relativity="Absolute">
+        <target type="ProtoUnit">zpFortConvertable</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpFortConvertable</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate1" type="Normal">
+    <dbid>40939</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocketA">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate1</effect>
+    </effects>
+  </tech>
+  <tech name="zpMapBohemian" type="Normal">
+    <dbid>40940</dbid>
+    <status>UNOBTAINABLE</status>
+  </tech>
+  <tech name="zpKingOfBohemiaProclaimedShadow" type="Normal">
+    <dbid>40950</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+  </tech>
+  <tech name="zpNatBohemianAcademy" type="Normal">
+    <dbid>40941</dbid>
+    <displaynameid>302371</displaynameid>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\bohemia_alchemyst_workshop.png</icon>
+    <rollovertextid>300519</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpAcademyWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAcademy</target>
+      </effect>
+      <effect type="TechStatus" status="active">zpAcademyTechsShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpBohemianMercenariesShadow" type="Normal">
+    <dbid>40942</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="-1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">deMercPandour</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">deMercGrenadier</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpMercBohemianKnight</target>
+      </effect>
+      <effect type="Data" amount="-2.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">MercGreatCannon</target>
+      </effect>
+      <effect type="Data" amount="0.80" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">deMercCannoneer</target>
+      </effect>
+      <effect type="Data" amount="0.80" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">deMercPandour</target>
+      </effect>
+      <effect type="Data" amount="0.80" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">deMercGrenadier</target>
+      </effect>
+      <effect type="Data" amount="0.80" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpMercBohemianKnight</target>
+      </effect>
+      <effect type="Data" amount="0.80" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">MercGreatCannon</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpBohemianMercenariesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpBohemianMercenaries" type="Normal">
+    <dbid>40943</dbid>
+    <displaynameid>302372</displaynameid>
+    <cost resourcetype="Food">150.0000</cost>
+    <cost resourcetype="Gold">700.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\bohemia_tolerantion_patent.png</icon>
+    <rollovertextid>302373</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+  </tech>
+  <tech name="zpBohemianMercenariesShadowBack" type="Normal">
+    <dbid>40944</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">deMercPandour</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">deMercGrenadier</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpMercBohemianKnight</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">MercGreatCannon</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">deMercCannoneer</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">deMercPandour</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">deMercGrenadier</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpMercBohemianKnight</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">MercGreatCannon</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpBohemianMercenariesShadowBack</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCKingOfBohemiaAI" type="Normal">
+    <dbid>40945</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCWoodenTowerAIProxy</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCSocketCityTowerClone</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCSocketCityTowerClone3</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCSocketCityTowerClone4</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCSocketCityTowerClone5</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCSocketCityTowerClone6</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCSocketCityTowerClone7</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCSocketCityTowerClone8</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">deSPCSocketCityTower</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTreatyBohemian" type="Normal">
+    <dbid>40946</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">HCNativeTreaties</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="4.00" subtype="FreeHomeCityUnit" unittype="zpNatBohemianLandsknecht" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpIndianFriendshipBohemian" type="Normal">
+    <dbid>40947</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="8.00" subtype="FreeHomeCityUnit" unittype="zpNatBohemianLandsknecht" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpVeteranBohemianKing</effect>
+      <effect type="TechStatus" status="active">zpGuardBohemianKing</effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTradeTreatyBohemian" type="Normal">
+    <dbid>40948</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpKingOfBohemiaFallShadow" type="Normal">
+    <dbid>40949</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TextEffectOutput" reason="Koth" selfmsg="302380" playermsg="302381">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpKingOfBohemiaFallShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpKingOfTheSeasShadow" type="Normal">
+    <dbid>40951</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TextEffectOutput" reason="Koth" selfmsg="302382" playermsg="302382">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpKingOfTheSeasShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatBlanikKnights" type="Normal">
+    <dbid>40952</dbid>
+    <displaynameid>302383</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\abilities\blanik_knights.png</icon>
+    <rollovertextid>302384</rollovertextid>
+    <flag>YPNoTextMessage</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DEHideAdvancedRollover</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="zpEnableSPCCityStateTechsClone" type="Normal">
+    <dbid>40953</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpSPCArtPatronClone</effect>
+      <effect type="TechStatus" status="obtainable">DESPCVeteranCityGuard</effect>
+      <effect type="TechStatus" status="obtainable">DESPCGuardCityGuard</effect>
+      <effect type="TechStatus" status="obtainable">DESPCImperialCityGuard</effect>
+      <effect type="TechStatus" status="obtainable">DESPCTaulaDeCanvi</effect>
+      <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
+      <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPapalBlessingClone</effect>
+      <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMediciPatronage</effect>
+      <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCVenetianFleet</effect>
+      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
+      <effect type="TechStatus" status="obtainable">zpMonarchChurchAliance</effect>
+      <effect type="CommandRemove" command="FourOfAKind">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="NativeEmbassy" relativity="Absolute">
+        <target type="ProtoUnit">deIconEuropeanEmbassy</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deEmbassyTravois" relativity="Absolute">
+        <target type="ProtoUnit">deIconEuropeanEmbassyTravois</target>
+      </effect>
+      <effect type="SetName" proto="NativeEmbassy" culture="none" newname="124945">
+      </effect>
+      <effect type="SetName" proto="deEmbassyTravois" culture="none" newname="80597" newrollover="103345" newshortrollover="103344">
+      </effect>
+      <effect type="TechStatus" status="active">deMapIsEuropean</effect>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="NativeEmbassy" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCFlorenceSetup" type="Normal">
+    <dbid>40954</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpSPCArtPatronClone</effect>
+      <effect type="TechStatus" status="obtainable">DESPCVeteranCityGuard</effect>
+      <effect type="TechStatus" status="obtainable">DESPCGuardCityGuard</effect>
+      <effect type="TechStatus" status="obtainable">DESPCImperialCityGuard</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCTaulaDeCanviClone</effect>
+      <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
+      <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPapalBlessingClone</effect>
+      <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMediciPatronage</effect>
+      <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCVenetianFleet</effect>
+      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
+      <effect type="TechStatus" status="obtainable">zpMonarchChurchAliance</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
+      <effect type="CommandRemove" command="FourOfAKind">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="NativeEmbassy" relativity="Absolute">
+        <target type="ProtoUnit">deIconEuropeanEmbassy</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deEmbassyTravois" relativity="Absolute">
+        <target type="ProtoUnit">deIconEuropeanEmbassyTravois</target>
+      </effect>
+      <effect type="SetName" proto="NativeEmbassy" culture="none" newname="124945">
+      </effect>
+      <effect type="SetName" proto="deEmbassyTravois" culture="none" newname="80597" newrollover="103345" newshortrollover="103344">
+      </effect>
+      <effect type="SetName" proto="zpSPCNationalBank" culture="none" newname="123018">
+      </effect>
+      <effect type="TechStatus" status="active">deMapIsEuropean</effect>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="NativeEmbassy" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="CommandAdd" tech="DESPCMediciPatronage" page="1" column="0">
+        <target type="ProtoUnit">zpSPCNationalBank</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCTaulaDeCanviClone" page="1" column="1">
+        <target type="ProtoUnit">zpSPCNationalBank</target>
+      </effect>
+      <effect type="Data" amount="250.00" subtype="PopulationCap" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">House</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">HouseEast</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">HouseMed</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Manor</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deHouseAfrican</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deTorp</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">HouseAztec</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deHouseInca</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypVillage</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypHouseIndian</target>
+      </effect>
+      <effect type="CommandRemove" proto="House">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseEast">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseMed">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deHouseAfrican">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deTorp">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseAztec">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deHouseInca">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypVillage">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypHouseIndian">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="Manor">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
+      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRowboat</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCTaulaDeCanviClone" type="Normal">
+    <dbid>40955</dbid>
+    <displaynameid>123054</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\spc\historical_battles\team_taula_de_canvi.png</icon>
+    <rollovertextid>123053</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCNationalBank</target>
+      </effect>
+      <effect type="TextOutputTechName">123070</effect>
+    </effects>
+  </tech>
 
   
  
@@ -21436,7 +22949,7 @@
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
     <flag>DoNotQueue</flag>
-    <effects>
+    <effects
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCBlackPearlProxy</target>
       </effect>

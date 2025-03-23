@@ -37,13 +37,13 @@ void main(void)
     int sizeZ = 400;
 	int sizeX = 460;
 	if (cNumberNonGaiaPlayers > 2){
-		sizeX = 500;
+		sizeX = 530;
 	}
 	if (cNumberNonGaiaPlayers > 4){
-		sizeX = 560;
+		sizeX = 580;
 	}
 	if (cNumberNonGaiaPlayers > 6){
-		sizeX = 620;
+		sizeX = 640;
 	}
 
 	rmSetMapSize(sizeX, sizeZ);
@@ -303,7 +303,7 @@ void main(void)
 
     // River must be defined before the islands are placed
 	if (cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==4)
-    	int riverID = rmRiverCreate(-1, "ZP Venice Lagoon Shore", 4, 4, 68, 68); //  (-1, "new england lake", 18, 14, 5, 5)
+    	int riverID = rmRiverCreate(-1, "ZP Venice Lagoon Shore", 4, 4, 72, 72); //  (-1, "new england lake", 18, 14, 5, 5)
 	else if (cNumberNonGaiaPlayers ==5 || cNumberNonGaiaPlayers ==6)
     	riverID = rmRiverCreate(-1, "ZP Venice Lagoon Shore", 4, 4, 85, 85); //  (-1, "new england lake", 18, 14, 5, 5)
 	else if (cNumberNonGaiaPlayers >6)
@@ -360,17 +360,23 @@ void main(void)
     if (cNumberNonGaiaPlayers <=2){
 		rmPlaceObjectDefAtLoc(socketID, 0, 0.5+rmXTilesToFraction(2), 0.62);
 		rmPlaceObjectDefAtLoc(socketID2, 0, 0.5+rmXTilesToFraction(1), 0.11);
-		rmPlaceObjectDefAtLoc(socketID3, 0, 0.5-rmXTilesToFraction(19), 0.66);
-		rmPlaceObjectDefAtLoc(socketID4, 0, 0.5+rmXTilesToFraction(21), 0.35);
+		rmPlaceObjectDefAtLoc(socketID3, 0, 0.5-rmXTilesToFraction(17), 0.66);
+		rmPlaceObjectDefAtLoc(socketID4, 0, 0.5+rmXTilesToFraction(19), 0.35);
 	}
 	else if (cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==4){
 		rmPlaceObjectDefAtLoc(socketID, 0, 0.5+rmXTilesToFraction(1), 0.62);
-		rmPlaceObjectDefAtLoc(socketID2, 0, 0.5+rmXTilesToFraction(5), 0.11);
+		rmPlaceObjectDefAtLoc(socketID2, 0, 0.5-rmXTilesToFraction(2), 0.11);
 		rmPlaceObjectDefAtLoc(socketID3, 0, 0.5-rmXTilesToFraction(20), 0.66);
-		rmPlaceObjectDefAtLoc(socketID4, 0, 0.5+rmXTilesToFraction(24), 0.35);
+		rmPlaceObjectDefAtLoc(socketID4, 0, 0.5+rmXTilesToFraction(18), 0.35);
+	}
+	else if (cNumberNonGaiaPlayers ==5 || cNumberNonGaiaPlayers ==6){
+		rmPlaceObjectDefAtLoc(socketID, 0, 0.5-rmXTilesToFraction(3), 0.62);
+		rmPlaceObjectDefAtLoc(socketID2, 0, 0.5+rmXTilesToFraction(1), 0.11);
+		rmPlaceObjectDefAtLoc(socketID3, 0, 0.5-rmXTilesToFraction(24), 0.66);
+		rmPlaceObjectDefAtLoc(socketID4, 0, 0.5+rmXTilesToFraction(20), 0.35);
 	}
 	else{
-		rmPlaceObjectDefAtLoc(socketID, 0, 0.5-rmXTilesToFraction(1), 0.62);
+		rmPlaceObjectDefAtLoc(socketID, 0, 0.5-rmXTilesToFraction(0), 0.62);
 		rmPlaceObjectDefAtLoc(socketID2, 0, 0.5+rmXTilesToFraction(1), 0.11);
 		rmPlaceObjectDefAtLoc(socketID3, 0, 0.5-rmXTilesToFraction(22), 0.66);
 		rmPlaceObjectDefAtLoc(socketID4, 0, 0.5+rmXTilesToFraction(22), 0.35);
@@ -382,8 +388,15 @@ void main(void)
 	vector ControllerLoc4 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(socketID4, 0));
 
 	rmSetNuggetDifficulty(298, 298);
+
+	int islandVariation = rmRandInt(0, 1);
+	int peninsulaVariation = rmRandInt(0, 1);
+
 	// San Marco
-	int veniceSanMarco = rmCreateGrouping("bridge1", "Venice_Island_01");
+	if (islandVariation == 0)
+		int veniceSanMarco = rmCreateGrouping("bridge1", "Venice_Island_01");
+	else
+		veniceSanMarco = rmCreateGrouping("bridge1", "Venice_Island_01B");
     rmSetGroupingMinDistance(veniceSanMarco, 0.00);
     rmSetGroupingMaxDistance(veniceSanMarco, 0.01);
 	rmAddGroupingToClass(veniceSanMarco, rmClassID("classPlateau"));
@@ -391,7 +404,10 @@ void main(void)
 	int veniceInstanceID1 = rmPlaceGroupingInstanceAtLoc(veniceSanMarco, rmXMetersToFraction(xsVectorGetX(ControllerLoc1))+rmXTilesToFraction(22), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1))+rmZTilesToFraction(16), 0);
 
 	//San Giorgio
-	int veniceSanGiorgio = rmCreateGrouping("bridge2", "Venice_Island_02");
+	if (islandVariation == 0)
+		int veniceSanGiorgio = rmCreateGrouping("bridge2", "Venice_Island_02");
+	else
+		veniceSanGiorgio = rmCreateGrouping("bridge2", "Venice_Island_02B");
     rmSetGroupingMinDistance(veniceSanGiorgio, 0.00);
     rmSetGroupingMaxDistance(veniceSanGiorgio, 0.00);
 	rmAddGroupingToClass(veniceSanGiorgio, rmClassID("classPlateau"));
@@ -399,7 +415,10 @@ void main(void)
 	int veniceInstanceID2 = rmPlaceGroupingInstanceAtLoc(veniceSanGiorgio, rmXMetersToFraction(xsVectorGetX(ControllerLoc2))-rmXTilesToFraction(16), rmZMetersToFraction(xsVectorGetZ(ControllerLoc2))+rmZTilesToFraction(24), 0);
 
 	// Academia
-	int veniceAcademia = rmCreateGrouping("bridge3", "Venice_Island_03");
+	if (peninsulaVariation == 0)
+		int veniceAcademia = rmCreateGrouping("bridge3", "Venice_Island_03");
+	else
+		veniceAcademia = rmCreateGrouping("bridge3", "Venice_Island_03B");
     rmSetGroupingMinDistance(veniceAcademia, 0.00);
     rmSetGroupingMaxDistance(veniceAcademia, 0.00);
 	rmAddGroupingToClass(veniceAcademia, rmClassID("classPlateau"));
@@ -407,7 +426,10 @@ void main(void)
 	int veniceInstanceID3 = rmPlaceGroupingInstanceAtLoc(veniceAcademia, rmXMetersToFraction(xsVectorGetX(ControllerLoc3))-rmXTilesToFraction(19), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3))-rmZTilesToFraction(21), 0);
 
 	// San Polo
-	int veniceSanPolo = rmCreateGrouping("bridge4", "Venice_Island_04");
+	if (peninsulaVariation == 0)
+		int veniceSanPolo = rmCreateGrouping("bridge4", "Venice_Island_04");
+	else
+		veniceSanPolo = rmCreateGrouping("bridge4", "Venice_Island_04B");
     rmSetGroupingMinDistance(veniceSanPolo, 0.00);
     rmSetGroupingMaxDistance(veniceSanPolo, 0.01);
 	rmAddGroupingToClass(veniceSanPolo, rmClassID("classPlateau"));
@@ -645,7 +667,7 @@ void main(void)
 
 	// Mines
 
-	for(i=0; < cNumberNonGaiaPlayers*1.5){
+	for(i=0; < 1+cNumberNonGaiaPlayers*1.5){
 		int northMineID = rmCreateObjectDef("north mine "+i);
 		rmAddObjectDefItem(northMineID, "Mine", 1, 0.0);
 		rmSetObjectDefMinDistance(northMineID, 0.0);
@@ -661,7 +683,7 @@ void main(void)
 
 	} 
 
-	for(i=0; < cNumberNonGaiaPlayers*1.5){
+	for(i=0; < 1+cNumberNonGaiaPlayers*1.5){
 		int southMineID = rmCreateObjectDef("south mine "+i);
 		rmAddObjectDefItem(southMineID, "Mine", 1, 0.0);
 		rmSetObjectDefMinDistance(southMineID, 0.0);
@@ -892,17 +914,30 @@ void main(void)
 	int veniceBasilica4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpGreatBasilica");
 
 	int veniceProduction1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "deSPCGreatBank");
-	int veniceProduction2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpSPCCapturableFactoryMed");
-	int veniceProduction3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "deSPCGreatBank");
+	int veniceProduction2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "deSPCGreatBank");
+	int veniceProduction3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "zpSPCCapturableFactoryMed");
 	int veniceProduction4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpSPCCapturableFactoryMed");
 
-	int veniceMonastery1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCCathedral");
-	int veniceMonastery2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpJesuitCathedral");
-	int veniceMonastery3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "zpCathedralOrthodox");
-	int veniceMonastery4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpPalazoAuditore");
+	if (islandVariation ==0){
+		int veniceMonastery1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCCathedral");
+		int veniceMonastery2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpJesuitCathedral");
+	}
+	else{
+		veniceMonastery1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpJesuitCathedral");
+		veniceMonastery2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpSPCCathedral");
+	}
 
 	int veniceFixedGun1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCFixedGunBase");
 	int veniceFixedGun2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpSPCFixedGunBase");
+
+	if (peninsulaVariation ==0){
+		int veniceMonastery3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "zpCathedralOrthodox");
+		int veniceMonastery4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpPalazoAuditore");
+	}
+	else{
+		veniceMonastery3 = rmGetGroupingInstanceUnitByType(veniceInstanceID3, "zpPalazoAuditore");
+		veniceMonastery4 = rmGetGroupingInstanceUnitByType(veniceInstanceID4, "zpCathedralOrthodox");
+	}
 
 	int veniceCenter1 = rmGetGroupingInstanceUnitByType(veniceInstanceID1, "zpSPCWaterSpawnPoint");
 	int veniceCenter2 = rmGetGroupingInstanceUnitByType(veniceInstanceID2, "zpSPCWaterSpawnPoint");
@@ -1011,7 +1046,7 @@ void main(void)
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
         rmSetTriggerEffectParamInt("PlayerID", i);
-        rmSetTriggerEffectParam("TechID","cTechzpEnableSPCCityStateTechsClone"); // Mercenaries
+        rmSetTriggerEffectParam("TechID","cTechzpVeniceCitySetup"); // Mercenaries
         rmSetTriggerEffectParamInt("Status", 2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
         rmSetTriggerEffectParamInt("PlayerID", i);
@@ -1027,16 +1062,41 @@ void main(void)
 	rmAddTriggerEffect("Trade Route Set Level");
 	rmSetTriggerEffectParamInt("TradeRoute",1);
 	rmSetTriggerEffectParamInt("Level",1);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
 
 	for(k=1; <= cNumberNonGaiaPlayers) {
-	rmCreateTrigger("AI Techs"+k);
-	rmAddTriggerCondition("ZP PLAYER Human");
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParam("MyBool", "false");
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmSetTriggerEffectParam("TechID","cTechzpSPCVeniceCityStatesAI"); // Only for the AI to train the city state units from sockets
-	rmSetTriggerEffectParamInt("Status",2);
+		rmCreateTrigger("AI Techs"+k);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpSPCVeniceCityStatesAI"); // Only for the AI to train the city state units from sockets
+		rmSetTriggerEffectParamInt("Status",2);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
+	// Set up default resource values
+	if (cNumberNonGaiaPlayers >2){
+		rmCreateTrigger("Starting Resources");
+		rmAddTriggerEffect("Modify Protounit Resource");
+		rmSetTriggerEffectParam("ProtoUnit","zpValuableSource");
+		rmSetTriggerEffectParam("Resource","Gold");
+		rmSetTriggerEffectParamInt("PlayerID",0);
+		rmSetTriggerEffectParamInt("Field",2);
+		rmSetTriggerEffectParamInt("Delta",0.5*cNumberNonGaiaPlayers);
+		rmSetTriggerEffectParamInt("Relativity",3);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
 	}
 
 	// Conversion Suspend
@@ -2086,20 +2146,26 @@ void main(void)
 	rmSetTriggerLoop(false);
 	}
 
-	// Venice City States
+	// ****************** Venice City States ******************
 
 	for (k=1; <= cNumberNonGaiaPlayers) {
 		rmCreateTrigger("Venice1on Player"+k);
 		rmCreateTrigger("Venice1off Player"+k);
+		rmCreateTrigger("Venice1off_Dellayed_Player"+k);
 
 		rmCreateTrigger("Venice2on Player"+k);
 		rmCreateTrigger("Venice2off Player"+k);
+		rmCreateTrigger("Venice2off_Dellayed_Player"+k);
 
 		rmCreateTrigger("Venice3on Player"+k);
 		rmCreateTrigger("Venice3off Player"+k);
+		rmCreateTrigger("Venice3off_Dellayed_Player"+k);
 
 		rmCreateTrigger("Venice4on Player"+k);
 		rmCreateTrigger("Venice4off Player"+k);
+		rmCreateTrigger("Venice4off_Dellayed_Player"+k);
+
+		// Grouping 1
 
 		rmSwitchToTrigger(rmTriggerID("Venice1on_Player"+k));
 		rmAddTriggerCondition("Units in Area");
@@ -2160,7 +2226,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("Dist",60);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedralMaltese"); // Mercenaries
+		if (islandVariation == 0)
+			rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedralMaltese"); // Maltese
+		else
+			rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedralJesuit"); // Jesuit
 		rmSetTriggerEffectParamInt("Status",2);
 		for(x=1; <= cNumberNonGaiaPlayers) {
 			rmAddTriggerEffect("Flare Minimap");
@@ -2198,6 +2267,42 @@ void main(void)
 		rmSetTriggerEffectParam("UnitType","zpVenetianWaterSpawnFlag1");
 		rmSetTriggerEffectParamInt("Dist",150);
 
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		if (islandVariation == 0)
+			rmSetTriggerEffectParam("TechID","cTechzpLockCathedralMaltese"); // Maltese
+		else
+			rmSetTriggerEffectParam("TechID","cTechzpLockCathedralJesuit"); // Jesuit
+		rmSetTriggerEffectParamInt("Status",2);
+
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpVeniceLockIslandGroupingTechs"); // Island Techs
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Flare Minimap");
+		rmSetTriggerEffectParamInt("PlayerID", k, false);
+		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(veniceLoc1)+","+xsVectorGetY(veniceLoc1)+","+xsVectorGetZ(veniceLoc1), false);
+		rmSetTriggerEffectParam("Flash", "True", false);
+
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice1on_Player"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley1ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass1ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun1_ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice1off_Dellayed_Player"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Venice1off_Dellayed_Player"+k));
+		rmAddTriggerCondition("Timer ms");
+        rmSetTriggerConditionParamInt("Param1", 1000, false);
 		rmAddTriggerEffect("Convert");
 		rmSetTriggerEffectParam("SrcObject",""+veniceBasilicaMod1);
 		rmSetTriggerEffectParamInt("PlayerID",0);
@@ -2242,25 +2347,15 @@ void main(void)
 		rmSetTriggerEffectParamInt("Dist",60);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpLockCathedralMaltese"); // Mercenaries
+		rmSetTriggerEffectParam("TechID","cTechzpVeniceUnlockIslandGroupingTechs"); // Island Techs
 		rmSetTriggerEffectParamInt("Status",2);
-		rmAddTriggerEffect("Flare Minimap");
-		rmSetTriggerEffectParamInt("PlayerID", k, false);
-		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(veniceLoc1)+","+xsVectorGetY(veniceLoc1)+","+xsVectorGetZ(veniceLoc1), false);
-		rmSetTriggerEffectParam("Flash", "True", false);
-
-		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice1on_Player"+k));
-		rmAddTriggerEffect("Disable Trigger");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley1ON_Plr"+k));
-		rmAddTriggerEffect("Disable Trigger");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass1ON_Plr"+k));
-		rmAddTriggerEffect("Disable Trigger");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun1_ON_Plr"+k));
+		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
+
+
+		// Grouping 2
 
 		rmSwitchToTrigger(rmTriggerID("Venice2on_Player"+k));
 		rmAddTriggerCondition("Units in Area");
@@ -2321,7 +2416,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("Dist",60);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedralJesuit"); // Mercenaries
+		if (islandVariation == 1)
+			rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedralMaltese"); // Maltese
+		else
+			rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedralJesuit"); // Jesuit
 		rmSetTriggerEffectParamInt("Status",2);
 		for(x=1; <= cNumberNonGaiaPlayers) {
 			rmAddTriggerEffect("Flare Minimap");
@@ -2359,6 +2457,42 @@ void main(void)
 		rmSetTriggerEffectParam("UnitType","zpVenetianWaterSpawnFlag2");
 		rmSetTriggerEffectParamInt("Dist",150);
 
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		if (islandVariation == 1)
+			rmSetTriggerEffectParam("TechID","cTechzpLockCathedralMaltese"); // Maltese
+		else
+			rmSetTriggerEffectParam("TechID","cTechzpLockCathedralJesuit"); // Jesuit
+		rmSetTriggerEffectParamInt("Status",2);
+
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpVeniceLockIslandGroupingTechs"); // Island Techs
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Flare Minimap");
+		rmSetTriggerEffectParamInt("PlayerID", k, false);
+		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(veniceLoc2)+","+xsVectorGetY(veniceLoc2)+","+xsVectorGetZ(veniceLoc2), false);
+		rmSetTriggerEffectParam("Flash", "True", false);
+
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice2on_Player"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley2ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass2ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun2_ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice2off_Dellayed_Player"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Venice2off_Dellayed_Player"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamInt("Param1", 1000, false);
 		rmAddTriggerEffect("Convert");
 		rmSetTriggerEffectParam("SrcObject",""+veniceBasilicaMod2);
 		rmSetTriggerEffectParamInt("PlayerID",0);
@@ -2403,26 +2537,14 @@ void main(void)
 		rmSetTriggerEffectParamInt("Dist",60);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpLockCathedralJesuit"); // Mercenaries
+		rmSetTriggerEffectParam("TechID","cTechzpVeniceUnlockIslandGroupingTechs"); // Island Techs
 		rmSetTriggerEffectParamInt("Status",2);
-		rmAddTriggerEffect("Flare Minimap");
-		rmSetTriggerEffectParamInt("PlayerID", k, false);
-		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(veniceLoc2)+","+xsVectorGetY(veniceLoc2)+","+xsVectorGetZ(veniceLoc2), false);
-		rmSetTriggerEffectParam("Flash", "True", false);
-
-		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice2on_Player"+k));
-		rmAddTriggerEffect("Disable Trigger");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley2ON_Plr"+k));
-		rmAddTriggerEffect("Disable Trigger");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass2ON_Plr"+k));
-		rmAddTriggerEffect("Disable Trigger");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun2_ON_Plr"+k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
+
+		// Grouping 3
 
 		rmSwitchToTrigger(rmTriggerID("Venice3on_Player"+k));
 		rmAddTriggerCondition("Units in Area");
@@ -2486,7 +2608,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("Dist",10);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedraOrthodox"); // Mercenaries
+		if (peninsulaVariation == 0)
+			rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedraOrthodox"); // Orthodox
+		else
+			rmSetTriggerEffectParam("TechID","cTechzpUnlockPalazzoAuditore"); // Auditore
 		rmSetTriggerEffectParamInt("Status",2);
 		for(x=1; <= cNumberNonGaiaPlayers) {
 			rmAddTriggerEffect("Flare Minimap");
@@ -2524,6 +2649,43 @@ void main(void)
 		rmSetTriggerEffectParam("UnitType","zpVenetianWaterSpawnFlag3");
 		rmSetTriggerEffectParamInt("Dist",150);
 
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpVeniceLockPeninsulaGroupingTechs"); // Peninsula Techs
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		if (peninsulaVariation == 0)
+			rmSetTriggerEffectParam("TechID","cTechzpLockCathedralOrthodox"); // Orthodox
+		else
+			rmSetTriggerEffectParam("TechID","cTechzpLockPalazzoAuditore"); // Auditore
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Flare Minimap");
+		rmSetTriggerEffectParamInt("PlayerID", k, false);
+		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(veniceLoc3)+","+xsVectorGetY(veniceLoc3)+","+xsVectorGetZ(veniceLoc3), false);
+		rmSetTriggerEffectParam("Flash", "True", false);
+
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice3on_Player"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley3ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass3ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower31_ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower32_ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice3off_Dellayed_Player"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Venice3off_Dellayed_Player"+k));
+		rmAddTriggerCondition("Timer ms");
+        rmSetTriggerConditionParamInt("Param1", 1000, false);
 		rmAddTriggerEffect("Convert");
 		rmSetTriggerEffectParam("SrcObject",""+veniceBasilicaMod3);
 		rmSetTriggerEffectParamInt("PlayerID",0);
@@ -2571,28 +2733,14 @@ void main(void)
 		rmSetTriggerEffectParamInt("Dist",10);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpLockCathedralOrthodox"); // Mercenaries
+		rmSetTriggerEffectParam("TechID","cTechzpVeniceUnlockPeninsulaGroupingTechs"); // Peninsula Techs
 		rmSetTriggerEffectParamInt("Status",2);
-		rmAddTriggerEffect("Flare Minimap");
-		rmSetTriggerEffectParamInt("PlayerID", k, false);
-		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(veniceLoc3)+","+xsVectorGetY(veniceLoc3)+","+xsVectorGetZ(veniceLoc3), false);
-		rmSetTriggerEffectParam("Flash", "True", false);
-
-		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice3on_Player"+k));
-		rmAddTriggerEffect("Disable Trigger");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley3ON_Plr"+k));
-		rmAddTriggerEffect("Disable Trigger");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass3ON_Plr"+k));
-		rmAddTriggerEffect("Disable Trigger");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower31_ON_Plr"+k));
-		rmAddTriggerEffect("Disable Trigger");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower32_ON_Plr"+k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
+
+		// Grouping 4
 
 		rmSwitchToTrigger(rmTriggerID("Venice4on_Player"+k));
 		rmAddTriggerCondition("Units in Area");
@@ -2656,7 +2804,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("Dist",10);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpUnlockPalazzoAuditore"); // Mercenaries
+		if (peninsulaVariation == 1)
+			rmSetTriggerEffectParam("TechID","cTechzpUnlockCathedraOrthodox"); // Orthodox
+		else
+			rmSetTriggerEffectParam("TechID","cTechzpUnlockPalazzoAuditore"); // Auditore
 		rmSetTriggerEffectParamInt("Status",2);
 		for(x=1; <= cNumberNonGaiaPlayers) {
 			rmAddTriggerEffect("Flare Minimap");
@@ -2694,6 +2845,43 @@ void main(void)
 		rmSetTriggerEffectParam("UnitType","zpVenetianWaterSpawnFlag4");
 		rmSetTriggerEffectParamInt("Dist",150);
 
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpVeniceLockPeninsulaGroupingTechs"); // Peninsula Techs
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		if (peninsulaVariation == 1)
+			rmSetTriggerEffectParam("TechID","cTechzpLockCathedralOrthodox"); // Orthodox
+		else
+			rmSetTriggerEffectParam("TechID","cTechzpLockPalazzoAuditore"); // Auditore
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Flare Minimap");
+		rmSetTriggerEffectParamInt("PlayerID", k, false);
+		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(veniceLoc4)+","+xsVectorGetY(veniceLoc4)+","+xsVectorGetZ(veniceLoc4), false);
+		rmSetTriggerEffectParam("Flash", "True", false);
+
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice4on_Player"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley4ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass4ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower41_ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower42_ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice4off_Dellayed_Player"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Venice4off_Dellayed_Player"+k));
+		rmAddTriggerCondition("Timer ms");
+        rmSetTriggerConditionParamInt("Param1", 1000, false);
 		rmAddTriggerEffect("Convert");
 		rmSetTriggerEffectParam("SrcObject",""+veniceBasilicaMod4);
 		rmSetTriggerEffectParamInt("PlayerID",0);
@@ -2741,24 +2929,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("Dist",10);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpLockPalazzoAuditore"); // Mercenaries
+		rmSetTriggerEffectParam("TechID","cTechzpVeniceUnlockPeninsulaGroupingTechs"); // Peninsula Techs
 		rmSetTriggerEffectParamInt("Status",2);
-		rmAddTriggerEffect("Flare Minimap");
-		rmSetTriggerEffectParamInt("PlayerID", k, false);
-		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(veniceLoc4)+","+xsVectorGetY(veniceLoc4)+","+xsVectorGetZ(veniceLoc4), false);
-		rmSetTriggerEffectParam("Flash", "True", false);
-
-		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Venice4on_Player"+k));
-		rmAddTriggerEffect("Disable Trigger");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainGalley4ON_Plr"+k));
-		rmAddTriggerEffect("Disable Trigger");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("trainGalleass4ON_Plr"+k));
-		rmAddTriggerEffect("Disable Trigger");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower41_ON_Plr"+k));
-		rmAddTriggerEffect("Disable Trigger");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower42_ON_Plr"+k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);

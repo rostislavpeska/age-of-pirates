@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>17</width>
+	<height>21</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="30" posx="-5.1402" posz="-14.4724" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">zpSPCFortCornerProp</unit>
+		<unit variation="242" posx="-1.6500" posz="-14.1418" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCFortWallMediumProp</unit>
+		<unit variation="129" posx="1.3689" posz="-14.2389" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpSPCFortCornerProp</unit>
+		<unit variation="242" posx="3.7735" posz="-11.2548" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpSPCFortWallMediumProp</unit>
+		<unit variation="242" posx="-7.6745" posz="-11.6352" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpSPCFortWallMediumProp</unit>
+		<unit variation="239" posx="-10.1857" posz="-9.1916" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCFortTowerProp</unit>
+		<unit variation="167" posx="-3.7639" posz="-6.4586" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpParisFlagNoIcon</unit>
+		<unit variation="153" posx="-1.1467" posz="-6.0132" orientx="-0.7072" orienty="-0.0000" orientz="-0.7070">PropsPottedPlants</unit>
+		<unit variation="104" posx="-1.5882" posz="-7.3683" orientx="0.7070" orienty="0.0000" orientz="-0.7072">PropsColony</unit>
+		<unit variation="243" posx="-11.1981" posz="-2.3864" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCFortGate</unit>
+		<unit variation="243" posx="-11.1981" posz="-2.3864" orientx="-1.0000" orienty="0.0039" orientz="0.0000">zpInvisibleGateSocket</unit>
+		<unit variation="210" posx="-5.3506" posz="-0.8929" orientx="-1.0000" orienty="0.0000" orientz="0.0001">deNatEUPropStatue</unit>
+		<unit variation="145" posx="-3.3328" posz="3.5692" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCCapturableFlagInvisible</unit>
+		<unit variation="149" posx="-3.4221" posz="3.6039" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNuggetKidnapGuillotine</unit>
+		<unit variation="242" posx="4.1923" posz="7.4042" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpSPCFortWallMediumProp</unit>
+		<unit variation="111" posx="-10.6915" posz="4.6857" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCFortTowerProp</unit>
+		<unit variation="114" posx="-6.3113" posz="4.4293" orientx="-0.3828" orienty="-0.0000" orientz="-0.9238">PropsColony</unit>
+		<unit variation="114" posx="-5.0867" posz="5.7865" orientx="-0.0001" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
+		<unit variation="5" posx="-6.1931" posz="5.1338" orientx="0.7070" orienty="0.0000" orientz="-0.7072">PropsColony</unit>
+		<unit variation="104" posx="1.2789" posz="6.0720" orientx="0.7070" orienty="0.0000" orientz="-0.7072">PropsColony</unit>
+		<unit variation="242" posx="-7.3156" posz="8.2121" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCFortWallMediumProp</unit>
+		<unit variation="17" posx="-4.7179" posz="10.3686" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpSPCFortCornerProp</unit>
+		<unit variation="17" posx="1.8374" posz="9.8347" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpSPCFortCornerProp</unit>
+		<unit variation="242" posx="-1.4208" posz="10.1994" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCFortWallMediumProp</unit>
+		<unit variation="7" posx="-1.8903" posz="-12.4393" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpMountainCitadel</unit>
+		<unit variation="202" posx="6.1359" posz="-1.0463" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpFortConvertable</unit>
+		<unit variation="183" posx="-0.6738" posz="7.9729" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpMountainCitadel</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">
+			<block startx="-5" startz="-6" endx="-5" endz="-6"></block>
+			<block startx="-4" startz="-7" endx="-4" endz="-6"></block>
+			<block startx="-3" startz="-7" endx="-3" endz="-6"></block>
+			<block startx="-2" startz="-7" endx="-2" endz="-6"></block>
+			<block startx="-3" startz="3" endx="-3" endz="3"></block>
+			<block startx="-2" startz="3" endx="-2" endz="3"></block>
+			<block startx="-6" startz="-2" endx="-6" endz="1"></block>
+			<block startx="-5" startz="-5" endx="-5" endz="2"></block>
+			<block startx="-4" startz="-5" endx="-4" endz="2"></block>
+			<block startx="-3" startz="-5" endx="-3" endz="2"></block>
+			<block startx="-2" startz="-5" endx="-2" endz="2"></block>
+			<block startx="-1" startz="-5" endx="-1" endz="2"></block>
+			<block startx="0" startz="-5" endx="0" endz="2"></block>
+			<block startx="1" startz="-5" endx="1" endz="2"></block>
+			<block startx="2" startz="-5" endx="2" endz="2"></block>
+			<block startx="3" startz="-5" endx="3" endz="2"></block>
+			<block startx="4" startz="-4" endx="4" endz="1"></block>
+			<block startx="5" startz="-3" endx="5" endz="-1"></block>
+			<block startx="-1" startz="3" endx="-1" endz="4"></block>
+			<block startx="0" startz="3" endx="0" endz="4"></block>
+			<block startx="1" startz="3" endx="1" endz="3"></block>
+			<block startx="-1" startz="-8" endx="-1" endz="-6"></block>
+			<block startx="0" startz="-8" endx="0" endz="-6"></block>
+			<block startx="1" startz="-7" endx="1" endz="-6"></block>
+			<block startx="2" startz="-6" endx="2" endz="-6"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

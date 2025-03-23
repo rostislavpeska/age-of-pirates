@@ -294,7 +294,7 @@
 		<unit variation="97" posx="9.2544" posz="21.3392" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="5" posx="-44.5705" posz="22.8777" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 		<unit variation="0" posx="0.8463" posz="23.5443" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
-		<unit variation="0" posx="17.0782" posz="23.2144" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCFixedGunBase</unit>
+		<unit variation="0" posx="17.2453" posz="23.4498" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCFixedGunBase</unit>
 		<unit variation="69" posx="-13.4841" posz="25.3123" orientx="-0.7144" orienty="0.0000" orientz="0.6998">zpHarbourPlatform</unit>
 		<unit variation="64" posx="-15.5856" posz="26.9026" orientx="-0.7203" orienty="0.0000" orientz="-0.6936">zpHarbourPlatform</unit>
 		<unit variation="6" posx="0.8602" posz="22.7966" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpBridgeFace</unit>

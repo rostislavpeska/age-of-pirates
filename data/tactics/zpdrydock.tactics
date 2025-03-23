@@ -77,7 +77,7 @@
     </action>
     <action>
         <name stringid="43299">SpawnAXGalley</name>
-        <active>1</active>
+        <active>0</active>
         <type>Maintain</type>
         <rate type="zpAlexandrianGalley">1.0 </rate>
         <persistent>1</persistent>

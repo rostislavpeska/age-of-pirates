@@ -2210,6 +2210,8 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	rmAddTriggerEffect("Sound Timer");
 	rmSetTriggerEffectParamInt("Time", 61000);
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd"+k));
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","UI_Strategywarning");
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -2232,6 +2234,8 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	rmAddTriggerEffect("Sound Timer");
 	rmSetTriggerEffectParamInt("Time", 61000);
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd"+k));
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","UI_Strategywarning");
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -2254,6 +2258,8 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	rmAddTriggerEffect("Sound Timer");
 	rmSetTriggerEffectParamInt("Time", 61000);
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd"+k));
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","UI_Strategywarning");
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);

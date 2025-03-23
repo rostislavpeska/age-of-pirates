@@ -85,6 +85,15 @@
 		<unit name="TownCenter">
 			<placementfile>buildinglarge_city.xml</placementfile>
 		</unit>
+		<unit name="Church">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="ypChurch">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deBasilica">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
 		<unit name="Market">
 			<placementfile>buildinglarge_city.xml</placementfile>
 		</unit>
@@ -189,6 +198,12 @@
 			<buildpoints>0.0000</buildpoints>
 		</unit>
 		<unit name="Dock">
+			<placementfile>dock_city.xml</placementfile>
+		</unit>
+        <unit name="YPDockAsian">
+			<placementfile>dock_city.xml</placementfile>
+		</unit>
+        <unit name="dePort">
 			<placementfile>dock_city.xml</placementfile>
 		</unit>
 		<unit name="zpSPCEUHouseProp">

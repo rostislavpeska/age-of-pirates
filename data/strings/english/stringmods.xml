@@ -467,7 +467,7 @@
       <string _locid="300465">Bedouin</string>
       <string _locid="300466">ZP SPC Sufi Villager B</string>
       <string _locid="300467">The Dead Sea</string>
-      <string _locid="300468">The Dead Sea: Large valley with player's castles and a salty lake in the middle \n\nSettlements: Jewish, Maltese, Sufi Blue Mosque</string>
+      <string _locid="300468">The Dead Sea: Large valley with player's castles and a salty lake in the middle \n\nSettlements: Jewish, Sufi Blue Mosque, Maltese or Orthodox</string>
       <string _locid="300469">Large lake map map with several major Sufi Mosques, Maltese villages and Jewish settlements. Who controls the natives, controls the map.</string>
       <string _locid="300470">ZP Submarine</string>
       <string _locid="300471">Submerge: \nSubmerged submarine with no silent drive is not completely invisible but moves a bit faster and is hart to hit. 40% Damage bonus against ships and dock. 50% more hitpoints. Can't attack land targets.</string>
@@ -934,7 +934,7 @@
       <string _locid="300932">Bulgarian Patriarchate</string>
       <string _locid="300933">Naval improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBulgarian Boyar \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nDanube Steamers, Black Sea Fleet</string>
       <string _locid="300934">Moscow Patriarchate</string>
-      <string _locid="300935">zpJewishDiaspora \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDvoryanin \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nRussian Guard, Tsar Kolokol</string>
+      <string _locid="300935">Offensive Improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nDvoryanin \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nRussian Guard, Tsar Kolokol</string>
       <string _locid="300936">Tsar Kolokol</string>
       <string _locid="300937">Ships two superheavy "Tsar Cannons"</string>
       <string _locid="300938">Black Sea Fleet</string>
@@ -1825,7 +1825,7 @@
       <string _locid="301824">Liberty, equality, and justice for the people, by the people, against all tyranny!</string>
       <string _locid="301825">Sanscoulotte District</string>
       <string _locid="301826">ZP House Sansculottes</string>
-      <string _locid="301827">ZP Great Basilica</string>
+      <string _locid="301827">ZP SPC Great Basilica</string>
       <string _locid="301828">ZP SPC Paris Notre Dame</string>
       <string _locid="301829">Notre Dame Cathedral</string>
       <string _locid="301830">ZP SPC Paris Factory</string>
@@ -1933,7 +1933,7 @@
       <string _locid="301932">Paris Underground</string>
       <string _locid="301933">Ships one Bastion Wagons and allows you to construct connect newly constructed Bastions with your Bastions in the city through an underground passage.</string>
       <string _locid="301934">Les barricades</string>
-      <string _locid="301935">Allows Sansculottes and revolutionaries to construct barricades to prevent enemy units to pass through the streets.</string>
+      <string _locid="301935">Allows Sansculottes, Revolutionaries (and also Royal Musketeers) to construct barricades to prevent enemy units to pass through the streets.</string>
       <string _locid="301936">Milice Révolutionnaire</string>
       <string _locid="301937">Allows you to train Sansculotte native units from all Bastions in the city.</string>
       <string _locid="301938">ZP NAT Royal Musketeer Clone</string>
@@ -1942,7 +1942,7 @@
       <string _locid="301941">ZP Socket EU SPC Bourbon</string>
       <string _locid="301942">The Sun King Era</string>
       <string _locid="301943">Unlocks additional Bourbon techs</string>
-      <string _locid="301944">Unlocks additional Bourbon techs \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Allows Royal Musketeers to construct Military Camps and be trained from them \n • Allows Royal Musketeers to construct Barricades \n • Military Camp build limit increased to 6 \n • Ancien Régime: Status set to Active&lt;color=1.0, 0.0, 0.0&gt;\n • Avialble only for the team "DEFENDERS".&lt;/color&gt;</string>
+      <string _locid="301944">Unlocks additional Bourbon techs \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Allows Royal Musketeers to construct Military Camps and be trained from them \n • Military Camp build limit increased to 6 \n • Ancien Régime: Status set to Active&lt;color=1.0, 0.0, 0.0&gt;\n • Avialble only for the team "DEFENDERS".&lt;/color&gt;</string>
       <string _locid="301945">Revolts to one of the revolutionary factions. \n • Initiates a special type of revolution \n • Transforms all your settlers into Sansculottes \n • Allows Sansculotte training from your Town Center \n • Unlocks Explorer Inspiring Flag ability \n • Increases Explorer hitpoints by 30% \n • Changes you civilization to one of the revolutionary factions without loosing access to your original homecity and the option to advance to higher age (including Imperial Age)\n&lt;color=1.0, 0.0, 0.0&gt; • Avialble only for the team "ATTACKERS".&lt;/color&gt;</string>
       <string _locid="301946">ZP Paris Palaces</string>
       <string _locid="301947">ZP Bourbon Chateau</string>
@@ -1974,7 +1974,7 @@
       <string _locid="301973">ZP Fort Wall Medium Prop</string>
       <string _locid="301974">Fort Barracks</string>
       <string _locid="301975">Fort Stable</string>
-      <string _locid="301976">ZP Invisible Gate Socket</string>
+      <string _locid="301976">ZP Invisible Gate Socket A</string>
       <string _locid="301977">ZP SPC Capturable Flag Invisible</string>
       <string _locid="301978">ZP SPC Fort Flag</string>
       <string _locid="301979">Toll Station</string>
@@ -2036,7 +2036,7 @@
       <string _locid="302035">ZP Grape Bush</string>
       <string _locid="302036">Grape Bush</string>
       <string _locid="302037">Source of Food</string>
-      <string _locid="302038">Coin Production Building, Mercenary Building</string>
+      <string _locid="302038">Coin Production Building, Team improvement Building</string>
       <string _locid="302039">Labrador Coast</string>
       <string _locid="302040">Rectangular shoreline map with a railway going along the shore. The railway and the coast gets longer with more players. \n\nNative settlements: Inuits, Scientists (Armored Train)</string>
       <string _locid="302041">Labrador coast is very long. Use railway stations and armored train to reach out very distant enemies.</string>
@@ -2134,7 +2134,7 @@
       <string _locid="302133">San Giorgio (Venice District)</string>
       <string _locid="302134">Castello (Venice District)</string>
       <string _locid="302135">ZP Nugget Invisible</string>
-      <string _locid="302136">All Venetian Basilicas generate XP faster.</string>
+      <string _locid="302136">All City Basilicas generate XP faster.</string>
       <string _locid="302137">All TEAM units in the vicinity of a friendly Venetin District slowly heal.</string>
       <string _locid="302138">Team Victory time remaining</string>
       <string _locid="302139">Enemy Team Victory time remaining</string>
@@ -2240,7 +2240,7 @@
       <string _locid="302239">Capture &lt;color=1.0, 1.0, 0.0&gt;Bourbon:&lt;/color&gt; Palace and use Bourbon units and techs.</string>
       <string _locid="302240">Advance to the Sun King Era and get more Bourbon improvements.</string>
       <string _locid="302241">ZP SPC City State Wagon</string>
-      <string _locid="302242">ZP Socket EU SPC City Tower Clone</string>
+      <string _locid="302242">ZP Socket EU SPC City Tower 2</string>
       <string _locid="302243">A Tower may be constructed here to protect this Pirate Town.</string>
       <string _locid="302244">ZP SPC Pirate Guard Melee</string>
       <string _locid="302245">ZP SPC Pirate Guard Pistol</string>
@@ -2300,8 +2300,111 @@
       <string _locid="302300">ZP Native Embassy Wagon</string>
       <string _locid="302301">Honored Cataphracts</string>
       <string _locid="302302">ZP NAT MERC Cataphract</string>
-
-
+      <string _locid="302303">ZP PROP Wall Full</string>
+      <string _locid="302304">ZP Jesuit Flag</string>
+      <string _locid="302305">Team Blessed City</string>
+      <string _locid="302306">All convertable city resource buildings work faster by 15% while being owned either by you or any of your team members.</string>
+      <string _locid="302307">Experience Building, Team improvement building</string>
+      <string _locid="302308">Experience Building, Team improvement building with special abilities</string>
+      <string _locid="302309">Team improvement building, slowly heals nearby units</string>
+      <string _locid="302310">Experience Building, team improvement building with special abilities, slowly heals nearby units</string>
+      <string _locid="302311">Temple of Huītzilōpōchtli</string>
+      <string _locid="302312">ZP SPC Aztec Great Temple</string>
+      <string _locid="302313">ZP SPC Fire Pit</string>
+      <string _locid="302314">Fire Pit</string>
+      <string _locid="302315">King of Bohemia</string>
+      <string _locid="302316">ZP SPC Socket King of Bohemia</string>
+      <string _locid="302317">There is only one true King of Bohemia. Hold the kingdom until the time runs out.</string>
+      <string _locid="302318">Proclaim a King</string>
+      <string _locid="302319">Pick one of the Bohemian Royal Dynasties and proclaim the King of Bohemia  \n • Rises the Kingdom of Bohemia flag above your Town Center \n • Unlocks specific Royal House units, techs and abilities \n • Starts a victory countdown &lt;color=1.0, 0.0, 0.0&gt;\n • Once you proclaim yourself a King, the other players unite against you. Make sure the city is well defended.&lt;/color&gt;</string>
+      <string _locid="302320">House of Habsburg</string>
+      <string _locid="302321">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nLine Infantry, Mounted Infantry \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nVienna Congress, Crown Lands, Multinationalism, Austro-Hungarian Empire</string>
+      <string _locid="302322">Bohemian Landsknecht</string>
+      <string _locid="302323">ZP NAT Bohemian Landsknecht</string>
+      <string _locid="302324">Veteran Dynasty Armies</string>
+      <string _locid="302325">Guard Dynasty Armies</string>
+      <string _locid="302326">Veteran Bohemian Landsknecht</string>
+      <string _locid="302327">Guard Bohemian Landsknecht</string>
+      <string _locid="302328">Legendary Bohemian Landsknecht</string>
+      <string _locid="302329">Increases Bohemian Royal Dynasty Attack and Hitpoints</string>
+      <string _locid="302330">House of Jagiellon</string>
+      <string _locid="302331">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nLipka Tatar, Shock Rider \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nPancerni, Jagiellonian Legacy, Sarmatism, Folwarks</string>
+      <string _locid="302332">House of Wittelsbach</string>
+      <string _locid="302333">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nChevauleger, Mountain Trooper \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nOktoberfest, Ducal Lancers, Philhellenism, Hunting Gear</string>
+      <string _locid="302334">ZP Flag Bohemian</string>
+      <string _locid="302335">ZP Jewish Synagogue</string>
+      <string _locid="302336">Jewish Synagogue</string>
+      <string _locid="302337">ZP Invisible Gate Socket B</string>
+      <string _locid="302338">ZP Invisible Gate Socket C</string>
+      <string _locid="302339">ZP Invisible Gate Socket D</string>
+      <string _locid="302340">ZP Invisible Gate Socket E</string>
+      <string _locid="302341">ZP Invisible Gate Socket F</string>
+      <string _locid="302342">ZP Invisible Gate Socket G</string>
+      <string _locid="302343">ZP Invisible Gate Socket H</string>
+      <string _locid="302344">King of Bohemia</string>
+      <string _locid="302345">After the Second Defenestration of Prague in 1618, the country turned into chaos. There are many who claim the Czech crown, but only one of these can become the true King of Bohemia. \n\n&lt;color=1.0, 1.0, 0.0&gt;Game rules:&lt;/color&gt; This is a free-for-all match. Whoever proclaims himself a king and holds the King of Bohemia Socket, wins. \n\nSettlements: King of Bohemia, Jesuit \n\nShadow alliances: Maltese, Jewish, Habsburg, Jagiellon, Wittelsbach \n\nMinimum/maximum recommended players: 3-6</string>
+      <string _locid="302346">There is only one true King of Bohemia. Once you proclaim yourself a King, all the enemy players unite against you, so you need to arm the city and hold the socket until the time runs out.</string>
+      <string _locid="302347">Kingdom of Bohemia</string>
+      <string _locid="302348">You proclaimed yourself to a King of Bohemia!</string>
+      <string _locid="302349">%s proclaimed himself to a King of Bohemia. Let's unite to take him down!</string>
+      <string _locid="302350">House Rubble - source of Wood</string>
+      <string _locid="302351">Shipwreck - source of Wood</string>
+      <string _locid="302352">ZP Shipwreck Wood Land</string>
+      <string _locid="302353">ZP MERC Bohemian Knight</string>
+      <string _locid="302354">Bohemian Knight</string>
+      <string _locid="302355">Powerful warrion from Bohemian countries</string>
+      <string _locid="302356">Mercenary skull_knight</string>
+      <string _locid="302357">Capture the King of Bohemia Socket in the center of the map and proclaim yourself a King. Then hold the socket until the time runs out.</string>
+      <string _locid="302358">Once you proclaim yourself a King, all the enemy players unite against you, so you need to arm the city and hold the socket until the time runs out.</string>
+      <string _locid="302359">ZP Fort Convertable</string>
+      <string _locid="302360">ZP Invisible Gate Socket A</string>
+      <string _locid="302361">Hrad Kokořín</string>
+      <string _locid="302362">Hrad Karlštejn</string>
+      <string _locid="302363">Hrad Křivoklát</string>
+      <string _locid="302364">Hrad Bezděz</string>
+      <string _locid="302365">Hrad Bouzov</string>
+      <string _locid="302366">Hrad Pernštejn</string>
+      <string _locid="302367">Hrad Kost</string>
+      <string _locid="302368">Hrad Loket</string>
+      <string _locid="302369">ZP SPC Carp</string>
+      <string _locid="302370">Coronation Cathedral</string>
+      <string _locid="302371">Alchemists Workshop</string>
+      <string _locid="302372">Patent of Toleration</string>
+      <string _locid="302373">Decreases Bohemian mercenaries population costs. \n • Desreases Bohemian mercenary costs by 20%. &lt;color=1.0, 0.0, 0.0&gt;\n • Works only while you're holding the King of Bohemia socket.&lt;/color&gt;</string>
+      <string _locid="302374">ZP Socket EU SPC City Tower 3</string>
+      <string _locid="302375">ZP Socket EU SPC City Tower 4</string>
+      <string _locid="302376">ZP Socket EU SPC City Tower 5</string>
+      <string _locid="302377">ZP Socket EU SPC City Tower 6</string>
+      <string _locid="302378">ZP Socket EU SPC City Tower 7</string>
+      <string _locid="302379">ZP Socket EU SPC City Tower 8</string>
+      <string _locid="302380">How can you be a King without a Kingdom?</string>
+      <string _locid="302381">The King has fallen! The race for the crown starts again.</string>
+      <string _locid="302382">King of the Seas victory started!</string>
+      <string _locid="302383">Knights of Blaník</string>
+      <string _locid="302384">Spawns Bohemian Knights. The longer you wait the more knights you get.</string>
+      <string _locid="302385">The Knights of Blaník ability now also spawns Hungarian Grenadiers.</string>
+      <string _locid="302386">ZP SPC Tin Mine</string>
+      <string _locid="302387">ZP PROP Building Mix FlattenGround</string>
+      <string _locid="302388">ZP SPC Coal Mine</string>
+      <string _locid="302389">ZP SPC Florence Castle</string>
+      <string _locid="302390">Palazzo Vecchio (Citadel of Florence)</string>
+      <string _locid="302391">Siege of Florence</string>
+      <string _locid="302392">Florence versus Rome, eternal rivals fighting on the opposite sides in the Italian Wars. The pope Leo X decided to cross the Arno River and attack Florence. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Starting in the City of Rome \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Starting in the City of Florence. \n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Achieve a Team Victory by destroying enemy Castello and defending your own. \n\nSettlements: Auditore, Maltese, Jesuit</string>
+      <string _locid="302393">In the early 16th century, Pope Leo X sought to reclaim Florence and restore Medici rule. As armies march and alliances tremble, the fate of Florence hangs in the balance. Will you defend its freedom or crush it under papal might?</string>
+      <string _locid="302394">ZP SPC Roman Tower</string>
+      <string _locid="302395">ZP SPC Florence Tower</string>
+      <string _locid="302396">ZP SPC Roman Flag</string>
+      <string _locid="302397">ZP SPC Florence Flag</string>
+      <string _locid="302398">ZP SPC Rome Castle</string>
+      <string _locid="302399">Castel Sant'Angelo (Citadel of Rome)</string>
+      <string _locid="302400">ZP SPC Great Basilica Convertable</string>
+      <string _locid="302401">ZP SPC Florence Factory</string>
+      <string _locid="302402">Defend the Citadel in the heart of the city of Rome.</string>
+      <string _locid="302403">Destroy the Citadel in the heart of the city of Florence.</string>
+      <string _locid="302404">Defend the Citadel in the heart of the city of Florence.</string>
+      <string _locid="302405">Destroy the Citadel in the heart of the city of Rome.</string>
+      <string _locid="302406">The Citadel can't be either manually repaired or improved, but slowly repairs itself automatically.</string>
+      <string _locid="302407">ZP Italian Palaces B</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

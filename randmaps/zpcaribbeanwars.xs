@@ -913,7 +913,7 @@ for(i=1; <cNumberPlayers) {
    rmAddObjectDefConstraint(whaleID, whaleLand);
    rmAddObjectDefConstraint(whaleID, avoidRevealerLong);
    rmAddObjectDefConstraint(whaleID, avoidKOTHLong);
-   rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, 4*cNumberNonGaiaPlayers);
+   rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, 3+4*cNumberNonGaiaPlayers);
 
    // RANDOM TREES
    int randomTreeID=rmCreateObjectDef("random tree");
@@ -993,6 +993,9 @@ int TradeRouteStartID2 = rmGetUnitPlaced(fakeStopperID2, 0);
 int socketMinimapFlareDuration = 10;
 int victoryCountDown = 600;
 
+string guardianUnit1 = "zpBuccaneerGuard";
+string guardianUnit2 = "zpPirateGuard";
+
 // Starting techs
 
 rmCreateTrigger("Starting Techs");
@@ -1037,6 +1040,15 @@ if (rmGetIsKOTH()){
    for (k=1; <= cNumberNonGaiaPlayers) {
    rmCreateTrigger("ConvertKotH_Player"+k);
    }
+
+   rmSwitchToTrigger(rmTriggerID("Revolution_MusicEnd"+i));
+   rmAddTriggerCondition("Timer");
+   rmSetTriggerConditionParamInt("Param1",5);
+   rmAddTriggerEffect("Music Play");
+   rmSetTriggerPriority(1);
+   rmSetTriggerActive(false);
+   rmSetTriggerRunImmediately(false);
+   rmSetTriggerLoop(false);
 
    // KotH Conversion
    for (k=1; <= cNumberNonGaiaPlayers) {
@@ -1119,6 +1131,18 @@ if (rmGetIsKOTH()){
    rmSetTriggerEffectParam("Name","VictoryCounter"+i);
    rmSetTriggerEffectParamInt("Start", victoryCountDown);
    rmSetTriggerEffectParamInt("Stop",0);
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
+   rmSetTriggerEffectParamInt("PlayerID",1);
+   rmSetTriggerEffectParam("TechID","cTechzpKingOfTheSeasShadow"); // Europen Map
+   rmSetTriggerEffectParamInt("Status",2);
+   rmAddTriggerEffect("Music Filename");
+   rmSetTriggerEffectParam("Music","ypack\music\strategy\Koth.mp3"); // Music Filename
+   rmSetTriggerEffectParamFloat("Duration",0.5);
+   rmAddTriggerEffect("Sound Timer");
+   rmSetTriggerEffectParamInt("Time", 61000);
+   rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd"+i));
+   rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","UI_Strategywarning");
    if (i==1)
       rmSetTriggerEffectParam("Msg","{302234}"); // Counter Revolutionaries
    else
@@ -1164,8 +1188,20 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmCreateTrigger("Socket 1 Convert ON");
-rmAddTriggerCondition("Nugget Is Collectable");
-rmSetTriggerConditionParam("NuggetObject", ""+pirateNuggetMod1);
+rmAddTriggerCondition("Units in Area");
+rmSetTriggerConditionParam("DstObject",""+pirateSocketMod1);
+rmSetTriggerConditionParamInt("Player",0);
+rmSetTriggerConditionParam("UnitType",guardianUnit1);
+rmSetTriggerConditionParamInt("Dist",25);
+rmSetTriggerConditionParam("Op","==");
+rmSetTriggerConditionParamInt("Count",0);
+rmAddTriggerCondition("Units in Area");
+rmSetTriggerConditionParam("DstObject",""+pirateSocketMod1);
+rmSetTriggerConditionParamInt("Player",0);
+rmSetTriggerConditionParam("UnitType",guardianUnit2);
+rmSetTriggerConditionParamInt("Dist",25);
+rmSetTriggerConditionParam("Op","==");
+rmSetTriggerConditionParamInt("Count",0);
 rmAddTriggerEffect("Unit Action Suspend");
 rmSetTriggerEffectParam("SrcObject", ""+pirateSocketMod1, false);
 rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
@@ -1178,8 +1214,20 @@ rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 
 rmCreateTrigger("Socket 2 Convert ON");
-rmAddTriggerCondition("Nugget Is Collectable");
-rmSetTriggerConditionParam("NuggetObject", ""+pirateNuggetMod2);
+rmAddTriggerCondition("Units in Area");
+rmSetTriggerConditionParam("DstObject",""+pirateSocketMod2);
+rmSetTriggerConditionParamInt("Player",0);
+rmSetTriggerConditionParam("UnitType",guardianUnit1);
+rmSetTriggerConditionParamInt("Dist",25);
+rmSetTriggerConditionParam("Op","==");
+rmSetTriggerConditionParamInt("Count",0);
+rmAddTriggerCondition("Units in Area");
+rmSetTriggerConditionParam("DstObject",""+pirateSocketMod2);
+rmSetTriggerConditionParamInt("Player",0);
+rmSetTriggerConditionParam("UnitType",guardianUnit2);
+rmSetTriggerConditionParamInt("Dist",25);
+rmSetTriggerConditionParam("Op","==");
+rmSetTriggerConditionParamInt("Count",0);
 rmAddTriggerEffect("Unit Action Suspend");
 rmSetTriggerEffectParam("SrcObject", ""+pirateSocketMod2, false);
 rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
@@ -2295,11 +2343,14 @@ rmSetTriggerLoop(false);
 }
 
 
-// Pirate trading post activation
+// *************** Pirate trading post activation *********************
+
+// Grouping 1
 
 for (k=1; <= cNumberNonGaiaPlayers) {
 rmCreateTrigger("Pirates1on Player"+k);
 rmCreateTrigger("Pirates1off Player"+k);
+rmCreateTrigger("Pirates1off_Delayed_Player"+k);
 
 rmSwitchToTrigger(rmTriggerID("Pirates1on_Player"+k));
 rmAddTriggerCondition("Units in Area");
@@ -2395,6 +2446,41 @@ rmSetTriggerEffectParamInt("SrcPlayer",k);
 rmSetTriggerEffectParamInt("TrgPlayer",0);
 rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag1");
 rmSetTriggerEffectParamInt("Dist",100);
+
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpPirateLockCitystateTechs"); // Turn Off Pirate techs
+rmSetTriggerEffectParamInt("Status",2);
+
+rmAddTriggerEffect("Flare Minimap");
+rmSetTriggerEffectParamInt("PlayerID", k, false);
+rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+rmSetTriggerEffectParam("Position", ""+xsVectorGetX(pirateCityLoc1)+","+xsVectorGetY(pirateCityLoc1)+","+xsVectorGetZ(pirateCityLoc1), false);
+rmSetTriggerEffectParam("Flash", "True", false);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1on_Player"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain1ONPlr"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain1ONPlr"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain1ONPlr"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower1_ON_Plr"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun1_ON_Plr"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1off_Delayed_Player"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("Pirates1off_Delayed_Player"+k));
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamInt("Param1", 1000, false);
 rmAddTriggerEffect("Convert Units in Area");
 rmSetTriggerEffectParam("SrcObject",""+pirateSocketMod1);
 rmSetTriggerEffectParamInt("SrcPlayer",k);
@@ -2437,35 +2523,22 @@ rmSetTriggerEffectParamInt("SrcPlayer",k);
 rmSetTriggerEffectParamInt("TrgPlayer",0);
 rmSetTriggerEffectParam("UnitType","zpSPCPirateDock");
 rmSetTriggerEffectParamInt("Dist",100);
-rmAddTriggerEffect("Flare Minimap");
-rmSetTriggerEffectParamInt("PlayerID", k, false);
-rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-rmSetTriggerEffectParam("Position", ""+xsVectorGetX(pirateCityLoc1)+","+xsVectorGetY(pirateCityLoc1)+","+xsVectorGetZ(pirateCityLoc1), false);
-rmSetTriggerEffectParam("Flash", "True", false);
-rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1on_Player"+k));
-rmAddTriggerEffect("Disable Trigger");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
-rmAddTriggerEffect("Disable Trigger");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain1ONPlr"+k));
-rmAddTriggerEffect("Disable Trigger");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain1ONPlr"+k));
-rmAddTriggerEffect("Disable Trigger");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain1ONPlr"+k));
-rmAddTriggerEffect("Disable Trigger");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower1_ON_Plr"+k));
-rmAddTriggerEffect("Disable Trigger");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun1_ON_Plr"+k));
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpPirateUnlockCitystateTechs"); // Turn On Pirate techs
+rmSetTriggerEffectParamInt("Status",2);
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
 
+// Grouping 2
 
 for (k=1; <= cNumberNonGaiaPlayers) {
 rmCreateTrigger("Pirates2on Player"+k);
 rmCreateTrigger("Pirates2off Player"+k);
+rmCreateTrigger("Pirates2off_Delayed_Player"+k);
 
 rmSwitchToTrigger(rmTriggerID("Pirates2on_Player"+k));
 rmAddTriggerCondition("Units in Area");
@@ -2561,6 +2634,41 @@ rmSetTriggerEffectParamInt("SrcPlayer",k);
 rmSetTriggerEffectParamInt("TrgPlayer",0);
 rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag2");
 rmSetTriggerEffectParamInt("Dist",100);
+
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpPirateLockCitystateTechs"); // Turn Off Pirate techs
+rmSetTriggerEffectParamInt("Status",2);
+
+rmAddTriggerEffect("Flare Minimap");
+rmSetTriggerEffectParamInt("PlayerID", k, false);
+rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+rmSetTriggerEffectParam("Position", ""+xsVectorGetX(pirateCityLoc2)+","+xsVectorGetY(pirateCityLoc2)+","+xsVectorGetZ(pirateCityLoc2), false);
+rmSetTriggerEffectParam("Flash", "True", false);
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates2on_Player"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2ON_Plr"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain2ONPlr"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain2ONPlr"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain2ONPlr"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower2_ON_Plr"+k));
+rmAddTriggerEffect("Disable Trigger");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun2_ON_Plr"+k));
+rmAddTriggerEffect("Fire Event");
+rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates2off_Delayed_Player"+k));
+rmSetTriggerPriority(4);
+rmSetTriggerActive(false);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
+rmSwitchToTrigger(rmTriggerID("Pirates2off_Delayed_Player"+k));
+rmAddTriggerCondition("Timer ms");
+rmSetTriggerConditionParamInt("Param1", 1000, false);
 rmAddTriggerEffect("Convert Units in Area");
 rmSetTriggerEffectParam("SrcObject",""+pirateSocketMod2);
 rmSetTriggerEffectParamInt("SrcPlayer",k);
@@ -2603,29 +2711,15 @@ rmSetTriggerEffectParamInt("SrcPlayer",k);
 rmSetTriggerEffectParamInt("TrgPlayer",0);
 rmSetTriggerEffectParam("UnitType","zpSPCPirateDockB");
 rmSetTriggerEffectParamInt("Dist",100);
-rmAddTriggerEffect("Flare Minimap");
-rmSetTriggerEffectParamInt("PlayerID", k, false);
-rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-rmSetTriggerEffectParam("Position", ""+xsVectorGetX(pirateCityLoc2)+","+xsVectorGetY(pirateCityLoc2)+","+xsVectorGetZ(pirateCityLoc2), false);
-rmSetTriggerEffectParam("Flash", "True", false);
-rmAddTriggerEffect("Fire Event");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates2on_Player"+k));
-rmAddTriggerEffect("Disable Trigger");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2ON_Plr"+k));
-rmAddTriggerEffect("Disable Trigger");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain2ONPlr"+k));
-rmAddTriggerEffect("Disable Trigger");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain2ONPlr"+k));
-rmAddTriggerEffect("Disable Trigger");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain2ONPlr"+k));
-rmAddTriggerEffect("Disable Trigger");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower2_ON_Plr"+k));
-rmAddTriggerEffect("Disable Trigger");
-rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun2_ON_Plr"+k));
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpPirateUnlockCitystateTechs"); // Turn On Pirate techs
+rmSetTriggerEffectParamInt("Status",2);
 rmSetTriggerPriority(4);
 rmSetTriggerActive(false);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
+
 }
 
 

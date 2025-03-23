@@ -58,7 +58,7 @@
 		<unit variation="241" posx="-13.8288" posz="-14.0470" orientx="0.7070" orienty="0.0000" orientz="0.7072">NativeTownObstruction</unit>
 		<unit variation="241" posx="-6.2928" posz="-15.2640" orientx="0.7070" orienty="0.0000" orientz="0.7072">NativeTownObstruction</unit>
 		<unit variation="90" posx="34.9870" posz="-15.2870" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCFixedGunBase</unit>
-		<unit variation="242" posx="34.4189" posz="-15.3519" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCFixedGunSocket</unit>
+		<unit variation="242" posx="34.9870" posz="-15.2870" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCFixedGunSocket</unit>
 		<unit variation="67" posx="-9.8633" posz="-18.7725" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 		<unit variation="160" posx="-11.4281" posz="-17.4344" orientx="0.9239" orienty="0.0000" orientz="0.3827">Graves</unit>
 		<unit variation="201" posx="-12.3280" posz="-17.8446" orientx="0.3827" orienty="0.0000" orientz="-0.9239">NativePirates</unit>

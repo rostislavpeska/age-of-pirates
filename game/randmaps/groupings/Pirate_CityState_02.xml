@@ -116,7 +116,7 @@
 		<unit variation="0" posx="-27.1342" posz="0.6507" orientx="-0.9234" orienty="0.0000" orientz="-0.3839">zpNativeHousePirateCity</unit>
 		<unit variation="5" posx="-22.0922" posz="1.4382" orientx="-1.0000" orienty="0.0000" orientz="-0.0020">zpNativeHousePirateCity</unit>
 		<unit variation="90" posx="-57.6867" posz="5.2477" orientx="-1.0000" orienty="0.0000" orientz="-0.0004">SPCFixedGunBase</unit>
-		<unit variation="81" posx="-57.9716" posz="4.9199" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCFixedGunSocket</unit>
+		<unit variation="81" posx="-57.6867" posz="5.2477" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCFixedGunSocket</unit>
 		<unit variation="0" posx="-28.7253" posz="3.8054" orientx="0.9248" orienty="0.0000" orientz="-0.3805">HarbourPathBlock</unit>
 		<unit variation="0" posx="-21.7272" posz="3.5273" orientx="-1.0000" orienty="0.0000" orientz="-0.0025">HarbourPathBlock</unit>
 		<unit variation="164" posx="-26.2030" posz="3.6335" orientx="1.0000" orienty="-0.0000" orientz="0.0028">zpCinematicRevealer</unit>
