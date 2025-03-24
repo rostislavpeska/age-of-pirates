@@ -2405,6 +2405,20 @@
       <string _locid="302405">Destroy the Citadel in the heart of the city of Rome.</string>
       <string _locid="302406">The Citadel can't be either manually repaired or improved, but slowly repairs itself automatically.</string>
       <string _locid="302407">ZP Italian Palaces B</string>
+      <string _locid="302408">Granary</string>
+      <string _locid="302409">ZP SPC Aztec Granary</string>
+      <string _locid="302410">Forest Shrine</string>
+      <string _locid="302411">ZP SPC Aztec Shrine</string>
+      <string _locid="302412">City Treasury</string>
+      <string _locid="302413">ZP SPC Aztec Treasury</string>
+      <string _locid="302414">ZP SPC Aztec Market</string>
+      <string _locid="302415">ZP Aztec Market Stall</string>
+      <string _locid="302416">ZP SPC Aztec Forester</string>  
+      <string _locid="302417">Aztec Forester</string>
+      <string _locid="302418">ZP SPC Aztec Decorations</string>
+
+
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

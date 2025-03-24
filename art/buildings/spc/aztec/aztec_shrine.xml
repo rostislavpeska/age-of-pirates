@@ -7,7 +7,7 @@
             <component>
                 dock
                 <assetreference type="GrannyModel">
-                    <file>buildings\basilica\aztec_cathedral_Model</file>
+                    <file>buildings\native_ruins\pyramid</file>
                 </assetreference>
             </component>
             <anim>Idle<component>dock</component></anim>
@@ -21,16 +21,8 @@
         </attachment>
         <component>
             dry dock
-            <assetreference type="GrannyModel"><file>buildings\basilica\aztec_cathedral_Model</file></assetreference>
-            <decal>
-                <effecttype>bump</effecttype>
-                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
-                <width>23.00</width>
-                <height>21.00</height>
-                <xoffset>0.00</xoffset>
-                <zoffset>0.00</zoffset>
-            </decal>
+            <assetreference type="GrannyModel"><file>buildings\native_ruins\pyramid</file></assetreference>
+            <decal><effecttype>default</effecttype><texture>buildings\native_ruins\pyramid</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><width>10.50</width><height>10.50</height></decal>
         </component>
         <component>
             DEAD

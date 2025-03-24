@@ -1,0 +1,62 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\spc\aztec_temple\textures\igc_yp_aztec_temple_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\spc\aztec_temple\textures\igc_yp_aztec_temple_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\spc\aztec_temple\textures\igc_yp_aztec_temple_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\spc\aztec_temple\textures\stairs_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\spc\aztec_temple\textures\stairs_matA_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\spc\aztec_temple\textures\stairs_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\spc\aztec_temple\textures\gold_pattern_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\spc\aztec_temple\textures\gold_pattern_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\spc\aztec_temple\textures\gold_pattern_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\spc\aztec_temple\textures\concrete_pieces_matd_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\spc\aztec_temple\textures\concrete_pieces_matd_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\spc\aztec_temple\textures\concrete_pieces_matd_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\aztec\aztec_pinyata\textures\aztec_pinyata_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\aztec\aztec_pinyata\textures\aztec_pinyata_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\aztec\aztec_pinyata\textures\aztec_pinyata_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

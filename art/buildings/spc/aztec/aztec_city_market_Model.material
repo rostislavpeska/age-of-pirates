@@ -1,0 +1,106 @@
+<material>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_civs\dance_pit\textures\aztec_altar_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_civs\dance_pit\textures\aztec_altar_matB_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_civs\dance_pit\textures\aztec_altar_matB_Masks">
+      </texture>
+      <texture name="Details" override="buildings\native_civs\dance_pit\textures\aztec_altar_matB_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\campfire_e\textures\campfire_e_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\campfire_e\textures\campfire_e_matA_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\campfire_e\textures\campfire_e_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\constructions\textures\native_colony_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\constructions\textures\native_colony_props_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\constructions\textures\native_colony_props_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matf">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\constructions\textures\native_colony_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\constructions\textures\native_colony_props_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\constructions\textures\native_colony_props_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matg">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="textures\market\nat_market_generic_BaseColor">
+      </texture>
+      <texture name="Normals" override="textures\market\nat_market_generic_Normals">
+      </texture>
+      <texture name="Masks" override="textures\market\nat_market_generic_Masks">
+      </texture>
+      <texture name="Details" override="textures\market\nat_market_generic_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="maty">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_civs\dance_pit\textures\aztec_altar_matc_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_civs\dance_pit\textures\aztec_altar_matc_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_civs\dance_pit\textures\aztec_altar_matc_Masks">
+      </texture>
+      <texture name="Details" override="buildings\native_civs\dance_pit\textures\aztec_altar_matc_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mata">
+    <materialdef name="default_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_civs\dance_pit\textures\iro_dance_pit_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_civs\dance_pit\textures\iro_dance_pit_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_civs\dance_pit\textures\iro_dance_pit_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings\native_civs\dance_pit\textures\iro_dance_pit_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matz">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\spc\aztec_temple\textures\igc_yp_aztec_temple_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\spc\aztec_temple\textures\igc_yp_aztec_temple_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\spc\aztec_temple\textures\igc_yp_aztec_temple_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
