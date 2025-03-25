@@ -20236,7 +20236,7 @@
     <displaynameid>302181</displaynameid>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\abilities\eagle_vision.png</icon>
-    <rollovertextid>300625</rollovertextid>
+    <rollovertextid>62768</rollovertextid>
     <flag>YPNoTextMessage</flag>
     <flag>YPNativeImprovement</flag>
     <flag>DEHideAdvancedRollover</flag>

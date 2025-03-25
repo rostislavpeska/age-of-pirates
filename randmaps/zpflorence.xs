@@ -186,12 +186,12 @@ void main(void)
 			}
 		}
 
-    int sizeZ = 560;
+    int sizeZ = 580;
 	int sizeX = 360;
 	if (cNumberNonGaiaPlayers>=4)
-		sizeZ = 600;
+		sizeZ = 620;
 	if (cNumberNonGaiaPlayers>=6)
-		sizeZ = 640;
+		sizeZ = 660;
 	rmSetMapSize(sizeX, sizeZ);
 	// rmSetMapElevationParameters(cElevTurbulence, 0.4, 6, 0.5, 3.0);  // DAL - original
 
@@ -431,7 +431,7 @@ void main(void)
 
 	float playerFraction=rmAreaTilesToFraction(850);
 
-	int cityEdgeInner =97;
+	int cityEdgeInner =104;
     int cityEdgeOuter =0;
 
 
@@ -515,13 +515,12 @@ void main(void)
 
 	// Define Map center
 	float mapCenter = rmZMetersToFraction(xsVectorGetZ(stoperLoc));
-    float mapRatio = 1.66;
 	if (bigCity == 2)
-		float riverCenter = mapCenter*1.74;
+		float riverCenter = mapCenter*1.82;
 	else if (bigCity == 1)
-		riverCenter = mapCenter*1.67;
+		riverCenter = mapCenter*1.72;
 	else
-		riverCenter = mapCenter*1.56;
+		riverCenter = mapCenter*1.6;
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.20);
@@ -1351,7 +1350,7 @@ void main(void)
 	// Back Forests
 
 	int backForestNorth1=rmCreateArea("back forest north 1");
-	rmSetAreaSize(backForestNorth1, 0.038, 0.038);
+	rmSetAreaSize(backForestNorth1, 0.052, 0.052);
 	rmSetAreaForestType(backForestNorth1, "Italian Forest");
 	rmSetAreaForestDensity(backForestNorth1, 0.7);
 	rmSetAreaForestClumpiness(backForestNorth1, 0.4);
@@ -1366,7 +1365,7 @@ void main(void)
 	rmBuildArea(backForestNorth1);
 
 	int backForestNorth2=rmCreateArea("back forest north 2");
-	rmSetAreaSize(backForestNorth2, 0.038, 0.038);
+	rmSetAreaSize(backForestNorth2, 0.052, 0.052);
 	rmSetAreaForestType(backForestNorth2, "Italian Forest");
 	rmSetAreaForestDensity(backForestNorth2, 0.7);
 	rmSetAreaForestClumpiness(backForestNorth2, 0.4);
@@ -1381,7 +1380,7 @@ void main(void)
 	rmBuildArea(backForestNorth2);
 
 	int backForestSouth1=rmCreateArea("back forest south 1");
-	rmSetAreaSize(backForestSouth1, 0.038, 0.038);
+	rmSetAreaSize(backForestSouth1, 0.052, 0.052);
 	rmSetAreaForestType(backForestSouth1, "Italian Forest");
 	rmSetAreaForestDensity(backForestSouth1, 0.7);
 	rmSetAreaForestClumpiness(backForestSouth1, 0.4);
@@ -1396,7 +1395,7 @@ void main(void)
 	rmBuildArea(backForestSouth1);
 
 	int backForestSouth2=rmCreateArea("back forest south 2");
-	rmSetAreaSize(backForestSouth2, 0.038, 0.038);
+	rmSetAreaSize(backForestSouth2, 0.052, 0.052);
 	rmSetAreaForestType(backForestSouth2, "Italian Forest");
 	rmSetAreaForestDensity(backForestSouth2, 0.7);
 	rmSetAreaForestClumpiness(backForestSouth2, 0.4);
@@ -2052,7 +2051,6 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
-
 
 
 	//================we will add the other 4 rows after the groupings are defined and the randomizer is working=========

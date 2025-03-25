@@ -3,11 +3,25 @@
 <animfile>
 	<definebone>bone_prop</definebone>
 		<component>
-		house
-		<assetreference type="GrannyModel">
-			<file>buildings\spc\aztec\aztec_decoration_Model</file>
-		</assetreference>
-	</component>
+			house
+			<logic type="Variation">
+				<variationid0>
+					<assetreference type="GrannyModel">
+						<file>buildings\spc\aztec\aztec_decoration_Model</file>
+					</assetreference>
+				</variationid0>
+				<variationid1>
+					<assetreference type="GrannyModel">
+					<file>buildings\maori\maori_statue01</file>
+				</assetreference>
+				</variationid1>
+				<variationid2>
+					<assetreference type="GrannyModel">
+					<file>buildings\maori\maori_statue02</file>
+				</assetreference>
+				</variationid2>
+			</logic>
+		</component>
 	<anim>
 		Idle
 		<component>house</component>

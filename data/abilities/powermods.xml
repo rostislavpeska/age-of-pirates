@@ -366,7 +366,7 @@
     <icon>resources\images\icons\abilities\eagle_vision.png</icon>
     <minimapeventtime sendalertto="all">1</minimapeventtime>
     <activetime>10</activetime>
-    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="AbstractDock">
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="LogicalTypeLandMilitary">
       <target type="Player">
       </target>
     </effect>
@@ -374,43 +374,15 @@
       <target type="Player">
       </target>
     </effect>
-    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="Outpost">
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="MilitaryBuilding">
       <target type="Player">
       </target>
     </effect>
-    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="FortFrontier">
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="AbstractFort">
       <target type="Player">
       </target>
     </effect>
     <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="Blockhouse">
-      <target type="Player">
-      </target>
-    </effect>
-    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="WarHut">
-      <target type="Player">
-      </target>
-    </effect>
-    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="NoblesHut">
-      <target type="Player">
-      </target>
-    </effect>
-    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="deIncaStronghold">
-      <target type="Player">
-      </target>
-    </effect>
-    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="ypCastle">
-      <target type="Player">
-      </target>
-    </effect>
-    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="deTower">
-      <target type="Player">
-      </target>
-    </effect>
-    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="dePalace">
-      <target type="Player">
-      </target>
-    </effect>
-    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="Ship">
       <target type="Player">
       </target>
     </effect>
