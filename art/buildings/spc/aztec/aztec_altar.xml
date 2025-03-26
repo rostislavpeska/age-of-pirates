@@ -116,9 +116,8 @@
             </logic>
             <decal>
                 <effecttype>bump</effecttype>
-                <texture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec</texture>
+                <texture>buildings\spc\aztec\firepit\dance_pit_ground_large_aztec_basecolor</texture>
                 <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-                <bumptexture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec_b</bumptexture>
                 <width>16.00</width>
                 <height>16.00</height>
             </decal>
@@ -139,9 +138,8 @@
             </logic>
             <decal>
                 <effecttype>bump</effecttype>
-                <texture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec</texture>
+                <texture>buildings\spc\aztec\firepit\dance_pit_ground_large_aztec_basecolor</texture>
                 <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-                <bumptexture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec_b</bumptexture>
                 <width>16.00</width>
                 <height>16.00</height>
             </decal>
@@ -161,13 +159,12 @@
     <submodel>Aztec_sub_construction_stage_01
         <component>aztec_construction_stage_01
             <assetreference type="GrannyModel">
-                <file>buildings\constructions\aztec_dance_pit_stage1</file>
+                <file>buildings\spc\aztec\firepit\aztec_dance_pit_stage1</file>
             </assetreference>
             <decal>
                 <effecttype>bump</effecttype>
-                <texture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec</texture>
+                <texture>buildings\spc\aztec\firepit\dance_pit_ground_large_aztec_basecolor</texture>
                 <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-                <bumptexture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec_b</bumptexture>
                 <width>16.00</width>
                 <height>16.00</height>
             </decal>
@@ -179,13 +176,13 @@
     <submodel>Aztec_sub_construction_stage_02
         <component>aztec_construction_stage_02
             <assetreference type="GrannyModel">
-                <file>buildings\constructions\aztec_dance_pit_stage2</file>
+                <file>buildings\spc\aztec\firepit\aztec_dance_pit_stage2</file>
             </assetreference>
             <decal>
                 <effecttype>bump</effecttype>
-                <texture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec</texture>
+                <texture>buildings\spc\aztec\firepit\dance_pit_ground_large_aztec</texture>
                 <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-                <bumptexture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec_b</bumptexture>
+                <bumptexture>buildings\spc\aztec\firepit\dance_pit_ground_large_aztec_b</bumptexture>
                 <width>16.00</width>
                 <height>16.00</height>
             </decal>
@@ -197,13 +194,12 @@
     <submodel>Aztec_sub_construction_stage_03
         <component>aztec_construction_stage_03
             <assetreference type="GrannyModel">
-                <file>buildings\constructions\aztec_dance_pit_stage3</file>
+                <file>buildings\spc\aztec\firepit\aztec_dance_pit_stage3</file>
             </assetreference>
             <decal>
                 <effecttype>bump</effecttype>
-                <texture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec</texture>
+                <texture>buildings\spc\aztec\firepit\dance_pit_ground_large_aztec_basecolor</texture>
                 <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-                <bumptexture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec_b</bumptexture>
                 <width>16.00</width>
                 <height>16.00</height>
             </decal>

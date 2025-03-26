@@ -1969,7 +1969,7 @@ void main(void)
 	rmSetTriggerConditionParamInt("PlayerID",k);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffMaltese"); //operator
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffMalteseLand"); //operator
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);

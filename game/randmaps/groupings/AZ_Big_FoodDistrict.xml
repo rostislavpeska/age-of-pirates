@@ -1,0 +1,555 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>32</width>
+	<height>32</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="115" posx="23.0764" posz="-29.4498" orientx="0.0003" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="34" posx="-16.3118" posz="-29.2431" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCAztecWallConnector</unit>
+		<unit variation="184" posx="5.5985" posz="-29.1220" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCAztecWallConnector</unit>
+		<unit variation="165" posx="-11.3849" posz="-29.1573" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCAztecWall5</unit>
+		<unit variation="132" posx="18.0821" posz="-29.3609" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCAztecWallConnector</unit>
+		<unit variation="177" posx="-0.3999" posz="-29.2223" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCXPWoodFortGate</unit>
+		<unit variation="40" posx="11.8735" posz="-29.1428" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCAztecWall5</unit>
+		<unit variation="5" posx="27.4433" posz="-28.4137" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeAztecOutpost</unit>
+		<unit variation="130" posx="-5.6731" posz="-29.1071" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCAztecWallConnector</unit>
+		<unit variation="115" posx="-21.6761" posz="-28.7237" orientx="0.0003" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="115" posx="-16.5380" posz="-28.9706" orientx="0.0003" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="249" posx="-24.6926" posz="-28.4223" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
+		<unit variation="140" posx="-20.5116" posz="-28.9016" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
+		<unit variation="219" posx="20.0370" posz="-29.2242" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallSmall</unit>
+		<unit variation="81" posx="22.5135" posz="-29.6162" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
+		<unit variation="200" posx="-27.9410" posz="-26.9584" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeAztecOutpost</unit>
+		<unit variation="103" posx="13.0000" posz="-25.0000" orientx="0.0006" orienty="0.0000" orientz="1.0000">deField</unit>
+		<unit variation="103" posx="21.0000" posz="-25.0000" orientx="0.0006" orienty="0.0000" orientz="1.0000">deField</unit>
+		<unit variation="139" posx="25.6196" posz="-25.3217" orientx="1.0000" orienty="0.0000" orientz="0.0000">UnderbrushTexasGrass</unit>
+		<unit variation="103" posx="-13.0000" posz="-23.0000" orientx="0.0006" orienty="0.0000" orientz="1.0000">deField</unit>
+		<unit variation="103" posx="-21.0000" posz="-23.0000" orientx="0.0006" orienty="0.0000" orientz="1.0000">deField</unit>
+		<unit variation="6" posx="-4.7702" posz="-24.3354" orientx="1.0000" orienty="0.0000" orientz="-0.0004">SPCAztecProps</unit>
+		<unit variation="6" posx="6.6223" posz="-24.2568" orientx="-1.0000" orienty="0.0000" orientz="0.0005">SPCAztecProps</unit>
+		<unit variation="249" posx="28.5895" posz="-24.0781" orientx="1.0000" orienty="0.0000" orientz="-0.0003">zpRuinWallLarge</unit>
+		<unit variation="115" posx="-28.5930" posz="-21.7966" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="135" posx="-16.8377" posz="-22.3954" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsNative</unit>
+		<unit variation="98" posx="8.0311" posz="-21.0850" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushTexas</unit>
+		<unit variation="115" posx="28.7276" posz="-22.8946" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="118" posx="-15.9334" posz="-20.9096" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsNative</unit>
+		<unit variation="15" posx="-7.0664" posz="-21.0491" orientx="-0.3827" orienty="0.0000" orientz="0.9239">PropsNative</unit>
+		<unit variation="45" posx="-28.9238" posz="-22.4392" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallSmall</unit>
+		<unit variation="151" posx="-27.0000" posz="-23.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="86" posx="27.0000" posz="-23.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="6" posx="-4.9378" posz="-19.1750" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCAztecProps</unit>
+		<unit variation="6" posx="6.4589" posz="-19.2521" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCAztecProps</unit>
+		<unit variation="108" posx="16.5263" posz="-19.4411" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="63" posx="-27.0000" posz="-21.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="106" posx="11.0000" posz="-21.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="103" posx="17.0000" posz="-17.0000" orientx="0.0007" orienty="0.0000" orientz="1.0000">deField</unit>
+		<unit variation="103" posx="25.0000" posz="-17.0000" orientx="-1.0000" orienty="0.0000" orientz="0.0004">deField</unit>
+		<unit variation="186" posx="-10.2907" posz="-17.9217" orientx="0.7071" orienty="0.0000" orientz="0.7071">UnderbrushTexasGrass</unit>
+		<unit variation="189" posx="16.4303" posz="-18.0184" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="145" posx="11.6341" posz="-18.5842" orientx="1.0000" orienty="0.0000" orientz="0.0000">UnderbrushTexasGrass</unit>
+		<unit variation="115" posx="28.7099" posz="-17.1711" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="140" posx="-28.8980" posz="-18.9535" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="103" posx="-17.0000" posz="-15.0000" orientx="0.0007" orienty="0.0000" orientz="1.0000">deField</unit>
+		<unit variation="103" posx="-25.0000" posz="-15.0000" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">deField</unit>
+		<unit variation="115" posx="-28.9064" posz="-16.1628" orientx="1.0000" orienty="0.0000" orientz="-0.0003">PropsNative</unit>
+		<unit variation="15" posx="-13.0000" posz="-17.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="81" posx="29.0316" posz="-17.4263" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="132" posx="-10.5427" posz="-13.9000" orientx="1.0000" orienty="0.0000" orientz="0.0000">UnderbrushTexas</unit>
+		<unit variation="138" posx="-4.6172" posz="-14.2377" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="135" posx="11.5795" posz="-14.1619" orientx="0.7071" orienty="0.0000" orientz="0.7071">UnderbrushTexasGrass</unit>
+		<unit variation="97" posx="0.0575" posz="-15.1001" orientx="-0.7910" orienty="0.0007" orientz="0.6118">Sheep</unit>
+		<unit variation="249" posx="5.9472" posz="-14.3978" orientx="-0.9781" orienty="0.0030" orientz="0.2079">Sheep</unit>
+		<unit variation="143" posx="-5.5674" posz="-13.7274" orientx="0.9232" orienty="-0.0051" orientz="0.3843">Sheep</unit>
+		<unit variation="117" posx="-13.0000" posz="-15.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">deTorpBush2</unit>
+		<unit variation="210" posx="25.3323" posz="-11.6744" orientx="0.0003" orienty="0.0000" orientz="1.0000">NativeHouseAztec</unit>
+		<unit variation="250" posx="-8.8854" posz="-11.1067" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="10" posx="-8.3649" posz="-12.4694" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="149" posx="-6.7704" posz="-12.7499" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="86" posx="16.3582" posz="-11.1985" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="149" posx="20.8312" posz="-11.5016" orientx="0.0003" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="138" posx="-9.1649" posz="-11.7624" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="146" posx="5.3874" posz="-12.9249" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="13" posx="5.9691" posz="-12.2546" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="196" posx="-7.6750" posz="-11.6198" orientx="0.3777" orienty="0.0021" orientz="-0.9259">Sheep</unit>
+		<unit variation="76" posx="7.1425" posz="-11.6853" orientx="0.3333" orienty="0.0024" orientz="-0.9428">Sheep</unit>
+		<unit variation="137" posx="-29.1457" posz="-12.4161" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="112" posx="14.9618" posz="-8.9630" orientx="0.7074" orienty="0.0000" orientz="0.7069">SPCPathBlock3</unit>
+		<unit variation="112" posx="24.0548" posz="-11.7938" orientx="0.0003" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="112" posx="19.5023" posz="-11.7088" orientx="0.0003" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="115" posx="-28.8554" posz="-10.5760" orientx="1.0000" orienty="0.0000" orientz="-0.0003">PropsNative</unit>
+		<unit variation="43" posx="-23.3829" posz="-9.9105" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="125" posx="-23.1344" posz="-9.3571" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="150" posx="-20.1501" posz="-8.9314" orientx="0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="11" posx="7.8425" posz="-9.2022" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="149" posx="7.1040" posz="-10.9342" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="149" posx="15.1336" posz="-9.8897" orientx="0.7073" orienty="0.0000" orientz="0.7069">PropsNative</unit>
+		<unit variation="115" posx="28.6827" posz="-10.8257" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="87" posx="26.4469" posz="-9.3821" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="238" posx="15.0000" posz="-11.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">deTorpBush2</unit>
+		<unit variation="210" posx="-15.9934" posz="-8.3463" orientx="0.0000" orienty="0.0000" orientz="1.0000">NativeHouseAztec</unit>
+		<unit variation="40" posx="0.5281" posz="-7.6608" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SocketAztec</unit>
+		<unit variation="41" posx="19.2573" posz="-6.2062" orientx="0.0004" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="112" posx="27.1172" posz="-7.4601" orientx="-1.0000" orienty="0.0000" orientz="0.0004">SPCPathBlock3</unit>
+		<unit variation="112" posx="-23.3391" posz="-9.1019" orientx="-0.0004" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="41" posx="22.4431" posz="-7.3443" orientx="0.0004" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="138" posx="-17.4906" posz="-7.3754" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="90" posx="8.4372" posz="-8.8561" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="77" posx="8.7021" posz="-7.6656" orientx="-0.8977" orienty="0.0052" orientz="-0.4405">Sheep</unit>
+		<unit variation="219" posx="29.0987" posz="-9.7572" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="112" posx="-26.9364" posz="-5.5685" orientx="-1.0000" orienty="0.0000" orientz="0.0004">SPCPathBlock3</unit>
+		<unit variation="112" posx="-17.3313" posz="-8.7430" orientx="-0.0004" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="112" posx="-14.9989" posz="-4.6510" orientx="1.0000" orienty="0.0000" orientz="-0.0004">SPCPathBlock3</unit>
+		<unit variation="41" posx="-19.4801" posz="-4.7032" orientx="0.0004" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="118" posx="26.0740" posz="-5.4586" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeHouseAztec</unit>
+		<unit variation="17" posx="-20.8650" posz="-5.0430" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="176" posx="12.3455" posz="-6.8298" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="149" posx="12.2359" posz="-5.3853" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="149" posx="14.9733" posz="-5.3316" orientx="1.0000" orienty="0.0000" orientz="0.0000">UnderbrushTexasGrass</unit>
+		<unit variation="128" posx="11.2008" posz="-6.2738" orientx="0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="242" posx="-24.7672" posz="-6.2732" orientx="0.9982" orienty="0.0000" orientz="-0.0601">SMIncanCookpot</unit>
+		<unit variation="112" posx="12.4126" posz="-2.3668" orientx="1.0000" orienty="0.0000" orientz="-0.0004">SPCPathBlock3</unit>
+		<unit variation="41" posx="17.6240" posz="-2.0522" orientx="0.0004" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="41" posx="-23.3025" posz="-2.6190" orientx="0.0004" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="115" posx="-28.9259" posz="-4.5729" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="3" posx="-27.8595" posz="-3.9031" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="53" posx="-17.7207" posz="-3.4601" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsNative</unit>
+		<unit variation="84" posx="12.2505" posz="-4.5939" orientx="0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="79" posx="16.7269" posz="-3.8969" orientx="0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="174" posx="20.3008" posz="-2.8785" orientx="0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="105" posx="22.9377" posz="-2.8153" orientx="0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="115" posx="28.9150" posz="-3.9689" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="141" posx="10.6126" posz="-4.2983" orientx="0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="28" posx="-5.2734" posz="-4.4046" orientx="-0.8978" orienty="0.0052" orientz="-0.4403">Sheep</unit>
+		<unit variation="176" posx="-29.1301" posz="-5.1800" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="6" posx="-11.0934" posz="-4.7159" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpCityStateFlag</unit>
+		<unit variation="110" posx="-13.0000" posz="-5.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">deTorpBush2</unit>
+		<unit variation="6" posx="10.9391" posz="-5.8214" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpCityStateFlag</unit>
+		<unit variation="41" posx="21.9245" posz="-1.9646" orientx="0.0004" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="112" posx="26.8202" posz="-0.1049" orientx="-1.0000" orienty="0.0000" orientz="0.0004">SPCPathBlock3</unit>
+		<unit variation="204" posx="-19.6318" posz="-1.6589" orientx="0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="202" posx="-3.4622" posz="-0.8416" orientx="0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="119" posx="19.3175" posz="-1.1164" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="149" posx="-14.4749" posz="-2.8884" orientx="-1.0000" orienty="0.0000" orientz="0.0003">PropsNative</unit>
+		<unit variation="239" posx="2.0021" posz="-0.9442" orientx="0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="171" posx="9.0000" posz="-3.0000" orientx="0.3827" orienty="0.0000" orientz="0.9239">BerryBush</unit>
+		<unit variation="46" posx="29.2295" posz="-2.0588" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="112" posx="-27.2114" posz="0.5650" orientx="-1.0000" orienty="0.0000" orientz="0.0004">SPCPathBlock3</unit>
+		<unit variation="112" posx="-16.0982" posz="1.1963" orientx="0.9240" orienty="0.0000" orientz="0.3823">SPCPathBlock3</unit>
+		<unit variation="41" posx="-18.8962" posz="0.3642" orientx="0.0004" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="104" posx="-23.8942" posz="0.6595" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativeHouseAztec</unit>
+		<unit variation="112" posx="12.5312" posz="0.2808" orientx="1.0000" orienty="0.0000" orientz="-0.0004">SPCPathBlock3</unit>
+		<unit variation="46" posx="-17.5385" posz="0.4192" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsNative</unit>
+		<unit variation="102" posx="-18.4732" posz="1.2171" orientx="0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="96" posx="-11.6341" posz="-0.3490" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushTexasGrass</unit>
+		<unit variation="255" posx="-2.0339" posz="0.3584" orientx="-0.2833" orienty="0.0049" orientz="-0.9590">Sheep</unit>
+		<unit variation="119" posx="4.8469" posz="0.4155" orientx="-0.9225" orienty="0.0051" orientz="-0.3860">Sheep</unit>
+		<unit variation="155" posx="-6.3830" posz="-0.3652" orientx="-0.8451" orienty="0.0012" orientz="0.5346">Sheep</unit>
+		<unit variation="80" posx="23.8860" posz="0.1151" orientx="-0.9973" orienty="0.0000" orientz="-0.0733">SMIncanMixerPoker</unit>
+		<unit variation="115" posx="14.4716" posz="1.2823" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativeHouseAztec</unit>
+		<unit variation="115" posx="-28.8195" posz="1.4360" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="147" posx="-26.7217" posz="2.8481" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="204" posx="-10.4840" posz="1.1404" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="115" posx="28.9322" posz="2.6116" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="149" posx="-15.9813" posz="2.9817" orientx="-0.9240" orienty="0.0000" orientz="-0.3824">PropsNative</unit>
+		<unit variation="7" posx="0.1611" posz="1.3773" orientx="-0.9997" orienty="0.0040" orientz="-0.0222">Sheep</unit>
+		<unit variation="238" posx="0.6147" posz="2.4464" orientx="-0.7134" orienty="0.0000" orientz="0.7008">Sheep</unit>
+		<unit variation="231" posx="-29.2035" posz="1.6867" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="234" posx="-20.9761" posz="4.7678" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="174" posx="-11.9217" posz="3.4109" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushTexas</unit>
+		<unit variation="170" posx="-8.2187" posz="3.7314" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="248" posx="-16.0887" posz="4.7436" orientx="0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="117" posx="-17.9785" posz="3.1573" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="135" posx="-9.6021" posz="4.3234" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushTexasGrass</unit>
+		<unit variation="176" posx="19.2766" posz="4.1270" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="50" posx="17.7959" posz="4.8934" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="85" posx="28.3798" posz="3.8362" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="112" posx="-20.6390" posz="3.6889" orientx="0.0004" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="112" posx="-23.7521" posz="3.6017" orientx="0.0004" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="112" posx="20.6517" posz="3.0552" orientx="-0.0004" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="176" posx="-10.1457" posz="5.3998" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushTexas</unit>
+		<unit variation="74" posx="6.2781" posz="5.2432" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="45" posx="12.8539" posz="5.4693" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="187" posx="-13.6205" posz="6.0183" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsNative</unit>
+		<unit variation="239" posx="10.3214" posz="6.6405" orientx="0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="123" posx="-5.7363" posz="6.0343" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="67" posx="11.0000" posz="5.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="17" posx="29.6708" posz="5.9401" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="103" posx="-24.7413" posz="9.6975" orientx="1.0000" orienty="0.0000" orientz="0.0000">deField</unit>
+		<unit variation="121" posx="25.0000" posz="9.0000" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deField</unit>
+		<unit variation="115" posx="-28.8831" posz="7.3779" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="123" posx="-9.0492" posz="8.2033" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="153" posx="-9.5491" posz="8.9073" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="214" posx="11.1460" posz="7.6971" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushTexas</unit>
+		<unit variation="141" posx="21.4622" posz="8.9742" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="13" posx="29.3856" posz="8.3496" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="188" posx="-14.8306" posz="7.6343" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="112" posx="-13.4872" posz="7.9002" orientx="0.3827" orienty="0.0000" orientz="0.9239">PropsNative</unit>
+		<unit variation="170" posx="11.1424" posz="8.9411" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="104" posx="-19.0000" posz="7.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="147" posx="-17.0000" posz="7.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">deTorpBush2</unit>
+		<unit variation="238" posx="-17.4805" posz="6.8488" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpCityStateFlag</unit>
+		<unit variation="35" posx="-9.9719" posz="6.7060" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpCityStateFlag</unit>
+		<unit variation="35" posx="12.1561" posz="7.3149" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpCityStateFlag</unit>
+		<unit variation="107" posx="21.0000" posz="7.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="35" posx="19.9361" posz="7.3822" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpCityStateFlag</unit>
+		<unit variation="73" posx="19.0000" posz="7.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">deTorpBush2</unit>
+		<unit variation="25" posx="20.6351" posz="9.6386" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="210" posx="21.3404" posz="10.5332" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="107" posx="-29.2085" posz="9.7341" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="148" posx="-7.0000" posz="9.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="219" posx="-4.6791" posz="9.2974" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropAztecDecoration</unit>
+		<unit variation="131" posx="-1.4024" posz="9.8820" orientx="0.0003" orienty="-0.0000" orientz="-1.0000">zpPropAztecDecoration</unit>
+		<unit variation="208" posx="9.0000" posz="9.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="219" posx="6.5915" posz="9.1244" orientx="-0.0003" orienty="-0.0000" orientz="1.0000">zpPropAztecDecoration</unit>
+		<unit variation="131" posx="3.4944" posz="9.5470" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropAztecDecoration</unit>
+		<unit variation="103" posx="-14.0000" posz="14.0000" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCAztecGranary</unit>
+		<unit variation="70" posx="16.0000" posz="14.0000" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCAztecGranary</unit>
+		<unit variation="15" posx="-7.0000" posz="11.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="30" posx="9.0000" posz="11.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="99" posx="0.9700" posz="13.0685" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeHouseAztec</unit>
+		<unit variation="115" posx="-28.8107" posz="13.3649" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="219" posx="-7.0000" posz="13.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="18" posx="9.0000" posz="13.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="90" posx="9.0000" posz="13.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="199" posx="29.8768" posz="13.1881" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="103" posx="-25.0000" posz="17.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">deField</unit>
+		<unit variation="121" posx="25.0000" posz="17.0000" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deField</unit>
+		<unit variation="67" posx="-7.0000" posz="15.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="209" posx="8.9500" posz="14.9251" orientx="-1.0000" orienty="0.0000" orientz="-0.0003">BerryBush</unit>
+		<unit variation="188" posx="-9.3131" posz="18.0605" orientx="0.3827" orienty="0.0000" orientz="0.9239">PropsNative</unit>
+		<unit variation="18" posx="20.4272" posz="18.0050" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="158" posx="21.3896" posz="17.4446" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="86" posx="-9.7917" posz="19.1948" orientx="0.3827" orienty="0.0000" orientz="0.9239">PropsNative</unit>
+		<unit variation="249" posx="-29.1550" posz="16.9736" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="36" posx="-7.0000" posz="17.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="209" posx="9.0000" posz="17.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="115" posx="-29.1311" posz="19.3711" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="177" posx="-12.5151" posz="20.1634" orientx="0.3827" orienty="0.0000" orientz="0.9239">PropsNative</unit>
+		<unit variation="226" posx="-14.2189" posz="20.3073" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="223" posx="-20.0203" posz="21.0548" orientx="0.3827" orienty="0.0000" orientz="0.9239">PropsNative</unit>
+		<unit variation="60" posx="-11.0635" posz="20.2243" orientx="0.3827" orienty="0.0000" orientz="0.9239">PropsNative</unit>
+		<unit variation="2" posx="-4.2615" posz="20.2014" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsNative</unit>
+		<unit variation="39" posx="20.9804" posz="19.1490" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="136" posx="19.8023" posz="19.1707" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="192" posx="15.2237" posz="19.7318" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="115" posx="29.4847" posz="19.4053" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="186" posx="-7.0000" posz="19.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="124" posx="9.0000" posz="19.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
+		<unit variation="185" posx="-27.8860" posz="22.4949" orientx="1.0000" orienty="0.0000" orientz="0.0000">UnderbrushTexasGrass</unit>
+		<unit variation="64" posx="28.0000" posz="22.0000" orientx="0.9521" orienty="0.0000" orientz="0.3058">AIStart</unit>
+		<unit variation="56" posx="28.0000" posz="22.0000" orientx="-0.9754" orienty="0.0000" orientz="-0.2206">AIStart</unit>
+		<unit variation="130" posx="28.0000" posz="22.0000" orientx="0.4632" orienty="0.0000" orientz="-0.8863">AIStart</unit>
+		<unit variation="221" posx="28.0000" posz="22.0000" orientx="0.6828" orienty="0.0000" orientz="-0.7306">AIStart</unit>
+		<unit variation="37" posx="28.0000" posz="22.0000" orientx="-0.8739" orienty="0.0000" orientz="0.4861">AIStart</unit>
+		<unit variation="236" posx="28.0000" posz="22.0000" orientx="0.6518" orienty="0.0000" orientz="0.7584">AIStart</unit>
+		<unit variation="216" posx="28.0000" posz="22.0000" orientx="-0.1873" orienty="0.0000" orientz="-0.9823">AIStart</unit>
+		<unit variation="184" posx="30.0636" posz="21.3454" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="121" posx="-15.0000" posz="25.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">deField</unit>
+		<unit variation="121" posx="15.0000" posz="25.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">deField</unit>
+		<unit variation="121" posx="-23.0000" posz="25.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">deField</unit>
+		<unit variation="121" posx="7.7593" posz="24.6637" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">deField</unit>
+		<unit variation="121" posx="23.0000" posz="25.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">deField</unit>
+		<unit variation="121" posx="-7.0000" posz="25.0000" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">deField</unit>
+		<unit variation="115" posx="29.8198" posz="23.8737" orientx="-1.0000" orienty="0.0000" orientz="0.0003">PropsNative</unit>
+		<unit variation="249" posx="-28.9343" posz="23.1417" orientx="1.0000" orienty="0.0000" orientz="-0.0002">zpRuinWallLarge</unit>
+		<unit variation="158" posx="-28.0199" posz="26.0048" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeAztecOutpost</unit>
+		<unit variation="6" posx="0.3112" posz="25.7301" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCAztecStairs</unit>
+		<unit variation="68" posx="28.3528" posz="26.9845" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeAztecOutpost</unit>
+		<unit variation="126" posx="7.2371" posz="28.4145" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="115" posx="8.0390" posz="27.9623" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="176" posx="-3.2951" posz="28.1800" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsNative</unit>
+		<unit variation="115" posx="20.6777" posz="27.8001" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="115" posx="14.3356" posz="27.8879" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="115" posx="-6.4937" posz="28.6478" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="115" posx="-18.9218" posz="29.1359" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="115" posx="-12.7629" posz="29.0811" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="115" posx="-18.6717" posz="29.1205" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpRuinWallLarge</unit>
+		<unit variation="68" posx="-11.7891" posz="28.8509" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpRuinWallLarge</unit>
+		<unit variation="249" posx="-6.9371" posz="28.6748" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
+		<unit variation="229" posx="-3.1830" posz="28.8577" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
+		<unit variation="75" posx="4.4534" posz="28.6155" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
+		<unit variation="140" posx="6.4467" posz="28.6215" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
+		<unit variation="80" posx="10.2331" posz="28.5213" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpRuinWallLarge</unit>
+		<unit variation="45" posx="17.4397" posz="28.6456" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpRuinWallLarge</unit>
+		<unit variation="249" posx="22.9163" posz="28.1528" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">
+			<block startx="-16" startz="-16" endx="-16" endz="-9"></block>
+			<block startx="-15" startz="-16" endx="-15" endz="-9"></block>
+			<block startx="-14" startz="-16" endx="-14" endz="-15"></block>
+			<block startx="-14" startz="-9" endx="-14" endz="-9"></block>
+			<block startx="-13" startz="-16" endx="-13" endz="-15"></block>
+			<block startx="-13" startz="-11" endx="-13" endz="-10"></block>
+			<block startx="-12" startz="-16" endx="-12" endz="-15"></block>
+			<block startx="-12" startz="-10" endx="-12" endz="-10"></block>
+			<block startx="-11" startz="-16" endx="-11" endz="-15"></block>
+			<block startx="-11" startz="-11" endx="-11" endz="-11"></block>
+			<block startx="-10" startz="-16" endx="-10" endz="-15"></block>
+			<block startx="-10" startz="-10" endx="-10" endz="-10"></block>
+			<block startx="-9" startz="-16" endx="-9" endz="-15"></block>
+			<block startx="-16" startz="-8" endx="-16" endz="-1"></block>
+			<block startx="-15" startz="-8" endx="-15" endz="-1"></block>
+			<block startx="-14" startz="-7" endx="-14" endz="-1"></block>
+			<block startx="-12" startz="-7" endx="-12" endz="-2"></block>
+			<block startx="-6" startz="-8" endx="-6" endz="-8"></block>
+			<block startx="-5" startz="-8" endx="-5" endz="-8"></block>
+			<block startx="-4" startz="-8" endx="-4" endz="-8"></block>
+			<block startx="-3" startz="-8" endx="-3" endz="-8"></block>
+			<block startx="-8" startz="-16" endx="-8" endz="-16"></block>
+			<block startx="-7" startz="-16" endx="-7" endz="-16"></block>
+			<block startx="-6" startz="-16" endx="-6" endz="-16"></block>
+			<block startx="-6" startz="-9" endx="-6" endz="-9"></block>
+			<block startx="-5" startz="-16" endx="-5" endz="-15"></block>
+			<block startx="-5" startz="-10" endx="-5" endz="-9"></block>
+			<block startx="-4" startz="-16" endx="-4" endz="-16"></block>
+			<block startx="-4" startz="-13" endx="-4" endz="-9"></block>
+			<block startx="-3" startz="-16" endx="-3" endz="-16"></block>
+			<block startx="-3" startz="-13" endx="-3" endz="-9"></block>
+			<block startx="-2" startz="-16" endx="-2" endz="-15"></block>
+			<block startx="-1" startz="-16" endx="-1" endz="-15"></block>
+			<block startx="-16" startz="0" endx="-16" endz="7"></block>
+			<block startx="-15" startz="0" endx="-15" endz="1"></block>
+			<block startx="-15" startz="7" endx="-15" endz="7"></block>
+			<block startx="-9" startz="4" endx="-9" endz="7"></block>
+			<block startx="-16" startz="8" endx="-16" endz="15"></block>
+			<block startx="-15" startz="8" endx="-15" endz="9"></block>
+			<block startx="-15" startz="14" endx="-15" endz="15"></block>
+			<block startx="-14" startz="14" endx="-14" endz="15"></block>
+			<block startx="-13" startz="15" endx="-13" endz="15"></block>
+			<block startx="-12" startz="15" endx="-12" endz="15"></block>
+			<block startx="-11" startz="15" endx="-11" endz="15"></block>
+			<block startx="-10" startz="15" endx="-10" endz="15"></block>
+			<block startx="-9" startz="15" endx="-9" endz="15"></block>
+			<block startx="-8" startz="8" endx="-8" endz="8"></block>
+			<block startx="-8" startz="14" endx="-8" endz="15"></block>
+			<block startx="-7" startz="8" endx="-7" endz="8"></block>
+			<block startx="-7" startz="14" endx="-7" endz="15"></block>
+			<block startx="-6" startz="14" endx="-6" endz="15"></block>
+			<block startx="-5" startz="14" endx="-5" endz="15"></block>
+			<block startx="-4" startz="13" endx="-4" endz="15"></block>
+			<block startx="-3" startz="13" endx="-3" endz="15"></block>
+			<block startx="-2" startz="14" endx="-2" endz="15"></block>
+			<block startx="-1" startz="14" endx="-1" endz="15"></block>
+			<block startx="-8" startz="5" endx="-8" endz="7"></block>
+			<block startx="-7" startz="4" endx="-7" endz="7"></block>
+			<block startx="-6" startz="1" endx="-6" endz="1"></block>
+			<block startx="-6" startz="4" endx="-6" endz="5"></block>
+			<block startx="-5" startz="2" endx="-5" endz="2"></block>
+			<block startx="-4" startz="2" endx="-4" endz="2"></block>
+			<block startx="4" startz="2" endx="4" endz="2"></block>
+			<block startx="5" startz="0" endx="5" endz="0"></block>
+			<block startx="7" startz="5" endx="7" endz="7"></block>
+			<block startx="0" startz="14" endx="0" endz="15"></block>
+			<block startx="1" startz="14" endx="1" endz="15"></block>
+			<block startx="2" startz="14" endx="2" endz="15"></block>
+			<block startx="3" startz="14" endx="3" endz="15"></block>
+			<block startx="4" startz="13" endx="4" endz="15"></block>
+			<block startx="5" startz="13" endx="5" endz="15"></block>
+			<block startx="6" startz="13" endx="6" endz="15"></block>
+			<block startx="7" startz="8" endx="7" endz="8"></block>
+			<block startx="7" startz="13" endx="7" endz="15"></block>
+			<block startx="8" startz="13" endx="8" endz="15"></block>
+			<block startx="9" startz="14" endx="9" endz="15"></block>
+			<block startx="10" startz="14" endx="10" endz="15"></block>
+			<block startx="11" startz="14" endx="11" endz="15"></block>
+			<block startx="12" startz="14" endx="12" endz="15"></block>
+			<block startx="13" startz="14" endx="13" endz="15"></block>
+			<block startx="14" startz="8" endx="14" endz="8"></block>
+			<block startx="14" startz="14" endx="14" endz="15"></block>
+			<block startx="15" startz="8" endx="15" endz="15"></block>
+			<block startx="14" startz="0" endx="14" endz="7"></block>
+			<block startx="15" startz="0" endx="15" endz="7"></block>
+			<block startx="0" startz="-16" endx="0" endz="-16"></block>
+			<block startx="1" startz="-16" endx="1" endz="-16"></block>
+			<block startx="2" startz="-16" endx="2" endz="-16"></block>
+			<block startx="3" startz="-16" endx="3" endz="-15"></block>
+			<block startx="3" startz="-12" endx="3" endz="-9"></block>
+			<block startx="4" startz="-16" endx="4" endz="-16"></block>
+			<block startx="4" startz="-10" endx="4" endz="-9"></block>
+			<block startx="5" startz="-16" endx="5" endz="-16"></block>
+			<block startx="5" startz="-9" endx="5" endz="-9"></block>
+			<block startx="6" startz="-16" endx="6" endz="-15"></block>
+			<block startx="7" startz="-16" endx="7" endz="-14"></block>
+			<block startx="7" startz="-12" endx="7" endz="-12"></block>
+			<block startx="2" startz="-8" endx="2" endz="-8"></block>
+			<block startx="3" startz="-8" endx="3" endz="-7"></block>
+			<block startx="4" startz="-8" endx="4" endz="-6"></block>
+			<block startx="5" startz="-8" endx="5" endz="-5"></block>
+			<block startx="6" startz="-7" endx="6" endz="-5"></block>
+			<block startx="7" startz="-6" endx="7" endz="-5"></block>
+			<block startx="13" startz="-6" endx="13" endz="-3"></block>
+			<block startx="14" startz="-8" endx="14" endz="-1"></block>
+			<block startx="15" startz="-8" endx="15" endz="-1"></block>
+			<block startx="8" startz="-16" endx="8" endz="-14"></block>
+			<block startx="9" startz="-16" endx="9" endz="-15"></block>
+			<block startx="9" startz="-13" endx="9" endz="-13"></block>
+			<block startx="10" startz="-16" endx="10" endz="-15"></block>
+			<block startx="11" startz="-16" endx="11" endz="-15"></block>
+			<block startx="12" startz="-16" endx="12" endz="-15"></block>
+			<block startx="13" startz="-16" endx="13" endz="-15"></block>
+			<block startx="14" startz="-16" endx="14" endz="-9"></block>
+			<block startx="15" startz="-16" endx="15" endz="-9"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="Amazon\ground5_ama">
+			<block startx="-14" startz="-14" endx="-14" endz="-10"></block>
+			<block startx="-13" startz="-14" endx="-13" endz="-13"></block>
+			<block startx="-13" startz="-9" endx="-13" endz="-9"></block>
+			<block startx="-12" startz="-14" endx="-12" endz="-11"></block>
+			<block startx="-12" startz="-9" endx="-12" endz="-9"></block>
+			<block startx="-11" startz="-14" endx="-11" endz="-12"></block>
+			<block startx="-11" startz="-10" endx="-11" endz="-9"></block>
+			<block startx="-10" startz="-14" endx="-10" endz="-14"></block>
+			<block startx="-10" startz="-12" endx="-10" endz="-11"></block>
+			<block startx="-10" startz="-9" endx="-10" endz="-9"></block>
+			<block startx="-9" startz="-14" endx="-9" endz="-9"></block>
+			<block startx="-14" startz="-8" endx="-14" endz="-8"></block>
+			<block startx="-13" startz="-8" endx="-13" endz="-1"></block>
+			<block startx="-12" startz="-8" endx="-12" endz="-8"></block>
+			<block startx="-12" startz="-1" endx="-12" endz="-1"></block>
+			<block startx="-11" startz="-8" endx="-11" endz="-1"></block>
+			<block startx="-10" startz="-8" endx="-10" endz="-1"></block>
+			<block startx="-9" startz="-8" endx="-9" endz="-1"></block>
+			<block startx="-8" startz="-8" endx="-8" endz="-1"></block>
+			<block startx="-7" startz="-8" endx="-7" endz="-7"></block>
+			<block startx="-7" startz="-4" endx="-7" endz="-1"></block>
+			<block startx="-8" startz="-15" endx="-8" endz="-9"></block>
+			<block startx="-7" startz="-15" endx="-7" endz="-9"></block>
+			<block startx="-6" startz="-15" endx="-6" endz="-10"></block>
+			<block startx="-5" startz="-14" endx="-5" endz="-11"></block>
+			<block startx="-15" startz="2" endx="-15" endz="6"></block>
+			<block startx="-14" startz="0" endx="-14" endz="7"></block>
+			<block startx="-13" startz="0" endx="-13" endz="7"></block>
+			<block startx="-12" startz="0" endx="-12" endz="7"></block>
+			<block startx="-11" startz="0" endx="-11" endz="7"></block>
+			<block startx="-10" startz="0" endx="-10" endz="7"></block>
+			<block startx="-9" startz="0" endx="-9" endz="3"></block>
+			<block startx="-15" startz="10" endx="-15" endz="13"></block>
+			<block startx="-14" startz="8" endx="-14" endz="13"></block>
+			<block startx="-13" startz="8" endx="-13" endz="14"></block>
+			<block startx="-12" startz="8" endx="-12" endz="14"></block>
+			<block startx="-11" startz="8" endx="-11" endz="14"></block>
+			<block startx="-10" startz="8" endx="-10" endz="14"></block>
+			<block startx="-9" startz="8" endx="-9" endz="14"></block>
+			<block startx="-8" startz="9" endx="-8" endz="13"></block>
+			<block startx="-7" startz="9" endx="-7" endz="13"></block>
+			<block startx="-6" startz="8" endx="-6" endz="13"></block>
+			<block startx="-5" startz="8" endx="-5" endz="13"></block>
+			<block startx="-4" startz="8" endx="-4" endz="12"></block>
+			<block startx="-3" startz="10" endx="-3" endz="12"></block>
+			<block startx="-8" startz="0" endx="-8" endz="3"></block>
+			<block startx="-7" startz="0" endx="-7" endz="3"></block>
+			<block startx="-6" startz="2" endx="-6" endz="3"></block>
+			<block startx="-6" startz="6" endx="-6" endz="7"></block>
+			<block startx="-5" startz="3" endx="-5" endz="3"></block>
+			<block startx="-5" startz="5" endx="-5" endz="7"></block>
+			<block startx="-4" startz="5" endx="-4" endz="7"></block>
+			<block startx="4" startz="4" endx="4" endz="7"></block>
+			<block startx="5" startz="1" endx="5" endz="7"></block>
+			<block startx="6" startz="0" endx="6" endz="7"></block>
+			<block startx="7" startz="0" endx="7" endz="4"></block>
+			<block startx="2" startz="11" endx="2" endz="13"></block>
+			<block startx="3" startz="10" endx="3" endz="13"></block>
+			<block startx="4" startz="8" endx="4" endz="12"></block>
+			<block startx="5" startz="8" endx="5" endz="12"></block>
+			<block startx="6" startz="8" endx="6" endz="12"></block>
+			<block startx="7" startz="9" endx="7" endz="12"></block>
+			<block startx="8" startz="8" endx="8" endz="12"></block>
+			<block startx="9" startz="8" endx="9" endz="13"></block>
+			<block startx="10" startz="8" endx="10" endz="13"></block>
+			<block startx="11" startz="8" endx="11" endz="13"></block>
+			<block startx="12" startz="8" endx="12" endz="13"></block>
+			<block startx="13" startz="8" endx="13" endz="13"></block>
+			<block startx="14" startz="9" endx="14" endz="13"></block>
+			<block startx="8" startz="0" endx="8" endz="7"></block>
+			<block startx="9" startz="0" endx="9" endz="7"></block>
+			<block startx="10" startz="0" endx="10" endz="7"></block>
+			<block startx="11" startz="0" endx="11" endz="7"></block>
+			<block startx="12" startz="0" endx="12" endz="7"></block>
+			<block startx="13" startz="0" endx="13" endz="7"></block>
+			<block startx="3" startz="-13" endx="3" endz="-13"></block>
+			<block startx="4" startz="-14" endx="4" endz="-11"></block>
+			<block startx="5" startz="-14" endx="5" endz="-10"></block>
+			<block startx="6" startz="-14" endx="6" endz="-9"></block>
+			<block startx="7" startz="-13" endx="7" endz="-13"></block>
+			<block startx="7" startz="-11" endx="7" endz="-9"></block>
+			<block startx="4" startz="-1" endx="4" endz="-1"></block>
+			<block startx="5" startz="-4" endx="5" endz="-1"></block>
+			<block startx="6" startz="-8" endx="6" endz="-8"></block>
+			<block startx="6" startz="-4" endx="6" endz="-1"></block>
+			<block startx="7" startz="-8" endx="7" endz="-7"></block>
+			<block startx="7" startz="-4" endx="7" endz="-1"></block>
+			<block startx="8" startz="-8" endx="8" endz="-1"></block>
+			<block startx="9" startz="-8" endx="9" endz="-1"></block>
+			<block startx="10" startz="-8" endx="10" endz="-1"></block>
+			<block startx="11" startz="-8" endx="11" endz="-1"></block>
+			<block startx="12" startz="-8" endx="12" endz="-1"></block>
+			<block startx="13" startz="-8" endx="13" endz="-7"></block>
+			<block startx="13" startz="-2" endx="13" endz="-1"></block>
+			<block startx="8" startz="-10" endx="8" endz="-9"></block>
+			<block startx="9" startz="-14" endx="9" endz="-14"></block>
+			<block startx="9" startz="-12" endx="9" endz="-9"></block>
+			<block startx="10" startz="-14" endx="10" endz="-9"></block>
+			<block startx="11" startz="-14" endx="11" endz="-9"></block>
+			<block startx="12" startz="-14" endx="12" endz="-9"></block>
+			<block startx="13" startz="-14" endx="13" endz="-9"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="city\ground1_city_street_90_ground">
+			<block startx="-6" startz="-6" endx="-6" endz="-1"></block>
+			<block startx="-5" startz="-6" endx="-5" endz="-1"></block>
+			<block startx="-4" startz="-6" endx="-4" endz="-1"></block>
+			<block startx="-3" startz="-7" endx="-3" endz="-1"></block>
+			<block startx="-2" startz="-8" endx="-2" endz="-1"></block>
+			<block startx="-1" startz="-8" endx="-1" endz="-1"></block>
+			<block startx="-4" startz="-15" endx="-4" endz="-14"></block>
+			<block startx="-3" startz="-15" endx="-3" endz="-14"></block>
+			<block startx="-2" startz="-14" endx="-2" endz="-9"></block>
+			<block startx="-1" startz="-14" endx="-1" endz="-9"></block>
+			<block startx="-3" startz="8" endx="-3" endz="9"></block>
+			<block startx="-2" startz="8" endx="-2" endz="13"></block>
+			<block startx="-1" startz="8" endx="-1" endz="13"></block>
+			<block startx="-8" startz="4" endx="-8" endz="4"></block>
+			<block startx="-6" startz="0" endx="-6" endz="0"></block>
+			<block startx="-5" startz="0" endx="-5" endz="1"></block>
+			<block startx="-5" startz="4" endx="-5" endz="4"></block>
+			<block startx="-4" startz="0" endx="-4" endz="1"></block>
+			<block startx="-4" startz="3" endx="-4" endz="4"></block>
+			<block startx="-3" startz="0" endx="-3" endz="7"></block>
+			<block startx="-2" startz="0" endx="-2" endz="7"></block>
+			<block startx="-1" startz="0" endx="-1" endz="7"></block>
+			<block startx="0" startz="0" endx="0" endz="7"></block>
+			<block startx="1" startz="0" endx="1" endz="7"></block>
+			<block startx="2" startz="0" endx="2" endz="7"></block>
+			<block startx="3" startz="0" endx="3" endz="7"></block>
+			<block startx="4" startz="0" endx="4" endz="1"></block>
+			<block startx="4" startz="3" endx="4" endz="3"></block>
+			<block startx="0" startz="8" endx="0" endz="13"></block>
+			<block startx="1" startz="8" endx="1" endz="13"></block>
+			<block startx="2" startz="8" endx="2" endz="10"></block>
+			<block startx="3" startz="8" endx="3" endz="9"></block>
+			<block startx="0" startz="-15" endx="0" endz="-9"></block>
+			<block startx="1" startz="-15" endx="1" endz="-9"></block>
+			<block startx="2" startz="-15" endx="2" endz="-9"></block>
+			<block startx="3" startz="-14" endx="3" endz="-14"></block>
+			<block startx="4" startz="-15" endx="4" endz="-15"></block>
+			<block startx="5" startz="-15" endx="5" endz="-15"></block>
+			<block startx="0" startz="-8" endx="0" endz="-1"></block>
+			<block startx="1" startz="-8" endx="1" endz="-1"></block>
+			<block startx="2" startz="-7" endx="2" endz="-1"></block>
+			<block startx="3" startz="-6" endx="3" endz="-1"></block>
+			<block startx="4" startz="-5" endx="4" endz="-2"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="california\ground10_cal">
+			<block startx="-13" startz="-12" endx="-13" endz="-12"></block>
+			<block startx="-10" startz="-13" endx="-10" endz="-13"></block>
+			<block startx="-7" startz="-6" endx="-7" endz="-5"></block>
+			<block startx="-6" startz="-7" endx="-6" endz="-7"></block>
+			<block startx="-5" startz="-7" endx="-5" endz="-7"></block>
+			<block startx="-4" startz="-7" endx="-4" endz="-7"></block>
+			<block startx="8" startz="-13" endx="8" endz="-11"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

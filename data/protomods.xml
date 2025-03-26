@@ -52005,6 +52005,8 @@
     <unittype>ConvertsHerds</unittype>
     <unittype>Economic</unittype>
     <unittype>AbstractFirePit</unittype>
+    <unittype>AbstractCommunityPlaza</unittype>
+    <unittype>AbstractMountainMonastery</unittype>
     <tech row ="0" page ="2" column ="0">BigFirepitFounder</tech>
     <tech row ="0" page ="2" column ="0">BigFirepitSecretSociety</tech>
     <tech row ="0" page ="2" column ="0">BigFirepitBattleAnger</tech>
@@ -52043,8 +52045,142 @@
     <command page ="10" column ="0">SetGatherPointMilitary</command>
     <command page ="10" column ="1">SetGatherPointEconomy</command>
     <command page ="10" column ="2">Delete</command>
-    <tactics>firepit.tactics</tactics>
+    <tactics>zpfirepit.tactics</tactics>
 </unit>
+<unit id="20702" name="zpTradepostAztecCapturable">
+    <dbid>20702</dbid>
+    <displaynameid>302424</displaynameid>
+    <editornameid>302423</editornameid>
+    <obstructionradiusx>8.0000</obstructionradiusx>
+    <obstructionradiusz>16.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>buildings\spc\aztec\aztec_tradepost.xml</animfile>
+    <icon>resources\art\buildings\asian_civs\dock\india_dock_icon.png</icon>
+    <portraiticon>resources\art\buildings\tradeport_portrait.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <flag>TieToWaterSurface</flag>
+    <flag>Doppled</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ForceToGaia</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+  </unit>
+  <unit id="20703" name="zpSPCAztecStairs">
+    <dbid>20703</dbid>
+    <displaynameid>302425</displaynameid>
+    <editornameid>302425</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>buildings\spc\aztec\aztec_stairs.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NoIdleActions</flag>
+  </unit>
+  <unit id="20704" name="zpAztecPropsAir">
+    <dbid>20704</dbid>
+    <displaynameid>37326</displaynameid>
+    <editornameid>302426</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>objects\spc\aztec_props\spc_aztec_props.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>VariationLocked</flag>
+  </unit>
+  <unit id="20705" name="zpWallWoodNative">
+    <dbid>20705</dbid>
+    <displaynameid>24832</displaynameid>
+    <editornameid>302427</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\wall_wood.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
+    <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
+    <bounty>0.0000</bounty>
+    <unittype>EmbellishmentClass</unittype>
+    <tech row="0" page="1" column="0">Bastion</tech>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>FlattenGround</flag>
+    <flag>Tracked</flag>
+  </unit>
 
   <!--Aztec MAPMODS-->
   <unit name="SPCXPWoodFortGate">

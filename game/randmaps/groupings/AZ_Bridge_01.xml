@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>15</width>
+	<height>14</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="39" posx="-4.5681" posz="-7.3493" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="39" posx="1.5616" posz="-7.5223" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="39" posx="-9.3597" posz="-7.2713" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="39" posx="7.3918" posz="-7.2246" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="39" posx="-4.3571" posz="-5.3863" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="39" posx="-4.5106" posz="-6.3998" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="171" posx="1.6849" posz="-5.4608" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="39" posx="1.7406" posz="-6.6393" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="42" posx="-7.2473" posz="-5.2556" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallMedium</unit>
+		<unit variation="85" posx="-9.2672" posz="-5.2812" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="39" posx="-9.4845" posz="-6.5575" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="87" posx="7.3964" posz="-5.4404" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="95" posx="5.2156" posz="-5.5120" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallMedium</unit>
+		<unit variation="39" posx="7.4012" posz="-6.3491" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="145" posx="-0.8287" posz="-5.5927" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallMedium</unit>
+		<unit variation="2" posx="-5.5491" posz="-3.7178" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">zpAztecPropsAir</unit>
+		<unit variation="206" posx="-4.2172" posz="-3.5169" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpAztecPropsAir</unit>
+		<unit variation="102" posx="1.6704" posz="-3.6931" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpAztecPropsAir</unit>
+		<unit variation="147" posx="-8.0090" posz="-4.0914" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpAztecPropsAir</unit>
+		<unit variation="30" posx="1.6079" posz="4.7910" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpAztecPropsAir</unit>
+		<unit variation="5" posx="5.5018" posz="3.3669" orientx="-0.9237" orienty="-0.0000" orientz="-0.3830">zpAztecPropsAir</unit>
+		<unit variation="5" posx="-7.9082" posz="4.3177" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">zpAztecPropsAir</unit>
+		<unit variation="30" posx="-4.5324" posz="5.0085" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpAztecPropsAir</unit>
+		<unit variation="4" posx="-1.2958" posz="5.8571" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">UnderbrushCarolinasMarsh</unit>
+		<unit variation="35" posx="1.7094" posz="7.0046" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="201" posx="-6.6917" posz="7.0059" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallMedium</unit>
+		<unit variation="99" posx="-9.7498" posz="6.8706" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="121" posx="6.6820" posz="6.9203" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="252" posx="-1.4520" posz="6.9660" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallMedium</unit>
+		<unit variation="85" posx="-4.6599" posz="7.1095" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="39" posx="-5.1197" posz="8.2552" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="39" posx="0.8165" posz="7.7891" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="39" posx="1.3615" posz="8.9834" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="39" posx="5.8183" posz="7.6777" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="39" posx="-9.5640" posz="7.9823" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="39" posx="-9.5372" posz="8.9333" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="63" posx="4.6022" posz="7.0402" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallMedium</unit>
+		<unit variation="39" posx="6.2994" posz="8.8167" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="39" posx="-4.9208" posz="9.3558" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+	</units>
+	<tiles>
+		<tilegroup type="Shoreline" subtype="great_lakes\ground_shoreline1_gls">
+			<block startx="-7" startz="-6" endx="-7" endz="1"></block>
+			<block startx="-6" startz="-6" endx="-6" endz="-3"></block>
+			<block startx="-5" startz="-6" endx="-5" endz="-5"></block>
+			<block startx="-4" startz="-6" endx="-4" endz="-5"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="-5"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="-5"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="-5"></block>
+			<block startx="0" startz="-6" endx="0" endz="-5"></block>
+			<block startx="-7" startz="-7" endx="-7" endz="-7"></block>
+			<block startx="-6" startz="-7" endx="-6" endz="-7"></block>
+			<block startx="-5" startz="-7" endx="-5" endz="-7"></block>
+			<block startx="-4" startz="-7" endx="-4" endz="-7"></block>
+			<block startx="-3" startz="-7" endx="-3" endz="-7"></block>
+			<block startx="-2" startz="-7" endx="-2" endz="-7"></block>
+			<block startx="-1" startz="-7" endx="-1" endz="-7"></block>
+			<block startx="0" startz="-7" endx="0" endz="-7"></block>
+			<block startx="-7" startz="2" endx="-7" endz="6"></block>
+			<block startx="-6" startz="4" endx="-6" endz="6"></block>
+			<block startx="-5" startz="4" endx="-5" endz="6"></block>
+			<block startx="-4" startz="5" endx="-4" endz="6"></block>
+			<block startx="-3" startz="5" endx="-3" endz="6"></block>
+			<block startx="-2" startz="5" endx="-2" endz="6"></block>
+			<block startx="-1" startz="5" endx="-1" endz="6"></block>
+			<block startx="0" startz="5" endx="0" endz="6"></block>
+			<block startx="1" startz="5" endx="1" endz="6"></block>
+			<block startx="2" startz="5" endx="2" endz="6"></block>
+			<block startx="3" startz="4" endx="3" endz="6"></block>
+			<block startx="4" startz="4" endx="4" endz="6"></block>
+			<block startx="5" startz="2" endx="5" endz="2"></block>
+			<block startx="5" startz="5" endx="5" endz="6"></block>
+			<block startx="6" startz="2" endx="6" endz="6"></block>
+			<block startx="7" startz="2" endx="7" endz="6"></block>
+			<block startx="1" startz="-7" endx="1" endz="-7"></block>
+			<block startx="2" startz="-7" endx="2" endz="-7"></block>
+			<block startx="3" startz="-7" endx="3" endz="-7"></block>
+			<block startx="4" startz="-7" endx="4" endz="-7"></block>
+			<block startx="5" startz="-7" endx="5" endz="-7"></block>
+			<block startx="6" startz="-7" endx="6" endz="-7"></block>
+			<block startx="7" startz="-7" endx="7" endz="-7"></block>
+			<block startx="1" startz="-6" endx="1" endz="-5"></block>
+			<block startx="2" startz="-6" endx="2" endz="-5"></block>
+			<block startx="2" startz="-3" endx="2" endz="-3"></block>
+			<block startx="3" startz="-6" endx="3" endz="-5"></block>
+			<block startx="4" startz="-6" endx="4" endz="-4"></block>
+			<block startx="5" startz="-6" endx="5" endz="-4"></block>
+			<block startx="5" startz="-1" endx="5" endz="1"></block>
+			<block startx="6" startz="-6" endx="6" endz="1"></block>
+			<block startx="7" startz="-6" endx="7" endz="1"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">
+			<block startx="-6" startz="-2" endx="-6" endz="1"></block>
+			<block startx="-5" startz="-4" endx="-5" endz="1"></block>
+			<block startx="-4" startz="-3" endx="-4" endz="1"></block>
+			<block startx="-3" startz="-3" endx="-3" endz="1"></block>
+			<block startx="-2" startz="-2" endx="-2" endz="1"></block>
+			<block startx="-1" startz="-2" endx="-1" endz="1"></block>
+			<block startx="0" startz="-2" endx="0" endz="1"></block>
+			<block startx="-6" startz="2" endx="-6" endz="3"></block>
+			<block startx="-5" startz="2" endx="-5" endz="3"></block>
+			<block startx="-4" startz="2" endx="-4" endz="2"></block>
+			<block startx="-3" startz="2" endx="-3" endz="2"></block>
+			<block startx="-2" startz="2" endx="-2" endz="2"></block>
+			<block startx="-1" startz="2" endx="-1" endz="3"></block>
+			<block startx="0" startz="2" endx="0" endz="2"></block>
+			<block startx="1" startz="2" endx="1" endz="2"></block>
+			<block startx="2" startz="2" endx="2" endz="2"></block>
+			<block startx="3" startz="2" endx="3" endz="3"></block>
+			<block startx="4" startz="2" endx="4" endz="3"></block>
+			<block startx="5" startz="3" endx="5" endz="4"></block>
+			<block startx="1" startz="-3" endx="1" endz="1"></block>
+			<block startx="2" startz="-2" endx="2" endz="1"></block>
+			<block startx="3" startz="-3" endx="3" endz="1"></block>
+			<block startx="4" startz="-3" endx="4" endz="1"></block>
+			<block startx="5" startz="-3" endx="5" endz="-2"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
+			<block startx="-4" startz="-4" endx="-4" endz="-4"></block>
+			<block startx="-3" startz="-4" endx="-3" endz="-4"></block>
+			<block startx="-2" startz="-4" endx="-2" endz="-3"></block>
+			<block startx="-1" startz="-4" endx="-1" endz="-3"></block>
+			<block startx="0" startz="-4" endx="0" endz="-3"></block>
+			<block startx="-4" startz="3" endx="-4" endz="4"></block>
+			<block startx="-3" startz="3" endx="-3" endz="4"></block>
+			<block startx="-2" startz="3" endx="-2" endz="4"></block>
+			<block startx="-1" startz="4" endx="-1" endz="4"></block>
+			<block startx="0" startz="3" endx="0" endz="4"></block>
+			<block startx="1" startz="3" endx="1" endz="4"></block>
+			<block startx="2" startz="3" endx="2" endz="4"></block>
+			<block startx="1" startz="-4" endx="1" endz="-4"></block>
+			<block startx="2" startz="-4" endx="2" endz="-4"></block>
+			<block startx="3" startz="-4" endx="3" endz="-4"></block>
+		</tilegroup>
+		<heights>
+			<tiles x="-7" z="-7">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>
+			<tiles x="-7" z="-6">-0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 </tiles>
+			<tiles x="-7" z="-5">-0.000 0.184 0.184 0.184 0.184 0.184 0.184 0.184 0.184 0.184 0.184 0.184 0.184 -0.000 -0.000 </tiles>
+			<tiles x="-7" z="-4">-0.000 -0.266 -0.266 -0.266 -0.266 -0.266 -0.266 -0.266 -0.266 -0.266 -0.266 -0.266 -0.266 -0.000 -0.000 </tiles>
+			<tiles x="-7" z="-3">-0.000 -0.266 -0.266 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 1.834 -0.266 -0.000 -0.000 </tiles>
+			<tiles x="-7" z="-2">-0.000 -0.266 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 1.834 -0.000 -0.000 </tiles>
+			<tiles x="-7" z="-1">-0.000 -0.266 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 1.834 -0.000 -0.000 </tiles>
+			<tiles x="-7" z="0">-0.000 -0.266 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 1.834 -0.000 -0.000 </tiles>
+			<tiles x="-7" z="1">-0.000 -0.266 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 1.834 -0.000 -0.000 </tiles>
+			<tiles x="-7" z="2">-0.000 -0.266 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 1.834 -0.000 -0.000 </tiles>
+			<tiles x="-7" z="3">-0.000 -0.266 1.834 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 2.284 1.834 -0.000 -0.000 </tiles>
+			<tiles x="-7" z="4">-0.000 -0.266 -0.266 1.834 1.834 1.834 2.284 2.284 2.284 2.284 2.284 1.834 -0.266 -0.000 -0.000 </tiles>
+			<tiles x="-7" z="5">-0.000 0.184 0.184 0.184 0.184 0.184 0.184 0.184 0.184 0.184 0.184 0.184 0.184 -0.000 -0.000 </tiles>
+			<tiles x="-7" z="6">-0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 -0.000 </tiles>
+		</heights>
+	</tiles>
+</grouping>
