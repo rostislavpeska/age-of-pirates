@@ -1406,7 +1406,7 @@ void main(void)
 
 	rmCreateTrigger("Starting Techs");
 	rmSwitchToTrigger(rmTriggerID("Starting techs"));
-	for(i=1; <= cNumberNonGaiaPlayers) {
+	for(i=0; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechzpIsAztecMap"); // Aztec Map
@@ -1415,6 +1415,12 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechzpAztecCityGeneralSetup"); // Aztec Map
 		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechDEEnableTradeRouteNativeAmerican"); // Aztec Map
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	for(i=1; <= cNumberNonGaiaPlayers) {
 		if (rmGetPlayerTeam(i) == 0) {
 			rmAddTriggerEffect("ZP Set Tech Status (XS)");
 			rmSetTriggerEffectParamInt("PlayerID",i);
