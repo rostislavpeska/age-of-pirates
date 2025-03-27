@@ -43009,7 +43009,9 @@
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
     <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
+    <tech row="0" page="11" column="1">zpSPCBlessedCitySingle</tech>
     <tech row="0" page="11" column="2">DESPCPapalLegate</tech>
+    <tech row="0" page="11" column="2">zpSPCPapalLegateSingle</tech>
     <tech row="0" page="11" column="3">DESPCExcommunication</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -48958,7 +48960,7 @@
     <command page="10" column="8">CancelAllQueued</command>
     <command page="10" column="5">Eject</command>
     <command page="11" column="4">Abilities</command>
-    <tactics>notre_dame.tactics</tactics>
+    <tactics>aztecgreattemple.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
       <rate type="XP">4.000000</rate>
@@ -51438,7 +51440,7 @@
     <flag>Invulnerable</flag>
     <flag>InvulnerableToAreaDamage</flag>
     <flag>VisibleUnderFog</flag>
-    <tactics>parisbuilding.tactics</tactics>
+    <tactics>azteccityresource.tactics</tactics>
     <protoaction>
       <name>AutoGather</name>
       <rate type="Food">2.50000</rate>
@@ -51528,7 +51530,7 @@
     <command page="9" column="2">TacticCoin</command>
     <command page="9" column="3">TacticXPShrine</command>
     <command page="9" column="1">TacticWood</command>
-    <tactics>zpconvertableshrine.tactics</tactics>
+    <tactics>zpconvertableshrinesingle.tactics</tactics>
     <protoaction>
       <name>AutoGatherCoin</name>
       <rate type="Gold">1.550000</rate>
@@ -51625,7 +51627,7 @@
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
     <command page="10" column="5">Eject</command>
-    <tactics>parisbuilding.tactics</tactics>
+    <tactics>azteccityresource.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
       <rate type="Gold">2.750000</rate>
@@ -51744,7 +51746,7 @@
     <command page="10" column="3">SetGatherPointEconomy</command>
     <command page="10" column="8">CancelAllQueued</command>
     <command page="10" column="5">Eject</command>
-    <tactics>parisbuilding.tactics</tactics>
+    <tactics>azteccityresource.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
       <rate type="Wood">2.000000</rate>
@@ -51823,7 +51825,7 @@
     <flag>NotDeleteable</flag>
     <flag>Invulnerable</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
-    <tactics>parismarket.tactics</tactics>
+    <tactics>azteccitymarket.tactics</tactics>
     <protoaction>
       <name>AutoGatherXPTeam</name>
       <rate type="XP">0.7</rate>

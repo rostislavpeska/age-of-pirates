@@ -11,7 +11,7 @@ include "mercenaries.xs";
 include "ypAsianInclude.xs";
 include "ypKOTHInclude.xs";
 
-string fish1 = "fishCod";
+string fish1 = "ypFishCarp";
 
 void main(void)
 {
@@ -1175,6 +1175,11 @@ void main(void)
     rmSetGroupingMaxDistance(blockPlayerStartMalta, 0.50);
 	rmAddGroupingToClass(blockPlayerStartMalta, rmClassID("classBlock"));
 
+	int blockPlayerStartItaly = rmCreateGrouping("blockPlayerStartItaly", "IT_SPC_PlayerStartItalian");
+    rmSetGroupingMinDistance(blockPlayerStartItaly, 0.00);
+    rmSetGroupingMaxDistance(blockPlayerStartItaly, 0.50);
+	rmAddGroupingToClass(blockPlayerStartItaly, rmClassID("classBlock"));
+
 	int blockPlayerGold = rmCreateGrouping("blockPlayerGold", "IT_SPC_PlayerGold");
     rmSetGroupingMinDistance(blockPlayerGold, 0.00);
     rmSetGroupingMaxDistance(blockPlayerGold, 0.50);
@@ -1207,6 +1212,8 @@ void main(void)
 			rmSetPlayerArea(i, id);
 			if (rmGetPlayerCiv(i) == rmGetCivID("DEMaltese"))
 				rmPlaceGroupingAtLoc(blockPlayerStartMalta, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			else if (rmGetPlayerCiv(i) == rmGetCivID("DEItalians"))
+				rmPlaceGroupingAtLoc(blockPlayerStartItaly, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 			else
 			rmPlaceGroupingAtLoc(blockPlayerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 			rmPlaceObjectDefAtLoc(playerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));

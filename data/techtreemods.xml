@@ -21708,6 +21708,15 @@
       <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactory</target>
       </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
       <effect type="Data" action="AutoGatherCoinTeam" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactoryFlorence</target>
       </effect>
@@ -21717,6 +21726,15 @@
       <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactoryFlorence</target>
       </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryFlorence</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryFlorence</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryFlorence</target>
+      </effect>
       <effect type="Data" action="AutoGatherCoinTeam" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
       </effect>
@@ -21724,6 +21742,15 @@
         <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
       </effect>
       <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
       </effect>
       <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
@@ -21767,6 +21794,51 @@
       </effect>
       <effect type="Data" action="AutoGatherXP" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecShrine</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecShrine</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecShrine</target>
+      </effect>
+      <effect type="Data" action="AutoGatherXP" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecShrine</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecTreasury</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecGranary</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecForester</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecForester</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecGreatTemple</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecCityMarket</target>
       </effect>
     </effects>
   </tech>
@@ -22131,9 +22203,9 @@
       <effect type="CommandAdd" proto="MercGreatCannon" page="0" column="4">
         <target type="ProtoUnit">zpSPCGermanCathedral</target>
       </effect>
-      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPapalLegateSingle</effect>
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
-      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCitySingle</effect>
       <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
       <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
       <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
@@ -22148,6 +22220,15 @@
         <target type="ProtoUnit">zpSPCGoldSmelter</target>
       </effect>
       <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCCapturableFactory</target>
       </effect>
       <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
@@ -23045,6 +23126,15 @@
       <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
       </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpAztecCityAttackerSetup" type="Normal">
@@ -23161,6 +23251,46 @@
       <effect type="CommandAdd" proto="xpTlalocCanoe" page="0" column="8">
         <target type="ProtoUnit">DEPort</target>
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCBlessedCitySingle" type="Normal">
+    <dbid>40961</dbid>
+    <displaynameid>302455</displaynameid>
+    <cost resourcetype="Food">150.0000</cost>
+    <cost resourcetype="Gold">150.0000</cost>
+    <cost resourcetype="Wood">150.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\blessed_city_single.png</icon>
+    <rollovertextid>302456</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpBlessedCityShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPapalLegateSingle" type="Normal">
+    <dbid>9068</dbid>
+    <displaynameid>302458</displaynameid>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\papal_legate_single.png</icon>
+    <rollovertextid>302457</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="deCrateofXPLarge" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="-0.20" subtype="FreeHomeCityUnit" unittype="deCrateofXP" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TextOutputTechName">123070</effect>
     </effects>
   </tech>
 

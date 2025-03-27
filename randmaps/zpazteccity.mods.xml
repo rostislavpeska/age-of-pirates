@@ -77,5 +77,8 @@
 		<unit name="TreeAmazon">
 			<initialresource resourcetype="Wood">600.0000</initialresource>
 		</unit>
+		<unit name="deField">
+			<flag>InvulnerableIfGaia</flag>
+		</unit>
 	</protomods>
 </mods>

@@ -2434,7 +2434,7 @@
       <string _locid="302434">ZP SPC Aztec Outpost Socket 4</string>
       <string _locid="302435">Builds mighty Outpost</string>
       <string _locid="302436">Build mighty Outpost</string>
-      <string _locid="302437">The Lake of Blood</string>
+      <string _locid="302437">TEST</string>
       <string _locid="302438">Tenochtitlan Description</string>
       <string _locid="302439">Tenochtitlan Loading</string>
       <string _locid="302440">ZP NAT Merc Eagle Man</string>
@@ -2455,6 +2455,10 @@
       <string _locid="302454">Defender holds: 3 sockets</string>
       <string _locid="302454">Defender holds: 2 sockets</string>
       <string _locid="302454">Defender holds: 1 socket</string>
+      <string _locid="302455">Blessed City</string>
+      <string _locid="302456">All convertable city resource buildings work faster by 15%.</string>
+      <string _locid="302457">Ships 1 Large Collection of Books and 1 Small Collection of Books for each 10 minutes of game time elapsed, up to 30 minutes.</string>
+      <string _locid="302458">Papal Legation</string>
 
 
       <!-- ======================================== -->
