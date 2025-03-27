@@ -2698,6 +2698,27 @@
       </guardianunit>
       <difficulty>305</difficulty>
     </nugget>
+    <nugget>
+      <name>zpEmbassyAztec</name>
+      <rolloverstringid>124120</rolloverstringid>
+      <applystringid>124121</applystringid>
+      <nuggetunit>NuggetCapturableBuildingBig</nuggetunit>
+      <type>ConvertUnit</type>
+      <amount>1</amount>
+      <maptype>piratehistoricalmap</maptype>
+      <convertunit>
+        <unit>zpNativeEmbassyParisReward</unit>
+        <attachdummy>bone_nuggetA</attachdummy>
+      </convertunit>
+      <guardian>zpGuardianEagleWarrior</guardian>
+      <guardian>zpGuardianEagleWarrior</guardian>
+      <guardian>zpGuardianEagleWarrior</guardian>
+      <guardian>zpGuardianEagleWarrior</guardian>
+      <guardian>zpGuardianEagleWarrior</guardian>
+      <guardian>Cougar</guardian>
+      <guardian>Cougar</guardian>
+      <difficulty>311</difficulty>
+    </nugget>
 
 
     <!--WATER NUGGETS-->

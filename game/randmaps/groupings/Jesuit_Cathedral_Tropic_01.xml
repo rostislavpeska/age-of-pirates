@@ -38,7 +38,6 @@
 		<unit variation="227" posx="-0.7990" posz="1.0860" orientx="0.7071" orienty="-0.0000" orientz="0.7071">NativeTownObstruction</unit>
 		<unit variation="225" posx="13.4298" posz="-1.2892" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushCoastalJapan</unit>
 		<unit variation="13" posx="-4.1313" posz="-0.6606" orientx="0.7071" orienty="0.0000" orientz="0.7071">PropsColony</unit>
-		<unit variation="41" posx="-0.0886" posz="0.6555" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpJesuitCathedral</unit>
 		<unit variation="182" posx="-9.5029" posz="1.3641" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">ypNativeTempleJesuit</unit>
 		<unit variation="227" posx="-1.7262" posz="2.3637" orientx="0.7071" orienty="-0.0000" orientz="0.7071">NativeTownObstruction</unit>
 		<unit variation="227" posx="11.3105" posz="3.4373" orientx="0.7071" orienty="-0.0000" orientz="0.7071">NativeTownObstruction</unit>
@@ -68,6 +67,7 @@
 		<unit variation="52" posx="11.0915" posz="11.4708" orientx="0.3827" orienty="0.0000" orientz="-0.9239">UnderbrushCoastalJapan</unit>
 		<unit variation="140" posx="0.0352" posz="12.9807" orientx="0.0613" orienty="0.0000" orientz="-0.9981">ypSMJesuitLady</unit>
 		<unit variation="152" posx="10.8295" posz="14.4553" orientx="0.3827" orienty="0.0000" orientz="-0.9239">UnderbrushCoastalJapan</unit>
+		<unit variation="41" posx="-0.0886" posz="0.6555" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpJesuitCathedral</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_beach_street_ground">

@@ -79,8 +79,8 @@
 		<unit variation="95" posx="-29.7976" posz="-5.2655" orientx="-1.0000" orienty="0.0000" orientz="0.0001">WallWoodNative</unit>
 		<unit variation="7" posx="11.7514" posz="-5.2211" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCAztecProps</unit>
 		<unit variation="95" posx="28.8060" posz="-5.7717" orientx="-1.0000" orienty="0.0000" orientz="0.0001">WallWoodNative</unit>
-		<unit variation="83" posx="18.3693" posz="-0.3431" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCAztecTemple</unit>
-		<unit variation="83" posx="-19.2841" posz="0.2432" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCAztecTemple</unit>
+		<unit variation="83" posx="18.3693" posz="-0.3431" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCAztecMediumTemple</unit>
+		<unit variation="83" posx="-19.2841" posz="0.2432" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCAztecMediumTemple</unit>
 		<unit variation="7" posx="-12.5415" posz="-4.7111" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCAztecProps</unit>
 		<unit variation="161" posx="-25.2372" posz="-2.8606" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
 		<unit variation="140" posx="-4.4931" posz="-1.6922" orientx="0.9239" orienty="0.0000" orientz="0.3827">UnderbrushAmazon</unit>
@@ -189,10 +189,11 @@
 		<unit variation="203" posx="9.8234" posz="29.2060" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCAztecWall5</unit>
 		<unit variation="229" posx="15.1867" posz="29.2631" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCAztecWallConnector</unit>
 		<unit variation="229" posx="-15.3896" posz="29.2000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCAztecWallConnector</unit>
-		<unit variation="105" posx="-28.5757" posz="-28.4607" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpAztecOutpost</unit>
-		<unit variation="163" posx="26.6652" posz="-28.3011" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpAztecOutpost</unit>
-		<unit variation="102" posx="-28.2524" posz="27.9779" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpAztecOutpost</unit>
-		<unit variation="75" posx="27.6221" posz="27.6684" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpAztecOutpost</unit>
+		<unit variation="105" posx="-28.5757" posz="-28.4607" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCSocketAztecOutpost1</unit>
+		<unit variation="163" posx="26.6652" posz="-28.3011" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCSocketAztecOutpost2</unit>
+		<unit variation="102" posx="-28.2524" posz="27.9779" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCSocketAztecOutpost3</unit>
+		<unit variation="75" posx="27.6221" posz="27.6684" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCSocketAztecOutpost4</unit>
+		<unit variation="1" posx="0" posz="0" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">
@@ -423,7 +424,7 @@
 			<block startx="12" startz="-15" endx="12" endz="-9"></block>
 			<block startx="13" startz="-15" endx="13" endz="-9"></block>
 		</tilegroup>
-		<tilegroup type="Ice" subtype="Amazon\ground_road_spc_ama">
+		<tilegroup type="PassableLand" subtype="Amazon\ground_road_spc_ama">
 			<block startx="-15" startz="-11" endx="-15" endz="-11"></block>
 			<block startx="-14" startz="-15" endx="-14" endz="-12"></block>
 			<block startx="-13" startz="-15" endx="-13" endz="-12"></block>

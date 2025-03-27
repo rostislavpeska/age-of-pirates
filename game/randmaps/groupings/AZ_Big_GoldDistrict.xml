@@ -7,7 +7,7 @@
 	<selectassingleunit>0</selectassingleunit>
 	<workonassingleunit>0</workonassingleunit>
 	<units>
-		<unit variation="5" posx="27.4433" posz="-28.4137" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeAztecOutpost</unit>
+		<unit variation="5" posx="27.4433" posz="-28.4137" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCSocketAztecOutpost4</unit>
 		<unit variation="6" posx="-5.7713" posz="-27.4353" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">SPCAztecProps</unit>
 		<unit variation="6" posx="6.1656" posz="-27.8810" orientx="-0.0005" orienty="0.0000" orientz="-1.0000">SPCAztecProps</unit>
 		<unit variation="34" posx="-16.0290" posz="-28.2532" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCAztecWallConnector</unit>
@@ -15,7 +15,7 @@
 		<unit variation="160" posx="8.6292" posz="-29.3952" orientx="-1.0000" orienty="0.0000" orientz="0.0008">zpCityStateFlag</unit>
 		<unit variation="184" posx="15.9851" posz="-28.4096" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCAztecWallConnector</unit>
 		<unit variation="185" posx="-21.6703" posz="-24.3155" orientx="-1.0000" orienty="0.0000" orientz="0.0008">zpHarbourPathBlock3</unit>
-		<unit variation="200" posx="-27.8383" posz="-27.5929" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeAztecOutpost</unit>
+		<unit variation="200" posx="-27.8383" posz="-27.5929" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCSocketAztecOutpost3</unit>
 		<unit variation="185" posx="-16.1081" posz="-24.2717" orientx="-1.0000" orienty="0.0000" orientz="0.0008">zpHarbourPathBlock3</unit>
 		<unit variation="165" posx="-10.8161" posz="-26.6150" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpSPCAztecWall5</unit>
 		<unit variation="185" posx="-11.5916" posz="-25.7650" orientx="0.3820" orienty="0.0000" orientz="-0.9242">zpHarbourPathBlock3</unit>
@@ -159,9 +159,9 @@
 		<unit variation="106" posx="21.3300" posz="22.7623" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">TanningRack</unit>
 		<unit variation="127" posx="-13.9479" posz="24.7059" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeHouseAztec</unit>
 		<unit variation="253" posx="-21.7288" posz="24.9605" orientx="0.9987" orienty="0.0000" orientz="-0.0510">ypSPCAztecHouse</unit>
-		<unit variation="200" posx="-27.9508" posz="25.3199" orientx="-0.0005" orienty="0.0000" orientz="-1.0000">zpNativeAztecOutpost</unit>
+		<unit variation="200" posx="-27.9508" posz="25.3199" orientx="-0.0005" orienty="0.0000" orientz="-1.0000">zpSPCSocketAztecOutpost2</unit>
 		<unit variation="185" posx="-23.3200" posz="23.8365" orientx="-0.0008" orienty="-0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
-		<unit variation="200" posx="27.7798" posz="26.0051" orientx="0.0005" orienty="0.0000" orientz="1.0000">zpNativeAztecOutpost</unit>
+		<unit variation="200" posx="27.7798" posz="26.0051" orientx="0.0005" orienty="0.0000" orientz="1.0000">zpSPCSocketAztecOutpost1</unit>
 		<unit variation="237" posx="21.6731" posz="25.7361" orientx="0.0988" orienty="0.0000" orientz="-0.9951">ypSPCAztecHouse</unit>
 		<unit variation="185" posx="22.9141" posz="24.9462" orientx="-0.0008" orienty="-0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
 		<unit variation="185" posx="16.3900" posz="24.6444" orientx="-0.0008" orienty="-0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
@@ -171,6 +171,7 @@
 		<unit variation="6" posx="-5.8286" posz="28.9545" orientx="1.0000" orienty="0.0000" orientz="0.0003">SPCAztecProps</unit>
 		<unit variation="6" posx="6.9197" posz="28.6275" orientx="-1.0000" orienty="0.0000" orientz="-0.0003">SPCAztecProps</unit>
 		<unit variation="128" posx="0.5576" posz="26.1192" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCAztecStairs</unit>
+		<unit variation="1" posx="0" posz="0" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">

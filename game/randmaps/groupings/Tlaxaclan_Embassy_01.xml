@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>11</width>
+	<height>14</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="0" posx="4.5339" posz="-11.5957" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="244" posx="3.5925" posz="-10.5999" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="79" posx="4.9253" posz="-8.8849" orientx="-0.8144" orienty="0.0000" orientz="0.5803">SMIncanCookpot</unit>
+		<unit variation="111" posx="5.4644" posz="-5.0975" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="239" posx="7.0288" posz="-4.7719" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="127" posx="4.1025" posz="-6.0435" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="134" posx="3.1030" posz="-4.6159" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="235" posx="3.4395" posz="-3.2640" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="67" posx="7.9433" posz="-3.0237" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="41" posx="-4.0181" posz="-3.9824" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNuggetKidnapGuillotine</unit>
+		<unit variation="63" posx="4.6318" posz="0.6396" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="249" posx="6.1946" posz="1.3887" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="158" posx="-7.6677" posz="2.1349" orientx="-0.3827" orienty="0.0000" orientz="0.9239">PropsNative</unit>
+		<unit variation="109" posx="-8.6533" posz="1.8355" orientx="-0.3827" orienty="0.0000" orientz="0.9239">PropsNative</unit>
+		<unit variation="178" posx="-7.3163" posz="4.6880" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">NativeHouseAztec</unit>
+		<unit variation="25" posx="4.4691" posz="4.5674" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">SPCPathBlock3</unit>
+		<unit variation="91" posx="1.1290" posz="3.8607" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">PropsNative</unit>
+		<unit variation="172" posx="-10.2009" posz="4.5574" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="64" posx="4.7045" posz="5.2993" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">PropsNative</unit>
+		<unit variation="83" posx="-2.9065" posz="5.0970" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="221" posx="-3.1591" posz="5.0189" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="163" posx="-4.1662" posz="4.0286" orientx="-0.3827" orienty="0.0000" orientz="0.9239">PropsNative</unit>
+		<unit variation="178" posx="0.5407" posz="6.1399" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">NativeHouseAztec</unit>
+		<unit variation="25" posx="-4.0379" posz="5.8731" orientx="0.3827" orienty="0.0000" orientz="-0.9239">SPCPathBlock3</unit>
+		<unit variation="251" posx="-4.7914" posz="6.9819" orientx="0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="texas\walking_path_tex">
+			<block startx="-4" startz="-2" endx="-4" endz="-1"></block>
+			<block startx="-3" startz="-3" endx="-3" endz="1"></block>
+			<block startx="-2" startz="-3" endx="-2" endz="1"></block>
+			<block startx="-1" startz="-3" endx="-1" endz="1"></block>
+			<block startx="0" startz="-3" endx="0" endz="1"></block>
+			<block startx="1" startz="-4" endx="1" endz="1"></block>
+			<block startx="2" startz="-4" endx="2" endz="1"></block>
+			<block startx="3" startz="-3" endx="3" endz="-1"></block>
+			<block startx="-3" startz="2" endx="-3" endz="2"></block>
+			<block startx="-2" startz="2" endx="-2" endz="3"></block>
+			<block startx="-1" startz="2" endx="-1" endz="3"></block>
+			<block startx="0" startz="2" endx="0" endz="2"></block>
+			<block startx="1" startz="2" endx="1" endz="2"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

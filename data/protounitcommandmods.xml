@@ -523,6 +523,16 @@
     <usemultiple>
     </usemultiple>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpBuildAztecOutpost</name>
+    <icon>resources\images\icons\command\build_az_outpost.png</icon>
+    <command>uiSocketBuild(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <socketbuild>
+    </socketbuild>
+    <rollovertextid>302436</rollovertextid>
+  </protounitcommand>
 
   <!--
 

@@ -14,7 +14,7 @@
 		<unit variation="132" posx="18.0821" posz="-29.3609" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCAztecWallConnector</unit>
 		<unit variation="177" posx="-0.3999" posz="-29.2223" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCXPWoodFortGate</unit>
 		<unit variation="40" posx="11.8735" posz="-29.1428" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCAztecWall5</unit>
-		<unit variation="5" posx="27.4433" posz="-28.4137" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeAztecOutpost</unit>
+		<unit variation="5" posx="27.4433" posz="-28.4137" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCSocketAztecOutpost4</unit>
 		<unit variation="130" posx="-5.6731" posz="-29.1071" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCAztecWallConnector</unit>
 		<unit variation="115" posx="-21.6761" posz="-28.7237" orientx="0.0003" orienty="0.0000" orientz="1.0000">PropsNative</unit>
 		<unit variation="115" posx="-16.5380" posz="-28.9706" orientx="0.0003" orienty="0.0000" orientz="1.0000">PropsNative</unit>
@@ -22,7 +22,7 @@
 		<unit variation="140" posx="-20.5116" posz="-28.9016" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
 		<unit variation="219" posx="20.0370" posz="-29.2242" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallSmall</unit>
 		<unit variation="81" posx="22.5135" posz="-29.6162" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
-		<unit variation="200" posx="-27.9410" posz="-26.9584" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeAztecOutpost</unit>
+		<unit variation="200" posx="-27.9410" posz="-26.9584" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCSocketAztecOutpost3</unit>
 		<unit variation="103" posx="13.0000" posz="-25.0000" orientx="0.0006" orienty="0.0000" orientz="1.0000">deField</unit>
 		<unit variation="103" posx="21.0000" posz="-25.0000" orientx="0.0006" orienty="0.0000" orientz="1.0000">deField</unit>
 		<unit variation="139" posx="25.6196" posz="-25.3217" orientx="1.0000" orienty="0.0000" orientz="0.0000">UnderbrushTexasGrass</unit>
@@ -255,9 +255,9 @@
 		<unit variation="121" posx="-7.0000" posz="25.0000" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">deField</unit>
 		<unit variation="115" posx="29.8198" posz="23.8737" orientx="-1.0000" orienty="0.0000" orientz="0.0003">PropsNative</unit>
 		<unit variation="249" posx="-28.9343" posz="23.1417" orientx="1.0000" orienty="0.0000" orientz="-0.0002">zpRuinWallLarge</unit>
-		<unit variation="158" posx="-28.0199" posz="26.0048" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeAztecOutpost</unit>
+		<unit variation="158" posx="-28.0199" posz="26.0048" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSocketAztecOutpost2</unit>
 		<unit variation="6" posx="0.3112" posz="25.7301" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCAztecStairs</unit>
-		<unit variation="68" posx="28.3528" posz="26.9845" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeAztecOutpost</unit>
+		<unit variation="68" posx="28.3528" posz="26.9845" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSocketAztecOutpost1</unit>
 		<unit variation="126" posx="7.2371" posz="28.4145" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
 		<unit variation="115" posx="8.0390" posz="27.9623" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
 		<unit variation="176" posx="-3.2951" posz="28.1800" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsNative</unit>
@@ -275,6 +275,7 @@
 		<unit variation="80" posx="10.2331" posz="28.5213" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpRuinWallLarge</unit>
 		<unit variation="45" posx="17.4397" posz="28.6456" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpRuinWallLarge</unit>
 		<unit variation="249" posx="22.9163" posz="28.1528" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
+		<unit variation="1" posx="0" posz="0" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">

@@ -48,7 +48,7 @@
 		<unit variation="85" posx="-5.2812" posz="10.2672" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpBridgeWallSmall</unit>
 	</units>
 	<tiles>
-		<tilegroup type="Shoreline" subtype="great_lakes\ground_shoreline1_gls">
+		<tilegroup type="Shoreline" subtype="yucatan\ground_shoreline1_yuc">
 			<block startx="-5" startz="-6" endx="-5" endz="-6"></block>
 			<block startx="-4" startz="-6" endx="-4" endz="-6"></block>
 			<block startx="-5" startz="-5" endx="-5" endz="2"></block>

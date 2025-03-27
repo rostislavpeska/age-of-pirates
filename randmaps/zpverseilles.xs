@@ -1914,7 +1914,7 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	rmSetTriggerEffectParam("Name","VictoryCounter"+i);
 	rmSetTriggerEffectParamInt("Start", victoryCountDown);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Garde du Corps will come in"); // Counter Message
+	rmSetTriggerEffectParam("Msg","{302449}"); // Counter Message
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("Victory_Defenders"));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);

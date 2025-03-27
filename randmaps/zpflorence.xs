@@ -11,7 +11,7 @@ include "mercenaries.xs";
 include "ypAsianInclude.xs";
 include "ypKOTHInclude.xs";
 
-string fish1 = "ypFishCarp";
+string fish1 = "fishCod";
 
 void main(void)
 {

@@ -5086,7 +5086,9 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatChevaulegerProxy" culture="none" newname="122482">
       </effect>
-       <effect mergemode="add" type="SetName" proto="zpNatBohemianLandsknecht" culture="none" newname="302328">
+      <effect mergemode="add" type="SetName" proto="zpNatBohemianLandsknecht" culture="none" newname="302328">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="302447">
       </effect>
     </effects>
   </tech>
@@ -22905,6 +22907,260 @@
         <target type="ProtoUnit">zpSPCNationalBank</target>
       </effect>
       <effect type="TextOutputTechName">123070</effect>
+    </effects>
+  </tech>
+  <tech name="zpAztecConverGate" type="Normal">
+    <dbid>40956</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="CWallGate" fromprotoid="zpInvisibleGateSocket">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecMercenariesShadow" type="Normal">
+    <dbid>40957</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deNatMercJaguarWarrior" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecJaguarWarriorMercIcon</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">deNatMercJaguarWarrior</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercEagleWarrior</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMercJaguarWarrior" page="0" column="150">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatMercEagleWarrior" page="0" column="151">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMercJaguarWarrior" page="0" column="150">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatMercEagleWarrior" page="0" column="151">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deNatMercJaguarWarrior</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercEagleWarrior</target>
+      </effect>
+      <effect type="CommandAdd" tech="NatGarlandWars" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="ChampionAztecs" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="WarriorSocietyAztecs" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="NatGarlandWars" page="1" column="1">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
+      <effect type="CommandAdd" tech="ChampionAztecs" page="1" column="1">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
+      <effect type="CommandAdd" tech="WarriorSocietyAztecs" page="1" column="1">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">ChampionAztecs</effect>
+      <effect type="TechStatus" status="obtainable">WarriorSocietyAztecs</effect>
+      <effect type="TechStatus" status="obtainable">NatGarlandWars</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect civ="Aztecs" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="ChampionAztecs">
+    <effects>
+      <effect mergemode="Add" type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercEagleWarrior</target>
+      </effect>
+      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="302445">
+      </effect>
+      <effect mergemode="Add" type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercEagleWarrior</target>
+      </effect>
+      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="302447" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="WarriorSocietyAztecs">
+    <effects>
+      <effect mergemode="Add" type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercEagleWarrior</target>
+      </effect>
+      <effect mergemode="Add" type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercEagleWarrior</target>
+      </effect>
+      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="302444">
+      </effect>
+      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="302447" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="NatGarlandWars">
+    <effects>
+      <effect mergemode="Add" type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercEagleWarrior</target>
+      </effect>
+      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="302446">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAztecCityGeneralSetup" type="Normal">
+    <dbid>40958</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>  
+      <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Canoe</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecGreatTemple</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecGranary</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecShrine</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecTreasury</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecForester</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecCityMarket</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAztecCityAttackerSetup" type="Normal">
+    <dbid>40959</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>  
+      <effect mergemode="Add" type="SetName" proto="deNatMercJaguarWarrior" culture="none" newname="302448">
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRowboat</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAztecCityDefenderSetup" type="Normal">
+    <dbid>40960</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>  
+      <effect type="Data" amount="250.00" subtype="PopulationCap" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">House</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">HouseEast</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">HouseMed</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Manor</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deHouseAfrican</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deTorp</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">HouseAztec</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deHouseInca</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypVillage</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypHouseIndian</target>
+      </effect>
+      <effect type="CommandRemove" proto="House">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseEast">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseMed">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deHouseAfrican">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deTorp">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseAztec">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deHouseInca">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypVillage">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypHouseIndian">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="Manor">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">xpTlalocCanoe</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">xpWarCanoe</target>
+      </effect>
+      <effect type="CommandAdd" proto="xpWarCanoe" page="0" column="7">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandAdd" proto="xpTlalocCanoe" page="0" column="8">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandAdd" proto="xpWarCanoe" page="0" column="7">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandAdd" proto="xpTlalocCanoe" page="0" column="8">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandAdd" proto="xpWarCanoe" page="0" column="7">
+        <target type="ProtoUnit">DEPort</target>
+      </effect>
+      <effect type="CommandAdd" proto="xpTlalocCanoe" page="0" column="8">
+        <target type="ProtoUnit">DEPort</target>
+      </effect>
     </effects>
   </tech>
 

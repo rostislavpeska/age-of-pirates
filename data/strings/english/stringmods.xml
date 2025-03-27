@@ -2425,7 +2425,36 @@
       <string _locid="302425">ZP SPC Aztec Stairs</string>
       <string _locid="302426">ZP SPC Aztec Props Air</string>
       <string _locid="302427">ZP SPC Wood Wall Air</string>
-
+      <string _locid="302428">ZP SPC Aztec Medium Temple</string>
+      <string _locid="302429">The Aztec temple generates resources per second which can be set to food, wood, coin, or a combination of all resources including export and experience.</string>
+      <string _locid="302430">ZP SPC Aztec City Outpost</string>
+      <string _locid="302431">ZP SPC Aztec Outpost Socket 1</string>
+      <string _locid="302432">ZP SPC Aztec Outpost Socket 2</string>
+      <string _locid="302433">ZP SPC Aztec Outpost Socket 3</string>
+      <string _locid="302434">ZP SPC Aztec Outpost Socket 4</string>
+      <string _locid="302435">Builds mighty Outpost</string>
+      <string _locid="302436">Build mighty Outpost</string>
+      <string _locid="302437">The Lake of Blood</string>
+      <string _locid="302438">Tenochtitlan Description</string>
+      <string _locid="302439">Tenochtitlan Loading</string>
+      <string _locid="302440">ZP NAT Merc Eagle Man</string>
+      <string _locid="302441">ZP GRD Maraudig Tlaxcaltec</string>
+      <string _locid="302442">Tlaxcaltec Rebel</string>
+      <string _locid="302443">Tlaxcaltec Spearman</string>
+      <string _locid="302444">Elite Tlaxcaltec Spearman</string>
+      <string _locid="302445">Champion Tlaxcaltec Spearman</string>
+      <string _locid="302446">Garland Tlaxcaltec Spearman</string>
+      <string _locid="302447">Legendary Tlaxcaltec Spearman</string>
+      <string _locid="302448">Tlaxcaltec Jaguar Warrior</string>
+      <string _locid="302449">Garde du Corps will come in</string>
+      <string _locid="302450">Oaxaca army will come in</string>
+      <string _locid="302451">Hold at least one out of four Aztec native districts before the Oxaca army comes to the city.</string>
+      <string _locid="302452">Destroy all defender's Aztec settlement trading posts in the four main Tenochtitlan districts.</string>
+      <string _locid="302453">If the defender loses the Aztec district, he can rebuild the trading post. Defender can never own zero districts.</string>
+      <string _locid="302454">Defender holds: 4 sockets</string>
+      <string _locid="302454">Defender holds: 3 sockets</string>
+      <string _locid="302454">Defender holds: 2 sockets</string>
+      <string _locid="302454">Defender holds: 1 socket</string>
 
 
       <!-- ======================================== -->
