@@ -48934,9 +48934,8 @@
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
-    <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
-    <tech row="0" page="11" column="2">DESPCPapalLegate</tech>
-    <tech row="0" page="11" column="3">DESPCExcommunication</tech>
+    <tech row="0" page="11" column="1">zpSPCBlessedCityAztec</tech>
+    <tech row="0" page="11" column="2">zpSPCAztecWalls</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -52036,6 +52035,7 @@
     <flag>ColonyBuilding</flag>
     <flag>HasGatherPoint</flag>
     <flag>Tracked</flag>
+    <flag>InvulnerableIfGaia</flag>
     <command page ="9" column ="6">Tactic32</command>
     <command page ="9" column ="3">Tactic30</command>
     <command page ="9" column ="3">Tactic31</command>
@@ -52251,6 +52251,9 @@
     <unittype>AbstractFindOtherMilitaryBuilding</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
+    <tech row="0" page="1" column="0">zpSPCAztecTempleFoodFestival</tech>
+    <tech row="0" page="1" column="1">zpSPCAztecTempleFireFestival</tech>
+    <tech row="0" page="1" column="2">zpSPCAztecTempleGoldFestival</tech>
     <flag>VisibleUnderFog</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>

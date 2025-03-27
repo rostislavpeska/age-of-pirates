@@ -2308,7 +2308,7 @@
       <string _locid="302308">Experience Building, Team improvement building with special abilities</string>
       <string _locid="302309">Team improvement building, slowly heals nearby units</string>
       <string _locid="302310">Experience Building, team improvement building with special abilities, slowly heals nearby units</string>
-      <string _locid="302311">Temple of Huītzilōpōchtli</string>
+      <string _locid="302311">Aztec Main Temple</string>
       <string _locid="302312">ZP SPC Aztec Great Temple</string>
       <string _locid="302313">ZP SPC Fire Pit</string>
       <string _locid="302314">Fire Pit</string>
@@ -2459,6 +2459,15 @@
       <string _locid="302456">All convertable city resource buildings work faster by 15%.</string>
       <string _locid="302457">Ships 1 Large Collection of Books and 1 Small Collection of Books for each 10 minutes of game time elapsed, up to 30 minutes.</string>
       <string _locid="302458">Papal Legation</string>
+      <string _locid="302459">Fire Festival</string>
+      <string _locid="302460">Increases temple's Wood production by 50%.</string>
+      <string _locid="302461">Food Festival</string>
+      <string _locid="302462">Increases temple's Food production by 50%.</string>
+      <string _locid="302463">Craft Festival</string>
+      <string _locid="302464">Increases temple's Gold production by 50%.</string>
+      <string _locid="302465">The Foundation of Heaven</string>
+      <string _locid="302466">Walls of Tenochtitlan</string>
+      <string _locid="302467">Increases all city defense structures hitpoints.</string>
 
 
       <!-- ======================================== -->

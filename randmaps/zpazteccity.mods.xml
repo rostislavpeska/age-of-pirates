@@ -10,6 +10,8 @@
 			<animfile>buildings\wall\spc\aztec_gate.xml</animfile>
 			<icon>resources\art\buildings\wall\wall_portrait.png</icon>
 			<portraiticon>resources\art\buildings\wall\gate_portrait.png</portraiticon>
+			<initialhitpoints>3000.0000</initialhitpoints>
+			<maxhitpoints>3000.0000</maxhitpoints>
 			<displaynameid>29634</displaynameid>
 			<rollovertextid>29633</rollovertextid>
 			<shortrollovertextid>29632</shortrollovertextid>

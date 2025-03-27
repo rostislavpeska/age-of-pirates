@@ -23135,6 +23135,11 @@
       <effect type="Data" action="AutoGatherCoinTeam" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecTempleFoodFestival</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecTempleFireFestival</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecTempleGoldFestival</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCityAztec</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecWalls</effect>
     </effects>
   </tech>
   <tech name="zpAztecCityAttackerSetup" type="Normal">
@@ -23270,7 +23275,7 @@
     </effects>
   </tech>
   <tech name="zpSPCPapalLegateSingle" type="Normal">
-    <dbid>9068</dbid>
+    <dbid>40962</dbid>
     <displaynameid>302458</displaynameid>
     <cost resourcetype="Gold">300.0000</cost>
     <researchpoints>40.0000</researchpoints>
@@ -23291,6 +23296,99 @@
         </target>
       </effect>
       <effect type="TextOutputTechName">123070</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecTempleFireFestival" type="Normal">
+    <dbid>40963</dbid>
+    <displaynameid>302459</displaynameid>
+    <cost resourcetype="Wood">150.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\aztec_fire_festival.png</icon>
+    <rollovertextid>302460</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>NativeImprovement</flag>
+    <effects>
+      <effect type="Data" action="AutoGatherWood" amount="1.50" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecTempleFoodFestival" type="Normal">
+    <dbid>40964</dbid>
+    <displaynameid>302461</displaynameid>
+    <cost resourcetype="Food">150.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\aztec_food_festival.png</icon>
+    <rollovertextid>302462</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>NativeImprovement</flag>
+    <effects>
+      <effect type="Data" action="AutoGatherFood" amount="1.50" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecTempleGoldFestival" type="Normal">
+    <dbid>40965</dbid>
+    <displaynameid>302463</displaynameid>
+    <cost resourcetype="Gold">150.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\aztec_gold_festival.png</icon>
+    <rollovertextid>302464</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>NativeImprovement</flag>
+    <effects>
+      <effect type="Data" action="AutoGatherCoin" amount="1.50" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCBlessedCityAztec" type="Normal">
+    <dbid>40966</dbid>
+    <displaynameid>302465</displaynameid>
+    <cost resourcetype="Food">150.0000</cost>
+    <cost resourcetype="Gold">150.0000</cost>
+    <cost resourcetype="Wood">150.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\aztec_blessed_city.png</icon>
+    <rollovertextid>302456</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpBlessedCityShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecWalls" type="Normal">
+    <dbid>40967</dbid>
+    <displaynameid>302466</displaynameid>
+    <cost resourcetype="Wood">500.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\aztec_spc_wall.png</icon>
+    <rollovertextid>302467</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status ="active">Industrialize</techstatus>
+		</prereqs>
+    <effects>
+      <effect type="Data" amount="3.0" subtype="Hitpoints" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractWall</target>
+      </effect>
+      <effect type="Data" amount="1.3" subtype="Hitpoints" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">deMayaCastle</target>
+      </effect>
+      <effect type="Data" amount="1.3" subtype="Hitpoints" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpAztecOutpost</target>
+      </effect>
+      <effect type="Data" amount="1.3" subtype="Hitpoints" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpAztecCityOutpost</target>
+      </effect>
     </effects>
   </tech>
 

@@ -291,6 +291,9 @@
   <zpspcgreatbasilicaconvertable>
     <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
   </zpspcgreatbasilicaconvertable>
+  <zpspcaztecgreattemple>
+    <ability>zpPowerInformersAztec<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcaztecgreattemple>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
