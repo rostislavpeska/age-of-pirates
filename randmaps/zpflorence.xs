@@ -13,6 +13,50 @@ include "ypKOTHInclude.xs";
 
 string fish1 = "ypFishCarp";
 
+// Randomization code from Alistair
+
+int gCityLocs = -1;
+int gCityLocsStatus = -1;
+
+void shuffle(int arrayID = -1, int start = -1, int end = -1) {
+  for (int i = end; i > start; i--) {
+    int j = rmRandInt(start, end);
+    vector temp = xsArrayGetVector(arrayID, i);
+    xsArraySetVector(arrayID, i, xsArrayGetVector(arrayID, j));
+    xsArraySetVector(arrayID, j, temp);
+  }
+}
+
+void placeGroupings(int groupingsArrayID = -1, int startIndex = -1) {
+  for (i = 0; < xsArrayGetSize(groupingsArrayID)) {
+    int grouping = xsArrayGetInt(groupingsArrayID, i);
+    vector loc = xsArrayGetVector(gCityLocs, startIndex + i);
+    float locX = xsVectorGetX(loc);
+    float locZ = xsVectorGetZ(loc);
+    rmPlaceGroupingAtLoc(grouping, 0, locX, locZ);
+    xsArraySetBool(gCityLocsStatus, startIndex + i, true);
+  }
+}
+
+// Place grouping at the first free slot within the specified boundaries.
+// Returns false if no more slots found.
+bool filler(int groupingID = -1, int startIndex = -1, int endIndex = -1) {
+  for (i = startIndex; <= endIndex) {
+    bool taken = xsArrayGetBool(gCityLocsStatus, i);
+    if (taken) continue;
+    vector loc = xsArrayGetVector(gCityLocs, i);
+    float locX = xsVectorGetX(loc);
+    float locZ = xsVectorGetZ(loc);
+    rmPlaceGroupingAtLoc(groupingID, 0, locX, locZ);
+    xsArraySetBool(gCityLocsStatus, i, true);
+    return true;
+  }
+
+  return false;
+}
+
+// Map Script
+
 void main(void)
 {
 	// Text
@@ -772,6 +816,19 @@ void main(void)
 
 	//===================set up grid locations===================
 
+	// LocX
+
+	float locX0 = 0.94;
+	float locX1 = 0.851;
+	float locX2 = 0.755;
+	float locX3 = 0.66;
+	float locX4 = 0.57;
+	float locX5 = 0.45;
+	float locX6 = 0.35;
+	float locX7 = 0.25;
+	float locX8 = 0.15;
+	float locX9 = 0.06;
+
 	// LocZ
 
 	float locZ1 = 1.0-rmZTilesToFraction(cityEdgeInner-10);
@@ -793,20 +850,51 @@ void main(void)
 	float locZm7 = 0.0+rmZTilesToFraction(cityEdgeInner-112);
 	float locZm8 = 0.0-rmZTilesToFraction(cityEdgeInner-129);
 	float locZm9 = 0.0-rmZTilesToFraction(cityEdgeInner-146);
-	
 
-	// LocX
+	// Normal City
+	const int NUM_BLOCKS = 14;
+	const int NORTH_CENTER_START = 0;
+	const int NORTH_CENTER_END = 3;
+	const int NORTH_SUBURBS_START = 4;
+	const int NORTH_SUBURBS_END = 6;
 
-	float locX0 = 0.94;
-	float locX1 = 0.851;
-	float locX2 = 0.755;
-	float locX3 = 0.66;
-	float locX4 = 0.57;
-	float locX5 = 0.45;
-	float locX6 = 0.35;
-	float locX7 = 0.25;
-	float locX8 = 0.15;
-	float locX9 = 0.06;
+	const int SOUTH_CENTER_START = 7;
+	const int SOUTH_CENTER_END = 10;
+	const int SOUTH_SUBURBS_START = 11;
+	const int SOUTH_SUBURBS_END = 13;
+
+	// Define grouping placement cycle
+	gCityLocs = xsArrayCreateVector(NUM_BLOCKS, cInvalidVector, "List of locations in the city");
+	gCityLocsStatus = xsArrayCreateBool(NUM_BLOCKS, false, "Flags a loc as taken or not");
+
+	// North - Center
+		xsArraySetVector(gCityLocs, 0, xsVectorSet(locX6, 0.0, locZ1));
+		xsArraySetVector(gCityLocs, 1, xsVectorSet(locX5, 0.0, locZ1));
+		xsArraySetVector(gCityLocs, 2, xsVectorSet(locX5, 0.0, locZ2));
+		xsArraySetVector(gCityLocs, 3, xsVectorSet(locX3, 0.0, locZ1));
+
+	// North - Suburbs
+		xsArraySetVector(gCityLocs, 4, xsVectorSet(locX2, 0.0, locZ3));
+		xsArraySetVector(gCityLocs, 5, xsVectorSet(locX7, 0.0, locZ3));
+		xsArraySetVector(gCityLocs, 6, xsVectorSet(locX6, 0.0, locZ3));
+
+	// South - Center
+		xsArraySetVector(gCityLocs, 7, xsVectorSet(locX5, 0.0, locZm1));
+		xsArraySetVector(gCityLocs, 8, xsVectorSet(locX3, 0.0, locZm1));
+		xsArraySetVector(gCityLocs, 9, xsVectorSet(locX4, 0.0, locZm2));
+		xsArraySetVector(gCityLocs, 10, xsVectorSet(locX6, 0.0, locZm1));
+
+	// South - Suburbs
+		xsArraySetVector(gCityLocs, 11, xsVectorSet(locX2, 0.0, locZm3));
+		xsArraySetVector(gCityLocs, 12, xsVectorSet(locX3, 0.0, locZm3));
+		xsArraySetVector(gCityLocs, 13, xsVectorSet(locX7, 0.0, locZm3));
+
+
+	shuffle(gCityLocs, NORTH_CENTER_START, NORTH_CENTER_END);
+	shuffle(gCityLocs, NORTH_SUBURBS_START, NORTH_SUBURBS_END);
+
+	shuffle(gCityLocs, SOUTH_CENTER_START, SOUTH_CENTER_END);
+	shuffle(gCityLocs, SOUTH_SUBURBS_START, SOUTH_SUBURBS_END);
 
 
 	//===================define and place groupings========================
@@ -825,10 +913,7 @@ void main(void)
     rmSetGroupingMaxDistance(blockRome, 0.50);
 	rmAddGroupingToClass(blockRome, rmClassID("classBlock"));
 
-    int florencePlacement1 = rmPlaceGroupingInstanceAtLoc(blockFlorence, 0.61, 1.0-rmZTilesToFraction(cityEdgeInner-36), 0);
-    int romePlacement1 = rmPlaceGroupingInstanceAtLoc(blockRome, 0.4, 0.0+rmZTilesToFraction(cityEdgeInner-36), 0);
-
-    // Define Blocks
+    // Define small Blocks
 
 	// Market
 	int blockMarket = rmCreateGrouping("market", "IT_Resource_Block_All2");
@@ -962,40 +1047,110 @@ void main(void)
     rmSetGroupingMaxDistance(blockHouse06, 0.50);
 	rmAddGroupingToClass(blockHouse06, rmClassID("classBlock"));
 
-    // Place Groupings
+    // *************** Place Groupings ***************
 
-    rmPlaceGroupingAtLoc(blockMarket, 0, locX5, locZ2);
-    rmPlaceGroupingAtLoc(blockMarket, 0, locX4, locZm2);
+	// Fixed stuff first
 
-    rmPlaceGroupingAtLoc(blockBank, 0, locX6, locZ3);
-    rmPlaceGroupingAtLoc(blockBank, 0, locX3, locZm3);
+	// City Centers
+	int florencePlacement1 = rmPlaceGroupingInstanceAtLoc(blockFlorence, 0.61, 1.0-rmZTilesToFraction(cityEdgeInner-36), 0);
+    int romePlacement1 = rmPlaceGroupingInstanceAtLoc(blockRome, 0.4, 0.0+rmZTilesToFraction(cityEdgeInner-36), 0);
 
-    rmPlaceGroupingAtLoc(blockJesuit, 0, locX6, locZ1);
-    rmPlaceGroupingAtLoc(blockJesuit, 0, locX3, locZm1);
+	// Castello
+	rmPlaceGroupingAtLoc(blockCastello2, firstDefender, locX5, locZ3);
+    rmPlaceGroupingAtLoc(blockCastello, firstAttacker, locX4, locZm3);
 
-    rmPlaceGroupingAtLoc(blockMaltese, 0, locX3, locZ1);
-    rmPlaceGroupingAtLoc(blockMaltese, 0, locX6, locZm1);
+	// Factory and menagerie
+	int factoryMenagerieRandomizer = rmRandInt(0, 1);
+	
+	// Factory
+	rmSetNuggetDifficulty(305, 305);
+	if (factoryMenagerieRandomizer == 0) {
+		int factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX2, locZ1, 0);
+		int factoryPlacement2 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX7, locZm1, 0);
+	}
+	else {
+		factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX7, locZ2, 0);
+		factoryPlacement2 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX2, locZm2, 0);
+	}
 
-    rmPlaceGroupingAtLoc(blockAuditore, 0, locX2, locZ2);
-    rmPlaceGroupingAtLoc(blockAuditore, 0, locX7, locZm2);
+	// Menagerie
+	rmSetNuggetDifficulty(98, 98);
+	if (factoryMenagerieRandomizer == 0) {
+		int menageriePlacement1 = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locX7, locZ2, 0);
+		int menageriePlacement2 = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locX2, locZm2, 0);
+	}
+	else {
+		menageriePlacement1 = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locX2, locZ1, 0);
+		menageriePlacement2 = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locX7, locZm1, 0);
+	}
+
+	// Native Monasteries
+	int monasteryRandomizer = rmRandInt(0, 1);
+	
+	// Jesuit
+	if (monasteryRandomizer == 0) {
+		rmPlaceGroupingAtLoc(blockJesuit, 0, locX2, locZ2);
+		rmPlaceGroupingAtLoc(blockJesuit, 0, locX7, locZm2);
+	}
+	else {
+		rmPlaceGroupingAtLoc(blockJesuit, 0, locX7, locZ1);
+		rmPlaceGroupingAtLoc(blockJesuit, 0, locX2, locZm1);
+	}
+
+	// Maltese
+	if (monasteryRandomizer == 0) {
+		rmPlaceGroupingAtLoc(blockMaltese, 0, locX7, locZ1);
+		rmPlaceGroupingAtLoc(blockMaltese, 0, locX2, locZm1);
+	}
+	else {
+		rmPlaceGroupingAtLoc(blockMaltese, 0, locX2, locZ2);
+		rmPlaceGroupingAtLoc(blockMaltese, 0, locX7, locZm2);
+	}
+
+	// Trade
+	rmPlaceGroupingAtLoc(blockTrade, 0, locX4, locZ1);
+    rmPlaceGroupingAtLoc(blockTrade, 0, locX4, locZm1);
+
+	// Auditore
+	rmPlaceGroupingAtLoc(blockAuditore, 0, locX6, locZ2);
+    rmPlaceGroupingAtLoc(blockAuditore, 0, locX3, locZm2);
+
+	int northCenterGroupings = xsArrayCreateInt(4, -1, "List of groupings for the city center (north).");
+		rmSetNuggetDifficulty(303, 303);
+		xsArraySetInt(northCenterGroupings, 0, blockMarket);
+		xsArraySetInt(northCenterGroupings, 1, blockBank);
+		xsArraySetInt(northCenterGroupings, 2, blockPark);
+		xsArraySetInt(northCenterGroupings, 3, blockTreasure01);
+		placeGroupings(northCenterGroupings, NORTH_CENTER_START);
+
+	int southCenterGroupings = xsArrayCreateInt(4, -1, "List of groupings for the city center (south).");
+		rmSetNuggetDifficulty(303, 303);
+		xsArraySetInt(southCenterGroupings, 0, blockMarket);
+		xsArraySetInt(southCenterGroupings, 1, blockBank);
+		xsArraySetInt(southCenterGroupings, 2, blockPark);
+		xsArraySetInt(southCenterGroupings, 3, blockTreasure01);
+		placeGroupings(southCenterGroupings, SOUTH_CENTER_START);
+
+	int northSuburbGroupings = xsArrayCreateInt(3, -1, "List of suburbs groupings (north).");
+		rmSetNuggetDifficulty(303, 303);
+		xsArraySetInt(northSuburbGroupings, 0, blockMill);
+		xsArraySetInt(northSuburbGroupings, 1, blockWarehouse);
+		xsArraySetInt(northSuburbGroupings, 2, blockTreasure02);
+		placeGroupings(northSuburbGroupings, NORTH_SUBURBS_START);
+
+	int southSuburbGroupings = xsArrayCreateInt(3, -1, "List of suburbs groupings (south).");
+		rmSetNuggetDifficulty(303, 303);
+		xsArraySetInt(southSuburbGroupings, 0, blockMill);
+		xsArraySetInt(southSuburbGroupings, 1, blockWarehouse);
+		xsArraySetInt(southSuburbGroupings, 2, blockTreasure02);
+		placeGroupings(southSuburbGroupings, SOUTH_SUBURBS_START);
+	
+	// Additional placements
 
 	if (teamOneCount >= 2 && oneVsAll == 0)
 	rmPlaceGroupingAtLoc(blockAuditore, 0, locX4, locZ4);
 	if (teamZeroCount >= 2 && oneVsAll == 0)
 	rmPlaceGroupingAtLoc(blockAuditore, 0, locX5, locZm4);
-
-    rmSetNuggetDifficulty(305, 305);
-	int factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX7, locZ2, 0);
-	int factoryPlacement2 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX2, locZm2, 0);
-
-    rmPlaceGroupingAtLoc(blockMill, 0, locX2, locZ3,);
-    rmPlaceGroupingAtLoc(blockMill, 0, locX7, locZm3);
-
-    rmPlaceGroupingAtLoc(blockWarehouse, 0, locX7, locZ1);
-    rmPlaceGroupingAtLoc(blockWarehouse, 0, locX2, locZm1);
-
-    rmPlaceGroupingAtLoc(blockTrade, 0, locX4, locZ1);
-    rmPlaceGroupingAtLoc(blockTrade, 0, locX4, locZm1);
 
 	rmSetNuggetDifficulty(304, 304);
 	if (oneVsAll == 0)
@@ -1005,23 +1160,6 @@ void main(void)
 		rmPlaceGroupingAtLoc(blockLombard, 0, locX5, locZ5);
 		rmPlaceGroupingAtLoc(blockLombard, 0, locX5, locZm5);
 	}
-
-    rmSetNuggetDifficulty(303, 303);
-    rmPlaceGroupingAtLoc(blockTreasure01, 0, locX2, locZ1);
-    rmPlaceGroupingAtLoc(blockTreasure01, 0, locX7, locZm1);
-
-	rmPlaceGroupingAtLoc(blockTreasure02, 0, locX7, locZ3);
-    rmPlaceGroupingAtLoc(blockTreasure02, 0, locX2, locZm3);
-
-    rmPlaceGroupingAtLoc(blockCastello2, firstDefender, locX5, locZ3);
-    rmPlaceGroupingAtLoc(blockCastello, firstAttacker, locX4, locZm3);
-
-    rmPlaceGroupingAtLoc(blockPark, 0, locX5, locZ1);
-    rmPlaceGroupingAtLoc(blockPark, 0, locX5, locZm1);
-
-    rmSetNuggetDifficulty(98, 98);
-	int menageriePlacement1 = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locX6, locZ2, 0);
-	int menageriePlacement2 = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locX3, locZm2, 0);
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.50);
@@ -1287,12 +1425,12 @@ void main(void)
 
 	//fifth row
 
-	rmPlaceGroupingAtLoc(blockHouse01, 0, locX2, locZ5);
-	rmPlaceGroupingAtLoc(blockHouse02, 0, locX3, locZ5);
-	rmPlaceGroupingAtLoc(blockHouse03, 0, locX4, locZ5);
-	rmPlaceGroupingAtLoc(blockHouse04, 0, locX5, locZ5);
-	rmPlaceGroupingAtLoc(blockHouse05, 0, locX6, locZ5);
-	rmPlaceGroupingAtLoc(blockHouse06, 0, locX7, locZ5);
+	rmPlaceGroupingAtLoc(blockHouse04, 0, locX2, locZ5);
+	rmPlaceGroupingAtLoc(blockHouse05, 0, locX3, locZ5);
+	rmPlaceGroupingAtLoc(blockHouse06, 0, locX4, locZ5);
+	rmPlaceGroupingAtLoc(blockHouse03, 0, locX5, locZ5);
+	rmPlaceGroupingAtLoc(blockHouse01, 0, locX6, locZ5);
+	rmPlaceGroupingAtLoc(blockHouse02, 0, locX7, locZ5);
 
 // South City
 
@@ -1347,12 +1485,12 @@ void main(void)
 
 	//fifth row
 
-	rmPlaceGroupingAtLoc(blockHouse01, 0, locX2, locZm5);
-	rmPlaceGroupingAtLoc(blockHouse02, 0, locX3, locZm5);
-	rmPlaceGroupingAtLoc(blockHouse03, 0, locX4, locZm5);
-	rmPlaceGroupingAtLoc(blockHouse04, 0, locX5, locZm5);
-	rmPlaceGroupingAtLoc(blockHouse05, 0, locX6, locZm5);
-	rmPlaceGroupingAtLoc(blockHouse06, 0, locX7, locZm5);
+	rmPlaceGroupingAtLoc(blockHouse04, 0, locX2, locZm5);
+	rmPlaceGroupingAtLoc(blockHouse05, 0, locX3, locZm5);
+	rmPlaceGroupingAtLoc(blockHouse06, 0, locX4, locZm5);
+	rmPlaceGroupingAtLoc(blockHouse03, 0, locX5, locZm5);
+	rmPlaceGroupingAtLoc(blockHouse01, 0, locX6, locZm5);
+	rmPlaceGroupingAtLoc(blockHouse02, 0, locX7, locZm5);
 
 	// Back Forests
 
@@ -1510,6 +1648,7 @@ void main(void)
 		rmAddAreaConstraint(forest, shortAvoidImpassableLand); 
 		rmAddAreaConstraint(forest, avoidPlateau);
 		rmAddAreaConstraint(forest, avoidTradeRouteMin);
+		rmAddAreaConstraint(forest, avoidTradeSockets);
 		rmAddAreaConstraint(forest, avoidWallLong);
 		rmAddAreaConstraint(forest, avoidWater4);
 		if(rmBuildArea(forest)==false)
