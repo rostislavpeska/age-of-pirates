@@ -2345,6 +2345,10 @@ void main(void)
 		rmAddTriggerEffect("Convert");
 		rmSetTriggerEffectParam("SrcObject",""+outpost4Grp3);
 		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpAztecUnlockGroupingTechs"); // Island Techs
+		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("District3off_Player"+k));
@@ -2363,6 +2367,10 @@ void main(void)
 		rmSetTriggerConditionParam("UnitType","TradingPost");
 		rmSetTriggerConditionParam("Op","==");
 		rmSetTriggerConditionParamFloat("Count",0);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpAztecLockGroupingTechs"); // Island Techs
+		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("District3off_Dellayed_Player"+k));

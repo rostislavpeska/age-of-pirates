@@ -51380,8 +51380,8 @@
     <icon>resources\art\buildings\african_civs\granary_icon.png</icon>
     <portraiticon>resources\art\buildings\african_civs\granary_portrait.png</portraiticon>
     <civflagoverride>objects\flags\none</civflagoverride>
-    <rollovertextid>301891</rollovertextid>
-    <shortrollovertextid>301890</shortrollovertextid>
+    <rollovertextid>302474</rollovertextid>
+    <shortrollovertextid>302474</shortrollovertextid>
     <initialhitpoints>2000.0000</initialhitpoints>
     <maxhitpoints>2000.0000</maxhitpoints>
     <los>16.0000</los>
@@ -51416,11 +51416,7 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <train row="0" page="0" column="0">Sheep</train>
-    <tech row="0" page="1" column="0">HarvestCeremony</tech>
-    <tech row="0" page="1" column="0">GreatFeast</tech>
-    <tech row="0" page="1" column="0">GreenCornCeremony</tech>
     <tech row="0" page="1" column="1">SelectiveBreeding</tech>
-    <tech row="0" page="2" column="0">deBigFarmUrcuchillay</tech>
     <flag>UnlimitedSupply</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -51439,7 +51435,7 @@
     <flag>Invulnerable</flag>
     <flag>InvulnerableToAreaDamage</flag>
     <flag>VisibleUnderFog</flag>
-    <tactics>azteccityresource.tactics</tactics>
+    <tactics>azteccitygranary.tactics</tactics>
     <protoaction>
       <name>AutoGather</name>
       <rate type="Food">2.50000</rate>

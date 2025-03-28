@@ -19508,66 +19508,7 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpMilitaryCamp</target>
       </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">House</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">HouseEast</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">HouseMed</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">Manor</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deHouseAfrican</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deTorp</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">HouseAztec</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deHouseInca</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">ypVillage</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">ypHouseIndian</target>
-      </effect>
-      <effect type="CommandRemove" proto="House">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="HouseEast">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="HouseMed">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="deHouseAfrican">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="deTorp">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="HouseAztec">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="deHouseInca">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="ypVillage">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="ypHouseIndian">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="Manor">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
+      <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>
     </effects>
   </tech>
   <tech name="zpDisableTradeRouteUpgrade" type="Normal">
@@ -22213,6 +22154,7 @@
       <effect type="TechStatus" status="obtainable">zpSPCPapalBlessingPrague</effect>
       <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
       <effect type="TechStatus" status="active">zpForbidRevolutions</effect>
+      <effect type="TechStatus" status="active">zpSPCActivateFieldGathering</effect>
       <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
         <target type="ProtoUnit">Dock</target>
       </effect>
@@ -22908,66 +22850,7 @@
         <target type="Player">
         </target>
       </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">House</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">HouseEast</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">HouseMed</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">Manor</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deHouseAfrican</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deTorp</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">HouseAztec</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deHouseInca</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">ypVillage</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">ypHouseIndian</target>
-      </effect>
-      <effect type="CommandRemove" proto="House">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="HouseEast">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="HouseMed">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="deHouseAfrican">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="deTorp">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="HouseAztec">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="deHouseInca">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="ypVillage">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="ypHouseIndian">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="Manor">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
+      <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>
       <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
       <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
         <target type="ProtoUnit">Dock</target>
@@ -23165,8 +23048,8 @@
       <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWater2</effect>
       <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWaterAll1</effect>
       <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWaterAll2</effect>
-      <effect type="TechStatus" status="unobtainable">TradeRouteUpgrade2</effect>
       <effect type="TechStatus" status="obtainable">zpTradeRouteUpgradeWaterNative</effect>
+      <effect type="TechStatus" status="obtainable">zpTradeRouteUpgradeWaterNative2</effect>
       <effect type="CommandRemove" tech="DETradeRouteUpgradeWater1">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
@@ -23207,68 +23090,11 @@
         <target type="Player">
         </target>
       </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">House</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">HouseEast</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">HouseMed</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">Manor</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deHouseAfrican</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deTorp</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">HouseAztec</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deHouseInca</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">ypVillage</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">ypHouseIndian</target>
-      </effect>
-      <effect type="CommandRemove" proto="House">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="HouseEast">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="HouseMed">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="deHouseAfrican">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="deTorp">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="HouseAztec">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="deHouseInca">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="ypVillage">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="ypHouseIndian">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="Manor">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">xpTlalocCanoe</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deField</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">xpWarCanoe</target>
@@ -23306,6 +23132,26 @@
       <effect type="Data" amount="16.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatMercEagleWarrior</target>
       </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="Mill">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="Plantation">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypRicePaddy">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deHacienda">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="TechStatus" status="active">zpSPCActivateFieldGathering</effect>
+      <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>
     </effects>
   </tech>
   <tech name="zpSPCBlessedCitySingle" type="Normal">
@@ -23542,6 +23388,12 @@
       <effect type="CommandRemove" proto="Farm">
         <target type="ProtoUnit">Settler</target>
       </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">SettlerWagon</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">Coureur</target>
+      </effect>
       <effect type="Data" action="SpawnJaguarWarriors" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCRevealerAztec">
         <target type="Player">
         </target>
@@ -23552,11 +23404,11 @@
     </effects>
 	</tech>
   <tech name="zpSPCAztecMercenaries" type="Normal">
-      <dbid>40971</dbid>
-      <flag>Shadow</flag>
-      <effects>
-        <effect type="TechStatus" status="obtainable">zpSPCAztecMercenariesShadow</effect>
-      </effects>
+    <dbid>40971</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecMercenariesShadow</effect>
+    </effects>
   </tech>
   <tech name ="zpSPCAztecCityWarCeremony" type ="Normal">
 		<dbid>40972</dbid>
@@ -23583,6 +23435,212 @@
       </effect>
     </effects>
   </tech>
+  <tech name ="zpSPCActivateFieldGathering" type ="Normal">
+    <dbid>40973</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandAdd" tech="ImpLargeScaleGathering" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="BigFarmHorsemanship" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="BigFarmStrawberry" page="2" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="BigFarmCinteotl" page="2" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="HarvestCeremony" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="GreenCornCeremony" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="GreatFeast" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="deBigFarmUrcuchillay" page="2" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="SeedDrill" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ArtificialFertilizer" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="EarthCeremony" page="2" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="EarthCeremonyNoMine" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="EarthGiftCeremony" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="EarthGiftCeremonyNoMine" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="Homesteading" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="Bookkeeping" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="BigPlantationTezcatlipoca" page="2" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ImpExcessiveTributeNative" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ImpExcessiveTributeNativeNoMine" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="BigPlantationGunTrade" page="2" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="OreRefining" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="BigPlantationMapleFestival" page="2" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="deBigPlantationCoca" page="2" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypWaterConservancy" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypIrrigationSystems" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypImpLargeScaleAgricultureAsian" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypLandRedistribution" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypCultivateWasteland" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypSharecropping" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypCooperative" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypImpExcessiveTributeAsian" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypCropMarket" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEFieldEnableCoinShadow</effect>
+      <effect type="Data2" action="Gather" amount="1.5" subtype="WorkRateSpecific" resource="Food" unittype="deField" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.5" subtype="WorkRateSpecific" resource="Gold" unittype="deField" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpSPCDisableHousesShadow" type ="Normal">
+    <dbid>40974</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">House</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">HouseEast</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">HouseMed</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Manor</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deHouseAfrican</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deTorp</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">HouseAztec</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deHouseInca</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypShrineJapanese</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypVillage</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypHouseIndian</target>
+      </effect>
+      <effect type="CommandRemove" proto="House">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseEast">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseMed">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deHouseAfrican">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deTorp">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="HouseAztec">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deHouseInca">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypVillage">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypHouseIndian">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="Manor">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypShrineJapanese">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAztecUnlockGroupingTechs" type="Normal">
+    <dbid>40975</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Sheep</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpAztecUnlockGroupingTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpAztecLockGroupingTechs" type="Normal">
+    <dbid>40976</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Sheep</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpAztecLockGroupingTechs</effect>
+    </effects>
+  </tech>
+
 
   
  
