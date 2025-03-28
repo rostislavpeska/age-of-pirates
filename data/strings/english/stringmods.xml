@@ -2472,8 +2472,10 @@
       <string _locid="302472">Spawns Extra Aztec native units in every district you control.</string>
       <string _locid="302473">Tenochtitlan War Ceremony</string>
       <string _locid="302474">Food Production Building, Livestock pen type building. Boosts nearby villagers to gather faster.</string>
-
-
+      <string _locid="302475">Saboteur Kit</string>
+      <string _locid="302476">Unlocks Rowboat Sabotage ability allowing it to get close to enemy buildings and ships and destroy them.</string>
+      <string _locid="302477">Sabotage</string>
+      <string _locid="302478">Large Trade Canoe</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

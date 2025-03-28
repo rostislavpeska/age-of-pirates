@@ -8597,8 +8597,8 @@
     <portraiticon>resources\art\buildings\spc\inca_outpost\inca_outpost_portrait.png</portraiticon>
     <rollovertextid>34666</rollovertextid>
     <shortrollovertextid>34665</shortrollovertextid>
-    <initialhitpoints>4000.0000</initialhitpoints>
-    <maxhitpoints>4000.0000</maxhitpoints>
+    <initialhitpoints>3500.0000</initialhitpoints>
+    <maxhitpoints>3500.0000</maxhitpoints>
     <buildpoints>50.0000</buildpoints>
     <los>15.0000</los>
     <projectileprotounit>Arrow</projectileprotounit>
@@ -8653,7 +8653,7 @@
     <command page="10" column="5">Eject</command>
     <command page="10" column="2">SetGatherPointEconomy</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
-    <tactics>combatBuilding.tactics</tactics>
+    <tactics>zpaztecoutpost.tactics</tactics>
     <protoaction>
       <name>AntiShipAttack</name>
       <damage>100.000000</damage>
@@ -8666,7 +8666,7 @@
     </protoaction>
     <protoaction>
       <name>RangedAttack</name>
-      <damage>60.000000</damage>
+      <damage>40.000000</damage>
       <damagetype>Ranged</damagetype>
       <maxrange>12.000000</maxrange>
       <rof>3.000000</rof>
@@ -45865,6 +45865,13 @@
       <rate type="zpSPCTownMill">0.250000</rate>
       <rate type="zpSPCAztecGranary">0.500000</rate>
     </protoaction>
+    <protoaction>
+      <name>GatherHacienda</name>
+      <rate type="zpSPCAztecGranary" inventoryrate="1.000000">1.000000</rate>
+      <rate type="zpSPCAztecGranary" resource="Food">0.100000</rate>
+      <rate type="zpSPCAztecGranary" resource="Gold">0.068004</rate>
+      <rate type="zpSPCAztecGranary" resource="Wood">0.150000</rate>
+    </protoaction>
   </unit>
   <unit name="ypGoat">
     <protoaction>
@@ -45877,6 +45884,33 @@
       <rate type="zpLivestockPenClone">0.500000</rate>
       <rate type="zpSPCTownMill">0.250000</rate>
       <rate type="zpSPCAztecGranary">0.500000</rate>
+    </protoaction>
+    <protoaction>
+      <name>GatherHacienda</name>
+      <rate type="zpSPCAztecGranary" inventoryrate="1.000000">1.000000</rate>
+      <rate type="zpSPCAztecGranary" resource="Food">0.100000</rate>
+      <rate type="zpSPCAztecGranary" resource="Gold">0.068004</rate>
+      <rate type="zpSPCAztecGranary" resource="Wood">0.150000</rate>
+    </protoaction>
+  </unit>
+  <unit name="Cow">
+    <protoaction>
+      <name>Gather</name>
+      <rate type="LivestockPen">0.500000</rate>
+      <rate type="Farm">0.500000</rate>
+      <rate type="ypVillage">0.500000</rate>
+      <rate type="YPLivestockPenAsian">0.500000</rate>
+      <rate type="deLivestockMarket">0.250000</rate>
+      <rate type="zpLivestockPenClone">0.500000</rate>
+      <rate type="zpSPCTownMill">0.250000</rate>
+      <rate type="zpSPCAztecGranary">0.500000</rate>
+    </protoaction>
+    <protoaction>
+      <name>GatherHacienda</name>
+      <rate type="zpSPCAztecGranary" inventoryrate="1.000000">1.000000</rate>
+      <rate type="zpSPCAztecGranary" resource="Food">0.100000</rate>
+      <rate type="zpSPCAztecGranary" resource="Gold">0.068004</rate>
+      <rate type="zpSPCAztecGranary" resource="Wood">0.150000</rate>
     </protoaction>
   </unit>
   <unit id="20612" name="zpTemporaryObstruction">
@@ -47097,7 +47131,7 @@
     <command page="10" column="7">Delete</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="11">Abilities</command>
-    <tactics>spcrowboat.tactics</tactics>
+    <tactics>zprowboat.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
       <damage>80.000000</damage>
@@ -47111,6 +47145,16 @@
       <damagetype>Ranged</damagetype>
       <maxrange>25.000000</maxrange>
       <rof>3.000000</rof>
+    </protoaction>
+   <protoaction>
+      <name>SabotageAttack</name>
+      <damage>250.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>13.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="Building">3.000000</damagebonus>
+      <damagearea>4.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
   <unit id="20629" name="zpKingsHillNaval">
@@ -52345,8 +52389,8 @@
     <legacyhotkeycontext>BlockhouseAccel</legacyhotkeycontext>
     <rollovertextid>34666</rollovertextid>
     <shortrollovertextid>34665</shortrollovertextid>
-    <initialhitpoints>4000.0000</initialhitpoints>
-    <maxhitpoints>4000.0000</maxhitpoints>
+    <initialhitpoints>3500.0000</initialhitpoints>
+    <maxhitpoints>3500.0000</maxhitpoints>
     <los>32.0000</los>
     <projectileprotounit>Arrow</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -52426,7 +52470,7 @@
     <command page="10" column="2">SetGatherPointEconomy</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
-    <tactics>combatBuilding.tactics</tactics>
+    <tactics>zpaztecoutpost.tactics</tactics>
     <protoaction>
       <name>AntiShipAttack</name>
       <damage>100.000000</damage>
@@ -52439,7 +52483,7 @@
     </protoaction>
     <protoaction>
       <name>RangedAttack</name>
-      <damage>60.000000</damage>
+      <damage>40.000000</damage>
       <damagetype>Ranged</damagetype>
       <maxrange>12.000000</maxrange>
       <rof>3.000000</rof>

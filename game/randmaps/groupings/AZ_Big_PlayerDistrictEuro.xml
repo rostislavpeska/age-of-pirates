@@ -76,12 +76,9 @@
 		<unit variation="15" posx="53.5208" posz="-11.5680" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
 		<unit variation="75" posx="40.9668" posz="-12.7302" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
 		<unit variation="42" posx="-26.6974" posz="-11.9069" orientx="0.8802" orienty="-0.0053" orientz="0.4746">Turkey</unit>
-		<unit variation="192" posx="-30.2192" posz="-12.2441" orientx="0.0000" orienty="0.0124" orientz="-0.9999">zpGuardianCardinalGuard</unit>
-		<unit variation="7" posx="-28.8824" posz="-12.9596" orientx="-0.8554" orienty="0.0006" orientz="0.5180">zpGuardianCardinalGuard</unit>
 		<unit variation="24" posx="11.8873" posz="-12.3590" orientx="-0.1016" orienty="0.0043" orientz="-0.9948">Turkey</unit>
 		<unit variation="200" posx="18.4268" posz="-13.0377" orientx="-0.7454" orienty="0.0003" orientz="0.6666">Turkey</unit>
 		<unit variation="207" posx="19.4395" posz="-11.6442" orientx="-0.9631" orienty="0.0027" orientz="0.2690">Turkey</unit>
-		<unit variation="63" posx="-31.2535" posz="-13.1583" orientx="0.6916" orienty="-0.0007" orientz="0.7223">zpGuardianCardinalGuard</unit>
 		<unit variation="230" posx="-42.0000" posz="-13.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
 		<unit variation="222" posx="-36.0000" posz="-13.0000" orientx="0.1393" orienty="0.0000" orientz="-0.9902">TreeAmazon</unit>
 		<unit variation="21" posx="-29.4243" posz="-11.0394" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNuggetKidnapGuillotine</unit>
@@ -93,9 +90,7 @@
 		<unit variation="55" posx="28.1578" posz="-9.6514" orientx="-0.9548" orienty="0.0049" orientz="-0.2972">Turkey</unit>
 		<unit variation="121" posx="-24.0000" posz="-11.0000" orientx="0.9970" orienty="0.0000" orientz="-0.0768">TreeAmazon</unit>
 		<unit variation="9" posx="-16.0000" posz="-11.0000" orientx="0.8957" orienty="0.0000" orientz="-0.4446">TreeAmazon</unit>
-		<unit variation="238" posx="-29.6553" posz="-9.0704" orientx="-0.8513" orienty="0.0054" orientz="-0.5247">deGuardianCuirassier</unit>
 		<unit variation="33" posx="25.2665" posz="-9.0954" orientx="-0.8231" orienty="0.0054" orientz="-0.5679">Turkey</unit>
-		<unit variation="37" posx="-31.4090" posz="-9.0917" orientx="-0.2193" orienty="0.0122" orientz="-0.9756">Settler</unit>
 		<unit variation="22" posx="-38.0000" posz="-9.0000" orientx="-0.6993" orienty="0.0000" orientz="0.7148">TreeAmazon</unit>
 		<unit variation="239" posx="-20.0000" posz="-9.0000" orientx="-0.8586" orienty="0.0000" orientz="-0.5126">TreeAmazon</unit>
 		<unit variation="151" posx="-22.0074" posz="-8.0515" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">BerryBush</unit>

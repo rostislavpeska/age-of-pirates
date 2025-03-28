@@ -88,7 +88,7 @@
           </soundset>
         </choice>
         <choice name="XPAztec">
-          <soundset name="AztecFishingBoatSelect">
+          <soundset name="SpanishCaravelSelect">
           </soundset>
         </choice>
         <choice name="Japanese">
@@ -228,7 +228,7 @@
           </soundset>
         </choice>
         <choice name="XPAztec">
-          <soundset name="AztecFishingBoatAcknowledge">
+          <soundset name="SpanishCaravelAcknowledge">
           </soundset>
         </choice>
         <choice name="Japanese">

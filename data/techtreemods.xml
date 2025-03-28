@@ -18787,12 +18787,7 @@
       <effect type="CommandAdd" proto="zpMilitaryCamp" page="6" column="2">
         <target type="ProtoUnit">Explorer</target>
       </effect>
-      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
-        <target type="ProtoUnit">Dock</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpSPCRowboat</target>
-      </effect>
+      <effect type="TechStatus" status="active">zpUnlockRowboatsShadow</effect>
       <effect type="Data" amount="80.00" subtype="PopulationCap" relativity="Absolute">
         <target type="Player">
         </target>
@@ -20664,9 +20659,6 @@
         <target type="ProtoUnit">Fluyt</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">xpWarCanoe</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">xpTlalocCanoe</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
@@ -20738,9 +20730,6 @@
       <effect type="CommandRemove" proto="Fluyt">
         <target type="ProtoUnit">Dock</target>
       </effect>
-      <effect type="CommandRemove" proto="xpWarCanoe">
-        <target type="ProtoUnit">Dock</target>
-      </effect>
       <effect type="CommandRemove" proto="xpTlalocCanoe">
         <target type="ProtoUnit">Dock</target>
       </effect>
@@ -20810,9 +20799,6 @@
       <effect type="CommandRemove" proto="Fluyt">
         <target type="ProtoUnit">dePort</target>
       </effect>
-      <effect type="CommandRemove" proto="xpWarCanoe">
-        <target type="ProtoUnit">dePort</target>
-      </effect>
       <effect type="CommandRemove" proto="xpTlalocCanoe">
         <target type="ProtoUnit">dePort</target>
       </effect>
@@ -20880,9 +20866,6 @@
         <target type="ProtoUnit">ypDockAsian</target>
       </effect>
       <effect type="CommandRemove" proto="Fluyt">
-        <target type="ProtoUnit">ypDockAsian</target>
-      </effect>
-      <effect type="CommandRemove" proto="xpWarCanoe">
         <target type="ProtoUnit">ypDockAsian</target>
       </effect>
       <effect type="CommandRemove" proto="xpTlalocCanoe">
@@ -20932,6 +20915,11 @@
       <effect type="TechStatus" status="unobtainable">ShipHowitzers</effect>
       <effect type="TechStatus" status="unobtainable">DEShipHowitzersAmerican</effect>
       <effect type="TechStatus" status="unobtainable">PercussionLocks</effect>
+      <effect type="TechStatus" status="unobtainable">BigDockFlamingArrows</effect>
+      <effect type="TechStatus" status="unobtainable">BigDockRawhideCovers</effect>
+      <effect type="TechStatus" status="unobtainable">BigDockCipactli</effect>
+      <effect type="TechStatus" status="unobtainable">deBigDockTotora</effect>
+      <effect type="TechStatus" status="unobtainable">DELegendaryWarCanoes</effect>
       <effect type="CommandRemove" tech="ImperialManOWar">
         <target type="ProtoUnit">Dock</target>
       </effect>
@@ -20970,6 +20958,24 @@
       </effect>
       <effect type="CommandRemove" tech="PercussionLocks">
         <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" tech="BigDockFlamingArrows">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" tech="BigDockRawhideCovers">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" tech="BigDockCipactli">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" tech="deBigDockTotora">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" tech="DELegendaryWarCanoes">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="Data" amount="-5.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">xpWarCanoe</target>
       </effect>
     </effects>
   </tech>
@@ -22155,12 +22161,7 @@
       <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
       <effect type="TechStatus" status="active">zpForbidRevolutions</effect>
       <effect type="TechStatus" status="active">zpSPCActivateFieldGathering</effect>
-      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
-        <target type="ProtoUnit">Dock</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpSPCRowboat</target>
-      </effect>
+      <effect type="TechStatus" status="active">zpUnlockRowboatsShadow</effect>
       <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCGoldSmelter</target>
       </effect>
@@ -22852,12 +22853,7 @@
       </effect>
       <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>
       <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
-      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
-        <target type="ProtoUnit">Dock</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpSPCRowboat</target>
-      </effect>
+      <effect type="TechStatus" status="active">zpUnlockRowboatsShadow</effect>
     </effects>
   </tech>
   <tech name="zpSPCTaulaDeCanviClone" type="Normal">
@@ -23048,8 +23044,16 @@
       <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWater2</effect>
       <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWaterAll1</effect>
       <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWaterAll2</effect>
-      <effect type="TechStatus" status="obtainable">zpTradeRouteUpgradeWaterNative</effect>
-      <effect type="TechStatus" status="obtainable">zpTradeRouteUpgradeWaterNative2</effect>
+      <effect type="TechStatus" status="unobtainable">zpTradeRouteUpgradeWaterNative</effect>
+      <effect type="TechStatus" status="unobtainable">zpTradeRouteUpgradeWaterNative2</effect>
+      <effect type="TechStatus" status="unobtainable">deTradeRouteUpgradeAmerica1</effect>
+      <effect type="TechStatus" status="unobtainable">deTradeRouteUpgradeAmerica2</effect>
+      <effect type="TechStatus" status="active">zpAztecTrade</effect>
+      <effect type="SetName" proto="Stagecoach" culture="none" newname="90901">
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="Stagecoach" copy="PortraitOnly" relativity="Absolute">
+        <target type="ProtoUnit">deIconAmericanStagecoach</target>
+      </effect>
       <effect type="CommandRemove" tech="DETradeRouteUpgradeWater1">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
@@ -23067,18 +23071,8 @@
       </effect>
       <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="302443">
       </effect>
-      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
-        <target type="ProtoUnit">Dock</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
-        <target type="ProtoUnit">ypDockAsian</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
-        <target type="ProtoUnit">dePort</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpSPCRowboat</target>
-      </effect>
+      <effect type="TechStatus" status="active">zpUnlockRowboatsShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpAztecCityAztecSPCAttacker</effect>
     </effects>
   </tech>
   <tech name="zpAztecCityDefenderSetup" type="Normal">
@@ -23152,6 +23146,13 @@
       </effect>
       <effect type="TechStatus" status="active">zpSPCActivateFieldGathering</effect>
       <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>
+      <effect type="TechStatus" status="obtainable">DELegendaryWarCanoes</effect>
+      <effect type="CommandAdd" tech="DELegendaryWarCanoes" page="1" column="3">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">xpWarCanoe</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSPCBlessedCitySingle" type="Normal">
@@ -23638,6 +23639,75 @@
         <target type="ProtoUnit">Sheep</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpAztecLockGroupingTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCRowboatSabotage" type="Normal">
+    <dbid>40976</dbid>
+    <displaynameid>302475</displaynameid>
+    <cost resourcetype="Wood">450.0000</cost>
+    <cost resourcetype="Gold">450.0000</cost>
+    <researchpoints>15.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\spc_naval_sabotage.png</icon>
+    <rollovertextid>302476</rollovertextid>
+    <flag>UniqueTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+  </tech>
+  <tech name ="zpUnlockRowboatsShadow" type ="Normal">
+    <dbid>40977</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRowboat</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpSPCRowboatSabotage</effect>
+      <effect type="CommandAdd" tech="zpSPCRowboatSabotage" page="1" column="5">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCRowboatSabotage" page="1" column="5">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCRowboatSabotage" page="1" column="5">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAztecCityAztecSPCAttacker" type="Normal">
+    <dbid>40978</dbid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>0.0000</researchpoints>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">Age0XPAztec</techstatus>
+    </prereqs>
+    <effects>  
+      <effect type="Data" amount="-4.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRowboat</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAztecTrade" type="Normal">
+    <dbid>40979</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetName" proto="zpCargoBoat" culture="none" newname="302478">
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpCargoBoat" copy="PortraitOnly" relativity="Absolute">
+        <target type="ProtoUnit">xpTlalocCanoe</target>
+      </effect>
     </effects>
   </tech>
 
