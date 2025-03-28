@@ -220,7 +220,7 @@ void main(void)
 	int avoidBridge = rmCreateTypeDistanceConstraint("avoid bridge", "zpRuinWallSmall", 10.0);
 
 	// Lake Constraints
-	int greatLakesConstraint=rmCreateClassDistanceConstraint("avoid the great lakes", classGreatLake, 5.0);
+	int greatLakesConstraint=rmCreateClassDistanceConstraint("avoid the great lakes", classGreatLake, 1.0);
 	int farGreatLakesConstraint=rmCreateClassDistanceConstraint("far avoid the great lakes", classGreatLake, 20.0);
 	int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true, 3.5);
 	int avoidDeepWater=rmCreateClassDistanceConstraint("stuff avoids deep water", classDeepWater, 30.0);
@@ -270,7 +270,7 @@ void main(void)
 	int aztecCityConstraint = rmCreateBoxConstraint("stay in the aztec city", 0.5-rmXTilesToFraction(62), 0.5-rmZTilesToFraction(42), 0.5+rmXTilesToFraction(62), 0.5+rmZTilesToFraction(42));
 	int aztecCityConstraint2 = rmCreateBoxConstraint("stay in the aztec city 2", 0.5-rmXTilesToFraction(42), 0.5-rmZTilesToFraction(62), 0.5+rmXTilesToFraction(42), 0.5+rmZTilesToFraction(62));
 
-	int avoidCity = rmCreateClassDistanceConstraint("avoid city block", classCityBlock, 50.0);
+	int avoidCity = rmCreateClassDistanceConstraint("avoid city block", classCityBlock, 30.0);
 	
 	int avoidBlock =rmCreateClassDistanceConstraint("stuff vs. blocks", rmClassID("classBlock"), 6.0);
 	int avoidBlockLong =rmCreateClassDistanceConstraint("stuff vs. blocks long", rmClassID("classBlock"), 10.0);
@@ -335,14 +335,24 @@ void main(void)
 	rmSetObjectDefMinDistance(socketID, 2.0);
 	rmSetObjectDefMaxDistance(socketID, 8.0);
 
+	// Define lake area
+
+	int lakeArea = rmCreateArea("lakeArea");
+    rmSetAreaSize(lakeArea , rmAreaTilesToFraction(23000), rmAreaTilesToFraction(23000));
+    rmSetAreaLocation(lakeArea , xCenter, zCenter);		
+    rmSetAreaCoherence(lakeArea , 0.8);
+    rmSetAreaElevationVariation(lakeArea, 0.0);
+	rmAddAreaToClass(lakeArea, classGreatLake);
+    rmBuildArea(lakeArea); 
+
 	// Grid coordinates
 
-	float locX1 = xCenter-rmXTilesToFraction(50);
+	float locX1 = xCenter-rmXTilesToFraction(52);
 	float locX2 = xCenter-rmXTilesToFraction(30);
 	float locX3 = xCenter-rmXTilesToFraction(10);
 	float locX4 = xCenter+rmXTilesToFraction(10);
 	float locX5 = xCenter+rmXTilesToFraction(30);
-	float locX6 = xCenter+rmXTilesToFraction(50);
+	float locX6 = xCenter+rmXTilesToFraction(52);
 
 	float locZ1 = zCenter-rmZTilesToFraction(50);
 	float locZ2 = zCenter-rmZTilesToFraction(30);
@@ -372,8 +382,8 @@ void main(void)
 	int block3Constraint = rmCreateBoxConstraint("stay in the aztec block 3", blockX1-rmZTilesToFraction(16), blockZ4-rmZTilesToFraction(16), blockX1+rmXTilesToFraction(16), blockZ4+rmZTilesToFraction(16));
 	int block4Constraint = rmCreateBoxConstraint("stay in the aztec block 4", blockX3-rmZTilesToFraction(16), blockZ4-rmZTilesToFraction(16), blockX3+rmXTilesToFraction(16), blockZ4+rmZTilesToFraction(16));
 	int blockCenterConstraint = rmCreateBoxConstraint("stay in the aztec block center", blockX2-rmZTilesToFraction(36), blockZ2-rmZTilesToFraction(16), blockX2+rmXTilesToFraction(36), blockZ2+rmZTilesToFraction(16));
-	int blockNarrowConstraint1 = rmCreateBoxConstraint("stay in the aztec block narrow 1", locX1-rmZTilesToFraction(8), blockZ2-rmZTilesToFraction(38), locX1+rmXTilesToFraction(8), blockZ2+rmZTilesToFraction(38));
-	int blockNarrowConstraint2 = rmCreateBoxConstraint("stay in the aztec block narrow 2", locX6-rmZTilesToFraction(8), blockZ2-rmZTilesToFraction(38), locX6+rmXTilesToFraction(8), blockZ2+rmZTilesToFraction(38));
+	int blockNarrowConstraint1 = rmCreateBoxConstraint("stay in the aztec block narrow 1", locX1-rmZTilesToFraction(9), blockZ2-rmZTilesToFraction(38), locX1+rmXTilesToFraction(9), blockZ2+rmZTilesToFraction(38));
+	int blockNarrowConstraint2 = rmCreateBoxConstraint("stay in the aztec block narrow 2", locX6-rmZTilesToFraction(9), blockZ2-rmZTilesToFraction(38), locX6+rmXTilesToFraction(9), blockZ2+rmZTilesToFraction(38));
 
 	// 	Bridges
 	int bridgeGrouping = rmCreateGrouping("bridge 01", "AZ_Bridge_01");
@@ -391,8 +401,8 @@ void main(void)
     rmSetGroupingMaxDistance(bridgeGrouping3, 0.00);
 	//rmAddGroupingToClass(bridgeGrouping3, rmClassID("classPlateau"));
 
-	rmPlaceGroupingAtLoc(bridgeGrouping, 0, locX1+rmXTilesToFraction(10), blockZ2);
-	rmPlaceGroupingAtLoc(bridgeGrouping, 0, locX6-rmXTilesToFraction(10), blockZ2);
+	rmPlaceGroupingAtLoc(bridgeGrouping, 0, locX1+rmXTilesToFraction(12), blockZ2+rmZTilesToFraction(1));
+	rmPlaceGroupingAtLoc(bridgeGrouping, 0, locX6-rmXTilesToFraction(12), blockZ2+rmXTilesToFraction(1));
 
 	rmPlaceGroupingAtLoc(bridgeGrouping2, 0, blockX1, locZ2+rmZTilesToFraction(10));
 	rmPlaceGroupingAtLoc(bridgeGrouping2, 0, blockX1, locZ5-rmZTilesToFraction(10));
@@ -414,7 +424,7 @@ void main(void)
     rmSetAreaBaseHeight(aztecBlock1, 2.0);
 	rmSetAreaSmoothDistance(aztecBlock1, 0);
 	rmSetAreaHeightBlend(aztecBlock1, 0);
-	rmSetAreaCliffType(aztecBlock1, "ZP City");
+	rmSetAreaCliffType(aztecBlock1, "ZP City Aztec");
     rmSetAreaCliffEdge(aztecBlock1, 1, 1.0, 0.1, 1.0, 0);
     rmSetAreaCliffHeight(aztecBlock1, 0, 0.0, 1.0);
     rmAddAreaConstraint(aztecBlock1 , block1Constraint);
@@ -428,7 +438,7 @@ void main(void)
     rmSetAreaBaseHeight(aztecBlock2, 2.0);
 	rmSetAreaSmoothDistance(aztecBlock2, 0);
 	rmSetAreaHeightBlend(aztecBlock2, 0);
-	rmSetAreaCliffType(aztecBlock2, "ZP City");
+	rmSetAreaCliffType(aztecBlock2, "ZP City Aztec");
     rmSetAreaCliffEdge(aztecBlock2, 1, 1.0, 0.1, 1.0, 0);
     rmSetAreaCliffHeight(aztecBlock2, 0, 0.0, 1.0);
     rmAddAreaConstraint(aztecBlock2 , block2Constraint);
@@ -442,7 +452,7 @@ void main(void)
     rmSetAreaBaseHeight(aztecBlock3, 2.0);
 	rmSetAreaSmoothDistance(aztecBlock3, 0);
 	rmSetAreaHeightBlend(aztecBlock3, 0);
-	rmSetAreaCliffType(aztecBlock3, "ZP City");
+	rmSetAreaCliffType(aztecBlock3, "ZP City Aztec");
     rmSetAreaCliffEdge(aztecBlock3, 1, 1.0, 0.1, 1.0, 0);
     rmSetAreaCliffHeight(aztecBlock3, 0, 0.0, 1.0);
     rmAddAreaConstraint(aztecBlock3 , block3Constraint);
@@ -456,7 +466,7 @@ void main(void)
     rmSetAreaBaseHeight(aztecBlock4, 2.0);
 	rmSetAreaSmoothDistance(aztecBlock4, 0);
 	rmSetAreaHeightBlend(aztecBlock4, 0);
-	rmSetAreaCliffType(aztecBlock4, "ZP City");
+	rmSetAreaCliffType(aztecBlock4, "ZP City Aztec");
     rmSetAreaCliffEdge(aztecBlock4, 1, 1.0, 0.1, 1.0, 0);
     rmSetAreaCliffHeight(aztecBlock4, 0, 0.0, 1.0);
     rmAddAreaConstraint(aztecBlock4 , block4Constraint);
@@ -470,7 +480,7 @@ void main(void)
     rmSetAreaBaseHeight(aztecBlockCenter, 2.0);
 	rmSetAreaSmoothDistance(aztecBlockCenter, 0);
 	rmSetAreaHeightBlend(aztecBlockCenter, 0);
-	rmSetAreaCliffType(aztecBlockCenter, "ZP City");
+	rmSetAreaCliffType(aztecBlockCenter, "ZP City Aztec");
     rmSetAreaCliffEdge(aztecBlockCenter, 1, 1.0, 0.1, 1.0, 0);
     rmSetAreaCliffHeight(aztecBlockCenter, 0, 0.0, 1.0);
     rmAddAreaConstraint(aztecBlockCenter , blockCenterConstraint);
@@ -484,7 +494,7 @@ void main(void)
     rmSetAreaBaseHeight(aztecBlockNarrow1, 2.0);
 	rmSetAreaSmoothDistance(aztecBlockNarrow1, 0);
 	rmSetAreaHeightBlend(aztecBlockNarrow1, 0);
-	rmSetAreaCliffType(aztecBlockNarrow1, "ZP City");
+	rmSetAreaCliffType(aztecBlockNarrow1, "ZP City Aztec");
     rmSetAreaCliffEdge(aztecBlockNarrow1, 1, 1.0, 0.1, 1.0, 0);
     rmSetAreaCliffHeight(aztecBlockNarrow1, 0, 0.0, 1.0);
     rmAddAreaConstraint(aztecBlockNarrow1 , blockNarrowConstraint1);
@@ -498,7 +508,7 @@ void main(void)
     rmSetAreaBaseHeight(aztecBlockNarrow2, 2.0);
 	rmSetAreaSmoothDistance(aztecBlockNarrow2, 0);
 	rmSetAreaHeightBlend(aztecBlockNarrow2, 0);
-	rmSetAreaCliffType(aztecBlockNarrow2, "ZP City");
+	rmSetAreaCliffType(aztecBlockNarrow2, "ZP City Aztec");
     rmSetAreaCliffEdge(aztecBlockNarrow2, 1, 1.0, 0.1, 1.0, 0);
     rmSetAreaCliffHeight(aztecBlockNarrow2, 0, 0.0, 1.0);
     rmAddAreaConstraint(aztecBlockNarrow2 , blockNarrowConstraint2);
@@ -608,9 +618,9 @@ void main(void)
     rmAddObjectDefItem(housePoint2, "zpSPCWaterSpawnPoint", 1, 0.0);
 
 	// Houses
-	rmPlaceGroupingAtLoc(houseGrouping1, 0, locX1, blockZ2);
+	rmPlaceGroupingAtLoc(houseGrouping1, 0, locX1-rmXTilesToFraction(1), blockZ2);
 	rmPlaceObjectDefAtLoc(housePoint1, 0, locX1, blockZ2, 1);
-	rmPlaceGroupingAtLoc(houseGrouping2, 0, locX6, blockZ2);
+	rmPlaceGroupingAtLoc(houseGrouping2, 0, locX6+rmXTilesToFraction(1), blockZ2);
 	rmPlaceObjectDefAtLoc(housePoint2, 0, locX6, blockZ2, 1);
 
 	// Citadels
@@ -636,9 +646,8 @@ void main(void)
     rmSetAreaSize(northContinentID, 0.35, 0.35);
     rmSetAreaCoherence(northContinentID, 0.65);
     rmSetAreaMix(northContinentID, "texas_grass");
-		rmAddAreaTerrainLayer(northContinentID, "Texas\ground5_tex", 0, 4);
-		rmAddAreaTerrainLayer(northContinentID, "Texas\ground4_tex", 4, 6);
-		rmAddAreaTerrainLayer(northContinentID, "Texas\ground3_tex", 6, 9);
+		rmAddAreaTerrainLayer(northContinentID, "Texas\ground5_tex", 0, 2);
+		rmAddAreaTerrainLayer(northContinentID, "Texas\ground3_tex", 2, 4);
     rmSetAreaBaseHeight(northContinentID, 4);  // embassy structure height
     rmSetAreaHeightBlend(northContinentID, 2);
     rmSetAreaSmoothDistance(northContinentID, 50);
@@ -649,6 +658,7 @@ void main(void)
     rmSetAreaObeyWorldCircleConstraint(northContinentID, false);
     //rmAddAreaConstraint(northContinentID, avoidCenterPoint);
     rmAddAreaConstraint(northContinentID, avoidCity);
+	rmAddAreaConstraint(northContinentID, greatLakesConstraint);
     rmSetAreaLocation(northContinentID, 0.1, 0.5);
     rmBuildArea(northContinentID);
 
@@ -657,9 +667,8 @@ void main(void)
     rmSetAreaSize(southContinentID, 0.35, 0.35);
     rmSetAreaCoherence(southContinentID, 0.65);
     rmSetAreaMix(southContinentID, "texas_grass");
-		rmAddAreaTerrainLayer(southContinentID, "Texas\ground5_tex", 0, 4);
-		rmAddAreaTerrainLayer(southContinentID, "Texas\ground4_tex", 4, 6);
-		rmAddAreaTerrainLayer(southContinentID, "Texas\ground3_tex", 6, 9);
+		rmAddAreaTerrainLayer(southContinentID, "Texas\ground5_tex", 0, 2);
+		rmAddAreaTerrainLayer(southContinentID, "Texas\ground3_tex", 2, 4);
     rmSetAreaBaseHeight(southContinentID, 4);  // embassy structure height
     rmSetAreaHeightBlend(southContinentID, 2);
     rmSetAreaSmoothDistance(southContinentID, 50);
@@ -670,6 +679,7 @@ void main(void)
     rmSetAreaObeyWorldCircleConstraint(southContinentID, false);
     //rmAddAreaConstraint(southContinentID, avoidCenterPoint);
     rmAddAreaConstraint(southContinentID, avoidCity);
+	rmAddAreaConstraint(southContinentID, greatLakesConstraint);
     rmSetAreaLocation(southContinentID, 0.9, 0.5);
     rmBuildArea(southContinentID);
 
@@ -869,7 +879,7 @@ void main(void)
 	rmSetAreaCliffPainting(northCliffID, true, true, true, 1.5, true);
     rmSetAreaObeyWorldCircleConstraint(northCliffID, false);
 	rmAddAreaToClass(northCliffID, classMountains);
-    rmSetAreaLocation(northCliffID, 0.50, 0.98);
+    rmSetAreaLocation(northCliffID, 0.50, 0.99);
     rmAddAreaInfluencePoint(northCliffID, 0.40, 0.90);
     rmAddAreaInfluencePoint(northCliffID, 0.60, 0.90);
 
@@ -1317,10 +1327,10 @@ void main(void)
 	int socketFood = rmGetGroupingInstanceUnitByType(foodPlacement, "SocketAztec");
 	int socketGold = rmGetGroupingInstanceUnitByType(goldPlacement, "SocketAztec");
 
-	int centerTemple = rmGetGroupingInstanceUnitByType(templePlacement, "zpCinematicRevealer");
-	int centerWood = rmGetGroupingInstanceUnitByType(woodPlacement, "zpCinematicRevealer");
-	int centerFood = rmGetGroupingInstanceUnitByType(foodPlacement, "zpCinematicRevealer");
-	int centerGold = rmGetGroupingInstanceUnitByType(goldPlacement, "zpCinematicRevealer");
+	int centerTemple = rmGetGroupingInstanceUnitByType(templePlacement, "zpSPCRevealerAztec");
+	int centerWood = rmGetGroupingInstanceUnitByType(woodPlacement, "zpSPCRevealerAztec");
+	int centerFood = rmGetGroupingInstanceUnitByType(foodPlacement, "zpSPCRevealerAztec");
+	int centerGold = rmGetGroupingInstanceUnitByType(goldPlacement, "zpSPCRevealerAztec");
 
 	int centerPointID = rmGetUnitPlaced(centerPoint, 0);
 
@@ -1417,10 +1427,6 @@ void main(void)
 	for(i=0; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
-		rmSetTriggerEffectParam("TechID","cTechzpIsAztecMap"); // Aztec Map
-		rmSetTriggerEffectParamInt("Status",2);
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechzpAztecCityGeneralSetup"); // Aztec Map
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -1496,7 +1502,7 @@ void main(void)
 	rmSwitchToTrigger(rmTriggerID("Victory_Attackers"));
 	rmAddTriggerCondition("Player Unit Count");
 	rmSetTriggerConditionParamInt("PlayerID",firstDefender);
-	rmSetTriggerConditionParam("Protounit","zpCinematicRevealer");
+	rmSetTriggerConditionParam("Protounit","zpSPCRevealerAztec");
 	rmSetTriggerConditionParam("Op","==");
 	rmSetTriggerConditionParamInt("Count",0);
 	rmAddTriggerEffect("Team Victory");
@@ -1509,7 +1515,7 @@ void main(void)
 	rmSwitchToTrigger(rmTriggerID("4_Socket_Hold"));
 	rmAddTriggerCondition("Player Unit Count");
 	rmSetTriggerConditionParamInt("PlayerID",firstDefender);
-	rmSetTriggerConditionParam("Protounit","zpCinematicRevealer");
+	rmSetTriggerConditionParam("Protounit","zpSPCRevealerAztec");
 	rmSetTriggerConditionParam("Op","==");
 	rmSetTriggerConditionParamInt("Count",4);
 	rmAddTriggerEffect("FakeCounter Set Text");
@@ -1528,7 +1534,7 @@ void main(void)
 	rmSwitchToTrigger(rmTriggerID("3_Socket_Hold"));
 	rmAddTriggerCondition("Player Unit Count");
 	rmSetTriggerConditionParamInt("PlayerID",firstDefender);
-	rmSetTriggerConditionParam("Protounit","zpCinematicRevealer");
+	rmSetTriggerConditionParam("Protounit","zpSPCRevealerAztec");
 	rmSetTriggerConditionParam("Op","==");
 	rmSetTriggerConditionParamInt("Count",3);
 	rmAddTriggerEffect("FakeCounter Set Text");
@@ -1547,7 +1553,7 @@ void main(void)
 	rmSwitchToTrigger(rmTriggerID("2_Socket_Hold"));
 	rmAddTriggerCondition("Player Unit Count");
 	rmSetTriggerConditionParamInt("PlayerID",firstDefender);
-	rmSetTriggerConditionParam("Protounit","zpCinematicRevealer");
+	rmSetTriggerConditionParam("Protounit","zpSPCRevealerAztec");
 	rmSetTriggerConditionParam("Op","==");
 	rmSetTriggerConditionParamInt("Count",2);
 	rmAddTriggerEffect("FakeCounter Set Text");
@@ -1566,7 +1572,7 @@ void main(void)
 	rmSwitchToTrigger(rmTriggerID("1_Socket_Hold"));
 	rmAddTriggerCondition("Player Unit Count");
 	rmSetTriggerConditionParamInt("PlayerID",firstDefender);
-	rmSetTriggerConditionParam("Protounit","zpCinematicRevealer");
+	rmSetTriggerConditionParam("Protounit","zpSPCRevealerAztec");
 	rmSetTriggerConditionParam("Op","==");
 	rmSetTriggerConditionParamInt("Count",1);
 	rmAddTriggerEffect("FakeCounter Set Text");
@@ -2592,7 +2598,7 @@ void main(void)
 		rmSetTriggerConditionParamInt("Count",1);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpSPCAztecMercenariesShadow");
+		rmSetTriggerEffectParam("TechID","cTechzpSPCAztecMercenaries");
 		rmSetTriggerEffectParamInt("Status",2);
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
