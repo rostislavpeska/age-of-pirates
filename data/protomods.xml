@@ -52817,39 +52817,27 @@
     <movementtype>air</movementtype>
     <animfile>ui\editor\editor_revealer.xml</animfile>
     <los>30.0000</los>
-    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
     <unittype>Unattackable</unittype>
-    <unittype>EmbellishmentClass</unittype>
-    <unittype>Economic</unittype>
     <unittype>BuildingClass</unittype>
-    <unittype>Building</unittype>
-    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <unittype>HasBountyValue</unittype>
-    <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
-    <flag>NoBloodOnDeath</flag>
+    <unittype>Economic</unittype>
+    <unittype>AbstractCityManison</unittype>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>ObscuresUnits</flag>
     <flag>NonAutoFormedUnit</flag>
-    <flag>Doppled</flag>
     <flag>SelectWithObstruction</flag>
-    <flag>DontFlattenGround</flag>
-    <flag>TieToWaterSurface</flag>
-    <flag>HasGatherPoint</flag>
-    <flag>AllowAutoGarrison</flag>
-    <flag>PaintTextureWhenPlacing</flag>
+     <flag>HasGatherPoint</flag>
     <flag>Tracked</flag>
     <flag>NonCollideable</flag>
-    <flag>DecalStickToWaterSurface</flag>
     <flag>NonSolid</flag>
     <flag>NotDeleteable</flag>
     <flag>NotSelectable</flag>
+    <flag>NotSearchable</flag>
     <flag>Invulnerable</flag>
     <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
     <flag>OnlyInEditor</flag>
-    <unittype>AbstractCityManison</unittype>
     <tactics>aztecdistrictspawner.tactics</tactics>
   </unit>
   <unit id="20716" name="zpEagleWarriorMercIcon">
