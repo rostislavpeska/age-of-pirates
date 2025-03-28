@@ -1,0 +1,782 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>73</width>
+	<height>32</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="6" posx="0.0131" posz="12.1585" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">TownCenter</unit>
+		<unit variation="112" posx="-23.9640" posz="-29.0129" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="96" posx="-18.6755" posz="-28.9740" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
+		<unit variation="237" posx="-1.1133" posz="-26.7582" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SocketTradeRoute</unit>
+		<unit variation="151" posx="-29.5710" posz="-28.9866" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallStraight5</unit>
+		<unit variation="121" posx="-68.8199" posz="-28.8024" orientx="-0.0054" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="245" posx="-57.6060" posz="-28.8550" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="80" posx="-35.1780" posz="-28.9603" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="43" posx="-13.3724" posz="-28.7791" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="43" posx="12.4125" posz="-28.2311" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="42" posx="23.3422" posz="-28.3870" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="103" posx="34.5562" posz="-28.4397" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="130" posx="45.7701" posz="-28.4923" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="78" posx="68.1840" posz="-28.5975" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
+		<unit variation="205" posx="-40.6841" posz="-28.7221" orientx="0.0000" orienty="0.0000" orientz="1.0000">CWallGate</unit>
+		<unit variation="189" posx="40.2924" posz="-28.4773" orientx="0.0000" orienty="0.0000" orientz="1.0000">CWallGate</unit>
+		<unit variation="71" posx="56.9841" posz="-28.5449" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="194" posx="52.0000" posz="-25.0000" orientx="0.9926" orienty="0.0000" orientz="-0.1216">deMineGoldBuildable</unit>
+		<unit variation="228" posx="-46.3920" posz="-28.9077" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="173" posx="-51.9990" posz="-28.8814" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallStraight5</unit>
+		<unit variation="96" posx="18.3015" posz="-28.3767" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
+		<unit variation="215" posx="51.3771" posz="-28.5186" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallStraight5</unit>
+		<unit variation="102" posx="-63.2130" posz="-28.8287" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallStraight5</unit>
+		<unit variation="59" posx="63.2602" posz="-28.3232" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
+		<unit variation="107" posx="28.9492" posz="-28.4133" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallStraight5</unit>
+		<unit variation="9" posx="-0.3615" posz="-27.4443" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCAztecStairs</unit>
+		<unit variation="194" posx="-53.0723" posz="-24.0288" orientx="0.9636" orienty="0.0000" orientz="0.2675">deMineGoldBuildable</unit>
+		<unit variation="29" posx="-68.9077" posz="-22.9550" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallStraight5</unit>
+		<unit variation="63" posx="68.2805" posz="-22.8935" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallStraight5</unit>
+		<unit variation="9" posx="-12.7226" posz="-24.7561" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropAztecDecoration</unit>
+		<unit variation="27" posx="12.4381" posz="-24.2429" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropAztecDecoration</unit>
+		<unit variation="68" posx="61.3380" posz="-21.8493" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">Barracks</unit>
+		<unit variation="159" posx="-30.2021" posz="-22.1086" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="84" posx="-30.7163" posz="-20.2764" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="129" posx="26.8986" posz="-20.3147" orientx="-0.0431" orienty="0.0041" orientz="-0.9991">Turkey</unit>
+		<unit variation="10" posx="-28.0000" posz="-21.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="50" posx="-28.1066" posz="-17.7959" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="149" posx="-16.8423" posz="-18.8439" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="50" posx="35.8934" posz="-17.7959" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="35" posx="23.2815" posz="-18.6799" orientx="-0.0475" orienty="0.0041" orientz="-0.9989">Turkey</unit>
+		<unit variation="164" posx="8.7804" posz="-17.7833" orientx="0.9728" orienty="-0.0047" orientz="0.2315">Turkey</unit>
+		<unit variation="113" posx="14.1167" posz="-18.3202" orientx="-0.6471" orienty="-0.0005" orientz="0.7624">Turkey</unit>
+		<unit variation="75" posx="18.5315" posz="-17.5127" orientx="-0.6325" orienty="0.0055" orientz="-0.7746">Turkey</unit>
+		<unit variation="151" posx="-34.0000" posz="-19.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="80" posx="-12.0000" posz="-19.0000" orientx="0.4876" orienty="0.0000" orientz="-0.8731">TreeAmazon</unit>
+		<unit variation="253" posx="-68.9955" posz="-17.1077" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallConnector</unit>
+		<unit variation="245" posx="68.3770" posz="-17.1895" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
+		<unit variation="206" posx="-17.2398" posz="-16.4234" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="229" posx="11.5253" posz="-16.6651" orientx="-0.9981" orienty="0.0041" orientz="-0.0607">Turkey</unit>
+		<unit variation="230" posx="14.9863" posz="-15.5810" orientx="-0.4330" orienty="-0.0018" orientz="0.9014">Turkey</unit>
+		<unit variation="132" posx="8.5773" posz="-16.4630" orientx="0.9601" orienty="-0.0048" orientz="0.2795">Turkey</unit>
+		<unit variation="68" posx="-30.0000" posz="-17.0000" orientx="-0.1977" orienty="0.0000" orientz="-0.9803">TreeAmazon</unit>
+		<unit variation="127" posx="-22.0000" posz="-17.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="255" posx="-14.0000" posz="-17.0000" orientx="-0.0947" orienty="0.0000" orientz="0.9955">TreeAmazon</unit>
+		<unit variation="168" posx="-69.0833" posz="-11.2603" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallStraight5</unit>
+		<unit variation="56" posx="68.4735" posz="-11.4855" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallStraight5</unit>
+		<unit variation="28" posx="-64.0000" posz="-13.0000" orientx="0.0680" orienty="0.0000" orientz="0.9977">deMineGoldBuildable</unit>
+		<unit variation="231" posx="22.8215" posz="-14.2221" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="180" posx="-23.8345" posz="-15.4026" orientx="-0.0216" orienty="-0.0038" orientz="0.9998">Turkey</unit>
+		<unit variation="65" posx="13.1185" posz="-14.4476" orientx="-0.4365" orienty="-0.0018" orientz="0.8997">Turkey</unit>
+		<unit variation="107" posx="20.6855" posz="-13.6997" orientx="-0.2230" orienty="-0.0029" orientz="0.9748">Turkey</unit>
+		<unit variation="87" posx="-34.0000" posz="-15.0000" orientx="0.7361" orienty="0.0000" orientz="0.6768">TreeAmazon</unit>
+		<unit variation="187" posx="-24.0000" posz="-15.0000" orientx="0.9220" orienty="0.0000" orientz="-0.3871">TreeAmazon</unit>
+		<unit variation="178" posx="-22.0000" posz="-15.0000" orientx="0.7701" orienty="0.0000" orientz="-0.6379">TreeAmazon</unit>
+		<unit variation="84" posx="-37.5939" posz="-12.2505" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsNative</unit>
+		<unit variation="84" posx="26.4061" posz="-12.2505" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsNative</unit>
+		<unit variation="15" posx="53.5208" posz="-11.5680" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="75" posx="40.9668" posz="-12.7302" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="42" posx="-26.6974" posz="-11.9069" orientx="0.8802" orienty="-0.0053" orientz="0.4746">Turkey</unit>
+		<unit variation="192" posx="-30.2192" posz="-12.2441" orientx="0.0000" orienty="0.0124" orientz="-0.9999">zpGuardianCardinalGuard</unit>
+		<unit variation="7" posx="-28.8824" posz="-12.9596" orientx="-0.8554" orienty="0.0006" orientz="0.5180">zpGuardianCardinalGuard</unit>
+		<unit variation="24" posx="11.8873" posz="-12.3590" orientx="-0.1016" orienty="0.0043" orientz="-0.9948">Turkey</unit>
+		<unit variation="200" posx="18.4268" posz="-13.0377" orientx="-0.7454" orienty="0.0003" orientz="0.6666">Turkey</unit>
+		<unit variation="207" posx="19.4395" posz="-11.6442" orientx="-0.9631" orienty="0.0027" orientz="0.2690">Turkey</unit>
+		<unit variation="63" posx="-31.2535" posz="-13.1583" orientx="0.6916" orienty="-0.0007" orientz="0.7223">zpGuardianCardinalGuard</unit>
+		<unit variation="230" posx="-42.0000" posz="-13.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="222" posx="-36.0000" posz="-13.0000" orientx="0.1393" orienty="0.0000" orientz="-0.9902">TreeAmazon</unit>
+		<unit variation="21" posx="-29.4243" posz="-11.0394" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNuggetKidnapGuillotine</unit>
+		<unit variation="136" posx="-26.0000" posz="-13.0000" orientx="-0.4277" orienty="0.0000" orientz="-0.9039">TreeAmazon</unit>
+		<unit variation="8" posx="-14.0000" posz="-13.0000" orientx="-0.8131" orienty="0.0000" orientz="-0.5822">TreeAmazon</unit>
+		<unit variation="194" posx="64.0000" posz="-9.0000" orientx="0.1216" orienty="0.0000" orientz="0.9926">deMineGoldBuildable</unit>
+		<unit variation="127" posx="-21.2609" posz="-11.3686" orientx="0.9722" orienty="-0.0029" orientz="-0.2342">Turkey</unit>
+		<unit variation="60" posx="14.2782" posz="-10.0677" orientx="-0.9938" orienty="0.0043" orientz="-0.1113">Turkey</unit>
+		<unit variation="55" posx="28.1578" posz="-9.6514" orientx="-0.9548" orienty="0.0049" orientz="-0.2972">Turkey</unit>
+		<unit variation="121" posx="-24.0000" posz="-11.0000" orientx="0.9970" orienty="0.0000" orientz="-0.0768">TreeAmazon</unit>
+		<unit variation="9" posx="-16.0000" posz="-11.0000" orientx="0.8957" orienty="0.0000" orientz="-0.4446">TreeAmazon</unit>
+		<unit variation="238" posx="-29.6553" posz="-9.0704" orientx="-0.8513" orienty="0.0054" orientz="-0.5247">deGuardianCuirassier</unit>
+		<unit variation="33" posx="25.2665" posz="-9.0954" orientx="-0.8231" orienty="0.0054" orientz="-0.5679">Turkey</unit>
+		<unit variation="37" posx="-31.4090" posz="-9.0917" orientx="-0.2193" orienty="0.0122" orientz="-0.9756">Settler</unit>
+		<unit variation="22" posx="-38.0000" posz="-9.0000" orientx="-0.6993" orienty="0.0000" orientz="0.7148">TreeAmazon</unit>
+		<unit variation="239" posx="-20.0000" posz="-9.0000" orientx="-0.8586" orienty="0.0000" orientz="-0.5126">TreeAmazon</unit>
+		<unit variation="151" posx="-22.0074" posz="-8.0515" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">BerryBush</unit>
+		<unit variation="168" posx="-14.0000" posz="-9.0000" orientx="0.8087" orienty="0.0000" orientz="0.5882">TreeAmazon</unit>
+		<unit variation="48" posx="-12.0000" posz="-9.0000" orientx="0.4255" orienty="0.0000" orientz="-0.9050">TreeAmazon</unit>
+		<unit variation="210" posx="27.0455" posz="-7.0803" orientx="-0.3998" orienty="0.0051" orientz="-0.9166">Turkey</unit>
+		<unit variation="179" posx="-69.1711" posz="-5.4129" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallConnector</unit>
+		<unit variation="72" posx="-42.0000" posz="-7.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="175" posx="-34.0000" posz="-7.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="213" posx="68.5699" posz="-5.7815" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
+		<unit variation="17" posx="-24.0000" posz="-5.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="251" posx="69.3683" posz="-0.3093" orientx="1.0000" orienty="-0.0039" orientz="-0.0000">zpInvisibleGateSocket</unit>
+		<unit variation="193" posx="-69.4035" posz="0.4745" orientx="-1.0000" orienty="0.0039" orientz="0.0000">zpInvisibleGateSocket</unit>
+		<unit variation="202" posx="-33.8416" posz="3.4622" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsNative</unit>
+		<unit variation="202" posx="30.1584" posz="3.4622" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsNative</unit>
+		<unit variation="15" posx="-54.0491" posz="7.0664" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="15" posx="9.9509" posz="7.0664" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="1" posx="20.3310" posz="6.0178" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="34" posx="-69.3467" posz="6.2818" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallConnector</unit>
+		<unit variation="31" posx="57.6615" posz="8.6994" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SocketTradeRoute</unit>
+		<unit variation="206" posx="68.7629" posz="5.6265" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
+		<unit variation="182" posx="-59.6035" posz="8.2029" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SocketTradeRoute</unit>
+		<unit variation="118" posx="-69.4345" posz="12.1292" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallStraight5</unit>
+		<unit variation="49" posx="68.8594" posz="11.3305" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallStraight5</unit>
+		<unit variation="118" posx="-11.6328" posz="9.7862" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsNative</unit>
+		<unit variation="136" posx="10.8806" posz="10.7105" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="170" posx="12.4476" posz="13.7775" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Market</unit>
+		<unit variation="72" posx="-60.6601" posz="15.5510" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="59" posx="-59.9559" posz="16.4307" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="158" posx="13.9050" posz="17.0693" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsNative</unit>
+		<unit variation="147" posx="19.1301" posz="16.2505" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="135" posx="-55.3954" posz="16.8377" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="118" posx="-53.9096" posz="15.9334" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="135" posx="8.6046" posz="16.8377" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="118" posx="10.0904" posz="15.9334" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="102" posx="68.9558" posz="17.0345" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
+		<unit variation="117" posx="-29.8427" posz="17.9785" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="117" posx="34.1573" posz="17.9785" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="205" posx="-69.5223" posz="17.9765" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallConnector</unit>
+		<unit variation="32" posx="61.4995" posz="21.2649" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Stable</unit>
+		<unit variation="41" posx="-63.0716" posz="21.9626" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Barracks</unit>
+		<unit variation="1" posx="-69.6101" posz="23.8239" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallStraight5</unit>
+		<unit variation="49" posx="68.8839" posz="23.2123" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallStraight5</unit>
+		<unit variation="150" posx="0.1733" posz="26.1179" orientx="0.0000" orienty="0.0000" orientz="1.0000">SocketTradeRoute</unit>
+		<unit variation="43" posx="-24.1056" posz="28.8619" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="43" posx="-13.0147" posz="28.8245" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="205" posx="-0.9058" posz="26.3384" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCAztecStairs</unit>
+		<unit variation="103" posx="46.5489" posz="28.6340" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="82" posx="69.1452" posz="28.2329" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
+		<unit variation="254" posx="57.3583" posz="28.5476" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="96" posx="-18.9105" posz="28.7417" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
+		<unit variation="96" posx="17.9925" posz="28.8625" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
+		<unit variation="59" posx="52.2480" posz="28.5329" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
+		<unit variation="59" posx="62.9684" posz="28.3937" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
+		<unit variation="96" posx="-29.8046" posz="28.9631" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
+		<unit variation="40" posx="29.2703" posz="28.7861" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
+		<unit variation="48" posx="-69.6979" posz="29.6713" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallConnector</unit>
+		<unit variation="4" posx="-41.1531" posz="29.3824" orientx="0.0000" orienty="0.0000" orientz="-1.0000">CWallGate</unit>
+		<unit variation="216" posx="-58.2998" posz="29.4689" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="101" posx="-46.9017" posz="29.2666" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="181" posx="-35.5037" posz="29.0643" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="99" posx="-52.6008" posz="29.3678" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
+		<unit variation="43" posx="12.4357" posz="29.0659" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="119" posx="23.7528" posz="29.0387" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="172" posx="41.0184" posz="29.1136" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">CWallGate</unit>
+		<unit variation="73" posx="35.4605" posz="29.0873" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="155" posx="-63.9988" posz="29.5701" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
+		<unit variation="242" posx="-65.1239" posz="-24.2326" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Outpost</unit>
+		<unit variation="56" posx="0.1968" posz="-12.9100" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deMayaCastle</unit>
+		<unit variation="58" posx="62.8262" posz="-14.3491" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">Outpost</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">
+			<block startx="-36" startz="2" endx="-36" endz="7"></block>
+			<block startx="-35" startz="3" endx="-35" endz="7"></block>
+			<block startx="-34" startz="3" endx="-34" endz="4"></block>
+			<block startx="-34" startz="7" endx="-34" endz="7"></block>
+			<block startx="-36" startz="8" endx="-36" endz="15"></block>
+			<block startx="-35" startz="8" endx="-35" endz="15"></block>
+			<block startx="-34" startz="8" endx="-34" endz="9"></block>
+			<block startx="-34" startz="13" endx="-34" endz="15"></block>
+			<block startx="-33" startz="14" endx="-33" endz="15"></block>
+			<block startx="-32" startz="14" endx="-32" endz="15"></block>
+			<block startx="-31" startz="14" endx="-31" endz="15"></block>
+			<block startx="-30" startz="13" endx="-30" endz="15"></block>
+			<block startx="-29" startz="8" endx="-29" endz="15"></block>
+			<block startx="-28" startz="8" endx="-28" endz="15"></block>
+			<block startx="-27" startz="8" endx="-27" endz="15"></block>
+			<block startx="-26" startz="8" endx="-26" endz="15"></block>
+			<block startx="-33" startz="2" endx="-33" endz="3"></block>
+			<block startx="-29" startz="6" endx="-29" endz="7"></block>
+			<block startx="-28" startz="6" endx="-28" endz="7"></block>
+			<block startx="-27" startz="6" endx="-27" endz="7"></block>
+			<block startx="-26" startz="2" endx="-26" endz="2"></block>
+			<block startx="-26" startz="5" endx="-26" endz="7"></block>
+			<block startx="-25" startz="2" endx="-25" endz="7"></block>
+			<block startx="-24" startz="2" endx="-24" endz="7"></block>
+			<block startx="-23" startz="3" endx="-23" endz="7"></block>
+			<block startx="-22" startz="3" endx="-22" endz="7"></block>
+			<block startx="-21" startz="3" endx="-21" endz="7"></block>
+			<block startx="-20" startz="3" endx="-20" endz="7"></block>
+			<block startx="-19" startz="2" endx="-19" endz="7"></block>
+			<block startx="-18" startz="2" endx="-18" endz="7"></block>
+			<block startx="-25" startz="8" endx="-18" endz="15"></block>
+			<block startx="-17" startz="8" endx="-17" endz="15"></block>
+			<block startx="-16" startz="8" endx="-16" endz="15"></block>
+			<block startx="-15" startz="9" endx="-15" endz="15"></block>
+			<block startx="-14" startz="10" endx="-14" endz="15"></block>
+			<block startx="-13" startz="8" endx="-13" endz="8"></block>
+			<block startx="-13" startz="10" endx="-13" endz="15"></block>
+			<block startx="-12" startz="10" endx="-12" endz="15"></block>
+			<block startx="-11" startz="8" endx="-11" endz="8"></block>
+			<block startx="-11" startz="11" endx="-11" endz="15"></block>
+			<block startx="-10" startz="9" endx="-10" endz="15"></block>
+			<block startx="-17" startz="2" endx="-17" endz="7"></block>
+			<block startx="-16" startz="2" endx="-16" endz="7"></block>
+			<block startx="-15" startz="2" endx="-15" endz="7"></block>
+			<block startx="-14" startz="3" endx="-14" endz="7"></block>
+			<block startx="-13" startz="3" endx="-13" endz="4"></block>
+			<block startx="-12" startz="3" endx="-12" endz="3"></block>
+			<block startx="-12" startz="7" endx="-12" endz="7"></block>
+			<block startx="-11" startz="3" endx="-11" endz="3"></block>
+			<block startx="-10" startz="2" endx="-10" endz="4"></block>
+			<block startx="-36" startz="-16" endx="-36" endz="-9"></block>
+			<block startx="-35" startz="-16" endx="-35" endz="-9"></block>
+			<block startx="-34" startz="-16" endx="-34" endz="-13"></block>
+			<block startx="-34" startz="-10" endx="-34" endz="-9"></block>
+			<block startx="-36" startz="-8" endx="-36" endz="-3"></block>
+			<block startx="-35" startz="-8" endx="-35" endz="-4"></block>
+			<block startx="-34" startz="-8" endx="-34" endz="-3"></block>
+			<block startx="-33" startz="-8" endx="-33" endz="-3"></block>
+			<block startx="-29" startz="-8" endx="-29" endz="-4"></block>
+			<block startx="-28" startz="-8" endx="-28" endz="-4"></block>
+			<block startx="-27" startz="-8" endx="-27" endz="-7"></block>
+			<block startx="-27" startz="-5" endx="-27" endz="-4"></block>
+			<block startx="-26" startz="-4" endx="-26" endz="-4"></block>
+			<block startx="-33" startz="-16" endx="-33" endz="-14"></block>
+			<block startx="-33" startz="-9" endx="-33" endz="-9"></block>
+			<block startx="-32" startz="-16" endx="-32" endz="-15"></block>
+			<block startx="-31" startz="-16" endx="-31" endz="-15"></block>
+			<block startx="-30" startz="-16" endx="-30" endz="-14"></block>
+			<block startx="-29" startz="-16" endx="-29" endz="-13"></block>
+			<block startx="-29" startz="-9" endx="-29" endz="-9"></block>
+			<block startx="-28" startz="-16" endx="-28" endz="-9"></block>
+			<block startx="-27" startz="-16" endx="-27" endz="-9"></block>
+			<block startx="-26" startz="-16" endx="-26" endz="-9"></block>
+			<block startx="-25" startz="-16" endx="-25" endz="-10"></block>
+			<block startx="-24" startz="-16" endx="-24" endz="-9"></block>
+			<block startx="-23" startz="-16" endx="-23" endz="-9"></block>
+			<block startx="-22" startz="-16" endx="-22" endz="-9"></block>
+			<block startx="-21" startz="-16" endx="-21" endz="-9"></block>
+			<block startx="-20" startz="-16" endx="-20" endz="-9"></block>
+			<block startx="-19" startz="-16" endx="-19" endz="-9"></block>
+			<block startx="-18" startz="-16" endx="-18" endz="-10"></block>
+			<block startx="-25" startz="-5" endx="-25" endz="-4"></block>
+			<block startx="-24" startz="-7" endx="-24" endz="-3"></block>
+			<block startx="-23" startz="-8" endx="-23" endz="-3"></block>
+			<block startx="-22" startz="-8" endx="-22" endz="-7"></block>
+			<block startx="-22" startz="-4" endx="-22" endz="-3"></block>
+			<block startx="-21" startz="-8" endx="-21" endz="-8"></block>
+			<block startx="-21" startz="-3" endx="-21" endz="-2"></block>
+			<block startx="-20" startz="-3" endx="-20" endz="-2"></block>
+			<block startx="-19" startz="-3" endx="-19" endz="-2"></block>
+			<block startx="-18" startz="-3" endx="-18" endz="-2"></block>
+			<block startx="-17" startz="-3" endx="-17" endz="-2"></block>
+			<block startx="-16" startz="-6" endx="-16" endz="-6"></block>
+			<block startx="-16" startz="-4" endx="-16" endz="-2"></block>
+			<block startx="-15" startz="-5" endx="-15" endz="-2"></block>
+			<block startx="-14" startz="-6" endx="-14" endz="-2"></block>
+			<block startx="-13" startz="-6" endx="-13" endz="-5"></block>
+			<block startx="-13" startz="-2" endx="-13" endz="-2"></block>
+			<block startx="-12" startz="-2" endx="-12" endz="-2"></block>
+			<block startx="-11" startz="-2" endx="-11" endz="-2"></block>
+			<block startx="-10" startz="-3" endx="-10" endz="-2"></block>
+			<block startx="-17" startz="-16" endx="-17" endz="-10"></block>
+			<block startx="-16" startz="-16" endx="-16" endz="-11"></block>
+			<block startx="-15" startz="-16" endx="-15" endz="-12"></block>
+			<block startx="-14" startz="-16" endx="-14" endz="-11"></block>
+			<block startx="-13" startz="-16" endx="-13" endz="-10"></block>
+			<block startx="-12" startz="-16" endx="-12" endz="-9"></block>
+			<block startx="-11" startz="-16" endx="-11" endz="-9"></block>
+			<block startx="-10" startz="-16" endx="-10" endz="-10"></block>
+			<block startx="-9" startz="-16" endx="-9" endz="-9"></block>
+			<block startx="-8" startz="-16" endx="-8" endz="-10"></block>
+			<block startx="-7" startz="-16" endx="-7" endz="-10"></block>
+			<block startx="-6" startz="-16" endx="-6" endz="-11"></block>
+			<block startx="-5" startz="-16" endx="-5" endz="-11"></block>
+			<block startx="-4" startz="-16" endx="-4" endz="-9"></block>
+			<block startx="-3" startz="-16" endx="-3" endz="-9"></block>
+			<block startx="-2" startz="-16" endx="-2" endz="-10"></block>
+			<block startx="-9" startz="-7" endx="-9" endz="-7"></block>
+			<block startx="-9" startz="-2" endx="-9" endz="-2"></block>
+			<block startx="-8" startz="-8" endx="-8" endz="-8"></block>
+			<block startx="-6" startz="-6" endx="-6" endz="-6"></block>
+			<block startx="-6" startz="-2" endx="-6" endz="-2"></block>
+			<block startx="-5" startz="-8" endx="-5" endz="-8"></block>
+			<block startx="-5" startz="-6" endx="-5" endz="-6"></block>
+			<block startx="-5" startz="-4" endx="-5" endz="-2"></block>
+			<block startx="-4" startz="-8" endx="-4" endz="-5"></block>
+			<block startx="2" startz="-4" endx="2" endz="-3"></block>
+			<block startx="5" startz="-7" endx="5" endz="-7"></block>
+			<block startx="6" startz="-7" endx="6" endz="-4"></block>
+			<block startx="-1" startz="-16" endx="-1" endz="-11"></block>
+			<block startx="0" startz="-16" endx="0" endz="-11"></block>
+			<block startx="1" startz="-16" endx="1" endz="-11"></block>
+			<block startx="2" startz="-16" endx="2" endz="-11"></block>
+			<block startx="3" startz="-16" endx="3" endz="-11"></block>
+			<block startx="4" startz="-16" endx="4" endz="-10"></block>
+			<block startx="5" startz="-16" endx="5" endz="-11"></block>
+			<block startx="6" startz="-16" endx="6" endz="-12"></block>
+			<block startx="7" startz="-16" endx="7" endz="-12"></block>
+			<block startx="8" startz="-16" endx="8" endz="-11"></block>
+			<block startx="9" startz="-16" endx="9" endz="-12"></block>
+			<block startx="10" startz="-16" endx="10" endz="-12"></block>
+			<block startx="11" startz="-16" endx="11" endz="-12"></block>
+			<block startx="12" startz="-16" endx="12" endz="-12"></block>
+			<block startx="13" startz="-16" endx="13" endz="-11"></block>
+			<block startx="14" startz="-16" endx="14" endz="-9"></block>
+			<block startx="7" startz="-7" endx="7" endz="-4"></block>
+			<block startx="8" startz="-6" endx="8" endz="-5"></block>
+			<block startx="10" startz="-7" endx="10" endz="-7"></block>
+			<block startx="14" startz="-6" endx="14" endz="-6"></block>
+			<block startx="15" startz="-8" endx="15" endz="-5"></block>
+			<block startx="16" startz="-8" endx="16" endz="-4"></block>
+			<block startx="17" startz="-8" endx="17" endz="-4"></block>
+			<block startx="18" startz="-8" endx="18" endz="-3"></block>
+			<block startx="19" startz="-7" endx="19" endz="-3"></block>
+			<block startx="20" startz="-6" endx="20" endz="-3"></block>
+			<block startx="21" startz="-7" endx="21" endz="-3"></block>
+			<block startx="22" startz="-6" endx="22" endz="-3"></block>
+			<block startx="15" startz="-16" endx="15" endz="-9"></block>
+			<block startx="16" startz="-16" endx="16" endz="-9"></block>
+			<block startx="17" startz="-16" endx="17" endz="-9"></block>
+			<block startx="18" startz="-16" endx="18" endz="-9"></block>
+			<block startx="19" startz="-16" endx="19" endz="-9"></block>
+			<block startx="20" startz="-16" endx="20" endz="-12"></block>
+			<block startx="20" startz="-10" endx="20" endz="-10"></block>
+			<block startx="21" startz="-16" endx="21" endz="-13"></block>
+			<block startx="22" startz="-16" endx="22" endz="-14"></block>
+			<block startx="-9" startz="3" endx="-9" endz="4"></block>
+			<block startx="-8" startz="3" endx="-8" endz="4"></block>
+			<block startx="-7" startz="3" endx="-7" endz="3"></block>
+			<block startx="-6" startz="3" endx="-6" endz="3"></block>
+			<block startx="-5" startz="3" endx="-5" endz="4"></block>
+			<block startx="-5" startz="6" endx="-5" endz="7"></block>
+			<block startx="-4" startz="3" endx="-4" endz="7"></block>
+			<block startx="-3" startz="4" endx="-3" endz="4"></block>
+			<block startx="-9" startz="10" endx="-9" endz="15"></block>
+			<block startx="-8" startz="9" endx="-8" endz="15"></block>
+			<block startx="-7" startz="10" endx="-7" endz="15"></block>
+			<block startx="-6" startz="9" endx="-6" endz="15"></block>
+			<block startx="-5" startz="8" endx="-5" endz="15"></block>
+			<block startx="-4" startz="8" endx="-4" endz="15"></block>
+			<block startx="-3" startz="8" endx="-3" endz="15"></block>
+			<block startx="-2" startz="9" endx="-2" endz="15"></block>
+			<block startx="-1" startz="10" endx="-1" endz="15"></block>
+			<block startx="0" startz="10" endx="0" endz="15"></block>
+			<block startx="1" startz="9" endx="1" endz="15"></block>
+			<block startx="2" startz="8" endx="2" endz="15"></block>
+			<block startx="3" startz="8" endx="3" endz="15"></block>
+			<block startx="4" startz="8" endx="4" endz="15"></block>
+			<block startx="5" startz="8" endx="5" endz="15"></block>
+			<block startx="6" startz="9" endx="6" endz="15"></block>
+			<block startx="2" startz="3" endx="2" endz="3"></block>
+			<block startx="3" startz="2" endx="3" endz="3"></block>
+			<block startx="4" startz="2" endx="4" endz="3"></block>
+			<block startx="5" startz="3" endx="5" endz="3"></block>
+			<block startx="7" startz="2" endx="7" endz="2"></block>
+			<block startx="8" startz="3" endx="8" endz="3"></block>
+			<block startx="9" startz="3" endx="9" endz="3"></block>
+			<block startx="10" startz="3" endx="10" endz="4"></block>
+			<block startx="11" startz="3" endx="11" endz="3"></block>
+			<block startx="12" startz="2" endx="12" endz="3"></block>
+			<block startx="13" startz="2" endx="13" endz="4"></block>
+			<block startx="14" startz="2" endx="14" endz="7"></block>
+			<block startx="7" startz="10" endx="7" endz="15"></block>
+			<block startx="8" startz="10" endx="8" endz="15"></block>
+			<block startx="9" startz="10" endx="9" endz="15"></block>
+			<block startx="10" startz="9" endx="10" endz="15"></block>
+			<block startx="11" startz="9" endx="11" endz="15"></block>
+			<block startx="12" startz="9" endx="12" endz="15"></block>
+			<block startx="13" startz="8" endx="13" endz="15"></block>
+			<block startx="14" startz="8" endx="14" endz="15"></block>
+			<block startx="15" startz="8" endx="15" endz="15"></block>
+			<block startx="16" startz="8" endx="16" endz="15"></block>
+			<block startx="17" startz="8" endx="17" endz="15"></block>
+			<block startx="18" startz="8" endx="18" endz="15"></block>
+			<block startx="19" startz="8" endx="19" endz="15"></block>
+			<block startx="20" startz="8" endx="20" endz="15"></block>
+			<block startx="21" startz="10" endx="21" endz="15"></block>
+			<block startx="22" startz="11" endx="22" endz="15"></block>
+			<block startx="15" startz="2" endx="15" endz="7"></block>
+			<block startx="16" startz="2" endx="16" endz="7"></block>
+			<block startx="17" startz="2" endx="17" endz="7"></block>
+			<block startx="18" startz="2" endx="18" endz="7"></block>
+			<block startx="19" startz="2" endx="19" endz="7"></block>
+			<block startx="20" startz="2" endx="20" endz="7"></block>
+			<block startx="21" startz="2" endx="21" endz="7"></block>
+			<block startx="22" startz="2" endx="22" endz="5"></block>
+			<block startx="23" startz="2" endx="23" endz="4"></block>
+			<block startx="24" startz="2" endx="24" endz="2"></block>
+			<block startx="25" startz="1" endx="25" endz="1"></block>
+			<block startx="23" startz="11" endx="23" endz="15"></block>
+			<block startx="24" startz="12" endx="24" endz="15"></block>
+			<block startx="25" startz="13" endx="25" endz="15"></block>
+			<block startx="26" startz="13" endx="26" endz="15"></block>
+			<block startx="27" startz="12" endx="27" endz="15"></block>
+			<block startx="28" startz="11" endx="28" endz="15"></block>
+			<block startx="29" startz="10" endx="29" endz="15"></block>
+			<block startx="30" startz="10" endx="30" endz="15"></block>
+			<block startx="31" startz="9" endx="31" endz="15"></block>
+			<block startx="32" startz="8" endx="32" endz="15"></block>
+			<block startx="33" startz="8" endx="33" endz="15"></block>
+			<block startx="34" startz="8" endx="34" endz="15"></block>
+			<block startx="35" startz="8" endx="35" endz="15"></block>
+			<block startx="36" startz="8" endx="36" endz="15"></block>
+			<block startx="32" startz="7" endx="32" endz="7"></block>
+			<block startx="33" startz="2" endx="33" endz="2"></block>
+			<block startx="33" startz="6" endx="33" endz="7"></block>
+			<block startx="34" startz="2" endx="34" endz="7"></block>
+			<block startx="35" startz="2" endx="35" endz="7"></block>
+			<block startx="36" startz="1" endx="36" endz="7"></block>
+			<block startx="23" startz="-16" endx="23" endz="-14"></block>
+			<block startx="24" startz="-16" endx="24" endz="-14"></block>
+			<block startx="25" startz="-16" endx="25" endz="-13"></block>
+			<block startx="26" startz="-16" endx="26" endz="-12"></block>
+			<block startx="27" startz="-16" endx="27" endz="-12"></block>
+			<block startx="28" startz="-16" endx="28" endz="-11"></block>
+			<block startx="28" startz="-9" endx="28" endz="-9"></block>
+			<block startx="29" startz="-16" endx="29" endz="-9"></block>
+			<block startx="30" startz="-16" endx="30" endz="-9"></block>
+			<block startx="23" startz="-7" endx="23" endz="-3"></block>
+			<block startx="24" startz="-6" endx="24" endz="-3"></block>
+			<block startx="25" startz="-7" endx="25" endz="-3"></block>
+			<block startx="26" startz="-6" endx="26" endz="-3"></block>
+			<block startx="27" startz="-5" endx="27" endz="-3"></block>
+			<block startx="28" startz="-6" endx="28" endz="-3"></block>
+			<block startx="29" startz="-8" endx="29" endz="-3"></block>
+			<block startx="30" startz="-8" endx="30" endz="-3"></block>
+			<block startx="31" startz="-8" endx="31" endz="-3"></block>
+			<block startx="32" startz="-8" endx="32" endz="-3"></block>
+			<block startx="33" startz="-8" endx="33" endz="-3"></block>
+			<block startx="34" startz="-8" endx="34" endz="-3"></block>
+			<block startx="35" startz="-8" endx="35" endz="-3"></block>
+			<block startx="36" startz="-8" endx="36" endz="-3"></block>
+			<block startx="31" startz="-16" endx="31" endz="-9"></block>
+			<block startx="32" startz="-16" endx="32" endz="-9"></block>
+			<block startx="33" startz="-16" endx="33" endz="-9"></block>
+			<block startx="34" startz="-16" endx="34" endz="-9"></block>
+			<block startx="35" startz="-16" endx="35" endz="-9"></block>
+			<block startx="36" startz="-16" endx="36" endz="-9"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="Amazon\ground5_ama">
+			<block startx="-34" startz="5" endx="-34" endz="6"></block>
+			<block startx="-34" startz="10" endx="-34" endz="12"></block>
+			<block startx="-33" startz="8" endx="-33" endz="13"></block>
+			<block startx="-32" startz="8" endx="-32" endz="13"></block>
+			<block startx="-31" startz="8" endx="-31" endz="13"></block>
+			<block startx="-30" startz="8" endx="-30" endz="12"></block>
+			<block startx="-33" startz="4" endx="-33" endz="7"></block>
+			<block startx="-32" startz="3" endx="-32" endz="7"></block>
+			<block startx="-31" startz="3" endx="-31" endz="7"></block>
+			<block startx="-30" startz="2" endx="-30" endz="7"></block>
+			<block startx="-29" startz="2" endx="-29" endz="5"></block>
+			<block startx="-28" startz="2" endx="-28" endz="5"></block>
+			<block startx="-27" startz="2" endx="-27" endz="5"></block>
+			<block startx="-26" startz="3" endx="-26" endz="4"></block>
+			<block startx="-15" startz="8" endx="-15" endz="8"></block>
+			<block startx="-14" startz="8" endx="-14" endz="9"></block>
+			<block startx="-13" startz="9" endx="-13" endz="9"></block>
+			<block startx="-12" startz="8" endx="-12" endz="9"></block>
+			<block startx="-11" startz="9" endx="-11" endz="10"></block>
+			<block startx="-10" startz="8" endx="-10" endz="8"></block>
+			<block startx="-13" startz="5" endx="-13" endz="7"></block>
+			<block startx="-12" startz="4" endx="-12" endz="6"></block>
+			<block startx="-11" startz="4" endx="-11" endz="7"></block>
+			<block startx="-10" startz="5" endx="-10" endz="7"></block>
+			<block startx="-34" startz="-12" endx="-34" endz="-11"></block>
+			<block startx="-27" startz="-6" endx="-27" endz="-6"></block>
+			<block startx="-26" startz="-8" endx="-26" endz="-5"></block>
+			<block startx="-33" startz="-13" endx="-33" endz="-10"></block>
+			<block startx="-32" startz="-14" endx="-32" endz="-9"></block>
+			<block startx="-31" startz="-14" endx="-31" endz="-9"></block>
+			<block startx="-30" startz="-13" endx="-30" endz="-9"></block>
+			<block startx="-29" startz="-12" endx="-29" endz="-10"></block>
+			<block startx="-25" startz="-9" endx="-25" endz="-9"></block>
+			<block startx="-18" startz="-9" endx="-18" endz="-9"></block>
+			<block startx="-25" startz="-8" endx="-25" endz="-6"></block>
+			<block startx="-24" startz="-8" endx="-24" endz="-8"></block>
+			<block startx="-22" startz="-6" endx="-22" endz="-5"></block>
+			<block startx="-21" startz="-7" endx="-21" endz="-4"></block>
+			<block startx="-20" startz="-8" endx="-20" endz="-4"></block>
+			<block startx="-19" startz="-8" endx="-19" endz="-4"></block>
+			<block startx="-18" startz="-8" endx="-18" endz="-4"></block>
+			<block startx="-17" startz="-8" endx="-17" endz="-4"></block>
+			<block startx="-16" startz="-8" endx="-16" endz="-7"></block>
+			<block startx="-16" startz="-5" endx="-16" endz="-5"></block>
+			<block startx="-15" startz="-8" endx="-15" endz="-6"></block>
+			<block startx="-14" startz="-8" endx="-14" endz="-7"></block>
+			<block startx="-13" startz="-8" endx="-13" endz="-7"></block>
+			<block startx="-13" startz="-4" endx="-13" endz="-3"></block>
+			<block startx="-12" startz="-8" endx="-12" endz="-3"></block>
+			<block startx="-11" startz="-8" endx="-11" endz="-3"></block>
+			<block startx="-10" startz="-8" endx="-10" endz="-4"></block>
+			<block startx="-17" startz="-9" endx="-17" endz="-9"></block>
+			<block startx="-16" startz="-10" endx="-16" endz="-9"></block>
+			<block startx="-15" startz="-11" endx="-15" endz="-9"></block>
+			<block startx="-14" startz="-10" endx="-14" endz="-9"></block>
+			<block startx="-13" startz="-9" endx="-13" endz="-9"></block>
+			<block startx="-10" startz="-9" endx="-10" endz="-9"></block>
+			<block startx="-8" startz="-9" endx="-8" endz="-9"></block>
+			<block startx="-7" startz="-9" endx="-7" endz="-9"></block>
+			<block startx="-6" startz="-10" endx="-6" endz="-9"></block>
+			<block startx="-5" startz="-10" endx="-5" endz="-9"></block>
+			<block startx="-9" startz="-8" endx="-9" endz="-8"></block>
+			<block startx="-9" startz="-6" endx="-9" endz="-3"></block>
+			<block startx="-8" startz="-7" endx="-8" endz="-2"></block>
+			<block startx="-7" startz="-8" endx="-7" endz="-2"></block>
+			<block startx="-6" startz="-8" endx="-6" endz="-7"></block>
+			<block startx="-6" startz="-5" endx="-6" endz="-3"></block>
+			<block startx="-5" startz="-7" endx="-5" endz="-7"></block>
+			<block startx="-5" startz="-5" endx="-5" endz="-5"></block>
+			<block startx="6" startz="-8" endx="6" endz="-8"></block>
+			<block startx="5" startz="-10" endx="5" endz="-9"></block>
+			<block startx="6" startz="-11" endx="6" endz="-9"></block>
+			<block startx="7" startz="-11" endx="7" endz="-9"></block>
+			<block startx="8" startz="-10" endx="8" endz="-9"></block>
+			<block startx="9" startz="-11" endx="9" endz="-9"></block>
+			<block startx="10" startz="-11" endx="10" endz="-9"></block>
+			<block startx="11" startz="-11" endx="11" endz="-9"></block>
+			<block startx="12" startz="-11" endx="12" endz="-9"></block>
+			<block startx="13" startz="-10" endx="13" endz="-9"></block>
+			<block startx="7" startz="-8" endx="7" endz="-8"></block>
+			<block startx="8" startz="-8" endx="8" endz="-7"></block>
+			<block startx="8" startz="-4" endx="8" endz="-4"></block>
+			<block startx="9" startz="-8" endx="9" endz="-4"></block>
+			<block startx="10" startz="-8" endx="10" endz="-8"></block>
+			<block startx="10" startz="-6" endx="10" endz="-4"></block>
+			<block startx="11" startz="-8" endx="11" endz="-4"></block>
+			<block startx="12" startz="-8" endx="12" endz="-4"></block>
+			<block startx="13" startz="-8" endx="13" endz="-4"></block>
+			<block startx="14" startz="-8" endx="14" endz="-7"></block>
+			<block startx="14" startz="-5" endx="14" endz="-3"></block>
+			<block startx="15" startz="-4" endx="15" endz="-4"></block>
+			<block startx="19" startz="-8" endx="19" endz="-8"></block>
+			<block startx="20" startz="-8" endx="20" endz="-7"></block>
+			<block startx="21" startz="-8" endx="21" endz="-8"></block>
+			<block startx="22" startz="-8" endx="22" endz="-7"></block>
+			<block startx="20" startz="-11" endx="20" endz="-11"></block>
+			<block startx="20" startz="-9" endx="20" endz="-9"></block>
+			<block startx="21" startz="-12" endx="21" endz="-9"></block>
+			<block startx="22" startz="-13" endx="22" endz="-9"></block>
+			<block startx="-9" startz="5" endx="-9" endz="7"></block>
+			<block startx="-8" startz="5" endx="-8" endz="7"></block>
+			<block startx="-7" startz="4" endx="-7" endz="7"></block>
+			<block startx="-6" startz="4" endx="-6" endz="7"></block>
+			<block startx="-5" startz="5" endx="-5" endz="5"></block>
+			<block startx="-3" startz="5" endx="-3" endz="7"></block>
+			<block startx="-2" startz="4" endx="-2" endz="7"></block>
+			<block startx="-9" startz="8" endx="-9" endz="9"></block>
+			<block startx="-8" startz="8" endx="-8" endz="8"></block>
+			<block startx="-7" startz="8" endx="-7" endz="9"></block>
+			<block startx="-6" startz="8" endx="-6" endz="8"></block>
+			<block startx="-2" startz="8" endx="-2" endz="8"></block>
+			<block startx="-1" startz="8" endx="-1" endz="9"></block>
+			<block startx="0" startz="8" endx="0" endz="9"></block>
+			<block startx="1" startz="8" endx="1" endz="8"></block>
+			<block startx="6" startz="8" endx="6" endz="8"></block>
+			<block startx="-1" startz="4" endx="-1" endz="7"></block>
+			<block startx="0" startz="4" endx="0" endz="7"></block>
+			<block startx="1" startz="4" endx="1" endz="7"></block>
+			<block startx="2" startz="4" endx="2" endz="7"></block>
+			<block startx="3" startz="4" endx="3" endz="7"></block>
+			<block startx="4" startz="4" endx="4" endz="7"></block>
+			<block startx="5" startz="4" endx="5" endz="7"></block>
+			<block startx="6" startz="3" endx="6" endz="7"></block>
+			<block startx="7" startz="3" endx="7" endz="7"></block>
+			<block startx="8" startz="4" endx="8" endz="7"></block>
+			<block startx="9" startz="4" endx="9" endz="7"></block>
+			<block startx="10" startz="5" endx="10" endz="7"></block>
+			<block startx="11" startz="4" endx="11" endz="7"></block>
+			<block startx="12" startz="4" endx="12" endz="7"></block>
+			<block startx="13" startz="5" endx="13" endz="7"></block>
+			<block startx="7" startz="8" endx="7" endz="9"></block>
+			<block startx="8" startz="8" endx="8" endz="9"></block>
+			<block startx="9" startz="8" endx="9" endz="9"></block>
+			<block startx="10" startz="8" endx="10" endz="8"></block>
+			<block startx="11" startz="8" endx="11" endz="8"></block>
+			<block startx="12" startz="8" endx="12" endz="8"></block>
+			<block startx="21" startz="8" endx="21" endz="9"></block>
+			<block startx="22" startz="8" endx="22" endz="10"></block>
+			<block startx="22" startz="6" endx="22" endz="7"></block>
+			<block startx="23" startz="5" endx="23" endz="7"></block>
+			<block startx="24" startz="3" endx="24" endz="7"></block>
+			<block startx="25" startz="2" endx="25" endz="7"></block>
+			<block startx="26" startz="2" endx="26" endz="7"></block>
+			<block startx="27" startz="2" endx="27" endz="7"></block>
+			<block startx="28" startz="2" endx="28" endz="7"></block>
+			<block startx="29" startz="2" endx="29" endz="7"></block>
+			<block startx="30" startz="2" endx="30" endz="7"></block>
+			<block startx="23" startz="8" endx="23" endz="10"></block>
+			<block startx="24" startz="8" endx="24" endz="11"></block>
+			<block startx="25" startz="8" endx="25" endz="12"></block>
+			<block startx="26" startz="8" endx="26" endz="12"></block>
+			<block startx="27" startz="8" endx="27" endz="11"></block>
+			<block startx="28" startz="8" endx="28" endz="10"></block>
+			<block startx="29" startz="8" endx="29" endz="9"></block>
+			<block startx="30" startz="8" endx="30" endz="9"></block>
+			<block startx="31" startz="8" endx="31" endz="8"></block>
+			<block startx="31" startz="2" endx="31" endz="7"></block>
+			<block startx="32" startz="2" endx="32" endz="6"></block>
+			<block startx="33" startz="3" endx="33" endz="5"></block>
+			<block startx="23" startz="-13" endx="23" endz="-9"></block>
+			<block startx="24" startz="-13" endx="24" endz="-9"></block>
+			<block startx="25" startz="-12" endx="25" endz="-9"></block>
+			<block startx="26" startz="-11" endx="26" endz="-9"></block>
+			<block startx="27" startz="-11" endx="27" endz="-9"></block>
+			<block startx="28" startz="-10" endx="28" endz="-10"></block>
+			<block startx="23" startz="-8" endx="23" endz="-8"></block>
+			<block startx="24" startz="-8" endx="24" endz="-7"></block>
+			<block startx="25" startz="-8" endx="25" endz="-8"></block>
+			<block startx="26" startz="-8" endx="26" endz="-7"></block>
+			<block startx="27" startz="-8" endx="27" endz="-6"></block>
+			<block startx="28" startz="-8" endx="28" endz="-7"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
+			<block startx="-36" startz="0" endx="-36" endz="1"></block>
+			<block startx="-35" startz="0" endx="-35" endz="2"></block>
+			<block startx="-34" startz="0" endx="-34" endz="2"></block>
+			<block startx="-33" startz="0" endx="-33" endz="1"></block>
+			<block startx="-32" startz="0" endx="-32" endz="2"></block>
+			<block startx="-31" startz="0" endx="-31" endz="2"></block>
+			<block startx="-30" startz="0" endx="-30" endz="1"></block>
+			<block startx="-29" startz="0" endx="-29" endz="1"></block>
+			<block startx="-28" startz="0" endx="-28" endz="1"></block>
+			<block startx="-27" startz="0" endx="-27" endz="1"></block>
+			<block startx="-26" startz="0" endx="-26" endz="1"></block>
+			<block startx="-25" startz="0" endx="-25" endz="1"></block>
+			<block startx="-24" startz="0" endx="-24" endz="1"></block>
+			<block startx="-23" startz="0" endx="-23" endz="2"></block>
+			<block startx="-22" startz="0" endx="-22" endz="2"></block>
+			<block startx="-21" startz="0" endx="-21" endz="2"></block>
+			<block startx="-20" startz="0" endx="-20" endz="2"></block>
+			<block startx="-19" startz="0" endx="-19" endz="1"></block>
+			<block startx="-18" startz="0" endx="-18" endz="1"></block>
+			<block startx="-17" startz="0" endx="-17" endz="1"></block>
+			<block startx="-16" startz="0" endx="-16" endz="1"></block>
+			<block startx="-15" startz="0" endx="-15" endz="1"></block>
+			<block startx="-14" startz="0" endx="-14" endz="2"></block>
+			<block startx="-13" startz="0" endx="-13" endz="2"></block>
+			<block startx="-12" startz="0" endx="-12" endz="2"></block>
+			<block startx="-11" startz="0" endx="-11" endz="2"></block>
+			<block startx="-10" startz="0" endx="-10" endz="1"></block>
+			<block startx="-36" startz="-2" endx="-36" endz="-1"></block>
+			<block startx="-35" startz="-3" endx="-35" endz="-1"></block>
+			<block startx="-34" startz="-2" endx="-34" endz="-1"></block>
+			<block startx="-33" startz="-2" endx="-33" endz="-1"></block>
+			<block startx="-32" startz="-8" endx="-32" endz="-1"></block>
+			<block startx="-31" startz="-8" endx="-31" endz="-1"></block>
+			<block startx="-30" startz="-8" endx="-30" endz="-1"></block>
+			<block startx="-29" startz="-3" endx="-29" endz="-1"></block>
+			<block startx="-28" startz="-3" endx="-28" endz="-1"></block>
+			<block startx="-27" startz="-3" endx="-27" endz="-1"></block>
+			<block startx="-26" startz="-3" endx="-26" endz="-1"></block>
+			<block startx="-25" startz="-3" endx="-25" endz="-1"></block>
+			<block startx="-24" startz="-2" endx="-24" endz="-1"></block>
+			<block startx="-23" startz="-2" endx="-23" endz="-1"></block>
+			<block startx="-22" startz="-2" endx="-22" endz="-1"></block>
+			<block startx="-21" startz="-1" endx="-21" endz="-1"></block>
+			<block startx="-20" startz="-1" endx="-20" endz="-1"></block>
+			<block startx="-19" startz="-1" endx="-19" endz="-1"></block>
+			<block startx="-18" startz="-1" endx="-18" endz="-1"></block>
+			<block startx="-17" startz="-1" endx="-17" endz="-1"></block>
+			<block startx="-16" startz="-1" endx="-16" endz="-1"></block>
+			<block startx="-15" startz="-1" endx="-15" endz="-1"></block>
+			<block startx="-14" startz="-1" endx="-14" endz="-1"></block>
+			<block startx="-13" startz="-1" endx="-13" endz="-1"></block>
+			<block startx="-12" startz="-1" endx="-12" endz="-1"></block>
+			<block startx="-11" startz="-1" endx="-11" endz="-1"></block>
+			<block startx="-10" startz="-1" endx="-10" endz="-1"></block>
+			<block startx="-2" startz="-9" endx="-2" endz="-9"></block>
+			<block startx="-9" startz="-1" endx="-9" endz="-1"></block>
+			<block startx="-8" startz="-1" endx="-8" endz="-1"></block>
+			<block startx="-7" startz="-1" endx="-7" endz="-1"></block>
+			<block startx="-6" startz="-1" endx="-6" endz="-1"></block>
+			<block startx="-5" startz="-1" endx="-5" endz="-1"></block>
+			<block startx="-4" startz="-4" endx="-4" endz="-1"></block>
+			<block startx="-3" startz="-8" endx="-3" endz="-1"></block>
+			<block startx="-2" startz="-8" endx="-2" endz="-1"></block>
+			<block startx="-1" startz="-8" endx="-1" endz="-1"></block>
+			<block startx="0" startz="-8" endx="0" endz="-1"></block>
+			<block startx="1" startz="-8" endx="1" endz="-1"></block>
+			<block startx="2" startz="-8" endx="2" endz="-5"></block>
+			<block startx="2" startz="-2" endx="2" endz="-1"></block>
+			<block startx="3" startz="-8" endx="3" endz="-1"></block>
+			<block startx="4" startz="-8" endx="4" endz="-1"></block>
+			<block startx="5" startz="-8" endx="5" endz="-8"></block>
+			<block startx="5" startz="-6" endx="5" endz="-1"></block>
+			<block startx="6" startz="-3" endx="6" endz="-1"></block>
+			<block startx="-1" startz="-10" endx="-1" endz="-9"></block>
+			<block startx="0" startz="-10" endx="0" endz="-9"></block>
+			<block startx="1" startz="-10" endx="1" endz="-9"></block>
+			<block startx="2" startz="-10" endx="2" endz="-9"></block>
+			<block startx="3" startz="-10" endx="3" endz="-9"></block>
+			<block startx="4" startz="-9" endx="4" endz="-9"></block>
+			<block startx="7" startz="-3" endx="7" endz="-1"></block>
+			<block startx="8" startz="-3" endx="8" endz="-1"></block>
+			<block startx="9" startz="-3" endx="9" endz="-1"></block>
+			<block startx="10" startz="-3" endx="10" endz="-1"></block>
+			<block startx="11" startz="-3" endx="11" endz="-1"></block>
+			<block startx="12" startz="-3" endx="12" endz="-1"></block>
+			<block startx="13" startz="-3" endx="13" endz="-1"></block>
+			<block startx="14" startz="-2" endx="14" endz="-1"></block>
+			<block startx="15" startz="-3" endx="15" endz="-1"></block>
+			<block startx="16" startz="-3" endx="16" endz="-1"></block>
+			<block startx="17" startz="-3" endx="17" endz="-1"></block>
+			<block startx="18" startz="-2" endx="18" endz="-1"></block>
+			<block startx="19" startz="-2" endx="19" endz="-1"></block>
+			<block startx="20" startz="-2" endx="20" endz="-1"></block>
+			<block startx="21" startz="-2" endx="21" endz="-1"></block>
+			<block startx="22" startz="-2" endx="22" endz="-1"></block>
+			<block startx="-9" startz="0" endx="-9" endz="2"></block>
+			<block startx="-8" startz="0" endx="-8" endz="2"></block>
+			<block startx="-7" startz="0" endx="-7" endz="2"></block>
+			<block startx="-6" startz="0" endx="-6" endz="2"></block>
+			<block startx="-5" startz="0" endx="-5" endz="2"></block>
+			<block startx="-4" startz="0" endx="-4" endz="2"></block>
+			<block startx="-3" startz="0" endx="-3" endz="3"></block>
+			<block startx="-2" startz="0" endx="-2" endz="3"></block>
+			<block startx="-1" startz="0" endx="-1" endz="3"></block>
+			<block startx="0" startz="0" endx="0" endz="3"></block>
+			<block startx="1" startz="0" endx="1" endz="3"></block>
+			<block startx="2" startz="0" endx="2" endz="2"></block>
+			<block startx="3" startz="0" endx="3" endz="1"></block>
+			<block startx="4" startz="0" endx="4" endz="1"></block>
+			<block startx="5" startz="0" endx="5" endz="2"></block>
+			<block startx="6" startz="0" endx="6" endz="2"></block>
+			<block startx="7" startz="0" endx="7" endz="1"></block>
+			<block startx="8" startz="0" endx="8" endz="2"></block>
+			<block startx="9" startz="0" endx="9" endz="2"></block>
+			<block startx="10" startz="0" endx="10" endz="2"></block>
+			<block startx="11" startz="0" endx="11" endz="2"></block>
+			<block startx="12" startz="0" endx="12" endz="1"></block>
+			<block startx="13" startz="0" endx="13" endz="1"></block>
+			<block startx="14" startz="0" endx="14" endz="1"></block>
+			<block startx="15" startz="0" endx="15" endz="1"></block>
+			<block startx="16" startz="0" endx="16" endz="1"></block>
+			<block startx="17" startz="0" endx="17" endz="1"></block>
+			<block startx="18" startz="0" endx="18" endz="1"></block>
+			<block startx="19" startz="0" endx="19" endz="1"></block>
+			<block startx="20" startz="0" endx="20" endz="1"></block>
+			<block startx="21" startz="0" endx="21" endz="1"></block>
+			<block startx="22" startz="0" endx="22" endz="1"></block>
+			<block startx="23" startz="0" endx="23" endz="1"></block>
+			<block startx="24" startz="0" endx="24" endz="1"></block>
+			<block startx="25" startz="0" endx="25" endz="0"></block>
+			<block startx="26" startz="0" endx="26" endz="1"></block>
+			<block startx="27" startz="0" endx="27" endz="1"></block>
+			<block startx="28" startz="0" endx="28" endz="1"></block>
+			<block startx="29" startz="0" endx="29" endz="1"></block>
+			<block startx="30" startz="0" endx="30" endz="1"></block>
+			<block startx="31" startz="0" endx="31" endz="1"></block>
+			<block startx="32" startz="0" endx="32" endz="1"></block>
+			<block startx="33" startz="0" endx="33" endz="1"></block>
+			<block startx="34" startz="0" endx="34" endz="1"></block>
+			<block startx="35" startz="0" endx="35" endz="1"></block>
+			<block startx="36" startz="0" endx="36" endz="0"></block>
+			<block startx="23" startz="-2" endx="23" endz="-1"></block>
+			<block startx="24" startz="-2" endx="24" endz="-1"></block>
+			<block startx="25" startz="-2" endx="25" endz="-1"></block>
+			<block startx="26" startz="-2" endx="26" endz="-1"></block>
+			<block startx="27" startz="-2" endx="27" endz="-1"></block>
+			<block startx="28" startz="-2" endx="28" endz="-1"></block>
+			<block startx="29" startz="-2" endx="29" endz="-1"></block>
+			<block startx="30" startz="-2" endx="30" endz="-1"></block>
+			<block startx="31" startz="-2" endx="31" endz="-1"></block>
+			<block startx="32" startz="-2" endx="32" endz="-1"></block>
+			<block startx="33" startz="-2" endx="33" endz="-1"></block>
+			<block startx="34" startz="-2" endx="34" endz="-1"></block>
+			<block startx="35" startz="-2" endx="35" endz="-1"></block>
+			<block startx="36" startz="-2" endx="36" endz="-1"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

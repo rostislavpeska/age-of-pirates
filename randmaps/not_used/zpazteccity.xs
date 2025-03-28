@@ -541,11 +541,6 @@ void main(void)
     rmSetGroupingMaxDistance(playerStart, 0.00);
 	rmAddGroupingToClass(playerStart, rmClassID("classPlateau"));
 
-	int playerStartEuro = rmCreateGrouping("player Start EU", "AZ_Big_PlayerDistrictEuro");
-    rmSetGroupingMinDistance(playerStartEuro, 0.00);
-    rmSetGroupingMaxDistance(playerStartEuro, 0.00);
-	rmAddGroupingToClass(playerStartEuro, rmClassID("classPlateau"));
-
 	// House
 	int houseGrouping1 = rmCreateGrouping("1", "AZ_Big_House1");
 	rmSetGroupingMinDistance(houseGrouping1, 0.00);
@@ -586,10 +581,7 @@ void main(void)
 	rmAddObjectDefConstraint(startingUnits, farAvoidTradeSockets);
 
 	// Player start
-	if (rmGetPlayerCiv(i) == rmGetCivID("XPAztec")) 
-		rmPlaceGroupingAtLoc(playerStart, firstDefender, blockX2, blockZ2);
-	else
-		rmPlaceGroupingAtLoc(playerStartEuro, firstDefender, blockX2, blockZ2);
+	rmPlaceGroupingAtLoc(playerStart, firstDefender, blockX2, blockZ2);
 
 	rmPlaceObjectDefAtLoc(startingUnits, firstDefender, blockX2, blockZ2);
 

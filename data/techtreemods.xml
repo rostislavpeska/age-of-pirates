@@ -22208,6 +22208,7 @@
       <effect type="TechStatus" status="obtainable">zpSPCBlessedCitySingle</effect>
       <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
       <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPapalBlessingPrague</effect>
       <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
       <effect type="TechStatus" status="active">zpForbidRevolutions</effect>
       <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
@@ -22241,6 +22242,9 @@
         <target type="ProtoUnit">zpSPCTownMill</target>
       </effect>
       <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCGermanCathedral</target>
+      </effect>
+      <effect type="Data" action="AreaHeal" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCGermanCathedral</target>
       </effect>
       <effect type="SetName" proto="zpSPCGermanCathedral" culture="none" newname="302370">
@@ -23389,6 +23393,25 @@
       <effect type="Data" amount="1.3" subtype="Hitpoints" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpAztecCityOutpost</target>
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPapalBlessingPrague" type="Normal">
+    <dbid>40968</dbid>
+    <displaynameid>302468</displaynameid>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\papal_blessing_single.png</icon>
+    <rollovertextid>302469</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>TeamTech</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DEPapalBlessingShadow</effect>
+      <effect type="TextOutputTechName">123070</effect>
     </effects>
   </tech>
 

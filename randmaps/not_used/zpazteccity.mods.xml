@@ -24,30 +24,6 @@
 			<flag>StartOnNoUpdate</flag>
 			<flag>DoNotShowOnMiniMap</flag>
 		</unit>
-		<unit name="zpSPCAztecWall5">
-			<flag>ForceToGaia</flag>
-			<flag>NotSelectable</flag>
-			<flag>Invulnerable</flag>
-			<flag>NoIdleActions</flag>
-			<flag>StartOnNoUpdate</flag>
-			<flag>DoNotShowOnMiniMap</flag>
-		</unit>
-		<unit name="zpSPCAztecWallConnector">
-			<flag>ForceToGaia</flag>
-			<flag>NotSelectable</flag>
-			<flag>Invulnerable</flag>
-			<flag>NoIdleActions</flag>
-			<flag>StartOnNoUpdate</flag>
-			<flag>DoNotShowOnMiniMap</flag>
-		</unit>
-		<unit name="NativeHouseNootka">
-			<flag>ForceToGaia</flag>
-			<flag>NotSelectable</flag>
-			<flag>Invulnerable</flag>
-			<flag>NoIdleActions</flag>
-			<flag>StartOnNoUpdate</flag>
-			<flag>DoNotShowOnMiniMap</flag>
-		</unit>
 		<unit name="zpNativeAztecTempleC">
 			<flag>ForceToGaia</flag>
 			<flag>NotSelectable</flag>
@@ -105,22 +81,6 @@
 		</unit>
 		<unit name="deField">
 			<flag>InvulnerableIfGaia</flag>
-		</unit>
-		<unit name="deEggLeonardosTank">
-			<obstructionradiusx>1.5900</obstructionradiusx>
-			<obstructionradiusz>1.5900</obstructionradiusz>
-		</unit>
-		<unit name="deTank">
-			<obstructionradiusx>1.5900</obstructionradiusx>
-			<obstructionradiusz>1.5900</obstructionradiusz>
-		</unit>
-		<unit name="zpIronTank">
-			<obstructionradiusx>1.5900</obstructionradiusx>
-			<obstructionradiusz>1.5900</obstructionradiusz>
-		</unit>
-		<unit name="zpIronTankProxy">
-			<obstructionradiusx>1.5900</obstructionradiusx>
-			<obstructionradiusz>1.5900</obstructionradiusz>
 		</unit>
 	</protomods>
 </mods>

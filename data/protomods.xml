@@ -43012,7 +43012,8 @@
     <tech row="0" page="11" column="1">zpSPCBlessedCitySingle</tech>
     <tech row="0" page="11" column="2">DESPCPapalLegate</tech>
     <tech row="0" page="11" column="2">zpSPCPapalLegateSingle</tech>
-    <tech row="0" page="11" column="3">DESPCExcommunication</tech>
+    <tech row="0" page="11" column="3">zpSPCPapalBlessingPrague</tech>
+    <tech row="0" page="11" column="4">DESPCExcommunication</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -52492,8 +52493,8 @@
     <flag>NotDeleteable</flag>
     <command page="1" column="0">zpBuildAztecOutpost</command>
   </unit>
-   <unit id="20709" name="zpSPCSocketAztecOutpost3">
-    <dbid>20709</dbid>
+   <unit id="20713" name="zpSPCSocketAztecOutpost3">
+    <dbid>20713</dbid>
     <displaynameid>123003</displaynameid>
     <editornameid>302433</editornameid>
     <socketbuildprotounit>zpAztecCityOutpost</socketbuildprotounit>
@@ -52532,8 +52533,8 @@
     <flag>NotDeleteable</flag>
     <command page="1" column="0">zpBuildAztecOutpost</command>
   </unit>
-   <unit id="20709" name="zpSPCSocketAztecOutpost4">
-    <dbid>20709</dbid>
+   <unit id="20714" name="zpSPCSocketAztecOutpost4">
+    <dbid>20714</dbid>
     <displaynameid>123003</displaynameid>
     <editornameid>302434</editornameid>
     <socketbuildprotounit>zpAztecCityOutpost</socketbuildprotounit>

@@ -271,5 +271,21 @@
 			<flag>InvulnerableIfGaia</flag>
 			<flag>CannotAttackIfGaia</flag>
 		</unit>
+		<unit name="deEggLeonardosTank">
+			<obstructionradiusx>1.5900</obstructionradiusx>
+			<obstructionradiusz>1.5900</obstructionradiusz>
+		</unit>
+		<unit name="deTank">
+			<obstructionradiusx>1.5900</obstructionradiusx>
+			<obstructionradiusz>1.5900</obstructionradiusz>
+		</unit>
+		<unit name="zpIronTank">
+			<obstructionradiusx>1.5900</obstructionradiusx>
+			<obstructionradiusz>1.5900</obstructionradiusz>
+		</unit>
+		<unit name="zpIronTankProxy">
+			<obstructionradiusx>1.5900</obstructionradiusx>
+			<obstructionradiusz>1.5900</obstructionradiusz>
+		</unit>
 	</protomods>
 </mods>
