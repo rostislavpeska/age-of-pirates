@@ -734,6 +734,63 @@ minInterval 2
 }
 
 //==============================================================================
+/* wallQueueManager
+
+   Steps through the list of wall plans and only builds a few at a time
+
+   gStarFortWallPlanArray
+
+*/
+//==============================================================================
+rule wallQueueManager
+inactive
+minInterval 10
+{
+   // Step through the wall plan array
+   int totalWallPlans = xsArrayGetSize(gStarFortWallPlanArray);
+   int tempWallPlan1 = 0;
+   int activeCount = 0;
+
+   static int activeTracker = -1; // used to track last plan we've activated
+
+   if (totalWallPlans <= 0)
+   {
+      xsDisableSelf();
+      return;
+   }
+
+
+   for (i = 0; < totalWallPlans)
+   {
+      // Make sure we only have 3 active at a time
+      tempWallPlan1 = xsArrayGetInt(gStarFortWallPlanArray, i);
+
+      if (aiPlanGetActive(tempWallPlan1) == true)
+      {
+         activeCount += 1;
+      }
+      else if (i >= activeTracker)
+      {
+         aiPlanSetActive(tempWallPlan1, true);
+         aiPlanSetDesiredResourcePriority(tempWallPlan1, 15);
+         activeCount += 1;
+         activeTracker += 1;
+      }
+
+      if (activeCount >= 3)
+      {
+         break;
+      }
+
+      if (activeCount == 0 && activeTracker >= totalWallPlans && i >= totalWallPlans)
+      {
+         activeTracker = 0;
+      }
+   }
+}
+
+
+//==============================================================================
 /* cannonCorners
 
    Basically just tells a cannon to move to that position
@@ -1086,7 +1143,6 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
    start26 = rotateByReferencePoint(position, start26 - position, angle);
    end26 = rotateByReferencePoint(position, end26 - position, angle);
 
-
    // segment 1
    int wallPlan1ID = aiPlanCreate("WallInBase1", cPlanBuildWall);
    if (wallPlan1ID != -1)
@@ -1101,7 +1157,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan1ID, pri);
-      aiPlanSetActive(wallPlan1ID, true);
+      //aiPlanSetActive(wallPlan1ID, true);
    }
 
    // segment 2
@@ -1118,7 +1174,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan2ID, pri);
-      aiPlanSetActive(wallPlan2ID, true);
+      //aiPlanSetActive(wallPlan2ID, true);
    }
 
    // segment 3
@@ -1133,7 +1189,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan3ID, baseID);
       aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan3ID, pri);
-      aiPlanSetActive(wallPlan3ID, true);
+      //aiPlanSetActive(wallPlan3ID, true);
    }
 
    // segment 4
@@ -1148,7 +1204,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan4ID, baseID);
       aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan4ID, pri);
-      aiPlanSetActive(wallPlan4ID, true);
+      //aiPlanSetActive(wallPlan4ID, true);
    }
 
    // segment 5
@@ -1163,7 +1219,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan5ID, baseID);
       aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan5ID, pri);
-      aiPlanSetActive(wallPlan5ID, true);
+      //aiPlanSetActive(wallPlan5ID, true);
    }
 
    // segment 6
@@ -1178,7 +1234,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan6ID, baseID);
       aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan6ID, pri);
-      aiPlanSetActive(wallPlan6ID, true);
+      //aiPlanSetActive(wallPlan6ID, true);
    }
 
    // segment 7
@@ -1193,7 +1249,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan7ID, baseID);
       aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan7ID, pri);
-      aiPlanSetActive(wallPlan7ID, true);
+      //aiPlanSetActive(wallPlan7ID, true);
    }
 
    // segment 8
@@ -1208,7 +1264,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan8ID, baseID);
       aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan8ID, pri);
-      aiPlanSetActive(wallPlan8ID, true);
+      //aiPlanSetActive(wallPlan8ID, true);
    }
 
    // segment 9
@@ -1223,7 +1279,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan9ID, baseID);
       aiPlanSetEscrowID(wallPlan9ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan9ID, pri);
-      aiPlanSetActive(wallPlan9ID, true);
+      //aiPlanSetActive(wallPlan9ID, true);
    }
 
    // segment 10
@@ -1238,7 +1294,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan10ID, baseID);
       aiPlanSetEscrowID(wallPlan10ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan10ID, pri);
-      aiPlanSetActive(wallPlan10ID, true);
+      //aiPlanSetActive(wallPlan10ID, true);
    }
 
    // segment 11
@@ -1253,7 +1309,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan11ID, baseID);
       aiPlanSetEscrowID(wallPlan11ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan11ID, pri);
-      aiPlanSetActive(wallPlan11ID, true);
+      //aiPlanSetActive(wallPlan11ID, true);
    }
 
    // segment 12
@@ -1268,7 +1324,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan12ID, baseID);
       aiPlanSetEscrowID(wallPlan12ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan12ID, pri);
-      aiPlanSetActive(wallPlan12ID, true);
+      //aiPlanSetActive(wallPlan12ID, true);
    }
 
    // segment 13
@@ -1283,7 +1339,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan13ID, baseID);
       aiPlanSetEscrowID(wallPlan13ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan13ID, pri);
-      aiPlanSetActive(wallPlan13ID, true);
+      //aiPlanSetActive(wallPlan13ID, true);
    }
 
    // segment 14
@@ -1298,7 +1354,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan14ID, baseID);
       aiPlanSetEscrowID(wallPlan14ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan14ID, pri);
-      aiPlanSetActive(wallPlan14ID, true);
+      //aiPlanSetActive(wallPlan14ID, true);
    }
 
    // segment 15
@@ -1313,7 +1369,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan15ID, baseID);
       aiPlanSetEscrowID(wallPlan15ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan15ID, pri);
-      aiPlanSetActive(wallPlan15ID, true);
+      //aiPlanSetActive(wallPlan15ID, true);
    }
 
    // segment 16
@@ -1328,7 +1384,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan16ID, baseID);
       aiPlanSetEscrowID(wallPlan16ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan16ID, pri);
-      aiPlanSetActive(wallPlan16ID, true);
+      //aiPlanSetActive(wallPlan16ID, true);
    }
 
    // segment 17
@@ -1343,7 +1399,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan17ID, baseID);
       aiPlanSetEscrowID(wallPlan17ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan17ID, pri);
-      aiPlanSetActive(wallPlan17ID, true);
+      //aiPlanSetActive(wallPlan17ID, true);
    }
 
    // segment 18
@@ -1358,7 +1414,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan18ID, baseID);
       aiPlanSetEscrowID(wallPlan18ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan18ID, pri);
-      aiPlanSetActive(wallPlan18ID, true);
+      //aiPlanSetActive(wallPlan18ID, true);
    }
 
    // segment 19
@@ -1373,7 +1429,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan19ID, baseID);
       aiPlanSetEscrowID(wallPlan19ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan19ID, pri);
-      aiPlanSetActive(wallPlan19ID, true);
+      //aiPlanSetActive(wallPlan19ID, true);
    }
 
    // segment 20
@@ -1388,7 +1444,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan20ID, baseID);
       aiPlanSetEscrowID(wallPlan20ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan20ID, pri);
-      aiPlanSetActive(wallPlan20ID, true);
+      //aiPlanSetActive(wallPlan20ID, true);
    }
 
    // segment 21
@@ -1403,7 +1459,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan21ID, baseID);
       aiPlanSetEscrowID(wallPlan21ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan21ID, pri);
-      aiPlanSetActive(wallPlan21ID, true);
+      //aiPlanSetActive(wallPlan21ID, true);
    }
 
    // segment 22
@@ -1418,7 +1474,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan22ID, baseID);
       aiPlanSetEscrowID(wallPlan22ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan22ID, pri);
-      aiPlanSetActive(wallPlan22ID, true);
+      //aiPlanSetActive(wallPlan22ID, true);
    }
 
    // segment 23
@@ -1433,7 +1489,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan23ID, baseID);
       aiPlanSetEscrowID(wallPlan23ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan23ID, pri);
-      aiPlanSetActive(wallPlan23ID, true);
+      //aiPlanSetActive(wallPlan23ID, true);
    }
 
    // segment 24
@@ -1448,7 +1504,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan24ID, baseID);
       aiPlanSetEscrowID(wallPlan24ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan24ID, pri);
-      aiPlanSetActive(wallPlan24ID, true);
+      //aiPlanSetActive(wallPlan24ID, true);
    }
 
    // segment 25
@@ -1463,7 +1519,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan25ID, baseID);
       aiPlanSetEscrowID(wallPlan25ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan25ID, pri);
-      aiPlanSetActive(wallPlan25ID, true);
+      //aiPlanSetActive(wallPlan25ID, true);
    }
 
    // segment 26
@@ -1478,8 +1534,40 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan26ID, baseID);
       aiPlanSetEscrowID(wallPlan26ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan26ID, pri);
-      aiPlanSetActive(wallPlan26ID, true);
+      //aiPlanSetActive(wallPlan26ID, true);
    }
+
+   // Set up wall segment array
+   gStarFortWallPlanArray = xsArrayCreateInt(26, -1, "SFWallArraySawtooth");
+
+   xsArraySetInt(gStarFortWallPlanArray, 0, wallPlan1ID);
+   xsArraySetInt(gStarFortWallPlanArray, 1, wallPlan2ID);
+   xsArraySetInt(gStarFortWallPlanArray, 2, wallPlan3ID);
+   xsArraySetInt(gStarFortWallPlanArray, 3, wallPlan4ID);
+   xsArraySetInt(gStarFortWallPlanArray, 4, wallPlan5ID);
+   xsArraySetInt(gStarFortWallPlanArray, 5, wallPlan6ID);
+   xsArraySetInt(gStarFortWallPlanArray, 6, wallPlan7ID);
+   xsArraySetInt(gStarFortWallPlanArray, 7, wallPlan8ID);
+   xsArraySetInt(gStarFortWallPlanArray, 8, wallPlan9ID);
+   xsArraySetInt(gStarFortWallPlanArray, 9, wallPlan10ID);
+   xsArraySetInt(gStarFortWallPlanArray, 10, wallPlan11ID);
+   xsArraySetInt(gStarFortWallPlanArray, 11, wallPlan12ID);
+   xsArraySetInt(gStarFortWallPlanArray, 12, wallPlan13ID);
+   xsArraySetInt(gStarFortWallPlanArray, 13, wallPlan14ID);
+   xsArraySetInt(gStarFortWallPlanArray, 14, wallPlan15ID);
+   xsArraySetInt(gStarFortWallPlanArray, 15, wallPlan16ID);
+   xsArraySetInt(gStarFortWallPlanArray, 16, wallPlan17ID);
+   xsArraySetInt(gStarFortWallPlanArray, 17, wallPlan18ID);
+   xsArraySetInt(gStarFortWallPlanArray, 18, wallPlan19ID);
+   xsArraySetInt(gStarFortWallPlanArray, 19, wallPlan20ID);
+   xsArraySetInt(gStarFortWallPlanArray, 20, wallPlan21ID);
+   xsArraySetInt(gStarFortWallPlanArray, 21, wallPlan22ID);
+   xsArraySetInt(gStarFortWallPlanArray, 22, wallPlan23ID);
+   xsArraySetInt(gStarFortWallPlanArray, 23, wallPlan24ID);
+   xsArraySetInt(gStarFortWallPlanArray, 24, wallPlan25ID);
+   xsArraySetInt(gStarFortWallPlanArray, 25, wallPlan26ID);
+
+   xsEnableRule("wallQueueManager");
 
    return;
 
@@ -1644,7 +1732,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan1ID, pri);
-      aiPlanSetActive(wallPlan1ID, true);
+      //aiPlanSetActive(wallPlan1ID, true);
    }
 
    // segment 2
@@ -1661,7 +1749,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan2ID, pri);
-      aiPlanSetActive(wallPlan2ID, true);
+      //aiPlanSetActive(wallPlan2ID, true);
    }
 
    // segment 3
@@ -1676,7 +1764,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan3ID, baseID);
       aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan3ID, pri);
-      aiPlanSetActive(wallPlan3ID, true);
+      //aiPlanSetActive(wallPlan3ID, true);
    }
 
    // segment 4
@@ -1691,7 +1779,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan4ID, baseID);
       aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan4ID, pri);
-      aiPlanSetActive(wallPlan4ID, true);
+      //aiPlanSetActive(wallPlan4ID, true);
    }
 
    // segment 5
@@ -1706,7 +1794,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan5ID, baseID);
       aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan5ID, pri);
-      aiPlanSetActive(wallPlan5ID, true);
+      //aiPlanSetActive(wallPlan5ID, true);
    }
 
    // segment 6
@@ -1721,7 +1809,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan6ID, baseID);
       aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan6ID, pri);
-      aiPlanSetActive(wallPlan6ID, true);
+      //aiPlanSetActive(wallPlan6ID, true);
    }
 
    // segment 7
@@ -1736,7 +1824,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan7ID, baseID);
       aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan7ID, pri);
-      aiPlanSetActive(wallPlan7ID, true);
+      //aiPlanSetActive(wallPlan7ID, true);
    }
 
    // segment 8
@@ -1751,7 +1839,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan8ID, baseID);
       aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan8ID, pri);
-      aiPlanSetActive(wallPlan8ID, true);
+      //aiPlanSetActive(wallPlan8ID, true);
    }
 
    // segment 9
@@ -1766,7 +1854,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan9ID, baseID);
       aiPlanSetEscrowID(wallPlan9ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan9ID, pri);
-      aiPlanSetActive(wallPlan9ID, true);
+      //aiPlanSetActive(wallPlan9ID, true);
    }
 
    // segment 10
@@ -1781,7 +1869,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan10ID, baseID);
       aiPlanSetEscrowID(wallPlan10ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan10ID, pri);
-      aiPlanSetActive(wallPlan10ID, true);
+      //aiPlanSetActive(wallPlan10ID, true);
    }
 
    // segment 11
@@ -1796,7 +1884,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan11ID, baseID);
       aiPlanSetEscrowID(wallPlan11ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan11ID, pri);
-      aiPlanSetActive(wallPlan11ID, true);
+      //aiPlanSetActive(wallPlan11ID, true);
    }
 
    // segment 12
@@ -1811,8 +1899,27 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan12ID, baseID);
       aiPlanSetEscrowID(wallPlan12ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan12ID, pri);
-      aiPlanSetActive(wallPlan12ID, true);
+      //aiPlanSetActive(wallPlan12ID, true);
    }
+
+   // Set up wall segment array
+   gStarFortWallPlanArray = xsArrayCreateInt(12, -1, "SFWallArrayHaud");
+
+   xsArraySetInt(gStarFortWallPlanArray, 0, wallPlan1ID);
+   xsArraySetInt(gStarFortWallPlanArray, 1, wallPlan2ID);
+   xsArraySetInt(gStarFortWallPlanArray, 2, wallPlan3ID);
+   xsArraySetInt(gStarFortWallPlanArray, 3, wallPlan4ID);
+   xsArraySetInt(gStarFortWallPlanArray, 4, wallPlan5ID);
+   xsArraySetInt(gStarFortWallPlanArray, 5, wallPlan6ID);
+   xsArraySetInt(gStarFortWallPlanArray, 6, wallPlan7ID);
+   xsArraySetInt(gStarFortWallPlanArray, 7, wallPlan8ID);
+   xsArraySetInt(gStarFortWallPlanArray, 8, wallPlan9ID);
+   xsArraySetInt(gStarFortWallPlanArray, 9, wallPlan10ID);
+   xsArraySetInt(gStarFortWallPlanArray, 10, wallPlan11ID);
+   xsArraySetInt(gStarFortWallPlanArray, 11, wallPlan12ID);
+
+   xsEnableRule("wallQueueManager");
+
 
    return;
 
@@ -1954,7 +2061,7 @@ void sumterFort(vector position = cInvalidVector, vector fortCenter = cInvalidVe
       aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan1ID, pri);
-      aiPlanSetActive(wallPlan1ID, true);
+      //aiPlanSetActive(wallPlan1ID, true);
    }
 
    // segment 2
@@ -1971,7 +2078,7 @@ void sumterFort(vector position = cInvalidVector, vector fortCenter = cInvalidVe
       aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan2ID, pri);
-      aiPlanSetActive(wallPlan2ID, true);
+      //aiPlanSetActive(wallPlan2ID, true);
    }
 
    // segment 3
@@ -1986,7 +2093,7 @@ void sumterFort(vector position = cInvalidVector, vector fortCenter = cInvalidVe
       aiPlanSetBaseID(wallPlan3ID, baseID);
       aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan3ID, pri);
-      aiPlanSetActive(wallPlan3ID, true);
+      //aiPlanSetActive(wallPlan3ID, true);
    }
 
    // segment 4
@@ -2001,7 +2108,7 @@ void sumterFort(vector position = cInvalidVector, vector fortCenter = cInvalidVe
       aiPlanSetBaseID(wallPlan4ID, baseID);
       aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan4ID, pri);
-      aiPlanSetActive(wallPlan4ID, true);
+      //aiPlanSetActive(wallPlan4ID, true);
    }
 
    // segment 5
@@ -2016,7 +2123,7 @@ void sumterFort(vector position = cInvalidVector, vector fortCenter = cInvalidVe
       aiPlanSetBaseID(wallPlan5ID, baseID);
       aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan5ID, pri);
-      aiPlanSetActive(wallPlan5ID, true);
+      //aiPlanSetActive(wallPlan5ID, true);
    }
 
    // segment 6
@@ -2031,7 +2138,7 @@ void sumterFort(vector position = cInvalidVector, vector fortCenter = cInvalidVe
       aiPlanSetBaseID(wallPlan6ID, baseID);
       aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan6ID, pri);
-      aiPlanSetActive(wallPlan6ID, true);
+      //aiPlanSetActive(wallPlan6ID, true);
    }
 
    // segment 7
@@ -2046,7 +2153,7 @@ void sumterFort(vector position = cInvalidVector, vector fortCenter = cInvalidVe
       aiPlanSetBaseID(wallPlan7ID, baseID);
       aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan7ID, pri);
-      aiPlanSetActive(wallPlan7ID, true);
+      //aiPlanSetActive(wallPlan7ID, true);
    }
 
    // segment 8
@@ -2061,8 +2168,23 @@ void sumterFort(vector position = cInvalidVector, vector fortCenter = cInvalidVe
       aiPlanSetBaseID(wallPlan8ID, baseID);
       aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan8ID, pri);
-      aiPlanSetActive(wallPlan8ID, true);
+      //aiPlanSetActive(wallPlan8ID, true);
    }
+
+   // Set up wall segment array
+   gStarFortWallPlanArray = xsArrayCreateInt(8, -1, "SFWallArraySumpter");
+
+   xsArraySetInt(gStarFortWallPlanArray, 0, wallPlan1ID);
+   xsArraySetInt(gStarFortWallPlanArray, 1, wallPlan2ID);
+   xsArraySetInt(gStarFortWallPlanArray, 2, wallPlan3ID);
+   xsArraySetInt(gStarFortWallPlanArray, 3, wallPlan4ID);
+   xsArraySetInt(gStarFortWallPlanArray, 4, wallPlan5ID);
+   xsArraySetInt(gStarFortWallPlanArray, 5, wallPlan6ID);
+   xsArraySetInt(gStarFortWallPlanArray, 6, wallPlan7ID);
+   xsArraySetInt(gStarFortWallPlanArray, 7, wallPlan8ID);
+
+   xsEnableRule("wallQueueManager");
+
 
    return;
 
@@ -2327,7 +2449,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan1ID, pri);
-      aiPlanSetActive(wallPlan1ID, true);
+      //aiPlanSetActive(wallPlan1ID, true);
    }
 
    // segment 2
@@ -2344,7 +2466,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan2ID, pri);
-      aiPlanSetActive(wallPlan2ID, true);
+      //aiPlanSetActive(wallPlan2ID, true);
    }
 
    // segment 3
@@ -2359,7 +2481,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan3ID, baseID);
       aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan3ID, pri);
-      aiPlanSetActive(wallPlan3ID, true);
+      //aiPlanSetActive(wallPlan3ID, true);
    }
 
    // segment 4
@@ -2374,7 +2496,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan4ID, baseID);
       aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan4ID, pri);
-      aiPlanSetActive(wallPlan4ID, true);
+      //aiPlanSetActive(wallPlan4ID, true);
    }
 
    // segment 5
@@ -2389,7 +2511,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan5ID, baseID);
       aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan5ID, pri);
-      aiPlanSetActive(wallPlan5ID, true);
+      //aiPlanSetActive(wallPlan5ID, true);
    }
 
    // segment 6
@@ -2404,7 +2526,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan6ID, baseID);
       aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan6ID, pri);
-      aiPlanSetActive(wallPlan6ID, true);
+      //aiPlanSetActive(wallPlan6ID, true);
    }
 
    // segment 7
@@ -2419,7 +2541,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan7ID, baseID);
       aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan7ID, pri);
-      aiPlanSetActive(wallPlan7ID, true);
+      //aiPlanSetActive(wallPlan7ID, true);
    }
 
    // segment 8
@@ -2434,7 +2556,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan8ID, baseID);
       aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan8ID, pri);
-      aiPlanSetActive(wallPlan8ID, true);
+      //aiPlanSetActive(wallPlan8ID, true);
    }
 
    // segment 9
@@ -2449,7 +2571,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan9ID, baseID);
       aiPlanSetEscrowID(wallPlan9ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan9ID, pri);
-      aiPlanSetActive(wallPlan9ID, true);
+      //aiPlanSetActive(wallPlan9ID, true);
    }
 
    // segment 10
@@ -2464,7 +2586,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan10ID, baseID);
       aiPlanSetEscrowID(wallPlan10ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan10ID, pri);
-      aiPlanSetActive(wallPlan10ID, true);
+      //aiPlanSetActive(wallPlan10ID, true);
    }
 
    // segment 11
@@ -2479,7 +2601,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan11ID, baseID);
       aiPlanSetEscrowID(wallPlan11ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan11ID, pri);
-      aiPlanSetActive(wallPlan11ID, true);
+      //aiPlanSetActive(wallPlan11ID, true);
    }
 
    // segment 12
@@ -2494,7 +2616,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan12ID, baseID);
       aiPlanSetEscrowID(wallPlan12ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan12ID, pri);
-      aiPlanSetActive(wallPlan12ID, true);
+      //aiPlanSetActive(wallPlan12ID, true);
    }
 
    // segment 13
@@ -2509,7 +2631,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan13ID, baseID);
       aiPlanSetEscrowID(wallPlan13ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan13ID, pri);
-      aiPlanSetActive(wallPlan13ID, true);
+      //aiPlanSetActive(wallPlan13ID, true);
    }
 
    // segment 14
@@ -2524,7 +2646,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan14ID, baseID);
       aiPlanSetEscrowID(wallPlan14ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan14ID, pri);
-      aiPlanSetActive(wallPlan14ID, true);
+      //aiPlanSetActive(wallPlan14ID, true);
    }
 
    // segment 15
@@ -2539,7 +2661,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan15ID, baseID);
       aiPlanSetEscrowID(wallPlan15ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan15ID, pri);
-      aiPlanSetActive(wallPlan15ID, true);
+      //aiPlanSetActive(wallPlan15ID, true);
    }
 
    // segment 16
@@ -2554,7 +2676,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan16ID, baseID);
       aiPlanSetEscrowID(wallPlan16ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan16ID, pri);
-      aiPlanSetActive(wallPlan16ID, true);
+      //aiPlanSetActive(wallPlan16ID, true);
    }
 
    // segment 17
@@ -2569,7 +2691,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan17ID, baseID);
       aiPlanSetEscrowID(wallPlan17ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan17ID, pri);
-      aiPlanSetActive(wallPlan17ID, true);
+      //aiPlanSetActive(wallPlan17ID, true);
    }
 
    // segment 18
@@ -2584,7 +2706,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan18ID, baseID);
       aiPlanSetEscrowID(wallPlan18ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan18ID, pri);
-      aiPlanSetActive(wallPlan18ID, true);
+      //aiPlanSetActive(wallPlan18ID, true);
    }
 
    // segment 19
@@ -2599,7 +2721,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan19ID, baseID);
       aiPlanSetEscrowID(wallPlan19ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan19ID, pri);
-      aiPlanSetActive(wallPlan19ID, true);
+      //aiPlanSetActive(wallPlan19ID, true);
    }
 
    // segment 20
@@ -2614,7 +2736,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan20ID, baseID);
       aiPlanSetEscrowID(wallPlan20ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan20ID, pri);
-      aiPlanSetActive(wallPlan20ID, true);
+      //aiPlanSetActive(wallPlan20ID, true);
    }
 
    if (ravelin == true)
@@ -2631,7 +2753,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
          aiPlanSetBaseID(wallPlan21ID, baseID);
          aiPlanSetEscrowID(wallPlan21ID, cEconomyEscrowID);
          aiPlanSetDesiredPriority(wallPlan21ID, pri);
-         aiPlanSetActive(wallPlan21ID, true);
+         //aiPlanSetActive(wallPlan21ID, true);
       }
 
       // segment 22
@@ -2646,7 +2768,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
          aiPlanSetBaseID(wallPlan22ID, baseID);
          aiPlanSetEscrowID(wallPlan22ID, cEconomyEscrowID);
          aiPlanSetDesiredPriority(wallPlan22ID, pri);
-         aiPlanSetActive(wallPlan22ID, true);
+         //aiPlanSetActive(wallPlan22ID, true);
       }
 
       // segment 23
@@ -2661,7 +2783,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
          aiPlanSetBaseID(wallPlan23ID, baseID);
          aiPlanSetEscrowID(wallPlan23ID, cEconomyEscrowID);
          aiPlanSetDesiredPriority(wallPlan23ID, pri);
-         aiPlanSetActive(wallPlan23ID, true);
+         //aiPlanSetActive(wallPlan23ID, true);
       }
 
       // segment 24
@@ -2676,9 +2798,40 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
          aiPlanSetBaseID(wallPlan24ID, baseID);
          aiPlanSetEscrowID(wallPlan24ID, cEconomyEscrowID);
          aiPlanSetDesiredPriority(wallPlan24ID, pri);
-         aiPlanSetActive(wallPlan24ID, true);
+         //aiPlanSetActive(wallPlan24ID, true);
       }
    }
+
+   // Set up wall segment array
+   gStarFortWallPlanArray = xsArrayCreateInt(24, -1, "SFWallArrayTiconderoga");
+
+   xsArraySetInt(gStarFortWallPlanArray, 0, wallPlan1ID);
+   xsArraySetInt(gStarFortWallPlanArray, 1, wallPlan2ID);
+   xsArraySetInt(gStarFortWallPlanArray, 2, wallPlan3ID);
+   xsArraySetInt(gStarFortWallPlanArray, 3, wallPlan4ID);
+   xsArraySetInt(gStarFortWallPlanArray, 4, wallPlan5ID);
+   xsArraySetInt(gStarFortWallPlanArray, 5, wallPlan6ID);
+   xsArraySetInt(gStarFortWallPlanArray, 6, wallPlan7ID);
+   xsArraySetInt(gStarFortWallPlanArray, 7, wallPlan8ID);
+   xsArraySetInt(gStarFortWallPlanArray, 8, wallPlan9ID);
+   xsArraySetInt(gStarFortWallPlanArray, 9, wallPlan10ID);
+   xsArraySetInt(gStarFortWallPlanArray, 10, wallPlan11ID);
+   xsArraySetInt(gStarFortWallPlanArray, 11, wallPlan12ID);
+   xsArraySetInt(gStarFortWallPlanArray, 12, wallPlan13ID);
+   xsArraySetInt(gStarFortWallPlanArray, 13, wallPlan14ID);
+   xsArraySetInt(gStarFortWallPlanArray, 14, wallPlan15ID);
+   xsArraySetInt(gStarFortWallPlanArray, 15, wallPlan16ID);
+   xsArraySetInt(gStarFortWallPlanArray, 16, wallPlan17ID);
+   xsArraySetInt(gStarFortWallPlanArray, 17, wallPlan18ID);
+   xsArraySetInt(gStarFortWallPlanArray, 18, wallPlan19ID);
+   xsArraySetInt(gStarFortWallPlanArray, 19, wallPlan20ID);
+   xsArraySetInt(gStarFortWallPlanArray, 20, wallPlan21ID);
+   xsArraySetInt(gStarFortWallPlanArray, 21, wallPlan22ID);
+   xsArraySetInt(gStarFortWallPlanArray, 22, wallPlan23ID);
+   xsArraySetInt(gStarFortWallPlanArray, 23, wallPlan24ID);
+
+   xsEnableRule("wallQueueManager");
+
 
    return;
 
@@ -2883,7 +3036,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan1ID, pri);
-      aiPlanSetActive(wallPlan1ID, true);
+      //aiPlanSetActive(wallPlan1ID, true);
    }
 
    // segment 2
@@ -2900,7 +3053,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan2ID, pri);
-      aiPlanSetActive(wallPlan2ID, true);
+      //aiPlanSetActive(wallPlan2ID, true);
    }
 
    // segment 3
@@ -2915,7 +3068,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan3ID, baseID);
       aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan3ID, pri);
-      aiPlanSetActive(wallPlan3ID, true);
+      //aiPlanSetActive(wallPlan3ID, true);
    }
 
    // segment 4
@@ -2930,7 +3083,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan4ID, baseID);
       aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan4ID, pri);
-      aiPlanSetActive(wallPlan4ID, true);
+      //aiPlanSetActive(wallPlan4ID, true);
    }
 
    // segment 5
@@ -2945,7 +3098,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan5ID, baseID);
       aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan5ID, pri);
-      aiPlanSetActive(wallPlan5ID, true);
+      //aiPlanSetActive(wallPlan5ID, true);
    }
 
    // segment 6
@@ -2960,7 +3113,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan6ID, baseID);
       aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan6ID, pri);
-      aiPlanSetActive(wallPlan6ID, true);
+      //aiPlanSetActive(wallPlan6ID, true);
    }
 
    // segment 7
@@ -2975,7 +3128,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan7ID, baseID);
       aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan7ID, pri);
-      aiPlanSetActive(wallPlan7ID, true);
+      //aiPlanSetActive(wallPlan7ID, true);
    }
 
    // segment 8
@@ -2990,7 +3143,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan8ID, baseID);
       aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan8ID, pri);
-      aiPlanSetActive(wallPlan8ID, true);
+      //aiPlanSetActive(wallPlan8ID, true);
    }
 
    // segment 9
@@ -3005,7 +3158,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan9ID, baseID);
       aiPlanSetEscrowID(wallPlan9ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan9ID, pri);
-      aiPlanSetActive(wallPlan9ID, true);
+      //aiPlanSetActive(wallPlan9ID, true);
    }
 
    // segment 10
@@ -3020,7 +3173,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan10ID, baseID);
       aiPlanSetEscrowID(wallPlan10ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan10ID, pri);
-      aiPlanSetActive(wallPlan10ID, true);
+      //aiPlanSetActive(wallPlan10ID, true);
    }
 
    // segment 11
@@ -3035,7 +3188,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan11ID, baseID);
       aiPlanSetEscrowID(wallPlan11ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan11ID, pri);
-      aiPlanSetActive(wallPlan11ID, true);
+      //aiPlanSetActive(wallPlan11ID, true);
    }
 
    // segment 12
@@ -3050,7 +3203,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan12ID, baseID);
       aiPlanSetEscrowID(wallPlan12ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan12ID, pri);
-      aiPlanSetActive(wallPlan12ID, true);
+      //aiPlanSetActive(wallPlan12ID, true);
    }
 
    if (ravelin == true)
@@ -3067,7 +3220,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
          aiPlanSetBaseID(wallPlan13ID, baseID);
          aiPlanSetEscrowID(wallPlan13ID, cEconomyEscrowID);
          aiPlanSetDesiredPriority(wallPlan13ID, pri);
-         aiPlanSetActive(wallPlan13ID, true);
+         //aiPlanSetActive(wallPlan13ID, true);
       }
 
       // segment 14
@@ -3082,7 +3235,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
          aiPlanSetBaseID(wallPlan14ID, baseID);
          aiPlanSetEscrowID(wallPlan14ID, cEconomyEscrowID);
          aiPlanSetDesiredPriority(wallPlan14ID, pri);
-         aiPlanSetActive(wallPlan14ID, true);
+         //aiPlanSetActive(wallPlan14ID, true);
       }
 
       // segment 15
@@ -3097,7 +3250,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
          aiPlanSetBaseID(wallPlan15ID, baseID);
          aiPlanSetEscrowID(wallPlan15ID, cEconomyEscrowID);
          aiPlanSetDesiredPriority(wallPlan15ID, pri);
-         aiPlanSetActive(wallPlan15ID, true);
+         //aiPlanSetActive(wallPlan15ID, true);
       }
 
       // segment 16
@@ -3112,9 +3265,31 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
          aiPlanSetBaseID(wallPlan16ID, baseID);
          aiPlanSetEscrowID(wallPlan16ID, cEconomyEscrowID);
          aiPlanSetDesiredPriority(wallPlan16ID, pri);
-         aiPlanSetActive(wallPlan16ID, true);
+         //aiPlanSetActive(wallPlan16ID, true);
       }
    }
+
+   // Set up wall segment array
+   gStarFortWallPlanArray = xsArrayCreateInt(16, -1, "SFWallArrayCrownwork");
+
+   xsArraySetInt(gStarFortWallPlanArray, 0, wallPlan1ID);
+   xsArraySetInt(gStarFortWallPlanArray, 1, wallPlan2ID);
+   xsArraySetInt(gStarFortWallPlanArray, 2, wallPlan3ID);
+   xsArraySetInt(gStarFortWallPlanArray, 3, wallPlan4ID);
+   xsArraySetInt(gStarFortWallPlanArray, 4, wallPlan5ID);
+   xsArraySetInt(gStarFortWallPlanArray, 5, wallPlan6ID);
+   xsArraySetInt(gStarFortWallPlanArray, 6, wallPlan7ID);
+   xsArraySetInt(gStarFortWallPlanArray, 7, wallPlan8ID);
+   xsArraySetInt(gStarFortWallPlanArray, 8, wallPlan9ID);
+   xsArraySetInt(gStarFortWallPlanArray, 9, wallPlan10ID);
+   xsArraySetInt(gStarFortWallPlanArray, 10, wallPlan11ID);
+   xsArraySetInt(gStarFortWallPlanArray, 11, wallPlan12ID);
+   xsArraySetInt(gStarFortWallPlanArray, 12, wallPlan13ID);
+   xsArraySetInt(gStarFortWallPlanArray, 13, wallPlan14ID);
+   xsArraySetInt(gStarFortWallPlanArray, 14, wallPlan15ID);
+   xsArraySetInt(gStarFortWallPlanArray, 15, wallPlan16ID);
+
+   xsEnableRule("wallQueueManager");
 
    return;
 
@@ -3390,7 +3565,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan1ID, pri);
-      aiPlanSetActive(wallPlan1ID, true);
+      //aiPlanSetActive(wallPlan1ID, true);
    }
 
    // segment 2
@@ -3407,7 +3582,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan2ID, pri);
-      aiPlanSetActive(wallPlan2ID, true);
+      //aiPlanSetActive(wallPlan2ID, true);
    }
 
    // segment 3
@@ -3424,7 +3599,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan3ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan3ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan3ID, pri);
-      aiPlanSetActive(wallPlan3ID, true);
+      //aiPlanSetActive(wallPlan3ID, true);
    }
 
    // segment 4
@@ -3441,7 +3616,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan4ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan4ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan4ID, pri);
-      aiPlanSetActive(wallPlan4ID, true);
+      //aiPlanSetActive(wallPlan4ID, true);
    }
 
    // segment 5
@@ -3458,7 +3633,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan5ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan5ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan5ID, pri);
-      aiPlanSetActive(wallPlan5ID, true);
+      //aiPlanSetActive(wallPlan5ID, true);
    }
 
    // segment 6
@@ -3475,7 +3650,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan6ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan6ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan6ID, pri);
-      aiPlanSetActive(wallPlan6ID, true);
+      //aiPlanSetActive(wallPlan6ID, true);
    }
 
    // segment 7
@@ -3492,7 +3667,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan7ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan7ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan7ID, pri);
-      aiPlanSetActive(wallPlan7ID, true);
+      //aiPlanSetActive(wallPlan7ID, true);
    }
 
    // segment 8
@@ -3509,7 +3684,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan8ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan8ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan8ID, pri);
-      aiPlanSetActive(wallPlan8ID, true);
+      //aiPlanSetActive(wallPlan8ID, true);
    }
 
    // segment 9
@@ -3526,7 +3701,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan9ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan9ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan9ID, pri);
-      aiPlanSetActive(wallPlan9ID, true);
+      //aiPlanSetActive(wallPlan9ID, true);
    }
 
    // segment 10
@@ -3543,7 +3718,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan10ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan10ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan10ID, pri);
-      aiPlanSetActive(wallPlan10ID, true);
+      //aiPlanSetActive(wallPlan10ID, true);
    }
 
    // segment 11
@@ -3560,7 +3735,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan11ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan11ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan11ID, pri);
-      aiPlanSetActive(wallPlan11ID, true);
+      //aiPlanSetActive(wallPlan11ID, true);
    }
 
    // segment 12
@@ -3577,7 +3752,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan12ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan12ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan12ID, pri);
-      aiPlanSetActive(wallPlan12ID, true);
+      //aiPlanSetActive(wallPlan12ID, true);
    }
 
    // segment 13
@@ -3594,7 +3769,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan13ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan13ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan13ID, pri);
-      aiPlanSetActive(wallPlan13ID, true);
+      //aiPlanSetActive(wallPlan13ID, true);
    }
 
    // segment 14
@@ -3611,7 +3786,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan14ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan14ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan14ID, pri);
-      aiPlanSetActive(wallPlan14ID, true);
+      //aiPlanSetActive(wallPlan14ID, true);
    }
 
    // segment 15
@@ -3628,7 +3803,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan15ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan15ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan15ID, pri);
-      aiPlanSetActive(wallPlan15ID, true);
+      //aiPlanSetActive(wallPlan15ID, true);
    }
 
    // segment 16
@@ -3645,7 +3820,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan16ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan16ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan16ID, pri);
-      aiPlanSetActive(wallPlan16ID, true);
+      //aiPlanSetActive(wallPlan16ID, true);
    }
 
    // segment 17
@@ -3662,7 +3837,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan17ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan17ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan17ID, pri);
-      aiPlanSetActive(wallPlan17ID, true);
+      //aiPlanSetActive(wallPlan17ID, true);
    }
 
    // segment 18
@@ -3679,7 +3854,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan18ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan18ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan18ID, pri);
-      aiPlanSetActive(wallPlan18ID, true);
+      //aiPlanSetActive(wallPlan18ID, true);
    }
 
    // segment 19
@@ -3696,7 +3871,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan19ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan19ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan19ID, pri);
-      aiPlanSetActive(wallPlan19ID, true);
+      //aiPlanSetActive(wallPlan19ID, true);
    }
 
    // segment 20
@@ -3713,8 +3888,34 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan20ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan20ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan20ID, pri);
-      aiPlanSetActive(wallPlan20ID, true);
+      //aiPlanSetActive(wallPlan20ID, true);
    }
+
+   // Set up wall segment array
+   gStarFortWallPlanArray = xsArrayCreateInt(20, -1, "SFWallArrayFourCorner");
+
+   xsArraySetInt(gStarFortWallPlanArray, 0, wallPlan1ID);
+   xsArraySetInt(gStarFortWallPlanArray, 1, wallPlan2ID);
+   xsArraySetInt(gStarFortWallPlanArray, 2, wallPlan3ID);
+   xsArraySetInt(gStarFortWallPlanArray, 3, wallPlan4ID);
+   xsArraySetInt(gStarFortWallPlanArray, 4, wallPlan5ID);
+   xsArraySetInt(gStarFortWallPlanArray, 5, wallPlan6ID);
+   xsArraySetInt(gStarFortWallPlanArray, 6, wallPlan7ID);
+   xsArraySetInt(gStarFortWallPlanArray, 7, wallPlan8ID);
+   xsArraySetInt(gStarFortWallPlanArray, 8, wallPlan9ID);
+   xsArraySetInt(gStarFortWallPlanArray, 9, wallPlan10ID);
+   xsArraySetInt(gStarFortWallPlanArray, 10, wallPlan11ID);
+   xsArraySetInt(gStarFortWallPlanArray, 11, wallPlan12ID);
+   xsArraySetInt(gStarFortWallPlanArray, 12, wallPlan13ID);
+   xsArraySetInt(gStarFortWallPlanArray, 13, wallPlan14ID);
+   xsArraySetInt(gStarFortWallPlanArray, 14, wallPlan15ID);
+   xsArraySetInt(gStarFortWallPlanArray, 15, wallPlan16ID);
+   xsArraySetInt(gStarFortWallPlanArray, 16, wallPlan17ID);
+   xsArraySetInt(gStarFortWallPlanArray, 17, wallPlan18ID);
+   xsArraySetInt(gStarFortWallPlanArray, 18, wallPlan19ID);
+   xsArraySetInt(gStarFortWallPlanArray, 19, wallPlan20ID);
+
+   xsEnableRule("wallQueueManager");
 
    return;
 }
@@ -3836,7 +4037,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan1ID, pri);
-      aiPlanSetActive(wallPlan1ID, true);
+      //aiPlanSetActive(wallPlan1ID, true);
    }
 
    // segment 2
@@ -3853,7 +4054,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan2ID, pri);
-      aiPlanSetActive(wallPlan2ID, true);
+      //aiPlanSetActive(wallPlan2ID, true);
    }
 
    // segment 3
@@ -3868,7 +4069,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan3ID, baseID);
       aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan3ID, pri);
-      aiPlanSetActive(wallPlan3ID, true);
+      //aiPlanSetActive(wallPlan3ID, true);
    }
 
    // segment 4
@@ -3883,7 +4084,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan4ID, baseID);
       aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan4ID, pri);
-      aiPlanSetActive(wallPlan4ID, true);
+      //aiPlanSetActive(wallPlan4ID, true);
    }
 
    // segment 5
@@ -3898,7 +4099,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan5ID, baseID);
       aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan5ID, pri);
-      aiPlanSetActive(wallPlan5ID, true);
+      //aiPlanSetActive(wallPlan5ID, true);
    }
 
    // segment 6
@@ -3913,7 +4114,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan6ID, baseID);
       aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan6ID, pri);
-      aiPlanSetActive(wallPlan6ID, true);
+      //aiPlanSetActive(wallPlan6ID, true);
    }
 
    // segment 7
@@ -3928,7 +4129,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan7ID, baseID);
       aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan7ID, pri);
-      aiPlanSetActive(wallPlan7ID, true);
+      //aiPlanSetActive(wallPlan7ID, true);
    }
 
    // segment 8
@@ -3943,7 +4144,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan8ID, baseID);
       aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan8ID, pri);
-      aiPlanSetActive(wallPlan8ID, true);
+      //aiPlanSetActive(wallPlan8ID, true);
    }
 
    // segment 9
@@ -3958,7 +4159,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan9ID, baseID);
       aiPlanSetEscrowID(wallPlan9ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan9ID, pri);
-      aiPlanSetActive(wallPlan9ID, true);
+      //aiPlanSetActive(wallPlan9ID, true);
    }
 
    // segment 10
@@ -3973,7 +4174,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan10ID, baseID);
       aiPlanSetEscrowID(wallPlan10ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan10ID, pri);
-      aiPlanSetActive(wallPlan10ID, true);
+      //aiPlanSetActive(wallPlan10ID, true);
    }
 
    // segment 11
@@ -3988,7 +4189,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan11ID, baseID);
       aiPlanSetEscrowID(wallPlan11ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan11ID, pri);
-      aiPlanSetActive(wallPlan11ID, true);
+      //aiPlanSetActive(wallPlan11ID, true);
    }
 
    // segment 12
@@ -4003,8 +4204,26 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan12ID, baseID);
       aiPlanSetEscrowID(wallPlan12ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan12ID, pri);
-      aiPlanSetActive(wallPlan12ID, true);
+      //aiPlanSetActive(wallPlan12ID, true);
    }
+
+   // Set up wall segment array
+   gStarFortWallPlanArray = xsArrayCreateInt(12, -1, "SFWallArrayCornerPair");
+
+   xsArraySetInt(gStarFortWallPlanArray, 0, wallPlan1ID);
+   xsArraySetInt(gStarFortWallPlanArray, 1, wallPlan2ID);
+   xsArraySetInt(gStarFortWallPlanArray, 2, wallPlan3ID);
+   xsArraySetInt(gStarFortWallPlanArray, 3, wallPlan4ID);
+   xsArraySetInt(gStarFortWallPlanArray, 4, wallPlan5ID);
+   xsArraySetInt(gStarFortWallPlanArray, 5, wallPlan6ID);
+   xsArraySetInt(gStarFortWallPlanArray, 6, wallPlan7ID);
+   xsArraySetInt(gStarFortWallPlanArray, 7, wallPlan8ID);
+   xsArraySetInt(gStarFortWallPlanArray, 8, wallPlan9ID);
+   xsArraySetInt(gStarFortWallPlanArray, 9, wallPlan10ID);
+   xsArraySetInt(gStarFortWallPlanArray, 10, wallPlan11ID);
+   xsArraySetInt(gStarFortWallPlanArray, 11, wallPlan12ID);
+
+   xsEnableRule("wallQueueManager");
 
    return;
 
@@ -4043,17 +4262,17 @@ minInterval 20
 {
    if (kbGetAge() < cAge3)
    {
-      return;
+      //return;
    }
 
    if (kbUnitCount(cMyID, cUnitTypeAbstractArtillery, cUnitStateAlive) <= 1)
    {
-      return;
+      //return;
    }
 
    if (kbUnitCount(cMyID, gEconUnit, cUnitStateAlive) < 50)
    {
-      return;
+      //return;
    }
 
    vector mainBaseLocation = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
@@ -4063,7 +4282,7 @@ minInterval 20
    //sumterFort(kbGetMapCenter(), mainBaseLocation, gForwardBaseID, 1.5, 99, 2, 0);
    //haudOverlappingRingFort(kbGetMapCenter(), mainBaseLocation, gForwardBaseID, 2.5, 99, 2, 0);
    //sawtoothFort(kbGetMapCenter(), mainBaseLocation, gForwardBaseID, 2.5, 99, 2, 0);
-   buildFourCornerStarFort(kbGetMapCenter(), mainBaseLocation, kbBaseGetMainID(cMyID), 2.4, 99, 2, 0, 2);
+   buildFourCornerStarFort(kbGetMapCenter(), mainBaseLocation, kbBaseGetMainID(cMyID), 2.4, 99, 2, 0, 0);
    //buildCrownwork(kbGetMapCenter(), kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), kbBaseGetMainID(cMyID), 5, 99, 2, 1, true);
    //createLocationBuildPlan(cUnitTypeBarracks, 2, 90, true, cEconomyEscrowID, kbGetMapCenter(), 1);
    //createLocationBuildPlan(cUnitTypeStable, 2, 90, true, cEconomyEscrowID, kbGetMapCenter(), 1);
@@ -11129,7 +11348,11 @@ minInterval 30
             aiPlanSetActive(gForwardBaseBuildPlan);
    
             // Chat to my allies.
-            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+            if (xsGetTime() > (gLastFBMessageSend + 180 * 1000)) // 3 minute buffer
+            {
+               sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+               gLastFBMessageSend = xsGetTime();
+            }
             gForwardBaseState = cForwardBaseStateBuilding;
             if (gStartOnDifferentIslands == true)
             {  // This should no longer be used now that we have the amphibious assault rule

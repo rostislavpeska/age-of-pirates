@@ -89,6 +89,8 @@ extern int gIslandABuildPlan = -1;
 //extern int gIslandAUpTime = -600000;
 extern bool gIslandAShouldDefend = false;
 
+extern int gLastFBMessageSend = -1;         // Used to suppress how often we tell teammate about FB plans
+
 extern int gIslandBState = cIslandAStateNone;
 extern int gIslandBID = -1;                      // Set when state goes to Active
 extern vector gIslandBLocation = cInvalidVector; // Set when state goes to 'building' or earlier.
@@ -227,6 +229,7 @@ extern vector gCannonCornerLoc1 = cInvalidVector;
 extern vector gCannonCornerLoc2 = cInvalidVector;
 extern vector gCannonCornerLoc3 = cInvalidVector;
 extern vector gCannonCornerLoc4 = cInvalidVector;
+extern int gStarFortWallPlanArray = -1;
 
 //==============================================================================
 // Techs.

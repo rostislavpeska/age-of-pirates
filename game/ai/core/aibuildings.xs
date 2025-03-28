@@ -1930,7 +1930,11 @@ minInterval 30
             aiPlanSetActive(gForwardBaseBuildPlan);
    
             // Chat to my allies.
-            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+            if (xsGetTime() > (gLastFBMessageSend + 180 * 1000)) // 3 minute buffer
+            {
+               sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+               gLastFBMessageSend = xsGetTime();
+            }
    
             gForwardBaseState = cForwardBaseStateBuilding;
             debugBuildings("");
@@ -3246,7 +3250,11 @@ minInterval 5
                   else
                   {  // AssertiveWall: Don't send these messages on island maps to avoid excessive pinging
                      // Chat to my allies.
-                     sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+                     if (xsGetTime() > (gLastFBMessageSend + 180 * 1000)) // 3 minute buffer
+                     {
+                        sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+                        gLastFBMessageSend = xsGetTime();
+                     }
                   }
 
 

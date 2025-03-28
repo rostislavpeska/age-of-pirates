@@ -77,7 +77,8 @@ minInterval 1
        cRandomMapName == "zpwildwest" ||
        cRandomMapName == "zpmississippi" ||
        cRandomMapName == "zpwwcanyon" ||
-       cRandomMapName == "zpgrinch")
+       cRandomMapName == "zpgrinch" ||
+       cRandomMapName == "zpkingofbohemia")
    {
       gIsPirateMap = true;
       if (haveHumanAlly() == true)
@@ -871,6 +872,110 @@ minInterval 30
          return;
       }
    }
+
+   // Additional clones for Bohemia. Ordering these in a star pattern (not sequential). Clone 3-8
+   // 1. Clone 6
+      socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketCityTowerClone6, cMyID, cUnitStateAny);
+      socketNumber = kbUnitQueryExecute(socketTowerQuery);
+      tempSocketUnit = -1;
+
+      for (i = 0; < socketNumber)
+      {
+         tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+         socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+         if (getUnitCountByLocation(cUnitTypedeSPCCityTower, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+         {
+            aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+            return;
+         }
+      }
+
+   // 2. Clone 4
+      socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketCityTowerClone4, cMyID, cUnitStateAny);
+      socketNumber = kbUnitQueryExecute(socketTowerQuery);
+      tempSocketUnit = -1;
+
+      for (i = 0; < socketNumber)
+      {
+         tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+         socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+         if (getUnitCountByLocation(cUnitTypedeSPCCityTower, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+         {
+            aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+            return;
+         }
+      }
+
+   // 3. Clone 7
+      socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketCityTowerClone7, cMyID, cUnitStateAny);
+      socketNumber = kbUnitQueryExecute(socketTowerQuery);
+      tempSocketUnit = -1;
+
+      for (i = 0; < socketNumber)
+      {
+         tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+         socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+         if (getUnitCountByLocation(cUnitTypedeSPCCityTower, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+         {
+            aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+            return;
+         }
+      }
+
+   // 4. Clone 3
+      socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketCityTowerClone3, cMyID, cUnitStateAny);
+      socketNumber = kbUnitQueryExecute(socketTowerQuery);
+      tempSocketUnit = -1;
+
+      for (i = 0; < socketNumber)
+      {
+         tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+         socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+         if (getUnitCountByLocation(cUnitTypedeSPCCityTower, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+         {
+            aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+            return;
+         }
+      }
+
+   // 5. Clone 5
+      socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketCityTowerClone5, cMyID, cUnitStateAny);
+      socketNumber = kbUnitQueryExecute(socketTowerQuery);
+      tempSocketUnit = -1;
+
+      for (i = 0; < socketNumber)
+      {
+         tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+         socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+         if (getUnitCountByLocation(cUnitTypedeSPCCityTower, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+         {
+            aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+            return;
+         }
+      }
+
+   // 6. Clone 8
+      socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketCityTowerClone8, cMyID, cUnitStateAny);
+      socketNumber = kbUnitQueryExecute(socketTowerQuery);
+      tempSocketUnit = -1;
+
+      for (i = 0; < socketNumber)
+      {
+         tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+         socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+         if (getUnitCountByLocation(cUnitTypedeSPCCityTower, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+         {
+            aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+            return;
+         }
+      }
+
 }
 
 //==============================================================================
@@ -1979,7 +2084,7 @@ minInterval 8
       // Add wagon
       aiPlanAddUnitType(planID, cUnitTypezpJerusalemWagon, 1, 1, 1);
       aiPlanAddUnit(planID, getUnit(cUnitTypezpJerusalemWagon, cPlayerRelationSelf));
-      sendStatement(2, cAICommPromptToAllyIWillBuildMilitaryBase, testVec);
+      //sendStatement(2, cAICommPromptToAllyIWillBuildMilitaryBase, testVec);
 
       xsDisableSelf();
    }
@@ -3523,7 +3628,11 @@ minInterval 30
             aiPlanSetActive(gForwardBaseBuildPlan);
    
             // Chat to my allies.
-            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+            if (xsGetTime() > (gLastFBMessageSend + 180 * 1000)) // 3 minute buffer
+            {
+               sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+               gLastFBMessageSend = xsGetTime();
+            }
    
             gForwardBaseState = cForwardBaseStateBuilding;
             debugBuildings("");
