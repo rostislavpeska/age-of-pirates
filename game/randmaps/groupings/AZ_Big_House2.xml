@@ -65,8 +65,6 @@
 		<unit variation="54" posx="13.3588" posz="6.9520" orientx="-0.7071" orienty="0.0000" orientz="0.7071">HarbourPathBlock</unit>
 		<unit variation="235" posx="14.2838" posz="7.8309" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpWallWoodNative</unit>
 		<unit variation="97" posx="12.9351" posz="6.5562" orientx="-0.7073" orienty="0.0000" orientz="0.7069">zpWallWoodNative</unit>
-		<unit variation="39" posx="-10.5155" posz="5.5575" orientx="-0.0003" orienty="0.0000" orientz="1.0000">zpBridgeWallSmall</unit>
-		<unit variation="39" posx="-10.6403" posz="6.2713" orientx="-0.0003" orienty="0.0000" orientz="1.0000">zpBridgeWallSmall</unit>
 		<unit variation="50" posx="16.4904" posz="9.0882" orientx="-0.3827" orienty="0.0000" orientz="0.9239">HarbourPathBlock</unit>
 		<unit variation="183" posx="0.8057" posz="8.7138" orientx="-0.0002" orienty="0.0000" orientz="1.0000">zpHarbourPathBlock3</unit>
 		<unit variation="183" posx="4.4100" posz="9.4570" orientx="-0.0002" orienty="0.0000" orientz="1.0000">zpHarbourPathBlock3</unit>

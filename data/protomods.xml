@@ -48932,11 +48932,11 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractChurch</unittype>
-    <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
     <tech row="0" page="11" column="1">zpSPCBlessedCityAztec</tech>
     <tech row="0" page="11" column="2">zpSPCAztecWalls</tech>
+    <tech row="0" page="1" column="2">zpSPCAztecCityWarCeremony</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -51414,7 +51414,6 @@
     <unittype>Resource</unittype>
     <unittype>Building</unittype>
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <train row="0" page="0" column="0">Sheep</train>
     <tech row="0" page="1" column="0">HarvestCeremony</tech>
@@ -51602,7 +51601,6 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractBank</unittype>
-    <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <tech row="0" page="1" column="2">DESPCBankLoan</tech>
     <tech row="0" page="1" column="3">DESPCMercenaryBounties</tech>
@@ -51804,7 +51802,6 @@
     <unittype>BuildingClass</unittype>
     <unittype>Economic</unittype>
     <unittype>Building</unittype>
-    <unittype>AbstractCityManison</unittype>
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>VisibleUnderFog</flag>
@@ -52250,7 +52247,6 @@
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractFindOtherEconomicBuilding</unittype>
     <unittype>AbstractFindOtherMilitaryBuilding</unittype>
-    <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <tech row="0" page="1" column="0">zpSPCAztecTempleFoodFestival</tech>
     <tech row="0" page="1" column="1">zpSPCAztecTempleFireFestival</tech>
@@ -52580,7 +52576,7 @@
   </unit>
   <unit id="20711" name="zpNatMercEagleWarrior">
     <dbid>20711</dbid>
-    <displaynameid>302443</displaynameid>
+    <displaynameid>23523</displaynameid>
     <editornameid>302440</editornameid>
     <populationcount>0</populationcount>
     <obstructionradiusx>0.4900</obstructionradiusx>
@@ -52593,8 +52589,8 @@
     <animfile>units\natives\eagle_warrior.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
-    <icon>resources\art\units\natives\eagle_warrior_merc_icon.png</icon>
-    <portraiticon>resources\art\units\natives\eagle_warrior_merc_portrait.png</portraiticon>
+    <icon>resources\art\units\natives\eagle_warrior_icon.png</icon>
+    <portraiticon>resources\art\units\natives\eagle_warrior_portrait.png</portraiticon>
     <rollovertextid>23522</rollovertextid>
     <shortrollovertextid>25675</shortrollovertextid>
     <initialhitpoints>180.0000</initialhitpoints>
@@ -52811,6 +52807,57 @@
       <rof>1.500000</rof>
     </protoaction>
   </unit>
+    <unit id="20715" name="zpSPCRevealerAztec">
+    <dbid>20715</dbid>
+    <displaynameid>26145</displaynameid>
+    <editornameid>302471</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>ui\editor\editor_revealer.xml</animfile>
+    <los>30.0000</los>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <flag>NoBloodOnDeath</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>DontFlattenGround</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>Tracked</flag>
+    <flag>NonCollideable</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NonSolid</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSelectable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NoHPBar</flag>
+    <flag>OnlyInEditor</flag>
+    <unittype>AbstractCityManison</unittype>
+    <tactics>aztecdistrictspawner.tactics</tactics>
+  </unit>
+  <unit id="20716" name="zpEagleWarriorMercIcon">
+    <dbid>20716</dbid>
+    <icon>resources\art\units\natives\eagle_warrior_merc_icon.png</icon>
+    <portraiticon>resources\art\units\natives\eagle_warrior_merc_portrait.png</portraiticon>
+  </unit>
+
 
   <!--Aztec MAPMODS-->
   <unit name="SPCXPWoodFortGate">

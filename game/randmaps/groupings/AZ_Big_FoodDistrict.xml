@@ -275,7 +275,7 @@
 		<unit variation="80" posx="10.2331" posz="28.5213" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpRuinWallLarge</unit>
 		<unit variation="45" posx="17.4397" posz="28.6456" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpRuinWallLarge</unit>
 		<unit variation="249" posx="22.9163" posz="28.1528" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
-		<unit variation="1" posx="0" posz="0" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
+		<unit variation="1" posx="0" posz="0" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCRevealerAztec</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">

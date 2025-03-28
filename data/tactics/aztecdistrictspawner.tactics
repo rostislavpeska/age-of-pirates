@@ -1,0 +1,14 @@
+<tactics>
+  <action>
+    <name stringid="69776">SpawnJaguarWarriors</name>
+    <type>Spawn</type>
+    <rate type="deNatMercJaguarWarrior">4.0</rate>
+    <rate type="zpNatMercEagleWarrior">3.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <tactic>Normal
+    <action>SpawnJaguarWarriors</action>
+  </tactic>
+</tactics>

@@ -2460,13 +2460,17 @@
       <string _locid="302460">Increases temple's Wood production by 50%.</string>
       <string _locid="302461">Food Festival</string>
       <string _locid="302462">Increases temple's Food production by 50%.</string>
-      <string _locid="302463">Craft Festival</string>
+      <string _locid="302463">Jewellery Exhibition</string>
       <string _locid="302464">Increases temple's Gold production by 50%.</string>
       <string _locid="302465">The Foundation of Heaven</string>
       <string _locid="302466">Walls of Tenochtitlan</string>
       <string _locid="302467">Increases all city defense structures hitpoints.</string>
       <string _locid="302468">Papal Blessing</string>
       <string _locid="302469">All units in the vicinity of a Prague slowly heal.</string>
+      <string _locid="302470">Extends City influence. Allows you to train new units, buildings and provides you completely new techs and shipments. Increases Aztec units build limit. \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Spawns Extra Aztec native units in every district you control.</string>
+      <string _locid="302471">ZP SPC Aztec District Center Point</string>
+      <string _locid="302472">Spawns Extra Aztec native units in every district you control.</string>
+      <string _locid="302473">Tenochtitlan War Ceremony</string>
 
 
       <!-- ======================================== -->

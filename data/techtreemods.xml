@@ -5088,7 +5088,7 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatBohemianLandsknecht" culture="none" newname="302328">
       </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="302447">
+      <effect mergemode="add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="42433">
       </effect>
     </effects>
   </tech>
@@ -5879,8 +5879,10 @@
   <tech name="NativeAztec">
     <effects>
       <effect mergeMode='add' type="TechStatus" status="obtainable">zpNatAztecInfluence</effect>
+      <effect mergeMode='add' type="TechStatus" status="obtainable">zpSPCAztecInfluenceCity</effect>
       <effect mergeMode='add' type="TechStatus" status="obtainable">zpAztecWaterTemple</effect>
       <effect mergeMode='add' type="TechStatus" status="obtainable">zpAztecArmy</effect>
+      <effect mergeMode='add' type="TechStatus" status="obtainable">zpSPCAztecArmyCity</effect>
       <effect mergeMode='add' type="TechStatus" status="obtainable">zpAztecOutposts</effect>
     </effects>
   </tech>
@@ -23005,11 +23007,18 @@
   </tech>
   <tech name="zpSPCAztecMercenariesShadow" type="Normal">
     <dbid>40957</dbid>
+    <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpAztecCityAttackerSetup</techstatus>
+    </prereqs>
     <effects>
       <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deNatMercJaguarWarrior" relativity="Absolute">
         <target type="ProtoUnit">zpAztecJaguarWarriorMercIcon</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMercEagleWarrior" relativity="Absolute">
+        <target type="ProtoUnit">zpEagleWarriorMercIcon</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
         <target type="ProtoUnit">deNatMercJaguarWarrior</target>
@@ -23068,12 +23077,12 @@
       <effect mergemode="Add" type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatMercEagleWarrior</target>
       </effect>
-      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="302445">
+      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="27778">
       </effect>
       <effect mergemode="Add" type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatMercEagleWarrior</target>
       </effect>
-      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="302447" reqtech="ImpLegendaryNativesShadow">
+      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="42433" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>
@@ -23085,9 +23094,9 @@
       <effect mergemode="Add" type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatMercEagleWarrior</target>
       </effect>
-      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="302444">
+      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="36586">
       </effect>
-      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="302447" reqtech="ImpLegendaryNativesShadow">
+      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="42433" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>
@@ -23096,7 +23105,7 @@
       <effect mergemode="Add" type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatMercEagleWarrior</target>
       </effect>
-      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="302446">
+      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="31475">
       </effect>
     </effects>
   </tech>
@@ -23144,6 +23153,26 @@
       <effect type="TechStatus" status="obtainable">zpSPCAztecTempleGoldFestival</effect>
       <effect type="TechStatus" status="obtainable">zpSPCBlessedCityAztec</effect>
       <effect type="TechStatus" status="obtainable">zpSPCAztecWalls</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecCityWarCeremony</effect>
+      <effect type="CommandAdd" tech="zpSPCAztecInfluenceCity" page="1" column="1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeEurope1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeEurope2</effect>
+      <effect type="TechStatus" status="unobtainable">ypTradeRouteUpgrade1</effect>
+      <effect type="TechStatus" status="unobtainable">ypTradeRouteUpgrade2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWater1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWater2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWaterAll1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWaterAll2</effect>
+      <effect type="TechStatus" status="unobtainable">TradeRouteUpgrade2</effect>
+      <effect type="TechStatus" status="obtainable">zpTradeRouteUpgradeWaterNative</effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWater1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWater2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpAztecCityAttackerSetup" type="Normal">
@@ -23152,6 +23181,8 @@
     <flag>Shadow</flag>
     <effects>  
       <effect mergemode="Add" type="SetName" proto="deNatMercJaguarWarrior" culture="none" newname="302448">
+      </effect>
+      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="302443">
       </effect>
       <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
         <target type="ProtoUnit">Dock</target>
@@ -23259,6 +23290,21 @@
       </effect>
       <effect type="CommandAdd" proto="xpTlalocCanoe" page="0" column="8">
         <target type="ProtoUnit">DEPort</target>
+      </effect>
+      <effect type="Data" amount="6.00" subtype="BuildLimit" relativity="Assign">
+        <target type="ProtoUnit">deMayaCastle</target>
+      </effect>
+      <effect type="CommandAdd" proto="NatJaguarWarrior" page="0" column="0">
+        <target type="ProtoUnit">deMayaCastle</target>
+      </effect>
+      <effect type="CommandAdd" proto="NatEagleWarrior" page="0" column="0">
+        <target type="ProtoUnit">deMayaCastle</target>
+      </effect>
+      <effect type="Data" amount="24.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatMercJaguarWarrior</target>
+      </effect>
+      <effect type="Data" amount="16.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercEagleWarrior</target>
       </effect>
     </effects>
   </tech>
@@ -23412,6 +23458,129 @@
     <effects>
       <effect type="TechStatus" status="active">DEPapalBlessingShadow</effect>
       <effect type="TextOutputTechName">123070</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecArmyCity" type="Normal">
+    <dbid>40969</dbid>
+    <displaynameid>300368</displaynameid>
+    <cost resourcetype ="Gold">100.0000</cost>
+    <cost resourcetype ="Wood">200.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <rollovertextid>300644</rollovertextid>
+    <icon>resources\images\icons\techs\zpholyfleet.png</icon>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpRitualCanoe</target>
+      </effect>
+      <effect type="TextOutputTechName">110130</effect>
+    </effects>
+  </tech>
+  <tech name ="zpSPCAztecInfluenceCity" type ="Normal">
+		<dbid>40970</dbid>
+		<displaynameid>300351</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\azteccity_big.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>302470</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecOutpost</target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">NatJaguarWarrior</target>
+      </effect>
+      <effect type="Data" amount="4.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">NatEagleWarrior</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSettlerAztec</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSettlerAztec" page="0" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpAztecWaterTemple" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpAztecOutposts" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCAztecArmyCity" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Farm</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">deSettlerAfrican</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">ypSettlerAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">ypSettlerJapanese</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">ypSettlerIndian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">Settler</target>
+      </effect>
+      <effect type="Data" action="SpawnJaguarWarriors" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCRevealerAztec">
+        <target type="Player">
+        </target>
+      </effect>  
+      <effect type="TechStatus" status="obtainable">zpNatChampionSkullKnightShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNatEliteSkullKnightShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNatLegendarySkullKnightShadow</effect>
+    </effects>
+	</tech>
+  <tech name="zpSPCAztecMercenaries" type="Normal">
+      <dbid>40971</dbid>
+      <flag>Shadow</flag>
+      <effects>
+        <effect type="TechStatus" status="obtainable">zpSPCAztecMercenariesShadow</effect>
+      </effects>
+  </tech>
+  <tech name ="zpSPCAztecCityWarCeremony" type ="Normal">
+		<dbid>40972</dbid>
+		<displaynameid>302473</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\spc_aztec_city_warceremony.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>302472</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="Data" action="SpawnJaguarWarriors" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCRevealerAztec">
+        <target type="Player">
+        </target>
+      </effect>
     </effects>
   </tech>
 
