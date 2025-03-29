@@ -41,10 +41,10 @@
   <anim>Sabotage
     <assetreference type="GrannyAnim">
       <file>units\naval\rowboat\rowboat_attack</file>
-      <tag type="Attack">0.66</tag>
-        <tag type="SpecificSoundSet" checkvisible="1" set="TorchSwingLoud">0.71</tag>
-        <tag type="SpecificSoundSet" set="GrenadeLight">0.43</tag>
-        <tag type="Particles" particlename="grenadeSparks">0.42</tag>
+      <tag type="Attack">0.86</tag>
+        <tag type="SpecificSoundSet" checkvisible="1" set="TorchSwingLoud">0.91</tag>
+        <tag type="SpecificSoundSet" set="GrenadeLight">0.63</tag>
+        <tag type="Particles" particlename="grenadeSparks">0.62</tag>
     </assetreference>
     <component>ModelComp</component>
     <attach a="IdleWaterFoam" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>

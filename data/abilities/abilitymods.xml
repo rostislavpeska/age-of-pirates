@@ -280,7 +280,7 @@
   </zpspcezio>
   <zpspcrowboat>
     <ability>deSPCStealthHide<rof>40</rof><castonself>true</castonself><donotforcestop>true</donotforcestop><activetimecooldown>true</activetimecooldown><forceshowrollover>true</forceshowrollover></ability>
-    <ability>ypPowerSabotage<tech>zpSPCRowboatSabotage</tech><allowwhilestealthed>true</allowwhilestealthed><rof>240</rof></ability>
+    <ability>ypPowerSabotage<tech>zpSPCRowboatSabotage</tech><rof>240</rof></ability>
   </zpspcrowboat>
   <zpspcclaudiaauditore>
     <ability>ypPowerHeavenlyFireBomb<rof>120</rof></ability>

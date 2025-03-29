@@ -23142,7 +23142,73 @@
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
       <effect type="CommandAdd" proto="deField" page="6" column="3">
-        <target type="ProtoUnit">AbstractVillager</target>
+        <target type="ProtoUnit">Settler</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">Coureur</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">SettlerWagon</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">CoureurCree</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">SettlerNative</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">Pilgrim</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">ypSettlerAsian</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">ypSettlerIndian</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">ypSettlerJapanese</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">ypSettlerIceCream</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">deSettlerAfrican</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">deAfricanVillagerNugget</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">deNatNomad</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">deNatMercNomad</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">deREVNativeVillager</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">deREVNatVillagerBatch</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">deArchitect</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">deUnknownPilgrim</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">zpSettlerAztec</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">zpSettlerZen</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">zpSettlerSufi</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">zpNatCoureurSansculotte</target>
       </effect>
       <effect type="TechStatus" status="active">zpSPCActivateFieldGathering</effect>
       <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>
@@ -23152,6 +23218,10 @@
       </effect>
       <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">xpWarCanoe</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="Dock" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>
@@ -23642,7 +23712,7 @@
     </effects>
   </tech>
   <tech name="zpSPCRowboatSabotage" type="Normal">
-    <dbid>40976</dbid>
+    <dbid>40980</dbid>
     <displaynameid>302475</displaynameid>
     <cost resourcetype="Wood">450.0000</cost>
     <cost resourcetype="Gold">450.0000</cost>
@@ -23707,6 +23777,28 @@
       </effect>
       <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpCargoBoat" copy="PortraitOnly" relativity="Absolute">
         <target type="ProtoUnit">xpTlalocCanoe</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecCityDefenderAI" type="Normal">
+    <dbid>40981</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCWoodenTowerAIProxy</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCSocketAztecOutpost1</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCSocketAztecOutpost2</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCSocketAztecOutpost3</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCSocketAztecOutpost4</target>
       </effect>
     </effects>
   </tech>

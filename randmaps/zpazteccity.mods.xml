@@ -266,5 +266,15 @@
 			<obstructionradiusx>1.5900</obstructionradiusx>
 			<obstructionradiusz>1.5900</obstructionradiusz>
 		</unit>
+		<unit name="xpWarCanoe">
+			<protoaction>
+				<name>BuildingAttack</name>
+				<damage>100.000000</damage>
+				<damagetype>Siege</damagetype>
+				<maxrange>25.000000</maxrange>
+				<rof>3.000000</rof>
+				<damagebonus type="AbstractFort">2.000000</damagebonus>
+			</protoaction>
+		</unit>
 	</protomods>
 </mods>

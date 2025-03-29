@@ -1070,10 +1070,6 @@ void main(void)
 	rmAddObjectDefConstraint(berryID, avoidTradeRoute);
 	rmAddObjectDefConstraint(berryID, farAvoidTradeSockets);
 
-	int aiStartUrban = rmCreateObjectDef("is city map");
-	rmAddObjectDefItem(aiStartUrban, "zpAIStartUrbanMap", 1, 0.0);
-
-
 	// Fake Frouping to fix the auto-grouping TC bug
 	int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
 	rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
@@ -1091,7 +1087,6 @@ void main(void)
 		rmPlaceObjectDefAtLoc(playerDeerID, 0, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 		rmPlaceObjectDefAtLoc(StartAreaTreeID, 0, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
 		rmPlaceObjectDefAtLoc(berryID, 0, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-		rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5);
 
 		// Place starting nugget
 		rmSetNuggetDifficulty(1, 1);
@@ -1414,6 +1409,30 @@ void main(void)
 	vector districtLoc3 = rmGetUnitPosition(centerFood);
 	vector districtLoc4 = rmGetUnitPosition(centerGold);
 
+	int outpostSockets = xsArrayCreateInt(20, -1, "Outpost Sockets");
+    xsArraySetInt(outpostSockets, 0, tower1PointID1);
+    xsArraySetInt(outpostSockets, 1, tower2PointID1);
+    xsArraySetInt(outpostSockets, 2, tower1PointID2);
+    xsArraySetInt(outpostSockets, 3, tower2PointID2);
+	xsArraySetInt(outpostSockets, 4, outpost1Mod1);
+    xsArraySetInt(outpostSockets, 5, outpost2Mod1);
+    xsArraySetInt(outpostSockets, 6, outpost3Mod1);
+    xsArraySetInt(outpostSockets, 7, outpost4Mod1);
+	xsArraySetInt(outpostSockets, 8, outpost1Mod2);
+    xsArraySetInt(outpostSockets, 9, outpost2Mod2);
+    xsArraySetInt(outpostSockets, 10, outpost3Mod2);
+    xsArraySetInt(outpostSockets, 11, outpost4Mod2);
+	xsArraySetInt(outpostSockets, 12, outpost1Mod3);
+    xsArraySetInt(outpostSockets, 13, outpost2Mod3);
+    xsArraySetInt(outpostSockets, 14, outpost3Mod3);
+    xsArraySetInt(outpostSockets, 15, outpost4Mod3);
+	xsArraySetInt(outpostSockets, 16, outpost1Mod4);
+    xsArraySetInt(outpostSockets, 17, outpost2Mod4);
+    xsArraySetInt(outpostSockets, 18, outpost3Mod4);
+    xsArraySetInt(outpostSockets, 19, outpost4Mod4);
+
+	int outpostBuildID = -1;
+
 	// Victory Timer
 	int victoryCountDown = 1800;
 	int socketMinimapFlareDuration = 10;
@@ -1467,6 +1486,8 @@ void main(void)
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
 	}
+
+	// Trade route setup
 
 	rmCreateTrigger("Starting Trade Routes");
 	rmAddTriggerEffect("Trade Route Set Level");
@@ -1626,6 +1647,12 @@ void main(void)
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer", firstDefender);
 	rmSetTriggerEffectParam("UnitType","zpSPCSocketAztecOutpost2");
+	rmSetTriggerEffectParamInt("Dist",300);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+centerPointID);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",firstDefender);
+	rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
 	rmSetTriggerEffectParamInt("Dist",300);
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Defender_Setup1"));
@@ -2020,12 +2047,6 @@ void main(void)
 		rmSetTriggerEffectParam("SrcObject",""+centerMod1);
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
-		rmSetTriggerEffectParamInt("Dist",45);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+centerMod1);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","zpAztecCityOutpost");
 		rmSetTriggerEffectParamInt("Dist",45);
 
@@ -2110,12 +2131,6 @@ void main(void)
 		rmSetTriggerEffectParam("SrcObject",""+centerMod1);
 		rmSetTriggerEffectParamInt("SrcPlayer",k);
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
-		rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
-		rmSetTriggerEffectParamInt("Dist",45);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+centerMod1);
-		rmSetTriggerEffectParamInt("SrcPlayer",k);
-		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","zpAztecCityOutpost");
 		rmSetTriggerEffectParamInt("Dist",45);
 		rmAddTriggerEffect("Flare Minimap");
@@ -2174,12 +2189,6 @@ void main(void)
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","zpSPCAztecForester");
-		rmSetTriggerEffectParamInt("Dist",45);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+centerMod2);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
 		rmSetTriggerEffectParamInt("Dist",45);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+centerMod2);
@@ -2263,12 +2272,6 @@ void main(void)
 		rmSetTriggerEffectParam("SrcObject",""+centerMod2);
 		rmSetTriggerEffectParamInt("SrcPlayer",k);
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
-		rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
-		rmSetTriggerEffectParamInt("Dist",45);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+centerMod2);
-		rmSetTriggerEffectParamInt("SrcPlayer",k);
-		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","zpAztecCityOutpost");
 		rmSetTriggerEffectParamInt("Dist",45);
 		rmAddTriggerEffect("Flare Minimap");
@@ -2327,12 +2330,6 @@ void main(void)
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","deField");
-		rmSetTriggerEffectParamInt("Dist",45);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+centerMod3);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
 		rmSetTriggerEffectParamInt("Dist",45);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+centerMod3);
@@ -2424,12 +2421,6 @@ void main(void)
 		rmSetTriggerEffectParam("SrcObject",""+centerMod3);
 		rmSetTriggerEffectParamInt("SrcPlayer",k);
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
-		rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
-		rmSetTriggerEffectParamInt("Dist",45);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+centerMod3);
-		rmSetTriggerEffectParamInt("SrcPlayer",k);
-		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","zpAztecCityOutpost");
 		rmSetTriggerEffectParamInt("Dist",45);
 		rmAddTriggerEffect("Flare Minimap");
@@ -2488,12 +2479,6 @@ void main(void)
 		rmSetTriggerEffectParamInt("SrcPlayer",0);
 		rmSetTriggerEffectParamInt("TrgPlayer",k);
 		rmSetTriggerEffectParam("UnitType","zpSPCAztecCityMarket");
-		rmSetTriggerEffectParamInt("Dist",45);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+centerMod4);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
 		rmSetTriggerEffectParamInt("Dist",45);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject",""+centerMod4);
@@ -2577,12 +2562,6 @@ void main(void)
 		rmSetTriggerEffectParam("SrcObject",""+centerMod4);
 		rmSetTriggerEffectParamInt("SrcPlayer",k);
 		rmSetTriggerEffectParamInt("TrgPlayer",0);
-		rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
-		rmSetTriggerEffectParamInt("Dist",45);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+centerMod4);
-		rmSetTriggerEffectParamInt("SrcPlayer",k);
-		rmSetTriggerEffectParamInt("TrgPlayer",0);
 		rmSetTriggerEffectParam("UnitType","zpAztecCityOutpost");
 		rmSetTriggerEffectParamInt("Dist",45);
 		rmAddTriggerEffect("Flare Minimap");
@@ -2629,6 +2608,110 @@ void main(void)
 		rmSetTriggerLoop(false);
 	}
 
+	// ********************* AI Triggers *********************
+
+	// Specific dor AI defender
+
+	for (s=1; <= 20) {
+		rmCreateTrigger("BuildTower_"+s+"_ON");
+		rmCreateTrigger("BuildTower_"+s+"_OFF");
+	}
+
+	rmCreateTrigger("AI Defender Techs");
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",firstDefender);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",firstDefender);
+	rmSetTriggerEffectParam("TechID","cTechzpSPCAztecCityDefenderAI"); // Aztec Map
+	rmSetTriggerEffectParamInt("Status",2);
+	for (s=1; <= 20) {
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_"+s+"_ON"));
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Build concrete Towers
+
+	for (s=1; <= 20) {
+		outpostBuildID = xsArrayGetInt(outpostSockets, s-1);
+		rmSwitchToTrigger(rmTriggerID("BuildTower_"+s+"_ON"));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+outpostBuildID);
+		rmSetTriggerConditionParamInt("Player",firstDefender);
+		rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+		rmSetTriggerConditionParamInt("Dist",10);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID",firstDefender);
+		rmSetTriggerEffectParam("Socket",""+outpostBuildID);
+		rmSetTriggerEffectParam("Protounit","zpAztecCityOutpost");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_"+s+"_OFF"));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower_"+s+"_OFF"));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_"+s+"_ON"));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+	}
+
+	// AI Water Temple
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+
+	rmCreateTrigger("ZP Pick Water Temple"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerCondition("Player Unit Count");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParam("ProtoUnit","zpWaterTemple");
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+
+	int nativePartner=-1;
+	nativePartner = rmRandInt(1,3);
+
+	if (nativePartner==1)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateNatJesuit"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (nativePartner==2)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateNatZapotec"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (nativePartner==3)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateNatMaya"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.99);
