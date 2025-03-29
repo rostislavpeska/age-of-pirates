@@ -85,7 +85,6 @@
     <rate type="zpCongregation" resource="Gold">0.440000</rate>
     <rate type="zpCongregation" resource="Food">0.600000</rate>
     <rate type="zpCongregation" resource="XP">0.700000</rate>
-    <typedanim type="CommunityPlaza">GatherFarm</typedanim>
   </action>
   <action>
     <name stringid="69183">NoWork</name>
