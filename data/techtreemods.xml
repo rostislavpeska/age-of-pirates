@@ -6199,17 +6199,17 @@
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpPickNativeConsulateTechAvailable</effect>
-      <effect civ="Jesuit" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+      <effect civ="SPCJesuit" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
         <target type="Player"></target>
       </effect>
-      <effect type="TechStatus" status="obtainable">YPNatJesuitSmokelessPowder</effect>
-      <effect type="TechStatus" status="obtainable">YPNatJesuitSchools</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitSmokelessPowder</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitSchools</effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">ypNatConquistador</target>
+        <target type="ProtoUnit">zpNatConquistador</target>
       </effect>
-      <effect type="TechStatus" status="obtainable">ypNatHonoredJesuit</effect>
-      <effect type="TechStatus" status="obtainable">YPNatJesuitFlyingButtress</effect>
-      <effect type="TechStatus" status="obtainable">ypNatDisciplinedJesuit</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHonoredJesuit</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitFlyingButtress</effect>
+      <effect type="TechStatus" status="obtainable">zpNatDisciplinedJesuit</effect>
       <effect type="SetName" proto="zpWaterTemple" culture="none" newname="300400">
       </effect>
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpWaterTemple" relativity ="Absolute">
@@ -21789,6 +21789,9 @@
       <effect type="Data" action="AutoGatherFoodTeam" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCAztecCityMarket</target>
       </effect>
+      <effect type="Data" action="AutoGatherXPTeam" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecCityMarket</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSPCBlessedCity" type="Normal">
@@ -23223,6 +23226,14 @@
         <target type="Player">
         </target>
       </effect>
+      <effect type="SetName" proto="zpSettlerAztec" culture="none" newname="302481">
+      </effect>
+      <effect type="CommandAdd" proto="CommunityPlaza" page="6" column="9">
+        <target type="ProtoUnit">zpSettlerAztec</target>
+      </effect>
+      <effect type="CommandAdd" proto="Market" page="6" column="2">
+        <target type="ProtoUnit">zpSettlerAztec</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSPCBlessedCitySingle" type="Normal">
@@ -23380,11 +23391,11 @@
   <tech name="zpSPCAztecArmyCity" type="Normal">
     <dbid>40969</dbid>
     <displaynameid>300368</displaynameid>
-    <cost resourcetype ="Gold">100.0000</cost>
-    <cost resourcetype ="Wood">200.0000</cost>
+    <cost resourcetype ="Gold">300.0000</cost>
+    <cost resourcetype ="Wood">600.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <rollovertextid>300644</rollovertextid>
+    <rollovertextid>302480</rollovertextid>
     <icon>resources\images\icons\techs\zpholyfleet.png</icon>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
@@ -23395,6 +23406,10 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpRitualCanoe</target>
       </effect>
+      <effect type="Data" action="SpawnRitualCanoe" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCAztecWaterSpawner">
+        <target type="Player">
+        </target>
+      </effect>  
       <effect type="TextOutputTechName">110130</effect>
     </effects>
   </tech>
@@ -23465,7 +23480,7 @@
       <effect type="CommandRemove" proto="Farm">
         <target type="ProtoUnit">Coureur</target>
       </effect>
-      <effect type="Data" action="SpawnJaguarWarriors" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCRevealerAztec">
+      <effect type="Data" action="SpawnJaguarWarriorsSmall" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCRevealerAztec">
         <target type="Player">
         </target>
       </effect>  
@@ -23489,9 +23504,9 @@
 		<icon>resources\images\icons\techs\dance-pirates.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
     <iconwpf>resources\images\icons\techs\spc_aztec_city_warceremony.png</iconwpf>
-    <cost resourcetype ="Food">250.0000</cost>
-    <cost resourcetype ="Wood">250.0000</cost>
-    <cost resourcetype ="Gold">250.0000</cost>
+    <cost resourcetype ="Food">350.0000</cost>
+    <cost resourcetype ="Wood">350.0000</cost>
+    <cost resourcetype ="Gold">350.0000</cost>
 		<rollovertextid>302472</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>

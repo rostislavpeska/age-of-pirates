@@ -8,7 +8,26 @@
     <persistent>0</persistent>
     <singleuse>1</singleuse>
   </action>
+  <action>
+    <name stringid="69776">SpawnJaguarWarriorsSmall</name>
+    <type>Spawn</type>
+    <rate type="deNatMercJaguarWarrior">2.0</rate>
+    <rate type="zpNatMercEagleWarrior">2.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnRitualCanoe</name>
+    <type>Spawn</type>
+    <rate type="zpRitualCanoe">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
   <tactic>Normal
     <action>SpawnJaguarWarriors</action>
+    <action>SpawnJaguarWarriorsSmall</action>
+    <action>SpawnRitualCanoe</action>
   </tactic>
 </tactics>

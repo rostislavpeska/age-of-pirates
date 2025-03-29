@@ -2469,13 +2469,17 @@
       <string _locid="302469">All units in the vicinity of a Prague slowly heal.</string>
       <string _locid="302470">Extends City influence. Allows you to train new units, buildings and provides you completely new techs and shipments. Increases Aztec units build limit. \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Spawns Extra Aztec native units in every district you control.</string>
       <string _locid="302471">ZP SPC Aztec District Center Point</string>
-      <string _locid="302472">Spawns Extra Aztec native units in every district you control.</string>
+      <string _locid="302472">Spawns 7 extra Aztec native warriors in every district you control.</string>
       <string _locid="302473">Tenochtitlan War Ceremony</string>
       <string _locid="302474">Food Production Building, Livestock pen type building. Boosts nearby villagers to gather faster.</string>
       <string _locid="302475">Saboteur Kit</string>
       <string _locid="302476">Unlocks Rowboat Sabotage ability allowing it to get close to enemy buildings and ships and destroy them.</string>
       <string _locid="302477">Sabotage</string>
       <string _locid="302478">Large Trade Canoe</string>
+      <string _locid="302479">ZP SPC Aztec Water Spawner</string>
+      <string _locid="302480">Spawns one Aztec Ritual Canoe on each side of the lake and allows you to train them in your dock.</string>
+      <string _locid="302481">Citizen of Tenochtitlan</string>
+      
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

@@ -8166,6 +8166,8 @@
     <train row="0" page="6" column="9">Dock</train>
     <train row="0" page="6" column="9">YPDockAsian</train>
     <train row="0" page="6" column="9">dePort</train>
+    <train row="0" page="6" column="11">WarHut</train>
+    <train row="0" page="6" column="12">NoblesHut</train>
     <command page="10" column="7">Delete</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
@@ -8450,7 +8452,7 @@
     </armor>
     <train row="0" page="0" column="0">deNatHolcanJavelineer</train>
     <train row="0" page="0" column="1">NatMedicineMan</train>
-    <train row="0" page="0" column="2">ypNatConquistador</train>
+    <train row="0" page="0" column="2">zpNatConquistador</train>
     <train row="0" page="0" column="3">NatLightningWarrior</train>
     <train row="0" page="0" column="4">NatBlackwoodArcher</train>
     <tech row="0" page="2" column="1">zpPickNativeConsulateTechAvailable</tech>
@@ -8459,11 +8461,11 @@
     <tech row="0" page="2" column="3">NatMayaPyramids</tech>
     <tech row="0" page="1" column="1">ChampionMaya</tech>
     <tech row="0" page="1" column="1">WarriorSocietyMaya</tech>
-    <tech row="0" page="2" column="1">YPNatJesuitFlyingButtress</tech>
-    <tech row="0" page="2" column="2">YPNatJesuitSmokelessPowder</tech>
-    <tech row="0" page="2" column="3">YPNatJesuitSchools</tech>
-    <tech row="0" page="1" column="1">ypNatDisciplinedJesuit</tech>
-    <tech row="0" page="1" column="1">ypNatHonoredJesuit</tech>
+    <tech row="0" page="2" column="1">zpNatJesuitFlyingButtress</tech>
+    <tech row="0" page="2" column="2">zpNatJesuitSmokelessPowder</tech>
+    <tech row="0" page="2" column="3">zpNatJesuitSchools</tech>
+    <tech row="0" page="1" column="1">zpNatDisciplinedJesuit</tech>
+    <tech row="0" page="1" column="1">zpNatHonoredJesuit</tech>
     <tech row="0" page="2" column="1">NatXPZapotecFoodOfTheGods</tech>
     <tech row="0" page="2" column="2">NatXPZapotecCultOfTheDead</tech>
     <tech row="0" page="2" column="3">NatXPZapotecCloudPeople</tech>
@@ -52857,7 +52859,7 @@
       <rof>1.500000</rof>
     </protoaction>
   </unit>
-    <unit id="20715" name="zpSPCRevealerAztec">
+  <unit id="20715" name="zpSPCRevealerAztec">
     <dbid>20715</dbid>
     <displaynameid>26145</displaynameid>
     <editornameid>302471</editornameid>
@@ -52877,7 +52879,7 @@
     <flag>ObscuresUnits</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>SelectWithObstruction</flag>
-     <flag>HasGatherPoint</flag>
+    <flag>HasGatherPoint</flag>
     <flag>Tracked</flag>
     <flag>NonCollideable</flag>
     <flag>NonSolid</flag>
@@ -52894,6 +52896,39 @@
     <dbid>20716</dbid>
     <icon>resources\art\units\natives\eagle_warrior_merc_icon.png</icon>
     <portraiticon>resources\art\units\natives\eagle_warrior_merc_portrait.png</portraiticon>
+  </unit>
+  <unit id="20717" name="zpSPCAztecWaterSpawner">
+    <dbid>20715</dbid>
+    <displaynameid>26145</displaynameid>
+    <editornameid>302479</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>water</movementtype>
+    <animfile>ui\editor\editor_revealer.xml</animfile>
+    <los>0.0000</los>
+    <unittype>Unattackable</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>NonCollideable</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>NonSolid</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NotSearchable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>OnlyInEditor</flag>
+    <tactics>aztecdistrictspawner.tactics</tactics>
   </unit>
 
   <!--<unit mergeMode='replace' id="1710" name="CommunityPlaza">

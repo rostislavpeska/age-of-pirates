@@ -12,6 +12,7 @@
 		</unit>
 	    <unit name="Dock">
 			<placementfile>dock_city.xml</placementfile>
+			<flag>DisableBigButtonUI</flag>
 		</unit>
 		<unit name="YPDockAsian">
 			<placementfile>dock_city.xml</placementfile>
