@@ -52898,7 +52898,7 @@
     <portraiticon>resources\art\units\natives\eagle_warrior_merc_portrait.png</portraiticon>
   </unit>
   <unit id="20717" name="zpSPCAztecWaterSpawner">
-    <dbid>20715</dbid>
+    <dbid>20717</dbid>
     <displaynameid>26145</displaynameid>
     <editornameid>302479</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
