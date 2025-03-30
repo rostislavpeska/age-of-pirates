@@ -533,6 +533,51 @@
     </socketbuild>
     <rollovertextid>302436</rollovertextid>
   </protounitcommand>
+  <protounitcommand>
+    <name>aztecAltarWarPriest</name>
+    <icon>resources\images\icons\command\aztecaltar\priest_off.png</icon>
+    <activeicon>resources\images\icons\command\aztecaltar\priest_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\aztecaltar\priest_off.png</disabledicon>
+    <rollovertextid>302483</rollovertextid>
+    <activerollovertextid>302484</activerollovertextid>
+    <command>unitSetTactic("TacticSpawnWarriorPriest")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>aztecAltarJaguarWarrior</name>
+    <icon>resources\images\icons\command\aztecaltar\jaguar_off.png</icon>
+    <activeicon>resources\images\icons\command\aztecaltar\jaguar_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\aztecaltar\jaguar_off.png</disabledicon>
+    <rollovertextid>302485</rollovertextid>
+    <activerollovertextid>302486</activerollovertextid>
+    <command>unitSetTactic("TacticSpawnJaguarWarrior")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>aztecAltarEagleWarrior</name>
+    <icon>resources\images\icons\command\aztecaltar\eagle_off.png</icon>
+    <activeicon>resources\images\icons\command\aztecaltar\eagle_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\aztecaltar\eagle_off.png</disabledicon>
+    <rollovertextid>302487</rollovertextid>
+    <activerollovertextid>302488</activerollovertextid>
+    <command>unitSetTactic("TacticSpawnEagleWarrior")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>aztecAltarSkullKnight</name>
+    <icon>resources\images\icons\command\aztecaltar\skull_off.png</icon>
+    <activeicon>resources\images\icons\command\aztecaltar\skull_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\aztecaltar\skull_off.png</disabledicon>
+    <rollovertextid>302489</rollovertextid>
+    <activerollovertextid>302490</activerollovertextid>
+    <command>unitSetTactic("TacticSpawnSkullKnight")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>aztecAltarSettler</name>
+    <icon>resources\images\icons\command\aztecaltar\settler_off.png</icon>
+    <activeicon>resources\images\icons\command\aztecaltar\settler_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\aztecaltar\settler_off.png</disabledicon>
+    <rollovertextid>302494</rollovertextid>
+    <activerollovertextid>302495</activerollovertextid>
+    <command>unitSetTactic("TacticSpawnSettler")</command>
+  </protounitcommand>
 
   <!--
 

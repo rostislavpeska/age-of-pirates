@@ -24,6 +24,40 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpSPCAztecAltarColonializeShadow" type="Normal">
+    <dbid>40983</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" tactic="TacticSpawnWarriorPriest" subtype="TacticEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecAltar</target>
+      </effect>
+      <effect type="Data" amount="1.00" tactic="TacticSpawnJaguarWarrior" subtype="TacticEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecAltar</target>
+      </effect>
+      <effect type="Data" amount="1.00" tactic="TacticSpawnEagleWarrior" subtype="TacticEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecAltar</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecAltarFortressizeShadow" type="Normal">
+    <dbid>40984</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" tactic="TacticSpawnSkullKnight" subtype="TacticEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecAltar</target>
+      </effect>
+    </effects>
+  </tech>
   <tech name="zpNatKorowaiStealth" type="Normal">
     <dbid>40617</dbid>
     <displaynameid>301654</displaynameid>
@@ -4001,11 +4035,17 @@
       <effect type="CommandRemove" proto="ypRicePaddy">
         <target type="ProtoUnit">deSettlerAfrican</target>
       </effect>
-       <effect type="CommandRemove" proto="ypRicePaddy">
+      <effect type="CommandRemove" proto="ypRicePaddy">
         <target type="ProtoUnit">SettlerNative</target>
       </effect>
-            <effect type="CommandRemove" proto="ypRicePaddy">
+      <effect type="CommandRemove" proto="ypRicePaddy">
         <target type="ProtoUnit">Settler</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypRicePaddy">
+        <target type="ProtoUnit">SettlerWagon</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypRicePaddy">
+        <target type="ProtoUnit">Coureur</target>
       </effect>
       <effect type="CommandAdd" proto="ypRicePaddy" page="0" column="3">
         <target type="ProtoUnit">zpSettlerZen</target>
@@ -5947,6 +5987,12 @@
       <effect type="CommandRemove" proto="Farm">
         <target type="ProtoUnit">Settler</target>
       </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">SettlerWagon</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">Coureur</target>
+      </effect>
       <effect type="TechStatus" status="obtainable">zpNatChampionSkullKnightShadow</effect>
       <effect type="TechStatus" status="obtainable">zpNatEliteSkullKnightShadow</effect>
       <effect type="TechStatus" status="obtainable">zpNatLegendarySkullKnightShadow</effect>
@@ -7086,7 +7132,7 @@
   <tech name="zpJewishFreeMasons" type="Normal">
     <dbid>40657</dbid>
     <displaynameid>300455</displaynameid>
-    <cost resourcetype ="Wood">500.0000</cost>
+    <cost resourcetype ="Wood">650.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\free_masons.png</icon>
@@ -7097,10 +7143,10 @@
       <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="0.85" subtype="TrainPoints" relativity="BasePercent">
+      <effect type="Data" amount="0.80" subtype="TrainPoints" relativity="BasePercent">
         <target type="ProtoUnit">Building</target>
       </effect>
-      <effect type="Data" amount="1.15" subtype="Hitpoints" relativity="BasePercent">
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">Building</target>
       </effect>
     </effects>
@@ -23036,6 +23082,9 @@
       <effect type="TechStatus" status="obtainable">zpSPCBlessedCityAztec</effect>
       <effect type="TechStatus" status="obtainable">zpSPCAztecWalls</effect>
       <effect type="TechStatus" status="obtainable">zpSPCAztecCityWarCeremony</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecCityLakeCeremony</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecAltarColonializeShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecAltarFortressizeShadow</effect>
       <effect type="CommandAdd" tech="zpSPCAztecInfluenceCity" page="1" column="1">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
@@ -23817,7 +23866,221 @@
       </effect>
     </effects>
   </tech>
-
+  <tech name ="zpSPCAztecCityLakeCeremony" type ="Normal">
+		<dbid>40982</dbid>
+		<displaynameid>302491</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\aztec_lake_ceremony_big.png</iconwpf>
+    <cost resourcetype ="Wood">600.0000</cost>
+    <cost resourcetype ="Gold">400.0000</cost>
+		<rollovertextid>302492</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="Data" action="SpawnWarCanoes" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCAztecWaterSpawner">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="NativeMaya">
+    <effects>
+      <effect mergeMode='add' type="TechStatus" status="obtainable">zpNatMayaInfluence</effect>
+      <effect mergeMode='add' type="TechStatus" status="obtainable">zpNatMayaCeremonialGrounds</effect>
+      <effect mergeMode='add' type="TechStatus" status="obtainable">zpNatMayaCruzob</effect>
+      <effect mergeMode='add' type="TechStatus" status="obtainable">zpNatMayaArchitecture</effect>
+    </effects>
+  </tech>
+  <tech name ="zpNatMayaInfluence" type ="Normal">
+		<dbid>40983</dbid>
+		<displaynameid>302498</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\maya_expansion_big.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>302499</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="CommandAdd" proto="NatHolcanSpearman" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NatHolcanSpearman</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecOutpost</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlerMaya</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatSettlerMaya" page="0" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatMayaCeremonialGrounds" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatMayaArchitecture" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatMayaCruzob" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Farm</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">deSettlerAfrican</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">ypSettlerAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">ypSettlerJapanese</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">ypSettlerIndian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">SettlerWagon</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">Coureur</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">Settler</target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name="zpExtendMaya" type="Normal">
+    <dbid>40984</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandAdd" tech="zpNatMayaInfluence" page="1" column="1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatMayaCeremonialGrounds" type="Normal">
+    <dbid>40985</dbid>
+    <displaynameid>302500</displaynameid>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Food">400.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\zp_maya_ceremonial_grounds.png</icon>
+    <rollovertextid>302501</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpAztecAltarTravois" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecAltar</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatMayaCruzob" type="Normal">
+    <dbid>40986</dbid>
+    <displaynameid>302505</displaynameid>
+    <cost resourcetype="Wood">700.0000</cost>
+    <cost resourcetype="Food">500.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\maya_castle_war_doctrine.png</icon>
+    <rollovertextid>302506</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="deREVCruzobInfantry" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpAztecOutpostTravois" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deREVCruzobInfantry</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpImperialCruzobInfantryClone</effect>
+      <effect type="TechStatus" status="obtainable">zpImperialCruzobInfantryShadow</effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">deREVCruzobInfantry</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpImperialCruzobInfantryClone" type="Normal">
+    <dbid>40987</dbid>
+    <displaynameid>112991</displaynameid>
+    <cost resourcetype="Wood">1500.0000</cost>
+    <cost resourcetype="Gold">1500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\imperial_infantry\imperial_infantry.png</icon>
+    <rollovertextid>112990</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DEREVImperialCruzobInfantry</effect>
+    </effects>
+  </tech>
+  <tech name="zpImperialCruzobInfantryShadow" type="Normal">
+    <dbid>40989</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status="active">DEREVImperialCruzobInfantry</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">zpImperialCruzobInfantryClone</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatMayaArchitecture" type="Normal">
+    <dbid>40990</dbid>
+    <displaynameid>112904</displaynameid>
+    <cost resourcetype ="Wood">650.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\mexicans\revolutions\maya_architecture.png</icon>
+    <rollovertextid>300456</rollovertextid>
+    <flag>HomeCity</flag>
+    <effects>
+      <effect type="Data" amount="0.80" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">Building</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">Building</target>
+      </effect>
+    </effects>
+  </tech>
 
   
  

@@ -2480,7 +2480,31 @@
       <string _locid="302480">Spawns one Aztec Ritual Canoe on each side of the lake and allows you to train them in your dock.</string>
       <string _locid="302481">Citizen of Tenochtitlan</string>
       <string _locid="302482">ZP Aztec Great Temple PROP</string>
-      
+      <string _locid="302483">Holy Dance: Maintain Aztec Warrior Priests</string>
+      <string _locid="302484">Performing Holy Dance: Maintaining Aztec Warrior Priests</string>
+      <string _locid="302485">Jaguar Dance: Maintain Aztec Jaguar Warriors</string>
+      <string _locid="302486">Performing Jaguar Dance: Maintaining Aztec Jaguar Warriors</string>
+      <string _locid="302487">Eagle Dance: Maintain Aztec Eagle Warriors</string>
+      <string _locid="302488">Performing Eagle Dance: Maintaining Aztec Eagle Warriors</string>
+      <string _locid="302489">Skull Dance: Maintain Aztec Skull Knights</string>
+      <string _locid="302490">Performing Skull Dance: Maintaining Aztec Skull Knights</string>
+      <string _locid="302491">Lake Ceremony</string>
+      <string _locid="302492">Spawns three War canoes on each side of the lake.</string>
+      <string _locid="302493">Native villagers and Tenochtitlan settlers may perform a ritual to spawn more soldiers.</string>
+      <string _locid="302494">Fertility Dance: Maintain Tenochtitlan citizens</string>
+      <string _locid="302495">Performing Fertility Dance: Maintaining Tenochtitlan citizens</string>
+      <string _locid="302496">Maya Villager</string>
+      <string _locid="302497">ZP NAT Maya Villager</string>
+      <string _locid="302498">Maya Influence</string>
+      <string _locid="302499">Extends City influence. Allows you to train new units, buildings and provides you completely new techs and shipments.</string>
+      <string _locid="302500">Ceremonial Grounds</string>
+      <string _locid="302501">Ships Maya Ceremonial Altar Travois and allows you to build a Ceremonial Altar.</string>
+      <string _locid="302502">Ceremonial Altar Travois</string>
+      <string _locid="302503">ZP Ceremonial Altar Travois</string>
+      <string _locid="302504">Can construct a Ceremonial Altar.</string>
+      <string _locid="302505">Caste War Doctrine</string>
+      <string _locid="302506">Ships Native outpost travois and a party of Cruzob Infantry and allows you to train them in all Native Outposts.</string>
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

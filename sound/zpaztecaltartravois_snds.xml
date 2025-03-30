@@ -1,5 +1,5 @@
 <protounitsounddef>
-  <protounit name="zpAztecOutpostTravois">
+  <protounit name="zpAztecAltarTravois">
     <soundtype name="Select">
       <soundset name="MayaVillagerM_Select">
       </soundset>
