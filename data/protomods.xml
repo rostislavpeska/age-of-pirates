@@ -52036,7 +52036,7 @@
     <deadreplacement>BuildingRubble3x3</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Wood</impacttype>
-    <placementfile>firepit.xml</placementfile>
+    <placementfile>communityplaza.xml</placementfile>
     <icon>resources\art\buildings\spc\aztec_altar_icon.png</icon>
     <portraiticon>resources\art\buildings\spc\aztec_altar_portrait.png</portraiticon>
     <rollovertextid>302493</rollovertextid>
@@ -52109,11 +52109,15 @@
     <flag>InvulnerableIfGaia</flag>
     <notcontain>AbstractFishingBoat</notcontain>
     <contain>AbstractVillager</contain>
-    <command page="8" column="0">aztecAltarSettler</command>
-    <command page="8" column="1">aztecAltarWarPriest</command>
-    <command page="8" column="2">aztecAltarJaguarWarrior</command>
-    <command page="8" column="3">aztecAltarEagleWarrior</command>
-    <command page="9" column="1">aztecAltarSkullKnight</command>
+    <command page="8" column="0">aztecAltarXP</command>
+    <command page="8" column="1">aztecAltarSettler</command>
+    <command page="8" column="2">aztecAltarHealer</command>
+    <command page="8" column="3">aztecAltarWarPriest</command>
+    <command page="9" column="1">aztecAltarJaguarWarrior</command>
+    <command page="9" column="2">aztecAltarEagleWarrior</command>
+    <command page="9" column="3">aztecAltarSkullKnight</command>
+    <command page="10" column="2">SetGatherPointEconomy</command>
+    <command page="10" column="2">SetGatherPointMilitary</command>
     <tactics>aztecaltar.tactics</tactics>
 </unit>
 <unit id="20702" name="zpTradepostAztecCapturable">
@@ -52451,7 +52455,6 @@
     <train row="0" page="6" column="0">deREVCruzobInfantry</train>
     <tech row="0" page="7" column="0">zpImperialCruzobInfantryClone</tech>
     <flag>EnterHotkeyContext</flag>
-    <flag>AllowAutoGarrison</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -52468,13 +52471,6 @@
     <flag>InvulnerableIfGaia</flag>
     <flag>CannotAttackIfGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
-    <notcontain>AbstractMonk</notcontain>
-    <notcontain>ExcludeFromRansom</notcontain>
-    <notcontain>AbstractFishingBoat</notcontain>
-    <contain>AbstractVillager</contain>
-    <contain>deHomesteadWagon</contain>
-    <contain>AbstractHealer</contain>
-    <contain>ypDaimyoRegicide</contain>
     <command page="2" column="1">SetBuildingAsHomeCityGatherPointEconomic</command>
     <command page="2" column="2">SetBuildingAsHomeCityGatherPointMilitary</command>
     <command page="10" column="7">Delete</command>
@@ -52484,7 +52480,6 @@
     <command page="2" column="3">deUSConscription</command>
     <command page="2" column="3">deMXOutpostLevy</command>
     <command page="2" column="4">deImmigrantsSpanishLevy</command>
-    <command page="10" column="5">Eject</command>
     <command page="10" column="2">SetGatherPointEconomy</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
@@ -53008,7 +53003,7 @@
     <displaynameid>302496</displaynameid>
     <editornameid>302497</editornameid>
     <subciv>Maya</subciv>
-    <populationcount>0</populationcount>
+    <populationcount>1</populationcount>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <formationcategory>Protected</formationcategory>
@@ -53020,8 +53015,8 @@
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
     <selectionpriority>10</selectionpriority>
-    <rollovertextid>43686</rollovertextid>
-    <shortrollovertextid>43685</shortrollovertextid>
+    <rollovertextid>302507</rollovertextid>
+    <shortrollovertextid>302507</shortrollovertextid>
     <initialhitpoints>150.0000</initialhitpoints>
     <maxhitpoints>150.0000</maxhitpoints>
     <los>14.0000</los>
@@ -53032,8 +53027,7 @@
     <buildbounty>10.0000</buildbounty>
     <icon>resources\art\units\native_villager_aztec_icon.png</icon>
     <portraiticon>resources\art\units\native_villager_aztec_portrait.png</portraiticon>
-    <buildlimit>10</buildlimit>
-    <cost resourcetype="Food">75.0000</cost>
+    <cost resourcetype="Food">50.0000</cost>
     <carrycapacity resourcetype="Food">1.0000</carrycapacity>
     <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
@@ -53051,6 +53045,7 @@
     <unittype>LogicalTypeAffectedByTownBell</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
     <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeSettlerBuildLimit</unittype>
     <unittype>LogicalTypeHandUnitsAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeLandEconomy</unittype>
@@ -53268,7 +53263,7 @@
   <unit name="NatHolcanSpearman">
      <icon>resources\art\units\natives\zp_maya_holcanspearman_icon.png</icon>
     <portraiticon>resources\art\units\natives\zp_maya_holcanspearman_portrait.png</portraiticon>
-    <buildlimit>15</buildlimit>
+    <buildlimit>16</buildlimit>
     <cost resourcetype="Food">25.0000</cost>
     <cost resourcetype="Wood">90.0000</cost>
     <protoaction>
@@ -53281,7 +53276,7 @@
   <unit name="NatMercHolcanSpearman">
      <icon>resources\art\units\natives\zp_maya_holcanspearman_icon.png</icon>
     <portraiticon>resources\art\units\natives\zp_maya_holcanspearman_portrait.png</portraiticon>
-    <buildlimit>15</buildlimit>
+    <buildlimit>16</buildlimit>
     <cost resourcetype="Food">25.0000</cost>
     <cost resourcetype="Wood">90.0000</cost>
     <protoaction>
@@ -53290,6 +53285,59 @@
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
     </protoaction>
+  </unit>
+  <unit id="20721" name="zpAltarCrateofXP">
+    <dbid>20721</dbid>
+    <displaynameid>31180</displaynameid>
+    <editornameid>32715</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <lifespan>1.0000</lifespan>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\props_colony\crate_food.xml</animfile>
+    <icon>resources\images\icons\command\generate_fame_icon.png</icon>
+    <portraiticon>resources\images\icons\command\generate_fame_portrait.png</portraiticon>
+    <rollovertextid>38244</rollovertextid>
+    <shortrollovertextid>38245</shortrollovertextid>
+    <los>1.0000</los>
+    <initialresource resourcetype="XP">84.0000</initialresource>
+    <resourcesubtype>Fame</resourcesubtype>
+    <allowedage>0</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <gathererlimit>8</gathererlimit>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>Food</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Resource</unittype>
+    <unittype>AbstractResourceCrate</unittype>
+    <unittype>AbstractXPCrate</unittype>
+    <unittype>AbstractTradeCrate</unittype>
+    <flag>Immoveable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>Invulnerable</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
   </unit>
 
 

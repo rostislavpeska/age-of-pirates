@@ -1,4 +1,300 @@
 <gatheringplaces>
+  <gatheringplace proto="CommunityPlaza">
+    <formation name="HaudenosauneeStoryTelling" type="StaticPoints" maxunits="25" animstatemachine="community_plaza_villager">
+      <point x="-2.0" y="-2.1" dir="42" order="1" animstatemachine="community_plaza_storyteller">
+      </point>
+      <point x="-0.8" y="-3.8" dir="326">
+      </point>
+      <point x="-4.4" y="-1.0" dir="121">
+      </point>
+      <point x="-0.4" y="-1.5" dir="255">
+      </point>
+      <point x="-3.0" y="-0.6" dir="150">
+      </point>
+      <point x="1.4" y="-2.4" dir="280">
+      </point>
+      <point x="0.6" y="-0.8" dir="245">
+      </point>
+      <point x="-3.5" y="1.8" dir="160">
+      </point>
+      <point x="-2.7" y="3.9" dir="174">
+      </point>
+      <point x="3.1" y="-3.2" dir="285">
+      </point>
+      <point x="3.5" y="-1.4" dir="264">
+      </point>
+      <point x="4.3" y="-0.0" dir="255">
+      </point>
+      <point x="2.3" y="-0.1" dir="247">
+      </point>
+      <point x="0.7" y="1.9" dir="212">
+      </point>
+      <point x="-1.6" y="1.4" dir="183">
+      </point>
+      <point x="-0.8" y="3.8" dir="184">
+      </point>
+      <point x="-0.7" y="5.8" dir="189">
+      </point>
+      <point x="1.3" y="4.9" dir="211">
+      </point>
+      <point x="1.7" y="1.3" dir="230">
+      </point>
+      <point x="3.1" y="1.6" dir="236">
+      </point>
+      <point x="5.5" y="1.3" dir="245">
+      </point>
+      <point x="5.4" y="2.5" dir="241">
+      </point>
+      <point x="3.6" y="3.0" dir="229">
+      </point>
+      <point x="3.8" y="5.7" dir="220">
+      </point>
+      <point x="-0.9" y="-0.4" dir="213">
+      </point>
+    </formation>
+    <formation name="LakotaStoryTelling" type="StaticPoints" maxunits="25" animstatemachine="community_plaza_villager">
+      <point x="-2.7" y="-2.7" dir="42" order="1" animstatemachine="community_plaza_storyteller">
+      </point>
+      <point x="-0.8" y="-3.8" dir="304">
+      </point>
+      <point x="-4.4" y="-1.0" dir="137">
+      </point>
+      <point x="-0.7" y="-2.1" dir="250">
+      </point>
+      <point x="-2.6" y="-1.1" dir="185">
+      </point>
+      <point x="0.7" y="-3.0" dir="270">
+      </point>
+      <point x="0.6" y="-0.8" dir="233">
+      </point>
+      <point x="-2.7" y="0.4" dir="178">
+      </point>
+      <point x="-3.6" y="3.9" dir="168">
+      </point>
+      <point x="3.1" y="-3.2" dir="275">
+      </point>
+      <point x="5.6" y="-3.6" dir="276">
+      </point>
+      <point x="4.8" y="-0.8" dir="257">
+      </point>
+      <point x="2.3" y="-0.1" dir="247">
+      </point>
+      <point x="0.7" y="1.9" dir="220">
+      </point>
+      <point x="-1.6" y="1.4" dir="198">
+      </point>
+      <point x="-1.3" y="4.7" dir="184">
+      </point>
+      <point x="-0.7" y="6.6" dir="188">
+      </point>
+      <point x="1.3" y="4.9" dir="211">
+      </point>
+      <point x="1.8" y="3.4" dir="221">
+      </point>
+      <point x="3.1" y="1.6" dir="236">
+      </point>
+      <point x="5.5" y="1.3" dir="245">
+      </point>
+      <point x="6.6" y="2.5" dir="244">
+      </point>
+      <point x="4.3" y="3.9" dir="229">
+      </point>
+      <point x="4.3" y="6.1" dir="220">
+      </point>
+      <point x="-0.9" y="-0.4" dir="223">
+      </point>
+    </formation>
+    <formation name="AztecStoryTelling" type="StaticPoints" maxunits="25" animstatemachine="community_plaza_villager">
+      <point x="-2.8" y="-3.4" dir="39" order="1" animstatemachine="community_plaza_storyteller">
+      </point>
+      <point x="-2.8" y="-2.0" dir="166">
+      </point>
+      <point x="-1.4" y="-3.2" dir="260">
+      </point>
+      <point x="-1.7" y="-1.8" dir="217">
+      </point>
+      <point x="-3.5" y="-1.0" dir="171">
+      </point>
+      <point x="-0.2" y="-2.3" dir="250">
+      </point>
+      <point x="0.8" y="-4.2" dir="284">
+      </point>
+      <point x="-5.4" y="-2.2" dir="112">
+      </point>
+      <point x="-4.0" y="1.5" dir="165">
+      </point>
+      <point x="-3.0" y="0.7" dir="178">
+      </point>
+      <point x="1.1" y="-1.1" dir="246">
+      </point>
+      <point x="2.5" y="-2.3" dir="256">
+      </point>
+      <point x="2.8" y="-1.3" dir="251">
+      </point>
+      <point x="0.7" y="1.7" dir="215">
+      </point>
+      <point x="0.2" y="0.3" dir="218">
+      </point>
+      <point x="-0.9" y="2.1" dir="197">
+      </point>
+      <point x="-1.8" y="1.4" dir="193">
+      </point>
+      <point x="-3.6" y="3.3" dir="173">
+      </point>
+      <point x="-2.2" y="3.5" dir="184">
+      </point>
+      <point x="-1.2" y="4.8" dir="195">
+      </point>
+      <point x="-0.1" y="3.5" dir="202">
+      </point>
+      <point x="2.2" y="2.3" dir="221">
+      </point>
+      <point x="3.7" y="1.2" dir="236">
+      </point>
+      <point x="3.9" y="2.9" dir="227">
+      </point>
+      <point x="3.4" y="0.2" dir="242">
+      </point>
+    </formation>
+    <formation name="IncaStoryTelling" type="StaticPoints" maxunits="25" animstatemachine="community_plaza_villager">
+      <filter>
+        <excludetype type="Llama">
+        </excludetype>
+      </filter>
+      <point x="-0.4" y="-5.4" dir="3" order="1" animstatemachine="community_plaza_storyteller">
+      </point>
+      <point x="-2.7" y="-4.3" dir="114">
+      </point>
+      <point x="-3.1" y="-2.9" dir="128">
+      </point>
+      <point x="-6.0" y="-1.5" dir="120">
+      </point>
+      <point x="-1.4" y="-2.4" dir="162">
+      </point>
+      <point x="-2.6" y="-1.5" dir="153">
+      </point>
+      <point x="-1.5" y="-0.2" dir="165">
+      </point>
+      <point x="-2.9" y="0.5" dir="154">
+      </point>
+      <point x="-1.1" y="0.8" dir="169">
+      </point>
+      <point x="-1.6" y="3.2" dir="164">
+      </point>
+      <point x="-0.0" y="2.6" dir="182">
+      </point>
+      <point x="0.4" y="1.1" dir="192">
+      </point>
+      <point x="1.6" y="2.1" dir="198">
+      </point>
+      <point x="3.3" y="2.2" dir="212">
+      </point>
+      <point x="2.3" y="3.4" dir="204">
+      </point>
+      <point x="3.1" y="-3.8" dir="237">
+      </point>
+      <point x="3.8" y="-2.4" dir="236">
+      </point>
+      <point x="2.9" y="-0.2" dir="216">
+      </point>
+      <point x="3.9" y="0.8" dir="217">
+      </point>
+      <point x="0.1" y="-1.8" dir="194">
+      </point>
+      <point x="1.8" y="-2.9" dir="219">
+      </point>
+      <point x="1.7" y="-1.4" dir="214">
+      </point>
+      <point x="-0.2" y="-0.4" dir="182">
+      </point>
+      <point x="1.1" y="-0.4" dir="198">
+      </point>
+      <point x="2.0" y="0.8" dir="202">
+      </point>
+    </formation>
+    <formation name="IncaLlamas" type="StaticPoints" maxunits="25" anim="GatherFarm">
+      <filter>
+        <allowedtype type="Llama">
+        </allowedtype>
+      </filter>
+      <point x="-5.9" y="-5.7" dir="111">
+      </point>
+      <point x="-6.7" y="-4.3" dir="207">
+      </point>
+      <point x="-2.5" y="-5.8" dir="83">
+      </point>
+      <point x="4.9" y="2.9" dir="259">
+      </point>
+      <point x="4.9" y="1.7" dir="92">
+      </point>
+      <point x="4.4" y="4.7" dir="297">
+      </point>
+      <point x="6.0" y="4.0" dir="154">
+      </point>
+      <point x="-3.6" y="4.9" dir="154">
+      </point>
+      <point x="-1.3" y="1.9" dir="99">
+      </point>
+      <point x="-5.8" y="2.1" dir="211">
+      </point>
+      <point x="-5.5" y="3.6" dir="327">
+      </point>
+      <point x="-5.3" y="5.3" dir="76">
+      </point>
+      <point x="-3.6" y="6.4" dir="86">
+      </point>
+      <point x="-0.9" y="6.1" dir="37">
+      </point>
+      <point x="2.2" y="6.0" dir="330">
+      </point>
+      <point x="-1.5" y="-6.9" dir="81">
+      </point>
+      <point x="5.4" y="6.0" dir="112">
+      </point>
+      <point x="5.0" y="-5.2" dir="54">
+      </point>
+      <point x="6.1" y="-2.1" dir="176">
+      </point>
+      <point x="6.2" y="-0.3" dir="143">
+      </point>
+      <point x="6.4" y="1.9" dir="17">
+      </point>
+      <point x="3.2" y="-1.4" dir="98">
+      </point>
+      <point x="0.9" y="-6.1" dir="264">
+      </point>
+      <point x="3.4" y="-6.5" dir="68">
+      </point>
+      <point x="-6.8" y="-1.1" dir="352">
+      </point>
+    </formation>
+    <formationset>
+      <culture name="iroquois">
+      </culture>
+      <formation name="HaudenosauneeStoryTelling">
+      </formation>
+    </formationset>
+    <formationset>
+      <culture name="sioux">
+      </culture>
+      <formation name="LakotaStoryTelling">
+      </formation>
+    </formationset>
+    <formationset>
+      <culture name="aztec">
+      </culture>
+      <formation name="AztecStoryTelling">
+      </formation>
+    </formationset>
+    <formationset>
+      <culture name="inca">
+      </culture>
+      <formation name="IncaStoryTelling">
+      </formation>
+      <formation name="IncaLlamas">
+      </formation>
+    </formationset>
+  </gatheringplace>
   <gatheringplace proto="zpAztecAltar">
     <formation name="InnerCircle" type="Circle" maxunits="10" journeyTime="15.0">
       <point x="0.0" y="0.0">

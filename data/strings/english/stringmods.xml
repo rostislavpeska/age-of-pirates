@@ -2491,19 +2491,27 @@
       <string _locid="302491">Lake Ceremony</string>
       <string _locid="302492">Spawns three War canoes on each side of the lake.</string>
       <string _locid="302493">Native villagers and Tenochtitlan settlers may perform a ritual to spawn more soldiers.</string>
-      <string _locid="302494">Fertility Dance: Maintain Tenochtitlan citizens</string>
-      <string _locid="302495">Performing Fertility Dance: Maintaining Tenochtitlan citizens</string>
+      <string _locid="302494">Wedding Dance: Maintain Maya Villagers</string>
+      <string _locid="302495">Performing Wedding Dance: Maintaining Maya Villagers</string>
       <string _locid="302496">Maya Villager</string>
       <string _locid="302497">ZP NAT Maya Villager</string>
       <string _locid="302498">Maya Influence</string>
       <string _locid="302499">Extends City influence. Allows you to train new units, buildings and provides you completely new techs and shipments.</string>
       <string _locid="302500">Ceremonial Grounds</string>
-      <string _locid="302501">Ships Maya Ceremonial Altar Travois and allows you to build a Ceremonial Altar.</string>
-      <string _locid="302502">Ceremonial Altar Travois</string>
-      <string _locid="302503">ZP Ceremonial Altar Travois</string>
-      <string _locid="302504">Can construct a Ceremonial Altar.</string>
+      <string _locid="302501">Ships Maya Ceremony Altar Travois and allows you to build a Ceremony Altar. Increases healer Build limit.</string>
+      <string _locid="302502">Ceremony Altar Travois</string>
+      <string _locid="302503">ZP Ceremony Altar Travois</string>
+      <string _locid="302504">Can construct a Ceremony Altar.</string>
       <string _locid="302505">Caste War Doctrine</string>
-      <string _locid="302506">Ships Native outpost travois and a party of Cruzob Infantry and allows you to train them in all Native Outposts.</string>
+      <string _locid="302506">Ships Native outpost travois and a party of Cruzob Infantry and allows you to train them in all Native Outposts. Doubles Native Outpost build limit.</string>
+      <string _locid="302507">Villager that gathers resources. Costs population, but is cheap and you can train many of them.</string>
+      <string _locid="302508">Maya City States</string>
+      <string _locid="302509">Provides housing for 50 population.</string>
+      <string _locid="302510">Healing Dance: Maintain Maya Healers</string>
+      <string _locid="302511">Performing Healing Dance: Maintaining Maya Healers</string>
+      <string _locid="302512">Daily Dance Ceremony: Gather more XP</string>
+      <string _locid="302513">Performing Daily Dance Ceremony: Gathering more XP</string>
+
 
 
       <!-- ======================================== -->

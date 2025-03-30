@@ -578,6 +578,24 @@
     <activerollovertextid>302495</activerollovertextid>
     <command>unitSetTactic("TacticSpawnSettler")</command>
   </protounitcommand>
+  <protounitcommand>
+    <name>aztecAltarHealer</name>
+    <icon>resources\images\icons\command\aztecaltar\healer_off.png</icon>
+    <activeicon>resources\images\icons\command\aztecaltar\healer_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\aztecaltar\healer_off.png</disabledicon>
+    <rollovertextid>302510</rollovertextid>
+    <activerollovertextid>302511</activerollovertextid>
+    <command>unitSetTactic("TacticSpawnHealer")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>aztecAltarXP</name>
+    <icon>resources\images\icons\techs\asians\shrine_xp.png</icon>
+    <activeicon>resources\images\icons\techs\asians\shrine_xp_on.png</activeicon>
+    <disabledicon>resources\images\icons\techs\asians\shrine_xp.png</disabledicon>
+    <rollovertextid>302512</rollovertextid>
+    <activerollovertextid>302513</activerollovertextid>
+    <command>unitSetTactic("TacticGatherXP")</command>
+  </protounitcommand>
 
   <!--
 

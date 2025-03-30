@@ -23112,6 +23112,9 @@
       <effect type="CommandRemove" tech="DETradeRouteUpgradeWater2">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="Data" action="GatherFirePit" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">NatMedicineMan</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpAztecCityAttackerSetup" type="Normal">
@@ -23997,6 +24000,12 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpAztecAltar</target>
       </effect>
+      <effect type="Data" action="GatherFirePit" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">NatMedicineMan</target>
+      </effect>
+      <effect type="Data" amount="6.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">NatMedicineMan</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpNatMayaCruzob" type="Normal">
@@ -24030,6 +24039,9 @@
       <effect type="TechStatus" status="obtainable">zpImperialCruzobInfantryShadow</effect>
       <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
         <target type="ProtoUnit">deREVCruzobInfantry</target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecOutpost</target>
       </effect>
     </effects>
   </tech>
@@ -24065,19 +24077,24 @@
   </tech>
   <tech name="zpNatMayaArchitecture" type="Normal">
     <dbid>40990</dbid>
-    <displaynameid>112904</displaynameid>
+    <displaynameid>302508</displaynameid>
     <cost resourcetype ="Wood">650.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\mexicans\revolutions\maya_architecture.png</icon>
-    <rollovertextid>300456</rollovertextid>
-    <flag>HomeCity</flag>
+    <icon>resources\images\icons\techs\maya_city_states.png</icon>
+    <rollovertextid>302509</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPNativeImprovement</flag>
     <effects>
       <effect type="Data" amount="0.80" subtype="TrainPoints" relativity="BasePercent">
         <target type="ProtoUnit">Building</target>
       </effect>
       <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">Building</target>
+      </effect>
+      <effect type="Data" amount="50.00" subtype="PopulationCap" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>
