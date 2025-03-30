@@ -543,22 +543,13 @@
     <command>unitSetTactic("TacticSpawnWarriorPriest")</command>
   </protounitcommand>
   <protounitcommand>
-    <name>aztecAltarJaguarWarrior</name>
-    <icon>resources\images\icons\command\aztecaltar\jaguar_off.png</icon>
-    <activeicon>resources\images\icons\command\aztecaltar\jaguar_on.png</activeicon>
-    <disabledicon>resources\images\icons\command\aztecaltar\jaguar_off.png</disabledicon>
+    <name>aztecAltarRainbowCrate</name>
+    <icon>resources\images\icons\command\tactic_rainbow_trickle_off.png</icon>
+    <activeicon>resources\images\icons\command\tactic_rainbow_trickle_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\tactic_rainbow_trickle_off.png</disabledicon>
     <rollovertextid>302485</rollovertextid>
     <activerollovertextid>302486</activerollovertextid>
-    <command>unitSetTactic("TacticSpawnJaguarWarrior")</command>
-  </protounitcommand>
-  <protounitcommand>
-    <name>aztecAltarEagleWarrior</name>
-    <icon>resources\images\icons\command\aztecaltar\eagle_off.png</icon>
-    <activeicon>resources\images\icons\command\aztecaltar\eagle_on.png</activeicon>
-    <disabledicon>resources\images\icons\command\aztecaltar\eagle_off.png</disabledicon>
-    <rollovertextid>302487</rollovertextid>
-    <activerollovertextid>302488</activerollovertextid>
-    <command>unitSetTactic("TacticSpawnEagleWarrior")</command>
+    <command>unitSetTactic("TacticSpawnRainbowCrate")</command>
   </protounitcommand>
   <protounitcommand>
     <name>aztecAltarSkullKnight</name>
@@ -595,6 +586,52 @@
     <rollovertextid>302512</rollovertextid>
     <activerollovertextid>302513</activerollovertextid>
     <command>unitSetTactic("TacticGatherXP")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>aztecAltarLakeCanoe</name>
+    <icon>resources\images\icons\command\aztecaltar\canoe_off.png</icon>
+    <activeicon>resources\images\icons\command\aztecaltar\canoe_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\aztecaltar\canoe_off.png</disabledicon>
+    <rollovertextid>302516</rollovertextid>
+    <activerollovertextid>302517</activerollovertextid>
+    <command>unitSetTactic("TacticSpawnLakeCanoe")</command>
+  </protounitcommand>
+
+  <protounitcommand>
+    <name>AztecTempleRainbow</name>
+    <icon>resources\images\icons\command\tactic_rainbow_trickle_off.png</icon>
+    <activeicon>resources\images\icons\command\tactic_rainbow_trickle_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\tactic_rainbow_trickle_off.png</disabledicon>
+    <rollovertextid>302524</rollovertextid>
+    <activerollovertextid>302525</activerollovertextid>
+    <command>unitSetTactic("WonderRainbow")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>AztecTempleCoin</name>
+    <icon>resources\images\icons\techs\asians\shrine_coin.png</icon>
+    <activeicon>resources\images\icons\techs\asians\shrine_coin_on.png</activeicon>
+    <disabledicon>resources\images\icons\techs\asians\shrine_coin.png</disabledicon>
+    <rollovertextid>302522</rollovertextid>
+    <activerollovertextid>302523</activerollovertextid>
+    <command>unitSetTactic("WonderCoin")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>AztecTempleWood</name>
+    <icon>resources\images\icons\techs\asians\shrine_wood.png</icon>
+    <activeicon>resources\images\icons\techs\asians\shrine_wood_on.png</activeicon>
+    <disabledicon>resources\images\icons\techs\asians\shrine_wood.png</disabledicon>
+    <rollovertextid>302518</rollovertextid>
+    <activerollovertextid>302519</activerollovertextid>
+    <command>unitSetTactic("WonderWood")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>AztecTempleFood</name>
+    <icon>resources\images\icons\techs\asians\shrine_food.png</icon>
+    <activeicon>resources\images\icons\techs\asians\shrine_food_on.png</activeicon>
+    <disabledicon>resources\images\icons\techs\asians\shrine_food.png</disabledicon>
+    <rollovertextid>302520</rollovertextid>
+    <activerollovertextid>302521</activerollovertextid>
+    <command>unitSetTactic("WonderFood")</command>
   </protounitcommand>
 
   <!--

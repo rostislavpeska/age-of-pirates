@@ -33,21 +33,10 @@
         <persistent>1</persistent>
     </action>
     <action>
-        <name stringid="113108">SpawnJaguarWarrior</name>
+        <name stringid="113108">SpawnRainbowCrate</name>
         <type>DanceBonus</type>
         <dancebonustype>UnitSpawn</dancebonustype>
-        <modifyprotoid>NatJaguarWarrior</modifyprotoid>
-        <modifymultiplier>0.111111</modifymultiplier>
-        <modifyexponent>0.916667</modifyexponent>
-        <modifybase>0.25</modifybase>
-        <active>1</active>
-        <persistent>1</persistent>
-    </action>
-    <action>
-        <name stringid="113108">SpawnEagleWarrior</name>
-        <type>DanceBonus</type>
-        <dancebonustype>UnitSpawn</dancebonustype>
-        <modifyprotoid>NatEagleWarrior</modifyprotoid>
+        <modifyprotoid>zpAltarCrateofRainbow</modifyprotoid>
         <modifymultiplier>0.111111</modifymultiplier>
         <modifyexponent>0.916667</modifyexponent>
         <modifybase>0.25</modifybase>
@@ -76,16 +65,23 @@
         <active>1</active>
         <persistent>1</persistent>
     </action>
+    <action>
+        <name stringid="113108">SpawnLakeCanoe</name>
+        <type>DanceBonus</type>
+        <dancebonustype>UnitSpawn</dancebonustype>
+        <modifyprotoid>zpLakeCanoeProxy</modifyprotoid>
+        <modifymultiplier>0.111111</modifymultiplier>
+        <modifyexponent>0.916667</modifyexponent>
+        <modifybase>0.25</modifybase>
+        <active>1</active>
+        <persistent>1</persistent>
+    </action>
     <tactic>
         TacticGatherXP
         <action>SpawnCrateofXP</action>
+        <active>1</active>
         <transition>
-            <tactic>TacticSpawnJaguarWarrior</tactic>
-            <length>2</length>
-            <exit>1</exit>
-        </transition>
-        <transition>
-            <tactic>TacticSpawnEagleWarrior</tactic>
+            <tactic>TacticSpawnRainbowCrate</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>
@@ -106,6 +102,11 @@
         </transition>
         <transition>
             <tactic>TacticSpawnSettler</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnLakeCanoe</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>
@@ -113,13 +114,9 @@
     <tactic>TacticSpawnSettler
         <action>SpawnSettler</action>
         <action>AutoGatherFood</action>
+        <active>1</active>
         <transition>
-            <tactic>TacticSpawnJaguarWarrior</tactic>
-            <length>2</length>
-            <exit>1</exit>
-        </transition>
-        <transition>
-            <tactic>TacticSpawnEagleWarrior</tactic>
+            <tactic>TacticSpawnRainbowCrate</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>
@@ -143,17 +140,18 @@
             <length>2</length>
             <exit>1</exit>
         </transition>
+        <transition>
+            <tactic>TacticSpawnLakeCanoe</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
     </tactic>
     <tactic>TacticSpawnHealer
         <action>SpawnHealer</action>
         <action>AutoGatherFood</action>
+        <active>1</active>
         <transition>
-            <tactic>TacticSpawnJaguarWarrior</tactic>
-            <length>2</length>
-            <exit>1</exit>
-        </transition>
-        <transition>
-            <tactic>TacticSpawnEagleWarrior</tactic>
+            <tactic>TacticSpawnRainbowCrate</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>
@@ -174,6 +172,11 @@
         </transition>
         <transition>
             <tactic>TacticGatherXP</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnLakeCanoe</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>
@@ -182,12 +185,7 @@
         <action>SpawnWarriorPriest</action>
         <active>0</active>
         <transition>
-            <tactic>TacticSpawnJaguarWarrior</tactic>
-            <length>2</length>
-            <exit>1</exit>
-        </transition>
-        <transition>
-            <tactic>TacticSpawnEagleWarrior</tactic>
+            <tactic>TacticSpawnRainbowCrate</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>
@@ -208,6 +206,11 @@
         </transition>
         <transition>
             <tactic>TacticGatherXP</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnLakeCanoe</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>
@@ -216,17 +219,12 @@
         <action>SpawnSkullKnight</action>
         <active>0</active>
         <transition>
-            <tactic>TacticSpawnJaguarWarrior</tactic>
+            <tactic>TacticSpawnRainbowCrate</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>
         <transition>
             <tactic>TacticSpawnWarriorPriest</tactic>
-            <length>2</length>
-            <exit>1</exit>
-        </transition>
-        <transition>
-            <tactic>TacticSpawnEagleWarrior</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>
@@ -245,17 +243,17 @@
             <length>2</length>
             <exit>1</exit>
         </transition>
-    </tactic>
-    <tactic>TacticSpawnJaguarWarrior
-        <action>SpawnJaguarWarrior</action>
-        <active>0</active>
         <transition>
-            <tactic>TacticSpawnWarriorPriest</tactic>
+            <tactic>TacticSpawnLakeCanoe</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>
+    </tactic>
+    <tactic>TacticSpawnRainbowCrate
+        <action>SpawnRainbowCrate</action>
+        <active>1</active>
         <transition>
-            <tactic>TacticSpawnEagleWarrior</tactic>
+            <tactic>TacticSpawnWarriorPriest</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>
@@ -279,9 +277,14 @@
             <length>2</length>
             <exit>1</exit>
         </transition>
+        <transition>
+            <tactic>TacticSpawnLakeCanoe</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
     </tactic>
-    <tactic>TacticSpawnEagleWarrior
-        <action>SpawnEagleWarrior</action>
+    <tactic>TacticSpawnLakeCanoe
+        <action>SpawnLakeCanoe</action>
         <active>0</active>
         <transition>
             <tactic>TacticSpawnWarriorPriest</tactic>
@@ -290,11 +293,6 @@
         </transition>
         <transition>
             <tactic>TacticSpawnSkullKnight</tactic>
-            <length>2</length>
-            <exit>1</exit>
-        </transition>
-        <transition>
-            <tactic>TacticSpawnJaguarWarrior</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>
@@ -310,6 +308,11 @@
         </transition>
         <transition>
             <tactic>TacticGatherXP</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnRainbowCrate</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>

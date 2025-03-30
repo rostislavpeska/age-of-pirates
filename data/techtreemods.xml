@@ -36,24 +36,30 @@
       <effect type="Data" amount="1.00" tactic="TacticSpawnWarriorPriest" subtype="TacticEnable" relativity="Absolute">
         <target type="ProtoUnit">zpAztecAltar</target>
       </effect>
-      <effect type="Data" amount="1.00" tactic="TacticSpawnJaguarWarrior" subtype="TacticEnable" relativity="Absolute">
-        <target type="ProtoUnit">zpAztecAltar</target>
-      </effect>
-      <effect type="Data" amount="1.00" tactic="TacticSpawnEagleWarrior" subtype="TacticEnable" relativity="Absolute">
+      <effect type="Data" amount="1.00" tactic="TacticSpawnSkullKnight" subtype="TacticEnable" relativity="Absolute">
         <target type="ProtoUnit">zpAztecAltar</target>
       </effect>
     </effects>
   </tech>
-  <tech name="zpSPCAztecAltarFortressizeShadow" type="Normal">
+  <tech name="zpSPCAztecAltarBasicShadow" type="Normal">
     <dbid>40984</dbid>
-    <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
-    <prereqs>
-      <techstatus status="Active">Fortressize</techstatus>
-    </prereqs>
     <effects>
-      <effect type="Data" amount="1.00" tactic="TacticSpawnSkullKnight" subtype="TacticEnable" relativity="Absolute">
+      <effect type="Data" amount="0.00" tactic="TacticSpawnSettler" subtype="TacticEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecAltar</target>
+      </effect>
+      <effect type="Data" amount="0.00" tactic="TacticSpawnHealer" subtype="TacticEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecAltar</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecAltarLakeCeremonyShadow" type="Normal">
+    <dbid>40984</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" tactic="TacticSpawnLakeCanoe" subtype="TacticEnable" relativity="Absolute">
         <target type="ProtoUnit">zpAztecAltar</target>
       </effect>
     </effects>
@@ -23084,7 +23090,7 @@
       <effect type="TechStatus" status="obtainable">zpSPCAztecCityWarCeremony</effect>
       <effect type="TechStatus" status="obtainable">zpSPCAztecCityLakeCeremony</effect>
       <effect type="TechStatus" status="obtainable">zpSPCAztecAltarColonializeShadow</effect>
-      <effect type="TechStatus" status="obtainable">zpSPCAztecAltarFortressizeShadow</effect>
+      <effect type="TechStatus" status="active">zpSPCAztecAltarBasicShadow</effect>
       <effect type="CommandAdd" tech="zpSPCAztecInfluenceCity" page="1" column="1">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
@@ -23342,6 +23348,9 @@
       <effect type="Data" action="AutoGatherWood" amount="1.50" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
       </effect>
+      <effect type="Data" action="RainbowWood" amount="1.50" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSPCAztecTempleFoodFestival" type="Normal">
@@ -23358,6 +23367,9 @@
       <effect type="Data" action="AutoGatherFood" amount="1.50" subtype="WorkRate" unittype="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
       </effect>
+      <effect type="Data" action="RainbowFood" amount="1.50" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSPCAztecTempleGoldFestival" type="Normal">
@@ -23372,6 +23384,9 @@
     <flag>NativeImprovement</flag>
     <effects>
       <effect type="Data" action="AutoGatherCoin" amount="1.50" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="RainbowCoin" amount="1.50" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
       </effect>
     </effects>
@@ -23877,20 +23892,21 @@
 		<icon>resources\images\icons\techs\dance-pirates.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
     <iconwpf>resources\images\icons\techs\aztec_lake_ceremony_big.png</iconwpf>
-    <cost resourcetype ="Wood">600.0000</cost>
-    <cost resourcetype ="Gold">400.0000</cost>
+    <cost resourcetype ="Wood">200.0000</cost>
+    <cost resourcetype ="Food">200.0000</cost>
 		<rollovertextid>302492</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <prereqs>
-			<techstatus status="Active">Industrialize</techstatus>
+			<techstatus status="Active">Fortressize</techstatus>
     </prereqs>
     <flag>NativeDance</flag>
     <effects>
-      <effect type="Data" action="SpawnWarCanoes" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCAztecWaterSpawner">
+      <effect type="Data" action="SpawnCanoe" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCAztecWaterSpawner">
         <target type="Player">
         </target>
       </effect>
+      <effect type="TechStatus" status="active">zpSPCAztecAltarLakeCeremonyShadow</effect>
     </effects>
   </tech>
   <tech name="NativeMaya">
@@ -24093,6 +24109,18 @@
         <target type="ProtoUnit">Building</target>
       </effect>
       <effect type="Data" amount="50.00" subtype="PopulationCap" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainCanoe" type="Normal">
+    <dbid>40991</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnCanoe" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCAztecWaterSpawner">
         <target type="Player">
         </target>
       </effect>

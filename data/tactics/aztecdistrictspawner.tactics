@@ -26,9 +26,9 @@
     <singleuse>1</singleuse>
   </action>
   <action>
-    <name stringid="69776">SpawnWarCanoes</name>
+    <name stringid="69776">SpawnCanoe</name>
     <type>Spawn</type>
-    <rate type="xpWarCanoe">3.0</rate>
+    <rate type="Canoe">1.0</rate>
     <active>1</active>
     <persistent>0</persistent>
     <singleuse>1</singleuse>
@@ -37,5 +37,6 @@
     <action>SpawnJaguarWarriors</action>
     <action>SpawnJaguarWarriorsSmall</action>
     <action>SpawnRitualCanoe</action>
+    <action>SpawnCanoe</action>
   </tactic>
 </tactics>

@@ -2482,14 +2482,14 @@
       <string _locid="302482">ZP Aztec Great Temple PROP</string>
       <string _locid="302483">Holy Dance: Maintain Aztec Warrior Priests</string>
       <string _locid="302484">Performing Holy Dance: Maintaining Aztec Warrior Priests</string>
-      <string _locid="302485">Jaguar Dance: Maintain Aztec Jaguar Warriors</string>
-      <string _locid="302486">Performing Jaguar Dance: Maintaining Aztec Jaguar Warriors</string>
+      <string _locid="302485">Rainbow Dance: Spawn resource crates</string>
+      <string _locid="302486">Performing Rainbow Dance: Maintaining resource crates</string>
       <string _locid="302487">Eagle Dance: Maintain Aztec Eagle Warriors</string>
       <string _locid="302488">Performing Eagle Dance: Maintaining Aztec Eagle Warriors</string>
       <string _locid="302489">Skull Dance: Maintain Aztec Skull Knights</string>
       <string _locid="302490">Performing Skull Dance: Maintaining Aztec Skull Knights</string>
       <string _locid="302491">Lake Ceremony</string>
-      <string _locid="302492">Spawns three War canoes on each side of the lake.</string>
+      <string _locid="302492">Spawns a war canoe on each side of a lake. Unlocks a new type of ceremony allowing you to spawn canoes continuously.</string>
       <string _locid="302493">Native villagers and Tenochtitlan settlers may perform a ritual to spawn more soldiers.</string>
       <string _locid="302494">Wedding Dance: Maintain Maya Villagers</string>
       <string _locid="302495">Performing Wedding Dance: Maintaining Maya Villagers</string>
@@ -2509,9 +2509,20 @@
       <string _locid="302509">Provides housing for 50 population.</string>
       <string _locid="302510">Healing Dance: Maintain Maya Healers</string>
       <string _locid="302511">Performing Healing Dance: Maintaining Maya Healers</string>
-      <string _locid="302512">Daily Dance Ceremony: Gather more XP</string>
-      <string _locid="302513">Performing Daily Dance Ceremony: Gathering more XP</string>
-
+      <string _locid="302512">Sunrise Dance: Gather more XP</string>
+      <string _locid="302513">Performing Sunrise Dance: Gathering more XP</string>
+      <string _locid="302514">Rainbow Crate</string>
+      <string _locid="302515">2 Canoes</string>
+      <string _locid="302516">Lake Ceremony: Maintain Canoes on both side of the lake</string>
+      <string _locid="302517">Performing Lake Ceremony: Maintaining Canoes on both side of the lake</string>
+      <string _locid="302518">Worship Gof of Fire: Temple will gather Wood</string>
+      <string _locid="302519">Worshiping Gof of Fire: Temple is gathering Wood</string>
+      <string _locid="302520">Worship Gof of Harvest: Temple will gather Food</string>
+      <string _locid="302521">Worshiping Gof of Harvest: Temple is gathering Food</string>
+      <string _locid="302522">Worship Gof of Crafting: Temple will gather Coin</string>
+      <string _locid="302523">Worshiping Gof of Crafting: Temple is gathering Coin</string>
+      <string _locid="302524">Worship Multiple Gods: Temple will gather all resources</string>
+      <string _locid="302525">Worshiping Multiple Gods: Temple is gathering all resources</string>
 
 
       <!-- ======================================== -->

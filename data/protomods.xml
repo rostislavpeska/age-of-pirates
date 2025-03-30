@@ -52110,12 +52110,12 @@
     <notcontain>AbstractFishingBoat</notcontain>
     <contain>AbstractVillager</contain>
     <command page="8" column="0">aztecAltarXP</command>
-    <command page="8" column="1">aztecAltarSettler</command>
-    <command page="8" column="2">aztecAltarHealer</command>
-    <command page="8" column="3">aztecAltarWarPriest</command>
-    <command page="9" column="1">aztecAltarJaguarWarrior</command>
-    <command page="9" column="2">aztecAltarEagleWarrior</command>
-    <command page="9" column="3">aztecAltarSkullKnight</command>
+    <command page="8" column="1">aztecAltarRainbowCrate</command>
+    <command page="8" column="2">aztecAltarSettler</command>
+    <command page="8" column="3">aztecAltarHealer</command>
+    <command page="8" column="2">aztecAltarWarPriest</command>
+    <command page="8" column="3">aztecAltarSkullKnight</command>
+    <command page="9" column="0">aztecAltarLakeCanoe</command>
     <command page="10" column="2">SetGatherPointEconomy</command>
     <command page="10" column="2">SetGatherPointMilitary</command>
     <tactics>aztecaltar.tactics</tactics>
@@ -52333,13 +52333,14 @@
     <flag>Invulnerable</flag>
     <flag>BuildingShowTactics</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
+    <command page="9" column="2">AztecTempleCoin</command>
+    <command page="9" column="0">AztecTempleFood</command>
+    <command page="9" column="1">AztecTempleWood</command>
+    <command page="9" column="3">AztecTempleRainbow</command>
+    <command page="10" column="2">SetGatherPointEconomy</command>
     <command page="10" column="7">Delete</command>
-    <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
-    <command page="9" column="0">Tactic11</command>
-    <command page="9" column="1">Tactic12</command>
-    <command page="9" column="2">Tactic10</command>
-    <tactics>teamgatherfactory.tactics</tactics>
+    <tactics>porcelaintower.tactics</tactics>
     <protoaction>
       <name>AutoGatherCoin</name>
       <rate type="Gold">1.500000</rate>
@@ -52351,6 +52352,30 @@
     <protoaction>
       <name>AutoGatherWood</name>
       <rate type="Wood">1.500000</rate>
+    </protoaction>
+    <protoaction>
+      <name>RainbowCoin</name>
+      <type>AutoGather</type>
+      <rate type="Gold">0.400000</rate>
+    </protoaction>
+    <protoaction>
+      <name>RainbowFood</name>
+      <type>AutoGather</type>
+      <rate type="Food">0.400000</rate>
+    </protoaction>
+    <protoaction>
+      <name>RainbowTrade</name>
+      <active>0</active>
+    </protoaction>
+    <protoaction>
+      <name>RainbowWood</name>
+      <type>AutoGather</type>
+      <rate type="Wood">0.400000</rate>
+    </protoaction>
+    <protoaction>
+      <name>RainbowXP</name>
+      <type>AutoGather</type>
+      <rate type="XP">0.40000</rate>
     </protoaction>
   </unit>
   <unit id="20707" name="zpSPCSocketAztecOutpost1">
@@ -53290,54 +53315,127 @@
     <dbid>20721</dbid>
     <displaynameid>31180</displaynameid>
     <editornameid>32715</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <lifespan>3.0000</lifespan>
+    <movementtype>land</movementtype>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <icon>resources\images\icons\techs\asians\shrine_xp.png</icon>
+    <portraiticon>resources\images\icons\techs\asians\shrine_xp.png</portraiticon>
+    <initialhitpoints>2000.0000</initialhitpoints>
+    <maxhitpoints>2000.0000</maxhitpoints>
+    <los>16.0000</los>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>Unit</unittype>
+    <flag>UnlimitedSupply</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotSelectable</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>InvulnerableToAreaDamage</flag>
+    <tactics>autogatherer.tactics</tactics>
+    <protoaction>
+      <name>AutoGather</name>
+      <rate type="XP">400.00000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20722" name="zpAltarCrateofRainbow">
+    <dbid>20722</dbid>
+    <displaynameid>302514</displaynameid>
+    <editornameid>32715</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <lifespan>3.0000</lifespan>
+    <movementtype>land</movementtype>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <icon>resources\images\icons\command\tactic_rainbow_trickle_off.png</icon>
+    <portraiticon>resources\images\icons\command\tactic_rainbow_trickle_off.png</portraiticon>
+    <initialhitpoints>2000.0000</initialhitpoints>
+    <maxhitpoints>2000.0000</maxhitpoints>
+    <los>16.0000</los>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>Unit</unittype>
+    <flag>UnlimitedSupply</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotSelectable</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>InvulnerableToAreaDamage</flag>
+    <tactics>autogatherer.tactics</tactics>
+    <protoaction>
+      <name>AutoGather</name>
+      <rate type="Food">50.00000</rate>
+      <rate type="Wood">50.00000</rate>
+      <rate type="Gold">50.00000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20723" name="zpLakeCanoeProxy">
+    <dbid>20723</dbid>
+    <displaynameid>302515</displaynameid>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
-    <maxvelocity>0.0000</maxvelocity>
-    <lifespan>1.0000</lifespan>
-    <maxrunvelocity>0.0000</maxrunvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\props_colony\crate_food.xml</animfile>
-    <icon>resources\images\icons\command\generate_fame_icon.png</icon>
-    <portraiticon>resources\images\icons\command\generate_fame_portrait.png</portraiticon>
-    <rollovertextid>38244</rollovertextid>
-    <shortrollovertextid>38245</shortrollovertextid>
-    <los>1.0000</los>
-    <initialresource resourcetype="XP">84.0000</initialresource>
-    <resourcesubtype>Fame</resourcesubtype>
-    <allowedage>0</allowedage>
-    <decay delay="0.0000" duration="0.0000">
-    </decay>
-    <gathererlimit>8</gathererlimit>
-    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
-    <unittype>LogicalTypeEasySelectAvoid</unittype>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>Food</unittype>
-    <unittype>EmbellishmentClass</unittype>
-    <unittype>Unattackable</unittype>
+    <animfile>effects\projectiles\musket_ball.xml</animfile>
+    <icon>resources\images\icons\command\aztecaltar\canoe_pair.png</icon>
+    <portraiticon>resources\images\icons\command\aztecaltar\canoe_pair.png</portraiticon>
+    <rollovertextid>302515</rollovertextid>
+    <shortrollovertextid>302515</shortrollovertextid>
+    <initialhitpoints>900.0000</initialhitpoints>
+    <maxhitpoints>900.0000</maxhitpoints>
+    <trainpoints>40.0000</trainpoints>
+    <lifespan>0.3000</lifespan>
+    <buildbounty>50.0000</buildbounty>
+    <cost resourcetype="Gold">500.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.5000">
+    </armor>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Ship</unittype>
     <unittype>Unit</unittype>
-    <unittype>Resource</unittype>
-    <unittype>AbstractResourceCrate</unittype>
-    <unittype>AbstractXPCrate</unittype>
-    <unittype>AbstractTradeCrate</unittype>
-    <flag>Immoveable</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>DoNotCreateUnitGroupAutomatically</flag>
-    <flag>RMCanRotate</flag>
-    <flag>Doppled</flag>
-    <flag>SelectWithObstruction</flag>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>MercType5</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>NoHPBar</flag>
-    <flag>Invulnerable</flag>
-    <flag>DoNotDieAtZeroHitpoints</flag>
-    <flag>DieAtZeroResources</flag>
-    <flag>DoNotValidateResourceInventory</flag>
-    <flag>DoNotValidateResourceInventory</flag>
-    <flag>ObscuredByUnits</flag>
-    <flag>NotDeleteable</flag>
-    <flag>NotPlayerPlaceable</flag>
+    <flag>HeroName1</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
-    <command page="10" column="7">Delete</command>
+    <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
   </unit>
 
 
