@@ -25,7 +25,7 @@
     </effects>
   </tech>
   <tech name="zpSPCAztecAltarColonializeShadow" type="Normal">
-    <dbid>40983</dbid>
+    <dbid>409992</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -42,7 +42,7 @@
     </effects>
   </tech>
   <tech name="zpSPCAztecAltarBasicShadow" type="Normal">
-    <dbid>40984</dbid>
+    <dbid>40993</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -55,7 +55,7 @@
     </effects>
   </tech>
   <tech name="zpSPCAztecAltarLakeCeremonyShadow" type="Normal">
-    <dbid>40984</dbid>
+    <dbid>40994</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -24115,7 +24115,7 @@
     </effects>
   </tech>
   <tech name="zpTrainCanoe" type="Normal">
-    <dbid>40991</dbid>
+    <dbid>40995</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>

@@ -52118,6 +52118,7 @@
     <command page="9" column="0">aztecAltarLakeCanoe</command>
     <command page="10" column="2">SetGatherPointEconomy</command>
     <command page="10" column="2">SetGatherPointMilitary</command>
+    <command page="10" column="7">Delete</command>
     <tactics>aztecaltar.tactics</tactics>
 </unit>
 <unit id="20702" name="zpTradepostAztecCapturable">

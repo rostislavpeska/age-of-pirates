@@ -277,5 +277,9 @@
 				<damagebonus type="AbstractFort">2.000000</damagebonus>
 			</protoaction>
 		</unit>
+		<unit name="zpAztecAltar">
+			<flag>Invulnerable</flag>
+			<flag>NotDeleteable</flag>
+		</unit>
 	</protomods>
 </mods>

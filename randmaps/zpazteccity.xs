@@ -338,7 +338,7 @@ void main(void)
 	// Define lake area
 
 	int lakeArea = rmCreateArea("lakeArea");
-    rmSetAreaSize(lakeArea , rmAreaTilesToFraction(23000), rmAreaTilesToFraction(23000));
+    rmSetAreaSize(lakeArea , rmAreaTilesToFraction(24000), rmAreaTilesToFraction(24000));
     rmSetAreaLocation(lakeArea , xCenter, zCenter);		
     rmSetAreaCoherence(lakeArea , 0.8);
     rmSetAreaElevationVariation(lakeArea, 0.0);
@@ -518,6 +518,16 @@ void main(void)
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.30);
 
+	// Ritual Canoe Water Spawners
+	int waterSpawnerID=rmCreateObjectDef("Water Spawner");
+	rmAddObjectDefItem(waterSpawnerID, "zpSPCAztecWaterSpawner", 1, 0.0);
+	rmSetObjectDefAllowOverlap(waterSpawnerID, true);
+	rmSetObjectDefMinDistance(waterSpawnerID, 0.0);
+	rmSetObjectDefMaxDistance(waterSpawnerID, 0.0);
+	for(k=1; <= cNumberNonGaiaPlayers) {
+		rmPlaceObjectDefAtLoc(waterSpawnerID, k, blockX2, blockZ0-rmZTilesToFraction(20), 1);
+		rmPlaceObjectDefAtLoc(waterSpawnerID, k, blockX2, blockZ4+rmZTilesToFraction(20), 1);
+	}
 
 	// *************************** Place City Blocks *******************************
 
@@ -596,6 +606,7 @@ void main(void)
 	rmAddObjectDefConstraint(startingUnits, farAvoidTradeSockets);
 
 	// Player start
+	rmSetNuggetDifficulty(1, 1);
 	if (rmGetPlayerCiv(i) == rmGetCivID("XPAztec")) 
 		rmPlaceGroupingAtLoc(playerStart, firstDefender, blockX2, blockZ2);
 	else
@@ -645,7 +656,7 @@ void main(void)
     int northContinentID = rmCreateArea("north_continent");
     rmSetAreaSize(northContinentID, 0.35, 0.35);
     rmSetAreaCoherence(northContinentID, 0.65);
-    rmSetAreaMix(northContinentID, "texas_grass");
+    rmSetAreaMix(northContinentID, "texas_grass_Skrimish");
 		rmAddAreaTerrainLayer(northContinentID, "Texas\ground5_tex", 0, 2);
 		rmAddAreaTerrainLayer(northContinentID, "Texas\ground3_tex", 2, 4);
     rmSetAreaBaseHeight(northContinentID, 4);  // embassy structure height
@@ -666,7 +677,7 @@ void main(void)
     int southContinentID = rmCreateArea("south_continent");
     rmSetAreaSize(southContinentID, 0.35, 0.35);
     rmSetAreaCoherence(southContinentID, 0.65);
-    rmSetAreaMix(southContinentID, "texas_grass");
+    rmSetAreaMix(southContinentID, "texas_grass_Skrimish");
 		rmAddAreaTerrainLayer(southContinentID, "Texas\ground5_tex", 0, 2);
 		rmAddAreaTerrainLayer(southContinentID, "Texas\ground3_tex", 2, 4);
     rmSetAreaBaseHeight(southContinentID, 4);  // embassy structure height
@@ -781,7 +792,7 @@ void main(void)
 
 	// Create north elevated area
     int northElevatedID = rmCreateArea("north_elevated");
-	rmSetAreaMix(northElevatedID, "texas_grass");
+	rmSetAreaMix(northElevatedID, "texas_grass_Skrimish");
     rmSetAreaSize(northElevatedID, 0.3, 0.3);
     rmSetAreaCoherence(northElevatedID, 0.35);
     rmSetAreaBaseHeight(northElevatedID, 4.6);
@@ -801,7 +812,7 @@ void main(void)
 
     // Create south elevated area  
     int southElevatedID = rmCreateArea("south_elevated");
-	rmSetAreaMix(southElevatedID, "texas_grass");
+	rmSetAreaMix(southElevatedID, "texas_grass_Skrimish");
     rmSetAreaSize(southElevatedID, 0.3, 0.3);
     rmSetAreaCoherence(southElevatedID, 0.35);
     rmSetAreaBaseHeight(southElevatedID, 4.6);
@@ -1984,6 +1995,57 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
+
+	// Canoe Training
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("TrainCanoeON_Plr"+k);
+		rmCreateTrigger("TrainCanoeOFF_Plr"+k);
+		rmCreateTrigger("TrainCanoeTIME_Plr"+k);
+
+		rmSwitchToTrigger(rmTriggerID("TrainCanoeON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+centerMod1); // Unique Object ID Village 3
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpLakeCanoeProxy");
+		rmSetTriggerConditionParamInt("Dist",35);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTrainCanoe"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainCanoeOFF_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainCanoeTIME_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("TrainCanoeOFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainCanoeON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("TrainCanoeTIME_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",200);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTrainCanoe"); //operator
+		rmSetTriggerEffectParamInt("Status",0);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
 	
 
 	// ****************** Convert Districts ******************
@@ -2072,6 +2134,8 @@ void main(void)
 
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("District1off_Player"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainCanoeON_Plr"+k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
@@ -2092,6 +2156,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("District1off_Dellayed_Player"+k));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("District1on_Player"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainCanoeON_Plr"+k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
