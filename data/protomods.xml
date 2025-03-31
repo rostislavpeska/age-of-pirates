@@ -8450,12 +8450,12 @@
     <allowedage>2</allowedage>
     <armor type="Siege" value="0.0000">
     </armor>
-    <train row="0" page="0" column="0">deNatHolcanJavelineer</train>
+    <tech row="0" page="2" column="1">zpPickNativeConsulateTechAvailable</tech>
+    <!--<train row="0" page="0" column="0">deNatHolcanJavelineer</train>
     <train row="0" page="0" column="1">NatMedicineMan</train>
     <train row="0" page="0" column="2">zpNatConquistador</train>
     <train row="0" page="0" column="3">NatLightningWarrior</train>
     <train row="0" page="0" column="4">NatBlackwoodArcher</train>
-    <tech row="0" page="2" column="1">zpPickNativeConsulateTechAvailable</tech>
     <tech row="0" page="2" column="1">NatCottonArmor</tech>
     <tech row="0" page="2" column="2">NatCalendar</tech>
     <tech row="0" page="2" column="3">NatMayaPyramids</tech>
@@ -8475,7 +8475,7 @@
     <tech row="0" page="1" column="1">ChampionTupi</tech>
     <tech row="0" page="2" column="1">NatAnimalLore</tech>
     <tech row="0" page="2" column="2">NatPoisonArrowFrogs</tech>
-    <tech row="0" page="2" column="3">NatForestBurning</tech>
+    <tech row="0" page="2" column="3">NatForestBurning</tech>-->
     <unittype>LogicalTypeValidSabotage</unittype>
     <unittype>LogicalTypeMinimapFilterEconomic</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>

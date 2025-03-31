@@ -347,12 +347,12 @@ void main(void)
 
 	// Grid coordinates
 
-	float locX1 = xCenter-rmXTilesToFraction(52);
+	float locX1 = xCenter-rmXTilesToFraction(53);
 	float locX2 = xCenter-rmXTilesToFraction(30);
 	float locX3 = xCenter-rmXTilesToFraction(10);
 	float locX4 = xCenter+rmXTilesToFraction(10);
 	float locX5 = xCenter+rmXTilesToFraction(30);
-	float locX6 = xCenter+rmXTilesToFraction(52);
+	float locX6 = xCenter+rmXTilesToFraction(53);
 
 	float locZ1 = zCenter-rmZTilesToFraction(50);
 	float locZ2 = zCenter-rmZTilesToFraction(30);
@@ -369,11 +369,11 @@ void main(void)
 	float blockX3 = xCenter+rmZTilesToFraction(20);
 	float blockX4 = xCenter+rmZTilesToFraction(40);
 
-	float blockZ0 = zCenter-rmZTilesToFraction(40);
+	float blockZ0 = zCenter-rmZTilesToFraction(42);
 	float blockZ1 = zCenter-rmZTilesToFraction(20);
 	float blockZ2 = zCenter+rmZTilesToFraction(0);
 	float blockZ3 = zCenter+rmZTilesToFraction(20);
-	float blockZ4 = zCenter+rmZTilesToFraction(40);
+	float blockZ4 = zCenter+rmZTilesToFraction(42);
 
 	// Block constraints
 
@@ -381,7 +381,7 @@ void main(void)
 	int block2Constraint = rmCreateBoxConstraint("stay in the aztec block 2", blockX3-rmZTilesToFraction(16), blockZ0-rmZTilesToFraction(16), blockX3+rmXTilesToFraction(16), blockZ0+rmZTilesToFraction(16));
 	int block3Constraint = rmCreateBoxConstraint("stay in the aztec block 3", blockX1-rmZTilesToFraction(16), blockZ4-rmZTilesToFraction(16), blockX1+rmXTilesToFraction(16), blockZ4+rmZTilesToFraction(16));
 	int block4Constraint = rmCreateBoxConstraint("stay in the aztec block 4", blockX3-rmZTilesToFraction(16), blockZ4-rmZTilesToFraction(16), blockX3+rmXTilesToFraction(16), blockZ4+rmZTilesToFraction(16));
-	int blockCenterConstraint = rmCreateBoxConstraint("stay in the aztec block center", blockX2-rmZTilesToFraction(36), blockZ2-rmZTilesToFraction(16), blockX2+rmXTilesToFraction(36), blockZ2+rmZTilesToFraction(16));
+	int blockCenterConstraint = rmCreateBoxConstraint("stay in the aztec block center", blockX2-rmZTilesToFraction(36), blockZ2-rmZTilesToFraction(18), blockX2+rmXTilesToFraction(36), blockZ2+rmZTilesToFraction(18));
 	int blockNarrowConstraint1 = rmCreateBoxConstraint("stay in the aztec block narrow 1", locX1-rmZTilesToFraction(9), blockZ2-rmZTilesToFraction(38), locX1+rmXTilesToFraction(9), blockZ2+rmZTilesToFraction(38));
 	int blockNarrowConstraint2 = rmCreateBoxConstraint("stay in the aztec block narrow 2", locX6-rmZTilesToFraction(9), blockZ2-rmZTilesToFraction(38), locX6+rmXTilesToFraction(9), blockZ2+rmZTilesToFraction(38));
 
@@ -401,13 +401,13 @@ void main(void)
     rmSetGroupingMaxDistance(bridgeGrouping3, 0.00);
 	//rmAddGroupingToClass(bridgeGrouping3, rmClassID("classPlateau"));
 
-	rmPlaceGroupingAtLoc(bridgeGrouping, 0, locX1+rmXTilesToFraction(12), blockZ2+rmZTilesToFraction(1));
-	rmPlaceGroupingAtLoc(bridgeGrouping, 0, locX6-rmXTilesToFraction(12), blockZ2+rmXTilesToFraction(1));
+	rmPlaceGroupingAtLoc(bridgeGrouping, 0, locX1+rmXTilesToFraction(13), blockZ2+rmZTilesToFraction(1));
+	rmPlaceGroupingAtLoc(bridgeGrouping, 0, locX6-rmXTilesToFraction(13), blockZ2+rmXTilesToFraction(1));
 
-	rmPlaceGroupingAtLoc(bridgeGrouping2, 0, blockX1, locZ2+rmZTilesToFraction(10));
-	rmPlaceGroupingAtLoc(bridgeGrouping2, 0, blockX1, locZ5-rmZTilesToFraction(10));
-	rmPlaceGroupingAtLoc(bridgeGrouping2, 0, blockX3, locZ2+rmZTilesToFraction(10));
-	rmPlaceGroupingAtLoc(bridgeGrouping2, 0, blockX3, locZ5-rmZTilesToFraction(10));
+	rmPlaceGroupingAtLoc(bridgeGrouping2, 0, blockX1, locZ2+rmZTilesToFraction(8));
+	rmPlaceGroupingAtLoc(bridgeGrouping2, 0, blockX1, locZ5-rmZTilesToFraction(8));
+	rmPlaceGroupingAtLoc(bridgeGrouping2, 0, blockX3, locZ2+rmZTilesToFraction(8));
+	rmPlaceGroupingAtLoc(bridgeGrouping2, 0, blockX3, locZ5-rmZTilesToFraction(8));
 
 	rmPlaceGroupingAtLoc(bridgeGrouping3, 0, locX1-rmXTilesToFraction(23), blockZ2);
 	rmPlaceGroupingAtLoc(bridgeGrouping3, 0, locX6+rmXTilesToFraction(22), blockZ2);

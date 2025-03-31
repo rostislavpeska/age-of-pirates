@@ -6134,6 +6134,27 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">deNatHolcanJavelineer</target>
       </effect>
+      <effect type="CommandAdd" tech="NatCottonArmor" page="2" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="NatCalendar" page="2" column="2">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="NatMayaPyramids" page="2" column="3">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="ChampionMaya" page="1" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="WarriorSocietyMaya" page="1" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatHolcanJavelineer" page="0" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" proto="NatMedicineMan" page="0" column="2">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
       <effect type="SetName" proto="zpWaterTemple" culture="none" newname="300401">
       </effect>
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpWaterTemple" relativity ="Absolute">
@@ -6232,6 +6253,24 @@
       <effect type="TechStatus" status="obtainable">ChampionZapotec</effect>
       <effect type="SetName" proto="zpWaterTemple" culture="none" newname="300402">
       </effect>
+      <effect type="CommandAdd" tech="NatXPZapotecFoodOfTheGods" page="2" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="NatXPZapotecCultOfTheDead" page="2" column="2">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="NatXPZapotecCloudPeople" page="2" column="3">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="WarriorSocietyZapotec" page="1" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="ChampionZapotec" page="1" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" proto="NatLightningWarrior" page="0" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpWaterTemple" relativity ="Absolute">
 				<target type ="Player"></target>
 			</effect>
@@ -6263,6 +6302,24 @@
       <effect type="TechStatus" status="obtainable">zpNatJesuitFlyingButtress</effect>
       <effect type="TechStatus" status="obtainable">zpNatDisciplinedJesuit</effect>
       <effect type="SetName" proto="zpWaterTemple" culture="none" newname="300400">
+      </effect>
+      <effect type="CommandAdd" tech="zpNatJesuitFlyingButtress" page="2" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatJesuitSmokelessPowder" page="2" column="2">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatJesuitSchools" page="2" column="3">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatDisciplinedJesuit" page="1" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHonoredJesuit" page="1" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatConquistador" page="0" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
       </effect>
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpWaterTemple" relativity ="Absolute">
 				<target type ="Player"></target>
@@ -17090,6 +17147,24 @@
       <effect type="TechStatus" status="obtainable">WarriorSocietyTupi</effect>
       <effect type="SetName" proto="zpWaterTemple" culture="none" newname="301819">
       </effect>
+      <effect type="CommandAdd" tech="NatAnimalLore" page="2" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="NatPoisonArrowFrogs" page="2" column="2">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="NatForestBurning" page="2" column="3">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="WarriorSocietyTupi" page="1" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="ChampionTupi" page="1" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" proto="NatBlackwoodArcher" page="0" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpWaterTemple" relativity ="Absolute">
 				<target type ="Player"></target>
 			</effect>
@@ -21827,6 +21902,18 @@
         <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
       </effect>
       <effect type="Data" action="AutoGatherWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="RainbowCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="RainbowFood" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="RainbowWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="RainbowXP" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
       </effect>
       <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
