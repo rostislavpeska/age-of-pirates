@@ -53592,9 +53592,9 @@
 
 
   <!--Aztec MAPMODS-->
-  <unit name="SPCXPWoodFortGate">
+  <!--<unit name="SPCXPWoodFortGate">
     <animfile>buildings\wall\spc\aztec_gate.xml</animfile>
-  </unit>
+  </unit>-->
 
 
 
