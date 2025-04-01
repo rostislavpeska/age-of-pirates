@@ -91,6 +91,13 @@ minInterval 1
       }
 
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
+
+      // Block walls on bohemia
+      if (cRandomMapName == "zpKingofbohemia")
+      {
+         xsEnableRule("kingOfBohemiaChats");
+         gPirateBlockWalls = true;
+      }
    }
 
    // Attack/Defend style maps
@@ -402,6 +409,67 @@ minInterval 10
    }
 
    xsDisableSelf();
+}
+
+//==============================================================================
+/* Look for custom chats to send on King of Bohemia
+   Chats to send:
+      AlianceEstablishedToAlly
+      AlianceCanceledToEnemy
+      AlianceEstablishedToEnemy
+
+*/
+//==============================================================================
+int getNumberAllies()
+{
+   int tempCount = 0;
+
+   for (i = 1; <= cNumberPlayers)
+   {
+      if (kbIsPlayerAlly(i) == true)
+      {
+         tempCount += 1;
+      }
+   }
+
+   return tempCount;
+}
+
+rule kingOfBohemiaChats
+inactive
+minInterval 10
+{
+   // See if the number of allies changes
+   static int numberAllies = 0;
+   int tempNumberAllies = getNumberAllies();
+   static int chatCounter = 1;
+
+   if (tempNumberAllies > numberAllies)
+   {
+      // I gained allies, I am the attacking team
+      //if (chatCounter == cMyID)
+      //{
+         //aiChat(1, "tried to send");
+         sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemyIntro);
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemyTown);
+      //}
+      numberAllies = tempNumberAllies;
+   }
+   else if (tempNumberAllies < numberAllies)
+   {
+      // I lost allies, I am the defender
+      if (chatCounter == cMyID)
+      {
+         sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemyISpotHisArmyMyBaseLarge);
+      }
+      numberAllies = tempNumberAllies;
+   }
+
+   chatCounter += 1;
+   if (chatCounter > cNumberPlayers)
+   {
+      chatCounter = 1;
+   }
 }
 
 //==============================================================================
@@ -3678,7 +3746,7 @@ minInterval 30
             if (kbUnitGetBaseID(fortUnitID) >= 0)
             { // Base has been created for it.
                // AssertiveWall: Now build wall
-               if (gStartOnDifferentIslands == false)
+               if (gStartOnDifferentIslands == false && gPirateBlockWalls == false)
                {
                   xsEnableRule("forwardBaseWall"); // AssertiveWall: Chain of rules to build walls and towers
                }

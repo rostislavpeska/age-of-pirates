@@ -2338,10 +2338,10 @@ minInterval 5
             xsEnableRule("waterDefend");
          }
          xsEnableRule("coastalGuns");
-         //if (gMigrationMap == true)
-         //{
+         if (gPirateBlockWalls == false)
+         {
             xsEnableRule("dockWallOne");
-         //}
+         }
       }
 
       // AssertiveWall: Enable island hopping on the following maps
