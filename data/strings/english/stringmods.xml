@@ -2523,6 +2523,11 @@
       <string _locid="302523">Worshiping Gof of Crafting: Temple is gathering Coin</string>
       <string _locid="302524">Worship Multiple Gods: Temple will gather all resources</string>
       <string _locid="302525">Worshiping Multiple Gods: Temple is gathering all resources</string>
+      <string _locid="302526">Mercenary Bounties</string>
+      <string _locid="302527">Native Gold</string>
+      <string _locid="302528">Enemy units grant a small sum of Coin in addition to Experience when defeated.</string>
+      <string _locid="302529">TEAM Native Gold</string>
+      <string _locid="302530">Native Treasuries and Safehouses generate Coin faster.</string>
 
 
       <!-- ======================================== -->

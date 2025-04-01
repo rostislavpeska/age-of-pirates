@@ -453,6 +453,12 @@
     <allowduringnorush>1</allowduringnorush>
     <startsoundset>PowerInformers</startsoundset>
   </power>
+  <power name="zpPassiveMarketRainbow" type="UnitAction">
+    <displaynameid>301831</displaynameid>
+    <rolloverid>123236</rolloverid>
+    <icon>resources\images\icons\abilities\passive_district_market.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
 
 
 

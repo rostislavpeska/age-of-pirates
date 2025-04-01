@@ -36091,6 +36091,7 @@
     <flag>NotDeleteable</flag>
     <flag>Invulnerable</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
+    <command page="11" column="4">Abilities</command>
     <tactics>parismarket.tactics</tactics>
     <protoaction>
       <name>AutoGatherXPTeam</name>
@@ -36111,7 +36112,7 @@
   </unit>
   <unit id="20478" name="zpSPCNationalBank">
     <dbid>20478</dbid>
-    <displaynameid>301833</displaynameid>
+    <displaynameid>123018</displaynameid>
     <editornameid>301834</editornameid>
     <obstructionradiusx>3.5000</obstructionradiusx>
     <obstructionradiusz>3.5000</obstructionradiusz>
@@ -36165,6 +36166,7 @@
     <unittype>AbstractBank</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
+    <tech row="0" page="1" column="1">DESPCTaulaDeCanvi</tech>
     <tech row="0" page="1" column="2">DESPCBankLoan</tech>
     <tech row="0" page="1" column="3">DESPCMercenaryBounties</tech>
     <flag>VisibleUnderFog</flag>
@@ -51657,8 +51659,10 @@
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractBank</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
-    <tech row="0" page="1" column="2">DESPCBankLoan</tech>
+    <tech row="0" page="1" column="2">zpSPCTreasuryProductionBonus</tech>
+    <tech row="0" page="1" column="2">zpSPCTreasuryProductionBonusSingle</tech>
     <tech row="0" page="1" column="3">DESPCMercenaryBounties</tech>
+    <tech row="0" page="1" column="3">zpSPCMercenaryBountiesSingle</tech>
     <flag>VisibleUnderFog</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -51877,6 +51881,7 @@
     <flag>NotDeleteable</flag>
     <flag>Invulnerable</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
+    <command page="11" column="4">Abilities</command>
     <tactics>azteccitymarket.tactics</tactics>
     <protoaction>
       <name>AutoGatherXPTeam</name>

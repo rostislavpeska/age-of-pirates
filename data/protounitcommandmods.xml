@@ -596,7 +596,6 @@
     <activerollovertextid>302517</activerollovertextid>
     <command>unitSetTactic("TacticSpawnLakeCanoe")</command>
   </protounitcommand>
-
   <protounitcommand>
     <name>AztecTempleRainbow</name>
     <icon>resources\images\icons\command\tactic_rainbow_trickle_off.png</icon>

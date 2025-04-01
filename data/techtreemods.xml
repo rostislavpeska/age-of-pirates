@@ -21844,6 +21844,9 @@
       <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCNationalBank</target>
       </effect>
+      <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">deSPCGreatBank</target>
+      </effect>
       <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCTownMill</target>
       </effect>
@@ -22911,7 +22914,6 @@
       <effect type="TechStatus" status="obtainable">DESPCVeteranCityGuard</effect>
       <effect type="TechStatus" status="obtainable">DESPCGuardCityGuard</effect>
       <effect type="TechStatus" status="obtainable">DESPCImperialCityGuard</effect>
-      <effect type="TechStatus" status="obtainable">DESPCTaulaDeCanvi</effect>
       <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
       <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
       <effect type="TechStatus" status="obtainable">zpSPCPapalBlessingClone</effect>
@@ -23177,6 +23179,8 @@
       <effect type="TechStatus" status="obtainable">zpSPCAztecCityWarCeremony</effect>
       <effect type="TechStatus" status="obtainable">zpSPCAztecCityLakeCeremony</effect>
       <effect type="TechStatus" status="obtainable">zpSPCAztecAltarColonializeShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCMercenaryBountiesSingle</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCTreasuryProductionBonusSingle</effect>
       <effect type="TechStatus" status="active">zpSPCAztecAltarBasicShadow</effect>
       <effect type="CommandAdd" tech="zpSPCAztecInfluenceCity" page="1" column="1">
         <target type="ProtoUnit">TradingPost</target>
@@ -23709,7 +23713,7 @@
       <effect type="CommandAdd" tech="ArtificialFertilizer" page="1" column="0">
         <target type="ProtoUnit">deField</target>
       </effect>
-      <effect type="CommandAdd" tech="EarthCeremony" page="2" column="1">
+      <effect type="CommandAdd" tech="EarthCeremony" page="1" column="1">
         <target type="ProtoUnit">deField</target>
       </effect>
       <effect type="CommandAdd" tech="EarthCeremonyNoMine" page="1" column="1">
@@ -24210,6 +24214,61 @@
       <effect type="Data" action="SpawnCanoe" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCAztecWaterSpawner">
         <target type="Player">
         </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCMercenaryBountiesSingle" type="Normal">
+    <dbid>40996</dbid>
+    <displaynameid>302526</displaynameid>
+    <cost resourcetype="Food">300.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\mercenary_bounties_single.png</icon>
+    <rollovertextid>302528</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data2" amount="1.00" subtype="BountyResourceExtra" unittype="Unit" resource="Gold" priority="1" bountyrate="30.00" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCTreasuryProductionBonus" type="Normal">
+    <dbid>40967</dbid>
+    <displaynameid>302529</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\historical_maps\native_treasures_team.png</icon>
+    <rollovertextid>302530</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecTreasury</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCTreasuryProductionBonusSingle" type="Normal">
+    <dbid>40968</dbid>
+    <displaynameid>302527</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\historical_maps\native_treasures_single.png</icon>
+    <rollovertextid>302530</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecTreasury</target>
       </effect>
     </effects>
   </tech>
