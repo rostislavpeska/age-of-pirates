@@ -78,7 +78,8 @@ minInterval 1
        cRandomMapName == "zpmississippi" ||
        cRandomMapName == "zpwwcanyon" ||
        cRandomMapName == "zpgrinch" ||
-       cRandomMapName == "zpkingofbohemia")
+       cRandomMapName == "zpkingofbohemia" ||
+       cRandomMapName == "zpflorence")
    {
       gIsPirateMap = true;
       if (haveHumanAlly() == true)
