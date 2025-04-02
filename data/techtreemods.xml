@@ -24238,7 +24238,7 @@
     </effects>
   </tech>
   <tech name="zpSPCTreasuryProductionBonus" type="Normal">
-    <dbid>40967</dbid>
+    <dbid>40997</dbid>
     <displaynameid>302529</displaynameid>
     <cost resourcetype="Food">200.0000</cost>
     <cost resourcetype="Wood">200.0000</cost>
@@ -24256,7 +24256,7 @@
     </effects>
   </tech>
   <tech name="zpSPCTreasuryProductionBonusSingle" type="Normal">
-    <dbid>40968</dbid>
+    <dbid>40998</dbid>
     <displaynameid>302527</displaynameid>
     <cost resourcetype="Food">200.0000</cost>
     <cost resourcetype="Wood">200.0000</cost>
