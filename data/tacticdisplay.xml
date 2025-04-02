@@ -10,4 +10,8 @@
   <unittype>zpNautilusTransport</unittype>
   <unittype>zpDocHolliday</unittype>
   <unittype>zpKorowaiOutpost</unittype>
+  <unittype>zpSPCAztecMediumTemple</unittype>
+  <unittype>zpSPCCapturableFactory</unittype>
+  <unittype>zpSPCCapturableFactoryMed</unittype>
+  <unittype>zpSPCCapturableFactoryFlorence</unittype>
 </tacticdisplay>

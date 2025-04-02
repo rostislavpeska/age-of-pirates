@@ -280,6 +280,7 @@
   </zpspcezio>
   <zpspcrowboat>
     <ability>deSPCStealthHide<rof>40</rof><castonself>true</castonself><donotforcestop>true</donotforcestop><activetimecooldown>true</activetimecooldown><forceshowrollover>true</forceshowrollover></ability>
+    <ability>ypPowerSabotage<tech>zpSPCRowboatSabotage</tech><rof>240</rof></ability>
   </zpspcrowboat>
   <zpspcclaudiaauditore>
     <ability>ypPowerHeavenlyFireBomb<rof>120</rof></ability>
@@ -291,6 +292,15 @@
   <zpspcgreatbasilicaconvertable>
     <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
   </zpspcgreatbasilicaconvertable>
+  <zpspcaztecgreattemple>
+    <ability>zpPowerInformersAztec<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcaztecgreattemple>
+  <zpspccitymarket>
+    <ability>zpPassiveMarketRainbow<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspccitymarket>
+  <zpspcazteccitymarket>
+    <ability>zpPassiveMarketRainbow<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcazteccitymarket>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

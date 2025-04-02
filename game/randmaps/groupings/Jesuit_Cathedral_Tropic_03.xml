@@ -38,7 +38,6 @@
 		<unit variation="227" posx="8.6590" posz="0.7398" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">NativeTownObstruction</unit>
 		<unit variation="28" posx="-13.2626" posz="-0.6111" orientx="-0.0669" orienty="0.0000" orientz="0.9978">ypSMJesuitPeasants</unit>
 		<unit variation="227" posx="0.4776" posz="4.4881" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">NativeTownObstruction</unit>
-		<unit variation="91" posx="-5.3310" posz="3.2368" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpJesuitCathedral</unit>
 		<unit variation="85" posx="6.4700" posz="3.8222" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">ypNativeTempleJesuit</unit>
 		<unit variation="227" posx="11.1379" posz="5.0861" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">NativeTownObstruction</unit>
 		<unit variation="185" posx="6.8670" posz="4.5016" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpJesuitGarden</unit>
@@ -49,6 +48,7 @@
 		<unit variation="227" posx="9.9928" posz="11.1349" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">NativeTownObstruction</unit>
 		<unit variation="227" posx="5.4771" posz="11.4432" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">NativeTownObstruction</unit>
 		<unit variation="89" posx="-9.1228" posz="12.1445" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
+		<unit variation="91" posx="-5.3310" posz="3.2368" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpJesuitCathedral</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_beach_street_ground">

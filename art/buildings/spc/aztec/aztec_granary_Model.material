@@ -1,0 +1,22 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\aztec\aztec_dock\Textures\aztec_dock_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\aztec\aztec_dock\Textures\aztec_dock_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\aztec\aztec_dock\Textures\aztec_dock_mata_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="homecity\aztec\aztec_dock\Textures\aztec_dock_01_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\aztec\aztec_dock\Textures\aztec_dock_01_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\aztec\aztec_dock\Textures\aztec_dock_01_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

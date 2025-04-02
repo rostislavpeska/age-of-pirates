@@ -7,7 +7,7 @@
             <component>
                 dock
                 <assetreference type="GrannyModel">
-                    <file>buildings\spc\dry_dock\spc_dry_dock_deathmodel</file>
+                    <file>buildings\basilica\aztec_cathedral_Model</file>
                 </assetreference>
             </component>
             <anim>Idle<component>dock</component></anim>

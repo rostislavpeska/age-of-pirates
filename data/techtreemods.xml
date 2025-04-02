@@ -24,6 +24,46 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpSPCAztecAltarColonializeShadow" type="Normal">
+    <dbid>409992</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" tactic="TacticSpawnWarriorPriest" subtype="TacticEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecAltar</target>
+      </effect>
+      <effect type="Data" amount="1.00" tactic="TacticSpawnSkullKnight" subtype="TacticEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecAltar</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecAltarBasicShadow" type="Normal">
+    <dbid>40993</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.00" tactic="TacticSpawnSettler" subtype="TacticEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecAltar</target>
+      </effect>
+      <effect type="Data" amount="0.00" tactic="TacticSpawnHealer" subtype="TacticEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecAltar</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecAltarLakeCeremonyShadow" type="Normal">
+    <dbid>40994</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" tactic="TacticSpawnLakeCanoe" subtype="TacticEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecAltar</target>
+      </effect>
+    </effects>
+  </tech>
   <tech name="zpNatKorowaiStealth" type="Normal">
     <dbid>40617</dbid>
     <displaynameid>301654</displaynameid>
@@ -4001,11 +4041,17 @@
       <effect type="CommandRemove" proto="ypRicePaddy">
         <target type="ProtoUnit">deSettlerAfrican</target>
       </effect>
-       <effect type="CommandRemove" proto="ypRicePaddy">
+      <effect type="CommandRemove" proto="ypRicePaddy">
         <target type="ProtoUnit">SettlerNative</target>
       </effect>
-            <effect type="CommandRemove" proto="ypRicePaddy">
+      <effect type="CommandRemove" proto="ypRicePaddy">
         <target type="ProtoUnit">Settler</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypRicePaddy">
+        <target type="ProtoUnit">SettlerWagon</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypRicePaddy">
+        <target type="ProtoUnit">Coureur</target>
       </effect>
       <effect type="CommandAdd" proto="ypRicePaddy" page="0" column="3">
         <target type="ProtoUnit">zpSettlerZen</target>
@@ -5086,7 +5132,9 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatChevaulegerProxy" culture="none" newname="122482">
       </effect>
-       <effect mergemode="add" type="SetName" proto="zpNatBohemianLandsknecht" culture="none" newname="302328">
+      <effect mergemode="add" type="SetName" proto="zpNatBohemianLandsknecht" culture="none" newname="302328">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="42433">
       </effect>
     </effects>
   </tech>
@@ -5877,8 +5925,10 @@
   <tech name="NativeAztec">
     <effects>
       <effect mergeMode='add' type="TechStatus" status="obtainable">zpNatAztecInfluence</effect>
+      <effect mergeMode='add' type="TechStatus" status="obtainable">zpSPCAztecInfluenceCity</effect>
       <effect mergeMode='add' type="TechStatus" status="obtainable">zpAztecWaterTemple</effect>
       <effect mergeMode='add' type="TechStatus" status="obtainable">zpAztecArmy</effect>
+      <effect mergeMode='add' type="TechStatus" status="obtainable">zpSPCAztecArmyCity</effect>
       <effect mergeMode='add' type="TechStatus" status="obtainable">zpAztecOutposts</effect>
     </effects>
   </tech>
@@ -5942,6 +5992,12 @@
       </effect>
       <effect type="CommandRemove" proto="Farm">
         <target type="ProtoUnit">Settler</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">SettlerWagon</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">Coureur</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpNatChampionSkullKnightShadow</effect>
       <effect type="TechStatus" status="obtainable">zpNatEliteSkullKnightShadow</effect>
@@ -6078,6 +6134,27 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">deNatHolcanJavelineer</target>
       </effect>
+      <effect type="CommandAdd" tech="NatCottonArmor" page="2" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="NatCalendar" page="2" column="2">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="NatMayaPyramids" page="2" column="3">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="ChampionMaya" page="1" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="WarriorSocietyMaya" page="1" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatHolcanJavelineer" page="0" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" proto="NatMedicineMan" page="0" column="2">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
       <effect type="SetName" proto="zpWaterTemple" culture="none" newname="300401">
       </effect>
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpWaterTemple" relativity ="Absolute">
@@ -6176,6 +6253,24 @@
       <effect type="TechStatus" status="obtainable">ChampionZapotec</effect>
       <effect type="SetName" proto="zpWaterTemple" culture="none" newname="300402">
       </effect>
+      <effect type="CommandAdd" tech="NatXPZapotecFoodOfTheGods" page="2" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="NatXPZapotecCultOfTheDead" page="2" column="2">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="NatXPZapotecCloudPeople" page="2" column="3">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="WarriorSocietyZapotec" page="1" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="ChampionZapotec" page="1" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" proto="NatLightningWarrior" page="0" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpWaterTemple" relativity ="Absolute">
 				<target type ="Player"></target>
 			</effect>
@@ -6195,18 +6290,36 @@
     <flag>DoNotQueue</flag>
     <effects>
       <effect type="TechStatus" status="unobtainable">zpPickNativeConsulateTechAvailable</effect>
-      <effect civ="Jesuit" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+      <effect civ="SPCJesuit" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
         <target type="Player"></target>
       </effect>
-      <effect type="TechStatus" status="obtainable">YPNatJesuitSmokelessPowder</effect>
-      <effect type="TechStatus" status="obtainable">YPNatJesuitSchools</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitSmokelessPowder</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitSchools</effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">ypNatConquistador</target>
+        <target type="ProtoUnit">zpNatConquistador</target>
       </effect>
-      <effect type="TechStatus" status="obtainable">ypNatHonoredJesuit</effect>
-      <effect type="TechStatus" status="obtainable">YPNatJesuitFlyingButtress</effect>
-      <effect type="TechStatus" status="obtainable">ypNatDisciplinedJesuit</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHonoredJesuit</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitFlyingButtress</effect>
+      <effect type="TechStatus" status="obtainable">zpNatDisciplinedJesuit</effect>
       <effect type="SetName" proto="zpWaterTemple" culture="none" newname="300400">
+      </effect>
+      <effect type="CommandAdd" tech="zpNatJesuitFlyingButtress" page="2" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatJesuitSmokelessPowder" page="2" column="2">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatJesuitSchools" page="2" column="3">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatDisciplinedJesuit" page="1" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHonoredJesuit" page="1" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatConquistador" page="0" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
       </effect>
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpWaterTemple" relativity ="Absolute">
 				<target type ="Player"></target>
@@ -7082,7 +7195,7 @@
   <tech name="zpJewishFreeMasons" type="Normal">
     <dbid>40657</dbid>
     <displaynameid>300455</displaynameid>
-    <cost resourcetype ="Wood">500.0000</cost>
+    <cost resourcetype ="Wood">650.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\free_masons.png</icon>
@@ -7093,10 +7206,10 @@
       <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="0.85" subtype="TrainPoints" relativity="BasePercent">
+      <effect type="Data" amount="0.80" subtype="TrainPoints" relativity="BasePercent">
         <target type="ProtoUnit">Building</target>
       </effect>
-      <effect type="Data" amount="1.15" subtype="Hitpoints" relativity="BasePercent">
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">Building</target>
       </effect>
     </effects>
@@ -17034,6 +17147,24 @@
       <effect type="TechStatus" status="obtainable">WarriorSocietyTupi</effect>
       <effect type="SetName" proto="zpWaterTemple" culture="none" newname="301819">
       </effect>
+      <effect type="CommandAdd" tech="NatAnimalLore" page="2" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="NatPoisonArrowFrogs" page="2" column="2">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="NatForestBurning" page="2" column="3">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="WarriorSocietyTupi" page="1" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" tech="ChampionTupi" page="1" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
+      <effect type="CommandAdd" proto="NatBlackwoodArcher" page="0" column="1">
+        <target type="ProtoUnit">zpWaterTemple</target>
+      </effect>
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpWaterTemple" relativity ="Absolute">
 				<target type ="Player"></target>
 			</effect>
@@ -18783,12 +18914,7 @@
       <effect type="CommandAdd" proto="zpMilitaryCamp" page="6" column="2">
         <target type="ProtoUnit">Explorer</target>
       </effect>
-      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
-        <target type="ProtoUnit">Dock</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpSPCRowboat</target>
-      </effect>
+      <effect type="TechStatus" status="active">zpUnlockRowboatsShadow</effect>
       <effect type="Data" amount="80.00" subtype="PopulationCap" relativity="Absolute">
         <target type="Player">
         </target>
@@ -19504,66 +19630,7 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpMilitaryCamp</target>
       </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">House</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">HouseEast</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">HouseMed</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">Manor</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deHouseAfrican</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deTorp</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">HouseAztec</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deHouseInca</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">ypVillage</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">ypHouseIndian</target>
-      </effect>
-      <effect type="CommandRemove" proto="House">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="HouseEast">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="HouseMed">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="deHouseAfrican">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="deTorp">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="HouseAztec">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="deHouseInca">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="ypVillage">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="ypHouseIndian">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="Manor">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
+      <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>
     </effects>
   </tech>
   <tech name="zpDisableTradeRouteUpgrade" type="Normal">
@@ -20236,7 +20303,7 @@
     <displaynameid>302181</displaynameid>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\abilities\eagle_vision.png</icon>
-    <rollovertextid>300625</rollovertextid>
+    <rollovertextid>62768</rollovertextid>
     <flag>YPNoTextMessage</flag>
     <flag>YPNativeImprovement</flag>
     <flag>DEHideAdvancedRollover</flag>
@@ -20719,9 +20786,6 @@
         <target type="ProtoUnit">Fluyt</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">xpWarCanoe</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">xpTlalocCanoe</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
@@ -20793,9 +20857,6 @@
       <effect type="CommandRemove" proto="Fluyt">
         <target type="ProtoUnit">Dock</target>
       </effect>
-      <effect type="CommandRemove" proto="xpWarCanoe">
-        <target type="ProtoUnit">Dock</target>
-      </effect>
       <effect type="CommandRemove" proto="xpTlalocCanoe">
         <target type="ProtoUnit">Dock</target>
       </effect>
@@ -20865,9 +20926,6 @@
       <effect type="CommandRemove" proto="Fluyt">
         <target type="ProtoUnit">dePort</target>
       </effect>
-      <effect type="CommandRemove" proto="xpWarCanoe">
-        <target type="ProtoUnit">dePort</target>
-      </effect>
       <effect type="CommandRemove" proto="xpTlalocCanoe">
         <target type="ProtoUnit">dePort</target>
       </effect>
@@ -20935,9 +20993,6 @@
         <target type="ProtoUnit">ypDockAsian</target>
       </effect>
       <effect type="CommandRemove" proto="Fluyt">
-        <target type="ProtoUnit">ypDockAsian</target>
-      </effect>
-      <effect type="CommandRemove" proto="xpWarCanoe">
         <target type="ProtoUnit">ypDockAsian</target>
       </effect>
       <effect type="CommandRemove" proto="xpTlalocCanoe">
@@ -20987,6 +21042,11 @@
       <effect type="TechStatus" status="unobtainable">ShipHowitzers</effect>
       <effect type="TechStatus" status="unobtainable">DEShipHowitzersAmerican</effect>
       <effect type="TechStatus" status="unobtainable">PercussionLocks</effect>
+      <effect type="TechStatus" status="unobtainable">BigDockFlamingArrows</effect>
+      <effect type="TechStatus" status="unobtainable">BigDockRawhideCovers</effect>
+      <effect type="TechStatus" status="unobtainable">BigDockCipactli</effect>
+      <effect type="TechStatus" status="unobtainable">deBigDockTotora</effect>
+      <effect type="TechStatus" status="unobtainable">DELegendaryWarCanoes</effect>
       <effect type="CommandRemove" tech="ImperialManOWar">
         <target type="ProtoUnit">Dock</target>
       </effect>
@@ -21025,6 +21085,24 @@
       </effect>
       <effect type="CommandRemove" tech="PercussionLocks">
         <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandRemove" tech="BigDockFlamingArrows">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" tech="BigDockRawhideCovers">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" tech="BigDockCipactli">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" tech="deBigDockTotora">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandRemove" tech="DELegendaryWarCanoes">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="Data" amount="-5.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">xpWarCanoe</target>
       </effect>
     </effects>
   </tech>
@@ -21706,6 +21784,15 @@
       <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactory</target>
       </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
       <effect type="Data" action="AutoGatherCoinTeam" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactoryFlorence</target>
       </effect>
@@ -21715,6 +21802,15 @@
       <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactoryFlorence</target>
       </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryFlorence</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryFlorence</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryFlorence</target>
+      </effect>
       <effect type="Data" action="AutoGatherCoinTeam" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
       </effect>
@@ -21722,6 +21818,15 @@
         <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
       </effect>
       <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCCapturableFactoryMed</target>
       </effect>
       <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
@@ -21738,6 +21843,9 @@
       </effect>
       <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCNationalBank</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">deSPCGreatBank</target>
       </effect>
       <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCTownMill</target>
@@ -21765,6 +21873,66 @@
       </effect>
       <effect type="Data" action="AutoGatherXP" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCMenagerie</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecShrine</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecShrine</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecShrine</target>
+      </effect>
+      <effect type="Data" action="AutoGatherXP" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecShrine</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecTreasury</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecGranary</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecForester</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecForester</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="RainbowCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="RainbowFood" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="RainbowWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="RainbowXP" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecGreatTemple</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecCityMarket</target>
+      </effect>
+      <effect type="Data" action="AutoGatherXPTeam" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecCityMarket</target>
       </effect>
     </effects>
   </tech>
@@ -22129,23 +22297,29 @@
       <effect type="CommandAdd" proto="MercGreatCannon" page="0" column="4">
         <target type="ProtoUnit">zpSPCGermanCathedral</target>
       </effect>
-      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPapalLegateSingle</effect>
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
-      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCitySingle</effect>
       <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
       <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPapalBlessingPrague</effect>
       <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
       <effect type="TechStatus" status="active">zpForbidRevolutions</effect>
-      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
-        <target type="ProtoUnit">Dock</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpSPCRowboat</target>
-      </effect>
+      <effect type="TechStatus" status="active">zpSPCActivateFieldGathering</effect>
+      <effect type="TechStatus" status="active">zpUnlockRowboatsShadow</effect>
       <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCGoldSmelter</target>
       </effect>
       <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCCapturableFactory</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCCapturableFactory</target>
       </effect>
       <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
@@ -22158,6 +22332,9 @@
         <target type="ProtoUnit">zpSPCTownMill</target>
       </effect>
       <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCGermanCathedral</target>
+      </effect>
+      <effect type="Data" action="AreaHeal" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCGermanCathedral</target>
       </effect>
       <effect type="SetName" proto="zpSPCGermanCathedral" culture="none" newname="302370">
@@ -22737,7 +22914,6 @@
       <effect type="TechStatus" status="obtainable">DESPCVeteranCityGuard</effect>
       <effect type="TechStatus" status="obtainable">DESPCGuardCityGuard</effect>
       <effect type="TechStatus" status="obtainable">DESPCImperialCityGuard</effect>
-      <effect type="TechStatus" status="obtainable">DESPCTaulaDeCanvi</effect>
       <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
       <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
       <effect type="TechStatus" status="obtainable">zpSPCPapalBlessingClone</effect>
@@ -22819,6 +22995,803 @@
         <target type="Player">
         </target>
       </effect>
+      <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>
+      <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
+      <effect type="TechStatus" status="active">zpUnlockRowboatsShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCTaulaDeCanviClone" type="Normal">
+    <dbid>40955</dbid>
+    <displaynameid>123054</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\spc\historical_battles\team_taula_de_canvi.png</icon>
+    <rollovertextid>123053</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCNationalBank</target>
+      </effect>
+      <effect type="TextOutputTechName">123070</effect>
+    </effects>
+  </tech>
+  <tech name="zpAztecConverGate" type="Normal">
+    <dbid>40956</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="CWallGate" fromprotoid="zpInvisibleGateSocket">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecMercenariesShadow" type="Normal">
+    <dbid>40957</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpAztecCityAttackerSetup</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deNatMercJaguarWarrior" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecJaguarWarriorMercIcon</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMercEagleWarrior" relativity="Absolute">
+        <target type="ProtoUnit">zpEagleWarriorMercIcon</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">deNatMercJaguarWarrior</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercEagleWarrior</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMercJaguarWarrior" page="0" column="150">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatMercEagleWarrior" page="0" column="151">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMercJaguarWarrior" page="0" column="150">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatMercEagleWarrior" page="0" column="151">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deNatMercJaguarWarrior</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercEagleWarrior</target>
+      </effect>
+      <effect type="CommandAdd" tech="NatGarlandWars" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="ChampionAztecs" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="WarriorSocietyAztecs" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="NatGarlandWars" page="1" column="1">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
+      <effect type="CommandAdd" tech="ChampionAztecs" page="1" column="1">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
+      <effect type="CommandAdd" tech="WarriorSocietyAztecs" page="1" column="1">
+        <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">ChampionAztecs</effect>
+      <effect type="TechStatus" status="obtainable">WarriorSocietyAztecs</effect>
+      <effect type="TechStatus" status="obtainable">NatGarlandWars</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect civ="Aztecs" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="ChampionAztecs">
+    <effects>
+      <effect mergemode="Add" type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercEagleWarrior</target>
+      </effect>
+      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="27778">
+      </effect>
+      <effect mergemode="Add" type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercEagleWarrior</target>
+      </effect>
+      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="42433" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="WarriorSocietyAztecs">
+    <effects>
+      <effect mergemode="Add" type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercEagleWarrior</target>
+      </effect>
+      <effect mergemode="Add" type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercEagleWarrior</target>
+      </effect>
+      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="36586">
+      </effect>
+      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="42433" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="NatGarlandWars">
+    <effects>
+      <effect mergemode="Add" type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercEagleWarrior</target>
+      </effect>
+      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="31475">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAztecCityGeneralSetup" type="Normal">
+    <dbid>40958</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>  
+      <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Canoe</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecGreatTemple</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecGranary</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecShrine</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecTreasury</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecForester</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecCityMarket</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFoodTeam" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWoodTeam" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoinTeam" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecTempleFoodFestival</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecTempleFireFestival</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecTempleGoldFestival</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCityAztec</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecWalls</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecCityWarCeremony</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecCityLakeCeremony</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecAltarColonializeShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCMercenaryBountiesSingle</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCTreasuryProductionBonusSingle</effect>
+      <effect type="TechStatus" status="active">zpSPCAztecAltarBasicShadow</effect>
+      <effect type="CommandAdd" tech="zpSPCAztecInfluenceCity" page="1" column="1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeEurope1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeEurope2</effect>
+      <effect type="TechStatus" status="unobtainable">ypTradeRouteUpgrade1</effect>
+      <effect type="TechStatus" status="unobtainable">ypTradeRouteUpgrade2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWater1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWater2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWaterAll1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWaterAll2</effect>
+      <effect type="TechStatus" status="unobtainable">zpTradeRouteUpgradeWaterNative</effect>
+      <effect type="TechStatus" status="unobtainable">zpTradeRouteUpgradeWaterNative2</effect>
+      <effect type="TechStatus" status="unobtainable">deTradeRouteUpgradeAmerica1</effect>
+      <effect type="TechStatus" status="unobtainable">deTradeRouteUpgradeAmerica2</effect>
+      <effect type="TechStatus" status="active">zpAztecTrade</effect>
+      <effect type="SetName" proto="Stagecoach" culture="none" newname="90901">
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="Stagecoach" copy="PortraitOnly" relativity="Absolute">
+        <target type="ProtoUnit">deIconAmericanStagecoach</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWater1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWater2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" action="GatherFirePit" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">NatMedicineMan</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAztecCityAttackerSetup" type="Normal">
+    <dbid>40959</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>  
+      <effect mergemode="Add" type="SetName" proto="deNatMercJaguarWarrior" culture="none" newname="302448">
+      </effect>
+      <effect mergemode="Add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="302443">
+      </effect>
+      <effect type="TechStatus" status="active">zpUnlockRowboatsShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpAztecCityAztecSPCAttacker</effect>
+    </effects>
+  </tech>
+  <tech name="zpAztecCityDefenderSetup" type="Normal">
+    <dbid>40960</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>  
+      <effect type="Data" amount="250.00" subtype="PopulationCap" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">xpTlalocCanoe</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">xpWarCanoe</target>
+      </effect>
+      <effect type="CommandAdd" proto="xpWarCanoe" page="0" column="7">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandAdd" proto="xpTlalocCanoe" page="0" column="8">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandAdd" proto="xpWarCanoe" page="0" column="7">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandAdd" proto="xpTlalocCanoe" page="0" column="8">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandAdd" proto="xpWarCanoe" page="0" column="7">
+        <target type="ProtoUnit">DEPort</target>
+      </effect>
+      <effect type="CommandAdd" proto="xpTlalocCanoe" page="0" column="8">
+        <target type="ProtoUnit">DEPort</target>
+      </effect>
+      <effect type="Data" amount="6.00" subtype="BuildLimit" relativity="Assign">
+        <target type="ProtoUnit">deMayaCastle</target>
+      </effect>
+      <effect type="CommandAdd" proto="NatJaguarWarrior" page="0" column="0">
+        <target type="ProtoUnit">deMayaCastle</target>
+      </effect>
+      <effect type="CommandAdd" proto="NatEagleWarrior" page="0" column="0">
+        <target type="ProtoUnit">deMayaCastle</target>
+      </effect>
+      <effect type="Data" amount="24.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatMercJaguarWarrior</target>
+      </effect>
+      <effect type="Data" amount="16.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercEagleWarrior</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="Mill">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="Plantation">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="ypRicePaddy">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandRemove" proto="deHacienda">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">Settler</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">Coureur</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">SettlerWagon</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">CoureurCree</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">SettlerNative</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">Pilgrim</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">ypSettlerAsian</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">ypSettlerIndian</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">ypSettlerJapanese</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">ypSettlerIceCream</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">deSettlerAfrican</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">deAfricanVillagerNugget</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">deNatNomad</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">deNatMercNomad</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">deREVNativeVillager</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">deREVNatVillagerBatch</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">deArchitect</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">deUnknownPilgrim</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">zpSettlerAztec</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">zpSettlerZen</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">zpSettlerSufi</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="CommandAdd" proto="deField" page="6" column="3">
+        <target type="ProtoUnit">zpNatCoureurSansculotte</target>
+      </effect>
+      <effect type="TechStatus" status="active">zpSPCActivateFieldGathering</effect>
+      <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>
+      <effect type="TechStatus" status="obtainable">DELegendaryWarCanoes</effect>
+      <effect type="CommandAdd" tech="DELegendaryWarCanoes" page="1" column="3">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">xpWarCanoe</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="Dock" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="SetName" proto="zpSettlerAztec" culture="none" newname="302481">
+      </effect>
+      <effect type="CommandAdd" proto="CommunityPlaza" page="6" column="9">
+        <target type="ProtoUnit">zpSettlerAztec</target>
+      </effect>
+      <effect type="CommandAdd" proto="Market" page="6" column="2">
+        <target type="ProtoUnit">zpSettlerAztec</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCBlessedCitySingle" type="Normal">
+    <dbid>40961</dbid>
+    <displaynameid>302455</displaynameid>
+    <cost resourcetype="Food">150.0000</cost>
+    <cost resourcetype="Gold">150.0000</cost>
+    <cost resourcetype="Wood">150.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\blessed_city_single.png</icon>
+    <rollovertextid>302456</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpBlessedCityShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPapalLegateSingle" type="Normal">
+    <dbid>40962</dbid>
+    <displaynameid>302458</displaynameid>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\papal_legate_single.png</icon>
+    <rollovertextid>302457</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="deCrateofXPLarge" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="-0.20" subtype="FreeHomeCityUnit" unittype="deCrateofXP" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TextOutputTechName">123070</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecTempleFireFestival" type="Normal">
+    <dbid>40963</dbid>
+    <displaynameid>302459</displaynameid>
+    <cost resourcetype="Wood">150.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\aztec_fire_festival.png</icon>
+    <rollovertextid>302460</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>NativeImprovement</flag>
+    <effects>
+      <effect type="Data" action="AutoGatherWood" amount="1.50" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="RainbowWood" amount="1.50" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecTempleFoodFestival" type="Normal">
+    <dbid>40964</dbid>
+    <displaynameid>302461</displaynameid>
+    <cost resourcetype="Food">150.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\aztec_food_festival.png</icon>
+    <rollovertextid>302462</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>NativeImprovement</flag>
+    <effects>
+      <effect type="Data" action="AutoGatherFood" amount="1.50" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="RainbowFood" amount="1.50" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecTempleGoldFestival" type="Normal">
+    <dbid>40965</dbid>
+    <displaynameid>302463</displaynameid>
+    <cost resourcetype="Gold">150.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\aztec_gold_festival.png</icon>
+    <rollovertextid>302464</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>NativeImprovement</flag>
+    <effects>
+      <effect type="Data" action="AutoGatherCoin" amount="1.50" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+      <effect type="Data" action="RainbowCoin" amount="1.50" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecMediumTemple</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCBlessedCityAztec" type="Normal">
+    <dbid>40966</dbid>
+    <displaynameid>302465</displaynameid>
+    <cost resourcetype="Food">150.0000</cost>
+    <cost resourcetype="Gold">150.0000</cost>
+    <cost resourcetype="Wood">150.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\aztec_blessed_city.png</icon>
+    <rollovertextid>302456</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpBlessedCityShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecWalls" type="Normal">
+    <dbid>40967</dbid>
+    <displaynameid>302466</displaynameid>
+    <cost resourcetype="Wood">500.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\aztec_spc_wall.png</icon>
+    <rollovertextid>302467</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status ="active">Industrialize</techstatus>
+		</prereqs>
+    <effects>
+      <effect type="Data" amount="3.0" subtype="Hitpoints" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractWall</target>
+      </effect>
+      <effect type="Data" amount="1.3" subtype="Hitpoints" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">deMayaCastle</target>
+      </effect>
+      <effect type="Data" amount="1.3" subtype="Hitpoints" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpAztecOutpost</target>
+      </effect>
+      <effect type="Data" amount="1.3" subtype="Hitpoints" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpAztecCityOutpost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCPapalBlessingPrague" type="Normal">
+    <dbid>40968</dbid>
+    <displaynameid>302468</displaynameid>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\papal_blessing_single.png</icon>
+    <rollovertextid>302469</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>TeamTech</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DEPapalBlessingShadow</effect>
+      <effect type="TextOutputTechName">123070</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecArmyCity" type="Normal">
+    <dbid>40969</dbid>
+    <displaynameid>300368</displaynameid>
+    <cost resourcetype ="Gold">300.0000</cost>
+    <cost resourcetype ="Wood">600.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <rollovertextid>302480</rollovertextid>
+    <icon>resources\images\icons\techs\zpholyfleet.png</icon>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpRitualCanoe</target>
+      </effect>
+      <effect type="Data" action="SpawnRitualCanoe" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCAztecWaterSpawner">
+        <target type="Player">
+        </target>
+      </effect>  
+      <effect type="TextOutputTechName">110130</effect>
+    </effects>
+  </tech>
+  <tech name ="zpSPCAztecInfluenceCity" type ="Normal">
+		<dbid>40970</dbid>
+		<displaynameid>300351</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\azteccity_big.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>302470</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecOutpost</target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">NatJaguarWarrior</target>
+      </effect>
+      <effect type="Data" amount="4.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">NatEagleWarrior</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSettlerAztec</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSettlerAztec" page="0" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpAztecWaterTemple" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpAztecOutposts" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCAztecArmyCity" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Farm</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">deSettlerAfrican</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">ypSettlerAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">ypSettlerJapanese</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">ypSettlerIndian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">Settler</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">SettlerWagon</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">Coureur</target>
+      </effect>
+      <effect type="Data" action="SpawnJaguarWarriorsSmall" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCRevealerAztec">
+        <target type="Player">
+        </target>
+      </effect>  
+      <effect type="TechStatus" status="obtainable">zpNatChampionSkullKnightShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNatEliteSkullKnightShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNatLegendarySkullKnightShadow</effect>
+    </effects>
+	</tech>
+  <tech name="zpSPCAztecMercenaries" type="Normal">
+    <dbid>40971</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecMercenariesShadow</effect>
+    </effects>
+  </tech>
+  <tech name ="zpSPCAztecCityWarCeremony" type ="Normal">
+		<dbid>40972</dbid>
+		<displaynameid>302473</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\spc_aztec_city_warceremony.png</iconwpf>
+    <cost resourcetype ="Food">350.0000</cost>
+    <cost resourcetype ="Wood">350.0000</cost>
+    <cost resourcetype ="Gold">350.0000</cost>
+		<rollovertextid>302472</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="Data" action="SpawnJaguarWarriors" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCRevealerAztec">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpSPCActivateFieldGathering" type ="Normal">
+    <dbid>40973</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandAdd" tech="ImpLargeScaleGathering" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="BigFarmHorsemanship" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="BigFarmStrawberry" page="2" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="BigFarmCinteotl" page="2" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="HarvestCeremony" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="GreenCornCeremony" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="GreatFeast" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="deBigFarmUrcuchillay" page="2" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="SeedDrill" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ArtificialFertilizer" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="EarthCeremony" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="EarthCeremonyNoMine" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="EarthGiftCeremony" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="EarthGiftCeremonyNoMine" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="Homesteading" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="Bookkeeping" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="BigPlantationTezcatlipoca" page="2" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ImpExcessiveTributeNative" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ImpExcessiveTributeNativeNoMine" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="BigPlantationGunTrade" page="2" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="OreRefining" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="BigPlantationMapleFestival" page="2" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="deBigPlantationCoca" page="2" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypWaterConservancy" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypIrrigationSystems" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypImpLargeScaleAgricultureAsian" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypLandRedistribution" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypCultivateWasteland" page="1" column="0">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypSharecropping" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypCooperative" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypImpExcessiveTributeAsian" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="CommandAdd" tech="ypCropMarket" page="1" column="1">
+        <target type="ProtoUnit">deField</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEFieldEnableCoinShadow</effect>
+      <effect type="Data2" action="Gather" amount="1.5" subtype="WorkRateSpecific" resource="Food" unittype="deField" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.5" subtype="WorkRateSpecific" resource="Gold" unittype="deField" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpSPCDisableHousesShadow" type ="Normal">
+    <dbid>40974</dbid>
+    <flag>Shadow</flag>
+    <effects>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">House</target>
       </effect>
@@ -22842,6 +23815,9 @@
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">deHouseInca</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypShrineJapanese</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypVillage</target>
@@ -22879,32 +23855,421 @@
       <effect type="CommandRemove" proto="Manor">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
-      <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
+      <effect type="CommandRemove" proto="ypShrineJapanese">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAztecUnlockGroupingTechs" type="Normal">
+    <dbid>40975</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Sheep</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpAztecUnlockGroupingTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpAztecLockGroupingTechs" type="Normal">
+    <dbid>40976</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Sheep</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpAztecLockGroupingTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCRowboatSabotage" type="Normal">
+    <dbid>40980</dbid>
+    <displaynameid>302475</displaynameid>
+    <cost resourcetype="Wood">450.0000</cost>
+    <cost resourcetype="Gold">450.0000</cost>
+    <researchpoints>15.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\spc_naval_sabotage.png</icon>
+    <rollovertextid>302476</rollovertextid>
+    <flag>UniqueTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+  </tech>
+  <tech name ="zpUnlockRowboatsShadow" type ="Normal">
+    <dbid>40977</dbid>
+    <flag>Shadow</flag>
+    <effects>
       <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
         <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCRowboat" page="0" column="2">
+        <target type="ProtoUnit">dePort</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCRowboat</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">zpSPCRowboatSabotage</effect>
+      <effect type="CommandAdd" tech="zpSPCRowboatSabotage" page="1" column="5">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCRowboatSabotage" page="1" column="5">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCRowboatSabotage" page="1" column="5">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
     </effects>
   </tech>
-  <tech name="zpSPCTaulaDeCanviClone" type="Normal">
-    <dbid>40955</dbid>
-    <displaynameid>123054</displaynameid>
+  <tech name="zpAztecCityAztecSPCAttacker" type="Normal">
+    <dbid>40978</dbid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>0.0000</researchpoints>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">Age0XPAztec</techstatus>
+    </prereqs>
+    <effects>  
+      <effect type="Data" amount="-4.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRowboat</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAztecTrade" type="Normal">
+    <dbid>40979</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetName" proto="zpCargoBoat" culture="none" newname="302478">
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpCargoBoat" copy="PortraitOnly" relativity="Absolute">
+        <target type="ProtoUnit">xpTlalocCanoe</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCAztecCityDefenderAI" type="Normal">
+    <dbid>40981</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCWoodenTowerAIProxy</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCSocketAztecOutpost1</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCSocketAztecOutpost2</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCSocketAztecOutpost3</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSPCSocketAztecOutpost4</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpSPCAztecCityLakeCeremony" type ="Normal">
+		<dbid>40982</dbid>
+		<displaynameid>302491</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\aztec_lake_ceremony_big.png</iconwpf>
+    <cost resourcetype ="Wood">200.0000</cost>
+    <cost resourcetype ="Food">200.0000</cost>
+		<rollovertextid>302492</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="Data" action="SpawnCanoe" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCAztecWaterSpawner">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpSPCAztecAltarLakeCeremonyShadow</effect>
+    </effects>
+  </tech>
+  <tech name="NativeMaya">
+    <effects>
+      <effect mergeMode='add' type="TechStatus" status="obtainable">zpNatMayaInfluence</effect>
+      <effect mergeMode='add' type="TechStatus" status="obtainable">zpNatMayaCeremonialGrounds</effect>
+      <effect mergeMode='add' type="TechStatus" status="obtainable">zpNatMayaCruzob</effect>
+      <effect mergeMode='add' type="TechStatus" status="obtainable">zpNatMayaArchitecture</effect>
+    </effects>
+  </tech>
+  <tech name ="zpNatMayaInfluence" type ="Normal">
+		<dbid>40983</dbid>
+		<displaynameid>302498</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\maya_expansion_big.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>302499</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="CommandAdd" proto="NatHolcanSpearman" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NatHolcanSpearman</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecOutpost</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlerMaya</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatSettlerMaya" page="0" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatMayaCeremonialGrounds" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatMayaArchitecture" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatMayaCruzob" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Farm</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">deSettlerAfrican</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">ypSettlerAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">ypSettlerJapanese</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">ypSettlerIndian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">SettlerWagon</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">Coureur</target>
+      </effect>
+      <effect type="CommandRemove" proto="Farm">
+        <target type="ProtoUnit">Settler</target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name="zpExtendMaya" type="Normal">
+    <dbid>40984</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandAdd" tech="zpNatMayaInfluence" page="1" column="1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatMayaCeremonialGrounds" type="Normal">
+    <dbid>40985</dbid>
+    <displaynameid>302500</displaynameid>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Food">400.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\zp_maya_ceremonial_grounds.png</icon>
+    <rollovertextid>302501</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpAztecAltarTravois" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecAltar</target>
+      </effect>
+      <effect type="Data" action="GatherFirePit" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">NatMedicineMan</target>
+      </effect>
+      <effect type="Data" amount="6.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">NatMedicineMan</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatMayaCruzob" type="Normal">
+    <dbid>40986</dbid>
+    <displaynameid>302505</displaynameid>
+    <cost resourcetype="Wood">700.0000</cost>
+    <cost resourcetype="Food">500.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\maya_castle_war_doctrine.png</icon>
+    <rollovertextid>302506</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="deREVCruzobInfantry" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpAztecOutpostTravois" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deREVCruzobInfantry</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpImperialCruzobInfantryClone</effect>
+      <effect type="TechStatus" status="obtainable">zpImperialCruzobInfantryShadow</effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">deREVCruzobInfantry</target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpAztecOutpost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpImperialCruzobInfantryClone" type="Normal">
+    <dbid>40987</dbid>
+    <displaynameid>112991</displaynameid>
+    <cost resourcetype="Wood">1500.0000</cost>
+    <cost resourcetype="Gold">1500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\imperial_infantry\imperial_infantry.png</icon>
+    <rollovertextid>112990</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DEREVImperialCruzobInfantry</effect>
+    </effects>
+  </tech>
+  <tech name="zpImperialCruzobInfantryShadow" type="Normal">
+    <dbid>40989</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status="active">DEREVImperialCruzobInfantry</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">zpImperialCruzobInfantryClone</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatMayaArchitecture" type="Normal">
+    <dbid>40990</dbid>
+    <displaynameid>302508</displaynameid>
+    <cost resourcetype ="Wood">650.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\maya_city_states.png</icon>
+    <rollovertextid>302509</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="0.80" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">Building</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">Building</target>
+      </effect>
+      <effect type="Data" amount="50.00" subtype="PopulationCap" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainCanoe" type="Normal">
+    <dbid>40995</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="SpawnCanoe" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpSPCAztecWaterSpawner">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCMercenaryBountiesSingle" type="Normal">
+    <dbid>40996</dbid>
+    <displaynameid>302526</displaynameid>
+    <cost resourcetype="Food">300.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\mercenary_bounties_single.png</icon>
+    <rollovertextid>302528</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data2" amount="1.00" subtype="BountyResourceExtra" unittype="Unit" resource="Gold" priority="1" bountyrate="30.00" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCTreasuryProductionBonus" type="Normal">
+    <dbid>40967</dbid>
+    <displaynameid>302529</displaynameid>
     <cost resourcetype="Food">200.0000</cost>
     <cost resourcetype="Wood">200.0000</cost>
     <researchpoints>40.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\spc\historical_battles\team_taula_de_canvi.png</icon>
-    <rollovertextid>123053</rollovertextid>
+    <icon>resources\images\icons\techs\historical_maps\native_treasures_team.png</icon>
+    <rollovertextid>302530</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>TeamTech</flag>
     <effects>
       <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
-        <target type="ProtoUnit">zpSPCNationalBank</target>
+        <target type="ProtoUnit">zpSPCAztecTreasury</target>
       </effect>
-      <effect type="TextOutputTechName">123070</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCTreasuryProductionBonusSingle" type="Normal">
+    <dbid>40968</dbid>
+    <displaynameid>302527</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\historical_maps\native_treasures_single.png</icon>
+    <rollovertextid>302530</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCAztecTreasury</target>
+      </effect>
     </effects>
   </tech>
 

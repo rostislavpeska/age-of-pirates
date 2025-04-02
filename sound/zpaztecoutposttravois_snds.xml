@@ -1,7 +1,7 @@
 <protounitsounddef>
   <protounit name="zpAztecOutpostTravois">
     <soundtype name="Select">
-      <soundset name="AztecVillagerMaleSelect">
+      <soundset name="MayaVillagerM_Select">
       </soundset>
     </soundtype>
     <soundtype name="Grunt">
@@ -17,7 +17,7 @@
       </soundset>
     </soundtype>
     <soundtype name="Acknowledge">
-      <soundset name="AztecVillagerMaleAcknowledge">
+      <soundset name="MayaVillagerM_Acknowledge">
       </soundset>
     </soundtype>
   </protounit>

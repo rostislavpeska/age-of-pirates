@@ -135,10 +135,6 @@
 			<placementfile>granary_city.xml</placementfile>
 			<flag>DoNotAllowAllowAlliedGarrison</flag>
 		</unit>
-		<unit name="deField">
-			<placementfile>field_city.xml</placementfile>
-			<flag>DoNotAllowAllowAlliedGarrison</flag>
-		</unit>
 		<unit name="FortFrontier">
 			<placementfile>fortfrontier_city.xml</placementfile>
 			<flag>DoNotAllowAllowAlliedGarrison</flag>
@@ -245,7 +241,8 @@
 		<unit name="deSPCTowerCapturable">
 			<minimapicon mergeMode="remove">ui\minimap\highlighted item</minimapicon>
 		</unit>
-		<unit name="deField">  
+		<unit name="deField">
+			<placementfile>field_city.xml</placementfile>
 			<flag>InvulnerableIfGaia</flag>
 		</unit>
 		<unit name="zpNativePropsJewishTower">
@@ -271,5 +268,36 @@
 			<minimapicon>ui\minimap\military_small</minimapicon>
             <flag mergeMode="remove">DoNotShowOnMiniMap</flag>
         </unit>
+		<unit name="zpSPCDemolisher">
+			<tactics>azteccityresource.tactics</tactics>
+		</unit>
+		<unit name="zpSPCTownMill">
+			<tactics>azteccityresource.tactics</tactics>
+		</unit>
+		<unit name="zpSPCGoldSmelter">
+			<tactics>azteccityresource.tactics</tactics>
+		</unit>
+		<unit name="zpSPCCityMarket">
+			<tactics>azteccitymarket.tactics</tactics>
+		</unit>
+		<unit name="zpSPCGermanCathedral">
+			<tactics>aztecgreattemple.tactics</tactics>
+		</unit>
+		<unit name="deEggLeonardosTank">
+			<obstructionradiusx>1.5900</obstructionradiusx>
+			<obstructionradiusz>1.5900</obstructionradiusz>
+		</unit>
+		<unit name="deTank">
+			<obstructionradiusx>1.5900</obstructionradiusx>
+			<obstructionradiusz>1.5900</obstructionradiusz>
+		</unit>
+		<unit name="zpIronTank">
+			<obstructionradiusx>1.5900</obstructionradiusx>
+			<obstructionradiusz>1.5900</obstructionradiusz>
+		</unit>
+		<unit name="zpIronTankProxy">
+			<obstructionradiusx>1.5900</obstructionradiusx>
+			<obstructionradiusz>1.5900</obstructionradiusz>
+		</unit>
 	</protomods>
 </mods>

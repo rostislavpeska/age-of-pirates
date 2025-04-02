@@ -1343,6 +1343,11 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
     rmSetGroupingMaxDistance(blockPlayerStart, 0.50);
 	rmAddGroupingToClass(blockPlayerStart, rmClassID("classBlock"));
 
+	int blockPlayerStartItaly = rmCreateGrouping("blockPlayerStartItaly", "EU_SPC_PlayerStartItalian");
+    rmSetGroupingMinDistance(blockPlayerStartItaly, 0.00);
+    rmSetGroupingMaxDistance(blockPlayerStartItaly, 0.50);
+	rmAddGroupingToClass(blockPlayerStartItaly, rmClassID("classBlock"));
+
 	int blockPlayerGold = rmCreateGrouping("blockPlayerGold", "EU_SPC_PlayerGold");
     rmSetGroupingMinDistance(blockPlayerGold, 0.00);
     rmSetGroupingMaxDistance(blockPlayerGold, 0.50);
@@ -1394,7 +1399,10 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 		if (rmGetPlayerTeam(i) == 0) {
 			id=rmCreateArea("Player"+i);
 			rmSetPlayerArea(i, id);
-			rmPlaceGroupingAtLoc(blockPlayerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			if (rmGetPlayerCiv(i) == rmGetCivID("DEItalians"))
+				rmPlaceGroupingAtLoc(blockPlayerStartItaly, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			else
+				rmPlaceGroupingAtLoc(blockPlayerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 			rmPlaceGroupingAtLoc(blockPlayerGold, i, rmPlayerLocXFraction(i)+rmXTilesToFraction(17), rmPlayerLocZFraction(i));
 			rmPlaceGroupingAtLoc(blockPlayerFood, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i)+rmZTilesToFraction(17));
 			rmPlaceGroupingAtLoc(blockPlayerWood, i, rmPlayerLocXFraction(i)+rmXTilesToFraction(17), rmPlayerLocZFraction(i)+rmZTilesToFraction(17));
@@ -1914,7 +1922,7 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	rmSetTriggerEffectParam("Name","VictoryCounter"+i);
 	rmSetTriggerEffectParamInt("Start", victoryCountDown);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Garde du Corps will come in"); // Counter Message
+	rmSetTriggerEffectParam("Msg","{302449}"); // Counter Message
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("Victory_Defenders"));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);

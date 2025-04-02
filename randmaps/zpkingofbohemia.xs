@@ -2760,9 +2760,34 @@ void main(void)
 		rmSetTriggerEffectParam("TechID","cTechzpConvertWall"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmSetTriggerEffectParam("TechID","cTechzpConverGate"); //operator
-	rmSetTriggerEffectParamInt("Status",2);
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConverGate"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+	}
+
+	// City State Heal
+
+	for (k=1; <= cNumberNonGaiaPlayers) {		
+		rmCreateTrigger("City State Heal"+k);
+		rmAddTriggerCondition("Team Player Controls Socket");
+		rmSetTriggerConditionParamInt("PlayerID", 1, false);
+		rmSetTriggerConditionParamInt("Socket", castleSocketMod, false);
+		rmAddTriggerCondition("Tech Status Equals");
+		rmSetTriggerConditionParamInt("PlayerID", k, false);
+		rmSetTriggerConditionParamInt("TechID", rmGetTechID("DEPapalBlessingShadow"), false);
+		rmSetTriggerConditionParamInt("Status", 2, false);
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamInt("Param1", 1000, false);
+		rmAddTriggerEffect("Heal Units Percent in Area");
+		rmSetTriggerEffectParamInt("SrcObject", castleCanterMod, false);
+		rmSetTriggerEffectParamInt("Player", k, false);
+		rmSetTriggerEffectParam("UnitType", "LogicalTypeGarrisonInShips", false);
+		rmSetTriggerEffectParamFloat("Dist", 70, false);
+		rmSetTriggerEffectParamFloat("HealPct", 1.00, false);
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);

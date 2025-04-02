@@ -7325,7 +7325,6 @@
     <sound filename="zp_misc\greekShipMove3.wav" volume="1.0000">
     </sound>
   </soundset>
-
   <soundset name="Bohemian_Soldier_Select" volume="1.0000" maxnum="4" distance="1.0000">
     <sound filename="bohemian\Bohemians_Soldier_Select_1_AoE2.wav" volume="1.0000">
     </sound>
@@ -7354,4 +7353,100 @@
     <sound filename="zp_misc\blanik.wav" volume="1.0000">
     </sound>
   </soundset>
+  <soundset name="MayaVillagerM_Select" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Male_Select_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="maya\Mayans_Villager_Male_Select_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="maya\Mayans_Villager_Male_Select_4_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MayaVillagerF_Select" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Female_Select_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="maya\Mayans_Villager_Female_Select_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="maya\Mayans_Villager_Female_Select_4_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MayaVillagerM_Acknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Male_Task_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="maya\Mayans_Villager_Male_Task_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="maya\Mayans_Villager_Male_Task_3_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="maya\Mayans_Villager_Male_Task_4_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MayaVillagerF_Acknowledge" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Female_Task_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="maya\Mayans_Villager_Female_Task_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="maya\Mayans_Villager_Female_Task_3_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="maya\Mayans_Villager_Female_Task_4_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MayaVillagerM_Build" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Male_Build_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MayaVillagerF_Build" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Female_Build_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MayaVillagerM_GatherWood" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Male_Chop_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MayaVillagerF_GatherWood" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Female_Chop_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MayaVillagerM_GatherMeat" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Male_Hunt_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MayaVillagerF_GatherMeat" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Female_Hunt_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MayaVillagerM_GatherFruit" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Male_Forage_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MayaVillagerF_GatherFruit" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Female_Forage_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MayaVillagerM_Farm" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Male_Farm_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MayaVillagerF_Farm" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Female_Farm_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MayaVillagerM_Attack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Male_Attack_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MayaVillagerF_Attack" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Female_Task_3_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MayaVillagerM_GatherCoin" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Male_Farm_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="MayaVillagerF_GatherCoin" volume="0.7000" maxnum="4" distance="1.0000">
+    <sound filename="maya\Mayans_Villager_Female_Farm_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+
+
+
+
 </soundsetdef>
