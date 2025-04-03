@@ -2434,7 +2434,7 @@
       <string _locid="302434">ZP SPC Aztec Outpost Socket 4</string>
       <string _locid="302435">Builds mighty Outpost</string>
       <string _locid="302436">Build mighty Outpost</string>
-      <string _locid="302437">The Blood of Tenochtitlan (Beta, no AI support)</string>
+      <string _locid="302437">The Blood of Tenochtitlan (Beta)</string>
       <string _locid="302438">In 1521 the Aztec Empire is broken. Cortez and his Conquistadors are in the front of the gates of Tenochtitlan. Defend the city or join the conquerrors. \n\nThere is always only one player defending the city. The rest of the players are attacking. Even though the city is surrounded by water, players have just limited options for building the ships and start with no water flag. \n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; \n\nDefender: has to hold at least one of the main city districts until the time runs out. \n\nAttackers: have to destroy all defender's trading posts in the four main city districts before the time runs out. \n\nNative Settlements: Aztecs (defender), Jesuits (attackers)</string>
       <string _locid="302439">Tenochtitlan city districts provide you with all various resources. There are four main district: Religious (experience and other bonuses), Forest District (Wood), Agricultural District (Food), and Craft District (Coin). \n\nSelect your Home City Deck wisely, the lake has no access to the sea and therefore you can't use your Homecity Water Flag.</string>
       <string _locid="302440">ZP NAT Merc Eagle Man</string>
@@ -2448,7 +2448,7 @@
       <string _locid="302448">Tlaxcaltec Jaguar Warrior</string>
       <string _locid="302449">Garde du Corps will come in</string>
       <string _locid="302450">Tenochtitlan ally army will come in</string>
-      <string _locid="302451">Hold at least one out of four Aztec native districts before the Oxaca army comes to the city.</string>
+      <string _locid="302451">Hold your Town Center and at least one out of four Aztec native districts before the Oxaca army comes to the city.</string>
       <string _locid="302452">Destroy defender's trading posts in the four main Tenochtitlan districts. Make sure he doesn't build them again.</string>
       <string _locid="302453">If the defender loses the Aztec district, he can rebuild the trading post. Defender can never own zero districts.</string>
       <string _locid="302454">Defender holds: 4 sockets</string>
