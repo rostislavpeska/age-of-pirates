@@ -37,7 +37,8 @@ minInterval 1
        cRandomMapName == "zpcookislands" ||
        cRandomMapName == "zpbarrierreef" ||
        cRandomMapName == "zpvenicecity" ||
-       cRandomMapName == "zpcaribbeanwars")
+       cRandomMapName == "zpcaribbeanwars" ||
+       cRandomMapName == "zpazteccity")
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
@@ -102,7 +103,8 @@ minInterval 1
    }
 
    // Attack/Defend style maps
-   if (cRandomMapName == "zpverseilles")
+   if (cRandomMapName == "zpverseilles" ||
+       cRandomMapName == "zpazteccity")
    {
       xsEnableRule("initializecheckAttackDefenseMapAoP"); // 
    }
@@ -357,6 +359,11 @@ void checkAttackDefenseMapAoP(void)
    if (headquarters < 0)
    {
       headquarters = getUnit(cUnitTypezpSPCRoyalOrangerie, cPlayerRelationAlly);
+   }
+
+   if (headquarters < 0)
+   {
+      headquarters = getUnit(cUnitTypeSocketAztec, cPlayerRelationAlly);
    }
 
    headquartersLoc = kbUnitGetPosition(headquarters);
