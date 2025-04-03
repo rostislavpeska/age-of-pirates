@@ -5588,17 +5588,21 @@ minInterval 10
       xsDisableSelf();
       return;
    }
-
-   if ((kbGetPopCap() - kbGetPop()) < 20)
-   {
-      return; // Don't start walls until we have pop room
-   }
-
-   if (gStartOnDifferentIslands == true)
+   else if (gStartOnDifferentIslands == true)
    {  // Island maps are too crowded for this
       xsEnableRule("forwardBaseTowers"); // old version of placing towers at forward base. No longer used with star forts
       xsDisableSelf();
       return;
+   }
+   else if (gPirateBlockWalls == true)
+   {
+      xsDisableSelf();
+      return;
+   }
+
+   if ((kbGetPopCap() - kbGetPop()) < 20)
+   {
+      return; // Don't start walls until we have pop room
    }
 
    if (gForwardBaseState == cForwardBaseStateNone) // || gForwardBaseState == cForwardBaseStateBuilding)

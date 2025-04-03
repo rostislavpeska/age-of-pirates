@@ -108,6 +108,7 @@ extern vector gWaterNuggetTargetLoc = cInvalidVector;
 extern int gWaterNuggetTimeout = -1;         // Stores when a water nugget plan is made so it can be reset after too long
 
 extern bool gIsPirateMap = false;            // Used for pirates of the carribean mod
+extern bool gPirateBlockWalls = false;       // Used to prevent wall building on certain aop maps
 extern bool gIsArchipelagoMap = false;       // Used for multi-island maps like archipelago
 extern bool gIsAtollMap = false;             // A subset of archipelago maps containing more, smaller islands
 extern bool gIsNavalKOTH = false;            // Maps with a naval KOTH fort on water
