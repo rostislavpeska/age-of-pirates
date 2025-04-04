@@ -8280,9 +8280,7 @@
     <dbid>20077</dbid>
     <displaynameid>44156</displaynameid>
     <editornameid>44157</editornameid>
-    <subciv>Aztecs</subciv>
-    <populationcount>0</populationcount>
-    <buildlimit>8</buildlimit>
+    <populationcount>2</populationcount>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <formationcategory>Body</formationcategory>
