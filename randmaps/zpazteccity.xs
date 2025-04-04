@@ -338,7 +338,7 @@ void main(void)
 	// Define lake area
 
 	int lakeArea = rmCreateArea("lakeArea");
-    rmSetAreaSize(lakeArea , rmAreaTilesToFraction(24000), rmAreaTilesToFraction(24000));
+    rmSetAreaSize(lakeArea , rmAreaTilesToFraction(26000), rmAreaTilesToFraction(26000));
     rmSetAreaLocation(lakeArea , xCenter, zCenter);		
     rmSetAreaCoherence(lakeArea , 0.8);
     rmSetAreaElevationVariation(lakeArea, 0.0);
@@ -409,8 +409,8 @@ void main(void)
 	rmPlaceGroupingAtLoc(bridgeGrouping2, 0, blockX3, locZ2+rmZTilesToFraction(8));
 	rmPlaceGroupingAtLoc(bridgeGrouping2, 0, blockX3, locZ5-rmZTilesToFraction(8));
 
-	rmPlaceGroupingAtLoc(bridgeGrouping3, 0, locX1-rmXTilesToFraction(23), blockZ2);
-	rmPlaceGroupingAtLoc(bridgeGrouping3, 0, locX6+rmXTilesToFraction(22), blockZ2);
+	rmPlaceGroupingAtLoc(bridgeGrouping3, 0, locX1-rmXTilesToFraction(24), blockZ2);
+	rmPlaceGroupingAtLoc(bridgeGrouping3, 0, locX6+rmXTilesToFraction(24), blockZ2);
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.20);
@@ -746,12 +746,12 @@ void main(void)
 		rmPlaceObjectDefAtLoc(jesuitControllerID2, 0, 0.9, 0.38, 1);
 	}
 	if (teamOneCount ==3){
-		rmPlaceGroupingAtLoc(jesuitMonastery1ID, 0, 0.1, 0.38, 1);
-		rmPlaceObjectDefAtLoc(jesuitControllerID1, 0, 0.1, 0.38, 1);
-		rmPlaceGroupingAtLoc(jesuitMonastery2ID, 0, 0.9, 0.38, 1);
-		rmPlaceObjectDefAtLoc(jesuitControllerID2, 0, 0.9, 0.38, 1);
-		rmPlaceGroupingAtLoc(jesuitMonastery3ID, 0, 0.5, 0.90, 1);
-		rmPlaceObjectDefAtLoc(jesuitControllerID3, 0, 0.5, 0.90, 1);
+		rmPlaceGroupingAtLoc(jesuitMonastery1ID, 0, 0.1, 0.4, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID1, 0, 0.1, 0.4, 1);
+		rmPlaceGroupingAtLoc(jesuitMonastery2ID, 0, 0.9, 0.4, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID2, 0, 0.9, 0.4, 1);
+		rmPlaceGroupingAtLoc(jesuitMonastery3ID, 0, 0.5, 0.9, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID3, 0, 0.5, 0.9, 1);
 	}
 	if (teamOneCount ==5){
 		rmPlaceGroupingAtLoc(jesuitMonastery1ID, 0, 0.5, 0.08, 1);
@@ -762,8 +762,8 @@ void main(void)
 		rmPlaceObjectDefAtLoc(jesuitControllerID3, 0, 0.3, 0.85, 1);
 	}
 	if (teamOneCount ==6){
-		rmPlaceGroupingAtLoc(jesuitMonastery1ID, 0, 0.08, 0.5, 1);
-		rmPlaceObjectDefAtLoc(jesuitControllerID1, 0, 0.08, 0.5, 1);
+		rmPlaceGroupingAtLoc(jesuitMonastery1ID, 0, 0.08, 0.55, 1);
+		rmPlaceObjectDefAtLoc(jesuitControllerID1, 0, 0.08, 0.55, 1);
 		rmPlaceGroupingAtLoc(jesuitMonastery2ID, 0, 0.7, 0.85, 1);
 		rmPlaceObjectDefAtLoc(jesuitControllerID2, 0, 0.7, 0.85, 1);
 		rmPlaceGroupingAtLoc(jesuitMonastery3ID, 0, 0.7, 0.15, 1);
@@ -932,22 +932,27 @@ void main(void)
 
 	rmSetNuggetDifficulty(302, 302);
 
-	if (cNumberNonGaiaPlayers ==2 || cNumberNonGaiaPlayers ==4 || cNumberNonGaiaPlayers ==8){
+	if (teamOneCount ==1 || teamOneCount ==2 || teamOneCount ==4){
 		rmPlaceObjectDefAtLoc(embassyControllerID1, 0, 0.62, 0.9);
 		rmPlaceObjectDefAtLoc(embassyControllerID2, 0, 0.38, 0.1);
 	}
-	if (cNumberNonGaiaPlayers ==5){
+	if (teamOneCount ==3){
+		rmPlaceObjectDefAtLoc(embassyControllerID1, 0, 0.9, 0.6, 1);
+		rmPlaceObjectDefAtLoc(embassyControllerID2, 0, 0.1, 0.6, 1);
+		rmPlaceObjectDefAtLoc(embassyControllerID3, 0, 0.5, 0.1, 1);
+	}
+	if (teamOneCount ==5){
 		rmPlaceObjectDefAtLoc(embassyControllerID1, 0, 0.065, 0.45);
 		rmPlaceObjectDefAtLoc(embassyControllerID2, 0, 0.92, 0.45);
 	}
 	
-	if (cNumberNonGaiaPlayers ==6){
-		rmPlaceObjectDefAtLoc(embassyControllerID1, 0, 0.92, 0.5);
+	if (teamOneCount ==6){
+		rmPlaceObjectDefAtLoc(embassyControllerID1, 0, 0.92, 0.45);
 		rmPlaceObjectDefAtLoc(embassyControllerID2, 0, 0.3, 0.85);
 		rmPlaceObjectDefAtLoc(embassyControllerID3, 0, 0.3, 0.15);
 	}
 
-	if (cNumberNonGaiaPlayers ==7){
+	if (teamOneCount ==7){
 		rmPlaceObjectDefAtLoc(embassyControllerID1, 0, 0.5, 0.92);
 		rmPlaceObjectDefAtLoc(embassyControllerID2, 0, 0.1, 0.35);
 		rmPlaceObjectDefAtLoc(embassyControllerID3, 0, 0.9, 0.4);
@@ -1521,10 +1526,6 @@ void main(void)
 	rmCreateTrigger("Victory_Setup");
 	rmCreateTrigger("Victory_Defenders");
 	rmCreateTrigger("Victory_Attackers");
-	rmCreateTrigger("4_Socket_Hold");
-	rmCreateTrigger("3_Socket_Hold");
-	rmCreateTrigger("2_Socket_Hold");
-	rmCreateTrigger("1_Socket_Hold");
 
 	rmSwitchToTrigger(rmTriggerID("Victory_Setup"));
 	rmAddTriggerEffect("Counter:Add Timer");
@@ -1549,7 +1550,7 @@ void main(void)
 	rmSwitchToTrigger(rmTriggerID("Victory_Attackers"));
 	rmAddTriggerCondition("Player Unit Count");
 	rmSetTriggerConditionParamInt("PlayerID",firstDefender);
-	rmSetTriggerConditionParam("Protounit","zpSPCRevealerAztec");
+	rmSetTriggerConditionParam("Protounit","zpSPCMontezumaPalace");
 	rmSetTriggerConditionParam("Op","==");
 	rmSetTriggerConditionParamInt("Count",0);
 	rmAddTriggerEffect("Team Victory");
@@ -1559,81 +1560,6 @@ void main(void)
 	rmSetTriggerRunImmediately(false);
 	rmSetTriggerLoop(false);
 
-	rmSwitchToTrigger(rmTriggerID("4_Socket_Hold"));
-	rmAddTriggerCondition("Player Unit Count");
-	rmSetTriggerConditionParamInt("PlayerID",firstDefender);
-	rmSetTriggerConditionParam("Protounit","zpSPCRevealerAztec");
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamInt("Count",4);
-	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text", "Defender: 4 sockets");
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("3_Socket_Hold"));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("2_Socket_Hold"));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("1_Socket_Hold"));
-	rmSetTriggerPriority(4); 
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmSwitchToTrigger(rmTriggerID("3_Socket_Hold"));
-	rmAddTriggerCondition("Player Unit Count");
-	rmSetTriggerConditionParamInt("PlayerID",firstDefender);
-	rmSetTriggerConditionParam("Protounit","zpSPCRevealerAztec");
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamInt("Count",3);
-	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text", "Defender: 3 sockets");
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("4_Socket_Hold"));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("2_Socket_Hold"));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("1_Socket_Hold"));
-	rmSetTriggerPriority(4); 
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmSwitchToTrigger(rmTriggerID("2_Socket_Hold"));
-	rmAddTriggerCondition("Player Unit Count");
-	rmSetTriggerConditionParamInt("PlayerID",firstDefender);
-	rmSetTriggerConditionParam("Protounit","zpSPCRevealerAztec");
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamInt("Count",2);
-	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text", "Defender: 2 sockets");
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("3_Socket_Hold"));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("4_Socket_Hold"));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("1_Socket_Hold"));
-	rmSetTriggerPriority(4); 
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmSwitchToTrigger(rmTriggerID("1_Socket_Hold"));
-	rmAddTriggerCondition("Player Unit Count");
-	rmSetTriggerConditionParamInt("PlayerID",firstDefender);
-	rmSetTriggerConditionParam("Protounit","zpSPCRevealerAztec");
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamInt("Count",1);
-	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text", "Defender: 1 socket");
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("3_Socket_Hold"));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("2_Socket_Hold"));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("4_Socket_Hold"));
-	rmSetTriggerPriority(4); 
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
 
 	// ************************ DEFENDER SETUP *******************
 

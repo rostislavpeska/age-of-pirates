@@ -2435,7 +2435,7 @@
       <string _locid="302435">Builds mighty Outpost</string>
       <string _locid="302436">Build mighty Outpost</string>
       <string _locid="302437">The Blood of Tenochtitlan (Beta)</string>
-      <string _locid="302438">In 1521 the Aztec Empire is broken. Cortez and his Conquistadors are in the front of the gates of Tenochtitlan. Defend the city or join the conquerrors. \n\nThere is always only one player defending the city. The rest of the players are attacking. Even though the city is surrounded by water, players have just limited options for building the ships and start with no water flag. \n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; \n\nDefender: has to hold at least one of the main city districts until the time runs out. \n\nAttackers: have to destroy all defender's trading posts in the four main city districts before the time runs out. \n\nNative Settlements: Aztecs (defender), Jesuits (attackers)</string>
+      <string _locid="302438">In 1521 the Aztec Empire is broken. Cortez and his Conquistadors are in the front of the gates of Tenochtitlan. Defend the city or join the conquerrors. \n\nThere is always only one player defending the city. The rest of the players are attacking. Even though the city is surrounded by water, players have just limited options for building the ships and start with no water flag. \n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Attacker win if they manage to destroy the Montezuma's Palace in the center of the map before the time runs out. Defender needs to protect the palace. \n\nNative Settlements: Aztecs (defender), Jesuits (attackers)</string>
       <string _locid="302439">Tenochtitlan city districts provide you with all various resources. There are four main district: Religious (experience and other bonuses), Forest District (Wood), Agricultural District (Food), and Craft District (Coin). \n\nSelect your Home City Deck wisely, the lake has no access to the sea and therefore you can't use your Homecity Water Flag.</string>
       <string _locid="302440">ZP NAT Merc Eagle Man</string>
       <string _locid="302441">ZP GRD Maraudig Tlaxcaltec</string>
@@ -2448,9 +2448,9 @@
       <string _locid="302448">Tlaxcaltec Jaguar Warrior</string>
       <string _locid="302449">Garde du Corps will come in</string>
       <string _locid="302450">Tenochtitlan ally army will come in</string>
-      <string _locid="302451">Hold your Town Center and at least one out of four Aztec native districts before the Oxaca army comes to the city.</string>
-      <string _locid="302452">Destroy defender's trading posts in the four main Tenochtitlan districts. Make sure he doesn't build them again.</string>
-      <string _locid="302453">If the defender loses the Aztec district, he can rebuild the trading post. Defender can never own zero districts.</string>
+      <string _locid="302451">Protect Montezuma's Palace in the center of the city before the time runs out..</string>
+      <string _locid="302452">Destroy Montezuma's Palace in the center of the map before the time runs out.</string>
+      <string _locid="302453">Palace is located in the very center of the map. It can't be repaired, but slowly repairs itself manually..</string>
       <string _locid="302454">Defender holds: 4 sockets</string>
       <string _locid="302455">Blessed City</string>
       <string _locid="302456">All convertable city resource buildings work faster by 15%.</string>
@@ -2528,6 +2528,9 @@
       <string _locid="302528">Enemy units grant a small sum of Coin in addition to Experience when defeated.</string>
       <string _locid="302529">TEAM Native Gold</string>
       <string _locid="302530">Native Treasuries and Safehouses generate Coin faster.</string>
+      <string _locid="302531">Montezuma's Palace</string>
+      <string _locid="302532">ZP SPC Montezuma's Palace</string>
+
 
 
       <!-- ======================================== -->
