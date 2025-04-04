@@ -6047,6 +6047,9 @@
       <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatSkullKnight</target>
       </effect>
+      <effect type="Data" amount="4.00" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMedicineManAztec</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpNatLegendarySkullKnightShadow" type="Normal">
@@ -6066,6 +6069,9 @@
       <effect type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatSkullKnight</target>
       </effect>
+      <effect type="Data" amount="4.00" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMedicineManAztec</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpNatEliteSkullKnightShadow" type="Normal">
@@ -6084,6 +6090,9 @@
       </effect>
       <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatSkullKnight</target>
+      </effect>
+      <effect type="Data" amount="4.00" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMedicineManAztec</target>
       </effect>
     </effects>
   </tech>
@@ -23181,6 +23190,10 @@
       <effect type="TechStatus" status="obtainable">zpSPCAztecAltarColonializeShadow</effect>
       <effect type="TechStatus" status="obtainable">zpSPCMercenaryBountiesSingle</effect>
       <effect type="TechStatus" status="obtainable">zpSPCTreasuryProductionBonusSingle</effect>
+      <effect type="TechStatus" status="obtainable">zpNatColonializeAztec</effect>
+      <effect type="TechStatus" status="obtainable">zpNatChampionSkullKnightShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNatLegendarySkullKnightShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNatEliteSkullKnightShadow</effect>
       <effect type="TechStatus" status="active">zpSPCAztecAltarBasicShadow</effect>
       <effect type="CommandAdd" tech="zpSPCAztecInfluenceCity" page="1" column="1">
         <target type="ProtoUnit">TradingPost</target>
@@ -23642,9 +23655,6 @@
         <target type="Player">
         </target>
       </effect>  
-      <effect type="TechStatus" status="obtainable">zpNatChampionSkullKnightShadow</effect>
-      <effect type="TechStatus" status="obtainable">zpNatEliteSkullKnightShadow</effect>
-      <effect type="TechStatus" status="obtainable">zpNatLegendarySkullKnightShadow</effect>
     </effects>
 	</tech>
   <tech name="zpSPCAztecMercenaries" type="Normal">
@@ -24269,6 +24279,20 @@
     <effects>
       <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCAztecTreasury</target>
+      </effect>
+    </effects>
+  </tech>
+   <tech name="zpNatColonializeAztec" type="Normal">
+    <dbid>40999</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="3.00" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMedicineManAztec</target>
       </effect>
     </effects>
   </tech>

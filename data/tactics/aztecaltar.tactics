@@ -25,7 +25,7 @@
         <name stringid="113108">SpawnWarriorPriest</name>
         <type>DanceBonus</type>
         <dancebonustype>UnitSpawn</dancebonustype>
-        <modifyprotoid>xpMedicineManAztec</modifyprotoid>
+        <modifyprotoid>zpNatMedicineManAztec</modifyprotoid>
         <modifymultiplier>0.075</modifymultiplier>
         <modifyexponent>1.03</modifyexponent>
         <modifybase>0.0325</modifybase>
@@ -47,7 +47,7 @@
         <name stringid="113108">SpawnSkullKnight</name>
         <type>DanceBonus</type>
         <dancebonustype>UnitSpawn</dancebonustype>
-        <modifyprotoid>xpSkullKnight</modifyprotoid>
+        <modifyprotoid>zpNatSkullKnight</modifyprotoid>
         <modifymultiplier>0.055</modifymultiplier>
         <modifyexponent>1.03</modifyexponent>
         <modifybase>0.0225</modifybase>
