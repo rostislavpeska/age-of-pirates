@@ -53767,8 +53767,8 @@
     </sharedbuildlimitunittypes>
     <flag>UseSharedBuildLimit</flag>
   </unit>
-  <unit id="20695" name="zpSPCSafehouse">
-    <dbid>20695</dbid>
+  <unit id="20726" name="zpSPCSafehouse">
+    <dbid>20726</dbid>
     <displaynameid>302534</displaynameid>
     <editornameid>302535</editornameid>
     <obstructionradiusx>3.5000</obstructionradiusx>
@@ -53853,8 +53853,8 @@
       <rate type="Gold">2.750000</rate>
     </protoaction>
   </unit>
-  <unit id="20696" name="zpSPCWesternTavern">
-    <dbid>20696</dbid>
+  <unit id="20727" name="zpSPCWesternTavern">
+    <dbid>20727</dbid>
     <displaynameid>302537</displaynameid>
     <editornameid>302536</editornameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
@@ -53873,7 +53873,7 @@
     <rollovertextid>123021</rollovertextid>
     <shortrollovertextid>123020</shortrollovertextid>
     <initialhitpoints>3500.0000</initialhitpoints>
-    <maxhitpoints>3500.0000</maxhitpoints>
+    <maxhitpoints>3500.0000</maxhitpoints>Fixed 
     <los>12.0000</los>
     <buildpoints>30.0000</buildpoints>
     <buildlimit>5</buildlimit>
