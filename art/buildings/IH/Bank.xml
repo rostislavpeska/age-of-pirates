@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- converted from XMB to XML -->
+<animfile>
+	<component>
+		building
+		<logic type="Variation">
+			<data>
+				<assetreference type="GrannyModel">
+				<file>buildings\IH\AOE3DE_Build_Bank_Model</file>
+				</assetreference>
+			</data>
+      		</logic>
+    <decal><effecttype>default</effecttype><texture>buildings\house\WEST\AGE_1\House_Ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><width>9.00</width><height>12.00</height></decal>
+	</component>
+	<anim>
+		Idle
+		<component>building</component>
+	</anim>
+</animfile>
