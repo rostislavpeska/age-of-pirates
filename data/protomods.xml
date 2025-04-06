@@ -23500,7 +23500,6 @@
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>RMCanRotate</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
-    <flag>DestroyUnderBuilding</flag>
   </unit>
   <unit id="20243" name="zpBridgeWallMedium">
     <dbid>20243</dbid>
@@ -23524,7 +23523,6 @@
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>RMCanRotate</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
-    <flag>DestroyUnderBuilding</flag>
   </unit>
   <unit id="20244" name="zpBridgeWallLarge">
     <dbid>20244</dbid>
@@ -23548,7 +23546,6 @@
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>RMCanRotate</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
-    <flag>DestroyUnderBuilding</flag>
   </unit>
   <unit id="20245" name="zpCargoBoat">
     <dbid>20245</dbid>
@@ -52392,7 +52389,7 @@
   </unit>
   <unit id="20707" name="zpSPCSocketAztecOutpost1">
     <dbid>20707</dbid>
-    <displaynameid>123003</displaynameid>
+    <displaynameid>300363</displaynameid>
     <editornameid>302431</editornameid>
     <socketbuildprotounit>zpAztecCityOutpost</socketbuildprotounit>
     <socketbuildrate>20.0000</socketbuildrate>
@@ -52541,7 +52538,7 @@
   </unit>
   <unit id="20709" name="zpSPCSocketAztecOutpost2">
     <dbid>20709</dbid>
-    <displaynameid>123003</displaynameid>
+    <displaynameid>300363</displaynameid>
     <editornameid>302432</editornameid>
     <socketbuildprotounit>zpAztecCityOutpost</socketbuildprotounit>
     <socketbuildrate>20.0000</socketbuildrate>
@@ -52581,7 +52578,7 @@
   </unit>
    <unit id="20713" name="zpSPCSocketAztecOutpost3">
     <dbid>20713</dbid>
-    <displaynameid>123003</displaynameid>
+    <displaynameid>300363</displaynameid>
     <editornameid>302433</editornameid>
     <socketbuildprotounit>zpAztecCityOutpost</socketbuildprotounit>
     <socketbuildrate>20.0000</socketbuildrate>
@@ -52621,7 +52618,7 @@
   </unit>
    <unit id="20714" name="zpSPCSocketAztecOutpost4">
     <dbid>20714</dbid>
-    <displaynameid>123003</displaynameid>
+    <displaynameid>300363</displaynameid>
     <editornameid>302434</editornameid>
     <socketbuildprotounit>zpAztecCityOutpost</socketbuildprotounit>
     <socketbuildrate>20.0000</socketbuildrate>
@@ -56112,7 +56109,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>nuggets\guillotine.xml</animfile>
+    <animfile>buildings\test\test_cube.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>
@@ -56142,13 +56139,11 @@
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>BuildingClass</unittype>
-    <unittype>Unattackable</unittype>
     <unittype>NativeBuilding</unittype>
     <unittype>Building</unittype>
     <flag>FlattenGround</flag>
     <flag>Doppled</flag>
     <flag>PaintTextureWhenPlacing</flag>
-    <flag>InvulnerableIfGaia</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>NonAutoFormedUnit</flag>
