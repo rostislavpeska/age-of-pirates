@@ -9,7 +9,7 @@
 	<units>
 		<unit variation="185" posx="-9.2593" posz="-28.6452" orientx="0.7071" orienty="0.0000" orientz="0.7071">UnderbrushTexas</unit>
 		<unit variation="165" posx="-18.1458" posz="-30.1021" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
-		<unit variation="199" posx="-17.5246" posz="-30.1655" orientx="-0.0007" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="199" posx="-17.5246" posz="-30.1655" orientx="-0.0007" orienty="-0.0000" orientz="-1.0000">zpDecoWallSmall</unit>
 		<unit variation="120" posx="-10.1969" posz="-30.1916" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
 		<unit variation="141" posx="-17.6440" posz="-30.0330" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropAztecDecoration</unit>
 		<unit variation="210" posx="-24.2587" posz="-26.5772" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
@@ -23,7 +23,7 @@
 		<unit variation="61" posx="17.1870" posz="-29.1582" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
 		<unit variation="198" posx="16.8910" posz="-29.2304" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropAztecDecoration</unit>
 		<unit variation="61" posx="23.3089" posz="-29.2388" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
-		<unit variation="199" posx="17.0254" posz="-29.3000" orientx="-0.0007" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="199" posx="17.0254" posz="-29.3000" orientx="-0.0007" orienty="-0.0000" orientz="-1.0000">zpDecoWallSmall</unit>
 		<unit variation="111" posx="-18.3265" posz="-25.4820" orientx="0.0000" orienty="0.0000" orientz="1.0000">NativeHouseAztec</unit>
 		<unit variation="150" posx="-23.9815" posz="-26.4681" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
 		<unit variation="176" posx="-29.6089" posz="-22.7465" orientx="-1.0000" orienty="0.0000" orientz="0.0002">SPCPathBlock3</unit>
@@ -90,8 +90,8 @@
 		<unit variation="7" posx="11.7514" posz="-5.2211" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCAztecProps</unit>
 		<unit variation="95" posx="28.8060" posz="-5.7717" orientx="-1.0000" orienty="0.0000" orientz="0.0001">WallWoodNative</unit>
 		<unit variation="7" posx="-12.4558" posz="-4.9611" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCAztecProps</unit>
-		<unit variation="199" posx="-29.7243" posz="-5.2770" orientx="-1.0000" orienty="-0.0000" orientz="0.0007">zpBridgeWallSmall</unit>
-		<unit variation="199" posx="28.5767" posz="-5.6800" orientx="-1.0000" orienty="-0.0000" orientz="0.0007">zpBridgeWallSmall</unit>
+		<unit variation="199" posx="-29.7243" posz="-5.2770" orientx="-1.0000" orienty="-0.0000" orientz="0.0007">zpDecoWallSmall</unit>
+		<unit variation="199" posx="28.5767" posz="-5.6800" orientx="-1.0000" orienty="-0.0000" orientz="0.0007">zpDecoWallSmall</unit>
 		<unit variation="83" posx="-19.3190" posz="-0.2336" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCAztecMediumTemple</unit>
 		<unit variation="83" posx="18.3693" posz="-0.3431" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCAztecMediumTemple</unit>
 		<unit variation="161" posx="-25.2372" posz="-2.8606" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
@@ -105,7 +105,7 @@
 		<unit variation="95" posx="-29.7092" posz="3.9034" orientx="-1.0000" orienty="0.0000" orientz="0.0001">WallWoodNative</unit>
 		<unit variation="7" posx="-11.7645" posz="3.4798" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCAztecProps</unit>
 		<unit variation="7" posx="11.4874" posz="3.6692" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCAztecProps</unit>
-		<unit variation="199" posx="-29.7866" posz="3.7574" orientx="-1.0000" orienty="-0.0000" orientz="0.0007">zpBridgeWallSmall</unit>
+		<unit variation="199" posx="-29.7866" posz="3.7574" orientx="-1.0000" orienty="-0.0000" orientz="0.0007">zpDecoWallSmall</unit>
 		<unit variation="176" posx="-29.9972" posz="7.2920" orientx="-1.0000" orienty="0.0000" orientz="0.0002">SPCPathBlock3</unit>
 		<unit variation="197" posx="-0.8843" posz="12.5304" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCAztecGreatTemple</unit>
 		<unit variation="211" posx="18.0000" posz="6.0000" orientx="-0.7568" orienty="0.0000" orientz="-0.6536">AIStart</unit>
@@ -116,7 +116,7 @@
 		<unit variation="63" posx="18.0000" posz="6.0000" orientx="-0.9995" orienty="0.0000" orientz="-0.0324">AIStart</unit>
 		<unit variation="72" posx="18.0000" posz="6.0000" orientx="-0.9834" orienty="0.0000" orientz="-0.1814">AIStart</unit>
 		<unit variation="95" posx="28.9979" posz="5.1117" orientx="-1.0000" orienty="0.0000" orientz="0.0001">WallWoodNative</unit>
-		<unit variation="199" posx="28.9829" posz="4.9784" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="199" posx="28.9829" posz="4.9784" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpDecoWallSmall</unit>
 		<unit variation="176" posx="29.1218" posz="8.4183" orientx="-1.0000" orienty="0.0000" orientz="0.0002">SPCPathBlock3</unit>
 		<unit variation="129" posx="-29.6912" posz="7.6163" orientx="1.0000" orienty="0.0000" orientz="-0.0001">WallWoodNative</unit>
 		<unit variation="198" posx="29.1089" posz="7.9182" orientx="-1.0000" orienty="0.0000" orientz="0.0001">WallWoodNative</unit>

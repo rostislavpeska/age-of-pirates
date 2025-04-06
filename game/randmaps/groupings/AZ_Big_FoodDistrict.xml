@@ -19,10 +19,10 @@
 		<unit variation="5" posx="27.4433" posz="-28.4137" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCSocketAztecOutpost4</unit>
 		<unit variation="115" posx="-16.5380" posz="-28.9706" orientx="0.0003" orienty="0.0000" orientz="1.0000">PropsNative</unit>
 		<unit variation="115" posx="-21.6761" posz="-28.7237" orientx="0.0003" orienty="0.0000" orientz="1.0000">PropsNative</unit>
-		<unit variation="249" posx="-24.6926" posz="-28.4223" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
-		<unit variation="140" posx="-20.5116" posz="-28.9016" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
-		<unit variation="219" posx="20.0370" posz="-29.2242" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallSmall</unit>
-		<unit variation="81" posx="22.5135" posz="-29.6162" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
+		<unit variation="249" posx="-24.6926" posz="-28.4223" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">zpDecoWallLarge</unit>
+		<unit variation="140" posx="-20.5116" posz="-28.9016" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpDecoWallLarge</unit>
+		<unit variation="219" posx="20.0370" posz="-29.2242" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpDecoWallSmall</unit>
+		<unit variation="81" posx="22.5135" posz="-29.6162" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpDecoWallLarge</unit>
 		<unit variation="103" posx="21.0000" posz="-25.0000" orientx="0.0006" orienty="0.0000" orientz="1.0000">deField</unit>
 		<unit variation="103" posx="13.0000" posz="-25.0000" orientx="0.0006" orienty="0.0000" orientz="1.0000">deField</unit>
 		<unit variation="238" posx="-8.7939" posz="-26.8711" orientx="1.0000" orienty="-0.0000" orientz="-0.0009">FenceRock</unit>
@@ -34,7 +34,7 @@
 		<unit variation="6" posx="-4.7702" posz="-24.3354" orientx="1.0000" orienty="0.0000" orientz="-0.0004">SPCAztecProps</unit>
 		<unit variation="6" posx="6.6223" posz="-24.2568" orientx="-1.0000" orienty="0.0000" orientz="0.0005">SPCAztecProps</unit>
 		<unit variation="238" posx="8.7854" posz="-24.0207" orientx="1.0000" orienty="-0.0000" orientz="-0.0009">FenceRock</unit>
-		<unit variation="249" posx="28.5895" posz="-24.0781" orientx="1.0000" orienty="0.0000" orientz="-0.0003">zpRuinWallLarge</unit>
+		<unit variation="249" posx="28.5895" posz="-24.0781" orientx="1.0000" orienty="0.0000" orientz="-0.0003">zpDecoWallLarge</unit>
 		<unit variation="115" posx="-28.5930" posz="-21.7966" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
 		<unit variation="135" posx="-16.8377" posz="-22.3954" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsNative</unit>
 		<unit variation="118" posx="-15.9334" posz="-20.9096" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsNative</unit>
@@ -43,7 +43,7 @@
 		<unit variation="242" posx="8.8460" posz="-21.1797" orientx="1.0000" orienty="-0.0000" orientz="-0.0009">FenceRock</unit>
 		<unit variation="115" posx="28.7276" posz="-22.8946" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
 		<unit variation="15" posx="-7.0664" posz="-21.0491" orientx="-0.3827" orienty="0.0000" orientz="0.9239">PropsNative</unit>
-		<unit variation="45" posx="-28.9238" posz="-22.4392" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallSmall</unit>
+		<unit variation="45" posx="-28.9238" posz="-22.4392" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpDecoWallSmall</unit>
 		<unit variation="151" posx="-27.0000" posz="-23.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
 		<unit variation="86" posx="27.0000" posz="-23.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
 		<unit variation="238" posx="-8.6757" posz="-20.7614" orientx="1.0000" orienty="-0.0000" orientz="-0.0009">FenceRock</unit>
@@ -63,14 +63,14 @@
 		<unit variation="145" posx="11.6341" posz="-18.5842" orientx="1.0000" orienty="0.0000" orientz="0.0000">UnderbrushTexasGrass</unit>
 		<unit variation="238" posx="12.8471" posz="-18.5084" orientx="1.0000" orienty="-0.0000" orientz="-0.0009">FenceRock</unit>
 		<unit variation="115" posx="28.7099" posz="-17.1711" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
-		<unit variation="140" posx="-28.8980" posz="-18.9535" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="140" posx="-28.8980" posz="-18.9535" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpDecoWallLarge</unit>
 		<unit variation="103" posx="-17.0000" posz="-15.0000" orientx="0.0007" orienty="0.0000" orientz="1.0000">deField</unit>
 		<unit variation="103" posx="-25.0000" posz="-15.0000" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">deField</unit>
 		<unit variation="115" posx="-28.9064" posz="-16.1628" orientx="1.0000" orienty="0.0000" orientz="-0.0003">PropsNative</unit>
 		<unit variation="238" posx="-11.4178" posz="-15.0933" orientx="1.0000" orienty="-0.0000" orientz="-0.0009">FenceRock</unit>
 		<unit variation="238" posx="12.7837" posz="-16.8699" orientx="1.0000" orienty="-0.0000" orientz="-0.0009">FenceRock</unit>
 		<unit variation="15" posx="-13.0000" posz="-17.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
-		<unit variation="81" posx="29.0316" posz="-17.4263" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="81" posx="29.0316" posz="-17.4263" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpDecoWallLarge</unit>
 		<unit variation="132" posx="-10.5427" posz="-13.9000" orientx="1.0000" orienty="0.0000" orientz="0.0000">UnderbrushTexas</unit>
 		<unit variation="138" posx="-4.6172" posz="-14.2377" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
 		<unit variation="135" posx="11.5795" posz="-14.1619" orientx="0.7071" orienty="0.0000" orientz="0.7071">UnderbrushTexasGrass</unit>
@@ -96,7 +96,7 @@
 		<unit variation="149" posx="-6.7704" posz="-12.7499" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
 		<unit variation="196" posx="-7.6750" posz="-11.6198" orientx="0.3777" orienty="0.0021" orientz="-0.9259">Sheep</unit>
 		<unit variation="76" posx="7.1425" posz="-11.6853" orientx="0.3333" orienty="0.0024" orientz="-0.9428">Sheep</unit>
-		<unit variation="137" posx="-29.1457" posz="-12.4161" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="137" posx="-29.1457" posz="-12.4161" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpDecoWallLarge</unit>
 		<unit variation="112" posx="14.9618" posz="-8.9630" orientx="0.7074" orienty="0.0000" orientz="0.7069">SPCPathBlock3</unit>
 		<unit variation="112" posx="19.5023" posz="-11.7088" orientx="0.0003" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="112" posx="24.0548" posz="-11.7938" orientx="0.0003" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
@@ -120,7 +120,7 @@
 		<unit variation="138" posx="-17.4906" posz="-7.3754" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
 		<unit variation="90" posx="8.4372" posz="-8.8561" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
 		<unit variation="77" posx="8.7021" posz="-7.6656" orientx="-0.8977" orienty="0.0052" orientz="-0.4405">Sheep</unit>
-		<unit variation="219" posx="29.0987" posz="-9.7572" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="219" posx="29.0987" posz="-9.7572" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpDecoWallLarge</unit>
 		<unit variation="112" posx="-26.9364" posz="-5.5685" orientx="-1.0000" orienty="0.0000" orientz="0.0004">SPCPathBlock3</unit>
 		<unit variation="112" posx="-17.3313" posz="-8.7430" orientx="-0.0004" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="112" posx="-14.9989" posz="-4.6510" orientx="1.0000" orienty="0.0000" orientz="-0.0004">SPCPathBlock3</unit>
@@ -145,7 +145,7 @@
 		<unit variation="79" posx="16.7269" posz="-3.8969" orientx="0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
 		<unit variation="141" posx="10.6126" posz="-4.2983" orientx="0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
 		<unit variation="28" posx="-5.2734" posz="-4.4046" orientx="-0.8978" orienty="0.0052" orientz="-0.4403">Sheep</unit>
-		<unit variation="176" posx="-29.1301" posz="-5.1800" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="176" posx="-29.1301" posz="-5.1800" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpDecoWallLarge</unit>
 		<unit variation="6" posx="-11.0934" posz="-4.7159" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpCityStateFlag</unit>
 		<unit variation="110" posx="-13.0000" posz="-5.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">deTorpBush2</unit>
 		<unit variation="6" posx="10.9391" posz="-5.8214" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpCityStateFlag</unit>
@@ -157,7 +157,7 @@
 		<unit variation="149" posx="-14.4749" posz="-2.8884" orientx="-1.0000" orienty="0.0000" orientz="0.0003">PropsNative</unit>
 		<unit variation="239" posx="2.0021" posz="-0.9442" orientx="0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
 		<unit variation="171" posx="9.0000" posz="-3.0000" orientx="0.3827" orienty="0.0000" orientz="0.9239">BerryBush</unit>
-		<unit variation="46" posx="29.2295" posz="-2.0588" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="46" posx="29.2295" posz="-2.0588" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpDecoWallLarge</unit>
 		<unit variation="112" posx="-27.2114" posz="0.5650" orientx="-1.0000" orienty="0.0000" orientz="0.0004">SPCPathBlock3</unit>
 		<unit variation="112" posx="-16.0982" posz="1.1963" orientx="0.9240" orienty="0.0000" orientz="0.3823">SPCPathBlock3</unit>
 		<unit variation="41" posx="-18.8962" posz="0.3642" orientx="0.0004" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
@@ -179,7 +179,7 @@
 		<unit variation="115" posx="28.9322" posz="2.6116" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
 		<unit variation="7" posx="0.1611" posz="1.3773" orientx="-0.9997" orienty="0.0040" orientz="-0.0222">Sheep</unit>
 		<unit variation="238" posx="0.6147" posz="2.4464" orientx="-0.7134" orienty="0.0000" orientz="0.7008">Sheep</unit>
-		<unit variation="231" posx="-29.2035" posz="1.6867" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="231" posx="-29.2035" posz="1.6867" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpDecoWallLarge</unit>
 		<unit variation="234" posx="-20.9761" posz="4.7678" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
 		<unit variation="248" posx="-16.0887" posz="4.7436" orientx="0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
 		<unit variation="117" posx="-17.9785" posz="3.1573" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
@@ -200,7 +200,7 @@
 		<unit variation="239" posx="10.3214" posz="6.6405" orientx="0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
 		<unit variation="123" posx="-5.7363" posz="6.0343" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
 		<unit variation="67" posx="11.0000" posz="5.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
-		<unit variation="17" posx="29.6708" posz="5.9401" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="17" posx="29.6708" posz="5.9401" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpDecoWallLarge</unit>
 		<unit variation="103" posx="-24.7413" posz="9.6975" orientx="1.0000" orienty="0.0000" orientz="0.0000">deField</unit>
 		<unit variation="121" posx="25.0000" posz="9.0000" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deField</unit>
 		<unit variation="115" posx="-28.8831" posz="7.3779" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
@@ -233,7 +233,7 @@
 		<unit variation="129" posx="11.4519" posz="10.2652" orientx="-0.0009" orienty="-0.0000" orientz="-1.0000">FenceRock</unit>
 		<unit variation="238" posx="-5.7662" posz="10.0285" orientx="1.0000" orienty="-0.0000" orientz="-0.0010">FenceRock</unit>
 		<unit variation="238" posx="-5.7292" posz="9.0443" orientx="1.0000" orienty="-0.0000" orientz="-0.0010">FenceRock</unit>
-		<unit variation="107" posx="-29.2085" posz="9.7341" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="107" posx="-29.2085" posz="9.7341" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpDecoWallLarge</unit>
 		<unit variation="148" posx="-7.0000" posz="9.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
 		<unit variation="219" posx="-4.6791" posz="9.2974" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropAztecDecoration</unit>
 		<unit variation="208" posx="9.0000" posz="9.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
@@ -249,7 +249,7 @@
 		<unit variation="219" posx="-7.0000" posz="13.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
 		<unit variation="18" posx="9.0000" posz="13.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
 		<unit variation="90" posx="9.0000" posz="13.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
-		<unit variation="199" posx="29.8768" posz="13.1881" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="199" posx="29.8768" posz="13.1881" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpDecoWallLarge</unit>
 		<unit variation="103" posx="-25.0000" posz="17.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">deField</unit>
 		<unit variation="121" posx="25.0000" posz="17.0000" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deField</unit>
 		<unit variation="129" posx="7.4744" posz="15.4604" orientx="-1.0000" orienty="-0.0000" orientz="0.0008">FenceRock</unit>
@@ -262,7 +262,7 @@
 		<unit variation="86" posx="-9.7917" posz="19.1948" orientx="0.3827" orienty="0.0000" orientz="0.9239">PropsNative</unit>
 		<unit variation="129" posx="7.5151" posz="18.7661" orientx="-1.0000" orienty="-0.0000" orientz="0.0008">FenceRock</unit>
 		<unit variation="238" posx="-5.9979" posz="18.8042" orientx="1.0000" orienty="-0.0000" orientz="-0.0010">FenceRock</unit>
-		<unit variation="249" posx="-29.1550" posz="16.9736" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="249" posx="-29.1550" posz="16.9736" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpDecoWallLarge</unit>
 		<unit variation="36" posx="-7.0000" posz="17.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
 		<unit variation="209" posx="9.0000" posz="17.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">BerryBush</unit>
 		<unit variation="223" posx="-20.0203" posz="21.0548" orientx="0.3827" orienty="0.0000" orientz="0.9239">PropsNative</unit>
@@ -286,7 +286,7 @@
 		<unit variation="37" posx="28.0000" posz="22.0000" orientx="-0.8739" orienty="0.0000" orientz="0.4861">AIStart</unit>
 		<unit variation="236" posx="28.0000" posz="22.0000" orientx="0.6518" orienty="0.0000" orientz="0.7584">AIStart</unit>
 		<unit variation="216" posx="28.0000" posz="22.0000" orientx="-0.1873" orienty="0.0000" orientz="-0.9823">AIStart</unit>
-		<unit variation="184" posx="30.0636" posz="21.3454" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpRuinWallLarge</unit>
+		<unit variation="184" posx="30.0636" posz="21.3454" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpDecoWallLarge</unit>
 		<unit variation="158" posx="-28.0199" posz="26.0048" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSocketAztecOutpost2</unit>
 		<unit variation="121" posx="-15.0000" posz="25.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">deField</unit>
 		<unit variation="121" posx="15.0000" posz="25.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">deField</unit>
@@ -295,7 +295,7 @@
 		<unit variation="121" posx="-7.0000" posz="25.0000" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">deField</unit>
 		<unit variation="121" posx="23.0000" posz="25.0000" orientx="1.0000" orienty="0.0000" orientz="0.0000">deField</unit>
 		<unit variation="115" posx="29.8198" posz="23.8737" orientx="-1.0000" orienty="0.0000" orientz="0.0003">PropsNative</unit>
-		<unit variation="249" posx="-28.9343" posz="23.1417" orientx="1.0000" orienty="0.0000" orientz="-0.0002">zpRuinWallLarge</unit>
+		<unit variation="249" posx="-28.9343" posz="23.1417" orientx="1.0000" orienty="0.0000" orientz="-0.0002">zpDecoWallLarge</unit>
 		<unit variation="68" posx="28.3528" posz="26.9845" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSocketAztecOutpost1</unit>
 		<unit variation="6" posx="0.3112" posz="25.7301" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCAztecStairs</unit>
 		<unit variation="176" posx="-3.2951" posz="28.1800" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsNative</unit>
@@ -306,15 +306,15 @@
 		<unit variation="115" posx="-6.4937" posz="28.6478" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
 		<unit variation="115" posx="-18.9218" posz="29.1359" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
 		<unit variation="115" posx="-12.7629" posz="29.0811" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
-		<unit variation="115" posx="-18.6717" posz="29.1205" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpRuinWallLarge</unit>
-		<unit variation="68" posx="-11.7891" posz="28.8509" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpRuinWallLarge</unit>
-		<unit variation="249" posx="-6.9371" posz="28.6748" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
-		<unit variation="229" posx="-3.1830" posz="28.8577" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="75" posx="4.4534" posz="28.6155" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="140" posx="6.4467" posz="28.6215" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="80" posx="10.2331" posz="28.5213" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpRuinWallLarge</unit>
-		<unit variation="45" posx="17.4397" posz="28.6456" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpRuinWallLarge</unit>
-		<unit variation="249" posx="22.9163" posz="28.1528" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
+		<unit variation="115" posx="-18.6717" posz="29.1205" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpDecoWallLarge</unit>
+		<unit variation="68" posx="-11.7891" posz="28.8509" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpDecoWallLarge</unit>
+		<unit variation="249" posx="-6.9371" posz="28.6748" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpDecoWallLarge</unit>
+		<unit variation="229" posx="-3.1830" posz="28.8577" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpDecoWallSmall</unit>
+		<unit variation="75" posx="4.4534" posz="28.6155" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpDecoWallSmall</unit>
+		<unit variation="140" posx="6.4467" posz="28.6215" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpDecoWallSmall</unit>
+		<unit variation="80" posx="10.2331" posz="28.5213" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpDecoWallLarge</unit>
+		<unit variation="45" posx="17.4397" posz="28.6456" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpDecoWallLarge</unit>
+		<unit variation="249" posx="22.9163" posz="28.1528" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpDecoWallLarge</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">

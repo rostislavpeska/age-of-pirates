@@ -23500,6 +23500,7 @@
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>RMCanRotate</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DestroyUnderBuilding</flag>
   </unit>
   <unit id="20243" name="zpBridgeWallMedium">
     <dbid>20243</dbid>
@@ -23523,6 +23524,7 @@
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>RMCanRotate</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DestroyUnderBuilding</flag>
   </unit>
   <unit id="20244" name="zpBridgeWallLarge">
     <dbid>20244</dbid>
@@ -23546,6 +23548,7 @@
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>RMCanRotate</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DestroyUnderBuilding</flag>
   </unit>
   <unit id="20245" name="zpCargoBoat">
     <dbid>20245</dbid>

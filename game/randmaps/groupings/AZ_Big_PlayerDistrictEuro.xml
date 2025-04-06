@@ -9,96 +9,95 @@
 	<units>
 		<unit variation="6" posx="-0.6087" posz="18.2607" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">TownCenter</unit>
 		<unit variation="237" posx="-0.6144" posz="-30.5780" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SocketTradeRoute</unit>
-		<unit variation="245" posx="-57.3973" posz="-32.4576" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="121" posx="-68.6112" posz="-32.4050" orientx="-0.0054" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
 		<unit variation="228" posx="-46.1833" posz="-32.5103" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
 		<unit variation="80" posx="-34.9693" posz="-32.5629" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
 		<unit variation="112" posx="-23.7553" posz="-32.6155" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="43" posx="-13.1637" posz="-32.3817" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
 		<unit variation="43" posx="12.5157" posz="-32.2202" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
-		<unit variation="42" posx="23.4454" posz="-32.3761" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
-		<unit variation="130" posx="45.8733" posz="-32.4814" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
-		<unit variation="71" posx="57.0873" posz="-32.5340" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
-		<unit variation="78" posx="68.2872" posz="-32.5866" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
-		<unit variation="121" posx="-68.6112" posz="-32.4050" orientx="-0.0054" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="245" posx="-57.3973" posz="-32.4576" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="205" posx="-40.4754" posz="-32.3247" orientx="0.0000" orienty="0.0000" orientz="1.0000">CWallGate</unit>
 		<unit variation="173" posx="-51.7903" posz="-32.4840" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallStraight5</unit>
 		<unit variation="96" posx="-18.4668" posz="-32.5766" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
-		<unit variation="107" posx="29.0524" posz="-32.4024" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallStraight5</unit>
-		<unit variation="189" posx="40.3956" posz="-32.4664" orientx="0.0000" orienty="0.0000" orientz="1.0000">CWallGate</unit>
 		<unit variation="102" posx="-63.0043" posz="-32.4313" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallStraight5</unit>
 		<unit variation="151" posx="-29.3623" posz="-32.5892" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallStraight5</unit>
 		<unit variation="103" posx="34.6594" posz="-32.4288" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
-		<unit variation="59" posx="63.3634" posz="-32.3123" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
-		<unit variation="43" posx="-13.1637" posz="-32.3817" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="130" posx="45.8733" posz="-32.4814" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="71" posx="57.0873" posz="-32.5340" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="78" posx="68.2872" posz="-32.5866" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
+		<unit variation="41" posx="67.8506" posz="-30.2951" orientx="-1.0000" orienty="0.0000" orientz="0.0000">WallStraight2</unit>
+		<unit variation="42" posx="23.4454" posz="-32.3761" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallConnector</unit>
+		<unit variation="189" posx="40.3956" posz="-32.4664" orientx="0.0000" orienty="0.0000" orientz="1.0000">CWallGate</unit>
 		<unit variation="215" posx="51.4803" posz="-32.5077" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallStraight5</unit>
-		<unit variation="205" posx="-40.4754" posz="-32.3247" orientx="0.0000" orienty="0.0000" orientz="1.0000">CWallGate</unit>
+		<unit variation="59" posx="63.3634" posz="-32.3123" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
+		<unit variation="107" posx="29.0524" posz="-32.4024" orientx="-0.0047" orienty="-0.0000" orientz="-1.0000">WallStraight5</unit>
 		<unit variation="96" posx="18.4047" posz="-32.3658" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
 		<unit variation="9" posx="-1.3264" posz="-30.4790" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCAztecStairs</unit>
-		<unit variation="140" posx="-68.9830" posz="-28.6850" orientx="-1.0000" orienty="0.0000" orientz="0.0000">WallStraight3</unit>
-		<unit variation="166" posx="68.4010" posz="-28.5215" orientx="-1.0000" orienty="0.0000" orientz="0.0000">WallStraight3</unit>
+		<unit variation="41" posx="-68.7213" posz="-29.8278" orientx="-1.0000" orienty="0.0000" orientz="0.0000">WallStraight2</unit>
 		<unit variation="68" posx="61.7190" posz="-26.7221" orientx="-1.0000" orienty="0.0000" orientz="0.0000">Barracks</unit>
 		<unit variation="147" posx="-26.4650" posz="-27.7588" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
 		<unit variation="9" posx="-11.5151" posz="-29.7319" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropAztecDecoration</unit>
 		<unit variation="27" posx="10.6901" posz="-28.8366" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropAztecDecoration</unit>
 		<unit variation="32" posx="-63.5933" posz="-24.3932" orientx="0.0000" orienty="0.0000" orientz="1.0000">Stable</unit>
-		<unit variation="243" posx="-16.8020" posz="-25.2017" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="245" posx="67.8127" posz="-27.7475" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
 		<unit variation="221" posx="-19.6459" posz="-25.9070" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="243" posx="-16.8020" posz="-25.2017" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
 		<unit variation="141" posx="34.0219" posz="-26.2761" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpUnderbrushConstructionJesuit</unit>
-		<unit variation="245" posx="68.2090" posz="-25.1023" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
+		<unit variation="253" posx="-68.4751" posz="-26.6440" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallConnector</unit>
+		<unit variation="168" posx="-68.7359" posz="-21.5049" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallStraight5</unit>
+		<unit variation="56" posx="68.0328" posz="-22.0230" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallStraight5</unit>
 		<unit variation="231" posx="-19.5975" posz="-23.0831" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
 		<unit variation="57" posx="45.5511" posz="-23.4508" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="107" posx="-26.5303" posz="-24.1178" orientx="-0.2230" orienty="-0.0029" orientz="0.9748">Turkey</unit>
 		<unit variation="194" posx="-26.0000" posz="-21.0000" orientx="0.9636" orienty="0.0000" orientz="0.2675">deMineGoldBuildable</unit>
-		<unit variation="253" posx="-69.1180" posz="-24.6471" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallConnector</unit>
 		<unit variation="75" posx="-17.8341" posz="-21.1425" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
 		<unit variation="159" posx="-20.7668" posz="-22.5227" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
-		<unit variation="60" posx="-16.8080" posz="-22.1263" orientx="-0.9938" orienty="0.0043" orientz="-0.1113">Turkey</unit>
 		<unit variation="75" posx="-19.1952" posz="-22.4858" orientx="-0.6325" orienty="0.0055" orientz="-0.7746">Turkey</unit>
+		<unit variation="60" posx="-16.8080" posz="-22.1263" orientx="-0.9938" orienty="0.0043" orientz="-0.1113">Turkey</unit>
 		<unit variation="10" posx="-30.0000" posz="-23.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
-		<unit variation="243" posx="-69.0116" posz="-20.7455" orientx="-1.0000" orienty="0.0000" orientz="0.0000">WallStraight3</unit>
 		<unit variation="28" posx="-32.0000" posz="-19.0000" orientx="0.4446" orienty="0.0000" orientz="0.8957">deMineGoldBuildable</unit>
-		<unit variation="150" posx="68.1854" posz="-20.5216" orientx="-1.0000" orienty="0.0000" orientz="0.0000">WallStraight3</unit>
 		<unit variation="84" posx="-30.7163" posz="-20.2764" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
-		<unit variation="230" posx="-16.2150" posz="-20.2996" orientx="-0.4330" orienty="-0.0018" orientz="0.9014">Turkey</unit>
 		<unit variation="35" posx="-17.8216" posz="-20.0826" orientx="-0.0475" orienty="0.0041" orientz="-0.9989">Turkey</unit>
+		<unit variation="230" posx="-16.2150" posz="-20.2996" orientx="-0.4330" orienty="-0.0018" orientz="0.9014">Turkey</unit>
 		<unit variation="187" posx="-20.0000" posz="-21.0000" orientx="0.9220" orienty="0.0000" orientz="-0.3871">TreeAmazon</unit>
-		<unit variation="183" posx="-52.7744" posz="-18.3699" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="1" posx="-14.2998" posz="-18.1709" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
 		<unit variation="206" posx="-15.8186" posz="-17.3560" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="183" posx="-52.7744" posz="-18.3699" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="50" posx="-28.1066" posz="-17.7959" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
 		<unit variation="50" posx="35.8934" posz="-17.7959" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
 		<unit variation="200" posx="-13.6819" posz="-19.1504" orientx="-0.7454" orienty="0.0003" orientz="0.6666">Turkey</unit>
 		<unit variation="164" posx="-18.0697" posz="-18.0166" orientx="0.9728" orienty="-0.0047" orientz="0.2315">Turkey</unit>
 		<unit variation="113" posx="-12.7334" posz="-18.5535" orientx="-0.6471" orienty="-0.0005" orientz="0.7624">Turkey</unit>
 		<unit variation="127" posx="-22.0000" posz="-19.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
-		<unit variation="253" posx="-68.9955" posz="-17.1077" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallConnector</unit>
-		<unit variation="245" posx="68.3770" posz="-17.1895" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
 		<unit variation="241" posx="18.6903" posz="-15.6813" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushConstructionJesuit</unit>
-		<unit variation="180" posx="-14.3992" posz="-15.8167" orientx="-0.0216" orienty="-0.0038" orientz="0.9998">Turkey</unit>
-		<unit variation="229" posx="-15.3248" posz="-16.8984" orientx="-0.9981" orienty="0.0041" orientz="-0.0607">Turkey</unit>
 		<unit variation="132" posx="-18.2728" posz="-16.6963" orientx="0.9601" orienty="-0.0048" orientz="0.2795">Turkey</unit>
+		<unit variation="229" posx="-15.3248" posz="-16.8984" orientx="-0.9981" orienty="0.0041" orientz="-0.0607">Turkey</unit>
+		<unit variation="180" posx="-14.3992" posz="-15.8167" orientx="-0.0216" orienty="-0.0038" orientz="0.9998">Turkey</unit>
 		<unit variation="178" posx="-24.0000" posz="-17.0000" orientx="0.7701" orienty="0.0000" orientz="-0.6379">TreeAmazon</unit>
 		<unit variation="136" posx="-24.0000" posz="-17.0000" orientx="-0.4277" orienty="0.0000" orientz="-0.9039">TreeAmazon</unit>
 		<unit variation="8" posx="-22.0000" posz="-17.0000" orientx="-0.8131" orienty="0.0000" orientz="-0.5822">TreeAmazon</unit>
 		<unit variation="68" posx="-22.0000" posz="-17.0000" orientx="-0.1977" orienty="0.0000" orientz="-0.9803">TreeAmazon</unit>
 		<unit variation="151" posx="-18.0000" posz="-17.0000" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">BerryBush</unit>
 		<unit variation="9" posx="-20.0000" posz="-17.0000" orientx="0.8957" orienty="0.0000" orientz="-0.4446">TreeAmazon</unit>
+		<unit variation="253" posx="-68.9276" posz="-16.2579" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallConnector</unit>
 		<unit variation="168" posx="-69.0833" posz="-11.2603" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallStraight5</unit>
+		<unit variation="245" posx="68.3489" posz="-16.8378" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
 		<unit variation="56" posx="68.4735" posz="-11.4855" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallStraight5</unit>
 		<unit variation="1" posx="-15.9970" posz="-14.3411" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
 		<unit variation="65" posx="-13.7316" posz="-14.6809" orientx="-0.4365" orienty="-0.0018" orientz="0.8997">Turkey</unit>
-		<unit variation="121" posx="-30.0000" posz="-15.0000" orientx="0.9970" orienty="0.0000" orientz="-0.0768">TreeAmazon</unit>
 		<unit variation="17" posx="-34.0000" posz="-15.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
-		<unit variation="87" posx="-24.0000" posz="-15.0000" orientx="0.7361" orienty="0.0000" orientz="0.6768">TreeAmazon</unit>
+		<unit variation="121" posx="-30.0000" posz="-15.0000" orientx="0.9970" orienty="0.0000" orientz="-0.0768">TreeAmazon</unit>
 		<unit variation="151" posx="-26.0000" posz="-15.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
 		<unit variation="168" posx="-26.0000" posz="-15.0000" orientx="0.8087" orienty="0.0000" orientz="0.5882">TreeAmazon</unit>
+		<unit variation="87" posx="-24.0000" posz="-15.0000" orientx="0.7361" orienty="0.0000" orientz="0.6768">TreeAmazon</unit>
 		<unit variation="15" posx="53.5208" posz="-11.5680" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
 		<unit variation="84" posx="-37.5939" posz="-12.2505" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsNative</unit>
 		<unit variation="84" posx="26.4061" posz="-12.2505" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsNative</unit>
 		<unit variation="24" posx="-14.9628" posz="-12.5923" orientx="-0.1016" orienty="0.0043" orientz="-0.9948">Turkey</unit>
-		<unit variation="42" posx="-17.2621" posz="-12.3210" orientx="0.8802" orienty="-0.0053" orientz="0.4746">Turkey</unit>
 		<unit variation="230" posx="-32.0000" posz="-13.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
 		<unit variation="222" posx="-26.0000" posz="-13.0000" orientx="0.1393" orienty="0.0000" orientz="-0.9902">TreeAmazon</unit>
 		<unit variation="239" posx="-26.0000" posz="-13.0000" orientx="-0.8586" orienty="0.0000" orientz="-0.5126">TreeAmazon</unit>
-		<unit variation="21" posx="-19.9890" posz="-11.4535" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNuggetKidnapGuillotine</unit>
+		<unit variation="21" posx="-19.1013" posz="-12.3420" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNuggetKidnapGuillotine</unit>
 		<unit variation="112" posx="-46.8508" posz="-9.4789" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="127" posx="-15.4583" posz="-11.4222" orientx="0.9722" orienty="-0.0029" orientz="-0.2342">Turkey</unit>
 		<unit variation="207" posx="-15.7218" posz="-10.6244" orientx="-0.9631" orienty="0.0027" orientz="0.2690">Turkey</unit>
@@ -114,18 +113,18 @@
 		<unit variation="175" posx="-24.0000" posz="-7.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
 		<unit variation="213" posx="68.5699" posz="-5.7815" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
 		<unit variation="179" posx="-69.1711" posz="-5.4129" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallConnector</unit>
-		<unit variation="251" posx="69.3683" posz="-0.3093" orientx="1.0000" orienty="-0.0039" orientz="-0.0000">zpInvisibleGateSocket</unit>
-		<unit variation="193" posx="-69.4035" posz="0.4745" orientx="-1.0000" orienty="0.0039" orientz="0.0000">zpInvisibleGateSocket</unit>
+		<unit variation="251" posx="69.1103" posz="-0.4473" orientx="1.0000" orienty="-0.0039" orientz="-0.0000">zpInvisibleGateSocket</unit>
+		<unit variation="193" posx="-69.3945" posz="0.4745" orientx="-1.0000" orienty="0.0039" orientz="0.0000">zpInvisibleGateSocket</unit>
 		<unit variation="202" posx="-33.8416" posz="3.4622" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsNative</unit>
 		<unit variation="202" posx="30.1584" posz="3.4622" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsNative</unit>
+		<unit variation="161" posx="-35.7097" posz="6.5109" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpUnderbrushConstructionJesuit</unit>
+		<unit variation="64" posx="-11.1856" posz="6.2998" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpUnderbrushConstructionJesuit</unit>
+		<unit variation="190" posx="44.4476" posz="6.7316" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
 		<unit variation="15" posx="-54.0491" posz="7.0664" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
 		<unit variation="15" posx="9.9509" posz="7.0664" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
-		<unit variation="64" posx="-11.1856" posz="6.2998" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpUnderbrushConstructionJesuit</unit>
-		<unit variation="161" posx="-35.7097" posz="6.5109" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpUnderbrushConstructionJesuit</unit>
-		<unit variation="190" posx="44.4476" posz="6.7316" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="206" posx="68.7629" posz="5.6265" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
 		<unit variation="34" posx="-69.3467" posz="6.2818" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallConnector</unit>
 		<unit variation="182" posx="-58.0698" posz="8.2852" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SocketTradeRoute</unit>
-		<unit variation="206" posx="68.7629" posz="5.6265" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
 		<unit variation="31" posx="53.9413" posz="9.1039" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SocketTradeRoute</unit>
 		<unit variation="22" posx="-9.3741" posz="8.6638" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="118" posx="-69.4345" posz="12.1292" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallStraight5</unit>
@@ -135,55 +134,55 @@
 		<unit variation="70" posx="-13.5152" posz="10.1788" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="221" posx="-47.7579" posz="13.0370" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="59" posx="-59.9559" posz="16.4307" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="72" posx="-60.6601" posz="15.5510" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
 		<unit variation="135" posx="-55.3954" posz="16.8377" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="118" posx="-53.9096" posz="15.9334" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
 		<unit variation="135" posx="8.6046" posz="16.8377" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="118" posx="10.0904" posz="15.9334" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
+		<unit variation="147" posx="16.8879" posz="16.4786" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
 		<unit variation="158" posx="13.9050" posz="17.0693" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">PropsNative</unit>
 		<unit variation="136" posx="15.0961" posz="16.6975" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
-		<unit variation="147" posx="16.8879" posz="16.4786" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
-		<unit variation="118" posx="-53.9096" posz="15.9334" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
-		<unit variation="118" posx="10.0904" posz="15.9334" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">PropsNative</unit>
-		<unit variation="72" posx="-60.6601" posz="15.5510" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
-		<unit variation="102" posx="68.9558" posz="17.0345" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
+		<unit variation="102" posx="68.7671" posz="15.8637" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
 		<unit variation="1" posx="20.1419" posz="18.4788" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
 		<unit variation="51" posx="10.1120" posz="17.7062" orientx="0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
 		<unit variation="117" posx="-29.8427" posz="17.9785" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
 		<unit variation="117" posx="34.1573" posz="17.9785" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
-		<unit variation="205" posx="-69.5223" posz="17.9765" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallConnector</unit>
-		<unit variation="55" posx="-69.5990" posz="22.4807" orientx="-1.0000" orienty="0.0000" orientz="0.0000">WallStraight3</unit>
-		<unit variation="58" posx="69.0700" posz="21.0891" orientx="-1.0000" orienty="0.0000" orientz="0.0000">WallStraight3</unit>
+		<unit variation="205" posx="-69.3372" posz="17.5637" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallConnector</unit>
+		<unit variation="118" posx="-69.3116" posz="22.1961" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallStraight5</unit>
+		<unit variation="49" posx="68.7364" posz="21.2658" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallStraight5</unit>
 		<unit variation="32" posx="61.8571" posz="23.7129" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Stable</unit>
 		<unit variation="170" posx="16.1356" posz="24.8221" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Market</unit>
 		<unit variation="240" posx="51.0977" posz="22.8983" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="41" posx="-63.1699" posz="25.7321" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Barracks</unit>
 		<unit variation="140" posx="-50.3925" posz="24.5667" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpUnderbrushConstructionJesuit</unit>
-		<unit variation="102" posx="69.0302" posz="24.4219" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
-		<unit variation="205" posx="-69.6025" posz="25.4573" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallConnector</unit>
-		<unit variation="226" posx="69.1360" posz="28.2874" orientx="-1.0000" orienty="0.0000" orientz="0.0000">WallStraight3</unit>
+		<unit variation="102" posx="69.0015" posz="25.9609" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
 		<unit variation="150" posx="0.1182" posz="29.1289" orientx="0.0000" orienty="0.0000" orientz="1.0000">SocketTradeRoute</unit>
-		<unit variation="138" posx="-69.6718" posz="29.5586" orientx="-1.0000" orienty="0.0000" orientz="0.0000">WallStraight3</unit>
+		<unit variation="41" posx="68.9223" posz="28.4264" orientx="-1.0000" orienty="0.0000" orientz="0.0000">WallStraight2</unit>
+		<unit variation="205" posx="-69.4760" posz="27.2463" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallConnector</unit>
 		<unit variation="205" posx="-0.7769" posz="29.9187" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCAztecStairs</unit>
-		<unit variation="216" posx="-57.7790" posz="32.7819" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="41" posx="-69.4727" posz="30.5285" orientx="-1.0000" orienty="0.0000" orientz="0.0000">WallStraight2</unit>
+		<unit variation="40" posx="29.1963" posz="32.0917" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
 		<unit variation="101" posx="-46.3809" posz="32.5796" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
 		<unit variation="181" posx="-34.9829" posz="32.3773" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
 		<unit variation="43" posx="-23.5848" posz="32.1749" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="43" posx="-12.4939" posz="32.1375" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
 		<unit variation="43" posx="12.3616" posz="32.3715" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
-		<unit variation="119" posx="23.6787" posz="32.3443" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
-		<unit variation="103" posx="46.4749" posz="31.9396" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="73" posx="35.3864" posz="32.3929" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
 		<unit variation="254" posx="57.2843" posz="31.8532" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
 		<unit variation="82" posx="69.0712" posz="31.5385" orientx="0.9999" orienty="0.0000" orientz="-0.0169">WallConnector</unit>
-		<unit variation="48" posx="-69.1771" posz="32.9843" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallConnector</unit>
+		<unit variation="216" posx="-57.7790" posz="32.7819" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="4" posx="-40.6323" posz="32.6954" orientx="0.0000" orienty="0.0000" orientz="-1.0000">CWallGate</unit>
+		<unit variation="119" posx="23.6787" posz="32.3443" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="172" posx="40.9444" posz="32.4192" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">CWallGate</unit>
+		<unit variation="59" posx="52.1740" posz="31.8385" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
 		<unit variation="99" posx="-52.0800" posz="32.6808" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
 		<unit variation="96" posx="-18.3897" posz="32.0547" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
-		<unit variation="40" posx="29.1963" posz="32.0917" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
-		<unit variation="172" posx="40.9444" posz="32.4192" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">CWallGate</unit>
-		<unit variation="155" posx="-63.4780" posz="32.8831" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
-		<unit variation="96" posx="-29.2838" posz="32.2761" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
-		<unit variation="73" posx="35.3864" posz="32.3929" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
-		<unit variation="59" posx="62.8943" posz="31.6993" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
-		<unit variation="43" posx="-12.4939" posz="32.1375" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
-		<unit variation="59" posx="52.1740" posz="31.8385" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
-		<unit variation="4" posx="-40.6323" posz="32.6954" orientx="0.0000" orienty="0.0000" orientz="-1.0000">CWallGate</unit>
 		<unit variation="96" posx="17.9184" posz="32.1681" orientx="-0.0178" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
+		<unit variation="103" posx="46.4749" posz="31.9396" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallConnector</unit>
+		<unit variation="155" posx="-63.4780" posz="32.8831" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
+		<unit variation="59" posx="62.8943" posz="31.6993" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
+		<unit variation="96" posx="-29.2838" posz="32.2761" orientx="-0.0177" orienty="-0.0000" orientz="-0.9998">WallStraight5</unit>
+		<unit variation="48" posx="-69.2597" posz="32.8470" orientx="-0.9999" orienty="-0.0000" orientz="-0.0150">WallConnector</unit>
 		<unit variation="108" posx="-0.2470" posz="-14.6647" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCMontezumaPalace</unit>
 		<unit variation="58" posx="61.9610" posz="-12.6081" orientx="-1.0000" orienty="0.0000" orientz="0.0000">Outpost</unit>
 		<unit variation="242" posx="-64.3371" posz="-8.7662" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Outpost</unit>
