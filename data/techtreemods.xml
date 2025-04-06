@@ -24301,7 +24301,7 @@
     </effects>
   </tech>
   <tech name="zpForbidBigWarshipdShadow" type="Normal">
-    <dbid>40999</dbid>
+    <dbid>41000</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -24553,9 +24553,6 @@
       </effect>
       <effect type="Data" amount="-3.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">ypFune</target>
-      </effect>
-      <effect type="Data" amount="-2.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">deChinchaRaft</target>
       </effect>
     </effects>
   </tech>
