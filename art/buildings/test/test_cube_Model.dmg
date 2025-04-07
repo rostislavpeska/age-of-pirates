@@ -3,7 +3,7 @@
 <damagetemplate>
 	<model name="buildings\test\test_cube_Model">
 		<impactpoint name="boneimpact01" bone="boneimpact01" impacttype="rooftile" motionstopfadetime="2.0" motionstopfadedelay="8.0" splasheffect="watersplash_med">
-			<part mesh="debris.001" bone="bone_debris_debris_001" halfextents="0.25, 0.5, 1.0" effect="effects\splinter_streamer.xml"/>
+			<part mesh="debris_001" bone="bone_debris_debris_001" halfextents="0.25, 0.5, 1.0" effect="effects\splinter_streamer.xml"/>
 		</impactpoint>
 	</model>
 </damagetemplate>
