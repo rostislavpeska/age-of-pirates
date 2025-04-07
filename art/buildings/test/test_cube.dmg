@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<damagetemplate>
+    <model name="buildings\test\test_cube_Model">
+        <impactpoint name="boneimpact01" bone="boneimpact01" impacttype="wood" mode="linked" motionstopfadetime="2.0" motionstopfadedelay="1.0" splasheffect="watersplash_med">
+            <part mesh="debris" bone="bone_debris_debris_000" halfextents="0.25, 0.5, 1.0" effect="effects\splinter_streamer.xml"/>
+        </impactpoint>
+        <impactpoint name="boneimpact01" bone="boneimpact01" impacttype="wood" mode="linked" motionstopfadetime="2.0" motionstopfadedelay="1.0" splasheffect="watersplash_med">
+            <part mesh="debris" bone="bone_debris_debris_000" halfextents="0.25, 0.5, 1.0" effect="effects\splinter_streamer.xml"/>
+        </impactpoint>
+    </model>
+</damagetemplate>

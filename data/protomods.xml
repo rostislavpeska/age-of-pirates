@@ -55737,7 +55737,7 @@
     <maxrunvelocity>7.5000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>4.0000</turnrate>
-    <animfile>units\naval\turtleship\turtleship.xml</animfile>
+    <animfile>units\naval\destroyer\destroyer.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <buildlimit>1</buildlimit>
@@ -55795,13 +55795,15 @@
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
+    <!--NO PLAYER PLACEMENT-->
+    <flag>NotPlayerPlaceable</flag>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
-    <tactics>bombardShip.tactics</tactics>
+    <tactics>frigate.tactics</tactics>
     <protoaction>
       <name>LongRangeAttack</name>
       <damage>200.000000</damage>
