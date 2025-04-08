@@ -1,20 +1,18 @@
 <animfile>
-    <definebone>bone_falling_building</definebone>
+    <definebone>bone_main</definebone>
     <definebone>bone_master</definebone>
-    <definebone>bone_smoke</definebone>
-    <definebone>bone_chimney</definebone>
+    <definebone>bone_smoke</definebone>  
+    <definebone>bone_debris_part_001</definebone>
+    <definebone>bone_debris_part_002</definebone>
+    <definebone>bone_debris_part_003</definebone>
+    <definebone>bone_debris_part_004</definebone>
+    <definebone>bone_debris_part_005</definebone>
+    <definebone>bone_debris_part_006</definebone>
+    <definebone>bone_debris_part_007</definebone>
+    <definebone>bone_debris_part_008</definebone>
+    <definebone>bone_debris_part_009</definebone>
     <submodel>
         dry dock
-        <attachment>
-            dock
-            <component>
-                dock
-                <assetreference type="GrannyModel">
-                    <file>buildings\spc\aztec\montezuma_palace_Model</file>
-                </assetreference>
-            </component>
-            <anim>Idle<component>dock</component></anim>
-        </attachment>
         <attachment>
             collapse_smoke
             <component>
@@ -35,7 +33,9 @@
         </attachment>
         <component>
             dry dock
-            <assetreference type="GrannyModel"><file>buildings\spc\aztec\montezuma_palace_Model</file></assetreference>
+            <assetreference type="GrannyModel">
+                <file>buildings\spc\aztec\montezuma_palace_Damaged</file>
+            </assetreference>
             <decal>
                 <effecttype>default</effecttype><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
                 <width>22</width><height>22</height>
@@ -44,13 +44,12 @@
         <component>
             DEAD
             <assetreference type="GrannyModel">
-                <file>buildings\1death_anim\Deathmodel</file>
+                <file>buildings\spc\aztec\montezuma_palace_Deathmodel</file>
             </assetreference>
-            <attach a="dock" frombone="MASTER" tobone="bone_falling_building" syncanims="0"></attach>
         </component>
         <anim>RangedAttack
             <assetreference type="GrannyAnim">
-                <file>buildings\fort\med_fort_idle</file>
+                <file>buildings\spc\aztec\montezuma_palace_Anim</file>
                 <tag type="Attack">0.45</tag>
                 <tag type="Attack">0.44</tag>
                 <tag type="Attack">0.43</tag>
@@ -68,18 +67,29 @@
                 <tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.42</tag>
                 <tag type="SpecificSoundSet" checkvisible="1" set="Arrows">0.40</tag>
             </assetreference>
+            <simskeleton>
+                <model>buildings\spc\aztec\montezuma_palace_Damaged</model>
+                <damagetemplate>buildings\spc\aztec\montezuma_palace_Damaged.dmg</damagetemplate>
+            </simskeleton>
             <component>dry dock</component>
-             <attach a="chimney_smoke" frombone="MASTER" tobone="bone_smoke" syncanims="0"></attach>
+            <attach a="chimney_smoke" frombone="MASTER" tobone="bone_smoke" syncanims="0"></attach>
         </anim>
         <anim>
             Idle
+            <assetreference type="GrannyAnim">
+                <file>buildings\spc\aztec\montezuma_palace_Anim</file>
+            </assetreference>
             <component>dry dock</component>
-             <attach a="chimney_smoke" frombone="MASTER" tobone="bone_smoke" syncanims="0"></attach>
+            <simskeleton>
+                <model>buildings\spc\aztec\montezuma_palace_Damaged</model>
+                <damagetemplate>buildings\spc\aztec\montezuma_palace_Damaged.dmg</damagetemplate>
+            </simskeleton>
+            <attach a="chimney_smoke" frombone="MASTER" tobone="bone_smoke" syncanims="0"></attach>
         </anim>
         <anim>
             Death
             <assetreference type="GrannyAnim">
-                <file>buildings\1death_anim\Deathmodel_Animation</file>
+                <file>buildings\spc\aztec\montezuma_palace_Deathanim</file>
             </assetreference>
             <component>DEAD</component>
             <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
