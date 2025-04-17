@@ -5090,33 +5090,31 @@
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
-    <maxvelocity>8.5000</maxvelocity>
-    <maxrunvelocity>10.5000</maxrunvelocity>
+    <maxvelocity>7.5000</maxvelocity>
+    <maxrunvelocity>9.5000</maxrunvelocity>
     <movementtype>water</movementtype>
-    <turnrate>1.0000</turnrate>
-    <animfile>units\naval\steamer\piratesteamer.xml</animfile>
+    <turnrate>3.0000</turnrate>
+    <animfile>units\naval\destroyer\destroyer_ship.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\units\naval\spc\spc_steamer_icon.png</icon>
-    <portraiticon>resources\art\units\naval\spc\spc_steamer_portrait.png</portraiticon>
-    <rollovertextid>300221</rollovertextid>
-    <shortrollovertextid>300222</shortrollovertextid>
+    <icon>resources\art\units\naval\spc\destroyer_ship_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\destroyer_ship.png</portraiticon>
+    <rollovertextid>46593</rollovertextid>
+    <shortrollovertextid>46592</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>2500.0000</initialhitpoints>
-    <maxhitpoints>2500.0000</maxhitpoints>
-    <los>24.0000</los>
+    <initialhitpoints>4000.0000</initialhitpoints>
+    <maxhitpoints>4000.0000</maxhitpoints>
+    <los>34.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
-    <trainpoints>35.0000</trainpoints>
+    <trainpoints>40.0000</trainpoints>
     <buildlimit>1</buildlimit>
-    <bounty>200.0000</bounty>
-    <buildbounty>200.0000</buildbounty>
-    <cost resourcetype="Wood">250.0000</cost>
-    <cost resourcetype="Gold">650.0000</cost>
-    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
-    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <bounty>110.0000</bounty>
+    <buildbounty>110.0000</buildbounty>
+    <cost resourcetype="Wood">1000.0000</cost>
+    <cost resourcetype="Gold">800.0000</cost>
     <maxcontained>50</maxcontained>
-    <allowedage>2</allowedage>
+    <allowedage>3</allowedage>
     <armor type="Ranged" value="0.7500">
     </armor>
     <sharedbuildlimitunittypes>
@@ -5124,6 +5122,9 @@
       <unittype>zpWokouSteamerProxy</unittype>
       <unittype>zpMercWokouSteamer</unittype>
     </sharedbuildlimitunittypes>
+    <dodgechance>0.0000</dodgechance>
+    <dodgemessageid>110541</dodgemessageid>
+    <dodgesoundset>IroncladBlock</dodgesoundset>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSabotage</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
@@ -5136,21 +5137,15 @@
     <unittype>LogicalTypeShipsAndBuildings</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>Ship</unittype>
-    <unittype>Transport</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
-    <unittype>AbstractWarShip</unittype>
-    <unittype>AbstractFishingBoat</unittype>
-    <unittype>AbstractCountAsGatherer</unittype>
-    <unittype>HasBountyValue</unittype>
-    <unittype>AbstractSiegeTrooper</unittype>
-    <unittype>Ranged</unittype>
-    <unittype>CountsTowardMilitaryScore</unittype>
-    <unittype>UseSharedBuildLimit</unittype>
-    <unittype>AbstractCanSeeStealth</unittype>
-    <train row="0" page="0" column="1">zpNatHoopThrower</train>
+    <unittype>Ship</unittype>
+    <unittype>Transport</unittype>
     <flag>TieToWaterSurface</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>DontRotateObstruction</flag>
@@ -5166,31 +5161,47 @@
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
-    <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="11" column="0">Abilities</command>
-    <tactics>wokousteamer.tactics</tactics>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <tactics>destroyer_ship.tactics</tactics>
+    <protoaction>
+      <name>LongRangeAttack</name>
+      <damage>200.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>80.000000</maxrange>
+      <rof>0.500000</rof>
+      <damagecap>400.000000</damagecap>
+      <damagebonus type="Building">5.000000</damagebonus>
+      <damagearea>6.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractVillager">0.200000</damagebonus>
+      <damagebonus type="AbstractDock">0.200000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+    </protoaction>
     <protoaction>
       <name>RangedAttack</name>
-      <damage>50.000000</damage>
+      <damage>115.000000</damage>
       <damagetype>Siege</damagetype>
-      <maxrange>18.000000</maxrange>
+      <maxrange>30.000000</maxrange>
       <rof>2.000000</rof>
-      <damagecap>100.000000</damagecap>
+      <damagecap>230.000000</damagecap>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
       <damagearea>1.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
     <protoaction>
       <name>RangedAttackContained</name>
-      <damage>50.000000</damage>
+      <damage>115.000000</damage>
       <damagetype>Siege</damagetype>
-      <maxrange>18.000000</maxrange>
+      <maxrange>30.000000</maxrange>
       <rof>2.000000</rof>
-      <damagecap>100.000000</damagecap>
+      <damagecap>230.000000</damagecap>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
       <damagearea>1.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
@@ -5315,8 +5326,8 @@
     <obstructionradiusz>0.0000</obstructionradiusz>
     <movementtype>land</movementtype>
     <animfile>effects\projectiles\musket_ball.xml</animfile>
-    <icon>resources\art\units\naval\spc\spc_steamer_icon.png</icon>
-    <portraiticon>resources\art\units\naval\steamer\steamer_portrait.png</portraiticon>
+    <icon>resources\art\units\naval\spc\destroyer\destroyer_ship_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\destroyer\destroyer_ship.png</portraiticon>
     <rollovertextid>300221</rollovertextid>
     <shortrollovertextid>300222</shortrollovertextid>
     <initialhitpoints>900.0000</initialhitpoints>
@@ -5324,9 +5335,9 @@
     <trainpoints>40.0000</trainpoints>
     <lifespan>0.3000</lifespan>
     <buildbounty>200.0000</buildbounty>
-    <cost resourcetype="Gold">400.0000</cost>
-    <cost resourcetype="Wood">300.0000</cost>
-    <allowedage>2</allowedage>
+    <cost resourcetype="Wood">1000.0000</cost>
+    <cost resourcetype="Gold">800.0000</cost>
+    <allowedage>3</allowedage>
     <sharedbuildlimitunit>zpWokouSteamer</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
       <unittype>zpWokouSteamer</unittype>
@@ -17731,33 +17742,31 @@
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
-    <maxvelocity>8.5000</maxvelocity>
-    <maxrunvelocity>10.5000</maxrunvelocity>
+    <maxvelocity>7.5000</maxvelocity>
+    <maxrunvelocity>9.5000</maxrunvelocity>
     <movementtype>water</movementtype>
-    <turnrate>1.0000</turnrate>
-    <animfile>units\naval\steamer\piratesteamer.xml</animfile>
+    <turnrate>3.0000</turnrate>
+    <animfile>units\naval\destroyer\destroyer_ship.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\units\naval\spc\spc_steamer_icon.png</icon>
-    <portraiticon>resources\art\units\naval\spc\spc_steamer_portrait.png</portraiticon>
-    <rollovertextid>300221</rollovertextid>
-    <shortrollovertextid>300222</shortrollovertextid>
+    <icon>resources\art\units\naval\spc\destroyer\destroyer_ship_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\destroyer\destroyer_ship.png</portraiticon>
+    <rollovertextid>46593</rollovertextid>
+    <shortrollovertextid>46592</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>2500.0000</initialhitpoints>
-    <maxhitpoints>2500.0000</maxhitpoints>
-    <los>24.0000</los>
+    <initialhitpoints>4000.0000</initialhitpoints>
+    <maxhitpoints>4000.0000</maxhitpoints>
+    <los>34.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
-    <trainpoints>35.0000</trainpoints>
+    <trainpoints>40.0000</trainpoints>
     <buildlimit>1</buildlimit>
-    <bounty>200.0000</bounty>
-    <buildbounty>200.0000</buildbounty>
-    <cost resourcetype="Wood">250.0000</cost>
-    <cost resourcetype="Gold">650.0000</cost>
-    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
-    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <bounty>110.0000</bounty>
+    <buildbounty>110.0000</buildbounty>
+    <cost resourcetype="Wood">1000.0000</cost>
+    <cost resourcetype="Gold">800.0000</cost>
     <maxcontained>50</maxcontained>
-    <allowedage>2</allowedage>
+    <allowedage>3</allowedage>
     <armor type="Ranged" value="0.7500">
     </armor>
     <sharedbuildlimitunit>zpWokouSteamer</sharedbuildlimitunit>
@@ -17766,6 +17775,9 @@
       <unittype>zpWokouSteamerProxy</unittype>
       <unittype>zpMercWokouSteamer</unittype>
     </sharedbuildlimitunittypes>
+    <dodgechance>0.0000</dodgechance>
+    <dodgemessageid>110541</dodgemessageid>
+    <dodgesoundset>IroncladBlock</dodgesoundset>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSabotage</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
@@ -17778,22 +17790,16 @@
     <unittype>LogicalTypeShipsAndBuildings</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>Ship</unittype>
-    <unittype>Transport</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
-    <unittype>AbstractWarShip</unittype>
-    <unittype>AbstractFishingBoat</unittype>
-    <unittype>AbstractCountAsGatherer</unittype>
-    <unittype>HasBountyValue</unittype>
-    <unittype>AbstractSiegeTrooper</unittype>
-    <unittype>Ranged</unittype>
-    <unittype>CountsTowardMilitaryScore</unittype>
-    <unittype>UseSharedBuildLimit</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Transport</unittype>
     <unittype>AbstractLegendaryShip</unittype>
-    <unittype>AbstractCanSeeStealth</unittype>
-    <train row="0" page="0" column="1">zpNatHoopThrowerProxy</train>
     <flag>TieToWaterSurface</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>DontRotateObstruction</flag>
@@ -17809,31 +17815,47 @@
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
-    <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="11" column="0">Abilities</command>
-    <tactics>wokousteamer.tactics</tactics>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <tactics>destroyer_ship.tactics</tactics>
+    <protoaction>
+      <name>LongRangeAttack</name>
+      <damage>200.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>80.000000</maxrange>
+      <rof>0.500000</rof>
+      <damagecap>400.000000</damagecap>
+      <damagebonus type="Building">5.000000</damagebonus>
+      <damagearea>6.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractVillager">0.200000</damagebonus>
+      <damagebonus type="AbstractDock">0.200000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+    </protoaction>
     <protoaction>
       <name>RangedAttack</name>
-      <damage>50.000000</damage>
+      <damage>115.000000</damage>
       <damagetype>Siege</damagetype>
-      <maxrange>18.000000</maxrange>
+      <maxrange>30.000000</maxrange>
       <rof>2.000000</rof>
-      <damagecap>100.000000</damagecap>
+      <damagecap>230.000000</damagecap>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
       <damagearea>1.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
     <protoaction>
       <name>RangedAttackContained</name>
-      <damage>50.000000</damage>
+      <damage>115.000000</damage>
       <damagetype>Siege</damagetype>
-      <maxrange>18.000000</maxrange>
+      <maxrange>30.000000</maxrange>
       <rof>2.000000</rof>
-      <damagecap>100.000000</damagecap>
+      <damagecap>230.000000</damagecap>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
       <damagearea>1.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
@@ -55737,7 +55759,7 @@
     <maxrunvelocity>7.5000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>4.0000</turnrate>
-    <animfile>units\naval\destroyer\destroyer.xml</animfile>
+    <animfile>units\naval\destroyer\destroyer_ship.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <buildlimit>1</buildlimit>
@@ -55795,38 +55817,48 @@
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
-    <!--NO PLAYER PLACEMENT-->
-    <flag>NotPlayerPlaceable</flag>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
-    <tactics>frigate.tactics</tactics>
+    <tactics>destroyer_ship.tactics</tactics>
     <protoaction>
       <name>LongRangeAttack</name>
       <damage>200.000000</damage>
       <damagetype>Siege</damagetype>
-      <maxrange>100.000000</maxrange>
-      <rof>20.000000</rof>
+      <maxrange>80.000000</maxrange>
+      <rof>0.500000</rof>
       <damagecap>400.000000</damagecap>
-      <damagearea>10.000000</damagearea>
+      <damagebonus type="Building">5.000000</damagebonus>
+      <damagearea>6.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="Building">10.000000</damagebonus>
       <damagebonus type="AbstractVillager">0.200000</damagebonus>
+      <damagebonus type="AbstractDock">0.200000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
     </protoaction>
     <protoaction>
-      <name>MortarAttack</name>
-      <damage>80.000000</damage>
+      <name>RangedAttack</name>
+      <damage>115.000000</damage>
       <damagetype>Siege</damagetype>
-      <maxrange>36.000000</maxrange>
-      <rof>5.000000</rof>
-      <damagecap>160.000000</damagecap>
-      <damagearea>3.000000</damagearea>
+      <maxrange>30.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>230.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="Building">10.000000</damagebonus>
-      <damagebonus type="AbstractVillager">0.200000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttackContained</name>
+      <damage>115.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>30.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>230.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
   <unit id="" name="zpConsulateZen">

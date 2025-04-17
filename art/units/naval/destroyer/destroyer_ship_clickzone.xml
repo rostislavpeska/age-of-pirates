@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animfile>
+    <definebone>bone_main</definebone>
+	<definebone>bone_banner</definebone>
+    <definebone>bone_flag_civ</definebone>
+	<definebone>bone_garrisonflag</definebone>
+	<definebone>smoke01</definebone>
+	<definebone>smoke02</definebone>
+	<definebone>bone_front_wake</definebone>
+	<definebone>bone_front_foam</definebone>
+	<attachment>ClickZone
+        <component>ClickZone
+            <assetreference type="GrannyModel">
+                <file>units\naval\destroyer\destroyer_ship_lp2</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>ClickZone</component>
+        </anim>
+    </attachment>
+	<attachment>civflag_a2
+		<component>flag
+			<assetreference type="ClothFlag">
+				<flag>
+					<blending>alphatest_color</blending>
+					<specialtexture></specialtexture>
+					<width>2.50</width>
+					<height>1.875</height>
+				</flag>
+			</assetreference>
+		</component>
+		<anim>Idle
+			<component>flag</component>
+		</anim>
+	</attachment>
+	<attachment>IdleWaterFoam
+        <component>Idlefoam
+            <assetreference type="popcornFx">
+                <file>water_effects\idle_waterFoam_large.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>Idlefoam</component>
+        </anim>
+    </attachment>
+    <attachment>MoveWaterFoam
+        <component>Movefoam
+            <assetreference type="popcornFx">
+                <file>water_effects\move_waterFoam_large.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>Movefoam</component>
+        </anim>
+    </attachment>
+    <attachment>DeathWaterFoam
+        <component>foam
+            <assetreference type="popcornFx">
+                <file>water_effects\death_waterFoam_large.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>foam</component>
+        </anim>
+    </attachment>
+    <attachment>Death_EXP
+        <component>exp
+            <assetreference type="popcornFx">
+                <file>units\spc\fire_ship\Exp_ship.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>exp</component>
+        </anim>
+    </attachment>
+    <attachment>Death_EXP_Wood
+        <component>exp
+            <assetreference type="popcornFx">
+                <file>projectiles\ship_debris_wood.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>exp</component>
+        </anim>
+    </attachment>
+	<attachment>
+		train_smoke
+		<component>
+			train_smoke
+			<assetreference type="ParticleSystem">
+				<file>effects\smoke\train_smoke.particle</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>train_smoke</component>
+		</anim>
+	</attachment>
+    <attachment>
+		smoke_A
+		<component>
+			white_smoke1
+			<assetreference type="ParticleSystem">
+				<file>effects\smoke\white_smoke_A.prt</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>white_smoke1</component>
+		</anim>
+	</attachment>
+	<attachment>
+		embers_attachment_A
+		<component>
+			embers_A
+			<assetreference type="ParticleSystem">
+				<file>effects\fire\embers_A.prt</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>embers_A</component>
+		</anim>
+	</attachment>
+	<component>
+		ModelComp
+			<logic type="Destruction">
+				<p1>
+                    <assetreference type="GrannyModel">
+                        <file>units\naval\destroyer\destroyer_ship_damaged</file>
+                    </assetreference>
+                </p1>
+                <p99>
+                    <assetreference type="GrannyModel">
+                        <file>units\naval\destroyer\destroyer_ship2</file>
+                    </assetreference>
+                </p99>
+            </logic>
+		<decal>
+		<effecttype>default</effecttype>
+			<texture>shadows_selections\shadow_circle_128x128</texture>
+			<selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+			<width>10.00</width>
+			<height>19.00</height>
+		</decal>
+		<attach a="civflag_a2" frombone="ATTACHPOINT" tobone="bone_banner" syncanims="0"></attach>
+		<attach a="ClickZone" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"></attach>
+	</component>
+	<component>
+		Death
+		<assetreference type="GrannyModel">
+			<file>units\naval\destroyer\destroyer_ship_death</file>
+		</assetreference>
+		<decal>
+		<effecttype>default</effecttype>
+			<texture>shadows_selections\shadow_circle_128x128</texture>
+			<selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+			<width>10.00</width>
+			<height>19.00</height>
+		</decal>
+		<watersplash>
+			<texture>units\naval\colony_ship\colony_ship_hullmask</texture>
+			<width>10.0</width>
+			<height>10.0</height>
+		</watersplash>
+	</component>
+	<anim>
+		Idle
+		<assetreference type="GrannyAnim">
+			<file>units\naval\destroyer\destroyer_ship_idle</file>
+		</assetreference>
+		<simskeleton>
+			<model>units\naval\destroyer\destroyer_ship_damaged</model>
+			<damagetemplate>units\naval\destroyer\destroyer_ship_damaged.dmg</damagetemplate>
+		</simskeleton>
+		<component>ModelComp</component>
+		<attach a="smoke_A" frombone="MASTER" tobone="smoke01" syncanims="0"/>
+		<attach a="embers_attachment_A" frombone="MASTER" tobone="smoke01" syncanims="0"/>
+		<attach a="smoke_A" frombone="MASTER" tobone="smoke02" syncanims="0"/>
+		<attach a="embers_attachment_A" frombone="MASTER" tobone="smoke02" syncanims="0"/>
+	</anim>
+	<anim>
+		Walk
+		<assetreference type="GrannyAnim">
+			<file>units\naval\destroyer\destroyer_ship_walk</file>
+		</assetreference>
+		<component>ModelComp</component>
+		<simskeleton>
+			<model>units\naval\destroyer\destroyer_ship_damaged</model>
+			<damagetemplate>units\naval\destroyer\destroyer_ship_damaged.dmg</damagetemplate>
+		</simskeleton>
+		<attach a="attachment_wake_front_splash" frombone="MASTER" tobone="bone_wake01" syncanims="0"/>
+		<attach a="smoke_A" frombone="MASTER" tobone="smoke01" syncanims="0"/>
+		<attach a="train_smoke" frombone="MASTER" tobone="smoke01" syncanims="0"/>
+		<attach a="embers_attachment_A" frombone="MASTER" tobone="smoke01" syncanims="0"/>
+		<attach a="smoke_A" frombone="MASTER" tobone="smoke02" syncanims="0"/>
+		<attach a="train_smoke" frombone="MASTER" tobone="smoke02" syncanims="0"/>
+		<attach a="embers_attachment_A" frombone="MASTER" tobone="smoke02" syncanims="0"/>
+		<attach a="attachment_boat_foam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"/>
+		<attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+	</anim>
+	<anim>
+		BombardAttack
+		<assetreference type="GrannyAnim">
+			<file>units\naval\destroyer\destroyer_ship_attack</file>
+		</assetreference>
+		<simskeleton>
+			<model>units\naval\destroyer\destroyer_ship_damaged</model>
+			<damagetemplate>units\naval\destroyer\destroyer_ship_damaged.dmg</damagetemplate>
+		</simskeleton>
+		<component>ModelComp</component>
+		<attach a="smoke_A" frombone="MASTER" tobone="smoke01" syncanims="0"/>
+		<attach a="embers_attachment_A" frombone="MASTER" tobone="smoke01" syncanims="0"/>
+		<attach a="smoke_A" frombone="MASTER" tobone="smoke02" syncanims="0"/>
+		<attach a="embers_attachment_A" frombone="MASTER" tobone="smoke02" syncanims="0"/>
+		<attach a="embers_attachment_A" frombone="MASTER" tobone="smoke02" syncanims="0"/>
+	</anim>
+	<anim>
+		Death
+		<assetreference type="GrannyAnim">
+			<file>units\naval\Destroyer\Destroyer_deathAnim</file>
+		</assetreference>
+		<component>Death</component>
+		<attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"/>
+		<attach a="DeathWaterSpray2" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"/>
+		<attach a="DeathWaterRipple" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"/>
+		<attach a="DeathWaterFade" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"/>
+		<attach a="wooddebris" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"/>
+	</anim>
+</animfile>
