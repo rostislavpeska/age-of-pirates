@@ -7322,6 +7322,9 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatHoopThrower</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpWokouSteamerProxy</target>
+      </effect>
       <effect type="TechStatus" status="obtainable">zpScientistsTechBuff</effect>
       <effect type="TechStatus" status="obtainable">zpScientistIronFleet</effect>
       <effect type="TechStatus" status="obtainable">zpScientistsBaloons</effect>
@@ -7597,8 +7600,8 @@
   <tech name="zpScientistIronFleet" type="Normal">
     <dbid>40233</dbid>
     <displaynameid>300509</displaynameid>
-    <cost resourcetype="Wood">1000.0000</cost>
-    <cost resourcetype="Gold">1000.0000</cost>
+    <cost resourcetype="Wood">1200.0000</cost>
+    <cost resourcetype="Gold">1200.0000</cost>
     <researchpoints>20.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\wokou_steamer_tech.png</icon>
@@ -7607,18 +7610,24 @@
     <flag>YPNativeImprovement</flag>
     <flag>CheckWaterHCGatherPoint</flag>
     <prereqs>
-      <techstatus status="Active">Industrialize</techstatus>
+      <techstatus status="Active">Imperialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpWokouSteamerProxy</target>
+      <effect type="Data" amount="1.60" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpWokouSteamer</target>
       </effect>
-      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpWokouSteamer" relativity="Absolute">
-        <target type="Player">
-        </target>
+      <effect type="Data" amount="1.60" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpWokouSteamer</target>
       </effect>
-      <effect type="CommandAdd" proto="zpWokouSteamerProxy" page="0" column="3">
-        <target type="ProtoUnit">TradingPost</target>
+      <effect type="SetName" proto="zpWokouSteamer" culture="none" newname="302538">
+      </effect>
+      <effect type="Data" amount="1.60" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpMercWokouSteamer</target>
+      </effect>
+      <effect type="Data" amount="1.60" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpMercWokouSteamer</target>
+      </effect>
+      <effect type="SetName" proto="zpMercWokouSteamer" culture="none" newname="302538">
       </effect>
     </effects>
   </tech>
@@ -12745,7 +12754,10 @@
       <effect type="CommandRemove" tech="zpScientistIronFleet">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpScientistArtillery" page="2" column="3">
+      <effect type="CommandAdd" tech="zpScientistArtillery" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpWokouSteamerProxy">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -16700,7 +16712,7 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
-      <effect type="CommandRemove" tech="zpScientistIronFleet">
+      <effect type="CommandRemove" tech="zpScientistsAcademy">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandAdd" tech="zpScientistUnderwaterExploration" page="2" column="3">

@@ -1037,6 +1037,7 @@
 
     <!--INVENTORS-->
     <train row="0" page="0" column="1">zpNatHoopThrower</train>
+    <train row="0" page="0" column="3">zpWokouSteamerProxy</train>
     <!--train row="0" page="0" column="3">zpWokouSteamerProxy</train>
     <train row="0" page="0" column="4">zpSubmarineProxy</train>
     <train row="0" page="0" column="2">zpIronTank</train>
@@ -1189,9 +1190,9 @@
     <tech row="0" page="1" column="1">zpJewishStar</tech>
     <tech row="0" page="1" column="1">zpPickScientist</tech>
     <tech row="0" page="2" column="1">zpScientistsTechBuff</tech>
-    <tech row="0" page="2" column="3">zpScientistIronFleet</tech>
+    <tech row="0" page="2" column="4">zpScientistIronFleet</tech>
     <tech row="0" page="2" column="2">zpScientistsBaloons</tech>
-    <tech row="0" page="2" column="4">zpScientistsAcademy</tech>
+    <tech row="0" page="2" column="3">zpScientistsAcademy</tech>
     <tech row="0" page="1" column="1">zpScientistsVeteranHoopThrowers</tech>
     <tech row="0" page="1" column="1">zpScientistsGuardHoopThrowers</tech>
     <tech row="0" page="2" column="1">zpNatInuitHuntingDogs</tech>
@@ -5102,8 +5103,8 @@
     <rollovertextid>300221</rollovertextid>
     <shortrollovertextid>300222</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>4000.0000</initialhitpoints>
-    <maxhitpoints>4000.0000</maxhitpoints>
+    <initialhitpoints>3500.0000</initialhitpoints>
+    <maxhitpoints>3500.0000</maxhitpoints>
     <los>34.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -17755,8 +17756,8 @@
     <rollovertextid>300221</rollovertextid>
     <shortrollovertextid>300222</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>4000.0000</initialhitpoints>
-    <maxhitpoints>4000.0000</maxhitpoints>
+    <initialhitpoints>3500.0000</initialhitpoints>
+    <maxhitpoints>3500.0000</maxhitpoints>
     <los>34.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>

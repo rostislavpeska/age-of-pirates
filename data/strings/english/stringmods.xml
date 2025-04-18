@@ -507,8 +507,8 @@
       <string _locid="300505">ZP NAT Inventor Flamethrower</string>
       <string _locid="300506">Logical Positivism</string>
       <string _locid="300508">All research is done faster by 25%</string>
-      <string _locid="300509">Iron Fleet</string>
-      <string _locid="300510">Ships a Destroyer Class ship with a powerfull long-range attack able to train Flamethrowers. Unlocks Destroyer training.</string>
+      <string _locid="300509">Imperial Iron Fleet</string>
+      <string _locid="300510">Increases Destroyer attack and hitpoints.</string>
       <string _locid="300511">Air Explorers</string>
       <string _locid="300512">Ships an advanced hot air balloon.</string>
       <string _locid="300513">Academy of Sciences</string>
@@ -2535,6 +2535,7 @@
       <string _locid="302535">ZP SPC Safehouse</string>
       <string _locid="302536">ZP SPC Western Cantina</string>
       <string _locid="302537">The Waterin’ Hole</string>
+      <string _locid="302538">Imperial Destroyer</string>
 
 
 
