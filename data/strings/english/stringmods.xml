@@ -220,8 +220,8 @@
       <string _locid="300218">The Iron Fleet</string>
       <string _locid="300219">Ships Fire Junks and enables you a Fire Junk training in your Dock.</string>
       <string _locid="300220">Destroyer</string>
-      <string _locid="300221">Unique steam powered warship able to train Flamethrowers and detect submarines and other stealth units.</string>
-      <string _locid="300222">Steam powered warship.</string>
+      <string _locid="300221">Unique steam powered advanced warship able to train Flamethrowers.</string>
+      <string _locid="300222">Steam powered advanced warship.</string>
       <string _locid="300223">Hydra</string>
       <string _locid="300224">ZP Socket SPC Zen</string>
       <string _locid="300225">Jesuit Mission</string>
@@ -508,7 +508,7 @@
       <string _locid="300506">Logical Positivism</string>
       <string _locid="300508">All research is done faster by 25%</string>
       <string _locid="300509">Iron Fleet</string>
-      <string _locid="300510">Ships an steam-powered Destroyer able to train Flamethrowers and detect submarines.</string>
+      <string _locid="300510">Ships a Destroyer Class ship with a powerfull long-range attack able to train Flamethrowers. Unlocks Destroyer training.</string>
       <string _locid="300511">Air Explorers</string>
       <string _locid="300512">Ships an advanced hot air balloon.</string>
       <string _locid="300513">Academy of Sciences</string>
