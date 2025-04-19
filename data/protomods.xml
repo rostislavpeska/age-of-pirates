@@ -5123,6 +5123,9 @@
       <unittype>zpWokouSteamerProxy</unittype>
       <unittype>zpMercWokouSteamer</unittype>
     </sharedbuildlimitunittypes>
+    <sharedselectionunittypes>
+      <unittype>zpMercWokouSteamer</unittype>
+    </sharedselectionunittypes>
     <dodgechance>0.0000</dodgechance>
     <dodgemessageid>110541</dodgemessageid>
     <dodgesoundset>IroncladBlock</dodgesoundset>
@@ -17777,6 +17780,9 @@
       <unittype>zpWokouSteamerProxy</unittype>
       <unittype>zpMercWokouSteamer</unittype>
     </sharedbuildlimitunittypes>
+    <sharedselectionunittypes>
+      <unittype>zpWokouSteamer</unittype>
+    </sharedselectionunittypes>
     <dodgechance>0.0000</dodgechance>
     <dodgemessageid>110541</dodgemessageid>
     <dodgesoundset>IroncladBlock</dodgesoundset>
