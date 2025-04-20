@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>33</width>
+	<height>26</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="144" posx="-2.4842" posz="-8.3633" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpInvisibleRailwayStation</unit>
+		<unit variation="21" posx="-12.7788" posz="-13.0344" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCXPBarn</unit>
+		<unit variation="172" posx="1.5542" posz="-11.9512" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSocketWesternVillage</unit>
+	</units>
+</grouping>

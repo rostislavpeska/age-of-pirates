@@ -24568,6 +24568,15 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpCivilWarConverGate" type="Normal">
+    <dbid>41001</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCXPWoodFortGate" fromprotoid="zpInvisibleGateSocket">
+      </effect>
+    </effects>
+  </tech>
 
   
  
