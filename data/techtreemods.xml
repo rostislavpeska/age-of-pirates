@@ -24594,6 +24594,14 @@
       <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCDestilery</target>
       </effect>
+      <effect type="TechStatus" status="unobtainable">zpTradeRouteUpgradeWaterNative</effect>
+      <effect type="TechStatus" status="unobtainable">zpTradeRouteUpgradeWaterNative2</effect>
+      <effect type="CommandRemove" tech="zpTradeRouteUpgradeWaterNative">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpTradeRouteUpgradeWaterNative2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
 

@@ -92,6 +92,7 @@ void main(void)
 	rmDefineClass("nuggets");
 	rmDefineClass("center");
 	rmDefineClass("tradeIslands");
+	rmDefineClass("classPlateau");
 	int classGreatLake=rmDefineClass("great lake");
 	int classDeepWater=rmDefineClass("deep lake");
 	int classStartingResource = rmDefineClass("startingResource");
@@ -204,7 +205,7 @@ void main(void)
 
 
 	// Native Constraints
-	int avoidSufi=rmCreateTypeDistanceConstraint("stay away from Sufi", "SocketCherokee", 70.0);
+	int avoidcherokee=rmCreateTypeDistanceConstraint("stay away from cherokee", "SocketCherokee", 70.0);
 	int avoidscientists=rmCreateTypeDistanceConstraint("stay away from scientists", "zpSocketScientists", 45.0);
 	int avoidJewish=rmCreateTypeDistanceConstraint("stay away from Jewish", "zpSPCSocketWesternVillage", 25.0);
 	int avoidTownCenterFar=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 40.0);
@@ -217,8 +218,9 @@ void main(void)
 	int avoidTownCenter=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 25.0);
 	int avoidTownCenterShort=rmCreateTypeDistanceConstraint("avoid Town Center Short", "townCenter", 6.0);
 
-	// KOTH
-	int avoidKOTH=rmCreateTypeDistanceConstraint("avoid koth filler", "ypKingsHill", 12.0);
+	int avoidPlateauShort = rmCreateClassDistanceConstraint("avoid patch 1", rmClassID("classPlateau"), 1.0);
+	int avoidPlateau = rmCreateClassDistanceConstraint("avoid patch 2", rmClassID("classPlateau"), 7.0);
+
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.10);
@@ -330,7 +332,7 @@ void main(void)
 	rmAddTradeRouteWaypoint(tradeRouteID4, 0.4, 0.2);
 	rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.1);
 	rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
-    rmBuildTradeRoute(tradeRouteID4, "native_water3_trail");
+    rmBuildTradeRoute(tradeRouteID4, "native_water_trail");
 
 	// water Areas
 
@@ -476,6 +478,12 @@ void main(void)
 	rmAddAreaConstraint(playerIslandSouthID, avoidDeepWater);
 	rmAddAreaConstraint(playerIslandSouthID, avoidTradeRoute);
     rmSetAreaLocation(playerIslandSouthID, 0.2, 0.4);
+	rmSetAreaElevationVariation(playerIslandSouthID, 4.0);
+	rmSetAreaElevationType(playerIslandSouthID, cElevTurbulence);
+	rmSetAreaElevationMinFrequency(playerIslandSouthID, 0.09);
+	rmSetAreaElevationOctaves(playerIslandSouthID, 3);
+	rmSetAreaElevationPersistence(playerIslandSouthID, 0.2);
+	rmSetAreaElevationNoiseBias(playerIslandSouthID, 1);
     rmBuildArea(playerIslandSouthID);
 
 	int playerIslandNorthID = rmCreateArea("playerIslandNorth");
@@ -490,9 +498,17 @@ void main(void)
 	rmAddAreaConstraint(playerIslandNorthID, avoidDeepWater);
 	rmAddAreaConstraint(playerIslandNorthID, avoidTradeRoute);
 	rmSetAreaLocation(playerIslandNorthID, 0.8, 0.4);
+	rmSetAreaElevationVariation(playerIslandNorthID, 4.0);
+	rmSetAreaElevationType(playerIslandNorthID, cElevTurbulence);
+	rmSetAreaElevationMinFrequency(playerIslandNorthID, 0.09);
+	rmSetAreaElevationOctaves(playerIslandNorthID, 3);
+	rmSetAreaElevationPersistence(playerIslandNorthID, 0.2);
+	rmSetAreaElevationNoiseBias(playerIslandNorthID, 1);
 	rmBuildArea(playerIslandNorthID);
 
-	// City States
+	// ********************* City States ********************
+
+	// Define stoppers
 
 	int stopperCityState1ID=rmCreateObjectDef("Armored Train Stopper State 1");
 	rmAddObjectDefItem(stopperCityState1ID, "zpTrainStopper", 1, 0.0);
@@ -512,6 +528,7 @@ void main(void)
 	rmSetObjectDefMinDistance(stopperCityState3ID, 0.0);
 	rmSetObjectDefMaxDistance(stopperCityState3ID, 0.0);
 
+	// Define and place stations
 
 	int station01ID=rmCreateObjectDef("Station1");
 	rmAddObjectDefItem(station01ID, "zpTrainStationA", 1, 0.0);
@@ -540,6 +557,8 @@ void main(void)
 	rmPlaceObjectDefAtLoc(station03ID, 0, rmXMetersToFraction(xsVectorGetX(stoperLoc3)), rmZMetersToFraction(xsVectorGetZ(stoperLoc3)+9));
 	vector stationLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(station03ID, 0));
 
+	// Define and place station groupings
+
 	int socket01 = rmCreateGrouping("socket01", "City_State_Western_Station");
     rmSetGroupingMinDistance(socket01, 0.00);
     rmSetGroupingMaxDistance(socket01, 0.00);
@@ -547,6 +566,8 @@ void main(void)
 	rmPlaceGroupingAtLoc(socket01, 0, rmXMetersToFraction(xsVectorGetX(stationLoc1)), rmZMetersToFraction(xsVectorGetZ(stationLoc1)-3));
 	rmPlaceGroupingAtLoc(socket01, 0, rmXMetersToFraction(xsVectorGetX(stationLoc2)), rmZMetersToFraction(xsVectorGetZ(stationLoc2)-3));
 	rmPlaceGroupingAtLoc(socket01, 0, rmXMetersToFraction(xsVectorGetX(stationLoc3)), rmZMetersToFraction(xsVectorGetZ(stationLoc3)-3));
+
+	// Define and place city groupings
 
 	int cityState01 = rmCreateGrouping("citystate1", "City_State_Western_01");
     rmSetGroupingMinDistance(cityState01, 0.00);
@@ -576,7 +597,9 @@ void main(void)
     rmPlaceObjectDefAtPoint(stopperCityState3ID, 0, socketLoc);
 
 
-	// Inventors
+	// *************** Inventors ***************
+
+	// Place Controllers
 
 	int scientistControllerID = rmCreateObjectDef("scientist controller 1");
 	rmAddObjectDefItem(scientistControllerID, "zpSPCWaterSpawnPoint", 1, 0.0);
@@ -591,6 +614,8 @@ void main(void)
 	rmSetObjectDefMaxDistance(scientistControllerID2, 0.0);
 	rmPlaceObjectDefAtLoc(scientistControllerID2, 0, 0.67, 0.43);
 	vector scientistControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(scientistControllerID2, 0));
+
+	// Place Islands
 
 	int inventorIsland1ID = rmCreateArea("inventor_island1");
     rmSetAreaSize(inventorIsland1ID, rmAreaTilesToFraction(400), rmAreaTilesToFraction(400));
@@ -613,6 +638,8 @@ void main(void)
     rmSetAreaLocation(inventorIsland2ID, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc2)));
 	rmSetAreaBaseHeight(inventorIsland2ID, 1);
     rmBuildArea(inventorIsland2ID);
+
+	// Grouping 1
 
 	int scientistLabTypeTypeID = rmRandInt(1,2);
 	int scientists1ID = -1;
@@ -639,6 +666,8 @@ void main(void)
 
 	rmClearClosestPointConstraints();
 
+	// Grouping 2
+
 	int scientists2VillageTypeID = 3-scientistLabTypeTypeID;
 	int scientists2ID = -1;
 	scientists2ID = rmCreateGrouping("scientists 2", "Scientist_Lab_Unknown_0"+scientists2VillageTypeID);
@@ -664,6 +693,7 @@ void main(void)
 
 	rmClearClosestPointConstraints();
 
+	// ****************** Harbours *******************
 
 	// Port 1
 	int portID01 = rmCreateObjectDef("port 02");
@@ -675,7 +705,477 @@ void main(void)
 	portID02 = rmCreateGrouping("portG 02", "Harbour_Center_River_NE");
 	rmPlaceGroupingAtLoc(portID02, 0, 0.4-rmXTilesToFraction(8),0.2);
 
+	// terrain Elevation
 
+	for (x=1; <= 3) {
+		int nativeHillsID = rmCreateArea("native_hills1"+x);
+		rmSetAreaSize(nativeHillsID, 0.04, 0.04);
+		rmSetAreaCoherence(nativeHillsID, 1.0);
+		rmSetAreaHeightBlend(nativeHillsID, 2);
+		rmSetAreaSmoothDistance(nativeHillsID, 10);
+		rmSetAreaObeyWorldCircleConstraint(nativeHillsID, false);
+		rmSetAreaBaseHeight(nativeHillsID, 2);
+		rmAddAreaConstraint(nativeHillsID, avoidPlateau);
+		rmAddAreaConstraint(nativeHillsID, greatLakesConstraint);
+		rmAddAreaConstraint(nativeHillsID, shortAvoidTradeRoute);
+		rmSetAreaElevationVariation(nativeHillsID, 4.0);
+		rmSetAreaElevationType(nativeHillsID, cElevTurbulence);
+		rmSetAreaElevationMinFrequency(nativeHillsID, 0.09);
+		rmSetAreaElevationOctaves(nativeHillsID, 3);
+		rmSetAreaElevationPersistence(nativeHillsID, 0.2);
+		rmSetAreaElevationNoiseBias(nativeHillsID, 1);
+		//rmSetAreaMix(nativeHillsID, "italy_grass");
+		if (x==1)
+			rmSetAreaLocation(nativeHillsID, 0.5, 0.75);
+		if (x==2)
+			rmSetAreaLocation(nativeHillsID, 0.35, 0.65);
+		if (x==3)
+			rmSetAreaLocation(nativeHillsID, 0.65, 0.65);
+		rmBuildArea(nativeHillsID);
+
+		int nativeMountains=rmCreateArea("native mountains"+x); 
+		rmSetAreaSize(nativeMountains, 0.02, 0.02);
+		rmSetAreaCoherence(nativeMountains, 0.6);
+		rmSetAreaSmoothDistance(nativeMountains, 5);
+		rmSetAreaCliffType(nativeMountains, "Araucania Central Ozarks");
+		rmSetAreaCliffEdge(nativeMountains, 4, 0.18, 0.0, 0.0, 0);
+		rmSetAreaCliffHeight(nativeMountains, 6.0, 2.0, 0.3);
+		rmSetAreaObeyWorldCircleConstraint(nativeMountains, false);
+		rmAddAreaConstraint(nativeMountains, avoidPlateau);
+		rmAddAreaConstraint(nativeMountains, avoidWater10);
+		rmAddAreaConstraint(nativeMountains, avoidTradeRouteFar2);
+		rmSetAreaCliffPainting(nativeMountains, false, true, true, 1.5, true);	
+		if (x==1)
+			rmSetAreaLocation(nativeMountains, 0.5, 1.0);
+		if (x==2)
+			rmSetAreaLocation(nativeMountains, 0.25, 0.9);
+		if (x==3)
+			rmSetAreaLocation(nativeMountains, 0.75, 0.9);
+		rmBuildArea(nativeMountains);
+	}
+
+
+	// ******************* PLACE PLAYERS ******************
+
+	// Text
+	rmSetStatusText("",0.70);
+
+	float teamStartLoc = rmRandFloat(0.0, 1.0);
+	int weirdSpawn = 0;
+
+    if(cNumberTeams == 2){
+		if (teamStartLoc > 0.5)
+		{
+			rmSetPlacementTeam(0);
+			rmSetPlacementSection(0.28, 0.4); 
+			rmPlacePlayersCircular(0.4, 0.4, 0);
+			rmSetPlacementTeam(1);
+			rmSetPlacementSection(0.6, 0.72);
+			rmPlacePlayersCircular(0.4, 0.4, 0);
+		}
+		else
+		{
+			rmSetPlacementTeam(0);
+			rmSetPlacementSection(0.6, 0.72);
+			rmPlacePlayersCircular(0.4, 0.4, 0);
+			rmSetPlacementTeam(1);
+			rmSetPlacementSection(0.28, 0.4); 
+			rmPlacePlayersCircular(0.4, 0.4, 0);
+		}
+	}
+
+	if ( rmGetNumberPlayersOnTeam(0)>4 ||  rmGetNumberPlayersOnTeam(1)>4)
+	weirdSpawn = 1;
+
+	// Town Centrer Start
+
+	int playerStart = rmCreateStartingUnitsObjectDef(5.0);
+	rmSetObjectDefMinDistance(playerStart, 7.0);
+	rmSetObjectDefMaxDistance(playerStart, 12.0);
+
+	// Player Resources
+
+	int foodID = rmCreateObjectDef("starting hunt");
+	rmAddObjectDefItem(foodID, "Turkey", 12, 6.0);
+	rmSetObjectDefMinDistance(foodID, 12.0);
+	rmSetObjectDefMaxDistance(foodID, 14.0);
+	rmSetObjectDefCreateHerd(foodID, true);
+	rmAddObjectDefConstraint(foodID, avoidWater10);
+
+	int goldID = rmCreateObjectDef("starting gold");
+	rmAddObjectDefItem(goldID, "Mine", 1, 2.0);
+	rmSetObjectDefMinDistance(goldID, 14.0);
+	rmSetObjectDefMaxDistance(goldID, 15.0);
+	rmAddObjectDefConstraint(goldID, avoidTradeRouteMin);
+	rmAddObjectDefConstraint(goldID, avoidAll);
+	rmAddObjectDefConstraint(goldID, avoidWater10);
+
+	int berryID = rmCreateObjectDef("starting berries");
+	rmAddObjectDefItem(berryID, "BerryBush", 5, 4.0);
+	rmSetObjectDefMinDistance(berryID, 16.0);
+	rmSetObjectDefMaxDistance(berryID, 17.0);
+	rmAddObjectDefConstraint(berryID, shortAvoidCoin);
+	rmAddObjectDefConstraint(berryID, avoidAll);
+	rmAddObjectDefConstraint(berryID, avoidWater10);
+
+	int playerTreeID = rmCreateObjectDef("player trees");
+	rmAddObjectDefItem(playerTreeID, "TreeCarolinaGrass", 15, 8.0);
+    rmSetObjectDefMinDistance(playerTreeID, 15);
+    rmSetObjectDefMaxDistance(playerTreeID, 25);
+	rmAddObjectDefToClass(playerTreeID, classStartingResource);
+	rmAddObjectDefToClass(playerTreeID, rmClassID("classForest"));
+	rmAddObjectDefConstraint(playerTreeID, avoidStartingResources);
+	rmAddObjectDefConstraint(playerTreeID, avoidImpassableLand);
+	rmAddObjectDefConstraint(playerTreeID, avoidTradeRouteMin);
+
+	// Water Flag
+    int colonyShipID = 0;
+
+	// Fake Frouping to fix the auto-grouping TC bug
+	int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
+	rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
+	rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.65);
+
+	//place tcs
+    
+    for(i=1; < cNumberNonGaiaPlayers + 1) {
+
+		if (weirdSpawn==0){
+			int playerID=rmCreateArea("player "+i);
+			rmSetPlayerArea(i, playerID);
+			rmSetAreaSize(playerID, rmAreaTilesToFraction(800));
+			rmSetAreaLocPlayer(playerID, i);
+			rmSetAreaWarnFailure(playerID, false);
+			rmSetAreaCoherence(playerID, 1.0);
+			rmSetAreaBaseHeight(playerID, 3.5);
+			rmSetAreaSmoothDistance(playerID, 15);
+			rmEchoInfo("Team area"+i);
+			rmBuildArea(playerID); 
+
+			int playerFortID = -1;
+			playerFortID = rmCreateGrouping("player fort", "Player_Fort_CivilWar");
+			rmAddGroupingToClass(playerFortID, rmClassID("classBlock"));  
+			rmPlaceGroupingAtLoc(playerFortID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i), 1);
+		}
+
+		else{
+			int id=rmCreateArea("Player"+i);
+			rmSetPlayerArea(i, id);
+
+			int startID = rmCreateObjectDef("object"+i);
+			rmAddObjectDefItem(startID, "TownCenter", 1, 2.0);
+			rmSetObjectDefMinDistance(startID, 0.0);
+			rmSetObjectDefMaxDistance(startID, 10.0);
+			rmAddObjectDefConstraint(startID, avoidTradeRouteMin);
+			rmAddObjectDefConstraint(startID, avoidWater20);
+
+			int commandPostID = rmCreateObjectDef("commandPostt"+i);
+			rmAddObjectDefItem(commandPostID, "deCommandery", 1, 2.0);
+			rmSetObjectDefMinDistance(commandPostID, 0.0);
+			rmSetObjectDefMaxDistance(commandPostID, 10.0);
+			rmAddObjectDefConstraint(commandPostID, avoidTradeRouteMin);
+			rmAddObjectDefConstraint(commandPostID, avoidWater20);
+			rmAddObjectDefConstraint(commandPostID, avoidTownCenterShort);
+
+			rmPlaceObjectDefAtLoc(startID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			rmPlaceObjectDefAtLoc(commandPostID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			rmPlaceObjectDefAtLoc(foodID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			rmPlaceObjectDefAtLoc(goldID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			rmPlaceObjectDefAtLoc(berryID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			rmPlaceObjectDefAtLoc(playerTreeID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+		}
+
+		rmPlaceObjectDefAtLoc(playerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+
+		vector TCLocation=rmGetUnitPosition(rmGetUnitPlacedOfPlayer(playerStart, i));
+
+		// Water Flag Placement
+		colonyShipID=rmCreateObjectDef("colony ship "+i);
+		rmAddObjectDefItem(colonyShipID, "HomeCityWaterSpawnFlag", 1, 1.0);
+		if ( rmGetNomadStart())
+		{
+			if(rmGetPlayerCiv(i) == rmGetCivID("Ottomans"))
+				rmAddObjectDefItem(colonyShipID, "Galley", 1, 10.0);
+			else
+				rmAddObjectDefItem(colonyShipID, "caravel", 1, 10.0);
+		}
+		rmAddClosestPointConstraint(flagEdgeConstraint);
+		rmAddClosestPointConstraint(flagVsFlag);
+		rmAddClosestPointConstraint(avoidTradeRoute);
+		rmAddClosestPointConstraint(flagLand);
+		vector closestPoint = rmFindClosestPointVector(TCLocation, rmXFractionToMeters(1.0));
+
+		rmPlaceObjectDefAtLoc(colonyShipID, i, rmXMetersToFraction(xsVectorGetX(closestPoint)), rmZMetersToFraction(xsVectorGetZ(closestPoint)));
+
+	}
+
+	// ******************** ADDITIONAL NATIVES ***********************
+
+	int cherokee1VillageTypeID = rmRandInt(1,5);
+	int nativeVillage1ID = -1;
+	nativeVillage1ID = rmCreateGrouping("nativeVillage 1", "native cherokee village "+cherokee1VillageTypeID);
+	rmSetGroupingMinDistance(nativeVillage1ID, 20);
+	rmSetGroupingMaxDistance(nativeVillage1ID, rmXFractionToMeters(0.2));
+	rmAddGroupingConstraint(nativeVillage1ID, avoidImpassableLand);
+	rmAddGroupingConstraint(nativeVillage1ID, avoidTownCenterFar);
+	rmAddGroupingConstraint(nativeVillage1ID, circleConstraint);
+	rmAddGroupingConstraint(nativeVillage1ID, avoidcherokee);
+	rmAddGroupingConstraint(nativeVillage1ID, avoidSocketLong);
+	rmAddGroupingConstraint(nativeVillage1ID, avoidWater30);
+	rmPlaceGroupingInArea(nativeVillage1ID, 0, playerIslandSouthID, 1);
+
+
+	int cherokee2VillageTypeID = rmRandInt(1,5);
+	int nativeVillage2ID = -1;
+	nativeVillage2ID = rmCreateGrouping("nativeVillage 2", "native cherokee village "+cherokee2VillageTypeID);
+	rmSetGroupingMinDistance(nativeVillage2ID, 20);
+	rmSetGroupingMaxDistance(nativeVillage2ID, rmXFractionToMeters(0.2));
+	rmAddGroupingConstraint(nativeVillage2ID, avoidImpassableLand);
+	rmAddGroupingConstraint(nativeVillage2ID, avoidTownCenterFar);
+	rmAddGroupingConstraint(nativeVillage2ID, avoidcherokee);
+	rmAddGroupingConstraint(nativeVillage2ID, circleConstraint);
+	rmAddGroupingConstraint(nativeVillage2ID, avoidSocketLong);
+	rmAddGroupingConstraint(nativeVillage2ID, avoidWater30);
+	rmPlaceGroupingInArea(nativeVillage2ID, 0, playerIslandNorthID, 1);
+
+
+	// ********************** RESOURCES **********************
+
+	// Random Gold
+	int randomGoldID = rmCreateObjectDef("random mine");
+	rmAddObjectDefItem(randomGoldID, "Mine", 1, 0.0);
+	rmSetObjectDefMinDistance(randomGoldID, 0.0);
+	rmSetObjectDefMaxDistance(randomGoldID, rmXFractionToMeters(0.45));
+	rmAddObjectDefConstraint(randomGoldID, avoidCoin);
+	rmAddObjectDefConstraint(randomGoldID, avoidAll);
+	rmAddObjectDefConstraint(randomGoldID, avoidTownCenterFar);
+	rmAddObjectDefConstraint(randomGoldID, avoidSocketLong);
+	rmAddObjectDefConstraint(randomGoldID, playerEdgeConstraint);
+	rmPlaceObjectDefInArea(randomGoldID, 0,  playerIslandSouthID, cNumberNonGaiaPlayers);
+	rmPlaceObjectDefInArea(randomGoldID, 0,  playerIslandNorthID, cNumberNonGaiaPlayers);
+	rmPlaceObjectDefInArea(randomGoldID, 0,  nativeIsland1ID, 2);
+	rmPlaceObjectDefInArea(randomGoldID, 0,  nativeIsland2ID, 2);
+	rmPlaceObjectDefInArea(randomGoldID, 0,  nativeIsland3ID, 2);
+
+
+	// Forests
+
+	int failCount = -1;
+	int numTries = -1;
+
+	// Define and place forests - north and south
+	int forestTreeID = 0;
+
+	numTries=28+5*cNumberNonGaiaPlayers;  // DAL - 4 here, 4 below
+	failCount=0;
+	for (i=0; <numTries)
+		{   
+		int northForest=rmCreateArea("northforest"+i);
+		rmSetAreaWarnFailure(northForest, false);
+		rmSetAreaSize(northForest, rmAreaTilesToFraction(100), rmAreaTilesToFraction(200));
+
+		rmSetAreaForestType(northForest, "z68 North Carolinas");
+		rmSetAreaForestDensity(northForest, 1.0);
+		rmAddAreaToClass(northForest, rmClassID("classForest"));
+		rmSetAreaForestClumpiness(northForest, 0.0);		//DAL more forest with more clumps
+		rmSetAreaForestUnderbrush(northForest, 0.0);
+		rmSetAreaCoherence(northForest, 0.4);
+		rmAddAreaConstraint(northForest, avoidImportantItem); // DAL added, to try and make sure natives got on the map w/o override.
+		rmAddAreaConstraint(northForest, shortAvoidCoin);
+		rmAddAreaConstraint(northForest, avoidTownCenterFar);
+		rmAddAreaConstraint(northForest, avoidSocketLong);
+		rmAddAreaConstraint(northForest, avoidPlateau);
+		rmAddAreaConstraint(northForest, avoidWater20);
+		rmAddAreaConstraint(northForest, forestConstraint);   // DAL adeed, to keep forests away from each other.
+		rmAddAreaConstraint(northForest, Northward);			// DAL adeed, to keep forests in the north.
+		if(rmBuildArea(northForest)==false)
+		{
+			// Stop trying once we fail 5 times in a row.  
+			failCount++;
+			if(failCount==5)
+				break;
+		}
+		else
+			failCount=0; 
+	}
+
+	
+	numTries=20;  // DAL - 4 here, 4 above.
+	failCount=0;
+	for (i = 0; i < numTries; i++)
+	{   
+		int southForest = rmCreateArea("southForest" + i);
+		rmSetAreaWarnFailure(southForest, false);
+		rmSetAreaSize(southForest, rmAreaTilesToFraction(100), rmAreaTilesToFraction(200));
+		rmSetAreaForestType(southForest, "z68 North Carolinas");
+		rmSetAreaForestDensity(southForest, 1.0);
+		rmAddAreaToClass(southForest, rmClassID("classForest"));
+		rmSetAreaForestClumpiness(southForest, 0.0);
+		rmSetAreaForestUnderbrush(southForest, 0.0);
+		rmSetAreaCoherence(southForest, 0.4);
+		rmAddAreaConstraint(southForest, avoidImportantItem); // DAL added, to try and make sure natives got on the map w/o override.
+		rmAddAreaConstraint(southForest, shortAvoidCoin);
+		rmAddAreaConstraint(southForest, avoidTownCenterFar);
+		rmAddAreaConstraint(southForest, avoidSocketLong);
+		rmAddAreaConstraint(southForest, avoidPlateau);
+		rmAddAreaConstraint(southForest, avoidWater20);
+		rmAddAreaConstraint(southForest, forestConstraint);
+		rmAddAreaConstraint(southForest, Southward);
+		if (rmBuildArea(southForest) == false)
+		{
+			// Stop trying once we fail 5 times in a row.
+			failCount++;
+			if (failCount == 5)
+				break;
+		}
+		else
+			failCount = 0;
+	}
+
+	// Berries
+
+	int berriesID = rmCreateObjectDef("berries"+i);
+	rmAddObjectDefItem(berriesID, "berrybush", 3, 4.0);
+	rmSetObjectDefMinDistance(berriesID, 0.0);
+	rmSetObjectDefMaxDistance(berriesID, rmXFractionToMeters(0.45));
+	rmAddObjectDefConstraint(berriesID, avoidCoin);
+	rmAddObjectDefConstraint(berriesID, avoidAll);
+	rmAddObjectDefConstraint(berriesID, avoidTradeRoute);
+	rmAddObjectDefConstraint(berriesID, avoidSocket);
+	rmAddObjectDefConstraint(berriesID, avoidWater20);
+	rmAddObjectDefConstraint(berriesID, Southward);
+	rmPlaceObjectDefAtLoc(berriesID, 0, 0.5, 0.5);
+
+	int berriesID2 = rmCreateObjectDef("berries 2"+i);
+	rmAddObjectDefItem(berriesID2, "berrybush", 3, 4.0);
+	rmSetObjectDefMinDistance(berriesID2, 0.0);
+	rmSetObjectDefMaxDistance(berriesID2, rmXFractionToMeters(0.45));
+	rmAddObjectDefConstraint(berriesID2, avoidCoin);
+	rmAddObjectDefConstraint(berriesID2, avoidAll);
+	rmAddObjectDefConstraint(berriesID2, avoidTradeRoute);
+	rmAddObjectDefConstraint(berriesID2, avoidSocket);
+	rmAddObjectDefConstraint(berriesID2, avoidWater20);
+	rmAddObjectDefConstraint(berriesID2, Northward);
+	rmPlaceObjectDefAtLoc(berriesID2, 0, 0.5, 0.5);
+
+	// Place some extra deer herds.  
+	int deerHerdID=rmCreateObjectDef("northern deer herd");
+	rmAddObjectDefItem(deerHerdID, "deer", rmRandInt(4,7), 6.0);
+	rmSetObjectDefCreateHerd(deerHerdID, true);
+	rmSetObjectDefMinDistance(deerHerdID, rmXFractionToMeters(0.03));
+	rmSetObjectDefMaxDistance(deerHerdID, rmXFractionToMeters(0.45));
+	rmAddObjectDefConstraint(deerHerdID, shortAvoidCoin);
+	rmAddObjectDefConstraint(deerHerdID, avoidTradeSockets);
+	rmAddObjectDefConstraint(deerHerdID, avoidTownCenterFar);
+	rmAddObjectDefConstraint(deerHerdID, avoidWater20);
+	rmAddObjectDefConstraint(deerHerdID, avoidAll);
+	rmAddObjectDefConstraint(deerHerdID, avoidImpassableLand);
+	rmAddObjectDefConstraint(deerHerdID, deerConstraint);
+	rmAddObjectDefConstraint(deerHerdID, Northward);
+	numTries=3*cNumberNonGaiaPlayers;
+	for (i=0; <numTries)
+	{
+		rmPlaceObjectDefAtLoc(deerHerdID, 0, 0.5, 0.5);
+	}
+
+	int deerHerdID2=rmCreateObjectDef("southern deer herd");
+	rmAddObjectDefItem(deerHerdID2, "deer", rmRandInt(4,7), 6.0);
+	rmSetObjectDefCreateHerd(deerHerdID2, true);
+	rmSetObjectDefMinDistance(deerHerdID2, rmXFractionToMeters(0.03));
+	rmSetObjectDefMaxDistance(deerHerdID2, rmXFractionToMeters(0.45));
+	rmAddObjectDefConstraint(deerHerdID2, shortAvoidCoin);
+	rmAddObjectDefConstraint(deerHerdID2, avoidTownCenterFar);
+	rmAddObjectDefConstraint(deerHerdID2, avoidTradeSockets);
+	rmAddObjectDefConstraint(deerHerdID2, avoidWater20);
+	rmAddObjectDefConstraint(deerHerdID2, avoidAll);
+	rmAddObjectDefConstraint(deerHerdID2, avoidImpassableLand);
+	rmAddObjectDefConstraint(deerHerdID2, deerConstraint);
+	rmAddObjectDefConstraint(deerHerdID2, Southward);
+	numTries=3*cNumberNonGaiaPlayers;
+	for (i=0; <numTries)
+	{
+		rmPlaceObjectDefAtLoc(deerHerdID2, 0, 0.5, 0.5);
+	}
+
+	// Moose Herds
+	int mooseHerdID=rmCreateObjectDef("moose herd");
+	rmAddObjectDefItem(mooseHerdID, "turkey", rmRandInt(8,14), 6.0);
+	rmSetObjectDefCreateHerd(mooseHerdID, true);
+	rmSetObjectDefMinDistance(mooseHerdID, rmXFractionToMeters(0.03));
+	rmSetObjectDefMaxDistance(mooseHerdID, rmXFractionToMeters(0.5));
+	rmAddObjectDefConstraint(mooseHerdID, shortAvoidCoin);
+	rmAddObjectDefConstraint(mooseHerdID, avoidAll);
+	rmAddObjectDefConstraint(mooseHerdID, avoidTownCenterFar);
+	rmAddObjectDefConstraint(mooseHerdID, avoidImpassableLand);
+	rmAddObjectDefConstraint(mooseHerdID, mooseConstraint);
+	rmAddObjectDefConstraint(mooseHerdID, shortDeerConstraint);
+	numTries=3*cNumberNonGaiaPlayers;
+	for (i=0; <numTries)
+	{
+		rmPlaceObjectDefAtLoc(mooseHerdID, 0, 0.5, 0.5);
+	}
+
+	// ********* Nuggets ********
+
+	int nugget1= rmCreateObjectDef("nugget easy"); 
+	rmAddObjectDefItem(nugget1, "Nugget", 1, 0.0);
+	rmSetNuggetDifficulty(1, 1);
+	rmAddObjectDefToClass(nugget1, rmClassID("nuggets"));
+	rmAddObjectDefConstraint(nugget1, shortPlayerConstraint);
+	rmAddObjectDefConstraint(nugget1, avoidTownCenter);
+	rmAddObjectDefConstraint(nugget1, avoidImpassableLand);
+	rmAddObjectDefConstraint(nugget1, avoidNuggets);
+	rmAddObjectDefConstraint(nugget1, avoidTradeSockets);
+	rmAddObjectDefConstraint(nugget1, avoidTradeRoute);
+	rmAddObjectDefConstraint(nugget1, avoidAll);
+	rmAddObjectDefConstraint(nugget1, circleConstraint);
+	rmPlaceObjectDefInArea(nugget1, 0,  playerIslandSouthID, cNumberNonGaiaPlayers);
+	rmPlaceObjectDefInArea(nugget1, 0,  playerIslandNorthID, cNumberNonGaiaPlayers);
+
+	int nugget2= rmCreateObjectDef("nugget medium"); 
+	rmAddObjectDefItem(nugget2, "Nugget", 1, 0.0);
+	rmSetNuggetDifficulty(2, 2);
+	rmAddObjectDefToClass(nugget2, rmClassID("nuggets"));
+	rmAddObjectDefConstraint(nugget2, shortPlayerConstraint);
+	rmAddObjectDefConstraint(nugget2, avoidImpassableLand);
+	rmAddObjectDefConstraint(nugget2, avoidNuggets);
+	rmAddObjectDefConstraint(nugget2, avoidTradeRoute);
+	rmAddObjectDefConstraint(nugget2, avoidTownCenterFar);
+	rmAddObjectDefConstraint(nugget2, circleConstraint);
+	rmAddObjectDefConstraint(nugget2, avoidAll);
+	rmAddObjectDefConstraint(nugget2,avoidWater20);
+	rmPlaceObjectDefInArea(nugget2, 0,  playerIslandSouthID, cNumberNonGaiaPlayers/2);
+	rmPlaceObjectDefInArea(nugget2, 0,  playerIslandNorthID, cNumberNonGaiaPlayers/2);
+
+	int nugget3= rmCreateObjectDef("nugget hard"); 
+	rmAddObjectDefItem(nugget3, "Nugget", 1, 0.0);
+	rmSetNuggetDifficulty(3, 3);
+	rmAddObjectDefToClass(nugget3, rmClassID("nuggets"));
+	rmAddObjectDefConstraint(nugget3, avoidTownCenterFar);
+	rmAddObjectDefConstraint(nugget3, avoidImpassableLand);
+	rmAddObjectDefConstraint(nugget3, avoidNuggets);
+	rmAddObjectDefConstraint(nugget3, avoidTradeRoute);
+	rmAddObjectDefConstraint(nugget3, avoidSocketLong);
+	rmAddObjectDefConstraint(nugget3, circleConstraint);
+	rmAddObjectDefConstraint(nugget3, avoidAll);
+	rmAddObjectDefConstraint(nugget3, avoidWater20);
+	rmPlaceObjectDefInArea(nugget3, 0,  nativeIsland1ID, 2);
+	rmPlaceObjectDefInArea(nugget3, 0,  nativeIsland2ID, 2);
+	rmPlaceObjectDefInArea(nugget3, 0,  nativeIsland3ID, 2);
+
+	// Fishes
+
+    int fishID=rmCreateObjectDef("fish 1");
+	rmAddObjectDefItem(fishID, fish1, 1, 0.0);
+	rmSetObjectDefMinDistance(fishID, 0.0);
+	if (rmGetIsKOTH() == true)
+		rmSetObjectDefMaxDistance(fishID, rmXFractionToMeters(0.4));
+	else
+		rmSetObjectDefMaxDistance(fishID, rmXFractionToMeters(0.45));
+	rmAddObjectDefConstraint(fishID, avoidFish1);
+	rmAddObjectDefConstraint(fishID, fishLand);
+	rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 60);
+	
 
 	// ------Triggers--------//
 
@@ -944,6 +1444,9 @@ void main(void)
 	// Trade Route Setup
 
 	rmCreateTrigger("AT_Initialize");
+	rmAddTriggerEffect("Trade Route Set Level");
+	rmSetTriggerEffectParamInt("TradeRoute",4);
+	rmSetTriggerEffectParamInt("Level",2);
 	rmAddTriggerEffect("Trade Route Toggle State");
 	rmSetTriggerEffectParamInt("TradeRoute",2);
 	rmSetTriggerEffectParam("ShowUnit","false");
@@ -2313,201 +2816,6 @@ void main(void)
 	rmSetTriggerLoop(false);
 	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    rmDefineClass("classPlateau");
-
-	// Place Players - Mississipi Besed - temporary
-
-
-
-
-	// Text
-	rmSetStatusText("",0.70);
-
-	float teamStartLoc = rmRandFloat(0.0, 1.0);
-
-    if(cNumberTeams == 2){
-		if (teamStartLoc > 0.5)
-		{
-			rmSetPlacementTeam(0);
-			rmSetPlacementSection(0.28, 0.4); 
-			rmPlacePlayersCircular(0.4, 0.4, 0);
-			rmSetPlacementTeam(1);
-			rmSetPlacementSection(0.6, 0.72);
-			rmPlacePlayersCircular(0.4, 0.4, 0);
-		}
-		else
-		{
-			rmSetPlacementTeam(0);
-			rmSetPlacementSection(0.6, 0.72);
-			rmPlacePlayersCircular(0.4, 0.4, 0);
-			rmSetPlacementTeam(1);
-			rmSetPlacementSection(0.28, 0.4); 
-			rmPlacePlayersCircular(0.4, 0.4, 0);
-		}
-	}
-
-	// Define Player Objects
-
-	int TCID = rmCreateObjectDef("player TC");
-	int startingUnits = rmCreateStartingUnitsObjectDef(5.0);
-	if (rmGetNomadStart())
-		rmAddObjectDefItem(TCID, "CoveredWagon", 1, 0.0);
-	else
-		rmAddObjectDefItem(TCID, "TownCenter", 1, 0.0);
-	rmAddObjectDefToClass(TCID, classStartingResource);
-	rmAddObjectDefConstraint(TCID, avoidTradeRouteSocketMin);
-	rmAddObjectDefConstraint(TCID, avoidTrainStationA);
-	rmAddObjectDefConstraint(TCID, avoidTrainStationB);
-	rmAddObjectDefConstraint(TCID, avoidJewish);
-	rmAddObjectDefConstraint(TCID, longPlayerEdgeConstraint);
-	rmSetObjectDefMinDistance(TCID, 10.0);
-	rmSetObjectDefMaxDistance(TCID, 17.0);
-
-	// Starting mines
-	int playerGoldID = rmCreateObjectDef("player mine");
-	rmAddObjectDefItem(playerGoldID, "Mine", 1, 0);
-	rmSetObjectDefMinDistance(playerGoldID, 12.0);
-	rmSetObjectDefMaxDistance(playerGoldID, 20.0);
-	rmAddObjectDefToClass(playerGoldID, classStartingResource);
-	rmAddObjectDefConstraint(playerGoldID, avoidTradeRouteSocketMin);
-	rmAddObjectDefConstraint(playerGoldID, avoidTrainStationA);
-	rmAddObjectDefConstraint(playerGoldID, avoidTrainStationB);
-	rmAddObjectDefConstraint(playerGoldID, avoidStartingResourcesShort);
-	rmAddObjectDefConstraint(playerGoldID, avoidTradeRouteMin);
-	rmAddObjectDefConstraint(playerGoldID, avoidImpassableLand);
-	rmAddObjectDefConstraint(playerGoldID, longPlayerEdgeConstraint);
-
-	// Starting Trees
-	int playerTreeID = rmCreateObjectDef("player trees");
-	rmAddObjectDefItem(playerTreeID, "TreeCarolinaGrass", 15, 8.0);
-    rmSetObjectDefMinDistance(playerTreeID, 15);
-    rmSetObjectDefMaxDistance(playerTreeID, 25);
-	rmAddObjectDefToClass(playerTreeID, classStartingResource);
-	rmAddObjectDefToClass(playerTreeID, rmClassID("classForest"));
-	rmAddObjectDefConstraint(playerTreeID, avoidStartingResources);
-	rmAddObjectDefConstraint(playerTreeID, avoidImpassableLand);
-	rmAddObjectDefConstraint(playerTreeID, avoidTradeRouteMin);
-	rmAddObjectDefConstraint(playerTreeID, avoidTrainStationA);
-	rmAddObjectDefConstraint(playerTreeID, avoidTrainStationB);
-	rmAddObjectDefConstraint(playerTreeID, avoidTradeRouteSocketMin);
-	rmAddObjectDefConstraint(playerTreeID, longPlayerEdgeConstraint);
-
-	// Starting herds
-	int playerHerdID = rmCreateObjectDef("starting herd");
-	rmAddObjectDefItem(playerHerdID, "turkey", 14, 4.0);
-	rmSetObjectDefMinDistance(playerHerdID, 12);
-	rmSetObjectDefMaxDistance(playerHerdID, 12);
-	rmSetObjectDefCreateHerd(playerHerdID, true);
-	rmAddObjectDefToClass(playerHerdID, classStartingResource);		
-	rmAddObjectDefConstraint(playerHerdID, avoidStartingResourcesShort);
-	rmAddObjectDefConstraint(playerHerdID, avoidTradeRouteSocketMin);
-	rmAddObjectDefConstraint(playerHerdID, avoidTrainStationA);
-	rmAddObjectDefConstraint(playerHerdID, avoidTrainStationB);
-	rmAddObjectDefConstraint(playerHerdID, avoidTradeRouteMin);
-	rmAddObjectDefConstraint(playerHerdID, longPlayerEdgeConstraint);
-
-	// Starting treasures
-	int playerNuggetID = rmCreateObjectDef("player nugget"); 
-	rmAddObjectDefItem(playerNuggetID, "Nugget", 1, 0.0);
-	rmSetNuggetDifficulty(1, 1);
-	rmSetObjectDefMinDistance(playerNuggetID, 24.0);
-	rmSetObjectDefMaxDistance(playerNuggetID, 26.0);
-	rmAddObjectDefToClass(playerNuggetID, classStartingResource);
-	rmAddObjectDefConstraint(playerNuggetID, avoidStartingResourcesShort);
-	rmAddObjectDefConstraint(playerNuggetID, avoidTradeRouteSocketMin);
-	rmAddObjectDefConstraint(playerNuggetID, avoidTradeRouteMin);
-	rmAddObjectDefConstraint(playerNuggetID, avoidTrainStationA);
-	rmAddObjectDefConstraint(playerNuggetID, avoidTrainStationB);
-	rmAddObjectDefConstraint(playerNuggetID, longPlayerEdgeConstraint);
-
-	// Water Flag
-    int colonyShipID = 0;
-
-	// Fake Frouping to fix the auto-grouping TC bug
-	int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
-	rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
-	rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.5);
-
-	// Place TC
-	for(i=1; <numPlayer)
-	{
-		rmPlaceObjectDefAtLoc(TCID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
-	}
-
-	// Place Player Objects
-	for(i=1; <numPlayer)
-	{
-		vector TCLoc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(TCID, i));
-		
-		rmPlaceObjectDefAtLoc(playerTreeID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-		rmPlaceObjectDefAtLoc(playerHerdID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-		rmPlaceObjectDefAtLoc(playerGoldID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-		rmPlaceObjectDefAtLoc(startingUnits, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-		rmPlaceObjectDefAtLoc(playerNuggetID, i, rmXMetersToFraction(xsVectorGetX(TCLoc)), rmZMetersToFraction(xsVectorGetZ(TCLoc)));
-		
-		// Water Flag Placement
-		colonyShipID=rmCreateObjectDef("colony ship "+i);
-		rmAddObjectDefItem(colonyShipID, "HomeCityWaterSpawnFlag", 1, 1.0);
-		if ( rmGetNomadStart())
-		{
-			if(rmGetPlayerCiv(i) == rmGetCivID("Ottomans"))
-				rmAddObjectDefItem(colonyShipID, "Galley", 1, 10.0);
-			else
-				rmAddObjectDefItem(colonyShipID, "caravel", 1, 10.0);
-		}
-		rmAddClosestPointConstraint(flagEdgeConstraint);
-		rmAddClosestPointConstraint(flagVsFlag);
-		rmAddClosestPointConstraint(flagVsVenice1);
-		rmAddClosestPointConstraint(flagVsVenice2);
-		rmAddClosestPointConstraint(flagLand);
-		vector closestPoint = rmFindClosestPointVector(TCLoc, rmXFractionToMeters(1.0));
-
-		rmPlaceObjectDefAtLoc(colonyShipID, i, rmXMetersToFraction(xsVectorGetX(closestPoint)), rmZMetersToFraction(xsVectorGetZ(closestPoint)));
-
-    }
-	
-
-	rmClearClosestPointConstraints();
-	
-
-	// ********************** RESOURCES **********************
-
-	// Random Gold
-	int randomGoldID = rmCreateObjectDef("random mine");
-	rmAddObjectDefItem(randomGoldID, "Mine", 1, 0.0);
-	rmSetObjectDefMinDistance(randomGoldID, 0.0);
-	rmSetObjectDefMaxDistance(randomGoldID, rmXFractionToMeters(0.45));
-	rmAddObjectDefConstraint(randomGoldID, avoidCoin);
-	rmAddObjectDefConstraint(randomGoldID, avoidAll);
-	rmAddObjectDefConstraint(randomGoldID, avoidTownCenterFar);
-	rmAddObjectDefConstraint(randomGoldID, avoidSocketLong);
-	rmAddObjectDefConstraint(randomGoldID, playerEdgeConstraint);
-	rmPlaceObjectDefInArea(randomGoldID, 0,  playerIslandSouthID, cNumberNonGaiaPlayers);
-	rmPlaceObjectDefInArea(randomGoldID, 0,  playerIslandNorthID, cNumberNonGaiaPlayers);
-	rmPlaceObjectDefInArea(randomGoldID, 0,  nativeIsland1ID, 2);
-	rmPlaceObjectDefInArea(randomGoldID, 0,  nativeIsland2ID, 2);
-	rmPlaceObjectDefInArea(randomGoldID, 0,  nativeIsland3ID, 2);
-	
-
-	
     
 	
 } // END
