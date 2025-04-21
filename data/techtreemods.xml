@@ -24619,7 +24619,7 @@
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
     <flag>DoNotQueue</flag>
-    <effects
+    <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCBlackPearlProxy</target>
       </effect>

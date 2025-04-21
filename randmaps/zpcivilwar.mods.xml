@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<mods>
+	<protomods>
+		<unit name="zpTrainStationA">
+            <unittype>Socket</unittype>
+            <unittype>TradePostSocket</unittype>
+            <unittype>VictoryPointBuilding</unittype>
+            <unittype>AbstractFort</unittype>
+            <unittype>HasBountyValue</unittype>
+            <unittype>CountsTowardEconomicScore</unittype>
+            <unittype>AbstractTypeVictoryPointBuilding</unittype>
+            <unittype>AbstractTradingPost</unittype>
+            <unittype>CapturableTradingPost</unittype>
+		</unit>
+        <unit name="SPCXPWoodFortGate">
+			<unittype>ConvertsHerds</unittype>
+			<flag>PlaceAnywhere</flag>
+			<buildpoints>0.0000</buildpoints>
+		</unit>
+	</protomods>
+</mods>
