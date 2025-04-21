@@ -1,5 +1,5 @@
-// MISSISSIPPI
-// February 2024
+// CIVIL WAR
+// April 2025
 
 int TeamNum = cNumberTeams;
 int PlayerNum = cNumberNonGaiaPlayers;
@@ -193,7 +193,7 @@ void main(void)
 	int greatLakesConstraint=rmCreateClassDistanceConstraint("avoid the great lakes", classGreatLake, 0.1);
 	int farGreatLakesConstraint=rmCreateClassDistanceConstraint("far avoid the great lakes", classGreatLake, 20.0);
 	int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true, 3.5);
-	int avoidDeepWater=rmCreateClassDistanceConstraint("stuff avoids deep water", classDeepWater, 30.0);
+	int avoidDeepWater=rmCreateClassDistanceConstraint("stuff avoids deep water", classDeepWater, 1.0);
 	int avoidSocket=rmCreateTypeDistanceConstraint("avoid socket", "SocketTradeRoute", 10.0);
    	int avoidSocketLong=rmCreateTypeDistanceConstraint("avoid socket long", "Socket", 50.0);
     int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 30);
@@ -321,6 +321,18 @@ void main(void)
     rmRiverAddWaypoint(riverID, 0.5, 1.0);
 	rmRiverBuild(riverID);
 
+	// River Trade Route
+	int tradeRouteID4 = rmCreateTradeRoute();
+	rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
+	rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.1);
+   	rmAddTradeRouteWaypoint(tradeRouteID4, 0.6, 0.2);
+    rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.3);
+	rmAddTradeRouteWaypoint(tradeRouteID4, 0.4, 0.2);
+	rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.1);
+	rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
+    rmBuildTradeRoute(tradeRouteID4, "native_water3_trail");
+
+	// water Areas
 
 	int riverArea1 = rmCreateArea("riverArea1");
     rmSetAreaSize(riverArea1 , rmAreaTilesToFraction(6000), rmAreaTilesToFraction(6000));
@@ -372,6 +384,14 @@ void main(void)
 	rmSetAreaObeyWorldCircleConstraint(riverArea5, false);
     rmBuildArea(riverArea5);
 
+	int centralLake = rmCreateArea("centralLake");
+    rmSetAreaSize(centralLake , rmAreaTilesToFraction(5600), rmAreaTilesToFraction(5600));
+    rmSetAreaLocation(centralLake , 0.5, 0.5);	
+    rmSetAreaCoherence(centralLake , 0.8);
+    rmSetAreaElevationVariation(centralLake, 0.0);
+	rmAddAreaToClass(centralLake, classDeepWater);
+    rmBuildArea(centralLake);
+
 	// Bridges
 	int bridgeGrouping1 = rmCreateGrouping("bridge1", "Bridge_universal_N");
     rmSetGroupingMinDistance(bridgeGrouping1, 0.00);
@@ -383,7 +403,28 @@ void main(void)
     rmSetGroupingMinDistance(bridgeGrouping2, 0.00);
     rmSetGroupingMaxDistance(bridgeGrouping2, 0.00);
 	rmAddGroupingToClass(bridgeGrouping2, rmClassID("classPlateau"));
-	rmPlaceGroupingAtLoc(bridgeGrouping2, 0, rmXMetersToFraction(xsVectorGetX(bridgeLoc2)+3), rmZMetersToFraction(xsVectorGetZ(bridgeLoc2)+3));
+	rmPlaceGroupingAtLoc(bridgeGrouping2, 0, rmXMetersToFraction(xsVectorGetX(bridgeLoc2)+4), rmZMetersToFraction(xsVectorGetZ(bridgeLoc2)+4));
+
+	// Shallows
+	int Shallow1ID = rmCreateArea("shallow1");
+    rmSetAreaSize(Shallow1ID, rmAreaTilesToFraction(600), rmAreaTilesToFraction(600));
+    rmSetAreaCoherence(Shallow1ID, 0.5);
+    rmSetAreaHeightBlend(Shallow1ID, 1.5);
+    rmSetAreaSmoothDistance(Shallow1ID, 5);
+    rmSetAreaLocation(Shallow1ID, 0.1, 0.6);
+	rmAddAreaInfluenceSegment(Shallow1ID, 0.1, 0.55, 0.1, 0.65);
+	rmSetAreaBaseHeight(Shallow1ID, -1.5);
+    rmBuildArea(Shallow1ID);
+
+	int Shallow2ID = rmCreateArea("shallow2");
+    rmSetAreaSize(Shallow2ID, rmAreaTilesToFraction(600), rmAreaTilesToFraction(600));
+    rmSetAreaCoherence(Shallow2ID, 0.5);
+    rmSetAreaHeightBlend(Shallow2ID, 1.5);
+    rmSetAreaSmoothDistance(Shallow2ID, 5);
+    rmSetAreaLocation(Shallow2ID, 0.9, 0.6);
+	rmAddAreaInfluenceSegment(Shallow2ID, 0.9, 0.55, 0.9, 0.65);
+	rmSetAreaBaseHeight(Shallow2ID, -1.5);
+    rmBuildArea(Shallow2ID);
 
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!! ISLANDS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -432,6 +473,8 @@ void main(void)
     rmSetAreaSmoothDistance(playerIslandSouthID, 5);
     rmSetAreaObeyWorldCircleConstraint(playerIslandSouthID, false);
 	rmAddAreaConstraint(playerIslandSouthID, greatLakesConstraint);
+	rmAddAreaConstraint(playerIslandSouthID, avoidDeepWater);
+	rmAddAreaConstraint(playerIslandSouthID, avoidTradeRoute);
     rmSetAreaLocation(playerIslandSouthID, 0.2, 0.4);
     rmBuildArea(playerIslandSouthID);
 
@@ -444,6 +487,8 @@ void main(void)
 	rmSetAreaSmoothDistance(playerIslandNorthID, 5);
 	rmSetAreaObeyWorldCircleConstraint(playerIslandNorthID, false);
 	rmAddAreaConstraint(playerIslandNorthID, greatLakesConstraint);
+	rmAddAreaConstraint(playerIslandNorthID, avoidDeepWater);
+	rmAddAreaConstraint(playerIslandNorthID, avoidTradeRoute);
 	rmSetAreaLocation(playerIslandNorthID, 0.8, 0.4);
 	rmBuildArea(playerIslandNorthID);
 
@@ -474,7 +519,7 @@ void main(void)
 	rmSetObjectDefMinDistance(station01ID, 0.0);
 	rmSetObjectDefMaxDistance(station01ID, 0.0);
 	rmSetObjectDefTradeRouteID(station01ID, tradeRouteID);
-	rmPlaceObjectDefAtLoc(station01ID, 1, rmXMetersToFraction(xsVectorGetX(stoperLoc)), rmZMetersToFraction(xsVectorGetZ(stoperLoc)+8));
+	rmPlaceObjectDefAtLoc(station01ID, 0, rmXMetersToFraction(xsVectorGetX(stoperLoc)), rmZMetersToFraction(xsVectorGetZ(stoperLoc)+9));
 	vector stationLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(station01ID, 0));
 
 	int station02ID=rmCreateObjectDef("Station2");
@@ -483,7 +528,7 @@ void main(void)
 	rmSetObjectDefMinDistance(station02ID, 0.0);
 	rmSetObjectDefMaxDistance(station02ID, 0.0);
 	rmSetObjectDefTradeRouteID(station02ID, tradeRouteID);
-	rmPlaceObjectDefAtLoc(station02ID, 0, rmXMetersToFraction(xsVectorGetX(stoperLoc2)), rmZMetersToFraction(xsVectorGetZ(stoperLoc2)+8));
+	rmPlaceObjectDefAtLoc(station02ID, 0, rmXMetersToFraction(xsVectorGetX(stoperLoc2)), rmZMetersToFraction(xsVectorGetZ(stoperLoc2)+9));
 	vector stationLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(station02ID, 0));
 
 	int station03ID=rmCreateObjectDef("Station3");
@@ -492,27 +537,27 @@ void main(void)
 	rmSetObjectDefMinDistance(station03ID, 0.0);
 	rmSetObjectDefMaxDistance(station03ID, 0.0);
 	rmSetObjectDefTradeRouteID(station03ID, tradeRouteID);
-	rmPlaceObjectDefAtLoc(station03ID, 0, rmXMetersToFraction(xsVectorGetX(stoperLoc3)), rmZMetersToFraction(xsVectorGetZ(stoperLoc3)+8));
+	rmPlaceObjectDefAtLoc(station03ID, 0, rmXMetersToFraction(xsVectorGetX(stoperLoc3)), rmZMetersToFraction(xsVectorGetZ(stoperLoc3)+9));
 	vector stationLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(station03ID, 0));
 
 	int socket01 = rmCreateGrouping("socket01", "City_State_Western_Station");
     rmSetGroupingMinDistance(socket01, 0.00);
     rmSetGroupingMaxDistance(socket01, 0.00);
 	rmAddGroupingToClass(socket01, rmClassID("classPlateau"));
-	rmPlaceGroupingAtLoc(socket01, 0, rmXMetersToFraction(xsVectorGetX(stationLoc1)), rmZMetersToFraction(xsVectorGetZ(stationLoc1)-2));
-	rmPlaceGroupingAtLoc(socket01, 0, rmXMetersToFraction(xsVectorGetX(stationLoc2)), rmZMetersToFraction(xsVectorGetZ(stationLoc2)-2));
-	rmPlaceGroupingAtLoc(socket01, 0, rmXMetersToFraction(xsVectorGetX(stationLoc3)), rmZMetersToFraction(xsVectorGetZ(stationLoc3)-2));
+	rmPlaceGroupingAtLoc(socket01, 0, rmXMetersToFraction(xsVectorGetX(stationLoc1)), rmZMetersToFraction(xsVectorGetZ(stationLoc1)-3));
+	rmPlaceGroupingAtLoc(socket01, 0, rmXMetersToFraction(xsVectorGetX(stationLoc2)), rmZMetersToFraction(xsVectorGetZ(stationLoc2)-3));
+	rmPlaceGroupingAtLoc(socket01, 0, rmXMetersToFraction(xsVectorGetX(stationLoc3)), rmZMetersToFraction(xsVectorGetZ(stationLoc3)-3));
 
-	int cityState01 = rmCreateGrouping("citystate1", "City_State_Western_Gold");
+	int cityState01 = rmCreateGrouping("citystate1", "City_State_Western_01");
     rmSetGroupingMinDistance(cityState01, 0.00);
     rmSetGroupingMaxDistance(cityState01, 0.00);
 	rmAddGroupingToClass(cityState01, rmClassID("classPlateau"));
-	rmPlaceGroupingAtLoc(cityState01, 0, rmXMetersToFraction(xsVectorGetX(stationLoc1)), rmZMetersToFraction(xsVectorGetZ(stationLoc1)-2));
+	rmPlaceGroupingAtLoc(cityState01, 0, rmXMetersToFraction(xsVectorGetX(stationLoc1)), rmZMetersToFraction(xsVectorGetZ(stationLoc1)-3));
 
 	socketLoc = rmGetTradeRouteWayPoint(tradeRouteID, 0.49);
     rmPlaceObjectDefAtPoint(stopperCityState1ID, 0, socketLoc);
 
-	int cityState02 = rmCreateGrouping("citystate2", "City_State_Western_Gold");
+	int cityState02 = rmCreateGrouping("citystate2", "City_State_Western_02");
     rmSetGroupingMinDistance(cityState02, 0.00);
     rmSetGroupingMaxDistance(cityState02, 0.00);
 	rmAddGroupingToClass(cityState02, rmClassID("classPlateau"));
@@ -521,7 +566,7 @@ void main(void)
 	socketLoc = rmGetTradeRouteWayPoint(tradeRouteID, 0.15);
     rmPlaceObjectDefAtPoint(stopperCityState2ID, 0, socketLoc);
 
-	int cityState03 = rmCreateGrouping("citystate3", "City_State_Western_Gold");
+	int cityState03 = rmCreateGrouping("citystate3", "City_State_Western_03");
     rmSetGroupingMinDistance(cityState03, 0.00);
     rmSetGroupingMaxDistance(cityState03, 0.00);
 	rmAddGroupingToClass(cityState03, rmClassID("classPlateau"));
@@ -546,6 +591,28 @@ void main(void)
 	rmSetObjectDefMaxDistance(scientistControllerID2, 0.0);
 	rmPlaceObjectDefAtLoc(scientistControllerID2, 0, 0.67, 0.43);
 	vector scientistControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(scientistControllerID2, 0));
+
+	int inventorIsland1ID = rmCreateArea("inventor_island1");
+    rmSetAreaSize(inventorIsland1ID, rmAreaTilesToFraction(400), rmAreaTilesToFraction(400));
+    rmSetAreaCoherence(inventorIsland1ID, 1.0);
+    rmSetAreaMix(inventorIsland1ID, "nwt_grass2");
+    rmSetAreaHeightBlend(inventorIsland1ID, 2);
+    rmSetAreaSmoothDistance(inventorIsland1ID, 10);
+    rmSetAreaObeyWorldCircleConstraint(inventorIsland1ID, false);
+    rmSetAreaLocation(inventorIsland1ID, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc1)));
+	rmSetAreaBaseHeight(inventorIsland1ID, 1);
+    rmBuildArea(inventorIsland1ID);
+
+	int inventorIsland2ID = rmCreateArea("inventor_island2");
+    rmSetAreaSize(inventorIsland2ID, rmAreaTilesToFraction(400), rmAreaTilesToFraction(400));
+    rmSetAreaCoherence(inventorIsland2ID, 1.0);
+    rmSetAreaMix(inventorIsland2ID, "nwt_grass2");
+    rmSetAreaHeightBlend(inventorIsland2ID, 2);
+    rmSetAreaSmoothDistance(inventorIsland2ID, 10);
+    rmSetAreaObeyWorldCircleConstraint(inventorIsland2ID, false);
+    rmSetAreaLocation(inventorIsland2ID, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc2)));
+	rmSetAreaBaseHeight(inventorIsland2ID, 1);
+    rmBuildArea(inventorIsland2ID);
 
 	int scientistLabTypeTypeID = rmRandInt(1,2);
 	int scientists1ID = -1;
@@ -598,6 +665,17 @@ void main(void)
 	rmClearClosestPointConstraints();
 
 
+	// Port 1
+	int portID01 = rmCreateObjectDef("port 02");
+	portID01 = rmCreateGrouping("portG 01", "Harbour_Center_River_SW");
+	rmPlaceGroupingAtLoc(portID01, 0, 0.6+rmXTilesToFraction(8), 0.2);
+
+	// Port 2
+	int portID02 = rmCreateObjectDef("port 02");
+	portID02 = rmCreateGrouping("portG 02", "Harbour_Center_River_NE");
+	rmPlaceGroupingAtLoc(portID02, 0, 0.4-rmXTilesToFraction(8),0.2);
+
+
 
 	// ------Triggers--------//
 
@@ -620,16 +698,30 @@ void main(void)
 
     rmCreateTrigger("Starting Techs");
     rmSwitchToTrigger(rmTriggerID("Starting techs"));
-    for(i=1; <= cNumberNonGaiaPlayers) {
-    rmAddTriggerEffect("ZP Set Tech Status (XS)");
-    rmSetTriggerEffectParamInt("PlayerID",i);
-    rmSetTriggerEffectParam("TechID","cTechzpIsAztecMap"); // DEEneableTradeRouteWater
-    rmSetTriggerEffectParamInt("Status",2);
-    rmAddTriggerEffect("ZP Set Tech Status (XS)");
-    rmSetTriggerEffectParamInt("PlayerID",i);
-    rmSetTriggerEffectParam("TechID","cTechdeTradeRouteCaptureableEuropean"); // DEEneableTradeRouteLand
-    rmSetTriggerEffectParamInt("Status",2);
+	for(i=0; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpCivilWarGeneralStup"); // DEEneableTradeRouteWater
+		rmSetTriggerEffectParamInt("Status",2);
 	}
+    for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpIsAztecMap"); // DEEneableTradeRouteWater
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechdeTradeRouteCaptureableEuropean"); // DEEneableTradeRouteLand
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+    rmSetTriggerEffectParamInt("PlayerID",0);
+    rmSetTriggerEffectParam("TechID","cTechzpCivilWarConverGate"); // DEEneableTradeRouteLand
+    rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpUpdatePort2"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
     rmSetTriggerPriority(4);
     rmSetTriggerActive(true);
     rmSetTriggerRunImmediately(true);
@@ -858,6 +950,12 @@ void main(void)
 	rmAddTriggerEffect("Trade Route Toggle State");
 	rmSetTriggerEffectParamInt("TradeRoute",3);
 	rmSetTriggerEffectParam("ShowUnit","false");
+	rmAddTriggerEffect("Trade Route Toggle State");
+	rmSetTriggerEffectParamInt("TradeRoute",1);
+	rmSetTriggerEffectParam("ShowUnit","true");
+	rmAddTriggerEffect("Trade Route Toggle State");
+	rmSetTriggerEffectParamInt("TradeRoute",4);
+	rmSetTriggerEffectParam("ShowUnit","true");
 	
 	rmAddTriggerEffect("Quest Var Set");
 	rmSetTriggerEffectParam("QVName","ArmoredTrain");
@@ -958,6 +1056,12 @@ void main(void)
 	rmSetTriggerEffectParam("ShowUnit","false");
 	rmAddTriggerEffect("Trade Route Toggle State");
 	rmSetTriggerEffectParamInt("TradeRoute",2);
+	rmSetTriggerEffectParam("ShowUnit","true");
+	rmAddTriggerEffect("Trade Route Toggle State");
+	rmSetTriggerEffectParamInt("TradeRoute",3);
+	rmSetTriggerEffectParam("ShowUnit","false");
+	rmAddTriggerEffect("Trade Route Toggle State");
+	rmSetTriggerEffectParamInt("TradeRoute",4);
 	rmSetTriggerEffectParam("ShowUnit","true");
 	rmAddTriggerEffect("Quest Var Set");
 	rmSetTriggerEffectParam("QVName","ArmoredTrain");
@@ -1060,7 +1164,13 @@ void main(void)
 	rmSetTriggerEffectParamInt("TradeRoute",1);
 	rmSetTriggerEffectParam("ShowUnit","false");
 	rmAddTriggerEffect("Trade Route Toggle State");
+	rmSetTriggerEffectParamInt("TradeRoute",2);
+	rmSetTriggerEffectParam("ShowUnit","false");
+	rmAddTriggerEffect("Trade Route Toggle State");
 	rmSetTriggerEffectParamInt("TradeRoute",3);
+	rmSetTriggerEffectParam("ShowUnit","true");
+	rmAddTriggerEffect("Trade Route Toggle State");
+	rmSetTriggerEffectParamInt("TradeRoute",4);
 	rmSetTriggerEffectParam("ShowUnit","true");
 		
 	rmAddTriggerEffect("Quest Var Set");
@@ -1159,6 +1269,13 @@ void main(void)
 	rmSetTriggerEffectParam("ShowUnit","false");
 	rmAddTriggerEffect("Trade Route Toggle State");
 	rmSetTriggerEffectParamInt("TradeRoute",2);
+	rmSetTriggerEffectParam("ShowUnit","true");
+	rmAddTriggerEffect("Trade Route Toggle State");
+	rmSetTriggerEffectParamInt("TradeRoute",3);
+	rmSetTriggerEffectParam("ShowUnit","false");
+	rmAddTriggerEffect("Trade Route Toggle State");
+	rmSetTriggerEffectParamInt("TradeRoute",4);
+	rmSetTriggerEffectParam("ShowUnit","true");
 
 	rmAddTriggerEffect("Quest Var Set");
 	rmSetTriggerEffectParam("QVName","ArmoredTrain");
@@ -1545,7 +1662,7 @@ void main(void)
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",""+unitID1);
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",15);
+	rmSetTriggerConditionParamInt("Dist",20);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
 	rmSetTriggerConditionParam("Op",">=");
 	rmSetTriggerConditionParamFloat("Count",1);
@@ -1554,7 +1671,37 @@ void main(void)
 	rmSetTriggerEffectParam("SrcObject",""+unitID1);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParamInt("Dist",35);
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCCapturableFactory");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCSafehouse");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
+	rmSetTriggerEffectParamInt("Dist",60);
 
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station1_off_Plr"+k));
@@ -1567,7 +1714,7 @@ void main(void)
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",""+unitID1);
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",15);
+	rmSetTriggerConditionParamInt("Dist",20);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
 	rmSetTriggerConditionParam("Op","==");
 	rmSetTriggerConditionParamFloat("Count",0);
@@ -1576,7 +1723,37 @@ void main(void)
 	rmSetTriggerEffectParam("SrcObject",""+unitID1);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParamInt("Dist",35);
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCCapturableFactory");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCSafehouse");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
+	rmSetTriggerEffectParamInt("Dist",60);
 
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station1_on_Plr"+k));
@@ -1594,7 +1771,7 @@ void main(void)
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",""+unitID2);
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",15);
+	rmSetTriggerConditionParamInt("Dist",20);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
 	rmSetTriggerConditionParam("Op",">=");
 	rmSetTriggerConditionParamFloat("Count",1);
@@ -1603,7 +1780,37 @@ void main(void)
 	rmSetTriggerEffectParam("SrcObject",""+unitID2);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParamInt("Dist",35);
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCSawMill");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
+	rmSetTriggerEffectParamInt("Dist",60);
 
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station2_off_Plr"+k));
@@ -1616,7 +1823,7 @@ void main(void)
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",""+unitID2);
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",15);
+	rmSetTriggerConditionParamInt("Dist",20);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
 	rmSetTriggerConditionParam("Op","==");
 	rmSetTriggerConditionParamFloat("Count",0);
@@ -1625,7 +1832,37 @@ void main(void)
 	rmSetTriggerEffectParam("SrcObject",""+unitID2);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParamInt("Dist",35);
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCSawMill");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
+	rmSetTriggerEffectParamInt("Dist",60);
 
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station2_on_Plr"+k));
@@ -1644,7 +1881,7 @@ void main(void)
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",""+unitID3);
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",15);
+	rmSetTriggerConditionParamInt("Dist",20);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
 	rmSetTriggerConditionParam("Op",">=");
 	rmSetTriggerConditionParamFloat("Count",1);
@@ -1653,7 +1890,37 @@ void main(void)
 	rmSetTriggerEffectParam("SrcObject",""+unitID3);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParamInt("Dist",35);
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCDestilery");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
+	rmSetTriggerEffectParamInt("Dist",60);
 
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station3_off_Plr"+k));
@@ -1666,7 +1933,7 @@ void main(void)
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",""+unitID3);
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",15);
+	rmSetTriggerConditionParamInt("Dist",20);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
 	rmSetTriggerConditionParam("Op","==");
 	rmSetTriggerConditionParamFloat("Count",0);
@@ -1675,7 +1942,37 @@ void main(void)
 	rmSetTriggerEffectParam("SrcObject",""+unitID3);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParamInt("Dist",35);
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCDestilery");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
+	rmSetTriggerEffectParamInt("Dist",60);
 
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station3_on_Plr"+k));
@@ -2186,12 +2483,29 @@ void main(void)
 		rmPlaceObjectDefAtLoc(colonyShipID, i, rmXMetersToFraction(xsVectorGetX(closestPoint)), rmZMetersToFraction(xsVectorGetZ(closestPoint)));
 
     }
+	
 
 	rmClearClosestPointConstraints();
 	
 
+	// ********************** RESOURCES **********************
 
-
+	// Random Gold
+	int randomGoldID = rmCreateObjectDef("random mine");
+	rmAddObjectDefItem(randomGoldID, "Mine", 1, 0.0);
+	rmSetObjectDefMinDistance(randomGoldID, 0.0);
+	rmSetObjectDefMaxDistance(randomGoldID, rmXFractionToMeters(0.45));
+	rmAddObjectDefConstraint(randomGoldID, avoidCoin);
+	rmAddObjectDefConstraint(randomGoldID, avoidAll);
+	rmAddObjectDefConstraint(randomGoldID, avoidTownCenterFar);
+	rmAddObjectDefConstraint(randomGoldID, avoidSocketLong);
+	rmAddObjectDefConstraint(randomGoldID, playerEdgeConstraint);
+	rmPlaceObjectDefInArea(randomGoldID, 0,  playerIslandSouthID, cNumberNonGaiaPlayers);
+	rmPlaceObjectDefInArea(randomGoldID, 0,  playerIslandNorthID, cNumberNonGaiaPlayers);
+	rmPlaceObjectDefInArea(randomGoldID, 0,  nativeIsland1ID, 2);
+	rmPlaceObjectDefInArea(randomGoldID, 0,  nativeIsland2ID, 2);
+	rmPlaceObjectDefInArea(randomGoldID, 0,  nativeIsland3ID, 2);
+	
 
 	
     
