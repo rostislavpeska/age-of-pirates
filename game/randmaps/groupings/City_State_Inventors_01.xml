@@ -135,7 +135,6 @@
 		<unit variation="59" posx="-3.7084" posz="16.4788" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="53" posx="16.1595" posz="18.7951" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropWaterTower</unit>
 		<unit variation="59" posx="14.4531" posz="18.2909" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
-		<unit variation="185" posx="26.7049" posz="-15.0796" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTradingPostCaptureNaval</unit>
 		<unit variation="229" posx="31.7976" posz="13.2853" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCFixedGun</unit>
 	</units>
 	<tiles>
