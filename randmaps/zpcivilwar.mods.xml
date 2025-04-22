@@ -20,5 +20,8 @@
             <unit name="zpNativeHouseWesternVillage">
                   <flag>NotSelectable</flag>
             </unit>
+            <unit name="zpNativeHouseWesternVillageB">
+                  <flag>NotSelectable</flag>
+            </unit>
 	</protomods>
 </mods>

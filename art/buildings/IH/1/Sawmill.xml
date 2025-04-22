@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- converted from XMB to XML -->
+
 <animfile>
+	<definebone>bone_smoke</definebone>
+	<attachment>chimney_smoke
+		<component>smoke
+			<assetreference type="popcornFx">
+				<file>smoke\chimney_smoke.pkfx</file>
+			</assetreference>
+		</component>
+		<anim>Idle
+			<component>smoke</component>
+		</anim>
+	</attachment>
 	<component>
 		building
-		<logic type="Variation">
-			<data>
-				<assetreference type="GrannyModel">
-				<file>buildings\IH\1\AOE3DE_Build_Sawmill_Roda_Model</file>
-				</assetreference>
-			</data>
-      		</logic>
-    <decal><effecttype>default</effecttype><texture>buildings\house\WEST\AGE_1\House_Ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><width>11.00</width><height>11.00</height></decal>
+		<assetreference type="GrannyModel">
+			<file>buildings\IH\1\AOE3DE_Build_Sawmill_Roda_Model</file>
+		</assetreference>
+		<!--<attach a="chimney_smoke" frombone="bone_chimney" tobone="bone_smoke" syncanims="0"></attach>-->
+    	<decal><effecttype>default</effecttype><texture>buildings\house\WEST\AGE_1\House_Ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><width>11.00</width><height>11.00</height></decal>
 	</component>
 	<anim>
 		Idle
