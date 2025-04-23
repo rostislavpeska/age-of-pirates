@@ -5167,7 +5167,6 @@
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
-    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
@@ -17825,7 +17824,6 @@
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
-    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
@@ -22064,7 +22062,7 @@
     <flag>NotSearchable</flag>
     <flag>NoHPBar</flag>
     <flag>Immoveable</flag>
-    <flag>CollidesWithProjectiles</flag>
+    <flag>NonCollideable</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>VisibleUnderFog</flag>
@@ -54142,8 +54140,8 @@
     <animfile>buildings\trading_post\jesuit_outpost_socket.xml</animfile>
     <minimapicon>ui\minimap\t</minimapicon>
     <portraiticon>resources\art\units\natives\cowboys.png</portraiticon>
-    <rollovertextid>300017</rollovertextid>
-    <shortrollovertextid>300017</shortrollovertextid>
+    <rollovertextid>301173</rollovertextid>
+    <shortrollovertextid>301173</shortrollovertextid>
     <los>5.0000</los>
     <unittype>LogicalTypeBuildingsNotWalls</unittype>
     <unittype>LogicalTypeShipsAndBuildings</unittype>
@@ -54226,6 +54224,240 @@
     <flag>InvulnerableIfGaia</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>RMCanRotate</flag>
+  </unit>
+  <unit id="20734" name="zpSPCSocketInventorsCityState">
+    <dbid>20734</dbid>
+    <displaynameid>302554</displaynameid>
+    <editornameid>302555</editornameid>
+    <subciv>zpScientists</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>3.0000</socketbuildrate>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\trading_post\europe_outpost_socket.xml</animfile>
+    <minimapicon>ui\minimap\t</minimapicon>
+    <portraiticon>resources\art\units\natives\scientist.png</portraiticon>
+    <rollovertextid>300484</rollovertextid>
+    <shortrollovertextid>300484</shortrollovertextid>
+    <los>5.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+     <flag>HeroName1</flag>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>SocketFreeBuilding</flag>
+    <flag>NotDeleteable</flag>
+    <tactics>socketcapture.tactics</tactics>
+    <command page="1" column="0">deSocketBuild</command>
+  </unit>
+  <unit id="20735" name="zpSPCCivilWarCommandery">
+    <dbid>20735</dbid>
+    <displaynameid>34639</displaynameid>
+    <editornameid>34640</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\fort\spc_fort_center.xml</animfile>
+    <deadreplacement>BuildingRubble5x5</deadreplacement>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
+    <rollovertextid>302557</rollovertextid>
+    <shortrollovertextid>302557</shortrollovertextid>
+    <initialhitpoints>10000.0000</initialhitpoints>
+    <maxhitpoints>10000.0000</maxhitpoints>
+    <los>18.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <buildpoints>15.0000</buildpoints>
+    <bounty>200.0000</bounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractFort</unittype>
+    <unittype>AbstractFindFort</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <train row="0" page="0" column="0">zpNatConRegular</train>
+    <train row="0" page="0" column="1">zpNatConUSCavalry</train>
+    <flag>SelectWithObstruction</flag>
+    <flag>Doppled</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>wallBuild</flag>
+    <flag>DontFlattenGround</flag>
+    <flag>NeverShowButton</flag>
+    <flag>UseAlignedObstructionOnMinimap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>TileAlignPlacement</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+    <tactics>combatBuilding.tactics</tactics>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>AntiShipAttack</name>
+      <damage>100.000000</damage>
+      <damagetype>Siege</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>40.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="AbstractSiegeTrooper">0.500000</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="20736" name="zpNativeHouseScientists">
+    <dbid>20736</dbid>
+    <displaynameid>300503</displaynameid>
+    <editornameid>302559</editornameid>
+    <subciv>zpScientists</subciv>
+    <obstructionradiusx>2.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\IH\3\Observatory.xml</animfile>
+    <portraiticon>resources\art\units\natives\scientist.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <flag>FlattenGround</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+  </unit>
+  <unit id="20737" name="zpPropWaterTower">
+    <dbid>20737</dbid>
+    <displaynameid>302560</displaynameid>
+    <editornameid>302560</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\IH\3\WaterTower.xml</animfile>
+    <portraiticon>resources\art\units\natives\scientist.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <flag>FlattenGround</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
   </unit>
 
 

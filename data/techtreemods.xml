@@ -24594,6 +24594,12 @@
       <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCDestilery</target>
       </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCGoldSmelter</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
       <effect type="TechStatus" status="unobtainable">zpTradeRouteUpgradeWaterNative</effect>
       <effect type="TechStatus" status="unobtainable">zpTradeRouteUpgradeWaterNative2</effect>
       <effect type="CommandRemove" tech="zpTradeRouteUpgradeWaterNative">
@@ -24602,6 +24608,29 @@
       <effect type="CommandRemove" tech="zpTradeRouteUpgradeWaterNative2">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="SetName" proto="zpSPCGoldSmelter" newname="302558">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCivilUnionSetup" type="Normal">
+    <dbid>41003</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConRegular</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConUSCavalry</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCivilConfederationSetup" type="Normal">
+    <dbid>41004</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      
     </effects>
   </tech>
 

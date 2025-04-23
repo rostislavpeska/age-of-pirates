@@ -2549,8 +2549,17 @@
       <string _locid="302549">ZP Train Station Props</string>
       <string _locid="302550">ZP NAT House Western B</string>
       <string _locid="302551">ZP SPC Socket Western City</string>
-      <string _locid="302552">Inventors Factory Wing Short</string>
-      <string _locid="302553">Inventors Factory Wing Long</string>
+      <string _locid="302552">ZP Inventors Factory Wing Short</string>
+      <string _locid="302553">ZP Inventors Factory Wing Long</string>
+      <string _locid="302554">Industrial Center</string>
+      <string _locid="302555">ZP SPC Socket Inventors City</string>
+      <string _locid="302556">ZP SPC Civil War Command Post</string>
+      <string _locid="302557">Trains team specific units. Provides additional improvements.</string>
+      <string _locid="302558">Metallurgy Lab</string>
+      <string _locid="302559">ZP Native House Inventors</string>
+      <string _locid="302560">ZP Prop Water Tower</string>
+
+
 
 
       <!-- ======================================== -->

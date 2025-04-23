@@ -49,7 +49,7 @@
 		<unit variation="188" posx="1.0081" posz="15.7729" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCXPWoodFortGate</unit>
 		<unit variation="113" posx="-16.5059" posz="-15.0523" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCXPWoodFortTower</unit>
 		<unit variation="113" posx="17.0050" posz="-15.0551" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCXPWoodFortTower</unit>
-		<unit variation="32" posx="-8.5318" posz="6.1557" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deCommandery</unit>
+		<unit variation="32" posx="-8.5318" posz="6.1557" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCCivilWarCommandery</unit>
 		<unit variation="113" posx="-16.5325" posz="15.4920" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCXPWoodFortTower</unit>
 		<unit variation="113" posx="17.7887" posz="15.4070" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCXPWoodFortTower</unit>
 	</units>

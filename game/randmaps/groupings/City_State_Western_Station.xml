@@ -9,8 +9,8 @@
 	<units>
 		<unit variation="167" posx="-1.0838" posz="-8.5772" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpInvisibleRailwayStation</unit>
 		<unit variation="179" posx="-13.5807" posz="-13.0229" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropBarn</unit>
-		<unit variation="79" posx="2.5717" posz="-12.1172" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCSocketWesternCityState</unit>
 		<unit variation="4" posx="-10.4701" posz="-13.2510" orientx="-0.0005" orienty="0.0039" orientz="-1.0000">zpTrainTracks</unit>
 		<unit variation="1" posx="-6.3561" posz="-13.2488" orientx="0.0000" orienty="0.0039" orientz="-1.0000">zpTrainTracks</unit>
+		<unit variation="79" posx="2.5717" posz="-12.1172" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCSocketWesternCityState</unit>
 	</units>
 </grouping>

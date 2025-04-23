@@ -72,6 +72,7 @@ void main(void)
 	rmSetMapType("bayou");
 	rmSetMapType("grass");
 	rmSetMapType("water");
+	rmSetMapType("piratehistoricalmap");
 
 	chooseMercs();
 
@@ -220,7 +221,7 @@ void main(void)
 
 	int avoidPlateauShort = rmCreateClassDistanceConstraint("avoid patch 1", rmClassID("classPlateau"), 1.0);
 	int avoidPlateau = rmCreateClassDistanceConstraint("avoid patch 2", rmClassID("classPlateau"), 7.0);
-
+	int avoidPathBlock = rmCreateTypeDistanceConstraint("avoid path block", "SPCPathBlock3", 7.0);
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.10);
@@ -323,16 +324,72 @@ void main(void)
     rmRiverAddWaypoint(riverID, 0.5, 1.0);
 	rmRiverBuild(riverID);
 
+	int stopper4ID=rmCreateObjectDef("Armored Train Stopper4");
+	rmAddObjectDefItem(stopper4ID, "zpSPCWaterSpawnPoint", 1, 0.0);
+	rmSetObjectDefAllowOverlap(stopper4ID, true);
+	rmSetObjectDefMinDistance(stopper4ID, 0.0);
+	rmSetObjectDefMaxDistance(stopper4ID, 0.0);
+
+	int stopper5ID=rmCreateObjectDef("Armored Train Stopper5");
+	rmAddObjectDefItem(stopper5ID, "zpSPCWaterSpawnPoint", 1, 0.0);
+	rmSetObjectDefAllowOverlap(stopper5ID, true);
+	rmSetObjectDefMinDistance(stopper5ID, 0.0);
+	rmSetObjectDefMaxDistance(stopper5ID, 0.0);
+
 	// River Trade Route
 	int tradeRouteID4 = rmCreateTradeRoute();
 	rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
-	rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.1);
-   	rmAddTradeRouteWaypoint(tradeRouteID4, 0.6, 0.2);
-    rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.3);
-	rmAddTradeRouteWaypoint(tradeRouteID4, 0.4, 0.2);
-	rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.1);
+	rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.3);
+   	rmAddTradeRouteWaypoint(tradeRouteID4, 0.57, 0.4);
+    rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.45);
+	rmAddTradeRouteWaypoint(tradeRouteID4, 0.43, 0.4);
+	rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.3);
 	rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
-    rmBuildTradeRoute(tradeRouteID4, "native_water_trail");
+
+
+	// *********************** INVENTOR GROUPINGS ***************************
+
+	// Define and place Ports
+
+	int harbour01ID=rmCreateObjectDef("harbour");
+	rmAddObjectDefItem(harbour01ID, "zpTradingPostCaptureNaval", 1, 0.0);
+	rmSetObjectDefAllowOverlap(harbour01ID, true);
+	rmSetObjectDefMinDistance(harbour01ID, 0.0);
+	rmSetObjectDefMaxDistance(harbour01ID, 0.0);
+	rmSetObjectDefTradeRouteID(harbour01ID, tradeRouteID4);
+	rmPlaceObjectDefAtLoc(harbour01ID, 0, 0.5-rmXTilesToFraction(30),0.5-rmXTilesToFraction(27));
+	vector harbourLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbour01ID, 0));
+
+	int harbour02ID=rmCreateObjectDef("harbour2");
+	rmAddObjectDefItem(harbour02ID, "zpTradingPostCaptureNaval", 1, 0.0);
+	rmSetObjectDefAllowOverlap(harbour02ID, true);
+	rmSetObjectDefMinDistance(harbour02ID, 0.0);
+	rmSetObjectDefMaxDistance(harbour02ID, 0.0);
+	rmSetObjectDefTradeRouteID(harbour02ID, tradeRouteID4);
+	rmPlaceObjectDefAtLoc(harbour02ID, 0, 0.5+rmXTilesToFraction(30),0.5-rmXTilesToFraction(27));
+	vector harbourLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbour02ID, 0));
+
+	// River groupings
+
+	rmSetNuggetDifficulty(312, 312);
+
+	// Inventors 1
+	int inventorsBaseGrouping1 = rmCreateGrouping("inventorsBaseGrouping1", "City_State_Inventors_01");
+    rmSetGroupingMinDistance(inventorsBaseGrouping1, 0.00);
+    rmSetGroupingMaxDistance(inventorsBaseGrouping1, 0.00);
+	rmAddGroupingToClass(inventorsBaseGrouping1, rmClassID("classPlateau"));
+
+	int factoryInstanceID1 = rmPlaceGroupingInstanceAtLoc(inventorsBaseGrouping1, rmXMetersToFraction(xsVectorGetX(harbourLoc1))-rmXTilesToFraction(13), rmZMetersToFraction(xsVectorGetZ(harbourLoc1))+rmZTilesToFraction(5), 0);
+
+	// Inventors 2
+	int inventorsBaseGrouping2 = rmCreateGrouping("inventorsBaseGrouping2", "City_State_Inventors_02");
+    rmSetGroupingMinDistance(inventorsBaseGrouping2, 0.00);
+    rmSetGroupingMaxDistance(inventorsBaseGrouping2, 0.00);
+	rmAddGroupingToClass(inventorsBaseGrouping2, rmClassID("classPlateau"));
+
+	int factoryInstanceID2 = rmPlaceGroupingInstanceAtLoc(inventorsBaseGrouping2, rmXMetersToFraction(xsVectorGetX(harbourLoc2))+rmXTilesToFraction(11), rmZMetersToFraction(xsVectorGetZ(harbourLoc2))+rmZTilesToFraction(2), 0);
+
+	rmBuildTradeRoute(tradeRouteID4, "native_water_trail");
 
 	// water Areas
 
@@ -477,6 +534,7 @@ void main(void)
 	rmAddAreaConstraint(playerIslandSouthID, greatLakesConstraint);
 	rmAddAreaConstraint(playerIslandSouthID, avoidDeepWater);
 	rmAddAreaConstraint(playerIslandSouthID, avoidTradeRoute);
+	rmAddAreaConstraint(playerIslandSouthID, avoidPathBlock);
     rmSetAreaLocation(playerIslandSouthID, 0.2, 0.4);
 	rmSetAreaElevationVariation(playerIslandSouthID, 4.0);
 	rmSetAreaElevationType(playerIslandSouthID, cElevTurbulence);
@@ -497,6 +555,7 @@ void main(void)
 	rmAddAreaConstraint(playerIslandNorthID, greatLakesConstraint);
 	rmAddAreaConstraint(playerIslandNorthID, avoidDeepWater);
 	rmAddAreaConstraint(playerIslandNorthID, avoidTradeRoute);
+	rmAddAreaConstraint(playerIslandNorthID, avoidPathBlock);
 	rmSetAreaLocation(playerIslandNorthID, 0.8, 0.4);
 	rmSetAreaElevationVariation(playerIslandNorthID, 4.0);
 	rmSetAreaElevationType(playerIslandNorthID, cElevTurbulence);
@@ -528,6 +587,29 @@ void main(void)
 	rmSetObjectDefMinDistance(stopperCityState3ID, 0.0);
 	rmSetObjectDefMaxDistance(stopperCityState3ID, 0.0);
 
+	int stopperCityStateFake1ID=rmCreateObjectDef("Armored Train Stopper State Fake 1");
+	rmAddObjectDefItem(stopperCityStateFake1ID, "zpTrainStopper", 1, 0.0);
+	rmSetObjectDefAllowOverlap(stopperCityStateFake1ID, true);
+	rmSetObjectDefMinDistance(stopperCityStateFake1ID, 0.0);
+	rmSetObjectDefMaxDistance(stopperCityStateFake1ID, 0.0);  
+
+	int stopperCityStateFake2ID=rmCreateObjectDef("Armored Train Stopper State Fake 2");
+	rmAddObjectDefItem(stopperCityStateFake2ID, "zpTrainStopper", 1, 0.0);
+	rmSetObjectDefAllowOverlap(stopperCityStateFake2ID, true);
+	rmSetObjectDefMinDistance(stopperCityStateFake2ID, 0.0);
+	rmSetObjectDefMaxDistance(stopperCityStateFake2ID, 0.0);
+
+	int stopperCityStateFake3ID=rmCreateObjectDef("Armored Train Stopper State Fake 3");
+	rmAddObjectDefItem(stopperCityStateFake3ID, "zpTrainStopper", 1, 0.0);
+	rmSetObjectDefAllowOverlap(stopperCityStateFake3ID, true);
+	rmSetObjectDefMinDistance(stopperCityStateFake3ID, 0.0);
+	rmSetObjectDefMaxDistance(stopperCityStateFake3ID, 0.0);
+
+	int socket01 = rmCreateGrouping("socket01", "City_State_Western_Station");
+    rmSetGroupingMinDistance(socket01, 0.00);
+    rmSetGroupingMaxDistance(socket01, 0.00);
+	rmAddGroupingToClass(socket01, rmClassID("classPlateau"));
+
 	// Define and place stations
 
 	int station01ID=rmCreateObjectDef("Station1");
@@ -537,8 +619,11 @@ void main(void)
 	rmSetObjectDefMaxDistance(station01ID, 0.0);
 	rmSetObjectDefTradeRouteID(station01ID, tradeRouteID);
 	rmPlaceObjectDefAtLoc(station01ID, 0, rmXMetersToFraction(xsVectorGetX(stoperLoc)), rmZMetersToFraction(xsVectorGetZ(stoperLoc)+9));
+	
 	vector stationLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(station01ID, 0));
-
+	rmPlaceGroupingAtLoc(socket01, 0, rmXMetersToFraction(xsVectorGetX(stationLoc1)), rmZMetersToFraction(xsVectorGetZ(stationLoc1)-3));
+	rmPlaceObjectDefAtLoc(stopperCityStateFake1ID, 0, rmXMetersToFraction(xsVectorGetX(stationLoc1)), rmZMetersToFraction(xsVectorGetZ(stationLoc1)));
+	
 	int station02ID=rmCreateObjectDef("Station2");
 	rmAddObjectDefItem(station02ID, "zpTrainStationA", 1, 0.0);
 	rmSetObjectDefAllowOverlap(station02ID, true);
@@ -546,7 +631,10 @@ void main(void)
 	rmSetObjectDefMaxDistance(station02ID, 0.0);
 	rmSetObjectDefTradeRouteID(station02ID, tradeRouteID);
 	rmPlaceObjectDefAtLoc(station02ID, 0, rmXMetersToFraction(xsVectorGetX(stoperLoc2)), rmZMetersToFraction(xsVectorGetZ(stoperLoc2)+9));
+	
 	vector stationLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(station02ID, 0));
+	rmPlaceGroupingAtLoc(socket01, 0, rmXMetersToFraction(xsVectorGetX(stationLoc2)), rmZMetersToFraction(xsVectorGetZ(stationLoc2)-3));
+	rmPlaceObjectDefAtLoc(stopperCityStateFake2ID, 0, rmXMetersToFraction(xsVectorGetX(stationLoc2)), rmZMetersToFraction(xsVectorGetZ(stationLoc2)));
 
 	int station03ID=rmCreateObjectDef("Station3");
 	rmAddObjectDefItem(station03ID, "zpTrainStationA", 1, 0.0);
@@ -555,19 +643,14 @@ void main(void)
 	rmSetObjectDefMaxDistance(station03ID, 0.0);
 	rmSetObjectDefTradeRouteID(station03ID, tradeRouteID);
 	rmPlaceObjectDefAtLoc(station03ID, 0, rmXMetersToFraction(xsVectorGetX(stoperLoc3)), rmZMetersToFraction(xsVectorGetZ(stoperLoc3)+9));
+	
 	vector stationLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(station03ID, 0));
-
-	// Define and place station groupings
-
-	int socket01 = rmCreateGrouping("socket01", "City_State_Western_Station");
-    rmSetGroupingMinDistance(socket01, 0.00);
-    rmSetGroupingMaxDistance(socket01, 0.00);
-	rmAddGroupingToClass(socket01, rmClassID("classPlateau"));
-	rmPlaceGroupingAtLoc(socket01, 0, rmXMetersToFraction(xsVectorGetX(stationLoc1)), rmZMetersToFraction(xsVectorGetZ(stationLoc1)-3));
-	rmPlaceGroupingAtLoc(socket01, 0, rmXMetersToFraction(xsVectorGetX(stationLoc2)), rmZMetersToFraction(xsVectorGetZ(stationLoc2)-3));
 	rmPlaceGroupingAtLoc(socket01, 0, rmXMetersToFraction(xsVectorGetX(stationLoc3)), rmZMetersToFraction(xsVectorGetZ(stationLoc3)-3));
+	rmPlaceObjectDefAtLoc(stopperCityStateFake3ID, 0, rmXMetersToFraction(xsVectorGetX(stationLoc3)), rmZMetersToFraction(xsVectorGetZ(stationLoc3)));
 
 	// Define and place city groupings
+	
+	rmSetNuggetDifficulty(313, 313);
 
 	int cityState01 = rmCreateGrouping("citystate1", "City_State_Western_01");
     rmSetGroupingMinDistance(cityState01, 0.00);
@@ -596,114 +679,28 @@ void main(void)
 	socketLoc = rmGetTradeRouteWayPoint(tradeRouteID, 0.81);
     rmPlaceObjectDefAtPoint(stopperCityState3ID, 0, socketLoc);
 
+	// Nuggets
 
-	// *************** Inventors ***************
+	int nugget1ID=rmCreateObjectDef("Nugget 1");
+	rmAddObjectDefItem(nugget1ID, "Nugget", 1, 0.0);
+	rmSetObjectDefAllowOverlap(nugget1ID, true);
+	rmSetObjectDefMinDistance(nugget1ID, 0.0);
+	rmSetObjectDefMaxDistance(nugget1ID, 5.0);  
+	rmPlaceObjectDefAtLoc(nugget1ID, 0, rmXMetersToFraction(xsVectorGetX(stoperLoc)), rmZMetersToFraction(xsVectorGetZ(stoperLoc)-3));
 
-	// Place Controllers
+	int nugget2ID=rmCreateObjectDef("Nugget 2");
+	rmAddObjectDefItem(nugget2ID, "Nugget", 1, 0.0);
+	rmSetObjectDefAllowOverlap(nugget2ID, true);
+	rmSetObjectDefMinDistance(nugget2ID, 0.0);
+	rmSetObjectDefMaxDistance(nugget2ID, 5.0);
+	rmPlaceObjectDefAtLoc(nugget2ID, 0, rmXMetersToFraction(xsVectorGetX(stoperLoc2)), rmZMetersToFraction(xsVectorGetZ(stoperLoc2)-3));
 
-	int scientistControllerID = rmCreateObjectDef("scientist controller 1");
-	rmAddObjectDefItem(scientistControllerID, "zpSPCWaterSpawnPoint", 1, 0.0);
-	rmSetObjectDefMinDistance(scientistControllerID, 0.0);
-	rmSetObjectDefMaxDistance(scientistControllerID, 0.0);
-	rmPlaceObjectDefAtLoc(scientistControllerID, 0, 0.33,0.43);
-	vector scientistControllerLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(scientistControllerID, 0));
-
-	int scientistControllerID2 = rmCreateObjectDef("scientist controller 2");
-	rmAddObjectDefItem(scientistControllerID2, "zpSPCWaterSpawnPoint", 1, 0.0);
-	rmSetObjectDefMinDistance(scientistControllerID2, 0.0);
-	rmSetObjectDefMaxDistance(scientistControllerID2, 0.0);
-	rmPlaceObjectDefAtLoc(scientistControllerID2, 0, 0.67, 0.43);
-	vector scientistControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(scientistControllerID2, 0));
-
-	// Place Islands
-
-	int inventorIsland1ID = rmCreateArea("inventor_island1");
-    rmSetAreaSize(inventorIsland1ID, rmAreaTilesToFraction(400), rmAreaTilesToFraction(400));
-    rmSetAreaCoherence(inventorIsland1ID, 1.0);
-    rmSetAreaMix(inventorIsland1ID, "nwt_grass2");
-    rmSetAreaHeightBlend(inventorIsland1ID, 2);
-    rmSetAreaSmoothDistance(inventorIsland1ID, 10);
-    rmSetAreaObeyWorldCircleConstraint(inventorIsland1ID, false);
-    rmSetAreaLocation(inventorIsland1ID, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc1)));
-	rmSetAreaBaseHeight(inventorIsland1ID, 1);
-    rmBuildArea(inventorIsland1ID);
-
-	int inventorIsland2ID = rmCreateArea("inventor_island2");
-    rmSetAreaSize(inventorIsland2ID, rmAreaTilesToFraction(400), rmAreaTilesToFraction(400));
-    rmSetAreaCoherence(inventorIsland2ID, 1.0);
-    rmSetAreaMix(inventorIsland2ID, "nwt_grass2");
-    rmSetAreaHeightBlend(inventorIsland2ID, 2);
-    rmSetAreaSmoothDistance(inventorIsland2ID, 10);
-    rmSetAreaObeyWorldCircleConstraint(inventorIsland2ID, false);
-    rmSetAreaLocation(inventorIsland2ID, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc2)));
-	rmSetAreaBaseHeight(inventorIsland2ID, 1);
-    rmBuildArea(inventorIsland2ID);
-
-	// Grouping 1
-
-	int scientistLabTypeTypeID = rmRandInt(1,2);
-	int scientists1ID = -1;
-	scientists1ID = rmCreateGrouping("scientists 1", "Scientist_Lab_Unknown_0"+scientistLabTypeTypeID);
-	rmSetGroupingMinDistance(scientists1ID, 0);
-	rmSetGroupingMaxDistance(scientists1ID, 0);
-	rmPlaceGroupingAtLoc(scientists1ID, 0, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc1)));
-	
-	int nativewaterflagID1 = rmCreateObjectDef("pirate water flag 1");
-	rmAddObjectDefItem(nativewaterflagID1, "zpNativeWaterSpawnFlag1", 1, 1.0);
-	rmAddClosestPointConstraint(flagLand);
-
-	vector closeToVillage1 = rmFindClosestPointVector(scientistControllerLoc1 , rmXFractionToMeters(1.0));
-	rmPlaceObjectDefAtLoc(nativewaterflagID1, 0, rmXMetersToFraction(xsVectorGetX(closeToVillage1)), rmZMetersToFraction(xsVectorGetZ(closeToVillage1)));
-
-	rmClearClosestPointConstraints();
-
-	int pirateportID1 = -1;
-	pirateportID1 = rmCreateGrouping("pirate port 1", "pirateport02");
-	rmAddClosestPointConstraint(portOnShore);
-
-	vector closeToVillage1a = rmFindClosestPointVector(scientistControllerLoc1, rmXFractionToMeters(1.0));
-	rmPlaceGroupingAtLoc(pirateportID1, 0, rmXMetersToFraction(xsVectorGetX(closeToVillage1a)), rmZMetersToFraction(xsVectorGetZ(closeToVillage1a)));
-
-	rmClearClosestPointConstraints();
-
-	// Grouping 2
-
-	int scientists2VillageTypeID = 3-scientistLabTypeTypeID;
-	int scientists2ID = -1;
-	scientists2ID = rmCreateGrouping("scientists 2", "Scientist_Lab_Unknown_0"+scientists2VillageTypeID);
-	rmSetGroupingMinDistance(scientists2ID, 0);
-	rmSetGroupingMaxDistance(scientists2ID, 0);
-	rmPlaceGroupingAtLoc(scientists2ID, 0, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc2)));
-
-	int nativewaterflagID2 = rmCreateObjectDef("pirate water flag 2");
-	rmAddObjectDefItem(nativewaterflagID2, "zpNativeWaterSpawnFlag2", 1, 1.0);
-	rmAddClosestPointConstraint(flagLand);
-
-	vector closeToVillage2 = rmFindClosestPointVector(scientistControllerLoc2 , rmXFractionToMeters(1.0));
-	rmPlaceObjectDefAtLoc(nativewaterflagID2, 0, rmXMetersToFraction(xsVectorGetX(closeToVillage2)), rmZMetersToFraction(xsVectorGetZ(closeToVillage2)));
-
-	rmClearClosestPointConstraints();
-
-	int pirateportID2 = -1;
-	pirateportID2 = rmCreateGrouping("pirate port 2", "pirateport02");
-	rmAddClosestPointConstraint(portOnShore);
-
-	vector closeToVillage2a = rmFindClosestPointVector(scientistControllerLoc2, rmXFractionToMeters(1.0));
-	rmPlaceGroupingAtLoc(pirateportID2, 0, rmXMetersToFraction(xsVectorGetX(closeToVillage2a)), rmZMetersToFraction(xsVectorGetZ(closeToVillage2a)));
-
-	rmClearClosestPointConstraints();
-
-	// ****************** Harbours *******************
-
-	// Port 1
-	int portID01 = rmCreateObjectDef("port 02");
-	portID01 = rmCreateGrouping("portG 01", "Harbour_Center_River_SW");
-	rmPlaceGroupingAtLoc(portID01, 0, 0.6+rmXTilesToFraction(8), 0.2);
-
-	// Port 2
-	int portID02 = rmCreateObjectDef("port 02");
-	portID02 = rmCreateGrouping("portG 02", "Harbour_Center_River_NE");
-	rmPlaceGroupingAtLoc(portID02, 0, 0.4-rmXTilesToFraction(8),0.2);
+	int nugget3ID=rmCreateObjectDef("Nugget 3");
+	rmAddObjectDefItem(nugget3ID, "Nugget", 1, 0.0);
+	rmSetObjectDefAllowOverlap(nugget3ID, true);
+	rmSetObjectDefMinDistance(nugget3ID, 0.0);
+	rmSetObjectDefMaxDistance(nugget3ID, 5.0);
+	rmPlaceObjectDefAtLoc(nugget3ID, 0, rmXMetersToFraction(xsVectorGetX(stoperLoc3)), rmZMetersToFraction(xsVectorGetZ(stoperLoc3)-3));
 
 	// terrain Elevation
 
@@ -870,7 +867,7 @@ void main(void)
 			rmAddObjectDefConstraint(startID, avoidWater20);
 
 			int commandPostID = rmCreateObjectDef("commandPostt"+i);
-			rmAddObjectDefItem(commandPostID, "deCommandery", 1, 2.0);
+			rmAddObjectDefItem(commandPostID, "pSPCCivilWarCommandery", 1, 2.0);
 			rmSetObjectDefMinDistance(commandPostID, 0.0);
 			rmSetObjectDefMaxDistance(commandPostID, 10.0);
 			rmAddObjectDefConstraint(commandPostID, avoidTradeRouteMin);
@@ -908,36 +905,6 @@ void main(void)
 		rmPlaceObjectDefAtLoc(colonyShipID, i, rmXMetersToFraction(xsVectorGetX(closestPoint)), rmZMetersToFraction(xsVectorGetZ(closestPoint)));
 
 	}
-
-	// ******************** ADDITIONAL NATIVES ***********************
-
-	int cherokee1VillageTypeID = rmRandInt(1,5);
-	int nativeVillage1ID = -1;
-	nativeVillage1ID = rmCreateGrouping("nativeVillage 1", "native cherokee village "+cherokee1VillageTypeID);
-	rmSetGroupingMinDistance(nativeVillage1ID, 20);
-	rmSetGroupingMaxDistance(nativeVillage1ID, rmXFractionToMeters(0.2));
-	rmAddGroupingConstraint(nativeVillage1ID, avoidImpassableLand);
-	rmAddGroupingConstraint(nativeVillage1ID, avoidTownCenterFar);
-	rmAddGroupingConstraint(nativeVillage1ID, circleConstraint);
-	rmAddGroupingConstraint(nativeVillage1ID, avoidcherokee);
-	rmAddGroupingConstraint(nativeVillage1ID, avoidSocketLong);
-	rmAddGroupingConstraint(nativeVillage1ID, avoidWater30);
-	rmPlaceGroupingInArea(nativeVillage1ID, 0, playerIslandSouthID, 1);
-
-
-	int cherokee2VillageTypeID = rmRandInt(1,5);
-	int nativeVillage2ID = -1;
-	nativeVillage2ID = rmCreateGrouping("nativeVillage 2", "native cherokee village "+cherokee2VillageTypeID);
-	rmSetGroupingMinDistance(nativeVillage2ID, 20);
-	rmSetGroupingMaxDistance(nativeVillage2ID, rmXFractionToMeters(0.2));
-	rmAddGroupingConstraint(nativeVillage2ID, avoidImpassableLand);
-	rmAddGroupingConstraint(nativeVillage2ID, avoidTownCenterFar);
-	rmAddGroupingConstraint(nativeVillage2ID, avoidcherokee);
-	rmAddGroupingConstraint(nativeVillage2ID, circleConstraint);
-	rmAddGroupingConstraint(nativeVillage2ID, avoidSocketLong);
-	rmAddGroupingConstraint(nativeVillage2ID, avoidWater30);
-	rmPlaceGroupingInArea(nativeVillage2ID, 0, playerIslandNorthID, 1);
-
 
 	// ********************** RESOURCES **********************
 
@@ -1179,20 +1146,41 @@ void main(void)
 
 	// ------Triggers--------//
 
-	int unitID1 = rmGetUnitPlaced(stopperCityState1ID, 0)+5;
-	int unitID2 = rmGetUnitPlaced(stopperCityState2ID, 0)+5;
-	int unitID3 = rmGetUnitPlaced(stopperCityState3ID, 0)+5;
+	int westernATStoper1 = rmGetUnitPlaced(stopperCityState1ID, 0)+5;
+	int westernATStoper2 = rmGetUnitPlaced(stopperCityState2ID, 0)+5;
+	int westernATStoper3 = rmGetUnitPlaced(stopperCityState3ID, 0)+5;
 
-	int InventorFlag1 = rmGetUnitPlaced(nativewaterflagID1, 0)+5;
-	int InventorFlag2 = rmGetUnitPlaced(nativewaterflagID2, 0)+5;
+	int westernSocket1 = rmGetUnitPlaced(stopperCityStateFake1ID, 0)+4;
+	int westernSocket2 = rmGetUnitPlaced(stopperCityStateFake2ID, 0)+4;
+	int westernSocket3 = rmGetUnitPlaced(stopperCityStateFake3ID, 0)+4;
 
-	int InventorSocket1 = InventorFlag1-1;
-	int InventorSocket2 = InventorFlag2-1;
+	int westernNugget1 = rmGetUnitPlaced(nugget1ID, 0)+5;
+	int westernNugget2 = rmGetUnitPlaced(nugget2ID, 0)+5;
+	int westernNugget3 = rmGetUnitPlaced(nugget3ID, 0)+5;
+
+	int InventorFlag1 = rmGetGroupingInstanceUnitByType(factoryInstanceID1, "zpNativeWaterSpawnFlag1")+5;
+	int InventorFlag2 = rmGetGroupingInstanceUnitByType(factoryInstanceID2, "zpNativeWaterSpawnFlag2")+5;
+
+	int InventorSocket1 = rmGetGroupingInstanceUnitByType(factoryInstanceID1, "zpSPCSocketInventorsCityState")+5;
+	int InventorSocket2 = rmGetGroupingInstanceUnitByType(factoryInstanceID2, "zpSPCSocketInventorsCityState")+5;
+
+	int InventorNugget1 = rmGetGroupingInstanceUnitByType(factoryInstanceID1, "zpNuggetInvisible")+5;
+	int InventorNugget2 = rmGetGroupingInstanceUnitByType(factoryInstanceID2, "zpNuggetInvisible")+5;
 
 	// Cooldowns
 	int armoredTrainActive = 90;
 	int armoredTrainCooldown = 10;
 	int armoredTrainCooldown2 = 240;
+	int socketMinimapFlareDuration = 10;
+
+	// Guardians
+	string guardianUnit = "zpJamesGang";
+	string guardianUnit2 = "zpPhoenixMGunCarrier";
+	string guardianUnit3 = "zpNatHoopThrower";
+
+	// Vectors
+	vector labLoc1 = rmGetUnitPosition(InventorSocket1-5);
+	vector labLoc2 = rmGetUnitPosition(InventorSocket2-5);
 
 	// Starting techs
 
@@ -1213,6 +1201,18 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechdeTradeRouteCaptureableEuropean"); // DEEneableTradeRouteLand
 		rmSetTriggerEffectParamInt("Status",2);
+		if (rmGetPlayerTeam(i) == 0) {
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",i);
+			rmSetTriggerEffectParam("TechID","cTechzpCivilUnionSetup"); // Union Units and Politicians
+			rmSetTriggerEffectParamInt("Status",2);
+		}
+		else {
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",i);
+			rmSetTriggerEffectParam("TechID","cTechzpCivilConfederationSetup"); // Confederation units and politicians
+			rmSetTriggerEffectParamInt("Status",2);
+		}
 	}
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
     rmSetTriggerEffectParamInt("PlayerID",0);
@@ -1227,7 +1227,145 @@ void main(void)
     rmSetTriggerRunImmediately(true);
     rmSetTriggerLoop(false);
 
-	// ******************* NATIVE POLOTICIANS ********************
+	// *************** Socket Conversion ***************
+
+	// Conversion Suspend
+	rmCreateTrigger("Buildings Convert OFF");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+westernSocket1);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+westernSocket2);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+westernSocket3);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket1);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket2);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Socket 1 Convert ON");
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+westernSocket1);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType",guardianUnit);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+westernSocket1, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmAddTriggerEffect("Flash Units");
+	rmSetTriggerEffectParam("SrcObject", ""+westernSocket1, false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Socket 2 Convert ON");
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+westernSocket2);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType",guardianUnit);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+westernSocket2, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmAddTriggerEffect("Flash Units");
+	rmSetTriggerEffectParam("SrcObject", ""+westernSocket2, false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Socket 3 Convert ON");
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+westernSocket3);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType",guardianUnit);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+westernSocket3, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmAddTriggerEffect("Flash Units");
+	rmSetTriggerEffectParam("SrcObject", ""+westernSocket3, false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Socket 4 Convert ON");
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+InventorSocket1);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType",guardianUnit2);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+InventorSocket1);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType",guardianUnit3);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+InventorSocket1, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmAddTriggerEffect("Flash Units");
+	rmSetTriggerEffectParam("SrcObject", ""+InventorSocket1, false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Socket 5 Convert ON");
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+InventorSocket2);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType",guardianUnit2);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+InventorSocket2);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType",guardianUnit3);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+InventorSocket2, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmAddTriggerEffect("Flash Units");
+	rmSetTriggerEffectParam("SrcObject", ""+InventorSocket2, false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// ******************* NATIVE POLITICIANS ********************
 
 	// Italian Vilager Balance
 
@@ -1548,7 +1686,7 @@ void main(void)
 
 	rmSwitchToTrigger(rmTriggerID("AT1_Send_Station1_Plr"+k));
 	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+unitID1);
+	rmSetTriggerConditionParam("DstObject",""+westernATStoper1);
 	rmSetTriggerConditionParamInt("Player",k);
 	rmSetTriggerConditionParam("UnitType","zpInvisibleProjectileControler");
 	rmSetTriggerConditionParamInt("Dist",40);
@@ -1595,7 +1733,7 @@ void main(void)
 
 	rmSwitchToTrigger(rmTriggerID("AT1_Break_Station1_Plr"+k));
 	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+unitID1);
+	rmSetTriggerConditionParam("DstObject",""+westernATStoper1);
 	rmSetTriggerConditionParamInt("Player",0);
 	rmSetTriggerConditionParam("UnitType","zpArmoredTrainGunMove");
 	rmSetTriggerConditionParamInt("Dist",15);
@@ -1617,7 +1755,7 @@ void main(void)
 
 	rmSwitchToTrigger(rmTriggerID("AT1_STOP_Station1_Plr"+k));
 	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+unitID1);
+	rmSetTriggerConditionParam("DstObject",""+westernATStoper1);
 	rmSetTriggerConditionParamInt("Player",0);
 	rmSetTriggerConditionParam("UnitType","zpArmoredTrainGunMove");
 	rmSetTriggerConditionParamInt("Dist",10);
@@ -1625,12 +1763,12 @@ void main(void)
 	rmSetTriggerConditionParamInt("Count",1);
 
 	rmAddTriggerEffect("ZP Armored Train Stop");
-	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParamInt("Dist",100);
 
 	rmAddTriggerEffect("Unit Create from Source");
-	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
 	rmSetTriggerEffectParamInt("PlayerID",k);
 	rmSetTriggerEffectParam("ProtoName","zpArmoredTrainKitchenWagonEmitter");
 
@@ -1657,7 +1795,7 @@ void main(void)
 
 	rmSwitchToTrigger(rmTriggerID("AT1_Send_Station2_Plr"+k));
 	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+unitID2);
+	rmSetTriggerConditionParam("DstObject",""+westernATStoper2);
 	rmSetTriggerConditionParamInt("Player",k);
 	rmSetTriggerConditionParam("UnitType","zpInvisibleProjectileControler");
 	rmSetTriggerConditionParamInt("Dist",40);
@@ -1704,7 +1842,7 @@ void main(void)
 
 	rmSwitchToTrigger(rmTriggerID("AT1_Break_Station2_Plr"+k));
 	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+unitID2);
+	rmSetTriggerConditionParam("DstObject",""+westernATStoper2);
 	rmSetTriggerConditionParamInt("Player",0);
 	rmSetTriggerConditionParam("UnitType","zpArmoredTrainGunMove");
 	rmSetTriggerConditionParamInt("Dist",15);
@@ -1725,7 +1863,7 @@ void main(void)
 
 	rmSwitchToTrigger(rmTriggerID("AT1_STOP_Station2_Plr"+k));
 	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+unitID2);
+	rmSetTriggerConditionParam("DstObject",""+westernATStoper2);
 	rmSetTriggerConditionParamInt("Player",0);
 	rmSetTriggerConditionParam("UnitType","zpArmoredTrainGunMove");
 	rmSetTriggerConditionParamInt("Dist",10);
@@ -1733,7 +1871,7 @@ void main(void)
 	rmSetTriggerConditionParamInt("Count",1);
 
 	rmAddTriggerEffect("ZP Armored Train Stop");
-	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParamInt("Dist",100);
 
@@ -1761,7 +1899,7 @@ void main(void)
 
 	rmSwitchToTrigger(rmTriggerID("AT1_Send_Station3_Plr"+k));
 	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+unitID3);
+	rmSetTriggerConditionParam("DstObject",""+westernATStoper3);
 	rmSetTriggerConditionParamInt("Player",k);
 	rmSetTriggerConditionParam("UnitType","zpInvisibleProjectileControler");
 	rmSetTriggerConditionParamInt("Dist",40);
@@ -1808,7 +1946,7 @@ void main(void)
 
 	rmSwitchToTrigger(rmTriggerID("AT1_Break_Station3_Plr"+k));
 	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+unitID3);
+	rmSetTriggerConditionParam("DstObject",""+westernATStoper3);
 	rmSetTriggerConditionParamInt("Player",0);
 	rmSetTriggerConditionParam("UnitType","zpArmoredTrainGunMove");
 	rmSetTriggerConditionParamInt("Dist",15);
@@ -1830,7 +1968,7 @@ void main(void)
 
 	rmSwitchToTrigger(rmTriggerID("AT1_STOP_Station3_Plr"+k));
 	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+unitID3);
+	rmSetTriggerConditionParam("DstObject",""+westernATStoper3);
 	rmSetTriggerConditionParamInt("Player",0);
 	rmSetTriggerConditionParam("UnitType","zpArmoredTrainGunMove");
 	rmSetTriggerConditionParamInt("Dist",10);
@@ -1838,7 +1976,7 @@ void main(void)
 	rmSetTriggerConditionParamInt("Count",1);
 
 	rmAddTriggerEffect("ZP Armored Train Stop");
-	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParamInt("Dist",100);
 
@@ -2163,7 +2301,7 @@ void main(void)
 
 	rmSwitchToTrigger(rmTriggerID("Station1_on_Plr"+k));
 	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+unitID1);
+	rmSetTriggerConditionParam("DstObject",""+westernATStoper1);
 	rmSetTriggerConditionParamInt("Player",k);
 	rmSetTriggerConditionParamInt("Dist",20);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
@@ -2171,40 +2309,47 @@ void main(void)
 	rmSetTriggerConditionParamFloat("Count",1);
 
 	rmAddTriggerEffect("ZP Convert Station Grouping");
-	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParam("UnitType","zpSPCCapturableFactory");
+	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","zpSPCSafehouse");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
 	rmSetTriggerEffectParamInt("Dist",60);
+	for(x=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("Flare Minimap");
+		rmSetTriggerEffectParamInt("PlayerID", x, false);
+		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc1)+","+xsVectorGetY(stationLoc1)+","+xsVectorGetZ(stationLoc1), false);
+		rmSetTriggerEffectParam("Flash", "True", false);
+	}
 
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station1_off_Plr"+k));
@@ -2215,7 +2360,7 @@ void main(void)
 
 	rmSwitchToTrigger(rmTriggerID("Station1_off_Plr"+k));
 	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+unitID1);
+	rmSetTriggerConditionParam("DstObject",""+westernATStoper1);
 	rmSetTriggerConditionParamInt("Player",k);
 	rmSetTriggerConditionParamInt("Dist",20);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
@@ -2223,40 +2368,45 @@ void main(void)
 	rmSetTriggerConditionParamFloat("Count",0);
 	
 	rmAddTriggerEffect("ZP Convert Station Grouping");
-	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParam("UnitType","zpSPCCapturableFactory");
+	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParam("UnitType","zpSPCSafehouse");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID1);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
 	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Flare Minimap");
+	rmSetTriggerEffectParamInt("PlayerID", k, false);
+	rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+	rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc1)+","+xsVectorGetY(stationLoc1)+","+xsVectorGetZ(stationLoc1), false);
+	rmSetTriggerEffectParam("Flash", "True", false);
 
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station1_on_Plr"+k));
@@ -2272,7 +2422,7 @@ void main(void)
 
 	rmSwitchToTrigger(rmTriggerID("Station2_on_Plr"+k));
 	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+unitID2);
+	rmSetTriggerConditionParam("DstObject",""+westernATStoper2);
 	rmSetTriggerConditionParamInt("Player",k);
 	rmSetTriggerConditionParamInt("Dist",20);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
@@ -2280,40 +2430,45 @@ void main(void)
 	rmSetTriggerConditionParamFloat("Count",1);
 	
 	rmAddTriggerEffect("ZP Convert Station Grouping");
-	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","zpSPCSawMill");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
 	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Flare Minimap");
+	rmSetTriggerEffectParamInt("PlayerID", k, false);
+	rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+	rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc2)+","+xsVectorGetY(stationLoc2)+","+xsVectorGetZ(stationLoc2), false);
+	rmSetTriggerEffectParam("Flash", "True", false);
 
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station2_off_Plr"+k));
@@ -2324,7 +2479,7 @@ void main(void)
 
 	rmSwitchToTrigger(rmTriggerID("Station2_off_Plr"+k));
 	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+unitID2);
+	rmSetTriggerConditionParam("DstObject",""+westernATStoper2);
 	rmSetTriggerConditionParamInt("Player",k);
 	rmSetTriggerConditionParamInt("Dist",20);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
@@ -2332,40 +2487,45 @@ void main(void)
 	rmSetTriggerConditionParamFloat("Count",0);
 	
 	rmAddTriggerEffect("ZP Convert Station Grouping");
-	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParam("UnitType","zpSPCSawMill");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID2);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
 	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Flare Minimap");
+	rmSetTriggerEffectParamInt("PlayerID", k, false);
+	rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+	rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc2)+","+xsVectorGetY(stationLoc2)+","+xsVectorGetZ(stationLoc2), false);
+	rmSetTriggerEffectParam("Flash", "True", false);
 
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station2_on_Plr"+k));
@@ -2382,7 +2542,7 @@ void main(void)
 
 	rmSwitchToTrigger(rmTriggerID("Station3_on_Plr"+k));
 	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+unitID3);
+	rmSetTriggerConditionParam("DstObject",""+westernATStoper3);
 	rmSetTriggerConditionParamInt("Player",k);
 	rmSetTriggerConditionParamInt("Dist",20);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
@@ -2390,40 +2550,45 @@ void main(void)
 	rmSetTriggerConditionParamFloat("Count",1);
 	
 	rmAddTriggerEffect("ZP Convert Station Grouping");
-	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","zpSPCDestilery");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
 	rmSetTriggerEffectParamInt("SrcPlayer",0);
 	rmSetTriggerEffectParamInt("TrgPlayer",k);
 	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
 	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Flare Minimap");
+	rmSetTriggerEffectParamInt("PlayerID", k, false);
+	rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+	rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc3)+","+xsVectorGetY(stationLoc3)+","+xsVectorGetZ(stationLoc3), false);
+	rmSetTriggerEffectParam("Flash", "True", false);
 
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station3_off_Plr"+k));
@@ -2434,7 +2599,7 @@ void main(void)
 
 	rmSwitchToTrigger(rmTriggerID("Station3_off_Plr"+k));
 	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+unitID3);
+	rmSetTriggerConditionParam("DstObject",""+westernATStoper3);
 	rmSetTriggerConditionParamInt("Player",k);
 	rmSetTriggerConditionParamInt("Dist",20);
 	rmSetTriggerConditionParam("UnitType","TradingPost");
@@ -2442,40 +2607,45 @@ void main(void)
 	rmSetTriggerConditionParamFloat("Count",0);
 	
 	rmAddTriggerEffect("ZP Convert Station Grouping");
-	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParam("UnitType","SPCXPWoodFortGate");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParam("UnitType","zpSPCDestilery");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+unitID3);
+	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
 	rmSetTriggerEffectParamInt("SrcPlayer",k);
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
 	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Flare Minimap");
+	rmSetTriggerEffectParamInt("PlayerID", k, false);
+	rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+	rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc3)+","+xsVectorGetY(stationLoc3)+","+xsVectorGetZ(stationLoc3), false);
+	rmSetTriggerEffectParam("Flash", "True", false);
 
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station3_on_Plr"+k));
@@ -2702,6 +2872,56 @@ void main(void)
 	rmAddTriggerEffect("Convert");
 	rmSetTriggerEffectParam("SrcObject",""+InventorFlag1);
 	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCCapturableFactory");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCFixedGunBase");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCFixedGun");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCFixedGunSocket");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket1);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCGoldSmelter");
+	rmSetTriggerEffectParamInt("Dist",60);
+	for(x=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("Flare Minimap");
+		rmSetTriggerEffectParamInt("PlayerID", x, false);
+		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(labLoc1)+","+xsVectorGetY(labLoc1)+","+xsVectorGetZ(labLoc1), false);
+		rmSetTriggerEffectParam("Flash", "True", false);
+	}
+
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1off_Player"+k));
 	rmAddTriggerEffect("Fire Event");
@@ -2726,6 +2946,54 @@ void main(void)
 	rmAddTriggerEffect("Convert");
 	rmSetTriggerEffectParam("SrcObject",""+InventorFlag1);
 	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCCapturableFactory");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCFixedGunBase");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCFixedGun");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCFixedGunSocket");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket1);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCGoldSmelter");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Flare Minimap");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParamInt("Duration",socketMinimapFlareDuration);
+	rmSetTriggerEffectParam("Position",""+xsVectorGetX(labLoc1)+","+xsVectorGetY(labLoc1)+","+xsVectorGetZ(labLoc1));
+	rmSetTriggerEffectParam("Flash","True");
+
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1on_Player"+k));
 	rmAddTriggerEffect("Disable Trigger");
@@ -2752,6 +3020,56 @@ void main(void)
 	rmAddTriggerEffect("Convert");
 	rmSetTriggerEffectParam("SrcObject",""+InventorFlag2);
 	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCCapturableFactory");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCFixedGunBase");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCFixedGun");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCFixedGunSocket");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket2);
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpSPCGoldSmelter");
+	rmSetTriggerEffectParamInt("Dist",60);
+	for(x=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("Flare Minimap");
+		rmSetTriggerEffectParamInt("PlayerID", x, false);
+		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(labLoc2)+","+xsVectorGetY(labLoc2)+","+xsVectorGetZ(labLoc2), false);
+		rmSetTriggerEffectParam("Flash", "True", false);
+	}
+
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates2off_Player"+k));
 	rmAddTriggerEffect("Fire Event");
@@ -2776,6 +3094,54 @@ void main(void)
 	rmAddTriggerEffect("Convert");
 	rmSetTriggerEffectParam("SrcObject",""+InventorFlag2);
 	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCCapturableFactory");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCFixedGunBase");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCFixedGun");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCFixedGunSocket");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",""+InventorSocket2);
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpSPCGoldSmelter");
+	rmSetTriggerEffectParamInt("Dist",60);
+	rmAddTriggerEffect("Flare Minimap");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParamInt("Duration",socketMinimapFlareDuration);
+	rmSetTriggerEffectParam("Position",""+xsVectorGetX(labLoc2)+","+xsVectorGetY(labLoc2)+","+xsVectorGetZ(labLoc2));
+	rmSetTriggerEffectParam("Flash","True");
+
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates2on_Player"+k));
 	rmAddTriggerEffect("Disable Trigger");
