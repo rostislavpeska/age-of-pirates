@@ -74,6 +74,7 @@
 		<unit variation="22" posx="-10.2715" posz="-1.0226" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">deNatEUPropFence</unit>
 		<unit variation="0" posx="13.4724" posz="2.1409" orientx="1.0000" orienty="0.0000" orientz="-0.0021">SPCPathBlock3</unit>
 		<unit variation="49" posx="6.7684" posz="2.8767" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpWeaponFactorySummer</unit>
+		<unit variation="49" posx="6.7684" posz="2.8767" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCRevealerAztec</unit>
 		<unit variation="15" posx="-4.9827" posz="0.7326" orientx="-0.7071" orienty="0.0000" orientz="0.7071">SPCRailwayProps</unit>
 		<unit variation="207" posx="13.1672" posz="0.9206" orientx="0.3827" orienty="0.0000" orientz="0.9239">deNatEUPropVilMale</unit>
 		<unit variation="17" posx="17.7071" posz="3.4524" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSPCSocketInventorsCityState</unit>

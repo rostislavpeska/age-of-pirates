@@ -24610,6 +24610,23 @@
       </effect>
       <effect type="SetName" proto="zpSPCGoldSmelter" newname="302558">
       </effect>
+      <effect type="SetName" proto="zpSPCDestilery" newname="302561">
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCCivilWarCommandery</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCCivilWarCommandery" page="6" column="2">
+        <target type="ProtoUnit">Explorer</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCCivilWarCommandery" page="6" column="2">
+        <target type="ProtoUnit">dePadre</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCCivilWarCommandery" page="6" column="2">
+        <target type="ProtoUnit">xpIroquoisWarChief</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCCivilWarCommandery" page="6" column="2">
+        <target type="ProtoUnit">xpLakotaWarchief</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpCivilUnionSetup" type="Normal">
@@ -24631,6 +24648,76 @@
     <flag>Shadow</flag>
     <effects>
       
+    </effects>
+  </tech>
+  <tech name="zpConverGate2Wood" type="Normal">
+    <dbid>41005</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCXPWoodFortGate" fromprotoid="zpInvisibleGateSocketB">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate2Wood</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate3Wood" type="Normal">
+    <dbid>41006</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCXPWoodFortGate" fromprotoid="zpInvisibleGateSocketC">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate3Wood</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate4Wood" type="Normal">
+    <dbid>41007</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCXPWoodFortGate" fromprotoid="zpInvisibleGateSocketD">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate4Wood</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate5Wood" type="Normal">
+    <dbid>41008</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCXPWoodFortGate" fromprotoid="zpInvisibleGateSocketE">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate5Wood</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate6Wood" type="Normal">
+    <dbid>41009</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCXPWoodFortGate" fromprotoid="zpInvisibleGateSocketF">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate6Wood</effect>
+    </effects>
+  </tech>
+  <tech name="zpConverGate7Wood" type="Normal">
+    <dbid>41010</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="SPCXPWoodFortGate" fromprotoid="zpInvisibleGateSocketG">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConverGate7Wood</effect>
+    </effects>
+  </tech>
+  <tech name="zpCivilWarGaiaSetup" type="Normal">
+    <dbid>41011</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">SPCXPWoodFortGate</target>
+      </effect>
     </effects>
   </tech>
 

@@ -1837,8 +1837,8 @@
       <string _locid="301836">Wind Mill</string>
       <string _locid="301837">Gold Smelter</string>
       <string _locid="301838">ZP SPC Paris Gold Smelter</string>
-      <string _locid="301839">Cognac Destilery</string>
-      <string _locid="301840">ZP SPC Paris Cognac Destilery</string>
+      <string _locid="301839">Cognac Distillery</string>
+      <string _locid="301840">ZP SPC Paris Cognac Distillery</string>
       <string _locid="301841">ZP SPC Paris Forester</string>
       <string _locid="301842">King's Forester</string>
       <string _locid="301843">Warehouse</string>
@@ -2558,7 +2558,9 @@
       <string _locid="302558">Metallurgy Lab</string>
       <string _locid="302559">ZP Native House Inventors</string>
       <string _locid="302560">ZP Prop Water Tower</string>
-
+      <string _locid="302561">Whiskey Distillery</string>
+      <string _locid="302562">Achieve Union Team victory by capturing and holding all sockets on the map for at least 2 minutes.</string>
+      <string _locid="302563">Achieve Confederacy Team victory by capturing and holding all sockets on the map for at least 2 minutes.</string>
 
 
 

@@ -29,7 +29,6 @@
 		<unit variation="0" posx="-33.8845" posz="-20.3022" orientx="-1.0000" orienty="0.0000" orientz="-0.0002">SPCPathBlock3</unit>
 		<unit variation="0" posx="-26.5399" posz="-22.2575" orientx="0.3828" orienty="0.0000" orientz="-0.9238">SPCPathBlock3</unit>
 		<unit variation="0" posx="-30.4374" posz="-23.7493" orientx="0.0002" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
-		<unit variation="124" posx="-30.4836" posz="-20.3159" orientx="-0.7070" orienty="0.0000" orientz="-0.7072">zpSPCSocketCityTowerWooden</unit>
 		<unit variation="0" posx="-15.1515" posz="-21.4799" orientx="0.0002" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="0" posx="-0.6957" posz="-21.5676" orientx="0.0002" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="0" posx="18.9409" posz="-21.3715" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
@@ -40,7 +39,6 @@
 		<unit variation="0" posx="-7.7422" posz="-21.6345" orientx="0.0002" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="0" posx="25.1250" posz="-22.3005" orientx="-0.3825" orienty="0.0000" orientz="-0.9239">SPCPathBlock3</unit>
 		<unit variation="0" posx="29.9422" posz="-24.1152" orientx="0.0002" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
-		<unit variation="210" posx="29.0934" posz="-19.8647" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpSPCSocketCityTowerWooden</unit>
 		<unit variation="0" posx="6.6843" posz="-19.4160" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
 		<unit variation="5" posx="3.2670" posz="-19.4916" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsColony</unit>
 		<unit variation="12" posx="8.8348" posz="-19.3919" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
@@ -85,8 +83,6 @@
 		<unit variation="6" posx="-31.2885" posz="-11.4462" orientx="0.7075" orienty="0.0000" orientz="0.7067">zpStationFlag</unit>
 		<unit variation="0" posx="-32.7469" posz="-9.2635" orientx="0.3827" orienty="0.0000" orientz="-0.9239">SPCMineProps</unit>
 		<unit variation="106" posx="-16.4697" posz="-7.9278" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropJesuitFence</unit>
-		<unit variation="132" posx="-31.4622" posz="-2.5162" orientx="-1.0000" orienty="0.0039" orientz="0.0000">zpInvisibleGateSocket</unit>
-		<unit variation="80" posx="30.7234" posz="-2.4698" orientx="1.0000" orienty="-0.0039" orientz="-0.0000">zpInvisibleGateSocket</unit>
 		<unit variation="0" posx="3.4023" posz="1.8596" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
 		<unit variation="0" posx="-32.0982" posz="5.4381" orientx="-1.0000" orienty="0.0000" orientz="-0.0002">SPCPathBlock3</unit>
 		<unit variation="0" posx="30.9441" posz="5.9311" orientx="1.0000" orienty="0.0000" orientz="0.0002">SPCPathBlock3</unit>
@@ -131,7 +127,6 @@
 		<unit variation="10" posx="-9.6158" posz="12.3706" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="0" posx="-7.7412" posz="12.1271" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="2" posx="-1.3288" posz="12.3582" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
-		<unit variation="124" posx="-29.0881" posz="17.4059" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCSocketCityTowerWooden</unit>
 		<unit variation="100" posx="-31.8564" posz="14.1735" orientx="-0.0003" orienty="0.0000" orientz="1.0000">WallWoodNative</unit>
 		<unit variation="9" posx="-16.0822" posz="14.0143" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
 		<unit variation="9" posx="7.7836" posz="13.2161" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
@@ -144,7 +139,6 @@
 		<unit variation="0" posx="32.1790" posz="16.7368" orientx="0.9239" orienty="0.0000" orientz="-0.3825">SPCPathBlock3</unit>
 		<unit variation="118" posx="12.5105" posz="16.0415" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseWesternVillage</unit>
 		<unit variation="62" posx="-4.5495" posz="16.2963" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpNativeHouseWesternVillageB</unit>
-		<unit variation="124" posx="28.9840" posz="18.9194" orientx="0.7070" orienty="0.0000" orientz="0.7072">zpSPCSocketCityTowerWooden</unit>
 		<unit variation="100" posx="-34.2094" posz="16.7050" orientx="1.0000" orienty="0.0000" orientz="-0.0001">WallWoodNative</unit>
 		<unit variation="57" posx="-32.9116" posz="15.5537" orientx="0.7070" orienty="0.0000" orientz="0.7072">WallWoodNative</unit>
 		<unit variation="100" posx="30.7886" posz="15.0566" orientx="1.0000" orienty="0.0000" orientz="-0.0001">WallWoodNative</unit>
@@ -189,6 +183,17 @@
 		<unit variation="18" posx="30.8015" posz="23.5560" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">WallWoodNative</unit>
 		<unit variation="100" posx="27.7470" posz="23.7310" orientx="1.0000" orienty="0.0000" orientz="-0.0001">WallWoodNative</unit>
 		<unit variation="100" posx="33.7261" posz="23.4501" orientx="1.0000" orienty="0.0000" orientz="-0.0001">WallWoodNative</unit>
+
+		<unit variation="100" posx="0" posz="0" orientx="1.0000" orienty="0.0000" orientz="-0.0001">zpSPCRevealerAztec</unit>
+		<unit variation="124" posx="-30.4836" posz="-20.3159" orientx="-0.7070" orienty="0.0000" orientz="-0.7072">zpSPCSocketCityTowerWooden</unit>
+		<unit variation="124" posx="28.9840" posz="18.9194" orientx="0.7070" orienty="0.0000" orientz="0.7072">zpSPCSocketCityTowerWooden</unit>
+		<unit variation="124" posx="-29.0881" posz="17.4059" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCSocketCityTowerWooden</unit>
+		<unit variation="210" posx="29.0934" posz="-19.8647" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpSPCSocketCityTowerWooden</unit>
+		<unit variation="132" posx="-31.4622" posz="-2.5162" orientx="-1.0000" orienty="0.0039" orientz="0.0000">zpInvisibleGateSocket</unit>
+		<unit variation="80" posx="30.7234" posz="-2.4698" orientx="1.0000" orienty="-0.0039" orientz="-0.0000">zpInvisibleGateSocket</unit>
+
+		<unit variation="132" posx="-31.4622" posz="-2.5162" orientx="-1.0000" orienty="0.0039" orientz="0.0000">zpInvisibleGateSocketD</unit>
+		<unit variation="80" posx="30.7234" posz="-2.4698" orientx="1.0000" orienty="-0.0039" orientz="-0.0000">zpInvisibleGateSocketE</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="nwterritory\ground_grass2_nwt">

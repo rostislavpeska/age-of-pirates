@@ -55,6 +55,7 @@
 		<unit variation="94" posx="-32.6230" posz="5.6166" orientx="-1.0000" orienty="0.0000" orientz="0.0014">zpHarbourPlatform</unit>
 		<unit variation="0" posx="-20.9447" posz="4.7754" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">PropsColony</unit>
 		<unit variation="49" posx="-8.8056" posz="7.4469" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpWeaponFactorySummer</unit>
+		<unit variation="49" posx="-8.8056" posz="7.4469" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCRevealerAztec</unit>
 		<unit variation="0" posx="-15.7846" posz="7.4842" orientx="1.0000" orienty="0.0000" orientz="-0.0007">SPCPathBlock3</unit>
 		<unit variation="0" posx="-11.8521" posz="7.0991" orientx="1.0000" orienty="0.0000" orientz="-0.0007">SPCPathBlock3</unit>
 		<unit variation="0" posx="-13.7336" posz="7.2654" orientx="1.0000" orienty="0.0000" orientz="-0.0007">SPCPathBlock3</unit>
