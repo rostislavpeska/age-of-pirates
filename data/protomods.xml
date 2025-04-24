@@ -2419,6 +2419,10 @@
       <name>Heal</name>
       <rate type="Ship">10.000000</rate>
     </protoaction>
+    <protoaction>
+      <name>Autogather</name>
+      <rate type="Gold">1.300000</rate>
+    </protoaction>
   </unit>
   <unit id="20019" name="zpSPCWaterSpawnPoint">
     <dbid>20019</dbid>
@@ -46348,7 +46352,7 @@
     <tactics>greatbank.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
-      <rate type="Gold">1.500000</rate>
+      <rate type="XP">2.000000</rate>
     </protoaction>
   </unit>
   <unit id="20618" name="zpSPCFixedGunBaseBig">
@@ -46699,7 +46703,7 @@
     <tactics>greatbank.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
-      <rate type="Gold">1.500000</rate>
+      <rate type="XP">2.000000</rate>
     </protoaction>
   </unit>
   <unit id="20623" name="zpSPCPortCenterB">
@@ -46940,6 +46944,10 @@
     <protoaction>
       <name>Heal</name>
       <rate type="Ship">10.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>Autogather</name>
+      <rate type="Gold">1.300000</rate>
     </protoaction>
   </unit>
   <unit id="20626" name="zpMercPirateGalleass">
@@ -53935,7 +53943,9 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractBank</unittype>
-
+    <train row="0" page="0" column="0">deSaloonGunslinger</train>
+    <train row="0" page="0" column="1">deSaloonOwlhoot</train>
+    <train row="0" page="0" column="2">deSaloonCowboy</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -53962,7 +53972,7 @@
     <tactics>greatbank.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
-      <rate type="Gold">1.500000</rate>
+      <rate type="XP">2.000000</rate>
     </protoaction>
   </unit>
   <unit id="20728" name="zpSPCSawMill">

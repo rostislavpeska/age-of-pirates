@@ -1150,14 +1150,14 @@ void main(void)
 	rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 60);
 
 	// ____________________ LOCAL MERCENARIES ____________________
-	/*rmDisableDefaultMercs(true);
+	rmDisableDefaultMercs(true);
 	rmDisableCivTypeMercRestriction(true);
-	rmEnableMerc("MercSwissPikeman", -1);
-	rmEnableMerc("MercLandsknecht", -1);
-	rmEnableMerc("MercElmeti", -1);
-	rmEnableMerc("MercGreatCannon", -1);
-	rmEnableMerc("deMercCannoneer", -1);
-	rmEnableMerc("deMercPistoleer", -1);*/
+	rmEnableMerc("deSaloonGunslinger", -1);
+	rmEnableMerc("deSaloonOwlhoot", -1);
+	rmEnableMerc("deSaloonCowboy", -1);
+	rmEnableMerc("deMercMountedRifleman", -1);
+	rmEnableMerc("deMercBrigadier", -1);
+	rmEnableMerc("MercJaeger", -1);
 
 	rmForbidTradeMonopoly(true);
 
@@ -3520,7 +3520,6 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
-
 
 	// Testing
 
