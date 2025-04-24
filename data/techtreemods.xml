@@ -24716,7 +24716,7 @@
     <flag>Shadow</flag>
     <effects>
       <effect type="Data" amount="0.40" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">SPCXPWoodFortGate</target>
+        <target type="ProtoUnit">SPCFortGate</target>
       </effect>
     </effects>
   </tech>

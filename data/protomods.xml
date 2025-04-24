@@ -54415,7 +54415,7 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20737" name="zpPropWaterTower">
+  <unit id="20737" name="zpPropWaterTowerBarrel">
     <dbid>20737</dbid>
     <displaynameid>302560</displaynameid>
     <editornameid>302560</editornameid>
@@ -54466,9 +54466,61 @@
     <flag>Tracked</flag>
     <flag>NotSelectable</flag>
   </unit>
+  <unit id="20738" name="zpPropWindMill">
+    <dbid>20738</dbid>
+    <displaynameid>302564</displaynameid>
+    <editornameid>302564</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\IH\3\WindMill.xml</animfile>
+    <portraiticon>resources\art\units\natives\scientist.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <flag>FlattenGround</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
+  </unit>
 
 
-  <unit name="SPCXPWoodFortGate">
+  <unit name="SPCFortGate">
+    <animfile>buildings\spc_woodfort_wall\spc_woodfort_wall_gate.xml</animfile>
     <unittype>ConvertsHerds</unittype>
     <flag>PlaceAnywhere</flag>
     <buildpoints>0.0000</buildpoints>

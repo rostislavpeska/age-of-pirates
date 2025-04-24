@@ -379,7 +379,7 @@ void main(void)
     rmSetGroupingMaxDistance(inventorsBaseGrouping1, 0.00);
 	rmAddGroupingToClass(inventorsBaseGrouping1, rmClassID("classPlateau"));
 
-	int factoryInstanceID1 = rmPlaceGroupingInstanceAtLoc(inventorsBaseGrouping1, rmXMetersToFraction(xsVectorGetX(harbourLoc1))-rmXTilesToFraction(13), rmZMetersToFraction(xsVectorGetZ(harbourLoc1))+rmZTilesToFraction(5), 0);
+	int factoryInstanceID1 = rmPlaceGroupingInstanceAtLoc(inventorsBaseGrouping1, rmXMetersToFraction(xsVectorGetX(harbourLoc1))-rmXTilesToFraction(13), rmZMetersToFraction(xsVectorGetZ(harbourLoc1))+rmZTilesToFraction(4), 0);
 
 	// Inventors 2
 	int inventorsBaseGrouping2 = rmCreateGrouping("inventorsBaseGrouping2", "City_State_Inventors_02");
@@ -387,7 +387,7 @@ void main(void)
     rmSetGroupingMaxDistance(inventorsBaseGrouping2, 0.00);
 	rmAddGroupingToClass(inventorsBaseGrouping2, rmClassID("classPlateau"));
 
-	int factoryInstanceID2 = rmPlaceGroupingInstanceAtLoc(inventorsBaseGrouping2, rmXMetersToFraction(xsVectorGetX(harbourLoc2))+rmXTilesToFraction(11), rmZMetersToFraction(xsVectorGetZ(harbourLoc2))+rmZTilesToFraction(2), 0);
+	int factoryInstanceID2 = rmPlaceGroupingInstanceAtLoc(inventorsBaseGrouping2, rmXMetersToFraction(xsVectorGetX(harbourLoc2))+rmXTilesToFraction(12), rmZMetersToFraction(xsVectorGetZ(harbourLoc2))+rmZTilesToFraction(3), 0);
 
 	rmBuildTradeRoute(tradeRouteID4, "native_water_trail");
 
@@ -825,6 +825,9 @@ void main(void)
 	rmAddObjectDefConstraint(playerTreeID, avoidImpassableLand);
 	rmAddObjectDefConstraint(playerTreeID, avoidTradeRouteMin);
 
+	int aiStartUrban = rmCreateObjectDef("is city map");
+	rmAddObjectDefItem(aiStartUrban, "zpAIStartUrbanMap", 1, 0.0);
+
 	// Water Flag
     int colonyShipID = 0;
 
@@ -853,6 +856,7 @@ void main(void)
 			playerFortID = rmCreateGrouping("player fort", "Player_Fort_CivilWar");
 			rmAddGroupingToClass(playerFortID, rmClassID("classBlock"));  
 			rmPlaceGroupingAtLoc(playerFortID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i), 1);
+			rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5);
 		}
 
 		else{
@@ -880,6 +884,8 @@ void main(void)
 			rmPlaceObjectDefAtLoc(goldID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 			rmPlaceObjectDefAtLoc(berryID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 			rmPlaceObjectDefAtLoc(playerTreeID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
+			rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5);
+
 		}
 
 		rmPlaceObjectDefAtLoc(playerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
@@ -1178,36 +1184,20 @@ void main(void)
 	int westernNugget2 = rmGetUnitPlaced(nugget2ID, 0)+5;
 	int westernNugget3 = rmGetUnitPlaced(nugget3ID, 0)+5;
 
-	int gateNew11 = rmGetUnitPlaced(stopperCityState1ID, 0)+4;
-	int gateNew21 = rmGetUnitPlaced(stopperCityState2ID, 0)+4;
-	int gateNew31 = rmGetUnitPlaced(stopperCityState3ID, 0)+4;
+	int tower11 = rmGetUnitPlaced(stopperCityState1ID, 0)+4;
+	int tower12 = rmGetUnitPlaced(stopperCityState1ID, 0)+3;
+	int tower13 = rmGetUnitPlaced(stopperCityState1ID, 0)+2;
+	int tower14 = rmGetUnitPlaced(stopperCityState1ID, 0)+1;
 
-	int gateNew12 = rmGetUnitPlaced(stopperCityState1ID, 0)+3;
-	int gateNew22 = rmGetUnitPlaced(stopperCityState2ID, 0)+3;
-	int gateNew32 = rmGetUnitPlaced(stopperCityState3ID, 0)+3;
+	int tower21 = rmGetUnitPlaced(stopperCityState2ID, 0)+4;
+	int tower22 = rmGetUnitPlaced(stopperCityState2ID, 0)+3;
+	int tower23 = rmGetUnitPlaced(stopperCityState2ID, 0)+2;
+	int tower24 = rmGetUnitPlaced(stopperCityState2ID, 0)+1;
 
-	int gateOrig11 = rmGetUnitPlaced(stopperCityState1ID, 0)+2;
-	int gateOrig21 = rmGetUnitPlaced(stopperCityState2ID, 0)+2;
-	int gateOrig31 = rmGetUnitPlaced(stopperCityState3ID, 0)+2;
-
-	int gateOrig12 = rmGetUnitPlaced(stopperCityState1ID, 0)+1;
-	int gateOrig22 = rmGetUnitPlaced(stopperCityState2ID, 0)+1;
-	int gateOrig32 = rmGetUnitPlaced(stopperCityState3ID, 0)+1;
-
-	int tower11 = rmGetUnitPlaced(stopperCityState1ID, 0)+0;
-	int tower12 = rmGetUnitPlaced(stopperCityState1ID, 0)-1;
-	int tower13 = rmGetUnitPlaced(stopperCityState1ID, 0)-2;
-	int tower14 = rmGetUnitPlaced(stopperCityState1ID, 0)-3;
-
-	int tower21 = rmGetUnitPlaced(stopperCityState2ID, 0)+0;
-	int tower22 = rmGetUnitPlaced(stopperCityState2ID, 0)-1;
-	int tower23 = rmGetUnitPlaced(stopperCityState2ID, 0)-2;
-	int tower24 = rmGetUnitPlaced(stopperCityState2ID, 0)-3;
-
-	int tower31 = rmGetUnitPlaced(stopperCityState3ID, 0)+0;
-	int tower32 = rmGetUnitPlaced(stopperCityState3ID, 0)-1;
-	int tower33 = rmGetUnitPlaced(stopperCityState3ID, 0)-2;
-	int tower34 = rmGetUnitPlaced(stopperCityState3ID, 0)-3;
+	int tower31 = rmGetUnitPlaced(stopperCityState3ID, 0)+4;
+	int tower32 = rmGetUnitPlaced(stopperCityState3ID, 0)+3;
+	int tower33 = rmGetUnitPlaced(stopperCityState3ID, 0)+2;
+	int tower34 = rmGetUnitPlaced(stopperCityState3ID, 0)+1;
 
 	int InventorFlag1 = rmGetGroupingInstanceUnitByType(factoryInstanceID1, "zpNativeWaterSpawnFlag1")+5;
 	int InventorFlag2 = rmGetGroupingInstanceUnitByType(factoryInstanceID2, "zpNativeWaterSpawnFlag2")+5;
@@ -1221,9 +1211,9 @@ void main(void)
 	int fixedGun1 = rmGetGroupingInstanceUnitByType(factoryInstanceID1, "zpSPCFixedGunSocket")+5;
 	int fixedGun2 = rmGetGroupingInstanceUnitByType(factoryInstanceID2, "zpSPCFixedGunSocket")+5;
 
-	int revealer1 = rmGetUnitPlaced(stopperCityState1ID, 0)-4;
-	int revealer2 = rmGetUnitPlaced(stopperCityState2ID, 0)-4;
-	int revealer3 = rmGetUnitPlaced(stopperCityState3ID, 0)-4;
+	int revealer1 = rmGetUnitPlaced(stopperCityState1ID, 0);
+	int revealer2 = rmGetUnitPlaced(stopperCityState2ID, 0);
+	int revealer3 = rmGetUnitPlaced(stopperCityState3ID, 0);
 	int revealer4 = rmGetGroupingInstanceUnitByType(factoryInstanceID1, "zpSPCRevealerAztec")+5;
 	int revealer5 = rmGetGroupingInstanceUnitByType(factoryInstanceID2, "zpSPCRevealerAztec")+5;
 
@@ -1303,7 +1293,7 @@ void main(void)
 	}
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
     rmSetTriggerEffectParamInt("PlayerID",0);
-    rmSetTriggerEffectParam("TechID","cTechzpCivilWarConverGate"); 
+    rmSetTriggerEffectParam("TechID","cTechzpConverGate"); 
     rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
     rmSetTriggerEffectParamInt("PlayerID",0);
@@ -2540,13 +2530,6 @@ void main(void)
 
 	for (k=1; <= cNumberNonGaiaPlayers) {
 
-	rmCreateTrigger("Gate1_Rebuilt"+k);
-	rmCreateTrigger("Gate2_Rebuilt"+k);
-	rmCreateTrigger("Gate3_Rebuilt"+k);
-	rmCreateTrigger("Gate4_Rebuilt"+k);
-	rmCreateTrigger("Gate5_Rebuilt"+k);
-	rmCreateTrigger("Gate6_Rebuilt"+k);
-	rmCreateTrigger("Gate_Rebuilt_Deactivator"+k);
 
 	rmCreateTrigger("Station1_on_Plr"+k);
 	rmCreateTrigger("Station1_off_Plr"+k);
@@ -2590,18 +2573,6 @@ void main(void)
 	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateOrig11);
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateOrig12);
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateNew11);
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateNew12);
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmAddTriggerEffect("Convert");
 	rmSetTriggerEffectParam("SrcObject",""+revealer1);
 	rmSetTriggerEffectParamInt("PlayerID",k);
 	for(x=1; <= cNumberNonGaiaPlayers) {
@@ -2612,12 +2583,6 @@ void main(void)
 		rmSetTriggerEffectParam("Flash", "True", false);
 	}
 
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate1_Rebuilt"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate2_Rebuilt"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate_Rebuilt_Deactivator"+k));
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station1_off_Plr"+k));
 	rmAddTriggerEffect("Fire Event");
@@ -2671,18 +2636,6 @@ void main(void)
 	rmSetTriggerEffectParamInt("TrgPlayer",0);
 	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
 	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateOrig11);
-	rmSetTriggerEffectParamInt("PlayerID",0);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateOrig12);
-	rmSetTriggerEffectParamInt("PlayerID",0);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateNew11);
-	rmSetTriggerEffectParamInt("PlayerID",0);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateNew12);
-	rmSetTriggerEffectParamInt("PlayerID",0);
 	rmAddTriggerEffect("Convert");
 	rmSetTriggerEffectParam("SrcObject",""+revealer1);
 	rmSetTriggerEffectParamInt("PlayerID",0);
@@ -2755,18 +2708,6 @@ void main(void)
 	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateOrig21);
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateOrig22);
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateNew21);
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateNew22);
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmAddTriggerEffect("Convert");
 	rmSetTriggerEffectParam("SrcObject",""+revealer2);
 	rmSetTriggerEffectParamInt("PlayerID",k);
 	for(x=1; <= cNumberNonGaiaPlayers) {
@@ -2777,12 +2718,6 @@ void main(void)
 		rmSetTriggerEffectParam("Flash", "True", false);
 	}
 
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate3_Rebuilt"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate4_Rebuilt"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate_Rebuilt_Deactivator"+k));
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station2_off_Plr"+k));
 	rmAddTriggerEffect("Fire Event");
@@ -2837,18 +2772,6 @@ void main(void)
 	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateOrig21);
-	rmSetTriggerEffectParamInt("PlayerID",0);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateOrig22);
-	rmSetTriggerEffectParamInt("PlayerID",0);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateNew21);
-	rmSetTriggerEffectParamInt("PlayerID",0);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateNew22);
-	rmSetTriggerEffectParamInt("PlayerID",0);
-	rmAddTriggerEffect("Convert");
 	rmSetTriggerEffectParam("SrcObject",""+revealer2);
 	rmSetTriggerEffectParamInt("PlayerID",0);
 	rmAddTriggerEffect("Flare Minimap");
@@ -2858,10 +2781,6 @@ void main(void)
 	rmSetTriggerEffectParam("Flash", "True", false);
 
 	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate3_Rebuilt"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate4_Rebuilt"+k));
-	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station2_on_Plr"+k));
 	rmAddTriggerEffect("Disable Trigger");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_5_ON"+k));
@@ -2921,18 +2840,6 @@ void main(void)
 	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateOrig31);
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateOrig32);
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateNew31);
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateNew32);
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmAddTriggerEffect("Convert");
 	rmSetTriggerEffectParam("SrcObject",""+revealer3);
 	rmSetTriggerEffectParamInt("PlayerID",k);
 	for(x=1; <= cNumberNonGaiaPlayers) {
@@ -2943,12 +2850,6 @@ void main(void)
 		rmSetTriggerEffectParam("Flash", "True", false);
 	}
 
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate5_Rebuilt"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate6_Rebuilt"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate_Rebuilt_Deactivator"+k));
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station3_off_Plr"+k));
 	rmAddTriggerEffect("Fire Event");
@@ -3003,18 +2904,6 @@ void main(void)
 	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
 	rmSetTriggerEffectParamInt("Dist",60);
 	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateOrig31);
-	rmSetTriggerEffectParamInt("PlayerID",0);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateOrig32);
-	rmSetTriggerEffectParamInt("PlayerID",0);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateNew31);
-	rmSetTriggerEffectParamInt("PlayerID",0);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+gateNew32);
-	rmSetTriggerEffectParamInt("PlayerID",0);
-	rmAddTriggerEffect("Convert");
 	rmSetTriggerEffectParam("SrcObject",""+revealer3);
 	rmSetTriggerEffectParamInt("PlayerID",0);
 	rmAddTriggerEffect("Flare Minimap");
@@ -3024,10 +2913,6 @@ void main(void)
 	rmSetTriggerEffectParam("Flash", "True", false);
 
 	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate5_Rebuilt"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate6_Rebuilt"+k));
-	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station3_on_Plr"+k));
 	rmAddTriggerEffect("Disable Trigger");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_9_ON"+k));
@@ -3037,130 +2922,6 @@ void main(void)
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_11_ON"+k));
 	rmAddTriggerEffect("Disable Trigger");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_12_ON"+k));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(false);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	// Rebuild Gates
-
-	rmSwitchToTrigger(rmTriggerID("Gate1_Rebuilt"+k));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+gateNew11);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParam("UnitType","SPCXPWoodFortGate");
-	rmSetTriggerConditionParamInt("Dist",15);
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamInt("Count",0);
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmSetTriggerEffectParam("TechID","cTechzpConverGate2Wood"); //operator
-	rmSetTriggerEffectParamInt("Status",2);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(false);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmSwitchToTrigger(rmTriggerID("Gate2_Rebuilt"+k));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+gateNew12);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParam("UnitType","SPCXPWoodFortGate");
-	rmSetTriggerConditionParamInt("Dist",15);
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamInt("Count",0);
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmSetTriggerEffectParam("TechID","cTechzpConverGate3Wood"); //operator
-	rmSetTriggerEffectParamInt("Status",2);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(false);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmSwitchToTrigger(rmTriggerID("Gate3_Rebuilt"+k));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+gateNew21);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParam("UnitType","SPCXPWoodFortGate");
-	rmSetTriggerConditionParamInt("Dist",15);
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamInt("Count",0);
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmSetTriggerEffectParam("TechID","cTechzpConverGate4Wood"); //operator
-	rmSetTriggerEffectParamInt("Status",2);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(false);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmSwitchToTrigger(rmTriggerID("Gate4_Rebuilt"+k));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+gateNew22);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParam("UnitType","SPCXPWoodFortGate");
-	rmSetTriggerConditionParamInt("Dist",15);
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamInt("Count",0);
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmSetTriggerEffectParam("TechID","cTechzpConverGate5Wood"); //operator
-	rmSetTriggerEffectParamInt("Status",2);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(false);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmSwitchToTrigger(rmTriggerID("Gate5_Rebuilt"+k));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+gateNew31);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParam("UnitType","SPCXPWoodFortGate");
-	rmSetTriggerConditionParamInt("Dist",15);
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamInt("Count",0);
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmSetTriggerEffectParam("TechID","cTechzpConverGate6Wood"); //operator
-	rmSetTriggerEffectParamInt("Status",2);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(false);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmSwitchToTrigger(rmTriggerID("Gate6_Rebuilt"+k));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+gateNew32);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParam("UnitType","SPCXPWoodFortGate");
-	rmSetTriggerConditionParamInt("Dist",15);
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamInt("Count",0);
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmSetTriggerEffectParam("TechID","cTechzpConverGate7Wood"); //operator
-	rmSetTriggerEffectParamInt("Status",2);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(false);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmSwitchToTrigger(rmTriggerID("Gate_Rebuilt_Deactivator"+k));
-	rmAddTriggerCondition("Timer ms");
-	rmSetTriggerConditionParamInt("Param1",500);
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate1_Rebuilt"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate2_Rebuilt"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate3_Rebuilt"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate4_Rebuilt"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate5_Rebuilt"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate6_Rebuilt"+k));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -3670,10 +3431,100 @@ void main(void)
 	rmSetTriggerLoop(false);
 	}
 
+	// AI Renegade Leaders
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+
+	rmCreateTrigger("ZP Pick Renegade Captain"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerCondition("Tech Status Equals");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParamInt("TechID",586);
+	rmSetTriggerConditionParamInt("Status",2);
+
+	int renegadeCaptain=-1;
+	renegadeCaptain = rmRandInt(1,3);
+
+	if (renegadeCaptain==1)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistGortz"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (renegadeCaptain==2)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistValentine"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (renegadeCaptain==3)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistkhora"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpAIAirshipSetup"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	// AI Western Leaders
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+
+	rmCreateTrigger("ZP Pick Western Leader"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerCondition("Tech Status Equals");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParamInt("TechID",586);
+	rmSetTriggerConditionParamInt("Status",2);
+
+	int westernLeader=-1;
+	westernLeader = rmRandInt(1,3);
+
+	if (westernLeader==1)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateWesternWyatEarp"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (westernLeader==2)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateWesternPinkertons"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (westernLeader==3)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateWesternJesseJames"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
 
 	// Testing
 
-	for (k=1; <= cNumberNonGaiaPlayers) {
+	/*for (k=1; <= cNumberNonGaiaPlayers) {
 
 	rmCreateTrigger("ZP Test Plr"+k);
 	rmAddTriggerCondition("ZP PLAYER Human");
@@ -3695,7 +3546,7 @@ void main(void)
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
-	}
+	}*/
 
     
 	

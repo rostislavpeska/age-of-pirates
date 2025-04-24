@@ -12,11 +12,12 @@
                   <unittype>AbstractTradingPost</unittype>
                   <unittype>CapturableTradingPost</unittype>
             </unit>
-            <unit name="SPCXPWoodFortGate">
-                  <unittype>ConvertsHerds</unittype>
-                  <flag>PlaceAnywhere</flag>
-                  <buildpoints>0.0000</buildpoints>
-            </unit>
+            <unit name="SPCFortGate">
+    <animfile>buildings\spc_woodfort_wall\spc_woodfort_wall_gate.xml</animfile>
+    <unittype>ConvertsHerds</unittype>
+    <flag>PlaceAnywhere</flag>
+    <buildpoints>0.0000</buildpoints>
+  </unit>
             <unit name="zpNativeHouseWesternVillage">
                   <flag>NotSelectable</flag>
             </unit>
