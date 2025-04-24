@@ -198,8 +198,8 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 	// Native Constraints
 	int avoidSufi=rmCreateTypeDistanceConstraint("stay away from Sufi", "SocketComanche", 70.0);
 	int avoidSufiShort=rmCreateTypeDistanceConstraint("stay away from Sufi short", "SocketComanche", 30.0);
-	int avoidMaltese=rmCreateTypeDistanceConstraint("stay away from Maltese", "zpSocketScientists", 25.0);
-	int avoidJewish=rmCreateTypeDistanceConstraint("stay away from Jewish", "zpSPCSocketWesternVillage", 25.0);
+	int avoidinventors=rmCreateTypeDistanceConstraint("stay away from inventors", "zpSocketScientists", 25.0);
+	int avoidwestern=rmCreateTypeDistanceConstraint("stay away from western", "zpSPCSocketWesternVillage", 25.0);
 	int avoidTownCenterFar=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 40.0);
 	int avoidTradeSocket=rmCreateTypeDistanceConstraint("stay away from Trade Socket", "SocketTradeRoute", 40.0);
 	int avoidTradeRouteSocketMin = rmCreateTypeDistanceConstraint("trade route socket min", "SocketTradeRoute", 25.0);
@@ -602,89 +602,86 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 
 	// Western Village
 
-	int jewish1VillageTypeID = rmRandInt(1, 5);
-	int jewish2VillageTypeID = rmRandInt(1, 5);
-	int jewish3VillageTypeID = rmRandInt(1, 2);
+	int western1VillageTypeID = rmRandInt(1, 5);
+	int western2VillageTypeID = rmRandInt(1, 5);
 
-	int jewish1ID = rmCreateGrouping("jewish 1", "WildWest_Village_0"+jewish1VillageTypeID);
-	int jewish2ID = rmCreateGrouping("jewish 2", "WildWest_Village_0"+jewish2VillageTypeID);
-	int jewish3ID = rmCreateGrouping("jewish 3", "WildWest_Village_0"+jewish3VillageTypeID);
+	int western1ID = rmCreateGrouping("western 1", "WildWest_Village_0"+western1VillageTypeID);
+	int western2ID = rmCreateGrouping("western 2", "WildWest_Village_0"+western2VillageTypeID);
 
-	rmSetGroupingMinDistance(jewish1ID, 0);
-	rmSetGroupingMaxDistance(jewish1ID, 0);
-	rmSetGroupingMinDistance(jewish2ID, 0);
-	rmSetGroupingMaxDistance(jewish2ID, 0);
-	rmSetGroupingMinDistance(jewish3ID, 0);
-	rmSetGroupingMaxDistance(jewish3ID, 0); 
+	rmSetGroupingMinDistance(western1ID, 0);
+	rmSetGroupingMaxDistance(western1ID, 10);
+	rmSetGroupingMinDistance(western2ID, 0);
+	rmSetGroupingMaxDistance(western2ID, 10);
+
 
 	if(cNumberNonGaiaPlayers <= 2){
-		rmPlaceGroupingAtLoc(jewish1ID, 0, 0.81, 0.5, 1);
+		rmPlaceGroupingAtLoc(western1ID, 0, 0.81, 0.5, 1);
 	}
 	if(cNumberNonGaiaPlayers == 3){
-		rmPlaceGroupingAtLoc(jewish1ID, 0, 0.65, 0.25, 1);
+		rmPlaceGroupingAtLoc(western1ID, 0, 0.65, 0.25, 1);
 	}
 	if(cNumberNonGaiaPlayers == 4){
-		rmPlaceGroupingAtLoc(jewish1ID, 0, 0.9, 0.7, 1);
-		rmPlaceGroupingAtLoc(jewish2ID, 0, 0.1, 0.3, 1);
+		rmPlaceGroupingAtLoc(western1ID, 0, 0.9, 0.72, 1);
+		rmPlaceGroupingAtLoc(western2ID, 0, 0.1, 0.28, 1);
 	}
 	if(cNumberNonGaiaPlayers == 5){
-		rmPlaceGroupingAtLoc(jewish1ID, 0, 0.25, 0.85, 1);
-		rmPlaceGroupingAtLoc(jewish2ID, 0, 0.3, 0.3, 1);
+		rmPlaceGroupingAtLoc(western1ID, 0, 0.25, 0.85, 1);
+		rmPlaceGroupingAtLoc(western2ID, 0, 0.3, 0.3, 1);
 	}
 	if(cNumberNonGaiaPlayers == 6){
-		rmPlaceGroupingAtLoc(jewish1ID, 0, 0.25, 0.85, 1);
-		rmPlaceGroupingAtLoc(jewish2ID, 0, 0.75, 0.15, 1);
+		rmPlaceGroupingAtLoc(western1ID, 0, 0.25, 0.85, 1);
+		rmPlaceGroupingAtLoc(western2ID, 0, 0.75, 0.15, 1);
 	}
 	if(cNumberNonGaiaPlayers == 7){
-		rmPlaceGroupingAtLoc(jewish1ID, 0, 0.75, 0.85, 1);
-		rmPlaceGroupingAtLoc(jewish2ID, 0, 0.6, 0.2, 1);
+		rmPlaceGroupingAtLoc(western1ID, 0, 0.75, 0.85, 1);
+		rmPlaceGroupingAtLoc(western2ID, 0, 0.6, 0.2, 1);
 	}
 	if(cNumberNonGaiaPlayers == 8){
-		rmPlaceGroupingAtLoc(jewish1ID, 0, 0.25, 0.85, 1);
-		rmPlaceGroupingAtLoc(jewish2ID, 0, 0.75, 0.15, 1);
+		rmPlaceGroupingAtLoc(western1ID, 0, 0.25, 0.85, 1);
+		rmPlaceGroupingAtLoc(western2ID, 0, 0.75, 0.15, 1);
 	}
 
 	// Renegades
 
-	int maltese1VillageTypeID = rmRandInt(5,6);
-	int maltese1ID = -1;
-	maltese1ID = rmCreateGrouping("maltese 1", "Scientist_Lab0"+maltese1VillageTypeID);
-	rmSetGroupingMinDistance(maltese1ID, 0);
-	rmSetGroupingMaxDistance(maltese1ID, 0);
+	int inventors1VillageTypeID = rmRandInt(5,6);
+	int inventors1ID = -1;
+	inventors1ID = rmCreateGrouping("inventors 1", "Scientist_Lab0"+inventors1VillageTypeID);
+	rmSetGroupingMinDistance(inventors1ID, 0);
+	rmSetGroupingMaxDistance(inventors1ID, 10);
   
 
-	int maltese2VillageTypeID = 11-maltese1VillageTypeID;
-	int maltese2ID = -1;
-	maltese2ID = rmCreateGrouping("maltese 2", "Scientist_Lab0"+maltese2VillageTypeID);
-	rmSetGroupingMinDistance(maltese2ID, 0);
-	rmSetGroupingMaxDistance(maltese2ID, 0);
+	int inventors2VillageTypeID = 11-inventors1VillageTypeID;
+	int inventors2ID = -1;
+	inventors2ID = rmCreateGrouping("inventors 2", "Scientist_Lab0"+inventors2VillageTypeID);
+	rmSetGroupingMinDistance(inventors2ID, 0);
+	rmSetGroupingMaxDistance(inventors2ID, 10);
 
 
    	if(cNumberNonGaiaPlayers <= 2){	
-		rmPlaceGroupingAtLoc(maltese1ID, 0, 0.21, 0.5, 1);
+		rmPlaceGroupingAtLoc(inventors1ID, 0, 0.21, 0.5, 1);
 	}
 	if(cNumberNonGaiaPlayers == 3){
-		rmPlaceGroupingAtLoc(maltese1ID, 0, 0.25, 0.65, 1);
+		rmPlaceGroupingAtLoc(inventors1ID, 0, 0.25, 0.65, 1);
 	}
 	if(cNumberNonGaiaPlayers == 4){
-		rmPlaceGroupingAtLoc(maltese1ID, 0, 0.72, 0.88, 1);
-		rmPlaceGroupingAtLoc(maltese2ID, 0, 0.3, 0.1, 1);
+		rmPlaceGroupingAtLoc(inventors1ID, 0, 0.72, 0.88, 1);
+		rmPlaceGroupingAtLoc(inventors2ID, 0, 0.3, 0.1, 1);
 	}
 	if(cNumberNonGaiaPlayers == 5){
-		rmPlaceGroupingAtLoc(maltese1ID, 0, 0.85, 0.25, 1);
-		rmPlaceGroupingAtLoc(maltese2ID, 0, 0.8, 0.8, 1);
+		rmPlaceGroupingAtLoc(inventors1ID, 0, 0.85, 0.25, 1);
+		rmPlaceGroupingAtLoc(inventors2ID, 0, 0.8, 0.8, 1);
 	}
 	if(cNumberNonGaiaPlayers == 6){
-		rmPlaceGroupingAtLoc(maltese1ID, 0, 0.15, 0.75, 1);
-		rmPlaceGroupingAtLoc(maltese2ID, 0, 0.85, 0.25, 1);
+		rmPlaceGroupingAtLoc(inventors1ID, 0, 0.15, 0.75, 1);
+		rmPlaceGroupingAtLoc(inventors2ID, 0, 0.85, 0.25, 1);
 	}
 	if(cNumberNonGaiaPlayers == 7){
-		rmPlaceGroupingAtLoc(maltese1ID, 0, 0.85, 0.75, 1);
-		rmPlaceGroupingAtLoc(maltese2ID, 0, 0.2, 0.6, 1);
+		rmPlaceGroupingAtLoc(inventors1ID, 0, 0.85, 0.75, 1);
+		rmPlaceGroupingAtLoc(inventors2ID, 0, 0.2, 0.6, 1);
 	}
 	if(cNumberNonGaiaPlayers == 8){
-		rmPlaceGroupingAtLoc(maltese1ID, 0, 0.15, 0.75, 1);
-		rmPlaceGroupingAtLoc(maltese2ID, 0, 0.85, 0.25, 1);
+		rmPlaceGroupingAtLoc(inventors1ID, 0, 0.15, 0.75, 1);
+		rmPlaceGroupingAtLoc(inventors2ID, 0, 0.85, 0.25, 1);
 	}
 
 	// Text
@@ -716,8 +713,8 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		rmAddAreaInfluenceSegment(DeadSeaValleyID, 0.45, 0.45, 0.55, 0.55);
 	}
 	rmAddAreaConstraint(DeadSeaValleyID, avoidTradeSocketFar);
-	rmAddAreaConstraint(DeadSeaValleyID, avoidMaltese);
-	rmAddAreaConstraint(DeadSeaValleyID, avoidJewish);
+	rmAddAreaConstraint(DeadSeaValleyID, avoidinventors);
+	rmAddAreaConstraint(DeadSeaValleyID, avoidwestern);
 	rmAddAreaConstraint(DeadSeaValleyID, avoidTradeRoute);
     rmBuildArea(DeadSeaValleyID);
 
@@ -730,8 +727,8 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		rmAddAreaInfluenceSegment(DeadSeaValleyMixID, 0.35, 0.65, 0.65, 0.35);
 		rmAddAreaInfluenceSegment(DeadSeaValleyMixID, 0.45, 0.45, 0.55, 0.55);
 	}
-	rmAddAreaConstraint(DeadSeaValleyMixID, avoidMaltese);
-	rmAddAreaConstraint(DeadSeaValleyMixID, avoidJewish);
+	rmAddAreaConstraint(DeadSeaValleyMixID, avoidinventors);
+	rmAddAreaConstraint(DeadSeaValleyMixID, avoidwestern);
 	rmAddAreaConstraint(DeadSeaValleyMixID, avoidTradeSocketFar2);
 	rmAddAreaConstraint(DeadSeaValleyMixID, avoidTradeRoute);
     rmBuildArea(DeadSeaValleyMixID);
@@ -1090,8 +1087,8 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		rmAddAreaConstraint(valleyForest, avoidImportantItem); // DAL added, to try and make sure natives got on the map w/o override.
 		rmAddAreaConstraint(valleyForest, shortAvoidCoin);
 		rmAddAreaConstraint(valleyForest, avoidTownCenterFar);
-		rmAddAreaConstraint(valleyForest, avoidJewish);
-		rmAddAreaConstraint(valleyForest, avoidMaltese);
+		rmAddAreaConstraint(valleyForest, avoidwestern);
+		rmAddAreaConstraint(valleyForest, avoidinventors);
 		rmAddAreaConstraint(valleyForest, avoidTradeSocket);
 		rmAddAreaConstraint(valleyForest, avoidSufiShort);
 		rmAddAreaConstraint(valleyForest, avoidTradeRoute);
@@ -1128,8 +1125,8 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		rmAddAreaConstraint(southForest, avoidImportantItem);
 		rmAddAreaConstraint(southForest, shortAvoidCoin);
 		rmAddAreaConstraint(southForest, avoidTownCenterFar);
-		rmAddAreaConstraint(southForest, avoidJewish);
-		rmAddAreaConstraint(southForest, avoidMaltese);
+		rmAddAreaConstraint(southForest, avoidwestern);
+		rmAddAreaConstraint(southForest, avoidinventors);
 		rmAddAreaConstraint(southForest, avoidTradeSocket);
 		rmAddAreaConstraint(southForest, avoidSufi);
 		rmAddAreaConstraint(southForest, avoidTradeRoute);
@@ -1166,8 +1163,8 @@ float seasonPicker = rmRandFloat(0,1);//rmRandFloat(0,1); //high # is snow, low 
 		rmAddAreaConstraint(northForest, avoidImportantItem); // DAL added, to try and make sure natives got on the map w/o override.
 		rmAddAreaConstraint(northForest, shortAvoidCoin);
 		rmAddAreaConstraint(northForest, avoidTownCenterFar);
-		rmAddAreaConstraint(northForest, avoidJewish);
-		rmAddAreaConstraint(northForest, avoidMaltese);
+		rmAddAreaConstraint(northForest, avoidwestern);
+		rmAddAreaConstraint(northForest, avoidinventors);
 		rmAddAreaConstraint(northForest, avoidTradeSocket);
 		rmAddAreaConstraint(northForest, avoidSufi);
 		rmAddAreaConstraint(northForest, avoidTradeRoute);
