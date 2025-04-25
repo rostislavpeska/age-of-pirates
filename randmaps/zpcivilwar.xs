@@ -1358,6 +1358,22 @@ void main(void)
 
 	int fixedGunBuildID = -1;
 
+	// Stations Array
+	int stationSockets = xsArrayCreateInt(3, -1, "Station Sockets");
+	xsArraySetInt(stationSockets, 0, westernSocket1);
+	xsArraySetInt(stationSockets, 1, westernSocket2);
+	xsArraySetInt(stationSockets, 2, westernSocket3);
+
+	int stationSocketID = -1;
+
+	// Stations Revealer Array
+	int stationRevealers = xsArrayCreateInt(3, -1, "Station Revealers");
+	xsArraySetInt(stationRevealers, 0, revealer1);
+	xsArraySetInt(stationRevealers, 1, revealer2);
+	xsArraySetInt(stationRevealers, 2, revealer3);
+
+	int stationRevealerID = -1;
+
 	// Starting techs
 
     rmCreateTrigger("Starting Techs");
@@ -2780,406 +2796,246 @@ void main(void)
 	// Station 1
 
 	for (k=1; <= cNumberNonGaiaPlayers) {
+		for (y=1; <= 3) {
 
+			stationSocketID = xsArrayGetInt(stationSockets, y-1);
+			stationRevealerID = xsArrayGetInt(stationRevealers, y-1);
 
-	rmCreateTrigger("Station1_on_Plr"+k);
-	rmCreateTrigger("Station1_off_Plr"+k);
+			// Create triggers
+			rmCreateTrigger("Station"+y+"_on_Plr"+k);
+			rmCreateTrigger("Station"+y+"_off_Plr"+k);
+			rmCreateTrigger("Station"+y+"_delayed_Plr"+k);
 
-	rmSwitchToTrigger(rmTriggerID("Station1_on_Plr"+k));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+westernATStoper1);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",20);
-	rmSetTriggerConditionParam("UnitType","TradingPost");
-	rmSetTriggerConditionParam("Op",">=");
-	rmSetTriggerConditionParamFloat("Count",1);
+			rmSwitchToTrigger(rmTriggerID("Station"+y+"_on_Plr"+k));
+			rmAddTriggerCondition("Units in Area");
+			rmSetTriggerConditionParam("DstObject",""+stationSocketID);
+			rmSetTriggerConditionParamInt("Player",k);
+			rmSetTriggerConditionParamInt("Dist",20);
+			rmSetTriggerConditionParam("UnitType","TradingPost");
+			rmSetTriggerConditionParam("Op",">=");
+			rmSetTriggerConditionParamFloat("Count",1);
 
-	rmAddTriggerEffect("ZP Convert Station Grouping");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
-	rmSetTriggerEffectParamInt("SrcPlayer",0);
-	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
-	rmSetTriggerEffectParamInt("SrcPlayer",0);
-	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
-	rmSetTriggerEffectParamInt("SrcPlayer",0);
-	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParam("UnitType","zpSPCSafehouse");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
-	rmSetTriggerEffectParamInt("SrcPlayer",0);
-	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
-	rmSetTriggerEffectParamInt("SrcPlayer",0);
-	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+revealer1);
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	for(x=1; <= cNumberNonGaiaPlayers) {
-		rmAddTriggerEffect("Flare Minimap");
-		rmSetTriggerEffectParamInt("PlayerID", x, false);
-		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc1)+","+xsVectorGetY(stationLoc1)+","+xsVectorGetZ(stationLoc1), false);
-		rmSetTriggerEffectParam("Flash", "True", false);
+			rmAddTriggerEffect("ZP Convert Station Grouping");
+			rmSetTriggerEffectParam("SrcObject",""+stationSocketID);
+			rmSetTriggerEffectParamInt("SrcPlayer",0);
+			rmSetTriggerEffectParamInt("TrgPlayer",k);
+			rmSetTriggerEffectParamInt("Dist",60);
+			rmAddTriggerEffect("Convert Units in Area");
+			rmSetTriggerEffectParam("SrcObject",""+stationSocketID);
+			rmSetTriggerEffectParamInt("SrcPlayer",0);
+			rmSetTriggerEffectParamInt("TrgPlayer",k);
+			rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
+			rmSetTriggerEffectParamInt("Dist",60);
+			rmAddTriggerEffect("Convert Units in Area");
+			rmSetTriggerEffectParam("SrcObject",""+stationSocketID);
+			rmSetTriggerEffectParamInt("SrcPlayer",0);
+			rmSetTriggerEffectParamInt("TrgPlayer",k);
+			rmSetTriggerEffectParam("UnitType","zpSPCSafehouse");
+			rmSetTriggerEffectParamInt("Dist",60);
+			rmAddTriggerEffect("Convert Units in Area");
+			rmSetTriggerEffectParam("SrcObject",""+stationSocketID);
+			rmSetTriggerEffectParamInt("SrcPlayer",0);
+			rmSetTriggerEffectParamInt("TrgPlayer",k);
+			rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
+			rmSetTriggerEffectParamInt("Dist",60);
+			rmAddTriggerEffect("Convert Units in Area");
+			rmSetTriggerEffectParam("SrcObject",""+stationSocketID);
+			rmSetTriggerEffectParamInt("SrcPlayer",0);
+			rmSetTriggerEffectParamInt("TrgPlayer",k);
+			rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
+			rmSetTriggerEffectParamInt("Dist",60);
+			rmAddTriggerEffect("Convert Units in Area");
+			rmSetTriggerEffectParam("SrcObject",""+stationSocketID);
+			rmSetTriggerEffectParamInt("SrcPlayer",0);
+			rmSetTriggerEffectParamInt("TrgPlayer",k);
+			rmSetTriggerEffectParam("UnitType","zpSPCSawmill");
+			rmSetTriggerEffectParamInt("Dist",60);
+			rmAddTriggerEffect("Convert Units in Area");
+			rmSetTriggerEffectParam("SrcObject",""+stationSocketID);
+			rmSetTriggerEffectParamInt("SrcPlayer",0);
+			rmSetTriggerEffectParamInt("TrgPlayer",k);
+			rmSetTriggerEffectParam("UnitType","zpSPCDestilery");
+			rmSetTriggerEffectParamInt("Dist",60);	
+			rmAddTriggerEffect("Convert");
+			rmSetTriggerEffectParam("SrcObject",""+stationRevealerID);
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			for(x=1; <= cNumberNonGaiaPlayers) {
+				rmAddTriggerEffect("Flare Minimap");
+				rmSetTriggerEffectParamInt("PlayerID", x, false);
+				rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+				if (y==1) {
+					rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc1)+","+xsVectorGetY(stationLoc1)+","+xsVectorGetZ(stationLoc1), false);
+				}
+				if (y==2) {
+					rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc2)+","+xsVectorGetY(stationLoc2)+","+xsVectorGetZ(stationLoc2), false);
+				}
+				if (y==3) {
+					rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc3)+","+xsVectorGetY(stationLoc3)+","+xsVectorGetZ(stationLoc3), false);
+				}
+				rmSetTriggerEffectParam("Flash", "True", false);
+			}
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station"+y+"_off_Plr"+k));
+			if (y==1) {
+				rmAddTriggerEffect("Fire Event");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_1_ON"+k));
+				rmAddTriggerEffect("Fire Event");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_2_ON"+k));
+				rmAddTriggerEffect("Fire Event");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_3_ON"+k));
+				rmAddTriggerEffect("Fire Event");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_4_ON"+k));
+			}
+			if (y==2) {
+				rmAddTriggerEffect("Fire Event");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_5_ON"+k));
+				rmAddTriggerEffect("Fire Event");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_6_ON"+k));
+				rmAddTriggerEffect("Fire Event");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_7_ON"+k));
+				rmAddTriggerEffect("Fire Event");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_8_ON"+k));
+			}
+			if (y==3) {
+				rmAddTriggerEffect("Fire Event");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_9_ON"+k));
+				rmAddTriggerEffect("Fire Event");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_10_ON"+k));
+				rmAddTriggerEffect("Fire Event");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_11_ON"+k));
+				rmAddTriggerEffect("Fire Event");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_12_ON"+k));
+			}
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(true);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(false);
+
+			rmSwitchToTrigger(rmTriggerID("Station"+y+"_off_Plr"+k));
+			rmAddTriggerCondition("Units in Area");
+			rmSetTriggerConditionParam("DstObject",""+stationSocketID);
+			rmSetTriggerConditionParamInt("Player",k);
+			rmSetTriggerConditionParamInt("Dist",20);
+			rmSetTriggerConditionParam("UnitType","TradingPost");
+			rmSetTriggerConditionParam("Op","==");
+			rmSetTriggerConditionParamFloat("Count",0);
+			if (y==1) {
+				rmAddTriggerEffect("Flare Minimap");
+				rmSetTriggerEffectParamInt("PlayerID", k, false);
+				rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+				rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc1)+","+xsVectorGetY(stationLoc1)+","+xsVectorGetZ(stationLoc1), false);
+				rmSetTriggerEffectParam("Flash", "True", false);
+			}
+			if (y==2) {
+				rmAddTriggerEffect("Flare Minimap");
+				rmSetTriggerEffectParamInt("PlayerID", k, false);
+				rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+				rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc2)+","+xsVectorGetY(stationLoc2)+","+xsVectorGetZ(stationLoc2), false);
+				rmSetTriggerEffectParam("Flash", "True", false);
+			}
+			if (y==3) {
+				rmAddTriggerEffect("Flare Minimap");
+				rmSetTriggerEffectParamInt("PlayerID", k, false);
+				rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+				rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc3)+","+xsVectorGetY(stationLoc3)+","+xsVectorGetZ(stationLoc3), false);
+				rmSetTriggerEffectParam("Flash", "True", false);
+			}
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station"+y+"_on_Plr"+k));
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station"+y+"_delayed_Plr"+k));
+			rmAddTriggerEffect("Disable Trigger");
+			if (y==1) {
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_1_ON"+k));
+				rmAddTriggerEffect("Disable Trigger");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_2_ON"+k));
+				rmAddTriggerEffect("Disable Trigger");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_3_ON"+k));
+				rmAddTriggerEffect("Disable Trigger");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_4_ON"+k));
+			}
+			if (y==2) {
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_5_ON"+k));
+				rmAddTriggerEffect("Disable Trigger");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_6_ON"+k));
+				rmAddTriggerEffect("Disable Trigger");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_7_ON"+k));
+				rmAddTriggerEffect("Disable Trigger");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_8_ON"+k));
+			}
+			if (y==3) {
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_9_ON"+k));
+				rmAddTriggerEffect("Disable Trigger");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_10_ON"+k));
+				rmAddTriggerEffect("Disable Trigger");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_11_ON"+k));
+				rmAddTriggerEffect("Disable Trigger");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_12_ON"+k));
+			}
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpWesternLockCitystateTechs"); // Turn Off Western techs
+			rmSetTriggerEffectParamInt("Status",2);
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(false);
+			
+			rmSwitchToTrigger(rmTriggerID("Station"+y+"_delayed_Plr"+k));
+			rmAddTriggerEffect("ZP Convert Station Grouping");
+			rmSetTriggerEffectParam("SrcObject",""+stationSocketID);
+			rmSetTriggerEffectParamInt("SrcPlayer",k);
+			rmSetTriggerEffectParamInt("TrgPlayer",0);
+			rmSetTriggerEffectParamInt("Dist",60);
+			rmAddTriggerEffect("Convert Units in Area");
+			rmSetTriggerEffectParam("SrcObject",""+stationSocketID);
+			rmSetTriggerEffectParamInt("SrcPlayer",k);
+			rmSetTriggerEffectParamInt("TrgPlayer",0);
+			rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
+			rmSetTriggerEffectParamInt("Dist",60);
+			rmAddTriggerEffect("Convert Units in Area");
+			rmSetTriggerEffectParam("SrcObject",""+stationSocketID);
+			rmSetTriggerEffectParamInt("SrcPlayer",k);
+			rmSetTriggerEffectParamInt("TrgPlayer",0);
+			rmSetTriggerEffectParam("UnitType","zpSPCSafehouse");
+			rmSetTriggerEffectParamInt("Dist",60);
+			rmAddTriggerEffect("Convert Units in Area");
+			rmSetTriggerEffectParam("SrcObject",""+stationSocketID);
+			rmSetTriggerEffectParamInt("SrcPlayer",k);
+			rmSetTriggerEffectParamInt("TrgPlayer",0);
+			rmSetTriggerEffectParam("UnitType","zpSPCSawmill");
+			rmSetTriggerEffectParamInt("Dist",60);
+			rmAddTriggerEffect("Convert Units in Area");
+			rmSetTriggerEffectParam("SrcObject",""+stationSocketID);
+			rmSetTriggerEffectParamInt("SrcPlayer",k);
+			rmSetTriggerEffectParamInt("TrgPlayer",0);
+			rmSetTriggerEffectParam("UnitType","zpSPCDestilery");
+			rmSetTriggerEffectParamInt("Dist",60);
+			rmAddTriggerEffect("Convert Units in Area");
+			rmSetTriggerEffectParam("SrcObject",""+stationSocketID);
+			rmSetTriggerEffectParamInt("SrcPlayer",k);
+			rmSetTriggerEffectParamInt("TrgPlayer",0);
+			rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
+			rmSetTriggerEffectParamInt("Dist",60);
+			rmAddTriggerEffect("Convert Units in Area");
+			rmSetTriggerEffectParam("SrcObject",""+stationSocketID);
+			rmSetTriggerEffectParamInt("SrcPlayer",k);
+			rmSetTriggerEffectParamInt("TrgPlayer",0);
+			rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
+			rmSetTriggerEffectParamInt("Dist",60);
+			rmAddTriggerEffect("Convert");
+			rmSetTriggerEffectParam("SrcObject",""+stationRevealerID);
+			rmSetTriggerEffectParamInt("PlayerID",0);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpWesternUnlockCitystateTechs"); // Turn On Western techs
+			rmSetTriggerEffectParamInt("Status",2);
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(false);
+		}
 	}
-
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station1_off_Plr"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_1_ON"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_2_ON"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_3_ON"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_4_ON"+k));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmSwitchToTrigger(rmTriggerID("Station1_off_Plr"+k));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+westernATStoper1);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",20);
-	rmSetTriggerConditionParam("UnitType","TradingPost");
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamFloat("Count",0);
-	
-	rmAddTriggerEffect("ZP Convert Station Grouping");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
-	rmSetTriggerEffectParamInt("SrcPlayer",k);
-	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
-	rmSetTriggerEffectParamInt("SrcPlayer",k);
-	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
-	rmSetTriggerEffectParamInt("SrcPlayer",k);
-	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParam("UnitType","zpSPCSafehouse");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
-	rmSetTriggerEffectParamInt("SrcPlayer",k);
-	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper1);
-	rmSetTriggerEffectParamInt("SrcPlayer",k);
-	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+revealer1);
-	rmSetTriggerEffectParamInt("PlayerID",0);
-	rmAddTriggerEffect("Flare Minimap");
-	rmSetTriggerEffectParamInt("PlayerID", k, false);
-	rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-	rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc1)+","+xsVectorGetY(stationLoc1)+","+xsVectorGetZ(stationLoc1), false);
-	rmSetTriggerEffectParam("Flash", "True", false);
-
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate1_Rebuilt"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Gate2_Rebuilt"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station1_on_Plr"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_1_ON"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_2_ON"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_3_ON"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_4_ON"+k));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(false);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	// Station 2
-
-	rmCreateTrigger("Station2_on_Plr"+k);
-	rmCreateTrigger("Station2_off_Plr"+k);
-
-	rmSwitchToTrigger(rmTriggerID("Station2_on_Plr"+k));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+westernATStoper2);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",20);
-	rmSetTriggerConditionParam("UnitType","TradingPost");
-	rmSetTriggerConditionParam("Op",">=");
-	rmSetTriggerConditionParamFloat("Count",1);
-	
-	rmAddTriggerEffect("ZP Convert Station Grouping");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
-	rmSetTriggerEffectParamInt("SrcPlayer",0);
-	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
-	rmSetTriggerEffectParamInt("SrcPlayer",0);
-	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
-	rmSetTriggerEffectParamInt("SrcPlayer",0);
-	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
-	rmSetTriggerEffectParamInt("SrcPlayer",0);
-	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParam("UnitType","zpSPCSawMill");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
-	rmSetTriggerEffectParamInt("SrcPlayer",0);
-	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+revealer2);
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	for(x=1; <= cNumberNonGaiaPlayers) {
-		rmAddTriggerEffect("Flare Minimap");
-		rmSetTriggerEffectParamInt("PlayerID", x, false);
-		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc2)+","+xsVectorGetY(stationLoc2)+","+xsVectorGetZ(stationLoc2), false);
-		rmSetTriggerEffectParam("Flash", "True", false);
-	}
-
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station2_off_Plr"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_5_ON"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_6_ON"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_7_ON"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_8_ON"+k));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmSwitchToTrigger(rmTriggerID("Station2_off_Plr"+k));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+westernATStoper2);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",20);
-	rmSetTriggerConditionParam("UnitType","TradingPost");
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamFloat("Count",0);
-	
-	rmAddTriggerEffect("ZP Convert Station Grouping");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
-	rmSetTriggerEffectParamInt("SrcPlayer",k);
-	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
-	rmSetTriggerEffectParamInt("SrcPlayer",k);
-	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
-	rmSetTriggerEffectParamInt("SrcPlayer",k);
-	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
-	rmSetTriggerEffectParamInt("SrcPlayer",k);
-	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParam("UnitType","zpSPCSawMill");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper2);
-	rmSetTriggerEffectParamInt("SrcPlayer",k);
-	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+revealer2);
-	rmSetTriggerEffectParamInt("PlayerID",0);
-	rmAddTriggerEffect("Flare Minimap");
-	rmSetTriggerEffectParamInt("PlayerID", k, false);
-	rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-	rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc2)+","+xsVectorGetY(stationLoc2)+","+xsVectorGetZ(stationLoc2), false);
-	rmSetTriggerEffectParam("Flash", "True", false);
-
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station2_on_Plr"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_5_ON"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_6_ON"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_7_ON"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_8_ON"+k));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(false);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	// Station 3
-
-
-	rmCreateTrigger("Station3_on_Plr"+k);
-	rmCreateTrigger("Station3_off_Plr"+k);
-
-	rmSwitchToTrigger(rmTriggerID("Station3_on_Plr"+k));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+westernATStoper3);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",20);
-	rmSetTriggerConditionParam("UnitType","TradingPost");
-	rmSetTriggerConditionParam("Op",">=");
-	rmSetTriggerConditionParamFloat("Count",1);
-	
-	rmAddTriggerEffect("ZP Convert Station Grouping");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
-	rmSetTriggerEffectParamInt("SrcPlayer",0);
-	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
-	rmSetTriggerEffectParamInt("SrcPlayer",0);
-	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
-	rmSetTriggerEffectParamInt("SrcPlayer",0);
-	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
-	rmSetTriggerEffectParamInt("SrcPlayer",0);
-	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParam("UnitType","zpSPCDestilery");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
-	rmSetTriggerEffectParamInt("SrcPlayer",0);
-	rmSetTriggerEffectParamInt("TrgPlayer",k);
-	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+revealer3);
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	for(x=1; <= cNumberNonGaiaPlayers) {
-		rmAddTriggerEffect("Flare Minimap");
-		rmSetTriggerEffectParamInt("PlayerID", x, false);
-		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc3)+","+xsVectorGetY(stationLoc3)+","+xsVectorGetZ(stationLoc3), false);
-		rmSetTriggerEffectParam("Flash", "True", false);
-	}
-
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station3_off_Plr"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_9_ON"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_10_ON"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_11_ON"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_12_ON"+k));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmSwitchToTrigger(rmTriggerID("Station3_off_Plr"+k));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+westernATStoper3);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParamInt("Dist",20);
-	rmSetTriggerConditionParam("UnitType","TradingPost");
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamFloat("Count",0);
-	
-	rmAddTriggerEffect("ZP Convert Station Grouping");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
-	rmSetTriggerEffectParamInt("SrcPlayer",k);
-	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
-	rmSetTriggerEffectParamInt("SrcPlayer",k);
-	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParam("UnitType","zpSPCSocketCityTowerWooden");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
-	rmSetTriggerEffectParamInt("SrcPlayer",k);
-	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParam("UnitType","zpSPCCityTowerWooden");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
-	rmSetTriggerEffectParamInt("SrcPlayer",k);
-	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParam("UnitType","zpSPCDestilery");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert Units in Area");
-	rmSetTriggerEffectParam("SrcObject",""+westernATStoper3);
-	rmSetTriggerEffectParamInt("SrcPlayer",k);
-	rmSetTriggerEffectParamInt("TrgPlayer",0);
-	rmSetTriggerEffectParam("UnitType","zpSPCWesternTavern");
-	rmSetTriggerEffectParamInt("Dist",60);
-	rmAddTriggerEffect("Convert");
-	rmSetTriggerEffectParam("SrcObject",""+revealer3);
-	rmSetTriggerEffectParamInt("PlayerID",0);
-	rmAddTriggerEffect("Flare Minimap");
-	rmSetTriggerEffectParamInt("PlayerID", k, false);
-	rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-	rmSetTriggerEffectParam("Position", ""+xsVectorGetX(stationLoc3)+","+xsVectorGetY(stationLoc3)+","+xsVectorGetZ(stationLoc3), false);
-	rmSetTriggerEffectParam("Flash", "True", false);
-
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Station3_on_Plr"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_9_ON"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_10_ON"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_11_ON"+k));
-	rmAddTriggerEffect("Disable Trigger");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower_12_ON"+k));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(false);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	}
-
 
 	// ***************** DESTROYER TRAINING ********************
 
@@ -3771,6 +3627,126 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
+
+	// AI Revolutionary Fractions
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("ZP_Iniciate_Revolution"+k);
+		if (rmGetPlayerTeam(k) == 0)
+		rmCreateTrigger("ZP_Execute_Revolution"+k);
+		else
+		rmCreateTrigger("ZP_Execute_Revolution_Con"+k);
+		rmCreateTrigger("ZP_Timer_Revolution"+k);
+
+		rmSwitchToTrigger(rmTriggerID("ZP_Iniciate_Revolution"+k));
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechIndustrialize");
+		rmSetTriggerConditionParamInt("Status",2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Timer_Revolution"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("ZP_Timer_Revolution"+k));
+		rmAddTriggerCondition("Timer");
+		rmSetTriggerConditionParamInt("Param1",10);
+		rmAddTriggerCondition("Player Unit Count");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		if (rmGetPlayerTeam(k) == 0)
+			rmSetTriggerConditionParam("Protounit","zpSPCCivilWarCommandery");
+		else
+			rmSetTriggerConditionParam("Protounit","zpSPCCivilWarCommanderyCon");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Fire Event");
+		if (rmGetPlayerTeam(k) == 0)
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Execute_Revolution"+k));
+		else
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Execute_Revolution_Con"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		if (rmGetPlayerTeam(k) == 0) {
+		rmSwitchToTrigger(rmTriggerID("ZP_Execute_Revolution"+k));
+		rmAddTriggerCondition("Player Unit Count");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("Protounit","zpSPCCivilWarCommandery");
+		rmSetTriggerConditionParam("Op",">=");
+			rmSetTriggerConditionParamInt("Count",1);
+
+			int revFraction=-1;
+			revFraction = rmRandInt(1,3);
+
+			if (revFraction==1)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateRevPresidentUnion"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+			if (revFraction==2)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateRevGeneralUnion"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+			if (revFraction==3)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateRevAdmiralUnion"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(false);
+		}
+		else {
+			rmSwitchToTrigger(rmTriggerID("ZP_Execute_Revolution_Con"+k));
+			rmAddTriggerCondition("Player Unit Count");
+			rmSetTriggerConditionParamInt("PlayerID",k);
+			rmSetTriggerConditionParam("Protounit","zpSPCCivilWarCommanderyCon");
+			rmSetTriggerConditionParam("Op",">=");
+			rmSetTriggerConditionParamInt("Count",1);
+
+			if (revFraction==1)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateRevPresidentConfederate"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+			if (revFraction==2)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateRevGeneralConfederate"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+			if (revFraction==3)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateRevAdmiralConfederate"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(false);
+		}	
+	}
+
 
 	// Testing
 

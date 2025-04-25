@@ -1,6 +1,6 @@
 <material>
   <submaterial name="mata">
-    <materialdef name="default">
+    <materialdef name="default_doublesided">
     </materialdef>
     <parameters>
       <texture name="BaseColor" override="buildings\spc\cherokee_warhut\textures\cherokee_warhut_mata_BaseColor">
