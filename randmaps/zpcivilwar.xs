@@ -1783,32 +1783,184 @@ void main(void)
 	rmSetTriggerLoop(true);
 	}
 
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Activate Warhut"+k);
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID","cTechzpPickNativeConsulateTechCivilWar"); //operator
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffWaterWarHut"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player",k);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		if (rmGetPlayerTeam(k) == 0) {
+			rmCreateTrigger("Activate_Rev_USA"+k);
+			rmAddTriggerCondition("ZP Tech Researching (XS)");
+			rmSetTriggerConditionParam("TechID","cTechzpSPCUsaCivilWarRevolution"); //operator
+			rmSetTriggerConditionParamInt("PlayerID",k);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffRevUSA"); //operator
+			rmSetTriggerEffectParamInt("Status",2);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+			rmSetTriggerEffectParamInt("Status",2);
+			rmAddTriggerEffect("ZP Pick Consulate Tech");
+			rmSetTriggerEffectParamInt("Player",k);
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(true);
+		}
+		if (rmGetPlayerTeam(k) == 1) {
+			rmCreateTrigger("Activate_Rev_CSA"+k);
+			rmAddTriggerCondition("ZP Tech Researching (XS)");
+			rmSetTriggerConditionParam("TechID","cTechzpSPCCsaCivilWarRevolution"); //operator
+			rmSetTriggerConditionParamInt("PlayerID",k);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffRevCSA"); //operator
+			rmSetTriggerEffectParamInt("Status",2);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+			rmSetTriggerEffectParamInt("Status",2);
+			rmAddTriggerEffect("ZP Pick Consulate Tech");
+			rmSetTriggerEffectParamInt("Player",k);
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(true);
+		}
+	}
+
 	// Specific for human players
 
 	for(k=1; <= cNumberNonGaiaPlayers) {
-	rmCreateTrigger("Human Check Plr"+k);
-	rmAddTriggerCondition("ZP PLAYER Human");
-	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParam("MyBool", "true");
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmSetTriggerEffectParam("TechID","cTechzpIsPirateMap"); //operator
-	rmSetTriggerEffectParamInt("Status",2);
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Japan"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Tortuga"+k));
-	rmAddTriggerEffect("Fire Event");
-	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Western"+k));
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
+		rmCreateTrigger("Revolution_MusicEnd"+k);
+
+		rmCreateTrigger("Human Check Plr"+k);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "true");
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpIsPirateMap"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Japan"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Tortuga"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Western"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Warhut"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Rev_USA"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Rev_CSA"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
 	}
+
+	// Flag Change
+	for(k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Flag USA"+k);
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechzpRevolutionUSAShadow");
+		rmSetTriggerConditionParamInt("Status",2);
+		rmAddTriggerEffect("Player : Override Civilization for Flag");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmSetTriggerEffectParam("Civilization","DEAmericans");
+		rmAddTriggerEffect("Player : Override Civilization Name");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmSetTriggerEffectParam("StringID","34139");
+		rmAddTriggerEffect("Music Filename");
+		rmSetTriggerEffectParam("Music","ypack\music\strategy\Revolootin.mp3"); // Music Filename
+		rmSetTriggerEffectParamFloat("Duration",0.5);
+		rmAddTriggerEffect("Sound Timer");
+		rmSetTriggerEffectParamInt("Time", 61000);
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd"+k));
+		rmAddTriggerEffect("Play Soundset");
+		rmSetTriggerEffectParam("Soundset","UI_Strategywarning");
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmCreateTrigger("Flag CSA"+k);
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechzpRevolutionCSAShadow");
+		rmSetTriggerConditionParamInt("Status",2);
+		rmAddTriggerEffect("Player : Override Civilization for Flag");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmSetTriggerEffectParam("Civilization","zpRevCSA");
+		rmAddTriggerEffect("Player : Override Civilization Name");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmSetTriggerEffectParam("StringID","302606");
+		rmAddTriggerEffect("Music Filename");
+		rmSetTriggerEffectParam("Music","ypack\music\strategy\Revolootin.mp3"); // Music Filename
+		rmSetTriggerEffectParamFloat("Duration",0.5);
+		rmAddTriggerEffect("Sound Timer");
+		rmSetTriggerEffectParamInt("Time", 61000);
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd"+k));
+		rmAddTriggerEffect("Play Soundset");
+		rmSetTriggerEffectParam("Soundset","UI_Strategywarning");
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Revolution_MusicEnd"+k));
+		rmAddTriggerCondition("Timer");
+		rmSetTriggerConditionParamInt("Param1",5);
+		rmAddTriggerEffect("Music Play");
+		rmSetTriggerPriority(1);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(false);
+		rmSetTriggerLoop(false);
+
+	}
+
 
 	// ********************* TRADE ROUTE SETUP ***********************
 

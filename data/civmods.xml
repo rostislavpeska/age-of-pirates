@@ -671,6 +671,19 @@
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
   </civ>
+  <civ>
+    <name>zpRevCSA</name>
+    <main>0</main>
+    <displaynameid>302589</displaynameid>
+    <displayrevolutionflag>0</displayrevolutionflag>
+    <revolutionhomecityname>302589</revolutionhomecityname>
+    <homecityflagtexture>objects\flags\csa_americans</homecityflagtexture>
+    <postgameflagiconwpf>resources/images/icons/flags/postgame_flag_csa.png</postgameflagiconwpf>
+    <homecityflagiconwpf>resources/images/icons/flags/flag_csa.png</homecityflagiconwpf>
+    <homecityflagbuttonwpf>resources/images/icons/flags/flag_hc_csa.png</homecityflagbuttonwpf>
+    <visible>0</visible>
+    <visibleineditor>0</visibleineditor>
+  </civ>
 
 
 

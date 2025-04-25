@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="utf-8"?>
+<protounitsounddef>
+  <protounit name="deSteamer">
+    <soundtype name="Select">
+      <civlogic>
+        <choice name="DEAmericans">
+          <soundset name="DEAmericanGalleonSelect">
+          </soundset>
+        </choice>
+        <choice name="DEMexicans">
+          <techlogic>
+            <choice name="none">
+              <soundset name="DEMexicanSteamerSelect">
+              </soundset>
+            </choice>
+            <choice name="DEHCREVMXTexasNavy">
+              <soundset name="DEAmericanGalleonSelect">
+              </soundset>
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Spanish">
+          <soundset name="SpanishGalleonSelect">
+          </soundset>
+        </choice>
+        <choice name="British">
+          <soundset name="BritishFrigateSelect">
+          </soundset>
+        </choice>
+        <choice name="French">
+          <soundset name="FrenchFrigateSelect">
+          </soundset>
+        </choice>
+        <choice name="Portuguese">
+          <soundset name="PortugueseFrigateSelect">
+          </soundset>
+        </choice>
+        <choice name="Dutch">
+          <soundset name="DutchFrigateSelect">
+          </soundset>
+        </choice>
+        <choice name="Russians">
+          <soundset name="RussianFrigateSelect">
+          </soundset>
+        </choice>
+        <choice name="Germans">
+          <soundset name="GermanFrigateSelect">
+          </soundset>
+        </choice>
+        <choice name="Ottomans">
+          <soundset name="OttomanFrigateSelect">
+          </soundset>
+        </choice>
+        <choice name="Japanese">
+          <soundset name="PortugueseFrigateSelect">
+          </soundset>
+        </choice>
+        <choice name="Chinese">
+          <soundset name="PortugueseFrigateSelect">
+          </soundset>
+        </choice>
+        <choice name="Indians">
+          <soundset name="PortugueseFrigateSelect">
+          </soundset>
+        </choice>
+        <choice name="SPCAct1">
+        </choice>
+        <choice name="SPCAct2">
+        </choice>
+        <choice name="SPCAct3">
+        </choice>
+        <choice name="Pirate">
+        </choice>
+        <choice name="TheCircle">
+        </choice>
+        <choice name="NativeAmerican">
+        </choice>
+        <choice name="XPIroquois">
+          <soundset name="BritishFrigateSelect">
+          </soundset>
+        </choice>
+        <choice name="XPSioux">
+          <soundset name="BritishFrigateSelect">
+          </soundset>
+        </choice>
+        <choice name="XPAztec">
+          <soundset name="BritishFrigateSelect">
+          </soundset>
+        </choice>
+        <choice name="DEInca">
+          <soundset name="BritishFrigateSelect">
+          </soundset>
+        </choice>
+        <choice name="DEEthiopians">
+          <soundset name="BritishFrigateSelect">
+          </soundset>
+        </choice>
+        <choice name="DEHausa">
+          <soundset name="BritishFrigateSelect">
+          </soundset>
+        </choice>
+        <choice name="XPSPC">
+        </choice>
+        <choice name="Aztecs">
+        </choice>
+        <choice name="Caribs">
+        </choice>
+        <choice name="Cherokee">
+        </choice>
+        <choice name="Comanche">
+        </choice>
+        <choice name="Cree">
+        </choice>
+        <choice name="Incas">
+        </choice>
+        <choice name="Iroquois">
+        </choice>
+        <choice name="Lakota">
+        </choice>
+        <choice name="Maya">
+        </choice>
+        <choice name="Nootka">
+        </choice>
+        <choice name="Seminoles">
+        </choice>
+        <choice name="Tupi">
+        </choice>
+        <choice name="Zapotec">
+        </choice>
+        <choice name="Huron">
+        </choice>
+        <choice name="Cheyenne">
+        </choice>
+        <choice name="Klamath">
+        </choice>
+        <choice name="Mapuche">
+        </choice>
+        <choice name="Navajo">
+        </choice>
+        <choice name="Apache">
+        </choice>
+        <choice name="Louverture">
+        </choice>
+        <choice name="Washington">
+        </choice>
+        <choice name="Hidalgo">
+        </choice>
+        <choice name="Bonifacio">
+        </choice>
+        <choice name="Bolivar">
+        </choice>
+        <choice name="SanMartin">
+        </choice>
+        <choice name="Santander">
+        </choice>
+        <choice name="OHiggins">
+        </choice>
+        <choice name="DESwedish">
+          <soundset name="DESwedishFrigateSelect">
+          </soundset>
+        </choice>
+      </civlogic>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <civlogic>
+        <choice name="DEAmericans">
+          <soundset name="DEAmericanGalleonAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="DEMexicans">
+          <techlogic>
+            <choice name="none">
+              <soundset name="DEMexicanSteamerAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="DEHCREVMXTexasNavy">
+              <soundset name="DEAmericanGalleonAcknowledge">
+              </soundset>
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Spanish">
+          <soundset name="SpanishGalleonAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="British">
+          <soundset name="BritishFrigateAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="French">
+          <soundset name="FrenchFrigateAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Portuguese">
+          <soundset name="PortugueseFrigateAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Dutch">
+          <soundset name="DutchFrigateAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Russians">
+          <soundset name="RussianFrigateAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Germans">
+          <soundset name="GermanFrigateAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Ottomans">
+          <soundset name="OttomanFrigateAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Japanese">
+          <soundset name="PortugueseFrigateAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Chinese">
+          <soundset name="PortugueseFrigateAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Indians">
+          <soundset name="PortugueseFrigateAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="SPCAct1">
+        </choice>
+        <choice name="SPCAct2">
+        </choice>
+        <choice name="SPCAct3">
+        </choice>
+        <choice name="Pirate">
+        </choice>
+        <choice name="TheCircle">
+        </choice>
+        <choice name="NativeAmerican">
+        </choice>
+        <choice name="XPIroquois">
+          <soundset name="BritishFrigateAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="XPSioux">
+          <soundset name="BritishFrigateAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="XPAztec">
+          <soundset name="BritishFrigateAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="DEInca">
+          <soundset name="BritishFrigateAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="DEEthiopians">
+          <soundset name="BritishFrigateAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="DEHausa">
+          <soundset name="BritishFrigateAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Aztecs">
+        </choice>
+        <choice name="Caribs">
+        </choice>
+        <choice name="Cherokee">
+        </choice>
+        <choice name="Comanche">
+        </choice>
+        <choice name="Cree">
+        </choice>
+        <choice name="Incas">
+        </choice>
+        <choice name="Iroquois">
+        </choice>
+        <choice name="Lakota">
+        </choice>
+        <choice name="Maya">
+        </choice>
+        <choice name="Nootka">
+        </choice>
+        <choice name="Seminoles">
+        </choice>
+        <choice name="Tupi">
+        </choice>
+        <choice name="Zapotec">
+        </choice>
+        <choice name="Huron">
+        </choice>
+        <choice name="Cheyenne">
+        </choice>
+        <choice name="Klamath">
+        </choice>
+        <choice name="Mapuche">
+        </choice>
+        <choice name="Navajo">
+        </choice>
+        <choice name="Apache">
+        </choice>
+        <choice name="Louverture">
+        </choice>
+        <choice name="Washington">
+        </choice>
+        <choice name="Hidalgo">
+        </choice>
+        <choice name="Bonifacio">
+        </choice>
+        <choice name="Bolivar">
+        </choice>
+        <choice name="SanMartin">
+        </choice>
+        <choice name="Santander">
+        </choice>
+        <choice name="OHiggins">
+        </choice>
+        <choice name="DESwedish">
+          <soundset name="DESwedishFrigateAcknowledge">
+          </soundset>
+        </choice>
+      </civlogic>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="ShipDeath">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="ShipBirth">
+      </soundset>
+    </soundtype>
+    <soundtype name="Exists">
+      <soundset name="AmbienceShip">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

@@ -2566,7 +2566,7 @@
       <string _locid="302566">Pipe of civilwar_peacepipe</string>
       <string _locid="302567">ZP SPC Native Consulate US</string>
       <string _locid="302568">ZP SPC Native Consulate US Travois</string>
-      <string _locid="302569">Cherokee</string>
+      <string _locid="302569">Cherokee</string> 
       <string _locid="302570">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nCherokee Rifleman \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nCherokee War Dance, Sequoyah's Cherokee Syllabary, Cherokee Basket Weaving</string>
       <string _locid="302571">Seminole</string>
       <string _locid="302572">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nSeminole Sharktooth Bowman \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nSeminole Guerilla Wars, Seminole Bowyer, Seminole Invincibles</string>
@@ -2575,6 +2575,36 @@
       <string _locid="302575">Native Consulate (Cherokee)</string>
       <string _locid="302576">Native Consulate (Seminole)</string>
       <string _locid="302577">Native Consulate (Lakota)</string>
+      <string _locid="302578">Team Railroad Logistics</string>
+      <string _locid="302579">Team Boomtown Industry</string>
+      <string _locid="302580">Increases production rate for Sawmill and Whiskey Distillery by 100%.</string>
+      <string _locid="302581">Team Hired Guns</string>
+      <string _locid="302582">Significantly decreases Outlaw population costs.</string>
+      <string _locid="302583">Team Tales of the West</string>
+      <string _locid="302584">Increases Waterin' Hole XP Production rate</string>
+      <string _locid="302585">Advanced American Fleet</string>
+      <string _locid="302586">Transforms all your Monitors into ironclads. Unlocks Ironclad training and improvements. Changes Ironclad costs to correspond with the original Monitor costs (also for United States and Mexico).</string>
+      <string _locid="302587">ZP Civil War Commandery USA</string>
+      <string _locid="302588">ZP Civil War Commandery CSA</string>
+      <string _locid="302589">Confederate States of America</string>
+      <string _locid="302590">Revolt to United States of America</string>
+      <string _locid="302591">Pick one of the three United States leaders providing you with unique techs.\n • Initiates a special type of revolution \n • Unlocks new techs</string>
+      <string _locid="302592">Revolt to Confederate States of America</string>
+      <string _locid="302593">Pick one of the three Confederacy leaders providing you with unique techs.</string>
+      <string _locid="302594">Join the Union</string>
+      <string _locid="302595">The Admiral</string>
+      <string _locid="302596">Naval improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nFull Speed Ahead, Advanced Warship Engineering</string>
+      <string _locid="302597">The President</string>
+      <string _locid="302598">Economic improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nEmancipation Proclamation, Industrial North</string>
+      <string _locid="302599">The General</string>
+      <string _locid="302600">Military improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nVolunteer Corps, Field Hospitals</string>
+      <string _locid="302601">Pick one of the three United States leaders providing you with unique techs.\n • Unlocks new techs</string>
+      <string _locid="302602">You proclaimed yourself as part of the Union!</string>
+      <string _locid="302603">%s has risen the Union Flag!</string>
+      <string _locid="302604">You proclaimed yourself as part of the Confederacy!</string>
+      <string _locid="302605">%s has risen the Confederate Flag!</string>
+      <string _locid="302606">Confederate States</string>
+
 
 
       <!-- ======================================== -->
