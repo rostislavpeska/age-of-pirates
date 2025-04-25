@@ -955,7 +955,7 @@ minInterval 10
          ageUpPriority = 65; // settler maintain plan is 70 priority
       }
    }
-   else if (age == cAge3 && gStrategy == cStrategyFastIndustrial)
+   else if (getAgingUpAge() == cAge3 && gStrategy == cStrategyFastIndustrial)
    {
       ageUpPriority = 65;
    }

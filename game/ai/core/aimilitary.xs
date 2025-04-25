@@ -1261,11 +1261,11 @@ minInterval 15
          if (cDifficultyCurrent >= cDifficultyHard)
          {
             // Avoid attacking until 5 minutes passed after aging up.
-            // AssertiveWall: reduce to 2 mins
+            // AssertiveWall: reduce to 3 mins
             if ((gStrategy == cStrategyFastIndustrial && kbGetAge() < cAge4) || 
                 ((gStrategy == cStrategyNakedFF || gStrategy == cStrategySafeFF) && kbGetAge() < cAge3))
             {
-               if (currentTime - gAgeUpTime < 2 * 60 * 1000)
+               if (currentTime - gAgeUpTime < 3 * 60 * 1000)
                {
                   shouldAttack = false;
                }
