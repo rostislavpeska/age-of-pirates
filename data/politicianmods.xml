@@ -117,7 +117,13 @@
   </zpconsulatekingofbohemiajagiellon>
   <zpconsulatekingofbohemiawittelsbach portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/bohemia_wittelsbach.png">
   </zpconsulatekingofbohemiawittelsbach>
-
+  <zpconsulatenatcherokee portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_cherokee.png">
+  </zpconsulatenatcherokee>
+  <zpconsulatenatseminole portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_seminole.png">
+  </zpconsulatenatseminole>
+  <zpconsulatenatlakota portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_lakota.png">
+  </zpconsulatenatlakota>
+  
   <zpconsulaterevjacobine portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_jacobine.png">
   </zpconsulaterevjacobine>
   <zpconsulaterevlafayette portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_lafayette.png">

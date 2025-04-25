@@ -1,0 +1,54 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\spc\cherokee_warhut\textures\cherokee_warhut_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\spc\cherokee_warhut\textures\cherokee_warhut_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\spc\cherokee_warhut\textures\cherokee_warhut_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings\spc\cherokee_warhut\textures\cherokee_warhut_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\spc\cherokee_warhut\textures\cherokee_warhut_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\spc\cherokee_warhut\textures\cherokee_warhut_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\spc\cherokee_warhut\textures\cherokee_warhut_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings\spc\cherokee_warhut\textures\cherokee_warhut_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="objects\skulls\skull_a\textures\skulls_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="objects\skulls\skull_a\textures\skulls_matA_Normals">
+      </texture>
+      <texture name="Masks" override="objects\skulls\skull_a\textures\skulls_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

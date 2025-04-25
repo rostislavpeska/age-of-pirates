@@ -54340,6 +54340,7 @@
     <unittype>BuildingClass</unittype>
     <train row="0" page="0" column="0">zpNatConRegular</train>
     <train row="0" page="0" column="1">zpNatConUSCavalry</train>
+    <tech row="0" page="2" column="1">zpCivilWarPeacePipe</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -54526,6 +54527,167 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
     <flag>NotSelectable</flag>
+  </unit>
+  <unit id="20739" name="zpAmericanWarHut">
+    <dbid>20739</dbid>
+    <displaynameid>300355</displaynameid>
+    <editornameid>302567</editornameid>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <obstructionradiusz>5.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <buildlimit>1</buildlimit>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\cherokee_warhut\cherokee_warhutbuild.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\buildings\native_consulate_icon.png</icon>
+    <portraiticon>resources\art\buildings\native_consulate_portrait.png</portraiticon>
+    <rollovertextid>300379</rollovertextid>
+    <shortrollovertextid>300379</shortrollovertextid>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <initialhitpoints>4500.0000</initialhitpoints>
+    <maxhitpoints>4500.0000</maxhitpoints>
+    <buildpoints>50.0000</buildpoints>
+    <los>14.0000</los>
+    <bounty>150.0000</bounty>
+    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Gold">300.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>2</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <tech row="0" page="2" column="1">zpPickNativeConsulateTechCivilWar</tech>
+    <!--<train row="0" page="0" column="0">deNatHolcanJavelineer</train>
+    <train row="0" page="0" column="1">NatMedicineMan</train>
+    <train row="0" page="0" column="2">zpNatConquistador</train>
+    <train row="0" page="0" column="3">NatLightningWarrior</train>
+    <train row="0" page="0" column="4">NatBlackwoodArcher</train>
+    <tech row="0" page="2" column="1">NatCottonArmor</tech>
+    <tech row="0" page="2" column="2">NatCalendar</tech>
+    <tech row="0" page="2" column="3">NatMayaPyramids</tech>
+    <tech row="0" page="1" column="1">ChampionMaya</tech>
+    <tech row="0" page="1" column="1">WarriorSocietyMaya</tech>
+    <tech row="0" page="2" column="1">zpNatJesuitFlyingButtress</tech>
+    <tech row="0" page="2" column="2">zpNatJesuitSmokelessPowder</tech>
+    <tech row="0" page="2" column="3">zpNatJesuitSchools</tech>
+    <tech row="0" page="1" column="1">zpNatDisciplinedJesuit</tech>
+    <tech row="0" page="1" column="1">zpNatHonoredJesuit</tech>
+    <tech row="0" page="2" column="1">NatXPZapotecFoodOfTheGods</tech>
+    <tech row="0" page="2" column="2">NatXPZapotecCultOfTheDead</tech>
+    <tech row="0" page="2" column="3">NatXPZapotecCloudPeople</tech>
+    <tech row="0" page="1" column="1">WarriorSocietyZapotec</tech>
+    <tech row="0" page="1" column="1">ChampionZapotec</tech>
+    <tech row="0" page="1" column="1">WarriorSocietyTupi</tech>
+    <tech row="0" page="1" column="1">ChampionTupi</tech>
+    <tech row="0" page="2" column="1">NatAnimalLore</tech>
+    <tech row="0" page="2" column="2">NatPoisonArrowFrogs</tech>
+    <tech row="0" page="2" column="3">NatForestBurning</tech>-->
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Economic</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>InitialGarrisonOnly</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20740" name="zpAmericanWarHutTravois">
+    <dbid>20740</dbid>
+    <displaynameid>300361</displaynameid>
+    <editornameid>302568</editornameid>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>5.0000</maxvelocity>
+    <maxrunvelocity>7.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>5.0000</turnrate>
+    <animfile>units\natives\aztec_native_travois.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\trade\travois_icon_64.png</icon>
+    <portraiticon>resources\art\units\trade\travois_icon_portrait.png</portraiticon>
+    <rollovertextid>300377</rollovertextid>
+    <shortrollovertextid>300377</shortrollovertextid>
+    <initialhitpoints>500.0000</initialhitpoints>
+    <maxhitpoints>500.0000</maxhitpoints>
+    <los>18.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>Civilian</unitaitype>
+    <trainpoints>60.0000</trainpoints>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractWagon</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>CannotConvertHill</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ValidIdleVillager</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <train row="0" page="6" column="0">zpAmericanWarHut</train>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>DeadReplacementWhenDestroyed</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <flag>UnitTransformFree</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>coveredwagon.tactics</tactics>
+    <protoaction>
+      <name>Build</name>
+      <rate type="zpAmericanWarHut">3.000000</rate>
+    </protoaction>
   </unit>
 
 

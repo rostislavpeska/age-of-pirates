@@ -2562,6 +2562,19 @@
       <string _locid="302562">Achieve Union Team victory by capturing and holding all sockets on the map for at least 2 minutes.</string>
       <string _locid="302563">Achieve Confederacy Team victory by capturing and holding all sockets on the map for at least 2 minutes.</string>
       <string _locid="302564">ZP Prop Wind Mill</string>
+      <string _locid="302565">Build a Native Consulate and pick a partner from a nearby native tribe.</string>
+      <string _locid="302566">Pipe of civilwar_peacepipe</string>
+      <string _locid="302567">ZP SPC Native Consulate US</string>
+      <string _locid="302568">ZP SPC Native Consulate US Travois</string>
+      <string _locid="302569">Cherokee</string>
+      <string _locid="302570">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nCherokee Rifleman \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nCherokee War Dance, Sequoyah's Cherokee Syllabary, Cherokee Basket Weaving</string>
+      <string _locid="302571">Seminole</string>
+      <string _locid="302572">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nSeminole Sharktooth Bowman \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nSeminole Guerilla Wars, Seminole Bowyer, Seminole Invincibles</string>
+      <string _locid="302573">Lakota</string>
+      <string _locid="302574">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nLakota Axe Rider \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nLakota Hunting Grounds, Lakota Horse Trading, Lakota Tokala Soldiers</string>
+      <string _locid="302575">Native Consulate (Cherokee)</string>
+      <string _locid="302576">Native Consulate (Seminole)</string>
+      <string _locid="302577">Native Consulate (Lakota)</string>
 
 
       <!-- ======================================== -->
