@@ -24760,6 +24760,9 @@
         <target type="ProtoUnit">Explorer</target>
       </effect>
       <effect type="CommandAdd" proto="zpSPCCivilWarCommandery" page="6" column="2">
+        <target type="ProtoUnit">deGeneral</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCCivilWarCommandery" page="6" column="2">
         <target type="ProtoUnit">dePadre</target>
       </effect>
       <effect type="CommandAdd" proto="zpSPCCivilWarCommandery" page="6" column="2">
@@ -24807,6 +24810,9 @@
       </effect>
       <effect type="CommandAdd" proto="zpSPCCivilWarCommanderyCon" page="6" column="2">
         <target type="ProtoUnit">Explorer</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCCivilWarCommanderyCon" page="6" column="2">
+        <target type="ProtoUnit">deGeneral</target>
       </effect>
       <effect type="CommandAdd" proto="zpSPCCivilWarCommanderyCon" page="6" column="2">
         <target type="ProtoUnit">dePadre</target>

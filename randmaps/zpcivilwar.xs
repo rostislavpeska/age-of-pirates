@@ -49,6 +49,10 @@ void main(void)
 
 
     int size = 500;
+	if (PlayerNum >=5)
+		size = 600;
+	if (PlayerNum >=7)
+		size = 660;
 	rmSetMapSize(size, size);
 	// rmSetMapElevationParameters(cElevTurbulence, 0.4, 6, 0.5, 3.0);  // DAL - original
 	
@@ -140,7 +144,7 @@ void main(void)
 	// int fishVsFishID=rmCreateTypeDistanceConstraint("fish v fish", "fish", 18.0);
 	
 	int forestObjConstraint=rmCreateTypeDistanceConstraint("forest obj", "all", 6.0);
-	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 25.0);
+	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 19.0);
 	int avoidResource=rmCreateTypeDistanceConstraint("resource avoid resource", "resource", 20.0);
 	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "Mine", 30.0);
 	int shortAvoidCoin=rmCreateTypeDistanceConstraint("short avoid coin", "gold", 10.0);
@@ -268,7 +272,10 @@ void main(void)
    
 	rmAddTradeRouteWaypoint(tradeRouteID, 0.0, 0.75);
    	rmAddTradeRouteWaypoint(tradeRouteID, 0.27, 0.75);
-    rmAddTradeRouteWaypoint(tradeRouteID, 0.4, 0.88);
+	if (PlayerNum >=7)
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.42, 0.88);
+	else
+		rmAddTradeRouteWaypoint(tradeRouteID, 0.4, 0.88);
 	rmAddTradeRouteWaypoint(tradeRouteID, 0.6, 0.88);
 	rmAddTradeRouteWaypoint(tradeRouteID, 0.73, 0.75);
 	rmAddTradeRouteWaypoint(tradeRouteID, 1.0, 0.75);
@@ -277,7 +284,10 @@ void main(void)
 	int tradeRouteID2 = rmCreateTradeRoute(); 
 	rmAddTradeRouteWaypoint(tradeRouteID2, 0.0, 0.75);
    	rmAddTradeRouteWaypoint(tradeRouteID2, 0.27, 0.75);
-    rmAddTradeRouteWaypoint(tradeRouteID2, 0.4, 0.88);
+	if (PlayerNum >=7)
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.42, 0.88);
+	else
+		rmAddTradeRouteWaypoint(tradeRouteID2, 0.4, 0.88);
 	rmAddTradeRouteWaypoint(tradeRouteID2, 0.6, 0.88);
 	rmAddTradeRouteWaypoint(tradeRouteID2, 0.73, 0.75);
 	rmAddTradeRouteWaypoint(tradeRouteID2, 1.0, 0.75);
@@ -287,13 +297,19 @@ void main(void)
 	rmAddTradeRouteWaypoint(tradeRouteID3, 1.0, 0.75);
 	rmAddTradeRouteWaypoint(tradeRouteID3, 0.73, 0.75);
 	rmAddTradeRouteWaypoint(tradeRouteID3, 0.6, 0.88);
-	rmAddTradeRouteWaypoint(tradeRouteID3, 0.4, 0.88);
+	if (PlayerNum >=7)
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.42, 0.88);
+	else
+		rmAddTradeRouteWaypoint(tradeRouteID3, 0.4, 0.88);
 	rmAddTradeRouteWaypoint(tradeRouteID3, 0.27, 0.75);
 	rmAddTradeRouteWaypoint(tradeRouteID3, 0.0, 0.75);
     rmBuildTradeRoute(tradeRouteID3, "armored_train");
 
     // Place train stopper, because without it the islands son't spawn
-    vector socketLoc = rmGetTradeRouteWayPoint(tradeRouteID, 0.47);
+	if (PlayerNum >=5)
+		vector socketLoc = rmGetTradeRouteWayPoint(tradeRouteID, 0.5);
+	else
+    	socketLoc = rmGetTradeRouteWayPoint(tradeRouteID, 0.47);
     rmPlaceObjectDefAtPoint(stopperID, 0, socketLoc);
 	vector stoperLoc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperID, 0));
 
@@ -301,15 +317,24 @@ void main(void)
     rmPlaceObjectDefAtPoint(stopper2ID, 0, socketLoc);
 	vector stoperLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopper2ID, 0));
 
-	socketLoc = rmGetTradeRouteWayPoint(tradeRouteID, 0.8);
+	if (PlayerNum >=5)
+		socketLoc = rmGetTradeRouteWayPoint(tradeRouteID, 0.83);
+	else
+		socketLoc = rmGetTradeRouteWayPoint(tradeRouteID, 0.8);
     rmPlaceObjectDefAtPoint(stopper3ID, 0, socketLoc);
 	vector stoperLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopper3ID, 0));
 
-	socketLoc = rmGetTradeRouteWayPoint(tradeRouteID, 0.33);
+	if (PlayerNum >=7)
+		socketLoc = rmGetTradeRouteWayPoint(tradeRouteID, 0.335);
+	else
+		socketLoc = rmGetTradeRouteWayPoint(tradeRouteID, 0.33);
     rmPlaceObjectDefAtPoint(stopperBridge1ID, 0, socketLoc);
 	vector bridgeLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperBridge1ID, 0));
 
-	socketLoc = rmGetTradeRouteWayPoint(tradeRouteID, 0.655);
+	if (PlayerNum ==5 || PlayerNum ==6)
+		socketLoc = rmGetTradeRouteWayPoint(tradeRouteID, 0.67);
+	else
+		socketLoc = rmGetTradeRouteWayPoint(tradeRouteID, 0.6555);
     rmPlaceObjectDefAtPoint(stopperBridge2ID, 0, socketLoc);
 	vector bridgeLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(stopperBridge2ID, 0));
 
@@ -319,7 +344,10 @@ void main(void)
 	//  ************************** River ******************************
 
     // River must be defined before the islands are placed
-    int riverID = rmRiverCreate(-1, "ZP Mississippi River", 4, 4, 150, 150); //  (-1, "new england lake", 18, 14, 5, 5)
+	if (PlayerNum >=7)
+		int riverID = rmRiverCreate(-1, "ZP Mississippi River", 4, 4, 180, 180); //  (-1, "new england lake", 18, 14, 5, 5)
+	else
+		riverID = rmRiverCreate(-1, "ZP Mississippi River", 4, 4, 150, 150); //  (-1, "new england lake", 18, 14, 5, 5)
     rmRiverAddWaypoint(riverID, 0.5, 0.0);
     rmRiverAddWaypoint(riverID, 0.5, 1.0);
 	rmRiverBuild(riverID);
@@ -338,14 +366,24 @@ void main(void)
 
 	// River Trade Route
 	int tradeRouteID4 = rmCreateTradeRoute();
-	rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
-	rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.3);
-   	rmAddTradeRouteWaypoint(tradeRouteID4, 0.57, 0.4);
-    rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.45);
-	rmAddTradeRouteWaypoint(tradeRouteID4, 0.43, 0.4);
-	rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.3);
-	rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
-
+	if (PlayerNum >=7) {
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.3);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.55, 0.4);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.45);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.45, 0.4);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.3);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
+	}
+	else {
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.3);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.57, 0.4);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.45);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.43, 0.4);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.3);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
+	}
 
 	// *********************** INVENTOR GROUPINGS ***************************
 
@@ -395,6 +433,10 @@ void main(void)
 
 	int riverArea1 = rmCreateArea("riverArea1");
     rmSetAreaSize(riverArea1 , rmAreaTilesToFraction(6000), rmAreaTilesToFraction(6000));
+	if (PlayerNum >=5)
+		rmSetAreaSize(riverArea1 , rmAreaTilesToFraction(7000), rmAreaTilesToFraction(7000));
+	if (PlayerNum >=7)
+		rmSetAreaSize(riverArea1 , rmAreaTilesToFraction(8000), rmAreaTilesToFraction(8000));
     rmSetAreaLocation(riverArea1 , 0.5, 0.5);		
     rmSetAreaCoherence(riverArea1 , 0.6);
     rmSetAreaElevationVariation(riverArea1, 0.0);
@@ -405,6 +447,10 @@ void main(void)
 
 	int riverArea2 = rmCreateArea("riverArea2");
     rmSetAreaSize(riverArea2, rmAreaTilesToFraction(2800), rmAreaTilesToFraction(2800));
+	if (PlayerNum >=5)
+		rmSetAreaSize(riverArea2, rmAreaTilesToFraction(3200), rmAreaTilesToFraction(3200));
+	if (PlayerNum >=7)
+		rmSetAreaSize(riverArea2, rmAreaTilesToFraction(3600), rmAreaTilesToFraction(3600));
     rmSetAreaLocation(riverArea2, 0.5, 0.5);			
     rmSetAreaCoherence(riverArea2, 0.8);
     rmSetAreaElevationVariation(riverArea2, 0.0);
@@ -415,6 +461,10 @@ void main(void)
 
 	int riverArea3 = rmCreateArea("riverArea3");
     rmSetAreaSize(riverArea3 , rmAreaTilesToFraction(2800), rmAreaTilesToFraction(2800));
+	if (PlayerNum >=5)
+		rmSetAreaSize(riverArea3 , rmAreaTilesToFraction(3200), rmAreaTilesToFraction(3200));
+	if (PlayerNum >=7)
+		rmSetAreaSize(riverArea3 , rmAreaTilesToFraction(3600), rmAreaTilesToFraction(3600));
     rmSetAreaLocation(riverArea3 , 0.5, 0.5);	
     rmSetAreaCoherence(riverArea3 , 0.8);
     rmSetAreaElevationVariation(riverArea3, 0.0);
@@ -425,6 +475,10 @@ void main(void)
 
 	int riverArea4 = rmCreateArea("riverArea4");
     rmSetAreaSize(riverArea4 , rmAreaTilesToFraction(2600), rmAreaTilesToFraction(2600));
+	if (PlayerNum >=5)
+		rmSetAreaSize(riverArea4 , rmAreaTilesToFraction(3000), rmAreaTilesToFraction(3000));
+	if (PlayerNum >=7)
+		rmSetAreaSize(riverArea4 , rmAreaTilesToFraction(3100), rmAreaTilesToFraction(3100));
     rmSetAreaLocation(riverArea4 , 0.5, 0.5);	
     rmSetAreaCoherence(riverArea4 , 0.8);
     rmSetAreaElevationVariation(riverArea4, 0.0);
@@ -435,6 +489,10 @@ void main(void)
 
 	int riverArea5 = rmCreateArea("riverArea5");
     rmSetAreaSize(riverArea5 , rmAreaTilesToFraction(2600), rmAreaTilesToFraction(2600));
+	if (PlayerNum >=5)
+		rmSetAreaSize(riverArea5 , rmAreaTilesToFraction(3000), rmAreaTilesToFraction(3000));
+	if (PlayerNum >=7)
+		rmSetAreaSize(riverArea5 , rmAreaTilesToFraction(3100), rmAreaTilesToFraction(3100));
     rmSetAreaLocation(riverArea5 , 0.5, 0.5);	
     rmSetAreaCoherence(riverArea5 , 0.8);
     rmSetAreaElevationVariation(riverArea5, 0.0);
@@ -445,6 +503,10 @@ void main(void)
 
 	int centralLake = rmCreateArea("centralLake");
     rmSetAreaSize(centralLake , rmAreaTilesToFraction(5600), rmAreaTilesToFraction(5600));
+	if (PlayerNum >=5)
+		rmSetAreaSize(centralLake , rmAreaTilesToFraction(6500), rmAreaTilesToFraction(6500));
+	if (PlayerNum >=7)
+		rmSetAreaSize(centralLake , rmAreaTilesToFraction(7000), rmAreaTilesToFraction(7000));
     rmSetAreaLocation(centralLake , 0.5, 0.5);	
     rmSetAreaCoherence(centralLake , 0.8);
     rmSetAreaElevationVariation(centralLake, 0.0);
@@ -760,24 +822,52 @@ void main(void)
 	float teamStartLoc = rmRandFloat(0.0, 1.0);
 	int weirdSpawn = 0;
 
-    if(cNumberTeams == 2){
-		if (teamStartLoc > 0.5)
-		{
-			rmSetPlacementTeam(0);
-			rmSetPlacementSection(0.28, 0.4); 
-			rmPlacePlayersCircular(0.4, 0.4, 0);
-			rmSetPlacementTeam(1);
-			rmSetPlacementSection(0.6, 0.72);
-			rmPlacePlayersCircular(0.4, 0.4, 0);
+    if(cNumberTeams == 2) {
+		if (PlayerNum == 2) {
+			if (teamStartLoc > 0.5) {
+				rmPlacePlayer(1, 0.2, 0.25);
+				rmPlacePlayer(2, 0.8, 0.25);
+			}
+			else {
+				rmPlacePlayer(1, 0.8, 0.25);
+				rmPlacePlayer(2, 0.2, 0.25);
+			}	
 		}
-		else
-		{
-			rmSetPlacementTeam(0);
-			rmSetPlacementSection(0.6, 0.72);
-			rmPlacePlayersCircular(0.4, 0.4, 0);
-			rmSetPlacementTeam(1);
-			rmSetPlacementSection(0.28, 0.4); 
-			rmPlacePlayersCircular(0.4, 0.4, 0);
+		else if (PlayerNum > 2&& PlayerNum <7) {
+			if (teamStartLoc > 0.5) {
+				rmSetPlacementTeam(0);
+				rmSetPlacementSection(0.28, 0.4); 
+				rmPlacePlayersCircular(0.4, 0.4, 0);
+				rmSetPlacementTeam(1);
+				rmSetPlacementSection(0.6, 0.72);
+				rmPlacePlayersCircular(0.4, 0.4, 0);
+			}
+			else {
+				rmSetPlacementTeam(0);
+				rmSetPlacementSection(0.6, 0.72);
+				rmPlacePlayersCircular(0.4, 0.4, 0);
+				rmSetPlacementTeam(1);
+				rmSetPlacementSection(0.28, 0.4); 
+				rmPlacePlayersCircular(0.4, 0.4, 0);
+			}
+		}
+		else {
+			if (teamStartLoc > 0.5) {
+				rmSetPlacementTeam(0);
+				rmSetPlacementSection(0.26, 0.42); 
+				rmPlacePlayersCircular(0.4, 0.4, 0);
+				rmSetPlacementTeam(1);
+				rmSetPlacementSection(0.58, 0.74);
+				rmPlacePlayersCircular(0.4, 0.4, 0);
+			}
+			else {
+				rmSetPlacementTeam(0);
+				rmSetPlacementSection(0.58, 0.74);
+				rmPlacePlayersCircular(0.4, 0.4, 0);
+				rmSetPlacementTeam(1);
+				rmSetPlacementSection(0.26, 0.42); 
+				rmPlacePlayersCircular(0.4, 0.4, 0);
+			}
 		}
 	}
 
@@ -871,7 +961,7 @@ void main(void)
 			rmAddObjectDefConstraint(startID, avoidWater20);
 
 			int commandPostID = rmCreateObjectDef("commandPostt"+i);
-			rmAddObjectDefItem(commandPostID, "pSPCCivilWarCommandery", 1, 2.0);
+			rmAddObjectDefItem(commandPostID, "zpSPCCivilWarCommandery", 1, 2.0);
 			rmSetObjectDefMinDistance(commandPostID, 0.0);
 			rmSetObjectDefMaxDistance(commandPostID, 10.0);
 			rmAddObjectDefConstraint(commandPostID, avoidTradeRouteMin);
@@ -923,6 +1013,7 @@ void main(void)
 	rmAddObjectDefConstraint(randomGoldID, avoidAll);
 	rmAddObjectDefConstraint(randomGoldID, avoidTownCenterFar);
 	rmAddObjectDefConstraint(randomGoldID, avoidSocketLong);
+	rmAddObjectDefConstraint(randomGoldID, avoidWater20);
 	rmAddObjectDefConstraint(randomGoldID, playerEdgeConstraint);
 	rmPlaceObjectDefInArea(randomGoldID, 0,  playerIslandSouthID, cNumberNonGaiaPlayers);
 	rmPlaceObjectDefInArea(randomGoldID, 0,  playerIslandNorthID, cNumberNonGaiaPlayers);
@@ -939,7 +1030,11 @@ void main(void)
 	// Define and place forests - north and south
 	int forestTreeID = 0;
 
-	numTries=28+5*cNumberNonGaiaPlayers;  // DAL - 4 here, 4 below
+	numTries=42;
+	if (cNumberNonGaiaPlayers >= 5)
+		numTries = 56;
+	if (cNumberNonGaiaPlayers >= 7)
+		numTries = 70;
 	failCount=0;
 	for (i=0; <numTries)
 		{   
@@ -973,7 +1068,11 @@ void main(void)
 	}
 
 	
-	numTries=20;  // DAL - 4 here, 4 above.
+	numTries=42;
+	if (cNumberNonGaiaPlayers >= 5)
+		numTries = 56;
+	if (cNumberNonGaiaPlayers >= 7)
+		numTries = 70;
 	failCount=0;
 	for (i = 0; i < numTries; i++)
 	{   
