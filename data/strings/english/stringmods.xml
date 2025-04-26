@@ -862,7 +862,7 @@
       <string _locid="300861">Ships the whole Venetian Brigade.</string>
       <string _locid="300862">ZP NAT MERC Venetian Bombard</string>
       <string _locid="300863">ZP Merc Nautilus</string>
-      <string _locid="300864">ZP Merc Destroyer</string>
+      <string _locid="300864">ZP Pirate Destroyer</string>
       <string _locid="300865">Orthodox</string>
       <!--<string _locid="300866">&lt;icon="(128)(resources/art/units/personalities/blackbeard.png)"&gt; &lt;color=1.0, 0.9, 0.5&gt;EDWARD TEACH&lt;/color&gt; \nIf ye be brave or fool enough to face a pirates curse, proceed. Take heed, wretched curs. Your fate is sealed.</string>-->
       <string _locid="300866" gamecharacter="Edward Teach" soundfilename="BLACKB001" portraitfilename="resources/art/units/personalities/blackbeard.png">If ye be brave or fool enough to face a pirates curse, proceed. Take heed, wretched curs. Your fate is sealed.</string>
@@ -2604,6 +2604,8 @@
       <string _locid="302604">You proclaimed yourself as part of the Confederacy!</string>
       <string _locid="302605">%s has risen the Confederate Flag!</string>
       <string _locid="302606">Confederate States</string>
+      <string _locid="302607">Pirate Destroyer</string>
+      <string _locid="302608">CSS Alabama</string>
 
 
 

@@ -7711,13 +7711,11 @@
       </effect>
       <effect type="SetName" proto="zpWokouSteamer" culture="none" newname="302538">
       </effect>
-      <effect type="Data" amount="1.60" subtype="Damage" allactions="1" relativity="BasePercent">
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpMercWokouSteamer</target>
       </effect>
-      <effect type="Data" amount="1.60" subtype="Hitpoints" relativity="BasePercent">
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpMercWokouSteamer</target>
-      </effect>
-      <effect type="SetName" proto="zpMercWokouSteamer" culture="none" newname="302538">
       </effect>
     </effects>
   </tech>
@@ -24996,7 +24994,7 @@
     </effects>
   </tech>
   <tech name="zpActivateCSASkins" type="Normal">
-    <dbid>41012</dbid>
+    <dbid>41006</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -25055,7 +25053,7 @@
     </effects>
   </tech>
   <tech name="zpConsulateNatCherokee" type="Normal">
-    <dbid>41014</dbid>
+    <dbid>41007</dbid>
     <displaynameid>302569</displaynameid>
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
@@ -25228,7 +25226,7 @@
     </effects>
   </tech>
   <tech name="zpConsulateNatLakota" type="Normal">
-    <dbid>41015</dbid>
+    <dbid>41008</dbid>
     <displaynameid>302573</displaynameid>
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>

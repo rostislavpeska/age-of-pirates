@@ -5125,11 +5125,7 @@
     <sharedbuildlimitunittypes>
       <unittype>zpWokouSteamer</unittype>
       <unittype>zpWokouSteamerProxy</unittype>
-      <unittype>zpMercWokouSteamer</unittype>
     </sharedbuildlimitunittypes>
-    <sharedselectionunittypes>
-      <unittype>zpMercWokouSteamer</unittype>
-    </sharedselectionunittypes>
     <dodgechance>0.0000</dodgechance>
     <dodgemessageid>110541</dodgemessageid>
     <dodgesoundset>IroncladBlock</dodgesoundset>
@@ -5350,7 +5346,6 @@
     <sharedbuildlimitunittypes>
       <unittype>zpWokouSteamer</unittype>
       <unittype>zpWokouSteamerProxy</unittype>
-      <unittype>zpMercWokouSteamer</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -17745,7 +17740,7 @@
   </unit>
   <unit id="20409" name="zpMercWokouSteamer">
     <dbid>20409</dbid>
-    <displaynameid>300220</displaynameid>
+    <displaynameid>302607</displaynameid>
     <editornameid>300864</editornameid>
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
@@ -17754,7 +17749,8 @@
     <maxrunvelocity>9.5000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>3.0000</turnrate>
-    <animfile>units\naval\destroyer\destroyer_ship.xml</animfile>
+    <animfile>units\naval\destroyer\destroyer_ship_pirate.xml</animfile>
+    <civflagoverride>objects\flags\pirates_con</civflagoverride>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\units\naval\spc\destroyer_ship_icon.png</icon>
@@ -17762,8 +17758,8 @@
     <rollovertextid>300221</rollovertextid>
     <shortrollovertextid>300222</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>3500.0000</initialhitpoints>
-    <maxhitpoints>3500.0000</maxhitpoints>
+    <initialhitpoints>3800.0000</initialhitpoints>
+    <maxhitpoints>3800.0000</maxhitpoints>
     <los>34.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -17777,15 +17773,6 @@
     <allowedage>3</allowedage>
     <armor type="Ranged" value="0.7500">
     </armor>
-    <sharedbuildlimitunit>zpWokouSteamer</sharedbuildlimitunit>
-    <sharedbuildlimitunittypes>
-      <unittype>zpWokouSteamer</unittype>
-      <unittype>zpWokouSteamerProxy</unittype>
-      <unittype>zpMercWokouSteamer</unittype>
-    </sharedbuildlimitunittypes>
-    <sharedselectionunittypes>
-      <unittype>zpWokouSteamer</unittype>
-    </sharedselectionunittypes>
     <dodgechance>0.0000</dodgechance>
     <dodgemessageid>110541</dodgemessageid>
     <dodgesoundset>IroncladBlock</dodgesoundset>
@@ -17827,7 +17814,6 @@
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
-    <flag>UseSharedBuildLimit</flag>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
@@ -56604,7 +56590,6 @@
     <sharedbuildlimitunittypes>
       <unittype>zpWokouSteamer</unittype>
       <unittype>zpWokouSteamerProxy</unittype>
-      <unittype>zpMercWokouSteamer</unittype>
     </sharedbuildlimitunittypes>
     <dodgechance>0.0000</dodgechance>
     <dodgemessageid>110541</dodgemessageid>
