@@ -25552,7 +25552,8 @@
       <effect type="CommandRemove" tech="zpSPCUsaCivilWarRevolution">
         <target type="ProtoUnit">zpSPCCivilWarCommandery</target>
       </effect>
-
+      <effect type="TechStatus" status="obtainable">zpUnionEmancipation</effect>
+      <effect type="TechStatus" status="obtainable">zpUnionFactory</effect>
       <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
@@ -25678,7 +25679,7 @@
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\tech_csa.png</icon>
-    <rollovertextid>302598</rollovertextid>
+    <rollovertextid>302625</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
@@ -25689,7 +25690,7 @@
       <effect type="CommandRemove" tech="zpSPCCsaCivilWarRevolution">
         <target type="ProtoUnit">zpSPCCivilWarCommanderyCon</target>
       </effect>
-
+      <effect type="TechStatus" status="obtainable">zpConfederacyIrregulars</effect>
       <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
@@ -26000,6 +26001,72 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpUnionEmancipation" type="Normal">
+    <dbid>41045</dbid>
+    <displaynameid>302619</displaynameid>
+    <cost resourcetype ="Food">800.0000</cost>
+    <cost resourcetype ="Wood">500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\civilwar_emancipation.png</icon>
+    <rollovertextid>302620</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="20.00" subtype="PopulationCapExtra" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnionFactory" type="Normal">
+    <dbid>41046</dbid>
+    <displaynameid>302618</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\money_factory.png</icon>
+    <rollovertextid>71286</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Factory</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="FactoryWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpFactoryAddBuildLimitShadow</effect>
+    </effects>
+  </tech>
+  <tech name ="zpConfederacyIrregulars" type ="Normal">
+		<dbid>41047</dbid>
+		<displaynameid>302623</displaynameid>
+  	<researchpoints>30.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\civilwar_irregulars.png</icon>
+    <cost resourcetype ="Wood">300.0000</cost>
+    <cost resourcetype ="Food">300.0000</cost>
+		<rollovertextid>302624</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>    
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatStateMilitia</target>
+      </effect>
+    </effects>
+	</tech>
 
 
   
