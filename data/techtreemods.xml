@@ -7429,6 +7429,7 @@
       <effect type="TechStatus" status="active">zpScientistsActive</effect>
       <effect type="TechStatus" status="obtainable">zpScientistUnderwaterExploration</effect>
       <effect type="TechStatus" status="obtainable">zpSendNemo</effect>
+      <effect type="TechStatus" status="obtainable">zpUnionFleetOfFreedomShadow</effect>
     </effects>
   </tech>
   <tech name ="zpPickScientist" type ="Normal">
@@ -25405,7 +25406,7 @@
   <tech name="zpCivilWarIronclads" type="Normal">
    <dbid>41025</dbid>
     <displaynameid>302585</displaynameid>
-    <cost resourcetype="Gold">1000.0000</cost>
+    <cost resourcetype="Gold">800.0000</cost>
     <cost resourcetype="Wood">500.0000</cost>
     <researchpoints>40.0000</researchpoints>
     <status>UNOBTAINABLE</status>
@@ -25476,6 +25477,9 @@
         <target type="ProtoUnit">xpIronclad</target>
       </effect>
       <effect type="Data" amount="0.33" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">xpIronclad</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">xpIronclad</target>
       </effect>
     </effects>
@@ -25592,7 +25596,8 @@
       <effect type="CommandRemove" tech="zpSPCUsaCivilWarRevolution">
         <target type="ProtoUnit">zpSPCCivilWarCommandery</target>
       </effect>
-
+      <effect type="TechStatus" status="obtainable">zpUnionFleetOfFreedom</effect>
+      <effect type="TechStatus" status="obtainable">zpUnionSilentHunter</effect>
       <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
@@ -25717,7 +25722,7 @@
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\tech_csa.png</icon>
-    <rollovertextid>302596</rollovertextid>
+    <rollovertextid>302617</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
@@ -25728,7 +25733,8 @@
       <effect type="CommandRemove" tech="zpSPCCsaCivilWarRevolution">
         <target type="ProtoUnit">zpSPCCivilWarCommanderyCon</target>
       </effect>
-
+      <effect type="TechStatus" status="obtainable">zpConfederacyPrivateering</effect>
+      <effect type="TechStatus" status="obtainable">zpConfederacyDryDock</effect>
       <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
@@ -25868,6 +25874,130 @@
         <target type="ProtoUnit">deSaloonCowboy</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpWesternUnlockCitystateTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnionSilentHunter" type="Normal">
+    <dbid>41040</dbid>
+    <displaynameid>302609</displaynameid>
+    <cost resourcetype="Gold">800.0000</cost>
+    <cost resourcetype="Wood">400.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <rollovertextid>302610</rollovertextid>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\submarine_fleet.png</icon>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSubmarine" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSubmarine</target>
+      </effect>
+      <effect type="TechStatus" status="active">zpImperialSubmarine</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnionFleetOfFreedom" type="Normal">
+    <dbid>41041</dbid>
+    <displaynameid>302611</displaynameid>
+    <cost resourcetype="Gold">800.0000</cost>
+    <cost resourcetype="Wood">400.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <rollovertextid>302612</rollovertextid>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\civilwar_freedomfleet.png</icon>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpWokousteamer</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpWokousteamer" page="0" column="15">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpWokousteamer" page="0" column="15">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpWokousteamer" page="0" column="15">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnionFleetOfFreedomShadow" type="Normal">
+    <dbid>41042</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpUnionFleetOfFreedom</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpWokousteamer</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConfederacyPrivateering" type="Normal">
+    <dbid>41043</dbid>
+    <displaynameid>302613</displaynameid>
+    <cost resourcetype="Gold">700.0000</cost>
+    <cost resourcetype="Wood">600.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <rollovertextid>302614</rollovertextid>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\civilwar_revenant.png</icon>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpMercWokouSteamer" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConfederacyDryDock" type="Normal">
+    <dbid>41044</dbid>
+    <displaynameid>302615</displaynameid>
+    <cost resourcetype="Wood">1000.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\drydock_tech.png</icon>
+    <rollovertextid>302616</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpDryDockWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpDryDock</target>
+      </effect>
+      <effect type="Data" action="SpawnGalley" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpDryDock</target>
+      </effect>
+      <effect type="Data" action="SpawnIronclad" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpDryDock</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">xpIronclad</target>
+      </effect>
     </effects>
   </tech>
 

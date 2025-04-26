@@ -2583,7 +2583,7 @@
       <string _locid="302583">Team Tales of the West</string>
       <string _locid="302584">Increases Waterin' Hole XP Production rate</string>
       <string _locid="302585">Advanced American Fleet</string>
-      <string _locid="302586">Transforms all your Monitors into ironclads. Unlocks Ironclad training and improvements. Changes Ironclad costs to correspond with the original Monitor costs (also for United States and Mexico).</string>
+      <string _locid="302586">Transforms all your Monitors into ironclads. Unlocks Ironclad training and improvements. Changes Ironclad costs to correspond with the original Monitor costs and increases it's build limit (also for United States and Mexico).</string>
       <string _locid="302587">ZP Civil War Commandery USA</string>
       <string _locid="302588">ZP Civil War Commandery CSA</string>
       <string _locid="302589">Confederate States of America</string>
@@ -2593,7 +2593,7 @@
       <string _locid="302593">Pick one of the three Confederacy leaders providing you with unique techs.</string>
       <string _locid="302594">Join the Union</string>
       <string _locid="302595">The Admiral</string>
-      <string _locid="302596">Naval improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nFull Speed Ahead, Advanced Warship Engineering</string>
+      <string _locid="302596">Naval improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nFleet of Freedom, Project Leviathan</string>
       <string _locid="302597">The President</string>
       <string _locid="302598">Economic improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nEmancipation Proclamation, Industrial North</string>
       <string _locid="302599">The General</string>
@@ -2605,8 +2605,16 @@
       <string _locid="302605">%s has risen the Confederate Flag!</string>
       <string _locid="302606">Confederate States</string>
       <string _locid="302607">Pirate Destroyer</string>
-      <string _locid="302608">CSS Alabama</string>
-
+      <string _locid="302608">CSS Revenant</string>
+      <string _locid="302609">Project Leviathan</string>
+      <string _locid="302610">Ships a Submarine and allows you to construct it from your Dock</string>
+      <string _locid="302611">Fleet of Freedom</string>
+      <string _locid="302612">Allows you to construct Destroyer class ship from your Dock. In case you own an inventor settlement, the tech will increase Destroyer build limit by 1.</string>
+      <string _locid="302613">Confederacy Privateering Act</string>
+      <string _locid="302614">Ships a steam powered pirate Destroyer ship</string>
+      <string _locid="302615">Ports of Defiance</string>
+      <string _locid="302616">Allows you to constriuct a Dry Dock able to maintain Ironclads. Increases Ironclad build limit.</string>
+      <string _locid="302617">Naval improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nConfederacy privateering Act, Ports of Defiance</string>
 
 
       <!-- ======================================== -->

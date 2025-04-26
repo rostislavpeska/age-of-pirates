@@ -5116,8 +5116,8 @@
     <buildlimit>1</buildlimit>
     <bounty>110.0000</bounty>
     <buildbounty>110.0000</buildbounty>
-    <cost resourcetype="Wood">1000.0000</cost>
-    <cost resourcetype="Gold">800.0000</cost>
+    <cost resourcetype="Wood">600.0000</cost>
+    <cost resourcetype="Gold">700.0000</cost>
     <maxcontained>50</maxcontained>
     <allowedage>3</allowedage>
     <armor type="Ranged" value="0.7500">
@@ -5330,8 +5330,8 @@
     <obstructionradiusz>0.0000</obstructionradiusz>
     <movementtype>land</movementtype>
     <animfile>effects\projectiles\musket_ball.xml</animfile>
-    <icon>resources\art\units\naval\spc\destroyer_ship_icon.png</icon>
-    <portraiticon>resources\art\units\naval\spc\destroyer_ship.png</portraiticon>
+    <icon>resources\art\units\naval\spc\revenant_ship_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\revenant_ship.png</portraiticon>
     <rollovertextid>300221</rollovertextid>
     <shortrollovertextid>300222</shortrollovertextid>
     <initialhitpoints>900.0000</initialhitpoints>
@@ -17767,8 +17767,8 @@
     <buildlimit>1</buildlimit>
     <bounty>110.0000</bounty>
     <buildbounty>110.0000</buildbounty>
-    <cost resourcetype="Wood">1000.0000</cost>
-    <cost resourcetype="Gold">800.0000</cost>
+    <cost resourcetype="Wood">600.0000</cost>
+    <cost resourcetype="Gold">700.0000</cost>
     <maxcontained>50</maxcontained>
     <allowedage>3</allowedage>
     <armor type="Ranged" value="0.7500">
@@ -54339,6 +54339,8 @@
     <tech row="0" page="2" column="3">zpCivilWarPeacePipe</tech>
     <tech row="0" page="2" column="4">zpCivilWarIronclads</tech>
     <tech row="0" page="1" column="1">zpSPCUsaCivilWarRevolution</tech>
+    <tech row="0" page="2" column="5">zpUnionFleetOfFreedom</tech>
+    <tech row="0" page="2" column="6">zpUnionSilentHunter</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -54732,6 +54734,8 @@
     <tech row="0" page="2" column="4">zpCivilWarIronclads</tech>
     <tech row="0" page="2" column="4">zpCivilWarIronclads</tech>
     <tech row="0" page="1" column="1">zpSPCCsaCivilWarRevolution</tech>
+    <tech row="0" page="2" column="5">zpConfederacyPrivateering</tech>
+    <tech row="0" page="2" column="6">zpConfederacyDryDock</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
