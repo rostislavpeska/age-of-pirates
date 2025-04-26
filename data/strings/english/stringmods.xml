@@ -2597,7 +2597,7 @@
       <string _locid="302597">The President</string>
       <string _locid="302598">Economic improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nNorthern Foundries, Emancipation Proclamation</string>
       <string _locid="302599">The General</string>
-      <string _locid="302600">Military improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nVolunteer Corps, Field Hospitals</string>
+      <string _locid="302600">Military improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nField Hospitals, Breech-Loaded Cannons</string>
       <string _locid="302601">Pick one of the three United States leaders providing you with unique techs.\n • Unlocks new techs</string>
       <string _locid="302602">You proclaimed yourself as part of the Union!</string>
       <string _locid="302603">%s has risen the Union Flag!</string>
@@ -2623,6 +2623,10 @@
       <string _locid="302623">Southern Irregulars</string>
       <string _locid="302624">Allows you to train Southern Irregular native units from your Command Post.</string>
       <string _locid="302625">Economic improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nSouthern Irregulars, Cotton Diplomacy</string>
+      <string _locid="302626">Southern Redoubts</string>
+      <string _locid="302627">Military improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nSouthern Redoubts, Confederacy Fort Guns</string>
+      <string _locid="302628">Confederacy Fort Guns</string>
+      <string _locid="302629">Ships two fixed gun wagons. Allows your Explorer to construct Fixed Guns.</string>
 
 
       <!-- ======================================== -->

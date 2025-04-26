@@ -5570,20 +5570,6 @@
   <tech name="DEHeavyFixedGun">
     <effects>
       <effect mergeMode='add' type="Data" action="CannonAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpMalteseGun</target>
-      </effect>
-      <effect mergeMode='add' type="Data" action="AntiShipAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpMalteseGun</target>
-      </effect>
-      <effect mergeMode='add' type="Data" action="GuardianAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpMalteseGun</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpMalteseGun</target>
-      </effect>
-      <effect mergeMode='add' type="SetName" proto="zpMalteseGun" culture="none" newname="302105">
-      </effect>
-      <effect mergeMode='add' type="Data" action="CannonAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
         <target type="ProtoUnit">zpSPCFixedGun</target>
       </effect>
       <effect mergeMode='add' type="Data" action="AntiShipAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
@@ -5597,24 +5583,11 @@
       </effect>
       <effect mergeMode='add' type="SetName" proto="zpSPCFixedGun" culture="none" newname="302105">
       </effect>
+      <effect mergeMode='add' type="TechStatus" status="active">zpHeavyFixedGunShadow</effect>
     </effects>
   </tech>
   <tech name="DEImperialFixedGun">
     <effects>
-      <effect mergeMode='add' type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpMalteseGun</target>
-      </effect>
-      <effect mergeMode='add' type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpMalteseGun</target>
-      </effect>
-      <effect mergeMode='add' type="Data" action="CannonAttack" amount="1.00" subtype="DamageArea" relativity="Absolute">
-        <target type="ProtoUnit">zpMalteseGun</target>
-      </effect>
-      <effect mergeMode='add' type="Data" action="GuardianAttack" amount="1.00" subtype="DamageArea" relativity="Absolute">
-        <target type="ProtoUnit">zpMalteseGun</target>
-      </effect>
-      <effect mergeMode='add' type="SetName" proto="zpMalteseGun" culture="none" newname="302106">
-      </effect>
       <effect mergeMode='add' type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCFixedGun</target>
       </effect>
@@ -5629,6 +5602,7 @@
       </effect>
       <effect mergeMode='add' type="SetName" proto="zpSPCFixedGun" culture="none" newname="302106">
       </effect>
+      <effect mergeMode="add" type="TechStatus" status="active">zpImperialFixedGunShadow</effect>
     </effects>
   </tech>
   <tech name="deUnknownFastResearch">
@@ -25701,7 +25675,7 @@
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\tech_csa.png</icon>
-    <rollovertextid>302600</rollovertextid>
+    <rollovertextid>302627</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
     <flag>YPSequesterTech</flag>
@@ -25712,7 +25686,8 @@
       <effect type="CommandRemove" tech="zpSPCCsaCivilWarRevolution">
         <target type="ProtoUnit">zpSPCCivilWarCommanderyCon</target>
       </effect>
-
+      <effect type="TechStatus" status="obtainable">zpConfederacyFort</effect>
+      <effect type="TechStatus" status="obtainable">zpConfederacyFixedGuns</effect>
       <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
@@ -26067,6 +26042,117 @@
       </effect>
     </effects>
 	</tech>
+  <tech name="zpConfederacyFort" type="Normal">
+    <dbid>41048</dbid>
+    <displaynameid>302626</displaynameid>
+    <cost resourcetype="Wood">600.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\civilwar_fort.png</icon>
+    <rollovertextid>71287</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="FortWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">FortFrontier</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">FortFrontier</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConfederacyFixedGuns" type="Normal">
+    <dbid>44049</dbid>
+    <displaynameid>302628</displaynameid>
+    <cost resourcetype="Wood">500.0000</cost>
+    <cost resourcetype="Gold">1000.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\fixedgun_tech.png</icon>
+    <rollovertextid>302629</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpJerusalemWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpMalteseGun</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpMalteseGun</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpMalteseGun" page="6" column="3">
+        <target type="ProtoUnit">Explorer</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpMalteseGun" page="6" column="3">
+        <target type="ProtoUnit">deGeneral</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpMalteseGun" page="6" column="3">
+        <target type="ProtoUnit">dePadre</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpMalteseGun" page="6" column="3">
+        <target type="ProtoUnit">xpIroquoisWarChief</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpMalteseGun" page="6" column="3">
+        <target type="ProtoUnit">xpLakotaWarchief</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHeavyFixedGunShadow" type="Normal">
+    <dbid>41050</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect mergeMode='add' type="Data" action="CannonAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpMalteseGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" action="AntiShipAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpMalteseGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" action="GuardianAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpMalteseGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpMalteseGun</target>
+      </effect>
+      <effect mergeMode='add' type="SetName" proto="zpMalteseGun" culture="none" newname="302105">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpImperialFixedGunShadow" type="Normal">
+    <dbid>41051</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect mergeMode='add' type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpMalteseGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpMalteseGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" action="CannonAttack" amount="1.00" subtype="DamageArea" relativity="Absolute">
+        <target type="ProtoUnit">zpMalteseGun</target>
+      </effect>
+      <effect mergeMode='add' type="Data" action="GuardianAttack" amount="1.00" subtype="DamageArea" relativity="Absolute">
+        <target type="ProtoUnit">zpMalteseGun</target>
+      </effect>
+      <effect mergeMode='add' type="SetName" proto="zpMalteseGun" culture="none" newname="302106">
+      </effect>
+    </effects>
+  </tech>
 
 
   

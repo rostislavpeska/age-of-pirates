@@ -4078,6 +4078,7 @@
     <cost resourcetype="Gold">600.0000</cost>
     <buildingworkrate>1.0000</buildingworkrate>
     <allowedage>2</allowedage>
+    <buildlimit>1</buildlimit>
     <socketunittype>deMalteseGunSocket</socketunittype>
     <armor type="Siege" value="0.0000">
     </armor>
@@ -54739,6 +54740,8 @@
     <tech row="0" page="2" column="5">zpConfederacyPrivateering</tech>
     <tech row="0" page="2" column="6">zpConfederacyDryDock</tech>
     <tech row="0" page="2" column="5">zpConfederacyIrregulars</tech>
+    <tech row="0" page="2" column="5">zpConfederacyFort</tech>
+    <tech row="0" page="2" column="6">zpConfederacyFixedGuns</tech>
     <flag>DisplayRange</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>

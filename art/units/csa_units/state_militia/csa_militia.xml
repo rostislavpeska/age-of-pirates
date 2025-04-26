@@ -6,7 +6,7 @@
     <attachment>hats
         <component>hats
             <assetreference type="GrannyModel">
-                <file>units\infantry_ranged\state_militia\state_militia_age3_hat</file>
+                <file>units\wildwest_units\black_hat\black_hat</file>
             </assetreference>
         </component>
         <anim>Idle
@@ -70,12 +70,12 @@
         <logic type="Variation">
             <v1>
                 <assetreference type="GrannyModel">
-                    <file>units\infantry_ranged\state_militia\state_militia_age4</file>
+                    <file>units\csa_units\state_militia\state_militia_con</file>
                 </assetreference>
             </v1>
             <v2>
                 <assetreference type="GrannyModel">
-                    <file>units\infantry_ranged\state_militia\state_militia_age4</file>
+                    <file>units\csa_units\state_militia\state_militia_con</file>
                     <materialvariant index="1"></materialvariant>
                 </assetreference>
             </v2>
