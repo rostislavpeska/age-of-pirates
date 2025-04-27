@@ -1229,9 +1229,18 @@ minInterval 30
          }
       }
 
+      // AssertiveWall: The old calculation was a tech costing 40 res per villager. This means an imperial tech won't research
+      //                unless there are 50 gatherers on that resource
+      //                Costs are adjusted to account for the age we're in
+      // Adjust the relCost based on whether we're in a higher age so we still get stuff like imp techs
+      if (lowestCost > 0 && kbGetAge() >= cAge3)
+      {
+         lowestCost = lowestCost / (0.5 * kbGetAge() + 1.0);  // avoid divide by 0 condition
+      }
+
       if ((techToGet >= 0) &&
-          ((lowestCost < 40.0) ||                       // We have a tech, and it doesn't cost more than 40 per gatherer.
-           (aiTreatyGetEnd() > time + 10 * 60 * 1000))) // Keep researching economy upgrades during treaty.
+          ((lowestCost < 40.0) || kbGetAge() == cvMaxAge || // We have a tech, and it doesn't cost more than 40 per gatherer.
+           (aiTreatyGetEnd() > time + 10 * 60 * 1000)))     // Keep researching economy upgrades during treaty.
       {
 
          // If a plan has been running for 3 minutes...
@@ -2270,6 +2279,34 @@ minInterval 60
 // navyUpgradeMonitor
 // We don't get the very expensive European navy upgrades since we're bad at water.
 // Natives don't have any regular navy upgrades so this rule isn't activated for them.
+/* AssertiveWall: Note to self:
+      Need to add more expensive stuff on docks
+      - Ship's Howitzers
+      - Imperial techs
+      - Native civ canoe techs?
+
+      already implemented:
+         - BigDockFlamingArrows
+         - BigDockRawhideCovers
+         - deBigDockTotora
+         - BigDockCipactli
+
+         - DEWarCanoeDamage
+         - DEWarCanoeHitpoints
+         - DELegendaryWarCanoes
+
+         - YPExaltedFuchuan
+         - YPExaltedTekkousen
+         - ypImperialManOWar
+
+         - ShipHowitzers
+         - DEShipHowitzersAmerican
+         - DEImperialIronclads
+
+         - ImperialMonitors
+         - ImperialManOWar
+
+*/
 //==============================================================================
 rule navyUpgradeMonitor
 inactive
@@ -2286,21 +2323,100 @@ minInterval 90
       canDisableSelf &= researchSimpleTechByCondition(cTechDERiverboatHitpoints,
          []() -> bool { return (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateABQ) >= 3); },
          gDockUnit);
-      }
+   }
+   // AssertiveWall: Native canoe techs. gCaravelUnit is a war canoe
+   else if (civIsNative() == true)
+   {
+      canDisableSelf = researchSimpleTechByCondition(cTechDEWarCanoeHitpoints,
+         []() -> bool { return (kbUnitCount(cMyID, gCaravelUnit, cUnitStateABQ) >= 3); },
+         gDockUnit);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechDEWarCanoeDamage,
+         []() -> bool { return (kbUnitCount(cMyID, gCaravelUnit, cUnitStateABQ) >= 4); },
+         gDockUnit, -1, 45);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechDELegendaryWarCanoes,
+         []() -> bool { return (kbUnitCount(cMyID, gCaravelUnit, cUnitStateABQ) >= 5); },
+         gDockUnit, -1, 45);
+   }
    else // Europeans or Asians.
    {
       canDisableSelf = researchSimpleTechByCondition(cTechCarronade,
          []() -> bool { return (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateABQ) >= 3); },
-         gDockUnit);
+         gDockUnit, -1, 45);
 
       canDisableSelf &= researchSimpleTechByCondition(cTechPercussionLocks,
          []() -> bool { return (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateABQ) >= 3); },
-         gDockUnit);
+         gDockUnit, -1, 45);
 
       canDisableSelf &= researchSimpleTechByCondition(cTechArmorPlating,
          []() -> bool { return (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateABQ) >= 3); },
          gDockUnit);
+
+      // AssertiveWall: Add imperial stuff and howitzers for monitors. USA/Mexico have ironclads
+      if (cMyCiv == cCivDEAmericans || cMyCiv == cCivDEMexicans)
+      {
+         canDisableSelf &= researchSimpleTechByCondition(cTechDEShipHowitzersAmerican,
+            []() -> bool { return (kbUnitCount(cMyID, gMonitorUnit, cUnitStateABQ) >= 1); },
+            gDockUnit, -1, 45);
+
+         canDisableSelf &= researchSimpleTechByCondition(cTechDEImperialIronclads,
+            []() -> bool { return (
+               kbUnitCount(cMyID, gMonitorUnit, cUnitStateABQ) >= 1 &&
+               kbGetAge() >= cAge5 ); },
+            gDockUnit) || cvMaxAge < cAge5;
       }
+      else
+      {
+         canDisableSelf &= researchSimpleTechByCondition(cTechShipHowitzers,
+            []() -> bool { return (kbUnitCount(cMyID, gMonitorUnit, cUnitStateABQ) >= 1); },
+            gDockUnit, -1, 45);
+      }
+
+      // Add asian specific ship upgrades
+      if (civIsAsian() == true)
+      {
+         canDisableSelf &= researchSimpleTechByCondition(cTechypImperialMonitors,
+            []() -> bool { return (
+               kbUnitCount(cMyID, gMonitorUnit, cUnitStateABQ) >= 1 &&
+               kbGetAge() >= cAge5 ); },
+            gDockUnit) || cvMaxAge < cAge5;
+
+         if ((cMyCiv == cCivChinese) || (cMyCiv == cCivSPCChinese))
+         {
+            canDisableSelf &= researchSimpleTechByCondition(cTechYPExaltedFuchuan,
+               []() -> bool { return (kbUnitCount(cMyID, gFrigateUnit, cUnitStateABQ) >= 1); },
+               gDockUnit) || cvMaxAge < cAge5;
+         }
+         else if ((cMyCiv == cCivJapanese) || (cMyCiv == cCivSPCJapanese) || (cMyCiv == cCivSPCJapaneseEnemy))
+         {
+            canDisableSelf &= researchSimpleTechByCondition(cTechYPExaltedTekkousen,
+               []() -> bool { return (kbUnitCount(cMyID, gFrigateUnit, cUnitStateABQ) >= 1); },
+               gDockUnit) || cvMaxAge < cAge5;
+         }
+         else if ((cMyCiv == cCivIndians) || (cMyCiv == cCivSPCIndians))
+         {
+            canDisableSelf &= researchSimpleTechByCondition(cTechypImperialManOWar,
+               []() -> bool { return (kbUnitCount(cMyID, gFrigateUnit, cUnitStateABQ) >= 1); },
+               gDockUnit) || cvMaxAge < cAge5;
+         }
+      }
+      else
+      {  // man-o-war techs for everyone who is not asian, native, or african
+         canDisableSelf &= researchSimpleTechByCondition(cTechImperialMonitors,
+            []() -> bool { return (
+               kbUnitCount(cMyID, gMonitorUnit, cUnitStateABQ) >= 1 &&
+               kbGetAge() >= cAge5 ); },
+            gDockUnit) || cvMaxAge < cAge5;
+
+         canDisableSelf &= researchSimpleTechByCondition(cTechImperialManOWar,
+            []() -> bool { return (
+               kbUnitCount(cMyID, gFrigateUnit, cUnitStateABQ) >= 1 &&
+               kbGetAge() >= cAge5 ); },
+            gDockUnit) || cvMaxAge < cAge5;
+      }
+
+   }
    
    if (canDisableSelf == true)
    {
@@ -2805,6 +2921,7 @@ minInterval 60
 // This rule researches all the big button upgrades for the Aztecs.
 // Excluding the raiding parties, those are used as minutemen in useWarParties.
 // Cipactli Worship just too expensive for naval warfare.
+// AssertiveWall: implement Aztec BB
 //==============================================================================
 rule bigButtonAztecMonitor
 inactive
@@ -2856,6 +2973,15 @@ minInterval 60
       (kbUnitCount(cMyID, cUnitTypePlantation, cUnitStateABQ) >= 1)); },
       cUnitTypePlantation)) ||
       (cvMaxAge < cAge3));
+
+   // AssertiveWall: Dock Big Button
+   // Get the upgrade if we have at least 3 tlaloc canoes (i.e. use this to overpop), lower priority upgrade just because it's naval.
+   canDisableSelf &= ((researchSimpleTechByCondition(cTechBigDockCipactli,
+      []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeDock, cUnitStateAlive) >= 3) &&
+      (kbUnitCount(cMyID, cUnitTypexpTlalocCanoe, cUnitStateABQ) >= 3)); },
+      cUnitTypeDock, -1, 45)) ||
+      (cvMaxAge < cAge3) || 
+      (gNavyMap == false));
 
    if (canDisableSelf == true)
    {

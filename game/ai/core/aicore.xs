@@ -2828,10 +2828,9 @@ minInterval 10
 
       // Enable navy upgrades
       if ((gNavyMap == true) &&
-          (cvOkToTrainNavy == true) &&
-          (civIsNative() == false))
+          (cvOkToTrainNavy == true))// AssertiveWall: Natives can now upgrade boats &&(civIsNative() == false))
       {
-      xsEnableRule("navyUpgradeMonitor");
+         xsEnableRule("navyUpgradeMonitor");
       }
 
       if (civIsAfrican() == true)

@@ -1990,13 +1990,15 @@ minInterval 30
       
       // These initial maintain amounts mean nothing and get instantly overwritten.
       if (cMyCiv == cCivXPAztec)
-      {
+      {  // AssertiveWall: added Galleon/Canoe
          gCaravelMaintain = createSimpleMaintainPlan(gCaravelUnit, 10, false, baseID, 1); // xpWarCanoe
-         gFrigateMaintain = createSimpleMaintainPlan(gGalleonUnit, 5, false, baseID, 1);  // xpTlalocCanoe
+         gGalleonMaintain = createSimpleMaintainPlan(gGalleonUnit, 20, false, baseID, 1); // Canoe
+         gFrigateMaintain = createSimpleMaintainPlan(gFrigateUnit, 5, false, baseID, 1);  // xpTlalocCanoe
       }
       else if (cMyCiv == cCivDEInca)
-      {
+      {  // AssertiveWall: added Galleon/Canoe
          gCaravelMaintain = createSimpleMaintainPlan(gCaravelUnit, 8, false, baseID, 1); // deChinchaRaft
+         gGalleonMaintain = createSimpleMaintainPlan(gGalleonUnit, 20, false, baseID, 1); // Canoe
       }
       else if (civIsNative() == true)
       {
@@ -2027,7 +2029,7 @@ minInterval 30
    // AssertiveWall: Check for which canoe variety we can train
    if (gCanoeMaintain < 0)
    {
-      if (kbProtoUnitAvailable(cUnitTypeCanoe) == true && civIsNative() == false)
+      if (kbProtoUnitAvailable(cUnitTypeCanoe) == true && (civIsNative() == false || cMyCiv == cCivDEInca))
       {
          gCanoeUnit = cUnitTypeCanoe;
       } 
@@ -2114,17 +2116,21 @@ minInterval 30
       int monitorLimit = 0;
       int canoeLimit = 0;  // AssertiveWall: native canoes
 
-      caravelLimit = kbGetBuildLimit(cMyID, gCaravelUnit);
       canoeLimit = kbGetBuildLimit(cMyID, gCanoeUnit);
-      if (cMyCiv == cCivXPAztec || cMyCiv == cCivXPIroquois || cMyCiv == cCivXPSioux)
+      // AssertiveWall: Simplify all this based on if the boat is available
+      if (kbProtoUnitAvailable(gCaravelUnit))
+      {
+         caravelLimit = kbGetBuildLimit(cMyID, gCaravelUnit);
+      }
+      if (kbProtoUnitAvailable(gGalleonUnit))
       {
          galleonLimit = kbGetBuildLimit(cMyID, gGalleonUnit);
       }
-      if (cMyCiv != cCivXPIroquois && cMyCiv != cCivXPSioux && cMyCiv != cCivDEInca && age >= cAge3)
+      if (kbProtoUnitAvailable(gFrigateUnit))
       {
          frigateLimit = kbGetBuildLimit(cMyID, gFrigateUnit);
       }
-      if (civIsNative() == false && age >= cAge4)
+      if (kbProtoUnitAvailable(gMonitorUnit))
       {
          monitorLimit = kbGetBuildLimit(cMyID, gMonitorUnit);
       }
@@ -2313,7 +2319,7 @@ minInterval 30
                continue;
             }
          }
-         if (age < cAge4 && numberCaravels < 2)
+         if (age < cAge4 && numberCaravels < 2 && numberCaravels < caravelLimit) // AssertiveWall: Need limit for native civs
          {
             numberCaravels++;
             gNetNavyValue -= caravelValue;
