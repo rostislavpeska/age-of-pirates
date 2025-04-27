@@ -82,6 +82,14 @@
         <rate type="zpAlexandrianGalley">1.0 </rate>
         <persistent>1</persistent>
     </action>
+    <action>
+        <name stringid="43299">SpawnIronclad</name>
+        <active>0</active>
+        <type>Maintain</type>
+        <rate type="xpIronclad">1.0 </rate>
+        <maintaintrainpoints>240</maintaintrainpoints>
+        <persistent>1</persistent>
+    </action>
     
     <tactic>TacticTraining
         <action>Heal</action>
@@ -147,6 +155,7 @@
         <action>SpawnGalley</action>
         <action>Spawnprivateer</action>
         <action>SpawnAXGalley</action>
+        <action>SpawnIronclad</action>
         <action>DockWorkRateMalus</action>
         <protounitcommand>zpTacticSpawnGalley</protounitcommand>
         <transition>

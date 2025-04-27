@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animfile>
+    <definebone>bone_main</definebone>
+	<definebone>bone_banner</definebone>
+    <definebone>bone_flag_civ</definebone>
+	<definebone>bone_garrisonflag</definebone>
+	<definebone>smoke01</definebone>
+	<definebone>smoke02</definebone>
+	<definebone>bone_front_wake</definebone>
+	<definebone>bone_front_foam</definebone>
+	<component>
+		ModelComp
+		<assetreference type="GrannyModel">
+			<file>units\naval\destroyer\destroyer_ship_anim_parts</file>
+		</assetreference>
+	</component>
+	<anim>
+		Idle
+		<assetreference type="GrannyAnim">
+			<file>units\naval\destroyer\destroyer_ship_idle</file>
+		</assetreference>
+		<component>ModelComp</component>
+		<attach a="smoke_A" frombone="MASTER" tobone="smoke01" syncanims="0"/>
+		<attach a="embers_attachment_A" frombone="MASTER" tobone="smoke01" syncanims="0"/>
+		<attach a="smoke_A" frombone="MASTER" tobone="smoke02" syncanims="0"/>
+		<attach a="embers_attachment_A" frombone="MASTER" tobone="smoke02" syncanims="0"/>
+	</anim>
+	<anim>
+		Walk
+		<assetreference type="GrannyAnim">
+			<file>units\naval\destroyer\destroyer_ship_walk</file>
+		</assetreference>
+		<component>ModelComp</component>
+		<attach a="attachment_wake_front_splash" frombone="MASTER" tobone="bone_wake01" syncanims="0"/>
+		<attach a="smoke_A" frombone="MASTER" tobone="smoke01" syncanims="0"/>
+		<attach a="train_smoke" frombone="MASTER" tobone="smoke01" syncanims="0"/>
+		<attach a="embers_attachment_A" frombone="MASTER" tobone="smoke01" syncanims="0"/>
+		<attach a="smoke_A" frombone="MASTER" tobone="smoke02" syncanims="0"/>
+		<attach a="train_smoke" frombone="MASTER" tobone="smoke02" syncanims="0"/>
+		<attach a="embers_attachment_A" frombone="MASTER" tobone="smoke02" syncanims="0"/>
+		<attach a="attachment_boat_foam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"/>
+		<attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+	</anim>
+	<anim>
+		BombardAttack
+		<assetreference type="GrannyAnim">
+			<file>units\naval\destroyer\destroyer_ship_attack</file>
+		</assetreference>
+		<component>ModelComp</component>
+		<attach a="smoke_A" frombone="MASTER" tobone="smoke01" syncanims="0"/>
+		<attach a="embers_attachment_A" frombone="MASTER" tobone="smoke01" syncanims="0"/>
+		<attach a="smoke_A" frombone="MASTER" tobone="smoke02" syncanims="0"/>
+		<attach a="embers_attachment_A" frombone="MASTER" tobone="smoke02" syncanims="0"/>
+		<attach a="embers_attachment_A" frombone="MASTER" tobone="smoke02" syncanims="0"/>
+	</anim>
+</animfile>

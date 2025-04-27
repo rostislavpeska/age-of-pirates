@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animfile>
+    <definebone>bone_master</definebone>
+    <component>wigwam
+        <logic type="Destruction">
+            <p1>
+                <assetreference type="GrannyModel">
+                    <file>buildings\test\test_cube_Model</file>
+                </assetreference>        
+            </p1>
+            <p99>
+                <assetreference type="GrannyModel">
+                    <file>buildings\test\test_cube_Model</file>
+                </assetreference>        
+            </p99>
+        </logic>
+        <decal>
+            <effecttype>default</effecttype>
+            <selectedtexture>shadows_selections\selection_square_64x64</selectedtexture>
+            <width>15.0</width>
+            <height>15.0</height>
+        </decal>
+    </component>
+    <anim>Idle
+        <assetreference type="GrannyAnim">
+            <file>buildings\test\test_cube_Anim</file>
+        </assetreference>
+        <component>wigwam</component>
+        <simskeleton>
+            <model>buildings\test\test_cube_Model</model>
+            <damagetemplate>buildings\test\test_cube.dmg</damagetemplate>
+        </simskeleton>
+    </anim>
+</animfile>

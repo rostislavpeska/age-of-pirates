@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- converted from XMB to XML -->
+<animfile>
+	<component>
+		building
+		<logic type="Variation">
+			<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\IH\2\AOE3DE_Build_House_2_Model</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\IH\2\AOE3DE_Build_House_2_Roda_Model</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\IH\2\AOE3DE_Build_Photo_Model</file>
+				</assetreference>
+			</data>
+      	</logic>
+    	<decal>
+            <effecttype>default</effecttype>
+            <texture>buildings\saloon\Saloon_floor_00</texture>
+            <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <width>8.00</width>
+            <height>10.00</height>
+            <zoffset>0.00</zoffset>
+          </decal>
+	</component>
+	<anim>
+		Idle
+		<component>building</component>
+	</anim>
+</animfile>

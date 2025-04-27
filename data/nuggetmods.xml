@@ -2718,6 +2718,58 @@
       <guardian>Cougar</guardian>
       <difficulty>311</difficulty>
     </nugget>
+    <nugget>
+      <name>zpNuggetInventorsBase</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>zpPhoenixMGunCarrier</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpPhoenixMGunCarrier</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpPhoenixMGunCarrier</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpPhoenixMGunCarrier</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatHoopThrower</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatHoopThrower</unit>
+      </guardianunit>
+      <difficulty>312</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpNuggetWesternTown</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>zpJamesGang</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpJamesGang</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpJamesGang</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpJamesGang</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpJamesGang</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpJamesGang</unit>
+      </guardianunit>
+      <difficulty>313</difficulty>
+    </nugget>
 
 
     <!--WATER NUGGETS-->

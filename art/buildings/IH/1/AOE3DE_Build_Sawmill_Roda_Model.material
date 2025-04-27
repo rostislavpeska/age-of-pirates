@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\IH\1\Sawmill_Mata_Basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\IH\1\Sawmill_Mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\IH\1\Sawmill_Mata_Masks">
+      </texture>
+ <texture name="Details" override="buildings\IH\1\Sawmill_Mata_Details">
+      </texture>
+         </parameters>
+  </submaterial>
+</material>

@@ -27,7 +27,8 @@
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpspctreasureship>
   <zpwokousteamer>
-    <ability>zpFullSteam<rof>90</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
+    <ability>PowerLongRange<rof>60</rof></ability>
+    <ability>dePowerBlock<rof>60</rof><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpwokousteamer>
   <zpwokoufuchuan>
     <ability>PowerBroadside<rof>60</rof></ability>
@@ -84,7 +85,8 @@
     <ability>zpPowerShunt<allowwhilestealthed>true</allowwhilestealthed><rof>60</rof></ability>
   </zpmercnautilus>
   <zpmercwokousteamer>
-    <ability>zpFullSteam<rof>90</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
+    <ability>PowerLongRange<rof>60</rof></ability>
+    <ability>dePowerBlock<rof>60</rof><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpmercwokousteamer>
   <zpnatsoheileader>
     <ability>ypUnitDaimyoAura<alwaysdisabledingrid>true</alwaysdisabledingrid></ability>
@@ -301,6 +303,10 @@
   <zpspcazteccitymarket>
     <ability>zpPassiveMarketRainbow<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpspcazteccitymarket>
+  <zpnatskullknight>
+    <ability>deChargeAbilityObsidian<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatskullknight>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

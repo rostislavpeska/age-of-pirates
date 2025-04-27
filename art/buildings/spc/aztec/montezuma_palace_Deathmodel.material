@@ -1,0 +1,28 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\spc\aztec\montezuma_palace\montezuma_palace_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\aztec\aztec_academy\textures\aztec_academy_matA_01_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\aztec\aztec_academy\textures\aztec_academy_matA_01_Masks">
+      </texture>
+      <texture name="Details" override="buildings\spc\aztec\montezuma_palace\montezuma_palace_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matx">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionstone_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionstone_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionstone_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

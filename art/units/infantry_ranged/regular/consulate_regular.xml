@@ -8,24 +8,47 @@
   <definebone>Bip01 Prop2</definebone>
   <attachment>gun<include>units\asians\consulate\musketeer\musketeer_guns.xml</include></attachment>
   <attachment>hat<component>hat<assetreference type="GrannyModel"><file>units\infantry_ranged\regular\regular_hat_age4</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+  <attachment>hat2<component>hat2<assetreference type="GrannyModel"><file>units\infantry_ranged\regular\regular_hat_age5</file></assetreference></component><anim>Idle<component>hat2</component></anim></attachment>
   <attachment>torch<include>effects\projectiles\torch.xml</include></attachment>
   <attachment>launcher_short<component>gun_short<assetreference type="GrannyModel"><file>units\infantry_ranged\grenadier\hand_mortar_short</file></assetreference></component><anim>Idle<component>gun_short</component></anim></attachment>
   <attachment>launcher<component>gun<assetreference type="GrannyModel"><file>units\infantry_ranged\grenadier\hand_mortar</file></assetreference></component><anim>Idle<component>gun</component></anim></attachment>
   <component>ModelComp
-    <logic type="Variation">
-        <v1>
-            <assetreference type="GrannyModel">
-                <file>units\infantry_ranged\regular\regular_age4</file>
-            </assetreference>
-        </v1>
-        <v2>
-            <assetreference type="GrannyModel">
-                <file>units\infantry_ranged\regular\regular_age4</file>
-                <materialvariant index="1"></materialvariant>
-            </assetreference>
-        </v2>
+    <logic type="Tech">
+        <none>
+            <logic type="Variation">
+                <v1>
+                    <assetreference type="GrannyModel">
+                        <file>units\infantry_ranged\regular\regular_age4</file>
+                    </assetreference>
+                    <attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
+                </v1>
+                <v2>
+                    <assetreference type="GrannyModel">
+                        <file>units\infantry_ranged\regular\regular_age4</file>
+                        <materialvariant index="1"></materialvariant>
+                    </assetreference>
+                    <attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
+                </v2>
+            </logic>
+        </none>
+        <zpactivatecsaskins>
+            <logic type="Variation">
+                <v1>
+                    <assetreference type="GrannyModel">
+                        <file>units\infantry_ranged\regular\regular_confederate</file>
+                    </assetreference>
+                    <attach a="hat2" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
+                </v1>
+                <v2>
+                    <assetreference type="GrannyModel">
+                        <file>units\infantry_ranged\regular\regular_confederate</file>
+                        <materialvariant index="1"></materialvariant>
+                    </assetreference>
+                    <attach a="hat2" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
+                </v2>
+            </logic>
+        </zpactivatecsaskins>
     </logic>
-    <attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
     <decal>
         <effecttype>default</effecttype>
         <texture isfakeshadow="1">shadows_selections\shadow_consulate_64x64</texture>

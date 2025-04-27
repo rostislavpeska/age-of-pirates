@@ -117,7 +117,25 @@
   </zpconsulatekingofbohemiajagiellon>
   <zpconsulatekingofbohemiawittelsbach portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/bohemia_wittelsbach.png">
   </zpconsulatekingofbohemiawittelsbach>
-
+  <zpconsulatenatcherokee portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_cherokee.png">
+  </zpconsulatenatcherokee>
+  <zpconsulatenatseminole portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_seminole.png">
+  </zpconsulatenatseminole>
+  <zpconsulatenatlakota portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/consulate_lakota.png">
+  </zpconsulatenatlakota>
+  <zpconsulaterevpresidentunion portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/usa_president.png">
+  </zpconsulaterevpresidentunion>
+  <zpconsulaterevgeneralunion portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/usa_general.png">
+  </zpconsulaterevgeneralunion>
+  <zpconsulaterevadmiralunion portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/usa_admiral.png">
+  </zpconsulaterevadmiralunion>
+  <zpconsulaterevpresidentconfederate portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/csa_president.png">
+  </zpconsulaterevpresidentconfederate>
+  <zpconsulaterevgeneralconfederate portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/csa_general.png">
+  </zpconsulaterevgeneralconfederate>
+  <zpconsulaterevadmiralconfederate portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/csa_admiral.png">
+  </zpconsulaterevadmiralconfederate>
+  
   <zpconsulaterevjacobine portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_jacobine.png">
   </zpconsulaterevjacobine>
   <zpconsulaterevlafayette portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_lafayette.png">

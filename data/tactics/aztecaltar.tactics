@@ -4,9 +4,9 @@
         <type>DanceBonus</type>
         <dancebonustype>UnitSpawn</dancebonustype>
         <modifyprotoid>zpNatSettlerMaya</modifyprotoid>
-        <modifymultiplier>0.111111</modifymultiplier>
-        <modifyexponent>0.916667</modifyexponent>
-        <modifybase>0.25</modifybase>
+        <modifymultiplier>0.085</modifymultiplier>
+        <modifyexponent>1.03</modifyexponent>
+        <modifybase>0.0425</modifybase>
         <active>1</active>
         <persistent>1</persistent>
     </action>
@@ -15,9 +15,9 @@
         <type>DanceBonus</type>
         <dancebonustype>UnitSpawn</dancebonustype>
         <modifyprotoid>NatMedicineMan</modifyprotoid>
-        <modifymultiplier>0.111111</modifymultiplier>
-        <modifyexponent>0.916667</modifyexponent>
-        <modifybase>0.25</modifybase>
+        <modifymultiplier>0.075</modifymultiplier>
+        <modifyexponent>1.03</modifyexponent>
+        <modifybase>0.0325</modifybase>
         <active>1</active>
         <persistent>1</persistent>
     </action>
@@ -25,10 +25,10 @@
         <name stringid="113108">SpawnWarriorPriest</name>
         <type>DanceBonus</type>
         <dancebonustype>UnitSpawn</dancebonustype>
-        <modifyprotoid>xpMedicineManAztec</modifyprotoid>
-        <modifymultiplier>0.111111</modifymultiplier>
-        <modifyexponent>0.916667</modifyexponent>
-        <modifybase>0.25</modifybase>
+        <modifyprotoid>zpNatMedicineManAztec</modifyprotoid>
+        <modifymultiplier>0.075</modifymultiplier>
+        <modifyexponent>1.03</modifyexponent>
+        <modifybase>0.0325</modifybase>
         <active>1</active>
         <persistent>1</persistent>
     </action>
@@ -37,9 +37,9 @@
         <type>DanceBonus</type>
         <dancebonustype>UnitSpawn</dancebonustype>
         <modifyprotoid>zpAltarCrateofRainbow</modifyprotoid>
-        <modifymultiplier>0.111111</modifymultiplier>
-        <modifyexponent>0.916667</modifyexponent>
-        <modifybase>0.25</modifybase>
+        <modifymultiplier>0.075</modifymultiplier>
+        <modifyexponent>1.03</modifyexponent>
+        <modifybase>0.0425</modifybase>
         <active>1</active>
         <persistent>1</persistent>
     </action>
@@ -47,10 +47,10 @@
         <name stringid="113108">SpawnSkullKnight</name>
         <type>DanceBonus</type>
         <dancebonustype>UnitSpawn</dancebonustype>
-        <modifyprotoid>xpSkullKnight</modifyprotoid>
-        <modifymultiplier>0.111111</modifymultiplier>
-        <modifyexponent>0.916667</modifyexponent>
-        <modifybase>0.25</modifybase>
+        <modifyprotoid>zpNatSkullKnight</modifyprotoid>
+        <modifymultiplier>0.055</modifymultiplier>
+        <modifyexponent>1.03</modifyexponent>
+        <modifybase>0.0225</modifybase>
         <active>1</active>
         <persistent>1</persistent>
     </action>
@@ -59,9 +59,9 @@
         <type>DanceBonus</type>
         <dancebonustype>UnitSpawn</dancebonustype>
         <modifyprotoid>zpAltarCrateofXP</modifyprotoid>
-        <modifymultiplier>0.111111</modifymultiplier>
-        <modifyexponent>0.916667</modifyexponent>
-        <modifybase>0.25</modifybase>
+        <modifymultiplier>0.085</modifymultiplier>
+        <modifyexponent>1.03</modifyexponent>
+        <modifybase>0.0425</modifybase>
         <active>1</active>
         <persistent>1</persistent>
     </action>
@@ -70,9 +70,9 @@
         <type>DanceBonus</type>
         <dancebonustype>UnitSpawn</dancebonustype>
         <modifyprotoid>zpLakeCanoeProxy</modifyprotoid>
-        <modifymultiplier>0.111111</modifymultiplier>
-        <modifyexponent>0.916667</modifyexponent>
-        <modifybase>0.25</modifybase>
+        <modifymultiplier>0.045</modifymultiplier>
+        <modifyexponent>1.03</modifyexponent>
+        <modifybase>0.0225</modifybase>
         <active>1</active>
         <persistent>1</persistent>
     </action>

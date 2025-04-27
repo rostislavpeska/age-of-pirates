@@ -1,0 +1,23 @@
+<damagetemplate>
+	<!--<model name="units\naval\Destroyer\Destroyer_ship_damaged">
+		<impactpoint name="boneimpact01" bone="boneimpact01" impacttype="wood" motionstopfadetime="2.0" motionstopfadedelay="8.0" splasheffect="watersplash_med">
+			<part mesh="debris.001" bone="bone_debris_debris_001" halfextents="0.25, 0.5, 1.0" effect="effects\splinter_streamer.xml"/>
+			<part mesh="debris.002" bone="bone_debris_debris_002" halfextents="0.25, 0.5, 1.0" effect="effects\splinter_streamer.xml"/>
+			<part mesh="debris.003" bone="bone_debris_debris_003" halfextents="0.25, 0.5, 1.0" effect="effects\splinter_streamer.xml"/>
+		</impactpoint>
+		<impactpoint name="boneimpact02" bone="boneimpact02" impacttype="wood" motionstopfadetime="2.0" motionstopfadedelay="8.0" splasheffect="watersplash_med">
+			<part mesh="debris.004" bone="bone_debris_debris_004" halfextents="0.25, 0.5, 1.0" effect="effects\splinter_streamer.xml"/>
+			<part mesh="debris.005" bone="bone_debris_debris_005" halfextents="0.25, 0.5, 1.0" effect="effects\splinter_streamer.xml"/>
+			<part mesh="debris.006" bone="bone_debris_debris_006" halfextents="0.25, 0.5, 1.0" effect="effects\splinter_streamer.xml"/>
+		</impactpoint>
+		<impactpoint name="boneimpact03" bone="boneimpact03" impacttype="wood" motionstopfadetime="2.0" motionstopfadedelay="8.0" splasheffect="watersplash_med">
+			<part mesh="debris.007" bone="bone_debris_debris_007" halfextents="0.25, 0.5, 1.0" effect="effects\splinter_streamer.xml"/>
+			<part mesh="debris.008" bone="bone_debris_debris_008" halfextents="0.25, 0.5, 1.0" effect="effects\splinter_streamer.xml"/>
+		</impactpoint>
+		<impactpoint name="boneimpact04" bone="boneimpact04" impacttype="wood" motionstopfadetime="2.0" motionstopfadedelay="8.0" splasheffect="watersplash_med">
+			<part mesh="debris.009" bone="bone_debris_debris_009" halfextents="0.25, 0.5, 1.0" effect="effects\splinter_streamer.xml"/>
+		</impactpoint>
+		<impactpoint name="boneimpact05" bone="boneimpact05" impacttype="wood" motionstopfadetime="2.0" motionstopfadedelay="8.0" splasheffect="watersplash_med">
+		</impactpoint>
+	</model>-->
+</damagetemplate>

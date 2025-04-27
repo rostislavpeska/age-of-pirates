@@ -16,9 +16,5 @@
       <soundset name="UI_Select_Building_Factory">
       </soundset>
     </soundtype>
-    <soundtype name="Exists">
-      <soundset name="AmbienceFactory">
-      </soundset>
-    </soundtype>
   </protounit>
 </protounitsounddef>

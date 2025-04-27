@@ -255,6 +255,7 @@
     <allowautopick>0</allowautopick>
     <unittype>Military</unittype>
     <unittype>xpMedicineManAztec</unittype>
+    <unittype>zpNatMedicineManAztec</unittype>
     <targetunittype>All</targetunittype>
     <stance>StandGround</stance>
     <formationtype>Line</formationtype>

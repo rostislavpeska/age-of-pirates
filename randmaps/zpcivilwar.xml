@@ -1,0 +1,23 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "302545" displayNameID = "302544" loadDetails="302546" 
+    imagepath = "ui\random_map\civilwar\civilwar_mini" cannotReplace = "" loadBackground="ui\random_map\civilwar\civilwar_map">
+    <loadss>ui\random_map\civilwar\civilwar_02</loadss>
+    <loadss>ui\random_map\civilwar\civilwar_01</loadss>
+    <loadss>ui\random_map\civilwar\civilwar_03</loadss>
+    <enforcedSettings>
+        <setting type="FFA" state="forbidden" />
+        <setting type="RecordGame" state="forbidden" />
+        <setting type="TwoTeams" state="enforced" />
+        <setting type="DefaultRules" state="enforced" />
+        <setting type="AltTeamNames" state="enforced" />
+    </enforcedSettings>
+    <recommendedSettings>
+        <civilization>French</civilization>
+        <civilization>Spanish</civilization>
+        <civilization>DEAmericans</civilization>
+        <civilization>DEMexicans</civilization>
+        <civilization>British</civilization>
+        <civilization>XPSioux</civilization>
+        <civilization>XPIroquois</civilization>
+    </recommendedSettings>
+</mapinfo>

@@ -1,0 +1,87 @@
+<animfile>
+  <definebone>bone_flag_civ</definebone>
+  <definebone>bone_debris_1A</definebone>
+  <definebone>bone_debris_1B</definebone>
+  <definebone>bone_debris_1C</definebone>
+  <definebone>bone_debris_1D</definebone>
+  <definebone>bone_debris_1E</definebone>
+  <definebone>bone_debris_1F</definebone>
+  <definebone>bone_debris_1G</definebone>
+  <definebone>bone_debris_1H</definebone>
+  <definebone>bone_debris_2A</definebone>
+  <definebone>bone_debris_2B</definebone>
+  <definebone>bone_debris_2C</definebone>
+  <definebone>bone_debris_2D</definebone>
+  <definebone>bone_debris_2E</definebone>
+  <definebone>bone_debris_2F</definebone>
+  <definebone>bone_debris_2G</definebone>
+  <definebone>bone_debris_3A</definebone>
+  <definebone>bone_debris_3B</definebone>
+  <definebone>bone_debris_3C</definebone>
+  <definebone>bone_debris_3D</definebone>
+  <definebone>bone_debris_3E</definebone>
+  <definebone>bone_debris_3F</definebone>
+  <definebone>bone_debris_4a</definebone>
+  <definebone>bone_debris_4b</definebone>
+  <definebone>bone_debris_4c</definebone>
+  <definebone>bone_debris_4d</definebone>
+  <definebone>bone_debris_4e</definebone>
+  <definebone>bone_debris_4f</definebone>
+  <definebone>bone_debris_5a</definebone>
+  <definebone>bone_debris_5b</definebone>
+  <definebone>bone_debris_5c</definebone>
+  <definebone>bone_debris_5d</definebone>
+  <submodel>west_age3<attachment>collapse_smoke<component>collapse_smoke<assetreference type="popcornFx"><file>smoke\collapse_smoke_4x4.pkfx</file></assetreference></component><anim>Idle<component>collapse_smoke</component></anim></attachment><component>west_age3<logic type="Destruction"><p1><assetreference type="GrannyModel"><file>buildings\spc\cherokee_warhut\cherokee_warhut_damaged</file></assetreference></p1><p99><assetreference type="GrannyModel" shape="spc_cherokee_warhut"><file>buildings\spc\cherokee_warhut\cherokee_warhut</file></assetreference></p99></logic><decal><effecttype>bump</effecttype><texture>buildings\spc\cherokee_warhut\cherokee_warhut_ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><bumptexture>buildings\spc\cherokee_warhut\cherokee_warhut_ground_b</bumptexture><width>9.55</width><height>9.55</height><xoffset>0.50</xoffset><zoffset>1.00</zoffset></decal></component><component>west_age3_death<logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>buildings\spc\cherokee_warhut\cherokee_warhut_damaged</file></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>buildings\spc\cherokee_warhut\cherokee_warhut</file></assetreference></lowpoly></logic><decal><effecttype>bump</effecttype><texture>buildings\spc\cherokee_warhut\cherokee_warhut_ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><bumptexture>buildings\spc\cherokee_warhut\cherokee_warhut_ground_b</bumptexture><width>9.55</width><height>9.55</height><xoffset>0.50</xoffset><zoffset>1.00</zoffset></decal></component><anim>Idle<component>west_age3</component><simskeleton><model>buildings\spc\cherokee_warhut\cherokee_warhut_damaged</model></simskeleton></anim><anim>Death<component>west_age3_death</component><attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim></submodel>
+  <submodel>sub_construction_stage_01
+    <component>construction_stage_01
+      <assetreference type="GrannyModel">
+        <file>buildings\constructions\nat_4x4_stage1</file>
+      </assetreference>
+      <decal><effecttype>bump</effecttype><texture>buildings\spc\cherokee_warhut\cherokee_warhut_ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><bumptexture>buildings\spc\cherokee_warhut\cherokee_warhut_ground_b</bumptexture><width>9.55</width><height>9.55</height><xoffset>0.50</xoffset><zoffset>1.00</zoffset></decal>
+    </component>
+    <anim>Idle<component>construction_stage_01</component></anim>
+  </submodel>
+  <submodel>sub_construction_stage_02
+    <component>construction_stage_02
+      <assetreference type="GrannyModel">
+        <file>buildings\constructions\nat_4x4_stage2</file>
+      </assetreference>
+      <decal><effecttype>bump</effecttype><texture>buildings\spc\cherokee_warhut\cherokee_warhut_ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><bumptexture>buildings\spc\cherokee_warhut\cherokee_warhut_ground_b</bumptexture><width>9.55</width><height>9.55</height><xoffset>0.50</xoffset><zoffset>1.00</zoffset></decal>
+    </component>
+    <anim>Idle<component>construction_stage_02</component></anim>
+  </submodel>
+  <submodel>sub_construction_stage_03
+    <attachment>building
+      <component>building
+        <assetreference type="GrannyModel">
+          <file>buildings\spc\cherokee_warhut\cherokee_warhut_con</file>
+        </assetreference>
+        <decal><effecttype>bump</effecttype><texture>buildings\spc\cherokee_warhut\cherokee_warhut_ground</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><bumptexture>buildings\spc\cherokee_warhut\cherokee_warhut_ground_b</bumptexture><width>9.55</width><height>9.55</height><xoffset>0.50</xoffset><zoffset>1.00</zoffset></decal>
+      </component>
+      <anim>Idle<component>building</component></anim>
+    </attachment>
+    <component>construction_stage_03
+      <assetreference type="GrannyModel">
+        <file>buildings\constructions\nat_4x4_stage2</file>
+      </assetreference>
+      <attach a="building" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    </component>
+    <anim>Idle<component>construction_stage_03</component></anim>
+  </submodel>
+  <component>cherokee_warhut
+    <logic type="BuildingCompletion">
+      <p0>
+        <submodelref ref="sub_construction_stage_01"></submodelref>
+      </p0>
+      <p33>
+        <submodelref ref="sub_construction_stage_02"></submodelref>
+      </p33>
+      <p66>
+        <submodelref ref="sub_construction_stage_03"></submodelref>
+      </p66>
+      <p100>
+        <submodelref ref="west_age3"></submodelref>
+      </p100>
+    </logic>
+  </component>
+</animfile>

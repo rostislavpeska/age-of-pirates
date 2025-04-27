@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\IH\3\Windmill_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\IH\3\Windmill_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\IH\3\Windmill_Masks">
+      </texture>
+   </parameters>
+  </submaterial>
+</material>
