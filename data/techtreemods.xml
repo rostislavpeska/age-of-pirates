@@ -26171,7 +26171,7 @@
     </effects>
   </tech>
   <tech name="zpConfederacyFixedGuns" type="Normal">
-    <dbid>44049</dbid>
+    <dbid>41049</dbid>
     <displaynameid>302628</displaynameid>
     <cost resourcetype="Wood">500.0000</cost>
     <cost resourcetype="Gold">1000.0000</cost>
