@@ -2633,6 +2633,11 @@
       <string _locid="302633">Commanderies can train Surgeons and Surgeons can construct field hospitals. Field hospital healing effectivity and range increased.</string>
       <string _locid="302634">Siege Rifle</string>
       <string _locid="302635">ZP Siege Rifle</string>
+      <string _locid="302636">Stainless Banner</string>
+      <string _locid="302637">You have risen the Stainless Banner</string>
+      <string _locid="302638">Stainless Banner</string>
+      <string _locid="302639">%s has risen the Stainless Banner!</string>
+      <string _locid="302640">Transform all Settlers to Southern Irregulars. Increases Southern Irregulars build limit by 20.</string>
 
 
       <!-- ======================================== -->

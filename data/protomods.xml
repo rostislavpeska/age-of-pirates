@@ -54745,6 +54745,7 @@
     <tech row="0" page="2" column="5">zpConfederacyIrregulars</tech>
     <tech row="0" page="2" column="5">zpConfederacyFort</tech>
     <tech row="0" page="2" column="6">zpConfederacyFixedGuns</tech>
+    <tech row="0" page="2" column="6">zpConfederacyBanner</tech>
     <flag>DisplayRange</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
@@ -55067,6 +55068,11 @@
       <damagebonus type="AbstractLightInfantry">0.500000</damagebonus>
       <damagebonus type="deMalteseGun">1.500000</damagebonus>
     </protoaction>
+  </unit>
+  <unit id="20744" name="zpIconREVConfederateFlag">
+    <dbid>20744</dbid>
+    <icon>resources\images\icons\abilities\inspiring_flag_confederate_portrait.png</icon>
+    <portraiticon>resources\images\icons\abilities\inspiring_flag_confederate_portrait.png</portraiticon>
   </unit>
 
 

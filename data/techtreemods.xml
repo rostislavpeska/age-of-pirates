@@ -25666,6 +25666,7 @@
         <target type="ProtoUnit">zpSPCCivilWarCommanderyCon</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpConfederacyIrregulars</effect>
+      <effect type="TechStatus" status="obtainable">zpConfederacyBanner</effect>
       <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
@@ -25798,6 +25799,9 @@
     </prereqs>
     <effects>
       <effect type="TextEffectOutput" reason="Revolution" selfmsg="302604" playermsg="302605">
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deInspiringFlag" relativity="Absolute">
+        <target type="ProtoUnit">zpIconREVConfederateFlag</target>
       </effect>
     </effects>
   </tech>
@@ -26155,7 +26159,7 @@
     </effects>
   </tech>
   <tech name="zpUnionBreechLoading" type="Normal">
-    <dbid>44049</dbid>
+    <dbid>41052</dbid>
     <displaynameid>302630</displaynameid>
     <cost resourcetype="Gold">1200.0000</cost>
     <researchpoints>30.0000</researchpoints>
@@ -26174,7 +26178,7 @@
     </effects>
   </tech>
   <tech name="zpUnionFieldHospitals" type="Normal">
-    <dbid>44049</dbid>
+    <dbid>41053</dbid>
     <displaynameid>302632</displaynameid>
     <cost resourcetype="Gold">300.0000</cost>
     <cost resourcetype="Wood">300.0000</cost>
@@ -26205,6 +26209,44 @@
       </effect>
       <effect type="CommandAdd" proto="Surgeon" page="0" column="4">
         <target type="ProtoUnit">zpSPCCivilWarCommandery</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConfederacyBanner" type="Normal">
+    <dbid>41054</dbid>
+    <displaynameid>302636</displaynameid>
+    <cost resourcetype="Food">800.0000</cost>
+    <cost resourcetype="Wood">800.0000</cost>
+    <cost resourcetype="Gold">800.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\civilwar_confederacy_banner.png</icon>
+    <rollovertextid>302640</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpNatStateMilitia" fromprotoid="Settler">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpNatStateMilitia" fromprotoid="Coureur">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpNatStateMilitia" fromprotoid="CoureurCree">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpNatStateMilitia" fromprotoid="SettlerNative">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpNatStateMilitia" fromprotoid="Pilgrim">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpNatStateMilitia" fromprotoid="ypSettlerAsian">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpNatStateMilitia" fromprotoid="ypSettlerJapanese">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpNatStateMilitia" fromprotoid="ypSettlerIndian">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpNatStateMilitia" fromprotoid="deSettlerAfrican">
+      </effect>
+      <effect type="TextEffectOutput" reason="Revolution" selfmsg="302637" playermsg="302639">
+      </effect>
+      <effect type="Data" amount="20.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatStateMilitia</target>
       </effect>
     </effects>
   </tech>
