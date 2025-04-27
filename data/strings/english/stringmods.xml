@@ -2640,6 +2640,8 @@
       <string _locid="302640">Transform all Settlers to Southern Irregulars. Increases Southern Irregulars build limit by 20.</string>
       <string _locid="302641">Advanced pirate ship with a long-range attack.</string>
       <string _locid="302642">Plants the Confederate flag to boost morale! Nearby military units (excluding artillery) and buildings inflict more damage and are created faster. Flags cannot be planted near starting Town Centers, and only one flag can be planted at a time.</string>
+      <string _locid="302643">Teams start on the other side of a large river. Both teams have the same goal: Capture all sockets and hold them for the rest of the game. Both teams start with a Command Post building which provides different improvements based on your team. &lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; United States of America - strong economy and new technologies artillery or navy. &lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Confederate States of America - agricultural improvements and cheaper units.</string>
+      <string _locid="302644">Every settlement is guarded by native guardians. You have to defend them to be able to build the Trading Post.</string>
 
 
       <!-- ======================================== -->

@@ -1262,10 +1262,10 @@ void main(void)
 
 	// ____________________ MAP OBJECTIVES ____________________
     rmObjectiveScreenSetTitle(302544);
-    rmObjectiveScreenSetGoal(302544);
-    rmObjectiveAdd(302562, 302562, true, true, true);
+    rmObjectiveScreenSetGoal(302643);
+    rmObjectiveAdd(302562, 302644, true, true, true);
 	rmObjectiveSetTeam(1, 1);
-	rmObjectiveAdd(302563, 302563, true, true, true);
+	rmObjectiveAdd(302563, 302644, true, true, true);
 	rmObjectiveSetTeam(2, 2);
 	
 
