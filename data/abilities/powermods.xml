@@ -459,6 +459,11 @@
     <icon>resources\images\icons\abilities\passive_district_market.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
+  <power name="zpFlagConfederateData" type="TempUnit">
+    <displaynameid>110177</displaynameid>
+    <rolloverid>302642</rolloverid>
+    <icon>resources\images\icons\abilities\inspiring_flag_confederate_icon.png</icon>
+  </power>
 
 
 

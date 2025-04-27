@@ -804,8 +804,8 @@
       <string _locid="300803">Mass Production \nConfigure Dry Dock to build ships faster by 150%.</string>
       <string _locid="300804">This Dry Dock is focusing on repairing ships.</string>
       <string _locid="300805">Repair \nConfigure Dry Dock to repair ships faster by 300%.</string>
-      <string _locid="300806">This Dry Dock is maintaining ships. (Other ship training speed is slowed down by 50%)</string>
-      <string _locid="300807">Automatic Workshop \nConfigure Dry Dock to maintain ships. (Other ship training speed slows down by 50%)</string>
+      <string _locid="300806">This Dry Dock is slowly maintaining ships.</string>
+      <string _locid="300807">Automatic Workshop \nConfigure Dry Dock to slowly maintain ships.</string>
       <string _locid="300808">Venetian Embassy</string>
       <string _locid="300809">ZP Venetian Embassy</string>
       <string _locid="300810">Venetian Embassy Wagon</string>
@@ -2593,11 +2593,11 @@
       <string _locid="302593">Pick one of the three Confederacy leaders providing you with unique techs.</string>
       <string _locid="302594">Join the Union</string>
       <string _locid="302595">The Admiral</string>
-      <string _locid="302596">Naval improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nFleet of Freedom, Project Leviathan</string>
+      <string _locid="302596">Naval bonus: Increases Warships attack range and line of sight. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nFleet of Freedom, Project Leviathan</string>
       <string _locid="302597">The President</string>
-      <string _locid="302598">Economic improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nNorthern Foundries, Emancipation Proclamation</string>
+      <string _locid="302598">Economic bonus: Native production buildings work 15% faster. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nNorthern Foundries, Emancipation Proclamation</string>
       <string _locid="302599">The General</string>
-      <string _locid="302600">Military improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nField Hospitals, Breech Loading System</string>
+      <string _locid="302600">Military bonus: Artillery gets trained 15% faster. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nField Hospitals, Breech Loading System</string>
       <string _locid="302601">Pick one of the three United States leaders providing you with unique techs.\n • Unlocks new techs</string>
       <string _locid="302602">You proclaimed yourself as part of the Union!</string>
       <string _locid="302603">%s has risen the Union Flag!</string>
@@ -2614,7 +2614,7 @@
       <string _locid="302614">Ships a steam powered pirate Destroyer ship</string>
       <string _locid="302615">Ports of Defiance</string>
       <string _locid="302616">Allows you to constriuct a Dry Dock able to maintain Ironclads. Increases Ironclad build limit.</string>
-      <string _locid="302617">Naval improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nConfederacy privateering Act, Ports of Defiance</string>
+      <string _locid="302617">Naval bonus: All Warships are 15% cheaper. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nConfederacy privateering Act, Ports of Defiance</string>
       <string _locid="302618">Northern Foundries</string>
       <string _locid="302619">Emancipation Proclamation</string>
       <string _locid="302620">Increases your maximum population by 20.</string>
@@ -2622,9 +2622,9 @@
       <string _locid="302622">ZP NAT Southern Irregular</string>
       <string _locid="302623">Southern Irregulars</string>
       <string _locid="302624">Allows you to train Southern Irregular native units from your Command Post.</string>
-      <string _locid="302625">Economic improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nSouthern Irregulars, Stainless Banner</string>
+      <string _locid="302625">Economic bonus: Settler farming rate increased by 15%. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nSouthern Irregulars, Confederate Conscription Act</string>
       <string _locid="302626">Southern Redoubts</string>
-      <string _locid="302627">Military improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nSouthern Redoubts, Confederacy Fort Guns</string>
+      <string _locid="302627">Military bonus: All land military moves 10% faster. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nSouthern Redoubts, Confederacy Fort Guns</string>
       <string _locid="302628">Confederacy Fort Guns</string>
       <string _locid="302629">Ships two fixed gun wagons. Allows your Explorer to construct Fixed Guns.</string>
       <string _locid="302630">Breen Loading System</string>
@@ -2633,11 +2633,13 @@
       <string _locid="302633">Commanderies can train Surgeons and Surgeons can construct field hospitals. Field hospital healing effectivity and range increased.</string>
       <string _locid="302634">Siege Rifle</string>
       <string _locid="302635">ZP Siege Rifle</string>
-      <string _locid="302636">Stainless Banner</string>
-      <string _locid="302637">You have risen the Stainless Banner</string>
-      <string _locid="302638">Stainless Banner</string>
-      <string _locid="302639">%s has risen the Stainless Banner!</string>
+      <string _locid="302636">Confederate Conscription Act</string>
+      <string _locid="302637">You have enacted the Confederate Conscription Act</string>
+      <string _locid="302638">Confederate Conscription Act</string>
+      <string _locid="302639">%s has enacted the Confederate Conscription Act!</string>
       <string _locid="302640">Transform all Settlers to Southern Irregulars. Increases Southern Irregulars build limit by 20.</string>
+      <string _locid="302641">Advanced pirate ship with a long-range attack.</string>
+      <string _locid="302642">Plants the Confederate flag to boost morale! Nearby military units (excluding artillery) and buildings inflict more damage and are created faster. Flags cannot be planted near starting Town Centers, and only one flag can be planted at a time.</string>
 
 
       <!-- ======================================== -->

@@ -162,6 +162,29 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpRevolutionCSAShadow" type="Normal">
+    <dbid>41036</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>OrPrereqs</flag>
+    <prereqs>
+      <techstatus status="Active">zpConsulateRevPresidentConfederate</techstatus>
+      <techstatus status="Active">zpConsulateRevGeneralConfederate</techstatus>
+      <techstatus status="Active">zpConsulateRevAdmiralConfederate</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TextEffectOutput" reason="Revolution" selfmsg="302604" playermsg="302605">
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deInspiringFlag" relativity="Absolute">
+        <target type="ProtoUnit">zpIconREVConfederateFlag</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="PowerDataOverride" fromprotopower="deAbilityInspiringFlag" toprotopower="zpFlagConfederateData" relativity="Percent">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
   <tech name="zpNativeMaltese" type="Normal">
     <dbid>40001</dbid>
     <status>UNOBTAINABLE</status>
@@ -22174,6 +22197,12 @@
       <effect type="Data" action="AutoGatherXPTeam" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCAztecCityMarket</target>
       </effect>
+      <effect type="Data" action="AutoGatherXPTeam" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCSafehouse</target>
+      </effect>
+      <effect type="Data" action="AutoGatherXPTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCSawMill</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSPCBlessedCity" type="Normal">
@@ -25447,10 +25476,10 @@
       <effect type="CommandAdd" proto="xpIronclad" page="0" column="4">
         <target type="ProtoUnit">dePort</target>
       </effect>
-      <effect type="Data" amount="1.2" subtype="Cost" resource="Wood" relativity="BasePercent">
+      <effect type="Data" amount="1.2" subtype="Cost" resource="Wood" relativity="Percent">
         <target type="ProtoUnit">xpIronclad</target>
       </effect>
-      <effect type="Data" amount="0.33" subtype="Cost" resource="Gold" relativity="BasePercent">
+      <effect type="Data" amount="0.33" subtype="Cost" resource="Gold" relativity="Percent">
         <target type="ProtoUnit">xpIronclad</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
@@ -25528,6 +25557,7 @@
       </effect>
       <effect type="TechStatus" status="obtainable">zpUnionEmancipation</effect>
       <effect type="TechStatus" status="obtainable">zpUnionFactory</effect>
+      <effect type="TechStatus" status="active">zpBlessedCityShadow</effect>
       <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
@@ -25551,6 +25581,9 @@
       </effect>
       <effect type="TechStatus" status="obtainable">zpUnionFieldHospitals</effect>
       <effect type="TechStatus" status="obtainable">zpUnionBreechLoading</effect>
+      <effect type="Data" amount="0.85" subtype="TrainPoints" relativity="Percent">
+        <target type="ProtoUnit">AbstractArtillery</target>
+      </effect>
       <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
@@ -25574,6 +25607,43 @@
       </effect>
       <effect type="TechStatus" status="obtainable">zpUnionFleetOfFreedom</effect>
       <effect type="TechStatus" status="obtainable">zpUnionSilentHunter</effect>
+      <effect type="TextOutput">47197</effect>
+      <effect type="Data" action="BroadsideAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">AbstractWarShip</target>
+      </effect>
+      <effect type="Data" action="BuildingAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">AbstractWarShip</target>
+      </effect>
+      <effect type="Data" action="RangedAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">AbstractWarShip</target>
+      </effect>
+      <effect type="Data" action="RangedAttack2" amount="3.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">AbstractWarShip</target>
+      </effect>
+      <effect type="Data" action="RangedAttackContained" amount="3.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">AbstractWarShip</target>
+      </effect>
+      <effect type="Data" action="MortarAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">AbstractWarShip</target>
+      </effect>
+      <effect type="Data" action="MortarAttackContained" amount="3.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">AbstractWarShip</target>
+      </effect>
+      <effect type="Data" action="ChargeBroadsideAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">AbstractWarShip</target>
+      </effect>
+      <effect type="Data" action="LongRangeAttack" amount="4.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">AbstractWarShip</target>
+      </effect>
+      <effect type="Data" action="RoundelAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">AbstractWarShip</target>
+      </effect>
+      <effect type="Data" action="RoundelPierceAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">AbstractWarShip</target>
+      </effect>
+      <effect type="Data" amount="3.00" subtype="LOS" relativity="Absolute">
+        <target type="ProtoUnit">AbstractWarShip</target>
+      </effect>
       <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
@@ -25667,6 +25737,42 @@
       </effect>
       <effect type="TechStatus" status="obtainable">zpConfederacyIrregulars</effect>
       <effect type="TechStatus" status="obtainable">zpConfederacyBanner</effect>
+      <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="Herdable" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="Mill" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.150" subtype="WorkRate" unittype="Plantation" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Gold" unittype="ypRicePaddy" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Food" unittype="ypRicePaddy" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Gold" unittype="deHacienda" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Food" unittype="deHacienda" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Gold" unittype="deField" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Food" unittype="deField" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Wood" unittype="deField" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Influence" unittype="deField" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
       <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
@@ -25691,6 +25797,9 @@
       <effect type="TechStatus" status="obtainable">zpConfederacyFort</effect>
       <effect type="TechStatus" status="obtainable">zpConfederacyFixedGuns</effect>
       <effect type="Sound">UI_StrategyWarning</effect>
+      <effect type="Data" amount="1.10" subtype="MaximumVelocity" relativity="BasePercent">
+        <target type="ProtoUnit">LogicalTypeLandMilitary</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpConsulateRevAdmiralConfederate" type="Normal">
@@ -25713,6 +25822,12 @@
       </effect>
       <effect type="TechStatus" status="obtainable">zpConfederacyPrivateering</effect>
       <effect type="TechStatus" status="obtainable">zpConfederacyDryDock</effect>
+      <effect type="Data" amount="0.85" subtype="Cost" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractWarShip</target>
+      </effect>
+      <effect type="Data" amount="0.85" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractWarShip</target>
+      </effect>
       <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
@@ -25784,25 +25899,6 @@
       <effect type="TechStatus" status="obtainable">zpConsulateRevAdmiralConfederate</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffRevCSA</effect>
-    </effects>
-  </tech>
-  <tech name="zpRevolutionCSAShadow" type="Normal">
-    <dbid>41036</dbid>
-    <researchpoints>0.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <flag>OrPrereqs</flag>
-    <prereqs>
-      <techstatus status="Active">zpConsulateRevPresidentConfederate</techstatus>
-      <techstatus status="Active">zpConsulateRevGeneralConfederate</techstatus>
-      <techstatus status="Active">zpConsulateRevAdmiralConfederate</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="TextEffectOutput" reason="Revolution" selfmsg="302604" playermsg="302605">
-      </effect>
-      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deInspiringFlag" relativity="Absolute">
-        <target type="ProtoUnit">zpIconREVConfederateFlag</target>
-      </effect>
     </effects>
   </tech>
   <tech name="zpRevolutionUSAShadow" type="Normal">

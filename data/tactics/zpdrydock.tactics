@@ -66,6 +66,7 @@
         <active>1</active>
         <type>Maintain</type>
         <rate type="zpVeniceGalley">1.0 </rate>
+        <maintaintrainpoints>80</maintaintrainpoints>
         <persistent>1</persistent>
     </action>
     <action>
@@ -73,6 +74,7 @@
         <active>0</active>
         <type>Maintain</type>
         <rate type="Privateer">1.0 </rate>
+        <maintaintrainpoints>80</maintaintrainpoints>
         <persistent>1</persistent>
     </action>
     <action>
@@ -80,14 +82,15 @@
         <active>0</active>
         <type>Maintain</type>
         <rate type="zpAlexandrianGalley">1.0 </rate>
+        <maintaintrainpoints>80</maintaintrainpoints>
         <persistent>1</persistent>
     </action>
     <action>
         <name stringid="43299">SpawnIronclad</name>
         <active>0</active>
         <type>Maintain</type>
-        <rate type="xpIronclad">1.0 </rate>
-        <maintaintrainpoints>240</maintaintrainpoints>
+        <rate type="xpIronclad">1.0</rate>
+        <maintaintrainpoints>200</maintaintrainpoints>
         <persistent>1</persistent>
     </action>
     
@@ -156,7 +159,6 @@
         <action>Spawnprivateer</action>
         <action>SpawnAXGalley</action>
         <action>SpawnIronclad</action>
-        <action>DockWorkRateMalus</action>
         <protounitcommand>zpTacticSpawnGalley</protounitcommand>
         <transition>
             <tactic>TacticQuality</tactic>
