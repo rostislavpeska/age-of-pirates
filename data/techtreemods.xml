@@ -25384,7 +25384,7 @@
     <cost resourcetype="Wood">500.0000</cost>
     <researchpoints>40.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\ironclad_tech.png</icon>
+    <icon>resources\images\icons\techs\black_sea_fleet.png</icon>
     <rollovertextid>302586</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
@@ -25549,7 +25549,8 @@
       <effect type="CommandRemove" tech="zpSPCUsaCivilWarRevolution">
         <target type="ProtoUnit">zpSPCCivilWarCommandery</target>
       </effect>
-
+      <effect type="TechStatus" status="obtainable">zpUnionFieldHospitals</effect>
+      <effect type="TechStatus" status="obtainable">zpUnionBreechLoading</effect>
       <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
@@ -25896,13 +25897,13 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpWokousteamer</target>
       </effect>
-      <effect type="CommandAdd" proto="zpWokousteamer" page="0" column="15">
+      <effect type="CommandAdd" proto="zpWokousteamer" page="0" column="13">
         <target type="ProtoUnit">Dock</target>
       </effect>
-      <effect type="CommandAdd" proto="zpWokousteamer" page="0" column="15">
+      <effect type="CommandAdd" proto="zpWokousteamer" page="0" column="13">
         <target type="ProtoUnit">ypDockAsian</target>
       </effect>
-      <effect type="CommandAdd" proto="zpWokousteamer" page="0" column="15">
+      <effect type="CommandAdd" proto="zpWokousteamer" page="0" column="13">
         <target type="ProtoUnit">dePort</target>
       </effect>
     </effects>
@@ -26150,6 +26151,60 @@
         <target type="ProtoUnit">zpMalteseGun</target>
       </effect>
       <effect mergeMode='add' type="SetName" proto="zpMalteseGun" culture="none" newname="302106">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnionBreechLoading" type="Normal">
+    <dbid>44049</dbid>
+    <displaynameid>302630</displaynameid>
+    <cost resourcetype="Gold">1200.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\civilwar_breechloading.png</icon>
+    <rollovertextid>302631</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+    </prereqs>
+    <effects> 
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSiegeRifle</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnionFieldHospitals" type="Normal">
+    <dbid>44049</dbid>
+    <displaynameid>302632</displaynameid>
+    <cost resourcetype="Gold">300.0000</cost>
+    <cost resourcetype="Wood">300.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\civilwar_hospitals.png</icon>
+    <rollovertextid>302633</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects> 
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">FieldHospital</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Surgeon</target>
+      </effect>
+      <effect type="Data" action="AreaHeal" amount="2.00" subtype="ModifyRate" relativity="BasePercent">
+        <target type="ProtoUnit">FieldHospital</target>
+      </effect>
+      <effect type="Data" action="Heal" amount="1.25" subtype="WorkRate" unittype="LogicalTypeHealed" relativity="BasePercent">
+        <target type="ProtoUnit">FieldHospital</target>
+      </effect>
+      <effect type="Data" action="AreaHeal" amount="1.25" subtype="ModifyRate" relativity="BasePercent">
+        <target type="ProtoUnit">FieldHospital</target>
+      </effect>
+      <effect type="CommandAdd" proto="Surgeon" page="0" column="4">
+        <target type="ProtoUnit">zpSPCCivilWarCommandery</target>
       </effect>
     </effects>
   </tech>
