@@ -58458,7 +58458,7 @@
     <maxrunvelocity>8.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>5.0000</turnrate>
-    <animfile>units\wildwest_units\stagecoach\stagecoach.xml</animfile>
+    <animfile>units\wildwest_units\stagecoach\stagecoach_cabin.xml</animfile>
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\natives\western_village\armored_stagecoach_icon.png</icon>
     <portraiticon>resources\art\units\natives\western_village\armored_stagecoach_portrait.png</portraiticon>

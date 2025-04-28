@@ -79,10 +79,7 @@
             <file>units\trade\trade_stagecoach_idle</file>
         </assetreference>
         <component>ModelComp</component>
-        <simskeleton>
-            <model>units\wildwest_units\stagecoach\stagecoach_damaged_Model</model>
-        </simskeleton>
-         <attach a="trade_stagecoach_driver" frombone="Bip01" tobone="bone_attach_driver" syncanims="1"></attach>
+        <attach a="trade_stagecoach_driver" frombone="Bip01" tobone="bone_attach_driver" syncanims="1"></attach>
     </anim>
     <anim>Walk
         <assetreference type="GrannyAnim">
@@ -97,9 +94,6 @@
           <tag type="SpecificSoundSet" checkvisible="1" set="HorseHoof4">1.00</tag>
         </assetreference>
         <component>ModelComp</component>
-        <simskeleton>
-            <model>units\wildwest_units\stagecoach\stagecoach_damaged_Model</model>
-        </simskeleton>
          <attach a="trade_stagecoach_driver" frombone="Bip01" tobone="bone_attach_driver" syncanims="1"></attach>
     </anim>
     <anim>Death

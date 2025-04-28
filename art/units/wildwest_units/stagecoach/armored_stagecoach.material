@@ -1,15 +1,13 @@
 <material>
   <submaterial name="mata">
-    <materialdef name="default">
+    <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_BaseColor">
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
       </texture>
-      <texture name="Normals" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_Normals">
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\transparent_texture">
       </texture>
-      <texture name="Masks" override="units\trade\textures\trade_stagecoah_mata_Masks">
-      </texture>
-      <texture name="Details" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_Details">
+      <texture name="Masks" override="buildings\asian_civs\consulate\textures\transparent_texture">
       </texture>
     </parameters>
   </submaterial>
@@ -17,13 +15,11 @@
     <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_BaseColor">
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
       </texture>
-      <texture name="Normals" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_Normals">
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\transparent_texture">
       </texture>
-      <texture name="Masks" override="units\trade\textures\trade_stagecoah_mata_Masks">
-      </texture>
-      <texture name="Details" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_Details">
+      <texture name="Masks" override="buildings\asian_civs\consulate\textures\transparent_texture">
       </texture>
     </parameters>
   </submaterial>

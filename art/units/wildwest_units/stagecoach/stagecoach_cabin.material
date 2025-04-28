@@ -1,0 +1,56 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\trade\textures\trade_stagecoah_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\trade\textures\trade_stagecoah_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_matb_Normals">
+      </texture>
+      <texture name="Masks" override="units\wildwest_units\stagecoach\textures\armored_stagecoach_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\artillery\gatling_gun\textures\gatling_gun_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\artillery\gatling_gun\textures\gatling_gun_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\artillery\gatling_gun\textures\gatling_gun_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\artillery\gatling_gun\textures\gatling_gun_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
