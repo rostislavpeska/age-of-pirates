@@ -58454,8 +58454,8 @@
     <subciv>zpWesternVillage</subciv>
     <obstructionradiusx>0.7900</obstructionradiusx>
     <obstructionradiusz>0.7900</obstructionradiusz>
-    <maxvelocity>6.0000</maxvelocity>
-    <maxrunvelocity>8.0000</maxrunvelocity>
+    <maxvelocity>5.0000</maxvelocity>
+    <maxrunvelocity>7.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>5.0000</turnrate>
     <animfile>units\wildwest_units\stagecoach\stagecoach_cabin.xml</animfile>
@@ -58464,9 +58464,9 @@
     <portraiticon>resources\art\units\natives\western_village\armored_stagecoach_portrait.png</portraiticon>
     <rollovertextid>400062</rollovertextid>
     <shortrollovertextid>400062</shortrollovertextid>
-    <initialhitpoints>800.0000</initialhitpoints>
-    <maxhitpoints>800.0000</maxhitpoints>
-    <buildlimit>2</buildlimit>
+    <initialhitpoints>1500.0000</initialhitpoints>
+    <maxhitpoints>1500.0000</maxhitpoints>
+    <buildlimit>1</buildlimit>
     <los>20.0000</los>
     <projectileprotounit>InvisibleProjectile</projectileprotounit>
     <autoattackrange>16.0000</autoattackrange>
@@ -58474,8 +58474,8 @@
     <trainpoints>45.0000</trainpoints>
     <bounty>24.0000</bounty>
     <buildbounty>24.0000</buildbounty>
-    <cost resourcetype="Wood">240.0000</cost>
-    <cost resourcetype="Gold">240.0000</cost>
+    <cost resourcetype="Wood">280.0000</cost>
+    <cost resourcetype="Gold">280.0000</cost>
     <allowedage>2</allowedage>
     <armor type="Ranged" value="0.5500">
     </armor>
@@ -58504,7 +58504,6 @@
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractRangedCavalry</unittype>
     <unittype>AbstractGunpowderCavalry</unittype>
-    <unittype>Ship</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -58519,20 +58518,21 @@
     <command page="10" column="7">Delete</command>
     <tactics>armoredstagecoach.tactics</tactics>
     <protoaction>
-      <name>RangedAttack</name>
-      <damage>42.000000</damage>
-      <damagetype>Ranged</damagetype>
-      <maxrange>20.000000</maxrange>
-      <rof>2.000000</rof>
-      <damageflags>GAIAEnemy</damageflags>
-    </protoaction>
-    <protoaction>
-      <name>BuildingAttack</name>
-      <damage>42.000000</damage>
+      <name>GatlingAttack</name>
+      <damage>5.000000</damage>
       <damagetype>Siege</damagetype>
-      <maxrange>16.000000</maxrange>
-      <rof>2.000000</rof>
+      <minrange>0.000000</minrange>
+      <maxrange>25.000000</maxrange>
+      <rof>0.500000</rof>
+      <damagecap>60.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>2.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractCavalry">0.2500000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">0.1500000</damagebonus>
+      <damagebonus type="Building">0.75000</damagebonus>
+      <damagebonus type="xpArrowKnight">0.500000</damagebonus>
+      <damagebonus type="deMalteseGun">2.500000</damagebonus>
     </protoaction>
   </unit>
   <unit id="21015" name="zpMountedOutlaw">
