@@ -1,33 +1,32 @@
 <tactics>
   <action>
-        <name stringid="300500">GatlingAttack</name>
-        <type>Attack</type>
-        <attackaction>1</attackaction>
-        <rangedlogic>1</rangedlogic>
-        <anim>RangedAttack</anim>
-        <maxheight>0</maxheight>
-        <accuracy>1.0</accuracy>
-        <accuracyreductionfactor>0.5</accuracyreductionfactor>
-        <aimbonus>0</aimbonus>
-        <maxspread>5</maxspread>
-        <spreadfactor>0.25</spreadfactor>
-        <trackrating>12</trackrating>
-        <scalebycontainedunittype>
-            <rate type="zpCaptainNemo">0.75</rate>
-        </scalebycontainedunittype>
-        <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
-        <projectile>InvisibleProjectile</projectile>
-        <numberprojectiles>1</numberprojectiles>
-        <displayednumberprojectiles>6</displayednumberprojectiles>
-        <impacteffect>effects\impacts\gun</impacteffect>
-        <rate type="Building">1.0 </rate>
-        <rate type="LogicalTypeGarrisonInShips">1.0 </rate>
-        <rate type="Guardian">1.0 </rate>
-        <rate type="zpAirship">1.0 </rate>
-        <instantballistics>1</instantballistics>
-        <basedamagecap>1</basedamagecap>
-        <perfectaccuracy>1</perfectaccuracy>
-    </action>
+    <name stringid="300500">GatlingAttack</name>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>RangedAttack</anim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.5</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <scalebycontainedunittype>
+    </scalebycontainedunittype>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>InvisibleProjectile</projectile>
+    <numberprojectiles>1</numberprojectiles>
+    <displayednumberprojectiles>6</displayednumberprojectiles>
+    <impacteffect>effects\impacts\gun</impacteffect>
+    <rate type="Building">1.0 </rate>
+    <rate type="LogicalTypeGarrisonInShips">1.0 </rate>
+    <rate type="Guardian">1.0 </rate>
+    <rate type="zpAirship">1.0 </rate>
+    <instantballistics>1</instantballistics>
+    <basedamagecap>1</basedamagecap>
+    <perfectaccuracy>1</perfectaccuracy>
+  </action>
   <tactic>Basic
     <speedmodifier>1.0</speedmodifier>
     <action priority="100">GatlingAttack</action>
