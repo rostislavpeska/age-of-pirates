@@ -992,13 +992,22 @@ void main(void)
 			else
 				rmAddObjectDefItem(colonyShipID, "caravel", 1, 10.0);
 		}
-		rmAddClosestPointConstraint(flagEdgeConstraint);
-		rmAddClosestPointConstraint(flagVsFlag);
-		rmAddClosestPointConstraint(avoidTradeRoute);
-		rmAddClosestPointConstraint(flagLand);
-		vector closestPoint = rmFindClosestPointVector(TCLocation, rmXFractionToMeters(1.0));
-
-		rmPlaceObjectDefAtLoc(colonyShipID, i, rmXMetersToFraction(xsVectorGetX(closestPoint)), rmZMetersToFraction(xsVectorGetZ(closestPoint)));
+		if (PlayerNum==2){
+			if (rmPlayerLocXFraction(i)<0.5) {
+				rmPlaceObjectDefAtLoc(colonyShipID, i, 0.5-rmXMetersToFraction(30), rmPlayerLocZFraction(i)-rmZMetersToFraction(10));
+			}
+			else {
+				rmPlaceObjectDefAtLoc(colonyShipID, i, 0.5+rmXMetersToFraction(30), rmPlayerLocZFraction(i)+rmZMetersToFraction(10));
+			}
+		}
+		else{
+			rmAddClosestPointConstraint(flagEdgeConstraint);
+			rmAddClosestPointConstraint(flagVsFlag);
+			rmAddClosestPointConstraint(avoidTradeRoute);
+			rmAddClosestPointConstraint(flagLand);
+			vector closestPoint = rmFindClosestPointVector(TCLocation, rmXFractionToMeters(1.0));
+			rmPlaceObjectDefAtLoc(colonyShipID, i, rmXMetersToFraction(xsVectorGetX(closestPoint)), rmZMetersToFraction(xsVectorGetZ(closestPoint)));
+		}
 
 	}
 
@@ -1318,7 +1327,7 @@ void main(void)
 
 	// Cooldowns
 	int armoredTrainActive = 90;
-	int armoredTrainCooldown = 10;
+	int armoredTrainCooldown = 300;
 	int armoredTrainCooldown2 = 240;
 	int socketMinimapFlareDuration = 300;
 	int victoryCountDown = 120;

@@ -54559,7 +54559,7 @@
     <cost resourcetype="Wood">300.0000</cost>
     <cost resourcetype="Gold">300.0000</cost>
     <buildingworkrate>1.0000</buildingworkrate>
-    <allowedage>2</allowedage>
+    <allowedage>1</allowedage>
     <armor type="Siege" value="0.0000">
     </armor>
     <tech row="0" page="2" column="1">zpPickNativeConsulateTechCivilWar</tech>
