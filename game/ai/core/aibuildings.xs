@@ -3432,15 +3432,20 @@ minInterval 5
       {  // Different strategies
          if (age >= cAge3)
          {
-            if ((gStrategy == cStrategySafeFF) || (gStrategy == cStrategyGreed))
+            if (gStrategy == cStrategyGreed)
             {
-               planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 1);
+               planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 3);
+               aiPlanSetDesiredResourcePriority(planID, 60);
+            }
+            else if (gStrategy == cStrategySafeFF && (xsGetTime() > 15 * 60 * 1000))
+            {
+               planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 3);
                aiPlanSetDesiredResourcePriority(planID, 60);
             }
          }
-         else if (age >= cAge3 && xsGetTime() > 20 * 60 * 1000 && gStrategy != cStrategyFastIndustrial)
+         else if (age >= cAge3 && xsGetTime() > 25 * 60 * 1000 && gStrategy != cStrategyFastIndustrial)
          {
-            planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 1);
+            planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 3);
             aiPlanSetDesiredResourcePriority(planID, 60);
          }
       }
@@ -3449,7 +3454,7 @@ minInterval 5
       { 
          if (age >= cAge4 || time > 25 * 60 * 1000)
          {
-            planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 1);
+            planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 3);
             aiPlanSetDesiredResourcePriority(planID, 60);
          }
       }

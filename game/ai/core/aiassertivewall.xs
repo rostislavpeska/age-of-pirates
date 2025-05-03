@@ -4576,7 +4576,6 @@ int getTeamStrategy(void)
       }
    }
 
-
    return (gStrategy);
 }
 
@@ -4855,7 +4854,7 @@ minInterval 20
 bool allowedToAttack(void)
 {
    // Quick time check to make sure they aren't too, too soon
-   if (xsGetTime() - gLastAttackMissionTime < (gAttackMissionInterval * 0.5))
+   if (xsGetTime() - gLastAttackMissionTime < (gAttackMissionInterval * 0.65))
    {
       return (false);
    }
@@ -4866,6 +4865,8 @@ bool allowedToAttack(void)
    int militaryQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAlly, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(militaryQueryID);
    float militaryStrength = 0.0;
+   int tempUnitID = -1;
+   int myMilitaryStrength = 0;
    int puid = -1;
    int playersPerTeam = (cNumberPlayers - 1) / (aiGetNumberTeams() - 1); // Gaia counts as a player and a team
    float pptFudgeFactor = 1.0;  // fudge the player per team number when teams get bigger
@@ -4882,8 +4883,14 @@ bool allowedToAttack(void)
 
    for (i = 0; < numberFound)
    {
-      puid = kbUnitGetProtoUnitID(kbUnitQueryGetResult(militaryQueryID, i));
+      tempUnitID = kbUnitQueryGetResult(militaryQueryID, i);
+      puid = kbUnitGetProtoUnitID(tempUnitID);
       militaryStrength = militaryStrength + getMilitaryUnitStrength(puid);
+      // get our own military strength
+      if (kbUnitGetPlayerID(tempUnitID) == cMyID)
+      {
+         myMilitaryStrength += getMilitaryUnitStrength(puid);
+      }
    }
 
    // adjust strength for lower difficulties. 
@@ -4907,21 +4914,25 @@ bool allowedToAttack(void)
    else if (enAgeVar == cAge2)
    {
       if (militaryStrength < 15 * playersPerTeam * pptFudgeFactor){return false;}
+      else if (myMilitaryStrength < 15){return false;}
       else if (militaryStrength > 30 * playersPerTeam * pptFudgeFactor){return true;}
    }
    else if (enAgeVar == cAge3)
    {
       if (militaryStrength < 20 * playersPerTeam * pptFudgeFactor){return false;}
+      else if (myMilitaryStrength < 20){return false;}
       else if (militaryStrength > 45 * playersPerTeam * pptFudgeFactor){return true;}
    }
    else if (enAgeVar == cAge4)
    {
       if (militaryStrength < 25 * playersPerTeam * pptFudgeFactor){return false;}
+      else if (myMilitaryStrength < 25){return false;}
       else if (militaryStrength > 55 * playersPerTeam * pptFudgeFactor){return true;}
    }
    else if (enAgeVar == cAge5)
    {
       if (militaryStrength < 30 * playersPerTeam * pptFudgeFactor){return false;}
+      else if (myMilitaryStrength < 30){return false;}
       else if (militaryStrength > 60 * playersPerTeam * pptFudgeFactor){return true;}
    }
 
@@ -11086,16 +11097,16 @@ minInterval 10
 
    // Do some math to adjust our retreat factor a little bit based on our offense/defense disposition
    // Offense: 0 | Defense: 1.0
-   // Higher number means more likely to retreat. All values fall between 0.6 and 0.7
-   strengthFactor = strengthFactor + btOffenseDefense / 10.0;
+   // Higher number means more likely to retreat. btOffenseDefense ranges from 0 to 1.0
+   strengthFactor = strengthFactor + btOffenseDefense * 0.5;
    // A check, just in case and to make this future-proof
-   if (strengthFactor > 0.7)
+   if (strengthFactor > 0.9)
+   {
+      strengthFactor = 0.9;
+   }
+   else if (strengthFactor < 0.7)
    {
       strengthFactor = 0.7;
-   }
-   else if (strengthFactor < 0.6)
-   {
-      strengthFactor = 0.6;
    }
 
    // Check the strength of our army
@@ -11107,7 +11118,7 @@ minInterval 10
    allyStrength = getAreaStrength(targetLocation, 50, cPlayerRelationAllyExcludingSelf);
 
    // Retreat if our strength is too small
-   if (friendlyStrength + allyStrength < enemyStrength * strengthFactor)
+   if ((friendlyStrength + allyStrength) < (enemyStrength * strengthFactor))
    {
       if (allyStrength > 0)
       {
@@ -11133,7 +11144,7 @@ minInterval 10
       allyStrength = getAreaStrength(targetLocation, 50, cPlayerRelationAllyExcludingSelf);
 
       // Retreat if our strength is too small
-      if (((friendlyStrength + allyStrength) < (enemyStrength * strengthFactor)) && retreat == false)
+      if ((friendlyStrength + allyStrength) < (enemyStrength * strengthFactor))
       {
          if (allyStrength > 0)
          {

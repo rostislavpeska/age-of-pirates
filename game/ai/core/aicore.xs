@@ -225,7 +225,7 @@ minInterval 30
 void setMilPopLimit(int age1Limit = 10, int age2Limit = 30, int age3Limit = 80,
                     int age4Limit = 120, int age5Limit = 130)
 {
-   int age = kbGetAge();
+   int age = getAgingUpAge();
    // We use treatyCheckStartMakingArmy to call setMilPopLimit when it's time to make army.
    // We start making army in treaty 10 minutes before the treaty ends.
    if (aiTreatyGetEnd() > xsGetTime() + 10 * 60 * 1000)
@@ -2709,10 +2709,28 @@ minInterval 5
          xsEnableRule("cityTowerUpgradeMonitor");
       }
       
-      xsEnableRule("age3Monitor");
+      xsEnableRule("agingTo3Monitor");
       xsDisableSelf();
       debugCore("*** End of age2Monitor rule");
       debugCore("");
+   }
+}
+
+//==============================================================================
+// agingTo3Monitor
+// Watch for us aging to age 3.
+// AssertiveWall: Added so we can update mil pop before reaching age 3
+//==============================================================================
+rule agingTo3Monitor
+inactive
+minInterval 10
+{
+   if (getAgingUpAge() >= cAge3)
+   {
+      updateSettlersAndPopManager();
+
+      xsEnableRule("age3Monitor");
+      xsDisableSelf();
    }
 }
 
@@ -2810,10 +2828,9 @@ minInterval 10
 
       // Enable navy upgrades
       if ((gNavyMap == true) &&
-          (cvOkToTrainNavy == true) &&
-          (civIsNative() == false))
+          (cvOkToTrainNavy == true))// AssertiveWall: Natives can now upgrade boats &&(civIsNative() == false))
       {
-      xsEnableRule("navyUpgradeMonitor");
+         xsEnableRule("navyUpgradeMonitor");
       }
 
       if (civIsAfrican() == true)
@@ -2827,10 +2844,28 @@ minInterval 10
       //   xsEnableRule("seaWall");
       //}
 
-      xsEnableRule("age4Monitor");
+      xsEnableRule("agingTo4Monitor");
       xsDisableSelf();
       debugCore("*** End of age3Monitor rule");
       debugCore("");
+   }
+}
+
+//==============================================================================
+// agingTo4Monitor
+// Watch for us aging to age 4.
+// AssertiveWall: Added so we can update mil pop before reaching age 4
+//==============================================================================
+rule agingTo4Monitor
+inactive
+minInterval 10
+{
+   if (getAgingUpAge() >= cAge4)
+   {
+      updateSettlersAndPopManager();
+
+      xsEnableRule("age4Monitor");
+      xsDisableSelf();
    }
 }
 
