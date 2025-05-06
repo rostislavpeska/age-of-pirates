@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <tactics>
 	<action>
 		<name stringid="38119">CannonAttack</name>
@@ -22,29 +21,10 @@
 		<targetground>1</targetground>
 		<basedamagecap>1</basedamagecap>
 	</action>
-	<!--<action>
-		<name stringid="38142">TrampleHandAttack</name>
-		<type>TruckAttack</type>
-		<maxrange>0</maxrange>
-		<rate type="All">1.0 </rate>
-		<attackaction>1</attackaction>
-		<handlogic>1</handlogic>
-		<speedboost>1</speedboost>
-		<anim>Walk</anim>
-		<idleanim>Idle</idleanim>
-		<damage>0.0</damage>
-		<rof>0.0</rof>
-		<targetspeedboost>1</targetspeedboost>
-		<basedamagecap>1</basedamagecap>
-		<persistent>1</persistent>
-		<projectile>InvisibleProjectileNoTracer</projectile>
-		<throw>1</throw>
-	</action>-->
 	<tactic>
 		Bombard
 		<speedmodifier>1.0</speedmodifier>
 		<action priority="100">CannonAttack</action>
-		<action priority="25">TrampleHandAttack</action>
 		<moveanim>Walk</moveanim>
 		<transition>
 			<tactic>Limber</tactic>
@@ -55,27 +35,6 @@
 		<attacktype>LogicalTypeRangedUnitsAttack</attacktype>
 		<autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
 		<attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
-		<runaway>1</runaway>
-		<exclusive>1</exclusive>
-		<throw>1</throw>
-		<autoretarget>1</autoretarget>
-	</tactic>
-	<tactic>
-		Limber
-		<speedmodifier>1.0</speedmodifier>
-		<attacktype>LogicalTypeRangedUnitsAttack</attacktype>
-		<autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
-		<attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
-		<action priority="100">CannonAttack</action>
-		<action priority="25">TrampleHandAttack</action>
-		<transition>
-			<tactic>Normal</tactic>
-			<action>Limber</action>
-			<exit>1</exit>
-			<commandautomatic>1</commandautomatic>
-			<automatic>1</automatic>
-		</transition>
-		<moveanim>Walk</moveanim>
 		<runaway>1</runaway>
 		<exclusive>1</exclusive>
 		<throw>1</throw>

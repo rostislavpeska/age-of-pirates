@@ -27,4 +27,5 @@
   <unittype>AbstractCityManisonB</unittype>
   <unittype>zpAbstractAssassin</unittype>
   <unittype>AbstractTeamCitadel</unittype>
+  <unittype>AbstractSteamTank</unittype>
 </unittypes>

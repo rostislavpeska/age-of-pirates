@@ -79,7 +79,7 @@
 	<component>
 		death
 		<assetreference type="GrannyModel">
-			<file>units\Great War\FT-17\FT-17_Death</file>
+			<file>units\artillery\steam_tankette\tank_death_model</file>
 		</assetreference>
 		<decal>
 			<effecttype>default</effecttype>
@@ -146,20 +146,8 @@
 	<anim>
 		Death
 		<assetreference type="GrannyAnim">
-			<file>units\Great War\FT-17\FT-17_deathAnim_1</file>
-			<tag type="SpecificSoundSet" checkvisible="1" set="MortarShot">0.00</tag>
-			<tag type="SpecificSoundSet" checkvisible="1" set="Vehicle_Death">0.00</tag>
-			<tag type="Particles" particlename="EXP">0.00</tag>
+			<file>units\artillery\steam_tankette\tank_death_anim</file>
 		</assetreference>
-		<assetreference type="GrannyAnim">
-			<file>units\Great War\FT-17\FT-17_deathAnim_2</file>
-			<tag type="SpecificSoundSet" checkvisible="1" set="MortarShot">0.00</tag>
-			<tag type="SpecificSoundSet" checkvisible="1" set="Vehicle_Death">0.00</tag>
-			<tag type="Particles" particlename="EXP">0.00</tag>
-		</assetreference>
-		<attach a="fire" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"/>
-		<attach a="embers_attachment_F" frombone="attachpoint" tobone="attachpoint" syncanims="0"/>
-		<attach a="smoke_attachment_F" frombone="attachpoint" tobone="attachpoint" syncanims="0"/>
 		<component>death</component>
 	</anim>
 </animfile>

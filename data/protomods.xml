@@ -11672,7 +11672,7 @@
     <subciv>zpScientists</subciv>
     <displaynameid>300550</displaynameid>
     <editornameid>300543</editornameid>
-    <populationcount>6</populationcount>
+    <populationcount>5</populationcount>
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Protected</formationcategory>
@@ -11681,7 +11681,7 @@
     <movementtype>land</movementtype>
     <buildlimit>1</buildlimit>
     <turnrate>3.0000</turnrate>
-    <animfile>units\artillery\tank\zptank.xml</animfile>
+    <animfile>units\artillery\tank\tank.xml</animfile>
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\artillery\tank\tank_icon.png</icon>
     <portraiticon>resources\art\units\artillery\tank\tank_portrait.png</portraiticon>
@@ -11931,7 +11931,8 @@
     <maxrunvelocity>7.25000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>3.0000</turnrate>
-    <animfile>units\artillery\tank\zptank.xml</animfile>
+    <populationcount>5</populationcount>
+    <animfile>units\artillery\tank\tank.xml</animfile>
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\artillery\tank\tank_icon.png</icon>
     <portraiticon>resources\art\units\artillery\tank\tank_portrait.png</portraiticon>
@@ -55078,31 +55079,31 @@
 		<displaynameid>302645</displaynameid>
 		<editornameid>302646</editornameid>
 		<populationcount>5</populationcount>
+    <buildlimit>1</buildlimit>
     <subciv>zpScientists</subciv>
 		<obstructionradiusx>1.0000</obstructionradiusx>
 		<obstructionradiusz>1.0000</obstructionradiusz>
 		<formationcategory>ranged</formationcategory>
-		<maxvelocity>3.5000</maxvelocity>
-		<maxrunvelocity>5.5000</maxrunvelocity>
+		<maxvelocity>5.25000</maxvelocity>
+    <maxrunvelocity>7.25000</maxrunvelocity>
 		<movementtype>land</movementtype>
 		<turnrate>3.0000</turnrate>
 		<animfile>units\artillery\steam_tankette\steam_tankette.xml</animfile>
 		<impacttype>Wood</impacttype>
 		<physicsinfo>house</physicsinfo>
-		<icon>resources\art\units\artillery\steam_tank_icon.png</icon>
-    <portraiticon>resources\art\units\artillery\steam_tank_portrait.png</portraiticon>
-		<rollovertextid>124702</rollovertextid>
-    <shortrollovertextid>124701</shortrollovertextid>
-		<initialhitpoints>1500.0000</initialhitpoints>
-    <maxhitpoints>1500.0000</maxhitpoints>
+		<icon>resources\art\units\artillery\steamtank_icon.png</icon>
+    <portraiticon>resources\art\units\artillery\steamtank_portrait.png</portraiticon>
+		<rollovertextid>302648</rollovertextid>
+    <shortrollovertextid>302647</shortrollovertextid>
+		<initialhitpoints>2300.0000</initialhitpoints>
+    <maxhitpoints>2300.0000</maxhitpoints>
 		<los>30.0000</los>
 		<unitaitype>RangedCombative</unitaitype>
-		<trainpoints>70.0000</trainpoints>
-		<bounty>50.0000</bounty>
-		<buildbounty>50.0000</buildbounty>
-		<cost resourcetype="Wood">1500.0000</cost>
-    <cost resourcetype="Gold">1500.0000</cost>
-    <buildlimit>1</buildlimit>
+		<trainpoints>45.0000</trainpoints>
+    <bounty>300.0000</bounty>
+    <buildbounty>300.0000</buildbounty>
+		<cost resourcetype="Wood">1300.0000</cost>
+    <cost resourcetype="Gold">1300.0000</cost>
 		<allowedage>3</allowedage>
 		<armor type="Ranged" value="0.5000">
     </armor>
@@ -55131,6 +55132,7 @@
     <unittype>Military</unittype>
     <unittype>AbstractArtillery</unittype>
     <unittype>AbstractBannerArmy</unittype>
+    <unittype>AbstractSteamTank</unittype>
     <flag>ConstrainOrientation</flag>
     <flag>OrientUnitWithGround</flag>
     <flag>RotateInPlace</flag>
@@ -55148,15 +55150,16 @@
 		<tactics>steam_tank.tactics</tactics>
 		<protoaction>
       <name>CannonAttack</name>
-      <damage>150.000000</damage>
+      <damage>160.000000</damage>
       <damagecap>300.000000</damagecap>
       <damagetype>Siege</damagetype>
       <minrange>4.000000</minrange>
       <maxrange>26.000000</maxrange>
       <rof>4.000000</rof>
-      <damagecap>1000.000000</damagecap>
-      <damagebonus type="AbstractCavalry">1.500000</damagebonus>
-      <damagebonus type="Ship">0.750000</damagebonus>
+      <damagebonus type="AbstractCavalry">0.750000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.340000</damagebonus>
+      <damagebonus type="xpArrowKnight">0.340000</damagebonus>
+      <damagebonus type="Building">2.000000</damagebonus>
       <damagearea>4.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>

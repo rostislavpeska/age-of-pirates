@@ -493,7 +493,7 @@
       <string _locid="300491">Captain Nemo</string>
       <string _locid="300492">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Submarine \n\nTechnical revolutionary and underwater explorer. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nLegendary Nautilus, Submarine Fleet</string>
       <string _locid="300493">Thaddeus Valentine</string>
-      <string _locid="300494">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Tank \n\nLeonardo's admirer and mortal engine's designer. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nLeonardo's Model, Tank Battalion</string>
+      <string _locid="300494">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Tank \n\nLeonardo's admirer and mortal engine's designer. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nSteam Tanks, Tank Battalion</string>
       <string _locid="300495">Test Building 1</string>
       <string _locid="300496">Test Building 2</string>
       <string _locid="300497">Test Building 3</string>
@@ -540,16 +540,16 @@
       <string _locid="300539">Nemo's Submarines Fleet</string>
       <string _locid="300540">Allows you to build a whole submarines fleet</string>
       <string _locid="300541">Significantly increases Nautilus hitpoints.</string>
-      <string _locid="300542">Machina Magnifica</string>
+      <string _locid="300542">Heavy Steam Tank</string>
       <string _locid="300543">ZP Iron Tank</string>
       <string _locid="300544">Mortal Engines</string>
-      <string _locid="300545">Upgrades Experimental tank based on Leonardo's model.</string>
+      <string _locid="300545">Transforms Experimental Tank to Steam Tankette which is way easier to maneuvre and has stronger attack.</string>
       <string _locid="300546">Tank Battalion</string>
-      <string _locid="300547">Allows you to build a whole Mortal Engine Army.</string>
+      <string _locid="300547">Improves Steam Tankette to Heavy Steam Tank and allows you to build more Steam Tanks.</string>
       <string _locid="300548">Nautilus II</string>
       <string _locid="300549">Nautilus III</string>
       <string _locid="300550">Experimental Tank</string>
-      <string _locid="300551">Leonardo's Model</string>
+      <string _locid="300551">Steam Tanks</string>
       <string _locid="300552">The First Cold War</string>
       <string _locid="300553">Two continents - Asia and America - separated by Bering's Strait. The real end of the world and a perfect place for Inventors and technical revolutionaries. \n\nSettlements: Inventors, Inuits</string>
       <string _locid="300554">The First Cold War: Use the latest technical inventions to gain an advantage over the enemy.</string>
@@ -2644,6 +2644,9 @@
       <string _locid="302644">Every settlement is guarded by native guardians. You have to defend them to be able to build the Trading Post.</string>
       <string _locid="302645">Steam Tankette</string>
       <string _locid="302646">ZP Steam Tank</string>
+      <string _locid="302647">Armored Abomination</string>
+      <string _locid="302648">Armored Abomination, effective against cavalry and buildings</string>
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
