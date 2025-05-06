@@ -55073,12 +55073,12 @@
     <icon>resources\images\icons\abilities\inspiring_flag_confederate_portrait.png</icon>
     <portraiticon>resources\images\icons\abilities\inspiring_flag_confederate_portrait.png</portraiticon>
   </unit>
-
   <unit id="20745" name="zpSteamTank">
 		<dbid>20745</dbid>
 		<displaynameid>302645</displaynameid>
 		<editornameid>302646</editornameid>
 		<populationcount>5</populationcount>
+    <subciv>zpScientists</subciv>
 		<obstructionradiusx>1.0000</obstructionradiusx>
 		<obstructionradiusz>1.0000</obstructionradiusz>
 		<formationcategory>ranged</formationcategory>
@@ -55089,8 +55089,8 @@
 		<animfile>units\artillery\steam_tankette\steam_tankette.xml</animfile>
 		<impacttype>Wood</impacttype>
 		<physicsinfo>house</physicsinfo>
-		<icon>ui\Great War\Portraits\gwTank_icon</icon>
-		<portraiticon>ui\Great War\Portraits\gwTank_portrait</portraiticon>
+		<icon>resources\art\units\artillery\steam_tank_icon.png</icon>
+    <portraiticon>resources\art\units\artillery\steam_tank_portrait.png</portraiticon>
 		<rollovertextid>124702</rollovertextid>
     <shortrollovertextid>124701</shortrollovertextid>
 		<initialhitpoints>1500.0000</initialhitpoints>
@@ -55102,6 +55102,7 @@
 		<buildbounty>50.0000</buildbounty>
 		<cost resourcetype="Wood">1500.0000</cost>
     <cost resourcetype="Gold">1500.0000</cost>
+    <buildlimit>1</buildlimit>
 		<allowedage>3</allowedage>
 		<armor type="Ranged" value="0.5000">
     </armor>
@@ -55130,10 +55131,6 @@
     <unittype>Military</unittype>
     <unittype>AbstractArtillery</unittype>
     <unittype>AbstractBannerArmy</unittype>
-    <sharedselectionunittypes>
-      <unittype>zpIronTankProxy</unittype>
-      <unittype>deTank</unittype>
-    </sharedselectionunittypes>
     <flag>ConstrainOrientation</flag>
     <flag>OrientUnitWithGround</flag>
     <flag>RotateInPlace</flag>
@@ -55151,15 +55148,16 @@
 		<tactics>steam_tank.tactics</tactics>
 		<protoaction>
       <name>CannonAttack</name>
-      <damage>250.000000</damage>
+      <damage>150.000000</damage>
+      <damagecap>300.000000</damagecap>
       <damagetype>Siege</damagetype>
       <minrange>4.000000</minrange>
-      <maxrange>30.000000</maxrange>
-      <rof>3.000000</rof>
+      <maxrange>26.000000</maxrange>
+      <rof>4.000000</rof>
       <damagecap>1000.000000</damagecap>
-      <damagebonus type="AbstractWall">1.250000</damagebonus>
+      <damagebonus type="AbstractCavalry">1.500000</damagebonus>
       <damagebonus type="Ship">0.750000</damagebonus>
-      <damagearea>1.000000</damagearea>
+      <damagearea>4.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
 	</unit>

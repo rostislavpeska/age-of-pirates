@@ -2,57 +2,6 @@
   <definebone>bone_main</definebone>
   <definebone>bone_smoke</definebone>
   <definebone>bone_muzzle</definebone>
-  <attachment>
-		Tower
-		<component>
-			tower
-			<assetreference type="GrannyModel">
-				<file>units\artillery\steam_tankette\tank_tower</file>
-			</assetreference>
-		</component>
-		<anim>
-			Idle
-			<assetreference type="GrannyAnim">
-				<file>units\artillery\steam_tankette\tank_tower_idle</file>
-			</assetreference>
-			<component>tower</component>
-		</anim>
-		<anim>
-			Walk
-			<assetreference type="GrannyAnim">
-				<file>units\artillery\steam_tankette\tank_tower_idle</file>
-			</assetreference>
-			<component>tower</component>
-		</anim>
-		<anim>
-			Death
-			<assetreference type="GrannyAnim">
-				<file>units\artillery\steam_tankette\tank_tower_idle</file>
-			</assetreference>
-			<component>tower</component>
-		</anim>
-		<anim>
-			Bored
-			<assetreference type="GrannyAnim">
-				<file>units\artillery\steam_tankette\tank_tower_idle</file>
-			</assetreference>
-			<component>tower</component>
-		</anim>
-    <anim>
-			Reload
-			<assetreference type="GrannyAnim">
-				<file>units\artillery\steam_tankette\tank_tower_idle</file>
-			</assetreference>
-			<component>tower</component>
-		</anim>
-		<anim>
-			MortarAttack
-			<assetreference type="GrannyAnim">
-				<file>units\artillery\steam_tankette\tank_tower_idle</file>
-			</assetreference>
-			<component>tower</component>
-		</anim>
-	</attachment>
 	<attachment>
 		TankFootprint
 		<component>
@@ -106,7 +55,6 @@
     </assetreference>
     <attach a="smoke_A" frombone="MASTER" tobone="bone_smoke" syncanims="0"></attach>
     <attach a="embers_attachment_A" frombone="MASTER" tobone="bone_smoke" syncanims="0"></attach>
-    <attach a="Tower" frombone="MASTER" tobone="MASTER" syncanims="1"></attach>
 		<decal>
 			<effecttype>default</effecttype>
 			<selectedtexture>shadows_selections\selection_circle_128x128</selectedtexture>
@@ -149,7 +97,6 @@
 		<simskeleton>
 			<model>units\artillery\steam_tankette\tank_model</model>
 		</simskeleton>
-    <attach a="caterpillar" frombone="MASTER" tobone="MASTER" syncanims="1"></attach>
 	</anim>
 	<anim>
 		Walk
@@ -160,22 +107,20 @@
 		<simskeleton>
 			<model>units\artillery\steam_tankette\tank_model</model>
 		</simskeleton>
-    <attach a="caterpillar" frombone="MASTER" tobone="MASTER" syncanims="1"></attach>
 	</anim>
 	<anim>
 		MortarAttack
 		<assetreference type="GrannyAnim">
-			<file>units\artillery\steam_tankette\tank_idle</file>
-      <tag type="Attack">0.51</tag>
-      <tag type="SpecificSoundSet" checkvisible="1" set="MortarShot">0.50</tag>
-      <tag type="Particles" particlename="mortarmuzzlefx">0.50</tag>
-      <tag type="Particles" particlename="BattleField_Smoke_Light">0.50</tag>
+			<file>units\artillery\steam_tankette\tank_attack</file>
+      <tag type="Attack">0.05</tag>
+      <tag type="SpecificSoundSet" checkvisible="1" set="MortarShot">0.05</tag>
+      <tag type="Particles" particlename="mortarmuzzlefx">0.05</tag>
+      <tag type="Particles" particlename="BattleField_Smoke_Light">0.05</tag>
 		</assetreference>
 		<component>ModelComp</component>
 		<simskeleton>
 			<model>units\artillery\steam_tankette\tank_model</model>
 		</simskeleton>
-    <attach a="caterpillar" frombone="MASTER" tobone="MASTER" syncanims="1"></attach>
 	</anim>
 	<anim>
 		Reload
@@ -186,7 +131,6 @@
 		<simskeleton>
 			<model>units\artillery\steam_tankette\tank_model</model>
 		</simskeleton>
-    <attach a="caterpillar" frombone="MASTER" tobone="MASTER" syncanims="1"></attach>
 	</anim>
   <anim>
 		Bored
