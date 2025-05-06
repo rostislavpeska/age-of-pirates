@@ -55074,6 +55074,96 @@
     <portraiticon>resources\images\icons\abilities\inspiring_flag_confederate_portrait.png</portraiticon>
   </unit>
 
+  <unit id="20745" name="zpSteamTank">
+		<dbid>20745</dbid>
+		<displaynameid>302645</displaynameid>
+		<editornameid>302646</editornameid>
+		<populationcount>5</populationcount>
+		<obstructionradiusx>1.0000</obstructionradiusx>
+		<obstructionradiusz>1.0000</obstructionradiusz>
+		<formationcategory>ranged</formationcategory>
+		<maxvelocity>3.5000</maxvelocity>
+		<maxrunvelocity>5.5000</maxrunvelocity>
+		<movementtype>land</movementtype>
+		<turnrate>3.0000</turnrate>
+		<animfile>units\artillery\steam_tankette\steam_tankette.xml</animfile>
+		<impacttype>Wood</impacttype>
+		<physicsinfo>house</physicsinfo>
+		<icon>ui\Great War\Portraits\gwTank_icon</icon>
+		<portraiticon>ui\Great War\Portraits\gwTank_portrait</portraiticon>
+		<rollovertextid>124702</rollovertextid>
+    <shortrollovertextid>124701</shortrollovertextid>
+		<initialhitpoints>1500.0000</initialhitpoints>
+    <maxhitpoints>1500.0000</maxhitpoints>
+		<los>30.0000</los>
+		<unitaitype>RangedCombative</unitaitype>
+		<trainpoints>70.0000</trainpoints>
+		<bounty>50.0000</bounty>
+		<buildbounty>50.0000</buildbounty>
+		<cost resourcetype="Wood">1500.0000</cost>
+    <cost resourcetype="Gold">1500.0000</cost>
+		<allowedage>3</allowedage>
+		<armor type="Ranged" value="0.5000">
+    </armor>
+    <armor type="Hand" value="0.5000">
+    </armor>
+    <armor type="Siege" value="0.5000">
+    </armor>
+		<unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractArtillery</unittype>
+    <unittype>AbstractBannerArmy</unittype>
+    <sharedselectionunittypes>
+      <unittype>zpIronTankProxy</unittype>
+      <unittype>deTank</unittype>
+    </sharedselectionunittypes>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>RotateInPlace</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+		<command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <command page="11" column="0">Abilities</command>
+		<tactics>steam_tank.tactics</tactics>
+		<protoaction>
+      <name>CannonAttack</name>
+      <damage>250.000000</damage>
+      <damagetype>Siege</damagetype>
+      <minrange>4.000000</minrange>
+      <maxrange>30.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>1000.000000</damagecap>
+      <damagebonus type="AbstractWall">1.250000</damagebonus>
+      <damagebonus type="Ship">0.750000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+	</unit>
+
 
 
 
