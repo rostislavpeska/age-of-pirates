@@ -5,7 +5,7 @@
 	<component>
 		portuguese_church
 		<assetreference type="GrannyModel">
-			<file>buildings\church\verseilles_church</file>
+			<file>buildings\church\dutch_church</file>
 		</assetreference>
 		<decal>
             <effecttype>bump</effecttype>
