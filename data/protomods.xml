@@ -54134,7 +54134,8 @@
     <unittype>Unattackable</unittype>
     <unittype>NativeBuilding</unittype>
     <unittype>EmbellishmentClass</unittype>
-     <flag>HeroName1</flag>
+    <unittype>CivilWarCityState</unittype>
+    <flag>HeroName1</flag>
     <flag>MinimapDisplayOnTop</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
@@ -54233,7 +54234,8 @@
     <unittype>Unattackable</unittype>
     <unittype>NativeBuilding</unittype>
     <unittype>EmbellishmentClass</unittype>
-     <flag>HeroName1</flag>
+    <unittype>CivilWarCityState</unittype>
+    <flag>HeroName1</flag>
     <flag>MinimapDisplayOnTop</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>

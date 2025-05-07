@@ -38,7 +38,8 @@ minInterval 1
        cRandomMapName == "zpbarrierreef" ||
        cRandomMapName == "zpvenicecity" ||
        cRandomMapName == "zpcaribbeanwars" ||
-       cRandomMapName == "zpazteccity")
+       cRandomMapName == "zpazteccity" ||
+       cRandomMapName == "zpcivilwar")
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
@@ -111,7 +112,9 @@ minInterval 1
 
    // Naval City Map. Enable based on sockets that it can handle
    if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0 ||
-       getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0)
+       getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0 ||
+       //roda2324: Civil War sockets using an abstract type
+       getGaiaUnitCount(cUnitTypeCivilWarCityState) > 0)
    {
       xsEnableRule("navalCityAttackManager");
       xsEnableRule("buildNavalCitySockets");
@@ -1076,6 +1079,12 @@ minInterval 20
    {
       citySocketType = cUnitTypezpSPCSocketPirateCityState;
    }
+
+   //roda2324: Civil War sockets using an abstract type
+   else if (getGaiaUnitCount(cUnitTypeCivilWarCityState) > 0)
+   {
+      citySocketType = cUnitTypeCivilWarCityState;
+   }
    else
    {  // Shouldn't reach here
       return;
@@ -1231,6 +1240,12 @@ minInterval 20
    else if (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0)
    {
       citySocketType = cUnitTypezpSPCSocketPirateCityState;
+   }
+   
+   //roda2324: Civil War sockets using an abstract type
+   else if (getGaiaUnitCount(cUnitTypeCivilWarCityState) > 0)
+   {
+      citySocketType = cUnitTypeCivilWarCityState;
    }
    else
    {  // Shouldn't reach here

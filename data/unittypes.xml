@@ -28,4 +28,5 @@
   <unittype>zpAbstractAssassin</unittype>
   <unittype>AbstractTeamCitadel</unittype>
   <unittype>AbstractSteamTank</unittype>
+  <unittype>CivilWarCityState</unittype>
 </unittypes>
