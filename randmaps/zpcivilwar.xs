@@ -429,6 +429,9 @@ void main(void)
 
 	rmBuildTradeRoute(tradeRouteID4, "native_water_trail");
 
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.30);
+
 	// water Areas
 
 	int riverArea1 = rmCreateArea("riverArea1");
@@ -547,6 +550,9 @@ void main(void)
 	rmSetAreaBaseHeight(Shallow2ID, -1.5);
     rmBuildArea(Shallow2ID);
 
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.40);
+
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!! ISLANDS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 	int nativeIsland1ID = rmCreateArea("native_island1");
@@ -626,6 +632,9 @@ void main(void)
 	rmSetAreaElevationPersistence(playerIslandNorthID, 0.2);
 	rmSetAreaElevationNoiseBias(playerIslandNorthID, 1);
 	rmBuildArea(playerIslandNorthID);
+
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.50);
 
 	// ********************* City States ********************
 
@@ -764,6 +773,9 @@ void main(void)
 	rmSetObjectDefMaxDistance(nugget3ID, 5.0);
 	rmPlaceObjectDefAtLoc(nugget3ID, 0, rmXMetersToFraction(xsVectorGetX(stoperLoc3)), rmZMetersToFraction(xsVectorGetZ(stoperLoc3)-3));
 
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.60);
+
 	// terrain Elevation
 
 	for (x=1; <= 3) {
@@ -813,11 +825,12 @@ void main(void)
 		rmBuildArea(nativeMountains);
 	}
 
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.70);
+
 
 	// ******************* PLACE PLAYERS ******************
 
-	// Text
-	rmSetStatusText("",0.70);
 
 	float teamStartLoc = rmRandFloat(0.0, 1.0);
 	int weirdSpawn = 0;
@@ -1010,6 +1023,9 @@ void main(void)
 		}
 
 	}
+
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.80);
 
 	// ********************** RESOURCES **********************
 
@@ -1256,6 +1272,9 @@ void main(void)
 	rmAddObjectDefConstraint(fishID, avoidFish1);
 	rmAddObjectDefConstraint(fishID, fishLand);
 	rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 60);
+
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.90);
 
 	// ____________________ LOCAL MERCENARIES ____________________
 	rmDisableDefaultMercs(true);
@@ -3756,6 +3775,8 @@ void main(void)
 		}	
 	}
 
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",1.00);
 
 	// Testing
 
