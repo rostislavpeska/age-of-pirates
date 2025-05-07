@@ -11725,7 +11725,6 @@
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
     <unittype>AbstractArtillery</unittype>
-    <unittype>AbstractBannerArmy</unittype>
     <sharedselectionunittypes>
       <unittype>zpIronTankProxy</unittype>
       <unittype>deTank</unittype>
@@ -11741,6 +11740,7 @@
     <flag>ObscuredByUnits</flag>
     <flag>Tracked</flag>
     <flag>CantBeSlowed</flag>
+    <flag>DontTrainInBatches</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="7">Delete</command>
@@ -11764,34 +11764,12 @@
       <damagebonus type="Building">2.000000</damagebonus>
     </protoaction>
     <protoaction>
-      <name>RoundelExplodeAttack</name>
-      <damage>120.000000</damage>
-      <damagetype>Siege</damagetype>
-      <minrange>0.000000</minrange>
-      <maxrange>26.000000</maxrange>
-      <rof>4.000000</rof>
-      <damagecap>150.000000</damagecap>
-      <damagearea>3.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="AbstractCavalry">0.750000</damagebonus>
-      <damagebonus type="AbstractArtillery">0.340000</damagebonus>
-      <damagebonus type="xpArrowKnight">0.340000</damagebonus>
-      <damagebonus type="Building">2.000000</damagebonus>
+      <name>RoundelCascadeAttack</name>
+      <active>0</active>
     </protoaction>
     <protoaction>
-      <name>RoundelCascadeAttack</name>
-      <damage>120.000000</damage>
-      <damagetype>Siege</damagetype>
-      <minrange>0.000000</minrange>
-      <maxrange>26.000000</maxrange>
-      <rof>4.000000</rof>
-      <damagecap>150.000000</damagecap>
-      <damagearea>3.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="AbstractCavalry">0.750000</damagebonus>
-      <damagebonus type="AbstractArtillery">0.340000</damagebonus>
-      <damagebonus type="xpArrowKnight">0.340000</damagebonus>
-      <damagebonus type="Building">2.000000</damagebonus>
+      <name>RoundelExplodeAttack</name>
+      <active>0</active>
     </protoaction>
     <protoaction>
       <name>TrampleHandAttack</name>
@@ -55143,6 +55121,7 @@
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
     <flag>Tracked</flag>
+    <flag>DontTrainInBatches</flag>
 		<command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="7">Delete</command>
@@ -58604,6 +58583,7 @@
     <flag>ConstrainOrientation</flag>
     <flag>OrientUnitWithGround</flag>
     <flag>Tracked</flag>
+    <flag>DontTrainInBatches</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="7">Delete</command>

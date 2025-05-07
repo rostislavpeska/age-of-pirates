@@ -33,10 +33,6 @@
   <zpwokoufuchuan>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpwokoufuchuan>
-  <zpirontank>
-    <ability>dePowerRoundelExplodeAttack<tech>zpIronTanks</tech><rof>10</rof><castonself>true</castonself></ability>
-    <ability>dePowerRoundelCascadeAttack<tech>zpIronTanks</tech><rof>10</rof><castonself>true</castonself></ability>
-  </zpirontank>
   <zpirontankproxy>
     <ability>dePowerRoundelExplodeAttack<rof>10</rof><castonself>true</castonself></ability>
     <ability>dePowerRoundelCascadeAttack<rof>10</rof><castonself>true</castonself></ability>

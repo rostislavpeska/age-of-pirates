@@ -136,6 +136,11 @@
 		Bored
 		<assetreference type="GrannyAnim">
 			<file>units\artillery\steam_tankette\tank_bored</file>
+			<weight>70</weight>
+		</assetreference>
+		<assetreference type="GrannyAnim">
+			<file>units\artillery\steam_tankette\tank_bored2</file>
+			<weight>30</weight>
 		</assetreference>
 		<component>ModelComp</component>
 		<simskeleton>

@@ -4049,7 +4049,7 @@ rule zpScientistTechMonitor
 inactive
 mininterval 60
 {
-   if (kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0)
+   if ((kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketInventorsCityState, cUnitStateAny) == 0))
       {
       return; // Player has no Scientist socket.
       }
@@ -4127,7 +4127,7 @@ minInterval 30
   static int proxy_list = -1;
   static int ship_list = -1;
 
-  if (kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0)
+  if ((kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketInventorsCityState, cUnitStateAny) == 0))
    {
       return;
    }
@@ -4189,11 +4189,11 @@ rule MaintainScientistTanks
 inactive
 minInterval 30
 {
-  const int list_size = 1;
+  const int list_size = 2;
   static int proxy_list = -1;
   static int ship_list = -1;
 
-  if (kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0)
+  if ((kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketInventorsCityState, cUnitStateAny) == 0))
    {
       return;
    }
@@ -4205,6 +4205,8 @@ minInterval 30
 
     xsArraySetInt(proxy_list, 0, cUnitTypezpIronTank);
     xsArraySetInt(ship_list, 0, cUnitTypezpIronTank);
+    xsArraySetInt(proxy_list, 1, cUnitTypezpSteamTank);
+    xsArraySetInt(ship_list, 1, cUnitTypezpSteamTank);
   }
 
   for(i = 0; < xsArrayGetSize(proxy_list))
@@ -4355,7 +4357,7 @@ minInterval 10
   static int proxy_list = -1;
   static int ship_list = -1;
 
-  if (kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0)
+  if ((kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketInventorsCityState, cUnitStateAny) == 0))
    {
       return;
    }
@@ -4886,7 +4888,7 @@ inactive
 mininterval 60
 {
 
-   if (kbUnitCount(cMyID, cUnitTypezpSPCSocketWesternVillage, cUnitStateAny) == 0)
+   if ((kbUnitCount(cMyID, cUnitTypezpSPCSocketWesternVillage, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketWesternCityState, cUnitStateAny) == 0))
       {
       return; // Player has no Western socket.
       }

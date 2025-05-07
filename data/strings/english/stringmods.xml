@@ -492,8 +492,8 @@
       <string _locid="300490">ZP Inventors Water Flag 2</string>
       <string _locid="300491">Captain Nemo</string>
       <string _locid="300492">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Submarine \n\nTechnical revolutionary and underwater explorer. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nLegendary Nautilus, Submarine Fleet</string>
-      <string _locid="300493">Thaddeus Valentine</string>
-      <string _locid="300494">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nExperimental Tank \n\nLeonardo's admirer and mortal engine's designer. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nSteam Tanks, Tank Battalion</string>
+      <string _locid="300493">Doctor Loveless</string>
+      <string _locid="300494">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nLeonardo's Reclaimer \n\nCivil War Veteran obsessed with mortal engines. \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nSteam Tanks, Tank Battalion</string>
       <string _locid="300495">Test Building 1</string>
       <string _locid="300496">Test Building 2</string>
       <string _locid="300497">Test Building 3</string>
@@ -543,12 +543,12 @@
       <string _locid="300542">Heavy Steam Tank</string>
       <string _locid="300543">ZP Iron Tank</string>
       <string _locid="300544">Mortal Engines</string>
-      <string _locid="300545">Transforms Experimental Tank to Steam Tankette which is way easier to maneuvre and has stronger attack.</string>
+      <string _locid="300545">Transforms Leonardo's Reclaimer to Steam Tank which is way easier to maneuvre and has stronger attack.</string>
       <string _locid="300546">Tank Battalion</string>
-      <string _locid="300547">Improves Steam Tankette to Heavy Steam Tank and allows you to build more Steam Tanks.</string>
+      <string _locid="300547">Improves Steam Tank to Heavy Steam Tank and allows you to build more Steam Tanks.</string>
       <string _locid="300548">Nautilus II</string>
       <string _locid="300549">Nautilus III</string>
-      <string _locid="300550">Experimental Tank</string>
+      <string _locid="300550">Leonardo's Reclaimer</string>
       <string _locid="300551">Steam Tanks</string>
       <string _locid="300552">The First Cold War</string>
       <string _locid="300553">Two continents - Asia and America - separated by Bering's Strait. The real end of the world and a perfect place for Inventors and technical revolutionaries. \n\nSettlements: Inventors, Inuits</string>
@@ -2642,7 +2642,7 @@
       <string _locid="302642">Plants the Confederate flag to boost morale! Nearby military units (excluding artillery) and buildings inflict more damage and are created faster. Flags cannot be planted near starting Town Centers, and only one flag can be planted at a time.</string>
       <string _locid="302643">Teams start on the other side of a large river. Both teams have the same goal: Capture all sockets and hold them for the rest of the game. Both teams start with a Command Post building which provides different improvements based on your team. &lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; United States of America - strong economy and new technologies artillery or navy. &lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Confederate States of America - agricultural improvements and cheaper units.</string>
       <string _locid="302644">Every settlement is guarded by native guardians. You have to defend them to be able to build the Trading Post.</string>
-      <string _locid="302645">Steam Tankette</string>
+      <string _locid="302645">Steam Tank</string>
       <string _locid="302646">ZP Steam Tank</string>
       <string _locid="302647">Armored Abomination</string>
       <string _locid="302648">Armored Abomination, effective against cavalry and buildings</string>
