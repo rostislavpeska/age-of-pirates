@@ -23483,6 +23483,9 @@
       <effect type="Data" action="GatherFirePit" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">NatMedicineMan</target>
       </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="techWithFlag">deNatMercJaguarWarrior</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpAztecCityAttackerSetup" type="Normal">
@@ -24910,6 +24913,10 @@
       <effect type="TechStatus" status="obtainable">zpSPCUsaCivilWarRevolution</effect>
       <effect type="TechStatus" status="obtainable">zpCivilUnionSetupUSA</effect>
       <effect type="TechStatus" status="obtainable">zpRevolutionUSAShadow</effect>
+      <effect type="SetName" proto="zpNatConRegular" newname="302649">
+      </effect>
+      <effect type="SetName" proto="zpNatConUSCavalry" newname="302651">
+      </effect>
     </effects>
   </tech>
   <tech name="zpCivilConfederationSetup" type="Normal">
@@ -24961,6 +24968,10 @@
       </effect>
       <effect type="TechStatus" status="obtainable">zpSPCCsaCivilWarRevolution</effect>
       <effect type="TechStatus" status="obtainable">zpRevolutionCSAShadow</effect>
+      <effect type="SetName" proto="zpNatConRegular" newname="302650">
+      </effect>
+      <effect type="SetName" proto="zpNatConUSCavalry" newname="302652">
+      </effect>
     </effects>
   </tech>
   <tech name="zpCivilUnionSetupUSA" type="Normal">

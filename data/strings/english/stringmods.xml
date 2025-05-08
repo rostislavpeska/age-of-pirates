@@ -2646,7 +2646,10 @@
       <string _locid="302646">ZP Steam Tank</string>
       <string _locid="302647">Armored Abomination</string>
       <string _locid="302648">Armored Abomination, effective against cavalry and buildings</string>
-
+      <string _locid="302649">Union Regular</string>
+      <string _locid="302650">Confederate Regular</string>
+      <string _locid="302651">Union Cavalry</string>
+      <string _locid="302652">Confederate Cavalry</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
