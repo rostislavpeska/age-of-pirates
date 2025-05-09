@@ -54775,8 +54775,8 @@
     <animfile>units\csa_units\state_militia\csa_militia.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
-    <icon>resources\art\units\infantry_ranged\state_militia\state_militia_icon.png</icon>
-    <portraiticon>resources\art\units\infantry_ranged\state_militia\state_militia_portrait.png</portraiticon>
+    <icon>resources\art\units\revolutions\southern_volunteer_icon.png</icon>
+    <portraiticon>resources\art\units\revolutions\southern_volunteer_portrait.png</portraiticon>
     <rollovertextid>110009</rollovertextid>
     <shortrollovertextid>25729</shortrollovertextid>
     <initialhitpoints>120.0000</initialhitpoints>

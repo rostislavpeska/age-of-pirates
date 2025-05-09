@@ -26356,6 +26356,9 @@
     <rollovertextid>302640</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Imperialize</techstatus>
+    </prereqs>
     <effects>
       <effect type="TransformUnit" toprotoid="zpNatStateMilitia" fromprotoid="Settler">
       </effect>
