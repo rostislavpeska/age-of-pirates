@@ -24927,6 +24927,12 @@
       </effect>
       <effect type="SetName" tech="zpAmericanExpeditionaryFleet" newname="302663">
       </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatConRegular" relativity="Absolute">
+        <target type="ProtoUnit">zpIconREVUnionInfantry</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatConUSCavalry" relativity="Absolute">
+        <target type="ProtoUnit">zpIconREVUnionCavalry</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpCivilConfederationSetup" type="Normal">

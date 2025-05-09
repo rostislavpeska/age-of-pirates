@@ -55153,6 +55153,16 @@
     <icon>resources\art\units\revolutions\confederateinfantry_icon.png</icon>
     <portraiticon>resources\art\units\revolutions\confederateinfantry_portrait.png</portraiticon>
   </unit>
+  <unit id="20748" name="zpIconREVUnionCavalry">
+    <dbid>20748</dbid>
+    <icon>resources\art\units\revolutions\dragoon_icon.png</icon>
+    <portraiticon>resources\art\units\revolutions\dragoon_portrait.png</portraiticon>
+  </unit>
+  <unit id="20749" name="zpIconREVUnionInfantry">
+    <dbid>20749</dbid>
+    <icon>resources\art\units\revolutions\unioninfantry_icon.png</icon>
+    <portraiticon>resources\art\units\revolutions\unioninfantry_portrait.png</portraiticon>
+  </unit>
   <unit name="WallWoodNative">
     <flag>InvulnerableIfGaia</flag>
   </unit>
