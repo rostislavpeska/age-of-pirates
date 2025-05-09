@@ -342,9 +342,45 @@ minInterval 1
 }
 
 //==============================================================================
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Table of Pirate Rules
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+initializecheckAttackDefenseMapAoP
+ - rule to start up or shut down other rules specific to some attack/defend maps
+
+CityAttackmanager
+ - The city attack system works differently than the standard attack plan system.
+   Several attack plans run simultaneously, and the priority of these plans 
+   shifts depending on the circumstances. The manager requires 
+   initializeCityAttackmanager 
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
+//==============================================================================
+
+//==============================================================================
 /* Check for attack/defence special map
    AssertiveWall: Checks to see if the map is a special attack or defend map,
    and sets btbias accordingly
+
+   The defend point is stored as the "headquarters" and the forward base & defend 
+   point is set there for the defender. Offensive players are set to play aggressively. 
 */
 //==============================================================================
 void checkAttackDefenseMapAoP(void)
