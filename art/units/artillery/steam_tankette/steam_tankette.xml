@@ -112,10 +112,9 @@
 		MortarAttack
 		<assetreference type="GrannyAnim">
 			<file>units\artillery\steam_tankette\tank_attack</file>
-      <tag type="Attack">0.05</tag>
-      <tag type="SpecificSoundSet" checkvisible="1" set="MortarShot">0.05</tag>
-      <tag type="Particles" particlename="mortarmuzzlefx">0.05</tag>
-      <tag type="Particles" particlename="BattleField_Smoke_Light">0.05</tag>
+		<tag type="Attack">0.05</tag>
+		<tag type="SpecificSoundSet" checkvisible="1" set="MortarShot">0.05</tag>
+		<tag type="Particles" particlename="smallCannonMuzzle">0.05</tag>
 		</assetreference>
 		<component>ModelComp</component>
 		<simskeleton>

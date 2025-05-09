@@ -332,28 +332,28 @@ void main(void)
 	rmSetObjectDefTradeRouteID(socketID, tradeRouteID);
 	rmAddObjectDefItem(socketID, "zpTradingPostCaptureNaval", 1, 0.0);
 	rmSetObjectDefMinDistance(socketID, 0.0);
-  	rmSetObjectDefMaxDistance(socketID, 3.0);
+  	rmSetObjectDefMaxDistance(socketID, 0.5);
 	rmAddObjectDefConstraint(socketID, avoidPathBlock);
 
 	int socketID2=rmCreateObjectDef("sockets to dock Trade Posts2");
 	rmSetObjectDefTradeRouteID(socketID2, tradeRouteID);
 	rmAddObjectDefItem(socketID2, "zpTradingPostCaptureNaval", 1, 0.0);
 	rmSetObjectDefMinDistance(socketID2, 0.0);
-  	rmSetObjectDefMaxDistance(socketID2, 3.0);
+  	rmSetObjectDefMaxDistance(socketID2, 0.5);
 	rmAddObjectDefConstraint(socketID2, avoidPathBlock);
 
 	int socketID3=rmCreateObjectDef("sockets to dock Trade Posts3");
 	rmSetObjectDefTradeRouteID(socketID3, tradeRouteID);
 	rmAddObjectDefItem(socketID3, "zpTradingPostCaptureNaval", 1, 0.0);
 	rmSetObjectDefMinDistance(socketID3, 0.0);
-  	rmSetObjectDefMaxDistance(socketID3, 3.0);
+  	rmSetObjectDefMaxDistance(socketID3, 0.5);
 	rmAddObjectDefConstraint(socketID3, avoidPathBlock);
 
 	int socketID4=rmCreateObjectDef("sockets to dock Trade Posts4");
 	rmSetObjectDefTradeRouteID(socketID4, tradeRouteID);
 	rmAddObjectDefItem(socketID4, "zpTradingPostCaptureNaval", 1, 0.0);
 	rmSetObjectDefMinDistance(socketID4, 0.0);
-  	rmSetObjectDefMaxDistance(socketID4, 3.0);
+  	rmSetObjectDefMaxDistance(socketID4, 0.5);
 	rmAddObjectDefConstraint(socketID4, avoidPathBlock);
 
 	// Place Trade route sockets

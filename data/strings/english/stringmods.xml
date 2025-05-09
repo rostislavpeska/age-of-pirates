@@ -1412,7 +1412,7 @@
       <string _locid="301410">ZP NAT CON Gatling Gun</string>
       <string _locid="301411">Volley Gun</string>
       <string _locid="301412">American Expeditionary Force</string>
-      <string _locid="301413">Ships Marine Infantry</string>
+      <string _locid="301413">Ships American Infantry</string>
       <string _locid="301414">Ships American cavalry</string>
       <string _locid="301415">Ships American cavalry and infantry</string>
       <string _locid="301416">American Expeditionary Company</string>
@@ -1420,7 +1420,7 @@
       <string _locid="301418">American Brigade</string>
       <string _locid="301419">Ships American cavalry, infantry and artillery</string>
       <string _locid="301420">American Expeditionary Fleet</string>
-      <string _locid="301421">Ships Steamer full with Marine Corpses</string>
+      <string _locid="301421">Ships Steamer full with American infantry units</string>
       <string _locid="301422">ZP NAT House Wokou Big</string>
       <string _locid="301423">Ghost Ship</string>
       <string _locid="301424">Tortuga Fixed Gun</string>
@@ -2241,7 +2241,7 @@
       <string _locid="302240">Advance to the Sun King Era and get more Bourbon improvements.</string>
       <string _locid="302241">ZP SPC City State Wagon</string>
       <string _locid="302242">ZP Socket EU SPC City Tower 2</string>
-      <string _locid="302243">A Tower may be constructed here to protect this Pirate Town.</string>
+      <string _locid="302243">A Tower may be constructed here to protect this settlement.</string>
       <string _locid="302244">ZP SPC Pirate Guard Melee</string>
       <string _locid="302245">ZP SPC Pirate Guard Pistol</string>
       <string _locid="302246">ZP MERC Pirate Steamer</string>
@@ -2646,6 +2646,21 @@
       <string _locid="302646">ZP Steam Tank</string>
       <string _locid="302647">Armored Abomination</string>
       <string _locid="302648">Armored Abomination, effective against cavalry and buildings</string>
+      <string _locid="302649">Union Regular</string>
+      <string _locid="302650">Confederate Regular</string>
+      <string _locid="302651">Union Cavalry</string>
+      <string _locid="302652">Confederate Cavalry</string>
+      <string _locid="302653">Build a Tower here to help secure this settlement.</string>
+      <string _locid="302654">Confederate Expeditionary Company</string>
+      <string _locid="302655">Confederate Expeditionary Army</string>
+      <string _locid="302656">Confederate Brigade</string>
+      <string _locid="302657">Confederate Expeditionary Force</string>
+      <string _locid="302658">Confederate Expeditionary Fleet</string>
+      <string _locid="302659">Union Expeditionary Company</string>
+      <string _locid="302660">Union Expeditionary Army</string>
+      <string _locid="302661">Union Brigade</string>
+      <string _locid="302662">Union Expeditionary Force</string>
+      <string _locid="302663">Union Expeditionary Fleet</string>
 
 
       <!-- ======================================== -->

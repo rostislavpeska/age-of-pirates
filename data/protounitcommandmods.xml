@@ -632,6 +632,16 @@
     <activerollovertextid>302521</activerollovertextid>
     <command>unitSetTactic("WonderFood")</command>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpSocketBuildWoodenTower</name>
+    <icon>resources\images\icons\command\build_socket_tower.png</icon>
+    <command>uiSocketBuild(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <socketbuild>
+    </socketbuild>
+    <rollovertextid>302653</rollovertextid>
+  </protounitcommand>
 
   <!--
 

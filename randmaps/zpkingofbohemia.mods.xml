@@ -299,5 +299,8 @@
 			<obstructionradiusx>1.5900</obstructionradiusx>
 			<obstructionradiusz>1.5900</obstructionradiusz>
 		</unit>
+		<unit name="deSPCCityTower">
+			<unittype mergemode="remove">AbstractCallMinutemen</unittype>
+		</unit>	
 	</protomods>
 </mods>

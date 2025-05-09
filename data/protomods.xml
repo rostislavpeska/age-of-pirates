@@ -46445,7 +46445,6 @@
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractOutpost</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
-    <unittype>AbstractCallMinutemen</unittype>
     <unittype>HCGatherPointPri1</unittype>
     <unittype>AbstractDefensiveBuilding</unittype>
     <tech row="0" page="1" column="0">FortifiedOutpost</tech>
@@ -46580,7 +46579,7 @@
     <flag>Tracked</flag>
     <flag>AllowSocketPlacement</flag>
     <flag>NotDeleteable</flag>
-    <command page="1" column="0">deSocketBuildWoodenTower</command>
+    <command page="1" column="0">zpSocketBuildWoodenTower</command>
   </unit>
   <unit id="20622" name="zpPirateTavernB">
     <dbid>20622</dbid>
@@ -52488,7 +52487,6 @@
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractOutpost</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
-    <unittype>AbstractCallMinutemen</unittype>
     <unittype>HCGatherPointPri1</unittype>
     <unittype>AbstractDefensiveBuilding</unittype>
     <train row="0" page="6" column="0">deREVCruzobInfantry</train>
@@ -54777,8 +54775,8 @@
     <animfile>units\csa_units\state_militia\csa_militia.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
-    <icon>resources\art\units\infantry_ranged\state_militia\state_militia_icon.png</icon>
-    <portraiticon>resources\art\units\infantry_ranged\state_militia\state_militia_portrait.png</portraiticon>
+    <icon>resources\art\units\revolutions\southern_volunteer_icon.png</icon>
+    <portraiticon>resources\art\units\revolutions\southern_volunteer_portrait.png</portraiticon>
     <rollovertextid>110009</rollovertextid>
     <shortrollovertextid>25729</shortrollovertextid>
     <initialhitpoints>120.0000</initialhitpoints>
@@ -55145,6 +55143,29 @@
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
 	</unit>
+  <unit id="20746" name="zpIconREVConfederateCavalry">
+    <dbid>20746</dbid>
+    <icon>resources\art\units\revolutions\hakkapelit_icon.png</icon>
+    <portraiticon>resources\art\units\revolutions\hakkapelit_portrait.png</portraiticon>
+  </unit>
+  <unit id="20747" name="zpIconREVConfederateInfantry">
+    <dbid>20747</dbid>
+    <icon>resources\art\units\revolutions\confederateinfantry_icon.png</icon>
+    <portraiticon>resources\art\units\revolutions\confederateinfantry_portrait.png</portraiticon>
+  </unit>
+  <unit id="20748" name="zpIconREVUnionCavalry">
+    <dbid>20748</dbid>
+    <icon>resources\art\units\revolutions\dragoon_icon.png</icon>
+    <portraiticon>resources\art\units\revolutions\dragoon_portrait.png</portraiticon>
+  </unit>
+  <unit id="20749" name="zpIconREVUnionInfantry">
+    <dbid>20749</dbid>
+    <icon>resources\art\units\revolutions\unioninfantry_icon.png</icon>
+    <portraiticon>resources\art\units\revolutions\unioninfantry_portrait.png</portraiticon>
+  </unit>
+  <unit name="WallWoodNative">
+    <flag>InvulnerableIfGaia</flag>
+  </unit>
 
 
 
