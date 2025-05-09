@@ -46445,7 +46445,6 @@
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractOutpost</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
-    <unittype>AbstractCallMinutemen</unittype>
     <unittype>HCGatherPointPri1</unittype>
     <unittype>AbstractDefensiveBuilding</unittype>
     <tech row="0" page="1" column="0">FortifiedOutpost</tech>
@@ -46580,7 +46579,7 @@
     <flag>Tracked</flag>
     <flag>AllowSocketPlacement</flag>
     <flag>NotDeleteable</flag>
-    <command page="1" column="0">deSocketBuildWoodenTower</command>
+    <command page="1" column="0">zpSocketBuildWoodenTower</command>
   </unit>
   <unit id="20622" name="zpPirateTavernB">
     <dbid>20622</dbid>
@@ -52488,7 +52487,6 @@
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractOutpost</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
-    <unittype>AbstractCallMinutemen</unittype>
     <unittype>HCGatherPointPri1</unittype>
     <unittype>AbstractDefensiveBuilding</unittype>
     <train row="0" page="6" column="0">deREVCruzobInfantry</train>
@@ -55145,6 +55143,16 @@
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
 	</unit>
+  <unit id="20746" name="zpIconREVConfederateCavalry">
+    <dbid>20746</dbid>
+    <icon>resources\art\units\revolutions\hakkapelit_icon.png</icon>
+    <portraiticon>resources\art\units\revolutions\hakkapelit_portrait.png</portraiticon>
+  </unit>
+  <unit id="20747" name="zpIconREVConfederateInfantry">
+    <dbid>20747</dbid>
+    <icon>resources\art\units\revolutions\confederateinfantry_icon.png</icon>
+    <portraiticon>resources\art\units\revolutions\confederateinfantry_portrait.png</portraiticon>
+  </unit>
 
 
 

@@ -2650,6 +2650,18 @@
       <string _locid="302650">Confederate Regular</string>
       <string _locid="302651">Union Cavalry</string>
       <string _locid="302652">Confederate Cavalry</string>
+      <string _locid="302653">Build a Tower here to help secure this settlement.</string>
+      <string _locid="302654">Confederate Expeditionary Company</string>
+      <string _locid="302655">Confederate Expeditionary Army</string>
+      <string _locid="302656">Confederate Brigade</string>
+      <string _locid="302657">Confederate Expeditionary Force</string>
+      <string _locid="302658">Confederate Expeditionary Fleet</string>
+      <string _locid="302659">Union Expeditionary Company</string>
+      <string _locid="302660">Union Expeditionary Army</string>
+      <string _locid="302661">Union Brigade</string>
+      <string _locid="302662">Union Expeditionary Force</string>
+      <string _locid="302663">Union Expeditionary Fleet</string>
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
