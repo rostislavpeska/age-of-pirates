@@ -24879,6 +24879,7 @@
       <effect type="TechStatus" status="obtainable">zpNatConAmericanArmyBig</effect>
       <effect type="TechStatus" status="obtainable">zpAmericanExpeditionaryFleet</effect>
       <effect type="TechStatus" status="obtainable">zpCivilWarIronclads</effect>
+      <effect type="TechStatus" status="obtainable">zpCivilWarSPCUSA</effect>
     </effects>
   </tech>
   <tech name="zpCivilUnionSetup" type="Normal">
@@ -26382,6 +26383,35 @@
       </effect>
       <effect type="Data" amount="20.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatStateMilitia</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCivilWarSPCUSA" type="Normal">
+    <dbid>41055</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEAge0Americans</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonOutlawPistol</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonOutlawRider</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">SaloonOutlawRifleman</target>
+      </effect>
+      <effect type="CommandRemove" proto="SaloonOutlawRifleman">
+        <target type="ProtoUnit">Saloon</target>
+      </effect>
+      <effect type="CommandRemove" proto="SaloonOutlawRider">
+        <target type="ProtoUnit">Saloon</target>
+      </effect>
+      <effect type="CommandRemove" proto="SaloonOutlawPistol">
+        <target type="ProtoUnit">Saloon</target>
       </effect>
     </effects>
   </tech>
