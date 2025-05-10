@@ -446,6 +446,7 @@ void main(void)
 	rmAddAreaToClass(riverArea1, classGreatLake);
 	rmAddAreaInfluenceSegment(riverArea1, 0.5, 0.0, 0.5, 0.5);
 	rmSetAreaObeyWorldCircleConstraint(riverArea1, false);
+	rmSetAreaReveal(riverArea1, 1);
     rmBuildArea(riverArea1); 
 
 	int riverArea2 = rmCreateArea("riverArea2");
@@ -460,6 +461,7 @@ void main(void)
 	rmAddAreaToClass(riverArea2, classGreatLake);
 	rmAddAreaInfluenceSegment(riverArea2, 0.5, 0.5, 0.0, 0.6);
 	rmSetAreaObeyWorldCircleConstraint(riverArea2, false);
+	rmSetAreaReveal(riverArea2, 1);
     rmBuildArea(riverArea2); 
 
 	int riverArea3 = rmCreateArea("riverArea3");
@@ -474,6 +476,7 @@ void main(void)
 	rmAddAreaToClass(riverArea3, classGreatLake);
 	rmAddAreaInfluenceSegment(riverArea3, 0.5, 0.5, 1.0, 0.6);
 	rmSetAreaObeyWorldCircleConstraint(riverArea3, false);
+	rmSetAreaReveal(riverArea3, 1);
     rmBuildArea(riverArea3);
 
 	int riverArea4 = rmCreateArea("riverArea4");
@@ -488,6 +491,7 @@ void main(void)
 	rmAddAreaToClass(riverArea4, classGreatLake);
 	rmAddAreaInfluenceSegment(riverArea4, 0.5, 0.5, 0.25, 1.0);
 	rmSetAreaObeyWorldCircleConstraint(riverArea4, false);
+	rmSetAreaReveal(riverArea4, 2);
     rmBuildArea(riverArea4);
 
 	int riverArea5 = rmCreateArea("riverArea5");
@@ -502,6 +506,7 @@ void main(void)
 	rmAddAreaToClass(riverArea5, classGreatLake);
 	rmAddAreaInfluenceSegment(riverArea5, 0.5, 0.5, 0.75, 1.0);
 	rmSetAreaObeyWorldCircleConstraint(riverArea5, false);
+	rmSetAreaReveal(riverArea5, 2);
     rmBuildArea(riverArea5);
 
 	int centralLake = rmCreateArea("centralLake");
@@ -514,6 +519,7 @@ void main(void)
     rmSetAreaCoherence(centralLake , 0.8);
     rmSetAreaElevationVariation(centralLake, 0.0);
 	rmAddAreaToClass(centralLake, classDeepWater);
+	rmSetAreaReveal(centralLake, 1);
     rmBuildArea(centralLake);
 
 	// Bridges
@@ -723,6 +729,8 @@ void main(void)
 	
 	rmSetNuggetDifficulty(313, 313);
 
+	int settlementVariation = rmRandInt(2, 2);
+
 	int cityState01 = rmCreateGrouping("citystate1", "City_State_Western_01");
     rmSetGroupingMinDistance(cityState01, 0.00);
     rmSetGroupingMaxDistance(cityState01, 0.00);
@@ -732,7 +740,10 @@ void main(void)
 	socketLoc = rmGetTradeRouteWayPoint(tradeRouteID, 0.49);
     rmPlaceObjectDefAtPoint(stopperCityState1ID, 0, socketLoc);
 
-	int cityState02 = rmCreateGrouping("citystate2", "City_State_Western_02");
+	if (settlementVariation == 1)
+		int cityState02 = rmCreateGrouping("citystate2", "City_State_Western_02");
+	else
+		cityState02 = rmCreateGrouping("citystate2", "City_State_Western_02B");
     rmSetGroupingMinDistance(cityState02, 0.00);
     rmSetGroupingMaxDistance(cityState02, 0.00);
 	rmAddGroupingToClass(cityState02, rmClassID("classPlateau"));
@@ -741,7 +752,10 @@ void main(void)
 	socketLoc = rmGetTradeRouteWayPoint(tradeRouteID, 0.15);
     rmPlaceObjectDefAtPoint(stopperCityState2ID, 0, socketLoc);
 
-	int cityState03 = rmCreateGrouping("citystate3", "City_State_Western_03");
+	if (settlementVariation == 1)
+		int cityState03 = rmCreateGrouping("citystate3", "City_State_Western_03");
+	else
+		cityState03 = rmCreateGrouping("citystate3", "City_State_Western_03B");
     rmSetGroupingMinDistance(cityState03, 0.00);
     rmSetGroupingMaxDistance(cityState03, 0.00);
 	rmAddGroupingToClass(cityState03, rmClassID("classPlateau"));
@@ -3774,6 +3788,7 @@ void main(void)
 			rmSetTriggerLoop(false);
 		}	
 	}
+
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",1.00);
