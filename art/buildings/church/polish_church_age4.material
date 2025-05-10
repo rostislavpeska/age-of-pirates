@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\church\textures\swedish_church_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\church\textures\swedish_church_normals">
+      </texture>
+      <texture name="Masks" override="buildings\church\textures\swedish_church_masks">
+      </texture>
+      <texture name="Details" override="buildings\church\textures\swedish_church_details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

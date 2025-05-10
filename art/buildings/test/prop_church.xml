@@ -7,7 +7,7 @@
 		<logic type="Variation">
 			<data>
 				<assetreference type="GrannyModel">
-					<file>buildings\church\swedish_church_con</file>
+					<file>buildings\church\polish_church_age2_con</file>
 				</assetreference>
 			</data>
 			<data>
@@ -17,7 +17,7 @@
 			</data>
 			<data>
 				<assetreference type="GrannyModel">
-					<file>buildings\church\italy_church</file>
+					<file>buildings\church\polish_church_age2</file>
 				</assetreference>
 			</data>
 			<data>
@@ -27,7 +27,7 @@
 			</data>
 			<data>
 				<assetreference type="GrannyModel">
-					<file>buildings\church\russain_church</file>
+					<file>buildings\church\polish_church_age4_con</file>
 				</assetreference>
 			</data>
 			<data>
@@ -37,7 +37,7 @@
 			</data>
 			<data>
 				<assetreference type="GrannyModel">
-					<file>buildings\church\swedish_church</file>
+					<file>buildings\church\polish_church_age4</file>
 				</assetreference>
 			</data>
 			<data>
