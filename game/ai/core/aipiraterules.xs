@@ -1249,8 +1249,7 @@ minInterval 20
 
 //==============================================================================
 /* navalCityAttackManager
-   conducts all the attack management for city maps
-
+   Attacks city states that are defended by gaia
    Unlike CityAttackmanager, this can handle water maps
    
    So far super simple, just runs alongside the standard attack manager and 
