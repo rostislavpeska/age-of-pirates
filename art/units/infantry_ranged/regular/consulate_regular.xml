@@ -9,6 +9,7 @@
   <attachment>gun<include>units\asians\consulate\musketeer\musketeer_guns.xml</include></attachment>
   <attachment>hat<component>hat<assetreference type="GrannyModel"><file>units\infantry_ranged\regular\regular_hat_age4</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
   <attachment>hat2<component>hat2<assetreference type="GrannyModel"><file>units\infantry_ranged\regular\regular_hat_age5</file></assetreference></component><anim>Idle<component>hat2</component></anim></attachment>
+  <attachment>hat3<component>hat3<assetreference type="GrannyModel"><file>units\wildwest_units\black_hat\black_hat</file></assetreference></component><anim>Idle<component>hat3</component></anim></attachment>
   <attachment>torch<include>effects\projectiles\torch.xml</include></attachment>
   <attachment>launcher_short<component>gun_short<assetreference type="GrannyModel"><file>units\infantry_ranged\grenadier\hand_mortar_short</file></assetreference></component><anim>Idle<component>gun_short</component></anim></attachment>
   <attachment>launcher<component>gun<assetreference type="GrannyModel"><file>units\infantry_ranged\grenadier\hand_mortar</file></assetreference></component><anim>Idle<component>gun</component></anim></attachment>
@@ -48,6 +49,23 @@
                 </v2>
             </logic>
         </zpactivatecsaskins>
+        <zpactivateunionskins>
+            <logic type="Variation">
+                <v1>
+                    <assetreference type="GrannyModel">
+                        <file>units\infantry_ranged\regular\regular_age4</file>
+                    </assetreference>
+                    <attach a="hat3" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
+                </v1>
+                <v2>
+                    <assetreference type="GrannyModel">
+                        <file>units\infantry_ranged\regular\regular_age4</file>
+                        <materialvariant index="1"></materialvariant>
+                    </assetreference>
+                    <attach a="hat3" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
+                </v2>
+            </logic>
+        </zpactivateunionskins>
     </logic>
     <decal>
         <effecttype>default</effecttype>

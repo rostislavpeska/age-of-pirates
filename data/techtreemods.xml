@@ -24880,6 +24880,18 @@
       <effect type="TechStatus" status="obtainable">zpAmericanExpeditionaryFleet</effect>
       <effect type="TechStatus" status="obtainable">zpCivilWarIronclads</effect>
       <effect type="TechStatus" status="obtainable">zpCivilWarSPCUSA</effect>
+      <effect type ="Data" amount ="1.10" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatConRegular</target>
+      </effect>
+			<effect type ="Data" amount ="1.10" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatConRegular</target>
+      </effect>
+      <effect type ="Data" amount ="1.10" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatConUSCavalry</target>
+      </effect>
+			<effect type ="Data" amount ="1.10" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatConUSCavalry</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpCivilUnionSetup" type="Normal">
@@ -24914,6 +24926,7 @@
       <effect type="TechStatus" status="obtainable">zpSPCUsaCivilWarRevolution</effect>
       <effect type="TechStatus" status="obtainable">zpCivilUnionSetupUSA</effect>
       <effect type="TechStatus" status="obtainable">zpRevolutionUSAShadow</effect>
+      <effect type="TechStatus" status="active">zpActivateUnionSkins</effect>
       <effect type="SetName" proto="zpNatConRegular" newname="302649">
       </effect>
       <effect type="SetName" proto="zpNatConUSCavalry" newname="302651">
@@ -25592,6 +25605,7 @@
       <effect type="TechStatus" status="obtainable">zpUnionEmancipation</effect>
       <effect type="TechStatus" status="obtainable">zpUnionFactory</effect>
       <effect type="TechStatus" status="active">zpBlessedCityShadow</effect>
+      <effect type="TechStatus" status="active">zpCivilWarCommanderyBuildLimit</effect>
       <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
@@ -25618,6 +25632,7 @@
       <effect type="Data" amount="0.85" subtype="TrainPoints" relativity="Percent">
         <target type="ProtoUnit">AbstractArtillery</target>
       </effect>
+      <effect type="TechStatus" status="active">zpCivilWarCommanderyBuildLimit</effect>
       <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
@@ -25678,6 +25693,7 @@
       <effect type="Data" amount="3.00" subtype="LOS" relativity="Absolute">
         <target type="ProtoUnit">AbstractWarShip</target>
       </effect>
+      <effect type="TechStatus" status="active">zpCivilWarCommanderyBuildLimit</effect>
       <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
@@ -25807,6 +25823,7 @@
       <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Influence" unittype="deField" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
+      <effect type="TechStatus" status="active">zpCivilWarCommanderyBuildLimit</effect>
       <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
@@ -25834,6 +25851,7 @@
       <effect type="Data" amount="1.10" subtype="MaximumVelocity" relativity="BasePercent">
         <target type="ProtoUnit">LogicalTypeLandMilitary</target>
       </effect>
+      <effect type="TechStatus" status="active">zpCivilWarCommanderyBuildLimit</effect>
     </effects>
   </tech>
   <tech name="zpConsulateRevAdmiralConfederate" type="Normal">
@@ -25862,6 +25880,7 @@
       <effect type="Data" amount="0.85" subtype="Cost" resource="Gold" relativity="BasePercent">
         <target type="ProtoUnit">AbstractWarShip</target>
       </effect>
+      <effect type="TechStatus" status="active">zpCivilWarCommanderyBuildLimit</effect>
       <effect type="Sound">UI_StrategyWarning</effect>
     </effects>
   </tech>
@@ -26412,6 +26431,30 @@
       </effect>
       <effect type="CommandRemove" proto="SaloonOutlawPistol">
         <target type="ProtoUnit">Saloon</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpActivateUnionSkins" type="Normal">
+    <dbid>41056</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpNatConRegular" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCivilWarCommanderyBuildLimit" type="Normal">
+    <dbid>41057</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCCivilWarCommandery</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCCivilWarCommanderyCon</target>
       </effect>
     </effects>
   </tech>
