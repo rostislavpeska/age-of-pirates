@@ -38,8 +38,7 @@ minInterval 1
        cRandomMapName == "zpbarrierreef" ||
        cRandomMapName == "zpvenicecity" ||
        cRandomMapName == "zpcaribbeanwars" ||
-       cRandomMapName == "zpazteccity" ||
-       cRandomMapName == "zpcivilwar")
+       cRandomMapName == "zpazteccity")
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
@@ -57,7 +56,8 @@ minInterval 1
    }
 
    // AssertiveWall: Naval, but not starting on different islands
-   if (cRandomMapName == "zphawaii")
+   if (cRandomMapName == "zphawaii" ||
+       cRandomMapName == "zpcivilwar")
    {
       gIsPirateMap = true;
       gNavyMap = true;
@@ -108,6 +108,12 @@ minInterval 1
        cRandomMapName == "zpazteccity")
    {
       xsEnableRule("initializecheckAttackDefenseMapAoP"); // 
+   }
+
+   // Maps where you absolutely need to take lots of TP's (like Civil War where taking TP's is the victory condition)
+   if (cRandomMapName == "zpcivilwar")
+   {
+      xsEnableRule("setTradeBiasDelayed");
    }
 
    // Naval City Map. Enable based on sockets that it can handle
@@ -342,9 +348,67 @@ minInterval 1
 }
 
 //==============================================================================
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Table of Pirate Rules
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+initializecheckAttackDefenseMapAoP
+ - rule to start up or shut down other rules specific to some attack/defend maps
+
+CityAttackmanager
+ - The city attack system works differently than the standard attack plan system.
+   Several attack plans run simultaneously, and the priority of these plans 
+   shifts depending on the circumstances. The manager requires 
+   initializeCityAttackmanager 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/
+//==============================================================================
+
+
+//==============================================================================
+/*
+setTradeBiasDelayed
+
+   sets the bias for natives and trade posts really high. Useful for maps where
+   these are a required win condition
+*/
+//==============================================================================
+rule setTradeBiasDelayed
+inactive
+minInterval 20
+{
+   gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
+   btBiasNative = 1.0;
+   btBiasTrade = 1.0;
+
+   xsDisableSelf();
+}
+
+//==============================================================================
 /* Check for attack/defence special map
    AssertiveWall: Checks to see if the map is a special attack or defend map,
    and sets btbias accordingly
+
+   The defend point is stored as the "headquarters" and the forward base & defend 
+   point is set there for the defender. Offensive players are set to play aggressively. 
 */
 //==============================================================================
 void checkAttackDefenseMapAoP(void)
@@ -1069,6 +1133,12 @@ rule buildNavalCitySockets
 inactive
 minInterval 20
 {
+   // Early out if we're already building a TP
+   if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypeTradingPost) >= 0)
+   {
+      return;
+   }
+
    int citySocketType = -1;
    // Create a list of city states
    if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0)
@@ -1079,7 +1149,6 @@ minInterval 20
    {
       citySocketType = cUnitTypezpSPCSocketPirateCityState;
    }
-
    //roda2324: Civil War sockets using an abstract type
    else if (getGaiaUnitCount(cUnitTypeCivilWarCityState) > 0)
    {
@@ -1185,7 +1254,7 @@ minInterval 20
    Unlike CityAttackmanager, this can handle water maps
    
    So far super simple, just runs alongside the standard attack manager and 
-   launches attacks agaisnt city states when possible
+   launches attacks against city states when possible
 */
 //==============================================================================
 rule navalCityAttackManager
@@ -1212,6 +1281,12 @@ minInterval 20
       return;
    }
 
+   // Make sure we have military sitting in land reserve plan
+   if (aiPlanGetNumberUnits(gLandReservePlan, cUnitTypeLogicalTypeLandMilitary) < 10)
+   {
+      return;
+   }
+
    int cityStateQuery = -1;
    int numberCityStateFound = 0;
    int tempCityState = -1;
@@ -1231,25 +1306,27 @@ minInterval 20
    bool tempUntouched = false;
    bool bestUntouched = false;
    int tempEnCount = 0;
-   int citySocketType = -1;
+   static int citySocketType = -1;
 
-   if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0)
+   if (citySocketType < 0) 
    {
-      citySocketType = cUnitTypezpSPCSocketVeniceCityState;
-   }
-   else if (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0)
-   {
-      citySocketType = cUnitTypezpSPCSocketPirateCityState;
-   }
-   
-   //roda2324: Civil War sockets using an abstract type
-   else if (getGaiaUnitCount(cUnitTypeCivilWarCityState) > 0)
-   {
-      citySocketType = cUnitTypeCivilWarCityState;
-   }
-   else
-   {  // Shouldn't reach here
-      return;
+      if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0)
+      {
+         citySocketType = cUnitTypezpSPCSocketVeniceCityState;
+      }
+      else if (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0)
+      {
+         citySocketType = cUnitTypezpSPCSocketPirateCityState;
+      }
+      //roda2324: Civil War sockets using an abstract type
+      else if (getGaiaUnitCount(cUnitTypeCivilWarCityState) > 0)
+      {
+         citySocketType = cUnitTypeCivilWarCityState;
+      }
+      else
+      {  // Shouldn't reach here
+         return;
+      }
    }
 
    cityStateQuery = createSimpleGaiaUnitQuery(citySocketType, cUnitStateAny);
@@ -1385,14 +1462,17 @@ minInterval 20
          aiPlanSetVariableBool(planID, cCombatPlanAllowMoreUnitsDuringAttack, 0, true);
       }
 
-      aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeNoTarget);
-      aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+      //aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeNoTarget);
+      //aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+      //aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 30000);
+      aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget);
+      //aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
       aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 30000);
 
       aiPlanSetBaseID(planID, mainBaseID);
       aiPlanSetInitialPosition(planID, gatherPoint);
+      
       addUnitsToMilitaryPlan(planID);
-
       aiPlanSetActive(planID);
 
       gLastAttackMissionTime = xsGetTime();
@@ -1407,6 +1487,22 @@ minInterval 20
       {
          sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemySettlers,
             bestLocation);
+      }
+
+      // handle some extra retreat stuff
+      // AssertiveWall: set the extern and start the retreat logic. This is only necessary for attacks, 
+         // and excludes defend plans except on KoTH
+      gLandAttackPlanID = planID; 
+      if (transportRequired == false)
+      {
+         xsEnableRule("attackRetreatDelay");
+      }
+      else
+      {  // AssertiveWall: Make sure plan can retreat on water maps
+         aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeBaseGone);
+         aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+
+         xsEnableRule("attackTimeoutTransportRequired");
       }
             
       /*gLandAttackPlanID = planID;
