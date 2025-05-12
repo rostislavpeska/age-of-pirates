@@ -1308,7 +1308,7 @@ minInterval 20
    int tempEnCount = 0;
    static int citySocketType = -1;
 
-   if (citySocketType < 0)
+   if (citySocketType < 0) 
    {
       if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0)
       {
