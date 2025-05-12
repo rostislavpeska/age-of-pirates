@@ -2588,9 +2588,9 @@
       <string _locid="302588">ZP Civil War Commandery CSA</string>
       <string _locid="302589">Confederate States of America</string>
       <string _locid="302590">Revolt to United States of America</string>
-      <string _locid="302591">Pick one of the three United States leaders providing you with unique techs.\n • Initiates a special type of revolution \n • Unlocks new techs</string>
+      <string _locid="302591">Pick one of the three United States leaders providing you with unique techs.\n • Initiates a special type of revolution \n • Unlocks new techs \n • Increases Command Post build limit by 2</string>
       <string _locid="302592">Revolt to Confederate States of America</string>
-      <string _locid="302593">Pick one of the three Confederacy leaders providing you with unique techs.</string>
+      <string _locid="302593">Pick one of the three Confederacy leaders providing you with unique techs. \n • Initiates a special type of revolution \n • Unlocks new techs \n • Increases Command Post build limit by 2</string>
       <string _locid="302594">Join the Union</string>
       <string _locid="302595">The Admiral</string>
       <string _locid="302596">Naval bonus: Increases Warships attack range and line of sight. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nFleet of Freedom, Project Leviathan</string>
@@ -2630,7 +2630,7 @@
       <string _locid="302630">Land Ironclad</string>
       <string _locid="302631">Ships a heavy Steam Tank to empower your land forces.</string>
       <string _locid="302632">Field Hospitals</string>
-      <string _locid="302633">Commanderies can train Surgeons and Surgeons can construct field hospitals. Field hospital healing effectivity and range increased.</string>
+      <string _locid="302633">Command Posts can train Surgeons and Surgeons can construct field hospitals. Field hospital healing effectivity and range increased.</string>
       <string _locid="302634">Siege Rifle</string>
       <string _locid="302635">ZP Siege Rifle</string>
       <string _locid="302636">Confederate Conscription Act</string>
