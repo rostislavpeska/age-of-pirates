@@ -1249,7 +1249,8 @@ minInterval 20
 
 //==============================================================================
 /* navalCityAttackManager
-   Attacks city states that are defended by gaia
+   conducts all the attack management for city maps
+
    Unlike CityAttackmanager, this can handle water maps
    
    So far super simple, just runs alongside the standard attack manager and 
@@ -1305,24 +1306,27 @@ minInterval 20
    bool tempUntouched = false;
    bool bestUntouched = false;
    int tempEnCount = 0;
-   int citySocketType = -1;
+   static int citySocketType = -1;
 
-   if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0)
+   if (citySocketType < 0)
    {
-      citySocketType = cUnitTypezpSPCSocketVeniceCityState;
-   }
-   else if (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0)
-   {
-      citySocketType = cUnitTypezpSPCSocketPirateCityState;
-   }
-   //roda2324: Civil War sockets using an abstract type
-   else if (getGaiaUnitCount(cUnitTypeCivilWarCityState) > 0)
-   {
-      citySocketType = cUnitTypeCivilWarCityState;
-   }
-   else
-   {  // Shouldn't reach here
-      return;
+      if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0)
+      {
+         citySocketType = cUnitTypezpSPCSocketVeniceCityState;
+      }
+      else if (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0)
+      {
+         citySocketType = cUnitTypezpSPCSocketPirateCityState;
+      }
+      //roda2324: Civil War sockets using an abstract type
+      else if (getGaiaUnitCount(cUnitTypeCivilWarCityState) > 0)
+      {
+         citySocketType = cUnitTypeCivilWarCityState;
+      }
+      else
+      {  // Shouldn't reach here
+         return;
+      }
    }
 
    cityStateQuery = createSimpleGaiaUnitQuery(citySocketType, cUnitStateAny);
