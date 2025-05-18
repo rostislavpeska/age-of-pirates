@@ -2663,8 +2663,12 @@
       <string _locid="302663">Union Expeditionary Fleet</string>
       <string _locid="302664">Old Northern Church</string>
       <string _locid="302665">ZP SPC Northern Church</string>
-
-
+      <string _locid="302666">Hussite Wagon</string>
+      <string _locid="302667">ZP NAT Hussite Wagon</string>
+      <string _locid="302668">Hussite Camp</string>
+      <string _locid="302669">ZP Socket Hussites</string>
+      <string _locid="302670">Truth is great and shall prevail</string>
+      <string _locid="302671">ZP Hussite Flag</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

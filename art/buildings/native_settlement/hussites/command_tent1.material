@@ -1,0 +1,102 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\spc\command_post\textures\command_post_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\spc\command_post\textures\command_post_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\spc\command_post\textures\command_post_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="math">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\xpk_campfire_c\textures\xpk_campfire_c_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\xpk_campfire_c\textures\xpk_campfire_c_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\xpk_campfire_c\textures\xpk_campfire_c_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mati">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\campfire_e\textures\campfire_e_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\campfire_e\textures\campfire_e_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\campfire_e\textures\campfire_e_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\trading_post\east_india_company\textures\east_india_company_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\trading_post\east_india_company\textures\east_india_company_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\trading_post\east_india_company\textures\east_india_company_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\field_hospital\west_shelter_age2\textures\west_shelter_age2_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\field_hospital\west_shelter_age2\textures\west_shelter_age2_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\field_hospital\west_shelter_age2\textures\west_shelter_age2_mata_masks">
+      </texture>
+      <texture name="Details" override="buildings\field_hospital\west_shelter_age2\textures\west_shelter_age2_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\generic_props\textures\generic_props_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\generic_props\textures\generic_props_normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\generic_props\textures\generic_props_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\infantry_ranged\musketeer\textures\musketeer_2age_gun_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\infantry_ranged\musketeer\textures\musketeer_2age_gun_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\infantry_ranged\musketeer\textures\musketeer_2age_gun_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matg">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\town_center\towncenter_generic\textures\towncenter_generic_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\town_center\towncenter_generic\textures\towncenter_generic_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\town_center\towncenter_generic\textures\towncenter_generic_mata_masks">
+      </texture>
+      <texture name="Details" override="buildings\town_center\towncenter_generic\textures\towncenter_generic_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

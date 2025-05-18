@@ -684,6 +684,25 @@
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
   </civ>
+  <civ>
+    <name>zpHussites</name>
+    <main>0</main>
+    <subcivtype>4</subcivtype>
+    <portrait>buildings\native_settlement\native_site_bourbon_icon_portrait.png</portrait>
+    <culture>Stone</culture>
+    <displaynameid>122142</displaynameid>
+    <rollovernameid>122142</rollovernameid>
+    <alliedid>122402</alliedid>
+    <alliedotherid>122401</alliedotherid>
+    <unalliedid>122400</unalliedid>
+    <agetech>
+      <age>Age0</age>
+      <tech>zpNativeHussites</tech>
+    </agetech>
+    <homecityflagtexture>objects\flags\natives\hussite</homecityflagtexture>
+    <visible>0</visible>
+    <visibleineditor>0</visibleineditor>
+  </civ>
 
 
 

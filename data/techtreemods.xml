@@ -26458,6 +26458,19 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpNativeHussites" type="Normal">
+    <dbid>41058</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatHussiteCannoneer</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatDisciplinedHussites</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHonoredHussites</effect>
+
+    </effects>
+  </tech>
 
 
   
