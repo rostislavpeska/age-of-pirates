@@ -404,6 +404,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPirates</effect>
     </effects>
@@ -473,6 +476,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnJapanese</effect>
     </effects>
@@ -542,6 +548,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnChinese</effect>
     </effects>
@@ -611,6 +620,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnIndian</effect>
     </effects>
@@ -2748,6 +2760,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMaltese</effect>     
     </effects>
@@ -3522,6 +3537,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokou</effect>
     </effects>
@@ -5213,6 +5231,15 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="42433">
       </effect>
+
+      <effect mergemode="add" type="SetName" proto="zpNatHussiteCannoneer" culture="none" newname="302689">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatLegionaryMarksman" culture="none" newname="302691">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatHussiteWagon" culture="none" newname="302693">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatHussiteKnight" culture="none" newname="302695">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -5260,6 +5287,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
     </effects>
   </tech>
   <tech name="AAStandardNativeTechsPI">
@@ -5306,6 +5335,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
     </effects>
   </tech>
   <tech name="ypAAAsianStandardTechsPI">
@@ -5352,6 +5383,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothers">
@@ -5401,6 +5434,8 @@
       <effect mergemode="add" type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
       </effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothersGerman">
@@ -5450,6 +5485,8 @@
       <effect mergemode="add" type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
       </effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialAmericans">
@@ -5496,6 +5533,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
     </effects>
   </tech>
   <tech name="DEChampionNativeWarriorsAfricanShadow">
@@ -5542,6 +5581,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialMexicans">
@@ -5588,6 +5629,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
     </effects>
   </tech>
   <tech name="DEHeavyFixedGun">
@@ -6291,6 +6334,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
@@ -6944,6 +6990,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffJewish</effect>
     </effects>
@@ -7157,6 +7206,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="active">zpBigButtonResearchDone</effect>
 
@@ -7524,6 +7576,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientists</effect>
     </effects>
@@ -9668,6 +9723,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffVenice</effect>
     </effects>
@@ -11178,6 +11236,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffOrthodox</effect>
     </effects>
@@ -11492,6 +11553,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffXMass</effect>
     </effects>
@@ -11947,6 +12011,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientistsLand</effect>
     </effects>
@@ -12568,6 +12635,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientistsLand</effect>
     </effects>
@@ -12996,6 +13066,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnKhmer</effect>
     </effects>
@@ -14431,6 +14504,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPiratesAustralia</effect>
     </effects>
@@ -14696,6 +14772,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokouSouth</effect>
     </effects>
@@ -14879,6 +14958,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPiratesMedi</effect>
     </effects>
@@ -15953,6 +16035,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPenalColony</effect>
     </effects>
@@ -17312,6 +17397,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
@@ -17756,6 +17844,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffSansculottes</effect>
     </effects>
@@ -21667,6 +21758,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffOrthodoxSouth</effect>
     </effects>
@@ -22394,6 +22488,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffKingOfBohemia</effect>
     </effects>
@@ -25222,6 +25319,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterWarHut</effect>
     </effects>
@@ -26473,13 +26573,16 @@
       <effect type="TechStatus" status="obtainable">zpNatUtraquism</effect>
       <effect type="TechStatus" status="obtainable">zpNatHussiteSacrament</effect>
       <effect type="TechStatus" status="obtainable">zpHussiteExpansion</effect>
-
       <effect type="TechStatus" status="obtainable">zpNatSiberianLegacy</effect>
       <effect type="TechStatus" status="obtainable">zpNatHussiteHospitals</effect>
       <effect type="TechStatus" status="obtainable">zpNatTractatusPacis</effect>
       <effect type="TechStatus" status="obtainable">zpNatCompactOfUnity</effect>
       <effect type="TechStatus" status="obtainable">zpNatZizkaLegacy</effect>
       <effect type="TechStatus" status="obtainable">zpNatPragueUnderground</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyHussites</effect>
+      <effect type="TechStatus" status="obtainable">zpIndianFriendshipHussites</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyHussites</effect>
     </effects>
   </tech>
   <tech name="zpNatSharingEconomy" type="Normal">
@@ -27015,6 +27118,53 @@
       <effect type="TechStatus" status="obtainable">zpConsulateHussitesReformer</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffHussites</effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTreatyHussites" type="Normal">
+    <dbid>41074</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">HCNativeTreaties</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="4.00" subtype="FreeHomeCityUnit" unittype="zpNatHussiteCannoneer" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpIndianFriendshipHussites" type="Normal">
+    <dbid>41075</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="7.00" subtype="FreeHomeCityUnit" unittype="zpNatHussiteCannoneer" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
+      <effect type="TechStatus" status="active">zpNatHonoredHussites</effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTradeTreatyHussites" type="Normal">
+    <dbid>41075</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
     </effects>
   </tech>
 
