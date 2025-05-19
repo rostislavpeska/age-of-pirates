@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\hussites\textures\hussite_school_01_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\jesuit_school_01\textures\jesuit_school_01_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\jesuit_school_01\textures\jesuit_school_01_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

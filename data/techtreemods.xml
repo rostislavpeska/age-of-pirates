@@ -26826,7 +26826,7 @@
     </effects>
   </tech>
   <tech name="zpNatPragueUnderground" type="Normal">
-    <dbid>41066</dbid>
+    <dbid>41077</dbid>
     <displaynameid>302704</displaynameid>
     <cost resourcetype="Wood">600.0000</cost>
     <researchpoints>20.0000</researchpoints>
@@ -26849,7 +26849,7 @@
     </effects>
   </tech>
   <tech name="zpNatZizkaLegacy" type="Normal">
-    <dbid>41066</dbid>
+    <dbid>41078</dbid>
     <displaynameid>302705</displaynameid>
     <cost resourcetype="Gold">300.0000</cost>
     <researchpoints>10.0000</researchpoints>
@@ -27153,7 +27153,7 @@
     </effects>
   </tech>
   <tech name="zpNativeTradeTreatyHussites" type="Normal">
-    <dbid>41075</dbid>
+    <dbid>41076</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>

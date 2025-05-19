@@ -2667,7 +2667,7 @@
       <string _locid="302667">ZP NAT Hussite Wagon</string>
       <string _locid="302668">Hussite Camp</string>
       <string _locid="302669">ZP Socket Hussites</string>
-      <string _locid="302670">Truth is great and shall prevail</string>
+      <string _locid="302670">Truth is great and shall prevail. We'll fight for it, till we die!</string>
       <string _locid="302671">ZP Hussite Flag</string>
       <string _locid="302672">Legionary Marksman</string>
       <string _locid="302673">ZP NAT Legionary Marksman</string>
@@ -2716,7 +2716,8 @@
       <string _locid="302716">Allows you to train Surgeons directly from the Hussite camp and also construct field hospitals.</string>
       <string _locid="302717">Siberian Legacy</string>
       <string _locid="302718">Ships legionaries equipped with a breech loaded cannon. Increases Legionary Marksman build limit.</string>
-
+      <string _locid="302719">Hussite Camp</string>
+      <string _locid="302720">ZP Native House Hussites</string>
 
 
       <!-- ======================================== -->
