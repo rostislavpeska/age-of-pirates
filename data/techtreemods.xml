@@ -1899,7 +1899,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <effects>
-      <effect type="Data" amount="0.50" subtype="ResourceTrickleRate" resource="Gold" relativity="Absolute">
+      <effect type="Data" amount="0.75" subtype="ResourceTrickleRate" resource="Gold" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -26468,7 +26468,553 @@
       </effect>
       <effect type="TechStatus" status="obtainable">zpNatDisciplinedHussites</effect>
       <effect type="TechStatus" status="obtainable">zpNatHonoredHussites</effect>
+      <effect type="TechStatus" status="obtainable">zpNatSharingEconomy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHussiteWagons</effect>
+      <effect type="TechStatus" status="obtainable">zpNatUtraquism</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHussiteSacrament</effect>
+      <effect type="TechStatus" status="obtainable">zpHussiteExpansion</effect>
 
+      <effect type="TechStatus" status="obtainable">zpNatSiberianLegacy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHussiteHospitals</effect>
+      <effect type="TechStatus" status="obtainable">zpNatTractatusPacis</effect>
+      <effect type="TechStatus" status="obtainable">zpNatCompactOfUnity</effect>
+      <effect type="TechStatus" status="obtainable">zpNatZizkaLegacy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatPragueUnderground</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatSharingEconomy" type="Normal">
+    <dbid>41059</dbid>
+    <displaynameid>302674</displaynameid>
+    <cost resourcetype="Food">50.0000</cost>
+    <cost resourcetype="Wood">50.0000</cost>
+    <cost resourcetype="Gold">50.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hussite_sharing_economy.png</icon>
+    <rollovertextid>302675</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="0.3" subtype="ResourceTrickleRate" resource="Gold" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.3" subtype="ResourceTrickleRate" resource="Food" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.3" subtype="ResourceTrickleRate" resource="Wood" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatHussiteWagons" type="Normal">
+    <dbid>41060</dbid>
+    <displaynameid>302676</displaynameid>
+    <cost resourcetype ="Gold">500.0000</cost>
+    <cost resourcetype ="Wood">1000.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <rollovertextid>302677</rollovertextid>
+    <icon>resources\images\icons\techs\hussitewagon_tech.png</icon>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>CountsTowardMilitaryScore</flag>
+      <effects>
+        <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpNatHussiteWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TextOutputTechName">110130</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatUtraquism" type="Normal">
+    <dbid>41061</dbid>
+    <displaynameid>302678</displaynameid>
+    <cost resourcetype="Food">250.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hussite_utraquism.png</icon>
+    <rollovertextid>302679</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status ="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractHealer</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatHussiteSacrament" type="Normal">
+    <dbid>41062</dbid>
+    <displaynameid>302680</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hussite_sacrament.png</icon>
+    <rollovertextid>302681</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status ="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="0.25" subtype="Cost" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">Church</target>
+      </effect>
+      <effect type="Data" amount="0.25" subtype="Cost" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">ypMonastery</target>
+      </effect>
+      <effect type="Data" amount="0.25" subtype="Cost" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">ypChurch</target>
+      </effect>
+      <effect type="Data" amount="0.25" subtype="Cost" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">deMountainMonastery</target>
+      </effect>
+      <effect type="Data" amount="0.25" subtype="Cost" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">deBasilica</target>
+      </effect>
+      <effect type="Data" amount="0.25" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">deBasilica</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpNatDisciplinedHussites" type ="Normal">
+		<dbid>41063</dbid>
+		<displaynameid>302684</displaynameid>
+		<cost resourcetype ="Food">200.0000</cost>
+		<cost resourcetype ="Gold">100.0000</cost>
+		<researchpoints>10.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\veteran_infantry\veteran_infantry.png</icon>
+		<rollovertextid>302686</rollovertextid>
+		<flag>YPNativeImprovement</flag>
+		<flag>UpgradeTech</flag>
+    <flag>DENativeUnitUpgrade</flag>
+		<flag>CountsTowardMilitaryScore</flag>
+		<prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+		<effects>
+			<effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatHussiteCannoneer</target></effect>
+			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatHussiteCannoneer</target></effect>
+			<effect type ="SetName" proto ="zpNatHussiteCannoneer" culture ="none" newname ="302687"></effect>
+      <effect type="SetName" proto="zpNatHussiteCannoneer" culture="none" newname="302689" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+		</effects>
+	</tech>
+   <tech name ="zpNatHonoredHussites" type ="Normal">
+		<dbid>41064</dbid>
+		<displaynameid>300124</displaynameid>
+		<cost resourcetype ="Food">400.0000</cost>
+		<cost resourcetype ="Gold">300.0000</cost>
+		<researchpoints>10.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\guard_infantry\guard_infantry.png</icon>
+		<rollovertextid>300896</rollovertextid>
+		<flag>YPNativeImprovement</flag>
+		<flag>UpgradeTech</flag>
+    <flag>DENativeUnitUpgrade</flag>
+		<flag>CountsTowardMilitaryScore</flag>
+		<prereqs>
+			<techstatus status ="active">Industrialize</techstatus>
+			<techstatus status ="active">zpNatDisciplinedHussites</techstatus>
+		</prereqs>
+		<effects>
+			<effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatHussiteCannoneer</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatHussiteCannoneer</target></effect>
+			<effect type ="SetName" proto ="zpNatHussiteCannoneer" culture ="none" newname ="302688"></effect>
+      <effect type="SetName" proto="zpNatHussiteCannoneer" culture="none" newname="302689" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatLegionaryMarksman</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatLegionaryMarksman</target></effect>
+			<effect type ="SetName" proto ="zpNatLegionaryMarksman" culture ="none" newname ="302690"></effect>
+      <effect type="SetName" proto="zpNatLegionaryMarksman" culture="none" newname="302691" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatHussiteWagon</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatHussiteWagon</target></effect>
+			<effect type ="SetName" proto ="zpNatHussiteWagon" culture ="none" newname ="302692"></effect>
+      <effect type="SetName" proto="zpNatHussiteWagon" culture="none" newname="302693" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatHussiteKnight</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatHussiteKnight</target>
+      </effect>
+      <effect type="SetName" proto="zpNatHussiteKnight" culture="none" newname="302694"></effect>
+      <effect type="SetName" proto="zpNatHussiteKnight" culture="none" newname="302695" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+		</effects>
+	</tech>
+  <tech name ="zpHussiteExpansion" type ="Normal">
+		<dbid>41065</dbid>
+		<displaynameid>302700</displaynameid>
+  	<researchpoints>100.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-malta.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\hussites_big.png</iconwpf>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>302701</rollovertextid>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>YPInfiniteTech</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <flag>DoNotQueue</flag>
+    <flag>NativeDance</flag>
+    <flag>YPNeverLastInLine</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianFishingBoat</effect>
+      <effect type="TechStatus" status="active">zpTheBlackFlagGoldBallanceShadow</effect>
+    </effects>
+	</tech>
+  <tech name="zpConsulateHussitesZizka" type="Normal">
+    <dbid>41066</dbid>
+    <displaynameid>302702</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hussites_small.png</icon>
+    <rollovertextid>302703</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatHussiteWagon</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatHussiteWagon" page="0" column="1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpHussiteExpansion</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpHussiteExpansion">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatZizkaLegacy" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatPragueUnderground" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatPragueUnderground" type="Normal">
+    <dbid>41066</dbid>
+    <displaynameid>302704</displaynameid>
+    <cost resourcetype="Wood">600.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\paris_underground.png</icon>
+    <rollovertextid>301933</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+			<techstatus status ="active">Industrialize</techstatus>
+		</prereqs>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpParisCitadelWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpParisCitadelPassage</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatZizkaLegacy" type="Normal">
+    <dbid>41066</dbid>
+    <displaynameid>302705</displaynameid>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hussites_legacy.png</icon>
+    <rollovertextid>302706</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="0.8" subtype="Cost" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractGunpowderTrooper</target>
+      </effect>
+      <effect type="Data" amount="0.8" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractGunpowderTrooper</target>
+      </effect>
+      <effect type="Data" amount="0.8" subtype="Cost" resource="Food" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractGunpowderTrooper</target>
+      </effect>
+      <effect type="Data" amount="0.8" subtype="Cost" resource="Influence" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractGunpowderTrooper</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateHussitesKing" type="Normal">
+    <dbid>41067</dbid>
+    <displaynameid>302707</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hussites_small.png</icon>
+    <rollovertextid>302708</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatHussiteKnight</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatHussiteKnight" page="0" column="1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpHussiteExpansion</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpHussiteExpansion">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatCompactOfUnity" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatTractatusPacis" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatCompactOfUnity" type="Normal">
+    <dbid>41068</dbid>
+    <displaynameid>302709</displaynameid>
+    <cost resourcetype="Food">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hussite_unitycompact.png</icon>
+    <rollovertextid>302710</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="0.80" subtype="Cost" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractNativeWarrior</target>
+      </effect>
+      <effect type="Data" amount="0.80" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractNativeWarrior</target>
+      </effect>
+      <effect type="Data" amount="0.80" subtype="Cost" resource="Food" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractNativeWarrior</target>
+      </effect>
+      <effect type="Data" amount="0.80" subtype="Cost" resource="Influence" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractNativeWarrior</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatTractatusPacis" type="Normal">
+    <dbid>41069</dbid>
+    <displaynameid>302711</displaynameid>
+    <cost resourcetype ="Gold">500.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hussites_tractatus.png</icon>
+    <rollovertextid>302712</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+			<techstatus status ="active">Industrialize</techstatus>
+		</prereqs>
+    <effects>
+      <effect type="Data" amount="1.25" subtype="InventoryAmount" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTradeCrate</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="InventoryAmount" resource="Food" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTradeCrate</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="InventoryAmount" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTradeCrate</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="InventoryAmount" resource="XP" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTradeCrate</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="InventoryAmount" resource="Influence" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTradeCrate</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateHussitesReformer" type="Normal">
+    <dbid>41070</dbid>
+    <displaynameid>302713</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hussites_small.png</icon>
+    <rollovertextid>302714</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatLegionaryMarksman</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatLegionaryMarksman" page="0" column="1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpHussiteExpansion</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpHussiteExpansion">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHussiteHospitals" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatSiberianLegacy" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatHussiteHospitals" type="Normal">
+    <dbid>41071</dbid>
+    <displaynameid>302715</displaynameid>
+    <cost resourcetype="Gold">100.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hussite_missions.png</icon>
+    <rollovertextid>302716</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects> 
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">FieldHospital</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSurgeonProxy</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSurgeonProxy" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatSiberianLegacy" type="Normal">
+    <dbid>41072</dbid>
+    <displaynameid>302717</displaynameid>
+    <cost resourcetype="Gold">700.0000</cost>
+    <cost resourcetype="Food">400.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hussite_siberian_legacy.png</icon>
+    <rollovertextid>302718</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status ="active">Industrialize</techstatus>
+		</prereqs>
+    <effects> 
+      <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="zpNatLegionaryMarksman" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSiegeRifle" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatLegionaryMarksman</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTurnConsulateOffHussites" type="Normal">
+    <dbid>41073</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateFrenchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateGermansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateOttomansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulatePortugueseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateDutchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateSpanishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseAlliesClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxConstantinopole</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxAlexandria</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatCherokee</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatSeminole</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatLakota</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentConfederate</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralConfederate</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralConfederate</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateHussitesReformer</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffHussites</effect>
     </effects>
   </tech>
 

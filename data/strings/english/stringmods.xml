@@ -2669,6 +2669,55 @@
       <string _locid="302669">ZP Socket Hussites</string>
       <string _locid="302670">Truth is great and shall prevail</string>
       <string _locid="302671">ZP Hussite Flag</string>
+      <string _locid="302672">Legionary Marksman</string>
+      <string _locid="302673">ZP NAT Legionary Marksman</string>
+      <string _locid="302674">Sharing Economy</string>
+      <string _locid="302675">Trickles small amounts of resources over time.</string>
+      <string _locid="302676">Wagon Fort Tactic</string>
+      <string _locid="302677">Ships two powerful Husite Wagons.</string>
+      <string _locid="302678">Utraquism</string>
+      <string _locid="302679">Increases all Villager's and Healer's hitpoints.</string>
+      <string _locid="302680">One-Fourth Sacrament</string>
+      <string _locid="302681">Religious buildings are 75% cheaper.</string>
+      <string _locid="302682">Hussite Cannoneer</string>
+      <string _locid="302683">ZP NAT Hussite Cannoneer</string>
+      <string _locid="302684">Veteran Hussites</string>
+      <string _locid="302685">Guard Hussites</string>
+      <string _locid="302686">Increases Hussites hitpoints and damage.</string>
+      <string _locid="302687">Veteran Hussite Cannoneer</string>
+      <string _locid="302688">Guard Hussite Cannoneer</string>
+      <string _locid="302689">Legendary Hussite Cannoneer</string>
+      <string _locid="302690">Guard Legionary Marksman</string>
+      <string _locid="302691">Legendary Legionary Marksman</string>
+      <string _locid="302692">Guard Hussite Wagon</string>
+      <string _locid="302693">Legendary Hussite Wagon</string>
+      <string _locid="302694">Guard Hussite Knight</string>
+      <string _locid="302695">Legendary Hussite Knight</string>
+      <string _locid="302696">Hussite Knight</string>
+      <string _locid="302697">ZP NAT Hussite Knight</string>
+      <string _locid="302698">Hussite hand cavalry, good against ranged infantry and artillery.</string>
+      <string _locid="302699">Hussite hand cavalry</string>
+      <string _locid="302700">Adopt Hussite religion</string>
+      <string _locid="302701">Unlocks new unique Hussite units and techs.</string>
+      <string _locid="302702">Blind General</string>
+      <string _locid="302703">Blind General who never lost a single battle \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHussite Wagon \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nJan Žižka's Legacy, Bastions of Tábor</string>
+      <string _locid="302704">Prague Underground</string>
+      <string _locid="302705">Jan Žižka's Legacy</string>
+      <string _locid="302706">Decreases gunpowder unit costs by 20%</string>
+      <string _locid="302707">Hussite Kurfürst</string>
+      <string _locid="302708">Believes that diplomacy is stronger than weapons \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHussite Knight \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nCompact of Unity, Tractatus Pacis</string>
+      <string _locid="302709">Compact of Unity</string>
+      <string _locid="302710">Reduces all native unit costs by 20%</string>
+      <string _locid="302711">Tractatus Pacis</string>
+      <string _locid="302712">Increases future income from all trade routes by 25%</string>
+      <string _locid="302713">Modern Reformist</string>
+      <string _locid="302714">Preacher and patriot inspired by Husite movement. \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nLegionary Marksman \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nHussite Missionaries, Siberian Legacy</string>
+      <string _locid="302715">Hussite Missionaries</string>
+      <string _locid="302716">Allows you to train Surgeons directly from the Hussite camp and also construct field hospitals.</string>
+      <string _locid="302717">Siberian Legacy</string>
+      <string _locid="302718">Ships legionaries equipped with a breech loaded cannon. Increases Legionary Marksman build limit.</string>
+
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

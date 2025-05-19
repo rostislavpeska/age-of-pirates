@@ -13,6 +13,15 @@
 	<definebone>Bip01 Head</definebone>
 	<definebone>Bip02 Head</definebone>
     <definebone>bone_fuse</definebone>
+	<definebone>bone_attach_horse</definebone>
+	<attachment>
+		attachment_horse
+		<include>units\Great War\FieldGun\fieldgun_aop_horse.xml</include>
+	</attachment>
+	<attachment>
+		attachment_horse_single
+		<include>units\Great War\FieldGun\fieldgun_aop_horse_single.xml</include>
+	</attachment>
 	<attachment>
 		attachment_battlefield_smoke
 		<component>
@@ -69,8 +78,11 @@
 		cannon
 		<linksection>
             <linkoffset>0</linkoffset>
-            <linkcomponent>cannon</linkcomponent>
-            <linkcomponent>wheel_cannon</linkcomponent>
+            <linkcomponent>cannon_MShape</linkcomponent>
+            <linkconstraint>1</linkconstraint>
+        </linksection>
+        <linksection>
+            <linkoffset>-2.0</linkoffset>
             <linkconstraint>1</linkconstraint>
         </linksection>
 		<assetreference type="GrannyModel">
@@ -88,6 +100,8 @@
 			<width>1.75</width>
 			<height>2.00</height>
 		</watersplash>
+		<attach a="attachment_horse" frombone="" tobone="bone_attach_horse" syncanims="1"/>
+		<!--<attach a="attachment_horse_single" frombone="" tobone="bone_attach_horse" syncanims="1"/>-->
 	</component>
 	<component>
 		cannon stripped

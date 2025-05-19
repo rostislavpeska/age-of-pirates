@@ -135,6 +135,12 @@
   </zpconsulaterevgeneralconfederate>
   <zpconsulaterevadmiralconfederate portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/csa_admiral.png">
   </zpconsulaterevadmiralconfederate>
+  <zpconsulatehussiteszizka portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/hussite_general.png">
+  </zpconsulatehussiteszizka>
+  <zpconsulatehussitesking portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/hussite_king.png">
+  </zpconsulatehussitesking>
+  <zpconsulatehussitesreformer portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/hussite_reformist.png">
+  </zpconsulatehussitesreformer>
   
   <zpconsulaterevjacobine portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_jacobine.png">
   </zpconsulaterevjacobine>

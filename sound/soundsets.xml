@@ -7454,6 +7454,51 @@
     </sound>
   </soundset>
 
+  <soundset name="zpCzechLegionarySelect" volume="0.8000" maxnum="4" distance="1.0000">
+    <sound filename="Bohemian\Czech_Legionary_Select_01.wav" volume="1.0000">
+    </sound>
+    <sound filename="Bohemian\Czech_Legionary_Select_02.wav" volume="1.0000">
+    </sound>
+    <sound filename="Bohemian\Czech_Legionary_Select_03.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpCzechLegionaryAcknowledge" volume="0.8000" maxnum="4" distance="1.0000">
+    <sound filename="Bohemian\Czech_Legionary_Acknowledge_01.wav" volume="1.0000">
+    </sound>
+    <sound filename="Bohemian\Czech_Legionary_Acknowledge_02.wav" volume="1.0000">
+    </sound>
+    <sound filename="Bohemian\Czech_Legionary_Acknowledge_03.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpCzechLegionaryAttack" volume="0.8000" maxnum="4" distance="1.0000">
+    <sound filename="Bohemian\Czech_Legionary_Attack_01.wav" volume="1.0000">
+    </sound>
+    <sound filename="Bohemian\Czech_Legionary_Attack_02.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpSlovakLegionarySelect" volume="0.8000" maxnum="4" distance="1.0000">
+    <sound filename="Bohemian\Slovak_Legionary_Select_01.wav" volume="1.0000">
+    </sound>
+    <sound filename="Bohemian\Slovak_Legionary_Select_02.wav" volume="1.0000">
+    </sound>
+    <sound filename="Bohemian\Slovak_Legionary_Select_03.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpSlovakLegionaryAcknowledge" volume="0.8000" maxnum="4" distance="1.0000">
+    <sound filename="Bohemian\Slovak_Legionary_Acknowledge_01.wav" volume="1.0000">
+    </sound>
+    <sound filename="Bohemian\Slovak_Legionary_Acknowledge_02.wav" volume="1.0000">
+    </sound>
+    <sound filename="Bohemian\Slovak_Legionary_Acknowledge_03.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="zpSlovakLegionaryAttack" volume="0.8000" maxnum="4" distance="1.0000">
+    <sound filename="Bohemian\Slovak_Legionary_Attack_01.wav" volume="1.0000">
+    </sound>
+    <sound filename="Bohemian\Slovak_Legionary_Attack_02.wav" volume="1.0000">
+    </sound>
+  </soundset>
+
 
 
 
