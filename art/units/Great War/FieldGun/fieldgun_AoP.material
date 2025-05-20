@@ -1,76 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
 <material>
   <submaterial name="mata">
     <materialdef name="default">
     </materialdef>
     <parameters>
-        <texture name="BaseColor" override="units\artillery\cannon\textures\cannon_brush_matD_BaseColor">
+        <texture name="BaseColor" override="units\artillery\ww_cannon\textures\fieldgun_aop_mata_BaseColor">
       </texture>
-      <texture name="Normals" override="units\artillery\cannon\textures\cannon_brush_matD_Normals">
+      <texture name="Normals" override="units\artillery\ww_cannon\textures\fieldgun_aop_mata_Normals">
       </texture>
-      <texture name="Masks" override="units\artillery\cannon\textures\cannon_brush_matD_Masks">
-      </texture>
-    </parameters>
-  </submaterial>
-  <submaterial name="matb">
-    <materialdef name="default">
-    </materialdef>
-    <parameters>
-     <texture name="BaseColor" override="units\artillery\cannon\textures\cannon_horse_matA_BaseColor">
-      </texture>
-      <texture name="Normals" override="units\artillery\cannon\textures\cannon_horse_matA_Normals">
-      </texture>
-      <texture name="Masks" override="units\artillery\cannon\textures\cannon_horse_matA_Masks">
-      </texture>
-      <texture name="Details" override="units\artillery\cannon\textures\cannon_horse_matA_Details">
-      </texture>
-    </parameters>
-  </submaterial>
-  <submaterial name="matc">
-    <materialdef name="default_doublesided_cutout">
-    </materialdef>
-    <parameters>
-       <texture name="BaseColor" override="units\artillery\cannon\textures\cannon_loader_matA_BaseColor">
-      </texture>
-      <texture name="Normals" override="units\artillery\cannon\textures\cannon_loader_matA_Normals">
-      </texture>
-      <texture name="Masks" override="units\artillery\cannon\textures\cannon_loader_matA_Masks">
-      </texture>
-    </parameters>
-  </submaterial>
-  <submaterial name="matd">
-    <materialdef name="default">
-    </materialdef>
-    <parameters>
-      <texture name="BaseColor" override="homecity\german\prop_cannon\textures\prop_fixed_cannon_matA_BaseColor">
-      </texture>
-      <texture name="Normals" override="homecity\german\prop_cannon\textures\prop_fixed_cannon_matA_Normals">
-      </texture>
-      <texture name="Masks" override="homecity\german\prop_cannon\textures\prop_fixed_cannon_matA_Masks">
-      </texture>
-    </parameters>
-  </submaterial>
-  <submaterial name="mate">
-    <materialdef name="default">
-    </materialdef>
-    <parameters>
-      <texture name="BaseColor" override="homecity\german\prop_cannon\textures\prop_fixed_cannon_matA_BaseColor">
-      </texture>
-      <texture name="Normals" override="homecity\german\prop_cannon\textures\prop_fixed_cannon_matA_Normals">
-      </texture>
-      <texture name="Masks" override="homecity\german\prop_cannon\textures\prop_fixed_cannon_matA_Masks">
-      </texture>
-    </parameters>
-  </submaterial>
-  <submaterial name="matf">
-    <materialdef name="default_doublesided_cutout">
-    </materialdef>
-    <parameters>
-     <texture name="BaseColor" override="homecity\german\prop_cannon\textures\prop_fixed_cannon_matA_BaseColor">
-      </texture>
-      <texture name="Normals" override="homecity\german\prop_cannon\textures\prop_fixed_cannon_matA_Normals">
-      </texture>
-      <texture name="Masks" override="homecity\german\prop_cannon\textures\prop_fixed_cannon_matA_Masks">
+      <texture name="Masks" override="units\artillery\ww_cannon\textures\fieldgun_aop_mata_Masks">
       </texture>
     </parameters>
   </submaterial>

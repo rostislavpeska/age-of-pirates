@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>Bone_launchpoint</definebone>
+	<definebone>bone_cart</definebone>
+	<definebone>bone_wheelcannonR</definebone>
+	<definebone>bone_wheelcannonL</definebone>
+	<definebone>bone_shell</definebone>
+	<definebone>bone_valve</definebone>
+	<definebone>bone_box</definebone>
+	<definebone>bone_missile</definebone>
+	<definebone>bone_missile01</definebone>
+	<definebone>Bip01 Head</definebone>
+	<definebone>Bip02 Head</definebone>
+    <definebone>bone_fuse</definebone>
+	<definebone>bone_attach_horse</definebone>
+    <attachment>
+		box
+		<component>
+			object
+			<assetreference type="GrannyModel">
+				<file>units\Great War\FieldGun\box</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>object</component>
+		</anim>
+	</attachment>
+	<attachment>
+		missile
+		<component>
+			object
+			<assetreference type="GrannyModel">
+				<file>units\Great War\FieldGun\missile</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>object</component>
+		</anim>
+	</attachment>
+	<component>
+		cannon stripped
+		<assetreference type="GrannyModel">
+			<file>units\Great War\FieldGun\FieldGun_Attack_Crew</file>
+		</assetreference>
+		<decal>
+			<effecttype>default</effecttype>
+			<texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
+			<selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture>
+			<width>2.00</width>
+			<height>4.00</height>
+		</decal>
+		<watersplash>
+			<texture>units\artillery\cannon\wheel_B</texture>
+			<width>1.75</width>
+			<height>2.00</height>
+		</watersplash>
+	</component>
+	<anim>Bombard_ranged_idle
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\cannon\cannon_combat_idlea</file>
+        </assetreference>
+        <component>cannon stripped</component>
+    </anim>
+	<anim>
+		Bombard_ranged_attack
+		<assetreference type="GrannyAnim">
+			<file>units\Great War\FieldGun\FieldGun_Stripped_attack</file>
+			<tag type="Attack">0.10</tag>
+			<tag type="SpecificSoundSet" checkvisible="1" set="FieldGun_Attack">0.10</tag>
+			<tag type="Particles" particlename="smallcannonmuzzle">0.10</tag>
+		</assetreference>
+		<component>cannon stripped</component>
+		<attach a="attachment_battlefield_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"/>
+		<attach a="box" frombone="ATTACHPOINT" tobone="bone_box" syncanims="0"/>
+		<attach a="missile" frombone="ATTACHPOINT" tobone="bone_missile01" syncanims="0"/>
+	</anim>
+	<anim>Bombard_aim
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\cannon\cannon_combat_idlea</file>
+        </assetreference>
+        <component>cannon stripped</component>
+    </anim>
+	<anim>
+		Bombard_reload
+		<assetreference type="GrannyAnim">
+			<file>units\Great War\FieldGun\FieldGun_Stripped_reload</file>
+		</assetreference>
+		<component>cannon stripped</component>
+		<attach a="box" frombone="ATTACHPOINT" tobone="bone_box" syncanims="0"/>
+		<attach a="missile" frombone="ATTACHPOINT" tobone="bone_missile" syncanims="0"/>
+		<attach a="Chimney Smoke" frombone="bone_smoke" tobone="bone_shell" syncanims="0"/>
+	</anim>
+	<anim>Bombard_walk
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\cannon\cannon_bombard_walk</file>
+        </assetreference>
+        <component>cannon stripped</component>
+    </anim>
+	<anim>Bombard_jog
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\cannon\cannon_bombard_walk</file>
+        </assetreference>
+        <component>cannon stripped</component>
+    </anim>
+    <anim>Bombard_run
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\cannon\cannon_bombard_walk</file>
+        </assetreference>
+        <component>cannon stripped</component>
+    </anim>
+    <anim>Bombard_limber
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\cannon\cannon_limbera</file>
+        </assetreference>
+        <component>cannon</component>
+    </anim>
+	<anim>Bombard_unlimber
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\cannon\cannon_unlimberA</file>
+        </assetreference>
+        <component>cannon</component>
+    </anim>
+	<anim>Bombard_death
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\cannon\cannon_combat_deatha</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="BuildingPartImpact">0.03</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="BuildingPartImpact">0.15</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Thud">0.15</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.42</tag>
+        </assetreference>
+        <component>cannon stripped</component>
+    </anim>
+</animfile>

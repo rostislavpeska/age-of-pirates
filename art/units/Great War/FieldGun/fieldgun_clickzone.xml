@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>Bone_launchpoint</definebone>
+	<definebone>bone_cart</definebone>
+	<definebone>bone_wheelcannonR</definebone>
+	<definebone>bone_wheelcannonL</definebone>
+	<definebone>bone_shell</definebone>
+	<definebone>bone_valve</definebone>
+	<definebone>bone_box</definebone>
+	<definebone>bone_missile</definebone>
+	<definebone>bone_missile01</definebone>
+	<definebone>Bip01 Head</definebone>
+	<definebone>Bip02 Head</definebone>
+    <definebone>bone_fuse</definebone>
+	<definebone>bone_attach_horse</definebone>
+	<component>
+		cannon stripped
+		<assetreference type="GrannyModel">
+			<file>units\Great War\FieldGun\FieldGun_Clickzone</file>
+		</assetreference>
+	</component>
+	<anim>Bombard_ranged_idle
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\cannon\cannon_combat_idlea</file>
+        </assetreference>
+        <component>cannon stripped</component>
+    </anim>
+	<anim>
+		Bombard_ranged_attack
+		<assetreference type="GrannyAnim">
+			<file>units\artillery\cannon\cannon_attacka</file>
+		</assetreference>
+		<component>cannon stripped</component>
+	</anim>
+	<anim>Bombard_aim
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\cannon\cannon_combat_idlea</file>
+        </assetreference>
+        <component>cannon stripped</component>
+    </anim>
+	<anim>
+		Bombard_reload
+		<assetreference type="GrannyAnim">
+			<file>units\artillery\cannon\cannon_combat_idlea</file>
+		</assetreference>
+		<component>cannon stripped</component>
+	</anim>
+	<anim>Bombard_walk
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\cannon\cannon_bombard_walk</file>
+        </assetreference>
+        <component>cannon stripped</component>
+    </anim>
+	<anim>Bombard_jog
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\cannon\cannon_bombard_walk</file>
+        </assetreference>
+        <component>cannon stripped</component>
+    </anim>
+    <anim>Bombard_run
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\cannon\cannon_bombard_walk</file>
+        </assetreference>
+        <component>cannon stripped</component>
+    </anim>
+    <anim>Bombard_limber
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\cannon\cannon_limbera</file>
+        </assetreference>
+        <component>cannon</component>
+    </anim>
+	<anim>Bombard_unlimber
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\cannon\cannon_unlimberA</file>
+        </assetreference>
+        <component>cannon</component>
+    </anim>
+	<anim>Bombard_death
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\cannon\cannon_combat_deatha</file>
+        </assetreference>
+        <component>cannon stripped</component>
+    </anim>
+</animfile>

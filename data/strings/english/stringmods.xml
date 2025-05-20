@@ -507,8 +507,8 @@
       <string _locid="300505">ZP NAT Inventor Flamethrower</string>
       <string _locid="300506">Logical Positivism</string>
       <string _locid="300508">All research is done faster by 25%</string>
-      <string _locid="300509">Imperial Iron Fleet</string>
-      <string _locid="300510">Increases Destroyer attack and hitpoints.</string>
+      <string _locid="300509">Steel Empire</string>
+      <string _locid="300510">Increases Destroyer and Battery Cannon attack and hitpoints.</string>
       <string _locid="300511">Air Explorers</string>
       <string _locid="300512">Ships an advanced hot air balloon.</string>
       <string _locid="300513">Academy of Sciences</string>
@@ -2597,7 +2597,7 @@
       <string _locid="302597">The President</string>
       <string _locid="302598">Economic bonus: Native production buildings work 15% faster. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nNorthern Foundries, Emancipation Proclamation</string>
       <string _locid="302599">The General</string>
-      <string _locid="302600">Military bonus: Artillery gets trained 15% faster. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nField Hospitals, Land Ironclad</string>
+      <string _locid="302600">Military bonus: Artillery gets trained 15% faster. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nField Hospitals, Breech Loading</string>
       <string _locid="302601">Pick one of the three United States leaders providing you with unique techs.\n • Unlocks new techs</string>
       <string _locid="302602">You proclaimed yourself as part of the Union!</string>
       <string _locid="302603">%s has risen the Union Flag!</string>
@@ -2624,15 +2624,15 @@
       <string _locid="302624">Allows you to train Southern Irregular native units from your Command Post.</string>
       <string _locid="302625">Economic bonus: Settler farming rate increased by 15%. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nSouthern Irregulars, Confederate Conscription Act</string>
       <string _locid="302626">Southern Redoubts</string>
-      <string _locid="302627">Military bonus: All land military moves 10% faster. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nSouthern Redoubts, Confederacy Fort Guns</string>
+      <string _locid="302627">Military bonus: All land military moves 10% faster. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nSouthern Redoubts, Land Ironclad</string>
       <string _locid="302628">Confederacy Fort Guns</string>
       <string _locid="302629">Ships two fixed gun wagons. Allows your Explorer to construct Fixed Guns.</string>
       <string _locid="302630">Land Ironclad</string>
       <string _locid="302631">Ships a heavy Steam Tank to empower your land forces.</string>
       <string _locid="302632">Field Hospitals</string>
       <string _locid="302633">Command Posts can train Surgeons and Surgeons can construct field hospitals. Field hospital healing effectivity and range increased.</string>
-      <string _locid="302634">Siege Rifle</string>
-      <string _locid="302635">ZP Siege Rifle</string>
+      <string _locid="302634">Battery Cannon</string>
+      <string _locid="302635">ZP Battery Cannon</string>
       <string _locid="302636">Confederate Conscription Act</string>
       <string _locid="302637">You have enacted the Confederate Conscription Act</string>
       <string _locid="302638">Confederate Conscription Act</string>
@@ -2718,6 +2718,11 @@
       <string _locid="302718">Ships legionaries equipped with a breech loaded cannon. Increases Legionary Marksman build limit.</string>
       <string _locid="302719">Hussite Camp</string>
       <string _locid="302720">ZP Native House Hussites</string>
+      <string _locid="302721">Advanced Artillery</string>
+      <string _locid="302722">Advanced breech-loaded artillery</string>
+      <string _locid="302723">Imperial Battery Cannon</string>
+      <string _locid="302724">Breech Loading</string>
+      <string _locid="302725">Allows you to construct breech-loaded battery cannons.</string>
 
 
       <!-- ======================================== -->

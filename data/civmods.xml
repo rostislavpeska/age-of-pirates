@@ -295,6 +295,16 @@
         <count>1</count>
       </unitcounts>
     </multipleblocktrain>
+    <multipleblocktrain>
+      <building>TradingPost</building>
+      <multipleblockunit>zpSiegeRifleProxy</multipleblockunit>
+      <units>
+        <unit>zpSiegeRifle</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
   </civ>
