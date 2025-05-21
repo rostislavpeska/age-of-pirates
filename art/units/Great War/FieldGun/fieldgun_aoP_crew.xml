@@ -40,6 +40,19 @@
 			<component>object</component>
 		</anim>
 	</attachment>
+	<attachment>
+		shell
+		<component>
+			object
+			<assetreference type="GrannyModel">
+				<file>units\Great War\FieldGun\shell</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>object</component>
+		</anim>
+	</attachment>
 	<component>
 		cannon stripped
 		<assetreference type="GrannyModel">
@@ -68,12 +81,8 @@
 		Bombard_ranged_attack
 		<assetreference type="GrannyAnim">
 			<file>units\Great War\FieldGun\FieldGun_Stripped_attack</file>
-			<tag type="Attack">0.10</tag>
-			<tag type="SpecificSoundSet" checkvisible="1" set="FieldGun_Attack">0.10</tag>
-			<tag type="Particles" particlename="smallcannonmuzzle">0.10</tag>
 		</assetreference>
 		<component>cannon stripped</component>
-		<attach a="attachment_battlefield_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"/>
 		<attach a="box" frombone="ATTACHPOINT" tobone="bone_box" syncanims="0"/>
 		<attach a="missile" frombone="ATTACHPOINT" tobone="bone_missile01" syncanims="0"/>
 	</anim>
@@ -91,7 +100,7 @@
 		<component>cannon stripped</component>
 		<attach a="box" frombone="ATTACHPOINT" tobone="bone_box" syncanims="0"/>
 		<attach a="missile" frombone="ATTACHPOINT" tobone="bone_missile" syncanims="0"/>
-		<attach a="Chimney Smoke" frombone="bone_smoke" tobone="bone_shell" syncanims="0"/>
+		<attach a="shell" frombone="ATTACHPOINT" tobone="bone_shell" syncanims="0"/>
 	</anim>
 	<anim>Bombard_walk
         <assetreference type="GrannyAnim">

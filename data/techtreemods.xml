@@ -27166,7 +27166,7 @@
     </effects>
   </tech>
   <tech name="zpInventorBatteryCannons" type="Normal">
-    <dbid>40234</dbid>
+    <dbid>41077</dbid>
     <displaynameid>302727</displaynameid>
     <cost resourcetype="Wood">200.0000</cost>
     <cost resourcetype="Gold">700.0000</cost>

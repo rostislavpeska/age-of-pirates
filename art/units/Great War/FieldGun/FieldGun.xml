@@ -194,8 +194,8 @@
 			<tag type="Attack">0.10</tag>
 			<tag type="SpecificSoundSet" checkvisible="1" set="FieldGun_Attack">0.10</tag>
 			<tag type="Particles" particlename="smallcannonmuzzle">0.10</tag>
-			<tag type="Particles" particlename="BattleField_Smoke_Small">0.00</tag>
-            <tag type="WindEffect" effectname="MediumArtilleryFire" effectbone="Bone_launchpoint">0.00</tag>
+			<tag type="Particles" particlename="BattleField_Smoke_Small">0.10</tag>
+            <tag type="WindEffect" effectname="MediumArtilleryFire" effectbone="Bone_launchpoint">0.10</tag>
 		</assetreference>
 		<component>cannon attack</component>
 	</anim>
