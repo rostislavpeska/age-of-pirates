@@ -1194,8 +1194,8 @@
     <tech row="0" page="1" column="1">zpPickScientist</tech>
     <tech row="0" page="2" column="1">zpScientistsTechBuff</tech>
     <tech row="0" page="2" column="4">zpScientistIronFleet</tech>
-    <tech row="0" page="2" column="2">zpScientistsBaloons</tech>
-    <tech row="0" page="2" column="3">zpScientistsAcademy</tech>
+    <tech row="0" page="2" column="3">zpInventorBatteryCannons</tech>
+    <tech row="0" page="2" column="2">zpScientistsAcademy</tech>
     <tech row="0" page="1" column="1">zpScientistsVeteranHoopThrowers</tech>
     <tech row="0" page="1" column="1">zpScientistsGuardHoopThrowers</tech>
     <tech row="0" page="2" column="1">zpNatInuitHuntingDogs</tech>

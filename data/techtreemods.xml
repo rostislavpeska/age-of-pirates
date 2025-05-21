@@ -7458,6 +7458,7 @@
       <effect type="TechStatus" status="obtainable">zpScientistsTechBuff</effect>
       <effect type="TechStatus" status="obtainable">zpScientistIronFleet</effect>
       <effect type="TechStatus" status="obtainable">zpScientistsBaloons</effect>
+      <effect type="TechStatus" status="obtainable">zpInventorBatteryCannons</effect>
       <effect type="TechStatus" status="obtainable">zpScientistsAcademy</effect>
       <effect type="TechStatus" status="obtainable">zpScientistsVeteranHoopThrowers</effect>
       <effect type="TechStatus" status="obtainable">zpScientistsGuardHoopThrowers</effect>
@@ -7794,6 +7795,9 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPNativeImprovement</flag>
     <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="xpAdvancedBalloon" relativity="Absolute">
         <target type="Player">
@@ -12961,6 +12965,12 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpSiegeRifleProxy</target>
       </effect>
+      <effect type="CommandRemove" tech="zpInventorBatteryCannons">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpScientistsBaloons" page="2" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpScientistArtillery" type="Normal">
@@ -16973,7 +16983,7 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
-      <effect type="CommandRemove" tech="zpScientistsAcademy">
+      <effect type="CommandRemove" tech="zpInventorBatteryCannons">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandAdd" tech="zpScientistUnderwaterExploration" page="2" column="3">
@@ -27150,6 +27160,28 @@
     </prereqs>
     <effects>
       <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpInventorBatteryCannons" type="Normal">
+    <dbid>40234</dbid>
+    <displaynameid>302727</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">700.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\inventor_battery_cannons.png</icon>
+    <rollovertextid>302726</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSiegeRifle" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
