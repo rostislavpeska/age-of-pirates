@@ -14,6 +14,9 @@
     <definebone>Bip01 Head</definebone>
     <definebone>bone_hat</definebone>
     <definebone>engine_smoke_fx</definebone>
+    <attachment>horses
+        <include>units\artillery\great_bombard\great_bombard_horses.xml</include>
+    </attachment>
     <attachment>attachment_battlefield_smoke
         <component>battlefield_smoke
             <assetreference type="ParticleSystem">
@@ -45,6 +48,21 @@
         </anim>
     </attachment>
     <component>tank
+        <assetreference type="GrannyModel">
+            <file>units\artillery\tank\hussitewagon</file>
+        </assetreference>
+        <attach a="smoke_A" frombone="MASTER" tobone="engine_smoke_fx" syncanims="0"></attach>
+        <attach a="embers_attachment_A" frombone="MASTER" tobone="engine_smoke_fx" syncanims="0"></attach>
+        <decal>
+            <effecttype>default</effecttype>
+            <texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
+            <selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture>
+            <width>2.00</width>
+            <height>4.00</height>
+        </decal>
+        <attach a="horses" frombone="MASTER" tobone="MASTER" syncanims="1"></attach>
+    </component>
+    <component>tank bombard
         <assetreference type="GrannyModel">
             <file>units\artillery\tank\hussitewagon</file>
         </assetreference>
@@ -152,13 +170,13 @@
             <tag type="Particles" particlename="BattleField_Smoke_Small">0.3</tag>
             <tag type="WindEffect" effectname="MediumArtilleryFire" effectbone="cannon_launchpoint_07">0.3</tag>
         </assetreference>
-        <component>tank</component>
+        <component>tank bombard</component>
     </anim>
     <anim>reload_all
         <assetreference type="GrannyAnim">
             <file>units\cavalry\war_wagon\war_wagon_idle</file>
         </assetreference>
-        <component>tank</component>
+        <component>tank bombard</component>
     </anim>
     <anim>attack
         <assetreference type="GrannyAnim">

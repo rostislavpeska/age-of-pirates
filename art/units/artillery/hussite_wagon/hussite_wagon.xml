@@ -1,0 +1,338 @@
+<animfile>
+	<definebone>cannon_launchpoint_01</definebone>
+    <definebone>cannon_launchpoint_02</definebone>
+    <definebone>cannon_launchpoint_03</definebone>
+    <definebone>cannon_launchpoint_04</definebone>
+    <definebone>cannon_launchpoint_05</definebone>
+    <definebone>cannon_launchpoint_06</definebone>
+    <definebone>cannon_launchpoint_07</definebone>
+    <definebone>bone_attach_horses</definebone>
+    <definebone>bone_attach_driver</definebone>
+	<attachment>horses
+        <include>units\artillery\hussite_wagon\hussite_wagon_horses.xml</include>
+    </attachment>
+    <attachment>wagon_driver
+        <include>units\artillery\hussite_wagon\hussite_wagon_driver.xml</include>
+    </attachment>
+	<component>
+		great_bombard
+		<linksection>
+            <linkoffset>0</linkoffset>
+            <linkcomponent>great_bombard_horsesShape</linkcomponent>
+            <linkcomponent>great_bombard_horsesAShape</linkcomponent>
+            <linkcomponent>yoke</linkcomponent>
+            <linkcomponent>great_bombard_loaderShape</linkcomponent>
+            <linkconstraint>0</linkconstraint>
+        </linksection>
+        <linksection>
+            <linkoffset>0</linkoffset>
+            <linkcomponent>axel_back</linkcomponent>
+            <linkcomponent>axel_front</linkcomponent>
+            <linkcomponent>cannon_01</linkcomponent>
+            <linkcomponent>cannon_02</linkcomponent>
+            <linkcomponent>cannon_03</linkcomponent>
+            <linkcomponent>cannon_04</linkcomponent>
+            <linkcomponent>cannon_05</linkcomponent>
+            <linkcomponent>cannon_06</linkcomponent>
+            <linkcomponent>cannon_07</linkcomponent>
+            <linkcomponent>Wagon</linkcomponent>
+            <linkcomponent>wheels_back</linkcomponent>
+            <linkcomponent>wheels_front</linkcomponent>
+            <linkconstraint>1</linkconstraint>
+        </linksection>
+		<assetreference type="GrannyModel">
+			<file>units\artillery\hussite_wagon\hussite_wagon</file>
+		</assetreference>
+		<decal>
+			<effecttype>default</effecttype>
+			<texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
+			<selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture>
+			<width>2.00</width>
+			<height>4.00</height>
+		</decal>
+		<watersplash>
+			<texture>units\artillery\cannon\wheel_B</texture>
+			<width>1.75</width>
+			<height>2.00</height>
+		</watersplash>
+		<attach a="horses" frombone="" tobone="bone_attach_horses" syncanims="1"></attach>
+	</component>
+	<component>
+		great_bombard_stripped
+		<assetreference type="GrannyModel">
+			<file>units\artillery\hussite_wagon\hussite_wagon_bombard_model</file>
+		</assetreference>
+		<decal>
+			<effecttype>default</effecttype>
+			<texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
+			<selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture>
+			<width>2.00</width>
+			<height>4.00</height>
+		</decal>
+		<watersplash>
+			<texture>units\artillery\cannon\wheel_B</texture>
+			<width>1.75</width>
+			<height>2.00</height>
+		</watersplash>
+	</component>
+    <component>
+		wagon_stripped_death
+		<assetreference type="GrannyModel">
+			<file>units\artillery\hussite_wagon\hussite_wagon_bombard_death_model</file>
+		</assetreference>
+		<decal>
+			<effecttype>default</effecttype>
+			<texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
+			<selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture>
+			<width>2.00</width>
+			<height>4.00</height>
+		</decal>
+	</component>
+    <component>
+		wagon_death
+		<assetreference type="GrannyModel">
+			<file>units\artillery\hussite_wagon\hussite_wagon_death_model</file>
+		</assetreference>
+		<decal>
+			<effecttype>default</effecttype>
+			<texture isfakeshadow="1">shadows_selections\shadow_circle_128x128</texture>
+			<selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture>
+			<width>2.00</width>
+			<height>4.00</height>
+		</decal>
+        <attach a="horses" frombone="" tobone="bone_attach_horses" syncanims="1"></attach>
+	</component>
+	<anim>Walk
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_walk</file>
+        </assetreference>
+        <component>great_bombard</component>
+        <attach a="wagon_driver" frombone="" tobone="bone_attach_driver" syncanims="1"></attach>
+    </anim>
+    <anim>Jog
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_walk</file>
+        </assetreference>
+        <component>great_bombard</component>
+        <attach a="wagon_driver" frombone="" tobone="bone_attach_driver" syncanims="1"></attach>
+    </anim>
+    <anim>Run
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_walk</file>
+        </assetreference>
+        <component>great_bombard</component>
+        <attach a="wagon_driver" frombone="" tobone="bone_attach_driver" syncanims="1"></attach>
+    </anim>
+    <anim>idle
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_idle</file>
+        </assetreference>
+        <component>great_bombard</component>
+        <attach a="wagon_driver" frombone="" tobone="bone_attach_driver" syncanims="1"></attach>
+    </anim>
+    <anim>bored
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_idle</file>
+        </assetreference>
+        <component>great_bombard</component>
+        <attach a="wagon_driver" frombone="" tobone="bone_attach_driver" syncanims="1"></attach>
+    </anim>
+    <anim>Death_by_melee
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_death_anim</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="AmbienceHorse">0.03</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.17</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.29</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="CartBreak">0.08</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Thud">0.65</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="BuildingPartImpact">0.71</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.79</tag>
+        </assetreference>
+        <component>wagon_death</component>
+    </anim>
+    <anim>Death_by_range
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_death_anim</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="AmbienceHorse">0.02</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="CartBreak">0.08</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Thud">0.62</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="BuildingPartImpact">0.63</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.17</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.28</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.79</tag>
+        </assetreference>
+        <component>wagon_death</component>
+    </anim>
+    <anim>Cheer
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_idle</file>
+        </assetreference>
+        <component>great_bombard</component>
+        <attach a="wagon_driver" frombone="" tobone="bone_attach_driver" syncanims="1"></attach>
+    </anim>
+    <anim>Recoil
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_idle</file>
+        </assetreference>
+        <component>great_bombard</component>
+        <attach a="wagon_driver" frombone="" tobone="bone_attach_driver" syncanims="1"></attach>
+    </anim>
+    <anim>Limber
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_limber</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Unlimber
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_unlimber</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+	<anim>Bombard_ranged_idle
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+        </assetreference>
+        <component>great_bombard_stripped</component>
+    </anim>
+    <anim>BombardIdle
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+        </assetreference>
+        <component>great_bombard_stripped</component>
+    </anim>
+    <anim>bored
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+        </assetreference>
+        <component>great_bombard_stripped</component>
+    </anim>
+	<anim>
+		attack
+		<assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+            <tag type="Attack">0.08</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="OrganGunShoot">0.08</tag>
+            <tag type="WindEffect" effectname="SmallArtilleryFire" effectbone="cannon_launchpoint_01">0.08</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+            <tag type="Attack">0.08</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="OrganGunShoot">0.08</tag>
+            <tag type="WindEffect" effectname="SmallArtilleryFire" effectbone="cannon_launchpoint_02">0.08</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+            <tag type="Attack">0.08</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="OrganGunShoot">0.08</tag>
+            <tag type="WindEffect" effectname="SmallArtilleryFire" effectbone="cannon_launchpoint_03">0.08</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+            <tag type="Attack">0.08</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="OrganGunShoot">0.08</tag>
+            <tag type="WindEffect" effectname="SmallArtilleryFire" effectbone="cannon_launchpoint_04">0.08</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+            <tag type="Attack">0.08</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="OrganGunShoot">0.08</tag>
+            <tag type="WindEffect" effectname="SmallArtilleryFire" effectbone="cannon_launchpoint_05">0.08</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+            <tag type="Attack">0.08</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="OrganGunShoot">0.08</tag>
+            <tag type="WindEffect" effectname="SmallArtilleryFire" effectbone="cannon_launchpoint_06">0.08</tag>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+            <tag type="Attack">0.08</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="OrganGunShoot">0.08</tag>
+            <tag type="WindEffect" effectname="SmallArtilleryFire" effectbone="cannon_launchpoint_07">0.08</tag>
+        </assetreference>
+		<component>great_bombard_stripped</component>
+	</anim>
+	<anim>Bombard_aim
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+        </assetreference>
+        <component>great_bombard_stripped</component>
+    </anim>
+    <anim>reload_all
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+        </assetreference>
+        <component>great_bombard_stripped</component>
+    </anim>
+    <anim>reload
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+        </assetreference>
+        <component>great_bombard_stripped</component>
+    </anim>
+    <anim>Bombard_bored
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
+        </assetreference>
+        <component>great_bombard_stripped</component>
+    </anim>
+    <anim>Bombard_walk
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_walk</file>
+        </assetreference>
+        <component>great_bombard_stripped</component>
+    </anim>
+    <anim>Bombard_jog
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_walk</file>
+        </assetreference>
+        <component>great_bombard_stripped</component>
+    </anim>
+    <anim>Bombard_run
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_walk</file>
+        </assetreference>
+        <component>great_bombard_stripped</component>
+    </anim>
+    <anim>Bombard_limber
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_limber</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Bombard_unlimber
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_unlimber</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+	<anim>Bombard_death
+        <assetreference type="GrannyAnim">
+            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_death_anim</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="BuildingPartImpact">0.03</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="BuildingPartImpact">0.15</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="Thud">0.15</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.42</tag>
+        </assetreference>
+        <component>wagon_stripped_death</component>
+    </anim>
+</animfile>

@@ -29,6 +29,11 @@
 				</assetreference>
 				<decal><effecttype>default</effecttype><texture>buildings\native_settlement\japan_decal_01</texture><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><width>8.00</width><height>8.00</height><xoffset>0.00</xoffset><zoffset>0.00</zoffset></decal>
 			</variationid3>
+			<variationid4>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\hussites\hussite_wagon_prop</file>
+				</assetreference>
+			</variationid4>
 		</logic>
 	</component>
 	<anim>
