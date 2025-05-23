@@ -55606,15 +55606,16 @@
     <portraiticon>resources\art\units\natives\hussite_cannoneer.png</portraiticon>
     <rollovertextid>302730</rollovertextid>
     <shortrollovertextid>302730</shortrollovertextid>
-    <initialhitpoints>150.0000</initialhitpoints>
-    <maxhitpoints>150.0000</maxhitpoints>
+    <initialhitpoints>110.0000</initialhitpoints>
+    <maxhitpoints>110.0000</maxhitpoints>
     <los>22.0000</los>
     <autoattackrange>16.0000</autoattackrange>
     <unitaitype>RangedCombative</unitaitype>
     <trainpoints>37.0000</trainpoints>
     <bounty>14.0000</bounty>
     <buildbounty>14.0000</buildbounty>
-    <cost resourcetype="Gold">140.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">40.0000</cost>
     <allowedage>1</allowedage>
     <armor type="Ranged" value="0.7000">
     </armor>
