@@ -55766,15 +55766,15 @@
     <maxrunvelocity>8.5000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\natives\bohemian_knight\bohemian_knight_horse.xml</animfile>
+    <animfile>units\natives\bohemian_knight\hussite_knight_horse.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>cav</physicsinfo>
     <icon>resources\art\units\mercenaries\bohemian_knight_icon.png</icon>
     <portraiticon>resources\art\units\mercenaries\bohemian_knight.png</portraiticon>
     <rollovertextid>302698</rollovertextid>
     <shortrollovertextid>302699</shortrollovertextid>
-    <initialhitpoints>250.0000</initialhitpoints>
-    <maxhitpoints>250.0000</maxhitpoints>
+    <initialhitpoints>280.0000</initialhitpoints>
+    <maxhitpoints>280.0000</maxhitpoints>
     <los>24.0000</los>
     <autoattackrange>16.0000</autoattackrange>
     <unitaitype>HandCombative</unitaitype>
@@ -55783,14 +55783,11 @@
     <trainpoints>35.0000</trainpoints>
     <allowedage>2</allowedage>
     <subciv>zpHussites</subciv>
-    <buildlimit>9</buildlimit>
-    <cost resourcetype="Food">50</cost>
-    <cost resourcetype="Gold">90</cost>
+    <buildlimit>10</buildlimit>
+    <cost resourcetype="Food">60</cost>
+    <cost resourcetype="Gold">80</cost>
     <armor type="Ranged" value="0.7500">
     </armor>
-    <sharedselectionunittypes>
-      <unittype>zpNatMercMalteseKnight</unittype>
-    </sharedselectionunittypes>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
@@ -55830,14 +55827,14 @@
     <tactics>handCavalry.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
-      <damage>30.000000</damage>
+      <damage>28.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
       <damagebonus type="Building">1.000000</damagebonus>
     </protoaction>
     <protoaction>
       <name>DefendHandAttack</name>
-      <damage>30.000000</damage>
+      <damage>28.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
     </protoaction>
@@ -55849,13 +55846,13 @@
     </protoaction>
     <protoaction>
       <name>MeleeHandAttack</name>
-      <damage>35.000000</damage>
+      <damage>2.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
     </protoaction>
     <protoaction>
       <name>TrampleHandAttack</name>
-      <damage>25.000000</damage>
+      <damage>23.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>2.000000</rof>
       <damagecap>40.000000</damagecap>
