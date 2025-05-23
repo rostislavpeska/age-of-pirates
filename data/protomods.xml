@@ -55602,10 +55602,10 @@
     <animfile>units\infantry_ranged\hussite\canoneer.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>dude</physicsinfo>
-    <icon>resources\art\units\africans\mercenaries\cannoneer\cannoneer_icon.png</icon>
-    <portraiticon>resources\art\units\africans\mercenaries\cannoneer\cannoneer_portrait.png</portraiticon>
-    <rollovertextid>102553</rollovertextid>
-    <shortrollovertextid>25645</shortrollovertextid>
+    <icon>resources\art\units\natives\hussite_cannoneer_icon.png</icon>
+    <portraiticon>resources\art\units\natives\hussite_cannoneer.png</portraiticon>
+    <rollovertextid>302730</rollovertextid>
+    <shortrollovertextid>302730</shortrollovertextid>
     <initialhitpoints>150.0000</initialhitpoints>
     <maxhitpoints>150.0000</maxhitpoints>
     <los>22.0000</los>
@@ -55616,7 +55616,7 @@
     <buildbounty>14.0000</buildbounty>
     <cost resourcetype="Gold">140.0000</cost>
     <allowedage>1</allowedage>
-    <armor type="Ranged" value="0.2000">
+    <armor type="Ranged" value="0.7000">
     </armor>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
@@ -55633,8 +55633,6 @@
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
     <unittype>AbstractInfantry</unittype>
-    <unittype>AbstractRifleman</unittype>
-    <unittype>AbstractSkirmisher</unittype>
     <unittype>Military</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Unit</unittype>
@@ -55644,11 +55642,10 @@
     <unittype>Ranged</unittype>
     <unittype>AbstractGunpowderTrooper</unittype>
     <unittype>HasBountyValue</unittype>
-    <unittype>LogicalTypePickableMerc</unittype>
-    <unittype>LogicalTypePickableMercOutlaw</unittype>
     <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractRifleman</unittype>
+    <unittype>AbstractSkirmisher</unittype>
     <unittype>AbstractAbusGun</unittype>
-    <unittype>AbstractNativeWarrior</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -55657,102 +55654,103 @@
     <flag>ObscuredByUnits</flag>
     <flag>RotateInPlace</flag>
     <flag>Tracked</flag>
+    <flag>UseTacticArmorOverride</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="7">Delete</command>
-    <tactics>abus.tactics</tactics>
+    <tactics>hussitecanoneer.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
-      <damage>13.000000</damage>
+      <damage>15.000000</damage>
       <damagetype>Siege</damagetype>
-      <maxrange>12.000000</maxrange>
+      <maxrange>10.000000</maxrange>
       <rof>3.000000</rof>
       <damagecap>80.000000</damagecap>
       <damagebonus type="Ship">2.000000</damagebonus>
     </protoaction>
     <protoaction>
       <name>DefendHandAttack</name>
-      <damage>14.000000</damage>
+      <damage>10.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
-      <damagebonus type="AbstractHeavyInfantry">1.500000</damagebonus>
+      <damagebonus type="AbstractHeavyInfantry">1.7500000</damagebonus>
       <damagebonus type="AbstractHeavyCavalry">0.500000</damagebonus>
       <damagebonus type="AbstractCoyoteMan">0.500000</damagebonus>
     </protoaction>
     <protoaction>
       <name>DefendRangedAttack</name>
-      <damage>25.000000</damage>
+      <damage>36.000000</damage>
       <damagetype>Siege</damagetype>
       <minrange>2.000000</minrange>
       <maxrange>18.000000</maxrange>
-      <rof>3.000000</rof>
-      <damagebonus type="AbstractHeavyInfantry">1.500000</damagebonus>
-      <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
+      <rof>3.00000</rof>
+      <damagecap>72.000000</damagecap>
+      <damagebonus type="AbstractHeavyInfantry">1.7500000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.250000</damagebonus>
       <damagebonus type="AbstractCavalry">0.400000</damagebonus>
       <damagebonus type="AbstractRangedShockInfantry">2.500000</damagebonus>
       <damagebonus type="AbstractLightInfantry">0.400000</damagebonus>
-      <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
-      <damagebonus type="Ship">0.750000</damagebonus>
+      <damagebonus type="AbstractVillager">0.30000</damagebonus>
     </protoaction>
     <protoaction>
       <name>MeleeHandAttack</name>
-      <damage>14.000000</damage>
+      <damage>10.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
-      <damagebonus type="AbstractHeavyInfantry">1.500000</damagebonus>
+      <damagebonus type="AbstractHeavyInfantry">1.7500000</damagebonus>
       <damagebonus type="AbstractHeavyCavalry">0.500000</damagebonus>
       <damagebonus type="AbstractCoyoteMan">0.500000</damagebonus>
     </protoaction>
     <protoaction>
       <name>StaggerHandAttack</name>
-      <damage>14.000000</damage>
+      <damage>10.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
-      <damagebonus type="AbstractHeavyInfantry">1.500000</damagebonus>
+      <damagebonus type="AbstractHeavyInfantry">1.7500000</damagebonus>
       <damagebonus type="AbstractHeavyCavalry">0.500000</damagebonus>
       <damagebonus type="AbstractCoyoteMan">0.500000</damagebonus>
     </protoaction>
     <protoaction>
       <name>StaggerRangedAttack</name>
-      <damage>25.000000</damage>
+      <damage>36.000000</damage>
       <damagetype>Siege</damagetype>
       <minrange>2.000000</minrange>
       <maxrange>18.000000</maxrange>
-      <rof>3.000000</rof>
-      <damagebonus type="AbstractHeavyInfantry">1.500000</damagebonus>
-      <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
+      <rof>3.00000</rof>
+      <damagecap>72.000000</damagecap>
+      <damagebonus type="AbstractHeavyInfantry">1.7500000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.250000</damagebonus>
       <damagebonus type="AbstractCavalry">0.400000</damagebonus>
       <damagebonus type="AbstractRangedShockInfantry">2.500000</damagebonus>
       <damagebonus type="AbstractLightInfantry">0.400000</damagebonus>
-      <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
-      <damagebonus type="Ship">0.750000</damagebonus>
+      <damagebonus type="AbstractVillager">0.30000</damagebonus>
     </protoaction>
     <protoaction>
       <name>VolleyHandAttack</name>
-      <damage>19.000000</damage>
+      <damage>10.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
-      <damagebonus type="AbstractHeavyInfantry">1.500000</damagebonus>
+      <damagebonus type="AbstractHeavyInfantry">1.7500000</damagebonus>
       <damagebonus type="AbstractHeavyCavalry">0.500000</damagebonus>
       <damagebonus type="AbstractCoyoteMan">0.500000</damagebonus>
     </protoaction>
     <protoaction>
       <name>VolleyRangedAttack</name>
-      <damage>25.000000</damage>
+      <damage>36.000000</damage>
       <damagetype>Siege</damagetype>
       <minrange>2.000000</minrange>
       <maxrange>18.000000</maxrange>
-      <rof>3.000000</rof>
-      <damagebonus type="AbstractHeavyInfantry">1.500000</damagebonus>
-      <damagebonus type="AbstractLightCavalry">2.500000</damagebonus>
+      <rof>3.00000</rof>
+      <damagecap>72.000000</damagecap>
+      <damagebonus type="AbstractHeavyInfantry">1.7500000</damagebonus>
+      <damagebonus type="AbstractLightCavalry">2.250000</damagebonus>
       <damagebonus type="AbstractCavalry">0.400000</damagebonus>
       <damagebonus type="AbstractRangedShockInfantry">2.500000</damagebonus>
       <damagebonus type="AbstractLightInfantry">0.400000</damagebonus>
-      <damagebonus type="AbstractVillager">0.500000</damagebonus>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
-      <damagebonus type="Ship">0.750000</damagebonus>
+      <damagebonus type="AbstractVillager">0.30000</damagebonus>
     </protoaction>
   </unit>
   <unit id="20756" name="zpNatHussiteKnight">

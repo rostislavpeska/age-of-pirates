@@ -26718,13 +26718,13 @@
 	</tech>
    <tech name ="zpNatHonoredHussites" type ="Normal">
 		<dbid>41064</dbid>
-		<displaynameid>300124</displaynameid>
+		<displaynameid>302685</displaynameid>
 		<cost resourcetype ="Food">400.0000</cost>
 		<cost resourcetype ="Gold">300.0000</cost>
 		<researchpoints>10.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\guard_infantry\guard_infantry.png</icon>
-		<rollovertextid>300896</rollovertextid>
+		<rollovertextid>302686</rollovertextid>
 		<flag>YPNativeImprovement</flag>
 		<flag>UpgradeTech</flag>
     <flag>DENativeUnitUpgrade</flag>
