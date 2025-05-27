@@ -5,6 +5,7 @@
     <component>great_bombard
         <assetreference type="GrannyModel">
             <file>units\trade\trade_stagecoach_driver</file>
+            <!--<file>units\artillery\hussite_wagon\hussite_driver</file>-->
         </assetreference>
     </component>
     <anim>Walk

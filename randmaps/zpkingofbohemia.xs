@@ -40,10 +40,10 @@ void main(void)
 		if (subCiv1 >= 0)
 			rmSetSubCiv(1, "spcjesuit");
   
-		subCiv2=rmGetCivID("bourbon");
-		rmEchoInfo("subCiv2 is bourbon "+subCiv2);
+		subCiv2=rmGetCivID("zphussites");
+		rmEchoInfo("subCiv2 is zphussites "+subCiv2);
 		if (subCiv2 >= 0)
-			rmSetSubCiv(2, "bourbon");
+			rmSetSubCiv(2, "zphussites");
 
 	}
 
@@ -417,8 +417,6 @@ void main(void)
 		rmPlaceObjectDefAtLoc(jesuitControllerID1, 0, 0.1, 0.38, 1);
 		rmPlaceGroupingAtLoc(jesuitMonastery2ID, 0, 0.9, 0.38, 1);
 		rmPlaceObjectDefAtLoc(jesuitControllerID2, 0, 0.9, 0.38, 1);
-		rmPlaceGroupingAtLoc(jesuitMonastery3ID, 0, 0.5, 0.90, 1);
-		rmPlaceObjectDefAtLoc(jesuitControllerID3, 0, 0.5, 0.90, 1);
 	}
 	if (cNumberNonGaiaPlayers ==5){
 		rmPlaceGroupingAtLoc(jesuitMonastery1ID, 0, 0.5, 0.08, 1);
@@ -460,10 +458,10 @@ void main(void)
 
 	// Countryside Castles
 
-	int bohemianCastle1Type = 1;
-	int bohemianCastle2Type = 1;
-	int bohemianCastle3Type = 1;
-	int bohemianCastle4Type = 1;
+	int bohemianCastle1Type = rmRandInt(1,3);
+	int bohemianCastle2Type = rmRandInt(1,3);
+	int bohemianCastle3Type = rmRandInt(1,3);
+	int bohemianCastle4Type = rmRandInt(1,3);
 
 	int castleControllerID1 = rmCreateObjectDef("castle controller 1");
 	rmAddObjectDefItem(castleControllerID1, "zpTrainStopper", 1, 0.0);
@@ -482,7 +480,9 @@ void main(void)
 		rmPlaceObjectDefAtLoc(castleControllerID1, 0, 0.065, 0.45);
 		rmPlaceObjectDefAtLoc(castleControllerID2, 0, 0.92, 0.45);
 	}
-	
+	if (cNumberNonGaiaPlayers ==3){
+		rmPlaceObjectDefAtLoc(castleControllerID1, 0, 0.5, 0.92);
+	}
 	if (cNumberNonGaiaPlayers ==6){
 		rmPlaceObjectDefAtLoc(castleControllerID1, 0, 0.92, 0.5);
 		rmPlaceObjectDefAtLoc(castleControllerID2, 0, 0.3, 0.85);
@@ -502,14 +502,20 @@ void main(void)
 	
 	// Place Castles
 
-	int countrysideCastleID1 = rmCreateGrouping("Bohemian Castle 1", "Bohemian_Castle_0"+bohemianCastle1Type);
-	int countryCastleInstance1 = rmPlaceGroupingInstanceAtLoc(countrysideCastleID1, rmXMetersToFraction(xsVectorGetX(castleControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc1)), 0);
+	int countrysideCastleID1 = rmCreateGrouping("Bohemian Castle 1", "Hussite_Camp_0"+bohemianCastle1Type);
+	/*rmSetObjectDefMinDistance(countrysideCastleID1, 0.0);
+	rmSetObjectDefMaxDistance(countrysideCastleID1, 3.0);*/
+	rmPlaceGroupingAtLoc(countrysideCastleID1, 0, rmXMetersToFraction(xsVectorGetX(castleControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc1)), 1);
 	
-	int countrysideCastleID2 = rmCreateGrouping("Bohemian Castle 2", "Bohemian_Castle_0"+bohemianCastle2Type);
-	int countryCastleInstance2 = rmPlaceGroupingInstanceAtLoc(countrysideCastleID2, rmXMetersToFraction(xsVectorGetX(castleControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc2)), 0);
+	int countrysideCastleID2 = rmCreateGrouping("Bohemian Castle 2", "Hussite_Camp_0"+bohemianCastle2Type);
+	/*rmSetObjectDefMinDistance(countrysideCastleID2, 0.0);
+	rmSetObjectDefMaxDistance(countrysideCastleID2, 3.0);*/
+	rmPlaceGroupingAtLoc(countrysideCastleID2, 0, rmXMetersToFraction(xsVectorGetX(castleControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc2)), 1);
 
-	int countrysideCastleID3 = rmCreateGrouping("Bohemian Castle 3", "Bohemian_Castle_0"+bohemianCastle3Type);
-	int countryCastleInstance3 = rmPlaceGroupingInstanceAtLoc(countrysideCastleID3, rmXMetersToFraction(xsVectorGetX(castleControllerLoc3)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc3)), 0);
+	int countrysideCastleID3 = rmCreateGrouping("Bohemian Castle 3", "Hussite_Camp_0"+bohemianCastle3Type);
+	/*rmSetObjectDefMinDistance(countrysideCastleID3, 0.0);
+	rmSetObjectDefMaxDistance(countrysideCastleID3, 3.0);*/
+	rmPlaceGroupingAtLoc(countrysideCastleID3, 0, rmXMetersToFraction(xsVectorGetX(castleControllerLoc3)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc3)), 1);
 
 	// Create north elevated area
     int northElevatedID = rmCreateArea("north_elevated");
@@ -662,9 +668,9 @@ void main(void)
 	// Castle Cliffs
 
 	int castleCliff1 = rmCreateArea ("castle cliff 1");
-	rmSetAreaSize(castleCliff1, rmAreaTilesToFraction(550.0), rmAreaTilesToFraction(550.0));
+	rmSetAreaSize(castleCliff1, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
 	rmSetAreaLocation(castleCliff1, rmXMetersToFraction(xsVectorGetX(castleControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc1)));
-	rmSetAreaCoherence(castleCliff1, 0.8);
+	rmSetAreaCoherence(castleCliff1, 0.85);
 	rmAddAreaConstraint(castleCliff1, shortAvoidTradeRoute);
 	rmSetAreaSmoothDistance(castleCliff1, 5);
 	rmSetAreaBaseHeight(castleCliff1, 7.136);
@@ -676,9 +682,9 @@ void main(void)
 	rmBuildArea(castleCliff1);
 
 	int castleCliff2 = rmCreateArea ("castle cliff 2");
-	rmSetAreaSize(castleCliff2, rmAreaTilesToFraction(550.0), rmAreaTilesToFraction(550.0));
+	rmSetAreaSize(castleCliff2, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
 	rmSetAreaLocation(castleCliff2, rmXMetersToFraction(xsVectorGetX(castleControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc2)));
-	rmSetAreaCoherence(castleCliff2, 0.8);
+	rmSetAreaCoherence(castleCliff2, 0.85);
 	rmAddAreaConstraint(castleCliff2, shortAvoidTradeRoute);
 	rmSetAreaSmoothDistance(castleCliff2, 5);
 	rmSetAreaBaseHeight(castleCliff2, 7.136);
@@ -690,9 +696,9 @@ void main(void)
 	rmBuildArea(castleCliff2);
 
 	int castleCliff3 = rmCreateArea ("castle cliff 3");
-	rmSetAreaSize(castleCliff3, rmAreaTilesToFraction(550.0), rmAreaTilesToFraction(550.0));
+	rmSetAreaSize(castleCliff3, rmAreaTilesToFraction(600.0), rmAreaTilesToFraction(600.0));
 	rmSetAreaLocation(castleCliff3, rmXMetersToFraction(xsVectorGetX(castleControllerLoc3)), rmZMetersToFraction(xsVectorGetZ(castleControllerLoc3)));
-	rmSetAreaCoherence(castleCliff3, 0.8);
+	rmSetAreaCoherence(castleCliff3, 0.85);
 	rmAddAreaConstraint(castleCliff3, shortAvoidTradeRoute);
 	rmSetAreaSmoothDistance(castleCliff3, 5);
 	rmSetAreaBaseHeight(castleCliff3, 7.136);
@@ -1175,16 +1181,6 @@ void main(void)
 	int castleTower6 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpSPCSocketCityTowerClone6");
 	int castleTower7 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpSPCSocketCityTowerClone7");
 	int castleTower8 = rmGetGroupingInstanceUnitByType(pragueCastleInstance, "zpSPCSocketCityTowerClone8");
-
-	int countrysideCastleFlag1 = rmGetGroupingInstanceUnitByType(countryCastleInstance1, "zpSPCCapturableFlagInvisible");
-	int countrysideCastleFlag2 = rmGetGroupingInstanceUnitByType(countryCastleInstance2, "zpSPCCapturableFlagInvisible");
-	int countrysideCastleFlag3 = rmGetGroupingInstanceUnitByType(countryCastleInstance3, "zpSPCCapturableFlagInvisible");
-	int countrysideCastleNugget1 = rmGetGroupingInstanceUnitByType(countryCastleInstance1, "zpNuggetInvisible");
-	int countrysideCastleNugget2 = rmGetGroupingInstanceUnitByType(countryCastleInstance2, "zpNuggetInvisible");
-	int countrysideCastleNugget3 = rmGetGroupingInstanceUnitByType(countryCastleInstance3, "zpNuggetInvisible");
-	int countrysideCastleFort1 = rmGetGroupingInstanceUnitByType(countryCastleInstance1, "zpFortConvertable");
-	int countrysideCastleFort2 = rmGetGroupingInstanceUnitByType(countryCastleInstance2, "zpFortConvertable");
-	int countrysideCastleFort3 = rmGetGroupingInstanceUnitByType(countryCastleInstance3, "zpFortConvertable");
 	
 	int castleGate1Mod = castleGate1+0;
 	int castleGate2Mod = castleGate2+0;
@@ -1216,15 +1212,6 @@ void main(void)
 	int castleCanterMod = castleCanter+0;
 	int castleNuggetMod = castleNugget+0;
 
-	int countrysideCastleFlag1Mod	 = countrysideCastleFlag1+0;
-	int countrysideCastleFlag2Mod = countrysideCastleFlag2+0;
-	int countrysideCastleFlag3Mod = countrysideCastleFlag3+0;
-	int countrysideCastleNugget1Mod = countrysideCastleNugget1+0;
-	int countrysideCastleNugget2Mod = countrysideCastleNugget2+0;
-	int countrysideCastleNugget3Mod = countrysideCastleNugget3+0;
-	int countrysideCastleFort1Mod = countrysideCastleFort1+0;
-	int countrysideCastleFort2Mod = countrysideCastleFort2+0;
-	int countrysideCastleFort3Mod = countrysideCastleFort3+0;
 
 	vector castleCanterLoc = rmGetUnitPosition(castleCanter);
 
@@ -1346,18 +1333,6 @@ void main(void)
 	rmCreateTrigger("Buildings Convert OFF");
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject",""+castleSocketMod);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
 	rmSetTriggerEffectParam("Suspend", "True");
 	rmSetTriggerPriority(4);
@@ -1736,6 +1711,33 @@ void main(void)
 		rmSetTriggerLoop(true);
 	}
 
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Activate Hussites"+k);
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID","cTechzpHussiteExpansion"); //operator
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffHussites"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+	}
+
 	// Specific for human players
 
 	for(k=1; <= cNumberNonGaiaPlayers) {
@@ -1757,6 +1759,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Khmer"+k));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Bohemians"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Hussites"+k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
@@ -2468,287 +2472,8 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(true);
 
-	// Convert Military Blocks
-
-	rmCreateTrigger("Military_Block1_Unlock");
-	rmCreateTrigger("Military_Block2_Unlock");
-	rmCreateTrigger("Military_Block3_Unlock");
-
-	rmSwitchToTrigger(rmTriggerID("Military_Block1_Unlock"));
-	rmAddTriggerCondition("Nugget Is Collectable");
-	rmSetTriggerConditionParam("NuggetObject", ""+countrysideCastleNugget1Mod);
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+countrysideCastleFlag1Mod);
-	rmSetTriggerConditionParamInt("Player",0);
-	rmSetTriggerConditionParam("UnitType","SPCFortGate");
-	rmSetTriggerConditionParamInt("Dist",35);
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamInt("Count",0);
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+countrysideCastleFlag1Mod);
-	rmSetTriggerConditionParamInt("Player",0);
-	rmSetTriggerConditionParam("UnitType","zpMountainCitadel");
-	rmSetTriggerConditionParamInt("Dist",45);
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamInt("Count",0);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "False");
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmSwitchToTrigger(rmTriggerID("Military_Block2_Unlock"));
-	rmAddTriggerCondition("Nugget Is Collectable");
-	rmSetTriggerConditionParam("NuggetObject", ""+countrysideCastleNugget2Mod);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+countrysideCastleFlag2Mod);
-	rmSetTriggerConditionParamInt("Player",0);
-	rmSetTriggerConditionParam("UnitType","SPCFortGate");
-	rmSetTriggerConditionParamInt("Dist",35);
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamInt("Count",0);
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+countrysideCastleFlag2Mod);
-	rmSetTriggerConditionParamInt("Player",0);
-	rmSetTriggerConditionParam("UnitType","zpMountainCitadel");
-	rmSetTriggerConditionParamInt("Dist",45);
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamInt("Count",0);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "False");
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmSwitchToTrigger(rmTriggerID("Military_Block3_Unlock"));
-	rmAddTriggerCondition("Nugget Is Collectable");
-	rmSetTriggerConditionParam("NuggetObject", ""+countrysideCastleNugget3Mod);
-	rmSetTriggerConditionParamInt("Player",k);
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+countrysideCastleFlag3Mod);
-	rmSetTriggerConditionParamInt("Player",0);
-	rmSetTriggerConditionParam("UnitType","SPCFortGate");
-	rmSetTriggerConditionParamInt("Dist",35);
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamInt("Count",0);
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject",""+countrysideCastleFlag3Mod);
-	rmSetTriggerConditionParamInt("Player",0);
-	rmSetTriggerConditionParam("UnitType","zpMountainCitadel");
-	rmSetTriggerConditionParamInt("Dist",45);
-	rmSetTriggerConditionParam("Op","==");
-	rmSetTriggerConditionParamInt("Count",0);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "False");
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
 
 	for (k=1; <= cNumberNonGaiaPlayers) {
-		rmCreateTrigger("Military_Block1_Plr"+k);
-		rmCreateTrigger("Military_Block2_Plr"+k);
-		rmCreateTrigger("Military_Block3_Plr"+k);
-
-		rmSwitchToTrigger(rmTriggerID("Military_Block1_Plr"+k));
-		rmAddTriggerCondition("Units Owned");
-		rmSetTriggerConditionParam("SrcObject",""+countrysideCastleFlag1Mod);
-		rmSetTriggerConditionParamInt("Player",k);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpSPCFortWallMediumProp");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpSPCFortWallProp");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpSPCFortWallSmallProp");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpSPCFortTowerProp");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpSPCFortCornerProp");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpInvisibleGateSocket");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpParisFlagNoIcon");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag1Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpFortConvertable");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Flash Units");
-		rmSetTriggerEffectParam("SrcObject", ""+countrysideCastleFort1Mod);
-		for (i=1; <= cNumberNonGaiaPlayers) {
-			rmAddTriggerEffect("Disable Trigger");
-			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Military_Block1_Plr"+i));
-		}
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(true);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
-
-		rmSwitchToTrigger(rmTriggerID("Military_Block2_Plr"+k));
-		rmAddTriggerCondition("Units Owned");
-		rmSetTriggerConditionParam("SrcObject",""+countrysideCastleFlag2Mod);
-		rmSetTriggerConditionParamInt("Player",k);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpSPCFortWallMediumProp");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpSPCFortWallProp");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpSPCFortWallSmallProp");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpSPCFortTowerProp");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpSPCFortCornerProp");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpInvisibleGateSocket");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpParisFlagNoIcon");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag2Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpFortConvertable");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Flash Units");
-		rmSetTriggerEffectParam("SrcObject", ""+countrysideCastleFort2Mod);
-		for (i=1; <= cNumberNonGaiaPlayers) {
-			rmAddTriggerEffect("Disable Trigger");
-			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Military_Block2_Plr"+i));
-		}
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(true);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
-
-		rmSwitchToTrigger(rmTriggerID("Military_Block3_Plr"+k));
-		rmAddTriggerCondition("Units Owned");
-		rmSetTriggerConditionParam("SrcObject",""+countrysideCastleFlag3Mod);
-		rmSetTriggerConditionParamInt("Player",k);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpSPCFortWallMediumProp");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpSPCFortWallProp");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpSPCFortWallSmallProp");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpSPCFortTowerProp");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpSPCFortCornerProp");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpInvisibleGateSocket");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpParisFlagNoIcon");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject",""+countrysideCastleFlag3Mod);
-		rmSetTriggerEffectParamInt("SrcPlayer",0);
-		rmSetTriggerEffectParamInt("TrgPlayer",k);
-		rmSetTriggerEffectParam("UnitType","zpFortConvertable");
-		rmSetTriggerEffectParamInt("Dist",35);
-		rmAddTriggerEffect("Flash Units");
-		rmSetTriggerEffectParam("SrcObject", ""+countrysideCastleFort3Mod);
-		for (i=1; <= cNumberNonGaiaPlayers) {
-			rmAddTriggerEffect("Disable Trigger");
-			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Military_Block3_Plr"+i));
-		}
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(true);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
-
 		rmCreateTrigger("Walls_Transform_ON"+k);
 		rmAddTriggerCondition("Player Unit Count");
 		rmSetTriggerConditionParamInt("PlayerID",k);
@@ -2769,7 +2494,7 @@ void main(void)
 		rmSetTriggerLoop(true);
 	}
 
-	// City State Heal
+		// City State Heal
 
 	for (k=1; <= cNumberNonGaiaPlayers) {		
 		rmCreateTrigger("City State Heal"+k);
