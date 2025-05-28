@@ -52250,33 +52250,27 @@
     <dbid>20705</dbid>
     <displaynameid>24832</displaynameid>
     <editornameid>302427</editornameid>
-    <obstructionradiusx>1.0000</obstructionradiusx>
-    <obstructionradiusz>1.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>buildings\native_settlement\wall_wood.xml</animfile>
-    <impacttype>Wood</impacttype>
-    <icon>resources\art\buildings\wall\wall_icon_64x64.png</icon>
-    <portraiticon>resources\art\buildings\wall\wall_portrait.png</portraiticon>
-    <bounty>0.0000</bounty>
     <unittype>EmbellishmentClass</unittype>
-    <tech row="0" page="1" column="0">Bastion</tech>
+    <unittype>Unattackable</unittype>
+    <unittype>Unit</unittype>
     <flag>NoHPBar</flag>
-    <flag>Immoveable</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>VisibleUnderFog</flag>
-    <flag>ForceToGaia</flag>
-    <flag>NotSelectable</flag>
-    <flag>NoUnitAI</flag>
-    <flag>StartOnNoUpdate</flag>
     <flag>DoNotShowOnMiniMap</flag>
-    <flag>NoIdleActions</flag>
     <flag>DoNotCreateUnitGroupAutomatically</flag>
-    <flag>RMCanRotate</flag>
     <flag>NonCollideable</flag>
-    <flag>FlattenGround</flag>
-    <flag>Tracked</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
   </unit>
   <unit id="20706" name="zpSPCAztecMediumTemple">
     <dbid>20706</dbid>

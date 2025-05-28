@@ -2017,7 +2017,7 @@
       <string _locid="302016">Wine lover and master of pub brawls.</string>
       <string _locid="302017">Future Priest with Healing and Convert abilities.</string>
       <string _locid="302018">Storming of the Bastille</string>
-      <string _locid="302019">Paris 1789 Historical Map: \nBoth teams start outside of the city and have the same goal: Take Bastille, Royal Court and City Hall buildings and hold them for the rest of the game. Both sides can use different native techs. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Revolutionaries which can use special Sansculotte techs \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Royalists which can use special Bourbon techs \n\nSettlements: Sansculotte, Bourbon, Jesuit, Maltese</string>
+      <string _locid="302019">Paris 1789 Historical Map: \nBoth teams start outside of the city and have the same goal: Take Bastille, Royal Court and City Hall buildings and hold them for the rest of the game. Both sides can use different native techs. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Revolutionaries which can use special Sansculotte techs \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Royalists which can use special Bourbon techs \n\nSettlements: Sansculotte, Bourbon, Jesuit, Maltese \n\nMaximum recommended players: 4</string>
       <string _locid="302020">Achieve a Team Victory by capturing and holding all three victory buildings: Royal Court, City Hall and Bastille. Take your team natives trading post too get more advanced native improvements. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt;Sansculotte natives \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Bourbon natives</string>
       <string _locid="302021">Battle for control of the city.</string>
       <string _locid="302022">Achieve &lt;color=1.0, 1.0, 0.0&gt;ATTACKERS&lt;/color&gt; Team Victory by capturing and holding all three victory buildings (marked with a team color flag): Royal Court, Bastille and City Hall</string>
@@ -2070,7 +2070,7 @@
       <string _locid="302069">March to Versailles</string>
       <string _locid="302070">After the big protests in Paris and the fall of the Bastile the king Louis XVI hid himself in the gardens of the Versailles palace.</string>
       <string _locid="302071">City of Versailles</string>
-      <string _locid="302072">Women's March on Versailles - the second most important event during the French revolution which led to capturing the king Louis XVI. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Revolutionaries which start in the City of Versailles surrounded by capturable buildings generating resources \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Royalists starting in the palace gardens behind a massive wall \n\nSettlements: Sansculotte, Jewish, Bourbon, Jesuit</string>
+      <string _locid="302072">Women's March on Versailles - the second most important event during the French revolution which led to capturing the king Louis XVI. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Revolutionaries which start in the City of Versailles surrounded by capturable buildings generating resources \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Royalists starting in the palace gardens behind a massive wall \n\nSettlements: Sansculotte, Jewish, Bourbon, Jesuit \n\nMaximum recommended players: 4</string>
       <string _locid="302073">Can't be built in the middle of the garden.</string>
       <string _locid="302074">ZP HC Unit 01</string>
       <string _locid="302075">ZP HC Unit 02</string>
@@ -2156,7 +2156,7 @@
       <string _locid="302155">ZP Underbrush Orangerie</string>
       <string _locid="302156">ZP SPC Temporary Obstruction</string>
       <string _locid="302157">ZP Venetian House 3</string>
-      <string _locid="302158">Venice 1796: The republic is weak and the fight for the Venetian heritage altready started. \n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Achieve a Team Victory by capturing and holding the majority of the Venetian Districts. \n\nNative Settlements: Venetians \n\nShadow aliances: Maltese, Jesuit, Orthodox, House of Auditore</string>
+      <string _locid="302158">Venice 1796: The republic is weak and the fight for the Venetian heritage altready started. \n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Achieve a Team Victory by capturing and holding the majority of the Venetian Districts. \n\nNative Settlements: Venetians \n\nShadow aliances: Maltese, Jesuit, Orthodox, House of Auditore \n\nMaximum recommended players: 4</string>
       <string _locid="302159">District of Venice</string>
       <string _locid="302160">ZP Venetian House 4</string>
       <string _locid="302161">Veteran auditore</string>
@@ -2342,7 +2342,7 @@
       <string _locid="302342">ZP Invisible Gate Socket G</string>
       <string _locid="302343">ZP Invisible Gate Socket H</string>
       <string _locid="302344">King of Bohemia</string>
-      <string _locid="302345">After the Second Defenestration of Prague in 1618, the country turned into chaos. There are many who claim the Czech crown, but only one of these can become the true King of Bohemia. \n\n&lt;color=1.0, 1.0, 0.0&gt;Game rules:&lt;/color&gt; This is a free-for-all match. Whoever proclaims himself a king and holds the King of Bohemia Socket, wins. \n\nSettlements: King of Bohemia, Jesuit \n\nShadow alliances: Maltese, Jewish, Habsburg, Jagiellon, Wittelsbach \n\nMinimum/maximum recommended players: 3-6</string>
+      <string _locid="302345">After the Second Defenestration of Prague in 1618, the country turned into chaos. There are many who claim the Czech crown, but only one of these can become the true King of Bohemia. \n\n&lt;color=1.0, 1.0, 0.0&gt;Game rules:&lt;/color&gt; This is a free-for-all match. Whoever proclaims himself a king and holds the Prince Elector Socket, wins. \n\nSettlements: Prince Elector, Jesuit, Hussites \n\nShadow alliances: Maltese, Jewish, Habsburg, Jagiellon, Wittelsbach \n\nMinimum recommended players: 3</string>
       <string _locid="302346">There is only one true King of Bohemia. Once you proclaim yourself a King, all the enemy players unite against you, so you need to arm the city and hold the socket until the time runs out.</string>
       <string _locid="302347">Kingdom of Bohemia</string>
       <string _locid="302348">You proclaimed yourself to a King of Bohemia!</string>
@@ -2389,7 +2389,7 @@
       <string _locid="302389">ZP SPC Florence Castle</string>
       <string _locid="302390">Palazzo Vecchio (Citadel of Florence)</string>
       <string _locid="302391">Siege of Florence</string>
-      <string _locid="302392">Florence versus Rome, eternal rivals fighting on the opposite sides in the Italian Wars. The pope Leo X decided to cross the Arno River and attack Florence. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Starting in the City of Rome \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Starting in the City of Florence. \n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Achieve a Team Victory by destroying enemy Castello and defending your own. \n\nSettlements: Auditore, Maltese, Jesuit</string>
+      <string _locid="302392">Florence versus Rome, eternal rivals fighting on the opposite sides in the Italian Wars. The pope Leo X decided to cross the Arno River and attack Florence. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Starting in the City of Rome \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Starting in the City of Florence. \n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Achieve a Team Victory by destroying enemy Castello and defending your own. \n\nSettlements: Auditore, Maltese, Jesuit \n\nMaximum recommended players: 4</string>
       <string _locid="302393">In the early 16th century, Pope Leo X sought to reclaim Florence and restore Medici rule. As armies march and alliances tremble, the fate of Florence hangs in the balance. Will you defend its freedom or crush it under papal might?</string>
       <string _locid="302394">ZP SPC Roman Tower</string>
       <string _locid="302395">ZP SPC Florence Tower</string>
