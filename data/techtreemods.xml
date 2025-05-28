@@ -407,6 +407,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPirates</effect>
     </effects>
@@ -479,6 +482,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnJapanese</effect>
     </effects>
@@ -551,6 +557,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnChinese</effect>
     </effects>
@@ -623,6 +632,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnIndian</effect>
     </effects>
@@ -2763,6 +2775,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMaltese</effect>     
     </effects>
@@ -3540,6 +3555,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokou</effect>
     </effects>
@@ -6337,6 +6355,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
@@ -6993,6 +7014,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffJewish</effect>
     </effects>
@@ -7209,6 +7233,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="active">zpBigButtonResearchDone</effect>
 
@@ -7580,6 +7607,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientists</effect>
     </effects>
@@ -9740,6 +9770,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffVenice</effect>
     </effects>
@@ -11253,6 +11286,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffOrthodox</effect>
     </effects>
@@ -11570,6 +11606,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffXMass</effect>
     </effects>
@@ -12028,6 +12067,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientistsLand</effect>
     </effects>
@@ -12652,6 +12694,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientistsLand</effect>
     </effects>
@@ -13089,6 +13134,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnKhmer</effect>
     </effects>
@@ -14527,6 +14575,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPiratesAustralia</effect>
     </effects>
@@ -14795,6 +14846,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokouSouth</effect>
     </effects>
@@ -14981,6 +15035,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPiratesMedi</effect>
     </effects>
@@ -16058,6 +16115,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPenalColony</effect>
     </effects>
@@ -17420,6 +17480,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
@@ -17867,6 +17930,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffSansculottes</effect>
     </effects>
@@ -21781,6 +21847,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffOrthodoxSouth</effect>
     </effects>
@@ -22364,14 +22433,14 @@
   </tech>
   <tech name ="zpSPCKingOfBohemia" type ="Normal">
 		<dbid>40917</dbid>
-		<displaynameid>302318</displaynameid>
+		<displaynameid>302735</displaynameid>
   	<researchpoints>100.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
 		<icon>resources\images\icons\techs\dance-pirates.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
     <iconwpf>resources\images\icons\techs\kingdom_bohemia_big.png</iconwpf>
     <cost resourcetype ="Gold">250.0000</cost>
-		<rollovertextid>302319</rollovertextid>
+		<rollovertextid>302736</rollovertextid>
     <prereqs>
 			<techstatus status="Active">Fortressize</techstatus>
     </prereqs>
@@ -22433,7 +22502,7 @@
         <target type="Player">
         </target>
       </effect>
-      <effect type="TechStatus" status="active">zpKingOfBohemiaProclaimedShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpKingOfBohemiaProclaimedShadow</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOffKingOfBohemia" type="Normal">
@@ -22682,6 +22751,8 @@
       <effect type="CommandAdd" proto="MercGreatCannon" page="0" column="4">
         <target type="ProtoUnit">zpSPCGermanCathedral</target>
       </effect>
+      <effect type="SetName" tech="zpSPCKingOfBohemia" newname="302735" newrollover="302319">
+      </effect>
       <effect type="TechStatus" status="obtainable">zpSPCPapalLegateSingle</effect>
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
       <effect type="TechStatus" status="obtainable">zpSPCBlessedCitySingle</effect>
@@ -22774,7 +22845,7 @@
         <target type="Player">
         </target>
       </effect>
-      <effect type="TechStatus" status="active">zpKingOfBohemiaProclaimedShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpKingOfBohemiaProclaimedShadow</effect>
     </effects>
   </tech>
   <tech name="zpConsulateKingOfBohemiaWittelsbach" type="Normal">
@@ -22823,7 +22894,7 @@
         <target type="Player">
         </target>
       </effect>
-      <effect type="TechStatus" status="active">zpKingOfBohemiaProclaimedShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpKingOfBohemiaProclaimedShadow</effect>
     </effects>
   </tech>
   <tech name="zpUnlockCathedralJewish" type="Normal">
@@ -23061,8 +23132,12 @@
   </tech>
   <tech name="zpKingOfBohemiaProclaimedShadow" type="Normal">
     <dbid>40950</dbid>
+    <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpKingOfBohemiaSetup</techstatus>
+    </prereqs>
   </tech>
   <tech name="zpNatBohemianAcademy" type="Normal">
     <dbid>40941</dbid>
@@ -25342,6 +25417,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterWarHut</effect>
     </effects>
@@ -27114,6 +27192,9 @@
       <effect type="TechStatus" status="obtainable">zpConsulateHussitesZizka</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateHussitesKing</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffHussites</effect>
     </effects>

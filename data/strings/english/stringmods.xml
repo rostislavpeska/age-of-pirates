@@ -2312,11 +2312,11 @@
       <string _locid="302312">ZP SPC Aztec Great Temple</string>
       <string _locid="302313">ZP SPC Fire Pit</string>
       <string _locid="302314">Fire Pit</string>
-      <string _locid="302315">King of Bohemia</string>
-      <string _locid="302316">ZP SPC Socket King of Bohemia</string>
+      <string _locid="302315">Prince Elector: Bohemia</string>
+      <string _locid="302316">ZP SPC Socket Elector Bohemia City state</string>
       <string _locid="302317">There is only one true King of Bohemia. Hold the kingdom until the time runs out.</string>
       <string _locid="302318">Proclaim a King</string>
-      <string _locid="302319">Pick one of the Bohemian Royal Dynasties and proclaim the King of Bohemia  \n • Rises the Kingdom of Bohemia flag above your Town Center \n • Unlocks specific Royal House units, techs and abilities \n • Starts a victory countdown &lt;color=1.0, 0.0, 0.0&gt;\n • Once you proclaim yourself a King, the other players unite against you. Make sure the city is well defended.&lt;/color&gt;</string>
+      <string _locid="302319">Pick one of the Bohemian Royal Dynasties and proclaim the King of Bohemia \n • Unlocks specific Royal House units and techs \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Rises the Kingdom of Bohemia flag above your Town Center \n • Starts a victory countdown &lt;color=1.0, 0.0, 0.0&gt;\n • Once you proclaim yourself a King, the other players unite against you. Make sure the city is well defended.&lt;/color&gt;</string>
       <string _locid="302320">House of Habsburg</string>
       <string _locid="302321">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nLine Infantry, Mounted Infantry \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nVienna Congress, Crown Lands, Multinationalism, Austro-Hungarian Empire</string>
       <string _locid="302322">Bohemian Landsknecht</string>
@@ -2354,7 +2354,7 @@
       <string _locid="302354">Bohemian Knight</string>
       <string _locid="302355">Powerful warrion from Bohemian countries</string>
       <string _locid="302356">Mercenary skull_knight</string>
-      <string _locid="302357">Capture the King of Bohemia Socket in the center of the map and proclaim yourself a King. Then hold the socket until the time runs out.</string>
+      <string _locid="302357">Capture the Prince Elector's site in the center of the map and use Bohemian Election big button. Then hold the site until the time runs out.</string>
       <string _locid="302358">Once you proclaim yourself a King, all the enemy players unite against you, so you need to arm the city and hold the socket until the time runs out.</string>
       <string _locid="302359">ZP Fort Convertable</string>
       <string _locid="302360">ZP Invisible Gate Socket A</string>
@@ -2731,6 +2731,9 @@
       <string _locid="302731">Castle</string>
       <string _locid="302732">ZP NAT Elector Palace A</string>
       <string _locid="302733">ZP SPC Market Stall</string>
+      <string _locid="302734">ZP Socket Elector Bohemia</string>
+      <string _locid="302735">Bohemian Election</string>
+      <string _locid="302736">Pick one of the Bohemian Royal Dynasties and vote for an Emperor  \n • Unlocks specific Royal House units and techs.</string>
 
 
 
