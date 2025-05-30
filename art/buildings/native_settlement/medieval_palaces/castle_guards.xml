@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<submodel>
+        Trabi
+		<attachment>halberd_alt<component>halberd<assetreference type="GrannyModel"><file>units\infantry\papal_guard\papalguard_halberd</file></assetreference></component><anim>Idle<component>halberd</component></anim></attachment>
+		<attachment>hat<component>hat<assetreference type="GrannyModel"><file>units\natives\europeans\trabant\trabant_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+        <component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\natives\europeans\trabant\trabant</file></assetreference><attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></normal><lowpoly><assetreference type="GrannyModel"><file>units\natives\europeans\trabant\trabant</file></assetreference><attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_idle</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
+    </submodel>
+	<submodel>
+		Knecht
+		<attachment>halberd_alt<component>halberd<assetreference type="GrannyModel"><file>units\infantry\papal_guard\papalguard_halberd</file></assetreference></component><anim>Idle<component>halberd</component></anim></attachment>
+        <component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\mercenaries\landsknecht\landsknecht</file></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\mercenaries\landsknecht\landsknecht</file></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_idle</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
+    </submodel>
+	<submodel>
+		Jager
+        <attachment>halberd_alt<component>halberd<assetreference type="GrannyModel"><file>units\infantry\papal_guard\papalguard_halberd</file></assetreference></component><anim>Idle<component>halberd</component></anim></attachment>
+		<attachment>hat<component>hat<assetreference type="GrannyModel"><file>units\natives\europeans\trabant\trabant_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+        <component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\natives\europeans\royal_hunter\royal_hunter</file></assetreference><attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></normal><lowpoly><assetreference type="GrannyModel"><file>units\natives\europeans\royal_hunter\royal_hunter</file></assetreference><attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_idle</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
+    </submodel>
+    <submodel>
+		Pike
+        <attachment>halberd_alt<component>halberd<assetreference type="GrannyModel"><file>units\infantry\papal_guard\papalguard_halberd</file></assetreference></component><anim>Idle<component>halberd</component></anim></attachment>
+        <component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\natives\europeans\royal_musketeer\royal_musketeer</file></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\natives\europeans\royal_musketeer\royal_musketeer</file></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_idle</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
+    </submodel>
+	<component>
+		<logic type="Variation">
+			<data>
+				<submodelref ref="Trabi"/>
+			</data>
+			<data>
+				<submodelref ref="Knecht"/>
+			</data>
+			<data>
+				<submodelref ref="Jager"/>
+			</data>
+            <data>
+				<submodelref ref="Pike"/>
+			</data>
+		</logic>
+	</component>
+</animfile>
