@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\infantry_ranged\longbow\textures\longbow_1age_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\infantry_ranged\longbow\textures\longbow_1age_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\infantry_ranged\longbow\textures\longbow_1age_mata_masks">
+      </texture>
+      <texture name="Details" override="units\infantry_ranged\longbow\textures\longbow_1age_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

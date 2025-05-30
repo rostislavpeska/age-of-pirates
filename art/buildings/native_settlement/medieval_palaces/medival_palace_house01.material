@@ -10,12 +10,76 @@
       <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_mata_Masks">
       </texture>
     </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_mata_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_mata_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="3">
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_mata_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="4">
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_mata_Masks">
+      </texture>
+    </parameters>
   </submaterial>
   <submaterial name="matb">
     <materialdef name="default">
     </materialdef>
     <parameters>
       <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matb_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matb_v1_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matb_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matb_v2_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matb_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="3">
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matb_v3_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matb_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="4">
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matb_v4_basecolor">
       </texture>
       <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matb_Normals">
       </texture>
@@ -34,11 +98,75 @@
       <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matc_Masks">
       </texture>
     </parameters>
+      <parameters variant="1">
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matc_v1_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matc_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matc_Masks">
+      </texture>
+    </parameters>
+     <parameters variant="2">
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matc_v1_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matc_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matc_Masks">
+      </texture>
+    </parameters>
+     <parameters variant="3">
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matc_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matc_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matc_Masks">
+      </texture>
+    </parameters>
+     <parameters variant="4">
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matc_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matc_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matc_Masks">
+      </texture>
+    </parameters>
   </submaterial>
   <submaterial name="matd">
     <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matd_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matd_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matd_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matd_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matd_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matd_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matd_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matd_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matd_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="3">
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matd_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matd_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matd_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="4">
       <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matd_basecolor">
       </texture>
       <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matd_Normals">

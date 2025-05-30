@@ -1,0 +1,90 @@
+<animfile>
+	<definebone>bone_prop</definebone>
+	<component>
+		house
+		<logic type="Variation">
+			<variationid0>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\medieval_palaces\medival_palace_tower01</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid0>
+			<variationid1>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\medieval_palaces\medival_palace_tower02</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid1>
+			<variationid2>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\medieval_palaces\medival_palace_tower03</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid2>
+			<variationid3>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\medieval_palaces\medival_palace_tower_sm01</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid3>
+			<variationid4>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\medieval_palaces\medival_palace_tower_sm02</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid4>
+            <variationid5>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\medieval_palaces\medival_palace_house01</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid5>
+            <variationid6>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\medieval_palaces\medival_palace_house02</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid6>
+            <variationid7>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\medieval_palaces\medival_palace_wall01</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid7>
+            <variationid8>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\medieval_palaces\medival_palace_wall02</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid8>
+            <variationid9>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\medieval_palaces\medival_palace_gate</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid9>
+            <variationid10>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\medieval_palaces\medival_palace_wall03</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid10>
+			<variationid11>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\medieval_palaces\medival_palace_tower_sm03</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid11>
+			<variationid12>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\medieval_palaces\medival_palace_tower04</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid12>
+    	</logic>
+	</component>
+	<anim>
+		Idle
+		<component>house</component>
+	</anim>
+</animfile>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>bone_prop</definebone>
+	<component>
+		rock
+		<logic type="Variation">
+			<variationid0>
+				<assetreference type="CompositeModel">
+					<file>buildings\architekture\brunnen</file>
+				</assetreference>
+			</variationid0>
+			<variationid1>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\medieval_palaces\medival_palace_gate02</file>
+				</assetreference>
+			</variationid1>
+		</logic>
+			<decal>
+			<effecttype>default</effecttype>
+			<selectedtexture>shadows_selections\selection_circle_64x64</selectedtexture>
+			<width>4.00</width>
+			<height>4.00</height>
+		</decal>
+	</component>
+	<anim>
+		Idle
+		<component>rock</component>
+	</anim>
+</animfile>

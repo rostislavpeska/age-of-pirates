@@ -58,6 +58,16 @@
 					<file>buildings\native_settlement\medieval_palaces\medival_palace_wall03</file>
 				</assetreference>
 			</variationid10>
+			<variationid11>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\medieval_palaces\medival_palace_tower_sm03</file>
+				</assetreference>
+			</variationid11>
+			<variationid12>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\medieval_palaces\medival_palace_tower04</file>
+				</assetreference>
+			</variationid12>
     	</logic>
 	</component>
 	<anim>

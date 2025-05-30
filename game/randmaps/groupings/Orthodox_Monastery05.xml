@@ -12,32 +12,32 @@
 		<unit variation="41" posx="5.2310" posz="-10.0840" orientx="0.9239" orienty="0.0000" orientz="-0.3827">NativeTownObstruction</unit>
 		<unit variation="41" posx="6.4561" posz="-11.3091" orientx="0.9239" orienty="0.0000" orientz="-0.3827">NativeTownObstruction</unit>
 		<unit variation="41" posx="-7.0072" posz="-9.3905" orientx="0.9239" orienty="0.0000" orientz="-0.3827">NativeTownObstruction</unit>
-		<unit variation="208" posx="-5.8833" posz="-10.6257" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="208" posx="-5.8833" posz="-10.6257" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDark</unit>
 		<unit variation="6" posx="-9.1663" posz="-11.6465" orientx="-0.3827" orienty="0.0000" orientz="0.9239">PropsColony</unit>
 		<unit variation="41" posx="4.8544" posz="-6.4708" orientx="0.9239" orienty="0.0000" orientz="-0.3827">NativeTownObstruction</unit>
 		<unit variation="41" posx="10.3017" posz="-7.0231" orientx="0.9239" orienty="0.0000" orientz="-0.3827">NativeTownObstruction</unit>
 		<unit variation="41" posx="-4.9299" posz="-6.5380" orientx="0.9239" orienty="0.0000" orientz="-0.3827">NativeTownObstruction</unit>
 		<unit variation="41" posx="-11.4777" posz="-7.0202" orientx="0.9239" orienty="0.0000" orientz="-0.3827">NativeTownObstruction</unit>
-		<unit variation="208" posx="-11.1460" posz="-9.3080" orientx="0.7071" orienty="0.0000" orientz="0.7071">deNatEUPropFence</unit>
-		<unit variation="126" posx="-8.9112" posz="-10.4438" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
-		<unit variation="104" posx="-10.0198" posz="-10.3308" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
-		<unit variation="15" posx="-7.0682" posz="-10.5651" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
-		<unit variation="208" posx="4.7943" posz="-10.4830" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
-		<unit variation="126" posx="7.4511" posz="-10.4505" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
-		<unit variation="15" posx="6.3097" posz="-10.4380" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
-		<unit variation="208" posx="10.3120" posz="-8.7681" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deNatEUPropFence</unit>
-		<unit variation="104" posx="8.8497" posz="-10.3198" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="208" posx="-11.1460" posz="-9.3080" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpNatEUPropFencDark</unit>
+		<unit variation="126" posx="-8.9112" posz="-10.4438" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDark</unit>
+		<unit variation="104" posx="-10.0198" posz="-10.3308" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDark</unit>
+		<unit variation="15" posx="-7.0682" posz="-10.5651" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDark</unit>
+		<unit variation="208" posx="4.7943" posz="-10.4830" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDark</unit>
+		<unit variation="126" posx="7.4511" posz="-10.4505" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDark</unit>
+		<unit variation="15" posx="6.3097" posz="-10.4380" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDark</unit>
+		<unit variation="208" posx="10.3120" posz="-8.7681" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNatEUPropFencDark</unit>
+		<unit variation="104" posx="8.8497" posz="-10.3198" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDark</unit>
 		<unit variation="41" posx="-0.7354" posz="-5.5153" orientx="0.9239" orienty="0.0000" orientz="-0.3827">NativeTownObstruction</unit>
-		<unit variation="104" posx="-12.5887" posz="-7.4577" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="104" posx="-12.5887" posz="-7.4577" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropFencDark</unit>
 		<unit variation="170" posx="-7.8101" posz="-6.8727" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropStatue</unit>
-		<unit variation="104" posx="11.4723" posz="-7.2403" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="104" posx="11.4723" posz="-7.2403" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropFencDark</unit>
 		<unit variation="170" posx="6.3163" posz="-7.1102" orientx="-0.7071" orienty="0.0000" orientz="0.7071">deNatEUPropCannon</unit>
 		<unit variation="39" posx="10.1294" posz="-7.1040" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="39" posx="-11.4252" posz="-7.1594" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="41" posx="-8.5827" posz="-2.5257" orientx="0.9239" orienty="0.0000" orientz="-0.3827">NativeTownObstruction</unit>
 		<unit variation="41" posx="1.2339" posz="-2.0772" orientx="0.9239" orienty="0.0000" orientz="-0.3827">NativeTownObstruction</unit>
-		<unit variation="208" posx="11.3993" posz="-5.1916" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
-		<unit variation="208" posx="-12.3870" posz="-5.4576" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="208" posx="11.3993" posz="-5.1916" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropFencDark</unit>
+		<unit variation="208" posx="-12.3870" posz="-5.4576" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropFencDark</unit>
 		<unit variation="41" posx="-11.2189" posz="-0.8099" orientx="0.9239" orienty="0.0000" orientz="-0.3827">NativeTownObstruction</unit>
 		<unit variation="41" posx="-4.8461" posz="0.0496" orientx="0.9239" orienty="0.0000" orientz="-0.3827">NativeTownObstruction</unit>
 		<unit variation="41" posx="-13.1096" posz="0.0231" orientx="0.9239" orienty="0.0000" orientz="-0.3827">NativeTownObstruction</unit>
