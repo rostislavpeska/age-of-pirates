@@ -95,7 +95,7 @@ minInterval 1
 
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
 
-      // Block walls on bohemia
+      // Block walls on bohemia and make rowboats
       if (cRandomMapName == "zpKingofbohemia")
       {
          xsEnableRule("kingOfBohemiaChats");
@@ -184,6 +184,12 @@ minInterval 1
       gIsNavalKOTH = true;
       xsEnableRule("waterAttackKOTH");
       xsEnableRule("waterDefendKOTH");
+   }
+
+   // River maps where rowboats are available
+   if (kbProtoUnitAvailable(cUnitTypezpSPCRowboat) == true)
+   {
+      gCaravelUnit = cUnitTypezpSPCRowboat;
    }
 
    // Initializes all pirate functions
@@ -1139,24 +1145,27 @@ minInterval 20
       return;
    }
 
-   int citySocketType = -1;
-   // Create a list of city states
-   if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0)
+   static int citySocketType = -1;
+   if (citySocketType < 0)
    {
-      citySocketType = cUnitTypezpSPCSocketVeniceCityState;
-   }
-   else if (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0)
-   {
-      citySocketType = cUnitTypezpSPCSocketPirateCityState;
-   }
-   //roda2324: Civil War sockets using an abstract type
-   else if (getGaiaUnitCount(cUnitTypeCivilWarCityState) > 0)
-   {
-      citySocketType = cUnitTypeCivilWarCityState;
-   }
-   else
-   {  // Shouldn't reach here
-      return;
+      // Create a list of city states
+      //roda2324: Civil War sockets using an abstract type
+      if (getGaiaUnitCount(cUnitTypeCivilWarCityState) > 0)
+      {
+         citySocketType = cUnitTypeCivilWarCityState;
+      }
+      else if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0)
+      {
+         citySocketType = cUnitTypezpSPCSocketVeniceCityState;
+      }
+      else if (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0)
+      {
+         citySocketType = cUnitTypezpSPCSocketPirateCityState;
+      }
+      else
+      {  // Shouldn't reach here
+         return;
+      }
    }
 
    // Only get ones we can see, like ones we've converted or have military around
@@ -1168,10 +1177,18 @@ minInterval 20
    for (i = 0; i < numCityStates; i++)
    {
       int cityStateSocketID = kbUnitQueryGetResult(cityStateQuery, i);
-      int planID = aiPlanCreate("Trading Post Build Plan", cPlanBuild);
       vector socketPosition = kbUnitGetPosition(cityStateSocketID);
+
+      if (socketPosition == cInvalidVector || cityStateSocketID < 0)
+      {
+         // Didn't find a suitable socket for some reason
+         continue;
+      }
+
+      int planID = aiPlanCreate("Trading Post NCS Build Plan", cPlanBuild);
       int socketAreaGroup = kbAreaGroupGetIDByPosition(socketPosition);
       vector nearestGaiaEnemyLoc = getClosestGaiaUnitPosition(cUnitTypeLogicalTypeLandMilitary, socketPosition, 30);
+
 
       if (nearestGaiaEnemyLoc != cInvalidVector)
       {
@@ -1189,54 +1206,16 @@ minInterval 20
       aiPlanSetVariableInt(planID, cBuildPlanBuildingTypeID, 0, cUnitTypeTradingPost);
       aiPlanSetVariableInt(planID, cBuildPlanSocketID, 0, cityStateSocketID);
       
-      int heroID = -1;
-
-      /*int heroQuery = createSimpleUnitQuery(cUnitTypeHero, cMyID, cUnitStateAlive);
-      int numberHeroesFound = kbUnitQueryExecute(heroQuery);
-      int heroPlanID = -1;
-      
-      for (int n = 0; n < numberHeroesFound; n++)
+      if (((gRevolutionType & cRevolutionMilitary) == 0) || ((gRevolutionType & cRevolutionFinland) == cRevolutionFinland))
       {
-         int unitID = kbUnitQueryGetResult(heroQuery, n);
-         if (unitID < 0)
-         {
-            continue;
-         }
-         if (kbProtoUnitCanTrain(kbUnitGetProtoUnitID(unitID), cUnitTypeTradingPost) == false)
-         {
-            continue;
-         }
-         heroPlanID = kbUnitGetPlanID(heroID);
-         if ((heroPlanID < 0) || (aiPlanGetType(heroPlanID) == cPlanDefend) || (aiPlanGetType(heroPlanID) == cPlanExplore))
-         {
-            heroID = unitID;
-            //transportUnitID = heroID;
-            break;
-         }
+         debugBuildings("Adding 1 gEconUnit to our Trading Post build plan");
+         aiPlanAddUnitType(planID, gEconUnit, 1, 1, 1);
       }
-      
-      if (heroID != -1) // We've found a suitable Hero so add him to the plan.
+      else // We didn't manage to add a Wagon or a Hero to our plan and can't use Villagers either, destroy.
       {
-         debugBuildings("Adding 1 " + kbGetProtoUnitName(kbUnitGetProtoUnitID(heroID)) + " with ID: " +
-            heroID + " to our Trading Post build plan");
-         aiPlanAddUnitType(planID, cUnitTypeHero, 1, 1, 1);
-         aiPlanAddUnit(planID, heroID);
-      }*/
-
-      
-      if ((heroID < 0)) // We didn't find either so we must add a Villager. 
-      {
-         if (((gRevolutionType & cRevolutionMilitary) == 0) || ((gRevolutionType & cRevolutionFinland) == cRevolutionFinland))
-         {
-            debugBuildings("Adding 1 gEconUnit to our Trading Post build plan");
-            aiPlanAddUnitType(planID, gEconUnit, 1, 1, 1);
-         }
-         else // We didn't manage to add a Wagon or a Hero to our plan and can't use Villagers either, destroy.
-         {
-            aiPlanDestroy(planID);
-            return;
-         }   
-      }
+         aiPlanDestroy(planID);
+         return;
+      }   
 
       // Priority.
       aiPlanSetDesiredPriority(planID, 97);
@@ -1310,18 +1289,18 @@ minInterval 20
 
    if (citySocketType < 0) 
    {
-      if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0)
+      //roda2324: Civil War sockets using an abstract type
+      if (getGaiaUnitCount(cUnitTypeCivilWarCityState) > 0)
+      {
+         citySocketType = cUnitTypeCivilWarCityState;
+      }
+      else if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0)
       {
          citySocketType = cUnitTypezpSPCSocketVeniceCityState;
       }
       else if (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0)
       {
          citySocketType = cUnitTypezpSPCSocketPirateCityState;
-      }
-      //roda2324: Civil War sockets using an abstract type
-      else if (getGaiaUnitCount(cUnitTypeCivilWarCityState) > 0)
-      {
-         citySocketType = cUnitTypeCivilWarCityState;
       }
       else
       {  // Shouldn't reach here

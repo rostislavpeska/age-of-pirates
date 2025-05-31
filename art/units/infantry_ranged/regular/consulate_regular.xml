@@ -33,38 +33,17 @@
             </logic>
         </none>
         <zpactivatecsaskins>
-            <logic type="Variation">
-                <v1>
-                    <assetreference type="GrannyModel">
-                        <file>units\infantry_ranged\regular\regular_confederate</file>
-                    </assetreference>
-                    <attach a="hat2" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
-                </v1>
-                <v2>
-                    <assetreference type="GrannyModel">
-                        <file>units\infantry_ranged\regular\regular_confederate</file>
-                        <materialvariant index="1"></materialvariant>
-                    </assetreference>
-                    <attach a="hat2" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
-                </v2>
-            </logic>
+            <assetreference type="GrannyModel">
+                <file>units\infantry_ranged\regular\regular_civil_war</file>
+            </assetreference>
+            <attach a="hat2" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
         </zpactivatecsaskins>
         <zpactivateunionskins>
-            <logic type="Variation">
-                <v1>
-                    <assetreference type="GrannyModel">
-                        <file>units\infantry_ranged\regular\regular_age4</file>
-                    </assetreference>
-                    <attach a="hat3" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
-                </v1>
-                <v2>
-                    <assetreference type="GrannyModel">
-                        <file>units\infantry_ranged\regular\regular_age4</file>
-                        <materialvariant index="1"></materialvariant>
-                    </assetreference>
-                    <attach a="hat3" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
-                </v2>
-            </logic>
+            <assetreference type="GrannyModel">
+                <file>units\infantry_ranged\regular\regular_civil_war</file>
+                <materialvariant index="1"></materialvariant>
+            </assetreference>
+            <attach a="hat2" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
         </zpactivateunionskins>
     </logic>
     <decal>
