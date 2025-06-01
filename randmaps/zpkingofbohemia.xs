@@ -292,7 +292,7 @@ void main(void)
 
     // Place the grouping on the island - using 0.5,0.5 as base and adjusting by -30,-24 tiles
 	rmSetNuggetDifficulty(301, 301);
-	int pragueCastleInstance = rmPlaceGroupingInstanceAtLoc(pragueCastle, 0.5-rmXMetersToFraction(2), 0.5+rmZMetersToFraction(22), 0);
+	int pragueCastleInstance = rmPlaceGroupingInstanceAtLoc(pragueCastle, 0.5-rmXMetersToFraction(0), 0.5+rmZMetersToFraction(4), 0);
 
     // Create center point to avoid
     int centerPoint = rmCreateObjectDef("center point");

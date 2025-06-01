@@ -226,6 +226,26 @@
 			<flag>NoIdleActions</flag>
 			<flag>StartOnNoUpdate</flag>
 		</unit>
+		<unit name="zpNatElectorPalaceD">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>
+		</unit>
+		<unit name="zpNatElectorPalaceE">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>
+		</unit>
+		<unit name="zpNatElectorPalaceB">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>
+		</unit>
+		<unit name="zpNatElectorPalaceC">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>
+		</unit>
 		<unit name="zpNativeUnitVenetian">			
 			<flag>NoIdleActions</flag>
 		</unit>

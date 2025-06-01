@@ -126,7 +126,7 @@
       <string _locid="300124">Maltese Honor Training</string>
       <string _locid="300125">Honored Maltese Guard</string>
       <string _locid="300126">Knights Hospitalers</string>
-      <string _locid="300127">Healers can heal more efectively. Adds Maltese Knights a healing ability.</string>
+      <string _locid="300127">Healers can heal more efFectively. Adds Maltese Knights a healing ability.</string>
       <string _locid="300128">Marsaxlokk Fish Market</string>
       <string _locid="300129">All fishing boats gather much more food and every dock you build spawns one free settler.</string>
       <string _locid="300130">Maltese Rigged Ship</string>
@@ -153,7 +153,7 @@
       <string _locid="300151">ZP Colonization Wagon</string>
       <string _locid="300152">Starts a new town or builds some other building of your choice.</string>
       <string _locid="300153">Colonization wagon</string>
-      <string _locid="300154">Florentian Faction</string>
+      <string _locid="300154">Florentine Faction</string>
       <string _locid="300155">&lt;color=1.0, 0.9, 0.5&gt;SPECIALITY:&lt;/color&gt; \nEconomical shipments \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nMaltese Banking \n\nMaltese Industrial Barons</string>
       <string _locid="300156">Jerusalem Faction</string>
       <string _locid="300157">&lt;color=1.0, 0.9, 0.5&gt;SPECIALITY:&lt;/color&gt; \nMilitary buildings \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nMaltese Fort \n\nMaltese Fixed Gun</string>
@@ -2743,6 +2743,10 @@
       <string _locid="302743">ZP NAT EU Venetian Fence Dark</string>
       <string _locid="302744">ZP NAT EU Shield</string>
       <string _locid="302745">ZP NAT Elector Palace Guards</string>
+      <string _locid="302746">ZP NAT Elector Palace Leaders</string>
+      <string _locid="302747">ZP Flag Bavarian</string>
+      <string _locid="302748">ZP Flag Saxon</string>
+      <string _locid="302749">ZP Flag Austrian</string>
       
 
 

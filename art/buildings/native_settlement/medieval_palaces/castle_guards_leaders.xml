@@ -49,22 +49,70 @@
         <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_idle</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
     </submodel>
     <submodel>
-		Hospitaler
-        <attachment>halberd_alt<component>halberd<assetreference type="GrannyModel"><file>units\infantry\papal_guard\papalguard_halberd</file></assetreference></component><anim>Idle<component>halberd</component></anim></attachment>
-        <component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\infantry\hospitaller\hospitaller_02</file><materialvariant index="2"/></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\infantry\hospitaller\hospitaller_02</file><materialvariant index="2"/></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
-        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_idle</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
+		Leader
+		<attachment>helmet<component>helmet<assetreference type="GrannyModel"><file>units\infantry\papal_guard\papalguard_helmet</file></assetreference></component><anim>Idle<component>helmet</component></anim></attachment>
+        <component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\generals\alain_magnan</file></assetreference><attach a="helmet" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></normal><lowpoly><assetreference type="GrannyModel"><file>units\generals\alain_magnan</file></assetreference><attach a="helmet" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\idle_grenadier_A</file></assetreference><component>ModelComp</component></anim>
+        <anim>Bored<assetreference type="GrannyAnim"><file>animation_library\shared\cheer_a</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\idle_grenadier_A</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\idle_grenadier_b</file></assetreference><component>ModelComp</component></anim>
     </submodel>
     <submodel>
-		Hospitaler1
-        <attachment>halberd_alt<component>halberd<assetreference type="GrannyModel"><file>units\infantry\papal_guard\papalguard_halberd</file></assetreference></component><anim>Idle<component>halberd</component></anim></attachment>
+		Leader1
         <component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\infantry\hospitaller\hospitaller_01</file><materialvariant index="1"/></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\infantry\hospitaller\hospitaller_01</file><materialvariant index="1"/></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
-        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_idle</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
+        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\idle_grenadier_A</file></assetreference><component>ModelComp</component></anim>
+        <anim>Bored<assetreference type="GrannyAnim"><file>animation_library\shared\cheer_a</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\bored_grenadier_A</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\idle_grenadier_b</file></assetreference><component>ModelComp</component></anim>
+    </submodel>
+    <submodel>
+		Leader2
+        <component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\spc\pizarro\pizarro_spc</file></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\spc\pizarro\pizarro_spc</file></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\idle_grenadier_A</file></assetreference><component>ModelComp</component></anim>
+        <anim>Bored<assetreference type="GrannyAnim"><file>animation_library\shared\cheer_a</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\bored_grenadier_A</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\idle_grenadier_b</file></assetreference><component>ModelComp</component></anim>
+    </submodel>
+    <submodel>
+		Leader3
+        <component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\spc\francis_drake\spc_francis_drake</file></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\spc\francis_drake\spc_francis_drake</file></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\idle_grenadier_A</file></assetreference><component>ModelComp</component></anim>
+        <anim>Bored<assetreference type="GrannyAnim"><file>animation_library\shared\cheer_a</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\bored_grenadier_A</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\idle_grenadier_b</file></assetreference><component>ModelComp</component></anim>
+    </submodel>
+    <submodel>
+		Leader4
+        <component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\spc\delgado\spc_delgado</file></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\spc\delgado\spc_delgado</file></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\idle_grenadier_A</file></assetreference><component>ModelComp</component></anim>
+        <anim>Bored<assetreference type="GrannyAnim"><file>animation_library\shared\cheer_a</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\bored_grenadier_A</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\idle_grenadier_b</file></assetreference><component>ModelComp</component></anim>
+    </submodel>
+    <submodel>
+		Leader5
+        <component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\spc\morgan_black\morgan_black_low</file></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\spc\morgan_black\morgan_black_low</file></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\idle_grenadier_A</file></assetreference><component>ModelComp</component></anim>
+        <anim>Bored<assetreference type="GrannyAnim"><file>animation_library\shared\cheer_a</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\bored_grenadier_A</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\idle_grenadier_b</file></assetreference><component>ModelComp</component></anim>
+    </submodel>
+    <submodel>
+		Leader6
+		<attachment>helmet<component>helmet<assetreference type="GrannyModel"><file>units\infantry\hospitaller\hospitaller_helmet</file></assetreference></component><anim>Idle<component>helmet</component></anim></attachment>
+        <component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\infantry\hospitaller\hospitaller_02</file><materialvariant index="2"/></assetreference><attach a="helmet" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></normal><lowpoly><assetreference type="GrannyModel"><file>units\infantry\hospitaller\hospitaller_02</file><materialvariant index="2"/></assetreference><attach a="helmet" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\idle_grenadier_A</file></assetreference><component>ModelComp</component></anim>
+        <anim>Bored<assetreference type="GrannyAnim"><file>animation_library\shared\cheer_a</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\bored_grenadier_A</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\idle_grenadier_b</file></assetreference><component>ModelComp</component></anim>
     </submodel>
     <submodel>
 		Wache
-        <attachment>halberd_alt<component>halberd<assetreference type="GrannyModel"><file>units\infantry\papal_guard\papalguard_halberd</file></assetreference></component><anim>Idle<component>halberd</component></anim></attachment>
+        <attachment>halberd_alt<component>halberd<assetreference type="GrannyModel"><file>units\infantry_ranged\cacadore\cacadore_2age_gun</file></assetreference></component><anim>Idle<component>halberd</component></anim></attachment>
         <component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\infantry_ranged\longbow\longbow_1age</file></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\infantry_ranged\longbow\longbow_1age</file></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
-        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_idle</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
+        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\crossbow_volley_idle</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach><attach a="shield" frombone="bone_crossbowman_3age" tobone="crossbowman_3age" syncanims="0"></attach></anim>
+    </submodel>
+    <submodel>
+		Wache1
+        <attachment>halberd_alt<component>halberd<assetreference type="GrannyModel"><file>units\infantry\pikeman\pikeman_2age_pike</file></assetreference></component><anim>Idle<component>halberd</component></anim></attachment>
+		<attachment>hat<component>hat<assetreference type="GrannyModel"><file>units\infantry_ranged\genoese\genoese_hat_lvl1</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+        <component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\infantry_ranged\crossbow\crossbow_1age</file></assetreference><attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></normal><lowpoly><assetreference type="GrannyModel"><file>units\infantry_ranged\crossbow\crossbow_1age</file></assetreference><attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_idle</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach><attach a="shield" frombone="bone_crossbowman_3age" tobone="bone_crossbowman_3age" syncanims="0"></attach></anim>
+        <anim>Bored<assetreference type="GrannyAnim"><file>animation_library\shared\human_crossbow_bored_a</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach><attach a="shield" frombone="bone_crossbowman_3age" tobone="bone_crossbowman_3age" syncanims="0"></attach></anim>
+    </submodel>
+    <submodel>
+		Wache2
+        <attachment>halberd_alt<component>halberd<assetreference type="GrannyModel"><file>units\infantry\pikeman\pikeman_2age_pike</file></assetreference></component><anim>Idle<component>halberd</component></anim></attachment>
+		<attachment>hat<component>hat<assetreference type="GrannyModel"><file>units\infantry_ranged\genoese\genoese_hat_lvl1</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+        <component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\infantry_ranged\crossbow\crossbow_1age</file></assetreference><attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></normal><lowpoly><assetreference type="GrannyModel"><file>units\infantry_ranged\crossbow\crossbow_1age</file></assetreference><attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+        <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\crossbow_volley_idle</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach><attach a="shield" frombone="bone_crossbowman_3age" tobone="bone_crossbowman_3age" syncanims="0"></attach></anim>
+        <anim>Bored<assetreference type="GrannyAnim"><file>animation_library\shared\human_crossbow_bored_a</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach><attach a="shield" frombone="bone_crossbowman_3age" tobone="bone_crossbowman_3age" syncanims="0"></attach></anim>
     </submodel>
     <submodel>
 		Pavisier
@@ -132,13 +180,34 @@
 				<submodelref ref="Arbalester"/>
 			</data>
 			<data>
-				<submodelref ref="Hospitaler"/>
+				<submodelref ref="Leader"/>
 			</data>
 			<data>
-				<submodelref ref="Hospitaler1"/>
+				<submodelref ref="Leader1"/>
+			</data>
+			<data>
+				<submodelref ref="Leader2"/>
+			</data>
+			<data>
+				<submodelref ref="Leader3"/>
+			</data>
+			<data>
+				<submodelref ref="Leader4"/>
+			</data>
+			<data>
+				<submodelref ref="Leader5"/>
+			</data>
+			<data>
+				<submodelref ref="Leader6"/>
 			</data>
 			<data>
 				<submodelref ref="Wache"/>
+			</data>
+			<data>
+				<submodelref ref="Wache1"/>
+			</data>
+				<data>
+				<submodelref ref="Wache2"/>
 			</data>
 			<data>
 				<submodelref ref="Pavisier"/>

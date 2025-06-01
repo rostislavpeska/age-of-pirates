@@ -56423,6 +56423,116 @@
     <flag>RMCanRotate</flag>
     <tactics>propvil.tactics</tactics>
   </unit>
+  <unit id="20774" name="zpNativePropsCastleLeaders">
+    <dbid>20774</dbid>
+    <displaynameid>102747</displaynameid>
+    <editornameid>302746</editornameid>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\medieval_palaces\castle_guards_leaders.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>Unit</unittype>
+    <flag>NoHPBar</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSelectable</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <tactics>propvil.tactics</tactics>
+  </unit>
+  <unit id="20775" name="zpBavarianFlag">
+    <dbid>20775</dbid>
+    <displaynameid>32671</displaynameid>
+    <editornameid>302747</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <civflagoverride>objects\flags\natives\wittelsbach_bavarian</civflagoverride>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotSearchable</flag>
+    <flag>VariationLocked</flag>
+  </unit>
+  <unit id="20776" name="zpSaxonFlag">
+    <dbid>20776</dbid>
+    <displaynameid>32672</displaynameid>
+    <editornameid>302748</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <civflagoverride>objects\flags\natives\wettin_saxon</civflagoverride>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotSearchable</flag>
+    <flag>VariationLocked</flag>
+  </unit>
+  <unit id="20777" name="zpAustrianFlag">
+    <dbid>20777</dbid>
+    <displaynameid>32672</displaynameid>
+    <editornameid>302749</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <civflagoverride>objects\flags\natives\habsburg_austria</civflagoverride>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotSearchable</flag>
+    <flag>VariationLocked</flag>
+  </unit>
 
 
 
