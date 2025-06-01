@@ -56369,8 +56369,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20771" name="zpElectorPalaceshield">
-    <dbid>20771</dbid>
+  <unit id="20777" name="zpElectorPalaceshield">
+    <dbid>20777</dbid>
     <displaynameid>302744</displaynameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
@@ -56506,8 +56506,8 @@
     <flag>NotSearchable</flag>
     <flag>VariationLocked</flag>
   </unit>
-  <unit id="20777" name="zpAustrianFlag">
-    <dbid>20777</dbid>
+  <unit id="20778" name="zpAustrianFlag">
+    <dbid>20778</dbid>
     <displaynameid>32672</displaynameid>
     <editornameid>302749</editornameid>
     <obstructionradiusx>1.0000</obstructionradiusx>
