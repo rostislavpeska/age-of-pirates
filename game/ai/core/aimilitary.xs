@@ -2028,18 +2028,21 @@ minInterval 30
 
    // AssertiveWall: Check for which canoe variety we can train
    if (gCanoeMaintain < 0)
-   {
-      if (kbProtoUnitAvailable(cUnitTypeCanoe) == true && (civIsNative() == false || cMyCiv == cCivDEInca))
+   {  // Only look for new canoe units if we can't train the current one
+      if (gCanoeUnit < 0 || kbProtoUnitAvailable(gCanoeUnit) == false)
       {
-         gCanoeUnit = cUnitTypeCanoe;
-      } 
-      else if (kbProtoUnitAvailable(cUnitTypeypMarathanCatamaran) == true)
-      {
-         gCanoeUnit = cUnitTypeypMarathanCatamaran;
-      }
-      else if (kbProtoUnitAvailable(cUnitTypedeMercBattleship) == true)
-      {
-         gCanoeUnit = cUnitTypedeMercBattleship;
+         if (kbProtoUnitAvailable(cUnitTypeCanoe) == true && (civIsNative() == false || cMyCiv == cCivDEInca))
+         {
+            gCanoeUnit = cUnitTypeCanoe;
+         } 
+         else if (kbProtoUnitAvailable(cUnitTypeypMarathanCatamaran) == true)
+         {
+            gCanoeUnit = cUnitTypeypMarathanCatamaran;
+         }
+         else if (kbProtoUnitAvailable(cUnitTypedeMercBattleship) == true)
+         {
+            gCanoeUnit = cUnitTypedeMercBattleship;
+         }
       }
 
       // AssertiveWall: Create a native canoe maintain plan once we know what canoe unit we are using
@@ -2051,7 +2054,6 @@ minInterval 30
    // AssertiveWall: make sure canoes can still be trained. If not, reset
    if (kbProtoUnitAvailable(gCanoeUnit) == false)
    {
-      //gCanoeUnit = -1;
       aiPlanDestroy(gCanoeMaintain);
       gCanoeMaintain = -1;
    }

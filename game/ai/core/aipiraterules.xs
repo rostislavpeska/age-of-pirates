@@ -186,10 +186,13 @@ minInterval 1
       xsEnableRule("waterDefendKOTH");
    }
 
-   // River maps where rowboats are available
+   // River maps where rowboats are available. The tech check is a backup check
    if (kbProtoUnitAvailable(cUnitTypezpSPCRowboat) == true)
    {
-      gCaravelUnit = cUnitTypezpSPCRowboat;
+      if (kbTechGetStatus(cTechzpForbidStandardWarshipdShadow) == cTechStatusActive)
+      {
+         gFrigateUnit = cUnitTypezpSPCRowboat;
+      }
    }
 
    // Initializes all pirate functions
