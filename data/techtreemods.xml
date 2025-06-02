@@ -27268,16 +27268,56 @@
       </effect>
     </effects>
   </tech>
-
-
-  
- 
-
-
-  
-
+  <tech name="zpNativeBohemianKingColonialize" type="Normal">
+    <dbid>41081</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpNatBlanikKnights</effect>
+    </effects>
+    <effect type="CommandRemove" tech="zpNatBlanikKnights">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+  </tech>
 
 <!--TEST-->
+
+  <!--<tech name="zpNativeSaxonKing" type="Normal">
+    <dbid></dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatBohemianLandsknecht</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpSPCKingOfBohemia</effect>
+      <effect type="TechStatus" status="obtainable">zpGuardBohemianKing</effect>
+      <effect type="TechStatus" status="obtainable">zpVeteranBohemianKing</effect>
+      <effect type="TechStatus" status="obtainable">DENatHabsburgViennaCongress</effect>
+      <effect type="TechStatus" status="obtainable">DENatHabsburgCrownLands</effect>
+      <effect type="TechStatus" status="obtainable">DENatHabsburgMultinationalism</effect>
+      <effect type="TechStatus" status="obtainable">DENatHabsburgAustroHungarian</effect>
+      <effect type="TechStatus" status="obtainable">DENatJagiellonPancerni</effect>
+      <effect type="TechStatus" status="obtainable">DENatJagiellonInheritance</effect>
+      <effect type="TechStatus" status="obtainable">DENatJagiellonSarmatism</effect>
+      <effect type="TechStatus" status="obtainable">DENatJagiellonFolwarks</effect>
+      <effect type="TechStatus" status="obtainable">DENatWittelsbachOktoberfest</effect>
+      <effect type="TechStatus" status="obtainable">DENatWittelsbachDucalLancers</effect>
+      <effect type="TechStatus" status="obtainable">DENatWittelsbachPhilhellenism</effect>
+      <effect type="TechStatus" status="obtainable">DENatWittelsbachHuntingGear</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpBohemianMercenaries</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBohemianAcademy</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyBohemian</effect>
+      <effect type="TechStatus" status="obtainable">zpIndianFriendshipBohemian</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyBohemian</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBlanikKnights</effect>
+      <effect type="Data" amount="1.00" subtype="GrantsPowerDuration" protopower="zpNatPowerBlanikKnights" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>-->
 
 <!--<tech name="zpKorowaiStealthShadow" type="Normal">
     <dbid></dbid>
