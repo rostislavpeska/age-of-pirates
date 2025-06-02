@@ -56293,6 +56293,7 @@
     <flag>InvulnerableIfGaia</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>RMCanRotate</flag>
+    <flag>NotSelectable</flag>
   </unit>
   <unit id="20769" name="zpNatEUPropFencDark">
     <dbid>20769</dbid>
