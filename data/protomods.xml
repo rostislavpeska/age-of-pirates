@@ -56534,8 +56534,8 @@
     <flag>NotSearchable</flag>
     <flag>VariationLocked</flag>
   </unit>
-  <unit id="20764" name="zpSocketElectorSaxony">
-    <dbid>20764</dbid>
+  <unit id="20779" name="zpSocketElectorSaxony">
+    <dbid>20779</dbid>
     <displaynameid>302751</displaynameid>
     <editornameid>302752</editornameid>
     <subciv>zpSaxonKing</subciv>
