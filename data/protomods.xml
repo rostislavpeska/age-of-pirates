@@ -1285,7 +1285,7 @@
     <tech row="0" page="1" column="1">zpVeteranBohemianKing</tech>
     <tech row="0" page="1" column="1">zpGuardBohemianKing</tech>
     <tech row="0" page="2" column="0">zpBohemianMercenaries</tech>
-    <tech row="0" page="2" column="0">zpNatBohemianAcademy</tech>
+    <tech row="0" page="2" column="1">zpNatBohemianAcademy</tech>
     <tech row="0" page="0" column="4">zpNatBlanikKnights</tech>
 
     <tech row="0" page="1" column="1">zpNatDisciplinedHussites</tech>
