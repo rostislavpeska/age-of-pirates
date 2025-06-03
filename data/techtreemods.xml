@@ -27274,10 +27274,10 @@
     <flag>Shadow</flag>
     <effects>
       <effect type="TechStatus" status="active">zpNatBlanikKnights</effect>
-    </effects>
-    <effect type="CommandRemove" tech="zpNatBlanikKnights">
+      <effect type="CommandRemove" tech="zpNatBlanikKnights">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+    </effects>
   </tech>
 
 <!--TEST-->

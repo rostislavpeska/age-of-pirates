@@ -4883,7 +4883,6 @@
     <flag>ObscuredByUnits</flag>
     <flag>Tracked</flag>
     <flag>KnockoutDeath</flag>
-    <flag>NotDeleteable</flag>
     <train row="0" page="6" column="0">TradingPost</train>
     <train row="0" page="6" column="2">Dock</train>
     <train row="0" page="6" column="2">YPDockAsian</train>
@@ -4891,6 +4890,7 @@
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
     <command page="11">Abilities</command>
+    <command page="10" column="7">Delete</command>
     <tactics>saofeng.tactics</tactics>
     <protoaction>
       <name>ArrowAttack</name>
