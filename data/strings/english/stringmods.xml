@@ -2313,7 +2313,7 @@
       <string _locid="302313">ZP SPC Fire Pit</string>
       <string _locid="302314">Fire Pit</string>
       <string _locid="302315">Prince Elector: Bohemia</string>
-      <string _locid="302316">ZP SPC Socket Elector Bohemia City state</string>
+      <string _locid="302316">ZP SPC Socket King of Bohemia</string>
       <string _locid="302317">There is only one true King of Bohemia. Hold the kingdom until the time runs out.</string>
       <string _locid="302318">Proclaim a King</string>
       <string _locid="302319">Pick one of the Bohemian Royal Dynasties and proclaim the King of Bohemia \n • Unlocks specific Royal House units and techs \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Rises the Kingdom of Bohemia flag above your Town Center \n • Starts a victory countdown &lt;color=1.0, 0.0, 0.0&gt;\n • Once you proclaim yourself a King, the other players unite against you. Make sure the city is well defended.&lt;/color&gt;</string>
@@ -2750,9 +2750,22 @@
       <string _locid="302750">ZP Socket Elector Bohemia</string>
       <string _locid="302751">Prince Elector: Saxony</string>
       <string _locid="302752">ZP Socket Elector Saxony</string>
-      
-
-
+      <string _locid="302753">Electoral College</string>
+      <string _locid="302754">Pick one of the Electoral Royal Houses and unlock their units and techs.</string>
+      <string _locid="302755">Elector's Landsknecht</string>
+      <string _locid="302756">ZP NAT Elector's Landsknecht</string>
+      <string _locid="302757">House of Hanover</string>
+      <string _locid="302758">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBlack Brunswicker, Totenkopf Hussar \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nRoyal Scots Grey, Royal Card Games, Acts of Union, Victorian Era</string>
+      <string _locid="302759">House of Wettin</string>
+      <string _locid="302760">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nTrabant, Saxon Cuirassier \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nLeipzig Trade Fair, Königstein, Marriage Politics, Royal Saxon Grenadiers</string>
+      <string _locid="302761">House of Oldenburg</string>
+      <string _locid="302762">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nRoyal Huntsman, Northern Musketeer \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nLeague of Armed Neutrality, Hunting Expeditions, Kalthoff Repeaters, Öresund Customs</string>
+      <string _locid="302763">Veteran Elector Houses</string>
+      <string _locid="302764">Increases all Elector units attack and hitpoints</string>
+      <string _locid="302765">Guard Elector Houses</string>
+      <string _locid="302766">Veteran Landsknecht</string>
+      <string _locid="302767">Guard Landsknecht</string>
+      <string _locid="302768">Imperial Landsknecht</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

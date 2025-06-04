@@ -5249,6 +5249,7 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMercEagleWarrior" culture="none" newname="42433">
       </effect>
+
       <effect mergemode="add" type="SetName" proto="zpNatHussiteCannoneer" culture="none" newname="302689">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatLegionaryMarksman" culture="none" newname="302691">
@@ -5256,32 +5257,6 @@
       <effect mergemode="add" type="SetName" proto="zpNatHussiteWagon" culture="none" newname="302693">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatHussiteKnight" culture="none" newname="302695">
-      </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatLandsknecht" culture="none" newname="302768">
-      </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatMountedInfantryElector" culture="none" newname="122413">
-      </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatLineInfantryElector" culture="none" newname="122415">
-      </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatMountainTrooperElector" culture="none" newname="122481">
-      </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatChevaulegerElector" culture="none" newname="122482">
-      </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatTotenkopfElector" culture="none" newname="122434">
-      </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatDrummerElector" culture="none" newname="122435">
-      </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatBrunswickerElector" culture="none" newname="122433">
-      </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatSaxonCuirassierElector" culture="none" newname="122472">
-      </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatTrabantElector" culture="none" newname="122471">
-      </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatNorthernMusketeerElector" culture="none" newname="122445">
-      </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatRoyalHuntsmanElector" culture="none" newname="124731">
-      </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatRoyalHunterElector" culture="none" newname="122444">
       </effect>
     </effects>
   </tech>
@@ -22420,7 +22395,7 @@
       <effect type="TechStatus" status="active">zpBlessedCityShadow</effect>
     </effects>
   </tech>
-  <tech name="zpNativeBohemianKing" type="Normal">
+  <!--<tech name="zpNativeBohemianKing" type="Normal">
     <dbid>40916</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -22455,7 +22430,7 @@
         </target>
       </effect>
     </effects>
-  </tech>
+  </tech>-->
   <tech name ="zpSPCKingOfBohemia" type ="Normal">
 		<dbid>40917</dbid>
 		<displaynameid>302735</displaynameid>
@@ -22511,16 +22486,16 @@
       <effect type="CommandAdd" proto="zpNatMercMountedInfantryProxy" page="0" column="2">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="DENatHabsburgViennaCongress" page="2" column="3">
+      <effect type="CommandAdd" tech="DENatHabsburgViennaCongressBohemian" page="2" column="3">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="DENatHabsburgCrownLands" page="2" column="4">
+      <effect type="CommandAdd" tech="DENatHabsburgCrownLandsBohemian" page="2" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="DENatHabsburgMultinationalism" page="2" column="5">
+      <effect type="CommandAdd" tech="DENatHabsburgMultinationalismBohemian" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="DENatHabsburgAustroHungarian" page="2" column="6">
+      <effect type="CommandAdd" tech="DENatHabsburgAustroHungarianBohemian" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect civ="Habsburg" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
@@ -22693,7 +22668,7 @@
       </effect>
       <effect type="SetName" proto="zpNatLineInfantryProxy" culture="none" newname="122412">
       </effect>
-      <effect type="SetName" proto="zpNatLineInfantryProxy" culture="none" newname="122415" reqtech="ImpLegendaryNativesShadow">
+      <effect type="SetName" proto="zpNatLineInfantryProxy" culture="none" newname="122414" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="SetName" proto="zpNatBohemianLandsknecht" culture="none" newname="302327">
       </effect>
@@ -22725,7 +22700,7 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
-      <effect type="CommandRemove" tech="DENatHabsburgViennaCongress">
+      <!--<effect type="CommandRemove" tech="DENatHabsburgViennaCongress">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandRemove" tech="DENatHabsburgCrownLands">
@@ -22760,7 +22735,7 @@
       </effect>
       <effect type="CommandRemove" tech="DENatWittelsbachHuntingGear">
         <target type="ProtoUnit">TradingPost</target>
-      </effect>
+      </effect>-->
       <effect type="CommandAdd" proto="deMercCannoneer" page="0" column="0">
         <target type="ProtoUnit">zpSPCGermanCathedral</target>
       </effect>
@@ -22854,16 +22829,16 @@
       <effect type="CommandAdd" proto="zpNatLipkaTatarProxy" page="0" column="2">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="DENatJagiellonPancerni" page="2" column="3">
+      <effect type="CommandAdd" tech="DENatJagiellonPancerniBohemian" page="2" column="3">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="DENatJagiellonInheritance" page="2" column="4">
+      <effect type="CommandAdd" tech="DENatJagiellonInheritanceBohemian" page="2" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="DENatJagiellonSarmatism" page="2" column="5">
+      <effect type="CommandAdd" tech="DENatJagiellonSarmatismBohemian" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="DENatJagiellonFolwarks" page="2" column="6">
+      <effect type="CommandAdd" tech="DENatJagiellonFolwarksBohemian" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect civ="Jagiellon" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
@@ -22903,16 +22878,16 @@
       <effect type="CommandAdd" proto="zpNatMountainTrooperProxy" page="0" column="2">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="DENatWittelsbachOktoberfest" page="2" column="3">
+      <effect type="CommandAdd" tech="DENatWittelsbachOktoberfestBohemian" page="2" column="3">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="DENatWittelsbachDucalLancers" page="2" column="4">
+      <effect type="CommandAdd" tech="DENatWittelsbachDucalLancersBohemian" page="2" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="DENatWittelsbachPhilhellenism" page="2" column="5">
+      <effect type="CommandAdd" tech="DENatWittelsbachPhilhellenismBohemian" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="DENatWittelsbachHuntingGear" page="2" column="6">
+      <effect type="CommandAdd" tech="DENatWittelsbachHuntingGearBohemian" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect civ="Wittelsbach" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
@@ -27304,628 +27279,7 @@
       </effect>
     </effects>
   </tech>
-  <tech name="zpNativePrinceElector" type="Normal">
-    <dbid>41082</dbid>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatLandsknecht</target>
-      </effect>
-      <effect type="TechStatus" status="obtainable">zpPrinceElectorElect</effect>
-      <effect type="TechStatus" status="obtainable">zpGuardPrinceElector</effect>
-      <effect type="TechStatus" status="obtainable">zpVeteranPrinceElector</effect>
-      <effect type="TechStatus" status="obtainable">DENatHabsburgViennaCongress</effect>
-      <effect type="TechStatus" status="obtainable">DENatHabsburgCrownLands</effect>
-      <effect type="TechStatus" status="obtainable">DENatHabsburgMultinationalism</effect>
-      <effect type="TechStatus" status="obtainable">DENatHabsburgAustroHungarian</effect>
-      <effect type="TechStatus" status="obtainable">DENatWittelsbachOktoberfest</effect>
-      <effect type="TechStatus" status="obtainable">DENatWittelsbachDucalLancers</effect>
-      <effect type="TechStatus" status="obtainable">DENatWittelsbachPhilhellenism</effect>
-      <effect type="TechStatus" status="obtainable">DENatWittelsbachHuntingGear</effect>
-      <effect type="TechStatus" status="obtainable">DENatHanoverRoyalScotsGrey</effect>
-      <effect type="TechStatus" status="obtainable">DENatHanoverRoyalCardGames</effect>
-      <effect type="TechStatus" status="obtainable">DENatHanoverUnionActs</effect>
-      <effect type="TechStatus" status="obtainable">DENatHanoverVictorianEra</effect>
-      <effect type="TechStatus" status="obtainable">DENatWettinTradeFair</effect>
-      <effect type="TechStatus" status="obtainable">DENatWettinKonigstein</effect>
-      <effect type="TechStatus" status="obtainable">DENatWettinMarriagePolitics</effect>
-      <effect type="TechStatus" status="obtainable">DENatWettinSaxonGrenadiers</effect>
-      <effect type="TechStatus" status="obtainable">DENatOldenBurgArmedNeutrality</effect>
-      <effect type="TechStatus" status="obtainable">DENatOldenBurgHuntingExpeditions</effect>
-      <effect type="TechStatus" status="obtainable">DENatOldenBurgKalthoffRepeaters</effect>
-      <effect type="TechStatus" status="obtainable">DENatOldenBurgOresundCustoms</effect>
 
-      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
-    </effects>
-  </tech>
-
-  <tech name="zpPrinceElectorNativeSetup" type="Normal">
-    <dbid>41083</dbid>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <effects>
-      <effect type="CommandRemove" tech="DENatHabsburgViennaCongress">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatHabsburgCrownLands">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatHabsburgMultinationalism">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatHabsburgAustroHungarian">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatWittelsbachOktoberfest">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatWittelsbachDucalLancers">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatWittelsbachPhilhellenism">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatWittelsbachHuntingGear">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatHanoverRoyalScotsGrey">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatHanoverRoyalCardGames">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatHanoverUnionActs">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatHanoverVictorianEra">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatWettinTradeFair">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatWettinKonigstein">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatWettinMarriagePolitics">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatWettinSaxonGrenadiers">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatOldenBurgArmedNeutrality">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatOldenBurgHuntingExpeditions">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatOldenBurgKalthoffRepeaters">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandRemove" tech="DENatOldenBurgOresundCustoms">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpConsulateElectorHabsburg" type="Normal">
-    <dbid>41084</dbid>
-    <displaynameid>302320</displaynameid>
-    <cost resourcetype="Gold">250.0000</cost>
-    <researchpoints>1.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\prince_elector_small.png</icon>
-    <rollovertextid>302321</rollovertextid>
-    <flag>CountsTowardMilitaryScore</flag>
-    <flag>YPConsulateTech</flag>
-    <flag>YPSequesterTech</flag>
-    <flag>DoNotQueue</flag>
-    <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatMountedInfantryElector</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatLineInfantryElector</target>
-      </effect>
-      <effect type="TechStatus" status="unobtainable">zpPrinceElectorElect</effect>
-      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
-      <effect type="CommandRemove" tech="zpPrinceElectorElect">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpNatLineInfantryElector" page="0" column="3">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpNatMountedInfantryElector" page="0" column="2">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatHabsburgViennaCongress" page="2" column="3">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatHabsburgCrownLands" page="2" column="4">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatHabsburgMultinationalism" page="2" column="5">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatHabsburgAustroHungarian" page="2" column="6">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect civ="Habsburg" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name ="zpPrinceElectorElect" type ="Normal">
-		<dbid>41085</dbid>
-		<displaynameid>302753</displaynameid>
-  	<researchpoints>100.0000</researchpoints>
-		<status>UNOBTAINABLE</status>
-		<icon>resources\images\icons\techs\dance-pirates.png</icon>
-    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
-    <iconwpf>resources\images\icons\techs\prince_elector_big.png</iconwpf>
-    <cost resourcetype ="Gold">250.0000</cost>
-		<rollovertextid>302754</rollovertextid>
-    <prereqs>
-			<techstatus status="Active">Fortressize</techstatus>
-    </prereqs>
-    <flag>YPInfiniteTech</flag>
-    <flag>DENoTextMessageIfFree</flag>
-    <flag>DoNotQueue</flag>
-    <flag>NativeDance</flag>
-    <flag>YPNeverLastInLine</flag>
-    <flag>Shadow</flag>
-    <effects>
-      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
-      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianFishingBoat</effect>
-      <effect type="TechStatus" status="active">zpTheBlackFlagGoldBallanceShadow</effect>
-    </effects>
-	</tech>
-  <tech name="zpConsulateElectorWittelsbach" type="Normal">
-    <dbid>41086</dbid>
-    <displaynameid>302332</displaynameid>
-    <cost resourcetype="Gold">250.0000</cost>
-    <researchpoints>1.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\kingdom_bohemia_big.png</icon>
-    <rollovertextid>302333</rollovertextid>
-    <flag>CountsTowardMilitaryScore</flag>
-    <flag>YPConsulateTech</flag>
-    <flag>YPSequesterTech</flag>
-    <flag>DoNotQueue</flag>
-    <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatChevaulegerElector</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatMountainTrooperElector</target>
-      </effect>
-      <effect type="TechStatus" status="unobtainable">zpPrinceElectorElect</effect>
-      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
-      <effect type="CommandRemove" tech="zpPrinceElectorElect">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpNatChevaulegerElector" page="0" column="3">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpNatMountainTrooperElector" page="0" column="2">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatWittelsbachOktoberfest" page="2" column="3">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatWittelsbachDucalLancers" page="2" column="4">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatWittelsbachPhilhellenism" page="2" column="5">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatWittelsbachHuntingGear" page="2" column="6">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect civ="Wittelsbach" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpTurnConsulateOffPrinceElector" type="Normal">
-    <dbid>41087</dbid>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <flag>YPInfiniteTech</flag>
-    <effects>
-      <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
-      <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
-      <effect type="TechStatus" status="unobtainable">zpBigConsulateFrenchClone</effect>
-      <effect type="TechStatus" status="unobtainable">zpBigConsulateGermansClone</effect>
-      <effect type="TechStatus" status="unobtainable">zpBigConsulateOttomansClone</effect>
-      <effect type="TechStatus" status="unobtainable">zpBigConsulatePortugueseClone</effect>
-      <effect type="TechStatus" status="unobtainable">zpBigConsulateDutchClone</effect>
-      <effect type="TechStatus" status="unobtainable">zpBigConsulateSpanishClone</effect>
-      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
-      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseAlliesClone</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
-      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
-      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
-      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
-      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
-      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
-      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
-      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
-      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxConstantinopole</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxAlexandria</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateNatCherokee</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateNatSeminole</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateNatLakota</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentConfederate</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralConfederate</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralConfederate</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
-      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
-
-      <effect type="TechStatus" status="obtainable">zpConsulateElectorHabsburg</effect>
-      <effect type="TechStatus" status="obtainable">zpConsulateElectorWittelsbach</effect>
-      <effect type="TechStatus" status="obtainable">zpConsulateElectorWettin</effect>
-      <effect type="TechStatus" status="obtainable">zpConsulateElectorHanover</effect>
-      <effect type="TechStatus" status="obtainable">zpConsulateElectorOldenburg</effect>
-
-      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPrinceElector</effect>
-    </effects>
-  </tech>
-  <tech name="zpConsulateElectorHanover" type="Normal">
-    <dbid>41088</dbid>
-    <displaynameid>302757</displaynameid>
-    <cost resourcetype="Gold">250.0000</cost>
-    <researchpoints>1.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\prince_elector_small.png</icon>
-    <rollovertextid>302758</rollovertextid>
-    <flag>CountsTowardMilitaryScore</flag>
-    <flag>YPConsulateTech</flag>
-    <flag>YPSequesterTech</flag>
-    <flag>DoNotQueue</flag>
-    <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatBrunswickerElector</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatTotenkopfElector</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatDrummerElector</target>
-      </effect>
-      <effect type="TechStatus" status="unobtainable">zpPrinceElectorElect</effect>
-      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
-      <effect type="CommandRemove" tech="zpPrinceElectorElect">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpNatBrunswickerElector" page="0" column="2">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpNatTotenkopfElector" page="0" column="3">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpNatDrummerElector" page="1" column="2">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatHanoverRoyalScotsGrey" page="2" column="3">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatHanoverRoyalCardGames" page="2" column="4">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatHanoverUnionActs" page="2" column="5">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatHanoverVictorianEra" page="2" column="6">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect civ="Hanover" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpConsulateElectorWettin" type="Normal">
-    <dbid>41089</dbid>
-    <displaynameid>302759</displaynameid>
-    <cost resourcetype="Gold">250.0000</cost>
-    <researchpoints>1.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\prince_elector_small.png</icon>
-    <rollovertextid>302760</rollovertextid>
-    <flag>CountsTowardMilitaryScore</flag>
-    <flag>YPConsulateTech</flag>
-    <flag>YPSequesterTech</flag>
-    <flag>DoNotQueue</flag>
-    <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatTrabantElector</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatSaxonCuirassierElector</target>
-      </effect>
-      <effect type="TechStatus" status="unobtainable">zpPrinceElectorElect</effect>
-      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
-      <effect type="CommandRemove" tech="zpPrinceElectorElect">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpNatTrabantElector" page="0" column="2">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpNatSaxonCuirassierElector" page="0" column="3">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatWettinTradeFair" page="2" column="3">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatWettinKonigstein" page="2" column="4">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatWettinMarriagePolitics" page="2" column="5">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatWettinSaxonGrenadiers" page="2" column="6">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect civ="Wettin" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpConsulateElectorOldenburg" type="Normal">
-    <dbid>41090</dbid>
-    <displaynameid>302761</displaynameid>
-    <cost resourcetype="Gold">250.0000</cost>
-    <researchpoints>1.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\prince_elector_small.png</icon>
-    <rollovertextid>302762</rollovertextid>
-    <flag>CountsTowardMilitaryScore</flag>
-    <flag>YPConsulateTech</flag>
-    <flag>YPSequesterTech</flag>
-    <flag>DoNotQueue</flag>
-    <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalHuntsmanElector</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatNorthernMusketeerElector</target>
-      </effect>
-      <effect type="TechStatus" status="unobtainable">zpPrinceElectorElect</effect>
-      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
-      <effect type="CommandRemove" tech="zpPrinceElectorElect">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpNatRoyalHuntsmanElector" page="0" column="2">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpNatNorthernMusketeerElector" page="0" column="3">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpNatRoyalHunterElector" page="0" column="2">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatOldenBurgArmedNeutrality" page="2" column="3">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatOldenBurgHuntingExpeditions" page="2" column="4">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatOldenBurgKalthoffRepeaters" page="2" column="5">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatOldenBurgOresundCustoms" page="2" column="6">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect civ="Oldenburg" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpVeteranPrinceElector" type="Normal">
-    <dbid>41091</dbid>
-    <displaynameid>302763</displaynameid>
-    <cost resourcetype="Wood">125.0000</cost>
-    <cost resourcetype="Gold">125.0000</cost>
-    <researchpoints>10.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\veteran_infantry\veteran_infantry.png</icon>
-    <rollovertextid>302764</rollovertextid>
-    <flag>CountsTowardMilitaryScore</flag>
-    <flag>UpgradeTech</flag>
-    <flag>YPNativeImprovement</flag>
-    <flag>DENativeUnitUpgrade</flag>
-    <flag>DENoTextMessageIfFree</flag>
-    <prereqs>
-      <techstatus status="Active">Fortressize</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatLandsknecht</target>
-      </effect>
-      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatLandsknecht</target>
-      </effect>
-      <effect type="SetName" proto="zpNatLandsknecht" culture="none" newname="302766">
-      </effect>
-      <effect type="SetName" proto="zpNatLandsknecht" culture="none" newname="302768" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatMountedInfantryElector" culture="none" newname="122407">
-      </effect>
-      <effect type="SetName" proto="zpNatMountedInfantryElector" culture="none" newname="122413" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatMountainTrooperElector" culture="none" newname="122477">
-      </effect>
-      <effect type="SetName" proto="zpNatMountainTrooperElector" culture="none" newname="122481" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatTotenkopfElector" culture="none" newname="122428">
-      </effect>
-      <effect type="SetName" proto="zpNatTotenkopfElector" culture="none" newname="122434" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatDrummerElector" culture="none" newname="122429">
-      </effect>
-      <effect type="SetName" proto="zpNatDrummerElector" culture="none" newname="122435" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatTrabantElector" culture="none" newname="122467">
-      </effect>
-      <effect type="SetName" proto="zpNatTrabantElector" culture="none" newname="122471" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatRoyalHuntsmanElector" culture="none" newname="124729">
-      </effect>
-      <effect type="SetName" proto="zpNatRoyalHuntsmanElector" culture="none" newname="124731" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatRoyalHunterElector" culture="none" newname="122440">
-      </effect>
-      <effect type="SetName" proto="zpNatRoyalHunterElector" culture="none" newname="122444" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="TechStatus" status="active">DEVeteranHabsburg</effect>
-      <effect type="TechStatus" status="active">DEVeteranWittelsbach</effect>
-      <effect type="TechStatus" status="active">DEVeteranHanover</effect>
-      <effect type="TechStatus" status="active">DEVeteranWettin</effect>
-      <effect type="TechStatus" status="active">DEVeteranOldenburg</effect>
-    </effects>
-  </tech>
-  <tech name="zpGuardPrinceElector" type="Normal">
-    <dbid>41092</dbid>
-    <displaynameid>302765</displaynameid>
-    <cost resourcetype="Wood">350.0000</cost>
-    <cost resourcetype="Gold">350.0000</cost>
-    <researchpoints>10.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\guard_infantry\guard_infantry.png</icon>
-    <rollovertextid>302329</rollovertextid>
-    <flag>UpgradeTech</flag>
-    <flag>CountsTowardMilitaryScore</flag>
-    <flag>YPNativeImprovement</flag>
-    <flag>DENativeUnitUpgrade</flag>
-    <flag>DENoTextMessageIfFree</flag>
-    <prereqs>
-      <techstatus status="Active">zpVeteranPrinceElector</techstatus>
-      <techstatus status="Active">Industrialize</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatLandsknecht</target>
-      </effect>
-      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatLandsknecht</target>
-      </effect>
-      <effect type="SetName" proto="zpNatLandsknecht" culture="none" newname="302767">
-      </effect>
-      <effect type="SetName" proto="zpNatLandsknecht" culture="none" newname="302768" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatMountedInfantryElector" culture="none" newname="122410">
-      </effect>
-      <effect type="SetName" proto="zpNatMountedInfantryElector" culture="none" newname="122413" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatLineInfantryElector" culture="none" newname="122412">
-      </effect>
-      <effect type="SetName" proto="zpNatLineInfantryElector" culture="none" newname="122415" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatMountainTrooperElector" culture="none" newname="122479">
-      </effect>
-      <effect type="SetName" proto="zpNatMountainTrooperElector" culture="none" newname="122481" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatChevaulegerElector" culture="none" newname="122480">
-      </effect>
-      <effect type="SetName" proto="zpNatChevaulegerElector" culture="none" newname="122482" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatTotenkopfElector" culture="none" newname="122431">
-      </effect>
-      <effect type="SetName" proto="zpNatTotenkopfElector" culture="none" newname="122434" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatDrummerElector" culture="none" newname="122432">
-      </effect>
-      <effect type="SetName" proto="zpNatDrummerElector" culture="none" newname="122435" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatBrunswickerElector" culture="none" newname="122430">
-      </effect>
-      <effect type="SetName" proto="zpNatBrunswickerElector" culture="none" newname="122433" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatSaxonCuirassierElector" culture="none" newname="122470">
-      </effect>
-      <effect type="SetName" proto="zpNatSaxonCuirassierElector" culture="none" newname="122472" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatTrabantElector" culture="none" newname="122469">
-      </effect>
-      <effect type="SetName" proto="zpNatTrabantElector" culture="none" newname="122471" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatNorthernMusketeerElector" culture="none" newname="122443">
-      </effect>
-      <effect type="SetName" proto="zpNatNorthernMusketeerElector" culture="none" newname="122445" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatRoyalHuntsmanElector" culture="none" newname="124730">
-      </effect>
-      <effect type="SetName" proto="zpNatRoyalHuntsmanElector" culture="none" newname="124731" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatRoyalHunterElector" culture="none" newname="122442">
-      </effect>
-      <effect type="SetName" proto="zpNatRoyalHunterElector" culture="none" newname="122444" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="TechStatus" status="active">DEGuardHabsburg</effect>
-      <effect type="TechStatus" status="active">DEGuardWittelsbach</effect>
-      <effect type="TechStatus" status="active">DEGuardHanover</effect>
-      <effect type="TechStatus" status="active">DEGuardWettin</effect>
-      <effect type="TechStatus" status="active">DEGuardOldenburg</effect>
-    </effects>
-  </tech>
-  <tech name="DENatOldenBurgArmedNeutrality">
-    <effects>
-      <effect mergemode="add" type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalHunterElector</target>
-      </effect>
-      <effect mergemode="add" type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatRoyalHuntsmanElector</target>
-      </effect>
-      <effect mergemode="add" type="CommandRemove" proto="zpNatRoyalHuntsmanElector">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-    </effects>
-  </tech>
 <!--TEST-->
 
   <!--<tech name="zpNativeSaxonKing" type="Normal">
@@ -29850,4 +29204,826 @@ BRITISH
       </effect>
     </effects>
   </tech>-->
+
+  <tech name="zpNativeBohemianKing" type="Normal">
+    <dbid>40916</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatBohemianLandsknecht</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpSPCKingOfBohemia</effect>
+      <effect type="TechStatus" status="obtainable">zpGuardBohemianKing</effect>
+      <effect type="TechStatus" status="obtainable">zpVeteranBohemianKing</effect>
+      <effect type="TechStatus" status="obtainable">DENatHabsburgViennaCongressBohemian</effect>
+      <effect type="TechStatus" status="obtainable">DENatHabsburgCrownLandsBohemian</effect>
+      <effect type="TechStatus" status="obtainable">DENatHabsburgMultinationalismBohemian</effect>
+      <effect type="TechStatus" status="obtainable">DENatHabsburgAustroHungarianBohemian</effect>
+      <effect type="TechStatus" status="obtainable">DENatJagiellonPancerniBohemian</effect>
+      <effect type="TechStatus" status="obtainable">DENatJagiellonInheritanceBohemian</effect>
+      <effect type="TechStatus" status="obtainable">DENatJagiellonSarmatismBohemian</effect>
+      <effect type="TechStatus" status="obtainable">DENatJagiellonFolwarksBohemian</effect>
+      <effect type="TechStatus" status="obtainable">DENatWittelsbachOktoberfestBohemian</effect>
+      <effect type="TechStatus" status="obtainable">DENatWittelsbachDucalLancersBohemian</effect>
+      <effect type="TechStatus" status="obtainable">DENatWittelsbachPhilhellenismBohemian</effect>
+      <effect type="TechStatus" status="obtainable">DENatWittelsbachHuntingGearBohemian</effect>
+      <effect type="TechStatus" status="obtainable">zpBohemianMercenaries</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBohemianAcademy</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyBohemian</effect>
+      <effect type="TechStatus" status="obtainable">zpIndianFriendshipBohemian</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyBohemian</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBlanikKnights</effect>
+      <effect type="Data" amount="1.00" subtype="GrantsPowerDuration" protopower="zpNatPowerBlanikKnights" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+
+  <tech name="DENatWittelsbachOktoberfestBohemian" type="Normal">
+    <dbid>9354</dbid>
+    <displaynameid>124543</displaynameid>
+    <cost resourcetype="Food">100.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\wittelsbach\oktoberfest.png</icon>
+    <rollovertextid>124542</rollovertextid>
+    <valuetext>{techResourceAmount(DENatWittelsbachOktoberfest)}</valuetext>
+    <flag>DEUsesValueText</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="TechStatus" status="active">DENatWittelsbachOktoberfest</effect>
+    </effects>
+  </tech>
+  <tech name="DENatWittelsbachOktoberfestBavarian" type="Normal">
+    <dbid>9354</dbid>
+    <displaynameid>124543</displaynameid>
+    <cost resourcetype="Food">100.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\wittelsbach\oktoberfest.png</icon>
+    <rollovertextid>124542</rollovertextid>
+    <valuetext>{techResourceAmount(DENatWittelsbachOktoberfest)}</valuetext>
+    <flag>DEUsesValueText</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="TechStatus" status="active">DENatWittelsbachOktoberfest</effect>
+    </effects>
+  </tech>
+  <tech name="DENatWittelsbachOktoberfestAustrian" type="Normal">
+    <dbid>9354</dbid>
+    <displaynameid>124543</displaynameid>
+    <cost resourcetype="Food">100.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\wittelsbach\oktoberfest.png</icon>
+    <rollovertextid>124542</rollovertextid>
+    <valuetext>{techResourceAmount(DENatWittelsbachOktoberfest)}</valuetext>
+    <flag>DEUsesValueText</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="TechStatus" status="active">DENatWittelsbachOktoberfest</effect>
+    </effects>
+  </tech>
+  <tech name="DENatWittelsbachOktoberfest" type="Normal">
+    <effects>
+      <effect type="TechStatus" status="active" mergemode="add">DENatWittelsbachOktoberfestBohemian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatWittelsbachOktoberfestBavarian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatWittelsbachOktoberfestAustrian</effect>
+    </effects>
+  </tech>
+  <tech name="DENatWittelsbachDucalLancersBohemian" type="Normal">
+    <dbid>9355</dbid>
+    <displaynameid>124545</displaynameid>
+    <cost resourcetype="Food">500.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\wittelsbach\ducal_berg_lancers.png</icon>
+    <rollovertextid>124544</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatWittelsbachDucalLancers</effect>
+    </effects>
+  </tech>
+  <tech name="DENatWittelsbachDucalLancersBavarian" type="Normal">
+    <dbid>9355</dbid>
+    <displaynameid>124545</displaynameid>
+    <cost resourcetype="Food">500.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\wittelsbach\ducal_berg_lancers.png</icon>
+    <rollovertextid>124544</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatWittelsbachDucalLancers</effect>
+    </effects>
+  </tech>
+  <tech name="DENatWittelsbachDucalLancersAustrian" type="Normal">
+    <dbid>9355</dbid>
+    <displaynameid>124545</displaynameid>
+    <cost resourcetype="Food">500.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\wittelsbach\ducal_berg_lancers.png</icon>
+    <rollovertextid>124544</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatWittelsbachDucalLancers</effect>
+    </effects>
+  </tech>
+  <tech name="DENatWittelsbachDucalLancers" type="Normal">
+    <effects>
+      <effect type="TechStatus" status="active" mergemode="add">DENatWittelsbachDucalLancersBohemian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatWittelsbachDucalLancersBavarian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatWittelsbachDucalLancersAustrian</effect>
+    </effects>
+  </tech>
+  <tech name="DENatWittelsbachPhilhellenismBohemian" type="Normal">
+    <dbid>9356</dbid>
+    <displaynameid>124547</displaynameid>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Food">250.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\wittelsbach\philhellenism.png</icon>
+    <rollovertextid>124546</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatWittelsbachPhilhellenism</effect>
+    </effects>
+  </tech>
+  <tech name="DENatWittelsbachPhilhellenismBavarian" type="Normal">
+    <dbid>9356</dbid>
+    <displaynameid>124547</displaynameid>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Food">250.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\wittelsbach\philhellenism.png</icon>
+    <rollovertextid>124546</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatWittelsbachPhilhellenism</effect>
+    </effects>
+  </tech>
+  <tech name="DENatWittelsbachPhilhellenismAustrian" type="Normal">
+    <dbid>9356</dbid>
+    <displaynameid>124547</displaynameid>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Food">250.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\wittelsbach\philhellenism.png</icon>
+    <rollovertextid>124546</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatWittelsbachPhilhellenism</effect>
+    </effects>
+  </tech>
+  <tech name="DENatWittelsbachPhilhellenism" type="Normal">
+    <effects>
+      <effect type="TechStatus" status="active" mergemode="add">
+        DENatWittelsbachPhilhellenismBohemian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">
+        DENatWittelsbachPhilhellenismBavarian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">
+        DENatWittelsbachPhilhellenismAustrian</effect>
+    </effects>
+  </tech>
+  <tech name="DENatWittelsbachHuntingGearBohemian" type="Normal">
+    <dbid>9357</dbid>
+    <displaynameid>124549</displaynameid>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\wittelsbach\hunting_gear.png</icon>
+    <rollovertextid>124548</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatWittelsbachHuntingGear</effect>
+    </effects>
+  </tech>
+  <tech name="DENatWittelsbachHuntingGearBavarian" type="Normal">
+    <dbid>9357</dbid>
+    <displaynameid>124549</displaynameid>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\wittelsbach\hunting_gear.png</icon>
+    <rollovertextid>124548</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatWittelsbachHuntingGear</effect>
+    </effects>
+  </tech>
+  <tech name="DENatWittelsbachHuntingGearAustrian" type="Normal">
+    <dbid>9357</dbid>
+    <displaynameid>124549</displaynameid>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\wittelsbach\hunting_gear.png</icon>
+    <rollovertextid>124548</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatWittelsbachHuntingGear</effect>
+    </effects>
+  </tech>
+  <tech name="DENatWittelsbachHuntingGear" type="Normal">
+    <effects>
+      <effect type="TechStatus" status="active" mergemode="add">DENatWittelsbachHuntingGearBohemian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatWittelsbachHuntingGearBavarian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatWittelsbachHuntingGearAustrian</effect>
+    </effects>
+  </tech>
+  <tech name="DENatJagiellonPancerniBohemian" type="Normal">
+    <dbid>9339</dbid>
+    <displaynameid>124515</displaynameid>
+    <cost resourcetype="Food">300.0000</cost>
+    <cost resourcetype="Wood">300.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\jagiellon\pancerni.png</icon>
+    <rollovertextid>124514</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatJagiellonPancerni</effect>
+    </effects>
+  </tech>
+  <tech name="DENatJagiellonPancerniBavarian" type="Normal">
+    <dbid>9339</dbid>
+    <displaynameid>124515</displaynameid>
+    <cost resourcetype="Food">300.0000</cost>
+    <cost resourcetype="Wood">300.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\jagiellon\pancerni.png</icon>
+    <rollovertextid>124514</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatJagiellonPancerni</effect>
+    </effects>
+  </tech>
+  <tech name="DENatJagiellonPancerniAustrian" type="Normal">
+    <dbid>9339</dbid>
+    <displaynameid>124515</displaynameid>
+    <cost resourcetype="Food">300.0000</cost>
+    <cost resourcetype="Wood">300.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\jagiellon\pancerni.png</icon>
+    <rollovertextid>124514</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatJagiellonPancerni</effect>
+    </effects>
+  </tech>
+  <tech name="DENatJagiellonPancerni" type="Normal">
+    <effects>
+      <effect type="TechStatus" status="active" mergemode="add">DENatJagiellonPancerniBohemian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatJagiellonPancerniBavarian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatJagiellonPancerniAustrian</effect>
+    </effects>
+  </tech>
+  <tech name="DENatJagiellonInheritanceBohemian" type="Normal">
+    <dbid>9340</dbid>
+    <displaynameid>124517</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\jagiellon\jagiellon_inheritance.png</icon>
+    <rollovertextid>124516</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatJagiellonInheritance</effect>
+    </effects>
+  </tech>
+  <tech name="DENatJagiellonInheritanceBavarian" type="Normal">
+    <dbid>9340</dbid>
+    <displaynameid>124517</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\jagiellon\jagiellon_inheritance.png</icon>
+    <rollovertextid>124516</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatJagiellonInheritance</effect>
+    </effects>
+  </tech>
+  <tech name="DENatJagiellonInheritanceAustrian" type="Normal">
+    <dbid>9340</dbid>
+    <displaynameid>124517</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\jagiellon\jagiellon_inheritance.png</icon>
+    <rollovertextid>124516</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatJagiellonInheritance</effect>
+    </effects>
+  </tech>
+  <tech name="DENatJagiellonInheritance" type="Normal">
+    <effects>
+      <effect type="TechStatus" status="active" mergemode="add">DENatJagiellonInheritanceBohemian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatJagiellonInheritanceBavarian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatJagiellonInheritanceAustrian</effect>
+    </effects>
+  </tech>
+  <tech name="DENatJagiellonSarmatismBohemian" type="Normal">
+    <dbid>9341</dbid>
+    <displaynameid>124519</displaynameid>
+    <cost resourcetype="Food">350.0000</cost>
+    <cost resourcetype="Wood">350.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\jagiellon\samartism.png</icon>
+    <rollovertextid>124518</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatJagiellonSarmatism</effect>
+    </effects>
+  </tech>
+  <tech name="DENatJagiellonSarmatismBavarian" type="Normal">
+    <dbid>9341</dbid>
+    <displaynameid>124519</displaynameid>
+    <cost resourcetype="Food">350.0000</cost>
+    <cost resourcetype="Wood">350.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\jagiellon\samartism.png</icon>
+    <rollovertextid>124518</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatJagiellonSarmatism</effect>
+    </effects>
+  </tech>
+  <tech name="DENatJagiellonSarmatismAustrian" type="Normal">
+    <dbid>9341</dbid>
+    <displaynameid>124519</displaynameid>
+    <cost resourcetype="Food">350.0000</cost>
+    <cost resourcetype="Wood">350.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\jagiellon\samartism.png</icon>
+    <rollovertextid>124518</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatJagiellonSarmatism</effect>
+    </effects>
+  </tech>
+  <tech name="DENatJagiellonSarmatism" type="Normal">
+    <effects>
+      <effect type="TechStatus" status="active" mergemode="add">DENatJagiellonSarmatismBohemian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatJagiellonSarmatismBavarian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatJagiellonSarmatismAustrian</effect>
+    </effects>
+  </tech>
+  <tech name="DENatJagiellonFolwarksBohemian" type="Normal">
+    <dbid>9342</dbid>
+    <displaynameid>124521</displaynameid>
+    <cost resourcetype="Wood">135.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\jagiellon\folwarks.png</icon>
+    <rollovertextid>124520</rollovertextid>
+    <valuetext>{techResourceAmount(DENatJagiellonFolwarks)}</valuetext>
+    <flag>DEUsesValueText</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatJagiellonFolwarks</effect>
+    </effects>
+  </tech>
+  <tech name="DENatJagiellonFolwarksBavarian" type="Normal">
+    <dbid>9342</dbid>
+    <displaynameid>124521</displaynameid>
+    <cost resourcetype="Wood">135.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\jagiellon\folwarks.png</icon>
+    <rollovertextid>124520</rollovertextid>
+    <valuetext>{techResourceAmount(DENatJagiellonFolwarks)}</valuetext>
+    <flag>DEUsesValueText</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatJagiellonFolwarks</effect>
+    </effects>
+  </tech>
+  <tech name="DENatJagiellonFolwarksAustrian" type="Normal">
+    <dbid>9342</dbid>
+    <displaynameid>124521</displaynameid>
+    <cost resourcetype="Wood">135.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\jagiellon\folwarks.png</icon>
+    <rollovertextid>124520</rollovertextid>
+    <valuetext>{techResourceAmount(DENatJagiellonFolwarks)}</valuetext>
+    <flag>DEUsesValueText</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatJagiellonFolwarks</effect>
+    </effects>
+  </tech>
+  <tech name="DENatJagiellonFolwarks" type="Normal">
+    <effects>
+      <effect type="TechStatus" status="active" mergemode="add">DENatJagiellonFolwarksBohemian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatJagiellonFolwarksBavarian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatJagiellonFolwarksAustrian</effect>
+    </effects>
+  </tech>
+  <tech name="deNatHabsburgRadetzyMarchBohemian" type="Normal">
+    <dbid>9302</dbid>
+    <displaynameid>122548</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\abilities\ability_radetzky_march_lrg.png</icon>
+    <rollovertextid>122549</rollovertextid>
+    <flag>YPNoTextMessage</flag>
+    <flag>DEUseMediumButton3</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DEHideAdvancedRollover</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">deNatHabsburgRadetzyMarch</effect>
+    </effects>
+  </tech>
+  <tech name="deNatHabsburgRadetzyMarchBavarian" type="Normal">
+    <dbid>9302</dbid>
+    <displaynameid>122548</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\abilities\ability_radetzky_march_lrg.png</icon>
+    <rollovertextid>122549</rollovertextid>
+    <flag>YPNoTextMessage</flag>
+    <flag>DEUseMediumButton3</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DEHideAdvancedRollover</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">deNatHabsburgRadetzyMarch</effect>
+    </effects>
+  </tech>
+  <tech name="deNatHabsburgRadetzyMarchAustrian" type="Normal">
+    <dbid>9302</dbid>
+    <displaynameid>122548</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\abilities\ability_radetzky_march_lrg.png</icon>
+    <rollovertextid>122549</rollovertextid>
+    <flag>YPNoTextMessage</flag>
+    <flag>DEUseMediumButton3</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DEHideAdvancedRollover</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">deNatHabsburgRadetzyMarch</effect>
+    </effects>
+  </tech>
+  <tech name="deNatHabsburgRadetzyMarch" type="Normal">
+    <effects>
+      <effect type="TechStatus" status="active" mergemode="add">deNatHabsburgRadetzyMarchBohemian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">deNatHabsburgRadetzyMarchBavarian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">deNatHabsburgRadetzyMarchAustrian</effect>
+    </effects>
+  </tech>
+  <tech name="DENatHabsburgViennaCongressBohemian" type="Normal">
+    <dbid>9315</dbid>
+    <displaynameid>122279</displaynameid>
+    <cost resourcetype="Food">250.0000</cost>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\habsburg\congress_of_vienna.png</icon>
+    <rollovertextid>122278</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatHabsburgViennaCongress</effect>
+    </effects>
+  </tech>
+  <tech name="DENatHabsburgViennaCongressBavarian" type="Normal">
+    <dbid>9315</dbid>
+    <displaynameid>122279</displaynameid>
+    <cost resourcetype="Food">250.0000</cost>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\habsburg\congress_of_vienna.png</icon>
+    <rollovertextid>122278</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatHabsburgViennaCongress</effect>
+    </effects>
+  </tech>
+  <tech name="DENatHabsburgViennaCongressAustrian" type="Normal">
+    <dbid>9315</dbid>
+    <displaynameid>122279</displaynameid>
+    <cost resourcetype="Food">250.0000</cost>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\habsburg\congress_of_vienna.png</icon>
+    <rollovertextid>122278</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatHabsburgViennaCongress</effect>
+    </effects>
+  </tech>
+  <tech name="DENatHabsburgViennaCongress" type="Normal">
+    <effects>
+      <effect type="TechStatus" status="active" mergemode="add">DENatHabsburgViennaCongressBohemian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatHabsburgViennaCongressBavarian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatHabsburgViennaCongressAustrian</effect>
+    </effects>
+  </tech>
+  <tech name="DENatHabsburgCrownLandsBohemian" type="Normal">
+    <dbid>9316</dbid>
+    <displaynameid>122281</displaynameid>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\habsburg\crown_lands.png</icon>
+    <rollovertextid>122280</rollovertextid>
+    <valuetext>{techResourceAmount(DENatHabsburgCrownLands)}</valuetext>
+    <flag>YPNativeImprovement</flag>
+    <flag>DEUsesValueText</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatHabsburgCrownLands</effect>
+    </effects>
+  </tech>
+  <tech name="DENatHabsburgCrownLandsBavarian" type="Normal">
+    <dbid>9316</dbid>
+    <displaynameid>122281</displaynameid>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\habsburg\crown_lands.png</icon>
+    <rollovertextid>122280</rollovertextid>
+    <valuetext>{techResourceAmount(DENatHabsburgCrownLands)}</valuetext>
+    <flag>YPNativeImprovement</flag>
+    <flag>DEUsesValueText</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatHabsburgCrownLands</effect>
+    </effects>
+  </tech>
+  <tech name="DENatHabsburgCrownLandsAustrian" type="Normal">
+    <dbid>9316</dbid>
+    <displaynameid>122281</displaynameid>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\habsburg\crown_lands.png</icon>
+    <rollovertextid>122280</rollovertextid>
+    <valuetext>{techResourceAmount(DENatHabsburgCrownLands)}</valuetext>
+    <flag>YPNativeImprovement</flag>
+    <flag>DEUsesValueText</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatHabsburgCrownLands</effect>
+    </effects>
+  </tech>
+  <tech name="DENatHabsburgCrownLands" type="Normal">
+    <effects>
+      <effect type="TechStatus" status="active" mergemode="add">DENatHabsburgCrownLandsBohemian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatHabsburgCrownLandsBavarian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatHabsburgCrownLandsAustrian</effect>
+    </effects>
+  </tech>
+  <tech name="DENatHabsburgMultinationalismBohemian" type="Normal">
+    <dbid>9317</dbid>
+    <displaynameid>122283</displaynameid>
+    <cost resourcetype="Gold">1500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\habsburg\multinationalism.png</icon>
+    <rollovertextid>122282</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatHabsburgMultinationalism</effect>
+    </effects>
+  </tech>
+  <tech name="DENatHabsburgMultinationalismBavarian" type="Normal">
+    <dbid>9317</dbid>
+    <displaynameid>122283</displaynameid>
+    <cost resourcetype="Gold">1500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\habsburg\multinationalism.png</icon>
+    <rollovertextid>122282</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatHabsburgMultinationalism</effect>
+    </effects>
+  </tech>
+  <tech name="DENatHabsburgMultinationalismAustrian" type="Normal">
+    <dbid>9317</dbid>
+    <displaynameid>122283</displaynameid>
+    <cost resourcetype="Gold">1500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\habsburg\multinationalism.png</icon>
+    <rollovertextid>122282</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatHabsburgMultinationalism</effect>
+    </effects>
+  </tech>
+  <tech name="DENatHabsburgMultinationalism" type="Normal">
+    <effects>
+      <effect type="TechStatus" status="active" mergemode="add">
+        DENatHabsburgMultinationalismBohemian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">
+        DENatHabsburgMultinationalismBavarian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">
+        DENatHabsburgMultinationalismAustrian</effect>
+    </effects>
+  </tech>
+  <tech name="DENatHabsburgAustroHungarianBohemian" type="Normal">
+    <dbid>9304</dbid>
+    <displaynameid>122552</displaynameid>
+    <cost resourcetype="Food">375.0000</cost>
+    <cost resourcetype="Gold">375.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\habsburg\austro_hungarian_empire.png</icon>
+    <rollovertextid>122551</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatHabsburgAustroHungarian</effect>
+    </effects>
+  </tech>
+  <tech name="DENatHabsburgAustroHungarianBavarian" type="Normal">
+    <dbid>9304</dbid>
+    <displaynameid>122552</displaynameid>
+    <cost resourcetype="Food">375.0000</cost>
+    <cost resourcetype="Gold">375.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\habsburg\austro_hungarian_empire.png</icon>
+    <rollovertextid>122551</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatHabsburgAustroHungarian</effect>
+    </effects>
+  </tech>
+  <tech name="DENatHabsburgAustroHungarianAustrian" type="Normal">
+    <dbid>9304</dbid>
+    <displaynameid>122552</displaynameid>
+    <cost resourcetype="Food">375.0000</cost>
+    <cost resourcetype="Gold">375.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\europeans\habsburg\austro_hungarian_empire.png</icon>
+    <rollovertextid>122551</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">DENatHabsburgAustroHungarian</effect>
+    </effects>
+  </tech>
+  <tech name="DENatHabsburgAustroHungarian" type="Normal">
+    <effects>
+      <effect type="TechStatus" status="active" mergemode="add">DENatHabsburgAustroHungarianBohemian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatHabsburgAustroHungarianBavarian</effect>
+      <effect type="TechStatus" status="active" mergemode="add">DENatHabsburgAustroHungarianAustrian</effect>
+    </effects>
+  </tech>
 </techtreemods>

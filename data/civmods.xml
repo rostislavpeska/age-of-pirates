@@ -727,9 +727,8 @@
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
   </civ>
-
   <civ>
-    <name>zpSaxonKing</name>
+    <name>zpPrinceElector</name>
     <main>0</main>
     <subcivtype>1</subcivtype>
     <portrait>ui\native_allies\tupi</portrait>
@@ -741,7 +740,7 @@
     <unalliedid>26444</unalliedid>
     <multipleblocktrain>
       <building>TradingPost</building>
-      <multipleblockunit>zpNatMercMountedInfantryProxy</multipleblockunit>
+      <multipleblockunit>zpNatMountedInfantryElector</multipleblockunit>
       <units>
         <unit>deNatMountedInfantryRider</unit>
       </units>
@@ -751,7 +750,7 @@
     </multipleblocktrain>
     <multipleblocktrain>
       <building>TradingPost</building>
-      <multipleblockunit>zpNatLineInfantryProxy</multipleblockunit>
+      <multipleblockunit>zpNatLineInfantryElector</multipleblockunit>
       <units>
         <unit>deNatLineInfantry</unit>
       </units>
@@ -761,27 +760,7 @@
     </multipleblocktrain>
     <multipleblocktrain>
       <building>TradingPost</building>
-      <multipleblockunit>zpNatLipkaTatarProxy</multipleblockunit>
-      <units>
-        <unit>deNatLipkaTatar</unit>
-      </units>
-      <unitcounts>
-        <count>1</count>
-      </unitcounts>
-    </multipleblocktrain>
-    <multipleblocktrain>
-      <building>TradingPost</building>
-      <multipleblockunit>zpNatShockRiderProxy</multipleblockunit>
-      <units>
-        <unit>deNatShockRider</unit>
-      </units>
-      <unitcounts>
-        <count>1</count>
-      </unitcounts>
-    </multipleblocktrain>
-    <multipleblocktrain>
-      <building>TradingPost</building>
-      <multipleblockunit>zpNatChevaulegerProxy</multipleblockunit>
+      <multipleblockunit>zpNatChevaulegerElector</multipleblockunit>
       <units>
         <unit>deNatChevauleger</unit>
       </units>
@@ -791,7 +770,7 @@
     </multipleblocktrain>
     <multipleblocktrain>
       <building>TradingPost</building>
-      <multipleblockunit>zpNatMountainTrooperProxy</multipleblockunit>
+      <multipleblockunit>zpNatMountainTrooperElector</multipleblockunit>
       <units>
         <unit>deNatMountainTrooper</unit>
       </units>
@@ -799,9 +778,89 @@
         <count>1</count>
       </unitcounts>
     </multipleblocktrain>
+    <multipleblocktrain>
+      <building>TradingPost</building>
+      <multipleblockunit>zpNatDrummerElector</multipleblockunit>
+      <units>
+        <unit>deNatDrummer</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>TradingPost</building>
+      <multipleblockunit>zpNatTotenkopfElector</multipleblockunit>
+      <units>
+        <unit>deNatTotenkopf</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>TradingPost</building>
+      <multipleblockunit>zpNatBrunswickerElector</multipleblockunit>
+      <units>
+        <unit>deNatBrunswicker</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>TradingPost</building>
+      <multipleblockunit>zpNatTrabantElector</multipleblockunit>
+      <units>
+        <unit>deNatTrabant</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>TradingPost</building>
+      <multipleblockunit>zpNatSaxonCuirassierElector</multipleblockunit>
+      <units>
+        <unit>deNatSaxonCuirassier</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>TradingPost</building>
+      <multipleblockunit>zpNatRoyalHuntsmanElector</multipleblockunit>
+      <units>
+        <unit>deNatRoyalHuntsman</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>TradingPost</building>
+      <multipleblockunit>zpNatNorthernMusketeerElector</multipleblockunit>
+      <units>
+        <unit>deNatNorthernMusketeer</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>TradingPost</building>
+      <multipleblockunit>zpNatRoyalHunterElector</multipleblockunit>
+      <units>
+        <unit>deNatRoyalHunter</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
     <agetech>
       <age>Age0</age>
-      <tech>zpNativeSaxonKing</tech>
+      <tech>zpNativePrinceElector</tech>
     </agetech>
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
