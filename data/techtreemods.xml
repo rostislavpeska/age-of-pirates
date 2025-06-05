@@ -24,6 +24,62 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpImperialpalaceShadow" type="Normal">
+    <dbid>41093</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpNatImperialPalace</techstatus>
+      <typecount unit="zpImperialPalace" count="1" operator="gte" state="aliveState">
+      </typecount>
+    </prereqs>
+    <effects>
+      <effect civ="zpPrinceElector" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="11.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatLandsknecht</target>
+      </effect>
+      <effect type="Data" amount="11.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatMountedInfantryRider</target>
+      </effect>
+      <effect type="Data" amount="15.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatLineInfantry</target>
+      </effect>
+      <effect type="Data" amount="10.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatChevauleger</target>
+      </effect>
+      <effect type="Data" amount="15.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatMountainTrooper</target>
+      </effect>
+      <effect type="Data" amount="3.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatDrummer</target>
+      </effect>
+      <effect type="Data" amount="12.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatTotenkopf</target>
+      </effect>
+      <effect type="Data" amount="15.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatBrunswicker</target>
+      </effect>
+      <effect type="Data" amount="10.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatTrabant</target>
+      </effect>
+      <effect type="Data" amount="7.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatSaxonCuirassier</target>
+      </effect>
+      <effect type="Data" amount="7.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatRoyalHuntsman</target>
+      </effect>
+      <effect type="Data" amount="16.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatNorthernMusketeer</target>
+      </effect>
+      <effect type="Data" amount="14.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatRoyalHunter</target>
+      </effect>
+    </effects>
+  </tech>
   <tech name="zpSPCAztecAltarColonializeShadow" type="Normal">
     <dbid>409992</dbid>
     <researchpoints>0.0000</researchpoints>
@@ -5288,6 +5344,8 @@
       <effect mergemode="add" type="SetName" proto="zpNatHussiteKnight" culture="none" newname="302695">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatLandsknecht" culture="none" newname="302768">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatLandsknechtProxy" culture="none" newname="302768">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMountedInfantryElector" culture="none" newname="122413">
       </effect>
@@ -27440,9 +27498,13 @@
     <flag>Shadow</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatLandsknechtProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatLandsknecht</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpPrinceElectorElect</effect>
+      <effect type="TechStatus" status="obtainable">zpNatImperialPalace</effect>
       <effect type="TechStatus" status="obtainable">zpGuardPrinceElector</effect>
       <effect type="TechStatus" status="obtainable">zpVeteranPrinceElector</effect>
       <effect type="TechStatus" status="obtainable">DENatHabsburgViennaCongress</effect>
@@ -27579,6 +27641,34 @@
       <effect type="CommandAdd" tech="DENatHabsburgAustroHungarian" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deNatLineInfantry</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deNatMountedInfantryRider</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpPrinceElectorElect">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatLineInfantry" page="0" column="3">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" proto="deNatMountedInfantryRider" page="0" column="2">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatHabsburgViennaCongress" page="2" column="3">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatHabsburgCrownLands" page="2" column="4">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatHabsburgMultinationalism" page="2" column="5">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatHabsburgAustroHungarian" page="2" column="6">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
       <effect civ="Habsburg" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
         <target type="Player">
         </target>
@@ -27652,6 +27742,35 @@
       <effect type="CommandAdd" tech="DENatWittelsbachHuntingGear" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">DENatChevauleger</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">DENatMountainTrooper</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpPrinceElectorElect">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" proto="DENatChevauleger" page="0" column="3">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" proto="DENatMountainTrooper" page="0" column="2">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatWittelsbachOktoberfest" page="2" column="3">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatWittelsbachDucalLancers" page="2" column="4">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatWittelsbachPhilhellenism" page="2" column="5">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatWittelsbachHuntingGear" page="2" column="6">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+
       <effect civ="Wittelsbach" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
         <target type="Player">
         </target>
@@ -27790,6 +27909,40 @@
       <effect type="CommandAdd" tech="DENatHanoverVictorianEra" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">DENatBrunswicker</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">DENatTotenkopf</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">DENatDrummer</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpPrinceElectorElect">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" proto="DENatBrunswicker" page="0" column="2">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" proto=">DENatTotenkopf" page="0" column="3">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" proto="DENatDrummer" page="1" column="2">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatHanoverRoyalScotsGrey" page="2" column="3">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatHanoverRoyalCardGames" page="2" column="4">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatHanoverUnionActs" page="2" column="5">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatHanoverVictorianEra" page="2" column="6">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
       <effect civ="Hanover" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
         <target type="Player">
         </target>
@@ -27837,6 +27990,34 @@
       </effect>
       <effect type="CommandAdd" tech="DENatWettinSaxonGrenadiers" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">DENatTrabant</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">DENatSaxonCuirassier</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpPrinceElectorElect">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" proto="DENatTrabant" page="0" column="2">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" proto="DENatSaxonCuirassier" page="0" column="3">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatWettinTradeFair" page="2" column="3">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatWettinKonigstein" page="2" column="4">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatWettinMarriagePolitics" page="2" column="5">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatWettinSaxonGrenadiers" page="2" column="6">
+        <target type="ProtoUnit">zpImperialPalace</target>
       </effect>
       <effect civ="Wettin" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
         <target type="Player">
@@ -27889,6 +28070,37 @@
       <effect type="CommandAdd" tech="DENatOldenBurgOresundCustoms" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">DENatRoyalHuntsman</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">DENatNorthernMusketeer</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpPrinceElectorElect">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" proto="DENatRoyalHuntsman" page="0" column="2">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" proto=">DENatNorthernMusketeer" page="0" column="3">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" proto="DENatRoyalHunter" page="0" column="2">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatOldenBurgArmedNeutrality" page="2" column="3">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatOldenBurgHuntingExpeditions" page="2" column="4">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatOldenBurgKalthoffRepeaters" page="2" column="5">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatOldenBurgOresundCustoms" page="2" column="6">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
       <effect civ="Oldenburg" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
         <target type="Player">
         </target>
@@ -27922,6 +28134,10 @@
       <effect type="SetName" proto="zpNatLandsknecht" culture="none" newname="302766">
       </effect>
       <effect type="SetName" proto="zpNatLandsknecht" culture="none" newname="302768" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatLandsknechtProxy" culture="none" newname="302766">
+      </effect>
+      <effect type="SetName" proto="zpNatLandsknechtProxy" culture="none" newname="302768" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="SetName" proto="zpNatMountedInfantryElector" culture="none" newname="122407">
       </effect>
@@ -27986,6 +28202,10 @@
       <effect type="SetName" proto="zpNatLandsknecht" culture="none" newname="302767">
       </effect>
       <effect type="SetName" proto="zpNatLandsknecht" culture="none" newname="302768" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatLandsknechtProxy" culture="none" newname="302767">
+      </effect>
+      <effect type="SetName" proto="zpNatLandsknechtProxy" culture="none" newname="302768" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="SetName" proto="zpNatMountedInfantryElector" culture="none" newname="122410">
       </effect>
@@ -28053,8 +28273,148 @@
       <effect mergemode="add" type="CommandRemove" proto="zpNatRoyalHuntsmanElector">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect mergemode="add" type="CommandRemove" proto="zpNatRoyalHuntsmanElector">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
     </effects>
   </tech>
+  <tech name="zpNatImperialPalace" type="Normal">
+    <dbid>41094</dbid>
+    <displaynameid>302773</displaynameid>
+    <cost resourcetype="Wood">500.0000</cost>
+    <cost resourcetype="Gold">600.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\elector_imperial_palace.png</icon>
+    <rollovertextid>302777</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status ="active">Industrialize</techstatus>
+		</prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpImperialPalace</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpImperialPalaceWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="DEGermanAlliesHabsburg">
+    <effects>
+      <effect mergemode="add" type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMountedInfantryElector</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatLineInfantryElector</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatLineInfantryElector" relativity="Absolute">
+        <target type="ProtoUnit">deIconPELineInfantry</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMountedInfantryElector" relativity="Absolute">
+        <target type="ProtoUnit">deIconPEMountedInfantry</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpElectorSiteIncrease" type="Normal">
+    <dbid>41095</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="11.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatLandsknecht</target>
+      </effect>
+      <effect type="Data" amount="11.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatMountedInfantryRider</target>
+      </effect>
+      <effect type="Data" amount="15.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatLineInfantry</target>
+      </effect>
+      <effect type="Data" amount="10.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatChevauleger</target>
+      </effect>
+      <effect type="Data" amount="15.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatMountainTrooper</target>
+      </effect>
+      <effect type="Data" amount="3.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatDrummer</target>
+      </effect>
+      <effect type="Data" amount="12.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatTotenkopf</target>
+      </effect>
+      <effect type="Data" amount="15.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatBrunswicker</target>
+      </effect>
+      <effect type="Data" amount="10.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatTrabant</target>   
+      </effect>
+      <effect type="Data" amount="7.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatSaxonCuirassier</target>
+      </effect>
+      <effect type="Data" amount="7.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatRoyalHuntsman</target>
+      </effect>
+      <effect type="Data" amount="16.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatNorthernMusketeer</target>
+      </effect>
+      <effect type="Data" amount="14.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatRoyalHunter</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpElectorSiteDecrease" type="Normal">
+    <dbid>41096</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="-11.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatLandsknecht</target>
+      </effect>
+      <effect type="Data" amount="-11.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatMountedInfantryRider</target>
+      </effect>
+      <effect type="Data" amount="-15.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatLineInfantry</target>
+      </effect>
+      <effect type="Data" amount="-10.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatChevauleger</target>
+      </effect>
+      <effect type="Data" amount="-15.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatMountainTrooper</target>
+      </effect>
+      <effect type="Data" amount="-3.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatDrummer</target>
+      </effect>
+      <effect type="Data" amount="-12.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatTotenkopf</target>
+      </effect>
+      <effect type="Data" amount="-15.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatBrunswicker</target>
+      </effect>
+      <effect type="Data" amount="-10.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatTrabant</target>   
+      </effect>
+      <effect type="Data" amount="-7.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatSaxonCuirassier</target>
+      </effect>
+      <effect type="Data" amount="-7.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatRoyalHuntsman</target>
+      </effect>
+      <effect type="Data" amount="-16.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatNorthernMusketeer</target>
+      </effect>
+      <effect type="Data" amount="-14.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatRoyalHunter</target>
+      </effect>
+    </effects>
+  </tech>
+  
 <!--TEST-->
 
   <!--<tech name="zpNativeSaxonKing" type="Normal">

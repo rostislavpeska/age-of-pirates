@@ -626,7 +626,6 @@
 		<unit variation="96" posx="34.8409" posz="-1.8211" orientx="0.0079" orienty="0.0000" orientz="-1.0000">UnderbrushForest</unit>
 		<unit variation="67" posx="48.1275" posz="-0.7489" orientx="1.0000" orienty="-0.0020" orientz="-0.0001">zpInvisibleGateSocketD</unit>
 		<unit variation="8" posx="25.0360" posz="0.4442" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNativePropsEuroPalaces</unit>
-		<unit variation="81" posx="-21.7254" posz="-2.0688" orientx="0.1801" orienty="0.2327" orientz="0.9557">Wolf</unit>
 		<unit variation="2" posx="-30.9779" posz="-2.9538" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpPropMarketStall</unit>
 		<unit variation="130" posx="-38.8770" posz="-0.1171" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCCityBuildingMix</unit>
 		<unit variation="0" posx="-39.5708" posz="1.6741" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>

@@ -2770,7 +2770,13 @@
       <string _locid="302770">ZP Socket Elector Bavaria</string>
       <string _locid="302771">Prince Elector: Austria</string>
       <string _locid="302772">ZP Socket Elector Austria</string>
-
+      <string _locid="302773">Imperial Residence</string>
+      <string _locid="302774">ZP Imperial Palace</string>
+      <string _locid="302775">Imperial Palace Wagon</string>
+      <string _locid="302776">ZP Imperial Palace Wagon</string>
+      <string _locid="302777">Allows you to construct a Imperial Residence as an additional Elector settlement.</string>
+      <string _locid="302778">Imperial Palace, can train native units and provides you with native improvements. Once built, permanently increases your native unit build limit.</string>
+      <string _locid="302779">ZP Elector Palace Center</string>
 
 
       <!-- ======================================== -->

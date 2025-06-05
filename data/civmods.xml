@@ -740,6 +740,16 @@
     <unalliedid>26444</unalliedid>
     <multipleblocktrain>
       <building>TradingPost</building>
+      <multipleblockunit>zpNatLandsknechtProxy</multipleblockunit>
+      <units>
+        <unit>zpNatLandsknecht</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>TradingPost</building>
       <multipleblockunit>zpNatMountedInfantryElector</multipleblockunit>
       <units>
         <unit>deNatMountedInfantryRider</unit>
