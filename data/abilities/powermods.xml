@@ -464,6 +464,37 @@
     <rolloverid>302642</rolloverid>
     <icon>resources\images\icons\abilities\inspiring_flag_confederate_icon.png</icon>
   </power>
+  <power name="zpPowerImperialCommand" type="TempUnit">
+    <displaynameid>302782</displaynameid>
+    <rolloverid>302785</rolloverid>
+    <icon>resources\images\icons\abilities\imperial_command.png</icon>
+    <minimapeventtime sendalertto="ally">1</minimapeventtime>
+    <activetime>120</activetime>
+    <createunit pattern="Spawn" quantity="1" delay="0.0" permanent="">zpNatMercLandsknecht</createunit>
+    <createunit pattern="Spawn" quantity="1" delay="0.0" permanent="" reqtech="DENatHabsburgAustroHungarian">deNatHungarianGrenadier</createunit>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <rangeindicatorprotoid radius="12.0" indicatorcount="16" speed="0.6">PowerRanger</rangeindicatorprotoid>
+    <auxiliarypower>zpPowerImperialCommandAux</auxiliarypower>
+    <auxiliarypowertargettype>self</auxiliarypowertargettype>
+    <powerescalation>1</powerescalation>
+    <powerescalationrate>4.0</powerescalationrate>
+    <powermaxlevel>20</powermaxlevel>
+    <allowduringnorush>1</allowduringnorush>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+    <soundset type="StartSound" listenertype="All">DENatPowerPhanar</soundset>
+  </power>
+  <power name="zpPowerImperialCommandAux" type="GeneralEffect">
+    <timerrolloverid>125164</timerrolloverid>
+    <minimapeventtime sendalertto="none">1</minimapeventtime>
+    <activetime>120</activetime>
+    <effect type="Damage" relativity="BasePercent" amount="1.20">
+      <target type="ProtoUnit">LogicalTypeLandMilitary</target>
+    </effect>
+    <messagealertplayerrelation>none</messagealertplayerrelation>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <allowduringnorush>1</allowduringnorush>
+    <isauxiliarypower>1</isauxiliarypower>
+  </power>
 
 
 

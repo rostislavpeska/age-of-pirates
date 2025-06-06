@@ -642,6 +642,27 @@
     </socketbuild>
     <rollovertextid>302653</rollovertextid>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpNatImperialCommandSmall</name>
+    <icon>resources\images\icons\abilities\imperial_command.png</icon>
+    <associatedtech>zpNatImperialCommand</associatedtech>
+    <associatedpower>zpPowerImperialCommand</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>zpPrinceElector</subciv>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpNatImperialCommandUniversal</name>
+    <icon>resources\images\icons\abilities\imperial_command.png</icon>
+    <associatedtech>zpNatImperialCommand</associatedtech>
+    <associatedpower>zpPowerImperialCommand</associatedpower>
+    <castpower>
+    </castpower>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
 
   <!--
 

@@ -96,6 +96,8 @@
     <ability>zpPowerSansculotteExpansion<tech>zpNatSansculotteBigbuttonDisableShadow</tech><subciv>zpSansculottes</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>    
     <ability>zpAuditoreLighthouse<tech>Colonialize</tech><subciv>Auditore</subciv><rof>120.0</rof><castonself>true</castonself></ability>
     <ability>zpNatPowerBlanikKnights<tech>Colonialize</tech><subciv>zpBohemianKing</subciv><subcivalliancefactor>0.5</subcivalliancefactor><uicommand>uiFindNativeSiteSubCiv("zpBohemianKing")</uicommand><rof>250</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
+    <ability>zpPowerImperialCommand<tech>Colonialize</tech><subciv>zpPrinceElector</subciv><subcivalliancefactor>0.5</subcivalliancefactor><activetimecooldown>true</activetimecooldown><uicommand>uiFindNativeSiteSubCiv("zpPrinceElector")</uicommand><rof>450</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
+    <ability>zpPowerImperialCommandAux<rof>1</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
   </tradingpost>
   <zparmoredtraingun>
     <ability>dePowerPeninsularFixedGunLongRangeAttack<rof>60</rof><tech>zpArmoredTrainImprove</tech></ability>
@@ -303,7 +305,10 @@
     <ability>deChargeAbilityObsidian<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpnatskullknight>
-
+  <zpimperialpalace>
+    <ability>zpPowerImperialCommand<tech>Colonialize</tech><subciv>zpPrinceElector</subciv><subcivalliancefactor>0.5</subcivalliancefactor><activetimecooldown>true</activetimecooldown><uicommand>uiFindNativeSiteSubCiv("zpPrinceElector")</uicommand><rof>450</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
+    <ability>zpPowerImperialCommandAux<rof>1</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
+  </zpimperialpalace>
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
   </zpwokoudiver>

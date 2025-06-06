@@ -872,6 +872,10 @@
       <age>Age0</age>
       <tech>zpNativePrinceElector</tech>
     </agetech>
+    <agetech>
+      <age>Age1</age>
+      <tech>zpNativePrinceElectorColonialize</tech>
+    </agetech>
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
   </civ>

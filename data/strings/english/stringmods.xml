@@ -2777,6 +2777,14 @@
       <string _locid="302777">Allows you to construct a Imperial Residence as an additional Elector settlement.</string>
       <string _locid="302778">Imperial Palace, can train native units and provides you with native improvements. Once built, permanently increases your native unit build limit.</string>
       <string _locid="302779">ZP Elector Palace Center</string>
+      <string _locid="302780">All controled Electorates will trickle small amount of food to feed the Empire.</string>
+      <string _locid="302781">Imperial Quotas</string>
+      <string _locid="302782">Imperial Command</string>
+      <string _locid="302783">ZP NAT MERC Landsknecht</string>
+      <string _locid="302784">Imperial Command time remaining</string>
+      <string _locid="302785">Spawns Elector Landsknechts. Lhe longer you wait the more Landsknechts you get. Temporarily boosts all military unit damage.</string>
+
+
 
 
       <!-- ======================================== -->

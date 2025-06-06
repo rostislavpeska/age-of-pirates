@@ -5345,6 +5345,8 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatLandsknecht" culture="none" newname="302768">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercLandsknecht" culture="none" newname="302768">
+      </effect>
       <effect mergemode="add" type="SetName" proto="zpNatLandsknechtProxy" culture="none" newname="302768">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMountedInfantryElector" culture="none" newname="122413">
@@ -27504,6 +27506,8 @@
         <target type="ProtoUnit">zpNatLandsknecht</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpPrinceElectorElect</effect>
+      <effect type="TechStatus" status="obtainable">zpNatImperialCommand</effect>
+      <effect type="TechStatus" status="obtainable">zpNatImperialQuotas</effect>
       <effect type="TechStatus" status="obtainable">zpNatImperialPalace</effect>
       <effect type="TechStatus" status="obtainable">zpGuardPrinceElector</effect>
       <effect type="TechStatus" status="obtainable">zpVeteranPrinceElector</effect>
@@ -27527,7 +27531,6 @@
       <effect type="TechStatus" status="obtainable">DENatOldenBurgHuntingExpeditions</effect>
       <effect type="TechStatus" status="obtainable">DENatOldenBurgKalthoffRepeaters</effect>
       <effect type="TechStatus" status="obtainable">DENatOldenBurgOresundCustoms</effect>
-
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
     </effects>
   </tech>
@@ -28131,6 +28134,12 @@
       <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatLandsknecht</target>
       </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercLandsknecht</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercLandsknecht</target>
+      </effect>
       <effect type="SetName" proto="zpNatLandsknecht" culture="none" newname="302766">
       </effect>
       <effect type="SetName" proto="zpNatLandsknecht" culture="none" newname="302768" reqtech="ImpLegendaryNativesShadow">
@@ -28138,6 +28147,10 @@
       <effect type="SetName" proto="zpNatLandsknechtProxy" culture="none" newname="302766">
       </effect>
       <effect type="SetName" proto="zpNatLandsknechtProxy" culture="none" newname="302768" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatMercLandsknecht" culture="none" newname="302766">
+      </effect>
+      <effect type="SetName" proto="zpNatMercLandsknecht" culture="none" newname="302768" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="SetName" proto="zpNatMountedInfantryElector" culture="none" newname="122407">
       </effect>
@@ -28199,6 +28212,12 @@
       <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatLandsknecht</target>
       </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercLandsknecht</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercLandsknecht</target>
+      </effect>
       <effect type="SetName" proto="zpNatLandsknecht" culture="none" newname="302767">
       </effect>
       <effect type="SetName" proto="zpNatLandsknecht" culture="none" newname="302768" reqtech="ImpLegendaryNativesShadow">
@@ -28206,6 +28225,10 @@
       <effect type="SetName" proto="zpNatLandsknechtProxy" culture="none" newname="302767">
       </effect>
       <effect type="SetName" proto="zpNatLandsknechtProxy" culture="none" newname="302768" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatMercLandsknecht" culture="none" newname="302767">
+      </effect>
+      <effect type="SetName" proto="zpNatMercLandsknecht" culture="none" newname="302768" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="SetName" proto="zpNatMountedInfantryElector" culture="none" newname="122410">
       </effect>
@@ -28414,7 +28437,53 @@
       </effect>
     </effects>
   </tech>
-  
+  <tech name="zpNatImperialQuotas" type="Normal">
+    <dbid>41097</dbid>
+    <displaynameid>302781</displaynameid>
+    <cost resourcetype="Wood">300.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\electorial_empire_quota.png</icon>
+    <rollovertextid>302780</rollovertextid>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" action="AutoGatherElectorFood" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatImperialCommand" type="Normal">
+    <dbid>41098</dbid>
+    <displaynameid>302782</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\abilities\imperial_command.png</icon>
+    <rollovertextid>302785</rollovertextid>
+    <flag>YPNoTextMessage</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DEHideAdvancedRollover</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+  </tech>
+   <tech name="zpNativePrinceElectorColonialize" type="Normal">
+    <dbid>41099</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpNatImperialCommand</effect>
+      <effect type="CommandRemove" tech="zpNatImperialCommand">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+
+
+
+
 <!--TEST-->
 
   <!--<tech name="zpNativeSaxonKing" type="Normal">
