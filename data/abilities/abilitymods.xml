@@ -306,9 +306,10 @@
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpnatskullknight>
   <zpimperialpalace>
-    <ability>zpPowerImperialCommand<tech>Colonialize</tech><subciv>zpPrinceElector</subciv><subcivalliancefactor>0.5</subcivalliancefactor><activetimecooldown>true</activetimecooldown><uicommand>uiFindNativeSiteSubCiv("zpPrinceElector")</uicommand><rof>450</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
+    <ability>zpPowerImperialCommand<activetimecooldown>true</activetimecooldown><rof>450</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
     <ability>zpPowerImperialCommandAux<rof>1</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
   </zpimperialpalace>
+
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
   </zpwokoudiver>

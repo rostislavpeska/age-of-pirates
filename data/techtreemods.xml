@@ -5422,6 +5422,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranPrinceElector</effect>
     </effects>
   </tech>
   <tech name="AAStandardNativeTechsPI">
@@ -5470,6 +5472,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranPrinceElector</effect>
     </effects>
   </tech>
   <tech name="ypAAAsianStandardTechsPI">
@@ -5518,6 +5522,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranPrinceElector</effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothers">
@@ -5564,6 +5570,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranPrinceElector</effect>
       <effect mergemode="add" type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
       </effect>
@@ -5615,6 +5623,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranPrinceElector</effect>
       <effect mergemode="add" type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
       </effect>
@@ -5668,6 +5678,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranPrinceElector</effect>
     </effects>
   </tech>
   <tech name="DEChampionNativeWarriorsAfricanShadow">
@@ -5716,6 +5728,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranPrinceElector</effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialMexicans">
@@ -5764,6 +5778,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpVeteranPrinceElector</effect>
     </effects>
   </tech>
   <tech name="DEHeavyFixedGun">
@@ -27532,9 +27548,15 @@
       <effect type="TechStatus" status="obtainable">DENatOldenBurgKalthoffRepeaters</effect>
       <effect type="TechStatus" status="obtainable">DENatOldenBurgOresundCustoms</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyElector</effect>
+      <effect type="TechStatus" status="obtainable">zpIndianFriendshipElector</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyElector</effect>
+      <effect type="Data" amount="1.00" subtype="GrantsPowerDuration" protopower="zpPowerImperialCommand" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
     </effects>
   </tech>
-
   <tech name="zpPrinceElectorNativeSetup" type="Normal">
     <dbid>41083</dbid>
     <status>UNOBTAINABLE</status>
@@ -27599,6 +27621,8 @@
       </effect>
       <effect type="CommandRemove" tech="DENatOldenBurgOresundCustoms">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="SetName" tech="DENatHabsburgAustroHungarian" newname="122552" newrollover="302786">
       </effect>
     </effects>
   </tech>
@@ -28341,6 +28365,76 @@
       </effect>
     </effects>
   </tech>
+  <tech name="DEGermanAlliesWittelsbach">
+    <effects>
+      <effect mergemode="add" type="Data" amount="2.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatChevaulegerElector</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMountainTrooperElector</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMountainTrooperElector" relativity="Absolute">
+        <target type="ProtoUnit">deIconPEMountainTrooper</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatChevaulegerElector" relativity="Absolute">
+        <target type="ProtoUnit">deIconPEBavarianHorseman</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="DEGermanAlliesHanover">
+    <effects>
+      <effect mergemode="add" type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatBrunswickerElector</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatTotenkopfElector</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatDrummerElector</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatBrunswickerElector" relativity="Absolute">
+        <target type="ProtoUnit">deIconPEBrunswicker</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatDrummerElector" relativity="Absolute">
+        <target type="ProtoUnit">deIconPEDrummer</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatTotenkopfElector" relativity="Absolute">
+        <target type="ProtoUnit">deIconPETotenkopf</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="DEGermanAlliesWettin">
+    <effects>
+      <effect mergemode="add" type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatTrabantElector</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="3.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSaxonCuirassierElector</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatTrabantElector" relativity="Absolute">
+        <target type="ProtoUnit">deIconPETrabant</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatSaxonCuirassierElector" relativity="Absolute">
+        <target type="ProtoUnit">deIconPESaxonCuirassier</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="DEGermanAlliesOldenburg">
+    <effects>
+      <effect mergemode="add" type="Data" amount="2.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRoyalHunterElector</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatNorthernMusketeerElector</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatNorthernMusketeerElector" relativity="Absolute">
+        <target type="ProtoUnit">deIconPENorthernMusketeer</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatRoyalHunterElector" relativity="Absolute">
+        <target type="ProtoUnit">deIconPERoyalHunter</target>
+      </effect>
+    </effects>
+  </tech>
   <tech name="zpElectorSiteIncrease" type="Normal">
     <dbid>41095</dbid>
     <researchpoints>0.0000</researchpoints>
@@ -28477,6 +28571,53 @@
       <effect type="TechStatus" status="active">zpNatImperialCommand</effect>
       <effect type="CommandRemove" tech="zpNatImperialCommand">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTradeTreatyElector" type="Normal">
+    <dbid>41100</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">HCNativeTreaties</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="4.00" subtype="FreeHomeCityUnit" unittype="zpNatLandsknecht" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpIndianFriendshipElector" type="Normal">
+    <dbid>41101</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="8.00" subtype="FreeHomeCityUnit" unittype="zpNatLandsknecht" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpVeteranPrinceElector</effect>
+      <effect type="TechStatus" status="active">zpGuardPrinceElector</effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTreatyElector" type="Normal">
+    <dbid>40948</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>
