@@ -1,0 +1,28 @@
+<protounitsounddef>
+  <protounit name="zpSPCGermanCathedralCon0">
+    <soundtype name="Select">
+        <soundset name="UI_Building_Economic">
+        </soundset>
+    </soundtype>
+    <soundtype name="SelectSecondary">
+      <techlogic>
+            <choice name="none">
+                <soundset name="UI_Select_Building_House">
+                </soundset>
+            </choice>
+            <choice name="zpSPCCathedralStage4">
+                <soundset name="UI_Select_Building_Cathedral">
+                </soundset>
+            </choice>
+        </techlogic>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="BuildingDestruction">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="UI_Select_Building_Cathedral">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

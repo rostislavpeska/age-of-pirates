@@ -262,6 +262,9 @@
   <zpspcgermancathedral>
     <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
   </zpspcgermancathedral>
+  <zpspcgermancathedralcon0>
+    <ability>ypPowerCeaseFire<tech>zpSPCCathedralStage4</tech><rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcgermancathedralcon0>
   <zpverseilleschurch>
     <ability>zpPowerInformersFrench<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
   </zpverseilleschurch>
@@ -305,10 +308,6 @@
     <ability>deChargeAbilityObsidian<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpnatskullknight>
-  <zpimperialpalace>
-    <ability>zpPowerImperialCommand<activetimecooldown>true</activetimecooldown><rof>450</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
-    <ability>zpPowerImperialCommandAux<rof>1</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
-  </zpimperialpalace>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

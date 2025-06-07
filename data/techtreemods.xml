@@ -24,62 +24,6 @@
       </effect>
     </effects>
   </tech>
-  <tech name="zpImperialpalaceShadow" type="Normal">
-    <dbid>41093</dbid>
-    <researchpoints>0.0000</researchpoints>
-    <status>OBTAINABLE</status>
-    <flag>Shadow</flag>
-    <prereqs>
-      <techstatus status="Active">zpNatImperialPalace</techstatus>
-      <typecount unit="zpImperialPalace" count="1" operator="gte" state="aliveState">
-      </typecount>
-    </prereqs>
-    <effects>
-      <effect civ="zpPrinceElector" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="Data" amount="11.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">zpNatLandsknecht</target>
-      </effect>
-      <effect type="Data" amount="11.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">deNatMountedInfantryRider</target>
-      </effect>
-      <effect type="Data" amount="15.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">deNatLineInfantry</target>
-      </effect>
-      <effect type="Data" amount="10.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">deNatChevauleger</target>
-      </effect>
-      <effect type="Data" amount="15.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">deNatMountainTrooper</target>
-      </effect>
-      <effect type="Data" amount="3.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">deNatDrummer</target>
-      </effect>
-      <effect type="Data" amount="12.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">deNatTotenkopf</target>
-      </effect>
-      <effect type="Data" amount="15.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">deNatBrunswicker</target>
-      </effect>
-      <effect type="Data" amount="10.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">deNatTrabant</target>
-      </effect>
-      <effect type="Data" amount="7.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">deNatSaxonCuirassier</target>
-      </effect>
-      <effect type="Data" amount="7.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">deNatRoyalHuntsman</target>
-      </effect>
-      <effect type="Data" amount="16.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">deNatNorthernMusketeer</target>
-      </effect>
-      <effect type="Data" amount="14.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">deNatRoyalHunter</target>
-      </effect>
-    </effects>
-  </tech>
   <tech name="zpSPCAztecAltarColonializeShadow" type="Normal">
     <dbid>409992</dbid>
     <researchpoints>0.0000</researchpoints>
@@ -19280,6 +19224,9 @@
         <target type="ProtoUnit">zpSPCGermanCathedral</target>
       </effect>
       <effect type="Data" action="Autogather" amount="1.50" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.50" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpVerseillesChurch</target>
       </effect>
       <effect type="Data" action="AutoGatherCoinTeam" amount="1.50" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
@@ -22423,6 +22370,9 @@
       </effect>
       <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCGermanCathedral</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
       </effect>
       <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpVerseillesChurch</target>
@@ -27524,7 +27474,7 @@
       <effect type="TechStatus" status="obtainable">zpPrinceElectorElect</effect>
       <effect type="TechStatus" status="obtainable">zpNatImperialCommand</effect>
       <effect type="TechStatus" status="obtainable">zpNatImperialQuotas</effect>
-      <effect type="TechStatus" status="obtainable">zpNatImperialPalace</effect>
+      <effect type="TechStatus" status="obtainable">zpNatImperialTowers</effect>
       <effect type="TechStatus" status="obtainable">zpGuardPrinceElector</effect>
       <effect type="TechStatus" status="obtainable">zpVeteranPrinceElector</effect>
       <effect type="TechStatus" status="obtainable">DENatHabsburgViennaCongress</effect>
@@ -27675,27 +27625,6 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">deNatMountedInfantryRider</target>
       </effect>
-      <effect type="CommandRemove" tech="zpPrinceElectorElect">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" proto="deNatLineInfantry" page="0" column="3">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" proto="deNatMountedInfantryRider" page="0" column="2">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatHabsburgViennaCongress" page="2" column="3">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatHabsburgCrownLands" page="2" column="4">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatHabsburgMultinationalism" page="2" column="5">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatHabsburgAustroHungarian" page="2" column="6">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
       <effect civ="Habsburg" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
         <target type="Player">
         </target>
@@ -27769,35 +27698,12 @@
       <effect type="CommandAdd" tech="DENatWittelsbachHuntingGear" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">DENatChevauleger</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">DENatMountainTrooper</target>
       </effect>
-      <effect type="CommandRemove" tech="zpPrinceElectorElect">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" proto="DENatChevauleger" page="0" column="3">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" proto="DENatMountainTrooper" page="0" column="2">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatWittelsbachOktoberfest" page="2" column="3">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatWittelsbachDucalLancers" page="2" column="4">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatWittelsbachPhilhellenism" page="2" column="5">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatWittelsbachHuntingGear" page="2" column="6">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-
       <effect civ="Wittelsbach" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
         <target type="Player">
         </target>
@@ -27946,30 +27852,6 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">DENatDrummer</target>
       </effect>
-      <effect type="CommandRemove" tech="zpPrinceElectorElect">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" proto="DENatBrunswicker" page="0" column="2">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" proto=">DENatTotenkopf" page="0" column="3">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" proto="DENatDrummer" page="1" column="2">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatHanoverRoyalScotsGrey" page="2" column="3">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatHanoverRoyalCardGames" page="2" column="4">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatHanoverUnionActs" page="2" column="5">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatHanoverVictorianEra" page="2" column="6">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
       <effect civ="Hanover" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
         <target type="Player">
         </target>
@@ -28024,27 +27906,6 @@
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">DENatSaxonCuirassier</target>
-      </effect>
-      <effect type="CommandRemove" tech="zpPrinceElectorElect">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" proto="DENatTrabant" page="0" column="2">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" proto="DENatSaxonCuirassier" page="0" column="3">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatWettinTradeFair" page="2" column="3">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatWettinKonigstein" page="2" column="4">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatWettinMarriagePolitics" page="2" column="5">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatWettinSaxonGrenadiers" page="2" column="6">
-        <target type="ProtoUnit">zpImperialPalace</target>
       </effect>
       <effect civ="Wettin" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
         <target type="Player">
@@ -28103,30 +27964,6 @@
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">DENatNorthernMusketeer</target>
-      </effect>
-      <effect type="CommandRemove" tech="zpPrinceElectorElect">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" proto="DENatRoyalHuntsman" page="0" column="2">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" proto=">DENatNorthernMusketeer" page="0" column="3">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" proto="DENatRoyalHunter" page="0" column="2">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatOldenBurgArmedNeutrality" page="2" column="3">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatOldenBurgHuntingExpeditions" page="2" column="4">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatOldenBurgKalthoffRepeaters" page="2" column="5">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="CommandAdd" tech="DENatOldenBurgOresundCustoms" page="2" column="6">
-        <target type="ProtoUnit">zpImperialPalace</target>
       </effect>
       <effect civ="Oldenburg" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
         <target type="Player">
@@ -28320,30 +28157,23 @@
       <effect mergemode="add" type="CommandRemove" proto="zpNatRoyalHuntsmanElector">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect mergemode="add" type="CommandRemove" proto="zpNatRoyalHuntsmanElector">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
     </effects>
   </tech>
-  <tech name="zpNatImperialPalace" type="Normal">
+  <tech name="zpNatImperialTowers" type="Normal">
     <dbid>41094</dbid>
-    <displaynameid>302773</displaynameid>
-    <cost resourcetype="Wood">500.0000</cost>
-    <cost resourcetype="Gold">600.0000</cost>
+    <displaynameid>302788</displaynameid>
+    <cost resourcetype="Wood">300.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\elector_imperial_palace.png</icon>
-    <rollovertextid>302777</rollovertextid>
+    <icon>resources\images\icons\techs\electorial_empire_towers.png</icon>
+    <rollovertextid>302789</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <prereqs>
-			<techstatus status ="active">Industrialize</techstatus>
+			<techstatus status ="active">Fortressize</techstatus>
 		</prereqs>
     <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpImperialPalace</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpImperialPalaceWagon" relativity="Absolute">
+      <effect type="Data" action="SpawnBateryTowerWagon" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="TradingPost">
         <target type="Player">
         </target>
       </effect>
@@ -28618,6 +28448,459 @@
       <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralCopper1" type="Normal">
+    <dbid>40949</dbid>
+    <displaynameid>302795</displaynameid>
+    <cost resourcetype="Wood">500.0000</cost>
+    <cost resourcetype="Food">500.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>180.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cathedral_austrian_copper.png</icon>
+    <rollovertextid>302796</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpSPCCathedralStage1</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper4</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralGlass1" type="Normal">
+    <dbid>40950</dbid>
+    <displaynameid>302797</displaynameid>
+    <cost resourcetype="Wood">500.0000</cost>
+    <cost resourcetype="Food">500.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>180.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cathedral_bohemian_glass.png</icon>
+    <rollovertextid>302798</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpSPCCathedralStage1</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass4</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralBricks1" type="Normal">
+    <dbid>40951</dbid>
+    <displaynameid>302799</displaynameid>
+    <cost resourcetype="Wood">500.0000</cost>
+    <cost resourcetype="Food">500.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>180.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cathedral_saxon_bricks.png</icon>
+    <rollovertextid>302800</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpSPCCathedralStage1</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks4</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralLimestone1" type="Normal">
+    <dbid>40952</dbid>
+    <displaynameid>302801</displaynameid>
+    <cost resourcetype="Wood">500.0000</cost>
+    <cost resourcetype="Food">500.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>180.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cathedral_bavarian_limestone.png</icon>
+    <rollovertextid>302802</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpSPCCathedralStage1</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone4</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralCopper2" type="Normal">
+    <dbid>40953</dbid>
+    <displaynameid>302795</displaynameid>
+    <cost resourcetype="Wood">1000.0000</cost>
+    <cost resourcetype="Food">1000.0000</cost>
+    <cost resourcetype="Gold">1000.0000</cost>
+    <researchpoints>180.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cathedral_austrian_copper.png</icon>
+    <rollovertextid>302796</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">zpSPCCathedralStage1</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">zpSPCCathedralStage2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper4</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralGlass2" type="Normal">
+    <dbid>40954</dbid>
+    <displaynameid>302797</displaynameid>
+    <cost resourcetype="Wood">1000.0000</cost>
+    <cost resourcetype="Food">1000.0000</cost>
+    <cost resourcetype="Gold">1000.0000</cost>
+    <researchpoints>180.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cathedral_bohemian_glass.png</icon>
+    <rollovertextid>302798</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">zpSPCCathedralStage1</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">zpSPCCathedralStage2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass4</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralBricks2" type="Normal">
+    <dbid>40955</dbid>
+    <displaynameid>302799</displaynameid>
+    <cost resourcetype="Wood">1000.0000</cost>
+    <cost resourcetype="Food">1000.0000</cost>
+    <cost resourcetype="Gold">1000.0000</cost>
+    <researchpoints>180.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cathedral_saxon_bricks.png</icon>
+    <rollovertextid>302800</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">zpSPCCathedralStage1</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">zpSPCCathedralStage2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks4</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralLimestone2" type="Normal">
+    <dbid>40956</dbid>
+    <displaynameid>302801</displaynameid>
+    <cost resourcetype="Wood">1000.0000</cost>
+    <cost resourcetype="Food">1000.0000</cost>
+    <cost resourcetype="Gold">1000.0000</cost>
+    <researchpoints>180.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cathedral_bavarian_limestone.png</icon>
+    <rollovertextid>302802</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">zpSPCCathedralStage1</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">zpSPCCathedralStage2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone4</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralCopper3" type="Normal">
+    <dbid>40957</dbid>
+    <displaynameid>302795</displaynameid>
+    <cost resourcetype="Wood">1750.0000</cost>
+    <cost resourcetype="Food">1750.0000</cost>
+    <cost resourcetype="Gold">1750.0000</cost>
+    <researchpoints>180.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cathedral_austrian_copper.png</icon>
+    <rollovertextid>302796</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">zpSPCCathedralStage2</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">zpSPCCathedralStage3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper4</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralGlass3" type="Normal">
+    <dbid>40958</dbid>
+    <displaynameid>302797</displaynameid>
+    <cost resourcetype="Wood">1750.0000</cost>
+    <cost resourcetype="Food">1750.0000</cost>
+    <cost resourcetype="Gold">1750.0000</cost>
+    <researchpoints>180.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cathedral_bohemian_glass.png</icon>
+    <rollovertextid>302798</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">zpSPCCathedralStage2</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">zpSPCCathedralStage3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass4</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralBricks3" type="Normal">
+    <dbid>40959</dbid>
+    <displaynameid>302799</displaynameid>
+    <cost resourcetype="Wood">1750.0000</cost>
+    <cost resourcetype="Food">1750.0000</cost>
+    <cost resourcetype="Gold">1750.0000</cost>
+    <researchpoints>180.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cathedral_saxon_bricks.png</icon>
+    <rollovertextid>302800</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">zpSPCCathedralStage2</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">zpSPCCathedralStage3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks4</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralLimestone3" type="Normal">
+    <dbid>40960</dbid>
+    <displaynameid>302801</displaynameid>
+    <cost resourcetype="Wood">1750.0000</cost>
+    <cost resourcetype="Food">1750.0000</cost>
+    <cost resourcetype="Gold">1750.0000</cost>
+    <researchpoints>180.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cathedral_bavarian_limestone.png</icon>
+    <rollovertextid>302802</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">zpSPCCathedralStage2</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">zpSPCCathedralStage3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone4</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralCopper4" type="Normal">
+    <dbid>40961</dbid>
+    <displaynameid>302795</displaynameid>
+    <cost resourcetype="Wood">3000.0000</cost>
+    <cost resourcetype="Food">3000.0000</cost>
+    <cost resourcetype="Gold">3000.0000</cost>
+    <researchpoints>180.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cathedral_austrian_copper.png</icon>
+    <rollovertextid>302796</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">zpSPCCathedralStage3</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">zpSPCCathedralStage4</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralGlass4" type="Normal">
+    <dbid>40962</dbid>
+    <displaynameid>302797</displaynameid>
+    <cost resourcetype="Wood">3000.0000</cost>
+    <cost resourcetype="Food">3000.0000</cost>
+    <cost resourcetype="Gold">3000.0000</cost>
+    <researchpoints>180.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cathedral_bohemian_glass.png</icon>
+    <rollovertextid>302798</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">zpSPCCathedralStage3</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">zpSPCCathedralStage4</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralBricks4" type="Normal">
+    <dbid>40963</dbid>
+    <displaynameid>302799</displaynameid>
+    <cost resourcetype="Wood">3000.0000</cost>
+    <cost resourcetype="Food">3000.0000</cost>
+    <cost resourcetype="Gold">3000.0000</cost>
+    <researchpoints>180.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cathedral_saxon_bricks.png</icon>
+    <rollovertextid>302800</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">zpSPCCathedralStage3</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">zpSPCCathedralStage4</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralLimestone4" type="Normal">
+    <dbid>40964</dbid>
+    <displaynameid>302801</displaynameid>
+    <cost resourcetype="Wood">3000.0000</cost>
+    <cost resourcetype="Food">3000.0000</cost>
+    <cost resourcetype="Gold">3000.0000</cost>
+    <researchpoints>180.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cathedral_bavarian_limestone.png</icon>
+    <rollovertextid>302802</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">zpSPCCathedralStage3</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">zpSPCCathedralStage4</effect>
+    </effects>
+  </tech>
+   <tech name="zpCathedralConstructionSetup" type="Normal">
+    <dbid>40965</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpSPCCathedralCopper1</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCCathedralCopper2</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCCathedralCopper3</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCCathedralCopper4</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCCathedralGlass1</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCCathedralGlass2</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCCathedralGlass3</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCCathedralGlass4</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCCathedralBricks1</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCCathedralBricks2</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCCathedralBricks3</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCCathedralBricks4</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCCathedralLimestone1</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCCathedralLimestone2</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCCathedralLimestone3</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCCathedralLimestone4</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
+      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
+      <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralStage1" type="Normal">
+    <dbid>40966</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCGermanCathedralCon0" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
+      <effect type="CommandRemove" tech="zpSPCCathedralCopper1">
+        <target type="Protounit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpSPCCathedralGlass1">
+        <target type="Protounit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpSPCCathedralBricks1">
+        <target type="Protounit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpSPCCathedralLimestone1">
+        <target type="Protounit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="SetName" proto="zpSPCGermanCathedralCon0" culture="none" newname="302805">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralStage2" type="Normal">
+    <dbid>40967</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCGermanCathedralCon0" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
+      <effect type="CommandRemove" tech="zpSPCCathedralCopper2">
+        <target type="Protounit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpSPCCathedralGlass2">
+        <target type="Protounit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpSPCCathedralBricks2">
+        <target type="Protounit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpSPCCathedralLimestone2">
+        <target type="Protounit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="SetName" proto="zpSPCGermanCathedralCon0" culture="none" newname="302806">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralStage3" type="Normal">
+    <dbid>40968</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCGermanCathedralCon0" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
+      <effect type="CommandRemove" tech="zpSPCCathedralCopper3">
+        <target type="Protounit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpSPCCathedralGlass3">
+        <target type="Protounit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpSPCCathedralBricks3">
+        <target type="Protounit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpSPCCathedralLimestone3">
+        <target type="Protounit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="SetName" proto="zpSPCGermanCathedralCon0" culture="none" newname="302807">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCCathedralStage4" type="Normal">
+    <dbid>40969</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCGermanCathedralCon0" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
+      <effect type="CommandRemove" tech="zpSPCCathedralCopper4">
+        <target type="Protounit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpSPCCathedralGlass4">
+        <target type="Protounit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpSPCCathedralBricks4">
+        <target type="Protounit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpSPCCathedralLimestone4">
+        <target type="Protounit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCBlessedCity" page="11" column="1">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandAdd" tech="DESPCPapalLegate" page="11" column="2">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandAdd" tech="DESPCExcommunication" page="11" column="3">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="Data" action="AreaHeal" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="SetName" proto="zpSPCGermanCathedralCon0" culture="none" newname="302063" newrollover="302310" newshortrollover="302309">
       </effect>
     </effects>
   </tech>
