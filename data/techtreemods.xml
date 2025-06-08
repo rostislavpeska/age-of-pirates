@@ -28437,7 +28437,7 @@
     </effects>
   </tech>
   <tech name="zpNativeTreatyElector" type="Normal">
-    <dbid>40948</dbid>
+    <dbid>41102</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -28452,7 +28452,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralCopper1" type="Normal">
-    <dbid>40949</dbid>
+    <dbid>41103</dbid>
     <displaynameid>302795</displaynameid>
     <cost resourcetype="Wood">500.0000</cost>
     <cost resourcetype="Food">500.0000</cost>
@@ -28471,7 +28471,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralGlass1" type="Normal">
-    <dbid>40950</dbid>
+    <dbid>41104</dbid>
     <displaynameid>302797</displaynameid>
     <cost resourcetype="Wood">500.0000</cost>
     <cost resourcetype="Food">500.0000</cost>
@@ -28490,7 +28490,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralBricks1" type="Normal">
-    <dbid>40951</dbid>
+    <dbid>41105</dbid>
     <displaynameid>302799</displaynameid>
     <cost resourcetype="Wood">500.0000</cost>
     <cost resourcetype="Food">500.0000</cost>
@@ -28509,7 +28509,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralLimestone1" type="Normal">
-    <dbid>40952</dbid>
+    <dbid>41106</dbid>
     <displaynameid>302801</displaynameid>
     <cost resourcetype="Wood">500.0000</cost>
     <cost resourcetype="Food">500.0000</cost>
@@ -28528,7 +28528,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralCopper2" type="Normal">
-    <dbid>40953</dbid>
+    <dbid>41107</dbid>
     <displaynameid>302795</displaynameid>
     <cost resourcetype="Wood">1000.0000</cost>
     <cost resourcetype="Food">1000.0000</cost>
@@ -28549,7 +28549,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralGlass2" type="Normal">
-    <dbid>40954</dbid>
+    <dbid>41108</dbid>
     <displaynameid>302797</displaynameid>
     <cost resourcetype="Wood">1000.0000</cost>
     <cost resourcetype="Food">1000.0000</cost>
@@ -28570,7 +28570,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralBricks2" type="Normal">
-    <dbid>40955</dbid>
+    <dbid>41109</dbid>
     <displaynameid>302799</displaynameid>
     <cost resourcetype="Wood">1000.0000</cost>
     <cost resourcetype="Food">1000.0000</cost>
@@ -28591,7 +28591,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralLimestone2" type="Normal">
-    <dbid>40956</dbid>
+    <dbid>41110</dbid>
     <displaynameid>302801</displaynameid>
     <cost resourcetype="Wood">1000.0000</cost>
     <cost resourcetype="Food">1000.0000</cost>
@@ -28612,7 +28612,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralCopper3" type="Normal">
-    <dbid>40957</dbid>
+    <dbid>41111</dbid>
     <displaynameid>302795</displaynameid>
     <cost resourcetype="Wood">1750.0000</cost>
     <cost resourcetype="Food">1750.0000</cost>
@@ -28632,7 +28632,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralGlass3" type="Normal">
-    <dbid>40958</dbid>
+    <dbid>41112</dbid>
     <displaynameid>302797</displaynameid>
     <cost resourcetype="Wood">1750.0000</cost>
     <cost resourcetype="Food">1750.0000</cost>
@@ -28652,7 +28652,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralBricks3" type="Normal">
-    <dbid>40959</dbid>
+    <dbid>41113</dbid>
     <displaynameid>302799</displaynameid>
     <cost resourcetype="Wood">1750.0000</cost>
     <cost resourcetype="Food">1750.0000</cost>
@@ -28672,7 +28672,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralLimestone3" type="Normal">
-    <dbid>40960</dbid>
+    <dbid>41114</dbid>
     <displaynameid>302801</displaynameid>
     <cost resourcetype="Wood">1750.0000</cost>
     <cost resourcetype="Food">1750.0000</cost>
@@ -28692,7 +28692,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralCopper4" type="Normal">
-    <dbid>40961</dbid>
+    <dbid>41115</dbid>
     <displaynameid>302795</displaynameid>
     <cost resourcetype="Wood">3000.0000</cost>
     <cost resourcetype="Food">3000.0000</cost>
@@ -28711,7 +28711,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralGlass4" type="Normal">
-    <dbid>40962</dbid>
+    <dbid>41116</dbid>
     <displaynameid>302797</displaynameid>
     <cost resourcetype="Wood">3000.0000</cost>
     <cost resourcetype="Food">3000.0000</cost>
@@ -28730,7 +28730,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralBricks4" type="Normal">
-    <dbid>40963</dbid>
+    <dbid>41117</dbid>
     <displaynameid>302799</displaynameid>
     <cost resourcetype="Wood">3000.0000</cost>
     <cost resourcetype="Food">3000.0000</cost>
@@ -28749,7 +28749,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralLimestone4" type="Normal">
-    <dbid>40964</dbid>
+    <dbid>41118</dbid>
     <displaynameid>302801</displaynameid>
     <cost resourcetype="Wood">3000.0000</cost>
     <cost resourcetype="Food">3000.0000</cost>
@@ -28768,7 +28768,7 @@
     </effects>
   </tech>
    <tech name="zpCathedralConstructionSetup" type="Normal">
-    <dbid>40965</dbid>
+    <dbid>41119</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -28794,7 +28794,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralStage1" type="Normal">
-    <dbid>40966</dbid>
+    <dbid>41120</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -28818,7 +28818,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralStage2" type="Normal">
-    <dbid>40967</dbid>
+    <dbid>41121</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -28842,7 +28842,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralStage3" type="Normal">
-    <dbid>40968</dbid>
+    <dbid>41122</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
@@ -28866,7 +28866,7 @@
     </effects>
   </tech>
   <tech name="zpSPCCathedralStage4" type="Normal">
-    <dbid>40969</dbid>
+    <dbid>41123</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
