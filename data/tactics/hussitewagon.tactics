@@ -7,7 +7,7 @@
         <rangedlogic>1</rangedlogic>
         <anim>attack</anim>
         <idleanim>BombardIdle</idleanim>
-        <boredanim>bored</boredanim>
+        <boredanim>Bombard_bored</boredanim>
         <maxheight>0</maxheight>
         <accuracy>1.0</accuracy>
         <aimbonus>0</aimbonus>

@@ -495,6 +495,30 @@
     <allowduringnorush>1</allowduringnorush>
     <isauxiliarypower>1</isauxiliarypower>
   </power>
+  <power name="zpPassiveGlassmaker" type="UnitAction">
+    <displaynameid>302797</displaynameid>
+    <rolloverid>302812</rolloverid>
+    <icon>resources\images\icons\abilities\workshop_bohemian_glass.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpPassiveCoppermaker" type="UnitAction">
+    <displaynameid>302795</displaynameid>
+    <rolloverid>302812</rolloverid>
+    <icon>resources\images\icons\abilities\workshop_austrian_copper.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpPassiveBrickmaker" type="UnitAction">
+    <displaynameid>302799</displaynameid>
+    <rolloverid>302812</rolloverid>
+    <icon>resources\images\icons\abilities\workshop_saxon_brick.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpPassiveLimestone" type="UnitAction">
+    <displaynameid>302801</displaynameid>
+    <rolloverid>302812</rolloverid>
+    <icon>resources\images\icons\abilities\workshop_bavarian_limestone.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
 
 
 

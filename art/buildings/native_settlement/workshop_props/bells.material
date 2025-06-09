@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\workshop_props\textures\bells_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\workshop_props\textures\bells_normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\workshop_props\textures\bells_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

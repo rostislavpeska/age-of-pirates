@@ -28463,6 +28463,10 @@
     <rollovertextid>302796</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <flag>AlwaysShowButton</flag>
+    <prereqs>
+      <techstatus status="Active">zpCopperWorksTech</techstatus>
+    </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage1</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper2</effect>
@@ -28482,6 +28486,10 @@
     <rollovertextid>302798</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <flag>AlwaysShowButton</flag>
+    <prereqs>
+      <techstatus status="Active">zpGlassWorksTech</techstatus>
+    </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage1</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass2</effect>
@@ -28501,6 +28509,10 @@
     <rollovertextid>302800</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <flag>AlwaysShowButton</flag>
+    <prereqs>
+      <techstatus status="Active">zpBrickWorksTech</techstatus>
+    </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage1</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks2</effect>
@@ -28520,6 +28532,10 @@
     <rollovertextid>302802</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <flag>AlwaysShowButton</flag>
+    <prereqs>
+      <techstatus status="Active">zpStoneWorksTech</techstatus>
+    </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage1</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone2</effect>
@@ -28539,8 +28555,10 @@
     <rollovertextid>302796</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage1</techstatus>
+      <techstatus status="Active">zpCopperWorksTech</techstatus>
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage2</effect>
@@ -28560,8 +28578,10 @@
     <rollovertextid>302798</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage1</techstatus>
+      <techstatus status="Active">zpGlassWorksTech</techstatus>
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage2</effect>
@@ -28581,8 +28601,10 @@
     <rollovertextid>302800</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage1</techstatus>
+      <techstatus status="Active">zpBrickWorksTech</techstatus>
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage2</effect>
@@ -28602,8 +28624,10 @@
     <rollovertextid>302802</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage1</techstatus>
+      <techstatus status="Active">zpStoneWorksTech</techstatus>
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage2</effect>
@@ -28623,8 +28647,10 @@
     <rollovertextid>302796</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage2</techstatus>
+      <techstatus status="Active">zpCopperWorksTech</techstatus>
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage3</effect>
@@ -28643,8 +28669,10 @@
     <rollovertextid>302798</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage2</techstatus>
+      <techstatus status="Active">zpGlassWorksTech</techstatus>
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage3</effect>
@@ -28663,8 +28691,10 @@
     <rollovertextid>302800</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage2</techstatus>
+      <techstatus status="Active">zpBrickWorksTech</techstatus>
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage3</effect>
@@ -28683,8 +28713,10 @@
     <rollovertextid>302802</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage2</techstatus>
+      <techstatus status="Active">zpStoneWorksTech</techstatus>
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage3</effect>
@@ -28703,8 +28735,10 @@
     <rollovertextid>302796</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage3</techstatus>
+      <techstatus status="Active">zpCopperWorksTech</techstatus>
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage4</effect>
@@ -28722,8 +28756,10 @@
     <rollovertextid>302798</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage3</techstatus>
+      <techstatus status="Active">zpGlassWorksTech</techstatus>
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage4</effect>
@@ -28741,8 +28777,10 @@
     <rollovertextid>302800</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage3</techstatus>
+      <techstatus status="Active">zpBrickWorksTech</techstatus>
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage4</effect>
@@ -28760,14 +28798,16 @@
     <rollovertextid>302802</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage3</techstatus>
+      <techstatus status="Active">zpStoneWorksTech</techstatus>
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage4</effect>
     </effects>
   </tech>
-   <tech name="zpCathedralConstructionSetup" type="Normal">
+  <tech name="zpCathedralConstructionSetup" type="Normal">
     <dbid>41119</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -28813,6 +28853,18 @@
       <effect type="CommandRemove" tech="zpSPCCathedralLimestone1">
         <target type="Protounit">zpSPCGermanCathedralCon0</target>
       </effect>
+      <effect type="CommandAdd" tech="zpSPCCathedralLimestone2" page="1" column="1">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCCathedralCopper2" page="1" column="2">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCCathedralBricks2" page="1" column="3">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCCathedralGlass2" page="1" column="4">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
       <effect type="SetName" proto="zpSPCGermanCathedralCon0" culture="none" newname="302805">
       </effect>
     </effects>
@@ -28837,6 +28889,18 @@
       <effect type="CommandRemove" tech="zpSPCCathedralLimestone2">
         <target type="Protounit">zpSPCGermanCathedralCon0</target>
       </effect>
+      <effect type="CommandAdd" tech="zpSPCCathedralLimestone3" page="1" column="1">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCCathedralCopper3" page="1" column="2">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCCathedralBricks3" page="1" column="3">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCCathedralGlass3" page="1" column="4">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
       <effect type="SetName" proto="zpSPCGermanCathedralCon0" culture="none" newname="302806">
       </effect>
     </effects>
@@ -28860,6 +28924,18 @@
       </effect>
       <effect type="CommandRemove" tech="zpSPCCathedralLimestone3">
         <target type="Protounit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCCathedralLimestone4" page="1" column="1">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCCathedralCopper4" page="1" column="2">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCCathedralBricks4" page="1" column="3">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSPCCathedralGlass4" page="1" column="4">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
       </effect>
       <effect type="SetName" proto="zpSPCGermanCathedralCon0" culture="none" newname="302807">
       </effect>
@@ -28903,6 +28979,30 @@
       <effect type="SetName" proto="zpSPCGermanCathedralCon0" culture="none" newname="302063" newrollover="302310" newshortrollover="302309">
       </effect>
     </effects>
+  </tech>
+  <tech name="zpCopperWorksTech" type="Normal">
+    <dbid>41124</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpGlassWorksTech" type="Normal">
+    <dbid>41125</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpBrickWorksTech" type="Normal">
+    <dbid>41126</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpStoneWorksTech" type="Normal">
+    <dbid>41127</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
   </tech>
 
 

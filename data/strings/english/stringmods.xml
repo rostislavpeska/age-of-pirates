@@ -2792,13 +2792,13 @@
       <string _locid="302792">ZP SPC Cathedral CON 2</string>
       <string _locid="302793">ZP SPC Cathedral CON 3</string>
       <string _locid="302795">Austrian Copper</string>
-      <string _locid="302796">Upgrades the Cathedral construction to the next level. Your Team needs to have an access to Austrian Prince Elector to research this tech.</string>
+      <string _locid="302796">Upgrades the Cathedral construction to the next level. &lt;color=1.0, 0.0, 0.0&gt;\n • Your Team needs to have an access to Austrian Prince Elector to research this tech.&lt;/color&gt;</string>
       <string _locid="302797">Bohemian Glass</string>
-      <string _locid="302798">Upgrades the Cathedral construction to the next level. Your Team needs to have an access to Bohemian Prince Elector to research this tech.</string>
+      <string _locid="302798">Upgrades the Cathedral construction to the next level. &lt;color=1.0, 0.0, 0.0&gt;\n • Your Team needs to have an access to Bohemian Prince Elector to research this tech.&lt;/color&gt;</string>
       <string _locid="302799">Saxon Bricks</string>
-      <string _locid="302800">Upgrades the Cathedral construction to the next level. Your Team needs to have an access to Saxon Prince Elector to research this tech.</string>
+      <string _locid="302800">Upgrades the Cathedral construction to the next level. &lt;color=1.0, 0.0, 0.0&gt;\n • Your Team needs to have an access to Saxon Prince Elector to research this tech.&lt;/color&gt;</string>
       <string _locid="302801">Bavarian Limestone</string>
-      <string _locid="302802">Upgrades the Cathedral construction to the next level. Your Team needs to have an access to Bavarian Prince Elector to research this tech.</string>
+      <string _locid="302802">Upgrades the Cathedral construction to the next level. &lt;color=1.0, 0.0, 0.0&gt;\n • Your Team needs to have an access to Bavarian Prince Elector to research this tech.&lt;/color&gt;</string>
       <string _locid="302803">Metropolitan Cathedral Construction: Stage 0/4</string>
       <string _locid="302804">Use resources from all four Elector sites to finish the cathedral.</string>
       <string _locid="302805">Metropolitan Cathedral Construction: Stage 1/4</string>
@@ -2806,6 +2806,16 @@
       <string _locid="302807">Metropolitan Cathedral Construction: Stage 3/4</string>
       <string _locid="302808">Quartz Mine</string>
       <string _locid="302809">ZP Quartz Mine</string>
+      <string _locid="302810">ZP SPC Workshop Props</string>
+      <string _locid="302811">Glass Works</string>
+      <string _locid="302812">Provides specific supply type for a monument construction.</string>
+      <string _locid="302813">ZP SPC Glass Works</string>
+      <string _locid="302814">Copper Works</string>
+      <string _locid="302815">ZP SPC Copper Works</string>
+      <string _locid="302816">Brick Works</string>
+      <string _locid="302817">ZP SPC Brick Works</string>
+      <string _locid="302818">Stonemasons Guild</string>
+      <string _locid="302819">ZP SPC Stonemasons Guild</string>
 
 
       <!-- ======================================== -->

@@ -308,6 +308,27 @@
     <ability>deChargeAbilityObsidian<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpnatskullknight>
+  <zpnatlandsknecht>
+    <ability>deChargeAbilitySwashbuckler<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatlandsknecht>
+  <zpnatmerclandsknecht>
+    <ability>deChargeAbilitySwashbuckler<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatmerclandsknecht>
+  <zpnatbohemianlandsknecht>
+    <ability>deChargeAbilitySwashbuckler<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatbohemianlandsknecht>
+  <zpspcglassworks>
+    <ability>zpPassiveGlassmaker<tech>zpCathedralConstructionSetup</tech><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcglassworks>
+  <zpspccopperworks>
+    <ability>zpPassiveCoppermaker<tech>zpCathedralConstructionSetup</tech><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspccopperworks>
+  <zpspcbrickworks>
+    <ability>zpPassiveBrickmaker<tech>zpCathedralConstructionSetup</tech><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcbrickworks>
+  <zpspclimestoneworks>
+    <ability>zpPassiveLimestone<tech>zpCathedralConstructionSetup</tech><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspclimestoneworks>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

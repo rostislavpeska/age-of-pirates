@@ -3,15 +3,19 @@
     <soundtype name="Select">
         <variationlogic>
             <choice name="0">
-                <soundset name="Bohemian_Soldier_Select">
+                <soundset name="GermanLandsknechtSelect">
                 </soundset>
             </choice>
             <choice name="1">
-                <soundset name="GermanLandsknechtSelect">
+                <soundset name="GermanCrossbowmanSelect">
                 </soundset>
             </choice>
             <choice name="2">
                 <soundset name="SwissPikemanSelect">
+                </soundset>
+            </choice>
+            <choice name="3">
+                <soundset name="Bohemian_Soldier_Select">
                 </soundset>
             </choice>
         </variationlogic>
@@ -33,11 +37,11 @@
             <choice name="0">
                 <targetlogic>
                     <choice name="default">
-                        <soundset name="Bohemian_Soldier_Acknowledge">
+                        <soundset name="GermanLandsknechtAcknowledge">
                         </soundset>
                     </choice>
                     <choice name="enemy">
-                        <soundset name="Bohemian_Soldier_Attack">
+                        <soundset name="GermanLandsknechtAttack">
                         </soundset>
                     </choice>
                 </targetlogic>
@@ -45,11 +49,11 @@
             <choice name="1">
                 <targetlogic>
                     <choice name="default">
-                        <soundset name="GermanLandsknechtAcknowledge">
+                        <soundset name="GermanCrossbowmanAcknowledge">
                         </soundset>
                     </choice>
                     <choice name="enemy">
-                        <soundset name="GermanLandsknechtAttack">
+                        <soundset name="GermanCrossbowmanAttack">
                         </soundset>
                     </choice>
                 </targetlogic>
@@ -62,6 +66,18 @@
                     </choice>
                     <choice name="enemy">
                         <soundset name="SwissPikemanAttack">
+                        </soundset>
+                    </choice>
+                </targetlogic>
+            </choice>
+            <choice name="3">
+                <targetlogic>
+                    <choice name="default">
+                        <soundset name="Bohemian_Soldier_Acknowledge">
+                        </soundset>
+                    </choice>
+                    <choice name="enemy">
+                        <soundset name="Bohemian_Soldier_Attack">
                         </soundset>
                     </choice>
                 </targetlogic>
