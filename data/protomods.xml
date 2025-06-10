@@ -4881,7 +4881,6 @@
     <armor type="Hand" value="0.4000">
     </armor>
     <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeNeededForVictory</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
     <unittype>LogicalTypeLandMilitary</unittype>
     <unittype>LogicalTypeScout</unittype>
