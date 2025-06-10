@@ -55389,7 +55389,7 @@
     <tactics>hussitewagon.tactics</tactics>
     <protoaction>
       <name>RoundelMultiAttack</name>
-      <damage>50.000000</damage>
+      <damage>60.000000</damage>
       <damagetype>Siege</damagetype>
       <minrange>0.000000</minrange>
       <maxrange>21.000000</maxrange>
@@ -55756,15 +55756,6 @@
     </protoaction>
     <protoaction>
       <name>MeleeHandAttack</name>
-      <damage>10.000000</damage>
-      <damagetype>Hand</damagetype>
-      <rof>1.500000</rof>
-      <damagebonus type="AbstractHeavyInfantry">1.7500000</damagebonus>
-      <damagebonus type="AbstractHeavyCavalry">0.500000</damagebonus>
-      <damagebonus type="AbstractCoyoteMan">0.500000</damagebonus>
-    </protoaction>
-    <protoaction>
-      <name>StaggerHandAttack</name>
       <damage>10.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>

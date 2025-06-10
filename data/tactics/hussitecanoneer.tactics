@@ -205,9 +205,179 @@
     <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
     <modifyself>1</modifyself>
   </action>
-  <tactic stringid="55193">Volley<armoroverride type="Ranged" value="0.2000"></armoroverride><action priority="100">VolleyRangedAttack</action><action priority="75">BuildingAttack</action><action priority="80">RangedBuildingAttack</action><action>RomanTactics1</action><action>RomanTactics2</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><transition><tactic>Melee</tactic><length>1.5</length><anim>Cover_in</anim><exit>1</exit><automatic>1</automatic><commandautomatic>1</commandautomatic></transition><transition><tactic>Stagger</tactic><length>2</length><anim>Cover_in</anim><exit>1</exit><automatic>1</automatic><commandautomatic>1</commandautomatic></transition><transition><tactic>Defend</tactic><length>2</length><anim>Cover_in</anim><exit>1</exit><automatic>1</automatic><commandautomatic>1</commandautomatic></transition><transition><tactic>StandGround</tactic><length>2</length><anim>Cover_in</anim><exit>1</exit><automatic>1</automatic><commandautomatic>1</commandautomatic></transition><runaway>1</runaway><autoretarget>1</autoretarget><idleanim>Volley_standing_idle</idleanim><boredanim>Volley_standing_bored</boredanim><deathanim>Death_by_melee</deathanim><walkanim>Volley_walk</walkanim><joganim>Volley_jog</joganim><runanim>Volley_run</runanim></tactic>
-  <tactic stringid="30229">Defend<armoroverride type="Ranged" value="0.1000"></armoroverride><armoroverride type="Hand" value="0.1000"></armoroverride><armoroverride type="Siege" value="0.1000"></armoroverride><action priority="100">DefendRangedAttack</action><action priority="100">RangedBuildingAttack</action><action priority="75">DefendBuildingAttack</action><action priority="80">RangedDefendBuildingAttack</action><action>RomanTactics1</action><action>RomanTactics2</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><transition><tactic>Volley</tactic><length>2</length><anim>Cover_out</anim><exit>1</exit><automatic>1</automatic><commandautomatic>1</commandautomatic></transition><transition><tactic>Melee</tactic><length>1.5</length><anim>Cover_out</anim><exit>1</exit><automatic>1</automatic><commandautomatic>1</commandautomatic></transition><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Defend_idle</idleanim><boredanim>Defend_bored</boredanim><deathanim>Death_by_melee</deathanim><walkanim>Cover_walk</walkanim><joganim>Cover_jog</joganim><runanim>Cover_run</runanim></tactic>
-  <tactic stringid="55194">Stagger<armoroverride type="Siege" value="0.2000"></armoroverride><action priority="100">StaggerRangedAttack</action><action priority="75">BuildingAttack</action><action priority="80">RangedBuildingAttack</action><action>Build</action><action>RomanTactics1</action><action>RomanTactics2</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><transition><tactic>Volley</tactic><length>2</length><anim>Cover_out</anim><exit>1</exit><automatic>1</automatic><commandautomatic>1</commandautomatic></transition><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Cover_idle</idleanim><boredanim>Cover_bored</boredanim><deathanim>Death_by_melee</deathanim><walkanim>Cover_walk</walkanim><joganim>Cover_jog</joganim><runanim>Cover_run</runanim></tactic>
-  <tactic stringid="55195">Melee<armoroverride type="Hand" value="0.2000"></armoroverride><action priority="100">MeleeHandAttack</action><action priority="75">BuildingAttack</action><action priority="80">RangedBuildingAttack</action><action>RomanTactics1</action><action>RomanTactics2</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><transition><tactic>Volley</tactic><length>2</length><anim>Cover_out</anim><exit>1</exit><automatic>1</automatic><commandautomatic>1</commandautomatic></transition><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Charge_idle</idleanim><boredanim>Charge_bored</boredanim><deathanim>Death_by_melee</deathanim><walkanim>Charge_walk</walkanim><joganim>Charge_jog</joganim><runanim>Charge_run</runanim></tactic>
-  <tactic stringid="66067">StandGround<armoroverride type="Ranged" value="0.1000"></armoroverride><armoroverride type="Hand" value="0.1000"></armoroverride><armoroverride type="Siege" value="0.1000"></armoroverride><action priority="100">DefendRangedAttack</action><action priority="100">RangedBuildingAttack</action><action priority="75">DefendBuildingAttack</action><action priority="80">RangedDefendBuildingAttack</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><action>RomanTactics1</action><action>RomanTactics2</action><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><transition><tactic>Volley</tactic><length>2</length><anim>Cover_out</anim><exit>1</exit><automatic>1</automatic><commandautomatic>1</commandautomatic></transition><transition><tactic>Melee</tactic><length>1.5</length><anim>Cover_out</anim><exit>1</exit><automatic>1</automatic><commandautomatic>1</commandautomatic></transition><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Defend_idle</idleanim><boredanim>Defend_bored</boredanim><deathanim>Death_by_melee</deathanim><walkanim>Cover_walk</walkanim><joganim>Cover_jog</joganim><runanim>Cover_run</runanim></tactic>
+ <tactic stringid="55193">Volley
+    <armoroverride type="Ranged" value="0.2000"></armoroverride>
+    <action priority="100">VolleyRangedAttack</action>
+    <action priority="75">BuildingAttack</action>
+    <action>RomanTactics1</action>
+    <action>RomanTactics2</action>
+    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+    <transition>
+        <tactic>Melee</tactic>
+        <length>1.5</length>
+        <anim>Cover_in</anim>
+        <exit>1</exit>
+        <automatic>1</automatic>
+        <commandautomatic>1</commandautomatic>
+    </transition>
+    <transition>
+        <tactic>Stagger</tactic>
+        <length>2</length>
+        <anim>Cover_in</anim>
+        <exit>1</exit>
+        <automatic>1</automatic>
+        <commandautomatic>1</commandautomatic>
+    </transition>
+    <transition>
+        <tactic>Defend</tactic>
+        <length>2</length>
+        <anim>Cover_in</anim>
+        <exit>1</exit>
+        <automatic>1</automatic>
+        <commandautomatic>1</commandautomatic>
+    </transition>
+    <transition>
+        <tactic>StandGround</tactic>
+        <length>2</length>
+        <anim>Cover_in</anim>
+        <exit>1</exit>
+        <automatic>1</automatic>
+        <commandautomatic>1</commandautomatic>
+    </transition>
+    <runaway>1</runaway>
+    <autoretarget>1</autoretarget>
+    <idleanim>Volley_standing_idle</idleanim>
+    <boredanim>Volley_standing_bored</boredanim>
+    <deathanim>Death_by_melee</deathanim>
+    <walkanim>Volley_walk</walkanim>
+    <joganim>Volley_jog</joganim>
+    <runanim>Volley_run</runanim>
+</tactic>
+<tactic stringid="30229">Defend
+    <armoroverride type="Ranged" value="0.1000"></armoroverride>
+    <armoroverride type="Hand" value="0.1000"></armoroverride>
+    <armoroverride type="Siege" value="0.1000"></armoroverride>
+    <action priority="100">DefendRangedAttack</action>
+    <action priority="100">BuildingAttack</action>
+    <action>RomanTactics1</action>
+    <action>RomanTactics2</action>
+    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+    <transition>
+        <tactic>Volley</tactic>
+        <length>2</length>
+        <anim>Cover_out</anim>
+        <exit>1</exit>
+        <automatic>1</automatic>
+        <commandautomatic>1</commandautomatic>
+    </transition>
+    <transition>
+        <tactic>Melee</tactic>
+        <length>1.5</length>
+        <anim>Cover_out</anim>
+        <exit>1</exit>
+        <automatic>1</automatic>
+        <commandautomatic>1</commandautomatic>
+    </transition>
+    <runaway>0</runaway>
+    <autoretarget>1</autoretarget>
+    <idleanim>Defend_idle</idleanim>
+    <boredanim>Defend_bored</boredanim>
+    <deathanim>Death_by_melee</deathanim>
+    <walkanim>Cover_walk</walkanim>
+    <joganim>Cover_jog</joganim>
+    <runanim>Cover_run</runanim>
+</tactic>
+<tactic stringid="55194">Stagger
+    <armoroverride type="Siege" value="0.2000"></armoroverride>
+    <action priority="100">StaggerRangedAttack</action>
+    <action priority="75">BuildingAttack</action>
+    <action>Build</action>
+    <action>RomanTactics1</action>
+    <action>RomanTactics2</action>
+    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+    <transition>
+        <tactic>Volley</tactic>
+        <length>2</length>
+        <anim>Cover_out</anim>
+        <exit>1</exit>
+        <automatic>1</automatic>
+        <commandautomatic>1</commandautomatic>
+    </transition>
+    <runaway>0</runaway>
+    <autoretarget>1</autoretarget>
+    <idleanim>Cover_idle</idleanim>
+    <boredanim>Cover_bored</boredanim>
+    <deathanim>Death_by_melee</deathanim>
+    <walkanim>Cover_walk</walkanim>
+    <joganim>Cover_jog</joganim>
+    <runanim>Cover_run</runanim>
+</tactic>
+<tactic stringid="55195">Melee
+    <armoroverride type="Hand" value="0.2000"></armoroverride>
+    <action priority="100">MeleeHandAttack</action>
+    <action priority="75">BuildingAttack</action>
+    <action>RomanTactics1</action>
+    <action>RomanTactics2</action>
+    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+    <transition>
+        <tactic>Volley</tactic>
+        <length>2</length>
+        <anim>Cover_out</anim>
+        <exit>1</exit>
+        <automatic>1</automatic>
+        <commandautomatic>1</commandautomatic>
+    </transition>
+    <runaway>0</runaway>
+    <autoretarget>1</autoretarget>
+    <idleanim>Charge_idle</idleanim>
+    <boredanim>Charge_bored</boredanim>
+    <deathanim>Death_by_melee</deathanim>
+    <walkanim>Charge_walk</walkanim>
+    <joganim>Charge_jog</joganim>
+    <runanim>Charge_run</runanim>
+</tactic>
+<tactic stringid="66067">StandGround
+    <armoroverride type="Ranged" value="0.1000"></armoroverride>
+    <armoroverride type="Hand" value="0.1000"></armoroverride>
+    <armoroverride type="Siege" value="0.1000"></armoroverride>
+    <action priority="100">DefendRangedAttack</action>
+    <action priority="100">BuildingAttack</action>
+    <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+    <action>RomanTactics1</action>
+    <action>RomanTactics2</action>
+    <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+    <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+    <transition>
+        <tactic>Volley</tactic>
+        <length>2</length>
+        <anim>Cover_out</anim>
+        <exit>1</exit>
+        <automatic>1</automatic>
+        <commandautomatic>1</commandautomatic>
+    </transition>
+    <transition>
+        <tactic>Melee</tactic>
+        <length>1.5</length>
+        <anim>Cover_out</anim>
+        <exit>1</exit>
+        <automatic>1</automatic>
+        <commandautomatic>1</commandautomatic>
+    </transition>
+    <runaway>0</runaway>
+    <autoretarget>1</autoretarget>
+    <idleanim>Defend_idle</idleanim>
+    <boredanim>Defend_bored</boredanim>
+    <deathanim>Death_by_melee</deathanim>
+    <walkanim>Cover_walk</walkanim>
+    <joganim>Cover_jog</joganim>
+    <runanim>Cover_run</runanim>
+</tactic>
 </tactics>
