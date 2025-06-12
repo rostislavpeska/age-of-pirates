@@ -436,6 +436,8 @@ Rules organized into map types:
       cityAttackmanager
    via the rule
       initializeCityAttackmanager
+   The attack plan needs one of these units at every point you want the AI to try and capture:
+      zpSPCCapturableFlagNoIcon
    
 
 
