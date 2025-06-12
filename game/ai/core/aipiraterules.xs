@@ -703,7 +703,7 @@ minInterval 10
    int tempUnit = -1;
    int counter = 0;
    int planID = -1;
-   int capturableFlagQuery = createSimpleGaiaUnitQuery(cUnitTypezpSPCCapturableFlagNoIcon, cUnitStateAlive);
+   int capturableFlagQuery = createSimpleGaiaUnitQuery(cUnitTypezpAbstractFortCenter, cUnitStateAlive);
    int attackPlansNeeded = kbUnitQueryExecute(capturableFlagQuery);
 
    cityAttackPlanArray = xsArrayCreateInt(attackPlansNeeded, -1, "City Attack Plans");
