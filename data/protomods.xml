@@ -59057,6 +59057,80 @@
     <tactics>socketcapture.tactics</tactics>
     <command page="1" column="0">deSocketBuild</command>
   </unit>
+  <unit id="20814" name="zpSPCCityHouse">
+    <dbid>20814</dbid>
+    <displaynameid>22839</displaynameid>
+    <editornameid>302832</editornameid>
+    <populationcapaddition>10</populationcapaddition>
+    <obstructionradiusx>2.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\zp_native_eu_houses.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildingsmall.xml</placementfile>
+    <icon>resources\art\buildings\house\house_icon.png</icon>
+    <portraiticon>resources\art\buildings\house\house_portrait.png</portraiticon>
+    <rollovertextid>22838</rollovertextid>
+    <shortrollovertextid>25701</shortrollovertextid>
+    <initialhitpoints>3200.0000</initialhitpoints>
+    <maxhitpoints>3200.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>10.0000</buildpoints>
+    <buildlimit>20</buildlimit>
+    <bounty>40.0000</bounty>
+    <buildbounty>20.0000</buildbounty>
+    <cost resourcetype="Wood">100.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <buildingworkrate>0.5000</buildingworkrate>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractHouse</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <tech row="0" page="2" column="0">BigHouseCoatlicue</tech>
+    <tech row="0" page="2" column="0">deBigHouseQueensFestival</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>HasGatherPoint</flag>
+    <command page="10" column="2">SetGatherPointEconomy</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>house.tactics</tactics>
+  </unit>
+
 
 
   

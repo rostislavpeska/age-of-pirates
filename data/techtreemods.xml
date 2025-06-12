@@ -28481,6 +28481,9 @@
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage1</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass1</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks1</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone1</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper2</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper3</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper4</effect>
@@ -28504,6 +28507,9 @@
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage1</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper1</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks1</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone1</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass2</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass3</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass4</effect>
@@ -28527,6 +28533,9 @@
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage1</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper1</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass1</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone1</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks2</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks3</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks4</effect>
@@ -28550,6 +28559,9 @@
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage1</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper1</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass1</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks1</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone2</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone3</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone4</effect>
@@ -28574,6 +28586,9 @@
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone2</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper3</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper4</effect>
     </effects>
@@ -28596,6 +28611,9 @@
       <techstatus status="Active">zpGlassWorksTech</techstatus>
     </prereqs>
     <effects>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone2</effect>
       <effect type="TechStatus" status="active">zpSPCCathedralStage2</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass3</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass4</effect>
@@ -28620,6 +28638,9 @@
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone2</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks3</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks4</effect>
     </effects>
@@ -28643,6 +28664,9 @@
     </prereqs>
     <effects>
       <effect type="TechStatus" status="active">zpSPCCathedralStage2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass2</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks2</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone3</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone4</effect>
     </effects>
@@ -28665,6 +28689,9 @@
       <techstatus status="Active">zpCopperWorksTech</techstatus>
     </prereqs>
     <effects>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone3</effect>
       <effect type="TechStatus" status="active">zpSPCCathedralStage3</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper4</effect>
     </effects>
@@ -28687,6 +28714,9 @@
       <techstatus status="Active">zpGlassWorksTech</techstatus>
     </prereqs>
     <effects>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone3</effect>
       <effect type="TechStatus" status="active">zpSPCCathedralStage3</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass4</effect>
     </effects>
@@ -28709,6 +28739,9 @@
       <techstatus status="Active">zpBrickWorksTech</techstatus>
     </prereqs>
     <effects>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone3</effect>
       <effect type="TechStatus" status="active">zpSPCCathedralStage3</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks4</effect>
     </effects>
@@ -28731,6 +28764,9 @@
       <techstatus status="Active">zpStoneWorksTech</techstatus>
     </prereqs>
     <effects>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks3</effect>
       <effect type="TechStatus" status="active">zpSPCCathedralStage3</effect>
       <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone4</effect>
     </effects>
@@ -28753,6 +28789,9 @@
       <techstatus status="Active">zpCopperWorksTech</techstatus>
     </prereqs>
     <effects>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass4</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks4</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone4</effect>
       <effect type="TechStatus" status="active">zpSPCCathedralStage4</effect>
     </effects>
   </tech>
@@ -28774,6 +28813,9 @@
       <techstatus status="Active">zpGlassWorksTech</techstatus>
     </prereqs>
     <effects>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper4</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks4</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone4</effect>
       <effect type="TechStatus" status="active">zpSPCCathedralStage4</effect>
     </effects>
   </tech>
@@ -28795,6 +28837,9 @@
       <techstatus status="Active">zpBrickWorksTech</techstatus>
     </prereqs>
     <effects>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper4</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass4</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralLimestone4</effect>
       <effect type="TechStatus" status="active">zpSPCCathedralStage4</effect>
     </effects>
   </tech>
@@ -28816,6 +28861,9 @@
       <techstatus status="Active">zpStoneWorksTech</techstatus>
     </prereqs>
     <effects>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralCopper4</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralGlass4</effect>
+      <effect type="TechStatus" status="unobtainable">zpSPCCathedralBricks4</effect>
       <effect type="TechStatus" status="active">zpSPCCathedralStage4</effect>
     </effects>
   </tech>
@@ -28990,6 +29038,8 @@
       </effect>
       <effect type="SetName" proto="zpSPCGermanCathedralCon0" culture="none" newname="302063" newrollover="302310" newshortrollover="302309">
       </effect>
+      <effect type="TextEffectOutput" reason="Papal" selfmsg="302835" playermsg="302836">
+      </effect>
     </effects>
   </tech>
   <tech name="zpCopperWorksTech" type="Normal">
@@ -29015,6 +29065,30 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
+  </tech>
+  <tech name="zpCrownlandsSetup" type="Normal">
+    <dbid>41128</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpUnlockRowboatsShadow</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
+      <effect type="TechStatus" status="active">zpPrinceElectorNativeSetup</effect>
+      <effect type="TechStatus" status="active">zpCathedralConstructionSetup</effect>
+      <effect type="TechStatus" status="active">deEUMapUpdateVisuals</effect>
+    </effects>
+  </tech>
+  <tech name="zpRevealerToAll" type="Normal">
+    <dbid>41129</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="CinematicRevealerToAll" fromprotoid="CinematicRevealer">
+      </effect>
+    </effects>
   </tech>
 
 

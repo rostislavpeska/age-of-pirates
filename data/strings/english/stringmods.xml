@@ -2820,13 +2820,30 @@
       <string _locid="302821">ZP PROP Workers</string>
       <string _locid="302822">ZP SPC Copper Mine PROP</string>
       <string _locid="302823">Crownlands</string>
-      <string _locid="302824">Holy Roman Empire, after the death of Charles V. in 1558 was more a federation of independent rebelling kingdoms and duchies then a true unitary empire. Prove, that the Empire can rejoin and becoma great again. Construct a monumental Metropolitan Cathedral using resources from the whole Empire!</string>
-      <string _locid="302825">Finish a Metropolitan Cathedral construction in your starting town.</string>
+      <string _locid="302824">Holy Roman Empire, after the death of Charles V. in 1558 the Empire became a federation of independent rebelling kingdoms and duchies. Prove, that the Empire can rejoin and rise again. Construct a monumental Metropolitan Cathedral using resources from the whole Empire!</string>
+      <string _locid="302825">Complete the construction of the Metropolitan Cathedral</string>
       <string _locid="302826">Use all four Elector's castles to get necessary resources for a Cathedral construction. You don't have to hold all castles for the whole time.</string>
       <string _locid="302827">ZP SPC Socket Bohemia City</string>
       <string _locid="302828">ZP SPC Socket Austria City</string>
       <string _locid="302829">ZP SPC Socket Bavaria City</string>
       <string _locid="302830">ZP SPC Socket Saxony City</string>
+      <string _locid="302831">Rathaus</string>
+      <string _locid="302832">ZP SPC City House</string>
+      <string _locid="302833">Protect your Rathaus until the end of the game.</string>
+      <string _locid="302834">Once Rathaus is destroyed, you lose the game - even if you already finished a cathedral construction!</string>
+      <string _locid="302835">You completed the Metropolitan Cathedral!</string>
+      <string _locid="302836">%s completed the Metropolitan Cathedral!</string>
+      <string _locid="302837">Eger (Rathaus)</string>
+      <string _locid="302838">Strasbourg (Rathaus)</string>
+      <string _locid="302839">Regensburg (Rathaus)</string>
+      <string _locid="302840">Cologne (Rathaus)</string>
+      <string _locid="302841">Leipzig (Rathaus)</string>
+      <string _locid="302842">Graz (Rathaus)</string>
+      <string _locid="302843">Ulm (Rathaus)</string>
+      <string _locid="302844">Mainz (Rathaus)</string>
+      <string _locid="302845">Pilsen (Rathaus)</string>
+      <string _locid="302846">Holy Roman Empire, after the death of Charles V. in 1558 the Empire became a federation of independent rebelling kingdoms and duchies. Prove, that the Empire can rejoin and rise again. Construct a monumental Metropolitan Cathedral using resources from the whole Empire!\n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Complete the construction of the Metropolitan Cathedral and protect your Town center. Multiple Team gameplay or FFA is supported for this historical map. \n\nNative Settlements: Prince Electors, Hussites \n\nShadow aliances: Habsburg, Wettin, Hannover, Wittelsbach and Oldenburg</string>
+      <string _locid="302847">Use resources from the whole Empire to construct an amazing Metropolitan Cathedral. Make sure, you always have enough resources for the next phase of construction before you get to the next phase of your conquest.</string>
 
 
       <!-- ======================================== -->
