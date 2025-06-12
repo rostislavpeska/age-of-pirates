@@ -201,12 +201,6 @@
         </assetreference>
         <component>great_bombard_stripped</component>
     </anim>
-    <anim>bored
-        <assetreference type="GrannyAnim">
-            <file>units\artillery\hussite_wagon\hussite_wagon_bombard_idle</file>
-        </assetreference>
-        <component>great_bombard_stripped</component>
-    </anim>
 	<anim>
 		attack
 		<assetreference type="GrannyAnim">

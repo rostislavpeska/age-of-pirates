@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\infantry\dopplesoldner\textures\dopplesoldner_age1_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\infantry\dopplesoldner\textures\dopplesoldner_age1_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\infantry\dopplesoldner\textures\dopplesoldner_age1_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\infantry\dopplesoldner\textures\dopplesoldner_age1_matA_Details">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="units\infantry\dopplesoldner\textures\landsoldner_age1_matE_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\infantry\dopplesoldner\textures\dopplesoldner_age1_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\infantry\dopplesoldner\textures\dopplesoldner_age1_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\infantry\dopplesoldner\textures\landsoldner_age1_matE_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

@@ -1,0 +1,62 @@
+<material>
+  <submaterial name="matx">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\german_cathedral_gold_orange_1">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\german_cathedral_bumpspec1">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\german_cathedral_masks_1">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="maty">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\german_cathedral_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\german_cathedral_matb_normals">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\german_cathedral_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matz">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\german_cathedral_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\german_cathedral_matb_normals">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\german_cathedral_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matm">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\german_cathedral_con_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\german_cathedral_con_normals">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\german_cathedral_con_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\generic_props\textures\generic_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\generic_props\textures\generic_props_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\generic_props\textures\generic_props_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

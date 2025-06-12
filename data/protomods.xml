@@ -1110,8 +1110,11 @@
     <!--KING OF BOHEMIA-->
     <train row="0" page="0" column="1">zpNatBohemianLandsknecht</train>
 
-    <!--Hussites-->
+    <!--HUSSITES-->
     <train row="0" page="0" column="0">zpNatHussiteCannoneer</train>
+
+    <!--PRINCE ELECTOR-->
+    <train row="0" page="0" column="1">zpNatLandsknechtProxy</train>
 
     <!-- Christmas units and techs Added by AssertiveWall-->
     <train row="0" page="0" column="1">zpNatElfsGuard</train>
@@ -1285,7 +1288,7 @@
     <tech row="0" page="1" column="1">zpVeteranBohemianKing</tech>
     <tech row="0" page="1" column="1">zpGuardBohemianKing</tech>
     <tech row="0" page="2" column="0">zpBohemianMercenaries</tech>
-    <tech row="0" page="2" column="0">zpNatBohemianAcademy</tech>
+    <tech row="0" page="2" column="1">zpNatBohemianAcademy</tech>
     <tech row="0" page="0" column="4">zpNatBlanikKnights</tech>
 
     <tech row="0" page="1" column="1">zpNatDisciplinedHussites</tech>
@@ -1298,6 +1301,13 @@
 
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia1</tech>
     <tech row="0" page="1" column="1">zpTradeRouteUpgradeAustralia2</tech>
+
+    <tech row="0" page="1" column="1">zpPrinceElectorElect</tech>
+    <tech row="0" page="1" column="1">zpVeteranPrinceElector</tech>
+    <tech row="0" page="1" column="1">zpGuardPrinceElector</tech>
+    <tech row="0" page="2" column="1">zpNatImperialQuotas</tech>
+    <tech row="0" page="2" column="1">zpNatImperialTowers</tech>
+    <tech row="0" page="0" column="4">zpNatImperialCommand</tech>
 
     <!-- Wild West Techs -->
     <tech row="0" page="2" column="1">zpWildWestWhiskeyFactory</tech>
@@ -1315,7 +1325,8 @@
     <command page="0" column="20">zpNatArmoredTrainNoResource</command>
     <command page="0" column="4">zpNatBourbonRoyalMarchSmall</command>
     <command page="0" column="3">zpAuditoreLighthouseSmall</command>
-    <command page="0" column="3">zpNatBlanikKnightsSmall</command>
+    <command page="0" column="4">zpNatBlanikKnightsSmall</command>
+    <command page="0" column="4">zpNatImperialCommandSmall</command>
     <command page="1" column="1">zpBourbonExpansionFake</command>
     <command page="1" column="1">zpSansculottexpansionFake</command>
     <protoaction>
@@ -1336,6 +1347,11 @@
       <name>AutoGatherKorowaiWood</name>
       <type>AutoGather</type>
       <rate type="Wood">3.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherElectorFood</name>
+      <type>AutoGather</type>
+      <rate type="Food">3.000000</rate>
     </protoaction>
   </unit>
   <unit name="ypConsulate">
@@ -1416,6 +1432,24 @@
     <train row="0" page="0" column="115">zpNatPavisier</train>
     <train row="0" page="0" column="116">zpNatAssassin</train>
     <train row="0" page="0" column="117">zpNatBohemianLandsknecht</train>
+
+    <train row="0" page="0" column="118">zpNatLandsknecht</train>
+    <!--<train row="0" page="0" column="119">zpNatMountedInfantryElector</train>
+    <train row="0" page="0" column="120">zpNatLineInfantryElector</train>
+    <train row="0" page="0" column="121">zpNatChevaulegerElector</train>
+    <train row="0" page="0" column="122">zpNatMountainTrooperElector</train>
+    <train row="0" page="0" column="123">zpNatTotenkopfElector</train>
+    <train row="0" page="0" column="124">zpNatBrunswickerElector</train>
+    <train row="0" page="0" column="125">zpNatTrabantElector</train>
+    <train row="0" page="0" column="126">zpNatSaxonCuirassierElector</train>
+    <train row="0" page="0" column="127">zpNatRoyalHuntsmanElector</train>
+    <train row="0" page="0" column="127">zpNatRoyalHunterElector</train>
+    <train row="0" page="0" column="128">zpNatNorthernMusketeerElector</train>-->
+
+    <train row="0" page="0" column="129">zpNatHussiteCannonee</train>
+    <train row="0" page="0" column="130">zpNatLegionaryMarksman</train>
+    <train row="0" page="0" column="130">zpNatHussiteWagon</train>
+    <train row="0" page="0" column="130">zpNatHussiteKnight</train>
   </unit>
   <unit name="NativeTownObstruction">
     <flag>Invulnerable</flag>
@@ -4847,7 +4881,6 @@
     <armor type="Hand" value="0.4000">
     </armor>
     <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeNeededForVictory</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
     <unittype>LogicalTypeLandMilitary</unittype>
     <unittype>LogicalTypeScout</unittype>
@@ -4883,7 +4916,6 @@
     <flag>ObscuredByUnits</flag>
     <flag>Tracked</flag>
     <flag>KnockoutDeath</flag>
-    <flag>NotDeleteable</flag>
     <train row="0" page="6" column="0">TradingPost</train>
     <train row="0" page="6" column="2">Dock</train>
     <train row="0" page="6" column="2">YPDockAsian</train>
@@ -4891,6 +4923,7 @@
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
     <command page="11">Abilities</command>
+    <command page="10" column="7">Delete</command>
     <tactics>saofeng.tactics</tactics>
     <protoaction>
       <name>ArrowAttack</name>
@@ -43056,7 +43089,6 @@
     <flag>ShowAreaHealRate</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
-    <command page="10" column="5">Eject</command>
     <command page="11" column="4">Abilities</command>
     <tactics>notre_dame.tactics</tactics>
     <protoaction>
@@ -49102,7 +49134,7 @@
     <maxrunvelocity>6.2500</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\natives\bohemian_landsknecht.xml</animfile>
+    <animfile>units\mercenaries\mercenary4skin\mercenary1skin.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\mercenaries\landsknecht\landsknect_icon_64x64.png</icon>
@@ -49113,6 +49145,7 @@
     <maxhitpoints>200.0000</maxhitpoints>
     <buildlimit>11</buildlimit>
     <los>12.0000</los>
+    <rechargetime>15.0000</rechargetime>
     <unitaitype>HandCombative</unitaitype>
     <trainpoints>33.0000</trainpoints>
     <bounty>12.0000</bounty>
@@ -49122,6 +49155,10 @@
     <allowedage>1</allowedage>
     <armor type="Hand" value="0.2000">
     </armor>
+    <sharedselectionunittypes>
+      <unittype>zpNatMercLandsknecht</unittype>
+      <unittype>zpNatLandsknecht</unittype>
+    </sharedselectionunittypes>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
@@ -49157,7 +49194,30 @@
     <command page="10" column="7">Delete</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
-    <tactics>handInfantrySplash.tactics</tactics>
+    <command page="11" column="0">Abilities</command>
+    <tactics>chargeswordsman.tactics</tactics>
+    <protoaction>
+      <name>ChargeSwashbucklerAttack</name>
+      <damage>37.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagecap>162.000000</damagecap>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>ChargeSwashbucklerCoverAttack</name>
+      <damage>18.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagecap>81.000000</damagecap>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+    </protoaction>
     <protoaction>
       <name>BuildingAttack</name>
       <damage>60.000000</damage>
@@ -49288,13 +49348,14 @@
   <unit name="deNatLineInfantry">
       <sharedbuildlimitunittypes>
         <unittype>deNatLineInfantry</unittype>
-        <unittype>zpNatPirateProxy</unittype>
+        <unittype>zpNatLineInfantryElector</unittype>
+        <unittype>zpNatLineInfantryProxy</unittype>
       </sharedbuildlimitunittypes>
       <flag>UseSharedBuildLimit</flag>
   </unit>
   <unit id="20657" name="zpNatMercMountedInfantryProxy">
     <dbid>20657</dbid>
-    <displaynameid>122181</displaynameid>
+    <displaynameid>122113</displaynameid>
     <subciv>zpBohemianKing</subciv>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
@@ -49363,6 +49424,7 @@
     <sharedbuildlimitunittypes>
       <unittype>deNatMountedInfantryRider</unittype>
       <unittype>deNatMountedInfantry</unittype>
+      <unittype>zpNatMountedInfantryElector</unittype>
       <unittype>zpNatMercMountedInfantryProxy</unittype>
     </sharedbuildlimitunittypes>
   </unit>
@@ -49371,6 +49433,7 @@
       <unittype>deNatMountedInfantryRider</unittype>
       <unittype>deNatMountedInfantry</unittype>
       <unittype>zpNatMercMountedInfantryProxy</unittype>
+      <unittype>zpNatMountedInfantryElector</unittype>
     </sharedbuildlimitunittypes>
   </unit>
   <unit id="20658" name="zpNatLipkaTatarProxy">
@@ -49589,6 +49652,7 @@
     <sharedbuildlimitunittypes>
       <unittype>deNatChevauleger</unittype>
       <unittype>zpNatChevaulegerProxy</unittype>
+      <unittype>zpNatChevaulegerElector</unittype>
     </sharedbuildlimitunittypes>
     <flag>UseSharedBuildLimit</flag>
   </unit>
@@ -49663,6 +49727,7 @@
     <sharedbuildlimitunittypes>
       <unittype>deNatMountainTrooper</unittype>
       <unittype>zpNatMountainTrooperProxy</unittype>
+      <unittype>zpNatMountainTrooperElector</unittype>
     </sharedbuildlimitunittypes>
     <flag>UseSharedBuildLimit</flag>
   </unit>
@@ -55323,7 +55388,7 @@
     <tactics>hussitewagon.tactics</tactics>
     <protoaction>
       <name>RoundelMultiAttack</name>
-      <damage>50.000000</damage>
+      <damage>60.000000</damage>
       <damagetype>Siege</damagetype>
       <minrange>0.000000</minrange>
       <maxrange>21.000000</maxrange>
@@ -55698,15 +55763,6 @@
       <damagebonus type="AbstractCoyoteMan">0.500000</damagebonus>
     </protoaction>
     <protoaction>
-      <name>StaggerHandAttack</name>
-      <damage>10.000000</damage>
-      <damagetype>Hand</damagetype>
-      <rof>1.500000</rof>
-      <damagebonus type="AbstractHeavyInfantry">1.7500000</damagebonus>
-      <damagebonus type="AbstractHeavyCavalry">0.500000</damagebonus>
-      <damagebonus type="AbstractCoyoteMan">0.500000</damagebonus>
-    </protoaction>
-    <protoaction>
       <name>StaggerRangedAttack</name>
       <damage>36.000000</damage>
       <damagetype>Siege</damagetype>
@@ -55839,7 +55895,7 @@
     </protoaction>
     <protoaction>
       <name>MeleeHandAttack</name>
-      <damage>2.000000</damage>
+      <damage>32.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
     </protoaction>
@@ -56114,9 +56170,9 @@
   </unit>
   <unit id="20764" name="zpSocketElectorBohemia">
     <dbid>20764</dbid>
-    <displaynameid>302148</displaynameid>
-    <editornameid>302315</editornameid>
-    <subciv>zpBohemianKing</subciv>
+    <displaynameid>302315</displaynameid>
+    <editornameid>302750</editornameid>
+    <subciv>zpPrinceElector</subciv>
     <socketbuildprotounit>TradingPost</socketbuildprotounit>
     <socketbuildrate>1.0286</socketbuildrate>
     <socketbuildcommandid>deSocketBuildEuropean</socketbuildcommandid>
@@ -56293,6 +56349,7 @@
     <flag>InvulnerableIfGaia</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>RMCanRotate</flag>
+    <flag>NotSelectable</flag>
   </unit>
   <unit id="20769" name="zpNatEUPropFencDark">
     <dbid>20769</dbid>
@@ -56369,8 +56426,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20771" name="zpElectorPalaceshield">
-    <dbid>20771</dbid>
+  <unit id="20777" name="zpElectorPalaceshield">
+    <dbid>20777</dbid>
     <displaynameid>302744</displaynameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
@@ -56393,6 +56450,7 @@
     <flag>InvulnerableIfGaia</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>RMCanRotate</flag>
+    <flag>NotSelectable</flag>
   </unit>
   <unit id="20773" name="zpNativePropsCastleGuards">
     <dbid>20773</dbid>
@@ -56423,10 +56481,2398 @@
     <flag>RMCanRotate</flag>
     <tactics>propvil.tactics</tactics>
   </unit>
+  <unit id="20774" name="zpNativePropsCastleLeaders">
+    <dbid>20774</dbid>
+    <displaynameid>102747</displaynameid>
+    <editornameid>302746</editornameid>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\medieval_palaces\castle_guards_leaders.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>Unit</unittype>
+    <flag>NoHPBar</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSelectable</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <tactics>propvil.tactics</tactics>
+  </unit>
+  <unit id="20775" name="zpBavarianFlag">
+    <dbid>20775</dbid>
+    <displaynameid>32671</displaynameid>
+    <editornameid>302747</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <civflagoverride>objects\flags\natives\wittelsbach_bavarian</civflagoverride>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotSearchable</flag>
+    <flag>VariationLocked</flag>
+  </unit>
+  <unit id="20776" name="zpSaxonFlag">
+    <dbid>20776</dbid>
+    <displaynameid>32672</displaynameid>
+    <editornameid>302748</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <civflagoverride>objects\flags\natives\wettin_saxon</civflagoverride>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotSearchable</flag>
+    <flag>VariationLocked</flag>
+  </unit>
+  <unit id="20778" name="zpAustrianFlag">
+    <dbid>20778</dbid>
+    <displaynameid>32672</displaynameid>
+    <editornameid>302749</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <civflagoverride>objects\flags\natives\habsburg_austria</civflagoverride>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotSearchable</flag>
+    <flag>VariationLocked</flag>
+  </unit>
+  <unit id="20779" name="zpSocketElectorSaxony">
+    <dbid>20779</dbid>
+    <displaynameid>302751</displaynameid>
+    <editornameid>302752</editornameid>
+    <subciv>zpPrinceElector</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>1.0286</socketbuildrate>
+    <socketbuildcommandid>deSocketBuildEuropean</socketbuildcommandid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+    <animfile>buildings\trading_post\europe_outpost_socket_v1.xml</animfile>
+    <minimapicon>ui\minimap\royal_house</minimapicon>
+    <capturedminimapicon>ui\minimap\royal_house_c</capturedminimapicon>
+    <portraiticon>resources\art\units\natives\saxony_kingdom.png</portraiticon>
+    <rollovertextid>122400</rollovertextid>
+    <shortrollovertextid>61104</shortrollovertextid>
+    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+    <los>9.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>CapturableSocket</unittype>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>NativePreview</flag>
+    <flag>NotDeleteable</flag>
+    <flag>SocketSubCivAlliance</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>FlattenGround</flag>
+    <flag>EnterHotkeyContext</flag>
+    <tactics>socketcapture.tactics</tactics>
+  </unit>
+  <unit id="20780" name="zpNatLandsknecht">
+    <dbid>20780</dbid>
+    <displaynameid>302755</displaynameid>
+    <editornameid>302756</editornameid>
+    <populationcount>0</populationcount>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>4.2500</maxvelocity>
+    <maxrunvelocity>6.2500</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\mercenaries\mercenary4skin\mercenary4skin.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\mercenaries\landsknecht\landsknect_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\mercenaries\landsknecht\landsknecht_portrait.png</portraiticon>
+    <rollovertextid>22943</rollovertextid>
+    <shortrollovertextid>25647</shortrollovertextid>
+    <initialhitpoints>200.0000</initialhitpoints>
+    <maxhitpoints>200.0000</maxhitpoints>
+    <buildlimit>11</buildlimit>
+    <los>12.0000</los>
+    <rechargetime>15.0000</rechargetime>
+    <unitaitype>HandCombative</unitaitype>
+    <trainpoints>33.0000</trainpoints>
+    <bounty>12.0000</bounty>
+    <buildbounty>12.0000</buildbounty>
+    <cost resourcetype="Food">70.0000</cost>
+    <cost resourcetype="Gold">120.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Hand" value="0.2000">
+    </armor>
+    <sharedbuildlimitunittypes>
+      <unittype>zpNatLandsknecht</unittype>
+      <unittype>zpNatLandsknechtProxy</unittype>
+    </sharedbuildlimitunittypes>
+    <sharedselectionunittypes>
+      <unittype>zpNatMercLandsknecht</unittype>
+      <unittype>zpNatBohemianLandsknecht</unittype>
+    </sharedselectionunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractHandInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>chargeswordsman.tactics</tactics>
+    <protoaction>
+      <name>ChargeSwashbucklerAttack</name>
+      <damage>37.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagecap>162.000000</damagecap>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>ChargeSwashbucklerCoverAttack</name>
+      <damage>18.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagecap>81.000000</damagecap>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>60.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+      <damagecap>80.000000</damagecap>
+    </protoaction>
+    <protoaction>
+      <name>CoverBuildingAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CoverHandAttack</name>
+      <damage>10.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagecap>20.000000</damagecap>
+      <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractLightInfantry">2.000000</damagebonus>
+      <handattackdisplayrange>1</handattackdisplayrange>
+    </protoaction>
+    <protoaction>
+      <name>DefendHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagecap>40.000000</damagecap>
+      <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractLightInfantry">2.000000</damagebonus>
+      <handattackdisplayrange>1</handattackdisplayrange>
+    </protoaction>
+    <protoaction>
+      <name>GuardianAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagecap>40.000000</damagecap>
+      <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+      <handattackdisplayrange>1</handattackdisplayrange>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagecap>40.000000</damagecap>
+      <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractLightInfantry">2.000000</damagebonus>
+      <handattackdisplayrange>1</handattackdisplayrange>
+    </protoaction>
+  </unit>
+  <unit id="20781" name="zpNatLineInfantryElector">
+    <dbid>20781</dbid>
+    <displaynameid>122111</displaynameid>
+    <subciv>zpPrinceElector</subciv>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <movementtype>land</movementtype>
+    <animfile>units\spc\pirates\pirates.xml</animfile>
+    <icon>resources\art\units\natives\europeans\line_infantry_icon.png</icon>
+    <portraiticon>resources\art\units\natives\europeans\line_infantry_portrait.png</portraiticon>
+    <rollovertextid>122116</rollovertextid>
+    <shortrollovertextid>25669</shortrollovertextid>
+    <trainpoints>35.0000</trainpoints>
+    <bounty>12.0000</bounty>
+    <buildbounty>12.0000</buildbounty>
+    <cost resourcetype="Food">60.0000</cost>
+    <cost resourcetype="Gold">55.0000</cost>
+    <allowedage>2</allowedage>
+    <sharedbuildlimitunit>deNatLineInfantry</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>deNatLineInfantry</unittype>
+      <unittype>zpNatLineInfantryProxy</unittype>
+      <unittype>zpNatLineInfantryElector</unittype>
+    </sharedbuildlimitunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>AbstractMusketeer</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <flag>ExperienceUnit</flag>
+    <flag>UseTacticArmorOverride</flag>
+    <flag>TacticArmorUseBaseIfNotSet</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20782" name="zpNatMountedInfantryElector">
+    <dbid>20782</dbid>
+    <displaynameid>122113</displaynameid>
+    <subciv>zpPrinceElector</subciv>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <movementtype>land</movementtype>
+    <animfile>units\spc\pirates\pirates.xml</animfile>
+    <icon>resources\art\units\natives\europeans\mounted_infantry_icon.png</icon>
+    <portraiticon>resources\art\units\natives\europeans\mounted_infantry_portrait.png</portraiticon>
+    <rollovertextid>122170</rollovertextid>
+    <shortrollovertextid>122171</shortrollovertextid>
+    <trainpoints>30.0000</trainpoints>
+    <sharedbuildlimitunit>deNatMountedInfantryRider</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>deNatMountedInfantryRider</unittype>
+      <unittype>deNatMountedInfantry</unittype>
+      <unittype>zpNatMercMountedInfantryProxy</unittype>
+      <unittype>zpNatMountedInfantryElector</unittype>
+    </sharedbuildlimitunittypes>
+    <bounty>12.0000</bounty>
+    <buildbounty>12.0000</buildbounty>
+    <cost resourcetype="Gold">110.0000</cost>
+    <allowedage>1</allowedage>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractRifleman</unittype>
+    <unittype>AbstractSkirmisher</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>ExperienceUnit</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20783" name="zpNatChevaulegerElector">
+    <dbid>20783</dbid>
+    <displaynameid>122478</displaynameid>
+    <subciv>zpPrinceElector</subciv>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <movementtype>land</movementtype>
+    <animfile>units\spc\pirates\pirates.xml</animfile>
+    <icon>resources\art\units\natives\europeans\bavarian_horseman_icon.png</icon>
+    <portraiticon>resources\art\units\natives\europeans\bavarian_horseman_portrait.png</portraiticon>
+    <rollovertextid>122135</rollovertextid>
+    <shortrollovertextid>43880</shortrollovertextid>
+    <trainpoints>38.0000</trainpoints>
+    <sharedbuildlimitunit>deNatChevauleger</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>deNatChevauleger</unittype>
+      <unittype>zpNatChevaulegerProxy</unittype>
+      <unittype>zpNatChevaulegerElector</unittype>
+    </sharedbuildlimitunittypes>
+    <bounty>12.0000</bounty>
+    <buildbounty>12.0000</buildbounty>
+    <cost resourcetype="Food">110.0000</cost>
+    <cost resourcetype="Gold">90.0000</cost>
+    <allowedage>2</allowedage>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractCavalry</unittype>
+    <unittype>AbstractLightCavalry</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractGunpowderCavalry</unittype>
+    <unittype>AbstractRangedCavalry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20784" name="zpNatMountainTrooperElector">
+    <dbid>20784</dbid>
+    <displaynameid>122118</displaynameid>
+    <subciv>zpPrinceElector</subciv>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <movementtype>land</movementtype>
+    <animfile>units\spc\pirates\pirates.xml</animfile>
+    <icon>resources\art\units\natives\europeans\mountain_trooper_icon.png</icon>
+    <portraiticon>resources\art\units\natives\europeans\mountain_trooper_portrait.png</portraiticon>
+    <rollovertextid>122120</rollovertextid>
+    <shortrollovertextid>122171</shortrollovertextid>
+    <trainpoints>30.0000</trainpoints>
+    <sharedbuildlimitunit>deNatMountainTrooper</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>deNatMountainTrooper</unittype>
+      <unittype>zpNatMountainTrooperProxy</unittype>
+      <unittype>zpNatMountainTrooperElector</unittype>
+    </sharedbuildlimitunittypes>
+    <bounty>12.0000</bounty>
+    <buildbounty>12.0000</buildbounty>
+    <cost resourcetype="Food">50.0000</cost>
+    <cost resourcetype="Wood">65.0000</cost>
+    <allowedage>1</allowedage>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>AbstractRifleman</unittype>
+    <unittype>AbstractSkirmisher</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>ExperienceUnit</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20785" name="zpNatBrunswickerElector">
+    <dbid>20785</dbid>
+    <displaynameid>122139</displaynameid>
+    <populationcount>0</populationcount>
+    <subciv>zpPrinceElector</subciv>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>4.7500</maxvelocity>
+    <maxrunvelocity>6.7500</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\europeans\brunswicker\brunswicker.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\natives\europeans\black_brunswicker_icon.png</icon>
+    <portraiticon>resources\art\units\natives\europeans\black_brunswicker_portrait.png</portraiticon>
+    <rollovertextid>122141</rollovertextid>
+    <shortrollovertextid>44370</shortrollovertextid>
+    <initialhitpoints>135.0000</initialhitpoints>
+    <maxhitpoints>135.0000</maxhitpoints>
+    <los>16.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <buildlimit>15</buildlimit>
+    <trainpoints>35.0000</trainpoints>
+    <bounty>12.0000</bounty>
+    <buildbounty>12.0000</buildbounty>
+    <cost resourcetype="Food">70.0000</cost>
+    <cost resourcetype="Gold">50.0000</cost>
+    <allowedage>2</allowedage>
+    <armor type="Hand" value="0.2000">
+    </armor>
+    <sharedbuildlimitunit>deNatBrunswicker</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>deNatBrunswicker</unittype>
+      <unittype>zpNatBrunswickerElector</unittype>
+    </sharedbuildlimitunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>AbstractMusketeer</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <flag>ExperienceUnit</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit name="deNatBrunswicker">
+    <sharedbuildlimitunittypes>
+      <unittype>deNatBrunswicker</unittype>
+      <unittype>zpNatBrunswickerElector</unittype>
+    </sharedbuildlimitunittypes>
+    <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit id="20786" name="zpNatTotenkopfElector">
+    <dbid>20786</dbid>
+    <displaynameid>122172</displaynameid>
+    <populationcount>0</populationcount>
+    <buildlimit>12</buildlimit>
+    <subciv>zpPrinceElector</subciv>
+    <obstructionradiusx>0.7900</obstructionradiusx>
+    <obstructionradiusz>0.7900</obstructionradiusz>
+    <formationcategory>Mobile</formationcategory>
+    <maxvelocity>7.250</maxvelocity>
+    <maxrunvelocity>9.250</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\europeans\totenkopf\totenkopf_horse.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>cav</physicsinfo>
+    <icon>resources\art\units\natives\europeans\totenkopf_hussar_icon.png</icon>
+    <portraiticon>resources\art\units\natives\europeans\totenkopf_hussar_portrait.png</portraiticon>
+    <rollovertextid>122174</rollovertextid>
+    <shortrollovertextid>25648</shortrollovertextid>
+    <initialhitpoints>180.0000</initialhitpoints>
+    <maxhitpoints>180.0000</maxhitpoints>
+    <los>15.0000</los>
+    <recharge init="1" type="Attacks">8.0000</recharge>
+    <unitaitype>HandCombative</unitaitype>
+    <trainpoints>42.0000</trainpoints>
+    <bounty>16.0000</bounty>
+    <buildbounty>16.0000</buildbounty>
+    <cost resourcetype="Food">70.0000</cost>
+    <cost resourcetype="Gold">90.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.3000">
+    </armor>
+    <sharedbuildlimitunit>deNatTotenkopf</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>deNatTotenkopf</unittype>
+      <unittype>zpNatTotenkopfElector</unittype>
+    </sharedbuildlimitunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractHandCavalry</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractHeavyCavalry</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractCavalry</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>ChargeMoveAnim</flag>
+    <flag>ChargeIdleAnim</flag>
+    <flag>Tracked</flag>
+    <flag>ExperienceUnit</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit name="deNatTotenkopf">
+    <sharedbuildlimitunittypes>
+      <unittype>deNatTotenkopf</unittype>
+      <unittype>zpNatTotenkopfElector</unittype>
+    </sharedbuildlimitunittypes>
+    <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit id="20787" name="zpNatDrummerElector">
+    <dbid>20787</dbid>
+    <displaynameid>30201</displaynameid>
+    <populationcount>1</populationcount>
+    <buildlimit>3</buildlimit>
+    <subciv>zpPrinceElector</subciv>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>4.5000</maxvelocity>
+    <maxrunvelocity>6.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\europeans\drummer\drummer.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\natives\europeans\drummer_icon.png</icon>
+    <portraiticon>resources\art\units\natives\europeans\drummer_portrait.png</portraiticon>
+    <rollovertextid>122232</rollovertextid>
+    <shortrollovertextid>122231</shortrollovertextid>
+    <initialhitpoints>250.0000</initialhitpoints>
+    <maxhitpoints>250.0000</maxhitpoints>
+    <los>24.0000</los>
+    <autoattackrange>18.0000</autoattackrange>
+    <projectileprotounit>InvisibleProjectileNoTracer</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <bounty>30.0000</bounty>
+    <buildbounty>30.0000</buildbounty>
+    <cost resourcetype="Food">150.0000</cost>
+    <cost resourcetype="Gold">150.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Hand" value="0.1000">
+    </armor>
+    <sharedbuildlimitunit>deNatDrummer</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>deNatDrummer</unittype>
+      <unittype>zpNatDrummerElector</unittype>
+    </sharedbuildlimitunittypes>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>Military</unittype>
+    <unittype>Ranged</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <flag>CanAutoHeal</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit name="deNatDrummer">
+    <sharedbuildlimitunittypes>
+      <unittype>deNatDrummer</unittype>
+      <unittype>zpNatDrummerElector</unittype>
+    </sharedbuildlimitunittypes>
+    <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit id="20788" name="zpNatTrabantElector">
+    <dbid>20788</dbid>
+    <displaynameid>122130</displaynameid>
+    <subciv>zpPrinceElector</subciv>
+    <populationcount>0</populationcount>
+    <buildlimit>10</buildlimit>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>4.2500</maxvelocity>
+    <maxrunvelocity>6.2500</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\europeans\trabant\trabant.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\natives\europeans\trabant_icon.png</icon>
+    <portraiticon>resources\art\units\natives\europeans\trabant_portrait.png</portraiticon>
+    <rollovertextid>122132</rollovertextid>
+    <shortrollovertextid>25696</shortrollovertextid>
+    <initialhitpoints>180.0000</initialhitpoints>
+    <maxhitpoints>180.0000</maxhitpoints>
+    <los>12.0000</los>
+    <unitaitype>HandCombative</unitaitype>
+    <trainpoints>33.0000</trainpoints>
+    <rechargetime>60.0000</rechargetime>
+    <bounty>13.0000</bounty>
+    <buildbounty>13.0000</buildbounty>
+    <cost resourcetype="Food">60.0000</cost>
+    <cost resourcetype="Gold">70.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Siege" value="0.2000">
+    </armor>
+    <sharedbuildlimitunit>deNatTrabant</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>deNatTrabant</unittype>
+      <unittype>zpNatTrabantElector</unittype>
+    </sharedbuildlimitunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractHandInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractPikeman</unittype>
+    <unittype>AbstractArchaicInfantry</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit name="deNatTrabant">
+    <sharedbuildlimitunittypes>
+      <unittype>deNatTrabant</unittype>
+      <unittype>zpNatTrabantElector</unittype>
+    </sharedbuildlimitunittypes>
+    <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit id="20789" name="zpNatSaxonCuirassierElector">
+    <dbid>20789</dbid>
+    <displaynameid>122109</displaynameid>
+    <populationcount>0</populationcount>
+    <buildlimit>7</buildlimit>
+    <subciv>zpPrinceElector</subciv>
+    <obstructionradiusx>0.7900</obstructionradiusx>
+    <obstructionradiusz>0.7900</obstructionradiusz>
+    <formationcategory>Mobile</formationcategory>
+    <maxvelocity>6.2500</maxvelocity>
+    <maxrunvelocity>8.2500</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\europeans\saxon_cuirassier\saxon_cuirassier_horse.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>cav</physicsinfo>
+    <icon>resources\art\units\natives\europeans\saxon_cuirassier_icon.png</icon>
+    <portraiticon>resources\art\units\natives\europeans\saxon_cuirassier_portrait.png</portraiticon>
+    <rollovertextid>122115</rollovertextid>
+    <shortrollovertextid>43461</shortrollovertextid>
+    <initialhitpoints>425.0000</initialhitpoints>
+    <maxhitpoints>425.0000</maxhitpoints>
+    <los>15.0000</los>
+    <unitaitype>HandCombative</unitaitype>
+    <trainpoints>60.0000</trainpoints>
+    <bounty>30.0000</bounty>
+    <buildbounty>30.0000</buildbounty>
+    <cost resourcetype="Food">150.0000</cost>
+    <cost resourcetype="Wood">150.0000</cost>
+    <allowedage>2</allowedage>
+    <armor type="Ranged" value="0.2000">
+    </armor>
+    <sharedbuildlimitunit>deNatSaxonCuirassier</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>deNatSaxonCuirassier</unittype>
+      <unittype>zpNatSaxonCuirassierElector</unittype>
+    </sharedbuildlimitunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractHeavyCavalry</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractHandCavalry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCavalry</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit name="deNatSaxonCuirassier">
+    <sharedbuildlimitunittypes>
+      <unittype>deNatSaxonCuirassier</unittype>
+      <unittype>zpNatSaxonCuirassierElector</unittype>
+    </sharedbuildlimitunittypes>
+    <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit id="20790" name="zpNatRoyalHuntsmanElector">
+    <dbid>20790</dbid>
+    <displaynameid>124726</displaynameid>
+    <populationcount>1</populationcount>
+    <subciv>zpPrinceElector</subciv>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>4.2500</maxvelocity>
+    <maxrunvelocity>6.2500</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\europeans\royal_hunter\royal_hunter.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\natives\europeans\royal_hunter_icon.png</icon>
+    <portraiticon>resources\art\units\natives\europeans\royal_hunter_portrait.png</portraiticon>
+    <rollovertextid>122507</rollovertextid>
+    <shortrollovertextid>122171</shortrollovertextid>
+    <initialhitpoints>150.0000</initialhitpoints>
+    <maxhitpoints>150.0000</maxhitpoints>
+    <los>14.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <autoattackrange>16.0000</autoattackrange>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <buildlimit>7</buildlimit>
+    <bounty>14.0000</bounty>
+    <buildbounty>14.0000</buildbounty>
+    <cost resourcetype="Food">140.0000</cost>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.3000">
+    </armor>
+    <sharedbuildlimitunit>deNatRoyalHuntsman</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpNatRoyalHuntsmanElector</unittype>
+      <unittype>deNatRoyalHuntsman</unittype>
+    </sharedbuildlimitunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>EconomicUnit</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>AbstractRifleman</unittype>
+    <unittype>AbstractCounterSkirmisher</unittype>
+    <unittype>LogicalTypeLandEconomy</unittype>
+    <unittype>AbstractVillager</unittype>
+    <unittype>ValidIdleVillager</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>DontTrainInBatches</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit name="deNatRoyalHuntsman">
+     <sharedbuildlimitunittypes>
+      <unittype>zpNatRoyalHuntsmanElector</unittype>
+      <unittype>deNatRoyalHuntsman</unittype>
+    </sharedbuildlimitunittypes>
+    <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit id="20791" name="zpNatNorthernMusketeerElector">
+    <dbid>20791</dbid>
+    <displaynameid>122121</displaynameid>
+    <populationcount>0</populationcount>
+    <buildlimit>16</buildlimit>
+    <subciv>zpPrinceElector</subciv>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>4.2500</maxvelocity>
+    <maxrunvelocity>6.2500</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\europeans\northern_musketeer\northern_musketeer.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\natives\europeans\northern_musketeer_icon.png</icon>
+    <portraiticon>resources\art\units\natives\europeans\northern_musketeer_portrait.png</portraiticon>
+    <rollovertextid>122123</rollovertextid>
+    <shortrollovertextid>62175</shortrollovertextid>
+    <initialhitpoints>120.0000</initialhitpoints>
+    <maxhitpoints>120.0000</maxhitpoints>
+    <los>16.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <bounty>11.0000</bounty>
+    <buildbounty>11.0000</buildbounty>
+    <cost resourcetype="Food">110.0000</cost>
+    <allowedage>2</allowedage>
+    <armor type="Hand" value="0.2000">
+    </armor>
+    <sharedbuildlimitunit>deNatNorthernMusketeer</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>deNatNorthernMusketeer</unittype>
+      <unittype>zpNatNorthernMusketeerElector</unittype>
+    </sharedbuildlimitunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>AbstractMusketeer</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <flag>ExperienceUnit</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit name="deNatNorthernMusketeer">
+    <sharedbuildlimitunittypes>
+      <unittype>deNatNorthernMusketeer</unittype>
+      <unittype>zpNatNorthernMusketeerElector</unittype>
+    </sharedbuildlimitunittypes>
+    <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit id="20792" name="zpNatRoyalHunterElector">
+    <dbid>20792</dbid>
+    <displaynameid>122124</displaynameid>
+    <populationcount>0</populationcount>
+    <subciv>zpPrinceElector</subciv>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>4.2500</maxvelocity>
+    <maxrunvelocity>6.2500</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\europeans\royal_hunter\royal_hunter.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\natives\europeans\royal_hunter_icon.png</icon>
+    <portraiticon>resources\art\units\natives\europeans\royal_hunter_portrait.png</portraiticon>
+    <rollovertextid>122126</rollovertextid>
+    <shortrollovertextid>122171</shortrollovertextid>
+    <initialhitpoints>150.0000</initialhitpoints>
+    <maxhitpoints>150.0000</maxhitpoints>
+    <los>21.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <autoattackrange>16.0000</autoattackrange>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <buildlimit>14</buildlimit>
+    <bounty>14.0000</bounty>
+    <buildbounty>14.0000</buildbounty>
+    <cost resourcetype="Food">140.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.3000">
+    </armor>
+    <sharedbuildlimitunit>deNatRoyalHunter</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpNatRoyalHunterElector</unittype>
+      <unittype>deNatRoyalHunter</unittype>
+    </sharedbuildlimitunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeAffectedByVillagerUpgrades</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>AbstractRifleman</unittype>
+    <unittype>AbstractCounterSkirmisher</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit name="deNatRoyalHunter">
+    <sharedbuildlimitunittypes>
+      <unittype>zpNatRoyalHunterElector</unittype>
+      <unittype>deNatRoyalHunter</unittype>
+    </sharedbuildlimitunittypes>
+    <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit id="20793" name="zpSocketElectorBavaria">
+    <dbid>20793</dbid>
+    <displaynameid>302769</displaynameid>
+    <editornameid>302770</editornameid>
+    <subciv>zpPrinceElector</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>1.0286</socketbuildrate>
+    <socketbuildcommandid>deSocketBuildEuropean</socketbuildcommandid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+    <animfile>buildings\trading_post\europe_outpost_socket_v1.xml</animfile>
+    <minimapicon>ui\minimap\royal_house</minimapicon>
+    <capturedminimapicon>ui\minimap\royal_house_c</capturedminimapicon>
+    <portraiticon>resources\art\units\natives\bavaria_kingdom.png</portraiticon>
+    <rollovertextid>122400</rollovertextid>
+    <shortrollovertextid>61104</shortrollovertextid>
+    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+    <los>9.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>CapturableSocket</unittype>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>NativePreview</flag>
+    <flag>NotDeleteable</flag>
+    <flag>SocketSubCivAlliance</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>FlattenGround</flag>
+    <flag>EnterHotkeyContext</flag>
+    <tactics>socketcapture.tactics</tactics>
+  </unit>
+  <unit id="20794" name="zpSocketElectorAustria">
+    <dbid>20794</dbid>
+    <displaynameid>302771</displaynameid>
+    <editornameid>302772</editornameid>
+    <subciv>zpPrinceElector</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>1.0286</socketbuildrate>
+    <socketbuildcommandid>deSocketBuildEuropean</socketbuildcommandid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+    <animfile>buildings\trading_post\europe_outpost_socket_v1.xml</animfile>
+    <minimapicon>ui\minimap\royal_house</minimapicon>
+    <capturedminimapicon>ui\minimap\royal_house_c</capturedminimapicon>
+    <portraiticon>resources\art\units\natives\austria_kingdom.png</portraiticon>
+    <rollovertextid>122400</rollovertextid>
+    <shortrollovertextid>61104</shortrollovertextid>
+    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+    <los>9.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>CapturableSocket</unittype>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>NativePreview</flag>
+    <flag>NotDeleteable</flag>
+    <flag>SocketSubCivAlliance</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>FlattenGround</flag>
+    <flag>EnterHotkeyContext</flag>
+    <tactics>socketcapture.tactics</tactics>
+  </unit>
+  <unit id="20795" name="zpImperialPalace">
+    <dbid>20795</dbid>
+    <displaynameid>302773</displaynameid>
+    <editornameid>302774</editornameid>
+    <obstructionradiusx>7.0000</obstructionradiusx>
+    <obstructionradiusz>3.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\palaces\elector_imperial_palace.xml</animfile>
+    <civflagoverride>objects\flags\hre_federation</civflagoverride>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge_city.xml</placementfile>
+    <icon>resources\art\buildings\spc\imperial_palace_icon.png</icon>
+    <portraiticon>resources\art\buildings\native_settlement\native_site_habsburg_icon_portrait.png</portraiticon>
+    <rollovertextid>302778</rollovertextid>
+    <shortrollovertextid>302773</shortrollovertextid>
+    <initialhitpoints>5000.0000</initialhitpoints>
+    <maxhitpoints>5000.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>50.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>100.0000</bounty>
+    <buildbounty>50.0000</buildbounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>CountsTowardEconomyModeScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractFindBarracks</unittype>
 
-
-
-
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>InitialGarrisonOnly</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>EnterHotkeyContext</flag>
+    <flag>Tracked</flag>
+    <flag>ForceFullTechUpdate</flag>
+    <flag>StartEnabled</flag>
+    <command page="2" column="0">deNatHabsburgRadetzyMarch</command>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <!--<command page="11" column="0">Abilities</command>-->
+  </unit>
+  <unit id="20796" name="zpImperialPalaceWagon">
+    <dbid>20796</dbid>
+    <displaynameid>302775</displaynameid>
+    <editornameid>302776</editornameid>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>4.0000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>5.0000</turnrate>
+    <animfile>units\trade\supply_cart\supply_cart_outpost.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\trade\outpost_wagon_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trade\outpost_wagon_portrait.png</portraiticon>
+    <rollovertextid>301403</rollovertextid>
+    <shortrollovertextid>301403</shortrollovertextid>
+    <initialhitpoints>250.0000</initialhitpoints>
+    <maxhitpoints>250.0000</maxhitpoints>
+    <los>18.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>Civilian</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ValidIdleVillager</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractWagon</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>CannotConvertHill</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <train row="0" page="0" column="0">zpImperialPalace</train>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>DeadReplacementWhenDestroyed</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>coveredwagon.tactics</tactics>
+    <protoaction>
+      <name>Build</name>
+      <rate type="zpImperialPalace">5.000000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20797" name="zpNatLandsknechtProxy">
+    <dbid>20797</dbid>
+    <displaynameid>302755</displaynameid>
+    <subciv>zpPrinceElector</subciv>
+    <populationcount>0</populationcount>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>4.2500</maxvelocity>
+    <maxrunvelocity>6.2500</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\bohemian_landsknecht.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\mercenaries\landsknecht\landsknect_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\mercenaries\landsknecht\landsknecht_portrait.png</portraiticon>
+    <rollovertextid>22943</rollovertextid>
+    <shortrollovertextid>25647</shortrollovertextid>
+    <initialhitpoints>200.0000</initialhitpoints>
+    <maxhitpoints>200.0000</maxhitpoints>
+    <buildlimit>11</buildlimit>
+    <los>12.0000</los>
+    <unitaitype>HandCombative</unitaitype>
+    <trainpoints>33.0000</trainpoints>
+    <bounty>12.0000</bounty>
+    <buildbounty>12.0000</buildbounty>
+    <cost resourcetype="Food">70.0000</cost>
+    <cost resourcetype="Gold">120.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Hand" value="0.2000">
+    </armor>
+    <sharedbuildlimitunit>zpNatLandsknecht</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpNatLandsknecht</unittype>
+      <unittype>zpNatLandsknechtProxy</unittype>
+    </sharedbuildlimitunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractHandInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>UseSharedBuildLimit</flag>
+  </unit>
+  <unit id="20798" name="zpElectorCenter">
+    <dbid>20798</dbid>
+    <displaynameid>26145</displaynameid>
+    <editornameid>302779</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>ui\editor\editor_revealer.xml</animfile>
+    <los>10.0000</los>
+    <unittype>Unattackable</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>NoHPBar</flag>
+    <flag>NotDeleteable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NonCollideable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NonSolid</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>Tracked</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>DisplayRange</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+  </unit>
+  <unit id="20799" name="zpNatMercLandsknecht">
+    <dbid>20799</dbid>
+    <displaynameid>302755</displaynameid>
+    <editornameid>302783</editornameid>
+    <populationcount>2</populationcount>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>4.2500</maxvelocity>
+    <maxrunvelocity>6.2500</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\mercenaries\mercenary4skin\mercenary4skin.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\mercenaries\landsknecht\landsknect_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\mercenaries\landsknecht\landsknecht_portrait.png</portraiticon>
+    <rollovertextid>22943</rollovertextid>
+    <shortrollovertextid>25647</shortrollovertextid>
+    <initialhitpoints>200.0000</initialhitpoints>
+    <maxhitpoints>200.0000</maxhitpoints>
+    <buildlimit>11</buildlimit>
+    <los>12.0000</los>
+    <rechargetime>15.0000</rechargetime>
+    <unitaitype>HandCombative</unitaitype>
+    <trainpoints>33.0000</trainpoints>
+    <bounty>12.0000</bounty>
+    <buildbounty>12.0000</buildbounty>
+    <cost resourcetype="Food">70.0000</cost>
+    <cost resourcetype="Gold">120.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Hand" value="0.2000">
+    </armor>
+    <sharedselectionunittypes>
+      <unittype>zpNatLandsknecht</unittype>
+      <unittype>zpNatBohemianLandsknecht</unittype>
+    </sharedselectionunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractHandInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>chargeswordsman.tactics</tactics>
+    <protoaction>
+      <name>ChargeSwashbucklerAttack</name>
+      <damage>37.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagecap>162.000000</damagecap>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>ChargeSwashbucklerCoverAttack</name>
+      <damage>18.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagecap>81.000000</damagecap>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>60.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+      <damagecap>80.000000</damagecap>
+    </protoaction>
+    <protoaction>
+      <name>CoverBuildingAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CoverHandAttack</name>
+      <damage>10.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagecap>20.000000</damagecap>
+      <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractLightInfantry">2.000000</damagebonus>
+      <handattackdisplayrange>1</handattackdisplayrange>
+    </protoaction>
+    <protoaction>
+      <name>DefendHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagecap>40.000000</damagecap>
+      <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractLightInfantry">2.000000</damagebonus>
+      <handattackdisplayrange>1</handattackdisplayrange>
+    </protoaction>
+    <protoaction>
+      <name>GuardianAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagecap>40.000000</damagecap>
+      <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+      <handattackdisplayrange>1</handattackdisplayrange>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagecap>40.000000</damagecap>
+      <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+      <damagearea>2.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractLightInfantry">2.000000</damagebonus>
+      <handattackdisplayrange>1</handattackdisplayrange>
+    </protoaction>
+  </unit>
+  <unit id="20800" name="zpSPCGermanCathedralCon0">
+    <dbid>20800</dbid>
+    <displaynameid>302803</displaynameid>
+    <editornameid>302790</editornameid>
+    <obstructionradiusx>7.8000</obstructionradiusx>
+    <obstructionradiusz>8.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\basilica\german_cathedral_con0.xml</animfile>
+    <deadreplacement>BuildingRubble6x6</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\basilica\basilica_icon.png</icon>
+    <minimapicon>ui\minimap\religious_small</minimapicon>
+    <portraiticon>resources\art\buildings\spc\imperial_cathedral.png</portraiticon>
+    <rollovertextid>302804</rollovertextid>
+    <shortrollovertextid>302804</shortrollovertextid>
+    <initialhitpoints>1000.0000</initialhitpoints>
+    <maxhitpoints>1000.0000</maxhitpoints>
+    <los>12.0000</los>
+    <displayedrange>20.0000</displayedrange>
+    <buildpoints>40.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>160.0000</bounty>
+    <buildbounty>80.0000</buildbounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>1</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractChurch</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
+    <tech row="0" page="1" column="1">zpSPCCathedralLimestone1</tech>
+    <tech row="0" page="1" column="2">zpSPCCathedralCopper1</tech>
+    <tech row="0" page="1" column="3">zpSPCCathedralBricks1</tech>
+    <tech row="0" page="1" column="4">zpSPCCathedralGlass1</tech>
+    <flag>AllowAutoGarrison</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>ShowAreaHealRate</flag>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="11" column="4">Abilities</command>
+    <tactics>notre_dame.tactics</tactics>
+    <protoaction>
+      <name>Autogather</name>
+      <rate type="XP">4.000000</rate>
+      <active>0</active>
+    </protoaction>
+    <protoaction>
+      <name>AutoConvert</name>
+      <active>0</active>
+    </protoaction>
+    <protoaction>
+      <name>AreaHeal</name>
+      <active>0</active>
+    </protoaction>
+  </unit>
+  <unit id="20801" name="zpQuarzMine">
+    <dbid>20801</dbid>
+    <displaynameid>302808</displaynameid>
+    <editornameid>302809</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <socketoffsetx>0.0000</socketoffsetx>
+    <socketoffsetz>0.0000</socketoffsetz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\gold_mine\quarz_mine.xml</animfile>
+    <impacttype>Stone</impacttype>
+    <icon>resources\art\buildings\spc_mines\quarz_mine_portrait.png</icon>
+    <minimapicon>ui\minimap\minimap_gold</minimapicon>
+    <portraiticon>resources\art\buildings\spc_mines\quarz_mine_portrait.png</portraiticon>
+    <rollovertextid>28576</rollovertextid>
+    <shortrollovertextid>28575</shortrollovertextid>
+    <los>18.0000</los>
+    <initialresource resourcetype="Gold">3000.0000</initialresource>
+    <resourcesubtype>Gold</resourcesubtype>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <scalingaurascale>3.0</scalingaurascale>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <minimapcolor red="0.8900" blue="0.2500" green="0.7000">
+    </minimapcolor>
+    <gathererlimit>20</gathererlimit>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Gold</unittype>
+    <unittype>NatureClass</unittype>
+    <unittype>AbstractMine</unittype>
+    <unittype>MinedResource</unittype>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>FlattenGround</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>NoHPBar</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Tracked</flag>
+    <flag>AllowSocketPlacement</flag>
+    <flag>AlwaysShowAsSocket</flag>
+    <flag>RMCanRotate</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20802" name="zpSPCWorkshopProps">
+    <dbid>20802</dbid>
+    <displaynameid>302810</displaynameid>
+    <editornameid>302810</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\workshop_props\workshop_props.xml</animfile>
+    <portraiticon>resources\art\units\natives\hussite_natives.png</portraiticon>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NotSelectable</flag>
+  </unit>
+  <unit id="20803" name="zpSPCGlassWorks">
+    <dbid>20803</dbid>
+    <displaynameid>302811</displaynameid>
+    <editornameid>302813</editornameid>
+    <obstructionradiusx>3.5000</obstructionradiusx>
+    <obstructionradiusz>3.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\napoleonic_era\arsenal_old.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\spc\glassmaker.png</icon>
+    <portraiticon>resources\art\buildings\spc\glassmaker.png</portraiticon>
+    <minimapicon>ui\minimap\city_resource</minimapicon>
+    <rollovertextid>302812</rollovertextid>
+    <shortrollovertextid>302812</shortrollovertextid>
+    <initialhitpoints>2000.0000</initialhitpoints>
+    <maxhitpoints>2000.0000</maxhitpoints>
+    <los>12.0000</los>
+    <displayedrange>20.0000</displayedrange>
+    <buildpoints>40.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>160.0000</bounty>
+    <buildbounty>80.0000</buildbounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>1</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
+    <flag>AllowAutoGarrison</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>VisibleUnderFog</flag>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="11" column="0">Abilities</command>
+  </unit>
+  <unit id="20804" name="zpSPCCopperWorks">
+    <dbid>20804</dbid>
+    <displaynameid>302814</displaynameid>
+    <editornameid>302815</editornameid>
+    <obstructionradiusx>3.5000</obstructionradiusx>
+    <obstructionradiusz>3.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\napoleonic_era\arsenal_old.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\spc\coppermaker.png</icon>
+    <portraiticon>resources\art\buildings\spc\coppermaker.png</portraiticon>
+    <minimapicon>ui\minimap\city_resource</minimapicon>
+    <rollovertextid>302812</rollovertextid>
+    <shortrollovertextid>302812</shortrollovertextid>
+    <initialhitpoints>2000.0000</initialhitpoints>
+    <maxhitpoints>2000.0000</maxhitpoints>
+    <los>12.0000</los>
+    <displayedrange>20.0000</displayedrange>
+    <buildpoints>40.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>160.0000</bounty>
+    <buildbounty>80.0000</buildbounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>1</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
+    <flag>AllowAutoGarrison</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>VisibleUnderFog</flag>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="11" column="0">Abilities</command>
+  </unit>
+  <unit id="20805" name="zpSPCBrickWorks">
+    <dbid>20805</dbid>
+    <displaynameid>302816</displaynameid>
+    <editornameid>302817</editornameid>
+    <obstructionradiusx>3.5000</obstructionradiusx>
+    <obstructionradiusz>3.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\napoleonic_era\arsenal_old.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\spc\brickmaker.png</icon>
+    <portraiticon>resources\art\buildings\spc\brickmaker.png</portraiticon>
+    <minimapicon>ui\minimap\city_resource</minimapicon>
+    <rollovertextid>302812</rollovertextid>
+    <shortrollovertextid>302812</shortrollovertextid>
+    <initialhitpoints>2000.0000</initialhitpoints>
+    <maxhitpoints>2000.0000</maxhitpoints>
+    <los>12.0000</los>
+    <displayedrange>20.0000</displayedrange>
+    <buildpoints>40.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>160.0000</bounty>
+    <buildbounty>80.0000</buildbounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>1</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
+    <flag>AllowAutoGarrison</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>VisibleUnderFog</flag>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="11" column="0">Abilities</command>
+  </unit>
+  <unit id="20806" name="zpSPCLimestoneWorks">
+    <dbid>20806</dbid>
+    <displaynameid>302818</displaynameid>
+    <editornameid>302819</editornameid>
+    <obstructionradiusx>3.5000</obstructionradiusx>
+    <obstructionradiusz>3.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\woku\forester.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildingsmall.xml</placementfile>
+    <icon>resources\art\buildings\spc\stonemaker.png</icon>
+    <portraiticon>resources\art\buildings\spc\stonemaker.png</portraiticon>
+    <minimapicon>ui\minimap\city_resource</minimapicon>
+    <rollovertextid>302812</rollovertextid>
+    <shortrollovertextid>302812</shortrollovertextid>
+    <initialhitpoints>2000.0000</initialhitpoints>
+    <maxhitpoints>2000.0000</maxhitpoints>
+    <los>12.0000</los>
+    <displayedrange>20.0000</displayedrange>
+    <buildpoints>40.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>160.0000</bounty>
+    <buildbounty>80.0000</buildbounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>1</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
+    <flag>AllowAutoGarrison</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>VisibleUnderFog</flag>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="11" column="0">Abilities</command>
+  </unit>
+  <unit id="20807" name="zpCityStateFlagTeam">
+    <dbid>20807</dbid>
+    <displaynameid>32671</displaynameid>
+    <editornameid>302820</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>objects\spc\spc_flag\spc_flag_playercolored.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>Tracked</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+  </unit>
+  <unit id="20808" name="zpPropWorkers">
+    <dbid>20808</dbid>
+    <displaynameid>300987</displaynameid>
+    <editornameid>302821</editornameid>
+    <obstructionradiusx>0.2000</obstructionradiusx>
+    <obstructionradiusz>0.2000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\prop_workers.xml</animfile>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\spc\pirates\pirate_ranged_icon.png</icon>
+    <portraiticon>resources\art\units\spc\pirates\pirate_ranged_portrait.png</portraiticon>
+    <rollovertextid>33797</rollovertextid>
+    <shortrollovertextid>33796</shortrollovertextid>
+    <initialhitpoints>1315.0000</initialhitpoints>
+    <maxhitpoints>1315.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Building</unittype>
+    <unittype>BuildingClass</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>Invulnerable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
+    <flag>DontFlattenGround</flag>
+    <command page="10" column="0">Delete</command>
+    <tactics>garrisonable.tactics</tactics>
+  </unit>
+  <unit id="20809" name="zpSPCCopperMineProp">
+    <dbid>20809</dbid>
+    <editornameid>302822</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\gold_mine\copper_mine.xml</animfile>
+    <impacttype>Stone</impacttype>
+    <icon>resources\art\units\asians\spc\rock_crate\spc_asian_rock_crate_icon_64.png</icon>
+    <portraiticon>resources\art\units\asians\spc\rock_crate\spc_asian_rock_crate_icon_portrait.png</portraiticon>
+    <rollovertextid>64919</rollovertextid>
+    <shortrollovertextid>64918</shortrollovertextid>
+    <initialhitpoints>6.0000</initialhitpoints>
+    <maxhitpoints>6.0000</maxhitpoints>
+    <los>18.0000</los>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>NatureClass</unittype>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>NoHPBar</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>FlattenGround</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
+    <flag>NotDeleteable</flag>
+  </unit>
 
   
 
@@ -58739,7 +61185,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\basilica\notre_dame.xml</animfile>
+    <animfile>buildings\basilica\german_cathedral_b.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>bone_prop</definebone>
+	<component>
+		rock
+		<logic type="Variation">
+			<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\workshop_props\bells</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\IH\5\AOE3DE_Build_Bricks1_Model</file>  <!-- Brickstack -->
+				</assetreference>
+			</data>
+      		<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\IH\5\AOE3DE_Build_Bricks5_Model</file>  <!-- Single Oven -->
+				</assetreference>
+			</data>
+      		<data>
+				<assetreference type="GrannyModel">
+				<file>buildings\IH\5\AOE3DE_Build_mine1_Model</file>   <!-- Minecart -->
+				</assetreference>
+			</data>
+      		<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\IH\5\AOE3DE_Build_mine3_Model</file>     <!-- Rails -->
+				</assetreference>
+			</data>
+      		<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\IH\5\AOE3DE_Build_Window_Model</file>     <!-- Window -->
+				</assetreference>
+			</data>			
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>rock</component>
+	</anim>
+</animfile>

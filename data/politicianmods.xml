@@ -141,6 +141,17 @@
   </zpconsulatehussitesking>
   <zpconsulatehussitesreformer portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/hussite_reformist.png">
   </zpconsulatehussitesreformer>
+
+  <zpconsulateelectorhabsburg portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/elector_habsburg.png">
+  </zpconsulateelectorhabsburg>
+  <zpconsulateelectorwittelsbach portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/elector_wittelsbach.png">
+  </zpconsulateelectorwittelsbach>
+  <zpconsulateelectorhanover portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/elector_hanover.png">
+  </zpconsulateelectorhanover>
+  <zpconsulateelectorwettin portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/elector_wettin.png">
+  </zpconsulateelectorwettin>
+  <zpconsulateelectoroldenburg portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/elector_oldenburg.png">
+  </zpconsulateelectoroldenburg>
   
   <zpconsulaterevjacobine portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_jacobine.png">
   </zpconsulaterevjacobine>

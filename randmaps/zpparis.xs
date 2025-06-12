@@ -104,7 +104,7 @@ void main(void)
 	if (cNumberNonGaiaPlayers >=3)
 		sizeX = 653;
 	if (cNumberNonGaiaPlayers >=6)
-		sizeX = 823;
+		sizeX = 773;
 	rmSetMapSize(sizeX, sizeZ);
 	// rmSetMapElevationParameters(cElevTurbulence, 0.4, 6, 0.5, 3.0);  // DAL - original
 
@@ -115,7 +115,7 @@ void main(void)
 	int citySize = 0;
 	//int citySizeN = 0.5;
 	if (bigCity == 1){
-		citySize = 17;
+		citySize = 0;
 		//citySizeN = rmXTilesToFraction(34);
 	}
 
@@ -592,20 +592,20 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 	const int SOUTH_SUBURBS_END = 53;
 
 	// Big City
-	const int NUM_BLOCKS_BIG = 68;
+	const int NUM_BLOCKS_BIG = 52;
 	const int NORTH_CENTER_START_BIG = 0;
-	const int NORTH_CENTER_END_BIG = 10;
-	const int NORTH_OUT_CENTER_START_BIG = 11;
-	const int NORTH_OUT_CENTER_END_BIG = 21;
-	const int NORTH_SUBURBS_START_BIG = 22;
-	const int NORTH_SUBURBS_END_BIG = 33;
+	const int NORTH_CENTER_END_BIG = 8;
+	const int NORTH_OUT_CENTER_START_BIG = 9;
+	const int NORTH_OUT_CENTER_END_BIG = 13;
+	const int NORTH_SUBURBS_START_BIG = 14;
+	const int NORTH_SUBURBS_END_BIG = 25;
 
-	const int SOUTH_CENTER_START_BIG = 34;
-	const int SOUTH_CENTER_END_BIG = 44;
-	const int SOUTH_OUT_CENTER_START_BIG = 45;
-	const int SOUTH_OUT_CENTER_END_BIG = 55;
-	const int SOUTH_SUBURBS_START_BIG = 56;
-	const int SOUTH_SUBURBS_END_BIG = 67;
+	const int SOUTH_CENTER_START_BIG = 26;
+	const int SOUTH_CENTER_END_BIG = 31;
+	const int SOUTH_OUT_CENTER_START_BIG = 35;
+	const int SOUTH_OUT_CENTER_END_BIG = 39;
+	const int SOUTH_SUBURBS_START_BIG = 40;
+	const int SOUTH_SUBURBS_END_BIG = 51;
 
 	// Define grouping placement cycle for NORMAL CITY
 
@@ -701,90 +701,70 @@ int cliffHeightConstraint = rmCreateMaxHeightConstraint("not too high", 7);
 		gCityLocsStatus = xsArrayCreateBool(NUM_BLOCKS_BIG, false, "Flags a loc as taken or not");
 
 
-	// North
-		// North - Center
-
-		xsArraySetVector(gCityLocs, 0, xsVectorSet(locXm1, 0.0, locZ2));
-		xsArraySetVector(gCityLocs, 1, xsVectorSet(locXm1, 0.0, locZ3));
-		xsArraySetVector(gCityLocs, 2, xsVectorSet(locXm1, 0.0, locZ4));
-		xsArraySetVector(gCityLocs, 3, xsVectorSet(locXm1, 0.0, locZ7));
-		xsArraySetVector(gCityLocs, 4, xsVectorSet(locXm2, 0.0, locZ2));
-		xsArraySetVector(gCityLocs, 5, xsVectorSet(locXm2, 0.0, locZ3));
-		xsArraySetVector(gCityLocs, 6, xsVectorSet(locXm2, 0.0, locZ4));
-		xsArraySetVector(gCityLocs, 7, xsVectorSet(locXm2, 0.0, locZ7));
-		xsArraySetVector(gCityLocs, 8, xsVectorSet(locXm3, 0.0, locZ3));
-		xsArraySetVector(gCityLocs, 9, xsVectorSet(locXm3, 0.0, locZ4));
-		xsArraySetVector(gCityLocs, 10, xsVectorSet(locXm3, 0.0, locZ6));
+	// North - Center
+		xsArraySetVector(gCityLocs, 0, xsVectorSet(locXm1, 0.0, locZ1));
+		xsArraySetVector(gCityLocs, 1, xsVectorSet(locXm1, 0.0, locZ2));
+		xsArraySetVector(gCityLocs, 2, xsVectorSet(locXm1, 0.0, locZ3));
+		xsArraySetVector(gCityLocs, 3, xsVectorSet(locXm1, 0.0, locZ4));
+		xsArraySetVector(gCityLocs, 4, xsVectorSet(locXm1, 0.0, locZ7));
+		xsArraySetVector(gCityLocs, 5, xsVectorSet(locXm1, 0.0, locZ8));
+		xsArraySetVector(gCityLocs, 6, xsVectorSet(locXm2, 0.0, locZ2));
+		xsArraySetVector(gCityLocs, 7, xsVectorSet(locXm2, 0.0, locZ3));
+		xsArraySetVector(gCityLocs, 8, xsVectorSet(locXm2, 0.0, locZ7));
 		
 		// North - Outer Center
-		xsArraySetVector(gCityLocs, 11, xsVectorSet(locXm1, 0.0, locZ0));
-		xsArraySetVector(gCityLocs, 12, xsVectorSet(locXm1, 0.0, locZ9));
-		xsArraySetVector(gCityLocs, 13, xsVectorSet(locXm2, 0.0, locZ1));
-		xsArraySetVector(gCityLocs, 14, xsVectorSet(locXm2, 0.0, locZ8));
-		xsArraySetVector(gCityLocs, 15, xsVectorSet(locXm3, 0.0, locZ3));
-		xsArraySetVector(gCityLocs, 16, xsVectorSet(locXm3, 0.0, locZ6));
-		xsArraySetVector(gCityLocs, 17, xsVectorSet(locXm4, 0.0, locZ2));
-		xsArraySetVector(gCityLocs, 18, xsVectorSet(locXm4, 0.0, locZ3));
-		xsArraySetVector(gCityLocs, 19, xsVectorSet(locXm4, 0.0, locZ5));
-		xsArraySetVector(gCityLocs, 20, xsVectorSet(locXm4, 0.0, locZ6));
-		xsArraySetVector(gCityLocs, 21, xsVectorSet(locXm4, 0.0, locZ7));
+		xsArraySetVector(gCityLocs, 9, xsVectorSet(locXm2, 0.0, locZ1));
+		xsArraySetVector(gCityLocs, 10, xsVectorSet(locXm2, 0.0, locZ8));
+		xsArraySetVector(gCityLocs, 11, xsVectorSet(locXm3, 0.0, locZ3));
+		xsArraySetVector(gCityLocs, 12, xsVectorSet(locXm3, 0.0, locZ4));
+		xsArraySetVector(gCityLocs, 13, xsVectorSet(locXm3, 0.0, locZ6));
 		
 		// North - Suburbs
-		xsArraySetVector(gCityLocs, 22, xsVectorSet(locXm3, 0.0, locZ0));
-		xsArraySetVector(gCityLocs, 23, xsVectorSet(locXm3, 0.0, locZ9));
-		xsArraySetVector(gCityLocs, 24, xsVectorSet(locXm4, 0.0, locZ0));
+		xsArraySetVector(gCityLocs, 14, xsVectorSet(locXm3, 0.0, locZ0));
+		xsArraySetVector(gCityLocs, 15, xsVectorSet(locXm3, 0.0, locZ9));
+		xsArraySetVector(gCityLocs, 16, xsVectorSet(locXm4, 0.0, locZ0));
+		xsArraySetVector(gCityLocs, 17, xsVectorSet(locXm4, 0.0, locZ1));
+		xsArraySetVector(gCityLocs, 18, xsVectorSet(locXm4, 0.0, locZ2));
+		xsArraySetVector(gCityLocs, 19, xsVectorSet(locXm4, 0.0, locZ3));
+		xsArraySetVector(gCityLocs, 20, xsVectorSet(locXm4, 0.0, locZ4));
+		xsArraySetVector(gCityLocs, 21, xsVectorSet(locXm4, 0.0, locZ5));
+		xsArraySetVector(gCityLocs, 22, xsVectorSet(locXm4, 0.0, locZ6));
+		xsArraySetVector(gCityLocs, 23, xsVectorSet(locXm4, 0.0, locZ7));
+		xsArraySetVector(gCityLocs, 24, xsVectorSet(locXm4, 0.0, locZ8));
 		xsArraySetVector(gCityLocs, 25, xsVectorSet(locXm4, 0.0, locZ9));
-		xsArraySetVector(gCityLocs, 26, xsVectorSet(locXm5, 0.0, locZ0));
-		xsArraySetVector(gCityLocs, 27, xsVectorSet(locXm5, 0.0, locZ1));
-		xsArraySetVector(gCityLocs, 28, xsVectorSet(locXm5, 0.0, locZ2));
-		xsArraySetVector(gCityLocs, 29, xsVectorSet(locXm5, 0.0, locZ4));
-		xsArraySetVector(gCityLocs, 30, xsVectorSet(locXm5, 0.0, locZ5));
-		xsArraySetVector(gCityLocs, 31, xsVectorSet(locXm5, 0.0, locZ7));
-		xsArraySetVector(gCityLocs, 32, xsVectorSet(locXm5, 0.0, locZ8));
-		xsArraySetVector(gCityLocs, 33, xsVectorSet(locXm5, 0.0, locZ9));
-
 
 	// South
 		// South - Center
-
-		xsArraySetVector(gCityLocs, 34, xsVectorSet(locX1, 0.0, locZ2));
-		xsArraySetVector(gCityLocs, 35, xsVectorSet(locX1, 0.0, locZ5));
-		xsArraySetVector(gCityLocs, 36, xsVectorSet(locX1, 0.0, locZ6));
-		xsArraySetVector(gCityLocs, 37, xsVectorSet(locX1, 0.0, locZ7));
-		xsArraySetVector(gCityLocs, 38, xsVectorSet(locX2, 0.0, locZ2));
-		xsArraySetVector(gCityLocs, 39, xsVectorSet(locX2, 0.0, locZ5));
-		xsArraySetVector(gCityLocs, 40, xsVectorSet(locX2, 0.0, locZ6));
-		xsArraySetVector(gCityLocs, 41, xsVectorSet(locX2, 0.0, locZ7));
-		xsArraySetVector(gCityLocs, 42, xsVectorSet(locX3, 0.0, locZ3));
-		xsArraySetVector(gCityLocs, 43, xsVectorSet(locX3, 0.0, locZ5));
-		xsArraySetVector(gCityLocs, 44, xsVectorSet(locX3, 0.0, locZ6));
+		xsArraySetVector(gCityLocs, 26, xsVectorSet(locX1, 0.0, locZ1));
+		xsArraySetVector(gCityLocs, 27, xsVectorSet(locX1, 0.0, locZ2));
+		xsArraySetVector(gCityLocs, 28, xsVectorSet(locX1, 0.0, locZ5));
+		xsArraySetVector(gCityLocs, 29, xsVectorSet(locX1, 0.0, locZ6));
+		xsArraySetVector(gCityLocs, 30, xsVectorSet(locX1, 0.0, locZ7));
+		xsArraySetVector(gCityLocs, 31, xsVectorSet(locX1, 0.0, locZ8));
+		xsArraySetVector(gCityLocs, 32, xsVectorSet(locX2, 0.0, locZ2));
+		xsArraySetVector(gCityLocs, 33, xsVectorSet(locX2, 0.0, locZ6));
+		xsArraySetVector(gCityLocs, 34, xsVectorSet(locX2, 0.0, locZ7));
 
 		// South - Outer Center
-		xsArraySetVector(gCityLocs, 45, xsVectorSet(locX1, 0.0, locZ0));
-		xsArraySetVector(gCityLocs, 46, xsVectorSet(locX1, 0.0, locZ9));
-		xsArraySetVector(gCityLocs, 47, xsVectorSet(locX2, 0.0, locZ1));
-		xsArraySetVector(gCityLocs, 48, xsVectorSet(locX2, 0.0, locZ8));
-		xsArraySetVector(gCityLocs, 49, xsVectorSet(locX3, 0.0, locZ3));
-		xsArraySetVector(gCityLocs, 50, xsVectorSet(locX3, 0.0, locZ6));
-		xsArraySetVector(gCityLocs, 51, xsVectorSet(locX4, 0.0, locZ2));
-		xsArraySetVector(gCityLocs, 52, xsVectorSet(locX4, 0.0, locZ3));
-		xsArraySetVector(gCityLocs, 53, xsVectorSet(locX4, 0.0, locZ4));
-		xsArraySetVector(gCityLocs, 54, xsVectorSet(locX4, 0.0, locZ6));
-		xsArraySetVector(gCityLocs, 55, xsVectorSet(locX4, 0.0, locZ7));
+		xsArraySetVector(gCityLocs, 35, xsVectorSet(locX2, 0.0, locZ1));
+		xsArraySetVector(gCityLocs, 36, xsVectorSet(locX2, 0.0, locZ8));
+		xsArraySetVector(gCityLocs, 37, xsVectorSet(locX3, 0.0, locZ3));
+		xsArraySetVector(gCityLocs, 38, xsVectorSet(locX3, 0.0, locZ5));
+		xsArraySetVector(gCityLocs, 39, xsVectorSet(locX3, 0.0, locZ6));
 
 		// South - Suburbs
-		xsArraySetVector(gCityLocs, 56, xsVectorSet(locX3, 0.0, locZ0));
-		xsArraySetVector(gCityLocs, 57, xsVectorSet(locX3, 0.0, locZ9));
-		xsArraySetVector(gCityLocs, 58, xsVectorSet(locX4, 0.0, locZ0));
-		xsArraySetVector(gCityLocs, 59, xsVectorSet(locX4, 0.0, locZ9));
-		xsArraySetVector(gCityLocs, 60, xsVectorSet(locX5, 0.0, locZ0));
-		xsArraySetVector(gCityLocs, 61, xsVectorSet(locX5, 0.0, locZ1));
-		xsArraySetVector(gCityLocs, 62, xsVectorSet(locX5, 0.0, locZ2));
-		xsArraySetVector(gCityLocs, 63, xsVectorSet(locX5, 0.0, locZ4));
-		xsArraySetVector(gCityLocs, 64, xsVectorSet(locX5, 0.0, locZ5));
-		xsArraySetVector(gCityLocs, 65, xsVectorSet(locX5, 0.0, locZ7));
-		xsArraySetVector(gCityLocs, 66, xsVectorSet(locX5, 0.0, locZ8));
-		xsArraySetVector(gCityLocs, 67, xsVectorSet(locX5, 0.0, locZ9));
+		xsArraySetVector(gCityLocs, 40, xsVectorSet(locX3, 0.0, locZ0));
+		xsArraySetVector(gCityLocs, 41, xsVectorSet(locX3, 0.0, locZ9));
+		xsArraySetVector(gCityLocs, 42, xsVectorSet(locX4, 0.0, locZ0));
+		xsArraySetVector(gCityLocs, 43, xsVectorSet(locX4, 0.0, locZ1));
+		xsArraySetVector(gCityLocs, 44, xsVectorSet(locX4, 0.0, locZ2));
+		xsArraySetVector(gCityLocs, 45, xsVectorSet(locX4, 0.0, locZ3));
+		xsArraySetVector(gCityLocs, 46, xsVectorSet(locX4, 0.0, locZ4));
+		xsArraySetVector(gCityLocs, 47, xsVectorSet(locX4, 0.0, locZ5));
+		xsArraySetVector(gCityLocs, 48, xsVectorSet(locX4, 0.0, locZ6));
+		xsArraySetVector(gCityLocs, 49, xsVectorSet(locX4, 0.0, locZ7));
+		xsArraySetVector(gCityLocs, 50, xsVectorSet(locX4, 0.0, locZ8));
+		xsArraySetVector(gCityLocs, 51, xsVectorSet(locX4, 0.0, locZ9));
 
 	shuffle(gCityLocs, NORTH_CENTER_START_BIG, NORTH_CENTER_END_BIG);
 	shuffle(gCityLocs, NORTH_OUT_CENTER_START_BIG, NORTH_OUT_CENTER_END_BIG);
@@ -1030,32 +1010,21 @@ int jesuitMaltese = rmRandInt(1, 2);
 
 	// Factories
 	rmSetNuggetDifficulty(299, 299);
-	if (bigCity==0){
-		if (verticalVariation ==1){
-			int factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX3, locZ8, 0);
-			int factoryPlacement2 = rmPlaceGroupingInstanceAtLoc(blockFactory, locXm3, locZ1, 0);
-		}
-		else{
-			factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX3, locZ1, 0);
-			factoryPlacement2 = rmPlaceGroupingInstanceAtLoc(blockFactory, locXm3, locZ8, 0);
-		}
-	}
-	else{
-		if (verticalVariation ==1){
-			factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX4, locZ8, 0);
-			factoryPlacement2 = rmPlaceGroupingInstanceAtLoc(blockFactory, locXm4, locZ1, 0);
-		}
-		else{
-			factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX4, locZ1, 0);
-			factoryPlacement2 = rmPlaceGroupingInstanceAtLoc(blockFactory, locXm4, locZ8, 0);
-		}
-	}
+
+    if (verticalVariation ==1){
+        int factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX3, locZ8, 0);
+        int factoryPlacement2 = rmPlaceGroupingInstanceAtLoc(blockFactory, locXm3, locZ1, 0);
+    }
+    else{
+        factoryPlacement1 = rmPlaceGroupingInstanceAtLoc(blockFactory, locX3, locZ1, 0);
+        factoryPlacement2 = rmPlaceGroupingInstanceAtLoc(blockFactory, locXm3, locZ8, 0);
+    }
+
 
 	// Victory Buildings
 	int victoryGrouping2 = -1;
 	int victoryGrouping3 = -1;
 
-	if (bigCity ==0){
 		if (spawnSwitch ==0){
 			if (verticalVariation ==1){
 				rmSetNuggetDifficulty(297, 297);
@@ -1084,40 +1053,8 @@ int jesuitMaltese = rmRandInt(1, 2);
 				victoryGrouping3 = rmPlaceGroupingInstanceAtLoc(blockTownHall, locX3, locZ8, 0);
 			}
 		}
-	}
-	else{
-		if (spawnSwitch ==0){
-			if (verticalVariation ==1){
-				rmSetNuggetDifficulty(297, 297);
-				victoryGrouping2 = rmPlaceGroupingInstanceAtLoc(blockCourt, locX4, locZ1, 0);
-				rmSetNuggetDifficulty(296, 296);
-				victoryGrouping3 = rmPlaceGroupingInstanceAtLoc(blockTownHall, locXm4, locZ8, 0);
-			}
-			else{
-				rmSetNuggetDifficulty(297, 297);
-				victoryGrouping2 = rmPlaceGroupingInstanceAtLoc(blockCourt, locX4, locZ8, 0);
-				rmSetNuggetDifficulty(296, 296);
-				victoryGrouping3 = rmPlaceGroupingInstanceAtLoc(blockTownHall, locXm4, locZ1, 0);
-			}
-		}
-		else{
-			if (verticalVariation ==1){
-				rmSetNuggetDifficulty(297, 297);
-				victoryGrouping2 = rmPlaceGroupingInstanceAtLoc(blockCourt, locXm4, locZ8, 0);
-				rmSetNuggetDifficulty(296, 296);
-				victoryGrouping3 = rmPlaceGroupingInstanceAtLoc(blockTownHall, locX4, locZ1, 0);
-			}
-			else{
-				rmSetNuggetDifficulty(297, 297);
-				victoryGrouping2 = rmPlaceGroupingInstanceAtLoc(blockCourt, locXm4, locZ1, 0);
-				rmSetNuggetDifficulty(296, 296);
-				victoryGrouping3 = rmPlaceGroupingInstanceAtLoc(blockTownHall, locX4, locZ8, 0);
-			}
-		}
-	}
 
 	// City Forts
-	if (bigCity ==0){
 		if (spawnSwitch ==0)
 			rmSetNuggetDifficulty(297, 297);
 		else
@@ -1129,24 +1066,10 @@ int jesuitMaltese = rmRandInt(1, 2);
 		else
 			rmSetNuggetDifficulty(297, 297);
 		int cityState2 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locXm3, locZ5, 0);
-	}
-	else{
-		if (spawnSwitch ==0)
-			rmSetNuggetDifficulty(297, 297);
-		else
-			rmSetNuggetDifficulty(296, 296);
-		cityState1 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locX4, locZ5, 0);
 
-		if (spawnSwitch ==0)
-			rmSetNuggetDifficulty(296, 296);
-		else
-			rmSetNuggetDifficulty(297, 297);
-		cityState2 = rmPlaceGroupingInstanceAtLoc(blockMilitary, locXm4, locZ4, 0);
-	}
 
 	// Empty Blocks
 
-	if (bigCity ==0){
 		if (cNumberNonGaiaPlayers<=2){
 			if (verticalVariation ==1){
 				rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZ0);
@@ -1157,25 +1080,13 @@ int jesuitMaltese = rmRandInt(1, 2);
 				rmPlaceGroupingAtLoc(blockConstruction, 0, locXm1, locZ0);
 			}
 		}
-		if (cNumberNonGaiaPlayers==3 || cNumberNonGaiaPlayers==4){
+		else {
 			rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZ0);
 			rmPlaceGroupingAtLoc(blockConstruction, 0, locX1, locZ9);
 			rmPlaceGroupingAtLoc(blockConstruction, 0, locXm1, locZ0);
 			rmPlaceGroupingAtLoc(blockConstruction, 0, locXm1, locZ9);
 		}
-	}
-	else{
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX2, locZ0);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX2, locZ9);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locXm2, locZ0);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locXm2, locZ9);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locXm5, locZ6);
-		rmPlaceGroupingAtLoc(blockConstruction, 0, locX5, locZ3);
-		if (cNumberNonGaiaPlayers >=7){
-			rmPlaceGroupingAtLoc(blockConstruction, 0, locXm5, locZ3);
-			rmPlaceGroupingAtLoc(blockConstruction, 0, locX5, locZ6);	
-		}
-	}
+
 
 	int northNative1 = jesuitMaltese == 1 ? blockJesuit : blockMaltese;
 	int southNative1 = northNative1 == blockJesuit ? blockMaltese : blockJesuit;
@@ -1183,18 +1094,18 @@ int jesuitMaltese = rmRandInt(1, 2);
 	// Natives
 
 	if (bigCity ==1){
-		rmPlaceGroupingAtLoc(northNative1, 0, locX3, locZ4);
-		rmPlaceGroupingAtLoc(southNative1, 0, locXm3, locZ5);
+		rmPlaceGroupingAtLoc(northNative1, 0, locX2, locZ5);
+		rmPlaceGroupingAtLoc(southNative1, 0, locXm2, locZ4);
 	}
+
 
 	int northNative2 = spawnSwitch == 1 ? blockSansculot : blockBourbon;
 	int southNative2 = northNative2 == blockSansculot ? blockBourbon : blockSansculot;
 
-	if (bigCity ==0){
 		if (verticalVariation ==1){
 			rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ7);
 			rmPlaceGroupingAtLoc(blockSansculot, 0, locXm3, locZ2);
-			if (cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==4){
+			if (cNumberNonGaiaPlayers >=3){
 				rmPlaceGroupingAtLoc(northNative2 , 0, locXm2, locZ9);
 				rmPlaceGroupingAtLoc(southNative2, 0, locX2, locZ0);
 			}
@@ -1202,39 +1113,12 @@ int jesuitMaltese = rmRandInt(1, 2);
 		else{
 			rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ2);
 			rmPlaceGroupingAtLoc(blockSansculot, 0, locXm3, locZ7);
-			if (cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==4){
+			if (cNumberNonGaiaPlayers >=3){
 				rmPlaceGroupingAtLoc(northNative2 , 0, locXm2, locZ0);
 				rmPlaceGroupingAtLoc(southNative2, 0, locX2, locZ9);
 			}
 		}	
-	}
 
-	else{
-		if (verticalVariation ==1){
-			rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ7);
-			rmPlaceGroupingAtLoc(blockSansculot, 0, locXm3, locZ2);
-			rmPlaceGroupingAtLoc(southNative2, 0, locX3, locZ2);
-			rmPlaceGroupingAtLoc(northNative2, 0, locXm3, locZ7);
-			rmPlaceGroupingAtLoc(southNative2, 0, locX1, locZ1);
-			rmPlaceGroupingAtLoc(northNative2, 0, locXm1, locZ8);
-			if (cNumberNonGaiaPlayers >=7){
-				rmPlaceGroupingAtLoc(southNative2, 0, locX1, locZ8);
-				rmPlaceGroupingAtLoc(northNative2, 0, locXm1, locZ1);
-			}
-		}
-		else{
-			rmPlaceGroupingAtLoc(blockSansculot, 0, locX3, locZ2);
-			rmPlaceGroupingAtLoc(blockSansculot, 0, locXm3, locZ7);
-			rmPlaceGroupingAtLoc(southNative2, 0, locX3, locZ7);
-			rmPlaceGroupingAtLoc(northNative2, 0, locXm3, locZ2);
-			rmPlaceGroupingAtLoc(southNative2, 0, locX1, locZ8);
-			rmPlaceGroupingAtLoc(northNative2, 0, locXm1, locZ1);
-			if (cNumberNonGaiaPlayers >=7){
-				rmPlaceGroupingAtLoc(southNative2, 0, locX1, locZ1);
-				rmPlaceGroupingAtLoc(northNative2, 0, locXm1, locZ8);
-			}
-		}	
-	}
 
 	rmSetNuggetDifficulty(195, 195);
 
@@ -1405,22 +1289,6 @@ int jesuitMaltese = rmRandInt(1, 2);
 	rmPlaceGroupingAtLoc(blockHouse03, 0, locX4, locZ8);
 	rmPlaceGroupingAtLoc(blockHouse04, 0, locX4, locZ9);
 	
-	if (bigCity == 1){
-
-		//fifth row
-
-		rmPlaceGroupingAtLoc(blockHouse05, 0, locX5, locZ0);
-		rmPlaceGroupingAtLoc(blockHouse06, 0, locX5, locZ1);
-		rmPlaceGroupingAtLoc(blockHouse01, 0, locX5, locZ2);
-		rmPlaceGroupingAtLoc(blockHouse02, 0, locX5, locZ3);
-		rmPlaceGroupingAtLoc(blockHouse03, 0, locX5, locZ4);
-		rmPlaceGroupingAtLoc(blockHouse04, 0, locX5, locZ5);
-		rmPlaceGroupingAtLoc(blockHouse05, 0, locX5, locZ6);
-		rmPlaceGroupingAtLoc(blockHouse06, 0, locX5, locZ7);
-		rmPlaceGroupingAtLoc(blockHouse01, 0, locX5, locZ8);
-		rmPlaceGroupingAtLoc(blockHouse02, 0, locX5, locZ9);
-		
-	}
 
 // North Bank
 
@@ -1476,22 +1344,6 @@ int jesuitMaltese = rmRandInt(1, 2);
 	rmPlaceGroupingAtLoc(blockHouse01, 0, locXm4, locZ8);
 	rmPlaceGroupingAtLoc(blockHouse02, 0, locXm4, locZ9);
 
-	if (bigCity == 1){
-		
-		//fifth row
-
-		rmPlaceGroupingAtLoc(blockHouse02, 0, locXm5, locZ0);
-		rmPlaceGroupingAtLoc(blockHouse03, 0, locXm5, locZ1);
-		rmPlaceGroupingAtLoc(blockHouse04, 0, locXm5, locZ2);
-		rmPlaceGroupingAtLoc(blockHouse05, 0, locXm5, locZ3);
-		rmPlaceGroupingAtLoc(blockHouse06, 0, locXm5, locZ4);
-		rmPlaceGroupingAtLoc(blockHouse01, 0, locXm5, locZ5);
-		rmPlaceGroupingAtLoc(blockHouse02, 0, locXm5, locZ6);
-		rmPlaceGroupingAtLoc(blockHouse03, 0, locXm5, locZ7);
-		rmPlaceGroupingAtLoc(blockHouse04, 0, locXm5, locZ8);
-		rmPlaceGroupingAtLoc(blockHouse05, 0, locXm5, locZ9);
-
-	}
 
 // Decorations
 

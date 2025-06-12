@@ -126,7 +126,7 @@
       <string _locid="300124">Maltese Honor Training</string>
       <string _locid="300125">Honored Maltese Guard</string>
       <string _locid="300126">Knights Hospitalers</string>
-      <string _locid="300127">Healers can heal more efectively. Adds Maltese Knights a healing ability.</string>
+      <string _locid="300127">Healers can heal more efFectively. Adds Maltese Knights a healing ability.</string>
       <string _locid="300128">Marsaxlokk Fish Market</string>
       <string _locid="300129">All fishing boats gather much more food and every dock you build spawns one free settler.</string>
       <string _locid="300130">Maltese Rigged Ship</string>
@@ -153,7 +153,7 @@
       <string _locid="300151">ZP Colonization Wagon</string>
       <string _locid="300152">Starts a new town or builds some other building of your choice.</string>
       <string _locid="300153">Colonization wagon</string>
-      <string _locid="300154">Florentian Faction</string>
+      <string _locid="300154">Florentine Faction</string>
       <string _locid="300155">&lt;color=1.0, 0.9, 0.5&gt;SPECIALITY:&lt;/color&gt; \nEconomical shipments \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nMaltese Banking \n\nMaltese Industrial Barons</string>
       <string _locid="300156">Jerusalem Faction</string>
       <string _locid="300157">&lt;color=1.0, 0.9, 0.5&gt;SPECIALITY:&lt;/color&gt; \nMilitary buildings \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nMaltese Fort \n\nMaltese Fixed Gun</string>
@@ -2313,7 +2313,7 @@
       <string _locid="302313">ZP SPC Fire Pit</string>
       <string _locid="302314">Fire Pit</string>
       <string _locid="302315">Prince Elector: Bohemia</string>
-      <string _locid="302316">ZP SPC Socket Elector Bohemia City state</string>
+      <string _locid="302316">ZP SPC Socket King of Bohemia</string>
       <string _locid="302317">There is only one true King of Bohemia. Hold the kingdom until the time runs out.</string>
       <string _locid="302318">Proclaim a King</string>
       <string _locid="302319">Pick one of the Bohemian Royal Dynasties and proclaim the King of Bohemia \n • Unlocks specific Royal House units and techs \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Rises the Kingdom of Bohemia flag above your Town Center \n • Starts a victory countdown &lt;color=1.0, 0.0, 0.0&gt;\n • Once you proclaim yourself a King, the other players unite against you. Make sure the city is well defended.&lt;/color&gt;</string>
@@ -2689,7 +2689,7 @@
       <string _locid="302689">Legendary Hussite Cannoneer</string>
       <string _locid="302690">Guard Legionary Marksman</string>
       <string _locid="302691">Legendary Legionary Marksman</string>
-      <string _locid="302692">Guard Hussite Wagon</string>
+      <string _locid="302692">Heavy Hussite Wagon</string>
       <string _locid="302693">Legendary Hussite Wagon</string>
       <string _locid="302694">Guard Hussite Knight</string>
       <string _locid="302695">Legendary Hussite Knight</string>
@@ -2743,8 +2743,82 @@
       <string _locid="302743">ZP NAT EU Venetian Fence Dark</string>
       <string _locid="302744">ZP NAT EU Shield</string>
       <string _locid="302745">ZP NAT Elector Palace Guards</string>
-      
-
+      <string _locid="302746">ZP NAT Elector Palace Leaders</string>
+      <string _locid="302747">ZP Flag Bavarian</string>
+      <string _locid="302748">ZP Flag Saxon</string>
+      <string _locid="302749">ZP Flag Austrian</string>
+      <string _locid="302750">ZP Socket Elector Bohemia</string>
+      <string _locid="302751">Prince Elector: Saxony</string>
+      <string _locid="302752">ZP Socket Elector Saxony</string>
+      <string _locid="302753">Electoral College</string>
+      <string _locid="302754">Pick one of the Electoral Royal Houses and unlock their units and techs.</string>
+      <string _locid="302755">Elector's Landsknecht</string>
+      <string _locid="302756">ZP NAT Elector's Landsknecht</string>
+      <string _locid="302757">House of Hanover</string>
+      <string _locid="302758">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBlack Brunswicker, Totenkopf Hussar \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nRoyal Scots Grey, Royal Card Games, Acts of Union, Victorian Era</string>
+      <string _locid="302759">House of Wettin</string>
+      <string _locid="302760">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nTrabant, Saxon Cuirassier \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nLeipzig Trade Fair, Königstein, Marriage Politics, Royal Saxon Grenadiers</string>
+      <string _locid="302761">House of Oldenburg</string>
+      <string _locid="302762">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nRoyal Huntsman, Northern Musketeer \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nLeague of Armed Neutrality, Hunting Expeditions, Kalthoff Repeaters, Öresund Customs</string>
+      <string _locid="302763">Veteran Elector Houses</string>
+      <string _locid="302764">Increases all Elector units attack and hitpoints</string>
+      <string _locid="302765">Guard Elector Houses</string>
+      <string _locid="302766">Veteran Landsknecht</string>
+      <string _locid="302767">Guard Landsknecht</string>
+      <string _locid="302768">Imperial Landsknecht</string>
+      <string _locid="302769">Prince Elector: Bavaria</string>
+      <string _locid="302770">ZP Socket Elector Bavaria</string>
+      <string _locid="302771">Prince Elector: Austria</string>
+      <string _locid="302772">ZP Socket Elector Austria</string>
+      <string _locid="302773">Imperial Residence: Habsburgs</string>
+      <string _locid="302774">ZP Imperial Palace</string>
+      <string _locid="302775">Imperial Palace Wagon</string>
+      <string _locid="302776">ZP Imperial Palace Wagon</string>
+      <string _locid="302777">Allows you to construct a Imperial Residence as an additional Elector settlement.</string>
+      <string _locid="302778">Imperial Palace, can train native units and provides you with native improvements. Once built, permanently increases your native unit build limit.</string>
+      <string _locid="302779">ZP Elector Palace Center</string>
+      <string _locid="302780">All controled Electorates will trickle small amount of food to feed the Empire.</string>
+      <string _locid="302781">Imperial Quotas</string>
+      <string _locid="302782">Imperial Command</string>
+      <string _locid="302783">ZP NAT MERC Landsknecht</string>
+      <string _locid="302784">Imperial Command time remaining</string>
+      <string _locid="302785">Spawns Elector Landsknechts. Lhe longer you wait the more Landsknechts you get. Temporarily boosts all military unit damage.</string>
+      <string _locid="302786">The Imperial Command ability now also spawns Hungarian Grenadiers.</string>
+      <string _locid="302787">Maintain Battery Tower</string>
+      <string _locid="302788">Auxiliary Towers</string>
+      <string _locid="302789">Spawns a Battery Tower Wagon in every Prince Elector's socket you own.</string>
+      <string _locid="302790">ZP SPC Cathedral CON 0</string>
+      <string _locid="302791">ZP SPC Cathedral CON 1</string>
+      <string _locid="302792">ZP SPC Cathedral CON 2</string>
+      <string _locid="302793">ZP SPC Cathedral CON 3</string>
+      <string _locid="302795">Austrian Copper</string>
+      <string _locid="302796">Upgrades the Cathedral construction to the next level. &lt;color=1.0, 0.0, 0.0&gt;\n • Your Team needs to have an access to Austrian Prince Elector to research this tech.&lt;/color&gt;</string>
+      <string _locid="302797">Bohemian Glass</string>
+      <string _locid="302798">Upgrades the Cathedral construction to the next level. &lt;color=1.0, 0.0, 0.0&gt;\n • Your Team needs to have an access to Bohemian Prince Elector to research this tech.&lt;/color&gt;</string>
+      <string _locid="302799">Saxon Bricks</string>
+      <string _locid="302800">Upgrades the Cathedral construction to the next level. &lt;color=1.0, 0.0, 0.0&gt;\n • Your Team needs to have an access to Saxon Prince Elector to research this tech.&lt;/color&gt;</string>
+      <string _locid="302801">Bavarian Limestone</string>
+      <string _locid="302802">Upgrades the Cathedral construction to the next level. &lt;color=1.0, 0.0, 0.0&gt;\n • Your Team needs to have an access to Bavarian Prince Elector to research this tech.&lt;/color&gt;</string>
+      <string _locid="302803">Metropolitan Cathedral Construction: Stage 0/4</string>
+      <string _locid="302804">Use resources from all four Elector sites to finish the cathedral.</string>
+      <string _locid="302805">Metropolitan Cathedral Construction: Stage 1/4</string>
+      <string _locid="302806">Metropolitan Cathedral Construction: Stage 2/4</string>
+      <string _locid="302807">Metropolitan Cathedral Construction: Stage 3/4</string>
+      <string _locid="302808">Quartz Mine</string>
+      <string _locid="302809">ZP Quartz Mine</string>
+      <string _locid="302810">ZP SPC Workshop Props</string>
+      <string _locid="302811">Glass Works</string>
+      <string _locid="302812">Provides specific supply type for a monument construction.</string>
+      <string _locid="302813">ZP SPC Glass Works</string>
+      <string _locid="302814">Copper Works</string>
+      <string _locid="302815">ZP SPC Copper Works</string>
+      <string _locid="302816">Brick Works</string>
+      <string _locid="302817">ZP SPC Brick Works</string>
+      <string _locid="302818">Stonemasons Guild</string>
+      <string _locid="302819">ZP SPC Stonemasons Guild</string>
+      <string _locid="302820">ZP City State Flag TeamColor</string>
+      <string _locid="302821">ZP PROP Workers</string>
+      <string _locid="302822">ZP SPC Copper Mine PROP</string>
 
 
       <!-- ======================================== -->

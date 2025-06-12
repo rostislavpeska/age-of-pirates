@@ -4182,5 +4182,52 @@
       <command>}</command>
       <command>rule reoihjuhiu4896 active { if (true) { //</command>
     </effect>
+    <effect name="ZP Native AutoSetup: Prince Electors">
+      <command>}}</command>
+      <command>rule Prince_Elector_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int PrinceElectorFaction=-1;</command>
+      <command>if (PrinceElectorFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomPrinceElectorFaction", 0, 4);</command>
+      <command>PrinceElectorFaction = trQuestVarGet("RandomPrinceElectorFaction");</command>
+      <command>}</command>
+      <command>if (PrinceElectorFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateElectorHabsburg, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (PrinceElectorFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateElectorWittelsbach, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (PrinceElectorFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateElectorWettin, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (PrinceElectorFaction == 3) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateElectorHanover, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (PrinceElectorFaction == 4) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateElectorOldenburg, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpPrinceElectorElect)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffPrinceElector, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule rdcnoniiba846 active { if (true) { //</command>
+    </effect>
   </effects>
 </trigger>

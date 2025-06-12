@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="terrain\minerals\sapphire\textures\Quartz_Crystal_Diffuse">
+      </texture>
+      <texture name="Normals" override="terrain\minerals\sapphire\textures\Sapphire_Crystal_V1_Normal">
+      </texture>
+      <texture name="Masks" override="terrain\minerals\sapphire\textures\Sapphire_Crystal_V1_ORM">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="terrain\minerals\sapphire\textures\Quartz_Rock_Diffuse">
+      </texture>
+      <texture name="Normals" override="terrain\minerals\sapphire\textures\Sapphire_Rock_Normal">
+      </texture>
+      <texture name="Masks" override="terrain\minerals\sapphire\textures\Sapphire_Rock_ORM">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
