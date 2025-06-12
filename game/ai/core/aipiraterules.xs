@@ -19,6 +19,7 @@ rule initializePirateRules
 active
 minInterval 1
 {
+   // Water Maps %%%%%%%%%%%%%%%%%%%%%%%
    // AssertiveWall: Age of Pirates maps that we want to count as Starting on Different Islands
    if (cRandomMapName == "zpburma_b" ||
        cRandomMapName == "zpcoldwar" ||
@@ -55,6 +56,7 @@ minInterval 1
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
    }
 
+   // Naval Maps %%%%%%%%%%%%%%%%%%%%%%%
    // AssertiveWall: Naval, but not starting on different islands
    if (cRandomMapName == "zphawaii" ||
        cRandomMapName == "zpcivilwar")
@@ -74,7 +76,7 @@ minInterval 1
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
    }
 
-   // AssertiveWall: Land Maps
+   // Land Maps %%%%%%%%%%%%%%%%%%%%%%%
    if (cRandomMapName == "winterwonderlandii" ||
        cRandomMapName == "zpwildwest" ||
        cRandomMapName == "zpmississippi" ||
@@ -103,7 +105,7 @@ minInterval 1
       }
    }
 
-   // Attack/Defend style maps
+   // Attack/Defend Maps %%%%%%%%%%%%%%%%%%%%%%%
    if (cRandomMapName == "zpverseilles" ||
        cRandomMapName == "zpazteccity")
    {
@@ -116,7 +118,8 @@ minInterval 1
       xsEnableRule("setTradeBiasDelayed");
    }
 
-   // Naval City Map. Enable based on sockets that it can handle
+   // Naval City Map %%%%%%%%%%%%%%%%%%%%%%%
+   // Enable based on sockets that it can handle
    if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0 ||
        getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0 ||
        //roda2324: Civil War sockets using an abstract type
@@ -131,7 +134,7 @@ minInterval 1
       }
    }
 
-   // AssertiveWall: Archipelago style maps
+   // Archipelago Maps %%%%%%%%%%%%%%%%%%%%%%%
    if (cRandomMapName == "euArchipelago" ||
        cRandomMapName == "euArchipelagoLarge"||
        cRandomMapName == "zpmediterranean" ||
@@ -159,7 +162,7 @@ minInterval 1
       }
    }
 
-   // AssertiveWall: Migration style maps
+   // Migration Maps %%%%%%%%%%%%%%%%%%%%%%%
    if (cRandomMapName == "Ceylon" ||
        cRandomMapName == "ceylonlarge" ||
        cRandomMapName == "afswahilicoast" ||
@@ -171,13 +174,14 @@ minInterval 1
       gMigrationMap = true;
    }
 
+   // Tasmania Maps %%%%%%%%%%%%%%%%%%%%%%%
    // AssertiveWall: Treat Tasmania as a special thing. Do not include it as a migration map
    if (cRandomMapName == "zptasmania")
    {
       xsEnableRule("tasmaniaStart");
    }
 
-   // Naval KOTH
+   // Naval KOTH Maps %%%%%%%%%%%%%%%%%%%%%%%
    if (getGaiaUnitCount(cUnitTypezpKingsHillNaval) > 0)
    {
       gAmphibiousAssaultStage = cForbidAmphibiousAssault;
@@ -186,7 +190,8 @@ minInterval 1
       xsEnableRule("waterDefendKOTH");
    }
 
-   // River maps where rowboats are available. The tech check is a backup check
+   // River Maps %%%%%%%%%%%%%%%%%%%%%%%
+   // maps where rowboats are available. The tech check is a backup check
    if (kbProtoUnitAvailable(cUnitTypezpSPCRowboat) == true)
    {
       if (kbTechGetStatus(cTechzpForbidStandardWarshipdShadow) == cTechStatusActive)
@@ -205,7 +210,11 @@ minInterval 1
       xsEnableRule("nativeWagonMonitor");
    }
    
+
+   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    // Initializes native specific rules
+   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
    if (kbUnitCount(cMyID, cUnitTypezpAIStartUrbanMap, cUnitStateAny) > 0)
    {
       xsEnableRule("cityGateKiller"); // starts the chain to enable all the city attacking
@@ -365,27 +374,71 @@ Table of Pirate Rules
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-initializecheckAttackDefenseMapAoP
- - rule to start up or shut down other rules specific to some attack/defend maps
+Rules organized into map types:
 
-CityAttackmanager
- - The city attack system works differently than the standard attack plan system.
-   Several attack plans run simultaneously, and the priority of these plans 
-   shifts depending on the circumstances. The manager requires 
-   initializeCityAttackmanager 
+   // Water Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Traditional Age of Pirates maps. These are fairly standard water heavy maps
+   where you want the AI to make a lot of ships and go for the pirate TP's
 
+   // Naval Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Naval maps are hybrid maps where you don't want the AI to focus as much on 
+   warships and navy
 
+   // Land Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Maps where you don't force water behavior. Note that the AI auto-calculates
+   some parameters, so these maps will still likely have naval/water behavior
+   even if those parameters aren't forced.
 
+   // Attack/Defend Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Maps where one side defends and one side attacks. A chain of rules turns on
+   or off some other rules, but the biggest part checkAttackDefenseMapAoP() sets
+   the building that the defender tries to defend and the disposition of the 
+   attacker. The defender is determined by whether they have a headquarter 
+   building .
 
+   // Naval City Map %%%%%%%%%%%%%%%%%%%%%%%
+   Maps with city-states that require the AI to transport military to reach the 
+   city states. Note that the AI cannot transport defend plans, so the AI will
+   not be able to properly station troops at the city states. Instead it just 
+   looks for city states to attack and build.
 
+   // Archipelago Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Maps where the AI needs to simultaneously gather and build on multiple 
+   islands at once. There are two styles:
+      Archipelago: AI will attempt to migrate around to it's most used island
+      Atoll: (poorly named) AI will keep it's starting island as the "main base"
 
+   // Migration Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Maps like ceylon. AI will migrate to main island connected to map center. 
+   There are some special rules floating around for odd map layouts
 
+   // Tasmania Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Players start on a boat. tasmaniaStart rule will move the boats to the 
+   coastline and build their TC on the mainland.
 
+   // Naval KOTH Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Handles maps where the KoTH fort is on the water and the AI needs to attack 
+   it with warships
 
+   // River Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Maps where rowboats are available. Allows AI to train rowboats
 
+   // Native Specific Rules %%%%%%%%%%%%%%%%%%%%%%%
+   The native specific rules are all tied to the existance of the native socket 
+   on the map.
 
-
-
+   // City Maps %%%%%%%%%%%%%%%%%%%%%%%
+   City map behavior was designed around the Versaille map where the AI must 
+   break through a city gate before it can then start attacking. The behavior is
+   tied to the unit:
+      cUnitTypezpAIStartUrbanMap
+   The rule cityGateKiller starts the chain that eventually enables 
+      cityAttackmanager
+   via the rule
+      initializeCityAttackmanager
+   The attack plan needs one of these units at every point you want the AI to try and capture:
+      zpSPCCapturableFlagNoIcon
+   
 
 
 */
@@ -650,7 +703,7 @@ minInterval 10
    int tempUnit = -1;
    int counter = 0;
    int planID = -1;
-   int capturableFlagQuery = createSimpleGaiaUnitQuery(cUnitTypezpSPCCapturableFlagNoIcon, cUnitStateAlive);
+   int capturableFlagQuery = createSimpleGaiaUnitQuery(cUnitTypezpAbstractFortCenter, cUnitStateAlive);
    int attackPlansNeeded = kbUnitQueryExecute(capturableFlagQuery);
 
    cityAttackPlanArray = xsArrayCreateInt(attackPlansNeeded, -1, "City Attack Plans");
