@@ -42253,6 +42253,7 @@
     <los>15.0000</los>
     <unittype>EmbellishmentClass</unittype>
     <unittype>Unit</unittype>
+    <unittype>zpAbstractFortCenter</unittype>
     <flag>NoHPBar</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
@@ -49089,7 +49090,8 @@
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>buildings\trading_post\europe_outpost_socket_v1.xml</animfile>
-    <minimapicon>ui\minimap\t</minimapicon>
+    <minimapicon>ui\minimap\royal_house</minimapicon>
+    <capturedminimapicon>ui\minimap\royal_house_c</capturedminimapicon>
     <portraiticon>resources\art\units\natives\bohemia_kingdom.png</portraiticon>
     <rollovertextid>302317</rollovertextid>
     <shortrollovertextid>302317</shortrollovertextid>
@@ -49106,6 +49108,7 @@
     <unittype>Unattackable</unittype>
     <unittype>NativeBuilding</unittype>
     <unittype>EmbellishmentClass</unittype>
+    <unittype>zpAbstractFortCenter</unittype>
     <flag>MinimapDisplayOnTop</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
@@ -58438,6 +58441,7 @@
     <flag>InvulnerableIfGaia</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>RMCanRotate</flag>
+    <flag>PlaceAnywhere</flag>
     <flag>NotSelectable</flag>
   </unit>
   <unit id="20803" name="zpSPCGlassWorks">
@@ -58873,6 +58877,187 @@
     <flag>NotSelectable</flag>
     <flag>NotDeleteable</flag>
   </unit>
+  <unit id="20810" name="zpSocketElectorBohemiaCity">
+    <dbid>20810</dbid>
+    <displaynameid>302315</displaynameid>
+    <editornameid>302827</editornameid>
+    <subciv>zpPrinceElector</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>3.0000</socketbuildrate>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\trading_post\europe_outpost_socket_v1.xml</animfile>
+    <minimapicon>ui\minimap\royal_house</minimapicon>
+    <capturedminimapicon>ui\minimap\royal_house_c</capturedminimapicon>
+    <portraiticon>resources\art\units\natives\bohemia_kingdom.png</portraiticon>
+    <rollovertextid>122400</rollovertextid>
+    <shortrollovertextid>61104</shortrollovertextid>
+    <los>5.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>SocketFreeBuilding</flag>
+    <flag>NotDeleteable</flag>
+    <tactics>socketcapture.tactics</tactics>
+    <command page="1" column="0">deSocketBuild</command>
+  </unit>
+  <unit id="20811" name="zpSocketElectorSaxonyCity">
+    <dbid>20811</dbid>
+    <displaynameid>302751</displaynameid>
+    <editornameid>302830</editornameid>
+    <subciv>zpPrinceElector</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>3.0000</socketbuildrate>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\trading_post\europe_outpost_socket_v1.xml</animfile>
+    <minimapicon>ui\minimap\royal_house</minimapicon>
+    <capturedminimapicon>ui\minimap\royal_house_c</capturedminimapicon>
+    <portraiticon>resources\art\units\natives\saxony_kingdom.png</portraiticon>
+    <rollovertextid>122400</rollovertextid>
+    <shortrollovertextid>61104</shortrollovertextid>
+    <los>5.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>SocketFreeBuilding</flag>
+    <flag>NotDeleteable</flag>
+    <tactics>socketcapture.tactics</tactics>
+    <command page="1" column="0">deSocketBuild</command>
+  </unit>
+  <unit id="20812" name="zpSocketElectorBavariaCity">
+    <dbid>20812</dbid>
+    <displaynameid>302769</displaynameid>
+    <editornameid>302829</editornameid>
+    <subciv>zpPrinceElector</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>3.0000</socketbuildrate>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\trading_post\europe_outpost_socket_v1.xml</animfile>
+    <minimapicon>ui\minimap\royal_house</minimapicon>
+    <capturedminimapicon>ui\minimap\royal_house_c</capturedminimapicon>
+    <portraiticon>resources\art\units\natives\bavaria_kingdom.png</portraiticon>
+    <rollovertextid>122400</rollovertextid>
+    <shortrollovertextid>61104</shortrollovertextid>
+    <los>5.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>SocketFreeBuilding</flag>
+    <flag>NotDeleteable</flag>
+    <tactics>socketcapture.tactics</tactics>
+    <command page="1" column="0">deSocketBuild</command>
+  </unit>
+  <unit id="20813" name="zpSocketElectorAustriaCity">
+    <dbid>20813</dbid>
+    <displaynameid>302771</displaynameid>
+    <editornameid>302828</editornameid>
+    <subciv>zpPrinceElector</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>3.0000</socketbuildrate>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\trading_post\europe_outpost_socket_v1.xml</animfile>
+    <minimapicon>ui\minimap\royal_house</minimapicon>
+    <capturedminimapicon>ui\minimap\royal_house_c</capturedminimapicon>
+    <portraiticon>resources\art\units\natives\austria_kingdom.png</portraiticon>
+    <rollovertextid>122400</rollovertextid>
+    <shortrollovertextid>61104</shortrollovertextid>
+    <los>5.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>SocketFreeBuilding</flag>
+    <flag>NotDeleteable</flag>
+    <tactics>socketcapture.tactics</tactics>
+    <command page="1" column="0">deSocketBuild</command>
+  </unit>
+
 
   
 

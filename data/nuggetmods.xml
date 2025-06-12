@@ -2770,6 +2770,41 @@
       </guardianunit>
       <difficulty>313</difficulty>
     </nugget>
+    <nugget>
+      <name>zpNuggetPrinceElector</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>zpNatLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatLandsknecht</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatLandsknecht</unit>
+      </guardianunit>
+      <difficulty>306</difficulty>
+    </nugget>
 
 
     <!--WATER NUGGETS-->
