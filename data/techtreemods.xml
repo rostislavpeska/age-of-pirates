@@ -28476,6 +28476,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>AlwaysShowButton</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">zpCopperWorksTech</techstatus>
     </prereqs>
@@ -28502,6 +28503,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>AlwaysShowButton</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">zpGlassWorksTech</techstatus>
     </prereqs>
@@ -28528,6 +28530,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>AlwaysShowButton</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">zpBrickWorksTech</techstatus>
     </prereqs>
@@ -28554,6 +28557,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>AlwaysShowButton</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">zpStoneWorksTech</techstatus>
     </prereqs>
@@ -28580,6 +28584,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>AlwaysShowButton</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage1</techstatus>
       <techstatus status="Active">zpCopperWorksTech</techstatus>
@@ -28606,6 +28611,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>AlwaysShowButton</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage1</techstatus>
       <techstatus status="Active">zpGlassWorksTech</techstatus>
@@ -28632,6 +28638,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>AlwaysShowButton</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage1</techstatus>
       <techstatus status="Active">zpBrickWorksTech</techstatus>
@@ -28658,6 +28665,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>AlwaysShowButton</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage1</techstatus>
       <techstatus status="Active">zpStoneWorksTech</techstatus>
@@ -28684,6 +28692,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>AlwaysShowButton</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage2</techstatus>
       <techstatus status="Active">zpCopperWorksTech</techstatus>
@@ -28709,6 +28718,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>AlwaysShowButton</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage2</techstatus>
       <techstatus status="Active">zpGlassWorksTech</techstatus>
@@ -28734,6 +28744,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>AlwaysShowButton</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage2</techstatus>
       <techstatus status="Active">zpBrickWorksTech</techstatus>
@@ -28759,6 +28770,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>AlwaysShowButton</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage2</techstatus>
       <techstatus status="Active">zpStoneWorksTech</techstatus>
@@ -28784,6 +28796,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>AlwaysShowButton</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage3</techstatus>
       <techstatus status="Active">zpCopperWorksTech</techstatus>
@@ -28808,6 +28821,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>AlwaysShowButton</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage3</techstatus>
       <techstatus status="Active">zpGlassWorksTech</techstatus>
@@ -28832,6 +28846,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>AlwaysShowButton</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage3</techstatus>
       <techstatus status="Active">zpBrickWorksTech</techstatus>
@@ -28856,6 +28871,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>AlwaysShowButton</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <prereqs>
       <techstatus status="Active">zpSPCCathedralStage3</techstatus>
       <techstatus status="Active">zpStoneWorksTech</techstatus>
@@ -29047,24 +29063,64 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="SetName" tech="zpSPCCathedralCopper1" newname="302795" newrollover="302848">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralCopper2" newname="302795" newrollover="302848">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralCopper3" newname="302795" newrollover="302848">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralCopper4" newname="302795" newrollover="302848">
+      </effect>
+    </effects>
   </tech>
   <tech name="zpGlassWorksTech" type="Normal">
     <dbid>41125</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="SetName" tech="zpSPCCathedralGlass1" newname="302797" newrollover="302848">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralGlass2" newname="302797" newrollover="302848">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralGlass3" newname="302797" newrollover="302848">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralGlass4" newname="302797" newrollover="302848">
+      </effect>
+    </effects>
   </tech>
   <tech name="zpBrickWorksTech" type="Normal">
     <dbid>41126</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="SetName" tech="zpSPCCathedralBricks1" newname="302799" newrollover="302848">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralBricks2" newname="302799" newrollover="302848">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralBricks3" newname="302799" newrollover="302848">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralBricks4" newname="302799" newrollover="302848">
+      </effect>
+    </effects>
   </tech>
   <tech name="zpStoneWorksTech" type="Normal">
     <dbid>41127</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="SetName" tech="zpSPCCathedralLimestone1" newname="302801" newrollover="302848">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralLimestone2" newname="302801" newrollover="302848">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralLimestone3" newname="302801" newrollover="302848">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralLimestone4" newname="302801" newrollover="302848">
+      </effect>
+    </effects>
   </tech>
   <tech name="zpCrownlandsSetup" type="Normal">
     <dbid>41128</dbid>
@@ -29087,6 +29143,74 @@
     <flag>Shadow</flag>
     <effects>
       <effect type="TransformUnit" toprotoid="CinematicRevealerToAll" fromprotoid="CinematicRevealer">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCopperWorksTechOFF" type="Normal">
+    <dbid>41130</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpCopperWorksTech</effect>
+      <effect type="SetName" tech="zpSPCCathedralCopper1" newname="302795" newrollover="302796">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralCopper2" newname="302795" newrollover="302796">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralCopper3" newname="302795" newrollover="302796">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralCopper4" newname="302795" newrollover="302796">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpGlassWorksTechOFF" type="Normal">
+    <dbid>41131</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpGlassWorksTech</effect>
+      <effect type="SetName" tech="zpSPCCathedralGlass1" newname="302797" newrollover="302798">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralGlass2" newname="302797" newrollover="302798">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralGlass3" newname="302797" newrollover="302798">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralGlass4" newname="302797" newrollover="302798">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpBrickWorksTechOFF" type="Normal">
+    <dbid>41132</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpBrickWorksTech</effect>
+      <effect type="SetName" tech="zpSPCCathedralBricks1" newname="302799" newrollover="302800">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralBricks2" newname="302799" newrollover="302800">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralBricks3" newname="302799" newrollover="302800">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralBricks4" newname="302799" newrollover="302800">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpStoneWorksTechOFF" type="Normal">
+    <dbid>41133</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpStoneWorksTech</effect>
+      <effect type="SetName" tech="zpSPCCathedralLimestone1" newname="302801" newrollover="302802">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralLimestone2" newname="302801" newrollover="302802">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralLimestone3" newname="302801" newrollover="302802">
+      </effect>
+      <effect type="SetName" tech="zpSPCCathedralLimestone4" newname="302801" newrollover="302802">
       </effect>
     </effects>
   </tech>
