@@ -2559,8 +2559,8 @@
       <string _locid="302559">ZP Native House Inventors</string>
       <string _locid="302560">ZP Prop Water Tower</string>
       <string _locid="302561">Whiskey Distillery</string>
-      <string _locid="302562">Achieve Union Team victory by capturing and holding all sockets on the map for at least 2 minutes.</string>
-      <string _locid="302563">Achieve Confederacy Team victory by capturing and holding all sockets on the map for at least 2 minutes.</string>
+      <string _locid="302562">Achieve Union Team victory by capturing and holding 4/5 sockets for at least 8 minutes.</string>
+      <string _locid="302563">Achieve Confederacy Team victory by capturing and holding 4/5 sockets for at least 8 minutes.</string>
       <string _locid="302564">ZP Prop Wind Mill</string>
       <string _locid="302565">Build a Native Consulate and pick a partner from a nearby native tribe.</string>
       <string _locid="302566">Pipe of Peace</string>

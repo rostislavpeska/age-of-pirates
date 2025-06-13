@@ -29054,7 +29054,7 @@
       </effect>
       <effect type="SetName" proto="zpSPCGermanCathedralCon0" culture="none" newname="302063" newrollover="302310" newshortrollover="302309">
       </effect>
-      <effect type="TextEffectOutput" reason="Papal" selfmsg="302835" playermsg="302836">
+      <effect type="TextEffectOutput" reason="KotH" selfmsg="302835" playermsg="302836">
       </effect>
     </effects>
   </tech>

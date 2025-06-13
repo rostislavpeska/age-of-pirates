@@ -1363,7 +1363,7 @@ void main(void)
 	int armoredTrainCooldown = 300;
 	int armoredTrainCooldown2 = 240;
 	int socketMinimapFlareDuration = 300;
-	int victoryCountDown = 120;
+	int victoryCountDown = 480;
 
 	// Guardians
 	string guardianUnit = "zpJamesGang";
@@ -1721,7 +1721,7 @@ void main(void)
 		rmSetTriggerConditionParamInt("TeamID",i);
 		rmSetTriggerConditionParam("Protounit","zpSPCRevealerAztec");
 		rmSetTriggerConditionParam("Op",">=");
-		rmSetTriggerConditionParamInt("Count",5);
+		rmSetTriggerConditionParamInt("Count",4);
 		rmAddTriggerEffect("Counter:Add Timer");
 		rmSetTriggerEffectParam("Name","VictoryCounter"+i);
 		rmSetTriggerEffectParamInt("Start", victoryCountDown);
@@ -1744,7 +1744,7 @@ void main(void)
 		rmSetTriggerConditionParamInt("TeamID",i);
 		rmSetTriggerConditionParam("Protounit","zpSPCRevealerAztec");
 		rmSetTriggerConditionParam("Op","<");
-		rmSetTriggerConditionParamInt("Count",5);
+		rmSetTriggerConditionParamInt("Count",4);
 		rmAddTriggerEffect("Counter Stop");
 		rmSetTriggerEffectParam("Name","VictoryCounter"+i);
 		rmAddTriggerEffect("Fire Event");
