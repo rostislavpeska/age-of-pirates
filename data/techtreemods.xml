@@ -28904,9 +28904,9 @@
       <effect type="TechStatus" status="obtainable">zpSPCCathedralLimestone2</effect>
       <effect type="TechStatus" status="obtainable">zpSPCCathedralLimestone3</effect>
       <effect type="TechStatus" status="obtainable">zpSPCCathedralLimestone4</effect>
-      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
       <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
+      <effect type="TechStatus" status="obtainable">zpMonarchChurchAliance</effect>
     </effects>
   </tech>
   <tech name="zpSPCCathedralStage1" type="Normal">
@@ -29037,7 +29037,7 @@
       <effect type="CommandRemove" tech="zpSPCCathedralLimestone4">
         <target type="Protounit">zpSPCGermanCathedralCon0</target>
       </effect>
-      <effect type="CommandAdd" tech="zpSPCBlessedCity" page="11" column="1">
+      <effect type="CommandAdd" tech="zpMonarchChurchAliance" page="11" column="1">
         <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
       </effect>
       <effect type="CommandAdd" tech="DESPCPapalLegate" page="11" column="2">

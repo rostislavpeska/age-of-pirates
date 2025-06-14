@@ -58907,6 +58907,7 @@
     <unittype>Unattackable</unittype>
     <unittype>NativeBuilding</unittype>
     <unittype>EmbellishmentClass</unittype>
+    <unittype>CivilWarCityState</unittype>
     <flag>MinimapDisplayOnTop</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
@@ -58952,6 +58953,7 @@
     <unittype>Unattackable</unittype>
     <unittype>NativeBuilding</unittype>
     <unittype>EmbellishmentClass</unittype>
+    <unittype>CivilWarCityState</unittype>
     <flag>MinimapDisplayOnTop</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
@@ -58997,6 +58999,7 @@
     <unittype>Unattackable</unittype>
     <unittype>NativeBuilding</unittype>
     <unittype>EmbellishmentClass</unittype>
+    <unittype>CivilWarCityState</unittype>
     <flag>MinimapDisplayOnTop</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
@@ -59042,6 +59045,7 @@
     <unittype>Unattackable</unittype>
     <unittype>NativeBuilding</unittype>
     <unittype>EmbellishmentClass</unittype>
+    <unittype>CivilWarCityState</unittype>
     <flag>MinimapDisplayOnTop</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>

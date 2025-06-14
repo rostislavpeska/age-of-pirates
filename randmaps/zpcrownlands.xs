@@ -715,22 +715,22 @@ void main(void)
 
 	// Spawners
 	int SpawnerID1 = rmCreateObjectDef("Spawner 1");
-	rmAddObjectDefItem(SpawnerID1, "zpSPCWaterSpawnPoint", 1, 0.0);
+	rmAddObjectDefItem(SpawnerID1, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(SpawnerID1, 0.00);
 	rmSetObjectDefMaxDistance(SpawnerID1, 0.00);
 
 	int SpawnerID2 = rmCreateObjectDef("Spawner 2");
-	rmAddObjectDefItem(SpawnerID2, "zpSPCWaterSpawnPoint", 1, 0.0);
+	rmAddObjectDefItem(SpawnerID2, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(SpawnerID2, 0.00);
 	rmSetObjectDefMaxDistance(SpawnerID2, 0.00);
 
 	int SpawnerID3= rmCreateObjectDef("Spawner 3");
-	rmAddObjectDefItem(SpawnerID3, "zpSPCWaterSpawnPoint", 1, 0.0);
+	rmAddObjectDefItem(SpawnerID3, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(SpawnerID3, 0.00);
 	rmSetObjectDefMaxDistance(SpawnerID3, 0.00);
 
 	int SpawnerID4 = rmCreateObjectDef("Spawner 4");
-	rmAddObjectDefItem(SpawnerID4, "zpSPCWaterSpawnPoint", 1, 0.0);
+	rmAddObjectDefItem(SpawnerID4, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(SpawnerID4, 0.00);
 	rmSetObjectDefMaxDistance(SpawnerID4, 0.00);
 
@@ -786,7 +786,7 @@ void main(void)
     rmSetGroupingMaxDistance(hussiteCampN, 0.00);
 	rmAddGroupingToClass(hussiteCampN, rmClassID("classBlock"));
 
-	int hussiteCampS = rmCreateGrouping("Hussite Camp South", "Hussite_Camp_04");
+	int hussiteCampS = rmCreateGrouping("Hussite Camp South", "Hussite_Camp_05");
     rmSetGroupingMinDistance(hussiteCampS, 0.00);
     rmSetGroupingMaxDistance(hussiteCampS, 0.00);
 	rmAddGroupingToClass(hussiteCampS, rmClassID("classBlock"));
@@ -1309,7 +1309,7 @@ void main(void)
 
 	int sameTeam=-1;
 
-	int victoryCountDown = 30;
+	int victoryCountDown = 180;
 	int socketMinimapFlareDuration = 300;
 
 	// Triggers
@@ -1409,14 +1409,27 @@ void main(void)
 		rmSetTriggerEffectParamInt("Time", 61000);
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd"+k));
 		rmAddTriggerEffect("Play Soundset");
-		rmSetTriggerEffectParam("Soundset","UI_Strategywarning");
+		rmSetTriggerEffectParam("Soundset","UI_Select_Building_Cathedral");
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmSetTriggerEffectParam("TechID","cTechzpRevealerToAll");
 		rmSetTriggerEffectParamInt("Status",2);
-		rmSetTriggerPriority(2);
+		for (i=1; <= cNumberNonGaiaPlayers) {
+			rmAddTriggerEffect("Revealer : Create");
+			rmSetTriggerEffectParamInt("PlayerID",i);
+			rmSetTriggerEffectParam("RevealerName","CathedralRevealer"+k+"_"+i);
+			rmSetTriggerEffectParam("RevealerLoc", rmXFractionToMeters(rmPlayerLocXFraction(k))+",0,"+rmZFractionToMeters(rmPlayerLocZFraction(k)), false);
+			rmSetTriggerEffectParamInt("RevealerLOS",15);
+
+			rmAddTriggerEffect("Flare Minimap");
+			rmSetTriggerEffectParamInt("PlayerID", i, false);
+			rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+			rmSetTriggerEffectParam("Position", rmXFractionToMeters(rmPlayerLocXFraction(k))+",0,"+rmZFractionToMeters(rmPlayerLocZFraction(k)), false);
+			rmSetTriggerEffectParam("Flash", "True", false);
+		}
+		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
-		rmSetTriggerRunImmediately(false);
+		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
 
 		rmSwitchToTrigger(rmTriggerID("Revolution_MusicEnd"+k));
@@ -1903,18 +1916,18 @@ void main(void)
 						rmAddTriggerEffect("ZP Set Tech Status (XS)");
 						rmSetTriggerEffectParamInt("PlayerID",i);
 						if (s==1) {
-							rmSetTriggerEffectParam("TechID","cTechzpGlassWorksTech"); //operator
+							rmSetTriggerEffectParam("TechID","cTechzpGlassWorksTechOFF"); //operator
 						}
 						else if (s==2) {
-							rmSetTriggerEffectParam("TechID","cTechzpBrickWorksTech"); //operator
+							rmSetTriggerEffectParam("TechID","cTechzpBrickWorksTechOFF"); //operator
 						}
 						else if (s==3) {
-							rmSetTriggerEffectParam("TechID","cTechzpStoneWorksTech"); //operator
+							rmSetTriggerEffectParam("TechID","cTechzpStoneWorksTechOFF"); //operator
 						}
 						else if (s==4) {
-							rmSetTriggerEffectParam("TechID","cTechzpCopperWorksTech"); //operator
+							rmSetTriggerEffectParam("TechID","cTechzpCopperWorksTechOFF"); //operator
 						}
-						rmSetTriggerEffectParamInt("Status",0);
+						rmSetTriggerEffectParamInt("Status",2);
 
 						rmAddTriggerEffect("Flare Minimap");
 						rmSetTriggerEffectParamInt("PlayerID", i, false);
@@ -2043,7 +2056,7 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
-		
+	
 
 
 	// Testing
