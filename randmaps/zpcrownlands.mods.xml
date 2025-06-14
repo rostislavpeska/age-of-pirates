@@ -313,8 +313,8 @@
             <portraiticon>resources\art\buildings\town_center\towncenter_portrait.png</portraiticon>
             <rollovertextid>22840</rollovertextid>
             <shortrollovertextid>25734</shortrollovertextid>
-            <initialhitpoints>8200.0000</initialhitpoints>
-            <maxhitpoints>8200.0000</maxhitpoints>
+            <initialhitpoints>10000.0000</initialhitpoints>
+            <maxhitpoints>10000.0000</maxhitpoints>
             <unitregen damagetimeout="6.0">0.2500</unitregen>
             <flag>NotRepairable</flag>
             <flag>HeroName1</flag>
