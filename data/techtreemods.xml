@@ -28466,9 +28466,9 @@
   <tech name="zpSPCCathedralCopper1" type="Normal">
     <dbid>41103</dbid>
     <displaynameid>302795</displaynameid>
-    <cost resourcetype="Wood">500.0000</cost>
-    <cost resourcetype="Food">500.0000</cost>
-    <cost resourcetype="Gold">500.0000</cost>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Food">250.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>180.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\cathedral_austrian_copper.png</icon>
@@ -28493,9 +28493,9 @@
   <tech name="zpSPCCathedralGlass1" type="Normal">
     <dbid>41104</dbid>
     <displaynameid>302797</displaynameid>
-    <cost resourcetype="Wood">500.0000</cost>
-    <cost resourcetype="Food">500.0000</cost>
-    <cost resourcetype="Gold">500.0000</cost>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Food">250.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>180.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\cathedral_bohemian_glass.png</icon>
@@ -28520,9 +28520,9 @@
   <tech name="zpSPCCathedralBricks1" type="Normal">
     <dbid>41105</dbid>
     <displaynameid>302799</displaynameid>
-    <cost resourcetype="Wood">500.0000</cost>
-    <cost resourcetype="Food">500.0000</cost>
-    <cost resourcetype="Gold">500.0000</cost>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Food">250.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>180.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\cathedral_saxon_bricks.png</icon>
@@ -28547,9 +28547,9 @@
   <tech name="zpSPCCathedralLimestone1" type="Normal">
     <dbid>41106</dbid>
     <displaynameid>302801</displaynameid>
-    <cost resourcetype="Wood">500.0000</cost>
-    <cost resourcetype="Food">500.0000</cost>
-    <cost resourcetype="Gold">500.0000</cost>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Food">250.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>180.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\cathedral_bavarian_limestone.png</icon>
@@ -28574,9 +28574,9 @@
   <tech name="zpSPCCathedralCopper2" type="Normal">
     <dbid>41107</dbid>
     <displaynameid>302795</displaynameid>
-    <cost resourcetype="Wood">1000.0000</cost>
-    <cost resourcetype="Food">1000.0000</cost>
-    <cost resourcetype="Gold">1000.0000</cost>
+    <cost resourcetype="Wood">500.0000</cost>
+    <cost resourcetype="Food">500.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
     <researchpoints>180.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\cathedral_austrian_copper.png</icon>
@@ -28601,9 +28601,9 @@
   <tech name="zpSPCCathedralGlass2" type="Normal">
     <dbid>41108</dbid>
     <displaynameid>302797</displaynameid>
-    <cost resourcetype="Wood">1000.0000</cost>
-    <cost resourcetype="Food">1000.0000</cost>
-    <cost resourcetype="Gold">1000.0000</cost>
+    <cost resourcetype="Wood">500.0000</cost>
+    <cost resourcetype="Food">500.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
     <researchpoints>180.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\cathedral_bohemian_glass.png</icon>
@@ -28628,9 +28628,9 @@
   <tech name="zpSPCCathedralBricks2" type="Normal">
     <dbid>41109</dbid>
     <displaynameid>302799</displaynameid>
-    <cost resourcetype="Wood">1000.0000</cost>
-    <cost resourcetype="Food">1000.0000</cost>
-    <cost resourcetype="Gold">1000.0000</cost>
+    <cost resourcetype="Wood">500.0000</cost>
+    <cost resourcetype="Food">500.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
     <researchpoints>180.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\cathedral_saxon_bricks.png</icon>
@@ -28655,9 +28655,9 @@
   <tech name="zpSPCCathedralLimestone2" type="Normal">
     <dbid>41110</dbid>
     <displaynameid>302801</displaynameid>
-    <cost resourcetype="Wood">1000.0000</cost>
-    <cost resourcetype="Food">1000.0000</cost>
-    <cost resourcetype="Gold">1000.0000</cost>
+    <cost resourcetype="Wood">500.0000</cost>
+    <cost resourcetype="Food">500.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
     <researchpoints>180.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\cathedral_bavarian_limestone.png</icon>
@@ -28682,9 +28682,9 @@
   <tech name="zpSPCCathedralCopper3" type="Normal">
     <dbid>41111</dbid>
     <displaynameid>302795</displaynameid>
-    <cost resourcetype="Wood">1750.0000</cost>
-    <cost resourcetype="Food">1750.0000</cost>
-    <cost resourcetype="Gold">1750.0000</cost>
+    <cost resourcetype="Wood">1000.0000</cost>
+    <cost resourcetype="Food">1000.0000</cost>
+    <cost resourcetype="Gold">1000.0000</cost>
     <researchpoints>180.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\cathedral_austrian_copper.png</icon>
@@ -28708,9 +28708,9 @@
   <tech name="zpSPCCathedralGlass3" type="Normal">
     <dbid>41112</dbid>
     <displaynameid>302797</displaynameid>
-    <cost resourcetype="Wood">1750.0000</cost>
-    <cost resourcetype="Food">1750.0000</cost>
-    <cost resourcetype="Gold">1750.0000</cost>
+    <cost resourcetype="Wood">1000.0000</cost>
+    <cost resourcetype="Food">1000.0000</cost>
+    <cost resourcetype="Gold">1000.0000</cost>
     <researchpoints>180.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\cathedral_bohemian_glass.png</icon>
@@ -28734,9 +28734,9 @@
   <tech name="zpSPCCathedralBricks3" type="Normal">
     <dbid>41113</dbid>
     <displaynameid>302799</displaynameid>
-    <cost resourcetype="Wood">1750.0000</cost>
-    <cost resourcetype="Food">1750.0000</cost>
-    <cost resourcetype="Gold">1750.0000</cost>
+    <cost resourcetype="Wood">1000.0000</cost>
+    <cost resourcetype="Food">1000.0000</cost>
+    <cost resourcetype="Gold">1000.0000</cost>
     <researchpoints>180.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\cathedral_saxon_bricks.png</icon>
@@ -28760,9 +28760,9 @@
   <tech name="zpSPCCathedralLimestone3" type="Normal">
     <dbid>41114</dbid>
     <displaynameid>302801</displaynameid>
-    <cost resourcetype="Wood">1750.0000</cost>
-    <cost resourcetype="Food">1750.0000</cost>
-    <cost resourcetype="Gold">1750.0000</cost>
+    <cost resourcetype="Wood">1000.0000</cost>
+    <cost resourcetype="Food">1000.0000</cost>
+    <cost resourcetype="Gold">1000.0000</cost>
     <researchpoints>180.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\cathedral_bavarian_limestone.png</icon>
@@ -28786,9 +28786,9 @@
   <tech name="zpSPCCathedralCopper4" type="Normal">
     <dbid>41115</dbid>
     <displaynameid>302795</displaynameid>
-    <cost resourcetype="Wood">3000.0000</cost>
-    <cost resourcetype="Food">3000.0000</cost>
-    <cost resourcetype="Gold">3000.0000</cost>
+    <cost resourcetype="Wood">2000.0000</cost>
+    <cost resourcetype="Food">2000.0000</cost>
+    <cost resourcetype="Gold">2000.0000</cost>
     <researchpoints>180.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\cathedral_austrian_copper.png</icon>
@@ -28811,9 +28811,9 @@
   <tech name="zpSPCCathedralGlass4" type="Normal">
     <dbid>41116</dbid>
     <displaynameid>302797</displaynameid>
-    <cost resourcetype="Wood">3000.0000</cost>
-    <cost resourcetype="Food">3000.0000</cost>
-    <cost resourcetype="Gold">3000.0000</cost>
+    <cost resourcetype="Wood">2000.0000</cost>
+    <cost resourcetype="Food">2000.0000</cost>
+    <cost resourcetype="Gold">2000.0000</cost>
     <researchpoints>180.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\cathedral_bohemian_glass.png</icon>
@@ -28836,9 +28836,9 @@
   <tech name="zpSPCCathedralBricks4" type="Normal">
     <dbid>41117</dbid>
     <displaynameid>302799</displaynameid>
-    <cost resourcetype="Wood">3000.0000</cost>
-    <cost resourcetype="Food">3000.0000</cost>
-    <cost resourcetype="Gold">3000.0000</cost>
+    <cost resourcetype="Wood">2000.0000</cost>
+    <cost resourcetype="Food">2000.0000</cost>
+    <cost resourcetype="Gold">2000.0000</cost>
     <researchpoints>180.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\cathedral_saxon_bricks.png</icon>
@@ -28861,9 +28861,9 @@
   <tech name="zpSPCCathedralLimestone4" type="Normal">
     <dbid>41118</dbid>
     <displaynameid>302801</displaynameid>
-    <cost resourcetype="Wood">3000.0000</cost>
-    <cost resourcetype="Food">3000.0000</cost>
-    <cost resourcetype="Gold">3000.0000</cost>
+    <cost resourcetype="Wood">2000.0000</cost>
+    <cost resourcetype="Food">2000.0000</cost>
+    <cost resourcetype="Gold">2000.0000</cost>
     <researchpoints>180.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\cathedral_bavarian_limestone.png</icon>
@@ -28946,6 +28946,10 @@
       </effect>
       <effect type="SetName" proto="zpSPCGermanCathedralCon0" culture="none" newname="302805">
       </effect>
+      <effect type="Data" amount="10.00" subtype="PopulationCapExtra" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSPCCathedralStage2" type="Normal">
@@ -28982,6 +28986,10 @@
       </effect>
       <effect type="SetName" proto="zpSPCGermanCathedralCon0" culture="none" newname="302806">
       </effect>
+      <effect type="Data" amount="20.00" subtype="PopulationCapExtra" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSPCCathedralStage3" type="Normal">
@@ -29017,6 +29025,10 @@
         <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
       </effect>
       <effect type="SetName" proto="zpSPCGermanCathedralCon0" culture="none" newname="302807">
+      </effect>
+      <effect type="Data" amount="30.00" subtype="PopulationCapExtra" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>
@@ -29058,6 +29070,10 @@
       <effect type="SetName" proto="zpSPCGermanCathedralCon0" culture="none" newname="302063" newrollover="302310" newshortrollover="302309">
       </effect>
       <effect type="TextEffectOutput" reason="KotH" selfmsg="302835" playermsg="302836">
+      </effect>
+      <effect type="Data" amount="40.00" subtype="PopulationCapExtra" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>

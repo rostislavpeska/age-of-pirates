@@ -2792,13 +2792,13 @@
       <string _locid="302792">ZP SPC Cathedral CON 2</string>
       <string _locid="302793">ZP SPC Cathedral CON 3</string>
       <string _locid="302795">Austrian Copper</string>
-      <string _locid="302796">Upgrades the Cathedral construction to the next level. &lt;color=1.0, 0.0, 0.0&gt;\n • Your Team needs to have an access to Austrian Prince Elector to research this tech.&lt;/color&gt;</string>
+      <string _locid="302796">Upgrades the Cathedral construction to the next level. \n • Increases maximum population capacity by 10. &lt;color=1.0, 0.0, 0.0&gt;\n • Your Team needs to have an access to Austrian Prince Elector to research this tech.&lt;/color&gt;</string>
       <string _locid="302797">Bohemian Glass</string>
-      <string _locid="302798">Upgrades the Cathedral construction to the next level. &lt;color=1.0, 0.0, 0.0&gt;\n • Your Team needs to have an access to Bohemian Prince Elector to research this tech.&lt;/color&gt;</string>
+      <string _locid="302798">Upgrades the Cathedral construction to the next level. \n • Increases maximum population capacity by 10. &lt;color=1.0, 0.0, 0.0&gt;\n • Your Team needs to have an access to Bohemian Prince Elector to research this tech.&lt;/color&gt;</string>
       <string _locid="302799">Saxon Bricks</string>
-      <string _locid="302800">Upgrades the Cathedral construction to the next level. &lt;color=1.0, 0.0, 0.0&gt;\n • Your Team needs to have an access to Saxon Prince Elector to research this tech.&lt;/color&gt;</string>
+      <string _locid="302800">Upgrades the Cathedral construction to the next level. \n • Increases maximum population capacity by 10. &lt;color=1.0, 0.0, 0.0&gt;\n • Your Team needs to have an access to Saxon Prince Elector to research this tech.&lt;/color&gt;</string>
       <string _locid="302801">Bavarian Limestone</string>
-      <string _locid="302802">Upgrades the Cathedral construction to the next level. &lt;color=1.0, 0.0, 0.0&gt;\n • Your Team needs to have an access to Bavarian Prince Elector to research this tech.&lt;/color&gt;</string>
+      <string _locid="302802">Upgrades the Cathedral construction to the next level. \n • Increases maximum population capacity by 10. &lt;color=1.0, 0.0, 0.0&gt;\n • Your Team needs to have an access to Bavarian Prince Elector to research this tech.&lt;/color&gt;</string>
       <string _locid="302803">Metropolitan Cathedral Construction: Stage 0/4</string>
       <string _locid="302804">Use resources from all four Elector sites to finish the cathedral.</string>
       <string _locid="302805">Metropolitan Cathedral Construction: Stage 1/4</string>
@@ -2844,7 +2844,7 @@
       <string _locid="302845">Pilsen (Rathaus)</string>
       <string _locid="302846">After the death of Charles V. in 1558 the Holy Roman Empire was a federation of independent kingdoms and duchies. Prove, that the Empire can rejoin and rise again. Construct a monumental Metropolitan Cathedral using resources from the whole Empire!\n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Complete the construction of the Metropolitan Cathedral and protect your Town center. Multiple Team gameplay or FFA is supported for this historical map. \n\nNative Settlements: Prince Electors, Hussites \n\nShadow aliances: Habsburg, Wettin, Hannover, Wittelsbach and Oldenburg</string>
       <string _locid="302847">Use resources from the whole Empire to construct an amazing Metropolitan Cathedral. Make sure, you always have enough resources for the next phase of construction before you get to the next phase of your conquest.</string>
-      <string _locid="302848">Upgrades the Cathedral construction to the next level. &lt;color=0.0, 1.0, 0.0&gt;\n • Once you start the research, it will continue even if you lose access to the specific Elector House.&lt;/color&gt;</string>
+      <string _locid="302848">Upgrades the Cathedral construction to the next level. \n • Increases maximum population capacity by 10. &lt;color=0.0, 1.0, 0.0&gt;\n • Once you start the research, it will continue even if you lose access to the specific Elector House.&lt;/color&gt;</string>
 
 
       <!-- ======================================== -->

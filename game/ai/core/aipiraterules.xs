@@ -5587,19 +5587,19 @@ mininterval 60
    cUnitTypezpSPCGermanCathedralCon0);
 
    canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralGlass3,
-   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 15) && (kbGetAge() >= cAge2 ) && (kbTechGetStatus(cTechzpGlassWorksTech) == cTechStatusActive)); },
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 12) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpGlassWorksTech) == cTechStatusActive)); },
    cUnitTypezpSPCGermanCathedralCon0);
 
    canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralBricks3,
-   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 15) && (kbGetAge() >= cAge2 ) && (kbTechGetStatus(cTechzpBrickWorksTech) == cTechStatusActive)); },
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 12) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpBrickWorksTech) == cTechStatusActive)); },
    cUnitTypezpSPCGermanCathedralCon0);
 
    canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralLimestone3,
-   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 15) && (kbGetAge() >= cAge2 ) && (kbTechGetStatus(cTechzpStoneWorksTech) == cTechStatusActive)); },
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 12) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpStoneWorksTech) == cTechStatusActive)); },
    cUnitTypezpSPCGermanCathedralCon0);
 
    canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralCopper3,
-   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 15) && (kbGetAge() >= cAge2 ) && (kbTechGetStatus(cTechzpCopperWorksTech) == cTechStatusActive)); },
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 12) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpCopperWorksTech) == cTechStatusActive)); },
    cUnitTypezpSPCGermanCathedralCon0);
 
    canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralGlass4,
