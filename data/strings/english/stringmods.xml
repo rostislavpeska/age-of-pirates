@@ -2845,6 +2845,7 @@
       <string _locid="302846">After the death of Charles V. in 1558 the Holy Roman Empire was a federation of independent kingdoms and duchies. Prove, that the Empire can rejoin and rise again. Construct a monumental Metropolitan Cathedral using resources from the whole Empire!\n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Complete the construction of the Metropolitan Cathedral and protect your Town center. Multiple Team gameplay or FFA is supported for this historical map. \n\nNative Settlements: Prince Electors, Hussites \n\nShadow aliances: Habsburg, Wettin, Hannover, Wittelsbach and Oldenburg</string>
       <string _locid="302847">Use resources from the whole Empire to construct an amazing Metropolitan Cathedral. Make sure, you always have enough resources for the next phase of construction before you get to the next phase of your conquest.</string>
       <string _locid="302848">Upgrades the Cathedral construction to the next level. \n • Increases maximum population capacity by 10. &lt;color=0.0, 1.0, 0.0&gt;\n • Once you start the research, it will continue even if you lose access to the specific Elector House.&lt;/color&gt;</string>
+      <string _locid="302849">Imperial Command time remaining</string>
 
 
       <!-- ======================================== -->

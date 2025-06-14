@@ -26910,9 +26910,6 @@
     <rollovertextid>302679</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
-    <prereqs>
-			<techstatus status ="Active">Fortressize</techstatus>
-    </prereqs>
     <effects>
       <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
@@ -26932,9 +26929,6 @@
     <rollovertextid>302681</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
-    <prereqs>
-			<techstatus status ="Active">Fortressize</techstatus>
-    </prereqs>
     <effects>
       <effect type="Data" amount="0.25" subtype="Cost" resource="Wood" relativity="BasePercent">
         <target type="ProtoUnit">Church</target>

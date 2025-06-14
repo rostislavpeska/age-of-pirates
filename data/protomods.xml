@@ -58315,7 +58315,6 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractChurch</unittype>
-    <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <tech row="0" page="1" column="1">zpSPCCathedralLimestone1</tech>
     <tech row="0" page="1" column="2">zpSPCCathedralCopper1</tech>
