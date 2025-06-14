@@ -28907,6 +28907,9 @@
       <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
       <effect type="TechStatus" status="obtainable">zpMonarchChurchAliance</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSPCCathedralStage1" type="Normal">
