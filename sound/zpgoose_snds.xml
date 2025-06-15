@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<protounitsounddef>
+  <protounit name="zpGoose">
+    <soundtype name="Death">
+      <soundset name="TurkeyDeath">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

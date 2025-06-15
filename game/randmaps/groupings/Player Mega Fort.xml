@@ -22,9 +22,9 @@
 		<unit variation="66" posx="0.0000" posz="-30.0000" orientx="0.3066" orienty="0.0000" orientz="-0.9518">TreeNorthwestTerritory</unit>
 		<unit variation="203" posx="-23.2274" posz="-24.2260" orientx="-0.7079" orienty="0.0000" orientz="-0.7063">SPCFortGate</unit>
 		<unit variation="203" posx="22.6907" posz="-24.2134" orientx="0.7067" orienty="0.0000" orientz="-0.7076">SPCFortGate</unit>
-		<unit variation="140" posx="13.5162" posz="-26.9411" orientx="-0.7125" orienty="0.0000" orientz="0.7017">Turkey</unit>
-		<unit variation="246" posx="14.5816" posz="-27.0559" orientx="-0.7874" orienty="0.0055" orientz="-0.6164">Turkey</unit>
-		<unit variation="45" posx="13.3411" posz="-28.3487" orientx="0.9978" orienty="-0.0042" orientz="0.0667">Turkey</unit>
+		<unit variation="140" posx="13.5162" posz="-26.9411" orientx="-0.7125" orienty="0.0000" orientz="0.7017">zpGoose</unit>
+		<unit variation="246" posx="14.5816" posz="-27.0559" orientx="-0.7874" orienty="0.0055" orientz="-0.6164">zpGoose</unit>
+		<unit variation="45" posx="13.3411" posz="-28.3487" orientx="0.9978" orienty="-0.0042" orientz="0.0667">zpGoose</unit>
 		<unit variation="197" posx="-12.0000" posz="-28.0000" orientx="-0.7021" orienty="0.0000" orientz="-0.7120">TreeNorthwestTerritory</unit>
 		<unit variation="112" posx="-4.0000" posz="-28.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
 		<unit variation="99" posx="-6.0000" posz="-28.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
@@ -33,16 +33,16 @@
 		<unit variation="237" posx="-2.0000" posz="-28.0000" orientx="0.6901" orienty="0.0000" orientz="-0.7237">TreeNorthwestTerritory</unit>
 		<unit variation="197" posx="-2.0000" posz="-28.0000" orientx="0.7094" orienty="0.0000" orientz="-0.7048">TreeNorthwestTerritory</unit>
 		<unit variation="237" posx="0.0000" posz="-24.0000" orientx="-0.9860" orienty="0.0000" orientz="0.1668">UnderbrushCarolinasForest</unit>
-		<unit variation="11" posx="14.5863" posz="-25.1764" orientx="-0.9676" orienty="0.0028" orientz="0.2523">Turkey</unit>
-		<unit variation="183" posx="13.2424" posz="-25.4776" orientx="-0.6071" orienty="-0.0007" orientz="0.7946">Turkey</unit>
+		<unit variation="11" posx="14.5863" posz="-25.1764" orientx="-0.9676" orienty="0.0028" orientz="0.2523">zpGoose</unit>
+		<unit variation="183" posx="13.2424" posz="-25.4776" orientx="-0.6071" orienty="-0.0007" orientz="0.7946">zpGoose</unit>
 		<unit variation="197" posx="-6.0000" posz="-26.0000" orientx="0.9226" orienty="0.0000" orientz="0.3857">TreeNorthwestTerritory</unit>
 		<unit variation="247" posx="-4.0000" posz="-26.0000" orientx="0.5325" orienty="0.0000" orientz="-0.8464">TreeGreatLakes</unit>
 		<unit variation="195" posx="-2.0000" posz="-26.0000" orientx="0.9441" orienty="0.0000" orientz="0.3297">TreeNorthwestTerritory</unit>
 		<unit variation="236" posx="16.0000" posz="-26.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
-		<unit variation="60" posx="4.2248" posz="-23.7713" orientx="0.6656" orienty="0.0003" orientz="-0.7463">Turkey</unit>
+		<unit variation="60" posx="4.2248" posz="-23.7713" orientx="0.6656" orienty="0.0003" orientz="-0.7463">zpGoose</unit>
 		<unit variation="129" posx="8.4678" posz="-22.8134" orientx="0.9981" orienty="-0.0037" orientz="-0.0615">Cow</unit>
 		<unit variation="101" posx="11.8699" posz="-23.8475" orientx="0.3149" orienty="-0.0049" orientz="0.9491">Cow</unit>
-		<unit variation="220" posx="14.3319" posz="-23.5018" orientx="0.9921" orienty="-0.0044" orientz="0.1255">Turkey</unit>
+		<unit variation="220" posx="14.3319" posz="-23.5018" orientx="0.9921" orienty="-0.0044" orientz="0.1255">zpGoose</unit>
 		<unit variation="235" posx="12.7562" posz="-24.6478" orientx="0.5646" orienty="0.0010" orientz="-0.8253">Cow</unit>
 		<unit variation="245" posx="2.0000" posz="-24.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
 		<unit variation="213" posx="6.0000" posz="-24.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>

@@ -21,45 +21,45 @@
 		<unit variation="2" posx="-6.6601" posz="-8.9761" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpUnderbrushConstructionColony</unit>
 		<unit variation="28" posx="-9.5637" posz="-7.4810" orientx="-0.6742" orienty="0.0000" orientz="-0.7385">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="247" posx="3.4751" posz="-5.8076" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushConstructionColony</unit>
-		<unit variation="98" posx="0.9108" posz="-7.6911" orientx="-0.9466" orienty="0.0024" orientz="0.3225">Turkey</unit>
+		<unit variation="98" posx="0.9108" posz="-7.6911" orientx="-0.9466" orienty="0.0024" orientz="0.3225">zpGoose</unit>
 		<unit variation="184" posx="-2.7756" posz="-3.1018" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTemporaryObstruction</unit>
 		<unit variation="184" posx="-9.1147" posz="-4.0400" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTemporaryObstruction</unit>
 		<unit variation="153" posx="-8.2202" posz="-4.2181" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpUnderbrushConstructionColony</unit>
-		<unit variation="76" posx="6.5523" posz="-5.8690" orientx="-0.8463" orienty="0.0054" orientz="-0.5327">Turkey</unit>
+		<unit variation="76" posx="6.5523" posz="-5.8690" orientx="-0.8463" orienty="0.0054" orientz="-0.5327">zpGoose</unit>
 		<unit variation="184" posx="6.6866" posz="-2.5909" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTemporaryObstruction</unit>
 		<unit variation="196" posx="-0.3864" posz="-2.1536" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushConstructionColony</unit>
-		<unit variation="76" posx="-3.0198" posz="-4.1566" orientx="-0.8887" orienty="0.0017" orientz="0.4586">Turkey</unit>
-		<unit variation="60" posx="7.6082" posz="-3.6662" orientx="-0.9725" orienty="0.0029" orientz="0.2328">Turkey</unit>
+		<unit variation="76" posx="-3.0198" posz="-4.1566" orientx="-0.8887" orienty="0.0017" orientz="0.4586">zpGoose</unit>
+		<unit variation="60" posx="7.6082" posz="-3.6662" orientx="-0.9725" orienty="0.0029" orientz="0.2328">zpGoose</unit>
 		<unit variation="27" posx="1.4529" posz="-3.1910" orientx="0.4325" orienty="-0.0052" orientz="0.9016">Sheep</unit>
 		<unit variation="64" posx="-10.5977" posz="0.1946" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpUnderbrushConstructionColony</unit>
 		<unit variation="26" posx="-7.8752" posz="-0.4772" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushConstructionMine</unit>
 		<unit variation="149" posx="-3.2752" posz="-2.3859" orientx="0.9858" orienty="-0.0032" orientz="-0.1679">Sheep</unit>
-		<unit variation="133" posx="-3.4304" posz="-1.0875" orientx="-0.6786" orienty="-0.0002" orientz="0.7345">Turkey</unit>
-		<unit variation="171" posx="-2.4274" posz="-1.1808" orientx="0.4761" orienty="0.0016" orientz="-0.8794">Turkey</unit>
+		<unit variation="133" posx="-3.4304" posz="-1.0875" orientx="-0.6786" orienty="-0.0002" orientz="0.7345">zpGoose</unit>
+		<unit variation="171" posx="-2.4274" posz="-1.1808" orientx="0.4761" orienty="0.0016" orientz="-0.8794">zpGoose</unit>
 		<unit variation="10" posx="5.7930" posz="-2.1368" orientx="0.3946" orienty="-0.0051" orientz="0.9188">Sheep</unit>
 		<unit variation="104" posx="7.4652" posz="-2.1035" orientx="0.1602" orienty="0.0032" orientz="-0.9871">Sheep</unit>
 		<unit variation="245" posx="9.0000" posz="-1.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
 		<unit variation="184" posx="-9.3417" posz="2.6524" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTemporaryObstruction</unit>
 		<unit variation="220" posx="-10.2060" posz="2.0436" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpUnderbrushConstructionColony</unit>
-		<unit variation="213" posx="-3.5412" posz="0.2696" orientx="0.1778" orienty="-0.0045" orientz="0.9841">Turkey</unit>
+		<unit variation="213" posx="-3.5412" posz="0.2696" orientx="0.1778" orienty="-0.0045" orientz="0.9841">zpGoose</unit>
 		<unit variation="253" posx="3.0000" posz="3.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">LivestockPen</unit>
 		<unit variation="128" posx="-10.5703" posz="3.3501" orientx="0.9760" orienty="0.0000" orientz="-0.2176">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="137" posx="-8.3029" posz="2.8640" orientx="0.9960" orienty="0.0000" orientz="-0.0891">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="110" posx="-4.3645" posz="1.8445" orientx="0.8908" orienty="-0.0017" orientz="-0.4544">Sheep</unit>
-		<unit variation="210" posx="-4.1614" posz="2.8380" orientx="-0.4558" orienty="0.0053" orientz="-0.8901">Turkey</unit>
-		<unit variation="133" posx="-6.8785" posz="1.9322" orientx="-0.9275" orienty="0.0022" orientz="0.3737">Turkey</unit>
+		<unit variation="210" posx="-4.1614" posz="2.8380" orientx="-0.4558" orienty="0.0053" orientz="-0.8901">zpGoose</unit>
+		<unit variation="133" posx="-6.8785" posz="1.9322" orientx="-0.9275" orienty="0.0022" orientz="0.3737">zpGoose</unit>
 		<unit variation="44" posx="9.0000" posz="3.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
 		<unit variation="184" posx="-5.0811" posz="5.3414" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTemporaryObstruction</unit>
 		<unit variation="184" posx="10.1758" posz="6.7377" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTemporaryObstruction</unit>
 		<unit variation="12" posx="-13.2719" posz="5.2267" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpUnderbrushConstructionColony</unit>
 		<unit variation="106" posx="10.2377" posz="4.3619" orientx="-0.9714" orienty="0.0000" orientz="0.2374">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="174" posx="-8.1000" posz="5.6932" orientx="-0.5308" orienty="0.0000" orientz="0.8475">zpUnderbrushConstructionJesuit</unit>
-		<unit variation="26" posx="-5.0502" posz="4.1582" orientx="0.5989" orienty="0.0008" orientz="-0.8008">Turkey</unit>
-		<unit variation="62" posx="-6.8285" posz="4.6501" orientx="-0.9931" orienty="0.0043" orientz="-0.1176">Turkey</unit>
+		<unit variation="26" posx="-5.0502" posz="4.1582" orientx="0.5989" orienty="0.0008" orientz="-0.8008">zpGoose</unit>
+		<unit variation="62" posx="-6.8285" posz="4.6501" orientx="-0.9931" orienty="0.0043" orientz="-0.1176">zpGoose</unit>
 		<unit variation="184" posx="-9.3289" posz="7.7441" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTemporaryObstruction</unit>
 		<unit variation="184" posx="2.6698" posz="8.2862" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTemporaryObstruction</unit>
 		<unit variation="44" posx="-11.2068" posz="7.3597" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpUnderbrushConstructionColony</unit>
-		<unit variation="21" posx="-2.0149" posz="6.2520" orientx="-0.0714" orienty="-0.0036" orientz="0.9974">Turkey</unit>
+		<unit variation="21" posx="-2.0149" posz="6.2520" orientx="-0.0714" orienty="-0.0036" orientz="0.9974">zpGoose</unit>
 		<unit variation="72" posx="-5.0438" posz="6.9280" orientx="-0.5979" orienty="0.0055" orientz="-0.8016">Sheep</unit>
 		<unit variation="60" posx="9.0000" posz="7.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
 		<unit variation="162" posx="-12.5785" posz="8.3834" orientx="0.9978" orienty="0.0000" orientz="0.0663">zpUnderbrushConstructionJesuit</unit>

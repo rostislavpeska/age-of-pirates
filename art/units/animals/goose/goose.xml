@@ -1,0 +1,6 @@
+<animfile>
+  <component>goose<assetreference type="GrannyModel"><file>units\animals\goose\Goose</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_64x64</texture><selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture><width>1.0</width><height>1.00</height></decal></component>
+  <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\quads\Goose_Idle</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\Goose_Eat</file></assetreference><component>goose</component></anim>
+  <anim>Death<assetreference type="GrannyAnim"><file>animation_library\quads\Goose_Die</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.25</tag></assetreference><component>goose</component></anim>
+  <anim>Walk<assetreference type="GrannyAnim"><file>animation_library\quads\Goose_Walk</file></assetreference><component>goose</component></anim>
+</animfile>
