@@ -58870,11 +58870,12 @@
     <flag>Invulnerable</flag>
     <flag>ForceToGaia</flag>
     <flag>DontRotateObstruction</flag>
-    <flag>FlattenGround</flag>
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>Tracked</flag>
     <flag>NotSelectable</flag>
     <flag>NotDeleteable</flag>
+    <flag>DontFlattenGround</flag>
+    <flag>DoNotShowOnMiniMap</flag>
   </unit>
   <unit id="20810" name="zpSocketElectorBohemiaCity">
     <dbid>20810</dbid>
@@ -59132,6 +59133,48 @@
     <command page="10" column="2">SetGatherPointEconomy</command>
     <command page="10" column="7">Delete</command>
     <tactics>house.tactics</tactics>
+  </unit>
+  <unit id="20815" name="zpSPCRockMineProp">
+    <dbid>20815</dbid>
+    <editornameid>302850</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>units\asians\spc\rock_crate\spc_rock_crate.xml</animfile>
+    <impacttype>Stone</impacttype>
+    <icon>resources\art\units\asians\spc\rock_crate\spc_asian_rock_crate_icon_64.png</icon>
+    <portraiticon>resources\art\units\asians\spc\rock_crate\spc_asian_rock_crate_icon_portrait.png</portraiticon>
+    <rollovertextid>64919</rollovertextid>
+    <shortrollovertextid>64918</shortrollovertextid>
+    <initialhitpoints>6.0000</initialhitpoints>
+    <maxhitpoints>6.0000</maxhitpoints>
+    <los>18.0000</los>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <decay delay="0.0000" duration="0.0000">
+    </decay>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>NatureClass</unittype>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>NoHPBar</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>DontFlattenGround</flag>
+    <flag>DoNotShowOnMiniMap</flag>
   </unit>
 
 

@@ -1,5 +1,5 @@
-// KING OF BOHEMIA
-// February 2025
+// Crownlands
+// June 2025
 
 int TeamNum = cNumberTeams;
 int PlayerNum = cNumberNonGaiaPlayers;
@@ -914,14 +914,19 @@ void main(void)
 	rmPlaceGroupingAtLoc(castleAustria, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc4)), rmZMetersToFraction(xsVectorGetZ(ControllerLoc4))+rmZTilesToFraction(8));
 	rmPlaceObjectDefAtLoc(SpawnerID4, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc4))-rmXTilesToFraction(10), rmZMetersToFraction(xsVectorGetZ(ControllerLoc4))+rmZTilesToFraction(6));
 
-	// Trade Route Sockets
-	int socketID=rmCreateObjectDef("sockets to dock Trade Posts Land");
-	rmSetObjectDefTradeRouteID(socketID, tradeRouteID);
-	rmAddObjectDefItem(socketID, "SocketTradeRoute", 1, 0.0);
-	rmSetObjectDefAllowOverlap(socketID, true);
+	// Fake Frouping to fix the auto-grouping TC bug
+	int fakeGroupingLock = rmCreateObjectDef("fake grouping lock"); 
+	rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
+	rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.5);
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.50);
+
+	// Trade Route Sockets
+	int socketID=rmCreateObjectDef("sockets to dock Trade Posts");
+	rmSetObjectDefTradeRouteID(socketID, tradeRouteID);
+	rmAddObjectDefItem(socketID, "SocketTradeRoute", 1, 0.0);
+	rmSetObjectDefAllowOverlap(socketID, true);
 
 	// *************************** Trade Sockets *****************************
 	
@@ -1403,7 +1408,7 @@ void main(void)
 		sameTeam=rmGetPlayerTeam(k);
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+sameTeam));
 		rmAddTriggerEffect("Music Filename");
-		rmSetTriggerEffectParam("Music","ypack\music\strategy\Koth.mp3"); // Music Filename
+		rmSetTriggerEffectParam("Music","xpack\music\strategy\SomeOfAKind.mp3"); // Music Filename
 		rmSetTriggerEffectParamFloat("Duration",0.5);
 		rmAddTriggerEffect("Sound Timer");
 		rmSetTriggerEffectParamInt("Time", 61000);
