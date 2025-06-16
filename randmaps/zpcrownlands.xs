@@ -457,7 +457,8 @@ void main(void)
 		rmRiverAddWaypoint(riverID, 1.0, 0.6);   
 		rmRiverSetShallowRadius(riverID, 10);
 		rmRiverAddShallow(riverID, 0.15);
-		rmRiverAddShallow(riverID, 0.5);
+		if (cNumberNonGaiaPlayers > 2)
+			rmRiverAddShallow(riverID, 0.5);
 		rmRiverAddShallow(riverID, 0.85);
 		rmRiverBuild(riverID);
 
@@ -574,13 +575,13 @@ void main(void)
         {
             if (placementVariation < 0.5) 
             {
-                rmPlacePlayer(firstAttacker, 0.45, 0.2);
-                rmPlacePlayer(firstDefender, 0.55, 0.8);
+                rmPlacePlayer(firstAttacker, 0.45, 0.17);
+                rmPlacePlayer(firstDefender, 0.55, 0.83);
             } 
             else 
             {
-                rmPlacePlayer(firstDefender, 0.45, 0.2);
-                rmPlacePlayer(firstAttacker, 0.55, 0.8);
+                rmPlacePlayer(firstDefender, 0.45, 0.17);
+                rmPlacePlayer(firstAttacker, 0.55, 0.83);
             }
         }
         else if (spawnType == 4) // 2v2
@@ -796,13 +797,13 @@ void main(void)
 	{
 		// Palaces
 		rmPlaceObjectDefAtLoc(controllerID1, 0, 0.75, 0.7);
-		rmPlaceObjectDefAtLoc(controllerID2, 0, 0.35, 0.8);
-		rmPlaceObjectDefAtLoc(controllerID3, 0, 0.25, 0.3);
-		rmPlaceObjectDefAtLoc(controllerID4, 0, 0.65, 0.2);
+		rmPlaceObjectDefAtLoc(controllerID2, 0, 0.32, 0.79);
+		rmPlaceObjectDefAtLoc(controllerID3, 0, 0.25, 0.31);
+		rmPlaceObjectDefAtLoc(controllerID4, 0, 0.68, 0.21);
 	
 		// Hussites
-		rmPlaceGroupingAtLoc(hussiteCampN, 0, 0.2, 0.7);
-		rmPlaceGroupingAtLoc(hussiteCampS, 0, 0.8, 0.3);
+		rmPlaceGroupingAtLoc(hussiteCampN, 0, 0.17, 0.7);
+		rmPlaceGroupingAtLoc(hussiteCampS, 0, 0.83, 0.3);
 	}
 
 	else if (spawnType == 4)
@@ -820,10 +821,10 @@ void main(void)
 
 	else if (spawnType == 6)
 	{
-		rmPlaceObjectDefAtLoc(controllerID1, 0, 0.65, 0.65);
-		rmPlaceObjectDefAtLoc(controllerID2, 0, 0.43, 0.7);
-		rmPlaceObjectDefAtLoc(controllerID3, 0, 0.35, 0.35);
-		rmPlaceObjectDefAtLoc(controllerID4, 0, 0.57, 0.3);
+		rmPlaceObjectDefAtLoc(controllerID1, 0, 0.65, 0.6);
+		rmPlaceObjectDefAtLoc(controllerID2, 0, 0.43, 0.71);
+		rmPlaceObjectDefAtLoc(controllerID3, 0, 0.35, 0.4);
+		rmPlaceObjectDefAtLoc(controllerID4, 0, 0.57, 0.29);
 	
 		// Hussites
 		rmPlaceGroupingAtLoc(hussiteCampN, 0, 0.35, 0.85);
@@ -834,9 +835,9 @@ void main(void)
 
 	else if (spawnType == 8)
 	{
-		rmPlaceObjectDefAtLoc(controllerID1, 0, 0.65, 0.6);
+		rmPlaceObjectDefAtLoc(controllerID1, 0, 0.65, 0.57);
 		rmPlaceObjectDefAtLoc(controllerID2, 0, 0.43, 0.7);
-		rmPlaceObjectDefAtLoc(controllerID3, 0, 0.35, 0.4);
+		rmPlaceObjectDefAtLoc(controllerID3, 0, 0.35, 0.43);
 		rmPlaceObjectDefAtLoc(controllerID4, 0, 0.57, 0.3);
 	
 		// Hussites
