@@ -54564,7 +54564,6 @@
     <unittype>Unattackable</unittype>
     <unittype>NativeBuilding</unittype>
     <unittype>Building</unittype>
-    <flag>FlattenGround</flag>
     <flag>Doppled</flag>
     <flag>PaintTextureWhenPlacing</flag>
     <flag>InvulnerableIfGaia</flag>
@@ -59246,6 +59245,35 @@
       <rate type="deHacienda" resource="Gold">0.113334</rate>
       <rate type="deHacienda" resource="Wood">0.250000</rate>
     </protoaction>
+  </unit>
+  <unit id="20817" name="zpNatPropFactoryHallLongFlatten">
+    <dbid>20817</dbid>
+    <displaynameid>300483</displaynameid>
+    <editornameid>302553</editornameid>
+    <obstructionradiusx>7.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <portraiticon>resources\art\units\natives\scientist.png</portraiticon>
+    <animfile>buildings\native_settlement\factory_hall_long.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>RMCanRotate</flag>
+    <flag>FlattenGround</flag>
+    <flag>NotPlayerPlaceable</flag>
   </unit>
 
 

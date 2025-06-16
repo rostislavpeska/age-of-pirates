@@ -63,7 +63,7 @@ void main(void)
    
    	// LIGHT SET
 
-	rmSetLightingSet("honshu_Skirmish");
+	rmSetLightingSet("newengland_Skirmish");
 
 
 	// Picks default terrain and water

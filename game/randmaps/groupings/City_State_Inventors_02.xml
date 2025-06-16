@@ -9,9 +9,6 @@
 	<units>
 		<unit variation="22" posx="-6.6512" posz="-14.6142" orientx="0.9237" orienty="0.0000" orientz="-0.3832">deNatEUPropFence</unit>
 		<unit variation="22" posx="-13.6293" posz="-14.7506" orientx="0.9241" orienty="0.0000" orientz="0.3822">deNatEUPropFence</unit>
-		<unit variation="148" posx="0.8134" posz="-13.0126" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNatPropFactoryHallLong</unit>
-		<unit variation="148" posx="5.8476" posz="-7.8947" orientx="1.0000" orienty="0.0000" orientz="-0.0010">zpNatPropFactoryHallLong</unit>
-		<unit variation="148" posx="-21.0612" posz="-12.6961" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpNatPropFactoryHallLong</unit>
 		<unit variation="0" posx="3.8219" posz="-13.0557" orientx="-0.0006" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="0" posx="-1.7730" posz="-13.0854" orientx="-0.0006" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="0" posx="6.0127" posz="-10.1734" orientx="1.0000" orienty="0.0000" orientz="-0.0007">SPCPathBlock3</unit>
@@ -28,6 +25,9 @@
 		<unit variation="9" posx="0.6574" posz="-10.2198" orientx="0.3838" orienty="0.0000" orientz="0.9234">PropsColony</unit>
 		<unit variation="167" posx="1.5800" posz="-6.3676" orientx="1.0000" orienty="-0.0000" orientz="0.0000">NativeTownObstruction</unit>
 		<unit variation="72" posx="2.3976" posz="-9.9743" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpPropWindMill</unit>
+		<unit variation="148" posx="0.8134" posz="-13.0126" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNatPropFactoryHallLong</unit>
+		<unit variation="148" posx="5.8476" posz="-7.8947" orientx="1.0000" orienty="0.0000" orientz="-0.0010">zpNatPropFactoryHallLong</unit>
+		<unit variation="148" posx="-21.0612" posz="-12.6961" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpNatPropFactoryHallLongFlatten</unit>
 		<unit variation="1" posx="-16.6812" posz="-7.7444" orientx="-1.0000" orienty="0.0000" orientz="0.0007">PropsPoles</unit>
 		<unit variation="100" posx="-9.8122" posz="-9.0251" orientx="1.0000" orienty="-0.0039" orientz="-0.0005">zpTrainTracks</unit>
 		<unit variation="10" posx="-11.7791" posz="-8.9370" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">PropsColony</unit>
