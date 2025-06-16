@@ -375,6 +375,15 @@ void main(void)
 		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.3);
 		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
 	}
+	else if (PlayerNum ==5 || PlayerNum ==6) {
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.3);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.54, 0.39);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.45);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.45, 0.39);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.3);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
+	}
 	else {
 		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
 		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.3);
@@ -3789,9 +3798,8 @@ void main(void)
 		}	
 	}
 
-
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
-	rmSetStatusText("",1.00);
+	rmSetStatusText("",0.99);
 
 	// Testing
 
