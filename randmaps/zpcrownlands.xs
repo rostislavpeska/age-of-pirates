@@ -450,7 +450,7 @@ void main(void)
 
 	// 2 Team spawn only
 	if (weirdMap==0){
-		int riverID = rmRiverCreate(-1, "ZP Bohemian River", 4, 4, 14, 14); //  (-1, "new england lake", 18, 14, 5, 5)
+		int riverID = rmRiverCreate(-1, "ZP Danube River", 4, 4, 14, 14); //  (-1, "new england lake", 18, 14, 5, 5)
 		rmRiverAddWaypoint(riverID, 0.0, 0.4);   
 		rmRiverAddWaypoint(riverID, 0.35, 0.6);
 		rmRiverAddWaypoint(riverID, 0.65, 0.4);  
@@ -548,7 +548,7 @@ void main(void)
 	// Weird Spawn only has a lake
 	if (weirdMap==1){
 		int deadSeaLakeDeepID=rmCreateArea("Central Lake");
-		rmSetAreaWaterType(deadSeaLakeDeepID, "Italian Pond");
+		rmSetAreaWaterType(deadSeaLakeDeepID, "ZP Danube River");
 		rmSetAreaSize(deadSeaLakeDeepID, 0.04, 0.04);
 		rmSetAreaCoherence(deadSeaLakeDeepID, 0.9);
 		rmSetAreaLocation(deadSeaLakeDeepID, 0.5, 0.5);
