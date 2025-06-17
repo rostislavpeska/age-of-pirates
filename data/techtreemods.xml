@@ -29247,7 +29247,7 @@
     </effects>
   </tech>
   <tech name="zpSPCArtPatronCathedral" type="Normal">
-    <dbid>41133</dbid>
+    <dbid>41134</dbid>
     <displaynameid>123050</displaynameid>
     <cost resourcetype="Food">100.0000</cost>
     <cost resourcetype="Gold">100.0000</cost>
