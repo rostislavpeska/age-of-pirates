@@ -22931,7 +22931,7 @@
       <effect type="CommandAdd" proto="zpMercBohemianKnight" page="0" column="3">
         <target type="ProtoUnit">zpSPCGermanCathedral</target>
       </effect>
-      <effect type="CommandAdd" proto="MercGreatCannon" page="0" column="4">
+      <effect type="CommandAdd" proto="zpMercHussiteWagon" page="0" column="4">
         <target type="ProtoUnit">zpSPCGermanCathedral</target>
       </effect>
       <effect type="SetName" tech="zpSPCKingOfBohemia" newname="302735" newrollover="302319">
@@ -23142,7 +23142,7 @@
         <target type="ProtoUnit">zpMercBohemianKnight</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">MercGreatCannon</target>
+        <target type="ProtoUnit">zpMercHussiteWagon</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpLockKingOfBohemiaTechs</effect>
     </effects>
@@ -23166,7 +23166,7 @@
         <target type="ProtoUnit">zpMercBohemianKnight</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">MercGreatCannon</target>
+        <target type="ProtoUnit">zpMercHussiteWagon</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpUnlockKingOfBohemiaTechs</effect>
     </effects>
@@ -23364,7 +23364,7 @@
         <target type="ProtoUnit">zpMercBohemianKnight</target>
       </effect>
       <effect type="Data" amount="-2.00" subtype="PopulationCount" relativity="Absolute">
-        <target type="ProtoUnit">MercGreatCannon</target>
+        <target type="ProtoUnit">zpMercHussiteWagon</target>
       </effect>
       <effect type="Data" amount="0.80" subtype="Cost" resource="Gold" relativity="BasePercent">
         <target type="ProtoUnit">deMercCannoneer</target>
@@ -23379,7 +23379,7 @@
         <target type="ProtoUnit">zpMercBohemianKnight</target>
       </effect>
       <effect type="Data" amount="0.80" subtype="Cost" resource="Gold" relativity="BasePercent">
-        <target type="ProtoUnit">MercGreatCannon</target>
+        <target type="ProtoUnit">zpMercHussiteWagon</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpBohemianMercenariesShadow</effect>
     </effects>
@@ -23412,7 +23412,7 @@
         <target type="ProtoUnit">zpMercBohemianKnight</target>
       </effect>
       <effect type="Data" amount="2.00" subtype="PopulationCount" relativity="Absolute">
-        <target type="ProtoUnit">MercGreatCannon</target>
+        <target type="ProtoUnit">zpMercHussiteWagon</target>
       </effect>
       <effect type="Data" amount="1.20" subtype="Cost" resource="Gold" relativity="BasePercent">
         <target type="ProtoUnit">deMercCannoneer</target>
@@ -23427,7 +23427,7 @@
         <target type="ProtoUnit">zpMercBohemianKnight</target>
       </effect>
       <effect type="Data" amount="1.20" subtype="Cost" resource="Gold" relativity="BasePercent">
-        <target type="ProtoUnit">MercGreatCannon</target>
+        <target type="ProtoUnit">zpMercHussiteWagon</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpBohemianMercenariesShadowBack</effect>
     </effects>
@@ -28901,6 +28901,7 @@
       <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
       <effect type="TechStatus" status="obtainable">zpMonarchChurchAliance</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCArtPatronCathedral</effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
       </effect>
@@ -29046,6 +29047,9 @@
       <effect type="CommandRemove" tech="zpSPCCathedralLimestone4">
         <target type="Protounit">zpSPCGermanCathedralCon0</target>
       </effect>
+      <effect type="CommandAdd" tech="zpSPCArtPatronCathedral" page="11" column="0">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
       <effect type="CommandAdd" tech="zpMonarchChurchAliance" page="11" column="1">
         <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
       </effect>
@@ -29068,6 +29072,21 @@
       <effect type="Data" amount="40.00" subtype="PopulationCapExtra" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+      <effect type="CommandAdd" proto="MercJaeger" page="0" column="0">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandAdd" proto="deMercPandour" page="0" column="1">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandAdd" proto="deMercGrenadier" page="0" column="2">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpMercBohemianKnight" page="0" column="3">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="CommandAdd" proto="MercGreatCannon" page="0" column="4">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
       </effect>
     </effects>
   </tech>
@@ -29225,6 +29244,29 @@
       </effect>
       <effect type="SetName" tech="zpSPCCathedralLimestone4" newname="302801" newrollover="302802">
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCArtPatronCathedral" type="Normal">
+    <dbid>41133</dbid>
+    <displaynameid>123050</displaynameid>
+    <cost resourcetype="Food">100.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\spc\historical_battles\team_patron_of_the_arts.png</icon>
+    <rollovertextid>302855</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCGermanCathedral</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCGermanCathedralCon0</target>
+      </effect>
+      <effect type="TextOutputTechName">123070</effect>
     </effects>
   </tech>
 

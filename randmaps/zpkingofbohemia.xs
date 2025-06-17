@@ -1139,7 +1139,7 @@ void main(void)
 	rmEnableMerc("deMercPandour", -1);
 	rmEnableMerc("deMercGrenadier", -1);
     rmEnableMerc("zpMercBohemianKnight", -1);
-    rmEnableMerc("MercGreatCannon", -1);
+    rmEnableMerc("zpMercHussiteWagon", -1);
     
     rmForbidTradeMonopoly(true);
 

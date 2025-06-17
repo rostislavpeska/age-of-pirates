@@ -1316,7 +1316,7 @@ void main(void)
 	int sameTeam=-1;
 
 	int victoryCountDown = 300;
-	int socketMinimapFlareDuration = 300;
+	int socketMinimapFlareDuration = 8;
 
 	// Triggers
 
