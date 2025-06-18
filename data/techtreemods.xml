@@ -24798,6 +24798,9 @@
       <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpAztecOutpost</target>
       </effect>
+      <effect type="CommandAdd" proto="deREVCruzobInfantry" page="0" column="17">
+        <target type="ProtoUnit">deMayaCastle</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpImperialCruzobInfantryClone" type="Normal">

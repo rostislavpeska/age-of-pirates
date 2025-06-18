@@ -8691,6 +8691,7 @@
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
+    <flag>HideGarrisonFlag</flag>
     <flag>ObscuresUnits</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>Doppled</flag>
@@ -52571,6 +52572,7 @@
     <flag>DisplayRange</flag>
     <flag>NotPlayerPlaceable</flag>
     <flag>InvulnerableIfGaia</flag>
+    <flag>HideGarrisonFlag</flag>
     <flag>CannotAttackIfGaia</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
     <command page="2" column="1">SetBuildingAsHomeCityGatherPointEconomic</command>
@@ -53129,7 +53131,7 @@
     <buildbounty>10.0000</buildbounty>
     <icon>resources\art\units\native_villager_aztec_icon.png</icon>
     <portraiticon>resources\art\units\native_villager_aztec_portrait.png</portraiticon>
-    <cost resourcetype="Food">50.0000</cost>
+    <cost resourcetype="Food">70.0000</cost>
     <carrycapacity resourcetype="Food">1.0000</carrycapacity>
     <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
@@ -53420,7 +53422,7 @@
     <tactics>autogatherer.tactics</tactics>
     <protoaction>
       <name>AutoGather</name>
-      <rate type="XP">400.00000</rate>
+      <rate type="XP">120.00000</rate>
     </protoaction>
   </unit>
   <unit id="20722" name="zpAltarCrateofRainbow">
@@ -53455,9 +53457,9 @@
     <tactics>autogatherer.tactics</tactics>
     <protoaction>
       <name>AutoGather</name>
-      <rate type="Food">50.00000</rate>
-      <rate type="Wood">50.00000</rate>
-      <rate type="Gold">50.00000</rate>
+      <rate type="Food">25.00000</rate>
+      <rate type="Wood">25.00000</rate>
+      <rate type="Gold">25.00000</rate>
     </protoaction>
   </unit>
   <unit id="20723" name="zpLakeCanoeProxy">
