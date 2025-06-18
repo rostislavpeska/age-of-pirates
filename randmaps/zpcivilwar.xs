@@ -1371,7 +1371,7 @@ void main(void)
 	int armoredTrainActive = 90;
 	int armoredTrainCooldown = 300;
 	int armoredTrainCooldown2 = 240;
-	int socketMinimapFlareDuration = 300;
+	int socketMinimapFlareDuration = 10;
 	int victoryCountDown = 480;
 
 	// Guardians

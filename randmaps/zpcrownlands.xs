@@ -274,7 +274,7 @@ void main(void)
 	// These are used to have objects and areas avoid each other
 	
 	// Map edge constraints
-	int playerEdgeConstraint=rmCreateBoxConstraint("player edge of map", rmXTilesToFraction(15), rmZTilesToFraction(15), 1.0-rmXTilesToFraction(15), 1.0-rmZTilesToFraction(15), 0.01);
+	int playerEdgeConstraint=rmCreateBoxConstraint("player edge of map", rmXTilesToFraction(17), rmZTilesToFraction(17), 1.0-rmXTilesToFraction(17), 1.0-rmZTilesToFraction(17), 0.01);
 	int longPlayerEdgeConstraint=rmCreateBoxConstraint("long avoid edge of map", rmXTilesToFraction(20), rmZTilesToFraction(20), 1.0-rmXTilesToFraction(20), 1.0-rmZTilesToFraction(20), 0.01);
 	
     int avoidWater10 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 2.0);
@@ -287,8 +287,8 @@ void main(void)
 	int shoreAvoidLand = rmCreateTerrainDistanceConstraint("shore avoid land", "Land", true, 20.0);
 
 	// Cardinal Directions
-	int Northward=rmCreatePieConstraint("northMapConstraint", 0.5, 0.5, 0, rmZFractionToMeters(0.5), rmDegreesToRadians(315), rmDegreesToRadians(135));
-	int Southward=rmCreatePieConstraint("southMapConstraint", 0.5, 0.5, 0, rmZFractionToMeters(0.5), rmDegreesToRadians(135), rmDegreesToRadians(315));
+	int Northward=rmCreatePieConstraint("northMapConstraint", 0.5, 0.5, 0, rmZFractionToMeters(0.5), rmDegreesToRadians(270), rmDegreesToRadians(90));
+	int Southward=rmCreatePieConstraint("southMapConstraint", 0.5, 0.5, 0, rmZFractionToMeters(0.5), rmDegreesToRadians(90), rmDegreesToRadians(270));
 	int Eastward=rmCreatePieConstraint("eastMapConstraint", 0.5, 0.5, 0, rmZFractionToMeters(0.5), rmDegreesToRadians(45), rmDegreesToRadians(225));
 	int Westward=rmCreatePieConstraint("westMapConstraint", 0.5, 0.5, 0, rmZFractionToMeters(0.5), rmDegreesToRadians(225), rmDegreesToRadians(45));
 
@@ -311,7 +311,7 @@ void main(void)
 	int forestObjConstraint=rmCreateTypeDistanceConstraint("forest obj", "all", 6.0);
 	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 25.0);
 	int avoidResource=rmCreateTypeDistanceConstraint("resource avoid resource", "resource", 20.0);
-	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "Mine", 50.0);
+	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "Mine", 60.0);
 	int shortAvoidCoin=rmCreateTypeDistanceConstraint("short avoid coin", "gold", 10.0);
 	int avoidStartResource=rmCreateTypeDistanceConstraint("start resource no overlap", "resource", 10.0);
     int avoidMountains=rmCreateClassDistanceConstraint("stuff avoids mountains", classMountains, 20.0);
@@ -402,7 +402,7 @@ void main(void)
 	int avoidStopper = rmCreateTypeDistanceConstraint("avoid stopper", "zpSPCWaterSpawnPoint", 35);
 	int avoidStopperLong = rmCreateTypeDistanceConstraint("avoid stopper long", "zpSPCWaterSpawnPoint", 45);
 	int avoidCathedral = rmCreateTypeDistanceConstraint("avoid cathedral", "zpSPCGermanCathedralCon0", 45);
-	int avoidStopperShort = rmCreateTypeDistanceConstraint("avoid stopper short", "zpSPCWaterSpawnPoint", 25);
+	int avoidStopperShort = rmCreateTypeDistanceConstraint("avoid stopper short", "zpSPCWaterSpawnPoint", 28);
 	int avoidCathedralShort = rmCreateTypeDistanceConstraint("avoid cathedral short", "zpSPCGermanCathedralCon0", 30);
 	int avoidHussites = rmCreateTypeDistanceConstraint("avoid hussites", "zpHussiteFlag", 35);
 
@@ -681,6 +681,8 @@ void main(void)
 	int startingUnits = rmCreateStartingUnitsObjectDef(5.0);
 	rmSetObjectDefMinDistance(startingUnits, 0.0);
 	rmSetObjectDefMaxDistance(startingUnits, 2.0);
+
+	rmSetNuggetDifficulty(1, 1);
 
 	//  Place Starting Fort and Explorers
     for (i = 1; < numPlayer) 
@@ -1060,12 +1062,12 @@ void main(void)
 	rmSetObjectDefMaxDistance(randomGoldID, rmXFractionToMeters(0.45));
 	rmAddObjectDefConstraint(randomGoldID, avoidCoin);
 	rmAddObjectDefConstraint(randomGoldID, avoidAll);
-    rmAddObjectDefConstraint(randomGoldID, avoidCenterPoint);
 	rmAddObjectDefConstraint(randomGoldID, playerEdgeConstraint);
 	rmAddObjectDefConstraint(randomGoldID, Northward);
 	rmAddObjectDefConstraint(randomGoldID, avoidTradeRoute);
 	rmAddObjectDefConstraint(randomGoldID, avoidWater10);
 	rmAddObjectDefConstraint(randomGoldID, avoidStopperShort);
+	rmAddObjectDefConstraint(randomGoldID, avoidCathedralShort);
 	rmPlaceObjectDefAtLoc(randomGoldID, 0, 0.5, 0.5, cNumberNonGaiaPlayers*2);
 
 	int randomGoldSouthID = rmCreateObjectDef("random south mine");
@@ -1074,12 +1076,12 @@ void main(void)
 	rmSetObjectDefMaxDistance(randomGoldSouthID, rmXFractionToMeters(0.45));
 	rmAddObjectDefConstraint(randomGoldSouthID, avoidCoin);
 	rmAddObjectDefConstraint(randomGoldSouthID, avoidAll);
-    rmAddObjectDefConstraint(randomGoldSouthID, avoidCenterPoint);
 	rmAddObjectDefConstraint(randomGoldSouthID, playerEdgeConstraint);
 	rmAddObjectDefConstraint(randomGoldSouthID, Southward);
 	rmAddObjectDefConstraint(randomGoldSouthID, avoidTradeRoute);
 	rmAddObjectDefConstraint(randomGoldSouthID, avoidWater10);
 	rmAddObjectDefConstraint(randomGoldSouthID, avoidStopperShort);
+	rmAddObjectDefConstraint(randomGoldSouthID, avoidCathedralShort);
 	rmPlaceObjectDefAtLoc(randomGoldSouthID, 0, 0.5, 0.5, cNumberNonGaiaPlayers*2);
 
 	// Huntables North
@@ -1093,6 +1095,7 @@ void main(void)
 	rmAddObjectDefConstraint(foodID1, shortAvoidImpassableLand);
 	rmAddObjectDefConstraint(foodID1, Northward);
 	rmAddObjectDefConstraint(foodID1, avoidStopperShort);
+	rmAddObjectDefConstraint(foodID1, avoidCathedralShort);
 	rmPlaceObjectDefAtLoc(foodID1, 0, 0.5, 0.5, cNumberNonGaiaPlayers*3); 
 
 	// Huntables South
@@ -1108,6 +1111,7 @@ void main(void)
 	rmAddObjectDefConstraint(foodID2, shortAvoidImpassableLand);
 	rmAddObjectDefConstraint(foodID2, Southward);
 	rmAddObjectDefConstraint(foodID2, avoidStopperShort);
+	rmAddObjectDefConstraint(foodID2, avoidCathedralShort);
 	rmPlaceObjectDefAtLoc(foodID2, 0, 0.5, 0.5, cNumberNonGaiaPlayers*3); 
 
 	int berryID1 = rmCreateObjectDef("starting berries north");
@@ -1119,6 +1123,7 @@ void main(void)
 	rmAddObjectDefConstraint(berryID1, avoidWater10);
 	rmAddObjectDefConstraint(berryID1, Northward);
 	rmAddObjectDefConstraint(berryID1, avoidStopperShort);
+	rmAddObjectDefConstraint(berryID1, avoidCathedralShort);
 	rmPlaceObjectDefAtLoc(berryID1, 0, 0.5, 0.5, cNumberNonGaiaPlayers); 
 
 	int berryID2 = rmCreateObjectDef("starting berries south");
@@ -1130,6 +1135,7 @@ void main(void)
 	rmAddObjectDefConstraint(berryID2, avoidWater10);
 	rmAddObjectDefConstraint(berryID2, Southward);
 	rmAddObjectDefConstraint(berryID2, avoidStopperShort);
+	rmAddObjectDefConstraint(berryID2, avoidCathedralShort);
 	rmPlaceObjectDefAtLoc(berryID2, 0, 0.5, 0.5, cNumberNonGaiaPlayers); 
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
@@ -1316,7 +1322,7 @@ void main(void)
 	int sameTeam=-1;
 
 	int victoryCountDown = 300;
-	int socketMinimapFlareDuration = 8;
+	int socketMinimapFlareDuration = 10;
 
 	// Triggers
 

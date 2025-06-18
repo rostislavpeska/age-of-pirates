@@ -28370,7 +28370,8 @@
   <tech name="zpNatImperialQuotas" type="Normal">
     <dbid>41097</dbid>
     <displaynameid>302781</displaynameid>
-    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Gold">150.0000</cost>
+    <cost resourcetype="Wood">150.0000</cost>
     <researchpoints>20.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\electorial_empire_quota.png</icon>
