@@ -1316,15 +1316,15 @@ void main(void)
 
 // ------Triggers--------//
 
-string pirate1ID = "0";
-string pirate2ID = "0";
-string scientist1ID = "0";
-string scientist2ID = "0";
+int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0);
+int flag2 = rmGetUnitPlaced(piratewaterflagID2, 0);
+int flag3 = rmGetUnitPlaced(piratewaterflagID3, 0);
+int flag4 = rmGetUnitPlaced(piratewaterflagID4, 0);
 
-pirate1ID = "5";
-pirate2ID = "64";
-scientist1ID = "96";
-scientist2ID = "181";
+string pirate1ID = ""+(flag1-1);
+string pirate2ID = ""+(flag2-1);
+string scientist1ID = ""+(flag3-1);
+string scientist2ID = ""+(flag4-1);
 
 int tch0=1671; // tech operator
 

@@ -804,6 +804,8 @@ void main(void)
 		int catamaranID=rmCreateObjectDef("Catamaran"+i);
 		rmAddObjectDefItem(catamaranID, shipType, 1, 5.0);
 		rmAddObjectDefItem(catamaranID, "CoveredWagon", 1, 0.0);
+		if (rmGetPlayerCiv(i) == rmGetCivID("Japanese"))
+			rmAddObjectDefItem(catamaranID, "ypGroveWagon", 1, 0.0);
 		rmAddObjectDefItem(catamaranID, "zpNatConvictLabourer", 1, 0.0);
 		rmAddObjectDefItem(catamaranID, "zpNatConvictLabourer", 1, 0.0);
 		rmAddObjectDefItem(catamaranID, "zpNatConvictLabourer", 1, 0.0);
@@ -1065,22 +1067,13 @@ void main(void)
 
 	// ------Triggers--------//
 
-	string pirate1ID = "0";
-	string pirate2ID = "0";
-	string scientist1ID = "0";
-	string scientist2ID = "0";
+	int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0);
+	int flag2 = rmGetUnitPlaced(piratewaterflagID2, 0);
 
-
-	if (nativeVariant ==1) {
-		pirate1ID = "15";
-		pirate2ID = "46";
-	}
-
-	if (nativeVariant ==2) {
-		scientist1ID = "15";
-		scientist2ID = "100";
-
-	}
+	string pirate1ID = ""+(flag1-1);
+	string pirate2ID = ""+(flag2-1);
+	string scientist1ID = ""+(flag1-1);
+	string scientist2ID = ""+(flag2-1);
 
 	rmCreateTrigger("Tasmania_Counter");
 	rmCreateTrigger("Tasmania_Normalize");
@@ -1985,6 +1978,7 @@ void main(void)
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
+	
 	
 	// Testing
 

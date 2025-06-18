@@ -1693,67 +1693,40 @@ int eruptionBreak4 = rmRandInt(gapMin,gapMax);
 int eruptionBreak5 = rmRandInt(gapMin,gapMax);
 
 string volcanoID = "0";
-string pirate1Socket = "5";
-string pirate2Socket = "41";
-string pirate1ID = "6";
-string pirate2ID = "65";
-string wokou1ID = "97";
-string wokou2ID = "113";
+
+int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0);
+int flag2 = rmGetUnitPlaced(piratewaterflagID2, 0);
+int flag3 = rmGetUnitPlaced(piratewaterflagID3, 0);
+int flag4 = rmGetUnitPlaced(piratewaterflagID4, 0);
+
+string pirate1ID = ""+(flag1-1);
+string pirate2ID = ""+(flag2-1);
+string wokou1ID = ""+(flag3-1);
+string wokou2ID = ""+(flag4-1);
+
 
 if (cNumberNonGaiaPlayers == 1){
-pirate1ID = "7";
-pirate2ID = "65";
-wokou1ID = "97";
-wokou2ID = "113";
 volcanoID = "270";
 }
 if (cNumberNonGaiaPlayers == 2){
-pirate1ID = "8";
-pirate2ID = "66";
-wokou1ID = "98";
-wokou2ID = "114";
 volcanoID = "271";
 }
 if (cNumberNonGaiaPlayers == 3){
-pirate1ID = "9";
-pirate2ID = "67";
-wokou1ID = "99";
-wokou2ID = "115";
 volcanoID = "272";
 }
 if (cNumberNonGaiaPlayers == 4){
-pirate1ID = "10";
-pirate2ID = "68";
-wokou1ID = "100";
-wokou2ID = "116";
 volcanoID = "273";
 }
 if (cNumberNonGaiaPlayers == 5){
-pirate1ID = "11";
-pirate2ID = "69";
-wokou1ID = "101";
-wokou2ID = "117";
 volcanoID = "274";
 }
 if (cNumberNonGaiaPlayers == 6){
-pirate1ID = "12";
-pirate2ID = "70";
-wokou1ID = "102";
-wokou2ID = "118";
 volcanoID = "275";
 }
 if (cNumberNonGaiaPlayers == 7){
-pirate1ID = "13";
-pirate2ID = "71";
-wokou1ID = "103";
-wokou2ID = "119";
 volcanoID = "276";
 }
 if (cNumberNonGaiaPlayers == 8){
-pirate1ID = "14";
-pirate2ID = "72";
-wokou1ID = "104";
-wokou2ID = "120";
 volcanoID = "277";
 }
 

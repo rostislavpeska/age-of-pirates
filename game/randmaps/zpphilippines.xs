@@ -1073,28 +1073,15 @@ void main(void)
 
 // ------Triggers--------//
 
-string pirate1ID = "0";
-string pirate2ID = "0";
-string wokou1ID = "0";
-string wokou2ID = "0";
+int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0);
+int flag2 = rmGetUnitPlaced(piratewaterflagID2, 0);
+int flag3 = rmGetUnitPlaced(piratewaterflagID3, 0);
+int flag4 = rmGetUnitPlaced(piratewaterflagID4, 0);
 
-if (cNumberNonGaiaPlayers <= 2){
-pirate1ID = "5";
-wokou1ID = "64";
-}
-
-else if (cNumberNonGaiaPlayers == 3){
-pirate1ID = "5";
-wokou1ID = "64";
-wokou2ID = "94";
-}
-
-else {
-pirate1ID = "5";
-pirate2ID = "64";
-wokou1ID = "96";
-wokou2ID = "112";
-} 
+string pirate1ID = ""+(flag1-1);
+string pirate2ID = ""+(flag2-1);
+string wokou1ID = ""+(flag3-1);
+string wokou2ID = ""+(flag4-1);
 
 int tch0=1671; // tech operator
 

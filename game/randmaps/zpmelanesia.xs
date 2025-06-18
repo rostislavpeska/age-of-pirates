@@ -2219,13 +2219,18 @@ int eruptionBreak5 = rmRandInt(gapMin,gapMax);
 
 string volcanoID = "361";
 string volcanoID2 = "408";
-string pirate1Socket = "5";
-string pirate2Socket = "41";
-string pirate1ID = "8";
-string pirate2ID = "65";
-string wokou1ID = "99";
-string wokou2ID = "113";
-string scientistsID = "163";
+
+int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0);
+int flag2 = rmGetUnitPlaced(piratewaterflagID2, 0);
+int flag3 = rmGetUnitPlaced(piratewaterflagID3, 0);
+int flag4 = rmGetUnitPlaced(piratewaterflagID4, 0);
+int flag5 = rmGetUnitPlaced(piratewaterflagID5, 0);
+
+string pirate1ID = ""+(flag1-1);
+string pirate2ID = ""+(flag2-1);
+string wokou1ID = ""+(flag3-1);
+string wokou2ID = ""+(flag4-1);
+string scientistsID = ""+(flag5-1);
 
 string port1ID = "440";
 string port2ID = "490";

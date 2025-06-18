@@ -1158,10 +1158,15 @@ void main(void)
 
   // ------Triggers--------//
 
-  string pirate1ID = "6";
-  string pirate2ID = "65";
-  string wokou1ID = "97";
-  string wokou2ID = "113";
+  int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0);
+  int flag2 = rmGetUnitPlaced(piratewaterflagID2, 0);
+  int flag3 = rmGetUnitPlaced(piratewaterflagID3, 0);
+  int flag4 = rmGetUnitPlaced(piratewaterflagID4, 0);
+
+  string pirate1ID = ""+(flag1-1);
+  string pirate2ID = ""+(flag2-1);
+  string wokou1ID = ""+(flag3-1);
+  string wokou2ID = ""+(flag4-1);
 
   // Starter shipment triggers
   for(i = 1; < cNumberPlayers) {

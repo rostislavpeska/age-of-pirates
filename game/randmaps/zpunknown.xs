@@ -12937,14 +12937,17 @@ int nuggetID= rmCreateObjectDef("map nugget");
 
 	// ------------------------------Triggers------------------------------//
 
-	string pirateID1 = "8";
-	string pirateID2 = "66";
-	string scientistsID1 = "8";
-	string scientistsID2 = "106";
-	string wokouID1 = "8";
-	string wokouID2 = "56";
-	string venetianID1 = "8";
-	string venetianID2 = "76";
+	int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0);
+	int flag2 = rmGetUnitPlaced(piratewaterflagID2, 0);
+
+	string pirateID1 = ""+(flag1-1);
+	string pirateID2 = ""+(flag2-1);
+	string scientistsID1 =""+(flag1-1);
+	string scientistsID2 = ""+(flag2-1);
+	string wokouID1 = ""+(flag1-1);
+	string wokouID2 = ""+(flag2-1);
+	string venetianID1 = ""+(flag1-1);
+	string venetianID2 = ""+(flag2-1);
 
 	// Starting techs
 

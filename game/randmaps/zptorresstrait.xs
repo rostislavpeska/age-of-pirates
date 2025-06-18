@@ -1132,9 +1132,11 @@ int revealerID=rmCreateObjectDef("water revealer");
 
 
 // ------Triggers--------//
+int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0);
+int flag2 = rmGetUnitPlaced(piratewaterflagID3, 0);
 
-string pirate1ID = "5";
-string wokou1ID = "64";
+string pirate1ID = ""+(flag1-1);
+string wokou1ID = ""+(flag2-1);
 string centerID = "135";
 
 int stormBreakMin = 600;

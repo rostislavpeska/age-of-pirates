@@ -1595,8 +1595,12 @@ int eruptionBreak4 = rmRandInt(gapMin,gapMax);
 int eruptionBreak5 = rmRandInt(gapMin,gapMax);
 
 string volcanoID = "181";
-string pirate1Socket = "5";
-string pirate2Socket = "41";
+
+int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0);
+int flag2 = rmGetUnitPlaced(piratewaterflagID2, 0);
+
+string pirate1Socket = ""+(flag1-1);
+string pirate2Socket = ""+(flag2-1);
 
 if (cNumberNonGaiaPlayers <=6) {
   eruptionLenght = 120;
