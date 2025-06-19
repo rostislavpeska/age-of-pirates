@@ -4183,8 +4183,183 @@
       <command>rule reoihjuhiu4896 active { if (true) { //</command>
     </effect>
     <effect name="ZP Native AutoSetup: Prince Electors">
+      <param name="SocketRadius" dispname="Socket Training Radius (do not change)" vartype="float">15</param>
+      <param name="ConversionRadius" dispname="Castle center distance (do not change)" vartype="float">20</param>
+      <param name="Socket1" dispname="Socket 1" vartype="unit">-1</param>
+      <param name="Socket2" dispname="Socket 2" vartype="unit">-1</param>
+      <param name="Socket3" dispname="Socket 3" vartype="unit">-1</param>
+      <param name="Socket4" dispname="Socket 4" vartype="unit">-1</param>   
       <command>}}</command>
-      <command>rule Prince_Elector_Setup</command>
+      <command>int getSocketOwnerElector(int socketID = -1)</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command>for (playerID = 0; &lt; 9)</command>
+      <command>{</command>
+      <command>if (trCountUnitsInArea("" + socketID, playerID, "TradingPost", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>socketOwnerElector = playerID;</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>}</command>
+      <command>return(socketOwnerElector);</command>
+      <command>}</command>
+      <command>rule TurnOnElector1</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerElector = getSocketOwnerElector(%Socket1%);</command>
+      <command>if (socketOwnerElector &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket1">trUnitSelect("%Socket1%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerElector, "zpElectorCenter", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffElector1");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffElector1</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerElector = getSocketOwnerElector(%Socket1%);</command>
+      <command>if (socketOwnerElector &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket1">trUnitSelect("%Socket1%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpElectorCenter", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnElector1");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOnElector2</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerElector = getSocketOwnerElector(%Socket2%);</command>
+      <command>if (socketOwnerElector &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket2">trUnitSelect("%Socket2%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerElector, "zpElectorCenter", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffElector2");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffElector2</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerElector = getSocketOwnerElector(%Socket2%);</command>
+      <command>if (socketOwnerElector &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket2">trUnitSelect("%Socket2%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpElectorCenter", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnElector2");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOnElector3</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command loop="" loopparm="Socket3">socketOwnerElector = getSocketOwnerElector(%Socket3%);</command>
+      <command>if (socketOwnerElector &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket3">trUnitSelect("%Socket3%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerElector, "zpElectorCenter", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffElector3");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffElector3</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command loop="" loopparm="Socket3">socketOwnerElector = getSocketOwnerElector(%Socket3%);</command>
+      <command>if (socketOwnerElector &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket3">trUnitSelect("%Socket3%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpElectorCenter", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnElector3");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOnElector4</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command loop="" loopparm="Socket4">socketOwnerElector = getSocketOwnerElector(%Socket4%);</command>
+      <command>if (socketOwnerElector &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket4">trUnitSelect("%Socket4%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerElector, "zpElectorCenter", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffElector4");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffElector4</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command loop="" loopparm="Socket4">socketOwnerElector = getSocketOwnerElector(%Socket4%);</command>
+      <command>if (socketOwnerElector &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket4">trUnitSelect("%Socket4%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpElectorCenter", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnElector4");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>      
+      <command>rule Prince_Elector_Politicians</command>
       <command>active</command>
       <command>runImmediately</command>
       <command>highFrequency</command>
