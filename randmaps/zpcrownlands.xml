@@ -8,6 +8,7 @@
     <enforcedSettings>
         <setting type="RecordGame" state="forbidden" />
         <setting type="DefaultRules" state="enforced" />
+        <setting type="Diplomacy" state="forbidden" />
     </enforcedSettings>
     <recommendedSettings>
         <civilization>French</civilization>
