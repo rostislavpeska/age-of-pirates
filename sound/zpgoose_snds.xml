@@ -2,7 +2,7 @@
 <protounitsounddef>
   <protounit name="zpGoose">
     <soundtype name="Death">
-      <soundset name="TurkeyDeath">
+      <soundset name="Goose_Ambient">
       </soundset>
     </soundtype>
   </protounit>
