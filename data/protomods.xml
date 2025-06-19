@@ -59433,7 +59433,7 @@
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>RMCanRotate</flag>
 </unit>
-<unit id="20821" name="zpSPCAztecGranary">
+<unit id="20821" name="zpSPCAztecGranaryProp">
     <dbid>20822</dbid>
     <editornameid>302858</editornameid>
     <obstructionradiusx>4.0000</obstructionradiusx>
@@ -59458,8 +59458,8 @@
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>RMCanRotate</flag>
   </unit>
-  <unit id="20822" name="zpPropsJungle">
-    <dbid>20822</dbid>
+  <unit id="20823" name="zpPropsJungle">
+    <dbid>20823</dbid>
     <editornameid>302859</editornameid>
     <obstructionradiusx>0.1000</obstructionradiusx>
     <obstructionradiusz>0.1000</obstructionradiusz>
