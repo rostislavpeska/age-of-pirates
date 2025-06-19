@@ -59415,7 +59415,7 @@
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <physicsinfo>mill</physicsinfo>
-    <animfile>buildings\spc\aztec\aztec_altar.xml</animfile>
+    <animfile>buildings\spc\aztec\aztec_altar_prop.xml</animfile>
     <unittype>EmbellishmentClass</unittype>
     <unittype>Unattackable</unittype>
     <flag>NoHPBar</flag>

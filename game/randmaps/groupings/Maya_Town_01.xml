@@ -81,7 +81,7 @@
 		<unit variation="214" posx="6.5645" posz="10.0949" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
 		<unit variation="2" posx="1.0414" posz="6.8785" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
 		<unit variation="11" posx="11.2059" posz="6.5742" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
-		<unit variation="243" posx="6.0000" posz="11.0000" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCAztecGranary</unit>
+		<unit variation="243" posx="6.0000" posz="11.0000" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCAztecGranaryProp</unit>
 		<unit variation="122" posx="-14.7206" posz="6.0390" orientx="0.0171" orienty="0.0000" orientz="-0.9999">SMIncanFence</unit>
 		<unit variation="23" posx="-4.5496" posz="8.6433" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeHouseMaya</unit>
 		<unit variation="214" posx="-4.3582" posz="10.4381" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
