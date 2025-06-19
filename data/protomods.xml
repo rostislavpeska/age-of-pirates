@@ -54238,7 +54238,6 @@
     <flag>ForceToGaia</flag>
     <flag>VisibleUnderFogIfGaia</flag>
     <flag>Tracked</flag>
-    <flag>PaintTextureWhenPlacing</flag>
     <flag>InvulnerableIfGaia</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>RMCanRotate</flag>
@@ -54265,7 +54264,6 @@
     <flag>ForceToGaia</flag>
     <flag>VisibleUnderFogIfGaia</flag>
     <flag>Tracked</flag>
-    <flag>PaintTextureWhenPlacing</flag>
     <flag>InvulnerableIfGaia</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>RMCanRotate</flag>
@@ -59363,6 +59361,127 @@
       <damagebonus type="xpArrowKnight">0.340000</damagebonus>
       <damagebonus type="Building">2.000000</damagebonus>
     </protoaction>
+  </unit>
+  <unit id="20819" name="zpPCTreeAmazonProp">
+    <dbid>20819</dbid>
+    <editornameid>302856</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>terrain\tree_amazon.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\terrain\trees\tree_icon_64.png</icon>
+    <portraiticon>resources\art\terrain\trees\tree_icon_portrait.png</portraiticon>
+    <initialhitpoints>6.0000</initialhitpoints>
+    <maxhitpoints>6.0000</maxhitpoints>
+    <bounty>0.0000</bounty>
+    <initialresource resourcetype="Wood">300.0000</initialresource>
+    <resourcesubtype>Wood</resourcesubtype>
+    <minimapcolor red="0.1900" blue="0.1800" green="0.2500">
+    </minimapcolor>
+    <unittype>NatureClass</unittype>
+    <unittype>Wood</unittype>
+    <unittype>Nature</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>HuntedResource</unittype>
+    <flag>ObscuresUnits</flag>
+    <flag>NoHPBar</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Immoveable</flag>
+    <flag>Doppled</flag>
+    <flag>ForceToGaia</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>DoppleOnlyWhenDead</flag>
+    <flag>NoIdleActions</flag>
+    <flag>RMCanRotate</flag>
+    <flag>Tracked</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NotSelectable</flag>
+    <flag>Invulnerable</flag>
+  </unit>
+  <unit id ="20820" name ="zpAztecAltarProp">
+    <dbid>20820</dbid>
+    <editornameid>302857</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <placementobstructionradiusx>7.5000</placementobstructionradiusx>
+    <placementobstructionradiusz>7.5000</placementobstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <physicsinfo>mill</physicsinfo>
+    <animfile>buildings\spc\aztec\aztec_altar.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>RMCanRotate</flag>
+</unit>
+<unit id="20821" name="zpSPCAztecGranary">
+    <dbid>20822</dbid>
+    <editornameid>302858</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\aztec\aztec_granary.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>RMCanRotate</flag>
+  </unit>
+  <unit id="20822" name="zpPropsJungle">
+    <dbid>20822</dbid>
+    <editornameid>302859</editornameid>
+    <obstructionradiusx>0.1000</obstructionradiusx>
+    <obstructionradiusz>0.1000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>terrain\amazon\underbrush_am.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>VariationLocked</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
   </unit>
 
 
