@@ -4402,6 +4402,12 @@
       <command>}</command>
       <command>}</command>
       <command>}</command>
+      <command>rule princeElectorTechSetup active runImmediately highFrequency {</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>trTechSetStatus(playerID, cTechzpPrinceElectorNativeSetup, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
       <command>rule rdcnoniiba846 active { if (true) { //</command>
     </effect>
   </effects>
