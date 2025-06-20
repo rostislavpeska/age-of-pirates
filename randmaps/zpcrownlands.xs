@@ -1411,7 +1411,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name","VictoryCounter"+k);
 		rmSetTriggerEffectParamInt("Start", victoryCountDown);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg",""+rmGetPlayerName(k)+" monument Victory in"); // Get exact player name
+		rmSetTriggerEffectParam("Msg", "\"+ kbGetPlayerName(" + k + ") + \" Monument victory in"); // Get exact player name
 		sameTeam=rmGetPlayerTeam(k);
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+sameTeam));
 		rmAddTriggerEffect("Music Filename");

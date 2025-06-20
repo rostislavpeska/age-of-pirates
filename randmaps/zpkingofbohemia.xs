@@ -1392,7 +1392,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name","VictoryCounter"+k);
 		rmSetTriggerEffectParamInt("Start", victoryCountDown);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg",""+rmGetPlayerName(k)+" wins in"); // Get exact player name
+		rmSetTriggerEffectParam("Msg", "\"+ kbGetPlayerName(" + k + ") + \" wins in"); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("PlayerVictory"+k));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF"+k));
