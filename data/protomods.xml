@@ -59432,6 +59432,7 @@
     <flag>InvulnerableIfGaia</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>RMCanRotate</flag>
+    <flag>FlattenGround</flag>
 </unit>
 <unit id="20821" name="zpSPCAztecGranaryProp">
     <dbid>20822</dbid>
@@ -59457,6 +59458,7 @@
     <flag>InvulnerableIfGaia</flag>
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>RMCanRotate</flag>
+    <flag>FlattenGround</flag>
   </unit>
   <unit id="20823" name="zpPropsJungle">
     <dbid>20823</dbid>
