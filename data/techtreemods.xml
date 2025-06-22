@@ -29281,6 +29281,14 @@
       
     </effects>
   </tech>
+  <tech name="zpNativePueblo" type="Normal">
+    <dbid>41136</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      
+    </effects>
+  </tech>
 
 
 

@@ -59557,6 +59557,58 @@
     <flag>NotSearchable</flag>
     <flag>VariationLocked</flag>
   </unit>
+  <unit id="20826" name="zpSocketPueblo">
+    <dbid>20826</dbid>
+    <displaynameid>302863</displaynameid>
+    <editornameid>302864</editornameid>
+    <subciv>zpPueblo</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>1.0286</socketbuildrate>
+    <socketbuildcommandid>deSocketBuildAsian</socketbuildcommandid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+    <animfile>buildings\trading_post\jesuit_outpost_socket.xml</animfile>
+    <minimapicon>ui\minimap\asian_native_site</minimapicon>
+    <capturedminimapicon>ui\minimap\asian_native_site_c</capturedminimapicon>
+    <portraiticon>resources\art\units\natives\pueblo_natives.png</portraiticon>
+    <rollovertextid>302865</rollovertextid>
+    <shortrollovertextid>302865</shortrollovertextid>
+    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+    <los>9.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>CapturableSocket</unittype>
+    <flag>HeroName1</flag>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>NativePreview</flag>
+    <flag>NotDeleteable</flag>
+    <flag>SocketSubCivAlliance</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>FlattenGround</flag>
+    <flag>EnterHotkeyContext</flag>
+    <tactics>socketcapture.tactics</tactics>
+  </unit>
 
 
 
