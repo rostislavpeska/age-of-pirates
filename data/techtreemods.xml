@@ -29273,6 +29273,14 @@
       <effect type="TextOutputTechName">123070</effect>
     </effects>
   </tech>
+  <tech name="zpNativeHansaKontor" type="Normal">
+    <dbid>41135</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      
+    </effects>
+  </tech>
 
 
 
