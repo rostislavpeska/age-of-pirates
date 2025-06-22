@@ -179,6 +179,7 @@
     <name stringid="300297">MaintainSoheiInf</name>
     <type>Maintain</type>
     <rate type="zpNatSoheiProxy">1.0 </rate>
+    <maintaintrainpoints>40</maintaintrainpoints>
     <active>1</active>
     <persistent>1</persistent>
   </action>
@@ -186,6 +187,7 @@
     <name stringid="300298">MaintainSoheiArcher</name>
     <type>Maintain</type>
     <rate type="zpNatSoheiArcher">1.0 </rate>
+    <maintaintrainpoints>40</maintaintrainpoints>
     <active>1</active>
     <persistent>1</persistent>
   </action>
@@ -193,6 +195,7 @@
     <name stringid="300298">MaintainSoheiCavalry</name>
     <type>Maintain</type>
     <rate type="zpNatSoheiCavalry">1.0 </rate>
+    <maintaintrainpoints>50</maintaintrainpoints>
     <active>1</active>
     <persistent>1</persistent>
   </action>

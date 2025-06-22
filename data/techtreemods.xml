@@ -27177,16 +27177,16 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPNativeImprovement</flag>
     <effects>
-      <effect type="Data" amount="0.80" subtype="Cost" resource="Wood" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="Cost" resource="Wood" relativity="BasePercent">
         <target type="ProtoUnit">AbstractNativeWarrior</target>
       </effect>
-      <effect type="Data" amount="0.80" subtype="Cost" resource="Gold" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="Cost" resource="Gold" relativity="BasePercent">
         <target type="ProtoUnit">AbstractNativeWarrior</target>
       </effect>
-      <effect type="Data" amount="0.80" subtype="Cost" resource="Food" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="Cost" resource="Food" relativity="BasePercent">
         <target type="ProtoUnit">AbstractNativeWarrior</target>
       </effect>
-      <effect type="Data" amount="0.80" subtype="Cost" resource="Influence" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="Cost" resource="Influence" relativity="BasePercent">
         <target type="ProtoUnit">AbstractNativeWarrior</target>
       </effect>
     </effects>
