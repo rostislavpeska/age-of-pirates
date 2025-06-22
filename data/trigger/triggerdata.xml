@@ -4183,7 +4183,7 @@
       <command>rule reoihjuhiu4896 active { if (true) { //</command>
     </effect>
     <effect name="ZP Native AutoSetup: Prince Electors">
-      <param name="SocketRadius" dispname="Socket Training Radius (do not change)" vartype="float">15</param>
+      <param name="SocketRadius" dispname="Socket Training Radius (do not change)" vartype="float">13</param>
       <param name="ConversionRadius" dispname="Castle center distance (do not change)" vartype="float">20</param>
       <param name="Socket1" dispname="Socket 1" vartype="unit">-1</param>
       <param name="Socket2" dispname="Socket 2" vartype="unit">-1</param>

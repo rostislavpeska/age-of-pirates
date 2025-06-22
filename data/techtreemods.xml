@@ -28379,9 +28379,6 @@
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\electorial_empire_quota.png</icon>
     <rollovertextid>302780</rollovertextid>
-    <prereqs>
-			<techstatus status="Active">Fortressize</techstatus>
-    </prereqs>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <effects>
