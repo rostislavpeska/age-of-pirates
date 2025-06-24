@@ -1154,7 +1154,7 @@ void main(void)
 
 	// _________________ Map Objectives ______________________________
 	rmObjectiveScreenSetTitle(302344);
-	rmObjectiveScreenSetGoal(302345);
+	rmObjectiveScreenSetGoal(302866);
 	rmObjectiveAdd(302357, 302358, true, true, true); // General objective
 
 	// ************************* TRIGGERS ******************************

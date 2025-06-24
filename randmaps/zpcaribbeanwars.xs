@@ -940,7 +940,7 @@ for(i=1; <cNumberPlayers) {
 
    // ____________________ MAP OBJECTIVES ____________________
     rmObjectiveScreenSetTitle(302118);
-    rmObjectiveScreenSetGoal(302119);
+    rmObjectiveScreenSetGoal(302869);
     if (rmGetIsKOTH())
       rmObjectiveAdd(302236, 302232, true, true, true);
     else

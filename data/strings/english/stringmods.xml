@@ -2019,7 +2019,7 @@
       <string _locid="302018">Storming of the Bastille</string>
       <string _locid="302019">Paris 1789 Historical Map: \nBoth teams start outside of the city and have the same goal: Take Bastille, Royal Court and City Hall buildings and hold them for the rest of the game. Both sides can use different native techs. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Revolutionaries which can use special Sansculotte techs \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Royalists which can use special Bourbon techs \n\nSettlements: Sansculotte, Bourbon, Jesuit, Maltese \n\nMaximum recommended players: 4</string>
       <string _locid="302020">Achieve a Team Victory by capturing and holding all three victory buildings: Royal Court, City Hall and Bastille. Take your team natives trading post too get more advanced native improvements. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt;Sansculotte natives \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Bourbon natives</string>
-      <string _locid="302021">Battle for control of the city.</string>
+      <string _locid="302021">Paris 1789 Historical Map: Both teams start outside of the city and have the same goal: Take Bastille, Royal Court and City Hall buildings and hold them for the rest of the game. Both sides can use different native techs.</string>
       <string _locid="302022">Achieve &lt;color=1.0, 1.0, 0.0&gt;ATTACKERS&lt;/color&gt; Team Victory by capturing and holding all three victory buildings (marked with a team color flag): Royal Court, Bastille and City Hall</string>
       <string _locid="302023">Once all nearby enemies are defeated, a Building converts to you when you're close enough to it. Controlling and holding all necessary buildings until the end of the Team Victory timer will result a victory.</string>
       <string _locid="302024">Royal Court</string>
@@ -2117,7 +2117,7 @@
       <string _locid="302116">ZP NAT MERC Warrior Monk</string>
       <string _locid="302117">ZP NAT MERC Bulgarien Boyar</string>
       <string _locid="302118">The Fall of Venice</string>
-      <string _locid="302119">Battle for control the City of Venice.</string>
+      <string _locid="302119">Venice 1796: The republic is weak and the fight for the Venetian heritage altready started.</string>
       <string _locid="302120">Achieve a Team Victory by capturing and holding the majority of the Venetian Districts.</string>
       <string _locid="302121">Once all nearby enemies are defeated, a Venetian District socket can be tasked to build a Trading Post on itself freely. Controlling and holding the majority of Venetian Districts until the end of the League Victory timer will result in victory.</string>
       <string _locid="302122">Palazzo Auditore</string>
@@ -2316,7 +2316,7 @@
       <string _locid="302316">ZP SPC Socket King of Bohemia</string>
       <string _locid="302317">There is only one true King of Bohemia. Hold the kingdom until the time runs out.</string>
       <string _locid="302318">Proclaim a King</string>
-      <string _locid="302319">Pick one of the Bohemian Royal Dynasties and proclaim the King of Bohemia \n • Unlocks specific Royal House units and techs \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Rises the Kingdom of Bohemia flag above your Town Center \n • Starts a victory countdown &lt;color=1.0, 0.0, 0.0&gt;\n • Once you proclaim yourself a King, the other players unite against you. Make sure the city is well defended.&lt;/color&gt;</string>
+      <string _locid="302319">Pick one of the Bohemian Royal Dynasties and proclaim the King of Bohemia \n • Unlocks specific Royal House units and techs \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Raises the Kingdom of Bohemia flag above your Town Center \n • Starts a victory countdown &lt;color=1.0, 0.0, 0.0&gt;\n • Once you proclaim yourself a King, the other players unite against you. Make sure the city is well defended.&lt;/color&gt;</string>
       <string _locid="302320">House of Habsburg</string>
       <string _locid="302321">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nLine Infantry, Mounted Infantry \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nVienna Congress, Crown Lands, Multinationalism, Austro-Hungarian Empire</string>
       <string _locid="302322">Bohemian Landsknecht</string>
@@ -2354,7 +2354,7 @@
       <string _locid="302354">Bohemian Knight</string>
       <string _locid="302355">Powerful warrion from Bohemian countries</string>
       <string _locid="302356">Mercenary skull_knight</string>
-      <string _locid="302357">Capture the Prince Elector's site in the center of the map and use Bohemian Election big button. Then hold the site until the time runs out.</string>
+      <string _locid="302357">Capture the Prince Elector's site in the center of the map and choose the Ruling Dynasty. Then hold the site until the time runs out.</string>
       <string _locid="302358">Once you proclaim yourself a King, all the enemy players unite against you, so you need to arm the city and hold the socket until the time runs out.</string>
       <string _locid="302359">ZP Fort Convertable</string>
       <string _locid="302360">ZP Invisible Gate Socket A</string>
@@ -2370,7 +2370,7 @@
       <string _locid="302370">Coronation Cathedral</string>
       <string _locid="302371">Alchemists Workshop</string>
       <string _locid="302372">Patent of Toleration</string>
-      <string _locid="302373">Decreases Bohemian mercenaries population costs. \n • Desreases Bohemian mercenary costs by 20%. &lt;color=1.0, 0.0, 0.0&gt;\n • Works only while you're holding the King of Bohemia socket.&lt;/color&gt;</string>
+      <string _locid="302373">Decreases Bohemian mercenaries population costs. \n • Desreases Bohemian mercenary costs by 20%. &lt;color=1.0, 0.0, 0.0&gt;\n • Works only while you're holding the Bohemia Elector socket.&lt;/color&gt;</string>
       <string _locid="302374">ZP Socket EU SPC City Tower 3</string>
       <string _locid="302375">ZP Socket EU SPC City Tower 4</string>
       <string _locid="302376">ZP Socket EU SPC City Tower 5</string>
@@ -2389,7 +2389,7 @@
       <string _locid="302389">ZP SPC Florence Castle</string>
       <string _locid="302390">Palazzo Vecchio (Citadel of Florence)</string>
       <string _locid="302391">Siege of Florence</string>
-      <string _locid="302392">Florence versus Rome, eternal rivals fighting on the opposite sides in the Italian Wars. The pope Leo X decided to cross the Arno River and attack Florence. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Starting in the City of Rome \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Starting in the City of Florence. \n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Achieve a Team Victory by destroying enemy Castello and defending your own. \n\nSettlements: Auditore, Maltese, Jesuit \n\nMaximum recommended players: 4</string>
+      <string _locid="302392">Florence versus Rome, eternal rivals fighting on the opposite sides in the Italian Wars. In this map Pope Leo X attacks Florence across the Arno River \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Starting in the City of Rome \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Starting in the City of Florence. \n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Achieve a Team Victory by destroying enemy Castello and defending your own. \n\nSettlements: Auditore, Maltese, Jesuit \n\nMaximum recommended players: 4</string>
       <string _locid="302393">In the early 16th century, Pope Leo X sought to reclaim Florence and restore Medici rule. As armies march and alliances tremble, the fate of Florence hangs in the balance. Will you defend its freedom or crush it under papal might?</string>
       <string _locid="302394">ZP SPC Roman Tower</string>
       <string _locid="302395">ZP SPC Florence Tower</string>
@@ -2435,8 +2435,8 @@
       <string _locid="302435">Builds mighty Outpost</string>
       <string _locid="302436">Build mighty Outpost</string>
       <string _locid="302437">The Blood of Tenochtitlan</string>
-      <string _locid="302438">In 1521 the Aztec Empire is broken. Cortez and his Conquistadors are in the front of the gates of Tenochtitlan. Defend the city or join the conquerrors. \n\nThere is always only one player defending the city. The rest of the players are attacking. Even though the city is surrounded by water, players have just limited options for building the ships and start with no water flag. \n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Attacker win if they manage to destroy the Montezuma's Palace in the center of the map before the time runs out. Defender needs to protect the palace. \n\nNative Settlements: Aztecs (defender), Jesuits (attackers)</string>
-      <string _locid="302439">Tenochtitlan city districts provide you with all various resources. There are four main district: Religious (experience and other bonuses), Forest District (Wood), Agricultural District (Food), and Craft District (Coin). \n\nSelect your Home City Deck wisely, the lake has no access to the sea and therefore you can't use your Homecity Water Flag.</string>
+      <string _locid="302438">In 1521 the Aztec Empire is broken. Cortés and his conquistadors are at the gates of Tenochtitlan. Defend the city or join the conquerrors. \n\nOne player defends the city with the rest attacking. The waters surrounding the city lack water flags and only provide limited options for constructing ships.\n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Attackers win if they manage to destroy Moctezuma's central palace before time runs out. Defender must hold the palace until time runs out. Defender needs to protect the palace. \n\nNative Settlements: Aztecs (defender), Jesuits (attackers)</string>
+      <string _locid="302439">Tenochtitlan city districts provide the player with various resources. There are four main district: Religious (experience and other bonuses), Forest District (Wood), Agricultural District (Food), and Craft District (Coin). \n\nSelect your Home City Deck wisely, the lake has no access to the sea and therefore you can't use your Homecity Water Flag.</string>
       <string _locid="302440">ZP NAT Merc Eagle Man</string>
       <string _locid="302441">ZP GRD Marauding Tlaxcaltec</string>
       <string _locid="302442">Tlaxcaltec Rebel</string>
@@ -2450,7 +2450,7 @@
       <string _locid="302450">Tenochtitlan ally army will come in</string>
       <string _locid="302451">Protect Montezuma's Palace in the center of the city before the time runs out..</string>
       <string _locid="302452">Destroy Montezuma's Palace in the center of the map before the time runs out.</string>
-      <string _locid="302453">Palace is located in the very center of the map. It can't be repaired, but slowly repairs itself manually..</string>
+      <string _locid="302453">Palace is located in the center of the map. It can not be repaired manually, but slowly repairs itself automatically.</string>
       <string _locid="302454">Defender holds: 4 sockets</string>
       <string _locid="302455">Blessed City</string>
       <string _locid="302456">All convertable city resource buildings work faster by 15%.</string>
@@ -2542,7 +2542,7 @@
       <string _locid="302542">Freedom</string>
       <string _locid="302543">Prometheus</string>
       <string _locid="302544">Civil War</string>
-      <string _locid="302545">American Civil War (1861-1865) Historical Map: \nTeams start on the other side of a large river. Both teams have the same goal: Capture all sockets and hold them for the rest of the game. Both teams start with a Command Post building which provides different improvements based on your team. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; United States of America - strong economy and new technologies artillery or navy. \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Confederate States of America - agricultural improvements and cheaper units. \n\nSettlements: Frontier Town, Inventors</string>
+      <string _locid="302545">American Civil War (1861-1865) Historical Map: \nTeams start on opposing sides of a large river delta. Both teams have the same goal: Capture and hold 4 of the 5 sockets on the map or destroy your opponents. Players start with either a Union or Confederate command post containing unique units and improvements. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Union - strong economy, artillery and navy. \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Confederacy - agricultural improvements and cheaper units. \n\nSettlements: Frontier Town, Inventors</string>
       <string _locid="302546">The Steam Era is coming to the New World and is bringing up new technologies and new ways of warfare. Use the advantage of advanced warships, airships or armored trains to achieve a victory.</string>
       <string _locid="302547">Sawmill</string>
       <string _locid="302548">ZP SPC Sawmill</string>
@@ -2559,8 +2559,8 @@
       <string _locid="302559">ZP Native House Inventors</string>
       <string _locid="302560">ZP Prop Water Tower</string>
       <string _locid="302561">Whiskey Distillery</string>
-      <string _locid="302562">Achieve Union Team victory by capturing and holding 4/5 sockets for at least 8 minutes.</string>
-      <string _locid="302563">Achieve Confederacy Team victory by capturing and holding 4/5 sockets for at least 8 minutes.</string>
+      <string _locid="302562">Achieve Union Team victory by capturing and holding 4 out of 5 sockets for at least 8 minutes.</string>
+      <string _locid="302563">Achieve Confederacy Team victory by capturing and holding 4 out of 5 sockets for at least 8 minutes.</string>
       <string _locid="302564">ZP Prop Wind Mill</string>
       <string _locid="302565">Build a Native Consulate and pick a partner from a nearby native tribe.</string>
       <string _locid="302566">Pipe of Peace</string>
@@ -2588,9 +2588,9 @@
       <string _locid="302588">ZP Civil War Commandery CSA</string>
       <string _locid="302589">Confederate States of America</string>
       <string _locid="302590">Revolt to United States of America</string>
-      <string _locid="302591">Pick one of the three United States leaders providing you with unique techs.\n • Initiates a special type of revolution \n • Unlocks new techs \n • Increases Command Post build limit by 2</string>
+      <string _locid="302591">Pick one of the three Union leaders providing you with unique techs.\n • Initiates a special type of revolution \n • Unlocks new techs \n • Increases Command Post build limit by 2</string>
       <string _locid="302592">Revolt to Confederate States of America</string>
-      <string _locid="302593">Pick one of the three Confederacy leaders providing you with unique techs. \n • Initiates a special type of revolution \n • Unlocks new techs \n • Increases Command Post build limit by 2</string>
+      <string _locid="302593">Pick one of the three Confederate leaders providing you with unique techs. \n • Initiates a special type of revolution \n • Unlocks new techs \n • Increases Command Post build limit by 2</string>
       <string _locid="302594">Join the Union</string>
       <string _locid="302595">The Admiral</string>
       <string _locid="302596">Naval bonus: Increases Warships attack range and line of sight. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nFleet of Freedom, Project Leviathan</string>
@@ -2598,7 +2598,7 @@
       <string _locid="302598">Economic bonus: Native production buildings work 15% faster. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nNorthern Foundries, Emancipation Proclamation</string>
       <string _locid="302599">The General</string>
       <string _locid="302600">Military bonus: Artillery gets trained 15% faster. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nField Hospitals, Breech Loading</string>
-      <string _locid="302601">Pick one of the three United States leaders providing you with unique techs.\n • Unlocks new techs</string>
+      <string _locid="302601">Pick one of the three Union leaders providing you with unique techs.\n • Unlocks new techs</string>
       <string _locid="302602">You proclaimed yourself as part of the Union!</string>
       <string _locid="302603">%s has risen the Union Flag!</string>
       <string _locid="302604">You proclaimed yourself as part of the Confederacy!</string>
@@ -2640,7 +2640,7 @@
       <string _locid="302640">Transform all Settlers to Southern Irregulars. Increases Southern Irregulars build limit by 20.</string>
       <string _locid="302641">Advanced pirate ship with a long-range attack.</string>
       <string _locid="302642">Plants the Confederate flag to boost morale! Nearby military units (excluding artillery) and buildings inflict more damage and are created faster. Flags cannot be planted near starting Town Centers, and only one flag can be planted at a time.</string>
-      <string _locid="302643">Teams start on the other side of a large river. Both teams have the same goal: Capture all sockets and hold them for the rest of the game. Both teams start with a Command Post building which provides different improvements based on your team. &lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; United States of America - strong economy and new technologies artillery or navy. &lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Confederate States of America - agricultural improvements and cheaper units.</string>
+      <string _locid="302643">American Civil War (1861-1865) Historical Map: Teams start on opposing sides of a large river delta. Both teams have the same goal: Capture and hold 4 of the 5 sockets on the map or destroy your opponents. Players start with either a Union or Confederate command post containing unique units and improvements. &lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; United States of America - strong naval and artillery improvements. &lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Confederate States of America - agricultural improvements and cheaper units.</string>
       <string _locid="302644">Every settlement is guarded by native guardians. You have to defend them to be able to build the Trading Post.</string>
       <string _locid="302645">Steam Tank</string>
       <string _locid="302646">ZP Steam Tank</string>
@@ -2732,7 +2732,7 @@
       <string _locid="302732">ZP NAT Elector Palace A</string>
       <string _locid="302733">ZP SPC Market Stall</string>
       <string _locid="302734">ZP Socket Elector Bohemia</string>
-      <string _locid="302735">Bohemian Election</string>
+      <string _locid="302735">Choose Ruling Dynasty</string>
       <string _locid="302736">Pick one of the Bohemian Royal Dynasties and vote for an Emperor  \n • Unlocks specific Royal House units and techs.</string>
       <string _locid="302737">ZP NAT Elector Palace B</string>
       <string _locid="302738">ZP NAT Elector Palace C</string>
@@ -2820,7 +2820,7 @@
       <string _locid="302821">ZP PROP Workers</string>
       <string _locid="302822">ZP SPC Copper Mine PROP</string>
       <string _locid="302823">Crownlands</string>
-      <string _locid="302824">After the death of Charles V. in 1558 the Holy Roman Empire was a federation of independent kingdoms and duchies. Prove, that the Empire can rejoin and rise again. Construct a monumental Metropolitan Cathedral using resources from the whole Empire!</string>
+      <string _locid="302824">After the death of Charles V. in 1558 the Holy Roman Empire became a federation of independent kingdoms and duchies. Prove, that the Empire can rejoin and rise again. Construct a monumental Metropolitan Cathedral using resources from the whole Empire!</string>
       <string _locid="302825">Complete the construction of the Metropolitan Cathedral</string>
       <string _locid="302826">Use all four Elector's castles to get necessary resources for a Cathedral construction. You don't have to hold all castles for the whole time.</string>
       <string _locid="302827">ZP SPC Socket Bohemia City</string>
@@ -2842,8 +2842,8 @@
       <string _locid="302843">Ulm (Rathaus)</string>
       <string _locid="302844">Mainz (Rathaus)</string>
       <string _locid="302845">Pilsen (Rathaus)</string>
-      <string _locid="302846">After the death of Charles V. in 1558 the Holy Roman Empire was a federation of independent kingdoms and duchies. Prove, that the Empire can rejoin and rise again. Construct a monumental Metropolitan Cathedral using resources from the whole Empire!\n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Complete the construction of the Metropolitan Cathedral and protect your Town center. Multiple Team gameplay or FFA is supported for this historical map. \n\nNative Settlements: Prince Electors, Hussites \n\nShadow aliances: Habsburg, Wettin, Hannover, Wittelsbach and Oldenburg</string>
-      <string _locid="302847">Use resources from the whole Empire to construct an amazing Metropolitan Cathedral. Make sure, you always have enough resources for the next phase of construction before you get to the next phase of your conquest.</string>
+      <string _locid="302846">After the death of Charles V. in 1558 the Holy Roman Empire became a federation of independent kingdoms and duchies. Use resources from the whole empire to construct a monumental Metropolitan Cathedral!\n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Complete the construction of the Metropolitan Cathedral and protect your Town center. Multiple Team gameplay or FFA is supported for this historical map. \n\nNative Settlements: Prince Electors, Hussites \n\nShadow aliances: Habsburg, Wettin, Hannover, Wittelsbach and Oldenburg</string>
+      <string _locid="302847">Use resources from the whole Empire to construct an amazing Metropolitan Cathedral. Make sure you always have enough resources for the next phase of construction before you get to the next phase of your conquest.</string>
       <string _locid="302848">Upgrades the Cathedral construction to the next level. \n • Increases maximum population capacity by 10. &lt;color=0.0, 1.0, 0.0&gt;\n • Once you start the research, it will continue even if you lose access to the specific Elector House.&lt;/color&gt;</string>
       <string _locid="302849">Imperial Command time remaining</string>
       <string _locid="302850">ZP SPC Rock Mine PROP</string>
@@ -2862,6 +2862,11 @@
       <string _locid="302863">Pueblo</string>
       <string _locid="302864">ZP Socket Pueblo</string>
       <string _locid="302865">In our village, we share the sun, the shade, and the silence. Come with respect, and you are welcome.</string>
+      <string _locid="302866">After the Second Defenestration of Prague in 1618, the country turned into chaos. There are many who claim the Czech crown, but only one of these can become the true King of Bohemia. &lt;color=1.0, 1.0, 0.0&gt;Game rules:&lt;/color&gt; This is a free-for-all match. Whoever proclaims himself a king and holds the Prince Elector Socket, wins.</string>
+      <string _locid="302867">Florence versus Rome, eternal rivals fighting on the opposite sides in the Italian Wars. In this map Pope Leo X attacks Florence across the Arno River.</string>
+      <string _locid="302868">In 1521 the Aztec Empire is broken. Cortés and his conquistadors are at the gates of Tenochtitlan. Defend the city or join the conquerrors. One player defends the city with the rest attacking. The waters surrounding the city lack water flags and only provide limited options for constructing ships.</string>
+      <string _locid="302869">Achieve a naval dominance over the Caribbean Sea. This historical map brings you to the true Golden Age of Piracy and unlocks the full Pirate potential.</string>
+
 
 
       <!-- ======================================== -->

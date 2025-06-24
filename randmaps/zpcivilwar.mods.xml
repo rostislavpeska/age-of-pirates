@@ -42,6 +42,9 @@
                   <flag mergemode="remove">TieToWaterSurface</flag>
                   <flag>DoNotShowOnMiniMap</flag>
             </unit>
+            <unit name="TradingPost">
+                  <placementfile>tradepost_city.xml</placementfile>
+            </unit>
             <unit name="zpSPCFixedGun">
 			<animfile>buildings\fixed_gun\fixed_gun_pirate.xml</animfile>
 		</unit>
