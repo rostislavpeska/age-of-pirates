@@ -29287,6 +29287,13 @@
     </effects>
   </tech>
 
+  <!--<tech name="zpTradeRouteUpgradeHansaShadow" type="Normal">
+    <dbid>41137</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>DEForceUniqueInstancePrereqUpdate</flag>
+  </tech>-->
+
 
 
 

@@ -369,6 +369,15 @@ void main(void)
     
     rmBuildArea(southContinentID);
 
+	//Bridge revealers
+
+	int revealerID=rmCreateObjectDef("bridge revealer");
+	rmAddObjectDefItem(revealerID, "zpCinematicRevealerToAll", 1, 0.0);
+	rmPlaceObjectDefAtLoc(revealerID, 0, 0.5-rmXTilesToFraction(45), 0.5, 1);
+	rmPlaceObjectDefAtLoc(revealerID, 0, 0.5+rmXTilesToFraction(47), 0.5, 1);
+	rmPlaceObjectDefAtLoc(revealerID, 0, 0.5-rmXTilesToFraction(4), 0.5-rmXTilesToFraction(45), 1);
+	rmPlaceObjectDefAtLoc(revealerID, 0, 0.5-rmXTilesToFraction(4), 0.5+rmXTilesToFraction(45), 1);
+
 	// ********************** Place natives and other objects **********************
 
 	// Place Jesuit natives
