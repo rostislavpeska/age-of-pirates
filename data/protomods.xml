@@ -49141,7 +49141,7 @@
     <shortrollovertextid>25647</shortrollovertextid>
     <initialhitpoints>200.0000</initialhitpoints>
     <maxhitpoints>200.0000</maxhitpoints>
-    <buildlimit>11</buildlimit>
+    <buildlimit>9</buildlimit>
     <los>12.0000</los>
     <rechargetime>15.0000</rechargetime>
     <unitaitype>HandCombative</unitaitype>
@@ -56658,7 +56658,7 @@
     <shortrollovertextid>25647</shortrollovertextid>
     <initialhitpoints>200.0000</initialhitpoints>
     <maxhitpoints>200.0000</maxhitpoints>
-    <buildlimit>11</buildlimit>
+    <buildlimit>9</buildlimit>
     <los>12.0000</los>
     <rechargetime>15.0000</rechargetime>
     <unitaitype>HandCombative</unitaitype>
