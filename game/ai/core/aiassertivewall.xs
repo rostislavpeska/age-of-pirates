@@ -5621,7 +5621,7 @@ minInterval 10
       return; // AssertiveWall: wait until the fort is building or built
    }
    
-   if (kbGetAge() == cAge1 || (kbGetAge() == cAge2 && agingUp() == false))
+   if (getAgingUpAge() <= cAge2)
    {
       return; // Go away until we're aging up to age 3
    }
