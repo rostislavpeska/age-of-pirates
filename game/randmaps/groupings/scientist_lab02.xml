@@ -80,6 +80,7 @@
 		<unit variation="73" posx="5.8534" posz="6.7751" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
 		<unit variation="122" posx="3.8214" posz="6.8558" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
 		<unit variation="243" posx="8.8368" posz="6.7705" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		
 		<unit variation="129" posx="0.5655" posz="9.9361" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSocketScientists</unit>
 	</units>
 	<tiles>

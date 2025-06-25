@@ -361,6 +361,10 @@ minInterval 1
       xsEnableRule("zpBourbonTechMonitor");
       xsEnableRule("nativeWagonMonitor");
    }
+   if (kbUnitCount(cMyID, cUnitTypezpSPCGermanCathedralCon0, cUnitStateAlive) > 0)
+   {
+      xsEnableRule("zpCathedralConstructionMonitor");
+   }
     
    xsDisableSelf();
 }
@@ -5537,6 +5541,82 @@ minInterval 60
    {
       aiPlanSetVariableInt(convictPlan, cTrainPlanNumberToMaintain, 0, buildLimit);
    }
+}
+
+//==============================================================================
+// Cathedral Construction Monitor
+//==============================================================================
+rule zpCathedralConstructionMonitor
+inactive
+mininterval 60
+{
+
+   if ( kbGetAge() <= cAge1 )
+   return; // Not until Fortress Age
+
+   bool canDisableSelf = researchSimpleTechByCondition(cTechzpSPCCathedralGlass1,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 7) && (kbGetAge() >= cAge1 ) && (kbTechGetStatus(cTechzpGlassWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralBricks1,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 7) && (kbGetAge() >= cAge1 ) && (kbTechGetStatus(cTechzpBrickWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralLimestone1,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 7) && (kbGetAge() >= cAge1 ) && (kbTechGetStatus(cTechzpStoneWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralCopper1,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 7) && (kbGetAge() >= cAge1 ) && (kbTechGetStatus(cTechzpCopperWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralGlass2,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 10) && (kbGetAge() >= cAge2 ) && (kbTechGetStatus(cTechzpGlassWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralBricks2,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 10) && (kbGetAge() >= cAge2 ) && (kbTechGetStatus(cTechzpBrickWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralLimestone2,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 10) && (kbGetAge() >= cAge2 ) && (kbTechGetStatus(cTechzpStoneWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralCopper2,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 10) && (kbGetAge() >= cAge2 ) && (kbTechGetStatus(cTechzpCopperWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralGlass3,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 12) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpGlassWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralBricks3,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 12) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpBrickWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralLimestone3,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 12) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpStoneWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralCopper3,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 12) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpCopperWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralGlass4,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 15) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpGlassWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralBricks4,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 15) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpBrickWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralLimestone4,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 15) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpStoneWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralCopper4,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 15) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpCopperWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
 }
 
 //==============================================================================

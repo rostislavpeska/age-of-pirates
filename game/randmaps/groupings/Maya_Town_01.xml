@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>16</width>
+	<height>19</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="13" posx="4.8365" posz="-14.6429" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="214" posx="-3.5717" posz="-11.0624" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
+		<unit variation="214" posx="3.2094" posz="-10.3831" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
+		<unit variation="3" posx="3.8722" posz="-12.1113" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsNative</unit>
+		<unit variation="5" posx="4.7517" posz="-12.0281" orientx="-0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="152" posx="1.8466" posz="-12.9074" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsJungle</unit>
+		<unit variation="25" posx="-1.5527" posz="-11.8738" orientx="0.0000" orienty="0.0000" orientz="1.0000">NativeHouseMaya</unit>
+		<unit variation="95" posx="5.6080" posz="-13.7468" orientx="0.7462" orienty="0.0000" orientz="0.6658">zpPCTreeAmazonProp</unit>
+		<unit variation="214" posx="8.9821" posz="-9.4082" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
+		<unit variation="102" posx="-6.1418" posz="-12.6510" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsJungle</unit>
+		<unit variation="13" posx="11.2079" posz="-11.9689" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="11" posx="9.6857" posz="-10.1360" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="13" posx="7.0316" posz="-10.6039" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="221" posx="6.9770" posz="-11.8180" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">SMIncanPickerSitting</unit>
+		<unit variation="141" posx="-11.1064" posz="-8.2414" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SocketMaya</unit>
+		<unit variation="214" posx="-3.9183" posz="-5.7759" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
+		<unit variation="5" posx="3.9413" posz="-8.0082" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="13" posx="13.3811" posz="-8.0189" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="11" posx="10.9623" posz="-9.9240" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="206" posx="-4.5797" posz="-9.6095" orientx="0.9181" orienty="0.0000" orientz="0.3963">zpPCTreeAmazonProp</unit>
+		<unit variation="118" posx="8.1292" posz="-8.1510" orientx="-0.0757" orienty="0.0000" orientz="-0.9971">zpPCTreeAmazonProp</unit>
+		<unit variation="146" posx="-2.3225" posz="-6.9717" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsJungle</unit>
+		<unit variation="146" posx="-6.9499" posz="-8.3724" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpPropsJungle</unit>
+		<unit variation="6" posx="-3.1974" posz="-6.6491" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCAztecProps</unit>
+		<unit variation="72" posx="-1.4248" posz="-7.5065" orientx="-0.7071" orienty="0.0000" orientz="0.7071">TanningRack</unit>
+		<unit variation="146" posx="0.2978" posz="-7.8046" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpPropsJungle</unit>
+		<unit variation="11" posx="11.1393" posz="-6.5941" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="7" posx="6.9630" posz="-7.7607" orientx="0.6609" orienty="0.0000" orientz="0.7505">zpPCTreeAmazonProp</unit>
+		<unit variation="214" posx="2.9879" posz="-2.3206" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
+		<unit variation="214" posx="3.9960" posz="-3.6035" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
+		<unit variation="214" posx="-10.9713" posz="-0.2254" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
+		<unit variation="214" posx="-6.3147" posz="-0.0272" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
+		<unit variation="214" posx="9.0081" posz="-0.1286" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
+		<unit variation="242" posx="-10.8318" posz="-3.4167" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsJungle</unit>
+		<unit variation="27" posx="-11.5655" posz="-3.3395" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsJungle</unit>
+		<unit variation="41" posx="-3.5155" posz="-1.6988" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpAztecAltarProp</unit>
+		<unit variation="13" posx="13.4972" posz="-2.1601" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="4" posx="5.6172" posz="-1.8742" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeHouseMaya</unit>
+		<unit variation="228" posx="-11.0983" posz="-2.4042" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsJungle</unit>
+		<unit variation="138" posx="-8.8781" posz="-2.5947" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsJungle</unit>
+		<unit variation="213" posx="-10.4411" posz="-2.3072" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsJungle</unit>
+		<unit variation="143" posx="-11.5588" posz="-2.6897" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">zpPropsJungle</unit>
+		<unit variation="11" posx="11.4206" posz="-0.3732" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="102" posx="-8.0794" posz="-2.4431" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsJungle</unit>
+		<unit variation="214" posx="2.4858" posz="3.7909" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
+		<unit variation="214" posx="-4.1757" posz="4.1123" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
+		<unit variation="0" posx="-9.0215" posz="0.3092" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="228" posx="-6.7211" posz="0.0403" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsJungle</unit>
+		<unit variation="182" posx="-12.1399" posz="1.5742" orientx="0.9999" orienty="0.0000" orientz="0.0135">SMIncanMixerPoker</unit>
+		<unit variation="214" posx="-10.8786" posz="5.4627" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
+		<unit variation="146" posx="-2.5140" posz="2.7375" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpPropsJungle</unit>
+		<unit variation="4" posx="0.1688" posz="3.7842" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="6" posx="-3.4100" posz="3.3771" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCAztecProps</unit>
+		<unit variation="13" posx="13.6233" posz="3.7593" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="11" posx="10.6156" posz="2.3336" orientx="-0.3827" orienty="0.0000" orientz="0.9239">PropsNative</unit>
+		<unit variation="226" posx="2.4606" posz="3.6876" orientx="-0.2637" orienty="-0.0000" orientz="0.9646">zpPCTreeAmazonProp</unit>
+		<unit variation="54" posx="-7.9760" posz="3.5136" orientx="0.4089" orienty="-0.0000" orientz="-0.9126">SMIncanStoryTelling</unit>
+		<unit variation="14" posx="-13.2835" posz="4.9696" orientx="-0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="10" posx="-4.9929" posz="5.4572" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="8" posx="-2.3906" posz="5.0647" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="9" posx="-1.0374" posz="4.8493" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="2" posx="1.5470" posz="5.7201" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="5" posx="10.6231" posz="5.9639" orientx="-0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="0" posx="11.2093" posz="6.2677" orientx="-0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="8" posx="-0.9308" posz="4.1450" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="5" posx="8.3479" posz="5.3632" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="3" posx="7.6136" posz="4.6211" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="201" posx="0.4383" posz="4.8565" orientx="-0.9458" orienty="0.0000" orientz="0.3246">zpPCTreeAmazonProp</unit>
+		<unit variation="15" posx="0.1849" posz="5.4653" orientx="-0.9440" orienty="-0.0000" orientz="-0.3300">SMIncanMixerPokerWoman</unit>
+		<unit variation="214" posx="-11.6144" posz="8.9593" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
+		<unit variation="214" posx="0.2452" posz="9.5551" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
+		<unit variation="214" posx="6.5645" posz="10.0949" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
+		<unit variation="2" posx="1.0414" posz="6.8785" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="11" posx="11.2059" posz="6.5742" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="243" posx="6.0000" posz="11.0000" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCAztecGranaryProp</unit>
+		<unit variation="122" posx="-14.7206" posz="6.0390" orientx="0.0171" orienty="0.0000" orientz="-0.9999">SMIncanFence</unit>
+		<unit variation="23" posx="-4.5496" posz="8.6433" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeHouseMaya</unit>
+		<unit variation="214" posx="-4.3582" posz="10.4381" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">NativeTownObstruction</unit>
+		<unit variation="8" posx="-7.3844" posz="8.3350" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">zpPropsJungle</unit>
+		<unit variation="13" posx="13.6731" posz="9.7047" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="94" posx="-11.6325" posz="8.9008" orientx="-0.0087" orienty="0.0000" orientz="-1.0000">SMIncanCookpot</unit>
+		<unit variation="13" posx="-14.0398" posz="11.8792" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="10" posx="11.0890" posz="11.5975" orientx="-0.9239" orienty="0.0000" orientz="0.3827">PropsNative</unit>
+		<unit variation="99" posx="-8.7328" posz="11.7458" orientx="-0.9645" orienty="0.0000" orientz="0.2642">zpPCTreeAmazonProp</unit>
+		<unit variation="208" posx="-3.4387" posz="11.9179" orientx="-0.8346" orienty="0.0000" orientz="-0.5509">zpPCTreeAmazonProp</unit>
+		<unit variation="13" posx="-10.4661" posz="13.7027" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="11" posx="-2.0961" posz="13.6851" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsNative</unit>
+		<unit variation="12" posx="13.2291" posz="13.9373" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+		<unit variation="1" posx="0.5143" posz="14.9249" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsNative</unit>
+		<unit variation="122" posx="-6.5880" posz="15.1052" orientx="-0.6949" orienty="0.0000" orientz="-0.7191">SMIncanFence</unit>
+		<unit variation="13" posx="-1.6891" posz="16.3219" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsNative</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">
+			<block startx="-6" startz="-4" endx="-6" endz="-4"></block>
+			<block startx="-5" startz="-6" endx="-5" endz="-4"></block>
+			<block startx="-4" startz="-6" endx="-4" endz="-4"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="-4"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="-4"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="-4"></block>
+			<block startx="-4" startz="5" endx="-4" endz="5"></block>
+			<block startx="-3" startz="5" endx="-3" endz="5"></block>
+			<block startx="-2" startz="5" endx="-2" endz="5"></block>
+			<block startx="-1" startz="5" endx="-1" endz="5"></block>
+			<block startx="-7" startz="-3" endx="-7" endz="-1"></block>
+			<block startx="-7" startz="1" endx="-7" endz="2"></block>
+			<block startx="-6" startz="-3" endx="-6" endz="3"></block>
+			<block startx="-5" startz="-3" endx="-5" endz="4"></block>
+			<block startx="-4" startz="-3" endx="-4" endz="4"></block>
+			<block startx="-3" startz="-3" endx="-3" endz="4"></block>
+			<block startx="-2" startz="-3" endx="-2" endz="4"></block>
+			<block startx="-1" startz="-3" endx="-1" endz="4"></block>
+			<block startx="0" startz="-3" endx="0" endz="4"></block>
+			<block startx="1" startz="-3" endx="1" endz="4"></block>
+			<block startx="2" startz="-3" endx="2" endz="4"></block>
+			<block startx="3" startz="-3" endx="3" endz="-2"></block>
+			<block startx="3" startz="0" endx="3" endz="4"></block>
+			<block startx="4" startz="1" endx="4" endz="4"></block>
+			<block startx="0" startz="5" endx="0" endz="6"></block>
+			<block startx="1" startz="5" endx="1" endz="6"></block>
+			<block startx="2" startz="5" endx="2" endz="5"></block>
+			<block startx="3" startz="5" endx="3" endz="5"></block>
+			<block startx="0" startz="-6" endx="0" endz="-4"></block>
+			<block startx="1" startz="-7" endx="1" endz="-4"></block>
+			<block startx="2" startz="-7" endx="2" endz="-4"></block>
+			<block startx="3" startz="-6" endx="3" endz="-4"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="city\ground1_cob">
+			<block startx="-5" startz="5" endx="-5" endz="5"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

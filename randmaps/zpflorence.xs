@@ -1752,7 +1752,7 @@ void main(void)
 	// ____________________ MAP OBJECTIVES ____________________
     // _________________ Map Objectives ______________________________
 	rmObjectiveScreenSetTitle(302391);
-	rmObjectiveScreenSetGoal(302392);
+	rmObjectiveScreenSetGoal(302867);
 	rmObjectiveAdd(302402, 302406, true, true, true); // DEFEND OBJECTIVE ROME
 	rmObjectiveSetTeam(1, 1);
 	rmObjectiveAdd(302404, 302406, true, true, true); // DEFEND OBJECTIVE FLORENTINE

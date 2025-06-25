@@ -1322,7 +1322,7 @@ void main(void)
 
 	// _________________ Map Objectives ______________________________
 	rmObjectiveScreenSetTitle(302437);
-	rmObjectiveScreenSetGoal(302438);
+	rmObjectiveScreenSetGoal(302868);
 	rmObjectiveAdd(302452, 302453, true, true, true); // General objective
 	rmObjectiveSetTeam(1, 1);
 	rmObjectiveAdd(302451, 302453, true, true, true); // Royal Court REV

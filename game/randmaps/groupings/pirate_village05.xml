@@ -10,7 +10,6 @@
 		<unit variation="228" posx="-5.9322" posz="-8.5751" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHousePirate</unit>
 		<unit variation="219" posx="-0.2127" posz="-6.6815" orientx="0.9239" orienty="0.0000" orientz="0.3827">NativeTownObstruction</unit>
 		<unit variation="255" posx="-0.3825" posz="-10.6472" orientx="0.9239" orienty="-0.0051" orientz="0.3827">SPCCasualties</unit>
-		<unit variation="106" posx="5.6596" posz="-6.3438" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSocketPirates</unit>
 		<unit variation="219" posx="-6.8183" posz="-3.6499" orientx="1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
 		<unit variation="39" posx="-9.7452" posz="-4.4714" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
 		<unit variation="219" posx="-0.0008" posz="-1.5228" orientx="0.9239" orienty="0.0000" orientz="0.3827">NativeTownObstruction</unit>
@@ -36,6 +35,8 @@
 		<unit variation="121" posx="-2.4942" posz="9.1583" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">PropsColony</unit>
 		<unit variation="252" posx="-7.6971" posz="10.0707" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">NativePirates</unit>
 		<unit variation="33" posx="-6.3853" posz="12.0423" orientx="0.9239" orienty="0.0000" orientz="-0.3827">NativePirates</unit>
+
+		<unit variation="106" posx="5.6596" posz="-6.3438" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSocketPirates</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_cob">

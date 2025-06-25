@@ -369,6 +369,15 @@ void main(void)
     
     rmBuildArea(southContinentID);
 
+	//Bridge revealers
+
+	int revealerID=rmCreateObjectDef("bridge revealer");
+	rmAddObjectDefItem(revealerID, "zpCinematicRevealerToAll", 1, 0.0);
+	rmPlaceObjectDefAtLoc(revealerID, 0, 0.5-rmXTilesToFraction(45), 0.5, 1);
+	rmPlaceObjectDefAtLoc(revealerID, 0, 0.5+rmXTilesToFraction(47), 0.5, 1);
+	rmPlaceObjectDefAtLoc(revealerID, 0, 0.5-rmXTilesToFraction(4), 0.5-rmXTilesToFraction(45), 1);
+	rmPlaceObjectDefAtLoc(revealerID, 0, 0.5-rmXTilesToFraction(4), 0.5+rmXTilesToFraction(45), 1);
+
 	// ********************** Place natives and other objects **********************
 
 	// Place Jesuit natives
@@ -1139,13 +1148,13 @@ void main(void)
 	rmEnableMerc("deMercPandour", -1);
 	rmEnableMerc("deMercGrenadier", -1);
     rmEnableMerc("zpMercBohemianKnight", -1);
-    rmEnableMerc("MercGreatCannon", -1);
+    rmEnableMerc("zpMercHussiteWagon", -1);
     
     rmForbidTradeMonopoly(true);
 
 	// _________________ Map Objectives ______________________________
 	rmObjectiveScreenSetTitle(302344);
-	rmObjectiveScreenSetGoal(302345);
+	rmObjectiveScreenSetGoal(302866);
 	rmObjectiveAdd(302357, 302358, true, true, true); // General objective
 
 	// ************************* TRIGGERS ******************************
@@ -1392,7 +1401,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name","VictoryCounter"+k);
 		rmSetTriggerEffectParamInt("Start", victoryCountDown);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg",""+rmGetPlayerName(k)+" wins in"); // Get exact player name
+		rmSetTriggerEffectParam("Msg", "\"+ kbGetPlayerName(" + k + ") + \" wins in"); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("PlayerVictory"+k));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF"+k));
@@ -2870,6 +2879,49 @@ void main(void)
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
+	}
+
+	// AI Hussite Leaders
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+
+	rmCreateTrigger("ZP Pick Hussite Leader"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerCondition("Tech Status Equals");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParamInt("TechID",586);
+	rmSetTriggerConditionParamInt("Status",2);
+
+	int hussiteLeader=-1;
+	hussiteLeader = rmRandInt(1,3);
+
+	if (hussiteLeader==1)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateHussitesZizka"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (hussiteLeader==2)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateHussitesKing"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (hussiteLeader==3)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulateHussitesReformer"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 	}
 
 

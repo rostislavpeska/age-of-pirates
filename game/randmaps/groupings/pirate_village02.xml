@@ -7,7 +7,6 @@
 	<selectassingleunit>1</selectassingleunit>
 	<workonassingleunit>1</workonassingleunit>
 	<units>
-		<unit variation="106" posx="7.0128" posz="-9.2190" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSocketPirates</unit>
 		<unit variation="115" posx="1.9655" posz="-10.9611" orientx="0.0000" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
 		<unit variation="129" posx="-9.0926" posz="-11.1698" orientx="0.9239" orienty="0.0000" orientz="0.3827">NativePirates</unit>
 		<unit variation="156" posx="-0.1595" posz="-8.8036" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHousePirate</unit>
@@ -37,6 +36,8 @@
 		<unit variation="182" posx="-5.2516" posz="4.3989" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">NativePirates</unit>
 		<unit variation="227" posx="-2.9725" posz="8.3161" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHousePirate</unit>
 		<unit variation="92" posx="-0.5974" posz="7.8378" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">WallWoodNative</unit>
+
+		<unit variation="106" posx="7.0128" posz="-9.2190" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSocketPirates</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_cob">

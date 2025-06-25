@@ -238,6 +238,9 @@
 			<cost resourcetype="Wood">200.0000</cost>
 			<trainpoints>10.0000</trainpoints>
 		</unit>
+		<unit name="TradingPost">
+            <placementfile>tradepost_city.xml</placementfile>
+        </unit>
 		<unit name="NativeTownObstruction">
 			<flag>StartOnNoUpdate</flag>
 		</unit>

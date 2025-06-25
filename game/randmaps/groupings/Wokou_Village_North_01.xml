@@ -12,7 +12,6 @@
 		<unit variation="3" posx="10.3231" posz="-8.3626" orientx="-1.0000" orienty="0.0000" orientz="0.0014">ypPropsJapaneseGarden</unit>
 		<unit variation="61" posx="-7.4294" posz="-7.4361" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseWokou</unit>
 		<unit variation="96" posx="-5.9617" posz="-5.3262" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
-		<unit variation="117" posx="0.2973" posz="-6.5457" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSocketWokou</unit>
 		<unit variation="118" posx="8.5028" posz="-8.1093" orientx="-0.9244" orienty="0.0000" orientz="-0.3813">dePropsResourceCratesGold</unit>
 		<unit variation="244" posx="8.9195" posz="-5.4975" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHouseWokou</unit>
 		<unit variation="96" posx="6.8101" posz="-4.6955" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
@@ -39,6 +38,8 @@
 		<unit variation="181" posx="1.2474" posz="5.7924" orientx="-0.1585" orienty="0.0000" orientz="-0.9874">ypSMZenAccessory</unit>
 		<unit variation="42" posx="-7.8667" posz="9.1650" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseWokou</unit>
 		<unit variation="41" posx="3.9950" posz="8.3720" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseWokou</unit>
+		
+		<unit variation="117" posx="0.2973" posz="-6.5457" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSocketWokou</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">

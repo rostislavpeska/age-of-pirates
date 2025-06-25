@@ -322,5 +322,8 @@
 		<unit name="deSPCCityTower">
 			<unittype mergemode="remove">AbstractCallMinutemen</unittype>
 		</unit>	
+		<unit name="zpCinematicRevealerToAll">
+			<los>20.0000</los>
+		</unit>
 	</protomods>
 </mods>

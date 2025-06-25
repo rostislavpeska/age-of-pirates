@@ -149,7 +149,7 @@
 		<unit variation="72" posx="11.8893" posz="28.5053" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropWindMill</unit>
 		<unit variation="0" posx="12.0558" posz="28.7578" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="7" posx="-10.4426" posz="28.0831" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpPropWaterTowerBarrel</unit>
-		<unit variation="229" posx="29.7976" posz="21.2853" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCFixedGunSocket</unit>
+		<unit variation="124" posx="30.7202" posz="21.7115" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCFixedGunSocket</unit>
 	</units>
 	<tiles>
 		<tilegroup type="Shoreline" subtype="new_england\shoreline2_ne">

@@ -1,4 +1,4 @@
-// WILD WEST
+// EYRE BASIN
 // January 2024
 
 int TeamNum = cNumberTeams;
@@ -1442,28 +1442,27 @@ int armoredTrainActive = 90;
 int armoredTrainCooldown = 300;
 int armoredTrainCooldown2 = 240;
 
+int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0);
+int flag2 = rmGetUnitPlaced(piratewaterflagID2, 0);
+
 // Ship Training
-string unitIDsc00 = "455";
-string unitIDsc01 = "545";
+string unitIDsc00 = ""+(flag1-1);
+string unitIDsc01 = ""+(flag2-1);
 
 if (cNumberNonGaiaPlayers <=2){
 	unitID1 = "8";
 	unitID2 = "58";
-	unitIDsc00 = "132";
 	}
 if (cNumberNonGaiaPlayers ==3){
 	unitID1 = "8";
 	unitID2 = "58";
 	unitID3 = "108";
-	unitIDsc00 = "182";
 	}
 if (cNumberNonGaiaPlayers ==4){
 	unitID1 = "8";
 	unitID2 = "58";
 	unitID3 = "108";
 	unitID4 = "158";
-	unitIDsc00 = "232";
-	unitIDsc01 = "322";
 	}
 if (cNumberNonGaiaPlayers ==5){
 	unitID1 = "8";
@@ -1471,8 +1470,6 @@ if (cNumberNonGaiaPlayers ==5){
 	unitID3 = "108";
 	unitID4 = "158";
 	unitID5 = "208";
-	unitIDsc00 = "282";
-	unitIDsc01 = "372";
 	}
 if (cNumberNonGaiaPlayers ==6){
 	unitID1 = "8";
@@ -1481,8 +1478,6 @@ if (cNumberNonGaiaPlayers ==6){
 	unitID4 = "158";
 	unitID5 = "208";
 	unitID6 = "258";
-	unitIDsc00 = "332";
-	unitIDsc01 = "422";
 	}
 if (cNumberNonGaiaPlayers ==7){
 	unitID1 = "8";
@@ -1492,8 +1487,6 @@ if (cNumberNonGaiaPlayers ==7){
 	unitID5 = "208";
 	unitID6 = "258";
 	unitID7 = "308";
-	unitIDsc00 = "382";
-	unitIDsc01 = "472";
 	}
 if (cNumberNonGaiaPlayers ==8){
 	unitID1 = "8";
@@ -1504,8 +1497,6 @@ if (cNumberNonGaiaPlayers ==8){
 	unitID6 = "258";
 	unitID7 = "308";
 	unitID8 = "358";
-	unitIDsc00 = "432";
-	unitIDsc01 = "522";
 	}
 
 // Starting techs
@@ -3932,7 +3923,6 @@ for (k=1; <= cNumberNonGaiaPlayers) {
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 }
-
 // Testing
 
 /*for (k=1; <= cNumberNonGaiaPlayers) {

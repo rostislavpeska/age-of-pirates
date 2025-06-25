@@ -63,7 +63,7 @@ void main(void)
    
    	// LIGHT SET
 
-	rmSetLightingSet("honshu_Skirmish");
+	rmSetLightingSet("newengland_Skirmish");
 
 
 	// Picks default terrain and water
@@ -372,6 +372,15 @@ void main(void)
 		rmAddTradeRouteWaypoint(tradeRouteID4, 0.55, 0.4);
 		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.45);
 		rmAddTradeRouteWaypoint(tradeRouteID4, 0.45, 0.4);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.3);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
+	}
+	else if (PlayerNum ==5 || PlayerNum ==6) {
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.3);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.54, 0.39);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.45);
+		rmAddTradeRouteWaypoint(tradeRouteID4, 0.45, 0.39);
 		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.3);
 		rmAddTradeRouteWaypoint(tradeRouteID4, 0.5, 0.0);
 	}
@@ -1362,8 +1371,8 @@ void main(void)
 	int armoredTrainActive = 90;
 	int armoredTrainCooldown = 300;
 	int armoredTrainCooldown2 = 240;
-	int socketMinimapFlareDuration = 300;
-	int victoryCountDown = 120;
+	int socketMinimapFlareDuration = 10;
+	int victoryCountDown = 480;
 
 	// Guardians
 	string guardianUnit = "zpJamesGang";
@@ -1721,7 +1730,7 @@ void main(void)
 		rmSetTriggerConditionParamInt("TeamID",i);
 		rmSetTriggerConditionParam("Protounit","zpSPCRevealerAztec");
 		rmSetTriggerConditionParam("Op",">=");
-		rmSetTriggerConditionParamInt("Count",5);
+		rmSetTriggerConditionParamInt("Count",4);
 		rmAddTriggerEffect("Counter:Add Timer");
 		rmSetTriggerEffectParam("Name","VictoryCounter"+i);
 		rmSetTriggerEffectParamInt("Start", victoryCountDown);
@@ -1744,7 +1753,7 @@ void main(void)
 		rmSetTriggerConditionParamInt("TeamID",i);
 		rmSetTriggerConditionParam("Protounit","zpSPCRevealerAztec");
 		rmSetTriggerConditionParam("Op","<");
-		rmSetTriggerConditionParamInt("Count",5);
+		rmSetTriggerConditionParamInt("Count",4);
 		rmAddTriggerEffect("Counter Stop");
 		rmSetTriggerEffectParam("Name","VictoryCounter"+i);
 		rmAddTriggerEffect("Fire Event");
@@ -2266,7 +2275,7 @@ void main(void)
 	rmSetTriggerEffectParamInt("Status",2);
 
 	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+	rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name 
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -2318,7 +2327,7 @@ void main(void)
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 	rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+	rmSetTriggerEffectParam("Msg","Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2376,7 +2385,7 @@ void main(void)
 	rmSetTriggerEffectParamInt("Status",2);
 
 	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+	rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name 
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -2421,7 +2430,7 @@ void main(void)
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 	rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+	rmSetTriggerEffectParam("Msg","Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2480,7 +2489,7 @@ void main(void)
 	rmSetTriggerEffectParamInt("Status",2);
 
 	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+	rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name 
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -2526,7 +2535,7 @@ void main(void)
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 	rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+	rmSetTriggerEffectParam("Msg","Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -3789,9 +3798,8 @@ void main(void)
 		}	
 	}
 
-
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
-	rmSetStatusText("",1.00);
+	rmSetStatusText("",0.99);
 
 	// Testing
 

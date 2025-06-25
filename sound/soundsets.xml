@@ -7453,7 +7453,6 @@
     <sound filename="DE\italiantankmove3.wav" volume="1.0000">
     </sound>
   </soundset>
-
   <soundset name="zpCzechLegionarySelect" volume="0.8000" maxnum="4" distance="1.0000">
     <sound filename="Bohemian\Czech_Legionary_Select_01.wav" volume="1.0000">
     </sound>
@@ -7496,6 +7495,12 @@
     <sound filename="Bohemian\Slovak_Legionary_Attack_01.wav" volume="1.0000">
     </sound>
     <sound filename="Bohemian\Slovak_Legionary_Attack_02.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Goose_Ambient" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="ambient\Birds\Goose1.wav" volume="1.0000">
+    </sound>
+    <sound filename="ambient\Birds\Goose2.wav" volume="1.0000">
     </sound>
   </soundset>
 

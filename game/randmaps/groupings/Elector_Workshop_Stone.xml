@@ -28,39 +28,39 @@
 		<unit variation="0" posx="-4.4303" posz="-21.8438" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="231" posx="-6.4128" posz="-19.8867" orientx="-0.7071" orienty="0.0000" orientz="0.7071">UnderbrushNewEngland</unit>
 		<unit variation="247" posx="-9.0000" posz="-20.0000" orientx="-0.7394" orienty="0.0000" orientz="-0.6733">TreeNewEngland</unit>
-		<unit variation="222" posx="0.9532" posz="-19.9644" orientx="0.5559" orienty="0.0000" orientz="0.8312">deSPCRockMineProp</unit>
+		<unit variation="222" posx="0.9532" posz="-19.9644" orientx="0.5559" orienty="0.0000" orientz="0.8312">zpSPCRockMineProp</unit>
 		<unit variation="0" posx="11.7013" posz="-16.3251" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">zpHarbourPathBlock3</unit>
 		<unit variation="161" posx="10.2577" posz="-19.8250" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpPropWorkers</unit>
 		<unit variation="0" posx="14.4969" posz="-18.4701" orientx="0.3827" orienty="0.0000" orientz="-0.9239">SPCRailwayProps</unit>
 		<unit variation="3" posx="22.6914" posz="-18.8413" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="73" posx="33.5713" posz="-17.0681" orientx="-0.9239" orienty="0.0000" orientz="0.3827">UnderbrushNewEngland</unit>
 		<unit variation="134" posx="-7.1119" posz="-17.5472" orientx="0.3827" orienty="0.0000" orientz="-0.9239">SPCMineProps</unit>
-		<unit variation="112" posx="8.0910" posz="-17.2238" orientx="-0.7995" orienty="0.0000" orientz="-0.6007">deSPCRockMineProp</unit>
-		<unit variation="222" posx="5.8831" posz="-18.8719" orientx="0.8313" orienty="0.0000" orientz="-0.5559">deSPCRockMineProp</unit>
-		<unit variation="222" posx="2.3785" posz="-17.9910" orientx="0.5559" orienty="0.0000" orientz="0.8312">deSPCRockMineProp</unit>
+		<unit variation="112" posx="8.0910" posz="-17.2238" orientx="-0.7995" orienty="0.0000" orientz="-0.6007">zpSPCRockMineProp</unit>
+		<unit variation="222" posx="5.8831" posz="-18.8719" orientx="0.8313" orienty="0.0000" orientz="-0.5559">zpSPCRockMineProp</unit>
+		<unit variation="222" posx="2.3785" posz="-17.9910" orientx="0.5559" orienty="0.0000" orientz="0.8312">zpSPCRockMineProp</unit>
 		<unit variation="0" posx="11.2826" posz="-15.5080" orientx="-1.0000" orienty="-0.0000" orientz="-0.0001">zpHarbourPathBlock3</unit>
-		<unit variation="222" posx="-2.3867" posz="-16.8453" orientx="0.5559" orienty="0.0000" orientz="0.8312">deSPCRockMineProp</unit>
-		<unit variation="222" posx="-3.0112" posz="-15.2661" orientx="0.5559" orienty="0.0000" orientz="0.8312">deSPCRockMineProp</unit>
-		<unit variation="60" posx="10.7145" posz="-16.8615" orientx="0.5989" orienty="0.0000" orientz="0.8008">deSPCRockMineProp</unit>
+		<unit variation="222" posx="-2.3867" posz="-16.8453" orientx="0.5559" orienty="0.0000" orientz="0.8312">zpSPCRockMineProp</unit>
+		<unit variation="222" posx="-3.0112" posz="-15.2661" orientx="0.5559" orienty="0.0000" orientz="0.8312">zpSPCRockMineProp</unit>
+		<unit variation="60" posx="10.7145" posz="-16.8615" orientx="0.5989" orienty="0.0000" orientz="0.8008">zpSPCRockMineProp</unit>
 		<unit variation="0" posx="11.6926" posz="-13.3636" orientx="-1.0000" orienty="-0.0000" orientz="-0.0001">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="-3.0724" posz="-12.3994" orientx="1.0000" orienty="-0.0000" orientz="0.0000">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="9.3533" posz="-12.3229" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">zpHarbourPathBlock3</unit>
-		<unit variation="222" posx="0.1661" posz="-13.5074" orientx="0.5559" orienty="0.0000" orientz="0.8312">deSPCRockMineProp</unit>
-		<unit variation="222" posx="5.0128" posz="-14.2793" orientx="0.8313" orienty="0.0000" orientz="-0.5559">deSPCRockMineProp</unit>
-		<unit variation="182" posx="12.8424" posz="-14.0021" orientx="-0.9838" orienty="0.0000" orientz="-0.1791">deSPCRockMineProp</unit>
+		<unit variation="222" posx="0.1661" posz="-13.5074" orientx="0.5559" orienty="0.0000" orientz="0.8312">zpSPCRockMineProp</unit>
+		<unit variation="222" posx="5.0128" posz="-14.2793" orientx="0.8313" orienty="0.0000" orientz="-0.5559">zpSPCRockMineProp</unit>
+		<unit variation="182" posx="12.8424" posz="-14.0021" orientx="-0.9838" orienty="0.0000" orientz="-0.1791">zpSPCRockMineProp</unit>
 		<unit variation="200" posx="19.2501" posz="-12.2212" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCLimestoneWorks</unit>
 		<unit variation="220" posx="5.6332" posz="-13.4803" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCWorkshopProps</unit>
-		<unit variation="222" posx="5.4024" posz="-11.1631" orientx="0.5559" orienty="0.0000" orientz="0.8312">deSPCRockMineProp</unit>
-		<unit variation="91" posx="7.2976" posz="-11.1346" orientx="0.5714" orienty="0.0000" orientz="0.8207">deSPCRockMineProp</unit>
-		<unit variation="44" posx="9.5766" posz="-11.3614" orientx="-0.7531" orienty="0.0000" orientz="-0.6579">deSPCRockMineProp</unit>
+		<unit variation="222" posx="5.4024" posz="-11.1631" orientx="0.5559" orienty="0.0000" orientz="0.8312">zpSPCRockMineProp</unit>
+		<unit variation="91" posx="7.2976" posz="-11.1346" orientx="0.5714" orienty="0.0000" orientz="0.8207">zpSPCRockMineProp</unit>
+		<unit variation="44" posx="9.5766" posz="-11.3614" orientx="-0.7531" orienty="0.0000" orientz="-0.6579">zpSPCRockMineProp</unit>
 		<unit variation="11" posx="-5.7658" posz="-10.3210" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">SPCRailwayProps</unit>
 		<unit variation="28" posx="-4.5725" posz="-11.1774" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpPropWorkers</unit>
-		<unit variation="222" posx="-0.6595" posz="-10.9118" orientx="0.5559" orienty="0.0000" orientz="0.8312">deSPCRockMineProp</unit>
-		<unit variation="72" posx="12.1902" posz="-9.5549" orientx="0.0283" orienty="0.0000" orientz="-0.9996">deSPCRockMineProp</unit>
-		<unit variation="222" posx="9.5311" posz="-9.2938" orientx="0.5559" orienty="0.0000" orientz="0.8312">deSPCRockMineProp</unit>
+		<unit variation="222" posx="-0.6595" posz="-10.9118" orientx="0.5559" orienty="0.0000" orientz="0.8312">zpSPCRockMineProp</unit>
+		<unit variation="72" posx="12.1902" posz="-9.5549" orientx="0.0283" orienty="0.0000" orientz="-0.9996">zpSPCRockMineProp</unit>
+		<unit variation="222" posx="9.5311" posz="-9.2938" orientx="0.5559" orienty="0.0000" orientz="0.8312">zpSPCRockMineProp</unit>
 		<unit variation="9" posx="11.9470" posz="-7.4599" orientx="0.9239" orienty="0.0000" orientz="0.3827">SPCRailwayProps</unit>
 		<unit variation="2" posx="26.7498" posz="-9.8508" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="222" posx="-0.2085" posz="-8.8960" orientx="0.5559" orienty="0.0000" orientz="0.8312">deSPCRockMineProp</unit>
+		<unit variation="222" posx="-0.2085" posz="-8.8960" orientx="0.5559" orienty="0.0000" orientz="0.8312">zpSPCRockMineProp</unit>
 		<unit variation="0" posx="0.2698" posz="-8.6902" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="5.5928" posz="-8.6368" orientx="0.0001" orienty="-0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
 		<unit variation="124" posx="18.2225" posz="-9.0755" orientx="1.0000" orienty="0.0000" orientz="-0.0000">SPCMineProps</unit>

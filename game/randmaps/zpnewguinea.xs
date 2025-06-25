@@ -993,6 +993,12 @@ rmSetStatusText("",0.9);
 
 int tch0=1671; // tech operator
 
+int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0);
+int flag2 = rmGetUnitPlaced(piratewaterflagID2, 0);
+
+string pirate1ID = ""+(flag1-1);
+string pirate2ID = ""+(flag2-1);
+
 // Starting techs
 
 rmCreateTrigger("Starting Techs");
@@ -1261,7 +1267,7 @@ rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
 
    rmSwitchToTrigger(rmTriggerID("TrainPrivateer2ON_Plr"+k));
    rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject","56");
+   rmSetTriggerConditionParam("DstObject",pirate2ID);
    rmSetTriggerConditionParamInt("Player",k);
    rmSetTriggerConditionParam("UnitType","zpWokouJunkProxy");
    rmSetTriggerConditionParamInt("Dist",35);
@@ -1309,7 +1315,7 @@ rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
 
 rmSwitchToTrigger(rmTriggerID("TrainPrivateer1ON_Plr"+k));
 rmAddTriggerCondition("Units in Area");
-rmSetTriggerConditionParam("DstObject","3");
+rmSetTriggerConditionParam("DstObject",pirate1ID);
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParam("UnitType","zpWokouJunkProxy");
 rmSetTriggerConditionParamInt("Dist",35);
@@ -1369,7 +1375,7 @@ rmCreateTrigger("trainFuchuan1TIME Plr"+k);
 
    rmSwitchToTrigger(rmTriggerID("trainFuchuan2ON_Plr"+k));
    rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject","56");
+   rmSetTriggerConditionParam("DstObject",pirate2ID);
    rmSetTriggerConditionParamInt("Player",k);
    rmSetTriggerConditionParam("UnitType","zpSPCPrauProxy");
    rmSetTriggerConditionParamInt("Dist",35);
@@ -1418,7 +1424,7 @@ rmCreateTrigger("trainFuchuan1TIME Plr"+k);
 
 rmSwitchToTrigger(rmTriggerID("trainFuchuan1ON_Plr"+k));
 rmAddTriggerCondition("Units in Area");
-rmSetTriggerConditionParam("DstObject","3");
+rmSetTriggerConditionParam("DstObject",pirate1ID);
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParam("UnitType","zpSPCPrauProxy");
 rmSetTriggerConditionParamInt("Dist",35);
@@ -1472,14 +1478,14 @@ rmCreateTrigger("Pirates1off Player"+k);
 
 rmSwitchToTrigger(rmTriggerID("Pirates1on_Player"+k));
 rmAddTriggerCondition("Units in Area");
-rmSetTriggerConditionParam("DstObject","3");
+rmSetTriggerConditionParam("DstObject",pirate1ID);
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParamInt("Dist",35);
 rmSetTriggerConditionParam("UnitType","TradingPost");
 rmSetTriggerConditionParam("Op",">=");
 rmSetTriggerConditionParamFloat("Count",1);
 rmAddTriggerEffect("Convert Units in Area");
-rmSetTriggerEffectParam("SrcObject","3");
+rmSetTriggerEffectParam("SrcObject",pirate1ID);
 rmSetTriggerEffectParamInt("SrcPlayer",0);
 rmSetTriggerEffectParamInt("TrgPlayer",k);
 rmSetTriggerEffectParam("UnitType","zpWokouWaterSpawnFlag1");
@@ -1497,14 +1503,14 @@ rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("Pirates1off_Player"+k));
 rmAddTriggerCondition("Units in Area");
-rmSetTriggerConditionParam("DstObject","3");
+rmSetTriggerConditionParam("DstObject",pirate1ID);
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParamInt("Dist",35);
 rmSetTriggerConditionParam("UnitType","TradingPost");
 rmSetTriggerConditionParam("Op","==");
 rmSetTriggerConditionParamFloat("Count",0);
 rmAddTriggerEffect("Convert Units in Area");
-rmSetTriggerEffectParam("SrcObject","3");
+rmSetTriggerEffectParam("SrcObject",pirate1ID);
 rmSetTriggerEffectParamInt("SrcPlayer",k);
 rmSetTriggerEffectParamInt("TrgPlayer",0);
 rmSetTriggerEffectParam("UnitType","zpWokouWaterSpawnFlag1");
@@ -1527,14 +1533,14 @@ rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("Pirates2on_Player"+k));
    rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject","56");
+   rmSetTriggerConditionParam("DstObject",pirate2ID);
    rmSetTriggerConditionParamInt("Player",k);
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("UnitType","TradingPost");
    rmSetTriggerConditionParam("Op",">=");
    rmSetTriggerConditionParamFloat("Count",1);
    rmAddTriggerEffect("Convert Units in Area");
-   rmSetTriggerEffectParam("SrcObject","56");
+   rmSetTriggerEffectParam("SrcObject",pirate2ID);
    rmSetTriggerEffectParamInt("SrcPlayer",0);
    rmSetTriggerEffectParamInt("TrgPlayer",k);
    rmSetTriggerEffectParam("UnitType","zpWokouWaterSpawnFlag2");
@@ -1552,14 +1558,14 @@ rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("Pirates2off_Player"+k));
    rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject","56");
+   rmSetTriggerConditionParam("DstObject",pirate2ID);
    rmSetTriggerConditionParamInt("Player",k);
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("UnitType","TradingPost");
    rmSetTriggerConditionParam("Op","==");
    rmSetTriggerConditionParamFloat("Count",0);
    rmAddTriggerEffect("Convert Units in Area");
-   rmSetTriggerEffectParam("SrcObject","56");
+   rmSetTriggerEffectParam("SrcObject",pirate2ID);
    rmSetTriggerEffectParamInt("SrcPlayer",k);
    rmSetTriggerEffectParamInt("TrgPlayer",0);
    rmSetTriggerEffectParam("UnitType","zpWokouWaterSpawnFlag2");
