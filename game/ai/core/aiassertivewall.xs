@@ -5705,14 +5705,17 @@ minInterval 10
       if (cMyCiv == cCivXPIroquois)// || cMyCiv == cCivXPSioux)
       {
          haudOverlappingRingFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber);
+         alreadyBuiltOne = true;
       }
       else if (cMyCiv == cCivDEInca || cMyCiv == cCivXPAztec)
       {
          sawtoothFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber);
+         alreadyBuiltOne = true;
       }
       else
       {
          buildWallRing(gForwardBaseLocation, gForwardBaseID, 30.0, 4);
+         alreadyBuiltOne = true;
       }
    }
    else
@@ -5731,10 +5734,12 @@ minInterval 10
             case 1:
             {
                sumterFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 1.5, pri, towerNumber, cannonNumber);
+               alreadyBuiltOne = true;
             }
             default: 
             {
                buildCornerPairStarFort(gForwardBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber);
+               alreadyBuiltOne = true;
             }
          }
       }
@@ -5750,11 +5755,13 @@ minInterval 10
             case 1:
             {
                ticonderogaStarFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 2.0, pri, towerNumber, cannonNumber, true);
+               alreadyBuiltOne = true;
             }
             default:
             {
                buildFourCornerStarFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber, 0);
                //buildFourCornerStarFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber, crownworkNum);
+               alreadyBuiltOne = true;
             }
          }
       }
@@ -5768,7 +5775,7 @@ minInterval 10
       xsEnableRule("upgradeWalls");
    }
    
-   alreadyBuiltOne = true;
+   
    xsDisableSelf();
 }
 
