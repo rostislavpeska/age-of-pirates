@@ -29286,6 +29286,15 @@
       
     </effects>
   </tech>
+  <tech name="zpUnknownDistilery" type="Normal">
+    <dbid>41137</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetName" proto="zpSPCDestilery" newname="302561">
+      </effect>
+    </effects>
+  </tech>
 
   <!--<tech name="zpTradeRouteUpgradeHansaShadow" type="Normal">
     <dbid>41137</dbid>

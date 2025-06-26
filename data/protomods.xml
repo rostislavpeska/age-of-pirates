@@ -17884,11 +17884,11 @@
     <movementtype>land</movementtype>
     <autoconvertsoundset>SocketCapture</autoconvertsoundset>
     <animfile>buildings\trading_post\europe_outpost_socket_v1.xml</animfile>
-    <minimapicon>ui\minimap\royal_house</minimapicon>
     <minimapicon>ui\minimap\asian_native_site</minimapicon>
     <capturedminimapicon>ui\minimap\asian_native_site_c</capturedminimapicon>
-    <rollovertextid>300172</rollovertextid>
-    <shortrollovertextid>300172</shortrollovertextid>
+    <portraiticon>resources\art\units\natives\native_orthodox.png</portraiticon>
+    <rollovertextid>302871</rollovertextid>
+    <shortrollovertextid>302871</shortrollovertextid>
     <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
     <los>12.0000</los>
     <unittype>LogicalTypeBuildingsNotWalls</unittype>
@@ -59609,6 +59609,57 @@
     <flag>FlattenGround</flag>
     <flag>EnterHotkeyContext</flag>
     <tactics>socketcapture.tactics</tactics>
+  </unit>
+  <unit id="20827" name="zpPropBarnNoSelect">
+    <dbid>20827</dbid>
+    <displaynameid>301060</displaynameid>
+    <editornameid>302870</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\ne_barn\ne_barn.xml</animfile>
+    <portraiticon>resources\art\units\natives\cowboys.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>Building</unittype>
+    <unittype>AbstractTradeRouteBuilding</unittype>
+    <flag>FlattenGround</flag>
+    <flag>Doppled</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>NotSelectable</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
   </unit>
 
 

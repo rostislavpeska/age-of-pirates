@@ -2810,7 +2810,7 @@
       <nuggetunit>zpNuggetInvisible</nuggetunit>
       <rolloverstringid>29084</rolloverstringid>
       <applystringid>66271</applystringid>
-      <maptype>westEurope</maptype>
+      <maptype>piratehistoricalmap</maptype>
       <guardianunit>
         <unit>zpGuardianCardinalGuard</unit>
         <idleanim>NuggetPirate2_Idle</idleanim>
@@ -2851,8 +2851,7 @@
       <nuggetunit>zpNuggetInvisible</nuggetunit>
       <rolloverstringid>29084</rolloverstringid>
       <applystringid>66271</applystringid>
-      <maptype>centralEurope</maptype>
-      <maptype>northEurope</maptype>
+      <maptype>piratehistoricalmap</maptype>
       <guardianunit>
         <unit>deGuardianWitchHunter</unit>
         <idleanim>NuggetPirate2_Idle</idleanim>
@@ -2883,15 +2882,14 @@
       <guardianunit>
         <unit>deGuardianElmeti</unit>
       </guardianunit>
-      <difficulty>501</difficulty>
+      <difficulty>502</difficulty>
     </nugget>
     <nugget>
       <name>zpNuggetRogueCityItalian</name>
       <nuggetunit>zpNuggetInvisible</nuggetunit>
       <rolloverstringid>29084</rolloverstringid>
       <applystringid>66271</applystringid>
-      <maptype>mediEurope</maptype>
-      <maptype>mediSea</maptype>
+      <maptype>piratehistoricalmap</maptype>
       <guardianunit>
         <unit>deGuardianWitchHunter</unit>
         <idleanim>NuggetPirate2_Idle</idleanim>
@@ -2922,25 +2920,14 @@
       <guardianunit>
         <unit>deGuardianElmeti</unit>
       </guardianunit>
-      <difficulty>501</difficulty>
+      <difficulty>503</difficulty>
     </nugget>
     <nugget>
       <name>zpNuggetRogueCityAmerican</name>
       <nuggetunit>zpNuggetInvisible</nuggetunit>
       <rolloverstringid>29084</rolloverstringid>
       <applystringid>66271</applystringid>
-      <maptype>texas</maptype>
-      <maptype>greatPlains</maptype>
-      <maptype>colorado</maptype>
-      <maptype>carolina</maptype>
-      <maptype>greatLakes</maptype>
-      <maptype>newEngland</maptype>
-      <maptype>dakota</maptype>
-      <maptype>northwestTerritory</maptype>
-      <maptype>patagonia</maptype>
-      <maptype>rockies</maptype>
-      <maptype>saguenay</maptype>
-      <maptype>yukon</maptype>
+      <maptype>piratehistoricalmap</maptype>
       <guardianunit>
         <unit>OutlawPistol</unit>
         <idleanim>NuggetPirate2_Idle</idleanim>
@@ -2971,15 +2958,14 @@
       <guardianunit>
         <unit>OutlawRider</unit>
       </guardianunit>
-      <difficulty>501</difficulty>
+      <difficulty>504</difficulty>
     </nugget>
     <nugget>
       <name>zpNuggetRogueCityAustralian</name>
       <nuggetunit>zpNuggetInvisible</nuggetunit>
       <rolloverstringid>29084</rolloverstringid>
       <applystringid>66271</applystringid>
-      <maptype>australia</maptype>
-      <maptype>newzealand</maptype>
+      <maptype>piratehistoricalmap</maptype>
       <guardianunit>
         <unit>zpGrdBushRanger</unit>
         <idleanim>NuggetPirate2_Idle</idleanim>
@@ -3010,7 +2996,7 @@
       <guardianunit>
         <unit>deGuardianColoRider</unit>
       </guardianunit>
-      <difficulty>501</difficulty>
+      <difficulty>505</difficulty>
     </nugget>
 
 

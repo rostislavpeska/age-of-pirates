@@ -28,7 +28,7 @@
 		<unit variation="42" posx="1.6864" posz="-13.9537" orientx="-1.0000" orienty="0.0000" orientz="0.0001">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="142" posx="5.8712" posz="-13.7525" orientx="0.9318" orienty="-0.0022" orientz="-0.3629">Cow</unit>
 		<unit variation="239" posx="3.1670" posz="-13.7306" orientx="0.8877" orienty="-0.0017" orientz="-0.4605">Cow</unit>
-		<unit variation="1" posx="12.6271" posz="-10.8227" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCXPBarn</unit>
+		<unit variation="1" posx="12.6271" posz="-10.8227" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropBarnNoSelect</unit>
 		<unit variation="42" posx="-10.8027" posz="-11.4234" orientx="0.9239" orienty="0.0000" orientz="0.3826">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="42" posx="1.8148" posz="-11.0138" orientx="0.9239" orienty="0.0000" orientz="0.3826">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="179" posx="-12.9712" posz="-11.4714" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropJesuitFence</unit>
