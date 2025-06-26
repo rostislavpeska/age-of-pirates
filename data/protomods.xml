@@ -3813,12 +3813,12 @@
     </protoaction>
     <protoaction>
       <name>RangedAttack</name>
-      <damage>80.000000</damage>
+      <damage>45.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>32.000000</maxrange>
       <rof>0.500000</rof>
-      <damagecap>200.000000</damagecap>
-      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagecap>90.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.340000</damagebonus>
       <damagearea>1.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
@@ -4423,8 +4423,8 @@
     <portraiticon>resources\art\units\asians\spc\treasure_ship\china_ship_icon_portrait.png</portraiticon>
     <rollovertextid>300189</rollovertextid>
     <shortrollovertextid>300189</shortrollovertextid>
-    <initialhitpoints>4500.0000</initialhitpoints>
-    <maxhitpoints>4500.0000</maxhitpoints>
+    <initialhitpoints>4700.0000</initialhitpoints>
+    <maxhitpoints>4700.0000</maxhitpoints>
     <los>34.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -4507,12 +4507,12 @@
     </protoaction>
     <protoaction>
       <name>RangedAttack</name>
-      <damage>80.000000</damage>
+      <damage>35.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>32.000000</maxrange>
       <rof>0.500000</rof>
-      <damagecap>200.000000</damagecap>
-      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagecap>70.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.340000</damagebonus>
       <damagearea>1.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
@@ -17056,7 +17056,7 @@
     <displaynameid>300824</displaynameid>
     <editornameid>300825</editornameid>
     <subciv>zpVenetians</subciv>
-    <buildlimit>13</buildlimit>
+    <buildlimit>14</buildlimit>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
