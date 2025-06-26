@@ -29260,6 +29260,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>TeamTech</flag>
+    <flag>DEHideAdvancedRollover</flag>
     <effects>
       <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCGermanCathedral</target>
@@ -29286,13 +29287,40 @@
       
     </effects>
   </tech>
-  <tech name="zpUnknownDistilery" type="Normal">
+  <tech name="zpUnknownRogueAmerican" type="Normal">
     <dbid>41137</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
       <effect type="SetName" proto="zpSPCDestilery" newname="302561">
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownRogueEuropean" type="Normal">
+    <dbid>41138</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpSPCArtPatronCathedral</effect>
+      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
+      <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownRogueItalian" type="Normal">
+    <dbid>41139</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpSPCArtPatronClone</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCTaulaDeCanviClone</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPapalBlessingClone</effect>
+      <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMediciPatronage</effect>
+      <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
     </effects>
   </tech>
 

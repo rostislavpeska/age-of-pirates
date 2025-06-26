@@ -61,13 +61,12 @@
 		<unit variation="124" posx="-15.4327" posz="0.2224" orientx="0.9239" orienty="0.0000" orientz="0.3826">SPCPathBlock3</unit>
 		<unit variation="124" posx="-17.0352" posz="0.2878" orientx="0.9239" orienty="0.0000" orientz="0.3826">SPCPathBlock3</unit>
 		<unit variation="121" posx="18.5642" posz="0.8268" orientx="-1.0000" orienty="-0.0000" orientz="0.0001">NativeTownObstruction</unit>
-		<unit variation="253" posx="2.2534" posz="-0.9702" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropStatue</unit>
 		<unit variation="184" posx="0.1420" posz="-0.1338" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpPropsColony</unit>
 		<unit variation="0" posx="-1.0207" posz="-0.6431" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
 		<unit variation="46" posx="11.5561" posz="-0.9107" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpPropsColony</unit>
 		<unit variation="8" posx="-7.5605" posz="-0.2446" orientx="-0.1964" orienty="0.0046" orientz="-0.9805">Sheep</unit>
 		<unit variation="129" posx="-17.4115" posz="1.7739" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCCityBuildingMix</unit>
-		<unit variation="107" posx="-4.3915" posz="-0.8395" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpHCFountainA</unit>
+		<unit variation="107" posx="-4.3915" posz="-0.8395" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpHCFountainFlattenGround</unit>
 		<unit variation="1" posx="-11.9569" posz="-0.0094" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpPropMarketStall</unit>
 		<unit variation="124" posx="-15.5922" posz="3.6372" orientx="1.0000" orienty="0.0000" orientz="-0.0000">SPCPathBlock3</unit>
 		<unit variation="124" posx="-18.6197" posz="3.5448" orientx="1.0000" orienty="0.0000" orientz="-0.0000">SPCPathBlock3</unit>

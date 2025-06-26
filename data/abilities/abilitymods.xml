@@ -263,7 +263,7 @@
     <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
   </zpspcgermancathedral>
   <zpspcgermancathedralcon0>
-    <ability>ypPowerCeaseFire<tech>zpSPCCathedralStage4</tech><rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+    <ability>zpPowerInformersFrench<tech>zpSPCCathedralStage4</tech><rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
   </zpspcgermancathedralcon0>
   <zpverseilleschurch>
     <ability>zpPowerInformersFrench<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
