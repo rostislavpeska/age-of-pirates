@@ -59740,7 +59740,7 @@
     <flag>DoNotDieAtZeroHitpoints</flag>
     <flag>RMCanRotate</flag>
   </unit>
-  <unit id="20830" name="zpNativeUnitVenetianFenceDark">
+  <unit id="20830" name="zpNativeUnitVenetianFenceBrick">
     <dbid>20830</dbid>
     <displaynameid>300730</displaynameid>
     <editornameid>302874</editornameid>
