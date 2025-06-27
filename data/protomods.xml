@@ -15075,7 +15075,7 @@
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <autoconvertsoundset>SocketCapture</autoconvertsoundset>
-    <animfile>buildings\trading_post\socket_south_america.xml</animfile>
+    <animfile>buildings\trading_post\socket_australia.xml</animfile>
     <minimapicon>ui\minimap\n</minimapicon>
     <capturedminimapicon>ui\minimap\n_c</capturedminimapicon>
     <portraiticon>resources\art\units\natives\native_maori.png</portraiticon>
@@ -23669,7 +23669,7 @@
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <autoconvertsoundset>SocketCapture</autoconvertsoundset>
-    <animfile>buildings\trading_post\socket_south_america.xml</animfile>
+    <animfile>buildings\trading_post\socket_australia.xml</animfile>
     <minimapicon>ui\minimap\n</minimapicon>
     <capturedminimapicon>ui\minimap\n_c</capturedminimapicon>
     <portraiticon>resources\art\units\natives\native_aboriginals.png</portraiticon>
@@ -32961,7 +32961,7 @@
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <autoconvertsoundset>SocketCapture</autoconvertsoundset>
-    <animfile>buildings\trading_post\socket_south_america.xml</animfile>
+    <animfile>buildings\trading_post\socket_australia.xml</animfile>
     <minimapicon>ui\minimap\n</minimapicon>
     <capturedminimapicon>ui\minimap\n_c</capturedminimapicon>
     <portraiticon>resources\art\units\natives\native_korowai.png</portraiticon>
