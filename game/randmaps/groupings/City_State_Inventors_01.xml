@@ -13,17 +13,17 @@
 		<unit variation="167" posx="23.0029" posz="-17.3297" orientx="1.0000" orienty="-0.0000" orientz="0.0000">NativeTownObstruction</unit>
 		<unit variation="22" posx="36.5615" posz="-16.1660" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
 		<unit variation="193" posx="31.8272" posz="-15.8573" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPlatform</unit>
-		<unit variation="22" posx="4.1419" posz="-16.7168" orientx="0.9239" orienty="0.0000" orientz="0.3827">deNatEUPropFence</unit>
-		<unit variation="22" posx="11.1616" posz="-16.7444" orientx="0.9239" orienty="0.0000" orientz="-0.3827">deNatEUPropFence</unit>
+		<unit variation="22" posx="4.1419" posz="-16.7168" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpNatEUPropFencDarkBrick</unit>
+		<unit variation="22" posx="11.1616" posz="-16.7444" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpNatEUPropFencDarkBrick</unit>
 		<unit variation="41" posx="1.9060" posz="-12.5529" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNatPropFactoryHallShort</unit>
 		<unit variation="93" posx="30.6345" posz="-14.8289" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpHarbourPlatform</unit>
 		<unit variation="148" posx="18.7145" posz="-15.2277" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNatPropFactoryHallLong</unit>
 		<unit variation="0" posx="1.6660" posz="-12.2944" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
 		<unit variation="0" posx="15.9317" posz="-15.2943" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="0" posx="20.3433" posz="-15.3989" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
-		<unit variation="14" posx="3.1422" posz="-15.2619" orientx="0.0002" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="14" posx="3.1422" posz="-15.2619" orientx="0.0002" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrick</unit>
 		<unit variation="81" posx="7.0827" posz="-14.2079" orientx="-1.0000" orienty="0.0039" orientz="0.0004">zpTrainTracks</unit>
-		<unit variation="14" posx="12.3945" posz="-15.3112" orientx="0.0002" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="14" posx="12.3945" posz="-15.3112" orientx="0.0002" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrick</unit>
 		<unit variation="94" posx="34.1001" posz="-12.0058" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">zpHarbourPlatform</unit>
 		<unit variation="148" posx="-8.3252" posz="-7.8116" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNatPropFactoryHallLong</unit>
 		<unit variation="148" posx="-3.1974" posz="-12.8476" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNatPropFactoryHallLong</unit>
@@ -66,13 +66,13 @@
 		<unit variation="219" posx="29.8239" posz="2.4261" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
 		<unit variation="97" posx="32.5032" posz="2.2281" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
 		<unit variation="100" posx="7.0301" posz="0.4428" orientx="1.0000" orienty="-0.0039" orientz="-0.0000">zpTrainTracks</unit>
-		<unit variation="57" posx="-8.4039" posz="0.7184" orientx="1.0000" orienty="0.0000" orientz="-0.0000">deNatEUPropFence</unit>
-		<unit variation="91" posx="13.1258" posz="1.0531" orientx="-0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
-		<unit variation="45" posx="14.7281" posz="2.0342" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deNatEUPropFence</unit>
-		<unit variation="14" posx="14.7451" posz="1.1002" orientx="-1.0000" orienty="0.0000" orientz="-0.0002">deNatEUPropFence</unit>
+		<unit variation="57" posx="-8.4039" posz="0.7184" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNatEUPropFencDarkBrick</unit>
+		<unit variation="91" posx="13.1258" posz="1.0531" orientx="-0.0000" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrick</unit>
+		<unit variation="45" posx="14.7281" posz="2.0342" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNatEUPropFencDarkBrick</unit>
+		<unit variation="14" posx="14.7451" posz="1.1002" orientx="-1.0000" orienty="0.0000" orientz="-0.0002">zpNatEUPropFencDarkBrick</unit>
 		<unit variation="1" posx="19.1259" posz="2.4460" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsPoles</unit>
 		<unit variation="151" posx="37.8868" posz="5.3752" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeWaterSpawnFlag1</unit>
-		<unit variation="22" posx="-10.2715" posz="1.9774" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">deNatEUPropFence</unit>
+		<unit variation="22" posx="-10.2715" posz="1.9774" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpNatEUPropFencDarkBrick</unit>
 		<unit variation="0" posx="13.4724" posz="5.1409" orientx="1.0000" orienty="0.0000" orientz="-0.0021">SPCPathBlock3</unit>
 		<unit variation="49" posx="6.7684" posz="5.8767" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpWeaponFactorySummer</unit>
 		<unit variation="49" posx="6.7684" posz="5.8767" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCRevealerAztec</unit>
@@ -84,16 +84,16 @@
 		<unit variation="0" posx="13.5250" posz="9.0495" orientx="1.0000" orienty="0.0000" orientz="-0.0021">SPCPathBlock3</unit>
 		<unit variation="1" posx="26.7067" posz="8.1900" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsPoles</unit>
 		<unit variation="232" posx="12.4755" posz="10.5232" orientx="0.3827" orienty="0.0000" orientz="-0.9239">deNatEUPropVilMale</unit>
-		<unit variation="91" posx="9.7534" posz="10.3708" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="91" posx="9.7534" posz="10.3708" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropFencDarkBrick</unit>
 		<unit variation="0" posx="13.3891" posz="10.6391" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCRailwayProps</unit>
-		<unit variation="22" posx="-10.0847" posz="9.0362" orientx="0.3827" orienty="0.0000" orientz="-0.9239">deNatEUPropFence</unit>
-		<unit variation="84" posx="-8.5859" posz="10.5546" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deNatEUPropFence</unit>
-		<unit variation="14" posx="9.7553" posz="12.3506" orientx="-0.0002" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
-		<unit variation="91" posx="12.0201" posz="12.3463" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="22" posx="-10.0847" posz="9.0362" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpNatEUPropFencDarkBrick</unit>
+		<unit variation="84" posx="-8.5859" posz="10.5546" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNatEUPropFencDarkBrick</unit>
+		<unit variation="14" posx="9.7553" posz="12.3506" orientx="-0.0002" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrick</unit>
+		<unit variation="91" posx="12.0201" posz="12.3463" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrick</unit>
 		<unit variation="1" posx="18.6754" posz="11.2209" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsPoles</unit>
 		<unit variation="6" posx="17.5137" posz="12.9628" orientx="0.3827" orienty="0.0000" orientz="0.9239">SPCRailwayProps</unit>
 		<unit variation="1" posx="28.5327" posz="11.9703" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">PropsColony</unit>
-		<unit variation="45" posx="14.3750" posz="11.1106" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="45" posx="14.3750" posz="11.1106" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNatEUPropFencDarkBrick</unit>
 		<unit variation="0" posx="10.3402" posz="11.8029" orientx="-0.0021" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="0" posx="-8.6923" posz="14.4289" orientx="1.0000" orienty="0.0000" orientz="-0.0000">SPCPathBlock3</unit>
 		<unit variation="207" posx="-4.3414" posz="12.8903" orientx="0.7071" orienty="0.0000" orientz="0.7071">deNatEUPropVilMale</unit>
@@ -105,7 +105,7 @@
 		<unit variation="100" posx="18.1978" posz="13.9072" orientx="0.0000" orienty="0.0039" orientz="-1.0000">zpTrainTracks</unit>
 		<unit variation="100" posx="19.4188" posz="13.9684" orientx="0.0000" orienty="0.0039" orientz="-1.0000">zpTrainTracks</unit>
 		<unit variation="100" posx="22.8983" posz="14.6564" orientx="0.3827" orienty="0.0021" orientz="-0.9239">zpTrainTracks</unit>
-		<unit variation="14" posx="14.2370" posz="12.4919" orientx="-1.0000" orienty="0.0000" orientz="-0.0002">deNatEUPropFence</unit>
+		<unit variation="14" posx="14.2370" posz="12.4919" orientx="-1.0000" orienty="0.0000" orientz="-0.0002">zpNatEUPropFencDarkBrick</unit>
 		<unit variation="100" posx="13.9015" posz="14.2278" orientx="0.0000" orienty="0.0039" orientz="-1.0000">zpTrainTracks</unit>
 		<unit variation="2" posx="3.1638" posz="15.3704" orientx="0.8151" orienty="0.0000" orientz="-0.5793">SPCRailwayProps</unit>
 		<unit variation="2" posx="6.5856" posz="14.3240" orientx="0.9994" orienty="0.0000" orientz="0.0346">SPCRailwayProps</unit>

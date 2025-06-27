@@ -11149,7 +11149,7 @@
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <autoconvertsoundset>SocketCapture</autoconvertsoundset>
-    <animfile>buildings\trading_post\europe_outpost_socket.xml</animfile>
+    <animfile>buildings\trading_post\europe_outpost_socket_v2.xml</animfile>
     <minimapicon>ui\minimap\inventor_site</minimapicon>
     <capturedminimapicon>ui\minimap\inventor_site_c</capturedminimapicon>
     <portraiticon>resources\art\units\natives\scientist.png</portraiticon>
@@ -54281,7 +54281,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\trading_post\europe_outpost_socket.xml</animfile>
+    <animfile>buildings\trading_post\europe_outpost_socket_v2.xml</animfile>
     <minimapicon>ui\minimap\t</minimapicon>
     <portraiticon>resources\art\units\natives\scientist.png</portraiticon>
     <rollovertextid>300484</rollovertextid>
@@ -59715,6 +59715,81 @@
     <flag>Tracked</flag>
     <flag>NoIdleActions</flag>
     <flag>StartOnNoUpdate</flag>
+  </unit>
+  <unit id="20829" name="zpNatEUPropFencDarkBrick">
+    <dbid>20829</dbid>
+    <displaynameid>62299</displaynameid>
+    <editornameid>302873</editornameid>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\europe\fence\fence_v2.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>RMCanRotate</flag>
+  </unit>
+  <unit id="20830" name="zpNativeUnitVenetianFenceDark">
+    <dbid>20830</dbid>
+    <displaynameid>300730</displaynameid>
+    <editornameid>302874</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>buildings\native_settlement\europe\fence\fence_v2.xml</animfile>
+    <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <flag>NotSelectable</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
   </unit>
 
 
