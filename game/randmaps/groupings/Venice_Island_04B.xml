@@ -131,10 +131,10 @@
 		<unit variation="164" posx="19.2294" posz="-25.9529" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="164" posx="43.3113" posz="-25.9779" orientx="-0.0004" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="64" posx="-51.2030" posz="-19.4340" orientx="0.9998" orienty="0.0000" orientz="-0.0199">zpHarbourPlatform</unit>
-		<unit variation="73" posx="-2.3550" posz="-23.3100" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
-		<unit variation="34" posx="-4.3515" posz="-23.3666" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
-		<unit variation="34" posx="11.5730" posz="-23.3983" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
-		<unit variation="73" posx="9.5141" posz="-23.3012" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="73" posx="-2.3550" posz="-23.3100" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="34" posx="-4.3515" posz="-23.3666" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="34" posx="11.5730" posz="-23.3983" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="73" posx="9.5141" posz="-23.3012" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
 		<unit variation="4" posx="25.6436" posz="-23.7103" orientx="0.0056" orienty="0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 		<unit variation="4" posx="38.7031" posz="-22.6165" orientx="0.0056" orienty="0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 		<unit variation="125" posx="-2.7837" posz="-22.2079" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">zpNativeUnitVenetianFlag</unit>
@@ -150,8 +150,8 @@
 		<unit variation="4" posx="-46.3497" posz="-21.5513" orientx="0.0056" orienty="0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 		<unit variation="4" posx="-37.9075" posz="-21.9177" orientx="0.0056" orienty="0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 		<unit variation="4" posx="-10.3597" posz="-21.8355" orientx="0.0056" orienty="0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
-		<unit variation="73" posx="-4.4471" posz="-21.2494" orientx="1.0000" orienty="0.0000" orientz="-0.0000">deNatEUPropFence</unit>
-		<unit variation="73" posx="11.6137" posz="-21.0774" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="73" posx="-4.4471" posz="-21.2494" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="73" posx="11.6137" posz="-21.0774" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropFencDarkBrickB</unit>
 		<unit variation="6" posx="-50.5480" posz="-21.3483" orientx="-1.0000" orienty="-0.0000" orientz="0.0001">zpNativeHouseVenetianB</unit>
 		<unit variation="2" posx="-48.5044" posz="-19.9970" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropMarketStall</unit>
 		<unit variation="152" posx="-50.3277" posz="-20.3212" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">zpCityStateFlag</unit>
@@ -171,10 +171,10 @@
 		<unit variation="114" posx="33.6348" posz="-21.0370" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpBridgeFace</unit>
 		<unit variation="108" posx="42.9206" posz="-21.0004" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpBridgeFace</unit>
 		<unit variation="248" posx="-15.6840" posz="-21.4674" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
-		<unit variation="189" posx="-3.4953" posz="-18.0642" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deNatEUPropFence</unit>
-		<unit variation="34" posx="-4.4040" posz="-19.0645" orientx="1.0000" orienty="0.0000" orientz="-0.0000">deNatEUPropFence</unit>
-		<unit variation="189" posx="10.8893" posz="-18.2719" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">deNatEUPropFence</unit>
-		<unit variation="34" posx="11.6187" posz="-19.1759" orientx="1.0000" orienty="0.0000" orientz="-0.0001">deNatEUPropFence</unit>
+		<unit variation="189" posx="-3.4953" posz="-18.0642" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="34" posx="-4.4040" posz="-19.0645" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="189" posx="10.8893" posz="-18.2719" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="34" posx="11.6187" posz="-19.1759" orientx="1.0000" orienty="0.0000" orientz="-0.0001">zpNatEUPropFencDarkBrickB</unit>
 		<unit variation="95" posx="-49.8737" posz="-15.0047" orientx="0.0025" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
 		<unit variation="95" posx="-15.9641" posz="-15.7235" orientx="0.0025" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
 		<unit variation="6" posx="-50.5327" posz="-18.2124" orientx="-1.0000" orienty="-0.0000" orientz="0.0001">zpNativeHouseVenetianB</unit>
