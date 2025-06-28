@@ -35910,7 +35910,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractChurch</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
@@ -36000,7 +35999,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractFindOtherEconomicBuilding</unittype>
     <unittype>AbstractFindOtherMilitaryBuilding</unittype>
     <unittype>AbstractCityManison</unittype>
@@ -36105,7 +36103,6 @@
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>AbstractSPCVillageBuilding</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractHouse</unittype>
@@ -36205,7 +36202,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractBank</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
@@ -36278,7 +36274,6 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>AbstractTypeHerdableMagnet</unittype>
     <unittype>HasBountyValue</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractFarm</unittype>
     <unittype>ColonyBuilding</unittype>
     <unittype>Food</unittype>
@@ -36365,7 +36360,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
@@ -36449,7 +36443,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
@@ -36533,7 +36526,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
     <flag>CollidesWithProjectiles</flag>
@@ -36617,7 +36609,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
     <flag>CollidesWithProjectiles</flag>
@@ -36694,7 +36685,6 @@
     <unittype>LogicalTypeShipsAndBuildings</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractWonder</unittype>
     <unittype>DisplayAbilitiesOnHUD</unittype>
     <unittype>AbstractPoliticalWonder</unittype>
@@ -43053,7 +43043,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractChurch</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
@@ -43453,7 +43442,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractChurch</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
@@ -43544,7 +43532,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractChurch</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
@@ -51328,7 +51315,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractChurch</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
@@ -51419,7 +51405,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractFindOtherEconomicBuilding</unittype>
     <unittype>AbstractFindOtherMilitaryBuilding</unittype>
     <unittype>AbstractCityManison</unittype>
@@ -51547,7 +51532,6 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>AbstractTypeHerdableMagnet</unittype>
     <unittype>HasBountyValue</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractFarm</unittype>
     <unittype>ColonyBuilding</unittype>
     <unittype>Food</unittype>
@@ -51629,7 +51613,6 @@
     <unittype>LogicalTypeShipsAndBuildings</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractWonder</unittype>
     <unittype>DisplayAbilitiesOnHUD</unittype>
     <unittype>AbstractPoliticalWonder</unittype>
@@ -51737,7 +51720,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractBank</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <tech row="0" page="1" column="2">zpSPCTreasuryProductionBonus</tech>
@@ -51859,7 +51841,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
     <flag>CollidesWithProjectiles</flag>
@@ -51934,7 +51915,6 @@
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
     <unittype>AbstractSPCVillageBuilding</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractHouse</unittype>
@@ -53888,7 +53868,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractBank</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <tech row="0" page="1" column="2">zpSPCTreasuryProductionBonus</tech>
@@ -53971,7 +53950,6 @@
     <unittype>ColonyBuilding</unittype>
     <unittype>Building</unittype>
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractBank</unittype>
@@ -54064,7 +54042,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
     <flag>CollidesWithProjectiles</flag>
@@ -58306,7 +58283,6 @@
     <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>AbstractChurch</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <tech row="0" page="1" column="1">zpSPCCathedralLimestone1</tech>
