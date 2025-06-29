@@ -28,8 +28,8 @@
 		<unit variation="0" posx="0.1017" posz="-11.1209" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPoles</unit>
 		<unit variation="242" posx="5.9474" posz="-12.0935" orientx="-0.7890" orienty="0.0055" orientz="-0.6143">Sheep</unit>
 		<unit variation="252" posx="-13.0000" posz="-13.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
-		<unit variation="2" posx="-3.1468" posz="-12.6308" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpPropMarketStall</unit>
-		<unit variation="2" posx="8.8109" posz="-12.5786" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropMarketStall</unit>
+		<unit variation="2" posx="-3.1468" posz="-12.6308" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCMarketStall</unit>
+		<unit variation="2" posx="8.8109" posz="-12.5786" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCMarketStall</unit>
 		<unit variation="112" posx="-8.4062" posz="-10.3868" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpSPCCityBuildingMix</unit>
 		<unit variation="124" posx="-7.9767" posz="-8.5722" orientx="0.7071" orienty="0.0000" orientz="0.7071">SPCPathBlock3</unit>
 		<unit variation="83" posx="5.0050" posz="-10.8145" orientx="0.8538" orienty="-0.0054" orientz="0.5206">Sheep</unit>
@@ -45,7 +45,7 @@
 		<unit variation="121" posx="12.2256" posz="-4.0983" orientx="-1.0000" orienty="-0.0000" orientz="0.0001">NativeTownObstruction</unit>
 		<unit variation="103" posx="10.1738" posz="-7.2163" orientx="-0.9239" orienty="0.0000" orientz="0.3827">deNatEUPropVilFemale</unit>
 		<unit variation="138" posx="-0.1224" posz="-6.7524" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNuggetKidnapGuillotine</unit>
-		<unit variation="1" posx="7.8448" posz="-5.8960" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpPropMarketStall</unit>
+		<unit variation="1" posx="7.8448" posz="-5.8960" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCMarketStall</unit>
 		<unit variation="13" posx="-13.6002" posz="-4.0029" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpSPCEUHouseProp</unit>
 		<unit variation="121" posx="17.4357" posz="-3.0303" orientx="-1.0000" orienty="-0.0000" orientz="0.0001">NativeTownObstruction</unit>
 		<unit variation="176" posx="19.1355" posz="-5.2071" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
@@ -67,7 +67,7 @@
 		<unit variation="8" posx="-7.5605" posz="-0.2446" orientx="-0.1964" orienty="0.0046" orientz="-0.9805">Sheep</unit>
 		<unit variation="129" posx="-17.4115" posz="1.7739" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCCityBuildingMix</unit>
 		<unit variation="107" posx="-4.3915" posz="-0.8395" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpHCFountainFlattenGround</unit>
-		<unit variation="1" posx="-11.9569" posz="-0.0094" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpPropMarketStall</unit>
+		<unit variation="1" posx="-11.9569" posz="-0.0094" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpSPCMarketStall</unit>
 		<unit variation="124" posx="-15.5922" posz="3.6372" orientx="1.0000" orienty="0.0000" orientz="-0.0000">SPCPathBlock3</unit>
 		<unit variation="124" posx="-18.6197" posz="3.5448" orientx="1.0000" orienty="0.0000" orientz="-0.0000">SPCPathBlock3</unit>
 		<unit variation="124" posx="-18.3270" posz="3.8646" orientx="0.9239" orienty="0.0000" orientz="-0.3827">SPCPathBlock3</unit>

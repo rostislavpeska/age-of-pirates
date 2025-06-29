@@ -30,7 +30,7 @@
 		<unit variation="47" posx="-16.0485" posz="-14.4291" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateWallConnectorProp</unit>
 		<unit variation="204" posx="11.7861" posz="-11.8087" orientx="0.7071" orienty="-0.0000" orientz="-0.7071">deSPCCityStateWall5Prop</unit>
 		<unit variation="115" posx="-12.3646" posz="-11.0202" orientx="1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateHouseProp</unit>
-		<unit variation="1" posx="-5.1952" posz="-13.9932" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpPropMarketStall</unit>
+		<unit variation="1" posx="-5.1952" posz="-13.9932" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSPCMarketStall</unit>
 		<unit variation="38" posx="-16.0739" posz="-11.2095" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateWall3Prop</unit>
 		<unit variation="0" posx="-6.1639" posz="-9.7063" orientx="-0.7071" orienty="-0.0000" orientz="0.7071">PropsPoles</unit>
 		<unit variation="124" posx="9.3904" posz="-8.4505" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCPathBlock3</unit>
@@ -102,7 +102,7 @@
 		<unit variation="68" posx="9.9775" posz="11.2103" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpPropsColony</unit>
 		<unit variation="182" posx="12.0000" posz="10.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpGrapeBush</unit>
 		<unit variation="240" posx="-16.5186" posz="15.5330" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateWall5Prop</unit>
-		<unit variation="1" posx="11.3463" posz="11.6090" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropMarketStall</unit>
+		<unit variation="1" posx="11.3463" posz="11.6090" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCMarketStall</unit>
 		<unit variation="43" posx="13.0109" posz="12.2982" orientx="-0.1584" orienty="0.0000" orientz="0.9874">deSPCTreeCypressProp</unit>
 		<unit variation="124" posx="13.5080" posz="15.3986" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
 		<unit variation="124" posx="12.5769" posz="15.8416" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>

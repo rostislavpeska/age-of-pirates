@@ -43012,7 +43012,7 @@
     <shortrollovertextid>302309</shortrollovertextid>
     <initialhitpoints>5000.0000</initialhitpoints>
     <maxhitpoints>5000.0000</maxhitpoints>
-    <los>12.0000</los>
+    <los>24.0000</los>
     <displayedrange>20.0000</displayedrange>
     <buildpoints>40.0000</buildpoints>
     <buildlimit>1</buildlimit>
@@ -51284,7 +51284,7 @@
     <shortrollovertextid>302309</shortrollovertextid>
     <initialhitpoints>5000.0000</initialhitpoints>
     <maxhitpoints>5000.0000</maxhitpoints>
-    <los>12.0000</los>
+    <los>24.0000</los>
     <displayedrange>20.0000</displayedrange>
     <buildpoints>40.0000</buildpoints>
     <buildlimit>1</buildlimit>
@@ -58252,7 +58252,7 @@
     <shortrollovertextid>302804</shortrollovertextid>
     <initialhitpoints>1000.0000</initialhitpoints>
     <maxhitpoints>1000.0000</maxhitpoints>
-    <los>12.0000</los>
+    <los>24.0000</los>
     <displayedrange>20.0000</displayedrange>
     <buildpoints>40.0000</buildpoints>
     <buildlimit>1</buildlimit>
