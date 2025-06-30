@@ -3318,13 +3318,13 @@ void main(void)
 //		tpORnot = 5;
 	if (splitIsland == 1)
 		tpORnot = 5;
-	if (riverWidthController !=1)
-	{
-		if (fullShallow == 1)
-			tpORnot = rmRandInt(1,5);
-		else
-			tpORnot = 5;
-	}
+//	if (riverWidthController !=1)
+//	{
+//		if (fullShallow == 1)
+//			tpORnot = rmRandInt(1,5);
+//		else
+//			tpORnot = 5;
+//	}
 //	tpORnot = 5;		// for testing
 	rmEchoInfo("tpORnot = "+tpORnot);
 
