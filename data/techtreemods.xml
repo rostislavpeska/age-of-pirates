@@ -29276,6 +29276,12 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatTeutonicKnight</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatTeutonicKnight" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
       
     </effects>
   </tech>
