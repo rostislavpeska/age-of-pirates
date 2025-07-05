@@ -329,6 +329,12 @@
   <zpspclimestoneworks>
     <ability>zpPassiveLimestone<tech>zpCathedralConstructionSetup</tech><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpspclimestoneworks>
+  <zpnathanseaticlegion>
+    <ability>dePromotionHpDMG<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnathanseaticlegion>
+  <zpnatmerchanseaticlegion>
+    <ability>dePromotionHpDMG<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatmerchanseaticlegion>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
