@@ -23281,6 +23281,9 @@
       <effect mergemode="add" type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpFortConvertable</target>
       </effect>
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpTeutonicFort</target>
+      </effect>
     </effects>
   </tech>
   <tech name="Revetment">
@@ -23296,6 +23299,18 @@
       </effect>
       <effect mergemode="add" type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpFortConvertable</target>
+      </effect>
+      <effect mergemode="add" type="Data" action="CannonAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpTeutonicFort</target>
+      </effect>
+      <effect mergemode="add" type="Data" action="BuildingAttack" amount="6.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpTeutonicFort</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="6.00" subtype="LOS" relativity="Absolute">
+        <target type="ProtoUnit">zpTeutonicFort</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpTeutonicFort</target>
       </effect>
     </effects>
   </tech>
