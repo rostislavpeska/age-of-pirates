@@ -335,6 +335,9 @@
   <zpnatmerchanseaticlegion>
     <ability>dePromotionHpDMG<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpnatmerchanseaticlegion>
+  <zpmercteutoniccavalry>
+    <ability>zpPassiveZeal<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpmercteutoniccavalry>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

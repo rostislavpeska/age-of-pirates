@@ -30,4 +30,5 @@
   <unittype>AbstractSteamTank</unittype>
   <unittype>CivilWarCityState</unittype>
   <unittype>zpAbstractFortCenter</unittype>
+  <unittype>AbstractCrussaderKnight</unittype>
 </unittypes>

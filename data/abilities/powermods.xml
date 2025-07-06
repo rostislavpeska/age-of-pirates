@@ -519,6 +519,13 @@
     <icon>resources\images\icons\abilities\workshop_bavarian_limestone.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
+  <power name="zpPassiveZeal" type="UnitAction">
+    <displaynameid>302899</displaynameid>
+    <rolloverid>302900</rolloverid>
+    <icon>resources\images\icons\abilities\crussader_zeal.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+
 
 
 

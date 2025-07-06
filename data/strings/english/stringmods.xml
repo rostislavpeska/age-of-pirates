@@ -2892,7 +2892,11 @@
       <string _locid="302893">Teutonic Fort Wagon</string>
       <string _locid="302894">ZP Teutonic Fort Wagon</string>
       <string _locid="302895">Teutonic Fort</string>
-
+      <string _locid="302896">Mounted Crussader</string>
+      <string _locid="302897">ZP MERC Mounted Crussader</string>
+      <string _locid="302898">Powerful Teutonic Order Cavalry. Provides healing aura for nearby Teutonic Knights.</string>
+      <string _locid="302899">Zeal</string>
+      <string _locid="302900">Increases damage for following nearby units: Mounted Crussader, Teutonic Knight, Maltese Knight, Maltese Guard</string>
 
 
       <!-- ======================================== -->

@@ -14,11 +14,33 @@
       <float name="AO Intensity" override="0.2000">
       </float>
     </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="units\natives\teutonic\textures\teutonic_knight_horse_a_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\alain\textures\igc_alain_magnan_horse_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\alain\textures\igc_alain_magnan_horse_mata_masks">
+      </texture>
+      <texture name="Details" override="units\natives\teutonic\textures\teutonic_knight_horse_matA_Details">
+      </texture>
+      <float name="AO Intensity" override="0.2000">
+      </float>
+    </parameters>
   </submaterial>
   <submaterial name="matB">
     <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
+      <texture name="BaseColor" override="units\spc\alain\textures\igc_alain_magnan_horse_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\spc\alain\textures\igc_alain_magnan_horse_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\spc\alain\textures\igc_alain_magnan_horse_mata_masks">
+      </texture>
+      <float name="AO Intensity" override="0.2000">
+      </float>
+    </parameters>
+    <parameters variant="1">
       <texture name="BaseColor" override="units\spc\alain\textures\igc_alain_magnan_horse_mata_basecolor">
       </texture>
       <texture name="Normals" override="units\spc\alain\textures\igc_alain_magnan_horse_mata_normals">

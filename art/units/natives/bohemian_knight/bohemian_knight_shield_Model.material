@@ -22,5 +22,15 @@
       <texture name="Details" override="units\natives\bohemian_knight\textures\hussite_shield_lvl1_matA_Details">
       </texture>
     </parameters>
+     <parameters variant="2">
+     <texture name="BaseColor" override="units\natives\teutonic\textures\teutonic_shield_lvl1_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\infantry_ranged\genoese\textures\genoese_shield_lvl1_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\infantry_ranged\genoese\textures\genoese_shield_lvl1_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\natives\teutonic\textures\teutonic_shield_lvl1_matA_Details">
+      </texture>
+    </parameters>
   </submaterial>
 </material>
