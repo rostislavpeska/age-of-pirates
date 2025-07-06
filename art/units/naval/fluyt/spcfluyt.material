@@ -12,6 +12,16 @@
       <texture name="Details" override="units\naval\fluyt\textures\fluyt_spc_mata_details">
       </texture>
     </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="units\naval\fluyt\textures\fluyt_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\naval\fluyt\textures\fluyt_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\naval\fluyt\textures\fluyt_mata_masks">
+      </texture>
+      <texture name="Details" override="units\naval\fluyt\textures\fluyt_mata_details">
+      </texture>
+    </parameters>
   </submaterial>
   <submaterial name="matb">
     <materialdef name="default_doublesided">
@@ -22,6 +32,16 @@
       <texture name="Normals" override="units\naval\galleon\textures\galleon_matb_normals">
       </texture>
       <texture name="Masks" override="units\naval\galleon\textures\galleon_matb_masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="units\naval\galleon\textures\galleon_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\galleon\textures\galleon_matb_normals">
+      </texture>
+      <texture name="Masks" override="units\naval\galleon\textures\galleon_matb_masks">
+      </texture>
+      <texture name="Details" override="units\naval\galleon\textures\hanseatic_fluyt_matB_Details">
       </texture>
     </parameters>
   </submaterial>
