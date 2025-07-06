@@ -29297,7 +29297,13 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatHanseaticLegion</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlerHansa</target>
+      </effect>
       <effect type="CommandAdd" proto="zpNatTeutonicKnight" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatSettlerHansa" page="0" column="2">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       
