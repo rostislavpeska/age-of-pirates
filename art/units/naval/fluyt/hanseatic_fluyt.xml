@@ -63,8 +63,8 @@
           <materialvariant index="1"/>
       </assetreference>
   </component>
-  <anim>Idle<assetreference type="GrannyAnim"><file>units\naval\fluyt\fluyt_idle</file></assetreference><component>fluyt</component><simskeleton><model>units\naval\fluyt\fluyt_damaged</model></simskeleton><attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
-  <anim>RangedAttack<assetreference type="GrannyAnim"><file>units\naval\fluyt\fluyt_idle</file><tag type="Attack">0.45</tag></assetreference><component>fluyt</component><simskeleton><model>units\naval\fluyt\fluyt_damaged</model></simskeleton></anim>
-  <anim>Walk<assetreference type="GrannyAnim"><file>units\naval\fluyt\fluyt_walk</file></assetreference><component>fluyt</component><simskeleton><model>units\naval\fluyt\fluyt_damaged</model></simskeleton><attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
+  <anim>Idle<assetreference type="GrannyAnim"><file>units\naval\fluyt\fluyt_idle</file></assetreference><component>fluyt</component><simskeleton><model>units\naval\fluyt\spcfluyt_damaged</model></simskeleton><attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
+  <anim>RangedAttack<assetreference type="GrannyAnim"><file>units\naval\fluyt\fluyt_idle</file><tag type="Attack">0.45</tag></assetreference><component>fluyt</component><simskeleton><model>units\naval\fluyt\spcfluyt_damaged</model></simskeleton></anim>
+  <anim>Walk<assetreference type="GrannyAnim"><file>units\naval\fluyt\fluyt_walk</file></assetreference><component>fluyt</component><simskeleton><model>units\naval\fluyt\spcfluyt_damaged</model></simskeleton><attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
   <anim>Death<component>fluytDeath</component><attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="Death_EXP" frombone="ATTACHPOINT" tobone="bone_center" syncanims="0"></attach><attach a="Death_EXP" frombone="ATTACHPOINT" tobone="bone_master" syncanims="0"></attach><attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="bone_center" syncanims="0"></attach><attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="bone_master" syncanims="0"></attach></anim>
 </animfile>

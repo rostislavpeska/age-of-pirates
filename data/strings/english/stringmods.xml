@@ -2901,6 +2901,34 @@
       <string _locid="302902">ZP Kontor Fluyt</string>
       <string _locid="302903">Hanseatic Merchant</string>
       <string _locid="302904">ZP hanseatic Merchant</string>
+      <string _locid="302905">Request Hanseatic Legion deliveries at this Trading Post.</string>
+      <string _locid="302906">This Trading Post is delivering Hanseatic Legions.</string>
+      <string _locid="302907">Veteran Hanseatic Armies</string>
+      <string _locid="302908">Guard Hanseatic Armies</string>
+      <string _locid="302909">Veteran Hanseatic Legion</string>
+      <string _locid="302910">Guard Hanseatic Legion</string>
+      <string _locid="302911">Imperial Hanseatic Legion</string>
+      <string _locid="302912">Teutonic Knight Guard</string>
+      <string _locid="302913">Imperial Teutonic Knight</string>
+      <string _locid="302914">Increases Hanseatic land military attack and hitpoints.</string>
+      <string _locid="302915">Kontor Aliance Pact</string>
+      <string _locid="302916">Unlocks more Hanseatic units and techs. </string>
+      <string _locid="302917">Kontor Water Flag</string>
+      <string _locid="302918">ZP Kontor Water Flag 1</string>
+      <string _locid="302919">ZP Kontor Water Flag 2</string>
+      <string _locid="302920">Western Faction</string>
+      <string _locid="302921">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nKontor Fluyt \n\nHanseatic warship, trains Hanseatic Legionaries. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nSMS Hansa</string>
+      <string _locid="302922">ZP MERC Destroyer</string>
+      <string _locid="302923">SMS Hansa</string>
+      <string _locid="302924">Ships a modern Destroyer Class Warship</string>
+      <string _locid="302925">Central Faction</string>
+      <string _locid="302926">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHanseatic Merchant \n\nEconomical faction providing you with a team tech. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nTeam Kontor Market</string>
+      <string _locid="302927">Eastern Faction</string>
+      <string _locid="302928">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nTeutonic Knight \n\nTeutonic Order units and techs, military faction. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nEastern Base</string>
+      <string _locid="302929">Eastern Base</string>
+      <string _locid="302930">Ships a Teutonic Fort Wagon able to construct a Teutonic Fort.</string>
+
+
 
 
       <!-- ======================================== -->

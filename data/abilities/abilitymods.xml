@@ -338,6 +338,10 @@
   <zpmercteutoniccavalry>
     <ability>zpPassiveZeal<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpmercteutoniccavalry>
+  <zphansasteamer>
+    <ability>PowerLongRange<rof>60</rof></ability>
+    <ability>dePowerBlock<rof>60</rof><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zphansasteamer>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

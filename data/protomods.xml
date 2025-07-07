@@ -1628,6 +1628,10 @@
     <tech row="0" page="2" column="1">zpNatImperialTowers</tech>
     <tech row="0" page="0" column="4">zpNatImperialCommand</tech>
 
+    <tech row="0" page="1" column="1">zpNatVeteranHansa</tech>
+    <tech row="0" page="1" column="1">zpNatGuardHansa</tech>
+    <tech row="0" page="1" column="1">zpHansaExpansion</tech>
+
     <!-- Wild West Techs -->
     <tech row="0" page="2" column="1">zpWildWestWhiskeyFactory</tech>
     <tech row="0" page="2" column="0">zpWildWestCows</tech>
@@ -1757,6 +1761,8 @@
     <train row="0" page="0" column="130">zpNatLegionaryMarksman</train>
     <train row="0" page="0" column="130">zpNatHussiteWagon</train>
     <train row="0" page="0" column="130">zpNatHussiteKnight</train>
+    <train row="0" page="0" column="131">zpNatHanseaticLegion</train>
+    <train row="0" page="0" column="132">zpNatTeutonicKnight</train>
   </unit>
   <unit name="NativeTownObstruction">
     <flag>Invulnerable</flag>
@@ -5476,9 +5482,13 @@
     <allowedage>3</allowedage>
     <armor type="Ranged" value="0.7500">
     </armor>
+    <sharedselectionunittypes>
+      <unittype>zpHansaSteamer</unittype>
+    </sharedselectionunittypes>
     <sharedbuildlimitunittypes>
       <unittype>zpWokouSteamer</unittype>
       <unittype>zpWokouSteamerProxy</unittype>
+      <unittype>zpHansaSteamer</unittype>
     </sharedbuildlimitunittypes>
     <dodgechance>0.0000</dodgechance>
     <dodgemessageid>110541</dodgemessageid>
@@ -5699,6 +5709,7 @@
     <sharedbuildlimitunit>zpWokouSteamer</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
       <unittype>zpWokouSteamer</unittype>
+      <unittype>zpHansaSteamer</unittype>
       <unittype>zpWokouSteamerProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
@@ -60610,19 +60621,23 @@
     <rollovertextid>27697</rollovertextid>
     <shortrollovertextid>27696</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>1050.0000</initialhitpoints>
-    <maxhitpoints>1050.0000</maxhitpoints>
+    <initialhitpoints>1100.0000</initialhitpoints>
+    <maxhitpoints>1100.0000</maxhitpoints>
     <los>26.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <trainpoints>30.0000</trainpoints>
-    <buildlimit>4</buildlimit>
+    <buildlimit>2</buildlimit>
     <bounty>60.0000</bounty>
     <buildbounty>60.0000</buildbounty>
     <cost resourcetype="Wood">300.0000</cost>
     <cost resourcetype="Gold">280.0000</cost>
     <maxcontained>50</maxcontained>
-    <allowedage>1</allowedage>
+    <allowedage>2</allowedage>
+    <sharedbuildlimitunittypes>
+      <unittype>zpHanseaticFluyt</unittype>
+      <unittype>zpHanseaticFluytProxy</unittype>
+    </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.7500">
     </armor>
     <unittype>LogicalTypeNavalMilitary</unittype>
@@ -60667,6 +60682,7 @@
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
     <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="3">SetGatherPointMilitary</command>
@@ -61071,6 +61087,295 @@
       <rate type="Herdable">1.000000</rate>
       <rate type="Huntable">1.000000</rate>
       <rate type="Tree">1.000000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20841" name="zpHansaWaterSpawnFlag1">
+    <dbid>20841</dbid>
+    <displaynameid>302917</displaynameid>
+    <editornameid>302918</editornameid>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>5.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>homecity\homecity_gatherpoint_naval.xml</animfile>
+    <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
+    <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
+    <civflagoverride>objects\flags\hansakontor</civflagoverride>
+    <rollovertextid>300635</rollovertextid>
+    <shortrollovertextid>300635</shortrollovertextid>
+    <los>4.0000</los>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <flag>NoBloodOnDeath</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>DontFlattenGround</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>Tracked</flag>
+    <flag>NonCollideable</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NonSolid</flag>
+    <flag>NotDeleteable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NoHPBar</flag>
+    <tactics>waterspawnpoint.tactics</tactics>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="4">SetGatherPointEconomy</command>
+  </unit>
+  <unit id="20842" name="zpHansaWaterSpawnFlag2">
+    <dbid>20842</dbid>
+    <displaynameid>302917</displaynameid>
+    <editornameid>302919</editornameid>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>5.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>homecity\homecity_gatherpoint_naval.xml</animfile>
+    <icon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</icon>
+    <portraiticon>resources\images\icons\portraits\buildings\homecity_waterspawn_flag_icon.png</portraiticon>
+    <civflagoverride>objects\flags\hansakontor</civflagoverride>
+    <rollovertextid>300635</rollovertextid>
+    <shortrollovertextid>300635</shortrollovertextid>
+    <los>4.0000</los>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <flag>NoBloodOnDeath</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>DontFlattenGround</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>Tracked</flag>
+    <flag>NonCollideable</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NonSolid</flag>
+    <flag>NotDeleteable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NoHPBar</flag>
+    <tactics>waterspawnpoint.tactics</tactics>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="4">SetGatherPointEconomy</command>
+  </unit>
+  <unit id="20843" name="zpHanseaticFluytProxy">
+    <dbid>20843</dbid>
+    <displaynameid>302901</displaynameid>
+    <subciv>zpHansaKontor</subciv>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <movementtype>land</movementtype>
+    <animfile>effects\projectiles\musket_ball.xml</animfile>
+    <icon>resources\art\units\naval\spc\hanseatic_fluyt_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\hanseatic_fluyt.png</portraiticon>
+    <rollovertextid>27697</rollovertextid>
+    <shortrollovertextid>27696</shortrollovertextid>
+    <initialhitpoints>900.0000</initialhitpoints>
+    <maxhitpoints>900.0000</maxhitpoints>
+    <trainpoints>30.0000</trainpoints>
+    <buildlimit>3</buildlimit>
+    <lifespan>0.3000</lifespan>
+    <buildbounty>60.0000</buildbounty>
+    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Gold">280.0000</cost>
+    <allowedage>2</allowedage>
+    <sharedbuildlimitunit>zpHanseaticFluyt</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpHanseaticFluyt</unittype>
+      <unittype>zpHanseaticFluytProxy</unittype>
+    </sharedbuildlimitunittypes>
+    <armor type="Ranged" value="0.7500">
+    </armor>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>MercType5</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
+  </unit>
+  <unit id="20844" name="zpHansaSteamer">
+    <dbid>20844</dbid>
+    <displaynameid>300220</displaynameid>
+    <editornameid>302922</editornameid>
+    <obstructionradiusx>2.9900</obstructionradiusx>
+    <obstructionradiusz>2.9900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>7.5000</maxvelocity>
+    <maxrunvelocity>9.5000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <turnrate>3.0000</turnrate>
+    <animfile>units\naval\destroyer\destroyer_ship.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\units\naval\spc\destroyer_ship_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\destroyer_ship.png</portraiticon>
+    <rollovertextid>300221</rollovertextid>
+    <shortrollovertextid>300222</shortrollovertextid>
+    <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
+    <initialhitpoints>3500.0000</initialhitpoints>
+    <maxhitpoints>3500.0000</maxhitpoints>
+    <los>34.0000</los>
+    <projectileprotounit>Cannonball</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>40.0000</trainpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>110.0000</bounty>
+    <buildbounty>110.0000</buildbounty>
+    <cost resourcetype="Wood">600.0000</cost>
+    <cost resourcetype="Gold">700.0000</cost>
+    <maxcontained>50</maxcontained>
+    <allowedage>3</allowedage>
+    <armor type="Ranged" value="0.7500">
+    </armor>
+    <sharedbuildlimitunittypes>
+      <unittype>zpWokouSteamer</unittype>
+      <unittype>zpHansaSteamer</unittype>
+      <unittype>zpWokouSteamerProxy</unittype>
+    </sharedbuildlimitunittypes>
+    <sharedselectionunittypes>
+      <unittype>zpWokouSteamer</unittype>
+    </sharedselectionunittypes>
+    <dodgechance>0.0000</dodgechance>
+    <dodgemessageid>110541</dodgemessageid>
+    <dodgesoundset>IroncladBlock</dodgesoundset>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Transport</unittype>
+    <train row="0" page="0" column="1">zpNatHoopThrower</train>
+    <flag>TieToWaterSurface</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <contain>LogicalTypeGarrisonInShips</contain>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <command page="11" column="0">Abilities</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <tactics>destroyer_ship.tactics</tactics>
+    <protoaction>
+      <name>LongRangeAttack</name>
+      <damage>200.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>80.000000</maxrange>
+      <rof>0.500000</rof>
+      <damagecap>400.000000</damagecap>
+      <damagebonus type="Building">5.000000</damagebonus>
+      <damagearea>6.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractVillager">0.200000</damagebonus>
+      <damagebonus type="AbstractDock">0.200000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>115.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>30.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>230.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttackContained</name>
+      <damage>115.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>30.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>230.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
 
@@ -62895,6 +63200,7 @@
     </armor>
     <sharedbuildlimitunittypes>
       <unittype>zpWokouSteamer</unittype>
+      <unittype>zpHansaSteamer</unittype>
       <unittype>zpWokouSteamerProxy</unittype>
     </sharedbuildlimitunittypes>
     <dodgechance>0.0000</dodgechance>
