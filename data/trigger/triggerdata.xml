@@ -4410,5 +4410,308 @@
       <command>}</command>
       <command>rule rdcnoniiba846 active { if (true) { //</command>
     </effect>
+    <effect name="ZP Native AutoSetup: Hanseatic">
+      <param name="SocketRadius" dispname="Socket Training Radius (do not change)" vartype="float">35</param>
+      <param name="ConversionRadius" dispname="Water Flag Distance (do not change)" vartype="float">150</param>
+      <param name="Socket1" dispname="Socket 1 (close to Water Flag 1)" vartype="unit">-1</param>
+      <param name="Socket2" dispname="Socket 2 (close to Water Flag 2)" vartype="unit">-1</param>
+      <command>}}</command>
+      <command>int getSocketOwnerHanseatic(int socketID = -1)</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command>for (playerID = 0; &lt; 9)</command>
+      <command>{</command>
+      <command>if (trCountUnitsInArea("" + socketID, playerID, "TradingPost", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>socketOwnerHanseatic = playerID;</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>}</command>
+      <command>return(socketOwnerHanseatic);</command>
+      <command>}</command>
+      <command>rule TurnOnHanseatic1</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket1%);</command>
+      <command>if (socketOwnerHanseatic &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket1">trUnitSelect("%Socket1%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerHanseatic, "zpHansaWaterSpawnFlag1", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffHanseatic1");</command>
+      <command>xsEnableRule("trainHanseaticCaravel1ON");</command>
+      <command>xsEnableRule("trainHanseaticFluyt1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffHanseatic1</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket1%);</command>
+      <command>if (socketOwnerHanseatic &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket1">trUnitSelect("%Socket1%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpHansaWaterSpawnFlag1", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnHanseatic1");</command>
+      <command>xsDisableRule("trainHanseaticCaravel1ON");</command>
+      <command>xsDisableRule("trainHanseaticFluyt1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticCaravel1ON</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket1%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket1%, socketOwnerHanseatic, "zpHanseaticWarshipProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpTrainHansaCog1, cTechStatusActive);</command>
+      <command>xsEnableRule("trainHanseaticCaravel1OFF");</command>
+      <command>xsEnableRule("trainHanseaticCaravel1TIME");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticCaravel1OFF</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("trainHanseaticCaravel1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticCaravel1TIME</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket1%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpReduceHansaCogBuildLimit, cTechStatusActive);</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpTrainHansaCog1, cTechStatusUnobtainable);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticFluyt1ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket1%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket1%, socketOwnerHanseatic, "zpHanseaticFluytProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpTrainHansaFluyt1, cTechStatusActive);</command>
+      <command>xsEnableRule("trainHanseaticFluyt1TIME");</command>
+      <command>xsEnableRule("trainHanseaticFluyt1OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticFluyt1OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("trainHanseaticFluyt1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticFluyt1TIME</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket1%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpReduceHansaFluytBuildLimit, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>    
+      <command>rule TurnOnHanseatic2</command>
+      <command>active</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket2%);</command>
+      <command>if (socketOwnerHanseatic &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket2">trUnitSelect("%Socket2%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerHanseatic, "zpHansaWaterSpawnFlag2", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffHanseatic2");</command>
+      <command>xsEnableRule("trainHanseaticCaravel2ON");</command>
+      <command>xsEnableRule("trainHanseaticFluyt2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffHanseatic2</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket2%);</command>
+      <command>if (socketOwnerHanseatic &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket2">trUnitSelect("%Socket2%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpHansaWaterSpawnFlag2", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnHanseatic2");</command>
+      <command>xsDisableRule("trainHanseaticCaravel2ON");</command>
+      <command>xsDisableRule("trainHanseaticFluyt2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticCaravel2ON</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket2%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket2%, socketOwnerHanseatic, "zpHanseaticWarshipProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpTrainHansaCog2, cTechStatusActive);</command>
+      <command>xsEnableRule("trainHanseaticCaravel2OFF");</command>
+      <command>xsEnableRule("trainHanseaticCaravel2TIME");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticCaravel2OFF</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("trainHanseaticCaravel2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticCaravel2TIME</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket2%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpReduceHansaCogBuildLimit, cTechStatusActive);</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpTrainHansaCog2, cTechStatusUnobtainable);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticFluyt2ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket2%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket2%, socketOwnerHanseatic, "zpHanseaticFluytProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpTrainHansaFluyt2, cTechStatusActive);</command>
+      <command>xsEnableRule("trainHanseaticFluyt2TIME");</command>
+      <command>xsEnableRule("trainHanseaticFluyt2OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticFluyt2OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("trainHanseaticFluyt2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticFluyt2TIME</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket2%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpReduceHansaFluytBuildLimit, cTechStatusActive);</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpTrainHansaFluyt2, cTechStatusUnobtainable);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule Hanseatic_politicians_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int HanseaticFaction=-1;</command>
+      <command>if (HanseaticFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomHanseaticFaction", 0, 2);</command>
+      <command>HanseaticFaction = trQuestVarGet("RandomHanseaticFaction");</command>
+      <command>}</command>
+      <command>if (HanseaticFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateHansaWestern, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (HanseaticFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateHansaCentral, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (HanseaticFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateHansaEast, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if HanseaticExpansion is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpHansaExpansion)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffHansa, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule ewnuhgerbask active { if (true) { xsDisableSelf();</command>
+    </effect>
   </effects>
 </trigger>

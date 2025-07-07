@@ -29411,6 +29411,9 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatHanseaticLegion</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpHanseaticWarshipProxy</target>
+      </effect>
       <effect type="TechStatus" status="obtainable">zpNatVeteranHansa</effect>
       <effect type="TechStatus" status="obtainable">zpNatGuardHansa</effect>
       <effect type="TechStatus" status="obtainable">zpHansaExpansion</effect>
@@ -29910,6 +29913,47 @@
       <effect type="TechStatus" status="obtainable">zpConsulateHansaEast</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffHansa</effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainHansaCog1" type="Normal">
+    <dbid>41156</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpHanseaticWarship</target>
+      </effect>
+      <effect type="Data" action="SpawnHansaCog" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpHansaWaterSpawnFlag1">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTrainHansaCog2" type="Normal">
+    <dbid>41157</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpHanseaticWarship</target>
+      </effect>
+      <effect type="Data" action="SpawnHansaCog" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpHansaWaterSpawnFlag2">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpReduceHansaCogBuildLimit" type="Normal">
+    <dbid>41158</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>YPInfiniteTech</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="-1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpHanseaticWarship</target>
+      </effect>
     </effects>
   </tech>
 

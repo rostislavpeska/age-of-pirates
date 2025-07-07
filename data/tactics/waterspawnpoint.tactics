@@ -182,6 +182,14 @@
     <persistent>0</persistent>
     <singleuse>1</singleuse>
   </action>
+  <action>
+    <name stringid="69776">SpawnHansaCog</name>
+    <type>Spawn</type>
+    <rate type="zpHanseaticWarship">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
   <tactic>Normal
     <action>Heal</action>
     <action>SpawnPrivateer</action>
@@ -200,5 +208,6 @@
     <action>SpawnSubmarineSPC</action>
     <action>SpawnNautilusSPC</action>
     <action>SpawnHansaFluyt</action>
+    <action>SpawnHansaCog</action>
   </tactic>
 </tactics>
