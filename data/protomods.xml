@@ -61390,7 +61390,7 @@
     <maxrunvelocity>10.5000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>3.0000</turnrate>
-    <animfile>units\naval\caravel_ship\caravel_ship.xml</animfile>
+    <animfile>units\naval\caravel_ship\hanseatic_caravel.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\units\naval\caravel_ship\caravel_ship_icon.png</icon>
@@ -61518,7 +61518,7 @@
     <maxrunvelocity>10.5000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>3.0000</turnrate>
-    <animfile>units\naval\caravel_ship\caravel_ship.xml</animfile>
+    <animfile>units\naval\caravel_ship\hanseatic_tr_caravel.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\units\naval\caravel_ship\caravel_ship_icon.png</icon>
@@ -61697,6 +61697,57 @@
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
     <flag>NotPlayerPlaceable</flag>
+  </unit>
+  <unit id="20848" name="zpNativeHouseHansa">
+    <dbid>20848</dbid>
+    <displaynameid>302860</displaynameid>
+    <editornameid>302937</editornameid>
+    <subciv>zpHansaKontorFlag</subciv>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\architekture\props_hanse_filler.xml</animfile>
+    <portraiticon>resources\art\units\natives\hansakontor.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <flag>FlattenGround</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
   </unit>
 
 

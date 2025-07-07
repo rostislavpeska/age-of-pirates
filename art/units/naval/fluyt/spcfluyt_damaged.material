@@ -35,7 +35,7 @@
       </texture>
     </parameters>
     <parameters variant="1">
-      <texture name="BaseColor" override="units\naval\galleon\textures\galleon_matB_BaseColor">
+      <texture name="BaseColor" override="units\naval\galleon\textures\hanseatic_fluyt_matB_BaseColor">
       </texture>
       <texture name="Normals" override="units\naval\galleon\textures\galleon_matb_normals">
       </texture>
