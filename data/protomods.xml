@@ -1631,7 +1631,10 @@
 
     <tech row="0" page="1" column="1">zpNatVeteranHansa</tech>
     <tech row="0" page="1" column="1">zpNatGuardHansa</tech>
+    <tech row="0" page="1" column="2">zpHansaArsenal</tech>
     <tech row="0" page="1" column="1">zpHansaExpansion</tech>
+    <tech row="0" page="2" column="1">zpHansaTrade</tech>
+    <tech row="0" page="2" column="2">zpHansaCoastalDefense</tech>
 
     <!-- Wild West Techs -->
     <tech row="0" page="2" column="1">zpWildWestWhiskeyFactory</tech>

@@ -10181,8 +10181,8 @@
   <tech name="zpVeniceTrade" type="Normal">
     <dbid>40714</dbid>
     <displaynameid>300754</displaynameid>
-    <cost resourcetype ="Gold">400.0000</cost>
-    <researchpoints>50.0000</researchpoints>
+    <cost resourcetype ="Gold">300.0000</cost>
+    <researchpoints>20.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\venice_merchants.png</icon>
     <rollovertextid>300755</rollovertextid>
@@ -29419,6 +29419,9 @@
       <effect type="TechStatus" status="obtainable">zpHansaExpansion</effect>
       <effect type="TechStatus" status="obtainable">zpHansaBattleship</effect>
       <effect type="TechStatus" status="obtainable">zpNatTeutonicFort</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaTrade</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaCoastalDefense</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaArsenal</effect>
       
       <effect type="TechStatus" status="obtainable">zpNativeTreatyHansa</effect>
       <effect type="TechStatus" status="obtainable">zpIndianFriendshipHansa</effect>
@@ -29692,35 +29695,6 @@
       </effect>
     </effects>
   </tech>
-  <tech name="zpConsulateHansaWestern" type="Normal">
-    <dbid>41150</dbid>
-    <displaynameid>302920</displaynameid>
-    <cost resourcetype="Gold">250.0000</cost>
-    <researchpoints>1.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\hansa_small.png</icon>
-    <rollovertextid>302921</rollovertextid>
-    <flag>CountsTowardMilitaryScore</flag>
-    <flag>YPConsulateTech</flag>
-    <flag>YPSequesterTech</flag>
-    <flag>DoNotQueue</flag>
-    <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpHanseaticFluytProxy</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpHanseaticFluytProxy" page="0" column="4">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="TechStatus" status="unobtainable">zpHansaExpansion</effect>
-      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
-      <effect type="CommandRemove" tech="zpHansaExpansion">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpHansaBattleship" page="2" column="5">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-    </effects>
-  </tech>
   <tech name="zpHansaBattleship" type="Normal">
     <dbid>41151</dbid>
     <displaynameid>302923</displaynameid>
@@ -29953,6 +29927,94 @@
     <effects>
       <effect type="Data" amount="-1.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpHanseaticWarship</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHansaTrade" type="Normal">
+    <dbid>41159</dbid>
+    <displaynameid>302938</displaynameid>
+    <cost resourcetype ="Gold">400.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hansa_kontor_trade.png</icon>
+    <rollovertextid>302939</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="1.30" subtype="InventoryAmount" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTradeCrate</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="InventoryAmount" resource="Food" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTradeCrate</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="InventoryAmount" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTradeCrate</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="InventoryAmount" resource="XP" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTradeCrate</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="InventoryAmount" resource="Influence" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTradeCrate</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHansaCoastalDefense" type="Normal">
+    <dbid>41160</dbid>
+    <displaynameid>302940</displaynameid>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hansa_kontor_defense.png</icon>
+    <rollovertextid>302941</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" action="AntiShipAttack" amount="1.40" subtype="Damage" relativity="BasePercent">
+        <target type="ProtoUnit">Building</target>
+      </effect>
+      <effect type="Data" action="AntiShipAttack" amount="2.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">Building</target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="LOS" relativity="Absolute">
+        <target type="ProtoUnit">AbstractOutpost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHansaArsenal" type="Normal">
+    <dbid>41161</dbid>
+    <displaynameid>302942</displaynameid>
+    <researchpoints>30.0000</researchpoints>
+    <cost resourcetype ="Gold">450.0000</cost>
+    <cost resourcetype ="Wood">450.0000</cost>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hansa_bremen_arsenal.png</icon>
+    <rollovertextid>302943</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status ="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpHanseaticFluyt</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpHanseaticWarship</target>
+      </effect>
+      <effect type="Data" action="RangedAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpHanseaticWarship</target>
+      </effect>
+      <effect type="Data" action="RangedAttackContained" amount="3.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpHanseaticWarship</target>
+      </effect>
+      <effect type="Data" action="ChargeBroadsideAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpHanseaticWarship</target>
+      </effect>
+      <effect type="Data" action="RangedAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpHanseaticFluyt</target>
+      </effect>
+      <effect type="Data" action="RangedAttackContained" amount="3.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpHanseaticFluyt</target>
       </effect>
     </effects>
   </tech>
