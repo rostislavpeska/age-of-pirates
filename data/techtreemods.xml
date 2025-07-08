@@ -29422,7 +29422,8 @@
       <effect type="TechStatus" status="obtainable">zpHansaTrade</effect>
       <effect type="TechStatus" status="obtainable">zpHansaCoastalDefense</effect>
       <effect type="TechStatus" status="obtainable">zpHansaArsenal</effect>
-      
+      <effect type="TechStatus" status="obtainable">zpHansaTradePosts</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaTeutonknights</effect>
       <effect type="TechStatus" status="obtainable">zpNativeTreatyHansa</effect>
       <effect type="TechStatus" status="obtainable">zpIndianFriendshipHansa</effect>
       <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyHansa</effect>
@@ -29984,15 +29985,15 @@
     <dbid>41161</dbid>
     <displaynameid>302942</displaynameid>
     <researchpoints>30.0000</researchpoints>
-    <cost resourcetype ="Gold">450.0000</cost>
-    <cost resourcetype ="Wood">450.0000</cost>
+    <cost resourcetype ="Gold">350.0000</cost>
+    <cost resourcetype ="Wood">350.0000</cost>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\hansa_bremen_arsenal.png</icon>
     <rollovertextid>302943</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <prereqs>
-			<techstatus status ="Active">Industrialize</techstatus>
+			<techstatus status ="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
@@ -30015,6 +30016,49 @@
       </effect>
       <effect type="Data" action="RangedAttackContained" amount="3.00" subtype="MaximumRange" relativity="Absolute">
         <target type="ProtoUnit">zpHanseaticFluyt</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHansaTradePosts" type="Normal">
+    <dbid>41162</dbid>
+    <displaynameid>302944</displaynameid>
+    <researchpoints>20.0000</researchpoints>
+    <cost resourcetype ="Wood">350.0000</cost>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hansa_tradeposts.png</icon>
+    <rollovertextid>302945</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="0.50" subtype="Cost" resource="Wood" relativity="Percent">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="0.50" subtype="BuildPoints" relativity="Percent">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHansaTeutonknights" type="Normal">
+    <dbid>41163</dbid>
+    <displaynameid>302946</displaynameid>
+    <cost resourcetype="Wood">150.0000</cost>
+    <cost resourcetype="Gold">150.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hansa_teutonic_guard.png</icon>
+    <rollovertextid>302947</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status ="active">Fortressize</techstatus>
+		</prereqs>
+    <effects>
+      <effect type="Data" action="SpawnTeutonicKnights" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="TradingPost">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>

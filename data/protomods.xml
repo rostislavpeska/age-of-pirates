@@ -1635,6 +1635,8 @@
     <tech row="0" page="1" column="1">zpHansaExpansion</tech>
     <tech row="0" page="2" column="1">zpHansaTrade</tech>
     <tech row="0" page="2" column="2">zpHansaCoastalDefense</tech>
+    <tech row="0" page="2" column="3">zpHansaTradePosts</tech>
+    <tech row="0" page="2" column="4">zpHansaTeutonknights</tech>
 
     <!-- Wild West Techs -->
     <tech row="0" page="2" column="1">zpWildWestWhiskeyFactory</tech>
@@ -60205,7 +60207,7 @@
     <unitaitype>HandCombative</unitaitype>
     <trainpoints>30.0000</trainpoints>
     <populationcount>0</populationcount>
-    <buildlimit>10</buildlimit>
+    <buildlimit>11</buildlimit>
     <bounty>11.0000</bounty>
     <buildbounty>11.0000</buildbounty>
     <cost resourcetype="Gold">45.0000</cost>
@@ -61396,8 +61398,8 @@
     <animfile>units\naval\caravel_ship\hanseatic_caravel.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\units\naval\caravel_ship\caravel_ship_icon.png</icon>
-    <portraiticon>resources\art\units\naval\caravel_ship\caravel_ship_portrait.png</portraiticon>
+    <icon>resources\art\units\naval\spc\hansa_war_cog_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\hansa_war_cog.png</portraiticon>
     <rollovertextid>302933</rollovertextid>
     <shortrollovertextid>302933</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
@@ -61510,7 +61512,7 @@
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
-  <unit id="20846" name="zpHanseaticTradehip">
+  <unit id="20846" name="zpHanseaticTradeship">
     <dbid>20846</dbid>
     <displaynameid>302934</displaynameid>
     <editornameid>302935</editornameid>
@@ -61524,8 +61526,8 @@
     <animfile>units\naval\caravel_ship\hanseatic_tr_caravel.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\units\naval\caravel_ship\caravel_ship_icon.png</icon>
-    <portraiticon>resources\art\units\naval\caravel_ship\caravel_ship_portrait.png</portraiticon>
+    <icon>resources\art\units\naval\spc\hansa_war_cog_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\hansa_trade_cog.png</portraiticon>
     <rollovertextid>302936</rollovertextid>
     <shortrollovertextid>302936</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
@@ -61647,7 +61649,7 @@
     <obstructionradiusz>0.4900</obstructionradiusz>
     <movementtype>land</movementtype>
     <animfile>effects\projectiles\musket_ball.xml</animfile>
-    <icon>resources\art\units\naval\caravel_ship\caravel_ship_icon.png</icon>
+    <icon>resources\art\units\naval\spc\hansa_war_cog_icon.png</icon>
     <portraiticon>resources\art\units\naval\caravel_ship\caravel_ship_portrait.png</portraiticon>
     <rollovertextid>302933</rollovertextid>
     <shortrollovertextid>302933</shortrollovertextid>

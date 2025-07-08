@@ -1,5 +1,5 @@
 <protounitsounddef>
-  <protounit name="zpHanseaticTradehip">
+  <protounit name="zpHanseaticTradeship">
     <soundtype name="Grunt">
       <soundset name="CavalryGrunt">
       </soundset>

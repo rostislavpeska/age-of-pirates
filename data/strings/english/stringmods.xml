@@ -2940,7 +2940,12 @@
       <string _locid="302941">Increases building anti-ship attack and attack range. Increases Outpost line of sight.</string>
       <string _locid="302942">Bremer Schiffsbewaffnung</string>
       <string _locid="302943">Increases Kontor ship's attack and attack range.</string>
-
+      <string _locid="302944">Pfahlrecht</string>
+      <string _locid="302945">Constructing Trading Posts has never been easier. Reduces Trading Post costs and build time. Increases Trading Post hitpoints.</string>
+      <string _locid="302946">Order's Protection</string>
+      <string _locid="302947">Every Hanseatic Settlement you own spawns 3 Teutonic Knights.</string>
+      <string _locid="302948">Spawn Teutonic Knights</string>
+      
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
