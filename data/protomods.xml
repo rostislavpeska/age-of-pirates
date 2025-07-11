@@ -59814,7 +59814,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\trading_post\jesuit_outpost_socket.xml</animfile>
+    <animfile>buildings\trading_post\europe_outpost_socket_v3.xml</animfile>
     <minimapicon>ui\minimap\t</minimapicon>
     <portraiticon>resources\art\units\natives\hansakontor.png</portraiticon>
     <rollovertextid>300729</rollovertextid>
@@ -59832,7 +59832,7 @@
     <unittype>Unattackable</unittype>
     <unittype>NativeBuilding</unittype>
     <unittype>EmbellishmentClass</unittype>
-     <flag>HeroName1</flag>
+    <flag>HeroName1</flag>
     <flag>MinimapDisplayOnTop</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
@@ -61421,7 +61421,7 @@
     </decay>
     <sharedbuildlimitunittypes>
       <unittype>zpHanseaticWarship</unittype>
-      <unittype>zpHanseaticTradehip</unittype>
+      <unittype>zpHanseaticTradeship</unittype>
       <unittype>zpHanseaticWarshipProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
@@ -61550,7 +61550,7 @@
     <sharedbuildlimitunit>zpHanseaticWarship</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
       <unittype>zpHanseaticWarship</unittype>
-      <unittype>zpHanseaticTradehip</unittype>
+      <unittype>zpHanseaticTradeship</unittype>
       <unittype>zpHanseaticWarshipProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
@@ -61664,7 +61664,7 @@
     <sharedbuildlimitunit>zpHanseaticWarship</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
       <unittype>zpHanseaticWarship</unittype>
-      <unittype>zpHanseaticTradehip</unittype>
+      <unittype>zpHanseaticTradeship</unittype>
       <unittype>zpHanseaticWarshipProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.7500">
@@ -61707,7 +61707,7 @@
     <dbid>20848</dbid>
     <displaynameid>302860</displaynameid>
     <editornameid>302937</editornameid>
-    <subciv>zpHansaKontorFlag</subciv>
+    <subciv>zpHansaKontor</subciv>
     <obstructionradiusx>3.0000</obstructionradiusx>
     <obstructionradiusz>3.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
@@ -61753,6 +61753,110 @@
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
+  </unit>
+  <unit id="20849" name="zpNativeHouseHansaBig">
+    <dbid>20849</dbid>
+    <displaynameid>302860</displaynameid>
+    <editornameid>302949</editornameid>
+    <subciv>zpHansaKontor</subciv>
+    <obstructionradiusx>5.5000</obstructionradiusx>
+    <obstructionradiusz>7.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\hanseatic\hansa_townhall.xml</animfile>
+    <portraiticon>resources\art\units\natives\hansakontor.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <flag>FlattenGround</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+  </unit>
+   <unit id="20850" name="zpSocketHansaKontor">
+    <dbid>20850</dbid>
+    <displaynameid>302860</displaynameid>
+    <editornameid>302950</editornameid>
+    <subciv>zpHansaKontor</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>1.0286</socketbuildrate>
+    <socketbuildcommandid>deSocketBuildEuropean</socketbuildcommandid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+    <animfile>buildings\trading_post\europe_outpost_socket_v3.xml</animfile>
+    <minimapicon>ui\minimap\naval_site</minimapicon>
+    <capturedminimapicon>ui\minimap\naval_site_c</capturedminimapicon>
+    <portraiticon>resources\art\units\natives\hansakontor.png</portraiticon>
+    <rollovertextid>300729</rollovertextid>
+    <shortrollovertextid>300729</shortrollovertextid>
+    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+    <los>9.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>CapturableSocket</unittype>
+    <flag>HeroName1</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>NativePreview</flag>
+    <flag>NotDeleteable</flag>
+    <flag>SocketSubCivAlliance</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>FlattenGround</flag>
+    <flag>EnterHotkeyContext</flag>
+    <tactics>socketcapture.tactics</tactics>
   </unit>
 
 
@@ -63950,7 +64054,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\native_settlement\medieval_palaces\medieval_palace.xml</animfile>
+    <animfile>buildings\hanseatic\hansa_townhall.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>

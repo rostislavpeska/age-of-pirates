@@ -2857,8 +2857,8 @@
       <string _locid="302858">ZP Maya Granary PROP</string>
       <string _locid="302859">ZP PROP Jungle</string>
       <string _locid="302860">Hansa Kontor</string>
-      <string _locid="302861">ZP Socket Hansa Kontor City State</string>
-      <string _locid="302862">ZP Hanseatic Flag</string>
+      <string _locid="302861">ZP Socket Hansa City State</string>
+      <string _locid="302862">ZP Hansa Flag</string>
       <string _locid="302863">Pueblo</string>
       <string _locid="302864">ZP Socket Pueblo</string>
       <string _locid="302865">In our village, we share the sun, the shade, and the silence. Come with respect, and you are welcome.</string>
@@ -2878,7 +2878,7 @@
       <string _locid="302879">ZP NAT Teutonic Knight</string>
       <string _locid="302880">German Crusader and protector of the Eastern regions.</string>
       <string _locid="302881">Hanseatic legionary Footman with lower initial stats. Benefits from promotions.</string>
-      <string _locid="302882">ZP NAT Hanseatic Legion</string>
+      <string _locid="302882">ZP NAT Hansa Legion</string>
       <string _locid="302883">Hanseatic Legion</string>
       <string _locid="302884">ZP NAT MERC Hanseatic Legion</string>
       <string _locid="302885">ZP Teutonic Fort</string>
@@ -2898,9 +2898,9 @@
       <string _locid="302899">Zeal</string>
       <string _locid="302900">Increases damage for following nearby units: Mounted Crussader, Teutonic Knight, Maltese Knight, Maltese Guard</string>
       <string _locid="302901">Kontor Fluyt</string>
-      <string _locid="302902">ZP SHP Kontor Fluyt</string>
+      <string _locid="302902">ZP SHP Hansa Kontor Fluyt</string>
       <string _locid="302903">Hanseatic Merchant</string>
-      <string _locid="302904">ZP hanseatic Merchant</string>
+      <string _locid="302904">ZP Hansa Merchant</string>
       <string _locid="302905">Request Hanseatic Legion deliveries at this Trading Post.</string>
       <string _locid="302906">This Trading Post is delivering Hanseatic Legions.</string>
       <string _locid="302907">Veteran Hanseatic Armies</string>
@@ -2933,7 +2933,7 @@
       <string _locid="302934">Trade Cog</string>
       <string _locid="302935">ZP SHP Trade Cog</string>
       <string _locid="302936">Convertible trade / war ship, currently in trade mode</string>
-      <string _locid="302937">ZP NAT House Hansa Kontor</string>
+      <string _locid="302937">ZP NAT House Hansa</string>
       <string _locid="302938">Kontor Trade</string>
       <string _locid="302939">Grants resources for future control of Trading Routes.\n • Trade Routes: Future income improved by +30%</string>
       <string _locid="302940">Uferschanze</string>
@@ -2941,10 +2941,22 @@
       <string _locid="302942">Bremer Schiffsbewaffnung</string>
       <string _locid="302943">Increases Kontor ship's attack and attack range.</string>
       <string _locid="302944">Pfahlrecht</string>
-      <string _locid="302945">Constructing Trading Posts has never been easier. Reduces Trading Post costs and build time. Increases Trading Post hitpoints.</string>
+      <string _locid="302945">Constructing Trading Posts has never been easier. Reduces Trading Post costs. Increases Trading Post hitpoints.</string>
       <string _locid="302946">Order's Protection</string>
       <string _locid="302947">Every Hanseatic Settlement you own spawns 3 Teutonic Knights.</string>
       <string _locid="302948">Spawn Teutonic Knights</string>
+      <string _locid="302949">ZP NAT House Hansa Big</string>
+      <string _locid="302950">ZP Socket Hansa</string>
+      <string _locid="302951">Hamburg (Hansa Kontor)</string>
+      <string _locid="302952">Bremen (Hansa Kontor)</string>
+      <string _locid="302953">Lübeck (Hansa Kontor)</string>
+      <string _locid="302954">Visby (Hansa Kontor)</string>
+      <string _locid="302955">Tallinn (Hansa Kontor)</string>
+      <string _locid="302956">Riga (Hansa Kontor)</string>
+      <string _locid="302957">Gdańsk (Hansa Kontor)</string>
+      <string _locid="302958">Bruges (Hansa Kontor)</string>
+      <string _locid="302959">Torun (Hansa Kontor)</string>
+      <string _locid="302960">Osnabrück (Hansa Kontor)</string>
       
 
       <!-- ======================================== -->

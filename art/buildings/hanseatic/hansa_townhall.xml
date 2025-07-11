@@ -1,0 +1,29 @@
+<animfile>
+	<component>
+		building
+		<logic type="Variation">
+			<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\hanseatic\hansa_townhall</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\church\polish_church_age2</file>
+				</assetreference>
+			</data>
+		</logic>
+		<decal>
+            <effecttype>bump</effecttype>
+            <texture>buildings\church\british_church_age2_ground</texture>
+            <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+            <width>11.00</width>
+            <height>13.00</height>
+        </decal>
+	</component>
+	<anim>
+		Idle
+		<component>building</component>
+	</anim>
+</animfile>

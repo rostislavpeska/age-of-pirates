@@ -30030,10 +30030,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <effects>
-      <effect type="Data" amount="0.50" subtype="Cost" resource="Wood" relativity="Percent">
-        <target type="ProtoUnit">TradingPost</target>
-      </effect>
-      <effect type="Data" amount="0.50" subtype="BuildPoints" relativity="Percent">
+      <effect type="Data" amount="0.25" subtype="Cost" resource="Wood" relativity="Percent">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="Data" amount="2.00" subtype="Hitpoints" relativity="BasePercent">
