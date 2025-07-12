@@ -60619,6 +60619,7 @@
     <movementtype>water</movementtype>
     <turnrate>2.0000</turnrate>
     <animfile>units\naval\fluyt\hanseatic_fluyt.xml</animfile>
+    <civflagoverride>objects\flags\hansakontor</civflagoverride>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\units\naval\spc\hanseatic_fluyt_icon.png</icon>
@@ -61394,6 +61395,7 @@
     <movementtype>water</movementtype>
     <turnrate>3.0000</turnrate>
     <animfile>units\naval\caravel_ship\hanseatic_caravel.xml</animfile>
+    <civflagoverride>objects\flags\hansakontor</civflagoverride>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\units\naval\spc\hansa_war_cog_icon.png</icon>
@@ -61529,6 +61531,7 @@
     <movementtype>water</movementtype>
     <turnrate>3.0000</turnrate>
     <animfile>units\naval\caravel_ship\hanseatic_tr_caravel.xml</animfile>
+    <civflagoverride>objects\flags\hansakontor</civflagoverride>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\units\naval\spc\hansa_war_cog_icon.png</icon>
