@@ -343,7 +343,7 @@
     <ability>dePowerBlock<rof>60</rof><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zphansasteamer>
   <zphanseaticwarship>
-    <ability>zpPowerCogTrade<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
+    <!--<ability>zpPowerCogTrade<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>-->
     <ability>deChargeAbilityBroadside<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
   </zphanseaticwarship>
   <zphanseatictradeship>

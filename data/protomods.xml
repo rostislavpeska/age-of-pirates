@@ -10014,7 +10014,7 @@
     <portraiticon>resources\art\units\natives\yodit.png</portraiticon>
     <buildlimit>10</buildlimit>
     <cost resourcetype="Gold">60.0000</cost>
-    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Food">20.0000</carrycapacity>
     <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
     <carrycapacity resourcetype="Influence">1.0000</carrycapacity>
@@ -61447,6 +61447,9 @@
     <unittype>Military</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Unit</unittype>
+
+    <unittype>zpSPCTradeUnit</unittype>
+
     <flag>HeroName1</flag>
     <flag>HasGatherPoint</flag>
     <flag>TieToWaterSurface</flag>
@@ -61507,6 +61510,11 @@
       <damagebonus type="Ship">2.000000</damagebonus>
       <damagearea>1.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>Autogather</name>
+      <active>1</active>
+      <rate type="Gold">3.000000</rate>
     </protoaction>
   </unit>
   <unit id="20846" name="zpHanseaticTradeship">
@@ -61601,6 +61609,7 @@
     <tactics>tradecog.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
+      <active>1</active>
       <rate type="Gold">3.000000</rate>
     </protoaction>
   </unit>

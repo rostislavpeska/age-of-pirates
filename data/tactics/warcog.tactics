@@ -94,11 +94,17 @@
     <rate type="AbstractFish">0.4</rate>
     <rate type="AbstractWhale">0.4</rate>
   </action>
-  <action>
+  <!--<action>
     <name stringid="69148">DelayedTransform</name>
     <type>DelayedTransform</type>
     <anim>Pickup</anim>
     <modifyprotoid>zpHanseaticTradeship</modifyprotoid>
+  </action>-->
+  <action>
+    <name stringid="43019">AutoGather</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+    <active>1</active>
   </action>
   <tactic>Normal<speedmodifier>1.0</speedmodifier><action priority="100">ChargeBroadsideAttack</action><action priority="95">RangedAttack</action><action priority="95">RangedAttackContained</action><action>Discover</action><action>BoatManager</action><action>Gather</action><action>DelayedTransform</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
   <tactic>Line<speedmodifier>1.0</speedmodifier><action priority="100">ChargeBroadsideAttack</action><action priority="95">RangedAttack</action><action priority="95">RangedAttackContained</action><action>Discover</action><action>BoatManager</action><action>Gather</action><action>DelayedTransform</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
@@ -106,4 +112,5 @@
   <tactic>Square<speedmodifier>1.0</speedmodifier><action priority="100">ChargeBroadsideAttack</action><action priority="95">RangedAttack</action><action priority="95">RangedAttackContained</action><action>Discover</action><action>BoatManager</action><action>Gather</action><action>DelayedTransform</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
   <tactic>Circle<speedmodifier>1.0</speedmodifier><action priority="100">ChargeBroadsideAttack</action><action priority="95">RangedAttack</action><action priority="95">RangedAttackContained</action><action>Discover</action><action>BoatManager</action><action>Gather</action><action>DelayedTransform</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
   <tactic>NoFormation<speedmodifier>1.0</speedmodifier><action priority="100">ChargeBroadsideAttack</action><action priority="95">RangedAttack</action><action priority="95">RangedAttackContained</action><action>Discover</action><action>BoatManager</action><action>Gather</action><action>DelayedTransform</action><idleanim>Idle</idleanim><moveanim>Walk</moveanim><deathanim>Death</deathanim><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget></tactic>
+  <tactic>CogTrade<action>AutoGather</action><action>DelayedTransform</action></tactic>
 </tactics>
