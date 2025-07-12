@@ -1,0 +1,15 @@
+<tactics>
+  <action>
+    <name stringid="43019">AutoGather</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+    <active>1</active>
+  </action>
+  <action>
+    <name stringid="69148">DelayedTransform</name>
+    <type>DelayedTransform</type>
+    <anim>Pickup</anim>
+    <modifyprotoid>zpHanseaticWarship</modifyprotoid>
+  </action>
+  <tactic>CogTrade<action>AutoGather</action><action>DelayedTransform</action></tactic>
+</tactics>

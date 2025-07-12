@@ -31,4 +31,5 @@
   <unittype>CivilWarCityState</unittype>
   <unittype>zpAbstractFortCenter</unittype>
   <unittype>AbstractCrussaderKnight</unittype>
+  <unittype>zpSPCTradeUnit</unittype>
 </unittypes>

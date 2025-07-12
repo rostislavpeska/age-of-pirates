@@ -526,6 +526,27 @@
     <allowduringnorush>1</allowduringnorush>
   </power>
 
+  <power name="zpPowerCogTrade" type="UnitAction">
+    <displaynameid>302961</displaynameid>
+    <rolloverid>302962</rolloverid>
+    <icon>resources\images\icons\command\generate_coin_off.png</icon>
+    <activetime>4</activetime>
+    <radius>5.0</radius>
+    <placement forceonmap="1" ally="">unit</placement>
+    <unitaction>DelayedTransform</unitaction>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpPowerCogMWar" type="UnitAction">
+    <displaynameid>302963</displaynameid>
+    <rolloverid>302964</rolloverid>
+    <icon>resources\images\icons\command\tactics_melee_avl.png</icon>
+    <activetime>4</activetime>
+    <radius>5.0</radius>
+    <placement forceonmap="1" ally="">unit</placement>
+    <unitaction>DelayedTransform</unitaction>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+
 
 
 

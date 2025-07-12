@@ -47504,7 +47504,6 @@
     <flag>AllowAutoGarrison</flag>
     <flag>Tracked</flag>
     <flag>AllowTrainingOnWater</flag>
-    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
@@ -60689,7 +60688,6 @@
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
-    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="5">Eject</command>
@@ -61465,14 +61463,13 @@
     <flag>NavalUnit</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
-    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
     <command page="10" column="5">Eject</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
-    <tactics>sloop.tactics</tactics>
+    <tactics>warcog.tactics</tactics>
     <protoaction>
       <name>Gather</name>
       <rate type="AbstractFish">0.670000</rate>
@@ -61578,6 +61575,7 @@
     <unittype>Military</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Unit</unittype>
+    <unittype>zpSPCTradeUnit</unittype>
     <flag>HeroName1</flag>
     <flag>HasGatherPoint</flag>
     <flag>TieToWaterSurface</flag>
@@ -61594,51 +61592,16 @@
     <flag>NavalUnit</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
-    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
     <command page="10" column="5">Eject</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
-    <tactics>sloop.tactics</tactics>
+    <tactics>tradecog.tactics</tactics>
     <protoaction>
-      <name>Gather</name>
-      <rate type="AbstractFish">0.670000</rate>
-      <rate type="AbstractWhale">0.500000</rate>
-    </protoaction>
-    <protoaction>
-      <name>RangedAttack</name>
-      <damage>110.000000</damage>
-      <damagetype>Siege</damagetype>
-      <maxrange>22.000000</maxrange>
-      <rof>3.000000</rof>
-      <damagecap>230.000000</damagecap>
-      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
-      <damagearea>1.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
-    </protoaction>
-    <protoaction>
-      <name>RangedAttackContained</name>
-      <damage>110.000000</damage>
-      <damagetype>Siege</damagetype>
-      <maxrange>22.000000</maxrange>
-      <rof>3.000000</rof>
-      <damagecap>230.000000</damagecap>
-      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
-      <damagearea>1.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
-    </protoaction>
-    <protoaction>
-      <name>ChargeBroadsideAttack</name>
-      <damage>34.000000</damage>
-      <damagetype>Siege</damagetype>
-      <maxrange>20.000000</maxrange>
-      <rof>0.050000</rof>
-      <damagecap>100.000000</damagecap>
-      <damagebonus type="Ship">2.000000</damagebonus>
-      <damagearea>1.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
+      <name>Autogather</name>
+      <rate type="Gold">3.000000</rate>
     </protoaction>
   </unit>
   <unit id="20847" name="zpHanseaticWarshipProxy">

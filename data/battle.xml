@@ -807,6 +807,15 @@
     <unavailableicon>resources\images\icons\command\diver_volley_off.png</unavailableicon>
     <rolloverstringid>31348</rolloverstringid>
   </squadmode>
+  <squadmode>
+    <name>CogTrade</name>
+    <tactic>CogTrade</tactic>
+    <unittype>zpSPCTradeUnit</unittype>
+    <activeicon>resources\images\icons\command\cogtrade_on.png</activeicon>
+    <availableicon>resources\images\icons\command\cogtrade_off.png</availableicon>
+    <unavailableicon>resources\images\icons\command\cogtrade_off.png</unavailableicon>
+    <rolloverstringid>302965</rolloverstringid>
+  </squadmode>
   
   <!-- Added by AssertiveWall -->
   <squadmode>

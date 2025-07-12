@@ -2957,6 +2957,11 @@
       <string _locid="302958">Bruges (Hansa Kontor)</string>
       <string _locid="302959">Torun (Hansa Kontor)</string>
       <string _locid="302960">Osnabrück (Hansa Kontor)</string>
+      <string _locid="302961">Convert to Trade Cog</string>
+      <string _locid="302962">Once the ship is converted to Trade Cog, it starts generating coin but you lose the full control of the ship until you don't convert it back to War Cog.</string>
+      <string _locid="302963">Convert to War Cog</string>
+      <string _locid="302964">Convert this ship into a standard ship mode.</string>
+      <string _locid="302965">Trade: Looking for the closest friendly dock to trade</string>
       
 
       <!-- ======================================== -->
