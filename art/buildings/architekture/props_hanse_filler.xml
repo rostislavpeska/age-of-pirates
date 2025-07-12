@@ -1,0 +1,27 @@
+<animfile>
+	<component>
+		building
+		<logic type="Variation">
+				<data>
+					<assetreference type="CompositeModel">
+						<file>buildings\architekture\hanse_filler</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="CompositeModel">
+						<file>buildings\hanseatic\hanse_filler</file>
+					</assetreference>
+			    </data>
+		</logic>
+			<decal>
+			<effecttype>default</effecttype>
+			<selectedtexture>shadows_selections\selection_circle_64x64</selectedtexture>
+			<width>4.00</width>
+			<height>4.00</height>
+		</decal>
+	</component>
+	<anim>
+		Idle
+		<component>building</component>
+	</anim>
+</animfile>

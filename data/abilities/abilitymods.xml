@@ -263,7 +263,7 @@
     <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
   </zpspcgermancathedral>
   <zpspcgermancathedralcon0>
-    <ability>ypPowerCeaseFire<tech>zpSPCCathedralStage4</tech><rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+    <ability>zpPowerInformersFrench<tech>zpSPCCathedralStage4</tech><rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
   </zpspcgermancathedralcon0>
   <zpverseilleschurch>
     <ability>zpPowerInformersFrench<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
@@ -329,6 +329,22 @@
   <zpspclimestoneworks>
     <ability>zpPassiveLimestone<tech>zpCathedralConstructionSetup</tech><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpspclimestoneworks>
+  <zpnathanseaticlegion>
+    <ability>dePromotionHpDMG<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnathanseaticlegion>
+  <zpnatmerchanseaticlegion>
+    <ability>dePromotionHpDMG<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatmerchanseaticlegion>
+  <zpmercteutoniccavalry>
+    <ability>zpPassiveZeal<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpmercteutoniccavalry>
+  <zphansasteamer>
+    <ability>PowerLongRange<rof>60</rof></ability>
+    <ability>dePowerBlock<rof>60</rof><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zphansasteamer>
+  <zphanseaticwarship>
+    <ability>deChargeAbilityBroadside<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zphanseaticwarship>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

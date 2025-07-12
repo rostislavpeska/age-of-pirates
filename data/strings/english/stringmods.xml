@@ -740,10 +740,10 @@
       <string _locid="300739">ZP Venetian Fence</string>
       <string _locid="300740">ZP Venetian Unit Naval</string>
       <string _locid="300741">ZP Italian Cathedral</string>
-      <string _locid="300742">ZP Venetian Galleass</string>
+      <string _locid="300742">ZP SHP Venetian Galleass</string>
       <string _locid="300743">Venetian Galleass</string>
       <string _locid="300744">Venetian Galley</string>
-      <string _locid="300745">ZP Venetian Galley</string>
+      <string _locid="300745">ZP SHP Venetian Galley</string>
       <string _locid="300746">ZP Venetian Poles</string>
       <string _locid="300747">Murano (Venetian Settlement)</string>
       <string _locid="300748">Burano (Venetian Settlement)</string>
@@ -851,7 +851,7 @@
       <string _locid="300850">San Spiridion</string>
       <string _locid="300851">Scudo Della Fede</string>
       <string _locid="300852">Venetian Secret Engines</string>
-      <string _locid="300853">Mediterrannean Islands</string>
+      <string _locid="300853">Mediterranean Islands</string>
       <string _locid="300854">Collection of mediterranean islands and two worlds: Europe and the Orient. \n\nSettlements: Venetians, Pirate, Scientists. \n\nOther possible settlements (based on variation): Maltese, Jesuit, Sufi, Jewish</string>
       <string _locid="300855">The barrier between Occident and Orient is moving every closer together.</string>
       <string _locid="300856">Malta</string>
@@ -1914,10 +1914,10 @@
       <string _locid="301913">Improves revolutionary attack and hitpoints</string>
       <string _locid="301914">The Great French Revolution!</string>
       <string _locid="301915">%s has risen the Revolution Flag!</string>
-      <string _locid="301916">Republic of Paris</string>
+      <string _locid="301916">French Union</string>
       <string _locid="301917">La Revolution!</string>
       <string _locid="301918">Revolts to one of the revolutionary factions. \n • Initiates a special type of revolution \n • Transforms all your settlers into Sansculottes \n • Allows Sansculotte training from your Town Center \n • Changes you civilization to one of the revolutionary factions without loosing access to your original homecity and the option to advance to higher age (including Imperial Age)</string>
-      <string _locid="301919">Gilbert du Motier (Republic of Paris)</string>
+      <string _locid="301919">Gilbert du Motier (French Union)</string>
       <string _locid="301920">Nobleman and moderate republican, trains more revolutionaries \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nCavalry Commander \nTeam Galerie Lafayette</string>
       <string _locid="301921">Maximilien Robespierre (French Republic)</string>
       <string _locid="301922">Radical revolutionary leader, population improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nStorm the Barricades \nLoyal Districts</string>
@@ -2275,7 +2275,7 @@
       <string _locid="302275">Women's Club</string>
       <string _locid="302276">ZP Socket Orthodox South</string>
       <string _locid="302277">Alexandrian Galley</string>
-      <string _locid="302278">ZP Alexandrian Galley</string>
+      <string _locid="302278">ZP SHP Alexandrian Galley</string>
       <string _locid="302279">Camel Rifleman</string>
       <string _locid="302280">ZP NAT Camel Rifleman</string>
       <string _locid="302281">Honored Camel Rifleman</string>
@@ -2857,8 +2857,8 @@
       <string _locid="302858">ZP Maya Granary PROP</string>
       <string _locid="302859">ZP PROP Jungle</string>
       <string _locid="302860">Hansa Kontor</string>
-      <string _locid="302861">ZP Socket Hansa Kontor City State</string>
-      <string _locid="302862">ZP Hanseatic Flag</string>
+      <string _locid="302861">ZP Socket Hansa City State</string>
+      <string _locid="302862">ZP Hansa Flag</string>
       <string _locid="302863">Pueblo</string>
       <string _locid="302864">ZP Socket Pueblo</string>
       <string _locid="302865">In our village, we share the sun, the shade, and the silence. Come with respect, and you are welcome.</string>
@@ -2866,8 +2866,98 @@
       <string _locid="302867">Florence versus Rome, eternal rivals fighting on the opposite sides in the Italian Wars. In this map Pope Leo X attacks Florence across the Arno River.</string>
       <string _locid="302868">In 1521 the Aztec Empire is broken. Cortés and his conquistadors are at the gates of Tenochtitlan. Defend the city or join the conquerrors. One player defends the city with the rest attacking. The waters surrounding the city lack water flags and only provide limited options for constructing ships.</string>
       <string _locid="302869">Achieve a naval dominance over the Caribbean Sea. This historical map brings you to the true Golden Age of Piracy and unlocks the full Pirate potential.</string>
-
-
+      <string _locid="302870">ZP PROP Barn No Select</string>
+      <string _locid="302871">This place is a great retreat for meditation and work. If you have good intentions, welcome.</string>
+      <string _locid="302872">ZP HC Fountain Flatten</string>
+      <string _locid="302873">ZP NAT EU Fence Brick A</string>
+      <string _locid="302874">ZP NAT EU Venetian Fence Brick A</string>
+      <string _locid="302875">ZP NAT EU Fence Brick B</string>
+      <string _locid="302876">ZP NAT EU Venetian Fence Brick B</string>
+      <string _locid="302877">Teutonic Knight</string>
+      <string _locid="302878">ZP NAT Teutonic Knight</string>
+      <string _locid="302879">ZP NAT Teutonic Knight</string>
+      <string _locid="302880">German Crusader and protector of the Eastern regions.</string>
+      <string _locid="302881">Hanseatic legionary Footman with lower initial stats. Benefits from promotions.</string>
+      <string _locid="302882">ZP NAT Hansa Legion</string>
+      <string _locid="302883">Hanseatic Legion</string>
+      <string _locid="302884">ZP NAT MERC Hanseatic Legion</string>
+      <string _locid="302885">ZP Teutonic Fort</string>
+      <string _locid="302886">Malbork Castle</string>
+      <string _locid="302887">Königsberg Castle</string>
+      <string _locid="302888">Toruń Castle</string>
+      <string _locid="302889">Elbląg Castle</string>
+      <string _locid="302890">Ragnit Castle</string>
+      <string _locid="302891">Lochstädt Castle</string>
+      <string _locid="302892">Balga Castle</string>
+      <string _locid="302893">Teutonic Fort Wagon</string>
+      <string _locid="302894">ZP Teutonic Fort Wagon</string>
+      <string _locid="302895">Teutonic Fort</string>
+      <string _locid="302896">Mounted Crussader</string>
+      <string _locid="302897">ZP MERC Mounted Crussader</string>
+      <string _locid="302898">Powerful Teutonic Order Cavalry. Provides healing aura for nearby Teutonic Knights.</string>
+      <string _locid="302899">Zeal</string>
+      <string _locid="302900">Increases damage for following nearby units: Mounted Crussader, Teutonic Knight, Maltese Knight, Maltese Guard</string>
+      <string _locid="302901">Kontor Fluyt</string>
+      <string _locid="302902">ZP SHP Hansa Kontor Fluyt</string>
+      <string _locid="302903">Hanseatic Merchant</string>
+      <string _locid="302904">ZP Hansa Merchant</string>
+      <string _locid="302905">Request Hanseatic Legion deliveries at this Trading Post.</string>
+      <string _locid="302906">This Trading Post is delivering Hanseatic Legions.</string>
+      <string _locid="302907">Veteran Hanseatic Armies</string>
+      <string _locid="302908">Guard Hanseatic Armies</string>
+      <string _locid="302909">Veteran Hanseatic Legion</string>
+      <string _locid="302910">Guard Hanseatic Legion</string>
+      <string _locid="302911">Imperial Hanseatic Legion</string>
+      <string _locid="302912">Teutonic Knight Guard</string>
+      <string _locid="302913">Imperial Teutonic Knight</string>
+      <string _locid="302914">Increases Hanseatic land military attack and hitpoints.</string>
+      <string _locid="302915">Kontor Aliance Pact</string>
+      <string _locid="302916">Unlocks more Hanseatic units and techs. </string>
+      <string _locid="302917">Kontor Water Flag</string>
+      <string _locid="302918">ZP Kontor Water Flag 1</string>
+      <string _locid="302919">ZP Kontor Water Flag 2</string>
+      <string _locid="302920">Western Faction</string>
+      <string _locid="302921">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nKontor Fluyt \n\nHanseatic warship, trains Hanseatic Legionaries. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nSMS Hansa</string>
+      <string _locid="302922">ZP MERC Destroyer</string>
+      <string _locid="302923">SMS Hansa</string>
+      <string _locid="302924">Ships a modern Destroyer Class Warship</string>
+      <string _locid="302925">Central Faction</string>
+      <string _locid="302926">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHanseatic Merchant \n\nEconomical faction providing you with a team tech. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nTeam Kontor Market</string>
+      <string _locid="302927">Eastern Faction</string>
+      <string _locid="302928">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nTeutonic Knight \n\nTeutonic Order units and techs, military faction. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nEastern Base</string>
+      <string _locid="302929">Eastern Base</string>
+      <string _locid="302930">Ships a Teutonic Fort Wagon able to construct a Teutonic Fort.</string>
+      <string _locid="302931">War Cog</string>
+      <string _locid="302932">ZP SHP War Cog</string>
+      <string _locid="302933">Convertible trade / war ship, currently in war mode</string>
+      <string _locid="302934">Trade Cog</string>
+      <string _locid="302935">ZP SHP Trade Cog</string>
+      <string _locid="302936">Convertible trade / war ship, currently in trade mode</string>
+      <string _locid="302937">ZP NAT House Hansa</string>
+      <string _locid="302938">Kontor Trade</string>
+      <string _locid="302939">Grants resources for future control of Trading Routes.\n • Trade Routes: Future income improved by +30%</string>
+      <string _locid="302940">Uferschanze</string>
+      <string _locid="302941">Increases building anti-ship attack and attack range. Increases Outpost line of sight.</string>
+      <string _locid="302942">Bremer Schiffsbewaffnung</string>
+      <string _locid="302943">Increases Kontor ship's attack and attack range.</string>
+      <string _locid="302944">Pfahlrecht</string>
+      <string _locid="302945">Constructing Trading Posts has never been easier. Reduces Trading Post costs. Increases Trading Post hitpoints.</string>
+      <string _locid="302946">Order's Protection</string>
+      <string _locid="302947">Every Hanseatic Settlement you own spawns 3 Teutonic Knights.</string>
+      <string _locid="302948">Spawn Teutonic Knights</string>
+      <string _locid="302949">ZP NAT House Hansa Big</string>
+      <string _locid="302950">ZP Socket Hansa</string>
+      <string _locid="302951">Hamburg (Hansa Kontor)</string>
+      <string _locid="302952">Bremen (Hansa Kontor)</string>
+      <string _locid="302953">Lübeck (Hansa Kontor)</string>
+      <string _locid="302954">Visby (Hansa Kontor)</string>
+      <string _locid="302955">Tallinn (Hansa Kontor)</string>
+      <string _locid="302956">Riga (Hansa Kontor)</string>
+      <string _locid="302957">Gdańsk (Hansa Kontor)</string>
+      <string _locid="302958">Bruges (Hansa Kontor)</string>
+      <string _locid="302959">Torun (Hansa Kontor)</string>
+      <string _locid="302960">Osnabrück (Hansa Kontor)</string>
+      
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

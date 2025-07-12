@@ -678,15 +678,14 @@
       <activeicon>resources\images\icons\command\generate_coin_on.png</activeicon>
       <disabledicon>resources\images\icons\command\generate_coin_off.png</disabledicon>
     </unit>
-
-  <!--<unit>
-      <name>zpNatLandsknecht</name>
+    <!--<unit>
+      <name>zpHenseaticLegionProxy</name>
       <count>1</count>
       <mincount>1</mincount>
       <maxcount>1</maxcount>
       <countincrement>0</countincrement>
-      <activetooltipid>61946</activetooltipid>
-      <disabledtooltipid>61949</disabledtooltipid>
+      <activetooltipid>302906</activetooltipid>
+      <disabledtooltipid>302905</disabledtooltipid>
       <techprereq>zpTradeRouteUpgradeHansaShadow</techprereq>
       <activeicon>resources\images\icons\command\tactic_ashigaru_on.png</activeicon>
       <disabledicon>resources\images\icons\command\tactic_ashigaru_off.png</disabledicon>

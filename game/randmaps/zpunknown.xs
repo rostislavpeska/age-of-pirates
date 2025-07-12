@@ -58,6 +58,7 @@ void main(void)
 	int electorSpawn = -1;			// used to spawn electors
 	int SPCZenMountain = -1;
 	int SPCSufiMiddleEast = -1;
+	int rogueMap = -1;			// rogue feature
 	int riverWidthController = 0;	// used to control for amazonia style spawn
 	if (rmRandFloat(0,1) <= 0.95 || rmGetIsTreaty() == true)
 		riverWidthController = 1;	// normal, narrow river
@@ -69,10 +70,10 @@ void main(void)
 	float landConfig = rmRandFloat(0,1);	// RNG for map layout
 //	if (rmGetIsKOTH() == true)
 //		landConfig = rmRandFloat(0.04,0.18);
-//		landConfig = 0.09;		// for testing
+//		landConfig = 0.44;		// for testing
 		rmEchoInfo("land configuration = "+landConfig);
 
-// ============= Land and Water Configuration =============
+	// ============= Land and Water Configuration =============
 	if (rmGetIsKOTH() == true)
 	{
 		if (landConfig < 0.10)
@@ -105,6 +106,7 @@ void main(void)
 		else if (landConfig < 0.29)
 		{
 			splitIsland = 1;
+			rogueMap = 0;
 		}
 		else if (landConfig < 0.39)
 		{
@@ -113,6 +115,7 @@ void main(void)
 		else if (landConfig < 0.49)
 		{
 			riverExists = 1;
+			rogueMap = 0;
 		}
 		else if (landConfig < 0.74)
 		{
@@ -128,6 +131,7 @@ void main(void)
 		else
 		{
 			forestMiddle = 1;
+			rogueMap = 0;
 		}
 	}
 
@@ -463,13 +467,21 @@ void main(void)
 	int waterNuggz = -1;		// water nuggets spawn
 	int tpCapture = -1;			// capturable trade posts
 	int volcanoMap = -1;		// big volcano
-	if (rmRandFloat(0,1) <= 0.17)
-		volcanoMap = 1;
+//	if (rmRandFloat(0,1) <= 0.17)
+//		volcanoMap = 1;
 //		volcanoMap = 1;	// for testing
 	int ausMap = -1;
 	int hawMap = -1;
 	int oceaniaMap = -1;
 	int merryXmass = -1;
+	int centralEU = -1;
+	int westEU = -1;
+	int northwestEU = -1;
+	int mediSeaEU = -1;
+	int mediEU = -1;
+	int eastEU = -1;
+	int northEU = -1;
+	int northeastEU = -1;
 
 	// strings
 	string riverName = "";
@@ -499,51 +511,51 @@ void main(void)
 	
 	if(baseTerrain <= 0.001)	// trollolo
 		trollMap = 1;
-	else if(baseTerrain <= 0.04 && floodedLand != 1)
-		amazonMap = 1;
-	else if(baseTerrain <= 0.08)
+	else if(baseTerrain <= 0.037)
 		californiaMap = 1;
-	else if(baseTerrain <= 0.12)
+	else if(baseTerrain <= 0.076)
 		carolinaMap = 1;
-	else if(baseTerrain <= 0.16 && floodedLand != 1)
-		naMap = 1;
-	else if(baseTerrain <= 0.20)
+	else if(baseTerrain <= 0.115)
 		sonoraMap = 1;
-	else if(baseTerrain <= 0.24 && floodedLand != 1)
-		rockiesMap = 1;
-	else if(baseTerrain <= 0.28)
+	else if(baseTerrain <= 0.154)
 		caribbeanMap = 1;
-	else if(baseTerrain <= 0.32)
+	else if(baseTerrain <= 0.193)
 		yellowRiverMap = 1;
-	else if(baseTerrain <= 0.36)
+	else if(baseTerrain <= 0.232)
 		dekkanMap = 1;
-	else if(baseTerrain <= 0.40)
+	else if(baseTerrain <= 0.27)
 		himalMap = 1;
-	else if(baseTerrain <= 0.44)
+	else if(baseTerrain <= 0.308)
 		borneoMap = 1;
-	else if(baseTerrain <= 0.48)
+	else if(baseTerrain <= 0.346)
 		japanMap = 1;
-	else if(baseTerrain <= 0.52)
+	else if(baseTerrain <= 0.384)
 		andesMap = 1;
-	else if(baseTerrain <= 0.56)
+	else if(baseTerrain <= 0.422)
 		araucMap = 1;
-	else if(baseTerrain <= 0.60 && floodedLand != 1)
-		bayouMap = 1;
-	else if(baseTerrain <= 0.64)
+	else if(baseTerrain <= 0.46)
 		mongolMap = 1;
-	else if(baseTerrain <= 0.68 && floodedLand != 1)
+	else if(baseTerrain <= 0.498 && floodedLand != 1)
+		bayouMap = 1;
+	else if(baseTerrain <= 0.536 && floodedLand != 1)
 		nwtMap = 1;
-	else if(baseTerrain <= 0.74)
+	else if(baseTerrain <= 0.574 && floodedLand != 1)
+		amazonMap = 1;
+	else if(baseTerrain <= 0.612 && floodedLand != 1)
+		naMap = 1;
+	else if(baseTerrain <= 0.65 && floodedLand != 1)
+		rockiesMap = 1;
+	else if(baseTerrain <= 0.73)
 		euMap = 1;
-	else if(baseTerrain <= 0.78)
+	else if(baseTerrain <= 0.77)
 		afrEast = 1;
-	else if(baseTerrain <= 0.82)
+	else if(baseTerrain <= 0.81)
 		afrSavanna = 1;
-	else if(baseTerrain <= 0.86)
+	else if(baseTerrain <= 0.85)
 		afrRainforest = 1;
-	else if(baseTerrain <= 0.90)
+	else if(baseTerrain <= 0.89)
 		afrDesert = 1;
-	else if(baseTerrain <= 0.95)
+	else if(baseTerrain <= 0.94)
 		hawMap = 1;
 	else
 		ausMap = 1;
@@ -718,6 +730,11 @@ void main(void)
 		if (floodedLand != 1)
 			rmTerrainInitialize("california\ground6_cal", 0);
 		rmSetMapType("california");
+		if (rmRandFloat(0,1) <= 0.10 && rmGetIsKOTH() == false)
+		{
+			rogueMap = 1;
+			rmSetMapType("piratehistoricalmap");
+		}
 		rmSetMapType("grass");
 		rmSetMapType("land");
 		shineAlight = "California_Skirmish";
@@ -773,6 +790,11 @@ void main(void)
 		if (floodedLand != 1)
 			rmTerrainInitialize("pampas\ground5_pam", 0);
 		rmSetMapType("carolina");
+		if (rmRandFloat(0,1) <= 0.10 && rmGetIsKOTH() == false)
+		{
+			rogueMap = 1;
+			rmSetMapType("piratehistoricalmap");
+		}
 		rmSetMapType("grass");
 		rmSetMapType("land");
 		shineAlight = "Carolina_Skirmish";
@@ -822,7 +844,7 @@ void main(void)
 			forestName = "new england forest";
 			landName = "plymouth_grass";
 			treeName = "TreeNewEngland";
-			startingCritterName = "deer";
+			startingCritterName = "zpGoose";
 			critterOneName = "deer";
 			critterTwoName = "moose";
 			if (rmRandFloat(0,1) >= 0.50)
@@ -837,7 +859,12 @@ void main(void)
 		else if (whichMix == 2)
 		{
             rmSetMapType("saguenay");
-				rmSetBaseTerrainMix("saguenay grass");
+			if (rmRandFloat(0,1) <= 0.10 && rmGetIsKOTH() == false)
+			{
+				rogueMap = 1;
+				rmSetMapType("piratehistoricalmap");
+			}
+			rmSetBaseTerrainMix("saguenay grass");
 			if (floodedLand != 1)
 				rmTerrainInitialize("saguenay\ground1_sag", 0);
 	   		shineAlight = "Saguenay_Skirmish";
@@ -847,7 +874,7 @@ void main(void)
 			forestName = "Saguenay Forest";
 			landName = "saguenay tundra";
 			treeName = "treeSaguenay";
-			startingCritterName = "moose";
+			startingCritterName = "zpGoose";
 			critterOneName = "moose";
 			critterTwoName = "caribou";
 			if (rmRandFloat(0,1) <= 0.10)
@@ -860,6 +887,11 @@ void main(void)
 		{
 			yukonMap = 1;
     		rmSetMapType("yukon");
+			if (rmRandFloat(0,1) <= 0.10 && rmGetIsKOTH() == false)
+			{
+				rogueMap = 1;
+				rmSetMapType("piratehistoricalmap");
+			}
 			rmSetBaseTerrainMix("yukon grass");
 			if (floodedLand != 1)
 				rmTerrainInitialize("saguenay\ground1_sag", 0);
@@ -911,6 +943,11 @@ void main(void)
 		if (floodedLand != 1)
 			rmTerrainInitialize("rockies\groundsnow1_roc", 0);	
 		rmSetMapType("yukon");
+		if (rmRandFloat(0,1) <= 0.10 && rmGetIsKOTH() == false)
+		{
+			rogueMap = 1;
+			rmSetMapType("piratehistoricalmap");
+		}
 		rmSetMapType("land");
 		shineAlight = "Rockie_Skirmish";
 		riverName = "Yukon River";
@@ -1004,6 +1041,11 @@ void main(void)
 		if (floodedLand != 1)
 			rmTerrainInitialize("sonora\ground2_son", 0);
 		rmSetMapType("sonora");
+		if (rmRandFloat(0,1) <= 0.10 && rmGetIsKOTH() == false)
+		{
+			rogueMap = 1;
+			rmSetMapType("piratehistoricalmap");
+		}
 		rmSetMapType("grass");
 		rmSetMapType("land");
 		shineAlight = "Sonora_Skirmish";
@@ -1049,6 +1091,8 @@ void main(void)
 			rmSetBaseTerrainMix("caribbean grass");
 		else
 			rmSetBaseTerrainMix("california_shoregrass");
+		if (rmRandFloat(0,1) <= 0.10 && rmGetIsKOTH() == false)
+			volcanoMap = 1;
 		if (floodedLand != 1)
 			rmTerrainInitialize("caribbean\ground1_crb", 0);
 		rmSetMapType("caribbean");
@@ -1059,6 +1103,8 @@ void main(void)
 		oceanName = "caribbean coast";
 		pondName = "africa desert hole"; 
 		cliffName = "Caribbean";
+		volcCliff = "ZP Hawaii Medium";
+		volcCliffHigh = "ZP Hawaii High 2";
 		forestName = "Caribbean Palm Forest Skirmish";
 		if (whichMix == 1)
 			landName = "caribbean grass";
@@ -1545,22 +1591,27 @@ void main(void)
 			rmSetBaseTerrainMix("unknown funky");
 		else if (whichMix == 1)
 			rmSetBaseTerrainMix("bayou_forest");
-		else if (whichMix >= 2)
-			rmSetBaseTerrainMix("bayou_grass_skirmish");
+		else
+			rmSetBaseTerrainMix("bayou_grass");
 		if (floodedLand != 1)
 			rmTerrainInitialize("pampas\ground5_pam", 0);
 		rmSetMapType("bayou");
+		if (rmRandFloat(0,1) <= 0.10 && rmGetIsKOTH() == false)
+		{
+			rogueMap = 1;
+			rmSetMapType("piratehistoricalmap");
+		}
 		rmSetMapType("tropical");
 		rmSetMapType("land");
 	   	shineAlight = "Bayou_Skirmish";
-		riverName = "Araucania North Coast";	// Bayou_Dry
+		riverName = "Araucania River";			// Bayou_Dry
 		oceanName = "Araucania North Coast";	// Bayou SPC
 		pondName = "bayou skirmish2";
 		if (floodedLand == 1)
 			pondName = "Bayou3";
 		cliffName = "Bayou";
 		forestName = "Bayou Swamp Forest";
-		landName = "bayou_forest_02";
+		landName = "bayou_grass_skirmish";		// bayou_forest_02
 		treeName = "TreeBayou";
 		critterOneName = "turkey";
 		critterTwoName = "deer";
@@ -1637,7 +1688,7 @@ void main(void)
 		if (rmRandFloat(0,1) <= 0.001)
 			rmSetBaseTerrainMix("unknown funky");
 		else if (whichMix == 1)
-			rmSetBaseTerrainMix("nwt_grass1");
+			rmSetBaseTerrainMix("nwt_dirt");
 		else if (whichMix == 2)
 			rmSetBaseTerrainMix("nwt_grass2");
 		else
@@ -1645,6 +1696,11 @@ void main(void)
 		if (floodedLand != 1)
 			rmTerrainInitialize("nwterritory\ground_grass1a_nwt", 0);
 		rmSetMapType("california");
+		if (rmRandFloat(0,1) <= 0.10 && rmGetIsKOTH() == false)
+		{
+			rogueMap = 1;
+			rmSetMapType("piratehistoricalmap");
+		}
 		rmSetMapType("grass");
 		rmSetMapType("land");
 		shineAlight = "NorthwestTerritory_Skirmish";
@@ -1658,7 +1714,7 @@ void main(void)
 		else if (whichMix == 2)
 			landName = "nwt_grass_dirt";
 		else
-			landName = "nwt_grass2";
+			landName = "nwt_dirt";
 		treeName = "TreeNorthwestTerritory";
 		startingCritterName = "elk";
 		critterOneName = "elk";
@@ -1678,84 +1734,328 @@ void main(void)
 	else if(euMap == 1)		// europe
 	{
 		rmEchoInfo("Europe terrain");
-		if (rmRandFloat(0,1) <= 0.001)
-			rmSetBaseTerrainMix("unknown funky");
+		// choose map region first for europe
+		if (rmRandInt(0,8) <= 1)
+		{
+			rmSetMapType("historicalMaps");
+			if (rmGetIsKOTH() == false)
+			{
+				rogueMap = 1;
+				rmSetMapType("piratehistoricalmap");
+			}
+		}
+		else if (rmRandInt(0,7) <= 1)
+		{
+			waterNuggz = 1;
+			mediSeaEU = 1;
+			rmSetMapType("mediSea");
+			if (rmGetIsKOTH() == false)
+			{
+				rogueMap = 1;
+				rmSetMapType("piratehistoricalmap");
+			}
+		}
+		else if (rmRandInt(0,6) <= 1)
+		{
+			centralEU = 1;
+			rmSetMapType("centralEurope");
+			if (rmGetIsKOTH() == false)
+			{
+				rogueMap = 1;
+				rmSetMapType("piratehistoricalmap");
+			}
+		}
+		else if (rmRandInt(0,5) <= 1)
+		{
+			northeastEU = 1;
+			rmSetMapType("northeastEurope");
+			if (rmGetIsKOTH() == false)
+			{
+				rogueMap = 1;
+				rmSetMapType("piratehistoricalmap");
+			}
+		}
+		else if (rmRandInt(0,4) <= 1)
+		{
+			northEU = 1;
+			rmSetMapType("northEurope");
+			if (rmGetIsKOTH() == false)
+			{
+				rogueMap = 1;
+				rmSetMapType("piratehistoricalmap");
+			}
+		}
+		else if (rmRandInt(0,3) <= 1)
+		{
+			waterNuggz = 1;
+			mediEU = 1;
+			rmSetMapType("mediEurope");
+			if (rmGetIsKOTH() == false)
+			{
+				rogueMap = 1;
+				rmSetMapType("piratehistoricalmap");
+			}
+		}
+		else if (rmRandInt(0,2) <= 1)
+		{
+			northwestEU = 1;
+			rmSetMapType("westEurope");
+			if (rmGetIsKOTH() == false)
+			{
+				rogueMap = 1;
+				rmSetMapType("piratehistoricalmap");
+			}
+		}
+		else if (rmRandInt(0,1) <= 1)
+		{
+			westEU = 1;
+			rmSetMapType("westEurope");
+			if (rmGetIsKOTH() == false)
+			{
+				rogueMap = 1;
+				rmSetMapType("piratehistoricalmap");
+			}
+		}
 		else
 		{
-			if (rmRandFloat(0,1) <= 0.25)
+			eastEU = 1;
+			rmSetMapType("eastEurope");
+			if (rmGetIsKOTH() == false)
+			{
+				rogueMap = 1;
+				rmSetMapType("piratehistoricalmap");
+			}
+		}
+		rmSetMapType("euroLandTradeRoute");
+		rmSetMapType("land");
+
+//		centralEU = 0;		// for testing
+//		eastEU = 0;			// for testing
+//		northeastEU = 0;	// for testing
+//		westEU = 1;			// for testing
+//		northwestEU = 0;	// for testing
+//		mediEU = 0;			// for testing
+//		mediSeaEU = 0;		// for testing
+//		northEU = 0;		// for testing
+
+		// now choose terrain for region
+		if (rmRandFloat(0,1) <= 0.001)
+		{
+			rmSetBaseTerrainMix("unknown funky");
+			forestName = "Italian Forest";
+			treeName = "deTreeCypress";
+			riverName = "Italian River";
+			oceanName = "Danish Coast";
+			pondName = "Italian Pond";
+			cliffName = "Italian Cliff";
+		}
+		else
+		{
+			if (centralEU == 1)		// saxony
 			{
 				if (whichMix == 1)
+				{
 					rmSetBaseTerrainMix("italy_grass_lush");
+					landName="italy_grass_medium";
+				}
 				else if (whichMix == 2)
+				{
 					rmSetBaseTerrainMix("italy_grass_medium");
+					landName="italy_grass_dirt";
+				}
 				else
+				{
 					rmSetBaseTerrainMix("italy_grass_dirt");
+					landName="italy_grass_medium";
+				}
+				forestName = "New England Forest";
+				treeName = "TreeGreatLakes";
+				riverName = "Italian River";
+				oceanName = "Italian Coast";
+				pondName = "Italian Pond";
+				cliffName = "Italian Cliff";
+				startingCritterName = "zpGoose";
+				shineAlight = "carolina_Skirmish";
 			}
-			else if (rmRandFloat(0,1) <= 0.33)
+			else if (northEU == 1)	// danish strait
 			{
 				if (whichMix == 1)
-					rmSetBaseTerrainMix("italy_grass_lush");
+				{
+					rmSetBaseTerrainMix("danish_grass1");
+					landName="danish_grass2";
+				}
 				else if (whichMix == 2)
-					rmSetBaseTerrainMix("italy_cliff_bottom");
+				{
+					rmSetBaseTerrainMix("danish_grass2");
+					landName="danish_grass1";
+				}
 				else
-					rmSetBaseTerrainMix("italy_cliff_top_grass");
+				{
+					rmSetBaseTerrainMix("danish_grass3");
+					landName="danish_grass2";
+				}
+				forestName = "Rockies Forest";
+				treeName = "TreeGreatLakes";
+				riverName = "Danish Coast";
+				oceanName = "Danish Coast";
+				pondName = "Danish Shallow";
+				cliffName = "Italian Cliff";
+				startingCritterName = "deer";
+				shineAlight = "cascade_range_skirmish";		// Rockie_Skirmish
 			}
-			else if (rmRandFloat(0,1) <= 0.50)
+			else if (northeastEU == 1)	// lithuania
 			{
 				if (whichMix == 1)
-					rmSetBaseTerrainMix("italy_grass");
+				{
+					rmSetBaseTerrainMix("italy_north_grass");
+					landName="italy_north_dirt";
+				}
+				else
+				{
+					rmSetBaseTerrainMix("italy_north_dirt");
+					landName="italy_north_grass";
+				}
+				forestName = "z39 Russian Forest";
+				treeName = "TreeNorthwestTerritory";
+				riverName = "Lithuania Lake";
+				oceanName = "Lithuania Lake";
+				pondName = "Lithuania Lake";
+				cliffName = "Italian Cliff";
+				startingCritterName = "zpGoose";
+				shineAlight = "3x12a2_lakotavillage";
+			}
+			else if (eastEU == 1)	// anatolia
+			{
+				if (whichMix == 1)
+				{
+					rmSetBaseTerrainMix("italy_dirt");
+					landName="italy_cliff_top_dry_grass";
+				}
 				else if (whichMix == 2)
+				{
 					rmSetBaseTerrainMix("italy_grass_medium_dry");
+					landName="italy_grass_dry";
+				}
 				else
+				{
 					rmSetBaseTerrainMix("italy_grass_dry");
+					landName="italy_grass_medium_dry";
+				}
+				forestName = "Italian Forest";
+				treeName = "deTreeCypress";
+				riverName = "Italian River";
+				oceanName = "Italian Coast";
+				pondName = "Italian Pond";
+				cliffName = "Italian Cliff";
+				startingCritterName = "deer";
+				shineAlight = "Honshu_Skirmish";
 			}
-			else
+			else if (westEU == 1)	// france
 			{
 				if (whichMix == 1)
-					rmSetBaseTerrainMix("italy_cliff_top_grass");
+				{
+					rmSetBaseTerrainMix("nwt_grass1");
+					landName="nwt_grass2";
+				}
 				else if (whichMix == 2)
-					rmSetBaseTerrainMix("italy_cliff_top");
+				{
+					rmSetBaseTerrainMix("nwt_grass2");
+					landName="nwt_grass_dirt";
+				}
 				else
+				{
+					rmSetBaseTerrainMix("nwt_grass_dirt");
+					landName="nwt_grass1";
+				}
+				forestName = "Great Plains Forest";
+				treeName = "TreeGreatLakes";
+				riverName = "Italian River";
+				oceanName = "Italian Coast";
+				pondName = "Italian Pond";
+				cliffName = "Northwest Territory";
+				startingCritterName = "zpGoose";
+				shineAlight = "Honshu_Skirmish";
+			}
+			else if (northwestEU == 1)		// british isles
+			{
+				if (whichMix == 1)
+				{
+					rmSetBaseTerrainMix("italy_cliff_top_grass");
+					landName="italy_grass";
+				}
+				else if (whichMix == 2)
+				{
+					rmSetBaseTerrainMix("italy_cliff_top");
+					landName="italy_grass";
+				}
+				else
+				{
 					rmSetBaseTerrainMix("italy_cliff_bottom");
+					landName="italy_grass";
+				}
+				forestName = "New England Forest";
+				treeName = "TreeGreatLakes";
+				riverName = "Baltic Water";
+				oceanName = "Baltic Sea";
+				pondName = "Baltic Water";
+				cliffName = "Irish Coast";
+				startingCritterName = "zpGoose";
+				shineAlight = "carolina_Skirmish";
+			}
+			else if (mediSeaEU == 1)	// mediSea
+			{
+				if (whichMix == 1)
+				{
+					rmSetBaseTerrainMix("Africa Desert Grass");
+					landName="Africa Desert Grass Medium";
+				}
+				else
+				{
+					rmSetBaseTerrainMix("Africa Desert Grass Medium");
+					landName="Africa Desert Grass";
+				}
+				forestName = "Af Atlas Forest";
+				treeName = "deTreeCypress";
+				riverName = "Africa Desert Lake Lush";
+				oceanName = "Africa Desert Beach";
+				pondName = "Africa Desert Hole";
+				cliffName = "Africa Desert";
+				startingCritterName = "deer";
+				shineAlight = "punjab_Skirmish";
+			}
+			else	// medi - Italy and historical map
+			{
+				if (whichMix == 1)
+				{
+					rmSetBaseTerrainMix("italy_grass_lush");
+					landName="italy_grass_medium";
+				}
+				else if (whichMix == 2)
+				{
+					rmSetBaseTerrainMix("italy_grass_medium");
+					landName="italy_grass_dirt";
+				}
+				else
+				{
+					rmSetBaseTerrainMix("italy_grass_dirt");
+					landName="italy_grass_medium";
+				}
+				forestName = "Italian Forest";
+				treeName = "deTreeCypress";
+				riverName = "Italian River";
+				oceanName = "Italian Coast";
+				pondName = "Italian Pond";
+				cliffName = "Italian Cliff";
+				startingCritterName = "zpGoose";
+				shineAlight = "Honshu_Skirmish";
+				if (mediEU != 1)
+					westEU = 1;
 			}
 		}
 		if (floodedLand != 1)
 			rmTerrainInitialize("pampas\ground5_pam", 0);
-		if (rmRandFloat(0,1) <= 0.10)
-			rmSetMapType("historicalMaps");
-		else if (rmRandFloat(0,1) <= 0.50)
-			rmSetMapType("centralEurope");
-		else if (rmRandFloat(0,1) <= 0.50)
-			rmSetMapType("northeastEurope");
-		else if (rmRandFloat(0,1) <= 0.50)
-			rmSetMapType("northEurope");
-		else if (rmRandFloat(0,1) <= 0.50)
-		{
-			waterNuggz = 1;
-			rmSetMapType("mediEurope");
-		}
-		else if (rmRandFloat(0,1) <= 0.50)
-			rmSetMapType("westEurope");
-		else
-			rmSetMapType("eastEurope");
-		rmSetMapType("euroLandTradeRoute");
-		rmSetMapType("land");
-		shineAlight = "Honshu_Skirmish";
-		riverName = "Italian River";
-		oceanName = "Danish Coast";
-		pondName = "Italian Pond";
-		cliffName = "Italian Cliff";
-		forestName = "Italian Forest";
-		if (whichMix == 1)
-			landName="italy_grass";
-		else if (whichMix == 2)
-			landName="italy_grass_dry";
-		else
-			landName="italy_grass_lush";
-		treeName = "deTreeCypress";
 		critterOneName = "deer";
 		critterTwoName = "ypIbex";
-		startingCritterName = "zpGoose";
 /*		if (rmRandFloat(0,1) <= 0.333)
 			livestockName = "zpDomesticPig";
 		else*/ if (rmRandFloat(0,1) <= 0.50)
@@ -2537,7 +2837,7 @@ void main(void)
 		propz = "dePropsAnimalsChicken";	
 	}
 	
-	else 	// australia
+	else 	// australia	// ausMap == 1
 	{
 		rmEchoInfo("aussie terrain");
 		oceaniaMap = 1;
@@ -2556,6 +2856,11 @@ void main(void)
 			rmTerrainInitialize("caribbean\ground6_crb", 0);
 		waterNuggz = 1;
 		rmSetMapType("australia");
+		if (rmRandFloat(0,1) <= 0.01 && rmGetIsKOTH() == false)
+		{
+			rogueMap = 1;
+			rmSetMapType("piratehistoricalmap");
+		}
 		rmSetMapType("grass");
 		rmSetMapType("land");
 		shineAlight = "PaintedDesert_Skirmish";
@@ -2644,7 +2949,7 @@ void main(void)
 	
 	if (rmRandFloat(0,1) <= 0.001)
 		rmSetWindMagnitude(69.0);
-	else if (rmRandFloat(0,1) <= 0.05)
+	else if (rmRandFloat(0,1) <= 0.01)
 		rmSetWindMagnitude(5.0);
 	else if (rmRandFloat(0,1) <= 0.10)
 		rmSetWindMagnitude(2.0);
@@ -2694,6 +2999,7 @@ void main(void)
 			{
 				riverName = pondName;
 				riverExists = 1;
+				rogueMap = 0;
 			}
 		}
 		else if (oceanOffCenter == 1)
@@ -2706,6 +3012,7 @@ void main(void)
 			{
 				riverName = oceanName;
 				riverExists = 1;
+				rogueMap = 0;
 			}
 		}
 		else if (oceanMiddle == 1)
@@ -2716,6 +3023,7 @@ void main(void)
 			{
 				riverName = oceanName;
 				riverExists = 1;
+				rogueMap = 0;
 			}
 		}
 		else if (oceanRing == 1)
@@ -2724,6 +3032,7 @@ void main(void)
 			{
 				riverExists = 1;
 				riverName = oceanName;
+				rogueMap = 0;
 			}
 			if (rmRandFloat(0,1) <= 0.10)
 				oceanOffCenter = 1;
@@ -2937,7 +3246,6 @@ void main(void)
 		{
 			rmEchoInfo("it's not treaty so there's a higher chance of water");
 			oceanChance = rmRandInt(1,4);
-//			oceanChance = 2;		// for testing
 			if (oceanChance == 2 && rmRandFloat(0,1) <= 0.25)
 				oceanChance = 1;
 			if (oceanChance == 3 && rmRandFloat(0,1) <= 0.25)
@@ -2946,7 +3254,7 @@ void main(void)
 				oceanChance = 1;
 		}
 	}
-//			oceanChance = 4;		// for testing
+//			oceanChance = 2;		// for testing
 
 	if (oceanChance == 5)
 		blockedMiddle = -1;
@@ -3010,13 +3318,13 @@ void main(void)
 //		tpORnot = 5;
 	if (splitIsland == 1)
 		tpORnot = 5;
-	if (riverWidthController !=1)
-	{
-		if (fullShallow == 1)
-			tpORnot = rmRandInt(1,5);
-		else
-			tpORnot = 5;
-	}
+//	if (riverWidthController !=1)
+//	{
+//		if (fullShallow == 1)
+//			tpORnot = rmRandInt(1,5);
+//		else
+//			tpORnot = 5;
+//	}
 //	tpORnot = 5;		// for testing
 	rmEchoInfo("tpORnot = "+tpORnot);
 
@@ -3837,29 +4145,33 @@ void main(void)
    else
    rmSetStatusText("", 0.1);
    
-// ============= Big Island =============
+	// ============= Big Island =============
 	if(oceanRing == 1)
 	{
 		rmEchoInfo("ocean ring");
+		if(oceanChance == 1)
+			rogueMap = 0;
 	}
    
-// ============= Split Islands =============
+	// ============= Split Islands =============
 	if(splitIsland == 1)
 	{
 		rmEchoInfo("split islands");
+		rogueMap = 0;
 	}
 
-// ============= Land Only =============
+	// ============= Land Only =============
 	if(landOnly == 1)
 	{
 		rmEchoInfo("just land no water");
 	}
 
-// ============= River Across Middle =============
+	// ============= River Across Middle =============
 	int unknownRiver = -1;
 
 	if(riverExists == 1)
 	{
+		rogueMap = 0;
 		if (riverWidthController == 1)	// narrow river
 			unknownRiver = rmRiverCreate(-1, riverName, 7, 10, 5, 8);
 		else
@@ -3926,11 +4238,12 @@ void main(void)
 			rmRiverBuild(unknownRiver);
 	}
 
-// ============= Great Lakes Style Ocean =============
+	// ============= Great Lakes Style Ocean =============
 	if(oceanMiddle == 1)
 	{
 		if(oceanChance == 1)
 		{
+			rogueMap = 0;
 			int lakeOfTheUnknown = rmCreateArea("big lake in middle");
 			if (rockiesMap == 1 && rmRandFloat(0,1) <= 0.50)
 			{
@@ -3994,7 +4307,11 @@ void main(void)
 		}
 		else if (oceanChance == 2)
 		{
-			if (volcanoMap == 1)
+			if (rogueMap == 1)
+			{
+				// defined later
+			}
+			else if (volcanoMap == 1)
 			{
 				float volcLocX = 0.50;
 				float volcLocY = 0.50;
@@ -4540,124 +4857,131 @@ void main(void)
 		}
 		else if (oceanChance == 3)
 		{
-			int caveID = rmCreateArea("cave");
-			rmSetAreaSize(caveID, 0.10, 0.13); 
-			rmSetAreaWarnFailure(caveID, false);
-			rmSetAreaObeyWorldCircleConstraint(caveID, true);
-			rmSetAreaCliffType(caveID, "cave"); 
-			rmSetAreaTerrainType(caveID, "cave\cave_ground5");
-			if (floodedLand == 1)
-				rmSetAreaCliffHeight(caveID, 4, 1.0, 0.8);
-			else
-				rmSetAreaCliffHeight(caveID, -6, 1.0, 0.8);
-			rmSetAreaCliffEdge(caveID, 6, 0.07, 0.0, 1.0, 1);
-			rmSetAreaCoherence(caveID, 0.69);
-			rmAddAreaToClass(caveID, classCanyon);
-			rmSetAreaSmoothDistance(caveID, 6);
-			rmSetAreaReveal(caveID, 01);
-			if (sideBay == 1)
+			if (rogueMap == 1)
 			{
-				if(bayPosition < 0.12)
-					rmSetAreaLocation(caveID, 1.0, 1.0);
-				else if(bayPosition < 0.24)
-					rmSetAreaLocation(caveID, 1.0, 0.5);
-				else if(bayPosition < 0.36)
-					rmSetAreaLocation(caveID, 1.0, 0.0);
-				else if(bayPosition < 0.48)
-					rmSetAreaLocation(caveID, 0.5, 0.0);
-				else if(bayPosition < 0.60)
-					rmSetAreaLocation(caveID, 0.0, 0.0);
-				else if(bayPosition < 0.72)
-					rmSetAreaLocation(caveID, 0.0, 0.5);
-				else if(bayPosition < 0.84)
-					rmSetAreaLocation(caveID, 0.0, 1.0);
+				// defined later
+			}
+			else
+			{
+				int caveID = rmCreateArea("cave");
+				rmSetAreaSize(caveID, 0.10, 0.13); 
+				rmSetAreaWarnFailure(caveID, false);
+				rmSetAreaObeyWorldCircleConstraint(caveID, true);
+				rmSetAreaCliffType(caveID, "cave"); 
+				rmSetAreaTerrainType(caveID, "cave\cave_ground5");
+				if (floodedLand == 1)
+					rmSetAreaCliffHeight(caveID, 4, 1.0, 0.8);
 				else
-					rmSetAreaLocation(caveID, 0.5, 1.0);
-			}
-			else
-				rmSetAreaLocation(caveID, 0.50, 0.50);
-			rmAddAreaConstraint(caveID, avoidTradeRoute);
-			rmAddAreaConstraint(caveID, avoidTradeRouteSocketShort);
-			rmAddAreaConstraint(caveID, avoidPlayersFar1);
-			rmBuildArea(caveID);
-
-			int stayInCave = rmCreateAreaMaxDistanceConstraint("stay in cave", caveID, 0.0);
-			int stayNearCave = rmCreateAreaMaxDistanceConstraint("stay near cave", caveID, 3.0);
-			int avoidRamps = rmCreateCliffRampDistanceConstraint("avoid cave ramps", caveID, 4.0);
-
-			int cavePaintID = rmCreateArea("cave paint");
-			rmSetAreaSize(cavePaintID, 0.17); 
-			rmSetAreaMix(cavePaintID, "caves2");
-			rmSetAreaCoherence(cavePaintID, 0.999);
-			if (sideBay == 1)
-			{
-				if(bayPosition < 0.12)
-					rmSetAreaLocation(cavePaintID, 1.0, 1.0);
-				else if(bayPosition < 0.24)
-					rmSetAreaLocation(cavePaintID, 1.0, 0.5);
-				else if(bayPosition < 0.36)
-					rmSetAreaLocation(cavePaintID, 1.0, 0.0);
-				else if(bayPosition < 0.48)
-					rmSetAreaLocation(cavePaintID, 0.5, 0.0);
-				else if(bayPosition < 0.60)
-					rmSetAreaLocation(cavePaintID, 0.0, 0.0);
-				else if(bayPosition < 0.72)
-					rmSetAreaLocation(cavePaintID, 0.0, 0.5);
-				else if(bayPosition < 0.84)
-					rmSetAreaLocation(cavePaintID, 0.0, 1.0);
-				else
-					rmSetAreaLocation(cavePaintID, 0.5, 1.0);
-			}
-			else
-				rmSetAreaLocation(cavePaintID, 0.50, 0.50);
-			rmAddAreaConstraint(cavePaintID, stayNearCave);
-			rmBuildArea(cavePaintID);
-
-			int stayNearCaveCliff = -1;
-
-			for (i=0; <6+3*cNumberNonGaiaPlayers)
-			{
-				int caveCliffID = rmCreateArea("cave cliff"+i);
-				rmSetAreaSize(caveCliffID, 0.001, 0.002);
-				rmSetAreaCliffType(caveCliffID, "cave");  
-				rmSetAreaTerrainType(caveCliffID, "cave\cave_top_a_passable");
-				rmAddAreaToClass(caveCliffID, classCliff);
-				rmSetAreaCliffHeight(caveCliffID, 6, 2.0, 0.4);
-				rmSetAreaCliffEdge(caveCliffID, 1, 1.0, 0.0, 0.0, 1);
-				rmSetAreaCoherence(caveCliffID, 0.69);
-				rmAddAreaConstraint(caveCliffID, stayInCave);
-				rmAddAreaConstraint(caveCliffID, shortAvoidImpassableLand);
-				rmAddAreaConstraint(caveCliffID, avoidRamps);
-				rmAddAreaConstraint(caveCliffID, avoidCliffs);
-				rmBuildArea(caveCliffID);
-
-				stayNearCaveCliff = rmCreateAreaMaxDistanceConstraint("stay near cave cliff"+i, caveCliffID, 4.0);
-
-				int paintCliffID = rmCreateArea("paint cliff"+i);
-				rmSetAreaSize(paintCliffID, 0.004);
-				rmSetAreaTerrainType(paintCliffID, "cave\cave_top");
-				rmSetAreaCoherence(paintCliffID, 0.999);
-				rmAddAreaConstraint(paintCliffID, stayNearCaveCliff);
-				rmBuildArea(paintCliffID);
-			}
-
-			// mineralz spawn in cave
-			if (rmRandFloat(0,1) <= 0.05)
-			{
-				for (i=0; < 2*cNumberNonGaiaPlayers)
+					rmSetAreaCliffHeight(caveID, -6, 1.0, 0.8);
+				rmSetAreaCliffEdge(caveID, 6, 0.07, 0.0, 1.0, 1);
+				rmSetAreaCoherence(caveID, 0.69);
+				rmAddAreaToClass(caveID, classCanyon);
+				rmSetAreaSmoothDistance(caveID, 6);
+				rmSetAreaReveal(caveID, 01);
+				if (sideBay == 1)
 				{
-					int rushMineCaveID = rmCreateObjectDef("mineral rush cave"+i);
-					rmAddObjectDefItem(rushMineCaveID, mineralz, 1, 0.0);
-					rmSetObjectDefMinDistance(rushMineCaveID, 0.0);
-					rmSetObjectDefMaxDistance(rushMineCaveID, rmXFractionToMeters(0.50));
-					rmAddObjectDefToClass(rushMineCaveID, classGold);
-					rmAddObjectDefConstraint(rushMineCaveID, stayInCave);
-					rmAddObjectDefConstraint(rushMineCaveID, shortAvoidImpassableLand);
-					rmAddObjectDefConstraint(rushMineCaveID, avoidAll);
-					rmAddObjectDefConstraint(rushMineCaveID, avoidTradeRouteSocketShort);
-					rmAddObjectDefConstraint(rushMineCaveID, avoidGoldShort);
-					rmPlaceObjectDefAtLoc(rushMineCaveID, 0, 0.50, 0.50, 1);
-				}			
+					if(bayPosition < 0.12)
+						rmSetAreaLocation(caveID, 1.0, 1.0);
+					else if(bayPosition < 0.24)
+						rmSetAreaLocation(caveID, 1.0, 0.5);
+					else if(bayPosition < 0.36)
+						rmSetAreaLocation(caveID, 1.0, 0.0);
+					else if(bayPosition < 0.48)
+						rmSetAreaLocation(caveID, 0.5, 0.0);
+					else if(bayPosition < 0.60)
+						rmSetAreaLocation(caveID, 0.0, 0.0);
+					else if(bayPosition < 0.72)
+						rmSetAreaLocation(caveID, 0.0, 0.5);
+					else if(bayPosition < 0.84)
+						rmSetAreaLocation(caveID, 0.0, 1.0);
+					else
+						rmSetAreaLocation(caveID, 0.5, 1.0);
+				}
+				else
+					rmSetAreaLocation(caveID, 0.50, 0.50);
+				rmAddAreaConstraint(caveID, avoidTradeRoute);
+				rmAddAreaConstraint(caveID, avoidTradeRouteSocketShort);
+				rmAddAreaConstraint(caveID, avoidPlayersFar1);
+				rmBuildArea(caveID);
+
+				int stayInCave = rmCreateAreaMaxDistanceConstraint("stay in cave", caveID, 0.0);
+				int stayNearCave = rmCreateAreaMaxDistanceConstraint("stay near cave", caveID, 3.0);
+				int avoidRamps = rmCreateCliffRampDistanceConstraint("avoid cave ramps", caveID, 4.0);
+
+				int cavePaintID = rmCreateArea("cave paint");
+				rmSetAreaSize(cavePaintID, 0.17); 
+				rmSetAreaMix(cavePaintID, "caves2");
+				rmSetAreaCoherence(cavePaintID, 0.999);
+				if (sideBay == 1)
+				{
+					if(bayPosition < 0.12)
+						rmSetAreaLocation(cavePaintID, 1.0, 1.0);
+					else if(bayPosition < 0.24)
+						rmSetAreaLocation(cavePaintID, 1.0, 0.5);
+					else if(bayPosition < 0.36)
+						rmSetAreaLocation(cavePaintID, 1.0, 0.0);
+					else if(bayPosition < 0.48)
+						rmSetAreaLocation(cavePaintID, 0.5, 0.0);
+					else if(bayPosition < 0.60)
+						rmSetAreaLocation(cavePaintID, 0.0, 0.0);
+					else if(bayPosition < 0.72)
+						rmSetAreaLocation(cavePaintID, 0.0, 0.5);
+					else if(bayPosition < 0.84)
+						rmSetAreaLocation(cavePaintID, 0.0, 1.0);
+					else
+						rmSetAreaLocation(cavePaintID, 0.5, 1.0);
+				}
+				else
+					rmSetAreaLocation(cavePaintID, 0.50, 0.50);
+				rmAddAreaConstraint(cavePaintID, stayNearCave);
+				rmBuildArea(cavePaintID);
+
+				int stayNearCaveCliff = -1;
+
+				for (i=0; <6+3*cNumberNonGaiaPlayers)
+				{
+					int caveCliffID = rmCreateArea("cave cliff"+i);
+					rmSetAreaSize(caveCliffID, 0.001, 0.002);
+					rmSetAreaCliffType(caveCliffID, "cave");  
+					rmSetAreaTerrainType(caveCliffID, "cave\cave_top_a_passable");
+					rmAddAreaToClass(caveCliffID, classCliff);
+					rmSetAreaCliffHeight(caveCliffID, 6, 2.0, 0.4);
+					rmSetAreaCliffEdge(caveCliffID, 1, 1.0, 0.0, 0.0, 1);
+					rmSetAreaCoherence(caveCliffID, 0.69);
+					rmAddAreaConstraint(caveCliffID, stayInCave);
+					rmAddAreaConstraint(caveCliffID, shortAvoidImpassableLand);
+					rmAddAreaConstraint(caveCliffID, avoidRamps);
+					rmAddAreaConstraint(caveCliffID, avoidCliffs);
+					rmBuildArea(caveCliffID);
+
+					stayNearCaveCliff = rmCreateAreaMaxDistanceConstraint("stay near cave cliff"+i, caveCliffID, 4.0);
+
+					int paintCliffID = rmCreateArea("paint cliff"+i);
+					rmSetAreaSize(paintCliffID, 0.004);
+					rmSetAreaTerrainType(paintCliffID, "cave\cave_top");
+					rmSetAreaCoherence(paintCliffID, 0.999);
+					rmAddAreaConstraint(paintCliffID, stayNearCaveCliff);
+					rmBuildArea(paintCliffID);
+				}
+
+				// mineralz spawn in cave
+				if (rmRandFloat(0,1) <= 0.05)
+				{
+					for (i=0; < 2*cNumberNonGaiaPlayers)
+					{
+						int rushMineCaveID = rmCreateObjectDef("mineral rush cave"+i);
+						rmAddObjectDefItem(rushMineCaveID, mineralz, 1, 0.0);
+						rmSetObjectDefMinDistance(rushMineCaveID, 0.0);
+						rmSetObjectDefMaxDistance(rushMineCaveID, rmXFractionToMeters(0.50));
+						rmAddObjectDefToClass(rushMineCaveID, classGold);
+						rmAddObjectDefConstraint(rushMineCaveID, stayInCave);
+						rmAddObjectDefConstraint(rushMineCaveID, shortAvoidImpassableLand);
+						rmAddObjectDefConstraint(rushMineCaveID, avoidAll);
+						rmAddObjectDefConstraint(rushMineCaveID, avoidTradeRouteSocketShort);
+						rmAddObjectDefConstraint(rushMineCaveID, avoidGoldShort);
+						rmPlaceObjectDefAtLoc(rushMineCaveID, 0, 0.50, 0.50, 1);
+					}			
+				}
 			}
 		}
 		else if (oceanChance == 4)
@@ -4734,7 +5058,11 @@ void main(void)
 			rmAddAreaConstraint(plateauPaintID, stayNearPlateau);
 			rmBuildArea(plateauPaintID);
 
-			if (rmRandFloat(0,1) <= 0.69)
+			if (rogueMap == 1)
+			{
+				// defined later
+			}
+			else if (rmRandFloat(0,1) <= 0.69)
 			{
 				for (i=0; <2+4*cNumberNonGaiaPlayers)
 				{
@@ -4830,11 +5158,9 @@ void main(void)
 			// just land
 			blockedMiddle = -1;
 		}
-	}
+	}	// Build the lake later to avoid players
 
-// Build the lake later to avoid players
-
-// ============= Saguenay Style Ocean =============
+	// ============= Saguenay Style Ocean =============
 	if(oceanOffCenter == 1)
 	{
 		if (bayChance == 1)
@@ -5290,11 +5616,9 @@ void main(void)
 			rmAddAreaConstraint(sideUnknownForest, avoidWaterShort); 
 			rmAddAreaConstraint(sideUnknownForest, avoidForestZero); 
 		}
-	}
+	}	// Build bay later to avoid players				  
 
-	// Build bay later to avoid players				  
-
-// ============= Oasis Style Forest =============
+	// ============= Oasis Style Forest =============
 	if (forestMiddle == 1)
 	{
 		if (rmRandFloat(0,1) > 0.25 && trollMap != 1)
@@ -5346,28 +5670,28 @@ void main(void)
 		{
 			if (trollMap == 1 || rmRandFloat(0,1) <= 0.001)
 			{
-					rmEchoInfo("bonus subCiv is Saltpeter");
-					int saltPeterSiteID = rmCreateGrouping("saltpeter site", "saltpeter_0"+rmRandInt(1,3));
-					rmSetGroupingMinDistance(saltPeterSiteID, rmXFractionToMeters(0.00));
-					rmSetGroupingMaxDistance(saltPeterSiteID, rmXFractionToMeters(0.025));
-					rmAddGroupingToClass(saltPeterSiteID, rmClassID("natives"));
-					if (floodedLand != 1)
-						rmAddGroupingConstraint(saltPeterSiteID, avoidImpassableLand);
-					rmAddGroupingConstraint(saltPeterSiteID, avoidTradeRoute);
-					rmAddGroupingConstraint(saltPeterSiteID, avoidTradeRouteSocket);
-					rmAddGroupingConstraint(saltPeterSiteID, avoidAllFar);
-					rmPlaceGroupingAtLoc(saltPeterSiteID, 0, 0.5, 0.5);
-					}
+				rmEchoInfo("bonus subCiv is Saltpeter");
+				int saltPeterSiteID = rmCreateGrouping("saltpeter site", "saltpeter_0"+rmRandInt(1,3));
+				rmSetGroupingMinDistance(saltPeterSiteID, rmXFractionToMeters(0.00));
+				rmSetGroupingMaxDistance(saltPeterSiteID, rmXFractionToMeters(0.025));
+				rmAddGroupingToClass(saltPeterSiteID, rmClassID("natives"));
+				if (floodedLand != 1)
+					rmAddGroupingConstraint(saltPeterSiteID, avoidImpassableLand);
+				rmAddGroupingConstraint(saltPeterSiteID, avoidTradeRoute);
+				rmAddGroupingConstraint(saltPeterSiteID, avoidTradeRouteSocket);
+				rmAddGroupingConstraint(saltPeterSiteID, avoidAllFar);
+				rmPlaceGroupingAtLoc(saltPeterSiteID, 0, 0.5, 0.5);
+			}
 
 			float mineORmill = rmRandFloat(0,1);	// RNG capturable mill or mid map mines
 
-				for (i=0; < 4*cNumberNonGaiaPlayers)
+			for (i=0; < 4*cNumberNonGaiaPlayers)
+			{
+				int rushMineID = rmCreateObjectDef("mineral rush"+i);
+				if (rmRandFloat(0,1) <= 0.98)
 				{
-					int rushMineID = rmCreateObjectDef("mineral rush"+i);
-					if (rmRandFloat(0,1) <= 0.98)
-					{
-						if (rmRandFloat(0,1) <= 0.05)
-						rmAddObjectDefItem(rushMineID, "BerryBush", 10, 8.0);
+					if (rmRandFloat(0,1) <= 0.05)
+					rmAddObjectDefItem(rushMineID, "BerryBush", 10, 8.0);
 					else
 					{
 						if (mineORmill <= 0.13)
@@ -5377,32 +5701,197 @@ void main(void)
 					}
 				}
 				else	// one in a million
-					{
-						if (rmRandFloat(0,1) <= 0.001)
-							rmAddObjectDefItem(rushMineID, "ypMercFlailiphantMansabdar", 10, 8.0);
-						else if (rmRandFloat(0,1) <= 0.001)
-							rmAddObjectDefItem(rushMineID, "ypShogunTokugawa", 10, 8.0);
-						else if (rmRandFloat(0,1) <= 0.001)
-							rmAddObjectDefItem(rushMineID, "deMercGatlingCamel", 10, 8.0);
-						else if (euMap == 1)
-							rmAddObjectDefItem(rushMineID, "zpGrapeBush", 10, 8.0);
-						else if (oceaniaMap == 1)
-							rmAddObjectDefItem(rushMineID, "zpPineapleBush", 10, 8.0);
-						else
-							rmAddObjectDefItem(rushMineID, "BerryBush", 10, 8.0);
-					}
-					rmSetObjectDefMinDistance(rushMineID, 0.0);
-					rmSetObjectDefMaxDistance(rushMineID, rmXFractionToMeters(0.10));
-					rmAddObjectDefToClass(rushMineID, classGold);
-					rmAddObjectDefConstraint(rushMineID, avoidAll);
-					rmAddObjectDefConstraint(rushMineID, avoidTradeRouteSocketShort);
-					rmAddObjectDefConstraint(rushMineID, avoidGoldShort);
-						rmPlaceObjectDefAtLoc(rushMineID, 0, 0.50, 0.50, 1);
+				{
+					if (rmRandFloat(0,1) <= 0.001)
+						rmAddObjectDefItem(rushMineID, "ypMercFlailiphantMansabdar", 10, 8.0);
+					else if (rmRandFloat(0,1) <= 0.001)
+						rmAddObjectDefItem(rushMineID, "ypShogunTokugawa", 10, 8.0);
+					else if (rmRandFloat(0,1) <= 0.001)
+						rmAddObjectDefItem(rushMineID, "deMercGatlingCamel", 10, 8.0);
+					else if (euMap == 1)
+						rmAddObjectDefItem(rushMineID, "zpGrapeBush", 10, 8.0);
+					else if (oceaniaMap == 1)
+						rmAddObjectDefItem(rushMineID, "zpPineapleBush", 10, 8.0);
+					else
+						rmAddObjectDefItem(rushMineID, "BerryBush", 10, 8.0);
 				}
+				rmSetObjectDefMinDistance(rushMineID, 0.0);
+				rmSetObjectDefMaxDistance(rushMineID, rmXFractionToMeters(0.10));
+				rmAddObjectDefToClass(rushMineID, classGold);
+				rmAddObjectDefConstraint(rushMineID, avoidAll);
+				rmAddObjectDefConstraint(rushMineID, avoidTradeRouteSocketShort);
+				rmAddObjectDefConstraint(rushMineID, avoidGoldShort);
+				rmPlaceObjectDefAtLoc(rushMineID, 0, 0.50, 0.50, 1);
+			}
+		}
+	}	// Build forest later to avoid players
+
+	// Rogue Map Feature
+	if (rogueMap == 1)
+	{
+		float rogueLocX = 0.50;
+		float rogueLocY = 0.50;
+
+		if (sideBay == 1)
+		{
+			if(bayPosition < 0.12)
+			{
+				rogueLocX = 0.80;
+				rogueLocY = 0.80;
+			}
+			else if(bayPosition < 0.24)
+			{
+				rogueLocX = 0.90;
+				rogueLocY = 0.50;
+			}
+			else if(bayPosition < 0.36)
+			{
+				rogueLocX = 0.80;
+				rogueLocY = 0.20;
+			}
+			else if(bayPosition < 0.48)
+			{
+				rogueLocX = 0.50;
+				rogueLocY = 0.10;
+			}
+			else if(bayPosition < 0.60)
+			{
+				rogueLocX = 0.20;
+				rogueLocY = 0.20;
+			}
+			else if(bayPosition < 0.72)
+			{
+				rogueLocX = 0.10;
+				rogueLocY = 0.50;
+			}
+			else if(bayPosition < 0.84)
+			{
+				rogueLocX = 0.20;
+				rogueLocY = 0.80;
+			}
+			else
+			{
+				rogueLocX = 0.50;
+				rogueLocY = 0.90;
 			}
 		}
 
-// Build forest later to avoid players
+		if (westEU == 1)
+			rmSetNuggetDifficulty(501,501);
+		if (centralEU == 1 || northEU == 1 || northeastEU == 1 || northwestEU == 1)
+			rmSetNuggetDifficulty(502,502);
+		if (mediEU == 1 || eastEU == 1 || mediSeaEU == 1)
+			rmSetNuggetDifficulty(503,503);
+		if (naMap == 1 || californiaMap == 1 || carolinaMap == 1 || rockiesMap == 1 || sonoraMap == 1 || bayouMap == 1 || nwtMap == 1)
+			rmSetNuggetDifficulty(504,504);
+		if (ausMap == 1)
+			rmSetNuggetDifficulty(505,505);
+
+		int rogueSiteID = -1;
+		if (westEU == 1 || centralEU == 1 || northEU == 1 || northeastEU == 1 || northwestEU == 1)
+			rogueSiteID = rmCreateGrouping("rogue site", "Rogue_City_West");
+		else if (mediEU == 1 || eastEU == 1 || mediSeaEU == 1)
+			rogueSiteID = rmCreateGrouping("rogue site", "Rogue_City_South");
+		else
+			rogueSiteID = rmCreateGrouping("rogue site", "Rogue_Farm");
+		rmSetGroupingMinDistance(rogueSiteID, rmXFractionToMeters(0.00));
+		rmSetGroupingMaxDistance(rogueSiteID, rmXFractionToMeters(0.00));
+		rmAddGroupingToClass(rogueSiteID, rmClassID("natives"));
+		rmAddGroupingConstraint(rogueSiteID, avoidAllFar);
+
+		int rogueSiteInstanceID1 = rmPlaceGroupingInstanceAtLoc(rogueSiteID, rogueLocX, rogueLocY, 0);
+
+		// Grouping unit IDs
+		int rogueTreasureID = rmGetGroupingInstanceUnitByType(rogueSiteInstanceID1, "zpNuggetInvisible");
+		int rogueCathedralID = rmGetGroupingInstanceUnitByType(rogueSiteInstanceID1, "zpSPCGermanCathedral");
+		int rogueBasilicaID = rmGetGroupingInstanceUnitByType(rogueSiteInstanceID1, "zpSPCGreatBasilicaConvertable");
+		int rogueMarketID = rmGetGroupingInstanceUnitByType(rogueSiteInstanceID1, "zpSPCCityMarket");
+		int rogueBankID = rmGetGroupingInstanceUnitByType(rogueSiteInstanceID1, "zpSPCNationalBank");
+		int rogueDistileryID = rmGetGroupingInstanceUnitByType(rogueSiteInstanceID1, "zpSPCDestilery");
+		int rogueSawMillID = rmGetGroupingInstanceUnitByType(rogueSiteInstanceID1, "zpSPCSawMill");
+
+		// Conversion Suspend
+		rmCreateTrigger("RogueState Convert OFF");
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject",""+rogueCathedralID);
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "True");
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject",""+rogueBasilicaID );
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "True");
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject",""+rogueMarketID );
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "True");
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject",""+rogueBankID );
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "True");
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject",""+rogueDistileryID );
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "True");
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject",""+rogueSawMillID );
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "True");
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmCreateTrigger("RogueState Convert ON");
+		rmAddTriggerCondition("Nugget Is Collectable");
+		rmSetTriggerConditionParam("NuggetObject", ""+rogueTreasureID);
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject",""+rogueCathedralID);
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "False");
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject",""+rogueBasilicaID );
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "False");
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject",""+rogueMarketID );
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "False");
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject",""+rogueBankID );
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "False");
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject",""+rogueDistileryID );
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "False");
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject",""+rogueSawMillID );
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "False");
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmCreateTrigger("RogueState Techs");
+		rmSwitchToTrigger(rmTriggerID("Starting techs"));
+		for(i=0; <= cNumberNonGaiaPlayers)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",i);
+			if (westEU == 1 || centralEU == 1 || northEU == 1 || northeastEU == 1 || northwestEU == 1)
+				rmSetTriggerEffectParam("TechID","cTechzpUnknownRogueEuropean"); // Europen Map
+			else if (mediEU == 1 || eastEU == 1 || mediSeaEU == 1)
+				rmSetTriggerEffectParam("TechID","cTechzpUnknownRogueItalian"); // Italian Map
+			else
+				rmSetTriggerEffectParam("TechID","cTechzpUnknownRogueAmerican"); // American / Australian map
+			rmSetTriggerEffectParamInt("Status",2);
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
 
 	// Load Bar, sometimes used for a bit of fun RNG
 	if (chaosBar == 1)
@@ -5412,8 +5901,8 @@ void main(void)
    	else
    		rmSetStatusText("", 0.2);
    
-// ============= Player Configurations =============
-// Sometimes teams closer together
+	// ============= Player Configurations =============
+	// Sometimes teams closer together
 	if (rmGetNomadStart() == true)
 	{
 		if (cNumberTeams == 2)
@@ -5915,6 +6404,7 @@ void main(void)
 			rmAddObjectDefItem(piratewaterflagID1, "zpVenetianWaterSpawnFlag1", 1, 1.0);
 		rmAddObjectDefToClass(piratewaterflagID1, rmClassID("pirates"));
 		rmAddClosestPointConstraint(flagLandShort);
+		rmAddClosestPointConstraint(avoidEdge);
 		if (riverExists == 1 && oceanRing == 1)
 		{
 			rmAddClosestPointConstraint(avoidCenterFlag);
@@ -5970,6 +6460,7 @@ void main(void)
 			rmAddObjectDefItem(piratewaterflagID2, "zpVenetianWaterSpawnFlag2", 1, 1.0);
 		rmAddObjectDefToClass(piratewaterflagID2, rmClassID("pirates"));
 		rmAddClosestPointConstraint(flagLandShort);
+		rmAddClosestPointConstraint(avoidEdge);
 		if (riverExists == 1 && oceanRing == 1)
 		{
 			rmAddClosestPointConstraint(avoidCenterFlag);
@@ -10065,7 +10556,7 @@ void main(void)
  		  	rmPlaceObjectDefAtLoc(nuggetHuariID, 0, 0.5, 0.5, 4);
 	}
 
-int nuggetProspectorID= rmCreateObjectDef("unknown prospector nuggets"); 
+	int nuggetProspectorID= rmCreateObjectDef("unknown prospector nuggets"); 
 	if (amazonMap == 1 && rmRandFloat(0,1) <= 0.50)
 		rmAddObjectDefItem(nuggetProspectorID, "SPCAztecMap", 1, 0.0);
 	else
@@ -10082,6 +10573,7 @@ int nuggetProspectorID= rmCreateObjectDef("unknown prospector nuggets");
 		rmAddObjectDefConstraint(nuggetProspectorID, avoidGoldMin);
 		rmAddObjectDefConstraint(nuggetProspectorID, avoidCliffsShort);
 		rmAddObjectDefConstraint(nuggetProspectorID, avoidPond);
+		rmAddObjectDefConstraint(nuggetProspectorID, avoidNativesShort);
 		rmAddObjectDefConstraint(nuggetProspectorID, avoidElectorsShort);
 		rmAddObjectDefConstraint(nuggetProspectorID, avoidPiratesShort);
 		rmAddObjectDefConstraint(nuggetProspectorID, avoidAll);
@@ -10114,6 +10606,7 @@ int nuggetUnknownID= rmCreateObjectDef("unknown special nuggets");
 	rmAddObjectDefConstraint(nuggetUnknownID, avoidGoldMin);
 	rmAddObjectDefConstraint(nuggetUnknownID, avoidCliffsShort);
 	rmAddObjectDefConstraint(nuggetUnknownID, avoidPond);
+	rmAddObjectDefConstraint(nuggetUnknownID, avoidNativesShort);
 	rmAddObjectDefConstraint(nuggetUnknownID, avoidElectorsShort);
 	rmAddObjectDefConstraint(nuggetUnknownID, avoidPiratesShort);
 	rmAddObjectDefConstraint(nuggetUnknownID, avoidAll);
@@ -10156,6 +10649,7 @@ int nuggetUnknownID= rmCreateObjectDef("unknown special nuggets");
 	rmAddObjectDefConstraint(nuggetHMID, avoidGoldMin);
 	rmAddObjectDefConstraint(nuggetHMID, avoidCliffsShort);
 	rmAddObjectDefConstraint(nuggetHMID, avoidPond);
+	rmAddObjectDefConstraint(nuggetHMID, avoidNativesShort);
 	rmAddObjectDefConstraint(nuggetHMID, avoidElectorsShort);
 	rmAddObjectDefConstraint(nuggetHMID, avoidPiratesShort);
 	rmAddObjectDefConstraint(nuggetHMID, avoidAll);
@@ -10171,7 +10665,7 @@ int nuggetUnknownID= rmCreateObjectDef("unknown special nuggets");
 	    	rmPlaceObjectDefAtLoc(nuggetHMID, 0, 0.5, 0.5, 2*cNumberNonGaiaPlayers);
 	}
 
-int nuggetAf12ID= rmCreateObjectDef("african nugget12"); 
+	int nuggetAf12ID= rmCreateObjectDef("african nugget12"); 
 	rmAddObjectDefItem(nuggetAf12ID, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(nuggetAf12ID, 0.00);
 	rmSetObjectDefMaxDistance(nuggetAf12ID, rmXFractionToMeters(0.30));
@@ -10184,6 +10678,7 @@ int nuggetAf12ID= rmCreateObjectDef("african nugget12");
 	rmAddObjectDefConstraint(nuggetAf12ID, avoidGoldMin);
 	rmAddObjectDefConstraint(nuggetAf12ID, avoidCliffsShort);
 	rmAddObjectDefConstraint(nuggetAf12ID, avoidPond);
+	rmAddObjectDefConstraint(nuggetAf12ID, avoidNativesShort);
 	rmAddObjectDefConstraint(nuggetAf12ID, avoidElectorsShort);
 	rmAddObjectDefConstraint(nuggetAf12ID, avoidPiratesShort);
 	rmAddObjectDefConstraint(nuggetAf12ID, avoidAll);
@@ -10199,7 +10694,7 @@ int nuggetAf12ID= rmCreateObjectDef("african nugget12");
 	    	rmPlaceObjectDefAtLoc(nuggetAf12ID, 0, 0.5, 0.5, 1);
 	}
 
-int houseNuggetID= rmCreateObjectDef("house nugget");
+	int houseNuggetID= rmCreateObjectDef("house nugget");
 	rmAddObjectDefItem(houseNuggetID, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(houseNuggetID, 0.025);
 	rmSetObjectDefMaxDistance(houseNuggetID, rmXFractionToMeters(0.15));
@@ -10212,6 +10707,7 @@ int houseNuggetID= rmCreateObjectDef("house nugget");
 	rmAddObjectDefConstraint(houseNuggetID, avoidGoldMin);
 	rmAddObjectDefConstraint(houseNuggetID, avoidCliffsShort);
 	rmAddObjectDefConstraint(houseNuggetID, avoidPond);
+	rmAddObjectDefConstraint(houseNuggetID, avoidNativesShort);
 	rmAddObjectDefConstraint(houseNuggetID, avoidElectorsShort);
 	rmAddObjectDefConstraint(houseNuggetID, avoidPiratesShort);
 	rmAddObjectDefConstraint(houseNuggetID, avoidAll);
@@ -10227,7 +10723,7 @@ int houseNuggetID= rmCreateObjectDef("house nugget");
 			rmPlaceObjectDefAtLoc(houseNuggetID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
 	}
 
-int crazyNugget1ID= rmCreateObjectDef("crazy nugget 1"); 
+	int crazyNugget1ID= rmCreateObjectDef("crazy nugget 1"); 
 	rmAddObjectDefItem(crazyNugget1ID, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(crazyNugget1ID, 0.00);
 	rmSetObjectDefMaxDistance(crazyNugget1ID, rmXFractionToMeters(0.23));
@@ -10240,6 +10736,7 @@ int crazyNugget1ID= rmCreateObjectDef("crazy nugget 1");
 	rmAddObjectDefConstraint(crazyNugget1ID, avoidGoldMin);
 	rmAddObjectDefConstraint(crazyNugget1ID, avoidCliffsShort);
 	rmAddObjectDefConstraint(crazyNugget1ID, avoidPond);
+	rmAddObjectDefConstraint(crazyNugget1ID, avoidNativesShort);
 	rmAddObjectDefConstraint(crazyNugget1ID, avoidElectorsShort);
 	rmAddObjectDefConstraint(crazyNugget1ID, avoidPiratesShort);
 	rmAddObjectDefConstraint(crazyNugget1ID, avoidAll);
@@ -10266,7 +10763,7 @@ int crazyNugget1ID= rmCreateObjectDef("crazy nugget 1");
 			rmPlaceObjectDefAtLoc(crazyNugget1ID, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers);
 	}
 
-int crazyNuggetBorneoID= rmCreateObjectDef("crazy borneo nuggets"); 
+	int crazyNuggetBorneoID= rmCreateObjectDef("crazy borneo nuggets"); 
 	rmAddObjectDefItem(crazyNuggetBorneoID, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(crazyNuggetBorneoID, 0.00);
 	rmSetObjectDefMaxDistance(crazyNuggetBorneoID, rmXFractionToMeters(0.23));
@@ -10279,6 +10776,7 @@ int crazyNuggetBorneoID= rmCreateObjectDef("crazy borneo nuggets");
 	rmAddObjectDefConstraint(crazyNuggetBorneoID, avoidGoldMin);
 	rmAddObjectDefConstraint(crazyNuggetBorneoID, avoidCliffsShort);
 	rmAddObjectDefConstraint(crazyNuggetBorneoID, avoidPond);
+	rmAddObjectDefConstraint(crazyNuggetBorneoID, avoidNativesShort);
 	rmAddObjectDefConstraint(crazyNuggetBorneoID, avoidElectorsShort);
 	rmAddObjectDefConstraint(crazyNuggetBorneoID, avoidPiratesShort);
 	rmAddObjectDefConstraint(crazyNuggetBorneoID, avoidAll);
@@ -10301,7 +10799,7 @@ int crazyNuggetBorneoID= rmCreateObjectDef("crazy borneo nuggets");
 			rmPlaceObjectDefAtLoc(crazyNuggetBorneoID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
 	}
 
-int crazyNuggetEuroID= rmCreateObjectDef("crazy euro nuggets"); 
+	int crazyNuggetEuroID= rmCreateObjectDef("crazy euro nuggets"); 
 	rmAddObjectDefItem(crazyNuggetEuroID, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(crazyNuggetEuroID, 0.00);
 	rmSetObjectDefMaxDistance(crazyNuggetEuroID, rmXFractionToMeters(0.23));
@@ -10314,6 +10812,7 @@ int crazyNuggetEuroID= rmCreateObjectDef("crazy euro nuggets");
 	rmAddObjectDefConstraint(crazyNuggetEuroID, avoidGoldMin);
 	rmAddObjectDefConstraint(crazyNuggetEuroID, avoidCliffsShort);
 	rmAddObjectDefConstraint(crazyNuggetEuroID, avoidPond);
+	rmAddObjectDefConstraint(crazyNuggetEuroID, avoidNativesShort);
 	rmAddObjectDefConstraint(crazyNuggetEuroID, avoidElectorsShort);
 	rmAddObjectDefConstraint(crazyNuggetEuroID, avoidPiratesShort);
 	rmAddObjectDefConstraint(crazyNuggetEuroID, avoidAll);
@@ -10334,7 +10833,7 @@ int crazyNuggetEuroID= rmCreateObjectDef("crazy euro nuggets");
 			rmPlaceObjectDefAtLoc(crazyNuggetEuroID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
 	}
 
-int crazyNugget2ID= rmCreateObjectDef("crazy nugget 2"); 
+	int crazyNugget2ID= rmCreateObjectDef("crazy nugget 2"); 
 	rmAddObjectDefItem(crazyNugget2ID, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(crazyNugget2ID, 0.00);
 	rmSetObjectDefMaxDistance(crazyNugget2ID, rmXFractionToMeters(0.23));
@@ -10347,6 +10846,7 @@ int crazyNugget2ID= rmCreateObjectDef("crazy nugget 2");
 	rmAddObjectDefConstraint(crazyNugget2ID, avoidGoldMin);
 	rmAddObjectDefConstraint(crazyNugget2ID, avoidCliffsShort);
 	rmAddObjectDefConstraint(crazyNugget2ID, avoidPond);
+	rmAddObjectDefConstraint(crazyNugget2ID, avoidNativesShort);
 	rmAddObjectDefConstraint(crazyNugget2ID, avoidElectorsShort);
 	rmAddObjectDefConstraint(crazyNugget2ID, avoidPiratesShort);
 	rmAddObjectDefConstraint(crazyNugget2ID, avoidAll);
@@ -10378,6 +10878,7 @@ int crazyNugget2ID= rmCreateObjectDef("crazy nugget 2");
 	rmAddObjectDefConstraint(nugget12ID, avoidGoldMin);
 	rmAddObjectDefConstraint(nugget12ID, avoidCliffsShort);
 	rmAddObjectDefConstraint(nugget12ID, avoidPond);
+	rmAddObjectDefConstraint(nugget12ID, avoidNativesShort);
 	rmAddObjectDefConstraint(nugget12ID, avoidElectorsShort);
 	rmAddObjectDefConstraint(nugget12ID, avoidPiratesShort);
 	rmAddObjectDefConstraint(nugget12ID, avoidAll);
@@ -10409,6 +10910,7 @@ int crazyNugget2ID= rmCreateObjectDef("crazy nugget 2");
 	rmAddObjectDefConstraint(nuggetDuberID, avoidGoldMin);
 	rmAddObjectDefConstraint(nuggetDuberID, avoidCliffsShort);
 	rmAddObjectDefConstraint(nuggetDuberID, avoidPond);
+	rmAddObjectDefConstraint(nuggetDuberID, avoidNativesShort);
 	rmAddObjectDefConstraint(nuggetDuberID, avoidElectorsShort);
 	rmAddObjectDefConstraint(nuggetDuberID, avoidPiratesShort);
 	rmAddObjectDefConstraint(nuggetDuberID, avoidAll);
@@ -10437,19 +10939,37 @@ int crazyNugget2ID= rmCreateObjectDef("crazy nugget 2");
 	rmAddObjectDefConstraint(nugget4ID, avoidGoldMin);
 	rmAddObjectDefConstraint(nugget4ID, avoidCliffsShort);
 	rmAddObjectDefConstraint(nugget4ID, avoidPond);
+	rmAddObjectDefConstraint(nugget4ID, avoidNativesShort);
 	rmAddObjectDefConstraint(nugget4ID, avoidElectorsShort);
 	rmAddObjectDefConstraint(nugget4ID, avoidPiratesShort);
 	rmAddObjectDefConstraint(nugget4ID, avoidAll);
-	rmSetNuggetDifficulty(4,4);
-	if (cNumberNonGaiaPlayers > 2 && rmGetIsTreaty() == false)
+	if (mediSeaEU == 1)
 	{
-		if (splitIsland == 1)
+		rmSetNuggetDifficulty(74,74);
+		if (cNumberNonGaiaPlayers > 2 && rmGetIsTreaty() == false)
 		{
-			rmPlaceObjectDefInArea(nugget4ID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/2);
-			rmPlaceObjectDefInArea(nugget4ID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/2);
+			if (splitIsland == 1)
+			{
+				rmPlaceObjectDefInArea(nugget4ID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/4);
+				rmPlaceObjectDefInArea(nugget4ID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/4);
+			}
+			else
+				rmPlaceObjectDefAtLoc(nugget4ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers/2);
 		}
-		else
-			rmPlaceObjectDefAtLoc(nugget4ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
+	}
+	else
+	{
+		rmSetNuggetDifficulty(4,4);
+		if (cNumberNonGaiaPlayers > 2 && rmGetIsTreaty() == false)
+		{
+			if (splitIsland == 1)
+			{
+				rmPlaceObjectDefInArea(nugget4ID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/2);
+				rmPlaceObjectDefInArea(nugget4ID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/2);
+			}
+			else
+				rmPlaceObjectDefAtLoc(nugget4ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
+		}
 	}
 	
 	int nugget3ID= rmCreateObjectDef("map nugget3"); 
@@ -10465,19 +10985,36 @@ int crazyNugget2ID= rmCreateObjectDef("crazy nugget 2");
 	rmAddObjectDefConstraint(nugget3ID, avoidGoldMin);
 	rmAddObjectDefConstraint(nugget3ID, avoidCliffsShort);
 	rmAddObjectDefConstraint(nugget3ID, avoidPond);
+	rmAddObjectDefConstraint(nugget3ID, avoidNativesShort);
 	rmAddObjectDefConstraint(nugget3ID, avoidElectorsShort);
 	rmAddObjectDefConstraint(nugget3ID, avoidPiratesShort);
 	rmAddObjectDefConstraint(nugget3ID, avoidAll);
-	rmSetNuggetDifficulty(3,3);
-	if (splitIsland == 1)
+	if (mediSeaEU == 1)
 	{
-		rmPlaceObjectDefInArea(nugget3ID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/2);
-		rmPlaceObjectDefInArea(nugget3ID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/2);
+		rmSetNuggetDifficulty(73,73);
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(nugget3ID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/4);
+			rmPlaceObjectDefInArea(nugget3ID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/4);
+		}
+		else
+			rmPlaceObjectDefAtLoc(nugget3ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers/2);
+		if (rmGetIsTreaty() == true)
+			rmPlaceObjectDefAtLoc(nugget3ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers/2);
 	}
 	else
-		rmPlaceObjectDefAtLoc(nugget3ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
-	if (rmGetIsTreaty() == true)
-		rmPlaceObjectDefAtLoc(nugget3ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
+	{
+		rmSetNuggetDifficulty(3,3);
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(nugget3ID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/2);
+			rmPlaceObjectDefInArea(nugget3ID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/2);
+		}
+		else
+			rmPlaceObjectDefAtLoc(nugget3ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
+		if (rmGetIsTreaty() == true)
+			rmPlaceObjectDefAtLoc(nugget3ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
+	}
 	
 	int nugget2ID= rmCreateObjectDef("map nugget2"); 
 	rmAddObjectDefItem(nugget2ID, "Nugget", 1, 0.0);
@@ -10494,20 +11031,37 @@ int crazyNugget2ID= rmCreateObjectDef("crazy nugget 2");
 	rmAddObjectDefConstraint(nugget2ID, avoidGoldMin);
 	rmAddObjectDefConstraint(nugget2ID, avoidCliffsShort);
 	rmAddObjectDefConstraint(nugget2ID, avoidPond);
+	rmAddObjectDefConstraint(nugget2ID, avoidNativesShort);
 	rmAddObjectDefConstraint(nugget2ID, avoidElectorsShort);
 	rmAddObjectDefConstraint(nugget2ID, avoidPiratesShort);
 	rmAddObjectDefConstraint(nugget2ID, avoidAll);
-	rmSetNuggetDifficulty(2,2);
-	if (splitIsland == 1)
+	if (mediSeaEU == 1)
 	{
-		rmPlaceObjectDefInArea(nugget2ID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/2);
-		rmPlaceObjectDefInArea(nugget2ID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/2);
+		rmSetNuggetDifficulty(72,72);
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(nugget2ID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/4);
+			rmPlaceObjectDefInArea(nugget2ID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/4);
+		}
+		else
+			rmPlaceObjectDefAtLoc(nugget2ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers/2);
+		if (rmGetIsTreaty() == true)
+			rmPlaceObjectDefAtLoc(nugget2ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers/2);
 	}
 	else
-		rmPlaceObjectDefAtLoc(nugget2ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
-	if (rmGetIsTreaty() == true)
-		rmPlaceObjectDefAtLoc(nugget2ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
-	
+	{
+		rmSetNuggetDifficulty(2,2);
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(nugget2ID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers/2);
+			rmPlaceObjectDefInArea(nugget2ID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers/2);
+		}
+		else
+			rmPlaceObjectDefAtLoc(nugget2ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
+		if (rmGetIsTreaty() == true)
+			rmPlaceObjectDefAtLoc(nugget2ID, 0, 0.5, 0.5, cNumberNonGaiaPlayers);
+	}
+
 	int nuggetID= rmCreateObjectDef("map nugget"); 
 	rmAddObjectDefItem(nuggetID, "Nugget", 1, 0.0);
 	rmSetObjectDefMinDistance(nuggetID, 0.25);
@@ -10521,21 +11075,38 @@ int crazyNugget2ID= rmCreateObjectDef("crazy nugget 2");
 	rmAddObjectDefConstraint(nuggetID, avoidTradeRouteSocketShort);
 	rmAddObjectDefConstraint(nuggetID, avoidTradeRoute);
 	rmAddObjectDefConstraint(nuggetID, avoidCliffsShort);
+	rmAddObjectDefConstraint(nuggetID, avoidNativesShort);
 	rmAddObjectDefConstraint(nuggetID, avoidElectorsShort);
 	rmAddObjectDefConstraint(nuggetID, avoidPiratesShort);
 	rmAddObjectDefConstraint(nuggetID, avoidAll);
 	rmAddObjectDefConstraint(nuggetID, avoidPond);
 	rmAddObjectDefConstraint(nuggetID, avoidGoldMin);
-	rmSetNuggetDifficulty(1,1);
-	if (splitIsland == 1)
+	if (mediSeaEU == 1)
 	{
-		rmPlaceObjectDefInArea(nuggetID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers*1.5);
-		rmPlaceObjectDefInArea(nuggetID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers*1.5);
+		rmSetNuggetDifficulty(71,71);
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(nuggetID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers);
+			rmPlaceObjectDefInArea(nuggetID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers);
+		}
+		else
+			rmPlaceObjectDefAtLoc(nuggetID, 0, 0.5, 0.5, cNumberNonGaiaPlayers*1.5);
+		if (rmGetIsTreaty() == true)
+			rmPlaceObjectDefAtLoc(nuggetID, 0, 0.5, 0.5, cNumberNonGaiaPlayers*1.5);
 	}
 	else
-		rmPlaceObjectDefAtLoc(nuggetID, 0, 0.5, 0.5, cNumberNonGaiaPlayers*3);
-	if (rmGetIsTreaty() == true)
-		rmPlaceObjectDefAtLoc(nuggetID, 0, 0.5, 0.5, cNumberNonGaiaPlayers*3);
+	{
+		rmSetNuggetDifficulty(1,1);
+		if (splitIsland == 1)
+		{
+			rmPlaceObjectDefInArea(nuggetID, 0, rmAreaID("split island 1"), cNumberNonGaiaPlayers*1.5);
+			rmPlaceObjectDefInArea(nuggetID, 0, rmAreaID("split island 2"), cNumberNonGaiaPlayers*1.5);
+		}
+		else
+			rmPlaceObjectDefAtLoc(nuggetID, 0, 0.5, 0.5, cNumberNonGaiaPlayers*3);
+		if (rmGetIsTreaty() == true)
+			rmPlaceObjectDefAtLoc(nuggetID, 0, 0.5, 0.5, cNumberNonGaiaPlayers*3);
+	}
 	
 	// add fish if flag
 	if (placeWaterFlag == 1)
@@ -10554,7 +11125,6 @@ int crazyNugget2ID= rmCreateObjectDef("crazy nugget 2");
 			rmAddObjectDefConstraint(fishID, fishVsFishFar);
 		else
 			rmAddObjectDefConstraint(fishID, fishVsFishID);
-		rmAddObjectDefConstraint(fishID, avoidElectorsShort);
 		rmAddObjectDefConstraint(fishID, avoidPiratesShort);
 		rmAddObjectDefConstraint(fishID, fishLand);
 		rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 3*cNumberNonGaiaPlayers + 6);
@@ -10583,7 +11153,6 @@ int crazyNugget2ID= rmCreateObjectDef("crazy nugget 2");
 			rmAddObjectDefConstraint(whaleID, whaleVsWhaleFar);
 		else
 			rmAddObjectDefConstraint(whaleID, whaleVsWhaleID);
-		rmAddObjectDefConstraint(whaleID, avoidElectorsShort);
 		rmAddObjectDefConstraint(whaleID, avoidPiratesShort);
 		rmAddObjectDefConstraint(whaleID, whaleLand);
 		rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, cNumberNonGaiaPlayers + 1);
@@ -10603,7 +11172,6 @@ int crazyNugget2ID= rmCreateObjectDef("crazy nugget 2");
 		rmSetObjectDefMaxDistance(nuggetWetterID, rmXFractionToMeters(0.48));
 		rmAddObjectDefConstraint(nuggetWetterID, avoidNuggetFar);
 		rmAddObjectDefConstraint(nuggetWetterID, whaleLandFar);
-		rmAddObjectDefConstraint(nuggetWetterID, avoidElectorsShort);
 		rmAddObjectDefConstraint(nuggetWetterID, avoidPiratesShort);
 		rmAddObjectDefConstraint(nuggetWetterID, avoidAll);
 		rmAddObjectDefConstraint(nuggetWetterID, avoidPond);
@@ -10622,7 +11190,6 @@ int crazyNugget2ID= rmCreateObjectDef("crazy nugget 2");
 		rmSetObjectDefMaxDistance(nuggetWetID, rmXFractionToMeters(0.48));
 		rmAddObjectDefConstraint(nuggetWetID, avoidNugget);
 		rmAddObjectDefConstraint(nuggetWetID, whaleLand);
-		rmAddObjectDefConstraint(nuggetWetID, avoidElectorsShort);
 		rmAddObjectDefConstraint(nuggetWetID, avoidPiratesShort);
 		rmAddObjectDefConstraint(nuggetWetID, avoidAll);
 		rmAddObjectDefConstraint(nuggetWetID, avoidPond);

@@ -141,7 +141,6 @@
   </zpconsulatehussitesking>
   <zpconsulatehussitesreformer portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/hussite_reformist.png">
   </zpconsulatehussitesreformer>
-
   <zpconsulateelectorhabsburg portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/elector_habsburg.png">
   </zpconsulateelectorhabsburg>
   <zpconsulateelectorwittelsbach portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/elector_wittelsbach.png">
@@ -152,6 +151,12 @@
   </zpconsulateelectorwettin>
   <zpconsulateelectoroldenburg portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/elector_oldenburg.png">
   </zpconsulateelectoroldenburg>
+  <zpconsulatehansawestern portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/hansa_west.png">
+  </zpconsulatehansawestern>
+  <zpconsulatehansacentral portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/hansa_central.png">
+  </zpconsulatehansacentral>
+  <zpconsulatehansaeast portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/hansa_east.png">
+  </zpconsulatehansaeast>
   
   <zpconsulaterevjacobine portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_jacobine.png">
   </zpconsulaterevjacobine>

@@ -222,24 +222,24 @@
 		<unit variation="133" posx="-1.2898" posz="21.9988" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
 		<unit variation="133" posx="-10.3940" posz="21.7916" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
 		<unit variation="133" posx="-7.4896" posz="21.7977" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
-		<unit variation="59" posx="-12.2114" posz="19.3947" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeUnitVenetianFence</unit>
-		<unit variation="59" posx="-0.2723" posz="19.6769" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeUnitVenetianFence</unit>
+		<unit variation="59" posx="-12.2114" posz="19.3947" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeUnitVenetianFenceBrickB</unit>
+		<unit variation="59" posx="-0.2723" posz="19.6769" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeUnitVenetianFenceBrickB</unit>
 		<unit variation="41" posx="0.0894" posz="21.7193" orientx="1.0000" orienty="0.0000" orientz="-0.0000">HarbourPathBlock</unit>
 		<unit variation="133" posx="-4.3628" posz="22.1360" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
 		<unit variation="41" posx="-12.5375" posz="22.3953" orientx="-1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
-		<unit variation="1" posx="-12.3828" posz="21.4660" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">zpNativeUnitVenetianFence</unit>
+		<unit variation="1" posx="-12.3828" posz="21.4660" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">zpNativeUnitVenetianFenceBrickB</unit>
 		<unit variation="155" posx="-10.7459" posz="21.3805" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">zpNativeUnitVenetian</unit>
 		<unit variation="197" posx="-2.1247" posz="21.8500" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">zpNativeUnitVenetian</unit>
 		<unit variation="41" posx="-4.5223" posz="22.9756" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
-		<unit variation="172" posx="-0.2176" posz="21.7846" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianFence</unit>
+		<unit variation="172" posx="-0.2176" posz="21.7846" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianFenceBrickB</unit>
 		<unit variation="41" posx="-6.7313" posz="23.1745" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
-		<unit variation="171" posx="-1.5379" posz="23.9774" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeUnitVenetianFence</unit>
+		<unit variation="171" posx="-1.5379" posz="23.9774" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeUnitVenetianFenceBrickB</unit>
 		<unit variation="41" posx="-1.5350" posz="23.5041" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
 		<unit variation="41" posx="-10.4942" posz="23.1158" orientx="0.0000" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
 		<unit variation="41" posx="-6.2686" posz="26.8365" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSocketVenetians</unit>
-		<unit variation="171" posx="-11.1616" posz="24.1788" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeUnitVenetianFence</unit>
-		<unit variation="59" posx="-12.4768" posz="24.1923" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeUnitVenetianFence</unit>
-		<unit variation="59" posx="-0.1487" posz="24.0807" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeUnitVenetianFence</unit>
+		<unit variation="171" posx="-11.1616" posz="24.1788" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeUnitVenetianFenceBrickB</unit>
+		<unit variation="59" posx="-12.4768" posz="24.1923" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeUnitVenetianFenceBrickB</unit>
+		<unit variation="59" posx="-0.1487" posz="24.0807" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeUnitVenetianFenceBrickB</unit>
 		<unit variation="43" posx="-9.7268" posz="32.2181" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpNativeUnitVenetianGuard</unit>
 		<unit variation="43" posx="-3.4119" posz="32.2780" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpNativeUnitVenetianGuard</unit>
 	</units>

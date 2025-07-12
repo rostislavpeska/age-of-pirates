@@ -7,9 +7,9 @@
 	<selectassingleunit>1</selectassingleunit>
 	<workonassingleunit>1</workonassingleunit>
 	<units>
-		<unit variation="127" posx="-1.8945" posz="-11.4109" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
-		<unit variation="213" posx="0.4960" posz="-11.4739" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
-		<unit variation="127" posx="2.8143" posz="-11.4228" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="127" posx="-1.8945" posz="-11.4109" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="213" posx="0.4960" posz="-11.4739" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="127" posx="2.8143" posz="-11.4228" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
 		<unit variation="9" posx="-4.8345" posz="-9.4450" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
 		<unit variation="9" posx="5.3024" posz="-9.9956" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
 		<unit variation="9" posx="7.6757" posz="-6.3795" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
@@ -25,7 +25,7 @@
 		<unit variation="9" posx="-7.2117" posz="-2.8974" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
 		<unit variation="9" posx="-10.0011" posz="-2.8642" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
 		<unit variation="9" posx="-4.4654" posz="-3.3403" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativeTownObstruction</unit>
-		<unit variation="27" posx="-7.6974" posz="-3.8694" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="27" posx="-7.6974" posz="-3.8694" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNatEUPropFencDarkBrickB</unit>
 		<unit variation="250" posx="-1.6503" posz="-5.0390" orientx="-0.3827" orienty="0.0000" orientz="0.9239">deNatEUPropVilMale</unit>
 		<unit variation="112" posx="0.8517" posz="-5.3993" orientx="-0.9239" orienty="-0.0000" orientz="0.3827">deNatEUPropVilLeaders</unit>
 		<unit variation="251" posx="0.3666" posz="-4.1929" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNativeUnitVenetianFlag</unit>

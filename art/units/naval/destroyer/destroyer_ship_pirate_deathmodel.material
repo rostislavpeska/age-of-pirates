@@ -5,7 +5,7 @@
     <parameters>
       <texture name="BaseColor" override="units\naval\destroyer\textures\destroyer_pirate_mata_basecolor">
       </texture>
-      <texture name="Normals" override="units\naval\destroyer\textures\destroyer_pirate_mata_normals">
+      <texture name="Normals" override="units\naval\destroyer\textures\destroyer_mata_normals">
       </texture>
       <texture name="Masks" override="units\naval\destroyer\textures\destroyer_pirate_mata_masks">
       </texture>

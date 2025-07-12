@@ -1,0 +1,50 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\hanseatic\textures\hanse_fillerbuilding_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\trading_post\socket_europe\textures\trade_socket_europe_age2_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\trading_post\socket_europe\textures\trade_socket_europe_age2_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\dutch\dutch_homecity_cranes\textures\dutch_homecity_cranes_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\dutch\dutch_homecity_cranes\textures\dutch_homecity_cranes_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\dutch\dutch_homecity_cranes\textures\dutch_homecity_cranes_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\hanseatic\textures\hanse_fillerbuilding_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\trading_post\socket_europe\textures\trade_socket_europe_age2_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\trading_post\socket_europe\textures\trade_socket_europe_age2_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\dock_props\atlas\dock_props_mata_Basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\dock_props\atlas\dock_props_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\dock_props\atlas\dock_props_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
