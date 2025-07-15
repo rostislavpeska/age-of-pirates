@@ -2914,8 +2914,8 @@
       <string _locid="302915">Kontor Aliance Pact</string>
       <string _locid="302916">Unlocks more Hanseatic units and techs. </string>
       <string _locid="302917">Kontor Water Flag</string>
-      <string _locid="302918">ZP Kontor Water Flag 1</string>
-      <string _locid="302919">ZP Kontor Water Flag 2</string>
+      <string _locid="302918">ZP Hansa Water Flag 1</string>
+      <string _locid="302919">ZP Hansa Water Flag 2</string>
       <string _locid="302920">Western Faction</string>
       <string _locid="302921">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nKontor Fluyt \n\nHanseatic warship, trains Hanseatic Legionaries. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nSMS Hansa</string>
       <string _locid="302922">ZP MERC Destroyer</string>
@@ -2929,7 +2929,7 @@
       <string _locid="302930">Ships a Teutonic Fort Wagon able to construct a Teutonic Fort.</string>
       <string _locid="302931">War Cog</string>
       <string _locid="302932">ZP SHP War Cog</string>
-      <string _locid="302933">Convertible trade / war ship, currently in war mode</string>
+      <string _locid="302933">Convertible trade / war ship, currently in war mode. More powerful than standard Caravel but can't transport units.</string>
       <string _locid="302934">Trade Cog</string>
       <string _locid="302935">ZP SHP Trade Cog</string>
       <string _locid="302936">Convertible trade / war ship, currently in trade mode</string>
@@ -2958,11 +2958,28 @@
       <string _locid="302959">Torun (Hansa Kontor)</string>
       <string _locid="302960">Osnabrück (Hansa Kontor)</string>
       <string _locid="302961">Convert to Trade Cog</string>
-      <string _locid="302962">Once the ship is converted to Trade Cog, it starts generating coin but you lose the full control of the ship until you don't convert it back to War Cog.</string>
+      <string _locid="302962">Convert to Trade Cog: Once the ship is converted to Trade Cog, it starts generating coin but you lose the full control of the ship until you don't convert it back to War Cog.</string>
       <string _locid="302963">Convert to War Cog</string>
-      <string _locid="302964">Convert this ship into a standard ship mode.</string>
-      <string _locid="302965">Trade: Looking for the closest friendly dock to trade</string>
-      
+      <string _locid="302964">Convert to War Cog: Take full control over this ship and convert it back to a war mode.</string>
+      <string _locid="302965">Food Trade: Looking for the closest friendly dock to buy Food</string>
+      <string _locid="302966">Wood Trade: Looking for the closest friendly dock to buy Wood</string>
+      <string _locid="302967">Coin Trade: Looking for the closest friendly dock to sell goods for Coin</string>
+      <string _locid="302968">Experience Trade: Looking for the closest friendly dock to gain Experience</string>
+      <string _locid="302969">St. Nicolai</string>
+      <string _locid="302970">Rote Henne</string>
+      <string _locid="302971">Lübsche Krone</string>
+      <string _locid="302972">Treue Hanse</string>
+      <string _locid="302973">Sturmvogel</string>
+      <string _locid="302974">Wendischer Stern</string>
+      <string _locid="302975">Goldene Gnade</string>
+      <string _locid="302976">Heilige Ursula</string>
+      <string _locid="302977">Oststrom</string>
+      <string _locid="302978">Baltische Krone</string>
+      <string _locid="302979">Greifenzug</string>
+      <string _locid="302980">Wolkenfahrer</string>
+      <string _locid="302981">Perle von Reval</string>
+
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

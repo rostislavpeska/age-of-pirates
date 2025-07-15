@@ -663,6 +663,25 @@
     <usemultiple>
     </usemultiple>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpTransformTradeCog</name>
+    <icon>resources\images\icons\command\cogtrade_off.png</icon>
+    <command>uiTransformSelectedUnit("zpHanseaticTradeship", true)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <associatedtech>zpRebuiltToTradeCog</associatedtech>
+    <rollovertextid>302962</rollovertextid>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTransformWarCog</name>
+    <icon>resources\images\icons\command\tactics_melee_avl.png</icon>
+    <command>uiTransformSelectedUnit("zpHanseaticWarship", true)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <associatedtech>zpRebuiltToWarCog</associatedtech>
+    <rollovertextid>302964</rollovertextid>
+  </protounitcommand>
+
 
   <!--
 

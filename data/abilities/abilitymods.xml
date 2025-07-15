@@ -346,9 +346,9 @@
     <!--<ability>zpPowerCogTrade<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>-->
     <ability>deChargeAbilityBroadside<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
   </zphanseaticwarship>
-  <zphanseatictradeship>
+  <!--<zphanseatictradeship>
     <ability>zpPowerCogMWar<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
-  </zphanseatictradeship>
+  </zphanseatictradeship>-->
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

@@ -808,13 +808,40 @@
     <rolloverstringid>31348</rolloverstringid>
   </squadmode>
   <squadmode>
-    <name>CogTrade</name>
-    <tactic>CogTrade</tactic>
+    <name>CogFood</name>
+    <tactic>CogFood</tactic>
     <unittype>zpSPCTradeUnit</unittype>
-    <activeicon>resources\images\icons\command\cogtrade_on.png</activeicon>
-    <availableicon>resources\images\icons\command\cogtrade_off.png</availableicon>
-    <unavailableicon>resources\images\icons\command\cogtrade_off.png</unavailableicon>
+    <activeicon>resources\images\icons\techs\asians\shrine_food_on.png</activeicon>
+    <availableicon>resources\images\icons\techs\asians\shrine_food.png</availableicon>
+    <unavailableicon>resources\images\icons\techs\asians\shrine_food.png</unavailableicon>
     <rolloverstringid>302965</rolloverstringid>
+  </squadmode>
+  <squadmode>
+    <name>CogWood</name>
+    <tactic>CogWood</tactic>
+    <unittype>zpSPCTradeUnit</unittype>
+    <activeicon>resources\images\icons\techs\asians\shrine_wood_on.png</activeicon>
+    <availableicon>resources\images\icons\techs\asians\shrine_wood.png</availableicon>
+    <unavailableicon>resources\images\icons\techs\asians\shrine_wood.png</unavailableicon>
+    <rolloverstringid>302966</rolloverstringid>
+  </squadmode>
+  <squadmode>
+    <name>CogGold</name>
+    <tactic>CogGold</tactic>
+    <unittype>zpSPCTradeUnit</unittype>
+    <activeicon>resources\images\icons\techs\asians\shrine_coin_on.png</activeicon>
+    <availableicon>resources\images\icons\techs\asians\shrine_coin.png</availableicon>
+    <unavailableicon>resources\images\icons\techs\asians\shrine_coin.png</unavailableicon>
+    <rolloverstringid>302967</rolloverstringid>
+  </squadmode>
+  <squadmode>
+    <name>CogXP</name>
+    <tactic>CogXP</tactic>
+    <unittype>zpSPCTradeUnit</unittype>
+    <activeicon>resources\images\icons\techs\asians\shrine_xp_on.png</activeicon>
+    <availableicon>resources\images\icons\techs\asians\shrine_xp.png</availableicon>
+    <unavailableicon>resources\images\icons\techs\asians\shrine_xp.png</unavailableicon>
+    <rolloverstringid>302968</rolloverstringid>
   </squadmode>
   
   <!-- Added by AssertiveWall -->

@@ -30059,6 +30059,24 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpRebuiltToTradeCog" type="Normal">
+    <dbid>41164</dbid>
+    <displaynameid>302961</displaynameid>
+    <cost resourcetype="Wood">50.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>ACTIVE</status>
+    <icon>resources\images\icons\command\cogtrade_off.png</icon>
+    <rollovertextid>302962</rollovertextid>
+  </tech>
+  <tech name="zpRebuiltToWarCog" type="Normal">
+    <dbid>41165</dbid>
+    <displaynameid>302963</displaynameid>
+    <cost resourcetype="Wood">25.0000</cost>
+    <researchpoints>5.0000</researchpoints>
+    <status>ACTIVE</status>
+    <icon>resources\images\icons\command\tactics_melee_avl.png</icon>
+    <rollovertextid>302964</rollovertextid>
+  </tech>
 
 
 

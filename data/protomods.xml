@@ -6003,6 +6003,7 @@
     <train row="0" page="0" column="13">zpCatamaran</train>
     <train row="0" page="0" column="14">zpSubmarine</train>
     <train row="0" page="0" column="14">zpSubmarineTransport</train>
+    <unittype>HansaTradePoint</unittype>
   </unit>
   <unit name="dePort">
     <train row="0" page="0" column="11">ypFireship</train>
@@ -6012,6 +6013,7 @@
     <train row="0" page="0" column="13">zpCatamaran</train>
     <train row="0" page="0" column="14">zpSubmarine</train>
     <train row="0" page="0" column="14">zpSubmarineTransport</train>
+    <unittype>HansaTradePoint</unittype>
   </unit>
   <unit id="20050" name="zpWokouFuchuanProxy">
     <dbid>20050</dbid>
@@ -14125,6 +14127,7 @@
     <train row="0" page="0" column="13">zpCatamaran</train>
     <train row="0" page="0" column="14">zpSubmarine</train>
     <train row="0" page="0" column="14">zpSubmarineTransport</train>
+    <unittype>HansaTradePoint</unittype>
   </unit>
   <unit id="20139" name="zpAImigrationPoint">
     <dbid>20139</dbid>
@@ -15475,6 +15478,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
+    <unittype>HansaTradePoint</unittype>
     <flag>NoBloodOnDeath</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -16644,6 +16648,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
+    <unittype>HansaTradePoint</unittype>
     <flag>NoBloodOnDeath</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -55985,7 +55990,7 @@
     <trainpoints>37.0000</trainpoints>
     <bounty>14.0000</bounty>
     <buildbounty>14.0000</buildbounty>
-    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Wood">90.0000</cost>
     <cost resourcetype="Gold">40.0000</cost>
     <allowedage>1</allowedage>
     <armor type="Ranged" value="0.7000">
@@ -61120,6 +61125,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
+    <unittype>HansaTradePoint</unittype>
     <flag>NoBloodOnDeath</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -61170,6 +61176,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
+    <unittype>HansaTradePoint</unittype>
     <flag>NoBloodOnDeath</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -61403,19 +61410,19 @@
     <rollovertextid>302933</rollovertextid>
     <shortrollovertextid>302933</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>800.0000</initialhitpoints>
-    <maxhitpoints>800.0000</maxhitpoints>
+    <initialhitpoints>1000.0000</initialhitpoints>
+    <maxhitpoints>1000.0000</maxhitpoints>
     <los>26.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <trainpoints>40.0000</trainpoints>
     <buildlimit>3</buildlimit>
     <bounty>40.0000</bounty>
+    <rechargetime>60.0000</rechargetime>
     <buildbounty>40.0000</buildbounty>
     <cost resourcetype="Wood">500.0000</cost>
     <carrycapacity resourcetype="Food">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
-    <maxcontained>50</maxcontained>
     <allowedage>1</allowedage>
     <decay delay="0.0000" duration="0.0000">
     </decay>
@@ -61445,13 +61452,9 @@
     <unittype>Ranged</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>Ship</unittype>
-    <unittype>Transport</unittype>
     <unittype>Military</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Unit</unittype>
-
-    <unittype>zpSPCTradeUnit</unittype>
-
     <flag>HeroName1</flag>
     <flag>HasGatherPoint</flag>
     <flag>TieToWaterSurface</flag>
@@ -61468,7 +61471,7 @@
     <flag>NavalUnit</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
-    <contain>LogicalTypeGarrisonInShips</contain>
+    <command page="1" column="0">zpTransformTradeCog</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
@@ -61539,8 +61542,8 @@
     <rollovertextid>302936</rollovertextid>
     <shortrollovertextid>302936</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>800.0000</initialhitpoints>
-    <maxhitpoints>800.0000</maxhitpoints>
+    <initialhitpoints>1000.0000</initialhitpoints>
+    <maxhitpoints>1000.0000</maxhitpoints>
     <los>26.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -61548,10 +61551,8 @@
     <buildlimit>3</buildlimit>
     <bounty>40.0000</bounty>
     <buildbounty>40.0000</buildbounty>
-    <cost resourcetype="Wood">500.0000</cost>
     <carrycapacity resourcetype="Food">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
-    <maxcontained>50</maxcontained>
     <allowedage>1</allowedage>
     <decay delay="0.0000" duration="0.0000">
     </decay>
@@ -61582,7 +61583,6 @@
     <unittype>Ranged</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>Ship</unittype>
-    <unittype>Transport</unittype>
     <unittype>Military</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Unit</unittype>
@@ -61603,7 +61603,7 @@
     <flag>NavalUnit</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
-    <contain>LogicalTypeGarrisonInShips</contain>
+    <command page="1" column="0">zpTransformWarCog</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
@@ -61611,9 +61611,24 @@
     <command page="10" column="3">SetGatherPointMilitary</command>
     <tactics>tradecog.tactics</tactics>
     <protoaction>
-      <name>Autogather</name>
+      <name>AutogatherFood</name>
+      <active>1</active>
+      <rate type="Food">3.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutogatherWood</name>
+      <active>1</active>
+      <rate type="Wood">3.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutogatherGold</name>
       <active>1</active>
       <rate type="Gold">3.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutogatherXP</name>
+      <active>1</active>
+      <rate type="XP">3.000000</rate>
     </protoaction>
   </unit>
   <unit id="20847" name="zpHanseaticWarshipProxy">
