@@ -66,47 +66,9 @@
           <height>11.00</height>
       </decal>
   </component>
-  <component>TradeComp
-      <logic type="Destruction">
-          <p1>
-              <assetreference type="GrannyModel">
-                  <file>units\naval\caravel_ship\caravel_ship_damaged</file>
-                  <materialvariant index="3"></materialvariant>
-              </assetreference>
-          </p1>
-          <p99>
-              <assetreference type="GrannyModel" shape="ship_caravel">
-                  <file>units\naval\caravel_ship\caravel_ship</file>
-                  <materialvariant index="3"></materialvariant>
-              </assetreference>
-          </p99>
-      </logic>
-      <decal>
-          <effecttype>default</effecttype>
-          <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
-          <width>7.00</width>
-          <height>11.00</height>
-      </decal>
-  </component>
-  <component>TradeDeathModel
-      <assetreference type="GrannyModel">
-          <file>units\naval\caravel_ship\caravel_ship_damaged</file>
-          <materialvariant index="3"></materialvariant>
-      </assetreference>
-      <decal>
-          <effecttype>default</effecttype>
-          <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
-          <width>7.00</width>
-          <height>11.00</height>
-      </decal>
-  </component>
-  <anim>WarIdle<assetreference type="GrannyAnim"><file>units\naval\caravel_ship\caravel_idle</file></assetreference><component>ModelComp</component><simskeleton><model>units\naval\caravel_ship\caravel_ship_damaged</model></simskeleton><attach a="IdleWaterFoam" frombone="bone_main" tobone="bone_main" syncanims="0"></attach></anim>
-  <anim>WarWalk<assetreference type="GrannyAnim"><file>units\naval\caravel_ship\caravel_walk</file></assetreference><component>ModelComp</component><simskeleton><model>units\naval\caravel_ship\caravel_ship_damaged</model></simskeleton><attach a="MoveWaterFoam" frombone="bone_main" tobone="bone_main" syncanims="0"></attach></anim>
+  <anim>Idle<assetreference type="GrannyAnim"><file>units\naval\caravel_ship\caravel_idle</file></assetreference><component>ModelComp</component><simskeleton><model>units\naval\caravel_ship\caravel_ship_damaged</model></simskeleton><attach a="IdleWaterFoam" frombone="bone_main" tobone="bone_main" syncanims="0"></attach></anim>
+  <anim>Walk<assetreference type="GrannyAnim"><file>units\naval\caravel_ship\caravel_walk</file></assetreference><component>ModelComp</component><simskeleton><model>units\naval\caravel_ship\caravel_ship_damaged</model></simskeleton><attach a="MoveWaterFoam" frombone="bone_main" tobone="bone_main" syncanims="0"></attach></anim>
   <anim>BombardAttack<assetreference type="GrannyAnim"><file>units\naval\caravel_ship\caravel_idle</file><tag type="CameraShake">0.06</tag><tag type="Attack">0.02</tag><tag type="SpecificSoundSet" checkvisible="1" set="MortarShot">0.02</tag><tag type="Particles" particlename="monitormuzzlefx">0.02</tag></assetreference><component>ModelComp</component></anim>
   <anim>GatherFish<assetreference type="GrannyAnim"><file>units\naval\caravel_ship\caravel_idle</file><tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.89</tag></assetreference><component>ModelComp</component><simskeleton><model>units\naval\caravel_ship\caravel_ship_damaged</model></simskeleton><attach a="Fishing_net" frombone="MASTER" tobone="MASTER" syncanims="0"></attach></anim>
-  <anim>WarDeath<component>DeathModel</component><attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="Death_EXP" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
-
-  <anim>TradeIdle<assetreference type="GrannyAnim"><file>units\naval\caravel_ship\caravel_idle</file></assetreference><component>TradeComp</component><simskeleton><model>units\naval\caravel_ship\caravel_ship_damaged</model></simskeleton><attach a="IdleWaterFoam" frombone="bone_main" tobone="bone_main" syncanims="0"></attach></anim>
-  <anim>TradeWalk<assetreference type="GrannyAnim"><file>units\naval\caravel_ship\caravel_walk</file></assetreference><component>TradeComp</component><simskeleton><model>units\naval\caravel_ship\caravel_ship_damaged</model></simskeleton><attach a="MoveWaterFoam" frombone="bone_main" tobone="bone_main" syncanims="0"></attach></anim>
-  <anim>TradeDeath<component>TradeDeathModel</component><attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="Death_EXP" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
+  <anim>Death<component>DeathModel</component><attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="Death_EXP" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
 </animfile>

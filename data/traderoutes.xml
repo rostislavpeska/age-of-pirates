@@ -52,6 +52,10 @@
       <from>australia_river_trail</from>
       <to>native_water2_trail</to>
     </upgrade>
+    <upgrade>
+      <from>hansa_water_trail</from>
+      <to>water2_trail</to>
+    </upgrade>
     <grantsvisibility>
     </grantsvisibility>
     <awardsound>FindNugget</awardsound>

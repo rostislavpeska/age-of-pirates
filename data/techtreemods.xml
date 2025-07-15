@@ -5341,6 +5341,8 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatTeutonicKnight" culture="none" newname="302913">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercTeutonicKnight" culture="none" newname="302913">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -20777,6 +20779,12 @@
       <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatTeutonicKnight</target>
       </effect>
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercTeutonicKnight</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercTeutonicKnight</target>
+      </effect>
     </effects>
 	</tech>
   <tech name="zpUnlockPalazzoAuditore" type="Normal">
@@ -29552,6 +29560,13 @@
 			<effect type ="SetName" proto ="zpNatTeutonicKnight" culture ="none" newname ="302912"></effect>
       <effect type="SetName" proto="zpNatTeutonicKnight" culture="none" newname="302913" reqtech="ImpLegendaryNativesShadow">
       </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercTeutonicKnight</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercTeutonicKnight</target></effect>
+			<effect type ="SetName" proto ="zpNatMercTeutonicKnight" culture ="none" newname ="302912"></effect>
+      <effect type="SetName" proto="zpNatMercTeutonicKnight" culture="none" newname="302913" reqtech="ImpLegendaryNativesShadow">
+      </effect>
 		</effects>
 	</tech>
   <tech name="zpNativeTreatyHansa" type="Normal">
@@ -29985,20 +30000,17 @@
     <dbid>41161</dbid>
     <displaynameid>302942</displaynameid>
     <researchpoints>30.0000</researchpoints>
-    <cost resourcetype ="Gold">350.0000</cost>
-    <cost resourcetype ="Wood">350.0000</cost>
+    <cost resourcetype ="Gold">450.0000</cost>
+    <cost resourcetype ="Wood">450.0000</cost>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\hansa_bremen_arsenal.png</icon>
     <rollovertextid>302943</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <prereqs>
-			<techstatus status ="Active">Fortressize</techstatus>
+			<techstatus status ="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpHanseaticFluyt</target>
-      </effect>
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpHanseaticWarship</target>
       </effect>
@@ -30011,11 +30023,26 @@
       <effect type="Data" action="ChargeBroadsideAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
         <target type="ProtoUnit">zpHanseaticWarship</target>
       </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpHanseaticFluyt</target>
+      </effect>
       <effect type="Data" action="RangedAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
         <target type="ProtoUnit">zpHanseaticFluyt</target>
       </effect>
       <effect type="Data" action="RangedAttackContained" amount="3.00" subtype="MaximumRange" relativity="Absolute">
         <target type="ProtoUnit">zpHanseaticFluyt</target>
+      </effect>
+      <effect type="Data" action="AutogatherFood" amount="1.30" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpHanseaticTradeship</target>
+      </effect>
+      <effect type="Data" action="AutogatherWood" amount="1.30" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpHanseaticTradeship</target>
+      </effect>
+      <effect type="Data" action="AutogatherGold" amount="1.30" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpHanseaticTradeship</target>
+      </effect>
+      <effect type="Data" action="AutoGatherXP" amount="1.30" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpHanseaticTradeship</target>
       </effect>
     </effects>
   </tech>

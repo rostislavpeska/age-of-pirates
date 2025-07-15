@@ -2938,8 +2938,8 @@
       <string _locid="302939">Grants resources for future control of Trading Routes.\n • Trade Routes: Future income improved by +30%</string>
       <string _locid="302940">Uferschanze</string>
       <string _locid="302941">Increases building anti-ship attack and attack range. Increases Outpost line of sight.</string>
-      <string _locid="302942">Bremer Schiffsbewaffnung</string>
-      <string _locid="302943">Increases Kontor ship's attack and attack range.</string>
+      <string _locid="302942">Bremer Werften</string>
+      <string _locid="302943">Increases Kontor ship's attack and attack range and also Trade Cog efficiency.</string>
       <string _locid="302944">Pfahlrecht</string>
       <string _locid="302945">Constructing Trading Posts has never been easier. Reduces Trading Post costs. Increases Trading Post hitpoints.</string>
       <string _locid="302946">Order's Protection</string>
@@ -2978,6 +2978,9 @@
       <string _locid="302979">Greifenzug</string>
       <string _locid="302980">Wolkenfahrer</string>
       <string _locid="302981">Perle von Reval</string>
+      <string _locid="302982">ZP Hansa Trade Route Ship</string>
+      <string _locid="302983">ZP NAT MERC Teutonic Knight</string>
+
 
 
 

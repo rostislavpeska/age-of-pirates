@@ -29,8 +29,8 @@
     <anim>Pickup</anim>
     <modifyprotoid>zpHanseaticWarship</modifyprotoid>
   </action>
+  <tactic>CogGold<action>AutoGatherGold</action><action>DelayedTransform</action></tactic>
   <tactic>CogFood<action>AutoGatherFood</action><action>DelayedTransform</action></tactic>
   <tactic>CogWood<action>AutoGatherWood</action><action>DelayedTransform</action></tactic>
-  <tactic>CogGold<action>AutoGatherGold</action><action>DelayedTransform</action></tactic>
   <tactic>CogXP<action>AutoGatherXP</action><action>DelayedTransform</action></tactic>
 </tactics>
