@@ -55990,7 +55990,7 @@
     <trainpoints>37.0000</trainpoints>
     <bounty>14.0000</bounty>
     <buildbounty>14.0000</buildbounty>
-    <cost resourcetype="Wood">90.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
     <cost resourcetype="Gold">40.0000</cost>
     <allowedage>1</allowedage>
     <armor type="Ranged" value="0.7000">
@@ -56023,6 +56023,7 @@
     <unittype>AbstractRifleman</unittype>
     <unittype>AbstractSkirmisher</unittype>
     <unittype>AbstractAbusGun</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
