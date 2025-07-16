@@ -29816,6 +29816,9 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpMercTeutonicCavalry</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">zpTeutonicArmySmall</effect>
+      <effect type="TechStatus" status="obtainable">zpTeutonicArmyBig</effect>
+      <effect type="TechStatus" status="obtainable">zpTeutonicAliesMaltese</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOffHansa" type="Normal">
@@ -30103,6 +30106,92 @@
     <status>ACTIVE</status>
     <icon>resources\images\icons\command\tactics_melee_avl.png</icon>
     <rollovertextid>302964</rollovertextid>
+  </tech>
+  <tech name="zpTeutonicAliesMaltese" type="Normal">
+    <dbid>41165</dbid>
+    <displaynameid>302984</displaynameid>
+    <researchpoints>30.0000</researchpoints>
+    <cost resourcetype="Food">800.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\teutonic_concord.png</icon>
+    <rollovertextid>302985</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect civ="Maltese" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpNatDisciplinedMaltese</effect>
+      <effect type="TechStatus" status="active">zpNatHonoredMaltese</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercMalteseKnight</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercMalteseGuard</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercMalteseKnight</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercMalteseGuard</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMercMalteseKnight" relativity="Absolute">
+        <target type="ProtoUnit">zpMalteseKnightMercIcon</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMercMalteseGuard" relativity="Absolute">
+        <target type="ProtoUnit">zpMalteseGuardMercIcon</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTeutonicArmySmall" type="Normal">
+    <dbid>41166</dbid>
+    <displaynameid>302986</displaynameid>
+    <researchpoints>30.0000</researchpoints>
+    <cost resourcetype="Food">250.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\teutonic_army.png</icon>
+    <rollovertextid>302987</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPCheckPopCap</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <effects>
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatMercTeutonicKnight" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTeutonicArmyBig" type="Normal">
+    <dbid>41167</dbid>
+    <displaynameid>302988</displaynameid>
+    <researchpoints>30.0000</researchpoints>
+    <cost resourcetype="Food">1250.0000</cost>
+    <cost resourcetype="Gold">1250.0000</cost>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\teutonic_army_cav.png</icon>
+    <rollovertextid>302989</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+			<techstatus status ="active">Imperialize</techstatus>
+		</prereqs>
+    <effects>
+      <effect type ="Data" amount ="1.60" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpMercTeutonicCavalry</target></effect>
+			<effect type ="Data" amount ="1.60" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpMercTeutonicCavalry</target></effect>
+      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpMercTeutonicCavalry</target>
+      </effect>
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="zpMercTeutonicCavalry" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="SetName" proto ="zpMercTeutonicCavalry" culture ="none" newname="302990">
+      </effect>
+    </effects>
   </tech>
 
 

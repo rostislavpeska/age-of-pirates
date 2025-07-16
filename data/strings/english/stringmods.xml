@@ -2980,9 +2980,13 @@
       <string _locid="302981">Perle von Reval</string>
       <string _locid="302982">ZP Hansa Trade Route Ship</string>
       <string _locid="302983">ZP NAT MERC Teutonic Knight</string>
-
-
-
+      <string _locid="302984">Crusader Concord</string>
+      <string _locid="302985">Unlock Maltese allies trainable from the Teutonic Fort.</string>
+      <string _locid="302986">Crusader Legion</string>
+      <string _locid="302987">Ships additional Teutonic Knights to protect your town</string>
+      <string _locid="302988">Eastern Commandship</string>
+      <string _locid="302989">Upgrades Mounted Crussaders into Teutonic Commanders with higher attack and hitpoints, but increases their polulation cost.</string>
+      <string _locid="302990">Teutonic Commander</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
