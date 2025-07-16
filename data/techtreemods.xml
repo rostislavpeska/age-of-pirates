@@ -30108,7 +30108,7 @@
     <rollovertextid>302964</rollovertextid>
   </tech>
   <tech name="zpTeutonicAliesMaltese" type="Normal">
-    <dbid>41165</dbid>
+    <dbid>41166</dbid>
     <displaynameid>302984</displaynameid>
     <researchpoints>30.0000</researchpoints>
     <cost resourcetype="Food">800.0000</cost>
@@ -30145,7 +30145,7 @@
     </effects>
   </tech>
   <tech name="zpTeutonicArmySmall" type="Normal">
-    <dbid>41166</dbid>
+    <dbid>41167</dbid>
     <displaynameid>302986</displaynameid>
     <researchpoints>30.0000</researchpoints>
     <cost resourcetype="Food">250.0000</cost>
@@ -30165,7 +30165,7 @@
     </effects>
   </tech>
   <tech name="zpTeutonicArmyBig" type="Normal">
-    <dbid>41167</dbid>
+    <dbid>41168</dbid>
     <displaynameid>302988</displaynameid>
     <researchpoints>30.0000</researchpoints>
     <cost resourcetype="Food">1250.0000</cost>
