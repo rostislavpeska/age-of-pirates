@@ -25,7 +25,7 @@
     </effects>
   </tech>
   <tech name="zpSPCAztecAltarColonializeShadow" type="Normal">
-    <dbid>409992</dbid>
+    <dbid>40992</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -29436,6 +29436,7 @@
       <effect type="TechStatus" status="obtainable">zpIndianFriendshipHansa</effect>
       <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyHansa</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHansaEmbassy</effect>
     </effects>
   </tech>
   <tech name="zpNativePueblo" type="Normal">
@@ -29757,7 +29758,7 @@
       <effect type="CommandRemove" tech="zpHansaExpansion">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpHansMarket" page="2" column="5">
+      <effect type="CommandAdd" tech="zpNatHansaEmbassy" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -30190,6 +30191,30 @@
         </target>
       </effect>
       <effect type="SetName" proto ="zpMercTeutonicCavalry" culture ="none" newname="302990">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatHansaEmbassy" type="Normal">
+    <dbid>40324</dbid>
+    <displaynameid>302991</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hansa_embassy_tech.png</icon>
+    <rollovertextid>302997</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status ="active">Industrialize</techstatus>
+		</prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpHansaEmbassyWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpHansaEmbassy</target>
       </effect>
     </effects>
   </tech>

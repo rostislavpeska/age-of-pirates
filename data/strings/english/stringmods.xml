@@ -2922,7 +2922,7 @@
       <string _locid="302923">SMS Hansa</string>
       <string _locid="302924">Ships a modern Destroyer Class Warship</string>
       <string _locid="302925">Central Faction</string>
-      <string _locid="302926">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHanseatic Merchant \n\nEconomical faction providing you with a team tech. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nTeam Kontor Market</string>
+      <string _locid="302926">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHanseatic Merchant \n\nEconomical faction providing you with a team tech. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nKontor Trade Center</string>
       <string _locid="302927">Eastern Faction</string>
       <string _locid="302928">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nTeutonic Knight \n\nTeutonic Order units and techs, military faction. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nEastern Base</string>
       <string _locid="302929">Eastern Base</string>
@@ -2987,6 +2987,14 @@
       <string _locid="302988">Eastern Commandship</string>
       <string _locid="302989">Upgrades Mounted Crussaders into Teutonic Commanders with higher attack and hitpoints, but increases their polulation cost.</string>
       <string _locid="302990">Teutonic Commander</string>
+      <string _locid="302991">Kontor Trade Center</string>
+      <string _locid="302992">ZP Hansa Embassy</string>
+      <string _locid="302993">Trains Hanseatic units and provides you with new Hanseatic shipments.</string>
+      <string _locid="302994">Kontor Trade Center Wagon</string>
+      <string _locid="302995">ZP Hansa Embassy Wagon</string>
+      <string _locid="302996">Constructs Kontor Trade Center.</string>
+      <string _locid="302997">Ships a Kontor Trade Center Wagon able to construct Kontor Trade Center.</string>
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
