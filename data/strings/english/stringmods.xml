@@ -2995,6 +2995,12 @@
       <string _locid="302996">Constructs Kontor Trade Center.</string>
       <string _locid="302997">Ships a Kontor Trade Center Wagon able to construct Kontor Trade Center.</string>
       <string _locid="302998">300 Food</string>
+      <string _locid="302999">300 Coin</string>
+      <string _locid="303000">300 Influence</string>
+      <string _locid="303001">300 Wood</string>
+      <string _locid="303002">Hanseatic Colonisation Fleet</string>
+      <string _locid="303003">Ships a Hanseatic Fluyt with Settler Wagons on board</string>
+      <string _locid="303004">Kontor Banking</string>
 
 
 

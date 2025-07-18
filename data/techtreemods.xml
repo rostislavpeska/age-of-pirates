@@ -30216,16 +30216,22 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpHansaEmbassy</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">zpHansaColonisationFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaBanking</effect>
+      <effect type="TechStatus" status="obtainable">zpTeutonicArmySmall</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaTradeFood</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaTradeWood</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaTradeCoin</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaTradeInfluence</effect>
     </effects>
   </tech>
   <tech name="zpHansaTradeFood" type="Normal">
     <dbid>41170</dbid>
     <displaynameid>302998</displaynameid>
-    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Ships">1.0000</cost>
     <researchpoints>30.0000</researchpoints>
-    <status>OBTAINABLE</status>
+    <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\infinite_food.png</icon>
-    <rollovertextid>302997</rollovertextid>
     <flag>YPInfiniteTech</flag>
     <effects>
       <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="CrateofFood" relativity="Absolute">
@@ -30236,10 +30242,10 @@
   </tech>
   <tech name="zpHansaTradeWood" type="Normal">
     <dbid>41171</dbid>
-    <displaynameid>302998</displaynameid>
+    <displaynameid>303001</displaynameid>
     <cost resourcetype="Ships">1.0000</cost>
     <researchpoints>30.0000</researchpoints>
-    <status>OBTAINABLE</status>
+    <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\infinite_wood.png</icon>
     <flag>YPInfiniteTech</flag>
     <effects>
@@ -30251,10 +30257,10 @@
   </tech>
   <tech name="zpHansaTradeCoin" type="Normal">
     <dbid>41172</dbid>
-    <displaynameid>302998</displaynameid>
+    <displaynameid>302999</displaynameid>
     <cost resourcetype="Ships">1.0000</cost>
     <researchpoints>30.0000</researchpoints>
-    <status>OBTAINABLE</status>
+    <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\infinite_gold.png</icon>
     <flag>YPInfiniteTech</flag>
     <effects>
@@ -30266,10 +30272,10 @@
   </tech>
   <tech name="zpHansaTradeInfluence" type="Normal">
     <dbid>41173</dbid>
-    <displaynameid>302998</displaynameid>
+    <displaynameid>303000</displaynameid>
     <cost resourcetype="Ships">1.0000</cost>
     <researchpoints>30.0000</researchpoints>
-    <status>OBTAINABLE</status>
+    <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\africans\infinite_influence.png</icon>
     <flag>YPInfiniteTech</flag>
     <prereqs>
@@ -30279,6 +30285,48 @@
       <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="deCrateofInfluence" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHansaColonisationFleet" type="Normal">
+    <dbid>41174</dbid>
+    <displaynameid>303002</displaynameid>
+    <cost resourcetype="Food">300.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hansa_fleet.png</icon>
+    <rollovertextid>303003</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <effects>
+      <effect type="Data2" amount="1.00" amount2="2.00" subtype="FreeHomeCityUnitShipped" unittype="zpHanseaticFluyt" unittype2="SettlerWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHansaBanking" type="Normal">
+    <dbid>41175</dbid>
+    <displaynameid>303004</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hansa_banking.png</icon>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpBankWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypBankAsian</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">ypBankAsian</target>
       </effect>
     </effects>
   </tech>
