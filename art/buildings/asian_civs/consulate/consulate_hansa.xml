@@ -102,10 +102,16 @@
             med-death
             <logic type="LowPoly">
                 <normal>
-                    <assetreference type="GrannyModel"><file>buildings\asian_civs\consulate\consulate_european_damaged</file></assetreference>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\asian_civs\consulate\consulate_pirates_damaged</file>
+                        <materialvariant index="1"></materialvariant>
+                    </assetreference>
                 </normal>
                 <lowpoly>
-                    <assetreference type="GrannyModel"><file>buildings\asian_civs\consulate\consulate_european</file></assetreference>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\asian_civs\consulate\consulate_pirates</file>
+                        <materialvariant index="1"></materialvariant>
+                    </assetreference>
                 </lowpoly>
             </logic>
             <attach a="garden" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="1"></attach>
