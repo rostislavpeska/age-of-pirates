@@ -4,7 +4,7 @@
 	<component>
 		building
 		<assetreference type="GrannyModel">
-			<file>buildings\native_settlement\socket_jewish\townhall_Model</file>
+			<file>buildings\hanseatic\hansa_townhall</file>
 		</assetreference>
 	</component>
 	<anim>

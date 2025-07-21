@@ -11120,7 +11120,7 @@
     <obstructionradiusz>0.0001</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\native_settlement\jewish_synagogue.xml</animfile>
+    <animfile>buildings\african_civs\tower\tower.xml</animfile>
     <unittype>BuildingClass</unittype>
     <unittype>NativeBuilding</unittype>
     <unittype>EmbellishmentClass</unittype>
@@ -50092,11 +50092,11 @@
     <dbid>20663</dbid>
     <displaynameid>302336</displaynameid>
     <editornameid>302335</editornameid>
-    <obstructionradiusx>4.5000</obstructionradiusx>
-    <obstructionradiusz>5.5000</obstructionradiusz>
+    <obstructionradiusx>6.5000</obstructionradiusx>
+    <obstructionradiusz>6.5000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\native_settlement\jewish synagogue 2.xml</animfile>
+    <animfile>buildings\native_settlement\jewish\synagogue.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>
@@ -64358,7 +64358,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\hanseatic\hansa_townhall.xml</animfile>
+    <animfile>buildings\native_settlement\jewish\synagogue.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>
