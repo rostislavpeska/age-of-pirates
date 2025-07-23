@@ -4,11 +4,7 @@
 	<component>
 		ModelComp
 		<assetreference type="GrannyModel">
-			<file>buildings\native_settlement\socket_jewish\socket_udasi</file>
-			<replacetexture>
-				<from>buildings\native_settlement\Udasi</from>
-				<to>buildings\native_settlement\socket_jewish\monastery_socket</to>
-			</replacetexture>
+			<file>buildings\native_settlement\jewish\socket_jewish</file>
 		</assetreference>
 		<decal>
 			<effecttype>default</effecttype>
