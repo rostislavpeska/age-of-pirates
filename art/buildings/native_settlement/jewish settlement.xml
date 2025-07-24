@@ -33,8 +33,8 @@
 						<effecttype>default</effecttype>
 						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
 						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-						<width>6</width>
-						<height>6</height>
+						<width>8</width>
+						<height>8</height>
 						<xoffset>0.00</xoffset>
 						<zoffset>0.00</zoffset>	
 					</decal>
@@ -47,8 +47,8 @@
 						<effecttype>default</effecttype>
 						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
 						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-						<width>6</width>
-						<height>6</height>
+						<width>7</width>
+						<height>7</height>
 						<xoffset>0.00</xoffset>
 						<zoffset>0.00</zoffset>	
 					</decal>
@@ -61,8 +61,8 @@
 						<effecttype>default</effecttype>
 						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
 						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-						<width>6</width>
-						<height>6</height>
+						<width>7</width>
+						<height>7</height>
 						<xoffset>0.00</xoffset>
 						<zoffset>0.00</zoffset>	
 					</decal>
@@ -75,8 +75,8 @@
 						<effecttype>default</effecttype>
 						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
 						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-						<width>6</width>
-						<height>6</height>
+						<width>7</width>
+						<height>7</height>
 						<xoffset>0.00</xoffset>
 						<zoffset>0.00</zoffset>	
 					</decal>
