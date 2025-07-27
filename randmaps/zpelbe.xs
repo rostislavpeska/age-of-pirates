@@ -802,6 +802,7 @@ void main(void)
 		// Water flag placement rules
 		colonyShipID=rmCreateObjectDef("colony ship "+i);
 		rmAddObjectDefItem(colonyShipID, "HomeCityWaterSpawnFlag", 1, 1.0);
+        rmAddObjectDefItem(colonyShipID, "zpHanseaticTradeship", 1, 10.0);
 		if ( rmGetNomadStart())
 		{
 			if(rmGetPlayerCiv(i) == rmGetCivID("Ottomans"))
