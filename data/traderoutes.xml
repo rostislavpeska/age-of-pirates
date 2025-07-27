@@ -682,8 +682,8 @@
       <activeicon>resources\images\icons\command\generate_coin_on.png</activeicon>
       <disabledicon>resources\images\icons\command\generate_coin_off.png</disabledicon>
     </unit>
-    <!--<unit>
-      <name>zpHenseaticLegionProxy</name>
+    <unit>
+      <name>ypConsulatePrussianNeedleGun</name>
       <count>1</count>
       <mincount>1</mincount>
       <maxcount>1</maxcount>
@@ -693,6 +693,6 @@
       <techprereq>zpTradeRouteUpgradeHansaShadow</techprereq>
       <activeicon>resources\images\icons\command\tactic_ashigaru_on.png</activeicon>
       <disabledicon>resources\images\icons\command\tactic_ashigaru_off.png</disabledicon>
-    </unit>-->
+    </unit>
   </unitmultiples>
 </traderoutemanager>

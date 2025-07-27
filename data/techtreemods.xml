@@ -30343,6 +30343,111 @@
       <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
       </effect>
+      <effect type="CommandAdd" proto="MercJaeger" page="0" column="0">
+        <target type="ProtoUnit">zpHanseaticChurch</target>
+      </effect>
+      <effect type="CommandAdd" proto="deMercPandour" page="0" column="1">
+        <target type="ProtoUnit">zpHanseaticChurch</target>
+      </effect>
+      <effect type="CommandAdd" proto="deMercGrenadier" page="0" column="2">
+        <target type="ProtoUnit">zpHanseaticChurch</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpMercTeutonicCavalry" page="0" column="3">
+        <target type="ProtoUnit">zpHanseaticChurch</target>
+      </effect>
+      <effect type="CommandAdd" proto="MercGreatCannon" page="0" column="4">
+        <target type="ProtoUnit">zpHanseaticChurch</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpSPCArtPatronHansaChurch</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCEliteMercenaries</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCHansaNeedleGunTradeRoute</effect>
+      <effect type="TechStatus" status="active">zpBonuHansa</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCArtPatronHansaChurch" type="Normal">
+    <dbid>41177</dbid>
+    <displaynameid>123050</displaynameid>
+    <cost resourcetype="Food">100.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\spc\historical_battles\team_patron_of_the_arts.png</icon>
+    <rollovertextid>303006</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpHanseaticChurch</target>
+      </effect>
+      <effect type="TextOutputTechName">123070</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCEliteMercenaries" type="Normal">
+    <dbid>41178</dbid>
+    <displaynameid>303007</displaynameid>
+    <cost resourcetype="Food">500.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\historical_maps\elite_mercenaries.png</icon>
+    <rollovertextid>303008</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>TeamTech</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">Mercenary</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">Mercenary</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCHansaNeedleGunTradeRoute" type="Normal">
+    <dbid>41179</dbid>
+    <displaynameid>303009</displaynameid>
+    <cost resourcetype="Food">300.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\historical_maps\traderoute_needlegunners.png</icon>
+    <rollovertextid>303010</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>TeamTech</flag>
+    <flag>DEHideAdvancedRollover</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">zpTradeRouteUpgradeHansaShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpHansaTradeRouteUpgrade" type="Normal">
+    <dbid>41180</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>OrPrereqs</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status="Active">zpConsulateHansaWestern</techstatus>
+      <techstatus status="Active">zpConsulateHansaCentral</techstatus>
+      <techstatus status="Active">zpConsulateHansaEast</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="zpBonuHansa" type="Normal">
+    <dbid>41181</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetName" tech="zpHansaExpansion" newname="302915" newrollover="303014">
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpHansaTradeRouteUpgrade</effect>
     </effects>
   </tech>
 

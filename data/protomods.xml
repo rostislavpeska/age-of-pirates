@@ -27383,6 +27383,7 @@
     <train row="0" page="0" column="32">zpAustralianCavalry</train>
     <train row="0" page="0" column="33">zpMercBohemianKnight</train>
     <train row="0" page="0" column="34">zpMercHussiteWagon</train>
+    <train row="0" page="0" column="35">zpMercTeutonicCavalry</train>
     <!-- Christmas Mercs -->
     <train row="0" page="0" column="104">zpChristmasPolearm</train>
     <train row="0" page="0" column="105">zpChristmasGrenadier</train>
@@ -27395,6 +27396,7 @@
     <train row="0" page="0" column="32">zpAustralianCavalry</train>
     <train row="0" page="0" column="33">zpMercBohemianKnight</train>
     <train row="0" page="0" column="34">zpMercHussiteWagon</train>
+    <train row="0" page="0" column="35">zpMercTeutonicCavalry</train>
     <!-- Christmas Mercs -->
     <train row="0" page="0" column="104">zpChristmasPolearm</train>
     <train row="0" page="0" column="105">zpChristmasGrenadier</train>
@@ -27407,6 +27409,7 @@
     <train row="0" page="2" column="32">zpAustralianCavalry</train>
     <train row="0" page="0" column="33">zpMercBohemianKnight</train>
     <train row="0" page="0" column="34">zpMercHussiteWagon</train>
+    <train row="0" page="0" column="35">zpMercTeutonicCavalry</train>
     <!-- Christmas Mercs -->
     <train row="0" page="2" column="104">zpChristmasPolearm</train>
     <train row="0" page="2" column="105">zpChristmasGrenadier</train>
@@ -27419,6 +27422,7 @@
     <train row="0" page="0" column="32">zpAustralianCavalry</train>
     <train row="0" page="0" column="33">zpMercBohemianKnight</train>
     <train row="0" page="0" column="34">zpMercHussiteWagon</train>
+    <train row="0" page="0" column="35">zpMercTeutonicCavalry</train>
     <!-- Christmas Mercs -->
     <train row="0" page="0" column="104">zpChristmasPolearm</train>
     <train row="0" page="0" column="105">zpChristmasGrenadier</train>
@@ -27431,6 +27435,7 @@
     <train row="0" page="0" column="32">zpAustralianCavalry</train>
     <train row="0" page="0" column="33">zpMercBohemianKnight</train>
     <train row="0" page="0" column="34">zpMercHussiteWagon</train>
+    <train row="0" page="0" column="35">zpMercTeutonicCavalry</train>
     <!-- Christmas Mercs -->
     <train row="0" page="0" column="104">zpChristmasPolearm</train>
     <train row="0" page="0" column="105">zpChristmasGrenadier</train>
@@ -55597,8 +55602,9 @@
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
     <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
-    <tech row="0" page="11" column="2">DESPCPapalLegate</tech>
-    <tech row="0" page="11" column="3">DESPCExcommunication</tech>
+    <tech row="0" page="11" column="2">zpSPCArtPatronHansaChurch</tech>
+    <tech row="0" page="11" column="3">zpSPCHansaNeedleGunTradeRoute</tech>
+    <tech row="0" page="11" column="4">zpSPCEliteMercenaries</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -62281,12 +62287,6 @@
 
   <!--ELBE MAPMODS-->
 
-  <unit name="zpTradingPostCaptureNaval">
-    <obstructionradiusx>4.0000</obstructionradiusx>
-    <obstructionradiusz>4.0000</obstructionradiusz>
-    <flag mergemode="remove">TieToWaterSurface</flag>
-    <flag>DoNotShowOnMiniMap</flag>
-  </unit>
 
 
 

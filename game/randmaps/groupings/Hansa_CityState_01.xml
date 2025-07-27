@@ -23,7 +23,7 @@
 		<unit variation="201" posx="7.0501" posz="-20.8087" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpSPROPBuildingMix</unit>
 		<unit variation="41" posx="14.0628" posz="-19.4182" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">SPCPathBlock3</unit>
 		<unit variation="41" posx="7.2795" posz="-22.3894" orientx="0.0000" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
-		<unit variation="99" posx="1.7751" posz="-20.3136" orientx="-0.1748" orienty="0.0000" orientz="0.9846">zpSPCCityHouse</unit>
+		<unit variation="99" posx="1.7751" posz="-20.3136" orientx="-0.1748" orienty="0.0000" orientz="0.9846">zpSPCEUHouseProp</unit>
 		<unit variation="41" posx="6.9898" posz="-21.4745" orientx="0.0000" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="10" posx="-1.9165" posz="-20.3264" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpPropsFlowers</unit>
 		<unit variation="0" posx="-2.0109" posz="-20.1080" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpPropsFlowers</unit>
@@ -55,7 +55,7 @@
 		<unit variation="169" posx="12.9628" posz="-10.4820" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropVilFemale</unit>
 		<unit variation="6" posx="9.8747" posz="-8.7137" orientx="-0.3827" orienty="0.0000" orientz="0.9239">PropsColony</unit>
 		<unit variation="4" posx="31.5683" posz="-7.5543" orientx="1.0000" orienty="0.0000" orientz="-0.0001">zpHarbourPlatform</unit>
-		<unit variation="89" posx="6.7527" posz="-8.5593" orientx="-0.1987" orienty="0.0000" orientz="-0.9801">zpSPCCityHouse</unit>
+		<unit variation="89" posx="6.7527" posz="-8.5593" orientx="-0.1987" orienty="0.0000" orientz="-0.9801">zpSPCEUHouseProp</unit>
 		<unit variation="99" posx="-20.9213" posz="-9.1858" orientx="-0.9239" orienty="0.0000" orientz="0.3827">deSPCCityStateWallConnectorProp</unit>
 		<unit variation="14" posx="-5.8200" posz="-2.9912" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpHanseaticChurch</unit>
 		<unit variation="14" posx="+1.8200" posz="+2.9912" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
@@ -84,7 +84,7 @@
 		<unit variation="107" posx="22.3173" posz="-0.3479" orientx="1.0000" orienty="-0.0000" orientz="-0.0001">zpSPCMarketStall</unit>
 		<unit variation="6" posx="24.6914" posz="0.4574" orientx="0.0002" orienty="-0.0000" orientz="1.0000">zpCityStateFlag</unit>
 		<unit variation="200" posx="7.5249" posz="6.4161" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseHansaBig</unit>
-		<unit variation="73" posx="-21.1182" posz="1.8681" orientx="0.9965" orienty="0.0000" orientz="-0.0839">zpSPCCityHouse</unit>
+		<unit variation="73" posx="-21.1182" posz="1.8681" orientx="0.9965" orienty="0.0000" orientz="-0.0839">zpSPCEUHouseProp</unit>
 		<unit variation="107" posx="0.4394" posz="0.9863" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCMarketStall</unit>
 		<unit variation="241" posx="13.6246" posz="1.7468" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
 		<unit variation="136" posx="11.6249" posz="1.7112" orientx="-0.0000" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>

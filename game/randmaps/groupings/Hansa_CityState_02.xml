@@ -16,7 +16,7 @@
 		<unit variation="41" posx="-0.4531" posz="-26.5048" orientx="-0.7071" orienty="0.0000" orientz="0.7071">deSPCCityStateWall3Prop</unit>
 		<unit variation="205" posx="-34.1524" posz="-23.3876" orientx="1.0000" orienty="0.0000" orientz="-0.0005">zpHarbourPlatform</unit>
 		<unit variation="228" posx="-25.5235" posz="-26.2212" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
-		<unit variation="99" posx="-20.1191" posz="-24.9565" orientx="-0.1747" orienty="0.0000" orientz="0.9846">zpSPCCityHouse</unit>
+		<unit variation="99" posx="-20.1191" posz="-24.9565" orientx="-0.1747" orienty="0.0000" orientz="0.9846">zpSPCEUHouseProp</unit>
 		<unit variation="201" posx="-13.8692" posz="-25.2011" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">zpSPROPBuildingMix</unit>
 		<unit variation="33" posx="-14.8553" posz="-26.2930" orientx="-0.0009" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="33" posx="-14.0173" posz="-24.9884" orientx="-0.0009" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
@@ -100,7 +100,7 @@
 		<unit variation="6" posx="-14.0302" posz="2.2364" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
 		<unit variation="249" posx="-14.3855" posz="0.7963" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
 		<unit variation="47" posx="-0.7103" posz="0.6006" orientx="-1.0000" orienty="-0.0000" orientz="0.0004">zpHCFountainC</unit>
-		<unit variation="89" posx="10.7656" posz="4.3573" orientx="-0.1987" orienty="0.0000" orientz="-0.9801">zpSPCCityHouse</unit>
+		<unit variation="89" posx="10.7656" posz="4.3573" orientx="-0.1987" orienty="0.0000" orientz="-0.9801">zpSPCEUHouseProp</unit>
 		<unit variation="189" posx="-16.0603" posz="2.6172" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropFencDarkBrickB</unit>
 		<unit variation="39" posx="-17.6234" posz="3.0172" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowers</unit>
 		<unit variation="112" posx="-18.2283" posz="2.7502" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowers</unit>

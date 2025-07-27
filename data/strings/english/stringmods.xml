@@ -2901,8 +2901,8 @@
       <string _locid="302902">ZP SHP Hansa Kontor Fluyt</string>
       <string _locid="302903">Hanseatic Merchant</string>
       <string _locid="302904">ZP Hansa Merchant</string>
-      <string _locid="302905">Request Hanseatic Legion deliveries at this Trading Post.</string>
-      <string _locid="302906">This Trading Post is delivering Hanseatic Legions.</string>
+      <string _locid="302905">Request Prussian Needlegunners deliveries at this Trading Post.</string>
+      <string _locid="302906">This Trading Post is delivering Prussian Needlegunners.</string>
       <string _locid="302907">Veteran Hanseatic Armies</string>
       <string _locid="302908">Guard Hanseatic Armies</string>
       <string _locid="302909">Veteran Hanseatic Legion</string>
@@ -3002,7 +3002,15 @@
       <string _locid="303003">Ships a Hanseatic Fluyt with Settler Wagons on board</string>
       <string _locid="303004">Kontor Banking</string>
       <string _locid="303005">ZP Trade Harbour Capturable Lone</string>
-
+      <string _locid="303006">City Churches Generate Experience faster</string>
+      <string _locid="303007">Team Elite Mercenaries</string>
+      <string _locid="303008">Increases Mercenary attack and hitpointsfor the whole team.</string>
+      <string _locid="303009">Military Convoys</string>
+      <string _locid="303010">All trade sockets can also deliver Prussian Needlegunners.</string>
+      <string _locid="303011">Elbe</string>
+      <string _locid="303012">Elbe Description</string>
+      <string _locid="303013">Elbe Loading</string>
+      <string _locid="303014">Unlocks more Hanseatic units and techs. \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Upgrades all trade routes to the maximum level</string>
 
 
       <!-- ======================================== -->
