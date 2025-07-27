@@ -524,7 +524,7 @@ void main(void)
 
 	int bridgeDockNorth = rmCreateArea("bridgeDockNorth"); // Cliff to dock the Elbe bridge
     rmSetAreaSize(bridgeDockNorth, rmAreaTilesToFraction(300), rmAreaTilesToFraction(300));
-    rmSetAreaLocation(bridgeDockNorth, 0.5+rmXTilesToFraction(22), 0.1);
+    rmSetAreaLocation(bridgeDockNorth, 0.5+rmXTilesToFraction(22), 0.12);
     rmSetAreaCoherence(bridgeDockNorth, 1.0);	
     rmSetAreaBaseHeight(bridgeDockNorth, 3.5);
     rmSetAreaCliffType(bridgeDockNorth, "ZP Elbe Cliff");
@@ -537,7 +537,7 @@ void main(void)
 
 	int bridgeDockSouth = rmCreateArea("bridgeDockSouth"); // Cliff to dock the Elbe bridge
     rmSetAreaSize(bridgeDockSouth, rmAreaTilesToFraction(300), rmAreaTilesToFraction(300));
-    rmSetAreaLocation(bridgeDockSouth,0.5-rmXTilesToFraction(22), 0.1);
+    rmSetAreaLocation(bridgeDockSouth,0.5-rmXTilesToFraction(22), 0.12);
     rmSetAreaCoherence(bridgeDockSouth, 1.0);	
     rmSetAreaBaseHeight(bridgeDockSouth, 3.5);
     rmSetAreaCliffType(bridgeDockSouth, "ZP Elbe Cliff");
@@ -649,7 +649,10 @@ void main(void)
     rmBuildArea(playerHillsNorthID);
 
 	int pirateIslandID = rmCreateArea("pirateIsland");
-	rmSetAreaSize(pirateIslandID, rmAreaTilesToFraction(1200), rmAreaTilesToFraction(1200));
+	if (cNumberNonGaiaPlayers<=4)
+		rmSetAreaSize(pirateIslandID, rmAreaTilesToFraction(1200), rmAreaTilesToFraction(1200));
+	else
+		rmSetAreaSize(pirateIslandID, rmAreaTilesToFraction(1600), rmAreaTilesToFraction(1600));
 	rmSetAreaCoherence(pirateIslandID, 0.7);
 	rmSetAreaMix(pirateIslandID, "danish_grass1");
 		rmAddAreaTerrainLayer(pirateIslandID, "new_england\shoreline3_ne", 0, 1);
@@ -701,6 +704,17 @@ void main(void)
 	rmPlaceGroupingAtLoc(pirateportID1, 0, rmXMetersToFraction(xsVectorGetX(closeToVillage1a)), rmZMetersToFraction(xsVectorGetZ(closeToVillage1a)));
 
 	rmClearClosestPointConstraints();
+
+	// KotH
+
+	if(rmGetIsKOTH()) {
+		int kingHillID = rmCreateObjectDef("king hill");
+		rmAddObjectDefItem(kingHillID, "ypKingsHill", 1, 0.0);
+		rmAddObjectDefConstraint(kingHillID, avoidAll);
+		rmAddObjectDefConstraint(kingHillID, playerEdgeConstraint);
+		rmAddObjectDefConstraint(kingHillID, avoidWater10);
+		rmPlaceObjectDefInArea(kingHillID, 0, pirateIslandID, 1);
+	}
 
 	// Electors
 
@@ -815,7 +829,7 @@ void main(void)
     float teamStartLoc = rmRandFloat(0.0, 1.0);
 	if(cNumberTeams > 2)
 	{
-		rmSetPlacementSection(0.25, 0.75);
+		rmSetPlacementSection(0.23, 0.77);
 		rmSetTeamSpacingModifier(0.75);
 		rmPlacePlayersCircular(0.38, 0.42, 0);
 	}
@@ -836,19 +850,19 @@ void main(void)
 			if (teamStartLoc > 0.5)
 			{
 				rmSetPlacementTeam(0);
-				rmSetPlacementSection(0.25, 0.40);
+				rmSetPlacementSection(0.23, 0.40);
 				rmPlacePlayersCircular(0.38, 0.42, rmDegreesToRadians(5.0));
 				rmSetPlacementTeam(1);
-				rmSetPlacementSection(0.60, 0.75);
+				rmSetPlacementSection(0.60, 0.77);
 				rmPlacePlayersCircular(0.38, 0.42, rmDegreesToRadians(5.0));
 			}
 			else
 			{
 				rmSetPlacementTeam(0);
-				rmSetPlacementSection(0.60, 0.75);
+				rmSetPlacementSection(0.60, 0.77);
 				rmPlacePlayersCircular(0.38, 0.42, rmDegreesToRadians(5.0));
 				rmSetPlacementTeam(1);
-				rmSetPlacementSection(0.25, 0.40);
+				rmSetPlacementSection(0.23, 0.40);
 				rmPlacePlayersCircular(0.38, 0.42, rmDegreesToRadians(5.0));
 			}
 		}

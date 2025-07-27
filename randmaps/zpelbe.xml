@@ -5,17 +5,4 @@
     <loadss>ui\random_map\crownlands\crownlands_01</loadss>
     <loadss>ui\random_map\crownlands\crownlands_02</loadss>
     <loadss>ui\random_map\crownlands\crownlands_03</loadss>
-    <enforcedSettings>
-        <setting type="RecordGame" state="forbidden" />
-        <setting type="DefaultRules" state="enforced" />
-        <setting type="Diplomacy" state="forbidden" />
-    </enforcedSettings>
-    <recommendedSettings>
-        <civilization>French</civilization>
-        <civilization>DESwedish</civilization>
-        <civilization>Spanish</civilization>
-        <civilization>Germans</civilization>
-        <civilization>British</civilization>
-        <civilization>Dutch</civilization>
-    </recommendedSettings>
 </mapinfo>
