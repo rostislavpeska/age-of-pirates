@@ -418,11 +418,11 @@ void main(void)
 
 	rmSetNuggetDifficulty(306, 306);
 
-	int hansaInstanceID1 = rmPlaceGroupingInstanceAtLoc(hansaCityWest, rmXMetersToFraction(xsVectorGetX(ControllerLoc1))-rmXTilesToFraction(12), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1))+rmZTilesToFraction(5), 1);
+	int hansaInstanceID1 = rmPlaceGroupingInstanceAtLoc(hansaCityWest, rmXMetersToFraction(xsVectorGetX(ControllerLoc1))-rmXTilesToFraction(12), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1))+rmZTilesToFraction(5), 0);
 
 	rmPlaceObjectDefAtLoc(socketID2, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc1))-rmXTilesToFraction(16), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1))+rmZTilesToFraction(16));
 
-	int hansaInstanceID2 = rmPlaceGroupingInstanceAtLoc(hansaCityEast, rmXMetersToFraction(xsVectorGetX(ControllerLoc3))+rmXTilesToFraction(16), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3))+rmZTilesToFraction(6), 1);
+	int hansaInstanceID2 = rmPlaceGroupingInstanceAtLoc(hansaCityEast, rmXMetersToFraction(xsVectorGetX(ControllerLoc3))+rmXTilesToFraction(16), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3))+rmZTilesToFraction(6), 0);
 
 	rmPlaceObjectDefAtLoc(socketID4, 0, rmXMetersToFraction(xsVectorGetX(ControllerLoc3))+rmXTilesToFraction(14), rmZMetersToFraction(xsVectorGetZ(ControllerLoc3))+rmZTilesToFraction(17));
 
