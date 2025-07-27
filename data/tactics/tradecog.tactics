@@ -1,0 +1,36 @@
+<tactics>
+  <action>
+    <name stringid="43019">AutoGatherFood</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+    <active>1</active>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherWood</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+    <active>1</active>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherXP</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+    <active>1</active>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherGold</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+    <active>1</active>
+  </action>
+  <action>
+    <name stringid="69148">DelayedTransform</name>
+    <type>DelayedTransform</type>
+    <anim>Pickup</anim>
+    <modifyprotoid>zpHanseaticWarship</modifyprotoid>
+  </action>
+  <tactic>CogGold<action>AutoGatherGold</action><action>DelayedTransform</action></tactic>
+  <tactic>CogFood<action>AutoGatherFood</action><action>DelayedTransform</action></tactic>
+  <tactic>CogWood<action>AutoGatherWood</action><action>DelayedTransform</action></tactic>
+  <tactic>CogXP<action>AutoGatherXP</action><action>DelayedTransform</action></tactic>
+</tactics>

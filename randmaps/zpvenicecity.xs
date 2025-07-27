@@ -877,6 +877,9 @@ void main(void)
 	rmAddObjectDefConstraint(fishID, avoidPathBlock);
 	rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 70);
 
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.70);
+
 	// ____________________ LOCAL MERCENARIES ____________________
 	rmDisableDefaultMercs(true);
 	rmDisableCivTypeMercRestriction(true);
@@ -893,6 +896,9 @@ void main(void)
     rmObjectiveScreenSetTitle(302118);
     rmObjectiveScreenSetGoal(302119);
     rmObjectiveAdd(302120, 302121, true, true, true);
+
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.80);
 
    	// ************************* TRIGGERS ******************************
 
@@ -1034,6 +1040,9 @@ void main(void)
 	// Victory Timer
 	int victoryCountDown = 480;
 	int socketMinimapFlareDuration = 10;
+
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.90);
 
 	// Starting techs
 
@@ -3042,47 +3051,32 @@ void main(void)
 	}
 	}
 
+	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
+	rmSetStatusText("",0.99);
+
+	// Testing
 
 
 
+	/*for (k=1; <= cNumberNonGaiaPlayers) {
 
+	rmCreateTrigger("ZP Test Plr"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "true");
+	rmAddTriggerEffect("Set Tech Status");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParamFloat("TechID",537);
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Set Tech Status");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParamFloat("TechID",2804);
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}*/
 
-
-
-// Testing
-
-
-
-/*for (k=1; <= cNumberNonGaiaPlayers) {
-
-rmCreateTrigger("ZP Test Plr"+k);
-rmAddTriggerCondition("ZP PLAYER Human");
-rmSetTriggerConditionParamInt("Player",k);
-rmSetTriggerConditionParam("MyBool", "true");
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",537);
-rmSetTriggerEffectParamInt("Status",2);
-rmAddTriggerEffect("Set Tech Status");
-rmSetTriggerEffectParamInt("PlayerID",k);
-rmSetTriggerEffectParamFloat("TechID",2804);
-rmSetTriggerEffectParamInt("Status",2);
-rmSetTriggerPriority(4);
-rmSetTriggerActive(true);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(false);
-}*/
-
-
-
-
-    
-	
-
-
-
-
-	
-    
 	
 } // END

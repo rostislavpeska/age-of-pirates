@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tactics>
+  <action>
+    <name stringid="110152">IncreaseHPWithMilitaryUnits</name>
+    <type>LikeBonus</type>
+    <active>0</active>
+    <modifyratebytype>1</modifyratebytype>
+    <modifyabstracttype>Military</modifyabstracttype>
+    <maxrange>15</maxrange>
+    <rate type="LogicalTypeLandMilitary">0.03</rate>
+    <includeally>1</includeally>
+    <persistent>1</persistent>
+    <modifytype>BaseHP</modifytype>
+    <modifybase>1.0</modifybase>
+    <modifyratecap>13.0</modifyratecap>
+  </action>
+  <action>
+    <name stringid="48958">ExtraDamage</name>
+    <type>AutoRangedModify</type>
+    <active>0</active>
+    <maxrange>15</maxrange>
+    <modifyabstracttype>Military</modifyabstracttype>
+    <persistent>1</persistent>
+    <nostack>1</nostack>
+    <modifytype>Damage</modifytype>
+    <modifymultiplier>1.05</modifymultiplier>
+    <modelattachment>effects\chiefpower\chiefpower.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="48958">ExtraDamageMalta</name>
+    <type>AutoRangedModify</type>
+    <modifyabstracttype>Building</modifyabstracttype>
+    <modifyabstracttype>deMalteseMusketeer</modifyabstracttype>
+    <active>0</active>
+    <maxrange>10</maxrange>
+    <persistent>1</persistent>
+    <modifytype>Damage</modifytype>
+    <modifymultiplier>1.075</modifymultiplier>
+    <modelattachment>effects\ypack_auras\malta_power.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="112021">ExtraRangeMalta</name>
+    <type>AutoRangedModify</type>
+    <modifyabstracttype>Building</modifyabstracttype>
+    <modifyabstracttype>deMalteseMusketeer</modifyabstracttype>
+    <active>0</active>
+    <maxrange>10</maxrange>
+    <persistent>1</persistent>
+    <modifytype>Range</modifytype>
+    <modifymultiplier>1.075</modifymultiplier>
+    <modelattachment>effects\ypack_auras\malta_power.xml</modelattachment>
+    <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
+  </action>
+  <action>
+    <name stringid="43019">AutoGather</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+    <active>1</active>
+  </action>
+  <tactic>Normal<action>AutoGather</action><action>IncreaseHPWithMilitaryUnits</action><action>ExtraRangeMalta</action><action>ExtraDamageMalta</action><action>ExtraDamage</action></tactic>
+</tactics>

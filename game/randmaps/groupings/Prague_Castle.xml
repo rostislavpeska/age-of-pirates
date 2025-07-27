@@ -549,7 +549,7 @@
 		<unit variation="3" posx="-1.5007" posz="-8.9102" orientx="0.0007" orienty="0.0000" orientz="1.0000">zpCityStateFlag</unit>
 		<unit variation="132" posx="26.6463" posz="-8.7592" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFence</unit>
 		<unit variation="196" posx="49.2170" posz="-7.1372" orientx="1.0000" orienty="0.0000" orientz="-0.0013">deSPCFortCornerProp</unit>
-		<unit variation="15" posx="-23.4470" posz="-7.4246" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="15" posx="-23.4470" posz="-7.4246" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPROPBuildingMixFlattenGround</unit>
 		<unit variation="0" posx="-22.8690" posz="-8.3590" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="83" posx="-44.7714" posz="-6.9731" orientx="1.0000" orienty="0.0000" orientz="0.0036">UnderbrushPatagoniaDirt</unit>
 		<unit variation="247" posx="-29.1526" posz="-7.2221" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">deNatEUPropVilMale</unit>
@@ -716,7 +716,7 @@
 		<unit variation="121" posx="-9.1874" posz="8.2914" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpNatEUPropFencDark</unit>
 		<unit variation="174" posx="-7.0865" posz="14.5211" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropWingC</unit>
 		<unit variation="221" posx="-45.6894" posz="7.7501" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deMercCannoneer</unit>
-		<unit variation="234" posx="-27.7600" posz="8.4255" orientx="-0.0005" orienty="0.0000" orientz="-1.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="233" posx="-28.2600" posz="8.4255" orientx="-0.0005" orienty="0.0000" orientz="-1.0000">zpNativeHouseHansa</unit>
 		<unit variation="3" posx="-3.2187" posz="7.8124" orientx="0.0007" orienty="0.0000" orientz="1.0000">zpCityStateFlag</unit>
 		<unit variation="102" posx="-50.3798" posz="11.0559" orientx="-1.0000" orienty="0.0000" orientz="0.0001">deSPCFortWallLargeProp</unit>
 		<unit variation="0" posx="-27.2415" posz="7.5590" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
@@ -945,7 +945,6 @@
 		<unit variation="102" posx="55.7196" posz="28.0125" orientx="0.3827" orienty="0.0000" orientz="0.9239">deSPCFortWallLargeProp</unit>
 		<unit variation="102" posx="-58.5693" posz="27.9531" orientx="-0.3822" orienty="0.0000" orientz="0.9241">deSPCFortWallLargeProp</unit>
 		<unit variation="0" posx="-5.2840" posz="27.5368" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="222" posx="5.4088" posz="26.9149" orientx="-1.0000" orienty="0.0000" orientz="-0.0050">zpNativePropsJewishTower</unit>
 		<unit variation="0" posx="10.4008" posz="27.6091" orientx="-0.3875" orienty="0.0000" orientz="0.9219">zpPropsFlowersBohemia</unit>
 		<unit variation="3" posx="10.7774" posz="26.5424" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="0" posx="12.4379" posz="26.8942" orientx="-0.3875" orienty="0.0000" orientz="0.9219">zpPropsFlowersBohemia</unit>
@@ -970,13 +969,11 @@
 		<unit variation="196" posx="50.5817" posz="30.1547" orientx="-0.3815" orienty="0.0000" orientz="0.9244">deSPCFortCornerProp</unit>
 		<unit variation="196" posx="-39.4056" posz="29.7453" orientx="-0.7051" orienty="0.0000" orientz="0.7091">deSPCFortCornerProp</unit>
 		<unit variation="135" posx="-22.6533" posz="34.3544" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpSPCCapturableFactory</unit>
-		<unit variation="108" posx="8.8350" posz="30.7563" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpCathedralJewish</unit>
+		<unit variation="108" posx="9.5350" posz="30.7563" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpCathedralJewish</unit>
 		<unit variation="196" posx="-52.7503" posz="30.1480" orientx="0.3853" orienty="0.0000" orientz="0.9228">deSPCFortCornerProp</unit>
 		<unit variation="96" posx="-11.0112" posz="30.5711" orientx="-0.7120" orienty="0.0000" orientz="0.7021">UnderbrushForest</unit>
 		<unit variation="253" posx="-11.2630" posz="29.8899" orientx="0.9254" orienty="0.0000" orientz="-0.3790">UnderbrushPatagoniaDirt</unit>
 		<unit variation="96" posx="-10.8138" posz="30.9714" orientx="-0.7032" orienty="0.0000" orientz="-0.7110">UnderbrushForest</unit>
-		<unit variation="0" posx="4.5889" posz="29.2304" orientx="-0.3875" orienty="0.0000" orientz="0.9219">zpPropsFlowersBohemia</unit>
-		<unit variation="0" posx="4.3975" posz="28.6129" orientx="-0.3875" orienty="0.0000" orientz="0.9219">zpPropsFlowersBohemia</unit>
 		<unit variation="0" posx="12.6585" posz="28.2050" orientx="-0.3875" orienty="0.0000" orientz="0.9219">zpPropsFlowersBohemia</unit>
 		<unit variation="149" posx="21.8850" posz="30.4054" orientx="1.0000" orienty="0.0000" orientz="0.0058">UnderbrushCoast</unit>
 		<unit variation="96" posx="21.6292" posz="30.8157" orientx="0.9217" orienty="0.0000" orientz="0.3879">UnderbrushForest</unit>
@@ -986,7 +983,7 @@
 		<unit variation="123" posx="-86.1796" posz="32.1196" orientx="-0.2059" orienty="0.0000" orientz="0.9786">zpFishCarp</unit>
 		<unit variation="86" posx="30.4365" posz="29.3376" orientx="0.3827" orienty="0.0000" orientz="0.9239">deMercCannoneer</unit>
 		<unit variation="1" posx="-30.4836" posz="29.0673" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpPropMarketStall</unit>
-		<unit variation="132" posx="18.7363" posz="29.9136" orientx="0.7070" orienty="0.0000" orientz="-0.7072">zpHCFountainA</unit>
+		<unit variation="132" posx="18.7363" posz="29.9136" orientx="0.7070" orienty="0.0000" orientz="-0.7072">zpHCFountainFlattenGround</unit>
 		<unit variation="57" posx="65.0000" posz="29.0000" orientx="0.1936" orienty="0.0000" orientz="-0.9811">TreeNewEngland</unit>
 		<unit variation="67" posx="-34.6266" posz="33.2019" orientx="-0.7071" orienty="0.0000" orientz="0.7071">SPCFortGate</unit>
 		<unit variation="67" posx="33.5845" posz="34.5206" orientx="0.7071" orienty="0.0000" orientz="0.7071">SPCFortGate</unit>
@@ -994,7 +991,6 @@
 		<unit variation="96" posx="-10.7302" posz="31.3922" orientx="-0.9256" orienty="0.0000" orientz="0.3786">UnderbrushForest</unit>
 		<unit variation="149" posx="-10.6204" posz="31.8631" orientx="-0.7103" orienty="0.0000" orientz="0.7039">UnderbrushCoast</unit>
 		<unit variation="83" posx="-10.2709" posz="32.7659" orientx="0.9254" orienty="0.0000" orientz="-0.3790">UnderbrushPatagoniaDirt</unit>
-		<unit variation="0" posx="4.2622" posz="31.6563" orientx="-0.3875" orienty="0.0000" orientz="0.9219">zpPropsFlowersBohemia</unit>
 		<unit variation="0" posx="12.7790" posz="31.4008" orientx="-0.3875" orienty="0.0000" orientz="0.9219">zpPropsFlowersBohemia</unit>
 		<unit variation="0" posx="15.5496" posz="32.0476" orientx="-0.3875" orienty="0.0000" orientz="0.9219">zpPropsFlowersBohemia</unit>
 		<unit variation="55" posx="16.0286" posz="32.0655" orientx="0.9158" orienty="0.0000" orientz="-0.4017">UnderbrushGreatPlains</unit>
@@ -1015,8 +1011,6 @@
 		<unit variation="64" posx="-9.1815" posz="34.8776" orientx="-0.0060" orienty="0.0000" orientz="1.0000">UnderbrushMongolia</unit>
 		<unit variation="141" posx="-0.7074" posz="34.2066" orientx="0.2735" orienty="0.0000" orientz="-0.9619">UnderbrushGreatPlains</unit>
 		<unit variation="141" posx="-2.8386" posz="34.5493" orientx="0.2735" orienty="0.0000" orientz="-0.9619">UnderbrushGreatPlains</unit>
-		<unit variation="0" posx="3.8665" posz="32.3168" orientx="-0.3875" orienty="0.0000" orientz="0.9219">zpPropsFlowersBohemia</unit>
-		<unit variation="0" posx="4.3906" posz="32.3608" orientx="-0.3875" orienty="0.0000" orientz="0.9219">zpPropsFlowersBohemia</unit>
 		<unit variation="0" posx="12.1119" posz="33.7703" orientx="-0.3875" orienty="0.0000" orientz="0.9219">zpPropsFlowersBohemia</unit>
 		<unit variation="0" posx="13.1995" posz="32.7713" orientx="-0.3875" orienty="0.0000" orientz="0.9219">zpPropsFlowersBohemia</unit>
 		<unit variation="0" posx="15.7367" posz="32.9726" orientx="-0.3875" orienty="0.0000" orientz="0.9219">zpPropsFlowersBohemia</unit>
@@ -1034,7 +1028,6 @@
 		<unit variation="1" posx="-7.0731" posz="32.3305" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpPropMarketStall</unit>
 		<unit variation="0" posx="-44.8807" posz="34.5405" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="141" posx="-1.5911" posz="35.1850" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropStatue</unit>
-		<unit variation="222" posx="5.2712" posz="34.5225" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativePropsJewishTower</unit>
 		<unit variation="0" posx="13.2684" posz="35.1622" orientx="-0.3875" orienty="0.0000" orientz="0.9219">zpPropsFlowersBohemia</unit>
 		<unit variation="12" posx="-43.3547" posz="36.7903" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">PropsColony</unit>
 		<unit variation="83" posx="6.1029" posz="36.3594" orientx="0.0053" orienty="0.0000" orientz="-1.0000">UnderbrushPatagoniaDirt</unit>

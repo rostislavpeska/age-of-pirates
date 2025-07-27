@@ -25,7 +25,7 @@
     </effects>
   </tech>
   <tech name="zpSPCAztecAltarColonializeShadow" type="Normal">
-    <dbid>409992</dbid>
+    <dbid>40992</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -5340,6 +5340,8 @@
       <effect mergemode="add" type="SetName" proto="zpNatMercHanseaticLegion" culture="none" newname="302911">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatTeutonicKnight" culture="none" newname="302913">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercTeutonicKnight" culture="none" newname="302913">
       </effect>
     </effects>
   </tech>
@@ -20777,6 +20779,12 @@
       <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatTeutonicKnight</target>
       </effect>
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercTeutonicKnight</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercTeutonicKnight</target>
+      </effect>
     </effects>
 	</tech>
   <tech name="zpUnlockPalazzoAuditore" type="Normal">
@@ -28413,7 +28421,7 @@
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
     <effects>
-      <effect type="Data" amount="11.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="9.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatLandsknecht</target>
       </effect>
       <effect type="Data" amount="11.00" subtype="BuildLimit" relativity="Absolute">
@@ -28461,7 +28469,7 @@
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
     <effects>
-      <effect type="Data" amount="-11.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="-9.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatLandsknecht</target>
       </effect>
       <effect type="Data" amount="-11.00" subtype="BuildLimit" relativity="Absolute">
@@ -29428,6 +29436,7 @@
       <effect type="TechStatus" status="obtainable">zpIndianFriendshipHansa</effect>
       <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyHansa</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHansaEmbassy</effect>
     </effects>
   </tech>
   <tech name="zpNativePueblo" type="Normal">
@@ -29551,6 +29560,13 @@
 				<target type ="ProtoUnit">zpNatTeutonicKnight</target></effect>
 			<effect type ="SetName" proto ="zpNatTeutonicKnight" culture ="none" newname ="302912"></effect>
       <effect type="SetName" proto="zpNatTeutonicKnight" culture="none" newname="302913" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercTeutonicKnight</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercTeutonicKnight</target></effect>
+			<effect type ="SetName" proto ="zpNatMercTeutonicKnight" culture ="none" newname ="302912"></effect>
+      <effect type="SetName" proto="zpNatMercTeutonicKnight" culture="none" newname="302913" reqtech="ImpLegendaryNativesShadow">
       </effect>
 		</effects>
 	</tech>
@@ -29742,7 +29758,7 @@
       <effect type="CommandRemove" tech="zpHansaExpansion">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpHansMarket" page="2" column="5">
+      <effect type="CommandAdd" tech="zpNatHansaEmbassy" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -29801,6 +29817,9 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpMercTeutonicCavalry</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">zpTeutonicArmySmall</effect>
+      <effect type="TechStatus" status="obtainable">zpTeutonicArmyBig</effect>
+      <effect type="TechStatus" status="obtainable">zpTeutonicAliesMaltese</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOffHansa" type="Normal">
@@ -29985,20 +30004,17 @@
     <dbid>41161</dbid>
     <displaynameid>302942</displaynameid>
     <researchpoints>30.0000</researchpoints>
-    <cost resourcetype ="Gold">350.0000</cost>
-    <cost resourcetype ="Wood">350.0000</cost>
+    <cost resourcetype ="Gold">450.0000</cost>
+    <cost resourcetype ="Wood">450.0000</cost>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\hansa_bremen_arsenal.png</icon>
     <rollovertextid>302943</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <prereqs>
-			<techstatus status ="Active">Fortressize</techstatus>
+			<techstatus status ="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpHanseaticFluyt</target>
-      </effect>
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpHanseaticWarship</target>
       </effect>
@@ -30011,11 +30027,26 @@
       <effect type="Data" action="ChargeBroadsideAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
         <target type="ProtoUnit">zpHanseaticWarship</target>
       </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpHanseaticFluyt</target>
+      </effect>
       <effect type="Data" action="RangedAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
         <target type="ProtoUnit">zpHanseaticFluyt</target>
       </effect>
       <effect type="Data" action="RangedAttackContained" amount="3.00" subtype="MaximumRange" relativity="Absolute">
         <target type="ProtoUnit">zpHanseaticFluyt</target>
+      </effect>
+      <effect type="Data" action="AutogatherFood" amount="1.30" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpHanseaticTradeship</target>
+      </effect>
+      <effect type="Data" action="AutogatherWood" amount="1.30" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpHanseaticTradeship</target>
+      </effect>
+      <effect type="Data" action="AutogatherGold" amount="1.30" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpHanseaticTradeship</target>
+      </effect>
+      <effect type="Data" action="AutoGatherXP" amount="1.30" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpHanseaticTradeship</target>
       </effect>
     </effects>
   </tech>
@@ -30059,7 +30090,366 @@
       </effect>
     </effects>
   </tech>
-
+  <tech name="zpRebuiltToTradeCog" type="Normal">
+    <dbid>41164</dbid>
+    <displaynameid>302961</displaynameid>
+    <cost resourcetype="Wood">50.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>ACTIVE</status>
+    <icon>resources\images\icons\command\cogtrade_off.png</icon>
+    <rollovertextid>302962</rollovertextid>
+  </tech>
+  <tech name="zpRebuiltToWarCog" type="Normal">
+    <dbid>41165</dbid>
+    <displaynameid>302963</displaynameid>
+    <cost resourcetype="Wood">25.0000</cost>
+    <researchpoints>5.0000</researchpoints>
+    <status>ACTIVE</status>
+    <icon>resources\images\icons\command\tactics_melee_avl.png</icon>
+    <rollovertextid>302964</rollovertextid>
+  </tech>
+  <tech name="zpTeutonicAliesMaltese" type="Normal">
+    <dbid>41166</dbid>
+    <displaynameid>302984</displaynameid>
+    <researchpoints>30.0000</researchpoints>
+    <cost resourcetype="Food">800.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\teutonic_concord.png</icon>
+    <rollovertextid>302985</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect civ="Maltese" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpNatDisciplinedMaltese</effect>
+      <effect type="TechStatus" status="active">zpNatHonoredMaltese</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercMalteseKnight</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercMalteseGuard</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercMalteseKnight</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercMalteseGuard</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMercMalteseKnight" relativity="Absolute">
+        <target type="ProtoUnit">zpMalteseKnightMercIcon</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatMercMalteseGuard" relativity="Absolute">
+        <target type="ProtoUnit">zpMalteseGuardMercIcon</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTeutonicArmySmall" type="Normal">
+    <dbid>41167</dbid>
+    <displaynameid>302986</displaynameid>
+    <researchpoints>30.0000</researchpoints>
+    <cost resourcetype="Food">250.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\teutonic_army.png</icon>
+    <rollovertextid>302987</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPCheckPopCap</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <effects>
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatMercTeutonicKnight" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTeutonicArmyBig" type="Normal">
+    <dbid>41168</dbid>
+    <displaynameid>302988</displaynameid>
+    <researchpoints>30.0000</researchpoints>
+    <cost resourcetype="Food">1250.0000</cost>
+    <cost resourcetype="Gold">1250.0000</cost>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\teutonic_army_cav.png</icon>
+    <rollovertextid>302989</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+			<techstatus status ="active">Imperialize</techstatus>
+		</prereqs>
+    <effects>
+      <effect type ="Data" amount ="1.60" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpMercTeutonicCavalry</target></effect>
+			<effect type ="Data" amount ="1.60" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpMercTeutonicCavalry</target></effect>
+      <effect type="Data" amount="1.00" subtype="PopulationCount" relativity="Absolute">
+        <target type="ProtoUnit">zpMercTeutonicCavalry</target>
+      </effect>
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="zpMercTeutonicCavalry" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="SetName" proto ="zpMercTeutonicCavalry" culture ="none" newname="302990">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatHansaEmbassy" type="Normal">
+    <dbid>41169</dbid>
+    <displaynameid>302991</displaynameid>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hansa_embassy_tech.png</icon>
+    <rollovertextid>302997</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+			<techstatus status ="active">Industrialize</techstatus>
+		</prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpHansaEmbassyWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpHansaEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpHansaColonisationFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaBanking</effect>
+      <effect type="TechStatus" status="obtainable">zpTeutonicArmySmall</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaTradeFood</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaTradeWood</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaTradeCoin</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaTradeInfluence</effect>
+    </effects>
+  </tech>
+  <tech name="zpHansaTradeFood" type="Normal">
+    <dbid>41170</dbid>
+    <displaynameid>302998</displaynameid>
+    <cost resourcetype="Ships">1.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\infinite_food.png</icon>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="CrateofFood" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHansaTradeWood" type="Normal">
+    <dbid>41171</dbid>
+    <displaynameid>303001</displaynameid>
+    <cost resourcetype="Ships">1.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\infinite_wood.png</icon>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="CrateofWood" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHansaTradeCoin" type="Normal">
+    <dbid>41172</dbid>
+    <displaynameid>302999</displaynameid>
+    <cost resourcetype="Ships">1.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\infinite_gold.png</icon>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="CrateofCoin" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHansaTradeInfluence" type="Normal">
+    <dbid>41173</dbid>
+    <displaynameid>303000</displaynameid>
+    <cost resourcetype="Ships">1.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\africans\infinite_influence.png</icon>
+    <flag>YPInfiniteTech</flag>
+    <prereqs>
+			<techstatus status ="active">DEAAAfricanStandardStartingTechs</techstatus>
+		</prereqs>
+    <effects>
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="deCrateofInfluence" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHansaColonisationFleet" type="Normal">
+    <dbid>41174</dbid>
+    <displaynameid>303002</displaynameid>
+    <cost resourcetype="Food">300.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hansa_fleet.png</icon>
+    <rollovertextid>303003</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <effects>
+      <effect type="Data2" amount="1.00" amount2="2.00" subtype="FreeHomeCityUnitShipped" unittype="zpHanseaticFluyt" unittype2="SettlerWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpHansaBanking" type="Normal">
+    <dbid>41175</dbid>
+    <displaynameid>303004</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\hansa_banking.png</icon>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpBankWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypBankAsian</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">ypBankAsian</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpElbeSetup" type="Normal">
+    <dbid>41176</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpPrinceElectorNativeSetup</effect>
+      <effect type="TechStatus" status="active">deEUMapUpdateVisuals</effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpHanseaticChurch</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandAdd" proto="MercJaeger" page="0" column="0">
+        <target type="ProtoUnit">zpHanseaticChurch</target>
+      </effect>
+      <effect type="CommandAdd" proto="deMercPandour" page="0" column="1">
+        <target type="ProtoUnit">zpHanseaticChurch</target>
+      </effect>
+      <effect type="CommandAdd" proto="deMercGrenadier" page="0" column="2">
+        <target type="ProtoUnit">zpHanseaticChurch</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpMercTeutonicCavalry" page="0" column="3">
+        <target type="ProtoUnit">zpHanseaticChurch</target>
+      </effect>
+      <effect type="CommandAdd" proto="MercGreatCannon" page="0" column="4">
+        <target type="ProtoUnit">zpHanseaticChurch</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpSPCArtPatronHansaChurch</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCEliteMercenaries</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCHansaNeedleGunTradeRoute</effect>
+      <effect type="TechStatus" status="active">zpBonuHansa</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCArtPatronHansaChurch" type="Normal">
+    <dbid>41177</dbid>
+    <displaynameid>123050</displaynameid>
+    <cost resourcetype="Food">100.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\spc\historical_battles\team_patron_of_the_arts.png</icon>
+    <rollovertextid>303006</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpHanseaticChurch</target>
+      </effect>
+      <effect type="TextOutputTechName">123070</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCEliteMercenaries" type="Normal">
+    <dbid>41178</dbid>
+    <displaynameid>303007</displaynameid>
+    <cost resourcetype="Food">500.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\historical_maps\elite_mercenaries.png</icon>
+    <rollovertextid>303008</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>TeamTech</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">Mercenary</target>
+      </effect>
+      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">Mercenary</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCHansaNeedleGunTradeRoute" type="Normal">
+    <dbid>41179</dbid>
+    <displaynameid>303009</displaynameid>
+    <cost resourcetype="Food">300.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\historical_maps\traderoute_needlegunners.png</icon>
+    <rollovertextid>303010</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>TeamTech</flag>
+    <flag>DEHideAdvancedRollover</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">zpTradeRouteUpgradeHansaShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpHansaTradeRouteUpgrade" type="Normal">
+    <dbid>41180</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>OrPrereqs</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status="Active">zpConsulateHansaWestern</techstatus>
+      <techstatus status="Active">zpConsulateHansaCentral</techstatus>
+      <techstatus status="Active">zpConsulateHansaEast</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="zpBonuHansa" type="Normal">
+    <dbid>41181</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetName" tech="zpHansaExpansion" newname="302915" newrollover="303014">
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpHansaTradeRouteUpgrade</effect>
+    </effects>
+  </tech>
 
 
 

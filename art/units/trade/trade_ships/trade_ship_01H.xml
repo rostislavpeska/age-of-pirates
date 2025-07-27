@@ -1,0 +1,20 @@
+<animfile>
+  <definebone>bone_banner_a1</definebone>
+  <definebone>bone_banner_a2</definebone>
+  <definebone>bone_banner_a3</definebone>
+  <definebone>bone_banner_a4</definebone>
+  <definebone>bone_center</definebone>
+  <definebone>bone_master</definebone>
+  <definebone>bone_front_wake</definebone>
+  <definebone>bone_front_foam</definebone>
+  <definebone>bone_man</definebone>
+  <attachment>IdleWaterFoam<component>Idlefoam<assetreference type="popcornFx"><file>water_effects\idle_waterFoam_large.pkfx</file></assetreference></component><anim>None<component>Idlefoam</component></anim></attachment>
+  <attachment>MoveWaterFoam<component>Movefoam<assetreference type="popcornFx"><file>water_effects\move_waterFoam_large.pkfx</file></assetreference></component><anim>None<component>Movefoam</component></anim></attachment>
+  <attachment>pendentflag_a1<component>flag<assetreference type="ClothFlag"><flag><blending>alphatest_color</blending><texture>buildings\flags\pendent</texture><width>2.00</width><height>1.00</height></flag></assetreference></component><anim>Idle<component>flag</component></anim></attachment>
+  <attachment>pendentflag_a2<component>flag<assetreference type="ClothFlag"><flag><blending>alphatest_nocolor</blending><texture>buildings\flags\pendent_yellow</texture><width>3.00</width><height>1.00</height></flag></assetreference></component><anim>Idle<component>flag</component></anim></attachment>
+  <attachment>pendentflag_a3<component>flag<assetreference type="ClothFlag"><flag><blending>alphatest_color</blending><texture>buildings\flags\pendent01</texture><width>2.00</width><height>1.00</height></flag></assetreference></component><anim>Idle<component>flag</component></anim></attachment>
+  <attachment>TradeCrates<component>TradeCrates<assetreference type="GrannyModel"><file>units\naval\caravel_ship\caravel_crates</file></assetreference></component><anim>Idle<component>TradeCrates</component></anim></attachment>
+  <component>trade_ship_01<assetreference type="GrannyModel"><file>units\naval\caravel_ship\caravel_ship</file><materialvariant index="3"></materialvariant></assetreference><attach a="TradeCrates" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></component>
+  <anim>Idle<component>trade_ship_01</component><attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
+  <anim>Walk<component>trade_ship_01</component><attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach></anim>
+</animfile>

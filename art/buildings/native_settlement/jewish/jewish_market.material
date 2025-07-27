@@ -1,0 +1,50 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\jewish\textures\jewish_house_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\jewish\textures\jewish_house_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\jewish\textures\jewish_house_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\jewish\textures\jewish_house_matb_Basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\jewish\textures\jewish_house_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\jewish\textures\jewish_house_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\jewish\textures\jewish_house_matc_Basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\jewish\textures\jewish_house_matc_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\jewish\textures\jewish_house_matc_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_Basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\ethiopia\ethiopia_props\textures\ethiopia_props_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

@@ -205,6 +205,11 @@
 			<flag>StartOnNoUpdate</flag>
 			<flag>NotSelectable</flag>
 		</unit>
+		<unit name="zpNativeHouseHansa">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>
+		</unit>
 		<unit name="zpNatEUVerseilles">
 			<flag>NoIdleActions</flag>
 			<flag>StartOnNoUpdate</flag>

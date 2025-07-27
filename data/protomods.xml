@@ -1984,7 +1984,6 @@
     <flag>NoFadeOnDeath</flag>
     <flag>TieToWaterSurface</flag>
     <flag>PlaceAnywhere</flag>
-    <flag>VariationLocked</flag>
     <flag>Invulnerable</flag>
     <flag>InvulnerableIfGaia</flag>
     <command page="10" column="0">Delete</command>
@@ -6003,6 +6002,7 @@
     <train row="0" page="0" column="13">zpCatamaran</train>
     <train row="0" page="0" column="14">zpSubmarine</train>
     <train row="0" page="0" column="14">zpSubmarineTransport</train>
+    <unittype>HansaTradePoint</unittype>
   </unit>
   <unit name="dePort">
     <train row="0" page="0" column="11">ypFireship</train>
@@ -6012,6 +6012,7 @@
     <train row="0" page="0" column="13">zpCatamaran</train>
     <train row="0" page="0" column="14">zpSubmarine</train>
     <train row="0" page="0" column="14">zpSubmarineTransport</train>
+    <unittype>HansaTradePoint</unittype>
   </unit>
   <unit id="20050" name="zpWokouFuchuanProxy">
     <dbid>20050</dbid>
@@ -10014,7 +10015,7 @@
     <portraiticon>resources\art\units\natives\yodit.png</portraiticon>
     <buildlimit>10</buildlimit>
     <cost resourcetype="Gold">60.0000</cost>
-    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Food">20.0000</carrycapacity>
     <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
     <carrycapacity resourcetype="Influence">1.0000</carrycapacity>
@@ -11118,7 +11119,7 @@
     <obstructionradiusz>0.0001</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\native_settlement\jewish_synagogue.xml</animfile>
+    <animfile>buildings\african_civs\tower\tower.xml</animfile>
     <unittype>BuildingClass</unittype>
     <unittype>NativeBuilding</unittype>
     <unittype>EmbellishmentClass</unittype>
@@ -14125,6 +14126,7 @@
     <train row="0" page="0" column="13">zpCatamaran</train>
     <train row="0" page="0" column="14">zpSubmarine</train>
     <train row="0" page="0" column="14">zpSubmarineTransport</train>
+    <unittype>HansaTradePoint</unittype>
   </unit>
   <unit id="20139" name="zpAImigrationPoint">
     <dbid>20139</dbid>
@@ -15475,6 +15477,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
+    <unittype>HansaTradePoint</unittype>
     <flag>NoBloodOnDeath</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -16644,6 +16647,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
+    <unittype>HansaTradePoint</unittype>
     <flag>NoBloodOnDeath</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -27379,6 +27383,7 @@
     <train row="0" page="0" column="32">zpAustralianCavalry</train>
     <train row="0" page="0" column="33">zpMercBohemianKnight</train>
     <train row="0" page="0" column="34">zpMercHussiteWagon</train>
+    <train row="0" page="0" column="35">zpMercTeutonicCavalry</train>
     <!-- Christmas Mercs -->
     <train row="0" page="0" column="104">zpChristmasPolearm</train>
     <train row="0" page="0" column="105">zpChristmasGrenadier</train>
@@ -27391,6 +27396,7 @@
     <train row="0" page="0" column="32">zpAustralianCavalry</train>
     <train row="0" page="0" column="33">zpMercBohemianKnight</train>
     <train row="0" page="0" column="34">zpMercHussiteWagon</train>
+    <train row="0" page="0" column="35">zpMercTeutonicCavalry</train>
     <!-- Christmas Mercs -->
     <train row="0" page="0" column="104">zpChristmasPolearm</train>
     <train row="0" page="0" column="105">zpChristmasGrenadier</train>
@@ -27403,6 +27409,7 @@
     <train row="0" page="2" column="32">zpAustralianCavalry</train>
     <train row="0" page="0" column="33">zpMercBohemianKnight</train>
     <train row="0" page="0" column="34">zpMercHussiteWagon</train>
+    <train row="0" page="0" column="35">zpMercTeutonicCavalry</train>
     <!-- Christmas Mercs -->
     <train row="0" page="2" column="104">zpChristmasPolearm</train>
     <train row="0" page="2" column="105">zpChristmasGrenadier</train>
@@ -27415,6 +27422,7 @@
     <train row="0" page="0" column="32">zpAustralianCavalry</train>
     <train row="0" page="0" column="33">zpMercBohemianKnight</train>
     <train row="0" page="0" column="34">zpMercHussiteWagon</train>
+    <train row="0" page="0" column="35">zpMercTeutonicCavalry</train>
     <!-- Christmas Mercs -->
     <train row="0" page="0" column="104">zpChristmasPolearm</train>
     <train row="0" page="0" column="105">zpChristmasGrenadier</train>
@@ -27427,6 +27435,7 @@
     <train row="0" page="0" column="32">zpAustralianCavalry</train>
     <train row="0" page="0" column="33">zpMercBohemianKnight</train>
     <train row="0" page="0" column="34">zpMercHussiteWagon</train>
+    <train row="0" page="0" column="35">zpMercTeutonicCavalry</train>
     <!-- Christmas Mercs -->
     <train row="0" page="0" column="104">zpChristmasPolearm</train>
     <train row="0" page="0" column="105">zpChristmasGrenadier</train>
@@ -47504,7 +47513,6 @@
     <flag>AllowAutoGarrison</flag>
     <flag>Tracked</flag>
     <flag>AllowTrainingOnWater</flag>
-    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
@@ -50088,11 +50096,11 @@
     <dbid>20663</dbid>
     <displaynameid>302336</displaynameid>
     <editornameid>302335</editornameid>
-    <obstructionradiusx>4.5000</obstructionradiusx>
-    <obstructionradiusz>5.5000</obstructionradiusz>
+    <obstructionradiusx>6.5000</obstructionradiusx>
+    <obstructionradiusz>6.5000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\native_settlement\jewish synagogue 2.xml</animfile>
+    <animfile>buildings\native_settlement\jewish\synagogue.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>
@@ -50157,6 +50165,7 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
+    <flag>FlattenGround</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
   </unit>
@@ -55593,8 +55602,9 @@
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
     <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
-    <tech row="0" page="11" column="2">DESPCPapalLegate</tech>
-    <tech row="0" page="11" column="3">DESPCExcommunication</tech>
+    <tech row="0" page="11" column="2">zpSPCArtPatronHansaChurch</tech>
+    <tech row="0" page="11" column="3">zpSPCHansaNeedleGunTradeRoute</tech>
+    <tech row="0" page="11" column="4">zpSPCEliteMercenaries</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -56019,6 +56029,7 @@
     <unittype>AbstractRifleman</unittype>
     <unittype>AbstractSkirmisher</unittype>
     <unittype>AbstractAbusGun</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -59852,13 +59863,22 @@
     <dbid>20825</dbid>
     <displaynameid>32671</displaynameid>
     <editornameid>302862</editornameid>
-    <obstructionradiusx>1.0000</obstructionradiusx>
-    <obstructionradiusz>1.0000</obstructionradiusz>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
-    <movementtype>land</movementtype>
+    <movementtype>air</movementtype>
     <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
-    <unittype>EmbellishmentClass</unittype>
     <civflagoverride>objects\flags\hansakontor</civflagoverride>
+    <portraiticon>resources\art\units\natives\hansakontor.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>DontMarkExtraFog</flag>
     <flag>NoHPBar</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
@@ -59866,14 +59886,18 @@
     <flag>VisibleUnderFog</flag>
     <flag>NotSelectable</flag>
     <flag>NoUnitAI</flag>
-    <flag>DoNotShowOnMiniMap</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
     <flag>DoNotCreateUnitGroupAutomatically</flag>
     <flag>RMCanRotate</flag>
-    <flag>NonCollideable</flag>
-    <flag>Invulnerable</flag>
-    <flag>NotCommandable</flag>
+    <flag>DoNotShowOnMiniMap</flag>
     <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
     <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
   </unit>
   <unit id="20826" name="zpSocketPueblo">
     <dbid>20826</dbid>
@@ -60217,6 +60241,9 @@
     </armor>
     <armor type="Hand" value="0.3000">
     </armor>
+    <sharedselectionunittypes>
+      <unittype>zpNatMercTeutonicKnight</unittype>
+    </sharedselectionunittypes>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
@@ -60350,8 +60377,13 @@
     <unittype>AbstractDefensiveBuilding</unittype>
     <train row="0" page="0" column="1">zpNatTeutonicKnight</train>
     <train row="0" page="0" column="2">zpMercTeutonicCavalry</train>
+    <train row="0" page="0" column="3">zpNatMercMalteseGuard</train>
+    <train row="0" page="0" column="4">zpNatMercMalteseKnight</train>
     <tech row="0" page="1" column="0">Revetment</tech>
     <tech row="0" page="1" column="1">StarFort</tech>
+    <tech row="0" page="2" column="1">zpTeutonicArmySmall</tech>
+    <tech row="0" page="2" column="3">zpTeutonicArmyBig</tech>
+    <tech row="0" page="2" column="2">zpTeutonicAliesMaltese</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -60620,6 +60652,7 @@
     <movementtype>water</movementtype>
     <turnrate>2.0000</turnrate>
     <animfile>units\naval\fluyt\hanseatic_fluyt.xml</animfile>
+    <civflagoverride>objects\flags\hansakontor</civflagoverride>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\units\naval\spc\hanseatic_fluyt_icon.png</icon>
@@ -60689,7 +60722,6 @@
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
-    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="5">Eject</command>
@@ -61121,6 +61153,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
+    <unittype>HansaTradePoint</unittype>
     <flag>NoBloodOnDeath</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -61171,6 +61204,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
+    <unittype>HansaTradePoint</unittype>
     <flag>NoBloodOnDeath</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -61396,6 +61430,7 @@
     <movementtype>water</movementtype>
     <turnrate>3.0000</turnrate>
     <animfile>units\naval\caravel_ship\hanseatic_caravel.xml</animfile>
+    <civflagoverride>objects\flags\hansakontor</civflagoverride>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\units\naval\spc\hansa_war_cog_icon.png</icon>
@@ -61403,19 +61438,19 @@
     <rollovertextid>302933</rollovertextid>
     <shortrollovertextid>302933</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>800.0000</initialhitpoints>
-    <maxhitpoints>800.0000</maxhitpoints>
+    <initialhitpoints>1000.0000</initialhitpoints>
+    <maxhitpoints>1000.0000</maxhitpoints>
     <los>26.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <trainpoints>40.0000</trainpoints>
     <buildlimit>3</buildlimit>
     <bounty>40.0000</bounty>
+    <rechargetime>60.0000</rechargetime>
     <buildbounty>40.0000</buildbounty>
     <cost resourcetype="Wood">500.0000</cost>
     <carrycapacity resourcetype="Food">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
-    <maxcontained>50</maxcontained>
     <allowedage>1</allowedage>
     <decay delay="0.0000" duration="0.0000">
     </decay>
@@ -61445,7 +61480,6 @@
     <unittype>Ranged</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>Ship</unittype>
-    <unittype>Transport</unittype>
     <unittype>Military</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Unit</unittype>
@@ -61465,14 +61499,13 @@
     <flag>NavalUnit</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
-    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
-    <contain>LogicalTypeGarrisonInShips</contain>
+    <command page="1" column="0">zpTransformTradeCog</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
     <command page="10" column="5">Eject</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
-    <tactics>sloop.tactics</tactics>
+    <tactics>warcog.tactics</tactics>
     <protoaction>
       <name>Gather</name>
       <rate type="AbstractFish">0.670000</rate>
@@ -61511,6 +61544,11 @@
       <damagearea>1.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
+    <protoaction>
+      <name>Autogather</name>
+      <active>1</active>
+      <rate type="Gold">3.000000</rate>
+    </protoaction>
   </unit>
   <unit id="20846" name="zpHanseaticTradeship">
     <dbid>20846</dbid>
@@ -61524,6 +61562,7 @@
     <movementtype>water</movementtype>
     <turnrate>3.0000</turnrate>
     <animfile>units\naval\caravel_ship\hanseatic_tr_caravel.xml</animfile>
+    <civflagoverride>objects\flags\hansakontor</civflagoverride>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\units\naval\spc\hansa_war_cog_icon.png</icon>
@@ -61531,8 +61570,8 @@
     <rollovertextid>302936</rollovertextid>
     <shortrollovertextid>302936</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>800.0000</initialhitpoints>
-    <maxhitpoints>800.0000</maxhitpoints>
+    <initialhitpoints>1000.0000</initialhitpoints>
+    <maxhitpoints>1000.0000</maxhitpoints>
     <los>26.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -61540,10 +61579,8 @@
     <buildlimit>3</buildlimit>
     <bounty>40.0000</bounty>
     <buildbounty>40.0000</buildbounty>
-    <cost resourcetype="Wood">500.0000</cost>
     <carrycapacity resourcetype="Food">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
-    <maxcontained>50</maxcontained>
     <allowedage>1</allowedage>
     <decay delay="0.0000" duration="0.0000">
     </decay>
@@ -61574,10 +61611,10 @@
     <unittype>Ranged</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>Ship</unittype>
-    <unittype>Transport</unittype>
     <unittype>Military</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Unit</unittype>
+    <unittype>zpSPCTradeUnit</unittype>
     <flag>HeroName1</flag>
     <flag>HasGatherPoint</flag>
     <flag>TieToWaterSurface</flag>
@@ -61594,51 +61631,32 @@
     <flag>NavalUnit</flag>
     <flag>Tracked</flag>
     <flag>UseSharedBuildLimit</flag>
-    <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
-    <contain>LogicalTypeGarrisonInShips</contain>
+    <command page="1" column="0">zpTransformWarCog</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
     <command page="10" column="5">Eject</command>
     <command page="10" column="3">SetGatherPointMilitary</command>
-    <tactics>sloop.tactics</tactics>
+    <tactics>tradecog.tactics</tactics>
     <protoaction>
-      <name>Gather</name>
-      <rate type="AbstractFish">0.670000</rate>
-      <rate type="AbstractWhale">0.500000</rate>
+      <name>AutogatherFood</name>
+      <active>1</active>
+      <rate type="Food">2.500000</rate>
     </protoaction>
     <protoaction>
-      <name>RangedAttack</name>
-      <damage>110.000000</damage>
-      <damagetype>Siege</damagetype>
-      <maxrange>22.000000</maxrange>
-      <rof>3.000000</rof>
-      <damagecap>230.000000</damagecap>
-      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
-      <damagearea>1.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
+      <name>AutogatherWood</name>
+      <active>1</active>
+      <rate type="Wood">2.500000</rate>
     </protoaction>
     <protoaction>
-      <name>RangedAttackContained</name>
-      <damage>110.000000</damage>
-      <damagetype>Siege</damagetype>
-      <maxrange>22.000000</maxrange>
-      <rof>3.000000</rof>
-      <damagecap>230.000000</damagecap>
-      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
-      <damagearea>1.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
+      <name>AutogatherGold</name>
+      <active>1</active>
+      <rate type="Gold">2.500000</rate>
     </protoaction>
     <protoaction>
-      <name>ChargeBroadsideAttack</name>
-      <damage>34.000000</damage>
-      <damagetype>Siege</damagetype>
-      <maxrange>20.000000</maxrange>
-      <rof>0.050000</rof>
-      <damagecap>100.000000</damagecap>
-      <damagebonus type="Ship">2.000000</damagebonus>
-      <damagearea>1.000000</damagearea>
-      <damageflags>GAIAEnemy</damageflags>
+      <name>AutogatherXP</name>
+      <active>1</active>
+      <rate type="XP">2.500000</rate>
     </protoaction>
   </unit>
   <unit id="20847" name="zpHanseaticWarshipProxy">
@@ -61858,6 +61876,417 @@
     <flag>EnterHotkeyContext</flag>
     <tactics>socketcapture.tactics</tactics>
   </unit>
+  <unit id="20851" name="zpHansaTradeRouteShip">
+    <dbid>20851</dbid>
+    <displaynameid>302934</displaynameid>
+    <editornameid>302982</editornameid>
+    <obstructionradiusx>2.9900</obstructionradiusx>
+    <obstructionradiusz>2.9900</obstructionradiusz>
+    <maxvelocity>4.0000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <animfile>units\trade\trade_ships\trade_ship_01H.xml</animfile>
+    <icon>resources\art\units\trade\trade_ship_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\hansa_trade_cog.png</portraiticon>
+    <civflagoverride>objects\flags\hansakontor</civflagoverride>
+    <rollovertextid>29374</rollovertextid>
+    <shortrollovertextid>29373</shortrollovertextid>
+    <initialhitpoints>240.0000</initialhitpoints>
+    <maxhitpoints>240.0000</maxhitpoints>
+    <los>15.0000</los>
+    <trainpoints>30.0000</trainpoints>
+    <minimapcolor red="0.0000" blue="0.0000" green="0.0000">
+    </minimapcolor>
+    <armor type="Ranged" value="0.9000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>RailroadUnit</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <flag>NoProjectileDamage</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Tracked</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>VisibleUnderFog</flag>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20852" name="zpNatMercTeutonicKnight">
+    <dbid>20852</dbid>
+    <displaynameid>302877</displaynameid>
+    <editornameid>302983</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>3.5000</maxvelocity>
+    <maxrunvelocity>5.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\natives\teutonic\teutonic_knight.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\natives\teutonic_knight_icon.png</icon>
+    <portraiticon>resources\art\units\natives\teutonic_knight.png</portraiticon>
+    <rollovertextid>302880</rollovertextid>
+    <shortrollovertextid>302880</shortrollovertextid>
+    <initialhitpoints>200.0000</initialhitpoints>
+    <maxhitpoints>200.0000</maxhitpoints>
+    <los>12.0000</los>
+    <unitaitype>HandCombative</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <populationcount>0</populationcount>
+    <bounty>11.0000</bounty>
+    <buildbounty>11.0000</buildbounty>
+    <cost resourcetype="Gold">45.0000</cost>
+    <cost resourcetype="Wood">70.0000</cost>
+    <allowedage>2</allowedage>
+    <armor type="Ranged" value="0.3000">
+    </armor>
+    <armor type="Hand" value="0.3000">
+    </armor>
+    <sharedselectionunittypes>
+      <unittype>zpNatTeutonicKnight</unittype>
+    </sharedselectionunittypes>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractHandInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractCrussaderKnight</unittype>
+    <unittype>MercType1</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>incarunner.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>10.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CoverBuildingAttack</name>
+      <damage>5.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CoverHandAttack</name>
+      <damage>9.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>DefendHandAttack</name>
+      <damage>18.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>18.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+  </unit>
+  <unit id="20853" name="zpHansaEmbassy">
+    <dbid>20853</dbid>
+    <displaynameid>302991</displaynameid>
+    <editornameid>302992</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\asian_civs\consulate\consulate_hansa.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\hansa_embassy_icon.png</icon>
+    <portraiticon>resources\art\buildings\hansa_embassy_portrait.png</portraiticon>
+    <rollovertextid>302993</rollovertextid>
+    <shortrollovertextid>302993</shortrollovertextid>
+    <initialhitpoints>3500.0000</initialhitpoints>
+    <maxhitpoints>3500.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>50.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>100.0000</bounty>
+    <buildbounty>50.0000</buildbounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>MilitaryBuilding</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>CountsTowardEconomyModeScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractFindBarracks</unittype>
+    <tech row="0" page="0" column="0">zpHansaTradeFood</tech>
+    <tech row="0" page="0" column="1">zpHansaTradeWood</tech>
+    <tech row="0" page="0" column="2">zpHansaTradeCoin</tech>
+    <tech row="0" page="0" column="3">zpHansaTradeInfluence</tech>
+    <train row="0" page="1" column="0">zpNatHanseaticLegion</train>
+    <train row="0" page="1" column="1">zpNatSettlerHansa</train>
+    <tech row="0" page="2" column="0">zpHansaColonisationFleet</tech>
+    <tech row="0" page="2" column="1">zpHansaBanking</tech>
+    <tech row="0" page="2" column="2">zpTeutonicArmySmall</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>InitialGarrisonOnly</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>EnterHotkeyContext</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="8">CancelAllQueued</command>
+  </unit>
+  <unit id="20854" name="zpHansaEmbassyWagon">
+    <dbid>20854</dbid>
+    <displaynameid>302994</displaynameid>
+    <editornameid>302995</editornameid>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>4.0000</maxvelocity>
+    <maxrunvelocity>6.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>5.0000</turnrate>
+    <animfile>units\trade\supply_cart\supply_cart_outpost.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\trade\outpost_wagon_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\trade\outpost_wagon_portrait.png</portraiticon>
+    <rollovertextid>302996</rollovertextid>
+    <shortrollovertextid>302996</shortrollovertextid>
+    <initialhitpoints>250.0000</initialhitpoints>
+    <maxhitpoints>250.0000</maxhitpoints>
+    <los>18.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>Civilian</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ValidIdleVillager</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractWagon</unittype>
+    <unittype>LogicalTypeEasySelectAvoid</unittype>
+    <unittype>CannotConvertHill</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <train row="0" page="0" column="0">zpHansaEmbassy</train>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>DeadReplacementWhenDestroyed</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <tactics>coveredwagon.tactics</tactics>
+    <protoaction>
+      <name>Build</name>
+      <rate type="zpHansaEmbassy">5.000000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20855" name="zpTradingPostCaptureNavalLone">
+    <dbid>20855</dbid>
+    <displaynameid>300030</displaynameid>
+    <editornameid>303005</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>buildings\market\city_market.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <autoconvertsoundset>TradeSiteEurope</autoconvertsoundset>
+    <icon>resources\art\buildings\asian_civs\dock\india_dock_icon.png</icon>
+    <minimapicon>ui\minimap\t</minimapicon>
+    <portraiticon>resources\art\buildings\tradeport_portrait.png</portraiticon>
+    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
+    <rollovertextid>302094</rollovertextid>
+    <shortrollovertextid>302094</shortrollovertextid>
+    <initialhitpoints>3000.0000</initialhitpoints>
+    <maxhitpoints>3000.0000</maxhitpoints>
+    <los>14.0000</los>
+    <buildpoints>90.0000</buildpoints>
+    <bounty>40.0000</bounty>
+    <buildbounty>20.0000</buildbounty>
+    <cost resourcetype="Food">0.0000</cost>
+    <cost resourcetype="Wood">250.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>1</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Socket</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>CannotConvertHill</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>VictoryPointBuilding</unittype>
+    <unittype>AbstractFort</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>AbstractTypeVictoryPointBuilding</unittype>
+    <unittype>AbstractTradingPost</unittype>
+    <unittype>CapturableTradingPost</unittype>
+    <tech row="0" page="1" column="0">ypTradeRouteUpgradeIndia2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeAll1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeAll2</tech>
+    <tech row="0" page="1" column="0">deTradeRouteUpgradeAmerica1</tech>
+    <tech row="0" page="1" column="0">deTradeRouteUpgradeAmerica2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeMaghreb1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeMaghreb2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeAfrica1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeAfrica2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeAfricaRailroad2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeWater1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeWater2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeRiver1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeRiver2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeEurope1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeEurope2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeRiverAll1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeRiverAll2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeEuropeAll1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeEuropeAll2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeWaterAll1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeWaterAll2</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>InitialGarrisonOnly</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>FlattenGround</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="2">SetGatherPointEconomy</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="1" column="2">FourOfAKind</command>
+    <tactics>yptradingpostcapture.tactics</tactics>
+  </unit>
+
+  <!--ELBE MAPMODS-->
+
 
 
 
@@ -64054,7 +64483,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\hanseatic\hansa_townhall.xml</animfile>
+    <animfile>buildings\native_settlement\jewish\house_jewish.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>
