@@ -28421,7 +28421,7 @@
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
     <effects>
-      <effect type="Data" amount="11.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="9.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatLandsknecht</target>
       </effect>
       <effect type="Data" amount="11.00" subtype="BuildLimit" relativity="Absolute">
@@ -28469,7 +28469,7 @@
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
     <effects>
-      <effect type="Data" amount="-11.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="-9.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatLandsknecht</target>
       </effect>
       <effect type="Data" amount="-11.00" subtype="BuildLimit" relativity="Absolute">

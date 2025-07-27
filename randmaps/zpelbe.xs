@@ -1548,6 +1548,12 @@ void main(void)
 			rmSetTriggerEffectParamInt("TrgPlayer",k);
 			rmSetTriggerEffectParam("UnitType","zpElectorCenter");
 			rmSetTriggerEffectParamInt("Dist",35);
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Elector"+s+"off_Player"+k));
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(true);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(false);
 
 			rmSwitchToTrigger(rmTriggerID("Elector"+s+"off Player"+k));
 			rmAddTriggerCondition("Units in Area");
@@ -1563,6 +1569,12 @@ void main(void)
 			rmSetTriggerEffectParamInt("TrgPlayer",0);
 			rmSetTriggerEffectParam("UnitType","zpElectorCenter");
 			rmSetTriggerEffectParamInt("Dist",35);
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Elector"+s+"on_Player"+k));
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(false);
 		}
 
 	}
