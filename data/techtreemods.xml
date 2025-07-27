@@ -30330,6 +30330,21 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpElbeSetup" type="Normal">
+    <dbid>41176</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpPrinceElectorNativeSetup</effect>
+      <effect type="TechStatus" status="active">deEUMapUpdateVisuals</effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpHanseaticChurch</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+    </effects>
+  </tech>
 
 
 

@@ -43,6 +43,8 @@
 		<unit variation="21" posx="10.2419" posz="-16.2511" orientx="1.0000" orienty="0.0000" orientz="-0.0001">deSPCCityStateWallConnectorProp</unit>
 		<unit variation="41" posx="12.3446" posz="-14.5655" orientx="-0.7071" orienty="0.0000" orientz="0.7071">deSPCCityStateWall3Prop</unit>
 		<unit variation="14" posx="-8.7851" posz="-10.5695" orientx="-0.0001" orienty="-0.0000" orientz="-1.0000">zpHanseaticChurch</unit>
+		<unit variation="14" posx="-10.7851" posz="-1.5695" orientx="-0.0001" orienty="-0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
+		<unit variation="14" posx="-10.7851" posz="+2.0695" orientx="-0.0001" orienty="-0.0000" orientz="-1.0000">zpNuggetInvisible</unit>
 		<unit variation="60" posx="-9.5779" posz="-14.8173" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpPropsFlowers</unit>
 		<unit variation="207" posx="-11.7222" posz="-15.3063" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpPropsFlowers</unit>
 		<unit variation="192" posx="-12.6649" posz="-15.3914" orientx="0.3827" orienty="0.0000" orientz="-0.9239">deNatEUPropVilMale</unit>
@@ -141,7 +143,7 @@
 		<unit variation="163" posx="-23.8280" posz="14.5901" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">zpBridgeFence</unit>
 		<unit variation="179" posx="-16.1127" posz="17.9324" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">zpSPROPBuildingMix</unit>
 		<unit variation="254" posx="-28.3451" posz="17.6375" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowers</unit>
-		<unit variation="6" posx="-28.0573" posz="18.6813" orientx="-1.0000" orienty="-0.0000" orientz="0.0004">zpHansaKontorFlag</unit>
+		<unit variation="6" posx="-28.0573" posz="18.6813" orientx="-1.0000" orienty="-0.0000" orientz="0.0004">zpCityStateFlag</unit>
 		<unit variation="105" posx="-10.9279" posz="16.4531" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">zpSPCMarketStall</unit>
 		<unit variation="96" posx="5.1320" posz="17.5945" orientx="-0.0000" orienty="0.0000" orientz="1.0000">zpSPCMarketStall</unit>
 		<unit variation="205" posx="-31.8411" posz="20.6273" orientx="1.0000" orienty="0.0000" orientz="-0.0005">zpHarbourPlatform</unit>
