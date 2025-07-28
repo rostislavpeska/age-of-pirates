@@ -671,12 +671,6 @@
     </commandpassesunitid>
     <associatedtech>zpRebuiltToTradeCog</associatedtech>
     <rollovertextid>302962</rollovertextid>
-    <disabledrollovertextid>125508</disabledrollovertextid>
-    <donotallowifunitdamaged>
-    </donotallowifunitdamaged>
-    <canqueue>
-    </canqueue>
-
   </protounitcommand>
   <protounitcommand>
     <name>zpTransformWarCog</name>
@@ -686,12 +680,6 @@
     </commandpassesunitid>
     <associatedtech>zpRebuiltToWarCog</associatedtech>
     <rollovertextid>302964</rollovertextid>
-    <disabledrollovertextid>125508</disabledrollovertextid>
-    <donotallowifunitdamaged>
-    </donotallowifunitdamaged>
-    <canqueue>
-    </canqueue>
-
   </protounitcommand>
 
 
