@@ -61448,7 +61448,6 @@
     <bounty>40.0000</bounty>
     <rechargetime>60.0000</rechargetime>
     <buildbounty>40.0000</buildbounty>
-    <cost resourcetype="Wood">500.0000</cost>
     <carrycapacity resourcetype="Food">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
     <allowedage>1</allowedage>
@@ -61461,6 +61460,7 @@
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
+    <transformcommand>zpTransformTradeCog</transformcommand>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSabotage</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
@@ -61592,6 +61592,7 @@
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
+    <transformcommand>zpTransformWarCog</transformcommand>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSabotage</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
