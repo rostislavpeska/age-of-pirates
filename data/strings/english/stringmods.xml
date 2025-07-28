@@ -3008,11 +3008,14 @@
       <string _locid="303009">Military Convoys</string>
       <string _locid="303010">All trade sockets can also deliver Prussian Needlegunners.</string>
       <string _locid="303011">Elbe</string>
-      <string _locid="303012">Elbe Description</string>
-      <string _locid="303013">Elbe Loading</string>
+      <string _locid="303012">Standard map which includes some historical maps aspects like city state settlements or capturable trade routes. \n\nSettlements: Hansa Kontor City States, Prince Electors, Hussites, Pirates</string>
+      <string _locid="303013">Elbe river flows from the Bohemian Valley to the Northern Sea. The river is a living trade artery of Central Europe. Hanseatic cities on the north provide you an access to either river and naval trade routes.</string>
       <string _locid="303014">Friendly Dock Trade</string>
       <string _locid="303015">Automatically travels between friendly docks and Hanseatic settlements to trade. Gathers slower if there are no docks to move between.</string>
-
+      <string _locid="303016">ZP SPC Brandenburg Tower</string>
+      <string _locid="303017">ZP Flag Brandenburg</string>
+      <string _locid="303018">Prince Elector: Brandenburg</string>
+      <string _locid="303019">ZP Socket Elector Brandenburg</string>
 
 
       <!-- ======================================== -->

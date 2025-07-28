@@ -118,8 +118,8 @@ void main(void)
 	// These are used to have objects and areas avoid each other
 	
 	// Map edge constraints
-	int playerEdgeConstraint=rmCreateBoxConstraint("player edge of map", rmXTilesToFraction(10), rmZTilesToFraction(10), 1.0-rmXTilesToFraction(10), 1.0-rmZTilesToFraction(10), 0.01);
-	int longPlayerEdgeConstraint=rmCreateBoxConstraint("long avoid edge of map", rmXTilesToFraction(20), rmZTilesToFraction(20), 1.0-rmXTilesToFraction(20), 1.0-rmZTilesToFraction(20), 0.01);
+	int playerEdgeConstraint=rmCreatePieConstraint("player edge of map", 0.5, 0.5, rmXFractionToMeters(0.0), rmXFractionToMeters(0.45), rmDegreesToRadians(0), rmDegreesToRadians(360));
+	int longPlayerEdgeConstraint=rmCreatePieConstraint("long avoid edge of map", 0.5, 0.5, rmXFractionToMeters(0.0), rmXFractionToMeters(0.42), rmDegreesToRadians(0), rmDegreesToRadians(360));
 	
 	int avoidWater5 = rmCreateTerrainDistanceConstraint("avoid water very short", "Land", false, 5.0);
     int avoidWater10 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 10.0);
@@ -766,11 +766,11 @@ void main(void)
 	rmSetAreaCliffPainting(northIslandVillage1, false, true, true, 1.5, true);
 	rmBuildArea(northIslandVillage1);
 
-	int electorCastleID = rmCreateGrouping("elector castle 1", "Elector_Bohemia_02");
+	int electorCastleID = rmCreateGrouping("elector castle 1", "Elector_Saxony_02");
 	rmPlaceGroupingAtLoc(electorCastleID, 0, rmXMetersToFraction(xsVectorGetX(electorControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(electorControllerLoc1)), 1);
 	rmPlaceObjectDefAtLoc(spawnerID1, 0, 0.25, 0.4);
 
-	int electorCastleID2 = rmCreateGrouping("elector castle 2", "Elector_Saxony_02");
+	int electorCastleID2 = rmCreateGrouping("elector castle 2", "Elector_Brandenburg_02");
 	rmPlaceGroupingAtLoc(electorCastleID2, 0, rmXMetersToFraction(xsVectorGetX(electorControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(electorControllerLoc2)), 1);
 	rmPlaceObjectDefAtLoc(spawnerID2, 0, 0.75, 0.4);
 
@@ -873,7 +873,7 @@ void main(void)
 	if (cNumberTeams == 2)
 		TCfloat = 20;
 	else 
-		TCfloat = 135;
+		TCfloat = 60;
 
 	int startingUnits = rmCreateStartingUnitsObjectDef(5.0);
 
@@ -918,6 +918,7 @@ void main(void)
 	rmAddObjectDefConstraint(TCID, playerEdgeConstraint);
 	rmAddObjectDefConstraint(TCID, avoidImpassableLand);
 	rmAddObjectDefConstraint(TCID, avoidSocketLong);
+	rmAddObjectDefConstraint(TCID, avoidWater10);
 
 	for(i=1; <cNumberPlayers) {
 
