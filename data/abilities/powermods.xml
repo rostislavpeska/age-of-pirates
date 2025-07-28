@@ -525,6 +525,13 @@
     <icon>resources\images\icons\abilities\crussader_zeal.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
+  <power name="zpPassiveFriendlyDock" type="UnitAction">
+    <displaynameid>303014</displaynameid>
+    <rolloverid>303015</rolloverid>
+    <icon>resources\images\icons\abilities\friendly_dock.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+
 
 
 

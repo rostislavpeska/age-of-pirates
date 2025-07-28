@@ -24,13 +24,22 @@
     <active>1</active>
   </action>
   <action>
-    <name stringid="69148">DelayedTransform</name>
-    <type>DelayedTransform</type>
-    <anim>Pickup</anim>
-    <modifyprotoid>zpHanseaticWarship</modifyprotoid>
+    <name stringid="103417">CogIdleMalus</name>
+    <type>AutoRangedModify</type>
+    <active>1</active>
+    <maxrange>1</maxrange>
+    <restricttoidleunits>1</restricttoidleunits>
+    <modifyself>1</modifyself>
+    <modifyselfonly>1</modifyselfonly>
+    <modifyabstracttype>zpSPCTradeUnit</modifyabstracttype>
+    <persistent>1</persistent>
+    <modifytype>AutoGatherRate</modifytype>
+    <modifymultiplier>0.20</modifymultiplier>
+    <modifybase>1.0</modifybase>
+    <nostack>1</nostack>
   </action>
-  <tactic>CogGold<action>AutoGatherGold</action><action>DelayedTransform</action></tactic>
-  <tactic>CogFood<action>AutoGatherFood</action><action>DelayedTransform</action></tactic>
-  <tactic>CogWood<action>AutoGatherWood</action><action>DelayedTransform</action></tactic>
-  <tactic>CogXP<action>AutoGatherXP</action><action>DelayedTransform</action></tactic>
+  <tactic>CogGold<action>AutoGatherGold</action><action>CogIdleMalus</action></tactic>
+  <tactic>CogFood<action>AutoGatherFood</action><action>CogIdleMalus</action></tactic>
+  <tactic>CogWood<action>AutoGatherWood</action><action>CogIdleMalus</action></tactic>
+  <tactic>CogXP<action>AutoGatherXP</action><action>CogIdleMalus</action></tactic>
 </tactics>

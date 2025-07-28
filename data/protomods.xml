@@ -61425,8 +61425,8 @@
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
-    <maxvelocity>8.5000</maxvelocity>
-    <maxrunvelocity>10.5000</maxrunvelocity>
+    <maxvelocity>9.5000</maxvelocity>
+    <maxrunvelocity>11.5000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>3.0000</turnrate>
     <animfile>units\naval\caravel_ship\hanseatic_caravel.xml</animfile>
@@ -61557,8 +61557,8 @@
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
-    <maxvelocity>8.5000</maxvelocity>
-    <maxrunvelocity>10.5000</maxrunvelocity>
+    <maxvelocity>9.5000</maxvelocity>
+    <maxrunvelocity>11.5000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>3.0000</turnrate>
     <animfile>units\naval\caravel_ship\hanseatic_tr_caravel.xml</animfile>

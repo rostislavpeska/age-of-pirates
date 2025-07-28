@@ -2929,10 +2929,10 @@
       <string _locid="302930">Ships a Teutonic Fort Wagon able to construct a Teutonic Fort.</string>
       <string _locid="302931">War Cog</string>
       <string _locid="302932">ZP SHP War Cog</string>
-      <string _locid="302933">Convertible trade / war ship, currently in war mode. More powerful than standard Caravel but can't transport units.</string>
+      <string _locid="302933">Convertible trade / war ship, currently in war mode. Faster than standard Caravel but can't transport units.</string>
       <string _locid="302934">Trade Cog</string>
       <string _locid="302935">ZP SHP Trade Cog</string>
-      <string _locid="302936">Convertible trade / war ship, currently in trade mode</string>
+      <string _locid="302936">Convertible trade / war ship, currently in trade mode. Faster than standard Caravel but can't transport units.</string>
       <string _locid="302937">ZP NAT House Hansa</string>
       <string _locid="302938">Kontor Trade</string>
       <string _locid="302939">Grants resources for future control of Trading Routes.\n • Trade Routes: Future income improved by +30%</string>
@@ -3010,7 +3010,9 @@
       <string _locid="303011">Elbe</string>
       <string _locid="303012">Elbe Description</string>
       <string _locid="303013">Elbe Loading</string>
-      <string _locid="303014">Unlocks more Hanseatic units and techs. \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Upgrades all trade routes to the maximum level</string>
+      <string _locid="303014">Friendly Dock Trade</string>
+      <string _locid="303015">Automatically travels between friendly docks and Hanseatic settlements to trade. Gathers slower if there are no docks to move between.</string>
+
 
 
       <!-- ======================================== -->
