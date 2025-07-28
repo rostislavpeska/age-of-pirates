@@ -1382,6 +1382,55 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 
+	// Italian Vilager Balance
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Italian Vilager Balance"+k);
+		rmAddTriggerCondition("ZP Player Civilization");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("Civilization","DEItalians");
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpItalianSettlerBallance");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmSetTriggerPriority(2);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(false);
+		rmSetTriggerLoop(false);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Italian Gondola Balance"+k);
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechDEHCGondolas");
+		rmSetTriggerConditionParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpItalianGondolaBallance");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmSetTriggerPriority(2);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(false);
+		rmSetTriggerLoop(false);
+	}
+
+	// Speed Always Wins Returner
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Cheat Returner"+k);
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamInt("Param1",10);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchIncrease");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmSetTriggerPriority(2);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(false);
+		rmSetTriggerLoop(false);
+	}
+
 	// Consulate - Tradingpost politician switcher
 
 	for (k=1; <= cNumberNonGaiaPlayers) {

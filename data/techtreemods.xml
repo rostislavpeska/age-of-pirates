@@ -22879,6 +22879,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaWestern</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffKingOfBohemia</effect>
     </effects>
@@ -27522,6 +27523,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaWestern</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffHussites</effect>
     </effects>
@@ -27936,6 +27938,7 @@
       <effect type="TechStatus" status="obtainable">zpConsulateElectorWettin</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateElectorHanover</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateElectorOldenburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaWestern</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
@@ -29902,6 +29905,7 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateElectorWettin</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateElectorHanover</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateElectorOldenburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateHansaWestern</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateHansaEast</effect>
