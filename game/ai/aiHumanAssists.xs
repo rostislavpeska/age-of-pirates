@@ -75,8 +75,8 @@ int createSimpleAssistUnitQuery(int unitTypeID = -1, int playerRelationOrID = cM
       }
       kbUnitQuerySetUnitType(unitQueryID, unitTypeID);
       kbUnitQuerySetState(unitQueryID, state);
-      kbUnitQuerySetPosition(unitQueryID, position);
-      kbUnitQuerySetMaximumDistance(unitQueryID, radius);
+      //kbUnitQuerySetPosition(unitQueryID, position);
+      //kbUnitQuerySetMaximumDistance(unitQueryID, radius);
       kbUnitQuerySetIgnoreKnockedOutUnits(unitQueryID, true);
    }
    else
@@ -90,7 +90,7 @@ int createSimpleAssistUnitQuery(int unitTypeID = -1, int playerRelationOrID = cM
 
 rule tradeCog
 inactive
-minInterval 10
+minInterval 2
 {
    aiChat(1, "tradeCogScript running");
 
@@ -99,22 +99,45 @@ minInterval 10
    int tradeCogQuery = -1;
    int dockQuery = -1;
    int dockCount = 0;
+   int newDockDestinationID = -1;
+   int dockResultRandInt = -1;
 
    if (tradeCogID < 0)
    {
-      tradeCogQuery = createSimpleAssistUnitQuery(cUnitTypezpHanseaticTradeship, cMyID);
+      tradeCogQuery = createSimpleAssistUnitQuery(cUnitTypezpHanseaticTradeship, cMyID, cUnitStateAlive);
+      kbUnitQueryExecute(tradeCogQuery);
       tradeCogID = kbUnitQueryGetResult(tradeCogQuery, 0);
+      aiChat(1, "tradeCogsFound: " + kbUnitCount(cMyID, cUnitTypezpHanseaticTradeship) + " CogID: " + tradeCogID);
    }
 
    vector cogLoc = kbUnitGetPosition(tradeCogID);
    vector dockLoc = kbUnitGetPosition(dockDestinationID);
 
-   if (assistDistance(cogLoc, dockLoc) < 20)
+   if (dockLoc == cInvalidVector || assistDistance(cogLoc, dockLoc) < 20)
    {
-      dockQuery = createSimpleAssistUnitQuery(cUnitTypeAbstractDock, cPlayerRelationAlly);
+      dockQuery = createSimpleAssistUnitQuery(cUnitTypeAbstractDock, cPlayerRelationAlly, cUnitStateAlive);
       dockCount = kbUnitQueryExecute(dockQuery);
 
-      dockDestinationID = kbUnitQueryGetResult(dockQuery, aiRandInt(dockCount));
+
+      dockResultRandInt = aiRandInt(dockCount);
+      newDockDestinationID = kbUnitQueryGetResult(dockQuery, dockResultRandInt);
+      if (newDockDestinationID != dockDestinationID)
+      {
+         dockDestinationID = newDockDestinationID;  
+      }
+      else if (dockResultRandInt > 0)
+      {
+         dockDestinationID = kbUnitQueryGetResult(dockQuery, dockResultRandInt - 1);
+      }
+
+
+      if (dockDestinationID > 0)
+         aiTaskUnitMove(tradeCogID, kbUnitGetPosition(dockDestinationID));
+
+      aiChat(1, "dockDestination: " + dockDestinationID);
+   }
+   else 
+   {
       aiTaskUnitMove(tradeCogID, kbUnitGetPosition(dockDestinationID));
    }
 }
