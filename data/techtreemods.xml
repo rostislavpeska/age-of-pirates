@@ -30484,7 +30484,7 @@
     </effects>
   </tech>
   <tech name="zpConsulatePiratesBeauregard" type="Normal">
-    <dbid>41181</dbid>
+    <dbid>41182</dbid>
     <displaynameid>303023</displaynameid>
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
@@ -30519,7 +30519,7 @@
     </effects>
   </tech>
   <tech name="zpNatRevenantUpgrade" type="Normal">
-    <dbid>41182</dbid>
+    <dbid>41183</dbid>
     <displaynameid>303025</displaynameid>
     <cost resourcetype="Wood">200.0000</cost>
     <cost resourcetype="Gold">400.0000</cost>
@@ -30568,7 +30568,7 @@
     </effects>
   </tech>
   <tech name="zpTurnConsulateOffPiratesBaltic" type="Normal">
-    <dbid>41183</dbid>
+    <dbid>41184</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
@@ -30657,7 +30657,7 @@
     </effects>
   </tech>
   <tech name="zpTrainRevenantSteamer1" type="Normal">
-    <dbid>41184</dbid>
+    <dbid>41185</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
@@ -30672,7 +30672,7 @@
     </effects>
   </tech>
   <tech name="zpTrainRevenantSteamer2" type="Normal">
-    <dbid>41185</dbid>
+    <dbid>41186</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
@@ -30687,7 +30687,7 @@
     </effects>
   </tech>
   <tech name="zpTrainPirateDestroyer1" type="Normal">
-    <dbid>41186</dbid>
+    <dbid>41187</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>
@@ -30702,7 +30702,7 @@
     </effects>
   </tech>
   <tech name="zpTrainPirateDestroyer2" type="Normal">
-    <dbid>41187</dbid>
+    <dbid>41188</dbid>
     <status>UNOBTAINABLE</status>
     <flag>YPInfiniteTech</flag>
     <flag>Shadow</flag>

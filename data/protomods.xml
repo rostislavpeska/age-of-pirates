@@ -62398,7 +62398,7 @@
     <flag>InvulnerableIfGaia</flag>
     <flag>NotSelectable</flag>
   </unit>
-  <unit id="20857" name="zpBohemianFlag">
+  <unit id="20857" name="zpBrandenburgFlag">
     <dbid>20857</dbid>
     <displaynameid>32671</displaynameid>
     <editornameid>303017</editornameid>
@@ -62476,8 +62476,8 @@
     <flag>EnterHotkeyContext</flag>
     <tactics>socketcapture.tactics</tactics>
   </unit>
-  <unit id="20359" name="zpSPCRevenantSteamer">
-    <dbid>20359</dbid>
+  <unit id="20859" name="zpSPCRevenantSteamer">
+    <dbid>20859</dbid>
     <displaynameid>303020</displaynameid>
     <editornameid>303021</editornameid>
     <obstructionradiusx>2.9900</obstructionradiusx>
@@ -62615,8 +62615,8 @@
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
-  <unit id="20360" name="zpSPCRevenantSteamerProxy">
-    <dbid>20360</dbid>
+  <unit id="20860" name="zpSPCRevenantSteamerProxy">
+    <dbid>20860</dbid>
     <displaynameid>303020</displaynameid>
     <subciv>NatPirates</subciv>
     <obstructionradiusx>0.0000</obstructionradiusx>
@@ -62690,8 +62690,8 @@
     <flag>UseSharedBuildLimit</flag>
     <flag>NotPlayerPlaceable</flag>
   </unit>
-  <unit id="20361" name="zpSPCPirateDestroyerProxy">
-    <dbid>20361</dbid>
+  <unit id="20861" name="zpSPCPirateDestroyerProxy">
+    <dbid>20861</dbid>
     <displaynameid>302607</displaynameid>
     <subciv>NatPirates</subciv>
     <obstructionradiusx>0.0000</obstructionradiusx>
