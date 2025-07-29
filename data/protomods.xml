@@ -18196,6 +18196,7 @@
     <unittype>Ship</unittype>
     <unittype>Transport</unittype>
     <unittype>AbstractLegendaryShip</unittype>
+    <train row="0" page="0" column="1">zpNatPirate</train>
     <flag>TieToWaterSurface</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>DontRotateObstruction</flag>
@@ -62868,6 +62869,32 @@
     <flag>FlattenGround</flag>
     <flag>EnterHotkeyContext</flag>
     <tactics>socketcapture.tactics</tactics>
+  </unit>
+  <unit id="20864" name="zpNatElectorPalaceF">
+    <dbid>20864</dbid>
+    <displaynameid>302731</displaynameid>
+    <editornameid>303031</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\medieval_palaces\medieval_palace_v5.xml</animfile>
+    <portraiticon>resources\art\units\natives\hussite_natives.png</portraiticon>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>RMCanRotate</flag>
   </unit>
   
 
