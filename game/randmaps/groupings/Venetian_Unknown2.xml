@@ -61,7 +61,7 @@
 		<unit variation="15" posx="-6.2342" posz="10.1896" orientx="0.0478" orienty="0.0000" orientz="-0.9989">deSPCTreeCypressProp</unit>
 		<unit variation="211" posx="4.6077" posz="9.7080" orientx="0.1055" orienty="0.0000" orientz="-0.9944">deSPCTreeCypressProp</unit>
 
-		<unit variation="37" posx="-7.6465" posz="-8.1570" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSocketVenetians</unit>
+		<unit variation="37" posx="-7.6465" posz="-8.1570" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSocketVenetianColony</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">

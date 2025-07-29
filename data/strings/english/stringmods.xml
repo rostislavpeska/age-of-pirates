@@ -3020,10 +3020,16 @@
       <string _locid="303021">ZP SPC Pirate Beauregard Steamer</string>
       <string _locid="303022">Steam Powered Pirate flagship for which the Civil War got never over.</string>
       <string _locid="303023">Captain Beauregard</string>
-      <string _locid="303024">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nCSS Revenant \n\nSteam powered pirate flagship. Can be upgraded to a Destroyer Class ship. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nIronblood Commission</string>
+      <string _locid="303024">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nCSS Revenant \n\nPirate steamship for which the Civil War got never over. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nIronblood Commission</string>
       <string _locid="303025">Ironblood Commission</string>
       <string _locid="303026">Upgrades CSS Revenant into a Destroyer Class ship which is more expensive but also way more powerful.</string>
-      
+      <string _locid="303027">Venetian Outpost</string>
+      <string _locid="303028">ZP Socket Venetian Colony</string>
+      <string _locid="303029">Kontor Outpost</string>
+      <string _locid="303030">ZP Socket Venetian Colony</string>
+
+
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

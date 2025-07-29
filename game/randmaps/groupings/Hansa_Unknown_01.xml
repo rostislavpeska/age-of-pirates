@@ -19,7 +19,6 @@
 		<unit variation="93" posx="-1.8873" posz="-10.5636" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpPropsColony</unit>
 		<unit variation="201" posx="5.6557" posz="-8.4760" orientx="-0.3827" orienty="0.0000" orientz="0.9239">deNatEUPropVilFemale</unit>
 		<unit variation="9" posx="-2.8512" posz="-9.3624" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeUnitVenetianFenceBrickB</unit>
-		<unit variation="37" posx="-7.9132" posz="-6.0420" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSocketHansaKontor</unit>
 		<unit variation="5" posx="4.6677" posz="-5.0720" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
 		<unit variation="5" posx="5.3952" posz="-5.2151" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
 		<unit variation="3" posx="-2.7132" posz="-8.4053" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
@@ -78,6 +77,8 @@
 		<unit variation="1" posx="-12.6335" posz="11.0741" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="0" posx="-12.2238" posz="9.5728" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="2" posx="-12.4278" posz="9.1459" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+
+		<unit variation="37" posx="-7.9132" posz="-6.0420" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSocketHansaColony</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
