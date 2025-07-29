@@ -1140,6 +1140,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -2243,6 +2247,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -2362,6 +2370,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <los>38.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
@@ -3380,6 +3392,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -3451,6 +3467,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -3522,6 +3542,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -18093,7 +18117,7 @@
       <damagebonus type="deMalteseGun">2.500000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="20409" name="zpMercWokouSteamer">
+  <unit id="20409" name="zpSPCPirateDestroyer">
     <dbid>20409</dbid>
     <displaynameid>302607</displaynameid>
     <editornameid>300864</editornameid>
@@ -18126,6 +18150,25 @@
     <cost resourcetype="Gold">700.0000</cost>
     <maxcontained>50</maxcontained>
     <allowedage>3</allowedage>
+    <sharedbuildlimitunit>zpSPCQueenAnne</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpSPCQueenAnne</unittype>
+      <unittype>zpSPCQueenAnneProxy</unittype>
+      <unittype>zpSPCBlackPearl</unittype>
+      <unittype>zpSPCBlackPearlProxy</unittype>
+      <unittype>zpSPCNeptuneGalley</unittype>
+      <unittype>zpSPCNeptuneGalleyProxy</unittype>
+      <unittype>zpSPCFlyingDutchman</unittype>
+      <unittype>zpSPCFlyingDutchmanProxy</unittype>
+      <unittype>zpSPCPirateSteamer</unittype>
+      <unittype>zpSPCPirateSteamerProxy</unittype>
+      <unittype>zpSPCPirateGalleass</unittype>
+      <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
+    </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.7500">
     </armor>
     <dodgechance>0.0000</dodgechance>
@@ -18168,6 +18211,7 @@
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
@@ -29646,6 +29690,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <train row="0" page="0" column="0">zpPetDolphin</train>
     <flag>TieToWaterSurface</flag>
@@ -29740,6 +29788,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -29940,6 +29992,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSabotage</unittype>
@@ -30058,6 +30114,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -30518,6 +30578,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSabotage</unittype>
@@ -30634,6 +30698,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -62407,6 +62475,295 @@
     <flag>FlattenGround</flag>
     <flag>EnterHotkeyContext</flag>
     <tactics>socketcapture.tactics</tactics>
+  </unit>
+  <unit id="20359" name="zpSPCRevenantSteamer">
+    <dbid>20359</dbid>
+    <displaynameid>303020</displaynameid>
+    <editornameid>303021</editornameid>
+    <obstructionradiusx>2.9900</obstructionradiusx>
+    <obstructionradiusz>2.9900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>8.5000</maxvelocity>
+    <maxrunvelocity>10.5000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <turnrate>1.0000</turnrate>
+    <animfile>units\naval\steamer\blackjacksteamer.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\units\naval\spc\piratesteamer_icon_ship.png</icon>
+    <portraiticon>resources\art\units\naval\spc\piratesteamer_portrait_ship.png</portraiticon>
+    <civflagoverride>objects\flags\pirates_con</civflagoverride>
+    <rollovertextid>303022</rollovertextid>
+    <shortrollovertextid>303022</shortrollovertextid>
+    <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
+    <initialhitpoints>2750.0000</initialhitpoints>
+    <maxhitpoints>2750.0000</maxhitpoints>
+    <los>40.0000</los>
+    <projectileprotounit>Cannonball</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>35.0000</trainpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>200.0000</bounty>
+    <buildbounty>200.0000</buildbounty>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Gold">650.0000</cost>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <maxcontained>50</maxcontained>
+    <allowedage>2</allowedage>
+    <armor type="Ranged" value="0.7500">
+    </armor>
+    <sharedbuildlimitunit>zpSPCQueenAnne</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpSPCQueenAnne</unittype>
+      <unittype>zpSPCQueenAnneProxy</unittype>
+      <unittype>zpSPCBlackPearl</unittype>
+      <unittype>zpSPCBlackPearlProxy</unittype>
+      <unittype>zpSPCNeptuneGalley</unittype>
+      <unittype>zpSPCNeptuneGalleyProxy</unittype>
+      <unittype>zpSPCFlyingDutchman</unittype>
+      <unittype>zpSPCFlyingDutchmanProxy</unittype>
+      <unittype>zpSPCPirateSteamer</unittype>
+      <unittype>zpSPCPirateSteamerProxy</unittype>
+      <unittype>zpSPCPirateGalleass</unittype>
+      <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
+    </sharedbuildlimitunittypes>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractLegendaryShip</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Transport</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>AbstractFishingBoat</unittype>
+    <unittype>AbstractCountAsGatherer</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractSiegeTrooper</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>UseSharedBuildLimit</unittype>
+    <train row="0" page="0" column="1">zpNatPirate</train>
+    <flag>TieToWaterSurface</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <contain>LogicalTypeGarrisonInShips</contain>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>frigate.tactics</tactics>
+    <protoaction>
+      <name>BroadsideAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>30.000000</maxrange>
+      <rof>0.050000</rof>
+      <damagecap>80.000000</damagecap>
+      <damagebonus type="Ship">2.000000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>90.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>30.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>180.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttackContained</name>
+      <damage>90.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>30.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>180.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+  </unit>
+  <unit id="20360" name="zpSPCRevenantSteamerProxy">
+    <dbid>20360</dbid>
+    <displaynameid>303020</displaynameid>
+    <subciv>NatPirates</subciv>
+    <obstructionradiusx>0.0000</obstructionradiusx>
+    <obstructionradiusz>0.0000</obstructionradiusz>
+    <movementtype>land</movementtype>
+    <animfile>effects\projectiles\musket_ball.xml</animfile>
+    <icon>resources\art\units\naval\spc\piratesteamer_icon_ship.png</icon>
+    <portraiticon>resources\art\units\naval\spc\piratesteamer_portrait_ship.png</portraiticon>
+    <rollovertextid>303022</rollovertextid>
+    <shortrollovertextid>303022</shortrollovertextid>
+    <initialhitpoints>900.0000</initialhitpoints>
+    <maxhitpoints>900.0000</maxhitpoints>
+    <trainpoints>40.0000</trainpoints>
+    <lifespan>0.3000</lifespan>
+    <buildbounty>200.0000</buildbounty>
+    <cost resourcetype="Gold">600.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <allowedage>2</allowedage>
+    <sharedbuildlimitunit>zpSPCQueenAnne</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpSPCQueenAnne</unittype>
+      <unittype>zpSPCQueenAnneProxy</unittype>
+      <unittype>zpSPCBlackPearl</unittype>
+      <unittype>zpSPCBlackPearlProxy</unittype>
+      <unittype>zpSPCNeptuneGalley</unittype>
+      <unittype>zpSPCNeptuneGalleyProxy</unittype>
+      <unittype>zpSPCFlyingDutchman</unittype>
+      <unittype>zpSPCFlyingDutchmanProxy</unittype>
+      <unittype>zpSPCPirateSteamer</unittype>
+      <unittype>zpSPCPirateSteamerProxy</unittype>
+      <unittype>zpSPCPirateGalleass</unittype>
+      <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
+    </sharedbuildlimitunittypes>
+    <armor type="Ranged" value="0.5000">
+    </armor>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>MercType5</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
+  </unit>
+  <unit id="20361" name="zpSPCPirateDestroyerProxy">
+    <dbid>20361</dbid>
+    <displaynameid>302607</displaynameid>
+    <subciv>NatPirates</subciv>
+    <obstructionradiusx>0.0000</obstructionradiusx>
+    <obstructionradiusz>0.0000</obstructionradiusz>
+    <movementtype>land</movementtype>
+    <animfile>effects\projectiles\musket_ball.xml</animfile>
+    <icon>resources\art\units\naval\spc\revenant_ship_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\revenant_ship.png</portraiticon>
+    <rollovertextid>302641</rollovertextid>
+    <shortrollovertextid>300222</shortrollovertextid>
+    <initialhitpoints>900.0000</initialhitpoints>
+    <maxhitpoints>900.0000</maxhitpoints>
+    <trainpoints>40.0000</trainpoints>
+    <lifespan>0.3000</lifespan>
+    <buildbounty>200.0000</buildbounty>
+    <cost resourcetype="Wood">600.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <allowedage>2</allowedage>
+    <sharedbuildlimitunit>zpSPCQueenAnne</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpSPCQueenAnne</unittype>
+      <unittype>zpSPCQueenAnneProxy</unittype>
+      <unittype>zpSPCBlackPearl</unittype>
+      <unittype>zpSPCBlackPearlProxy</unittype>
+      <unittype>zpSPCNeptuneGalley</unittype>
+      <unittype>zpSPCNeptuneGalleyProxy</unittype>
+      <unittype>zpSPCFlyingDutchman</unittype>
+      <unittype>zpSPCFlyingDutchmanProxy</unittype>
+      <unittype>zpSPCPirateSteamer</unittype>
+      <unittype>zpSPCPirateSteamerProxy</unittype>
+      <unittype>zpSPCPirateGalleass</unittype>
+      <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
+    </sharedbuildlimitunittypes>
+    <armor type="Ranged" value="0.5000">
+    </armor>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>MercType5</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
   </unit>
 
 

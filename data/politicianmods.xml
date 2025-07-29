@@ -157,6 +157,8 @@
   </zpconsulatehansacentral>
   <zpconsulatehansaeast portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/hansa_east.png">
   </zpconsulatehansaeast>
+  <zpconsulatepiratesbeauregard portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/beauregard.png">
+  </zpconsulatepiratesbeauregard>
   
   <zpconsulaterevjacobine portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_jacobine.png">
   </zpconsulaterevjacobine>
