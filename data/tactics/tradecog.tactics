@@ -38,8 +38,8 @@
     <modifybase>1.0</modifybase>
     <nostack>1</nostack>
   </action>
-  <tactic>CogGold<action>AutoGatherGold</action><action>CogIdleMalus</action></tactic>
-  <tactic>CogFood<action>AutoGatherFood</action><action>CogIdleMalus</action></tactic>
-  <tactic>CogWood<action>AutoGatherWood</action><action>CogIdleMalus</action></tactic>
-  <tactic>CogXP<action>AutoGatherXP</action><action>CogIdleMalus</action></tactic>
+  <tactic>CogGold<protounitcommand>zpTradeCogGold</protounitcommand><action>AutoGatherGold</action><action>CogIdleMalus</action></tactic>
+  <tactic>CogFood<protounitcommand>zpTradeCogFood</protounitcommand><action>AutoGatherFood</action><action>CogIdleMalus</action></tactic>
+  <tactic>CogWood<protounitcommand>zpTradeCogWood</protounitcommand><action>AutoGatherWood</action><action>CogIdleMalus</action></tactic>
+  <tactic>CogXP<protounitcommand>zpTradeCogXP</protounitcommand><action>AutoGatherXP</action><action>CogIdleMalus</action></tactic>
 </tactics>

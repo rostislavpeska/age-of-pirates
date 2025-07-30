@@ -61704,6 +61704,10 @@
     <flag>Tracked</flag>
     <flag>NonSolid</flag>
     <flag>UseSharedBuildLimit</flag>
+    <command page="0" column="3">zpTradeCogGold</command>
+    <command page="0" column="1">zpTradeCogFood</command>
+    <command page="0" column="2">zpTradeCogWood</command>
+    <command page="0" column="4">zpTradeCogXP</command>
     <command page="1" column="0">zpTransformWarCog</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
