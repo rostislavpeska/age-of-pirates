@@ -5,6 +5,7 @@
 	<definebone>bone_smoke</definebone>
 	<definebone>bone_fire</definebone>
 	<definebone>bone_smoke00</definebone>
+	<definebone>bone_chimney</definebone>
 	<attachment>smoke
         <component>factory_smoke
             <logic type="Destruction">
@@ -13,7 +14,7 @@
                 </p0>
                 <p99>
                     <assetreference type="popcornFx">
-                        <file>smoke\factory_smoke_a.pkfx</file>
+                        <file>smoke\chimney_smoke.pkfx</file>
                     </assetreference>
                 </p99>
             </logic>
@@ -85,7 +86,7 @@
 					<assetreference type="GrannyModel">
 					<file>buildings\native_settlement\jewish\jewish_blacksmith</file>
 				</assetreference>
-				<attach a="smoke" frombone="bone_smoke00" tobone="bone_smoke" syncanims="0"></attach>
+				<attach a="smoke" frombone="bone_chimney" tobone="bone_smoke" syncanims="0"></attach>
 				<decal>
 					<effecttype>default</effecttype>
 					<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>

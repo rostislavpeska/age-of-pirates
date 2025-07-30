@@ -134,6 +134,7 @@
         <modifyabstracttype>AbstractWarShip</modifyabstracttype>
         <persistent>1</persistent>
         <modifyself>1</modifyself>
+        <modifyselfonly>1</modifyselfonly>
         <modifybase>1.0</modifybase>
         <modifytype>Damage</modifytype>
         <modifymultiplier>1.40</modifymultiplier>
@@ -164,6 +165,19 @@
         <modelattachment>effects\ypack_auras\econpower.xml</modelattachment>
         <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
     </action>
+    <!--<action>
+        <name stringid="112435">ExtraSpeedSubmarine</name>
+        <type>AutoRangedModify</type>
+        <activeifcontainsunits>1</activeifcontainsunits>
+        <maxrange>1</maxrange>
+        <modifyabstracttype>AbstractWarShip</modifyabstracttype>
+        <persistent>1</persistent>
+        <modifyself>1</modifyself>
+        <modifyselfonly>1</modifyselfonly>
+        <modifybase>1.0</modifybase>
+        <modifytype>Speed</modifytype>
+        <modifymultiplier>1.30</modifymultiplier>
+    </action>-->
 
 
     <!--TACTICS-->
@@ -177,6 +191,7 @@
         <action>Discover</action>
         <action>BoatManager</action>
         <action>ExtraHPDiverLong</action>
+        <action>ExtraSpeedSubmarine</action>
         <transition>
             <tactic>zpStealth</tactic>
             <length>2</length>
@@ -221,6 +236,7 @@
         <action priority="2">ShuntAttack</action>
         <action>Discover</action>
         <action>ExtraHPDiverLong</action>
+        <action>ExtraSpeedSubmarine</action>
         <transition>
             <tactic>zpStealth</tactic>
             <length>0.3</length>
@@ -267,6 +283,7 @@
         <action priority="2">ShuntAttack</action>
         <action>Discover</action>
         <action>ExtraHPDiverLong</action>
+        <action>ExtraSpeedSubmarine</action>
         <transition>
             <tactic>zpStealth</tactic>
             <length>0.3</length>
@@ -315,6 +332,7 @@
         <action>Discover</action>
         <action>Stealth</action>
         <action>ExtraHPDiverLong</action>
+        <action>ExtraSpeedSubmarine</action>
         <checkifcanstealth range="25.0">1</checkifcanstealth>
         <transition>
             <tactic>zpDive</tactic>

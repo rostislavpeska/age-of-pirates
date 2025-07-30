@@ -44458,6 +44458,7 @@
     <flag>DecalStickToWaterSurface</flag>
     <flag>TieToWaterSurface</flag>
     <flag>Tracked</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="2">SetGatherPointEconomy</command>
     <command page="10" column="8">CancelAllQueued</command>
@@ -61623,8 +61624,8 @@
     <dbid>20846</dbid>
     <displaynameid>302934</displaynameid>
     <editornameid>302935</editornameid>
-    <obstructionradiusx>2.9900</obstructionradiusx>
-    <obstructionradiusz>2.9900</obstructionradiusz>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
     <maxvelocity>9.5000</maxvelocity>
     <maxrunvelocity>11.5000</maxrunvelocity>
@@ -61699,7 +61700,9 @@
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
     <flag>NavalUnit</flag>
+    <flag>DoNotDragSelectWithUnits</flag>
     <flag>Tracked</flag>
+    <flag>NonSolid</flag>
     <flag>UseSharedBuildLimit</flag>
     <command page="1" column="0">zpTransformWarCog</command>
     <command page="10" column="1">Stop</command>
@@ -62348,6 +62351,7 @@
     <flag>FlattenGround</flag>
     <flag>PaintTextureWhenPlacing</flag>
     <flag>Tracked</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="2">SetGatherPointEconomy</command>
     <command page="10" column="8">CancelAllQueued</command>
