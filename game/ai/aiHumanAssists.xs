@@ -57,7 +57,7 @@ int createSimpleAssistUnitQuery(int unitTypeID = -1, int playerRelationOrID = cM
    // If we don't have the query yet, create one.
    if (unitQueryID < 0)
    {
-      unitQueryID = kbUnitQueryCreate("miscSimpleUnitQuery");
+      unitQueryID = kbUnitQueryCreate("miscSimpleUnitQuery Unit Type: " + unitTypeID);
    }
 
    // Define a query to get all matching units
@@ -88,57 +88,62 @@ int createSimpleAssistUnitQuery(int unitTypeID = -1, int playerRelationOrID = cM
    return (unitQueryID);
 }
 
-rule tradeCog
-inactive
-minInterval 2
+vector getNewDockLoc(vector cogLoc = cInvalidVector)
 {
-   aiChat(1, "tradeCogScript running");
+   if (cogLoc == cInvalidVector) return cInvalidVector;
 
-   static int dockDestinationID = -1;
-   static int tradeCogID = -1;
-   int tradeCogQuery = -1;
+   vector dockLoc = cInvalidVector;
    int dockQuery = -1;
    int dockCount = 0;
    int newDockDestinationID = -1;
    int dockResultRandInt = -1;
+   
+   dockQuery = createSimpleAssistUnitQuery(cUnitTypeAbstractDock, cPlayerRelationAlly, cUnitStateAlive);
+   dockCount = kbUnitQueryExecute(dockQuery);
 
-   if (tradeCogID < 0)
+   dockResultRandInt = aiRandInt(dockCount);
+   newDockDestinationID = kbUnitQueryGetResult(dockQuery, dockResultRandInt);
+   if (assistDistance(kbUnitGetPosition(newDockDestinationID), cogLoc) > 20)
    {
-      tradeCogQuery = createSimpleAssistUnitQuery(cUnitTypezpHanseaticTradeship, cMyID, cUnitStateAlive);
-      kbUnitQueryExecute(tradeCogQuery);
-      tradeCogID = kbUnitQueryGetResult(tradeCogQuery, 0);
+      dockLoc = kbUnitGetPosition(newDockDestinationID);  
+   }
+   else if (dockResultRandInt > 0)
+   {
+      dockLoc = kbUnitGetPosition(kbUnitQueryGetResult(dockQuery, dockResultRandInt - 1));
+   }
+
+   aiChat(1, "newDockDestinationID: " + newDockDestinationID);
+
+   return dockLoc;
+}
+
+rule tradeCog
+inactive
+minInterval 2
+{
+   int tradeCogID = -1;
+   int tradeCogQuery = -1;
+   int cogNum = -1;
+   vector cogLoc = cInvalidVector;
+   vector newDockLoc = cInvalidVector;
+
+   tradeCogQuery = createSimpleAssistUnitQuery(cUnitTypezpHanseaticTradeship, cMyID, cUnitStateAlive);
+   cogNum = kbUnitQueryExecute(tradeCogQuery);
+
+   for(i = 0; < cogNum)
+   {
+      tradeCogID = kbUnitQueryGetResult(tradeCogQuery, i);
       aiChat(1, "tradeCogsFound: " + kbUnitCount(cMyID, cUnitTypezpHanseaticTradeship) + " CogID: " + tradeCogID);
-   }
-
-   vector cogLoc = kbUnitGetPosition(tradeCogID);
-   vector dockLoc = kbUnitGetPosition(dockDestinationID);
-
-   if (dockLoc == cInvalidVector || assistDistance(cogLoc, dockLoc) < 20)
-   {
-      dockQuery = createSimpleAssistUnitQuery(cUnitTypeAbstractDock, cPlayerRelationAlly, cUnitStateAlive);
-      dockCount = kbUnitQueryExecute(dockQuery);
-
-
-      dockResultRandInt = aiRandInt(dockCount);
-      newDockDestinationID = kbUnitQueryGetResult(dockQuery, dockResultRandInt);
-      if (newDockDestinationID != dockDestinationID)
+      if (kbUnitGetActionType(tradeCogID) == cActionTypeIdle)
       {
-         dockDestinationID = newDockDestinationID;  
+         cogLoc = kbUnitGetPosition(tradeCogID);
+         newDockLoc = getNewDockLoc(cogLoc);
+
+         if (newDockLoc != cInvalidVector)
+         {
+            aiTaskUnitMove(tradeCogID, newDockLoc);
+         }
       }
-      else if (dockResultRandInt > 0)
-      {
-         dockDestinationID = kbUnitQueryGetResult(dockQuery, dockResultRandInt - 1);
-      }
-
-
-      if (dockDestinationID > 0)
-         aiTaskUnitMove(tradeCogID, kbUnitGetPosition(dockDestinationID));
-
-      aiChat(1, "dockDestination: " + dockDestinationID);
-   }
-   else 
-   {
-      aiTaskUnitMove(tradeCogID, kbUnitGetPosition(dockDestinationID));
    }
 }
 
