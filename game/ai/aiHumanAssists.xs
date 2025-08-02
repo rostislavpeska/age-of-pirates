@@ -98,7 +98,7 @@ vector getNewDockLoc(vector cogLoc = cInvalidVector)
    int newDockDestinationID = -1;
    int dockResultRandInt = -1;
    
-   dockQuery = createSimpleAssistUnitQuery(cUnitTypeAbstractDock, cPlayerRelationAlly, cUnitStateAlive);
+   dockQuery = createSimpleAssistUnitQuery(cUnitTypeHansaTradePoint, cPlayerRelationAlly, cUnitStateAlive);
    dockCount = kbUnitQueryExecute(dockQuery);
 
    dockResultRandInt = aiRandInt(dockCount);
@@ -112,7 +112,7 @@ vector getNewDockLoc(vector cogLoc = cInvalidVector)
       dockLoc = kbUnitGetPosition(kbUnitQueryGetResult(dockQuery, dockResultRandInt - 1));
    }
 
-   aiChat(1, "newDockDestinationID: " + newDockDestinationID);
+   //aiChat(1, "newDockDestinationID: " + newDockDestinationID);
 
    return dockLoc;
 }
