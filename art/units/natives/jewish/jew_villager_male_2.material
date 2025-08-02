@@ -3,16 +3,12 @@
     <materialdef name="default">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="units\natives\jewish\textures\jew_villager_male_2_mata_basecolor">
+      <texture name="BaseColor" override="homecity\homecity_units\textures\jewish_preacher_mata_BaseColor">
       </texture>
-      <texture name="Normals" override="units\villagers\med_villager_male_2\textures\med_villager_male_2_mata_normals">
+      <texture name="Normals" override="homecity\homecity_units\textures\jewish_preacher_mata_Normals">
       </texture>
-      <texture name="Masks" override="units\villagers\med_villager_male_2\textures\med_villager_male_2_mata_masks">
+      <texture name="Masks" override="homecity\homecity_units\middle_class_preacher\textures\middle_class_preacher_mata_Masks">
       </texture>
-      <texture name="Details" override="units\natives\jewish\textures\jew_villager_male_2_mata_details">
-      </texture>
-      <float name="AO Intensity" override="0.0000">
-      </float>
     </parameters>
   </submaterial>
 </material>

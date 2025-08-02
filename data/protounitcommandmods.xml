@@ -681,6 +681,42 @@
     <associatedtech>zpRebuiltToWarCog</associatedtech>
     <rollovertextid>302964</rollovertextid>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpTradeCogGold</name>
+    <icon>resources\images\icons\techs\asians\shrine_coin.png</icon>
+    <activeicon>resources\images\icons\techs\asians\shrine_coin_on.png</activeicon>
+    <disabledicon>resources\images\icons\techs\asians\shrine_coin.png</disabledicon>
+    <rollovertextid>302967</rollovertextid>
+    <activerollovertextid>302967</activerollovertextid>
+    <command>unitSetTactic("CogGold")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTradeCogFood</name>
+    <icon>resources\images\icons\techs\asians\shrine_food.png</icon>
+    <activeicon>resources\images\icons\techs\asians\shrine_food_on.png</activeicon>
+    <disabledicon>resources\images\icons\techs\asians\shrine_food.png</disabledicon>
+    <rollovertextid>302965</rollovertextid>
+    <activerollovertextid>302965</activerollovertextid>
+    <command>unitSetTactic("CogFood")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTradeCogWood</name>
+    <icon>resources\images\icons\techs\asians\shrine_wood.png</icon>
+    <activeicon>resources\images\icons\techs\asians\shrine_wood_on.png</activeicon>
+    <disabledicon>resources\images\icons\techs\asians\shrine_wood.png</disabledicon>
+    <rollovertextid>302966</rollovertextid>
+    <activerollovertextid>302966</activerollovertextid>
+    <command>unitSetTactic("CogWood")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTradeCogXP</name>
+    <icon>resources\images\icons\techs\asians\shrine_xp.png</icon>
+    <activeicon>resources\images\icons\techs\asians\shrine_xp_on.png</activeicon>
+    <disabledicon>resources\images\icons\techs\asians\shrine_xp.png</disabledicon>
+    <rollovertextid>302968</rollovertextid>
+    <activerollovertextid>302968</activerollovertextid>
+    <command>unitSetTactic("CogXP")</command>
+  </protounitcommand>
 
 
   <!--

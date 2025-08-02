@@ -190,6 +190,22 @@
     <persistent>0</persistent>
     <singleuse>1</singleuse>
   </action>
+  <action>
+    <name stringid="69776">SpawnRevenantDestroyer</name>
+    <type>Spawn</type>
+    <rate type="zpSPCPirateDestroyer">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
+  <action>
+    <name stringid="69776">SpawnRevenantSteamer</name>
+    <type>Spawn</type>
+    <rate type="zpSPCRevenantSteamer">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
   <tactic>Normal
     <action>Heal</action>
     <action>SpawnPrivateer</action>
@@ -209,5 +225,7 @@
     <action>SpawnNautilusSPC</action>
     <action>SpawnHansaFluyt</action>
     <action>SpawnHansaCog</action>
+    <action>SpawnRevenantDestroyer</action>
+    <action>SpawnRevenantSteamer</action>
   </tactic>
 </tactics>

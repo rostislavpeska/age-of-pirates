@@ -1140,6 +1140,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -2243,6 +2247,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -2362,6 +2370,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <los>38.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
@@ -3380,6 +3392,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -3451,6 +3467,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -3522,6 +3542,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -18093,7 +18117,7 @@
       <damagebonus type="deMalteseGun">2.500000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="20409" name="zpMercWokouSteamer">
+  <unit id="20409" name="zpSPCPirateDestroyer">
     <dbid>20409</dbid>
     <displaynameid>302607</displaynameid>
     <editornameid>300864</editornameid>
@@ -18126,6 +18150,25 @@
     <cost resourcetype="Gold">700.0000</cost>
     <maxcontained>50</maxcontained>
     <allowedage>3</allowedage>
+    <sharedbuildlimitunit>zpSPCQueenAnne</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpSPCQueenAnne</unittype>
+      <unittype>zpSPCQueenAnneProxy</unittype>
+      <unittype>zpSPCBlackPearl</unittype>
+      <unittype>zpSPCBlackPearlProxy</unittype>
+      <unittype>zpSPCNeptuneGalley</unittype>
+      <unittype>zpSPCNeptuneGalleyProxy</unittype>
+      <unittype>zpSPCFlyingDutchman</unittype>
+      <unittype>zpSPCFlyingDutchmanProxy</unittype>
+      <unittype>zpSPCPirateSteamer</unittype>
+      <unittype>zpSPCPirateSteamerProxy</unittype>
+      <unittype>zpSPCPirateGalleass</unittype>
+      <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
+    </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.7500">
     </armor>
     <dodgechance>0.0000</dodgechance>
@@ -18153,6 +18196,7 @@
     <unittype>Ship</unittype>
     <unittype>Transport</unittype>
     <unittype>AbstractLegendaryShip</unittype>
+    <train row="0" page="0" column="1">zpNatPirate</train>
     <flag>TieToWaterSurface</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>DontRotateObstruction</flag>
@@ -18168,6 +18212,7 @@
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
     <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
     <contain>LogicalTypeGarrisonInShips</contain>
     <command page="10" column="5">Eject</command>
     <command page="10" column="1">Stop</command>
@@ -29646,6 +29691,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <train row="0" page="0" column="0">zpPetDolphin</train>
     <flag>TieToWaterSurface</flag>
@@ -29740,6 +29789,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -29940,6 +29993,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSabotage</unittype>
@@ -30058,6 +30115,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -30518,6 +30579,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSabotage</unittype>
@@ -30634,6 +30699,10 @@
       <unittype>zpSPCPirateSteamerProxy</unittype>
       <unittype>zpSPCPirateGalleass</unittype>
       <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
@@ -44389,6 +44458,7 @@
     <flag>DecalStickToWaterSurface</flag>
     <flag>TieToWaterSurface</flag>
     <flag>Tracked</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="2">SetGatherPointEconomy</command>
     <command page="10" column="8">CancelAllQueued</command>
@@ -61425,8 +61495,8 @@
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
-    <maxvelocity>8.5000</maxvelocity>
-    <maxrunvelocity>10.5000</maxrunvelocity>
+    <maxvelocity>9.5000</maxvelocity>
+    <maxrunvelocity>11.5000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>3.0000</turnrate>
     <animfile>units\naval\caravel_ship\hanseatic_caravel.xml</animfile>
@@ -61448,7 +61518,6 @@
     <bounty>40.0000</bounty>
     <rechargetime>60.0000</rechargetime>
     <buildbounty>40.0000</buildbounty>
-    <cost resourcetype="Wood">500.0000</cost>
     <carrycapacity resourcetype="Food">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
     <allowedage>1</allowedage>
@@ -61461,6 +61530,7 @@
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
+    <transformcommand>zpTransformTradeCog</transformcommand>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSabotage</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
@@ -61554,11 +61624,11 @@
     <dbid>20846</dbid>
     <displaynameid>302934</displaynameid>
     <editornameid>302935</editornameid>
-    <obstructionradiusx>2.9900</obstructionradiusx>
-    <obstructionradiusz>2.9900</obstructionradiusz>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
-    <maxvelocity>8.5000</maxvelocity>
-    <maxrunvelocity>10.5000</maxrunvelocity>
+    <maxvelocity>9.5000</maxvelocity>
+    <maxrunvelocity>11.5000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>3.0000</turnrate>
     <animfile>units\naval\caravel_ship\hanseatic_tr_caravel.xml</animfile>
@@ -61592,6 +61662,7 @@
     </sharedbuildlimitunittypes>
     <armor type="Ranged" value="0.5000">
     </armor>
+    <transformcommand>zpTransformWarCog</transformcommand>
     <unittype>LogicalTypeNavalMilitary</unittype>
     <unittype>LogicalTypeValidSabotage</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
@@ -61629,8 +61700,14 @@
     <flag>ObscuresUnits</flag>
     <flag>ForceBuildingData</flag>
     <flag>NavalUnit</flag>
+    <flag>DoNotDragSelectWithUnits</flag>
     <flag>Tracked</flag>
+    <flag>NonSolid</flag>
     <flag>UseSharedBuildLimit</flag>
+    <command page="0" column="3">zpTradeCogGold</command>
+    <command page="0" column="1">zpTradeCogFood</command>
+    <command page="0" column="2">zpTradeCogWood</command>
+    <command page="0" column="4">zpTradeCogXP</command>
     <command page="1" column="0">zpTransformWarCog</command>
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
@@ -61823,7 +61900,7 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-   <unit id="20850" name="zpSocketHansaKontor">
+  <unit id="20850" name="zpSocketHansaKontor">
     <dbid>20850</dbid>
     <displaynameid>302860</displaynameid>
     <editornameid>302950</editornameid>
@@ -62185,8 +62262,8 @@
     <dbid>20855</dbid>
     <displaynameid>300030</displaynameid>
     <editornameid>303005</editornameid>
-    <obstructionradiusx>0.0001</obstructionradiusx>
-    <obstructionradiusz>0.0001</obstructionradiusz>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>air</movementtype>
     <animfile>buildings\market\city_market.xml</animfile>
@@ -62278,14 +62355,557 @@
     <flag>FlattenGround</flag>
     <flag>PaintTextureWhenPlacing</flag>
     <flag>Tracked</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="2">SetGatherPointEconomy</command>
     <command page="10" column="8">CancelAllQueued</command>
     <command page="1" column="2">FourOfAKind</command>
     <tactics>yptradingpostcapture.tactics</tactics>
   </unit>
+  <unit id="20856" name="zpNativeTowerBrandenburg">
+    <dbid>20856</dbid>
+    <displaynameid>300730</displaynameid>
+    <editornameid>303016</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <civflagoverride>objects\flags\brandenburg</civflagoverride>
+    <animfile>buildings\native_settlement\venetian_buildings3.xml</animfile>
+    <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>BuildingClass</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <flag>ObscuresUnits</flag>
+    <flag>NoHPBar</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoUnitAI</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>NotDeleteable</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>FlattenGround</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NotSelectable</flag>
+  </unit>
+  <unit id="20857" name="zpBrandenburgFlag">
+    <dbid>20857</dbid>
+    <displaynameid>32671</displaynameid>
+    <editornameid>303017</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <civflagoverride>objects\flags\brandenburg</civflagoverride>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotSearchable</flag>
+    <flag>VariationLocked</flag>
+  </unit>
+  <unit id="20858" name="zpSocketElectorBrandenburg">
+    <dbid>20858</dbid>
+    <displaynameid>303018</displaynameid>
+    <editornameid>303019</editornameid>
+    <subciv>zpPrinceElector</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>1.0286</socketbuildrate>
+    <socketbuildcommandid>deSocketBuildEuropean</socketbuildcommandid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+    <animfile>buildings\trading_post\europe_outpost_socket_v1.xml</animfile>
+    <minimapicon>ui\minimap\royal_house</minimapicon>
+    <capturedminimapicon>ui\minimap\royal_house_c</capturedminimapicon>
+    <portraiticon>resources\art\units\natives\brandenburg_kingdom.png</portraiticon>
+    <rollovertextid>122400</rollovertextid>
+    <shortrollovertextid>61104</shortrollovertextid>
+    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+    <los>9.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>CapturableSocket</unittype>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>NativePreview</flag>
+    <flag>NotDeleteable</flag>
+    <flag>SocketSubCivAlliance</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>FlattenGround</flag>
+    <flag>EnterHotkeyContext</flag>
+    <tactics>socketcapture.tactics</tactics>
+  </unit>
+  <unit id="20859" name="zpSPCRevenantSteamer">
+    <dbid>20859</dbid>
+    <displaynameid>303020</displaynameid>
+    <editornameid>303021</editornameid>
+    <obstructionradiusx>2.9900</obstructionradiusx>
+    <obstructionradiusz>2.9900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>8.5000</maxvelocity>
+    <maxrunvelocity>10.5000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <turnrate>1.0000</turnrate>
+    <animfile>units\naval\steamer\blackjacksteamer.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\units\naval\spc\piratesteamer_icon_ship.png</icon>
+    <portraiticon>resources\art\units\naval\spc\piratesteamer_portrait_ship.png</portraiticon>
+    <civflagoverride>objects\flags\pirates_con</civflagoverride>
+    <rollovertextid>303022</rollovertextid>
+    <shortrollovertextid>303022</shortrollovertextid>
+    <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
+    <initialhitpoints>2750.0000</initialhitpoints>
+    <maxhitpoints>2750.0000</maxhitpoints>
+    <los>40.0000</los>
+    <projectileprotounit>Cannonball</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>35.0000</trainpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>200.0000</bounty>
+    <buildbounty>200.0000</buildbounty>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Gold">650.0000</cost>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <maxcontained>50</maxcontained>
+    <allowedage>2</allowedage>
+    <armor type="Ranged" value="0.7500">
+    </armor>
+    <sharedbuildlimitunit>zpSPCQueenAnne</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpSPCQueenAnne</unittype>
+      <unittype>zpSPCQueenAnneProxy</unittype>
+      <unittype>zpSPCBlackPearl</unittype>
+      <unittype>zpSPCBlackPearlProxy</unittype>
+      <unittype>zpSPCNeptuneGalley</unittype>
+      <unittype>zpSPCNeptuneGalleyProxy</unittype>
+      <unittype>zpSPCFlyingDutchman</unittype>
+      <unittype>zpSPCFlyingDutchmanProxy</unittype>
+      <unittype>zpSPCPirateSteamer</unittype>
+      <unittype>zpSPCPirateSteamerProxy</unittype>
+      <unittype>zpSPCPirateGalleass</unittype>
+      <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
+    </sharedbuildlimitunittypes>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractLegendaryShip</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Transport</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>AbstractFishingBoat</unittype>
+    <unittype>AbstractCountAsGatherer</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractSiegeTrooper</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>UseSharedBuildLimit</unittype>
+    <train row="0" page="0" column="1">zpNatPirate</train>
+    <flag>TieToWaterSurface</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <contain>LogicalTypeGarrisonInShips</contain>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>frigate.tactics</tactics>
+    <protoaction>
+      <name>BroadsideAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>30.000000</maxrange>
+      <rof>0.050000</rof>
+      <damagecap>80.000000</damagecap>
+      <damagebonus type="Ship">2.000000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>90.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>30.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>180.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttackContained</name>
+      <damage>90.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>30.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>180.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+  </unit>
+  <unit id="20860" name="zpSPCRevenantSteamerProxy">
+    <dbid>20860</dbid>
+    <displaynameid>303020</displaynameid>
+    <subciv>NatPirates</subciv>
+    <obstructionradiusx>0.0000</obstructionradiusx>
+    <obstructionradiusz>0.0000</obstructionradiusz>
+    <movementtype>land</movementtype>
+    <animfile>effects\projectiles\musket_ball.xml</animfile>
+    <icon>resources\art\units\naval\spc\piratesteamer_icon_ship.png</icon>
+    <portraiticon>resources\art\units\naval\spc\piratesteamer_portrait_ship.png</portraiticon>
+    <rollovertextid>303022</rollovertextid>
+    <shortrollovertextid>303022</shortrollovertextid>
+    <initialhitpoints>900.0000</initialhitpoints>
+    <maxhitpoints>900.0000</maxhitpoints>
+    <trainpoints>40.0000</trainpoints>
+    <lifespan>0.3000</lifespan>
+    <buildbounty>200.0000</buildbounty>
+    <cost resourcetype="Gold">600.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <allowedage>2</allowedage>
+    <sharedbuildlimitunit>zpSPCQueenAnne</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpSPCQueenAnne</unittype>
+      <unittype>zpSPCQueenAnneProxy</unittype>
+      <unittype>zpSPCBlackPearl</unittype>
+      <unittype>zpSPCBlackPearlProxy</unittype>
+      <unittype>zpSPCNeptuneGalley</unittype>
+      <unittype>zpSPCNeptuneGalleyProxy</unittype>
+      <unittype>zpSPCFlyingDutchman</unittype>
+      <unittype>zpSPCFlyingDutchmanProxy</unittype>
+      <unittype>zpSPCPirateSteamer</unittype>
+      <unittype>zpSPCPirateSteamerProxy</unittype>
+      <unittype>zpSPCPirateGalleass</unittype>
+      <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
+    </sharedbuildlimitunittypes>
+    <armor type="Ranged" value="0.5000">
+    </armor>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>MercType5</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
+  </unit>
+  <unit id="20861" name="zpSPCPirateDestroyerProxy">
+    <dbid>20861</dbid>
+    <displaynameid>302607</displaynameid>
+    <subciv>NatPirates</subciv>
+    <obstructionradiusx>0.0000</obstructionradiusx>
+    <obstructionradiusz>0.0000</obstructionradiusz>
+    <movementtype>land</movementtype>
+    <animfile>effects\projectiles\musket_ball.xml</animfile>
+    <icon>resources\art\units\naval\spc\revenant_ship_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\revenant_ship.png</portraiticon>
+    <rollovertextid>302641</rollovertextid>
+    <shortrollovertextid>300222</shortrollovertextid>
+    <initialhitpoints>900.0000</initialhitpoints>
+    <maxhitpoints>900.0000</maxhitpoints>
+    <trainpoints>40.0000</trainpoints>
+    <lifespan>0.3000</lifespan>
+    <buildbounty>200.0000</buildbounty>
+    <cost resourcetype="Wood">600.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <allowedage>2</allowedage>
+    <sharedbuildlimitunit>zpSPCQueenAnne</sharedbuildlimitunit>
+    <sharedbuildlimitunittypes>
+      <unittype>zpSPCQueenAnne</unittype>
+      <unittype>zpSPCQueenAnneProxy</unittype>
+      <unittype>zpSPCBlackPearl</unittype>
+      <unittype>zpSPCBlackPearlProxy</unittype>
+      <unittype>zpSPCNeptuneGalley</unittype>
+      <unittype>zpSPCNeptuneGalleyProxy</unittype>
+      <unittype>zpSPCFlyingDutchman</unittype>
+      <unittype>zpSPCFlyingDutchmanProxy</unittype>
+      <unittype>zpSPCPirateSteamer</unittype>
+      <unittype>zpSPCPirateSteamerProxy</unittype>
+      <unittype>zpSPCPirateGalleass</unittype>
+      <unittype>zpSPCPirateGalleassProxy</unittype>
+      <unittype>zpSPCRevenantSteamer</unittype>
+      <unittype>zpSPCRevenantSteamerProxy</unittype>
+      <unittype>zpSPCPirateDestroyer</unittype>
+      <unittype>zpSPCPirateDestroyerProxy</unittype>
+    </sharedbuildlimitunittypes>
+    <armor type="Ranged" value="0.5000">
+    </armor>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>MercType5</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>UseSharedBuildLimit</flag>
+    <flag>NotPlayerPlaceable</flag>
+  </unit>
+  <unit id="20862" name="zpSocketVenetianColony">
+    <dbid>20862</dbid>
+    <displaynameid>303027</displaynameid>
+    <editornameid>303028</editornameid>
+    <subciv>zpVenetians</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>1.0286</socketbuildrate>
+    <socketbuildcommandid>deSocketBuildEuropean</socketbuildcommandid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+    <animfile>buildings\trading_post\europe_outpost_socket_v3.xml</animfile>
+    <minimapicon>ui\minimap\naval_site</minimapicon>
+    <capturedminimapicon>ui\minimap\naval_site_c</capturedminimapicon>
+    <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
+    <rollovertextid>300729</rollovertextid>
+    <shortrollovertextid>300729</shortrollovertextid>
+    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+    <los>9.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>CapturableSocket</unittype>
+    <flag>TieToWaterSurface</flag>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>NativePreview</flag>
+    <flag>NotDeleteable</flag>
+    <flag>SocketSubCivAlliance</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>FlattenGround</flag>
+    <flag>EnterHotkeyContext</flag>
+    <tactics>socketcapture.tactics</tactics>
+  </unit>
+  <unit id="20863" name="zpSocketHansaColony">
+    <dbid>20863</dbid>
+    <displaynameid>303029</displaynameid>
+    <editornameid>303030</editornameid>
+    <subciv>zpHansaKontor</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>1.0286</socketbuildrate>
+    <socketbuildcommandid>deSocketBuildEuropean</socketbuildcommandid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+    <animfile>buildings\trading_post\europe_outpost_socket_v3.xml</animfile>
+    <minimapicon>ui\minimap\naval_site</minimapicon>
+    <capturedminimapicon>ui\minimap\naval_site_c</capturedminimapicon>
+    <portraiticon>resources\art\units\natives\hansakontor.png</portraiticon>
+    <rollovertextid>300729</rollovertextid>
+    <shortrollovertextid>300729</shortrollovertextid>
+    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+    <los>9.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>CapturableSocket</unittype>
+    <flag>TieToWaterSurface</flag>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>NativePreview</flag>
+    <flag>NotDeleteable</flag>
+    <flag>SocketSubCivAlliance</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>FlattenGround</flag>
+    <flag>EnterHotkeyContext</flag>
+    <tactics>socketcapture.tactics</tactics>
+  </unit>
+  <unit id="20864" name="zpNatElectorPalaceF">
+    <dbid>20864</dbid>
+    <displaynameid>302731</displaynameid>
+    <editornameid>303031</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\medieval_palaces\medieval_palace_v5.xml</animfile>
+    <portraiticon>resources\art\units\natives\hussite_natives.png</portraiticon>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>RMCanRotate</flag>
+  </unit>
+  
 
-  <!--ELBE MAPMODS-->
 
 
 

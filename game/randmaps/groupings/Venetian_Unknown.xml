@@ -61,7 +61,7 @@
 		<unit variation="130" posx="8.1421" posz="8.0254" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativeHouseVenetianLand</unit>
 		<unit variation="67" posx="-1.5830" posz="11.2083" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPottedPlants</unit>
 
-		<unit variation="37" posx="8.1570" posz="-7.6465" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSocketVenetians</unit>
+		<unit variation="37" posx="8.1570" posz="-7.6465" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSocketVenetianColony</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">

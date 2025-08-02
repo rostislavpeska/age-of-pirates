@@ -2929,10 +2929,10 @@
       <string _locid="302930">Ships a Teutonic Fort Wagon able to construct a Teutonic Fort.</string>
       <string _locid="302931">War Cog</string>
       <string _locid="302932">ZP SHP War Cog</string>
-      <string _locid="302933">Convertible trade / war ship, currently in war mode. More powerful than standard Caravel but can't transport units.</string>
+      <string _locid="302933">Convertible trade / war ship, currently in war mode. Faster than standard Caravel but can't transport units.</string>
       <string _locid="302934">Trade Cog</string>
       <string _locid="302935">ZP SHP Trade Cog</string>
-      <string _locid="302936">Convertible trade / war ship, currently in trade mode</string>
+      <string _locid="302936">Convertible trade / war ship, currently in trade mode. Faster than standard Caravel but can't transport units.</string>
       <string _locid="302937">ZP NAT House Hansa</string>
       <string _locid="302938">Kontor Trade</string>
       <string _locid="302939">Grants resources for future control of Trading Routes.\n • Trade Routes: Future income improved by +30%</string>
@@ -3008,9 +3008,28 @@
       <string _locid="303009">Military Convoys</string>
       <string _locid="303010">All trade sockets can also deliver Prussian Needlegunners.</string>
       <string _locid="303011">Elbe</string>
-      <string _locid="303012">Elbe Description</string>
-      <string _locid="303013">Elbe Loading</string>
-      <string _locid="303014">Unlocks more Hanseatic units and techs. \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Upgrades all trade routes to the maximum level</string>
+      <string _locid="303012">Standard map which includes some historical maps aspects like city state settlements or capturable trade routes. \n\nSettlements: Hansa Kontor City States, Prince Electors, Hussites, Pirates</string>
+      <string _locid="303013">Elbe river flows from the Bohemian Valley to the Northern Sea. The river is a living trade artery of Central Europe. Hanseatic cities on the north provide you an access to either river and naval trade routes.</string>
+      <string _locid="303014">Friendly Dock Trade</string>
+      <string _locid="303015">Automatically travels between friendly docks and Hanseatic settlements to trade. Gathers slower if there are no docks to move between.</string>
+      <string _locid="303016">ZP SPC Brandenburg Tower</string>
+      <string _locid="303017">ZP Flag Brandenburg</string>
+      <string _locid="303018">Prince Elector: Brandenburg</string>
+      <string _locid="303019">ZP Socket Elector Brandenburg</string>
+      <string _locid="303020">Pirate Steamship</string>
+      <string _locid="303021">ZP SPC Pirate Beauregard Steamer</string>
+      <string _locid="303022">Steam Powered Pirate flagship for which the Civil War got never over.</string>
+      <string _locid="303023">Captain Beauregard</string>
+      <string _locid="303024">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nCSS Revenant \n\nPirate steamship for which the Civil War got never over. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nIronblood Commission</string>
+      <string _locid="303025">Ironblood Commission</string>
+      <string _locid="303026">Upgrades CSS Revenant into a Destroyer Class ship which is more expensive but also way more powerful.</string>
+      <string _locid="303027">Venetian Outpost</string>
+      <string _locid="303028">ZP Socket Venetian Colony</string>
+      <string _locid="303029">Kontor Outpost</string>
+      <string _locid="303030">ZP Socket Venetian Colony</string>
+      <string _locid="303031">ZP NAT Elector Palace F</string>
+
+
 
 
       <!-- ======================================== -->

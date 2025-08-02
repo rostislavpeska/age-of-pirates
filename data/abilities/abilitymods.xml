@@ -80,10 +80,10 @@
   <zpmercnautilus>
     <ability>zpPowerShunt<allowwhilestealthed>true</allowwhilestealthed><rof>60</rof></ability>
   </zpmercnautilus>
-  <zpmercwokousteamer>
+  <zpspcpiratedestroyer>
     <ability>PowerLongRange<rof>60</rof></ability>
     <ability>dePowerBlock<rof>60</rof><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
-  </zpmercwokousteamer>
+  </zpspcpiratedestroyer>
   <zpnatsoheileader>
     <ability>ypUnitDaimyoAura<alwaysdisabledingrid>true</alwaysdisabledingrid></ability>
   </zpnatsoheileader>
@@ -343,12 +343,15 @@
     <ability>dePowerBlock<rof>60</rof><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zphansasteamer>
   <zphanseaticwarship>
-    <!--<ability>zpPowerCogTrade<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>-->
     <ability>deChargeAbilityBroadside<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
   </zphanseaticwarship>
-  <!--<zphanseatictradeship>
-    <ability>zpPowerCogMWar<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
-  </zphanseatictradeship>-->
+  <zphanseatictradeship>
+    <ability>zpPassiveFriendlyDock<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zphanseatictradeship>
+  <zpspcrevenantsteamer>
+    <ability>PowerBroadside<rof>60</rof></ability>
+    <ability>zpFullSteam<rof>60</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
+  </zpspcrevenantsteamer>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
