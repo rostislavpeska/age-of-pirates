@@ -1514,14 +1514,14 @@
       <string _locid="301512">Mutineer</string>
       <string _locid="301513">Ships Corsair Galleys full of Corsairs, unlocks native corsair training.</string>
       <string _locid="301514">Kamikaze</string>
-      <string _locid="301515">Kidnaped Frigate</string>
+      <string _locid="301515">Kidnaped Corvette</string>
       <string _locid="301516">Cyprus</string>
-      <string _locid="301517">Heavy ship of European construction able to train mutineers</string>
-      <string _locid="301518">ZP Cyprus Frigate</string>
+      <string _locid="301517">Heavy ship of European construction able to train Mutineers</string>
+      <string _locid="301518">ZP Cyprus Corvette</string>
       <string _locid="301519">William Swallow</string>
-      <string _locid="301520">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nMutineer \n\nAustralian Convict who escaped to japan. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nCyprus Mutiny (Wokou Frigate)</string>
+      <string _locid="301520">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nMutineer \n\nAustralian Convict who escaped to japan. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nCyprus Mutiny (Wokou Corvette)</string>
       <string _locid="301521">Cyprus Mutiny</string>
-      <string _locid="301522">Ships a Frigate able to train Mutineers and Wokou units. Wokou Ronin, Wokou Monk and Wokou Horseman population costs signifficantly decreased.</string>
+      <string _locid="301522">Ships a Corvette able to train Mutineers and Wokou units. Wokou Ronin, Wokou Monk and Wokou Horseman population costs signifficantly decreased.</string>
       <string _locid="301523">ZP NAT Mutineer</string>
       <string _locid="301524">Bloodthirsty Mutineer</string>
       <string _locid="301525">Notorious Mutineer</string>
@@ -2938,8 +2938,8 @@
       <string _locid="302939">Grants resources for future control of Trading Routes.\n • Trade Routes: Future income improved by +30%</string>
       <string _locid="302940">Uferschanze</string>
       <string _locid="302941">Increases building anti-ship attack and attack range. Increases Outpost line of sight.</string>
-      <string _locid="302942">Bremer Werften</string>
-      <string _locid="302943">Increases Kontor ship's attack and attack range and also Trade Cog efficiency.</string>
+      <string _locid="302942">Kontor Trade Fleet</string>
+      <string _locid="302943">Increases Trade Cog efficiency. Ships an additional Trade Cog and increases Cog build limit.</string>
       <string _locid="302944">Pfahlrecht</string>
       <string _locid="302945">Constructing Trading Posts has never been easier. Reduces Trading Post costs. Increases Trading Post hitpoints.</string>
       <string _locid="302946">Order's Protection</string>

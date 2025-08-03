@@ -30017,8 +30017,6 @@
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
     <unittype>AbstractWarShip</unittype>
-    <unittype>AbstractFishingBoat</unittype>
-    <unittype>AbstractCountAsGatherer</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractSiegeTrooper</unittype>
     <unittype>Ranged</unittype>
@@ -31088,17 +31086,15 @@
     <unittype>LogicalTypeShipsAndBuildings</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>CountsTowardMilitaryScore</unittype>
-    <unittype>Ranged</unittype>
-    <unittype>HasBountyValue</unittype>
-    <unittype>AbstractWarShip</unittype>
-    <unittype>AbstractFishingBoat</unittype>
-    <unittype>AbstractCountAsGatherer</unittype>
-    <unittype>Military</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>Unit</unittype>
-    <unittype>Transport</unittype>
     <unittype>Ship</unittype>
+    <unittype>Transport</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
     <train row="0" page="0" column="0">zpNatPirate</train>
     <train row="0" page="0" column="1">zpNatCorsair</train>
     <train row="0" page="0" column="2">deREVBarbaryMarksman</train>
@@ -31123,22 +31119,17 @@
     <command page="10" column="1">Stop</command>
     <command page="10" column="7">Delete</command>
     <command page="11" column="0">Abilities</command>
-    <tactics>caravel.tactics</tactics>
+    <tactics>privateer.tactics</tactics>
     <protoaction>
       <name>BroadsideAttack</name>
-      <damage>42.000000</damage>
+      <damage>30.000000</damage>
       <damagetype>Siege</damagetype>
-      <maxrange>20.000000</maxrange>
+      <maxrange>30.000000</maxrange>
       <rof>0.050000</rof>
-      <damagecap>50.000000</damagecap>
-      <damagebonus type="Ship">2.000000</damagebonus>
+      <damagecap>60.000000</damagecap>
+      <damagebonus type="Ship">3.000000</damagebonus>
       <damagearea>1.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
-    </protoaction>
-    <protoaction>
-      <name>Gather</name>
-      <rate type="AbstractWhale">0.500000</rate>
-      <rate type="AbstractFish">0.670000</rate>
     </protoaction>
     <protoaction>
       <name>RangedAttack</name>
@@ -31146,7 +31137,23 @@
       <damagetype>Siege</damagetype>
       <maxrange>20.000000</maxrange>
       <rof>2.000000</rof>
-      <damagecap>140.000000</damagecap>
+      <damagecap>200.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherGold</name>
+      <type>AutoGather</type>
+      <rate type="Gold">0.500000</rate>
+    </protoaction>
+    <protoaction>
+      <name>GuardianAttack</name>
+      <damage>100.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>20.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>200.000000</damagecap>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
       <damagearea>1.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
@@ -31443,12 +31450,12 @@
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
-    <maxvelocity>7.5000</maxvelocity>
-    <maxrunvelocity>9.5000</maxrunvelocity>
+    <maxvelocity>9.0000</maxvelocity>
+    <maxrunvelocity>11.0000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>2.0000</turnrate>
     <civflagoverride>objects\flags\wokou</civflagoverride>
-    <animfile>units\naval\frigate\frigate_asian.xml</animfile>
+    <animfile>units\naval\corvette\wokou_corvette.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\units\naval\spc\cyprus_frigate_icon.png</icon>
@@ -31483,9 +31490,6 @@
     <unittype>LogicalTypeShipsAndBuildings</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>LogicalTypeMalteseCivBonusArtilleryAndShips</unittype>
-    <unittype>LogicalTypeMalteseCivBonus</unittype>
-    <unittype>LogicalTypeMalteseCivBonusHealsWhenIdle</unittype>
     <unittype>Ship</unittype>
     <unittype>Transport</unittype>
     <unittype>Unit</unittype>
@@ -31493,6 +31497,7 @@
     <unittype>Military</unittype>
     <unittype>AbstractWarShip</unittype>
     <unittype>HasBountyValue</unittype>
+    <unittype>AbstractSiegeTrooper</unittype>
     <unittype>Ranged</unittype>
     <unittype>CountsTowardMilitaryScore</unittype>
     <train row="0" page="0" column="0">zpNatWokouPirate</train>
@@ -48227,8 +48232,6 @@
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
     <unittype>AbstractWarShip</unittype>
-    <unittype>AbstractFishingBoat</unittype>
-    <unittype>AbstractCountAsGatherer</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractSiegeTrooper</unittype>
     <unittype>Ranged</unittype>
@@ -61508,13 +61511,13 @@
     <rollovertextid>302933</rollovertextid>
     <shortrollovertextid>302933</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>1000.0000</initialhitpoints>
-    <maxhitpoints>1000.0000</maxhitpoints>
+    <initialhitpoints>1100.0000</initialhitpoints>
+    <maxhitpoints>1100.0000</maxhitpoints>
     <los>26.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <trainpoints>40.0000</trainpoints>
-    <buildlimit>3</buildlimit>
+    <buildlimit>2</buildlimit>
     <bounty>40.0000</bounty>
     <rechargetime>60.0000</rechargetime>
     <buildbounty>40.0000</buildbounty>
@@ -61583,7 +61586,7 @@
     </protoaction>
     <protoaction>
       <name>RangedAttack</name>
-      <damage>110.000000</damage>
+      <damage>120.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>22.000000</maxrange>
       <rof>3.000000</rof>
@@ -61594,7 +61597,7 @@
     </protoaction>
     <protoaction>
       <name>RangedAttackContained</name>
-      <damage>110.000000</damage>
+      <damage>120.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>22.000000</maxrange>
       <rof>3.000000</rof>
@@ -61605,7 +61608,7 @@
     </protoaction>
     <protoaction>
       <name>ChargeBroadsideAttack</name>
-      <damage>34.000000</damage>
+      <damage>38.000000</damage>
       <damagetype>Siege</damagetype>
       <maxrange>20.000000</maxrange>
       <rof>0.050000</rof>
@@ -61613,11 +61616,6 @@
       <damagebonus type="Ship">2.000000</damagebonus>
       <damagearea>1.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
-    </protoaction>
-    <protoaction>
-      <name>Autogather</name>
-      <active>1</active>
-      <rate type="Gold">3.000000</rate>
     </protoaction>
   </unit>
   <unit id="20846" name="zpHanseaticTradeship">
@@ -61640,8 +61638,8 @@
     <rollovertextid>302936</rollovertextid>
     <shortrollovertextid>302936</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>1000.0000</initialhitpoints>
-    <maxhitpoints>1000.0000</maxhitpoints>
+    <initialhitpoints>1100.0000</initialhitpoints>
+    <maxhitpoints>1100.0000</maxhitpoints>
     <los>26.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -62559,8 +62557,6 @@
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
     <unittype>AbstractWarShip</unittype>
-    <unittype>AbstractFishingBoat</unittype>
-    <unittype>AbstractCountAsGatherer</unittype>
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractSiegeTrooper</unittype>
     <unittype>Ranged</unittype>

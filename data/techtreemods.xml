@@ -29986,10 +29986,10 @@
   <tech name="zpHansaTrade" type="Normal">
     <dbid>41159</dbid>
     <displaynameid>302938</displaynameid>
-    <cost resourcetype ="Gold">400.0000</cost>
+    <cost resourcetype ="Gold">700.0000</cost>
     <researchpoints>20.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\hansa_kontor_trade.png</icon>
+    <icon>resources\images\icons\techs\hansa_bremen_arsenal.png</icon>
     <rollovertextid>302939</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
@@ -30037,49 +30037,35 @@
     <dbid>41161</dbid>
     <displaynameid>302942</displaynameid>
     <researchpoints>30.0000</researchpoints>
-    <cost resourcetype ="Gold">450.0000</cost>
-    <cost resourcetype ="Wood">450.0000</cost>
+    <cost resourcetype ="Gold">350.0000</cost>
+    <cost resourcetype ="Wood">350.0000</cost>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\hansa_bremen_arsenal.png</icon>
+    <icon>resources\images\icons\techs\hansa_kontor_trade.png</icon>
     <rollovertextid>302943</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <prereqs>
-			<techstatus status ="Active">Industrialize</techstatus>
+			<techstatus status ="Active">Colonialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpHanseaticWarship</target>
-      </effect>
-      <effect type="Data" action="RangedAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpHanseaticWarship</target>
-      </effect>
-      <effect type="Data" action="RangedAttackContained" amount="3.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpHanseaticWarship</target>
-      </effect>
-      <effect type="Data" action="ChargeBroadsideAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpHanseaticWarship</target>
-      </effect>
-      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpHanseaticFluyt</target>
-      </effect>
-      <effect type="Data" action="RangedAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpHanseaticFluyt</target>
-      </effect>
-      <effect type="Data" action="RangedAttackContained" amount="3.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpHanseaticFluyt</target>
-      </effect>
-      <effect type="Data" action="AutogatherFood" amount="1.30" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+      <effect type="Data" action="AutogatherFood" amount="1.20" subtype="WorkRate" unittype="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpHanseaticTradeship</target>
       </effect>
-      <effect type="Data" action="AutogatherWood" amount="1.30" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+      <effect type="Data" action="AutogatherWood" amount="1.20" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpHanseaticTradeship</target>
       </effect>
-      <effect type="Data" action="AutogatherGold" amount="1.30" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+      <effect type="Data" action="AutogatherGold" amount="1.20" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpHanseaticTradeship</target>
       </effect>
-      <effect type="Data" action="AutoGatherXP" amount="1.30" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherXP" amount="1.20" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpHanseaticTradeship</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpHanseaticTradeship" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpHanseaticWarship</target>
       </effect>
     </effects>
   </tech>
