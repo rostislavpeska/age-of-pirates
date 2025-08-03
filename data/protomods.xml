@@ -29949,21 +29949,21 @@
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
-    <maxvelocity>8.5000</maxvelocity>
-    <maxrunvelocity>10.5000</maxrunvelocity>
+    <maxvelocity>9.0000</maxvelocity>
+    <maxrunvelocity>11.0000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>1.0000</turnrate>
-    <animfile>units\naval\steamer\blackjacksteamer.xml</animfile>
+    <animfile>units\naval\corvette\pirate_corvette.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\units\naval\spc\piratesteamer_icon_ship.png</icon>
-    <portraiticon>resources\art\units\naval\spc\piratesteamer_portrait_ship.png</portraiticon>
+    <icon>resources\art\units\naval\spc\pirate_corvette_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\pirate_corvette.png</portraiticon>
     <civflagoverride>objects\flags\pirate</civflagoverride>
     <rollovertextid>301448</rollovertextid>
     <shortrollovertextid>301448</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>2750.0000</initialhitpoints>
-    <maxhitpoints>2750.0000</maxhitpoints>
+    <initialhitpoints>2850.0000</initialhitpoints>
+    <maxhitpoints>2850.0000</maxhitpoints>
     <los>40.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -30089,8 +30089,8 @@
     <obstructionradiusz>0.0000</obstructionradiusz>
     <movementtype>land</movementtype>
     <animfile>effects\projectiles\musket_ball.xml</animfile>
-    <icon>resources\art\units\naval\spc\piratesteamer_icon_ship.png</icon>
-    <portraiticon>resources\art\units\naval\spc\piratesteamer_portrait_ship.png</portraiticon>
+    <icon>resources\art\units\naval\spc\pirate_corvette_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\pirate_corvette.png</portraiticon>
     <rollovertextid>301448</rollovertextid>
     <shortrollovertextid>301448</shortrollovertextid>
     <initialhitpoints>900.0000</initialhitpoints>
@@ -48178,21 +48178,21 @@
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
-    <maxvelocity>8.5000</maxvelocity>
-    <maxrunvelocity>10.5000</maxrunvelocity>
+    <maxvelocity>9.0000</maxvelocity>
+    <maxrunvelocity>11.0000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>1.0000</turnrate>
-    <animfile>units\naval\steamer\blackjacksteamer.xml</animfile>
+    <animfile>units\naval\corvette\pirate_corvette.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\units\naval\spc\piratesteamer_icon_ship.png</icon>
-    <portraiticon>resources\art\units\naval\spc\piratesteamer_portrait_ship.png</portraiticon>
+    <icon>resources\art\units\naval\spc\pirate_corvette_icon_ship.png</icon>
+    <portraiticon>resources\art\units\naval\spc\pirate_corvette.png</portraiticon>
     <civflagoverride>objects\flags\pirate</civflagoverride>
     <rollovertextid>301448</rollovertextid>
     <shortrollovertextid>301448</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
-    <initialhitpoints>2750.0000</initialhitpoints>
-    <maxhitpoints>2750.0000</maxhitpoints>
+    <initialhitpoints>2850.0000</initialhitpoints>
+    <maxhitpoints>2850.0000</maxhitpoints>
     <los>40.0000</los>
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
@@ -62553,7 +62553,6 @@
     <unittype>LogicalTypeShipsAndBuildings</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>AbstractLegendaryShip</unittype>
     <unittype>Ship</unittype>
     <unittype>Transport</unittype>
     <unittype>Unit</unittype>
@@ -62911,8 +62910,8 @@
     <obstructionradiusx>2.9900</obstructionradiusx>
     <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
-    <maxvelocity>8.5000</maxvelocity>
-    <maxrunvelocity>10.5000</maxrunvelocity>
+    <maxvelocity>9.0000</maxvelocity>
+    <maxrunvelocity>11.0000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>2.0000</turnrate>
     <animfile>units\naval\corvette\corvette.xml</animfile>

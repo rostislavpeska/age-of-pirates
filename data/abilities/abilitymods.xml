@@ -181,11 +181,9 @@
   </zpspcpraub>
   <zpspcpiratesteamer>
     <ability>PowerBroadside<rof>60</rof></ability>
-    <ability>zpFullSteam<rof>60</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
   </zpspcpiratesteamer>
   <zpmercpiratesteamer>
     <ability>PowerBroadside<rof>60</rof></ability>
-    <ability>zpFullSteam<rof>60</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
   </zpmercpiratesteamer>
   <zpspcpirategalleass>
     <ability>dePowerRoundelPierceAttack<rof>60</rof><sharedcooldown>true</sharedcooldown><castonself>true</castonself></ability>

@@ -111,6 +111,7 @@
     <component>ModelComp
         <assetreference type="GrannyModel">
             <file>units\naval\corvette\corvette</file>
+            <materialvariant index="1"/>
         </assetreference>
         <decal>
             <effecttype>default</effecttype>
@@ -127,6 +128,7 @@
     <component>Death
         <assetreference type="GrannyModel">
             <file>units\naval\corvette\corvette_deathmodel</file>
+            <materialvariant index="1"/>
         </assetreference>
         <decal>
             <effecttype>default</effecttype>

@@ -1446,10 +1446,10 @@
       <string _locid="301444">ZP SPC Wokou Prau 1</string>
       <string _locid="301445">ZP Nat Cetbang</string>
       <string _locid="301446">Blackjack's Flagship</string>
-      <string _locid="301447">ZP SPC Pirate Steamer</string>
-      <string _locid="301448">Steam Powered Pirate flagship from the Australia</string>
+      <string _locid="301447">ZP SPC Pirate Corvette</string>
+      <string _locid="301448">Pirate Corvette Class flagship from Australia. Can train Buccaneers.</string>
       <string _locid="301449">Black Jack Anderson</string>
-      <string _locid="301450">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nVansittart \n\nPirate steamship. Increased privateer build limit. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nDry Dock</string>
+      <string _locid="301450">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nVansittart \n\nPirate Corvette. Increased privateer build limit. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nDry Dock</string>
       <string _locid="301451">Vansittart</string>
       <string _locid="301452">ZP Pirate Dry Dock</string>
       <string _locid="301453">Si Ragam</string>
@@ -2244,7 +2244,7 @@
       <string _locid="302243">A Tower may be constructed here to protect this settlement.</string>
       <string _locid="302244">ZP SPC Pirate Guard Melee</string>
       <string _locid="302245">ZP SPC Pirate Guard Pistol</string>
-      <string _locid="302246">ZP MERC Pirate Steamer</string>
+      <string _locid="302246">ZP MERC Pirate Corvette</string>
       <string _locid="302247">ZP PROP Venetian House Solid Tall</string>
       <string _locid="302248">ZP PROP Venetian House Solid Large</string>
       <string _locid="302249">ZP PROP Venetian House Solid Chuch</string>
@@ -3017,7 +3017,7 @@
       <string _locid="303018">Prince Elector: Brandenburg</string>
       <string _locid="303019">ZP Socket Elector Brandenburg</string>
       <string _locid="303020">Pirate Steamship</string>
-      <string _locid="303021">ZP SPC Pirate Beauregard Steamer</string>
+      <string _locid="303021">ZP SPC Pirate Steamer</string>
       <string _locid="303022">Steam Powered Pirate flagship for which the Civil War got never over.</string>
       <string _locid="303023">Captain Beauregard</string>
       <string _locid="303024">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nCSS Revenant \n\nPirate steamship for which the Civil War got never over. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nIronblood Commission</string>
@@ -3030,6 +3030,8 @@
       <string _locid="303031">ZP NAT Elector Palace F</string>
       <string _locid="303032">Corvette</string>
       <string _locid="303033">ZP SHP Corvette</string>
+      <string _locid="303034">ZP SPC Merc Pirate Steamer</string>
+      <string _locid="303035">ZP SPC Merc Queen Anne's Revenge</string>
 
 
 
