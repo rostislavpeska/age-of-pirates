@@ -63060,6 +63060,93 @@
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
+  <unit id="20866" name="zpUnderbrushWaterCave">
+    <dbid>20866</dbid>
+    <displaynameid>303037</displaynameid>
+    <editornameid>303036</editornameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>terrain\cave\cave_props.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>VariationLocked</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+  </unit>
+  <unit id="20867" name="zpUnderwaterObstruction">
+    <dbid>20867</dbid>
+    <displaynameid>303038</displaynameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <movementtype>water</movementtype>
+    <los>0.0000</los>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>ForceToGaia</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>Invulnerable</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+  </unit>
+  <unit id="20868" name="zpVolcanoFloor">
+    <dbid>20868</dbid>
+    <displaynameid>303039</displaynameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <rollovertextid>30051</rollovertextid>
+    <shortrollovertextid>30052</shortrollovertextid>
+    <animfile>terrain\decal\volcano_floor.xml</animfile>
+    <portraiticon>resources\art\trade_route\trade_route_1_portrait.png</portraiticon>
+    <los>0.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>AbstractTradeRouteBuilding</unittype>
+    <flag>FlattenGround</flag>
+    <flag>NoUnitAI</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>ForceToGaia</flag>
+    <flag>Invulnerable</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>AlwaysShowAsSocket</flag>
+    <flag>Tracked</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>NotSelectable</flag>     
+  </unit>
   
 
 
@@ -63919,45 +64006,6 @@
 
 
 
-
-  <unit id="" name="zpVolcanoFloor">
-    <dbid></dbid>
-    <displaynameid>29937</displaynameid>
-    <editornameid>301039</editornameid>
-    <obstructionradiusx>0.0001</obstructionradiusx>
-    <obstructionradiusz>0.0001</obstructionradiusz>
-    <maxvelocity>0.0000</maxvelocity>
-    <maxrunvelocity>0.0000</maxrunvelocity>
-    <movementtype>land</movementtype>
-    <rollovertextid>30051</rollovertextid>
-    <shortrollovertextid>30052</shortrollovertextid>
-    <animfile>terrain\decal\volcano_floor.xml</animfile>
-    <portraiticon>resources\art\trade_route\trade_route_1_portrait.png</portraiticon>
-    <los>0.0000</los>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
-    <unittype>EmbellishmentClass</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <unittype>AbstractTradeRouteBuilding</unittype>
-    <flag>FlattenGround</flag>
-    <flag>NoUnitAI</flag>
-    <flag>Immoveable</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>NoHPBar</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>Doppled</flag>
-    <flag>ForceToGaia</flag>
-    <flag>Invulnerable</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>ColorTransformNonGaia</flag>
-    <flag>AlwaysShowAsSocket</flag>
-    <flag>Tracked</flag>
-    <flag>VisibleUnderFogIfGaia</flag>
-    <flag>DoNotShowOnMiniMap</flag>
-    <flag>PlaceAnywhere</flag>   
-  </unit>
   <unit id="" name="zpWokouDiver">
     <dbid></dbid>
     <displaynameid>301699</displaynameid>
