@@ -3875,7 +3875,7 @@
       <topedge>araucania\ground_snow4_ara</topedge>
       <side>araucania\ground_snow4_ara</side>
       <edge>araucania\ground_snow4_ara</edge>
-      <bottomedge>araucania\ground_snow4_ara</bottomedge>
+      <bottomedge>patagonia\ground_snow1_pat</bottomedge>
     </textures>
   </cliff>
 </cliffs>
