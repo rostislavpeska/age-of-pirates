@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<mods>
+	<protomods>
+		<unit name="zpTradingPostCaptureNaval">
+            <obstructionradiusx>4.0000</obstructionradiusx>
+            <obstructionradiusz>4.0000</obstructionradiusz>
+            <flag mergemode="remove">TieToWaterSurface</flag>
+            <flag>DoNotShowOnMiniMap</flag>
+        </unit>
+        <unit name="zpNativeHouseHansa">
+			<flag>StartOnNoUpdate</flag>
+            <flag>NotSelectable</flag>
+            <flag>NoIdleActions</flag>
+		</unit>
+        <unit name="zpNativeHouseHansaBig">
+			<flag>StartOnNoUpdate</flag>
+            <flag>NotSelectable</flag>
+            <flag>NoIdleActions</flag>
+		</unit>
+        <unit name="zpNativeHouseHansaBig">
+			<flag>StartOnNoUpdate</flag>
+            <flag>NotSelectable</flag>
+            <flag>NoIdleActions</flag>
+		</unit>
+        <unit name="zpSPCSocketHansaKontorCitystate">
+			<displaynameid>303043</displaynameid>
+            <flag mergemode="remove">HeroName1</flag>
+		</unit>
+	</protomods>
+</mods>

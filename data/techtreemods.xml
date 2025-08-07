@@ -30798,6 +30798,21 @@
       <effect type="TechStatus" status="unobtainable">zpHansaUnlockIslandGroupingTechs</effect>
     </effects>
   </tech>
+  <tech name="zpNorthDivingBell" type="Normal">
+    <dbid>41192</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpDivingBell" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpDivingBellReward" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
 
 
 

@@ -40,10 +40,11 @@ void main(void)
     string paintMix8 = "araucania_snow_b";		// italy_snow_cliff
     string forTesting = "testmix";
     string treasureSet = "northEurope";
+	string treasureSet2 = "icelandWater";
     string aopMapType = "piratehistoricalmap";
 	string tradeRouteMapType = "euroTradeRouteCapture";
-    string shineAlight = "rockie_skirmish";
-	string volcanoLight = "carribean";
+    string shineAlight = "spcjc4aflashback";
+	string volcanoLight = "pcjc4brain";
     string huntType = "caribou";
     string fishies = "FishSalmon";
     string treeType1 = "TreeGreatLakesSnow";
@@ -111,6 +112,7 @@ void main(void)
     rmSetSeaType(wetTypeSea);
     rmTerrainInitialize(initLand, 0);
     rmSetMapType(treasureSet);
+	rmSetMapType(treasureSet2);
     rmSetMapType(tradeRouteMapType);
 	rmSetMapType(aopMapType);
     rmSetMapType("grass");
@@ -240,7 +242,7 @@ void main(void)
 	int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true, 5.5);
 	int avoidMainIsland=rmCreateClassDistanceConstraint("stuff avoids main island", classMainIsland, 15);
 	int avoidCave=rmCreateClassDistanceConstraint("stuff avoids cave", classCave, 4);
-	int avoidCaveFar=rmCreateClassDistanceConstraint("stuff avoids cave far", classCave, 24);
+	int avoidCaveFar=rmCreateClassDistanceConstraint("stuff avoids cave far", classCave, rmXFractionToMeters(0.065));
 	int avoidSea=rmCreateClassDistanceConstraint("stuff avoids sea", classSea, 1.7);
 
 	// VP avoidance
@@ -381,29 +383,49 @@ void main(void)
 
 	int waterCaveAreaIDLarge=rmCreateArea("UnderwaterArea Large");
 	rmSetAreaWaterType(waterCaveAreaIDLarge, "ZP Iceland Transparent 3");
-	rmSetAreaSize(waterCaveAreaIDLarge, 0.06);
+	rmSetAreaSize(waterCaveAreaIDLarge, rmAreaTilesToFraction(5800));
 	rmSetAreaCoherence(waterCaveAreaIDLarge, 1);
-	rmSetAreaLocation(waterCaveAreaIDLarge, 0.7, 0.7);
+	rmSetAreaLocation(waterCaveAreaIDLarge, 0.72, 0.72);
 	rmSetAreaSmoothDistance(waterCaveAreaIDLarge, 10);
 	rmBuildArea(waterCaveAreaIDLarge);
 
 	int waterCaveAreaIDMedium=rmCreateArea("UnderwaterArea Medium");
 	rmSetAreaWaterType(waterCaveAreaIDMedium, "ZP Iceland Transparent 2");
-	rmSetAreaSize(waterCaveAreaIDMedium, 0.045);
+	rmSetAreaSize(waterCaveAreaIDMedium, rmAreaTilesToFraction(4500));
 	rmSetAreaCoherence(waterCaveAreaIDMedium, 1);
-	rmSetAreaLocation(waterCaveAreaIDMedium, 0.7, 0.7);
+	rmSetAreaLocation(waterCaveAreaIDMedium, 0.72, 0.72);
 	rmSetAreaSmoothDistance(waterCaveAreaIDMedium, 10);
 	rmBuildArea(waterCaveAreaIDMedium);
 
 	int waterCaveAreaID=rmCreateArea("UnderwaterArea");
 	rmSetAreaWaterType(waterCaveAreaID, "ZP Iceland Transparent");
-	rmSetAreaSize(waterCaveAreaID, 0.03);
+	rmSetAreaSize(waterCaveAreaID, rmAreaTilesToFraction(3500));
 	rmSetAreaCoherence(waterCaveAreaID, 1);
-	rmSetAreaLocation(waterCaveAreaID, 0.7, 0.7);
+	rmSetAreaLocation(waterCaveAreaID, 0.72, 0.72);
 	rmSetAreaSmoothDistance(waterCaveAreaID, 10);
-//	rmAddAreaToClass(waterCaveAreaID, classCave);
 	rmAddAreaToClass(waterCaveAreaID, classIsland);
 	rmBuildArea(waterCaveAreaID);
+
+	// Treasures tier 15
+
+	for (i=0; < 4)
+	{
+		int nuggetDiverID = rmCreateObjectDef("nugget diver"+i); 
+		rmAddObjectDefItem(nuggetDiverID, "ypNuggetBoat", 1, 0);
+		rmSetObjectDefMinDistance(nuggetDiverID, 33);
+		rmSetObjectDefMaxDistance(nuggetDiverID, 35);
+		if (i<3)
+			rmSetNuggetDifficulty(15,16);
+		else
+			rmSetNuggetDifficulty(17,17);
+		rmAddObjectDefConstraint(nuggetDiverID, avoidNugget);
+		rmAddObjectDefConstraint(nuggetDiverID, avoidLand);
+		rmAddObjectDefConstraint(nuggetDiverID, avoidStartingResources);	
+		rmAddObjectDefConstraint(nuggetDiverID, avoidNatives); 
+		rmAddObjectDefConstraint(nuggetDiverID, avoidEdge); 
+		rmAddObjectDefConstraint(nuggetDiverID, avoidWhaleMin); 
+		rmPlaceObjectDefAtLoc(nuggetDiverID, 0, 0.72, 0.72-rmXTilesToFraction(6), 1);
+	}
 
 	int underwaterCaveID = rmCreateGrouping("underwater crater", "underwater_volcano");
 	rmAddGroupingToClass(underwaterCaveID, classCave);
@@ -495,6 +517,7 @@ void main(void)
 	rmSetAreaObeyWorldCircleConstraint(icelandID, false);
 	rmAddAreaConstraint(icelandID, avoidIslandShort);
 	rmAddAreaConstraint(icelandID, avoidPirateIslands);
+	rmAddAreaConstraint(icelandID, avoidCaveFar);
 	rmAddAreaConstraint(icelandID, avoidEdgeMore);
 	rmAddAreaConstraint(icelandID, avoidTradeRoute);
 	rmAddAreaConstraint(icelandID, avoidHansa);
@@ -1642,7 +1665,7 @@ void main(void)
 	}
 
 	// Treasures tier 6
-	int treasure6count = 4;
+	int treasure6count = 4+cNumberNonGaiaPlayers;
 
 	for (i=0; < treasure6count)
 	{
@@ -1656,21 +1679,22 @@ void main(void)
 		rmAddObjectDefConstraint(nugget6ID, avoidStartingResources);	
 		rmAddObjectDefConstraint(nugget6ID, avoidCave); 
 		rmAddObjectDefConstraint(nugget6ID, avoidNatives); 
+		rmAddObjectDefConstraint(nugget6ID, avoidTradeRoute); 
 		rmAddObjectDefConstraint(nugget6ID, avoidEdge); 
 		rmAddObjectDefConstraint(nugget6ID, avoidWhaleMin); 
-		if (i == 0)
+		if (i < treasure6count/4)
 			rmAddObjectDefConstraint(nugget6ID, stayN);
-		if (i == 1)
+		else if (i < treasure6count/2)
 			rmAddObjectDefConstraint(nugget6ID, stayE);
-		if (i == 2)
+		else if (i < treasure6count*3/4)
 			rmAddObjectDefConstraint(nugget6ID, stayS);
-		if (i == 3)
+		else
 			rmAddObjectDefConstraint(nugget6ID, stayW);
 		rmPlaceObjectDefAtLoc(nugget6ID, 0, 0.50, 0.50, 1);
 	}
 
 	// Treasures tier 5
-	int treasure5count = 2*PlayerNum;
+	int treasure5count = 4;
 
 	for (i=0; < treasure5count)
 	{
@@ -1684,6 +1708,7 @@ void main(void)
 		rmAddObjectDefConstraint(nugget5ID, avoidStartingResources);	
 		rmAddObjectDefConstraint(nugget5ID, avoidCave); 
 		rmAddObjectDefConstraint(nugget5ID, avoidNatives); 
+		rmAddObjectDefConstraint(nugget5ID, avoidTradeRoute); 
 		rmAddObjectDefConstraint(nugget5ID, avoidEdge); 
 		rmAddObjectDefConstraint(nugget5ID, avoidWhaleMin); 
 		if (i == 0)
@@ -1795,6 +1820,10 @@ void main(void)
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechdeEUMapUpdateVisuals");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpNorthDivingBell");
 		rmSetTriggerEffectParamInt("Status",2);
 		}
 		for(i=1; <= cNumberNonGaiaPlayers) {
@@ -3919,21 +3948,6 @@ void main(void)
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
 		}
-
-	for(k=1; <= cNumberNonGaiaPlayers) {
-		rmCreateTrigger("Submarine Transform"+k);
-		rmAddTriggerCondition("ZP PLAYER Human");
-		rmSetTriggerConditionParamInt("Player",k);
-		rmSetTriggerConditionParam("MyBool", "true");
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpTransformNemoSubmarines"); //operator
-		rmSetTriggerEffectParamInt("Status",2);
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(true);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
-    }
 	
 } // END
 	
