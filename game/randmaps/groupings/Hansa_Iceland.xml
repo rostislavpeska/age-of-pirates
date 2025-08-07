@@ -84,7 +84,7 @@
 		<unit variation="67" posx="-11.0911" posz="-7.2844" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="2" posx="-9.4418" posz="-3.6265" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deNatEUPropVilMale</unit>
 		<unit variation="174" posx="0.5403" posz="-4.0364" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpHCFountainC</unit>
-		<unit variation="222" posx="-15.1496" posz="2.2634" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpHanseaticChurch</unit>
+		<unit variation="221" posx="-15.1496" posz="2.2634" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseHansaBig</unit>
 		<unit variation="235" posx="-28.1300" posz="-0.5790" orientx="1.0000" orienty="0.0000" orientz="-0.0001">zpHarbourPlatform</unit>
 		<unit variation="0" posx="-16.4383" posz="-2.1029" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
 		<unit variation="253" posx="20.2363" posz="-2.4618" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
@@ -117,7 +117,7 @@
 		<unit variation="224" posx="-2.8183" posz="7.1580" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
 		<unit variation="85" posx="-6.0896" posz="8.2877" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCMarketStall</unit>
 		<unit variation="51" posx="3.3421" posz="9.4672" orientx="-0.9813" orienty="-0.0000" orientz="-0.1925">zpSPCEUHouseProp</unit>
-		<unit variation="9" posx="-23.2845" posz="10.1052" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deSPCCapturableSocketTower</unit>
+		<unit variation="8" posx="-23.2845" posz="10.1052" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCEUHouseProp</unit>
 		<unit variation="203" posx="-5.4373" posz="9.7807" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropVilFemale</unit>
 		<unit variation="152" posx="3.6263" posz="8.6500" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
 		<unit variation="114" posx="-9.6924" posz="9.7840" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeUnitVenetianPoles</unit>

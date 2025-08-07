@@ -23,7 +23,7 @@ void main(void)
 	int teamOneCount = rmGetNumberPlayersOnTeam(1);
 
 	// Strings
-    string startShipType1 = "zpRowboat";
+    string startShipType1 = "zpSPCRowboat";
     string startShipType2 = "zpCorvette";
     string toiletPaper = "water_trail";
     string wetTypeSea = "ZP Iceland";
@@ -41,8 +41,9 @@ void main(void)
     string forTesting = "testmix";
     string treasureSet = "northEurope";
     string aopMapType = "piratehistoricalmap";
-	string tradeRouteMapType = "euroNavalTradeRoute";
+	string tradeRouteMapType = "euroTradeRouteCapture";
     string shineAlight = "rockie_skirmish";
+	string volcanoLight = "carribean";
     string huntType = "caribou";
     string fishies = "FishSalmon";
     string treeType1 = "TreeGreatLakesSnow";
@@ -264,13 +265,13 @@ void main(void)
 		if (rmRandFloat(0,1) <= 0.50)
 		{
 			rmSetPlacementTeam(0);
-			rmSetPlacementSection(0.11-0.04*teamZeroCount, 0.11);
+			rmSetPlacementSection(0.09-0.04*teamZeroCount, 0.09);
 			rmSetTeamSpacingModifier(0.50);
 			rmPlacePlayersCircular(0.44, 0.44, 0);
 			leftTeam = 0;
 
 			rmSetPlacementTeam(1);
-			rmSetPlacementSection(0.14, 0.14+0.04*teamOneCount);
+			rmSetPlacementSection(0.16, 0.16+0.04*teamOneCount);
 			rmSetTeamSpacingModifier(0.50);
 			rmPlacePlayersCircular(0.44, 0.44, 0);	
 			rightTeam = 1;
@@ -278,13 +279,13 @@ void main(void)
 		else
 		{
 			rmSetPlacementTeam(0);
-			rmSetPlacementSection(0.14, 0.14+0.04*teamZeroCount);
+			rmSetPlacementSection(0.16, 0.16+0.04*teamZeroCount);
 			rmSetTeamSpacingModifier(0.50);
 			rmPlacePlayersCircular(0.44, 0.44, 0);	
 			leftTeam = 1;
 
 			rmSetPlacementTeam(1);
-			rmSetPlacementSection(0.11-0.04*teamOneCount, 0.11);
+			rmSetPlacementSection(0.09-0.04*teamOneCount, 0.09);
 			rmSetTeamSpacingModifier(0.50);
 			rmPlacePlayersCircular(0.44, 0.44, 0);
 			rightTeam = 0;
@@ -1123,6 +1124,10 @@ void main(void)
 	int volcanoCraterID = rmCreateGrouping("crater", "volcano_crater_noground");
 	rmPlaceGroupingAtLoc(volcanoCraterID, 1, volcLocX-rmXTilesToFraction(1), volcLocY, 1);
 
+	int volcanoControllerID = rmCreateObjectDef("volcano controller 1");
+	rmAddObjectDefItem(volcanoControllerID, "zpSPCWaterSpawnPoint", 1, 0);
+	rmPlaceObjectDefAtLoc(volcanoControllerID, 0, volcLocX, volcLocY);
+
 	int volcanoAvoider = rmCreateObjectDef("ai avoider"); 
 	if (cNumberNonGaiaPlayers <= 2)
 	    rmAddObjectDefItem(volcanoAvoider, "zpVolcanoAvoiderS", 1, 0);
@@ -1693,7 +1698,2242 @@ void main(void)
 	}
 
 	// Map loading
-	rmSetStatusText("",1.00);
+	rmSetStatusText("",0.95);
+
+	// ******************* Triggers ***********************
+
+	// Variables
+
+	int eruptionLenght = 140;
+	int eqAreaDamage = 20;
+	int islandSize = 200;
+	int gapMin = 700;
+	int gapMax = 1200;
+	int eruptionBreakInitial = rmRandInt(420,720);
+	int eruptionBreak1 = rmRandInt(gapMin,gapMax);
+	int eruptionBreak2 = rmRandInt(gapMin,gapMax);
+	int eruptionBreak3 = rmRandInt(gapMin,gapMax);
+	int eruptionBreak4 = rmRandInt(gapMin,gapMax);
+	int eruptionBreak5 = rmRandInt(gapMin,gapMax);
+
+	string volcanoCenterID = ""+(rmGetUnitPlaced(volcanoControllerID, 0));
+
+	int hansaSocket1 = rmGetGroupingInstanceUnitByType(hansaInstanceID, "zpSPCSocketHansaKontorCityState")+1;
+	int hansaCenter1 = rmGetGroupingInstanceUnitByType(hansaInstanceID, "zpCinematicRevealer")+1;
+	
+	string guardianUnit1 = "zpBuccaneerGuard";
+	string guardianUnit2 = "zpPirateGuard";
+
+	int flag1 = rmGetGroupingInstanceUnitByType(hansaInstanceID, "zpHansaWaterSpawnFlag1")+1;
+	int flag2 = rmGetUnitPlaced(inventorwaterflagID1, 0);
+	int flag3 = rmGetUnitPlaced(piratewaterflagID1, 0);
+	int flag4 = rmGetUnitPlaced(piratewaterflagID2, 0);
+
+	string inventorSocket = ""+(flag2-1);
+	string pirate1Socket = ""+(flag3-1);
+	string pirate2Socket = ""+(flag4-1);
+
+	if (cNumberNonGaiaPlayers <=6) {
+		eruptionLenght = 120;
+		islandSize = 180;
+		eqAreaDamage = 24;
+	}
+
+	if (cNumberNonGaiaPlayers <=4) {
+		eruptionLenght = 100;
+		islandSize = 160;
+		eqAreaDamage = 30;
+	}
+
+	if (cNumberNonGaiaPlayers <=2) {
+		eruptionLenght = 80;
+		islandSize = 120;
+		eqAreaDamage = 40;
+	}
+
+	// Triggers
+
+	rmCreateTrigger("Tasmania_Counter");
+	rmCreateTrigger("Tasmania_Normalize");
+
+	rmSwitchToTrigger(rmTriggerID("Tasmania_Counter"));
+	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpTasmaniaStart"); // Blocks ship attack
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmAddTriggerEffect("Counter:Add Timer");
+	rmSetTriggerEffectParam("Name","TasmaniaCounter");
+	rmSetTriggerEffectParamInt("Start", 120);
+	rmSetTriggerEffectParamInt("Stop",0);
+	rmSetTriggerEffectParam("Msg", "Ship attack enabled in");
+	rmSetTriggerEffectParamInt("Event", rmTriggerID("Tasmania_Normalize"));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Tasmania_Normalize"));
+	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpTasmaniaPlay"); // Normalize ships
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Starting Techs");
+	rmSwitchToTrigger(rmTriggerID("Starting techs"));
+	rmAddTriggerEffect("Trade Route Set Level");
+	rmSetTriggerEffectParamInt("TradeRoute",1);
+	rmSetTriggerEffectParamInt("Level",1);
+		for(i=0; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechdeEUMapUpdateVisuals");
+		rmSetTriggerEffectParamInt("Status",2);
+		}
+		for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpIslandScientists");
+		rmSetTriggerEffectParamInt("Status",2);
+		}
+	rmAddTriggerEffect("Quest Var Set");
+	rmSetTriggerEffectParam("QVName","Eruption");
+	rmSetTriggerEffectParamInt("Value",1);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Conversion Suspend
+	rmCreateTrigger("Buildings Convert OFF");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+hansaSocket1);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("Socket 1 Convert ON");
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+hansaSocket1);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType",guardianUnit1);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",""+hansaSocket1);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType",guardianUnit2);
+	rmSetTriggerConditionParamInt("Dist",25);
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Count",0);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+hansaSocket1, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmAddTriggerEffect("Flash Units");
+	rmSetTriggerEffectParam("SrcObject", ""+hansaSocket1, false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Volcano trigger definition
+	rmCreateTrigger("Volcano_StartInitial");
+	rmCreateTrigger("Volcano_Start1");
+	rmCreateTrigger("Volcano_Start2");
+	rmCreateTrigger("Volcano_Start3");
+	rmCreateTrigger("Volcano_Start4");
+	rmCreateTrigger("Volcano_Start5");
+
+	rmCreateTrigger("Volcano_Lava");
+	rmCreateTrigger("Volcano_Lava_Death");
+	rmCreateTrigger("Volcano_Lava_Delay1");
+	rmCreateTrigger("Volcano_Lava_Delay2");
+	rmCreateTrigger("Volcano_Lava_Delay3");
+	rmCreateTrigger("Volcano_Lava_Delay4");
+	rmCreateTrigger("Volcano_Lava_Delay5");
+	rmCreateTrigger("Volcano_Lava_Transform");
+
+	rmCreateTrigger("Volcano_Short");
+	rmCreateTrigger("Volcano_Short2");
+	rmCreateTrigger("Volcano_Medium");
+	rmCreateTrigger("Volcano_Long");
+	rmCreateTrigger("Volcano_UltraLong");
+	rmCreateTrigger("Volcano_XXLong");
+	rmCreateTrigger("Volcano_Stop");
+	rmCreateTrigger("Volcano_Damage");
+
+	rmCreateTrigger("Volcano_Music1");
+	rmCreateTrigger("Volcano_Music2");
+	rmCreateTrigger("Volcano_Music3");
+	rmCreateTrigger("Volcano_MusicEnd");
+
+	// Volcano Music
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Music1"));
+	rmAddTriggerEffect("Music Filename");
+	rmSetTriggerEffectParam("Music","music\battle\BubbleChum.mp3"); // Music Filename
+	rmSetTriggerEffectParamFloat("Duration",4.0);
+	rmAddTriggerEffect("Sound Timer");
+	rmSetTriggerEffectParamInt("Time", 50000);
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music2"));
+	rmSetTriggerPriority(1);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(false);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Music2"));
+	rmAddTriggerEffect("Music Filename");
+	rmSetTriggerEffectParam("Music","music\battle\CamelsStrawsAndBacks.mp3"); // Music Filename
+	rmSetTriggerEffectParamFloat("Duration",2.0);
+	if (cNumberNonGaiaPlayers >=6){
+	rmAddTriggerEffect("Sound Timer");
+	rmSetTriggerEffectParamInt("Time", 60000);
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music3"));
+	}
+	rmSetTriggerPriority(1);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(false);
+	rmSetTriggerLoop(false);
+
+	if (cNumberNonGaiaPlayers >=6){
+	rmSwitchToTrigger(rmTriggerID("Volcano_Music3"));
+	rmAddTriggerEffect("Music Filename");
+	rmSetTriggerEffectParam("Music","music\battle\Ruinion.mp3"); // Music Filename
+	rmSetTriggerEffectParamFloat("Duration",2.0);
+	rmSetTriggerPriority(1);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(false);
+	rmSetTriggerLoop(false);
+	}
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_MusicEnd"));
+	rmAddTriggerCondition("Timer");
+	rmSetTriggerConditionParamInt("Param1",5);
+	rmAddTriggerEffect("Music Play");
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music2"));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music3"));
+	rmSetTriggerPriority(1);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(false);
+	rmSetTriggerLoop(false);
+
+	// Volcano Area Damage
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Damage"));
+	for(i=1; <= cNumberNonGaiaPlayers) {
+	rmAddTriggerEffect("Damage Units in Area");
+	rmSetTriggerEffectParam("SrcObject",volcanoCenterID);
+	rmSetTriggerEffectParamInt("Player",i);
+	rmSetTriggerEffectParam("UnitType","Unit");
+	rmSetTriggerEffectParamFloat("Dist",islandSize);
+	rmSetTriggerEffectParamFloat("Damage",eqAreaDamage);
+	rmAddTriggerEffect("Damage Units in Area");
+	rmSetTriggerEffectParam("SrcObject",volcanoCenterID);
+	rmSetTriggerEffectParamInt("Player",i);
+	rmSetTriggerEffectParam("UnitType","Building");
+	rmSetTriggerEffectParamFloat("Dist",islandSize);
+	rmSetTriggerEffectParamFloat("Damage",20*eqAreaDamage);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Volcano random starts
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_StartInitial"));
+	rmAddTriggerCondition("Quest Var Check");
+	rmSetTriggerConditionParam("QuestVar","Eruption");
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Value",1);
+	rmAddTriggerCondition("Timer");
+	rmSetTriggerConditionParamInt("Param1",eruptionBreakInitial);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpVolcanoActive"); // Activates Volcano
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
+	rmAddTriggerEffect("Set Lighting");
+	rmSetTriggerEffectParam("SetName", volcanoLight);
+	rmSetTriggerEffectParamFloat("FadeTime",5.0);
+	rmAddTriggerEffect("Shake Camera");
+	rmSetTriggerEffectParamFloat("Duration",3.0);
+	rmSetTriggerEffectParamFloat("Strength",0.4);
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","Earthquake");
+	rmAddTriggerEffect("Counter:Add Timer");
+	rmSetTriggerEffectParam("Name","VolcanoEruption");
+	rmSetTriggerEffectParamInt("Start",eruptionLenght);
+	rmSetTriggerEffectParamInt("Stop",0);
+	rmSetTriggerEffectParam("Msg", "Volcano eruption");
+	rmSetTriggerEffectParamInt("Event", rmTriggerID("Volcano_Stop"));
+	rmAddTriggerEffect("Quest Var Set");
+	rmSetTriggerEffectParam("QVName","Eruption");
+	rmSetTriggerEffectParamInt("Value",0);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start1"));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava"));
+
+	rmAddTriggerEffect("Send Chat");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("Message","The Volcano is waking up!");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Start1"));
+	rmAddTriggerCondition("Quest Var Check");
+	rmSetTriggerConditionParam("QuestVar","Eruption");
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Value",1);
+	rmAddTriggerCondition("Timer");
+	rmSetTriggerConditionParamInt("Param1",eruptionBreak1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpVolcanoActive"); // Activates Volcano
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
+	rmAddTriggerEffect("Set Lighting");
+	rmSetTriggerEffectParam("SetName","carribean");
+	rmSetTriggerEffectParamFloat("FadeTime",5.0);
+	rmAddTriggerEffect("Shake Camera");
+	rmSetTriggerEffectParamFloat("Duration",3.0);
+	rmSetTriggerEffectParamFloat("Strength",0.4);
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","Earthquake");
+	rmAddTriggerEffect("Counter:Add Timer");
+	rmSetTriggerEffectParam("Name","VolcanoEruption");
+	rmSetTriggerEffectParamInt("Start",eruptionLenght);
+	rmSetTriggerEffectParamInt("Stop",0);
+	rmSetTriggerEffectParam("Msg", "Volcano eruption");
+	rmSetTriggerEffectParamInt("Event", rmTriggerID("Volcano_Stop"));
+	rmAddTriggerEffect("Quest Var Set");
+	rmSetTriggerEffectParam("QVName","Eruption");
+	rmSetTriggerEffectParamInt("Value",0);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start2"));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava"));
+
+	rmAddTriggerEffect("Send Chat");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("Message","The Volcano is waking up!");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Start2"));
+	rmAddTriggerCondition("Quest Var Check");
+	rmSetTriggerConditionParam("QuestVar","Eruption");
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Value",1);
+	rmAddTriggerCondition("Timer");
+	rmSetTriggerConditionParamInt("Param1",eruptionBreak2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpVolcanoActive"); // Activates Volcano
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
+	rmAddTriggerEffect("Set Lighting");
+	rmSetTriggerEffectParam("SetName","carribean");
+	rmSetTriggerEffectParamFloat("FadeTime",5.0);
+	rmAddTriggerEffect("Shake Camera");
+	rmSetTriggerEffectParamFloat("Duration",3.0);
+	rmSetTriggerEffectParamFloat("Strength",0.4);
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","Earthquake");
+	rmAddTriggerEffect("Counter:Add Timer");
+	rmSetTriggerEffectParam("Name","VolcanoEruption");
+	rmSetTriggerEffectParamInt("Start",eruptionLenght);
+	rmSetTriggerEffectParamInt("Stop",0);
+	rmSetTriggerEffectParam("Msg", "Volcano eruption");
+	rmSetTriggerEffectParamInt("Event", rmTriggerID("Volcano_Stop"));
+	rmAddTriggerEffect("Quest Var Set");
+	rmSetTriggerEffectParam("QVName","Eruption");
+	rmSetTriggerEffectParamInt("Value",0);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start3"));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava"));
+
+	rmAddTriggerEffect("Send Chat");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("Message","The Volcano is waking up!");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Start3"));
+	rmAddTriggerCondition("Quest Var Check");
+	rmSetTriggerConditionParam("QuestVar","Eruption");
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Value",1);
+	rmAddTriggerCondition("Timer");
+	rmSetTriggerConditionParamInt("Param1",eruptionBreak3);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpVolcanoActive"); // Activates Volcano
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
+	rmAddTriggerEffect("Set Lighting");
+	rmSetTriggerEffectParam("SetName","carribean");
+	rmSetTriggerEffectParamFloat("FadeTime",5.0);
+	rmAddTriggerEffect("Shake Camera");
+	rmSetTriggerEffectParamFloat("Duration",3.0);
+	rmSetTriggerEffectParamFloat("Strength",0.4);
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","Earthquake");
+	rmAddTriggerEffect("Counter:Add Timer");
+	rmSetTriggerEffectParam("Name","VolcanoEruption");
+	rmSetTriggerEffectParamInt("Start",eruptionLenght);
+	rmSetTriggerEffectParamInt("Stop",0);
+	rmSetTriggerEffectParam("Msg", "Volcano eruption");
+	rmSetTriggerEffectParamInt("Event", rmTriggerID("Volcano_Stop"));
+	rmAddTriggerEffect("Quest Var Set");
+	rmSetTriggerEffectParam("QVName","Eruption");
+	rmSetTriggerEffectParamInt("Value",0);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start4"));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava"));
+
+	rmAddTriggerEffect("Send Chat");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("Message","The Volcano is waking up!");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Start4"));
+	rmAddTriggerCondition("Quest Var Check");
+	rmSetTriggerConditionParam("QuestVar","Eruption");
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Value",1);
+	rmAddTriggerCondition("Timer");
+	rmSetTriggerConditionParamInt("Param1",eruptionBreak4);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpVolcanoActive"); // Activates Volcano
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
+	rmAddTriggerEffect("Set Lighting");
+	rmSetTriggerEffectParam("SetName","carribean");
+	rmSetTriggerEffectParamFloat("FadeTime",5.0);
+	rmAddTriggerEffect("Shake Camera");
+	rmSetTriggerEffectParamFloat("Duration",3.0);
+	rmSetTriggerEffectParamFloat("Strength",0.4);
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","Earthquake");
+	rmAddTriggerEffect("Counter:Add Timer");
+	rmSetTriggerEffectParam("Name","VolcanoEruption");
+	rmSetTriggerEffectParamInt("Start",eruptionLenght);
+	rmSetTriggerEffectParamInt("Stop",0);
+	rmSetTriggerEffectParam("Msg", "Volcano eruption");
+	rmSetTriggerEffectParamInt("Event", rmTriggerID("Volcano_Stop"));
+	rmAddTriggerEffect("Quest Var Set");
+	rmSetTriggerEffectParam("QVName","Eruption");
+	rmSetTriggerEffectParamInt("Value",0);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start5"));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava"));
+
+	rmAddTriggerEffect("Send Chat");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("Message","The Volcano is waking up!");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Start5"));
+	rmAddTriggerCondition("Quest Var Check");
+	rmSetTriggerConditionParam("QuestVar","Eruption");
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Value",1);
+	rmAddTriggerCondition("Timer");
+	rmSetTriggerConditionParamInt("Param1",eruptionBreak5);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpVolcanoActive"); // Activates Volcano
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
+	rmAddTriggerEffect("Set Lighting");
+	rmSetTriggerEffectParam("SetName","carribean");
+	rmSetTriggerEffectParamFloat("FadeTime",5.0);
+	rmAddTriggerEffect("Shake Camera");
+	rmSetTriggerEffectParamFloat("Duration",3.0);
+	rmSetTriggerEffectParamFloat("Strength",0.4);
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","Earthquake");
+	rmAddTriggerEffect("Counter:Add Timer");
+	rmSetTriggerEffectParam("Name","VolcanoEruption");
+	rmSetTriggerEffectParamInt("Start",eruptionLenght);
+	rmSetTriggerEffectParamInt("Stop",0);
+	rmSetTriggerEffectParam("Msg", "Volcano eruption");
+	rmSetTriggerEffectParamInt("Event", rmTriggerID("Volcano_Stop"));
+	rmAddTriggerEffect("Quest Var Set");
+	rmSetTriggerEffectParam("QVName","Eruption");
+	rmSetTriggerEffectParamInt("Value",0);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start1"));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Music1"));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava"));
+
+	rmAddTriggerEffect("Send Chat");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("Message","The Volcano is waking up!");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Volcano Lava Flow
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Lava"));
+
+	rmAddTriggerEffect("Trade Route Toggle State");
+	rmSetTriggerEffectParamInt("TradeRoute",2);
+	rmSetTriggerEffectParam("ShowUnit","true");
+	rmAddTriggerEffect("Trade Route Toggle State");
+	rmSetTriggerEffectParamInt("TradeRoute",3);
+	rmSetTriggerEffectParam("ShowUnit","true");
+	rmAddTriggerEffect("Trade Route Toggle State");
+	rmSetTriggerEffectParamInt("TradeRoute",4);
+	rmSetTriggerEffectParam("ShowUnit","true");
+	rmAddTriggerEffect("Trade Route Toggle State");
+	rmSetTriggerEffectParamInt("TradeRoute",5);
+	rmSetTriggerEffectParam("ShowUnit","true");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava_Delay1"));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Lava_Death"));
+	rmAddTriggerCondition("Quest Var Check");
+	rmSetTriggerConditionParam("QuestVar","Eruption");
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamInt("Value",1);
+	rmAddTriggerEffect("Trade Route Toggle State");
+	rmSetTriggerEffectParamInt("TradeRoute",2);
+	rmSetTriggerEffectParam("ShowUnit","false");
+	rmAddTriggerEffect("Trade Route Toggle State");
+	rmSetTriggerEffectParamInt("TradeRoute",3);
+	rmSetTriggerEffectParam("ShowUnit","false");
+	rmAddTriggerEffect("Trade Route Toggle State");
+	rmSetTriggerEffectParamInt("TradeRoute",4);
+	rmSetTriggerEffectParam("ShowUnit","false");
+	rmAddTriggerEffect("Trade Route Toggle State");
+	rmSetTriggerEffectParamInt("TradeRoute",5);
+	rmSetTriggerEffectParam("ShowUnit","false");
+	rmAddTriggerEffect("Player : Override Culture for Art");
+	rmSetTriggerEffectParamInt("Player",0);
+	rmSetTriggerEffectParam("Culture","WesternEurope");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Lava_Delay1"));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",volcanoCenterID);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","zpLavaSpawnerTradeWagon");
+	rmSetTriggerConditionParamInt("Dist",20.0);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",20);
+
+	rmAddTriggerEffect("Player : Override Culture for Art");
+	rmSetTriggerEffectParamInt("Player",0);
+	rmSetTriggerEffectParam("Culture","Chinese");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava_Delay2"));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Lava_Delay2"));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",volcanoCenterID);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","zpLavaSpawnerTradeWagon2");
+	rmSetTriggerConditionParamInt("Dist",20.0);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",20);
+
+	rmAddTriggerEffect("Player : Override Culture for Art");
+	rmSetTriggerEffectParamInt("Player",0);
+	rmSetTriggerEffectParam("Culture","Japanese");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava_Delay3"));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Lava_Delay3"));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",volcanoCenterID);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","zpLavaSpawnerTradeWagon3");
+	rmSetTriggerConditionParamInt("Dist",20.0);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",20);
+
+	rmAddTriggerEffect("Player : Override Culture for Art");
+	rmSetTriggerEffectParamInt("Player",0);
+	rmSetTriggerEffectParam("Culture","Indian");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava_Delay4"));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Lava_Delay4"));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",volcanoCenterID);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","zpLavaSpawnerTradeWagon4");
+	rmSetTriggerConditionParamInt("Dist",20.0);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",20);
+
+	rmAddTriggerEffect("Player : Override Culture for Art");
+	rmSetTriggerEffectParamInt("Player",0);
+	rmSetTriggerEffectParam("Culture","Mediterranean");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava_Delay5"));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Lava_Delay5"));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",volcanoCenterID);
+	rmSetTriggerConditionParamInt("Player",0);
+	rmSetTriggerConditionParam("UnitType","zpLavaSpawnerTradeWagon5");
+	rmSetTriggerConditionParamInt("Dist",20.0);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",20);
+
+	rmAddTriggerEffect("Player : Override Culture for Art");
+	rmSetTriggerEffectParamInt("Player",0);
+	rmSetTriggerEffectParam("Culture","EasternEurope");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Lava_Transform"));
+	rmAddTriggerCondition("Timer");
+	rmSetTriggerConditionParamInt("Param1",15);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpVolcanoLavaBack");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Volcano Eruption Phases
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Short"));
+	rmAddTriggerCondition("Timer");
+	rmSetTriggerConditionParamInt("Param1",20);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpVolcanoRangeShort"); 
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Medium"));
+	rmAddTriggerEffect("Shake Camera");
+	rmSetTriggerEffectParamFloat("Duration",2.0);
+	rmSetTriggerEffectParamFloat("Strength",0.2);
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","Earthquake");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Damage"));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Medium"));
+	rmAddTriggerCondition("Timer");
+	rmSetTriggerConditionParamInt("Param1",20);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpVolcanoRangeMedium");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Shake Camera");
+	rmSetTriggerEffectParamFloat("Duration",2.0);
+	rmSetTriggerEffectParamFloat("Strength",0.2);
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","Earthquake");
+	if (cNumberNonGaiaPlayers <=2){
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short2"));
+	}
+	else{
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Long"));
+	}
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Damage"));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	if (cNumberNonGaiaPlayers >=3){
+	rmSwitchToTrigger(rmTriggerID("Volcano_Long"));
+	rmAddTriggerCondition("Timer");
+	rmSetTriggerConditionParamInt("Param1",20);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpVolcanoRangeLong");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Shake Camera");
+	rmSetTriggerEffectParamFloat("Duration",2.0);
+	rmSetTriggerEffectParamFloat("Strength",0.2);
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","Earthquake");
+	if (cNumberNonGaiaPlayers <=4){
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short2"));
+	}
+	else{
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_UltraLong"));
+	}
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Damage"));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	if (cNumberNonGaiaPlayers >=5){
+	rmSwitchToTrigger(rmTriggerID("Volcano_UltraLong"));
+	rmAddTriggerCondition("Timer");
+	rmSetTriggerConditionParamInt("Param1",20);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpVolcanoRangeUltraLong");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Shake Camera");
+	rmSetTriggerEffectParamFloat("Duration",2.0);
+	rmSetTriggerEffectParamFloat("Strength",0.2);
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","Earthquake");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Damage"));
+	if (cNumberNonGaiaPlayers <=6){
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short2"));
+	}
+	else{
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_XXLong"));
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	if (cNumberNonGaiaPlayers >=7){
+	rmSwitchToTrigger(rmTriggerID("Volcano_XXLong"));
+	rmAddTriggerCondition("Timer");
+	rmSetTriggerConditionParamInt("Param1",20);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpVolcanoRangeXXLong");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Shake Camera");
+	rmSetTriggerEffectParamFloat("Duration",2.0);
+	rmSetTriggerEffectParamFloat("Strength",0.2);
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","Earthquake");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Damage"));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short2"));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Short2"));
+	rmAddTriggerCondition("Timer");
+	rmSetTriggerConditionParamInt("Param1",20);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpVolcanoRangeShort");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Shake Camera");
+	rmSetTriggerEffectParamFloat("Duration",1.5);
+	rmSetTriggerEffectParamFloat("Strength",0.2);
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","Earthquake");
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava_Transform"));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Volcano stop
+
+	rmSwitchToTrigger(rmTriggerID("Volcano_Stop"));
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",0);
+	rmSetTriggerEffectParam("TechID","cTechzpVolcanoPassive"); // Desctivates Volcano
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Start"));
+	rmAddTriggerEffect("Set Lighting");
+	rmSetTriggerEffectParam("SetName",shineAlight);
+	rmSetTriggerEffectParamFloat("FadeTime",5.0);
+	rmAddTriggerEffect("Shake Camera");
+	rmSetTriggerEffectParamFloat("Duration",1.0);
+	rmSetTriggerEffectParamFloat("Strength",0.1);
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset","Earthquake");
+	rmAddTriggerEffect("Quest Var Set");
+	rmSetTriggerEffectParam("QVName","Eruption");
+	rmSetTriggerEffectParamInt("Value",1);
+	rmAddTriggerEffect("FadeOutMusic");
+	rmSetTriggerEffectParamFloat("Duration",4.0);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_MusicEnd"));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava_Death"));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Update Sockets
+
+	rmCreateTrigger("I Update Sockets");
+	rmAddTriggerCondition("Player Unit Count");
+	rmSetTriggerConditionParamInt("PlayerID",0);
+	rmSetTriggerConditionParam("Protounit","deTradingGalleon");
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava_Death"));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("II Update Sockets");
+	rmAddTriggerCondition("Player Unit Count");
+	rmSetTriggerConditionParamInt("PlayerID",0);
+	rmSetTriggerConditionParam("Protounit","deTradingFluyt");
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Lava_Death"));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Update ports
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Update TR Plr"+k);
+	rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParam("TechID","cTechzpHansaTradeRouteUpgrade");
+	rmSetTriggerConditionParamInt("Status",2);
+	rmAddTriggerEffect("Trade Route Set Level");
+	rmSetTriggerEffectParamInt("TradeRoute",1);
+	rmSetTriggerEffectParamInt("Level",2);
+	rmAddTriggerEffect("Trade Route Set Level");
+	rmSetTriggerEffectParamInt("TradeRoute",2);
+	rmSetTriggerEffectParamInt("Level",2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	// ******************* Politicians *******************
+
+	// Italian Vilager Balance
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Italian Vilager Balance"+k);
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("Civilization","DEItalians");
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpItalianSettlerBallance");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(2);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(false);
+	rmSetTriggerLoop(false);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Italian Gondola Balance"+k);
+	rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParam("TechID","cTechDEHCGondolas");
+	rmSetTriggerConditionParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpItalianGondolaBallance");
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(2);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(false);
+	rmSetTriggerLoop(false);
+	}
+
+	// Speed Always Wins Returner
+
+		for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Cheat Returner"+k);
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamInt("Param1",10);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchIncrease");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmSetTriggerPriority(2);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(false);
+		rmSetTriggerLoop(false);
+		}
+
+	// Consulate - Tradingpost politician switcher
+
+		for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Activate Consulate Japan"+k);
+		rmAddTriggerCondition("ZP Player Civilization");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("Civilization","Japanese");
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnJapanese"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+		}
+
+		for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Activate Consulate China"+k);
+		rmAddTriggerCondition("ZP Player Civilization");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("Civilization","Chinese");
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnChinese"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+		}
+
+		for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Activate Consulate India"+k);
+		rmAddTriggerCondition("ZP Player Civilization");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("Civilization","Indians");
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID","cTechzpPickConsulateTechAvailable"); //operator
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOnIndian"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+		}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Activate Tortuga"+k);
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID","cTechzpTheBlackFlag"); //operator
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPiratesBaltic"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Activate Hansa"+k);
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID","cTechzpHansaExpansion"); //operator
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffHansa"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Activate Scientists"+k);
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID","cTechzpPickScientist"); //operator
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffScientists"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpBigButtonResearchDecrease"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player",k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+	}
+
+	// Specific for human players
+
+	for(k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Human Check Plr"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "true");
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpIsPirateMap"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Japan"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Tortuga"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Scientists"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Hansa"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	// Privateer training
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("TrainPrivateer1ON Plr"+k);
+	rmCreateTrigger("TrainPrivateer1OFF Plr"+k);
+	rmCreateTrigger("TrainPrivateer1TIME Plr"+k);
+
+
+	rmCreateTrigger("TrainPrivateer2ON Plr"+k);
+	rmCreateTrigger("TrainPrivateer2OFF Plr"+k);
+	rmCreateTrigger("TrainPrivateer2TIME Plr"+k);
+
+	rmSwitchToTrigger(rmTriggerID("TrainPrivateer2ON_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate2Socket); // Unique Object ID Village 4
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpPrivateerProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainPrivateer2"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2OFF_Plr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2TIME_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("TrainPrivateer2OFF_Plr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2ON_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("TrainPrivateer2TIME_Plr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",200);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpPrivateerBuildLimitReduceShadow"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainPrivateer2"); //operator
+	rmSetTriggerEffectParamInt("Status",0);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+
+	rmSwitchToTrigger(rmTriggerID("TrainPrivateer1ON_Plr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate1Socket); // Unique Object ID Village 3
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpPrivateerProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainPrivateer1"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1OFF_Plr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1TIME_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("TrainPrivateer1OFF_Plr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("TrainPrivateer1TIME_Plr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",200);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpPrivateerBuildLimitReduceShadow"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainPrivateer1"); //operator
+	rmSetTriggerEffectParamInt("Status",0);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	// Unique ship Training
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("UniqueShip1TIMEPlr"+k);
+
+	rmCreateTrigger("BlackbTrain1ONPlr"+k);
+	rmCreateTrigger("BlackbTrain1OFFPlr"+k);
+
+	rmCreateTrigger("GraceTrain1ONPlr"+k);
+	rmCreateTrigger("GraceTrain1OFFPlr"+k);
+
+	rmCreateTrigger("CaesarTrain1ONPlr"+k);
+	rmCreateTrigger("CaesarTrain1OFFPlr"+k);
+
+	rmCreateTrigger("PirateDestroyerTrain1ONPlr"+k);
+	rmCreateTrigger("PirateDestroyerTrain1OFFPlr"+k);
+
+	
+	rmCreateTrigger("UniqueShip2TIMEPlr"+k);
+
+	rmCreateTrigger("BlackbTrain2ONPlr"+k);
+	rmCreateTrigger("BlackbTrain2OFFPlr"+k);
+
+	rmCreateTrigger("GraceTrain2ONPlr"+k);
+	rmCreateTrigger("GraceTrain2OFFPlr"+k);
+
+	rmCreateTrigger("CaesarTrain2ONPlr"+k);
+	rmCreateTrigger("CaesarTrain2OFFPlr"+k);
+
+	rmCreateTrigger("PirateDestroyerTrain2ONPlr"+k);
+	rmCreateTrigger("PirateDestroyerTrain2OFFPlr"+k);
+	
+	rmSwitchToTrigger(rmTriggerID("UniqueShip2TIMEPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",200);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpReducePirateShipsBuildLimit"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("BlackbTrain2ONPlr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate2Socket);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCQueenAnneProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainQueenAnne2"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip2TIMEPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain2OFFPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("BlackbTrain2OFFPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain2ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("GraceTrain2ONPlr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate2Socket); // Unique Object ID Village 4
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCBlackPearlProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainBlackPearl2"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip2TIMEPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain2OFFPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("GraceTrain2OFFPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain2ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("CaesarTrain2ONPlr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate2Socket);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCRevenantSteamerProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainRevenantSteamer2"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip2TIMEPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain2OFFPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("CaesarTrain2OFFPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain2ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("PirateDestroyerTrain2ONPlr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate2Socket);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCPirateDestroyerProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainPirateDestroyer2"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip2TIMEPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("PirateDestroyerTrain2OFFPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("PirateDestroyerTrain2OFFPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("PirateDestroyerTrain2ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	
+
+	// Build limit reducer
+	rmSwitchToTrigger(rmTriggerID("UniqueShip1TIMEPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",200);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpReducePirateShipsBuildLimit"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Blackbeard
+	rmSwitchToTrigger(rmTriggerID("BlackbTrain1ONPlr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate1Socket);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCQueenAnneProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainQueenAnne1"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip1TIMEPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain1OFFPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("BlackbTrain1OFFPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain1ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Grace
+	rmSwitchToTrigger(rmTriggerID("GraceTrain1ONPlr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate1Socket); // Unique Object ID Village 3
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCBlackPearlProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainBlackPearl1"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip1TIMEPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain1OFFPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("GraceTrain1OFFPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain1ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Caesar
+	rmSwitchToTrigger(rmTriggerID("CaesarTrain1ONPlr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate1Socket);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCRevenantSteamerProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainRevenantSteamer1"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip1TIMEPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain1OFFPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("CaesarTrain1OFFPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain1ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// Destroyer
+	rmSwitchToTrigger(rmTriggerID("PirateDestroyerTrain1ONPlr"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate1Socket);
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("UnitType","zpSPCPirateDestroyerProxy");
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamInt("Count",1);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpTrainPirateDestroyer1"); //operator
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip1TIMEPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("PirateDestroyerTrain1OFFPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("PirateDestroyerTrain1OFFPlr"+k));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamFloat("Param1",1200);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("PirateDestroyerTrain1ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	}
+
+
+	// Pirate trading post activation
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Pirates1on Player"+k);
+	rmCreateTrigger("Pirates1off Player"+k);
+
+	rmSwitchToTrigger(rmTriggerID("Pirates1on_Player"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate1Socket); // Unique Object ID Village 3
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("UnitType","TradingPost");
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamFloat("Count",1);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",pirate1Socket); // Unique Object ID Village 3
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag1");
+	rmSetTriggerEffectParamInt("Dist",100);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1off_Player"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain1ONPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain1ONPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain1ONPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("PirateDestroyerTrain1ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Pirates1off_Player"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate1Socket); // Unique Object ID Village 3
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("UnitType","TradingPost");
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamFloat("Count",0);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",pirate1Socket); // Unique Object ID Village 3
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag1");
+	rmSetTriggerEffectParamInt("Dist",100);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates1on_Player"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer1ON_Plr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain1ONPlr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain1ONPlr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain1ONPlr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("PirateDestroyerTrain1ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Pirates2on Player"+k);
+	rmCreateTrigger("Pirates2off Player"+k);
+
+	rmSwitchToTrigger(rmTriggerID("Pirates2on_Player"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate2Socket); // Unique Object ID Village 4
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("UnitType","TradingPost");
+	rmSetTriggerConditionParam("Op",">=");
+	rmSetTriggerConditionParamFloat("Count",1);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",pirate2Socket); // Unique Object ID Village 4
+	rmSetTriggerEffectParamInt("SrcPlayer",0);
+	rmSetTriggerEffectParamInt("TrgPlayer",k);
+	rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag2");
+	rmSetTriggerEffectParamInt("Dist",100);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates2off_Player"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2ON_Plr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain2ONPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain2ONPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain2ONPlr"+k));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("PirateDestroyerTrain2ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Pirates2off_Player"+k));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject",pirate2Socket); // Unique Object ID Village 4
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParamInt("Dist",35);
+	rmSetTriggerConditionParam("UnitType","TradingPost");
+	rmSetTriggerConditionParam("Op","==");
+	rmSetTriggerConditionParamFloat("Count",0);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject",pirate2Socket); // Unique Object ID Village 4
+	rmSetTriggerEffectParamInt("SrcPlayer",k);
+	rmSetTriggerEffectParamInt("TrgPlayer",0);
+	rmSetTriggerEffectParam("UnitType","zpPirateWaterSpawnFlag2");
+	rmSetTriggerEffectParamInt("Dist",100);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Pirates2on_Player"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainPrivateer2ON_Plr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain2ONPlr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain2ONPlr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain2ONPlr"+k));
+	rmAddTriggerEffect("Disable Trigger");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("PirateDestroyerTrain2ONPlr"+k));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("TrainCog1ON Plr"+k);
+		rmCreateTrigger("TrainCog1OFF Plr"+k);
+		rmCreateTrigger("TrainCog1TIME Plr"+k);
+
+		rmCreateTrigger("TrainFluyt1ON Plr"+k);
+		rmCreateTrigger("TrainFluyt1OFF Plr"+k);
+		rmCreateTrigger("TrainFluyt1TIME Plr"+k);
+
+		rmSwitchToTrigger(rmTriggerID("TrainCog1ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+hansaSocket1);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpHanseaticWarshipProxy");
+		rmSetTriggerConditionParamInt("Dist",35);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTrainHansaCog1"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainCog1OFF_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainCog1TIME_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("TrainCog1OFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamInt("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainCog1ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("TrainCog1TIME_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",200);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpReduceHansaCogBuildLimit"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTrainHansaCog1"); //operator
+		rmSetTriggerEffectParamInt("Status",0);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("TrainFluyt1ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+hansaSocket1);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpHanseaticFluytProxy");
+		rmSetTriggerConditionParamInt("Dist",35);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTrainHansaFluyt1"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFluyt1OFF_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFluyt1TIME_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("TrainFluyt1OFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamInt("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFluyt1ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("TrainFluyt1TIME_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",200);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpReduceHansaFluytBuildLimit"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTrainHansaFluyt1"); //operato
+		rmSetTriggerEffectParamInt("Status",0);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
+	// Convert Hansa Settlement
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Hansa1ON Plr"+k);
+		rmCreateTrigger("Hansa1OFF Plr"+k);
+
+		rmSwitchToTrigger(rmTriggerID("Hansa1ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+hansaSocket1);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParamInt("Dist",35);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Convert");
+		rmSetTriggerEffectParam("SrcObject",""+hansaCenter1);
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmAddTriggerEffect("Convert");
+		rmSetTriggerEffectParam("SrcObject",""+flag1);
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+hansaCenter1);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
+		rmSetTriggerEffectParamInt("Dist",50);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+hansaCenter1);
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
+		rmSetTriggerEffectParamInt("Dist",50);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Hansa1OFF_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainCog1ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFluyt1ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Hansa1OFF_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+hansaSocket1);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParamInt("Dist",35);
+		rmSetTriggerConditionParam("Op","==");
+		rmSetTriggerConditionParamInt("Count",0);
+		rmAddTriggerEffect("Convert");
+		rmSetTriggerEffectParam("SrcObject",""+hansaCenter1);
+		rmSetTriggerEffectParamInt("PlayerID",0);
+		rmAddTriggerEffect("Convert");
+		rmSetTriggerEffectParam("SrcObject",""+flag1);
+		rmSetTriggerEffectParamInt("PlayerID",0);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+hansaCenter1);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpTradingPostCaptureNaval");
+		rmSetTriggerEffectParamInt("Dist",50);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",""+hansaCenter1);
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
+		rmSetTriggerEffectParamInt("Dist",50);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Hansa1ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainCog1ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainFluyt1ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
+	// Submarine Training
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("TrainSubmarine1ON Plr"+k);
+		rmCreateTrigger("TrainSubmarine1OFF Plr"+k);
+		rmCreateTrigger("TrainSubmarine1TIME Plr"+k);
+
+		rmCreateTrigger("Nautilus1TIMEPlr"+k);
+		rmCreateTrigger("Nautilus1ONPlr"+k);
+		rmCreateTrigger("Nautilus1OFFPlr"+k);
+
+		rmSwitchToTrigger(rmTriggerID("TrainSubmarine1ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",inventorSocket); // Unique Object ID Village 1
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpSubmarineProxy");
+		rmSetTriggerConditionParamInt("Dist",35);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("ZP Set Tech Status Conditional (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechCondition","cTechzpTransformNemoSubmarines"); //operator
+		rmSetTriggerEffectParam("Tech1ID","cTechzpTrainSubmarineSPC1"); //operator
+		rmSetTriggerEffectParam("Tech2ID","cTechzpTrainSubmarine1"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainSubmarine1OFF_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainSubmarine1TIME_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("TrainSubmarine1OFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainSubmarine1ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("TrainSubmarine1TIME_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",200);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpReduceSubmarineBuildLimit"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTrainSubmarine1"); //operator
+		rmSetTriggerEffectParamInt("Status",0);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		// Build limit reducer 1
+		rmSwitchToTrigger(rmTriggerID("Nautilus1TIMEPlr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",200);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpReduceNautilusBuildLimit"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		// Nautilus 1
+		rmSwitchToTrigger(rmTriggerID("Nautilus1ONPlr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",inventorSocket); // Unique Object ID Village 1
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpNautilusProxy");
+		rmSetTriggerConditionParamInt("Dist",35);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("ZP Set Tech Status Conditional (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+    	rmSetTriggerEffectParam("TechCondition","cTechzpTransformNemoSubmarines"); //operator
+		rmSetTriggerEffectParam("Tech1ID","cTechzpTrainNautilusSPC1"); //operator
+    	rmSetTriggerEffectParam("Tech2ID","cTechzpTrainNautilus1"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Nautilus1TIMEPlr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Nautilus1OFFPlr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Nautilus1OFFPlr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Nautilus1ONPlr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+	}
+
+	// Renegade trading post activation
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Renegades1on Player"+k);
+		rmCreateTrigger("Renegades1off Player"+k);
+
+		rmSwitchToTrigger(rmTriggerID("Renegades1on_Player"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",inventorSocket); // Unique Object ID Village 1
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParamInt("Dist",35);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamFloat("Count",1);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",inventorSocket); // Unique Object ID Village 1
+		rmSetTriggerEffectParamInt("SrcPlayer",0);
+		rmSetTriggerEffectParamInt("TrgPlayer",k);
+		rmSetTriggerEffectParam("UnitType","zpNativeWaterSpawnFlag1");
+		rmSetTriggerEffectParamInt("Dist",100);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Renegades1off_Player"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainSubmarine1ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Nautilus1ONPlr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Renegades1off_Player"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",inventorSocket); // Unique Object ID Village 1
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParamInt("Dist",35);
+		rmSetTriggerConditionParam("UnitType","TradingPost");
+		rmSetTriggerConditionParam("Op","==");
+		rmSetTriggerConditionParamFloat("Count",0);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject",inventorSocket); // Unique Object ID Village 1
+		rmSetTriggerEffectParamInt("SrcPlayer",k);
+		rmSetTriggerEffectParamInt("TrgPlayer",0);
+		rmSetTriggerEffectParam("UnitType","zpNativeWaterSpawnFlag1");
+		rmSetTriggerEffectParamInt("Dist",100);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Renegades1on_Player"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainSubmarine1ON_Plr"+k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Nautilus1ONPlr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
+	// AI Pirate Captains
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+
+	rmCreateTrigger("ZP Pick Pirate Captain"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerCondition("Tech Status Equals");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParamInt("TechID",586);
+	rmSetTriggerConditionParamInt("Status",2);
+
+	int pirateCaptain=-1;
+	pirateCaptain = rmRandInt(1,3);
+
+	if (pirateCaptain==1)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesBlackbeard"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (pirateCaptain==2)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesGrace"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (pirateCaptain==3)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesBeauregard"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	// AI Hansa Leaders
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+	if (rmGetPlayerTeam(k) == 0) {
+		rmCreateTrigger("ZP_Iniciate_Revolution"+k);
+		rmCreateTrigger("ZP_Execute_Revolution"+k);
+		rmCreateTrigger("ZP_Timer_Revolution"+k);
+
+		rmSwitchToTrigger(rmTriggerID("ZP_Iniciate_Revolution"+k));
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechIndustrialize");
+		rmSetTriggerConditionParamInt("Status",2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Timer_Revolution"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("ZP_Timer_Revolution"+k));
+		rmAddTriggerCondition("Timer");
+		rmSetTriggerConditionParamInt("Param1",10);
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechzpNativeVenetians");
+		rmSetTriggerConditionParamInt("Status",2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Execute_Revolution"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("ZP_Execute_Revolution"+k));
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechzpNativeVenetians");
+		rmSetTriggerConditionParamInt("Status",2);
+
+		int revFraction=-1;
+		revFraction = rmRandInt(1,3);
+
+		if (revFraction==1)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpConsulateHansaWestern"); //operator
+			rmSetTriggerEffectParamInt("Status",2);
+		}
+		if (revFraction==2)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpConsulateHansaCentral"); //operator
+			rmSetTriggerEffectParamInt("Status",2);
+		}
+		if (revFraction==3)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpConsulateHansaEast"); //operator
+			rmSetTriggerEffectParamInt("Status",2);
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+	}
+
+	// AI Renegade Captains
+
+		for (k=1; <= cNumberNonGaiaPlayers) {
+
+		rmCreateTrigger("ZP Pick Renegade Captain"+k);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerCondition("Tech Status Equals");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParamInt("TechID",586);
+		rmSetTriggerConditionParamInt("Status",2);
+
+		int renegadeCaptain=-1;
+		renegadeCaptain = rmRandInt(1,3);
+
+		if (renegadeCaptain==1)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistNemo"); //operator
+			rmSetTriggerEffectParamInt("Status",2);
+		}
+		if (renegadeCaptain==2)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistValentine"); //operator
+			rmSetTriggerEffectParamInt("Status",2);
+		}
+		if (renegadeCaptain==3)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpConsulateScientistkhora"); //operator
+			rmSetTriggerEffectParamInt("Status",2);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpAIAirshipSetup"); //operator
+			rmSetTriggerEffectParamInt("Status",2);
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		}
+
+	for(k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("Submarine Transform"+k);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "true");
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpTransformNemoSubmarines"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+    }
 	
 } // END
 	
