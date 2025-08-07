@@ -44,7 +44,7 @@ void main(void)
     string aopMapType = "piratehistoricalmap";
 	string tradeRouteMapType = "euroTradeRouteCapture";
     string shineAlight = "spcjc4aflashback";
-	string volcanoLight = "pcjc4brain";
+	string volcanoLight = "spcjc4brain";
     string huntType = "caribou";
     string fishies = "FishSalmon";
     string treeType1 = "TreeGreatLakesSnow";
@@ -264,33 +264,65 @@ void main(void)
 
 	if (TeamNum == 2)
 	{
-		if (rmRandFloat(0,1) <= 0.50)
-		{
-			rmSetPlacementTeam(0);
-			rmSetPlacementSection(0.09-0.04*teamZeroCount, 0.09);
-			rmSetTeamSpacingModifier(0.50);
-			rmPlacePlayersCircular(0.44, 0.44, 0);
-			leftTeam = 0;
+		if (cNumberNonGaiaPlayers <=5){
+			if (rmRandFloat(0,1) <= 0.50)
+			{
+				rmSetPlacementTeam(0);
+				rmSetPlacementSection(0.05-0.06*teamZeroCount, 0.05);
+				rmSetTeamSpacingModifier(0.50);
+				rmPlacePlayersCircular(0.44, 0.44, 0);
+				leftTeam = 0;
 
-			rmSetPlacementTeam(1);
-			rmSetPlacementSection(0.16, 0.16+0.04*teamOneCount);
-			rmSetTeamSpacingModifier(0.50);
-			rmPlacePlayersCircular(0.44, 0.44, 0);	
-			rightTeam = 1;
+				rmSetPlacementTeam(1);
+				rmSetPlacementSection(0.20, 0.20+0.06*teamOneCount);
+				rmSetTeamSpacingModifier(0.50);
+				rmPlacePlayersCircular(0.44, 0.44, 0);	
+				rightTeam = 1;
+			}
+			else
+			{
+				rmSetPlacementTeam(0);
+				rmSetPlacementSection(0.20, 0.20+0.06*teamOneCount);
+				rmSetTeamSpacingModifier(0.50);
+				rmPlacePlayersCircular(0.44, 0.44, 0);	
+				leftTeam = 1;
+
+				rmSetPlacementTeam(1);
+				rmSetPlacementSection(0.05-0.06*teamZeroCount, 0.05);
+				rmSetTeamSpacingModifier(0.50);
+				rmPlacePlayersCircular(0.44, 0.44, 0);
+				rightTeam = 0;
+			}
 		}
-		else
-		{
-			rmSetPlacementTeam(0);
-			rmSetPlacementSection(0.16, 0.16+0.04*teamZeroCount);
-			rmSetTeamSpacingModifier(0.50);
-			rmPlacePlayersCircular(0.44, 0.44, 0);	
-			leftTeam = 1;
+		else {
+			if (rmRandFloat(0,1) <= 0.50)
+			{
+				rmSetPlacementTeam(0);
+				rmSetPlacementSection(0.09-0.04*teamZeroCount, 0.09);
+				rmSetTeamSpacingModifier(0.50);
+				rmPlacePlayersCircular(0.44, 0.44, 0);
+				leftTeam = 0;
 
-			rmSetPlacementTeam(1);
-			rmSetPlacementSection(0.09-0.04*teamOneCount, 0.09);
-			rmSetTeamSpacingModifier(0.50);
-			rmPlacePlayersCircular(0.44, 0.44, 0);
-			rightTeam = 0;
+				rmSetPlacementTeam(1);
+				rmSetPlacementSection(0.16, 0.16+0.04*teamOneCount);
+				rmSetTeamSpacingModifier(0.50);
+				rmPlacePlayersCircular(0.44, 0.44, 0);	
+				rightTeam = 1;
+			}
+			else
+			{
+				rmSetPlacementTeam(0);
+				rmSetPlacementSection(0.16, 0.16+0.04*teamZeroCount);
+				rmSetTeamSpacingModifier(0.50);
+				rmPlacePlayersCircular(0.44, 0.44, 0);	
+				leftTeam = 1;
+
+				rmSetPlacementTeam(1);
+				rmSetPlacementSection(0.09-0.04*teamOneCount, 0.09);
+				rmSetTeamSpacingModifier(0.50);
+				rmPlacePlayersCircular(0.44, 0.44, 0);
+				rightTeam = 0;
+			}
 		}
 	}
 	else
@@ -298,7 +330,7 @@ void main(void)
 		if (cNumberNonGaiaPlayers <=5)
 		{
 			rmSetTeamSpacingModifier(0.50);
-			rmSetPlacementSection(0.125-0.04*PlayerNum, 0.125+0.04*PlayerNum);
+			rmSetPlacementSection(0.125-0.07*PlayerNum, 0.125+0.07*PlayerNum);
 			rmPlacePlayersCircular(0.44, 0.44, 0);
 		}
 		else
@@ -2043,7 +2075,7 @@ void main(void)
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
 	rmAddTriggerEffect("Set Lighting");
-	rmSetTriggerEffectParam("SetName","carribean");
+	rmSetTriggerEffectParam("SetName",volcanoLight);
 	rmSetTriggerEffectParamFloat("FadeTime",5.0);
 	rmAddTriggerEffect("Shake Camera");
 	rmSetTriggerEffectParamFloat("Duration",3.0);
@@ -2088,7 +2120,7 @@ void main(void)
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
 	rmAddTriggerEffect("Set Lighting");
-	rmSetTriggerEffectParam("SetName","carribean");
+	rmSetTriggerEffectParam("SetName",volcanoLight);
 	rmSetTriggerEffectParamFloat("FadeTime",5.0);
 	rmAddTriggerEffect("Shake Camera");
 	rmSetTriggerEffectParamFloat("Duration",3.0);
@@ -2133,7 +2165,7 @@ void main(void)
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
 	rmAddTriggerEffect("Set Lighting");
-	rmSetTriggerEffectParam("SetName","carribean");
+	rmSetTriggerEffectParam("SetName",volcanoLight);
 	rmSetTriggerEffectParamFloat("FadeTime",5.0);
 	rmAddTriggerEffect("Shake Camera");
 	rmSetTriggerEffectParamFloat("Duration",3.0);
@@ -2178,7 +2210,7 @@ void main(void)
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
 	rmAddTriggerEffect("Set Lighting");
-	rmSetTriggerEffectParam("SetName","carribean");
+	rmSetTriggerEffectParam("SetName",volcanoLight);
 	rmSetTriggerEffectParamFloat("FadeTime",5.0);
 	rmAddTriggerEffect("Shake Camera");
 	rmSetTriggerEffectParamFloat("Duration",3.0);
@@ -2223,7 +2255,7 @@ void main(void)
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Volcano_Short"));
 	rmAddTriggerEffect("Set Lighting");
-	rmSetTriggerEffectParam("SetName","carribean");
+	rmSetTriggerEffectParam("SetName",volcanoLight);
 	rmSetTriggerEffectParamFloat("FadeTime",5.0);
 	rmAddTriggerEffect("Shake Camera");
 	rmSetTriggerEffectParamFloat("Duration",3.0);

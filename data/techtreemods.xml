@@ -24727,6 +24727,11 @@
     <prereqs>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
+    <effects>
+      <effect type="Data" action="SabotageAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRowboat</target>
+      </effect>
+    </effects>
   </tech>
   <tech name ="zpUnlockRowboatsShadow" type ="Normal">
     <dbid>40977</dbid>
