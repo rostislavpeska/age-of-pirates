@@ -264,7 +264,18 @@ void main(void)
 
 	if (TeamNum == 2)
 	{
-		if (cNumberNonGaiaPlayers <=5){
+		if (cNumberNonGaiaPlayers ==2){
+			if (rmRandFloat(0,1) <= 0.50)
+			{
+				rmPlacePlayer(1, 0.5, 0.95);
+				rmPlacePlayer(2, 0.95, 0.5);
+			}
+			else {
+				rmPlacePlayer(1, 0.95, 0.5);
+				rmPlacePlayer(2, 0.5, 0.95);
+			}	
+		}
+		else if (cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==4 || cNumberNonGaiaPlayers ==5){
 			if (rmRandFloat(0,1) <= 0.50)
 			{
 				rmSetPlacementTeam(0);
@@ -456,7 +467,7 @@ void main(void)
 		rmAddObjectDefConstraint(nuggetDiverID, avoidNatives); 
 		rmAddObjectDefConstraint(nuggetDiverID, avoidEdge); 
 		rmAddObjectDefConstraint(nuggetDiverID, avoidWhaleMin); 
-		rmPlaceObjectDefAtLoc(nuggetDiverID, 0, 0.72, 0.72-rmXTilesToFraction(6), 1);
+		rmPlaceObjectDefAtLoc(nuggetDiverID, 0, 0.72, 0.72-rmXTilesToFraction(5), 1);
 	}
 
 	int underwaterCaveID = rmCreateGrouping("underwater crater", "underwater_volcano");
