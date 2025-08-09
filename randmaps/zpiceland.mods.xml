@@ -26,5 +26,8 @@
 			<displaynameid>303043</displaynameid>
             <flag mergemode="remove">HeroName1</flag>
 		</unit>
+        <unit name="YPNuggetSeaLionRock">
+			<animfile>nuggets\asian\sea_lion_rock\sea_lion_rock_spc.xml</animfile>
+		</unit>
 	</protomods>
 </mods>

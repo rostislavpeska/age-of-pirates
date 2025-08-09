@@ -30818,6 +30818,22 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpIcelandVolcano" type="Normal">
+    <dbid>41193</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="CannonAttackLong" amount="-15.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackUltraLong" amount="-20.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackXXLong" amount="-25.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+    </effects>
+  </tech>
 
 
 
