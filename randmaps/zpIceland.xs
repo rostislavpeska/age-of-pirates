@@ -153,8 +153,8 @@ void main(void)
 	int stayS = rmCreatePieConstraint("stay sud", 0.50, 0.50, rmXFractionToMeters(0.15), rmXFractionToMeters(0.48), rmDegreesToRadians(200), rmDegreesToRadians(250));
 	int stayW = rmCreatePieConstraint("stay wst", 0.50, 0.50, rmXFractionToMeters(0.15), rmXFractionToMeters(0.48), rmDegreesToRadians(290), rmDegreesToRadians(340));
 	int staySouthShore = rmCreatePieConstraint("stay south shore", 0.50, 0.50, rmXFractionToMeters(0.20), rmXFractionToMeters(0.48), rmDegreesToRadians(135), rmDegreesToRadians(315));
-	int stayNWPirate = rmCreatePieConstraint("stay nw pirate", 0.60, 0.60, rmXFractionToMeters(0.11), rmXFractionToMeters(0.13), rmDegreesToRadians(270), rmDegreesToRadians(045));
-	int stayNEPirate = rmCreatePieConstraint("stay ne pirate", 0.60, 0.60, rmXFractionToMeters(0.11), rmXFractionToMeters(0.13), rmDegreesToRadians(045), rmDegreesToRadians(180));
+	int stayNWPirate = rmCreatePieConstraint("stay nw pirate", 0.60, 0.60, rmXFractionToMeters(0.14), rmXFractionToMeters(0.16), rmDegreesToRadians(270), rmDegreesToRadians(045));
+	int stayNEPirate = rmCreatePieConstraint("stay ne pirate", 0.60, 0.60, rmXFractionToMeters(0.14), rmXFractionToMeters(0.16), rmDegreesToRadians(045), rmDegreesToRadians(180));
 	int staySEPirate = rmCreatePieConstraint("stay se pirate", 0.50, 0.50, rmXFractionToMeters(0.10), rmXFractionToMeters(0.45), rmDegreesToRadians(170), rmDegreesToRadians(175));
 	int staySWPirate = rmCreatePieConstraint("stay sw pirate", 0.50, 0.50, rmXFractionToMeters(0.10), rmXFractionToMeters(0.45), rmDegreesToRadians(275), rmDegreesToRadians(280));
 
@@ -172,7 +172,7 @@ void main(void)
 	int avoidHuntMin = rmCreateTypeDistanceConstraint("avoid hunt min", huntType, 8);
 	int avoidGoldMin = rmCreateClassDistanceConstraint("min distance vs gold", classGold, 4);
 	int avoidGoldShort = rmCreateClassDistanceConstraint ("gold avoid gold short", classGold, 8);
-	int avoidGold = rmCreateClassDistanceConstraint ("gold avoid gold med", classGold, 40);
+	int avoidGold = rmCreateClassDistanceConstraint ("gold avoid gold med", classGold, 48-2*PlayerNum);
 	int avoidGoldFar = rmCreateClassDistanceConstraint ("gold avoid gold far", classGold, 72);
 	int avoidGoldVeryFar = rmCreateClassDistanceConstraint ("gold avoid gold very far", classGold, 90);
 	int avoidNuggetMin = rmCreateTypeDistanceConstraint("nugget avoid nugget min", "AbstractNugget", 4);
@@ -191,8 +191,10 @@ void main(void)
     int avoidNativesMed = rmCreateClassDistanceConstraint("stuff avoids natives med", classNative, 16);
     int avoidNativesFar = rmCreateClassDistanceConstraint("stuff avoids natives far", classNative, 24);
     int avoidProp = rmCreateClassDistanceConstraint("props avoid props", classProp, 8);
-    int avoidHansa = rmCreateClassDistanceConstraint("stuff avoids hansa", classHansa, 28);
-    int avoidHansaFar = rmCreateClassDistanceConstraint("stuff avoids hansa far", classHansa, 50);
+	int avoidWall=rmCreateTypeDistanceConstraint("avoid wall", "zpHarbourPathBlock3", 1);
+	int avoidHansaShort = rmCreateTypeDistanceConstraint("stuff avoids hansa short", "zpCinematicRevealer", 23);
+    int avoidHansa = rmCreateTypeDistanceConstraint("stuff avoids hansa", "zpCinematicRevealer", 28);
+    int avoidHansaFar = rmCreateTypeDistanceConstraint("stuff avoids hansa far", "zpCinematicRevealer", 50);
 	int avoidWhale = rmCreateTypeDistanceConstraint("avoid whale", "MinkeWhale", 80+5*PlayerNum);
 	int avoidWhaleMin = rmCreateTypeDistanceConstraint("avoid whale min", "MinkeWhale", 4);
 	int avoidFish = rmCreateTypeDistanceConstraint("avoid fish", fishies, 16);
@@ -253,38 +255,43 @@ void main(void)
 		if (rmRandFloat(0,1) <= 0.50)
 		{
 			rmSetPlacementTeam(0);
-			rmSetPlacementSection(0.08-0.05*teamZeroCount, 0.08);
+			if (teamZeroCount == 1)
+				rmSetPlacementSection(0.95, 0.96);
+			else
+				rmSetPlacementSection(0.75, 0.95);
 			rmSetTeamSpacingModifier(0.50);
-			rmPlacePlayersCircular(0.44, 0.44, 0);
+			rmPlacePlayersCircular(0.45, 0.45, 0);
 			leftTeam = 0;
 
 			rmSetPlacementTeam(1);
-			rmSetPlacementSection(0.17, 0.17+0.05*teamOneCount);
+			rmSetPlacementSection(0.30, 0.50);
 			rmSetTeamSpacingModifier(0.50);
-			rmPlacePlayersCircular(0.44, 0.44, 0);	
+			rmPlacePlayersCircular(0.45, 0.45, 0);	
 			rightTeam = 1;
 		}
 		else
 		{
 			rmSetPlacementTeam(0);
-			rmSetPlacementSection(0.17, 0.17+0.05*teamZeroCount);
+			rmSetPlacementSection(0.30, 0.50);
 			rmSetTeamSpacingModifier(0.50);
-			rmPlacePlayersCircular(0.44, 0.44, 0);	
-			leftTeam = 1;
+			rmPlacePlayersCircular(0.45, 0.45, 0);	
+			rightTeam = 0;
 
 			rmSetPlacementTeam(1);
-			rmSetPlacementSection(0.08-0.05*teamOneCount, 0.08);
+			if (teamOneCount == 1)
+				rmSetPlacementSection(0.95, 0.96);
+			else
+				rmSetPlacementSection(0.75, 0.95);
 			rmSetTeamSpacingModifier(0.50);
-			rmPlacePlayersCircular(0.44, 0.44, 0);
-			rightTeam = 0;
+			rmPlacePlayersCircular(0.45, 0.45, 0);
+			leftTeam = 1;
 		}
 	}
 	else
 	{
 		rmSetTeamSpacingModifier(0.50);
-//		rmSetPlacementSection(0.125-0.03*PlayerNum, 0.125+0.03*PlayerNum);
 		rmSetPlacementSection(0.30, 0.95);
-		rmPlacePlayersCircular(0.44, 0.44, 0);
+		rmPlacePlayersCircular(0.45, 0.45, 0);
 	}
 
 	// ---------------------------------------------------
@@ -317,11 +324,13 @@ void main(void)
 //	rmSetObjectDefTradeRouteID(fakeStopperID, tradeRouteID);
 	rmAddTradeRouteWaypoint(tradeRouteID, 0.00, 0.55);
 	rmAddTradeRouteWaypoint(tradeRouteID, 0.10, 0.45);
-	if (cNumberNonGaiaPlayers <=2) {
+	if (cNumberNonGaiaPlayers <=2)
+	{
 		rmAddTradeRouteWaypoint(tradeRouteID, 0.08, 0.30);
 		rmAddTradeRouteWaypoint(tradeRouteID, 0.30, 0.08);
 	}
-	else {
+	else
+	{
 		rmAddTradeRouteWaypoint(tradeRouteID, 0.10, 0.30);
 		rmAddTradeRouteWaypoint(tradeRouteID, sockLocX-rmXTilesToFraction(8), sockLocY-rmZTilesToFraction(8));
 		rmAddTradeRouteWaypoint(tradeRouteID, 0.30, 0.10);
@@ -429,63 +438,137 @@ void main(void)
 	// ---------------------------------------------------
 
 	// Main island
-	int icelandID = rmCreateArea("iceland");
-	rmSetAreaSize(icelandID, 0.29);
-	rmSetAreaLocation(icelandID, 0.50, 0.50);
-	rmAddAreaInfluenceSegment(icelandID, 0.65, 0.35, 0.35, 0.65);
-	rmAddAreaInfluenceSegment(icelandID, 0.25, 0.50, 0.50, 0.25);
-	rmAddAreaInfluenceSegment(icelandID, 0.40, 0.40, 0.35, 0.70);
-	rmAddAreaInfluenceSegment(icelandID, 0.40, 0.40, 0.70, 0.35);
-	rmAddAreaInfluenceSegment(icelandID, 0.40, 0.40, 0.28, 0.28);
-	rmSetAreaTerrainType(icelandID, "patagonia\ground_shoreline2_pat");		// for shoreline		// saguenay\shoreline1_sag
-	rmSetAreaWarnFailure(icelandID, false);
-	rmAddAreaToClass(icelandID, classIsland);
-	rmSetAreaCoherence(icelandID, 0.44);
-//	rmSetAreaSmoothDistance(icelandID, 10);
-	rmSetAreaElevationType(icelandID, cElevTurbulence);
-	rmSetAreaElevationVariation(icelandID, 2.5);
-	rmSetAreaBaseHeight(icelandID, 2);
-	rmSetAreaElevationMinFrequency(icelandID, 0.09);
-	rmSetAreaElevationOctaves(icelandID, 3);
-	rmSetAreaElevationPersistence(icelandID, 0.4);      
-	rmSetAreaObeyWorldCircleConstraint(icelandID, false);
-	rmSetAreaMinBlobs(icelandID, 5);
-	rmSetAreaMaxBlobs(icelandID, 8);
-	rmSetAreaMinBlobDistance(icelandID, 20);
-	rmSetAreaMaxBlobDistance(icelandID, 30);
-	rmSetAreaHeightBlend(icelandID, 1.5);
-	rmAddAreaConstraint(icelandID, avoidIslandShort);
-	rmAddAreaConstraint(icelandID, avoidCaveFar);
-	rmAddAreaConstraint(icelandID, avoidEdgeMore);
-	rmAddAreaConstraint(icelandID, avoidTradeRoute);
-	rmAddAreaConstraint(icelandID, avoidHansa);
-	rmBuildArea(icelandID);
+	int icelandID = -1;
+	int stayInMainIsland = -1;
+	int shorelineID = -1;
+	int mainTerrainID = -1;
+	float cliffXLoc1 = 0.30;
+	float cliffYLoc1 = 0.80;
+	float cliffXLoc2 = 0.80;
+	float cliffYLoc2 = 0.30;
+	float cliffXLoc3 = 0.58;
+	float cliffYLoc3 = 0.58;
 
-	int stayInMainIsland = rmCreateAreaMaxDistanceConstraint("stay in main island", icelandID, 0);
+	for (i= 0; < 4)
+	{
+		icelandID = rmCreateArea("iceland"+i);
+		if (i == 0)
+		{
+			rmSetAreaSize(icelandID, 0.29);
+			rmSetAreaLocation(icelandID, 0.50, 0.50);
+			rmAddAreaInfluenceSegment(icelandID, 0.65, 0.35, 0.35, 0.65);
+			rmAddAreaInfluenceSegment(icelandID, 0.25, 0.50, 0.50, 0.25);
+			rmAddAreaInfluenceSegment(icelandID, 0.40, 0.40, 0.35, 0.70);
+			rmAddAreaInfluenceSegment(icelandID, 0.40, 0.40, 0.70, 0.35);
+			rmAddAreaInfluenceSegment(icelandID, 0.40, 0.40, 0.28, 0.28);
+//			rmSetAreaTerrainType(icelandID, "patagonia\ground_shoreline2_pat");		// for shoreline		// saguenay\shoreline1_sag
+			rmAddAreaToClass(icelandID, classIsland);
+			rmSetAreaCoherence(icelandID, 0.50);
+			rmSetAreaMinBlobs(icelandID, 5);
+			rmSetAreaMaxBlobs(icelandID, 8);
+			rmSetAreaMinBlobDistance(icelandID, 20);
+			rmSetAreaMaxBlobDistance(icelandID, 30);
+			rmAddAreaConstraint(icelandID, avoidIslandShort);
+			rmAddAreaConstraint(icelandID, avoidCaveFar);
+			rmAddAreaConstraint(icelandID, avoidEdgeMore);
+			rmAddAreaConstraint(icelandID, avoidTradeRoute);
+			rmAddAreaConstraint(icelandID, avoidHansa);
+//			rmAddAreaConstraint(icelandID, avoidWall);
+		}
+		else if (i == 1)
+		{
+			rmSetAreaSize(icelandID, rmAreaTilesToFraction(444));
+			rmSetAreaLocation(icelandID, cliffXLoc1, cliffYLoc1);
+			rmAddAreaInfluenceSegment(icelandID, cliffXLoc1, cliffYLoc1, 0.25, 0.85);
+			rmAddAreaInfluenceSegment(icelandID, cliffXLoc1, cliffYLoc1, 0.20, 0.80);
+//			rmSetAreaMix(icelandID, forTesting);
+			rmSetAreaCoherence(icelandID, 0.69);
+		}
+		else if (i == 2)
+		{
+			rmSetAreaSize(icelandID, rmAreaTilesToFraction(444));
+			rmSetAreaLocation(icelandID, cliffXLoc2, cliffYLoc2);
+			rmAddAreaInfluenceSegment(icelandID, cliffXLoc2, cliffYLoc2, 0.85, 0.25);
+			rmAddAreaInfluenceSegment(icelandID, cliffXLoc2, cliffYLoc2, 0.80, 0.20);
+//			rmSetAreaMix(icelandID, forTesting);
+			rmSetAreaCoherence(icelandID, 0.69);
+		}
+		else
+		{
+			rmSetAreaSize(icelandID, rmAreaTilesToFraction(248));
+			rmSetAreaLocation(icelandID, cliffXLoc3, cliffYLoc3);
+			rmAddAreaInfluenceSegment(icelandID, cliffXLoc3, cliffYLoc3, 0.63, 0.63);
+//			rmSetAreaMix(icelandID, forTesting);
+			rmSetAreaCoherence(icelandID, 0.69);
+		}
+		rmSetAreaTerrainType(icelandID, "patagonia\ground_shoreline2_pat");		// for shoreline		// saguenay\shoreline1_sag
+		rmSetAreaElevationType(icelandID, cElevTurbulence);
+		rmSetAreaElevationVariation(icelandID, 2.5);
+		rmSetAreaBaseHeight(icelandID, 2);
+		rmSetAreaElevationMinFrequency(icelandID, 0.09);
+		rmSetAreaElevationOctaves(icelandID, 3);
+		rmSetAreaElevationPersistence(icelandID, 0.4);      
+		rmSetAreaWarnFailure(icelandID, false);
+		rmSetAreaObeyWorldCircleConstraint(icelandID, false);
+		rmSetAreaHeightBlend(icelandID, 1.5);
+		rmBuildArea(icelandID);
 
-	// Paint on shoreline
-	int shorelineID = rmCreateArea("iceland shoreline layer");
-	rmSetAreaSize(shorelineID, 0.50);
-	rmSetAreaLocation(shorelineID, 0.50, 0.50);
-	rmSetAreaTerrainType(shorelineID, "patagonia\ground_shoreline3_pat");		// for shoreline	// patagonia\ground_snow1_pat
-	rmSetAreaCoherence(shorelineID, 0.99);
-	rmSetAreaWarnFailure(shorelineID, false);
-	rmSetAreaObeyWorldCircleConstraint(shorelineID, false);
-	rmAddAreaConstraint(shorelineID, stayInMainIsland);
-	rmAddAreaConstraint(shorelineID, avoidWaterMin);
-	rmBuildArea(shorelineID);
+		stayInMainIsland = rmCreateAreaMaxDistanceConstraint("stay in main island"+i, icelandID, 0);
 
-	// Paint on main terrain
-	int mainTerrainID = rmCreateArea("iceland terrain layer");
-	rmSetAreaSize(mainTerrainID, 0.50);
-	rmSetAreaLocation(mainTerrainID, 0.50, 0.50);
-	rmSetAreaMix(mainTerrainID, paintMix2);
-	rmSetAreaCoherence(mainTerrainID, 0.99);
-	rmSetAreaWarnFailure(mainTerrainID, false);
-	rmSetAreaObeyWorldCircleConstraint(mainTerrainID, false);
-	rmAddAreaConstraint(mainTerrainID, stayInMainIsland);
-	rmAddAreaConstraint(mainTerrainID, avoidWaterShoreline);
-	rmBuildArea(mainTerrainID);
+		// Paint on shoreline
+		shorelineID = rmCreateArea("iceland shoreline layer"+i);
+		rmSetAreaSize(shorelineID, 0.50);
+		rmSetAreaLocation(shorelineID, 0.50, 0.50);
+		rmSetAreaTerrainType(shorelineID, "patagonia\ground_shoreline3_pat");		// for shoreline	// patagonia\ground_snow1_pat
+		rmSetAreaCoherence(shorelineID, 0.99);
+		rmSetAreaWarnFailure(shorelineID, false);
+		rmSetAreaObeyWorldCircleConstraint(shorelineID, false);
+//		rmAddAreaConstraint(shorelineID, stayInMainIsland);
+		rmAddAreaConstraint(shorelineID, avoidHansa);
+		rmAddAreaConstraint(shorelineID, avoidWaterMin);
+//		if (i == 0)
+			rmBuildArea(shorelineID);
+
+		// Paint on main terrain
+		mainTerrainID = rmCreateArea("iceland terrain layer"+i);
+		rmSetAreaSize(mainTerrainID, 0.50);
+		rmSetAreaLocation(mainTerrainID, 0.50, 0.50);
+		rmSetAreaMix(mainTerrainID, paintMix2);
+		rmSetAreaCoherence(mainTerrainID, 0.99);
+		rmSetAreaWarnFailure(mainTerrainID, false);
+		rmSetAreaObeyWorldCircleConstraint(mainTerrainID, false);
+//		rmAddAreaConstraint(mainTerrainID, stayInMainIsland);
+		rmAddAreaConstraint(mainTerrainID, avoidHansa);
+		rmAddAreaConstraint(mainTerrainID, avoidWaterShoreline);
+//		if (i == 0)
+			rmBuildArea(mainTerrainID);
+	}
+
+	for (i= 0; < 3)
+	{
+		// Paint terrain near city
+		int cityPaintID = rmCreateArea("city paint"+i);
+		rmSetAreaCoherence(cityPaintID, 1);
+		if (i==0){
+			rmSetAreaSize(cityPaintID, rmAreaTilesToFraction(644));
+			rmSetAreaMix(cityPaintID, paintMix2);
+			rmAddAreaConstraint(cityPaintID, avoidHansaShort);
+			rmSetAreaLocation(cityPaintID, sockLocX+rmXTilesToFraction(19), sockLocY+rmZTilesToFraction(19));
+			rmAddAreaInfluenceSegment(cityPaintID, sockLocX+rmXTilesToFraction(19), sockLocY+rmZTilesToFraction(19), sockLocX+rmXTilesToFraction(20), sockLocY+rmZTilesToFraction(8));
+			rmAddAreaInfluenceSegment(cityPaintID, sockLocX+rmXTilesToFraction(19), sockLocY+rmZTilesToFraction(19), sockLocX+rmXTilesToFraction(8), sockLocY+rmZTilesToFraction(20));
+		}
+		else{
+			rmSetAreaSize(cityPaintID, rmAreaTilesToFraction(30));
+			rmSetAreaTerrainType(cityPaintID, "patagonia\ground_shoreline3_pat");	
+			if (i==1){
+				rmSetAreaLocation(cityPaintID, sockLocX+rmXTilesToFraction(14), sockLocY-rmZTilesToFraction(6));
+			}
+			else{
+				rmSetAreaLocation(cityPaintID, sockLocX-rmXTilesToFraction(6), sockLocY+rmZTilesToFraction(18));
+			}
+		}
+		rmBuildArea(cityPaintID);
+	}
 
 	// ---------------------------------------------------
 	// ****************** Pirate sites *******************
@@ -657,6 +740,11 @@ void main(void)
 	// Cliffs
 	float volcPlaceX = 0.42;
 	float volcPlaceY = 0.42;
+	if (TeamNum > 2)
+	{
+		volcPlaceX = 0.45;
+		volcPlaceY = 0.45;
+	}
 
 	int classAvoidance = rmDefineClass("avoidance");
 
@@ -669,8 +757,8 @@ void main(void)
 	rmAddAreaInfluenceSegment(avoidTHisID, volcPlaceX, volcPlaceY, 0.50, 0.50);
 	rmAddAreaInfluenceSegment(avoidTHisID, volcPlaceX, volcPlaceY, 0.40, 0.65);
 	rmAddAreaInfluenceSegment(avoidTHisID, volcPlaceX, volcPlaceY, 0.65, 0.40);
-	rmAddAreaInfluenceSegment(avoidTHisID, 0.40, 0.60, 0.60, 0.80);
-	rmAddAreaInfluenceSegment(avoidTHisID, 0.60, 0.40, 0.80, 0.60);
+	rmAddAreaInfluenceSegment(avoidTHisID, 0.40, 0.60, 0.60, 0.75);
+	rmAddAreaInfluenceSegment(avoidTHisID, 0.60, 0.40, 0.75, 0.60);
 	rmAddAreaInfluenceSegment(avoidTHisID, 0.50, 0.50, 0.50, 0.70);
 	rmAddAreaInfluenceSegment(avoidTHisID, 0.50, 0.50, 0.70, 0.50);
 	rmAddAreaToClass(avoidTHisID, classAvoidance);
@@ -681,11 +769,11 @@ void main(void)
 	int cliffID = -1;
 	int cliffcount = 3;
 	int brushcount = 3;
-//	if (rmGetIsKOTH() == true)
-//	{
-//		cliffcount = 2;
-//		brushcount = 2;
-//	}
+	if (TeamNum > 2)
+	{
+		cliffcount = 2;
+		brushcount = 2;
+	}
 	int stayNearCliff = -1;
 	int playerResourceGroupID = -1;
 	int playerResourcePatchID = -1;
@@ -738,7 +826,7 @@ void main(void)
 
 		cliffID = rmCreateArea("cliff"+i);
 		if (i <= 1)
-			rmSetAreaSize(cliffID, 0.055);
+			rmSetAreaSize(cliffID, 0.06);
 		else
 			rmSetAreaSize(cliffID, 0.015);
 //		rmSetAreaReveal(cliffID, 01);
@@ -756,17 +844,19 @@ void main(void)
 		rmAddAreaConstraint(cliffID, avoidNativesMed);
 		if (i == 0)
 		{
-			rmSetAreaLocation(cliffID, 0.40, 0.80);
-			rmAddAreaInfluenceSegment(cliffID, 0.40, 0.80, 0.20, 0.75);
+			rmSetAreaLocation(cliffID, cliffXLoc1, cliffYLoc1);
+			rmAddAreaInfluenceSegment(cliffID, cliffXLoc1, cliffYLoc1, 0.20, 0.75);
+			rmAddAreaInfluenceSegment(cliffID, cliffXLoc1, cliffYLoc1, 0.40, 0.80);
 		}
 		else if (i == 1)
 		{
-			rmSetAreaLocation(cliffID, 0.80, 0.40);
-			rmAddAreaInfluenceSegment(cliffID, 0.80, 0.40, 0.75, 0.20);
+			rmSetAreaLocation(cliffID, cliffXLoc2, cliffYLoc2);
+			rmAddAreaInfluenceSegment(cliffID, cliffXLoc2, cliffYLoc2, 0.75, 0.20);
+			rmAddAreaInfluenceSegment(cliffID, cliffXLoc2, cliffYLoc2, 0.80, 0.40);
 		}
 		else
 		{
-			rmSetAreaLocation(cliffID, 0.58, 0.58);
+			rmSetAreaLocation(cliffID, cliffXLoc3, cliffYLoc3);
 		}
 		rmSetAreaHeightBlend(cliffID, 2);
 //		rmSetAreaTerrainType(cliffID, "california\fakecalifgrassmix_cal");	// for testing
@@ -804,8 +894,9 @@ void main(void)
 			}
 			else
 			{
-	    	    rmSetAreaSize(cliffTransitionID, 0.01);
+	    	    rmSetAreaSize(cliffTransitionID, 0.03);
 				rmSetAreaLocation(cliffTransitionID, 0.55, 0.55);
+				rmAddAreaInfluenceSegment(cliffTransitionID, 0.50, 0.60, 0.60, 0.50);
 			}
 			rmSetAreaMix(cliffTransitionID, paintMix8);
     	    rmAddAreaToClass(cliffTransitionID, classPatch);
@@ -882,9 +973,9 @@ void main(void)
 				rmSetObjectDefCreateHerd(playerResourceGroupID, false);
 				rmSetObjectDefAllowOverlap(playerResourceGroupID, true);
 				if (i == 0)
-					rmPlaceObjectDefAtLoc(playerResourceGroupID, 0, 0.40, 0.80, 1);
+					rmPlaceObjectDefAtLoc(playerResourceGroupID, 0, cliffXLoc1, cliffYLoc1, 1);
 				if (i == 1)
-					rmPlaceObjectDefAtLoc(playerResourceGroupID, 0, 0.80, 0.40, 1);
+					rmPlaceObjectDefAtLoc(playerResourceGroupID, 0, cliffXLoc2, cliffYLoc2, 1);
 			}
 		}
 
@@ -1330,6 +1421,11 @@ void main(void)
 		float xLoc = 0.30;
 		float yLoc = 0.30;
 		float walk = 0.00;
+		if (TeamNum > 2)
+		{
+			xLoc = 0.60;
+			yLoc = 0.60;
+		}
 
 		int kingIslandID = rmCreateArea("king's island");
 		rmSetAreaSize(kingIslandID, rmAreaTilesToFraction(300));
@@ -1728,7 +1824,7 @@ void main(void)
 	}
 
 	// Treasures tier 6
-	int treasure6count = 4+PlayerNum;
+	int treasure6count = 8+PlayerNum;
 
 	for (i=0; < treasure6count)
 	{
@@ -1754,35 +1850,6 @@ void main(void)
 		if (i == 3)
 			rmAddObjectDefConstraint(nugget6ID, stayW);
 		rmPlaceObjectDefAtLoc(nugget6ID, 0, 0.50, 0.50, 1);
-	}
-
-	// Treasures tier 5
-	int treasure5count = 2*PlayerNum;
-
-	for (i=0; < treasure5count)
-	{
-		int nugget5ID = rmCreateObjectDef("nugget 5"+i); 
-		rmAddObjectDefItem(nugget5ID, "ypNuggetBoat", 1, 0);
-		rmSetObjectDefMinDistance(nugget5ID, 0);
-		rmSetObjectDefMaxDistance(nugget5ID, rmXFractionToMeters(0.48));
-		rmSetNuggetDifficulty(5,5);
-		rmAddObjectDefConstraint(nugget5ID, avoidNuggetFar);
-		rmAddObjectDefConstraint(nugget5ID, avoidLand);
-		rmAddObjectDefConstraint(nugget5ID, avoidStartingResources);	
-		rmAddObjectDefConstraint(nugget5ID, avoidCave); 
-		rmAddObjectDefConstraint(nugget5ID, avoidNatives); 
-		rmAddObjectDefConstraint(nugget5ID, avoidTradeRoute); 
-		rmAddObjectDefConstraint(nugget5ID, avoidEdge); 
-		rmAddObjectDefConstraint(nugget5ID, avoidWhaleMin); 
-		if (i == 0)
-			rmAddObjectDefConstraint(nugget5ID, stayNWQ);
-		if (i == 1)
-			rmAddObjectDefConstraint(nugget5ID, stayNEQ);
-		if (i == 2)
-			rmAddObjectDefConstraint(nugget5ID, staySEQ);
-		if (i == 3)
-			rmAddObjectDefConstraint(nugget5ID, staySWQ);
-		rmPlaceObjectDefAtLoc(nugget5ID, 0, 0.50, 0.50, 1);
 	}
 
 	// Map loading

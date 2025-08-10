@@ -29,5 +29,8 @@
         <unit name="YPNuggetSeaLionRock">
 			<animfile>nuggets\asian\sea_lion_rock\sea_lion_rock_spc.xml</animfile>
 		</unit>
+        <unit name="YPNuggetEuropeanWreck">
+			<animfile>nuggets\asian\european_wreck\european_wreck_spc.xml</animfile>
+		</unit>
 	</protomods>
 </mods>

@@ -1,0 +1,10 @@
+<animfile>
+  <definebone>bone_spray01</definebone>
+  <definebone>bone_foam01</definebone>
+  <definebone>bone_foam02</definebone>
+  <attachment>attachment_rock<component>rock<assetreference type="CompositeModel"><file>nuggets\asian\european_wreck\treasure_shipwreck_european</file></assetreference></component><anim>Idle<component>rock</component></anim></attachment>
+  <attachment>attachment_foam<component>foam<assetreference type="popcornFx"><file>water_effects\waterFoam_Medium.pkfx</file></assetreference></component><anim>Idle<component>foam</component></anim></attachment>
+  <attachment>attachment_spray<component>spray<assetreference type="popcornFx"><file>water_effects\waterSplash_Medium.pkfx</file></assetreference></component><anim>Idle<component>spray</component></anim></attachment>
+  <component>european_shipwreck<assetreference type="GrannyModel"><file>nuggets\asian\european_wreck\treasure_shipwreck_european</file></assetreference><decal><effecttype>default</effecttype><width>9.00</width><height>9.00</height></decal><attach a="attachment_spray" frombone="bone_spray01" tobone="bone_spray01" syncanims="0"></attach><attach a="attachment_spray" frombone="bone_foam01" tobone="bone_foam01" syncanims="0" allowrotation="1"></attach><attach a="attachment_spray" frombone="bone_foam02" tobone="bone_foam02" syncanims="0"></attach><attach a="attachment_foam" frombone="master" tobone="master" syncanims="0"></attach><attach a="attachment_rock" frombone="master" tobone="master" syncanims="0"></attach></component>
+  <anim>Idle<assetreference type="GrannyAnim"><file>nuggets\asian\european_wreck\treasure_shipwreck_european_anim</file></assetreference><component>european_shipwreck</component></anim>
+</animfile>
