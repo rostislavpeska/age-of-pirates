@@ -61622,8 +61622,8 @@
     <dbid>20846</dbid>
     <displaynameid>302934</displaynameid>
     <editornameid>302935</editornameid>
-    <obstructionradiusx>0.9900</obstructionradiusx>
-    <obstructionradiusz>0.9900</obstructionradiusz>
+    <obstructionradiusx>2.9900</obstructionradiusx>
+    <obstructionradiusz>2.9900</obstructionradiusz>
     <formationcategory>Ranged</formationcategory>
     <maxvelocity>9.5000</maxvelocity>
     <maxrunvelocity>11.5000</maxrunvelocity>

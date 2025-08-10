@@ -1818,6 +1818,7 @@ void main(void)
 		rmAddObjectDefConstraint(fishID, avoidEdge);
 		rmAddObjectDefConstraint(fishID, avoidFish);
 		rmAddObjectDefConstraint(fishID, avoidWhaleMin);
+		rmAddObjectDefConstraint(fishID, avoidHansaShort);
 		rmAddObjectDefConstraint(fishID, avoidStartingResources);
 		rmAddObjectDefConstraint(fishID, avoidNuggetMin);
 		rmPlaceObjectDefAtLoc(fishID, 0, 0.50, 0.50, 1);
@@ -1966,6 +1967,10 @@ void main(void)
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechzpGaiaKillTreasureship");
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpBonuHansa");
 		rmSetTriggerEffectParamInt("Status",2);
 	}
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
@@ -2767,9 +2772,6 @@ void main(void)
 	rmSetTriggerConditionParamInt("Status",2);
 	rmAddTriggerEffect("Trade Route Set Level");
 	rmSetTriggerEffectParamInt("TradeRoute",1);
-	rmSetTriggerEffectParamInt("Level",2);
-	rmAddTriggerEffect("Trade Route Set Level");
-	rmSetTriggerEffectParamInt("TradeRoute",2);
 	rmSetTriggerEffectParamInt("Level",2);
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);

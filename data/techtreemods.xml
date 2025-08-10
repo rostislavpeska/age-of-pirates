@@ -7656,7 +7656,6 @@
       <effect type="TechStatus" status="obtainable">zpScientistArtillery</effect>
       <effect type="TechStatus" status="active">zpScientistsActive</effect>
       <effect type="TechStatus" status="obtainable">zpScientistUnderwaterExploration</effect>
-      <effect type="TechStatus" status="obtainable">zpSendNemo</effect>
       <effect type="TechStatus" status="obtainable">zpUnionFleetOfFreedomShadow</effect>
     </effects>
   </tech>
@@ -17309,6 +17308,7 @@
       </effect>
       <effect type="SetName" tech="zpConsulateScientistNemo" newname="301749" newrollover="301750">
       </effect>
+      <effect type="TechStatus" status="obtainable">zpSendNemo</effect>
     </effects>
   </tech>
   <tech name="zpSendNemo" type="Normal">
@@ -17317,7 +17317,6 @@
     <flag>Shadow</flag>
     <researchpoints>0.0000</researchpoints>
     <prereqs>
-      <techstatus status ="Active">zpUnderwaterScientists</techstatus>
       <techstatus status ="Active">zpConsulateScientistNemo</techstatus>
     </prereqs>
     <effects>
@@ -30493,7 +30492,7 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
-      <effect type="SetName" tech="zpHansaExpansion" newname="302915" newrollover="303014">
+      <effect type="SetName" tech="zpHansaExpansion" newname="302915" newrollover="303044">
       </effect>
       <effect type="TechStatus" status="obtainable">zpHansaTradeRouteUpgrade</effect>
     </effects>
@@ -30753,6 +30752,7 @@
       </effect>
       <effect type="SetName" tech="zpConsulateScientistNemo" newname="301749" newrollover="301750">
       </effect>
+      <effect type="TechStatus" status="obtainable">zpSendNemo</effect>
     </effects>
   </tech>
   <tech name="zpHansaLockIslandGroupingTechs" type="Normal">

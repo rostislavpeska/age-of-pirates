@@ -3037,9 +3037,10 @@
       <string _locid="303038">ZP Underwater Obstruction</string>
       <string _locid="303039">ZP Volcano Floor</string>
       <string _locid="303040">Iceland</string>
-      <string _locid="303041">Iceland Description </string>
-      <string _locid="303042">Iceland Loading</string>
+      <string _locid="303041">Volcano island, sparsely forested and few hunts on land (but lots of fish and mines), underwater cave rich on shipwrecks and minerals. Start offshore in naval vesssels. \n\nSettlements: Hansa Kontor Outpost, Pirates, Inventors</string>
+      <string _locid="303042">The surrounding sea is offering you all you need - fish for food, whales and underwater mineral mines for coin and shoreline shipwreck as an additional source of wood. Even though the land is really rich on mines, consider where your colony will take place very wisely, the volcano may turn it into dust in minutes.</string>
       <string _locid="303043">Hafnarfjörður (Kontor Outpost)</string>
+      <string _locid="303044">Unlocks more Hanseatic units and techs. \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Upgrades Hanseatic trade routes to the maximum level</string>
 
 
 
