@@ -2939,7 +2939,7 @@
       <string _locid="302940">Uferschanze</string>
       <string _locid="302941">Increases building anti-ship attack and attack range. Increases Outpost line of sight.</string>
       <string _locid="302942">Kontor Trade Fleet</string>
-      <string _locid="302943">Increases Trade Cog efficiency. Ships an additional Trade Cog and increases Cog build limit.</string>
+      <string _locid="302943">Ships an additional Trade Cog. Increases Cog build limit.</string>
       <string _locid="302944">Pfahlrecht</string>
       <string _locid="302945">Constructing Trading Posts has never been easier. Reduces Trading Post costs. Increases Trading Post hitpoints.</string>
       <string _locid="302946">Order's Protection</string>
@@ -2958,9 +2958,9 @@
       <string _locid="302959">Torun (Hansa Kontor)</string>
       <string _locid="302960">Osnabrück (Hansa Kontor)</string>
       <string _locid="302961">Convert to Trade Cog</string>
-      <string _locid="302962">Convert to Trade Cog: Once the ship is converted to Trade Cog, it starts generating coin but you lose the full control of the ship until you don't convert it back to War Cog.</string>
+      <string _locid="302962">Convert to Trade Cog: Once the ship is converted to Trade Cog, it starts generating coin but you lose the full control of the ship until you don't convert it back to War Cog. \n • Cost: 70 &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;</string>
       <string _locid="302963">Convert to War Cog</string>
-      <string _locid="302964">Convert to War Cog: Take full control over this ship and convert it back to a war mode.</string>
+      <string _locid="302964">Convert to War Cog: Take full control over this ship and convert it back to a war mode. \n • Cost: 30 &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;</string>
       <string _locid="302965">Food Trade: Looking for the closest friendly dock to buy Food</string>
       <string _locid="302966">Wood Trade: Looking for the closest friendly dock to buy Wood</string>
       <string _locid="302967">Coin Trade: Looking for the closest friendly dock to sell goods for Coin</string>
@@ -3041,7 +3041,7 @@
       <string _locid="303042">The surrounding sea is offering you all you need - fish for food, whales and underwater mineral mines for coin and shoreline shipwreck as an additional source of wood. Even though the land is really rich on mines, consider where your colony will take place very wisely, the volcano may turn it into dust in minutes.</string>
       <string _locid="303043">Hafnarfjörður (Kontor Outpost)</string>
       <string _locid="303044">Unlocks more Hanseatic units and techs. \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Upgrades Hanseatic trade routes to the maximum level</string>
-
+      <string _locid="303045">TEST Market</string>
 
 
 

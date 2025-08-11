@@ -61519,8 +61519,8 @@
     <trainpoints>40.0000</trainpoints>
     <buildlimit>2</buildlimit>
     <bounty>40.0000</bounty>
+    <cost resourcetype="Wood">30.0000</cost>
     <rechargetime>60.0000</rechargetime>
-    <buildbounty>40.0000</buildbounty>
     <carrycapacity resourcetype="Food">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
     <allowedage>1</allowedage>
@@ -61646,7 +61646,7 @@
     <trainpoints>40.0000</trainpoints>
     <buildlimit>3</buildlimit>
     <bounty>40.0000</bounty>
-    <buildbounty>40.0000</buildbounty>
+    <cost resourcetype="Wood">70.0000</cost>
     <carrycapacity resourcetype="Food">1.0000</carrycapacity>
     <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
     <allowedage>1</allowedage>
@@ -61701,6 +61701,7 @@
     <flag>DoNotDragSelectWithUnits</flag>
     <flag>Tracked</flag>
     <flag>NonSolid</flag>
+    <flag>NonCollideable</flag>
     <flag>UseSharedBuildLimit</flag>
     <command page="0" column="3">zpTradeCogGold</command>
     <command page="0" column="1">zpTradeCogFood</command>
@@ -61716,22 +61717,22 @@
     <protoaction>
       <name>AutogatherFood</name>
       <active>1</active>
-      <rate type="Food">2.500000</rate>
+      <rate type="Food">3.000000</rate>
     </protoaction>
     <protoaction>
       <name>AutogatherWood</name>
       <active>1</active>
-      <rate type="Wood">2.500000</rate>
+      <rate type="Wood">3.000000</rate>
     </protoaction>
     <protoaction>
       <name>AutogatherGold</name>
       <active>1</active>
-      <rate type="Gold">2.500000</rate>
+      <rate type="Gold">3.000000</rate>
     </protoaction>
     <protoaction>
       <name>AutogatherXP</name>
       <active>1</active>
-      <rate type="XP">2.500000</rate>
+      <rate type="XP">3.000000</rate>
     </protoaction>
   </unit>
   <unit id="20847" name="zpHanseaticWarshipProxy">
@@ -63147,7 +63148,7 @@
     <flag>PlaceAnywhere</flag>
     <flag>NotSelectable</flag>     
   </unit>
-  
+
 
 
 

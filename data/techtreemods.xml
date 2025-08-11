@@ -30065,8 +30065,8 @@
     <dbid>41161</dbid>
     <displaynameid>302942</displaynameid>
     <researchpoints>30.0000</researchpoints>
-    <cost resourcetype ="Gold">350.0000</cost>
-    <cost resourcetype ="Wood">350.0000</cost>
+    <cost resourcetype ="Gold">300.0000</cost>
+    <cost resourcetype ="Wood">300.0000</cost>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\hansa_kontor_trade.png</icon>
     <rollovertextid>302943</rollovertextid>
@@ -30076,18 +30076,6 @@
 			<techstatus status ="Active">Colonialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" action="AutogatherFood" amount="1.20" subtype="WorkRate" unittype="Food" relativity="BasePercent">
-        <target type="ProtoUnit">zpHanseaticTradeship</target>
-      </effect>
-      <effect type="Data" action="AutogatherWood" amount="1.20" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
-        <target type="ProtoUnit">zpHanseaticTradeship</target>
-      </effect>
-      <effect type="Data" action="AutogatherGold" amount="1.20" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
-        <target type="ProtoUnit">zpHanseaticTradeship</target>
-      </effect>
-      <effect type="Data" action="AutoGatherXP" amount="1.20" subtype="WorkRate" unittype="XP" relativity="BasePercent">
-        <target type="ProtoUnit">zpHanseaticTradeship</target>
-      </effect>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpHanseaticTradeship" relativity="Absolute">
         <target type="Player">
         </target>
@@ -30833,6 +30821,13 @@
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
     </effects>
+  </tech>
+
+  <tech name="zpMarketTransformTravois" type="Normal">
+    <dbid>41194</dbid>
+    <researchpoints>20.0000</researchpoints>
+    <status>ACTIVE</status>
+    <icon>resources\images\icons\command\generate_influence_icon.png</icon>
   </tech>
 
 

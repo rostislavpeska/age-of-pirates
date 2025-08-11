@@ -59,11 +59,9 @@
   <transform>
     <from>zpHanseaticWarship</from>
     <to>zpHanseaticTradeship</to>
-    <command>zpTransformTradeCog</command>
   </transform>
   <transform>
     <from>zpHanseaticTradeship</from>
     <to>zpHanseaticWarship</to>
-    <command>zpTransformWarCog</command>
   </transform>
 </unittransforms>

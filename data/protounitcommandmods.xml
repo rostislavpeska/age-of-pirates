@@ -667,18 +667,12 @@
     <name>zpTransformTradeCog</name>
     <icon>resources\images\icons\command\cogtrade_off.png</icon>
     <command>uiTransformSelectedUnit("zpHanseaticTradeship", true)</command>
-    <commandpassesunitid>
-    </commandpassesunitid>
-    <associatedtech>zpRebuiltToTradeCog</associatedtech>
     <rollovertextid>302962</rollovertextid>
   </protounitcommand>
   <protounitcommand>
     <name>zpTransformWarCog</name>
     <icon>resources\images\icons\command\tactics_melee_avl.png</icon>
     <command>uiTransformSelectedUnit("zpHanseaticWarship", true)</command>
-    <commandpassesunitid>
-    </commandpassesunitid>
-    <associatedtech>zpRebuiltToWarCog</associatedtech>
     <rollovertextid>302964</rollovertextid>
   </protounitcommand>
   <protounitcommand>
@@ -716,6 +710,23 @@
     <rollovertextid>302968</rollovertextid>
     <activerollovertextid>302968</activerollovertextid>
     <command>unitSetTactic("CogXP")</command>
+  </protounitcommand>
+
+  <protounitcommand>
+    <name>zpMarketTransformTravoisTest</name>
+    <icon>resources\images\icons\command\command_pack.png</icon>
+    <command>uiTransformSelectedUnit("deMarketTravois", true, %d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <associatedtech>zpMarketTransformTravois</associatedtech>
+    <rollovertextid>125508</rollovertextid>
+    <disabledrollovertextid>125508</disabledrollovertextid>
+    <donotallowifunitdamaged>
+    </donotallowifunitdamaged>
+    <canqueue>
+    </canqueue>
+    <transformselected>
+    </transformselected>
   </protounitcommand>
 
 
