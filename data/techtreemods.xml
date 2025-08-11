@@ -29769,6 +29769,12 @@
       <effect type="CommandAdd" tech="zpHansaBattleship" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpHanseaticWarship</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpHanseaticTradeship</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpHansaBattleship" type="Normal">

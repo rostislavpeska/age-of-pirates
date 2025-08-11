@@ -2917,12 +2917,12 @@
       <string _locid="302918">ZP Hansa Water Flag 1</string>
       <string _locid="302919">ZP Hansa Water Flag 2</string>
       <string _locid="302920">Western Faction</string>
-      <string _locid="302921">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nKontor Fluyt \n\nHanseatic warship, trains Hanseatic Legionaries. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nSMS Hansa</string>
+      <string _locid="302921">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nKontor Fluyt \n\nHeavy warship. Trade and War Cogs get more hitpoints. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nSMS Hansa</string>
       <string _locid="302922">ZP MERC Destroyer</string>
       <string _locid="302923">SMS Hansa</string>
       <string _locid="302924">Ships a modern Destroyer Class Warship</string>
       <string _locid="302925">Central Faction</string>
-      <string _locid="302926">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHanseatic Merchant \n\nEconomical faction providing you with a team tech. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nKontor Trade Center</string>
+      <string _locid="302926">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHanseatic Merchant \n\nEconomical faction providing you with a special building. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nKontor Trade Center</string>
       <string _locid="302927">Eastern Faction</string>
       <string _locid="302928">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nTeutonic Knight \n\nTeutonic Order units and techs, military faction. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nEastern Base</string>
       <string _locid="302929">Eastern Base</string>
