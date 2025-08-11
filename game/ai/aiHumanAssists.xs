@@ -112,8 +112,6 @@ vector getNewDockLoc(vector cogLoc = cInvalidVector)
       dockLoc = kbUnitGetPosition(kbUnitQueryGetResult(dockQuery, dockResultRandInt - 1));
    }
 
-   //aiChat(1, "newDockDestinationID: " + newDockDestinationID);
-
    return dockLoc;
 }
 
@@ -133,7 +131,6 @@ minInterval 2
    for(i = 0; < cogNum)
    {
       tradeCogID = kbUnitQueryGetResult(tradeCogQuery, i);
-      aiChat(1, "tradeCogsFound: " + kbUnitCount(cMyID, cUnitTypezpHanseaticTradeship) + " CogID: " + tradeCogID);
       if (kbUnitGetActionType(tradeCogID) == cActionTypeIdle)
       {
          cogLoc = kbUnitGetPosition(tradeCogID);
