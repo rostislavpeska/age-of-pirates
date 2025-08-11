@@ -7656,7 +7656,6 @@
       <effect type="TechStatus" status="obtainable">zpScientistArtillery</effect>
       <effect type="TechStatus" status="active">zpScientistsActive</effect>
       <effect type="TechStatus" status="obtainable">zpScientistUnderwaterExploration</effect>
-      <effect type="TechStatus" status="obtainable">zpSendNemo</effect>
       <effect type="TechStatus" status="obtainable">zpUnionFleetOfFreedomShadow</effect>
     </effects>
   </tech>
@@ -17309,6 +17308,7 @@
       </effect>
       <effect type="SetName" tech="zpConsulateScientistNemo" newname="301749" newrollover="301750">
       </effect>
+      <effect type="TechStatus" status="obtainable">zpSendNemo</effect>
     </effects>
   </tech>
   <tech name="zpSendNemo" type="Normal">
@@ -17317,7 +17317,6 @@
     <flag>Shadow</flag>
     <researchpoints>0.0000</researchpoints>
     <prereqs>
-      <techstatus status ="Active">zpUnderwaterScientists</techstatus>
       <techstatus status ="Active">zpConsulateScientistNemo</techstatus>
     </prereqs>
     <effects>
@@ -17645,6 +17644,18 @@
       <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpWakaCanoe</target>
       </effect>
+      <effect type="Data" action="RangedAttackContained" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpCorvette</target>
+      </effect>
+      <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpCorvette</target>
+      </effect>
+      <effect type="Data" action="BuildingAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRowboat</target>
+      </effect>
+      <effect type="Data" action="RangedAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRowboat</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpTasmaniaPlay" type="Normal">
@@ -17662,6 +17673,18 @@
       </effect>
       <effect type="Data" action="RangedAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpWakaCanoe</target>
+      </effect>
+      <effect type="Data" action="RangedAttackContained" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpCorvette</target>
+      </effect>
+      <effect type="Data" action="RangedAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpCorvette</target>
+      </effect>
+      <effect type="Data" action="BuildingAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRowboat</target>
+      </effect>
+      <effect type="Data" action="RangedAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRowboat</target>
       </effect>
     </effects>
   </tech>
@@ -24703,6 +24726,11 @@
     <prereqs>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
+    <effects>
+      <effect type="Data" action="SabotageAttack" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRowboat</target>
+      </effect>
+    </effects>
   </tech>
   <tech name ="zpUnlockRowboatsShadow" type ="Normal">
     <dbid>40977</dbid>
@@ -29986,10 +30014,10 @@
   <tech name="zpHansaTrade" type="Normal">
     <dbid>41159</dbid>
     <displaynameid>302938</displaynameid>
-    <cost resourcetype ="Gold">400.0000</cost>
+    <cost resourcetype ="Gold">700.0000</cost>
     <researchpoints>20.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\hansa_kontor_trade.png</icon>
+    <icon>resources\images\icons\techs\hansa_bremen_arsenal.png</icon>
     <rollovertextid>302939</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
@@ -30037,49 +30065,35 @@
     <dbid>41161</dbid>
     <displaynameid>302942</displaynameid>
     <researchpoints>30.0000</researchpoints>
-    <cost resourcetype ="Gold">450.0000</cost>
-    <cost resourcetype ="Wood">450.0000</cost>
+    <cost resourcetype ="Gold">350.0000</cost>
+    <cost resourcetype ="Wood">350.0000</cost>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\hansa_bremen_arsenal.png</icon>
+    <icon>resources\images\icons\techs\hansa_kontor_trade.png</icon>
     <rollovertextid>302943</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <prereqs>
-			<techstatus status ="Active">Industrialize</techstatus>
+			<techstatus status ="Active">Colonialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpHanseaticWarship</target>
-      </effect>
-      <effect type="Data" action="RangedAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpHanseaticWarship</target>
-      </effect>
-      <effect type="Data" action="RangedAttackContained" amount="3.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpHanseaticWarship</target>
-      </effect>
-      <effect type="Data" action="ChargeBroadsideAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpHanseaticWarship</target>
-      </effect>
-      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpHanseaticFluyt</target>
-      </effect>
-      <effect type="Data" action="RangedAttack" amount="3.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpHanseaticFluyt</target>
-      </effect>
-      <effect type="Data" action="RangedAttackContained" amount="3.00" subtype="MaximumRange" relativity="Absolute">
-        <target type="ProtoUnit">zpHanseaticFluyt</target>
-      </effect>
-      <effect type="Data" action="AutogatherFood" amount="1.30" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+      <effect type="Data" action="AutogatherFood" amount="1.20" subtype="WorkRate" unittype="Food" relativity="BasePercent">
         <target type="ProtoUnit">zpHanseaticTradeship</target>
       </effect>
-      <effect type="Data" action="AutogatherWood" amount="1.30" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+      <effect type="Data" action="AutogatherWood" amount="1.20" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpHanseaticTradeship</target>
       </effect>
-      <effect type="Data" action="AutogatherGold" amount="1.30" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+      <effect type="Data" action="AutogatherGold" amount="1.20" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpHanseaticTradeship</target>
       </effect>
-      <effect type="Data" action="AutoGatherXP" amount="1.30" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+      <effect type="Data" action="AutoGatherXP" amount="1.20" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpHanseaticTradeship</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpHanseaticTradeship" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpHanseaticWarship</target>
       </effect>
     </effects>
   </tech>
@@ -30478,7 +30492,7 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
-      <effect type="SetName" tech="zpHansaExpansion" newname="302915" newrollover="303014">
+      <effect type="SetName" tech="zpHansaExpansion" newname="302915" newrollover="303044">
       </effect>
       <effect type="TechStatus" status="obtainable">zpHansaTradeRouteUpgrade</effect>
     </effects>
@@ -30713,6 +30727,110 @@
       <effect type="Data" action="SpawnRevenantDestroyer" amount="1.00" subtype="ActionAdd" relativity="Absolute" unittype="zpPirateWaterSpawnFlag2">
         <target type="Player">
         </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpIslandScientists" type="Normal">
+    <dbid>41189</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+       <effect type="CommandRemove" proto="zpWokouSteamerProxy">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSiegeRifleProxy" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSiegeRifleProxy</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpInventorBatteryCannons">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpScientistUnderwaterExploration" page="2" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="SetName" tech="zpConsulateScientistNemo" newname="301749" newrollover="301750">
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpSendNemo</effect>
+    </effects>
+  </tech>
+  <tech name="zpHansaLockIslandGroupingTechs" type="Normal">
+    <dbid>41190</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercJaeger</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercPandour</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercGrenadier</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpMercTeutonicCavalry</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercGreatCannon</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpHansaLockIslandGroupingTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpHansaUnlockIslandGroupingTechs" type="Normal">
+    <dbid>41191</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercJaeger</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercPandour</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercGrenadier</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpMercTeutonicCavalry</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercGreatCannon</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpHansaUnlockIslandGroupingTechs</effect>
+    </effects>
+  </tech>
+  <tech name="zpNorthDivingBell" type="Normal">
+    <dbid>41192</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpDivingBell" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpDivingBellReward" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpIcelandVolcano" type="Normal">
+    <dbid>41193</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" action="CannonAttackLong" amount="-15.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackUltraLong" amount="-20.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
+      </effect>
+      <effect type="Data" action="CannonAttackXXLong" amount="-25.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
     </effects>
   </tech>

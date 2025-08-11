@@ -3089,6 +3089,7 @@
       <maptype>australia</maptype>
       <maptype>tasmania</maptype>
       <maptype>newzealand</maptype>
+      <maptype>icelandWater</maptype>
       <guardian>ypGreatWhiteShark</guardian>
       <guardian>ypGreatWhiteShark</guardian>
       <difficulty>6</difficulty>
@@ -3146,6 +3147,7 @@
       <name>ypWaterNuggetSeaLions</name>
       <maptype>arcticwater</maptype>
       <maptype>kurils</maptype>
+      <maptype>icelandWater</maptype>
     </nugget>
     <nugget>
       <name>ypWaterNuggetMu3</name>
@@ -3197,6 +3199,15 @@
     <nugget>
       <name>afVessel</name>
       <maptype>caribbeanwater</maptype>
+      <maptype>icelandWater</maptype>
+    </nugget>
+    <nugget>
+      <name>euWFishingBoat</name>
+      <maptype>icelandWater</maptype>
+    </nugget>
+    <nugget>
+      <name>euWNuggetBoatAtk</name>
+      <maptype>icelandWater</maptype>
     </nugget>
     <nugget>
       <name>afDuck</name>
@@ -3232,6 +3243,7 @@
       <amount>200</amount>
       <maptype>caribbeanwater</maptype>
       <maptype>arcticwater</maptype>
+      <maptype>icelandWater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
       <maptype>tasmania</maptype>
@@ -3250,6 +3262,7 @@
       <resource>Food</resource>
       <amount>200</amount>
       <maptype>caribbeanwater</maptype>
+      <maptype>icelandWater</maptype>
       <maptype>arcticwater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
@@ -3269,6 +3282,7 @@
       <resource>Wood</resource>
       <amount>200</amount>
       <maptype>caribbeanwater</maptype>
+      <maptype>icelandWater</maptype>
       <maptype>arcticwater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
@@ -3288,6 +3302,7 @@
       <resource>Wood</resource>
       <amount>185</amount>
       <maptype>caribbeanwater</maptype>
+      <maptype>icelandWater</maptype>
       <maptype>arcticwater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
@@ -3307,6 +3322,7 @@
       <resource>Food</resource>
       <amount>175</amount>
       <maptype>caribbeanwater</maptype>
+      <maptype>icelandWater</maptype>
       <maptype>arcticwater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
@@ -3326,6 +3342,7 @@
       <resource>Wood</resource>
       <amount>190</amount>
       <maptype>caribbeanwater</maptype>
+      <maptype>icelandWater</maptype>
       <maptype>arcticwater</maptype>
       <maptype>australia</maptype>
       <maptype>newzealand</maptype>
@@ -3377,6 +3394,7 @@
       <unittype>zpDivingBellReward</unittype>
       <amount>1</amount>
       <maptype>cookislands</maptype>
+      <maptype>icelandWater</maptype>
       <guardian>ypGreatWhiteShark</guardian>
       <guardian>ypGreatWhiteShark</guardian>
       <guardian>ypGreatWhiteShark</guardian>
@@ -3477,6 +3495,7 @@
       <unittype>zpDivingBellReward</unittype>
       <amount>1</amount>
       <maptype>cookislands</maptype>
+      <maptype>icelandWater</maptype>
       <guardian>zpGuardianSubmarine</guardian>
       <difficulty>17</difficulty>
     </nugget>
@@ -3531,6 +3550,53 @@
       <guardian>ypGreatWhiteShark</guardian>
       <difficulty>15</difficulty>
     </nugget>
+    <nugget>
+      <name>zpWaterNuggeIcelandDivers</name>
+      <type>SpawnUnit</type>
+      <nuggetunit>ypNuggetSeaLionRock</nuggetunit>
+      <waternugget>true</waternugget>
+      <rolloverstringid>301807</rolloverstringid>
+      <applystringid>301808</applystringid>
+      <unittype>zpDiver</unittype>
+      <amount>1</amount>
+      <maptype>icelandWater</maptype>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <difficulty>15</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpWaterNuggeIcelandDivers2</name>
+      <type>SpawnUnit</type>
+      <nuggetunit>ypNuggetEuropeanWreck</nuggetunit>
+      <waternugget>true</waternugget>
+      <rolloverstringid>301761</rolloverstringid>
+      <applystringid>301762</applystringid>
+      <unittype>zpDiver</unittype>
+      <amount>2</amount>
+      <maptype>icelandWater</maptype>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <guardian>ypGreatWhiteShark</guardian>
+      <difficulty>16</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpWaterNuggetUnderwaterCaveSubmarineNorth</name>
+      <type>SpawnUnit</type>
+      <waternugget>true</waternugget>
+      <nuggetunit>ypNuggetSeaLionRock</nuggetunit>
+      <rolloverstringid>301761</rolloverstringid>
+      <applystringid>301762</applystringid>
+      <unittype>zpDiver</unittype>
+      <amount>3</amount>
+      <maptype>icelandWater</maptype>
+      <guardian>zpGuardianSubmarine</guardian>
+      <difficulty>17</difficulty>
+    </nugget>
+
 
     <!--UNKNOWN NUGGETS-->
 

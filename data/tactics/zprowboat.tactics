@@ -54,6 +54,7 @@
     <attackaction>1</attackaction>
     <rangedlogic>1</rangedlogic>
     <anim>Sabotage</anim>
+    <active>0</active>
     <reloadanim>Reload</reloadanim>
     <maxheight>0</maxheight>
     <accuracy>1.0</accuracy>

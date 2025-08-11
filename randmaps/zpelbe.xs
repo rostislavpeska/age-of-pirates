@@ -2348,6 +2348,7 @@ void main(void)
 		for (k=1; <= cNumberNonGaiaPlayers) {
 			rmCreateTrigger("Hansa"+s+"ON Plr"+k);
 			rmCreateTrigger("Hansa"+s+"OFF Plr"+k);
+			rmCreateTrigger("Hansa"+s+"OFF Delayed Plr"+k);
 
 			hansaSocketID = xsArrayGetInt(hansaSockets, s-1);
 			hansaCenterID = xsArrayGetInt(hansaCenters, s-1);
@@ -2455,7 +2456,7 @@ void main(void)
 			rmSetTriggerRunImmediately(true);
 			rmSetTriggerLoop(false);
 
-			rmSwitchToTrigger(rmTriggerID("Hansa"+s+"OFF_Plr"+k));
+			rmSwitchToTrigger(rmTriggerID("Hansa"+s+"OFF_Plr"+k));			
 			rmAddTriggerCondition("Units in Area");
 			rmSetTriggerConditionParam("DstObject",""+hansaSocketID);
 			rmSetTriggerConditionParamInt("Player",k);
@@ -2465,9 +2466,6 @@ void main(void)
 			rmSetTriggerConditionParamInt("Count",0);
 			rmAddTriggerEffect("Convert");
 			rmSetTriggerEffectParam("SrcObject",""+hansaCenterID);
-			rmSetTriggerEffectParamInt("PlayerID",0);
-			rmAddTriggerEffect("Convert");
-			rmSetTriggerEffectParam("SrcObject",""+hansaChurchID);
 			rmSetTriggerEffectParamInt("PlayerID",0);
 			rmAddTriggerEffect("Convert");
 			rmSetTriggerEffectParam("SrcObject",""+hansaFlagID);
@@ -2540,6 +2538,8 @@ void main(void)
 			rmSetTriggerEffectParamInt("Dist",50);
 			rmAddTriggerEffect("Fire Event");
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Hansa"+s+"ON_Plr"+k));
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Hansa"+s+"OFF_Delayed_Plr"+k));
 			rmAddTriggerEffect("Disable Trigger");
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TrainCog"+s+"ON_Plr"+k));
 			rmAddTriggerEffect("Disable Trigger");
@@ -2556,8 +2556,28 @@ void main(void)
 				rmAddTriggerEffect("Disable Trigger");
 				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower22_ON_Plr"+k));
 			}
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpHansaLockIslandGroupingTechs"); // Island Techs
+			rmSetTriggerEffectParamInt("Status",2);
 			rmSetTriggerPriority(4);
-			rmSetTriggerActive(true);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(false);
+
+
+			rmSwitchToTrigger(rmTriggerID("Hansa"+s+"OFF_Delayed_Plr"+k));	
+			rmAddTriggerCondition("Timer ms");
+			rmSetTriggerConditionParamInt("Param1", 1000, false);
+			rmAddTriggerEffect("Convert");
+			rmSetTriggerEffectParam("SrcObject",""+hansaChurchID);
+			rmSetTriggerEffectParamInt("PlayerID",0);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerEffectParam("TechID","cTechzpHansaUnlockIslandGroupingTechs"); // Island Techs
+			rmSetTriggerEffectParamInt("Status",2);
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
 			rmSetTriggerRunImmediately(true);
 			rmSetTriggerLoop(false);
 		}
@@ -2729,6 +2749,49 @@ void main(void)
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
 		rmSetTriggerEffectParam("TechID","cTechzpConsulateElectorOldenburg"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	// AI Pirate Captains
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+
+	rmCreateTrigger("ZP Pick Pirate Captain"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "false");
+	rmAddTriggerCondition("Tech Status Equals");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParamInt("TechID",586);
+	rmSetTriggerConditionParamInt("Status",2);
+
+	int pirateCaptain=-1;
+	pirateCaptain = rmRandInt(1,3);
+
+	if (pirateCaptain==1)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesBlackbeard"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (pirateCaptain==2)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesGrace"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	if (pirateCaptain==3)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesBeauregard"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 	}
 	rmSetTriggerPriority(4);

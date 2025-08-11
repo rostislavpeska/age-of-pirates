@@ -39,7 +39,7 @@ minInterval 1
        cRandomMapName == "zpbarrierreef" ||
        cRandomMapName == "zpvenicecity" ||
        cRandomMapName == "zpcaribbeanwars" ||
-       cRandomMapName == "zpazteccity")
+       cRandomMapName == "zpiceland")
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
@@ -59,7 +59,8 @@ minInterval 1
    // Naval Maps %%%%%%%%%%%%%%%%%%%%%%%
    // AssertiveWall: Naval, but not starting on different islands
    if (cRandomMapName == "zphawaii" ||
-       cRandomMapName == "zpcivilwar")
+       cRandomMapName == "zpcivilwar" ||
+       cRandomMapName == "zpelbe")
    {
       gIsPirateMap = true;
       gNavyMap = true;
@@ -113,7 +114,8 @@ minInterval 1
    }
 
    // Maps where you absolutely need to take lots of TP's (like Civil War where taking TP's is the victory condition)
-   if (cRandomMapName == "zpcivilwar")
+   if (cRandomMapName == "zpcivilwar"||
+       cRandomMapName == "zpelbe")
    {
       xsEnableRule("setTradeBiasDelayed");
    }
@@ -176,7 +178,8 @@ minInterval 1
 
    // Tasmania Maps %%%%%%%%%%%%%%%%%%%%%%%
    // AssertiveWall: Treat Tasmania as a special thing. Do not include it as a migration map
-   if (cRandomMapName == "zptasmania")
+   if (cRandomMapName == "zptasmania"||
+       cRandomMapName == "zpiceland")
    {
       xsEnableRule("tasmaniaStart");
    }
