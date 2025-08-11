@@ -117,7 +117,7 @@ vector getNewDockLoc(vector cogLoc = cInvalidVector)
 
 rule tradeCog
 inactive
-minInterval 2
+minInterval 1
 {
    int tradeCogID = -1;
    int tradeCogQuery = -1;

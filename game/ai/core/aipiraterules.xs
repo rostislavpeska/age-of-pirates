@@ -286,6 +286,11 @@ minInterval 1
       xsEnableRule("armoredTrainMonitor");
    }
 
+   // NOTE: Update the unit we're using to enable this for trade cogs
+   if (getGaiaUnitCount(cUnitTypezpHansaWaterSpawnFlag1) > 0 || getGaiaUnitCount(cUnitTypezpHansaWaterSpawnFlag2) > 0 )
+   {
+      xsEnableRule("tradeCogEnabler");
+   }
    if (getGaiaUnitCount(cUnitTypezpNativeHouseInuit) > 0)
    {
       xsEnableRule("zpInuitTechMonitor");
@@ -6050,5 +6055,99 @@ minInterval 5
    {
       aiPlanSetDesiredPriority(gNavyDefendPlan, 15); // Below fishing when there are no enemies around.
       aiPlanSetDesiredPriority(gFishingBellPlan, 1); // Below fishing when there are no enemies around.
+   }
+}
+
+rule tradeCogEnabler
+inactive
+minInterval 5
+{
+   static int cogMaintainPlan = -1;
+   int buildLimit = kbGetBuildLimit(cMyID, cUnitTypezpHanseaticWarship);
+
+   if (cogMaintainPlan < 0 && buildLimit > 0)
+   {
+      cogMaintainPlan = createSimpleMaintainPlan(cUnitTypezpHanseaticWarship, buildLimit, true);  
+   }
+
+   if (cogMaintainPlan > 0 && 
+       (kbUnitCount(cMyID, cUnitTypezpHanseaticTradeship, cUnitStateAlive) > 0 || 
+        kbUnitCount(cMyID, cUnitTypezpHanseaticWarship, cUnitStateAlive) > 0))
+   {
+      xsEnableRule("tradeCog");
+      xsDisableSelf();
+   }
+}
+
+vector getNewHanseaticDockLoc(vector cogLoc = cInvalidVector)
+{
+   if (cogLoc == cInvalidVector) return cInvalidVector;
+
+   vector dockLoc = cInvalidVector;
+   int dockQuery = -1;
+   int dockCount = 0;
+   int newDockDestinationID = -1;
+   int dockResultRandInt = -1;
+   
+   dockQuery = createSimpleUnitQuery(cUnitTypeHansaTradePoint, cPlayerRelationAlly, cUnitStateAlive);
+   dockCount = kbUnitQueryExecute(dockQuery);
+
+   dockResultRandInt = aiRandInt(dockCount);
+   newDockDestinationID = kbUnitQueryGetResult(dockQuery, dockResultRandInt);
+   if (distance(kbUnitGetPosition(newDockDestinationID), cogLoc) > 20)
+   {
+      dockLoc = kbUnitGetPosition(newDockDestinationID);  
+   }
+   else if (dockResultRandInt > 0)
+   {
+      dockLoc = kbUnitGetPosition(kbUnitQueryGetResult(dockQuery, dockResultRandInt - 1));
+   }
+
+   return dockLoc;
+}
+
+rule tradeCog
+inactive
+minInterval 1
+{
+   int tradeCogID = -1;
+   int warCogID = -1;
+   int tradeCogQuery = -1;
+   int cogNum = -1;
+   vector cogLoc = cInvalidVector;
+   vector newDockLoc = cInvalidVector;
+
+   // convert any war cogs into trade cogs
+   if (kbUnitCount(cMyID, cUnitTypezpHanseaticWarship, cUnitStateAlive) > 0)
+   {
+      warCogID = getUnit(cUnitTypezpHanseaticWarship, cPlayerRelationSelf);
+      createProtoUnitCommandResearchPlan(cProtoUnitCommandzpTransformTradeCog, warCogID);
+   }
+
+   static int tradeCogReservePlan = -1;
+   if (tradeCogReservePlan < 0)
+   {
+      tradeCogReservePlan = aiPlanCreate("Trade Cog Reserve", cPlanReserve);
+      aiPlanAddUnitType(tradeCogReservePlan, cUnitTypezpHanseaticTradeship, 0, 200, 200);
+      aiPlanSetDesiredPriority(tradeCogReservePlan, 100);
+      aiPlanSetActive(tradeCogReservePlan);
+   }
+
+   tradeCogQuery = createSimpleUnitQuery(cUnitTypezpHanseaticTradeship, cMyID, cUnitStateAlive);
+   cogNum = kbUnitQueryExecute(tradeCogQuery);
+
+   for(i = 0; < cogNum)
+   {
+      tradeCogID = kbUnitQueryGetResult(tradeCogQuery, i);
+      if (kbUnitGetActionType(tradeCogID) == cActionTypeIdle)
+      {
+         cogLoc = kbUnitGetPosition(tradeCogID);
+         newDockLoc = getNewHanseaticDockLoc(cogLoc);
+
+         if (newDockLoc != cInvalidVector)
+         {
+            aiTaskUnitMove(tradeCogID, newDockLoc);
+         }
+      }
    }
 }
