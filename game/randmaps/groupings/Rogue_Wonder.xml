@@ -1,0 +1,140 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>16</width>
+	<height>19</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="45" posx="8.0346" posz="-15.3465" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">zpPropsFlowers</unit>
+		<unit variation="15" posx="10.2281" posz="-15.4200" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">zpPropsFlowers</unit>
+		<unit variation="151" posx="11.1503" posz="-11.2571" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="57" posx="-9.3556" posz="-13.3619" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">zpPropsFlowers</unit>
+		<unit variation="83" posx="-6.4965" posz="-13.8250" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">zpPropsFlowers</unit>
+		<unit variation="207" posx="6.0638" posz="-14.4096" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">zpPropsFlowers</unit>
+		<unit variation="15" posx="-8.1776" posz="-11.1423" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseAsianBig</unit>
+		<unit variation="151" posx="-10.5334" posz="-10.4304" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="247" posx="-12.8152" posz="-12.3091" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowers</unit>
+		<unit variation="202" posx="-5.7078" posz="-11.5699" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">zpPropsFlowers</unit>
+		<unit variation="204" posx="-8.0319" posz="-12.5466" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">zpPropsFlowers</unit>
+		<unit variation="247" posx="-6.1058" posz="-12.6594" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowers</unit>
+		<unit variation="248" posx="6.6353" posz="-11.3337" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">zpPropsFlowers</unit>
+		<unit variation="123" posx="-3.2457" posz="-11.3156" orientx="1.0000" orienty="0.0000" orientz="0.0042">ypSMShaolinAccessory</unit>
+		<unit variation="123" posx="3.0957" posz="-11.6887" orientx="1.0000" orienty="0.0000" orientz="0.0042">ypSMShaolinAccessory</unit>
+		<unit variation="15" posx="8.3304" posz="-8.7748" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHouseAsianBig</unit>
+		<unit variation="218" posx="-4.8272" posz="-9.5954" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">zpPropsFlowers</unit>
+		<unit variation="69" posx="-5.5737" posz="-9.8396" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">zpPropsFlowers</unit>
+		<unit variation="108" posx="-3.3744" posz="-8.5359" orientx="1.0000" orienty="0.0000" orientz="-0.0033">ypSMShaolinAccessory</unit>
+		<unit variation="23" posx="4.7545" posz="-9.3340" orientx="0.9660" orienty="0.0000" orientz="-0.2585">ypSMShaolinAccessory</unit>
+		<unit variation="108" posx="3.2929" posz="-8.7803" orientx="0.9993" orienty="0.0000" orientz="-0.0373">ypSMShaolinAccessory</unit>
+		<unit variation="160" posx="-5.8428" posz="-8.0782" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">zpPropsFlowers</unit>
+		<unit variation="21" posx="6.5326" posz="-7.0879" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="132" posx="-0.0167" posz="-6.2293" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNuggetKidnapGuillotine</unit>
+		<unit variation="16" posx="11.8983" posz="-4.2292" orientx="1.0000" orienty="0.0000" orientz="-0.0000">SPCPathBlock3</unit>
+		<unit variation="142" posx="10.2962" posz="-6.2406" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="237" posx="9.9063" posz="-6.0944" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="119" posx="7.6296" posz="-6.6881" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="228" posx="-3.2781" posz="-3.9872" orientx="-1.0000" orienty="0.0000" orientz="0.0000">ypPropsJapaneseBanner</unit>
+		<unit variation="144" posx="3.1757" posz="-4.6904" orientx="1.0000" orienty="0.0000" orientz="0.0000">ypPropsJapaneseBanner</unit>
+		<unit variation="109" posx="-9.9889" posz="-5.7043" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">zpPropsFlowers</unit>
+		<unit variation="14" posx="12.4654" posz="-6.7297" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeWallFull</unit>
+		<unit variation="16" posx="-11.2651" posz="-2.8921" orientx="1.0000" orienty="0.0000" orientz="-0.0000">SPCPathBlock3</unit>
+		<unit variation="196" posx="6.8547" posz="-4.5960" orientx="0.9843" orienty="-0.0000" orientz="0.1763">ypSMShaolinAccessory</unit>
+		<unit variation="90" posx="-10.4021" posz="-4.3052" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">zpPropsFlowers</unit>
+		<unit variation="142" posx="-10.2132" posz="-3.2784" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpPropsFlowers</unit>
+		<unit variation="136" posx="10.4609" posz="-4.2503" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpPropsFlowers</unit>
+		<unit variation="14" posx="-11.9097" posz="-4.6199" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeWallFull</unit>
+		<unit variation="247" posx="-10.3860" posz="-1.7415" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">zpPropsFlowers</unit>
+		<unit variation="203" posx="-8.5832" posz="-0.1779" orientx="-0.9866" orienty="0.0000" orientz="0.1631">ypSMShaolinAccessory</unit>
+		<unit variation="144" posx="-8.8003" posz="-1.6487" orientx="0.7920" orienty="0.0000" orientz="0.6105">ypSMShaolinAccessory</unit>
+		<unit variation="215" posx="10.7949" posz="-1.2317" orientx="-0.9994" orienty="0.0000" orientz="-0.0355">ypSMZenAccessory</unit>
+		<unit variation="14" posx="12.4785" posz="-1.0227" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeWallFull</unit>
+		<unit variation="131" posx="0.0789" posz="2.2763" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCPorcelainTower</unit>
+		<unit variation="139" posx="9.9841" posz="0.3417" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpPropsFlowers</unit>
+		<unit variation="14" posx="-11.8387" posz="0.5832" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeWallFull</unit>
+		<unit variation="62" posx="8.6058" posz="0.4300" orientx="0.9889" orienty="0.0000" orientz="0.1485">ypSMShaolinAccessory</unit>
+		<unit variation="16" posx="-11.2240" posz="4.8475" orientx="1.0000" orienty="0.0000" orientz="-0.0000">SPCPathBlock3</unit>
+		<unit variation="16" posx="11.9353" posz="3.5317" orientx="1.0000" orienty="0.0000" orientz="-0.0000">SPCPathBlock3</unit>
+		<unit variation="40" posx="-10.7922" posz="1.6935" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpPropsFlowers</unit>
+		<unit variation="137" posx="10.7460" posz="1.8761" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="207" posx="-8.1360" posz="3.6397" orientx="0.6244" orienty="0.0000" orientz="0.7811">ypSMShaolinAccessory</unit>
+		<unit variation="83" posx="8.5133" posz="2.7689" orientx="0.9756" orienty="-0.0000" orientz="-0.2194">ypSMZenAccessory</unit>
+		<unit variation="103" posx="10.5990" posz="3.8860" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="235" posx="8.9699" posz="4.3665" orientx="-0.2656" orienty="0.0000" orientz="-0.9641">ypSMShaolinAccessory</unit>
+		<unit variation="60" posx="10.2238" posz="5.5104" orientx="0.5105" orienty="0.0000" orientz="-0.8599">ypSMZenAccessory</unit>
+		<unit variation="137" posx="11.1730" posz="5.6661" orientx="-0.9276" orienty="0.0000" orientz="0.3737">ypSMZenAccessory</unit>
+		<unit variation="14" posx="12.4813" posz="4.4571" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeWallFull</unit>
+		<unit variation="151" posx="6.5993" posz="7.7576" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="151" posx="1.8576" posz="7.8752" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="151" posx="-2.1436" posz="8.4911" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="151" posx="-4.5584" posz="7.7653" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="10" posx="-10.3370" posz="5.4917" orientx="0.9894" orienty="-0.0000" orientz="-0.1454">ypSMZenAccessory</unit>
+		<unit variation="102" posx="-8.2276" posz="5.7569" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="134" posx="-9.3448" posz="5.3367" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="207" posx="-7.2228" posz="6.7347" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="134" posx="10.5497" posz="5.2576" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="86" posx="8.3044" posz="6.8716" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="14" posx="-11.7535" posz="5.7594" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeWallFull</unit>
+		<unit variation="151" posx="10.2072" posz="9.0937" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="15" posx="-7.7362" posz="8.3212" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpNativeHouseAsianBig</unit>
+		<unit variation="151" posx="-8.9687" posz="9.7345" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="57" posx="-12.7674" posz="7.5871" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpPropsFlowers</unit>
+		<unit variation="10" posx="-5.7753" posz="7.1319" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="76" posx="6.4407" posz="9.0835" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="7" posx="-3.5918" posz="9.8336" orientx="0.4089" orienty="0.0000" orientz="0.9126">ypSMShaolinAccessory</unit>
+		<unit variation="35" posx="0.4892" posz="11.7252" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseWokou</unit>
+		<unit variation="39" posx="-5.1384" posz="9.4854" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="15" posx="8.9193" posz="12.6331" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHouseAsianBig</unit>
+		<unit variation="16" posx="-4.9771" posz="11.7026" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="16" posx="2.4376" posz="11.8294" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="16" posx="4.9153" posz="11.5997" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="118" posx="-13.0105" posz="11.8488" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="183" posx="12.0334" posz="13.0493" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpPropsFlowers</unit>
+		<unit variation="14" posx="-3.7125" posz="11.8536" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeWallFull</unit>
+		<unit variation="14" posx="4.9729" posz="11.7111" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeWallFull</unit>
+		<unit variation="4" posx="-10.3062" posz="13.6763" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">zpPropsFlowers</unit>
+		<unit variation="40" posx="-11.7353" posz="13.9959" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">zpPropsFlowers</unit>
+		<unit variation="247" posx="7.0582" posz="13.7094" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsFlowers</unit>
+	</units>
+	<tiles>
+		<tilegroup type="Ice" subtype="city\ground1_city_street_ground">
+			<block startx="-5" startz="-5" endx="-5" endz="-4"></block>
+			<block startx="-4" startz="-6" endx="-4" endz="-4"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="-4"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="-4"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="-4"></block>
+			<block startx="-6" startz="5" endx="-6" endz="5"></block>
+			<block startx="-5" startz="5" endx="-5" endz="5"></block>
+			<block startx="-4" startz="5" endx="-4" endz="5"></block>
+			<block startx="-3" startz="5" endx="-3" endz="5"></block>
+			<block startx="-2" startz="5" endx="-2" endz="5"></block>
+			<block startx="-1" startz="5" endx="-1" endz="5"></block>
+			<block startx="-7" startz="4" endx="-7" endz="4"></block>
+			<block startx="-6" startz="-3" endx="-6" endz="4"></block>
+			<block startx="-5" startz="-3" endx="-5" endz="4"></block>
+			<block startx="-4" startz="-3" endx="-4" endz="4"></block>
+			<block startx="-3" startz="-3" endx="-3" endz="4"></block>
+			<block startx="-2" startz="-3" endx="-2" endz="4"></block>
+			<block startx="-1" startz="-3" endx="-1" endz="0"></block>
+			<block startx="-1" startz="2" endx="-1" endz="4"></block>
+			<block startx="0" startz="-3" endx="0" endz="4"></block>
+			<block startx="1" startz="-3" endx="1" endz="4"></block>
+			<block startx="2" startz="-3" endx="2" endz="4"></block>
+			<block startx="3" startz="-3" endx="3" endz="4"></block>
+			<block startx="4" startz="-3" endx="4" endz="4"></block>
+			<block startx="5" startz="-3" endx="5" endz="4"></block>
+			<block startx="0" startz="5" endx="0" endz="5"></block>
+			<block startx="1" startz="5" endx="1" endz="5"></block>
+			<block startx="2" startz="5" endx="2" endz="5"></block>
+			<block startx="3" startz="5" endx="3" endz="5"></block>
+			<block startx="4" startz="5" endx="4" endz="5"></block>
+			<block startx="0" startz="-6" endx="0" endz="-4"></block>
+			<block startx="1" startz="-6" endx="1" endz="-4"></block>
+			<block startx="2" startz="-6" endx="2" endz="-4"></block>
+			<block startx="3" startz="-6" endx="3" endz="-4"></block>
+			<block startx="4" startz="-5" endx="4" endz="-4"></block>
+			<block startx="5" startz="-4" endx="5" endz="-4"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

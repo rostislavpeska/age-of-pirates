@@ -1,0 +1,60 @@
+<tactics>
+  <action>
+    <name stringid="43295">AutoGatherFood</name>
+    <type>AutoGather</type>
+    <rate type="Food">2.5</rate>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="43296">AutoGatherWood</name>
+    <type>AutoGather</type>
+    <rate type="Wood">2.0</rate>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="68988">RainbowTrade</name>
+    <type>AutoGather</type>
+    <rate type="Trade">0.15</rate>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="68988">RainbowFood</name>
+    <type>AutoGather</type>
+    <rate type="Food">0.45</rate>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="68988">RainbowCoin</name>
+    <type>AutoGather</type>
+    <rate type="Gold">0.45</rate>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="68988">RainbowWood</name>
+    <type>AutoGather</type>
+    <rate type="Wood">0.45</rate>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="68988">RainbowXP</name>
+    <type>AutoGather</type>
+    <rate type="XP">0.45</rate>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="43294">AutoGatherCoin</name>
+    <type>AutoGather</type>
+    <rate type="Gold">2.0</rate>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name>AutoConvert</name>
+    <type>AutoConvert</type>
+    <maxrange>20.0</maxrange>
+    <persistent>1</persistent>
+  </action>
+  <tactic>WonderRainbow<action>RainbowTrade</action><action>RainbowFood</action><action>RainbowCoin</action><action>RainbowWood</action><action>RainbowXP</action><action>AutoConvert</action><transition><tactic>WonderFood</tactic><length>2</length><exit>1</exit></transition><transition><tactic>WonderWood</tactic><length>2</length><exit>1</exit></transition><transition><tactic>WonderCoin</tactic><length>2</length><exit>1</exit></transition></tactic>
+  <tactic>WonderFood<action>AutoGatherFood</action><action>AutoConvert</action><transition><tactic>WonderWood</tactic><length>2</length><exit>1</exit></transition><transition><tactic>WonderCoin</tactic><length>2</length><exit>1</exit></transition><transition><tactic>WonderRainbow</tactic><length>2</length><exit>1</exit></transition></tactic>
+  <tactic>WonderWood<action>AutoGatherWood</action><action>AutoConvert</action><transition><tactic>WonderFood</tactic><length>2</length><exit>1</exit></transition><transition><tactic>WonderCoin</tactic><length>2</length><exit>1</exit></transition><transition><tactic>WonderRainbow</tactic><length>2</length><exit>1</exit></transition></tactic>
+  <tactic>WonderCoin<action>AutoGatherCoin</action><action>AutoConvert</action><transition><tactic>WonderFood</tactic><length>2</length><exit>1</exit></transition><transition><tactic>WonderWood</tactic><length>2</length><exit>1</exit></transition><transition><tactic>WonderRainbow</tactic><length>2</length><exit>1</exit></transition></tactic>
+</tactics>

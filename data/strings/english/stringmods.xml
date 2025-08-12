@@ -2426,7 +2426,7 @@
       <string _locid="302426">ZP SPC Aztec Props Air</string>
       <string _locid="302427">ZP SPC Wood Wall Air</string>
       <string _locid="302428">ZP SPC Aztec Medium Temple</string>
-      <string _locid="302429">The Aztec temple generates resources per second which can be set to food, wood, coin, or a combination of all resources including export and experience.</string>
+      <string _locid="302429">The temple generates resources per second which can be set to food, wood, coin, or a combination of all resources including export and experience.</string>
       <string _locid="302430">ZP SPC Aztec City Outpost</string>
       <string _locid="302431">ZP SPC Aztec Outpost Socket 1</string>
       <string _locid="302432">ZP SPC Aztec Outpost Socket 2</string>
@@ -3041,8 +3041,14 @@
       <string _locid="303042">The surrounding sea is offering you all you need - fish for food, whales and underwater mineral mines for coin and shoreline shipwreck as an additional source of wood. Even though the land is really rich on mines, consider where your colony will take place very wisely, the volcano may turn it into dust in minutes.</string>
       <string _locid="303043">Hafnarfjörður (Kontor Outpost)</string>
       <string _locid="303044">Unlocks more Hanseatic units and techs. \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Upgrades Hanseatic trade routes to the maximum level</string>
-      <string _locid="303045">TEST Market</string>
-
+      <string _locid="303045">ZP SPC Rock Church</string>
+      <string _locid="303046">ZP SPC Porcelain Tower Convertible</string>
+      <string _locid="303047">The Porcelain Tower generates resources per second which can be set to food, wood, coin, or a combination of all resources including export and experience.</string>
+      <string _locid="303048">ZP Native House Asian Big</string>
+      <string _locid="303049">ZP SPC Safari</string>
+      <string _locid="303050">Safari Headquarters</string>
+      <string _locid="303051">ZP PROP Tent</string>
+      <string _locid="303052">City Temple</string>
 
 
       <!-- ======================================== -->

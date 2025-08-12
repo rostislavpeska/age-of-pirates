@@ -1,0 +1,271 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>19</width>
+	<height>19</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="82" posx="-12.5520" posz="-15.3121" orientx="-0.0001" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="82" posx="-8.9874" posz="-15.3213" orientx="-0.0001" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="147" posx="-4.6639" posz="-15.5608" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="147" posx="2.7224" posz="-15.5180" orientx="-0.0003" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="46" posx="7.3687" posz="-15.4319" orientx="-0.0003" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="46" posx="10.9892" posz="-15.3898" orientx="-0.0003" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="34" posx="12.9240" posz="-15.3769" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="59" posx="9.5669" posz="-14.0955" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deUnderbrushPlantsAfrica</unit>
+		<unit variation="34" posx="-14.7356" posz="-15.3411" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="71" posx="-8.0000" posz="-14.0000" orientx="-0.9872" orienty="0.0000" orientz="0.1595">TreeAfrica</unit>
+		<unit variation="0" posx="-4.0873" posz="-13.8996" orientx="-1.0000" orienty="0.0000" orientz="0.0022">SPCPathBlock2</unit>
+		<unit variation="0" posx="3.1700" posz="-14.5975" orientx="-1.0000" orienty="0.0000" orientz="0.0022">SPCPathBlock2</unit>
+		<unit variation="79" posx="10.0000" posz="-14.0000" orientx="-0.5819" orienty="0.0000" orientz="-0.8132">deTreeBaobab</unit>
+		<unit variation="0" posx="-7.6145" posz="-15.5078" orientx="0.0016" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="0" posx="6.2892" posz="-15.5903" orientx="0.0016" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="0" posx="10.0472" posz="-15.8261" orientx="0.0016" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="0" posx="12.9384" posz="-12.8758" orientx="-1.0000" orienty="0.0000" orientz="0.0016">SPCPathBlock3</unit>
+		<unit variation="0" posx="-14.7548" posz="-12.2712" orientx="-1.0000" orienty="0.0000" orientz="0.0015">SPCPathBlock3</unit>
+		<unit variation="0" posx="-11.7845" posz="-15.5463" orientx="0.0016" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="110" posx="-13.0670" posz="-13.7615" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deUnderbrushPlantsAfrica</unit>
+		<unit variation="81" posx="-4.0821" posz="-13.8712" orientx="-1.0000" orienty="0.0000" orientz="0.0009">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="13" posx="-5.9178" posz="-13.2820" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deUnderbrushPlantsAfrica</unit>
+		<unit variation="81" posx="2.4626" posz="-13.8256" orientx="1.0000" orienty="0.0000" orientz="-0.0008">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="39" posx="6.1950" posz="-12.3345" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deUnderbrushPlantsAfrica</unit>
+		<unit variation="46" posx="12.5418" posz="-13.3778" orientx="-1.0000" orienty="0.0000" orientz="-0.0003">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="159" posx="-7.9723" posz="-13.2611" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deUnderbrushPlantsAfrica</unit>
+		<unit variation="82" posx="-14.7633" posz="-13.2613" orientx="1.0000" orienty="0.0000" orientz="0.0001">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="185" posx="-10.3592" posz="-13.0497" orientx="1.0000" orienty="0.0000" orientz="-0.0025">zpPropWaterTowerBarrel</unit>
+		<unit variation="34" posx="-4.1024" posz="-12.3996" orientx="0.0013" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="34" posx="2.4008" posz="-12.2727" orientx="0.0013" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="112" posx="-12.5901" posz="-11.2386" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deUnderbrushPlantsAfrica</unit>
+		<unit variation="102" posx="8.5106" posz="-11.8600" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deUnderbrushPlantsAfrica</unit>
+		<unit variation="126" posx="-10.5865" posz="-10.1903" orientx="0.1980" orienty="-0.0046" orientz="0.9802">zpZooZebra</unit>
+		<unit variation="6" posx="-6.7728" posz="-10.9015" orientx="0.8387" orienty="-0.0054" orientz="0.5446">zpZooZebra</unit>
+		<unit variation="149" posx="6.6709" posz="-11.6118" orientx="-0.6137" orienty="-0.0007" orientz="0.7896">zpZooGiraffe</unit>
+		<unit variation="0" posx="12.7688" posz="-8.2833" orientx="-1.0000" orienty="0.0000" orientz="0.0016">SPCPathBlock3</unit>
+		<unit variation="0" posx="-14.5583" posz="-7.7286" orientx="-1.0000" orienty="0.0000" orientz="0.0015">SPCPathBlock3</unit>
+		<unit variation="46" posx="12.5027" posz="-9.8840" orientx="-1.0000" orienty="0.0000" orientz="-0.0003">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="126" posx="11.1368" posz="-9.1096" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deUnderbrushPlantsAfrica</unit>
+		<unit variation="82" posx="-14.7072" posz="-9.6001" orientx="1.0000" orienty="0.0000" orientz="0.0001">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="123" posx="-8.2781" posz="-9.0130" orientx="0.4156" orienty="-0.0052" orientz="0.9095">zpZooZebra</unit>
+		<unit variation="126" posx="-11.6755" posz="-8.7127" orientx="-0.2006" orienty="0.0046" orientz="-0.9797">zpZooZebra</unit>
+		<unit variation="177" posx="5.4117" posz="-10.1792" orientx="-0.2676" orienty="-0.0027" orientz="0.9635">zpZooGiraffe</unit>
+		<unit variation="29" posx="-13.1584" posz="-7.3854" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deUnderbrushPlantsAfrica</unit>
+		<unit variation="34" posx="-4.2500" posz="-7.8528" orientx="-0.0023" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="46" posx="3.8014" posz="-6.5682" orientx="0.7072" orienty="0.0000" orientz="-0.7070">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="34" posx="2.5588" posz="-7.8777" orientx="-0.0023" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="103" posx="-8.9745" posz="-7.1292" orientx="-0.6925" orienty="0.0055" orientz="-0.7214">zpZooZebra</unit>
+		<unit variation="172" posx="7.7257" posz="-7.4778" orientx="-0.1772" orienty="0.0045" orientz="-0.9842">zpZooGiraffe</unit>
+		<unit variation="106" posx="9.6180" posz="-7.8158" orientx="0.7126" orienty="-0.0055" orientz="0.7016">zpZooGiraffe</unit>
+		<unit variation="0" posx="4.5598" posz="-6.7255" orientx="-0.7056" orienty="0.0000" orientz="0.7086">SPCPathBlock2</unit>
+		<unit variation="0" posx="-6.3077" posz="-6.7934" orientx="-0.7087" orienty="0.0000" orientz="-0.7055">SPCPathBlock2</unit>
+		<unit variation="46" posx="-5.8916" posz="-6.1370" orientx="-0.7080" orienty="0.0000" orientz="-0.7062">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="34" posx="5.5193" posz="-5.0170" orientx="-1.0000" orienty="0.0000" orientz="0.0023">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="147" posx="12.4260" posz="-5.3534" orientx="1.0000" orienty="0.0000" orientz="0.0001">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="46" posx="11.2352" posz="-4.8442" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="34" posx="9.6801" posz="-4.8837" orientx="1.0000" orienty="0.0000" orientz="-0.0012">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="34" posx="-7.3477" posz="-4.6616" orientx="1.0000" orienty="0.0000" orientz="-0.0022">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="147" posx="-14.8169" posz="-4.7242" orientx="1.0000" orienty="0.0000" orientz="0.0002">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="222" posx="-14.0000" posz="-6.0000" orientx="-0.2013" orienty="0.0000" orientz="0.9795">deTreeAcacia</unit>
+		<unit variation="0" posx="11.3911" posz="-5.4951" orientx="0.0021" orienty="0.0000" orientz="1.0000">SPCPathBlock2</unit>
+		<unit variation="0" posx="-13.5199" posz="-4.9943" orientx="-0.0023" orienty="0.0000" orientz="-1.0000">SPCPathBlock2</unit>
+		<unit variation="36" posx="-1.0000" posz="-1.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCMenagerie</unit>
+		<unit variation="34" posx="-11.7007" posz="-4.4106" orientx="1.0000" orienty="0.0000" orientz="-0.0012">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="81" posx="-13.1028" posz="-4.2337" orientx="-0.0010" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="144" posx="6.3935" posz="-1.4650" orientx="1.0000" orienty="0.0000" orientz="-0.0023">zpNuggetKidnapGuillotine</unit>
+		<unit variation="34" posx="-11.5689" posz="2.1339" orientx="1.0000" orienty="0.0000" orientz="-0.0012">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="81" posx="-13.2267" posz="2.1816" orientx="0.0011" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="34" posx="-7.6943" posz="2.4293" orientx="1.0000" orienty="0.0000" orientz="-0.0022">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="34" posx="5.1935" posz="2.8184" orientx="-1.0000" orienty="-0.0000" orientz="0.0007">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="147" posx="12.5022" posz="2.9648" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="81" posx="10.7151" posz="2.4886" orientx="0.0005" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="34" posx="9.2491" posz="2.5341" orientx="-1.0000" orienty="-0.0000" orientz="0.0006">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="147" posx="-15.1514" posz="2.5368" orientx="-1.0000" orienty="0.0000" orientz="-0.0003">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="0" posx="-6.4600" posz="4.4038" orientx="-0.7058" orienty="0.0000" orientz="0.7085">SPCPathBlock2</unit>
+		<unit variation="0" posx="12.4505" posz="6.3828" orientx="-1.0000" orienty="0.0000" orientz="0.0016">SPCPathBlock3</unit>
+		<unit variation="0" posx="4.2719" posz="4.9602" orientx="-0.7085" orienty="0.0000" orientz="-0.7057">SPCPathBlock2</unit>
+		<unit variation="0" posx="10.9401" posz="3.3661" orientx="0.0021" orienty="0.0000" orientz="1.0000">SPCPathBlock2</unit>
+		<unit variation="0" posx="-15.2146" posz="5.5810" orientx="-1.0000" orienty="0.0000" orientz="0.0015">SPCPathBlock3</unit>
+		<unit variation="0" posx="-13.6514" posz="2.7580" orientx="0.0018" orienty="0.0000" orientz="1.0000">SPCPathBlock2</unit>
+		<unit variation="46" posx="-5.8717" posz="3.9751" orientx="-0.7062" orienty="0.0000" orientz="0.7080">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="46" posx="3.6649" posz="4.3344" orientx="0.7070" orienty="0.0000" orientz="0.7072">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="224" posx="-13.5408" posz="5.1687" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushPampas</unit>
+		<unit variation="241" posx="6.8994" posz="5.8282" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="235" posx="8.0914" posz="5.8989" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="127" posx="7.9166" posz="5.4694" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="173" posx="6.4132" posz="4.9065" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="15" posx="6.3166" posz="4.8529" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="21" posx="9.7557" posz="5.9325" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="25" posx="-10.3210" posz="4.4392" orientx="-0.9078" orienty="0.0052" orientz="-0.4193">zpZooKangaroo</unit>
+		<unit variation="210" posx="8.5186" posz="5.9493" orientx="-0.6488" orienty="0.0055" orientz="-0.7609">zpZooElephant</unit>
+		<unit variation="211" posx="10.0834" posz="4.9876" orientx="-0.4423" orienty="-0.0018" orientz="0.8968">zpZooElephant</unit>
+		<unit variation="34" posx="-4.7400" posz="5.4833" orientx="0.0021" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="34" posx="2.0904" posz="5.9076" orientx="0.0007" orienty="-0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="20" posx="5.7549" posz="6.8174" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="82" posx="-15.0874" posz="7.0089" orientx="1.0000" orienty="0.0000" orientz="0.0001">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="65" posx="-7.7782" posz="5.8519" orientx="-0.8148" orienty="0.0054" orientz="-0.5797">zpZooKangaroo</unit>
+		<unit variation="65" posx="-11.1962" posz="6.0036" orientx="0.8164" orienty="-0.0054" orientz="0.5775">zpZooKangaroo</unit>
+		<unit variation="233" posx="4.8153" posz="6.8192" orientx="-0.9821" orienty="0.0031" orientz="0.1886">zpZooElephant</unit>
+		<unit variation="210" posx="7.4059" posz="7.5565" orientx="-0.7592" orienty="0.0004" orientz="0.6509">zpZooElephant</unit>
+		<unit variation="0" posx="-15.1110" posz="9.9151" orientx="-1.0000" orienty="0.0000" orientz="0.0015">SPCPathBlock3</unit>
+		<unit variation="0" posx="12.7077" posz="10.0797" orientx="-1.0000" orienty="0.0000" orientz="0.0016">SPCPathBlock3</unit>
+		<unit variation="199" posx="-10.0498" posz="8.7671" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushPampas</unit>
+		<unit variation="207" posx="5.6230" posz="8.5599" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="140" posx="4.8292" posz="9.3859" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="213" posx="4.5776" posz="9.4127" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="121" posx="4.5138" posz="8.6516" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="181" posx="5.2416" posz="8.3661" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="46" posx="12.5869" posz="7.6955" orientx="-1.0000" orienty="-0.0000" orientz="-0.0002">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="176" posx="9.9414" posz="8.0689" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="70" posx="9.8438" posz="9.2657" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="4" posx="9.7586" posz="9.5668" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="176" posx="-8.0513" posz="8.9201" orientx="-0.7272" orienty="0.0055" orientz="-0.6864">zpEmu</unit>
+		<unit variation="10" posx="-5.6162" posz="7.9126" orientx="-0.0097" orienty="-0.0039" orientz="0.9999">zpZooKangaroo</unit>
+		<unit variation="152" posx="-12.9622" posz="11.0266" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushTexas</unit>
+		<unit variation="34" posx="-4.8699" posz="9.7868" orientx="0.0013" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="34" posx="1.5185" posz="10.1947" orientx="0.0006" orienty="-0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="61" posx="7.5686" posz="11.6128" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="103" posx="5.8780" posz="11.9924" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="189" posx="6.8640" posz="10.2786" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushBorneo</unit>
+		<unit variation="82" posx="-15.0379" posz="10.9054" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="119" posx="-9.0631" posz="10.4356" orientx="0.9632" orienty="-0.0048" orientz="0.2686">zpEmu</unit>
+		<unit variation="206" posx="-14.0000" posz="10.0000" orientx="-0.9910" orienty="-0.0000" orientz="0.1337">TreeCaribbean</unit>
+		<unit variation="187" posx="-12.0000" posz="10.0000" orientx="-0.1528" orienty="0.0000" orientz="-0.9883">TreeCaribbean</unit>
+		<unit variation="161" posx="5.8219" posz="10.0049" orientx="-0.9930" orienty="-0.0000" orientz="-0.1181">ypTreeBorneo</unit>
+		<unit variation="132" posx="9.8219" posz="10.0039" orientx="-0.9758" orienty="0.0000" orientz="0.2188">ypTreeBorneo</unit>
+		<unit variation="150" posx="10.0000" posz="10.0000" orientx="-0.6518" orienty="0.0000" orientz="0.7584">ypTreeBorneo</unit>
+		<unit variation="253" posx="10.0000" posz="10.0000" orientx="-0.5785" orienty="0.0000" orientz="0.8157">ypTreeBorneo</unit>
+		<unit variation="0" posx="-5.4082" posz="11.9123" orientx="-1.0000" orienty="0.0000" orientz="0.0018">SPCPathBlock2</unit>
+		<unit variation="0" posx="2.3817" posz="11.6569" orientx="-1.0000" orienty="0.0000" orientz="0.0020">SPCPathBlock2</unit>
+		<unit variation="81" posx="-4.7952" posz="11.5357" orientx="-1.0000" orienty="0.0000" orientz="0.0013">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="81" posx="1.6677" posz="11.6797" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="46" posx="12.5951" posz="11.5865" orientx="-1.0000" orienty="-0.0000" orientz="-0.0002">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="46" posx="-9.4831" posz="13.3692" orientx="0.0004" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="46" posx="-12.9357" posz="13.3864" orientx="0.0004" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="34" posx="-14.9572" posz="13.1609" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="34" posx="12.6617" posz="13.3557" orientx="0.0001" orienty="-0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="147" posx="2.2407" posz="13.3704" orientx="-0.0001" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="92" posx="-6.0000" posz="12.0000" orientx="0.5105" orienty="0.0000" orientz="-0.8599">TreeCaribbean</unit>
+		<unit variation="252" posx="6.0000" posz="12.0000" orientx="0.9889" orienty="0.0000" orientz="0.1483">ypTreeBorneo</unit>
+		<unit variation="134" posx="1.8223" posz="12.0058" orientx="-0.8718" orienty="0.0000" orientz="-0.4898">ypTreeBorneo</unit>
+		<unit variation="54" posx="5.8223" posz="12.0049" orientx="-0.9278" orienty="-0.0000" orientz="-0.3732">ypTreeBorneo</unit>
+		<unit variation="66" posx="7.8223" posz="12.0044" orientx="-0.9072" orienty="0.0000" orientz="-0.4207">ypTreeBorneo</unit>
+		<unit variation="0" posx="-9.1614" posz="13.5032" orientx="0.0017" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="0" posx="-11.8887" posz="13.3821" orientx="0.0017" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="0" posx="6.1095" posz="13.3983" orientx="0.0017" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="0" posx="9.4785" posz="13.7908" orientx="0.0017" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="147" posx="-5.1950" posz="13.4537" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="46" posx="6.8398" posz="13.4850" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
+		<unit variation="46" posx="10.5247" posz="13.4695" orientx="0.0002" orienty="-0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="Texas\Path_Blend">
+			<block startx="-9" startz="-2" endx="-9" endz="0"></block>
+			<block startx="-8" startz="-2" endx="-8" endz="1"></block>
+			<block startx="-7" startz="-2" endx="-7" endz="1"></block>
+			<block startx="-6" startz="-1" endx="-6" endz="0"></block>
+			<block startx="-5" startz="-1" endx="-5" endz="0"></block>
+			<block startx="-4" startz="-1" endx="-4" endz="1"></block>
+			<block startx="-3" startz="-2" endx="-3" endz="1"></block>
+			<block startx="-2" startz="-3" endx="-2" endz="4"></block>
+			<block startx="-1" startz="-3" endx="-1" endz="4"></block>
+			<block startx="0" startz="-3" endx="0" endz="4"></block>
+			<block startx="1" startz="-3" endx="1" endz="4"></block>
+			<block startx="2" startz="-3" endx="2" endz="2"></block>
+			<block startx="3" startz="-3" endx="3" endz="1"></block>
+			<block startx="4" startz="-2" endx="4" endz="1"></block>
+			<block startx="-2" startz="5" endx="-2" endz="8"></block>
+			<block startx="-1" startz="5" endx="-1" endz="9"></block>
+			<block startx="0" startz="5" endx="0" endz="9"></block>
+			<block startx="1" startz="5" endx="1" endz="8"></block>
+			<block startx="5" startz="-2" endx="5" endz="1"></block>
+			<block startx="6" startz="-2" endx="6" endz="1"></block>
+			<block startx="7" startz="-2" endx="7" endz="1"></block>
+			<block startx="8" startz="-2" endx="8" endz="1"></block>
+			<block startx="9" startz="-1" endx="9" endz="0"></block>
+			<block startx="-2" startz="-8" endx="-2" endz="-7"></block>
+			<block startx="-2" startz="-4" endx="-2" endz="-4"></block>
+			<block startx="-1" startz="-9" endx="-1" endz="-4"></block>
+			<block startx="0" startz="-9" endx="0" endz="-4"></block>
+			<block startx="1" startz="-9" endx="1" endz="-4"></block>
+			<block startx="2" startz="-4" endx="2" endz="-4"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="AfricaSavanna\ground_forest2_afriSavanna">
+			<block startx="6" startz="-3" endx="6" endz="-3"></block>
+			<block startx="2" startz="-7" endx="2" endz="-5"></block>
+			<block startx="3" startz="-8" endx="3" endz="-7"></block>
+			<block startx="4" startz="-8" endx="4" endz="-8"></block>
+			<block startx="6" startz="-7" endx="6" endz="-7"></block>
+			<block startx="7" startz="-6" endx="7" endz="-4"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="AfricaSavanna\ground_forest1_afriSavanna">
+			<block startx="-7" startz="-7" endx="-7" endz="-7"></block>
+			<block startx="4" startz="-3" endx="4" endz="-3"></block>
+			<block startx="5" startz="-3" endx="5" endz="-3"></block>
+			<block startx="3" startz="-6" endx="3" endz="-4"></block>
+			<block startx="4" startz="-7" endx="4" endz="-4"></block>
+			<block startx="5" startz="-7" endx="5" endz="-4"></block>
+			<block startx="6" startz="-6" endx="6" endz="-4"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="AfricaDesert\ground_grass3_afriDesert">
+			<block startx="-7" startz="-5" endx="-7" endz="-4"></block>
+			<block startx="-6" startz="-7" endx="-6" endz="-4"></block>
+			<block startx="-5" startz="-7" endx="-5" endz="-6"></block>
+			<block startx="-4" startz="-7" endx="-4" endz="-6"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="AfricaDesert\ground_forest2_afriDesert">
+			<block startx="-7" startz="-6" endx="-7" endz="-6"></block>
+			<block startx="-5" startz="-5" endx="-5" endz="-4"></block>
+			<block startx="-4" startz="-5" endx="-4" endz="-4"></block>
+			<block startx="-7" startz="-3" endx="-7" endz="-3"></block>
+			<block startx="-6" startz="-3" endx="-6" endz="-2"></block>
+			<block startx="-5" startz="-3" endx="-5" endz="-2"></block>
+			<block startx="-4" startz="-3" endx="-4" endz="-2"></block>
+			<block startx="-3" startz="-3" endx="-3" endz="-3"></block>
+			<block startx="-3" startz="-7" endx="-3" endz="-4"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="-5"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="andes\ground08_and">
+			<block startx="-6" startz="1" endx="-6" endz="1"></block>
+			<block startx="-5" startz="1" endx="-5" endz="1"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="Africa\pathBlend_afr">
+			<block startx="-6" startz="5" endx="-6" endz="5"></block>
+			<block startx="-5" startz="5" endx="-5" endz="5"></block>
+			<block startx="-4" startz="7" endx="-4" endz="7"></block>
+			<block startx="-7" startz="2" endx="-7" endz="3"></block>
+			<block startx="-6" startz="4" endx="-6" endz="4"></block>
+			<block startx="-5" startz="4" endx="-5" endz="4"></block>
+			<block startx="-4" startz="2" endx="-4" endz="3"></block>
+			<block startx="-3" startz="2" endx="-3" endz="4"></block>
+			<block startx="-3" startz="7" endx="-3" endz="7"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="Africa\ground2_afr">
+			<block startx="-6" startz="2" endx="-6" endz="2"></block>
+			<block startx="-5" startz="2" endx="-5" endz="2"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="borneo\ground_forest_borneo">
+			<block startx="2" startz="3" endx="2" endz="4"></block>
+			<block startx="3" startz="2" endx="3" endz="4"></block>
+			<block startx="4" startz="2" endx="4" endz="4"></block>
+			<block startx="2" startz="5" endx="2" endz="6"></block>
+			<block startx="3" startz="5" endx="3" endz="6"></block>
+			<block startx="4" startz="5" endx="4" endz="6"></block>
+			<block startx="5" startz="5" endx="5" endz="6"></block>
+			<block startx="6" startz="5" endx="6" endz="5"></block>
+			<block startx="5" startz="2" endx="5" endz="4"></block>
+			<block startx="6" startz="3" endx="6" endz="4"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="Africa\groundStraw_afr">
+			<block startx="-7" startz="5" endx="-7" endz="6"></block>
+			<block startx="-6" startz="6" endx="-6" endz="6"></block>
+			<block startx="-5" startz="6" endx="-5" endz="6"></block>
+			<block startx="-4" startz="5" endx="-4" endz="6"></block>
+			<block startx="-7" startz="4" endx="-7" endz="4"></block>
+			<block startx="-6" startz="3" endx="-6" endz="3"></block>
+			<block startx="-5" startz="3" endx="-5" endz="3"></block>
+			<block startx="-4" startz="4" endx="-4" endz="4"></block>
+			<block startx="-3" startz="5" endx="-3" endz="6"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

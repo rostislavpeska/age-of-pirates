@@ -1,0 +1,28 @@
+<animfile>
+  <component>boatbuilding
+      <logic type="Variation">
+        <v1>
+          <assetreference type="GrannyModel">
+              <file>buildings\native_settlement\wokou\wokou_boatbuilding_Model</file>
+              <materialvariant index="1"/>
+          </assetreference>
+        </v1>
+        <v2>
+          <assetreference type="GrannyModel">
+              <file>buildings\native_settlement\wokou\wokou_boatbuilding_Model</file>
+              <materialvariant index="2"/>
+          </assetreference>
+        </v2>
+      </logic>
+      <decal>
+        <effecttype>default</effecttype>
+        <texture>buildings\native_settlement\japan_decal_01</texture>
+        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+        <width>12.00</width>
+        <height>12.00</height>
+      </decal>
+  </component>
+  <anim>Idle
+      <component>boatbuilding</component>
+  </anim>
+</animfile>

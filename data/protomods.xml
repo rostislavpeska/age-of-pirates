@@ -52739,7 +52739,7 @@
   </unit>
   <unit id="20706" name="zpSPCAztecMediumTemple">
     <dbid>20706</dbid>
-    <displaynameid>63953</displaynameid>
+    <displaynameid>303052</displaynameid>
     <editornameid>302428</editornameid>
     <obstructionradiusx>5.0000</obstructionradiusx>
     <obstructionradiusz>5.0000</obstructionradiusz>
@@ -63147,6 +63147,421 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>PlaceAnywhere</flag>
     <flag>NotSelectable</flag>     
+  </unit>
+  <unit id="20869" name="zpSPCRockChurch">
+    <dbid>20869</dbid>
+    <displaynameid>101309</displaynameid>
+    <editornameid>303045</editornameid>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>6.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\africa_east\rock_church\rock_church.xml</animfile>
+    <deadreplacement>BuildingRubble6x6</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\african_civs\mountain_monastery_icon.png</icon>
+    <minimapicon>ui\minimap\religious_small</minimapicon>
+    <portraiticon>resources\art\buildings\african_civs\mountain_monastery_portrait.png</portraiticon>
+    <rollovertextid>302310</rollovertextid>
+    <shortrollovertextid>302309</shortrollovertextid>
+    <initialhitpoints>5000.0000</initialhitpoints>
+    <maxhitpoints>5000.0000</maxhitpoints>
+    <los>12.0000</los>
+    <displayedrange>20.0000</displayedrange>
+    <buildpoints>40.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>160.0000</bounty>
+    <buildbounty>80.0000</buildbounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>1</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>AbstractChurch</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
+    <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
+    <tech row="0" page="11" column="2">DESPCMercenaryBounties</tech>
+    <tech row="0" page="11" column="3">zpSPCEliteMercenaries</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>ShowAreaHealRate</flag>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="11" column="4">Abilities</command>
+    <tactics>notre_dame.tactics</tactics>
+    <protoaction>
+      <name>Autogather</name>
+      <rate type="XP">4.000000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20870" name="zpSPCPorcelainTower">
+    <dbid>20870</dbid>
+    <displaynameid>65033</displaynameid>
+    <editornameid>303046</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\wonders\porcelain_tower\porcelain_tower.xml</animfile>
+    <deadreplacement>BuildingRubble5x5</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\wonders\porcelain_tower\porcelain_tower_icon_64.png</icon>
+    <portraiticon>resources\art\buildings\wonders\porcelain_tower\porcelain_tower_icon_portrait.png</portraiticon>
+    <minimapicon>ui\minimap\city_resource</minimapicon>
+    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
+    <rollovertextid>303047</rollovertextid>
+    <shortrollovertextid>303047</shortrollovertextid>
+    <legacyhotkeycontext>FactoryAccel</legacyhotkeycontext>
+    <initialhitpoints>5000.0000</initialhitpoints>
+    <maxhitpoints>5000.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>30.0000</buildpoints>
+    <bounty>240.0000</bounty>
+    <buildbounty>0.0000</buildbounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>Economic</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractFindOtherEconomicBuilding</unittype>
+    <unittype>AbstractFindOtherMilitaryBuilding</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
+    <flag>VisibleUnderFog</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>EnterHotkeyContext</flag>
+    <flag>NotDeleteable</flag>
+    <flag>Invulnerable</flag>
+    <flag>BuildingShowTactics</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <command page="9" column="2">AztecTempleCoin</command>
+    <command page="9" column="0">AztecTempleFood</command>
+    <command page="9" column="1">AztecTempleWood</command>
+    <command page="9" column="3">AztecTempleRainbow</command>
+    <command page="10" column="2">SetGatherPointEconomy</command>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <tactics>convertibleporcelaintower.tactics</tactics>
+    <protoaction>
+      <name>AutoGatherCoin</name>
+      <rate type="Gold">2.500000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherFood</name>
+      <rate type="Food">3.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherWood</name>
+      <rate type="Wood">2.500000</rate>
+    </protoaction>
+    <protoaction>
+      <name>RainbowCoin</name>
+      <type>AutoGather</type>
+      <rate type="Gold">0.600000</rate>
+    </protoaction>
+    <protoaction>
+      <name>RainbowFood</name>
+      <type>AutoGather</type>
+      <rate type="Food">0.600000</rate>
+    </protoaction>
+    <protoaction>
+      <name>RainbowTrade</name>
+      <type>AutoGather</type>
+      <rate type="Trade">0.180000</rate>
+    </protoaction>
+    <protoaction>
+      <name>RainbowWood</name>
+      <type>AutoGather</type>
+      <rate type="Wood">0.600000</rate>
+    </protoaction>
+    <protoaction>
+      <name>RainbowXP</name>
+      <type>AutoGather</type>
+      <rate type="XP">0.180000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20871" name="zpNativeHouseAsianBig">
+    <dbid>20871</dbid>
+    <displaynameid>303048</displaynameid>
+    <editornameid>303048</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\wokou\boatbuilding_spc.xml</animfile>
+    <icon>resources\art\units\asians\mercenaries\wokou_pirate\wokou_pirate_icon_64.png</icon>
+    <portraiticon>resources\art\units\asians\mercenaries\wokou_pirate\wokou_pirate_icon_portrait.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <flag>FlattenGround</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NoHPBar</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>NotSelectable</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+  </unit>
+  <unit id="20872" name="zpSPCSafari">
+    <dbid>20872</dbid>
+    <displaynameid>303050</displaynameid>
+    <editornameid>303049</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\asian_civs\consulate\consulate_nogarden.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>barracks</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\spc\menagerie.png</icon>
+    <minimapicon>ui\minimap\city_resource</minimapicon>
+    <portraiticon>resources\art\buildings\spc\menagerie.png</portraiticon>
+    <rollovertextid>301889</rollovertextid>
+    <shortrollovertextid>301888</shortrollovertextid>
+    <legacyhotkeycontext>ShrineAccel</legacyhotkeycontext>
+    <initialhitpoints>3000.0000</initialhitpoints>
+    <maxhitpoints>3000.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>120.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>240.0000</bounty>
+    <cost resourcetype="Food">800.0000</cost>
+    <carrycapacity resourcetype="Food">999.0000</carrycapacity>
+    <initialresource resourcetype="Food">100.0000</initialresource>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <gathererlimit>12</gathererlimit>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>AbstractWonder</unittype>
+    <unittype>DisplayAbilitiesOnHUD</unittype>
+    <unittype>AbstractPoliticalWonder</unittype>
+    <unittype>AbstractTypeHuntableMagnet</unittype>
+    <unittype>AbstractShrine</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Resource</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>InitialGarrisonOnly</flag>
+    <flag>EnterHotkeyContext</flag>
+    <flag>UnlimitedSupply</flag>
+    <flag>Tracked</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>Invulnerable</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>CannotBeConvertedByAllies</flag>
+    <command page="9" column="0">TacticFood</command>
+    <command page="9" column="2">TacticCoin</command>
+    <command page="9" column="3">TacticXPShrine</command>
+    <command page="9" column="1">TacticWood</command>
+    <tactics>zpconvertableshrine.tactics</tactics>
+    <protoaction>
+      <name>AutoGatherCoin</name>
+      <rate type="Gold">1.550000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherFood</name>
+      <rate type="Food">1.550000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherWood</name>
+      <rate type="Wood">1.550000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherXP</name>
+      <rate type="XP">2.330000</rate>
+    </protoaction>
+  </unit>
+  <unit id="20873" name="zpNativeTentNoSelect">
+    <dbid>20873</dbid>
+    <displaynameid>300072</displaynameid>
+    <editornameid>303051</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\tents\tents_large.xml</animfile>
+    <icon>resources\art\buildings\spc\tents\largetent_icon_64x64.png</icon>
+    <portraiticon>resources\art\buildings\spc\tents\largetent_portrait.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <flag>FlattenGround</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+    <flag>NotSelectable</flag>
   </unit>
 
 

@@ -22714,6 +22714,42 @@
       <effect type="Data" action="AutoGatherXPTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCSawMill</target>
       </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCSafari</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCSafari</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCSafari</target>
+      </effect>
+      <effect type="Data" action="AutoGatherXP" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCSafari</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCPorcelainTower</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCPorcelainTower</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCPorcelainTower</target>
+      </effect>
+      <effect type="Data" action="RainbowCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCPorcelainTower</target>
+      </effect>
+      <effect type="Data" action="RainbowFood" amount="1.15" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCPorcelainTower</target>
+      </effect>
+      <effect type="Data" action="RainbowWood" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCPorcelainTower</target>
+      </effect>
+      <effect type="Data" action="RainbowXP" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCPorcelainTower</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCRockChurch</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSPCBlessedCity" type="Normal">
@@ -30828,14 +30864,38 @@
       </effect>
     </effects>
   </tech>
-
-  <tech name="zpMarketTransformTravois" type="Normal">
+  <tech name="zpUnknownRogueAfrican" type="Normal">
     <dbid>41194</dbid>
-    <researchpoints>20.0000</researchpoints>
-    <status>ACTIVE</status>
-    <icon>resources\images\icons\command\generate_influence_icon.png</icon>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCEliteMercenaries</effect>
+    </effects>
   </tech>
-
+  <tech name="zpUnknownRogueAztec" type="Normal">
+    <dbid>41195</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecTempleFoodFestival</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecTempleFireFestival</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCAztecTempleGoldFestival</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCTreasuryProductionBonus</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownRogueNorthCity" type="Normal">
+    <dbid>41196</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpSPCArtPatronHansaChurch</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCEliteMercenaries</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
+    </effects>
+  </tech>
 
 
 
