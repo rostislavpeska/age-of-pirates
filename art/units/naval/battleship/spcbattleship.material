@@ -19,6 +19,8 @@
       </texture>
       <texture name="Masks" override="units\naval\battleship\textures\battleship_mata_Masks">
       </texture>
+      <texture name="Details" override="units\naval\battleship\textures\trinidad_mata_Details">
+      </texture>
    </parameters>
   </submaterial>
   <submaterial name="matc">

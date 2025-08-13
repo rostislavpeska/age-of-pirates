@@ -155,16 +155,16 @@
 			<component>fishing_net</component>
 		</anim>
 	</attachment>
-	<attachment>
+<attachment>
 		pendentflag_a2
 		<component>
 			flag
 			<assetreference type="ClothFlag">
 				<flag>
-					<blending>alphatest_nocolor</blending>
-					<texture>buildings\flags\pendent_yellow</texture>
-					<width>2.70</width>
-					<height>0.60</height>
+					<blending>alphatest_color</blending>
+					<texture>buildings\flags\pendent01</texture>
+					<width>2.00</width>
+					<height>1.00</height>
 				</flag>
 			</assetreference>
 		</component>
@@ -201,24 +201,6 @@
 					<texture>objects\flags\spain_navy</texture>
 					<width>2.50</width>
 					<height>1.875</height>
-				</flag>
-			</assetreference>
-		</component>
-		<anim>
-			Idle
-			<component>flag</component>
-		</anim>
-	</attachment>
-	<attachment>
-		pendentflag_a3
-		<component>
-			flag
-			<assetreference type="ClothFlag">
-				<flag>
-					<blending>alphatest_nocolor</blending>
-					<texture>buildings\flags\pendent_red</texture>
-					<width>4.0</width>
-					<height>0.80</height>
 				</flag>
 			</assetreference>
 		</component>
@@ -282,7 +264,6 @@
 		<attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"/>
 		<attach a="civflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"/>
 		<attach a="pendentflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"/>
-		<attach a="pendentflag_a3" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"/>
 	</anim>
 	<anim>
 		RangedAttack
@@ -297,7 +278,6 @@
 		<attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"/>
 		<attach a="civflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"/>
 		<attach a="pendentflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"/>
-		<attach a="pendentflag_a3" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"/>
 	</anim>
 	<anim>
 		Walk
@@ -312,7 +292,6 @@
 		<attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"/>
 		<attach a="civflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"/>
 		<attach a="pendentflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"/>
-		<attach a="pendentflag_a3" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"/>
 	</anim>
 	<anim>
 		Death
@@ -345,6 +324,5 @@
 		<attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"/>
 		<attach a="civflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"/>
 		<attach a="pendentflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"/>
-		<attach a="pendentflag_a3" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"/>
 	</anim>
 </animfile>
