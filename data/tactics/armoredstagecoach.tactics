@@ -27,7 +27,7 @@
     <basedamagecap>1</basedamagecap>
     <perfectaccuracy>1</perfectaccuracy>
   </action>
-  <tactic>Basic
+  <tactic>Bombard
     <speedmodifier>1.0</speedmodifier>
     <action priority="100">GatlingAttack</action>
     <idleanim>Idle</idleanim>
