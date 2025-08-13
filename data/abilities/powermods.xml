@@ -542,17 +542,6 @@
 		<abstractattacktargettype>LogicalTypeRangedUnitsAttack</abstractattacktargettype>
 		<unitaction>SalveAttack</unitaction>
 	</power>
-	<power name="zpPowerLiberationAttack" type="UnitAction">
-		<displaynameid>303067</displaynameid>
-		<rolloverid>303068</rolloverid>
-		<icon>resources\images\icons\abilities\liberation_attack.png</icon>
-		<minimapeventtime sendalertto="player">1</minimapeventtime>
-		<activetime>5</activetime>
-		<radius>10.0</radius>
-		<placement forceonmap="1">unit</placement>
-		<abstractattacktargettype>LogicalTypeRangedUnitsAttack</abstractattacktargettype>
-		<unitaction>RoundelPierceAttack</unitaction>
-	</power>
 
 
 

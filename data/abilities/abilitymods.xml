@@ -354,8 +354,8 @@
     <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
   </zpspcrockchurch>
   <zpspctrinidad>
-    <ability>zpPowerLiberationAttack<rof>60</rof><sharedcooldown>true</sharedcooldown><castonself>true</castonself></ability>
-    <ability>zpPowerSalve<rof>60</rof></ability>
+    <ability>zpPowerSalve<rof>60</rof><sharedcooldown>true</sharedcooldown></ability>
+    <ability>PowerLongRange<rof>60</rof><sharedcooldown>true</sharedcooldown></ability>
   </zpspctrinidad>
 
   <zpwokoudiver>

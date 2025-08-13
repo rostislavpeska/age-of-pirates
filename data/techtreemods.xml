@@ -31119,7 +31119,7 @@
     </effects>
   </tech>
   <tech name="zpUnknownAllianceBourbon" type="Normal">
-    <dbid>41202</dbid>
+    <dbid>41240</dbid>
     <displaynameid>122142</displaynameid>
     <status>UNOBTAINABLE</status>
     <researchpoints>5.0000</researchpoints>
