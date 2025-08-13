@@ -43,7 +43,7 @@
     <singleuseplayer>1</singleuseplayer>
   </action>
 	<action>
-		<name stringid="38127">SalveAttack</name>
+		<name stringid="303066">SalveAttack</name>
 		<type>BroadsideAttack</type>
 		<attackaction>1</attackaction>
 		<rangedlogic>1</rangedlogic>
