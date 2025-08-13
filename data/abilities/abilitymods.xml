@@ -353,6 +353,10 @@
   <zpspcrockchurch>
     <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
   </zpspcrockchurch>
+  <zpspctrinidad>
+    <ability>zpPowerLiberationAttack<rof>60</rof><sharedcooldown>true</sharedcooldown><castonself>true</castonself></ability>
+    <ability>zpPowerSalve<rof>60</rof></ability>
+  </zpspctrinidad>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

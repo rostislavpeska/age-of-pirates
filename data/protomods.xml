@@ -63569,6 +63569,173 @@
 
 
 
+
+
+
+
+<!--TEST-->
+
+  <unit id="" name="zpSPCTrinidad">
+    <dbid></dbid>
+    <displaynameid>303065</displaynameid>
+    <editornameid>303063</editornameid>
+    <buildlimit>1</buildlimit>
+    <obstructionradiusx>2.9900</obstructionradiusx>
+    <obstructionradiusz>2.9900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>5.0000</maxvelocity>
+    <maxrunvelocity>7.0000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <turnrate>1.0000</turnrate>
+    <animfile>units\naval\battleship\trinidad.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\units\naval\battleship_icon_64x64.png</icon>
+    <portraiticon>resources\art\units\naval\battleship_portrait.png</portraiticon>
+    <rollovertextid>303070</rollovertextid>
+    <shortrollovertextid>303070</shortrollovertextid>
+    <initialhitpoints>6000.0000</initialhitpoints>
+    <maxhitpoints>6000.0000</maxhitpoints>
+    <los>34.0000</los>
+    <rechargetime>60.0000</rechargetime>
+    <projectileprotounit>Cannonball</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <bounty>250.0000</bounty>
+    <cost resourcetype="Gold">5500.0000</cost>
+    <cost resourcetype="Wood">7500.0000</cost>
+    <maxcontained>100</maxcontained>
+    <allowedage>2</allowedage>
+    <armor type="Ranged" value="0.75000">
+    </armor>
+    <roundeltiercount>1</roundeltiercount>
+    <unittype>LogicalTypeNavalMilitary</unittype>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Transport</unittype>
+    <unittype>Mercenary</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>AbstractWarShip</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>MercType5</unittype>
+    <flag>TieToWaterSurface</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HeroName1</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <flag>ExperienceUnit</flag>
+    <contain>LogicalTypeGarrisonInShips</contain>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>trinidad.tactics</tactics>
+    <protoaction>
+      <name>RoundelPierceAttack</name>
+      <damage>140.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>35.000000</maxrange>
+      <rof>0.20000</rof>
+      <damagecap>70.000000</damagecap>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractVillager">1.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>BroadsideAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>32.000000</maxrange>
+      <rof>0.10000</rof>
+      <damagecap>100.000000</damagecap>
+      <damagebonus type="Ship">3.000000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>SalveAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>32.000000</maxrange>
+      <rof>0.30000</rof>
+      <damagecap>100.000000</damagecap>
+      <damagebonus type="Ship">3.000000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>90.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>32.000000</maxrange>
+      <rof>1.500000</rof>
+      <damagecap>120.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttackContained</name>
+      <damage>90.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>32.000000</maxrange>
+      <rof>0.800000</rof>
+      <damagecap>120.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>ChargeBroadsideAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>32.000000</maxrange>
+      <rof>0.10000</rof>
+      <damagecap>100.000000</damagecap>
+      <damagebonus type="Ship">2.000000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>LongRangeAttack</name>
+      <damage>200.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>90.000000</maxrange>
+      <rof>0.500000</rof>
+      <damagecap>400.000000</damagecap>
+      <damagebonus type="Building">5.000000</damagebonus>
+      <damagearea>6.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="Dock">0.200000</damagebonus>
+      <damagebonus type="AbstractVillager">0.200000</damagebonus>
+      <damagebonus type="YPDockAsian">0.200000</damagebonus>
+    </protoaction>
+  </unit>
+
+
   
 
   <!--<unit mergeMode='replace' id="1710" name="CommunityPlaza">

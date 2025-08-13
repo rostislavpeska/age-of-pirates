@@ -531,6 +531,28 @@
     <icon>resources\images\icons\abilities\friendly_dock.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
+  <power name="zpPowerSalve" type="UnitAction">
+		<displaynameid>303066</displaynameid>
+		<rolloverid>303069</rolloverid>
+		<icon>resources\images\icons\abilities\salve_attack.png</icon>
+		<minimapeventtime sendalertto="player">1</minimapeventtime>
+		<activetime>7</activetime>
+		<radius>10.0</radius>
+		<placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+		<abstractattacktargettype>LogicalTypeRangedUnitsAttack</abstractattacktargettype>
+		<unitaction>SalveAttack</unitaction>
+	</power>
+	<power name="zpPowerLiberationAttack" type="UnitAction">
+		<displaynameid>303067</displaynameid>
+		<rolloverid>303068</rolloverid>
+		<icon>resources\images\icons\abilities\liberation_attack.png</icon>
+		<minimapeventtime sendalertto="player">1</minimapeventtime>
+		<activetime>5</activetime>
+		<radius>10.0</radius>
+		<placement forceonmap="1">unit</placement>
+		<abstractattacktargettype>LogicalTypeRangedUnitsAttack</abstractattacktargettype>
+		<unitaction>RoundelPierceAttack</unitaction>
+	</power>
 
 
 
