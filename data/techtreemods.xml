@@ -30896,6 +30896,1370 @@
       <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
     </effects>
   </tech>
+  <tech name="zpUnknownAlliancePirates" type="Normal">
+    <dbid>41197</dbid>
+    <displaynameid>300011</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_pirates.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="NatPirates" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatPirate</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCorsair</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Privateer</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatGambling</effect>
+      <effect type="TechStatus" status="obtainable">zpNatThePiracy</effect>
+      <effect type="TechStatus" status="obtainable">DEUnknownPirateBooty</effect>
+      <effect type="TechStatus" status="obtainable">DEUnknownSahelianKingdoms</effect>
+      <effect type="TechStatus" status="obtainable">zpNatDisciplinedPirate</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHonoredPirate</effect>
+      <effect type="CommandAdd" tech="zpNatGambling" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatThePiracy" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="DEUnknownPirateBooty" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="DEUnknownSahelianKingdoms" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatDisciplinedPirate" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHonoredPirate" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceMaltese" type="Normal">
+    <dbid>41198</dbid>
+    <displaynameid>303053</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_maltese.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="Maltese" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMalteseKnight</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMalteseGuard</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatMalteseMedicine</effect>
+      <effect type="TechStatus" status="obtainable">zpNatMalteseFishCuisine</effect>
+      <effect type="TechStatus" status="obtainable">zpNatMalteseFortifications</effect>
+      <effect type="TechStatus" status="obtainable">zpMalteseMarksmen</effect>
+      <effect type="TechStatus" status="obtainable">zpNatDisciplinedMaltese</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHonoredMaltese</effect>
+      <effect type="CommandAdd" tech="zpNatGambling" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatThePiracy" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="DEUnknownPirateBooty" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="DEUnknownSahelianKingdoms" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatDisciplinedMaltese" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHonoredMaltese" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceJesuit" type="Normal">
+    <dbid>41199</dbid>
+    <displaynameid>61080</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\tech_jesuit.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="SPCJesuit" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConquistador</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatDisciplinedJesuit</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHonoredJesuit</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitFlyingButtress</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitSchools</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitSmokelessPowder</effect>
+      <effect type="CommandAdd" tech="zpNatDisciplinedJesuit" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHonoredJesuit" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatJesuitFlyingButtress" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatJesuitSchools" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatJesuitSmokelessPowder" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceSufi" type="Normal">
+    <dbid>41200</dbid>
+    <displaynameid>61083</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_sufi.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="SPCSufi" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatQizilbashProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypMarathanCatamaran</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatDisciplinedSufiClone</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHonoredSufiClone</effect>
+      <effect type="TechStatus" status="obtainable">zpNatSufiFastingClone</effect>
+      <effect type="TechStatus" status="obtainable">zpNatSufiPilgramageClone</effect>
+      <effect type="TechStatus" status="obtainable">zpNatSufiShariaClone</effect>
+      <effect type="CommandAdd" tech="zpNatDisciplinedSufiClone" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHonoredSufiClone" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatSufiFastingClone" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatSufiPilgramageClone" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatSufiShariaClone" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceZen" type="Normal">
+    <dbid>41201</dbid>
+    <displaynameid>61078</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_sufi.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="SPCZen" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSoheiProxy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypWokouJunk</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatHonoredZenClone</effect>
+      <effect type="TechStatus" status="obtainable">zpNatDisciplinedZenClone</effect>
+      <effect type="TechStatus" status="obtainable">zpNatZenMasterLessonsClone</effect>
+      <effect type="TechStatus" status="obtainable">zpNatZenMeritocracyClone</effect>
+      <effect type="TechStatus" status="obtainable">zpNatZenMeditationClon</effect>
+      <effect type="CommandAdd" tech="zpNatHonoredZenClone" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatDisciplinedZenClone" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatZenMasterLessonsClone" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatZenMeritocracyClone" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatZenMeditationClon" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceBourbon" type="Normal">
+    <dbid>41202</dbid>
+    <displaynameid>122142</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_bourbon.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="SPCBourbon" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRoyalMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRoyalDragoon</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercBattleship</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpVeteranBourbon</effect>
+      <effect type="TechStatus" status="obtainable">zpGuardBourbon</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBourbonReforms</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBourbonRoyalTax</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBourbonChouannerie</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBourbonMaisonDuRoi</effect>
+      <effect type="CommandAdd" tech="zpVeteranBourbon" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpGuardBourbon" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatBourbonReforms" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatBourbonRoyalTax" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatBourbonChouannerie" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatBourbonMaisonDuRoi" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceWokou" type="Normal">
+    <dbid>41202</dbid>
+    <displaynameid>303054</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_wokou.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="Wokou" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatWokouPirate</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatWokouMonk</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">ypWokouJunk</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatDisciplinedWokou</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHonoredWokou</effect>
+      <effect type="TechStatus" status="obtainable">zpWokouDragonClan</effect>
+      <effect type="TechStatus" status="obtainable">zpWokouHandsOff</effect>
+      <effect type="TechStatus" status="obtainable">zpWokouFireship</effect>
+      <effect type="TechStatus" status="obtainable">zpWokouExplosives</effect>
+      <effect type="CommandAdd" tech="zpNatDisciplinedWokou" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHonoredWokou" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpWokouDragonClan" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpWokouHandsOff" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpWokouFireship" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpWokouExplosives" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceVenetians" type="Normal">
+    <dbid>41203</dbid>
+    <displaynameid>303055</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_venetians.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="zpVenetians" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatVeniceGuard</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatDottore</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpVeniceGalley</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatVeteranVenetians</effect>
+      <effect type="TechStatus" status="obtainable">zpNatGuardVenetians</effect>
+      <effect type="TechStatus" status="obtainable">zpVeniceTrade</effect>
+      <effect type="TechStatus" status="obtainable">zpVeniceSextant</effect>
+      <effect type="TechStatus" status="obtainable">zpVenicePileFoundation</effect>
+      <effect type="TechStatus" status="obtainable">zpVeniceBetterShips</effect>
+      <effect type="CommandAdd" tech="zpNatVeteranVenetians" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatGuardVenetians" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpVeniceTrade" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpVeniceSextant" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpVenicePileFoundation" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpVeniceBetterShips" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceScientists" type="Normal">
+    <dbid>41204</dbid>
+    <displaynameid>303056</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_scientists.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="zpScientists" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatHoopThrower</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpWokousteamer</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpWokousteamer" page="0" column="13">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpWokousteamer" page="0" column="13">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpWokousteamer" page="0" column="13">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpScientistsVeteranHoopThrowers</effect>
+      <effect type="TechStatus" status="obtainable">zpScientistsGuardHoopThrowers</effect>
+      <effect type="TechStatus" status="obtainable">zpScientistsTechBuff</effect>
+      <effect type="TechStatus" status="obtainable">zpScientistsAcademy</effect>
+      <effect type="TechStatus" status="obtainable">zpInventorBatteryCannons</effect>
+      <effect type="TechStatus" status="obtainable">zpScientistIronFleet</effect>
+      <effect type="CommandAdd" tech="zpScientistsVeteranHoopThrowers" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpScientistsGuardHoopThrowers" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpScientistsTechBuff" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpScientistsAcademy" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpInventorBatteryCannons" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpScientistIronFleet" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceOrthodox" type="Normal">
+    <dbid>41205</dbid>
+    <displaynameid>303057</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_orthodox.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="zpOrthodox" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatWarriorMonk</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCataphract</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatDisciplinedOrthodox</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHonoredOrthodox</effect>
+      <effect type="TechStatus" status="obtainable">zpNatOrthodoxCannons</effect>
+      <effect type="TechStatus" status="obtainable">zpNatOrthodoxIcons</effect>
+      <effect type="TechStatus" status="obtainable">zpNatOrthodoxPatriarchy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatOrthodoxSauna</effect>
+      <effect type="CommandAdd" tech="zpNatDisciplinedOrthodox" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHonoredOrthodox" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatOrthodoxCannons" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatOrthodoxIcons" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatOrthodoxPatriarchy" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatOrthodoxSauna" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceJewish" type="Normal">
+    <dbid>41206</dbid>
+    <displaynameid>300405</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_jewish.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="Jewish" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlementMilitia</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatSettlerJewish" page="0" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpJewishVeteranMilitia</effect>
+      <effect type="TechStatus" status="obtainable">ZPJewishGuardMilitia</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishPessah</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishTorah</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishYomKippur</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishStar</effect>
+      <effect type="CommandAdd" tech="zpJewishVeteranMilitia" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="ZPJewishGuardMilitia" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpJewishPessah" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpJewishTorah" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpJewishYomKippur" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpJewishStar" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceWestern" type="Normal">
+    <dbid>41207</dbid>
+    <displaynameid>303058</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_western.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="zpWesternVillage" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpStageCoach</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpStageCoach" page="0" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpWildWestVeteranCowboys</effect>
+      <effect type="TechStatus" status="obtainable">zpWildWestGuardCowboys</effect>
+      <effect type="TechStatus" status="obtainable">zpWildWestWhiskeyFactory</effect>
+      <effect type="TechStatus" status="obtainable">zpWildWestCows</effect>
+      <effect type="TechStatus" status="obtainable">zpWildWestFastColts</effect>
+      <effect type="TechStatus" status="obtainable">zpWildWestMilitia</effect>
+      <effect type="CommandAdd" tech="zpWildWestVeteranCowboys" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpWildWestGuardCowboys" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpWildWestWhiskeyFactory" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpWildWestCows" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpWildWestFastColts" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpWildWestMilitia" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAlliancePiratesEnabler" type="Normal">
+    <dbid>41208</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAlliancePirates</effect>
+      <effect type="CommandAdd" tech="zpUnknownAlliancePirates" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceMalteseEnabler" type="Normal">
+    <dbid>41209</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceMaltese</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceMaltese" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceJesuitEnabler" type="Normal">
+    <dbid>41210</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceJesuit</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceJesuit" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceSufiEnabler" type="Normal">
+    <dbid>41211</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceSufi</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceSufi" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceZenEnabler" type="Normal">
+    <dbid>41212</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceZen</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceZen" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceBourbonEnabler" type="Normal">
+    <dbid>41213</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceBourbon</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceBourbon" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceWokouEnabler" type="Normal">
+    <dbid>41214</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceWokou</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceWokou" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceVenetiansEnabler" type="Normal">
+    <dbid>41215</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceVenetians</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceVenetians" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceScientistsEnabler" type="Normal">
+    <dbid>41216</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceScientists</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceScientists" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceOrthodoxEnabler" type="Normal">
+    <dbid>41217</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceOrthodox</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceOrthodox" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceJewishEnabler" type="Normal">
+    <dbid>41218</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceJewish</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceJewish" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceWesternEnabler" type="Normal">
+    <dbid>41219</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceWestern</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceWestern" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceKorowai" type="Normal">
+    <dbid>41220</dbid>
+    <displaynameid>303059</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_korowai.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="Korowai" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpWakaCanoe</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatKorowaiArcher</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatKorowaiSpearman</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpWarriorSocietyKorowai</effect>
+      <effect type="TechStatus" status="obtainable">zpChampionKorowai</effect>
+      <effect type="TechStatus" status="obtainable">zpNatKorowaiMedicine</effect>
+      <effect type="TechStatus" status="obtainable">zpNatKorowaiStealth</effect>
+      <effect type="TechStatus" status="obtainable">zpNatKorowaiCanibalism</effect>
+      <effect type="TechStatus" status="obtainable">zpNatTreehouseOutposts</effect>
+      <effect type="CommandAdd" tech="zpWarriorSocietyKorowai" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpChampionKorowai" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatKorowaiMedicine" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatKorowaiStealth" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatKorowaiCanibalism" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatTreehouseOutposts" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceKorowaiEnabler" type="Normal">
+    <dbid>41221</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceKorowai</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceKorowai" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceMaori" type="Normal">
+    <dbid>41222</dbid>
+    <displaynameid>300639</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_maori.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="MaoriNatives" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMaoriClubman</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMaoriSlinger</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpWakaCanoe</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpWarriorSocietyMaori</effect>
+      <effect type="TechStatus" status="obtainable">zpChampionMaori</effect>
+      <effect type="TechStatus" status="obtainable">zpMaoriFishhook</effect>
+      <effect type="TechStatus" status="obtainable">zpMaoriTaiaha</effect>
+      <effect type="TechStatus" status="obtainable">zpMaoriFishing</effect>
+      <effect type="TechStatus" status="obtainable">zpMaoriCatamaran</effect>
+      <effect type="CommandAdd" tech="zpWarriorSocietyMaori" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpChampionMaori" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpMaoriFishhook" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpMaoriTaiaha" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpMaoriFishing" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpMaoriCatamaran" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceMaoriEnabler" type="Normal">
+    <dbid>41223</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceMaori</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceMaori" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceAustralians" type="Normal">
+    <dbid>41224</dbid>
+    <displaynameid>301178</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_aboriginals.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="AboriginalNatives" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatBoomerang</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatAboriginalTracker</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpWakaCanoe</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpWarriorSocietyAboriginals</effect>
+      <effect type="TechStatus" status="obtainable">zpChampionAboriginals</effect>
+      <effect type="TechStatus" status="obtainable">zpNatSurvivalism</effect>
+      <effect type="TechStatus" status="obtainable">zpNatAustraliaHunting</effect>
+      <effect type="TechStatus" status="obtainable">zpNatDidjeridu</effect>
+      <effect type="TechStatus" status="obtainable">zpNatAboriginalCongress</effect>
+      <effect type="CommandAdd" tech="zpWarriorSocietyAboriginals" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpChampionAboriginals" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatSurvivalism" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatAustraliaHunting" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatDidjeridu" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatAboriginalCongress" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceMaoriEnabler" type="Normal">
+    <dbid>41225</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceMaori</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceMaori" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceInuits" type="Normal">
+    <dbid>41226</dbid>
+    <displaynameid>300640</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_inuits.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="InuitNatives" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatInuitHarpooner</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpInuitDogVillager</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">Canoe</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpWarriorSocietyInuit</effect>
+      <effect type="TechStatus" status="obtainable">zpChampionInuit</effect>
+      <effect type="TechStatus" status="obtainable">zpNatInuitHuntingDogs</effect>
+      <effect type="TechStatus" status="obtainable">zpNatInuitInsuksuks</effect>
+      <effect type="TechStatus" status="obtainable">zpNatInuitBlizzardBravers</effect>
+      <effect type="TechStatus" status="obtainable">zpInuitFeeders</effect>
+      <effect type="CommandAdd" tech="zpWarriorSocietyInuit" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpChampionInuit" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatInuitHuntingDogs" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatInuitInsuksuks" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatInuitBlizzardBravers" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpInuitFeeders" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceInuitsEnabler" type="Normal">
+    <dbid>41227</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceInuits</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceInuits" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAlliancePenalColony" type="Normal">
+    <dbid>41228</dbid>
+    <displaynameid>300086</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_penalcolony.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="PenalColony" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatConvictLabourer" page="0" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpVeteranPenalColony</effect>
+      <effect type="TechStatus" status="obtainable">zpGuardPenalColony</effect>
+      <effect type="TechStatus" status="obtainable">zpNatMiningColony</effect>
+      <effect type="TechStatus" status="obtainable">zpNatAustralianSteel</effect>
+      <effect type="TechStatus" status="obtainable">zpNatAustralianLabourers</effect>
+      <effect type="TechStatus" status="obtainable">zpNatShoemakerWorkshop</effect>
+      <effect type="CommandAdd" tech="zpVeteranPenalColony" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpGuardPenalColony" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatMiningColony" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatAustralianSteel" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatAustralianLabourers" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatShoemakerWorkshop" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAlliancePenalColonyEnabler" type="Normal">
+    <dbid>41229</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAlliancePenalColony</effect>
+      <effect type="CommandAdd" tech="zpUnknownAlliancePenalColony" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceHussites" type="Normal">
+    <dbid>41230</dbid>
+    <displaynameid>303060</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_hussites.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="zpHussites" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatHussiteCannoneer</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatHussiteKnight</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatDisciplinedHussites</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHonoredHussites</effect>
+      <effect type="TechStatus" status="obtainable">zpNatSharingEconomy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHussiteWagons</effect>
+      <effect type="TechStatus" status="obtainable">zpNatUtraquism</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHussiteSacrament</effect>
+      <effect type="CommandAdd" tech="zpNatDisciplinedHussites" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHonoredHussites" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatSharingEconomy" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHussiteWagons" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatUtraquism" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHussiteSacrament" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceHussitesEnabler" type="Normal">
+    <dbid>41231</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceHussites</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceHussites" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceHAuditore" type="Normal">
+    <dbid>41232</dbid>
+    <displaynameid>302148</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_auditore.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="Auditore" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatPavisier</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatAssassin</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatVeteranAuditore</effect>
+      <effect type="TechStatus" status="obtainable">zpNatGuardAuditore</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBorgiaConspiracy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatGuerillaWarfare</effect>
+      <effect type="TechStatus" status="obtainable">zpNatMasterAssassin</effect>
+      <effect type="TechStatus" status="obtainable">zpNatFortifiedVillas</effect>
+      <effect type="CommandAdd" tech="zpNatVeteranAuditore" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatGuardAuditore" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatBorgiaConspiracy" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatGuerillaWarfare" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatMasterAssassin" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatFortifiedVillas" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceHAuditoreEnabler" type="Normal">
+    <dbid>41233</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceHAuditore</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceHAuditore" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceHansa" type="Normal">
+    <dbid>41234</dbid>
+    <displaynameid>303061</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_hansa.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="zpHansaKontor" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatHanseaticLegion</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpHanseaticFluyt</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpHanseaticFluyt" page="0" column="14">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpHanseaticFluyt" page="0" column="14">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpHanseaticFluyt" page="0" column="14">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatVeteranHansa</effect>
+      <effect type="TechStatus" status="obtainable">zpNatGuardHansa</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaTrade</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaCoastalDefense</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaArsenal</effect>
+      <effect type="TechStatus" status="obtainable">zpHansaTradePosts</effect>
+      <effect type="CommandAdd" tech="zpNatVeteranHansa" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatGuardHansa" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpHansaTrade" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpHansaCoastalDefense" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpHansaArsenal" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpHansaTradePosts" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceHansaEnabler" type="Normal">
+    <dbid>41235</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceHansa</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceHansa" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceSansculottes" type="Normal">
+    <dbid>41236</dbid>
+    <displaynameid>301822</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_sansculotte.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="zpSansculottes" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCoureurSansculotte</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRevolutionary</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatCoureurSansculotte" page="0" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpVeteranSansculottes</effect>
+      <effect type="TechStatus" status="obtainable">zpGuardSansculottes</effect>
+      <effect type="TechStatus" status="obtainable">zpParisUnderground</effect>
+      <effect type="TechStatus" status="obtainable">zpSansculotteBastions</effect>
+      <effect type="TechStatus" status="obtainable">zpNatRevCavalryCommander</effect>
+      <effect type="TechStatus" status="obtainable">zpSansculotteSpiritRevolution</effect>
+      <effect type="CommandAdd" tech="zpVeteranSansculottes" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpGuardSansculottes" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpParisUnderground" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSansculotteBastions" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatRevCavalryCommander" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSansculotteSpiritRevolution" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceSansculottesEnabler" type="Normal">
+    <dbid>41237</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceSansculottes</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceSansculottes" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+
+
+
+
+  <tech name="RescuedUnitsNerfShadow">
+    <effects>
+      <effect mergemode="Add" type="Data" amount="-0.50" subtype="DamageBonus" unittype="AbstractVillager" allactions="1" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMaoriSlinger</target>
+      </effect>
+      <effect mergemode="Add" type="Data" amount="-0.50" subtype="DamageBonus" unittype="Hero" allactions="1" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMaoriSlinger</target>
+      </effect>
+      <effect mergemode="Add" type="Data" amount="-0.50" subtype="DamageBonus" unittype="AbstractVillager" allactions="1" relativity="Absolute">
+        <target type="ProtoUnit">zpNatAboriginalTracker</target>
+      </effect>
+      <effect mergemode="Add" type="Data" amount="-0.50" subtype="DamageBonus" unittype="Hero" allactions="1" relativity="Absolute">
+        <target type="ProtoUnit">zpNatAboriginalTracker</target>
+      </effect>
+    </effects>
+  </tech>
 
 
 
