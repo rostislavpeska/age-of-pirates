@@ -63680,17 +63680,17 @@
     </protoaction>
     <protoaction>
       <name>LongRangeAttack</name>
-      <damage>200.000000</damage>
+      <damage>120.000000</damage>
       <damagetype>Siege</damagetype>
-      <maxrange>90.000000</maxrange>
+      <maxrange>65.000000</maxrange>
       <rof>0.500000</rof>
-      <damagecap>400.000000</damagecap>
-      <damagebonus type="Building">5.000000</damagebonus>
+      <damagecap>300.000000</damagecap>
+      <damagebonus type="Building">7.000000</damagebonus>
       <damagearea>6.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
-      <damagebonus type="Dock">0.200000</damagebonus>
-      <damagebonus type="AbstractVillager">0.200000</damagebonus>
-      <damagebonus type="YPDockAsian">0.200000</damagebonus>
+      <damagebonus type="AbstractVillager">0.100000</damagebonus>
+      <damagebonus type="AbstractDock">0.200000</damagebonus>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
     </protoaction>
   </unit>
 
