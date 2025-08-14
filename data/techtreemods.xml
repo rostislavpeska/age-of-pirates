@@ -2022,9 +2022,6 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpPrivateerProxy</target>
       </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">Privateer</target>
-      </effect>
       <effect type="TechStatus" status="obtainable">zpNatGambling</effect>
       <effect type="TechStatus" status="obtainable">zpNatThePiracy</effect>
       <effect type="TechStatus" status="obtainable">zpNatHonoredPirate</effect>

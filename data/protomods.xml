@@ -35983,8 +35983,8 @@
     <buildlimit>10</buildlimit>
     <bounty>0.0000</bounty>
     <buildbounty>1.0000</buildbounty>
-    <cost resourcetype="Wood">200.0000</cost>
-    <cost resourcetype="Gold">200.0000</cost>
+    <cost resourcetype="Wood">120.0000</cost>
+    <cost resourcetype="Gold">80.0000</cost>
     <buildingworkrate>1.0000</buildingworkrate>
     <allowedage>3</allowedage>
     <armor type="Siege" value="0.9000">
