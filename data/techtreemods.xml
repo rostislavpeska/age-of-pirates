@@ -1,4 +1,63 @@
 <techtreemods>
+  <tech name="zpSpanishHabsburgs" type="Normal">
+    <dbid>41242</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" command="deNatHabsburgRadetzyMarch">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" command="zpNatHabsburgElDeguelloSmall" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="deNatHabsburgRadetzyMarch">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHabsburgElDeguello" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpHabsburgColonialize</effect>
+      <effect type="TechStatus" status="obtainable">zpSpanishHabsburgColonialize</effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deNatLineInfantry" relativity="Absolute">
+        <target type="ProtoUnit">zpLineInfantrySpanishIcon</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deNatMountedInfantryRider" relativity="Absolute">
+        <target type="ProtoUnit">zpMountedInfantrySpanishIcon</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deNatMountedInfantry" relativity="Absolute">
+        <target type="ProtoUnit">zpDismountedInfantrySpanishIcon</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deSocketHabsburg" relativity="Absolute">
+        <target type="ProtoUnit">zpHabsburgSocketSpanishIcon</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyTechIcon" tech="zpIberianUnionIcon" relativity="Absolute">
+        <target type="Tech">DENatHabsburgAustroHungarian</target>
+      </effect>
+      <effect type="SetName" tech="DENatHabsburgAustroHungarian" newname="303073" newrollover="303074">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAustrianHabsburgs" type="Normal">
+    <dbid>41247</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" command="deNatHabsburgRadetzyMarch">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" command="zpNatHabsburgRadetzyMarchSmall" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="deNatHabsburgRadetzyMarch">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHabsburgRadetzyMarch" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpHabsburgColonialize</effect>
+      <effect type="TechStatus" status="obtainable">zpHabsburgAustrianColonialize</effect>
+    </effects>
+  </tech>
   <tech name="zpChateauRoyalShadow" type="Normal">
     <dbid>40823</dbid>
     <researchpoints>0.0000</researchpoints>
@@ -32373,6 +32432,77 @@
       <effect type="TechStatus" status="active">zpGaiaKillTreasureship</effect>
       <effect type="TechStatus" status="active">zpBonuHansa</effect>
     </effects>
+  </tech>
+  <tech name="zpNatHabsburgElDeguello" type="Normal">
+    <dbid>41243</dbid>
+    <displaynameid>303071</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\abilities\eldeguello.png</icon>
+    <rollovertextid>303072</rollovertextid>
+    <flag>YPNoTextMessage</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DEHideAdvancedRollover</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="DENativeHabsburg">
+    <effects>   
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpNatHabsburgElDeguello</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpNatHabsburgRadetzyMarch</effect>
+    </effects>
+  </tech>
+  <tech name="DENativeHabsburgColonialize">
+    <effects>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHabsburgElDeguello</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatHabsburgRadetzyMarch</effect>
+    </effects>
+  </tech>
+  <tech name="zpSpanishHabsburgColonialize" type="Normal">
+    <dbid>41244</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status ="active">Colonialize</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="zpHabsburgColonialize" type="Normal">
+    <dbid>41245</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status ="active">Colonialize</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="zpHabsburgAustrianColonialize" type="Normal">
+    <dbid>41246</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status ="active">Colonialize</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="zpNatHabsburgRadetzyMarch" type="Normal">
+    <dbid>41248</dbid>
+    <displaynameid>122548</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\abilities\ability_radetzky_march_lrg.png</icon>
+    <rollovertextid>122549</rollovertextid>
+    <flag>YPNoTextMessage</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DEHideAdvancedRollover</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="zpIberianUnionIcon" type="Normal">
+    <dbid>41249</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <icon>resources\images\icons\techs\iberian_union.png</icon>
   </tech>
 
 

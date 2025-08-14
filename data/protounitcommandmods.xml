@@ -711,22 +711,27 @@
     <activerollovertextid>302968</activerollovertextid>
     <command>unitSetTactic("CogXP")</command>
   </protounitcommand>
-
   <protounitcommand>
-    <name>zpMarketTransformTravoisTest</name>
-    <icon>resources\images\icons\command\command_pack.png</icon>
-    <command>uiTransformSelectedUnit("deMarketTravois", true, %d)</command>
-    <commandpassesunitid>
-    </commandpassesunitid>
-    <associatedtech>zpMarketTransformTravois</associatedtech>
-    <rollovertextid>125508</rollovertextid>
-    <disabledrollovertextid>125508</disabledrollovertextid>
-    <donotallowifunitdamaged>
-    </donotallowifunitdamaged>
-    <canqueue>
-    </canqueue>
-    <transformselected>
-    </transformselected>
+    <name>zpNatHabsburgElDeguelloSmall</name>
+    <icon>resources\images\icons\abilities\eldeguello.png</icon>
+    <associatedtech>zpNatHabsburgElDeguello</associatedtech>
+    <associatedpower>zpNatPowerElDeguello</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>Habsburg</subciv>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpNatHabsburgRadetzyMarchSmall</name>
+    <icon>resources\images\icons\abilities\ability_radetzky_march_lrg.png</icon>
+    <associatedtech>zpNatHabsburgRadetzyMarch</associatedtech>
+    <associatedpower>zpNatPowerRadetzyMarch</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>Habsburg</subciv>
+    <usemultiple>
+    </usemultiple>
   </protounitcommand>
 
 

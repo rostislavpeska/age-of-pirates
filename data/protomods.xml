@@ -63564,20 +63564,8 @@
     <flag>Tracked</flag>
     <flag>NotSelectable</flag>
   </unit>
-
-
-
-
-
-
-
-
-
-
-<!--TEST-->
-
-  <unit id="" name="zpSPCTrinidad">
-    <dbid></dbid>
+  <unit id="20874" name="zpSPCTrinidad">
+    <dbid>20874</dbid>
     <displaynameid>303065</displaynameid>
     <editornameid>303063</editornameid>
     <buildlimit>1</buildlimit>
@@ -63693,6 +63681,77 @@
       <damagebonus type="AbstractDock">0.200000</damagebonus>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
     </protoaction>
+  </unit>
+  <unit id="20875" name="zpNativeHouseWesternVillageBNoselect">
+    <dbid>20875</dbid>
+    <displaynameid>300987</displaynameid>
+    <editornameid>302550</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\IH\2\House_2.xml</animfile>
+    <portraiticon>resources\art\units\natives\cowboys.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <flag>FlattenGround</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>NotSelectable</flag>
+  </unit>
+  <unit id="20876" name="zpLineInfantrySpanishIcon">
+    <dbid>20876</dbid>
+    <icon>resources\art\units\natives\lineinfantry_spanish_icon.png</icon>
+    <portraiticon>resources\art\units\natives\lineinfantry_spanish.png</portraiticon>
+  </unit>
+  <unit id="20877" name="zpMountedInfantrySpanishIcon">
+    <dbid>20877</dbid>
+    <icon>resources\art\units\natives\mountedinfantry_spanish_icon.png</icon>
+    <portraiticon>resources\art\units\natives\mountedinfantry_spanish.png</portraiticon>
+  </unit>
+  <unit id="20878" name="zpDismountedInfantrySpanishIcon">
+    <dbid>20878</dbid>
+    <icon>resources\art\units\natives\mountedinfantry_spanish_icon.png</icon>
+    <portraiticon>resources\art\units\natives\dismountedinfantry_spanish.png</portraiticon>
+  </unit>
+  <unit id="20879" name="zpHabsburgSocketSpanishIcon">
+    <dbid>20879</dbid>
+    <portraiticon>resources\art\units\natives\habsburh_spanish.png</portraiticon>
   </unit>
 
 
@@ -64856,6 +64915,7 @@
       <damagebonus type="AbstractWarship">6.000000</damagebonus>
     </protoaction>
   </unit>
+
   
 
   
@@ -65850,7 +65910,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\native_settlement\jewish\house_jewish.xml</animfile>
+    <animfile>buildings\test\prop_church.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>

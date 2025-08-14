@@ -7503,6 +7503,14 @@
     <sound filename="ambient\Birds\Goose2.wav" volume="1.0000">
     </sound>
   </soundset>
+  <soundset name="Spanish_Battlehymn" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="zp_misc\eldeguello.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="German_Battlehymn" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="zp_misc\Germany_anthem.wav" volume="1.0000">
+    </sound>
+  </soundset>
 
 
 

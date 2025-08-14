@@ -100,7 +100,7 @@
 		<unit variation="117" posx="3.2077" posz="9.1657" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpPropsColony</unit>
 		<unit variation="66" posx="4.0465" posz="9.5792" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpPropsColony</unit>
 		<unit variation="22" posx="-16.0245" posz="7.9662" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropJesuitFence</unit>
-		<unit variation="30" posx="6.7438" posz="11.9234" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseWesternVillageB</unit>
+		<unit variation="30" posx="6.7438" posz="11.9234" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseWesternVillageBNoselect</unit>
 		<unit variation="80" posx="13.0000" posz="10.0000" orientx="-0.5802" orienty="0.0000" orientz="0.8145">TreeAfrica</unit>
 		<unit variation="22" posx="16.8322" posz="7.7569" orientx="-0.7097" orienty="0.0000" orientz="-0.7045">zpPropJesuitFence</unit>
 		<unit variation="0" posx="-13.0921" posz="11.9341" orientx="-0.7034" orienty="0.0000" orientz="0.7108">SPCPathBlock3</unit>
