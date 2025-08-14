@@ -67,20 +67,20 @@
         </attachment>
         <component>
             plantation
-            <logic type="LowPoly">
-                <normal>
-                    <logic type="Destruction">
-                        <p1>
-                            <assetreference type="GrannyModel"><file>buildings\asian_civs\consulate\consulate_american_damaged</file></assetreference>
-                        </p1>
-                        <p99>
-                             <assetreference type="GrannyModel" shape="med_plantation_age2"><file>buildings\asian_civs\consulate\consulate_american</file></assetreference>
-                        </p99>
-                    </logic>
-                </normal>
-                <lowpoly>
-                    <assetreference type="GrannyModel" shape="med_plantation_age2"><file>buildings\asian_civs\consulate\consulate_american</file></assetreference>
-                </lowpoly>
+            <logic type="Destruction">
+                <p1>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\asian_civs\consulate\consulate_american_damaged</file>
+                        <materialvariant index="1"/>
+                    </assetreference>
+                </p1>
+                <p99>
+                    <assetreference type="GrannyModel">
+                        <shape>med_age2_con2</shape>
+                        <file>buildings\asian_civs\consulate\consulate_american</file>
+                        <materialvariant index="1"/>
+                    </assetreference>
+                </p99>
             </logic>
             <decal>
                 <effecttype>bump</effecttype><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
@@ -89,14 +89,10 @@
         </component>
         <component>
             med-death
-            <logic type="LowPoly">
-                <normal>
-                    <assetreference type="GrannyModel"><file>buildings\asian_civs\consulate\consulate_american_damaged</file></assetreference>
-                </normal>
-                <lowpoly>
-                    <assetreference type="GrannyModel"><file>buildings\asian_civs\consulate\consulate_american</file></assetreference>
-                </lowpoly>
-            </logic>
+            <assetreference type="GrannyModel">
+                <file>buildings\asian_civs\consulate\consulate_american_damaged</file>
+                <materialvariant index="1"/>
+            </assetreference>
         </component>
         <anim>Idle
             <component>plantation</component>
@@ -114,12 +110,18 @@
             con
             <component>
                 scaffolding
-                    <assetreference type="GrannyModel"><file>buildings\constructions\4x4_stage2</file></assetreference>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\constructions\4x4_stage2</file>
+                    </assetreference>
             </component>
             <anim>Idle<component>scaffolding</component></anim>
         </attachment>
         <component>
-            plantation<assetreference type="GrannyModel"><file>buildings\asian_civs\consulate\consulate_american_con</file></assetreference>
+            plantation
+            <assetreference type="GrannyModel">
+                <file>buildings\asian_civs\consulate\consulate_american_con</file>
+                <materialvariant index="1"/>
+            </assetreference>
             <decal>
                 <effecttype>bump</effecttype><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
                 <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture><width>10.0</width><height>10.0</height>

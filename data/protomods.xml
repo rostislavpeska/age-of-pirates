@@ -34489,6 +34489,7 @@
     <flag>DontTrainInBatches</flag>
     <flag>Tracked</flag>
     <flag>StartEnabled</flag>
+    <flag>DoNotDragSelectWithUnits</flag>
     <command page="10" column="1">Stop</command>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="7">Delete</command>

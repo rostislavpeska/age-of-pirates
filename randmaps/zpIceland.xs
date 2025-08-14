@@ -376,7 +376,7 @@ void main(void)
 	float caveLocX = 0.72;
 	float caveLocY = 0.72;
 
-	int waterCaveAreaIDLarge = rmCreateArea("UnderwaterArea Large");
+	nt waterCaveAreaIDLarge = rmCreateArea("UnderwaterArea Large");
 	rmSetAreaWaterType(waterCaveAreaIDLarge, "ZP Iceland Transparent 3");
 	rmSetAreaSize(waterCaveAreaIDLarge, rmAreaTilesToFraction(5800));
 	rmSetAreaCoherence(waterCaveAreaIDLarge, 1);
@@ -386,7 +386,7 @@ void main(void)
 
 	int waterCaveAreaIDMedium = rmCreateArea("UnderwaterArea Medium");
 	rmSetAreaWaterType(waterCaveAreaIDMedium, "ZP Iceland Transparent 2");
-	rmSetAreaSize(waterCaveAreaIDMedium, rmAreaTilesToFraction(4500));
+	rmSetAreaSize(waterCaveAreaIDMedium, rmAreaTilesToFraction(4300));
 	rmSetAreaCoherence(waterCaveAreaIDMedium, 1);
 	rmSetAreaLocation(waterCaveAreaIDMedium, caveLocX, caveLocY);
 	rmSetAreaSmoothDistance(waterCaveAreaIDMedium, 10);
@@ -394,7 +394,7 @@ void main(void)
 
 	int waterCaveAreaID = rmCreateArea("UnderwaterArea");
 	rmSetAreaWaterType(waterCaveAreaID, "ZP Iceland Transparent");
-	rmSetAreaSize(waterCaveAreaID, rmAreaTilesToFraction(3500));
+	rmSetAreaSize(waterCaveAreaID, rmAreaTilesToFraction(3200));
 	rmSetAreaCoherence(waterCaveAreaID, 1);
 	rmSetAreaLocation(waterCaveAreaID, caveLocX, caveLocY);
 	rmSetAreaSmoothDistance(waterCaveAreaID, 10);
@@ -1952,25 +1952,7 @@ void main(void)
 	for(i=0; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
-		rmSetTriggerEffectParam("TechID","cTechdeEUMapUpdateVisuals");
-		rmSetTriggerEffectParamInt("Status",2);
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID",i);
-		rmSetTriggerEffectParam("TechID","cTechzpNorthDivingBell");
-		rmSetTriggerEffectParamInt("Status",2);
-	}
-	for(i=1; <= cNumberNonGaiaPlayers) {
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID",i);
-		rmSetTriggerEffectParam("TechID","cTechzpIslandScientists");
-		rmSetTriggerEffectParamInt("Status",2);
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID",i);
-		rmSetTriggerEffectParam("TechID","cTechzpGaiaKillTreasureship");
-		rmSetTriggerEffectParamInt("Status",2);
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID",i);
-		rmSetTriggerEffectParam("TechID","cTechzpBonuHansa");
+		rmSetTriggerEffectParam("TechID","cTechzpIcelandSetup");
 		rmSetTriggerEffectParamInt("Status",2);
 	}
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");

@@ -30846,6 +30846,10 @@
         <target type="Player">
         </target>
       </effect>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpNavalMine" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpIcelandVolcano" type="Normal">
@@ -30853,13 +30857,13 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
-      <effect type="Data" action="CannonAttackLong" amount="-15.00" subtype="MaximumRange" relativity="Absolute">
+      <effect type="Data" action="CannonAttackLong" amount="-20.00" subtype="MaximumRange" relativity="Absolute">
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
-      <effect type="Data" action="CannonAttackUltraLong" amount="-20.00" subtype="MaximumRange" relativity="Absolute">
+      <effect type="Data" action="CannonAttackUltraLong" amount="-25.00" subtype="MaximumRange" relativity="Absolute">
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
-      <effect type="Data" action="CannonAttackXXLong" amount="-25.00" subtype="MaximumRange" relativity="Absolute">
+      <effect type="Data" action="CannonAttackXXLong" amount="-30.00" subtype="MaximumRange" relativity="Absolute">
         <target type="ProtoUnit">zpSPCVolcano</target>
       </effect>
     </effects>
@@ -32342,8 +32346,6 @@
       <effect mergemode="add" type="TechStatus" status="unobtainable">zpUnknownAllianceTeutonic</effect>
     </effects>
   </tech>
-
-
   <tech name="RescuedUnitsNerfShadow">
     <effects>
       <effect mergemode="Add" type="Data" amount="-0.50" subtype="DamageBonus" unittype="AbstractVillager" allactions="1" relativity="Absolute">
@@ -32358,6 +32360,21 @@
       <effect mergemode="Add" type="Data" amount="-0.50" subtype="DamageBonus" unittype="Hero" allactions="1" relativity="Absolute">
         <target type="ProtoUnit">zpNatAboriginalTracker</target>
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpIcelandSetup" type="Normal">
+    <dbid>41241</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="active">deEUMapUpdateVisuals</effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="TechStatus" status="active">zpNorthDivingBell</effect>
+      <effect type="TechStatus" status="active">zpIslandScientists</effect>
+      <effect type="TechStatus" status="active">zpGaiaKillTreasureship</effect>
+      <effect type="TechStatus" status="active">zpBonuHansa</effect>
     </effects>
   </tech>
 
