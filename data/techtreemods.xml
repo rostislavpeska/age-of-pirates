@@ -16,6 +16,9 @@
       <effect type="CommandAdd" tech="zpNatHabsburgElDeguello" page="0" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" tech="zpSpanishHabsburgExpansion" page="1" column="1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
       <effect type="TechStatus" status="unobtainable">zpHabsburgColonialize</effect>
       <effect type="TechStatus" status="obtainable">zpSpanishHabsburgColonialize</effect>
       <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deNatLineInfantry" relativity="Absolute">
@@ -30491,6 +30494,8 @@
       <effect type="CommandAdd" proto="MercGreatCannon" page="0" column="4">
         <target type="ProtoUnit">zpHanseaticChurch</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
+      <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
       <effect type="TechStatus" status="obtainable">zpSPCArtPatronHansaChurch</effect>
       <effect type="TechStatus" status="obtainable">zpSPCEliteMercenaries</effect>
       <effect type="TechStatus" status="obtainable">zpSPCHansaNeedleGunTradeRoute</effect>
@@ -32450,6 +32455,8 @@
     <effects>   
       <effect mergemode="add" type="TechStatus" status="obtainable">zpNatHabsburgElDeguello</effect>
       <effect mergemode="add" type="TechStatus" status="obtainable">zpNatHabsburgRadetzyMarch</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpNatHabsburgTrinidad</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpSpanishHabsburgExpansion</effect>
     </effects>
   </tech>
   <tech name="DENativeHabsburgColonialize">
@@ -32504,6 +32511,56 @@
     <flag>Shadow</flag>
     <icon>resources\images\icons\techs\iberian_union.png</icon>
   </tech>
+  <tech name="zpNatHabsburgTrinidad" type="Normal">
+    <dbid>41250</dbid>
+    <displaynameid>303075</displaynameid>
+    <cost resourcetype="Food">500.0000</cost>
+    <cost resourcetype="Gold">1000.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\trinidad_tech.png</icon>
+    <rollovertextid>303076</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCTrinidad" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRowboat</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpSPCRowboatSabotage</effect>
+    </effects>
+  </tech>
+  <tech name ="zpSpanishHabsburgExpansion" type ="Normal">
+		<dbid>40786</dbid>
+		<displaynameid>303077</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\habsburg_spanish_big.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>303078</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>NativeDance</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="CommandAdd" tech="zpNatHabsburgTrinidad" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+	</tech>
 
 
 
