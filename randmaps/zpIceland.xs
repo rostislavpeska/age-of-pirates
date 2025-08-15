@@ -53,6 +53,7 @@ void main(void)
     string treeType3 = "TreeNewEnglandSnow";
     string treeType4 = "TreeRockiesSnow";
     string mntType = "New England Snow";
+	string shoreCliff = "ZP Iceland Fjord";
     string volcCliffLow = "ZP Iceland Low";
     string volcCliffMid = "ZP Iceland Medium";
     string volcCliffHigh = "ZP Iceland High";
@@ -110,10 +111,20 @@ void main(void)
 
 	// Choose mercs
 	chooseMercs();
+	rmEnableOutlaw("deSaloonHighwaymanRider");
+	rmEnableOutlaw("deSaloonInquisitor");
 	
 	// Make it snow
 	rmSetGlobalSnow(0.50);
-  
+
+	// set-up tech for outlaws and native skins
+    rmCreateTrigger("setupthemap");
+    rmSwitchToTrigger(rmTriggerID("setupthemap"));
+    rmSetTriggerPriority(4); 
+    rmSetTriggerActive(true);
+    rmSetTriggerRunImmediately(true);
+    rmSetTriggerLoop(false);
+
 	// Define some classes
 	int classPlateau = rmDefineClass("plateau");
 	int classCliff = rmDefineClass("cliffs");
@@ -176,7 +187,7 @@ void main(void)
 	int avoidGoldFar = rmCreateClassDistanceConstraint ("gold avoid gold far", classGold, 72);
 	int avoidGoldVeryFar = rmCreateClassDistanceConstraint ("gold avoid gold very far", classGold, 90);
 	int avoidNuggetMin = rmCreateTypeDistanceConstraint("nugget avoid nugget min", "AbstractNugget", 4);
-	int avoidNuggetShort = rmCreateTypeDistanceConstraint("nugget avoid nugget short", "AbstractNugget", 8);
+	int avoidNuggetShort = rmCreateTypeDistanceConstraint("nugget avoid nugget short", "AbstractNugget", 12);
 	int avoidNugget = rmCreateTypeDistanceConstraint("nugget avoid nugget", "AbstractNugget", 36);
 	int avoidNuggetFar = rmCreateTypeDistanceConstraint("nugget avoid nugget Far", "AbstractNugget", 48);
 	int avoidNuggetVeryFar = rmCreateTypeDistanceConstraint("nugget avoid nugget very far", "AbstractNugget", 64);
@@ -233,6 +244,7 @@ void main(void)
 	int ferryOnShore = rmCreateTerrainMaxDistanceConstraint("ferry v. water", "water", true, 20);
 	int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true, 5);
 	int avoidCave = rmCreateClassDistanceConstraint("stuff avoids cave", classCave, 4);
+	int avoidCaveMed = rmCreateClassDistanceConstraint("stuff avoids cave med", classCave, 8);
 	int avoidCaveFar = rmCreateClassDistanceConstraint("stuff avoids cave far", classCave, rmXFractionToMeters(0.05));
 
 	// VP avoidance
@@ -376,7 +388,7 @@ void main(void)
 	float caveLocX = 0.72;
 	float caveLocY = 0.72;
 
-	nt waterCaveAreaIDLarge = rmCreateArea("UnderwaterArea Large");
+	int waterCaveAreaIDLarge = rmCreateArea("UnderwaterArea Large");
 	rmSetAreaWaterType(waterCaveAreaIDLarge, "ZP Iceland Transparent 3");
 	rmSetAreaSize(waterCaveAreaIDLarge, rmAreaTilesToFraction(5800));
 	rmSetAreaCoherence(waterCaveAreaIDLarge, 1);
@@ -500,6 +512,7 @@ void main(void)
 			rmAddAreaInfluenceSegment(icelandID, cliffXLoc3, cliffYLoc3, 0.63, 0.63);
 //			rmSetAreaMix(icelandID, forTesting);
 			rmSetAreaCoherence(icelandID, 0.69);
+			rmAddAreaConstraint(icelandID, avoidCaveMed);
 		}
 		rmSetAreaTerrainType(icelandID, "patagonia\ground_shoreline2_pat");		// for shoreline		// saguenay\shoreline1_sag
 		rmSetAreaElevationType(icelandID, cElevTurbulence);
@@ -511,6 +524,7 @@ void main(void)
 		rmSetAreaWarnFailure(icelandID, false);
 		rmSetAreaObeyWorldCircleConstraint(icelandID, false);
 		rmSetAreaHeightBlend(icelandID, 1.5);
+		rmAddAreaConstraint(icelandID, avoidNuggetShort);
 		rmBuildArea(icelandID);
 
 		stayInMainIsland = rmCreateAreaMaxDistanceConstraint("stay in main island"+i, icelandID, 0);
@@ -544,12 +558,13 @@ void main(void)
 			rmBuildArea(mainTerrainID);
 	}
 
+	// Paint terrain near city
 	for (i= 0; < 3)
 	{
-		// Paint terrain near city
 		int cityPaintID = rmCreateArea("city paint"+i);
 		rmSetAreaCoherence(cityPaintID, 1);
-		if (i==0){
+		if (i==0)
+		{
 			rmSetAreaSize(cityPaintID, rmAreaTilesToFraction(644));
 			rmSetAreaMix(cityPaintID, paintMix2);
 			rmAddAreaConstraint(cityPaintID, avoidHansaShort);
@@ -557,13 +572,16 @@ void main(void)
 			rmAddAreaInfluenceSegment(cityPaintID, sockLocX+rmXTilesToFraction(19), sockLocY+rmZTilesToFraction(19), sockLocX+rmXTilesToFraction(20), sockLocY+rmZTilesToFraction(8));
 			rmAddAreaInfluenceSegment(cityPaintID, sockLocX+rmXTilesToFraction(19), sockLocY+rmZTilesToFraction(19), sockLocX+rmXTilesToFraction(8), sockLocY+rmZTilesToFraction(20));
 		}
-		else{
+		else
+		{
 			rmSetAreaSize(cityPaintID, rmAreaTilesToFraction(30));
 			rmSetAreaTerrainType(cityPaintID, "patagonia\ground_shoreline3_pat");	
-			if (i==1){
+			if (i==1)
+			{
 				rmSetAreaLocation(cityPaintID, sockLocX+rmXTilesToFraction(14), sockLocY-rmZTilesToFraction(6));
 			}
-			else{
+			else
+			{
 				rmSetAreaLocation(cityPaintID, sockLocX-rmXTilesToFraction(6), sockLocY+rmZTilesToFraction(18));
 			}
 		}
@@ -832,7 +850,7 @@ void main(void)
 //		rmSetAreaReveal(cliffID, 01);
 		rmSetAreaWarnFailure(cliffID, false);
 		rmSetAreaObeyWorldCircleConstraint(cliffID, false);
-		rmSetAreaCliffType(cliffID, volcCliffLow);
+		rmSetAreaCliffType(cliffID, shoreCliff);
 		rmSetAreaCliffPainting(cliffID, false, true, false, 0.5 , false); //  paintGround,  paintOutsideEdge,  paintSide,  minSideHeight,  paintInsideEdge
 		rmSetAreaCliffHeight(cliffID, 7, 0.0, 0.8); 
 		rmSetAreaCliffEdge(cliffID, 1, 1.00, 0.0, 0.30, 0); //0.30
