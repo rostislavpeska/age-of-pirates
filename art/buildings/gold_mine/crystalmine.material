@@ -1,0 +1,64 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\gold_mine\crystalmine\textures\quartzmine_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\gold_mine\salt_mine\textures\salt_mine_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\gold_mine\salt_mine\textures\salt_mine_mata_masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\gold_mine\crystalmine\textures\sulphurmine_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\gold_mine\salt_mine\textures\salt_mine_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\gold_mine\salt_mine\textures\salt_mine_mata_masks">
+      </texture>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="buildings\gold_mine\silver_mine\textures\silver_mine_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\gold_mine\silver_mine\textures\silver_mine_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\gold_mine\silver_mine\textures\silver_mine_mata_masks">
+      </texture>
+      <float name="Roughness Min" override="0.5000">
+      </float>
+      <float name="Roughness Metallic Min" override="0.0570">
+      </float>
+      <float name="Metallic Min" override="0.0390">
+      </float>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="terrain\minerals\sapphire\textures\Quartz_Crystal_Diffuse">
+      </texture>
+      <texture name="Normals" override="terrain\minerals\sapphire\textures\Sapphire_Crystal_V1_Normal">
+      </texture>
+      <texture name="Masks" override="terrain\minerals\sapphire\textures\Sapphire_Crystal_V1_ORM">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="terrain\minerals\sapphire\textures\Sulphur_Crystal_Diffuse">
+      </texture>
+      <texture name="Normals" override="terrain\minerals\sapphire\textures\Sapphire_Crystal_V1_Normal">
+      </texture>
+      <texture name="Masks" override="terrain\minerals\sapphire\textures\Sapphire_Crystal_V1_ORM">
+      </texture>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="terrain\minerals\sapphire\textures\Diamond_Crystal_Diffuse">
+      </texture>
+      <texture name="Normals" override="terrain\minerals\sapphire\textures\Sapphire_Crystal_V1_Normal">
+      </texture>
+      <texture name="Masks" override="terrain\minerals\sapphire\textures\Sapphire_Crystal_V1_ORM">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

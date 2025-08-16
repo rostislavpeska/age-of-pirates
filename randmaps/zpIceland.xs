@@ -1541,8 +1541,8 @@ void main(void)
 		
 	for(i=0; < goldcount)
 	{
-		int goldMineID = rmCreateObjectDef("gold mine"+i);
-		rmAddObjectDefItem(goldMineID, "MineGold", 1, 0);
+		int goldMineID = rmCreateObjectDef("sulphur mine"+i);
+		rmAddObjectDefItem(goldMineID, "zpSulphurMine", 1, 0);
 		rmSetObjectDefMinDistance(goldMineID, rmXFractionToMeters(0.00));
 		rmSetObjectDefMaxDistance(goldMineID, rmXFractionToMeters(0.45));
 		rmAddObjectDefToClass(goldMineID, classGold);
