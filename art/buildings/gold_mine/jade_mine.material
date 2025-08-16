@@ -11,4 +11,16 @@
       </texture>
     </parameters>
   </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\gold_mine\crystalmine\textures\jademine_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\gold_mine\crystalmine\textures\crystalmine_matb_normals">
+      </texture>
+      <texture name="Masks" override="buildings\gold_mine\crystalmine\textures\crystalmine_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
 </material>

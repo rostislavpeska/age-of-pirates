@@ -19,7 +19,7 @@
         </assetreference>
         <decal>
             <effecttype>bump</effecttype>
-            <texture>buildings\gold_mine\copper_mine_ground</texture>
+            <texture>buildings\gold_mine\salt_mine_ground</texture>
             <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
             <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
             <width>10.00</width>

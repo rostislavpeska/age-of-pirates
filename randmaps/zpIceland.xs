@@ -978,7 +978,7 @@ void main(void)
 			for (y=0; < 1)
 			{
 				playerResourceGroupID = rmCreateObjectDef("player resource group"+i+x+y);
-				rmAddObjectDefItem(playerResourceGroupID, "deMineCoalBuildable", 2, 10);
+				rmAddObjectDefItem(playerResourceGroupID, "zpSulphurMine", 2, 10);
 				rmAddObjectDefItem(playerResourceGroupID, treeType4, 4, 10);
 				rmAddObjectDefItem(playerResourceGroupID, huntType, 6, 10);
 				rmSetObjectDefMinDistance(playerResourceGroupID, rmXFractionToMeters(0.00));
@@ -1542,7 +1542,7 @@ void main(void)
 	for(i=0; < goldcount)
 	{
 		int goldMineID = rmCreateObjectDef("sulphur mine"+i);
-		rmAddObjectDefItem(goldMineID, "zpSulphurMine", 1, 0);
+		rmAddObjectDefItem(goldMineID, "MineGold", 1, 0);
 		rmSetObjectDefMinDistance(goldMineID, rmXFractionToMeters(0.00));
 		rmSetObjectDefMaxDistance(goldMineID, rmXFractionToMeters(0.45));
 		rmAddObjectDefToClass(goldMineID, classGold);
