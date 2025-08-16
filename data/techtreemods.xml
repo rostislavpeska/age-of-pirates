@@ -32538,7 +32538,7 @@
     </effects>
   </tech>
   <tech name ="zpSpanishHabsburgExpansion" type ="Normal">
-		<dbid>40786</dbid>
+		<dbid>41251</dbid>
 		<displaynameid>303077</displaynameid>
   	<researchpoints>60.0000</researchpoints>
 		<status>UNOBTAINABLE</status>
