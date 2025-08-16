@@ -37,27 +37,27 @@
     <materialdef name="default">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="terrain\minerals\sapphire\textures\Quartz_Crystal_Diffuse">
+      <texture name="BaseColor" override="buildings\gold_mine\crystalmine\textures\quartzmine_matb_basecolor">
       </texture>
-      <texture name="Normals" override="terrain\minerals\sapphire\textures\Sapphire_Crystal_V1_Normal">
+      <texture name="Normals" override="buildings\gold_mine\crystalmine\textures\crystalmine_matb_normals">
       </texture>
-      <texture name="Masks" override="terrain\minerals\sapphire\textures\Sapphire_Crystal_V1_ORM">
+      <texture name="Masks" override="buildings\gold_mine\crystalmine\textures\crystalmine_matb_masks">
       </texture>
     </parameters>
     <parameters variant="1">
-      <texture name="BaseColor" override="terrain\minerals\sapphire\textures\Sulphur_Crystal_Diffuse">
+      <texture name="BaseColor" override="buildings\gold_mine\crystalmine\textures\sulphurmine_matb_basecolor">
       </texture>
-      <texture name="Normals" override="terrain\minerals\sapphire\textures\Sapphire_Crystal_V1_Normal">
+      <texture name="Normals" override="buildings\gold_mine\crystalmine\textures\crystalmine_matb_normals">
       </texture>
-      <texture name="Masks" override="terrain\minerals\sapphire\textures\Sapphire_Crystal_V1_ORM">
+      <texture name="Masks" override="buildings\gold_mine\crystalmine\textures\crystalmine_matb_masks">
       </texture>
     </parameters>
     <parameters variant="2">
-      <texture name="BaseColor" override="terrain\minerals\sapphire\textures\Diamond_Crystal_Diffuse">
+      <texture name="BaseColor" override="buildings\gold_mine\crystalmine\textures\diamondmine_matb_basecolor">
       </texture>
-      <texture name="Normals" override="terrain\minerals\sapphire\textures\Sapphire_Crystal_V1_Normal">
+      <texture name="Normals" override="buildings\gold_mine\crystalmine\textures\crystalmine_matb_normals">
       </texture>
-      <texture name="Masks" override="terrain\minerals\sapphire\textures\Sapphire_Crystal_V1_ORM">
+      <texture name="Masks" override="buildings\gold_mine\crystalmine\textures\crystalmine_matb_masks">
       </texture>
     </parameters>
   </submaterial>
