@@ -5460,8 +5460,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranPrinceElector</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranHansa</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardHansa</effect>
     </effects>
@@ -5512,8 +5512,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranPrinceElector</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranHansa</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardHansa</effect>
     </effects>
@@ -5564,8 +5564,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranPrinceElector</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranHansa</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardHansa</effect>
     </effects>
@@ -5614,8 +5614,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranPrinceElector</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
       </effect>
@@ -5669,8 +5669,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardAuditore</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranPrinceElector</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNativeEmbassyParisReward</target>
       </effect>
@@ -5726,8 +5726,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranPrinceElector</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranHansa</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardHansa</effect>
     </effects>
@@ -5778,8 +5778,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranPrinceElector</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranHansa</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardHansa</effect>
     </effects>
@@ -5830,8 +5830,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardBohemianKing</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatDisciplinedHussites</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
-      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranPrinceElector</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranHansa</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardHansa</effect>
     </effects>
