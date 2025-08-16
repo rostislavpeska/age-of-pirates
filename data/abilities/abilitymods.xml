@@ -360,6 +360,11 @@
     <ability>zpPowerSalve<rof>60</rof><sharedcooldown>true</sharedcooldown></ability>
     <ability>PowerLongRange<rof>60</rof><sharedcooldown>true</sharedcooldown></ability>
   </zpspctrinidad>
+  <zpspcpizarro>
+    <ability>PowerSharpshooter<rof>60</rof></ability>
+    <ability>PowerCrackshot<rof>90</rof></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcpizarro>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
