@@ -1,4 +1,4 @@
-// Venice 10/2023
+// Adriatic Sea 10/2023
 
 include "mercenaries.xs";
 include "ypAsianInclude.xs";
@@ -633,6 +633,9 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
   int middleSufiVillageID4Type = rmRandInt(1, 5);
   int middleSufiVillageID5Type = rmRandInt(1, 5);
   int middleSufiVillageID6Type = rmRandInt(1, 5);
+  int orthodoxMonastery1Type = rmRandInt(4, 6);
+  int orthodoxMonastery2Type = rmRandInt(4, 6);
+  int orthodoxMonastery3Type = rmRandInt(4, 6);
 
   // Team Jesuit
 
@@ -683,7 +686,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
     if (monasteryPlacement == 2)
       middleSufiVillageID1 = rmCreateGrouping("native1 city", "Jesuit_Cathedral_EU_0" + middleSufiVillageID1Type);
     else
-      middleSufiVillageID1 = rmCreateGrouping("native1 city", "Orthodox_Monastery0" + middleSufiVillageID4Type);
+      middleSufiVillageID1 = rmCreateGrouping("native1 city", "Orthodox_Monastery0" + orthodoxMonastery1Type);
     rmAddGroupingConstraint(middleSufiVillageID1, avoidImpassableLand);
     rmPlaceGroupingAtLoc(middleSufiVillageID1, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc1)), 1);
 
@@ -737,7 +740,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       if (monasteryPlacement == 2)
         middleSufiVillageID2 = rmCreateGrouping("native2 city", "Jesuit_Cathedral_EU_0" + middleSufiVillageID2Type);
       else
-        middleSufiVillageID2 = rmCreateGrouping("native2 city", "Orthodox_Monastery0" + middleSufiVillageID5Type);
+        middleSufiVillageID2 = rmCreateGrouping("native2 city", "Orthodox_Monastery0" + orthodoxMonastery2Type);
       rmAddGroupingConstraint(middleSufiVillageID2, avoidImpassableLand);
       rmPlaceGroupingAtLoc(middleSufiVillageID2, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc2)), 1);
     }
@@ -789,7 +792,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       if (monasteryPlacement == 2)
         middleSufiVillageID3 = rmCreateGrouping("native3 city", "Jesuit_Cathedral_EU_0" + middleSufiVillageID3Type);
       else
-        middleSufiVillageID3 = rmCreateGrouping("native3 city", "Orthodox_Monastery0" + middleSufiVillageID6Type);
+        middleSufiVillageID3 = rmCreateGrouping("native3 city", "Orthodox_Monastery0" + orthodoxMonastery3Type);
       rmAddGroupingConstraint(middleSufiVillageID3, avoidImpassableLand);
       rmPlaceGroupingAtLoc(middleSufiVillageID3, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc3)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc3)), 1);
     }
@@ -1794,7 +1797,7 @@ if (monasteryPlacement == 1){
   rmSetTriggerConditionParamInt("PlayerID",k);
   rmAddTriggerEffect("ZP Set Tech Status (XS)");
   rmSetTriggerEffectParamInt("PlayerID",k);
-  rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffOrthodox"); //operator
+  rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffOrthodoxBalkan"); //operator
   rmSetTriggerEffectParamInt("Status",2);
   rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);

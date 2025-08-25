@@ -992,7 +992,7 @@ void main(void)
     int jesuit1VillageID = -1;
 
 
-      int jesuit1VillageType = rmRandInt(1,5);
+      int jesuit1VillageType = rmRandInt(1,3);
       jesuit1VillageID = rmCreateGrouping("jesuit 1", "Orthodox_Monastery0"+jesuit1VillageType);
 
     rmAddGroupingConstraint(jesuit1VillageID , avoidImpassableLand);
@@ -1001,7 +1001,7 @@ void main(void)
 
     int jesuit2VillageID = -1;
     if (mapVariation == 1){
-      int jesuit2VillageType = rmRandInt(1,5);
+      int jesuit2VillageType = rmRandInt(1,3);
       jesuit2VillageID = rmCreateGrouping("jesuit 2", "Orthodox_Monastery0"+jesuit2VillageType);
     }
     if (mapVariation == 2){

@@ -7,12 +7,12 @@
 		<logic type="Variation">
 			<variationid0>
 				<assetreference type="GrannyModel">
-					<file>buildings\church\church_orthodox_south_Model</file>
+					<file>buildings\native_settlement\orthodox\orthodox_cathedral_01</file>
 				</assetreference>
 			</variationid0>
 			<variationid1>
 				<assetreference type="GrannyModel">
-					<file>buildings\native_settlement\orthodox\orthodox_church_age3</file>
+					<file>buildings\native_settlement\orthodox\orthodox_cathedral_02</file>
 				</assetreference>
 			</variationid1>
 		</logic>

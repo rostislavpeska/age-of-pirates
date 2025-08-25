@@ -104,7 +104,7 @@
 		<unit variation="152" posx="-6.3141" posz="-35.7645" orientx="0.0081" orienty="-0.0000" orientz="-1.0000">zpCityStateFlag</unit>
 		<unit variation="6" posx="18.8516" posz="-35.3618" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">zpNativeHouseVenetianB</unit>
 		<unit variation="6" posx="30.9979" posz="-35.5902" orientx="1.0000" orienty="0.0000" orientz="0.0001">zpNativeHouseVenetianB</unit>
-		<unit variation="46" posx="-9.4647" posz="-29.5294" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCathedralOrthodox</unit>
+		<unit variation="46" posx="-9.4647" posz="-29.5294" orientx="1.0000" orienty="-0.0000" orientz="0.0000">zpCathedralOrthodox</unit>
 		<unit variation="64" posx="12.2599" posz="-30.7158" orientx="0.7198" orienty="0.0000" orientz="0.6942">zpHarbourPlatform</unit>
 		<unit variation="175" posx="5.2587" posz="-33.5395" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpNativeUnitVenetianShips</unit>
 		<unit variation="133" posx="36.7327" posz="-27.7935" orientx="-0.6833" orienty="0.0000" orientz="-0.7301">NativeTownObstruction</unit>
