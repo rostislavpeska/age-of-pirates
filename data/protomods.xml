@@ -388,6 +388,7 @@
     <flag>DoNotValidateResourceInventory</flag>
     <flag>NoHPBar</flag>
     <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
     <flag>DontRotateObstruction</flag>
     <flag>FlattenGround</flag>
     <flag>DoNotCreateUnitGroupAutomatically</flag>
