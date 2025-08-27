@@ -1,0 +1,85 @@
+<tactics>
+  <action>
+    <name stringid="125105">KnifeChargeAttack</name>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <chargeaction>1</chargeaction>
+    <anim>Ranged_Attack</anim>
+    <reloadanim>Ranged_reload</reloadanim>
+    <idleanim>Ranged_idle</idleanim>
+    <boredanim>Ranged_bored</boredanim>
+    <walkanim>Ranged_Walk</walkanim>
+    <joganim>Ranged_Jog</joganim>
+    <runanim>Ranged_Run</runanim>
+    <accuracy>10</accuracy>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>120</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>Tomahawk</projectile>
+    <minrange>2</minrange>
+    <rate type="Unit">1.0 </rate>
+    <perfectaccuracy>1</perfectaccuracy>
+  </action>
+  <action>
+    <name stringid="38133">VolleyRangedAttack</name>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <rangedlogic>1</rangedlogic>
+    <anim>RangedAttack</anim>
+    <reloadanim>Reload</reloadanim>
+    <idleanim>Reload</idleanim>
+    <maxheight>0</maxheight>
+    <accuracy>1.0</accuracy>
+    <accuracyreductionfactor>0.5</accuracyreductionfactor>
+    <aimbonus>0</aimbonus>
+    <maxspread>5</maxspread>
+    <spreadfactor>0.25</spreadfactor>
+    <trackrating>12</trackrating>
+    <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+    <projectile>InvisibleProjectile</projectile>
+    <impacteffect>effects\impacts\gun</impacteffect>
+    <minrange>2</minrange>
+    <rate type="Unit">1.0</rate>
+    <instantballistics>1</instantballistics>
+  </action>
+  <action>
+    <name stringid="38134">HandAttack</name>
+    <type>Attack</type>
+    <attackaction>1</attackaction>
+    <handlogic>1</handlogic>
+    <anim>HandAttack</anim>
+    <idleanim>CombatIdle</idleanim>
+    <maxrange>1.75</maxrange>
+    <impacteffect>effects\impacts\melee</impacteffect>
+    <rate type="Unit">1.0</rate>
+    <targetspeedboost>1</targetspeedboost>
+  </action>
+  <action>
+    <name stringid="38118">BuildingAttack</name>
+    <type>Attack</type>
+    <rangedlogic>1</rangedlogic>
+    <maxrange>6</maxrange>
+    <rate type="LogicalTypeShipsAndBuildings">1.0</rate>
+    <attackaction>1</attackaction>
+    <speedboost>1</speedboost>
+    <anim>Raze_Attack</anim>
+    <idleanim>Raze_Idle</idleanim>
+    <impacteffect>effects\impacts\torch</impacteffect>
+    <projectile>TorchProjectile</projectile>
+  </action>
+  <action>
+    <name stringid="69148">DelayedTransform</name>
+    <type>DelayedTransform</type>
+    <anim>Mount</anim>
+    <animationrate>0.46875</animationrate>
+    <modifyprotoid>zpNatCossackRider</modifyprotoid>
+  </action>
+  <tactic>Volley<action priority="100">KnifeChargeAttack</action><action priority="95">VolleyRangedAttack</action><action priority="75">BuildingAttack</action><action priority="25">HandAttack</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
+  <tactic>Melee<action priority="100">BuildingAttack</action><action priority="75">HandAttack</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Charge_Idle</idleanim><boredanim>Charge_Bored</boredanim><deathanim>Death</deathanim><walkanim>Charge_Walk</walkanim><joganim>Charge_Jog</joganim><runanim>Charge_Run</runanim></tactic>
+  <tactic>Defend<action priority="100">KnifeChargeAttack</action><action priority="95">VolleyRangedAttack</action><action priority="75">BuildingAttack</action><action priority="30">ChargeHeavyStrikeAttack</action><action priority="25">HandAttack</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
+  <tactic>Stagger<action priority="100">KnifeChargeAttack</action><action priority="95">VolleyRangedAttack</action><action priority="75">BuildingAttack</action><action priority="25">HandAttack</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
+  <tactic>StandGround<action priority="100">KnifeChargeAttack</action><action priority="95">VolleyRangedAttack</action><action priority="75">BuildingAttack</action><action priority="25">HandAttack</action><attacktype>LogicalTypeRangedUnitsAttack</attacktype><autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
+</tactics>

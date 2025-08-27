@@ -32733,6 +32733,16 @@
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffOrthodoxBalkan</effect>
     </effects>
   </tech>
+  <tech name="zpNativeCossacks" type="Normal">
+    <dbid>41256</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCossackRider</target>
+      </effect>
+    </effects>
+  </tech>
 
 
 

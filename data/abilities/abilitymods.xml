@@ -365,6 +365,14 @@
     <ability>PowerCrackshot<rof>90</rof></ability>
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpspcpizarro>
+  <zpnatcossackrider>
+    <ability>dePowerDismount<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
+    <ability>deChargeAbilityCossackLance<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatcossackrider>
+  <zpnatcossack>
+    <ability>dePowerMount<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
+    <ability>deChargeAbilityCossackKnife<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatcossack>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

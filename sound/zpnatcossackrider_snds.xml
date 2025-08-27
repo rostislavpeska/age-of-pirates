@@ -1,11 +1,11 @@
 <protounitsounddef>
-  <protounit name="zpNatCossack">
+  <protounit name="zpNatCossackRider">
     <soundtype name="Select">
       <soundset name="RussianGrenadierSelect">
       </soundset>
     </soundtype>
     <soundtype name="Grunt">
-      <soundset name="GenericMaleGrunt">
+      <soundset name="CavalryGrunt">
       </soundset>
     </soundtype>
     <soundtype name="Death">
