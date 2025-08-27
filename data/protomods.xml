@@ -18772,7 +18772,7 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\units\infantry\boneguard\boneguard_age1_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\natives\maltese_natives.png</portraiticon>
+    <portraiticon>resources\art\units\natives\native_orthodox.png</portraiticon>
     <rollovertextid>300072</rollovertextid>
     <shortrollovertextid>300072</shortrollovertextid>
     <initialhitpoints>1500.0000</initialhitpoints>
@@ -64204,7 +64204,7 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\units\infantry\boneguard\boneguard_age1_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\natives\maltese_natives.png</portraiticon>
+    <portraiticon>resources\art\units\natives\native_orthodox.png</portraiticon>
     <rollovertextid>300072</rollovertextid>
     <shortrollovertextid>300072</shortrollovertextid>
     <initialhitpoints>1500.0000</initialhitpoints>
@@ -64261,7 +64261,7 @@
     <movementtype>land</movementtype>
     <animfile>buildings\native_settlement\native house cossack.xml</animfile>
     <icon>resources\art\units\spc\pirates\pirate_ranged_icon.png</icon>
-    <portraiticon>resources\art\units\spc\pirates\pirate_ranged_portrait.png</portraiticon>
+    <portraiticon>resources\art\units\natives\native_cossacks.png</portraiticon>
     <initialhitpoints>1560.0000</initialhitpoints>
     <maxhitpoints>1560.0000</maxhitpoints>
     <los>9.0000</los>
@@ -64318,7 +64318,7 @@
     <animfile>buildings\trading_post\jesuit_outpost_socket.xml</animfile>
     <minimapicon>ui\minimap\asian_native_site</minimapicon>
     <capturedminimapicon>ui\minimap\asian_native_site_c</capturedminimapicon>
-    <portraiticon>resources\art\buildings\native_settlement\native_jesuit_site_icon_portrait.png</portraiticon>
+    <portraiticon>resources\art\units\natives\native_cossacks.png</portraiticon>
     <rollovertextid>61105</rollovertextid>
     <shortrollovertextid>61104</shortrollovertextid>
     <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
