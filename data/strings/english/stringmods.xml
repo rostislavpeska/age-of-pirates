@@ -3086,6 +3086,12 @@
       <string _locid="303087">Pizarro's Conquest</string>
       <string _locid="303088">Ships Pizarro unit with special abilities able to train additional native warriors.</string>
       <string _locid="303089">ZP PROP Wall Full B</string>
+      <string _locid="303090">Cossack Church</string>
+      <string _locid="303091">ZP NAT Cossack Church</string>
+      <string _locid="303092">Cossack Settlement</string>
+      <string _locid="303093">ZP NAT House Cossack</string>
+      <string _locid="303094">Cossack Camp</string>
+      <string _locid="303095">ZP Socket Cossacks</string>
 
 
       <!-- ======================================== -->

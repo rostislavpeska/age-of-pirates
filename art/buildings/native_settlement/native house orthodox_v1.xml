@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>bone_prop</definebone>
+		<component>
+		house
+		<logic type="Variation">
+			<variationid0>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\orthodox\orthodox_cathedral_01</file>
+                    <materialvariant index="1"/>
+				</assetreference>
+			</variationid0>
+			<variationid1>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\orthodox\orthodox_cathedral_02</file>
+                    <materialvariant index="1"/>
+				</assetreference>
+			</variationid1>
+			<variationid2>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\orthodox\orthodox_church_01</file>
+                    <materialvariant index="1"/>
+				</assetreference>
+			</variationid2>
+			<variationid3>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\orthodox\orthodox_church_02</file>
+                    <materialvariant index="1"/>
+				</assetreference>
+			</variationid3>
+			<variationid4>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\orthodox\orthodox_tower_L01</file>
+                    <materialvariant index="1"/>
+				</assetreference>
+			</variationid4>
+			<variationid5>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\orthodox\orthodox_tower_L02</file>
+                    <materialvariant index="1"/>
+				</assetreference>
+			</variationid5>
+			<variationid6>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\orthodox\orthodox_tower_L03</file>
+                    <materialvariant index="1"/>
+				</assetreference>
+			</variationid6>
+			<variationid7>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\orthodox\orthodox_tower_S01</file>
+                    <materialvariant index="1"/>
+				</assetreference>
+			</variationid7>
+			<variationid8>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\orthodox\orthodox_tower_S02</file>
+                    <materialvariant index="1"/>
+				</assetreference>
+			</variationid8>
+			<variationid9>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\orthodox\orthodox_tower_S03</file>
+                    <materialvariant index="1"/>
+				</assetreference>
+			</variationid9>
+			<variationid10>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\orthodox\orthodox_wing_S</file>
+                    <materialvariant index="1"/>
+				</assetreference>
+			</variationid10>
+			<variationid11>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\orthodox\orthodox_wing_L</file>
+					<materialvariant index="1"/>
+				</assetreference>
+			</variationid11>
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>house</component>
+	</anim>
+</animfile>

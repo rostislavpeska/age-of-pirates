@@ -10,6 +10,14 @@
       <texture name="Masks" override="buildings\native_settlement\orthodox\textures\orthodox_monastery_mata_Masks">
       </texture>
     </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\native_settlement\orthodox\textures\orthodox_monastery_mata_v1_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\orthodox\textures\orthodox_monastery_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\orthodox\textures\orthodox_monastery_mata_Masks">
+      </texture>
+    </parameters>
   </submaterial>
   <submaterial name="matb">
     <materialdef name="default_doublesided">
@@ -22,11 +30,27 @@
       <texture name="Masks" override="buildings\native_settlement\orthodox\textures\orthodox_monastery_matb_Masks">
       </texture>
     </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\native_settlement\orthodox\textures\orthodox_monastery_matb_v1_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\orthodox\textures\orthodox_monastery_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\orthodox\textures\orthodox_monastery_matb_Masks">
+      </texture>
+    </parameters>
   </submaterial>
   <submaterial name="matc">
     <materialdef name="default">
     </materialdef>
     <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\workshop_props\textures\bells_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\workshop_props\textures\bells_normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\workshop_props\textures\bells_masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
       <texture name="BaseColor" override="buildings\native_settlement\workshop_props\textures\bells_basecolor">
       </texture>
       <texture name="Normals" override="buildings\native_settlement\workshop_props\textures\bells_normals">
