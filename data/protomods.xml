@@ -64425,6 +64425,7 @@
     <unittype>AbstractHeavyInfantry</unittype>
     <unittype>AbstractMusketeer</unittype>
     <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -64537,6 +64538,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>AbstractCavalryInfantry</unittype>
     <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
