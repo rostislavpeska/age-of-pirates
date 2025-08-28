@@ -64253,8 +64253,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20005" name="zpNativeHouseCossacks">
-    <dbid>20005</dbid>
+  <unit id="20886" name="zpNativeHouseCossacks">
+    <dbid>20886</dbid>
     <displaynameid>303092</displaynameid>
     <editornameid>303093</editornameid>
     <subciv>zpCossacks</subciv>
@@ -64305,8 +64305,8 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="20145" name="zpSocketCossacks">
-    <dbid>20145</dbid>
+  <unit id="20887" name="zpSocketCossacks">
+    <dbid>20887</dbid>
     <displaynameid>303094</displaynameid>
     <editornameid>303095</editornameid>
     <subciv>zpCossacks</subciv>
@@ -64356,8 +64356,8 @@
     <flag>EnterHotkeyContext</flag>
     <tactics>socketcapture.tactics</tactics>
   </unit>
-  <unit id="20146" name="zpNatCossack">
-    <dbid>20146</dbid>
+  <unit id="20888" name="zpNatCossack">
+    <dbid>20888</dbid>
     <displaynameid>303098</displaynameid>
     <editornameid>303099</editornameid>
     <populationcount>0</populationcount>
@@ -64472,8 +64472,8 @@
       <rof>0.500000</rof>
     </protoaction>
   </unit>
-  <unit id="20147" name="zpNatCossackRider">
-    <dbid>20147</dbid>
+  <unit id="20889" name="zpNatCossackRider">
+    <dbid>20889</dbid>
     <displaynameid>303096</displaynameid>
     <editornameid>303097</editornameid>
     <populationcount>0</populationcount>
