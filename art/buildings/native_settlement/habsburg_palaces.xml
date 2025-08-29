@@ -1,0 +1,44 @@
+<animfile>
+	<component>
+		building
+		<logic type="Variation">
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\europe\palaces\roof_fr01_wall_ge01_wing_S</file>
+					</assetreference>
+				</data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\europe\palaces\roof_fr01_wall_ge01_wing_L</file>
+					</assetreference>
+				</data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\europe\palaces\roof_fr01_wall_ge01</file>
+					</assetreference>
+				</data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\europe\palaces\roof_it02_wall_it01_wing_S</file>
+                        <materialvariant index="1"/>
+					</assetreference>
+				</data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\europe\palaces\roof_it02_wall_it01_wing_L</file>
+                        <materialvariant index="1"/>
+					</assetreference>
+				</data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\europe\palaces\roof_it02_wall_it01</file>
+                        <materialvariant index="1"/>
+					</assetreference>
+				</data>
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>building</component>
+	</anim>
+</animfile>
