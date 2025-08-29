@@ -373,6 +373,10 @@
     <ability>dePowerMount<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
     <ability>deChargeAbilityCossackKnife<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
   </zpnatcossack>
+  <zpspcwaldstein>
+     <ability>PowerSwashbuckler<rof>45</rof></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcwaldstein>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

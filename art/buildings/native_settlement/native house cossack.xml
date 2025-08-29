@@ -43,7 +43,7 @@
 			</variationid2>
 			<variationid3>
 				<assetreference type="GrannyModel">
-					<file>buildings\cabin\cabin4</file>
+					<file>buildings\native_settlement\cossack\cossack_house</file>
 				</assetreference>
 				<decal>
 					<effecttype>default</effecttype>

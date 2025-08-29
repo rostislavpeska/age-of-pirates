@@ -64607,6 +64607,137 @@
       <damagebonus type="AbstractCoyoteMan">1.150000</damagebonus>
     </protoaction>
   </unit>
+  <unit id="20889" name="zpSPCWaldstein">
+    <dbid>20889</dbid>
+    <displaynameid>303100</displaynameid>
+    <editornameid>303101</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>5.0000</maxvelocity>
+    <maxrunvelocity>7.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\spc\waldstein\Albrecht_Waldstein.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <icon>resources\art\units\heroes\waldstein_portrait.png</icon>
+    <portraiticon>resources\art\units\heroes\waldstein_portrait.png</portraiticon>
+    <rollovertextid>303103</rollovertextid>
+    <shortrollovertextid>303102</shortrollovertextid>
+    <initialhitpoints>1100.0000</initialhitpoints>
+    <maxhitpoints>1100.0000</maxhitpoints>
+    <los>24.0000</los>
+    <autoattackrange>16.0000</autoattackrange>
+    <unitaitype>Hero</unitaitype>
+    <bounty>40.0000</bounty>
+    <allowedage>0</allowedage>
+    <armor type="Hand" value="0.1000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>Hero</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>AbstractHandInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>ExcludeFromRansom</unittype>
+    <unittype>AbstractNativeWarrior</unittype>
+    <train row="0" page="12" column="0">TradingPost</train>
+    <train row="0" page="12" column="23">MercBarbaryCorsair</train>
+    <train row="0" page="12" column="22">MercBlackRider</train>
+    <train row="0" page="12" column="21">MercElmeti</train>
+    <train row="0" page="12" column="10">MercFusilier</train>
+    <train row="0" page="12" column="24">MercGreatCannon</train>
+    <train row="0" page="12" column="17">MercHackapell</train>
+    <train row="0" page="12" column="17">deMercHarquebusier</train>
+    <train row="0" page="12" column="16">MercHighlander</train>
+    <train row="0" page="12" column="13">MercJaeger</train>
+    <train row="0" page="12" column="15">MercLandsknecht</train>
+    <train row="0" page="12" column="19">MercMameluke</train>
+    <train row="0" page="12" column="20">MercManchu</train>
+    <train row="0" page="12" column="18">MercNinja</train>
+    <train row="0" page="12" column="12">MercRonin</train>
+    <train row="0" page="12" column="14">MercStradiot</train>
+    <train row="0" page="12" column="11">MercSwissPikeman</train>
+    <train row="0" page="12" column="24">ypMercIronTroop</train>
+    <train row="0" page="12" column="27">ypMercArsonist</train>
+    <train row="0" page="12" column="26">ypMercJatLancer</train>
+    <train row="0" page="12" column="25">ypMercYojimbo</train>
+    <train row="0" page="12" column="28">deMercNapoleonGun</train>
+    <train row="0" page="12" column="29">deMercZouave</train>
+    <train row="0" page="12" column="30">deMercSudaneseRider</train>
+    <train row="0" page="12" column="31">deMercCannoneer</train>
+    <train row="0" page="12" column="32">deMercAskari</train>
+    <train row="0" page="12" column="33">deMercAmazon</train>
+    <train row="0" page="12" column="34">deMercZenata</train>
+    <train row="0" page="12" column="35">deMercGatlingCamel</train>
+    <train row="0" page="12" column="36">deMercKanuri</train>
+    <train row="0" page="12" column="37">deMercGrenadier</train>
+    <train row="0" page="12" column="38">deMercPandour</train>
+    <train row="0" page="12" column="39">deMercRoyalHorseman</train>
+    <train row="0" page="12" column="40">deMercPistoleer</train>
+    <train row="0" page="12" column="41">deMercBrigadier</train>
+    <train row="0" page="12" column="42">deMercMountedRifleman</train>
+    <train row="0" page="12" column="42">deMercBosniak</train>
+    <train row="0" page="12" column="33">zpMarquesanHorseman</train>
+    <train row="0" page="12" column="32">zpAustralianCavalry</train>
+    <train row="0" page="12" column="33">zpMercBohemianKnight</train>
+    <train row="0" page="12" column="34">zpMercHussiteWagon</train>
+    <train row="0" page="12" column="35">zpMercTeutonicCavalry</train>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>NotDeleteable</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>waldstein.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>24.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>HandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>SwashbucklerAttack</name>
+      <damage>200.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>2.000000</rof>
+      <damagecap>300.000000</damagecap>
+      <damagebonus type="AbstractVillager">0.250000</damagebonus>
+      <damagearea>3.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>Build</name>
+      <rate type="TradingPost">2.000000</rate>
+    </protoaction>
+  </unit>
 
   
 

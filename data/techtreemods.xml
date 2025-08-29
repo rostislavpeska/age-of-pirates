@@ -57,6 +57,9 @@
       <effect type="CommandAdd" tech="zpNatHabsburgRadetzyMarch" page="0" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandAdd" tech="zpAustrianHabsburgExpansion" page="1" column="1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
       <effect type="TechStatus" status="unobtainable">zpHabsburgColonialize</effect>
       <effect type="TechStatus" status="obtainable">zpHabsburgAustrianColonialize</effect>
     </effects>
@@ -13154,6 +13157,12 @@
       <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCPizarro</target>
       </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCWaldstein</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCWaldstein</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpHeroImperializeShadow" type="Normal">
@@ -13215,6 +13224,12 @@
       </effect>
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCPizarro</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCWaldstein</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCWaldstein</target>
       </effect>
     </effects>
   </tech>
@@ -19365,7 +19380,7 @@
     <dbid>40792</dbid>
     <displaynameid>301957</displaynameid>
     <cost resourcetype="Food">150.0000</cost>
-    <cost resourcetype="Gold">100.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\art\units\heroes\dartagnan_tech.png</icon>
@@ -32472,6 +32487,9 @@
       <effect mergemode="add" type="TechStatus" status="obtainable">zpNatHabsburgTrinidad</effect>
       <effect mergemode="add" type="TechStatus" status="obtainable">zpSpanishHabsburgExpansion</effect>
       <effect mergemode="add" type="TechStatus" status="obtainable">zpNatHabsburgPizarro</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpAustrianHabsburgExpansion</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpNatHabsburgWaldstein</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpNatHabsburgTank</effect>
     </effects>
   </tech>
   <tech name="DENativeHabsburgColonialize">
@@ -32625,7 +32643,7 @@
     <dbid>41254</dbid>
     <displaynameid>303087</displaynameid>
     <cost resourcetype="Food">150.0000</cost>
-    <cost resourcetype="Gold">100.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\art\units\heroes\pizarro_tech.png</icon>
@@ -32740,6 +32758,72 @@
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatCossackRider</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpAustrianHabsburgExpansion" type ="Normal">
+		<dbid>41257</dbid>
+		<displaynameid>303104</displaynameid>
+  	<researchpoints>60.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\habsburg_austria_big.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>303107</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>NativeDance</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="CommandAdd" tech="zpNatHabsburgTank" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHabsburgWaldstein" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name="zpNatHabsburgWaldstein" type="Normal">
+    <dbid>41258</dbid>
+    <displaynameid>303102</displaynameid>
+    <cost resourcetype="Food">150.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\heroes\waldstein_tech.png</icon>
+    <rollovertextid>303105</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCWaldstein" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatHabsburgTank" type="Normal">
+    <dbid>41049</dbid>
+    <displaynameid>303106</displaynameid>
+    <cost resourcetype="Gold">1200.0000</cost>
+    <cost resourcetype="Wood">1200.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\tank_battalion.png</icon>
+    <rollovertextid>302631</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSteamTank" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>
@@ -33426,6 +33510,7 @@
     <dbid>50024</dbid>
     <displaynameid>400121</displaynameid>
     <cost resourcetype="Food">150.0000</cost>
+    <cost resourcetype="Gold">150.0000</cost>
     <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\doc_holiday_tech.png</icon>
@@ -33503,7 +33588,8 @@
   <tech name="zpSendPinkertonsB" type="Normal">
     <dbid>50028</dbid>
     <displaynameid>400125</displaynameid>
-    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
     <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\art\units\natives\western_village\pinkerton_tech.png</icon>
