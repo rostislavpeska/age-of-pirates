@@ -22840,6 +22840,12 @@
       <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCRockChurch</target>
       </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpOldSpanishChurch</target>
+      </effect>
+      <effect type="Data" action="Autogather" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpHanseaticChurch</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSPCBlessedCity" type="Normal">
@@ -30550,6 +30556,9 @@
     <effects>
       <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpHanseaticChurch</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpOldSpanishChurch</target>
       </effect>
       <effect type="TextOutputTechName">123070</effect>
     </effects>

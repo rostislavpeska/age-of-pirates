@@ -377,6 +377,9 @@
      <ability>PowerSwashbuckler<rof>45</rof></ability>
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpspcwaldstein>
+  <zpoldspanishchurch>
+    <ability>zpPowerInformersFrench<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpoldspanishchurch>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
