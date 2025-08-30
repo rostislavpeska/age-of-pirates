@@ -64607,8 +64607,8 @@
       <damagebonus type="AbstractCoyoteMan">1.150000</damagebonus>
     </protoaction>
   </unit>
-  <unit id="20889" name="zpSPCWaldstein">
-    <dbid>20889</dbid>
+  <unit id="20892" name="zpSPCWaldstein">
+    <dbid>20892</dbid>
     <displaynameid>303100</displaynameid>
     <editornameid>303101</editornameid>
     <obstructionradiusx>0.4900</obstructionradiusx>
@@ -64620,6 +64620,8 @@
     <turnrate>18.0000</turnrate>
     <animfile>units\spc\waldstein\Albrecht_Waldstein.xml</animfile>
     <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <minimapicon>ui\minimap\hero</minimapicon>
     <icon>resources\art\units\heroes\waldstein_portrait.png</icon>
     <portraiticon>resources\art\units\heroes\waldstein_portrait.png</portraiticon>
     <rollovertextid>303103</rollovertextid>
@@ -64629,7 +64631,10 @@
     <los>24.0000</los>
     <autoattackrange>16.0000</autoattackrange>
     <unitaitype>Hero</unitaitype>
-    <bounty>40.0000</bounty>
+    <bounty>18.0000</bounty>
+    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
+    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
     <allowedage>0</allowedage>
     <armor type="Hand" value="0.1000">
     </armor>
@@ -64719,13 +64724,13 @@
     </protoaction>
     <protoaction>
       <name>HandAttack</name>
-      <damage>20.000000</damage>
+      <damage>25.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
     </protoaction>
     <protoaction>
       <name>SwashbucklerAttack</name>
-      <damage>200.000000</damage>
+      <damage>230.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>2.000000</rof>
       <damagecap>300.000000</damagecap>
@@ -64747,6 +64752,7 @@
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>buildings\native_settlement\habsburg_palaces.xml</animfile>
+    <portraiticon>resources\art\buildings\native_settlement\native_site_habsburg_icon_portrait.png</portraiticon>
     <unittype>EmbellishmentClass</unittype>
     <unittype>Unattackable</unittype>
     <flag>NoHPBar</flag>
@@ -64758,7 +64764,6 @@
     <flag>Invulnerable</flag>
     <flag>ForceToGaia</flag>
     <flag>VisibleUnderFogIfGaia</flag>
-    <flag>NotSelectable</flag>
     <flag>Tracked</flag>
     <flag>PaintTextureWhenPlacing</flag>
     <flag>InvulnerableIfGaia</flag>
@@ -64806,8 +64811,8 @@
     <flag>Invulnerable</flag>
     <flag>InvulnerableIfGaia</flag>
   </unit>
-  <unit id="20892" name="zpHabsburgFlagSP">
-    <dbid>20892</dbid>
+  <unit id="20893" name="zpHabsburgFlagSP">
+    <dbid>20893</dbid>
     <displaynameid>32671</displaynameid>
     <editornameid>303110</editornameid>
     <obstructionradiusx>1.0000</obstructionradiusx>

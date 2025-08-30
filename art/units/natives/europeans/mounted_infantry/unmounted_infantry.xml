@@ -24,7 +24,7 @@
         </assetreference>
         <component>horse</component>
     </anim>
-</attachment>
+  </attachment>
   <attachment>torch<include>effects\projectiles\torch.xml</include></attachment>
   <attachment>gun<include>units\infantry_ranged\janissary\janissary_gun.xml</include></attachment>
   <attachment>sword<include>units\attachments\sword.xml</include></attachment>
@@ -56,7 +56,7 @@
         <width>1.0</width>
         <height>1.0</height>
     </decal>
-</component>
+  </component>
   <anim>mount<assetreference type="GrannyAnim"><file>animation_library\shared\human_mount_horse</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.51</tag></assetreference><component>ModelComp</component><attach a="gun" frombone="bone_gun" tobone="BIP01 PROP1" syncanims="0"></attach><attach a="horse" frombone="hotspot" tobone="Attachpoint" syncanims="1"></attach></anim>
   <anim>Death_by_melee<assetreference type="GrannyAnim"><file>animation_library\range\death_standing_rifleman_A</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.51</tag></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\death_standing_rifleman_B</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.18</tag></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\death_standing_rifleman_C</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.73</tag></assetreference><component>ModelComp</component><attach a="gun" frombone="bone_gun" tobone="BIP01 PROP1" syncanims="0"></attach></anim>
   <anim>Death_by_range<assetreference type="GrannyAnim"><file>animation_library\range\death_standing_rifleman_A</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.52</tag></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\death_standing_rifleman_B</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.17</tag></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\death_standing_rifleman_C</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.72</tag></assetreference><component>ModelComp</component><attach a="gun" frombone="bone_gun" tobone="BIP01 PROP1" syncanims="0"></attach></anim>

@@ -33,6 +33,9 @@
       <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deSocketHabsburg" relativity="Absolute">
         <target type="ProtoUnit">zpHabsburgSocketSpanishIcon</target>
       </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="zpNatEUHabsburgPalaces" relativity="Absolute">
+        <target type="ProtoUnit">zpHabsburgSocketSpanishIcon</target>
+      </effect>
       <effect type="Data" amount="0.00" subtype="CopyTechIcon" tech="zpIberianUnionIcon" relativity="Absolute">
         <target type="Tech">DENatHabsburgAustroHungarian</target>
       </effect>
@@ -32807,7 +32810,7 @@
     </effects>
   </tech>
   <tech name="zpNatHabsburgTank" type="Normal">
-    <dbid>41049</dbid>
+    <dbid>41259</dbid>
     <displaynameid>303106</displaynameid>
     <cost resourcetype="Gold">1200.0000</cost>
     <cost resourcetype="Wood">1200.0000</cost>

@@ -116,7 +116,7 @@
     <name stringid="68971">HeroRespawn</name>
     <type>Maintain</type>
     <maintaintrainpoints>120</maintaintrainpoints>
-    <rate type="zpSPCPizzaro">1.0</rate>
+    <rate type="zpSPCPizarro">1.0</rate>
     <usehcgatherpoint>1</usehcgatherpoint>
     <showqueuewhilewaiting>0</showqueuewhilewaiting>
     <restricttoknockout>1</restricttoknockout>

@@ -34,7 +34,6 @@
   <anim>RangedAttack<assetreference type="GrannyAnim"><file>animation_library\SPC\cooper\ranged_attack</file><tag type="Attack">0.43</tag><tag type="SpecificSoundSet" checkvisible="1" set="PistolShot">0.43</tag><tag type="Particles" particlename="pistolshot_right">0.43</tag></assetreference><component>ModelComp</component><attach a="pistol" frombone="MASTER" tobone="BIP01 PROP1" syncanims="1"></attach></anim>
   <anim>Reload<assetreference type="GrannyAnim"><file>animation_library\SPC\cooper\reload</file></assetreference><component>ModelComp</component><attach a="pistol" frombone="MASTER" tobone="BIP01 PROP1" syncanims="1"></attach></anim>
   <anim>Death<assetreference type="GrannyAnim"><file>animation_library\shared\human_death_generic_A</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.84</tag></assetreference><component>ModelComp</component></anim>
-  <anim>GatherCrate<assetreference type="GrannyAnim"><file>animation_library\villager\villager_male_gathercrate1</file><tag type="SpecificSoundSet" checkvisible="1" set="GatherFruit">0.56</tag></assetreference><component>ModelComp</component></anim>
   <anim>RangedAttackSharpshoot
     <assetreference type="GrannyAnim">
       <file>animation_library\SPC\Nate_Black\sharpshooter_fire</file>
