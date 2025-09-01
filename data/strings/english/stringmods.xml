@@ -3107,9 +3107,11 @@
       <string _locid="303108">ZP Habsburg Palaces</string>
       <string _locid="303109">ZP Spanish Habsburg Tower</string>
       <string _locid="303110">ZP Spanish Habsburg Flag</string>
-      <string _locid="303111">ZP Habsburg Flag</string>
+      <string _locid="303111">ZP Cossack Flag</string>
       <string _locid="303112">Old Spanish Church</string>
       <string _locid="303113">ZP SPC Old Spanish Church</string>
+      <string _locid="303114">Palace</string>
+      <string _locid="303115">ZP NAT Palace Phanar</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
