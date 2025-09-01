@@ -20921,6 +20921,12 @@
       <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatMercTeutonicKnight</target>
       </effect>
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatCossackDragoon</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatCossackDragoon</target>
+      </effect>
     </effects>
 	</tech>
   <tech name="zpUnlockPalazzoAuditore" type="Normal">
@@ -32770,6 +32776,9 @@
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatCossackRider</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCossackDragoon</target>
       </effect>
     </effects>
   </tech>

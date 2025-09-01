@@ -733,6 +733,24 @@
     <usemultiple>
     </usemultiple>
   </protounitcommand>
+  <protounitcommand>
+    <name>TacticCossackRider</name>
+    <icon>resources\images\icons\command\cossack_outlaw_off.png</icon>
+    <activeicon>resources\images\icons\command\cossack_outlaw_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\cossack_outlaw_off.png</disabledicon>
+    <rollovertextid>303124</rollovertextid>
+    <activerollovertextid>303126</activerollovertextid>
+    <command>unitSetTactic("MaintainCossacks")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>TacticCossackDragoon</name>
+    <icon>resources\images\icons\command\cossack_dragoons_off.png</icon>
+    <activeicon>resources\images\icons\command\cossack_dragoons_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\cossack_dragoons_off.png</disabledicon>
+    <rollovertextid>303125</rollovertextid>
+    <activerollovertextid>303127</activerollovertextid>
+    <command>unitSetTactic("MaintainDragoons")</command>
+  </protounitcommand>
 
 
   <!--

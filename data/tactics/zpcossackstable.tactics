@@ -1,0 +1,36 @@
+<tactics>
+  <action>
+    <name stringid="68971">SpawnCossacks</name>
+    <type>Maintain</type>
+    <maintaintrainpoints>60</maintaintrainpoints>
+    <rate type="zpNatCossackRider">3.0</rate>
+    <activeifnotgaia>1</activeifnotgaia>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="68971">SpawnDragoons</name>
+    <type>Maintain</type>
+    <maintaintrainpoints>60</maintaintrainpoints>
+    <rate type="zpNatCossackDragoon">2.0</rate>
+    <activeifnotgaia>1</activeifnotgaia>
+    <persistent>1</persistent>
+  </action>
+  <tactic>MaintainCossacks
+    <protounitcommand>TacticCossackRider</protounitcommand>
+    <action>SpawnCossacks</action>
+    <transition>
+      <tactic>MaintainDragoons</tactic>
+      <length>2</length>
+      <exit>1</exit>
+    </transition>
+  </tactic>
+  <tactic>MaintainDragoons
+    <protounitcommand>TacticCossackDragoon</protounitcommand>
+    <action>SpawnDragoons</action>
+    <transition>
+      <tactic>MaintainCossacks</tactic>
+      <length>2</length>
+      <exit>1</exit>
+    </transition>
+  </tactic>
+</tactics>

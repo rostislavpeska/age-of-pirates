@@ -1,6 +1,6 @@
 <material>
   <submaterial name="mata">
-    <materialdef name="default">
+    <materialdef name="default_doublesided">
     </materialdef>
     <parameters>
       <texture name="BaseColor" override="buildings\native_settlement\orthodox\textures\orthodox_tower_mata_BaseColor">
