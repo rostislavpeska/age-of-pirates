@@ -5417,6 +5417,14 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMercHuaminca" culture="none" newname="42442">
       </effect>
+      <effect mergemode="add" type ="SetName" proto ="zpNatMercCossackDragoon" culture="none" newname="303134">
+      </effect>
+      <effect mergemode="add" type ="SetName" proto ="zpNatCossackDragoon" culture="none" newname="303134">
+      </effect>
+      <effect mergemode="add" type ="SetName" proto ="zpNatCossack" culture="none" newname="303137">
+      </effect>
+      <effect mergemode="add" type ="SetName" proto ="zpNatCossackRider" culture="none" newname="303137">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -5470,6 +5478,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranHansa</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardHansa</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranCossack</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardCossack</effect>
     </effects>
   </tech>
   <tech name="AAStandardNativeTechsPI">
@@ -5522,6 +5532,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranHansa</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardHansa</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranCossack</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardCossack</effect>
     </effects>
   </tech>
   <tech name="ypAAAsianStandardTechsPI">
@@ -5574,6 +5586,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranHansa</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardHansa</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranCossack</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardCossack</effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothers">
@@ -5629,6 +5643,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranHansa</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardHansa</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranCossack</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardCossack</effect>
     </effects>
   </tech>
   <tech name="HCXPBloodBrothersGerman">
@@ -5684,6 +5700,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpNatHonoredHussites</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranHansa</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardHansa</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranCossack</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardCossack</effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialAmericans">
@@ -5736,6 +5754,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranHansa</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardHansa</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranCossack</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardCossack</effect>
     </effects>
   </tech>
   <tech name="DEChampionNativeWarriorsAfricanShadow">
@@ -5788,6 +5808,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranHansa</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatGuardHansa</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranCossack</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardCossack</effect>
     </effects>
   </tech>
   <tech name="DEPostIndustrialMexicans">
@@ -5840,6 +5862,8 @@
       <effect mergemode="add" type="TechStatus" status="active">zpGuardPrinceElector</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpVeteranHansa</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpGuardHansa</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatVeteranCossack</effect>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatGuardCossack</effect>
     </effects>
   </tech>
   <tech name="DEHeavyFixedGun">
@@ -6841,7 +6865,6 @@
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\thorah.png</icon>
-    <flag>CheckLandHCGatherPoint</flag>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
       <effects>
@@ -29719,7 +29742,7 @@
       </effect>
 		</effects>
 	</tech>
-   <tech name ="zpNatGuardHansa" type ="Normal">
+  <tech name ="zpNatGuardHansa" type ="Normal">
 		<dbid>41142</dbid>
 		<displaynameid>302908</displaynameid>
 		<cost resourcetype ="Food">400.0000</cost>
@@ -32780,6 +32803,18 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatCossackDragoon</target>
       </effect>
+      <effect type="TechStatus" status="obtainable">zpNatVeteranCossack</effect>
+      <effect type="TechStatus" status="obtainable">zpNatGuardCossack</effect>
+
+      <effect type="TechStatus" status="obtainable">zpNatCossackGoldenFields</effect>
+      <effect type="TechStatus" status="obtainable">zpNatCossackRada</effect>
+      <effect type="TechStatus" status="obtainable">zpNatCossackFortification</effect>
+      <effect type="TechStatus" status="obtainable">zpNatCossackRidingTradition</effect>
+      <effect type="TechStatus" status="obtainable">zpCossackExpansion</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyCossack</effect>
+      <effect type="TechStatus" status="obtainable">zpIndianFriendshipCossack</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyCossack</effect>
     </effects>
   </tech>
   <tech name ="zpAustrianHabsburgExpansion" type ="Normal">
@@ -32848,6 +32883,271 @@
       </effect>
     </effects>
   </tech>
+
+  <tech name ="zpNatVeteranCossack" type ="Normal">
+		<dbid>41260</dbid>
+		<displaynameid>303130</displaynameid>
+		<cost resourcetype ="Food">200.0000</cost>
+		<cost resourcetype ="Gold">100.0000</cost>
+		<researchpoints>10.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\veteran_cavalry\veteran_cavalry.png</icon>
+		<rollovertextid>303132</rollovertextid>
+		<flag>YPNativeImprovement</flag>
+		<flag>UpgradeTech</flag>
+    <flag>DENativeUnitUpgrade</flag>
+		<flag>CountsTowardMilitaryScore</flag>
+		<prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+		<effects>
+			<effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatCossack</target></effect>
+			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatCossack</target></effect>
+			<effect type ="SetName" proto ="zpNatCossack" culture ="none" newname ="303135"></effect>
+      <effect type="SetName" proto="zpNatCossack" culture="none" newname="303137" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatCossackRider</target></effect>
+			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatCossackRider</target></effect>
+			<effect type ="SetName" proto ="zpNatCossackRider" culture ="none" newname ="303135"></effect>
+      <effect type="SetName" proto="zpNatCossackRider" culture="none" newname="303137" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+		</effects>
+	</tech>
+  <tech name ="zpNatGuardCossack" type ="Normal">
+		<dbid>41261</dbid>
+		<displaynameid>303131</displaynameid>
+		<cost resourcetype ="Food">400.0000</cost>
+		<cost resourcetype ="Gold">300.0000</cost>
+		<researchpoints>10.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\guard_cavalry\guard_cavalry.png</icon>
+		<rollovertextid>303132</rollovertextid>
+		<flag>YPNativeImprovement</flag>
+		<flag>UpgradeTech</flag>
+    <flag>DENativeUnitUpgrade</flag>
+		<flag>CountsTowardMilitaryScore</flag>
+		<prereqs>
+			<techstatus status ="active">Industrialize</techstatus>
+			<techstatus status ="active">zpNatVeteranCossack</techstatus>
+		</prereqs>
+		<effects>
+			<effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatCossack</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatCossack</target></effect>
+			<effect type ="SetName" proto ="zpNatCossack" culture ="none" newname ="303136"></effect>
+      <effect type="SetName" proto="zpNatCossack" culture="none" newname="303137" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatCossackRider</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatCossackRider</target></effect>
+			<effect type ="SetName" proto ="zpNatCossackRider" culture ="none" newname ="303136"></effect>
+      <effect type="SetName" proto="zpNatCossackRider" culture="none" newname="303137" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatCossackDragoon</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatCossackDragoon</target></effect>
+			<effect type ="SetName" proto ="zpNatCossackDragoon" culture ="none" newname ="303133"></effect>
+      <effect type="SetName" proto="zpNatCossackDragoon" culture="none" newname="303134" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercCossackDragoon</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercCossackDragoon</target></effect>
+			<effect type ="SetName" proto ="zpNatMercCossackDragoon" culture ="none" newname ="303133"></effect>
+      <effect type="SetName" proto="zpNatMercCossackDragoon" culture="none" newname="303134" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+		</effects>
+	</tech>
+  <tech name="zpNativeTreatyCossack" type="Normal">
+    <dbid>41262</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">HCNativeTreaties</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="4.00" subtype="FreeHomeCityUnit" unittype="zpNatCossackRider" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpIndianFriendshipCossack" type="Normal">
+    <dbid>41263</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="zpNatCossackRider" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpNatVeteranCossack</effect>
+      <effect type="TechStatus" status="active">zpNatGuardCossack</effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTradeTreatyCossack" type="Normal">
+    <dbid>41264</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatCossackGoldenFields" type="Normal">
+    <dbid>41265</dbid>
+    <displaynameid>303138</displaynameid>
+    <cost resourcetype ="Wood">400.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cossack_golden_fields.png</icon>
+    <rollovertextid>303139</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="Herdable" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="Mill" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="Plantation" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Gold" unittype="ypRicePaddy" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Food" unittype="ypRicePaddy" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Gold" unittype="deHacienda" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Food" unittype="deHacienda" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Gold" unittype="deField" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Food" unittype="deField" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Wood" unittype="deField" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Influence" unittype="deField" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatCossackRidingTradition" type="Normal">
+    <dbid>41266</dbid>
+    <displaynameid>303140</displaynameid>
+    <cost resourcetype ="Food">350.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cossack_riding_tradition.png</icon>
+    <rollovertextid>303141</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="0.5" subtype="MaximumVelocity" relativity="Absolute">
+        <target type="ProtoUnit">AbstractCavalry</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="LOS" relativity="Absolute">
+        <target type="ProtoUnit">AbstractCavalry</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatCossackFortification" type="Normal">
+    <dbid>41267</dbid>
+    <displaynameid>303142</displaynameid>
+    <cost resourcetype ="Wood">500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cossack_fortifications.png</icon>
+    <rollovertextid>303143</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="0.50" subtype="BuildPoints" relativity="Percent">
+        <target type="ProtoUnit">Blockhouse</target>
+      </effect>
+      <effect type="Data" amount="0.50" subtype="BuildPoints" relativity="Percent">
+        <target type="ProtoUnit">AbstractWall</target>
+      </effect>
+      <effect type="Data" amount="0.50" subtype="BuildPoints" relativity="Percent">
+        <target type="ProtoUnit">AbstractOutpost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatCossackRada" type="Normal">
+    <dbid>41268</dbid>
+    <displaynameid>303144</displaynameid>
+    <cost resourcetype="Food">600.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cossack_rada.png</icon>
+    <rollovertextid>303145</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="-0.40" subtype="FreeHomeCityUnit" unittype="zpNatMercCossackDragoon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpCossackExpansion" type ="Normal">
+		<dbid>41269</dbid>
+		<displaynameid>303146</displaynameid>
+  	<researchpoints>100.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\cossack_big.png</iconwpf>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>303147</rollovertextid>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>YPInfiniteTech</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <flag>DoNotQueue</flag>
+    <flag>NativeDance</flag>
+    <flag>YPNeverLastInLine</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianFishingBoat</effect>
+      <effect type="TechStatus" status="active">zpTheBlackFlagGoldBallanceShadow</effect>
+    </effects>
+	</tech>
 
 
 
