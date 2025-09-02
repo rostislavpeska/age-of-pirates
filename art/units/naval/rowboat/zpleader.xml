@@ -13,9 +13,9 @@
   <definebone>bone_fuse</definebone>
   <attachment>torch<include>effects\projectiles\torch.xml</include></attachment>
   <attachment>sword<component>sword<assetreference type="GrannyModel"><file>units\spc\bolivar\bolivar_sword</file></assetreference></component><anim>Idle<component>sword</component></anim></attachment>
-  <attachment>hat<component>hat<assetreference type="GrannyModel"><file>units\spc\marine\marine_officer_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+  <attachment>hat<component>hat<assetreference type="GrannyModel"><file>units\infantry_ranged\colonial_militia\colonial_militia_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
   <attachment>pistol<component>pistol<assetreference type="GrannyModel"><file>units\generals\general_gun</file></assetreference></component><anim>Idle<component>pistol</component></anim></attachment>
-  <component>ModelComp<assetreference type="GrannyModel"><file>units\infantry_ranged\minuteman\us_marine</file></assetreference><attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></component>
+  <component>ModelComp<assetreference type="GrannyModel"><file>units\mercenaries\fusilier\fusilier</file></assetreference></component>
   <anim>Idle<assetreference type="GrannyAnim"><file>nuggets\outlaw_kidnap\kidnap_outlawa_idlea</file></assetreference><component>ModelComp</component></anim>
   <anim>Walk<assetreference type="GrannyAnim"><file>nuggets\outlaw_kidnap\kidnap_outlawa_idlea</file></assetreference><component>ModelComp</component></anim>
   <anim>GatherFish<assetreference type="GrannyAnim"><file>nuggets\outlaw_kidnap\kidnap_outlawa_idlea</file></assetreference><component>ModelComp</component></anim>

@@ -47612,7 +47612,7 @@
     <maxrunvelocity>10.5000</maxrunvelocity>
     <movementtype>water</movementtype>
     <turnrate>12.0000</turnrate>
-    <animfile>units\naval\rowboat\rowboat.xml</animfile>
+    <animfile>units\naval\rowboat\zprowboat.xml</animfile>
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\naval\spc\rowboat_icon.png</icon>
     <portraiticon>resources\art\units\naval\spc\rowboat_portrait.png</portraiticon>

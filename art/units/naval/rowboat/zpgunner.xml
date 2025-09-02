@@ -3,12 +3,12 @@
   <definebone>bone_hat</definebone>
   <definebone>bone_gun</definebone>
   <definebone>Bip01 Prop1</definebone>
-  <attachment>hat<component>hat<assetreference type="GrannyModel"><file>units\infantry_ranged\minuteman\us_marine_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+  <attachment>hat<component>hat<assetreference type="GrannyModel"><file>units\infantry_ranged\musketeer\musketeer_3age_hat_new</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
   <attachment>torch<include>effects\projectiles\torch.xml</include></attachment>
   <attachment>gun<component>gun<assetreference type="GrannyModel"><file>units\infantry_ranged\cacadore\cacadore_2age_gun</file></assetreference></component><anim>Idle<component>gun</component></anim></attachment>
   <attachment>fusesmoke<component>fusesmoke<assetreference type="ParticleSystem"><file>effects\spc\fusesmoke.particle</file></assetreference></component><anim>None<component>fusesmoke</component></anim></attachment>
   <attachment>grenade<component>grenade<assetreference type="GrannyModel"><file>units\asians\spc\huang\Grenade</file></assetreference></component><anim>Idle<component>grenade</component></anim></attachment>
-  <component>ModelComp<logic type="Variation"><v1><assetreference type="GrannyModel"><file>units\infantry_ranged\minuteman\us_marine</file></assetreference></v1><v2><assetreference type="GrannyModel"><file>units\infantry_ranged\minuteman\us_marine</file><materialvariant index="1"></materialvariant></assetreference></v2></logic><attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></component>
+  <component>ModelComp<logic type="Variation"><v1><assetreference type="GrannyModel"><file>units\infantry_ranged\colonial_militia\colonial_militia</file></assetreference></v1><v2><assetreference type="GrannyModel"><file>units\infantry_ranged\colonial_militia\colonial_militia</file></assetreference></v2></logic><attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></component>
   <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_kneeling_idle</file></assetreference><component>ModelComp</component><attach a="gun" frombone="bone_gun" tobone="BIP01 PROP1" syncanims="0"></attach></anim>
   <anim>Walk<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_kneeling_idle</file></assetreference><component>ModelComp</component><attach a="gun" frombone="bone_gun" tobone="BIP01 PROP1" syncanims="0"></attach></anim>
   <anim>Death<assetreference type="GrannyAnim"><file>animation_library\range\death_standing_rifleman_B</file><tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.17</tag></assetreference><component>ModelComp</component><attach a="gun" frombone="bone_gun" tobone="BIP01 PROP1" syncanims="0"></attach></anim>
