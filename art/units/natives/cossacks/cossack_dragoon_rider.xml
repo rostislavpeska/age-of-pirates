@@ -17,6 +17,7 @@
   <component>ModelComp
     <assetreference type="GrannyModel">
         <file>units\cavalry\cossack\cossack_4age_rider</file>
+        <materialvariant index="1"/>
     </assetreference>
   </component>
   <anim>Walk_melee<assetreference type="GrannyAnim"><file>animation_library\cavalry\sword_canter</file></assetreference><component>ModelComp</component><attach a="sword" frombone="Bip 01 master" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
