@@ -30217,7 +30217,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <effects>
-      <effect type="Data" action="AntiShipAttack" amount="1.40" subtype="Damage" relativity="BasePercent">
+      <effect type="Data" action="AntiShipAttack" amount="1.30" subtype="Damage" relativity="BasePercent">
         <target type="ProtoUnit">Building</target>
       </effect>
       <effect type="Data" action="AntiShipAttack" amount="2.00" subtype="MaximumRange" relativity="Absolute">
@@ -30264,7 +30264,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <effects>
-      <effect type="Data" amount="0.25" subtype="Cost" resource="Wood" relativity="Percent">
+      <effect type="Data" amount="0.50" subtype="Cost" resource="Wood" relativity="Percent">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="Data" amount="2.00" subtype="Hitpoints" relativity="BasePercent">
