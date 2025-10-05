@@ -13,6 +13,34 @@ include "ypKOTHInclude.xs";
 
 string fish1 = "ypFishCarp";
 
+// Get player order within a team
+
+int g_zpTeamPlayerResult = -1;
+
+void zpGetTeamPlayer(int teamOrder = -1, int teamID = -1)
+{
+    g_zpTeamPlayerResult = -1;
+    if (teamOrder <= 0) {
+        return;
+    }
+
+    int count = 0;
+    int i = 0;
+    for (i = 1; <= cNumberNonGaiaPlayers)
+    {
+        if (rmGetPlayerTeam(i) == teamID)
+        {
+            count = count + 1;
+            if (count == teamOrder)
+            {
+                g_zpTeamPlayerResult = i;  // "return" via global
+                return;
+            }
+        }
+    }
+    // not found => stays -1
+}
+
 void main(void)
 {
 	// Text
@@ -55,81 +83,37 @@ void main(void)
 
 	int teamZeroCount = rmGetNumberPlayersOnTeam(0);
 	int teamOneCount = rmGetNumberPlayersOnTeam(1);
-	int firstDefender = -1;
-	int firstAttacker = -1;
-	int secondAttacker = -1;
-	int thirdAttacker = -1;
-	int fourthAttacker = -1;
-	int fifthAttacker = -1;
-	int sixthAttacker = -1;
-	int seventhAttacker = -1;
 
-	for (i = 1; <= cNumberNonGaiaPlayers)
-    {
-        if (rmGetPlayerTeam(i) == 1)
-        {
-            firstDefender = i;
-            break;
-        }
-    }
-	for (i = 1; <= cNumberNonGaiaPlayers)
-    {
-        if (rmGetPlayerTeam(i) == 0)
-        {
-            firstAttacker = i;
-            break;
-        }
-    }
-
-		// Additional Attackers
-		for (i = firstAttacker+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 0)
-			{
-				secondAttacker = i;
-				break;
-			}
-		}
-		for (i = secondAttacker+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 0)
-			{
-				thirdAttacker = i;
-				break;
-			}
-		}
-		for (i = thirdAttacker+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 0)
-			{
-				fourthAttacker = i;
-				break;
-			}
-		}
-		for (i = fourthAttacker+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 0)
-			{
-				fifthAttacker = i;
-				break;
-			}
-		}
-		for (i = fifthAttacker+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 0)
-			{
-				sixthAttacker = i;
-				break;
-			}
-		}
-		for (i = sixthAttacker+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 0)
-			{
-				seventhAttacker = i;
-				break;
-			}
-		}
+	// Define Defenders and Attackers for 2 Team map spawn
+	zpGetTeamPlayer(1, 1);
+	int firstDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(2, 1);
+	int secondDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(3, 1);
+	int thirdDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(4, 1);
+	int fourthDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(5, 1);
+	int fifthDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(6, 1);
+	int sixthDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(7, 1);
+	int seventhDefender = g_zpTeamPlayerResult;
+	
+	zpGetTeamPlayer(1, 0);
+	int firstAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(2, 0);
+	int secondAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(3, 0);
+	int thirdAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(4, 0);
+	int fourthAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(5, 0);
+	int fifthAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(6, 0);
+	int sixthAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(7, 0);	
+	int seventhAttacker = g_zpTeamPlayerResult;
 
     int sizeZ = 560;
 	int sizeX = 360;
@@ -199,6 +183,7 @@ void main(void)
 	rmDefineClass("center");
 	rmDefineClass("tradeIslands");
 	rmDefineClass("classPlateau");
+	rmDefineClass("classBlock");
 	int classGreatLake=rmDefineClass("great lake");
 	int classDeepWater=rmDefineClass("deep lake");
 	int classStartingResource = rmDefineClass("startingResource");
@@ -477,7 +462,7 @@ void main(void)
 	if(teamOneCount<=2){
 		int basinsID=rmCreateArea("Verseilles Basins");
 		rmSetAreaWaterType(basinsID, "ZP Verseilles Pond");
-		rmSetAreaSize(basinsID, 0.008, 0.008);
+		rmSetAreaSize(basinsID, rmAreaTilesToFraction(400), rmAreaTilesToFraction(400));
 		rmSetAreaCoherence(basinsID, 1.0);
 		rmSetAreaLocation(basinsID, 0.5, mapCenter+rmZTilesToFraction(57));
 		rmAddAreaInfluenceSegment(basinsID,0.435, mapCenter+rmZTilesToFraction(57), 0.605, mapCenter+rmZTilesToFraction(57));
@@ -545,12 +530,6 @@ void main(void)
 	rmSetStatusText("",0.40);
 
 
-    //===========dansil code start============
-
-		rmDefineClass("classBlock");
-		//Constraints
-
-
 //===================set up grid locations===================
 
 	float locZ1 = mapCenter-rmZTilesToFraction(10);
@@ -579,7 +558,33 @@ void main(void)
 	float palaceX1 = 0.615;
 	float palaceX2 = 0.4;
 
+// ================== Place Trade Sockets ===================
 
+// European Tradee Sockets
+
+	int socketID1=rmCreateObjectDef("sockets to dock Trade Posts");
+	rmSetObjectDefTradeRouteID(socketID1, tradeRouteID);
+	rmAddObjectDefItem(socketID1, "deTradingPostCaptureEuropean", 1, 0.0);
+	rmSetObjectDefMinDistance(socketID1, 0.0);
+  	rmSetObjectDefMaxDistance(socketID1, 0.5);
+
+	int socketID2=rmCreateObjectDef("sockets to dock Trade Posts2");
+	rmSetObjectDefTradeRouteID(socketID2, tradeRouteID);
+	rmAddObjectDefItem(socketID2, "deTradingPostCaptureEuropean", 1, 0.0);
+	rmSetObjectDefMinDistance(socketID2, 0.0);
+  	rmSetObjectDefMaxDistance(socketID2, 0.5);
+
+	int socketID3=rmCreateObjectDef("sockets to dock Trade Posts3");
+	rmSetObjectDefTradeRouteID(socketID3, tradeRouteID);
+	rmAddObjectDefItem(socketID3, "deTradingPostCaptureEuropean", 1, 0.0);
+	rmSetObjectDefMinDistance(socketID3, 0.0);
+  	rmSetObjectDefMaxDistance(socketID3, 0.5);
+
+	int socketID4=rmCreateObjectDef("sockets to dock Trade Posts4");
+	rmSetObjectDefTradeRouteID(socketID4, tradeRouteID);
+	rmAddObjectDefItem(socketID4, "deTradingPostCaptureEuropean", 1, 0.0);
+	rmSetObjectDefMinDistance(socketID4, 0.0);
+  	rmSetObjectDefMaxDistance(socketID4, 0.5);
 
 
 //===================define groupings========================
@@ -602,7 +607,7 @@ void main(void)
 	rmAddGroupingToClass(blockCathedral, rmClassID("classBlock"));
 
 	// Trade
-	int blockTrade = rmCreateGrouping("trade", "EU_SPC_Block_Trade");
+	int blockTrade = rmCreateGrouping("trade", "EU_SPC_Block_Trade_NoSocket");
     rmSetGroupingMinDistance(blockTrade, 0.00);
     rmSetGroupingMaxDistance(blockTrade, 0.50);
 	rmAddGroupingToClass(blockTrade, rmClassID("classBlock"));
@@ -799,11 +804,22 @@ void main(void)
 
 	int verticalVariation =rmRandInt(1, 2);
 
-	// Fixed Stuff
+	// Trade Blocks
+		rmSetNuggetDifficulty(510, 510);
+
+		rmPlaceObjectDefAtLoc(socketID1, 0, locX9-rmZTilesToFraction(4), locZ1+rmZTilesToFraction(4));
 		rmPlaceGroupingAtLoc(blockTrade, 0, locX9, locZ1);
+
+		rmPlaceObjectDefAtLoc(socketID2, 0, locX0-rmZTilesToFraction(4), locZ1+rmZTilesToFraction(4));
 		rmPlaceGroupingAtLoc(blockTrade, 0, locX0, locZ1);
+
+		rmPlaceObjectDefAtLoc(socketID3, 0, locX3-rmZTilesToFraction(4), locZ1+rmZTilesToFraction(4));
 		rmPlaceGroupingAtLoc(blockTrade, 0, locX3, locZ1);
+
+		rmPlaceObjectDefAtLoc(socketID4, 0, locX6-rmZTilesToFraction(4), locZ1+rmZTilesToFraction(4));
 		rmPlaceGroupingAtLoc(blockTrade, 0, locX6, locZ1);
+
+	// Cathedral
 
 		rmPlaceGroupingAtLoc(blockCathedral, 0, locX4, locZ2);
 
@@ -1652,6 +1668,7 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	rmAddObjectDefConstraint(randomGoldID, avoidCoin);
 	rmAddObjectDefConstraint(randomGoldID, avoidAll);
 	rmAddObjectDefConstraint(randomGoldID, avoidBlockLong);
+	rmAddObjectDefConstraint(randomGoldID, avoidTradeRoute);
     rmAddObjectDefConstraint(randomGoldID, avoidPark);
 	rmAddObjectDefConstraint(randomGoldID, playerEdgeConstraint);
 	rmPlaceObjectDefInArea(randomGoldID, 0, countrysideNorth, cNumberNonGaiaPlayers*1.5);
@@ -1694,9 +1711,37 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	int factoryBuilding1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "zpSPCCapturableFactory");
 	int factoryNugget1 = rmGetGroupingInstanceUnitByType(factoryPlacement1, "zpNuggetInvisible");
 
+	int stationBuilding1 = rmGetUnitPlaced(socketID1, 0);
+	int stationBuilding2 = rmGetUnitPlaced(socketID2, 0);
+	int stationBuilding3 = rmGetUnitPlaced(socketID3, 0);
+	int stationBuilding4 = rmGetUnitPlaced(socketID4, 0);
+
+	int stationNugget1 = rmGetUnitPlaced(socketID1, 0)+1;
+	int stationNugget2 = rmGetUnitPlaced(socketID2, 0)+1;
+	int stationNugget3 = rmGetUnitPlaced(socketID3, 0)+1;
+	int stationNugget4 = rmGetUnitPlaced(socketID4, 0)+1;
+
+	// Station socket array
+	int stationSockets = xsArrayCreateInt(4, -1, "Station Sockets");
+	xsArraySetInt(stationSockets, 0, stationBuilding1);
+	xsArraySetInt(stationSockets, 1, stationBuilding2);
+	xsArraySetInt(stationSockets, 2, stationBuilding3);
+	xsArraySetInt(stationSockets, 3, stationBuilding4);
+
+	int stationSocket = -1;
+
+	// Station nugget array
+	int stationNuggets = xsArrayCreateInt(4, -1, "Station Nuggets");
+	xsArraySetInt(stationNuggets, 0, stationNugget1);
+	xsArraySetInt(stationNuggets, 1, stationNugget2);
+	xsArraySetInt(stationNuggets, 2, stationNugget3);
+	xsArraySetInt(stationNuggets, 3, stationNugget4);
+
+	int stationNugget = -1;
 
 	// Victory Timer
 	int victoryCountDown = 1800;
+
 
 	//----- START -----
 
@@ -1839,6 +1884,26 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	rmSetTriggerEffectParam("SrcObject",""+factoryBuilding1);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
 	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+stationBuilding1);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+stationBuilding2);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+stationBuilding3);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject",""+stationBuilding4);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -1867,6 +1932,24 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
+
+	for(i = 1; <= 4){
+		stationSocket = xsArrayGetInt(stationSockets, i-1);
+		stationNugget = xsArrayGetInt(stationNuggets, i-1);
+
+		rmCreateTrigger("TradePost Convert ON"+i);
+		rmAddTriggerCondition("Nugget Is Collectable");
+		rmSetTriggerConditionParam("NuggetObject", ""+stationNugget);
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject", ""+stationSocket, false);
+		rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+		rmSetTriggerEffectParam("Suspend", "False", false);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+	}
 
 	// Set up default resource values
 	if (cNumberNonGaiaPlayers >2){

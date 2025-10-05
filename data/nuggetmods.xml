@@ -3132,6 +3132,32 @@
       </guardianunit>
       <difficulty>509</difficulty>
     </nugget>
+    <nugget>
+      <name>zpNuggetCapturableTradeEU1</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>zpGuardianCardinalGuard</unit>
+        <idleanim>NuggetPirate1_Idle</idleanim>
+        <exitanim>NuggetPirate1_Exit</exitanim>
+        <attachdummy>bone_nuggetA</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpGuardianCardinalGuard</unit>
+        <idleanim>NuggetPirate2_Idle</idleanim>
+        <exitanim>NuggetPirate2_Exit</exitanim>
+        <attachdummy>bone_nuggetB</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianHussar</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianHussar</unit>
+      </guardianunit>
+      <difficulty>510</difficulty>
+    </nugget>
 
 
     <!--WATER NUGGETS-->

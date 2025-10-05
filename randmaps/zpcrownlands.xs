@@ -10,6 +10,34 @@ include "mercenaries.xs";
 include "ypAsianInclude.xs";
 include "ypKOTHInclude.xs";
 
+// Get player order within a team
+
+int g_zpTeamPlayerResult = -1;
+
+void zpGetTeamPlayer(int teamOrder = -1, int teamID = -1)
+{
+    g_zpTeamPlayerResult = -1;
+    if (teamOrder <= 0) {
+        return;
+    }
+
+    int count = 0;
+    int i = 0;
+    for (i = 1; <= cNumberNonGaiaPlayers)
+    {
+        if (rmGetPlayerTeam(i) == teamID)
+        {
+            count = count + 1;
+            if (count == teamOrder)
+            {
+                g_zpTeamPlayerResult = i;  // "return" via global
+                return;
+            }
+        }
+    }
+    // not found => stays -1
+}
+
 void main(void) 
 {
 	// Define Teams and map variations
@@ -58,143 +86,36 @@ void main(void)
 		fish1 = "ypFishCarp";
 
 	// Define Defenders and Attackers for 2 Team map spawn
-	int firstDefender = -1;
-	int secondDefender = -1;
-	int thirdDefender = -1;
-	int fourthDefender = -1;
-	int fifthDefender = -1;
-	int sixthDefender = -1;
-	int seventhDefender = -1;
+	zpGetTeamPlayer(1, 1);
+	int firstDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(2, 1);
+	int secondDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(3, 1);
+	int thirdDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(4, 1);
+	int fourthDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(5, 1);
+	int fifthDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(6, 1);
+	int sixthDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(7, 1);
+	int seventhDefender = g_zpTeamPlayerResult;
 	
-	int firstAttacker = -1;
-	int secondAttacker = -1;
-	int thirdAttacker = -1;
-	int fourthAttacker = -1;
-	int fifthAttacker = -1;
-	int sixthAttacker = -1;
-	int seventhAttacker = -1;
+	zpGetTeamPlayer(1, 0);
+	int firstAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(2, 0);
+	int secondAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(3, 0);
+	int thirdAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(4, 0);
+	int fourthAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(5, 0);
+	int fifthAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(6, 0);
+	int sixthAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(7, 0);	
+	int seventhAttacker = g_zpTeamPlayerResult;
 
-	if (weirdMap == 0)
-	{
-		// Defenders	
-
-		for (i = 1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 1)
-			{
-				firstDefender = i;
-				break;
-			}
-		}
-		for (i = firstDefender+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 1)
-			{
-				secondDefender = i;
-				break;
-			}
-		}
-		for (i = secondDefender+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 1)
-			{
-				thirdDefender = i;
-				break;
-			}
-		}
-		for (i = thirdDefender+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 1)
-			{
-				fourthDefender = i;
-				break;
-			}
-		}
-		for (i = fourthDefender+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 1)
-			{
-				fifthDefender = i;
-				break;
-			}
-		}
-		for (i = fifthDefender+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 1)
-			{
-				sixthDefender = i;
-				break;
-			}
-		}
-		for (i = sixthDefender+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 1)
-			{
-				seventhDefender = i;
-				break;
-			}
-		}
-
-		// Attackers
-
-		for (i = 1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 0)
-			{
-				firstAttacker = i;
-				break;
-			}
-		}
-
-		for (i = firstAttacker+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 0)
-			{
-				secondAttacker = i;
-				break;
-			}
-		}
-		for (i = secondAttacker+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 0)
-			{
-				thirdAttacker = i;
-				break;
-			}
-		}
-		for (i = thirdAttacker+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 0)
-			{
-				fourthAttacker = i;
-				break;
-			}
-		}
-		for (i = fourthAttacker+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 0)
-			{
-				fifthAttacker = i;
-				break;
-			}
-		}
-		for (i = fifthAttacker+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 0)
-			{
-				sixthAttacker = i;
-				break;
-			}
-		}
-		for (i = sixthAttacker+1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(i) == 0)
-			{
-				seventhAttacker = i;
-				break;
-			}
-		}
-	}
     // Text
     // These status text lines are used to manually animate the map generation progress bar
     rmSetStatusText("",0.01);
