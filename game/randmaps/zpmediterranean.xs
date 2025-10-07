@@ -180,7 +180,7 @@ void main(void)
 
   int avoidPirates=rmCreateTypeDistanceConstraint("avoid socket pirates", "zpSocketPirates", 20.0);
   int avoidWokou=rmCreateTypeDistanceConstraint("avoid socket wokou", "zpSocketWokou", 30.0);
-  int avoidJesuit=rmCreateTypeDistanceConstraint("avoid socket jesuit", "zpSocketSPCJesuit", 30.0);
+  int avoidJesuit=rmCreateTypeDistanceConstraint("avoid socket jesuit", "zpSocketJesuitEU", 30.0);
   int avoidController=rmCreateTypeDistanceConstraint("stay away from Controller", "zpSPCWaterSpawnPoint", 17.0);
   int avoidControllerFar=rmCreateTypeDistanceConstraint("stay away from Controller Far", "zpSPCWaterSpawnPoint", 60.0);
   int avoidControllerMediumFar=rmCreateTypeDistanceConstraint("stay away from Controller Medium Far", "zpSPCWaterSpawnPoint", 25.0);
