@@ -1,21 +1,9 @@
 #!/usr/bin/env python3
 """
-unit_copy.py
+unit_copy.py (moved to scripts/unit_generator/)
 
 Copies unit definition(s) by name from data/protomods.xml into scripts/new_data/protomods.xml.
-
-Behavior:
-- Finds ALL unit blocks in the source whose name matches the provided --unit-name
-  (supports tags that end with "unit" or "protounit", name can be in an attribute
-  or in a child <Name>/<UnitName> element).
-- Copies each matching unit block AS-IS (no merging) into the destination file.
-- Writes them inside a new XML document at scripts/new_data/protomods.xml.
-  The root element tag will match the source root tag for consistency.
-
-Notes:
-- "Parameter" is treated as a direct child element (any tag) of the unit block.
-  No parameter merging is performed; duplicates across separate unit blocks are preserved
-  because each unit is copied independently.
+Also clones sound XMLs in scripts/new_sounds/ for newly created units.
 """
 
 from __future__ import annotations
@@ -133,6 +121,46 @@ def extract_unit_name(unit_elem: ET.Element) -> Optional[str]:
     return None
 
 
+def to_snake(s: str) -> str:
+    """Convert a unit name to a simple snake-like lowercase token for filenames.
+
+    Keeps alphanumerics, converts others to underscores, and lowercases.
+    """
+    return "".join((ch if ch.isalnum() else "_") for ch in s).lower()
+
+
+def try_clone_sound(original_unit_name: str, new_unit_name: str, project_root: Path) -> Optional[Path]:
+    """Clone a protounit sound XML for new_unit_name if a template exists.
+
+    - Source template is looked up at sound/<original_name_lower>_snds.xml relative to project root.
+    - Destination is scripts/new_sounds/<snake_case(new_unit_name)>_snds.xml.
+    - Updates the <protounit name="..."> attribute to new_unit_name.
+    - Returns the destination path on success, or None if skipped/missing.
+    Prints a warning if the template is not found or cloning fails.
+    """
+    src_rel = Path("sound") / f"{original_unit_name.lower()}_snds.xml"
+    src_path = project_root / src_rel
+    if not src_path.exists():
+        print(f"Sound files not found: {src_rel}", file=sys.stderr)
+        return None
+
+    try:
+        tree = ET.parse(src_path)
+        root = tree.getroot()
+        for e in root.iter():
+            if e.tag.lower() == "protounit":
+                e.set("name", new_unit_name)
+                break
+        dst_rel = Path("scripts") / "new_sounds" / f"{to_snake(new_unit_name)}_snds.xml"
+        dst_path = project_root / dst_rel
+        ensure_parent_dir(dst_path)
+        tree.write(dst_path, encoding="utf-8", xml_declaration=True)
+        return dst_path
+    except Exception as e:
+        print(f"Sound cloning failed for '{original_unit_name}' -> '{new_unit_name}': {e}", file=sys.stderr)
+        return None
+
+
 def main(argv: list[str]) -> int:
     parser = argparse.ArgumentParser(
         description="Copy unit(s) by name from data/protomods.xml into scripts/new_data/protomods.xml. Optionally clone with suffixes and new IDs.",
@@ -157,6 +185,7 @@ def main(argv: list[str]) -> int:
     clone = parser.add_argument_group("cloning options")
     clone.add_argument("--starting-id", dest="starting_id", type=int, help="Starting ID to assign to clones (applies to <unit id> and <dbid>)")
     clone.add_argument("--suffix", dest="suffixes", action="append", default=[], help="Suffix to append to the unit name for a clone. Repeat for multiple.")
+    clone.add_argument("--new-name", dest="new_name", default=None, help="Override the base unit name before applying suffixes (optional)")
 
     parser.add_argument("--dry-run", action="store_true", help="Run without writing changes")
 
@@ -172,8 +201,23 @@ def main(argv: list[str]) -> int:
         print(f"Failed to load XML: {e}", file=sys.stderr)
         return 1
 
+    # Load additional source in front: scripts/source/protoy.xml (if present)
+    extra_path = Path("scripts/source/protoy.xml")
+    extra_tree: Optional[ET.ElementTree] = None
+    if extra_path.exists():
+        try:
+            extra_tree = load_xml(extra_path)
+        except Exception as e:
+            print(f"Warning: failed to load extra source {extra_path}: {e}", file=sys.stderr)
+            extra_tree = None
+
+    # Build combined matches in strict order: extra first, then primary src
+    matches: list[ET.Element] = []
+    if extra_tree is not None:
+        extra_root = find_proto_root(extra_tree)
+        matches.extend(iter_matching_units(extra_root, args.unit_name, args.unit_id))
     src_root = find_proto_root(src_tree)
-    matches = list(iter_matching_units(src_root, args.unit_name, args.unit_id))
+    matches.extend(iter_matching_units(src_root, args.unit_name, args.unit_id))
     if not matches:
         print("Error: Unit not found in source.", file=sys.stderr)
         return 3
@@ -185,13 +229,33 @@ def main(argv: list[str]) -> int:
             return 2
         cur_id = int(args.starting_id)
         for u in matches:
-            base_name = extract_unit_name(u) or args.unit_name or "Unit"
+            # Base name priority: --new-name (if provided) > extracted name > --unit-name > fallback
+            base_name = (args.new_name.strip() if isinstance(args.new_name, str) and args.new_name.strip() else None) or extract_unit_name(u) or args.unit_name or "Unit"
             for suf in args.suffixes:
                 new_name = f"{base_name}{suf}"
                 units_to_write.append(rename_and_reid(u, new_name, cur_id))
+                # Attempt to clone corresponding sound file for this new unit
+                orig_name = extract_unit_name(u) or args.unit_name or base_name
+                try_clone_sound(orig_name, new_name, Path.cwd())
                 cur_id += 1
     else:
-        units_to_write = [deep_copy(u) for u in matches]
+        # No suffixes: copy as-is, unless --new-name provided (and optionally re-ID if --starting-id provided)
+        cur_id = int(args.starting_id) if args.starting_id is not None else None
+        for u in matches:
+            if args.new_name and isinstance(args.new_name, str) and args.new_name.strip():
+                new_name = args.new_name.strip()
+                units_to_write.append(rename_and_reid(u, new_name, cur_id))
+                # Attempt to clone corresponding sound file for this new unit
+                orig_name = extract_unit_name(u) or args.unit_name or new_name
+                try_clone_sound(orig_name, new_name, Path.cwd())
+                if cur_id is not None:
+                    cur_id += 1
+            else:
+                # Copy as-is but still clone the sound file into scripts/new_sounds/
+                units_to_write.append(deep_copy(u))
+                orig_name = extract_unit_name(u) or args.unit_name or "Unit"
+                # new unit name equals original when not renamed
+                try_clone_sound(orig_name, orig_name, Path.cwd())
 
     if args.dry_run:
         print("Dry run: changes not written. Would write the following number of units:")
@@ -211,4 +275,3 @@ def main(argv: list[str]) -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main(sys.argv[1:]))
-
