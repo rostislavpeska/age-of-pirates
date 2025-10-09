@@ -3,7 +3,7 @@
 <protounitsounddef>
 	<protounit name="zpGrdBushRanger">
 		<soundtype name="Select">
-			<soundset name="SaloonUnitSelect"/>
+			<soundset name="Bushranger_Select"/>
 		</soundtype>
 		<soundtype name="Grunt">
 			<soundset name="GenericMaleGrunt"/>
@@ -17,10 +17,10 @@
 		<soundtype name="Acknowledge">
 			<targetlogic>
 				<choice name="default">
-					<soundset name="SaloonUnitAcknowledge"/>
+					<soundset name="Bushranger_Acknowledge"/>
 				</choice>
 				<choice name="enemy">
-					<soundset name="SaloonUnitAttack"/>
+					<soundset name="Bushranger_Attack"/>
 				</choice>
 				<choice name="build"/>
 				<choice name="Huntable"/>

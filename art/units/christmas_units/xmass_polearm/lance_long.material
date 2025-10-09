@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\infantry\russian_halberdier\textures\russian_spontoon_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\infantry\russian_halberdier\textures\russian_spontoon_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\infantry\russian_halberdier\textures\russian_spontoon_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\infantry\russian_halberdier\textures\russian_spontoon_matA_Details">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="units\infantry\russian_halberdier\textures\russian_spontoon_gold_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\infantry\russian_halberdier\textures\russian_spontoon_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\infantry\russian_halberdier\textures\russian_spontoon_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\infantry\russian_halberdier\textures\russian_spontoon_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

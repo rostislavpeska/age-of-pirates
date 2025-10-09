@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "301710" displayNameID = "301711" loadDetails="301712" largeMapName = "zpnewguinea"
+    imagepath = "ui\random_map\newguinea\newguinea_mini" cannotReplace = "" loadBackground="ui\random_map\newguinea\newguinea_map">
+   <loadss>ui\random_map\newguinea\newguinea_01</loadss>
+   <loadss>ui\random_map\newguinea\newguinea_02</loadss>
+   <loadss>ui\random_map\newguinea\newguinea_03</loadss>
+</mapinfo>

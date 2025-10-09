@@ -1,0 +1,40 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+        <texture name="BaseColor" override="units\artillery\ww_cannon\textures\fieldgun_aop_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\artillery\ww_cannon\textures\fieldgun_aop_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\artillery\ww_cannon\textures\fieldgun_aop_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matg">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\infantry_ranged\landwehr\textures\landwehr_lvl2_matc_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\infantry_ranged\landwehr\textures\landwehr_lvl2_matc_Normals">
+      </texture>
+      <texture name="Masks" override="units\infantry_ranged\landwehr\textures\landwehr_lvl2_matc_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="math">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\infantry_ranged\skirmisher\textures\prussian_jager_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\infantry_ranged\skirmisher\textures\prussian_jager_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\infantry_ranged\skirmisher\textures\prussian_jager_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\infantry_ranged\skirmisher\textures\prussian_jager_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

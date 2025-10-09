@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="matA">
+    <materialdef name="default_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units/natives/penal_colony/textures/free_labourer_male1_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units/villagers/we_villager_male/textures/we_villager_male_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units/villagers/we_villager_male/textures/we_villager_male_matA_Masks">
+      </texture>
+      <texture name="Details" override="units/natives/penal_colony/textures/convict_labourer_male_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

@@ -1,0 +1,46 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_emissive_advanced">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\christmas_units\tilanus_grinch\jaeger_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\mercenaries\jaeger\textures\jaeger_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\mercenaries\jaeger\textures\jaeger_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\christmas_units\jaeger\jaeger_matA_Details">
+      </texture>
+      <texture name="Emissive" override="units\christmas_units\tilanus_grinch\jaeger_matA_Emitter">
+      </texture>
+      <float name="EmissiveIntensity" override="1.4000">
+      </float>
+      <vector4 name="EmissiveColor" override="1.000, 1.000, 1.000, 0.000">
+      </vector4>
+      <float name="Lift Metallic" override="1.0000">
+      </float>
+      <float name="AO Intensity" override="1.4440">
+      </float>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="units\christmas_units\tilanus_grinch\jaeger_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\mercenaries\jaeger\textures\jaeger_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\mercenaries\jaeger\textures\jaeger_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\christmas_units\jaeger\jaeger_matA_Details">
+      </texture>
+      <texture name="Emissive" override="units\christmas_units\jaeger\jaeger_matA_Emitter">
+      </texture>
+      <float name="EmissiveIntensity" override="1.4000">
+      </float>
+      <vector4 name="EmissiveColor" override="1.000, 1.000, 1.000, 0.000">
+      </vector4>
+      <float name="Lift Metallic" override="1.0000">
+      </float>
+      <float name="AO Intensity" override="1.4440">
+      </float>
+    </parameters>
+  </submaterial>
+</material>

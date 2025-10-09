@@ -19,20 +19,20 @@
   <zpmaltesegun>
     <ability>dePowerMalteseGunLongRangeAttack<tech>Industrialize</tech><rof>60</rof></ability>
   </zpmaltesegun>
+  <zpspcfixedgun>
+    <ability>dePowerMalteseGunLongRangeAttack<tech>Industrialize</tech><rof>60</rof></ability>
+  </zpspcfixedgun>
   <zpspctreasureship>
     <ability>PowerLongRange<rof>60</rof></ability>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpspctreasureship>
   <zpwokousteamer>
-    <ability>zpFullSteam<rof>90</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
+    <ability>PowerLongRange<rof>60</rof></ability>
+    <ability>dePowerBlock<rof>60</rof><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpwokousteamer>
   <zpwokoufuchuan>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpwokoufuchuan>
-  <zpirontank>
-    <ability>dePowerRoundelExplodeAttack<tech>zpIronTanks</tech><rof>10</rof><castonself>true</castonself></ability>
-    <ability>dePowerRoundelCascadeAttack<tech>zpIronTanks</tech><rof>10</rof><castonself>true</castonself></ability>
-  </zpirontank>
   <zpirontankproxy>
     <ability>dePowerRoundelExplodeAttack<rof>10</rof><castonself>true</castonself></ability>
     <ability>dePowerRoundelCascadeAttack<rof>10</rof><castonself>true</castonself></ability>
@@ -64,6 +64,9 @@
   <zpvenicegalley>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpvenicegalley>
+  <zpalexandriangalley>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpalexandriangalley>
   <zpvenicegalleyautomatic>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpvenicegalleyautomatic>
@@ -77,9 +80,10 @@
   <zpmercnautilus>
     <ability>zpPowerShunt<allowwhilestealthed>true</allowwhilestealthed><rof>60</rof></ability>
   </zpmercnautilus>
-  <zpmercwokousteamer>
-    <ability>zpFullSteam<rof>90</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
-  </zpmercwokousteamer>
+  <zpspcpiratedestroyer>
+    <ability>PowerLongRange<rof>60</rof></ability>
+    <ability>dePowerBlock<rof>60</rof><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcpiratedestroyer>
   <zpnatsoheileader>
     <ability>ypUnitDaimyoAura<alwaysdisabledingrid>true</alwaysdisabledingrid></ability>
   </zpnatsoheileader>
@@ -87,6 +91,16 @@
     <ability>zpPowerArmouredTrain<tech>zpArmoredTrainUnlockShadow</tech><subciv>zpScientists</subciv><rof>0.1</rof><castifnotselected>true</castifnotselected><subcivalliancefactor>0.5</subcivalliancefactor><subcivstartincooldown>true</subcivstartincooldown><activetimecooldown>true</activetimecooldown></ability>
     <ability>zpPowerArmouredTrainInactive<tech>zpArmoredTrainLockShadow</tech><subciv>zpScientists</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
     <ability>zpPowerArmouredTrainNoResource<tech>zpArmoredTrainNoResourceShadow</tech><subciv>zpScientists</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>  
+    <ability>zpNatPowerRoyalMarch<tech>Colonialize</tech><subciv>SPCBourbon</subciv><activetimecooldown>true</activetimecooldown><rof>275.0</rof><castonself>true</castonself></ability>
+    <ability>zpPowerBourbonExpansion<tech>zpNatBourbonBigbuttonDisableShadow</tech><subciv>SPCBourbon</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
+    <ability>zpPowerSansculotteExpansion<tech>zpNatSansculotteBigbuttonDisableShadow</tech><subciv>zpSansculottes</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>    
+    <ability>zpAuditoreLighthouse<tech>Colonialize</tech><subciv>Auditore</subciv><rof>120.0</rof><castonself>true</castonself></ability>
+    <ability>zpNatPowerBlanikKnights<tech>Colonialize</tech><subciv>zpBohemianKing</subciv><subcivalliancefactor>0.5</subcivalliancefactor><uicommand>uiFindNativeSiteSubCiv("zpBohemianKing")</uicommand><rof>250</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
+    <ability>zpPowerImperialCommand<tech>Colonialize</tech><subciv>zpPrinceElector</subciv><subcivalliancefactor>0.5</subcivalliancefactor><activetimecooldown>true</activetimecooldown><uicommand>uiFindNativeSiteSubCiv("zpPrinceElector")</uicommand><rof>450</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
+    <ability>zpPowerImperialCommandAux<rof>1</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
+    <ability mergemode="replace">deNatPowerRadetzyMarch<tech>zpHabsburgColonialize</tech><subciv>Habsburg</subciv><subcivalliancefactor>0.5</subcivalliancefactor><subcivstartincooldown>true</subcivstartincooldown><uicommand>uiFindNativeSiteSubCiv("Habsburg")</uicommand><usebigabilitybutton3>true</usebigabilitybutton3><rof>250</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
+    <ability>zpNatPowerRadetzyMarch<tech>zpHabsburgAustrianColonialize</tech><subciv>Habsburg</subciv><subcivalliancefactor>0.5</subcivalliancefactor><uicommand>uiFindNativeSiteSubCiv("Habsburg")</uicommand><rof>250</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
+    <ability>zpNatPowerElDeguello<tech>zpSpanishHabsburgColonialize</tech><subciv>Habsburg</subciv><subcivalliancefactor>0.5</subcivalliancefactor><uicommand>uiFindNativeSiteSubCiv("Habsburg")</uicommand><rof>250</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
   </tradingpost>
   <zparmoredtraingun>
     <ability>dePowerPeninsularFixedGunLongRangeAttack<rof>60</rof><tech>zpArmoredTrainImprove</tech></ability>
@@ -159,6 +173,9 @@
   <zpspcflyingdutchman>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpspcflyingdutchman>
+  <zpmercflyingdutchman>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpmercflyingdutchman>
   <zpspcprau>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpspcprau>
@@ -167,16 +184,207 @@
   </zpspcpraub>
   <zpspcpiratesteamer>
     <ability>PowerBroadside<rof>60</rof></ability>
-    <ability>zpFullSteam<rof>60</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
   </zpspcpiratesteamer>
+  <zpmercpiratesteamer>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpmercpiratesteamer>
   <zpspcpirategalleass>
     <ability>dePowerRoundelPierceAttack<rof>60</rof><sharedcooldown>true</sharedcooldown><castonself>true</castonself></ability>
     <ability>dePowerShunt<rof>60</rof><sharedcooldown>true</sharedcooldown></ability>
   </zpspcpirategalleass>
+  <zpmercpirategalleass>
+    <ability>dePowerRoundelPierceAttack<rof>60</rof><sharedcooldown>true</sharedcooldown><castonself>true</castonself></ability>
+    <ability>dePowerShunt<rof>60</rof><sharedcooldown>true</sharedcooldown></ability>
+  </zpmercpirategalleass>
   <zpcorsairgalley>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpcorsairgalley>
   <zppirateriggedship>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zppirateriggedship>
+  <zpspccyprusfrigate>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpspccyprusfrigate>
+  <zpnatcolonialguard>
+    <ability>dePromotionHitpoints<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatcolonialguard>
+  <zpcaptainnemo>
+    <ability>PowerCrackshot<rof>90</rof></ability>
+  </zpcaptainnemo>
+  <zpsubmarinetransport>
+    <ability>zpPowerShunt<allowwhilestealthed>true</allowwhilestealthed><rof>60</rof></ability>
+  </zpsubmarinetransport>
+  <zpnautilustransport>
+    <ability>zpPowerShunt<allowwhilestealthed>true</allowwhilestealthed><rof>60</rof></ability>
+  </zpnautilustransport>
+  <zpbourbonsummerpalace>
+    <ability>zpNatPowerRoyalMarch<activetimecooldown>true</activetimecooldown><rof>275.0</rof><castonself>true</castonself></ability>
+  </zpbourbonsummerpalace>
+  <zpnatroyalmusketeer>
+    <ability>deChargeAbilityChargedPistol<tech>DERoyalMusketeerPistolCharge</tech><bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+    <ability>zpPassiveAbilityMortar<tech>zpRevolutionFranceNE</tech><bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatroyalmusketeer>
+  <zppariscitadel>
+    <ability>deCommanderyDeploy<rof>90</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
+  </zppariscitadel>
+  <zppariscitadelpassage>
+    <ability>deCommanderyDeploy<rof>90</rof><nevershowingrid>true</nevershowingrid><alwaysdisabledingrid>false</alwaysdisabledingrid></ability>
+  </zppariscitadelpassage>
+  <explorer>
+    <ability>zpAbilityInspiringFlagFrench<tech>zprevolutionfrance</tech><rof>180</rof><donotforcestop>true</donotforcestop></ability>
+  </explorer>
+  <zpspcdartagnan>
+    <ability>deChargeAbilityChargedPistol<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+    <ability>PowerCrackshot<rof>90</rof></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcdartagnan>
+  <zparamis>
+    <ability>deChargeAbilityChargedPistol<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+    <ability>PowerConvert<rof>90</rof></ability>
+  </zparamis>
+  <zpportos>
+    <ability>deChargeAbilityChargedPistol<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+    <ability>ypPowerBloodSmash<rof>60</rof></ability>
+  </zpportos>
+  <zpathos>
+    <ability>deChargeAbilityChargedPistol<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+    <ability>zpAthosCrewAura<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+    <ability>PowerHawkeye<rof>60</rof></ability>
+  </zpathos>
+  <denatmercroyalmusketeer>
+    <ability mergemode="add">zpPassiveAbilityMortar<tech>zpRevolutionFranceNE</tech><bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </denatmercroyalmusketeer>
+  <zpnateclaireur>
+    <ability>dePromotionSpeed<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnateclaireur>
+  <zpspcnotredame>
+    <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcnotredame>
+  <zpspcgermancathedral>
+    <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcgermancathedral>
+  <zpspcgermancathedralcon0>
+    <ability>zpPowerInformersFrench<tech>zpSPCCathedralStage4</tech><rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcgermancathedralcon0>
+  <zpverseilleschurch>
+    <ability>zpPowerInformersFrench<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpverseilleschurch>
+  <zpnatconquistadormusketeer>
+    <ability>dePromotionHpDMG<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatconquistadormusketeer>
+  <zpnatmercconquistadormusketeer>
+    <ability>dePromotionHpDMG<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatmercconquistadormusketeer>
+  <zpspcezio>
+    <ability>ypPowerHeavenlyFireBomb<rof>120</rof></ability>
+    <ability>ypPowerSmokeBomb<rof>60</rof><castonself>true</castonself></ability>
+    <ability>zpMustardGasWeak<tech>zpNatPlagueGrenade</tech><rof>60</rof></ability>
+    <ability>zpAssassinBrotherhood<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcezio>
+  <zpspcrowboat>
+    <ability>deSPCStealthHide<rof>40</rof><castonself>true</castonself><donotforcestop>true</donotforcestop><activetimecooldown>true</activetimecooldown><forceshowrollover>true</forceshowrollover></ability>
+    <ability>ypPowerSabotage<tech>zpSPCRowboatSabotage</tech><rof>240</rof></ability>
+  </zpspcrowboat>
+  <zpspcclaudiaauditore>
+    <ability>ypPowerHeavenlyFireBomb<rof>120</rof></ability>
+    <ability>ypPowerSmokeBomb<rof>60</rof><castonself>true</castonself></ability>
+    <ability>zpMustardGasWeak<tech>zpNatPlagueGrenade</tech><rof>60</rof></ability>
+    <ability>zpAssassinBrotherhood<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcclaudiaauditore>
+  <zpspcgreatbasilicaconvertable>
+    <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcgreatbasilicaconvertable>
+  <zpspcaztecgreattemple>
+    <ability>zpPowerInformersAztec<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcaztecgreattemple>
+  <zpspccitymarket>
+    <ability>zpPassiveMarketRainbow<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspccitymarket>
+  <zpspcazteccitymarket>
+    <ability>zpPassiveMarketRainbow<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcazteccitymarket>
+  <zpnatskullknight>
+    <ability>deChargeAbilityObsidian<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatskullknight>
+  <zpnatlandsknecht>
+    <ability>deChargeAbilitySwashbuckler<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatlandsknecht>
+  <zpnatmerclandsknecht>
+    <ability>deChargeAbilitySwashbuckler<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatmerclandsknecht>
+  <zpnatbohemianlandsknecht>
+    <ability>deChargeAbilitySwashbuckler<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatbohemianlandsknecht>
+  <zpspcglassworks>
+    <ability>zpPassiveGlassmaker<tech>zpCathedralConstructionSetup</tech><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcglassworks>
+  <zpspccopperworks>
+    <ability>zpPassiveCoppermaker<tech>zpCathedralConstructionSetup</tech><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspccopperworks>
+  <zpspcbrickworks>
+    <ability>zpPassiveBrickmaker<tech>zpCathedralConstructionSetup</tech><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcbrickworks>
+  <zpspclimestoneworks>
+    <ability>zpPassiveLimestone<tech>zpCathedralConstructionSetup</tech><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspclimestoneworks>
+  <zpnathanseaticlegion>
+    <ability>dePromotionHpDMG<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnathanseaticlegion>
+  <zpnatmerchanseaticlegion>
+    <ability>dePromotionHpDMG<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatmerchanseaticlegion>
+  <zpmercteutoniccavalry>
+    <ability>zpPassiveZeal<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpmercteutoniccavalry>
+  <zphansasteamer>
+    <ability>PowerLongRange<rof>60</rof></ability>
+    <ability>dePowerBlock<rof>60</rof><alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zphansasteamer>
+  <zphanseaticwarship>
+    <ability>deChargeAbilityBroadside<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zphanseaticwarship>
+  <zphanseatictradeship>
+    <ability>zpPassiveFriendlyDock<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zphanseatictradeship>
+  <zpspcrevenantsteamer>
+    <ability>PowerBroadside<rof>60</rof></ability>
+    <ability>zpFullSteam<rof>60</rof><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
+  </zpspcrevenantsteamer>
+  <zpspcrockchurch>
+    <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcrockchurch>
+  <zpspctrinidad>
+    <ability>zpPowerSalve<rof>60</rof><sharedcooldown>true</sharedcooldown></ability>
+    <ability>PowerLongRange<rof>60</rof><sharedcooldown>true</sharedcooldown></ability>
+  </zpspctrinidad>
+  <zpspcpizarro>
+    <ability>PowerSharpshooter<rof>60</rof></ability>
+    <ability>PowerCrackshot<rof>90</rof></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcpizarro>
+  <zpnatcossackrider>
+    <ability>dePowerDismount<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
+    <ability>deChargeAbilityCossackLance<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatcossackrider>
+  <zpnatcossack>
+    <ability>dePowerMount<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
+    <ability>deChargeAbilityCossackKnife<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatcossack>
+  <zpspcwaldstein>
+     <ability>PowerSwashbuckler<rof>45</rof></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcwaldstein>
+  <zpoldspanishchurch>
+    <ability>zpPowerInformersFrench<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpoldspanishchurch>
+
+  <zpwokoudiver>
+    <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
+  </zpwokoudiver>
+  <zpwokoudiverland>
+    <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
+  </zpwokoudiverland>
 </abilitymods>

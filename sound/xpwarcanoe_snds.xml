@@ -1,0 +1,220 @@
+<protounitsounddef>
+  <protounit name="xpWarCanoe">
+    <soundtype name="Select">
+      <civlogic>
+        <choice name="Nature">
+        </choice>
+        <choice name="Spanish">
+          <soundset name="AztecWarCanoeSelect">
+          </soundset>
+        </choice>
+        <choice name="British">
+          <soundset name="AztecWarCanoeSelect">
+          </soundset>
+        </choice>
+        <choice name="French">
+          <soundset name="AztecWarCanoeSelect">
+          </soundset>
+        </choice>
+        <choice name="Portuguese">
+          <soundset name="AztecWarCanoeSelect">
+          </soundset>
+        </choice>
+        <choice name="Dutch">
+          <soundset name="AztecWarCanoeSelect">
+          </soundset>
+        </choice>
+        <choice name="Russians">
+        </choice>
+        <choice name="Germans">
+        </choice>
+        <choice name="Ottomans">
+        </choice>
+        <choice name="SPCAct1">
+        </choice>
+        <choice name="SPCAct2">
+        </choice>
+        <choice name="SPCAct3">
+        </choice>
+        <choice name="Pirate">
+        </choice>
+        <choice name="TheCircle">
+        </choice>
+        <choice name="NativeAmerican">
+        </choice>
+        <choice name="XPIroquois">
+          <soundset name="IroquoisWarCanoeSelect">
+          </soundset>
+        </choice>
+        <choice name="XPSioux">
+          <soundset name="SiouxWarCanoeSelect">
+          </soundset>
+        </choice>
+        <choice name="XPAztec">
+          <soundset name="AztecWarCanoeSelect">
+          </soundset>
+        </choice>
+        <choice name="XPSPC">
+          <soundset name="IroquoisWarCanoeSelect">
+          </soundset>
+        </choice>
+        <choice name="Aztecs">
+        </choice>
+        <choice name="Caribs">
+        </choice>
+        <choice name="Cherokee">
+        </choice>
+        <choice name="Comanche">
+        </choice>
+        <choice name="Cree">
+        </choice>
+        <choice name="Incas">
+        </choice>
+        <choice name="Iroquois">
+        </choice>
+        <choice name="Lakota">
+        </choice>
+        <choice name="Maya">
+        </choice>
+        <choice name="Nootka">
+        </choice>
+        <choice name="Seminoles">
+        </choice>
+        <choice name="Tupi">
+        </choice>
+        <choice name="Zapotec">
+        </choice>
+        <choice name="Huron">
+        </choice>
+        <choice name="Cheyenne">
+        </choice>
+        <choice name="Klamath">
+        </choice>
+        <choice name="Mapuche">
+        </choice>
+        <choice name="Navajo">
+        </choice>
+        <choice name="Apache">
+        </choice>
+        <choice name="DEMexicans">
+          <soundset name="MayaHolcanSpearmanSelect">
+          </soundset>
+        </choice>
+      </civlogic>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="ShipDeath">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="ShipBirth">
+      </soundset>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <civlogic>
+        <choice name="Nature">
+        </choice>
+        <choice name="Spanish">
+          <soundset name="AztecWarCanoeAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="British">
+          <soundset name="AztecWarCanoeAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="French">
+          <soundset name="AztecWarCanoeAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Portuguese">
+          <soundset name="AztecWarCanoeAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Dutch">
+          <soundset name="AztecWarCanoeAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Russians">
+        </choice>
+        <choice name="Germans">
+        </choice>
+        <choice name="Ottomans">
+        </choice>
+        <choice name="SPCAct1">
+        </choice>
+        <choice name="SPCAct2">
+        </choice>
+        <choice name="SPCAct3">
+        </choice>
+        <choice name="Pirate">
+        </choice>
+        <choice name="TheCircle">
+        </choice>
+        <choice name="NativeAmerican">
+        </choice>
+        <choice name="XPIroquois">
+          <soundset name="IroquoisWarCanoeAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="XPSioux">
+          <soundset name="SiouxWarCanoeAcknowlegde">
+          </soundset>
+        </choice>
+        <choice name="XPAztec">
+          <soundset name="AztecWarCanoeAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="XPSPC">
+          <soundset name="IroquoisWarCanoeAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Aztecs">
+        </choice>
+        <choice name="Caribs">
+        </choice>
+        <choice name="Cherokee">
+        </choice>
+        <choice name="Comanche">
+        </choice>
+        <choice name="Cree">
+        </choice>
+        <choice name="Incas">
+        </choice>
+        <choice name="Iroquois">
+        </choice>
+        <choice name="Lakota">
+        </choice>
+        <choice name="Maya">
+        </choice>
+        <choice name="Nootka">
+        </choice>
+        <choice name="Seminoles">
+        </choice>
+        <choice name="Tupi">
+        </choice>
+        <choice name="Zapotec">
+        </choice>
+        <choice name="Huron">
+        </choice>
+        <choice name="Cheyenne">
+        </choice>
+        <choice name="Klamath">
+        </choice>
+        <choice name="Mapuche">
+        </choice>
+        <choice name="Navajo">
+        </choice>
+        <choice name="Apache">
+        </choice>
+        <choice name="DEMexicans">
+          <soundset name="MayaHolcanSpearmanAcknowledge">
+          </soundset>
+        </choice>
+      </civlogic>
+    </soundtype>
+    <soundtype name="Exists">
+      <soundset name="AmbienceShip">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

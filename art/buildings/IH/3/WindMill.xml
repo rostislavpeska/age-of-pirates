@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- converted from XMB to XML -->
+<animfile>
+	<component>
+		building
+        <assetreference type="GrannyModel">
+            <file>buildings\IH\3\AOE3DE_Build_Windmill2_Model</file>
+        </assetreference>
+    	<decal>
+			<effecttype>default</effecttype>
+			<texture>buildings\house\WEST\AGE_1\House_Ground</texture>
+			<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+			<width>5.00</width>
+			<height>5.00</height>
+		</decal>
+	</component>
+	<anim>
+		Idle
+        <assetreference type="GrannyAnim">
+            <file>buildings\IH\3\AOE3DE_Build_Windmill2_Anim</file>
+        </assetreference>
+		<component>building</component>
+	</anim>
+</animfile>

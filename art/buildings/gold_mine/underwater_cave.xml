@@ -1,0 +1,13 @@
+<animfile>
+  <component>sapphire
+    <assetreference type="GrannyModel"><file>buildings\gold_mine\underwater_cave_Model</file></assetreference>
+    <decal>
+        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+        <width>10.00</width>
+        <height>10.00</height>
+        <xoffset>0.00</xoffset>
+        <zoffset>-0.80</zoffset>
+    </decal>
+  </component>
+  <anim>idle<component>sapphire</component></anim>
+</animfile>

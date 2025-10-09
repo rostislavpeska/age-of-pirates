@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings/native_settlement/props/textures/full_wall3_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings/native_settlement/shaolin_01/textures/shaolin_01_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings/native_settlement/shaolin_01/textures/shaolin_01_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

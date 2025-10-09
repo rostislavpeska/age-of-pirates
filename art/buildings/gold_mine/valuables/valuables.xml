@@ -1,0 +1,4 @@
+<animfile>
+  <component>ModelComp<logic type="Variation"><data><assetreference type="GrannyModel"><file>buildings\gold_mine\valuables\safe_Model</file></assetreference><decal><effecttype>bump</effecttype><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><width>3.00</width><height>3.00</height></decal></data></logic></component>
+  <anim>idle<component>ModelComp</component></anim>
+</animfile>

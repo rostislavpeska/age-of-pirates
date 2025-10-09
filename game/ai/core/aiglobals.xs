@@ -89,6 +89,8 @@ extern int gIslandABuildPlan = -1;
 //extern int gIslandAUpTime = -600000;
 extern bool gIslandAShouldDefend = false;
 
+extern int gLastFBMessageSend = -1;         // Used to suppress how often we tell teammate about FB plans
+
 extern int gIslandBState = cIslandAStateNone;
 extern int gIslandBID = -1;                      // Set when state goes to Active
 extern vector gIslandBLocation = cInvalidVector; // Set when state goes to 'building' or earlier.
@@ -106,8 +108,12 @@ extern vector gWaterNuggetTargetLoc = cInvalidVector;
 extern int gWaterNuggetTimeout = -1;         // Stores when a water nugget plan is made so it can be reset after too long
 
 extern bool gIsPirateMap = false;            // Used for pirates of the carribean mod
+extern bool gPirateBlockWalls = false;       // Used to prevent wall building on certain aop maps
 extern bool gIsArchipelagoMap = false;       // Used for multi-island maps like archipelago
+extern bool gIsAtollMap = false;             // A subset of archipelago maps containing more, smaller islands
+extern bool gIsNavalKOTH = false;            // Maps with a naval KOTH fort on water
 
+extern int gIslandAttackPlan = -1;              // Used on archipelago maps to tell ships to attack islands
 extern int forwardAttackWave = -1;
 extern int gforwardArmyPlan = -1;               // Plan for keeping some army at forward base
 extern int gforwardArmyTransport = -1;
@@ -130,6 +136,7 @@ extern const int cLoadForces = 2;               // Third Stage, try and land an 
 extern const int cLandForces = 3;               // Fourth Stage, try and land an army
 extern const int cBuildForwardBuildings = 4;    // Fifth Stage, move vills in to build
 extern const int cEstablishForwardBase = 5;     // Sixth stage, build a whole FB
+extern const int cForbidAmphibiousAssault = 99; // Used to prevent amphibious assault from occuring
 
 extern float gStartingHandicap = -1.0;       // Stores starting handicap to ensure we don't deviate too far
 
@@ -223,6 +230,7 @@ extern vector gCannonCornerLoc1 = cInvalidVector;
 extern vector gCannonCornerLoc2 = cInvalidVector;
 extern vector gCannonCornerLoc3 = cInvalidVector;
 extern vector gCannonCornerLoc4 = cInvalidVector;
+extern int gStarFortWallPlanArray = -1;
 
 //==============================================================================
 // Techs.
@@ -478,6 +486,8 @@ extern int gKOTHTeam = -1;          // TeamID of team that will win if the KOTH 
 extern int gKOTHAllyTimer = -1;         // AssertiveWall: keep the timer counting
 extern int gKOTHEnemyTimer = -1;         // AssertiveWall: keep the timer counting. Only works with 2 teams
 
+extern bool gDefendingObjective = false;    // AssertiveWall: Useful for attack/defend maps
+
 extern int gArmyUnitMaintainPlans = -1;
 
 extern int gCaravelUnit = cUnitTypeCaravel;
@@ -485,6 +495,8 @@ extern int gGalleonUnit = cUnitTypeGalleon;
 extern int gFrigateUnit = cUnitTypeFrigate;
 extern int gMonitorUnit = cUnitTypeMonitor;
 extern int gCanoeUnit = -1;                    // Canoe type determined in navymanager
+
+extern int gRaidPlanID = -1;             // AssertiveWall: used for persistent raid plan
 
 //==============================================================================
 // Home City cards.

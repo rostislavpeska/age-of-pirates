@@ -980,6 +980,7 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 
    // AssertiveWall: First, check every dock and make sure it has a tower nearby. If it doesn't, use that as 
    //                the testVec
+   //    NOTE: the part about bestvec and getting the tower on those parts that jut out is currently written but not used
    int dockQuery = createSimpleUnitQuery(gDockUnit, cPlayerRelationAlly, cUnitStateAlive);
    int dockNumber = kbUnitQueryExecute(dockQuery);   
    vector tempVec = cInvalidVector;
@@ -1819,7 +1820,7 @@ minInterval 30
    }
 
    // AssertiveWall: On great turkish war, set the forward base and leave it there, ignoring all other logic
-   if (cRandomMapName == "eugreatturkishwar" && btOffenseDefense == 0.0)
+   if ((cRandomMapName == "eugreatturkishwar" && btOffenseDefense == 0.0) || gDefendingObjective == true)
    {
       gForwardBaseState = cForwardBaseStateActive;
       gForwardBaseLocation = kbUnitGetPosition(getUnit(cUnitTypedeSPCHeadquartersVienna, cPlayerRelationAlly));
@@ -1929,7 +1930,11 @@ minInterval 30
             aiPlanSetActive(gForwardBaseBuildPlan);
    
             // Chat to my allies.
-            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+            if (xsGetTime() > (gLastFBMessageSend + 180 * 1000)) // 3 minute buffer
+            {
+               sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+               gLastFBMessageSend = xsGetTime();
+            }
    
             gForwardBaseState = cForwardBaseStateBuilding;
             debugBuildings("");
@@ -3245,7 +3250,11 @@ minInterval 5
                   else
                   {  // AssertiveWall: Don't send these messages on island maps to avoid excessive pinging
                      // Chat to my allies.
-                     sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+                     if (xsGetTime() > (gLastFBMessageSend + 180 * 1000)) // 3 minute buffer
+                     {
+                        sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+                        gLastFBMessageSend = xsGetTime();
+                     }
                   }
 
 
@@ -3423,15 +3432,20 @@ minInterval 5
       {  // Different strategies
          if (age >= cAge3)
          {
-            if ((gStrategy == cStrategySafeFF) || (gStrategy == cStrategyGreed))
+            if (gStrategy == cStrategyGreed)
             {
-               planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 1);
+               planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 3);
+               aiPlanSetDesiredResourcePriority(planID, 60);
+            }
+            else if (gStrategy == cStrategySafeFF && (xsGetTime() > 15 * 60 * 1000))
+            {
+               planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 3);
                aiPlanSetDesiredResourcePriority(planID, 60);
             }
          }
-         else if (age >= cAge3 && xsGetTime() > 20 * 60 * 1000 && gStrategy != cStrategyFastIndustrial)
+         else if (age >= cAge3 && xsGetTime() > 25 * 60 * 1000 && gStrategy != cStrategyFastIndustrial)
          {
-            planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 1);
+            planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 3);
             aiPlanSetDesiredResourcePriority(planID, 60);
          }
       }
@@ -3440,7 +3454,7 @@ minInterval 5
       { 
          if (age >= cAge4 || time > 25 * 60 * 1000)
          {
-            planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 1);
+            planID = createSimpleBuildPlan(cUnitTypeTownCenter, 1, 99, false, cEconomyEscrowID, mainBaseID, 3);
             aiPlanSetDesiredResourcePriority(planID, 60);
          }
       }

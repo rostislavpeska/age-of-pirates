@@ -9,17 +9,17 @@
       </soundset>
     </soundtype>
     <soundtype name="Select">
-      <soundset name="DEAmericanGalleonSelect">
+      <soundset name="BlackJack_Ship_Select">
       </soundset>
     </soundtype>
     <soundtype name="Acknowledge">
       <targetlogic>
         <choice name="default">
-          <soundset name="DEAmericanGalleonAcknowledge">
+          <soundset name="BlackJack_Ship_Acknowledge">
           </soundset>
         </choice>
         <choice name="enemy">
-          <soundset name="DEAmericanGalleonAcknowledge">
+          <soundset name="BlackJack_Ship_Acknowledge">
           </soundset>
         </choice>
         <choice name="build">

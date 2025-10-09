@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "45467" displayNameID = "45466" loadDetails="45468" largeMapName = "unknownLarge"
+    imagepath = "ui\random_map\zpunknown\zpunknown_mini" cannotReplace = "" loadBackground="ui\random_map\unknown\unknown_map">
+   <loadss>ui\random_map\zpunknown\zpunknown_01</loadss>
+   <loadss>ui\random_map\zpunknown\zpunknown_02</loadss>
+   <loadss>ui\random_map\zpunknown\zpunknown_03</loadss>
+</mapinfo>

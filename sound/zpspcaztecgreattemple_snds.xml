@@ -1,0 +1,16 @@
+<protounitsounddef>
+  <protounit name="zpSPCAztecGreatTemple">
+    <soundtype name="Select">
+      <soundset name="UI_Building_Economic">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="BuildingDestruction">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="UI_Building_Economic">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

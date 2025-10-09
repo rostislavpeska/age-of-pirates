@@ -1,0 +1,56 @@
+<protounitsounddef>
+  <protounit name="zpSteamTank">
+    <soundtype name="Select">
+      <techlogic>
+        <choice name="none">
+          <soundset name="DEAmericanMortarSelect">
+          </soundset>
+        </choice>
+        <choice name="zpnathabsburgtank">
+          <soundset name="GermanMortarSelect">
+          </soundset>
+        </choice>
+      </techlogic>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="Explosion">
+      </soundset>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <techlogic>
+        <choice name="none">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="zpAmericanTankAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="DEAmericanMortarAttack">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="zpnathabsburgtank">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="zpGermanTankAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="GermanMortarAttack">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+      </techlogic>
+    </soundtype>
+    <soundtype name="Exists">
+      <soundset name="TruckExist">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="MilitaryBirth">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

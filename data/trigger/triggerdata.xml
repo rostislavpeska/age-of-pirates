@@ -2149,6 +2149,19 @@
       <param name="Status" dispname="$$22340$$Status" vartype="techstatus">2</param>
       <command>trTechSetStatus(%PlayerID%, %TechID%, %Status%);</command>
     </effect>
+    <effect name="ZP Set Tech Status Conditional (XS)">
+      <param name="PlayerID" dispname="$$22301$$Player" vartype="player">1</param>
+      <param name="TechCondition" dispname="$$22311$$Tech Condition" vartype="string">TechName</param>
+      <param name="Tech1ID" dispname="$$22311$$Requred Tech" vartype="string">TechName</param>
+      <param name="Tech2ID" dispname="$$22311$$Alt Tech" vartype="string">TechName</param>
+      <param name="Status" dispname="$$22340$$Status" vartype="techstatus">2</param>
+      <command>if (trTechStatusCheck(%PlayerID%, %TechCondition%, cTechStatusActive) == true) {</command>
+      <command>trTechSetStatus(%PlayerID%, %Tech1ID%, %Status%);</command>
+      <command>}</command>
+      <command>else {</command>
+      <command>trTechSetStatus(%PlayerID%, %Tech2ID%, %Status%);</command>
+      <command>}</command>
+    </effect>
     <effect name="ZP Home City View">
       <param name="Player" dispname="$$22301$$Player" vartype="player">1</param>
       <command>if(trCurrentPlayer()==%Player%){</command>
@@ -3727,7 +3740,7 @@
       <command>AztecFaction = trQuestVarGet("RandomAztecFaction");</command>
       <command>}</command>
       <command>if (AztecFaction == 0) {</command>
-      <command>trTechSetStatus(playerID, cTechzpConsulateNatJesuit, cTechStatusActive);</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateNatTupi, cTechStatusActive);</command>
       <command>}</command>
       <command>if (AztecFaction == 1) {</command>
       <command>trTechSetStatus(playerID, cTechzpConsulateNatMaya, cTechStatusActive);</command>
@@ -3739,7 +3752,7 @@
       <command>}</command>
       <command>// For humans, TurnOffConsulate if NativeConsulate is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpPickNativeConsulateTechAvailable)) {</command>
-      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffWaterTemple, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffWaterTempleUnknown, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
       <command>xsEnableRule("Italian_Ballance");</command>
       <command>xsEnableRule("Cheat_Returner");</command>
@@ -3918,6 +3931,787 @@
       <command>else {</command>
       <command>trCounterVisible("%Name%", true);</command>
       <command>}</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: Western">
+      <command>}}</command>
+      <command>rule Western_Natives_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int WesternFaction=-1;</command>
+      <command>if (WesternFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomWesternFaction", 0, 2);</command>
+      <command>WesternFaction = trQuestVarGet("RandomWesternFaction");</command>
+      <command>}</command>
+      <command>if (WesternFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateWesternWyatEarp, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (WesternFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateWesternPinkertons, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (WesternFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateWesternJesseJames, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpWesternAgeUp)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffWestern, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hdkzuzkz2985684 active { if (true) { //</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: PenalColony">
+      <command>}}</command>
+      <command>rule PenalColony_Natives_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int PenalColonyFaction=-1;</command>
+      <command>if (PenalColonyFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomPenalColonyFaction", 0, 2);</command>
+      <command>PenalColonyFaction = trQuestVarGet("RandomPenalColonyFaction");</command>
+      <command>}</command>
+      <command>if (PenalColonyFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulatePenalColonyParkes, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (PenalColonyFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulatePenalColonyCunningham, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (PenalColonyFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulatePenalColonyLogan, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpPenalColonyRevolt)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffPenalColony, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hdkzuzkz2985598454 active { if (true) { //</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: XMassVillage">
+      <command>}}</command>
+      <command>rule XMassVillage_Natives_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int XMassVillageFaction=-1;</command>
+      <command>if (XMassVillageFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomXMassVillageFaction", 0, 2);</command>
+      <command>XMassVillageFaction = trQuestVarGet("RandomXMassVillageFaction");</command>
+      <command>}</command>
+      <command>if (XMassVillageFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateXMass3, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (XMassVillageFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateXMass2, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (XMassVillageFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateXMass1, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpXMassExpansion)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffXMass, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hrtzzz298559412547 active { if (true) { //</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: Orthodox South">
+      <command>}}</command>
+      <command>rule Orthodox_Natives_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int OrthodoxFaction=-1;</command>
+      <command>if (OrthodoxFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomOrthodoxFaction", 0, 2);</command>
+      <command>OrthodoxFaction = trQuestVarGet("RandomOrthodoxFaction");</command>
+      <command>}</command>
+      <command>if (OrthodoxFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateOrthodoxGeorgians, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (OrthodoxFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateOrthodoxConstantinopole, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (OrthodoxFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateOrthodoxAlexandria, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpOrthodoxInfluence)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffOrthodoxSouth, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hdkzuzxvfrs59 active { if (true) { //</command>
+    </effect>
+    <effect name="ZP Player : Reset Civilization for Flag">
+      <param name="Player" dispname="$$22301$$Player" vartype="player">1</param>
+      <command>trPlayerOverrideCivFlag(%Player%, kbGetCivName(kbGetCivForPlayer(%Player%)));</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: Hussites">
+      <command>}}</command>
+      <command>rule Hussite_Natives_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int HussiteFaction=-1;</command>
+      <command>if (HussiteFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomHussiteFaction", 0, 2);</command>
+      <command>HussiteFaction = trQuestVarGet("RandomHussiteFaction");</command>
+      <command>}</command>
+      <command>if (HussiteFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateHussitesZizka, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (HussiteFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateHussitesKing, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (HussiteFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateHussitesReformer, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpHussiteExpansion)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffHussites, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hdkzuooi5489 active { if (true) { //</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: Elector Bohemia">
+      <command>}}</command>
+      <command>rule Bohemian_Natives_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int BohemianFaction=-1;</command>
+      <command>if (BohemianFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomBohemianFaction", 0, 2);</command>
+      <command>BohemianFaction = trQuestVarGet("RandomBohemianFaction");</command>
+      <command>}</command>
+      <command>if (BohemianFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateKingOfBohemiaHabsburg, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (BohemianFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateKingOfBohemiaJagiellon, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (BohemianFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateKingOfBohemiaWittelsbach, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpSPCKingOfBohemia)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffKingOfBohemia, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule reoihjuhiu4896 active { if (true) { //</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: Prince Electors">
+      <param name="SocketRadius" dispname="Socket Training Radius (do not change)" vartype="float">13</param>
+      <param name="ConversionRadius" dispname="Castle center distance (do not change)" vartype="float">20</param>
+      <param name="Socket1" dispname="Socket 1" vartype="unit">-1</param>
+      <param name="Socket2" dispname="Socket 2" vartype="unit">-1</param>
+      <param name="Socket3" dispname="Socket 3" vartype="unit">-1</param>
+      <param name="Socket4" dispname="Socket 4" vartype="unit">-1</param>   
+      <command>}}</command>
+      <command>int getSocketOwnerElector(int socketID = -1)</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command>for (playerID = 0; &lt; 9)</command>
+      <command>{</command>
+      <command>if (trCountUnitsInArea("" + socketID, playerID, "TradingPost", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>socketOwnerElector = playerID;</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>}</command>
+      <command>return(socketOwnerElector);</command>
+      <command>}</command>
+      <command>rule TurnOnElector1</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerElector = getSocketOwnerElector(%Socket1%);</command>
+      <command>if (socketOwnerElector &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket1">trUnitSelect("%Socket1%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerElector, "zpElectorCenter", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffElector1");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffElector1</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerElector = getSocketOwnerElector(%Socket1%);</command>
+      <command>if (socketOwnerElector &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket1">trUnitSelect("%Socket1%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpElectorCenter", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnElector1");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOnElector2</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerElector = getSocketOwnerElector(%Socket2%);</command>
+      <command>if (socketOwnerElector &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket2">trUnitSelect("%Socket2%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerElector, "zpElectorCenter", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffElector2");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffElector2</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerElector = getSocketOwnerElector(%Socket2%);</command>
+      <command>if (socketOwnerElector &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket2">trUnitSelect("%Socket2%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpElectorCenter", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnElector2");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOnElector3</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command loop="" loopparm="Socket3">socketOwnerElector = getSocketOwnerElector(%Socket3%);</command>
+      <command>if (socketOwnerElector &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket3">trUnitSelect("%Socket3%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerElector, "zpElectorCenter", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffElector3");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffElector3</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command loop="" loopparm="Socket3">socketOwnerElector = getSocketOwnerElector(%Socket3%);</command>
+      <command>if (socketOwnerElector &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket3">trUnitSelect("%Socket3%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpElectorCenter", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnElector3");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOnElector4</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command loop="" loopparm="Socket4">socketOwnerElector = getSocketOwnerElector(%Socket4%);</command>
+      <command>if (socketOwnerElector &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket4">trUnitSelect("%Socket4%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerElector, "zpElectorCenter", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffElector4");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffElector4</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerElector = 0;</command>
+      <command loop="" loopparm="Socket4">socketOwnerElector = getSocketOwnerElector(%Socket4%);</command>
+      <command>if (socketOwnerElector &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket4">trUnitSelect("%Socket4%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpElectorCenter", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnElector4");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>      
+      <command>rule Prince_Elector_Politicians</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int PrinceElectorFaction=-1;</command>
+      <command>if (PrinceElectorFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomPrinceElectorFaction", 0, 4);</command>
+      <command>PrinceElectorFaction = trQuestVarGet("RandomPrinceElectorFaction");</command>
+      <command>}</command>
+      <command>if (PrinceElectorFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateElectorHabsburg, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (PrinceElectorFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateElectorWittelsbach, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (PrinceElectorFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateElectorWettin, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (PrinceElectorFaction == 3) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateElectorHanover, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (PrinceElectorFaction == 4) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateElectorOldenburg, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpPrinceElectorElect)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffPrinceElector, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule princeElectorTechSetup active runImmediately highFrequency {</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>trTechSetStatus(playerID, cTechzpPrinceElectorNativeSetup, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule rdcnoniiba846 active { if (true) { //</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: Hanseatic">
+      <param name="SocketRadius" dispname="Socket Training Radius (do not change)" vartype="float">35</param>
+      <param name="ConversionRadius" dispname="Water Flag Distance (do not change)" vartype="float">150</param>
+      <param name="Socket1" dispname="Socket 1 (close to Water Flag 1)" vartype="unit">-1</param>
+      <param name="Socket2" dispname="Socket 2 (close to Water Flag 2)" vartype="unit">-1</param>
+      <command>}}</command>
+      <command>int getSocketOwnerHanseatic(int socketID = -1)</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command>for (playerID = 0; &lt; 9)</command>
+      <command>{</command>
+      <command>if (trCountUnitsInArea("" + socketID, playerID, "TradingPost", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>socketOwnerHanseatic = playerID;</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>}</command>
+      <command>return(socketOwnerHanseatic);</command>
+      <command>}</command>
+      <command>rule TurnOnHanseatic1</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket1%);</command>
+      <command>if (socketOwnerHanseatic &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket1">trUnitSelect("%Socket1%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerHanseatic, "zpHansaWaterSpawnFlag1", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffHanseatic1");</command>
+      <command>xsEnableRule("trainHanseaticCaravel1ON");</command>
+      <command>xsEnableRule("trainHanseaticFluyt1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffHanseatic1</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket1%);</command>
+      <command>if (socketOwnerHanseatic &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket1">trUnitSelect("%Socket1%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpHansaWaterSpawnFlag1", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnHanseatic1");</command>
+      <command>xsDisableRule("trainHanseaticCaravel1ON");</command>
+      <command>xsDisableRule("trainHanseaticFluyt1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticCaravel1ON</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket1%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket1%, socketOwnerHanseatic, "zpHanseaticWarshipProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpTrainHansaCog1, cTechStatusActive);</command>
+      <command>xsEnableRule("trainHanseaticCaravel1OFF");</command>
+      <command>xsEnableRule("trainHanseaticCaravel1TIME");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticCaravel1OFF</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("trainHanseaticCaravel1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticCaravel1TIME</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket1%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpReduceHansaCogBuildLimit, cTechStatusActive);</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpTrainHansaCog1, cTechStatusUnobtainable);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticFluyt1ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket1%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket1%, socketOwnerHanseatic, "zpHanseaticFluytProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpTrainHansaFluyt1, cTechStatusActive);</command>
+      <command>xsEnableRule("trainHanseaticFluyt1TIME");</command>
+      <command>xsEnableRule("trainHanseaticFluyt1OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticFluyt1OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("trainHanseaticFluyt1ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticFluyt1TIME</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket1">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket1%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpReduceHansaFluytBuildLimit, cTechStatusActive);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>    
+      <command>rule TurnOnHanseatic2</command>
+      <command>active</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket2%);</command>
+      <command>if (socketOwnerHanseatic &gt;= 1)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket2">trUnitSelect("%Socket2%");</command>
+      <command>trConvertUnitsInArea(0, socketOwnerHanseatic, "zpHansaWaterSpawnFlag2", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOffHanseatic2");</command>
+      <command>xsEnableRule("trainHanseaticCaravel2ON");</command>
+      <command>xsEnableRule("trainHanseaticFluyt2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule TurnOffHanseatic2</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket2%);</command>
+      <command>if (socketOwnerHanseatic &lt;= 0)</command>
+      <command>{</command>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="Socket2">trUnitSelect("%Socket2%");</command>
+      <command>for (playerID = 1; &lt; 9)</command>
+      <command>{</command>
+      <command>if (kbIsPlayerValid(playerID) == false)</command>
+      <command>{</command>
+      <command>break;</command>
+      <command>}</command>
+      <command>trConvertUnitsInArea(playerID, 0, "zpHansaWaterSpawnFlag2", %ConversionRadius%);</command>
+      <command>xsEnableRule("TurnOnHanseatic2");</command>
+      <command>xsDisableRule("trainHanseaticCaravel2ON");</command>
+      <command>xsDisableRule("trainHanseaticFluyt2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticCaravel2ON</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket2%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket2%, socketOwnerHanseatic, "zpHanseaticWarshipProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpTrainHansaCog2, cTechStatusActive);</command>
+      <command>xsEnableRule("trainHanseaticCaravel2OFF");</command>
+      <command>xsEnableRule("trainHanseaticCaravel2TIME");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticCaravel2OFF</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("trainHanseaticCaravel2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticCaravel2TIME</command>
+      <command>inactive</command>
+      <command>highFrequency</command>
+      <command>runImmediately</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket2%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpReduceHansaCogBuildLimit, cTechStatusActive);</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpTrainHansaCog2, cTechStatusUnobtainable);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticFluyt2ON</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket2%);</command>
+      <command>if (trCountUnitsInArea("" + %Socket2%, socketOwnerHanseatic, "zpHanseaticFluytProxy", %SocketRadius%) &gt;= 1)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpTrainHansaFluyt2, cTechStatusActive);</command>
+      <command>xsEnableRule("trainHanseaticFluyt2TIME");</command>
+      <command>xsEnableRule("trainHanseaticFluyt2OFF");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticFluyt2OFF</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>if (trTime() - cActivationTime &gt;= 5)</command>
+      <command>{</command>
+      <command>xsEnableRule("trainHanseaticFluyt2ON");</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule trainHanseaticFluyt2TIME</command>
+      <command>inactive</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>int socketOwnerHanseatic = 0;</command>
+      <command loop="" loopparm="Socket2">socketOwnerHanseatic = getSocketOwnerHanseatic(%Socket2%);</command>
+      <command>if (trTime() - cActivationTime &gt;= 2)</command>
+      <command>{</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpReduceHansaFluytBuildLimit, cTechStatusActive);</command>
+      <command>trTechSetStatus(socketOwnerHanseatic, cTechzpTrainHansaFluyt2, cTechStatusUnobtainable);</command>
+      <command>xsDisableSelf();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule Hanseatic_politicians_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int HanseaticFaction=-1;</command>
+      <command>if (HanseaticFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomHanseaticFaction", 0, 2);</command>
+      <command>HanseaticFaction = trQuestVarGet("RandomHanseaticFaction");</command>
+      <command>}</command>
+      <command>if (HanseaticFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateHansaWestern, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (HanseaticFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateHansaCentral, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (HanseaticFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateHansaEast, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if HanseaticExpansion is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpHansaExpansion)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffHansa, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule ewnuhgerbask active { if (true) { xsDisableSelf();</command>
     </effect>
   </effects>
 </trigger>

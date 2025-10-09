@@ -1,0 +1,9 @@
+<animfile>
+    <definebone>silvermine</definebone>
+  <component>
+    lean-to
+    <assetreference type="GrannyModel"><file>nuggets\guilottine\guilotine_Model</file></assetreference>
+    <decal><effecttype>bump</effecttype><texture>nuggets\dropped_resource\dropped_resource_decalA</texture><bumptexture>nuggets\dropped_resource\dropped_resource_decalA_bump</bumptexture><width>5.00</width><height>5.00</height></decal>
+</component>
+  <anim>Idle<component>lean-to</component></anim>
+</animfile>

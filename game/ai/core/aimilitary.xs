@@ -128,64 +128,23 @@ inactive
 void addUnitsToMilitaryPlan(int planID = -1)
 {
    // TODO: don't always task the full army, leave some behind if the enemy is weak or we need more defense
-   if ((gRevolutionType & cRevolutionFinland) == 0)// && gStartOnDifferentIslands == false)
+   if ((gRevolutionType & cRevolutionFinland) == 0)
    {
       aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 200);
       return;
    }
-   // AssertiveWall: undo this for now
-      int vilQueryID = -1;
-      int numberVilWanted = 2;
-      int unitID = -1;
-      int unitPlanID = -1;
-      vector unitLoc = cInvalidVector;
-      int numberAdded = 0;
-   /*else if ((gRevolutionType & cRevolutionFinland) == 0 && gStartOnDifferentIslands == true)
-   {
-      aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 200);
-      //aiPlanSetNoMoreUnits(planID, true);  somehow we reach here?
-
-      //AssertiveWall: Only add units on the mainland for island maps.
-      int armyQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
-      int numberFound = kbUnitQueryExecute(armyQueryID);
-      int vilQueryID = -1;
-      int numberVilWanted = 2;
-      int unitID = -1;
-      int unitPlanID = -1;
-      vector unitLoc = cInvalidVector;
-      int numberAdded = 0;
-      int mainBaseAreaGroup = kbAreaGroupGetIDByPosition(kbGetPlayerStartingPosition(cMyID));
-
-      for (i = 0; < numberFound)
-      {
-         unitID = kbUnitQueryGetResult(armyQueryID, i);
-         unitPlanID = kbUnitGetPlanID(unitID);
-         if (aiPlanGetDesiredPriority(unitPlanID) >= 99)           // Already in the plan or on a transport
-         {
-            continue;
-         }
-         // Make sure the unit is on the mainland
-         unitLoc = kbUnitGetPosition(unitID);
-         if (kbAreAreaGroupsPassableByLand(mainBaseAreaGroup, kbAreaGroupGetIDByPosition(unitLoc)) == false)
-         {
-            continue;
-         }
-         numberAdded = numberAdded + 1;
-         aiPlanAddUnit(planID, unitID);
-      }
-   }*/
 
    // For the finland revolution, keep some karelian jaegers around to sustain the economy
    int numberAvailableEconUnits = 0;
    int queryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
-   int numberAvailFound = kbUnitQueryExecute(queryID);
+   int numberFound = kbUnitQueryExecute(queryID);
 
    aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 0, 0);
 
    // Add each unit type individually
-   for (i = 0; < numberAvailFound)
+   for (i = 0; < numberFound)
    {
-      unitID = kbUnitQueryGetResult(queryID, i);
+      int unitID = kbUnitQueryGetResult(queryID, i);
       int puid = kbUnitGetProtoUnitID(unitID);
       if (puid == gEconUnit)
       {
@@ -696,7 +655,7 @@ minInterval 10
       xsEnableRule("mostHatedEnemy"); // Picks a target for us to attack.
       mostHatedEnemy(); // Instantly get a target so our managers have something to work with.
       xsEnableRule("attackManager"); // Land attacking / defending allies.
-      if (gNavyMap == true)
+      if (gNavyMap == true && gIsNavalKOTH == false)
       {
          xsEnableRule("waterAttack"); // Water attacking.
       }
@@ -795,6 +754,8 @@ minInterval 15
    int crateFlagQuery = -1;
    int numberBasesProcessed = 0;
    int age = kbGetAge();
+   bool targetTransportRequired = false;  // AssertiveWall: only attack plans can transport
+   bool transportRequired = false;
 
    if (baseQuery < 0) // First run.
    {
@@ -1300,11 +1261,11 @@ minInterval 15
          if (cDifficultyCurrent >= cDifficultyHard)
          {
             // Avoid attacking until 5 minutes passed after aging up.
-            // AssertiveWall: reduce to 2 mins
+            // AssertiveWall: reduce to 3 mins
             if ((gStrategy == cStrategyFastIndustrial && kbGetAge() < cAge4) || 
                 ((gStrategy == cStrategyNakedFF || gStrategy == cStrategySafeFF) && kbGetAge() < cAge3))
             {
-               if (currentTime - gAgeUpTime < 2 * 60 * 1000)
+               if (currentTime - gAgeUpTime < 3 * 60 * 1000)
                {
                   shouldAttack = false;
                }
@@ -1326,10 +1287,12 @@ minInterval 15
             affordable = (armyPower + militaryPower + buildingPower) / enemyMilitaryPower;
          }
          
-         // AssertiveWall: Don't do this on island maps
-         if (mainAreaGroup != baseAreaGroup && gStartOnDifferentIslands == false)
+         // AssertiveWall: Store whether we need a transport
+         transportRequired = false;
+         if (mainAreaGroup != baseAreaGroup)
          {
             distancePenalty = distancePenalty + 0.4;
+            transportRequired = true;
          }
          
          // AssertiveWall: Catch the distance penalty
@@ -1351,6 +1314,7 @@ minInterval 15
             targetDistancePenalty = distancePenalty;
             targetScore = score;
             targetShouldAttack = shouldAttack;
+            targetTransportRequired = transportRequired;
          }
 
          numberBasesProcessed++;
@@ -1428,8 +1392,17 @@ minInterval 15
       targetBaseLocation = kbBaseGetLocation(targetPlayer, targetBaseID);
    }*/
 
+   // AssertiveWall: Check if we need a transport. If we do, make sure we have a warship to transport with
+   if (targetTransportRequired == true)
+   {
+      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) <= 0)
+      {
+         return;
+      }
+   }
+
    vector gatherPoint = kbBaseGetMilitaryGatherPoint(cMyID, mainBaseID);
-   if (targetIsEnemy == true)
+   if (targetIsEnemy == true || targetTransportRequired == true)  // AssertiveWall: only attack plans can transport
    {
       planID = aiPlanCreate("Attack Player " + targetPlayer + " Base " + targetBaseID, cPlanCombat);
 
@@ -1565,9 +1538,21 @@ minInterval 15
          xsEnableRule("attackRetreatDelay");
       }
       else
-      {  // AssertiveWall: Make sure plan can retreat
+      {  // AssertiveWall: Make sure plan can retreat on water maps
          aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeBaseGone);
          aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+         //aiPlanSetVariableBool(planID, cCombatPlanAllowMoreUnitsDuringAttack, 0, false);  // AssertiveWall: I think this might be causing issues with plan not getting a transport added?
+         
+         if (targetBaseID < 0)
+         {
+            aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget | aiPlanGetVariableInt(planID, cCombatPlanDoneMode, 0));
+            aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 30000);
+         }
+
+         if (targetTransportRequired == true || gIsArchipelagoMap == true)
+         {
+            xsEnableRule("attackTimeoutTransportRequired");
+         }
       }
    }
    else 
@@ -1827,7 +1812,7 @@ minInterval 30
 rule waterDefend
 inactive
 minInterval 5  
-{  // AssertiveWall: Reduced minINterval to 5 from 10
+{  // AssertiveWall: Reduced minInterval to 5 from 10
    if (gNavyDefendPlan < 0) // First run, create a persistent defend plan.
    {
       gNavyDefendPlan = aiPlanCreate("Water Defend", cPlanCombat);
@@ -1842,22 +1827,31 @@ minInterval 5
       aiPlanSetVariableInt(gNavyDefendPlan, cCombatPlanRefreshFrequency, 0, cDifficultyCurrent >= cDifficultyHard ? 300 : 1000);
       aiPlanAddUnitType(gNavyDefendPlan, cUnitTypeAbstractWarShip, 0, 200, 200);
       // AssertiveWall: adds artillery to water defend plan
-      if (gNavyMap == true)
+      if (gStartOnDifferentIslands == true)
       {
-         aiPlanAddUnitType(gNavyDefendPlan, cUnitTypeAbstractArtillery, 0, 3, 7);
+         aiPlanAddUnitType(gNavyDefendPlan, cUnitTypeAbstractArtillery, 0, 0, 2);
+      }
+      else if (gNavyMap == true)
+      {
+         aiPlanAddUnitType(gNavyDefendPlan, cUnitTypeAbstractArtillery, 0, 0, 1);
       }
       
       debugMilitary("Creating primary navy defend plan at: " + gNavyVec);
       aiPlanSetActive(gNavyDefendPlan);
    }
 
-   // AssertiveWall: build a dummy plan and move fishing boats into it to control them easier
+   // AssertiveWall: build a dummy plan and move fishing boats into it to control them easier. 
+   //                Enables fishingBellMonitor to ungarrison boats from docks
    if (gFishingBellPlan < 0) // first run
    {
       gFishingBellPlan = aiPlanCreate("Fishing Dock Bell", cPlanReserve);
       aiPlanAddUnitType(gFishingBellPlan, gFishingUnit, 0, 200, 200);
       aiPlanSetDesiredPriority(gFishingBellPlan, 1);
       aiPlanSetActive(gFishingBellPlan);
+      if (xsIsRuleEnabled("fishingBellMonitor") == false)
+      {
+         xsEnableRule("fishingBellMonitor");
+      }
    }
    
    int enemyQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
@@ -1949,10 +1943,9 @@ minInterval 5
             }
          }
          else if (nearbyEnFound <= 0)
-         {  // AssertiveWall: Ungarrison from dock
+         {  // AssertiveWall: Ungarrison from dock. Should be unnecessary, also handled in fishingBellMonitor
             dockUnit = getUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 1.0);
-            sLocation = kbUnitGetPosition(dockUnit);
-            if (sLocation != cInvalidVector)
+            if (dockUnit > 0)
             {
                aiTaskUnitEject(dockUnit);
             }
@@ -1997,13 +1990,15 @@ minInterval 30
       
       // These initial maintain amounts mean nothing and get instantly overwritten.
       if (cMyCiv == cCivXPAztec)
-      {
+      {  // AssertiveWall: added Galleon/Canoe
          gCaravelMaintain = createSimpleMaintainPlan(gCaravelUnit, 10, false, baseID, 1); // xpWarCanoe
-         gFrigateMaintain = createSimpleMaintainPlan(gGalleonUnit, 5, false, baseID, 1);  // xpTlalocCanoe
+         gGalleonMaintain = createSimpleMaintainPlan(gGalleonUnit, 20, false, baseID, 1); // Canoe
+         gFrigateMaintain = createSimpleMaintainPlan(gFrigateUnit, 5, false, baseID, 1);  // xpTlalocCanoe
       }
       else if (cMyCiv == cCivDEInca)
-      {
+      {  // AssertiveWall: added Galleon/Canoe
          gCaravelMaintain = createSimpleMaintainPlan(gCaravelUnit, 8, false, baseID, 1); // deChinchaRaft
+         gGalleonMaintain = createSimpleMaintainPlan(gGalleonUnit, 20, false, baseID, 1); // Canoe
       }
       else if (civIsNative() == true)
       {
@@ -2033,18 +2028,21 @@ minInterval 30
 
    // AssertiveWall: Check for which canoe variety we can train
    if (gCanoeMaintain < 0)
-   {
-      if (kbProtoUnitAvailable(cUnitTypeCanoe) == true && civIsNative() == false)
+   {  // Only look for new canoe units if we can't train the current one
+      if (gCanoeUnit < 0 || kbProtoUnitAvailable(gCanoeUnit) == false)
       {
-         gCanoeUnit = cUnitTypeCanoe;
-      } 
-      else if (kbProtoUnitAvailable(cUnitTypeypMarathanCatamaran) == true)
-      {
-         gCanoeUnit = cUnitTypeypMarathanCatamaran;
-      }
-      else if (kbProtoUnitAvailable(cUnitTypedeMercBattleship) == true)
-      {
-         gCanoeUnit = cUnitTypedeMercBattleship;
+         if (kbProtoUnitAvailable(cUnitTypeCanoe) == true && (civIsNative() == false || cMyCiv == cCivDEInca))
+         {
+            gCanoeUnit = cUnitTypeCanoe;
+         } 
+         else if (kbProtoUnitAvailable(cUnitTypeypMarathanCatamaran) == true)
+         {
+            gCanoeUnit = cUnitTypeypMarathanCatamaran;
+         }
+         else if (kbProtoUnitAvailable(cUnitTypedeMercBattleship) == true)
+         {
+            gCanoeUnit = cUnitTypedeMercBattleship;
+         }
       }
 
       // AssertiveWall: Create a native canoe maintain plan once we know what canoe unit we are using
@@ -2056,7 +2054,6 @@ minInterval 30
    // AssertiveWall: make sure canoes can still be trained. If not, reset
    if (kbProtoUnitAvailable(gCanoeUnit) == false)
    {
-      //gCanoeUnit = -1;
       aiPlanDestroy(gCanoeMaintain);
       gCanoeMaintain = -1;
    }
@@ -2121,17 +2118,21 @@ minInterval 30
       int monitorLimit = 0;
       int canoeLimit = 0;  // AssertiveWall: native canoes
 
-      caravelLimit = kbGetBuildLimit(cMyID, gCaravelUnit);
       canoeLimit = kbGetBuildLimit(cMyID, gCanoeUnit);
-      if (cMyCiv == cCivXPAztec || cMyCiv == cCivXPIroquois || cMyCiv == cCivXPSioux)
+      // AssertiveWall: Simplify all this based on if the boat is available
+      if (kbProtoUnitAvailable(gCaravelUnit))
+      {
+         caravelLimit = kbGetBuildLimit(cMyID, gCaravelUnit);
+      }
+      if (kbProtoUnitAvailable(gGalleonUnit))
       {
          galleonLimit = kbGetBuildLimit(cMyID, gGalleonUnit);
       }
-      if (cMyCiv != cCivXPIroquois && cMyCiv != cCivXPSioux && cMyCiv != cCivDEInca && age >= cAge3)
+      if (kbProtoUnitAvailable(gFrigateUnit))
       {
          frigateLimit = kbGetBuildLimit(cMyID, gFrigateUnit);
       }
-      if (civIsNative() == false && age >= cAge4)
+      if (kbProtoUnitAvailable(gMonitorUnit))
       {
          monitorLimit = kbGetBuildLimit(cMyID, gMonitorUnit);
       }
@@ -2178,7 +2179,11 @@ minInterval 30
       if (cDifficultyCurrent >= cDifficultyHard && gStartOnDifferentIslands == true)
       {
          // AssertiveWall: Navy size based on strategy
-         if (gStrategy == cStrategyRush)
+         if (gIsNavalKOTH == true)
+         {
+            gNetNavyValue += 2800; // two frigates and two caravels
+         }
+         else if (gStrategy == cStrategyRush)
          { 
             if (age <= cAge2)
             {
@@ -2316,7 +2321,7 @@ minInterval 30
                continue;
             }
          }
-         if (age < cAge4 && numberCaravels < 2)
+         if (age < cAge4 && numberCaravels < 2 && numberCaravels < caravelLimit) // AssertiveWall: Need limit for native civs
          {
             numberCaravels++;
             gNetNavyValue -= caravelValue;
@@ -3664,11 +3669,12 @@ minInterval 10
    }
 
    // AssertiveWall: If we made it this far, no one is in trouble. Move defense reflex to forward base
-   if ((gForwardBaseState == cForwardBaseStateActive || gForwardBaseState == cForwardBaseStateBuilding) &&
+   // Causing issues. moveDefenseReflex actually activates the defense reflex
+   /*if ((gForwardBaseState == cForwardBaseStateActive || gForwardBaseState == cForwardBaseStateBuilding) &&
          gForwardBaseShouldDefend == true)
    {
       moveDefenseReflex(gForwardBaseLocation, 50, gForwardBaseID);
-   }
+   }*/
 }
 
 //==============================================================================
@@ -4846,6 +4852,27 @@ rule coastalGuns
 inactive
 minInterval 30
 {
+   // Some checks to see if we want this yet
+   bool allowCoastalGuns = false;
+   if (gStartOnDifferentIslands == true)
+   {  // Always do this on island maps
+      allowCoastalGuns = true;
+   }
+   else if (kbUnitCount(cMyID, gDockUnit, cUnitStateABQ) > 2)
+   {  // If we are making lots of docks (3 or more)
+      allowCoastalGuns = true;
+   }
+   
+   if (gLastWSTime == 0)
+   {  // Block this if we haven't spotted enemy warships
+      allowCoastalGuns = false;
+   }
+
+   if (allowCoastalGuns == false)
+   {
+      return;
+   }
+
    int mainBaseID = kbBaseGetMainID(cMyID);
    vector mainBaseLocation = kbBaseGetLocation(cMyID, mainBaseID);
    vector targetPoint = gNavyVec;//kbBaseGetMilitaryGatherPoint(cMyID, mainBaseID);
@@ -4873,7 +4900,15 @@ minInterval 30
       gCoastalGunPlan = aiPlanCreate("Coastal Guns", cPlanCombat);
    }
    // Artillery units, keep the desired and max amounts reasonable
-   aiPlanAddUnitType(gCoastalGunPlan, cUnitTypeAbstractArtillery, 0, 3, 5); 
+   if (gStartOnDifferentIslands == true)
+   {
+      aiPlanAddUnitType(gCoastalGunPlan, cUnitTypeAbstractArtillery, 0, 1, 2); 
+   }
+   else
+   {
+      aiPlanAddUnitType(gCoastalGunPlan, cUnitTypeAbstractArtillery, 0, 1, 1); 
+   }
+
    aiPlanSetVariableInt(gCoastalGunPlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeDefend);
 
    if (targetPoint == cInvalidVector)

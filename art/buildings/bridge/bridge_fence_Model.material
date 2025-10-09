@@ -1,0 +1,38 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\bridge\textures\bridge_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\bridge\textures\bridge_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\bridge\textures\bridge_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+     <texture name="BaseColor" override="buildings\bridge\textures\bridge_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\bridge\textures\bridge_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\bridge\textures\bridge_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\bridge\textures\bridge_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\bridge\textures\bridge_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\bridge\textures\bridge_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

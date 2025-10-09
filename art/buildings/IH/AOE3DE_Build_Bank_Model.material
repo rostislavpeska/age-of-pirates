@@ -1,0 +1,28 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\IH\Bank_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\IH\Bank_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\IH\Bank_Masks">
+      </texture>
+ <texture name="Details" override="buildings\IH\Bank_Details">
+      </texture>
+         </parameters>
+  </submaterial>
+<submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\IH\Bank_MatB_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\IH\Bank_MatB_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\IH\Bank_MatB_Masks">
+      </texture>
+         </parameters>
+  </submaterial>
+</material>

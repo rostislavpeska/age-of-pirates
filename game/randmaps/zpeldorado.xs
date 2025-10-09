@@ -1406,6 +1406,12 @@ void main(void)
 
 // ------Triggers--------//
 
+int flag1 = rmGetUnitPlaced(nativewaterflagID1, 0);
+int flag2 = rmGetUnitPlaced(nativewaterflagID2, 0);
+
+string pirate1ID = ""+(flag1-1);
+string pirate2ID = ""+(flag2-1);
+
 int tch0=1671; // tech operator
 
 // Starter shipment triggers
@@ -1699,7 +1705,7 @@ rmCreateTrigger("TrainPrivateer2TIME Plr"+k);
 
 rmSwitchToTrigger(rmTriggerID("TrainPrivateer2ON_Plr"+k));
 rmAddTriggerCondition("Units in Area");
-rmSetTriggerConditionParam("DstObject","99");
+rmSetTriggerConditionParam("DstObject",pirate2ID);
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParam("UnitType","zpSubmarineProxy");
 rmSetTriggerConditionParamInt("Dist",35);
@@ -1748,7 +1754,7 @@ rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("TrainPrivateer1ON_Plr"+k));
 rmAddTriggerCondition("Units in Area");
-rmSetTriggerConditionParam("DstObject","5");
+rmSetTriggerConditionParam("DstObject",pirate1ID);
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParam("UnitType","zpSubmarineProxy");
 rmSetTriggerConditionParamInt("Dist",35);
@@ -1824,7 +1830,7 @@ rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("BlackbTrain2ONPlr"+k));
 rmAddTriggerCondition("Units in Area");
-rmSetTriggerConditionParam("DstObject","99");
+rmSetTriggerConditionParam("DstObject",pirate2ID);
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParam("UnitType","zpWokouSteamerProxy");
 rmSetTriggerConditionParamInt("Dist",35);
@@ -1870,7 +1876,7 @@ rmSetTriggerLoop(false);
 // Steamer 1
 rmSwitchToTrigger(rmTriggerID("BlackbTrain1ONPlr"+k));
 rmAddTriggerCondition("Units in Area");
-rmSetTriggerConditionParam("DstObject","5");
+rmSetTriggerConditionParam("DstObject",pirate1ID);
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParam("UnitType","zpWokouSteamerProxy");
 rmSetTriggerConditionParamInt("Dist",35);
@@ -1932,7 +1938,7 @@ rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("Nautilus2ONPlr"+k));
 rmAddTriggerCondition("Units in Area");
-rmSetTriggerConditionParam("DstObject","99");
+rmSetTriggerConditionParam("DstObject",pirate2ID);
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParam("UnitType","zpNautilusProxy");
 rmSetTriggerConditionParamInt("Dist",35);
@@ -1978,7 +1984,7 @@ rmSetTriggerLoop(false);
 // Nautilus 1
 rmSwitchToTrigger(rmTriggerID("Nautilus1ONPlr"+k));
 rmAddTriggerCondition("Units in Area");
-rmSetTriggerConditionParam("DstObject","5");
+rmSetTriggerConditionParam("DstObject",pirate1ID);
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParam("UnitType","zpNautilusProxy");
 rmSetTriggerConditionParamInt("Dist",35);
@@ -2020,14 +2026,14 @@ rmCreateTrigger("Pirates1off Player"+k);
 
 rmSwitchToTrigger(rmTriggerID("Pirates1on_Player"+k));
 rmAddTriggerCondition("Units in Area");
-rmSetTriggerConditionParam("DstObject","5");
+rmSetTriggerConditionParam("DstObject",pirate1ID);
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParamInt("Dist",35);
 rmSetTriggerConditionParam("UnitType","TradingPost");
 rmSetTriggerConditionParam("Op",">=");
 rmSetTriggerConditionParamFloat("Count",1);
 rmAddTriggerEffect("Convert Units in Area");
-rmSetTriggerEffectParam("SrcObject","5");
+rmSetTriggerEffectParam("SrcObject",pirate1ID);
 rmSetTriggerEffectParamInt("SrcPlayer",0);
 rmSetTriggerEffectParamInt("TrgPlayer",k);
 rmSetTriggerEffectParam("UnitType","zpNativeWaterSpawnFlag1");
@@ -2047,14 +2053,14 @@ rmSetTriggerLoop(false);
 
 rmSwitchToTrigger(rmTriggerID("Pirates1off_Player"+k));
 rmAddTriggerCondition("Units in Area");
-rmSetTriggerConditionParam("DstObject","5");
+rmSetTriggerConditionParam("DstObject",pirate1ID);
 rmSetTriggerConditionParamInt("Player",k);
 rmSetTriggerConditionParamInt("Dist",35);
 rmSetTriggerConditionParam("UnitType","TradingPost");
 rmSetTriggerConditionParam("Op","==");
 rmSetTriggerConditionParamFloat("Count",0);
 rmAddTriggerEffect("Convert Units in Area");
-rmSetTriggerEffectParam("SrcObject","5");
+rmSetTriggerEffectParam("SrcObject",pirate1ID);
 rmSetTriggerEffectParamInt("SrcPlayer",k);
 rmSetTriggerEffectParamInt("TrgPlayer",0);
 rmSetTriggerEffectParam("UnitType","zpNativeWaterSpawnFlag1");
@@ -2080,14 +2086,14 @@ rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("Pirates2on_Player"+k));
    rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject","99");
+   rmSetTriggerConditionParam("DstObject",pirate2ID);
    rmSetTriggerConditionParamInt("Player",k);
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("UnitType","TradingPost");
    rmSetTriggerConditionParam("Op",">=");
    rmSetTriggerConditionParamFloat("Count",1);
    rmAddTriggerEffect("Convert Units in Area");
-   rmSetTriggerEffectParam("SrcObject","99");
+   rmSetTriggerEffectParam("SrcObject",pirate2ID);
    rmSetTriggerEffectParamInt("SrcPlayer",0);
    rmSetTriggerEffectParamInt("TrgPlayer",k);
    rmSetTriggerEffectParam("UnitType","zpNativeWaterSpawnFlag2");
@@ -2107,14 +2113,14 @@ rmSetTriggerLoop(false);
 
    rmSwitchToTrigger(rmTriggerID("Pirates2off_Player"+k));
    rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject","99");
+   rmSetTriggerConditionParam("DstObject",pirate2ID);
    rmSetTriggerConditionParamInt("Player",k);
    rmSetTriggerConditionParamInt("Dist",35);
    rmSetTriggerConditionParam("UnitType","TradingPost");
    rmSetTriggerConditionParam("Op","==");
    rmSetTriggerConditionParamFloat("Count",0);
    rmAddTriggerEffect("Convert Units in Area");
-   rmSetTriggerEffectParam("SrcObject","99");
+   rmSetTriggerEffectParam("SrcObject",pirate2ID);
    rmSetTriggerEffectParamInt("SrcPlayer",k);
    rmSetTriggerEffectParamInt("TrgPlayer",0);
    rmSetTriggerEffectParam("UnitType","zpNativeWaterSpawnFlag2");

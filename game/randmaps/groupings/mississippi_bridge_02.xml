@@ -16,41 +16,41 @@
 		<unit variation="80" posx="-0.6633" posz="-12.5928" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PlantsBay</unit>
 		<unit variation="83" posx="-7.0763" posz="-13.5055" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PlantsBay</unit>
 		<unit variation="186" posx="-9.1857" posz="-13.0381" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PlantsBay</unit>
-		<unit variation="75" posx="-10.1218" posz="-11.3120" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="75" posx="-7.9886" posz="-12.5818" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="75" posx="5.8604" posz="-12.7266" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="54" posx="5.5527" posz="-12.1412" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="75" posx="8.0648" posz="-11.2174" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="227" posx="0.6817" posz="-11.3351" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
-		<unit variation="75" posx="-1.2650" posz="-12.6652" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="54" posx="-1.3203" posz="-12.2225" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="135" posx="5.9253" posz="-13.2013" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="87" posx="-1.1697" posz="-13.2879" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="97" posx="-7.9547" posz="-13.2214" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="227" posx="4.0860" posz="-11.1611" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
-		<unit variation="227" posx="-6.2512" posz="-11.3329" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
-		<unit variation="54" posx="-8.0037" posz="-12.1765" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="75" posx="8.1101" posz="4.8664" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
+		<unit variation="75" posx="-10.1218" posz="-11.3120" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="75" posx="-7.9886" posz="-12.5818" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="75" posx="5.8604" posz="-12.7266" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="54" posx="5.5527" posz="-12.1412" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="75" posx="8.0648" posz="-11.2174" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="227" posx="0.6817" posz="-11.3351" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallLarge</unit>
+		<unit variation="75" posx="-1.2650" posz="-12.6652" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="54" posx="-1.3203" posz="-12.2225" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="135" posx="5.9253" posz="-13.2013" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="87" posx="-1.1697" posz="-13.2879" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="97" posx="-7.9547" posz="-13.2214" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="227" posx="4.0860" posz="-11.1611" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallLarge</unit>
+		<unit variation="227" posx="-6.2512" posz="-11.3329" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallLarge</unit>
+		<unit variation="54" posx="-8.0037" posz="-12.1765" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="75" posx="8.1101" posz="4.8664" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
 		<unit variation="16" posx="-3.9918" posz="6.5070" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PlantsBay</unit>
 		<unit variation="252" posx="-5.0442" posz="6.5068" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PlantsBay</unit>
 		<unit variation="146" posx="0.5966" posz="6.4206" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PlantsBay</unit>
 		<unit variation="128" posx="1.5608" posz="6.8345" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PlantsBay</unit>
 		<unit variation="48" posx="7.5362" posz="6.5286" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PlantsBay</unit>
-		<unit variation="173" posx="-2.0331" posz="6.3184" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="75" posx="4.4281" posz="6.0854" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="54" posx="4.7764" posz="5.5413" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="227" posx="0.7800" posz="5.0410" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
-		<unit variation="75" posx="-1.7889" posz="6.9261" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="54" posx="-1.9588" posz="5.6676" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="227" posx="3.7770" posz="5.3744" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
-		<unit variation="227" posx="-6.1529" posz="5.0431" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
-		<unit variation="203" posx="-8.5395" posz="6.3465" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="75" posx="-9.8427" posz="5.1766" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="75" posx="-8.0687" posz="6.8384" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="54" posx="-8.3309" posz="5.5473" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="209" posx="-6.6826" posz="7.6622" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="245" posx="4.9138" posz="7.1302" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
-		<unit variation="183" posx="-1.3119" posz="7.5042" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallSmall</unit>
+		<unit variation="173" posx="-2.0331" posz="6.3184" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="75" posx="4.4281" posz="6.0854" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="54" posx="4.7764" posz="5.5413" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="227" posx="0.7800" posz="5.0410" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallLarge</unit>
+		<unit variation="75" posx="-1.7889" posz="6.9261" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="54" posx="-1.9588" posz="5.6676" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="227" posx="3.7770" posz="5.3744" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallLarge</unit>
+		<unit variation="227" posx="-6.1529" posz="5.0431" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallLarge</unit>
+		<unit variation="203" posx="-8.5395" posz="6.3465" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="75" posx="-9.8427" posz="5.1766" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="75" posx="-8.0687" posz="6.8384" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="54" posx="-8.3309" posz="5.5473" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="209" posx="-6.6826" posz="7.6622" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="245" posx="4.9138" posz="7.1302" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
+		<unit variation="183" posx="-1.3119" posz="7.5042" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpBridgeWallSmall</unit>
 	</units>
 	<tiles>
 		<heights>			

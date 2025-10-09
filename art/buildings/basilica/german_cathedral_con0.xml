@@ -1,0 +1,152 @@
+<animfile>
+    <definebone>bone_falling_building</definebone>
+    <submodel>
+        con 0
+        <component>
+            con 0
+            <assetreference type="GrannyModel"><file>buildings\constructions\7x9_stage1</file></assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\constructions\2x2_construction_decal</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>20.00</width>
+                <height>20.00</height>
+            </decal>
+        </component>
+        <anim>
+            Idle
+            <component>con 0</component>
+        </anim>
+    </submodel>
+    <submodel>
+        con 1
+        <attachment>
+            scafolding1
+            <component>
+                scafolding1
+                <assetreference type="GrannyModel">
+                    <file>buildings\constructions\7x9_stage1</file>
+                </assetreference>
+            </component>
+            <anim>Idle<component>scafolding1</component></anim>
+        </attachment>
+        <component>
+            con 1
+            <assetreference type="GrannyModel"><file>buildings\basilica\german_cathedral_con1_Model</file></assetreference>
+            <attach a="scafolding1" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\constructions\2x2_construction_decal</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>20.00</width>
+                <height>20.00</height>
+            </decal>
+        </component>
+        <anim>
+            Idle
+            <component>con 1</component>
+        </anim>
+    </submodel>
+    <submodel>
+        con 2
+        <attachment>
+            scafolding2
+            <component>
+                scafolding2
+                <assetreference type="GrannyModel">
+                    <file>buildings\constructions\7x9_stage2</file>
+                </assetreference>
+            </component>
+            <anim>Idle<component>scafolding2</component></anim>
+        </attachment>
+        <component>
+            con 2
+            <assetreference type="GrannyModel"><file>buildings\basilica\german_cathedral_con2_Model</file></assetreference>
+            <attach a="scafolding2" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\constructions\2x2_construction_decal</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>20.00</width>
+                <height>20.00</height>
+            </decal>
+        </component>
+        <anim>
+            Idle
+            <component>con 2</component>
+        </anim>
+    </submodel>
+    <submodel>
+        con 3
+        <attachment>
+            scafolding3
+            <component>
+                scafolding3
+                <assetreference type="GrannyModel">
+                    <file>buildings\constructions\7x9_stage2</file>
+                </assetreference>
+            </component>
+            <anim>Idle<component>scafolding3</component></anim>
+        </attachment>
+        <component>
+            con 3
+            <assetreference type="GrannyModel"><file>buildings\basilica\german_cathedral_con3_Model</file></assetreference>
+            <attach a="scafolding3" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\constructions\2x2_construction_decal</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>20.00</width>
+                <height>20.00</height>
+            </decal>
+        </component>
+        <anim>
+            Idle
+            <component>con 3</component>
+        </anim>
+    </submodel>
+    <submodel>
+       cathedral
+        <component>
+            cathedral
+            <assetreference type="GrannyModel"><file>buildings\basilica\german_cathedral_Model</file></assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>20.00</width>
+                <height>20.00</height>
+                <xoffset>0.00</xoffset>
+                <zoffset>0.00</zoffset>
+            </decal>
+        </component>
+        <anim>
+            Idle
+            <component>cathedral</component>
+        </anim>
+    </submodel>
+    <component>
+        ModelComp
+        <logic type="Tech">
+			<none>
+                <submodelref ref="con 0"></submodelref>
+            </none>
+            <zpspccathedralstage1>
+                <submodelref ref="con 1"></submodelref>
+            </zpspccathedralstage1>
+            <zpspccathedralstage2>
+                <submodelref ref="con 2"></submodelref>
+            </zpspccathedralstage2>
+            <zpspccathedralstage3>
+                <submodelref ref="con 3"></submodelref>
+            </zpspccathedralstage3>
+            <zpspccathedralstage4>
+                <submodelref ref="cathedral"></submodelref>
+            </zpspccathedralstage4>
+        </logic>
+    </component>
+</animfile>

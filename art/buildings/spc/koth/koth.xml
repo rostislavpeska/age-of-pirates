@@ -1,0 +1,1090 @@
+<animfile>
+    <definebone>bone_f1</definebone>
+    <definebone>bone_f2</definebone>
+    <definebone>bone_f3</definebone>
+    <definebone>bone_f4</definebone>
+    <definebone>bone_f5</definebone>
+    <definebone>bone_s1</definebone>
+    <definebone>bone_s2</definebone>
+    <definebone>bone_debris_1a</definebone>
+    <definebone>bone_debris_1b</definebone>
+    <definebone>bone_debris_1c</definebone>
+    <definebone>bone_debris_1d</definebone>
+    <definebone>bone_debris_1e</definebone>
+    <definebone>bone_debris_1f</definebone>
+    <definebone>bone_debris_1g</definebone>
+    <definebone>bone_debris_1h</definebone>
+    <definebone>bone_debris_1i</definebone>
+    <definebone>bone_debris_1j</definebone>
+    <definebone>bone_debris_1k</definebone>
+    <definebone>bone_debris_1l</definebone>
+    <definebone>bone_debris_2a</definebone>
+    <definebone>bone_debris_2b</definebone>
+    <definebone>bone_debris_2c</definebone>
+    <definebone>bone_debris_2d</definebone>
+    <definebone>bone_debris_2e</definebone>
+    <definebone>bone_debris_2f</definebone>
+    <definebone>bone_debris_2g</definebone>
+    <definebone>bone_debris_3a</definebone>
+    <definebone>bone_debris_3b</definebone>
+    <definebone>bone_debris_3c</definebone>
+    <definebone>bone_debris_3d</definebone>
+    <definebone>bone_debris_3e</definebone>
+    <definebone>bone_debris_3f</definebone>
+    <definebone>bone_debris_3g</definebone>
+    <definebone>bone_debris_3h</definebone>
+    <definebone>bone_debris_3i</definebone>
+    <definebone>bone_debris_3j</definebone>
+    <definebone>bone_debris_3k</definebone>
+    <definebone>bone_debris_4a</definebone>
+    <definebone>bone_debris_4b</definebone>
+    <definebone>bone_debris_4c</definebone>
+    <definebone>bone_debris_4d</definebone>
+    <definebone>bone_debris_4e</definebone>
+    <definebone>bone_debris_4f</definebone>
+    <definebone>bone_debris_5a</definebone>
+    <definebone>bone_debris_5b</definebone>
+    <definebone>bone_debris_5c</definebone>
+    <definebone>bone_debris_5d</definebone>
+    <definebone>bone_debris_5e</definebone>
+    <definebone>bone_debris_6a</definebone>
+    <definebone>bone_debris_6b</definebone>
+    <definebone>bone_debris_6c</definebone>
+    <definebone>bone_debris_6d</definebone>
+    <definebone>bone_debris_6e</definebone>
+    <definebone>bone_debris_6f</definebone>
+    <definebone>bone_debris_7a</definebone>
+    <definebone>bone_debris_7b</definebone>
+    <definebone>bone_debris_7c</definebone>
+    <definebone>bone_debris_7d</definebone>
+    <definebone>bone_debris_7e</definebone>
+    <definebone>bone_debris_7f</definebone>
+    <definebone>bone_debris_7g</definebone>
+    <definebone>bone_debris_7h</definebone>
+    <definebone>bone_debris_8a</definebone>
+    <definebone>bone_object40</definebone>
+    <definebone>bone_object32</definebone>
+    <definebone>bone_debris_9a</definebone>
+    <definebone>bone_debris_9b</definebone>
+    <definebone>bone_debris_9c</definebone>
+    <definebone>bone_debris_9d</definebone>
+    <definebone>bone_debris_9e</definebone>
+    <definebone>bone_debris_10a</definebone>
+    <definebone>bone_debris_10b</definebone>
+    <definebone>bone_debris_11a</definebone>
+    <definebone>bone_debris_11b</definebone>
+    <definebone>bone_lamp_01</definebone>
+    <definebone>bone_lamp_02</definebone>
+    <definebone>bone_lamp_03</definebone>
+    <definebone>bone_lamp_04</definebone>
+    <definebone>aztec_temple</definebone>
+    <submodel>west_fort
+        <attachment>collapse_smoke
+            <component>collapse_smoke
+                <assetreference type="popcornFx">
+                    <file>smoke\collapse_smoke_fort.pkfx</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>collapse_smoke</component>
+            </anim>
+        </attachment>
+        <attachment>pendentflag
+            <component>flag
+                <assetreference type="ClothFlag">
+                    <flag>
+                        <blending>alphatest_color</blending>
+                        <texture>buildings\flags\pendent</texture>
+                        <width>3.00</width>
+                        <height>1.00</height>
+                    </flag>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>flag</component>
+            </anim>
+        </attachment>
+        <attachment>pendentflag01
+            <component>flag
+                <logic type="Tech">
+                    <none>
+                        <assetreference type="ClothFlag">
+                            <flag>
+                                <blending>alphatest_color</blending>
+                                <texture>buildings\flags\pendent01</texture>
+                                <width>2.00</width>
+                                <height>1.00</height>
+                            </flag>
+                        </assetreference>
+                    </none>
+                    <dehcfedtexanforts>
+                        <assetreference type="ClothFlag">
+                            <flag>
+                                <blending>alphatest_nocolor</blending>
+                                <texture>objects\flags\us_texan</texture>
+                                <width>2.00</width>
+                                <height>1.00</height>
+                            </flag>
+                        </assetreference>
+                    </dehcfedtexanforts>
+                </logic>
+            </component>
+            <anim>Idle
+                <component>flag</component>
+            </anim>
+        </attachment>
+        <attachment>civflag
+            <component>flag
+                <assetreference type="ClothFlag">
+                    <flag>
+                        <blending>alphatest_color</blending>
+                        <specialtexture></specialtexture>
+                        <width>2.00</width>
+                        <height>1.50</height>
+                    </flag>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>flag</component>
+            </anim>
+        </attachment>
+        <attachment>smokey
+            <component>smoke
+                <logic type="Destruction">
+                    <p0>
+                        <assetreference type="ParticleSystem"></assetreference>
+                    </p0>
+                    <p99>
+                        <assetreference type="ParticleSystem">
+                            <file>effects\smoke\factory_smoke.particle</file>
+                        </assetreference>
+                    </p99>
+                </logic>
+            </component>
+            <anim>idle
+                <component>smoke</component>
+            </anim>
+        </attachment>
+        <attachment>towersmoke
+            <component>smoke base
+                <assetreference type="ParticleSystem">
+                    <file>effects\smoke\collapse_smoke_tower.particle</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>smoke base</component>
+            </anim>
+        </attachment>
+        <component>fort
+            <logic type="LowPoly">
+                <normal>
+                    <logic type="Destruction">
+                        <p1>
+                            <assetreference type="GrannyModel">
+                                <file>buildings\fort\west_fort_damaged</file>
+                            </assetreference>
+                        </p1>
+                        <p99>
+                            <assetreference type="GrannyModel" shape="west_fort">
+                                <file>buildings\fort\west_fort</file>
+                            </assetreference>
+                        </p99>
+                    </logic>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel" shape="west_fort">
+                        <file>buildings\fort\lp_west_fort</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\fort\west_fort_decal</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>14.00</width>
+                <height>14.00</height>
+            </decal>
+            <attach a="pendentflag" frombone="bone_f1" tobone="bone_f1" syncanims="0"></attach>
+            <attach a="pendentflag01" frombone="bone_f2" tobone="bone_f2" syncanims="0"></attach>
+            <attach a="pendentflag" frombone="bone_f3" tobone="bone_f3" syncanims="0"></attach>
+            <attach a="pendentflag01" frombone="bone_f4" tobone="bone_f4" syncanims="0"></attach>
+            <attach a="civflag" frombone="bone_f5" tobone="bone_f5" syncanims="0"></attach>
+        </component>
+        <component>fort_death
+            <logic type="LowPoly">
+                <normal>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\fort\west_fort_damaged</file>
+                    </assetreference>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\fort\lp_west_fort</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\fort\west_fort_decal</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>14.00</width>
+                <height>14.00</height>
+            </decal>
+            <attach a="civflag" frombone="bone_f5" tobone="bone_f5" syncanims="0"></attach>
+            <attach a="pendentflag" frombone="bone_f1" tobone="bone_f1" syncanims="0"></attach>
+            <attach a="pendentflag01" frombone="bone_f2" tobone="bone_f2" syncanims="0"></attach>
+            <attach a="pendentflag" frombone="bone_f3" tobone="bone_f3" syncanims="0"></attach>
+            <attach a="pendentflag01" frombone="bone_f4" tobone="bone_f4" syncanims="0"></attach>
+        </component>
+        <anim>Idle
+            <assetreference type="GrannyAnim">
+                <file>buildings\fort\west_fort_idle</file>
+            </assetreference>
+            <component>fort</component>
+            <simskeleton>
+                <model>buildings\fort\west_fort_damaged</model>
+            </simskeleton>
+            <attach a="smokey" frombone="bone_s2" tobone="bone_s2" syncanims="0"></attach>
+            <attach a="smokey" frombone="bone_s1" tobone="bone_s1" syncanims="0"></attach>
+        </anim>
+        <anim>RangedAttack
+            <assetreference type="GrannyAnim">
+                <file>buildings\fort\west_fort_idle</file>
+                <tag type="Attack">0.45</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="FalconetShoot">0.45</tag>
+            </assetreference>
+            <component>fort</component>
+            <simskeleton>
+                <model>buildings\fort\west_fort_damaged</model>
+            </simskeleton>
+            <attach a="smokey" frombone="bone_s2" tobone="bone_s2" syncanims="0"></attach>
+            <attach a="smokey" frombone="bone_s1" tobone="bone_s1" syncanims="0"></attach>
+        </anim>
+        <anim>death
+            <component>fort_death</component>
+            <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        </anim>
+    </submodel>
+    <submodel>med_fort
+        <attachment>collapse_smoke
+            <component>collapse_smoke
+                <assetreference type="popcornFx">
+                    <file>smoke\collapse_smoke_fort.pkfx</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>collapse_smoke</component>
+            </anim>
+        </attachment>
+        <attachment>pendentflag
+            <component>flag
+                <assetreference type="ClothFlag">
+                    <flag>
+                        <blending>alphatest_color</blending>
+                        <texture>buildings\flags\pendent</texture>
+                        <width>3.00</width>
+                        <height>1.00</height>
+                    </flag>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>flag</component>
+            </anim>
+        </attachment>
+        <attachment>pendentflag01
+            <component>flag
+                <assetreference type="ClothFlag">
+                    <flag>
+                        <blending>alphatest_color</blending>
+                        <texture>buildings\flags\pendent01</texture>
+                        <width>2.00</width>
+                        <height>1.00</height>
+                    </flag>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>flag</component>
+            </anim>
+        </attachment>
+        <attachment>civflag
+            <component>flag
+                <assetreference type="ClothFlag">
+                    <flag>
+                        <blending>alphatest_color</blending>
+                        <specialtexture></specialtexture>
+                        <width>2.00</width>
+                        <height>1.50</height>
+                    </flag>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>flag</component>
+            </anim>
+        </attachment>
+        <attachment>smokey
+            <component>smoke
+                <logic type="Destruction">
+                    <p0>
+                        <assetreference type="ParticleSystem"></assetreference>
+                    </p0>
+                    <p99>
+                        <assetreference type="ParticleSystem">
+                            <file>effects\smoke\factory_smoke.particle</file>
+                        </assetreference>
+                    </p99>
+                </logic>
+            </component>
+            <anim>idle
+                <component>smoke</component>
+            </anim>
+        </attachment>
+        <attachment>towersmoke
+            <component>smoke base
+                <assetreference type="ParticleSystem">
+                    <file>effects\smoke\collapse_smoke_tower.particle</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>smoke base</component>
+            </anim>
+        </attachment>
+        <component>fort
+            <logic type="LowPoly">
+                <normal>
+                    <logic type="Destruction">
+                        <p1>
+                            <assetreference type="GrannyModel">
+                                <file>buildings\fort\med_fort_damaged</file>
+                            </assetreference>
+                        </p1>
+                        <p99>
+                            <assetreference type="GrannyModel" shape="med_fort">
+                                <file>buildings\fort\med_fort</file>
+                            </assetreference>
+                        </p99>
+                    </logic>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel" shape="east_fort">
+                        <file>buildings\fort\lp_med_fort</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\fort\west_fort_decal</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>14.00</width>
+                <height>14.00</height>
+            </decal>
+            <attach a="pendentflag" frombone="bone_f1" tobone="bone_f1" syncanims="0"></attach>
+            <attach a="pendentflag01" frombone="bone_f2" tobone="bone_f2" syncanims="0"></attach>
+            <attach a="pendentflag" frombone="bone_f3" tobone="bone_f3" syncanims="0"></attach>
+            <attach a="pendentflag01" frombone="bone_f4" tobone="bone_f4" syncanims="0"></attach>
+            <attach a="civflag" frombone="bone_f5" tobone="bone_f5" syncanims="0"></attach>
+            <attach a="smokey" frombone="ATTACHPOINT" tobone="bone_s2" syncanims="0"></attach>
+            <attach a="smokey" frombone="ATTACHPOINT" tobone="bone_s1" syncanims="0"></attach>
+        </component>
+        <component>fort_death
+            <logic type="LowPoly">
+                <normal>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\fort\med_fort_damaged</file>
+                    </assetreference>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\fort\lp_med_fort</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\fort\west_fort_decal</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>14.00</width>
+                <height>14.00</height>
+            </decal>
+            <attach a="pendentflag" frombone="bone_f1" tobone="bone_f1" syncanims="0"></attach>
+            <attach a="pendentflag01" frombone="bone_f2" tobone="bone_f2" syncanims="0"></attach>
+            <attach a="pendentflag" frombone="bone_f3" tobone="bone_f3" syncanims="0"></attach>
+            <attach a="pendentflag01" frombone="bone_f4" tobone="bone_f4" syncanims="0"></attach>
+            <attach a="civflag" frombone="bone_f5" tobone="bone_f5" syncanims="0"></attach>
+        </component>
+        <anim>Idle
+            <assetreference type="GrannyAnim">
+                <file>buildings\fort\med_fort_idle</file>
+            </assetreference>
+            <component>fort</component>
+            <simskeleton>
+                <model>buildings\fort\med_fort_damaged</model>
+            </simskeleton>
+            <attach a="smokey" frombone="bone_s2" tobone="bone_s2" syncanims="0"></attach>
+            <attach a="smokey" frombone="bone_s1" tobone="bone_s1" syncanims="0"></attach>
+        </anim>
+        <anim>RangedAttack
+            <assetreference type="GrannyAnim">
+                <file>buildings\fort\med_fort_idle</file>
+                <tag type="Attack">0.45</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="FalconetShoot">0.45</tag>
+            </assetreference>
+            <component>fort</component>
+            <simskeleton>
+                <model>buildings\fort\med_fort_damaged</model>
+            </simskeleton>
+            <attach a="smokey" frombone="bone_s2" tobone="bone_s2" syncanims="0"></attach>
+            <attach a="smokey" frombone="bone_s1" tobone="bone_s1" syncanims="0"></attach>
+        </anim>
+        <anim>Death
+            <component>fort_death</component>
+            <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        </anim>
+    </submodel>
+    <submodel>east_fort
+        <attachment>collapse_smoke
+            <component>collapse_smoke
+                <assetreference type="popcornFx">
+                    <file>smoke\collapse_smoke_fort.pkfx</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>collapse_smoke</component>
+            </anim>
+        </attachment>
+        <attachment>pendentflag
+            <component>flag
+                <assetreference type="ClothFlag">
+                    <flag>
+                        <blending>alphatest_color</blending>
+                        <texture>buildings\flags\pendent</texture>
+                        <width>3.00</width>
+                        <height>1.00</height>
+                    </flag>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>flag</component>
+            </anim>
+        </attachment>
+        <attachment>pendentflag01
+            <component>flag
+                <assetreference type="ClothFlag">
+                    <flag>
+                        <blending>alphatest_color</blending>
+                        <texture>buildings\flags\pendent01</texture>
+                        <width>2.00</width>
+                        <height>1.00</height>
+                    </flag>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>flag</component>
+            </anim>
+        </attachment>
+        <attachment>civflag
+            <component>flag
+                <assetreference type="ClothFlag">
+                    <flag>
+                        <blending>alphatest_color</blending>
+                        <specialtexture></specialtexture>
+                        <width>2.00</width>
+                        <height>1.50</height>
+                    </flag>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>flag</component>
+            </anim>
+        </attachment>
+        <attachment>smokey
+            <component>smoke
+                <logic type="Destruction">
+                    <p0>
+                        <assetreference type="ParticleSystem"></assetreference>
+                    </p0>
+                    <p99>
+                        <assetreference type="ParticleSystem">
+                            <file>effects\smoke\factory_smoke.particle</file>
+                        </assetreference>
+                    </p99>
+                </logic>
+            </component>
+            <anim>idle
+                <component>smoke</component>
+            </anim>
+        </attachment>
+        <attachment>towersmoke
+            <component>smoke base
+                <assetreference type="ParticleSystem">
+                    <file>effects\smoke\collapse_smoke_tower.particle</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>smoke base</component>
+            </anim>
+        </attachment>
+        <component>fort
+            <logic type="LowPoly">
+                <normal>
+                    <logic type="Destruction">
+                        <p1>
+                            <assetreference type="GrannyModel">
+                                <file>buildings\fort\east_fort_damaged</file>
+                            </assetreference>
+                        </p1>
+                        <p99>
+                            <assetreference type="GrannyModel" shape="east_fort">
+                                <file>buildings\fort\east_fort</file>
+                            </assetreference>
+                        </p99>
+                    </logic>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel" shape="east_fort">
+                        <file>buildings\fort\lp_east_fort</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\fort\east_fort_decal</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>15.75</width>
+                <height>15.75</height>
+                <xoffset>-0.15</xoffset>
+                <zoffset>-0.20</zoffset>
+            </decal>
+            <attach a="pendentflag" frombone="ATTACHPOINT" tobone="bone_f1" syncanims="0"></attach>
+            <attach a="pendentflag01" frombone="ATTACHPOINT" tobone="bone_f2" syncanims="0"></attach>
+            <attach a="pendentflag" frombone="ATTACHPOINT" tobone="bone_f3" syncanims="0"></attach>
+            <attach a="pendentflag01" frombone="ATTACHPOINT" tobone="bone_f4" syncanims="0"></attach>
+            <attach a="civflag" frombone="ATTACHPOINT" tobone="bone_f5" syncanims="0"></attach>
+            <attach a="smokey" frombone="ATTACHPOINT" tobone="bone_s2" syncanims="0"></attach>
+            <attach a="smokey" frombone="ATTACHPOINT" tobone="bone_s1" syncanims="0"></attach>
+        </component>
+        <component>fort_death
+            <logic type="LowPoly">
+                <normal>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\fort\east_fort_damaged</file>
+                    </assetreference>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\fort\lp_east_fort</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\fort\east_fort_decal</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>15.75</width>
+                <height>15.75</height>
+                <xoffset>-0.15</xoffset>
+                <zoffset>-0.20</zoffset>
+            </decal>
+            <attach a="pendentflag01" frombone="ATTACHPOINT" tobone="bone_f2" syncanims="0"></attach>
+            <attach a="pendentflag" frombone="ATTACHPOINT" tobone="bone_f3" syncanims="0"></attach>
+            <attach a="pendentflag01" frombone="ATTACHPOINT" tobone="bone_f4" syncanims="0"></attach>
+            <attach a="civflag" frombone="ATTACHPOINT" tobone="bone_f5" syncanims="0"></attach>
+            <attach a="pendentflag" frombone="ATTACHPOINT" tobone="bone_f1" syncanims="0"></attach>
+        </component>
+        <anim>Idle
+            <component>fort</component>
+            <simskeleton>
+                <model>buildings\fort\east_fort_damaged</model>
+            </simskeleton>
+        </anim>
+        <anim>Death
+            <component>fort_death</component>
+            <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        </anim>
+        <anim>RangedAttack
+            <assetreference type="GrannyAnim">
+                <file>buildings\fort\east_fort_idle</file>
+                <tag type="Attack">0.45</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="FalconetShoot">0.45</tag>
+            </assetreference>
+            <component>fort</component>
+            <simskeleton>
+                <model>buildings\fort\east_fort_damaged</model>
+            </simskeleton>
+        </anim>
+    </submodel>
+    <submodel>maya_fort
+        <attachment>flag
+            <include>buildings\fort\fort_flag.xml</include>
+        </attachment>
+        <attachment>torch1
+            <component>torch
+                <logic type="Destruction">
+                    <p0>
+                        <assetreference type="ParticleSystem"></assetreference>
+                    </p0>
+                    <p99>
+                        <assetreference type="popcornFx">
+                            <file>fire\fire_torch_a.pkfx</file>
+                        </assetreference>
+                    </p99>
+                </logic>
+            </component>
+            <anim>None
+                <component>torch</component>
+            </anim>
+        </attachment>
+        <attachment>collapse_smoke
+            <component>collapse_smoke
+                <assetreference type="popcornFx">
+                    <file>smoke\collapse_smoke_6x6.pkfx</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>collapse_smoke</component>
+            </anim>
+        </attachment>
+        <attachment>collapse_smoke2
+            <component>collapse_smoke
+                <assetreference type="popcornFx">
+                    <file>smoke\collapse_smoke_3x3.pkfx</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>collapse_smoke</component>
+            </anim>
+        </attachment>
+        <component>fort
+            <logic type="Destruction">
+                <p1>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\spc\aztec_temple\spc_aztec_temple_damaged</file>
+                        <materialvariant index="1"></materialvariant>
+                    </assetreference>
+                </p1>
+                <p99>
+                    <assetreference type="GrannyModel" shape="spc_aztecTemple">
+                        <file>buildings\spc\aztec_temple\spc_aztec_temple</file>
+                        <materialvariant index="1"></materialvariant>
+                    </assetreference>
+                </p99>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\spc\aztec_temple\aztec_temple_ground</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\spc\aztec_temple\aztec_temple_ground_bumpmap</bumptexture>
+                <width>14.50</width>
+                <height>14.50</height>
+            </decal>
+        </component>
+        <component>fort_death
+            <assetreference type="GrannyModel">
+                <file>buildings\spc\aztec_temple\spc_aztec_temple_damaged</file>
+                <materialvariant index="1"></materialvariant>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\spc\aztec_temple\aztec_temple_ground</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\spc\aztec_temple\aztec_temple_ground_bumpmap</bumptexture>
+                <width>14.50</width>
+                <height>14.50</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>fort</component>
+            <simskeleton>
+                <model>buildings\spc\aztec_temple\spc_aztec_temple_damaged</model>
+            </simskeleton>
+            <attach a="torch1" frombone="ATTACHPOINT" tobone="bone_lamp_01" syncanims="0"></attach>
+            <attach a="torch1" frombone="ATTACHPOINT" tobone="bone_lamp_02" syncanims="0"></attach>
+            <attach a="torch1" frombone="ATTACHPOINT" tobone="bone_lamp_03" syncanims="0"></attach>
+            <attach a="torch1" frombone="ATTACHPOINT" tobone="bone_lamp_04" syncanims="0"></attach>
+            <attach a="flag" frombone="ATTACHPOINT" tobone="aztec_temple" syncanims="0"></attach>
+        </anim>
+        <anim>RangedAttack
+            <assetreference type="GrannyAnim">
+                <file>buildings\fort\med_fort_idle</file>
+                <tag type="Attack">0.45</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="FalconetShoot">0.45</tag>
+            </assetreference>
+            <component>fort</component>
+            <simskeleton>
+                <model>buildings\spc\aztec_temple\spc_aztec_temple_damaged</model>
+            </simskeleton>
+            <attach a="torch1" frombone="ATTACHPOINT" tobone="bone_lamp_01" syncanims="0"></attach>
+            <attach a="torch1" frombone="ATTACHPOINT" tobone="bone_lamp_02" syncanims="0"></attach>
+            <attach a="torch1" frombone="ATTACHPOINT" tobone="bone_lamp_03" syncanims="0"></attach>
+            <attach a="torch1" frombone="ATTACHPOINT" tobone="bone_lamp_04" syncanims="0"></attach>
+            <attach a="flag" frombone="ATTACHPOINT" tobone="aztec_temple" syncanims="0"></attach>
+        </anim>
+        <anim>Death
+            <component>fort_death</component>
+            <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+            <attach a="collapse_smoke2" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        </anim>
+    </submodel>
+    <submodel>imperial_palace
+        <attachment>collapse_smoke
+            <component>collapse_smoke
+                <assetreference type="popcornFx">
+                    <file>smoke\collapse_smoke_6x6.pkfx</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>collapse_smoke</component>
+            </anim>
+        </attachment>
+        <component>LIVE
+            <logic type="LowPoly">
+                <normal>
+                    <logic type="Destruction">
+                        <p1>
+                            <assetreference type="GrannyModel">
+                                <file>buildings\wonders\imperial_palace\imperial_palace_damaged</file>
+                            </assetreference>
+                        </p1>
+                        <p99>
+                            <assetreference type="CompositeModel" shape="imperial_palace">
+                                <file>buildings\wonders\imperial_palace\imperial_palace</file>
+                            </assetreference>
+                        </p99>
+                    </logic>
+                    <decal>
+                        <effecttype>bump</effecttype>
+                        <texture>buildings\wonders\summer_palace\summer_palace_decal</texture>
+                        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                        <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                        <width>16.00</width>
+                        <height>15.50</height>
+                        <zoffset>0.00</zoffset>
+                    </decal>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\wonders\imperial_palace\imperial_palace_lp</file>
+                    </assetreference>
+                    <decal>
+                        <effecttype>bump</effecttype>
+                        <texture>buildings\wonders\summer_palace\summer_palace_decal</texture>
+                        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                        <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                        <width>16.00</width>
+                        <height>15.50</height>
+                        <zoffset>0.00</zoffset>
+                    </decal>
+                </lowpoly>
+            </logic>
+        </component>
+        <component>DEAD
+            <logic type="LowPoly">
+                <normal>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\wonders\imperial_palace\imperial_palace_damaged</file>
+                    </assetreference>
+                    <decal>
+                        <effecttype>default</effecttype>
+                        <texture>buildings\saloon\Saloon_floor_00</texture>
+                        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                        <width>8.00</width>
+                        <height>8.00</height>
+                        <zoffset>0.00</zoffset>
+                    </decal>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\wonders\imperial_palace\imperial_palace_lp</file>
+                    </assetreference>
+                    <decal>
+                        <effecttype>default</effecttype>
+                        <texture>buildings\saloon\Saloon_floor_00</texture>
+                        <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                        <width>8.00</width>
+                        <height>8.00</height>
+                        <zoffset>0.00</zoffset>
+                    </decal>
+                </lowpoly>
+            </logic>
+        </component>
+        <anim>Idle
+            <component>LIVE</component>
+            <simskeleton>
+                <model>buildings\wonders\imperial_palace\imperial_palace_damaged</model>
+            </simskeleton>
+        </anim>
+        <anim>Death
+            <component>DEAD</component>
+            <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        </anim>
+    </submodel>
+    <submodel>agra_fort_4
+        <attachment>collapse_smoke
+            <component>collapse_smoke
+                <assetreference type="popcornFx">
+                    <file>smoke\collapse_smoke_fort.pkfx</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>collapse_smoke</component>
+            </anim>
+        </attachment>
+        <attachment>civflag
+            <component>flag
+                <assetreference type="ClothFlag">
+                    <flag>
+                        <blending>alphatest_color</blending>
+                        <specialtexture></specialtexture>
+                        <width>2.00</width>
+                        <height>1.50</height>
+                    </flag>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>flag</component>
+            </anim>
+        </attachment>
+        <component>fort
+            <logic type="LowPoly">
+                <normal>
+                    <logic type="Destruction">
+                        <p1>
+                            <assetreference type="GrannyModel">
+                                <file>buildings\wonders\agra_fort\agra_fort_age4_damaged</file>
+                            </assetreference>
+                        </p1>
+                        <p99>
+                            <assetreference type="GrannyModel" shape="wonder_agra_fort">
+                                <file>buildings\wonders\agra_fort\Agra_fort_age4</file>
+                            </assetreference>
+                        </p99>
+                    </logic>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel" shape="wonder_agra_fort">
+                        <file>buildings\wonders\agra_fort\Agra_fort_age4_lp</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\wonders\agra_fort\agra_fort_decal</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>17.00</width>
+                <height>17.00</height>
+                <xoffset>0.00</xoffset>
+                <zoffset>0.00</zoffset>
+            </decal>
+            <attach a="civflag" frombone="ATTACHPOINT" tobone="bone_f5" syncanims="0"></attach>
+        </component>
+        <component>fort_death
+            <logic type="LowPoly">
+                <normal>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\wonders\agra_fort\agra_fort_age4_damaged</file>
+                    </assetreference>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\wonders\agra_fort\Agra_fort_age4_lp</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\fort\east_fort_decal</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>15.75</width>
+                <height>15.75</height>
+                <xoffset>0.00</xoffset>
+                <zoffset>0.00</zoffset>
+            </decal>
+        </component>
+        <anim>Idle
+            <assetreference type="GrannyAnim">
+                <file>buildings\wonders\agra_fort\Agra_fort_age4_anim</file>
+            </assetreference>
+            <component>fort</component>
+            <simskeleton>
+                <model>buildings\wonders\agra_fort\Agra_fort_age4_damaged</model>
+            </simskeleton>
+        </anim>
+        <anim>Death
+            <component>fort_death</component>
+            <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        </anim>
+        <anim>RangedAttack
+            <assetreference type="GrannyAnim">
+                <file>buildings\wonders\agra_fort\Agra_fort_age4_anim</file>
+                <tag type="Attack">0.45</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="FalconetShoot">0.45</tag>
+            </assetreference>
+            <component>fort</component>
+            <simskeleton>
+                <model>buildings\wonders\agra_fort\Agra_fort_age4_damaged</model>
+            </simskeleton>
+        </anim>
+    </submodel>
+    <submodel>agra_fort_2
+        <attachment>collapse_smoke
+            <component>collapse_smoke
+                <assetreference type="popcornFx">
+                    <file>smoke\collapse_smoke_fort.pkfx</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>collapse_smoke</component>
+            </anim>
+        </attachment>
+        <attachment>civflag
+            <component>flag
+                <assetreference type="ClothFlag">
+                    <flag>
+                        <blending>alphatest_color</blending>
+                        <specialtexture></specialtexture>
+                        <width>2.00</width>
+                        <height>1.50</height>
+                    </flag>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>flag</component>
+            </anim>
+        </attachment>
+        <component>fort
+            <logic type="LowPoly">
+                <normal>
+                    <logic type="Destruction">
+                        <p1>
+                            <assetreference type="GrannyModel">
+                                <file>buildings\wonders\agra_fort\white_fort_age2_damaged</file>
+                            </assetreference>
+                        </p1>
+                        <p99>
+                            <assetreference type="GrannyModel" shape="wonder_agra_fort">
+                                <file>buildings\wonders\agra_fort\white_fort_age2</file>
+                            </assetreference>
+                        </p99>
+                    </logic>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel" shape="wonder_agra_fort">
+                        <file>buildings\wonders\agra_fort\Agra_fort_age2_lp</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\wonders\agra_fort\agra_fort_decal</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>17.00</width>
+                <height>17.00</height>
+                <xoffset>0.00</xoffset>
+                <zoffset>0.00</zoffset>
+            </decal>
+        </component>
+        <component>fort_death
+            <logic type="LowPoly">
+                <normal>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\wonders\agra_fort\white_fort_age2_damaged</file>
+                    </assetreference>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\wonders\agra_fort\Agra_fort_age2_lp</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\fort\east_fort_decal</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>shadows_selections\flat_normal_black_spec</bumptexture>
+                <width>15.75</width>
+                <height>15.75</height>
+                <xoffset>0.00</xoffset>
+                <zoffset>0.00</zoffset>
+            </decal>
+        </component>
+        <anim>Idle
+            <assetreference type="GrannyAnim">
+                <file>buildings\wonders\agra_fort\Agra_fort_age2_anim</file>
+            </assetreference>
+            <component>fort</component>
+            <simskeleton>
+                <model>buildings\wonders\agra_fort\white_fort_age2_damaged</model>
+            </simskeleton>
+        </anim>
+        <anim>Death
+            <component>fort_death</component>
+            <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        </anim>
+        <anim>RangedAttack
+            <assetreference type="GrannyAnim">
+                <file>buildings\wonders\agra_fort\Agra_fort_age2_anim</file>
+                <tag type="Attack">0.45</tag>
+                <tag type="SpecificSoundSet" checkvisible="1" set="FalconetShoot">0.45</tag>
+            </assetreference>
+            <component>fort</component>
+            <simskeleton>
+                <model>buildings\wonders\agra_fort\white_fort_age2_damaged</model>
+            </simskeleton>
+        </anim>
+    </submodel>
+    <submodel>rock_church
+        <component>rock_church
+            <assetreference type="GrannyModel">
+                <file>buildings\spc\africa_east\rock_church\rock_church</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\spc\stockades\stockades_ground_bump</bumptexture>
+                <width>12.00</width>
+                <height>12.00</height>
+                <xoffset>0.00</xoffset>
+                <zoffset>0.00</zoffset>
+            </decal>
+        </component>
+        <anim>idle
+            <component>rock_church</component>
+        </anim>
+    </submodel>
+    <component>fort
+        <logic type="Tech">
+            <none>
+                <submodelref ref="west_fort"></submodelref>
+            </none>
+            <zpmapeastern>
+                <submodelref ref="east_fort"></submodelref>
+            </zpmapeastern>
+            <zpmapamerican>
+                <submodelref ref="maya_fort"></submodelref>
+            </zpmapamerican>
+            <zpmapmediterranean>
+                <submodelref ref="med_fort"></submodelref>
+            </zpmapmediterranean>
+            <zpmapfareast>
+                <submodelref ref="imperial_palace"></submodelref>
+            </zpmapfareast>
+            <zpmapindian>
+                <submodelref ref="agra_fort_4"></submodelref>
+            </zpmapindian>
+            <zpmapmiddleeast>
+                <submodelref ref="agra_fort_2"></submodelref>
+            </zpmapmiddleeast>
+            <zpmapafrican>
+                <submodelref ref="rock_church"></submodelref>
+            </zpmapafrican>
+        </logic>
+    </component>
+</animfile>

@@ -1,0 +1,34 @@
+<animfile>
+    <definebone>bone_Banner</definebone>
+    <attachment>hugeflag
+        <component>flag
+            <assetreference type="ClothFlag">
+                <flag>
+                    <blending>alphatest_color</blending>
+                    <specialtexture></specialtexture>
+                    <width>1.50</width>
+                    <height>1.20</height>
+                </flag>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>flag</component>
+        </anim>
+    </attachment>
+    <component>Palaces
+        <assetreference type="GrannyModel">
+            <file>buildings\hc_buildings\new\ee_trading_company_game_Model</file>
+        </assetreference>
+        <attach a="hugeflag" frombone="bone_place02" tobone="bone_Banner" syncanims="0"></attach>
+        <decal>
+            <effecttype>default</effecttype>
+            <texture>buildings\native_settlement\japan_decal_01</texture>
+            <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <width>10.00</width>
+            <height>10.00</height>
+        </decal>
+    </component>
+    <anim>Idle
+        <component>Palaces</component>
+    </anim>
+</animfile>

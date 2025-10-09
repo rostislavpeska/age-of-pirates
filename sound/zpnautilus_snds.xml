@@ -1,7 +1,7 @@
 <protounitsounddef>
   <protounit name="zpNautilus">
     <soundtype name="Select">
-      <soundset name="BritishPrivateerSelect">
+      <soundset name="Nemo_Select">
       </soundset>
     </soundtype>
     <soundtype name="Death">
@@ -13,7 +13,7 @@
       </soundset>
     </soundtype>
     <soundtype name="Acknowledge">
-      <soundset name="BritishPrivateerAcknowledge">
+      <soundset name="Nemo_Acknowledge">
       </soundset>
     </soundtype>
     <soundtype name="Exists">

@@ -1,0 +1,28 @@
+<mix>
+  <title>California Snow Ground</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="2">Africa\gravel_afr</texture>
+    <texture weight="2">Africa\ground1_afr</texture>
+    <texture weight="2">Africa\pathBlend_afr</texture>
+    <texture weight="2">Africa\path_afr</texture>
+    <texture weight="2">pampas\ground3_pam</texture>
+  </paint>
+
+
+  <objects mode="turbulence" freq="0.1" octaves="3" persistence="0.9" emptyweight="20" posoffset="0.5">
+    <model weight="1" scalemin="0.2" scalemax="1.4">terrain\underbrush\gc_brush_01</model>
+    <model weight="1" scalemin="0.2" scalemax="1.4">terrain\underbrush\gc_brush_02</model>
+    <model weight="1" scalemin="0.2" scalemax="1.4">terrain\underbrush\gc_brush_03</model>
+    <model weight="1" scalemin="0.5" scalemax="1.0">terrain\underbrush\underbrush_desert_bush5</model>
+    <model weight="1" scalemin="0.5" scalemax="1.0">terrain\underbrush\underbrush_desert_bush6</model>
+    <model weight="1" scalemin="0.3" scalemax="0.8">terrain\patagonia\underbrush_log_a_pat</model>
+    <model weight="1" scalemin="1.0" scalemax="3.0">terrain\patagonia\underbrush_log_b_pat</model>
+    <model weight="1" scalemin="0.1" scalemax="0.4">terrain\underbrush\underbrush_forest_log1</model>
+    <model weight="1" scalemin="0.1" scalemax="0.4">terrain\underbrush\underbrush_forest_log2</model>
+    <model weight="1" scalemin="0.1" scalemax="0.4">terrain\underbrush\underbrush_forest_log3</model>
+    <model weight="2" scalemin="0.3" scalemax="1.0">terrain\spc\east_africa\underbrush_east_africa_rock2</model>
+    <model weight="2" scalemin="0.3" scalemax="1.0">terrain\spc\east_africa\underbrush_east_africa_rock3</model>
+    <model weight="2" scalemin="0.2" scalemax="1.0">terrain\spc\east_africa\underbrush_east_africa_rock4</model>
+  </objects>
+</mix>

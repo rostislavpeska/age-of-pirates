@@ -6,19 +6,499 @@
 */
 //==============================================================================
 
-rule randomTests
+//==============================================================================
+// createAdvancedGaiaUnitQuery
+// Similar to ceateSimpleGaiaUnitQuery except you don't need to set player 
+// context and you can choose to sort the results
+//==============================================================================
+int createAdvancedGaiaUnitQuery(int unitTypeID = -1, int state = cUnitStateAlive, vector position = cInvalidVector,
+                              float radius = -1.0, bool sortAscending = false)
+{
+   static int unitQueryID = -1;
+
+   // If we don't have the query yet, create one.
+   if (unitQueryID < 0)
+   {
+      unitQueryID = kbUnitQueryCreate("miscSimpleUnitQuery");
+   }
+
+   // Define a query to get all matching units
+   if (unitQueryID != -1)
+   {
+      kbUnitQuerySetPlayerID(unitQueryID, 0);
+      kbUnitQuerySetUnitType(unitQueryID, unitTypeID);
+      kbUnitQuerySetState(unitQueryID, state);
+      kbUnitQuerySetPosition(unitQueryID, position);
+      kbUnitQuerySetMaximumDistance(unitQueryID, radius);
+      if (sortAscending == true)
+      {
+         kbUnitQuerySetAscendingSort(unitQueryID, true);
+      }
+   }
+   else
+   {
+      return (-1);
+   }
+
+   kbUnitQueryResetResults(unitQueryID);
+   return (unitQueryID);
+}
+
+//==============================================================================
+// getAgingUpAge
+// Little function from NewMercies to get your current age, or the one you are 
+// aging into
+//==============================================================================
+int getAgingUpAge(void)
+{
+	if (agingUp() == true)
+		return(kbGetAge() + 1);
+	return(kbGetAge());
+}
+
+//==============================================================================
+// getTeamAge
+// AssertiveWall: gets the average age of our team. Rounds down
+//==============================================================================
+
+int getTeamAge(bool ourTeam = true)
+{
+   int ageTotal = 0;
+   int numPlayers = 0;
+   int myTeam = kbGetPlayerTeam(cMyID);
+   int averageAge = -1;
+
+   if (ourTeam == false)
+   {  // Account for Gaia
+      numPlayers = -1;
+   }
+
+   for (i = 0; < cNumberPlayers)
+   {
+      if (ourTeam == true)
+      {
+         if (myTeam == kbGetPlayerTeam(i))
+         {
+            ageTotal += kbGetAgeForPlayer(i);
+            numPlayers += 1;
+         }
+      }
+      else
+      {
+         if (myTeam != kbGetPlayerTeam(i))
+         {
+            ageTotal += kbGetAgeForPlayer(i);
+            numPlayers += 1;
+         }
+      }
+   }
+
+   averageAge = ageTotal / numPlayers;
+
+   return (averageAge);
+}
+
+//==============================================================================
+/* updatePopEarlyMonitor
+
+   Watches for when we're aging up, and then updates the population counts
+   This is to ensure that the AI stops throttling its military after queuing
+   the age up. popManager() knows to calculate the age up via getAgingUpAge()
+*/
+//==============================================================================
+rule updatePopEarlyMonitor
+inactive
+group tcComplete
+minInterval 10
+{
+   static int numberOfHits = 0;
+
+   if (numberOfHits > kbGetAge())
+   {
+      return;
+   }
+   else if (agingUp() == true)
+   {
+      updateSettlersAndPopManager();
+      numberOfHits += 1;
+   }
+
+   if (kbGetAge() == cvMaxAge)
+   {
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
+/* raidManager , raidEnabler , desparationRaidEnabler
+   AssertiveWall: looks for stray villagers to raid. 
+
+   plan gets made once, then deleted. Need to keep it persistent
+
+   enabler just goes through conditions on when to enable the raid manager.
+   desparationRaidEnabler kicks in when we start falling behind
+*/
+//==============================================================================
+rule desparationRaidEnabler
 inactive
 minInterval 10
 {
-   int totalResources = 0;
-   totalResources = kbTotalResourceGet(cResourceFood);
+   if (xsIsRuleEnabled("raidManager") == true)
+   {
+      xsDisableSelf();
+      return;
+   }
 
-   aiChat(1, "totalResources: " + totalResources);
-   
-   int totalUnitQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf, cUnitStateAny);
-   int totalUnit = kbUnitQueryExecute(totalUnitQuery);
+   bool timeForDesparationRaid = false;
 
-   //aiChat(1, "totalResources: " + totalResources + " totalUnit: " + totalUnit);
+   // The next block looks at scores
+   int teamScore = 0;
+   int enemyScore = 0;
+   int numEnemies = -1;   // start at -1 to account for gaia
+   int numAllies = 0;
+   int myTeam = kbGetPlayerTeam(cMyID);
+
+   for (i = 0; < cNumberPlayers)
+   {
+      if (myTeam == kbGetPlayerTeam(i))
+      {
+         teamScore += aiGetScore(i);
+         numAllies += 1;
+      }
+      else
+      {
+         enemyScore = aiGetScore(i);
+         numEnemies += 1;
+      }
+   }
+
+   // If we are winning by a decent amount attack, otherwise check if we are losing
+   if (((teamScore / numAllies < (1.1 * enemyScore / numEnemies)) && getTeamAge(true) < getTeamAge(false)) ||
+         (teamScore / numAllies < (0.9 * enemyScore / numEnemies)))
+   {
+      timeForDesparationRaid = true;
+   }
+
+   if (timeForDesparationRaid == true)
+   {
+      xsEnableRule("raidManager");
+      xsDisableSelf();
+   }
+}
+
+rule raidEnabler
+inactive
+minInterval 10
+{
+   if (gStartOnDifferentIslands == true)
+   {  // defend plan can't transport across water
+      xsDisableSelf();
+      return;
+   }
+
+   int age = kbGetAge();
+   if (age < cAge2)
+   {
+      return;
+   }
+
+   // Special case since they get lots of cavalry. 90% chance of wanting to raid
+   if (cMyCiv == cCivGermans || cMyCiv == cCivXPSioux)
+   {
+      if (aiRandInt(10) == 1)
+      {
+         xsEnableRule("desparationRaidEnabler");         
+         xsDisableSelf();
+         return;
+      }
+      else
+      {
+         xsEnableRule("raidManager");
+         return;
+      }
+   }
+
+   if (gStrategy == cStrategyRush)
+   {  // 80% chance of raiding when rushing
+      if (aiRandInt(10) <= 2)
+      {
+         xsEnableRule("desparationRaidEnabler");         
+         xsDisableSelf();
+         return;
+      }
+      else
+      {
+         xsEnableRule("raidManager");
+         return;
+      }
+   }
+   else if (gStrategy == cStrategyNakedFF)
+   {  // 40% chance once we hit age 3
+      if (age >= cAge3)
+      {
+         if (aiRandInt(10) <= 6)
+         {
+            xsEnableRule("desparationRaidEnabler");
+            xsDisableSelf();
+            return;
+         }
+         else
+         {
+            xsEnableRule("raidManager");
+            return;
+         }
+      }
+   }
+   else if (gStrategy == cStrategySafeFF)
+   {  // 60% chance of raiding
+      if (aiRandInt(10) <= 4)
+      {
+         xsEnableRule("desparationRaidEnabler");         
+         xsDisableSelf();
+         return;
+      }
+      else
+      {
+         xsEnableRule("raidManager");
+         return;
+      }
+   }
+   else if (gStrategy == cStrategyFastIndustrial)
+   {  // 50% chance of raiding
+      if (aiRandInt(10) <= 5)
+      {
+         xsEnableRule("desparationRaidEnabler");         
+         xsDisableSelf();
+         return;
+      }
+      else
+      {
+         xsEnableRule("raidManager");
+         return;
+      }
+   }
+   else
+   {  // 30% chance of raiding
+      if (aiRandInt(10) <= 7)
+      {
+         xsEnableRule("desparationRaidEnabler");         
+         xsDisableSelf();
+         return;
+      }
+      else
+      {
+         xsEnableRule("raidManager");
+         return;
+      }
+   }
+}
+
+rule raidManager
+inactive
+minInterval 10
+{
+   // Ensure we have enough cav
+   int cavNumber = kbUnitCount(cMyID, cUnitTypeAbstractHeavyCavalry, cUnitStateAlive) + kbUnitCount(cMyID, cUnitTypeAbstractCoyoteMan, cUnitStateAlive);
+   int minCav = 2 + kbGetAge();
+   //static int raidPlanID = -1;
+
+   if (cavNumber < minCav)
+   {
+      return;
+   }
+
+   if (aiPlanGetActive(gRaidPlanID) == false)
+   {
+      gRaidPlanID = -1;
+   }
+
+   // Look for stray undefended villagers, favoring those closer to us
+   vector ourLocation = kbUnitGetPosition(aiPlanGetUnitByIndex(gRaidPlanID, 0));
+   vector homeBase = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   if (gForwardBaseState == cForwardBaseStateActive)
+   {
+      homeBase = gForwardBaseLocation;
+   }
+
+   if (ourLocation == cInvalidVector)
+   {
+      ourLocation = homeBase;
+   }
+
+   int villagerQuery = createSimpleUnitQuery(cUnitTypeAbstractVillager, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
+   int numberVilFound = kbUnitQueryExecute(villagerQuery);
+   int tempVil = -1;
+   vector tempLocation = cInvalidVector;
+   int vilClumpSize = 0;
+   int bestClumpSize = 0;
+   vector bestLocation = cInvalidVector;
+   int tempDistance = 9999;
+   int bestDistance = 9999;
+   int tempNearbyTowers = -1;
+   int tempNearbyMilitary = -1;
+   int tempNearbyTC = -1;
+   bool freeRaid = false;
+   int numInPlan = -1;
+   static int nextChatSend = 300000;
+
+   if (gRaidPlanID < 0) // First run, create a persistent plan.
+   {
+      gRaidPlanID = aiPlanCreate("Persistent Raiding Plan", cPlanCombat);
+
+      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanCombatType, 0, cCombatPlanCombatTypeDefend);
+      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+      aiPlanSetVariableVector(gRaidPlanID, cCombatPlanTargetPoint, 0, homeBase);
+      aiPlanSetInitialPosition(gRaidPlanID, homeBase);
+      aiPlanSetVariableFloat(gRaidPlanID, cCombatPlanGatherDistance, 0, 30.0);
+      aiPlanSetVariableFloat(gRaidPlanID, cCombatPlanTargetEngageRange, 0, 25.0);
+      aiPlanSetDesiredPriority(gRaidPlanID, 30);  // Lower than standard attack so they can join
+      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanRefreshFrequency, 0, cDifficultyCurrent >= cDifficultyHard ? 300 : 1000);
+      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat);
+      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+      aiPlanSetVariableInt(gRaidPlanID, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternLRU);
+      //aiPlanSetVariableInt(gRaidPlanID, cCombatPlanNoTargetTimeout, 0, 2000);
+      
+      // Just a small number of cav
+      aiPlanAddUnitType(gRaidPlanID, cUnitTypeAbstractHeavyCavalry, 0, minCav, minCav);
+      aiPlanAddUnitType(gRaidPlanID, cUnitTypeAbstractCoyoteMan, 0, minCav, minCav);
+
+      aiPlanSetActive(gRaidPlanID);
+   }
+
+   numInPlan = aiPlanGetNumberUnits(gRaidPlanID, cUnitTypeAbstractHeavyCavalry) + aiPlanGetNumberUnits(gRaidPlanID, cUnitTypeAbstractCoyoteMan);
+   if (numInPlan < minCav)
+   {
+      aiPlanAddUnitType(gRaidPlanID, cUnitTypeAbstractHeavyCavalry, 2, minCav, minCav);
+      aiPlanAddUnitType(gRaidPlanID, cUnitTypeAbstractCoyoteMan, 2, minCav, minCav);
+   }
+
+   // Find the "closest" villager clump. each extra villager is worth 10m, for a max of 40m
+   // defensive buildings weight as "further" away
+   // avoid raiding anywhere with troops or too many towers nearby
+   for (i = 0; < numberVilFound)
+   {
+      tempVil = kbUnitQueryGetResult(villagerQuery, i);
+      tempLocation = kbUnitGetPosition(tempVil);
+      vilClumpSize = getUnitCountByLocation(cUnitTypeAbstractVillager, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         tempLocation, 8.0);
+      tempNearbyTowers = getUnitCountByLocation(cUnitTypeAbstractDefensiveBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         tempLocation, 25.0);
+      tempNearbyMilitary = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         tempLocation, 40.0);
+      tempNearbyTC = getUnitCountByLocation(cUnitTypeTownCenter, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         tempLocation, 40.0);
+
+      if (tempNearbyMilitary > 2 || tempNearbyTowers > 1)
+      {  // Still go for it if there's only 1 tower or a tiny force
+         continue;
+      }
+
+      if (tempNearbyTC > 0) // Currently can't handle garrisoned vills
+      {
+         continue;
+      }
+
+      if (vilClumpSize > 4)
+      {
+         vilClumpSize = 4;
+      }
+      tempDistance = distance(ourLocation, tempLocation) - 10 * vilClumpSize + 40 * (tempNearbyTowers + tempNearbyTC) + 20 * tempNearbyMilitary;
+
+      if (tempDistance < bestDistance)
+      {
+         bestClumpSize = vilClumpSize;
+         bestLocation = tempLocation;
+         bestDistance = tempDistance;
+         if (tempNearbyTowers <= 0)
+         {
+            freeRaid = true;
+         }
+      }
+   }
+
+   // If we're here, we can't see any villagers to raid. Check random resources around the player's base
+   // randomly skips through the query as it goes. Makes sure the mine isn't too close to enemy defenses
+   if (bestLocation == cInvalidVector)
+   {
+      vector enemyLocation = guessEnemyLocation();
+      int halfMapRange = distance(enemyLocation, kbGetMapCenter());
+      int goldMineQuery = createSimpleFoggedUnitQuery(cUnitTypeResource, 0, cUnitStateAny, enemyLocation, halfMapRange);
+      int mineNumber = kbUnitQueryExecute(goldMineQuery);
+      int tempMineID = -1;
+      static int nextMine = 0;
+      static bool anotherMineAllowed = true;
+
+      // Don't move to next mine until we are near it
+      tempLocation = aiPlanGetVariableVector(gRaidPlanID, cCombatPlanTargetPoint, 0);
+      tempDistance = distance(ourLocation, tempLocation);
+
+      if (distance(ourLocation, tempLocation) < 35)
+      {  // We can choose another place to check as long as we're close enough to our current target
+         anotherMineAllowed = true;
+      }
+
+      if (anotherMineAllowed == true)
+      {  
+         for (i = 0; < mineNumber)
+         {
+            tempMineID = kbUnitQueryGetResult(goldMineQuery, i);
+
+            if (kbProtoUnitIsType(0, kbUnitGetProtoUnitID(tempMineID), cUnitTypeWood) == true)
+            {  // Skip trees
+               continue;
+            }
+
+            tempLocation = kbUnitGetPosition(tempMineID);
+            if (distance(ourLocation, tempLocation) < 35)
+            {  // Ignore the one we are right next to
+               continue;
+            }
+            tempNearbyTowers = getUnitCountByLocation(cUnitTypeAbstractDefensiveBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+               tempLocation, 25.0);
+            tempNearbyMilitary = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+               tempLocation, 40.0);
+            tempNearbyTC = getUnitCountByLocation(cUnitTypeTownCenter, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+               tempLocation, 40.0);
+
+            if (tempNearbyMilitary > 2 || tempNearbyTowers > 0 || tempNearbyTC > 0)
+            {  // Don't randomly check any dangerous spots
+               continue;
+            }
+
+            tempDistance = distance(ourLocation, tempLocation) + 20 * tempNearbyMilitary;
+
+            if (kbUnitGetActionTypeByIndex(tempMineID, 0) == cActionTypeDeath)
+            {  // Prioritize dead hunts
+               tempDistance = tempDistance / 4;
+               break;
+            }
+            
+            if (tempDistance < bestDistance && tempLocation != cInvalidVector)
+            {
+               bestClumpSize = vilClumpSize;
+               bestLocation = tempLocation;
+               bestDistance = tempDistance;
+               anotherMineAllowed = false;
+            }
+         }
+      }
+   }
+
+   if (bestLocation != cInvalidVector)
+   {
+      aiPlanSetVariableVector(gRaidPlanID, cCombatPlanTargetPoint, 0, bestLocation);
+
+      if (xsGetTime() > nextChatSend)
+      {
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemySettlers, bestLocation);
+         nextChatSend = 2 * nextChatSend + aiRandInt(60000);
+      }
+   }
+   else if (anotherMineAllowed == true)
+   {  // If we're here, we tried to look for a random mine to raid but couldn't find one
+      aiPlanSetVariableVector(gRaidPlanID, cCombatPlanTargetPoint, 0, homeBase);
+   }
+
 }
 
 //==============================================================================
@@ -252,6 +732,63 @@ minInterval 2
       return;
    }
 }
+
+//==============================================================================
+/* wallQueueManager
+
+   Steps through the list of wall plans and only builds a few at a time
+
+   gStarFortWallPlanArray
+
+*/
+//==============================================================================
+rule wallQueueManager
+inactive
+minInterval 10
+{
+   // Step through the wall plan array
+   int totalWallPlans = xsArrayGetSize(gStarFortWallPlanArray);
+   int tempWallPlan1 = 0;
+   int activeCount = 0;
+
+   static int activeTracker = -1; // used to track last plan we've activated
+
+   if (totalWallPlans <= 0)
+   {
+      xsDisableSelf();
+      return;
+   }
+
+
+   for (i = 0; < totalWallPlans)
+   {
+      // Make sure we only have 3 active at a time
+      tempWallPlan1 = xsArrayGetInt(gStarFortWallPlanArray, i);
+
+      if (aiPlanGetActive(tempWallPlan1) == true)
+      {
+         activeCount += 1;
+      }
+      else if (i >= activeTracker)
+      {
+         aiPlanSetActive(tempWallPlan1, true);
+         aiPlanSetDesiredResourcePriority(tempWallPlan1, 15);
+         activeCount += 1;
+         activeTracker += 1;
+      }
+
+      if (activeCount >= 3)
+      {
+         break;
+      }
+
+      if (activeCount == 0 && activeTracker >= totalWallPlans && i >= totalWallPlans)
+      {
+         activeTracker = 0;
+      }
+   }
+}
+
 
 //==============================================================================
 /* cannonCorners
@@ -606,7 +1143,6 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
    start26 = rotateByReferencePoint(position, start26 - position, angle);
    end26 = rotateByReferencePoint(position, end26 - position, angle);
 
-
    // segment 1
    int wallPlan1ID = aiPlanCreate("WallInBase1", cPlanBuildWall);
    if (wallPlan1ID != -1)
@@ -621,7 +1157,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan1ID, pri);
-      aiPlanSetActive(wallPlan1ID, true);
+      //aiPlanSetActive(wallPlan1ID, true);
    }
 
    // segment 2
@@ -638,7 +1174,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan2ID, pri);
-      aiPlanSetActive(wallPlan2ID, true);
+      //aiPlanSetActive(wallPlan2ID, true);
    }
 
    // segment 3
@@ -653,7 +1189,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan3ID, baseID);
       aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan3ID, pri);
-      aiPlanSetActive(wallPlan3ID, true);
+      //aiPlanSetActive(wallPlan3ID, true);
    }
 
    // segment 4
@@ -668,7 +1204,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan4ID, baseID);
       aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan4ID, pri);
-      aiPlanSetActive(wallPlan4ID, true);
+      //aiPlanSetActive(wallPlan4ID, true);
    }
 
    // segment 5
@@ -683,7 +1219,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan5ID, baseID);
       aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan5ID, pri);
-      aiPlanSetActive(wallPlan5ID, true);
+      //aiPlanSetActive(wallPlan5ID, true);
    }
 
    // segment 6
@@ -698,7 +1234,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan6ID, baseID);
       aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan6ID, pri);
-      aiPlanSetActive(wallPlan6ID, true);
+      //aiPlanSetActive(wallPlan6ID, true);
    }
 
    // segment 7
@@ -713,7 +1249,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan7ID, baseID);
       aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan7ID, pri);
-      aiPlanSetActive(wallPlan7ID, true);
+      //aiPlanSetActive(wallPlan7ID, true);
    }
 
    // segment 8
@@ -728,7 +1264,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan8ID, baseID);
       aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan8ID, pri);
-      aiPlanSetActive(wallPlan8ID, true);
+      //aiPlanSetActive(wallPlan8ID, true);
    }
 
    // segment 9
@@ -743,7 +1279,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan9ID, baseID);
       aiPlanSetEscrowID(wallPlan9ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan9ID, pri);
-      aiPlanSetActive(wallPlan9ID, true);
+      //aiPlanSetActive(wallPlan9ID, true);
    }
 
    // segment 10
@@ -758,7 +1294,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan10ID, baseID);
       aiPlanSetEscrowID(wallPlan10ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan10ID, pri);
-      aiPlanSetActive(wallPlan10ID, true);
+      //aiPlanSetActive(wallPlan10ID, true);
    }
 
    // segment 11
@@ -773,7 +1309,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan11ID, baseID);
       aiPlanSetEscrowID(wallPlan11ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan11ID, pri);
-      aiPlanSetActive(wallPlan11ID, true);
+      //aiPlanSetActive(wallPlan11ID, true);
    }
 
    // segment 12
@@ -788,7 +1324,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan12ID, baseID);
       aiPlanSetEscrowID(wallPlan12ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan12ID, pri);
-      aiPlanSetActive(wallPlan12ID, true);
+      //aiPlanSetActive(wallPlan12ID, true);
    }
 
    // segment 13
@@ -803,7 +1339,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan13ID, baseID);
       aiPlanSetEscrowID(wallPlan13ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan13ID, pri);
-      aiPlanSetActive(wallPlan13ID, true);
+      //aiPlanSetActive(wallPlan13ID, true);
    }
 
    // segment 14
@@ -818,7 +1354,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan14ID, baseID);
       aiPlanSetEscrowID(wallPlan14ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan14ID, pri);
-      aiPlanSetActive(wallPlan14ID, true);
+      //aiPlanSetActive(wallPlan14ID, true);
    }
 
    // segment 15
@@ -833,7 +1369,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan15ID, baseID);
       aiPlanSetEscrowID(wallPlan15ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan15ID, pri);
-      aiPlanSetActive(wallPlan15ID, true);
+      //aiPlanSetActive(wallPlan15ID, true);
    }
 
    // segment 16
@@ -848,7 +1384,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan16ID, baseID);
       aiPlanSetEscrowID(wallPlan16ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan16ID, pri);
-      aiPlanSetActive(wallPlan16ID, true);
+      //aiPlanSetActive(wallPlan16ID, true);
    }
 
    // segment 17
@@ -863,7 +1399,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan17ID, baseID);
       aiPlanSetEscrowID(wallPlan17ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan17ID, pri);
-      aiPlanSetActive(wallPlan17ID, true);
+      //aiPlanSetActive(wallPlan17ID, true);
    }
 
    // segment 18
@@ -878,7 +1414,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan18ID, baseID);
       aiPlanSetEscrowID(wallPlan18ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan18ID, pri);
-      aiPlanSetActive(wallPlan18ID, true);
+      //aiPlanSetActive(wallPlan18ID, true);
    }
 
    // segment 19
@@ -893,7 +1429,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan19ID, baseID);
       aiPlanSetEscrowID(wallPlan19ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan19ID, pri);
-      aiPlanSetActive(wallPlan19ID, true);
+      //aiPlanSetActive(wallPlan19ID, true);
    }
 
    // segment 20
@@ -908,7 +1444,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan20ID, baseID);
       aiPlanSetEscrowID(wallPlan20ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan20ID, pri);
-      aiPlanSetActive(wallPlan20ID, true);
+      //aiPlanSetActive(wallPlan20ID, true);
    }
 
    // segment 21
@@ -923,7 +1459,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan21ID, baseID);
       aiPlanSetEscrowID(wallPlan21ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan21ID, pri);
-      aiPlanSetActive(wallPlan21ID, true);
+      //aiPlanSetActive(wallPlan21ID, true);
    }
 
    // segment 22
@@ -938,7 +1474,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan22ID, baseID);
       aiPlanSetEscrowID(wallPlan22ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan22ID, pri);
-      aiPlanSetActive(wallPlan22ID, true);
+      //aiPlanSetActive(wallPlan22ID, true);
    }
 
    // segment 23
@@ -953,7 +1489,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan23ID, baseID);
       aiPlanSetEscrowID(wallPlan23ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan23ID, pri);
-      aiPlanSetActive(wallPlan23ID, true);
+      //aiPlanSetActive(wallPlan23ID, true);
    }
 
    // segment 24
@@ -968,7 +1504,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan24ID, baseID);
       aiPlanSetEscrowID(wallPlan24ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan24ID, pri);
-      aiPlanSetActive(wallPlan24ID, true);
+      //aiPlanSetActive(wallPlan24ID, true);
    }
 
    // segment 25
@@ -983,7 +1519,7 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan25ID, baseID);
       aiPlanSetEscrowID(wallPlan25ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan25ID, pri);
-      aiPlanSetActive(wallPlan25ID, true);
+      //aiPlanSetActive(wallPlan25ID, true);
    }
 
    // segment 26
@@ -998,8 +1534,40 @@ void sawtoothFort(vector position = cInvalidVector, vector fortCenter = cInvalid
       aiPlanSetBaseID(wallPlan26ID, baseID);
       aiPlanSetEscrowID(wallPlan26ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan26ID, pri);
-      aiPlanSetActive(wallPlan26ID, true);
+      //aiPlanSetActive(wallPlan26ID, true);
    }
+
+   // Set up wall segment array
+   gStarFortWallPlanArray = xsArrayCreateInt(26, -1, "SFWallArraySawtooth");
+
+   xsArraySetInt(gStarFortWallPlanArray, 0, wallPlan1ID);
+   xsArraySetInt(gStarFortWallPlanArray, 1, wallPlan2ID);
+   xsArraySetInt(gStarFortWallPlanArray, 2, wallPlan3ID);
+   xsArraySetInt(gStarFortWallPlanArray, 3, wallPlan4ID);
+   xsArraySetInt(gStarFortWallPlanArray, 4, wallPlan5ID);
+   xsArraySetInt(gStarFortWallPlanArray, 5, wallPlan6ID);
+   xsArraySetInt(gStarFortWallPlanArray, 6, wallPlan7ID);
+   xsArraySetInt(gStarFortWallPlanArray, 7, wallPlan8ID);
+   xsArraySetInt(gStarFortWallPlanArray, 8, wallPlan9ID);
+   xsArraySetInt(gStarFortWallPlanArray, 9, wallPlan10ID);
+   xsArraySetInt(gStarFortWallPlanArray, 10, wallPlan11ID);
+   xsArraySetInt(gStarFortWallPlanArray, 11, wallPlan12ID);
+   xsArraySetInt(gStarFortWallPlanArray, 12, wallPlan13ID);
+   xsArraySetInt(gStarFortWallPlanArray, 13, wallPlan14ID);
+   xsArraySetInt(gStarFortWallPlanArray, 14, wallPlan15ID);
+   xsArraySetInt(gStarFortWallPlanArray, 15, wallPlan16ID);
+   xsArraySetInt(gStarFortWallPlanArray, 16, wallPlan17ID);
+   xsArraySetInt(gStarFortWallPlanArray, 17, wallPlan18ID);
+   xsArraySetInt(gStarFortWallPlanArray, 18, wallPlan19ID);
+   xsArraySetInt(gStarFortWallPlanArray, 19, wallPlan20ID);
+   xsArraySetInt(gStarFortWallPlanArray, 20, wallPlan21ID);
+   xsArraySetInt(gStarFortWallPlanArray, 21, wallPlan22ID);
+   xsArraySetInt(gStarFortWallPlanArray, 22, wallPlan23ID);
+   xsArraySetInt(gStarFortWallPlanArray, 23, wallPlan24ID);
+   xsArraySetInt(gStarFortWallPlanArray, 24, wallPlan25ID);
+   xsArraySetInt(gStarFortWallPlanArray, 25, wallPlan26ID);
+
+   xsEnableRule("wallQueueManager");
 
    return;
 
@@ -1164,7 +1732,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan1ID, pri);
-      aiPlanSetActive(wallPlan1ID, true);
+      //aiPlanSetActive(wallPlan1ID, true);
    }
 
    // segment 2
@@ -1181,7 +1749,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan2ID, pri);
-      aiPlanSetActive(wallPlan2ID, true);
+      //aiPlanSetActive(wallPlan2ID, true);
    }
 
    // segment 3
@@ -1196,7 +1764,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan3ID, baseID);
       aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan3ID, pri);
-      aiPlanSetActive(wallPlan3ID, true);
+      //aiPlanSetActive(wallPlan3ID, true);
    }
 
    // segment 4
@@ -1211,7 +1779,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan4ID, baseID);
       aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan4ID, pri);
-      aiPlanSetActive(wallPlan4ID, true);
+      //aiPlanSetActive(wallPlan4ID, true);
    }
 
    // segment 5
@@ -1226,7 +1794,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan5ID, baseID);
       aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan5ID, pri);
-      aiPlanSetActive(wallPlan5ID, true);
+      //aiPlanSetActive(wallPlan5ID, true);
    }
 
    // segment 6
@@ -1241,7 +1809,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan6ID, baseID);
       aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan6ID, pri);
-      aiPlanSetActive(wallPlan6ID, true);
+      //aiPlanSetActive(wallPlan6ID, true);
    }
 
    // segment 7
@@ -1256,7 +1824,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan7ID, baseID);
       aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan7ID, pri);
-      aiPlanSetActive(wallPlan7ID, true);
+      //aiPlanSetActive(wallPlan7ID, true);
    }
 
    // segment 8
@@ -1271,7 +1839,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan8ID, baseID);
       aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan8ID, pri);
-      aiPlanSetActive(wallPlan8ID, true);
+      //aiPlanSetActive(wallPlan8ID, true);
    }
 
    // segment 9
@@ -1286,7 +1854,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan9ID, baseID);
       aiPlanSetEscrowID(wallPlan9ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan9ID, pri);
-      aiPlanSetActive(wallPlan9ID, true);
+      //aiPlanSetActive(wallPlan9ID, true);
    }
 
    // segment 10
@@ -1301,7 +1869,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan10ID, baseID);
       aiPlanSetEscrowID(wallPlan10ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan10ID, pri);
-      aiPlanSetActive(wallPlan10ID, true);
+      //aiPlanSetActive(wallPlan10ID, true);
    }
 
    // segment 11
@@ -1316,7 +1884,7 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan11ID, baseID);
       aiPlanSetEscrowID(wallPlan11ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan11ID, pri);
-      aiPlanSetActive(wallPlan11ID, true);
+      //aiPlanSetActive(wallPlan11ID, true);
    }
 
    // segment 12
@@ -1331,8 +1899,27 @@ void haudOverlappingRingFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetBaseID(wallPlan12ID, baseID);
       aiPlanSetEscrowID(wallPlan12ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan12ID, pri);
-      aiPlanSetActive(wallPlan12ID, true);
+      //aiPlanSetActive(wallPlan12ID, true);
    }
+
+   // Set up wall segment array
+   gStarFortWallPlanArray = xsArrayCreateInt(12, -1, "SFWallArrayHaud");
+
+   xsArraySetInt(gStarFortWallPlanArray, 0, wallPlan1ID);
+   xsArraySetInt(gStarFortWallPlanArray, 1, wallPlan2ID);
+   xsArraySetInt(gStarFortWallPlanArray, 2, wallPlan3ID);
+   xsArraySetInt(gStarFortWallPlanArray, 3, wallPlan4ID);
+   xsArraySetInt(gStarFortWallPlanArray, 4, wallPlan5ID);
+   xsArraySetInt(gStarFortWallPlanArray, 5, wallPlan6ID);
+   xsArraySetInt(gStarFortWallPlanArray, 6, wallPlan7ID);
+   xsArraySetInt(gStarFortWallPlanArray, 7, wallPlan8ID);
+   xsArraySetInt(gStarFortWallPlanArray, 8, wallPlan9ID);
+   xsArraySetInt(gStarFortWallPlanArray, 9, wallPlan10ID);
+   xsArraySetInt(gStarFortWallPlanArray, 10, wallPlan11ID);
+   xsArraySetInt(gStarFortWallPlanArray, 11, wallPlan12ID);
+
+   xsEnableRule("wallQueueManager");
+
 
    return;
 
@@ -1474,7 +2061,7 @@ void sumterFort(vector position = cInvalidVector, vector fortCenter = cInvalidVe
       aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan1ID, pri);
-      aiPlanSetActive(wallPlan1ID, true);
+      //aiPlanSetActive(wallPlan1ID, true);
    }
 
    // segment 2
@@ -1491,7 +2078,7 @@ void sumterFort(vector position = cInvalidVector, vector fortCenter = cInvalidVe
       aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan2ID, pri);
-      aiPlanSetActive(wallPlan2ID, true);
+      //aiPlanSetActive(wallPlan2ID, true);
    }
 
    // segment 3
@@ -1506,7 +2093,7 @@ void sumterFort(vector position = cInvalidVector, vector fortCenter = cInvalidVe
       aiPlanSetBaseID(wallPlan3ID, baseID);
       aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan3ID, pri);
-      aiPlanSetActive(wallPlan3ID, true);
+      //aiPlanSetActive(wallPlan3ID, true);
    }
 
    // segment 4
@@ -1521,7 +2108,7 @@ void sumterFort(vector position = cInvalidVector, vector fortCenter = cInvalidVe
       aiPlanSetBaseID(wallPlan4ID, baseID);
       aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan4ID, pri);
-      aiPlanSetActive(wallPlan4ID, true);
+      //aiPlanSetActive(wallPlan4ID, true);
    }
 
    // segment 5
@@ -1536,7 +2123,7 @@ void sumterFort(vector position = cInvalidVector, vector fortCenter = cInvalidVe
       aiPlanSetBaseID(wallPlan5ID, baseID);
       aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan5ID, pri);
-      aiPlanSetActive(wallPlan5ID, true);
+      //aiPlanSetActive(wallPlan5ID, true);
    }
 
    // segment 6
@@ -1551,7 +2138,7 @@ void sumterFort(vector position = cInvalidVector, vector fortCenter = cInvalidVe
       aiPlanSetBaseID(wallPlan6ID, baseID);
       aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan6ID, pri);
-      aiPlanSetActive(wallPlan6ID, true);
+      //aiPlanSetActive(wallPlan6ID, true);
    }
 
    // segment 7
@@ -1566,7 +2153,7 @@ void sumterFort(vector position = cInvalidVector, vector fortCenter = cInvalidVe
       aiPlanSetBaseID(wallPlan7ID, baseID);
       aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan7ID, pri);
-      aiPlanSetActive(wallPlan7ID, true);
+      //aiPlanSetActive(wallPlan7ID, true);
    }
 
    // segment 8
@@ -1581,8 +2168,23 @@ void sumterFort(vector position = cInvalidVector, vector fortCenter = cInvalidVe
       aiPlanSetBaseID(wallPlan8ID, baseID);
       aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan8ID, pri);
-      aiPlanSetActive(wallPlan8ID, true);
+      //aiPlanSetActive(wallPlan8ID, true);
    }
+
+   // Set up wall segment array
+   gStarFortWallPlanArray = xsArrayCreateInt(8, -1, "SFWallArraySumpter");
+
+   xsArraySetInt(gStarFortWallPlanArray, 0, wallPlan1ID);
+   xsArraySetInt(gStarFortWallPlanArray, 1, wallPlan2ID);
+   xsArraySetInt(gStarFortWallPlanArray, 2, wallPlan3ID);
+   xsArraySetInt(gStarFortWallPlanArray, 3, wallPlan4ID);
+   xsArraySetInt(gStarFortWallPlanArray, 4, wallPlan5ID);
+   xsArraySetInt(gStarFortWallPlanArray, 5, wallPlan6ID);
+   xsArraySetInt(gStarFortWallPlanArray, 6, wallPlan7ID);
+   xsArraySetInt(gStarFortWallPlanArray, 7, wallPlan8ID);
+
+   xsEnableRule("wallQueueManager");
+
 
    return;
 
@@ -1847,7 +2449,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan1ID, pri);
-      aiPlanSetActive(wallPlan1ID, true);
+      //aiPlanSetActive(wallPlan1ID, true);
    }
 
    // segment 2
@@ -1864,7 +2466,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan2ID, pri);
-      aiPlanSetActive(wallPlan2ID, true);
+      //aiPlanSetActive(wallPlan2ID, true);
    }
 
    // segment 3
@@ -1879,7 +2481,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan3ID, baseID);
       aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan3ID, pri);
-      aiPlanSetActive(wallPlan3ID, true);
+      //aiPlanSetActive(wallPlan3ID, true);
    }
 
    // segment 4
@@ -1894,7 +2496,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan4ID, baseID);
       aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan4ID, pri);
-      aiPlanSetActive(wallPlan4ID, true);
+      //aiPlanSetActive(wallPlan4ID, true);
    }
 
    // segment 5
@@ -1909,7 +2511,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan5ID, baseID);
       aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan5ID, pri);
-      aiPlanSetActive(wallPlan5ID, true);
+      //aiPlanSetActive(wallPlan5ID, true);
    }
 
    // segment 6
@@ -1924,7 +2526,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan6ID, baseID);
       aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan6ID, pri);
-      aiPlanSetActive(wallPlan6ID, true);
+      //aiPlanSetActive(wallPlan6ID, true);
    }
 
    // segment 7
@@ -1939,7 +2541,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan7ID, baseID);
       aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan7ID, pri);
-      aiPlanSetActive(wallPlan7ID, true);
+      //aiPlanSetActive(wallPlan7ID, true);
    }
 
    // segment 8
@@ -1954,7 +2556,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan8ID, baseID);
       aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan8ID, pri);
-      aiPlanSetActive(wallPlan8ID, true);
+      //aiPlanSetActive(wallPlan8ID, true);
    }
 
    // segment 9
@@ -1969,7 +2571,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan9ID, baseID);
       aiPlanSetEscrowID(wallPlan9ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan9ID, pri);
-      aiPlanSetActive(wallPlan9ID, true);
+      //aiPlanSetActive(wallPlan9ID, true);
    }
 
    // segment 10
@@ -1984,7 +2586,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan10ID, baseID);
       aiPlanSetEscrowID(wallPlan10ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan10ID, pri);
-      aiPlanSetActive(wallPlan10ID, true);
+      //aiPlanSetActive(wallPlan10ID, true);
    }
 
    // segment 11
@@ -1999,7 +2601,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan11ID, baseID);
       aiPlanSetEscrowID(wallPlan11ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan11ID, pri);
-      aiPlanSetActive(wallPlan11ID, true);
+      //aiPlanSetActive(wallPlan11ID, true);
    }
 
    // segment 12
@@ -2014,7 +2616,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan12ID, baseID);
       aiPlanSetEscrowID(wallPlan12ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan12ID, pri);
-      aiPlanSetActive(wallPlan12ID, true);
+      //aiPlanSetActive(wallPlan12ID, true);
    }
 
    // segment 13
@@ -2029,7 +2631,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan13ID, baseID);
       aiPlanSetEscrowID(wallPlan13ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan13ID, pri);
-      aiPlanSetActive(wallPlan13ID, true);
+      //aiPlanSetActive(wallPlan13ID, true);
    }
 
    // segment 14
@@ -2044,7 +2646,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan14ID, baseID);
       aiPlanSetEscrowID(wallPlan14ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan14ID, pri);
-      aiPlanSetActive(wallPlan14ID, true);
+      //aiPlanSetActive(wallPlan14ID, true);
    }
 
    // segment 15
@@ -2059,7 +2661,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan15ID, baseID);
       aiPlanSetEscrowID(wallPlan15ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan15ID, pri);
-      aiPlanSetActive(wallPlan15ID, true);
+      //aiPlanSetActive(wallPlan15ID, true);
    }
 
    // segment 16
@@ -2074,7 +2676,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan16ID, baseID);
       aiPlanSetEscrowID(wallPlan16ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan16ID, pri);
-      aiPlanSetActive(wallPlan16ID, true);
+      //aiPlanSetActive(wallPlan16ID, true);
    }
 
    // segment 17
@@ -2089,7 +2691,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan17ID, baseID);
       aiPlanSetEscrowID(wallPlan17ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan17ID, pri);
-      aiPlanSetActive(wallPlan17ID, true);
+      //aiPlanSetActive(wallPlan17ID, true);
    }
 
    // segment 18
@@ -2104,7 +2706,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan18ID, baseID);
       aiPlanSetEscrowID(wallPlan18ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan18ID, pri);
-      aiPlanSetActive(wallPlan18ID, true);
+      //aiPlanSetActive(wallPlan18ID, true);
    }
 
    // segment 19
@@ -2119,7 +2721,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan19ID, baseID);
       aiPlanSetEscrowID(wallPlan19ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan19ID, pri);
-      aiPlanSetActive(wallPlan19ID, true);
+      //aiPlanSetActive(wallPlan19ID, true);
    }
 
    // segment 20
@@ -2134,7 +2736,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
       aiPlanSetBaseID(wallPlan20ID, baseID);
       aiPlanSetEscrowID(wallPlan20ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan20ID, pri);
-      aiPlanSetActive(wallPlan20ID, true);
+      //aiPlanSetActive(wallPlan20ID, true);
    }
 
    if (ravelin == true)
@@ -2151,7 +2753,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
          aiPlanSetBaseID(wallPlan21ID, baseID);
          aiPlanSetEscrowID(wallPlan21ID, cEconomyEscrowID);
          aiPlanSetDesiredPriority(wallPlan21ID, pri);
-         aiPlanSetActive(wallPlan21ID, true);
+         //aiPlanSetActive(wallPlan21ID, true);
       }
 
       // segment 22
@@ -2166,7 +2768,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
          aiPlanSetBaseID(wallPlan22ID, baseID);
          aiPlanSetEscrowID(wallPlan22ID, cEconomyEscrowID);
          aiPlanSetDesiredPriority(wallPlan22ID, pri);
-         aiPlanSetActive(wallPlan22ID, true);
+         //aiPlanSetActive(wallPlan22ID, true);
       }
 
       // segment 23
@@ -2181,7 +2783,7 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
          aiPlanSetBaseID(wallPlan23ID, baseID);
          aiPlanSetEscrowID(wallPlan23ID, cEconomyEscrowID);
          aiPlanSetDesiredPriority(wallPlan23ID, pri);
-         aiPlanSetActive(wallPlan23ID, true);
+         //aiPlanSetActive(wallPlan23ID, true);
       }
 
       // segment 24
@@ -2196,9 +2798,40 @@ void ticonderogaStarFort(vector position = cInvalidVector, vector fortCenter = c
          aiPlanSetBaseID(wallPlan24ID, baseID);
          aiPlanSetEscrowID(wallPlan24ID, cEconomyEscrowID);
          aiPlanSetDesiredPriority(wallPlan24ID, pri);
-         aiPlanSetActive(wallPlan24ID, true);
+         //aiPlanSetActive(wallPlan24ID, true);
       }
    }
+
+   // Set up wall segment array
+   gStarFortWallPlanArray = xsArrayCreateInt(24, -1, "SFWallArrayTiconderoga");
+
+   xsArraySetInt(gStarFortWallPlanArray, 0, wallPlan1ID);
+   xsArraySetInt(gStarFortWallPlanArray, 1, wallPlan2ID);
+   xsArraySetInt(gStarFortWallPlanArray, 2, wallPlan3ID);
+   xsArraySetInt(gStarFortWallPlanArray, 3, wallPlan4ID);
+   xsArraySetInt(gStarFortWallPlanArray, 4, wallPlan5ID);
+   xsArraySetInt(gStarFortWallPlanArray, 5, wallPlan6ID);
+   xsArraySetInt(gStarFortWallPlanArray, 6, wallPlan7ID);
+   xsArraySetInt(gStarFortWallPlanArray, 7, wallPlan8ID);
+   xsArraySetInt(gStarFortWallPlanArray, 8, wallPlan9ID);
+   xsArraySetInt(gStarFortWallPlanArray, 9, wallPlan10ID);
+   xsArraySetInt(gStarFortWallPlanArray, 10, wallPlan11ID);
+   xsArraySetInt(gStarFortWallPlanArray, 11, wallPlan12ID);
+   xsArraySetInt(gStarFortWallPlanArray, 12, wallPlan13ID);
+   xsArraySetInt(gStarFortWallPlanArray, 13, wallPlan14ID);
+   xsArraySetInt(gStarFortWallPlanArray, 14, wallPlan15ID);
+   xsArraySetInt(gStarFortWallPlanArray, 15, wallPlan16ID);
+   xsArraySetInt(gStarFortWallPlanArray, 16, wallPlan17ID);
+   xsArraySetInt(gStarFortWallPlanArray, 17, wallPlan18ID);
+   xsArraySetInt(gStarFortWallPlanArray, 18, wallPlan19ID);
+   xsArraySetInt(gStarFortWallPlanArray, 19, wallPlan20ID);
+   xsArraySetInt(gStarFortWallPlanArray, 20, wallPlan21ID);
+   xsArraySetInt(gStarFortWallPlanArray, 21, wallPlan22ID);
+   xsArraySetInt(gStarFortWallPlanArray, 22, wallPlan23ID);
+   xsArraySetInt(gStarFortWallPlanArray, 23, wallPlan24ID);
+
+   xsEnableRule("wallQueueManager");
+
 
    return;
 
@@ -2403,7 +3036,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan1ID, pri);
-      aiPlanSetActive(wallPlan1ID, true);
+      //aiPlanSetActive(wallPlan1ID, true);
    }
 
    // segment 2
@@ -2420,7 +3053,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan2ID, pri);
-      aiPlanSetActive(wallPlan2ID, true);
+      //aiPlanSetActive(wallPlan2ID, true);
    }
 
    // segment 3
@@ -2435,7 +3068,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan3ID, baseID);
       aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan3ID, pri);
-      aiPlanSetActive(wallPlan3ID, true);
+      //aiPlanSetActive(wallPlan3ID, true);
    }
 
    // segment 4
@@ -2450,7 +3083,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan4ID, baseID);
       aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan4ID, pri);
-      aiPlanSetActive(wallPlan4ID, true);
+      //aiPlanSetActive(wallPlan4ID, true);
    }
 
    // segment 5
@@ -2465,7 +3098,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan5ID, baseID);
       aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan5ID, pri);
-      aiPlanSetActive(wallPlan5ID, true);
+      //aiPlanSetActive(wallPlan5ID, true);
    }
 
    // segment 6
@@ -2480,7 +3113,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan6ID, baseID);
       aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan6ID, pri);
-      aiPlanSetActive(wallPlan6ID, true);
+      //aiPlanSetActive(wallPlan6ID, true);
    }
 
    // segment 7
@@ -2495,7 +3128,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan7ID, baseID);
       aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan7ID, pri);
-      aiPlanSetActive(wallPlan7ID, true);
+      //aiPlanSetActive(wallPlan7ID, true);
    }
 
    // segment 8
@@ -2510,7 +3143,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan8ID, baseID);
       aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan8ID, pri);
-      aiPlanSetActive(wallPlan8ID, true);
+      //aiPlanSetActive(wallPlan8ID, true);
    }
 
    // segment 9
@@ -2525,7 +3158,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan9ID, baseID);
       aiPlanSetEscrowID(wallPlan9ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan9ID, pri);
-      aiPlanSetActive(wallPlan9ID, true);
+      //aiPlanSetActive(wallPlan9ID, true);
    }
 
    // segment 10
@@ -2540,7 +3173,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan10ID, baseID);
       aiPlanSetEscrowID(wallPlan10ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan10ID, pri);
-      aiPlanSetActive(wallPlan10ID, true);
+      //aiPlanSetActive(wallPlan10ID, true);
    }
 
    // segment 11
@@ -2555,7 +3188,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan11ID, baseID);
       aiPlanSetEscrowID(wallPlan11ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan11ID, pri);
-      aiPlanSetActive(wallPlan11ID, true);
+      //aiPlanSetActive(wallPlan11ID, true);
    }
 
    // segment 12
@@ -2570,7 +3203,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
       aiPlanSetBaseID(wallPlan12ID, baseID);
       aiPlanSetEscrowID(wallPlan12ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan12ID, pri);
-      aiPlanSetActive(wallPlan12ID, true);
+      //aiPlanSetActive(wallPlan12ID, true);
    }
 
    if (ravelin == true)
@@ -2587,7 +3220,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
          aiPlanSetBaseID(wallPlan13ID, baseID);
          aiPlanSetEscrowID(wallPlan13ID, cEconomyEscrowID);
          aiPlanSetDesiredPriority(wallPlan13ID, pri);
-         aiPlanSetActive(wallPlan13ID, true);
+         //aiPlanSetActive(wallPlan13ID, true);
       }
 
       // segment 14
@@ -2602,7 +3235,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
          aiPlanSetBaseID(wallPlan14ID, baseID);
          aiPlanSetEscrowID(wallPlan14ID, cEconomyEscrowID);
          aiPlanSetDesiredPriority(wallPlan14ID, pri);
-         aiPlanSetActive(wallPlan14ID, true);
+         //aiPlanSetActive(wallPlan14ID, true);
       }
 
       // segment 15
@@ -2617,7 +3250,7 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
          aiPlanSetBaseID(wallPlan15ID, baseID);
          aiPlanSetEscrowID(wallPlan15ID, cEconomyEscrowID);
          aiPlanSetDesiredPriority(wallPlan15ID, pri);
-         aiPlanSetActive(wallPlan15ID, true);
+         //aiPlanSetActive(wallPlan15ID, true);
       }
 
       // segment 16
@@ -2632,9 +3265,31 @@ void buildCrownwork(vector position = cInvalidVector, vector fortCenter = cInval
          aiPlanSetBaseID(wallPlan16ID, baseID);
          aiPlanSetEscrowID(wallPlan16ID, cEconomyEscrowID);
          aiPlanSetDesiredPriority(wallPlan16ID, pri);
-         aiPlanSetActive(wallPlan16ID, true);
+         //aiPlanSetActive(wallPlan16ID, true);
       }
    }
+
+   // Set up wall segment array
+   gStarFortWallPlanArray = xsArrayCreateInt(16, -1, "SFWallArrayCrownwork");
+
+   xsArraySetInt(gStarFortWallPlanArray, 0, wallPlan1ID);
+   xsArraySetInt(gStarFortWallPlanArray, 1, wallPlan2ID);
+   xsArraySetInt(gStarFortWallPlanArray, 2, wallPlan3ID);
+   xsArraySetInt(gStarFortWallPlanArray, 3, wallPlan4ID);
+   xsArraySetInt(gStarFortWallPlanArray, 4, wallPlan5ID);
+   xsArraySetInt(gStarFortWallPlanArray, 5, wallPlan6ID);
+   xsArraySetInt(gStarFortWallPlanArray, 6, wallPlan7ID);
+   xsArraySetInt(gStarFortWallPlanArray, 7, wallPlan8ID);
+   xsArraySetInt(gStarFortWallPlanArray, 8, wallPlan9ID);
+   xsArraySetInt(gStarFortWallPlanArray, 9, wallPlan10ID);
+   xsArraySetInt(gStarFortWallPlanArray, 10, wallPlan11ID);
+   xsArraySetInt(gStarFortWallPlanArray, 11, wallPlan12ID);
+   xsArraySetInt(gStarFortWallPlanArray, 12, wallPlan13ID);
+   xsArraySetInt(gStarFortWallPlanArray, 13, wallPlan14ID);
+   xsArraySetInt(gStarFortWallPlanArray, 14, wallPlan15ID);
+   xsArraySetInt(gStarFortWallPlanArray, 15, wallPlan16ID);
+
+   xsEnableRule("wallQueueManager");
 
    return;
 
@@ -2910,7 +3565,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan1ID, pri);
-      aiPlanSetActive(wallPlan1ID, true);
+      //aiPlanSetActive(wallPlan1ID, true);
    }
 
    // segment 2
@@ -2927,7 +3582,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan2ID, pri);
-      aiPlanSetActive(wallPlan2ID, true);
+      //aiPlanSetActive(wallPlan2ID, true);
    }
 
    // segment 3
@@ -2944,7 +3599,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan3ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan3ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan3ID, pri);
-      aiPlanSetActive(wallPlan3ID, true);
+      //aiPlanSetActive(wallPlan3ID, true);
    }
 
    // segment 4
@@ -2961,7 +3616,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan4ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan4ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan4ID, pri);
-      aiPlanSetActive(wallPlan4ID, true);
+      //aiPlanSetActive(wallPlan4ID, true);
    }
 
    // segment 5
@@ -2978,7 +3633,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan5ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan5ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan5ID, pri);
-      aiPlanSetActive(wallPlan5ID, true);
+      //aiPlanSetActive(wallPlan5ID, true);
    }
 
    // segment 6
@@ -2995,7 +3650,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan6ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan6ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan6ID, pri);
-      aiPlanSetActive(wallPlan6ID, true);
+      //aiPlanSetActive(wallPlan6ID, true);
    }
 
    // segment 7
@@ -3012,7 +3667,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan7ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan7ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan7ID, pri);
-      aiPlanSetActive(wallPlan7ID, true);
+      //aiPlanSetActive(wallPlan7ID, true);
    }
 
    // segment 8
@@ -3029,7 +3684,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan8ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan8ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan8ID, pri);
-      aiPlanSetActive(wallPlan8ID, true);
+      //aiPlanSetActive(wallPlan8ID, true);
    }
 
    // segment 9
@@ -3046,7 +3701,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan9ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan9ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan9ID, pri);
-      aiPlanSetActive(wallPlan9ID, true);
+      //aiPlanSetActive(wallPlan9ID, true);
    }
 
    // segment 10
@@ -3063,7 +3718,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan10ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan10ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan10ID, pri);
-      aiPlanSetActive(wallPlan10ID, true);
+      //aiPlanSetActive(wallPlan10ID, true);
    }
 
    // segment 11
@@ -3080,7 +3735,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan11ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan11ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan11ID, pri);
-      aiPlanSetActive(wallPlan11ID, true);
+      //aiPlanSetActive(wallPlan11ID, true);
    }
 
    // segment 12
@@ -3097,7 +3752,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan12ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan12ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan12ID, pri);
-      aiPlanSetActive(wallPlan12ID, true);
+      //aiPlanSetActive(wallPlan12ID, true);
    }
 
    // segment 13
@@ -3114,7 +3769,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan13ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan13ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan13ID, pri);
-      aiPlanSetActive(wallPlan13ID, true);
+      //aiPlanSetActive(wallPlan13ID, true);
    }
 
    // segment 14
@@ -3131,7 +3786,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan14ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan14ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan14ID, pri);
-      aiPlanSetActive(wallPlan14ID, true);
+      //aiPlanSetActive(wallPlan14ID, true);
    }
 
    // segment 15
@@ -3148,7 +3803,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan15ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan15ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan15ID, pri);
-      aiPlanSetActive(wallPlan15ID, true);
+      //aiPlanSetActive(wallPlan15ID, true);
    }
 
    // segment 16
@@ -3165,7 +3820,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan16ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan16ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan16ID, pri);
-      aiPlanSetActive(wallPlan16ID, true);
+      //aiPlanSetActive(wallPlan16ID, true);
    }
 
    // segment 17
@@ -3182,7 +3837,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan17ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan17ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan17ID, pri);
-      aiPlanSetActive(wallPlan17ID, true);
+      //aiPlanSetActive(wallPlan17ID, true);
    }
 
    // segment 18
@@ -3199,7 +3854,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan18ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan18ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan18ID, pri);
-      aiPlanSetActive(wallPlan18ID, true);
+      //aiPlanSetActive(wallPlan18ID, true);
    }
 
    // segment 19
@@ -3216,7 +3871,7 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan19ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan19ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan19ID, pri);
-      aiPlanSetActive(wallPlan19ID, true);
+      //aiPlanSetActive(wallPlan19ID, true);
    }
 
    // segment 20
@@ -3233,8 +3888,34 @@ void buildFourCornerStarFort(vector position = cInvalidVector, vector fortCenter
       aiPlanSetVariableBool(wallPlan20ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan20ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan20ID, pri);
-      aiPlanSetActive(wallPlan20ID, true);
+      //aiPlanSetActive(wallPlan20ID, true);
    }
+
+   // Set up wall segment array
+   gStarFortWallPlanArray = xsArrayCreateInt(20, -1, "SFWallArrayFourCorner");
+
+   xsArraySetInt(gStarFortWallPlanArray, 0, wallPlan1ID);
+   xsArraySetInt(gStarFortWallPlanArray, 1, wallPlan2ID);
+   xsArraySetInt(gStarFortWallPlanArray, 2, wallPlan3ID);
+   xsArraySetInt(gStarFortWallPlanArray, 3, wallPlan4ID);
+   xsArraySetInt(gStarFortWallPlanArray, 4, wallPlan5ID);
+   xsArraySetInt(gStarFortWallPlanArray, 5, wallPlan6ID);
+   xsArraySetInt(gStarFortWallPlanArray, 6, wallPlan7ID);
+   xsArraySetInt(gStarFortWallPlanArray, 7, wallPlan8ID);
+   xsArraySetInt(gStarFortWallPlanArray, 8, wallPlan9ID);
+   xsArraySetInt(gStarFortWallPlanArray, 9, wallPlan10ID);
+   xsArraySetInt(gStarFortWallPlanArray, 10, wallPlan11ID);
+   xsArraySetInt(gStarFortWallPlanArray, 11, wallPlan12ID);
+   xsArraySetInt(gStarFortWallPlanArray, 12, wallPlan13ID);
+   xsArraySetInt(gStarFortWallPlanArray, 13, wallPlan14ID);
+   xsArraySetInt(gStarFortWallPlanArray, 14, wallPlan15ID);
+   xsArraySetInt(gStarFortWallPlanArray, 15, wallPlan16ID);
+   xsArraySetInt(gStarFortWallPlanArray, 16, wallPlan17ID);
+   xsArraySetInt(gStarFortWallPlanArray, 17, wallPlan18ID);
+   xsArraySetInt(gStarFortWallPlanArray, 18, wallPlan19ID);
+   xsArraySetInt(gStarFortWallPlanArray, 19, wallPlan20ID);
+
+   xsEnableRule("wallQueueManager");
 
    return;
 }
@@ -3356,7 +4037,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetVariableBool(wallPlan1ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan1ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan1ID, pri);
-      aiPlanSetActive(wallPlan1ID, true);
+      //aiPlanSetActive(wallPlan1ID, true);
    }
 
    // segment 2
@@ -3373,7 +4054,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetVariableBool(wallPlan2ID, cBuildWallPlanEnRoute, 0, true);
       aiPlanSetVariableFloat(wallPlan2ID, cBuildWallPlanEdgeOfMapBuffer, 0, 0.0);
       aiPlanSetDesiredPriority(wallPlan2ID, pri);
-      aiPlanSetActive(wallPlan2ID, true);
+      //aiPlanSetActive(wallPlan2ID, true);
    }
 
    // segment 3
@@ -3388,7 +4069,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan3ID, baseID);
       aiPlanSetEscrowID(wallPlan3ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan3ID, pri);
-      aiPlanSetActive(wallPlan3ID, true);
+      //aiPlanSetActive(wallPlan3ID, true);
    }
 
    // segment 4
@@ -3403,7 +4084,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan4ID, baseID);
       aiPlanSetEscrowID(wallPlan4ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan4ID, pri);
-      aiPlanSetActive(wallPlan4ID, true);
+      //aiPlanSetActive(wallPlan4ID, true);
    }
 
    // segment 5
@@ -3418,7 +4099,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan5ID, baseID);
       aiPlanSetEscrowID(wallPlan5ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan5ID, pri);
-      aiPlanSetActive(wallPlan5ID, true);
+      //aiPlanSetActive(wallPlan5ID, true);
    }
 
    // segment 6
@@ -3433,7 +4114,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan6ID, baseID);
       aiPlanSetEscrowID(wallPlan6ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan6ID, pri);
-      aiPlanSetActive(wallPlan6ID, true);
+      //aiPlanSetActive(wallPlan6ID, true);
    }
 
    // segment 7
@@ -3448,7 +4129,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan7ID, baseID);
       aiPlanSetEscrowID(wallPlan7ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan7ID, pri);
-      aiPlanSetActive(wallPlan7ID, true);
+      //aiPlanSetActive(wallPlan7ID, true);
    }
 
    // segment 8
@@ -3463,7 +4144,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan8ID, baseID);
       aiPlanSetEscrowID(wallPlan8ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan8ID, pri);
-      aiPlanSetActive(wallPlan8ID, true);
+      //aiPlanSetActive(wallPlan8ID, true);
    }
 
    // segment 9
@@ -3478,7 +4159,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan9ID, baseID);
       aiPlanSetEscrowID(wallPlan9ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan9ID, pri);
-      aiPlanSetActive(wallPlan9ID, true);
+      //aiPlanSetActive(wallPlan9ID, true);
    }
 
    // segment 10
@@ -3493,7 +4174,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan10ID, baseID);
       aiPlanSetEscrowID(wallPlan10ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan10ID, pri);
-      aiPlanSetActive(wallPlan10ID, true);
+      //aiPlanSetActive(wallPlan10ID, true);
    }
 
    // segment 11
@@ -3508,7 +4189,7 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan11ID, baseID);
       aiPlanSetEscrowID(wallPlan11ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan11ID, pri);
-      aiPlanSetActive(wallPlan11ID, true);
+      //aiPlanSetActive(wallPlan11ID, true);
    }
 
    // segment 12
@@ -3523,8 +4204,26 @@ void buildCornerPairStarFort(vector position = cInvalidVector, int baseID = -1, 
       aiPlanSetBaseID(wallPlan12ID, baseID);
       aiPlanSetEscrowID(wallPlan12ID, cEconomyEscrowID);
       aiPlanSetDesiredPriority(wallPlan12ID, pri);
-      aiPlanSetActive(wallPlan12ID, true);
+      //aiPlanSetActive(wallPlan12ID, true);
    }
+
+   // Set up wall segment array
+   gStarFortWallPlanArray = xsArrayCreateInt(12, -1, "SFWallArrayCornerPair");
+
+   xsArraySetInt(gStarFortWallPlanArray, 0, wallPlan1ID);
+   xsArraySetInt(gStarFortWallPlanArray, 1, wallPlan2ID);
+   xsArraySetInt(gStarFortWallPlanArray, 2, wallPlan3ID);
+   xsArraySetInt(gStarFortWallPlanArray, 3, wallPlan4ID);
+   xsArraySetInt(gStarFortWallPlanArray, 4, wallPlan5ID);
+   xsArraySetInt(gStarFortWallPlanArray, 5, wallPlan6ID);
+   xsArraySetInt(gStarFortWallPlanArray, 6, wallPlan7ID);
+   xsArraySetInt(gStarFortWallPlanArray, 7, wallPlan8ID);
+   xsArraySetInt(gStarFortWallPlanArray, 8, wallPlan9ID);
+   xsArraySetInt(gStarFortWallPlanArray, 9, wallPlan10ID);
+   xsArraySetInt(gStarFortWallPlanArray, 10, wallPlan11ID);
+   xsArraySetInt(gStarFortWallPlanArray, 11, wallPlan12ID);
+
+   xsEnableRule("wallQueueManager");
 
    return;
 
@@ -3563,17 +4262,17 @@ minInterval 20
 {
    if (kbGetAge() < cAge3)
    {
-      return;
+      //return;
    }
 
    if (kbUnitCount(cMyID, cUnitTypeAbstractArtillery, cUnitStateAlive) <= 1)
    {
-      return;
+      //return;
    }
 
    if (kbUnitCount(cMyID, gEconUnit, cUnitStateAlive) < 50)
    {
-      return;
+      //return;
    }
 
    vector mainBaseLocation = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
@@ -3583,7 +4282,7 @@ minInterval 20
    //sumterFort(kbGetMapCenter(), mainBaseLocation, gForwardBaseID, 1.5, 99, 2, 0);
    //haudOverlappingRingFort(kbGetMapCenter(), mainBaseLocation, gForwardBaseID, 2.5, 99, 2, 0);
    //sawtoothFort(kbGetMapCenter(), mainBaseLocation, gForwardBaseID, 2.5, 99, 2, 0);
-   buildFourCornerStarFort(kbGetMapCenter(), mainBaseLocation, kbBaseGetMainID(cMyID), 2.4, 99, 2, 0, 2);
+   buildFourCornerStarFort(kbGetMapCenter(), mainBaseLocation, kbBaseGetMainID(cMyID), 2.4, 99, 2, 0, 0);
    //buildCrownwork(kbGetMapCenter(), kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)), kbBaseGetMainID(cMyID), 5, 99, 2, 1, true);
    //createLocationBuildPlan(cUnitTypeBarracks, 2, 90, true, cEconomyEscrowID, kbGetMapCenter(), 1);
    //createLocationBuildPlan(cUnitTypeStable, 2, 90, true, cEconomyEscrowID, kbGetMapCenter(), 1);
@@ -3838,11 +4537,12 @@ int getTeamStrategy(void)
    //offenseDefense = generateTripleDiceRoll(offenseDefense);
 
    // Find the strategy
-   if (rushBoom >= 0.5 && offenseDefense >= 0.5)
+   // Fudge these numbers to get more rushing
+   if (rushBoom >= 0.2 && offenseDefense >= 0.2)
    {
       gStrategy = cStrategyRush;
    }
-   else if (rushBoom >= 0 && rushBoom < 0.5 && offenseDefense >= 0.5)
+   else if (rushBoom >= 0 && rushBoom < 0.5 && offenseDefense >= 0.2)
    {
       gStrategy = cStrategyNakedFF;
    }
@@ -3857,6 +4557,23 @@ int getTeamStrategy(void)
    else //if (rushBoom < 0 && offenseDefense <  0.5) Make sure we pick something
    {
       gStrategy = cStrategyGreed;
+   }
+
+   // AssertiveWall: Need a couple checks in case the max age is lower than industrial
+   if (cvMaxAge <= cAge3)
+   {  // max age is under Age 4, can't fast industrial
+      if (gStrategy == cStrategyFastIndustrial)
+      {
+         gStrategy = cStrategySafeFF;
+      }
+
+      if (cvMaxAge <= cAge2)
+      {
+         if (gStrategy == cStrategySafeFF || gStrategy == cStrategyNakedFF)
+         {
+            gStrategy = cStrategyRush;
+         }
+      }
    }
 
    return (gStrategy);
@@ -4126,48 +4843,6 @@ minInterval 20
 
 
 //==============================================================================
-// getTeamAge
-// AssertiveWall: gets the average age of our team. Rounds down
-//==============================================================================
-
-int getTeamAge(bool ourTeam = true)
-{
-   int ageTotal = 0;
-   int numPlayers = 0;
-   int myTeam = kbGetPlayerTeam(cMyID);
-   int averageAge = -1;
-
-   if (ourTeam == false)
-   {  // Account for Gaia
-      numPlayers = -1;
-   }
-
-   for (i = 0; < cNumberPlayers)
-   {
-      if (ourTeam == true)
-      {
-         if (myTeam == kbGetPlayerTeam(i))
-         {
-            ageTotal += kbGetAgeForPlayer(i);
-            numPlayers += 1;
-         }
-      }
-      else
-      {
-         if (myTeam != kbGetPlayerTeam(i))
-         {
-            ageTotal += kbGetAgeForPlayer(i);
-            numPlayers += 1;
-         }
-      }
-   }
-
-   averageAge = ageTotal / numPlayers;
-
-   return (averageAge);
-}
-
-//==============================================================================
 // allowedToAttack
 // AssertiveWall: replaces the logic involving gAttackMissionInterval to 
 //    determine if we are allowed to attack. Instead of an interval, we'll 
@@ -4178,19 +4853,44 @@ int getTeamAge(bool ourTeam = true)
 //==============================================================================
 bool allowedToAttack(void)
 {
+   // Quick time check to make sure they aren't too, too soon
+   if (xsGetTime() - gLastAttackMissionTime < (gAttackMissionInterval * 0.65))
+   {
+      return (false);
+   }
+
    // First make sure we have enough military depending on age
    int ageVar = getTeamAge(true);   // our team by default, currently set to our team
    int enAgeVar = getTeamAge(false);//kbGetAgeForPlayer(aiGetMostHatedPlayerID());
    int militaryQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationAlly, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(militaryQueryID);
    float militaryStrength = 0.0;
+   int tempUnitID = -1;
+   int myMilitaryStrength = 0;
    int puid = -1;
    int playersPerTeam = (cNumberPlayers - 1) / (aiGetNumberTeams() - 1); // Gaia counts as a player and a team
+   float pptFudgeFactor = 1.0;  // fudge the player per team number when teams get bigger
+
+   if (playersPerTeam == 3)
+   {
+      pptFudgeFactor = 1.1;
+   }
+   else if (playersPerTeam > 3)
+   {
+      pptFudgeFactor = 1.2;
+   }
+
 
    for (i = 0; < numberFound)
    {
-      puid = kbUnitGetProtoUnitID(kbUnitQueryGetResult(militaryQueryID, i));
+      tempUnitID = kbUnitQueryGetResult(militaryQueryID, i);
+      puid = kbUnitGetProtoUnitID(tempUnitID);
       militaryStrength = militaryStrength + getMilitaryUnitStrength(puid);
+      // get our own military strength
+      if (kbUnitGetPlayerID(tempUnitID) == cMyID)
+      {
+         myMilitaryStrength += getMilitaryUnitStrength(puid);
+      }
    }
 
    // adjust strength for lower difficulties. 
@@ -4198,10 +4898,14 @@ bool allowedToAttack(void)
    //else if (cDifficultyCurrent == cDifficultyHard) {militaryStrength = militaryStrength * 1.15;} 
 
    // If we're trying to FI/FF, don't attack until appropriate age
-   if (gStrategy == cStrategyFastIndustrial && ageVar < cAge4)
-   {return false;}
-   else if ((gStrategy == cStrategyNakedFF || gStrategy == cStrategySafeFF) && ageVar < cAge3)
-   {return false;}
+   // only check if we're not in the maxage
+   if (ageVar < cvMaxAge)
+   {
+      if (gStrategy == cStrategyFastIndustrial && ageVar < cAge4)
+      {return false;}
+      else if ((gStrategy == cStrategyNakedFF || gStrategy == cStrategySafeFF) && ageVar < cAge3)
+      {return false;}
+   }
 
    // Create bounds where we shouldn't/should always attack regardless of score
    // This is based on the most hated enemy's age, not ours
@@ -4209,23 +4913,27 @@ bool allowedToAttack(void)
    if (militaryStrength >= aiGetMilitaryPop() * playersPerTeam && playersPerTeam == 1){return true;}
    else if (enAgeVar == cAge2)
    {
-      if (militaryStrength < 15 * playersPerTeam){return false;}
-      else if (militaryStrength > 30 * playersPerTeam){return true;}
+      if (militaryStrength < 15 * playersPerTeam * pptFudgeFactor){return false;}
+      else if (myMilitaryStrength < 15){return false;}
+      else if (militaryStrength > 30 * playersPerTeam * pptFudgeFactor){return true;}
    }
    else if (enAgeVar == cAge3)
    {
-      if (militaryStrength < 20 * playersPerTeam){return false;}
-      else if (militaryStrength > 45 * playersPerTeam){return true;}
+      if (militaryStrength < 20 * playersPerTeam * pptFudgeFactor){return false;}
+      else if (myMilitaryStrength < 20){return false;}
+      else if (militaryStrength > 45 * playersPerTeam * pptFudgeFactor){return true;}
    }
    else if (enAgeVar == cAge4)
    {
-      if (militaryStrength < 25 * playersPerTeam){return false;}
-      else if (militaryStrength > 55 * playersPerTeam){return true;}
+      if (militaryStrength < 25 * playersPerTeam * pptFudgeFactor){return false;}
+      else if (myMilitaryStrength < 25){return false;}
+      else if (militaryStrength > 55 * playersPerTeam * pptFudgeFactor){return true;}
    }
    else if (enAgeVar == cAge5)
    {
-      if (militaryStrength < 30 * playersPerTeam){return false;}
-      else if (militaryStrength > 60 * playersPerTeam){return true;}
+      if (militaryStrength < 30 * playersPerTeam * pptFudgeFactor){return false;}
+      else if (myMilitaryStrength < 30){return false;}
+      else if (militaryStrength > 60 * playersPerTeam * pptFudgeFactor){return true;}
    }
 
    // The next block looks at scores
@@ -4253,11 +4961,11 @@ bool allowedToAttack(void)
    // If we are winning by a decent amount attack, otherwise check if we are losing
    if (numAllies >= numEnemies)
    {
-      if (teamScore > 1.2 * enemyScore)
+      if (teamScore > 1.2 * enemyScore * pptFudgeFactor)
       {
          return (true);
       }
-      else if (teamScore < 0.8 * enemyScore)
+      else if (teamScore < 0.8 * enemyScore * pptFudgeFactor)
       {
          return (false);
       }
@@ -4281,6 +4989,46 @@ bool allowedToAttack(void)
    }
 
    return (false);
+}
+
+//==============================================================================
+// getRandomGaiaUnit
+// Query closest unit's position from gaia's perspective, use with caution to avoid cheating.
+// AssertiveWall: based on getClosestGaiaUnitPosition but returns random unit
+//==============================================================================
+int getRandomGaiaUnit(int unitTypeID = -1, vector position = cInvalidVector, float radius = -1.0)
+{
+   xsSetContextPlayer(0);
+   int gaiaUnitQueryID = kbUnitQueryCreate("getRandomGaiaUnitQuery");
+
+   // Define a query to get all matching units.
+   if (gaiaUnitQueryID != -1)
+   {
+      kbUnitQuerySetPlayerID(gaiaUnitQueryID, 0);
+      kbUnitQuerySetUnitType(gaiaUnitQueryID, unitTypeID);
+      kbUnitQuerySetState(gaiaUnitQueryID, cUnitStateAny);
+      kbUnitQuerySetPosition(gaiaUnitQueryID, position);
+      kbUnitQuerySetMaximumDistance(gaiaUnitQueryID, radius);
+   }
+   else
+   {
+      xsSetContextPlayer(cMyID);
+      return (-1);
+   }
+
+   kbUnitQueryResetResults(gaiaUnitQueryID);
+   int numFound = kbUnitQueryExecute(gaiaUnitQueryID);
+
+   if (numFound > 0)
+   {
+      // Get the location of a random unit
+      int randomNum = aiRandInt(numFound);
+      int closestUnit = kbUnitQueryGetResult(gaiaUnitQueryID, randomNum); 
+      xsSetContextPlayer(cMyID);
+      return (closestUnit);
+   }
+   xsSetContextPlayer(cMyID);
+   return (-1);
 }
 
 //==============================================================================
@@ -4501,71 +5249,6 @@ void checkAttackDefenseMap(void)
    }
 }
 
-
-
-//==============================================================================
-/* getRandomIsland
-   AssertiveWall: Searches through tiles around your island and gives a location 
-   of the closest island that's not another player's starting island
-   In use by archipelago build placement
-*/
-//==============================================================================
-
-vector getRandomIsland()
-{
-   vector startingLoc = kbGetPlayerStartingPosition(cMyID);
-   int startingAreaID = kbAreaGetIDByPosition(startingLoc);
-   vector testLoc = cInvalidVector;
-   int testAreaID = -1;
-   float j = 0.0;
-   float k = 0.0;
-   int m = 0;
-   int occupiedFriendly = 0;
-   int occupiedEnemy = 0;
-
-
-   for (i = 0; < 200)
-   {
-      testLoc = startingLoc;
-      // Get a random vector near our base
-      if (i < 100)
-      {
-         m = i;
-      }
-      else
-      {
-         m = i - 100;
-      }
-      j = m * kbGetMapXSize() / 150.0; // Normalized for RM map area
-      k = m * kbGetMapZSize() / 150.0;
-      testLoc = xsVectorSet(xsVectorGetX(testLoc) + aiRandFloat(0.0 - j, j), 0.0, 
-                xsVectorGetZ(testLoc) + aiRandFloat(0.0 - k, k));
-      
-      testAreaID = kbAreaGetIDByPosition(testLoc);
-
-      // Check how occupied it is. 
-      occupiedFriendly = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAlly, cUnitStateAlive, testLoc, 50.0);
-      occupiedEnemy = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive, testLoc, 50.0);
-      
-      if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(testLoc), kbAreaGroupGetIDByPosition(startingLoc)) == false
-            && kbAreaGetType(kbAreaGetIDByPosition(testLoc)) != cAreaTypeWater)
-      {      
-         // Past 100, take whatever we can get that isn't home base
-         if (i > 100)
-         {
-            return testLoc;
-         }
-
-         // If it isn't occupied by anyone, try and take it
-         if (occupiedFriendly <= 0 && occupiedEnemy <= 0)
-         {
-            return testLoc;
-         }
-      }
-   }
-   // Prefer to return something valid if no islands can be found
-   return startingLoc;
-}
 
 
 
@@ -4910,16 +5593,27 @@ rule forwardBaseWall
 inactive
 minInterval 10
 {
-   if ((kbGetPopCap() - kbGetPop()) < 20)
+   static bool alreadyBuiltOne = false;
+   if (alreadyBuiltOne == true)
    {
-      return; // Don't start walls until we have pop room
+      xsDisableSelf();
+      return;
    }
-
-   if (gStartOnDifferentIslands == true)
+   else if (gStartOnDifferentIslands == true)
    {  // Island maps are too crowded for this
       xsEnableRule("forwardBaseTowers"); // old version of placing towers at forward base. No longer used with star forts
       xsDisableSelf();
       return;
+   }
+   else if (gPirateBlockWalls == true)
+   {
+      xsDisableSelf();
+      return;
+   }
+
+   if ((kbGetPopCap() - kbGetPop()) < 20)
+   {
+      return; // Don't start walls until we have pop room
    }
 
    if (gForwardBaseState == cForwardBaseStateNone) // || gForwardBaseState == cForwardBaseStateBuilding)
@@ -4927,7 +5621,7 @@ minInterval 10
       return; // AssertiveWall: wait until the fort is building or built
    }
    
-   if (kbGetAge() == cAge1 || (kbGetAge() == cAge2 && agingUp() == false))
+   if (getAgingUpAge() <= cAge2)
    {
       return; // Go away until we're aging up to age 3
    }
@@ -5011,14 +5705,17 @@ minInterval 10
       if (cMyCiv == cCivXPIroquois)// || cMyCiv == cCivXPSioux)
       {
          haudOverlappingRingFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber);
+         alreadyBuiltOne = true;
       }
       else if (cMyCiv == cCivDEInca || cMyCiv == cCivXPAztec)
       {
          sawtoothFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber);
+         alreadyBuiltOne = true;
       }
       else
       {
          buildWallRing(gForwardBaseLocation, gForwardBaseID, 30.0, 4);
+         alreadyBuiltOne = true;
       }
    }
    else
@@ -5037,10 +5734,12 @@ minInterval 10
             case 1:
             {
                sumterFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 1.5, pri, towerNumber, cannonNumber);
+               alreadyBuiltOne = true;
             }
             default: 
             {
                buildCornerPairStarFort(gForwardBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber);
+               alreadyBuiltOne = true;
             }
          }
       }
@@ -5056,11 +5755,13 @@ minInterval 10
             case 1:
             {
                ticonderogaStarFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 2.0, pri, towerNumber, cannonNumber, true);
+               alreadyBuiltOne = true;
             }
             default:
             {
                buildFourCornerStarFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber, 0);
                //buildFourCornerStarFort(gForwardBaseLocation, mainBaseLocation, gForwardBaseID, 2.4, pri, towerNumber, cannonNumber, crownworkNum);
+               alreadyBuiltOne = true;
             }
          }
       }
@@ -5073,6 +5774,8 @@ minInterval 10
    {
       xsEnableRule("upgradeWalls");
    }
+   
+   
    xsDisableSelf();
 }
 
@@ -5631,6 +6334,7 @@ minInterval 3
    int area = 0;
    int areaGroup = -1;
    vector startingLoc = kbGetPlayerStartingPosition(cMyID);
+   bool takenIsland = false;
    int unit = getUnitByLocation(cUnitTypeAbstractVillager, cMyID, cUnitStateAlive, startingLoc, 100); // getUnit(cUnitTypeCoveredWagon, cMyID, cUnitStateAlive);
 
    areaCount = kbAreaGetNumber();
@@ -5650,6 +6354,7 @@ minInterval 3
    vector enPosition = kbGetPlayerStartingPosition(getEnemyPlayerByTeamPosition(1));
    int closestArea = -1;
    float closestAreaDistance = kbGetMapXSize();
+   //bool hasMaoriHouse = false;
 
    for (area = 0; < areaCount)
    {
@@ -5664,11 +6369,59 @@ minInterval 3
          continue;
       }*/
 
-      // Check to make sure this area is connected to center island
-      if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(kbGetMapCenter()), areaGroup) == false)
+      // Check to make sure this area is connected to center island, unless it's polynesia then find closest
+      // island that isn't connected to starting area
+      if (cRandomMapName == "zppolynesia")
       {
-         continue;
+         takenIsland = false;
+         //hasMaoriHouse = false;
+         for (i = 1; <= cNumberPlayers)
+         {
+            if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(kbGetPlayerStartingPosition(i)), areaGroup) == true)
+            {
+               takenIsland = true;
+            }
+            else if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(kbGetMapCenter()), areaGroup) == true)
+            {
+               takenIsland = true;
+            }
+            else if (distance(kbGetMapCenter(), kbAreaGetCenter(area)) < distance(kbGetMapCenter(), startingLoc))
+            {
+               takenIsland = true;
+            }
+         }
+
+         if (takenIsland == true)
+         {
+            continue;
+         }
+
+         // Make sure there is a maori house on the island
+         /*int settlementQuery = createSimpleUnitQuery(cUnitTypezpNativeHouseMaori, cPlayerRelationAny);
+         int numberMaoriHouses = kbUnitQueryExecute(settlementQuery);
+         for (i = 0; < numberMaoriHouses)
+         {
+            vector maoriHouseLoc = kbUnitGetPosition(kbUnitQueryGetResult(settlementQuery, i));
+            if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(maoriHouseLoc), areaGroup) == true)
+            {
+               hasMaoriHouse = true;
+               break;
+            }
+         }
+
+         if (hasMaoriHouse == false)
+         {
+            continue;
+         }*/
       }
+      else
+      {
+         if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(kbGetMapCenter()), areaGroup) == false)
+         {
+            continue;
+         }
+      }
+
 
       bool bordersWater = false;
       int borderAreaCount = kbAreaGetNumberBorderAreas(area);
@@ -5700,7 +6453,15 @@ minInterval 3
    // Move main base 
    gCeylonStartingTargetArea = closestArea;
    kbBaseSetPositionAndDistance(cMyID, kbBaseGetMainID(cMyID), kbAreaGetCenter(gCeylonStartingTargetArea), 100.0);
+   
+   aiPlanSetVariableVector(gLandReservePlan, cCombatPlanTargetPoint, 0, kbAreaGetCenter(gCeylonStartingTargetArea));
+   aiPlanSetVariableVector(gLandDefendPlan0, cCombatPlanTargetPoint, 0, kbAreaGetCenter(gCeylonStartingTargetArea));
+   
+   //moveDefenseReflex(kbAreaGetCenter(gCeylonStartingTargetArea), 50.0, kbBaseGetMainID(cMyID));
+   
    xsEnableRule("buildingMonitorDelayed");
+
+   //sendStatement(1, cAICommPromptToAllyIWillBuildMilitaryBase, kbAreaGetCenter(closestArea));
 
    // Move someone toward the center so we can see our landing spot
    /*aiTaskUnitMove(getUnit(shipType, cMyID, cUnitStateAlive), kbAreaGetCenter(closestArea));
@@ -6373,7 +7134,7 @@ vector getRandomPoint(vector location = cInvalidVector, int radius = 30)
 
 //==============================================================================
 // selectPickupPoint
-// Looks at the vector between us and the enemy, and sompares several points to 
+// Looks at the vector between us and the enemy, and compares several points to 
 // find the best pickup
 // Similar process as how coastal tower locations are picked
 // To use this for dropoff points, just invert the friendly and enemy locations,
@@ -6451,7 +7212,7 @@ vector selectPickupPoint(vector friendlyLoc = cInvalidVector, vector enemyLoc = 
 
 //==============================================================================
 // Checks to see if we should retreat
-// 
+// true means we are retreating
 //==============================================================================
 bool retreatCheck(bool forceRetreat = false)
 {
@@ -6562,6 +7323,12 @@ bool retreatCheck(bool forceRetreat = false)
 
             return true;
          }
+
+         // set the military to main base again
+         aiPlanSetVariableVector(gLandReservePlan, cCombatPlanTargetPoint, 0, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
+         aiPlanSetVariableVector(gLandDefendPlan0, cCombatPlanTargetPoint, 0, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
+
+         xsDisableRule("fbBuildingChain"); // stop building forward buildings here
       }
    }
 
@@ -7259,10 +8026,10 @@ void trainFromGalleons()
    int unitToTrain = -1;
 
    // Find a suitable unit to train. Just anything for now
-   for (i = 0; < gNumArmyUnitTypes)
+   for (i = 0; < 50)
    {
-      unitToTrain = kbUnitPickGetResult(gLandUnitPicker, i);
-      if (kbProtoUnitIsType(unitToTrain, cUnitTypeAbstractArtillery) == false)
+      unitToTrain = kbUnitGetProtoUnitID(getUnit(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive));
+      if (kbProtoUnitIsType(cMyID, unitToTrain, cUnitTypeAbstractArtillery) == false)
       {
          break;
       }
@@ -7346,9 +8113,9 @@ void buildForwardTowers()
       return;
    }
 
-   if (towerBuildLimit - towerCount >= 3)
+   if (towerBuildLimit - towerCount >= 2)
    {
-      towersToBuild = 3;
+      towersToBuild = 2;
    }
    else
    {
@@ -7376,6 +8143,14 @@ void buildForwardTowers()
    else
    {
       planID = createLocationBuildPlan(gTowerUnit, towersToBuild, 100, true, -1, gAmphibiousAssaultTarget, 1);
+   }
+
+   if (planID > 0)
+   {
+      if (xsIsRuleEnabled("fbBuildingChain") == false)
+      {
+         xsEnableRule("fbBuildingChain"); 
+      }
    }
    
    return;
@@ -7696,10 +8471,10 @@ void establishForwardBase()
       gForwardBaseID = kbBaseCreate(cMyID, "Base at Amphibious Beach Head: " + kbBaseGetNextID(), gAmphibiousAssaultTarget, 60.0);
       gForwardBaseLocation = gAmphibiousAssaultTarget;
       gForwardBaseUpTime = xsGetTime();
-      gForwardBaseShouldDefend = true;
+      //gForwardBaseShouldDefend = true; // Can't transport to defend it
 
       kbBaseSetMilitary(cMyID, gForwardBaseID, true);
-      moveDefenseReflex(gAmphibiousAssaultTarget, 50.0, gForwardBaseID);
+      //moveDefenseReflex(gAmphibiousAssaultTarget, 50.0, gForwardBaseID); // defense plans can't cross water
 
       // Add all forward buildings to the forward base
       int buildingQueryID = createSimpleUnitQuery(cUnitTypeLogicalTypeBuildingsNotWalls, cPlayerRelationSelf, cUnitStateAlive,
@@ -7737,9 +8512,12 @@ void establishForwardBase()
    forwardArmyPlan();
    //xsEnableRule("fbBuildingChain"); 
 
+   // set the military to the forward base
+   aiPlanSetVariableVector(gLandReservePlan, cCombatPlanTargetPoint, 0, gAmphibiousAssaultTarget);
+   aiPlanSetVariableVector(gLandDefendPlan0, cCombatPlanTargetPoint, 0, gAmphibiousAssaultTarget);
+
    // We're done. Destroy all the plans
-   // Set the center of naval operations to the forward base
-   //gNavyVec = getCoastalPoint(guessEnemyLocation(), gAmphibiousAssaultTarget, 15, true);
+   //gNavyVec = getCoastalPoint(guessEnemyLocation(), gAmphibiousAssaultTarget, 15, true);    // Set the center of naval operations to the forward base
    gAmphibiousAssaultStage = -1;//cGatherNavy;
    aiPlanDestroy(gAmphibiousAssaultPlan);
    aiPlanDestroy(gAmphibiousArmyPlan);
@@ -7747,6 +8525,7 @@ void establishForwardBase()
    gAmphibiousTransportPlan = -1;
    gAmphibiousAssaultPlan = -1;
    gAmphibiousArmyPlan = -1;
+
 }
 
 //==============================================================================
@@ -7761,69 +8540,66 @@ rule fbBuildingChain
 inactive
 minInterval 30
 {  
-   if (gForwardBaseState != cForwardBaseStateActive)
-   {
-      // Quit early if we don't have the fb
-      xsDisableSelf();
+   // Make a couple military building plans to get the jump on the FB building logic
+   static int buildingPlan0 = -1;
+   static int buildingPlan1 = -1;
+   int building0 = xsArrayGetInt(gMilitaryBuildings, 0);  // typically barracks
+   int building1 = xsArrayGetInt(gMilitaryBuildings, 1);  // typically stable
+   bool makeAnother = false;
+   int barracksNum = 2;
+   int stableNum = 1;
+   int vilIndex = 0;
+   if (btBiasCav > btBiasInf)
+   {  // Swap barracks and stable
+      building0 = xsArrayGetInt(gMilitaryBuildings, 1);  // typically stable
+      building1 = xsArrayGetInt(gMilitaryBuildings, 0);  // typically barracks
+   }
+
+   if (xsGetTime() > 30 * 60 * 1000 || kbGetAge() >= cAge4)
+   {  // Double values in late game
+      barracksNum = 2 * barracksNum;
+      stableNum = 2 * stableNum;
+   }
+
+   if (aiPlanGetActive(buildingPlan0) == true && aiPlanGetActive(buildingPlan1) == true)
+   {  // Only do two at a time
       return;
    }
 
-   // Make a couple military building plans to get the jump on the FB building logic
-   int building0 = xsArrayGetInt(gMilitaryBuildings, 0);  // typically barracks
-   int building1 = xsArrayGetInt(gMilitaryBuildings, 1);  // typically stable
-   int tempBuilding = -1;
-   bool makeAnother = false;
-   int barracksNum = 1;
-   int stableNum = 2;
-   int vilIndex = 0;
-   if (btBiasInf >= btBiasCav)
-   {
-      barracksNum = 2;
-      stableNum = 1;
-   }
-
    int building0num = getUnitCountByLocation(building0, cPlayerRelationSelf, cUnitStateABQ, gAmphibiousAssaultTarget, 30);
-   int building1num = -1;
-
-   if (building0num == 0)
-   {
-      makeAnother = true;
-      tempBuilding = building0num;
-   }
-   else
-   {
-      building0num = getUnitCountByLocation(building0, cPlayerRelationSelf, cUnitStateABQ, gAmphibiousAssaultTarget, 30);
-      building1num = getUnitCountByLocation(building1, cPlayerRelationSelf, cUnitStateABQ, gAmphibiousAssaultTarget, 30);
-   }
+   int building1num = getUnitCountByLocation(building1, cPlayerRelationSelf, cUnitStateABQ, gAmphibiousAssaultTarget, 30);
 
    if (building0num < barracksNum)
    {
       makeAnother = true;
-      tempBuilding = building0num;
    }
    else if (building1num < stableNum)
    {
       makeAnother = true;
-      tempBuilding = building1num;
-   }
-   else
-   {
-      // We have enough, disable self
-      xsDisableSelf();
    }
 
    if (makeAnother == true)
    {
-      int plan0 = createLocationBuildPlan(tempBuilding, barracksNum, 100, true, -1, gAmphibiousAssaultTarget, 1);
-
-      int vilQuery = createSimpleUnitQuery(gEconUnit, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 40);
-      int numberVil = kbUnitQueryExecute(vilQuery);
-      if (numberVil > 0)
+      vector randomNearbyLoc = getRandomPoint(gAmphibiousAssaultTarget, 30);
+      if (aiPlanGetActive(buildingPlan0) == false)
       {
-         for (i = 0; < numberVil)
-         {  // Add forward villagers
-            aiPlanAddUnit(plan0, kbUnitQueryGetResult(vilQuery, i));
+         buildingPlan0 = createLocationBuildPlan(building0, barracksNum, 100, true, -1, randomNearbyLoc, 1);
+
+         int vilQuery = createSimpleUnitQuery(gEconUnit, cPlayerRelationSelf, cUnitStateAlive, gAmphibiousAssaultTarget, 40);
+         int numberVil = kbUnitQueryExecute(vilQuery);
+         if (numberVil > 0)
+         {
+            for (i = 0; < numberVil)
+            {  // Add forward villagers
+               aiPlanAddUnit(buildingPlan0, kbUnitQueryGetResult(vilQuery, i));
+            }
          }
+      }
+
+      if (aiPlanGetActive(buildingPlan1) == false)
+      {
+         randomNearbyLoc = getRandomPoint(gAmphibiousAssaultTarget, 30);
+         buildingPlan1 = createLocationBuildPlan(building1, stableNum, 100, true, -1, randomNearbyLoc, 1);
       }
    }
 }
@@ -7845,6 +8621,12 @@ minInterval 10
 
          //endDefenseReflex();
          moveDefenseReflex();
+
+         // set the military to main base again
+         aiPlanSetVariableVector(gLandReservePlan, cCombatPlanTargetPoint, 0, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
+         aiPlanSetVariableVector(gLandDefendPlan0, cCombatPlanTargetPoint, 0, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
+
+         xsDisableRule("fbBuildingChain");  // stop building forward buildings here
 
          //gAmphibiousAssaultStage = cGatherNavy;
          gAmphibiousAssaultStage = -1;
@@ -7884,6 +8666,13 @@ minInterval 10
 //==============================================================================
 bool amphibiousAssault(vector location = cInvalidVector)
 {
+   // Note: temporarily turning this off on archipelago maps
+   if (gIsArchipelagoMap == true)
+   {
+      return false;
+   }
+
+
    if (gAmphibiousAssaultStage > cGatherNavy)
    {  // Already running
       return false;
@@ -7970,9 +8759,23 @@ minInterval 3
       int minimumShips = 2;
 
       if (agingUp() == true)
-      {  // Since this takes time, make sure we aren't about to need more
+      {  // Since this takes time, make sure we aren't about to need more ships
          currentAge += 1;
       }
+
+      // Allow civs to run their standard attack plans first
+      /*if (gStrategy == cStrategyRush)
+      {
+         if (currentAge < cAge3) {return;}
+      }
+      else if (gStrategy == cStrategyNakedFF || gStrategy == cStrategySafeFF)
+      {
+         if (currentAge < cAge4) {return;}
+      }
+      else
+      {
+         if (currentAge < cAge4 || xsGetTime() < 35 * 60 * 1000) {return;}
+      }*/
       
       if (currentAge == cAge3)
       {
@@ -7980,7 +8783,7 @@ minInterval 3
       }
       else if (currentAge >= cAge4)
       {
-         minimumShips = 3;
+         minimumShips = 4;
       }
 
       if (civIsNative() == true)
@@ -8120,7 +8923,7 @@ minInterval 3
          bombardCoast(); // Keep bombarding the coast
          //moveInland();
 
-         //trainFromGalleons();
+         trainFromGalleons();
          buildForwardTowers();
          break;
       }
@@ -8128,7 +8931,7 @@ minInterval 3
       {
          // Once we're established we can let our navy do other things, except galleons
          //moveInland();
-         //trainFromGalleons();
+         trainFromGalleons();
          establishForwardBase();
          break;
       }
@@ -9184,6 +9987,19 @@ bool shouldBuildDock()
       shouldBuild = true;
    }
 
+   // check if we're not on an island map, and if the opponent isn't attempting to contest water
+   /*int enemyWarshipCount = kbUnitCount(cPlayerRelationEnemyNotGaia, cUnitTypeAbstractWarShip, cUnitStateAlive);
+   if (gStartOnDifferentIslands == false)
+   {
+      if (enemyWarshipCount <= 0)
+      {  // Enemy hasn't built a warship
+         if (dockCount > 2)
+         {
+            //shouldBuild = false;
+         }
+      }
+   }*/
+
    // Check if we don't have enough ships queued
    // Only do this if we already have at least 1 dock
    if (dockCount >= 1 && gIsPirateMap == false)
@@ -10230,10 +11046,27 @@ rule attackRetreatDelay
 inactive
 minInterval 10
 {
+   if (xsGetTime() > (gLastAttackMissionTime + 180000))  // three minute timeout before we just kill this plan
+   {
+      // Destroy the plan.
+      aiPlanDestroy(gLandAttackPlanID);
+      gLandAttackPlanID = -1;
+      xsDisableSelf();
+      return;
+   }
+
    if (aiPlanGetNumberUnits(gLandAttackPlanID, cUnitTypeLogicalTypeLandMilitary) > 0)
    {
       xsEnableRule("attackRetreat");
       xsDisableSelf();
+      return;
+   }
+
+   if (gLandAttackPlanID < 0)
+   {
+      // No attack plan to work with
+      xsDisableSelf();
+      return;
    }
 }
 
@@ -10271,16 +11104,16 @@ minInterval 10
 
    // Do some math to adjust our retreat factor a little bit based on our offense/defense disposition
    // Offense: 0 | Defense: 1.0
-   // Higher number means more likely to retreat. All values fall between 0.6 and 0.7
-   strengthFactor = strengthFactor + btOffenseDefense / 10.0;
+   // Higher number means more likely to retreat. btOffenseDefense ranges from 0 to 1.0
+   strengthFactor = strengthFactor + btOffenseDefense * 0.5;
    // A check, just in case and to make this future-proof
-   if (strengthFactor > 0.7)
+   if (strengthFactor > 0.9)
+   {
+      strengthFactor = 0.9;
+   }
+   else if (strengthFactor < 0.7)
    {
       strengthFactor = 0.7;
-   }
-   else if (strengthFactor < 0.6)
-   {
-      strengthFactor = 0.6;
    }
 
    // Check the strength of our army
@@ -10292,7 +11125,7 @@ minInterval 10
    allyStrength = getAreaStrength(targetLocation, 50, cPlayerRelationAllyExcludingSelf);
 
    // Retreat if our strength is too small
-   if (friendlyStrength + allyStrength < enemyStrength * strengthFactor)
+   if ((friendlyStrength + allyStrength) < (enemyStrength * strengthFactor))
    {
       if (allyStrength > 0)
       {
@@ -10318,7 +11151,7 @@ minInterval 10
       allyStrength = getAreaStrength(targetLocation, 50, cPlayerRelationAllyExcludingSelf);
 
       // Retreat if our strength is too small
-      if ((friendlyStrength + allyStrength < enemyStrength * strengthFactor) && retreat == false)
+      if ((friendlyStrength + allyStrength) < (enemyStrength * strengthFactor))
       {
          if (allyStrength > 0)
          {
@@ -10405,7 +11238,7 @@ minInterval 10
 
       // Destroy the plan.
       aiPlanDestroy(gLandAttackPlanID);
-      aiPlanSetNoMoreUnits(gLandAttackPlanID, true);
+      //aiPlanSetNoMoreUnits(gLandAttackPlanID, true);
       gLandAttackPlanID = -1;
       xsDisableSelf();
    }
@@ -10537,9 +11370,16 @@ minInterval 30
             aiPlanSetActive(gForwardBaseBuildPlan);
    
             // Chat to my allies.
-            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+            if (xsGetTime() > (gLastFBMessageSend + 180 * 1000)) // 3 minute buffer
+            {
+               sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+               gLastFBMessageSend = xsGetTime();
+            }
             gForwardBaseState = cForwardBaseStateBuilding;
-            establishForwardBeachHead(gForwardBaseLocation);
+            if (gStartOnDifferentIslands == true)
+            {  // This should no longer be used now that we have the amphibious assault rule
+               establishForwardBeachHead(gForwardBaseLocation); 
+            }
 
             debugBuildings("");
             debugBuildings("BUILDING FORWARD BASE, MOVING DEFEND PLANS TO COVER");
@@ -10783,4 +11623,23 @@ minInterval 30
 
       gLastAttackMissionTime = currentTime;
    }
+}
+
+rule randomTests
+inactive
+minInterval 10
+{
+
+   int randGaiaUnit = -1; //getUnit(cUnitTypeAbstractUnderwaterMine, cPlayerRelationAny);// getRandomGaiaUnit(cUnitTypezpSunkenShipWood, kbGetMapCenter(), 60);
+   aiChat(1, "test gaia unit: " + randGaiaUnit);
+
+   /*int totalResources = 0;
+   totalResources = kbTotalResourceGet(cResourceFood);
+
+   aiChat(1, "totalResources: " + totalResources);
+   
+   int totalUnitQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf, cUnitStateAny);
+   int totalUnit = kbUnitQueryExecute(totalUnitQuery);*/
+
+   //aiChat(1, "totalResources: " + totalResources + " totalUnit: " + totalUnit);
 }

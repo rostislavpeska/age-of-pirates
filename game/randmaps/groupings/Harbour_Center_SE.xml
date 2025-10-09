@@ -46,7 +46,7 @@
 		<unit variation="152" posx="-10.9412" posz="7.3878" orientx="0.0000" orienty="0.0000" orientz="-1.0000">dePropsColonyAfrica</unit>
 		<unit variation="222" posx="-8.3455" posz="7.1797" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="93" posx="2.8228" posz="7.5478" orientx="1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
-		<unit variation="41" posx="-2.4858" posz="10.7176" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCPortSocket</unit>
+		<unit variation="41" posx="-2.4858" posz="10.7176" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCPortSocket</unit>
 		<unit variation="93" posx="-7.2833" posz="7.9489" orientx="1.0000" orienty="0.0000" orientz="0.0000">HarbourPathBlock</unit>
 		<unit variation="10" posx="-12.7928" posz="8.9065" orientx="0.0000" orienty="0.0000" orientz="-1.0000">dePropsColonyAfrica</unit>
 		<unit variation="247" posx="-8.8330" posz="8.5985" orientx="0.0000" orienty="0.0000" orientz="-1.0000">PropsColony</unit>

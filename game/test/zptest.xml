@@ -1,0 +1,20 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "300170" displayNameID = "301873" loadDetails="300169" largeMapName = "zptortuga"
+    imagepath = "ui\random_map\tortuga\tortuga_mini" cannotReplace = "" loadBackground="ui\random_map\tortuga\tortuga_map">
+   <loadss>ui\random_map\tortuga\tortuga_01</loadss>
+   <loadss>ui\random_map\tortuga\tortuga_02</loadss>
+   <loadss>ui\random_map\tortuga\tortuga_03</loadss>
+   <enforcedSettings>
+        <setting type="FFA" state="forbidden" />
+        <setting type="RecordGame" state="forbidden" />
+        <setting type="TwoTeams" state="enforced" />
+        <setting type="DefaultRules" state="enforced" />
+        <setting type="OneVsAll" state="forbidden" />
+    </enforcedSettings>
+    <recommendedSettings>
+        <civilization>Pirate</civilization>
+        <civilization>Germans</civilization>
+        <civilization>Russians</civilization>
+        <civilization>Dutch</civilization>
+    </recommendedSettings>
+</mapinfo>

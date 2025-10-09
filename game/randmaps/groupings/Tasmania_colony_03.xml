@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>12</width>
+	<height>12</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="43" posx="-10.5659" posz="-9.0402" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="242" posx="10.4227" posz="-9.4214" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">zpNativeHousePenalColony</unit>
+		<unit variation="43" posx="-6.3085" posz="-9.6814" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpNativeHousePenalColony</unit>
+		<unit variation="139" posx="-6.7274" posz="-7.1991" orientx="0.0006" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="43" posx="-2.2583" posz="-9.6448" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpNativeHousePenalColony</unit>
+		<unit variation="139" posx="-2.5183" posz="-7.0804" orientx="0.0006" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="43" posx="3.1985" posz="-9.7252" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpNativeHousePenalColony</unit>
+		<unit variation="43" posx="8.8411" posz="-9.7824" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpNativeHousePenalColony</unit>
+		<unit variation="139" posx="3.7277" posz="-7.6701" orientx="0.0006" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="139" posx="7.3792" posz="-7.8380" orientx="0.0006" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="242" posx="-9.1891" posz="-9.0128" orientx="-1.0000" orienty="0.0000" orientz="0.0001">zpNativeHousePenalColony</unit>
+		<unit variation="139" posx="8.2909" posz="-4.1641" orientx="0.0006" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="43" posx="11.4701" posz="-6.5741" orientx="-1.0000" orienty="0.0000" orientz="0.0003">zpNativeHousePenalColony</unit>
+		<unit variation="139" posx="-6.7321" posz="-4.4896" orientx="0.0006" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="43" posx="-9.6273" posz="-5.8587" orientx="1.0000" orienty="0.0000" orientz="-0.0001">zpNativeHousePenalColony</unit>
+		<unit variation="87" posx="-10.7403" posz="-5.7183" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="55" posx="-2.4827" posz="-4.5573" orientx="0.0001" orienty="0.0000" orientz="1.0000">zpNativeHousePenalColony</unit>
+		<unit variation="43" posx="11.4642" posz="-3.2983" orientx="-1.0000" orienty="0.0000" orientz="0.0003">zpNativeHousePenalColony</unit>
+		<unit variation="41" posx="6.2030" posz="-3.9093" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">zpNativeHousePenalColony</unit>
+		<unit variation="43" posx="-6.7422" posz="-1.6778" orientx="-0.0007" orienty="0.0000" orientz="-1.0000">zpNativeHousePenalColony</unit>
+		<unit variation="43" posx="-3.4174" posz="-1.7619" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">zpNativeHousePenalColony</unit>
+		<unit variation="158" posx="-0.8761" posz="-1.4300" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHousePenalColony</unit>
+		<unit variation="242" posx="-9.0093" posz="-2.1813" orientx="0.0001" orienty="0.0000" orientz="1.0000">zpNativeHousePenalColony</unit>
+		<unit variation="36" posx="3.5172" posz="-1.2808" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="174" posx="3.3302" posz="-3.2226" orientx="0.9240" orienty="0.0000" orientz="0.3823">SPCMineProps</unit>
+		<unit variation="139" posx="11.3663" posz="1.7018" orientx="0.0006" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="138" posx="-3.2769" posz="-0.8548" orientx="-1.0000" orienty="0.0000" orientz="0.0004">zpNatPropColonialGuards</unit>
+		<unit variation="3" posx="9.4725" posz="0.2893" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
+		<unit variation="44" posx="-1.2096" posz="1.3632" orientx="-1.0000" orienty="0.0000" orientz="0.0001">zpNativeHousePenalColony</unit>
+		<unit variation="43" posx="11.4344" posz="1.9062" orientx="-1.0000" orienty="0.0000" orientz="0.0003">zpNativeHousePenalColony</unit>
+		<unit variation="112" posx="10.8527" posz="0.5895" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">SPCMineProps</unit>
+		<unit variation="139" posx="1.9305" posz="2.2728" orientx="0.0006" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="27" posx="8.3409" posz="2.7235" orientx="-1.0000" orienty="0.0000" orientz="0.0003">zpPenalColonyFlag</unit>
+		<unit variation="80" posx="1.6599" posz="2.4503" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCMineProps</unit>
+		<unit variation="158" posx="-1.0368" posz="4.5804" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHousePenalColony</unit>
+		<unit variation="43" posx="11.3728" posz="4.6073" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpNativeHousePenalColony</unit>
+		<unit variation="160" posx="-8.7648" posz="4.4347" orientx="-1.0000" orienty="0.0000" orientz="0.0003">zpSocketPenalColony</unit>
+		<unit variation="49" posx="2.3901" posz="4.7928" orientx="-0.9237" orienty="0.0000" orientz="0.3832">PropsColony</unit>
+		<unit variation="138" posx="-3.5058" posz="4.2810" orientx="-1.0000" orienty="0.0000" orientz="0.0004">zpNatPropColonialGuards</unit>
+		<unit variation="138" posx="6.7878" posz="3.9270" orientx="-1.0000" orienty="0.0000" orientz="0.0004">zpNatPropColonialGuards</unit>
+		<unit variation="71" posx="2.6911" posz="3.4656" orientx="0.2126" orienty="0.0000" orientz="-0.9771">ypSMJesuitAccessory</unit>
+		<unit variation="96" posx="5.1481" posz="2.5581" orientx="-0.9237" orienty="0.0000" orientz="0.3831">zpPropPenalColony</unit>
+		<unit variation="37" posx="3.8273" posz="6.8052" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHousePenalColony</unit>
+		<unit variation="139" posx="1.4491" posz="7.6410" orientx="0.0006" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="139" posx="5.6864" posz="6.7341" orientx="0.0006" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="128" posx="8.4862" posz="5.0698" orientx="-1.0000" orienty="0.0000" orientz="0.0001">zpNativeHousePenalColony</unit>
+		<unit variation="43" posx="-0.9633" posz="6.7445" orientx="1.0000" orienty="0.0000" orientz="-0.0005">zpNativeHousePenalColony</unit>
+		<unit variation="138" posx="6.4480" posz="5.6548" orientx="-1.0000" orienty="0.0000" orientz="0.0004">zpNatPropColonialGuards</unit>
+		<unit variation="130" posx="3.0987" posz="4.2612" orientx="0.0006" orienty="0.0000" orientz="1.0000">zpPropPenalColony</unit>
+		<unit variation="139" posx="9.9477" posz="8.4783" orientx="0.0006" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
+		<unit variation="242" posx="10.8870" posz="8.5642" orientx="1.0000" orienty="0.0000" orientz="-0.0003">zpNativeHousePenalColony</unit>
+		<unit variation="242" posx="-0.8301" posz="8.7875" orientx="0.0004" orienty="0.0000" orientz="1.0000">zpNativeHousePenalColony</unit>
+		<unit variation="203" posx="-1.5644" posz="7.1117" orientx="0.3827" orienty="0.0000" orientz="0.9239">SPCMineProps</unit>
+		<unit variation="43" posx="8.3596" posz="9.2868" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">zpNativeHousePenalColony</unit>
+		<unit variation="43" posx="2.8839" posz="9.2711" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">zpNativeHousePenalColony</unit>
+		<unit variation="146" posx="-3.0805" posz="10.7788" orientx="-0.0006" orienty="0.0000" orientz="-1.0000">zpPropPenalColony</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="california\desert2_cal">
+			<block startx="-5" startz="-5" endx="-5" endz="-5"></block>
+			<block startx="-5" startz="-4" endx="-5" endz="2"></block>
+			<block startx="-4" startz="-4" endx="3" endz="3"></block>
+			<block startx="-4" startz="-6" endx="-4" endz="-5"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="-5"></block>
+			<block startx="-2" startz="-5" endx="-2" endz="-5"></block>
+			<block startx="0" startz="-5" endx="0" endz="-5"></block>
+			<block startx="1" startz="-6" endx="1" endz="-5"></block>
+			<block startx="2" startz="-6" endx="2" endz="-5"></block>
+			<block startx="3" startz="-5" endx="3" endz="-5"></block>
+			<block startx="-2" startz="4" endx="-2" endz="4"></block>
+			<block startx="-1" startz="4" endx="-1" endz="4"></block>
+			<block startx="0" startz="4" endx="0" endz="4"></block>
+			<block startx="1" startz="4" endx="1" endz="4"></block>
+			<block startx="2" startz="4" endx="2" endz="4"></block>
+			<block startx="3" startz="4" endx="3" endz="4"></block>
+			<block startx="4" startz="4" endx="4" endz="4"></block>
+			<block startx="4" startz="-4" endx="4" endz="3"></block>
+			<block startx="5" startz="-2" endx="5" endz="3"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

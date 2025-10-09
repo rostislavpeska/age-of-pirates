@@ -25,7 +25,7 @@
 		<unit variation="93" posx="7.4191" posz="-8.2510" orientx="0.7071" orienty="0.0000" orientz="0.7072">HarbourPathBlock</unit>
 		<unit variation="93" posx="-12.0679" posz="-7.8109" orientx="-0.9239" orienty="0.0000" orientz="0.3825">HarbourPathBlock</unit>
 		<unit variation="93" posx="5.6420" posz="-6.3801" orientx="0.7071" orienty="0.0000" orientz="0.7072">HarbourPathBlock</unit>
-		<unit variation="12" posx="9.5779" posz="-2.5004" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpSPCPortSocket</unit>
+		<unit variation="12" posx="9.5779" posz="-2.5004" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCPortSocket</unit>
 		<unit variation="143" posx="-4.0012" posz="-3.8370" orientx="0.7120" orienty="0.0000" orientz="0.7022">zpHarbourPlatform</unit>
 		<unit variation="93" posx="-10.5176" posz="-4.3544" orientx="-0.9239" orienty="0.0000" orientz="0.3825">HarbourPathBlock</unit>
 		<unit variation="93" posx="3.2672" posz="-4.3796" orientx="0.7071" orienty="0.0000" orientz="0.7072">HarbourPathBlock</unit>
@@ -51,7 +51,6 @@
 		<unit variation="222" posx="12.4222" posz="4.9199" orientx="-1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="93" posx="-1.6293" posz="5.1594" orientx="-0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
 		<unit variation="93" posx="14.7827" posz="5.8413" orientx="0.7070" orienty="0.0000" orientz="0.7072">HarbourPathBlock</unit>
-		<unit variation="4" posx="15.8825" posz="5.4948" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpMalteseFlag</unit>
 		<unit variation="253" posx="3.4204" posz="7.6627" orientx="-0.6934" orienty="0.0000" orientz="-0.7206">zpHarbourPlatform</unit>
 		<unit variation="93" posx="1.1261" posz="7.9698" orientx="-0.7072" orienty="0.0000" orientz="0.7070">HarbourPathBlock</unit>
 		<unit variation="4" posx="9.2604" posz="10.5468" orientx="0.3879" orienty="0.0000" orientz="-0.9217">zpHarbourPlatform</unit>

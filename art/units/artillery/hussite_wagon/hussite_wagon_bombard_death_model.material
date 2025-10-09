@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\artillery\hussite_wagon\textures\hussitewagon_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\artillery\hussite_wagon\textures\hussitewagon_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\artillery\hussite_wagon\textures\hussitewagon_mata_masks">
+      </texture>
+      <texture name="Details" override="units\artillery\hussite_wagon\textures\hussitewagon_mata_details">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="units\artillery\hussite_wagon\textures\hussitewagon_alt_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\artillery\hussite_wagon\textures\hussitewagon_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\artillery\hussite_wagon\textures\hussitewagon_mata_masks">
+      </texture>
+      <texture name="Details" override="units\artillery\hussite_wagon\textures\hussitewagon_alt_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

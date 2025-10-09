@@ -1,5 +1,5 @@
 <layout>
-  <gadget name="TradeRoute" type="gadget" sizerel1024="824 70 1024 650" background="ui\file_system\file_system_background" bevel="" titlebar="$$33254$$Trade Route Tool" closebutton="" windowzstyle="" moveable="" closeonesc="">
+  <gadget name="TradeRoute" type="gadget" sizerel1024="824 70 1024 670" background="ui\file_system\file_system_background" bevel="" titlebar="$$33254$$Trade Route Tool" closebutton="" windowzstyle="" moveable="" closeonesc="">
     <gadget name="TradeRoute_CreateBtn" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 15 185 35">$$33255$$Create Trade Route</gadget>
     <gadget name="TradeRoute_RemoveBtn" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 50 185 70">$$33256$$Remove Trade Route</gadget>
     <gadget name="TradeRoute_WaypointBtn" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 85 185 105">$$33257$$Add/Remove Waypoints</gadget>
@@ -77,6 +77,13 @@
     </gadget>
     <gadget name="asian_water_trail_Icon" type="button" bevelbutton="" mouseovertext="$$300383$$" foreground="ui\canoe_icon" sizerel1024="165 505 185 525" z="2">
       <command>editorSetAllTradeRoutesToDef("native_water_trail")</command>
+    </gadget>
+
+    <gadget name="hansa_water_trail" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 540 185 560" mouseovertext="Editor use - sets all trade route definitons to the Caravel(water trade routes)." z="1">Convert to Hansa
+      <command>editorSetAllTradeRoutesToDef("hansa_water_trail")</command>
+    </gadget>
+    <gadget name="hansa_water_trail_Icon" type="button" bevelbutton="" mouseovertext="$$102135$$" foreground="ui\trade_ship_icon" sizerel1024="165 540 185 560" z="2">
+      <command>editorSetAllTradeRoutesToDef("hansa_water_trail")</command>
     </gadget>
 
   </gadget>

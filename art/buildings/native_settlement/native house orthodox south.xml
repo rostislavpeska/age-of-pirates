@@ -7,16 +7,29 @@
 		<logic type="Variation">
 			<variationid0>
 				<assetreference type="GrannyModel">
-					<file>buildings\native_settlement\orthodox\orthodox_church_age3</file>
-					<materialvariant index="1"></materialvariant>
+					<file>buildings\church\church_orthodox_south_Model</file>
 				</assetreference>
 			</variationid0>
 			<variationid1>
 				<assetreference type="GrannyModel">
-					<file>buildings\native_settlement\orthodox\orthodox_church</file>
-					<materialvariant index="1"></materialvariant>
+					<file>buildings\native_settlement\maltese_convent\aos_church_dark</file>
 				</assetreference>
 			</variationid1>
+			<variationid2>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\maltese_convent\aos_house_dark</file>
+				</assetreference>
+			</variationid2>
+			<variationid3>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\orthodox\orthodox_tower_Model</file>
+				</assetreference>
+			</variationid3>
+			<variationid4>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\orthodox\orthodox_church2_south</file>
+				</assetreference>
+			</variationid4>
 		</logic>
 	</component>
 	<anim>

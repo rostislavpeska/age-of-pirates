@@ -1,0 +1,40 @@
+<animfile>
+    <attachment>clickzone
+          <component>clickzone
+                <assetreference type="GrannyModel"><file>buildings\gold_mine\diving_bell_invisible_Model</file></assetreference>
+          </component>
+          <anim>Idle
+              <component>clickzone</component>
+          </anim>
+    </attachment>
+    <component>shrine
+        <assetreference type="GrannyModel">
+            <file>buildings\gold_mine\diving_bell_con_Model</file>
+        </assetreference>
+        <attach a="clickzone" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+        <decal>
+            <effecttype>default</effecttype>
+            <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <width>9.00</width>
+            <height>9.00</height>
+        </decal>
+    </component>
+    <component>shrineDeath
+        <assetreference type="GrannyModel">
+            <file>buildings\gold_mine\diving_bell_con_Model</file>
+        </assetreference>
+        <attach a="clickzone" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
+        <decal>
+            <effecttype>default</effecttype>
+            <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <width>9.00</width>
+            <height>9.00</height>
+        </decal>
+    </component>
+    <anim>Idle
+        <component>shrine</component>
+    </anim>
+    <anim>Death
+        <component>shrineDeath</component>
+    </anim>
+</animfile>

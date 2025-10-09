@@ -1,0 +1,51 @@
+<animfile>
+    <attachment>
+        lamp
+        <component>
+            lamp
+            <assetreference type="GrannyModel">
+                <file>buildings\native_settlement\europe\fence\lamp</file>
+            </assetreference>
+        </component>
+        <anim>
+            Idle
+            <component>lamp</component>
+        </anim>
+    </attachment>
+    <component>
+        fence
+        <logic type="Variation">
+            <data>
+                <assetreference type="GrannyModel"><file>buildings\native_settlement\europe\fence\v1\fence_frame_a</file></assetreference>
+            </data>
+            <data>
+                <assetreference type="GrannyModel"><file>buildings\native_settlement\europe\fence\v1\fence_frame_b</file></assetreference>
+            </data>
+            <data>
+                <assetreference type="GrannyModel"><file>buildings\native_settlement\europe\fence\v1\gate_pillar_big</file></assetreference>
+            </data>
+            <data>
+                <assetreference type="GrannyModel"><file>buildings\native_settlement\europe\fence\v1\gate_frame</file></assetreference>
+            </data>
+            <data>
+                <assetreference type="GrannyModel"><file>buildings\native_settlement\europe\fence\v1\gate_door</file></assetreference>
+            </data>
+            <data>
+                <assetreference type="GrannyModel"><file>buildings\native_settlement\europe\fence\v1\gate_pillar_small</file></assetreference>
+            </data>
+            <data>
+                <assetreference type="GrannyModel"><file>buildings\native_settlement\europe\fence\v1\gate_pillar_small</file></assetreference><attach a="lamp" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+            </data>
+            <data>
+                <assetreference type="GrannyModel"><file>buildings\native_settlement\europe\fence\v1\corner_pillar</file></assetreference>
+            </data>
+            <data>
+                <assetreference type="GrannyModel"><file>buildings\native_settlement\europe\fence\lion_l</file></assetreference>
+            </data>
+        </logic>
+    </component>
+    <anim>
+        Idle
+        <component>fence</component>
+    </anim>
+</animfile>

@@ -225,7 +225,7 @@ minInterval 30
 void setMilPopLimit(int age1Limit = 10, int age2Limit = 30, int age3Limit = 80,
                     int age4Limit = 120, int age5Limit = 130)
 {
-   int age = kbGetAge();
+   int age = getAgingUpAge();
    // We use treatyCheckStartMakingArmy to call setMilPopLimit when it's time to make army.
    // We start making army in treaty 10 minutes before the treaty ends.
    if (aiTreatyGetEnd() > xsGetTime() + 10 * 60 * 1000)
@@ -288,7 +288,7 @@ void setMilPopLimit(int age1Limit = 10, int age2Limit = 30, int age3Limit = 80,
 //==============================================================================
 void popManager(bool revoltedMilitary = false, bool revoltedEconomic = false)
 {
-   int age = kbGetAge();
+   int age = getAgingUpAge(); // AssertiveWall: If we're aging up, calculates like we're in the next age already
    int maxMil = -1;
 
    debugCore("gMaxPop: " + gMaxPop);
@@ -330,8 +330,12 @@ void popManager(bool revoltedMilitary = false, bool revoltedEconomic = false)
    // to allow AI to build big enough armies to attack
    if (gStartOnDifferentIslands == true && cDifficultyCurrent >= cDifficultyModerate)
    {
-      // AssertiveWall: a little more throttling on island maps
-      if (gStrategy == cStrategyRush)
+      // AssertiveWall: a little more throttling on island maps, and lots on naval KOTH
+      if (gIsNavalKOTH == true)
+      {
+         setMilPopLimit(maxMil / 15, maxMil / 12, maxMil / 8, maxMil / 2, maxMil);
+      }
+      else if (gStrategy == cStrategyRush)
       {
          setMilPopLimit(maxMil / 6, maxMil / 2, maxMil / 2, maxMil, maxMil);
       }
@@ -2329,12 +2333,15 @@ minInterval 5
 
       if (gNavyMap == true)
       {
-         xsEnableRule("waterDefend");
+         if (gIsNavalKOTH == false)
+         {
+            xsEnableRule("waterDefend");
+         }
          xsEnableRule("coastalGuns");
-         //if (gMigrationMap == true)
-         //{
+         if (gPirateBlockWalls == false)
+         {
             xsEnableRule("dockWallOne");
-         //}
+         }
       }
 
       // AssertiveWall: Enable island hopping on the following maps
@@ -2362,9 +2369,17 @@ minInterval 5
          }
          if (gIsArchipelagoMap == true)
          {
-            xsEnableRule("moveArchipelagoBase");
             //xsEnableRule("generalTransportFailsafe");
             xsEnableRule("moveOutOfWayVil");
+            xsEnableRule("forwardIslandTower");
+            if (gIsAtollMap == true)
+            {
+               // Special atoll rules go here
+            }
+            else
+            {
+               xsEnableRule("moveArchipelagoBase");
+            }
          }         
       }
 
@@ -2456,6 +2471,7 @@ minInterval 5
          }
          else if (cDifficultyCurrent != cDifficultySandbox) // We never attack on Easy.
          {
+            xsEnableRule("raidEnabler");  // AssertiveWall: enables raids
             xsEnableRule("mostHatedEnemy"); // Picks a target for us to attack.
             mostHatedEnemy(); // Instantly get a target so our managers have something to work with.
             xsEnableRule("attackManager"); // Land attacking / defending allies.
@@ -2464,10 +2480,24 @@ minInterval 5
             if (gNavyMap == true)
             {
                xsEnableRule("waterAttack"); // Water attacking.
-               xsEnableRule("endlessWaterRaids"); // AssertiveWall: constant raids/patrols on water
+               // AssertiveWall: Don't do endless water raids on naval KOTH. First naval assault is rarer
+               if (gIsNavalKOTH == false)
+               {
+                  xsEnableRule("endlessWaterRaids"); // AssertiveWall: constant raids/patrols on water
+               }
                if (gStartOnDifferentIslands == true)
                {
-                  xsEnableRule("firstNavalAssault"); // AssertiveWall: handles the first few attacks on water
+                  if (gIsNavalKOTH == true)
+                  {
+                     if (aiRandInt(3) < 2)
+                     {
+                        xsEnableRule("firstNavalAssault"); // AssertiveWall: handles the first few attacks on water
+                     }
+                  }
+                  else
+                  {
+                     xsEnableRule("firstNavalAssault"); // AssertiveWall: handles the first few attacks on water
+                  }
                }
             }
          }
@@ -2679,10 +2709,28 @@ minInterval 5
          xsEnableRule("cityTowerUpgradeMonitor");
       }
       
-      xsEnableRule("age3Monitor");
+      xsEnableRule("agingTo3Monitor");
       xsDisableSelf();
       debugCore("*** End of age2Monitor rule");
       debugCore("");
+   }
+}
+
+//==============================================================================
+// agingTo3Monitor
+// Watch for us aging to age 3.
+// AssertiveWall: Added so we can update mil pop before reaching age 3
+//==============================================================================
+rule agingTo3Monitor
+inactive
+minInterval 10
+{
+   if (getAgingUpAge() >= cAge3)
+   {
+      updateSettlersAndPopManager();
+
+      xsEnableRule("age3Monitor");
+      xsDisableSelf();
    }
 }
 
@@ -2780,10 +2828,9 @@ minInterval 10
 
       // Enable navy upgrades
       if ((gNavyMap == true) &&
-          (cvOkToTrainNavy == true) &&
-          (civIsNative() == false))
+          (cvOkToTrainNavy == true))// AssertiveWall: Natives can now upgrade boats &&(civIsNative() == false))
       {
-      xsEnableRule("navyUpgradeMonitor");
+         xsEnableRule("navyUpgradeMonitor");
       }
 
       if (civIsAfrican() == true)
@@ -2797,10 +2844,28 @@ minInterval 10
       //   xsEnableRule("seaWall");
       //}
 
-      xsEnableRule("age4Monitor");
+      xsEnableRule("agingTo4Monitor");
       xsDisableSelf();
       debugCore("*** End of age3Monitor rule");
       debugCore("");
+   }
+}
+
+//==============================================================================
+// agingTo4Monitor
+// Watch for us aging to age 4.
+// AssertiveWall: Added so we can update mil pop before reaching age 4
+//==============================================================================
+rule agingTo4Monitor
+inactive
+minInterval 10
+{
+   if (getAgingUpAge() >= cAge4)
+   {
+      updateSettlersAndPopManager();
+
+      xsEnableRule("age4Monitor");
+      xsDisableSelf();
    }
 }
 

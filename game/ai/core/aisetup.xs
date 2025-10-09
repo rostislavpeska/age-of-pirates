@@ -1174,14 +1174,18 @@ void analyzeMap()
    {
       if (cRandomMapName == "euArchipelago" ||
          cRandomMapName == "euArchipelagoLarge"||
-         cRandomMapName == "zpmediterranean" ||
-         cRandomMapName == "zpkurils")
+         cRandomMapName == "euMediterranean")
       {
          gIsArchipelagoMap = true;
          cvOkToGatherFood = false;      // Setting it false will turn off food gathering. True turns it on.
          cvOkToGatherGold = false;      // Setting it false will turn off gold gathering. True turns it on.
          cvOkToGatherWood = false;      // Setting it false will turn off wood gathering. True turns it on.
          gHomeBase = kbGetPlayerStartingPosition(cMyID);
+
+         if (cRandomMapName == "euMediterranean")
+         {
+            gIsAtollMap = true;
+         }
       }
    }
 
@@ -1711,6 +1715,23 @@ void initPersonality(void)
    {
       gStrategy = cStrategyGreed;
    }
+
+   // AssertiveWall: Need a couple checks in case the max age is lower than industrial
+   if (cvMaxAge <= cAge3)
+   {  // max age is under Age 4, can't fast industrial
+      if (gStrategy == cStrategyFastIndustrial)
+      {
+         gStrategy = cStrategySafeFF;
+      }
+
+      if (cvMaxAge <= cAge2)
+      {
+         if (gStrategy == cStrategySafeFF || gStrategy == cStrategyNakedFF)
+         {
+            gStrategy = cStrategyRush;
+         }
+      }
+   }
 }
       
 //==============================================================================
@@ -2065,7 +2086,7 @@ void prepareForInit()
          {
             initCeylonNomadStart(); // Transport our Covered Wagon to the mainland on Ceylon.
          }
-         else
+         else if (cRandomMapName != "zptasmania") // AssertiveWall: Tasmania needs to delay init() until wagon lands
          {
             xsEnableRule("initRule"); // This will call init() after 3 seconds of delay.
          }

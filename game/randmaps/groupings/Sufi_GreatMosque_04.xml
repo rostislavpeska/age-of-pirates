@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>15</width>
+	<height>15</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="149" posx="-11.2224" posz="-9.9818" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="199" posx="-0.9805" posz="-10.2560" orientx="1.0000" orienty="0.0000" orientz="-0.0016">zpSocketSPCSufi</unit>
+		<unit variation="149" posx="-5.8109" posz="-7.0561" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="9.8704" posz="-7.5531" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="-12.5139" posz="-7.3958" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="-0.3741" posz="-7.0040" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="4.6032" posz="-7.4236" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="249" posx="-5.5603" posz="-6.6827" orientx="1.0000" orienty="0.0000" orientz="-0.0016">ypNativeTempleSufi</unit>
+		<unit variation="149" posx="-3.1818" posz="-5.8553" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="-3.8329" posz="-5.2801" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="-7.5966" posz="-6.6150" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="34" posx="-9.6634" posz="-6.6814" orientx="-0.0006" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="42" posx="-5.4251" posz="-7.1513" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="228" posx="-5.3025" posz="-9.2599" orientx="0.9990" orienty="0.0000" orientz="-0.0436">ypSMSufiAccessory</unit>
+		<unit variation="170" posx="8.0741" posz="-6.6329" orientx="-1.0000" orienty="0.0000" orientz="0.0008">ypNativeTempleSufi</unit>
+		<unit variation="149" posx="-10.0472" posz="-5.5494" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="-10.1523" posz="-6.4035" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="228" posx="3.9889" posz="-9.1436" orientx="0.3420" orienty="0.0000" orientz="-0.9397">ypSMSufiAccessory</unit>
+		<unit variation="42" posx="3.2403" posz="-7.1203" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="249" posx="4.0944" posz="-7.1321" orientx="1.0000" orienty="0.0000" orientz="-0.0016">ypNativeTempleSufi</unit>
+		<unit variation="149" posx="-7.7834" posz="-4.7251" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="10.5866" posz="-4.9577" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="7.9323" posz="-3.0591" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="2.7334" posz="-4.8238" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="1.6684" posz="-3.0831" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="203" posx="4.5524" posz="-4.4671" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="126" posx="-0.5284" posz="-4.7690" orientx="-0.0082" orienty="0.0000" orientz="1.0000">ypSMSufiAccessory</unit>
+		<unit variation="1" posx="6.0355" posz="-2.3094" orientx="0.0023" orienty="0.0000" orientz="1.0000">ypNativeTempleSufi</unit>
+		<unit variation="203" posx="-6.1736" posz="-3.4411" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="100" posx="-1.4526" posz="1.1170" orientx="-1.0000" orienty="0.0000" orientz="0.0006">zpSPCGreatMosque</unit>
+		<unit variation="149" posx="-4.4063" posz="-1.6840" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="21" posx="-11.6247" posz="-2.7199" orientx="-0.9241" orienty="0.0000" orientz="-0.3821">ypNativeTempleSufi</unit>
+		<unit variation="149" posx="-6.5645" posz="-1.4667" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="228" posx="4.7789" posz="-1.9823" orientx="-0.5964" orienty="0.0000" orientz="0.8027">ypSMSufiAccessory</unit>
+		<unit variation="126" posx="7.9199" posz="-2.9624" orientx="-1.0000" orienty="0.0000" orientz="-0.0082">ypSMSufiAccessory</unit>
+		<unit variation="149" posx="-7.4789" posz="-0.5647" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="2.9831" posz="0.2504" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="4.6729" posz="-0.4356" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="210" posx="7.5104" posz="0.8300" orientx="-0.0007" orienty="0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="44" posx="2.7118" posz="1.4772" orientx="1.0000" orienty="0.0000" orientz="-0.0018">ypNativeTempleSufi</unit>
+		<unit variation="149" posx="4.8200" posz="2.8793" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="-0.4046" posz="2.2071" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="-1.8500" posz="2.0728" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="182" posx="-10.1093" posz="1.0307" orientx="-0.0007" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="203" posx="-11.5483" posz="0.7131" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="149" posx="-4.4424" posz="1.7860" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="21" posx="-11.6738" posz="4.6451" orientx="0.9236" orienty="0.0000" orientz="-0.3833">ypNativeTempleSufi</unit>
+		<unit variation="149" posx="-9.9545" posz="3.8642" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="-7.4982" posz="4.7965" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="9.2630" posz="4.6794" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="203" posx="-7.8445" posz="1.3462" orientx="-0.9999" orienty="0.0000" orientz="0.0138">ypSMSufiWoman</unit>
+		<unit variation="86" posx="-14.1697" posz="3.2177" orientx="-0.7942" orienty="0.0000" orientz="0.6077">ypSMSufiAccessory</unit>
+		<unit variation="44" posx="10.1503" posz="3.9332" orientx="0.9103" orienty="0.0000" orientz="-0.4139">ypSMSufiAccessory</unit>
+		<unit variation="1" posx="5.9939" posz="4.8589" orientx="0.0023" orienty="0.0000" orientz="1.0000">ypNativeTempleSufi</unit>
+		<unit variation="33" posx="-6.3684" posz="5.2993" orientx="-0.9437" orienty="0.0000" orientz="-0.3309">ypSMSufiAccessory</unit>
+		<unit variation="126" posx="7.6660" posz="5.0269" orientx="1.0000" orienty="0.0000" orientz="0.0082">ypSMSufiAccessory</unit>
+		<unit variation="149" posx="-3.0560" posz="8.3112" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="203" posx="-6.0755" posz="6.2865" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="149" posx="-7.7213" posz="8.2864" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="-9.5358" posz="8.0364" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="203" posx="4.4326" posz="7.2980" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="33" posx="-0.2167" posz="8.9269" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">ypNativeTempleSufi</unit>
+		<unit variation="1" posx="-4.0610" posz="8.9223" orientx="-1.0000" orienty="0.0000" orientz="0.0023">ypNativeTempleSufi</unit>
+		<unit variation="249" posx="-5.3702" posz="8.8667" orientx="1.0000" orienty="0.0000" orientz="-0.0016">ypNativeTempleSufi</unit>
+		<unit variation="170" posx="7.9282" posz="8.6574" orientx="1.0000" orienty="0.0000" orientz="-0.0009">ypNativeTempleSufi</unit>
+		<unit variation="149" posx="-11.6305" posz="9.2076" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="1" posx="3.2907" posz="8.9544" orientx="-1.0000" orienty="0.0000" orientz="0.0023">ypNativeTempleSufi</unit>
+		<unit variation="249" posx="3.9432" posz="8.6362" orientx="1.0000" orienty="0.0000" orientz="-0.0016">ypNativeTempleSufi</unit>
+		<unit variation="149" posx="5.1032" posz="9.6804" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="149" posx="6.9538" posz="9.9843" orientx="-0.0012" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="7" posx="-9.7687" posz="8.3602" orientx="0.0044" orienty="0.0000" orientz="-1.0000">ypSMSufiGuy</unit>
+		<unit variation="126" posx="4.9231" posz="10.1808" orientx="-0.0082" orienty="0.0000" orientz="1.0000">ypSMSufiAccessory</unit>
+		<unit variation="126" posx="-5.8151" posz="10.2653" orientx="-0.0082" orienty="0.0000" orientz="1.0000">ypSMSufiAccessory</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

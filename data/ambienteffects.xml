@@ -9,6 +9,8 @@
       <type>california</type>
       <type>caribbean</type>
       <type>australia</type>
+      <type>barrierreef</type>
+      <type>tasmania</type>
       <type>carolina</type>
       <type>greatLakes</type>
       <type>greatPlains</type>
@@ -27,6 +29,7 @@
       <type>yukon</type>
       <type>arcticterritories</type>
       <type>hawaii</type>
+      <type>cookislands</type>
     </maptypes>
     <minspawntime>90</minspawntime>
     <maxspawntime>300</maxspawntime>
@@ -68,6 +71,9 @@
       <type>fertilecrescent</type>
       <type>yellowRiver</type>
       <type>borneo</type>
+      <type>newguinea</type>
+      <type>melanesia</type>
+      <type>guinea</type>
       <type>japan</type>
       <type>mongolia</type>
       <type>himalayas</type>
@@ -77,6 +83,8 @@
       <type>silkRoad2</type>
       <type>silkRoad3</type>
       <type>australia</type>
+      <type>barrierreef</type>
+      <type>tasmania</type>
       <type>newzealand</type>
     </maptypes>
     <minspawntime>45</minspawntime>
@@ -202,6 +210,8 @@
       <type>orinoco</type>
       <type>yucatan</type>
       <type>australia</type>
+      <type>barrierreef</type>
+      <type>newguinea</type>
       <type>newzealand</type>
     </maptypes>
     <minspawntime>10</minspawntime>
@@ -222,7 +232,12 @@
       <type>yucatan</type>
       <type>caribbean</type>
       <type>australia</type>
+      <type>barrierreef</type>
       <type>hawaii</type>
+      <type>cookislands</type>
+      <type>newguinea</type>
+      <type>melanesia</type>
+      <type>guinea</type>
     </maptypes>
     <minspawntime>50</minspawntime>
     <maxspawntime>200</maxspawntime>
@@ -242,8 +257,13 @@
       <type>carolina</type>
       <type>patagonia</type>
       <type>australia</type>
+      <type>barrierreef</type>
+      <type>tasmania</type>
       <type>newzealand</type>
       <type>hawaii</type>
+      <type>cookislands</type>
+      <type>melanesia</type>
+      <type>guinea</type>
     </maptypes>
     <minspawntime>50</minspawntime>
     <maxspawntime>200</maxspawntime>

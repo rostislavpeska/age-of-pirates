@@ -1,0 +1,21 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "302220" displayNameID = "302219" loadDetails="302221"
+    imagepath = "ui\random_map\caribbean_wars\caribbean_wars_mini" cannotReplace = "" loadBackground="ui\random_map\tortuga\tortuga_map">
+    <loadss>ui\random_map\caribbean_wars\caribbean_wars_01</loadss>
+    <loadss>ui\random_map\caribbean_wars\caribbean_wars_02</loadss>
+    <loadss>ui\random_map\caribbean_wars\caribbean_wars_03</loadss>
+    <enforcedSettings>
+        <setting type="FFA" state="forbidden" />
+        <setting type="RecordGame" state="forbidden" />
+        <setting type="TwoTeams" state="enforced" />
+    </enforcedSettings>
+    <recommendedSettings>
+        <civilization>British</civilization>
+        <civilization>French</civilization>
+        <civilization>Dutch</civilization>
+        <civilization>Spanish</civilization>
+        <civilization>DEMexicans</civilization>
+        <civilization>DEAmericans</civilization>
+        <civilization>Portuguese</civilization>
+    </recommendedSettings>
+</mapinfo>

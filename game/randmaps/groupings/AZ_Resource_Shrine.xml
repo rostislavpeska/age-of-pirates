@@ -1,0 +1,374 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>21</width>
+	<height>21</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="190" posx="-13.4226" posz="-12.5674" orientx="-1.0000" orienty="0.0000" orientz="0.0002">WallWoodNative</unit>
+		<unit variation="190" posx="-5.0619" posz="-12.6618" orientx="-1.0000" orienty="0.0000" orientz="0.0002">WallWoodNative</unit>
+		<unit variation="190" posx="3.8742" posz="-13.4065" orientx="-0.9238" orienty="0.0000" orientz="0.3829">WallWoodNative</unit>
+		<unit variation="14" posx="13.9857" posz="-13.1018" orientx="0.0002" orienty="0.0000" orientz="-1.0000">UnderbrushDeccan</unit>
+		<unit variation="190" posx="12.0646" posz="-13.4503" orientx="0.0000" orienty="0.0000" orientz="1.0000">WallWoodNative</unit>
+		<unit variation="129" posx="-9.1164" posz="-12.6386" orientx="0.0001" orienty="0.0000" orientz="1.0000">WallWoodNative</unit>
+		<unit variation="129" posx="7.9057" posz="-13.4284" orientx="0.0003" orienty="0.0000" orientz="1.0000">WallWoodNative</unit>
+		<unit variation="53" posx="3.5547" posz="-13.5520" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpRuinWallSmall</unit>
+		<unit variation="149" posx="8.3121" posz="-13.6627" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpRuinWallLarge</unit>
+		<unit variation="6" posx="-10.0607" posz="-10.3625" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="235" posx="-9.6919" posz="-10.8873" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="62" posx="-9.7990" posz="-11.2454" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="153" posx="7.3170" posz="-10.0655" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="181" posx="6.3825" posz="-10.0897" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="32" posx="6.8840" posz="-11.6768" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="53" posx="-13.5478" posz="-12.6987" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpRuinWallSmall</unit>
+		<unit variation="149" posx="-9.2384" posz="-12.8437" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
+		<unit variation="53" posx="-5.1486" posz="-12.8511" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpRuinWallSmall</unit>
+		<unit variation="182" posx="6.0000" posz="-12.0000" orientx="-0.5701" orienty="0.0000" orientz="0.8216">TreeAmazon</unit>
+		<unit variation="123" posx="8.0000" posz="-12.0000" orientx="-0.0916" orienty="0.0000" orientz="0.9958">TreeAmazon</unit>
+		<unit variation="123" posx="10.0000" posz="-12.0000" orientx="-0.0934" orienty="0.0000" orientz="-0.9956">TreeAmazon</unit>
+		<unit variation="129" posx="12.1249" posz="-9.4921" orientx="-1.0000" orienty="0.0000" orientz="0.0003">WallWoodNative</unit>
+		<unit variation="129" posx="-13.3686" posz="-8.1963" orientx="1.0000" orienty="0.0000" orientz="0.0000">WallWoodNative</unit>
+		<unit variation="212" posx="-9.2060" posz="-9.7864" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="107" posx="-9.7399" posz="-8.8745" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="35" posx="9.2991" posz="-9.0660" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="110" posx="-6.9672" posz="-8.9135" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="100" posx="-12.0000" posz="-10.0000" orientx="0.8232" orienty="0.0000" orientz="-0.5678">TreeAmazon</unit>
+		<unit variation="200" posx="-10.0000" posz="-10.0000" orientx="0.8977" orienty="0.0000" orientz="0.4406">TreeAmazon</unit>
+		<unit variation="64" posx="-8.0000" posz="-10.0000" orientx="0.3476" orienty="0.0000" orientz="0.9376">TreeAmazon</unit>
+		<unit variation="29" posx="-6.0000" posz="-10.0000" orientx="0.1380" orienty="0.0000" orientz="-0.9904">TreeAmazon</unit>
+		<unit variation="54" posx="6.0000" posz="-10.0000" orientx="-0.8786" orienty="0.0000" orientz="0.4775">TreeAmazon</unit>
+		<unit variation="216" posx="4.0000" posz="-10.0000" orientx="-0.8357" orienty="0.0000" orientz="-0.5491">TreeAmazon</unit>
+		<unit variation="0" posx="0.2571" posz="-10.1407" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpPropAztecDecoration</unit>
+		<unit variation="149" posx="11.6720" posz="-9.6978" orientx="-1.0000" orienty="0.0000" orientz="0.0003">zpRuinWallLarge</unit>
+		<unit variation="215" posx="8.0000" posz="-10.0000" orientx="-0.9451" orienty="0.0000" orientz="-0.3267">TreeAmazon</unit>
+		<unit variation="32" posx="10.0000" posz="-10.0000" orientx="-0.7410" orienty="0.0000" orientz="0.6715">TreeAmazon</unit>
+		<unit variation="6" posx="-2.3604" posz="-6.1490" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCAztecProps</unit>
+		<unit variation="6" posx="1.3606" posz="-6.1185" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCAztecProps</unit>
+		<unit variation="115" posx="-9.6236" posz="-7.9501" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="185" posx="-9.2674" posz="-7.2984" orientx="0.7071" orienty="0.0000" orientz="-0.7071">UnderbrushAmazon</unit>
+		<unit variation="95" posx="-4.2356" posz="-7.8555" orientx="-0.8906" orienty="0.0053" orientz="-0.4547">BighornSheep</unit>
+		<unit variation="124" posx="4.7426" posz="-7.1735" orientx="0.7872" orienty="-0.0007" orientz="-0.6167">BighornSheep</unit>
+		<unit variation="93" posx="-10.0000" posz="-8.0000" orientx="-0.7753" orienty="0.0000" orientz="0.6316">TreeAmazon</unit>
+		<unit variation="116" posx="-12.0000" posz="-8.0000" orientx="-0.0058" orienty="0.0000" orientz="1.0000">TreeAmazon</unit>
+		<unit variation="149" posx="-13.5229" posz="-8.1435" orientx="1.0000" orienty="0.0000" orientz="-0.0002">zpRuinWallLarge</unit>
+		<unit variation="103" posx="10.0000" posz="-8.0000" orientx="0.9851" orienty="0.0000" orientz="0.1718">TreeAmazon</unit>
+		<unit variation="168" posx="8.0000" posz="-8.0000" orientx="-0.7229" orienty="0.0000" orientz="-0.6909">TreeAmazon</unit>
+		<unit variation="190" posx="-13.5503" posz="-4.2241" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">WallWoodNative</unit>
+		<unit variation="38" posx="-11.9131" posz="-5.7164" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="190" posx="12.2225" posz="-5.4546" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">WallWoodNative</unit>
+		<unit variation="80" posx="-9.4563" posz="-4.7910" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="255" posx="-7.0329" posz="-6.1714" orientx="-0.5312" orienty="-0.0012" orientz="0.8472">BighornSheep</unit>
+		<unit variation="168" posx="6.0957" posz="-6.1954" orientx="-0.5762" orienty="-0.0009" orientz="0.8173">BighornSheep</unit>
+		<unit variation="186" posx="9.2051" posz="-5.6307" orientx="0.7925" orienty="-0.0007" orientz="-0.6099">BighornSheep</unit>
+		<unit variation="53" posx="11.7570" posz="-5.2357" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpRuinWallSmall</unit>
+		<unit variation="19" posx="-0.1376" posz="-0.0916" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeAztecTempleC</unit>
+		<unit variation="6" posx="-6.2932" posz="-2.6879" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">SPCAztecProps</unit>
+		<unit variation="6" posx="5.7865" posz="-2.7649" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCAztecProps</unit>
+		<unit variation="155" posx="-8.2932" posz="-3.1654" orientx="0.4699" orienty="0.0016" orientz="-0.8827">BighornSheep</unit>
+		<unit variation="53" posx="-13.8759" posz="-4.6131" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpRuinWallSmall</unit>
+		<unit variation="0" posx="8.8240" posz="-1.8470" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpPropAztecDecoration</unit>
+		<unit variation="6" posx="5.9657" posz="1.4890" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">SPCAztecProps</unit>
+		<unit variation="162" posx="11.5050" posz="0.6697" orientx="0.3827" orienty="0.0000" orientz="-0.9239">UnderbrushTexas</unit>
+		<unit variation="0" posx="-9.9238" posz="-0.2032" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpPropAztecDecoration</unit>
+		<unit variation="185" posx="-12.1597" posz="3.7678" orientx="0.9239" orienty="0.0000" orientz="0.3827">UnderbrushTexas</unit>
+		<unit variation="162" posx="-11.8733" posz="2.6245" orientx="0.0000" orienty="0.0000" orientz="-1.0000">UnderbrushTexas</unit>
+		<unit variation="162" posx="-10.2023" posz="2.1107" orientx="0.0000" orienty="0.0000" orientz="-1.0000">UnderbrushTexas</unit>
+		<unit variation="246" posx="-10.1382" posz="3.5831" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="6" posx="-6.4320" posz="2.3188" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">SPCAztecProps</unit>
+		<unit variation="2" posx="10.1169" posz="3.8915" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="109" posx="8.8160" posz="3.8068" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="71" posx="-8.1349" posz="3.3724" orientx="0.7543" orienty="-0.0004" orientz="-0.6565">BighornSheep</unit>
+		<unit variation="190" posx="-13.3582" posz="4.7127" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">WallWoodNative</unit>
+		<unit variation="6" posx="-2.3777" posz="5.1467" orientx="0.0000" orienty="-0.0000" orientz="1.0000">SPCAztecProps</unit>
+		<unit variation="6" posx="1.8329" posz="5.3052" orientx="0.0000" orienty="-0.0000" orientz="1.0000">SPCAztecProps</unit>
+		<unit variation="190" posx="12.5977" posz="4.8329" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">WallWoodNative</unit>
+		<unit variation="171" posx="-7.3807" posz="5.3495" orientx="0.8704" orienty="-0.0015" orientz="-0.4924">BighornSheep</unit>
+		<unit variation="192" posx="6.5047" posz="5.3475" orientx="0.3710" orienty="-0.0051" orientz="0.9286">BighornSheep</unit>
+		<unit variation="171" posx="-10.0000" posz="4.0000" orientx="0.6238" orienty="0.0000" orientz="0.7816">TreeAmazon</unit>
+		<unit variation="53" posx="-13.9626" posz="4.6014" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpRuinWallSmall</unit>
+		<unit variation="53" posx="12.3087" posz="4.7886" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpRuinWallSmall</unit>
+		<unit variation="126" posx="-10.8515" posz="6.5760" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="105" posx="7.4701" posz="7.7568" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="105" posx="-11.2483" posz="7.3813" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="122" posx="-5.2583" posz="6.2813" orientx="0.7435" orienty="-0.0003" orientz="-0.6687">BighornSheep</unit>
+		<unit variation="160" posx="4.3885" posz="7.2354" orientx="0.9859" orienty="-0.0045" orientz="0.1674">BighornSheep</unit>
+		<unit variation="55" posx="-10.0000" posz="6.0000" orientx="0.5612" orienty="0.0000" orientz="0.8277">TreeAmazon</unit>
+		<unit variation="70" posx="10.0000" posz="6.0000" orientx="0.1307" orienty="0.0000" orientz="0.9914">TreeAmazon</unit>
+		<unit variation="129" posx="-13.2387" posz="8.6919" orientx="1.0000" orienty="0.0000" orientz="-0.0001">WallWoodNative</unit>
+		<unit variation="114" posx="-7.1289" posz="9.8730" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="129" posx="12.5670" posz="9.0663" orientx="-1.0000" orienty="0.0000" orientz="0.0003">WallWoodNative</unit>
+		<unit variation="102" posx="8.1566" posz="9.2367" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="137" posx="-9.1787" posz="8.8873" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="237" posx="7.6469" posz="8.1306" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="10" posx="3.3111" posz="8.3123" orientx="0.9728" orienty="-0.0047" orientz="0.2315">BighornSheep</unit>
+		<unit variation="42" posx="-10.0000" posz="8.0000" orientx="0.2591" orienty="-0.0000" orientz="-0.9658">TreeAmazon</unit>
+		<unit variation="149" posx="-13.6948" posz="8.7852" orientx="1.0000" orienty="0.0000" orientz="-0.0002">zpRuinWallLarge</unit>
+		<unit variation="114" posx="-6.0000" posz="8.0000" orientx="-0.7347" orienty="0.0000" orientz="0.6784">TreeAmazon</unit>
+		<unit variation="133" posx="-8.0000" posz="8.0000" orientx="-0.5770" orienty="0.0000" orientz="0.8167">TreeAmazon</unit>
+		<unit variation="82" posx="10.0000" posz="8.0000" orientx="0.3231" orienty="0.0000" orientz="-0.9464">TreeAmazon</unit>
+		<unit variation="253" posx="8.0000" posz="8.0000" orientx="-0.8609" orienty="0.0000" orientz="0.5087">TreeAmazon</unit>
+		<unit variation="236" posx="3.9464" posz="11.2800" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="74" posx="4.8280" posz="10.3301" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="162" posx="5.3903" posz="11.0834" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="232" posx="-10.0000" posz="10.0000" orientx="0.0628" orienty="0.0000" orientz="0.9980">TreeAmazon</unit>
+		<unit variation="162" posx="6.0000" posz="10.0000" orientx="0.7092" orienty="0.0000" orientz="0.7050">TreeAmazon</unit>
+		<unit variation="0" posx="-0.4065" posz="9.6582" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropAztecDecoration</unit>
+		<unit variation="31" posx="8.0000" posz="10.0000" orientx="-0.1314" orienty="0.0000" orientz="-0.9913">TreeAmazon</unit>
+		<unit variation="27" posx="10.0000" posz="10.0000" orientx="-0.0049" orienty="0.0000" orientz="1.0000">TreeAmazon</unit>
+		<unit variation="149" posx="12.3664" posz="9.2654" orientx="-1.0000" orienty="0.0000" orientz="0.0003">zpRuinWallLarge</unit>
+		<unit variation="190" posx="-13.3361" posz="12.8913" orientx="-1.0000" orienty="0.0000" orientz="0.0002">WallWoodNative</unit>
+		<unit variation="190" posx="-4.6966" posz="12.8531" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">WallWoodNative</unit>
+		<unit variation="235" posx="5.3471" posz="12.4042" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">UnderbrushAmazon</unit>
+		<unit variation="190" posx="4.0691" posz="13.1544" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">WallWoodNative</unit>
+		<unit variation="129" posx="8.4290" posz="13.1593" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">WallWoodNative</unit>
+		<unit variation="190" posx="12.2184" posz="13.1205" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">WallWoodNative</unit>
+		<unit variation="129" posx="-8.9355" posz="12.9391" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">WallWoodNative</unit>
+		<unit variation="53" posx="-13.7012" posz="12.9657" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpRuinWallSmall</unit>
+		<unit variation="149" posx="-9.1949" posz="12.5586" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
+		<unit variation="53" posx="-5.3117" posz="12.3230" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpRuinWallSmall</unit>
+		<unit variation="53" posx="3.8962" posz="12.5172" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpRuinWallSmall</unit>
+		<unit variation="149" posx="8.7956" posz="12.8362" orientx="-0.0003" orienty="-0.0000" orientz="-1.0000">zpRuinWallLarge</unit>
+		<unit variation="53" posx="12.1095" posz="12.8089" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpRuinWallSmall</unit>
+	</units>
+	<tiles>
+		<tilegroup type="Shoreline" subtype="great_lakes\ground_shoreline1_gls">
+			<block startx="-10" startz="-10" endx="-10" endz="-6"></block>
+			<block startx="-9" startz="-10" endx="-9" endz="-9"></block>
+			<block startx="-8" startz="-10" endx="-8" endz="-9"></block>
+			<block startx="-7" startz="-10" endx="-7" endz="-10"></block>
+			<block startx="-6" startz="-10" endx="-6" endz="-10"></block>
+			<block startx="-10" startz="3" endx="-10" endz="10"></block>
+			<block startx="-9" startz="9" endx="-9" endz="10"></block>
+			<block startx="-8" startz="10" endx="-8" endz="10"></block>
+			<block startx="-7" startz="10" endx="-7" endz="10"></block>
+			<block startx="-6" startz="10" endx="-6" endz="10"></block>
+			<block startx="-10" startz="-5" endx="-10" endz="2"></block>
+			<block startx="-5" startz="10" endx="-5" endz="10"></block>
+			<block startx="-4" startz="10" endx="-4" endz="10"></block>
+			<block startx="-3" startz="10" endx="-3" endz="10"></block>
+			<block startx="-2" startz="10" endx="-2" endz="10"></block>
+			<block startx="-1" startz="10" endx="-1" endz="10"></block>
+			<block startx="0" startz="10" endx="0" endz="10"></block>
+			<block startx="1" startz="10" endx="1" endz="10"></block>
+			<block startx="2" startz="10" endx="2" endz="10"></block>
+			<block startx="3" startz="10" endx="3" endz="10"></block>
+			<block startx="4" startz="10" endx="4" endz="10"></block>
+			<block startx="5" startz="10" endx="5" endz="10"></block>
+			<block startx="6" startz="10" endx="6" endz="10"></block>
+			<block startx="7" startz="10" endx="7" endz="10"></block>
+			<block startx="8" startz="10" endx="8" endz="10"></block>
+			<block startx="9" startz="8" endx="9" endz="10"></block>
+			<block startx="10" startz="3" endx="10" endz="10"></block>
+			<block startx="9" startz="-1" endx="9" endz="0"></block>
+			<block startx="10" startz="-5" endx="10" endz="2"></block>
+			<block startx="-5" startz="-10" endx="-5" endz="-10"></block>
+			<block startx="-4" startz="-10" endx="-4" endz="-10"></block>
+			<block startx="-3" startz="-10" endx="-3" endz="-10"></block>
+			<block startx="-2" startz="-10" endx="-2" endz="-10"></block>
+			<block startx="-1" startz="-10" endx="-1" endz="-9"></block>
+			<block startx="0" startz="-10" endx="0" endz="-9"></block>
+			<block startx="1" startz="-10" endx="1" endz="-10"></block>
+			<block startx="2" startz="-10" endx="2" endz="-10"></block>
+			<block startx="3" startz="-10" endx="3" endz="-10"></block>
+			<block startx="4" startz="-10" endx="4" endz="-10"></block>
+			<block startx="5" startz="-10" endx="5" endz="-10"></block>
+			<block startx="6" startz="-10" endx="6" endz="-10"></block>
+			<block startx="7" startz="-10" endx="7" endz="-10"></block>
+			<block startx="8" startz="-10" endx="8" endz="-10"></block>
+			<block startx="9" startz="-10" endx="9" endz="-8"></block>
+			<block startx="10" startz="-10" endx="10" endz="-6"></block>
+		</tilegroup>
+		<tilegroup type="Shoreline" subtype="great_lakes\ground_shoreline2_gls">
+			<block startx="-9" startz="-8" endx="-9" endz="-6"></block>
+			<block startx="-8" startz="-8" endx="-8" endz="-8"></block>
+			<block startx="-7" startz="-9" endx="-7" endz="-8"></block>
+			<block startx="-6" startz="-9" endx="-6" endz="-9"></block>
+			<block startx="-9" startz="3" endx="-9" endz="8"></block>
+			<block startx="-8" startz="8" endx="-8" endz="9"></block>
+			<block startx="-7" startz="9" endx="-7" endz="9"></block>
+			<block startx="-6" startz="9" endx="-6" endz="9"></block>
+			<block startx="-9" startz="-5" endx="-9" endz="2"></block>
+			<block startx="-5" startz="9" endx="-5" endz="9"></block>
+			<block startx="-4" startz="9" endx="-4" endz="9"></block>
+			<block startx="-3" startz="9" endx="-3" endz="9"></block>
+			<block startx="-2" startz="9" endx="-2" endz="9"></block>
+			<block startx="-1" startz="9" endx="-1" endz="9"></block>
+			<block startx="0" startz="9" endx="0" endz="9"></block>
+			<block startx="1" startz="9" endx="1" endz="9"></block>
+			<block startx="2" startz="9" endx="2" endz="9"></block>
+			<block startx="3" startz="9" endx="3" endz="9"></block>
+			<block startx="4" startz="9" endx="4" endz="9"></block>
+			<block startx="5" startz="9" endx="5" endz="9"></block>
+			<block startx="6" startz="9" endx="6" endz="9"></block>
+			<block startx="7" startz="9" endx="7" endz="9"></block>
+			<block startx="8" startz="7" endx="8" endz="9"></block>
+			<block startx="9" startz="3" endx="9" endz="7"></block>
+			<block startx="8" startz="-2" endx="8" endz="1"></block>
+			<block startx="9" startz="-5" endx="9" endz="-2"></block>
+			<block startx="9" startz="1" endx="9" endz="2"></block>
+			<block startx="-5" startz="-9" endx="-5" endz="-9"></block>
+			<block startx="-4" startz="-9" endx="-4" endz="-9"></block>
+			<block startx="-3" startz="-9" endx="-3" endz="-9"></block>
+			<block startx="-2" startz="-9" endx="-2" endz="-8"></block>
+			<block startx="-1" startz="-8" endx="-1" endz="-8"></block>
+			<block startx="0" startz="-8" endx="0" endz="-8"></block>
+			<block startx="1" startz="-9" endx="1" endz="-8"></block>
+			<block startx="2" startz="-9" endx="2" endz="-9"></block>
+			<block startx="3" startz="-9" endx="3" endz="-9"></block>
+			<block startx="4" startz="-9" endx="4" endz="-9"></block>
+			<block startx="5" startz="-9" endx="5" endz="-9"></block>
+			<block startx="6" startz="-9" endx="6" endz="-9"></block>
+			<block startx="7" startz="-9" endx="7" endz="-9"></block>
+			<block startx="8" startz="-9" endx="8" endz="-7"></block>
+			<block startx="9" startz="-7" endx="9" endz="-6"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="texas\Tree_gravel_tex">
+			<block startx="-8" startz="-7" endx="-8" endz="-6"></block>
+			<block startx="-7" startz="-7" endx="-7" endz="-7"></block>
+			<block startx="-6" startz="-8" endx="-6" endz="-7"></block>
+			<block startx="-8" startz="3" endx="-8" endz="7"></block>
+			<block startx="-7" startz="7" endx="-7" endz="8"></block>
+			<block startx="-6" startz="8" endx="-6" endz="8"></block>
+			<block startx="-8" startz="-5" endx="-8" endz="2"></block>
+			<block startx="-5" startz="8" endx="-5" endz="8"></block>
+			<block startx="-4" startz="8" endx="-4" endz="8"></block>
+			<block startx="-3" startz="8" endx="-3" endz="8"></block>
+			<block startx="-2" startz="8" endx="-2" endz="8"></block>
+			<block startx="-1" startz="8" endx="-1" endz="8"></block>
+			<block startx="0" startz="8" endx="0" endz="8"></block>
+			<block startx="1" startz="8" endx="1" endz="8"></block>
+			<block startx="2" startz="8" endx="2" endz="8"></block>
+			<block startx="3" startz="8" endx="3" endz="8"></block>
+			<block startx="4" startz="8" endx="4" endz="8"></block>
+			<block startx="5" startz="8" endx="5" endz="8"></block>
+			<block startx="6" startz="8" endx="6" endz="8"></block>
+			<block startx="7" startz="6" endx="7" endz="8"></block>
+			<block startx="8" startz="3" endx="8" endz="6"></block>
+			<block startx="7" startz="-3" endx="7" endz="2"></block>
+			<block startx="8" startz="-5" endx="8" endz="-3"></block>
+			<block startx="8" startz="2" endx="8" endz="2"></block>
+			<block startx="-5" startz="-8" endx="-5" endz="-8"></block>
+			<block startx="-4" startz="-8" endx="-4" endz="-8"></block>
+			<block startx="-3" startz="-8" endx="-3" endz="-7"></block>
+			<block startx="-2" startz="-7" endx="-2" endz="-7"></block>
+			<block startx="-1" startz="-7" endx="-1" endz="-7"></block>
+			<block startx="0" startz="-7" endx="0" endz="-7"></block>
+			<block startx="1" startz="-7" endx="1" endz="-7"></block>
+			<block startx="2" startz="-8" endx="2" endz="-7"></block>
+			<block startx="3" startz="-8" endx="3" endz="-8"></block>
+			<block startx="4" startz="-8" endx="4" endz="-8"></block>
+			<block startx="5" startz="-8" endx="5" endz="-8"></block>
+			<block startx="6" startz="-8" endx="6" endz="-8"></block>
+			<block startx="7" startz="-8" endx="7" endz="-6"></block>
+			<block startx="8" startz="-6" endx="8" endz="-6"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">
+			<block startx="-7" startz="-6" endx="-7" endz="-6"></block>
+			<block startx="-6" startz="-6" endx="-6" endz="-6"></block>
+			<block startx="-7" startz="3" endx="-7" endz="6"></block>
+			<block startx="-6" startz="3" endx="-6" endz="7"></block>
+			<block startx="-7" startz="-5" endx="-7" endz="2"></block>
+			<block startx="-6" startz="-5" endx="-6" endz="-5"></block>
+			<block startx="-6" startz="-1" endx="-6" endz="2"></block>
+			<block startx="-5" startz="-1" endx="-5" endz="1"></block>
+			<block startx="-4" startz="-4" endx="-4" endz="2"></block>
+			<block startx="-3" startz="-4" endx="-3" endz="2"></block>
+			<block startx="-2" startz="-4" endx="-2" endz="2"></block>
+			<block startx="-1" startz="-5" endx="-1" endz="2"></block>
+			<block startx="0" startz="-5" endx="0" endz="2"></block>
+			<block startx="1" startz="-5" endx="1" endz="2"></block>
+			<block startx="2" startz="-4" endx="2" endz="2"></block>
+			<block startx="-5" startz="7" endx="-5" endz="7"></block>
+			<block startx="-4" startz="7" endx="-4" endz="7"></block>
+			<block startx="-3" startz="3" endx="-3" endz="4"></block>
+			<block startx="-3" startz="7" endx="-3" endz="7"></block>
+			<block startx="-2" startz="3" endx="-2" endz="7"></block>
+			<block startx="-1" startz="3" endx="-1" endz="7"></block>
+			<block startx="0" startz="3" endx="0" endz="7"></block>
+			<block startx="1" startz="3" endx="1" endz="7"></block>
+			<block startx="2" startz="3" endx="2" endz="4"></block>
+			<block startx="2" startz="6" endx="2" endz="7"></block>
+			<block startx="3" startz="3" endx="3" endz="4"></block>
+			<block startx="3" startz="7" endx="3" endz="7"></block>
+			<block startx="4" startz="7" endx="4" endz="7"></block>
+			<block startx="5" startz="6" endx="5" endz="7"></block>
+			<block startx="6" startz="3" endx="6" endz="5"></block>
+			<block startx="6" startz="7" endx="6" endz="7"></block>
+			<block startx="7" startz="3" endx="7" endz="5"></block>
+			<block startx="3" startz="-3" endx="3" endz="2"></block>
+			<block startx="4" startz="-3" endx="4" endz="2"></block>
+			<block startx="5" startz="-2" endx="5" endz="1"></block>
+			<block startx="6" startz="-5" endx="6" endz="-4"></block>
+			<block startx="6" startz="-1" endx="6" endz="1"></block>
+			<block startx="7" startz="-5" endx="7" endz="-4"></block>
+			<block startx="-5" startz="-7" endx="-5" endz="-6"></block>
+			<block startx="-4" startz="-7" endx="-4" endz="-7"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="-6"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="-6"></block>
+			<block startx="0" startz="-6" endx="0" endz="-6"></block>
+			<block startx="1" startz="-6" endx="1" endz="-6"></block>
+			<block startx="3" startz="-7" endx="3" endz="-7"></block>
+			<block startx="4" startz="-7" endx="4" endz="-6"></block>
+			<block startx="5" startz="-7" endx="5" endz="-7"></block>
+			<block startx="6" startz="-7" endx="6" endz="-6"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="Amazon\ground2_ama">
+			<block startx="-6" startz="-4" endx="-6" endz="-2"></block>
+			<block startx="-5" startz="-5" endx="-5" endz="-2"></block>
+			<block startx="-5" startz="2" endx="-5" endz="2"></block>
+			<block startx="-4" startz="-5" endx="-4" endz="-5"></block>
+			<block startx="-3" startz="-5" endx="-3" endz="-5"></block>
+			<block startx="-2" startz="-5" endx="-2" endz="-5"></block>
+			<block startx="2" startz="-5" endx="2" endz="-5"></block>
+			<block startx="-5" startz="3" endx="-5" endz="6"></block>
+			<block startx="-4" startz="3" endx="-4" endz="6"></block>
+			<block startx="-3" startz="5" endx="-3" endz="5"></block>
+			<block startx="2" startz="5" endx="2" endz="5"></block>
+			<block startx="3" startz="5" endx="3" endz="6"></block>
+			<block startx="4" startz="3" endx="4" endz="6"></block>
+			<block startx="5" startz="3" endx="5" endz="5"></block>
+			<block startx="3" startz="-5" endx="3" endz="-4"></block>
+			<block startx="4" startz="-5" endx="4" endz="-4"></block>
+			<block startx="5" startz="-5" endx="5" endz="-3"></block>
+			<block startx="5" startz="2" endx="5" endz="2"></block>
+			<block startx="6" startz="-3" endx="6" endz="-2"></block>
+			<block startx="6" startz="2" endx="6" endz="2"></block>
+			<block startx="-4" startz="-6" endx="-4" endz="-6"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="-6"></block>
+			<block startx="2" startz="-6" endx="2" endz="-6"></block>
+			<block startx="3" startz="-6" endx="3" endz="-6"></block>
+			<block startx="5" startz="-6" endx="5" endz="-6"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="Texas\ground5_tex">
+			<block startx="-3" startz="6" endx="-3" endz="6"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="Texas\ground3_tex">
+			<block startx="6" startz="6" endx="6" endz="6"></block>
+		</tilegroup>
+		<heights>
+			<tiles x="-10" z="-10">0.035 -0.191 -0.191 -0.191 -0.191 -0.191 -0.191 -0.191 -0.191 -0.191 -0.191 -0.191 -0.191 -0.191 -0.191 -0.191 -0.191 -0.191 -0.191 0.035 0.035 </tiles>
+			<tiles x="-10" z="-9">0.035 -0.191 -0.191 -0.170 -0.168 -0.156 -0.160 -0.144 -0.157 -0.167 -0.191 -0.150 -0.037 0.065 0.015 0.016 0.016 -0.044 -0.109 0.035 0.035 </tiles>
+			<tiles x="-10" z="-8">0.035 -0.185 -0.007 0.164 0.469 0.527 0.520 0.558 0.305 0.185 0.063 0.206 0.451 0.632 0.608 0.613 0.597 0.472 0.260 0.130 0.035 </tiles>
+			<tiles x="-10" z="-7">0.035 -0.094 0.287 0.668 0.774 0.787 0.792 0.794 0.802 0.811 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.241 0.035 </tiles>
+			<tiles x="-10" z="-6">0.035 -0.054 0.459 0.771 0.786 0.792 0.793 0.793 0.798 0.809 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.324 0.035 </tiles>
+			<tiles x="-10" z="-5">0.035 0.016 0.588 0.785 0.793 0.794 0.794 0.794 0.797 0.808 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.374 0.036 </tiles>
+			<tiles x="-10" z="-4">0.035 -0.024 0.585 0.790 0.793 0.794 0.795 0.799 0.803 0.810 0.811 0.811 0.811 0.811 0.812 0.812 0.812 0.812 0.812 0.360 0.036 </tiles>
+			<tiles x="-10" z="-3">0.035 0.030 0.614 0.794 0.794 0.795 0.800 0.806 0.809 0.810 0.811 0.811 0.811 0.811 0.811 0.812 0.812 0.812 0.812 0.391 0.037 </tiles>
+			<tiles x="-10" z="-2">0.035 -0.003 0.581 0.800 0.800 0.799 0.803 0.809 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.812 0.812 0.812 0.812 0.301 0.038 </tiles>
+			<tiles x="-10" z="-1">0.035 0.033 0.652 0.808 0.808 0.808 0.809 0.810 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.812 0.812 0.812 0.812 0.228 0.035 </tiles>
+			<tiles x="-10" z="0">0.035 0.081 0.697 0.810 0.810 0.810 0.810 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.812 0.812 0.812 0.812 0.081 0.035 </tiles>
+			<tiles x="-10" z="1">0.035 0.060 0.692 0.810 0.810 0.810 0.810 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.812 0.812 0.812 0.812 0.167 0.035 </tiles>
+			<tiles x="-10" z="2">0.035 0.063 0.686 0.810 0.810 0.810 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.812 0.812 0.812 0.812 0.327 0.052 </tiles>
+			<tiles x="-10" z="3">0.035 -0.052 0.592 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.812 0.812 0.812 0.812 0.410 0.056 </tiles>
+			<tiles x="-10" z="4">0.035 -0.006 0.583 0.812 0.812 0.812 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.811 0.812 0.812 0.812 0.812 0.488 0.062 </tiles>
+			<tiles x="-10" z="5">0.035 -0.058 0.559 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.438 0.054 </tiles>
+			<tiles x="-10" z="6">0.035 -0.001 0.585 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.452 0.050 </tiles>
+			<tiles x="-10" z="7">0.035 -0.058 0.486 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.358 0.038 </tiles>
+			<tiles x="-10" z="8">0.035 -0.086 0.340 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.812 0.257 0.036 </tiles>
+			<tiles x="-10" z="9">0.035 0.044 0.220 0.389 0.480 0.553 0.520 0.569 0.546 0.580 0.585 0.613 0.623 0.625 0.628 0.616 0.622 0.511 0.349 0.122 0.035 </tiles>
+			<tiles x="-10" z="10">0.035 0.035 0.038 0.077 0.082 0.104 0.086 0.104 0.079 0.110 0.114 0.140 0.139 0.129 0.141 0.133 0.149 0.106 0.073 0.035 0.035 </tiles>
+		</heights>
+	</tiles>
+</grouping>

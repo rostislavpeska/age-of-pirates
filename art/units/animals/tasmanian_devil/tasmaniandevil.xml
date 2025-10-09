@@ -1,0 +1,7 @@
+<animfile>
+  <component>tasmaniandevil<assetreference type="GrannyModel"><file>units\animals\tasmanian_devil\TasmanianDevil</file></assetreference><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_64x64</texture><selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture><width>1.0</width><height>1.00</height></decal></component>
+  <anim>HandAttack<assetreference type="GrannyAnim"><file>animation_library\quads\TasmanianDevil_Attack</file><tag type="Attack">0.32</tag><tag type="SpecificSoundSet" checkvisible="1" set="TasmanianDevil_Ambient">0.27</tag></assetreference><component>tasmaniandevil</component></anim>
+  <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\quads\TasmanianDevil_Idle</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\quads\TasmanianDevil_Eat</file></assetreference><component>tasmaniandevil</component></anim>
+  <anim>Death<assetreference type="GrannyAnim"><file>animation_library\quads\TasmanianDevil_Die</file><tag type="SpecificSoundSet" checkvisible="1" set="TasmanianDevil_Ambient">0.44</tag></assetreference><component>tasmaniandevil</component></anim>
+  <anim>Walk<assetreference type="GrannyAnim"><file>animation_library\quads\TasmanianDevil_Walk</file></assetreference><component>tasmaniandevil</component></anim>
+</animfile>

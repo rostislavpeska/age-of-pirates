@@ -255,6 +255,7 @@
     <allowautopick>0</allowautopick>
     <unittype>Military</unittype>
     <unittype>xpMedicineManAztec</unittype>
+    <unittype>zpNatMedicineManAztec</unittype>
     <targetunittype>All</targetunittype>
     <stance>StandGround</stance>
     <formationtype>Line</formationtype>
@@ -770,6 +771,77 @@
     <availableicon>resources\images\icons\command\target_unit.png</availableicon>
     <unavailableicon>resources\images\icons\command\target_unit.png</unavailableicon>
     <rolloverstringid>301146</rolloverstringid>
+  </squadmode>
+  <squadmode>
+    <name>DiverStealth</name>
+    <tactic>DiverStealth</tactic>
+    <allowautopick>0</allowautopick>
+    <unittype>Military</unittype>
+    <targetunittype>All</targetunittype>
+    <stance>Defensive</stance>
+    <formationtype>Line</formationtype>
+    <formationlinelinespacing>0.8</formationlinelinespacing>
+    <formationlinecolumnspacing>0.8</formationlinecolumnspacing>
+    <randomspacingoffset>0.35</randomspacingoffset>
+    <cooldowntime>5000</cooldowntime>
+    <transitiontimein>500</transitiontimein>
+    <activeicon>resources\images\icons\command\diver_stealth_on.png</activeicon>
+    <availableicon>resources\images\icons\command\diver_stealth_off.png</availableicon>
+    <unavailableicon>resources\images\icons\command\diver_stealth_off.png</unavailableicon>
+    <rolloverstringid>46492</rolloverstringid>
+  </squadmode>
+  <squadmode>
+    <name>DiverVolley</name>
+    <tactic>DiverVolley</tactic>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <targetunittype>All</targetunittype>
+    <stance>Defensive</stance>
+    <formationtype>Line</formationtype>
+    <formationlinelinespacing>0.8</formationlinelinespacing>
+    <formationlinecolumnspacing>0.8</formationlinecolumnspacing>
+    <randomspacingoffset>0.35</randomspacingoffset>
+    <cooldowntime>5000</cooldowntime>
+    <transitiontimein>500</transitiontimein>
+    <activeicon>resources\images\icons\command\diver_volley_on.png</activeicon>
+    <availableicon>resources\images\icons\command\diver_volley_off.png</availableicon>
+    <unavailableicon>resources\images\icons\command\diver_volley_off.png</unavailableicon>
+    <rolloverstringid>31348</rolloverstringid>
+  </squadmode>
+  <squadmode>
+    <name>CogFood</name>
+    <tactic>CogFood</tactic>
+    <unittype>zpSPCTradeUnit</unittype>
+    <activeicon>resources\images\icons\techs\asians\shrine_food_on.png</activeicon>
+    <availableicon>resources\images\icons\techs\asians\shrine_food.png</availableicon>
+    <unavailableicon>resources\images\icons\techs\asians\shrine_food.png</unavailableicon>
+    <rolloverstringid>302965</rolloverstringid>
+  </squadmode>
+  <squadmode>
+    <name>CogWood</name>
+    <tactic>CogWood</tactic>
+    <unittype>zpSPCTradeUnit</unittype>
+    <activeicon>resources\images\icons\techs\asians\shrine_wood_on.png</activeicon>
+    <availableicon>resources\images\icons\techs\asians\shrine_wood.png</availableicon>
+    <unavailableicon>resources\images\icons\techs\asians\shrine_wood.png</unavailableicon>
+    <rolloverstringid>302966</rolloverstringid>
+  </squadmode>
+  <squadmode>
+    <name>CogGold</name>
+    <tactic>CogGold</tactic>
+    <unittype>zpSPCTradeUnit</unittype>
+    <activeicon>resources\images\icons\techs\asians\shrine_coin_on.png</activeicon>
+    <availableicon>resources\images\icons\techs\asians\shrine_coin.png</availableicon>
+    <unavailableicon>resources\images\icons\techs\asians\shrine_coin.png</unavailableicon>
+    <rolloverstringid>302967</rolloverstringid>
+  </squadmode>
+  <squadmode>
+    <name>CogXP</name>
+    <tactic>CogXP</tactic>
+    <unittype>zpSPCTradeUnit</unittype>
+    <activeicon>resources\images\icons\techs\asians\shrine_xp_on.png</activeicon>
+    <availableicon>resources\images\icons\techs\asians\shrine_xp.png</availableicon>
+    <unavailableicon>resources\images\icons\techs\asians\shrine_xp.png</unavailableicon>
+    <rolloverstringid>302968</rolloverstringid>
   </squadmode>
   
   <!-- Added by AssertiveWall -->

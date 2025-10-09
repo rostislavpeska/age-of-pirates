@@ -1300,21 +1300,13 @@ rmPlaceObjectDefAtLoc(randomTreeSnowID, 0, 0.0, 0.3, 5*cNumberNonGaiaPlayers);
 
 // ------Triggers--------//
 
-string pirate1ID = "0";
-string pirate2ID = "0";
-string scientist1ID = "0";
-string scientist2ID = "0";
+int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0);
+int flag2 = rmGetUnitPlaced(piratewaterflagID2, 0);
 
-if (nativeVariant ==1) {
-	pirate1ID = "15";
-	pirate2ID = "50";
-}
-
-if (nativeVariant ==2) {
-	scientist1ID = "15";
-	scientist2ID = "100";
-
-}
+string pirate1ID = ""+(flag1-1);
+string pirate2ID = ""+(flag2-1);
+string scientist1ID = ""+(flag1-1);
+string scientist2ID = ""+(flag2-1);
 
 // Starting techs
 
@@ -1523,7 +1515,7 @@ if (nativeVariant ==1) {
 	rmSetTriggerConditionParamInt("PlayerID",k);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPirates"); //operator
+	rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPiratesAustralia"); //operator
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -1757,13 +1749,13 @@ if (nativeVariant ==1) {
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",pirate2ID); // Unique Object ID Village 4
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParam("UnitType","zpSPCBlackPearlProxy");
+	rmSetTriggerConditionParam("UnitType","zpSPCPirateSteamerProxy");
 	rmSetTriggerConditionParamInt("Dist",35);
 	rmSetTriggerConditionParam("Op",">=");
 	rmSetTriggerConditionParamInt("Count",1);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmSetTriggerEffectParam("TechID","cTechzpTrainBlackPearl2"); //operator
+	rmSetTriggerEffectParam("TechID","cTechzpTrainPirateSteamer2"); //operator
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip2TIMEPlr"+k));
@@ -1788,13 +1780,13 @@ if (nativeVariant ==1) {
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",pirate2ID); // Unique Object ID Village 4
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParam("UnitType","zpSPCNeptuneGalleyProxy");
+	rmSetTriggerConditionParam("UnitType","zpSPCFlyingDutchmanProxy");
 	rmSetTriggerConditionParamInt("Dist",35);
 	rmSetTriggerConditionParam("Op",">=");
 	rmSetTriggerConditionParamInt("Count",1);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmSetTriggerEffectParam("TechID","cTechzpTrainNeptune2"); //operator
+	rmSetTriggerEffectParam("TechID","cTechzpTrainFlyingDutchman2"); //operator
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip2TIMEPlr"+k));
@@ -1834,13 +1826,13 @@ if (nativeVariant ==1) {
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",pirate1ID); // Unique Object ID Village 3
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParam("UnitType","zpSPCQueenAnneProxy");
+	rmSetTriggerConditionParam("UnitType","zpSPCPirateSteamerProxy");
 	rmSetTriggerConditionParamInt("Dist",35);
 	rmSetTriggerConditionParam("Op",">=");
 	rmSetTriggerConditionParamInt("Count",1);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmSetTriggerEffectParam("TechID","cTechzpTrainQueenAnne1"); //operator
+	rmSetTriggerEffectParam("TechID","cTechzpTrainPirateSteamer1"); //operator
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip1TIMEPlr"+k));
@@ -1898,13 +1890,13 @@ if (nativeVariant ==1) {
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",pirate1ID); // Unique Object ID Village 3
 	rmSetTriggerConditionParamInt("Player",k);
-	rmSetTriggerConditionParam("UnitType","zpSPCNeptuneGalleyProxy");
+	rmSetTriggerConditionParam("UnitType","zpSPCFlyingDutchmanProxy");
 	rmSetTriggerConditionParamInt("Dist",35);
 	rmSetTriggerConditionParam("Op",">=");
 	rmSetTriggerConditionParamInt("Count",1);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
-	rmSetTriggerEffectParam("TechID","cTechzpTrainNeptune1"); //operator
+	rmSetTriggerEffectParam("TechID","cTechzpTrainFlyingDutchman1"); //operator
 	rmSetTriggerEffectParamInt("Status",2);
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip1TIMEPlr"+k));
@@ -2095,10 +2087,7 @@ if (nativeVariant ==1) {
 		rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesBlackCaesar"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 	}
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
+	
 	}
 }
 

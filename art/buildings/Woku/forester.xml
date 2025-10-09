@@ -1,0 +1,21 @@
+<!-- converted from XMB to XML -->
+
+<animfile>
+	<component>
+		ModelComp
+        <assetreference type="GrannyModel">
+            <file>buildings\native_settlement\penal_colony\au_colony_building3_Model</file>
+        </assetreference>
+        <decal>
+            <effecttype>default</effecttype>
+            <texture>buildings\native_settlement\japan_decal_01</texture>
+            <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <width>13.00</width>
+            <height>7.00</height>
+        </decal>
+	</component>
+	<anim>
+		Idle
+		<component>ModelComp</component>
+	</anim>
+</animfile>

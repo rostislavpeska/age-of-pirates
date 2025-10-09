@@ -1,0 +1,98 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\trading_post\socket_south_america\textures\trade_socket_south_america_1_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\trading_post\socket_south_america\textures\trade_socket_south_america_1_normal">
+      </texture>
+      <texture name="Masks" override="buildings\trading_post\socket_south_america\textures\trade_socket_south_america_1_spec">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\sioux\sioux_props\sx_props\textures\sx_props01_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\sioux\sioux_props\sx_props\textures\sx_props01_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\sioux\sioux_props\sx_props\textures\sx_props01_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\constructions\textures\native_colony_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\constructions\textures\native_colony_props_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\constructions\textures\native_colony_props_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\constructions\textures\native_colony_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\constructions\textures\native_colony_props_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\constructions\textures\native_colony_props_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\inca\props\textures\prop_b_MatA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\inca\props\textures\prop_b_MatA_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\inca\props\textures\prop_b_MatA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matf">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\inca\props\textures\prop_a_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\inca\props\textures\prop_a_matA_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\inca\props\textures\prop_a_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matg">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\consulate\textures\transparent_texture">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="math">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\trading_post\trade_socket_age1\textures\trade_socket_age1_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\trading_post\trade_socket_age1\textures\trade_socket_age1_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\trading_post\trade_socket_age1\textures\trade_socket_age1_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

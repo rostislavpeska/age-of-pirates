@@ -1,0 +1,34 @@
+<animfile>
+    <component>russian_manufacturingplant
+          <logic type="Variation">
+              <variationid0>
+                <assetreference type="GrannyModel">
+                    <file>terrain\underbrush\coral_prop_Model</file>
+                    <materialvariant index="0"></materialvariant>
+                </assetreference>
+            </variationid0>
+            <variationid1>
+                <assetreference type="GrannyModel">
+                    <file>terrain\underbrush\coral_prop_Model</file>
+                    <materialvariant index="1"></materialvariant>
+                </assetreference>
+            </variationid1>
+            <variationid2>
+                <assetreference type="GrannyModel">
+                    <file>terrain\underbrush\coral_prop_Model</file>
+                    <materialvariant index="2"></materialvariant>
+                </assetreference>
+            </variationid2>
+            <variationid3>
+                <assetreference type="GrannyModel">
+                    <file>terrain\underbrush\coral_prop_Model</file>
+                    <materialvariant index="3"></materialvariant>
+                </assetreference>
+            </variationid3>
+        </logic>
+    </component>
+    <anim>Idle
+        <component>russian_manufacturingplant</component>
+        <attach a="smoke" frombone="bone_smoke00" tobone="ee_russian_factory_smoke" syncanims="0"></attach>
+    </anim>
+</animfile>

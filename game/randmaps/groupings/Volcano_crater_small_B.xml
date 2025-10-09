@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>4</width>
+	<height>4</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="41" posx="-0.2227" posz="-0.1765" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="41" posx="-0.2625" posz="-0.3560" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="41" posx="-0.0805" posz="-0.1535" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="41" posx="-0.1326" posz="-0.2115" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="41" posx="-0.1680" posz="-0.3409" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="41" posx="-0.0915" posz="-0.4194" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="39" posx="0.0579" posz="-0.4671" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="78" posx="-0.2928" posz="-0.6138" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="36" posx="-0.2253" posz="-0.6004" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="179" posx="-0.1908" posz="-0.3469" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTrainStopper</unit>
+		<unit variation="16" posx="-1.9687" posz="-2.4829" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVolcanoFireSpawnerB</unit>
+		<unit variation="184" posx="0.2126" posz="-2.2159" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVolcanoFireSpawnerB</unit>
+		<unit variation="208" posx="2.1302" posz="-2.6577" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVolcanoFireSpawnerB</unit>
+		<unit variation="153" posx="-2.1933" posz="-0.1433" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpVolcanoObstruction</unit>
+		<unit variation="153" posx="-2.7056" posz="0.0322" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpVolcanoObstruction</unit>
+		<unit variation="153" posx="-1.0942" posz="-2.4299" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpVolcanoObstruction</unit>
+		<unit variation="153" posx="-0.1685" posz="-2.2562" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpVolcanoObstruction</unit>
+		<unit variation="153" posx="-0.2702" posz="-0.6417" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpVolcanoObstruction</unit>
+		<unit variation="153" posx="2.1984" posz="-0.5469" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpVolcanoObstruction</unit>
+		<unit variation="153" posx="1.0448" posz="-2.8941" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpVolcanoObstruction</unit>
+		<unit variation="79" posx="-0.4540" posz="-0.3835" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpVolcanoSpawnerB</unit>
+		<unit variation="69" posx="1.6501" posz="-0.6704" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVolcanoFireSpawnerB</unit>
+		<unit variation="248" posx="-0.2979" posz="-0.4923" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVolcanoFireSpawnerB</unit>
+		<unit variation="191" posx="-2.0862" posz="-0.0888" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVolcanoFireSpawnerB</unit>
+		<unit variation="120" posx="2.9395" posz="-0.2109" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVolcanoFireSpawnerB</unit>
+		<unit variation="41" posx="-0.1547" posz="-0.8600" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpVolcanoInvisibleTarget</unit>
+		<unit variation="152" posx="1.4124" posz="-0.9263" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpGrassFire</unit>
+		<unit variation="153" posx="-1.3387" posz="2.3631" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpVolcanoObstruction</unit>
+		<unit variation="153" posx="2.4063" posz="1.5497" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpVolcanoObstruction</unit>
+		<unit variation="153" posx="0.1924" posz="1.9264" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpVolcanoObstruction</unit>
+		<unit variation="153" posx="1.3965" posz="2.6482" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpVolcanoObstruction</unit>
+		<unit variation="94" posx="1.2721" posz="1.4307" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVolcanoFireSpawnerB</unit>
+		<unit variation="194" posx="-0.5916" posz="1.2886" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpGrassFire</unit>
+		<unit variation="147" posx="-0.2423" posz="2.1239" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVolcanoFireSpawnerB</unit>
+		<unit variation="223" posx="-1.8390" posz="2.1943" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVolcanoFireSpawnerB</unit>
+		<unit variation="220" posx="-0.3901" posz="3.4304" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCVolcanoFireSpawnerB</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

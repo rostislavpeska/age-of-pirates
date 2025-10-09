@@ -1,0 +1,9 @@
+<animfile>
+  <component>shield
+    <assetreference type="GrannyModel">
+      <file>units\infantry_ranged\genoese\hussite_shield_charge_lvl2</file>
+    </assetreference>
+    <materialvariant index="2"></materialvariant>
+  </component>
+  <anim>Idle<component>shield</component></anim>
+</animfile>

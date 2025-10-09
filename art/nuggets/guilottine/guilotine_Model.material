@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="nuggets\guilottine\textures\guillotine_basecolor">
+      </texture>
+      <texture name="Normals" override="nuggets\guilottine\textures\guillotine_Normals">
+      </texture>
+      <texture name="Masks" override="nuggets\guilottine\textures\guillotine_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

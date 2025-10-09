@@ -1,0 +1,24 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_emissive_advanced">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\spc\lighthouse\textures\lighthouse_mata_baseColor">
+      </texture>
+      <texture name="Normals" override="buildings\spc\lighthouse\textures\lighthouse_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\spc\lighthouse\textures\lighthouse_mata_Masks">
+      </texture>
+      <texture name="Emissive" override="buildings\spc\lighthouse\textures\lighthouse_Mata_Emissive">
+      </texture>
+      <float name="EmissiveIntensity" override="25.0000">
+      </float>
+      <vector4 name="EmissiveColor" override="1.000, 1.000, 1.000, 0.000">
+      </vector4>
+      <float name="Lift Metallic" override="1.0000">
+      </float>
+      <float name="AO Intensity" override="1.4440">
+      </float>
+    </parameters>
+  </submaterial>
+</material>

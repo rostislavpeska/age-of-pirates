@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\orthodox\textures\orthodox_tower_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\orthodox\textures\orthodox_tower_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\orthodox\textures\orthodox_tower_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

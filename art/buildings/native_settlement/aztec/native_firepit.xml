@@ -1,0 +1,681 @@
+<animfile>
+    <definebone>bone_aztec</definebone>
+    <definebone>bone_inca_fire</definebone>
+    <definebone>bone_inner_circle</definebone>
+    <definebone>bone_outer_circle</definebone>
+    <definebone>bone_iro_fire</definebone>
+    <definebone>bone_sioux_fire</definebone>
+    <submodel>Iro_sub_construction_stage_01
+        <component>construction_stage_01
+            <assetreference type="GrannyModel">
+                <file>buildings\constructions\iro_dance_pit_stage1</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\dance_pit_ground_BaseColor</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\native_civs\dance_pit\dance_pit_ground_Normals</bumptexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>construction_stage_01</component>
+        </anim>
+    </submodel>
+    <submodel>Iro_sub_construction_stage_02
+        <component>construction_stage_02
+            <assetreference type="GrannyModel">
+                <file>buildings\constructions\iro_dance_pit_stage2</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\dance_pit_ground_BaseColor</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\native_civs\dance_pit\dance_pit_ground_Normals</bumptexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>construction_stage_02</component>
+        </anim>
+    </submodel>
+    <submodel>Iro_sub_construction_stage_03
+        <component>construction_stage_03
+            <assetreference type="GrannyModel">
+                <file>buildings\constructions\iro_dance_pit_stage3</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\dance_pit_ground_BaseColor</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\native_civs\dance_pit\dance_pit_ground_Normals</bumptexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>construction_stage_03</component>
+        </anim>
+    </submodel>
+    <submodel>Iro_fire_pit
+        <attachment>iro_fire
+            <component>emiter
+                <logic type="Destruction">
+                    <p0>
+                        <assetreference type="ParticleSystem"></assetreference>
+                    </p0>
+                    <p99>
+                        <assetreference type="ParticleSystem">
+                            <file>effects\fire\fire_torch_a.particle</file>
+                        </assetreference>
+                    </p99>
+                </logic>
+            </component>
+            <anim>idle
+                <component>emiter</component>
+            </anim>
+        </attachment>
+        <attachment>iro_smoke
+            <component>smoke
+                <logic type="Destruction">
+                    <p0>
+                        <assetreference type="ParticleSystem"></assetreference>
+                    </p0>
+                    <p99>
+                        <assetreference type="ParticleSystem">
+                            <file>effects\smoke\smolder_small_v1.particle</file>
+                        </assetreference>
+                    </p99>
+                </logic>
+            </component>
+            <anim>idle
+                <component>smoke</component>
+            </anim>
+        </attachment>
+        <attachment>collapse_smoke
+            <component>collapse_smoke
+                <assetreference type="popcornFx">
+                    <file>smoke\collapse_smoke_6x6.pkfx</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>collapse_smoke</component>
+            </anim>
+        </attachment>
+        <attachment>collapse_smoke2
+            <component>collapse_smoke
+                <assetreference type="popcornFx">
+                    <file>smoke\collapse_smoke_3x3.pkfx</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>collapse_smoke</component>
+            </anim>
+        </attachment>
+        <component>LIVE
+            <logic type="LowPoly">
+                <normal>
+                    <logic type="Destruction">
+                        <p1>
+                            <assetreference type="GrannyModel">
+                                <file>buildings\native_civs\dance_pit\iro_dance_pit_damaged</file>
+                            </assetreference>
+                        </p1>
+                        <p99>
+                            <assetreference type="GrannyModel">
+                                <file>buildings\native_civs\dance_pit\iro_dance_pit</file>
+                            </assetreference>
+                        </p99>
+                    </logic>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\native_civs\dance_pit\iro_dance_pit</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\dance_pit_ground_BaseColor</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <component>DEAD
+            <assetreference type="GrannyModel">
+                <file>buildings\native_civs\dance_pit\iro_dancepit_deathmodel</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\dance_pit_ground_BaseColor</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\native_civs\dance_pit\dance_pit_ground_Normals</bumptexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>LIVE</component>
+        </anim>
+        <anim>Death
+            <assetreference type="GrannyAnim">
+                <file>buildings\native_civs\dance_pit\iro_dancepit_deathanim</file>
+            </assetreference>
+            <component>DEAD</component>
+            <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+            <attach a="collapse_smoke2" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        </anim>
+    </submodel>
+    <submodel>Sioux_sub_construction_stage_01
+        <component>sioux_construction_stage_01
+            <assetreference type="GrannyModel">
+                <file>buildings\constructions\iro_dance_pit_stage1</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\dance_pit_ground_large</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\native_civs\dance_pit\dance_pit_ground_large_b</bumptexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>sioux_construction_stage_01</component>
+        </anim>
+    </submodel>
+    <submodel>Sioux_sub_construction_stage_02
+        <component>sioux_construction_stage_02
+            <assetreference type="GrannyModel">
+                <file>buildings\constructions\sioux_dance_pit_stage2</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\dance_pit_ground_large</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\native_civs\dance_pit\dance_pit_ground_large_b</bumptexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>sioux_construction_stage_02</component>
+        </anim>
+    </submodel>
+    <submodel>Sioux_sub_construction_stage_03
+        <component>sioux_construction_stage_03
+            <assetreference type="GrannyModel">
+                <file>buildings\constructions\sioux_dance_pit_stage3</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\dance_pit_ground_large</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\native_civs\dance_pit\dance_pit_ground_large_b</bumptexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>sioux_construction_stage_03</component>
+        </anim>
+    </submodel>
+    <submodel>Sioux_fire_pit
+        <attachment>sioux_fire
+            <component>emiter
+                <logic type="Destruction">
+                    <p0>
+                        <assetreference type="ParticleSystem"></assetreference>
+                    </p0>
+                    <p99>
+                        <assetreference type="ParticleSystem">
+                            <file>effects\fire\fire_torch_a.particle</file>
+                        </assetreference>
+                    </p99>
+                </logic>
+            </component>
+            <anim>idle
+                <component>emiter</component>
+            </anim>
+        </attachment>
+        <attachment>sioux_smoke
+            <component>smoke
+                <logic type="Destruction">
+                    <p0>
+                        <assetreference type="ParticleSystem"></assetreference>
+                    </p0>
+                    <p99>
+                        <assetreference type="ParticleSystem">
+                            <file>effects\smoke\smolder_small_v1.particle</file>
+                        </assetreference>
+                    </p99>
+                </logic>
+            </component>
+            <anim>idle
+                <component>smoke</component>
+            </anim>
+        </attachment>
+        <attachment>collapse_smoke
+            <component>collapse_smoke
+                <assetreference type="popcornFx">
+                    <file>smoke\collapse_smoke_6x6.pkfx</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>collapse_smoke</component>
+            </anim>
+        </attachment>
+        <attachment>collapse_smoke2
+            <component>collapse_smoke
+                <assetreference type="popcornFx">
+                    <file>smoke\collapse_smoke_3x3.pkfx</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>collapse_smoke</component>
+            </anim>
+        </attachment>
+        <component>LIVE
+            <logic type="LowPoly">
+                <normal>
+                    <logic type="Destruction">
+                        <p1>
+                            <assetreference type="GrannyModel">
+                                <file>buildings\native_civs\dance_pit\sioux_dance_pit_damaged</file>
+                            </assetreference>
+                        </p1>
+                        <p99>
+                            <assetreference type="GrannyModel">
+                                <file>buildings\native_civs\dance_pit\sioux_dance_pit</file>
+                            </assetreference>
+                        </p99>
+                    </logic>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\native_civs\dance_pit\sioux_dance_pit</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\dance_pit_ground_large</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <component>DEAD
+            <logic type="LowPoly">
+                <normal>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\native_civs\dance_pit\sioux_dance_pit_damaged</file>
+                    </assetreference>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\native_civs\dance_pit\sioux_dance_pit</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\dance_pit_ground_large</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>LIVE</component>
+        </anim>
+        <anim>Death
+            <assetreference type="GrannyAnim"></assetreference>
+            <component>DEAD</component>
+            <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+            <attach a="collapse_smoke2" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        </anim>
+    </submodel>
+    <submodel>Aztec_fire_pit
+        <attachment>aztec_fire
+            <component>emiter
+                <logic type="Destruction">
+                    <p0>
+                        <assetreference type="ParticleSystem"></assetreference>
+                    </p0>
+                    <p99>
+                        <assetreference type="ParticleSystem">
+                            <file>effects\fire\fire_torch_a.particle</file>
+                        </assetreference>
+                    </p99>
+                </logic>
+            </component>
+            <anim>idle
+                <component>emiter</component>
+            </anim>
+        </attachment>
+        <attachment>aztec_smoke
+            <component>smoke
+                <logic type="Destruction">
+                    <p0>
+                        <assetreference type="ParticleSystem"></assetreference>
+                    </p0>
+                    <p99>
+                        <assetreference type="ParticleSystem">
+                            <file>effects\smoke\smolder_small_v1.particle</file>
+                        </assetreference>
+                    </p99>
+                </logic>
+            </component>
+            <anim>idle
+                <component>smoke</component>
+            </anim>
+        </attachment>
+        <attachment>collapse_smoke
+            <component>collapse_smoke
+                <assetreference type="popcornFx">
+                    <file>smoke\collapse_smoke_3x3.pkfx</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>collapse_smoke</component>
+            </anim>
+        </attachment>
+        <component>LIVE
+            <logic type="LowPoly">
+                <normal>
+                    <logic type="Destruction">
+                        <p1>
+                            <assetreference type="GrannyModel">
+                                <file>buildings\native_civs\dance_pit\aztec_altar_damaged</file>
+                            </assetreference>
+                        </p1>
+                        <p99>
+                            <assetreference type="GrannyModel">
+                                <file>buildings\native_civs\dance_pit\aztec_altar</file>
+                            </assetreference>
+                        </p99>
+                    </logic>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\native_civs\dance_pit\aztec_altar</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec_b</bumptexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <component>DEAD
+            <logic type="LowPoly">
+                <normal>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\native_civs\dance_pit\aztec_altar_damaged</file>
+                    </assetreference>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\native_civs\dance_pit\lp_aztec_altar</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec_b</bumptexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>LIVE</component>
+        </anim>
+        <anim>Death
+            <component>DEAD</component>
+            <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        </anim>
+    </submodel>
+    <submodel>Aztec_sub_construction_stage_01
+        <component>aztec_construction_stage_01
+            <assetreference type="GrannyModel">
+                <file>buildings\constructions\aztec_dance_pit_stage1</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec_b</bumptexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>aztec_construction_stage_01</component>
+        </anim>
+    </submodel>
+    <submodel>Aztec_sub_construction_stage_02
+        <component>aztec_construction_stage_02
+            <assetreference type="GrannyModel">
+                <file>buildings\constructions\aztec_dance_pit_stage2</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec_b</bumptexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>aztec_construction_stage_02</component>
+        </anim>
+    </submodel>
+    <submodel>Aztec_sub_construction_stage_03
+        <component>aztec_construction_stage_03
+            <assetreference type="GrannyModel">
+                <file>buildings\constructions\aztec_dance_pit_stage3</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\native_civs\dance_pit\dance_pit_ground_large_aztec_b</bumptexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>aztec_construction_stage_03</component>
+        </anim>
+    </submodel>
+    <submodel>inca_fire_pit
+        <attachment>inca_fire
+            <component>emiter
+                <logic type="Destruction">
+                    <p0>
+                        <assetreference type="ParticleSystem"></assetreference>
+                    </p0>
+                    <p99>
+                        <assetreference type="ParticleSystem">
+                            <file>effects\fire\fire_torch_a.particle</file>
+                        </assetreference>
+                    </p99>
+                </logic>
+            </component>
+            <anim>idle
+                <component>emiter</component>
+            </anim>
+        </attachment>
+        <attachment>inca_smoke
+            <component>smoke
+                <logic type="Destruction">
+                    <p0>
+                        <assetreference type="ParticleSystem"></assetreference>
+                    </p0>
+                    <p99>
+                        <assetreference type="ParticleSystem">
+                            <file>effects\smoke\smolder_small_v1.particle</file>
+                        </assetreference>
+                    </p99>
+                </logic>
+            </component>
+            <anim>idle
+                <component>smoke</component>
+            </anim>
+        </attachment>
+        <attachment>collapse_smoke
+            <component>collapse_smoke
+                <assetreference type="popcornFx">
+                    <file>smoke\collapse_smoke_3x3.pkfx</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>collapse_smoke</component>
+            </anim>
+        </attachment>
+        <component>LIVE
+            <logic type="LowPoly">
+                <normal>
+                    <logic type="Destruction">
+                        <p1>
+                            <assetreference type="GrannyModel">
+                                <file>buildings\native_civs\dance_pit\inca_dance_pit_damaged</file>
+                            </assetreference>
+                        </p1>
+                        <p99>
+                            <assetreference type="GrannyModel">
+                                <file>buildings\native_civs\dance_pit\inca_dance_pit</file>
+                            </assetreference>
+                        </p99>
+                    </logic>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\native_civs\dance_pit\inca_dance_pit</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\inca_dance_pit_ground_BaseColor</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\native_civs\dance_pit\inca_dance_pit_ground_Normals</bumptexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <component>DEAD
+            <logic type="LowPoly">
+                <normal>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\native_civs\dance_pit\inca_dance_pit_damaged</file>
+                    </assetreference>
+                </normal>
+                <lowpoly>
+                    <assetreference type="GrannyModel">
+                        <file>buildings\native_civs\dance_pit\inca_dance_pit</file>
+                    </assetreference>
+                </lowpoly>
+            </logic>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\inca_dance_pit_ground_BaseColor</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\native_civs\dance_pit\inca_dance_pit_ground_Normals</bumptexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>LIVE</component>
+        </anim>
+        <anim>Death
+            <component>DEAD</component>
+            <attach a="collapse_smoke" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        </anim>
+    </submodel>
+    <submodel>inca_sub_construction_stage_01
+        <component>aztec_construction_stage_01
+            <assetreference type="GrannyModel">
+                <file>buildings\constructions\aztec_dance_pit_stage1</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\inca_dance_pit_ground_BaseColor</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\native_civs\dance_pit\inca_dance_pit_ground_Normals</bumptexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>aztec_construction_stage_01</component>
+        </anim>
+    </submodel>
+    <submodel>inca_sub_construction_stage_02
+        <component>inca_construction_stage_02
+            <assetreference type="GrannyModel">
+                <file>buildings\constructions\inca_dance_pit_stage2\inca_dance_pit_stage2</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\inca_dance_pit_ground_BaseColor</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\native_civs\dance_pit\inca_dance_pit_ground_Normals</bumptexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>inca_construction_stage_02</component>
+        </anim>
+    </submodel>
+    <submodel>inca_sub_construction_stage_03
+        <component>inca_construction_stage_03
+            <assetreference type="GrannyModel">
+                <file>buildings\constructions\inca_dance_pit_stage3\inca_dance_pit_stage3</file>
+            </assetreference>
+            <decal>
+                <effecttype>bump</effecttype>
+                <texture>buildings\native_civs\dance_pit\inca_dance_pit_ground_BaseColor</texture>
+                <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+                <bumptexture>buildings\native_civs\dance_pit\inca_dance_pit_ground_Normals</bumptexture>
+                <width>16.00</width>
+                <height>16.00</height>
+            </decal>
+        </component>
+        <anim>Idle
+            <component>inca_construction_stage_03</component>
+        </anim>
+    </submodel>
+    <component>ModelComp
+        <logic type="BuildingCompletion">
+            <p0>
+                <submodelref ref="Aztec_sub_construction_stage_01"></submodelref>
+            </p0>
+            <p33>
+                <submodelref ref="Aztec_sub_construction_stage_02"></submodelref>
+            </p33>
+            <p66>
+                <submodelref ref="Aztec_sub_construction_stage_03"></submodelref>
+            </p66>
+            <p100>
+                <submodelref ref="Aztec_fire_pit"></submodelref>
+            </p100>
+        </logic>
+    </component>
+    <anim>idle
+        <component>ModelComp</component>
+    </anim>
+</animfile>

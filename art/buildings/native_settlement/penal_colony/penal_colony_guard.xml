@@ -1,0 +1,40 @@
+<animfile>
+  <attachment>gun<include>units\mercenaries\fusilier\fusilier_gun.xml</include></attachment>
+  <attachment>sword<component>sword<assetreference type="GrannyModel"><file>units\attachments\rapier</file></assetreference></component><anim>Idle<component>sword</component></anim></attachment>
+  <attachment>musketeer_3age_hat<component>hat<assetreference type="GrannyModel"><file>units\infantry_ranged\musketeer\musketeer_3age_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+  <attachment>hajduk_hat<component>hat<assetreference type="GrannyModel"><file>units\revolution\jaeger\jaeger_hat</file><materialvariant index="3"></materialvariant></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+  <attachment>carolean_hat<component>hat<assetreference type="GrannyModel"><file>units\infantry_ranged\carolean\carolean_age3_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+  <attachment>line_infantry_hat<component>hat<assetreference type="GrannyModel"><file>units\natives\europeans\line_infantry\line_infantry_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+  <attachment>highlander_hat<component>hat<assetreference type="GrannyModel"><file>units\mercenaries\highlander\highlander_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+  <attachment>trabant_hat<component>hat<assetreference type="GrannyModel"><file>units\natives\europeans\trabant\trabant_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+  <attachment>musketeer_2age_hat<component>hat<assetreference type="GrannyModel"><file>units\infantry_ranged\musketeer\musketeer_2age_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+  <attachment>musketeer_3age_hat_new<component>hat<assetreference type="GrannyModel"><file>units\infantry_ranged\musketeer\musketeer_3age_hat_new</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+  <attachment>minuteman_hat<component>hat<assetreference type="GrannyModel"><file>units\infantry_ranged\minuteman\minuteman_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+  <attachment>grenadier_age3_hat<component>hat<assetreference type="GrannyModel"><file>units\infantry_ranged\grenadier\grenadier_age3_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+  <attachment>grenadier_age4_hat<component>hat<assetreference type="GrannyModel"><file>units\infantry_ranged\grenadier\grenadier_age4_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+  <attachment>colonial_militia_hat<component>hat<assetreference type="GrannyModel"><file>units\infantry_ranged\colonial_militia\colonial_militia_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+  <attachment>hunter_hat<component>hat<assetreference type="GrannyModel"><file>units\natives\europeans\royal_hunter\royal_hunter_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+  <attachment>hunter_pouch<component>pouch<assetreference type="GrannyModel"><file>units\natives\europeans\royal_hunter\royal_hunter_pouch</file></assetreference></component><anim>Idle<component>pouch</component></anim></attachment>
+  <component>ModelComp
+    <assetreference type="GrannyModel">
+        <file>units\africans\outlaws\colonial_guardian\colonial_swordsman</file>
+    </assetreference>
+    <decal>
+        <effecttype>default</effecttype>
+        <texture>shadows_selections\shadow_circle_32x32</texture>
+        <selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+        <width>1.0</width>
+        <height>1.0</height>
+    </decal>
+  </component>
+  <anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\idle_rifleman_E</file></assetreference><component>ModelComp</component><attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach><attach a="sword" frombone="bone_sword" tobone="Bip01 Prop2" syncanims="0"></attach></anim>
+  <anim>Bored<assetreference type="GrannyAnim"><file>animation_library\range\idle_rifleman_E</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_boredA</file></assetreference><assetreference type="GrannyAnim"><file>animation_library\range\unique_infantry\jannisary_bored</file></assetreference><component>ModelComp</component><attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1"></attach><attach a="sword" frombone="bone_sword" tobone="Bip01 Prop2" syncanims="0"></attach></anim>
+  <anim>Walk<assetreference type="GrannyAnim"><file>animation_library\shared\walk_generic_lower</file><file>animation_library\explorer\walk_explorer_upper</file><tag type="FootstepLeft" footprinttype="HumanLeft">0.14</tag><tag type="FootstepRight" footprinttype="HumanRight">0.61</tag></assetreference><component>ModelComp</component><attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1"></attach></anim>
+  <anim>Applause_A<assetreference type="GrannyAnim"><file>animation_library\shared\cheer_a</file></assetreference><component>ModelComp</component></anim>
+  <anim>Applause_B<assetreference type="GrannyAnim"><file>animation_library\shared\cheer_b</file></assetreference><component>ModelComp</component></anim>
+  <anim>Applause_C<assetreference type="GrannyAnim"><file>animation_library\shared\cheer_c</file></assetreference><component>ModelComp</component></anim>
+  <anim>Applause_D<assetreference type="GrannyAnim"><file>animation_library\shared\cheer_d</file></assetreference><component>ModelComp</component></anim>
+  <anim>Applause_E<assetreference type="GrannyAnim"><file>animation_library\shared\cheer_e</file></assetreference><component>ModelComp</component></anim>
+  <anim>OpenDoor<assetreference type="GrannyAnim"><file>animation_library\shared\doorOpen</file></assetreference><component>ModelComp</component></anim>
+  <anim>CloseDoor<assetreference type="GrannyAnim"><file>animation_library\shared\doorClose</file></assetreference><component>ModelComp</component></anim>
+</animfile>

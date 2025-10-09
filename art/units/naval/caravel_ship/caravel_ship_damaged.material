@@ -1,0 +1,126 @@
+<material>
+  <submaterial name="matA">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\caravel_ship\textures\caravel_ship_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\caravel_ship\textures\caravel_ship_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\caravel_ship\textures\caravel_ship_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\caravel_ship\textures\caravel_ship_matA_Details">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="units\naval\caravel_ship\textures\caravel_ship_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\caravel_ship\textures\caravel_ship_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\caravel_ship\textures\caravel_ship_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\caravel_ship\textures\caravel_ship_matA_Details">
+      </texture>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="units\naval\caravel_ship\textures\caravel_ship_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\caravel_ship\textures\caravel_ship_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\caravel_ship\textures\caravel_ship_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\caravel_ship\textures\caravel_ship_matA_Details">
+      </texture>
+    </parameters>
+    <parameters variant="3">
+      <texture name="BaseColor" override="units\naval\caravel_ship\textures\caravel_ship_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\caravel_ship\textures\caravel_ship_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\caravel_ship\textures\caravel_ship_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\caravel_ship\textures\caravel_ship_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matB">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\caravel_ship\textures\caravel_ship_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\caravel_ship\textures\caravel_ship_matB_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\caravel_ship\textures\caravel_ship_matB_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\caravel_ship\textures\caravel_ship_matB_Details">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="units\naval\caravel_ship\textures\indian_caravel_ship_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\caravel_ship\textures\caravel_ship_matB_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\caravel_ship\textures\caravel_ship_matB_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\caravel_ship\textures\indian_caravel_ship_matB_Details">
+      </texture>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="units\naval\caravel_ship\textures\hansa_caravel_ship_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\caravel_ship\textures\caravel_ship_matB_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\caravel_ship\textures\caravel_ship_matB_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\caravel_ship\textures\hansa_caravel_warship_matB_Details">
+      </texture>
+    </parameters>
+    <parameters variant="3">
+      <texture name="BaseColor" override="units\naval\caravel_ship\textures\hansa_caravel_ship_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\caravel_ship\textures\caravel_ship_matB_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\caravel_ship\textures\caravel_ship_matB_Masks">
+      </texture>
+      <texture name="Details" override="units\naval\caravel_ship\textures\hansa_caravel_ship_matB_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matz">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+    <parameters variant="2">
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+    <parameters variant="3">
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

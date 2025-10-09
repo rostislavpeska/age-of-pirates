@@ -1,0 +1,11 @@
+<animfile>
+  <component>ModelComp<assetreference type="GrannyModel"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime</file></assetreference><decal><effecttype>default</effecttype><texture>shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+  <anim>Idle<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_bored_a</file><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_bored_b</file><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_bored_c</file><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_bored_d</file></assetreference><component>ModelComp</component></anim>
+  <anim>Bored_A<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_bored_a</file></assetreference><component>ModelComp</component></anim>
+  <anim>Bored_B<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_bored_b</file></assetreference><component>ModelComp</component></anim>
+  <anim>Bored_C<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_bored_c</file></assetreference><component>ModelComp</component></anim>
+  <anim>Bored_D<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_bored_d</file></assetreference><component>ModelComp</component></anim>
+  <anim>into_idle<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_into</file></assetreference><component>ModelComp</component></anim>
+  <anim>out of idle<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_out_of</file></assetreference><component>ModelComp</component></anim>
+  <anim>walk<assetreference type="GrannyAnim"><file>HOMECITY\HOMECITY_UNITS\PEASANT_CLASS_MIME\peasant_class_mime_walk</file></assetreference><component>ModelComp</component></anim>
+</animfile>

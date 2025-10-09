@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\Woku\IH_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\Woku\IH_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\Woku\IH_Masks">
+      </texture>
+      <texture name="Details" override="buildings\Woku\IH_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

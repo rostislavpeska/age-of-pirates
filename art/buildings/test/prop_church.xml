@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>bone_prop</definebone>
+	<component>
+		portuguese_church
+		<logic type="Variation">
+			<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\hussites\command_tent3</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\medieval_palaces\medival_palace_tower01</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\church\russain_church</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\church\ottoman_church</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\church\polish_church_age4_con</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\church\spanish_church</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\church\polish_church_age4</file>
+				</assetreference>
+			</data>
+			<data>
+				<assetreference type="GrannyModel">
+					<file>buildings\church\west_church_3age</file>
+				</assetreference>
+			</data>
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>portuguese_church</component>
+	</anim>
+</animfile>

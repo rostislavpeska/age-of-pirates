@@ -1,0 +1,24 @@
+<protounitsounddef>
+  <protounit name="zpSPCAztecTreasury">
+    <soundtype name="Select">
+      <soundset name="UI_Building_Economic">
+      </soundset>
+    </soundtype>
+    <soundtype name="SelectSecondary">
+      <soundset name="UI_Select_Building_Bank">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="BuildingDestruction">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="UI_Select_Building_Bank">
+      </soundset>
+    </soundtype>
+    <soundtype name="Exists">
+      <soundset name="AmbienceFountainOfYouth">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

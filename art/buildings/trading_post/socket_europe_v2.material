@@ -1,0 +1,30 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\europe\fence\textures\fence_v2_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\europe\fence\textures\fence_v2_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\europe\fence\textures\fence_v2_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_emissive_advanced">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\german\prop_german_streetlamps\textures\prop_german_streetlamps_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\german\prop_german_streetlamps\textures\prop_german_streetlamps_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\german\prop_german_streetlamps\textures\prop_german_streetlamps_mata_masks">
+      </texture>
+      <texture name="Emissive" override="homecity\german\prop_german_streetlamps\textures\prop_german_streetlamps_mata_emissive">
+      </texture>
+      <float name="Roughness Metallic Min" override="0.6000">
+      </float>
+    </parameters>
+  </submaterial>
+</material>

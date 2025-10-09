@@ -1,0 +1,38 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="nuggets\outlaw_kidnap\kidnap_null\textures\kidnap_null_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="nuggets\outlaw_kidnap\kidnap_null\textures\kidnap_null_mata_normals">
+      </texture>
+      <texture name="Masks" override="nuggets\outlaw_kidnap\kidnap_null\textures\kidnap_null_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="nuggets\guilottine\textures\guillotine_basecolor">
+      </texture>
+      <texture name="Normals" override="nuggets\guilottine\textures\guillotine_Normals">
+      </texture>
+      <texture name="Masks" override="nuggets\guilottine\textures\guillotine_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings/native_settlement/native_settlement_accessories/textures/shaolin_bench_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings/native_settlement/native_settlement_accessories/textures/shaolin_bench_matA_Normals">
+      </texture>
+      <texture name="Masks" override="buildings/native_settlement/native_settlement_accessories/textures/shaolin_bench_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

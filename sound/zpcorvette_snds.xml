@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<protounitsounddef>
+  <protounit name="zpCorvette">
+    <soundtype name="Select">
+      <civlogic>
+        <choice name="Nature">
+        </choice>
+        <choice name="British">
+          <soundset name="BritishGalleonSelect">
+          </soundset>
+        </choice>
+        <choice name="Dutch">
+        </choice>
+        <choice name="French">
+          <soundset name="FrenchGalleonSelect">
+          </soundset>
+        </choice>
+        <choice name="Germans">
+          <soundset name="GermanGalleonSelect">
+          </soundset>
+        </choice>
+        <choice name="Ottomans">
+          <soundset name="OttomanPrivateerSelect">
+          </soundset>
+        </choice>
+        <choice name="Portuguese">
+          <soundset name="PortugueseGalleonSelect">
+          </soundset>
+        </choice>
+        <choice name="Russians">
+          <soundset name="RussianGalleonSelect">
+          </soundset>
+        </choice>
+        <choice name="Spanish">
+          <soundset name="SpanishGalleonSelect">
+          </soundset>
+        </choice>
+        <choice name="Aztecs">
+        </choice>
+        <choice name="Caribs">
+        </choice>
+        <choice name="Cherokee">
+        </choice>
+        <choice name="Comanche">
+        </choice>
+        <choice name="Cree">
+        </choice>
+        <choice name="Iroquois">
+        </choice>
+        <choice name="Incas">
+        </choice>
+        <choice name="Lakota">
+        </choice>
+        <choice name="Maya">
+        </choice>
+        <choice name="Nootka">
+        </choice>
+        <choice name="Seminoles">
+        </choice>
+        <choice name="Tupi">
+        </choice>
+        <choice name="SPCAct1">
+          <soundset name="BritishGalleonSelect">
+          </soundset>
+        </choice>
+        <choice name="SPCAct3">
+          <soundset name="BritishGalleonSelect">
+          </soundset>
+        </choice>
+        <choice name="SPCAct2">
+          <soundset name="BritishGalleonSelect">
+          </soundset>
+        </choice>
+        <choice name="Japanese">
+          <soundset name="JapaneseShipsSelect">
+          </soundset>
+        </choice>
+        <choice name="Chinese">
+          <soundset name="ChineseShipsSelect">
+          </soundset>
+        </choice>
+        <choice name="Indians">
+          <soundset name="IndianShipsSelect">
+          </soundset>
+        </choice>
+        <choice name="SPCJapanese">
+          <soundset name="JapaneseShipsSelect">
+          </soundset>
+        </choice>
+        <choice name="SPCChinese">
+          <soundset name="ChineseShipsSelect">
+          </soundset>
+        </choice>
+        <choice name="SPCIndians">
+          <soundset name="IndianShipsSelect">
+          </soundset>
+        </choice>
+        <choice name="DESwedish">
+          <soundset name="DESwedishGalleonSelect">
+          </soundset>
+        </choice>
+        <choice name="DEAmericans">
+          <soundset name="DEAmericanGalleonSelect">
+          </soundset>
+        </choice>
+        <choice name="Pirate">
+          <soundset name="BritishGalleonSelect">
+          </soundset>
+        </choice>
+        <choice name="DEMexicans">
+          <soundset name="DEMexicanSteamerSelect">
+          </soundset>
+        </choice>
+        <choice name="DEMaltese">
+          <soundset name="SpanishGalleonSelect">
+          </soundset>
+        </choice>
+      </civlogic>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="ShipDeath">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="ShipBirth">
+      </soundset>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <civlogic>
+        <choice name="Nature">
+        </choice>
+        <choice name="Spanish">
+          <soundset name="SpanishGalleonAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="British">
+          <soundset name="BritishGalleonAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="French">
+          <soundset name="FrenchGalleonAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Portuguese">
+          <soundset name="PortugueseGalleonAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Dutch">
+        </choice>
+        <choice name="Russians">
+          <soundset name="RussianGalleonAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Germans">
+          <soundset name="GermanGalleonAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Ottomans">
+          <soundset name="OttomanPrivateerAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="SPCAct1">
+          <soundset name="BritishGalleonAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="SPCAct2">
+          <soundset name="BritishGalleonAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="SPCAct3">
+          <soundset name="BritishGalleonAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="TheCircle">
+        </choice>
+        <choice name="NativeAmerican">
+        </choice>
+        <choice name="Aztecs">
+        </choice>
+        <choice name="Caribs">
+        </choice>
+        <choice name="Cherokee">
+        </choice>
+        <choice name="Comanche">
+        </choice>
+        <choice name="Cree">
+        </choice>
+        <choice name="Incas">
+        </choice>
+        <choice name="Iroquois">
+        </choice>
+        <choice name="Lakota">
+        </choice>
+        <choice name="Maya">
+        </choice>
+        <choice name="Nootka">
+        </choice>
+        <choice name="Seminoles">
+        </choice>
+        <choice name="Tupi">
+        </choice>
+        <choice name="Japanese">
+          <soundset name="JapaneseShipsAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Chinese">
+          <soundset name="ChineseShipsAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Indians">
+          <soundset name="IndianShipsAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="SPCJapanese">
+          <soundset name="JapaneseShipsAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="SPCChinese">
+          <soundset name="ChineseShipsAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="SPCIndians">
+          <soundset name="IndianShipsAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="DESwedish">
+          <soundset name="DESwedishGalleonAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="DEAmericans">
+          <soundset name="DEAmericanGalleonAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="Pirate">
+          <soundset name="BritishGalleonAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="DEMexicans">
+          <soundset name="DEMexicanSteamerAcknowledge">
+          </soundset>
+        </choice>
+        <choice name="DEMaltese">
+          <soundset name="SpanishGalleonAcknowledge">
+          </soundset>
+        </choice>
+      </civlogic>
+    </soundtype>
+    <soundtype name="Exists">
+      <soundset name="AmbienceShip">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

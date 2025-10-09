@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\IH\5\Mata_Mine_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\IH\5\Mata_Mine_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\IH\5\Mata_Mine_Masks">
+      </texture>
+   </parameters>
+  </submaterial>
+</material>

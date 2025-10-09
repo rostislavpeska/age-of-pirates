@@ -1,0 +1,23 @@
+<animfile>
+  <attachment>
+    WaterFall
+    <component>
+      Spray_Emitter_top
+      <!--<logic type="Variation">
+        <data>-->
+          <assetreference type="popcornFx">
+            <file>water_effects\inca_temple_waterfall.pkfx</file>
+          </assetreference>
+        <!--</data>
+        <data>
+          <assetreference type="popcornFx">
+            <file>water_effects\spc_waterfall.pkfx</file>
+          </assetreference>
+        </data>
+      </logic>-->
+    </component>
+    <anim>None<component>Spray_Emitter_top</component></anim>
+  </attachment>
+  <component>river_edge_flow<notshadowcaster></notshadowcaster><logic type="Variation"><v1><assetreference type="GrannyModel"><file>terrain\new_england\shorelinefoam</file></assetreference><attach a="WaterFall" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach><decal><selectedtexture>shadows_selections\selection_square_32x32</selectedtexture><width>2.5</width><height>2.5</height></decal></v1></logic></component>
+  <anim>Idle<component>river_edge_flow</component></anim>
+</animfile>

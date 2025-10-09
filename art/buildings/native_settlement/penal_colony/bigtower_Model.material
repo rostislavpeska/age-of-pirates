@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\penal_colony\textures\bigtower_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\penal_colony\textures\bigtower_matA_normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\penal_colony\textures\bigtower_matA_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

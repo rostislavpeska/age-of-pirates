@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\RODA\SP_HAB\Soldado\Texture\soldado_age5_hat_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\infantry_ranged\soldado\textures\soldado_age5_hat_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\infantry_ranged\soldado\textures\soldado_age5_hat_mata_masks">
+      </texture>
+      <texture name="Details" override="units\infantry_ranged\soldado\textures\soldado_age5_hat_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

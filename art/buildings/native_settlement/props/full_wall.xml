@@ -1,0 +1,41 @@
+<animfile>
+	<component>
+		building
+		<logic type="Variation">
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\props\full_wall_02</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\props\full_wall_03</file>
+					</assetreference>
+			    </data>
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\props\full_wall_01</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\props\full_wall_04</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\props\full_wall_05</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\props\full_wall_06</file>
+					</assetreference>
+			    </data>
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>building</component>
+	</anim>
+</animfile>

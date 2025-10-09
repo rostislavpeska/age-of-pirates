@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>15</width>
+	<height>15</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="194" posx="7.7079" posz="9.0209" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">TownCenter</unit>
+		<unit variation="196" posx="12.2828" posz="-10.9770" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpUnderbrushConstructionColony</unit>
+		<unit variation="196" posx="9.9808" posz="-11.1621" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpUnderbrushConstructionColony</unit>
+		<unit variation="86" posx="-7.5332" posz="-8.3680" orientx="1.0000" orienty="0.0000" orientz="0.0000">deTavern</unit>
+		<unit variation="61" posx="8.4243" posz="-4.5811" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Market</unit>
+		<unit variation="194" posx="-4.3110" posz="9.0575" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Barracks</unit>
+		<unit variation="26" posx="-12.0331" posz="9.3515" orientx="0.9240" orienty="0.0000" orientz="-0.3823">zpUnderbrushConstructionMine</unit>
+		<unit variation="196" posx="1.9109" posz="8.7981" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpUnderbrushConstructionColony</unit>
+		<unit variation="35" posx="-10.4331" posz="11.1305" orientx="0.2001" orienty="0.0000" orientz="0.9798">zpUnderbrushConstructionJesuit</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
+			<block startx="-7" startz="-7" endx="-7" endz="0"></block>
+			<block startx="-6" startz="-7" endx="-6" endz="-3"></block>
+			<block startx="-5" startz="-7" endx="-5" endz="-7"></block>
+			<block startx="-5" startz="-4" endx="-5" endz="-3"></block>
+			<block startx="-5" startz="-1" endx="-5" endz="-1"></block>
+			<block startx="-4" startz="-7" endx="-4" endz="-4"></block>
+			<block startx="-4" startz="-1" endx="-4" endz="0"></block>
+			<block startx="-3" startz="-7" endx="-3" endz="-6"></block>
+			<block startx="-3" startz="-1" endx="-3" endz="-1"></block>
+			<block startx="-2" startz="-7" endx="-2" endz="-6"></block>
+			<block startx="-2" startz="-3" endx="-2" endz="-3"></block>
+			<block startx="-2" startz="0" endx="-2" endz="0"></block>
+			<block startx="-1" startz="-7" endx="-1" endz="-6"></block>
+			<block startx="0" startz="-7" endx="0" endz="-6"></block>
+			<block startx="0" startz="-2" endx="0" endz="-2"></block>
+			<block startx="-7" startz="1" endx="-7" endz="7"></block>
+			<block startx="-6" startz="3" endx="-6" endz="3"></block>
+			<block startx="-6" startz="6" endx="-6" endz="7"></block>
+			<block startx="-5" startz="1" endx="-5" endz="1"></block>
+			<block startx="-5" startz="3" endx="-5" endz="3"></block>
+			<block startx="-5" startz="6" endx="-5" endz="7"></block>
+			<block startx="-4" startz="1" endx="-4" endz="3"></block>
+			<block startx="-4" startz="6" endx="-4" endz="7"></block>
+			<block startx="-3" startz="1" endx="-3" endz="1"></block>
+			<block startx="-3" startz="6" endx="-3" endz="7"></block>
+			<block startx="-2" startz="1" endx="-2" endz="2"></block>
+			<block startx="-2" startz="4" endx="-2" endz="4"></block>
+			<block startx="-2" startz="6" endx="-2" endz="7"></block>
+			<block startx="-1" startz="2" endx="-1" endz="2"></block>
+			<block startx="-1" startz="4" endx="-1" endz="4"></block>
+			<block startx="-1" startz="6" endx="-1" endz="7"></block>
+			<block startx="0" startz="6" endx="0" endz="7"></block>
+			<block startx="1" startz="2" endx="1" endz="2"></block>
+			<block startx="1" startz="6" endx="1" endz="7"></block>
+			<block startx="2" startz="2" endx="2" endz="2"></block>
+			<block startx="2" startz="4" endx="2" endz="4"></block>
+			<block startx="2" startz="6" endx="2" endz="7"></block>
+			<block startx="3" startz="5" endx="3" endz="7"></block>
+			<block startx="4" startz="1" endx="4" endz="1"></block>
+			<block startx="4" startz="6" endx="4" endz="7"></block>
+			<block startx="5" startz="1" endx="5" endz="3"></block>
+			<block startx="5" startz="6" endx="5" endz="7"></block>
+			<block startx="6" startz="1" endx="6" endz="7"></block>
+			<block startx="7" startz="1" endx="7" endz="7"></block>
+			<block startx="1" startz="-7" endx="1" endz="-5"></block>
+			<block startx="1" startz="-2" endx="1" endz="-2"></block>
+			<block startx="1" startz="0" endx="1" endz="0"></block>
+			<block startx="2" startz="-7" endx="2" endz="-7"></block>
+			<block startx="2" startz="0" endx="2" endz="0"></block>
+			<block startx="3" startz="-7" endx="3" endz="-7"></block>
+			<block startx="3" startz="-5" endx="3" endz="-5"></block>
+			<block startx="3" startz="-3" endx="3" endz="-2"></block>
+			<block startx="3" startz="0" endx="3" endz="0"></block>
+			<block startx="4" startz="-7" endx="4" endz="-7"></block>
+			<block startx="4" startz="-4" endx="4" endz="-2"></block>
+			<block startx="5" startz="-7" endx="5" endz="-7"></block>
+			<block startx="5" startz="-5" endx="5" endz="-5"></block>
+			<block startx="5" startz="-3" endx="5" endz="0"></block>
+			<block startx="6" startz="-7" endx="6" endz="-7"></block>
+			<block startx="6" startz="-4" endx="6" endz="0"></block>
+			<block startx="7" startz="-7" endx="7" endz="-2"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="Texas\Path_Blend">
+			<block startx="-6" startz="-2" endx="-6" endz="0"></block>
+			<block startx="-5" startz="-6" endx="-5" endz="-5"></block>
+			<block startx="-5" startz="-2" endx="-5" endz="-2"></block>
+			<block startx="-5" startz="0" endx="-5" endz="0"></block>
+			<block startx="-4" startz="-3" endx="-4" endz="-2"></block>
+			<block startx="-3" startz="-5" endx="-3" endz="-2"></block>
+			<block startx="-3" startz="0" endx="-3" endz="0"></block>
+			<block startx="-2" startz="-5" endx="-2" endz="-4"></block>
+			<block startx="-2" startz="-2" endx="-2" endz="-1"></block>
+			<block startx="-1" startz="-5" endx="-1" endz="0"></block>
+			<block startx="0" startz="-5" endx="0" endz="-3"></block>
+			<block startx="0" startz="-1" endx="0" endz="0"></block>
+			<block startx="-6" startz="1" endx="-6" endz="2"></block>
+			<block startx="-6" startz="4" endx="-6" endz="5"></block>
+			<block startx="-5" startz="2" endx="-5" endz="2"></block>
+			<block startx="-5" startz="4" endx="-5" endz="5"></block>
+			<block startx="-4" startz="4" endx="-4" endz="5"></block>
+			<block startx="-3" startz="2" endx="-3" endz="3"></block>
+			<block startx="-3" startz="5" endx="-3" endz="5"></block>
+			<block startx="-2" startz="3" endx="-2" endz="3"></block>
+			<block startx="-2" startz="5" endx="-2" endz="5"></block>
+			<block startx="-1" startz="1" endx="-1" endz="1"></block>
+			<block startx="-1" startz="3" endx="-1" endz="3"></block>
+			<block startx="-1" startz="5" endx="-1" endz="5"></block>
+			<block startx="0" startz="1" endx="0" endz="5"></block>
+			<block startx="1" startz="1" endx="1" endz="1"></block>
+			<block startx="1" startz="3" endx="1" endz="5"></block>
+			<block startx="2" startz="1" endx="2" endz="1"></block>
+			<block startx="2" startz="3" endx="2" endz="3"></block>
+			<block startx="2" startz="5" endx="2" endz="5"></block>
+			<block startx="3" startz="1" endx="3" endz="4"></block>
+			<block startx="4" startz="2" endx="4" endz="5"></block>
+			<block startx="5" startz="4" endx="5" endz="5"></block>
+			<block startx="1" startz="-4" endx="1" endz="-3"></block>
+			<block startx="1" startz="-1" endx="1" endz="-1"></block>
+			<block startx="2" startz="-6" endx="2" endz="-1"></block>
+			<block startx="3" startz="-6" endx="3" endz="-6"></block>
+			<block startx="3" startz="-4" endx="3" endz="-4"></block>
+			<block startx="3" startz="-1" endx="3" endz="-1"></block>
+			<block startx="4" startz="-6" endx="4" endz="-5"></block>
+			<block startx="4" startz="-1" endx="4" endz="-1"></block>
+			<block startx="5" startz="-6" endx="5" endz="-6"></block>
+			<block startx="5" startz="-4" endx="5" endz="-4"></block>
+			<block startx="6" startz="-6" endx="6" endz="-5"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">
+			<block startx="-3" startz="4" endx="-3" endz="4"></block>
+			<block startx="4" startz="0" endx="4" endz="0"></block>
+			<block startx="7" startz="-1" endx="7" endz="0"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

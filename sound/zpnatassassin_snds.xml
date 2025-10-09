@@ -1,0 +1,96 @@
+<protounitsounddef>
+  <protounit name="zpNatAssassin">
+    <soundtype name="Select">
+      <variationlogic>
+        <choice name="0">
+          <soundset name="DEItalianSpySelect">
+          </soundset>
+        </choice>
+        <choice name="1">
+          <soundset name="DEItalianSpySelect">
+          </soundset>
+        </choice>
+        <choice name="2">
+          <soundset name="ItalianFemplorerSelect">
+          </soundset>
+        </choice>
+      </variationlogic>
+    </soundtype>
+    <soundtype name="Grunt">
+      <variationlogic>
+        <choice name="0">
+          <soundset name="GenericMaleGrunt">
+          </soundset>
+        </choice>
+        <choice name="1">
+          <soundset name="GenericMaleGrunt">
+          </soundset>
+        </choice>
+        <choice name="2">
+          <soundset name="GenericFemaleGrunt">
+          </soundset>
+        </choice>
+      </variationlogic>
+    </soundtype>
+    <soundtype name="Death">
+      <variationlogic>
+        <choice name="0">
+          <soundset name="GenericMaleDeath">
+          </soundset>
+        </choice>
+        <choice name="1">
+          <soundset name="GenericMaleDeath">
+          </soundset>
+        </choice>
+        <choice name="2">
+          <soundset name="GenericFemaleDeath">
+          </soundset>
+        </choice>
+      </variationlogic>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="SettlerBirth">
+      </soundset>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <variationlogic>
+        <choice name="0"> 
+          <targetlogic>
+            <choice name="default">
+              <soundset name="DEItalianSpyAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="DEItalianSpyAttack">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="1">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="DEItalianSpyAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="DEItalianSpyAttack">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="2">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="ItalianFemplorerAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="ItalianFemplorerAttack">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+      </variationlogic>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

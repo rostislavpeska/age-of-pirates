@@ -1,0 +1,21 @@
+<animfile>
+  <definebone>Ladder_bone01.001</definebone>
+  <definebone>Ladder_bone01</definebone>
+  <definebone>Ladder_bone02</definebone>
+  <definebone>Ladder_bone03</definebone>
+  <definebone>Ladder_bone04</definebone>
+  <definebone>Ladder_bone05</definebone>
+  <definebone>Ladder_bone06</definebone>
+  <attachment>escutcheon<include>buildings\native_settlement\europe\shields\castle_shields.xml</include></attachment>
+  <attachment>bourbon<component>escutcheon<assetreference type="GrannyModel"><file>buildings\native_settlement\europe\shields\bourbon</file></assetreference></component><anim>Idle<component>escutcheon</component></anim></attachment>
+  <attachment>habsburg<component>escutcheon<assetreference type="GrannyModel"><file>buildings\native_settlement\europe\shields\habsburg</file></assetreference></component><anim>Idle<component>escutcheon</component></anim></attachment>
+  <attachment>hanover<component>escutcheon<assetreference type="GrannyModel"><file>buildings\native_settlement\europe\shields\hanoverlions</file></assetreference></component><anim>Idle<component>escutcheon</component></anim></attachment>
+  <attachment>jagiellon<component>escutcheon<assetreference type="GrannyModel"><file>buildings\native_settlement\europe\shields\jagiellon</file></assetreference></component><anim>Idle<component>escutcheon</component></anim></attachment>
+  <attachment>oldenburg<component>escutcheon<assetreference type="GrannyModel"><file>buildings\native_settlement\europe\shields\oldenburg</file></assetreference></component><anim>Idle<component>escutcheon</component></anim></attachment>
+  <attachment>phanar<component>escutcheon<assetreference type="GrannyModel"><file>buildings\native_settlement\europe\shields\phanar_original</file></assetreference></component><anim>Idle<component>escutcheon</component></anim></attachment>
+  <attachment>vasa<component>escutcheon<assetreference type="GrannyModel"><file>buildings\native_settlement\europe\shields\vasa</file></assetreference></component><anim>Idle<component>escutcheon</component></anim></attachment>
+  <attachment>wettin<component>escutcheon<assetreference type="GrannyModel"><file>buildings\native_settlement\europe\shields\wettin</file></assetreference></component><anim>Idle<component>escutcheon</component></anim></attachment>
+  <attachment>wittelsbach<component>escutcheon<assetreference type="GrannyModel"><file>buildings\native_settlement\europe\shields\wittelsbach</file></assetreference></component><anim>Idle<component>escutcheon</component></anim></attachment>
+  <component>ladder<assetreference type="GrannyModel"><file>buildings\native_settlement\europe\shields\ladder</file></assetreference><attach a="escutcheon" frombone="Ladder_bone01.001" tobone="Ladder_bone01.001" syncanims="0"></attach></component>
+  <anim>Idle<component>ladder</component></anim>
+</animfile>

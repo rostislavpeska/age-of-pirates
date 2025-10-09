@@ -14,9 +14,18 @@
     <anim>Idle<component>hats</component></anim>
   </attachment>
   <component>ModelComp
-    <assetreference type="GrannyModel">
-        <file>units\cavalry\us_cavalry\us_cav_age4_rider</file>
-    </assetreference>
+    <logic type="Tech">
+      <none>
+        <assetreference type="GrannyModel">
+            <file>units\cavalry\us_cavalry\us_cav_age4_rider</file>
+        </assetreference>
+      </none>
+      <zpactivatecsaskins>
+        <assetreference type="GrannyModel">
+            <file>units\cavalry\us_cavalry\us_cav_confederate_rider</file>
+        </assetreference>
+      </zpactivatecsaskins>
+    </logic>
     <attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
   </component>
   <anim>Walk<assetreference type="GrannyAnim"><file>animation_library\cavalry\sword_canter</file></assetreference><component>ModelComp</component><attach a="gun" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="1"></attach></anim>

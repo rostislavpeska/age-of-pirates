@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<attachment>
+		market
+		<component>MARKET
+			<assetreference type="GrannyModel">
+				<file>buildings\bridge\bridge_attachment</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>MARKET</component>
+		</anim>
+	</attachment>
+	<component>
+		house
+		<logic type="Variation">
+			<variationid0>
+				<assetreference type="GrannyModel">
+					<file>buildings\spc\aztec\aztec_stairs_Model</file>
+				</assetreference>
+				<attach a="market" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"/>
+			</variationid0>
+			<variationid1>
+				<assetreference type="GrannyModel">
+					<file>buildings\spc\aztec\aztec_stairs2_Model</file>
+				</assetreference>
+				<attach a="market" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"/>
+			</variationid1>
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>house</component>
+	</anim>
+</animfile>

@@ -12,5 +12,15 @@
       <texture name="Details" override="units\spc\alain\textures\spc_alain_magnan _mata_Details">
       </texture>
     </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="units\natives\teutonic\textures\teutonic_rider_a_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\alain\textures\spc_alain_magnan _mata_normals">
+      </texture>
+      <texture name="Masks" override="units\spc\alain\textures\spc_alain_magnan _mata_masks">
+      </texture>
+      <texture name="Details" override="units\natives\teutonic\textures\teutonic_rider_mata_Details">
+      </texture>
+    </parameters>
   </submaterial>
 </material>

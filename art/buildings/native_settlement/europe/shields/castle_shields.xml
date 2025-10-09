@@ -1,0 +1,27 @@
+<animfile>
+	<definebone>escutcheon</definebone>
+	<component>
+		escutcheon
+		<logic type="Variation">
+			<habsburg>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\europe\shields\habsburg</file>
+				</assetreference>
+			</habsburg>
+			<wettin>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\europe\shields\wettin</file>
+				</assetreference>
+			</wettin>
+			<wittelsbach>
+				<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\europe\shields\wittelsbach</file>
+				</assetreference>
+			</wittelsbach>
+    	</logic>
+	</component>
+	<anim>
+		Idle
+		<component>escutcheon</component>
+	</anim>
+</animfile>

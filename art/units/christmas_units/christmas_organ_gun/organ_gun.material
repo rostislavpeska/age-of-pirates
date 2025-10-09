@@ -1,0 +1,42 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\christmas_units\christmas_organ_gun\textures\organ_gun_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\artillery\organ_gun\textures\organ_gun_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\artillery\organ_gun\textures\organ_gun_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\artillery\organ_gun\textures\organ_gun_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\artillery\Mortar\textures\mortar_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\artillery\Mortar\textures\mortar_matB_Normals">
+      </texture>
+      <texture name="Masks" override="units\artillery\Mortar\textures\mortar_matB_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\christmas_units\candy_howitzer\textures\candy_howitzer_gunner_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\artillery\Horse_Artillery\textures\horse_artillery_gunner_matB_Normals">
+      </texture>
+      <texture name="Masks" override="units\artillery\Horse_Artillery\textures\horse_artillery_gunner_matB_Masks">
+      </texture>
+      <texture name="Details" override="units\artillery\Horse_Artillery\textures\horse_artillery_gunner_matB_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

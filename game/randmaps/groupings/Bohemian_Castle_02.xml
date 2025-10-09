@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>17</width>
+	<height>16</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="243" posx="0.3864" posz="-12.1981" orientx="-0.0000" orienty="0.0039" orientz="-1.0000">zpInvisibleGateSocket</unit>
+		<unit variation="243" posx="0.3864" posz="-12.1981" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">SPCFortGate</unit>
+		<unit variation="111" posx="-6.6857" posz="-11.6915" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">zpSPCFortTowerProp</unit>
+		<unit variation="242" posx="9.6352" posz="-8.6745" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpSPCFortWallMediumProp</unit>
+		<unit variation="239" posx="7.1916" posz="-11.1857" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">zpSPCFortTowerProp</unit>
+		<unit variation="242" posx="-10.2121" posz="-8.3156" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpSPCFortWallMediumProp</unit>
+		<unit variation="114" posx="-6.4293" posz="-7.3113" orientx="0.9238" orienty="-0.0000" orientz="-0.3828">PropsColony</unit>
+		<unit variation="5" posx="-7.1338" posz="-7.1931" orientx="0.7072" orienty="0.0000" orientz="0.7070">PropsColony</unit>
+		<unit variation="17" posx="-12.3686" posz="-5.7179" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpSPCFortCornerProp</unit>
+		<unit variation="30" posx="12.4724" posz="-6.1402" orientx="0.9239" orienty="-0.0000" orientz="-0.3827">zpSPCFortCornerProp</unit>
+		<unit variation="210" posx="-1.1071" posz="-6.3506" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">deNatEUPropStatue</unit>
+		<unit variation="114" posx="-7.7865" posz="-6.0867" orientx="1.0000" orienty="-0.0000" orientz="-0.0001">PropsColony</unit>
+		<unit variation="145" posx="-5.5692" posz="-4.3328" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCCapturableFlagInvisible</unit>
+		<unit variation="167" posx="4.4586" posz="-4.7639" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpParisFlagNoIcon</unit>
+		<unit variation="104" posx="5.3683" posz="-2.5882" orientx="0.7072" orienty="0.0000" orientz="0.7070">PropsColony</unit>
+		<unit variation="180" posx="0.4255" posz="-4.9629" orientx="0.3827" orienty="0.0000" orientz="-0.9239">deMercCannoneer</unit>
+		<unit variation="91" posx="5.2245" posz="-3.7737" orientx="-0.0000" orienty="0.0039" orientz="-1.0000">zpMercBohemianKnight</unit>
+		<unit variation="235" posx="6.3211" posz="-5.1485" orientx="0.3827" orienty="0.0000" orientz="-0.9239">deMercCannoneer</unit>
+		<unit variation="72" posx="2.9760" posz="-3.5127" orientx="-0.0000" orienty="0.0039" orientz="-1.0000">zpMercBohemianKnight</unit>
+		<unit variation="45" posx="1.2722" posz="-4.3587" orientx="0.3827" orienty="0.0000" orientz="-0.9239">deMercCannoneer</unit>
+		<unit variation="149" posx="-5.6039" posz="-4.4221" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNuggetKidnapGuillotine</unit>
+		<unit variation="242" posx="-12.1994" posz="-2.4208" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCFortWallMediumProp</unit>
+		<unit variation="242" posx="12.1418" posz="-2.6500" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSPCFortWallMediumProp</unit>
+		<unit variation="153" posx="4.0132" posz="-2.1467" orientx="0.7070" orienty="-0.0000" orientz="-0.7072">PropsPottedPlants</unit>
+		<unit variation="129" posx="12.2389" posz="0.3689" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpSPCFortCornerProp</unit>
+		<unit variation="104" posx="-8.0720" posz="0.2789" orientx="0.7072" orienty="0.0000" orientz="0.7070">PropsColony</unit>
+		<unit variation="89" posx="5.5806" posz="-0.3106" orientx="-0.0000" orienty="0.0039" orientz="-1.0000">zpMercBohemianKnight</unit>
+		<unit variation="17" posx="-11.8347" posz="0.8374" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpSPCFortCornerProp</unit>
+		<unit variation="242" posx="-9.4042" posz="3.1923" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCFortWallMediumProp</unit>
+		<unit variation="242" posx="9.2548" posz="2.7735" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpSPCFortWallMediumProp</unit>
+		<unit variation="12" posx="5.3423" posz="1.4118" orientx="0.3827" orienty="0.0000" orientz="-0.9239">deMercCannoneer</unit>
+		<unit variation="7" posx="10.4393" posz="-2.8903" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">zpMountainCitadel</unit>
+		<unit variation="183" posx="-9.9729" posz="-1.6738" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpMountainCitadel</unit>
+		<unit variation="202" posx="-0.9537" posz="5.1359" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpFortConvertable</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">
+			<block startx="-5" startz="-2" endx="-5" endz="-1"></block>
+			<block startx="-4" startz="-4" endx="-4" endz="-1"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="-1"></block>
+			<block startx="-2" startz="-7" endx="-2" endz="-1"></block>
+			<block startx="-4" startz="0" endx="-4" endz="0"></block>
+			<block startx="-3" startz="0" endx="-3" endz="2"></block>
+			<block startx="-2" startz="0" endx="-2" endz="3"></block>
+			<block startx="-1" startz="0" endx="-1" endz="3"></block>
+			<block startx="0" startz="0" endx="0" endz="4"></block>
+			<block startx="1" startz="0" endx="1" endz="4"></block>
+			<block startx="2" startz="0" endx="2" endz="4"></block>
+			<block startx="3" startz="0" endx="3" endz="3"></block>
+			<block startx="4" startz="0" endx="4" endz="2"></block>
+			<block startx="5" startz="0" endx="5" endz="1"></block>
+			<block startx="6" startz="0" endx="6" endz="0"></block>
+			<block startx="-1" startz="-7" endx="-1" endz="-1"></block>
+			<block startx="0" startz="-7" endx="0" endz="-1"></block>
+			<block startx="1" startz="-7" endx="1" endz="-1"></block>
+			<block startx="2" startz="-6" endx="2" endz="-1"></block>
+			<block startx="3" startz="-6" endx="3" endz="-1"></block>
+			<block startx="4" startz="-6" endx="4" endz="-1"></block>
+			<block startx="5" startz="-6" endx="5" endz="-1"></block>
+			<block startx="6" startz="-5" endx="6" endz="-1"></block>
+			<block startx="7" startz="-2" endx="7" endz="-1"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

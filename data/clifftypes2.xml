@@ -2812,4 +2812,1034 @@
       <bottomedge>caribbean\ground3_crb</bottomedge>
     </textures>
   </cliff>
+  <cliff name="ZP Uluru" blockland="1" blockwater="0" iconname="ui\editor\cliffpainteddesert">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\spc\east_africa\underbrush_east_africa_rock2" minedgedist="0.4" maxedgedist="0.8" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\spc\east_africa\underbrush_east_africa_rock3" minedgedist=".5" maxedgedist="1" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\spc\east_africa\underbrush_east_africa_rock4" minedgedist=".5" maxedgedist="1" chance="0.05" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\underbrush\underbrush_desert_bush1" minedgedist="0.5" maxedgedist="1" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush3" minedgedist="0.5" maxedgedist="1" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush5" minedgedist="0.3" maxedgedist="0.8" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush6" minedgedist="0.5" maxedgedist="1" chance="0.05" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.075000</displacementamount>
+      <shapecurve>1v{-0.026,1.042|0.000,0.707|-0.013,0.875|25312}{0.015,0.560|0.022,0.434|0.018,0.497|7774}{0.191,0.310|0.090,0.216|0.141,0.263|19461}{0.321,0.455|0.482,0.460|0.401,0.458|23438}{0.518,0.190|0.708,0.120|0.613,0.155|13333}{0.809,0.167|0.937,0.203|0.873,0.185|20117}{0.879,0.215|1.121,-0.207|1.000,0.004|28558}</shapecurve>
+      <displacementmedianvalue>0.357000</displacementmedianvalue>
+      <triplanarscale>0.100000</triplanarscale>
+      <normalstrength>2.500000</normalstrength>
+      <secondarynormalstrength>1.000000</secondarynormalstrength>
+      <terrainblendtop>0.026000</terrainblendtop>
+      <terrainblendbottom>0.095000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\deccan_plateau\deccan_plateau_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\deccan_plateau\deccan_plateau_cliff_normals_lrg</normals>
+      <secondarynormals>terrain\cliffs\deccan_plateau\deccan_plateau_cliff_normals_sml</secondarynormals>
+      <heightmap>terrain\cliffs\deccan_plateau\deccan_plateau_cliff_height</heightmap>
+      <mask>terrain\cliffs\deccan_plateau\deccan_plateau_cliff_masks</mask>
+      <top>Africa\path_afr</top>
+      <topedge>Africa\path_afr</topedge>
+      <side>Africa\path_afr</side>
+      <edge>Africa\pathBlend_afr</edge>
+      <bottomedge>Africa\pathBlend_afr</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP Melanesia High 2" blockland="1" blockwater="0" iconname="ui\editor\cliffHimalayas">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\patagonia\underbrush_rock_a_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="0.75" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_e_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks5_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks4_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks2_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks3_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\patagonia\underbrush_rock_a_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.25" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_e_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks5_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks4_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks2_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks3_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.150000</displacementamount>
+      <shapecurve>1v{-0.038,1.130|0.032,0.863|-0.003,0.997|27170}{-0.039,0.891|0.050,0.648|0.005,0.769|27413}{0.166,0.583|0.249,0.551|0.207,0.567|20117}{0.330,0.248|0.561,0.372|0.446,0.310|23438}{0.589,0.260|0.926,0.214|0.757,0.237|13333}{0.960,0.165|0.992,0.083|0.976,0.124|32328}{0.950,0.066|1.029,-0.059|0.989,0.004|2204}</shapecurve>
+      <displacementmedianvalue>0.216000</displacementmedianvalue>
+      <triplanarscale>0.080000</triplanarscale>
+      <normalstrength>1.067000</normalstrength>
+      <secondarynormalstrength>0.000000</secondarynormalstrength>
+      <terrainblendtop>0.083000</terrainblendtop>
+      <terrainblendbottom>0.083000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\himalaya\himalaya_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\himalaya\himalaya_cliff_normal_lrg</normals>
+      <secondarynormals>terrain\cliffs\default\cliff_missing_normal</secondarynormals>
+      <heightmap>terrain\cliffs\himalaya\himalaya_cliff_height</heightmap>
+      <mask>terrain\cliffs\himalaya\himalaya_cliff_masks</mask>
+      <top>lava\volcano_dirt</top>
+      <topedge>lava\volcano_dirt</topedge>
+      <side>lava\volcano_dirt</side>
+      <edge>lava\volcano_dirt</edge>
+      <bottomedge>lava\volcano_borneo</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP Melanesia Medium" blockland="1" blockwater="0" iconname="ui\editor\cliffHimalayas">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\underbrush\underbrush_jungle_plant6" minedgedist="0.75" maxedgedist="5.0" chance="0.02" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant4" minedgedist="0.75" maxedgedist="5.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks5_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks4_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks2_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks3_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant11" minedgedist="1.0" maxedgedist="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\new_england\shorelinerocks_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks5_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks4_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks2_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks3_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_brush3" minedgedist="0.5" maxedgedist="2.5" chance="0.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant1" minedgedist="0.5" maxedgedist="2.5" chance="0.15" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant2" minedgedist="0.5" maxedgedist="2.5" chance="0.15" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant3" minedgedist="0.5" maxedgedist="2.5" chance="0.15" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant4" minedgedist="0.5" maxedgedist="2.5" chance="0.15" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant5" minedgedist="0.5" maxedgedist="2.5" chance="0.15" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant6" minedgedist="0.5" maxedgedist="2.5" chance="0.15" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant7" minedgedist="0.5" maxedgedist="2.5" chance="0.15" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant8" minedgedist="0.5" maxedgedist="2.5" chance="0.15" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant9" minedgedist="0.5" maxedgedist="2.5" chance="0.15" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant10" minedgedist="0.5" maxedgedist="2.5" chance="0.15" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant11" minedgedist="0.5" maxedgedist="2.5" chance="0.15" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant12" minedgedist="0.5" maxedgedist="2.5" chance="0.15" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_log2" minedgedist="0.2" maxedgedist="0.5" chance="0.01" randomyaw="false">``</object>
+    </bottomobjects>
+    <faceobjects>
+      <object name="terrain\underbrush\underbrush_jungle_ivy" minedgedist="0.0" maxedgedist="0.5" chance="0.8" yawjitter="30" yawoffset="180" orienttocliff="true" minscale="0.05" maxscale="0.15" bottomdist="0.5" topdist="0.3">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_vineHang" minedgedist="0.1" maxedgedist="0.3" chance="0.3" yawjitter="0" yawoffset="0" orienttocliff="true" minscale="0.1" maxscale="0.3" bottomdist="0.5" topdist="1.15">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_vineDangle" minedgedist="0.0" maxedgedist="0.3" chance="2.0" yawjitter="45" yawoffset="0" orienttocliff="true" minscale="0.1" maxscale="0.2" bottomdist="0.0" topdist="4.0">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_vineDangle_noLeaf" minedgedist="0.0" maxedgedist="0.3" chance="2.0" yawjitter="45" yawoffset="0" orienttocliff="true" minscale="0.1" maxscale="0.2" bottomdist="0.0" topdist="4.0">
+      </object>
+    </faceobjects>
+    <parameters>
+      <displacementamount>0.150000</displacementamount>
+      <shapecurve>1v{-0.038,1.130|0.032,0.863|-0.003,0.997|27170}{-0.039,0.891|0.050,0.648|0.005,0.769|27413}{0.166,0.583|0.249,0.551|0.207,0.567|20117}{0.330,0.248|0.561,0.372|0.446,0.310|23438}{0.589,0.260|0.926,0.214|0.757,0.237|13333}{0.960,0.165|0.992,0.083|0.976,0.124|32328}{0.950,0.066|1.029,-0.059|0.989,0.004|2204}</shapecurve>
+      <displacementmedianvalue>0.216000</displacementmedianvalue>
+      <triplanarscale>0.080000</triplanarscale>
+      <normalstrength>1.067000</normalstrength>
+      <secondarynormalstrength>0.000000</secondarynormalstrength>
+      <terrainblendtop>0.083000</terrainblendtop>
+      <terrainblendbottom>0.083000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\himalaya\himalaya_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\himalaya\himalaya_cliff_normal_lrg</normals>
+      <secondarynormals>terrain\cliffs\default\cliff_missing_normal</secondarynormals>
+      <heightmap>terrain\cliffs\himalaya\himalaya_cliff_height</heightmap>
+      <mask>terrain\cliffs\himalaya\himalaya_cliff_masks</mask>
+      <top>lava\volcano_borneo</top>
+      <topedge>lava\volcano_borneo</topedge>
+      <side>lava\volcano_borneo</side>
+      <edge>lava\volcano_borneo</edge>
+      <bottomedge>lava\volcano_borneo</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP Borneo Grass" blockland="1" blockwater="0" iconname="ui\editor\cliffSanora">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_01" minedgedist="1.5" maxedgedist="2.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_02" minedgedist="1.5" maxedgedist="2.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_03" minedgedist="1.5" maxedgedist="2.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_04" minedgedist="1.5" maxedgedist="2.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_05" minedgedist="2.3" maxedgedist="2.6" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_06" minedgedist="1.5" maxedgedist="2.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_07" minedgedist="1.8" maxedgedist="2.3" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_08" minedgedist="1.8" maxedgedist="2.3" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_09" minedgedist="1.8" maxedgedist="2.3" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_10" minedgedist="1.8" maxedgedist="2.3" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_11" minedgedist="1.8" maxedgedist="2.3" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_grass_01" minedgedist="2.0" maxedgedist="2.5" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_rock_02" minedgedist="1.5" maxedgedist="2.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_rock_03" minedgedist="1.5" maxedgedist="2.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_rock_04" minedgedist="1.5" maxedgedist="2.0" chance="0.005" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_01" minedgedist="2.5" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_02" minedgedist="2.5" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_03" minedgedist="2.5" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_04" minedgedist="2.5" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_05" minedgedist="2.5" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_rock_02" minedgedist="1.5" maxedgedist="3.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_rock_03" minedgedist="1.5" maxedgedist="3.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_rock_04" minedgedist="1.5" maxedgedist="3.0" chance="0.005" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.295000</displacementamount>
+      <shapecurve>1v{-0.006,1.161|0.012,0.855|0.003,1.008|8918}{0.011,0.795|0.119,0.457|0.065,0.626|25906}{0.132,0.492|0.169,0.293|0.150,0.392|19415}{0.438,0.371|0.612,0.516|0.525,0.444|27413}{0.677,0.395|0.750,0.757|0.713,0.576|25725}{0.802,0.753|0.965,0.698|0.884,0.726|23438}{0.990,0.715|1.004,0.527|0.997,0.621|27913}</shapecurve>
+      <displacementmedianvalue>0.335000</displacementmedianvalue>
+      <triplanarscale>0.080000</triplanarscale>
+      <normalstrength>1.000000</normalstrength>
+      <secondarynormalstrength>0.295000</secondarynormalstrength>
+      <terrainblendtop>0.047000</terrainblendtop>
+      <terrainblendbottom>0.028000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\sonora_cliff\sonora_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\sonora_cliff\sonora_cliff_normal_lrg</normals>
+      <secondarynormals>terrain\cliffs\default\cliff_missing_normal</secondarynormals>
+      <heightmap>terrain\cliffs\sonora_cliff\sonora_cliff_height</heightmap>
+      <mask>terrain\cliffs\sonora_cliff\sonora_cliff_masks</mask>
+      <top>borneo\ground_grass2_borneo</top>
+      <topedge>borneo\ground_grass1_borneo</topedge>
+      <side>borneo\ground_grass2_borneo</side>
+      <edge>borneo\ground_grass2_borneo</edge>
+      <bottomedge>borneo\ground_grass1_borneo</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="Tasmania Low" blockland="1" blockwater="0" iconname="ui\editor\cliffceylon">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\underbrush\underbrush_forest_fern1" minedgedist="0.0" maxedgedist="2.5" minscale="0.6" maxscale="1.2" chance="0.3" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="0.75" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\underbrush\underbrush_forest_fern1" minedgedist="0.0" maxedgedist="2.5" minscale="0.6" maxscale="1.5" chance="0.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.3" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush3" minedgedist="1.25" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_group_c_pat" minedgedist="1.5" maxedgedist="3.0" minscale="0.5" maxscale="1.0" chance="0.15" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_group_e_pat" minedgedist="1.5" maxedgedist="3.0" minscale="0.5" maxscale="1.0" chance="0.15" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="2.0" maxedgedist="3.5" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="2.0" maxedgedist="3.5" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.150000</displacementamount>
+      <shapecurve>1v{-0.038,1.130|0.032,0.863|-0.003,0.997|27170}{-0.039,0.891|0.050,0.648|0.005,0.769|27413}{0.166,0.583|0.249,0.551|0.207,0.567|20117}{0.330,0.248|0.561,0.372|0.446,0.310|23438}{0.589,0.260|0.926,0.214|0.757,0.237|13333}{0.960,0.165|0.992,0.083|0.976,0.124|32328}{0.950,0.066|1.029,-0.059|0.989,0.004|2204}</shapecurve>
+      <displacementmedianvalue>0.216000</displacementmedianvalue>
+      <triplanarscale>0.080000</triplanarscale>
+      <normalstrength>1.067000</normalstrength>
+      <secondarynormalstrength>0.000000</secondarynormalstrength>
+      <terrainblendtop>0.083000</terrainblendtop>
+      <terrainblendbottom>0.083000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\himalaya\himalaya_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\himalaya\himalaya_cliff_normal_lrg</normals>
+      <secondarynormals>terrain\cliffs\default\cliff_missing_normal</secondarynormals>
+      <heightmap>terrain\cliffs\himalaya\himalaya_cliff_height</heightmap>
+      <mask>terrain\cliffs\himalaya\himalaya_cliff_masks</mask>
+      <top>new_england\cliff_inland_top_ne</top>
+      <topedge>new_england\cliff_inland_top_ne</topedge>
+      <side>new_england\cliff_inland_top_ne</side>
+      <edge>new_england\cliff_inland_top_ne</edge>
+      <bottomedge>new_england\cliff_inland_top_ne</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="Tasmania Medium" blockland="1" blockwater="0" iconname="ui\editor\cliffceylon">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\underbrush\underbrush_forest_fern1" minedgedist="0.0" maxedgedist="2.5" minscale="0.6" maxscale="1.2" chance="0.3" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="0.75" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\underbrush\underbrush_forest_fern1" minedgedist="0.0" maxedgedist="2.5" minscale="0.6" maxscale="1.5" chance="0.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.3" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush3" minedgedist="1.25" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_group_c_pat" minedgedist="1.5" maxedgedist="3.0" minscale="0.5" maxscale="1.0" chance="0.15" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_group_e_pat" minedgedist="1.5" maxedgedist="3.0" minscale="0.5" maxscale="1.0" chance="0.15" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="2.0" maxedgedist="3.5" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="2.0" maxedgedist="3.5" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.150000</displacementamount>
+      <shapecurve>1v{-0.038,1.130|0.032,0.863|-0.003,0.997|27170}{-0.039,0.891|0.050,0.648|0.005,0.769|27413}{0.166,0.583|0.249,0.551|0.207,0.567|20117}{0.330,0.248|0.561,0.372|0.446,0.310|23438}{0.589,0.260|0.926,0.214|0.757,0.237|13333}{0.960,0.165|0.992,0.083|0.976,0.124|32328}{0.950,0.066|1.029,-0.059|0.989,0.004|2204}</shapecurve>
+      <displacementmedianvalue>0.216000</displacementmedianvalue>
+      <triplanarscale>0.080000</triplanarscale>
+      <normalstrength>1.067000</normalstrength>
+      <secondarynormalstrength>0.000000</secondarynormalstrength>
+      <terrainblendtop>0.083000</terrainblendtop>
+      <terrainblendbottom>0.083000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\himalaya\himalaya_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\himalaya\himalaya_cliff_normal_lrg</normals>
+      <secondarynormals>terrain\cliffs\default\cliff_missing_normal</secondarynormals>
+      <heightmap>terrain\cliffs\himalaya\himalaya_cliff_height</heightmap>
+      <mask>terrain\cliffs\himalaya\himalaya_cliff_masks</mask>
+      <top>patagonia\ground_dirt1_pat</top>
+      <topedge>patagonia\ground_dirt1_pat</topedge>
+      <side>apatagonia\ground_dirt1_pat</side>
+      <edge>patagonia\ground_dirt1_pat</edge>
+      <bottomedge>new_england\cliff_inland_top_ne</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="Tasmania High" blockland="1" blockwater="0" iconname="ui\editor\cliffceylon">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\underbrush\underbrush_forest_fern1" minedgedist="0.0" maxedgedist="2.5" minscale="0.6" maxscale="1.2" chance="0.3" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="0.75" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\underbrush\underbrush_forest_fern1" minedgedist="0.0" maxedgedist="2.5" minscale="0.6" maxscale="1.5" chance="0.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="1.0" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.3" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush3" minedgedist="1.25" maxedgedist="5.0" minscale="0.5" maxscale="1.0" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_group_c_pat" minedgedist="1.5" maxedgedist="3.0" minscale="0.5" maxscale="1.0" chance="0.15" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_group_e_pat" minedgedist="1.5" maxedgedist="3.0" minscale="0.5" maxscale="1.0" chance="0.15" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="2.0" maxedgedist="3.5" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="2.0" maxedgedist="3.5" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.150000</displacementamount>
+      <shapecurve>1v{-0.038,1.130|0.032,0.863|-0.003,0.997|27170}{-0.039,0.891|0.050,0.648|0.005,0.769|27413}{0.166,0.583|0.249,0.551|0.207,0.567|20117}{0.330,0.248|0.561,0.372|0.446,0.310|23438}{0.589,0.260|0.926,0.214|0.757,0.237|13333}{0.960,0.165|0.992,0.083|0.976,0.124|32328}{0.950,0.066|1.029,-0.059|0.989,0.004|2204}</shapecurve>
+      <displacementmedianvalue>0.216000</displacementmedianvalue>
+      <triplanarscale>0.080000</triplanarscale>
+      <normalstrength>1.067000</normalstrength>
+      <secondarynormalstrength>0.000000</secondarynormalstrength>
+      <terrainblendtop>0.083000</terrainblendtop>
+      <terrainblendbottom>0.083000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\himalaya\himalaya_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\himalaya\himalaya_cliff_normal_lrg</normals>
+      <secondarynormals>terrain\cliffs\default\cliff_missing_normal</secondarynormals>
+      <heightmap>terrain\cliffs\himalaya\himalaya_cliff_height</heightmap>
+      <mask>terrain\cliffs\himalaya\himalaya_cliff_masks</mask>
+      <top>patagonia\ground_dirt3_pat</top>
+      <topedge>patagonia\ground_dirt3_pat</topedge>
+      <side>patagonia\ground_dirt3_pat</side>
+      <edge>patagonia\ground_dirt3_pat</edge>
+      <bottomedge>patagonia\ground_dirt1_pat</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP Tasmania Coast" blockland="1" blockwater="0" iconname="ui\editor\cliffSanora">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\underbrush\underbrush_lake_bush1" minedgedist="0.5" maxedgedist="3.5" chance="0.15" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_lake_bush2" minedgedist="0.5" maxedgedist="3.5" chance="0.15" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush1" minedgedist="0.5" maxedgedist="4.5" chance="0.15" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="0.5" maxedgedist="4.5" chance="0.15" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush3" minedgedist="0.5" maxedgedist="4.5" chance="0.2" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant12" minedgedist="0.5" maxedgedist="1.5" chance="0.05" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant8" minedgedist="0.5" maxedgedist="1.5" chance="0.05" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant7" minedgedist="0.5" maxedgedist="1.5" chance="0.05" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant1" minedgedist="0.25" maxedgedist="0.5" chance="0.05" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant2" minedgedist="0.25" maxedgedist="0.5" chance="0.05" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_jungle_plant3" minedgedist="0.25" maxedgedist="0.5" chance="0.05" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_yellow_riv_bush_02" minedgedist="1.0" maxedgedist="3.5" chance="0.25" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\saguenay\underbrush09" minedgedist="0.5" maxedgedist="3.5" chance="0.02" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\saguenay\underbrush03" minedgedist="0.5" maxedgedist="3.5" chance="0.02" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\underbrush\underbrush_desert_rock2" minedgedist="2.0" maxedgedist="3.0" chance="0.25" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock4" minedgedist="2.0" maxedgedist="2.5" chance="0.25" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock5" minedgedist="2.0" maxedgedist="3.5" chance="0.25" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock3" minedgedist="2.0" maxedgedist="4.5" chance="0.25" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock1" minedgedist="2.0" maxedgedist="3.5" chance="0.25" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush5" minedgedist="1.0" maxedgedist="1.5" chance="0.1" minscale="0.75" maxscale="1.3" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_bush6" minedgedist="1.0" maxedgedist="1.5" chance="0.1" minscale="0.75" maxscale="1.3" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush1" minedgedist="1.5" maxedgedist="2.0" chance="0.3" minscale="1.0" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="1.5" maxedgedist="2.0" chance="0.15" minscale="1.0" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush3" minedgedist="1.5" maxedgedist="2.0" chance="0.3" minscale="1.0" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\saguenay\underbrush09" minedgedist="2" maxedgedist="4.5" chance="0.05" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\saguenay\underbrush03" minedgedist="2" maxedgedist="4.5" chance="0.05" minscale="0.75" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_yellow_riv_grass_01" minedgedist="1.0" maxedgedist="3.5" chance="0.25" minscale="0.75" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_grass1" minedgedist="1" maxedgedist="5.0" chance="0.02" minscale="1.0" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_grass2" minedgedist="1" maxedgedist="5.0" chance="0.03" minscale="1.0" maxscale="1.2" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.150000</displacementamount>
+      <shapecurve>1v{-0.038,1.130|0.032,0.863|-0.003,0.997|27170}{-0.039,0.891|0.050,0.648|0.005,0.769|27413}{0.166,0.583|0.249,0.551|0.207,0.567|20117}{0.330,0.248|0.561,0.372|0.446,0.310|23438}{0.589,0.260|0.926,0.214|0.757,0.237|13333}{0.960,0.165|0.992,0.083|0.976,0.124|32328}{0.950,0.066|1.029,-0.059|0.989,0.004|2204}</shapecurve>
+      <displacementmedianvalue>0.216000</displacementmedianvalue>
+      <triplanarscale>0.080000</triplanarscale>
+      <normalstrength>1.067000</normalstrength>
+      <secondarynormalstrength>0.000000</secondarynormalstrength>
+      <terrainblendtop>0.083000</terrainblendtop>
+      <terrainblendbottom>0.083000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\himalaya\himalaya_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\himalaya\himalaya_cliff_normal_lrg</normals>
+      <secondarynormals>terrain\cliffs\default\cliff_missing_normal</secondarynormals>
+      <heightmap>terrain\cliffs\himalaya\himalaya_cliff_height</heightmap>
+      <mask>terrain\cliffs\himalaya\himalaya_cliff_masks</mask>
+      <top>california\ground_clifftop_cal</top>
+      <topedge>california\ground_clifftop_cal</topedge>
+      <side>california\fakecalifgrassmix2_cal</side>
+      <edge>california\fakecalifgrassmix2_cal</edge>
+      <bottomedge>california\groundforest2_cal</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP Tasmania Coast 2" blockland="1" blockwater="0" iconname="ui\editor\cliffSanora">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\underbrush\underbrush_forest_bush1" minedgedist="0.5" maxedgedist="5.0" chance="0.25" minscale="1.0" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="0.5" maxedgedist="5.0" chance="0.25" minscale="1.0" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush3" minedgedist="0.5" maxedgedist="5.0" chance="0.25" minscale="1.0" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_grass1" minedgedist="1" maxedgedist="5.0" chance="0.02" minscale="1.0" maxscale="1.2" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_grass2" minedgedist="1" maxedgedist="5.0" chance="0.03" minscale="1.0" maxscale="1.2" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\underbrush\underbrush_desert_rock2" minedgedist="1.0" maxedgedist="2.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock4" minedgedist="1.0" maxedgedist="2.5" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_desert_rock6" minedgedist="1.0" maxedgedist="1.5" chance="0.05" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.150000</displacementamount>
+      <shapecurve>1v{-0.038,1.130|0.032,0.863|-0.003,0.997|27170}{-0.039,0.891|0.050,0.648|0.005,0.769|27413}{0.166,0.583|0.249,0.551|0.207,0.567|20117}{0.330,0.248|0.561,0.372|0.446,0.310|23438}{0.589,0.260|0.926,0.214|0.757,0.237|13333}{0.960,0.165|0.992,0.083|0.976,0.124|32328}{0.950,0.066|1.029,-0.059|0.989,0.004|2204}</shapecurve>
+      <displacementmedianvalue>0.216000</displacementmedianvalue>
+      <triplanarscale>0.080000</triplanarscale>
+      <normalstrength>1.067000</normalstrength>
+      <secondarynormalstrength>0.000000</secondarynormalstrength>
+      <terrainblendtop>0.083000</terrainblendtop>
+      <terrainblendbottom>0.083000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\himalaya\himalaya_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\himalaya\himalaya_cliff_normal_lrg</normals>
+      <secondarynormals>terrain\cliffs\default\cliff_missing_normal</secondarynormals>
+      <heightmap>terrain\cliffs\himalaya\himalaya_cliff_height</heightmap>
+      <mask>terrain\cliffs\himalaya\himalaya_cliff_masks</mask>
+      <top>california\groundshore3c_cal</top>
+      <topedge>california\groundshore3b_cal</topedge>
+      <side>california\groundshore2_cal</side>
+      <edge>california\groundshore2_cal</edge>
+      <bottomedge>california\groundshore2_cal</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP Australia Rainforest" blockland="1" blockwater="0" iconname="ui\editor\clifftexas">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_01" minedgedist="1.5" maxedgedist="2.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_02" minedgedist="1.5" maxedgedist="2.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_03" minedgedist="1.5" maxedgedist="2.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_04" minedgedist="1.5" maxedgedist="2.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_05" minedgedist="2.3" maxedgedist="2.6" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_06" minedgedist="1.5" maxedgedist="2.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_07" minedgedist="1.8" maxedgedist="2.3" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_08" minedgedist="1.8" maxedgedist="2.3" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_09" minedgedist="1.8" maxedgedist="2.3" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_10" minedgedist="1.8" maxedgedist="2.3" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_11" minedgedist="1.8" maxedgedist="2.3" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_grass_01" minedgedist="2.0" maxedgedist="2.5" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_rock_02" minedgedist="1.5" maxedgedist="2.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_rock_03" minedgedist="1.5" maxedgedist="2.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_rock_04" minedgedist="1.5" maxedgedist="2.0" chance="0.005" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_01" minedgedist="2.5" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_02" minedgedist="2.5" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_03" minedgedist="2.5" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_04" minedgedist="2.5" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_underbrush_05" minedgedist="2.5" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_rock_02" minedgedist="1.5" maxedgedist="3.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_rock_03" minedgedist="1.5" maxedgedist="3.0" chance="0.005" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_borneo_rock_04" minedgedist="1.5" maxedgedist="3.0" chance="0.005" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.115000</displacementamount>
+      <shapecurve>1v{-0.110,1.297|0.058,0.711|-0.026,1.004|27151}{-0.052,0.743|0.024,0.587|-0.014,0.665|21077}{0.201,0.393|0.354,0.415|0.277,0.404|30237}{0.268,0.281|0.309,0.190|0.288,0.235|19890}{0.422,0.018|0.459,0.021|0.441,0.020|17296}{0.473,0.042|0.530,0.060|0.502,0.051|10652}{0.567,0.069|0.607,0.068|0.587,0.069|23821}{0.626,0.131|0.699,0.130|0.663,0.130|7376}{0.752,0.206|0.812,0.192|0.782,0.199|24384}{0.801,0.376|0.966,0.261|0.883,0.319|1089}{0.977,0.312|1.057,0.023|1.017,0.168|20136}</shapecurve>
+      <displacementmedianvalue>0.463000</displacementmedianvalue>
+      <triplanarscale>0.055000</triplanarscale>
+      <normalstrength>0.428000</normalstrength>
+      <secondarynormalstrength>0.132000</secondarynormalstrength>
+      <terrainblendtop>0.053000</terrainblendtop>
+      <terrainblendbottom>0.129000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\texas\texas_cliffs_basecolor</basecolor>
+      <normals>terrain\cliffs\texas\texas_cliffs_normal</normals>
+      <secondarynormals>terrain\cliffs\default\cliff_missing_normal</secondarynormals>
+      <heightmap>terrain\cliffs\texas\texas_cliffs_height</heightmap>
+      <mask>terrain\cliffs\texas\texas_cliffs_masks</mask>
+      <top>Africa\ground3_afr</top>
+      <topedge>Africa\ground3_afr</topedge>
+      <side>Africa\ground2_afr</side>
+      <edge>Africa\ground4_afr</edge>
+      <bottomedge>Africa\ground3_afr</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP City" blockland="1" blockwater="0" iconname="ui\editor\cliffnewenglandinland">
+    <modelset>Default</modelset>
+    <parameters>
+      <displacementamount>0.000001</displacementamount>
+      <displacementmedianvalue>0.000001</displacementmedianvalue>
+      <triplanarscale>0.120000</triplanarscale>
+      <normalstrength>3.000000</normalstrength>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\city\city_cliffs_basecolor</basecolor>
+      <normals>terrain\cliffs\city\city_cliffs_normals</normals>
+      <heightmap>terrain\cliffs\city\city_cliffs_heights</heightmap>
+      <mask>terrain\cliffs\city\city_cliffs_masks</mask>
+      <top>city\ground1_city_street_ground</top>
+      <topedge>city\ground1_city_street_ground</topedge>
+      <side>city\ground1_city_street_ground</side>
+      <edge>city\ground1_city_street_ground</edge>
+      <bottomedge>city\ground1_city_street_ground</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP Bridge" blockland="1" blockwater="0" iconname="ui\editor\cliffnewenglandinland">
+    <modelset>Default</modelset>
+    <parameters>
+      <displacementamount>0.000000</displacementamount>
+      <displacementmedianvalue>0.000000</displacementmedianvalue>
+      <triplanarscale>0.000000</triplanarscale>
+      <normalstrength>0.000000</normalstrength>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\city\city_cliffs_basecolor</basecolor>
+      <normals>terrain\cliffs\city\city_cliffs_normals</normals>
+      <heightmap>terrain\cliffs\city\city_cliffs_heights</heightmap>
+      <mask>terrain\cliffs\city\city_cliffs_masks</mask>
+      <top>city\ground1_city_street_ground</top>
+      <topedge>city\ground1_city_street_ground</topedge>
+      <side>city\ground1_city_street_ground</side>
+      <edge>city\ground1_city_street_ground</edge>
+      <bottomedge>city\ground1_city_street_ground</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP City Italian" blockland="1" blockwater="0" iconname="ui\editor\cliffnewenglandinland">
+    <modelset>Default</modelset>
+    <parameters>
+      <displacementamount>0.000001</displacementamount>
+      <displacementmedianvalue>0.000001</displacementmedianvalue>
+      <triplanarscale>0.120000</triplanarscale>
+      <normalstrength>3.000000</normalstrength>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\city\city_cliffs_basecolor</basecolor>
+      <normals>terrain\cliffs\city\city_cliffs_normals</normals>
+      <heightmap>terrain\cliffs\city\city_cliffs_heights</heightmap>
+      <mask>terrain\cliffs\city\city_cliffs_masks</mask>
+      <top>props\east_colony2</top>
+      <topedge>props\east_colony2</topedge>
+      <side>props\east_colony2</side>
+      <edge>props\east_colony2</edge>
+      <bottomedge>props\east_colony2</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP City Aztec" blockland="1" blockwater="0" iconname="ui\editor\cliffnewenglandinland">
+    <modelset>Default</modelset>
+    <parameters>
+      <displacementamount>0.000001</displacementamount>
+      <displacementmedianvalue>0.000001</displacementmedianvalue>
+      <triplanarscale>0.120000</triplanarscale>
+      <normalstrength>3.000000</normalstrength>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\city\city_cliffs_basecolor</basecolor>
+      <normals>terrain\cliffs\city\city_cliffs_normals</normals>
+      <heightmap>terrain\cliffs\city\city_cliffs_heights</heightmap>
+      <mask>terrain\cliffs\city\city_cliffs_masks</mask>
+      <top>city\ground1_cob_dark</top>
+      <topedge>city\ground1_cob_dark</topedge>
+      <side>props\east_colony2</side>
+      <edge>city\ground1_cob_dark</edge>
+      <bottomedge>city\ground1_cob_dark</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP Elbe Cliff" blockland="1" blockwater="0" iconname="ui\editor\cliffCaribbean">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\underbrush\underbrush_forest_bush1" minedgedist="0.5" maxedgedist="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="0.5" maxedgedist="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush1" minedgedist="0.2" maxedgedist="1.0" chance="0.1" minscale="0.5" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="0.2" maxedgedist="1.0" chance="0.1" minscale="0.5" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_grass1" minedgedist="0.5" maxedgedist="2.0" chance="0.02" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_grass2" minedgedist="0.5" maxedgedist="2.0" chance="0.03" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_a_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_b_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_c_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_d_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\new_england\cliff_rock_a_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_b_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_c_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_d_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <faceobjects>
+    </faceobjects>
+    <parameters>
+      <displacementamount>0.160000</displacementamount>
+      <shapecurve>1v{-0.127,1.218|0.062,0.578|-0.032,0.898|23309}{0.044,0.628|0.089,0.441|0.067,0.535|27413}{0.141,0.358|0.277,0.282|0.209,0.320|7774}{0.407,0.046|0.527,0.060|0.467,0.053|28377}{0.620,0.102|0.765,0.273|0.692,0.188|28748}{0.766,0.277|0.796,0.480|0.781,0.379|23438}{0.701,0.691|1.076,0.746|0.889,0.719|15592}{0.914,0.384|0.976,0.632|0.945,0.508|18700}</shapecurve>
+      <displacementmedianvalue>0.684000</displacementmedianvalue>
+      <triplanarscale>0.119000</triplanarscale>
+      <normalstrength>1.566000</normalstrength>
+      <secondarynormalstrength>3.932000</secondarynormalstrength>
+      <terrainblendtop>0.094000</terrainblendtop>
+      <terrainblendbottom>0.061000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\new_england_inland\new_england_inland_cliffs_basecolor</basecolor>
+      <normals>terrain\cliffs\new_england_inland\new_england_inland_cliffs_normals</normals>
+      <secondarynormals>terrain\cliffs\default\cliff_missing_normal</secondarynormals>
+      <heightmap>terrain\cliffs\new_england_inland\new_england_inland_cliffs_height</heightmap>
+      <mask>terrain\cliffs\new_england_inland\new_england_inland_cliffs_masks</mask>
+      <top>great_plains\ground3_gp</top>
+      <topedge>new_england\cliff_side_ne</topedge>
+      <side>new_england\cliff_side_ne</side>
+      <edge>new_england\cliff_side_ne</edge>
+      <bottomedge>new_england\cliff_side_ne</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP Iceland High" blockland="1" blockwater="0" iconname="ui\editor\cliffHimalayas">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\patagonia\underbrush_rock_a_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="0.75" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_e_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks5_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks4_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks2_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks3_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\patagonia\underbrush_rock_a_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.25" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_e_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks5_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks4_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks2_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks3_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.150000</displacementamount>
+      <shapecurve>1v{-0.038,1.130|0.032,0.863|-0.003,0.997|27170}{-0.039,0.891|0.050,0.648|0.005,0.769|27413}{0.166,0.583|0.249,0.551|0.207,0.567|20117}{0.330,0.248|0.561,0.372|0.446,0.310|23438}{0.589,0.260|0.926,0.214|0.757,0.237|13333}{0.960,0.165|0.992,0.083|0.976,0.124|32328}{0.950,0.066|1.029,-0.059|0.989,0.004|2204}</shapecurve>
+      <displacementmedianvalue>0.216000</displacementmedianvalue>
+      <triplanarscale>0.080000</triplanarscale>
+      <normalstrength>1.067000</normalstrength>
+      <secondarynormalstrength>0.000000</secondarynormalstrength>
+      <terrainblendtop>0.083000</terrainblendtop>
+      <terrainblendbottom>0.083000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\himalaya\himalaya_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\himalaya\himalaya_cliff_normal_lrg</normals>
+      <secondarynormals>terrain\cliffs\default\cliff_missing_normal</secondarynormals>
+      <heightmap>terrain\cliffs\himalaya\himalaya_cliff_height</heightmap>
+      <mask>terrain\cliffs\himalaya\himalaya_cliff_masks</mask>
+      <top>lava\volcano_dirt</top>
+      <topedge>lava\volcano_dirt</topedge>
+      <side>lava\volcano_dirt</side>
+      <edge>lava\volcano_dirt</edge>
+      <bottomedge>lava\volcano_snow</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP Iceland Medium" blockland="1" blockwater="0" iconname="ui\editor\cliffHimalayas">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\patagonia\underbrush_rock_a_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="0.75" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_e_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks5_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks4_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks2_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks3_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\patagonia\underbrush_rock_a_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.25" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_e_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks5_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks4_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks2_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks3_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.150000</displacementamount>
+      <shapecurve>1v{-0.038,1.130|0.032,0.863|-0.003,0.997|27170}{-0.039,0.891|0.050,0.648|0.005,0.769|27413}{0.166,0.583|0.249,0.551|0.207,0.567|20117}{0.330,0.248|0.561,0.372|0.446,0.310|23438}{0.589,0.260|0.926,0.214|0.757,0.237|13333}{0.960,0.165|0.992,0.083|0.976,0.124|32328}{0.950,0.066|1.029,-0.059|0.989,0.004|2204}</shapecurve>
+      <displacementmedianvalue>0.216000</displacementmedianvalue>
+      <triplanarscale>0.080000</triplanarscale>
+      <normalstrength>1.067000</normalstrength>
+      <secondarynormalstrength>0.000000</secondarynormalstrength>
+      <terrainblendtop>0.083000</terrainblendtop>
+      <terrainblendbottom>0.083000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\himalaya\himalaya_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\himalaya\himalaya_cliff_normal_lrg</normals>
+      <secondarynormals>terrain\cliffs\default\cliff_missing_normal</secondarynormals>
+      <heightmap>terrain\cliffs\himalaya\himalaya_cliff_height</heightmap>
+      <mask>terrain\cliffs\himalaya\himalaya_cliff_masks</mask>
+      <top>lava\volcano_snow</top>
+      <topedge>lava\volcano_snow</topedge>
+      <side>lava\volcano_snow</side>
+      <edge>lava\volcano_snow</edge>
+      <bottomedge>lava\volcano_snow</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP Iceland Low" blockland="1" blockwater="0" iconname="ui\editor\cliffHimalayas">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\patagonia\underbrush_rock_a_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="0.75" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_e_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks5_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks4_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks2_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks3_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\patagonia\underbrush_rock_a_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.25" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_e_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks5_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks4_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks2_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks3_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_himal_rock2" minedgedist="1.5" maxedgedist="3.0" chance="0.07" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_himal_rock3" minedgedist="1.5" maxedgedist="3.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_himal_rock5" minedgedist="1.5" maxedgedist="3.0" chance="0.04" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_himal_rock6" minedgedist="1.5" maxedgedist="3.0" chance="0.08" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_himal_bush1" minedgedist="1.5" maxedgedist="5.0" chance="0.03" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_himal_bush2" minedgedist="1.5" maxedgedist="5.0" chance="0.02" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_himal_bush3" minedgedist="1.5" maxedgedist="5.0" chance="0.02" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_himal_rock1" minedgedist="1.5" maxedgedist="5.0" chance="0.07" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <parameters>
+      <displacementamount>0.150000</displacementamount>
+      <shapecurve>1v{-0.038,1.130|0.032,0.863|-0.003,0.997|27170}{-0.039,0.891|0.050,0.648|0.005,0.769|27413}{0.166,0.583|0.249,0.551|0.207,0.567|20117}{0.330,0.248|0.561,0.372|0.446,0.310|23438}{0.589,0.260|0.926,0.214|0.757,0.237|13333}{0.960,0.165|0.992,0.083|0.976,0.124|32328}{0.950,0.066|1.029,-0.059|0.989,0.004|2204}</shapecurve>
+      <displacementmedianvalue>0.216000</displacementmedianvalue>
+      <triplanarscale>0.080000</triplanarscale>
+      <normalstrength>1.067000</normalstrength>
+      <secondarynormalstrength>0.000000</secondarynormalstrength>
+      <terrainblendtop>0.083000</terrainblendtop>
+      <terrainblendbottom>0.083000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\himalaya\himalaya_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\himalaya\himalaya_cliff_normal_lrg</normals>
+      <secondarynormals>terrain\cliffs\default\cliff_missing_normal</secondarynormals>
+      <heightmap>terrain\cliffs\himalaya\himalaya_cliff_height</heightmap>
+      <mask>terrain\cliffs\himalaya\himalaya_cliff_masks</mask>
+      <top>lava\volcano_snow</top>
+      <topedge>lava\volcano_snow</topedge>
+      <side>araucania\ground_snow4_ara</side>
+      <edge>araucania\ground_snow4_ara</edge>
+      <bottomedge>araucania\ground_snow4_ara</bottomedge>
+    </textures>
+  </cliff>
+  <cliff name="ZP Iceland Fjord" blockland="1" blockwater="0" iconname="ui\editor\cliffHimalayas">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\patagonia\underbrush_rock_a_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_b_pat" minedgedist="0.75" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_e_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\patagonia\underbrush_rock_d_pat" minedgedist="1.0" maxedgedist="1.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks5_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks4_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks2_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\shorelinerocks3_ne" minedgedist="1.0" maxedgedist="2.0" minscale="0.5" maxscale="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </topobjects>
+    <parameters>
+      <displacementamount>0.150000</displacementamount>
+      <shapecurve>1v{-0.038,1.130|0.032,0.863|-0.003,0.997|27170}{-0.039,0.891|0.050,0.648|0.005,0.769|27413}{0.166,0.583|0.249,0.551|0.207,0.567|20117}{0.330,0.248|0.561,0.372|0.446,0.310|23438}{0.589,0.260|0.926,0.214|0.757,0.237|13333}{0.960,0.165|0.992,0.083|0.976,0.124|32328}{0.950,0.066|1.029,-0.059|0.989,0.004|2204}</shapecurve>
+      <displacementmedianvalue>0.216000</displacementmedianvalue>
+      <triplanarscale>0.080000</triplanarscale>
+      <normalstrength>1.067000</normalstrength>
+      <secondarynormalstrength>0.000000</secondarynormalstrength>
+      <terrainblendtop>0.083000</terrainblendtop>
+      <terrainblendbottom>0.083000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\himalaya\himalaya_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\himalaya\himalaya_cliff_normal_lrg</normals>
+      <secondarynormals>terrain\cliffs\default\cliff_missing_normal</secondarynormals>
+      <heightmap>terrain\cliffs\himalaya\himalaya_cliff_height</heightmap>
+      <mask>terrain\cliffs\himalaya\himalaya_cliff_masks</mask>
+      <top>yukon\ground1_yuk</top>
+      <topedge>yukon\ground1_yuk</topedge>
+      <side>rockies\groundsnow1_roc</side>
+      <edge>rockies\groundsnow1_roc</edge>
+      <bottomedge>rockies\groundsnow1_roc</bottomedge>
+    </textures>
+  </cliff>
 </cliffs>

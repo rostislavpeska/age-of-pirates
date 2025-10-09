@@ -1,0 +1,45 @@
+<tactics>
+  <action>
+    <name stringid="69161">AutoConvert</name>
+    <type>AutoConvert</type>
+    <maxrange>12.0</maxrange>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="43294">AutoGatherCoin</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="43295">AutoGatherFood</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="43296">AutoGatherWood</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherFoodTeam</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+    <autogatherteam>1</autogatherteam>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherWoodTeam</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+    <autogatherteam>1</autogatherteam>
+  </action>
+  <action>
+    <name stringid="43019">AutoGatherCoinTeam</name>
+    <type>AutoGather</type>
+    <persistent>1</persistent>
+    <autogatherteam>1</autogatherteam>
+  </action>
+  <tactic>Normal<protounitcommand>Tactic10</protounitcommand><action>AutoConvert</action><action>AutoGatherCoin</action><action>AutoGatherFoodTeam</action><action>AutoGatherWoodTeam</action><action>AutoGatherCoinTeam</action><transition><tactic>Food</tactic><length>2</length><exit>1</exit></transition><transition><tactic>Wood</tactic><length>2</length><exit>1</exit></transition><transition><tactic>Cannon</tactic><length>2</length><exit>1</exit></transition></tactic>
+  <tactic>Food<protounitcommand>Tactic11</protounitcommand><action>AutoConvert</action><action>AutoGatherFood</action><action>AutoGatherFoodTeam</action><action>AutoGatherWoodTeam</action><action>AutoGatherCoinTeam</action><transition><tactic>Normal</tactic><length>2</length><exit>1</exit></transition><transition><tactic>Wood</tactic><length>2</length><exit>1</exit></transition><transition><tactic>Cannon</tactic><length>2</length><exit>1</exit></transition></tactic>
+  <tactic>Wood<protounitcommand>Tactic12</protounitcommand><action>AutoConvert</action><action>AutoGatherWood</action><action>AutoGatherFoodTeam</action><action>AutoGatherWoodTeam</action><action>AutoGatherCoinTeam</action><transition><tactic>Normal</tactic><length>2</length><exit>1</exit></transition><transition><tactic>Food</tactic><length>2</length><exit>1</exit></transition><transition><tactic>Cannon</tactic><length>2</length><exit>1</exit></transition></tactic>
+  <tactic>Cannon<protounitcommand>Tactic13</protounitcommand><action>AutoConvert</action><action>SpawnCannon</action><action>SpawnRocket</action><action>SpawnBombard</action><action>SpawnPapalBombard</action><action>AutoGatherFoodTeam</action><action>AutoGatherWoodTeam</action><action>AutoGatherCoinTeam</action><transition><tactic>Normal</tactic><length>2</length><exit>1</exit></transition><transition><tactic>Food</tactic><length>2</length><exit>1</exit></transition><transition><tactic>Wood</tactic><length>2</length><exit>1</exit></transition></tactic>
+</tactics>

@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\aztec\great_temple\textures\great_temple_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\aztec\great_temple\textures\great_temple_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\aztec\great_temple\textures\great_temple_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

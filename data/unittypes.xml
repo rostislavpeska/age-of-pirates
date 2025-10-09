@@ -11,4 +11,26 @@
   <unittype>AbstractJamesGang</unittype>
   <unittype>AbstractAboriginalTracker</unittype>
   <unittype>AbstractSchool</unittype>
+  <unittype>AbstractTreasureShip</unittype>
+  <unittype>AbstractConvictLabourer</unittype>
+  <unittype>NavalPet</unittype>
+  <unittype>AbstractUnderwaterMine</unittype>
+  <unittype>AbstractNavalCaptain</unittype>
+  <unittype>AbstractSubmarine</unittype>
+  <unittype>AbstractDiver</unittype>
+  <unittype>AbstractUnderwaterBuilding</unittype>
+  <unittype>AbstractDivingBell</unittype>
+  <unittype>GatherableOnlyByDivers</unittype>
+  <unittype>AbstractCityManison</unittype>
+  <unittype>AbstractImportantCityBuilding</unittype>
+  <unittype>zpAbstractHeroMusketeer</unittype>
+  <unittype>AbstractCityManisonB</unittype>
+  <unittype>zpAbstractAssassin</unittype>
+  <unittype>AbstractTeamCitadel</unittype>
+  <unittype>AbstractSteamTank</unittype>
+  <unittype>CivilWarCityState</unittype>
+  <unittype>zpAbstractFortCenter</unittype>
+  <unittype>AbstractCrussaderKnight</unittype>
+  <unittype>zpSPCTradeUnit</unittype>
+  <unittype>HansaTradePoint</unittype>
 </unittypes>

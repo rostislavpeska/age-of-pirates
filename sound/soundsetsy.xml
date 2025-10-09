@@ -2387,18 +2387,6 @@
     <sound filename="ambient\effects\kitchen_sound.wav" volume="0.6000">
     </sound>
   </soundset>
-  <soundset name="Aboriginal_Soldier_Attack" volume="1.0000" maxnum="4" distance="1.0000">
-    <sound filename="aboriginal\AboriginalSoldierAttack.wav" volume="1.0000">
-    </sound>
-  </soundset>
-  <soundset name="Aboriginal_Soldier_Select" volume="1.0000" maxnum="4" distance="1.0000">
-    <sound filename="aboriginal\AboriginalSoldierSelect.wav" volume="1.0000">
-    </sound>
-  </soundset>
-  <soundset name="Aboriginal_Soldier_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
-    <sound filename="aboriginal\AboriginalSoldierMove.wav" volume="1.0000">
-    </sound>
-  </soundset>
   <soundset name="CasowaryGrowl" volume="1.0000" maxnum="4" distance="1.0000">
     <sound filename="ambient\animals\cassowarygrowl.wav" volume="1.0000">
     </sound>
@@ -2445,6 +2433,30 @@
     <sound filename="malay\Malay_Soldier_Attack_2_AoE2.wav" volume="1.0000">
     </sound>
     <sound filename="malay\Malay_Soldier_Attack_3_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Korean_Soldier_Select" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Soldier_Select_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Soldier_Select_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Soldier_Select_3_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Korean_Soldier_Acknowledge" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Soldier_Move_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Soldier_Move_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Soldier_Move_3_AoE2.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="Korean_Soldier_Attack" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="korean\Koreans_Soldier_Attack_1_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Soldier_Attack_2_AoE2.wav" volume="1.0000">
+    </sound>
+    <sound filename="korean\Koreans_Soldier_Attack_3_AoE2.wav" volume="1.0000">
     </sound>
   </soundset>
 </soundsetdef>

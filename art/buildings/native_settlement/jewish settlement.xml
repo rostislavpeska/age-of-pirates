@@ -1,58 +1,34 @@
 <!-- converted from XMB to XML -->
 
 <animfile>
+	<definebone>bone_main</definebone>
+	<definebone>bone_smoke</definebone>
+	<definebone>bone_fire</definebone>
+	<definebone>bone_smoke00</definebone>
+	<definebone>bone_chimney</definebone>
+	<attachment>smoke
+        <component>factory_smoke
+            <logic type="Destruction">
+                <p0>
+                    <assetreference type="ParticleSystem"></assetreference>
+                </p0>
+                <p99>
+                    <assetreference type="popcornFx">
+                        <file>smoke\chimney_smoke.pkfx</file>
+                    </assetreference>
+                </p99>
+            </logic>
+        </component>
+        <anim>Idle
+            <component>factory_smoke</component>
+        </anim>
+    </attachment>
 	<component>
 		building
 		<logic type="Variation">
-
-				<data>
+				<v1>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\socket_jewish\house6</file>
-					</assetreference>
-					<decal>
-						<effecttype>default</effecttype>
-						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
-						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-						<width>13</width>
-						<height>13</height>
-						<xoffset>0.00</xoffset>
-						<zoffset>0.00</zoffset>	
-					</decal>
-				</data>
-
-				<data>
-					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\socket_jewish\jewish_house1_Model</file>
-					</assetreference>
-					<decal>
-						<effecttype>default</effecttype>
-						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
-						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-						<width>6</width>
-						<height>6</height>
-						<xoffset>0.00</xoffset>
-						<zoffset>0.00</zoffset>	
-					</decal>
-				</data>
-
-				<data>
-					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\socket_jewish\jewish_house2_Model</file>
-					</assetreference>
-					<decal>
-						<effecttype>default</effecttype>
-						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
-						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-						<width>6</width>
-						<height>6</height>
-						<xoffset>0.00</xoffset>
-						<zoffset>0.00</zoffset>	
-					</decal>
-				</data>
-
-				<data>
-					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\socket_jewish\jewish_house5_Model</file>
+						<file>buildings\native_settlement\jewish\jewish_farm</file>
 					</assetreference>
 					<decal>
 						<effecttype>default</effecttype>
@@ -63,38 +39,64 @@
 						<xoffset>0.00</xoffset>
 						<zoffset>0.00</zoffset>	
 					</decal>
-				</data>
-
-				<data>
+				</v1>
+				<v2>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\socket_jewish\jewish_house4_Model</file>
+						<file>buildings\native_settlement\jewish\jewish_market</file>
 					</assetreference>
 					<decal>
 						<effecttype>default</effecttype>
 						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
 						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-						<width>8</width>
-						<height>8</height>
+						<width>7</width>
+						<height>7</height>
 						<xoffset>0.00</xoffset>
 						<zoffset>0.00</zoffset>	
 					</decal>
-				</data>
-
-				<data>
+				</v2>
+				<v3>
 					<assetreference type="GrannyModel">
-						<file>buildings\native_settlement\socket_jewish\customs</file>
+						<file>buildings\native_settlement\jewish\jewish_house1</file>
 					</assetreference>
 					<decal>
 						<effecttype>default</effecttype>
 						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
 						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
-						<width>6</width>
-						<height>6</height>
+						<width>7</width>
+						<height>7</height>
 						<xoffset>0.00</xoffset>
 						<zoffset>0.00</zoffset>	
 					</decal>
-				</data>
-
+				</v3>
+				<v4>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\jewish\jewish_house2</file>
+					</assetreference>
+					<decal>
+						<effecttype>default</effecttype>
+						<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
+						<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+						<width>7</width>
+						<height>7</height>
+						<xoffset>0.00</xoffset>
+						<zoffset>0.00</zoffset>	
+					</decal>
+				</v4>
+				<v5>
+					<assetreference type="GrannyModel">
+					<file>buildings\native_settlement\jewish\jewish_blacksmith</file>
+				</assetreference>
+				<attach a="smoke" frombone="bone_chimney" tobone="bone_smoke" syncanims="0"></attach>
+				<decal>
+					<effecttype>default</effecttype>
+					<texture>buildings\native_settlement\africa\east_sudanese\textures\east_sudanese_decal_BaseColor</texture>
+					<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+					<width>6</width>
+					<height>6</height>
+						<xoffset>0.00</xoffset>
+						<zoffset>0.00</zoffset>	
+					</decal>
+				</v5>
 		</logic>
 	</component>
 	<anim>

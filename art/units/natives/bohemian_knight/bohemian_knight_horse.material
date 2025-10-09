@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\natives\bohemian_knight\textures\bohemian_knight_horse_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\cavalry\cav_archer\textures\order_knight_horse_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\cavalry\cav_archer\textures\order_knight_horse_mata_masks">
+      </texture>
+      <texture name="Details" override="units\natives\bohemian_knight\textures\bohemian_knight_horse_mata_Details">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="units\natives\bohemian_knight\textures\hussite_knight_horse_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\cavalry\cav_archer\textures\order_knight_horse_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\cavalry\cav_archer\textures\order_knight_horse_mata_masks">
+      </texture>
+      <texture name="Details" override="units\natives\bohemian_knight\textures\hussite_knight_horse_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

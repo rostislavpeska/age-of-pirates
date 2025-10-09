@@ -1,0 +1,98 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\aztec\aztec_market\textures\aztec_market_01_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\aztec\aztec_market\textures\aztec_market_01_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\aztec\aztec_market\textures\aztec_market_01_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\aztec\aztec_market\textures\aztec_market_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\aztec\aztec_market\textures\aztec_market_matb_normals">
+      </texture>
+      <texture name="Masks" override="homecity\aztec\aztec_market\textures\aztec_market_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\aztec\aztec_market\textures\aztec_market_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\aztec\aztec_market\textures\aztec_market_matb_normals">
+      </texture>
+      <texture name="Masks" override="homecity\aztec\aztec_market\textures\aztec_market_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matj">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\india\squarebuilding\textures\squarebuilding_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\india\squarebuilding\textures\squarebuilding_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\india\squarebuilding\textures\squarebuilding_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mati">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\ethiopia\ethiopia_marketplace\textures\ethiopa_marketplace_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\ethiopia\ethiopia_marketplace\textures\ethiopa_marketplace_matb_normals">
+      </texture>
+      <texture name="Masks" override="homecity\ethiopia\ethiopia_marketplace\textures\ethiopa_marketplace_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="math">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\aztec\props_and_awnings\textures\props_and_awnings_2_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\aztec\props_and_awnings\textures\props_and_awnings_2_matb_normals">
+      </texture>
+      <texture name="Masks" override="homecity\aztec\props_and_awnings\textures\props_and_awnings_2_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\native prop pot 1\textures\native prop pot 1_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\native prop pot 1\textures\native prop pot 1_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\native prop pot 1\textures\native prop pot 1_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matf">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\native prop basket 1\textures\native prop basket 1_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\native prop basket 1\textures\native prop basket 1_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\native prop basket 1\textures\native prop basket 1_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

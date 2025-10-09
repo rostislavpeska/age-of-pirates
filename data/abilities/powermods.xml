@@ -282,6 +282,299 @@
     <allowduringnorush>1</allowduringnorush>
     <soundset type="StartSound" listenertype="Caster">DEPowerFullSteam</soundset>
   </power>
+  <power name="zpNatPowerRoyalMarch" type="GeneralEffect">
+    <displaynameid>122544</displaynameid>
+    <rolloverid>122545</rolloverid>
+    <timerrolloverid>122547</timerrolloverid>
+    <icon>resources\images\icons\abilities\ability_royal_march_lrg.png</icon>
+    <minimapeventtime sendalertto="none">1</minimapeventtime>
+    <activetime>15</activetime>
+    <effect type="MaximumVelocity" relativity="BasePercent" amount="1.05">
+      <target type="ProtoUnit">Unit</target>
+    </effect>
+    <effect type="MaximumVelocity" relativity="BasePercent" amount="1.05">
+      <target type="ProtoUnit">AbstractInfantry</target>
+    </effect>
+    <effect type="MaximumVelocity" relativity="BasePercent" amount="1.05">
+      <target type="ProtoUnit">LogicalTypeLandEconomy</target>
+    </effect>
+    <effect type="MaximumVelocity" relativity="BasePercent" amount="1.025">
+      <target type="ProtoUnit">AbstractLightInfantry</target>
+    </effect>
+    <placement forceonmap="1" ally="">full</placement>
+    <allowduringnorush>1</allowduringnorush>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+    <soundset type="StartSound" listenertype="Caster">DENatPowerBourbon</soundset>
+  </power>
+  <power name="zpPowerBourbonExpansion" type="UnitAction">
+    <displaynameid>301942</displaynameid>
+    <rolloverid>301944</rolloverid>
+    <icon>resources\images\icons\techs\spcbourbon_expansion.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>   
+  </power>
+  <power name="zpPowerSansculotteExpansion" type="UnitAction">
+    <displaynameid>301917</displaynameid>
+    <rolloverid>301945</rolloverid>
+    <icon>resources\images\icons\techs\sansculottes_big.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>   
+  </power>
+  <power name="zpAbilityInspiringFlagFrench" type="TempUnit">
+    <displaynameid>110177</displaynameid>
+    <rolloverid>301996</rolloverid>
+    <icon>resources\images\icons\abilities\inspiring_flag_french_icon.png</icon>
+    <minimapeventtime sendalertto="ally">1</minimapeventtime>
+    <activetime>5</activetime>
+    <createunit quantity="1" radius="0" delay="0.0" permanent="" singleinstance="">deInspiringFlag</createunit>
+    <placement forceonmap="1">full</placement>
+    <rangeindicatorprotoid radius="24.0" indicatorcount="16" speed="0.6">PowerRanger</rangeindicatorprotoid>
+    <allowduringnorush>1</allowduringnorush>
+    <displayplacementruleserrors>1</displayplacementruleserrors>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+  </power>
+  <power name="zpAthosCrewAura" type="UnitAction">
+    <displaynameid>302013</displaynameid>
+    <rolloverid>302014</rolloverid>
+    <icon>resources\images\icons\abilities\musketeer_unity.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpPassiveAbilityMortar" type="GeneralEffect">
+    <displaynameid>104668</displaynameid>
+    <rolloverid>104669</rolloverid>
+    <icon>resources\images\icons\abilities\passive_battle_bluster.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpAssassinBrotherhood" type="UnitAction">
+    <displaynameid>302179</displaynameid>
+    <rolloverid>302180</rolloverid>
+    <icon>resources\images\icons\abilities\assassin_brotherhood.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpAuditoreLighthouse" type="GeneralEffect">
+    <displaynameid>302181</displaynameid>
+    <rolloverid>300625</rolloverid>
+    <timerrolloverid>302181</timerrolloverid>
+    <icon>resources\images\icons\abilities\eagle_vision.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>10</activetime>
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="LogicalTypeLandMilitary">
+      <target type="Player">
+      </target>
+    </effect>
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="TradingPost">
+      <target type="Player">
+      </target>
+    </effect>
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="MilitaryBuilding">
+      <target type="Player">
+      </target>
+    </effect>
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="AbstractFort">
+      <target type="Player">
+      </target>
+    </effect>
+    <effect type="EnemyAttachProtoUnit" attachprotounit="deSomaliLighthouseRevealer" unittype="Blockhouse">
+      <target type="Player">
+      </target>
+    </effect>
+    <messagealertplayerrelation>none</messagealertplayerrelation>
+    <placement forceonmap="1" ally="">unit</placement>
+    <allowduringnorush>1</allowduringnorush>
+    <startsoundset>UI_Select_Building_Firepit</startsoundset>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+  </power>
+  <power name="zpPowerInformersFrench" type="Informers">
+    <displaynameid>62773</displaynameid>
+    <rolloverid>62768</rolloverid>
+    <icon>resources\images\icons\abilities\paris_informers.png</icon>
+    <minimapeventtime sendalertto="none">1</minimapeventtime>
+    <activetime>20</activetime>
+    <effect type="SharedLOS">
+      <target type="General">
+      </target>
+    </effect>
+    <placement forceonmap="1" ally="">full</placement>
+    <allowduringnorush>1</allowduringnorush>
+    <startsoundset>PowerInformers</startsoundset>
+  </power>
+  <power name="zpNatPowerRadetzyMarchBohemia" type="TempUnit">
+    <displaynameid>122548</displaynameid>
+    <rolloverid>122549</rolloverid>
+    <icon>resources\images\icons\abilities\ability_radetzky_march_lrg.png</icon>
+    <minimapeventtime sendalertto="ally">1</minimapeventtime>
+    <activetime>5</activetime>
+    <createunit pattern="Spawn" quantity="1" delay="0.0" permanent="">deLegionMagyarHussar</createunit>
+    <createunit pattern="Spawn" quantity="1" delay="0.0" permanent="" reqtech="DENatHabsburgAustroHungarian">deNatHungarianGrenadier</createunit>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <rangeindicatorprotoid radius="12.0" indicatorcount="16" speed="0.6">PowerRanger</rangeindicatorprotoid>
+    <powerescalation>1</powerescalation>
+    <powermaxlevel>5</powermaxlevel>
+    <allowduringnorush>1</allowduringnorush>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+    <soundset type="StartSound" listenertype="Caster">DENatPowerHabsburg</soundset>
+  </power>
+  <power name="zpNatPowerBlanikKnights" type="TempUnit">
+    <displaynameid>302383</displaynameid>
+    <rolloverid>302384</rolloverid>
+    <icon>resources\images\icons\abilities\blanik_knights.png</icon>
+    <minimapeventtime sendalertto="ally">1</minimapeventtime>
+    <activetime>5</activetime>
+    <createunit pattern="Spawn" quantity="1" delay="0.0" permanent="">zpMercBohemianKnight</createunit>
+    <createunit pattern="Spawn" quantity="1" delay="0.0" permanent="" reqtech="DENatHabsburgAustroHungarian">deNatHungarianGrenadier</createunit>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <rangeindicatorprotoid radius="12.0" indicatorcount="16" speed="0.6">PowerRanger</rangeindicatorprotoid>
+    <powerescalation>1</powerescalation>
+    <powerescalationrate>2.0</powerescalationrate>
+    <powermaxlevel>16</powermaxlevel>
+    <allowduringnorush>1</allowduringnorush>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+    <soundset type="StartSound" listenertype="Caster">blanik_knights</soundset>
+  </power>
+  <power name="zpPowerInformersAztec" type="Informers">
+    <displaynameid>62773</displaynameid>
+    <rolloverid>62768</rolloverid>
+    <icon>resources\images\icons\abilities\zp_aztec_informers.png</icon>
+    <minimapeventtime sendalertto="none">1</minimapeventtime>
+    <activetime>20</activetime>
+    <effect type="SharedLOS">
+      <target type="General">
+      </target>
+    </effect>
+    <placement forceonmap="1" ally="">full</placement>
+    <allowduringnorush>1</allowduringnorush>
+    <startsoundset>PowerInformers</startsoundset>
+  </power>
+  <power name="zpPassiveMarketRainbow" type="UnitAction">
+    <displaynameid>301831</displaynameid>
+    <rolloverid>123236</rolloverid>
+    <icon>resources\images\icons\abilities\passive_district_market.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpFlagConfederateData" type="TempUnit">
+    <displaynameid>110177</displaynameid>
+    <rolloverid>302642</rolloverid>
+    <icon>resources\images\icons\abilities\inspiring_flag_confederate_icon.png</icon>
+  </power>
+  <power name="zpPowerImperialCommand" type="TempUnit">
+    <displaynameid>302782</displaynameid>
+    <rolloverid>302785</rolloverid>
+    <icon>resources\images\icons\abilities\imperial_command.png</icon>
+    <minimapeventtime sendalertto="ally">1</minimapeventtime>
+    <activetime>120</activetime>
+    <createunit pattern="Spawn" quantity="1" delay="0.0" permanent="">zpNatMercLandsknecht</createunit>
+    <createunit pattern="Spawn" quantity="1" delay="0.0" permanent="" reqtech="DENatHabsburgAustroHungarian">deNatHungarianGrenadier</createunit>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <rangeindicatorprotoid radius="12.0" indicatorcount="16" speed="0.6">PowerRanger</rangeindicatorprotoid>
+    <auxiliarypower>zpPowerImperialCommandAux</auxiliarypower>
+    <auxiliarypowertargettype>self</auxiliarypowertargettype>
+    <powerescalation>1</powerescalation>
+    <powerescalationrate>4.0</powerescalationrate>
+    <powermaxlevel>20</powermaxlevel>
+    <allowduringnorush>1</allowduringnorush>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+    <soundset type="StartSound" listenertype="All">German_Battlehymn</soundset>
+  </power>
+  <power name="zpPowerImperialCommandAux" type="GeneralEffect">
+    <timerrolloverid>302849</timerrolloverid>
+    <minimapeventtime sendalertto="none">1</minimapeventtime>
+    <activetime>120</activetime>
+    <effect type="Damage" relativity="BasePercent" amount="1.20">
+      <target type="ProtoUnit">LogicalTypeLandMilitary</target>
+    </effect>
+    <messagealertplayerrelation>none</messagealertplayerrelation>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <allowduringnorush>1</allowduringnorush>
+    <isauxiliarypower>1</isauxiliarypower>
+  </power>
+  <power name="zpPassiveGlassmaker" type="UnitAction">
+    <displaynameid>302797</displaynameid>
+    <rolloverid>302812</rolloverid>
+    <icon>resources\images\icons\abilities\workshop_bohemian_glass.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpPassiveCoppermaker" type="UnitAction">
+    <displaynameid>302795</displaynameid>
+    <rolloverid>302812</rolloverid>
+    <icon>resources\images\icons\abilities\workshop_austrian_copper.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpPassiveBrickmaker" type="UnitAction">
+    <displaynameid>302799</displaynameid>
+    <rolloverid>302812</rolloverid>
+    <icon>resources\images\icons\abilities\workshop_saxon_brick.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpPassiveLimestone" type="UnitAction">
+    <displaynameid>302801</displaynameid>
+    <rolloverid>302812</rolloverid>
+    <icon>resources\images\icons\abilities\workshop_bavarian_limestone.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpPassiveZeal" type="UnitAction">
+    <displaynameid>302899</displaynameid>
+    <rolloverid>302900</rolloverid>
+    <icon>resources\images\icons\abilities\crussader_zeal.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpPassiveFriendlyDock" type="UnitAction">
+    <displaynameid>303014</displaynameid>
+    <rolloverid>303015</rolloverid>
+    <icon>resources\images\icons\abilities\friendly_dock.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpPowerSalve" type="UnitAction">
+		<displaynameid>303066</displaynameid>
+		<rolloverid>303069</rolloverid>
+		<icon>resources\images\icons\abilities\salve_attack.png</icon>
+		<minimapeventtime sendalertto="player">1</minimapeventtime>
+		<activetime>7</activetime>
+		<radius>10.0</radius>
+		<placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+		<abstractattacktargettype>LogicalTypeRangedUnitsAttack</abstractattacktargettype>
+		<unitaction>SalveAttack</unitaction>
+	</power>
+  <power name="zpNatPowerElDeguello" type="TempUnit">
+    <displaynameid>303071</displaynameid>
+    <rolloverid>303072</rolloverid>
+    <icon>resources\images\icons\abilities\eldeguello.png</icon>
+    <minimapeventtime sendalertto="ally">1</minimapeventtime>
+    <activetime>5</activetime>
+    <createunit pattern="Spawn" quantity="1" delay="0.0" permanent="">ypConsulateGarrochista</createunit>
+    <createunit pattern="Spawn" quantity="1" delay="0.0" permanent="" reqtech="DENatHabsburgAustroHungarian">ypConsulateBestieros</createunit>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <rangeindicatorprotoid radius="12.0" indicatorcount="16" speed="0.6">PowerRanger</rangeindicatorprotoid>
+    <powerescalation>1</powerescalation>
+    <powermaxlevel>5</powermaxlevel>
+    <allowduringnorush>1</allowduringnorush>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+    <soundset type="StartSound" listenertype="Caster">Spanish_Battlehymn</soundset>
+  </power>
+  <power name="zpNatPowerRadetzyMarch" type="TempUnit">
+    <displaynameid>122548</displaynameid>
+    <rolloverid>122549</rolloverid>
+    <icon>resources\images\icons\abilities\ability_radetzky_march_lrg.png</icon>
+    <minimapeventtime sendalertto="ally">1</minimapeventtime>
+    <activetime>5</activetime>
+    <createunit pattern="Spawn" quantity="1" delay="0.0" permanent="">deLegionMagyarHussar</createunit>
+    <createunit pattern="Spawn" quantity="1" delay="0.0" permanent="" reqtech="DENatHabsburgAustroHungarian">deNatHungarianGrenadier</createunit>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <rangeindicatorprotoid radius="12.0" indicatorcount="16" speed="0.6">PowerRanger</rangeindicatorprotoid>
+    <powerescalation>1</powerescalation>
+    <powermaxlevel>5</powermaxlevel>
+    <allowduringnorush>1</allowduringnorush>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+    <soundset type="StartSound" listenertype="Caster">DENatPowerHabsburg</soundset>
+  </power>
+
 
 
 

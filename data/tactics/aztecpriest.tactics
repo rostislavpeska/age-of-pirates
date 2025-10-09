@@ -1,0 +1,39 @@
+<tactics>
+  <action>
+    <name stringid="38134">HandAttack</name>
+    <type>HandAttack</type>
+    <maxrange>1.0</maxrange>
+    <rate type="Unit">1.0 </rate>
+    <attackaction>1</attackaction>
+    <handlogic>1</handlogic>
+    <anim>Attack</anim>
+    <impacteffect>effects\impacts\melee</impacteffect>
+  </action>
+  <action>
+    <name stringid="69155">Heal</name>
+    <type>Heal</type>
+    <maxrange>12</maxrange>
+    <rate type="LogicalTypeHealed">5.0 </rate>
+    <anim>Heal</anim>
+  </action>
+  <action>
+    <name stringid="42178">Gather</name>
+    <type>Gather</type>
+    <maxrange>0.5</maxrange>
+    <rate type="CommunityPlaza">1.0</rate>
+    <rate type="zpAztecAltar">1.5</rate>
+  </action>
+  <action>
+    <name stringid="38131">CoverHandAttack</name>
+    <type>HandAttack</type>
+    <maxrange>1.0</maxrange>
+    <rate type="Unit">1.0 </rate>
+    <attackaction>1</attackaction>
+    <handlogic>1</handlogic>
+    <anim>Attack</anim>
+    <impacteffect>effects\impacts\melee</impacteffect>
+  </action>
+  <tactic>Melee<action>HandAttack</action><action>Heal</action><action>Gather</action><speedmodifier>1.0</speedmodifier><attacktype>LogicalTypeHandUnitsAttack</attacktype><autoattacktype>LogicalTypeHandUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeHandUnitsAttack</attackresponsetype><runaway>1</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
+  <tactic>Defend<action>HandAttack</action><action>Heal</action><action>Gather</action><attacktype>LogicalTypeHandUnitsAttack</attacktype><autoattacktype>LogicalTypeHandUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeHandUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
+  <tactic>StandGround<action>HandAttack</action><action>Heal</action><action>Gather</action><attacktype>LogicalTypeHandUnitsAttack</attacktype><autoattacktype>LogicalTypeHandUnitsAutoAttack</autoattacktype><attackresponsetype>LogicalTypeHandUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><idleanim>Idle</idleanim><boredanim>Bored</boredanim><deathanim>Death</deathanim><walkanim>Walk</walkanim><joganim>Jog</joganim><runanim>Run</runanim></tactic>
+</tactics>

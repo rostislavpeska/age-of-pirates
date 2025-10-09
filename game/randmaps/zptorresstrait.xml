@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "301715" displayNameID = "301714" loadDetails="301716" largeMapName = "zptorresstrait"
+    imagepath = "ui\random_map\torresstrait\torresstrait_mini" cannotReplace = "" loadBackground="ui\random_map\torresstrait\torresstrait_map">
+   <loadss>ui\random_map\torresstrait\torresstrait_01</loadss>
+   <loadss>ui\random_map\torresstrait\torresstrait_02</loadss>
+   <loadss>ui\random_map\torresstrait\torresstrait_03</loadss>
+</mapinfo>

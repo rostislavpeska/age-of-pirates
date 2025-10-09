@@ -29,6 +29,8 @@
         <choice name="build">
         </choice>
         <choice name="Huntable">
+          <soundset name="Aboriginal_Soldier_Hunt">
+          </soundset>
         </choice>
         <choice name="Tree">
         </choice>

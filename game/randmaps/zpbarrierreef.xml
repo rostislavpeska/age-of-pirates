@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "301877" displayNameID = "301876" loadDetails="301878" largeMapName = "zpbarrierreef"
+    imagepath = "ui\random_map\barrierreef\barrierreef_mini" cannotReplace = "" loadBackground="ui\random_map\barrierreef\barrierreef_map">
+   <loadss>ui\random_map\barrierreef\barrierreef_01</loadss>
+   <loadss>ui\random_map\barrierreef\barrierreef_02</loadss>
+   <loadss>ui\random_map\barrierreef\barrierreef_03</loadss>
+</mapinfo>

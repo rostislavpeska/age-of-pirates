@@ -29,10 +29,10 @@
 		<unit variation="249" posx="14.2338" posz="-3.1584" orientx="0.3825" orienty="0.0000" orientz="-0.9240">NativeTownObstruction</unit>
 		<unit variation="249" posx="3.2537" posz="-1.3581" orientx="0.9240" orienty="0.0000" orientz="0.3825">NativeTownObstruction</unit>
 		<unit variation="8" posx="11.7873" posz="-2.1210" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpNativeHouseMaltese</unit>
-		<unit variation="221" posx="-1.3355" posz="-4.0357" orientx="1.0000" orienty="0.0000" orientz="-0.0000">deNatEUPropFence</unit>
+		<unit variation="221" posx="-1.3355" posz="-4.0357" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNatEUPropFencDark</unit>
 		<unit variation="57" posx="1.4602" posz="-4.7644" orientx="-0.7071" orienty="0.0000" orientz="0.7071">deNatEUPropVilFemale</unit>
 		<unit variation="145" posx="0.0213" posz="-3.7399" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropVilMale</unit>
-		<unit variation="10" posx="-3.2648" posz="-5.1241" orientx="0.3827" orienty="0.0000" orientz="-0.9239">deNatEUPropFence</unit>
+		<unit variation="10" posx="-3.2648" posz="-5.1241" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpNatEUPropFencDark</unit>
 		<unit variation="109" posx="4.6659" posz="-4.0462" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">deNatEUPropStatue</unit>
 		<unit variation="56" posx="10.1899" posz="-4.3707" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
 		<unit variation="249" posx="-1.8529" posz="-0.6638" orientx="0.0001" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
@@ -40,20 +40,20 @@
 		<unit variation="249" posx="-6.7802" posz="0.9047" orientx="-0.3818" orienty="0.0000" orientz="-0.9243">NativeTownObstruction</unit>
 		<unit variation="81" posx="1.9400" posz="-3.3617" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">deNatEUPropVilMale</unit>
 		<unit variation="170" posx="7.6930" posz="-2.9416" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">deNatEUPropVilMale</unit>
-		<unit variation="10" posx="-1.3203" posz="-1.8638" orientx="1.0000" orienty="0.0000" orientz="0.0005">deNatEUPropFence</unit>
+		<unit variation="10" posx="-1.3203" posz="-1.8638" orientx="1.0000" orienty="0.0000" orientz="0.0005">zpNatEUPropFencDark</unit>
 		<unit variation="120" posx="-5.1323" posz="-1.4735" orientx="0.9274" orienty="0.0000" orientz="0.3740">ypSMJesuitPeasants</unit>
 		<unit variation="249" posx="5.8300" posz="1.3964" orientx="0.9240" orienty="0.0000" orientz="0.3825">NativeTownObstruction</unit>
-		<unit variation="10" posx="-10.1321" posz="-1.4002" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="10" posx="-10.1321" posz="-1.4002" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropFencDark</unit>
 		<unit variation="115" posx="-2.8359" posz="-0.1821" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">deNatEUPropVilMale</unit>
 		<unit variation="249" posx="-5.3956" posz="3.3661" orientx="-0.3818" orienty="0.0000" orientz="-0.9243">NativeTownObstruction</unit>
 		<unit variation="249" posx="12.0964" posz="3.6361" orientx="0.3825" orienty="0.0000" orientz="-0.9240">NativeTownObstruction</unit>
 		<unit variation="35" posx="11.0269" posz="3.8612" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpNativeHouseMaltese</unit>
 		<unit variation="237" posx="-7.5719" posz="1.8594" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpMalteseFlag</unit>
-		<unit variation="221" posx="-10.1004" posz="1.0047" orientx="1.0000" orienty="0.0000" orientz="0.0005">deNatEUPropFence</unit>
+		<unit variation="221" posx="-10.1004" posz="1.0047" orientx="1.0000" orienty="0.0000" orientz="0.0005">zpNatEUPropFencDark</unit>
 		<unit variation="187" posx="1.9042" posz="5.5584" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCCathedral</unit>
 		<unit variation="249" posx="-2.4221" posz="5.8443" orientx="0.0001" orienty="0.0000" orientz="1.0000">NativeTownObstruction</unit>
 		<unit variation="28" posx="-14.5531" posz="4.4098" orientx="-0.9236" orienty="-0.0000" orientz="-0.3834">deNatEUPropVilGuards</unit>
-		<unit variation="10" posx="-10.0257" posz="2.7386" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="10" posx="-10.0257" posz="2.7386" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropFencDark</unit>
 		<unit variation="213" posx="7.1985" posz="3.5188" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
 		<unit variation="199" posx="-3.4486" posz="3.4267" orientx="-0.7071" orienty="0.0000" orientz="0.7071">NativePirates</unit>
 		<unit variation="83" posx="-9.8818" posz="7.7884" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">zpSocketMaltese</unit>
@@ -63,8 +63,8 @@
 		<unit variation="249" posx="-4.6975" posz="10.8418" orientx="1.0000" orienty="0.0000" orientz="-0.0001">NativeTownObstruction</unit>
 		<unit variation="54" posx="-4.0078" posz="8.4472" orientx="0.9875" orienty="0.0000" orientz="0.1575">deSPCTreeCypressProp</unit>
 		<unit variation="28" posx="-14.4763" posz="11.0910" orientx="-0.9236" orienty="-0.0000" orientz="-0.3834">deNatEUPropVilGuards</unit>
-		<unit variation="221" posx="-1.8748" posz="10.9831" orientx="0.0005" orienty="0.0000" orientz="-1.0000">deNatEUPropFence</unit>
-		<unit variation="10" posx="-4.0226" posz="11.0095" orientx="0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="221" posx="-1.8748" posz="10.9831" orientx="0.0005" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDark</unit>
+		<unit variation="10" posx="-4.0226" posz="11.0095" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDark</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_city_street_90_ground">

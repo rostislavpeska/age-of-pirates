@@ -1,0 +1,161 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>17</width>
+	<height>12</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="216" posx="6.7908" posz="-4.8361" orientx="-1.0000" orienty="0.0000" orientz="0.0030">zpNatEUHabsburgPalaces</unit>
+		<unit variation="51" posx="12.5574" posz="-6.0878" orientx="-0.7064" orienty="0.0000" orientz="0.7079">zpNatEUItalianPalaces</unit>
+		<unit variation="125" posx="-15.2111" posz="-6.7756" orientx="1.0000" orienty="0.0000" orientz="-0.0024">SPCPathBlock3</unit>
+		<unit variation="125" posx="-5.4444" posz="-10.0216" orientx="-0.0024" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="191" posx="-3.4033" posz="-7.6567" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="125" posx="-12.1702" posz="-9.8790" orientx="-0.0024" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="191" posx="-11.1257" posz="-7.6438" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="125" posx="1.5986" posz="-10.1133" orientx="-0.0024" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="191" posx="1.4721" posz="-6.7667" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="191" posx="6.0776" posz="-6.5324" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="109" posx="-12.3776" posz="-8.1617" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="1" posx="9.9586" posz="-8.7716" orientx="-0.0000" orienty="-0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="1" posx="13.3273" posz="-8.7897" orientx="-0.0000" orienty="-0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="187" posx="15.3876" posz="-8.9299" orientx="0.0000" orienty="-0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="187" posx="11.5008" posz="-8.8333" orientx="0.0000" orienty="-0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="189" posx="15.4391" posz="-7.8542" orientx="-1.0000" orienty="-0.0000" orientz="0.0001">deNatEUPropFence</unit>
+		<unit variation="104" posx="-3.4705" posz="-7.4684" orientx="-0.0043" orienty="0.0000" orientz="-1.0000">zpNatEUHabsburgPalaces</unit>
+		<unit variation="216" posx="4.1498" posz="-7.6072" orientx="-0.0031" orienty="0.0000" orientz="-1.0000">zpNatEUHabsburgPalaces</unit>
+		<unit variation="184" posx="14.0697" posz="-7.6018" orientx="-0.3942" orienty="0.0000" orientz="0.9190">deSPCTreeCypressProp</unit>
+		<unit variation="125" posx="8.3723" posz="-8.5308" orientx="-0.0024" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="125" posx="12.6752" posz="-8.6247" orientx="-0.0024" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="125" posx="15.5822" posz="-5.0906" orientx="1.0000" orienty="0.0000" orientz="-0.0024">SPCPathBlock3</unit>
+		<unit variation="191" posx="10.1204" posz="-4.7912" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="191" posx="12.6475" posz="-4.5672" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="41" posx="-13.8290" posz="-6.0968" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="79" posx="-14.2126" posz="-6.7829" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="13" posx="-13.4384" posz="-7.2534" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="236" posx="-13.9812" posz="-6.7105" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="241" posx="-12.5284" posz="-7.0883" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="25" posx="-12.0719" posz="-6.6086" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="159" posx="-11.2691" posz="-7.7251" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="92" posx="-12.3117" posz="-6.6824" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="100" posx="10.1666" posz="-7.1866" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="87" posx="9.5742" posz="-7.1172" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="116" posx="9.1241" posz="-7.1001" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="14" posx="9.6096" posz="-6.5420" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="104" posx="7.1073" posz="0.0276" orientx="1.0000" orienty="0.0000" orientz="-0.0042">zpNatEUHabsburgPalaces</unit>
+		<unit variation="184" posx="-12.9199" posz="-6.3241" orientx="-0.0089" orienty="0.0000" orientz="1.0000">deSPCTreeCypressProp</unit>
+		<unit variation="191" posx="1.1439" posz="-2.8810" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="191" posx="6.0102" posz="-2.3841" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="1" posx="-9.1077" posz="-4.9977" orientx="1.0000" orienty="0.0000" orientz="-0.0033">deNatEUPropFence</unit>
+		<unit variation="151" posx="-12.8496" posz="-5.5157" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="96" posx="10.4913" posz="-5.8310" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="58" posx="10.1749" posz="-5.4251" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="172" posx="9.9644" posz="-4.9456" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="6" posx="10.1067" posz="-4.8179" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="192" posx="15.2832" posz="-4.7350" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">deNatEUPropFence</unit>
+		<unit variation="211" posx="-12.2942" posz="-0.1216" orientx="-1.0000" orienty="-0.0000" orientz="0.0046">deSocketHabsburg</unit>
+		<unit variation="125" posx="-11.9529" posz="-4.7503" orientx="-0.0023" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="125" posx="-6.6031" posz="-1.6820" orientx="1.0000" orienty="0.0000" orientz="-0.0025">SPCPathBlock3</unit>
+		<unit variation="125" posx="15.7779" posz="0.0189" orientx="1.0000" orienty="0.0000" orientz="-0.0024">SPCPathBlock3</unit>
+		<unit variation="191" posx="12.4861" posz="-0.8818" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="123" posx="-1.0297" posz="-3.1458" orientx="0.0003" orienty="0.0000" orientz="1.0000">deNatEUPropVilGuards</unit>
+		<unit variation="123" posx="-5.2565" posz="-3.1443" orientx="0.0003" orienty="0.0000" orientz="1.0000">deNatEUPropVilGuards</unit>
+		<unit variation="123" posx="2.4829" posz="-2.1969" orientx="-1.0000" orienty="0.0000" orientz="0.0003">deNatEUPropVilGuards</unit>
+		<unit variation="121" posx="15.2127" posz="-2.1899" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="191" posx="-3.5787" posz="1.0522" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="191" posx="9.2361" posz="0.3710" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="38" posx="-3.3900" posz="0.0011" orientx="-1.0000" orienty="0.0000" orientz="0.0033">deNatEUPropStatue</unit>
+		<unit variation="73" posx="1.1617" posz="0.5152" orientx="-0.7099" orienty="0.0000" orientz="-0.7043">deNatEUPropVilLeaders</unit>
+		<unit variation="72" posx="1.7469" posz="-0.5966" orientx="-0.7044" orienty="0.0000" orientz="0.7098">deNatEUPropVilFemale</unit>
+		<unit variation="143" posx="0.1850" posz="-0.8414" orientx="0.7099" orienty="0.0000" orientz="0.7043">deNatEUPropVilMale</unit>
+		<unit variation="6" posx="-0.3654" posz="0.2179" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpAustrianFlag</unit>
+		<unit variation="90" posx="3.7291" posz="-0.1223" orientx="-1.0000" orienty="-0.0000" orientz="0.0040">zpElectorPalaceshield</unit>
+		<unit variation="216" posx="6.4710" posz="5.4944" orientx="-1.0000" orienty="0.0000" orientz="0.0030">zpNatEUHabsburgPalaces</unit>
+		<unit variation="125" posx="-6.6516" posz="2.2772" orientx="1.0000" orienty="0.0000" orientz="-0.0025">SPCPathBlock3</unit>
+		<unit variation="191" posx="0.8585" posz="2.4254" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="191" posx="6.2045" posz="2.8516" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="123" posx="2.2494" posz="1.8960" orientx="-1.0000" orienty="0.0000" orientz="0.0003">deNatEUPropVilGuards</unit>
+		<unit variation="121" posx="15.0381" posz="2.1752" orientx="1.0000" orienty="0.0000" orientz="-0.0000">deNatEUPropFence</unit>
+		<unit variation="125" posx="15.6252" posz="5.5904" orientx="1.0000" orienty="0.0000" orientz="-0.0024">SPCPathBlock3</unit>
+		<unit variation="191" posx="9.4094" posz="5.9963" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="191" posx="12.7762" posz="4.5750" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="123" posx="-5.5431" posz="2.8296" orientx="-0.3830" orienty="0.0000" orientz="-0.9238">deNatEUPropVilGuards</unit>
+		<unit variation="123" posx="-1.3063" posz="2.8295" orientx="-0.3830" orienty="0.0000" orientz="-0.9238">deNatEUPropVilGuards</unit>
+		<unit variation="192" posx="15.1059" posz="4.3277" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deNatEUPropFence</unit>
+		<unit variation="244" posx="12.1747" posz="6.2722" orientx="0.9239" orienty="-0.0000" orientz="0.3826">zpHCFountainFlattenGround</unit>
+		<unit variation="125" posx="-14.9567" posz="7.2959" orientx="1.0000" orienty="0.0000" orientz="-0.0024">SPCPathBlock3</unit>
+		<unit variation="191" posx="-4.3299" posz="7.0190" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="125" posx="-11.5231" posz="4.8856" orientx="-0.0023" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="191" posx="-10.4151" posz="7.6536" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="191" posx="0.7784" posz="6.9044" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="28" posx="-13.2996" posz="5.7374" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="152" posx="-14.6049" posz="5.2065" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="90" posx="-3.6206" posz="4.1066" orientx="-0.0041" orienty="-0.0000" orientz="-1.0000">zpElectorPalaceshield</unit>
+		<unit variation="219" posx="14.2335" posz="5.7652" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="224" posx="14.4993" posz="5.6847" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="180" posx="14.5304" posz="5.3759" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="66" posx="14.2773" posz="4.7102" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="106" posx="14.1269" posz="4.3146" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="168" posx="13.8504" posz="4.2293" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="104" posx="-3.6493" posz="7.3911" orientx="-0.0043" orienty="0.0000" orientz="-1.0000">zpNatEUHabsburgPalaces</unit>
+		<unit variation="184" posx="-13.4676" posz="6.9734" orientx="-0.0089" orienty="0.0000" orientz="1.0000">deSPCTreeCypressProp</unit>
+		<unit variation="191" posx="6.0974" posz="8.6201" orientx="-0.0011" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="220" posx="-13.8790" posz="6.7837" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="37" posx="-14.4813" posz="7.3859" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="27" posx="-14.2853" posz="7.9435" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="216" posx="-15.1488" posz="6.7542" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="177" posx="-13.8179" posz="7.9514" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="1" posx="-9.0840" posz="6.4748" orientx="1.0000" orienty="0.0000" orientz="-0.0033">deNatEUPropFence</unit>
+		<unit variation="162" posx="-12.2243" posz="6.8362" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="62" posx="-12.7162" posz="7.6168" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="64" posx="10.1267" posz="7.7726" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="228" posx="10.3688" posz="8.0727" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="27" posx="9.6490" posz="7.8909" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="227" posx="8.8861" posz="7.4093" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="125" posx="9.1355" posz="6.8958" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="189" posx="15.0193" posz="7.8795" orientx="-1.0000" orienty="-0.0000" orientz="0.0001">deNatEUPropFence</unit>
+		<unit variation="53" posx="-12.9236" posz="7.9206" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="216" posx="3.8319" posz="8.4114" orientx="-0.0031" orienty="0.0000" orientz="-1.0000">zpNatEUHabsburgPalaces</unit>
+		<unit variation="184" posx="14.0903" posz="7.8573" orientx="-0.3942" orienty="0.0000" orientz="0.9190">deSPCTreeCypressProp</unit>
+		<unit variation="74" posx="-12.6046" posz="8.2808" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="1" posx="9.0478" posz="9.3875" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="61" posx="10.3891" posz="8.4160" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="127" posx="8.9978" posz="8.1846" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="232" posx="8.8138" posz="8.1904" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="1" posx="12.9107" posz="9.3167" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropFence</unit>
+		<unit variation="187" posx="14.9318" posz="9.2640" orientx="0.0000" orienty="-0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="187" posx="10.9937" posz="9.2838" orientx="0.0000" orienty="-0.0000" orientz="1.0000">deNatEUPropFence</unit>
+		<unit variation="125" posx="-1.8600" posz="10.6752" orientx="-0.0025" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="125" posx="-5.2509" posz="10.3122" orientx="-0.0025" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="125" posx="12.5175" posz="9.3742" orientx="-0.0025" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="125" posx="-11.6856" posz="10.3194" orientx="-0.0024" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="125" posx="3.8181" posz="10.9208" orientx="-0.0025" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
+			<block startx="-8" startz="-1" endx="-8" endz="0"></block>
+			<block startx="-7" startz="-2" endx="-7" endz="1"></block>
+			<block startx="-6" startz="-2" endx="-6" endz="1"></block>
+			<block startx="-5" startz="-2" endx="-5" endz="2"></block>
+			<block startx="-4" startz="-2" endx="-4" endz="2"></block>
+			<block startx="-3" startz="-2" endx="-3" endz="3"></block>
+			<block startx="-2" startz="-4" endx="-2" endz="3"></block>
+			<block startx="-1" startz="-5" endx="-1" endz="-5"></block>
+			<block startx="0" startz="-5" endx="0" endz="-5"></block>
+			<block startx="1" startz="-5" endx="1" endz="-5"></block>
+			<block startx="2" startz="-5" endx="2" endz="-5"></block>
+			<block startx="-1" startz="-4" endx="-1" endz="3"></block>
+			<block startx="0" startz="-4" endx="0" endz="3"></block>
+			<block startx="1" startz="-4" endx="1" endz="3"></block>
+			<block startx="2" startz="-4" endx="2" endz="3"></block>
+			<block startx="3" startz="-4" endx="3" endz="3"></block>
+			<block startx="4" startz="1" endx="4" endz="2"></block>
+			<block startx="5" startz="0" endx="5" endz="0"></block>
+			<block startx="6" startz="0" endx="6" endz="1"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="Texas\Path_Blend">
+			<block startx="7" startz="0" endx="7" endz="0"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

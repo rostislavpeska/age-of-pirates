@@ -1,0 +1,22 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "302072" displayNameID = "302069" loadDetails="302070"
+    imagepath = "ui\random_map\verseilles\verseilles_mini" cannotReplace = "" loadBackground="ui\random_map\verseilles\verseilles_map">
+    <loadss>ui\random_map\verseilles\verseilles_01</loadss>
+    <loadss>ui\random_map\verseilles\verseilles_02</loadss>
+    <loadss>ui\random_map\verseilles\verseilles_03</loadss>
+    <enforcedSettings>
+        <setting type="FFA" state="forbidden" />
+        <setting type="RecordGame" state="forbidden" />
+        <setting type="TwoTeams" state="enforced" />
+        <setting type="DefaultRules" state="enforced" />
+        <setting type="AltTeamNames" state="enforced" />
+    </enforcedSettings>
+    <recommendedSettings>
+        <civilization>French</civilization>
+        <civilization>Spanish</civilization>
+        <civilization>British</civilization>
+        <civilization>DEItalians</civilization>
+        <civilization>Germans</civilization>
+        <civilization>Russians</civilization>
+    </recommendedSettings>
+</mapinfo>

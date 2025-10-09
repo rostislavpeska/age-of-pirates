@@ -1,0 +1,66 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\revolution\cetbang\textures\korean_bombard_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\russian_cannon\textures\russian_cannon_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\russian_cannon\textures\russian_cannon_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+       <texture name="BaseColor" override="units/asians/shared/irregular/textures/hat_irr_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units/asians/shared/irregular/textures/hat_irr_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units/asians/shared/irregular/textures/hat_irr_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+       <texture name="BaseColor" override="units\asians\shared\peasant\textures\asian_irregular_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\asians\shared\peasant\textures\asian_irregular_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\asians\shared\peasant\textures\asian_irregular_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\asians\shared\peasant\textures\asian_irregular_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\spc\russian_cannon\textures\cannon_brush_matD_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\russian_cannon\textures\cannon_brush_matD_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\russian_cannon\textures\cannon_brush_matD_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\spc\russian_cannon\textures\cannon_loader_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\spc\russian_cannon\textures\cannon_loader_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\spc\russian_cannon\textures\cannon_loader_matA_Masks">
+      </texture>
+      <texture name="Details" override="units\spc\russian_cannon\textures\cannon_loader_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

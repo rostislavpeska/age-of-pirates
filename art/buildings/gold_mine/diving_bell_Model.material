@@ -1,0 +1,58 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_emissive_advanced">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\gold_mine\diving_bell\textures\diving_bell_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\gold_mine\diving_bell\textures\diving_bell_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\gold_mine\diving_bell\textures\diving_bell_mata_masks">
+      </texture>
+      <texture name="Details" override="buildings\gold_mine\diving_bell\textures\diving_bell_mata_details">
+      </texture>
+      <texture name="Emissive" override="buildings\gold_mine\diving_bell\textures\diving_bell_mata_emissive">
+      </texture>
+      <float name="EmissiveIntensity" override="10.0000">
+      </float>
+      <vector4 name="EmissiveColor" override="1.000, 1.000, 0.500, 0.000">
+      </vector4>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\gold_mine\coral_mine\textures\red_coral_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\gold_mine\coral_mine\textures\coral_normals">
+      </texture>
+      <texture name="Masks" override="buildings\gold_mine\coral_mine\textures\red_coral_basecolor">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\gold_mine\coral_mine\textures\yellow_coral_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\gold_mine\coral_mine\textures\coral_normals">
+      </texture>
+      <texture name="Masks" override="buildings\gold_mine\coral_mine\textures\red_coral_basecolor">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\gold_mine\coral_mine\textures\blue_coral_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\gold_mine\coral_mine\textures\coral_normals">
+      </texture>
+      <texture name="Masks" override="buildings\gold_mine\coral_mine\textures\red_coral_basecolor">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

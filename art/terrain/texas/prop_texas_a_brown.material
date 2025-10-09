@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<material>
+	<submaterial name="MatA">
+		<materialdef name="default"/>
+		<parameters>
+			<texture name="BaseColor" override="terrain\texas\textures\brown_big_rock1_basecolor"/>
+			<texture name="Normals" override="terrain\texas\prop_texas_b_export\painter\rockb_low2_defaultmaterial_normals"/>
+			<texture name="Masks" override="terrain\texas\prop_texas_b_export\painter\rockb_low2_defaultmaterial_masks"/>
+		</parameters>
+	</submaterial>
+</material>

@@ -1,4 +1,4 @@
-// Venice 10/2023
+// Adriatic Sea 10/2023
 
 include "mercenaries.xs";
 include "ypAsianInclude.xs";
@@ -17,6 +17,7 @@ void main(void)
   string nativeCiv2 = "maltese";
   string nativeCiv3 = "spcjesuit";
   string nativeCiv4 = "zporthodox";
+  string nativeCiv5 = "auditore";
   string baseMix = "italy_grass";
   string paintMix = "italy_grass_lush";
   string baseTerrain = "borneo\ground_grass4_borneo";
@@ -62,22 +63,29 @@ void main(void)
       if (subCiv0 >= 0)
          rmSetSubCiv(0, nativeCiv1);
 
-		  // Maltese or Orthodox
+		  // Maltese or Auditore
       if (monasteryPlacement == 2){
         subCiv1=rmGetCivID(nativeCiv2);
         if (subCiv1 >= 0)
           rmSetSubCiv(1, nativeCiv2);
       }
       if (monasteryPlacement == 1){
-        subCiv1=rmGetCivID(nativeCiv4);
+        subCiv1=rmGetCivID(nativeCiv5);
         if (subCiv1 >= 0)
-          rmSetSubCiv(1, nativeCiv4);
+          rmSetSubCiv(1, nativeCiv5);
       }
 
-      // Jesuit
-		  subCiv2=rmGetCivID(nativeCiv3);
-      if (subCiv2 >= 0)
-         rmSetSubCiv(2, nativeCiv3);
+      // Jesuit or Orthodox
+      if (monasteryPlacement == 2){
+        subCiv2=rmGetCivID(nativeCiv3);
+        if (subCiv2 >= 0)
+          rmSetSubCiv(2, nativeCiv3);
+      }
+      if (monasteryPlacement == 1){
+        subCiv2=rmGetCivID(nativeCiv4);
+        if (subCiv2 >= 0)
+        rmSetSubCiv(2, nativeCiv4);
+      }
   }
 	
 // Map Basics
@@ -92,8 +100,7 @@ void main(void)
 		playerTiles = 24000;
   if (cNumberNonGaiaPlayers ==1)
 		playerTiles = 64000;
-	if (cNumberNonGaiaPlayers >6)
-		playerTiles = 15000;		
+
 
 	int size=2.0*sqrt(cNumberNonGaiaPlayers*playerTiles);
 	rmEchoInfo("Map size="+size+"m x "+size+"m");
@@ -207,17 +214,17 @@ void main(void)
 	int flagEdgeConstraint = rmCreatePieConstraint("flags away from edge of map", 0.5, 0.5, rmGetMapXSize()-200, rmGetMapXSize()-100, 0, 0, 0);  
   int flagLandShort = rmCreateTerrainDistanceConstraint("flag vs land short", "land", true, 10.0);
 
-    //dk
-    int avoidWater5 = rmCreateTerrainDistanceConstraint("avoid water long", "Land", false, 5.0);
-    int avoidSocket=rmCreateTypeDistanceConstraint("avoid socket", "Socket", 20.0);
-    int avoidSocket2=rmCreateTypeDistanceConstraint("avoid socket long", "Socket", 40.0);
-    int avoidTradeRouteSmall = rmCreateTradeRouteDistanceConstraint("objects avoid trade route small", 6.0);
-    int forestConstraintShort=rmCreateClassDistanceConstraint("object vs. forest", rmClassID("classForest"), 4.0);
-    int avoidHunt2=rmCreateTypeDistanceConstraint("herds avoid herds2", "huntable", 32.0);
-    int avoidHunt3=rmCreateTypeDistanceConstraint("herds avoid herds3", "huntable", 14.0);
-	  int avoidAll2=rmCreateTypeDistanceConstraint("avoid all2", "all", 4.0);
-    int avoidGoldTypeFar = rmCreateTypeDistanceConstraint("avoid gold type  far 2", "gold", 32.0);
-    int circleConstraint2=rmCreatePieConstraint("circle Constraint2", 0.5, 0.5, 0, rmZFractionToMeters(0.48), rmDegreesToRadians(0), rmDegreesToRadians(360));
+  //dk
+  int avoidWater5 = rmCreateTerrainDistanceConstraint("avoid water long", "Land", false, 5.0);
+  int avoidSocket=rmCreateTypeDistanceConstraint("avoid socket", "Socket", 20.0);
+  int avoidSocket2=rmCreateTypeDistanceConstraint("avoid socket long", "Socket", 40.0);
+  int avoidTradeRouteSmall = rmCreateTradeRouteDistanceConstraint("objects avoid trade route small", 6.0);
+  int forestConstraintShort=rmCreateClassDistanceConstraint("object vs. forest", rmClassID("classForest"), 4.0);
+  int avoidHunt2=rmCreateTypeDistanceConstraint("herds avoid herds2", "huntable", 32.0);
+  int avoidHunt3=rmCreateTypeDistanceConstraint("herds avoid herds3", "huntable", 14.0);
+  int avoidAll2=rmCreateTypeDistanceConstraint("avoid all2", "all", 4.0);
+  int avoidGoldTypeFar = rmCreateTypeDistanceConstraint("avoid gold type  far 2", "gold", 32.0);
+  int circleConstraint2=rmCreatePieConstraint("circle Constraint2", 0.5, 0.5, 0, rmZFractionToMeters(0.48), rmDegreesToRadians(0), rmDegreesToRadians(360));
 
   // Avoid Water
   int avoidWater2 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 2.0);
@@ -234,8 +241,13 @@ void main(void)
   int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true, 3.5);
   int avoidControllerShort=rmCreateTypeDistanceConstraint("stay away from Controller Short", "zpSPCWaterSpawnPoint", 25.0);
   int avoidControllerFar=rmCreateTypeDistanceConstraint("stay away from Controller Far", "zpSPCWaterSpawnPoint", 60.0);
-   int avoidTradeSocket=rmCreateTypeDistanceConstraint("stay away from Trade Socket", "zpSPCPortSocket", 10.0);
-   int avoidTradeSocketFar=rmCreateTypeDistanceConstraint("stay away from Trade Socket Far", "zpSPCPortSocket", 35.0);
+  int avoidTradeSocket=rmCreateTypeDistanceConstraint("stay away from Trade Socket", "zpSPCPortSocket", 10.0);
+  int avoidTradeSocketFar=rmCreateTypeDistanceConstraint("stay away from Trade Socket Far", "zpSPCPortSocket", 35.0);
+
+  // Avoid Natives
+  int avoidMaltese=rmCreateTypeDistanceConstraint("stay away from Maltese", "Socket", 20.0);
+  int avoidOrthodox=rmCreateTypeDistanceConstraint("stay away from TOrthodox", "zpSocketOrthodox", 20.0);
+  int avoidJesuit=rmCreateTypeDistanceConstraint("stay away from Jesuit", "zpSocketJesuitEU", 20.0);
 
 // ************************** DEFINE OBJECTS ****************************
 	
@@ -614,6 +626,16 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
   // Text
 	rmSetStatusText("",0.30);
 
+  // Village randomization
+  int middleSufiVillageID1Type = rmRandInt(1, 3);
+  int middleSufiVillageID2Type = rmRandInt(1, 3);
+  int middleSufiVillageID3Type = rmRandInt(1, 3);
+  int middleSufiVillageID4Type = rmRandInt(1, 5);
+  int middleSufiVillageID5Type = rmRandInt(1, 5);
+  int middleSufiVillageID6Type = rmRandInt(1, 5);
+  int orthodoxMonastery1Type = rmRandInt(4, 6);
+  int orthodoxMonastery2Type = rmRandInt(4, 6);
+  int orthodoxMonastery3Type = rmRandInt(4, 6);
 
   // Team Jesuit
 
@@ -627,14 +649,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
     rmSetObjectDefMinDistance(zenControllerID1, 0.0);
     rmAddObjectDefConstraint(zenControllerID1, playerEdgeConstraint); 
 
-    if (monasteryPlacement == 1)
-    {
-        rmPlaceObjectDefAtLoc(zenControllerID1, 0, 0.2, 0.25);
-    }
-    else 
-    {
-        rmPlaceObjectDefAtLoc(zenControllerID1, 0, 0.8, 0.25);
-    }
+    rmPlaceObjectDefAtLoc(zenControllerID1, 0, 0.8, 0.25);
 
     vector zenControllerLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(zenControllerID1, 0));
 
@@ -668,8 +683,10 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
     rmBuildArea(westIslandVillage1Terrain);
 
     int middleSufiVillageID1 = -1;
-    int middleSufiVillageID1Type = rmRandInt(1, 3);
-    middleSufiVillageID1 = rmCreateGrouping("native1 city", "Jesuit_Cathedral_EU_0" + middleSufiVillageID1Type);
+    if (monasteryPlacement == 2)
+      middleSufiVillageID1 = rmCreateGrouping("native1 city", "Jesuit_Cathedral_EU_0" + middleSufiVillageID1Type);
+    else
+      middleSufiVillageID1 = rmCreateGrouping("native1 city", "Orthodox_Monastery0" + orthodoxMonastery1Type);
     rmAddGroupingConstraint(middleSufiVillageID1, avoidImpassableLand);
     rmPlaceGroupingAtLoc(middleSufiVillageID1, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc1)), 1);
 
@@ -683,14 +700,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       rmAddObjectDefConstraint(zenControllerID2, avoidController); 
       rmAddObjectDefConstraint(zenControllerID2, playerEdgeConstraint); 
 
-      if (monasteryPlacement == 1)
-      {
-      rmPlaceObjectDefAtLoc(zenControllerID2, 0, 0.2, 0.65);
-      }
-      else 
-      {
       rmPlaceObjectDefAtLoc(zenControllerID2, 0, 0.8, 0.65);
-      }
 
       vector zenControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(zenControllerID2, 0));
 
@@ -727,8 +737,10 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       rmBuildArea(westIslandVillage2Terrain);
 
       int middleSufiVillageID2 = -1;
-      int middleSufiVillageID2Type = rmRandInt(1,3);
-      middleSufiVillageID2 = rmCreateGrouping("native2 city", "Jesuit_Cathedral_EU_0"+middleSufiVillageID2Type);
+      if (monasteryPlacement == 2)
+        middleSufiVillageID2 = rmCreateGrouping("native2 city", "Jesuit_Cathedral_EU_0" + middleSufiVillageID2Type);
+      else
+        middleSufiVillageID2 = rmCreateGrouping("native2 city", "Orthodox_Monastery0" + orthodoxMonastery2Type);
       rmAddGroupingConstraint(middleSufiVillageID2, avoidImpassableLand);
       rmPlaceGroupingAtLoc(middleSufiVillageID2, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc2)), 1);
     }
@@ -743,14 +755,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       rmAddObjectDefConstraint(zenControllerID3, avoidController);
       rmAddObjectDefConstraint(zenControllerID3, playerEdgeConstraint);
 
-      if (monasteryPlacement == 1)
-      {
-          rmPlaceObjectDefAtLoc(zenControllerID3, 0, 0.15, 0.45);
-      }
-      else 
-      {
-          rmPlaceObjectDefAtLoc(zenControllerID3, 0, 0.85, 0.45);
-      }
+      rmPlaceObjectDefAtLoc(zenControllerID3, 0, 0.85, 0.45);
 
       vector zenControllerLoc3 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(zenControllerID3, 0));
 
@@ -784,8 +789,10 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       rmBuildArea(westIslandVillage3Terrain);
 
       int middleSufiVillageID3 = -1;
-      int middleSufiVillageID3Type = rmRandInt(1, 3);
-      middleSufiVillageID3 = rmCreateGrouping("native3 city", "Jesuit_Cathedral_EU_0" + middleSufiVillageID3Type);
+      if (monasteryPlacement == 2)
+        middleSufiVillageID3 = rmCreateGrouping("native3 city", "Jesuit_Cathedral_EU_0" + middleSufiVillageID3Type);
+      else
+        middleSufiVillageID3 = rmCreateGrouping("native3 city", "Orthodox_Monastery0" + orthodoxMonastery3Type);
       rmAddGroupingConstraint(middleSufiVillageID3, avoidImpassableLand);
       rmPlaceGroupingAtLoc(middleSufiVillageID3, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc3)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc3)), 1);
     }
@@ -801,14 +808,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
     rmAddObjectDefConstraint(zenControllerID4, avoidController);
     rmAddObjectDefConstraint(zenControllerID4, playerEdgeConstraint);
 
-    if (monasteryPlacement == 2)
-    {
-        rmPlaceObjectDefAtLoc(zenControllerID4, 0, 0.2, 0.25);
-    }
-    else 
-    {
-        rmPlaceObjectDefAtLoc(zenControllerID4, 0, 0.8, 0.25);
-    }
+    rmPlaceObjectDefAtLoc(zenControllerID4, 0, 0.2, 0.25);
 
     vector zenControllerLoc4 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(zenControllerID4, 0));
 
@@ -842,11 +842,10 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
     rmBuildArea(westIslandVillage4Terrain);
 
     int middleSufiVillageID4 = -1;
-    int middleSufiVillageID4Type = rmRandInt(1, 5);
     if (monasteryPlacement == 2)
       middleSufiVillageID4 = rmCreateGrouping("native4 city", "maltese_village0" + middleSufiVillageID4Type);
     else
-      middleSufiVillageID4 = rmCreateGrouping("native4 city", "Orthodox_Monastery0" + middleSufiVillageID4Type);
+      middleSufiVillageID4 = rmCreateGrouping("native4 city", "Palace_Auditore_0" + middleSufiVillageID1Type);
     rmAddGroupingConstraint(middleSufiVillageID4, avoidImpassableLand);
     rmPlaceGroupingAtLoc(middleSufiVillageID4, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc4)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc4)), 1);
 
@@ -860,14 +859,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       rmAddObjectDefConstraint(zenControllerID5, avoidController);
       rmAddObjectDefConstraint(zenControllerID5, playerEdgeConstraint);
 
-      if (monasteryPlacement == 2)
-      {
-          rmPlaceObjectDefAtLoc(zenControllerID5, 0, 0.2, 0.65);
-      }
-      else 
-      {
-          rmPlaceObjectDefAtLoc(zenControllerID5, 0, 0.8, 0.65);
-      }
+      rmPlaceObjectDefAtLoc(zenControllerID5, 0, 0.2, 0.65);
 
       vector zenControllerLoc5 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(zenControllerID5, 0));
 
@@ -901,11 +893,10 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       rmBuildArea(westIslandVillage5Terrain);
 
       int middleSufiVillageID5 = -1;
-      int middleSufiVillageID5Type = rmRandInt(1, 5);
       if (monasteryPlacement == 2)
         middleSufiVillageID5 = rmCreateGrouping("native5 city", "maltese_village0" + middleSufiVillageID5Type);
       else
-        middleSufiVillageID5 = rmCreateGrouping("native5 city", "Orthodox_Monastery0" + middleSufiVillageID5Type);
+        middleSufiVillageID5 = rmCreateGrouping("native5 city", "Palace_Auditore_0" + middleSufiVillageID2Type);
       rmAddGroupingConstraint(middleSufiVillageID5, avoidImpassableLand);
       rmPlaceGroupingAtLoc(middleSufiVillageID5, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc5)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc5)), 1);
     }
@@ -918,14 +909,7 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       rmAddObjectDefConstraint(zenControllerID6, avoidController);
       rmAddObjectDefConstraint(zenControllerID6, playerEdgeConstraint);
 
-      if (monasteryPlacement == 2)
-      {
-          rmPlaceObjectDefAtLoc(zenControllerID6, 0, 0.15, 0.45);
-      }
-      else 
-      {
-          rmPlaceObjectDefAtLoc(zenControllerID6, 0, 0.85, 0.45);
-      }
+      rmPlaceObjectDefAtLoc(zenControllerID6, 0, 0.15, 0.45);
 
       vector zenControllerLoc6 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(zenControllerID6, 0));
 
@@ -959,11 +943,10 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       rmBuildArea(westIslandVillage6Terrain);
 
       int middleSufiVillageID6 = -1;
-      int middleSufiVillageID6Type = rmRandInt(1, 5);
       if (monasteryPlacement == 2)
         middleSufiVillageID6 = rmCreateGrouping("native6 city", "maltese_village0" + middleSufiVillageID6Type);
       else
-        middleSufiVillageID6 = rmCreateGrouping("native6 city", "Orthodox_Monastery0" + middleSufiVillageID6Type);
+        middleSufiVillageID6 = rmCreateGrouping("native6 city", "Palace_Auditore_0" + middleSufiVillageID3Type);
       rmAddGroupingConstraint(middleSufiVillageID6, avoidImpassableLand);
       rmPlaceGroupingAtLoc(middleSufiVillageID6, 0, rmXMetersToFraction(xsVectorGetX(zenControllerLoc6)), rmZMetersToFraction(xsVectorGetZ(zenControllerLoc6)), 1);
 
@@ -1048,31 +1031,54 @@ int avoidStartingGold_dk =rmCreateTypeDistanceConstraint("starting berries avoid
       float teamStartLoc = rmRandFloat(0.0, 1.0);
 		if(cNumberTeams > 2)
 		{
-			rmSetPlacementSection(0.80, 0.60);
+			rmSetPlacementSection(0.15, 0.85);
 			rmSetTeamSpacingModifier(0.75);
 			rmPlacePlayersCircular(0.22, 0.32, 0);
 		}
 		else
 		{
+      if (cNumberNonGaiaPlayers >= 6) {
+			// 6 players in 2 teams
+        if (teamStartLoc > 0.5)
+        {
+          rmSetPlacementTeam(0);
+          rmSetPlacementSection(0.60, 0.85);
+          rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
+          rmSetPlacementTeam(1);
+          rmSetPlacementSection(0.15, 0.40);
+          rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
+        }
+        else
+        {
+          rmSetPlacementTeam(0);
+          rmSetPlacementSection(0.15, 0.40);
+          rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
+          rmSetPlacementTeam(1);
+          rmSetPlacementSection(0.60, 0.85);
+          rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
+        }
+      }
+      else {
 			// 4 players in 2 teams
-			if (teamStartLoc > 0.5)
-			{
-				rmSetPlacementTeam(0);
-				rmSetPlacementSection(0.60, 0.80);
-				rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
-				rmSetPlacementTeam(1);
-				rmSetPlacementSection(0.20, 0.40);
-				rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
-			}
-			else
-			{
-				rmSetPlacementTeam(0);
-				rmSetPlacementSection(0.20, 0.40);
-				rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
-				rmSetPlacementTeam(1);
-				rmSetPlacementSection(0.60, 0.80);
-				rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
-			}
+        if (teamStartLoc > 0.5)
+        {
+          rmSetPlacementTeam(0);
+          rmSetPlacementSection(0.60, 0.80);
+          rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
+          rmSetPlacementTeam(1);
+          rmSetPlacementSection(0.20, 0.40);
+          rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
+        }
+        else
+        {
+          rmSetPlacementTeam(0);
+          rmSetPlacementSection(0.20, 0.40);
+          rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
+          rmSetPlacementTeam(1);
+          rmSetPlacementSection(0.60, 0.80);
+          rmPlacePlayersCircular(0.22, 0.32, rmDegreesToRadians(5.0));
+        }
+      }
 		}
 
 
@@ -1113,6 +1119,7 @@ int TCfloat = -1;
   rmAddObjectDefConstraint(startingTCID, avoidWater10);
   rmAddObjectDefConstraint(startingTCID, avoidBonusIslands);
   rmAddObjectDefConstraint(startingTCID, avoidMountains);
+  rmAddObjectDefConstraint(startingTCID, avoidTownCenterFar);
 	rmAddObjectDefToClass(startingTCID, rmClassID("player"));
 
   // Text
@@ -1227,6 +1234,9 @@ else
   rmAddObjectDefConstraint(berriesID, shortAvoidImportantItem);
   rmAddObjectDefConstraint(berriesID, shortAvoidResource);
   rmAddObjectDefConstraint(berriesID, eastIslandConstraint);
+  rmAddObjectDefConstraint(berriesID, shortAvoidResource);
+  rmAddObjectDefConstraint(berriesID, avoidMaltese);
+  rmAddObjectDefConstraint(berriesID, avoidOrthodox);
   rmPlaceObjectDefPerPlayer(berriesID, false, 1.5);
 
   int berriesID2=rmCreateObjectDef("berries 2");
@@ -1239,6 +1249,9 @@ else
   rmAddObjectDefConstraint(berriesID2, shortAvoidImportantItem);
   rmAddObjectDefConstraint(berriesID2, shortAvoidResource);
   rmAddObjectDefConstraint(berriesID2, westIslandConstraint);
+  rmAddObjectDefConstraint(berriesID2, avoidMaltese);
+  rmAddObjectDefConstraint(berriesID2, avoidOrthodox);
+  rmAddObjectDefConstraint(berriesID2, avoidJesuit);
   rmPlaceObjectDefPerPlayer(berriesID2, false, 1.5);
   
   // Text
@@ -1784,7 +1797,7 @@ if (monasteryPlacement == 1){
   rmSetTriggerConditionParamInt("PlayerID",k);
   rmAddTriggerEffect("ZP Set Tech Status (XS)");
   rmSetTriggerEffectParamInt("PlayerID",k);
-  rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffOrthodox"); //operator
+  rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffOrthodoxBalkan"); //operator
   rmSetTriggerEffectParamInt("Status",2);
   rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);

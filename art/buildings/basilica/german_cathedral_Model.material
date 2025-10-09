@@ -1,0 +1,38 @@
+<material>
+  <submaterial name="matx">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\german_cathedral_gold_orange_1">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\german_cathedral_bumpspec1">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\german_cathedral_masks_1">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="maty">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\german_cathedral_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\german_cathedral_matb_normals">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\german_cathedral_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matz">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\basilica\textures\german_cathedral_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\basilica\textures\german_cathedral_matb_normals">
+      </texture>
+      <texture name="Masks" override="buildings\basilica\textures\german_cathedral_matb_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

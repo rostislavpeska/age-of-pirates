@@ -1,0 +1,226 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>21</width>
+	<height>21</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="41" posx="-11.0000" posz="-9.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Farm</unit>
+		<unit variation="119" posx="11.0000" posz="-7.0000" orientx="0.0000" orienty="0.0000" orientz="1.0000">Farm</unit>
+		<unit variation="32" posx="-1.3980" posz="-10.8201" orientx="-0.0475" orienty="0.0000" orientz="0.9989">SMIncanCookpot</unit>
+		<unit variation="230" posx="1.9531" posz="-7.5172" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="116" posx="1.7278" posz="-5.6752" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="0" posx="-1.1170" posz="-5.3696" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="26" posx="-0.8911" posz="-1.7190" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">NativeHouseAztec</unit>
+		<unit variation="125" posx="-11.0000" posz="7.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Farm</unit>
+		<unit variation="178" posx="11.0000" posz="9.0000" orientx="0.0000" orienty="0.0000" orientz="1.0000">Farm</unit>
+		<unit variation="50" posx="7.0639" posz="3.2711" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="38" posx="2.5708" posz="5.9476" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="242" posx="-2.2986" posz="7.0898" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="155" posx="-0.6704" posz="7.0219" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="178" posx="2.3877" posz="7.7649" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsNative</unit>
+		<unit variation="212" posx="-0.3983" posz="10.4332" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeHouseAztec</unit>
+	</units>
+	<tiles>
+		<tilegroup type="Shoreline" subtype="great_lakes\ground_shoreline1_gls">
+			<block startx="-10" startz="-10" endx="-10" endz="-6"></block>
+			<block startx="-9" startz="-10" endx="-9" endz="-9"></block>
+			<block startx="-8" startz="-10" endx="-8" endz="-9"></block>
+			<block startx="-7" startz="-10" endx="-7" endz="-10"></block>
+			<block startx="-6" startz="-10" endx="-6" endz="-10"></block>
+			<block startx="-10" startz="3" endx="-10" endz="10"></block>
+			<block startx="-9" startz="10" endx="-9" endz="10"></block>
+			<block startx="-8" startz="10" endx="-8" endz="10"></block>
+			<block startx="-7" startz="10" endx="-7" endz="10"></block>
+			<block startx="-6" startz="10" endx="-6" endz="10"></block>
+			<block startx="-10" startz="-5" endx="-10" endz="2"></block>
+			<block startx="-9" startz="0" endx="-9" endz="0"></block>
+			<block startx="-5" startz="10" endx="-5" endz="10"></block>
+			<block startx="-4" startz="10" endx="-4" endz="10"></block>
+			<block startx="-3" startz="10" endx="-3" endz="10"></block>
+			<block startx="-2" startz="10" endx="-2" endz="10"></block>
+			<block startx="-1" startz="10" endx="-1" endz="10"></block>
+			<block startx="0" startz="10" endx="0" endz="10"></block>
+			<block startx="1" startz="10" endx="1" endz="10"></block>
+			<block startx="2" startz="10" endx="2" endz="10"></block>
+			<block startx="3" startz="10" endx="3" endz="10"></block>
+			<block startx="4" startz="10" endx="4" endz="10"></block>
+			<block startx="5" startz="10" endx="5" endz="10"></block>
+			<block startx="6" startz="10" endx="6" endz="10"></block>
+			<block startx="7" startz="10" endx="7" endz="10"></block>
+			<block startx="8" startz="10" endx="8" endz="10"></block>
+			<block startx="9" startz="9" endx="9" endz="10"></block>
+			<block startx="10" startz="3" endx="10" endz="10"></block>
+			<block startx="9" startz="-1" endx="9" endz="0"></block>
+			<block startx="10" startz="-5" endx="10" endz="2"></block>
+			<block startx="-5" startz="-10" endx="-5" endz="-10"></block>
+			<block startx="-4" startz="-10" endx="-4" endz="-10"></block>
+			<block startx="-3" startz="-10" endx="-3" endz="-10"></block>
+			<block startx="-2" startz="-10" endx="-2" endz="-10"></block>
+			<block startx="-1" startz="-10" endx="-1" endz="-9"></block>
+			<block startx="0" startz="-10" endx="0" endz="-9"></block>
+			<block startx="1" startz="-10" endx="1" endz="-10"></block>
+			<block startx="2" startz="-10" endx="2" endz="-10"></block>
+			<block startx="3" startz="-10" endx="3" endz="-10"></block>
+			<block startx="4" startz="-10" endx="4" endz="-10"></block>
+			<block startx="5" startz="-10" endx="5" endz="-10"></block>
+			<block startx="6" startz="-10" endx="6" endz="-10"></block>
+			<block startx="7" startz="-10" endx="7" endz="-10"></block>
+			<block startx="8" startz="-10" endx="8" endz="-10"></block>
+			<block startx="9" startz="-10" endx="9" endz="-8"></block>
+			<block startx="10" startz="-10" endx="10" endz="-6"></block>
+		</tilegroup>
+		<tilegroup type="Shoreline" subtype="great_lakes\ground_shoreline2_gls">
+			<block startx="-9" startz="-8" endx="-9" endz="-6"></block>
+			<block startx="-8" startz="-8" endx="-8" endz="-8"></block>
+			<block startx="-7" startz="-9" endx="-7" endz="-8"></block>
+			<block startx="-6" startz="-9" endx="-6" endz="-9"></block>
+			<block startx="-9" startz="3" endx="-9" endz="9"></block>
+			<block startx="-8" startz="9" endx="-8" endz="9"></block>
+			<block startx="-7" startz="9" endx="-7" endz="9"></block>
+			<block startx="-6" startz="9" endx="-6" endz="9"></block>
+			<block startx="-9" startz="-5" endx="-9" endz="-1"></block>
+			<block startx="-9" startz="1" endx="-9" endz="2"></block>
+			<block startx="-8" startz="-1" endx="-8" endz="1"></block>
+			<block startx="-5" startz="9" endx="-5" endz="9"></block>
+			<block startx="-4" startz="9" endx="-4" endz="9"></block>
+			<block startx="-3" startz="9" endx="-3" endz="9"></block>
+			<block startx="-2" startz="9" endx="-2" endz="9"></block>
+			<block startx="-1" startz="9" endx="-1" endz="9"></block>
+			<block startx="0" startz="9" endx="0" endz="9"></block>
+			<block startx="1" startz="9" endx="1" endz="9"></block>
+			<block startx="2" startz="9" endx="2" endz="9"></block>
+			<block startx="3" startz="9" endx="3" endz="9"></block>
+			<block startx="4" startz="9" endx="4" endz="9"></block>
+			<block startx="5" startz="9" endx="5" endz="9"></block>
+			<block startx="6" startz="9" endx="6" endz="9"></block>
+			<block startx="7" startz="9" endx="7" endz="9"></block>
+			<block startx="8" startz="8" endx="8" endz="9"></block>
+			<block startx="9" startz="3" endx="9" endz="8"></block>
+			<block startx="8" startz="-2" endx="8" endz="1"></block>
+			<block startx="9" startz="-5" endx="9" endz="-2"></block>
+			<block startx="9" startz="1" endx="9" endz="2"></block>
+			<block startx="-5" startz="-9" endx="-5" endz="-9"></block>
+			<block startx="-4" startz="-9" endx="-4" endz="-9"></block>
+			<block startx="-3" startz="-9" endx="-3" endz="-9"></block>
+			<block startx="-2" startz="-9" endx="-2" endz="-8"></block>
+			<block startx="-1" startz="-8" endx="-1" endz="-8"></block>
+			<block startx="0" startz="-8" endx="0" endz="-8"></block>
+			<block startx="1" startz="-9" endx="1" endz="-8"></block>
+			<block startx="2" startz="-9" endx="2" endz="-9"></block>
+			<block startx="3" startz="-9" endx="3" endz="-9"></block>
+			<block startx="4" startz="-9" endx="4" endz="-9"></block>
+			<block startx="5" startz="-9" endx="5" endz="-9"></block>
+			<block startx="6" startz="-9" endx="6" endz="-9"></block>
+			<block startx="7" startz="-9" endx="7" endz="-9"></block>
+			<block startx="8" startz="-9" endx="8" endz="-7"></block>
+			<block startx="9" startz="-7" endx="9" endz="-6"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="texas\Tree_gravel_tex">
+			<block startx="-8" startz="-7" endx="-8" endz="-6"></block>
+			<block startx="-7" startz="-7" endx="-7" endz="-7"></block>
+			<block startx="-6" startz="-8" endx="-6" endz="-7"></block>
+			<block startx="-8" startz="3" endx="-8" endz="8"></block>
+			<block startx="-7" startz="8" endx="-7" endz="8"></block>
+			<block startx="-6" startz="8" endx="-6" endz="8"></block>
+			<block startx="-8" startz="-5" endx="-8" endz="-2"></block>
+			<block startx="-8" startz="2" endx="-8" endz="2"></block>
+			<block startx="-7" startz="-2" endx="-7" endz="2"></block>
+			<block startx="-5" startz="8" endx="-5" endz="8"></block>
+			<block startx="-4" startz="8" endx="-4" endz="8"></block>
+			<block startx="-3" startz="8" endx="-3" endz="8"></block>
+			<block startx="-2" startz="8" endx="-2" endz="8"></block>
+			<block startx="-1" startz="8" endx="-1" endz="8"></block>
+			<block startx="0" startz="8" endx="0" endz="8"></block>
+			<block startx="1" startz="8" endx="1" endz="8"></block>
+			<block startx="2" startz="8" endx="2" endz="8"></block>
+			<block startx="3" startz="8" endx="3" endz="8"></block>
+			<block startx="4" startz="8" endx="4" endz="8"></block>
+			<block startx="5" startz="8" endx="5" endz="8"></block>
+			<block startx="6" startz="8" endx="6" endz="8"></block>
+			<block startx="7" startz="7" endx="7" endz="8"></block>
+			<block startx="8" startz="3" endx="8" endz="7"></block>
+			<block startx="7" startz="-3" endx="7" endz="2"></block>
+			<block startx="8" startz="-5" endx="8" endz="-3"></block>
+			<block startx="8" startz="2" endx="8" endz="2"></block>
+			<block startx="-5" startz="-8" endx="-5" endz="-8"></block>
+			<block startx="-4" startz="-8" endx="-4" endz="-8"></block>
+			<block startx="-3" startz="-8" endx="-3" endz="-7"></block>
+			<block startx="-2" startz="-7" endx="-2" endz="-7"></block>
+			<block startx="-1" startz="-7" endx="-1" endz="-7"></block>
+			<block startx="0" startz="-7" endx="0" endz="-7"></block>
+			<block startx="1" startz="-7" endx="1" endz="-7"></block>
+			<block startx="2" startz="-8" endx="2" endz="-7"></block>
+			<block startx="3" startz="-8" endx="3" endz="-8"></block>
+			<block startx="4" startz="-8" endx="4" endz="-8"></block>
+			<block startx="5" startz="-8" endx="5" endz="-8"></block>
+			<block startx="6" startz="-8" endx="6" endz="-8"></block>
+			<block startx="7" startz="-8" endx="7" endz="-6"></block>
+			<block startx="8" startz="-6" endx="8" endz="-6"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">
+			<block startx="-7" startz="-6" endx="-7" endz="-6"></block>
+			<block startx="-6" startz="-6" endx="-6" endz="-6"></block>
+			<block startx="-7" startz="3" endx="-7" endz="7"></block>
+			<block startx="-6" startz="3" endx="-6" endz="7"></block>
+			<block startx="-7" startz="-5" endx="-7" endz="-3"></block>
+			<block startx="-6" startz="-5" endx="-6" endz="2"></block>
+			<block startx="-5" startz="-5" endx="2" endz="2"></block>
+			<block startx="-5" startz="3" endx="-5" endz="7"></block>
+			<block startx="-4" startz="3" endx="-4" endz="7"></block>
+			<block startx="-3" startz="3" endx="-3" endz="7"></block>
+			<block startx="-2" startz="3" endx="-2" endz="7"></block>
+			<block startx="-1" startz="3" endx="-1" endz="7"></block>
+			<block startx="0" startz="3" endx="0" endz="7"></block>
+			<block startx="1" startz="3" endx="1" endz="7"></block>
+			<block startx="2" startz="3" endx="2" endz="7"></block>
+			<block startx="3" startz="3" endx="3" endz="7"></block>
+			<block startx="4" startz="3" endx="4" endz="7"></block>
+			<block startx="5" startz="3" endx="5" endz="7"></block>
+			<block startx="6" startz="3" endx="6" endz="7"></block>
+			<block startx="7" startz="3" endx="7" endz="6"></block>
+			<block startx="3" startz="-5" endx="3" endz="2"></block>
+			<block startx="4" startz="-5" endx="4" endz="2"></block>
+			<block startx="5" startz="-5" endx="5" endz="2"></block>
+			<block startx="6" startz="-5" endx="6" endz="2"></block>
+			<block startx="7" startz="-5" endx="7" endz="-4"></block>
+			<block startx="-5" startz="-7" endx="-5" endz="-6"></block>
+			<block startx="-4" startz="-7" endx="-4" endz="-6"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="-6"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="-6"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="-6"></block>
+			<block startx="0" startz="-6" endx="0" endz="-6"></block>
+			<block startx="1" startz="-6" endx="1" endz="-6"></block>
+			<block startx="2" startz="-6" endx="2" endz="-6"></block>
+			<block startx="3" startz="-7" endx="3" endz="-6"></block>
+			<block startx="4" startz="-7" endx="4" endz="-6"></block>
+			<block startx="5" startz="-7" endx="5" endz="-6"></block>
+			<block startx="6" startz="-7" endx="6" endz="-6"></block>
+		</tilegroup>
+		<heights>
+			<tiles x="-10" z="-10">-0.018 -0.244 -0.235 -0.089 0.006 0.006 0.006 -0.089 -0.235 -0.244 -0.244 -0.244 -0.244 -0.244 -0.244 -0.244 -0.244 -0.244 -0.244 -0.018 -0.018 </tiles>
+			<tiles x="-10" z="-9">-0.018 -0.244 -0.089 0.289 0.476 0.479 0.478 0.300 -0.060 -0.220 -0.244 -0.203 -0.090 0.019 0.086 0.162 0.162 0.118 -0.018 -0.011 -0.018 </tiles>
+			<tiles x="-10" z="-8">-0.018 -0.238 0.142 0.563 0.720 0.720 0.720 0.665 0.373 0.132 0.010 0.153 0.397 0.602 0.650 0.686 0.683 0.650 0.491 0.182 -0.018 </tiles>
+			<tiles x="-10" z="-7">-0.018 -0.147 0.387 0.702 0.720 0.720 0.720 0.726 0.742 0.756 0.757 0.758 0.758 0.752 0.738 0.731 0.731 0.731 0.738 0.329 -0.018 </tiles>
+			<tiles x="-10" z="-6">-0.018 -0.105 0.558 0.724 0.720 0.720 0.720 0.727 0.745 0.754 0.755 0.755 0.757 0.752 0.738 0.731 0.731 0.731 0.738 0.390 -0.018 </tiles>
+			<tiles x="-10" z="-5">-0.018 -0.027 0.638 0.726 0.720 0.720 0.720 0.729 0.748 0.754 0.754 0.754 0.756 0.752 0.738 0.731 0.731 0.731 0.738 0.427 -0.018 </tiles>
+			<tiles x="-10" z="-4">-0.018 -0.067 0.636 0.726 0.720 0.720 0.720 0.729 0.748 0.754 0.754 0.754 0.756 0.751 0.738 0.731 0.731 0.731 0.738 0.417 -0.017 </tiles>
+			<tiles x="-10" z="-3">-0.018 -0.014 0.650 0.726 0.720 0.720 0.720 0.730 0.749 0.754 0.754 0.754 0.756 0.751 0.738 0.731 0.731 0.731 0.738 0.440 -0.016 </tiles>
+			<tiles x="-10" z="-2">-0.018 -0.047 0.622 0.729 0.726 0.726 0.726 0.738 0.751 0.753 0.754 0.754 0.755 0.752 0.739 0.731 0.731 0.731 0.738 0.373 -0.015 </tiles>
+			<tiles x="-10" z="-1">-0.018 -0.088 0.558 0.736 0.737 0.737 0.738 0.744 0.753 0.754 0.754 0.754 0.754 0.752 0.736 0.731 0.731 0.731 0.734 0.323 -0.018 </tiles>
+			<tiles x="-10" z="0">-0.018 -0.185 0.416 0.739 0.743 0.743 0.744 0.746 0.753 0.754 0.754 0.754 0.754 0.747 0.728 0.731 0.731 0.731 0.724 0.286 -0.018 </tiles>
+			<tiles x="-10" z="1">-0.018 -0.220 0.342 0.742 0.743 0.743 0.744 0.747 0.753 0.754 0.754 0.754 0.754 0.744 0.723 0.731 0.731 0.731 0.719 0.387 -0.018 </tiles>
+			<tiles x="-10" z="2">-0.018 -0.130 0.456 0.745 0.743 0.743 0.744 0.749 0.754 0.754 0.754 0.754 0.754 0.746 0.715 0.713 0.713 0.713 0.710 0.497 -0.001 </tiles>
+			<tiles x="-10" z="3">-0.018 -0.106 0.550 0.747 0.743 0.743 0.743 0.751 0.755 0.755 0.755 0.755 0.755 0.751 0.706 0.679 0.679 0.679 0.693 0.540 0.011 </tiles>
+			<tiles x="-10" z="4">-0.018 -0.059 0.622 0.747 0.743 0.743 0.744 0.752 0.757 0.757 0.757 0.757 0.757 0.755 0.713 0.660 0.660 0.660 0.686 0.575 0.016 </tiles>
+			<tiles x="-10" z="5">-0.018 -0.111 0.646 0.747 0.743 0.743 0.744 0.753 0.757 0.757 0.757 0.757 0.757 0.755 0.713 0.660 0.660 0.660 0.686 0.551 0.009 </tiles>
+			<tiles x="-10" z="6">-0.018 -0.055 0.661 0.747 0.743 0.743 0.744 0.753 0.757 0.757 0.757 0.757 0.757 0.755 0.713 0.660 0.660 0.660 0.686 0.558 0.005 </tiles>
+			<tiles x="-10" z="7">-0.018 -0.111 0.620 0.747 0.743 0.743 0.744 0.753 0.757 0.757 0.757 0.757 0.757 0.755 0.713 0.660 0.660 0.660 0.686 0.476 -0.015 </tiles>
+			<tiles x="-10" z="8">-0.018 -0.139 0.527 0.747 0.743 0.743 0.743 0.752 0.757 0.757 0.757 0.757 0.757 0.753 0.708 0.660 0.660 0.660 0.686 0.336 -0.017 </tiles>
+			<tiles x="-10" z="9">-0.018 -0.009 0.297 0.658 0.727 0.732 0.730 0.718 0.680 0.685 0.675 0.682 0.685 0.662 0.644 0.660 0.660 0.660 0.566 0.222 -0.018 </tiles>
+			<tiles x="-10" z="10">-0.018 -0.018 -0.008 0.153 0.268 0.283 0.271 0.189 0.039 0.087 0.091 0.117 0.114 0.173 0.399 0.510 0.514 0.503 0.368 0.091 -0.018 </tiles>
+		</heights>
+	</tiles>
+</grouping>

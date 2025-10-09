@@ -1,11 +1,11 @@
 <protounitsounddef>
   <protounit name="zpNatCossack">
     <soundtype name="Select">
-      <soundset name="RussianCossackSelect">
+      <soundset name="RussianGrenadierSelect">
       </soundset>
     </soundtype>
     <soundtype name="Grunt">
-      <soundset name="CavalryGrunt">
+      <soundset name="GenericMaleGrunt">
       </soundset>
     </soundtype>
     <soundtype name="Death">
@@ -19,11 +19,11 @@
     <soundtype name="Acknowledge">
       <targetlogic>
         <choice name="default">
-          <soundset name="RussianCossackAcknowledge">
+          <soundset name="RussianGrenadierAcknowledge">
           </soundset>
         </choice>
         <choice name="enemy">
-          <soundset name="RussianCossackAttack">
+          <soundset name="RussianGrenadierAttack">
           </soundset>
         </choice>
       </targetlogic>

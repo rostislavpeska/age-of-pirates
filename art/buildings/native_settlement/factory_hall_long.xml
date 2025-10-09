@@ -1,0 +1,14 @@
+<!-- converted from XMB to XML -->
+
+<animfile>
+	<component>
+		building
+		<assetreference type="GrannyModel">
+			<file>buildings\native_settlement\palaces\factory_hall_long_Model</file>
+		</assetreference>
+	</component>
+	<anim>
+		Idle
+		<component>building</component>
+	</anim>
+</animfile>

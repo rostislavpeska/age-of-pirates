@@ -19,7 +19,8 @@ rule initializePirateRules
 active
 minInterval 1
 {
-   // AssertiveWall: Check for Pirate Maps and set gStartOnDifferentIslands true for all of them
+   // Water Maps %%%%%%%%%%%%%%%%%%%%%%%
+   // AssertiveWall: Age of Pirates maps that we want to count as Starting on Different Islands
    if (cRandomMapName == "zpburma_b" ||
        cRandomMapName == "zpcoldwar" ||
        cRandomMapName == "zpdeadsea" ||
@@ -28,11 +29,17 @@ minInterval 1
        cRandomMapName == "zpmalta_castles" ||
        cRandomMapName == "zpmalta" ||
        cRandomMapName == "zpphilippines" ||
+       cRandomMapName == "zptasmania" ||
        cRandomMapName == "zptortuga" ||
        cRandomMapName == "zptreasureisland" ||
        cRandomMapName == "zpvenice" ||
        cRandomMapName == "zpmediterranean" ||
-       cRandomMapName == "zpzealand")
+       cRandomMapName == "zpzealand" ||
+       cRandomMapName == "zpcookislands" ||
+       cRandomMapName == "zpbarrierreef" ||
+       cRandomMapName == "zpvenicecity" ||
+       cRandomMapName == "zpcaribbeanwars" ||
+       cRandomMapName == "zpiceland")
    {
       gStartOnDifferentIslands = true;
       gIsPirateMap = true;
@@ -49,8 +56,11 @@ minInterval 1
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
    }
 
+   // Naval Maps %%%%%%%%%%%%%%%%%%%%%%%
    // AssertiveWall: Naval, but not starting on different islands
-      if (cRandomMapName == "zphawaii")
+   if (cRandomMapName == "zphawaii" ||
+       cRandomMapName == "zpcivilwar" ||
+       cRandomMapName == "zpelbe")
    {
       gIsPirateMap = true;
       gNavyMap = true;
@@ -67,11 +77,14 @@ minInterval 1
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
    }
 
-   // AssertiveWall: Land Maps
+   // Land Maps %%%%%%%%%%%%%%%%%%%%%%%
    if (cRandomMapName == "winterwonderlandii" ||
        cRandomMapName == "zpwildwest" ||
        cRandomMapName == "zpmississippi" ||
-       cRandomMapName == "zpwwcanyon")
+       cRandomMapName == "zpwwcanyon" ||
+       cRandomMapName == "zpgrinch" ||
+       cRandomMapName == "zpkingofbohemia" ||
+       cRandomMapName == "zpflorence")
    {
       gIsPirateMap = true;
       if (haveHumanAlly() == true)
@@ -84,13 +97,53 @@ minInterval 1
       }
 
       gClaimTradeMissionInterval = 4 * 60 * 1000; // 4 minutes, down from 5
+
+      // Block walls on bohemia and make rowboats
+      if (cRandomMapName == "zpKingofbohemia")
+      {
+         xsEnableRule("kingOfBohemiaChats");
+         gPirateBlockWalls = true;
+      }
    }
 
-   // AssertiveWall: Archipelago style maps
+   // Attack/Defend Maps %%%%%%%%%%%%%%%%%%%%%%%
+   if (cRandomMapName == "zpverseilles" ||
+       cRandomMapName == "zpazteccity")
+   {
+      xsEnableRule("initializecheckAttackDefenseMapAoP"); // 
+   }
+
+   // Maps where you absolutely need to take lots of TP's (like Civil War where taking TP's is the victory condition)
+   if (cRandomMapName == "zpcivilwar"||
+       cRandomMapName == "zpelbe")
+   {
+      xsEnableRule("setTradeBiasDelayed");
+   }
+
+   // Naval City Map %%%%%%%%%%%%%%%%%%%%%%%
+   // Enable based on sockets that it can handle
+   if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0 ||
+       getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0 ||
+       //roda2324: Civil War sockets using an abstract type
+       getGaiaUnitCount(cUnitTypeCivilWarCityState) > 0)
+   {
+      xsEnableRule("navalCityAttackManager");
+      xsEnableRule("buildNavalCitySockets");
+      xsEnableRule("buildPirateSocketTowers");
+      if (cRandomMapName == "zpvenicecity")
+      {
+         gAmphibiousAssaultStage = cForbidAmphibiousAssault;
+      }
+   }
+
+   // Archipelago Maps %%%%%%%%%%%%%%%%%%%%%%%
    if (cRandomMapName == "euArchipelago" ||
        cRandomMapName == "euArchipelagoLarge"||
        cRandomMapName == "zpmediterranean" ||
-       cRandomMapName == "zpkurils")
+       cRandomMapName == "zpatols" ||
+       cRandomMapName == "zpkurils" ||
+       cRandomMapName == "zpbarrierreef" ||
+       cRandomMapName == "zpmelanesia")
    {
       gIsArchipelagoMap = true;
       gStartOnDifferentIslands = true;
@@ -101,18 +154,53 @@ minInterval 1
       cvOkToGatherGold = false;      // Setting it false will turn off gold gathering. True turns it on.
       cvOkToGatherWood = false;      // Setting it false will turn off wood gathering. True turns it on.
       gHomeBase = kbGetPlayerStartingPosition(cMyID);
+
+      // Atolls are a subset of Archipelago
+      if (cRandomMapName == "zpatols" ||
+          cRandomMapName == "zpbarrierreef" ||
+          cRandomMapName == "zpmelanesia")
+      {
+         gIsAtollMap = true;
+      }
    }
 
-   // AssertiveWall: Migration style maps
+   // Migration Maps %%%%%%%%%%%%%%%%%%%%%%%
    if (cRandomMapName == "Ceylon" ||
        cRandomMapName == "ceylonlarge" ||
        cRandomMapName == "afswahilicoast" ||
        cRandomMapName == "afswahilicoastlarge" ||
        cRandomMapName == "zpeldorado" ||
-       //cRandomMapName == "zppolynesia" ||
+       cRandomMapName == "zppolynesia" ||
        cRandomMapName == "zptreasureisland")
    {
       gMigrationMap = true;
+   }
+
+   // Tasmania Maps %%%%%%%%%%%%%%%%%%%%%%%
+   // AssertiveWall: Treat Tasmania as a special thing. Do not include it as a migration map
+   if (cRandomMapName == "zptasmania"||
+       cRandomMapName == "zpiceland")
+   {
+      xsEnableRule("tasmaniaStart");
+   }
+
+   // Naval KOTH Maps %%%%%%%%%%%%%%%%%%%%%%%
+   if (getGaiaUnitCount(cUnitTypezpKingsHillNaval) > 0)
+   {
+      gAmphibiousAssaultStage = cForbidAmphibiousAssault;
+      gIsNavalKOTH = true;
+      xsEnableRule("waterAttackKOTH");
+      xsEnableRule("waterDefendKOTH");
+   }
+
+   // River Maps %%%%%%%%%%%%%%%%%%%%%%%
+   // maps where rowboats are available. The tech check is a backup check
+   if (kbProtoUnitAvailable(cUnitTypezpSPCRowboat) == true)
+   {
+      if (kbTechGetStatus(cTechzpForbidStandardWarshipdShadow) == cTechStatusActive)
+      {
+         gFrigateUnit = cUnitTypezpSPCRowboat;
+      }
    }
 
    // Initializes all pirate functions
@@ -122,10 +210,24 @@ minInterval 1
    {
       xsEnableRule("CaribTPMonitor");
       xsEnableRule("pirateShipAbilityMonitor");
+      xsEnableRule("nativeWagonMonitor");
    }
    
+
+   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
    // Initializes native specific rules
-   if (getGaiaUnitCount(cUnitTypezpNativeHousePirate) > 0)
+   // %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+   if (kbUnitCount(cMyID, cUnitTypezpAIStartUrbanMap, cUnitStateAny) > 0)
+   {
+      xsEnableRule("cityGateKiller"); // starts the chain to enable all the city attacking
+   }
+   if (getGaiaUnitCount(cUnitTypeGatherableOnlyByDivers) > 0)
+   {
+      xsEnableRule("underwaterOperations");
+      xsEnableRule("zpDiverTechMonitor");
+   }
+   if ((getGaiaUnitCount(cUnitTypezpNativeHousePirate) > 0) || (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0))
    {
       xsEnableRule("MaintainPirateShips");
       xsEnableRule("PirateTechMonitor");
@@ -135,7 +237,7 @@ minInterval 1
       xsEnableRule("MaintainWokouShips");
       xsEnableRule("WokouTechMonitor");
       xsEnableRule("submarineTactics");
-      xsEnableRule("airshipAbilityMonitor");
+      xsEnableRule("nativeWagonMonitor");
    }
    if (getGaiaUnitCount(cUnitTypezpNativeHouseJewish) > 0)
    {
@@ -184,6 +286,11 @@ minInterval 1
       xsEnableRule("armoredTrainMonitor");
    }
 
+   // NOTE: Update the unit we're using to enable this for trade cogs
+   if (getGaiaUnitCount(cUnitTypezpHansaWaterSpawnFlag1) > 0 || getGaiaUnitCount(cUnitTypezpHansaWaterSpawnFlag2) > 0 )
+   {
+      xsEnableRule("tradeCogEnabler");
+   }
    if (getGaiaUnitCount(cUnitTypezpNativeHouseInuit) > 0)
    {
       xsEnableRule("zpInuitTechMonitor");
@@ -192,6 +299,11 @@ minInterval 1
    {
       gCanoeUnit = cUnitTypezpWakaCanoe;
       xsEnableRule("zpMaoriTechMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseKorowai) > 0)
+   {
+      gCanoeUnit = cUnitTypezpWakaCanoe;
+      xsEnableRule("zpKorowaiTechMonitor");
    }
    if (getGaiaUnitCount(cUnitTypezpNativeHouseAboriginals) > 0)
    {
@@ -202,6 +314,7 @@ minInterval 1
    if (getGaiaUnitCount(cUnitTypezpNativeHouseMaltese) > 0)
    {
       xsEnableRule("zpMalteseTechMonitor");
+      xsEnableRule("zpFixedGunBuilder");
    }
    if (getGaiaUnitCount(cUnitTypezpJesuitCathedral) > 0)
    {
@@ -216,19 +329,21 @@ minInterval 1
       xsEnableRule("nativeWagonMonitor");
       xsEnableRule("dottoreAbilityMonitor");
    }
-   if (getUnit(cUnitTypezpPropChristmassTree) > 0)
+   if (getGaiaUnitCount(cUnitTypezpPropChristmassTree) > 0)
    {
       xsEnableRule("christmasTechMonitor");
+      xsEnableRule("grinchEmbassyTechMonitor");
+      xsEnableRule("grinchTechMonitor");
       xsEnableRule("nativeWagonMonitor");
       xsEnableRule("polarExpressUpgradeMonitor");
    }
 
-   if (getUnit(cUnitTypezpNativeHouseOrthodox) > 0)
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseOrthodox) > 0)
    {
       xsEnableRule("orthodoxTechMonitor");
       xsEnableRule("nativeWagonMonitor");
    }
-   if (getUnit(cUnitTypezpNativeHouseWesternVillage) > 0)
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseWesternVillage) > 0)
    {
       xsEnableRule("zpWesternTechMonitor");
       xsEnableRule("nativeWagonMonitor");
@@ -237,8 +352,1976 @@ minInterval 1
    {
         xsEnableRule("priestessAbilityMonitor");
    }
+   if (getGaiaUnitCount(cUnitTypezpNativeHousePenalColony) > 0)
+   {
+      xsEnableRule("zpPenalColonyTechMonitor");
+      xsEnableRule("zpMaintainConvictLabourers");
+   }
+   if (getGaiaUnitCount(cUnitTypezpSPCEUHouseSansculottes) > 0)
+   {
+      xsEnableRule("zpSansculotteTechMonitor");
+      xsEnableRule("zpSansculotteConverterMonitor");
+      xsEnableRule("nativeWagonMonitor");
+      xsEnableRule("zpMaintainSansculotteCoreurs");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNatEUVerseilles) > 0)
+   {
+      xsEnableRule("zpBourbonTechMonitor");
+      xsEnableRule("nativeWagonMonitor");
+   }
+   if (kbUnitCount(cMyID, cUnitTypezpSPCGermanCathedralCon0, cUnitStateAlive) > 0)
+   {
+      xsEnableRule("zpCathedralConstructionMonitor");
+   }
     
    xsDisableSelf();
+}
+
+//==============================================================================
+/*%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Table of Pirate Rules
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Rules organized into map types:
+
+   // Water Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Traditional Age of Pirates maps. These are fairly standard water heavy maps
+   where you want the AI to make a lot of ships and go for the pirate TP's
+
+   // Naval Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Naval maps are hybrid maps where you don't want the AI to focus as much on 
+   warships and navy
+
+   // Land Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Maps where you don't force water behavior. Note that the AI auto-calculates
+   some parameters, so these maps will still likely have naval/water behavior
+   even if those parameters aren't forced.
+
+   // Attack/Defend Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Maps where one side defends and one side attacks. A chain of rules turns on
+   or off some other rules, but the biggest part checkAttackDefenseMapAoP() sets
+   the building that the defender tries to defend and the disposition of the 
+   attacker. The defender is determined by whether they have a headquarter 
+   building .
+
+   // Naval City Map %%%%%%%%%%%%%%%%%%%%%%%
+   Maps with city-states that require the AI to transport military to reach the 
+   city states. Note that the AI cannot transport defend plans, so the AI will
+   not be able to properly station troops at the city states. Instead it just 
+   looks for city states to attack and build.
+
+   // Archipelago Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Maps where the AI needs to simultaneously gather and build on multiple 
+   islands at once. There are two styles:
+      Archipelago: AI will attempt to migrate around to it's most used island
+      Atoll: (poorly named) AI will keep it's starting island as the "main base"
+
+   // Migration Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Maps like ceylon. AI will migrate to main island connected to map center. 
+   There are some special rules floating around for odd map layouts
+
+   // Tasmania Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Players start on a boat. tasmaniaStart rule will move the boats to the 
+   coastline and build their TC on the mainland.
+
+   // Naval KOTH Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Handles maps where the KoTH fort is on the water and the AI needs to attack 
+   it with warships
+
+   // River Maps %%%%%%%%%%%%%%%%%%%%%%%
+   Maps where rowboats are available. Allows AI to train rowboats
+
+   // Native Specific Rules %%%%%%%%%%%%%%%%%%%%%%%
+   The native specific rules are all tied to the existance of the native socket 
+   on the map.
+
+   // City Maps %%%%%%%%%%%%%%%%%%%%%%%
+   City map behavior was designed around the Versaille map where the AI must 
+   break through a city gate before it can then start attacking. The behavior is
+   tied to the unit:
+      cUnitTypezpAIStartUrbanMap
+   The rule cityGateKiller starts the chain that eventually enables 
+      cityAttackmanager
+   via the rule
+      initializeCityAttackmanager
+   The attack plan needs one of these units at every point you want the AI to try and capture:
+      zpSPCCapturableFlagNoIcon
+   
+
+
+*/
+//==============================================================================
+
+
+//==============================================================================
+/*
+setTradeBiasDelayed
+
+   sets the bias for natives and trade posts really high. Useful for maps where
+   these are a required win condition
+*/
+//==============================================================================
+rule setTradeBiasDelayed
+inactive
+minInterval 20
+{
+   gClaimNativeMissionInterval = 3 * 60 * 1000; // 3 minutes, down from 10
+   btBiasNative = 1.0;
+   btBiasTrade = 1.0;
+
+   xsDisableSelf();
+}
+
+//==============================================================================
+/* Check for attack/defence special map
+   AssertiveWall: Checks to see if the map is a special attack or defend map,
+   and sets btbias accordingly
+
+   The defend point is stored as the "headquarters" and the forward base & defend 
+   point is set there for the defender. Offensive players are set to play aggressively. 
+*/
+//==============================================================================
+void checkAttackDefenseMapAoP(void)
+{
+   int headquarters = -1;
+   vector headquartersLoc = cInvalidVector;
+
+   // Look for the different HQ buildings
+   headquarters = getUnit(cUnitTypedeSPCHeadquarters, cPlayerRelationAlly);
+   if (headquarters < 0)
+   {
+      headquarters = getUnit(cUnitTypedeSPCHeadquartersVienna, cPlayerRelationAlly);
+   }
+
+   if (headquarters < 0)
+   {
+      headquarters = getUnit(cUnitTypezpSPCRoyalOrangerie, cPlayerRelationAlly);
+   }
+
+   if (headquarters < 0)
+   {
+      headquarters = getUnit(cUnitTypeSocketAztec, cPlayerRelationAlly);
+   }
+
+   headquartersLoc = kbUnitGetPosition(headquarters);
+
+   if (headquarters > 0)
+   { // defender
+      //btOffenseDefense = 0.0;  might be causing issues with gStrategy
+
+      gForwardBaseState = cForwardBaseStateActive;
+      gForwardBaseLocation = headquartersLoc;
+      gForwardBaseUpTime = xsGetTime();
+      gForwardBaseShouldDefend = true;
+      gForwardBaseID = kbBaseCreate(cMyID, "AoP defense base player: " + kbBaseGetNextID(), gForwardBaseLocation, 80.0);
+   
+      vector baseFront = xsVectorNormalize(kbGetMapCenter() - kbGetPlayerStartingPosition(cMyID));
+      kbBaseSetFrontVector(cMyID, gForwardBaseID, baseFront);
+      kbBaseSetMilitary(cMyID, gForwardBaseID, true);
+      endDefenseReflex();
+      gDefendingObjective = true;
+      xsDisableSelf();
+      return;
+   }
+   else
+   { // attacker
+      if (btOffenseDefense < 0.8)
+      {
+         btOffenseDefense = 0.8;
+      }
+   }
+}
+
+rule initializecheckAttackDefenseMapAoP
+inactive
+minInterval 10
+{
+   checkAttackDefenseMapAoP();
+   if (cRandomMapName == "zpverseilles")
+   {
+      if (xsIsRuleEnabled("desparationRaidEnabler") == true)
+      {
+         xsDisableRule("desparationRaidEnabler");
+      }
+      if (xsIsRuleEnabled("raidEnabler") == true)
+      {
+         xsDisableRule("raidEnabler");
+      }
+      if (xsIsRuleEnabled("raidManager") == true)
+      {
+         xsDisableRule("raidManager");
+      }
+   }
+
+   xsDisableSelf();
+}
+
+//==============================================================================
+/* Look for custom chats to send on King of Bohemia
+   Chats to send:
+      AlianceEstablishedToAlly
+      AlianceCanceledToEnemy
+      AlianceEstablishedToEnemy
+
+*/
+//==============================================================================
+int getNumberAllies()
+{
+   int tempCount = 0;
+
+   for (i = 1; <= cNumberPlayers)
+   {
+      if (kbIsPlayerAlly(i) == true)
+      {
+         tempCount += 1;
+      }
+   }
+
+   return tempCount;
+}
+
+rule kingOfBohemiaChats
+inactive
+minInterval 10
+{
+   // See if the number of allies changes
+   static int numberAllies = 0;
+   int tempNumberAllies = getNumberAllies();
+   static int chatCounter = 1;
+
+   if (tempNumberAllies > numberAllies)
+   {
+      // I gained allies, I am the attacking team
+      //if (chatCounter == cMyID)
+      //{
+         //aiChat(1, "tried to send");
+         sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemyIntro);
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemyTown);
+      //}
+      numberAllies = tempNumberAllies;
+   }
+   else if (tempNumberAllies < numberAllies)
+   {
+      // I lost allies, I am the defender
+      if (chatCounter == cMyID)
+      {
+         sendStatement(cPlayerRelationEnemyNotGaia, cAICommPromptToEnemyISpotHisArmyMyBaseLarge);
+      }
+      numberAllies = tempNumberAllies;
+   }
+
+   chatCounter += 1;
+   if (chatCounter > cNumberPlayers)
+   {
+      chatCounter = 1;
+   }
+}
+
+//==============================================================================
+/* createCityAttackPlan
+   sets up a persistent plan and returns the ID
+*/
+//==============================================================================
+
+int createCityAttackPlan(int count = 0)
+{
+   int planID = -1;
+   vector homeBase = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+
+   planID = aiPlanCreate("City Attack Plan " + count, cPlanCombat);
+
+   aiPlanSetVariableInt(planID, cCombatPlanCombatType, 0, cCombatPlanCombatTypeDefend);
+   aiPlanSetVariableInt(planID, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+   aiPlanSetVariableVector(planID, cCombatPlanTargetPoint, 0, homeBase);
+   aiPlanSetInitialPosition(planID, homeBase);
+   aiPlanSetVariableFloat(planID, cCombatPlanGatherDistance, 0, 30.0);
+   aiPlanSetVariableFloat(planID, cCombatPlanTargetEngageRange, 0, 45.0);
+   aiPlanSetDesiredPriority(planID, 30);  // Lower than standard attack so they can join
+   aiPlanSetVariableInt(planID, cCombatPlanRefreshFrequency, 0, cDifficultyCurrent >= cDifficultyHard ? 300 : 1000);
+   aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat);
+   aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeNone);
+   aiPlanSetVariableInt(planID, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternLRU);
+   //aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 2000);
+   
+   // Just a small number of cav
+   aiPlanAddUnitType(planID, cUnitTypeLogicalTypeLandMilitary, 0, 10, 200);
+
+   aiPlanSetActive(planID, true);
+
+   return (planID);
+
+}
+
+//==============================================================================
+/* getSecondaryObjectiveLoc
+   Looks for a secondary objective
+*/
+//==============================================================================
+
+vector getSecondaryObjectiveLoc(int planID = -1, int radius = 40)
+{
+   vector planPosition = aiPlanGetLocation(planID);
+   int tempEnemyTarget = -1;
+   vector tempEnemyTargetLoc = cInvalidVector;
+   int friendlyStrength = -1;
+   int enemyStrength = -1;
+   int importantBuildingQuery = createAdvancedGaiaUnitQuery(cUnitTypezpSPCCapturableFlagNoIcon, cUnitStateAlive, planPosition, radius, true);
+   int numberFound = kbUnitQueryExecute(importantBuildingQuery);
+
+   friendlyStrength = getFriendlyArmyValue(planID);
+
+   // Look for some stuff that we can try to take
+   for (i = 0; < numberFound)
+   {
+      tempEnemyTarget = kbUnitQueryGetResult(importantBuildingQuery, i);
+      tempEnemyTargetLoc = kbUnitGetPosition(tempEnemyTarget);
+      enemyStrength = getAreaStrength(tempEnemyTargetLoc, 30, cPlayerRelationEnemy);
+
+      if (friendlyStrength > (1.3 * enemyStrength))
+      {
+         return (tempEnemyTargetLoc);
+      }
+   }
+
+   return (cInvalidVector);
+}
+
+//==============================================================================
+/* CityAttackmanager
+   conducts all the attack management for city maps
+
+   Note: This creates multiple persistent plans and is not compatible with water
+   maps or any other attacking behavior
+
+   All "attack" plans are coded as defend plans to keep them persistent
+
+   initializeCityAttackmanager analyzes the map and creates the attack plan array
+*/
+//==============================================================================
+
+extern int cityAttackPlanArray = -1;         // stores the attack plans
+extern int cityTargetUnitArray = -1;         // stores the units we should try to capture
+extern int citySecondaryTargetUnitArray = -1;         // stores the units we should try to capture
+
+rule initializeCityAttackmanager
+inactive
+minInterval 10
+{
+   // Analyze map to see how many attack plans we need
+   int tempUnit = -1;
+   int counter = 0;
+   int planID = -1;
+   int capturableFlagQuery = createSimpleGaiaUnitQuery(cUnitTypezpAbstractFortCenter, cUnitStateAlive);
+   int attackPlansNeeded = kbUnitQueryExecute(capturableFlagQuery);
+
+   cityAttackPlanArray = xsArrayCreateInt(attackPlansNeeded, -1, "City Attack Plans");
+   cityTargetUnitArray = xsArrayCreateInt(attackPlansNeeded, -1, "City Attack Targets");
+
+   for (i = 0; < attackPlansNeeded)
+   {
+      tempUnit = kbUnitQueryGetResult(capturableFlagQuery, i);
+      planID = createCityAttackPlan(i);
+
+      if (tempUnit > 0)
+      {
+         xsArraySetInt(cityTargetUnitArray, i, tempUnit);
+      }
+
+      if (planID > 0)
+      {
+         xsArraySetInt(cityAttackPlanArray, i, planID);
+      }
+   }
+
+   if (xsIsRuleEnabled("attackManager") == true)
+   {
+      xsDisableRule("attackManager");
+   }
+
+   xsEnableRule("cityAttackmanager");
+   xsDisableSelf();
+
+}
+
+rule rerunCityGateKiller
+inactive
+minInterval 30
+{
+   if (getGaiaUnitCount(cUnitTypeSPCFortGate) <= 0)
+   {
+      // no gates left, disable
+      xsDisableSelf();
+      return;
+   }
+
+   // Just wait until we have a decent sized army to go after a gate again
+   if (kbUnitCount(cMyID, cUnitTypeLogicalTypeLandMilitary) > 40)
+   {
+      if (xsIsRuleEnabled("cityGateKiller") == false)
+      {
+         xsEnableRule("cityGateKiller");
+      }
+   }
+}
+
+
+rule cityGateKiller
+inactive
+minInterval 4
+{
+   static int gateKillerPlan = -1;
+   int friendlyStrength = -1;
+   int enemyStrength = -1;
+   vector mainBaseLocation = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   static int enemyTarget = -1;
+   int tempEnemyTarget = getClosestGaiaUnit(cUnitTypeSPCFortGate, mainBaseLocation);
+   int tempTargetToShoot = -1;
+   vector enemyTargetLocation = kbUnitGetPosition(enemyTarget);
+   vector tempLocation = cInvalidVector;
+   int tempUnit = -1;
+   int fortUnitID = -1;
+
+   if (enemyTarget < 0)
+   {
+      enemyTarget = getClosestGaiaUnit(cUnitTypeSPCFortGate, mainBaseLocation);
+   }
+
+   if (xsIsRuleEnabled("attackManager") == true)
+   {
+      xsDisableRule("attackManager");
+   }
+
+   if (tempEnemyTarget != enemyTarget || enemyTarget < 0)
+   {  // this means we killed the closer one
+      if (xsIsRuleEnabled("cityAttackmanager") == false)
+      {
+         xsEnableRule("initializeCityAttackmanager");
+      }
+      // Set the forward base at the gate. This should prevent the AI from building more FB's
+      fortUnitID = getClosestUnitByLocation(cUnitTypeSPCFortGate, cPlayerRelationAlly, cUnitStateAlive, enemyTargetLocation, 30);
+      gForwardBaseState = cForwardBaseStateActive;
+      gForwardBaseID = kbBaseCreate(cMyID, "Forward City Wall Base: " + kbBaseGetNextID(), enemyTargetLocation, 40.0);
+      gForwardBaseLocation = enemyTargetLocation;
+      gForwardBaseUpTime = xsGetTime();
+      gForwardBaseShouldDefend = kbUnitIsType(fortUnitID, cUnitTypeSPCFortGate);
+
+      enemyTarget = getClosestGaiaUnit(cUnitTypeSPCFortGate, mainBaseLocation);  // set this to the next closest one for the future
+
+      aiPlanDestroy(gateKillerPlan);
+      gateKillerPlan = -1;
+      xsDisableSelf();
+      if (xsIsRuleEnabled("rerunCityGateKiller") == false)
+      {
+         xsEnableRule("rerunCityGateKiller");
+      }
+      return;
+   }
+
+   if (gateKillerPlan < 0)
+   {
+      gateKillerPlan = aiPlanCreate("Gate Killer Plan", cPlanReserve);
+      aiPlanAddUnitType(gateKillerPlan, cUnitTypeLogicalTypeLandMilitary, 0, 100, 200);
+      aiPlanSetDesiredPriority(gateKillerPlan, 90); 
+      aiPlanSetActive(gateKillerPlan);
+   }
+
+   friendlyStrength = getFriendlyArmyValue(gateKillerPlan);
+   enemyStrength = getAreaStrength(enemyTargetLocation, 30, cPlayerRelationEnemy);
+
+   if (friendlyStrength > 1.5 * enemyStrength && enemyStrength > 0)
+   {
+      for (i = 0; < aiPlanGetNumberUnits(gateKillerPlan, cUnitTypeLogicalTypeLandMilitary))
+      {
+         tempUnit = aiPlanGetUnitByIndex(gateKillerPlan, i);
+         tempLocation = kbUnitGetPosition(tempUnit);
+
+         tempTargetToShoot = getClosestGaiaUnit(cUnitTypeLogicalTypeLandMilitary, enemyTargetLocation, 30);
+         if (tempTargetToShoot > 0)
+         {
+            aiTaskUnitWork(tempUnit, tempTargetToShoot);
+         }
+         else
+         {
+            aiTaskUnitWork(tempUnit, enemyTarget);
+         }
+      }
+   }
+   else if (friendlyStrength > 1.5 * enemyStrength)
+   {
+      for (i = 0; < aiPlanGetNumberUnits(gateKillerPlan, cUnitTypeLogicalTypeLandMilitary))
+      {
+         tempUnit = aiPlanGetUnitByIndex(gateKillerPlan, i);
+         aiTaskUnitWork(tempUnit, enemyTarget);
+      }
+   }
+
+}
+
+
+rule cityAttackmanager
+inactive
+minInterval 10
+{
+   // Analyze the targets and see if any require defense
+   int primaryTargetNumber = xsArrayGetSize(cityTargetUnitArray);
+   int worstSituation = -1;
+   int worstRatio = -1;
+   int tempPlanID = -1;
+   int tempTargetID = -1;
+   vector tempPlanPosition = cInvalidVector;
+   vector tempTargetPosition = cInvalidVector;
+   int friendlyStrength = -1;
+   int enemyStrength = -1;
+   vector homeBase = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   vector mainBase = homeBase;
+   int distanceFromHome = -1;
+   int furthestDistanceFromHome = -1;
+   int furthestPlanID = -1;
+   vector secondaryObjectiveLocation = cInvalidVector;
+
+   if (xsIsRuleEnabled("attackManager") == true)
+   {
+      xsDisableRule("attackManager");
+   }
+
+   // Determine home base as most forward base not in combat
+   for (j = 0; < primaryTargetNumber)
+   {
+      tempPlanID = xsArrayGetInt(cityAttackPlanArray, j);
+      if (aiPlanGetVariableBool(tempPlanID, cCombatPlanInCombat, 0) == false)
+      {
+         tempPlanPosition = aiPlanGetLocation(tempPlanID);
+         distanceFromHome = distance(tempPlanPosition, mainBase);
+         if (furthestDistanceFromHome > distanceFromHome)
+         {
+            homeBase = tempPlanPosition;
+            furthestDistanceFromHome = distanceFromHome;
+            furthestPlanID = tempPlanID;
+         }
+      }
+   }
+   aiPlanSetDesiredPriority(furthestPlanID, 55);  // Set the mid priority so most people will go here
+   
+   // Handle cases where someone is under attack
+   for (i = 0; < primaryTargetNumber)
+   {
+      tempPlanID = xsArrayGetInt(cityAttackPlanArray, i);
+      if (aiPlanGetVariableBool(tempPlanID, cCombatPlanInCombat, 0) == true)
+      {  // we're in combat, see if we need help
+         tempPlanPosition = aiPlanGetLocation(tempPlanID);
+         friendlyStrength = getAreaStrength(tempPlanPosition, 30, cPlayerRelationAlly);
+         enemyStrength = getAreaStrength(tempPlanPosition, 30, cPlayerRelationEnemy);
+
+         if (friendlyStrength > enemyStrength)
+         {  // do nothing since we are winning, but don't let idle plans steal from us
+            aiPlanSetDesiredPriority(tempPlanID, 30);
+         }
+         else if (friendlyStrength < enemyStrength && (friendlyStrength * 2 > enemyStrength))
+         {  // Try and send help if we have a chance
+            aiPlanSetDesiredPriority(tempPlanID, 80);
+         }
+         else if (friendlyStrength < enemyStrength)
+         {  // No chance, try to fall back. Will likely fight to death
+            aiPlanSetDesiredPriority(tempPlanID, 20);
+            aiPlanSetVariableVector(tempPlanID, cCombatPlanTargetPoint, 0, homeBase);
+         }
+      }
+      else
+      {  // check if we've reached the location (keep in mind we aren't in combat)
+         // this priority is lowest since we are already where we need to be
+         tempTargetID = xsArrayGetInt(cityTargetUnitArray, i);
+         tempTargetPosition = kbUnitGetPosition(tempTargetID);
+         if (distance(tempTargetPosition, tempPlanPosition) < 30)
+         {
+            aiPlanSetDesiredPriority(tempPlanID, 20);
+            aiTaskUnitMove(aiPlanGetUnitByIndex(tempPlanID, 0), tempTargetPosition);
+         }
+      }
+   }
+
+
+   // Now go through each location and see if it's attackable
+   for (i = 0; < primaryTargetNumber)
+   {
+      tempPlanID = xsArrayGetInt(cityAttackPlanArray, i);
+      tempTargetID = xsArrayGetInt(cityTargetUnitArray, i);
+      tempPlanPosition = aiPlanGetLocation(tempPlanID);
+      tempTargetPosition = kbUnitGetPosition(tempTargetID);
+
+      if (aiPlanGetVariableBool(tempPlanID, cCombatPlanInCombat, 0) == true)
+      {  // Don't attack if we're in combat
+         continue;
+      }
+
+      // check if we're not there
+      if (distance(tempPlanPosition, tempTargetPosition) > 30)
+      {
+         friendlyStrength = getFriendlyArmyValue(tempPlanID);
+         enemyStrength = getAreaStrength(tempTargetPosition, 30, cPlayerRelationEnemy);
+         if (friendlyStrength > (enemyStrength * 1.3))
+         {
+            aiPlanSetDesiredPriority(tempPlanID, 60);
+            aiPlanSetVariableVector(tempPlanID, cCombatPlanTargetPoint, 0, tempTargetPosition);
+         }
+         else
+         {  
+            // We can't attack the main objective, so look for a secondary objective nearby
+            secondaryObjectiveLocation = getSecondaryObjectiveLoc(tempPlanID);
+            if (secondaryObjectiveLocation != cInvalidVector)
+            {
+               aiPlanSetDesiredPriority(tempPlanID, 40);
+               aiPlanSetVariableVector(tempPlanID, cCombatPlanTargetPoint, 0, secondaryObjectiveLocation);
+            }
+            else
+            {
+               // just add units to plan
+               aiPlanSetDesiredPriority(tempPlanID, 30);
+            }
+         }
+      }
+   }
+}
+
+//==============================================================================
+/* buildPirateSocketTowers
+   
+   Builds socket towers
+*/
+//==============================================================================
+rule buildPirateSocketTowers
+inactive
+minInterval 30
+{
+   // Some checks so we don't waste resources. Like if we are trying to age
+   if (gAgeUpResearchPlan > 0)
+   {
+      return;
+   }
+
+   // check if we can afford such things
+	int woodAmount = kbResourceGet(cResourceWood);
+	int goldAmount = kbResourceGet(cResourceGold);
+
+   if (woodAmount < 250 || goldAmount < 600)
+   {
+      if (woodAmount > 100 && goldAmount > 600)
+      {
+         // do nothing
+      }
+      else
+      {
+         return;
+      }
+   }
+
+   // Get a list of socket fixed guns
+   if (woodAmount > 100 && goldAmount > 600)
+   {
+      int socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCFixedGunSocket, cMyID, cUnitStateAny);
+      int socketNumber = kbUnitQueryExecute(socketTowerQuery);
+      int tempSocketUnit = -1;
+      vector socketPosition= cInvalidVector;
+
+      for (i = 0; < socketNumber)
+      {
+         tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+         socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+         if (getUnitCountByLocation(cUnitTypezpSPCFixedGun, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+         {
+            aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCFixedGunAIProxy);
+            return; // return here so we only build one at a time
+         }
+      }
+   }
+
+   // Get a list of socket towers
+   socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketCityTowerWooden, cMyID, cUnitStateAny);
+   socketNumber = kbUnitQueryExecute(socketTowerQuery);
+   tempSocketUnit = -1;
+
+   for (i = 0; < socketNumber)
+   {
+      tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+      socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+      if (getUnitCountByLocation(cUnitTypezpSPCCityTowerWooden, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+      {
+         aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+         return;
+      }
+   }
+
+   // Get a list of venice socket towers
+   socketTowerQuery = createSimpleUnitQuery(cUnitTypedeSPCSocketCityTower, cMyID, cUnitStateAny);
+   socketNumber = kbUnitQueryExecute(socketTowerQuery);
+   tempSocketUnit = -1;
+
+   for (i = 0; < socketNumber)
+   {
+      tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+      socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+      if (getUnitCountByLocation(cUnitTypedeSPCCityTower, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+      {
+         aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+         return;
+      }
+   }
+
+   // Get a list of venice socket towers
+   socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketCityTowerClone, cMyID, cUnitStateAny);
+   socketNumber = kbUnitQueryExecute(socketTowerQuery);
+   tempSocketUnit = -1;
+
+   for (i = 0; < socketNumber)
+   {
+      tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+      socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+      if (getUnitCountByLocation(cUnitTypedeSPCCityTower, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+      {
+         aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+         return;
+      }
+   }
+
+   // Additional clones for Bohemia. Ordering these in a star pattern (not sequential). Clone 3-8
+   // 1. Clone 6
+      socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketCityTowerClone6, cMyID, cUnitStateAny);
+      socketNumber = kbUnitQueryExecute(socketTowerQuery);
+      tempSocketUnit = -1;
+
+      for (i = 0; < socketNumber)
+      {
+         tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+         socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+         if (getUnitCountByLocation(cUnitTypedeSPCCityTower, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+         {
+            aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+            return;
+         }
+      }
+
+   // 2. Clone 4
+      socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketCityTowerClone4, cMyID, cUnitStateAny);
+      socketNumber = kbUnitQueryExecute(socketTowerQuery);
+      tempSocketUnit = -1;
+
+      for (i = 0; < socketNumber)
+      {
+         tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+         socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+         if (getUnitCountByLocation(cUnitTypedeSPCCityTower, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+         {
+            aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+            return;
+         }
+      }
+
+   // 3. Clone 7
+      socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketCityTowerClone7, cMyID, cUnitStateAny);
+      socketNumber = kbUnitQueryExecute(socketTowerQuery);
+      tempSocketUnit = -1;
+
+      for (i = 0; < socketNumber)
+      {
+         tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+         socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+         if (getUnitCountByLocation(cUnitTypedeSPCCityTower, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+         {
+            aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+            return;
+         }
+      }
+
+   // 4. Clone 3
+      socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketCityTowerClone3, cMyID, cUnitStateAny);
+      socketNumber = kbUnitQueryExecute(socketTowerQuery);
+      tempSocketUnit = -1;
+
+      for (i = 0; < socketNumber)
+      {
+         tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+         socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+         if (getUnitCountByLocation(cUnitTypedeSPCCityTower, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+         {
+            aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+            return;
+         }
+      }
+
+   // 5. Clone 5
+      socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketCityTowerClone5, cMyID, cUnitStateAny);
+      socketNumber = kbUnitQueryExecute(socketTowerQuery);
+      tempSocketUnit = -1;
+
+      for (i = 0; < socketNumber)
+      {
+         tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+         socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+         if (getUnitCountByLocation(cUnitTypedeSPCCityTower, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+         {
+            aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+            return;
+         }
+      }
+
+   // 6. Clone 8
+      socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSPCSocketCityTowerClone8, cMyID, cUnitStateAny);
+      socketNumber = kbUnitQueryExecute(socketTowerQuery);
+      tempSocketUnit = -1;
+
+      for (i = 0; < socketNumber)
+      {
+         tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+         socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+         if (getUnitCountByLocation(cUnitTypedeSPCCityTower, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+         {
+            aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCWoodenTowerAIProxy);
+            return;
+         }
+      }
+
+}
+
+//==============================================================================
+/* buildNavalCitySockets
+   
+   Builds sockets that are empty
+
+   Based on cityStateMonitor
+*/
+//==============================================================================
+rule buildNavalCitySockets
+inactive
+minInterval 20
+{
+   // Early out if we're already building a TP
+   if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypeTradingPost) >= 0)
+   {
+      return;
+   }
+
+   static int citySocketType = -1;
+   if (citySocketType < 0)
+   {
+      // Create a list of city states
+      //roda2324: Civil War sockets using an abstract type
+      if (getGaiaUnitCount(cUnitTypeCivilWarCityState) > 0)
+      {
+         citySocketType = cUnitTypeCivilWarCityState;
+      }
+      else if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0)
+      {
+         citySocketType = cUnitTypezpSPCSocketVeniceCityState;
+      }
+      else if (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0)
+      {
+         citySocketType = cUnitTypezpSPCSocketPirateCityState;
+      }
+      else
+      {  // Shouldn't reach here
+         return;
+      }
+   }
+
+   // Only get ones we can see, like ones we've converted or have military around
+   int cityStateQuery = createSimpleUnitQuery(citySocketType, cMyID, cUnitStateAny);
+   int numCityStates = kbUnitQueryExecute(cityStateQuery);
+
+   // Build city state TPs.
+   // AssertiveWall: Have to build them the old fashioned way
+   for (i = 0; i < numCityStates; i++)
+   {
+      int cityStateSocketID = kbUnitQueryGetResult(cityStateQuery, i);
+      vector socketPosition = kbUnitGetPosition(cityStateSocketID);
+
+      if (socketPosition == cInvalidVector || cityStateSocketID < 0)
+      {
+         // Didn't find a suitable socket for some reason
+         continue;
+      }
+
+      int planID = aiPlanCreate("Trading Post NCS Build Plan", cPlanBuild);
+      int socketAreaGroup = kbAreaGroupGetIDByPosition(socketPosition);
+      vector nearestGaiaEnemyLoc = getClosestGaiaUnitPosition(cUnitTypeLogicalTypeLandMilitary, socketPosition, 30);
+
+
+      if (nearestGaiaEnemyLoc != cInvalidVector)
+      {
+         if (distance(nearestGaiaEnemyLoc, socketPosition) < 30)
+         {
+            continue;
+         }
+      }
+
+      if (getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, 0, cUnitStateAlive, socketPosition, 25.0) > 0)
+      {
+         continue;
+      }
+
+      aiPlanSetVariableInt(planID, cBuildPlanBuildingTypeID, 0, cUnitTypeTradingPost);
+      aiPlanSetVariableInt(planID, cBuildPlanSocketID, 0, cityStateSocketID);
+      
+      if (((gRevolutionType & cRevolutionMilitary) == 0) || ((gRevolutionType & cRevolutionFinland) == cRevolutionFinland))
+      {
+         debugBuildings("Adding 1 gEconUnit to our Trading Post build plan");
+         aiPlanAddUnitType(planID, gEconUnit, 1, 1, 1);
+      }
+      else // We didn't manage to add a Wagon or a Hero to our plan and can't use Villagers either, destroy.
+      {
+         aiPlanDestroy(planID);
+         return;
+      }   
+
+      // Priority.
+      aiPlanSetDesiredPriority(planID, 97);
+      aiPlanSetDesiredResourcePriority(planID, 70);
+
+      // Go.
+      aiPlanSetActive(planID, true);
+   }
+}
+
+//==============================================================================
+/* navalCityAttackManager
+   conducts all the attack management for city maps
+
+   Unlike CityAttackmanager, this can handle water maps
+   
+   So far super simple, just runs alongside the standard attack manager and 
+   launches attacks against city states when possible
+*/
+//==============================================================================
+rule navalCityAttackManager
+inactive
+minInterval 20
+{
+   //if (xsIsRuleEnabled("attackManager") == true)
+   //{
+   //   xsDisableRule("attackManager");
+   //}
+
+   if (kbGetAge() < cAge2)
+   {
+      return;
+   }
+
+   if (isDefendingOrAttacking() == true)
+   {
+      return;
+   }
+
+   if (allowedToAttack() == false)
+   {
+      return;
+   }
+
+   // Make sure we have military sitting in land reserve plan
+   if (aiPlanGetNumberUnits(gLandReservePlan, cUnitTypeLogicalTypeLandMilitary) < 10)
+   {
+      return;
+   }
+
+   int cityStateQuery = -1;
+   int numberCityStateFound = 0;
+   int tempCityState = -1;
+   vector tempLocation = cInvalidVector;
+   int availableMilitaryStrength = -1;
+   int closestDist = 9999;
+   int tempDist = 9999;
+   int mainBaseID = kbBaseGetMainID(cMyID);
+   vector mainBaseLocation = kbBaseGetMilitaryGatherPoint(cMyID, mainBaseID);
+   vector bestLocation = cInvalidVector;
+   int bestEnemyStrength = -1;
+   int tempEnemyStrength = -1;
+   int targetPlayer = -1;
+   bool transportRequired = false;
+   int tempEnTPcount = 0;
+   int tempFrTPcount = 0;
+   bool tempUntouched = false;
+   bool bestUntouched = false;
+   int tempEnCount = 0;
+   static int citySocketType = -1;
+
+   if (citySocketType < 0) 
+   {
+      //roda2324: Civil War sockets using an abstract type
+      if (getGaiaUnitCount(cUnitTypeCivilWarCityState) > 0)
+      {
+         citySocketType = cUnitTypeCivilWarCityState;
+      }
+      else if (getGaiaUnitCount(cUnitTypezpSPCSocketVeniceCityState) > 0)
+      {
+         citySocketType = cUnitTypezpSPCSocketVeniceCityState;
+      }
+      else if (getGaiaUnitCount(cUnitTypezpSPCSocketPirateCityState) > 0)
+      {
+         citySocketType = cUnitTypezpSPCSocketPirateCityState;
+      }
+      else
+      {  // Shouldn't reach here
+         return;
+      }
+   }
+
+   cityStateQuery = createSimpleGaiaUnitQuery(citySocketType, cUnitStateAny);
+   numberCityStateFound = kbUnitQueryExecute(cityStateQuery);
+
+   for (i = 0; < numberCityStateFound)
+   {
+      tempCityState = kbUnitQueryGetResult(cityStateQuery, i);
+      tempLocation = kbUnitGetPosition(tempCityState);
+      tempDist = distance(tempLocation, mainBaseLocation);
+      tempEnTPcount = getUnitCountByLocation(cUnitTypeTradingPost, cPlayerRelationEnemyNotGaia, cUnitStateAlive, tempLocation, 25.0);
+      tempFrTPcount = getUnitCountByLocation(cUnitTypeTradingPost, cPlayerRelationAlly, cUnitStateABQ, tempLocation, 25.0);
+      tempEnCount = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, 0, cUnitStateAlive, tempLocation, 25.0);
+
+      // Check if we have a TP and enemies there
+      if (tempFrTPcount > 0)
+      {  // If enemies there, automatically try to defend. Otherwise skip
+         if (tempEnCount > 0)
+         {
+            closestDist = tempDist;
+            bestLocation = tempLocation;
+            bestEnemyStrength = tempEnemyStrength;
+            targetPlayer = kbUnitGetPlayerID(tempCityState);
+            if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(bestLocation), kbAreaGroupGetIDByPosition(mainBaseLocation)) == false)
+            {
+               transportRequired = true;
+            }
+            else
+            {
+               transportRequired = false;
+            }
+
+            break;
+         }
+         else
+         {
+            continue;
+         }
+      }
+
+      // Check if there's no TP
+      if (tempEnTPcount <= 0)
+      {
+         // Check if there's still gaia units
+         if (tempEnCount > 0)
+         {
+            tempUntouched = true;
+         }
+      }
+
+      // Check if it's on our half of the map
+      if (distance(mainBaseLocation, kbGetMapCenter()) > tempDist)
+      {  
+         // It's on our half
+         if (tempUntouched == true)
+         {
+            // it's unclaimed and on our half, so get it
+            closestDist = tempDist;
+            bestLocation = tempLocation;
+            bestEnemyStrength = tempEnemyStrength;
+            targetPlayer = kbUnitGetPlayerID(tempCityState);
+            if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(bestLocation), kbAreaGroupGetIDByPosition(mainBaseLocation)) == false)
+            {
+               transportRequired = true;
+            }
+            else
+            {
+               transportRequired = false;
+            }
+
+            break;
+         }
+         else
+         {  // Favor it by adjusting the distance
+            tempDist = tempDist * 0.8;
+         }
+      }
+
+      // Check if there are too many enemy there
+
+
+      // Check if there are no defenders?
+
+      // Closest
+      if (tempDist < closestDist)
+      {
+         closestDist = tempDist;
+         bestLocation = tempLocation;
+         bestEnemyStrength = tempEnemyStrength;
+         targetPlayer = kbUnitGetPlayerID(tempCityState);
+         if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(bestLocation), kbAreaGroupGetIDByPosition(mainBaseLocation)) == false)
+         {
+            transportRequired = true;
+         }
+         else
+         {
+            transportRequired = false;
+         }
+      }
+   }
+
+   // If we have a location, we can attack it
+   if (bestLocation != cInvalidVector)
+   {
+      if (transportRequired == true)
+      {  // Check and make sure we have a boat if we want to attack somewhere that needs a transport
+         if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) <= 0)
+         {
+            return;
+         }
+      }
+
+      vector gatherPoint = kbBaseGetMilitaryGatherPoint(cMyID, mainBaseID);
+      int planID = aiPlanCreate("Naval City Attack Player " + targetPlayer + "dist: " + closestDist, cPlanCombat);
+
+      aiPlanSetVariableInt(planID, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
+      aiPlanSetVariableInt(planID, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+
+      aiPlanSetVariableInt(planID, cCombatPlanTargetPlayerID, 0, targetPlayer);
+      aiPlanSetVariableVector(planID, cCombatPlanTargetPoint, 0, bestLocation); //AssertiveWall: Fixed from baselocation
+      aiPlanSetVariableVector(planID, cCombatPlanGatherPoint, 0, gatherPoint);
+      aiPlanSetVariableFloat(planID, cCombatPlanGatherDistance, 0, 40.0);
+
+      if (transportRequired == true)
+      {
+         aiPlanSetDesiredPriority(planID, 100); // AssertiveWall: Give it a 100 priority to prevent other plans from stealing ship
+         aiPlanSetRequiresAllNeedUnits(planID, true); // AssertiveWall: not entirely sure if this is helping
+      }
+
+      aiPlanSetVariableInt(planID, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternRandom);
+      if (cDifficultyCurrent >= cDifficultyHard) // AssertiveWall: Lowered from Expert
+      {
+         aiPlanSetVariableBool(planID, cCombatPlanAllowMoreUnitsDuringAttack, 0, true);
+      }
+
+      //aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeNoTarget);
+      //aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+      //aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 30000);
+      aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeNoTarget);
+      //aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+      aiPlanSetVariableInt(planID, cCombatPlanNoTargetTimeout, 0, 30000);
+
+      aiPlanSetBaseID(planID, mainBaseID);
+      aiPlanSetInitialPosition(planID, gatherPoint);
+      
+      addUnitsToMilitaryPlan(planID);
+      aiPlanSetActive(planID);
+
+      gLastAttackMissionTime = xsGetTime();
+
+      // AssertiveWall: A couple chats
+      if (getUnitCountByLocation(cUnitTypeTradingPost, cPlayerRelationEnemyNotGaia, cUnitStateAlive, bestLocation, 25.0) > 0)
+      {
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackTradeSite,
+            bestLocation);
+      }
+      else if (getUnitCountByLocation(gEconUnit, cPlayerRelationEnemyNotGaia, cUnitStateAlive, bestLocation, 15.0) > 3)
+      {
+         sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillAttackEnemySettlers,
+            bestLocation);
+      }
+
+      // handle some extra retreat stuff
+      // AssertiveWall: set the extern and start the retreat logic. This is only necessary for attacks, 
+         // and excludes defend plans except on KoTH
+      gLandAttackPlanID = planID; 
+      if (transportRequired == false)
+      {
+         xsEnableRule("attackRetreatDelay");
+      }
+      else
+      {  // AssertiveWall: Make sure plan can retreat on water maps
+         aiPlanSetVariableInt(planID, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeBaseGone);
+         aiPlanSetVariableInt(planID, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+
+         xsEnableRule("attackTimeoutTransportRequired");
+      }
+            
+      /*gLandAttackPlanID = planID;
+      if (transportRequired == true)
+      {
+         xsEnableRule("attackTimeoutTransportRequired");
+      }*/
+   }
+}
+
+//==============================================================================
+/* underWaterNavalStrengthAtLoc
+   Calculates naval strength, including warships, divers, and mines. 
+*/
+//==============================================================================
+
+int underWaterNavalStrengthAtLoc(int playerRelation = -1, vector location = cInvalidVector, int radius = 30)
+{
+      // Enemy Navy Value
+      int NavyQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, playerRelation, cUnitStateAlive, location, radius);
+      int NavySize = kbUnitQueryExecute(NavyQuery);
+      int NavyValue = 0;
+      int MineQuery = createSimpleUnitQuery(cUnitTypezpNavalmine, playerRelation, cUnitStateAlive, location, radius);
+      int MineSize = kbUnitQueryExecute(MineQuery);
+      int unitID = -1;
+      int puid = -1;
+      int DiverQuery = createSimpleUnitQuery(cUnitTypeAbstractDiver, playerRelation, cUnitStateAlive, location, radius);
+      int DiverSize = kbUnitQueryExecute(DiverQuery);
+
+      for (i = 0; < NavySize)
+      {
+         unitID = kbUnitQueryGetResult(NavyQuery, i);
+         puid = kbUnitGetProtoUnitID(unitID);
+         NavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                           kbUnitCostPerResource(puid, cResourceInfluence));
+      }
+
+      for (i = 0; < MineSize)
+      {
+         unitID = kbUnitQueryGetResult(MineQuery, i);
+         puid = kbUnitGetProtoUnitID(unitID);
+         NavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                           kbUnitCostPerResource(puid, cResourceInfluence));
+      }
+
+      for (i = 0; < DiverSize)
+      {
+         unitID = kbUnitQueryGetResult(DiverQuery, i);
+         puid = kbUnitGetProtoUnitID(unitID);
+         NavyValue += (kbUnitCostPerResource(puid, cResourceWood) + kbUnitCostPerResource(puid, cResourceGold) +
+                           kbUnitCostPerResource(puid, cResourceInfluence));
+      }
+
+   return (NavyValue);
+}
+
+//==============================================================================
+/* getUnderwaterResourceClump
+   Returns closest clump of underwater resources
+*/
+//==============================================================================
+
+vector getUnderwaterResourceClump(int closeMidFar = -1)
+{
+   xsSetContextPlayer(0);
+   static int unitQueryID = -1;
+   int unitTypeID = cUnitTypeAbstractUnderwaterMine;
+   vector position = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+
+   if (closeMidFar < 0)
+   {
+      // determine based on disposition
+      if (gStrategy == cStrategyGreed)
+      {
+         closeMidFar = 2;
+      }
+      else if (gStrategy == cStrategyFastIndustrial)
+      {
+         closeMidFar = 0;
+      }
+      else
+      {
+         closeMidFar = 1;
+      }
+   }
+
+   // If we don't have the query yet, create one.
+   if (unitQueryID < 0)
+   {
+      unitQueryID = kbUnitQueryCreate("getUnderwaterResourceClumpQuery");
+   }
+
+   // Define a query to get all matching units.
+   if (unitQueryID != -1)
+   {
+      kbUnitQuerySetPlayerID(unitQueryID, 0);
+      kbUnitQuerySetUnitType(unitQueryID, unitTypeID);
+      kbUnitQuerySetState(unitQueryID, cUnitStateAlive);
+      kbUnitQuerySetPosition(unitQueryID, position);
+      kbUnitQuerySetAscendingSort(unitQueryID, true);
+   }
+   else
+   {
+      xsSetContextPlayer(cMyID);
+      return (cInvalidVector);
+   }
+
+   kbUnitQueryResetResults(unitQueryID);
+   int numFound = kbUnitQueryExecute(unitQueryID);
+
+   if (numFound > 0)
+   {
+      // Determine if we're looking for close, mid, or far
+      int closenessVar = 0;
+      if (closeMidFar == 0)
+      {  // Closest
+         closenessVar = 0;
+      }
+      else if (closeMidFar == 1)
+      {  // Close, but not yet mid
+         closenessVar = numFound / 3;
+      }
+      else if (closeMidFar == 2)
+      {  // Middle
+         closenessVar = numFound / 2;
+      }
+      else
+      {  // A little past middle
+         closenessVar = numFound / 1.5;
+      }
+      vector closestClumpPosition = kbUnitGetPosition(kbUnitQueryGetResult(unitQueryID, closenessVar)); 
+      int enWarshipStrength = underWaterNavalStrengthAtLoc(cPlayerRelationEnemyNotGaia, closestClumpPosition, 20);
+      int frWarshipStrength = underWaterNavalStrengthAtLoc(cPlayerRelationAlly, closestClumpPosition, 20);
+      if (enWarshipStrength > frWarshipStrength)
+      {  // Default to closest one if the desired area has enemies
+         closestClumpPosition = kbUnitGetPosition(kbUnitQueryGetResult(unitQueryID, 0)); 
+      }
+      xsSetContextPlayer(cMyID);
+      return (closestClumpPosition);
+   }
+   xsSetContextPlayer(cMyID);
+   return (cInvalidVector);
+}
+
+//==============================================================================
+/* getUnderwaterAreaOfOperations
+   Returns where we should focus our underwater efforts on. 
+*/
+//==============================================================================
+
+vector getUnderwaterAreaOfOperations(void)
+{
+   vector returnVector = cInvalidVector;
+   vector homePosition = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+
+   int divingBellQuery = createSimpleUnitQuery(cUnitTypezpDivingBell, cPlayerRelationSelf, cUnitStateAlive);
+   int numberBells = kbUnitQueryExecute(divingBellQuery);
+
+   if (numberBells > 0)
+   {
+      returnVector = kbUnitGetPosition(kbUnitQueryGetResult(divingBellQuery, 0));
+   }
+   else
+   {
+      // Look for closest underwater resource clump
+      
+      returnVector = getUnderwaterResourceClump(); 
+   }
+
+   if (returnVector == cInvalidVector)
+   {
+      returnVector = kbGetMapCenter();
+   }
+
+   return returnVector;
+}
+
+
+//==============================================================================
+/* addDiversToReservePlan
+   Adds divers to the reserve plan, unless they are in a build plan
+*/
+//==============================================================================
+
+void addDiversToReservePlan(void)
+{
+   static int diverReservePlan = -1;
+
+   // First run
+   if (diverReservePlan < 0)
+   {
+      diverReservePlan = aiPlanCreate("Diver Reserve Plan", cPlanReserve);
+      aiPlanAddUnitType(diverReservePlan, cUnitTypezpDiver, 0, 0, 200);
+      //aiPlanSetNoMoreUnits(diverReservePlan, true);
+      aiPlanSetDesiredPriority(diverReservePlan, 60); 
+   }
+
+   int diverQuery = createSimpleUnitQuery(cUnitTypezpDiver, cPlayerRelationSelf, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(diverQuery);
+   int tempDiver = -1;
+   int currentDiverPlan = -1;
+   int tempDiverPlanID = -1;
+
+   for (i = 0; < numberFound)
+   {
+      tempDiver = kbUnitQueryGetResult(diverQuery, i);
+      tempDiverPlanID = kbUnitGetPlanID(tempDiver);
+      currentDiverPlan = aiPlanGetType(tempDiverPlanID);
+      if (currentDiverPlan != cPlanBuild && tempDiverPlanID != diverReservePlan)
+      {
+         aiPlanAddUnit(diverReservePlan, tempDiver);
+      }
+   }
+}
+
+//==============================================================================
+/* diverDefenseReflex
+   Tasks underwater divers to nearest resource
+*/
+//==============================================================================
+
+bool diverDefenseReflex(vector location = cInvalidVector)
+{
+   int diverQuery = createSimpleUnitQuery(cUnitTypezpDiver, cPlayerRelationSelf, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(diverQuery);
+   int tempDiver = -1;
+   vector tempDiverLoc = cInvalidVector;
+   vector tempResLocation = cInvalidVector;
+   int tempClosestEn = -1;
+   int tempDiverCount = -1;
+   int tempDiverPlanID = -1;
+   int currentDiverPlan = -1;
+   bool attacking = false;
+
+   if (location == cInvalidVector)
+   {
+      location = getUnderwaterAreaOfOperations();
+   }
+
+   tempClosestEn = getClosestUnitByLocation(cUnitTypeShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, location, 40);
+   if (tempClosestEn < 0)
+   {
+      tempClosestEn = getClosestUnitByLocation(cUnitTypeAbstractDiver, cPlayerRelationEnemyNotGaia, cUnitStateAlive, location, 40);
+   }
+
+   if (tempClosestEn > 0)
+   {
+      attacking = true;
+      for (i = 0; < numberFound)
+      {
+         tempDiver = kbUnitQueryGetResult(diverQuery, i);
+         tempDiverPlanID = kbUnitGetPlanID(tempDiver);
+         currentDiverPlan = aiPlanGetType(tempDiverPlanID);
+         if (currentDiverPlan != cPlanBuild)
+         {
+            aiTaskUnitWork(tempDiver, tempClosestEn);
+         }
+      }
+   }
+
+   return attacking;
+}
+
+//==============================================================================
+/* taskIdleDiverVills
+   Tasks underwater divers to nearest resource
+*/
+//==============================================================================
+
+void taskIdleDiverVills(vector location = cInvalidVector)
+{
+   int diverQuery = createSimpleIdleUnitQuery(cUnitTypezpDiver, cPlayerRelationSelf, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(diverQuery);
+   int tempDiver = -1;
+   vector tempDiverLoc = cInvalidVector;
+   vector tempResLocation = cInvalidVector;
+   //int resourceQuery = createSimpleUnitQuery(cUnitTypeAbstractUnderwaterMine, cPlayerRelationAny, cUnitStateAlive);
+   //int resourceNumber = kbUnitQueryExecute(resourceQuery);
+   int tempClosestRes = -1;
+   int tempDiverCount = -1;
+
+   if (location == cInvalidVector)
+   {
+      location = getUnderwaterAreaOfOperations();
+   }
+
+   for (i = 0; < numberFound)
+   {
+      tempDiver = kbUnitQueryGetResult(diverQuery, i);
+      tempClosestRes = getRandomGaiaUnit(cUnitTypeAbstractUnderwaterMine, location, 30);
+      aiTaskUnitWork(tempDiver, tempClosestRes);
+      /*for (j = 0; < resourceNumber)
+      {
+         tempClosestRes = kbUnitQueryGetResult(resourceQuery, j);
+         tempResLocation = kbUnitGetPosition(tempClosestRes);
+         tempDiverCount = getUnitCountByLocation(cUnitTypezpDiver, cPlayerRelationAny, cUnitStateAlive, tempResLocation, 4.0);
+         if (tempDiverCount < 4)
+         {
+            aiTaskUnitWork(tempDiver, tempClosestRes);
+         }
+      }*/
+   }
+}
+
+//==============================================================================
+// createUnderwaterLocationBuildPlan
+//==============================================================================
+int createUnderwaterLocationBuildPlan(int puid = -1, int number = 1, int pri = 100, bool economy = true,
+                            int escrowID = -1, vector position = cInvalidVector, int builderType = -1)
+{
+   if (cvOkToBuild == false)
+   {
+      return (-1);
+   }
+   // Create the right number of plans.
+   for (i = 0; < number)
+   {
+      int planID = aiPlanCreate("Underwater location Build Plan, " + number + " " + kbGetUnitTypeName(puid), cPlanBuild);
+      int closestBuilder = -1;
+      if (planID < 0)
+      {
+         return (-1);
+      }
+
+      if (builderType < 0)
+      {
+         builderType = cUnitTypezpDiver;
+      }
+      // What to build
+      aiPlanSetVariableInt(planID, cBuildPlanBuildingTypeID, 0, puid);
+
+      aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, position);
+      aiPlanSetVariableFloat(planID, cBuildPlanCenterPositionDistance, 0, 30.0);
+
+      // 3 meter separation
+      aiPlanSetVariableFloat(planID, cBuildPlanBuildingBufferSpace, 0, 3.0);
+
+      // Priority.
+      aiPlanSetDesiredPriority(planID, pri);
+
+      // Builders.
+      closestBuilder = getClosestUnitByLocation(builderType, cPlayerRelationSelf, cUnitStateAlive, position); 
+      aiPlanAddUnitType(planID, builderType, 1, 1, 1);
+
+      aiPlanSetVariableVector(planID, cBuildPlanInfluencePosition, 0, position);              // Influence toward position
+      aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionDistance, 0, 100.0);          // 100m range.
+      aiPlanSetVariableFloat(planID, cBuildPlanInfluencePositionValue, 0, 200.0);             // 200 points max
+      aiPlanSetVariableInt(planID, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); // Linear slope falloff
+
+      debugBuildings("Created an Underwater Location Build Plan for: " + kbGetUnitTypeName(puid) + " with plan number: " + planID);
+      aiPlanSetActive(planID);
+   }
+   return (planID); // Only really useful if number == 1, otherwise returns last value.
+}
+
+//==============================================================================
+/* createUnderwaterAttackPlan
+   Generate an attack plan at the desired location
+*/
+//==============================================================================
+
+int createUnderwaterAttackPlan(vector location = cInvalidVector, int pri = 60)
+{
+   int enArmyStrength = -1;
+
+   return (-1);
+}
+
+//==============================================================================
+/* fortifyUnderwaterAO
+   Places underwater mines and diving bells around the AO. Builds bells before 
+   mines
+*/
+//==============================================================================
+
+int fortifyUnderwaterAO(vector location = cInvalidVector)
+{
+   int diverQuery = createSimpleUnitQuery(cUnitTypezpDiver, cPlayerRelationSelf, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(diverQuery);
+   if (numberFound < 0)
+   {
+      return (-1);
+   }
+
+   if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypezpDivingBell) > 0 ||
+       aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypezpNavalmine) > 0)
+   {  // Only build one underwater thing at a time. SOmewhat necessary if we only grab closest miner to build
+      return (-1);
+   }
+
+   int divingBellQuery = createSimpleUnitQuery(cUnitTypezpDivingBell, cPlayerRelationSelf, cUnitStateAlive);
+   int numberBells = kbUnitQueryExecute(divingBellQuery);
+   int divingBellLimit = kbGetBuildLimit(cMyID, cUnitTypezpDivingBell);
+   int buildPri = 10;
+   vector buildLocation = location;
+   int planID = -1;
+
+   if (numberBells <= 0)
+   {
+      buildPri = 90;
+   }
+   else
+   {
+      buildLocation = getRandomPoint(location);
+   }
+
+   if (numberBells < divingBellLimit)
+   {
+      planID = createUnderwaterLocationBuildPlan(cUnitTypezpDivingBell, 1, buildPri, true, cEconomyEscrowID, buildLocation, cUnitTypezpDiver);
+   }
+
+   if (planID < 0)
+   {
+      int seaMineQuery = createSimpleUnitQuery(cUnitTypezpNavalmine, cPlayerRelationSelf, cUnitStateAlive);
+      int numberSeaMines = kbUnitQueryExecute(seaMineQuery);
+      int desiredMineNumber = gNumTowers; // piggy back off this for time being
+      if (desiredMineNumber > kbGetBuildLimit(cMyID, cUnitTypezpNavalmine))
+      {
+         desiredMineNumber = kbGetBuildLimit(cMyID, cUnitTypezpNavalmine);
+      }
+      buildLocation = getRandomPoint(location, 60);
+
+      if (numberSeaMines < desiredMineNumber)
+      {
+         planID = createUnderwaterLocationBuildPlan(cUnitTypezpNavalmine, 1, 70, true, cEconomyEscrowID, buildLocation, cUnitTypezpDiver);
+      }
+   }
+   
+   return planID;
+
+}
+
+//==============================================================================
+/* moveSubtoLocation
+   Moves our submarine to the location. Also makes it dive just for funsies
+*/
+//==============================================================================
+
+bool moveSubtoLocation(vector location = cInvalidVector, int subUnit = -1)
+{
+   if (subUnit < 0)
+   {
+      subUnit = getUnit(cUnitTypeAbstractSubmarine, cMyID, cUnitStateAlive);
+   }
+
+   static int subReservePlan = -1;
+
+   // First run
+   if (subReservePlan < 0)
+   {
+      subReservePlan = aiPlanCreate("Submarine Reserve Plan", cPlanReserve);
+      aiPlanAddUnitType(subReservePlan, kbUnitGetProtoUnitID(subUnit), 0, 0, 200);
+      //aiPlanSetNoMoreUnits(subReservePlan, true);
+      aiPlanSetDesiredPriority(subReservePlan, 60); 
+   }
+
+   int currentSubPlan = aiPlanGetType(subUnit);
+   if (currentSubPlan != subReservePlan)
+   {
+      aiPlanAddUnit(subReservePlan, subUnit);
+   }
+
+   vector subLocation = kbUnitGetPosition(subUnit);
+
+   if (distance(subLocation, location) > 35)
+   {
+      aiTaskUnitMove(subUnit, location);
+      return false;
+   }
+
+   aiPlanDestroy(subReservePlan);
+   subReservePlan = -1;
+   return true;
+}
+
+//==============================================================================
+/* underwaterOperations
+   Manages the underwater stuff
+*/
+//==============================================================================
+
+rule underwaterOperations
+inactive
+minInterval 10
+{
+   static int diverMaintainPlan = -1;
+   int diverBuildLimit = kbGetBuildLimit(cMyID, cUnitTypezpDiver);
+   int subUnit = getUnit(cUnitTypeAbstractSubmarine, cMyID, cUnitStateAlive);
+   vector underwaterAO = getUnderwaterAreaOfOperations();
+
+   // First runs before we have divers, create maintain plan for divers once we can train them
+   if (kbProtoUnitAvailable(cUnitTypezpDiver) == true || kbUnitCount(cUnitTypeAbstractSubmarine, cMyID, cUnitStateAlive) > 0)
+   {
+      if (diverMaintainPlan < 0)
+      {
+         diverMaintainPlan = createSimpleMaintainPlan(cUnitTypezpDiver, diverBuildLimit, true);  
+      }
+
+      if (kbUnitCount(cMyID, cUnitTypezpDiver, cUnitStateABQ) <= 0)
+      {
+         if (subUnit > 0)
+         {
+            if (moveSubtoLocation(underwaterAO, subUnit) == true)
+            {
+               aiTaskUnitTrain(subUnit, cUnitTypezpDiver);
+            }
+         }
+      }
+   }
+
+   int ourStrength = underWaterNavalStrengthAtLoc(cPlayerRelationAlly, underwaterAO, 40);
+   int enemyStrength = underWaterNavalStrengthAtLoc(cPlayerRelationEnemyNotGaia, underwaterAO, 40);
+
+   addDiversToReservePlan();          // Put divers into reserve plan before trying to task
+   
+   if (diverDefenseReflex(underwaterAO) == false)
+   {  // Task divers to resources if we don't have anyone to attack
+      taskIdleDiverVills(underwaterAO);
+      fortifyUnderwaterAO(underwaterAO);  // Build mines and diving bells
+      gNavyVec = kbUnitGetPosition(gWaterSpawnFlagID);
+   }
+   else  // We're attacking something, so see if we should send ships
+   {  
+      if (ourStrength > 1.5 * enemyStrength)
+      {
+         // We have the advantage, so no need to defend
+         gNavyVec = kbUnitGetPosition(gWaterSpawnFlagID);
+      }
+      else
+      {  
+         ourStrength = ourStrength + underWaterNavalStrengthAtLoc(cPlayerRelationAlly, kbUnitGetPosition(gWaterSpawnFlagID), 40);
+         if (ourStrength > enemyStrength)
+         {
+            // We need help and we can help with what we have
+            gNavyVec = underwaterAO;
+         }
+      }
+   }
+
+   if (aiPlanGetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0) != gNavyVec)
+   {  // Moves the navy defend plan
+      aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0, gNavyVec);
+      aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanGatherPoint, 0, gNavyVec);
+   }
+
+
+}
+
+//==============================================================================
+// ZP Diver tech Monitor
+//==============================================================================
+rule zpDiverTechMonitor
+inactive
+minInterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypeAbstractDivingBell, cUnitStateAny) == 0)
+      {
+      return; // Player has no Scientist socket.
+      }
+
+      // Diving Bell faster gathering
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpDiversMinerals,
+      []() -> bool { return (kbGetAge() >= cAge3 ); },
+      cUnitTypeAbstractDivingBell);
+
+      canDisableSelf = researchSimpleTechByCondition(cTechzpDiverSpeargun,
+      []() -> bool { return (kbGetAge() >= cAge3 ); },
+      cUnitTypeAbstractDivingBell);
+
+      canDisableSelf = researchSimpleTechByCondition(cTechzpDiversUnlockSubmarine,
+      []() -> bool { return (kbGetAge() >= cAge4 ); },
+      cUnitTypeAbstractDivingBell);
+
+      canDisableSelf = researchSimpleTechByCondition(cTechzpDiversExtraBell,
+      []() -> bool { return (kbGetAge() >= cAge3 ); },
+      cUnitTypeAbstractDivingBell);
+
+      canDisableSelf = researchSimpleTechByCondition(cTechzpDiversLifeSupport,
+      []() -> bool { return (kbGetAge() >= cAge3 ); },
+      cUnitTypeAbstractDivingBell);
+
+      canDisableSelf = researchSimpleTechByCondition(cTechzpDiversSpawn,
+      []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractDivingBell, cUnitStateAlive) > 1) && (kbGetAge() >= cAge3 )); },
+      cUnitTypeAbstractDivingBell);
+
+      canDisableSelf = researchSimpleTechByCondition(cTechzpImperialDivers,
+      []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractDiver, cUnitStateAlive) > 4) && (kbGetAge() >= cAge4 )); },
+      cUnitTypeAbstractDivingBell);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
+/* taskConvictLabor
+   Tasks laborors so they don't stand idle while tc is build
+*/
+//==============================================================================
+
+void taskConvictLabor(void)
+{
+   int convictQuery = createSimpleUnitQuery(cUnitTypeAbstractVillager, cPlayerRelationSelf, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(convictQuery);
+   int tempConvict = -1;
+   vector tempConvictLoc = cInvalidVector;
+   int closestFood = -1;
+
+   for (i = 0; < numberFound)
+   {
+      tempConvict = kbUnitQueryGetResult(convictQuery, i);
+      if (closestFood < 0)
+      {
+         tempConvictLoc = kbUnitGetPosition(tempConvict);
+         closestFood = getClosestGaiaUnit(cUnitTypeHuntable, tempConvictLoc);
+      }
+
+      aiTaskUnitWork(tempConvict, closestFood);
+   }
+}
+
+//==============================================================================
+/* tasmaniaFailsafe
+   Reinits in case the TC isn't building
+*/
+//==============================================================================
+
+rule tasmaniaFailsafe
+inactive
+minInterval 20
+{
+   if (kbUnitCount(cMyID, cUnitTypeCoveredWagon, cUnitStateAlive) > 0)
+   {
+      init();
+   }
+   else
+   {
+      // Make sure a couple things reset
+      //aiPlanDestroy(gLandReservePlan);
+      //aiPlanDestroy(gLandDefendPlan0);
+      defend0(); // run this one just in case gLandReservePlan or gLandDefendPlan0 aren't set
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
+/* tasmaniaStart
+   Starting conditions based on Tasmania start
+*/
+//==============================================================================
+
+rule tasmaniaStart
+inactive
+minInterval 3
+{
+   // Move ships toward center island and plop down a base there
+   int shipQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationSelf, cUnitStateAlive);
+   int shipNumber = kbUnitQueryExecute(shipQuery);
+   int tempShip = -1;
+   vector tempShipLocation = cInvalidVector;
+   vector targetPoint = kbGetMapCenter();    // for simplicity just use middle of map
+   static vector baseDropoffPoint = cInvalidVector;
+   vector dropoffPoint = cInvalidVector;
+   int unitsOnBoard = -1;
+   bool canDisable = true;
+
+   for (i = 0; < shipNumber)
+   {
+      tempShip = kbUnitQueryGetResult(shipQuery, i);
+      tempShipLocation = kbUnitGetPosition(tempShip);
+      unitsOnBoard = getUnitCountByLocation(cUnitTypeLogicalTypeGarrisonInShips, cMyID, cUnitStateAlive, tempShipLocation, 2.0);
+      if (unitsOnBoard <= 0)
+      {
+         continue;
+      }
+
+      canDisable = false;
+      dropoffPoint = selectPickupPoint(targetPoint, tempShipLocation, 5, false);
+      if (dropoffPoint != cInvalidVector)
+      {
+         aiTaskUnitEject(tempShip, dropoffPoint);
+         if (baseDropoffPoint == cInvalidVector)
+         {
+            baseDropoffPoint = dropoffPoint;
+         }
+      }
+      else
+      {
+         aiTaskUnitMove(tempShip, targetPoint);
+      }
+   }
+
+   if (canDisable == true && baseDropoffPoint != cInvalidVector)
+   {
+      // Don't need to move main base since it doesn't exist yet. 
+      init();  // This restarts the AI and gets the TC building as if it was a land TC wagon
+      xsEnableRule("tasmaniaFailsafe");  // redoes the init in case the wagon isn't building
+      taskConvictLabor();
+      xsDisableSelf();
+   }
+}
+
+
+//==============================================================================
+// ZP Fixed gun builder
+//    Only builds the maltese native fixed gun
+//==============================================================================
+rule zpFixedGunBuilder
+inactive
+minInterval 8
+{
+   if (kbUnitCount(cMyID, cUnitTypezpJerusalemWagon, cUnitStateAlive) <= 0)
+   {
+      return;
+   }
+
+   // Find a location, copied from the new select tower build position rule
+   vector baseVec = cInvalidVector;
+   vector testVec = cInvalidVector;
+   bool success = false;
+   int towerSearch = -1;
+   static vector startingVec = cInvalidVector;
+   int towerBL = kbGetBuildLimit(cMyID, gTowerUnit);
+   int numTestVecs = 5 * towerBL / 4;
+   float towerAngle = (2.0 * PI) / numTestVecs;
+   float spacingDistance = 24 * sin((PI - towerAngle) / 2.0) / sin(towerAngle); 
+   float exclusionRadius = spacingDistance / 2.0;
+
+   if (startingVec == cInvalidVector) // Base changed.
+   {
+      baseVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)); // Start with base location
+      startingVec = baseVec;
+      startingVec = xsVectorSetX(startingVec, xsVectorGetX(startingVec) + spacingDistance);
+      startingVec = rotateByReferencePoint(baseVec, startingVec - baseVec, aiRandInt(360) / (180.0 / PI));
+   }
+
+   for (attempt = 0; < 30)
+   {
+      testVec = rotateByReferencePoint(baseVec, startingVec - baseVec, towerAngle * aiRandInt(numTestVecs));
+      debugBuildings("Testing tower location at: " + testVec);
+      if (towerSearch < 0)
+      { // init
+         towerSearch = kbUnitQueryCreate("Tower placement search");
+         kbUnitQuerySetPlayerRelation(towerSearch, cPlayerRelationAny);
+         kbUnitQuerySetUnitType(towerSearch, gTowerUnit);
+         kbUnitQuerySetState(towerSearch, cUnitStateABQ);
+      }
+      kbUnitQuerySetPosition(towerSearch, testVec);
+      kbUnitQuerySetMaximumDistance(towerSearch, exclusionRadius);
+      kbUnitQueryResetResults(towerSearch);
+      if (kbUnitQueryExecute(towerSearch) < 1)
+      { // Site is clear, use it.
+         if (kbAreaGroupGetIDByPosition(testVec) == kbAreaGroupGetIDByPosition(kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID))))
+         { // Make sure it's in the same areagroup.
+            success = true;
+            break;
+         }
+      }
+   }
+
+   if (success == true)
+   {
+      int planID = createLocationBuildPlan(cUnitTypezpMalteseGun, 1, 100, true, -1, testVec, 1);
+      // Add wagon
+      aiPlanAddUnitType(planID, cUnitTypezpJerusalemWagon, 1, 1, 1);
+      aiPlanAddUnit(planID, getUnit(cUnitTypezpJerusalemWagon, cPlayerRelationSelf));
+      //sendStatement(2, cAICommPromptToAllyIWillBuildMilitaryBase, testVec);
+
+      xsDisableSelf();
+   }
 }
 
 
@@ -531,6 +2614,14 @@ minInterval 12
    {
       pirateShipID = getUnit(cUnitTypezpSPCNeptuneGalley, cMyID, cUnitStateAlive);
       longBombard = true;
+   }
+   else if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(cUnitTypezpSPCFlyingDutchman, cMyID, cUnitStateAlive);
+   }
+   else if (pirateShipID < 0)
+   {
+      pirateShipID = getUnit(cUnitTypezpSPCPirateSteamer, cMyID, cUnitStateAlive);
    }
    else if (pirateShipID < 0)
    {
@@ -876,7 +2967,7 @@ minInterval 3
       {
          unitID = aiPlanGetUnitByIndex(gNavyAttackPlan, i);
          puid = kbUnitGetProtoUnitID(unitID);
-         if (puid == cUnitTypezpSubmarine || puid == cUnitTypezpNautilus)
+         if (kbProtoUnitIsType(cMyID, puid, cUnitTypeAbstractSubmarine) == true || puid == cUnitTypezpSubmarine || puid == cUnitTypezpNautilus)
          {
             aiUnitSetTactic(unitID, subTactic);
          }
@@ -896,7 +2987,7 @@ minInterval 3
    {
       shipID = kbUnitQueryGetResult(shipQuery, i);
       psid = kbUnitGetProtoUnitID(shipID);
-      if (psid == cUnitTypezpSubmarine || psid == cUnitTypezpNautilus)
+      if (kbProtoUnitIsType(cMyID, psid, cUnitTypeAbstractSubmarine) == true || psid == cUnitTypezpSubmarine || psid == cUnitTypezpNautilus)
       {
          shipLoc = kbUnitGetPosition(shipID);
          nearbyEnFound = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, shipLoc, 45.0); // Submarine range is 30
@@ -1090,11 +3181,12 @@ rule MaintainPirateShips
 inactive
 minInterval 30
 {
-  const int list_size = 4;
+
+  const int list_size = 7;
   static int proxy_list = -1;
   static int ship_list = -1;
 
-  if (kbUnitCount(cMyID, cUnitTypezpSocketPirates, cUnitStateAny) == 0)
+  if ((kbUnitCount(cMyID, cUnitTypezpSocketPirates, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketPirateCityState, cUnitStateAny) == 0))
    {
       return;
    }
@@ -1115,6 +3207,17 @@ minInterval 30
 
     xsArraySetInt(proxy_list, 3, cUnitTypezpSPCNeptuneGalleyProxy);
     xsArraySetInt(ship_list, 3, cUnitTypezpSPCNeptuneGalley);
+
+    xsArraySetInt(proxy_list, 4, cUnitTypezpSPCPirateGalleassProxy);
+    xsArraySetInt(ship_list, 4, cUnitTypezpSPCPirateGalleass);
+
+    xsArraySetInt(proxy_list, 5, cUnitTypezpSPCPirateSteamerProxy);
+    xsArraySetInt(ship_list, 5, cUnitTypezpSPCPirateSteamer);
+
+    xsArraySetInt(proxy_list, 6, cUnitTypezpSPCFlyingDutchmanProxy);
+    xsArraySetInt(ship_list, 6, cUnitTypezpSPCFlyingDutchman);
+
+    
   }
 
   for(i = 0; < xsArrayGetSize(proxy_list))
@@ -1160,7 +3263,7 @@ minInterval 60
 {
    static int jewishPlan = -1;
 
-   if (kbUnitCount(cMyID, cUnitTypezpSocketJewish, cUnitStateAny) == 0)
+   if ((kbUnitCount(cMyID, cUnitTypezpSocketJewish, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSocketJewishEU, cUnitStateAny) == 0))
    {
       return;
    }
@@ -1192,7 +3295,7 @@ rule MaintainWokouShips
 inactive
 minInterval 30
 {
-  const int list_size = 2;
+  const int list_size = 3;
   static int proxy_list = -1;
   static int ship_list = -1;
 
@@ -1211,6 +3314,9 @@ minInterval 30
 
     xsArraySetInt(proxy_list, 1, cUnitTypezpWokouFuchuanProxy);
     xsArraySetInt(ship_list, 1, cUnitTypezpWokouFuchuan);
+
+    xsArraySetInt(proxy_list, 2, cUnitTypezpSPCPrauProxy);
+    xsArraySetInt(ship_list, 2, cUnitTypezpSPCPrau);
 
   }
 
@@ -1487,7 +3593,8 @@ rule PirateTechMonitor
 inactive
 mininterval 60
 {
-   if (kbUnitCount(cMyID, cUnitTypezpSocketPirates, cUnitStateAny) == 0)
+
+   if ((kbUnitCount(cMyID, cUnitTypezpSocketPirates, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketPirateCityState, cUnitStateAny) == 0))
       {
       return; // Player has no pirate socket.
       }
@@ -1499,19 +3606,52 @@ mininterval 60
       cUnitTypeTradingPost);
 
       // Black Caesar Special Upgrade
-      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatPirateCorsairs,
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatCorsairRevolt,
       []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePiratesBlackCaesar) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
       cUnitTypeTradingPost);
 
       // Blackbeard Special Upgrade
-      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatPirateAdmiral,
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatTreasureGalleon,
       []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePiratesBlackbeard) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
       cUnitTypeTradingPost);
 
       // Grace Special Upgrade
-      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatPirateRecruits,
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatPirateEmbassy,
       []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePiratesGrace) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
       cUnitTypeTradingPost);
+
+      // Barbarossa Special Upgrade
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatCorsairEmbassy,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePiratesBarbarossa) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Davy Jones Special Upgrade
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpTortugaFixedGunBld,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePiratesDutchman) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // BlackJack Special Upgrade
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpTortugaDryDock,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePiratesBlackJack) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Privateer Embassy
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpPirateExpeditionaryFleet,
+      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpPirateEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpPirateEmbassy);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpPirateRecruits,
+      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpPirateEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpPirateEmbassy);
+
+      // Corsair Embassy
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpCorsairBrigade,
+      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpCorsairEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpCorsairEmbassy);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpCorsairExpeditionaryFleet,
+      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpCorsairEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpCorsairEmbassy);
 
   if (canDisableSelf == true)
       {
@@ -1547,9 +3687,24 @@ mininterval 60
       cUnitTypeTradingPost);
 
       // Ching Upgrade
-      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatIronFleet,
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatWokouEmbassy,
       []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWokouMadameChing) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
       cUnitTypeTradingPost);
+
+      // Si Ragam Upgrade
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpWokouSecondaryFlagship,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWokouSiRigam) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Swallow Upgrade
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpWokouCyprusMutiny,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateWokouSwallow) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Wokou Embassy
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpWokouCannonArmy,
+      []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpWokouEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpWokouEmbassy);
 
   if (canDisableSelf == true)
       {
@@ -1707,7 +3862,11 @@ minInterval 30
             aiPlanSetActive(gForwardBaseBuildPlan);
    
             // Chat to my allies.
-            sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+            if (xsGetTime() > (gLastFBMessageSend + 180 * 1000)) // 3 minute buffer
+            {
+               sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+               gLastFBMessageSend = xsGetTime();
+            }
    
             gForwardBaseState = cForwardBaseStateBuilding;
             debugBuildings("");
@@ -1753,7 +3912,7 @@ minInterval 30
             if (kbUnitGetBaseID(fortUnitID) >= 0)
             { // Base has been created for it.
                // AssertiveWall: Now build wall
-               if (gStartOnDifferentIslands == false)
+               if (gStartOnDifferentIslands == false && gPirateBlockWalls == false)
                {
                   xsEnableRule("forwardBaseWall"); // AssertiveWall: Chain of rules to build walls and towers
                }
@@ -1914,6 +4073,21 @@ minInterval 15
              buildingType = cUnitTypezpVeniceEmbassy;
              break;
          }
+         case cUnitTypezpPirateEmbassyWagon:
+         {
+             buildingType = cUnitTypezpPirateEmbassy;
+             break;
+         }
+         case cUnitTypezpCorsairEmbassyWagon:
+         {
+             buildingType = cUnitTypezpCorsairEmbassy;
+             break;
+         }
+         case cUnitTypezpWokouEmbassyWagon:
+         {
+             buildingType = cUnitTypezpWokouEmbassy;
+             break;
+         }
          case cUnitTypezpWaterFortBuilder:
          {
             buildingType = cUnitTypezpWaterFort;
@@ -1934,6 +4108,10 @@ minInterval 15
          case cUnitTypezpGunStoreWagon:
          {
             buildingType = cUnitTypezpGunStore;
+         }
+         case cUnitTypezpBourbonSummerPalaceWagon:
+         {
+            buildingType = cUnitTypezpBourbonSummerPalace;
          }
       }
 
@@ -2029,7 +4207,7 @@ rule zpScientistTechMonitor
 inactive
 mininterval 60
 {
-   if (kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0)
+   if ((kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketInventorsCityState, cUnitStateAny) == 0))
       {
       return; // Player has no Scientist socket.
       }
@@ -2041,8 +4219,19 @@ mininterval 60
 
       canDisableSelf = researchSimpleTech(cTechzpScientistsBaloons, cUnitTypeTradingPost);
 
+      // standard scientists with a Destroyer dhip
       canDisableSelf &= researchSimpleTechByCondition(cTechzpScientistIronFleet,
-      []() -> bool { return (kbGetAge() >= cAge2 ); },,
+      []() -> bool { return ((kbTechGetStatus(cTechzpUnderwaterScientists) == cTechStatusUnobtainable) && (kbTechGetStatus(cTechzpLandScientists) == cTechStatusUnobtainable) && (kbGetAge() >= cAge2)); },,
+      cUnitTypeTradingPost);
+
+      // Land scientists variant (Currentkly not working because of pop limit, but is prepared for the future tech replacement)
+      /*canDisableSelf &= researchSimpleTechByCondition(cTechzpScientistArtillery,
+      []() -> bool { return ((kbTechGetStatus(cTechzpLandScientists) == cTechStatusActive) && (kbGetAge() >= cAge3)); },,
+      cUnitTypeTradingPost);*/
+
+      // Underwater scientist variant
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpScientistUnderwaterExploration,
+      []() -> bool { return ((kbTechGetStatus(cTechzpUnderwaterScientists) == cTechStatusActive) && (kbGetAge() >= cAge3)); },,
       cUnitTypeTradingPost);
 
       canDisableSelf &= researchSimpleTechByCondition(cTechzpImperialSubmarine,
@@ -2096,7 +4285,7 @@ minInterval 30
   static int proxy_list = -1;
   static int ship_list = -1;
 
-  if (kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0)
+  if ((kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketInventorsCityState, cUnitStateAny) == 0))
    {
       return;
    }
@@ -2158,11 +4347,11 @@ rule MaintainScientistTanks
 inactive
 minInterval 30
 {
-  const int list_size = 1;
+  const int list_size = 2;
   static int proxy_list = -1;
   static int ship_list = -1;
 
-  if (kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0)
+  if ((kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketInventorsCityState, cUnitStateAny) == 0))
    {
       return;
    }
@@ -2174,6 +4363,8 @@ minInterval 30
 
     xsArraySetInt(proxy_list, 0, cUnitTypezpIronTank);
     xsArraySetInt(ship_list, 0, cUnitTypezpIronTank);
+    xsArraySetInt(proxy_list, 1, cUnitTypezpSteamTank);
+    xsArraySetInt(ship_list, 1, cUnitTypezpSteamTank);
   }
 
   for(i = 0; < xsArrayGetSize(proxy_list))
@@ -2264,7 +4455,7 @@ rule zpMalteseTechMonitor
 inactive
 mininterval 60
 {
-   if (kbUnitCount(cMyID, cUnitTypezpSocketMaltese, cUnitStateAny) == 0)
+   if ((kbUnitCount(cMyID, cUnitTypezpSocketMaltese, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSocketMalteseMission, cUnitStateAny) == 0))
       {
       return; // Player has no Maltese socket.
       }
@@ -2324,7 +4515,7 @@ minInterval 10
   static int proxy_list = -1;
   static int ship_list = -1;
 
-  if (kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0)
+  if ((kbUnitCount(cMyID, cUnitTypezpSocketScientists, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketInventorsCityState, cUnitStateAny) == 0))
    {
       return;
    }
@@ -2483,7 +4674,7 @@ minInterval 30
   static int proxy_list = -1;
   static int ship_list = -1;
 
-  if (kbUnitCount(cMyID, cUnitTypezpSocketVenetians, cUnitStateAny) == 0)
+  if ((kbUnitCount(cMyID, cUnitTypezpSocketVenetians, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketVeniceCityState, cUnitStateAny) == 0))
    {
       return;
    }
@@ -2542,7 +4733,7 @@ rule VeniceTechMonitor
 inactive
 minInterval 60
 {
-   if (kbUnitCount(cMyID, cUnitTypezpSocketVenetians, cUnitStateAny) == 0)
+   if ((kbUnitCount(cMyID, cUnitTypezpSocketVenetians, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketVeniceCityState, cUnitStateAny) == 0))
       {
       return; // Player has no venice socket.
       }
@@ -2763,6 +4954,91 @@ minInterval 30
 }
 
 //==============================================================================
+// Grinch Embassy Tech Monitor
+//==============================================================================
+rule grinchEmbassyTechMonitor
+inactive
+minInterval 30
+{
+   if (kbTechGetStatus(cTechzpNatGrinchTeammateBuildLimit) == cTechStatusUnobtainable && 
+       kbTechGetStatus(cTechzpNatGrinchTeammatePathfinding) == cTechStatusUnobtainable)
+   {
+      return; // Player has no techs to research
+   }
+
+   // Build limit. Wait until we have made a decent number
+   bool canDisableSelf = researchSimpleTechByCondition(cTechzpNatGrinchTeammateBuildLimit,
+   []() -> bool { return ( kbUnitCount(cMyID, cUnitTypezpTilanusGrinchMerc, cUnitStateABQ) > 7 ); },
+   cUnitTypeNativeEmbassy);
+
+   // Pathfinders. Research after getting a few, but lower priority
+   canDisableSelf = researchSimpleTechByCondition(cTechzpNatGrinchTeammatePathfinding,
+   []() -> bool { return ( kbUnitCount(cMyID, cUnitTypezpTilanusGrinchMerc, cUnitStateABQ) > 4 ); },
+   cUnitTypeNativeEmbassy, -1, 40);
+
+
+   if (canDisableSelf == true)
+   {
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
+// Grinch Mountain Tech Monitor
+//==============================================================================
+rule grinchTechMonitor
+inactive
+minInterval 30
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketGrinchVillage, cUnitStateAny) == 0)
+   {
+      return; // Player has no grinch socket.
+   }
+
+   // Team embassy, as soon as transitioning to age 2
+   bool canDisableSelf = researchSimpleTechByCondition(cTechzpNativeGrinchEmbassy,
+   []() -> bool { return ( getAgingUpAge() >= cAge2 ); },
+   cUnitTypeTradingPost);
+
+   // Building bounty, wait until we're allowed to attack and at least age 3
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpNatGrinchBuildingRob,
+   []() -> bool { return ( allowedToAttack() == true && kbGetAge() >= cAge3 ); },
+   cUnitTypeTradingPost);
+
+   // Mandatory Overtime: Extra cocoa cafe, wait until we already have one. Low priority
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpXmassOvertime,
+   []() -> bool { return ( kbUnitCount(cMyID, cUnitTypedeTavern, cUnitStateAlive) > 0 || 
+                           kbUnitCount(cMyID, cUnitTypeSaloon, cUnitStateAlive) > 0 ); },
+   cUnitTypeTradingPost, -1, 30);
+
+   // TP expansion. Do it once we have a decent number of grinch sharpshooters
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpGrinchExpansion,
+   []() -> bool { return ( kbUnitCount(cMyID, cUnitTypezpTilanusGrinch, cUnitStateABQ) > 9 && kbGetAge() >= cAge3 ); },
+   cUnitTypeTradingPost);
+
+   // Send cost reduction as soon as available. low priority
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpNatGrinchCostReduction,
+   []() -> bool { return ( kbTechGetStatus(cTechzpNatGrinchCostReduction) == cTechStatusObtainable ); },
+   cUnitTypeTradingPost, -1, 30);
+
+   // Send chimney divers if we have a lot of grinch units, or are in age 4. low priority
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpNatGrinchChimneyDivers,
+   []() -> bool { return ( (kbUnitCount(cMyID, cUnitTypezpTilanusGrinch, cUnitStateAlive) > 9 && kbGetAge() >= cAge3) ||
+                           (kbUnitCount(cMyID, cUnitTypezpTilanusGrinch, cUnitStateAlive) > 0 && kbGetAge() >= cAge4)); },
+   cUnitTypeTradingPost, -1, 30);
+
+   // Send grinch volunteer rifles as soon as possible. Standard priority
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpNatGrinchLargeBatch,
+   []() -> bool { return (  kbTechGetStatus(cTechzpNatGrinchLargeBatch) == cTechStatusObtainable ); },
+   cUnitTypeTradingPost);
+
+   if (canDisableSelf == true)
+   {
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
 // ZP Western Tech Monitor
 //==============================================================================
 rule zpWesternTechMonitor
@@ -2770,7 +5046,7 @@ inactive
 mininterval 60
 {
 
-   if (kbUnitCount(cMyID, cUnitTypezpSPCSocketWesternVillage, cUnitStateAny) == 0)
+   if ((kbUnitCount(cMyID, cUnitTypezpSPCSocketWesternVillage, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketWesternCityState, cUnitStateAny) == 0))
       {
       return; // Player has no Western socket.
       }
@@ -2986,13 +5262,42 @@ minInterval 60
 }
 
 //==============================================================================
+// ZP Korowai Tech Monitor
+//==============================================================================
+rule zpKorowaiTechMonitor
+inactive
+minInterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketKorowai, cUnitStateAny) == 0)
+      {
+      return; // Player has no Korowai socket.
+      }
+
+      // Korowai Big Button
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpKorowaiExpansion,
+      []() -> bool { return (kbGetAge() >= cAge2 ); },
+      cUnitTypeTradingPost);
+
+      // Korowai Warriors
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatKorowaiArmy,
+      []() -> bool { return ((kbTechGetStatus(cTechzpKorowaiExpansion) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
 // ZP Aboriginal School Builder
 //==============================================================================
 rule zpAboriginalSchoolBuilder
 inactive
 minInterval 2
 {
-   if (kbUnitCount(cUnitTypezpAustralianSchoolWagon, cMyID) <= 0)
+   if (kbUnitCount(cMyID, cUnitTypezpAustralianSchoolWagon) <= 0)
    {
       return;
    }
@@ -3014,7 +5319,7 @@ rule zpJewishTechMonitor
 inactive
 mininterval 60
 {
-   if (kbUnitCount(cMyID, cUnitTypezpSocketJewish, cUnitStateAny) == 0)
+   if ((kbUnitCount(cMyID, cUnitTypezpSocketJewish, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSocketJewishEU, cUnitStateAny) == 0))
       {
       return; // Player has no Jewish socket.
       }
@@ -3040,4 +5345,809 @@ mininterval 60
           xsDisableSelf();
       }
   
+}
+
+//==============================================================================
+// ZP Penal Colony Tech Monitor
+//==============================================================================
+rule zpPenalColonyTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketPenalColony, cUnitStateAny) == 0)
+      {
+      return; // Player has no Penal Colony socket.
+      }
+
+      // Penal Colony Parkes
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpNatRumCorps,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePenalColonyParkes) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatAustralianFactory,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePenalColonyParkes) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Penal Colony Cunningham
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpGreatMutiny,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePenalColonyCunningham) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpUtopia,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePenalColonyCunningham) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Penal Colony Logan
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatAustralianFort,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePenalColonyLogan) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
+// maintain Convict Labourers
+//==============================================================================
+rule zpMaintainConvictLabourers
+inactive
+minInterval 60
+{
+   static int convictPlan = -1;
+
+   if (kbUnitCount(cMyID, cUnitTypezpSocketPenalColony, cUnitStateAny) == 0)
+   {
+      return;
+   }
+
+   // Check build limit.
+   int buildLimit = kbGetBuildLimit(cMyID, cUnitTypezpNatConvictLabourer);
+
+   if (kbUnitCount(cMyID, cUnitTypeTradingPost, cUnitStateAlive) < 1)
+   {
+      buildLimit = 0;
+   }
+
+   // Create/update maintain plan
+   if ((convictPlan < 0) && (buildLimit >= 1))
+   {
+      convictPlan = createSimpleMaintainPlan(cUnitTypezpNatConvictLabourer, buildLimit, true, kbBaseGetMainID(cMyID), 1);
+   }
+   else
+   {
+      aiPlanSetVariableInt(convictPlan, cTrainPlanNumberToMaintain, 0, buildLimit);
+   }
+}
+
+//==============================================================================
+// ZP Sansculotte Convert Eco Unit Monitor
+//==============================================================================
+rule zpSansculotteConverterMonitor
+inactive
+minInterval 5
+{
+   // super simple. See if our villagers have been converted
+   if (kbUnitCount(cMyID, gEconUnit, cUnitStateAlive) <= 0)
+   {
+      if (kbUnitCount(cMyID, cUnitTypezpNatCoureurSansculotte, cUnitStateAlive) > 0)
+      {
+         gEconUnit = cUnitTypezpNatCoureurSansculotte;
+         xsDisableSelf();
+      }
+   }
+}
+
+//==============================================================================
+// ZP Sansculotte Tech Monitor
+//==============================================================================
+rule zpSansculotteTechMonitor
+inactive
+minInterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketSansculottes, cUnitStateAny) == 0)
+      {
+      return; // Player has no Maltese socket.
+      }
+
+      // Sansculotte Lafayette
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpGalerieLafayette,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateRevLafayette) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpLafayetteEmbassy,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateRevLafayette) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Sansculotte Robespierre
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpSansculotteLoyalDistricts,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateRevJacobine) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Sansculotte Napoleon
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpRevolutionFranceNE,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateRevNapoleon) == cTechStatusActive) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // General Techs
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpSansculotteBrricades,
+      []() -> bool { return ( kbGetAge() >= cAge1 ); },
+      cUnitTypeTradingPost);
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
+// ZP SPCBourbon Tech Monitor
+//==============================================================================
+rule zpBourbonTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketSPCBourbon, cUnitStateAny) == 0)
+      {
+      return; // Player has no Maltese socket.
+      }
+
+      // Big button variants
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpBourbonExpansion,
+      []() -> bool { return ((kbTechGetStatus(cTechzpParisSetup) == cTechStatusUnobtainable) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpBourbonExpansionSPC,
+      []() -> bool { return ((kbTechGetStatus(cTechzpParisSetup) == cTechStatusActive) && (kbTechGetStatus(cTechzpParisSetup) == cTechStatusActive) && (kbTechGetStatus(cTechzpNatBourbonBigbuttonDisableShadow) == cTechStatusUnobtainable) && ( kbGetAge() >= cAge2 )); },
+      cUnitTypeTradingPost);
+
+      // Cheteau Royal
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatChateauRoyal,
+      []() -> bool { return (((kbTechGetStatus(cTechzpBourbonExpansionSPC) == cTechStatusActive) || (kbTechGetStatus(cTechzpBourbonExpansion) == cTechStatusActive)) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
+// maintain Sansculotte Coreurss
+//==============================================================================
+rule zpMaintainSansculotteCoreurs
+inactive
+minInterval 60
+{
+   static int convictPlan = -1;
+
+   if (kbUnitCount(cMyID, cUnitTypezpSocketSansculottes, cUnitStateAny) == 0)
+   {
+      return;
+   }
+
+   // Check build limit.
+   int buildLimit = kbGetBuildLimit(cMyID, cUnitTypezpNatCoureurSansculotte);
+
+   if (kbUnitCount(cMyID, cUnitTypeTradingPost, cUnitStateAlive) < 1)
+   {
+      buildLimit = 0;
+   }
+
+   // Create/update maintain plan
+   if ((convictPlan < 0) && (buildLimit >= 1))
+   {
+      convictPlan = createSimpleMaintainPlan(cUnitTypezpNatCoureurSansculotte, buildLimit, true, kbBaseGetMainID(cMyID), 1);
+   }
+   else
+   {
+      aiPlanSetVariableInt(convictPlan, cTrainPlanNumberToMaintain, 0, buildLimit);
+   }
+}
+
+//==============================================================================
+// Cathedral Construction Monitor
+//==============================================================================
+rule zpCathedralConstructionMonitor
+inactive
+mininterval 60
+{
+
+   if ( kbGetAge() <= cAge1 )
+   return; // Not until Fortress Age
+
+   bool canDisableSelf = researchSimpleTechByCondition(cTechzpSPCCathedralGlass1,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 7) && (kbGetAge() >= cAge1 ) && (kbTechGetStatus(cTechzpGlassWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralBricks1,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 7) && (kbGetAge() >= cAge1 ) && (kbTechGetStatus(cTechzpBrickWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralLimestone1,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 7) && (kbGetAge() >= cAge1 ) && (kbTechGetStatus(cTechzpStoneWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralCopper1,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 7) && (kbGetAge() >= cAge1 ) && (kbTechGetStatus(cTechzpCopperWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralGlass2,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 10) && (kbGetAge() >= cAge2 ) && (kbTechGetStatus(cTechzpGlassWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralBricks2,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 10) && (kbGetAge() >= cAge2 ) && (kbTechGetStatus(cTechzpBrickWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralLimestone2,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 10) && (kbGetAge() >= cAge2 ) && (kbTechGetStatus(cTechzpStoneWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralCopper2,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 10) && (kbGetAge() >= cAge2 ) && (kbTechGetStatus(cTechzpCopperWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralGlass3,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 12) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpGlassWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralBricks3,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 12) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpBrickWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralLimestone3,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 12) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpStoneWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralCopper3,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 12) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpCopperWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralGlass4,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 15) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpGlassWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralBricks4,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 15) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpBrickWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralLimestone4,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 15) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpStoneWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+
+   canDisableSelf &= researchSimpleTechByCondition(cTechzpSPCCathedralCopper4,
+   []() -> bool { return ((kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive) > 15) && (kbGetAge() >= cAge3 ) && (kbTechGetStatus(cTechzpCopperWorksTech) == cTechStatusActive)); },
+   cUnitTypezpSPCGermanCathedralCon0);
+}
+
+//==============================================================================
+// waterAttack
+// Creates the attack plans for our naval units.
+//==============================================================================
+rule waterAttackKOTH
+inactive
+minInterval 30
+{
+   if (xsIsRuleEnabled("waterAttack") == true)
+   {
+      xsDisableRule("waterAttack");
+   }
+
+   int age = kbGetAge();
+   int time = xsGetTime();
+   int shipMin = 0;
+   int shipDesired = 0;
+   bool fishRaid = false;
+   int targetDockID = -1;
+   bool defendingKOTH = false;
+   bool attackingKOTH = false;
+
+   // AssertiveWall: Reset the attack if it's been too long
+   if (time > (gLastNavalAttackTime + gAttackMissionInterval))
+   {
+      gNavyAttackPlan = -1;
+   }
+
+   // AssertiveWall: Don't attack if there's a land attack going on
+   if (isDefendingOrAttacking() == true)
+   {
+      return;
+   }
+
+   // AssertiveWall: Constant attacks on water? We'll try it for hard and above
+   // AssertiveWall: Reduce attack interval to 1 - 1.5 mins
+   // if ((gLastNavalAttackTime > time - (gAttackMissionInterval / 2)) || (aiTreatyActive() == true))
+   if (aiTreatyActive() == true)
+   {
+      return;
+   }
+   else if (cDifficultyCurrent < cDifficultyHard && (gLastNavalAttackTime > time - (gAttackMissionInterval / 2)))
+   {
+      return;
+   }
+
+   if (gNavyAttackPlan >= 0)
+   {
+      return; // We don't want multiple attack plans.
+   }
+
+   if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < 1)
+   {
+      return; // We don't attack without ships
+   }
+   
+   // AssertiveWall: add warships, fishing boats, and forts to attack plan options
+   // varies the warship minimums for each attack type
+
+
+   int KOTHUnit = getUnit(cUnitTypezpKingsHillNaval, cPlayerRelationAny, cUnitStateAny);
+   if (kbGetPlayerTeam(kbUnitGetPlayerID(KOTHUnit)) == kbGetPlayerTeam(cMyID))
+   {
+      defendingKOTH = true; // We're defending, let's not go launching any attacks.
+         // If we are defending the hill, return (don't attack, let defend rule do the defend)
+      return;
+   }
+   else
+   {
+      attackingKOTH = true; // We're attacking, focus on the hill.
+   }
+   
+
+
+   // If we are attacking the hill, check the hill first. Basically see if we have more warships than the enemy,
+   //  or if we're running out of time
+   if (attackingKOTH == true)
+   {
+      int tempBoatUnit = -1;
+      int friendlyWSStrength = 0;
+      int enemyWSStrength = 0;
+      targetDockID = getUnit(cUnitTypezpKingsHillNaval, cPlayerRelationAny, cUnitStateAny);
+
+      // Get the associated strength of friendly and enemy fleets
+      int friendlyWSQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationAlly, cUnitStateAlive);
+      int friendlyWSCount = kbUnitQueryExecute(friendlyWSQuery);
+      for (i = 0; < friendlyWSCount)
+      {
+         tempBoatUnit = kbUnitGetProtoUnitID(kbUnitQueryGetResult(friendlyWSQuery, i));
+         friendlyWSStrength += kbUnitCostPerResource(tempBoatUnit, cResourceWood) + kbUnitCostPerResource(tempBoatUnit, cResourceGold) +
+                              kbUnitCostPerResource(tempBoatUnit, cResourceInfluence);
+      }
+
+      int enemyWSQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+                                             kbUnitGetPosition(targetDockID), 60);
+      int enemyWSCount = kbUnitQueryExecute(enemyWSQuery);
+      tempBoatUnit = -1;
+      for (i = 0; < enemyWSCount)
+      {
+         tempBoatUnit = kbUnitGetProtoUnitID(kbUnitQueryGetResult(enemyWSQuery, i));
+         enemyWSStrength += kbUnitCostPerResource(tempBoatUnit, cResourceWood) + kbUnitCostPerResource(tempBoatUnit, cResourceGold) +
+                              kbUnitCostPerResource(tempBoatUnit, cResourceInfluence);
+      }
+
+      if (friendlyWSStrength < enemyWSStrength)
+      {
+         targetDockID = -1;
+      }
+   }
+
+
+
+   // AssertiveWall: Fort attack plan
+   if (targetDockID < 0)
+   {
+      targetDockID = getClosestUnitByLocation(cUnitTypeAbstractFort, cPlayerRelationEnemyNotGaia, cUnitStateAlive,
+         gNavyVec, 300.0); // Get any enemy Fishing Boat within 300 range of our gNavyVec to attack.
+      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < 6)
+      {
+         targetDockID = -1; // It takes 6 ships to attack a fort
+      }
+   }
+
+   // AssertiveWall: Warship attack plan
+   if (targetDockID < 0) 
+   {
+      targetDockID = getClosestVisibleUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive,
+         gNavyVec, 300.0); // Get any enemy Warship within 300 range of our gNavyVec to attack.
+      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < kbUnitCount(cPlayerRelationEnemyNotGaia, cUnitTypeAbstractWarShip, cUnitStateAlive))
+      {
+         targetDockID = -1; // We don't attack with fewer warships than our enemy
+      }
+   }
+
+   // AssertiveWall: Raid fishing boats
+   if (targetDockID < 0)
+   {
+      targetDockID = getClosestVisibleUnitByLocation(gFishingUnit, cPlayerRelationEnemyNotGaia, cUnitStateAlive,
+         gNavyVec, 300.0); // Get any enemy Fishing Boat within 300 range of our gNavyVec to attack.
+      if (targetDockID > 0)
+      {
+         fishRaid = true;
+      }
+   }
+
+   // AssertiveWall: Dock Attack Plan
+   if (targetDockID < 0)
+   {
+      targetDockID = getClosestUnitByLocation(cUnitTypeAbstractDock, cPlayerRelationEnemyNotGaia, cUnitStateAlive,
+         gNavyVec, 400.0); // Get any enemy Dock within 400 range of our gNavyVec to attack.
+      if (age < cAge3)
+      {
+         if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < 2)
+         {
+            targetDockID = -1; // We don't attack with fewer than 2 war ships in age 2.
+         }
+      }
+      else
+      {
+         if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < 3)
+         {
+            targetDockID = -1; // We don't attack with fewer than 3 war ships.
+         }
+      }
+   }
+
+   // AssertiveWall: Tower attack plan
+   if (targetDockID < 0)
+   {
+      targetDockID = getClosestUnitByLocation(gTowerUnit, cPlayerRelationEnemyNotGaia, cUnitStateAlive,
+         gNavyVec, 300.0); // Get any enemy Fishing Boat within 300 range of our gNavyVec to attack.
+      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < 2)
+      {
+         targetDockID = -1; // It takes 2 ships to attack a tower
+      }
+   }
+
+   if (targetDockID < 0)
+   {
+      return; // AssertiveWall: return if there are no suitable targets
+   }
+
+   // AssertiveWall: Calculate minimum and desired ships
+   vector targetDockPosition = kbUnitGetPosition(targetDockID);
+   if (targetDockPosition == cInvalidVector)
+   {
+      return; // Catch any issues here
+   }
+   int towerNum = getUnitCountByLocation(gTowerUnit, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         targetDockPosition, 20.0);
+   int warshipNum = getUnitCountByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         targetDockPosition, 20.0);
+   int fortNum = getUnitCountByLocation(cUnitTypeAbstractFort, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         targetDockPosition, 20.0);
+   int artyNum = getUnitCountByLocation(cUnitTypeAbstractArtillery, cPlayerRelationEnemyNotGaia, cUnitStateAlive, 
+         targetDockPosition, 20.0);
+   shipMin = 1 + towerNum + warshipNum + 3 * fortNum;
+   shipDesired = 2 + 2 * towerNum + warshipNum + 4 * fortNum + artyNum;
+   if (shipMin > 5)
+   {
+      shipMin = 5;  // Don't let this get too out of hand
+   }
+   if (civIsNative() == true)
+   {
+      shipMin = 3 * shipMin;
+      shipDesired = 4 * shipDesired;
+   }
+
+   if (targetDockID >= 0) // There's something to attack.
+   {
+      int navalTargetPlayer = kbUnitGetPlayerID(targetDockID);
+      
+      gNavyAttackPlan = aiPlanCreate("NAVAL Attack Player: " + navalTargetPlayer + ", targetDockID: " + targetDockID, cPlanCombat);
+      
+      aiPlanAddUnitType(gNavyAttackPlan, cUnitTypeAbstractWarShip, shipMin, shipDesired, 200);
+      aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
+      aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+      aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanTargetPlayerID, 0, navalTargetPlayer);
+      aiPlanSetVariableVector(gNavyAttackPlan, cCombatPlanTargetPoint, 0, targetDockPosition);
+      aiPlanSetVariableVector(gNavyAttackPlan, cCombatPlanGatherPoint, 0, gNavyVec);
+      aiPlanSetVariableFloat(gNavyAttackPlan, cCombatPlanGatherDistance, 0, 40.0);
+      aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternRandom);
+      aiPlanSetDesiredPriority(gNavyAttackPlan, 60); // Per the chart
+
+
+      if (cDifficultyCurrent >= cDifficultyModerate)
+      {  // AssertiveWall: Don't bring more ships on fishing boat raids
+         if (fishRaid == false)
+         {
+            aiPlanSetVariableBool(gNavyAttackPlan, cCombatPlanAllowMoreUnitsDuringAttack, 0, true);
+         }
+         aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanRefreshFrequency, 0, 300);
+      }
+      else
+      {
+         aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanRefreshFrequency, 0, 1000);
+      }
+
+      aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanDoneMode, 0, cCombatPlanDoneModeRetreat | cCombatPlanDoneModeNoTarget);
+      aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanRetreatMode, 0, cCombatPlanRetreatModeOutnumbered);
+      aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanNoTargetTimeout, 0, 30000);
+      aiPlanSetBaseID(gNavyAttackPlan, kbUnitGetBaseID(getUnit(gDockUnit, cMyID, cUnitStateAlive)));
+      aiPlanSetInitialPosition(gNavyAttackPlan, gNavyVec);
+
+      aiPlanSetActive(gNavyAttackPlan);
+      gLastNavalAttackTime = time;
+
+      debugMilitary("***** LAUNCHING NAVAL ATTACK on player: " + navalTargetPlayer + ", targetDockID: " + targetDockID);
+      aiPlanSetEventHandler(gNavyAttackPlan, cPlanEventStateChange, "navalAttackPlanHandler");
+   }
+}
+
+//==============================================================================
+// waterDefend
+// Creates and manages the persistent defend plan for our naval units.
+//==============================================================================
+rule waterDefendKOTH
+inactive
+minInterval 5  
+{  
+   if (xsIsRuleEnabled("waterDefend") == true)
+   {
+      xsDisableRule("waterDefend");
+   }
+   
+   // AssertiveWall: Reduced minInterval to 5 from 10
+   if (gNavyDefendPlan < 0) // First run, create a persistent defend plan.
+   {
+      gNavyDefendPlan = aiPlanCreate("Water Defend", cPlanCombat);
+
+      aiPlanSetVariableInt(gNavyDefendPlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeDefend);
+      aiPlanSetVariableInt(gNavyDefendPlan, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+      aiPlanSetVariableInt(gNavyDefendPlan, cCombatPlanTargetPlayerID, 0, cMyID);
+      aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0, gNavyVec);
+      aiPlanSetInitialPosition(gNavyDefendPlan, gNavyVec);
+      aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanGatherPoint, 0, gNavyVec);
+      aiPlanSetVariableFloat(gNavyDefendPlan, cCombatPlanGatherDistance, 0, 80.0);  // AssertiveWall: Doubled the gather distance from 40 to 80
+      aiPlanSetVariableInt(gNavyDefendPlan, cCombatPlanRefreshFrequency, 0, cDifficultyCurrent >= cDifficultyHard ? 300 : 1000);
+      aiPlanAddUnitType(gNavyDefendPlan, cUnitTypeAbstractWarShip, 0, 200, 200);
+      // AssertiveWall: adds artillery to water defend plan
+      if (gStartOnDifferentIslands == true)
+      {
+         aiPlanAddUnitType(gNavyDefendPlan, cUnitTypeAbstractArtillery, 0, 0, 2);
+      }
+      else if (gNavyMap == true)
+      {
+         aiPlanAddUnitType(gNavyDefendPlan, cUnitTypeAbstractArtillery, 0, 0, 1);
+      }
+      
+      debugMilitary("Creating primary navy defend plan at: " + gNavyVec);
+      aiPlanSetActive(gNavyDefendPlan);
+   }
+
+   // Check if we have the hill. If we do, move defend plan there
+   int KOTHUnit = getUnit(cUnitTypezpKingsHillNaval, cPlayerRelationAny, cUnitStateAny);
+   if (kbGetPlayerTeam(kbUnitGetPlayerID(KOTHUnit)) == kbGetPlayerTeam(cMyID))
+   {
+      vector defendPoint = getRandomPoint(kbUnitGetPosition(KOTHUnit), 5 * cNumberPlayers);
+      if (distance(defendPoint, aiPlanGetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0)) > 30)
+      {
+         aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0, defendPoint);
+         aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanGatherPoint, 0, defendPoint);
+      }
+
+      aiPlanSetDesiredPriority(gNavyDefendPlan, 25);
+   }
+   else
+   {
+      aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanTargetPoint, 0, gNavyVec);
+      aiPlanSetVariableVector(gNavyDefendPlan, cCombatPlanGatherPoint, 0, gNavyVec);
+   }
+
+   // AssertiveWall: build a dummy plan and move fishing boats into it to control them easier. 
+   //                Enables fishingBellMonitor to ungarrison boats from docks
+   if (gFishingBellPlan < 0) // first run
+   {
+      gFishingBellPlan = aiPlanCreate("Fishing Dock Bell", cPlanReserve);
+      aiPlanAddUnitType(gFishingBellPlan, gFishingUnit, 0, 200, 200);
+      aiPlanSetDesiredPriority(gFishingBellPlan, 1);
+      aiPlanSetActive(gFishingBellPlan);
+      if (xsIsRuleEnabled("fishingBellMonitor") == false)
+      {
+         xsEnableRule("fishingBellMonitor");
+      }
+   }
+   
+   int enemyQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
+   kbUnitQuerySetSeeableOnly(enemyQuery, true); // Only stop fishing when the enemy is actually near us.
+   int numberFound = kbUnitQueryExecute(enemyQuery);
+
+   if (numberFound > 0)
+   {
+      aiPlanSetDesiredPriority(gNavyDefendPlan, 25); // Above fishing when there are enemies around.
+      aiPlanSetDesiredPriority(gFishingBellPlan, 25); // AssertiveWall: Above fishing when there are enemies around.
+      gLastWSTime = 120000 + xsGetTime(); // AssertiveWall: resets clock for dock building
+   
+      // AssertiveWall: If enemy are too close to fishing ships, tell them to move
+      int fishBoatQuery = createSimpleUnitQuery(cUnitTypeAbstractFishingBoat, cMyID, cUnitStateAlive);
+      int numberFBFound = kbUnitQueryExecute(fishBoatQuery);
+      int nearbyEnFound = -1;
+      int dockUnit = -1;
+      int unitID = -1;
+      int unitPlanID = -1;
+      int enUnitID = -1;
+      vector fBLocation = cInvalidVector;
+      vector enemyLocation = cInvalidVector;
+      vector sLocation = cInvalidVector;
+      // AssertiveWall: Step through each fishing boat
+      for (i = 0; < numberFBFound)
+      {
+         unitID = kbUnitQueryGetResult(fishBoatQuery, i);
+         unitPlanID = kbUnitGetPlanID(unitID);
+         if (aiPlanGetDesiredPriority(unitPlanID) > 19 && unitPlanID != gFishingBellPlan)
+         {  // Fishing priority is 19. Let anyone above that do their thing
+            continue;
+         }
+         fBLocation = kbUnitGetPosition(unitID);
+         nearbyEnFound = getClosestVisibleUnitByLocation(cUnitTypeAbstractWarShip, cPlayerRelationEnemyNotGaia, cUnitStateAlive, fBLocation, 35.0); // three bigger range than a frigate
+         if (nearbyEnFound > 0)
+         {  
+            // AssertiveWall: First add boat to gFishingBellPlan so we can control it
+            aiPlanAddUnit(gFishingBellPlan, unitID);
+
+            // AssertiveWall: Two courses of action depending on whether its a fishing boat or something else
+            if (kbUnitGetProtoUnitID(unitID) == gFishingUnit)
+            {
+               // AssertiveWall: Look for docks to garrison in. If none found then forts, town centers, towers
+               dockUnit = getUnitByLocation(gDockUnit, cPlayerRelationSelf, cUnitStateAlive, fBLocation, 200.0);
+               sLocation = kbUnitGetPosition(dockUnit);
+               if (sLocation != cInvalidVector)
+               {
+                  aiTaskUnitWork(unitID, dockUnit, true);
+                  continue;
+               }
+               
+               // Now look for the rest
+               if (sLocation == cInvalidVector)
+               {
+                  sLocation = kbUnitGetPosition(getUnitByLocation(cUnitTypeFortFrontier, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
+               }
+               if (sLocation == cInvalidVector)
+               {
+                  sLocation = kbUnitGetPosition(getUnitByLocation(cUnitTypeTownCenter, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
+               }
+               if (sLocation == cInvalidVector)
+               {
+                  sLocation = kbUnitGetPosition(getUnitByLocation(gTowerUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 50.0));
+               }
+               // No good options left, go for any dock, then gNavyVec
+               if (sLocation == cInvalidVector)
+               {
+                  dockUnit = getClosestUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 1000);
+                  sLocation = kbUnitGetPosition(dockUnit);
+                  if (sLocation != cInvalidVector)
+                  {
+                     aiTaskUnitWork(unitID, dockUnit, true);
+                     continue;
+                  }
+               }
+               if (sLocation == cInvalidVector)
+               {
+                  sLocation = gNavyVec;
+               }
+
+               if (sLocation != cInvalidVector)
+               {
+                  aiTaskUnitMove(unitID, sLocation);
+               }
+            }
+            else
+            {  // Shoot it!
+               aiTaskUnitWork(unitID, nearbyEnFound);
+            }
+         }
+         else if (nearbyEnFound <= 0)
+         {  // AssertiveWall: Ungarrison from dock. Should be unnecessary, also handled in fishingBellMonitor
+            dockUnit = getUnitByLocation(gDockUnit, cPlayerRelationAlly, cUnitStateAlive, fBLocation, 1.0);
+            if (dockUnit > 0)
+            {
+               aiTaskUnitEject(dockUnit);
+            }
+         }
+      }
+   }
+   else
+   {
+      aiPlanSetDesiredPriority(gNavyDefendPlan, 15); // Below fishing when there are no enemies around.
+      aiPlanSetDesiredPriority(gFishingBellPlan, 1); // Below fishing when there are no enemies around.
+   }
+}
+
+rule tradeCogEnabler
+inactive
+minInterval 5
+{
+   static int cogMaintainPlan = -1;
+   int buildLimit = kbGetBuildLimit(cMyID, cUnitTypezpHanseaticWarship);
+
+   if (cogMaintainPlan < 0 && buildLimit > 0)
+   {
+      cogMaintainPlan = createSimpleMaintainPlan(cUnitTypezpHanseaticWarship, buildLimit, true);  
+   }
+
+   if (cogMaintainPlan > 0 && 
+       (kbUnitCount(cMyID, cUnitTypezpHanseaticTradeship, cUnitStateAlive) > 0 || 
+        kbUnitCount(cMyID, cUnitTypezpHanseaticWarship, cUnitStateAlive) > 0))
+   {
+      xsEnableRule("tradeCog");
+      xsDisableSelf();
+   }
+}
+
+vector getNewHanseaticDockLoc(vector cogLoc = cInvalidVector)
+{
+   if (cogLoc == cInvalidVector) return cInvalidVector;
+
+   vector dockLoc = cInvalidVector;
+   int dockQuery = -1;
+   int dockCount = 0;
+   int newDockDestinationID = -1;
+   int dockResultRandInt = -1;
+   
+   dockQuery = createSimpleUnitQuery(cUnitTypeHansaTradePoint, cPlayerRelationAlly, cUnitStateAlive);
+   dockCount = kbUnitQueryExecute(dockQuery);
+
+   dockResultRandInt = aiRandInt(dockCount);
+   newDockDestinationID = kbUnitQueryGetResult(dockQuery, dockResultRandInt);
+   if (distance(kbUnitGetPosition(newDockDestinationID), cogLoc) > 20)
+   {
+      dockLoc = kbUnitGetPosition(newDockDestinationID);  
+   }
+   else if (dockResultRandInt > 0)
+   {
+      dockLoc = kbUnitGetPosition(kbUnitQueryGetResult(dockQuery, dockResultRandInt - 1));
+   }
+
+   return dockLoc;
+}
+
+rule tradeCog
+inactive
+minInterval 1
+{
+   int tradeCogID = -1;
+   int warCogID = -1;
+   int tradeCogQuery = -1;
+   int cogNum = -1;
+   vector cogLoc = cInvalidVector;
+   vector newDockLoc = cInvalidVector;
+
+   // convert any war cogs into trade cogs
+   if (kbUnitCount(cMyID, cUnitTypezpHanseaticWarship, cUnitStateAlive) > 0)
+   {
+      warCogID = getUnit(cUnitTypezpHanseaticWarship, cPlayerRelationSelf);
+      createProtoUnitCommandResearchPlan(cProtoUnitCommandzpTransformTradeCog, warCogID);
+   }
+
+   static int tradeCogReservePlan = -1;
+   if (tradeCogReservePlan < 0)
+   {
+      tradeCogReservePlan = aiPlanCreate("Trade Cog Reserve", cPlanReserve);
+      aiPlanAddUnitType(tradeCogReservePlan, cUnitTypezpHanseaticTradeship, 0, 200, 200);
+      aiPlanSetDesiredPriority(tradeCogReservePlan, 100);
+      aiPlanSetActive(tradeCogReservePlan);
+   }
+
+   tradeCogQuery = createSimpleUnitQuery(cUnitTypezpHanseaticTradeship, cMyID, cUnitStateAlive);
+   cogNum = kbUnitQueryExecute(tradeCogQuery);
+
+   for(i = 0; < cogNum)
+   {
+      tradeCogID = kbUnitQueryGetResult(tradeCogQuery, i);
+      if (kbUnitGetActionType(tradeCogID) == cActionTypeIdle)
+      {
+         cogLoc = kbUnitGetPosition(tradeCogID);
+         newDockLoc = getNewHanseaticDockLoc(cogLoc);
+
+         if (newDockLoc != cInvalidVector)
+         {
+            aiTaskUnitMove(tradeCogID, newDockLoc);
+         }
+      }
+   }
 }

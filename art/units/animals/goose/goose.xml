@@ -1,0 +1,64 @@
+<animfile>
+  <definebone>Bone_master</definebone>
+  <definebone>Bone_diver</definebone>
+  <attachment>goose_attach
+    <component>goose
+        <assetreference type="GrannyModel">
+            <file>units\animals\goose\Goose</file>
+        </assetreference>
+    </component>
+    <anim>Idle
+        <assetreference type="GrannyAnim">
+            <file>animation_library\quads\Goose_Idle</file>
+        </assetreference>
+        <assetreference type="GrannyAnim">
+            <file>animation_library\quads\Goose_Eat</file>
+        </assetreference>
+        <component>goose</component>
+    </anim>
+    <anim>Death
+        <assetreference type="GrannyAnim">
+            <file>animation_library\quads\Goose_Die</file>
+        </assetreference>
+        <component>goose</component>
+    </anim>
+    <anim>Walk
+        <assetreference type="GrannyAnim">
+            <file>animation_library\quads\Goose_Walk</file>
+        </assetreference>
+        <component>goose</component>
+    </anim>
+  </attachment>
+  <component>body
+        <assetreference type="GrannyModel">
+            <file>units\animals\goose\Goose_attachment</file>
+        </assetreference>
+        <decal>
+            <effecttype>default</effecttype>
+            <texture isfakeshadow="1">shadows_selections\shadow_circle_64x64</texture>
+            <selectedtexture>shadows_selections\selection_oval_32x64</selectedtexture>
+            <width>1.0</width>
+            <height>1.00</height>
+        </decal>
+        <attach a="goose_attach" frombone="MASTER" tobone="Bone_diver" syncanims="1"></attach>
+    </component>
+    <anim>Idle
+        <assetreference type="GrannyAnim">
+            <file>units\animals\goose\Goose_attachment_anim</file>
+        </assetreference>
+        <component>body</component>
+    </anim>
+    <anim>Death
+        <assetreference type="GrannyAnim">
+            <file>units\animals\goose\Goose_attachment_anim</file>
+            <tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.25</tag>
+        </assetreference>
+        <component>body</component>
+    </anim>
+    <anim>Walk
+        <assetreference type="GrannyAnim">
+            <file>units\animals\goose\Goose_attachment_anim</file>
+        </assetreference>
+        <component>body</component>
+    </anim>
+</animfile>

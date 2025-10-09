@@ -1,0 +1,145 @@
+<animfile>
+    <definebone>bone_launchpoint</definebone>
+    <definebone>bone_fuse</definebone>
+    <definebone>bone_cart</definebone>
+    <component>great_bombard
+        <assetreference type="GrannyModel">
+            <file>units\artillery\hussite_wagon\hussite_driver</file>
+        </assetreference>
+    </component>
+    <anim>Walk
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_walk</file>
+            <tag type="FootstepLeft" footprinttype="Wheel">0.20</tag>
+            <tag type="FootstepRight" footprinttype="Wheel">0.50</tag>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Jog
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_walk</file>
+            <tag type="FootstepLeft" footprinttype="Wheel">0.30</tag>
+            <tag type="FootstepRight" footprinttype="Wheel">0.80</tag>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Run
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_walk</file>
+            <tag type="FootstepLeft" footprinttype="Wheel">0.30</tag>
+            <tag type="FootstepRight" footprinttype="Wheel">0.80</tag>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>idle
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_idle</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>bored
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_idle</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Death_by_melee
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_idle</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Death_by_range
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_idle</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Cheer
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_idle</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Recoil
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_idle</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Limber
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_idle</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Unlimber
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_idle</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Bombard_ranged_idle
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_idle</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Bombard_ranged_attack
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_idle</file>
+            <tag type="Attack">0.50</tag>
+            <tag type="SpecificSoundSet" checkvisible="1" set="CulverinShoot">0.40</tag>
+            <tag type="Particles" particlename="GreatBombardMuzzleFX">0.50</tag>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Bombard_aim
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_idle</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Bombard_reload
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_idle</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Bombard_bored
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_idle</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Bombard_walk
+        <assetreference type="GrannyAnim">
+           <file>units\trade\trade_stagecoach_driver_walk</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Bombard_jog
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_walk</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Bombard_run
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_walk</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim>Bombard_limber
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_walk</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+    <anim animlengthoverride="-1.0000">Bombard_unlimber
+        <assetreference type="GrannyAnim">
+            <file>units\trade\trade_stagecoach_driver_walk</file>
+        </assetreference>
+        <component>great_bombard</component>
+    </anim>
+</animfile>

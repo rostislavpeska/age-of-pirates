@@ -1,0 +1,90 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\stables\east\textures\east_stables_2age_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\stables\east\textures\east_stables_2age_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\stables\east\textures\east_stables_2age_mata_masks">
+      </texture>
+      <texture name="Details" override="buildings\stables\east\textures\east_stables_2age_mata_details">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings/stables/east/textures/cossack_stables_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings/stables/east/textures/east_stables_2age_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings/stables/east/textures/east_stables_2age_mata_Masks">
+      </texture>
+      <texture name="Details" override="buildings/stables/east/textures/cossack_stables_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\natives\iroquois\axe_rider_1_horse\textures\axe_rider_1_horse_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\natives\iroquois\axe_rider_1_horse\textures\axe_rider_1_horse_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\natives\iroquois\axe_rider_1_horse\textures\axe_rider_1_horse_mata_masks">
+      </texture>
+      <texture name="Details" override="units\natives\iroquois\axe_rider_1_horse\textures\axe_rider_1_horse_mata_details">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="units\natives\iroquois\axe_rider_1_horse\textures\axe_rider_1_horse_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\natives\iroquois\axe_rider_1_horse\textures\axe_rider_1_horse_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\natives\iroquois\axe_rider_1_horse\textures\axe_rider_1_horse_mata_masks">
+      </texture>
+      <texture name="Details" override="units\natives\iroquois\axe_rider_1_horse\textures\axe_rider_1_horse_mata_details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\generic_props\atlas\generic_props_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matz">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

@@ -1,0 +1,27 @@
+<animfile>
+  <definebone>Bip01_AttachLt</definebone>
+  <definebone>Bip01_AttachRt</definebone>
+  <definebone>bip01 Prop1</definebone>
+  <definebone>bip01 Prop2</definebone>
+  <definebone>bone_hat</definebone>
+  <definebone>Bip01 Head</definebone>
+  <definebone>bone_backpack</definebone>
+  <definebone>bone_fur</definebone>
+  <definebone>bone_gun</definebone>
+  <definebone>HITPOINTBAR</definebone>
+  <definebone>bone_chief_aura</definebone>
+  <definebone>bone_fuse</definebone>
+  <attachment>torch<include>effects\projectiles\torch.xml</include></attachment>
+  <attachment>sword<component>sword<assetreference type="GrannyModel"><file>units\spc\bolivar\bolivar_sword</file></assetreference></component><anim>Idle<component>sword</component></anim></attachment>
+  <attachment>hat<component>hat<assetreference type="GrannyModel"><file>units\infantry_ranged\colonial_militia\colonial_militia_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+  <attachment>pistol<component>pistol<assetreference type="GrannyModel"><file>units\generals\general_gun</file></assetreference></component><anim>Idle<component>pistol</component></anim></attachment>
+  <component>ModelComp<assetreference type="GrannyModel"><file>units\mercenaries\fusilier\fusilier</file></assetreference></component>
+  <anim>Idle<assetreference type="GrannyAnim"><file>nuggets\outlaw_kidnap\kidnap_outlawa_idlea</file></assetreference><component>ModelComp</component></anim>
+  <anim>Walk<assetreference type="GrannyAnim"><file>nuggets\outlaw_kidnap\kidnap_outlawa_idlea</file></assetreference><component>ModelComp</component></anim>
+  <anim>GatherFish<assetreference type="GrannyAnim"><file>nuggets\outlaw_kidnap\kidnap_outlawa_idlea</file></assetreference><component>ModelComp</component></anim>
+  <anim>Death<assetreference type="GrannyAnim"><file>animation_library\range\death_kneeling_rifleman_a</file></assetreference><component>ModelComp</component><attach a="sword" frombone="MASTER" tobone="BIP01 PROP1" syncanims="1"></attach></anim>
+  <anim>RangedAttack<assetreference type="GrannyAnim"><file>nuggets\outlaw_kidnap\kidnap_outlawa_idlea</file></assetreference><component>ModelComp</component></anim>
+  <anim>Sabotage<assetreference type="GrannyAnim"><file>nuggets\outlaw_kidnap\kidnap_outlawa_idlea</file></assetreference><component>ModelComp</component></anim><anim>Raze_Attack<assetreference type="GrannyAnim"><file>nuggets\outlaw_kidnap\kidnap_outlawa_idlea</file></assetreference><component>ModelComp</component></anim>
+  <anim>Raze_Idle<assetreference type="GrannyAnim"><file>nuggets\outlaw_kidnap\kidnap_outlawa_idlea</file></assetreference><component>ModelComp</component></anim>
+  <anim>Reload<assetreference type="GrannyAnim"><file>nuggets\outlaw_kidnap\kidnap_outlawa_idlea</file></assetreference><component>ModelComp</component></anim>
+</animfile>

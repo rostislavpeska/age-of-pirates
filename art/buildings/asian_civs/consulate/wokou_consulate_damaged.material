@@ -1,0 +1,64 @@
+<material>
+  <submaterial name="matA">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\consulate\textures\wokou_consulate_con_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings/asian_civs/consulate/japan/age_2/textures/japan_consulate_age2_matA_Normals">
+      </texture>
+      <texture name="Masks" override="buildings/asian_civs/consulate/japan/age_2/textures/japan_consulate_age2_matA_Masks">
+      </texture>
+      <texture name="Details" override="buildings/asian_civs/consulate/japan/age_2/textures/japan_consulate_age2_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matC">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\asians_accessories\Textures\Asians_accessories_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\asians_accessories\Textures\Asians_accessories_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\asians_accessories\Textures\Asians_accessories_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matB">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\generic_props\textures\generic_props_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\generic_props\textures\generic_props_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\generic_props\textures\generic_props_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matz">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="maty">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

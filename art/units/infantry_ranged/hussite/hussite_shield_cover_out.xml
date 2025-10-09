@@ -1,0 +1,13 @@
+<animfile>
+    <component>shield
+      <assetreference type="GrannyModel">
+          <file>units\infantry_ranged\genoese\hussite_shield_lvl2</file>
+      </assetreference>
+    </component>
+    <anim>Cover_out
+        <assetreference type="GrannyAnim">
+            <file>animation_library\range\cover\crossbow_cover_out_shield</file>
+        </assetreference>
+        <component>shield</component>
+    </anim>
+</animfile>

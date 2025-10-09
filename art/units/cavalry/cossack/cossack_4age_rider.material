@@ -1,0 +1,30 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\cavalry\cossack\textures\cossack_4age_rider_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\cavalry\cossack\textures\cossack_4age_rider_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\cavalry\cossack\textures\cossack_4age_rider_mata_masks">
+      </texture>
+      <texture name="Details" override="units\cavalry\cossack\textures\cossack_4age_rider_mata_details">
+      </texture>
+      <float name="AO Intensity" override="0.0000">
+      </float>
+    </parameters>
+     <parameters variant="1">
+      <texture name="BaseColor" override="units\cavalry\cossack\textures\haidamak_4age_rider_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\cavalry\cossack\textures\cossack_4age_rider_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\cavalry\cossack\textures\cossack_4age_rider_mata_masks">
+      </texture>
+      <texture name="Details" override="units\cavalry\cossack\textures\haidamak_4age_rider_mata_details">
+      </texture>
+      <float name="AO Intensity" override="0.0000">
+      </float>
+    </parameters>
+  </submaterial>
+</material>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>8</width>
+	<height>8</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="179" posx="-4.0588" posz="-0.1465" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCFixedGunBase</unit>
+		<unit variation="41" posx="-3.7745" posz="-0.0995" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCVerseillesFixedGun</unit>
+	</units>
+	<tiles></tiles>
+</grouping>

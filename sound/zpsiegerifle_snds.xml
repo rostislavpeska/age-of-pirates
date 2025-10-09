@@ -1,0 +1,72 @@
+<protounitsounddef>
+  <protounit name="zpSiegeRifle">
+    <soundtype name="Select">
+    <techlogic>
+      <choice name="none">
+        <soundset name="GermanCannonSelect">
+        </soundset>
+      </choice>
+      <choice name="zpcivilwargeneralstup">
+        <soundset name="DEAmericanMortarSelect">
+        </soundset>
+      </choice>
+      <choice name="zpNatSiberianLegacy">
+        <soundset name="zpSlovakLegionarySelect">
+        </soundset>
+      </choice>
+    </techlogic>
+    </soundtype>
+    <soundtype name="Grunt">
+      <soundset name="GenericMaleGrunt">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="GenericMaleDeath">
+      </soundset>
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="MilitaryBirth">
+      </soundset>
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <techlogic>
+        <choice name="none">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="GermanCannonAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="GermanCannonAttack">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="zpcivilwargeneralstup">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="DEAmericanMortarAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="DEAmericanMortarAttack">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="zpNatSiberianLegacy">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="zpSlovakLegionaryAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="zpSlovakLegionaryAttack">
+              </soundset>
+            </choice>
+          </targetlogic>
+        </choice>
+      </techlogic>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

@@ -1,7 +1,7 @@
 <lightingset>
   <suncolor>162 57 29</suncolor>
   <sunintensity>6.675000</sunintensity>
-   <suninclination>-46.811527</suninclination>
+  <suninclination>-46.811527</suninclination>
   <sunrotation>99.123604</sunrotation>
   <lightingbalance>0.521000</lightingbalance>
   <fillcolor>127 127 127</fillcolor>
@@ -64,7 +64,7 @@
   <ssaointensity>9.279000</ssaointensity>
   <ssaoradius>2.500000</ssaoradius>
   <ssaoblurradius>1.500000</ssaoblurradius>
-  <ssaoedgenormalfactor>1.000000</ssaoedgenormalfactor>
+  <ssaoedgenormalfactor>0.500000</ssaoedgenormalfactor>
   <ssaoedgedepthfactor>0.000300</ssaoedgedepthfactor>
   <waterfogdensity>0.002000</waterfogdensity>
   <waterroughness>0.056000</waterroughness>

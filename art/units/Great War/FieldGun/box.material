@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\artillery\ww_cannon\textures\fieldgun_aop_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\artillery\ww_cannon\textures\fieldgun_aop_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\artillery\ww_cannon\textures\fieldgun_aop_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\artillery\ww_cannon\textures\missile_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\artillery\ww_cannon\textures\missile_Normals">
+      </texture>
+      <texture name="Masks" override="units\artillery\ww_cannon\textures\missile_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

@@ -1,0 +1,62 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\fort\east_fort\textures\east_fort_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\fort\east_fort\textures\east_fort_matA_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\fort\east_fort\textures\east_fort_matA_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\spc\koth\textures\bohemian_fort_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\fort\east_fort\textures\east_fort_matA_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\fort\east_fort\textures\east_fort_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\fort\east_fort\textures\east_fort_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\fort\east_fort\textures\east_fort_matB_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\fort\east_fort\textures\east_fort_matB_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\spc\koth\textures\bohemian_fort_matB_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\spc\koth\textures\bohemian_fort_matB_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\spc\koth\textures\bohemian_fort_matB_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="textures\construction\east_barracks_age2_con\east_barracks_age2_con_BaseColor">
+      </texture>
+      <texture name="Normals" override="textures\construction\east_barracks_age2_con\east_barracks_age2_con_Normals">
+      </texture>
+      <texture name="Masks" override="textures\construction\east_barracks_age2_con\east_barracks_age2_con_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="textures\construction\east_barracks_age2_con\east_barracks_age2_con_BaseColor">
+      </texture>
+      <texture name="Normals" override="textures\construction\east_barracks_age2_con\east_barracks_age2_con_Normals">
+      </texture>
+      <texture name="Masks" override="textures\construction\east_barracks_age2_con\east_barracks_age2_con_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

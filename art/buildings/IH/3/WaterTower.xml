@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- converted from XMB to XML -->
+<animfile>
+	<component>
+		building
+		<logic type="Variation">
+			<v1>
+				<assetreference type="GrannyModel">
+					<file>buildings\IH\3\AOE3DE_Build_WaterTowers2_Model</file>
+				</assetreference>
+			</v1>
+			<v2>
+				<assetreference type="GrannyModel">
+					<file>buildings\IH\3\AOE3DE_Build_WaterTowers_Model</file>
+				</assetreference>
+			</v2>
+      	</logic>
+    	<decal>
+			<effecttype>default</effecttype>
+			<texture>buildings\house\WEST\AGE_1\House_Ground</texture>
+			<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+			<width>5.00</width>
+			<height>5.00</height>
+		</decal>
+	</component>
+	<anim>
+		Idle
+		<component>building</component>
+	</anim>
+</animfile>

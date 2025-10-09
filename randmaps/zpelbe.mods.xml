@@ -1,0 +1,144 @@
+<?xml version="1.0"?>
+<mods>
+	<protomods>
+		<unit name="Dock">
+			<placementfile>dock_city.xml</placementfile>
+		</unit>
+		<unit name="YPDockAsian">
+			<placementfile>dock_city.xml</placementfile>
+		</unit>
+		<unit name="dePort">
+			<placementfile>dock_city.xml</placementfile>
+		</unit>
+		<unit name="Church">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="ypChurch">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deBasilica">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="House">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="HouseEast">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="HouseMed">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="Manor">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="TownCenter">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Market">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Barracks">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Stable">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Blockhouse">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="Outpost">
+			<placementfile>outpost_city.xml</placementfile>
+		</unit>
+		<unit name="ArtilleryDepot">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Arsenal">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="LivestockPen">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="Bank">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deTavern">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Saloon">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="Capitol">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deStateCapitol">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deLivestockMarket">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="dePalace">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="NativeEmbassy">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deHouseAfrican">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="deOutpostAfrican">
+			<placementfile>outpost_city.xml</placementfile>
+		</unit>
+		<unit name="deUniversity">
+			<placementfile>university_city.xml</placementfile>
+		</unit>
+		<unit name="deWarCamp">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="deTower">
+			<placementfile>buildingsmall_city.xml</placementfile>
+		</unit>
+		<unit name="Mill">
+			<placementfile>mill_city.xml</placementfile>
+		</unit>
+		<unit name="Plantation">
+			<placementfile>mill_city.xml</placementfile>
+		</unit>
+		<unit name="deGranary">
+			<placementfile>granary_city.xml</placementfile>
+		</unit>
+		<unit name="deField">
+			<placementfile>field_city.xml</placementfile>
+		</unit>
+		<unit name="FortFrontier">
+			<placementfile>fortfrontier_city.xml</placementfile>
+		</unit>
+		<unit name="Factory">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deLombard">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="deCommandery">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit id="20330" name="zpAmericanEmbassy">
+			<placementfile>buildinglarge_city.xml</placementfile>
+		</unit>
+		<unit name="zpTradingPostCaptureNaval">
+            <obstructionradiusx>4.0000</obstructionradiusx>
+            <obstructionradiusz>4.0000</obstructionradiusz>
+            <flag mergemode="remove">TieToWaterSurface</flag>
+            <flag>DoNotShowOnMiniMap</flag>
+        </unit>
+        <unit name="zpNativeHouseHansa">
+			<flag>StartOnNoUpdate</flag>
+            <flag>NotSelectable</flag>
+            <flag>NoIdleActions</flag>
+		</unit>
+        <unit name="zpNativeHouseHansaBig">
+			<flag>StartOnNoUpdate</flag>
+            <flag>NotSelectable</flag>
+            <flag>NoIdleActions</flag>
+		</unit>
+	</protomods>
+</mods>

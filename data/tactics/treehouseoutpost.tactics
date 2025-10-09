@@ -1,0 +1,51 @@
+<tactics>
+    <action>
+        <name stringid="38133">RangedAttack</name>
+        <type>Attack</type>
+        <attackaction>1</attackaction>
+        <rangedlogic>1</rangedlogic>
+        <anim>RangedAttack</anim>
+        <maxheight>0</maxheight>
+        <accuracy>1.0</accuracy>
+        <accuracyreductionfactor>0.01</accuracyreductionfactor>
+        <aimbonus>0</aimbonus>
+        <scalebycontainedunittype>
+            <rate type="zpNatKorowaiArcher">0.1</rate>
+            <rate type="zpNatMercKorowaiArcher">0.1</rate>
+        </scalebycontainedunittype>
+        <maxspread>5</maxspread>
+        <spreadfactor>0.25</spreadfactor>
+        <trackrating>12</trackrating>
+        <unintentionaldamagemultiplier>0.7</unintentionaldamagemultiplier>
+        <projectile>Arrow</projectile>
+        <rate type="Unit">1.0</rate>
+        <instantballistics>1</instantballistics>
+    </action>
+    <action>
+        <name stringid="46491">Stealth</name>
+        <type>Stealth</type>
+        <maxrange>30.0</maxrange>
+        <active>1</active>
+        <persistent>1</persistent>
+    </action>
+    <tactic>Normal
+        <attacktype>LogicalTypeRangedUnitsAttack</attacktype>
+        <autoattacktype>LogicalTypeRangedUnitsAutoAttack</autoattacktype>
+        <attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype>
+        <action priority="100">RangedAttack</action>
+        <transition>
+            <tactic>Stealth</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+    </tactic>
+    <tactic>Stealth
+        <action>Stealth</action>
+        <checkifcanstealth range="30.0">1</checkifcanstealth>
+        <transition>
+            <tactic>Normal</tactic>
+            <length>0.3</length>
+            <exit>1</exit>
+        </transition>
+    </tactic>
+</tactics>

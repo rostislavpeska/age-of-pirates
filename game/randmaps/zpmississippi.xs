@@ -212,8 +212,8 @@ void main(void)
 
 	// Native Constraints
 	int avoidSufi=rmCreateTypeDistanceConstraint("stay away from Sufi", "SocketCherokee", 70.0);
-	int avoidMaltese=rmCreateTypeDistanceConstraint("stay away from Maltese", "zpSocketScientists", 45.0);
-	int avoidJewish=rmCreateTypeDistanceConstraint("stay away from Jewish", "zpSPCSocketWesternVillage", 25.0);
+	int avoidinventors=rmCreateTypeDistanceConstraint("stay away from inventors", "zpSocketScientists", 45.0);
+	int avoidwestern=rmCreateTypeDistanceConstraint("stay away from western", "zpSPCSocketWesternVillage", 25.0);
 	int avoidTownCenterFar=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 40.0);
 	int avoidTradeSocket=rmCreateTypeDistanceConstraint("stay away from Trade Socket", "SocketTradeRoute", 40.0);
 	int avoidTradeSocketShort=rmCreateTypeDistanceConstraint("stay away from Trade Socket Short", "SocketTradeRoute", 25.0);
@@ -756,21 +756,20 @@ void main(void)
 	rmPlaceObjectDefAtLoc(scientistControllerID2, 0, 0.55+rmXTilesToFraction(25), 0.55-rmXTilesToFraction(14));
 	vector scientistControllerLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(scientistControllerID2, 0));
 
-	int maltese1VillageTypeID = rmRandInt(5,6);
-	int maltese1ID = -1;
-	maltese1ID = rmCreateGrouping("maltese 1", "Scientist_Lab06");
-	rmSetGroupingMinDistance(maltese1ID, 0);
-	rmSetGroupingMaxDistance(maltese1ID, 0);
+	int inventors1VillageTypeID = rmRandInt(5,6);
+	int inventors1ID = -1;
+	inventors1ID = rmCreateGrouping("inventors 1", "Scientist_Lab06");
+	rmSetGroupingMinDistance(inventors1ID, 0);
+	rmSetGroupingMaxDistance(inventors1ID, 0);
 	
 
-	int maltese2VillageTypeID = 11-maltese1VillageTypeID;
-	int maltese2ID = -1;
-	maltese2ID = rmCreateGrouping("maltese 2", "Scientist_Lab05");
-	rmSetGroupingMinDistance(maltese2ID, 0);
-	rmSetGroupingMaxDistance(maltese2ID, 0);
+	int inventors2VillageTypeID = 11-inventors1VillageTypeID;
+	int inventors2ID = -1;
+	inventors2ID = rmCreateGrouping("inventors 2", "Scientist_Lab05");
+	rmSetGroupingMinDistance(inventors2ID, 0);
+	rmSetGroupingMaxDistance(inventors2ID, 0);
 
-	rmPlaceGroupingAtLoc(maltese1ID, 0, 0.45-rmXTilesToFraction(25),0.45+rmXTilesToFraction(13));
-	rmPlaceGroupingAtLoc(maltese2ID, 0, 0.55+rmXTilesToFraction(24), 0.55-rmXTilesToFraction(14));
+	rmPlaceGroupingAtLoc(inventors1ID, 0, 0.45-rmXTilesToFraction(25),0.45+rmXTilesToFraction(13));
 
 	int nativewaterflagID1 = rmCreateObjectDef("pirate water flag 1");
 	rmAddObjectDefItem(nativewaterflagID1, "zpNativeWaterSpawnFlag1", 1, 1.0);
@@ -789,6 +788,8 @@ void main(void)
 	rmPlaceGroupingAtLoc(pirateportID1, 0, rmXMetersToFraction(xsVectorGetX(closeToVillage1a)), rmZMetersToFraction(xsVectorGetZ(closeToVillage1a)));
 
 	rmClearClosestPointConstraints();
+
+	rmPlaceGroupingAtLoc(inventors2ID, 0, 0.55+rmXTilesToFraction(24), 0.55-rmXTilesToFraction(14));
 
 	int nativewaterflagID2 = rmCreateObjectDef("pirate water flag 2");
 	rmAddObjectDefItem(nativewaterflagID2, "zpNativeWaterSpawnFlag2", 1, 1.0);
@@ -869,28 +870,28 @@ void main(void)
 
 	// Western Village
 
-	int jewish1VillageTypeID = rmRandInt(1, 5);
-	int jewish2VillageTypeID = rmRandInt(1, 5);
+	int western1VillageTypeID = rmRandInt(1, 5);
+	int western2VillageTypeID = rmRandInt(1, 5);
 
-	int jewish1ID = rmCreateGrouping("jewish 1", "WildWest_Village_East_0"+jewish1VillageTypeID);
-	int jewish2ID = rmCreateGrouping("jewish 2", "WildWest_Village_East_0"+jewish2VillageTypeID);
+	int western1ID = rmCreateGrouping("western 1", "WildWest_Village_0"+western1VillageTypeID);
+	int western2ID = rmCreateGrouping("western 2", "WildWest_Village_0"+western2VillageTypeID);
 
-	rmSetGroupingMinDistance(jewish1ID, 0);
-	rmSetGroupingMaxDistance(jewish1ID, 50);
-	rmSetGroupingMinDistance(jewish2ID, 0);
-	rmSetGroupingMaxDistance(jewish2ID, 50);
+	rmSetGroupingMinDistance(western1ID, 0);
+	rmSetGroupingMaxDistance(western1ID, 50);
+	rmSetGroupingMinDistance(western2ID, 0);
+	rmSetGroupingMaxDistance(western2ID, 50);
 
-    rmAddGroupingConstraint(jewish1ID, avoidWater30);
-	rmAddGroupingConstraint(jewish1ID, farAvoidTradeSockets);
-    rmAddGroupingConstraint(jewish1ID, avoidMaltese);
-    rmAddGroupingConstraint(jewish1ID, avoidImpassableLand);
-    rmAddGroupingConstraint(jewish2ID, avoidWater30);
-	rmAddGroupingConstraint(jewish2ID, farAvoidTradeSockets);
-    rmAddGroupingConstraint(jewish2ID, avoidMaltese);
-    rmAddGroupingConstraint(jewish2ID, avoidImpassableLand);
+    rmAddGroupingConstraint(western1ID, avoidWater30);
+	rmAddGroupingConstraint(western1ID, farAvoidTradeSockets);
+    rmAddGroupingConstraint(western1ID, avoidinventors);
+    rmAddGroupingConstraint(western1ID, avoidImpassableLand);
+    rmAddGroupingConstraint(western2ID, avoidWater30);
+	rmAddGroupingConstraint(western2ID, farAvoidTradeSockets);
+    rmAddGroupingConstraint(western2ID, avoidinventors);
+    rmAddGroupingConstraint(western2ID, avoidImpassableLand);
 
-    rmPlaceGroupingAtLoc(jewish1ID, 0, 0.4, 0.4, 1);
-    rmPlaceGroupingAtLoc(jewish2ID, 0, 0.6, 0.6, 1);
+    rmPlaceGroupingAtLoc(western1ID, 0, 0.4, 0.4, 1);
+    rmPlaceGroupingAtLoc(western2ID, 0, 0.6, 0.6, 1);
 
 	// Text
 	rmSetStatusText("",0.30);
@@ -1155,7 +1156,7 @@ void main(void)
 	rmAddObjectDefConstraint(TCID, avoidTradeRouteSocketMin);
 	rmAddObjectDefConstraint(TCID, avoidTrainStationA);
 	rmAddObjectDefConstraint(TCID, avoidTrainStationB);
-	rmAddObjectDefConstraint(TCID, avoidJewish);
+	rmAddObjectDefConstraint(TCID, avoidwestern);
 	rmAddObjectDefConstraint(TCID, longPlayerEdgeConstraint);
 	rmSetObjectDefMinDistance(TCID, 10.0);
 	rmSetObjectDefMaxDistance(TCID, 17.0);
@@ -1495,8 +1496,8 @@ void main(void)
 		rmAddAreaConstraint(northForest, avoidImportantItem); // DAL added, to try and make sure natives got on the map w/o override.
 		rmAddAreaConstraint(northForest, shortAvoidCoin);
 		rmAddAreaConstraint(northForest, avoidTownCenterFar);
-		rmAddAreaConstraint(northForest, avoidJewish);
-		rmAddAreaConstraint(northForest, avoidMaltese);
+		rmAddAreaConstraint(northForest, avoidwestern);
+		rmAddAreaConstraint(northForest, avoidinventors);
 		rmAddAreaConstraint(northForest, avoidTradeSocket);
 		rmAddAreaConstraint(northForest, avoidHarbour);
 		rmAddAreaConstraint(northForest, avoidSufi);
@@ -1533,8 +1534,8 @@ void main(void)
 		rmAddAreaConstraint(southForest, avoidImportantItem);
 		rmAddAreaConstraint(southForest, shortAvoidCoin);
 		rmAddAreaConstraint(southForest, avoidTownCenterFar);
-		rmAddAreaConstraint(southForest, avoidJewish);
-		rmAddAreaConstraint(southForest, avoidMaltese);
+		rmAddAreaConstraint(southForest, avoidwestern);
+		rmAddAreaConstraint(southForest, avoidinventors);
 		rmAddAreaConstraint(southForest, avoidTradeSocket);
 		rmAddAreaConstraint(southForest, avoidHarbour);
 		rmAddAreaConstraint(southForest, avoidSufi);
@@ -1741,9 +1742,13 @@ void main(void)
 	string unitID8 = "388";
 	string unitID9 = "438";
 
+	int flag1 = rmGetUnitPlaced(nativewaterflagID1, 0);
+	int flag2 = rmGetUnitPlaced(nativewaterflagID2, 0);
+
 	// Ship Training
-    string unitIDsc00 = "455";
-    string unitIDsc01 = "545";
+	string unitIDsc00 = ""+(flag1-1);
+	string unitIDsc01 = ""+(flag2-1);
+
 
 	// Cooldowns
 	int armoredTrainActive = 90;
@@ -1755,16 +1760,12 @@ void main(void)
     if (cNumberNonGaiaPlayers <=2){
 		unitID2 = "88";
         unitID01 = "75";
-        unitIDsc00 = "155";
-        unitIDsc01 = "245";
 		noStations = 2;
 		trainDirection = 22;
 		}
     if (cNumberNonGaiaPlayers ==3){
 		unitID3 = "138";
         unitID01 = "125";
-        unitIDsc00 = "205";
-        unitIDsc01 = "295";
 		noStations = 3;
 		trainDirection = 23;
 		}
@@ -1772,8 +1773,6 @@ void main(void)
 		unitID3 = "138";
         unitID4 = "188";
         unitID01 = "125";
-        unitIDsc00 = "255";
-        unitIDsc01 = "345";
 		noStations = 4;
 		trainDirection = 24;
 		}
@@ -1781,22 +1780,16 @@ void main(void)
 		unitID3 = "138";
         unitID4 = "188";
         unitID01 = "125";
-		unitIDsc00 = "305";
-        unitIDsc01 = "395";
 		noStations = 5;
 		trainDirection = 25;
 		}
     if (cNumberNonGaiaPlayers ==6){
         unitID4 = "188";
         unitID01 = "175";
-		unitIDsc00 = "355";
-        unitIDsc01 = "445";
 		noStations = 6;
 		trainDirection = 26;
 		}
 	if (cNumberNonGaiaPlayers ==7){
-		unitIDsc00 = "405";
-        unitIDsc01 = "495";
 		noStations = 7;
 		trainDirection = 27;
 		}
@@ -2462,7 +2455,7 @@ void main(void)
 	rmSetTriggerEffectParamInt("Status",2);
 
 	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+	rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name 
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -2515,7 +2508,7 @@ void main(void)
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 	rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+	rmSetTriggerEffectParam("Msg","Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2596,7 +2589,7 @@ void main(void)
 	rmSetTriggerEffectParamInt("Status",2);
 
 	rmAddTriggerEffect("FakeCounter Set Text");
-	rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+	rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name 
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -2641,7 +2634,7 @@ void main(void)
 	rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 	rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 	rmSetTriggerEffectParamInt("Stop",0);
-	rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+	rmSetTriggerEffectParam("Msg","Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 	rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2725,7 +2718,7 @@ void main(void)
         rmSetTriggerEffectParamInt("Status",2);
 
         rmAddTriggerEffect("FakeCounter Set Text");
-        rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+        rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name 
         rmSetTriggerPriority(4);
         rmSetTriggerActive(false);
         rmSetTriggerRunImmediately(true);
@@ -2771,7 +2764,7 @@ void main(void)
         rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
         rmSetTriggerEffectParamInt("Start",armoredTrainActive);
         rmSetTriggerEffectParamInt("Stop",0);
-        rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+        rmSetTriggerEffectParam("Msg","Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
         rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
         rmAddTriggerEffect("ZP Set Tech Status (XS)");
         rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2856,7 +2849,7 @@ void main(void)
         rmSetTriggerEffectParamInt("Status",2);
 
         rmAddTriggerEffect("FakeCounter Set Text");
-        rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+        rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name 
         rmSetTriggerPriority(4);
         rmSetTriggerActive(false);
         rmSetTriggerRunImmediately(true);
@@ -2901,7 +2894,7 @@ void main(void)
         rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
         rmSetTriggerEffectParamInt("Start",armoredTrainActive);
         rmSetTriggerEffectParamInt("Stop",0);
-        rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+        rmSetTriggerEffectParam("Msg","Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
         rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
         rmAddTriggerEffect("ZP Set Tech Status (XS)");
         rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2965,7 +2958,7 @@ void main(void)
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+		rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name 
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -3010,7 +3003,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+		rmSetTriggerEffectParam("Msg","Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -3076,7 +3069,7 @@ void main(void)
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+		rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name 
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -3121,7 +3114,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+		rmSetTriggerEffectParam("Msg","Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -3186,7 +3179,7 @@ void main(void)
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+		rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name 
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -3231,7 +3224,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+		rmSetTriggerEffectParam("Msg","Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -3296,7 +3289,7 @@ void main(void)
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+		rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name 
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -3341,7 +3334,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+		rmSetTriggerEffectParam("Msg","Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -3395,7 +3388,7 @@ void main(void)
 		rmSetTriggerEffectParamInt("Status",2);
 
 		rmAddTriggerEffect("FakeCounter Set Text");
-		rmSetTriggerEffectParam("Text","Armored Train "+rmGetPlayerName(k)+": On the way"); // Get exact player name
+		rmSetTriggerEffectParam("Text", "Armored Train \" + kbGetPlayerName(" + k + ") + \": On the way"); // Get exact player name 
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -3440,7 +3433,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name","ArmoredTrainPlr"+k);
 		rmSetTriggerEffectParamInt("Start",armoredTrainActive);
 		rmSetTriggerEffectParamInt("Stop",0);
-		rmSetTriggerEffectParam("Msg","Armored Train "+rmGetPlayerName(k)); // Get exact player name
+		rmSetTriggerEffectParam("Msg","Armored Train \" + kbGetPlayerName(" + k + ") + \""); // Get exact player name
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("AT_Destroy_Plr"+k));
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);

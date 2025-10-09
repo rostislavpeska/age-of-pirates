@@ -1,0 +1,16 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units/natives/penal_colony/textures/free_labourer_female_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\villagers\we_villager_female\textures\we_villager_female_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\villagers\we_villager_female\textures\we_villager_female_matA_Masks">
+      </texture>
+      <texture name="Details" override="units/natives/penal_colony/textures/convict_labourer_female_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

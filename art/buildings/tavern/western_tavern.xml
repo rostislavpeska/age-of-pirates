@@ -1,0 +1,31 @@
+<animfile>
+	<definebone>bone_prop</definebone>
+	<definebone>bone_chimney</definebone>
+  	<definebone>bone_chimney1</definebone>
+		<attachment>
+			Chimney Smoke
+			<component>
+				smoke<assetreference type="popcornFx"><file>smoke\chimney_smoke.pkfx</file></assetreference>
+			</component>
+			<anim>Idle<component>smoke</component></anim>
+		</attachment>
+		<component>
+		house
+		<assetreference type="GrannyModel">
+			<file>buildings\saloon\saloon_age4</file>
+		</assetreference>
+		<attach a="Chimney Smoke" frombone="bone_chimney" tobone="bone_chimney" syncanims="0"></attach><attach a="Chimney Smoke" frombone="bone_chimney1" tobone="bone_chimney1" syncanims="0"></attach>
+		<decal>
+            <effecttype>default</effecttype>
+            <texture>buildings\saloon\Saloon_floor_00</texture>
+            <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+            <width>8.00</width>
+            <height>10.00</height>
+            <zoffset>0.00</zoffset>
+          </decal>
+	</component>
+	<anim>
+		Idle
+		<component>house</component>
+	</anim>
+</animfile>

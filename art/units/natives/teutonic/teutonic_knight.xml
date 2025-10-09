@@ -1,0 +1,364 @@
+<animfile>
+<definebone>bip01 Prop1</definebone>
+<definebone>bone_hat</definebone>
+<definebone>bone_backpack</definebone>
+<definebone>BIP01 L FOREARM</definebone>
+<definebone>BIP01 L HAND</definebone>
+<definebone>bone_sword</definebone>
+<attachment>
+sword
+<include>units\infantry\boneguard\boneguard_sword.xml</include>
+</attachment>
+<attachment>
+torch
+<include>effects\projectiles\torch.xml</include>
+</attachment>
+<attachment>
+helmet
+<component>
+helmet
+<assetreference type="GrannyModel">
+<file>units\infantry\hospitaller\hospitaller_helmet</file>
+</assetreference>
+</component>
+<anim>
+Idle
+<component>helmet</component>
+</anim>
+</attachment>
+<attachment>
+shield_charge
+<component>
+shield_charge
+<assetreference type="GrannyModel">
+<file>units\natives\teutonic\teutonic_shield</file>
+</assetreference>
+</component>
+<anim>
+Idle
+<component>shield_charge</component>
+</anim>
+</attachment>
+<component>
+ModelComp
+<logic type="LowPoly">
+<normal>
+<assetreference type="GrannyModel">
+<file>units\infantry\hospitaller\hospitaller_01</file>
+<materialvariant index="3"/>
+</assetreference>
+<attach a="helmet" frombone="bone_hat" tobone="HEAD" syncanims="0"/>
+</normal>
+<lowpoly>
+<assetreference type="GrannyModel">
+<file>units\infantry\boneguard\lp_boneguard_1age</file>
+</assetreference>
+</lowpoly>
+</logic>
+<decal>
+<effecttype>default</effecttype>
+<texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
+<selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture>
+<width>1.0</width>
+<height>1.0</height>
+</decal>
+</component>
+<anim>
+Death_by_melee
+<assetreference type="GrannyAnim">
+<file>animation_library\shared\human_sword_death_a</file>
+<tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.83</tag>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+</anim>
+<anim>
+Death_by_range
+<assetreference type="GrannyAnim">
+<file>animation_library\shared\human_death_shot_front_a</file>
+<tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.57</tag>
+</assetreference>
+<assetreference type="GrannyAnim">
+<file>animation_library\shared\human_death_shot_back_a</file>
+<tag type="SpecificSoundSet" checkvisible="1" set="RagdollImpact">0.74</tag>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+</anim>
+<anim>
+Death_by_havoc
+<assetreference type="GrannyAnim">
+<file>animation_library\range\havoc_death</file>
+</assetreference>
+<assetreference type="GrannyAnim">
+<file>animation_library\range\havoc_deathB</file>
+</assetreference>
+<assetreference type="GrannyAnim">
+<file>animation_library\range\havoc_deathC</file>
+</assetreference>
+<assetreference type="GrannyAnim">
+<file>animation_library\range\havoc_deathD</file>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+<attach a="sword" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
+</anim>
+<anim>
+Death_havoc_flail
+<assetreference type="GrannyAnim">
+<file>animation_library\range\havoc_flail</file>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+</anim>
+<anim>
+Death_havoc_spin
+<assetreference type="GrannyAnim">
+<file>animation_library\range\havoc_spin</file>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+</anim>
+<anim>
+Cheer
+<assetreference type="GrannyAnim">
+<file>animation_library\shared\cheer_C</file>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+</anim>
+<anim>
+Recoil
+<assetreference type="GrannyAnim">
+<file>animation_library\shared\recoil_A</file>
+</assetreference>
+<assetreference type="GrannyAnim">
+<file>animation_library\shared\recoil_C</file>
+</assetreference>
+<assetreference type="GrannyAnim">
+<file>animation_library\shared\recoil_E</file>
+</assetreference>
+<assetreference type="GrannyAnim">
+<file>animation_library\shared\recoil_G</file>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+<attach a="sword" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
+</anim>
+<anim>
+HC_openDoor
+<assetreference type="GrannyAnim">
+<file>animation_library\shared\doorOpen</file>
+</assetreference>
+<component>ModelComp</component>
+</anim>
+<anim>
+HC_closeDoor
+<assetreference type="GrannyAnim">
+<file>animation_library\shared\doorClose</file>
+</assetreference>
+<component>ModelComp</component>
+</anim>
+<anim>
+Raze_idle
+<assetreference type="GrannyAnim">
+<file>animation_library\shared\human_sword_combat_idle_a</file>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+<attach a="sword" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
+</anim>
+<anim>
+Raze_attack
+<assetreference type="GrannyAnim">
+<file>animation_library\shared\torch_throwB</file>
+<tag type="Attack">0.56</tag>
+<tag type="SpecificSoundSet" checkvisible="1" set="TorchSwing">0.37</tag>
+</assetreference>
+<assetreference type="GrannyAnim">
+<file>animation_library\shared\torch_throwA</file>
+<tag type="Attack">0.61</tag>
+<tag type="SpecificSoundSet" set="TorchSwing">0.44</tag>
+</assetreference>
+<component>ModelComp</component>
+<attach a="torch" frombone="ATTACHPOINT" tobone="L HAND" syncanims="0"/>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+<attach a="sword" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
+</anim>
+<anim>
+Charge_bored
+<assetreference type="GrannyAnim">
+<file>
+units\asians\natives\rattan_shield\rattan_shield_bored01
+</file>
+</assetreference>
+<assetreference type="GrannyAnim">
+<file>
+animation_library\infantry\Charge\dopplesoldner_charge_boredB
+</file>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+<attach a="sword" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
+</anim>
+<anim>
+Charge_idle
+<assetreference type="GrannyAnim">
+<file>
+units\asians\natives\rattan_shield\rattan_shield_idle01
+</file>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+<attach a="sword" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
+</anim>
+<anim>
+Charge_Walk
+<assetreference type="GrannyAnim">
+<file>
+units\asians\natives\rattan_shield\rattan_shield_walk
+</file>
+<tag type="FootstepLeft" footprinttype="HumanLeft">0.23</tag>
+<tag type="FootstepRight" footprinttype="HumanRight">0.53</tag>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+<attach a="sword" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
+</anim>
+<anim>
+Charge_Jog
+<assetreference type="GrannyAnim">
+<file>animation_library\africa\charge_jog</file>
+<tag type="FootstepLeft" footprinttype="HumanLeft">0.60</tag>
+<tag type="FootstepRight" footprinttype="HumanRight">0.15</tag>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+<attach a="sword" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
+</anim>
+<anim>
+Charge_Run
+<assetreference type="GrannyAnim">
+<file>animation_library\africa\charge_jog</file>
+<tag type="FootstepLeft" footprinttype="HumanLeft">0.60</tag>
+<tag type="FootstepRight" footprinttype="HumanRight">0.15</tag>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+<attach a="sword" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
+</anim>
+<anim>
+Defend_idle
+<assetreference type="GrannyAnim">
+<file>
+units\asians\natives\rattan_shield\rattan_shield_defend_idle
+</file>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+<attach a="sword" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
+</anim>
+<anim>
+Defend_bored
+<assetreference type="GrannyAnim">
+<file>
+units\asians\natives\rattan_shield\rattan_shield_defend_idle
+</file>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+<attach a="sword" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
+</anim>
+<anim>
+Cover_idle
+<assetreference type="GrannyAnim">
+<file>
+units\asians\natives\rattan_shield\rattan_shield_idle01
+</file>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+<attach a="sword" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
+</anim>
+<anim>
+Cover_bored
+<assetreference type="GrannyAnim">
+<file>
+units\asians\natives\rattan_shield\rattan_shield_bored01
+</file>
+</assetreference>
+<assetreference type="GrannyAnim">
+<file>
+animation_library\infantry\Charge\dopplesoldner_charge_boredB
+</file>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+<attach a="sword" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
+</anim>
+<anim>
+Charge_attack
+<assetreference type="GrannyAnim">
+<file>
+animation_library\natives\zapotec_lightning_warrior\charge_attack
+</file>
+<tag type="Attack">0.51</tag>
+<tag type="SpecificSoundSet" checkvisible="1" set="Swoosh">0.45</tag>
+</assetreference>
+<assetreference type="GrannyAnim">
+<file>
+animation_library\natives\zapotec_lightning_warrior\charge_attack2
+</file>
+<tag type="Attack">0.51</tag>
+<tag type="SpecificSoundSet" checkvisible="1" set="Swoosh">0.45</tag>
+</assetreference>
+<assetreference type="GrannyAnim">
+<file>animation_library\africa\charge_attack_c</file>
+<tag type="Attack">0.51</tag>
+<tag type="SpecificSoundSet" checkvisible="1" set="Swoosh">0.45</tag>
+</assetreference>
+<assetreference type="GrannyAnim">
+<file>animation_library\africa\charge_attack_d</file>
+<tag type="Attack">0.52</tag>
+<tag type="SpecificSoundSet" checkvisible="1" set="Swoosh">0.45</tag>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+<attach a="sword" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
+</anim>
+<anim>
+Cover_Walk
+<assetreference type="GrannyAnim">
+<file>
+units\asians\natives\rattan_shield\rattan_shield_walk
+</file>
+<tag type="FootstepLeft" footprinttype="HumanLeft">0.23</tag>
+<tag type="FootstepRight" footprinttype="HumanRight">0.53</tag>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+<attach a="sword" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
+</anim>
+<anim>
+Cover_Jog
+<assetreference type="GrannyAnim">
+<file>animation_library\africa\charge_jog</file>
+<tag type="FootstepLeft" footprinttype="HumanLeft">0.60</tag>
+<tag type="FootstepRight" footprinttype="HumanRight">0.15</tag>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+<attach a="sword" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
+</anim>
+<anim>
+Cover_Run
+<assetreference type="GrannyAnim">
+<file>animation_library\africa\charge_jog</file>
+<tag type="FootstepLeft" footprinttype="HumanLeft">0.60</tag>
+<tag type="FootstepRight" footprinttype="HumanRight">0.15</tag>
+</assetreference>
+<component>ModelComp</component>
+<attach a="shield_charge" frombone="bone_backpack" tobone="Bip01 L ForeArm" syncanims="0"/>
+<attach a="sword" frombone="MASTER" tobone="bip01 Prop1" syncanims="0"/>
+</anim>
+</animfile>

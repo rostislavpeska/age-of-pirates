@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "301632" displayNameID = "301631" loadDetails="301633" largeMapName = "zpeyrebasin"
+    imagepath = "ui\random_map\eyre\eyre_mini" cannotReplace = "" loadBackground="ui\random_map\eyre\eyre_map">
+	<loadss>ui\random_map\eyre\eyre_01</loadss>
+    <loadss>ui\random_map\eyre\eyre_02</loadss>
+    <loadss>ui\random_map\eyre\eyre_03</loadss>
+</mapinfo>

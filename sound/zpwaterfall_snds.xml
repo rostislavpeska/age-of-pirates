@@ -1,0 +1,8 @@
+<protounitsounddef>
+  <protounit name="zpWaterfall">
+    <soundtype name="Exists">
+      <soundset name="AmbienceWaterfall">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

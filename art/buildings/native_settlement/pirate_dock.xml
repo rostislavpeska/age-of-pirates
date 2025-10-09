@@ -3,21 +3,24 @@
 <animfile>
 	<component>
 		ModelComp
-			<logic type="Variation">
-				<v0>
-					<assetreference type="GrannyModel">
-						<file>buildings\dock\WEST\AGE_2\w_dock_2</file>
-					</assetreference>
-				</v0>
-				<v1>
-					<assetreference type="GrannyModel">
-						<file>buildings\dock\WEST\AGE_3\w_dock_3</file>
-					</assetreference>
-				</v1>
-			</logic>
+		<assetreference type="GrannyModel">
+			<file>buildings\dock\pirate_dock</file>
+		</assetreference>
+		<decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><width>11.00</width><height>8.00</height></decal>
 	</component>
 	<anim>
 		Idle
 		<component>ModelComp</component>
 	</anim>
+	<anim>
+		RangedAttack
+		<component>ModelComp</component>
+	</anim>
+	<anim>RangedAttack
+        <assetreference type="GrannyAnim">
+            <file>animation_library\building\ranged_attack</file>
+            <tag type="Attack">0.45</tag>
+        </assetreference>
+        <component>ModelComp</component>
+    </anim>
 </animfile>

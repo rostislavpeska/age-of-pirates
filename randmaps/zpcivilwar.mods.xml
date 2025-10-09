@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<mods>
+	<protomods>
+            <unit name="zpTrainStationA">
+                  <unittype>Socket</unittype>
+                  <unittype>TradePostSocket</unittype>
+                  <unittype>VictoryPointBuilding</unittype>
+                  <unittype>AbstractFort</unittype>
+                  <unittype>HasBountyValue</unittype>
+                  <unittype>CountsTowardEconomicScore</unittype>
+                  <unittype>AbstractTypeVictoryPointBuilding</unittype>
+                  <unittype>AbstractTradingPost</unittype>
+                  <unittype>CapturableTradingPost</unittype>
+            </unit>
+            <unit name="SPCFortGate">
+    <animfile>buildings\spc_woodfort_wall\spc_woodfort_wall_gate.xml</animfile>
+    <unittype>ConvertsHerds</unittype>
+    <flag>PlaceAnywhere</flag>
+    <buildpoints>0.0000</buildpoints>
+  </unit>
+            <unit name="zpNativeHouseWesternVillage">
+                  <flag>NotSelectable</flag>
+            </unit>
+            <unit name="zpNativeHouseWesternVillageB">
+                  <flag>NotSelectable</flag>
+            </unit>
+            <unit name="zpNatPropFactoryHallLong">
+                  <flag>NotSelectable</flag>
+            </unit>
+            <unit name="zpNatPropFactoryHallShort">
+                  <flag>NotSelectable</flag>
+            </unit>
+            <unit name="zpWeaponFactorySummer">
+                  <flag>NotSelectable</flag>
+            </unit>
+            <unit name="zpNativeHouseScientists">
+                  <flag>NotSelectable</flag>
+            </unit>
+            <unit name="zpTradingPostCaptureNaval">
+                  <obstructionradiusx>4.0000</obstructionradiusx>
+                  <obstructionradiusz>4.0000</obstructionradiusz>
+                  <flag mergemode="remove">TieToWaterSurface</flag>
+                  <flag>DoNotShowOnMiniMap</flag>
+            </unit>
+            <unit name="TradingPost">
+                  <placementfile>tradepost_city.xml</placementfile>
+            </unit>
+            <unit name="zpSPCFixedGun">
+			<animfile>buildings\fixed_gun\fixed_gun_pirate.xml</animfile>
+		</unit>
+            <unit name="SPCFixedGunBase">
+			<civflagoverride>objects\flags\hydra</civflagoverride>
+		</unit>
+            <unit name="TrainEngine">
+                  <flag>GivesLOSToAll</flag>
+            </unit>
+            <unit name="TrainCoalcar">
+                  <flag>GivesLOSToAll</flag>
+            </unit>
+            <unit name="TrainCaboose">
+                  <flag>GivesLOSToAll</flag>
+            </unit>
+            <unit name="TrainCar">
+                  <flag>GivesLOSToAll</flag>
+            </unit>
+            <unit name="TrainCarWood">
+                  <flag>GivesLOSToAll</flag>
+            </unit>
+            <unit name="TrainCarFood">
+                  <flag>GivesLOSToAll</flag>
+            </unit>
+            <unit name="TrainCarCoin">
+                  <flag>GivesLOSToAll</flag>
+            </unit>
+	</protomods>
+</mods>

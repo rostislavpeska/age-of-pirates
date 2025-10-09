@@ -48,6 +48,14 @@
       <from>xmassnow</from>
       <to>xmasstagecoach</to>
     </upgrade>
+    <upgrade>
+      <from>australia_river_trail</from>
+      <to>native_water2_trail</to>
+    </upgrade>
+    <upgrade>
+      <from>hansa_water_trail</from>
+      <to>water2_trail</to>
+    </upgrade>
     <grantsvisibility>
     </grantsvisibility>
     <awardsound>FindNugget</awardsound>
@@ -673,6 +681,18 @@
       </orprereqs>
       <activeicon>resources\images\icons\command\generate_coin_on.png</activeicon>
       <disabledicon>resources\images\icons\command\generate_coin_off.png</disabledicon>
+    </unit>
+    <unit>
+      <name>ypConsulatePrussianNeedleGun</name>
+      <count>1</count>
+      <mincount>1</mincount>
+      <maxcount>1</maxcount>
+      <countincrement>0</countincrement>
+      <activetooltipid>302906</activetooltipid>
+      <disabledtooltipid>302905</disabledtooltipid>
+      <techprereq>zpTradeRouteUpgradeHansaShadow</techprereq>
+      <activeicon>resources\images\icons\command\tactic_ashigaru_on.png</activeicon>
+      <disabledicon>resources\images\icons\command\tactic_ashigaru_off.png</disabledicon>
     </unit>
   </unitmultiples>
 </traderoutemanager>

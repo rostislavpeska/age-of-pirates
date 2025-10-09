@@ -1,0 +1,24 @@
+<placementrules>
+  <obstructionatleastfromtype player="any" foundation="any" distance="8" errorstringid="34686">Mill</obstructionatleastfromtype>
+  <obstructionatleastfromtype player="any" foundation="any" distance="8" errorstringid="34686">Plantation</obstructionatleastfromtype>
+  <obstructionatleastfromtype player="any" foundation="any" distance="8" errorstringid="46694">CommunityPlaza</obstructionatleastfromtype>
+  <obstructionatleastfromtype player="any" foundation="any" distance="8" errorstringid="34686">Farm</obstructionatleastfromtype>
+  <obstructionatleastfromtype player="any" foundation="any" distance="8" errorstringid="34686">ypBerryBuilding</obstructionatleastfromtype>
+  <obstructionatleastfromtype player="any" foundation="any" distance="8" errorstringid="34686">ypRicePaddy</obstructionatleastfromtype>
+  <obstructionatleastfromtype player="any" foundation="any" distance="11" errorstringid="34686">deHacienda</obstructionatleastfromtype>
+  <obstructionatleastfromtype player="any" foundation="any" distance="8" errorstringid="72586">deFurTrade</obstructionatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="20" errorstringid="69985">ypKingsHill</distanceatleastfromtype>
+  <distanceatleastfromtype player="enemy" foundation="any" distance="65" errorstringid="25521">FirstTC</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="3" errorstringid="110197">deInspiringFlag</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="7" errorstringid="101571">deGranary</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="7" errorstringid="91719">AbstractMine</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="18" errorstringid="123113">deSPCCapturableFlag</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="16" errorstringid="123320">deSPCPeninsularFixedGun</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="16" errorstringid="125166">deRMFoodMill</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="12" errorstringid="123337">deSPCHeadquartersVienna</distanceatleastfromtype>
+  <distanceatmostfromtype player="team" foundation="any" distance="75" errorstringid="46622" norushonly="true">FirstTC</distanceatmostfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="301928">AbstractCityManison</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="301928">AbstractCityManisonB</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="302033">zpBridgeFace</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="302073">deSPCTreeCypressProp</distanceatleastfromtype>
+</placementrules>
