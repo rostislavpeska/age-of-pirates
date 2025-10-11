@@ -487,6 +487,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPirates</effect>
     </effects>
@@ -571,6 +574,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnJapanese</effect>
     </effects>
@@ -655,6 +661,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnChinese</effect>
     </effects>
@@ -739,6 +748,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnIndian</effect>
     </effects>
@@ -2889,6 +2901,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMaltese</effect>     
     </effects>
@@ -3678,6 +3693,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokou</effect>
     </effects>
@@ -6582,6 +6600,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
@@ -7249,6 +7270,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffJewish</effect>
     </effects>
@@ -7477,6 +7501,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="active">zpBigButtonResearchDone</effect>
 
@@ -7859,6 +7886,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientists</effect>
     </effects>
@@ -10038,6 +10068,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffVenice</effect>
     </effects>
@@ -11563,6 +11596,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffOrthodox</effect>
     </effects>
@@ -11892,6 +11928,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffXMass</effect>
     </effects>
@@ -12362,6 +12401,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientistsLand</effect>
     </effects>
@@ -12998,6 +13040,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientistsLand</effect>
     </effects>
@@ -13471,6 +13516,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnKhmer</effect>
     </effects>
@@ -14921,6 +14969,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPiratesAustralia</effect>
     </effects>
@@ -15201,6 +15252,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokouSouth</effect>
     </effects>
@@ -15399,6 +15453,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPiratesMedi</effect>
     </effects>
@@ -16488,6 +16545,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPenalColony</effect>
     </effects>
@@ -17886,6 +17946,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
     </effects>
@@ -18345,6 +18408,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffSansculottes</effect>
     </effects>
@@ -22304,6 +22370,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffOrthodoxSouth</effect>
     </effects>
@@ -23089,6 +23158,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffKingOfBohemia</effect>
     </effects>
@@ -25961,6 +26033,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterWarHut</effect>
     </effects>
@@ -27740,6 +27815,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffHussites</effect>
     </effects>
@@ -28159,6 +28237,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPrinceElector</effect>
     </effects>
@@ -30133,6 +30214,9 @@
       <effect type="TechStatus" status="obtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffHansa</effect>
     </effects>
@@ -30827,6 +30911,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaWestern</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPiratesBaltic</effect>
     </effects>
@@ -32788,6 +32875,9 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffOrthodoxBalkan</effect>
     </effects>
@@ -32815,6 +32905,9 @@
       <effect type="TechStatus" status="obtainable">zpIndianFriendshipCossack</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
       <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyCossack</effect>
+
+      <effect type="TechStatus" status="obtainable">zpNatHatmanAuthority</effect>
+      <effect type="TechStatus" status="obtainable">zpNatCossackStable</effect>
     </effects>
   </tech>
   <tech name ="zpAustrianHabsburgExpansion" type ="Normal">
@@ -33148,6 +33241,241 @@
       <effect type="TechStatus" status="active">zpTheBlackFlagGoldBallanceShadow</effect>
     </effects>
 	</tech>
+  <tech name="zpTurnConsulateOffCossacks" type="Normal">
+    <dbid>41270</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateFrenchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateGermansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateOttomansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulatePortugueseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateDutchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateSpanishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseAlliesClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBarbarossa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect> 
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxConstantinopole</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxAlexandria</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatCherokee</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatSeminole</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatLakota</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentConfederate</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralConfederate</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralConfederate</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateElectorHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateElectorWittelsbach</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateElectorWettin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateElectorHanover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateElectorOldenburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHansaWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateCossackPetro</effect>
+
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffOrthodoxBalkan</effect>
+    </effects>
+  </tech>
+  <tech name="zpSendBohdan" type="Normal">
+    <dbid>41271</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status ="Active">zpConsulateCossackBohdan</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCBohdan" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateCossackBohdan" type="Normal">
+    <dbid>41272</dbid>
+    <displaynameid>303148</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cossack_small.png</icon>
+    <rollovertextid>303151</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpCossackExpansion</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpCossackExpansion">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHatmanAuthority" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatCossackStable" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatCossackStable" type="Normal">
+    <dbid>41273</dbid>
+    <displaynameid>303152</displaynameid>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Food">200.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\buildings\spc\cossack_stable_tech.png</icon>
+    <rollovertextid>303153</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpCossackStableWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpCossackStable</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatHatmanAuthority" type="Normal">
+    <dbid>41274</dbid>
+    <displaynameid>303154</displaynameid>
+    <cost resourcetype="Wood">250.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cossack_authority.png</icon>
+    <rollovertextid>303155</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" action="HatmanAuthority" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTownCenter</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTownCenter</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateCossackPetro" type="Normal">
+    <dbid>41275</dbid>
+    <displaynameid>303156</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cossack_small.png</icon>
+    <rollovertextid>303159</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpCossackExpansion</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpCossackExpansion">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHatmanAuthority" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatCossackStable" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateCossackMazepa" type="Normal">
+    <dbid>41276</dbid>
+    <displaynameid>303160</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cossack_small.png</icon>
+    <rollovertextid>303161</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpCossackExpansion</effect>
+      <effect type="TechStatus" status="obtainable">ypPickConsulateTech</effect>
+      <effect type="CommandRemove" tech="zpCossackExpansion">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHatmanAuthority" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatCossackStable" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
 
 
 

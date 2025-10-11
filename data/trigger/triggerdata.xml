@@ -2266,7 +2266,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpMalteseCross)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffMaltese, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -3851,7 +3851,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpOrthodoxInfluence)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffOrthodox, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -3959,7 +3959,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpWesternAgeUp)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffWestern, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -4000,7 +4000,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpPenalColonyRevolt)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffPenalColony, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -4041,7 +4041,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpXMassExpansion)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffXMass, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -4082,7 +4082,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpOrthodoxInfluence)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffOrthodoxSouth, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -4127,7 +4127,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpHussiteExpansion)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffHussites, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -4168,7 +4168,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpSPCKingOfBohemia)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffKingOfBohemia, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -4390,7 +4390,7 @@
       <command>}</command>
       <command>continue;</command>
       <command>}</command>
-      <command>// For humans, TurnOffConsulate if Maltese Cross is being researched.</command>
+      <command>// For humans, TurnOffConsulate if Expansion tech is being researched.</command>
       <command>if (trTechStatusResearching(playerID, cTechzpPrinceElectorElect)) {</command>
       <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffPrinceElector, cTechStatusActive); </command>
       <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
@@ -4712,6 +4712,47 @@
       <command>}</command>
       <command>}</command>
       <command>rule ewnuhgerbask active { if (true) { xsDisableSelf();</command>
+    </effect>
+    <effect name="ZP Native AutoSetup: Cossacks">
+      <command>}}</command>
+      <command>rule Cossack_Natives_Setup</command>
+      <command>active</command>
+      <command>runImmediately</command>
+      <command>highFrequency</command>
+      <command>{</command>
+      <command>for(playerID=1;&lt;9) {</command>
+      <command>if (kbIsPlayerValid(playerID) == false) break;</command>
+      <command>// Activate Politician automatically for all AI players and bail out.</command>
+      <command>if (kbIsPlayerHuman(playerID) == false) {</command>
+      <command>static int CossackFaction=-1;</command>
+      <command>if (CossackFaction == -1) {</command>
+      <command>trQuestVarSetFromRand("RandomCossackFaction", 0, 2);</command>
+      <command>CossackFaction = trQuestVarGet("RandomCossackFaction");</command>
+      <command>}</command>
+      <command>if (CossackFaction == 0) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateCossackBohdan, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (CossackFaction == 1) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateCossackMazepa, cTechStatusActive);</command>
+      <command>}</command>
+      <command>if (CossackFaction == 2) {</command>
+      <command>trTechSetStatus(playerID, cTechzpConsulateCossackPetro, cTechStatusActive);</command>
+      <command>}</command>
+      <command>continue;</command>
+      <command>}</command>
+      <command>// For humans, TurnOffConsulate if Cossack Expansion is being researched.</command>
+      <command>if (trTechStatusResearching(playerID, cTechzpCossackExpansion)) {</command>
+      <command>trTechSetStatus(playerID, cTechzpTurnConsulateOffCossacks, cTechStatusActive); </command>
+      <command>trTechSetStatus(playerID, cTechzpBigButtonResearchDecrease, cTechStatusActive);</command>
+      <command>xsEnableRule("Italian_Ballance");</command>
+      <command>xsEnableRule("Cheat_Returner");</command>
+      <command>if (trCurrentPlayer() == playerID) {</command>
+      <command>uiConsulateUIInSelected();</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>}</command>
+      <command>rule hfdrgfbfgbh8491 active { if (true) { //</command>
     </effect>
   </effects>
 </trigger>
