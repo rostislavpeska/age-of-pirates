@@ -185,7 +185,13 @@ void main(void)
 	int avoidGoldShort = rmCreateClassDistanceConstraint ("gold avoid gold short", classGold, 8);
 	int avoidGold = rmCreateClassDistanceConstraint ("gold avoid gold med", classGold, 48-2*PlayerNum);
 	int avoidGoldFar = rmCreateClassDistanceConstraint ("gold avoid gold far", classGold, 72);
+	if (PlayerNum == 2)
+		avoidGoldFar = rmCreateClassDistanceConstraint ("gold avoid gold far", classGold, 64);
 	int avoidGoldVeryFar = rmCreateClassDistanceConstraint ("gold avoid gold very far", classGold, 90);
+	int avoidGoldMine = rmCreateTypeDistanceConstraint("avoid gold mines", "MineGold", 64);
+	if (PlayerNum == 2)
+		avoidGoldMine = rmCreateTypeDistanceConstraint("avoid gold mines", "MineGold", 55);
+	int avoidQuartz = rmCreateTypeDistanceConstraint("avoid quartz", "zpQuarzmine", 24);
 	int avoidNuggetMin = rmCreateTypeDistanceConstraint("nugget avoid nugget min", "AbstractNugget", 4);
 	int avoidNuggetShort = rmCreateTypeDistanceConstraint("nugget avoid nugget short", "AbstractNugget", 12);
 	int avoidNugget = rmCreateTypeDistanceConstraint("nugget avoid nugget", "AbstractNugget", 36);
@@ -1208,6 +1214,13 @@ void main(void)
 	int stayNorthClose = rmCreatePieConstraint("stay north close", volcLocX, volcLocY, rmXFractionToMeters(0.01), rmXFractionToMeters(0.11), rmDegreesToRadians(330), rmDegreesToRadians(120));
 	int stayWestClose = rmCreatePieConstraint("stay west close", volcLocX, volcLocY, rmXFractionToMeters(0.01), rmXFractionToMeters(0.11), rmDegreesToRadians(240), rmDegreesToRadians(030));
 	int stayEastClose = rmCreatePieConstraint("stay east close", volcLocX, volcLocY, rmXFractionToMeters(0.01), rmXFractionToMeters(0.11), rmDegreesToRadians(060), rmDegreesToRadians(210));
+	if (PlayerNum == 2)
+	{
+		staySouthClose = rmCreatePieConstraint("stay south close", volcLocX, volcLocY, rmXFractionToMeters(0.01), rmXFractionToMeters(0.12), rmDegreesToRadians(150), rmDegreesToRadians(300));
+		stayNorthClose = rmCreatePieConstraint("stay north close", volcLocX, volcLocY, rmXFractionToMeters(0.01), rmXFractionToMeters(0.12), rmDegreesToRadians(330), rmDegreesToRadians(120));
+		stayWestClose = rmCreatePieConstraint("stay west close", volcLocX, volcLocY, rmXFractionToMeters(0.01), rmXFractionToMeters(0.12), rmDegreesToRadians(240), rmDegreesToRadians(030));
+		stayEastClose = rmCreatePieConstraint("stay east close", volcLocX, volcLocY, rmXFractionToMeters(0.01), rmXFractionToMeters(0.12), rmDegreesToRadians(060), rmDegreesToRadians(210));
+	}
 	int staySouthWMed = rmCreatePieConstraint("stay south west med", volcLocX, volcLocY, rmXFractionToMeters(0.15), rmXFractionToMeters(0.30), rmDegreesToRadians(230), rmDegreesToRadians(315));
 	int staySouthEMed = rmCreatePieConstraint("stay south east med", volcLocX, volcLocY, rmXFractionToMeters(0.15), rmXFractionToMeters(0.30), rmDegreesToRadians(135), rmDegreesToRadians(220));
 	int staySouthMed = rmCreatePieConstraint("stay south med", volcLocX, volcLocY, rmXFractionToMeters(0.15), rmXFractionToMeters(0.30), rmDegreesToRadians(150), rmDegreesToRadians(300));
@@ -1521,19 +1534,19 @@ void main(void)
 		int quartzMineID = rmCreateObjectDef("quartz mine"+i);
 		rmAddObjectDefItem(quartzMineID, "zpQuarzmine", 1, 0);
 		rmSetObjectDefMinDistance(quartzMineID, rmXFractionToMeters(0.00));
-		rmSetObjectDefMaxDistance(quartzMineID, rmXFractionToMeters(0.45));
+		rmSetObjectDefMaxDistance(quartzMineID, rmXFractionToMeters(0.15));
 		rmAddObjectDefToClass(quartzMineID, classGold);
 		rmAddObjectDefConstraint(quartzMineID, avoidGold);
 		rmAddObjectDefConstraint(quartzMineID, avoidWater);
 		rmAddObjectDefConstraint(quartzMineID, avoidCliff);
-		rmAddObjectDefConstraint(quartzMineID, avoidPlateau);
+//		rmAddObjectDefConstraint(quartzMineID, avoidPlateau);
 		rmAddObjectDefConstraint(quartzMineID, avoidImpassableLand);
 		rmAddObjectDefConstraint(quartzMineID, avoidNativesShort);
 		if (i < crystalcount/2)
 			rmAddObjectDefConstraint(quartzMineID, stayWestClose);
 		else
 			rmAddObjectDefConstraint(quartzMineID, stayEastClose);
-		rmPlaceObjectDefAtLoc(quartzMineID, 0, 0.50, 0.50);
+		rmPlaceObjectDefAtLoc(quartzMineID, 0, volcLocX, volcLocY, 1);
 	}
 
 	// Gold mines 
@@ -1541,12 +1554,13 @@ void main(void)
 		
 	for(i=0; < goldcount)
 	{
-		int goldMineID = rmCreateObjectDef("sulphur mine"+i);
+		int goldMineID = rmCreateObjectDef("gold mine"+i);
 		rmAddObjectDefItem(goldMineID, "MineGold", 1, 0);
-		rmSetObjectDefMinDistance(goldMineID, rmXFractionToMeters(0.00));
+		rmSetObjectDefMinDistance(goldMineID, rmXFractionToMeters(0.15));
 		rmSetObjectDefMaxDistance(goldMineID, rmXFractionToMeters(0.45));
 		rmAddObjectDefToClass(goldMineID, classGold);
-		rmAddObjectDefConstraint(goldMineID, avoidGoldFar);
+		rmAddObjectDefConstraint(goldMineID, avoidQuartz);
+		rmAddObjectDefConstraint(goldMineID, avoidGoldMine);
 		rmAddObjectDefConstraint(goldMineID, avoidWater);
 		rmAddObjectDefConstraint(goldMineID, avoidCliff);
 		rmAddObjectDefConstraint(goldMineID, avoidPlateau);
@@ -1556,7 +1570,7 @@ void main(void)
 			rmAddObjectDefConstraint(goldMineID, staySouthWMed);
 		else
 			rmAddObjectDefConstraint(goldMineID, staySouthEMed);
-		rmPlaceObjectDefAtLoc(goldMineID, 0, 0.50, 0.50);
+		rmPlaceObjectDefAtLoc(goldMineID, 0, volcLocX, volcLocY, 1);
 	}
 
 	// Shipwrecks 

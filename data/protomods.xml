@@ -64436,6 +64436,7 @@
     <unittype>AbstractMusketeer</unittype>
     <unittype>AbstractGunpowderTrooper</unittype>
     <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractCossack</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -64550,6 +64551,7 @@
     <unittype>AbstractCavalryInfantry</unittype>
     <unittype>CountsTowardMilitaryScore</unittype>
     <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractCossack</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -65231,6 +65233,7 @@
     <unittype>AbstractCavalry</unittype>
     <unittype>AbstractLightCavalry</unittype>
     <unittype>AbstractNativeWarrior</unittype>
+    <unittype>AbstractCossack</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -65360,6 +65363,7 @@
     <unittype>AbstractLightCavalry</unittype>
     <unittype>AbstractNativeWarrior</unittype>
     <unittype>MercType1</unittype>
+    <unittype>AbstractCossack</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -65439,8 +65443,8 @@
     <animfile>units\spc\yermak\spc_yermak_horse.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>cav</physicsinfo>
-    <icon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_icon.png</icon>
-    <portraiticon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_portrait.png</portraiticon>
+    <icon>resources\art\units\heroes\hatman_bohdan_icon.png</icon>
+    <portraiticon>resources\art\units\heroes\hatman_bohdan.png</portraiticon>
     <rollovertextid>303150</rollovertextid>
     <shortrollovertextid>303149</shortrollovertextid>
     <initialhitpoints>1100.0000</initialhitpoints>
@@ -65561,8 +65565,8 @@
     <animfile>units\spc\yermak\spc_yermak_horse.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>cav</physicsinfo>
-    <icon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_icon.png</icon>
-    <portraiticon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_portrait.png</portraiticon>
+    <icon>resources\art\units\heroes\hatman_petro_icon.png</icon>
+    <portraiticon>resources\art\units\heroes\hatman_petro.png</portraiticon>
     <rollovertextid>303158</rollovertextid>
     <shortrollovertextid>303149</shortrollovertextid>
     <initialhitpoints>950.0000</initialhitpoints>
@@ -65683,8 +65687,8 @@
     <animfile>units\spc\yermak\spc_yermak_horse.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>cav</physicsinfo>
-    <icon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_icon.png</icon>
-    <portraiticon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_portrait.png</portraiticon>
+    <icon>resources\art\units\heroes\hatman_mazepa_icon.png</icon>
+    <portraiticon>resources\art\units\heroes\hatman_mazepa.png</portraiticon>
     <rollovertextid>303165</rollovertextid>
     <shortrollovertextid>303157</shortrollovertextid>
     <initialhitpoints>950.0000</initialhitpoints>
@@ -65788,6 +65792,24 @@
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
     </protoaction>
+  </unit>
+  <unit name="deSaloonOutlawCossackRider">
+    <unittype>AbstractCossack</unittype>
+  </unit>
+  <unit name="deSaloonOutlawCossack">
+    <unittype>AbstractCossack</unittype>
+  </unit>
+  <unit name="deGuardianCossack">
+    <unittype>AbstractCossack</unittype>
+  </unit>
+  <unit name="deSPCDelugeCossack">
+    <unittype>AbstractCossack</unittype>
+  </unit>
+  <unit name="ypConsulateSiberianCossack">
+    <unittype>AbstractCossack</unittype>
+  </unit>
+  <unit name="Cossack">
+    <unittype>AbstractCossack</unittype>
   </unit>
 
   
@@ -69764,7 +69786,6 @@
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractRangedCavalry</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
-    <unittype>AbstractNativeWarrior</unittype>
     <unittype>ExcludeFromRansom</unittype>
     <unittype>AbstractJamesGang</unittype>
     <train row="0" page="0" column="0">TradingPost</train>

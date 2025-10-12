@@ -387,10 +387,12 @@
   <zpspchatmanmazepa>
     <ability>dePowerStrikeYermak<rof>45</rof></ability>
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+    <ability>zpPassiveCossackFather<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpspchatmanmazepa>
   <zpspchatmanpetro>
     <ability>dePowerStrikeYermak<rof>45</rof></ability>
     <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+    <ability>zpPassiveCossackUnity<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpspchatmanpetro>
 
   <zpwokoudiver>

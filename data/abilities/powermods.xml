@@ -574,6 +574,18 @@
     <alwaysaddtoplayer>1</alwaysaddtoplayer>
     <soundset type="StartSound" listenertype="Caster">DENatPowerHabsburg</soundset>
   </power>
+  <power name="zpPassiveCossackUnity" type="UnitAction">
+    <displaynameid>303166</displaynameid>
+    <rolloverid>303167</rolloverid>
+    <icon>resources\images\icons\abilities\cossack_unity.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
+  <power name="zpPassiveCossackFather" type="UnitAction">
+    <displaynameid>303168</displaynameid>
+    <rolloverid>303169</rolloverid>
+    <icon>resources\images\icons\abilities\cossack_father.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
 
 
 
