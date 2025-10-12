@@ -33,4 +33,5 @@
   <unittype>AbstractCrussaderKnight</unittype>
   <unittype>zpSPCTradeUnit</unittype>
   <unittype>HansaTradePoint</unittype>
+  <unittype>AbstractCossack</unittype>
 </unittypes>

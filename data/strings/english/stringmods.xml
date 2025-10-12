@@ -3158,7 +3158,12 @@
       <string _locid="303159">&lt;color=1.0, 0.9, 0.5&gt;HATMAN:&lt;/color&gt; \nEmpowers nearby Cossack units, naval improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nHMS Cossack \n\nBlack Sea Raids</string>
       <string _locid="303160">Ivan Mazepa</string>
       <string _locid="303161">&lt;color=1.0, 0.9, 0.5&gt;HATMAN:&lt;/color&gt; \nEmpowers nearby Settlers to work faster \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nEuropean Diplomacy \n\nSwedish Mercenaries</string>
-      
+      <string _locid="303162">ZP SPC Bohdan Khmelnytsky</string>
+      <string _locid="303163">ZP SPC Petro Konashevych-Sahaidachny</string>
+      <string _locid="303164">ZP SPC Ivan Mazepa</string>
+      <string _locid="303165">Ivan Mazepa, the Cossack Hetman, empowers nearby Cossacks.</string>
+
+
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
       <!-- ======================================== -->

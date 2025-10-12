@@ -380,6 +380,18 @@
   <zpoldspanishchurch>
     <ability>zpPowerInformersFrench<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
   </zpoldspanishchurch>
+  <zpspchatmanbohdan>
+    <ability>dePowerStrikeYermak<rof>45</rof></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspchatmanbohdan>
+  <zpspchatmanmazepa>
+    <ability>dePowerStrikeYermak<rof>45</rof></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspchatmanmazepa>
+  <zpspchatmanpetro>
+    <ability>dePowerStrikeYermak<rof>45</rof></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspchatmanpetro>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

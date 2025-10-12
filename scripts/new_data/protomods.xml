@@ -1,139 +1,360 @@
 <?xml version='1.0' encoding='utf-8'?>
 <protomods>
-  <unit id="20900" name="zpCossackWagonIndustrial">
-    <dbid>20900</dbid>
-    <displaynameid>303118</displaynameid>
-    <editornameid>303119</editornameid>
-    <obstructionradiusx>0.9900</obstructionradiusx>
-    <obstructionradiusz>0.9900</obstructionradiusz>
+  <unit id="20901" name="zpSPChatmanBohdan">
+    <dbid>20901</dbid>
+    <displaynameid>80625</displaynameid>
+    <editornameid>80626</editornameid>
+    <obstructionradiusx>0.7900</obstructionradiusx>
+    <obstructionradiusz>0.7900</obstructionradiusz>
     <formationcategory>Protected</formationcategory>
-    <maxvelocity>4.0000</maxvelocity>
-    <maxrunvelocity>6.0000</maxrunvelocity>
+    <maxvelocity>7.000</maxvelocity>
+    <maxrunvelocity>9.000</maxrunvelocity>
     <movementtype>land</movementtype>
-    <turnrate>5.0000</turnrate>
-    <animfile>units\trade\supply_cart\supply_cart_outpost.xml</animfile>
-    <impacttype>Wood</impacttype>
-    <icon>resources\art\units\trade\outpost_wagon_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trade\outpost_wagon_portrait.png</portraiticon>
-    <rollovertextid>303120</rollovertextid>
-    <shortrollovertextid>303120</shortrollovertextid>
-    <initialhitpoints>250.0000</initialhitpoints>
-    <maxhitpoints>250.0000</maxhitpoints>
-    <los>18.0000</los>
-    <projectileprotounit>InvisibleProjectile</projectileprotounit>
-    <unitaitype>Civilian</unitaitype>
-    <trainpoints>60.0000</trainpoints>
-    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
-    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
-    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\spc\yermak\spc_yermak_horse.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>cav</physicsinfo>
+    <icon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_icon.png</icon>
+    <portraiticon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_portrait.png</portraiticon>
+    <rollovertextid>80627</rollovertextid>
+    <shortrollovertextid>80628</shortrollovertextid>
+    <initialhitpoints>1000.0000</initialhitpoints>
+    <maxhitpoints>1000.0000</maxhitpoints>
+    <los>24.0000</los>
+    <autoattackrange>16.0000</autoattackrange>
+    <unitaitype>HandCombative</unitaitype>
+    <bounty>40.0000</bounty>
     <allowedage>0</allowedage>
-    <armor type="Siege" value="0.2000">
+    <armor type="Ranged" value="0.4000">
     </armor>
-    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
     <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
     <unittype>LogicalTypeGarrisonInShips</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
     <unittype>LogicalTypeVillagersAttack</unittype>
     <unittype>LogicalTypeHandUnitsAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>Military</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractHeavyCavalry</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>AbstractRangedCavalry</unittype>
+    <unittype>ConvertsHerds</unittype>
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
-    <unittype>ConvertsHerds</unittype>
-    <unittype>AbstractWagon</unittype>
-    <unittype>LogicalTypeEasySelectAvoid</unittype>
-    <unittype>CannotConvertHill</unittype>
-    <unittype>ValidIdleVillager</unittype>
-    <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>HasBountyValue</unittype>
-    <train row="0" page="0" column="0">zpCossackStable</train>
+    <unittype>Military</unittype>
+    <unittype>Hero</unittype>
+    <unittype>AbstractCavalry</unittype>
+    <train row="0" page="0" column="0">TradingPost</train>
+    <train row="0" page="0" column="1">dePetBrownBear</train>
+    <train row="0" page="6" column="2">NativeEmbassy</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
     <flag>ShowGarrisonButton</flag>
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
-    <flag>DeadReplacementWhenDestroyed</flag>
+    <flag>NotDeleteable</flag>
+    <flag>KnockoutDeath</flag>
     <flag>ConstrainOrientation</flag>
     <flag>OrientUnitWithGround</flag>
     <flag>Tracked</flag>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
-    <command page="10" column="7">Delete</command>
-    <tactics>coveredwagon.tactics</tactics>
+    <command page="11">Abilities</command>
+    <tactics>despcherodragoon.tactics</tactics>
     <protoaction>
       <name>Build</name>
-      <rate type="zpCossackStable">2.000000</rate>
+      <rate type="TradingPost">3.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>14.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>12.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="AbstractHeavyCavalry">2.500000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>GuardianAttack</name>
+      <damage>32.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>HandAttack</name>
+      <damage>32.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractHeavyCavalry">2.500000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>TrampleHandAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>2.000000</rof>
+      <damagecap>90.000000</damagecap>
+      <damagearea>3.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>HeavyHandAttack</name>
+      <damage>900.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
     </protoaction>
   </unit>
-  <unit id="20901" name="zpCossackWagonFortress">
-    <dbid>20901</dbid>
-    <displaynameid>303118</displaynameid>
-    <editornameid>303119</editornameid>
-    <obstructionradiusx>0.9900</obstructionradiusx>
-    <obstructionradiusz>0.9900</obstructionradiusz>
+  <unit id="20902" name="zpSPChatmanPetro">
+    <dbid>20902</dbid>
+    <displaynameid>80625</displaynameid>
+    <editornameid>80626</editornameid>
+    <obstructionradiusx>0.7900</obstructionradiusx>
+    <obstructionradiusz>0.7900</obstructionradiusz>
     <formationcategory>Protected</formationcategory>
-    <maxvelocity>4.0000</maxvelocity>
-    <maxrunvelocity>6.0000</maxrunvelocity>
+    <maxvelocity>7.000</maxvelocity>
+    <maxrunvelocity>9.000</maxrunvelocity>
     <movementtype>land</movementtype>
-    <turnrate>5.0000</turnrate>
-    <animfile>units\trade\supply_cart\supply_cart_outpost.xml</animfile>
-    <impacttype>Wood</impacttype>
-    <icon>resources\art\units\trade\outpost_wagon_icon_64x64.png</icon>
-    <portraiticon>resources\art\units\trade\outpost_wagon_portrait.png</portraiticon>
-    <rollovertextid>303120</rollovertextid>
-    <shortrollovertextid>303120</shortrollovertextid>
-    <initialhitpoints>250.0000</initialhitpoints>
-    <maxhitpoints>250.0000</maxhitpoints>
-    <los>18.0000</los>
-    <projectileprotounit>InvisibleProjectile</projectileprotounit>
-    <unitaitype>Civilian</unitaitype>
-    <trainpoints>60.0000</trainpoints>
-    <carrycapacity resourcetype="Food">1.0000</carrycapacity>
-    <carrycapacity resourcetype="Wood">1.0000</carrycapacity>
-    <carrycapacity resourcetype="Gold">1.0000</carrycapacity>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\spc\yermak\spc_yermak_horse.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>cav</physicsinfo>
+    <icon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_icon.png</icon>
+    <portraiticon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_portrait.png</portraiticon>
+    <rollovertextid>80627</rollovertextid>
+    <shortrollovertextid>80628</shortrollovertextid>
+    <initialhitpoints>1000.0000</initialhitpoints>
+    <maxhitpoints>1000.0000</maxhitpoints>
+    <los>24.0000</los>
+    <autoattackrange>16.0000</autoattackrange>
+    <unitaitype>HandCombative</unitaitype>
+    <bounty>40.0000</bounty>
     <allowedage>0</allowedage>
-    <armor type="Siege" value="0.2000">
+    <armor type="Ranged" value="0.4000">
     </armor>
-    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
     <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
     <unittype>LogicalTypeGarrisonInShips</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
     <unittype>LogicalTypeVillagersAttack</unittype>
     <unittype>LogicalTypeHandUnitsAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>Military</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractHeavyCavalry</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>AbstractRangedCavalry</unittype>
+    <unittype>ConvertsHerds</unittype>
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
-    <unittype>ConvertsHerds</unittype>
-    <unittype>AbstractWagon</unittype>
-    <unittype>LogicalTypeEasySelectAvoid</unittype>
-    <unittype>CannotConvertHill</unittype>
-    <unittype>ValidIdleVillager</unittype>
-    <unittype>CountsTowardEconomicScore</unittype>
-    <unittype>HasBountyValue</unittype>
-    <train row="0" page="0" column="0">zpCossackStable</train>
+    <unittype>Military</unittype>
+    <unittype>Hero</unittype>
+    <unittype>AbstractCavalry</unittype>
+    <train row="0" page="0" column="0">TradingPost</train>
+    <train row="0" page="0" column="1">dePetBrownBear</train>
+    <train row="0" page="6" column="2">NativeEmbassy</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
     <flag>ShowGarrisonButton</flag>
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
-    <flag>DeadReplacementWhenDestroyed</flag>
+    <flag>NotDeleteable</flag>
+    <flag>KnockoutDeath</flag>
     <flag>ConstrainOrientation</flag>
     <flag>OrientUnitWithGround</flag>
     <flag>Tracked</flag>
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
-    <command page="10" column="7">Delete</command>
-    <tactics>coveredwagon.tactics</tactics>
+    <command page="11">Abilities</command>
+    <tactics>despcherodragoon.tactics</tactics>
     <protoaction>
       <name>Build</name>
-      <rate type="zpCossackStable">2.000000</rate>
+      <rate type="TradingPost">3.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>14.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>12.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="AbstractHeavyCavalry">2.500000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>GuardianAttack</name>
+      <damage>32.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>HandAttack</name>
+      <damage>32.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractHeavyCavalry">2.500000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>TrampleHandAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>2.000000</rof>
+      <damagecap>90.000000</damagecap>
+      <damagearea>3.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>HeavyHandAttack</name>
+      <damage>900.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+  </unit>
+  <unit id="20903" name="zpSPChatmanMazepa">
+    <dbid>20903</dbid>
+    <displaynameid>80625</displaynameid>
+    <editornameid>80626</editornameid>
+    <obstructionradiusx>0.7900</obstructionradiusx>
+    <obstructionradiusz>0.7900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>7.000</maxvelocity>
+    <maxrunvelocity>9.000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\spc\yermak\spc_yermak_horse.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>cav</physicsinfo>
+    <icon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_icon.png</icon>
+    <portraiticon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_portrait.png</portraiticon>
+    <rollovertextid>80627</rollovertextid>
+    <shortrollovertextid>80628</shortrollovertextid>
+    <initialhitpoints>1000.0000</initialhitpoints>
+    <maxhitpoints>1000.0000</maxhitpoints>
+    <los>24.0000</los>
+    <autoattackrange>16.0000</autoattackrange>
+    <unitaitype>HandCombative</unitaitype>
+    <bounty>40.0000</bounty>
+    <allowedage>0</allowedage>
+    <armor type="Ranged" value="0.4000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractHeavyCavalry</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>AbstractRangedCavalry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Hero</unittype>
+    <unittype>AbstractCavalry</unittype>
+    <train row="0" page="0" column="0">TradingPost</train>
+    <train row="0" page="0" column="1">dePetBrownBear</train>
+    <train row="0" page="6" column="2">NativeEmbassy</train>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>NotDeleteable</flag>
+    <flag>KnockoutDeath</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="1">Stop</command>
+    <command page="11">Abilities</command>
+    <tactics>despcherodragoon.tactics</tactics>
+    <protoaction>
+      <name>Build</name>
+      <rate type="TradingPost">3.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>14.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>12.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="AbstractHeavyCavalry">2.500000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>GuardianAttack</name>
+      <damage>32.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>HandAttack</name>
+      <damage>32.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractHeavyCavalry">2.500000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
+      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>TrampleHandAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>2.000000</rof>
+      <damagecap>90.000000</damagecap>
+      <damagearea>3.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>HeavyHandAttack</name>
+      <damage>900.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
     </protoaction>
   </unit>
 </protomods>

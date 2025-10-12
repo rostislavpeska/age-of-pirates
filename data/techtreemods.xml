@@ -32895,7 +32895,6 @@
       </effect>
       <effect type="TechStatus" status="obtainable">zpNatVeteranCossack</effect>
       <effect type="TechStatus" status="obtainable">zpNatGuardCossack</effect>
-
       <effect type="TechStatus" status="obtainable">zpNatCossackGoldenFields</effect>
       <effect type="TechStatus" status="obtainable">zpNatCossackRada</effect>
       <effect type="TechStatus" status="obtainable">zpNatCossackFortification</effect>
@@ -32905,9 +32904,11 @@
       <effect type="TechStatus" status="obtainable">zpIndianFriendshipCossack</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
       <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyCossack</effect>
-
       <effect type="TechStatus" status="obtainable">zpNatHatmanAuthority</effect>
       <effect type="TechStatus" status="obtainable">zpNatCossackStable</effect>
+      <effect type="TechStatus" status="obtainable">zpSendBohdan</effect>
+      <effect type="TechStatus" status="obtainable">zpSendPetro</effect>
+      <effect type="TechStatus" status="obtainable">zpSendMazepa</effect>
     </effects>
   </tech>
   <tech name ="zpAustrianHabsburgExpansion" type ="Normal">
@@ -33342,7 +33343,7 @@
       <techstatus status ="Active">zpConsulateCossackBohdan</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCBohdan" relativity="Absolute">
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPChatmanBohdan" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -33473,6 +33474,36 @@
       </effect>
       <effect type="CommandAdd" tech="zpNatCossackStable" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSendPetro" type="Normal">
+    <dbid>41277</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status ="Active">zpConsulateCossackPetro</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPChatmanPetro" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSendMazepa" type="Normal">
+    <dbid>41278</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status ="Active">zpConsulateCossackMazepa</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPChatmanMazepa" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>
