@@ -33330,7 +33330,7 @@
       <effect type="TechStatus" status="obtainable">zpConsulateCossackMazepa</effect>
       <effect type="TechStatus" status="obtainable">zpConsulateCossackPetro</effect>
 
-      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffOrthodoxBalkan</effect>
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffCossacks</effect>
     </effects>
   </tech>
   <tech name="zpSendBohdan" type="Normal">
