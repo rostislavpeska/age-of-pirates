@@ -3144,8 +3144,20 @@
       <string _locid="303145">Grants one extra Haïdamak for each 5 minutes of game time elapsed, up to 30 minutes.</string>
       <string _locid="303146">Elect for Hetman</string>
       <string _locid="303147">Elect for Cossack Hetman and unlock additional Cossack techs.</string>
-
-
+      <string _locid="303148">Bohdan Khmelnytsky</string>
+      <string _locid="303149">Hero unit with special abilities</string>
+      <string _locid="303150">Bohdan Khmelnytsky, the Cossack Hetman, can train additional Cossack units.</string>
+      <string _locid="303151">&lt;color=1.0, 0.9, 0.5&gt;HATMAN:&lt;/color&gt; \nExtra strong, can train Cossack units \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nCossack Hetmanate \n\nCossack Camps</string>
+      <string _locid="303152">Cossack Camps</string>
+      <string _locid="303153">Ships a Cossack Stable Wagon able to construct Cossack Stable which can then maintain Cossack units for free.</string>
+      <string _locid="303154">Cossack Hetmanate</string>
+      <string _locid="303155">Turns your towns into armed forts by increasing Town center attack and hitpoints.</string>
+      <string _locid="303156">Petro Konashevych-Sahaidachny</string>
+      <string _locid="303157">Hero unit with special abilities</string>
+      <string _locid="303158">Petro Konashevych-Sahaidachny, the Cossack Hetman, empowers nearby Cossacks.</string>
+      <string _locid="303159">&lt;color=1.0, 0.9, 0.5&gt;HATMAN:&lt;/color&gt; \nEmpowers nearby Cossack units, naval improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nHMS Cossack \n\nBlack Sea Raids</string>
+      <string _locid="303160">Ivan Mazepa</string>
+      <string _locid="303161">&lt;color=1.0, 0.9, 0.5&gt;HATMAN:&lt;/color&gt; \nEmpowers nearby Settlers to work faster \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nEuropean Diplomacy \n\nSwedish Mercenaries</string>
       
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

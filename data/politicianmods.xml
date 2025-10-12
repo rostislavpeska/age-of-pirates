@@ -157,8 +157,12 @@
   </zpconsulatehansacentral>
   <zpconsulatehansaeast portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/hansa_east.png">
   </zpconsulatehansaeast>
-  <zpconsulatepiratesbeauregard portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/beauregard.png">
-  </zpconsulatepiratesbeauregard>
+  <zpconsulatecossackbohdan portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/cossack_bohdan.png">
+  </zpconsulatecossackbohdan>
+  <zpconsulatecossackmazepa portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/cossack_mazepa.png">
+  </zpconsulatecossackmazepa>
+  <zpconsulatecossackpetro portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/cossack_petro.png">
+  </zpconsulatecossackpetro>
   
   <zpconsulaterevjacobine portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_jacobine.png">
   </zpconsulaterevjacobine>
