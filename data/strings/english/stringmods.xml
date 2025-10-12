@@ -2958,9 +2958,9 @@
       <string _locid="302959">Torun (Hansa Kontor)</string>
       <string _locid="302960">Osnabrück (Hansa Kontor)</string>
       <string _locid="302961">Convert to Trade Cog</string>
-      <string _locid="302962">Convert to Trade Cog: Once the ship is converted to Trade Cog, it starts generating resources but you lose the full control of the ship until you don't convert it back to War Cog. \n • Cost: 70 &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;</string>
+      <string _locid="302962">Convert to Trade Cog: Once the ship is converted to Trade Cog, it starts generating resources but you lose the full control of the ship until you don't convert it back to War Cog. \n • Cost: 70 &lt;icon="(32)(resources/images/hud/resource_wood.png)"&gt;</string>
       <string _locid="302963">Convert to War Cog</string>
-      <string _locid="302964">Convert to War Cog: Take full control over this ship and convert it back to a war mode. \n • Cost: 30 &lt;icon="(32)(resources/images/hud/resource_gold.png)"&gt;</string>
+      <string _locid="302964">Convert to War Cog: Take full control over this ship and convert it back to a war mode. \n • Cost: 30 &lt;icon="(32)(resources/images/hud/resource_wood.png)"&gt;</string>
       <string _locid="302965">Food Trade: Looking for the closest friendly dock to buy Food</string>
       <string _locid="302966">Wood Trade: Looking for the closest friendly dock to buy Wood</string>
       <string _locid="302967">Coin Trade: Looking for the closest friendly dock to sell goods for Coin</string>
