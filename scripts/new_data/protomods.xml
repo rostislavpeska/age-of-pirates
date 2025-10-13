@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<protomods><unit id="20628" name="zpCossackRowboat">
+<protomods>
+  <unit id="20628" name="zpCossackRowboat">
     <dbid>20628</dbid>
     <displaynameid>112131</displaynameid>
     <editornameid>302227</editornameid>
@@ -85,7 +86,7 @@
       <maxrange>25.000000</maxrange>
       <rof>3.000000</rof>
     </protoaction>
-   <protoaction>
+    <protoaction>
       <name>SabotageAttack</name>
       <damage>250.000000</damage>
       <damagetype>Siege</damagetype>
@@ -105,4 +106,5 @@
       <damagearea>4.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
-  </unit></protomods>
+  </unit>
+</protomods>

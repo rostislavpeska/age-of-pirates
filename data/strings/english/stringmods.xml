@@ -3166,6 +3166,11 @@
       <string _locid="303167">Empowers all nearby Cossack units, including non-native Cossacks</string>
       <string _locid="303168">Father of the Nation</string>
       <string _locid="303169">Empowers all nearby settlers to work faster.</string>
+      <string _locid="303170">Cossack Rowboat</string>
+      <string _locid="303171">ZP Cossack Rowboat</string>
+      <string _locid="303172">Dnipro Saboteurs</string>
+      <string _locid="303173">Unlocks Cossack stealth Rowboats with special Sabotage attack. Traibable from any type od Dock.</string>
+
 
 
       <!-- ======================================== -->
