@@ -65448,7 +65448,7 @@
     <maxrunvelocity>9.000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\spc\yermak\spc_yermak_horse.xml</animfile>
+    <animfile>units\spc\yermak\spc_bogdan_horse.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>cav</physicsinfo>
     <icon>resources\art\units\heroes\hatman_bohdan_icon.png</icon>
@@ -65570,7 +65570,7 @@
     <maxrunvelocity>9.000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\spc\yermak\spc_yermak_horse.xml</animfile>
+    <animfile>units\spc\yermak\spc_petro_horse.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>cav</physicsinfo>
     <icon>resources\art\units\heroes\hatman_petro_icon.png</icon>
@@ -65692,7 +65692,7 @@
     <maxrunvelocity>9.000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\spc\yermak\spc_yermak_horse.xml</animfile>
+    <animfile>units\spc\yermak\spc_ivan_horse.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>cav</physicsinfo>
     <icon>resources\art\units\heroes\hatman_mazepa_icon.png</icon>
