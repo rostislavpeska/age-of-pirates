@@ -81,7 +81,8 @@ def load_proto_trees(primary: str, secondary: str) -> Tuple[List[ET.ElementTree]
         if not t:
             continue
         trees.append(t)
-        for pu in t.getroot().iterfind(".//protounit"):
+        # Support both <unit> and <protounit>
+        for pu in list(t.getroot().iterfind(".//protounit")) + list(t.getroot().iterfind(".//unit")):
             name = pu.attrib.get("name", "")
             if not name:
                 continue
@@ -95,14 +96,19 @@ def load_proto_trees(primary: str, secondary: str) -> Tuple[List[ET.ElementTree]
 def get_all_protounits(trees: List[ET.ElementTree]) -> List[ET.Element]:
     acc: List[ET.Element] = []
     for t in trees:
-        acc.extend(list(t.getroot().iterfind(".//protounit")))
+        root = t.getroot()
+        acc.extend(list(root.iterfind(".//protounit")))
+        acc.extend(list(root.iterfind(".//unit")))
     return acc
 
 
 def find_protounit_by_name(trees: List[ET.ElementTree], name: str) -> List[ET.Element]:
     res: List[ET.Element] = []
     for t in trees:
-        for pu in t.getroot().iterfind(".//protounit[@name='%s']" % name):
+        root = t.getroot()
+        for pu in root.iterfind(".//protounit[@name='%s']" % name):
+            res.append(pu)
+        for pu in root.iterfind(".//unit[@name='%s']" % name):
             res.append(pu)
     return res
 

@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<abilities>
+  <protounit name="zpnewunit">
+    <ability>dePowerRallyArmy<rof>60</rof>
+    </ability>
+  </protounit>
+</abilities>

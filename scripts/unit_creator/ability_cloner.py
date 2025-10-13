@@ -3,6 +3,7 @@ from typing import Dict, Any, List
 import xml.etree.ElementTree as ET
 
 from utils import ROOT, snakecase, read_xml, write_xml
+from output_handler import OutputHandler
 
 
 class AbilityCloner:
@@ -26,6 +27,10 @@ class AbilityCloner:
             el = root.find(f".//protounit[@name='{base_name}']")
             if el is not None:
                 return el
+            # 2) <abilities><unit name="Base">...</unit></abilities>
+            el = root.find(f".//unit[@name='{base_name}']")
+            if el is not None:
+                return el
         return None
 
     def _ability_exists_somewhere(self, ability_name: str) -> bool:
@@ -36,8 +41,13 @@ class AbilityCloner:
             if not tree:
                 continue
             root = tree.getroot()
-            if root.find(f".//ability[.='{ability_name}']") is not None:
-                return True
+            # Iterate abilities: match name attr OR text startswith (handles inline child tags)
+            for ab in root.findall(".//ability"):
+                if ab.get("name") == ability_name:
+                    return True
+                txt = ab.text.strip() if ab.text else ""
+                if txt.startswith(ability_name):
+                    return True
         return False
 
     def process(self) -> None:
@@ -63,12 +73,22 @@ class AbilityCloner:
                 target_protounit.findall("ability")[-1].text = ab.text
 
         # Append any new abilities, validating existence
+        missing: List[str] = []
         for ab_name in abilities_to_add:
             if not self._ability_exists_somewhere(ab_name):
-                raise Exception("Ability not found in abilities.xml. Please define a new ability.")
+                missing.append(ab_name)
+                continue
             ab_el = ET.SubElement(target_protounit, "ability")
             ab_el.text = ab_name
             rof = ET.SubElement(ab_el, "rof")
             rof.text = "60"
 
+        if missing:
+            OutputHandler.missing_abilities(missing)
+
+        # If after processing there are no abilities at all, don't write a file
+        if len(list(target_protounit.findall("ability"))) == 0:
+            return
+
         write_xml(out_root, "scripts/new_data/abilities/abilitymods.xml")
+        OutputHandler.info("Wrote abilities to scripts/new_data/abilities/abilitymods.xml")

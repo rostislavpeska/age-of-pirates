@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<stringtable>
+  <string _locid="90000">New Unit</string>
+  <string _locid="90001">New Unit (Editor)</string>
+  <string _locid="90002">A test unit created by the Unit Creator.</string>
+  <string _locid="90003">Test unit.</string>
+</stringtable>

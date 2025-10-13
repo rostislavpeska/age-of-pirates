@@ -56,15 +56,61 @@ class UnitCloner:
         set_text("portraiticon", p.get("portraiticon"))
         set_text("buildlimit", p.get("buildlimit"))
         set_text("subciv", p.get("subciv"))
+        set_text("populationcount", p.get("populationcount"))
+        set_text("allowedage", p.get("allowedage"))
+        # bounty and buildbounty are plain numeric tags
+        if p.get("bounty") is not None:
+            set_text("bounty", p.get("bounty"))
+        if p.get("buildbounty") is not None:
+            set_text("buildbounty", p.get("buildbounty"))
         if p.get("new_tactics"):
             set_text("tactics", p.get("new_tactics"))
         if p.get("animfile"):
             set_text("animfile", p.get("animfile"))
 
+        # Apply string IDs from StringCloner if available
+        string_ids = self.config.get("string_ids", {})
+        if string_ids:
+            if string_ids.get("displaynameid") is not None:
+                set_text("displaynameid", string_ids["displaynameid"])
+            if string_ids.get("editornameid") is not None:
+                set_text("editornameid", string_ids["editornameid"])
+            if string_ids.get("rollovertextid") is not None:
+                set_text("rollovertextid", string_ids["rollovertextid"])
+            if string_ids.get("shortrollovertextid") is not None:
+                set_text("shortrollovertextid", string_ids["shortrollovertextid"])
+
+        # Helpers for ordered insertion of direct children
+        def _last_index_of(tag: str) -> int:
+            idx = -1
+            for i, child in enumerate(list(pu)):
+                if child.tag == tag:
+                    idx = i
+            return idx
+
+        def _insert_elements_after_index(index: int, elements: List[ET.Element]):
+            # insert maintaining order
+            insert_at = index + 1
+            for el in elements:
+                pu.insert(insert_at, el)
+                insert_at += 1
+
         # Shared build limit
         if p.get("sharedbuildlimit"):
-            flag_el = ET.SubElement(pu, "flag")
+            # Insert <flag>UseSharedBuildLimit</flag> in correct position
+            flag_el = ET.Element("flag")
             flag_el.text = "UseSharedBuildLimit"
+            last_flag_idx = _last_index_of("flag")
+            if last_flag_idx >= 0:
+                _insert_elements_after_index(last_flag_idx, [flag_el])
+            else:
+                # place below last <unittype> if present, else append
+                last_ut_idx = _last_index_of("unittype")
+                if last_ut_idx >= 0:
+                    _insert_elements_after_index(last_ut_idx, [flag_el])
+                else:
+                    pu.append(flag_el)
+
             if not p.get("shared_main") and p.get("main_unit_name"):
                 sblu = ET.SubElement(pu, "sharedbuildlimitunit")
                 sblu.text = p.get("main_unit_name")
@@ -73,6 +119,7 @@ class UnitCloner:
                 for u in p.get("shared_buildlimit_units"):
                     t = ET.SubElement(types, "unittype")
                     t.text = u
+
         # shared selection
         if p.get("shared_selection_units"):
             types = pu.find("sharedselectionunittypes")
@@ -82,29 +129,126 @@ class UnitCloner:
                 t = ET.SubElement(types, "unittype")
                 t.text = u
 
-        # Unit types and flags adjustments
-        def add_children(tag: str, child_tag: str, values: List[str]):
-            if not values:
-                return
-            parent = pu.find(tag)
-            if parent is None:
-                parent = ET.SubElement(pu, tag)
-            for v in values:
-                c = ET.SubElement(parent, child_tag)
-                c.text = v
+        # Unit types and flags adjustments as direct children in correct order
+        # Remove unittypes
+        to_remove_ut = set(p.get("remove_unittypes", []))
+        if to_remove_ut:
+            for ch in list(pu.findall("unittype")):
+                if (ch.text or "").strip() in to_remove_ut:
+                    pu.remove(ch)
 
-        def remove_children(tag: str, child_tag: str, values: List[str]):
-            parent = pu.find(tag)
-            if parent is None:
-                return
-            for ch in list(parent.findall(child_tag)):
-                if ch.text in values:
-                    parent.remove(ch)
+        # Add unittypes below the last existing <unittype>
+        new_uts = p.get("new_unittypes", []) or []
+        if new_uts:
+            new_ut_elements = []
+            for v in new_uts:
+                el = ET.Element("unittype")
+                el.text = v
+                new_ut_elements.append(el)
+            last_ut_idx = _last_index_of("unittype")
+            if last_ut_idx >= 0:
+                _insert_elements_after_index(last_ut_idx, new_ut_elements)
+            else:
+                # no existing unittype; append at end to keep structure valid
+                for el in new_ut_elements:
+                    pu.append(el)
 
-        add_children("unittype", "unittype", p.get("new_unittypes", []))
-        remove_children("unittype", "unittype", p.get("remove_unittypes", []))
-        add_children("flags", "flag", p.get("new_flags", []))
-        remove_children("flags", "flag", p.get("remove_flags", []))
+        # Remove flags
+        to_remove_flags = set(p.get("remove_flags", []))
+        if to_remove_flags:
+            for ch in list(pu.findall("flag")):
+                if (ch.text or "").strip() in to_remove_flags:
+                    pu.remove(ch)
+
+        # Add flags below the last existing <flag>, or if none, below last <unittype>
+        new_flags = p.get("new_flags", []) or []
+        if new_flags:
+            new_flag_elements = []
+            for v in new_flags:
+                el = ET.Element("flag")
+                el.text = v
+                new_flag_elements.append(el)
+            last_flag_idx = _last_index_of("flag")
+            if last_flag_idx >= 0:
+                _insert_elements_after_index(last_flag_idx, new_flag_elements)
+            else:
+                last_ut_idx = _last_index_of("unittype")
+                if last_ut_idx >= 0:
+                    _insert_elements_after_index(last_ut_idx, new_flag_elements)
+                else:
+                    for el in new_flag_elements:
+                        pu.append(el)
+
+        # Placement rule: certain tags should appear right below <populationcount>
+        def _place_group_below_populationcount(tags_in_order: List[str]):
+            # find anchor
+            anchor_idx = -1
+            for i, child in enumerate(list(pu)):
+                if child.tag == "populationcount":
+                    anchor_idx = i
+            if anchor_idx < 0:
+                return  # keep default placement
+            # move/create each tag in desired order below anchor, updating anchor as we go
+            for tag in tags_in_order:
+                el = pu.find(tag)
+                if el is None:
+                    continue
+                # detach and re-insert
+                pu.remove(el)
+                pu.insert(anchor_idx + 1, el)
+                anchor_idx += 1
+
+        # Ensure the group order below populationcount when present
+        _place_group_below_populationcount([
+            "buildlimit",
+            "subciv",
+            "sharedbuildlimitunittypes",
+            "sharedselectionunittypes",
+        ])
+
+        # Handle resource costs as changeable parameters with zero suppression
+        def _set_cost(resource: str, value: Any):
+            # remove if value is None or <= 0
+            existing = None
+            for c in list(pu.findall("cost")):
+                if c.get("resourcetype") == resource:
+                    existing = c
+                    break
+            try:
+                v = float(value) if value is not None else None
+            except Exception:
+                v = None
+            if v is None or v <= 0:
+                if existing is not None:
+                    pu.remove(existing)
+                return
+            # ensure exists and set formatted text
+            if existing is None:
+                existing = ET.Element("cost")
+                existing.set("resourcetype", resource)
+                # place cost lines after buildbounty if present, else after bounty, else after trainpoints if present, else append
+                def _first_index_of(tag: str) -> int:
+                    for i, child in enumerate(list(pu)):
+                        if child.tag == tag:
+                            return i
+                    return -1
+                insert_after = _first_index_of("buildbounty")
+                if insert_after < 0:
+                    insert_after = _first_index_of("bounty")
+                if insert_after < 0:
+                    insert_after = _first_index_of("trainpoints")
+                if insert_after >= 0:
+                    pu.insert(insert_after + 1, existing)
+                else:
+                    pu.append(existing)
+            existing.text = f"{v:.4f}"
+
+        # Support both a dict param `costs` and individual params
+        costs = p.get("costs", {}) or {}
+        _set_cost("Food", costs.get("Food", p.get("cost_food")))
+        _set_cost("Wood", costs.get("Wood", p.get("cost_wood")))
+        _set_cost("Gold", costs.get("Gold", p.get("cost_gold")))
+        _set_cost("Influence", costs.get("Influence", p.get("cost_influence")))
 
     def _inject_strings(self) -> None:
         # Create/append to scripts/new_data/stringmods.xml
@@ -139,8 +283,7 @@ class UnitCloner:
         out_root.append(new_pu)
         write_xml(out_root, "scripts/new_data/protomods.xml")
 
-        # Strings file entries
-        self._inject_strings()
+        # Strings are handled by StringCloner; do not write here
 
         return {
             "proto_out_path": os.path.join(ROOT, "scripts", "new_data", "protomods.xml"),

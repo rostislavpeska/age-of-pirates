@@ -1,33 +1,57 @@
 <?xml version='1.0' encoding='utf-8'?>
 <protomods>
-  <unit id="20901" name="zpSPChatmanBohdan">
-    <dbid>20901</dbid>
-    <displaynameid>80625</displaynameid>
-    <editornameid>80626</editornameid>
-    <obstructionradiusx>0.7900</obstructionradiusx>
-    <obstructionradiusz>0.7900</obstructionradiusz>
-    <formationcategory>Protected</formationcategory>
-    <maxvelocity>7.000</maxvelocity>
-    <maxrunvelocity>9.000</maxrunvelocity>
+  <unit id="286" name="zpNewUnit">
+    <dbid>3</dbid>
+    <displaynameid>90000</displaynameid>
+    <editornameid>90001</editornameid>
+    <populationcount>10</populationcount>
+    <buildlimit>11</buildlimit>
+    <subciv>Dragoon</subciv>
+    <sharedbuildlimitunittypes>
+      <unittype>zpSubmarine</unittype>
+      <unittype>zpSubmarineProxy</unittype>
+      <unittype>zpSubmarineTransport</unittype>
+    </sharedbuildlimitunittypes>
+    <sharedselectionunittypes>
+      <unittype>ypConsulateRedcoat</unittype>
+      <unittype>ypConsulateGuerreiros</unittype>
+      <unittype>ypConsulateStadhouders</unittype>
+      <unittype>deMXSpanishMusketeer</unittype>
+      <unittype>zpSubmarine</unittype>
+      <unittype>zpSubmarineProxy</unittype>
+      <unittype>zpSubmarineTransport</unittype>
+    </sharedselectionunittypes>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>10</maxvelocity>
+    <maxrunvelocity>12.5</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\spc\yermak\spc_yermak_horse.xml</animfile>
+    <animfile>units/naval/submarine/subma.xml</animfile>
     <impacttype>Flesh</impacttype>
-    <physicsinfo>cav</physicsinfo>
-    <icon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_icon.png</icon>
-    <portraiticon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_portrait.png</portraiticon>
-    <rollovertextid>80627</rollovertextid>
-    <shortrollovertextid>80628</shortrollovertextid>
-    <initialhitpoints>1000.0000</initialhitpoints>
-    <maxhitpoints>1000.0000</maxhitpoints>
-    <los>24.0000</los>
-    <autoattackrange>16.0000</autoattackrange>
-    <unitaitype>HandCombative</unitaitype>
-    <bounty>40.0000</bounty>
-    <allowedage>0</allowedage>
-    <armor type="Ranged" value="0.4000">
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources/art/units/naval/spc/submarine_icon.png</icon>
+    <portraiticon>resources/art/units/naval/spc/submarine_portrait.png</portraiticon>
+    <rollovertextid>90002</rollovertextid>
+    <shortrollovertextid>90003</shortrollovertextid>
+    <initialhitpoints>200</initialhitpoints>
+    <maxhitpoints>200</maxhitpoints>
+    <los>10</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <bounty>100.0</bounty>
+    <buildbounty>100.0</buildbounty>
+    <cost resourcetype="Influence">100.0000</cost>
+    <cost resourcetype="Wood">25.0000</cost>
+    <cost resourcetype="Food">75.0000</cost>
+    <cost resourcetype="Gold">25.0000</cost>
+    <allowedage>3</allowedage>
+    <armor type="Hand" value="0.2000">
     </armor>
     <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
     <unittype>LogicalTypeLandMilitary</unittype>
@@ -40,321 +64,94 @@
     <unittype>LogicalTypeHandUnitsAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>HasBountyValue</unittype>
-    <unittype>AbstractHeavyCavalry</unittype>
-    <unittype>AbstractCavalryInfantry</unittype>
-    <unittype>AbstractRangedCavalry</unittype>
-    <unittype>ConvertsHerds</unittype>
     <unittype>Unit</unittype>
-    <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
-    <unittype>Hero</unittype>
-    <unittype>AbstractCavalry</unittype>
-    <train row="0" page="0" column="0">TradingPost</train>
-    <train row="0" page="0" column="1">dePetBrownBear</train>
-    <train row="0" page="6" column="2">NativeEmbassy</train>
+    <unittype>UnitClass</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>AbstractMusketeer</unittype>
+    <unittype>AbstractCossack</unittype>
+    <unittype>AbstractDiver</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
     <flag>ShowGarrisonButton</flag>
     <flag>DontRotateObstruction</flag>
     <flag>ObscuredByUnits</flag>
-    <flag>NotDeleteable</flag>
-    <flag>KnockoutDeath</flag>
-    <flag>ConstrainOrientation</flag>
-    <flag>OrientUnitWithGround</flag>
     <flag>Tracked</flag>
-    <command page="10" column="0">Garrison</command>
+    <flag>UseSharedBuildLimit</flag>
+    <flag>HasDive</flag>
     <command page="10" column="1">Stop</command>
-    <command page="11">Abilities</command>
-    <tactics>despcherodragoon.tactics</tactics>
-    <protoaction>
-      <name>Build</name>
-      <rate type="TradingPost">3.000000</rate>
-    </protoaction>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>submarin.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
-      <damage>14.000000</damage>
+      <damage>20.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
     </protoaction>
     <protoaction>
-      <name>RangedAttack</name>
-      <damage>40.000000</damage>
+      <name>DefendHandAttack</name>
+      <damage>13.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">2.250000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>DefendRangedAttack</name>
+      <damage>23.000000</damage>
       <damagetype>Ranged</damagetype>
       <maxrange>12.000000</maxrange>
       <rof>3.000000</rof>
-      <damagebonus type="AbstractHeavyCavalry">2.500000</damagebonus>
-      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
-      <damagebonus type="AbstractVillager">0.500000</damagebonus>
     </protoaction>
     <protoaction>
-      <name>GuardianAttack</name>
-      <damage>32.000000</damage>
+      <name>MeleeHandAttack</name>
+      <damage>13.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">2.250000</damagebonus>
     </protoaction>
     <protoaction>
-      <name>HandAttack</name>
-      <damage>32.000000</damage>
+      <name>StaggerHandAttack</name>
+      <damage>13.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
-      <damagebonus type="AbstractHeavyCavalry">2.500000</damagebonus>
-      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
-      <damagebonus type="AbstractVillager">0.500000</damagebonus>
+      <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">2.250000</damagebonus>
     </protoaction>
     <protoaction>
-      <name>TrampleHandAttack</name>
-      <damage>30.000000</damage>
-      <damagetype>Hand</damagetype>
-      <rof>2.000000</rof>
-      <damagecap>90.000000</damagecap>
-      <damagearea>3.000000</damagearea>
-      <damageflags>Enemy</damageflags>
-    </protoaction>
-    <protoaction>
-      <name>HeavyHandAttack</name>
-      <damage>900.000000</damage>
-      <damagetype>Hand</damagetype>
-      <rof>1.500000</rof>
-    </protoaction>
-  </unit>
-  <unit id="20902" name="zpSPChatmanPetro">
-    <dbid>20902</dbid>
-    <displaynameid>80625</displaynameid>
-    <editornameid>80626</editornameid>
-    <obstructionradiusx>0.7900</obstructionradiusx>
-    <obstructionradiusz>0.7900</obstructionradiusz>
-    <formationcategory>Protected</formationcategory>
-    <maxvelocity>7.000</maxvelocity>
-    <maxrunvelocity>9.000</maxrunvelocity>
-    <movementtype>land</movementtype>
-    <turnrate>18.0000</turnrate>
-    <animfile>units\spc\yermak\spc_yermak_horse.xml</animfile>
-    <impacttype>Flesh</impacttype>
-    <physicsinfo>cav</physicsinfo>
-    <icon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_icon.png</icon>
-    <portraiticon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_portrait.png</portraiticon>
-    <rollovertextid>80627</rollovertextid>
-    <shortrollovertextid>80628</shortrollovertextid>
-    <initialhitpoints>1000.0000</initialhitpoints>
-    <maxhitpoints>1000.0000</maxhitpoints>
-    <los>24.0000</los>
-    <autoattackrange>16.0000</autoattackrange>
-    <unitaitype>HandCombative</unitaitype>
-    <bounty>40.0000</bounty>
-    <allowedage>0</allowedage>
-    <armor type="Ranged" value="0.4000">
-    </armor>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeNeededForVictory</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeLandMilitary</unittype>
-    <unittype>LogicalTypeScout</unittype>
-    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>HasBountyValue</unittype>
-    <unittype>AbstractHeavyCavalry</unittype>
-    <unittype>AbstractCavalryInfantry</unittype>
-    <unittype>AbstractRangedCavalry</unittype>
-    <unittype>ConvertsHerds</unittype>
-    <unittype>Unit</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>Military</unittype>
-    <unittype>Hero</unittype>
-    <unittype>AbstractCavalry</unittype>
-    <train row="0" page="0" column="0">TradingPost</train>
-    <train row="0" page="0" column="1">dePetBrownBear</train>
-    <train row="0" page="6" column="2">NativeEmbassy</train>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>ApplyHandicapTraining</flag>
-    <flag>CorpseDecays</flag>
-    <flag>ShowGarrisonButton</flag>
-    <flag>DontRotateObstruction</flag>
-    <flag>ObscuredByUnits</flag>
-    <flag>NotDeleteable</flag>
-    <flag>KnockoutDeath</flag>
-    <flag>ConstrainOrientation</flag>
-    <flag>OrientUnitWithGround</flag>
-    <flag>Tracked</flag>
-    <command page="10" column="0">Garrison</command>
-    <command page="10" column="1">Stop</command>
-    <command page="11">Abilities</command>
-    <tactics>despcherodragoon.tactics</tactics>
-    <protoaction>
-      <name>Build</name>
-      <rate type="TradingPost">3.000000</rate>
-    </protoaction>
-    <protoaction>
-      <name>BuildingAttack</name>
-      <damage>14.000000</damage>
-      <damagetype>Siege</damagetype>
-      <rof>3.000000</rof>
-    </protoaction>
-    <protoaction>
-      <name>RangedAttack</name>
-      <damage>40.000000</damage>
+      <name>StaggerRangedAttack</name>
+      <damage>23.000000</damage>
       <damagetype>Ranged</damagetype>
       <maxrange>12.000000</maxrange>
       <rof>3.000000</rof>
-      <damagebonus type="AbstractHeavyCavalry">2.500000</damagebonus>
-      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
-      <damagebonus type="AbstractVillager">0.500000</damagebonus>
     </protoaction>
     <protoaction>
-      <name>GuardianAttack</name>
-      <damage>32.000000</damage>
+      <name>VolleyHandAttack</name>
+      <damage>13.000000</damage>
       <damagetype>Hand</damagetype>
       <rof>1.500000</rof>
+      <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+      <damagebonus type="AbstractLightInfantry">2.250000</damagebonus>
     </protoaction>
     <protoaction>
-      <name>HandAttack</name>
-      <damage>32.000000</damage>
-      <damagetype>Hand</damagetype>
-      <rof>1.500000</rof>
-      <damagebonus type="AbstractHeavyCavalry">2.500000</damagebonus>
-      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
-      <damagebonus type="AbstractVillager">0.500000</damagebonus>
-    </protoaction>
-    <protoaction>
-      <name>TrampleHandAttack</name>
-      <damage>30.000000</damage>
-      <damagetype>Hand</damagetype>
-      <rof>2.000000</rof>
-      <damagecap>90.000000</damagecap>
-      <damagearea>3.000000</damagearea>
-      <damageflags>Enemy</damageflags>
-    </protoaction>
-    <protoaction>
-      <name>HeavyHandAttack</name>
-      <damage>900.000000</damage>
-      <damagetype>Hand</damagetype>
-      <rof>1.500000</rof>
-    </protoaction>
-  </unit>
-  <unit id="20903" name="zpSPChatmanMazepa">
-    <dbid>20903</dbid>
-    <displaynameid>80625</displaynameid>
-    <editornameid>80626</editornameid>
-    <obstructionradiusx>0.7900</obstructionradiusx>
-    <obstructionradiusz>0.7900</obstructionradiusz>
-    <formationcategory>Protected</formationcategory>
-    <maxvelocity>7.000</maxvelocity>
-    <maxrunvelocity>9.000</maxrunvelocity>
-    <movementtype>land</movementtype>
-    <turnrate>18.0000</turnrate>
-    <animfile>units\spc\yermak\spc_yermak_horse.xml</animfile>
-    <impacttype>Flesh</impacttype>
-    <physicsinfo>cav</physicsinfo>
-    <icon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_icon.png</icon>
-    <portraiticon>resources\art\units\spc\yermak_timofeyevich\yermak_timofeyevich_portrait.png</portraiticon>
-    <rollovertextid>80627</rollovertextid>
-    <shortrollovertextid>80628</shortrollovertextid>
-    <initialhitpoints>1000.0000</initialhitpoints>
-    <maxhitpoints>1000.0000</maxhitpoints>
-    <los>24.0000</los>
-    <autoattackrange>16.0000</autoattackrange>
-    <unitaitype>HandCombative</unitaitype>
-    <bounty>40.0000</bounty>
-    <allowedage>0</allowedage>
-    <armor type="Ranged" value="0.4000">
-    </armor>
-    <unittype>LogicalTypeHealed</unittype>
-    <unittype>LogicalTypeNeededForVictory</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeLandMilitary</unittype>
-    <unittype>LogicalTypeScout</unittype>
-    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
-    <unittype>LogicalTypeGarrisonInShips</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
-    <unittype>HasBountyValue</unittype>
-    <unittype>AbstractHeavyCavalry</unittype>
-    <unittype>AbstractCavalryInfantry</unittype>
-    <unittype>AbstractRangedCavalry</unittype>
-    <unittype>ConvertsHerds</unittype>
-    <unittype>Unit</unittype>
-    <unittype>UnitClass</unittype>
-    <unittype>Military</unittype>
-    <unittype>Hero</unittype>
-    <unittype>AbstractCavalry</unittype>
-    <train row="0" page="0" column="0">TradingPost</train>
-    <train row="0" page="0" column="1">dePetBrownBear</train>
-    <train row="0" page="6" column="2">NativeEmbassy</train>
-    <flag>CollidesWithProjectiles</flag>
-    <flag>ApplyHandicapTraining</flag>
-    <flag>CorpseDecays</flag>
-    <flag>ShowGarrisonButton</flag>
-    <flag>DontRotateObstruction</flag>
-    <flag>ObscuredByUnits</flag>
-    <flag>NotDeleteable</flag>
-    <flag>KnockoutDeath</flag>
-    <flag>ConstrainOrientation</flag>
-    <flag>OrientUnitWithGround</flag>
-    <flag>Tracked</flag>
-    <command page="10" column="0">Garrison</command>
-    <command page="10" column="1">Stop</command>
-    <command page="11">Abilities</command>
-    <tactics>despcherodragoon.tactics</tactics>
-    <protoaction>
-      <name>Build</name>
-      <rate type="TradingPost">3.000000</rate>
-    </protoaction>
-    <protoaction>
-      <name>BuildingAttack</name>
-      <damage>14.000000</damage>
-      <damagetype>Siege</damagetype>
-      <rof>3.000000</rof>
-    </protoaction>
-    <protoaction>
-      <name>RangedAttack</name>
-      <damage>40.000000</damage>
+      <name>VolleyRangedAttack</name>
+      <damage>23.000000</damage>
       <damagetype>Ranged</damagetype>
       <maxrange>12.000000</maxrange>
       <rof>3.000000</rof>
-      <damagebonus type="AbstractHeavyCavalry">2.500000</damagebonus>
-      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
-      <damagebonus type="AbstractVillager">0.500000</damagebonus>
-    </protoaction>
-    <protoaction>
-      <name>GuardianAttack</name>
-      <damage>32.000000</damage>
-      <damagetype>Hand</damagetype>
-      <rof>1.500000</rof>
-    </protoaction>
-    <protoaction>
-      <name>HandAttack</name>
-      <damage>32.000000</damage>
-      <damagetype>Hand</damagetype>
-      <rof>1.500000</rof>
-      <damagebonus type="AbstractHeavyCavalry">2.500000</damagebonus>
-      <damagebonus type="AbstractArtillery">2.000000</damagebonus>
-      <damagebonus type="AbstractVillager">0.500000</damagebonus>
-    </protoaction>
-    <protoaction>
-      <name>TrampleHandAttack</name>
-      <damage>30.000000</damage>
-      <damagetype>Hand</damagetype>
-      <rof>2.000000</rof>
-      <damagecap>90.000000</damagecap>
-      <damagearea>3.000000</damagearea>
-      <damageflags>Enemy</damageflags>
-    </protoaction>
-    <protoaction>
-      <name>HeavyHandAttack</name>
-      <damage>900.000000</damage>
-      <damagetype>Hand</damagetype>
-      <rof>1.500000</rof>
     </protoaction>
   </unit>
 </protomods>

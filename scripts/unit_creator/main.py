@@ -8,6 +8,8 @@ from tactic_cloner import TacticCloner
 from sound_cloner import SoundCloner
 from anim_cloner import AnimCloner
 from action_cloner import ActionCloner
+from string_cloner import StringCloner
+from output_handler import OutputHandler
 
 # Configure here per spec in scripts/unit_creator/unit_creator.md
 CONFIG: Dict[str, Any] = {
@@ -22,18 +24,23 @@ CONFIG: Dict[str, Any] = {
         "new_editor_name": "New Unit (Editor)",
         "new_rollover": "A test unit created by the Unit Creator.",
         "new_shortrollover": "Test unit.",
-        "sound_unit": "deRoyalMusketeer",
-        "abilities": ["Ability123"],
+        "sound_unit": "zpSubmarine",
+        "abilities": ["dePowerRallyArmy", "newAbility"],
         "HP": 200,
         "velocity": 10,
         "LOS": 10,
-        "icon": "resources\art\units\naval\spc\submarine_icon.png",
-        "animfile": "units\naval\submarine\subma.xml",
+        "icon": "resources/art/units/naval/spc/submarine_icon.png",
+        "animfile": "units/naval/submarine/subma.xml",
         "generate_anim_file": True,
-        "anim_to_clone": "units\naval\submarine\submarine.xml",
-        "portraiticon": "resources\art\units\naval\spc\submarine_portrait.png",
+        "anim_to_clone": "units/naval/submarine/submarine.xml",
+        "portraiticon": "resources/art/units/naval/spc/submarine_portrait.png",
         "buildlimit": 11,
         "subciv": "Dragoon",
+        "populationcount": 10,
+        "bounty": 100.0,
+        "buildbounty": 100.0,
+        "costs": {"Food": 75, "Wood": 25, "Gold": 25, "Influence": 100},
+        "allowedage": 3,
         "new_tactics": "submarin.tactics",
         "generate_tactics_file": True,
         "tactics_to_clone": "submarine.tactics",
@@ -57,6 +64,8 @@ CONFIG: Dict[str, Any] = {
         # The spec mentions using data/anim as source for anim cloning
         "anim_sources": ["data/anim/"],
     },
+    # Starting string id for scripts/new_data/stringmods.xml
+    "starting_string_id": 90000,
 }
 
 
@@ -70,14 +79,44 @@ def main() -> None:
         "scripts/new_art/",
     ])
 
+    OutputHandler.info("Starting Unit Creator pipeline")
+
+    # Build strings first and expose IDs to downstream cloners
+    string_ids = StringCloner(CONFIG).process()
+    CONFIG["string_ids"] = string_ids
+    if string_ids:
+        OutputHandler.info("Generated string IDs and wrote scripts/new_data/stringmods.xml")
+
     unit_cloner = UnitCloner(CONFIG)
     unit_info = unit_cloner.clone()
+    OutputHandler.info("Wrote unit to scripts/new_data/protomods.xml")
 
-    AbilityCloner(CONFIG, unit_info).process()
-    TacticCloner(CONFIG, unit_info).process()
-    SoundCloner(CONFIG, unit_info).process()
-    AnimCloner(CONFIG, unit_info).process()
-    ActionCloner(CONFIG, unit_info).process()
+    try:
+        AbilityCloner(CONFIG, unit_info).process()
+    except Exception as e:
+        OutputHandler.cloner_error("AbilityCloner", e)
+
+    try:
+        TacticCloner(CONFIG, unit_info).process()
+    except Exception as e:
+        OutputHandler.cloner_error("TacticCloner", e)
+
+    try:
+        SoundCloner(CONFIG, unit_info).process()
+    except Exception as e:
+        OutputHandler.cloner_error("SoundCloner", e)
+
+    try:
+        AnimCloner(CONFIG, unit_info).process()
+    except Exception as e:
+        OutputHandler.cloner_error("AnimCloner", e)
+
+    try:
+        ActionCloner(CONFIG, unit_info).process()
+    except Exception as e:
+        OutputHandler.cloner_error("ActionCloner", e)
+
+    OutputHandler.summary()
 
 
 if __name__ == "__main__":
