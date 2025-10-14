@@ -33584,7 +33584,7 @@
     </effects>
   </tech>
   <tech name ="zpCossackCarronades" type ="Normal">
-    <dbid>41279</dbid>
+    <dbid>41280</dbid>
     <displaynameid>303174</displaynameid>
     <cost resourcetype="Gold">350.0000</cost>
     <researchpoints>30.0000</researchpoints>
