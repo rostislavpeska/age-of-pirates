@@ -927,6 +927,16 @@
     <alliedid>300013</alliedid>
     <alliedotherid>300014</alliedotherid>
     <unalliedid>300012</unalliedid>
+    <multipleblocktrain>
+      <building>TradingPost</building>
+      <multipleblockunit>zpPirateCetbangProxy</multipleblockunit>
+      <units>
+        <unit>zpPirateCetbang</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
     <agetech>
       <age>Age0</age>
       <tech>zpNativeCossacks</tech>

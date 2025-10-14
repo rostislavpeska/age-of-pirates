@@ -32949,6 +32949,7 @@
       <effect type="TechStatus" status="obtainable">zpSendPetro</effect>
       <effect type="TechStatus" status="obtainable">zpSendMazepa</effect>
       <effect type="TechStatus" status="obtainable">zpCossackRowboats</effect>
+      <effect type="TechStatus" status="obtainable">zpCossackCarronades</effect>
     </effects>
   </tech>
   <tech name ="zpAustrianHabsburgExpansion" type ="Normal">
@@ -33450,9 +33451,6 @@
     <rollovertextid>303155</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
-    <prereqs>
-      <techstatus status="Active">Fortressize</techstatus>
-    </prereqs>
     <effects>
       <effect type="Data" action="HatmanAuthority" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">TradingPost</target>
@@ -33483,7 +33481,7 @@
       <effect type="CommandRemove" tech="zpCossackExpansion">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpNatHatmanAuthority" page="2" column="5">
+      <effect type="CommandAdd" tech="zpCossackCarronades" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandAdd" tech="zpCossackRowboats" page="2" column="6">
@@ -33550,18 +33548,23 @@
   <tech name ="zpCossackRowboats" type ="Normal">
     <dbid>41279</dbid>
     <displaynameid>303172</displaynameid>
-    <cost resourcetype="Wood">450.0000</cost>
-    <cost resourcetype="Gold">450.0000</cost>
+    <cost resourcetype="Wood">550.0000</cost>
+    <cost resourcetype="Food">550.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\cossack_chaikas.png</icon>
     <rollovertextid>303173</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
     <prereqs>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpCossackRowboat" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
       <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpSPCRowboat</target>
       </effect>
@@ -33578,6 +33581,25 @@
         <target type="ProtoUnit">zpCossackRowboat</target>
       </effect>
       <effect type="TechStatus" status="active">zpSPCRowboatSabotage</effect>
+    </effects>
+  </tech>
+  <tech name ="zpCossackCarronades" type ="Normal">
+    <dbid>41279</dbid>
+    <displaynameid>303174</displaynameid>
+    <cost resourcetype="Gold">350.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cossack_carronades.png</icon>
+    <rollovertextid>303175</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpPirateCetbangProxy</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpPirateCetbangProxy" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
 

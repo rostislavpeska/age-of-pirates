@@ -1843,6 +1843,7 @@
     <!--COSSACKS  -->
     <train row="0" page="0" column="1">zpNatCossackRider</train>
     <train row="0" page="0" column="2">zpNatCossackDragoon</train>
+    <!--train row="0" page="0" column="3">zpPirateCetbangProxy</train>-->
 
     <!-- Christmas units and techs Added by AssertiveWall-->
     <train row="0" page="0" column="1">zpNatElfsGuard</train>
@@ -65934,6 +65935,71 @@
       <damagearea>4.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
+  </unit>
+  <unit id="20905" name="zpPirateCetbangProxy">
+    <dbid>20905</dbid>
+    <displaynameid>301485</displaynameid>
+    <editornameid>301486</editornameid>
+    <subciv>zpCossacks</subciv>
+    <populationcount>2</populationcount>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>3.5000</maxvelocity>
+    <maxrunvelocity>5.5000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>3.0000</turnrate>
+    <animfile>units\revolution\cetbang\pirate_cetbang.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\natives\pirate_cetbang_icon.png</icon>
+    <portraiticon>resources\art\units\natives\pirate_cetbang_portrait.png</portraiticon>
+    <rollovertextid>80803</rollovertextid>
+    <shortrollovertextid>25635</shortrollovertextid>
+    <initialhitpoints>150.0000</initialhitpoints>
+    <maxhitpoints>150.0000</maxhitpoints>
+    <los>26.0000</los>
+    <projectileprotounit>CannonballSmall</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>30.0000</trainpoints>
+    <bounty>30.0000</bounty>
+    <buildbounty>30.0000</buildbounty>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <allowedage>2</allowedage>
+    <armor type="Ranged" value="0.7500">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractArtillery</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <flag>RotateInPlace</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <flag>NotPlayerPlaceable</flag>
   </unit>
 
   

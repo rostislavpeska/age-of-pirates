@@ -3169,8 +3169,9 @@
       <string _locid="303170">Cossack Rowboat</string>
       <string _locid="303171">ZP Cossack Rowboat</string>
       <string _locid="303172">Dnipro Saboteurs</string>
-      <string _locid="303173">Unlocks Cossack stealth Rowboats with special Sabotage attack. Traibable from any type od Dock.</string>
-
+      <string _locid="303173">Ships two stealth rowboats with special Sabotage attack and makes these trainable from any type of Dock.</string>
+      <string _locid="303174">Captured Corsair Weapons</string>
+      <string _locid="303175">Allows you to train Carronades directly from your Cossack settlement Trading Post.</string>
 
 
       <!-- ======================================== -->
