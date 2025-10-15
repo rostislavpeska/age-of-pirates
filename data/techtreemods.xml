@@ -33626,7 +33626,7 @@
     </effects>
   </tech>
   <tech name="zpRussianExpeditionaryForce" type="Normal">
-    <dbid>41281</dbid>
+    <dbid>41282</dbid>
     <displaynameid>303178</displaynameid>
     <cost resourcetype="Gold">800.0000</cost>
     <researchpoints>30.0000</researchpoints>

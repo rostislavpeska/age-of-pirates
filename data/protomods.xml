@@ -66013,8 +66013,8 @@
     <impacttype>Wood</impacttype>
     <physicsinfo>barracks</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
-    <icon>resources\art\buildings\spc\tents\largetent_icon_64x64.png</icon>
-    <portraiticon>resources\art\buildings\spc\tents\largetent_portrait.png</portraiticon>
+    <icon>resources\art\buildings\spc\cossack_merccamp_icon.png</icon>
+    <portraiticon>resources\art\buildings\spc\cossack_merccamp.png</portraiticon>
     <rollovertextid>303195</rollovertextid>
     <shortrollovertextid>303198</shortrollovertextid>
     <legacyhotkeycontext>BarracksAccel</legacyhotkeycontext>
