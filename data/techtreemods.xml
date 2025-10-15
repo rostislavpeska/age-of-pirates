@@ -33808,7 +33808,7 @@
       <techstatus status="Active">Colonialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="ypConsulateZweihander" relativity="Absolute">
+      <effect type="Data" amount="7.00" subtype="FreeHomeCityUnit" unittype="zpConsulateCarolean" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -33830,11 +33830,11 @@
       <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="7.00" subtype="FreeHomeCityUnit" unittype="ypConsulatePrussianNeedleGun" relativity="Absolute">
+      <effect type="Data" amount="7.00" subtype="FreeHomeCityUnit" unittype="zpConsulateCarolean" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
-      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="ypConsulateZweihander" relativity="Absolute">
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="zpConsulateFinnishRider" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -33856,11 +33856,11 @@
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="18.00" subtype="FreeHomeCityUnit" unittype="ypConsulatePrussianNeedleGun" relativity="Absolute">
+      <effect type="Data" amount="9.00" subtype="FreeHomeCityUnit" unittype="zpConsulateFinnishRider" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
-      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="ypConsulateCannon" relativity="Absolute">
+      <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="zpConsulateLeatherCannon" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>

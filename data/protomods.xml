@@ -66150,6 +66150,412 @@
       <rate type="zpCossackMercCamp">2.000000</rate>
     </protoaction>
   </unit>
+  <unit id="20908" name="zpConsulateCarolean">
+    <dbid>20908</dbid>
+    <displaynameid>303204</displaynameid>
+    <editornameid>303205</editornameid>
+    <populationcount>1</populationcount>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>4.25000</maxvelocity>
+    <maxrunvelocity>6.2500</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\infantry_ranged\carolean\carolean.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\infantry_ranged\carolean\carolean_icon.png</icon>
+    <portraiticon>resources\art\units\infantry_ranged\carolean\carolean_portrait.png</portraiticon>
+    <rollovertextid>91509</rollovertextid>
+    <shortrollovertextid>91508</shortrollovertextid>
+    <initialhitpoints>150.0000</initialhitpoints>
+    <maxhitpoints>150.0000</maxhitpoints>
+    <los>16.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>33.0000</trainpoints>
+    <bounty>10.0000</bounty>
+    <buildbounty>10.0000</buildbounty>
+    <cost resourcetype="Food">65.0000</cost>
+    <cost resourcetype="Gold">40.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Hand" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>AbstractHeavyInfantry</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractGunpowderTrooper</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>AbstractConsulateUnit</unittype>
+    <unittype>AbstractConsulateUnitColonial</unittype>
+    <unittype>AbstractMusketeer</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <command page="11" column="1">Abilities</command>
+    <tactics>musketSwordBayonet.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>DefendHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractSkirmisher">0.800000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>DefendRangedAttack</name>
+      <damage>19.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>3.000000</minrange>
+      <maxrange>12.000000</maxrange>
+      <rof>2.500000</rof>
+      <damagebonus type="AbstractHeavyCavalry">1.500000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">1.300000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractSkirmisher">0.800000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>StaggerHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractSkirmisher">0.800000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>BayonetAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractSkirmisher">0.800000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>StaggerRangedAttack</name>
+      <damage>19.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>3.000000</minrange>
+      <maxrange>12.000000</maxrange>
+      <rof>2.500000</rof>
+      <damagebonus type="AbstractHeavyCavalry">1.500000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">1.300000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>VolleyHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractSkirmisher">0.800000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>VolleyRangedAttack</name>
+      <damage>19.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>3.000000</minrange>
+      <maxrange>12.000000</maxrange>
+      <rof>2.500000</rof>
+      <damagebonus type="AbstractHeavyCavalry">1.500000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">1.300000</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="20909" name="zpConsulateFinnishRider">
+    <dbid>20909</dbid>
+    <displaynameid>303206</displaynameid>
+    <editornameid>303207</editornameid>
+    <populationcount>2</populationcount>
+    <obstructionradiusx>0.7900</obstructionradiusx>
+    <obstructionradiusz>0.7900</obstructionradiusz>
+    <formationcategory>Mobile</formationcategory>
+    <maxvelocity>7.2500</maxvelocity>
+    <maxrunvelocity>9.2500</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>14.0000</turnrate>
+    <animfile>units\cavalry\hakkapelit\hakkapelit_horse.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <physicsinfo>cav</physicsinfo>
+    <icon>resources\art\units\cavalry\hakkapelit\hakkapelit_icon.png</icon>
+    <portraiticon>resources\art\units\cavalry\hakkapelit\hakkapelit_portrait.png</portraiticon>
+    <rollovertextid>91536</rollovertextid>
+    <shortrollovertextid>91537</shortrollovertextid>
+    <initialhitpoints>210.0000</initialhitpoints>
+    <maxhitpoints>210.0000</maxhitpoints>
+    <los>15.0000</los>
+    <projectileprotounit>InvisibleProjectile</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>40.0000</trainpoints>
+    <bounty>20.0000</bounty>
+    <buildbounty>20.0000</buildbounty>
+    <cost resourcetype="Food">90.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <allowedage>2</allowedage>
+    <armor type="Ranged" value="0.2000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeValidSharpshoot</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractLightCavalry</unittype>
+    <unittype>AbstractCavalry</unittype>
+    <unittype>AbstractHandCavalry</unittype>
+    <unittype>AbstractGunpowderCavalry</unittype>
+    <unittype>AbstractRangedCavalry</unittype>
+    <unittype>AbstractConsulateUnit</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <tactics>musketheavycavalry.tactics</tactics>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>14.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>DefendRangedAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>2.000000</minrange>
+      <maxrange>10.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagearea>1.000000</damagearea>
+      <damagecap>52.000000</damagecap>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractHeavyCavalry">2.500000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">2.00000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.00000</damagebonus>
+      <damagebonus type="AbstractVillager">0.750000</damagebonus>
+      <damagebonus type="AbstractInfantry">0.750000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>GuardianRangedAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>2.000000</minrange>
+      <maxrange>10.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>MeleeHandAttack</name>
+      <damage>22.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+      <damagebonus type="AbstractHeavyCavalry">1.500000</damagebonus>
+      <damagebonus type="AbstractArtillery">1.500000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">1.200000</damagebonus>
+      <damagebonus type="AbstractVillager">0.750000</damagebonus>
+      <damagebonus type="AbstractInfantry">0.750000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>TrampleHandAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>2.000000</rof>
+      <damagecap>60.000000</damagecap>
+      <damagearea>3.000000</damagearea>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractHeavyCavalry">1.500000</damagebonus>
+      <damagebonus type="AbstractArtillery">1.500000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">1.200000</damagebonus>
+      <damagebonus type="AbstractVillager">0.750000</damagebonus>
+      <damagebonus type="AbstractInfantry">0.750000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>GuardianAttack</name>
+      <damage>30.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>StaggerRangedAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <minrange>2.000000</minrange>
+      <maxrange>10.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagearea>1.000000</damagearea>
+      <damagecap>52.000000</damagecap>
+      <damageflags>Enemy</damageflags>
+      <damagebonus type="AbstractHeavyCavalry">2.500000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">2.00000</damagebonus>
+      <damagebonus type="AbstractArtillery">2.00000</damagebonus>
+      <damagebonus type="AbstractVillager">0.750000</damagebonus>
+      <damagebonus type="AbstractInfantry">0.750000</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="20910" name="zpConsulateLeatherCannon">
+    <dbid>20910</dbid>
+    <displaynameid>303208</displaynameid>
+    <editornameid>303209</editornameid>
+    <populationcount>3</populationcount>
+    <obstructionradiusx>0.9900</obstructionradiusx>
+    <obstructionradiusz>0.9900</obstructionradiusz>
+    <formationcategory>Protected</formationcategory>
+    <maxvelocity>3.0000</maxvelocity>
+    <maxrunvelocity>5.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>3.0000</turnrate>
+    <animfile>units\artillery\swedish_cannon\swedish_cannon.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\units\artillery\leather_cannon\leather_cannon_icon.png</icon>
+    <portraiticon>resources\art\units\artillery\leather_cannon\leather_cannon_portrait.png</portraiticon>
+    <rollovertextid>91573</rollovertextid>
+    <shortrollovertextid>25694</shortrollovertextid>
+    <initialhitpoints>170.0000</initialhitpoints>
+    <maxhitpoints>170.0000</maxhitpoints>
+    <los>24.0000</los>
+    <projectileprotounit>CannonballSmall</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>38.0000</trainpoints>
+    <bounty>40.0000</bounty>
+    <buildbounty>40.0000</buildbounty>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Food">300.0000</cost>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.5000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractArtillery</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>AbstractConsulateUnit</unittype>
+    <flag>RotateInPlace</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>ConstrainOrientation</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="0">Garrison</command>
+    <command page="10" column="7">Delete</command>
+    <command page="9" column="0">Tactic4</command>
+    <command page="9" column="1">Tactic3</command>
+    <tactics>leathercannon.tactics</tactics>
+    <protoaction>
+      <name>CannonAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Siege</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>21.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>80.000000</damagecap>
+      <damagebonus type="AbstractInfantry">3.000000</damagebonus>
+      <damagearea>2.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="xpArrowKnight">0.500000</damagebonus>
+      <damagebonus type="AbstractHeavyCavalry">0.500000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>CaseShotAttack</name>
+      <damage>4.000000</damage>
+      <damagetype>Siege</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>10.500000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>8.000000</damagecap>
+      <damagearea>4.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+      <damagebonus type="AbstractInfantry">3.000000</damagebonus>
+      <damagebonus type="xpArrowKnight">0.500000</damagebonus>
+      <damagebonus type="AbstractHeavyCavalry">0.500000</damagebonus>
+      <damagebonus type="AbstractCoyoteMan">0.500000</damagebonus>
+    </protoaction>
+    <protoaction>
+      <name>BombardAttack</name>
+      <damage>40.000000</damage>
+      <damagetype>Siege</damagetype>
+      <minrange>0.000000</minrange>
+      <maxrange>10.500000</maxrange>
+      <rof>3.000000</rof>
+      <damagecap>80.000000</damagecap>
+      <damagearea>2.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+  </unit>
 
   
 

@@ -3189,7 +3189,7 @@
       <string _locid="303190">Swedish Expeditionary Force</string>
       <string _locid="303191">Sends Finnish Reiters and a Swedish Musketeers</string>
       <string _locid="303192">Swedish Expeditionary Army</string>
-      <string _locid="303193">Sends Finnish Reiters and Consulate Leather Cannons</string>
+      <string _locid="303193">Sends Finnish Reiters and Consulate Läderkanons</string>
       <string _locid="303194">European Mercenary Camp</string>
       <string _locid="303195">European Mercenary camp. Serves as a universal point to ship military units from all around the Europe.</string>
       <string _locid="303196">Trains various types of military units.</string>
@@ -3200,7 +3200,12 @@
       <string _locid="303201">ZP Europea Mercenary Camp Wagon</string>
       <string _locid="303202">Northern Alliances</string>
       <string _locid="303203">Ships European Mercenary Camp wagon allowing you to construct a European Mercenary Camp</string>
-    
+      <string _locid="303204">Swedish Musketeer</string>
+      <string _locid="303205">ZP CON Swedish Musketeer</string>
+      <string _locid="303206">Finnish Reiter</string>
+      <string _locid="303207">ZP CON Finnish Reiter</string>
+      <string _locid="303208">Läderkanon</string>
+      <string _locid="303209">ZP CON Läderkanon</string>
 
 
 
