@@ -3155,9 +3155,9 @@
       <string _locid="303156">Petro Konashevych-Sahaidachny</string>
       <string _locid="303157">Hero unit with special abilities</string>
       <string _locid="303158">Petro Konashevych-Sahaidachny, the Cossack Hetman, empowers nearby Cossacks.</string>
-      <string _locid="303159">&lt;color=1.0, 0.9, 0.5&gt;HATMAN:&lt;/color&gt; \nEmpowers nearby Cossack units, naval improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nHMS Cossack \n\nBlack Sea Raids</string>
+      <string _locid="303159">&lt;color=1.0, 0.9, 0.5&gt;HATMAN:&lt;/color&gt; \nEmpowers nearby Cossack units, naval improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nCorsair Weapons \n\nDnipro Saboteurs</string>
       <string _locid="303160">Ivan Mazepa</string>
-      <string _locid="303161">&lt;color=1.0, 0.9, 0.5&gt;HATMAN:&lt;/color&gt; \nEmpowers nearby Settlers to work faster \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nEuropean Diplomacy \n\nSwedish Mercenaries</string>
+      <string _locid="303161">&lt;color=1.0, 0.9, 0.5&gt;HATMAN:&lt;/color&gt; \nEmpowers nearby Settlers to work faster \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nNorthern Alliances \n\nCossack Nobility</string>
       <string _locid="303162">ZP SPC Bohdan Khmelnytsky</string>
       <string _locid="303163">ZP SPC Petro Konashevych-Sahaidachny</string>
       <string _locid="303164">ZP SPC Ivan Mazepa</string>
@@ -3170,7 +3170,7 @@
       <string _locid="303171">ZP Cossack Rowboat</string>
       <string _locid="303172">Dnipro Saboteurs</string>
       <string _locid="303173">Ships two stealth rowboats with special Sabotage attack and makes these trainable from any type of Dock.</string>
-      <string _locid="303174">Captured Corsair Weapons</string>
+      <string _locid="303174">Corsair Weapons</string>
       <string _locid="303175">Allows you to train Carronades directly from your Cossack settlement Trading Post.</string>
       <string _locid="303176">Russian Expeditionary Company</string>
       <string _locid="303177">Sends Siberian Cossacks</string>
@@ -3206,6 +3206,8 @@
       <string _locid="303207">ZP CON Finnish Reiter</string>
       <string _locid="303208">Läderkanon</string>
       <string _locid="303209">ZP CON Läderkanon</string>
+      <string _locid="303210">Cossack Nobility</string>
+      <string _locid="303211">Increases all Cossack Camp units hitpoints</string>
 
 
 

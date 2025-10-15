@@ -10793,6 +10793,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>CheckLandHCGatherPoint</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Colonialize</techstatus>
     </prereqs>
@@ -10815,6 +10816,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>CheckLandHCGatherPoint</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
@@ -10837,6 +10839,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>CheckWaterHCGatherPoint</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
@@ -10879,6 +10882,7 @@
     <flag>YPCheckPopCap</flag>
     <flag>YPInfiniteTech</flag>
     <flag>CheckLandHCGatherPoint</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Colonialize</techstatus>
     </prereqs>
@@ -14753,6 +14757,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>CheckLandHCGatherPoint</flag>
     <flag>YPCheckPopCap</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Colonialize</techstatus>
     </prereqs>
@@ -14775,6 +14780,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>CheckLandHCGatherPoint</flag>
     <flag>YPCheckPopCap</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Colonialize</techstatus>
     </prereqs>
@@ -14797,6 +14803,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>CheckLandHCGatherPoint</flag>
     <flag>YPCheckPopCap</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Colonialize</techstatus>
     </prereqs>
@@ -15538,6 +15545,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>CheckLandHCGatherPoint</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Colonialize</techstatus>
     </prereqs>
@@ -15560,6 +15568,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>CheckLandHCGatherPoint</flag>
     <flag>YPCheckPopCap</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
@@ -15611,6 +15620,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>CheckWaterHCGatherPoint</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
@@ -15700,6 +15710,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>CheckWaterHCGatherPoint</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
@@ -15722,6 +15733,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>CheckLandHCGatherPoint</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Colonialize</techstatus>
     </prereqs>
@@ -15744,6 +15756,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>CheckLandHCGatherPoint</flag>
     <flag>YPCheckPopCap</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
@@ -16161,6 +16174,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>CheckWaterHCGatherPoint</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
@@ -16183,6 +16197,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>CheckLandHCGatherPoint</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Colonialize</techstatus>
     </prereqs>
@@ -16205,6 +16220,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>CheckWaterHCGatherPoint</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Colonialize</techstatus>
     </prereqs>
@@ -32951,6 +32967,7 @@
       <effect type="TechStatus" status="obtainable">zpCossackRowboats</effect>
       <effect type="TechStatus" status="obtainable">zpCossackCarronades</effect>
       <effect type="TechStatus" status="obtainable">zpNatCossackDiplomacy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatCossackNobility</effect>
     </effects>
   </tech>
   <tech name ="zpAustrianHabsburgExpansion" type ="Normal">
@@ -33511,7 +33528,7 @@
       <effect type="CommandAdd" tech="zpNatCossackDiplomacy" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpNatCossackStable" page="2" column="6">
+      <effect type="CommandAdd" tech="zpNatCossackNobility" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -33615,6 +33632,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>YPCheckPopCap</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Colonialize</techstatus>
     </prereqs>
@@ -33637,6 +33655,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>YPCheckPopCap</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
@@ -33663,6 +33682,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>YPCheckPopCap</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
@@ -33689,6 +33709,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>YPCheckPopCap</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Colonialize</techstatus>
     </prereqs>
@@ -33711,6 +33732,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>YPCheckPopCap</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
@@ -33737,6 +33759,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>YPCheckPopCap</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
@@ -33804,6 +33827,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>YPCheckPopCap</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Colonialize</techstatus>
     </prereqs>
@@ -33826,6 +33850,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>YPCheckPopCap</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
@@ -33852,6 +33877,7 @@
     <flag>YPInfiniteTech</flag>
     <flag>DECheckBuildLimit</flag>
     <flag>YPCheckPopCap</flag>
+    <flag>AlwaysShowButton</flag>
     <prereqs>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
@@ -33863,6 +33889,35 @@
       <effect type="Data" amount="3.00" subtype="FreeHomeCityUnit" unittype="zpConsulateLeatherCannon" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatCossackNobility" type="Normal">
+    <dbid>41292</dbid>
+    <displaynameid>303210</displaynameid>
+    <cost resourcetype="Wood">400.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\cossack_nobility.png</icon>
+    <rollovertextid>303211</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatCossackRider</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatCossackDragoon</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatCossack</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercCossackDragoon</target>
       </effect>
     </effects>
   </tech>

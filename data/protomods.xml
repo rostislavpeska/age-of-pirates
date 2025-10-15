@@ -65735,7 +65735,7 @@
     <unittype>AbstractCossack</unittype>
     <unittype>ExcludeFromRansom</unittype>
     <train row="0" page="0" column="0">TradingPost</train>
-    <train row="0" page="0" column="1">NativeEmbassy</train>
+    <train row="0" page="0" column="1">zpCossackMercCamp</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -66182,6 +66182,9 @@
     <allowedage>1</allowedage>
     <armor type="Hand" value="0.2000">
     </armor>
+    <sharedselectionunittypes>
+      <unittype>deCarolean</unittype>
+    </sharedselectionunittypes>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
@@ -66297,6 +66300,11 @@
       <damagebonus type="AbstractCoyoteMan">1.300000</damagebonus>
     </protoaction>
   </unit>
+  <unit name="deCarolean">
+    <sharedselectionunittypes>
+      <unittype>zpConsulateCarolean</unittype>
+    </sharedselectionunittypes>
+  </unit>
   <unit id="20909" name="zpConsulateFinnishRider">
     <dbid>20909</dbid>
     <displaynameid>303206</displaynameid>
@@ -66329,6 +66337,9 @@
     <allowedage>2</allowedage>
     <armor type="Ranged" value="0.2000">
     </armor>
+    <sharedselectionunittypes>
+      <unittype>deFinnishRider</unittype>
+    </sharedselectionunittypes>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
@@ -66446,6 +66457,11 @@
       <damagebonus type="AbstractInfantry">0.750000</damagebonus>
     </protoaction>
   </unit>
+  <unit name="deFinnishRider">
+    <sharedselectionunittypes>
+      <unittype>zpConsulateFinnishRider</unittype>
+    </sharedselectionunittypes>
+  </unit>
   <unit id="20910" name="zpConsulateLeatherCannon">
     <dbid>20910</dbid>
     <displaynameid>303208</displaynameid>
@@ -66477,6 +66493,9 @@
     <allowedage>1</allowedage>
     <armor type="Ranged" value="0.5000">
     </armor>
+    <sharedselectionunittypes>
+      <unittype>deLeatherCannon</unittype>
+    </sharedselectionunittypes>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeNeededForVictory</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
@@ -66555,6 +66574,11 @@
       <damagearea>2.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
+  </unit>
+  <unit name="deLeatherCannon">
+    <sharedselectionunittypes>
+      <unittype>zpConsulateLeatherCannon</unittype>
+    </sharedselectionunittypes>
   </unit>
 
   
