@@ -66162,7 +66162,7 @@
     <maxrunvelocity>6.2500</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <animfile>units\infantry_ranged\carolean\carolean.xml</animfile>
+    <animfile>units\consulate\infantry_ranged\carolean\con_carolean.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\infantry_ranged\carolean\carolean_icon.png</icon>
@@ -66317,7 +66317,7 @@
     <maxrunvelocity>9.2500</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>14.0000</turnrate>
-    <animfile>units\cavalry\hakkapelit\hakkapelit_horse.xml</animfile>
+    <animfile>units\consulate\cavalry\hakkapelit\con_hakkapelit_horse.xml</animfile>
     <impacttype>Flesh</impacttype>
     <physicsinfo>cav</physicsinfo>
     <icon>resources\art\units\cavalry\hakkapelit\hakkapelit_icon.png</icon>
@@ -66474,7 +66474,7 @@
     <maxrunvelocity>5.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>3.0000</turnrate>
-    <animfile>units\artillery\swedish_cannon\swedish_cannon.xml</animfile>
+    <animfile>units\consulate\artillery\swedish_cannon\con_leather_cannon.xml</animfile>
     <impacttype>Wood</impacttype>
     <icon>resources\art\units\artillery\leather_cannon\leather_cannon_icon.png</icon>
     <portraiticon>resources\art\units\artillery\leather_cannon\leather_cannon_portrait.png</portraiticon>
