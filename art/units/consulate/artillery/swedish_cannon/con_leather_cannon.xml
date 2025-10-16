@@ -19,7 +19,7 @@
     <attachment>hat
         <component>hat
             <assetreference type="GrannyModel">
-                <file>units\artillery\swedish_cannon\swedish_cannon_age2_hat</file>
+                <file>units\artillery\swedish_cannon\swedish_cannon_age4_hat</file>
             </assetreference>
         </component>
         <anim>Idle
@@ -43,13 +43,13 @@
          <logic type="LowPoly">
             <normal>
                 <assetreference type="GrannyModel">
-                    <file>units\artillery\swedish_cannon\swedish_cannon_age2</file>
+                    <file>units\artillery\swedish_cannon\swedish_cannon_age4</file>
                 </assetreference>
                 <attach a="hat" frombone="bone_hat" tobone="Bip01 Head" syncanims="0"></attach>
             </normal>
             <lowpoly>
                 <assetreference type="GrannyModel">
-                    <file>units\artillery\swedish_cannon\swedish_cannon_age2</file>
+                    <file>units\artillery\swedish_cannon\swedish_cannon_age4</file>
                 </assetreference>
                 <attach a="hat" frombone="bone_hat" tobone="Bip01 Head" syncanims="0"></attach>
             </lowpoly>

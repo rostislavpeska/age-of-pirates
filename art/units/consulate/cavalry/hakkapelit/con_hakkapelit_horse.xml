@@ -11,12 +11,12 @@
         <logic type="LowPoly">
             <normal>
                 <assetreference type="GrannyModel">
-                    <file>units\cavalry\hakkapelit\hakkapelit_age2_horse</file>
+                    <file>units\cavalry\hakkapelit\hakkapelit_age4_horse</file>
                 </assetreference>
             </normal>
             <lowpoly>
                 <assetreference type="GrannyModel">
-                    <file>units\cavalry\hakkapelit\hakkapelit_age2_horse</file>
+                    <file>units\cavalry\hakkapelit\hakkapelit_age4_horse</file>
                 </assetreference>
             </lowpoly>
         </logic>

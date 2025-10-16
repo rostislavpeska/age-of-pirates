@@ -7,7 +7,7 @@
     <attachment>gun
         <component>gun
             <assetreference type="GrannyModel">
-                <file>units\cavalry\hakkapelit\hakkapelit_gun</file>
+                <file>units\spc\outlaws\outlaw_shotgun_gun</file>
             </assetreference>
         </component>
         <anim>Idle
@@ -30,7 +30,7 @@
     <attachment>hat
         <component>hat
             <assetreference type="GrannyModel">
-                <file>units\infantry_ranged\carolean\carolean_age2_hat</file>
+                <file>units\infantry_ranged\carolean\carolean_age3_hat</file>
             </assetreference>
         </component>
         <anim>Idle
@@ -41,13 +41,13 @@
     <logic type="LowPoly">
         <normal>
             <assetreference type="GrannyModel">
-                <file>units\cavalry\hakkapelit\hakkapelit_age2</file>
+                <file>units\cavalry\hakkapelit\hakkapelit_age4</file>
             </assetreference>
             <attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
         </normal>
         <lowpoly>
             <assetreference type="GrannyModel">
-                <file>units\cavalry\hakkapelit\hakkapelit_age2</file>
+                <file>units\cavalry\hakkapelit\hakkapelit_age4</file>
             </assetreference>
             <attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach>
         </lowpoly>
