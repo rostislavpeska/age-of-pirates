@@ -33623,7 +33623,7 @@
   <tech name="zpRussianExpeditionaryCompany" type="Normal">
     <dbid>41281</dbid>
     <displaynameid>303176</displaynameid>
-    <cost resourcetype="Gold">400.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\art\units\asians\consulate\rus_armies\rus_company_icon_64.png</icon>
@@ -33646,10 +33646,10 @@
   <tech name="zpRussianExpeditionaryForce" type="Normal">
     <dbid>41282</dbid>
     <displaynameid>303178</displaynameid>
-    <cost resourcetype="Gold">800.0000</cost>
+    <cost resourcetype="Gold">1000.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\art\units\asians\consulate\rus_armies\rus_company_icon_64.png</icon>
+    <icon>resources\art\units\asians\consulate\rus_armies\rus_force_icon_64.png</icon>
     <rollovertextid>303179</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPInfiniteTech</flag>
@@ -33673,7 +33673,7 @@
   <tech name="zpRussianExpeditionaryArmy" type="Normal">
     <dbid>41283</dbid>
     <displaynameid>303180</displaynameid>
-    <cost resourcetype="Gold">1600.0000</cost>
+    <cost resourcetype="Gold">2000.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\art\units\asians\consulate\rus_armies\rus_army_icon_64.png</icon>
@@ -33700,7 +33700,7 @@
   <tech name="zpGermanExpeditionaryCompany" type="Normal">
     <dbid>41284</dbid>
     <displaynameid>303182</displaynameid>
-    <cost resourcetype="Gold">400.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\art\units\asians\consulate\german_expeditionary_company.png</icon>
@@ -33723,7 +33723,7 @@
   <tech name="zpGermanExpeditionaryForce" type="Normal">
     <dbid>41285</dbid>
     <displaynameid>303184</displaynameid>
-    <cost resourcetype="Gold">800.0000</cost>
+    <cost resourcetype="Gold">1000.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\art\units\asians\consulate\germany_company.png</icon>
@@ -33750,7 +33750,7 @@
   <tech name="zpGermanExpeditionaryArmy" type="Normal">
     <dbid>41286</dbid>
     <displaynameid>303186</displaynameid>
-    <cost resourcetype="Gold">1600.0000</cost>
+    <cost resourcetype="Gold">2000.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\art\units\asians\consulate\germany_army.png</icon>
@@ -33818,7 +33818,7 @@
   <tech name="zpSwedishExpeditionaryCompany" type="Normal">
     <dbid>41289</dbid>
     <displaynameid>303188</displaynameid>
-    <cost resourcetype="Gold">400.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\swedish_consulate_company.png</icon>
@@ -33841,7 +33841,7 @@
   <tech name="zpSwedishExpeditionaryForce" type="Normal">
     <dbid>41290</dbid>
     <displaynameid>303190</displaynameid>
-    <cost resourcetype="Gold">800.0000</cost>
+    <cost resourcetype="Gold">1000.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\swedish_consulate_force.png</icon>
@@ -33868,7 +33868,7 @@
   <tech name="zpSwedishExpeditionaryArmy" type="Normal">
     <dbid>41291</dbid>
     <displaynameid>303192</displaynameid>
-    <cost resourcetype="Gold">1600.0000</cost>
+    <cost resourcetype="Gold">2000.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\swedish_consulate_army.png</icon>

@@ -1,0 +1,189 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>14</width>
+	<height>15</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="203" posx="-0.0563" posz="-13.0511" orientx="0.0000" orienty="0.0000" orientz="1.0000">WallWoodNative</unit>
+		<unit variation="145" posx="8.9922" posz="-13.1259" orientx="1.0000" orienty="0.0000" orientz="0.0000">WallWoodNative</unit>
+		<unit variation="203" posx="5.7092" posz="-13.1011" orientx="0.0000" orienty="0.0000" orientz="1.0000">WallWoodNative</unit>
+		<unit variation="145" posx="-2.7826" posz="-13.1158" orientx="1.0000" orienty="0.0000" orientz="0.0000">WallWoodNative</unit>
+		<unit variation="70" posx="-0.5189" posz="-10.9288" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="70" posx="5.1517" posz="-10.6249" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="173" posx="-8.6569" posz="-9.5430" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSocketCossacks</unit>
+		<unit variation="220" posx="2.5419" posz="-10.6654" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="203" posx="9.9495" posz="-10.4755" orientx="-0.9239" orienty="0.0000" orientz="0.3827">WallWoodNative</unit>
+		<unit variation="61" posx="-2.8703" posz="-11.7255" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropJesuitFence</unit>
+		<unit variation="28" posx="5.8947" posz="-9.3923" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseCossacks</unit>
+		<unit variation="219" posx="-1.6751" posz="-8.8505" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="112" posx="-2.7939" posz="-9.1839" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropJesuitFence</unit>
+		<unit variation="41" posx="1.1883" posz="-10.0948" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropHorseEU</unit>
+		<unit variation="250" posx="-0.7920" posz="-10.0764" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropHorseEU</unit>
+		<unit variation="70" posx="1.3528" posz="-5.2045" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="70" posx="4.0985" posz="-6.5550" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="70" posx="8.3954" posz="-6.6825" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="70" posx="-2.0945" posz="-6.1890" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="145" posx="11.8163" posz="-6.1440" orientx="1.0000" orienty="0.0000" orientz="0.0000">WallWoodNative</unit>
+		<unit variation="106" posx="11.5714" posz="-6.8867" orientx="-0.9239" orienty="0.0000" orientz="0.3827">WallWoodNative</unit>
+		<unit variation="223" posx="1.7335" posz="-7.7122" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropJesuitFence</unit>
+		<unit variation="112" posx="-1.1238" posz="-7.6435" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropJesuitFence</unit>
+		<unit variation="83" posx="9.9905" posz="-7.4043" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deSPCTreeOakProp</unit>
+		<unit variation="70" posx="-5.9601" posz="-3.1285" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="220" posx="9.2287" posz="-6.0281" orientx="-0.9239" orienty="0.0000" orientz="0.3826">deSMTengriGuy</unit>
+		<unit variation="92" posx="10.7516" posz="-6.1739" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="106" posx="-11.3450" posz="-3.9412" orientx="0.7071" orienty="0.0000" orientz="0.7071">WallWoodNative</unit>
+		<unit variation="145" posx="-10.6554" posz="-4.9522" orientx="0.7071" orienty="0.0000" orientz="0.7071">WallWoodNative</unit>
+		<unit variation="143" posx="10.9020" posz="-5.2605" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="135" posx="-9.4313" posz="-3.2392" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseCossacks</unit>
+		<unit variation="70" posx="-0.1631" posz="-1.1394" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="70" posx="5.5152" posz="-1.2390" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="70" posx="8.5189" posz="-2.3181" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="57" posx="9.2564" posz="-2.1435" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeHouseCossacks</unit>
+		<unit variation="70" posx="-8.7523" posz="-2.3876" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="106" posx="-11.3198" posz="-2.0796" orientx="0.7072" orienty="0.0000" orientz="-0.7071">WallWoodNative</unit>
+		<unit variation="145" posx="-12.0310" posz="-2.8887" orientx="1.0000" orienty="0.0000" orientz="0.0000">WallWoodNative</unit>
+		<unit variation="208" posx="6.6641" posz="-3.9774" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="109" posx="11.9545" posz="-2.0018" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">WallWoodNative</unit>
+		<unit variation="5" posx="-0.1403" posz="-0.3982" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeCossackChurch</unit>
+		<unit variation="70" posx="-3.0079" posz="-0.4975" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="70" posx="-4.7584" posz="-0.3766" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="70" posx="-7.5857" posz="0.3633" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="145" posx="-10.9698" posz="-1.5302" orientx="1.0000" orienty="0.0000" orientz="0.0001">WallWoodNative</unit>
+		<unit variation="106" posx="-10.6724" posz="-0.8012" orientx="1.0000" orienty="0.0000" orientz="0.0001">WallWoodNative</unit>
+		<unit variation="70" posx="9.5918" posz="2.5137" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="70" posx="-8.9344" posz="2.2901" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="4" posx="-10.7428" posz="0.1112" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCossackFlag</unit>
+		<unit variation="145" posx="-10.7414" posz="0.0837" orientx="1.0000" orienty="0.0000" orientz="0.0001">WallWoodNative</unit>
+		<unit variation="174" posx="-11.9017" posz="-0.2390" orientx="-0.9239" orienty="0.0000" orientz="0.3826">deSMTengriGuards</unit>
+		<unit variation="70" posx="-3.1199" posz="4.3678" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="70" posx="-1.6755" posz="4.7064" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="145" posx="11.8964" posz="3.7137" orientx="1.0000" orienty="0.0000" orientz="0.0000">WallWoodNative</unit>
+		<unit variation="106" posx="11.8750" posz="2.9007" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">WallWoodNative</unit>
+		<unit variation="43" posx="9.2975" posz="2.1510" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpPropHorse</unit>
+		<unit variation="223" posx="7.4537" posz="2.3512" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpPropJesuitFence</unit>
+		<unit variation="70" posx="-5.6816" posz="5.6430" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="70" posx="-8.6924" posz="5.9722" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="162" posx="6.1632" posz="6.8734" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpNativeHouseCossacks</unit>
+		<unit variation="30" posx="-6.6420" posz="3.8261" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNatElectorPalaceProps</unit>
+		<unit variation="4" posx="-11.1080" posz="4.9775" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCossackFlag</unit>
+		<unit variation="145" posx="-11.0600" posz="4.9861" orientx="1.0000" orienty="0.0000" orientz="0.0001">WallWoodNative</unit>
+		<unit variation="106" posx="-10.8200" posz="5.9909" orientx="1.0000" orienty="0.0000" orientz="0.0001">WallWoodNative</unit>
+		<unit variation="20" posx="8.3208" posz="3.9378" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpPropHorse</unit>
+		<unit variation="70" posx="1.2005" posz="8.3778" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="70" posx="-9.0635" posz="8.2898" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="70" posx="-3.9625" posz="8.8979" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="145" posx="-11.0020" posz="7.0240" orientx="1.0000" orienty="0.0000" orientz="0.0001">WallWoodNative</unit>
+		<unit variation="106" posx="-11.5081" posz="8.0496" orientx="0.7071" orienty="0.0000" orientz="0.7071">WallWoodNative</unit>
+		<unit variation="159" posx="-9.1099" posz="6.5308" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="174" posx="-12.1607" posz="5.5190" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deSMTengriGuards</unit>
+		<unit variation="220" posx="-4.1488" posz="5.9496" orientx="0.9239" orienty="0.0000" orientz="-0.3827">deSMTengriGuy</unit>
+		<unit variation="51" posx="-2.5252" posz="5.8132" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatEUPropVilMale</unit>
+		<unit variation="109" posx="9.1692" posz="6.6578" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">WallWoodNative</unit>
+		<unit variation="135" posx="-9.3179" posz="8.2741" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHouseCossacks</unit>
+		<unit variation="70" posx="-5.0550" posz="10.1081" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
+		<unit variation="162" posx="-3.6068" posz="9.2550" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpNativeHouseCossacks</unit>
+		<unit variation="200" posx="-12.6105" posz="8.0636" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpPropsColony</unit>
+		<unit variation="145" posx="-12.3246" posz="8.8329" orientx="1.0000" orienty="0.0000" orientz="0.0001">WallWoodNative</unit>
+		<unit variation="101" posx="0.1743" posz="8.4757" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="145" posx="6.4810" posz="9.4397" orientx="1.0000" orienty="0.0000" orientz="0.0000">WallWoodNative</unit>
+		<unit variation="122" posx="-10.7617" posz="10.1729" orientx="0.7071" orienty="0.0000" orientz="-0.7071">WallWoodNative</unit>
+		<unit variation="113" posx="0.8249" posz="8.8449" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpPropHorse</unit>
+		<unit variation="223" posx="1.3490" posz="7.4824" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpPropJesuitFence</unit>
+		<unit variation="115" posx="2.1313" posz="8.3875" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpPropHorse</unit>
+		<unit variation="145" posx="-9.1782" posz="11.9031" orientx="1.0000" orienty="0.0000" orientz="0.0000">WallWoodNative</unit>
+		<unit variation="109" posx="2.7508" posz="10.8367" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">WallWoodNative</unit>
+		<unit variation="145" posx="-0.6336" posz="12.2264" orientx="1.0000" orienty="0.0000" orientz="0.0000">WallWoodNative</unit>
+		<unit variation="109" posx="-4.7267" posz="12.1953" orientx="0.0000" orienty="0.0000" orientz="-1.0000">WallWoodNative</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="patagonia\ground_dirt1_pat">
+			<block startx="-5" startz="-5" endx="-5" endz="-4"></block>
+			<block startx="-4" startz="-6" endx="-4" endz="-4"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="-3"></block>
+			<block startx="-2" startz="-5" endx="-2" endz="-3"></block>
+			<block startx="-2" startz="-1" endx="-2" endz="-1"></block>
+			<block startx="-1" startz="-6" endx="-1" endz="-6"></block>
+			<block startx="-1" startz="-4" endx="-1" endz="-4"></block>
+			<block startx="0" startz="-6" endx="0" endz="-6"></block>
+			<block startx="-6" startz="1" endx="-6" endz="1"></block>
+			<block startx="-5" startz="3" endx="-5" endz="4"></block>
+			<block startx="-4" startz="1" endx="-4" endz="1"></block>
+			<block startx="0" startz="4" endx="0" endz="5"></block>
+			<block startx="1" startz="2" endx="1" endz="2"></block>
+			<block startx="1" startz="6" endx="1" endz="6"></block>
+			<block startx="2" startz="1" endx="2" endz="1"></block>
+			<block startx="4" startz="2" endx="4" endz="2"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="patagonia\ground_dirt2_pat">
+			<block startx="-6" startz="-4" endx="-6" endz="-4"></block>
+			<block startx="-4" startz="0" endx="-4" endz="0"></block>
+			<block startx="-3" startz="-2" endx="-3" endz="-2"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="-6"></block>
+			<block startx="-2" startz="-2" endx="-2" endz="-2"></block>
+			<block startx="0" startz="-4" endx="0" endz="-4"></block>
+			<block startx="1" startz="-6" endx="1" endz="-6"></block>
+			<block startx="1" startz="-3" endx="1" endz="-3"></block>
+			<block startx="-6" startz="2" endx="-6" endz="2"></block>
+			<block startx="-5" startz="1" endx="-5" endz="2"></block>
+			<block startx="-4" startz="3" endx="-4" endz="3"></block>
+			<block startx="-1" startz="2" endx="-1" endz="3"></block>
+			<block startx="-1" startz="6" endx="-1" endz="6"></block>
+			<block startx="0" startz="6" endx="0" endz="6"></block>
+			<block startx="1" startz="4" endx="1" endz="5"></block>
+			<block startx="4" startz="1" endx="4" endz="1"></block>
+			<block startx="5" startz="1" endx="5" endz="1"></block>
+			<block startx="4" startz="-3" endx="4" endz="-3"></block>
+			<block startx="5" startz="-3" endx="5" endz="-3"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="patagonia\ground_dirt3_pat">
+			<block startx="-6" startz="-3" endx="-6" endz="-3"></block>
+			<block startx="-5" startz="-3" endx="-5" endz="-2"></block>
+			<block startx="-5" startz="0" endx="-5" endz="0"></block>
+			<block startx="-4" startz="-3" endx="-4" endz="-1"></block>
+			<block startx="-2" startz="0" endx="-2" endz="0"></block>
+			<block startx="-1" startz="-5" endx="-1" endz="-5"></block>
+			<block startx="-1" startz="0" endx="-1" endz="0"></block>
+			<block startx="0" startz="-5" endx="0" endz="-5"></block>
+			<block startx="0" startz="0" endx="0" endz="0"></block>
+			<block startx="1" startz="-5" endx="1" endz="-4"></block>
+			<block startx="-4" startz="4" endx="-4" endz="5"></block>
+			<block startx="-3" startz="3" endx="-3" endz="5"></block>
+			<block startx="-2" startz="3" endx="-2" endz="5"></block>
+			<block startx="-1" startz="1" endx="-1" endz="1"></block>
+			<block startx="-1" startz="4" endx="-1" endz="5"></block>
+			<block startx="0" startz="1" endx="0" endz="1"></block>
+			<block startx="1" startz="1" endx="1" endz="1"></block>
+			<block startx="1" startz="3" endx="1" endz="3"></block>
+			<block startx="2" startz="2" endx="2" endz="5"></block>
+			<block startx="3" startz="2" endx="3" endz="4"></block>
+			<block startx="4" startz="3" endx="4" endz="3"></block>
+			<block startx="2" startz="-6" endx="2" endz="-3"></block>
+			<block startx="3" startz="-6" endx="3" endz="-3"></block>
+			<block startx="4" startz="-5" endx="4" endz="-4"></block>
+			<block startx="4" startz="-2" endx="4" endz="0"></block>
+			<block startx="5" startz="-2" endx="5" endz="0"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">
+			<block startx="-3" startz="-1" endx="-3" endz="0"></block>
+			<block startx="-1" startz="-3" endx="-1" endz="-1"></block>
+			<block startx="0" startz="-3" endx="0" endz="-2"></block>
+			<block startx="1" startz="-2" endx="1" endz="-2"></block>
+			<block startx="1" startz="0" endx="1" endz="0"></block>
+			<block startx="-4" startz="2" endx="-4" endz="2"></block>
+			<block startx="-3" startz="1" endx="-3" endz="2"></block>
+			<block startx="-2" startz="1" endx="-2" endz="2"></block>
+			<block startx="0" startz="2" endx="0" endz="3"></block>
+			<block startx="3" startz="1" endx="3" endz="1"></block>
+			<block startx="2" startz="-2" endx="2" endz="0"></block>
+			<block startx="3" startz="-2" endx="3" endz="0"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="patagonia\ground_cliffedge_pat">
+			<block startx="-6" startz="-2" endx="-6" endz="0"></block>
+			<block startx="-5" startz="-1" endx="-5" endz="-1"></block>
+			<block startx="-6" startz="3" endx="-6" endz="3"></block>
+		</tilegroup>
+	</tiles>
+</grouping>
