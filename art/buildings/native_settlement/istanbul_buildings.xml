@@ -1,0 +1,20 @@
+<animfile>
+	<component>
+		building
+		<logic type="Variation">
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\venice\venice_academy_Model</file>
+                        <materialvariant index="1"/>
+					</assetreference>
+			    </data>
+                
+
+
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>building</component>
+	</anim>
+</animfile>

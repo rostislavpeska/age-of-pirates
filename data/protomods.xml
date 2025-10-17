@@ -66631,6 +66631,163 @@
     <command page="10" column="0">Delete</command>
     <tactics>garrisonable.tactics</tactics>
   </unit>
+  <unit id="20912" name="zpNativeHouseIstanbul">
+    <dbid>20912</dbid>
+    <displaynameid>300730</displaynameid>
+    <editornameid>303213</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\istanbul_buildings.xml</animfile>
+    <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <unittype>AbstractCityManisonB</unittype>
+    <flag>FlattenGround</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+    <flag>NoIdleActions</flag>
+		<flag>StartOnNoUpdate</flag>
+    <flag>NotSelectable</flag>
+  </unit>
+  <unit id="20913" name="zpTradingPostCaptureNavalOriental">
+    <dbid>20913</dbid>
+    <displaynameid>300030</displaynameid>
+    <editornameid>303214</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>buildings\market\city_market_orient.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <autoconvertsoundset>TradeSiteEurope</autoconvertsoundset>
+    <icon>resources\art\buildings\asian_civs\dock\india_dock_icon.png</icon>
+    <minimapicon>ui\minimap\t</minimapicon>
+    <portraiticon>resources\art\buildings\tradeport_portrait.png</portraiticon>
+    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
+    <rollovertextid>302094</rollovertextid>
+    <shortrollovertextid>302094</shortrollovertextid>
+    <initialhitpoints>3000.0000</initialhitpoints>
+    <maxhitpoints>3000.0000</maxhitpoints>
+    <los>14.0000</los>
+    <buildpoints>90.0000</buildpoints>
+    <bounty>40.0000</bounty>
+    <buildbounty>20.0000</buildbounty>
+    <cost resourcetype="Food">0.0000</cost>
+    <cost resourcetype="Wood">250.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>1</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Socket</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>CannotConvertHill</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>VictoryPointBuilding</unittype>
+    <unittype>AbstractFort</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>AbstractTypeVictoryPointBuilding</unittype>
+    <unittype>AbstractTradingPost</unittype>
+    <unittype>CapturableTradingPost</unittype>
+    <tech row="0" page="1" column="0">ypTradeRouteUpgradeIndia2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeAll1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeAll2</tech>
+    <tech row="0" page="1" column="0">deTradeRouteUpgradeAmerica1</tech>
+    <tech row="0" page="1" column="0">deTradeRouteUpgradeAmerica2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeMaghreb1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeMaghreb2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeAfrica1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeAfrica2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeAfricaRailroad2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeWater1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeWater2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeRiver1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeRiver2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeEurope1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeEurope2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeRiverAll1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeRiverAll2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeEuropeAll1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeEuropeAll2</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeWaterAll1</tech>
+    <tech row="0" page="1" column="0">DETradeRouteUpgradeWaterAll2</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>InitialGarrisonOnly</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>Tracked</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="2">SetGatherPointEconomy</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="1" column="2">FourOfAKind</command>
+    <tactics>yptradingpostcapture.tactics</tactics>
+  </unit>
 
   
 
