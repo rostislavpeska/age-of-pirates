@@ -66009,7 +66009,7 @@
     <obstructionradiusz>3.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\mining_camp\miningcamp.xml</animfile>
+    <animfile>buildings\mining_camp\cossackcamp.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>barracks</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
