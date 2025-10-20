@@ -8,7 +8,7 @@
 					</assetreference>
 				</data>
 				<data>
-					<assetreference type="GrannyModel">
+					 <assetreference type="GrannyModel">
 						<file>buildings\native_settlement\europe\palaces\roof_fr01_wall_ge01_wing_S</file>
 					</assetreference>
 			    </data>
