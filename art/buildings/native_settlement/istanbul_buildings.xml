@@ -8,9 +8,18 @@
                         <materialvariant index="1"/>
 					</assetreference>
 			    </data>
-                
-
-
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\market\oriental_house</file>
+                        <materialvariant index="1"/>
+					</assetreference>
+			    </data>              
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\arabian\houses\arabian_house3_model</file>
+                        <materialvariant index="1"/>
+					</assetreference>
+			    </data>
 		</logic>
 	</component>
 	<anim>
