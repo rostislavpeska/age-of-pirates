@@ -34269,10 +34269,10 @@
         <target type="ProtoUnit">zpSPCNeptuneGalley</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">MercBarbaryCorsair</target>
+        <target type="ProtoUnit">deMercPandour</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">MercMameluke</target>
+        <target type="ProtoUnit">deMercZenata</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">MercGreatCannon</target>
@@ -34300,10 +34300,10 @@
         <target type="ProtoUnit">zpSPCNeptuneGalley</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">MercBarbaryCorsair</target>
+        <target type="ProtoUnit">deMercPandour</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">MercMameluke</target>
+        <target type="ProtoUnit">deMercZenata</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">MercGreatCannon</target>
@@ -34344,12 +34344,6 @@
       <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="NativeEmbassy" relativity="Absolute">
         <target type="Player">
         </target>
-      </effect>
-      <effect type="CommandRemove" proto="zpNatCorsair">
-        <target type="ProtoUnit">zpSPCHayreddin</target>
-      </effect>
-      <effect type="CommandAdd" proto="MercBarbaryCorsair" page="0" column="3">
-        <target type="ProtoUnit">zpSPCHayreddin</target>
       </effect>
     </effects>
   </tech>

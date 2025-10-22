@@ -3145,7 +3145,6 @@
     <obstructionradiusz>3.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <animfile>buildings\native_settlement\pirate_dock.xml</animfile>
-    <civflagoverride>objects\flags\spc_barbary</civflagoverride>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Wood</impacttype>
     <physicsinfo>dock</physicsinfo>
@@ -47407,7 +47406,6 @@
     <obstructionradiusz>3.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <animfile>buildings\native_settlement\pirate_dock.xml</animfile>
-    <civflagoverride>objects\flags\spc_barbary</civflagoverride>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Wood</impacttype>
     <physicsinfo>dock</physicsinfo>
@@ -67272,8 +67270,8 @@
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
-    <train row="0" page="0" column="0">MercBarbaryCorsair</train>
-    <train row="0" page="0" column="1">MercMameluke</train>
+    <train row="0" page="0" column="0">deMercPandour</train>
+    <train row="0" page="0" column="1">deMercZenata</train>
     <train row="0" page="0" column="2">MercGreatCannon</train>
     <tech row="0" page="11" column="0">zpSPCOttomanHeritage</tech>
     <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
@@ -68176,6 +68174,58 @@
       <damagebonus type="AbstractDock">0.200000</damagebonus>
       <damagebonus type="AbstractArtillery">0.500000</damagebonus>
     </protoaction>
+  </unit>
+  <unit id="20931" name="zpNativeUnitSultanateFlag">
+    <dbid>20931</dbid>
+    <displaynameid>300730</displaynameid>
+    <editornameid>303261</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>objects\spc\spc_flag\spc_flag.xml</animfile>
+    <civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+  </unit>
+
+
+
+  <!--MAPMODS-->
+
+  <unit name="zpSPCPirateDock">
+    <displaynameid>303262</displaynameid>
+    <civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>
+  </unit>
+  <unit name="zpSPCPirateDockB">
+    <displaynameid>303262</displaynameid>
+    <civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>
   </unit>
 
   
