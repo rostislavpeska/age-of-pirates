@@ -5,7 +5,7 @@
 	<component>
 		portuguese_church
 		<assetreference type="GrannyModel">
-			<file>buildings\native_settlement\sufi\spcblue_mosque2</file>
+			<file>buildings\native_settlement\arabian\ottoman_mosque</file>
 		</assetreference>
 		<decal>
 			<effecttype>bump</effecttype>

@@ -1,11 +1,32 @@
 <!-- converted from XMB to XML -->
 
 <animfile>
+	<definebone>bone_brazier</definebone>
+	<attachment>brazier_fire
+		<component>emiter
+			<assetreference type="popcornFx">
+				<file>fire\fire_torch_oil.pkfx</file>
+			</assetreference>
+		</component>
+		<anim>Idle
+			<component>emiter</component>
+		</anim>
+	</attachment>
 	<component>
 		ModelComp
-		<assetreference type="GrannyModel">
-			<file>buildings\dock\pirate_dock</file>
-		</assetreference>
+		<logic type="Tech">
+			<none>
+				<assetreference type="GrannyModel">
+					<file>buildings\dock\pirate_dock</file>
+				</assetreference>
+			</none>
+			<zpcorsairdocksupdateshadow>
+				<assetreference type="GrannyModel">
+					<file>buildings\african_civs\port\port_age4</file>
+				</assetreference>
+				<attach a="brazier_fire" frombone="ATTACHPOINT" tobone="bone_brazier" syncanims="0"></attach>
+			</zpcorsairdocksupdateshadow>
+		</logic>
 		<decal><effecttype>default</effecttype><selectedtexture>shadows_selections\selection_square_128x128</selectedtexture><width>11.00</width><height>8.00</height></decal>
 	</component>
 	<anim>

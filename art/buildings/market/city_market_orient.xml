@@ -2,6 +2,18 @@
 
 <animfile>
     <definebone>Bone_main</definebone>
+    <attachment>
+		market
+		<component>MARKET
+			<assetreference type="GrannyModel">
+				<file>buildings\bridge\bridge_attachment</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>MARKET</component>
+		</anim>
+	</attachment>
 	<component>
 		ModelComp
 		<logic type="BuildingCompletion">
@@ -48,6 +60,7 @@
 				<assetreference type="GrannyModel">
 					<file>buildings\market\oriental_market_Model</file>
 				</assetreference>
+				<attach a="market" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"/>
 				<decal>
                     <effecttype>bump</effecttype>
                     <selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>

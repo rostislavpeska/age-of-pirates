@@ -401,6 +401,13 @@
   <zpconsulatecarolean>
     <ability>deCaroleanCharge<rof>90</rof><usebigabilitybutton>true</usebigabilitybutton><donotforcestop>true</donotforcestop><castonself>true</castonself><activetimecooldown>true</activetimecooldown></ability>
   </zpconsulatecarolean>
+  <zpspchayreddin>
+    <ability>dePowerFalconDive<rof>20</rof></ability>
+    <ability>deUnitHealthRegen<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspchayreddin>
+  <zpspcistanbulmosque>
+    <ability>zpPowerInformersFrench<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcistanbulmosque>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>

@@ -13256,6 +13256,12 @@
       <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpSPChatmanPetro</target>
       </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCHayreddin</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCHayreddin</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpHeroImperializeShadow" type="Normal">
@@ -13341,6 +13347,12 @@
       </effect>
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpSPChatmanPetro</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCHayreddin</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCHayreddin</target>
       </effect>
     </effects>
   </tech>
@@ -15392,6 +15404,9 @@
     <rollovertextid>301469</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpCorsairEmbassyWagon" relativity="Absolute">
         <target type="Player">
@@ -15640,7 +15655,7 @@
     <icon>resources\images\icons\techs\corsair_fleet_big.png</icon>
     <rollovertextid>301496</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
-    <flag>CheckLandHCGatherPoint</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
     <prereqs>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
@@ -31189,18 +31204,21 @@
         <target type="ProtoUnit">zpNatPirate</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatCorsair</target>
+        <target type="ProtoUnit">zpPirateCetbang</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">Privateer</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpNatGambling</effect>
       <effect type="TechStatus" status="obtainable">zpNatThePiracy</effect>
-      <effect type="TechStatus" status="obtainable">DEUnknownPirateBooty</effect>
-      <effect type="TechStatus" status="obtainable">DEUnknownSahelianKingdoms</effect>
+      <effect type="TechStatus" status="obtainable">zpNatGunpowderBarrels</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBlackSails</effect>
       <effect type="TechStatus" status="obtainable">zpNatDisciplinedPirate</effect>
       <effect type="TechStatus" status="obtainable">zpNatHonoredPirate</effect>
       <effect type="CommandAdd" tech="zpNatDisciplinedPirate" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpPirateCetbang" page="0" column="82">
         <target type="ProtoUnit">NativeEmbassy</target>
       </effect>
       <effect type="CommandAdd" tech="zpNatHonoredPirate" page="1" column="25">
@@ -31212,10 +31230,10 @@
       <effect type="CommandAdd" tech="zpNatThePiracy" page="1" column="25">
         <target type="ProtoUnit">NativeEmbassy</target>
       </effect>
-      <effect type="CommandAdd" tech="DEUnknownPirateBooty" page="1" column="25">
+      <effect type="CommandAdd" tech="zpNatGunpowderBarrels" page="1" column="25">
         <target type="ProtoUnit">NativeEmbassy</target>
       </effect>
-      <effect type="CommandAdd" tech="DEUnknownSahelianKingdoms" page="1" column="25">
+      <effect type="CommandAdd" tech="zpNatBlackSails" page="1" column="25">
         <target type="ProtoUnit">NativeEmbassy</target>
       </effect>
       <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
@@ -32617,6 +32635,8 @@
       <effect mergemode="add" type="TechStatus" status="unobtainable">zpUnknownAllianceJesuit</effect>
       <effect mergemode="add" type="TechStatus" status="unobtainable">zpUnknownAllianceMaltese</effect>
       <effect mergemode="add" type="TechStatus" status="unobtainable">zpUnknownAllianceTeutonic</effect>
+      <effect mergemode="add" type="TechStatus" status="unobtainable">zpUnknownAllianceCorsairs</effect>
+      <effect mergemode="add" type="TechStatus" status="unobtainable">zpUnknownAllianceCossacks</effect>
     </effects>
   </tech>
   <tech name="RescuedUnitsNerfShadow">
@@ -33918,6 +33938,277 @@
       </effect>
       <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatMercCossackDragoon</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceCorsairs" type="Normal">
+    <dbid>41293</dbid>
+    <displaynameid>303222</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\barbary_corsairs.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="NatPirates" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCorsair</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deREVBarbaryMarksman</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpCorsairGalley</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatCorsairEmbassy</effect>
+      <effect type="TechStatus" status="obtainable">DEUnknownPirateBooty</effect>
+      <effect type="TechStatus" status="obtainable">DEUnknownSahelianKingdoms</effect>
+      <effect type="TechStatus" status="obtainable">zpNatDisciplinedPirate</effect>
+      <effect type="TechStatus" status="obtainable">zpNatHonoredPirate</effect>
+      <effect type="TechStatus" status="obtainable">zpNatCorsairHeroFleet</effect>
+      <effect type="CommandAdd" proto="deREVBarbaryMarksman" page="0" column="82">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpCorsairGalley" page="0" column="15">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpCorsairGalley" page="0" column="15">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpCorsairGalley" page="0" column="15">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatDisciplinedPirate" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatHonoredPirate" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="DEUnknownPirateBooty" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="DEUnknownSahelianKingdoms" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatCorsairEmbassy" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatCorsairHeroFleet" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatCorsairHeroFleet" type="Normal">
+    <dbid>41294</dbid>
+    <displaynameid>303220</displaynameid>
+    <cost resourcetype="Wood">500.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\corsair_hero_fleet.png</icon>
+    <rollovertextid>303221</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data2" amount="1.00" amount2="1.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCPirateGalleass" unittype2="zpSPCHayreddin" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpCorsairDocksUpdateShadow" type ="Normal">
+		<dbid>41295</dbid>
+		<status>UNOBTAINABLE</status>
+		<flag>Shadow</flag>
+		<effects>
+			<effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCPirateDock" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCPirateDockB" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
+		</effects>
+	</tech>
+  <tech name="zpUnknownAllianceCorsairsEnabler" type="Normal">
+    <dbid>41296</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceCorsairs</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceCorsairs" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceCossacks" type="Normal">
+    <dbid>41297</dbid>
+    <displaynameid>303223</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <researchpoints>5.0000</researchpoints>
+    <icon>resources\images\icons\techs\aliance_cossacks.png</icon>
+    <flag>Shadow</flag>
+    <effects>
+      <effect civ="zpCossacks" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCossackRider</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCossackDragoon</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatCossackGoldenFields</effect>
+      <effect type="TechStatus" status="obtainable">zpNatCossackRada</effect>
+      <effect type="TechStatus" status="obtainable">zpNatCossackFortification</effect>
+      <effect type="TechStatus" status="obtainable">zpNatVeteranCossack</effect>
+      <effect type="TechStatus" status="obtainable">zpNatGuardCossack</effect>
+      <effect type="TechStatus" status="obtainable">zpNatCossackRidingTradition</effect>
+      <effect type="CommandAdd" tech="zpNatVeteranCossack" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatGuardCossack" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatCossackGoldenFields" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatCossackRada" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatCossackFortification" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatCossackRidingTradition" page="1" column="25">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnknownAllianceCossacksEnabler" type="Normal">
+    <dbid>41298</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpUnknownAllianceCossacks</effect>
+      <effect type="CommandAdd" tech="zpUnknownAllianceCossacks" page="1" column="1">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">NativeEmbassy</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpCorsairEmbassyShadow" type="Normal">
+    <dbid>41299</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpAmericanEmbassy</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConRegular</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConUSCavalry</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairArmy</effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairMarksmen</effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairExplorationFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairBrigade</effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairExpeditionaryFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpCorsairImproveMarksmen</effect>
+    </effects>
+  </tech>
+  <tech name="zpUnlockIstanbul" type="Normal">
+    <dbid>41300</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect civ="SPCSufi" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpCorsairGalley</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCPirateGalleass</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpUnlockIstanbul</effect>
+    </effects>
+  </tech>
+  <tech name="zpLockIstanbul" type="Normal">
+    <dbid>41301</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect civ="SPCSufi" type="Data" amount="0.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpCorsairGalley</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCPirateGalleass</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpLockIstanbul</effect>
+    </effects>
+  </tech>
+  <tech name="zpEnableCorsairCityTechs" type="Normal">
+    <dbid>41302</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpHommockBeds</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPirateFleet</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPirateSultana1</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPirateSultana2</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPiratePorts</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCSendHizir</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
+      <effect type="Data" amount="1.00" subtype="AllowedAge" relativity="Absolute">
+        <target type="techWithFlag">zpSPCPirateGalleass</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCSendHizir" type="Normal">
+    <dbid>50024</dbid>
+    <displaynameid>303231</displaynameid>
+    <cost resourcetype="Gold">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\corsairs_hizir.png</icon>
+    <rollovertextid>303232</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status ="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCHayreddin" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>

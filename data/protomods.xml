@@ -2187,6 +2187,8 @@
     <train row="0" page="0" column="130">zpNatHussiteKnight</train>
     <train row="0" page="0" column="131">zpNatHanseaticLegion</train>
     <train row="0" page="0" column="132">zpNatTeutonicKnight</train>
+    <train row="0" page="0" column="133">zpNatCossackRider</train>
+    <train row="0" page="0" column="134">zpNatCossackDragoon</train>
   </unit>
   <unit name="NativeTownObstruction">
     <flag>Invulnerable</flag>
@@ -3139,6 +3141,7 @@
     <obstructionradiusz>3.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <animfile>buildings\native_settlement\pirate_dock.xml</animfile>
+    <civflagoverride>objects\flags\barbary_pirate</civflagoverride>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Wood</impacttype>
     <physicsinfo>dock</physicsinfo>
@@ -3181,10 +3184,13 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
     <train row="0" page="0" column="0">zpPrivateerProxy</train>
+    <train row="0" page="0" column="1">zpCorsairGalley</train>
+    <train row="0" page="0" column="2">zpSPCPirateGalleass</train>
     <tech row="0" page="0" column="2">zpSPCPirateRandomShip1</tech>
     <tech row="0" page="1" column="1">zpSPCPirateFleet</tech>
     <tech row="0" page="1" column="2">zpSPCPiratePorts</tech>
     <tech row="0" page="1" column="0">zpSPCPirateForeignAllies</tech>
+    <tech row="0" page="1" column="0">zpSPCSendHizir</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -6675,7 +6681,6 @@
     <dbid>20395</dbid>
     <displaynameid>300253</displaynameid>
     <editornameid>300254</editornameid>
-    <subciv>SPCSufi</subciv>
     <obstructionradiusx>7.0000</obstructionradiusx>
     <obstructionradiusz>4.5000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
@@ -11068,13 +11073,12 @@
     <dbid>20438</dbid>
     <displaynameid>300439</displaynameid>
     <editornameid>300440</editornameid>
-    <subciv>SPCSufi</subciv>
-    <obstructionradiusx>7.0000</obstructionradiusx>
-    <obstructionradiusz>4.5000</obstructionradiusz>
+    <obstructionradiusx>5.5000</obstructionradiusx>
+    <obstructionradiusz>5.5000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>buildings\church\blue_mosque.xml</animfile>
-    <icon>resources\art\buildings\wonders\taj_mahal\taj_mahal_icon.png</icon>
+    <icon>resources\art\buildings\native_settlement\native_sufi_site_icon_portrait.png</icon>
     <portraiticon>resources\art\buildings\native_settlement\native_sufi_site_icon_portrait.png</portraiticon>
     <initialhitpoints>1560.0000</initialhitpoints>
     <maxhitpoints>1560.0000</maxhitpoints>
@@ -11084,19 +11088,32 @@
     <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
     </minimapcolor>
     <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
     <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWalls</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
     <unittype>LogicalTypeVillagersAttack</unittype>
     <unittype>LogicalTypeHandUnitsAttack</unittype>
     <unittype>LogicalTypeShipsAndBuildings</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
     <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Economic</unittype>
     <unittype>BuildingClass</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>NativeBuilding</unittype>
+    <unittype>MilitaryBuilding</unittype>
     <unittype>Building</unittype>
-    <flag>FlattenGround</flag>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <train row="0" page="0" column="0">zpNatQizilbashProxy</train>
+    <train row="0" page="0" column="1">zpNatGatlingCamel</train>
+    <tech row="0" page="1" column="1">zpNatDisciplinedSufiClone</tech>
+    <tech row="0" page="1" column="1">zpNatHonoredSufiClone</tech>
+    <tech row="0" page="2" column="0">zpNatSufiFastingClone</tech>
+    <tech row="0" page="2" column="1">zpNatSufiPilgramageClone</tech>
+    <tech row="0" page="2" column="2">zpNatSufiShariaClone</tech>
     <flag>Doppled</flag>
     <flag>PaintTextureWhenPlacing</flag>
     <flag>InvulnerableIfGaia</flag>
@@ -11111,10 +11128,12 @@
     <flag>RMCanRotate</flag>
     <flag>HasGatherPoint</flag>
     <flag>VisibleUnderFogIfGaia</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="8">CancelAllQueued</command>
   </unit>
   <unit id="20439" name="zpNatGatlingCamel">
     <dbid>20439</dbid>
@@ -11550,7 +11569,7 @@
   </unit>
   <unit id="20101" name="zpNativePropsJewishTower">
     <dbid>20101</dbid>
-    <displaynameid>300462</displaynameid>
+    <displaynameid>300463</displaynameid>
     <editornameid>300463</editornameid>
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
@@ -11569,6 +11588,7 @@
     <flag>NoUnitAI</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NotSelectable</flag>
     <flag>TieToWaterSurface</flag>
     <flag>NonCollideable</flag>
     <flag>NonAutoFormedUnit</flag>
@@ -30969,10 +30989,10 @@
     <buildlimit>2</buildlimit>
     <bounty>80.0000</bounty>
     <buildbounty>80.0000</buildbounty>
-    <cost resourcetype="Wood">400.0000</cost>
-    <cost resourcetype="Gold">400.0000</cost>
+    <cost resourcetype="Gold">500.0000</cost>
+    <cost resourcetype="Wood">300.0000</cost>
     <maxcontained>50</maxcontained>
-    <allowedage>1</allowedage>
+    <allowedage>2</allowedage>
     <armor type="Ranged" value="0.7500">
     </armor>
     <civflagoverride>objects\flags\barbary_pirate</civflagoverride>
@@ -47371,6 +47391,7 @@
     <obstructionradiusz>3.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <animfile>buildings\native_settlement\pirate_dock.xml</animfile>
+    <civflagoverride>objects\flags\barbary_pirate</civflagoverride>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Wood</impacttype>
     <physicsinfo>dock</physicsinfo>
@@ -47413,10 +47434,13 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
     <train row="0" page="0" column="0">zpPrivateerProxy</train>
+    <train row="0" page="0" column="1">zpCorsairGalley</train>
+    <train row="0" page="0" column="2">zpSPCPirateGalleass</train>
     <tech row="0" page="0" column="2">zpSPCPirateRandomShip2</tech>
     <tech row="0" page="1" column="1">zpSPCPirateFleet</tech>
     <tech row="0" page="1" column="2">zpSPCPiratePorts</tech>
     <tech row="0" page="1" column="0">zpSPCPirateForeignAllies</tech>
+    <tech row="0" page="1" column="0">zpSPCSendHizir</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -67018,6 +67042,249 @@
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
   </unit>
+  <unit id="20918" name="zpSPCHayreddin">
+    <dbid>20918</dbid>
+    <displaynameid>80616</displaynameid>
+    <editornameid>303219</editornameid>
+    <obstructionradiusx>0.4900</obstructionradiusx>
+    <obstructionradiusz>0.4900</obstructionradiusz>
+    <formationcategory>Body</formationcategory>
+    <maxvelocity>5.0000</maxvelocity>
+    <maxrunvelocity>7.0000</maxrunvelocity>
+    <movementtype>land</movementtype>
+    <turnrate>18.0000</turnrate>
+    <animfile>units\spc\hayreddin\hayreddin.xml</animfile>
+    <impacttype>Flesh</impacttype>
+    <icon>resources\art\units\spc\hayreddin_barbarossa\hayreddin barbarossa_icon.png</icon>
+    <portraiticon>resources\art\units\spc\hayreddin_barbarossa\hayreddin barbarossa_portrait.png</portraiticon>
+    <rollovertextid>80618</rollovertextid>
+    <shortrollovertextid>80619</shortrollovertextid>
+    <initialhitpoints>900.0000</initialhitpoints>
+    <maxhitpoints>900.0000</maxhitpoints>
+    <los>24.0000</los>
+    <autoattackrange>16.0000</autoattackrange>
+    <unitaitype>RangedCombative</unitaitype>
+    <bounty>40.0000</bounty>
+    <allowedage>0</allowedage>
+    <armor type="Hand" value="0.4000">
+    </armor>
+    <unittype>LogicalTypeHealed</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeLandMilitary</unittype>
+    <unittype>LogicalTypeScout</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeGarrisonInShips</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>AbstractInfantry</unittype>
+    <unittype>Hero</unittype>
+    <unittype>AbstractArcher</unittype>
+    <unittype>Unit</unittype>
+    <unittype>Military</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>AbstractRangedInfantry</unittype>
+    <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractCavalryInfantry</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>ExcludeFromRansom</unittype>
+    <train row="0" page="0" column="0">TradingPost</train>
+    <train row="0" page="0" column="1">zpNatCorsair</train>
+    <train row="0" page="0" column="1">zpNatMarksman</train>
+    <train row="0" page="0" column="2">Dock</train>
+    <train row="0" page="0" column="2">YPDockAsian</train>
+    <train row="0" page="0" column="2">dePort</train>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>CorpseDecays</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ObscuredByUnits</flag>
+    <flag>KnockoutDeath</flag>
+    <flag>RotateInPlace</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>Tracked</flag>
+    <command page="10" column="1">Stop</command>
+    <command page="11" column="0">Abilities</command>
+    <command page="10" column="0">Garrison</command>
+    <tactics>barbarossa.tactics</tactics>
+    <protoaction>
+      <name>Build</name>
+      <rate type="TradingPost">3.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>BuildingAttack</name>
+      <damage>14.000000</damage>
+      <damagetype>Siege</damagetype>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>HandAttack</name>
+      <damage>14.000000</damage>
+      <damagetype>Hand</damagetype>
+      <rof>1.500000</rof>
+    </protoaction>
+    <protoaction>
+      <name>MusketAttack</name>
+      <damage>20.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+    </protoaction>
+    <protoaction>
+      <name>CrackshotAttack</name>
+      <damage>750.000000</damage>
+      <damagetype>Ranged</damagetype>
+      <maxrange>16.000000</maxrange>
+      <rof>3.000000</rof>
+      <damagebonus type="MercType2">0.010000</damagebonus>
+    </protoaction>
+  </unit>
+  <unit id="20919" name="zpIstanbulShips">
+    <dbid>20919</dbid>
+    <displaynameid>300730</displaynameid>
+    <editornameid>303224</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>units\naval\fishing_ship\igc_fishing_ship.xml</animfile>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>Building</unittype>
+    <flag>TieToWaterSurface</flag>
+    <flag>NotSelectable</flag>
+    <flag>Doppled</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>Immoveable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <tactics>venetianprops.tactics</tactics>
+  </unit>
+  <unit id="20920" name="zpSPCIstanbulMosque">
+    <dbid>20920</dbid>
+    <displaynameid>303233</displaynameid>
+    <editornameid>303235</editornameid>
+    <obstructionradiusx>5.5000</obstructionradiusx>
+    <obstructionradiusz>5.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\church\ottoman_mosque.xml</animfile>
+    <deadreplacement>BuildingRubble6x6</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\church\church_icon.png</icon>
+    <minimapicon>ui\minimap\religious_small</minimapicon>
+    <portraiticon>resources\art\buildings\church\church_portrait.png</portraiticon>
+    <rollovertextid>302308</rollovertextid>
+    <shortrollovertextid>302307</shortrollovertextid>
+    <initialhitpoints>3000.0000</initialhitpoints>
+    <maxhitpoints>3000.0000</maxhitpoints>
+    <los>12.0000</los>
+    <displayedrange>20.0000</displayedrange>
+    <buildpoints>40.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>160.0000</bounty>
+    <buildbounty>80.0000</buildbounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>1</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>AbstractChurch</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
+    <flag>AllowAutoGarrison</flag>
+    <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
+    <tech row="0" page="11" column="2">DESPCMercenaryBounties</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="10" column="5">Eject</command>
+    <command page="11" column="4">Abilities</command>
+    <tactics>parisbuilding.tactics</tactics>
+    <protoaction>
+      <name>Autogather</name>
+      <rate type="XP">3.000000</rate>
+    </protoaction>
+  </unit>
 
   
 
@@ -69176,7 +69443,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\test\prop_church.xml</animfile>
+    <animfile>buildings\church\ottoman_mosque.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>

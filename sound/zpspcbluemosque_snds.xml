@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<protounitsounddef>
+  <protounit name="zpSPCBlueMosque">
+    <soundtype name="Select">
+      <soundset name="UI_Building_Economic">
+      </soundset>
+    </soundtype>
+    <soundtype name="SelectSecondary">
+      <soundset name="UI_Select_Building_Wonder">
+      </soundset>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="BuildingDestruction">
+      </soundset>
+    </soundtype>
+  </protounit>
+</protounitsounddef>

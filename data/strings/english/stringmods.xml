@@ -462,7 +462,7 @@
       <string _locid="300460">ZP PROP Field</string>
       <string _locid="300461">Native Field</string>
       <string _locid="300462">Synagogogue</string>
-      <string _locid="300463">ZP Jewish Synagogogue Tower</string>
+      <string _locid="300463">ZP PROP Minatet</string>
       <string _locid="300464">ZP Tower Arabian</string>
       <string _locid="300465">Bedouin</string>
       <string _locid="300466">ZP SPC Sufi Villager B</string>
@@ -3215,7 +3215,23 @@
       <string _locid="303216">ZP PROP I Fort Corner</string>
       <string _locid="303217">ZP PROP I Fort Wall Small</string>
       <string _locid="303218">ZP PROP I Fort Wall Medium</string>
-
+      <string _locid="303219">ZP SPC Hayreddin</string>
+      <string _locid="303220">Corsair Hero Fleet</string>
+      <string _locid="303221">Ships Sultana flagship with Hayreddin Barbarossa on board.</string>
+      <string _locid="303222">Barbary Corsairs</string>
+      <string _locid="303223">Cossacks</string>
+      <string _locid="303224">ZP PROP Istanbul Ships</string>
+      <string _locid="303225">Bosporus Blockade</string>
+      <string _locid="303226">Trade route blockade &lt;color=1.0, 0.0, 0.0&gt;\n • Can be used only when you control settlements on both sides of the Bosporus.&lt;/color&gt;</string>
+      <string _locid="303227">Unblock Bosporus</string>
+      <string _locid="303228">Trade route activation &lt;color=1.0, 0.0, 0.0&gt;\n • Can be used only when you control settlements on both sides of the Bosporus.&lt;/color&gt;</string>
+      <string _locid="303229">Sultana</string>
+      <string _locid="303230">Spawns Sultana, Barbary Corsairs flagship.</string>
+      <string _locid="303231">Captain Hizir</string>
+      <string _locid="303232">Ships Captain Hizir, a legendary Corsair captain with special abilities.</string>
+      <string _locid="303233">Sultan's Mosque</string>
+      <string _locid="303234">A magnificent mosque built in the style of the Ottoman Empire.</string>
+      <string _locid="303235">ZP SPC Sultan's Mosque</string>
 
 
       <!-- ======================================== -->
