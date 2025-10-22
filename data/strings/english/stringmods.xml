@@ -3216,7 +3216,7 @@
       <string _locid="303217">ZP PROP I Fort Wall Small</string>
       <string _locid="303218">ZP PROP I Fort Wall Medium</string>
       <string _locid="303219">ZP SPC Hayreddin</string>
-      <string _locid="303220">Corsair Hero Fleet</string>
+      <string _locid="303220">Hizir's Legacy</string>
       <string _locid="303221">Ships Sultana flagship with Hayreddin Barbarossa on board.</string>
       <string _locid="303222">Barbary Corsairs</string>
       <string _locid="303223">Cossacks</string>
@@ -3236,6 +3236,28 @@
       <string _locid="303237">All Sultan's Mosques generate XP faster.</string>
       <string _locid="303238">Team Corsair Fleet</string>
       <string _locid="303239">Ships a Corsair Galley with a Great Bombard onboard. Allows the whole team to hire corsair galleys directly in dock.</string>
+      <string _locid="303240">Sultan's Guard</string>
+      <string _locid="303241">ZP NAT Sultan's Guard</string>
+      <string _locid="303242">ZP Socket Sultanate City State</string>
+      <string _locid="303243">Sultan's Palace</string>
+      <string _locid="303244">Disciplined Sultan's Guard</string>
+      <string _locid="303245">Honored Sultan's Guard</string>
+      <string _locid="303246">Improves all Sultanate units attack and hitpoints.</string>
+      <string _locid="303247">Disciplined Sultan's Guard</string>
+      <string _locid="303248">Honored Sultan's Guard</string>
+      <string _locid="303249">Legendary Sultan's Guard</string>
+      <string _locid="303250">Main Court Faction</string>
+      <string _locid="303251">Pick the most influential Sultan's court faction and unlock additional units and techs.</string>
+      <string _locid="303252">Phanar Faction</string>
+      <string _locid="303253">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nEvzone, Boyar \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nArmatoloi, Athos Monasteries, Byzantine Legacy, Greek Shipyards</string>
+      <string _locid="303254">Sufi Faction</string>
+      <string _locid="303255">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nQizilbash, Gatling Camel \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nPilgrimage, Fasting, Sharia, White Fort</string>
+      <string _locid="303256">Corsairs Faction</string>
+      <string _locid="303257">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nCorsair, Buccaneer \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nPirate Societies, Mercenary Drills, Corsair Emissary, Black Caesar's Legacy</string>
+      <string _locid="303258">Black Caesar's Legacy</string>
+      <string _locid="303259">Ships Black Ceasar's flagship - Neptune's Galley. Unlocks Neptune galley's training in the Pirate Dock. Also increases Corsair galley's build limit by 1.</string>
+      <string _locid="303260">ZP Merc Neptune's Galley</string>
+
 
 
       <!-- ======================================== -->

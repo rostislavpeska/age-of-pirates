@@ -163,7 +163,12 @@
   </zpconsulatecossackmazepa>
   <zpconsulatecossackpetro portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/cossack_petro.png">
   </zpconsulatecossackpetro>
-  
+  <zpconsulatesultanatephanar portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/elector_phanar.png"> 
+  </zpconsulatesultanatephanar>
+  <zpconsulatesultanatesufi portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/elector_sufi.png"> 
+  </zpconsulatesultanatesufi>
+  <zpconsulatesultanatecorsairs portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/elector_corsairs.png"> 
+  </zpconsulatesultanatecorsairs>
   <zpconsulaterevjacobine portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_jacobine.png">
   </zpconsulaterevjacobine>
   <zpconsulaterevlafayette portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_lafayette.png">
