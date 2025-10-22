@@ -1,13 +1,37 @@
 <material>
   <submaterial name="matA">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_mata_baseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matB">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_matb_baseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matC">
     <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="homecity\ottoman\ottoman_hagia_sofia\textures\ottoman_hagia_sofia_02_matA_BaseColor">
+      <texture name="BaseColor" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_mata_baseColor">
       </texture>
-      <texture name="Normals" override="homecity\ottoman\ottoman_hagia_sofia\textures\ottoman_hagia_sofia_02_matA_Normals">
+      <texture name="Normals" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_mata_Normals">
       </texture>
-      <texture name="Masks" override="homecity\ottoman\ottoman_hagia_sofia\textures\ottoman_hagia_sofia_02_matA_Masks">
+      <texture name="Masks" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_mata_Masks">
       </texture>
     </parameters>
   </submaterial>

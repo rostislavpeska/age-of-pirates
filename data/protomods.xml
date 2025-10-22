@@ -67203,11 +67203,11 @@
     <dbid>20920</dbid>
     <displaynameid>303233</displaynameid>
     <editornameid>303235</editornameid>
-    <obstructionradiusx>5.5000</obstructionradiusx>
-    <obstructionradiusz>5.5000</obstructionradiusz>
+    <obstructionradiusx>7.7000</obstructionradiusx>
+    <obstructionradiusz>8.7000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\church\ottoman_mosque.xml</animfile>
+    <animfile>buildings\church\ottoman_great_mosque.xml</animfile>
     <deadreplacement>BuildingRubble6x6</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>
@@ -69443,7 +69443,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\church\ottoman_mosque.xml</animfile>
+    <animfile>buildings\church\ottoman_great_mosque.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Stone</impacttype>
