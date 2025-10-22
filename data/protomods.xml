@@ -67522,8 +67522,8 @@
     <flag>UseSharedBuildLimit</flag>
     <flag>NotPlayerplaceable</flag>
   </unit>
-  <unit id="20586" name="zpSPCSocketSultanateCityState">
-    <dbid>20586</dbid>
+  <unit id="20923" name="zpSPCSocketSultanateCityState">
+    <dbid>20923</dbid>
     <displaynameid>303243</displaynameid>
     <editornameid>303242</editornameid>
     <subciv>zpSultanate</subciv>
@@ -67566,8 +67566,8 @@
     <tactics>socketcapture.tactics</tactics>
     <command page="1" column="0">deSocketBuild</command>
   </unit>
-  <unit id="20587" name="ZPNatEvzoneProxy">
-    <dbid>20587</dbid>
+  <unit id="20924" name="ZPNatEvzoneProxy">
+    <dbid>20924</dbid>
     <displaynameid>122102</displaynameid>
     <editornameid>122103</editornameid>
     <populationcount>0</populationcount>
@@ -67657,8 +67657,8 @@
     </sharedbuildlimitunittypes>
     <flag>UseSharedBuildLimit</flag>
   </unit>
-  <unit id="20588" name="ZPNatBoyarProxy">
-    <dbid>20588</dbid>
+  <unit id="20925" name="ZPNatBoyarProxy">
+    <dbid>20925</dbid>
     <displaynameid>122094</displaynameid>
     <editornameid>122095</editornameid>
     <populationcount>0</populationcount>
@@ -67743,8 +67743,8 @@
     </sharedbuildlimitunittypes>
     <flag>UseSharedBuildLimit</flag>
   </unit>
-  <unit id="20589" name="zpNatQizilbashSultanate">
-    <dbid>20589</dbid>
+  <unit id="20926" name="zpNatQizilbashSultanate">
+    <dbid>20926</dbid>
     <displaynameid>61096</displaynameid>
     <editornameid>300341</editornameid>
     <populationcount>0</populationcount>
@@ -67826,8 +67826,8 @@
     <flag>UseSharedBuildLimit</flag>
     <flag>NotPlayerplaceable</flag>
   </unit>
-  <unit id="20590" name="ZPNatGatlingCamelSultanate">
-    <dbid>20590</dbid>
+  <unit id="20927" name="ZPNatGatlingCamelSultanate">
+    <dbid>20927</dbid>
     <displaynameid>102559</displaynameid>
     <editornameid>300447</editornameid>
     <buildlimit>7</buildlimit>
@@ -67906,8 +67906,8 @@
     <flag>UseSharedBuildLimit</flag>
     <flag>NotPlayerplaceable</flag>
   </unit>
-  <unit id="20591" name="ZPNatCorsairSultanate">
-    <dbid>20591</dbid>
+  <unit id="20928" name="ZPNatCorsairSultanate">
+    <dbid>20928</dbid>
     <displaynameid>300323</displaynameid>
     <editornameid>300322</editornameid>
     <subciv>zpSultanate</subciv>
@@ -67979,8 +67979,8 @@
     <flag>UseSharedBuildLimit</flag>
     <flag>NotPlayerplaceable</flag>
   </unit>
-  <unit id="20592" name="ZPNatPirateSultanate">
-    <dbid>20592</dbid>
+  <unit id="20929" name="ZPNatPirateSultanate">
+    <dbid>20929</dbid>
     <displaynameid>35253</displaynameid>
     <editornameid>300025</editornameid>
     <subciv>zpSultanate</subciv>
@@ -68053,8 +68053,8 @@
     <flag>UseSharedBuildLimit</flag>
     <flag>NotPlayerplaceable</flag>
   </unit>
-  <unit id="20593" name="zpMercNeptuneGalley">
-    <dbid>20593</dbid>
+  <unit id="20930" name="zpMercNeptuneGalley">
+    <dbid>20930</dbid>
     <displaynameid>300045</displaynameid>
     <editornameid>303260</editornameid>
     <obstructionradiusx>2.9900</obstructionradiusx>
