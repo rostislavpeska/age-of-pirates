@@ -407,6 +407,7 @@
   </zpspchayreddin>
   <zpspcistanbulmosque>
     <ability>zpPowerInformersFrench<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+    <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
   </zpspcistanbulmosque>
 
   <zpwokoudiver>

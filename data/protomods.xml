@@ -3141,7 +3141,7 @@
     <obstructionradiusz>3.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <animfile>buildings\native_settlement\pirate_dock.xml</animfile>
-    <civflagoverride>objects\flags\barbary_pirate</civflagoverride>
+    <civflagoverride>objects\flags\spc_barbary</civflagoverride>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Wood</impacttype>
     <physicsinfo>dock</physicsinfo>
@@ -3188,6 +3188,7 @@
     <train row="0" page="0" column="2">zpSPCPirateGalleass</train>
     <tech row="0" page="0" column="2">zpSPCPirateRandomShip1</tech>
     <tech row="0" page="1" column="1">zpSPCPirateFleet</tech>
+    <tech row="0" page="1" column="1">zpSPCTeamCorsairFleet</tech>
     <tech row="0" page="1" column="2">zpSPCPiratePorts</tech>
     <tech row="0" page="1" column="0">zpSPCPirateForeignAllies</tech>
     <tech row="0" page="1" column="0">zpSPCSendHizir</tech>
@@ -31485,7 +31486,7 @@
     <civflagoverride>objects\flags\spc_barbary</civflagoverride>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\units\naval\galley\galley_icon_64x64.png</icon>
+    <icon>resources\art\units\naval\spc\corsair_galley_icon.png</icon>
     <portraiticon>resources\art\units\naval\spc\corsair_galley_portrait.png</portraiticon>
     <rollovertextid>27711</rollovertextid>
     <shortrollovertextid>27710</shortrollovertextid>
@@ -47391,7 +47392,7 @@
     <obstructionradiusz>3.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <animfile>buildings\native_settlement\pirate_dock.xml</animfile>
-    <civflagoverride>objects\flags\barbary_pirate</civflagoverride>
+    <civflagoverride>objects\flags\spc_barbary</civflagoverride>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Wood</impacttype>
     <physicsinfo>dock</physicsinfo>
@@ -47438,6 +47439,7 @@
     <train row="0" page="0" column="2">zpSPCPirateGalleass</train>
     <tech row="0" page="0" column="2">zpSPCPirateRandomShip2</tech>
     <tech row="0" page="1" column="1">zpSPCPirateFleet</tech>
+    <tech row="0" page="1" column="1">zpSPCTeamCorsairFleet</tech>
     <tech row="0" page="1" column="2">zpSPCPiratePorts</tech>
     <tech row="0" page="1" column="0">zpSPCPirateForeignAllies</tech>
     <tech row="0" page="1" column="0">zpSPCSendHizir</tech>
@@ -67095,11 +67097,11 @@
     <unittype>HasBountyValue</unittype>
     <unittype>ExcludeFromRansom</unittype>
     <train row="0" page="0" column="0">TradingPost</train>
-    <train row="0" page="0" column="1">zpNatCorsair</train>
-    <train row="0" page="0" column="1">zpNatMarksman</train>
-    <train row="0" page="0" column="2">Dock</train>
-    <train row="0" page="0" column="2">YPDockAsian</train>
-    <train row="0" page="0" column="2">dePort</train>
+    <train row="0" page="0" column="2">zpNatCorsair</train>
+    <train row="0" page="0" column="3">zpNatMarksman</train>
+    <train row="0" page="0" column="1">Dock</train>
+    <train row="0" page="0" column="1">YPDockAsian</train>
+    <train row="0" page="0" column="1">dePort</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -67255,6 +67257,10 @@
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
+    <train row="0" page="0" column="0">MercBarbaryCorsair</train>
+    <train row="0" page="0" column="1">MercMameluke</train>
+    <train row="0" page="0" column="2">MercGreatCannon</train>
+    <tech row="0" page="11" column="0">zpSPCOttomanHeritage</tech>
     <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
     <tech row="0" page="11" column="2">DESPCMercenaryBounties</tech>
     <flag>CollidesWithProjectiles</flag>

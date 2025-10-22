@@ -34152,6 +34152,15 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCPirateGalleass</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercBarbaryCorsair</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercMameluke</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercGreatCannon</target>
+      </effect>
       <effect type="TechStatus" status="unobtainable">zpUnlockIstanbul</effect>
     </effects>
   </tech>
@@ -34171,29 +34180,61 @@
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCPirateGalleass</target>
       </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercBarbaryCorsair</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercMameluke</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">MercGreatCannon</target>
+      </effect>
       <effect type="TechStatus" status="unobtainable">zpLockIstanbul</effect>
     </effects>
   </tech>
-  <tech name="zpEnableCorsairCityTechs" type="Normal">
+  <tech name="zpEnableIstanbulCityTechs" type="Normal">
     <dbid>41302</dbid>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
       <effect type="TechStatus" status="obtainable">zpHommockBeds</effect>
-      <effect type="TechStatus" status="obtainable">zpSPCPirateFleet</effect>
-      <effect type="TechStatus" status="obtainable">zpSPCPirateSultana1</effect>
-      <effect type="TechStatus" status="obtainable">zpSPCPirateSultana2</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCTeamCorsairFleet</effect>
       <effect type="TechStatus" status="obtainable">zpSPCPiratePorts</effect>
       <effect type="TechStatus" status="obtainable">zpSPCSendHizir</effect>
       <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
       <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCOttomanHeritage</effect>
       <effect type="Data" amount="1.00" subtype="AllowedAge" relativity="Absolute">
         <target type="techWithFlag">zpSPCPirateGalleass</target>
+      </effect>
+      <effect type="CommandRemove" command="FourOfAKind">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="NativeEmbassy" relativity="Absolute">
+        <target type="ProtoUnit">deIconEuropeanEmbassy</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deEmbassyTravois" relativity="Absolute">
+        <target type="ProtoUnit">deIconEuropeanEmbassyTravois</target>
+      </effect>
+      <effect type="SetName" proto="NativeEmbassy" culture="none" newname="124945">
+      </effect>
+      <effect type="SetName" proto="deEmbassyTravois" culture="none" newname="80597" newrollover="103345" newshortrollover="103344">
+      </effect>
+      <effect type="TechStatus" status="active">deMapIsEuropean</effect>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="NativeEmbassy" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatCorsair">
+        <target type="ProtoUnit">zpSPCHayreddin</target>
+      </effect>
+      <effect type="CommandAdd" proto="MercBarbaryCorsair" page="0" column="3">
+        <target type="ProtoUnit">zpSPCHayreddin</target>
       </effect>
     </effects>
   </tech>
   <tech name="zpSPCSendHizir" type="Normal">
-    <dbid>50024</dbid>
+    <dbid>41303</dbid>
     <displaynameid>303231</displaynameid>
     <cost resourcetype="Gold">300.0000</cost>
     <researchpoints>10.0000</researchpoints>
@@ -34209,6 +34250,59 @@
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCHayreddin" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCOttomanHeritage" type="Normal">
+    <dbid>41304</dbid>
+    <displaynameid>303236</displaynameid>
+    <cost resourcetype="Food">100.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <cost resourcetype="Wood">100.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\historical_maps\ottoman_heritage.png</icon>
+    <rollovertextid>303237</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCIstanbulMosque</target>
+      </effect>
+      <effect type="TextOutputTechName">123070</effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCTeamCorsairFleet" type="Normal">
+    <dbid>41305</dbid>
+    <displaynameid>303238</displaynameid>
+    <cost resourcetype="Gold">1750.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\corsair_fleet_team.png</icon>
+    <rollovertextid>303239</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>TeamTech</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpCorsairGalley</target>
+      </effect>
+      <effect type="Data2" amount="1.00" amount2="1.00" subtype="FreeHomeCityUnitShipped" unittype="zpCorsairGalley" unittype2="ypConsulateGreatBombard" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="CommandAdd" proto="zpCorsairGalley" page="0" column="15">
+        <target type="ProtoUnit">Dock</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpCorsairGalley" page="0" column="15">
+        <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpCorsairGalley" page="0" column="15">
+        <target type="ProtoUnit">dePort</target>
       </effect>
     </effects>
   </tech>
