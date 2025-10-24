@@ -23,6 +23,7 @@
 			<zpcorsairdocksupdateshadow>
 				<assetreference type="GrannyModel">
 					<file>buildings\african_civs\port\port_age4</file>
+					<materialvariant index="1"/>
 				</assetreference>
 				<attach a="brazier_fire" frombone="ATTACHPOINT" tobone="bone_brazier" syncanims="0"></attach>
 			</zpcorsairdocksupdateshadow>

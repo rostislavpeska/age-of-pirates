@@ -66883,6 +66883,7 @@
     <flag>FlattenGround</flag>
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
+    <flag>NotSelectable</flag>
   </unit>
   <unit id="20915" name="zpIndianFortWallSmallProp">
     <dbid>20915</dbid>
@@ -66940,6 +66941,7 @@
     <flag>FlattenGround</flag>
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
+    <flag>NotSelectable</flag>
   </unit>
   <unit id="20916" name="zpIndianFortWallMediumProp">
     <dbid>20916</dbid>
@@ -66997,6 +66999,7 @@
     <flag>FlattenGround</flag>
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
+    <flag>NotSelectable</flag>
   </unit>
   <unit id="20917" name="zpIndianFortCornerProp">
     <dbid>20917</dbid>
@@ -67056,6 +67059,7 @@
     <flag>wallBuild</flag>
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
+    <flag>NotSelectable</flag>
   </unit>
   <unit id="20918" name="zpSPCHayreddin">
     <dbid>20918</dbid>
@@ -68214,6 +68218,42 @@
     <flag>Invulnerable</flag>
     <flag>InvulnerableIfGaia</flag>
   </unit>
+  <unit id="20932" name="zpPropOttomanMarketStall">
+    <dbid>20932</dbid>
+    <displaynameid>303263</displaynameid>
+    <obstructionradiusx>0.2000</obstructionradiusx>
+    <obstructionradiusz>0.2000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>buildings\native_settlement\arabian\ottoman_stall.xml</animfile>
+    <physicsinfo>dude</physicsinfo>
+    <initialhitpoints>1315.0000</initialhitpoints>
+    <maxhitpoints>1315.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+  </unit>
 
 
 
@@ -68225,6 +68265,9 @@
   </unit>
   <unit name="zpSPCPirateDockB">
     <displaynameid>303262</displaynameid>
+    <civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>
+  </unit>
+  <unit name="zpNativeHousePirateCity">
     <civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>
   </unit>
 
