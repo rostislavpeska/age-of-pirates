@@ -98,6 +98,7 @@ void main(void)
 	rmDefineClass("center");
 	rmDefineClass("tradeIslands");
 	rmDefineClass("classPlateau");
+	rmDefineClass("classBridge");
 	int classGreatLake=rmDefineClass("great lake");
 	int classDeepWater=rmDefineClass("deep lake");
 	int classStartingResource = rmDefineClass("startingResource");
@@ -144,7 +145,7 @@ void main(void)
 	// int fishVsFishID=rmCreateTypeDistanceConstraint("fish v fish", "fish", 18.0);
 	
 	int forestObjConstraint=rmCreateTypeDistanceConstraint("forest obj", "all", 6.0);
-	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 19.0);
+	int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 15.0);
 	int avoidResource=rmCreateTypeDistanceConstraint("resource avoid resource", "resource", 20.0);
 	int avoidCoin=rmCreateTypeDistanceConstraint("avoid coin", "Mine", 30.0);
 	int shortAvoidCoin=rmCreateTypeDistanceConstraint("short avoid coin", "gold", 10.0);
@@ -201,6 +202,8 @@ void main(void)
 	int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true, 3.5);
 	int avoidDeepWater=rmCreateClassDistanceConstraint("stuff avoids deep water", classDeepWater, 1.0);
 	int avoidSocket=rmCreateTypeDistanceConstraint("avoid socket", "SocketTradeRoute", 10.0);
+	int avoidSocketMedium=rmCreateTypeDistanceConstraint("avoid medium socket", "Socket", 25.0);
+	int avoidSocketMediumLong=rmCreateTypeDistanceConstraint("avoid socket medium long", "Socket", 35.0);
    	int avoidSocketLong=rmCreateTypeDistanceConstraint("avoid socket long", "Socket", 50.0);
     int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 30);
 	int flagVsVenice1 = rmCreateTypeDistanceConstraint("flag avoid venice 1", "zpNativeWaterSpawnFlag1", 40.0);
@@ -213,7 +216,7 @@ void main(void)
 	int avoidcherokee=rmCreateTypeDistanceConstraint("stay away from cherokee", "SocketCherokee", 70.0);
 	int avoidscientists=rmCreateTypeDistanceConstraint("stay away from scientists", "zpSocketScientists", 45.0);
 	int avoidJewish=rmCreateTypeDistanceConstraint("stay away from Jewish", "zpSPCSocketWesternVillage", 25.0);
-	int avoidTownCenterFar=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 40.0);
+	int avoidTownCenterFar=rmCreateTypeDistanceConstraint("avoid Town Center Far", "townCenter", 35.0);
 	int avoidTradeSocket=rmCreateTypeDistanceConstraint("stay away from Trade Socket", "SocketTradeRoute", 40.0);
 	int avoidTradeSocketShort=rmCreateTypeDistanceConstraint("stay away from Trade Socket Short", "SocketTradeRoute", 25.0);
 	int avoidTradeRouteSocketMin = rmCreateTypeDistanceConstraint("trade route socket min", "SocketTradeRoute", 25.0);
@@ -224,6 +227,7 @@ void main(void)
 	int avoidTownCenterShort=rmCreateTypeDistanceConstraint("avoid Town Center Short", "townCenter", 6.0);
 
 	int avoidPlateauShort = rmCreateClassDistanceConstraint("avoid patch 1", rmClassID("classPlateau"), 1.0);
+	int avoidBridgeShort = rmCreateClassDistanceConstraint("avoid bridge short", rmClassID("classBridge"), 1.0);
 	int avoidPlateau = rmCreateClassDistanceConstraint("avoid patch 2", rmClassID("classPlateau"), 7.0);
 	int avoidPathBlock = rmCreateTypeDistanceConstraint("avoid path block", "SPCPathBlock3", 7.0);
 
@@ -424,7 +428,7 @@ void main(void)
 	int inventorsBaseGrouping1 = rmCreateGrouping("inventorsBaseGrouping1", "City_State_Inventors_01");
     rmSetGroupingMinDistance(inventorsBaseGrouping1, 0.00);
     rmSetGroupingMaxDistance(inventorsBaseGrouping1, 0.00);
-	rmAddGroupingToClass(inventorsBaseGrouping1, rmClassID("classPlateau"));
+	//rmAddGroupingToClass(inventorsBaseGrouping1, rmClassID("classPlateau"));
 
 	int factoryInstanceID1 = rmPlaceGroupingInstanceAtLoc(inventorsBaseGrouping1, rmXMetersToFraction(xsVectorGetX(harbourLoc1))-rmXTilesToFraction(13), rmZMetersToFraction(xsVectorGetZ(harbourLoc1))+rmZTilesToFraction(4), 0);
 
@@ -432,7 +436,7 @@ void main(void)
 	int inventorsBaseGrouping2 = rmCreateGrouping("inventorsBaseGrouping2", "City_State_Inventors_02");
     rmSetGroupingMinDistance(inventorsBaseGrouping2, 0.00);
     rmSetGroupingMaxDistance(inventorsBaseGrouping2, 0.00);
-	rmAddGroupingToClass(inventorsBaseGrouping2, rmClassID("classPlateau"));
+	//rmAddGroupingToClass(inventorsBaseGrouping2, rmClassID("classPlateau"));
 
 	int factoryInstanceID2 = rmPlaceGroupingInstanceAtLoc(inventorsBaseGrouping2, rmXMetersToFraction(xsVectorGetX(harbourLoc2))+rmXTilesToFraction(12), rmZMetersToFraction(xsVectorGetZ(harbourLoc2))+rmZTilesToFraction(3), 0);
 
@@ -536,12 +540,14 @@ void main(void)
     rmSetGroupingMinDistance(bridgeGrouping1, 0.00);
     rmSetGroupingMaxDistance(bridgeGrouping1, 0.00);
 	rmAddGroupingToClass(bridgeGrouping1, rmClassID("classPlateau"));
+	rmAddGroupingToClass(bridgeGrouping1, rmClassID("classBridge"));
 	rmPlaceGroupingAtLoc(bridgeGrouping1, 0, rmXMetersToFraction(xsVectorGetX(bridgeLoc1)-2), rmZMetersToFraction(xsVectorGetZ(bridgeLoc1)+2));
 
 	int bridgeGrouping2 = rmCreateGrouping("bridge2", "Bridge_universal_E");
     rmSetGroupingMinDistance(bridgeGrouping2, 0.00);
     rmSetGroupingMaxDistance(bridgeGrouping2, 0.00);
 	rmAddGroupingToClass(bridgeGrouping2, rmClassID("classPlateau"));
+	rmAddGroupingToClass(bridgeGrouping2, rmClassID("classBridge"));
 	rmPlaceGroupingAtLoc(bridgeGrouping2, 0, rmXMetersToFraction(xsVectorGetX(bridgeLoc2)+4), rmZMetersToFraction(xsVectorGetZ(bridgeLoc2)+4));
 
 	// Shallows
@@ -647,6 +653,30 @@ void main(void)
 	rmSetAreaElevationPersistence(playerIslandNorthID, 0.2);
 	rmSetAreaElevationNoiseBias(playerIslandNorthID, 1);
 	rmBuildArea(playerIslandNorthID);
+
+	// Patches
+
+	for (i=0; < 60+cNumberNonGaiaPlayers*20){
+		int patchID = rmCreateArea("first patch"+i);
+		rmSetAreaWarnFailure(patchID, false);
+		rmSetAreaSize(patchID, rmAreaTilesToFraction(37), rmAreaTilesToFraction(42));
+		rmSetAreaMix(patchID, "nwt_grass_dirt");
+		rmSetAreaSmoothDistance(patchID, 1.0);
+		rmAddAreaConstraint(patchID, avoidBridgeShort);
+		rmAddAreaConstraint(patchID, avoidSocketMedium);
+		rmBuildArea(patchID); 
+	}
+
+	for (i=0; < 60+cNumberNonGaiaPlayers*20){
+		int patchID2 = rmCreateArea("second patch"+i);
+		rmSetAreaWarnFailure(patchID2, false);
+		rmSetAreaSize(patchID2, rmAreaTilesToFraction(37), rmAreaTilesToFraction(42));
+		rmSetAreaTerrainType(patchID2, "araucania\ground_grass1_ara_ozarks");
+		rmSetAreaSmoothDistance(patchID2, 1.0);
+		rmAddAreaConstraint(patchID2, avoidBridgeShort);
+		rmAddAreaConstraint(patchID2, avoidSocketMedium);
+		rmBuildArea(patchID2); 
+	}
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.50);
@@ -1099,9 +1129,10 @@ void main(void)
 		rmAddAreaConstraint(northForest, avoidImportantItem); // DAL added, to try and make sure natives got on the map w/o override.
 		rmAddAreaConstraint(northForest, shortAvoidCoin);
 		rmAddAreaConstraint(northForest, avoidTownCenterFar);
-		rmAddAreaConstraint(northForest, avoidSocketLong);
+		rmAddAreaConstraint(northForest, avoidSocketMediumLong);
 		rmAddAreaConstraint(northForest, avoidPlateau);
-		rmAddAreaConstraint(northForest, avoidWater20);
+		rmAddAreaConstraint(northForest, shortAvoidTradeRoute);
+		rmAddAreaConstraint(northForest, avoidWater10);
 		rmAddAreaConstraint(northForest, forestConstraint);   // DAL adeed, to keep forests away from each other.
 		rmAddAreaConstraint(northForest, Northward);			// DAL adeed, to keep forests in the north.
 		if(rmBuildArea(northForest)==false)
@@ -1136,9 +1167,10 @@ void main(void)
 		rmAddAreaConstraint(southForest, avoidImportantItem); // DAL added, to try and make sure natives got on the map w/o override.
 		rmAddAreaConstraint(southForest, shortAvoidCoin);
 		rmAddAreaConstraint(southForest, avoidTownCenterFar);
-		rmAddAreaConstraint(southForest, avoidSocketLong);
+		rmAddAreaConstraint(southForest, avoidSocketMediumLong);
 		rmAddAreaConstraint(southForest, avoidPlateau);
-		rmAddAreaConstraint(southForest, avoidWater20);
+		rmAddAreaConstraint(southForest, shortAvoidTradeRoute);
+		rmAddAreaConstraint(southForest, avoidWater10);
 		rmAddAreaConstraint(southForest, forestConstraint);
 		rmAddAreaConstraint(southForest, Southward);
 		if (rmBuildArea(southForest) == false)
