@@ -34528,9 +34528,9 @@
       <effect type="SetName" proto="zpNatJanissaryProxy" culture="none" newname="303249" reqtech="ImpLegendaryNativesShadow">
       </effect>
       
-      <effect type="TechStatus" status="active">DEVeteranPhanar</effect>
-      <effect type="TechStatus" status="active">zpNatDisciplinedSufiClone</effect>
-      <effect type="TechStatus" status="active">zpNatDisciplinedPirate</effect>
+      <effect type="TechStatus" status="active">DEGuardPhanar</effect>
+      <effect type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
+      <effect type="TechStatus" status="active">zpNatHonoredPirate</effect>
     </effects>
   </tech>
   <tech name="zpNativeTreatySultanate" type="Normal">
