@@ -7386,6 +7386,18 @@
       <rof>1.500000</rof>
     </protoaction>
   </unit>
+  <unit name="deNatMercQizilbash">
+    <sharedselectionunittypes>
+      <unittype>deNatQizilbash</unittype>
+      <unittype>zpNatQizilbashProxy</unittype>
+    </sharedselectionunittypes>
+  </unit>
+  <unit name="deNatQizilbash">
+    <sharedselectionunittypes>
+      <unittype>deNatMercQizilbash</unittype>
+      <unittype>zpNatQizilbashProxy</unittype>
+    </sharedselectionunittypes>
+  </unit>
   <unit id="20058" name="zpNatWarElephantProxy">
     <dbid>20058</dbid>
     <displaynameid>60815</displaynameid>
@@ -67308,7 +67320,7 @@
       <rate type="XP">3.000000</rate>
     </protoaction>
   </unit>
-  <unit id="20921" name="zpNatJanissary">
+  <unit id="20921" name="v">
     <dbid>20921</dbid>
     <displaynameid>303240</displaynameid>
     <editornameid>303241</editornameid>
@@ -67779,10 +67791,7 @@
     <allowedage>1</allowedage>
     <armor type="Ranged" value="0.2000">
     </armor>
-    <sharedselectionunittypes>
-      <unittype>zpNatQizilbashProxy</unittype>
-    </sharedselectionunittypes>
-    <sharedbuildlimitunit>deNatQizilbash</sharedbuildlimitunit>
+    <sharedbuildlimitunit>zpNatQizilbashProxy</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
       <unittype>zpNatQizilbashProxy</unittype>
       <unittype>zpNatQizilbashSultanate</unittype>

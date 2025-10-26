@@ -34324,6 +34324,16 @@
       <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
       <effect type="TechStatus" status="obtainable">zpSPCOttomanHeritage</effect>
       <effect type="TechStatus" status="active">zpSultanateNativeSetup</effect>
+      <effect type="TechStatus" status="active">zpCorsairDocksUpdateShadow</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpCorsairGalley</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpMercPirateGalleass</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCNeptuneGalley</target>
+      </effect>
       <effect type="Data" amount="1.00" subtype="AllowedAge" relativity="Absolute">
         <target type="ProtoUnit">zpMercPirateGalleass</target>
       </effect>
@@ -34936,6 +34946,79 @@
       </effect>
       <effect type="CommandAdd" proto="zpSPCNeptuneGalley" page="0" column="2">
         <target type="ProtoUnit">zpSPCPirateDock</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSultanateTradeRouteUpgrade" type="Normal">
+    <dbid>41319</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>OrPrereqs</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status="Active">zpConsulateSultanatePhanar</techstatus>
+      <techstatus status="Active">zpConsulateSultanateSufi</techstatus>
+      <techstatus status="Active">zpConsulateSultanateCorsairs</techstatus>
+    </prereqs>
+  </tech>
+
+  <tech name="zpSultanateSiteIncrease" type="Normal">
+    <dbid>41320</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="12.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatJanissary</target>
+      </effect>
+      <effect type="Data" amount="10.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatEvzone</target>
+      </effect>
+      <effect type="Data" amount="9.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatBoyar</target>
+      </effect>
+      <effect type="Data" amount="12.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatQizilbashProxy</target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatGatlingCamel</target>
+      </effect>
+      <effect type="Data" amount="17.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatPirate</target>
+      </effect>
+      <effect type="Data" amount="17.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCorsair</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSultanateSiteDecrease" type="Normal">
+    <dbid>41321</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="-12.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatJanissary</target>
+      </effect>
+      <effect type="Data" amount="-10.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatEvzone</target>
+      </effect>
+      <effect type="Data" amount="-9.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatBoyar</target>
+      </effect>
+      <effect type="Data" amount="-12.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatQizilbashProxy</target>
+      </effect>
+      <effect type="Data" amount="-5.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatGatlingCamel</target>
+      </effect>
+      <effect type="Data" amount="-17.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatPirate</target>
+      </effect>
+      <effect type="Data" amount="-17.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCorsair</target>
       </effect>
     </effects>
   </tech>

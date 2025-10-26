@@ -3224,6 +3224,41 @@
       </guardianunit>
       <difficulty>511</difficulty>
     </nugget>
+    <nugget>
+      <name>zpNuggetIstanbul</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>zpNatJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpNatJanissary</unit>
+      </guardianunit>
+      <difficulty>512</difficulty>
+    </nugget>
 
 
     <!--WATER NUGGETS-->

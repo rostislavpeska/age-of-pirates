@@ -1287,17 +1287,17 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechzpElbeSetup"); // All in One
 		rmSetTriggerEffectParamInt("Status",2);
-		rmAddTriggerEffect("Trade Route Set Level");
-		rmSetTriggerEffectParamInt("TradeRoute",1);
-		rmSetTriggerEffectParamInt("Level",1);
-		rmAddTriggerEffect("Trade Route Set Level");
-		rmSetTriggerEffectParamInt("TradeRoute",2);
-		rmSetTriggerEffectParamInt("Level",1);
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(true);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
 	}
+	rmAddTriggerEffect("Trade Route Set Level");
+	rmSetTriggerEffectParamInt("TradeRoute",1);
+	rmSetTriggerEffectParamInt("Level",1);
+	rmAddTriggerEffect("Trade Route Set Level");
+	rmSetTriggerEffectParamInt("TradeRoute",2);
+	rmSetTriggerEffectParamInt("Level",1);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 
 	// Conversion Suspend
 	rmCreateTrigger("Buildings Convert OFF");
