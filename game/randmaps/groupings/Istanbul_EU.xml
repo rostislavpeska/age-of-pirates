@@ -298,6 +298,7 @@
 		<unit variation="4" posx="22.3094" posz="8.8616" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">dePropsColonyAfrica</unit>
 		<unit variation="1" posx="0.2982" posz="6.5806" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpPropOttomanMarketStall</unit>
 		<unit variation="123" posx="-17.6248" posz="10.5767" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCSocketSultanateCityState</unit>
+		<unit variation="123" posx="-13.1248" posz="10.5767" orientx="0.0000" orienty="0.0000" orientz="1.0000">euNuggetTreasureCharts</unit>
 		<unit variation="1" posx="-37.4903" posz="8.4680" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpHarbourPlatform</unit>
 		<unit variation="3" posx="-35.9456" posz="8.5577" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpHarbourPlatform</unit>
 		<unit variation="1" posx="-8.3735" posz="8.7842" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>

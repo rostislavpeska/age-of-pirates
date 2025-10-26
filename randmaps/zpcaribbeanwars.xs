@@ -939,7 +939,7 @@ for(i=1; <cNumberPlayers) {
    //rmForbidTradeMonopoly(true);
 
    // ____________________ MAP OBJECTIVES ____________________
-    rmObjectiveScreenSetTitle(302118);
+    rmObjectiveScreenSetTitle(302219);
     rmObjectiveScreenSetGoal(302869);
     if (rmGetIsKOTH())
       rmObjectiveAdd(302236, 302232, true, true, true);

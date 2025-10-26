@@ -67320,7 +67320,7 @@
       <rate type="XP">3.000000</rate>
     </protoaction>
   </unit>
-  <unit id="20921" name="v">
+  <unit id="20921" name="zpNatJanissary">
     <dbid>20921</dbid>
     <displaynameid>303240</displaynameid>
     <editornameid>303241</editornameid>
@@ -68262,22 +68262,6 @@
     <flag>VariationLocked</flag>
     <flag>Invulnerable</flag>
     <flag>InvulnerableIfGaia</flag>
-  </unit>
-
-
-
-  <!--MAPMODS-->
-
-  <unit name="zpSPCPirateDock">
-    <displaynameid>303262</displaynameid>
-    <civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>
-  </unit>
-  <unit name="zpSPCPirateDockB">
-    <displaynameid>303262</displaynameid>
-    <civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>
-  </unit>
-  <unit name="zpNativeHousePirateCity">
-    <civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>
   </unit>
 
   
