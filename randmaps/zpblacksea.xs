@@ -412,7 +412,7 @@ void main(void)
 	else if (cNumberNonGaiaPlayers ==5 || cNumberNonGaiaPlayers ==6)
     	riverID = rmRiverCreate(-1, seaType2, 4, 4, 75, 75); //  (-1, "new england lake", 18, 14, 5, 5)
 	else if (cNumberNonGaiaPlayers >6)
-    	riverID = rmRiverCreate(-1, seaType2, 4, 4, 105, 105); //  (-1, "new england lake", 18, 14, 5, 5)
+    	riverID = rmRiverCreate(-1, seaType2, 4, 4, 90, 90); //  (-1, "new england lake", 18, 14, 5, 5)
 	else
 		riverID = rmRiverCreate(-1, seaType2, 4, 4, 40, 40); //  (-1, "new england lake", 18, 14, 5, 5)
 	if (PlayerNum == 2) {
@@ -505,12 +505,24 @@ void main(void)
 		rmAddAreaConstraint(patchID, mediumGreatLakesConstraint);
 		rmAddAreaConstraint(patchID, avoidTradeRouteFar3);
 		if (i == 0){
-			rmSetAreaLocation(patchID, 0.2, 0.5+rmZTilesToFraction(48));
-			rmAddAreaInfluenceSegment(patchID, 0.15, 0.5+rmZTilesToFraction(48), 0.25, 0.5+rmZTilesToFraction(48));
+			if (PlayerNum ==2 || PlayerNum > 6){
+				rmSetAreaLocation(patchID, 0.2, 0.5+rmZTilesToFraction(51));
+				rmAddAreaInfluenceSegment(patchID, 0.15, 0.5+rmZTilesToFraction(51), 0.22, 0.5+rmZTilesToFraction(51));
+			}
+			else{
+				rmSetAreaLocation(patchID, 0.2, 0.5+rmZTilesToFraction(48));
+				rmAddAreaInfluenceSegment(patchID, 0.15, 0.5+rmZTilesToFraction(48), 0.22, 0.5+rmZTilesToFraction(48));
+			}
 		}
 		else{
-			rmSetAreaLocation(patchID, 0.2, 0.5-rmZTilesToFraction(49));
-			rmAddAreaInfluenceSegment(patchID, 0.15, 0.5-rmZTilesToFraction(49), 0.25, 0.5-rmZTilesToFraction(49));
+			if (PlayerNum ==2 || PlayerNum > 6){
+				rmSetAreaLocation(patchID, 0.2, 0.5-rmZTilesToFraction(46));
+				rmAddAreaInfluenceSegment(patchID, 0.15, 0.5-rmZTilesToFraction(46), 0.22, 0.5-rmZTilesToFraction(46));
+			}
+			else{
+				rmSetAreaLocation(patchID, 0.2, 0.5-rmZTilesToFraction(49));
+				rmAddAreaInfluenceSegment(patchID, 0.15, 0.5-rmZTilesToFraction(49), 0.22, 0.5-rmZTilesToFraction(49));
+			}
 		}
 		rmBuildArea(patchID);
 	}
