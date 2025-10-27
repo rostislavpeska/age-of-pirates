@@ -67289,9 +67289,6 @@
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
-    <train row="0" page="0" column="0">deMercPandour</train>
-    <train row="0" page="0" column="1">deMercZenata</train>
-    <train row="0" page="0" column="2">MercGreatCannon</train>
     <tech row="0" page="11" column="0">zpSPCOttomanHeritage</tech>
     <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
     <tech row="0" page="11" column="2">DESPCMercenaryBounties</tech>
@@ -67321,7 +67318,7 @@
     <tactics>parisbuilding.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
-      <rate type="XP">3.000000</rate>
+      <rate type="XP">4.000000</rate>
     </protoaction>
   </unit>
   <unit id="20921" name="zpNatJanissary">
@@ -68406,6 +68403,97 @@
       <damagetype>Ranged</damagetype>
       <maxrange>12.000000</maxrange>
       <rof>3.000000</rof>
+    </protoaction>
+  </unit>
+  <unit id="20477" name="zpSPCCityMarketOriental">
+    <dbid>20477</dbid>
+    <displaynameid>301831</displaynameid>
+    <editornameid>303283</editornameid>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <obstructionradiusz>5.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\market\city_market_orient.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>villagebuildingsmall.xml</placementfile>
+    <icon>resources\art\buildings\market\market_icon.png</icon>
+    <portraiticon>resources\art\buildings\market\market_portrait.png</portraiticon>
+    <minimapicon>ui\minimap\city_resource</minimapicon>
+    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
+    <rollovertextid>301886</rollovertextid>
+    <shortrollovertextid>301887</shortrollovertextid>
+    <initialhitpoints>3000.0000</initialhitpoints>
+    <maxhitpoints>3000.0000</maxhitpoints>
+    <unitregen damagetimeout="6.0">0.0000</unitregen>
+    <los>12.0000</los>
+    <buildpoints>15.0000</buildpoints>
+    <bounty resourcetype="XP">115.0000</bounty>
+    <bounty resourcetype="Food">115.0000</bounty>
+    <bounty resourcetype="Wood">115.0000</bounty>
+    <bounty resourcetype="Gold">115.0000</bounty>
+    <cost resourcetype="Wood">100.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>AbstractSPCVillageBuilding</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>AbstractHouse</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
+    <flag>VisibleUnderFog</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>EnterHotkeyContext</flag>
+    <flag>NotDeleteable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <command page="11" column="4">Abilities</command>
+    <tactics>parismarket.tactics</tactics>
+    <protoaction>
+      <name>AutoGatherXPTeam</name>
+      <rate type="XP">0.7</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherFoodTeam</name>
+      <rate type="Food">0.7</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherWoodTeam</name>
+      <rate type="Wood">0.7</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherCoinTeam</name>
+      <rate type="Gold">0.7</rate>
     </protoaction>
   </unit>
 

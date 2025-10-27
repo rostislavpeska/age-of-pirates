@@ -308,6 +308,9 @@
   <zpspccitymarket>
     <ability>zpPassiveMarketRainbow<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpspccitymarket>
+  <zpspccitymarketoriental>
+    <ability>zpPassiveMarketRainbow<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpspccitymarketoriental>
   <zpspcazteccitymarket>
     <ability>zpPassiveMarketRainbow<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpspcazteccitymarket>
