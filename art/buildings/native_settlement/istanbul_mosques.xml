@@ -1,0 +1,21 @@
+<animfile>
+	<component>
+		building
+		<logic type="Variation">
+                <data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\arabian\ottoman_mosque_small</file>
+					</assetreference>
+			    </data>
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\arabian\ottoman_minaret</file>
+					</assetreference>
+			    </data>              
+		</logic>
+	</component>
+	<anim>
+		Idle
+		<component>building</component>
+	</anim>
+</animfile>
