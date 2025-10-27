@@ -337,6 +337,8 @@ void main(void)
     rmSetAreaMaxBlobDistance(lakeArea, 12.0);
     rmSetAreaElevationVariation(lakeArea, 0.0);
 	rmAddAreaToClass(lakeArea, classGreatLake);
+	if (rmGetIsKOTH())
+		rmSetAreaReveal(lakeArea, 1);
     rmBuildArea(lakeArea);
 
 	int bosporArea = rmCreateArea("bosporArea");
@@ -347,6 +349,8 @@ void main(void)
 	rmAddAreaToClass(bosporArea, classGreatLake);
 	rmSetAreaObeyWorldCircleConstraint(bosporArea, false);
 	rmAddAreaInfluenceSegment(bosporArea, 0.0, 0.5, 0.25, 0.5);
+	if (rmGetIsKOTH())
+		rmSetAreaReveal(bosporArea, 1);
     rmBuildArea(bosporArea);
 
 	int mediterraneanArea = rmCreateArea("mediterraneanArea");
@@ -356,6 +360,8 @@ void main(void)
     rmSetAreaElevationVariation(mediterraneanArea, 0.0);
 	rmAddAreaToClass(mediterraneanArea, classGreatLake);
 	rmSetAreaObeyWorldCircleConstraint(mediterraneanArea, false);
+	if (rmGetIsKOTH())
+		rmSetAreaReveal(mediterraneanArea, 1);
     rmBuildArea(mediterraneanArea);
 
 	// ********************* Trade Route *******************************
@@ -408,7 +414,7 @@ void main(void)
 	else if (cNumberNonGaiaPlayers >6)
     	riverID = rmRiverCreate(-1, seaType2, 4, 4, 105, 105); //  (-1, "new england lake", 18, 14, 5, 5)
 	else
-		riverID = rmRiverCreate(-1, seaType2, 4, 4, 45, 45); //  (-1, "new england lake", 18, 14, 5, 5)
+		riverID = rmRiverCreate(-1, seaType2, 4, 4, 40, 40); //  (-1, "new england lake", 18, 14, 5, 5)
 	if (PlayerNum == 2) {
 		rmRiverAddWaypoint(riverID, 0.15, 0.9);
 		rmRiverAddWaypoint(riverID, 0.15, 0.1);
@@ -699,7 +705,7 @@ void main(void)
 		rmSetAreaCliffHeight(nativeVillage1, 2.0, 0.0, 0.5); 
 		rmSetAreaElevationVariation(nativeVillage1, 0.0);
 		if (PlayerNum == 2){
-			rmAddAreaConstraint(nativeVillage1, avoidWater30);
+			rmAddAreaConstraint(nativeVillage1, avoidWater20);
 		}
 		else{
 			rmAddAreaConstraint(nativeVillage1, avoidWater40);
@@ -1178,35 +1184,39 @@ void main(void)
 
 	// Define Variables
 
-	int loneHarbourID1 = rmGetUnitPlaced(harbourID1, 0)+1;
-	int loneHarbourID2 = rmGetUnitPlaced(harbourID2, 0)+1;
-	int loneHarbourID3 = rmGetUnitPlaced(harbourID3, 0)+1;
+	int varIncrement = 1;
+	if (PlayerNum == 2)
+		varIncrement = 0;
 
-	int loneHarbourNuggetID1 = rmGetUnitPlaced(nuggetID1, 0)+1;
-	int loneHarbourNuggetID2 = rmGetUnitPlaced(nuggetID2, 0)+1;
-	int loneHarbourNuggetID3 = rmGetUnitPlaced(nuggetID3, 0)+1;
+	int loneHarbourID1 = rmGetUnitPlaced(harbourID1, 0)+varIncrement;
+	int loneHarbourID2 = rmGetUnitPlaced(harbourID2, 0)+varIncrement;
+	int loneHarbourID3 = rmGetUnitPlaced(harbourID3, 0)+varIncrement;
+
+	int loneHarbourNuggetID1 = rmGetUnitPlaced(nuggetID1, 0)+varIncrement;
+	int loneHarbourNuggetID2 = rmGetUnitPlaced(nuggetID2, 0)+varIncrement;
+	int loneHarbourNuggetID3 = rmGetUnitPlaced(nuggetID3, 0)+varIncrement;
 	
-	int sultanateSocket1 = rmGetGroupingInstanceUnitByType(istanbulInstanceID1, "zpSPCSocketSultanateCityState")+1;
-	int sultanateSocket2 = rmGetGroupingInstanceUnitByType(istanbulInstanceID2, "zpSPCSocketSultanateCityState")+1;
+	int sultanateSocket1 = rmGetGroupingInstanceUnitByType(istanbulInstanceID1, "zpSPCSocketSultanateCityState")+varIncrement;
+	int sultanateSocket2 = rmGetGroupingInstanceUnitByType(istanbulInstanceID2, "zpSPCSocketSultanateCityState")+varIncrement;
 
-	int sultanateCenter1 = rmGetGroupingInstanceUnitByType(istanbulInstanceID1, "zpCinematicRevealer")+1;
-	int sultanateCenter2 = rmGetGroupingInstanceUnitByType(istanbulInstanceID2, "zpCinematicRevealer")+1;
+	int sultanateCenter1 = rmGetGroupingInstanceUnitByType(istanbulInstanceID1, "zpCinematicRevealer")+varIncrement;
+	int sultanateCenter2 = rmGetGroupingInstanceUnitByType(istanbulInstanceID2, "zpCinematicRevealer")+varIncrement;
 
-	int sultanateMosque1 = rmGetGroupingInstanceUnitByType(istanbulInstanceID1, "zpSPCIstanbulMosque")+1;
-	int sultanateMosque2 = rmGetGroupingInstanceUnitByType(istanbulInstanceID2, "zpSPCIstanbulMosque")+1;
+	int sultanateMosque1 = rmGetGroupingInstanceUnitByType(istanbulInstanceID1, "zpSPCIstanbulMosque")+varIncrement;
+	int sultanateMosque2 = rmGetGroupingInstanceUnitByType(istanbulInstanceID2, "zpSPCIstanbulMosque")+varIncrement;
 
-	int sultanateDock1 = rmGetGroupingInstanceUnitByType(istanbulInstanceID1, "zpSPCPirateDock")+1;
-	int sultanateDock2 = rmGetGroupingInstanceUnitByType(istanbulInstanceID2, "zpSPCPirateDock")+1;
+	int sultanateDock1 = rmGetGroupingInstanceUnitByType(istanbulInstanceID1, "zpSPCPirateDock")+varIncrement;
+	int sultanateDock2 = rmGetGroupingInstanceUnitByType(istanbulInstanceID2, "zpSPCPirateDock")+varIncrement;
 
-	int sultanateTower11 = rmGetGroupingInstanceUnitByType(istanbulInstanceID1, "deSPCSocketCityTower")+1;
-	int sultanateTower12 = rmGetGroupingInstanceUnitByType(istanbulInstanceID1, "zpSPCSocketCityTowerClone")+1;
-	int sultanateTower21 = rmGetGroupingInstanceUnitByType(istanbulInstanceID2, "deSPCSocketCityTower")+1;
-	int sultanateTower22 = rmGetGroupingInstanceUnitByType(istanbulInstanceID2, "zpSPCSocketCityTowerClone")+1;
+	int sultanateTower11 = rmGetGroupingInstanceUnitByType(istanbulInstanceID1, "deSPCSocketCityTower")+varIncrement;
+	int sultanateTower12 = rmGetGroupingInstanceUnitByType(istanbulInstanceID1, "zpSPCSocketCityTowerClone")+varIncrement;
+	int sultanateTower21 = rmGetGroupingInstanceUnitByType(istanbulInstanceID2, "deSPCSocketCityTower")+varIncrement;
+	int sultanateTower22 = rmGetGroupingInstanceUnitByType(istanbulInstanceID2, "zpSPCSocketCityTowerClone")+varIncrement;
 
 	int kothCastle = rmGetGroupingInstanceUnitByType(kotHInstance, "zpKingsHillNaval");
 	vector kothLoc = rmGetUnitPosition(kothCastle);
 
-	int kothCastleMod = kothCastle+1;
+	int kothCastleMod = kothCastle+varIncrement;
 
 	int socketMinimapFlareDuration = 10;
 	int victoryCountDown = 600;
@@ -1270,6 +1280,21 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 
+	for(k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("AI Techs"+k);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpSPCVeniceCityStatesAI"); // Only for the AI to train the city state units from sockets
+		rmSetTriggerEffectParamInt("Status",2);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
 	// Conversion Suspend
 	rmCreateTrigger("Buildings Convert OFF");
 	rmAddTriggerEffect("Unit Action Suspend");
@@ -1284,6 +1309,7 @@ void main(void)
 	rmSetTriggerEffectParam("SrcObject",""+loneHarbourID3);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
 	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject",""+sultanateSocket1);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
 	rmSetTriggerEffectParam("Suspend", "True");
@@ -1824,6 +1850,162 @@ void main(void)
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Sultanate_Increase2"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
+	// Specific for AI
+
+	// AI Builds Pirate City States from Sockets
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("BuildTower11_ON_Plr"+k);
+		rmCreateTrigger("BuildTower11_OFF_Plr"+k);
+		rmCreateTrigger("BuildTower12_ON_Plr"+k);
+		rmCreateTrigger("BuildTower12_OFF_Plr"+k);
+		rmCreateTrigger("BuildTower21_ON_Plr"+k);
+		rmCreateTrigger("BuildTower21_OFF_Plr"+k);
+		rmCreateTrigger("BuildTower22_ON_Plr"+k);
+		rmCreateTrigger("BuildTower22_OFF_Plr"+k);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower11_ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+sultanateTower11);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+		rmSetTriggerConditionParamInt("Dist",10);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("Socket",""+sultanateTower11);
+		rmSetTriggerEffectParam("Protounit","deSPCCityTower");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower11_OFF_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower11_OFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower11_ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower12_ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+sultanateTower12);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+		rmSetTriggerConditionParamInt("Dist",10);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("Socket",""+sultanateTower12);
+		rmSetTriggerEffectParam("Protounit","deSPCCityTower");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower12_OFF_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower12_OFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower12_ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower21_ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+sultanateTower21);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+		rmSetTriggerConditionParamInt("Dist",10);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("Socket",""+sultanateTower21);
+		rmSetTriggerEffectParam("Protounit","deSPCCityTower");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower21_OFF_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower21_OFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower21_ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower22_ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+sultanateTower22);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpSPCWoodenTowerAIProxy");
+		rmSetTriggerConditionParamInt("Dist",10);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("Socket",""+sultanateTower22);
+		rmSetTriggerEffectParam("Protounit","deSPCCityTower");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower22_OFF_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildTower22_OFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower22_ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmCreateTrigger("AI_Check1_Plr"+k);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower11_ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower12_ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmCreateTrigger("AI_Check2_Plr"+k);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower21_ON_Plr"+k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower22_ON_Plr"+k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);

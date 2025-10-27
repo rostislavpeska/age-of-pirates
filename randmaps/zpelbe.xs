@@ -1299,6 +1299,21 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 
+	for(k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("AI Techs"+k);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("TechID","cTechzpSPCVeniceCityStatesAI"); // Only for the AI to train the city state units from sockets
+		rmSetTriggerEffectParamInt("Status",2);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
 	// Conversion Suspend
 	rmCreateTrigger("Buildings Convert OFF");
 	rmAddTriggerEffect("Unit Action Suspend");

@@ -34325,6 +34325,12 @@
       <effect type="TechStatus" status="obtainable">zpSPCOttomanHeritage</effect>
       <effect type="TechStatus" status="active">zpSultanateNativeSetup</effect>
       <effect type="TechStatus" status="active">zpCorsairDocksUpdateShadow</effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpHanseaticChurch</target>
+      </effect>
+      <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">"zpSPCIstanbulMosque</target>
+      </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpCorsairGalley</target>
       </effect>

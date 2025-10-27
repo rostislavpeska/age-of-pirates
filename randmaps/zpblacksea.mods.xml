@@ -124,7 +124,7 @@
 		<unit id="20330" name="zpAmericanEmbassy">
 			<placementfile>buildinglarge_city.xml</placementfile>
 		</unit>
-		<unit name="zpTradingPostCaptureNaval">
+		<unit name="zpTradingPostCaptureNavalOriental">
             <obstructionradiusx>4.0000</obstructionradiusx>
             <obstructionradiusz>4.0000</obstructionradiusz>
             <flag mergemode="remove">TieToWaterSurface</flag>
