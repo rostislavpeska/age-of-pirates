@@ -751,6 +751,17 @@
     <activerollovertextid>303127</activerollovertextid>
     <command>unitSetTactic("MaintainDragoons")</command>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpNatSultanCommandSmall</name>
+    <icon>resources\images\icons\abilities\sultan_command.png</icon>
+    <associatedtech>zpNatSultanCommand</associatedtech>
+    <associatedpower>zpPowerSultanCommand</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>zpSultanate</subciv>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
 
 
   <!--

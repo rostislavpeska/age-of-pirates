@@ -586,8 +586,48 @@
     <icon>resources\images\icons\abilities\cossack_father.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
+  <power name="zpPowerSPCBosporBlockade" type="BlockHcTransport">
+    <timerrolloverid>112856</timerrolloverid>
+    <msgselfstringid>303272</msgselfstringid>
+    <msgenemystringid>303273</msgenemystringid>
+    <msgallystringid>303274</msgallystringid>
+    <minimapeventtime sendalertto="none">1</minimapeventtime>
+    <activetime>300</activetime>
+    <placement forceonmap="1" ally="">full</placement>
+    <soundset type="StartSound" listenertype="All">UI_StrategyWarning</soundset>
+  </power>
+  <power name="zpPowerSultanCommand" type="TempUnit">
+    <displaynameid>303279</displaynameid>
+    <rolloverid>303280</rolloverid>
+    <icon>resources\images\icons\abilities\sultan_command.png</icon>
+    <minimapeventtime sendalertto="ally">1</minimapeventtime>
+    <activetime>120</activetime>
+    <createunit pattern="Spawn" quantity="1" delay="0.0" permanent="">zpNatMercJanissary</createunit>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <rangeindicatorprotoid radius="12.0" indicatorcount="16" speed="0.6">PowerRanger</rangeindicatorprotoid>
+    <auxiliarypower>zpPowerSultanCommandAux</auxiliarypower>
+    <auxiliarypowertargettype>self</auxiliarypowertargettype>
+    <powerescalation>1</powerescalation>
+    <powerescalationrate>4.0</powerescalationrate>
+    <powermaxlevel>20</powermaxlevel>
+    <allowduringnorush>1</allowduringnorush>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+    <soundset type="StartSound" listenertype="All">zpOttomanSultanate</soundset>
+  </power>
+  <power name="zpPowerSultanCommandAux" type="GeneralEffect">
+    <timerrolloverid>303281</timerrolloverid>
+    <minimapeventtime sendalertto="none">1</minimapeventtime>
+    <activetime>90</activetime>
+    <effect type="Damage" relativity="BasePercent" amount="2.00">
+      <target type="ProtoUnit">AbstractSultanGuard</target>
+    </effect>
+    <messagealertplayerrelation>none</messagealertplayerrelation>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <allowduringnorush>1</allowduringnorush>
+    <isauxiliarypower>1</isauxiliarypower>
+  </power>
 
-
+blockDE 
 
 
 

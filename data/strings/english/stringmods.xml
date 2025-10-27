@@ -3239,7 +3239,7 @@
       <string _locid="303240">Sultan's Guard</string>
       <string _locid="303241">ZP NAT Sultan's Guard</string>
       <string _locid="303242">ZP Socket Sultanate City State</string>
-      <string _locid="303243">Sultan's Palace</string>
+      <string _locid="303243">City of Istanbul</string>
       <string _locid="303244">Disciplined Sultan's Guard</string>
       <string _locid="303245">Honored Sultan's Guard</string>
       <string _locid="303246">Improves all Sultanate units attack and hitpoints.</string>
@@ -3264,8 +3264,22 @@
       <string _locid="303265">Black Sea</string>
       <string _locid="303266">Nearly landlocked sea with a single trade route passing through the city of Istanbul (Constantinopole). The area of the Black Sea offers you verious resources like copper or plenty of fishes. Naval King of the Hill option is available. \n\nNative settlements: Cossacks, Orhodox, Sultanate</string>
       <string _locid="303267">Who controls the Bosporus Strait, controls the Black Sea. The city of Istanbul is located at the entrance of the Black Sea and it's control is your key to victory.</string>
-
-
+      <string _locid="303268">Bosporus Blockade</string>
+      <string _locid="303269">Disables Home City shipments for all enemy and allied players for 4 minutes. \n • &lt;color=1.0, 0.0, 0.0&gt;Can be activated only when your team holds both City of Istanbul sockets.&lt;/color&gt;</string>
+      <string _locid="303270">Your enemy is blocking the Bosporus Strait.</string>
+      <string _locid="303271">Bosporus Blockade Time Remaining</string>
+      <string _locid="303272">You're blocking the Bosporus Strait, temporarily blockading their Home Cities!</string>
+      <string _locid="303273">The Bosporus is blocked on %s's behalf, temporarily blockading your Home City!</string>
+      <string _locid="303274">The Bosporus is blocked on %s's behalf, temporarily blockading enemy Home Cities!</string>
+      <string _locid="303275">Sultan's Brigade</string>
+      <string _locid="303276">Harem Confectionery</string>
+      <string _locid="303277">Villagers gather Coin from Estates and Rice Paddies faster.</string>
+      <string _locid="303278">Estates gather faster.</string>
+      <string _locid="303279">Sultan Command</string>
+      <string _locid="303280">Spawns Sultan's Guard. Temporarily boosts all Sultan's Guard damage by 200%.</string>
+      <string _locid="303281">Sultan Command time remaining</string>
+      <string _locid="303282">ZP NAT Merc Sultan's Guard</string>
+      
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
       <!-- ======================================== -->

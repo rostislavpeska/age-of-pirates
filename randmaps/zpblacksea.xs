@@ -410,7 +410,7 @@ void main(void)
 	if (cNumberNonGaiaPlayers ==3 || cNumberNonGaiaPlayers ==4)
     	int riverID = rmRiverCreate(-1, seaType2, 4, 4, 72, 72); //  (-1, "new england lake", 18, 14, 5, 5)
 	else if (cNumberNonGaiaPlayers ==5 || cNumberNonGaiaPlayers ==6)
-    	riverID = rmRiverCreate(-1, seaType2, 4, 4, 85, 85); //  (-1, "new england lake", 18, 14, 5, 5)
+    	riverID = rmRiverCreate(-1, seaType2, 4, 4, 75, 75); //  (-1, "new england lake", 18, 14, 5, 5)
 	else if (cNumberNonGaiaPlayers >6)
     	riverID = rmRiverCreate(-1, seaType2, 4, 4, 105, 105); //  (-1, "new england lake", 18, 14, 5, 5)
 	else
@@ -435,8 +435,8 @@ void main(void)
 	rmSetObjectDefMinDistance(harbour01ID, 0.0);
 	rmSetObjectDefMaxDistance(harbour01ID, 0.0);
 	rmSetObjectDefTradeRouteID(harbour01ID, tradeRouteID);
-	if (PlayerNum == 2)
-		rmPlaceObjectDefAtLoc(harbour01ID, 0, 0.15-rmXTilesToFraction(0),0.5+rmXTilesToFraction(12));
+	if (PlayerNum == 2|| PlayerNum > 6)
+		rmPlaceObjectDefAtLoc(harbour01ID, 0, 0.15-rmXTilesToFraction(0),0.5+rmXTilesToFraction(13));
 	else
 		rmPlaceObjectDefAtLoc(harbour01ID, 0, 0.15-rmXTilesToFraction(0),0.5+rmXTilesToFraction(10));
 	vector harbourLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbour01ID, 0));
@@ -447,8 +447,8 @@ void main(void)
 	rmSetObjectDefMinDistance(harbour02ID, 0.0);
 	rmSetObjectDefMaxDistance(harbour02ID, 0.0);
 	rmSetObjectDefTradeRouteID(harbour02ID, tradeRouteID);
-	if (PlayerNum == 2)
-		rmPlaceObjectDefAtLoc(harbour02ID, 0, 0.15+rmXTilesToFraction(15),0.5-rmXTilesToFraction(8));
+	if (PlayerNum == 2|| PlayerNum > 6)
+		rmPlaceObjectDefAtLoc(harbour02ID, 0, 0.15+rmXTilesToFraction(15),0.5-rmXTilesToFraction(7));
 	else
 		rmPlaceObjectDefAtLoc(harbour02ID, 0, 0.15+rmXTilesToFraction(15),0.5-rmXTilesToFraction(10));
 	vector harbourLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbour02ID, 0));
@@ -510,7 +510,7 @@ void main(void)
 		}
 		else{
 			rmSetAreaLocation(patchID, 0.2, 0.5-rmZTilesToFraction(49));
-			rmAddAreaInfluenceSegment(patchID, 0.75, 0.5-rmZTilesToFraction(49), 0.85, 0.5-rmZTilesToFraction(49));
+			rmAddAreaInfluenceSegment(patchID, 0.15, 0.5-rmZTilesToFraction(49), 0.25, 0.5-rmZTilesToFraction(49));
 		}
 		rmBuildArea(patchID);
 	}
@@ -519,7 +519,7 @@ void main(void)
     int terrainElevatedID = rmCreateArea("terrain_elevated");
     rmSetAreaSize(terrainElevatedID, 0.45, 0.45);
     rmSetAreaCoherence(terrainElevatedID, 0.35);
-    rmSetAreaBaseHeight(terrainElevatedID, 4.6);
+    rmSetAreaBaseHeight(terrainElevatedID, 4.8);
     rmAddAreaConstraint(terrainElevatedID, farGreatLakesConstraint);
     rmSetAreaElevationType(terrainElevatedID, cElevTurbulence);
 	rmSetAreaElevationType(terrainElevatedID, cElevTurbulence);
@@ -570,6 +570,7 @@ void main(void)
 			rmAddAreaTerrainLayer(portSite, "carolinas\ground_shoreline2_car", 0, 1);
 			rmAddAreaTerrainLayer(portSite, "carolinas\ground_shoreline3_car", 1, 2);
 		rmSetAreaCoherence(portSite, 1);
+		rmSetAreaHeightBlend(portSite, 2.0);
 		rmSetAreaSmoothDistance(portSite, 15);
 		rmSetAreaBaseHeight(portSite, 3.5);
 		rmAddAreaToClass(portSite, classPortSite);
@@ -585,17 +586,17 @@ void main(void)
 
 		if (i == 0){
 			rmSetAreaLocation(portSite, 0.5, 0.7+rmZTilesToFraction(22));
-			rmSetAreaLocation(portSiteOverlay, 0.5, 0.7+rmZTilesToFraction(27));
+			rmSetAreaLocation(portSiteOverlay, 0.5, 0.7+rmZTilesToFraction(29));
 			rmSetAreaMix(portSiteOverlay, paintMix);
 		}
 		else if (i == 1){
 			rmSetAreaLocation(portSite, 0.7+rmZTilesToFraction(22), 0.5);
-			rmSetAreaLocation(portSiteOverlay, 0.7+rmZTilesToFraction(27), 0.5);
+			rmSetAreaLocation(portSiteOverlay, 0.7+rmZTilesToFraction(29), 0.5);
 			rmSetAreaMix(portSiteOverlay, baseMix);
 		}
 		else{
 			rmSetAreaLocation(portSite, 0.5, 0.3-rmZTilesToFraction(22));
-			rmSetAreaLocation(portSiteOverlay, 0.5, 0.3-rmZTilesToFraction(27));
+			rmSetAreaLocation(portSiteOverlay, 0.5, 0.3-rmZTilesToFraction(29));
 			rmSetAreaMix(portSiteOverlay, paintMix);
 		}
 
@@ -763,13 +764,13 @@ void main(void)
 	if (PlayerNum == 2){
 		if (teamStartLoc > 0.5)
 		{
-			rmPlacePlayer(1, 0.35, 0.8);
-			rmPlacePlayer(2, 0.35, 0.2);
+			rmPlacePlayer(1, 0.37, 0.8);
+			rmPlacePlayer(2, 0.37, 0.2);
 		}
 		else
 		{
-			rmPlacePlayer(1, 0.35, 0.2);
-			rmPlacePlayer(2, 0.35, 0.8);
+			rmPlacePlayer(1, 0.37, 0.2);
+			rmPlacePlayer(2, 0.37, 0.8);
 		}
 	}
 	else{
@@ -777,25 +778,25 @@ void main(void)
 			if (teamStartLoc > 0.5)
 			{
 				rmSetPlacementTeam(0);
-				rmSetPlacementSection(0.885, 0.070);
+				rmSetPlacementSection(0.888, 0.070);
 				rmPlacePlayersCircular(0.34, 0.36, 0);
 				rmSetPlacementTeam(1);
-				rmSetPlacementSection(0.430, 0.615);
+				rmSetPlacementSection(0.430, 0.612);
 				rmPlacePlayersCircular(0.34, 0.36, 0);
 			}
 			else
 			{
 				rmSetPlacementTeam(1);
-				rmSetPlacementSection(0.885, 0.070);
+				rmSetPlacementSection(0.888, 0.070);
 				rmPlacePlayersCircular(0.34, 0.36, 0);
 				rmSetPlacementTeam(0);
-				rmSetPlacementSection(0.430, 0.615);
+				rmSetPlacementSection(0.430, 0.612);
 				rmPlacePlayersCircular(0.34, 0.36, 0);
 			}
 
 		}
 		else{
-			rmSetPlacementSection(0.885, 0.615);  
+			rmSetPlacementSection(0.888, 0.612);  
 			rmPlacePlayersCircular(0.34, 0.36, 0);
 		}
 	}
@@ -1109,7 +1110,6 @@ void main(void)
 		rmAddObjectDefConstraint(nuggetHard, avoidNuggets);
 		rmAddObjectDefConstraint(nuggetHard, avoidTownCenterFar);
 		rmAddObjectDefConstraint(nuggetHard, playerEdgeConstraint);
-		rmAddObjectDefConstraint(nuggetHard, playerEdgeConstraint);
 		rmAddObjectDefConstraint(nuggetHard, avoidWater40);
 		rmAddObjectDefConstraint(nuggetHard, avoidBlockLong);
 		if (i == 0)
@@ -1124,10 +1124,9 @@ void main(void)
 		rmAddObjectDefItem(nuggetEasy, "Nugget", 1, 0.0);
 		rmSetNuggetDifficulty(1, 2);
 		rmAddObjectDefConstraint(nuggetEasy, shortAvoidImpassableLand);
-		rmAddObjectDefConstraint(nuggetEasy, avoidNuggetsShort);
+		rmAddObjectDefConstraint(nuggetEasy, avoidNuggets);
 		rmAddObjectDefConstraint(nuggetEasy, avoidAll);
 		rmAddObjectDefConstraint(nuggetEasy, avoidTownCenter);
-		rmAddObjectDefConstraint(nuggetEasy, playerEdgeConstraint);
 		rmAddObjectDefConstraint(nuggetEasy, playerEdgeConstraint);
 		rmAddObjectDefConstraint(nuggetEasy, avoidWater10);
 		rmAddObjectDefConstraint(nuggetEasy, avoidBlockLong);
@@ -1135,6 +1134,8 @@ void main(void)
 			rmAddObjectDefConstraint(nuggetEasy, Eastward);
 		else
 			rmAddObjectDefConstraint(nuggetEasy, Westward);
+		rmSetObjectDefMinDistance(nuggetEasy, 0.0);
+		rmSetObjectDefMaxDistance(nuggetEasy, rmXFractionToMeters(0.45));
 		rmPlaceObjectDefAtLoc(nuggetEasy, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers);
 	}
 
@@ -1807,9 +1808,6 @@ void main(void)
 	rmAddTriggerEffect("Trade Route Set Level");
 	rmSetTriggerEffectParamInt("TradeRoute",1);
 	rmSetTriggerEffectParamInt("Level",2);
-	rmAddTriggerEffect("Trade Route Set Level");
-	rmSetTriggerEffectParamInt("TradeRoute",2);
-	rmSetTriggerEffectParamInt("Level",2);
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -2221,7 +2219,57 @@ void main(void)
 		}
 	}
 
-	// AI Hansa Leaders
+	// Blockade
+	for(i = 1; < cNumberTeams+1){
+    
+		rmCreateTrigger("Blockade_ON"+i);
+		rmCreateTrigger("Blockade_OFF"+i);
+
+		rmSwitchToTrigger(rmTriggerID("Blockade_ON"+i));
+		rmAddTriggerCondition("Team Unit Count");
+		rmSetTriggerConditionParamInt("TeamID",i);
+		rmSetTriggerConditionParam("Protounit","zpSPCIstanbulMosque");
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",2);
+		for(k=1; <= cNumberNonGaiaPlayers) {
+			if (rmGetPlayerTeam(k) == i-1) {
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpSPCBosporBlockadeShadow"); // Island Techs
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+		}
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Blockade_OFF"+i));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Blockade_OFF"+i));
+		rmAddTriggerCondition("Team Unit Count");
+		rmSetTriggerConditionParamInt("TeamID",i);
+		rmSetTriggerConditionParam("Protounit","zpSPCIstanbulMosque");
+		rmSetTriggerConditionParam("Op","<=");
+		rmSetTriggerConditionParamInt("Count",1);
+		for(k=1; <= cNumberNonGaiaPlayers) {
+			if (rmGetPlayerTeam(k) == i-1) {
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpSPCBosporBlockadeShadow"); // Island Techs
+				rmSetTriggerEffectParamInt("Status",0);
+			}
+		}
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Blockade_ON"+i));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
+
+	// AI Sultanate Leaders
 
 	for (k=1; <= cNumberNonGaiaPlayers) {
 	if (rmGetPlayerTeam(k) == 0) {

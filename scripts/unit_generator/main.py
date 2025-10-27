@@ -11,7 +11,7 @@ from pathlib import Path
 
 # ==== USER SETTINGS ==========================================================
 # Set this to the exact ProtoUnit name to copy (case-sensitive)
-UNIT_NAME: str = "deCarolean"
+UNIT_NAME: str = "zpNatJanissary"
 
 # When cloning: assign IDs starting from this value to the clones
 # (applies to <unit id> and <dbid>). Only used if SUFFIXES is non-empty.
@@ -19,7 +19,7 @@ STARTING_ID: int = 20908
 
 # Optional: completely override the base name before applying any suffixes.
 # If empty/None, the original unit name is used as base.
-NEW_NAME: str | None = "zpConsulateCarolean"
+NEW_NAME: str | None = "zpNatMercJanissary"
 
 # Create a clone for each suffix; new name will be f"{(NEW_NAME or UNIT_NAME)}{suffix}"
 # Example: ["Industrial", "Fortress"] -> ...Industrial, ...Fortress

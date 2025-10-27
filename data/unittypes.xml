@@ -34,4 +34,5 @@
   <unittype>zpSPCTradeUnit</unittype>
   <unittype>HansaTradePoint</unittype>
   <unittype>AbstractCossack</unittype>
+  <unittype>AbstractSultanGuard</unittype>
 </unittypes>
