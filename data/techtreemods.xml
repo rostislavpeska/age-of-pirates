@@ -34384,6 +34384,9 @@
       <effect type="Data" action="CannonAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCFixedGun</target>
       </effect>
+      <effect type="Data" action="AntiShipAttack" amount="-15.00" subtype="MaximumRange" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCFixedGun</target>
+      </effect>
       <effect type="Data" action="GuardianAttack" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCFixedGun</target>
       </effect>

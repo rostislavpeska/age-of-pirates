@@ -160,5 +160,8 @@
 			<flag>ApplyFlagOverrideIfGaia</flag>
 			<command mergemode="remove" page="11" column="0">Abilities</command>
 		</unit>
+		<unit name="ypSMSaltpeterElephant">
+			<flag>NotSelectable</flag>
+		</unit>
 	</protomods>
 </mods>

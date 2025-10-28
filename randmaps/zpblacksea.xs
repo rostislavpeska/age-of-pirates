@@ -235,11 +235,11 @@ void main(void)
 
 	// Lake Constraints
 	int greatLakesConstraint=rmCreateClassDistanceConstraint("avoid the great lakes", classGreatLake, 1.0);
-	int mediumGreatLakesConstraint=rmCreateClassDistanceConstraint("avoid the great lakes medium", classGreatLake, 8.0);
+	int mediumGreatLakesConstraint=rmCreateClassDistanceConstraint("avoid the great lakes medium", classGreatLake, 9.0);
 	int farGreatLakesConstraint=rmCreateClassDistanceConstraint("far avoid the great lakes", classGreatLake, 20.0);
 	int portOnShore = rmCreateTerrainDistanceConstraint("port vs land", "land", true, 3.5);
 	int avoidDeepWater=rmCreateClassDistanceConstraint("stuff avoids deep water", classDeepWater, 30.0);
-	int avoidSocket=rmCreateTypeDistanceConstraint("avoid socket", "SocketTradeRoute", 10.0);
+	int avoidSocket=rmCreateTypeDistanceConstraint("avoid socket", "Socket", 10.0);
    	int avoidSocketLong=rmCreateTypeDistanceConstraint("avoid socket long", "Socket", 50.0);
 	int avoidSocketMediumLong=rmCreateTypeDistanceConstraint("avoid socket medium long", "Socket", 30.0);
     int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 30);
@@ -323,7 +323,7 @@ void main(void)
 
 	int landMassID = rmCreateArea("land mass 1");
 	if (PlayerNum == 2) {
-		rmSetAreaSize(landMassID , rmAreaTilesToFraction(9000), rmAreaTilesToFraction(9000));
+		rmSetAreaSize(landMassID , rmAreaTilesToFraction(11000), rmAreaTilesToFraction(11000));
 	}
 	else {
 		rmSetAreaSize(landMassID , rmAreaTilesToFraction(14000), rmAreaTilesToFraction(14000));
@@ -470,8 +470,15 @@ void main(void)
 	rmSetObjectDefAllowOverlap(harbour01ID, true);
 	rmSetObjectDefMinDistance(harbour01ID, 0.0);
 	rmSetObjectDefMaxDistance(harbour01ID, 0.0);
-	if (PlayerNum == 2|| PlayerNum > 6)
-		rmPlaceObjectDefAtLoc(harbour01ID, 0, 0.15-rmXTilesToFraction(0),0.5+rmXTilesToFraction(13));
+	if (PlayerNum == 2)
+		if (blockadeSpawn == 1){
+		rmPlaceObjectDefAtLoc(harbour01ID, 0, 0.15+rmXTilesToFraction(7),0.5+rmXTilesToFraction(13));
+		}
+		else{
+			rmPlaceObjectDefAtLoc(harbour01ID, 0, 0.15+rmXTilesToFraction(0),0.5+rmXTilesToFraction(13));
+		}
+	else if (PlayerNum > 6)
+		rmPlaceObjectDefAtLoc(harbour01ID, 0, 0.15+rmXTilesToFraction(0),0.5+rmXTilesToFraction(13));
 	else
 		rmPlaceObjectDefAtLoc(harbour01ID, 0, 0.15-rmXTilesToFraction(0),0.5+rmXTilesToFraction(10));
 	vector harbourLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbour01ID, 0));
@@ -487,7 +494,14 @@ void main(void)
 	rmSetObjectDefAllowOverlap(harbour02ID, true);
 	rmSetObjectDefMinDistance(harbour02ID, 0.0);
 	rmSetObjectDefMaxDistance(harbour02ID, 0.0);
-	if (PlayerNum == 2|| PlayerNum > 6)
+	if (PlayerNum == 2)
+		if (blockadeSpawn == 1){
+			rmPlaceObjectDefAtLoc(harbour02ID, 0, 0.15+rmXTilesToFraction(18),0.5-rmXTilesToFraction(7));
+		}
+		else{
+			rmPlaceObjectDefAtLoc(harbour02ID, 0, 0.15+rmXTilesToFraction(15),0.5-rmXTilesToFraction(7));
+		}
+	else if (PlayerNum > 6)
 		rmPlaceObjectDefAtLoc(harbour02ID, 0, 0.15+rmXTilesToFraction(15),0.5-rmXTilesToFraction(7));
 	else
 		rmPlaceObjectDefAtLoc(harbour02ID, 0, 0.15+rmXTilesToFraction(15),0.5-rmXTilesToFraction(10));
@@ -540,6 +554,7 @@ void main(void)
     rmSetAreaObeyWorldCircleConstraint(northContinentID, false);
 	rmAddAreaConstraint(northContinentID, greatLakesConstraint);
 	rmAddAreaConstraint(northContinentID, avoidTradeRouteFar4);
+	rmAddAreaConstraint(northContinentID, avoidSocket);
 	rmAddAreaConstraint(northContinentID, avoidCity);
     rmSetAreaLocation(northContinentID, 0.9, 0.5);
     rmBuildArea(northContinentID);
@@ -1024,7 +1039,7 @@ void main(void)
 		}
 		else{
 			if (PlayerNum == 2){
-				kotHInstance = rmPlaceGroupingInstanceAtLoc(kotHID2,  0.07, 0.53, 0);
+				kotHInstance = rmPlaceGroupingInstanceAtLoc(kotHID2,  0.06, 0.525, 0);
 			}
 			else{
 				kotHInstance = rmPlaceGroupingInstanceAtLoc(kotHID2,  0.05, 0.51, 0);
