@@ -222,6 +222,7 @@ void main(void)
 	int avoidTradeRouteFar = rmCreateTradeRouteDistanceConstraint("trade route far", 8.0);
 	int avoidTradeRouteFar2 = rmCreateTradeRouteDistanceConstraint("trade route far 2", 10.0);
 	int avoidTradeRouteFar3 = rmCreateTradeRouteDistanceConstraint("trade route far 3", 20.0);
+	int avoidTradeRouteFar4 = rmCreateTradeRouteDistanceConstraint("trade route far 4", 30.0);
 	int avoidTradeSockets = rmCreateTypeDistanceConstraint("avoid trade sockets", "sockettraderoute", 8.0);
 	int farAvoidTradeSockets = rmCreateTypeDistanceConstraint("far avoid trade sockets", "sockettraderoute", 12.0);
 	int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 6.0);
@@ -287,8 +288,11 @@ void main(void)
 	int aztecCityConstraint2 = rmCreateBoxConstraint("stay in the aztec city 2", 0.5-rmXTilesToFraction(42), 0.5-rmZTilesToFraction(62), 0.5+rmXTilesToFraction(42), 0.5+rmZTilesToFraction(62));
 
 	int avoidCity = rmCreateTypeDistanceConstraint("avoid ccity", "AbstractWall", 7);
-	int avoidCityShort = rmCreateTypeDistanceConstraint("avoid city short", "AbstractWall", 2);
+	int avoidCityShort = rmCreateTypeDistanceConstraint("avoid city short", "AbstractWall", 1.0);
 	int avoidCityLong = rmCreateTypeDistanceConstraint("avoid city long", "AbstractWall", 20);
+	int avoidCityCenterEurope = rmCreateTypeDistanceConstraint("avoid city center europe", "NativePirates", 10);
+	int avoidCityCenterAsia = rmCreateTypeDistanceConstraint("avoid city center asia", "NativePirates", 10);
+	int avoidCityState = rmCreateTypeDistanceConstraint("avoid city state", "zpCityStateFlag", 18);
 	
 	int avoidBlock =rmCreateClassDistanceConstraint("stuff vs. blocks", rmClassID("classBlock"), 6.0);
 	int avoidBlockLong =rmCreateClassDistanceConstraint("stuff vs. blocks long", rmClassID("classBlock"), 10.0);
@@ -304,6 +308,14 @@ void main(void)
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
 	rmSetStatusText("",0.10);
+
+	// --------------- Koth 2 teams spawn ----------------
+
+	int blockadeSpawn = 0;
+
+	if (rmGetIsKOTH() == true && cNumberTeams == 2)
+		blockadeSpawn = 1;
+
 
 	// ************** INVISIBLE TERRAIN LAYERS ************
 
@@ -328,8 +340,14 @@ void main(void)
 	// Define lake area
 
 	int lakeArea = rmCreateArea("lakeArea");
-    rmSetAreaSize(lakeArea , 0.22, 0.22);
-    rmSetAreaLocation(lakeArea , 0.5, 0.5);		
+	if (PlayerNum > 6){
+		rmSetAreaSize(lakeArea , 0.20, 0.20);
+		rmSetAreaLocation(lakeArea , 0.48, 0.5);	
+	}
+	else{
+		rmSetAreaSize(lakeArea , 0.22, 0.22);
+		rmSetAreaLocation(lakeArea , 0.5, 0.5);	
+	}	
     rmSetAreaCoherence(lakeArea , 0.6);
 	rmSetAreaMinBlobs(lakeArea, 8);
     rmSetAreaMaxBlobs(lakeArea, 12);
@@ -342,8 +360,13 @@ void main(void)
     rmBuildArea(lakeArea);
 
 	int bosporArea = rmCreateArea("bosporArea");
-    rmSetAreaSize(bosporArea , rmAreaTilesToFraction(2000), rmAreaTilesToFraction(2000));
-    rmSetAreaLocation(bosporArea , 0.5, 0.5);		
+	if (PlayerNum == 2)
+    	rmSetAreaSize(bosporArea , rmAreaTilesToFraction(4000), rmAreaTilesToFraction(4000));
+	else if (PlayerNum == 3 || PlayerNum == 4)
+		rmSetAreaSize(bosporArea , rmAreaTilesToFraction(5000), rmAreaTilesToFraction(5000));
+	else
+		rmSetAreaSize(bosporArea , rmAreaTilesToFraction(6000), rmAreaTilesToFraction(6000));
+    rmSetAreaLocation(bosporArea , 0.1, 0.5);		
     rmSetAreaCoherence(bosporArea , 1.0);
     rmSetAreaElevationVariation(bosporArea, 0.0);
 	rmAddAreaToClass(bosporArea, classGreatLake);
@@ -354,7 +377,7 @@ void main(void)
     rmBuildArea(bosporArea);
 
 	int mediterraneanArea = rmCreateArea("mediterraneanArea");
-    rmSetAreaSize(mediterraneanArea , 0.06, 0.06);
+    rmSetAreaSize(mediterraneanArea , 0.04, 0.04);
     rmSetAreaLocation(mediterraneanArea , 0.0, 0.5);		
     rmSetAreaCoherence(mediterraneanArea , 1.0);
     rmSetAreaElevationVariation(mediterraneanArea, 0.0);
@@ -362,6 +385,9 @@ void main(void)
 	rmSetAreaObeyWorldCircleConstraint(mediterraneanArea, false);
 	if (rmGetIsKOTH())
 		rmSetAreaReveal(mediterraneanArea, 1);
+	rmAddAreaInfluenceSegment(mediterraneanArea, 0.0, 0.5, 0.05, 0.7);
+	rmAddAreaInfluenceSegment(mediterraneanArea, 0.05, 0.7, 0.05, 0.3);
+	rmAddAreaInfluenceSegment(mediterraneanArea, 0.05, 0.3, 0.0, 0.5);
     rmBuildArea(mediterraneanArea);
 
 	// ********************* Trade Route *******************************
@@ -376,22 +402,26 @@ void main(void)
 	int tradeRouteID = rmCreateTradeRoute();
     rmSetObjectDefTradeRouteID(stopperID, tradeRouteID);  
 	if (cNumberNonGaiaPlayers == 2){
-		rmAddTradeRouteWaypoint(tradeRouteID, 0.0, 0.5);
+		if (blockadeSpawn == 0)
+			rmAddTradeRouteWaypoint(tradeRouteID, 0.0, 0.5);
 		rmAddTradeRouteWaypoint(tradeRouteID, 0.32, 0.5);
 		rmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.71);
 		rmAddTradeRouteWaypoint(tradeRouteID, 0.7, 0.5);
 		rmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.32);
 		rmAddTradeRouteWaypoint(tradeRouteID, 0.32, 0.5);
-		rmAddTradeRouteWaypoint(tradeRouteID, 0.0, 0.5);
+		if (blockadeSpawn == 0)
+			rmAddTradeRouteWaypoint(tradeRouteID, 0.0, 0.5);
 	}
 	else{
-		rmAddTradeRouteWaypoint(tradeRouteID, 0.0, 0.5);
+		if (blockadeSpawn == 0)
+			rmAddTradeRouteWaypoint(tradeRouteID, 0.0, 0.5);
 		rmAddTradeRouteWaypoint(tradeRouteID, 0.29, 0.5);
 		rmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.7);
 		rmAddTradeRouteWaypoint(tradeRouteID, 0.7, 0.5);
 		rmAddTradeRouteWaypoint(tradeRouteID, 0.49, 0.29);
 		rmAddTradeRouteWaypoint(tradeRouteID, 0.29, 0.5);
-		rmAddTradeRouteWaypoint(tradeRouteID, 0.0, 0.5);
+		if (blockadeSpawn == 0)
+			rmAddTradeRouteWaypoint(tradeRouteID, 0.0, 0.5);
 	}
     rmBuildTradeRoute(tradeRouteID, "water_trail");
 
@@ -430,11 +460,16 @@ void main(void)
 	// Define and place Ports
 
 	int harbour01ID=rmCreateObjectDef("harbour");
-	rmAddObjectDefItem(harbour01ID, "zpTradingPostCaptureNavalOriental", 1, 0.0);
+	if (blockadeSpawn == 0){
+		rmAddObjectDefItem(harbour01ID, "zpTradingPostCaptureNavalOriental", 1, 0.0);
+		rmSetObjectDefTradeRouteID(harbour01ID, tradeRouteID);
+	}
+	else{
+		rmAddObjectDefItem(harbour01ID, "zpSPCWaterSpawnPoint", 1, 0.0);
+	}
 	rmSetObjectDefAllowOverlap(harbour01ID, true);
 	rmSetObjectDefMinDistance(harbour01ID, 0.0);
 	rmSetObjectDefMaxDistance(harbour01ID, 0.0);
-	rmSetObjectDefTradeRouteID(harbour01ID, tradeRouteID);
 	if (PlayerNum == 2|| PlayerNum > 6)
 		rmPlaceObjectDefAtLoc(harbour01ID, 0, 0.15-rmXTilesToFraction(0),0.5+rmXTilesToFraction(13));
 	else
@@ -442,11 +477,16 @@ void main(void)
 	vector harbourLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbour01ID, 0));
 
 	int harbour02ID=rmCreateObjectDef("harbour2");
-	rmAddObjectDefItem(harbour02ID, "zpTradingPostCaptureNavalOriental", 1, 0.0);
+	if (blockadeSpawn == 0){
+		rmAddObjectDefItem(harbour02ID, "zpTradingPostCaptureNavalOriental", 1, 0.0);
+		rmSetObjectDefTradeRouteID(harbour02ID, tradeRouteID);
+	}
+	else{
+		rmAddObjectDefItem(harbour02ID, "zpSPCWaterSpawnPoint", 1, 0.0);
+	}
 	rmSetObjectDefAllowOverlap(harbour02ID, true);
 	rmSetObjectDefMinDistance(harbour02ID, 0.0);
 	rmSetObjectDefMaxDistance(harbour02ID, 0.0);
-	rmSetObjectDefTradeRouteID(harbour02ID, tradeRouteID);
 	if (PlayerNum == 2|| PlayerNum > 6)
 		rmPlaceObjectDefAtLoc(harbour02ID, 0, 0.15+rmXTilesToFraction(15),0.5-rmXTilesToFraction(7));
 	else
@@ -460,14 +500,22 @@ void main(void)
 
 	rmSetNuggetDifficulty(512, 512);
 
-	int istanbulEurope = rmCreateGrouping("istanbulEU", "Istanbul_EU");
+	int istanbulEurope = -1;
+	if (blockadeSpawn == 0)
+		istanbulEurope = rmCreateGrouping("istanbulEU", "Istanbul_EU");
+	else
+		istanbulEurope = rmCreateGrouping("istanbulEU", "Istanbul_EU_Blockade");
 	rmSetGroupingMinDistance(istanbulEurope, 0.00);
     rmSetGroupingMaxDistance(istanbulEurope, 0.01);
 	rmAddGroupingToClass(istanbulEurope, rmClassID("classPlateau"));
 
 	int istanbulInstanceID1 = rmPlaceGroupingInstanceAtLoc(istanbulEurope, rmXMetersToFraction(xsVectorGetX(ControllerLoc1))+rmXTilesToFraction(8), rmZMetersToFraction(xsVectorGetZ(ControllerLoc1))+rmZTilesToFraction(15), 0);
 
-	int istanbulAsia = rmCreateGrouping("istanbulAS", "Istanbul_AS");
+	int istanbulAsia = -1;
+	if (blockadeSpawn == 0)
+		istanbulAsia = rmCreateGrouping("istanbulAS", "Istanbul_AS");
+	else
+		istanbulAsia = rmCreateGrouping("istanbulAS", "Istanbul_AS_Blockade");
 	rmSetGroupingMinDistance(istanbulAsia, 0.00);
     rmSetGroupingMaxDistance(istanbulAsia, 0.01);
 	rmAddGroupingToClass(istanbulAsia, rmClassID("classPlateau"));
@@ -491,7 +539,7 @@ void main(void)
     rmSetAreaSmoothDistance(northContinentID, 50);
     rmSetAreaObeyWorldCircleConstraint(northContinentID, false);
 	rmAddAreaConstraint(northContinentID, greatLakesConstraint);
-	rmAddAreaConstraint(northContinentID, avoidTradeRouteFar3);
+	rmAddAreaConstraint(northContinentID, avoidTradeRouteFar4);
 	rmAddAreaConstraint(northContinentID, avoidCity);
     rmSetAreaLocation(northContinentID, 0.9, 0.5);
     rmBuildArea(northContinentID);
@@ -504,36 +552,41 @@ void main(void)
 		rmAddAreaConstraint(patchID, avoidCityShort);
 		rmAddAreaConstraint(patchID, mediumGreatLakesConstraint);
 		rmAddAreaConstraint(patchID, avoidTradeRouteFar3);
+		rmAddAreaConstraint(patchID, avoidCityState);
 		if (i == 0){
 			if (PlayerNum ==2 || PlayerNum > 6){
-				rmSetAreaLocation(patchID, 0.2, 0.5+rmZTilesToFraction(51));
-				rmAddAreaInfluenceSegment(patchID, 0.15, 0.5+rmZTilesToFraction(51), 0.22, 0.5+rmZTilesToFraction(51));
+				rmSetAreaLocation(patchID, 0.2, 0.5+rmZTilesToFraction(52));
+				rmAddAreaInfluenceSegment(patchID, 0.2, 0.5+rmZTilesToFraction(52), 0.22, 0.5+rmZTilesToFraction(48));
+				rmAddAreaInfluenceSegment(patchID, 0.16, 0.5+rmZTilesToFraction(48), 0.2, 0.5+rmZTilesToFraction(52));
 			}
 			else{
 				rmSetAreaLocation(patchID, 0.2, 0.5+rmZTilesToFraction(48));
-				rmAddAreaInfluenceSegment(patchID, 0.15, 0.5+rmZTilesToFraction(48), 0.22, 0.5+rmZTilesToFraction(48));
+				rmAddAreaInfluenceSegment(patchID, 0.16, 0.5+rmZTilesToFraction(44), 0.2, 0.5+rmZTilesToFraction(48));
+				rmAddAreaInfluenceSegment(patchID, 0.2, 0.5+rmZTilesToFraction(48), 0.22, 0.5+rmZTilesToFraction(44));
 			}
 		}
 		else{
 			if (PlayerNum ==2 || PlayerNum > 6){
-				rmSetAreaLocation(patchID, 0.2, 0.5-rmZTilesToFraction(46));
-				rmAddAreaInfluenceSegment(patchID, 0.15, 0.5-rmZTilesToFraction(46), 0.22, 0.5-rmZTilesToFraction(46));
+				rmSetAreaLocation(patchID, 0.2, 0.5-rmZTilesToFraction(44));
+				rmAddAreaInfluenceSegment(patchID, 0.2, 0.5-rmZTilesToFraction(44), 0.22, 0.5-rmZTilesToFraction(40));
+				rmAddAreaInfluenceSegment(patchID, 0.16, 0.5-rmZTilesToFraction(40), 0.2, 0.5-rmZTilesToFraction(44));
 			}
 			else{
-				rmSetAreaLocation(patchID, 0.2, 0.5-rmZTilesToFraction(49));
-				rmAddAreaInfluenceSegment(patchID, 0.15, 0.5-rmZTilesToFraction(49), 0.22, 0.5-rmZTilesToFraction(49));
+				rmSetAreaLocation(patchID, 0.2, 0.5-rmZTilesToFraction(47));
+				rmAddAreaInfluenceSegment(patchID, 0.2, 0.5-rmZTilesToFraction(47), 0.22, 0.5-rmZTilesToFraction(43));
+				rmAddAreaInfluenceSegment(patchID, 0.16, 0.5-rmZTilesToFraction(43), 0.2, 0.5-rmZTilesToFraction(47));
 			}
 		}
 		rmBuildArea(patchID);
 	}
 
-	// Create south elevated area  
+	// Create elevated area  
     int terrainElevatedID = rmCreateArea("terrain_elevated");
     rmSetAreaSize(terrainElevatedID, 0.45, 0.45);
     rmSetAreaCoherence(terrainElevatedID, 0.35);
     rmSetAreaBaseHeight(terrainElevatedID, 4.8);
     rmAddAreaConstraint(terrainElevatedID, farGreatLakesConstraint);
-    rmSetAreaElevationType(terrainElevatedID, cElevTurbulence);
+	rmAddAreaConstraint(terrainElevatedID, avoidTradeRouteFar4);
 	rmSetAreaElevationType(terrainElevatedID, cElevTurbulence);
 	rmAddAreaConstraint(terrainElevatedID, avoidCityLong);
     rmSetAreaElevationVariation(terrainElevatedID, 6.0);
@@ -774,15 +827,29 @@ void main(void)
 	float teamStartLoc = rmRandFloat(0.0, 1.0);
 
 	if (PlayerNum == 2){
-		if (teamStartLoc > 0.5)
-		{
-			rmPlacePlayer(1, 0.37, 0.8);
-			rmPlacePlayer(2, 0.37, 0.2);
+		if (blockadeSpawn == 1){
+			if (teamStartLoc > 0.5)
+			{
+				rmPlacePlayer(1, 0.55, 0.88);
+				rmPlacePlayer(2, 0.55, 0.12);
+			}
+			else
+			{
+				rmPlacePlayer(1, 0.55, 0.12);
+				rmPlacePlayer(2, 0.55, 0.88);
+			}
 		}
-		else
-		{
-			rmPlacePlayer(1, 0.37, 0.2);
-			rmPlacePlayer(2, 0.37, 0.8);
+		else{
+			if (teamStartLoc > 0.5)
+			{
+				rmPlacePlayer(1, 0.27, 0.86);
+				rmPlacePlayer(2, 0.27, 0.14);
+			}
+			else
+			{
+				rmPlacePlayer(1, 0.27, 0.14);
+				rmPlacePlayer(2, 0.27, 0.86);
+			}
 		}
 	}
 	else{
@@ -826,19 +893,18 @@ void main(void)
 
 	rmSetObjectDefMinDistance(TCID, 0.0);
 	rmSetObjectDefMaxDistance(TCID, 30);
-	if (cNumberNonGaiaPlayers <= 6) {
-		rmSetObjectDefMaxDistance(TCID, 20);
+	if (cNumberNonGaiaPlayers == 2) {
+		rmSetObjectDefMaxDistance(TCID, 0);
 	}
 	else {
 		rmSetObjectDefMaxDistance(TCID, 20);
+		rmAddObjectDefConstraint(TCID, avoidTownCenterFar);
+		rmAddObjectDefConstraint(TCID, avoidPlateau);
+		rmAddObjectDefConstraint(TCID, longPlayerEdgeConstraint);
+		rmAddObjectDefConstraint(TCID, avoidImpassableLand);
+		rmAddObjectDefConstraint(TCID, farAvoidTradeSockets);
+		rmAddObjectDefConstraint(TCID, avoidWater20);
 	}
-	rmAddObjectDefConstraint(TCID, avoidTownCenterFar);
-	rmAddObjectDefConstraint(TCID, avoidPlateau);
-	rmAddObjectDefConstraint(TCID, longPlayerEdgeConstraint);
-	rmAddObjectDefConstraint(TCID, avoidImpassableLand);
-	rmAddObjectDefConstraint(TCID, farAvoidTradeSockets);
-	rmAddObjectDefConstraint(TCID, avoidWater20);
-
     int startingUnits = rmCreateStartingUnitsObjectDef(5.0);
 	rmSetObjectDefMinDistance(startingUnits, 5.0);
 	rmSetObjectDefMaxDistance(startingUnits, 10.0);
@@ -926,10 +992,10 @@ void main(void)
 		vector centerPos = xsVectorSet(centerX, 0, centerZ);
 		vector playerPos = xsVectorSet(playerX, 0, playerZ);
 		vector playerToCenter = xsVectorNormalize(centerPos - playerPos);
-		if (PlayerNum == 3 || PlayerNum == 5 || PlayerNum == 7 || PlayerNum == 6 || PlayerNum == 8)
-			int distance = 50; // 10 meters. Increase until everything works.
+		if (PlayerNum == 4)
+			int distance = 40; // 10 meters. Increase until everything works.
 		else
-			distance = 40; // 10 meters. Increase until everything works.
+			distance = 50; // 10 meters. Increase until everything works.
 		vector flagPos = playerPos + playerToCenter * distance;
 		float flagX = xsVectorGetX(flagPos);
 		float flagZ = xsVectorGetZ(flagPos);
@@ -946,15 +1012,33 @@ void main(void)
 
 	//**************************** Kongs's Castle ***********************************
 
-   if (rmGetIsKOTH()){
-      int kotHID2 = rmCreateGrouping("koth castle", "Caribbean_Naval_KotH");
-      rmSetGroupingMinDistance(kotHID2, 0.00);
-      rmSetGroupingMaxDistance(kotHID2, 0.01);
-      rmAddGroupingToClass(kotHID2, rmClassID("classPlateau"));
-      //rmPlaceGroupingAtLoc(kotHID2, 0, 0.5, 0.5, 1);
+	if (rmGetIsKOTH()){
+		int kotHID2 = rmCreateGrouping("koth castle", "Caribbean_Naval_KotH");
+		rmSetGroupingMinDistance(kotHID2, 0.00);
+		rmSetGroupingMaxDistance(kotHID2, 0.01);
+		rmAddGroupingToClass(kotHID2, rmClassID("classPlateau"));
+		//rmPlaceGroupingAtLoc(kotHID2, 0, 0.5, 0.5, 1);
 
-      int kotHInstance = rmPlaceGroupingInstanceAtLoc(kotHID2,  0.5, 0.5, 0);
-   }
+		if (blockadeSpawn == 0){
+			int kotHInstance = rmPlaceGroupingInstanceAtLoc(kotHID2,  0.5, 0.5, 0);
+		}
+		else{
+			if (PlayerNum == 2){
+				kotHInstance = rmPlaceGroupingInstanceAtLoc(kotHID2,  0.07, 0.53, 0);
+			}
+			else{
+				kotHInstance = rmPlaceGroupingInstanceAtLoc(kotHID2,  0.05, 0.51, 0);
+			}
+			int dockAvoiderID = rmCreateObjectDef("dock avoider");
+			rmAddObjectDefItem(dockAvoiderID, "zpSPCDockAvoider", 1, 0.0);
+			rmSetObjectDefAllowOverlap(dockAvoiderID, true);
+			rmSetObjectDefMinDistance(dockAvoiderID, 0.0);
+			rmSetObjectDefMaxDistance(dockAvoiderID, 0.0);  
+			rmPlaceObjectDefAtLoc(dockAvoiderID, 0, 0.07, 0.63);
+			rmPlaceObjectDefAtLoc(dockAvoiderID, 0, 0.07, 0.37);
+
+		}
+	}
 	
 
 	// **************** PLACE RESOURCES ****************
@@ -1226,6 +1310,14 @@ void main(void)
 	int sultanateTower21 = rmGetGroupingInstanceUnitByType(istanbulInstanceID2, "deSPCSocketCityTower")+varIncrement;
 	int sultanateTower22 = rmGetGroupingInstanceUnitByType(istanbulInstanceID2, "zpSPCSocketCityTowerClone")+varIncrement;
 
+	if (blockadeSpawn == 1) {
+		int sultanateFixedGun1 = rmGetGroupingInstanceUnitByType(istanbulInstanceID1, "zpSPCFixedGunSocket")+varIncrement;
+		int sultanateFixedGun2 = rmGetGroupingInstanceUnitByType(istanbulInstanceID2, "zpSPCFixedGunSocket")+varIncrement;
+
+		int sultanateFixedGunBase1 = rmGetGroupingInstanceUnitByType(istanbulInstanceID1, "zpSPCFixedGunBase")+varIncrement;
+		int sultanateFixedGunBase2 = rmGetGroupingInstanceUnitByType(istanbulInstanceID2, "zpSPCFixedGunBase")+varIncrement;
+	}
+
 	int kothCastle = rmGetGroupingInstanceUnitByType(kotHInstance, "zpKingsHillNaval");
 	vector kothLoc = rmGetUnitPosition(kothCastle);
 
@@ -1270,6 +1362,13 @@ void main(void)
 	xsArraySetInt(sultanateTowers, 1, sultanateTower12);
 	xsArraySetInt(sultanateTowers, 2, sultanateTower21);
 	xsArraySetInt(sultanateTowers, 3, sultanateTower22);
+
+	// Sultanate Fixed Gun Base Array
+	int sultanateFixedGunBases = xsArrayCreateInt(2, -1, "Sultanate Fixed Gun Bases");
+	xsArraySetInt(sultanateFixedGunBases, 0, sultanateFixedGunBase1);
+	xsArraySetInt(sultanateFixedGunBases, 1, sultanateFixedGunBase2);
+
+	int sultanateFixedGunBaseID = -1;
 
 	// Strings
 
@@ -1879,6 +1978,13 @@ void main(void)
 		rmCreateTrigger("BuildTower22_ON_Plr"+k);
 		rmCreateTrigger("BuildTower22_OFF_Plr"+k);
 
+		if (blockadeSpawn == 1) {
+			rmCreateTrigger("BuildFixedGun1_ON_Plr"+k);
+			rmCreateTrigger("BuildFixedGun1_OFF_Plr"+k);
+			rmCreateTrigger("BuildFixedGun2_ON_Plr"+k);
+			rmCreateTrigger("BuildFixedGun2_OFF_Plr"+k);
+		}
+
 		rmSwitchToTrigger(rmTriggerID("BuildTower11_ON_Plr"+k));
 		rmAddTriggerCondition("Units in Area");
 		rmSetTriggerConditionParam("DstObject",""+sultanateTower11);
@@ -2003,6 +2109,10 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower11_ON_Plr"+k));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower12_ON_Plr"+k));
+		if (blockadeSpawn == 1) {
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun1_ON_Plr"+k));
+		}
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -2016,6 +2126,68 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower21_ON_Plr"+k));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower22_ON_Plr"+k));
+		if (blockadeSpawn == 1) {
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun2_ON_Plr"+k));
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildFixedGun1_ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+sultanateFixedGun1);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpSPCFixedGunAIProxy");
+		rmSetTriggerConditionParamInt("Dist",10);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("Socket",""+sultanateFixedGun1);
+		rmSetTriggerEffectParam("Protounit","zpSPCFixedGun");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun1_OFF_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildFixedGun1_OFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun1_ON_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildFixedGun2_ON_Plr"+k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject",""+sultanateFixedGun2);
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("UnitType","zpSPCFixedGunAIProxy");
+		rmSetTriggerConditionParamInt("Dist",10);
+		rmSetTriggerConditionParam("Op",">=");
+		rmSetTriggerConditionParamInt("Count",1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID",k);
+		rmSetTriggerEffectParam("Socket",""+sultanateFixedGun2);
+		rmSetTriggerEffectParam("Protounit","zpSPCFixedGun");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun2_OFF_Plr"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("BuildFixedGun2_OFF_Plr"+k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1",1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun2_ON_Plr"+k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
@@ -2034,6 +2206,9 @@ void main(void)
 			sultanateCenterID = xsArrayGetInt(sultanateCenters, s-1);
 			sultanateMosqueID = xsArrayGetInt(sultanateMosques, s-1);
 			sultanateDockID = xsArrayGetInt(sultanateDocks, s-1);
+			if (blockadeSpawn == 1) {
+				sultanateFixedGunBaseID = xsArrayGetInt(sultanateFixedGunBases, s-1);
+			}
 			rmSwitchToTrigger(rmTriggerID("Sultanate"+s+"ON_Plr"+k));
 			rmAddTriggerCondition("Units in Area");
 			rmSetTriggerConditionParam("DstObject",""+sultanateSocketID);
@@ -2042,6 +2217,11 @@ void main(void)
 			rmSetTriggerConditionParamInt("Dist",35);
 			rmSetTriggerConditionParam("Op",">=");
 			rmSetTriggerConditionParamInt("Count",1);
+			if (blockadeSpawn == 1) {
+				rmAddTriggerEffect("Convert");
+				rmSetTriggerEffectParam("SrcObject",""+sultanateFixedGunBaseID);
+				rmSetTriggerEffectParamInt("PlayerID",k);
+			}
 			rmAddTriggerEffect("Convert");
 			rmSetTriggerEffectParam("SrcObject",""+sultanateCenterID);
 			rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2105,6 +2285,18 @@ void main(void)
 			rmSetTriggerEffectParamInt("TrgPlayer",k);
 			rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
 			rmSetTriggerEffectParamInt("Dist",50);
+			rmAddTriggerEffect("Convert Units in Area");
+			rmSetTriggerEffectParam("SrcObject",""+sultanateCenterID);
+			rmSetTriggerEffectParamInt("SrcPlayer",0);
+			rmSetTriggerEffectParamInt("TrgPlayer",k);
+			rmSetTriggerEffectParam("UnitType","zpSPCFixedGun");
+			rmSetTriggerEffectParamInt("Dist",50);
+			rmAddTriggerEffect("Convert Units in Area");
+			rmSetTriggerEffectParam("SrcObject",""+sultanateCenterID);
+			rmSetTriggerEffectParamInt("SrcPlayer",0);
+			rmSetTriggerEffectParamInt("TrgPlayer",k);
+			rmSetTriggerEffectParam("UnitType","zpSPCFixedGunSocket");
+			rmSetTriggerEffectParamInt("Dist",50);
 			rmAddTriggerEffect("Fire Event");
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Sultanate"+s+"OFF_Plr"+k));
 			if (s == 1){
@@ -2128,6 +2320,11 @@ void main(void)
 			rmSetTriggerConditionParamInt("Dist",35);
 			rmSetTriggerConditionParam("Op","==");
 			rmSetTriggerConditionParamInt("Count",0);
+			if (blockadeSpawn == 1) {
+				rmAddTriggerEffect("Convert");
+				rmSetTriggerEffectParam("SrcObject",""+sultanateFixedGunBaseID);
+				rmSetTriggerEffectParamInt("PlayerID",0);
+			}
 			rmAddTriggerEffect("Convert");
 			rmSetTriggerEffectParam("SrcObject",""+sultanateCenterID);
 			rmSetTriggerEffectParamInt("PlayerID",0);
@@ -2188,6 +2385,18 @@ void main(void)
 			rmSetTriggerEffectParamInt("TrgPlayer",0);
 			rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
 			rmSetTriggerEffectParamInt("Dist",50);
+			rmAddTriggerEffect("Convert Units in Area");
+			rmSetTriggerEffectParam("SrcObject",""+sultanateCenterID);
+			rmSetTriggerEffectParamInt("SrcPlayer",k);
+			rmSetTriggerEffectParamInt("TrgPlayer",0);
+			rmSetTriggerEffectParam("UnitType","zpSPCFixedGun");
+			rmSetTriggerEffectParamInt("Dist",50);
+			rmAddTriggerEffect("Convert Units in Area");
+			rmSetTriggerEffectParam("SrcObject",""+sultanateCenterID);
+			rmSetTriggerEffectParamInt("SrcPlayer",k);
+			rmSetTriggerEffectParamInt("TrgPlayer",0);
+			rmSetTriggerEffectParam("UnitType","zpSPCFixedGunSocket");
+			rmSetTriggerEffectParamInt("Dist",50);
 			rmAddTriggerEffect("Fire Event");
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Sultanate"+s+"ON_Plr"+k));
 			rmAddTriggerEffect("Fire Event");
@@ -2197,12 +2406,20 @@ void main(void)
 				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower11_ON_Plr"+k));
 				rmAddTriggerEffect("Disable Trigger");
 				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower12_ON_Plr"+k));
+				if (blockadeSpawn == 1) {
+					rmAddTriggerEffect("Disable Trigger");
+					rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun1_ON_Plr"+k));
+				}
 			}
 			else{
 				rmAddTriggerEffect("Disable Trigger");
 				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower21_ON_Plr"+k));
 				rmAddTriggerEffect("Disable Trigger");
 				rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower22_ON_Plr"+k));
+				if (blockadeSpawn == 1) {
+					rmAddTriggerEffect("Disable Trigger");
+					rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildFixedGun2_ON_Plr"+k));
+				}
 			}
 			rmAddTriggerEffect("ZP Set Tech Status (XS)");
 			rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2440,5 +2657,31 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
+
+	// Testing
+
+	/*for (k=1; <= cNumberNonGaiaPlayers) {
+
+	rmCreateTrigger("ZP Test Plr"+k);
+	rmAddTriggerCondition("ZP PLAYER Human");
+	rmSetTriggerConditionParamInt("Player",k);
+	rmSetTriggerConditionParam("MyBool", "true");
+	rmAddTriggerEffect("Set Tech Status");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParamFloat("TechID",537);
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Set Tech Status");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParamFloat("TechID",2804);
+	rmSetTriggerEffectParamInt("Status",2);
+	rmAddTriggerEffect("Set Tech Status");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParamFloat("TechID",527);
+	rmSetTriggerEffectParamInt("Status",2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}*/
 
 } // END

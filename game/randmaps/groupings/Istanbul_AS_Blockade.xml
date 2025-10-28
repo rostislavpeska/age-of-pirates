@@ -375,13 +375,12 @@
 		<unit variation="69" posx="-21.2635" posz="32.1758" orientx="1.0000" orienty="0.0000" orientz="-0.0065">zpHarbourPlatform</unit>
 		<unit variation="5" posx="3.1662" posz="28.3825" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCityStateFlag</unit>
 		<unit variation="3" posx="18.8913" posz="28.3825" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCityStateFlag</unit>
+        <unit variation="3" posx="11.8913" posz="30.3825" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCFixedGunSocket</unit>
+        <unit variation="3" posx="11.8913" posz="30.3825" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCFixedGunBase</unit>
 		<unit variation="0" posx="1.7821" posz="33.6772" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPathBlock3</unit>
-		<unit variation="0" posx="-40.6686" posz="30.6261" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
 		<unit variation="4" posx="25.1649" posz="30.4233" orientx="-0.0262" orienty="0.0000" orientz="-0.9997">zpHarbourPlatform</unit>
 		<unit variation="8" posx="-5.2172" posz="31.0941" orientx="1.0000" orienty="0.0000" orientz="-0.0021">zpNativeHouseVenetianB</unit>
 		<unit variation="0" posx="-30.2619" posz="34.2712" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPathBlock3</unit>
-		<unit variation="0" posx="-36.8609" posz="34.1767" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPathBlock3</unit>
-		<unit variation="0" posx="-43.5972" posz="34.3369" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPathBlock3</unit>
 		<unit variation="187" posx="-27.2438" posz="31.3625" orientx="-1.0000" orienty="0.0000" orientz="0.0015">zpNativeHouseVenetianD</unit>
 		<unit variation="4" posx="-34.2994" posz="34.1291" orientx="0.0078" orienty="0.0000" orientz="1.0000">zpHarbourPlatform</unit>
 		<unit variation="177" posx="29.9090" posz="35.5032" orientx="0.9977" orienty="0.0000" orientz="0.0680">zpHarbourShip</unit>
@@ -413,7 +412,6 @@
 		<unit variation="0" posx="-0.5052" posz="36.5519" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="-19.1730" posz="37.2755" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="-4.8683" posz="37.0448" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
-		<unit variation="0" posx="-40.3635" posz="37.5719" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="-12.6253" posz="37.2284" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="-26.3651" posz="37.1607" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
 		<unit variation="167" posx="1.9900" posz="42.7869" orientx="-1.0000" orienty="0.0000" orientz="0.0060">zpHarbourPlatform</unit>

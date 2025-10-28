@@ -152,5 +152,13 @@
             <displaynameid>303262</displaynameid>
             <civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>
         </unit>
+		<unit name="zpKingsHillNaval">
+			<civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>
+		</unit>
+		<unit name="zpSPCFixedGun">
+			<civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>
+			<flag>ApplyFlagOverrideIfGaia</flag>
+			<command mergemode="remove" page="11" column="0">Abilities</command>
+		</unit>
 	</protomods>
 </mods>
