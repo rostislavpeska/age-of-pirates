@@ -47758,6 +47758,7 @@
       <rof>3.000000</rof>
       <damagebonus type="AbstractFort">3.000000</damagebonus>
       <damagebonus type="TradingPost">0.500000</damagebonus>
+      <damagebonus type="AbstractFishingBoat">0.500000</damagebonus>
       <damagebonus type="Frigate">2.000000</damagebonus>
       <damagebonus type="ypFuchuan">2.000000</damagebonus>
       <damagebonus type="ypTekkousen">2.000000</damagebonus>
@@ -65978,6 +65979,7 @@
       <rof>3.000000</rof>
       <damagebonus type="AbstractFort">3.000000</damagebonus>
       <damagebonus type="TradingPost">0.500000</damagebonus>
+      <damagebonus type="AbstractFishingBoat">0.500000</damagebonus>
       <damagebonus type="Frigate">2.000000</damagebonus>
       <damagebonus type="ypFuchuan">2.000000</damagebonus>
       <damagebonus type="ypTekkousen">2.000000</damagebonus>
@@ -67250,7 +67252,7 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\church\church_icon.png</icon>
     <minimapicon>ui\minimap\religious_small</minimapicon>
-    <portraiticon>resources\art\buildings\church\church_portrait.png</portraiticon>
+    <portraiticon>resources\art\buildings\spc\sultan_mosque.png</portraiticon>
     <rollovertextid>302308</rollovertextid>
     <shortrollovertextid>302307</shortrollovertextid>
     <initialhitpoints>3000.0000</initialhitpoints>
