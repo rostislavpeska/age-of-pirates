@@ -3281,6 +3281,10 @@
       <string _locid="303282">ZP NAT Merc Sultan's Guard</string>
       <string _locid="303283">ZP SPC Istanbul City Market</string>
       <string _locid="303284">ZP Istanbul Prop Buildings</string>
+      <string _locid="303285">Naval Fixed Gun</string>
+      <string _locid="303286">Mighty Fixed gun, can only attack ships.</string>
+      <string _locid="303287">ZP SPC Dock Avoider</string>
+      <string _locid="303288">Can't build Dock next to a King of the Sea Castle</string>
 
       
       <!-- ======================================== -->

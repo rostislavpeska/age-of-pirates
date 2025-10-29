@@ -9,6 +9,8 @@
       </texture>
       <texture name="Masks" override="buildings\market\textures\oriental_market_Masks">
       </texture>
+      <texture name="Details" override="buildings\market\textures\oriental_market_Details">
+      </texture>
     </parameters>
   </submaterial>
 </material>

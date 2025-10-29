@@ -60057,6 +60057,7 @@
     <unittype>Unattackable</unittype>
     <unittype>NativeBuilding</unittype>
     <unittype>EmbellishmentClass</unittype>
+    <unittype>CivilWarCityState</unittype>
     <flag>HeroName1</flag>
     <flag>MinimapDisplayOnTop</flag>
     <flag>Immoveable</flag>
@@ -67570,6 +67571,7 @@
     <unittype>Unattackable</unittype>
     <unittype>NativeBuilding</unittype>
     <unittype>EmbellishmentClass</unittype>
+    <unittype>CivilWarCityState</unittype>
     <flag>MinimapDisplayOnTop</flag>
     <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
@@ -68549,6 +68551,38 @@
     <flag>NoIdleActions</flag>
 		<flag>StartOnNoUpdate</flag>
     <flag>NotSelectable</flag>
+  </unit>
+  <unit id="20936" name="zpSPCDockAvoider">
+    <dbid>20936</dbid>
+    <displaynameid>303287</displaynameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>air</movementtype>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0.0000</los>
+    <unittype>Unattackable</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <flag>NoBloodOnDeath</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>NoHPBar</flag>
+    <flag>NotDeleteable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NonCollideable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NonSolid</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>Tracked</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>DisplayRange</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <tactics>waterspawnpoint.tactics</tactics>
   </unit>
 
   

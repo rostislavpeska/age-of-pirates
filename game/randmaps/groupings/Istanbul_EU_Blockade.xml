@@ -26,6 +26,8 @@
 		<unit variation="167" posx="21.3403" posz="-27.0336" orientx="1.0000" orienty="0.0000" orientz="0.0001">zpHarbourPlatform</unit>
 		<unit variation="3" posx="-24.2184" posz="-31.5604" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpCityStateFlag</unit>
 		<unit variation="5" posx="-10.1653" posz="-31.5604" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpCityStateFlag</unit>
+		<unit variation="5" posx="-16.1653" posz="-26.5604" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCFixedGunSocket</unit>
+		<unit variation="5" posx="-16.1653" posz="-26.5604" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCFixedGunBase</unit>
 		<unit variation="0" posx="-33.0966" posz="-26.0598" orientx="-1.0000" orienty="0.0000" orientz="-0.0002">SPCPathBlock3</unit>
 		<unit variation="0" posx="-30.1880" posz="-29.0425" orientx="-0.0002" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="4" posx="-34.3057" posz="-29.4498" orientx="0.0018" orienty="0.0000" orientz="1.0000">zpHarbourPlatform</unit>

@@ -373,6 +373,18 @@ minInterval 1
    {
       xsEnableRule("zpCathedralConstructionMonitor");
    }
+   if (getGaiaUnitCount(cUnitTypezpNativeCossackChurch) > 0)
+   {
+      xsEnableRule("zpCossackTechMonitor");
+      xsEnableRule("nativeWagonMonitor");
+   }
+   if (getGaiaUnitCount(cUnitTypezpNativeHouseHansaBig) > 0)
+   {
+      xsEnableRule("zpHansaTechMonitor");
+      xsEnableRule("MaintainHansaShips");
+      xsEnableRule("nativeWagonMonitor");
+      xsEnableRule("TeutonicFortManager");
+   }
     
    xsDisableSelf();
 }
@@ -3999,6 +4011,228 @@ minInterval 30
 }
 
 //==============================================================================
+// Teutonic Fort
+//==============================================================================
+
+rule TeutonicFortManager
+inactive
+minInterval 30
+{
+   if (aiTreatyActive() == true)
+   {
+      return;
+   }
+
+   int fortUnitID = -1;
+   int buildingQuery = -1;
+   int numberFound = 0;
+   int numberMilitaryBuildings = 0;
+   int buildingID = -1;
+   int availableFortWagon = findWagonToBuild(cUnitTypezpTeutonicFortWagon);
+
+   // We have a Fort Wagon but also already have a forward base, default the Fort position.
+   if ((availableFortWagon >= 0) && (gForwardBaseState != cForwardBaseStateNone))
+   {
+      createSimpleBuildPlan(cUnitTypezpTeutonicFort, 1, 87, true, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
+      return;
+   }
+
+   switch (gForwardBaseState)
+   {
+      case cForwardBaseStateNone:
+      {
+         // We don't have a forward base, if we have a suitable Wagon we can start the chain.
+         vector location = cInvalidVector;
+         if (availableFortWagon > 0) // AssertiveWall: changed from >=0
+         {
+            // Get the Fort Wagon, start a build plan, if we go forward we try to defend it.
+            //vector location = cInvalidVector;  AssertiveWall: moved up above
+   
+            if ((btOffenseDefense >= 0.0) && (cDifficultyCurrent >= cDifficultyModerate))
+            {
+               location = selectForwardBaseLocation();
+            }
+   
+            if (location == cInvalidVector)
+            {
+               createSimpleBuildPlan(cUnitTypezpTeutonicFort, 1, 87, true, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
+               return;
+            }
+   
+            gForwardBaseLocation = location;
+            gForwardBaseBuildPlan = aiPlanCreate("Fort build plan ", cPlanBuild);
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanBuildingTypeID, 0, cUnitTypezpTeutonicFort);
+            aiPlanSetDesiredPriority(gForwardBaseBuildPlan, 87);
+            aiPlanAddUnitType(gForwardBaseBuildPlan, cUnitTypeFortWagon, 1, 1, 1);
+   
+            // Instead of base ID or areas, use a center position.
+            aiPlanSetVariableVector(gForwardBaseBuildPlan, cBuildPlanCenterPosition, 0, location);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanCenterPositionDistance, 0, 50.0);
+   
+            // Weigh it to stay very close to center point.
+            aiPlanSetVariableVector(gForwardBaseBuildPlan, cBuildPlanInfluencePosition, 0, location);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluencePositionDistance, 0, 50.0); // 100m range.
+            // 100 Points for center.
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluencePositionValue, 0, 100.0); 
+            // Linear slope falloff.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); 
+   
+            // Add position influence for nearby Forts.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitTypeID, 0, cUnitTypezpTeutonicFort); 
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitDistance, 0, 50.0);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitValue, 0, -200.0); // -200 points per fort
+            // Cliff falloff.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitFalloff, 0, cBPIFalloffNone); 
+   
+            // AssertiveWall: Add position influence for forts building near docks on island maps
+            if (gStartOnDifferentIslands == true)
+            {
+               aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitTypeID, 0, gDockUnit); 
+               aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitDistance, 0, 30.0);
+               aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitValue, 0, 20.0); // 20 points per dock
+               aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitFalloff, 0, cBPIFalloffLinear); 
+            }
+
+            aiPlanSetActive(gForwardBaseBuildPlan);
+   
+            // Chat to my allies.
+            if (xsGetTime() > (gLastFBMessageSend + 180 * 1000)) // 3 minute buffer
+            {
+               sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+               gLastFBMessageSend = xsGetTime();
+            }
+   
+            gForwardBaseState = cForwardBaseStateBuilding;
+            debugBuildings("");
+            debugBuildings("BUILDING FORWARD BASE, MOVING DEFEND PLANS TO COVER");
+            debugBuildings("PLANNED LOCATION IS " + gForwardBaseLocation);
+            debugBuildings("");
+   
+            if (gDefenseReflex == false)
+            {
+               endDefenseReflex(); // Causes it to move to the new location.
+            }
+         }
+         break;
+      }
+      case cForwardBaseStateBuilding:
+      {
+         fortUnitID = getUnitByLocation(cUnitTypezpTeutonicFort, cMyID, cUnitStateAlive, gForwardBaseLocation, 100.0);
+         if (fortUnitID < 0)
+         {
+            // Check for other military buildings.
+            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 100.0);
+            numberFound = kbUnitQueryExecute(buildingQuery);
+            numberMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
+            for (i = 0; < numberFound)
+            {
+               buildingID = kbUnitQueryGetResult(buildingQuery, i);
+               for (j = 0; < numberMilitaryBuildings)
+               {
+                  if (kbUnitIsType(buildingID, xsArrayGetInt(gMilitaryBuildings, j)) == true)
+                  {
+                     fortUnitID = buildingID;
+                     break;
+                  }
+               }
+               if (fortUnitID >= 0)
+               {
+                  break;
+               }
+            }
+         }
+         if (fortUnitID >= 0)
+         { // Building exists and is complete, go to state Active.
+            if (kbUnitGetBaseID(fortUnitID) >= 0)
+            { // Base has been created for it.
+               // AssertiveWall: Now build wall
+               if (gStartOnDifferentIslands == false && gPirateBlockWalls == false)
+               {
+                  xsEnableRule("forwardBaseWall"); // AssertiveWall: Chain of rules to build walls and towers
+               }
+               gForwardBaseState = cForwardBaseStateActive;
+               gForwardBaseID = kbUnitGetBaseID(fortUnitID);
+               gForwardBaseLocation = kbUnitGetPosition(fortUnitID);
+               gForwardBaseUpTime = xsGetTime();
+               gForwardBaseShouldDefend = kbUnitIsType(fortUnitID, cUnitTypezpTeutonicFort);
+               debugBuildings("Forward base location is " + gForwardBaseLocation + ", Base ID is " + 
+                  gForwardBaseID + ", Unit ID is " + fortUnitID);
+               debugBuildings("");
+               debugBuildings("FORWARD BASE COMPLETED, GOING TO STATE ACTIVE");
+               debugBuildings("");
+            }
+            else
+            {
+               debugBuildings("");
+               debugBuildings("FORT COMPLETE, WAITING FOR FORWARD BASE ID");
+               debugBuildings("");
+            }
+         }
+         else // Check if plan still exists. If not, go back to state 'none'.
+         {
+            if (aiPlanGetState(gForwardBaseBuildPlan) < 0)
+            { // It failed?
+               gForwardBaseState = cForwardBaseStateNone;
+               gForwardBaseLocation = cInvalidVector;
+               gForwardBaseID = -1;
+               gForwardBaseBuildPlan = -1;
+               gForwardBaseShouldDefend = false;
+               debugBuildings("");
+               debugBuildings("FORWARD BASE PLAN FAILED, RETURNING TO STATE NONE");
+               debugBuildings("");
+            }
+         }
+         break;
+      }
+      case cForwardBaseStateActive:
+      { // Normal state. If fort is destroyed and base overrun, bail.
+         fortUnitID = getUnitByLocation(cUnitTypezpTeutonicFort, cMyID, cUnitStateAlive, gForwardBaseLocation, 50.0);
+         if (fortUnitID < 0)
+         {
+            // Check for other military buildings.
+            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 100.0);
+            numberFound = kbUnitQueryExecute(buildingQuery);
+            numberMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
+            for (i = 0; < numberFound)
+            {
+               buildingID = kbUnitQueryGetResult(buildingQuery, i);
+               for (j = 0; < numberMilitaryBuildings)
+               {
+                  if (kbUnitIsType(buildingID, xsArrayGetInt(gMilitaryBuildings, j)) == true)
+                  {
+                     fortUnitID = buildingID;
+                     break;
+                  }
+               }
+               if (fortUnitID >= 0)
+               {
+                  break;
+               }
+            }
+         }
+         if (fortUnitID < 0)
+         {
+            // Fort is missing, is base still OK?
+            if (((gDefenseReflexBaseID == gForwardBaseID) && (gDefenseReflexPaused == true)) ||
+               (kbBaseGetNumberUnits(cMyID, gForwardBaseID, cPlayerRelationSelf, cUnitTypeBuilding) < 1)) 
+            {  // No, not OK. Get outa Dodge.
+               gForwardBaseState = cForwardBaseStateNone;
+               gForwardBaseID = -1;
+               gForwardBaseLocation = cInvalidVector;
+               gForwardBaseShouldDefend = false;
+
+               endDefenseReflex();
+               debugBuildings("");
+               debugBuildings("ABANDONING FORWARD BASE, RETREATING TO MAIN BASE");
+               debugBuildings("");
+            }
+         }
+         break;
+      }
+   }
+}
+
+//==============================================================================
 // Native Wagon Monitor
 //==============================================================================
 rule nativeWagonMonitor
@@ -4112,6 +4346,14 @@ minInterval 15
          case cUnitTypezpBourbonSummerPalaceWagon:
          {
             buildingType = cUnitTypezpBourbonSummerPalace;
+         }
+         case cUnitTypezpCossackStableWagon:
+         {
+            buildingType = cUnitTypezpCossackStable;
+         }
+         case cUnitTypezpHansaEmbassyWagon:
+         {
+            buildingType = cUnitTypezpHansaEmbassy;
          }
       }
 
@@ -4768,6 +5010,129 @@ minInterval 60
       canDisableSelf &= researchSimpleTechByCondition(cTechzpVeniceExpeditionaryFleet,
       []() -> bool { return (kbUnitCount(cMyID, cUnitTypezpVeniceEmbassy, cUnitStateABQ) >= 1); },
       cUnitTypezpVeniceEmbassy);
+
+   if (canDisableSelf == true)
+   {
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
+// Maintain Proxies in Hansa Trading Posts
+//==============================================================================
+
+rule MaintainHansaShips
+inactive
+minInterval 30
+{
+  const int list_size = 2;
+  static int proxy_list = -1;
+  static int ship_list = -1;
+
+  if ((kbUnitCount(cMyID, cUnitTypezpSocketHansaKontor, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketHansaKontorCitystate, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSocketHansaColony, cUnitStateAny) == 0))
+   {
+      return;
+   }
+
+  if (proxy_list == -1)
+  {
+    proxy_list = xsArrayCreateInt(list_size, -1, "List of Hansa Proxies");
+    ship_list = xsArrayCreateInt(list_size, -1, "List of Hansa Ships");
+
+    xsArraySetInt(proxy_list, 0, cUnitTypezpHanseaticWarshipProxy);
+    xsArraySetInt(ship_list, 0, cUnitTypezpHanseaticWarship);
+
+    xsArraySetInt(proxy_list, 1, cUnitTypezpHanseaticFluytProxy);
+    xsArraySetInt(ship_list, 1, cUnitTypezpHanseaticFluyt);
+
+  }
+
+  for(i = 0; < xsArrayGetSize(proxy_list))
+  {
+    int proxy = xsArrayGetInt(proxy_list, i);
+    int ship = xsArrayGetInt(ship_list, i);
+    
+    int maintain_plan = aiPlanGetIDByTypeAndVariableType(cPlanTrain, cTrainPlanUnitType, proxy, true);
+    int number_to_maintain = kbGetBuildLimit(cMyID, ship) - kbUnitCount(cMyID, ship);
+
+    if (maintain_plan == -1)
+    {
+      if (kbProtoUnitAvailable(proxy) == true)
+      {
+        maintain_plan = aiPlanCreate("Maintain " + kbGetProtoUnitName(proxy), cPlanTrain);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanUnitType, 0, proxy);
+        aiPlanSetVariableBool(maintain_plan, cTrainPlanUseMultipleBuildings, 0, false);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanNumberToMaintain, 0, number_to_maintain);
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanBatchSize, 0, 1);
+        aiPlanSetActive(maintain_plan, true);
+      }
+    }
+    else
+    {
+      if (kbProtoUnitAvailable(proxy) == true)
+      {
+        aiPlanSetVariableInt(maintain_plan, cTrainPlanNumberToMaintain, 0, number_to_maintain);
+      }
+      else
+      {
+        aiPlanDestroy(maintain_plan);
+      }
+    }
+  }
+}
+
+//==============================================================================
+// Hansa Tech Monitor
+//==============================================================================
+rule HansaTechMonitor
+inactive
+minInterval 60
+{
+   if ((kbUnitCount(cMyID, cUnitTypezpSocketHansaKontor, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSPCSocketHansaKontorCitystate, cUnitStateAny) == 0) && (kbUnitCount(cMyID, cUnitTypezpSocketHansaColony, cUnitStateAny) == 0))
+      {
+      return; // Player has no hansa socket.
+      }
+
+
+      // Upgrade Ships and Cannons
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpHansaArsenal,
+      []() -> bool { return ( kbGetAge() >= cAge1 ); },
+      cUnitTypeTradingPost);
+
+      // Western Faction
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpHansaBattleship,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateHansaWestern) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Hansa Central
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatHansaEmbassy,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateHansaCentral) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Eastern faction
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatTeutonicFort,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateHansaEast) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Embassy Teutonic Knights
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpTeutonicArmySmall,
+      []() -> bool { return (kbUnitCount(cMyID, cTechzpNatHansaEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpHansaEmbassy);
+
+      // Embassy Bank
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpHansaBanking,
+      []() -> bool { return (kbUnitCount(cMyID, cTechzpNatHansaEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpHansaEmbassy);
+
+      // Embassy Fleet
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpHansaColonisationFleet,
+      []() -> bool { return (kbUnitCount(cMyID, cTechzpNatHansaEmbassy, cUnitStateABQ) >= 1); },
+      cUnitTypezpHansaEmbassy);
+
+      // Teutonic Fort Army
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpTeutonicArmySmall,
+      []() -> bool { return (kbUnitCount(cMyID, cTechzpNatTeutonicFort, cUnitStateABQ) >= 1); },
+      cUnitTypezpTeutonicFort);
 
    if (canDisableSelf == true)
    {
@@ -5508,6 +5873,36 @@ mininterval 60
       // Cheteau Royal
       canDisableSelf &= researchSimpleTechByCondition(cTechzpNatChateauRoyal,
       []() -> bool { return (((kbTechGetStatus(cTechzpBourbonExpansionSPC) == cTechStatusActive) || (kbTechGetStatus(cTechzpBourbonExpansion) == cTechStatusActive)) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+
+  if (canDisableSelf == true)
+      {
+          xsDisableSelf();
+      }
+  
+}
+
+//==============================================================================
+// ZP Cossack Tech Monitor
+//==============================================================================
+rule zpCossackTechMonitor
+inactive
+mininterval 60
+{
+   if (kbUnitCount(cMyID, cUnitTypezpSocketCossacks, cUnitStateAny) == 0)
+      {
+      return; // Player has no Cossack socket.
+      }
+
+      // Cossack Bohdan
+      bool canDisableSelf = researchSimpleTechByCondition(cTechzpNatCossackStable,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateCossackBohdan) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
+      cUnitTypeTradingPost);
+
+      // Cossacks Mazepa
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatCossackNobility,
+      []() -> bool { return ((kbTechGetStatus(cTechzpConsulateCossackMazepa) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
       cUnitTypeTradingPost);
 
 
