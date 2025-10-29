@@ -480,7 +480,12 @@ void main(void)
 	else if (PlayerNum > 6)
 		rmPlaceObjectDefAtLoc(harbour01ID, 0, 0.15+rmXTilesToFraction(0),0.5+rmXTilesToFraction(13));
 	else
-		rmPlaceObjectDefAtLoc(harbour01ID, 0, 0.15-rmXTilesToFraction(0),0.5+rmXTilesToFraction(10));
+		if (blockadeSpawn == 1){
+			rmPlaceObjectDefAtLoc(harbour01ID, 0, 0.15+rmXTilesToFraction(4),0.5+rmXTilesToFraction(10));
+		}
+		else{
+			rmPlaceObjectDefAtLoc(harbour01ID, 0, 0.15-rmXTilesToFraction(0),0.5+rmXTilesToFraction(10));
+		}
 	vector harbourLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbour01ID, 0));
 
 	int harbour02ID=rmCreateObjectDef("harbour2");
@@ -504,7 +509,12 @@ void main(void)
 	else if (PlayerNum > 6)
 		rmPlaceObjectDefAtLoc(harbour02ID, 0, 0.15+rmXTilesToFraction(15),0.5-rmXTilesToFraction(7));
 	else
-		rmPlaceObjectDefAtLoc(harbour02ID, 0, 0.15+rmXTilesToFraction(15),0.5-rmXTilesToFraction(10));
+		if (blockadeSpawn == 1){
+			rmPlaceObjectDefAtLoc(harbour02ID, 0, 0.15+rmXTilesToFraction(18),0.5-rmXTilesToFraction(10));
+		}
+		else{
+			rmPlaceObjectDefAtLoc(harbour02ID, 0, 0.15+rmXTilesToFraction(15),0.5-rmXTilesToFraction(10));
+		}
 	vector harbourLoc2 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbour02ID, 0));
 
 	vector ControllerLoc1 = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbour01ID, 0));
