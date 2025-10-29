@@ -3011,9 +3011,9 @@ minInterval 5
           ((gRevolutionType & cRevolutionFinland) == 0))
       { 
          planID = createSimpleBuildPlan(gDockUnit, 1, 70, false, cMilitaryEscrowID, mainBaseID, 1); 
-         if (gStartOnDifferentIslands == true && dockCount <= 1)
+         if (gStartOnDifferentIslands == true && dockCount < 1)
          {
-            aiPlanSetDesiredResourcePriority(planID, 90); // Docks are high priority on island maps
+            aiPlanSetDesiredResourcePriority(planID, 80); // Docks are high priority on island maps
             //if (towerCount < 1)
             //{
             //   planID = createSimpleBuildPlan(gTowerUnit, 1, 89, false, cMilitaryEscrowID, mainBaseID, 2);
@@ -3021,11 +3021,11 @@ minInterval 5
          }
          else if (gStartOnDifferentIslands == true && dockCount <= 2)
          {
-            aiPlanSetDesiredResourcePriority(planID, 70); // Docks are high priority on island maps
+            aiPlanSetDesiredResourcePriority(planID, 60); // Docks are high priority on island maps
          }
          else
          {
-            aiPlanSetDesiredResourcePriority(planID, 60);
+            aiPlanSetDesiredResourcePriority(planID, 50);
          }
       }
    }

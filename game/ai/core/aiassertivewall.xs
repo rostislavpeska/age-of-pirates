@@ -6007,7 +6007,7 @@ minInterval 10
 
    myLocation = kbBaseGetLocation(gOriginalBase);
 
-   int transportPlan = createTransportPlan(myLocation, kbAreaGetCenter(gCeylonStartingTargetArea), 100);
+   int transportPlan = createTransportPlan(myLocation, kbAreaGetCenter(gCeylonStartingTargetArea), 100, false, false, (numberNeeded + numberSettlers + numberMilitary));
    
    aiPlanAddUnitType(transportPlan, cUnitTypeAbstractWagon, numberNeeded, numberNeeded, numberNeeded);
    aiPlanAddUnitType(transportPlan, cUnitTypeAbstractVillager, numberSettlers, numberSettlers, numberSettlers);
@@ -8312,7 +8312,7 @@ minInterval 20
    {
       pickupPoint = getDropoffPoint(gAmphibiousAssaultTarget, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
       dropoffPoint = gAmphibiousAssaultTarget;
-      gforwardArmyTransport = createTransportPlan(pickupPoint, dropoffPoint, 100.0, true);
+      gforwardArmyTransport = createTransportPlan(pickupPoint, dropoffPoint, 100.0, true, false, desiredMilitary);
 
       if (gforwardArmyTransport > 0)
       {
