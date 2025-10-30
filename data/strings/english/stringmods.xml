@@ -2218,7 +2218,7 @@
       <string _locid="302217">Team Improvised Constructions</string>
       <string _locid="302218">Increases Warship training speed</string>
       <string _locid="302219">Caribbean Wars</string>
-      <string _locid="302220">Achieve a naval dominance over the Caribbean Sea. This historical map brings you to the true Golden Age of Piracy and unlocks the full Pirate potential. \n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; variable (based on selection) including a special naval version of KING OF THE HILL. \n\nSettlements: Pirate Towns, Maltese, Caribs \n\nThis map does not support the treaty mode.</string>
+      <string _locid="302220">Achieve a naval dominance over the Caribbean Sea. This map brings you to the true Golden Age of Piracy and unlocks the full Pirate potential. Naval version of KING OF THE HILL. \n\nSettlements: Pirate Towns, Maltese, Caribs \n\nThis map does not support the treaty mode.</string>
       <string _locid="302221">Local Pirates are more powerful than any other Pirates in the world. They managed to build two heavily fortified towns. Help them to build the fortifications and use these towns to achieve the true naval dominance.</string>
       <string _locid="302222">ZP Native House Pirate No Decal</string>
       <string _locid="302223">Capture a Pirate Town and use pirate ships and fixed guns to protect the coast.</string>
@@ -3286,6 +3286,8 @@
       <string _locid="303287">ZP SPC Dock Avoider</string>
       <string _locid="303288">Can't build Dock next to a King of the Sea Castle</string>
       <string _locid="303289">ZP PROP Fisherman</string>
+      <string _locid="303290">King of the Sea Victory in</string>
+      <string _locid="303291">Capture the King of the Sea Castle on the other side of the Bosporus Strait and hold it until the time runs out.</string>
       
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
