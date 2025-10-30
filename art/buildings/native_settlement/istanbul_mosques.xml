@@ -11,7 +11,17 @@
 					<assetreference type="GrannyModel">
 						<file>buildings\native_settlement\arabian\ottoman_minaret</file>
 					</assetreference>
-			    </data>              
+			    </data>          
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\arabian\ottoman_mosque_wing</file>
+					</assetreference>
+			    </data>        
+				<data>
+					<assetreference type="GrannyModel">
+						<file>buildings\native_settlement\arabian\ottoman_mosque_wing2</file>
+					</assetreference>
+			    </data>    
 		</logic>
 	</component>
 	<anim>
