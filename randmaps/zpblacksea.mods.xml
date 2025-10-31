@@ -142,6 +142,8 @@
 			<flag>StartOnNoUpdate</flag>
             <flag>NotSelectable</flag>
             <flag>NoIdleActions</flag>
+			<obstructionradiusx>3.0000</obstructionradiusx>
+    		<obstructionradiusz>3.0000</obstructionradiusz>
             <civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>		
         </unit>
         <unit name="zpSPCPirateDockB">

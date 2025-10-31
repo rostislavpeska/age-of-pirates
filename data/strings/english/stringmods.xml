@@ -448,7 +448,7 @@
       <string _locid="300446">Ships Maltese heavy cannons.</string>
       <string _locid="300447">ZP NAT Gatling Camel</string>
       <string _locid="300448">Honored Gatling Camel</string>
-      <string _locid="300449">Legendary Gatling Camel</string>
+      <string _locid="300449">Exalted Gatling Camel</string>
       <string _locid="300450">Disciplined Gatling Camel</string>
       <string _locid="300451">German Universities</string>
       <string _locid="300452">All research is done faster by 25%</string>
@@ -3242,10 +3242,10 @@
       <string _locid="303243">City of Istanbul</string>
       <string _locid="303244">Disciplined Sultan's Guard</string>
       <string _locid="303245">Honored Sultan's Guard</string>
-      <string _locid="303246">Improves all Sultanate units attack and hitpoints.</string>
+      <string _locid="303246">Improves all Sultanate units attack and hitpoints. Also improves all specific faction units.</string>
       <string _locid="303247">Disciplined Sultan's Guard</string>
       <string _locid="303248">Honored Sultan's Guard</string>
-      <string _locid="303249">Legendary Sultan's Guard</string>
+      <string _locid="303249">Exalted Sultan's Guard</string>
       <string _locid="303250">Main Court Faction</string>
       <string _locid="303251">Pick the most influential faction on the Sultan's Court and unlock additional units and techs. \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n •  Upgrades Black Sea trade route to the maximum level.</string>
       <string _locid="303252">Phanar Faction</string>
@@ -3265,7 +3265,7 @@
       <string _locid="303266">Nearly landlocked sea with a single trade route passing through the city of Istanbul (Constantinopole). The area of the Black Sea offers you verious resources like copper or plenty of fishes. Naval King of the Hill option is available. \n\nNative settlements: Cossacks, Orhodox, Sultanate</string>
       <string _locid="303267">Who controls the Bosporus Strait, controls the Black Sea. The city of Istanbul is located at the entrance of the Black Sea and it's control is your key to victory.</string>
       <string _locid="303268">Bosporus Blockade</string>
-      <string _locid="303269">Disables Home City shipments for all enemy and allied players for 4 minutes. \n • &lt;color=1.0, 0.0, 0.0&gt;Can be activated only when your team holds both City of Istanbul sockets.&lt;/color&gt;</string>
+      <string _locid="303269">Disables Home City Shipments for all enemy players for 4 minutes. \n • &lt;color=1.0, 0.0, 0.0&gt;Can be activated only when your team holds both City of Istanbul sockets.&lt;/color&gt;</string>
       <string _locid="303270">Your enemy is blocking the Bosporus Strait.</string>
       <string _locid="303271">Bosporus Blockade Time Remaining</string>
       <string _locid="303272">You're blocking the Bosporus Strait, temporarily blockading their Home Cities!</string>
@@ -3288,6 +3288,8 @@
       <string _locid="303289">ZP PROP Fisherman</string>
       <string _locid="303290">King of the Sea Victory in</string>
       <string _locid="303291">Capture the King of the Sea Castle on the other side of the Bosporus Strait and hold it until the time runs out.</string>
+      
+
       
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

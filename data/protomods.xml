@@ -2058,8 +2058,8 @@
     <tech row="0" page="2" column="4">zpNatCossackRada</tech>
     <tech row="0" page="1" column="1">zpCossackExpansion</tech>
 
-    <tech row="0" page="1" column="1">zpNatVeteranSultanate</tech>
-    <tech row="0" page="1" column="1">zpNatGuardSultanate</tech>
+    <tech row="0" page="1" column="1">zpVeteranSultanate</tech>
+    <tech row="0" page="1" column="1">zpGuardSultanate</tech>
     <tech row="0" page="1" column="1">zpSultanateExpansion</tech>
     <tech row="0" page="2" column="1">zpNatIstanbulBrigade</tech>
     <tech row="0" page="2" column="0">zpNatHaremSweats</tech>
@@ -67589,7 +67589,7 @@
     <tactics>socketcapture.tactics</tactics>
     <command page="1" column="0">deSocketBuild</command>
   </unit>
-  <unit id="20924" name="ZPNatEvzoneProxy">
+  <unit id="20924" name="zpNatEvzoneProxy">
     <dbid>20924</dbid>
     <displaynameid>122102</displaynameid>
     <editornameid>122103</editornameid>
@@ -67680,7 +67680,7 @@
     </sharedbuildlimitunittypes>
     <flag>UseSharedBuildLimit</flag>
   </unit>
-  <unit id="20925" name="ZPNatBoyarProxy">
+  <unit id="20925" name="zpNatBoyarProxy">
     <dbid>20925</dbid>
     <displaynameid>122094</displaynameid>
     <editornameid>122095</editornameid>
@@ -67999,7 +67999,7 @@
     <flag>UseSharedBuildLimit</flag>
     <flag>NotPlayerplaceable</flag>
   </unit>
-  <unit id="20929" name="ZPNatPirateSultanate">
+  <unit id="20929" name="zpNatPirateSultanate">
     <dbid>20929</dbid>
     <displaynameid>35253</displaynameid>
     <editornameid>300025</editornameid>
