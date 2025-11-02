@@ -144,7 +144,7 @@ void main(void)
 	int avoidTP=rmCreateTypeDistanceConstraint("stay away from Trading Post Sockets", "SocketTradeRoute", 10.0);
 	int avoidTPLong=rmCreateTypeDistanceConstraint("stay away from Trading Post Sockets far", "SocketTradeRoute", 15.0);
 	int avoidLand = rmCreateTerrainDistanceConstraint("ship avoid land", "land", true, 15.0);
-	int avoidLandShort = rmCreateTerrainDistanceConstraint("ship avoid land short", "land", true, 5.0);
+	int avoidLandShort = rmCreateTerrainDistanceConstraint("ship avoid land short", "land", true, 4.0);
 	int mesaConstraint = rmCreateBoxConstraint("mesas stay in southern portion of island", .35, .55, .65, .35);
 	int northConstraint = rmCreateBoxConstraint("huntable constraint for north side of island", .25, .55, .8, .85);
 	int avoidTCMedium=rmCreateTypeDistanceConstraint("stay away from TC by a bit", "TownCenter", 12.0);
@@ -278,22 +278,24 @@ void main(void)
 	int pearlNWID = rmCreateObjectDef("pearl northwest");
 	rmAddObjectDefItem(pearlNWID, mineType2, 1, 0);
 	rmSetObjectDefMinDistance(pearlNWID, 0.0);
-	rmSetObjectDefMaxDistance(pearlNWID, 30.0);
+	rmSetObjectDefMaxDistance(pearlNWID, 20.0);
 	rmAddObjectDefConstraint(pearlNWID, avoidLandShort);
 	rmAddObjectDefConstraint(pearlNWID, avoidPearls);
 	rmPlaceObjectDefAtLoc(pearlNWID, 0, 0.50, 0.4); // Northwest (visual) = Code: medium X, low Z
 	if (cNumberNonGaiaPlayers > 3) {
+		rmSetObjectDefMaxDistance(pearlNWID, 30.0);
 		rmPlaceObjectDefAtLoc(pearlNWID, 0, 0.50, 0.4);
 	}
 	
 	int pearlSEID = rmCreateObjectDef("pearl southeast");
 	rmAddObjectDefItem(pearlSEID, mineType2, 1, 0);
 	rmSetObjectDefMinDistance(pearlSEID, 0.0);
-	rmSetObjectDefMaxDistance(pearlSEID, 30.0);
+	rmSetObjectDefMaxDistance(pearlSEID, 20.0);
 	rmAddObjectDefConstraint(pearlSEID, avoidLandShort);
 	rmAddObjectDefConstraint(pearlSEID, avoidPearls);
 	rmPlaceObjectDefAtLoc(pearlSEID, 0, 0.50, 0.6); // Southeast (visual) = Code: medium-high X, high Z
 	if (cNumberNonGaiaPlayers > 3) {
+		rmSetObjectDefMaxDistance(pearlSEID, 30.0);
 		rmPlaceObjectDefAtLoc(pearlSEID, 0, 0.50, 0.6);
 	}
 	    	
