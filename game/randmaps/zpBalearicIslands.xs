@@ -278,7 +278,7 @@ void main(void)
 	int pearlNWID = rmCreateObjectDef("pearl northwest");
 	rmAddObjectDefItem(pearlNWID, mineType2, 1, 0);
 	rmSetObjectDefMinDistance(pearlNWID, 0.0);
-	rmSetObjectDefMaxDistance(pearlNWID, 20.0);
+	rmSetObjectDefMaxDistance(pearlNWID, 30.0);
 	rmAddObjectDefConstraint(pearlNWID, avoidLandShort);
 	rmAddObjectDefConstraint(pearlNWID, avoidPearls);
 	rmPlaceObjectDefAtLoc(pearlNWID, 0, 0.50, 0.4); // Northwest (visual) = Code: medium X, low Z
@@ -289,7 +289,7 @@ void main(void)
 	int pearlSEID = rmCreateObjectDef("pearl southeast");
 	rmAddObjectDefItem(pearlSEID, mineType2, 1, 0);
 	rmSetObjectDefMinDistance(pearlSEID, 0.0);
-	rmSetObjectDefMaxDistance(pearlSEID, 20.0);
+	rmSetObjectDefMaxDistance(pearlSEID, 30.0);
 	rmAddObjectDefConstraint(pearlSEID, avoidLandShort);
 	rmAddObjectDefConstraint(pearlSEID, avoidPearls);
 	rmPlaceObjectDefAtLoc(pearlSEID, 0, 0.50, 0.6); // Southeast (visual) = Code: medium-high X, high Z
