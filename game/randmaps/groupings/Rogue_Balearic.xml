@@ -32,7 +32,7 @@
 		<unit variation="1" posx="-4.1952" posz="-13.9932" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCMarketStall</unit>
 		<unit variation="115" posx="-11.3646" posz="-11.0202" orientx="1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateHouseProp</unit>
 		<unit variation="38" posx="-15.0739" posz="-11.2095" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateWall3Prop</unit>
-		<unit variation="0" posx="-5.1639" posz="-9.7063" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsPoles</unit>
+		<unit variation="0" posx="-5.1639" posz="-9.7063" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCPoles</unit>
 		<unit variation="124" posx="12.0417" posz="-9.4311" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCPathBlock3</unit>
 		<unit variation="124" posx="10.3904" posz="-8.4505" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCPathBlock3</unit>
 		<unit variation="29" posx="-7.4963" posz="-9.2120" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCMarketStall</unit>
@@ -49,7 +49,7 @@
 		<unit variation="128" posx="-12.5259" posz="-6.9547" orientx="0.9937" orienty="0.0000" orientz="0.1118">deSPCTreeCypressProp</unit>
 		<unit variation="38" posx="16.5950" posz="-4.9528" orientx="1.0000" orienty="0.0000" orientz="-0.0000">deSPCCityStateWall3Prop</unit>
 		<unit variation="107" posx="12.4490" posz="-5.1456" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateHouseProp</unit>
-		<unit variation="0" posx="-10.1712" posz="-5.4624" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsPoles</unit>
+		<unit variation="0" posx="-10.1712" posz="-5.4624" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCPoles</unit>
 		<unit variation="96" posx="7.4841" posz="-4.7064" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCMarketStall</unit>
 		<unit variation="162" posx="3.6214" posz="-6.2418" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpSPCMarketStall</unit>
 		<unit variation="7" posx="6.5123" posz="-6.4105" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpPropsColony</unit>
@@ -59,8 +59,8 @@
 		<unit variation="165" posx="-0.5542" posz="-3.2988" orientx="-0.3744" orienty="-0.0022" orientz="0.9273">zpGoose</unit>
 		<unit variation="246" posx="0.8565" posz="-3.7521" orientx="-0.0309" orienty="0.0040" orientz="-0.9995">zpGoose</unit>
 		<unit variation="138" posx="-4.6772" posz="-2.2948" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpNuggetKidnapGuillotine</unit>
-		<unit variation="0" posx="-5.2108" posz="-1.2882" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsPoles</unit>
-		<unit variation="0" posx="3.8056" posz="-1.3682" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsPoles</unit>
+		<unit variation="0" posx="-5.2108" posz="-1.2882" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCPoles</unit>
+		<unit variation="0" posx="3.8056" posz="-1.3682" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCPoles</unit>
 		<unit variation="101" posx="10.6865" posz="-1.7268" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpPropsColony</unit>
 		<unit variation="224" posx="3.6773" posz="-2.3314" orientx="0.9819" orienty="-0.0046" orientz="0.1891">zpGoose</unit>
 		<unit variation="189" posx="8.8479" posz="-0.6924" orientx="0.3533" orienty="-0.0050" orientz="0.9355">Sheep</unit>
@@ -82,8 +82,8 @@
 		<unit variation="47" posx="-15.5574" posz="4.5895" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateWallConnectorProp</unit>
 		<unit variation="38" posx="-15.6090" posz="7.6464" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deSPCCityStateWall3Prop</unit>
 		<unit variation="241" posx="-6.8937" posz="6.0934" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
-		<unit variation="0" posx="10.1267" posz="7.2071" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsPoles</unit>
-		<unit variation="0" posx="-8.9875" posz="6.7366" orientx="-0.7071" orienty="0.0000" orientz="0.7071">PropsPoles</unit>
+		<unit variation="0" posx="10.1267" posz="7.2071" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCPoles</unit>
+		<unit variation="0" posx="-8.9875" posz="6.7366" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCPoles</unit>
 		<unit variation="247" posx="-12.6539" posz="8.8138" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deSPCCityStateHouseProp</unit>
 		<unit variation="124" posx="-11.0875" posz="9.5831" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
 		<unit variation="124" posx="-12.9964" posz="10.4249" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
@@ -111,7 +111,7 @@
 		<unit variation="124" posx="10.8500" posz="16.1720" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
 		<unit variation="124" posx="7.7272" posz="15.6066" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="124" posx="-6.5142" posz="14.9650" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
-		<unit variation="54" posx="-10.7425" posz="15.7550" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="54" posx="-10.7425" posz="15.7550" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPROPBuildingMixCliffPlacement</unit>
 		<unit variation="124" posx="-11.6576" posz="16.6002" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="22" posx="10.1194" posz="17.1588" orientx="0.8882" orienty="0.0000" orientz="-0.4595">deSPCTreeCypressProp</unit>
 		<unit variation="124" posx="-7.6872" posz="17.3232" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
