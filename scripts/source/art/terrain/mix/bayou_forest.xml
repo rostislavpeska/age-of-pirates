@@ -1,0 +1,19 @@
+<mix>
+  <title>Bayou Forest</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.4">
+    <texture weight="1">bayou\ground2_bay</texture>
+    <texture weight="2">bayou\groundforest_bay</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.1" octaves="4" persistence="0.7" emptyweight="40" posoffset="1.0">
+    <model weight="1">terrain\underbrush\underbrush_forest_bush1</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_fern2</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_grass1</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_grass2</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_group1</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_group3</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_rock1</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_rock2</model>
+  </objects>
+</mix>

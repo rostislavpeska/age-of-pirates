@@ -1,0 +1,9 @@
+<mix>
+  <title>Africa East Grass Dry</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="2">Africa\gravel_afr</texture>
+    <texture weight="3">Africa\ground2_afr</texture>
+    <texture weight="4">Africa\groundStraw_afr</texture>
+  </paint>
+</mix>

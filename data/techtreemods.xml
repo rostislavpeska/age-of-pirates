@@ -35279,13 +35279,29 @@
     <flag>Shadow</flag>
     <icon>resources\images\icons\techs\historical_maps\immam_voice.png</icon>
   </tech>
+  <tech name="zpSPCRogueBalearic" type="Normal">
+    <dbid>41330</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpSPCTaulaDeCanviClone</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPapalBlessingClone</effect>
+      <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMediciPatronage</effect>
+      <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCArtPatronCathedral</effect>
+    </effects>
+  </tech>
   
   
 
 
 
 
-<!--TEST-->
+<!--TEST TECHS-->
 
   <!--<tech name="zpNativeSaxonKing" type="Normal">
     <dbid></dbid>

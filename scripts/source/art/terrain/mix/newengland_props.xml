@@ -1,0 +1,19 @@
+<mix>
+  <title>New England Props</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.45" octaves="3" persistence="0.4" emptyweight="15" posoffset="0.9">
+    <model weight="2" scalemin="0.8" scalemax="2.0">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="2" scalemin="0.8" scalemax="2.0">terrain\underbrush\underbrush_forest_fern2</model>
+    <model weight="2" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_forest_group1</model>
+    <model weight="2" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_forest_group2</model>
+    <model weight="2" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_forest_group3</model>
+    <model weight="2" scalemin="0.8" scalemax="1.0">terrain\underbrush\underbrush_forest_group4</model>
+    <model weight="1" scalemin="0.3" scalemax="0.8">terrain\underbrush\underbrush_forest_rock1</model>
+    <model weight="1" scalemin="0.3" scalemax="0.8">terrain\underbrush\underbrush_forest_rock2</model>
+    <model weight="1" scalemin="0.3" scalemax="0.8">terrain\underbrush\underbrush_forest_rock3</model>
+    <model weight="1" scalemin="0.3" scalemax="0.8">terrain\new_england\cliff_rock_a_ne</model>
+    <model weight="1" scalemin="0.3" scalemax="0.8">terrain\new_england\cliff_rock_b_ne</model>
+    <model weight="1" scalemin="0.3" scalemax="0.8">terrain\new_england\cliff_rock_c_ne</model>
+    <model weight="1" scalemin="0.3" scalemax="0.8">terrain\new_england\cliff_rock_d_ne</model>
+  </objects>
+</mix>

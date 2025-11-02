@@ -8314,6 +8314,7 @@
     <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
     <unittype>LogicalTypeGarrisonInShips</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
     <unittype>LogicalTypeVillagersAttack</unittype>
     <unittype>LogicalTypeHandUnitsAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
@@ -8345,7 +8346,7 @@
     <tactics>swordsman.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
-      <damage>9.000000</damage>
+      <damage>14.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
     </protoaction>
@@ -31746,6 +31747,7 @@
     <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
     <unittype>LogicalTypeGarrisonInShips</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
     <unittype>LogicalTypeVillagersAttack</unittype>
     <unittype>LogicalTypeHandUnitsAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
@@ -31778,7 +31780,7 @@
     <tactics>swordsman.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
-      <damage>9.000000</damage>
+      <damage>14.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
     </protoaction>
@@ -35260,6 +35262,7 @@
     <unittype>Nature</unittype>
     <unittype>AbstractFish</unittype>
     <unittype>AbstractFishOrWhale</unittype>
+    <unittype>MovableFish</unittype>
     <flag>DontRotateObstruction</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>DieAtZeroResources</flag>
@@ -35373,6 +35376,7 @@
     <unittype>Nature</unittype>
     <unittype>AbstractFish</unittype>
     <unittype>AbstractFishOrWhale</unittype>
+    <unittype>MovableFish</unittype>
     <flag>DontRotateObstruction</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>DieAtZeroResources</flag>
@@ -68630,7 +68634,7 @@
 
   
 
-  
+  <!--TEST AND TEMPORARY CONTENT-->
 
   <!--<unit mergeMode='replace' id="1710" name="CommunityPlaza">
     <dbid>2281</dbid>

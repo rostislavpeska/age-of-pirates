@@ -1,0 +1,23 @@
+<mix>
+  <title>Caribbean Grass</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="4">caribbean\ground1_crb</texture>
+    <texture weight="3">caribbean\ground2_crb</texture>
+    <texture weight="1">caribbean\ground3_crb</texture>
+    <texture weight="1">caribbean\ground3_crb</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.75" octaves="3" persistence="0.6" emptyweight="25" posoffset="0.35">
+    <model weight="1">terrain\underbrush\underbrush_jungle_plant1</model>
+    <model weight="1">terrain\underbrush\underbrush_jungle_plant2</model>
+    <model weight="1">terrain\underbrush\underbrush_jungle_plant3</model>
+    <model weight="1">terrain\underbrush\underbrush_jungle_plant5</model>
+    <model weight="1">terrain\underbrush\underbrush_jungle_plant6</model>
+    <model weight="1">terrain\underbrush\underbrush_jungle_plant7</model>
+    <model weight="1">terrain\underbrush\underbrush_jungle_plant11</model>
+    <model weight="1">terrain\underbrush\underbrush_jungle_plant12</model>
+    <model weight="1">terrain\underbrush\underbrush_jungle_rock1</model>
+    <model weight="1">terrain\underbrush\underbrush_jungle_rock2</model>
+    <model weight="1">terrain\underbrush\underbrush_jungle_rock3</model>
+  </objects>
+</mix>

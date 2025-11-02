@@ -1,0 +1,21 @@
+<mix>
+  <title>Yellow River Forest</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="10" persistence="0.5">
+    <texture weight="1">yellow_river\forest_yellow_riv</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="60" posoffset="0.5">
+    <model weight="6">terrain\underbrush\underbrush_yellow_riv_floor_01</model>
+    <model weight="6">terrain\underbrush\underbrush_yellow_riv_floor_02</model>
+    <model weight="1">terrain\underbrush\underbrush_yellow_riv_grass_01</model>
+    <model weight="1">terrain\underbrush\underbrush_yellow_riv_grass_02</model>
+    <model weight="1">terrain\underbrush\underbrush_yellow_riv_group_01</model>
+    <model weight="1">terrain\underbrush\underbrush_yellow_riv_group_02</model>
+    <model weight="1">terrain\underbrush\underbrush_yellow_riv_group_03</model>
+    <model weight="1">terrain\underbrush\underbrush_yellow_riv_rocks_01</model>
+    <model weight="1">terrain\underbrush\underbrush_yellow_riv_rocks_03</model>
+    <model weight="1">terrain\underbrush\underbrush_yellow_riv_shrub_01</model>
+    <model weight="1">terrain\underbrush\underbrush_yellow_riv_bamboo_01</model>
+    <model weight="1">terrain\underbrush\underbrush_yellow_riv_shrub_02</model>
+  </objects>
+</mix>

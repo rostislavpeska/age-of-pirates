@@ -1,0 +1,22 @@
+<mix>
+  <title>Italy Cliff Top Dry Grass</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.20" octaves="3" persistence="0.5">
+    <texture weight="1">Texas\cliff_top_tex</texture>
+    <texture weight="4">Texas\cliff_top_grass_tex</texture>
+    <texture weight="2">Texas\Tree_gravel_tex</texture>
+    <texture weight="2">Texas\Cliff_gravel_tex</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="60" posoffset="0.5">
+    <model weight="1">terrain\underbrush\underbrush_mongol_bush1</model>
+    <model weight="1">terrain\underbrush\underbrush_mongol_bush3</model>
+    <model weight="1">terrain\underbrush\underbrush_mongol_bush5</model>
+    <model weight="1">terrain\underbrush\underbrush_mongol_bush6</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_bush2</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_bush3</model>
+    <model weight="2">terrain\new_england\cliff_rock_a_ne</model>
+    <model weight="2">terrain\new_england\cliff_rock_b_ne</model>
+    <model weight="2">terrain\new_england\cliff_rock_c_ne</model>
+    <model weight="2">terrain\new_england\cliff_rock_d_ne</model>
+  </objects>
+</mix>

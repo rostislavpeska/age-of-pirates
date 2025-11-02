@@ -1,0 +1,20 @@
+<mix>
+  <title>Italy Grass Dry</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.20" octaves="10" persistence="0.5">
+    <texture weight="4">great_plains\ground2_gp</texture>
+    <texture weight="4">Texas\ground1_tex</texture>
+    <texture weight="4">Texas\ground2_tex</texture>
+    <texture weight="4">Texas\ground3_tex</texture>
+    <texture weight="4">Texas\cliff_top_grass_tex</texture>
+    <texture weight="4">Texas\river2_tex</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="60" posoffset="0.5">
+    <model weight="2">terrain\underbrush\underbrush_mongol_bush1</model>
+    <model weight="2">terrain\underbrush\underbrush_mongol_bush3</model>
+    <model weight="1">terrain\underbrush\underbrush_mongol_bush5</model>
+    <model weight="1">terrain\underbrush\underbrush_mongol_bush6</model>
+    <model weight="1">terrain\great_plains\flower05</model>
+    <model weight="1">terrain\great_plains\flower01</model>
+  </objects>
+</mix>

@@ -1,0 +1,8 @@
+<mix>
+  <title>Africa Desert Rock</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="2">AfricaDesert\ground_rock1_afriDesert</texture>
+    <texture weight="2">AfricaDesert\ground_sand1_afriDesert</texture>
+  </paint>
+</mix>

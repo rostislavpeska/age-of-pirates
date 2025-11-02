@@ -1,6 +1,8 @@
 # Project Documentation
 
-> **📋 FOR AI ASSISTANTS:** This document provides the complete Age of Pirates mod structure overview. When working on specific tasks, you MUST read the appropriate reference files listed in the "Quick Reference Index" section below. Do not attempt random map scripting without reading `all_rm_commands.txt`, AI modifications without reading `ai_reference.xs`, UI commands without reading `command_list.md`, or editing data XML files without reading `data_xml_guide.md`.
+> **📋 FOR AI ASSISTANTS:** This document provides the complete Age of Pirates mod structure overview. When working on specific tasks, you MUST read the appropriate reference files listed in the "Quick Reference Index" section below. Do not attempt random map scripting without reading `map_coordinate_system.md` (coordinate system is rotated 45°!) and `all_rm_commands.txt`, AI modifications without reading `ai_reference.xs`, UI commands without reading `command_list.md`, or editing data XML files without reading `data_xml_guide.md`.
+
+> **🧪 TESTING & PLAYGROUND:** When user says "use playground" or "test this", work ONLY in the `playground/` folder. This folder mirrors the main mod structure and uses test ID ranges (Proto: 90001+, Strings: 990001+). See `playground/README.md` for complete instructions.
 
 ## About This Mod
 
@@ -18,18 +20,70 @@ The project folder contains:
 2/ Non-mod folders - documentation, github files, modding tools
 - docs
 - scripts
+- **playground** (testing/development sandbox - NOT committed to git)
 - other files directly in the root folder
+
+## Playground Folder (Testing Sandbox)
+
+> **⚠️ CRITICAL FOR AI ASSISTANTS:** The `playground/` folder is the ONLY place for testing and experimentation.
+
+**When to use playground:**
+- User says "use playground", "test this", or "experiment with..."
+- Creating proof-of-concept implementations
+- Testing workflows before production
+- Learning modding patterns
+
+**Playground structure:**
+```
+playground/
+├── data/           # Test units, techs, commands
+├── sound/          # Test sounds
+├── art/            # Test visual assets
+├── game/           # Test AI scripts
+└── README.md       # Complete instructions
+```
+
+**Test ID ranges:**
+- Proto Units: 90001-90999
+- Strings: 990001-999999
+- DBIDs: 90001-90999
+
+**Rules:**
+- ✅ Read reference data from main folders (`data/`, `sound/`, etc.)
+- ✅ Write test implementations to `playground/`
+- ✅ Use test ID ranges in playground
+- ❌ DON'T modify main mod files when testing
+- ❌ DON't use production IDs in playground
+
+**See `playground/README.md` for complete documentation.**
+
+---
 
 ## Quick Reference Index
 
 **When working on specific file types, consult these reference documents:**
 
 ### 🗺️ Random Map Development (`*.xs` map scripts)
-- **📄 READ:** `docs/all_rm_commands.txt`
-- **When:** Editing any `.xs` file in `randmaps/` or `game/randmaps/`
-- **Contains:** 273 RM commands for terrain, areas, objects, connections, trade routes, triggers
-- **Key functions:** `rmCreateArea()`, `rmPlaceObjectDefAtLoc()`, `rmAddAreaConstraint()`, `rmBuildConnection()`, `rmCreateTradeRoute()`, `rmPlacePlayersCircular()`
-- **Must read before:** Creating new maps, modifying terrain generation, placing objects, setting up player locations
+- **⚠️ AI MUST READ FIRST:** `docs/map_coordinate_system.md` **CRITICAL - Coordinate system is rotated 45° from visual minimap!**
+  - Code "NE" (1.0, 1.0) → Visual North (top)
+  - Code "SE" (1.0, 0.0) → Visual East (right)  
+  - Code "SW" (0.0, 0.0) → Visual South (bottom)
+  - Code "NW" (0.0, 1.0) → Visual West (left)
+  - **Always think in X/Z values, NOT cardinal directions!**
+- **📄 READ SECOND:** `docs/random_map_generation_guide.md` (complete workflow for AI agents)
+- **📄 REFERENCE:** `docs/all_rm_commands.txt` (273 RM commands)
+- **🎯 TRIGGERS:** `docs/map_trigger_guide.md` (politicians, starting techs, AI leaders)
+- **📄 REFERENCE:** `data/trigger/triggerdata.xml` (all available trigger effects & conditions)
+- **📄 REFERENCE:** `data/techtreemods.xml` (tech definitions & regional availability)
+- **📄 REFERENCE:** `scripts/source/waterbodies.xml` (valid water type names - MUST CHECK!)
+- **📄 REFERENCE:** `scripts/source/art/terraintypes.xml` (valid terrain type names)
+- **When:** Creating/editing any `.xs` file in `randmaps/` or for root game `RandMaps/`
+- **⚠️ IMPORTANT:** Some base game maps (eu*, af*) are ENCODED and cannot be copied
+- **✅ BEST PRACTICE:** Copy working maps like `zp_philiphines.xs` or `caribbean.xs` as base
+- **Placement:** Test maps in `C:/Program Files (x86)/Steam/steamapps/common/AoE3DE/Game/RandMaps/`
+- **Naming:** Use `000zp` prefix (e.g., `000zpBalearicIslands.xs`)
+- **Required files:** Both `.xs` (script) and `.xml` (metadata) required
+- **Must read before:** Creating new maps, choosing water/terrain types, native placement
 
 ### 🤖 AI Development (`*.xs` AI scripts)
 - **📄 READ:** `docs/ai_reference.xs`
@@ -53,6 +107,15 @@ The project folder contains:
 - **Contains:** Complete XML syntax and structure for unit definitions, technologies, civilizations, unit behaviors (2,146 lines)
 - **Key topics:** ProtoUnit attributes, Commands, Flags, Tech elements, Civ structure, Tactics actions
 - **Must read before:** Creating new units, modifying unit properties, adding techs, configuring civilizations
+
+### 🔧 Step-by-Step Workflows
+- **📁 LOCATION:** `docs/workflows/`
+- **When:** Implementing complex multi-file features
+- **Contains:** Complete step-by-step workflows for common modding tasks
+- **Available workflows:**
+  - **`creating-spawning-building.md`** - Buildings with tactic-based unit spawning (Maintain system)
+- **Use when:** You need to create something complex and want a tested, reliable procedure
+- **Format:** Prerequisites → File templates → Step-by-step → Testing checklist → Common pitfalls
 
 ---
 
@@ -158,8 +221,10 @@ The project folder contains:
 - this root randmaps file can accomodate more than 2 map related files, so it can contain also mods.xml files which are not supported while being placed in game/randmaps folder. Therefore all maps which need the third .mods.xml file are placed in the randmaps folder
 - file formats
     - .xs - map script - the map itself using RM commands
+        - **⚠️ AI MUST READ `docs/map_coordinate_system.md` FIRST - XZ coordinates are rotated 45° from visual minimap!**
         - **⚠️ AI MUST READ `docs/all_rm_commands.txt` when editing .xs map files**
         - Contains 273 functions: rmCreateArea(), rmPlaceObjectDef(), rmBuildConnection(), etc.
+        - **CRITICAL:** Code NE (1.0,1.0)→Visual North | SE (1.0,0.0)→East | SW (0.0,0.0)→South | NW (0.0,1.0)→West
     - .xml - map metadata like name, description, map images or map specific setup like recommended civs or enforced settings
     - .mods.xml - defining map special settings (overwrites protoy.xml and protomods.xml) only for a specific map
 
@@ -175,7 +240,8 @@ The project folder contains:
         - assertivewall.xs
         - aipiraterules.xs
 - randmaps - random maps which don't need the -mods.xml folder. Mostly more standardized maps
-    - **⚠️ AI MUST READ `docs/all_rm_commands.txt` when editing .xs map files**
+    - **⚠️ AI MUST READ `docs/map_coordinate_system.md` + `docs/all_rm_commands.txt` when editing .xs map files**
+    - **CRITICAL:** XZ coordinates are rotated 45° from visual minimap display!
     - groupings - special groups of units(objects) which can be be placed on a map. Can contain not just multiple objects but also information about terrain or terrain elevation and cliffs. Can't contain any water areas. Oftenly used for native settlements or city blocks, but also nature objects like volcanos.
 
 ### Sound

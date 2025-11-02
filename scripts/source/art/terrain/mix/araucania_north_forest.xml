@@ -1,0 +1,15 @@
+<mix>
+  <title>Araucania North Forest</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="1.5" octaves="10" persistence="0.5">
+    <texture weight="3">araucania\groundforestcentral</texture>
+    <texture weight="2">araucania\ground10_ara</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="60" posoffset="0.5">
+    <model weight="3">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="3">terrain\underbrush\underbrush_forest_fern2</model>
+    <model weight="3">terrain\underbrush\underbrush_forest_bush2</model>
+    <model weight="3">terrain\underbrush\underbrush_forest_bush3</model>
+    <model weight="3">terrain\underbrush\underbrush_forest_group4</model>
+  </objects>
+</mix>

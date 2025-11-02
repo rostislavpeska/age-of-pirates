@@ -1,0 +1,36 @@
+<mix>
+  <title>Unknown Funky</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="fractalsum" freq="0.1" octaves="5" persistence="0.5">
+    <texture weight="1">rockies\ground5_roc</texture>
+    <texture weight="1">Saguenay\ground6_sag</texture>
+    <texture weight="1">Africa\groundCracked_afr</texture>
+    <texture weight="1">Africa\groundStraw_afr</texture>
+    <texture weight="1">andes\ground17_and</texture>
+    <texture weight="1">carolinas\underwater1</texture>
+    <texture weight="1">spc\scorched02</texture>
+    <texture weight="1">cave\cave_top_a</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.3" octaves="3" persistence="0.2" emptyweight="60" posoffset="0.5">
+    <model weight="2">terrain\patagonia\underbrush_brush_c_snow_pat</model>
+    <model weight="3">terrain\patagonia\underbrush_rock_b_snow_pat</model>
+    <model weight="2">terrain\patagonia\underbrush_group_a_snow_pat</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_bush1</model>
+    <model weight="4" scalemin="1.0" scalemax="4.0">terrain\great_plains\flower03</model>
+    <model weight="4" scalemin="0.5" scalemax="1.0">terrain\great_plains\flower05</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_group1</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_mongol_rock1</model>
+    <model weight="2" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant12</model>
+    <model weight="2" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_rock3</model>
+    <model weight="2" scalemin="1.0" scalemax="1.2">terrain\underbrush\underbrush_jungle_brush3</model>
+    <model weight="2" scalemin="0.75" scalemax="1.0">terrain\amazon\plant_b</model>
+    <model weight="2">terrain\underbrush\underbrush_co_japan_rock_04</model>
+    <model weight="2">terrain\underbrush\underbrush_co_japan_pine_03</model>
+    <model weight="2">terrain\underbrush\underbrush_co_japan_bush_04</model>
+    <model weight="2">terrain\underbrush\underbrush_co_japan_grass_02</model>
+    <model weight="2">terrain\underbrush\underbrush_forest_log1</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_underbrush_05</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_grass_01</model>
+    <model weight="2" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_borneo_rock_02</model>
+  </objects>
+</mix>

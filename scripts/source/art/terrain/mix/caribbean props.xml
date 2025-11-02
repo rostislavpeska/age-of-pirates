@@ -1,0 +1,7 @@
+<mix>
+  <title>Caribbean Props</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.75" octaves="3" persistence="0.6" emptyweight="1" posoffset="0.35">
+    <model weight="2" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_shell_01</model>
+  </objects>
+</mix>

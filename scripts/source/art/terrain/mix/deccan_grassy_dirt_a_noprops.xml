@@ -1,0 +1,13 @@
+<mix>
+  <title>Deccan Grassy Dirt A No Props</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.85" octaves="10" persistence="0.5">
+    <texture weight="1">deccan\ground_dirt4_deccan</texture>
+    <texture weight="1">deccan\ground_dirt3_deccan</texture>
+    <texture weight="1">deccan\ground_dirt5_deccan</texture>
+    <texture weight="2">deccan\ground_grass4_deccan</texture>
+    <texture weight="2">deccan\ground_grass1_deccan</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="60" posoffset="0.5">
+  </objects>
+</mix>

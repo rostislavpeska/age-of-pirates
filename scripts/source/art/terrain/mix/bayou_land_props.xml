@@ -1,0 +1,23 @@
+<mix>
+  <title>Bayou Land Props</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.1" octaves="4" persistence="0.7" emptyweight="0" posoffset="0.1">
+    <model weight="1" scalemin="0.2" scalemax="1.2">terrain\underbrush\underbrush_lake_group1</model>
+    <model weight="1" scalemin="0.2" scalemax="1.2">terrain\underbrush\underbrush_lake_rock1</model>
+    <model weight="1" scalemin="0.2" scalemax="1.2">terrain\underbrush\underbrush_lake_rock2</model>
+    <model weight="1" scalemin="0.2" scalemax="1.2">terrain\underbrush\underbrush_lake_rock3</model>
+    <model weight="1" scalemin="0.2" scalemax="1.2">terrain\underbrush\underbrush_lake_rock4</model>
+    <model weight="1" scalemin="0.2" scalemax="1.2">terrain\underbrush\underbrush_lake_rock5</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_forest_bush1</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_forest_bush2</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_forest_fern2</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_forest_grass1</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_forest_grass2</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_forest_group4</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_forest_rock1</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_forest_rock2</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_marshclump_3_car</model>
+    <model weight="1" scalemin="0.5" scalemax="1.2">terrain\underbrush\underbrush_marshclump_5_car</model>
+  </objects>
+</mix>

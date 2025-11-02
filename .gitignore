@@ -1,3 +1,9 @@
 *.fbx
 *.psd
 *.tga
+
+# Local machine-specific documentation
+docs/local_instructions.md
+
+# Playground folder for testing (not committed to version control)
+playground/

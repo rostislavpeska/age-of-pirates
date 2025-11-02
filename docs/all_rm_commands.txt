@@ -210,7 +210,7 @@ rmRiverSetConnections(riverID, start, end);
 rmRiverCreate(int areaID, string waterType, int breaks, int offset, int minR, int maxR): make a river dude.
 rmAddAreaCliffEdgeAvoidClass(int areaID, int avoidID, float minDist): Adds a class for an area's cliff edge to avoid.
 rmSetAreaCliffHeight(int areaID, float val, float variance, float ramp): Set an area's cliff height.
-rmSetAreaCliffEdge(int areaID, int count, float size, float variance, float spacing, int mapEdge): Set cliff edge parameters for an area.
+CliffEdgermSetArea(int areaID, int count, float size, float variance, float spacing, int mapEdge): Set cliff edge parameters for an area.
 rmSetAreaCliffPainting(int areaID, bool paintGround, bool paintOutsideEdge, bool paintSide, float minSideHeight, bool paintInsideEdge): Set cliff painting options for an area.
 rmSetAreaCliffType(int areaID, string cliffName): Sets the cliff type for an area.
 vector rmGetAreaClosestPoint( int areaID, vector point, float pullback, int constraintID ): Returns the point in areaID that's closest to the given point, optionally requiring that it pass the given constraint.
@@ -271,3 +271,4 @@ rmRandFloat(float min, float max): Returns a random float between min and max.
 rmEchoInfo( string echoString, int level ): Random map echo.
 rmEchoError( string echoString, int level ): Random map echo.
 rmEchoWarning( string echoString, int level ): Random map echo.
+rmSetAreaCliffEdge(int areaID, int count, float size, float variance, float spacing, int mapEdge); Set cliff edge parameters for an area. Determines whether there should be pathable ramps or not connecting the top of the cliff to the surrounding area. Count - Number of cliff edges to create. The count times the size should not be more than 1.0. Defaults to 1. size - This specifies how much of the area's outline should be turned into cliff edges. It should be between 0.0 and 1.0. Set to 1.0 to make the whole area surrounded. Defaults to 0.5. Variance - The variance to use for the size. Defaults to 0.0. Spacing - Spacing modifier. This should be between 0.0 and 1.0. The smaller this is, the closer together the cliff edges will be. Defaults to 1.0. MapEdge - Specifies where the cliff edge should be in relation to the map edge. Set to 0 for any, 1 to be away from the map edge, or 2 to be close to the map edge. Defaults to 0. 
