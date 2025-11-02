@@ -7,6 +7,7 @@
 	<selectassingleunit>1</selectassingleunit>
 	<workonassingleunit>1</workonassingleunit>
 	<units>
+		<unit variation="97" posx="0" posz="0" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpInvisibleGroundFlattener</unit>
 		<unit variation="216" posx="6.7908" posz="-4.8361" orientx="-1.0000" orienty="0.0000" orientz="0.0030">zpNatEUHabsburgPalaces</unit>
 		<unit variation="51" posx="12.5574" posz="-6.0878" orientx="-0.7064" orienty="0.0000" orientz="0.7079">zpNatEUItalianPalaces</unit>
 		<unit variation="125" posx="-15.2111" posz="-6.7756" orientx="1.0000" orienty="0.0000" orientz="-0.0024">SPCPathBlock3</unit>

@@ -68631,6 +68631,30 @@
     <command page="10" column="0">Delete</command>
     <tactics>garrisonable.tactics</tactics>
   </unit>
+  <unit id="20938" name="zpInvisibleGroundFlattener">
+    <dbid>20938</dbid>
+    <displaynameid>303295</displaynameid>
+    <obstructionradiusx>20.0000</obstructionradiusx>
+    <obstructionradiusz>20.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0.0000</los>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>ForceToGaia</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>FlattenGround</flag>
+    <flag>NonSolid</flag>
+    <flag>PlaceAnywhere</flag>
+  </unit>
 
   
 
