@@ -83,7 +83,7 @@
 			<block startx="4" startz="-2" endx="4" endz="-2"></block>
 			<block startx="5" startz="-5" endx="5" endz="-5"></block>
 		</tilegroup>
-		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
+		<tilegroup type="PassableLand" subtype="props\east_colony1">
 			<block startx="-6" startz="0" endx="-6" endz="1"></block>
 			<block startx="-5" startz="-1" endx="-5" endz="1"></block>
 			<block startx="-4" startz="-4" endx="-4" endz="-3"></block>

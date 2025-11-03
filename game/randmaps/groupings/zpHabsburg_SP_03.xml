@@ -73,7 +73,7 @@
 		<unit variation="125" posx="-3.7230" posz="7.7215" orientx="-0.0014" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 	</units>
 	<tiles>
-		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
+		<tilegroup type="PassableLand" subtype="props\east_colony1">
 			<block startx="-7" startz="-4" endx="-7" endz="-2"></block>
 			<block startx="-6" startz="-4" endx="-6" endz="-1"></block>
 			<block startx="-5" startz="-5" endx="-5" endz="0"></block>

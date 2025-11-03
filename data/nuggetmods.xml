@@ -3133,6 +3133,38 @@
       <difficulty>509</difficulty>
     </nugget>
     <nugget>
+      <name>zpNuggetRogueOriental</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>deGuardianColoRifle</unit>
+        <idleanim>NuggetPirate2_Idle</idleanim>
+        <exitanim>NuggetPirate2_Exit</exitanim>
+        <attachdummy>bone_nuggetA</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianColoRifle</unit>
+        <idleanim>NuggetPirate2_Idle</idleanim>
+        <exitanim>NuggetPirate2_Exit</exitanim>
+        <attachdummy>bone_nuggetB</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianColoRifle</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianColoGeneral</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianColoRider</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianColoRider</unit>
+      </guardianunit>
+      <difficulty>513</difficulty>
+    </nugget>
+    <nugget>
       <name>zpNuggetCapturableTradeEU1</name>
       <nuggetunit>zpNuggetInvisible</nuggetunit>
       <rolloverstringid>29084</rolloverstringid>
