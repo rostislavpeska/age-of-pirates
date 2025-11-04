@@ -779,7 +779,7 @@ void main(void)
 		vector NativeControllerLoc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(NativeControllerID, 0));
 
 		int nativeVillage1 = rmCreateArea ("native village "+i);
-		rmSetAreaSize(nativeVillage1, rmAreaTilesToFraction(750.0), rmAreaTilesToFraction(750.0));
+		rmSetAreaSize(nativeVillage1, rmAreaTilesToFraction(780.0), rmAreaTilesToFraction(780.0));
 		rmSetAreaLocation(nativeVillage1, rmXMetersToFraction(xsVectorGetX(NativeControllerLoc)), rmZMetersToFraction(xsVectorGetZ(NativeControllerLoc)));
 		rmSetAreaCoherence(nativeVillage1, 0.7);
 		rmSetAreaCliffPainting(nativeVillage1, false, true, true, 1.5, true);
@@ -797,6 +797,9 @@ void main(void)
 		rmSetAreaElevationVariation(nativeVillage1, 0.0);
 		if (PlayerNum == 2){
 			rmAddAreaConstraint(nativeVillage1, avoidWater20);
+		}
+		else if	(PlayerNum == 3 || PlayerNum == 4){
+			rmAddAreaConstraint(nativeVillage1, avoidWater30);
 		}
 		else{
 			rmAddAreaConstraint(nativeVillage1, avoidWater40);
