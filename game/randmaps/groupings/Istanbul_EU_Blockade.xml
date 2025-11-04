@@ -74,7 +74,7 @@
 		<unit variation="5" posx="-29.7905" posz="-23.7494" orientx="1.0000" orienty="0.0000" orientz="-0.0022">zpNativeHouseVenetianB</unit>
 		<unit variation="37" posx="28.8510" posz="-20.4478" orientx="-0.0111" orienty="0.0000" orientz="-0.9999">deNativePropsCiviliansMaleSitting</unit>
 		<unit variation="197" posx="32.2773" posz="-19.7246" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deNatEUPropStatue</unit>
-		<unit variation="1" posx="-22.5940" posz="-20.7047" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpPropOttomanMarketStall</unit>
+		<unit variation="1" posx="-22.5940" posz="-20.7047" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpPropJewishMarketStall</unit>
 		<unit variation="118" posx="20.4815" posz="-20.4367" orientx="-0.0012" orienty="0.0000" orientz="-1.0000">zpPropJesuitFence</unit>
 		<unit variation="118" posx="23.7314" posz="-20.4298" orientx="-0.0012" orienty="0.0000" orientz="-1.0000">zpPropJesuitFence</unit>
 		<unit variation="1" posx="-29.7822" posz="-16.8141" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeHouseVenetianG</unit>
@@ -214,7 +214,7 @@
 		<unit variation="0" posx="-15.8073" posz="-3.3885" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="123" posx="-3.6418" posz="-1.8783" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNatEUPropObelisk</unit>
 		<unit variation="226" posx="36.8209" posz="0.3679" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpHarbourPlatform</unit>
-		<unit variation="3" posx="-28.8187" posz="-3.1980" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpPropOttomanMarketStall</unit>
+		<unit variation="3" posx="-28.8187" posz="-3.1980" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpPropJewishMarketStall</unit>
 		<unit variation="1" posx="-1.0043" posz="-3.5486" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpPropOttomanMarketStall</unit>
 		<unit variation="1" posx="27.1712" posz="-2.0562" orientx="-1.0000" orienty="0.0000" orientz="0.0004">zpNativeWallFull</unit>
 		<unit variation="0" posx="-13.9919" posz="-1.4200" orientx="0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
@@ -237,7 +237,7 @@
 		<unit variation="0" posx="29.5132" posz="3.3790" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
 		<unit variation="109" posx="-23.8140" posz="1.4884" orientx="1.0000" orienty="0.0000" orientz="-0.0008">deNatEUPropFence</unit>
 		<unit variation="109" posx="-10.8500" posz="1.8567" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deNatEUPropFence</unit>
-		<unit variation="2" posx="-6.1379" posz="0.4713" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpPropOttomanMarketStall</unit>
+		<unit variation="2" posx="-6.1379" posz="0.4713" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpPropJewishMarketStall</unit>
 		<unit variation="3" posx="-1.1298" posz="0.4283" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpPropOttomanMarketStall</unit>
 		<unit variation="31" posx="31.2310" posz="1.5721" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropJesuitFence</unit>
 		<unit variation="64" posx="29.9190" posz="1.3745" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpPropHorseEU</unit>
@@ -298,7 +298,7 @@
 		<unit variation="3" posx="23.3240" posz="8.9577" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">dePropsColonyAfrica</unit>
 		<unit variation="10" posx="25.5695" posz="7.2307" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">dePropsColonyAfrica</unit>
 		<unit variation="4" posx="22.3094" posz="8.8616" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">dePropsColonyAfrica</unit>
-		<unit variation="1" posx="0.2982" posz="6.5806" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpPropOttomanMarketStall</unit>
+		<unit variation="1" posx="0.2982" posz="6.5806" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpPropJewishMarketStall</unit>
 		<unit variation="123" posx="-17.6248" posz="10.5767" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCSocketSultanateCityState</unit>
 		<unit variation="123" posx="-13.1248" posz="10.5767" orientx="0.0000" orienty="0.0000" orientz="1.0000">euNuggetTreasureCharts</unit>
 		<unit variation="1" posx="-37.4903" posz="8.4680" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpHarbourPlatform</unit>
@@ -367,7 +367,7 @@
 		<unit variation="1" posx="29.9619" posz="14.9733" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="8" posx="-32.4810" posz="15.0739" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeHousePirateCity</unit>
 		<unit variation="1" posx="8.3903" posz="14.9926" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeWallFull</unit>
-		<unit variation="2" posx="18.9295" posz="15.3018" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropOttomanMarketStall</unit>
+		<unit variation="2" posx="18.9295" posz="15.3018" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropJewishMarketStall</unit>
 		<unit variation="0" posx="24.4868" posz="15.2516" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpPropOttomanMarketStall</unit>
 		<unit variation="244" posx="31.0000" posz="15.0000" orientx="0.0342" orienty="0.0000" orientz="-0.9994">deSPCTreeCypressProp</unit>
 		<unit variation="0" posx="18.6147" posz="15.2511" orientx="-0.0002" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
