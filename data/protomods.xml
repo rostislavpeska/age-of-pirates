@@ -19222,7 +19222,7 @@
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\natives\orthodox_jaeger_icon.png</icon>
     <portraiticon>resources\art\units\natives\orthodox_jaeger_portrait.png</portraiticon>
-    <rollovertextid>122107</rollovertextid>
+    <rollovertextid>303297</rollovertextid>
     <shortrollovertextid>122171</shortrollovertextid>
     <initialhitpoints>200.0000</initialhitpoints>
     <maxhitpoints>200.0000</maxhitpoints>
@@ -45303,7 +45303,7 @@
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\natives\orthodox_jaeger_icon.png</icon>
     <portraiticon>resources\art\units\natives\orthodox_jaeger_portrait.png</portraiticon>
-    <rollovertextid>122107</rollovertextid>
+    <rollovertextid>303297</rollovertextid>
     <shortrollovertextid>122171</shortrollovertextid>
     <initialhitpoints>200.0000</initialhitpoints>
     <maxhitpoints>200.0000</maxhitpoints>

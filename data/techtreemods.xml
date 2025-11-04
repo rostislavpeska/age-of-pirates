@@ -32859,6 +32859,12 @@
     <effects>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHabsburgElDeguello</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHabsburgRadetzyMarch</effect>
+      <effect type="CommandRemove" tech="zpNatHabsburgRadetzyMarch">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpNatHabsburgElDeguello">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSpanishHabsburgColonialize" type="Normal">
@@ -34384,7 +34390,7 @@
         <target type="Tech">zpSPCBlessedCity</target>
       </effect>
       <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
-        <target type="ProtoUnit">zpHanseaticChurch</target>
+        <target type="ProtoUnit">zpTradingPostCaptureNavalOriental</target>
       </effect>
       <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCIstanbulMosque</target>

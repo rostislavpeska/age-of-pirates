@@ -580,14 +580,14 @@ void main(void)
 		rmAddAreaConstraint(patchID, avoidCityState);
 		if (i == 0){
 			if (PlayerNum ==2 || PlayerNum > 6){
-				rmSetAreaLocation(patchID, 0.2, 0.5+rmZTilesToFraction(52));
-				rmAddAreaInfluenceSegment(patchID, 0.2, 0.5+rmZTilesToFraction(52), 0.22, 0.5+rmZTilesToFraction(48));
-				rmAddAreaInfluenceSegment(patchID, 0.16, 0.5+rmZTilesToFraction(48), 0.2, 0.5+rmZTilesToFraction(52));
+				rmSetAreaLocation(patchID, 0.2, 0.5+rmZTilesToFraction(53));
+				rmAddAreaInfluenceSegment(patchID, 0.2, 0.5+rmZTilesToFraction(53), 0.22, 0.5+rmZTilesToFraction(43));
+				rmAddAreaInfluenceSegment(patchID, 0.16, 0.5+rmZTilesToFraction(49), 0.2, 0.5+rmZTilesToFraction(59));
 			}
 			else{
-				rmSetAreaLocation(patchID, 0.2, 0.5+rmZTilesToFraction(48));
-				rmAddAreaInfluenceSegment(patchID, 0.16, 0.5+rmZTilesToFraction(44), 0.2, 0.5+rmZTilesToFraction(48));
-				rmAddAreaInfluenceSegment(patchID, 0.2, 0.5+rmZTilesToFraction(48), 0.22, 0.5+rmZTilesToFraction(44));
+				rmSetAreaLocation(patchID, 0.2, 0.5+rmZTilesToFraction(49));
+				rmAddAreaInfluenceSegment(patchID, 0.16, 0.5+rmZTilesToFraction(45), 0.2, 0.5+rmZTilesToFraction(49));
+				rmAddAreaInfluenceSegment(patchID, 0.2, 0.5+rmZTilesToFraction(49), 0.22, 0.5+rmZTilesToFraction(45));
 			}
 		}
 		else{
