@@ -34206,6 +34206,9 @@
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCPirateDockB" relativity ="Absolute">
 				<target type ="Player"></target>
 			</effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCMenagerie" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
 		</effects>
 	</tech>
   <tech name="zpUnknownAllianceCorsairsEnabler" type="Normal">

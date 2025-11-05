@@ -1859,7 +1859,7 @@
       <string _locid="301858">Domesticated Pig</string>
       <string _locid="301859">ZP Domesticated Pig</string>
       <string _locid="301860">ZP Vineyard</string>
-      <string _locid="301861">ZP Cherry Orchad Socket</string>
+      <string _locid="301861">ZP Vineyard Socket</string>
       <string _locid="301862">Can build Vineyard</string>
       <string _locid="301863">Build Vineyard</string>
       <string _locid="301864">Vineyard Foundetion</string>
@@ -3296,6 +3296,17 @@
       <string _locid="303297">Georgian Skirmisher with high hitpoints that is particularly strong against Heavy Infantry.</string>
       <string _locid="303298">Grand Bazaar</string>
       <string _locid="303299">ZP PROP Jewish Market Stall</string>
+      <string _locid="303300">ZP PROP Ottoman Props</string>
+      <string _locid="303301">ZP PROP Sufi House</string>
+      <string _locid="303302">ZP Cherry Orchard</string>
+      <string _locid="303303">ZP Cherry Orchard Socket</string>
+      <string _locid="303304">Cherry Orchard Foundation</string>
+      <string _locid="303305">Can build Cherry Orchard</string>
+      <string _locid="303306">Build Cherry Orchard</string>
+      <string _locid="303307">ZP Cherry Orchard Socket</string>
+
+
+
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

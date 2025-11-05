@@ -762,6 +762,16 @@
     <usemultiple>
     </usemultiple>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpSocketBuildOrchadOrig</name>
+    <icon>resources\images\icons\command\build_orchad_orig.png</icon>
+    <command>uiSocketBuild(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <socketbuild>
+    </socketbuild>
+    <rollovertextid>303306</rollovertextid>
+  </protounitcommand>
 
 
   <!--
