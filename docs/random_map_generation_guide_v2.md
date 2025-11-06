@@ -1,19 +1,36 @@
 # Random Map Generation Guide for AI Agents
 
 **Audience:** AI assistants working on Age of Empires III: Definitive Edition random map scripts  
-**Version:** 2.3  
-**Last Updated:** 2025-11-05
+**Version:** 2.11  
+**Last Updated:** 2025-11-06
 
 ---
 
-## 1. 📋 Document Version Control
+## **1.** 📋 Document Version Control
 
 **AI Assistant Instructions:**
 - **After making ANY changes to this document, update the "Last Updated" date above**
 - Format: YYYY-MM-DD
 - Update version: 2.x for minor updates, 3.0 for major restructuring
 
+**⚠️ CRITICAL RULE - Content Removal:**
+- **NEVER remove content from categorized sections** (chapters, main sections, subsections) without explicit user permission
+- If you think content should be removed or relocated, **ASK FIRST** and explain:
+  - What content you want to remove
+  - Why it should be removed
+  - Where it will be moved (if applicable)
+- **WARNING TO USER:** Once content is removed from this document, it may be difficult or impossible to recover from AI memory
+- **Always create a backup** before making large structural changes
+
 **Version History:**
+- **2.11** (2025-11-06): Added map layout pattern classification table to Chapter 22 Phase 1 with 13 distinct patterns; Added C-style for loop crash example to experimental syntax section with correct XS syntax fix
+- **2.10** (2025-11-06): Reorganized chapters - Created Chapter 22 "Best Practices for AI Agents", removed redundant Chapter 23 "Common Issues & Fixes" (content already in Chapter 21 Troubleshooting), renumbered Chapter 24→23 "Complete Example"; Updated Table of Contents
+- **2.9** (2025-11-06): Added two new troubleshooting sections: "⚠️ Spawn on Impossible Location" (land objects on water with island examples, objects on cliffs with plateau examples, groupings on trade routes) and "⚠️ Players Circular Issues" (case study of circular trade route conflict with detailed solution)
+- **2.8** (2025-11-06): Enhanced section 17.1.2 "Players Circular" with detailed explanation of distance values as fraction of map radius; Added warning about values over 0.45 causing spawn failures; Added practical examples for trade route avoidance
+- **2.7** (2025-11-06): Added `vector` type to variable types; Added new crash cause "Invalid Array Syntax" to troubleshooting; Added experimental code rule requiring `// EXPERIMENTAL` comments for undocumented patterns
+- **2.6** (2025-11-06): Added Chapter 20 (Triggers) and Chapter 21 (Troubleshooting), completed Table of Contents with all 21 chapters, added cross-references and back-to-top navigation
+- **2.5** (2025-11-06): Restored complete coordinate system content with visual diagrams and examples; Added CRITICAL RULE about content removal
+- **2.4** (2025-11-06): Added numbering convention section, created dedicated Forests subsection (14.2.4), removed duplicate content
 - **2.3** (2025-11-05): Made documentation generic for any mod/machine, added Age of Pirates section and local config system
 - **2.2** (2025-11-05): Added XS programming basics, map grid system, object names guide, and simple complete example from official docs
 - **2.1** (2025-11-05): Added Table of Contents and RM Commands Reference section
@@ -22,7 +39,7 @@
 
 ---
 
-## 2. 📑 Table of Contents
+## **2.** 📑 Table of Contents
 
 **⚠️ AI Assistant Instructions for Table of Contents:**
 - **IMPORTANT:** When you add, remove, or rename ANY section in this document, you MUST update this ToC
@@ -30,46 +47,335 @@
 - Update section numbers and titles to match exactly
 - Test that all internal links work correctly
 
-### 2.1. Quick Navigation
+---
 
-1. [📋 Document Version Control](#-document-version-control)
-2. [📑 Table of Contents](#-table-of-contents)
-3. [⚠️ Critical: Understanding Coordinates](#️-critical-understanding-coordinates)
-4. [💻 XS Programming Basics](#-xs-programming-basics-for-ai-agents)
-5. [🗺️ Map Grid & Measurement](#️-map-grid--measurement-system)
-6. [📦 Finding Object Names](#-finding-object-names)
-7. [🏴‍☠️ Age of Pirates Localization](#️-age-of-pirates-localization)
-8. [💻 Local Machine Configuration](#-local-machine-configuration)
-9. [📁 Map Folder Structure](#-map-folder-structure)
-10. [📝 Naming Convention](#-naming-convention)
-11. [📋 Required Files](#-required-files)
-12. [🚀 Simple Complete Example](#-simple-complete-example)
-13. [📚 RM Commands Reference](rm_commands_reference.md) ⭐
-14. [📚 Reference Documentation](#-reference-documentation)
+### **2.1. Numbering Convention**
+
+**Strict hierarchy rules - ALWAYS follow this structure:**
+
+1. **Top-level chapters:** `## N.` (e.g., `## 14.`, `## 15.`)
+   - Major topics (Areas, Trade Routes, Rivers, Players, Objects, etc.)
+   - ⚠️ **Always use bold font for chapter numbers**
+   - Example: `## 14. 🗺️ Areas`
+   
+2. **Main sections:** `### **N.M.**` (e.g., `### **14.1.**, `### **14.2.**`)
+   - Major subdivisions within a chapter
+   - Use bold double asterisks for section numbers
+   - Example: `### **14.2. Random Area Patterns**`
+   
+3. **Subsections:** `#### **N.M.P**` (e.g., `#### **14.2.1`, `#### **14.2.4`)
+   - Specific techniques, examples, or patterns
+   - Use bold for subsection numbers
+   - Example: `#### **14.2.4 Forests:**`
+   
+4. **Sub-subsections (level 4):** `##### **N.M.P.Q**` or descriptive titles
+   - Fine-grained details within subsections
+   - Can use letters (A, B, C) or numbers for clarity
+   - Example from 14.3.4: `##### **Part 1: Fixed Elevated Plateaus**`
+   - Example with letters: `##### **A) Base Terrain**`
+
+5. **Sub-sub-subsections (level 5):** `##### **N.M.P.Q.R**` (rarely used)
+   - Very specific details, used sparingly
+   - Example from Trade Routes: `##### **15.4.4.5 Train Stations (Advanced)**`
+
+**Complete hierarchy example:**
+```
+## **14.** 🗺️ Areas                              ← Top-level chapter (bold number)
+### **14.2. Random Area Patterns**            ← Main section (bold)
+#### **14.2.4 Forests:**                      ← Subsection (bold)
+##### **Example 1: Random Forests**           ← Sub-subsection (descriptive, bold)
+
+## **15.** 🚂 Trade Routes                        ← Top-level chapter (bold number)
+### **15.4. Socket Types**                    ← Main section (bold)
+#### **15.4.4 Socket Variants**               ← Subsection (bold)
+##### **15.4.4.5 Train Stations**             ← Sub-sub-subsection (5 levels deep, bold)
+```
+
+**When renumbering after adding/removing sections:**
+1. Find all affected sections using regex: `^##+ \*\*?14\.2\.[0-9]`
+2. Renumber subsections sequentially (14.2.1, 14.2.2, 14.2.3, 14.2.4...)
+3. Check for sub-subsections and ensure they're nested correctly
+4. Update cross-references (e.g., "see section 14.2.4")
+5. Verify ToC is updated
 
 ---
 
-## 3. ⚠️ Understanding Coordinates (CRITICAL)
+### **2.2. Complete Table of Contents**
 
-**Before working with ANY map coordinates, read `docs/map_coordinate_system.md`!**
+1. [📋 Document Version Control](#1--document-version-control)
+2. [📑 Table of Contents](#2--table-of-contents)
+3. [⚠️ Understanding Coordinates (CRITICAL)](#3-️-understanding-coordinates-critical)
+4. [💻 XS Programming Basics](#4--xs-programming-basics)
+5. [🗺️ Map Grid & Measurement System](#5-️-map-grid--measurement-system)
+6. [📦 Finding Object Names](#6--finding-object-names)
+7. [🏴‍☠️ Age of Pirates Localization](#7-️-age-of-pirates-localization)
+8. [💻 Local Machine Configuration](#8--local-machine-configuration)
+9. [📁 Map Folder Structure](#9--map-folder-structure)
+10. [📋 Required Files](#10--required-files)
+11. [🚀 Simple Complete Example](#11--simple-complete-example)
+12. [📚 Reference Documentation](#12--reference-documentation)
+13. [🧩 Map Properties](#13--map-properties)
+14. [🏝️ Areas](#14-️-areas)
+15. [🚂 Trade Routes](#15--trade-routes)
+16. [🤖 Rivers](#16--rivers)
+17. [👥 Players](#17--players)
+18. [📦 Objects](#18--objects)
+19. [🏘️ Groupings (Native Villages, City States)](#19-️-groupings-native-villages-city-states-decorative-structures)
+20. [🎯 Map Triggers](#20--map-triggers)
+21. [📞 Troubleshooting](#21--troubleshooting)
+22. [🎯 Best Practices for AI Agents](#22--best-practices-for-ai-agents)
+23. [📖 Complete Example: Creating Balearic Islands](#23--complete-example-creating-balearic-islands)
 
-The XZ coordinate system used in `.xs` scripts is **rotated 45° from the visual minimap display**:
-- Code "NE" (1.0, 1.0) → Visual **North** (top of diamond)
-- Code "SE" (1.0, 0.0) → Visual **East** (right of diamond)
-- Code "SW" (0.0, 0.0) → Visual **South** (bottom of diamond)
-- Code "NW" (0.0, 1.0) → Visual **West** (left of diamond)
-
-**Always think in X/Z values, not cardinal directions!**
+**External Resources:**
+- [📚 RM Commands Reference](rm_commands_reference.md) ⭐ (274 commands documented)
+- [Map Trigger Guide](map_trigger_guide.md) - Complete trigger documentation
 
 ---
 
-## 4. 💻 XS Programming Basics
+## **3.** ⚠️ Understanding Coordinates (CRITICAL)
+
+### **🎯 Critical Concept: 45° Rotation**
+
+**⚠️ IMPORTANT:** The XZ coordinate system used in `.xs` scripts is **rotated 45° from the visual minimap display!**
+
+---
+
+### **Visual Representation**
+
+#### **Code Coordinates (Standard XZ Axes)**
+```
+              Z-axis (North in code)
+                     ↑
+                (0.5, 1.0)
+                     |
+                     |
+(0.0, 0.5) ←────────(0.5, 0.5)────────→ (1.0, 0.5)
+X-axis              |                    X-axis
+(West)              |                    (East)
+                    |
+               (0.5, 0.0)
+                    ↓
+              (South in code)
+```
+
+#### **Visual Minimap Display (Rotated 45° - Diamond Shape)**
+```
+                    N (North)
+                    ↑
+               (0.5, 1.0)
+                   /|\
+                  / | \
+                 /  |  \
+                /   |   \
+               /    |    \
+              /     |     \
+     (0.0, 1.0)    |    (1.0, 1.0)
+         W ←───(0.5, 0.5)───→ E
+     (0.0, 0.5)    |    (1.0, 0.5)
+              \    |    /
+               \   |   /
+                \  |  /
+                 \ | /
+                  \|/
+               (0.5, 0.0)
+                    ↓
+                    S (South)
+```
+
+---
+
+### **Coordinate Mapping Table**
+
+#### **Corner Positions**
+
+| Code Name | Code Coordinates (X, Z) | Visual Map Direction | Description |
+|-----------|------------------------|---------------------|-------------|
+| **NE** (Northeast in code) | `(1.0, 1.0)` | **N** (North/Top) | High X, High Z → Top of diamond |
+| **SE** (Southeast in code) | `(1.0, 0.0)` | **E** (East/Right) | High X, Low Z → Right of diamond |
+| **SW** (Southwest in code) | `(0.0, 0.0)` | **S** (South/Bottom) | Low X, Low Z → Bottom of diamond |
+| **NW** (Northwest in code) | `(0.0, 1.0)` | **W** (West/Left) | Low X, High Z → Left of diamond |
+
+#### **Center Position**
+| Code Name | Code Coordinates (X, Z) | Visual Map Direction |
+|-----------|------------------------|---------------------|
+| **Center** | `(0.5, 0.5)` | **Center** |
+
+---
+
+### **Understanding the Axes**
+
+#### **X-Axis (Horizontal in code)**
+- **X = 0.0** → Left side of code grid → **West + South** on visual map
+- **X = 0.5** → Center horizontal
+- **X = 1.0** → Right side of code grid → **East + North** on visual map
+
+#### **Z-Axis (Vertical in code)**
+- **Z = 0.0** → Bottom of code grid → **South + East** on visual map
+- **Z = 0.5** → Center vertical
+- **Z = 1.0** → Top of code grid → **North + West** on visual map
+
+---
+
+### **Practical Examples**
+
+#### **Example 1: Placing Object in Visual "North"**
+**Goal:** Place something at the top of the minimap (visual North)
+
+**Code coordinates:** `(0.5, 1.0)` or nearby like `(0.6, 0.9)`
+- High Z value (close to 1.0)
+- Moderate X value (around 0.5)
+
+```xs
+float objectX = 0.5;
+float objectZ = 0.9;  // High Z = visual North
+rmPlaceObjectDefAtLoc(objectID, 0, objectX, objectZ);
+```
+
+#### **Example 2: Placing Object in Visual "West"**
+**Goal:** Place something on the left side of the minimap (visual West)
+
+**Code coordinates:** `(0.2, 0.8)` or similar
+- Low X value (close to 0.0)
+- High Z value (close to 1.0)
+
+```xs
+float objectX = 0.2;   // Low X
+float objectZ = 0.8;   // High Z
+// This appears on the left (West) of the visual map
+rmPlaceObjectDefAtLoc(objectID, 0, objectX, objectZ);
+```
+
+#### **Example 3: Balearic Islands Bonus Island Placement**
+
+The code uses `IslandLoc` to randomize the bonus island position:
+
+```xs
+if (IslandLoc == 1) {
+   // Code NE → Visual N (Top)
+   bonusX = 0.80;  // High X
+   bonusZ = 0.80;  // High Z
+} else if (IslandLoc == 2) {
+   // Code SE → Visual E (Right)
+   bonusX = 0.85;  // High X
+   bonusZ = 0.15;  // Low Z
+} else if (IslandLoc == 3) {
+   // Code SW → Visual S (Bottom)
+   bonusX = 0.15;  // Low X
+   bonusZ = 0.15;  // Low Z
+} else {
+   // Code NW → Visual W (Left)
+   bonusX = 0.15;  // Low X
+   bonusZ = 0.85;  // High Z
+}
+```
+
+**If a player reports:** *"The bonus island is on the West side"*
+→ **That's IslandLoc 4 (code NW)** with coordinates around `(0.15-0.20, 0.80-0.85)`
+
+---
+
+### **Quick Reference: Visual Direction → Code Coordinates**
+
+| Visual Direction | X Range | Z Range | Code Name | Example Coords |
+|-----------------|---------|---------|-----------|----------------|
+| **North (Top)** | 0.4-0.6 | 0.8-1.0 | NE region | `(0.5, 0.9)` |
+| **East (Right)** | 0.8-1.0 | 0.4-0.6 | SE region | `(0.9, 0.5)` |
+| **South (Bottom)** | 0.4-0.6 | 0.0-0.2 | SW region | `(0.5, 0.1)` |
+| **West (Left)** | 0.0-0.2 | 0.4-0.6 | NW region | `(0.1, 0.5)` |
+| **Northeast** | 0.7-1.0 | 0.7-1.0 | True NE | `(0.85, 0.85)` |
+| **Southeast** | 0.7-1.0 | 0.0-0.3 | True SE | `(0.85, 0.15)` |
+| **Southwest** | 0.0-0.3 | 0.0-0.3 | True SW | `(0.15, 0.15)` |
+| **Northwest** | 0.0-0.3 | 0.7-1.0 | True NW | `(0.15, 0.85)` |
+| **Center** | 0.4-0.6 | 0.4-0.6 | Center | `(0.5, 0.5)` |
+
+---
+
+### **Common Pitfalls**
+
+#### **❌ Mistake: Using Cardinal Directions from Code Names**
+```xs
+// This is code "NE" but visual "North"!
+float x = 0.9;
+float z = 0.9;
+```
+
+#### **✅ Correct: Think in X/Z, Convert to Visual**
+```xs
+// Want visual "West" (left side of minimap)?
+// Use low X, high Z
+float westX = 0.15;   // Low X value
+float westZ = 0.85;   // High Z value
+```
+
+---
+
+### **Working with Players**
+
+#### **Player Descriptions vs Code Coordinates**
+
+When a player says:
+- **"It's in the North"** → Look for **high Z** values (0.7-1.0), moderate X (0.4-0.6)
+- **"It's in the South"** → Look for **low Z** values (0.0-0.3), moderate X (0.4-0.6)
+- **"It's in the East"** → Look for **high X** values (0.7-1.0), moderate Z (0.4-0.6)
+- **"It's in the West"** → Look for **low X** values (0.0-0.3), moderate Z or high Z (0.4-0.8)
+
+---
+
+### **Testing Coordinates**
+
+#### **Method 1: Use Fixed Positions**
+```xs
+// Test visual North placement
+rmPlaceObjectDefAtLoc(testObject, 0, 0.5, 0.95);
+
+// Test visual West placement
+rmPlaceObjectDefAtLoc(testObject, 0, 0.15, 0.85);
+
+// Test visual East placement
+rmPlaceObjectDefAtLoc(testObject, 0, 0.85, 0.15);
+
+// Test visual South placement
+rmPlaceObjectDefAtLoc(testObject, 0, 0.5, 0.05);
+```
+
+#### **Method 2: Debug with Echo**
+```xs
+rmEchoInfo("Placed at X: " + objectX + " Z: " + objectZ);
+```
+
+Check the in-game console or log files to see where objects actually placed.
+
+---
+
+### **Summary**
+
+✅ **Key Takeaway:** The XZ coordinate system is rotated 45° from the visual minimap!
+
+| To place in... | Use coordinates... |
+|---------------|-------------------|
+| **Visual North** | High Z (0.8-1.0), Mid X (0.4-0.6) |
+| **Visual East** | High X (0.8-1.0), Mid Z (0.4-0.6) |
+| **Visual South** | Low Z (0.0-0.2), Mid X (0.4-0.6) |
+| **Visual West** | Low X (0.0-0.2), High Z (0.7-1.0) |
+
+**Always think in terms of X and Z values, not cardinal directions from the code!**
+
+**See also:**
+- [Chapter 14 (Areas)](#14-️-areas) - Practical coordinate usage in area placement
+- [Chapter 17 (Players)](#17--players) - Player positioning with coordinates
+- [Chapter 19 (Groupings)](#19-️-groupings-native-villages-city-states-decorative-structures) - Grouping placement with X/Z coordinates
+
+[↑ Back to Table of Contents](#2--table-of-contents)
+
+---
+
+## **4.** 💻 XS Programming Basics
 
 **Purpose:** Understanding XS language fundamentals for creating random maps
 
 **📚 Complete XS Reference:** For comprehensive XS language documentation, see [AOE3 AI Scripting Guide - The XS Language](https://aoe3mc.github.io/ai-guide/xs/)
 
-### 4.1. Variables
+### **4.1. Variables**
 
 **Format:** `<type> <name> = <value>;`
 
@@ -78,6 +384,7 @@ The XZ coordinate system used in `.xs` scripts is **rotated 45° from the visual
 - **float** - Decimal numbers: `float myFraction = 0.28;`
 - **string** - Text: `string myUnitName = "Settler";`
 - **bool** - True/False: `bool myCheck = true;`
+- **vector** - Coordinate/position data: `vector myLocation = rmGetTradeRouteWayPoint(routeID, 0.5);`
 
 **Naming Convention:**
 - First letter lowercase
@@ -97,7 +404,7 @@ string fullName = firstName + " " + lastName;
 myCounter = 5;  // Don't use "int" again
 ```
 
-### 4.2. AOE3:DE Predefined Variables
+### **4.2. AOE3:DE Predefined Variables**
 
 These are automatically set by the game:
 - `cMapSize` - 0 = normal, 1 = large
@@ -113,7 +420,7 @@ if (cMapSize == 1) {
 }
 ```
 
-### 4.3. Operators
+### **4.3. Operators**
 
 **Comparison:**
 - `==` - Equal to
@@ -134,7 +441,7 @@ if (cNumberNonGaiaPlayers >= 4 && cMapSize == 1) {
 }
 ```
 
-### 4.4. Control Flow
+### **4.4. Control Flow**
 
 **If/Else:**
 ```cpp
@@ -155,7 +462,7 @@ for (i = 1; <= cNumberNonGaiaPlayers) {
 }
 ```
 
-### 4.5. Functions
+### **4.5. Functions**
 
 **Predefined Functions** (start with `rm`):
 - `rmCreateArea()` - Create an area
@@ -176,7 +483,7 @@ void main(void) {
 }
 ```
 
-### 4.6. Script Conventions
+### **4.6. Script Conventions**
 
 **⚠️ Important Rules:**
 - **Case-sensitive:** `int` ≠ `Int` ≠ `INT`
@@ -196,9 +503,9 @@ int myVar = 5;  // Semicolon required
 
 ---
 
-## 5. 🗺️ Map Grid & Measurement System
+## **5.** 🗺️ Map Grid & Measurement System
 
-### 5.1. Coordinate System
+### **5.1. Coordinate System**
 
 **Map Grid:** X, Z coordinates (Y is elevation)
 - Origin `(0, 0)` = Bottom of screen
@@ -207,9 +514,9 @@ int myVar = 5;  // Semicolon required
 - `(0, 1)` = Left corner (9 o'clock)
 - `(1, 1)` = Top (12 o'clock)
 
-**⚠️ CRITICAL:** The XZ grid is rotated 45° from visual display! (See coordinate section above)
+**⚠️ CRITICAL:** The XZ grid is rotated 45° from visual display! (See [Chapter 3: Understanding Coordinates](#3-️-understanding-coordinates-critical))
 
-### 5.2. Tiles & Measurements
+### **5.2. Tiles & Measurements**
 
 **Tile Size:** 2x2 meters (square tiles)
 - Small buildings: 1 tile (2x2m)
@@ -239,7 +546,7 @@ rmSetMapSize(mySize, mySize);
 
 ---
 
-## 6. 📦 Finding Object Names
+## **6.** 📦 Finding Object Names
 
 **⚠️ Important:** Game uses protounit names, not display names!
 
@@ -247,7 +554,7 @@ rmSetMapSize(mySize, mySize);
 
 **Search Priority:** Always check mod files FIRST, then base game files.
 
-### 6.1. Protounit Names (Units & Buildings)
+### **6.1. Protounit Names (Units & Buildings)**
 
 **Display Name → Protounit Name:**
 - "Villager" → `"Settler"`
@@ -264,17 +571,17 @@ rmSetMapSize(mySize, mySize);
 3. Look for `<unit name="ProtounitName">`
 4. Use exact name in script
 
-**See detailed examples:** [Reference Documentation → Resource Types](#resource-types-huntables-fish-whales-mines-berries)
+**See detailed examples:** [Chapter 12: Reference Documentation → Resource Types](#121-resource-types-huntables-fish-whales-mines-berries)
 
-### 6.2. Water Types
+### **6.2. Water Types**
 
 **Generic Locations:**
 1. **Your Mod:** `<MOD_WORKSPACE>/data/waterbodies2.xml` ⭐ (Check FIRST if exists)
 2. **Base Game:** `<BASE_GAME_PATH>/scripts/source/waterbodies.xml`
 
-**See detailed guide:** [Reference Documentation → Water Types](#water-types)
+**See detailed guide:** [Chapter 12: Reference Documentation → Water Types](#122-water-types)
 
-### 6.3. Terrain Names
+### **6.3. Terrain Names**
 
 **Terrain Types (individual textures):**
 - **Base Game:** `<BASE_GAME_PATH>/scripts/source/art/terrain/terraintypes.xml`
@@ -286,55 +593,55 @@ rmSetMapSize(mySize, mySize);
 - ⚠️ Use filename WITHOUT .xml extension
 - ⚠️ Use underscores not spaces: `"italy_grass"` ✅ NOT `"italy grass"` ❌
 
-**See detailed guide:** [Reference Documentation → Terrain Types vs Mixes](#terrain-types-vs-terrain-mixes)
+**See detailed guide:** [Chapter 12: Reference Documentation → Terrain Types vs Mixes](#123-terrain-types-vs-terrain-mixes)
 
-### 6.4. Cliff Types
+### **6.4. Cliff Types**
 
 **Generic Locations:**
 1. **Your Mod:** `<MOD_WORKSPACE>/data/clifftypes2.xml` (if your mod has custom cliffs)
 2. **Base Game:** `<BASE_GAME_PATH>/scripts/source/clifftypes.xml`
 
-**See detailed guide:** [Reference Documentation → Cliff Types](#cliff-types)
+**See detailed guide:** [Chapter 12: Reference Documentation → Cliff Types](#124-cliff-types)
 
-### 6.5. Forest Types
+### **6.5. Forest Types**
 
 **Base Game Locations:**
 1. `<BASE_GAME_PATH>/scripts/source/forest.xml` (29 types)
 2. `<BASE_GAME_PATH>/scripts/source/forest2.xml` (49+ types)
 
-**See detailed guide:** [Reference Documentation → Forest Types](#forest-types)
+**See detailed guide:** [Chapter 12: Reference Documentation → Forest Types](#125-forest-types)
 
-### 6.6. Native Civilizations (Subcivs)
+### **6.6. Native Civilizations (Subcivs)**
 
 **Generic Locations:**
 1. **Your Mod:** `<MOD_WORKSPACE>/data/civmods.xml` (if your mod has custom natives)
 2. **Base Game:** `<BASE_GAME_PATH>/scripts/source/civs.xml`
 
-**See detailed guide:** [Reference Documentation → Native Civilizations](#native-civilizations-subcivs)
+**See detailed guide:** [Chapter 12: Reference Documentation → Native Civilizations](#126-native-civilizations-subcivs)
 
-### 6.7. Map Types
+### **6.7. Map Types**
 
 **Base Game Location:** `<BASE_GAME_PATH>/scripts/source/maptypes.xml`
 
 Examples: `"water"`, `"land"`, `"grass"`, `"snow"`
 
-**See detailed guide:** [Reference Documentation → Map Types](#map-types-gameplay-ai-behavior-treasures)
+**See detailed guide:** [Chapter 12: Reference Documentation → Map Types](#127-map-types-gameplay-ai-behavior-treasures)
 
-### 6.8. Technology Names
+### **6.8. Technology Names**
 
 **Base Game Location:** `<BASE_GAME_PATH>/scripts/source/techtree.xml`
 
 Examples: attack upgrades, armor, hitpoints, etc.
 
-### 6.9. Trigger Names
+### **6.9. Trigger Names**
 
 **Age of Pirates Location:** `<MOD_WORKSPACE>/data/trigger/triggerdata.xml`
 
 Used for scenario-style events in random maps.
 
-**See detailed guide:** [Map Triggers](#-map-triggers)
+**See detailed guide:** Map Triggers (Chapter 31 - in uncategorized section)
 
-### 6.10. RM Commands
+### **6.10. RM Commands**
 
 **Documentation:** [rm_commands_reference.md](rm_commands_reference.md)
 
@@ -342,9 +649,11 @@ All 274 Random Map functions with signatures and descriptions.
 
 **⚠️ DO NOT edit base game XML files - will break game! Only read them for reference.**
 
+[↑ Back to Table of Contents](#2--table-of-contents)
+
 ---
 
-## 7. 🏴‍☠️ Age of Pirates Localization
+## **7.** 🏴‍☠️ Age of Pirates Localization
 
 **This section is specific to the Age of Pirates mod.**
 
@@ -353,7 +662,7 @@ Age of Pirates has **pre-extracted base game reference files** in the mod worksp
 
 ---
 
-### 7.1. File Locations (Age of Pirates Specific)
+### **7.1. File Locations (Age of Pirates Specific)**
 
 #### Custom Mod Content (Age of Pirates Only)
 
@@ -394,7 +703,7 @@ Age of Pirates has **pre-extracted base game reference files** in the mod worksp
 
 - `docs/` - This documentation folder
 
-### 7.2. Age of Pirates Naming Conventions
+### **7.2. Age of Pirates Naming Conventions**
 
 **Map Files:**
 
@@ -413,7 +722,7 @@ Age of Pirates has **pre-extracted base game reference files** in the mod worksp
 - Always check `data/waterbodies2.xml` FIRST before base game files
 
 
-### 7.3. Search Priority for Age of Pirates
+### **7.3. Search Priority for Age of Pirates**
 
 When looking for type names, **always search in this order:**
 
@@ -432,7 +741,7 @@ Looking for water type "Caribbean"?
 - Pre-extracted files mean direct access without .bar tools
 - AI assistants can read files immediately
 
-### 7.4. Age of Pirates Specific Features
+### **7.4. Age of Pirates Specific Features**
 
 **Custom Groupings:**
 - Extensive pirate village groupings
@@ -454,12 +763,12 @@ See detailed sections below for usage examples.
 
 ---
 
-## 7.5. File Organization
+### **7.5. File Organization**
 
 #### **For New Map Development:**
 
 ```
-C:/Program Files (x86)/Steam/steamapps/common/AoE3DE/Game/RandMaps/
+<BASE_GAME_PATH>/Game/RandMaps/
 ├── 000zpBalearicIslands.xs   (script - place here for testing)
 ├── 000zpBalearicIslands.xml  (metadata - place here for testing)
 └── 000zpBalearicIslands.md   (documentation - place here)
@@ -494,7 +803,7 @@ C:/Program Files (x86)/Steam/steamapps/common/AoE3DE/Game/RandMaps/
 
 ---
 
-## 8. 💻 Local Machine Configuration
+## **8.** 💻 Local Machine Configuration
 
 **Setup Instructions:**
 
@@ -502,7 +811,7 @@ C:/Program Files (x86)/Steam/steamapps/common/AoE3DE/Game/RandMaps/
 2. **Update with YOUR paths** in `config.local.md`
 3. **File is gitignored** - won't be committed to repository
 
-### 8.1. Path Variables Used in This Guide
+### **8.1. Path Variables Used in This Guide**
 
 Throughout this documentation, you'll see these placeholders:
 
@@ -516,7 +825,7 @@ Throughout this documentation, you'll see these placeholders:
 - For Age of Pirates: Usually in `C:\Users\[YourName]\Games\Age of Empires 3 DE\[SteamID]\mods\local\age-of-pirates`
 - Contains: `data/`, `randmaps/`, `docs/`, etc.
 
-### 8.2. How to Use Path Variables
+### **8.2. How to Use Path Variables**
 
 **In documentation, you see:**
 ```
@@ -528,7 +837,7 @@ Throughout this documentation, you'll see these placeholders:
 C:\Program Files (x86)\Steam\steamapps\common\AoE3DE\scripts\source\waterbodies.xml
 ```
 
-### 8.3. Quick Setup
+### **8.3. Quick Setup**
 
 **Edit `config.local.md` with your paths:**
 ```markdown
@@ -545,9 +854,9 @@ C:\Program Files (x86)\Steam\steamapps\common\AoE3DE\scripts\source\waterbodies.
 
 ---
 
-## 9. 📁 Map Folder Structure
+## **9.** 📁 Map Folder Structure
 
-### 9.1. Three Map Locations
+### **9.1. Three Map Locations**
 
 1. **Root Game Folder (PREFERRED FOR TESTING):**
    ```
@@ -586,7 +895,7 @@ C:\Program Files (x86)\Steam\steamapps\common\AoE3DE\scripts\source\waterbodies.
 
 ---
 
-## 10. 📋 Required Files
+## **10.** 📋 Required Files
 
 Every random map needs **two required files** and **one optional file:**
 
@@ -687,13 +996,13 @@ Map metadata for game menus.
 
 ---
 
-## 11. 🚀 Simple Complete Example
+## **11.** 🚀 Simple Complete Example
 
 **A minimal working map for learning** - MySimpleMap
 
 This example creates a flat terrain map with Town Centers for each player placed in a circle.
 
-### 11.1. MySimpleMap.xs
+### **11.1. MySimpleMap.xs**
 
 ```cpp
 /* A SIMPLE RANDOM MAP - by Tutorial - Version 1.0 */
@@ -753,7 +1062,7 @@ void main(void) {
 }
 ```
 
-### 11.2. MySimpleMap.xml
+### **11.2. MySimpleMap.xml**
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -769,7 +1078,7 @@ void main(void) {
 </mapinfo>
 ```
 
-### 11.3. How to Test This Map
+### **11.3. How to Test This Map**
 
 1. **Save both files** in: `C:\...\Age of Empires III\RandMaps\`
    - `MySimpleMap.xs`
@@ -793,7 +1102,7 @@ void main(void) {
    - Start Skirmish game
    - Select map from Custom Maps
 
-### 11.4. What This Map Does
+### **11.4. What This Map Does**
 
 - **Flat terrain** with "texas\ground2_tex" texture
 - **Circular player placement** at 30% radius
@@ -801,7 +1110,7 @@ void main(void) {
 - **One Town Center** per player at their starting location
 - **Scales automatically** for 2-8 players, normal/large maps
 
-### 11.5. Next Steps
+### **11.5. Next Steps**
 
 Once this works, try:
 - Adding starting Villagers: `rmAddObjectDefItem(towncenterID, "Settler", 5, 4.0);`
@@ -811,7 +1120,7 @@ Once this works, try:
 
 ---
 
-## 12. 📚 Reference Documentation
+## **12.** 📚 Reference Documentation
 
 ### **12.1. RM Commands List**
 
@@ -1369,7 +1678,7 @@ if (rmAllocateSubCivs(3) == true)
 
 ---
 
-## 13. 🧩 Map Properties
+## **13.** 🧩 Map Properties
 
 ### **13.1. Map Size & Scaling**
 
@@ -1685,6 +1994,18 @@ rmDefineClass("classPatch");       // Use rmClassID() to reference later
 rmDefineClass("importantItem");
 ```
 
+⚠️ **CRITICAL:** When using specially defined integer classes, always make sure they're correctly defined as `int` variables BEFORE using them!
+
+```cpp
+// ❌ WRONG - Class not stored as int
+rmDefineClass("classIsland");
+int avoidIsland = rmCreateClassDistanceConstraint("avoid island", classIsland, 30.0);  // ERROR!
+
+// ✅ CORRECT - Class defined as int variable
+int classIsland = rmDefineClass("classIsland");
+int avoidIsland = rmCreateClassDistanceConstraint("avoid island", classIsland, 30.0);  // Works!
+```
+
 **Step 2: Add Areas/Objects to Classes (when creating them)**
 ```cpp
 // Add player area to class
@@ -1694,7 +2015,7 @@ rmAddAreaToClass(playerID, classPlayer);  // Can belong to multiple classes!
 
 // Add bonus islands to class
 rmAddAreaToClass(bonusIslandID, classBonusIsland);
-rmAddAreaToClass(bonusIslandID, classIsland);  // Also part of island class
+rmAddAreaToClass(bonusIslandID, classIsland);  // thid class
 
 // Add port sites to class
 rmAddAreaToClass(portSite1, classPortSite);
@@ -2250,6 +2571,101 @@ rmAddFairLocConstraint(fairLocID, playerConstraint);
 ---
 
 #### **Best Practices:**
+
+⚠️ **CRITICAL:** All constraints must be defined before they're used! While copy-pasting code snippets from other map scripts, always check if the constraints are defined. Otherwise, the map will cause an error because of an undefined value!
+
+```cpp
+// ❌ WRONG - Using undefined constraint
+int mineID = rmCreateObjectDef("mine");
+rmAddObjectDefConstraint(mineID, avoidMine);  // ERROR if avoidMine not defined!
+
+// ✅ CORRECT - Define constraint first
+int avoidMine = rmCreateTypeDistanceConstraint("avoid mine", "mine", 30.0);
+int mineID = rmCreateObjectDef("mine");
+rmAddObjectDefConstraint(mineID, avoidMine);  // Works!
+```
+
+💡 **IMPORTANT:** Copying constraints from other scripts may cause issues when the original constraint has different values. It can result in strange behavior. When values differ, define separate constraints with different names.
+
+⚠️ **CRITICAL:** Having two constraints with the same name will cause an error or unpredictable behavior!
+
+```cpp
+// Script A has:
+int avoidPlayer = rmCreateTypeDistanceConstraint("avoid player", "AbstractSettlement", 40.0);
+
+// ❌ WRONG - Script B tries to redefine with same name but different value
+int avoidPlayer = rmCreateTypeDistanceConstraint("avoid player", "AbstractSettlement", 25.0);  
+// This overwrites the first constraint! Now both use 25.0
+
+// ✅ CORRECT Solution 1 - Use descriptive variant names
+int avoidPlayer = rmCreateTypeDistanceConstraint("avoid player", "AbstractSettlement", 40.0);
+int avoidPlayerShort = rmCreateTypeDistanceConstraint("avoid player short", "AbstractSettlement", 25.0);
+
+// Then use the appropriate one:
+rmAddObjectDefConstraint(mineID, avoidPlayer);       // Uses 40.0
+rmAddObjectDefConstraint(treeID, avoidPlayerShort);  // Uses 25.0
+
+// ✅ CORRECT Solution 2 - If you only need the 25.0 version, replace it completely
+// int avoidPlayer = rmCreateTypeDistanceConstraint("avoid player", "AbstractSettlement", 40.0);  // Comment out or delete
+int avoidPlayer = rmCreateTypeDistanceConstraint("avoid player", "AbstractSettlement", 25.0);  // Define only this
+```
+
+💡 **IMPORTANT:** When adding constraints to objects or areas, you must add them BEFORE calling `rmBuildArea()`! Adding constraints after building will not work.
+
+```cpp
+// ❌ WRONG - Adding constraint after building area
+int playerID = rmCreateArea("player " + i);
+rmBuildArea(playerID);                                 // Area built first
+rmAddAreaConstraint(playerID, playerEdgeConstraint);  // TOO LATE! Constraint ignored!
+
+// ✅ CORRECT - Add constraints before building
+int playerID = rmCreateArea("player " + i);
+rmAddAreaConstraint(playerID, playerEdgeConstraint);  // Add constraints first
+rmAddAreaConstraint(playerID, avoidPlayer);           // Can add multiple
+rmBuildArea(playerID);                                 // Build AFTER all constraints added
+```
+
+⚠️ **CRITICAL:** Area constraints (using specific area IDs) can only be created AFTER the area is defined and built!
+
+```cpp
+// ❌ WRONG - Using area constraint before area exists
+int avoidSpecificIsland = rmCreateAreaConstraint("avoid my island", islandID);  // ERROR - islandID doesn't exist yet!
+
+// ✅ CORRECT - Create and build area first, then create constraint
+int islandID = rmCreateArea("island");
+rmAddAreaToClass(islandID, classIsland);
+rmBuildArea(islandID);                                 // Build the area
+// Now safe to create constraint that references this specific area
+int avoidSpecificIsland = rmCreateAreaConstraint("avoid my island", islandID);
+```
+
+⚠️ **CRITICAL:** Class constraints can be created right after defining the class - you do NOT need to add areas to the class first!
+
+**Note:** If you use a class constraint BEFORE defining the class, the result depends on definition type:
+- **Hardcoded Integer definition** (`int classIsland`) → causes CRITICAL ERROR (undefined variable)
+- **String definition** (`rmClassID("island")`) → no error, but constraint has NO EFFECT (silent fail)
+
+```cpp
+// ✅ CORRECT - Standard pattern from official maps
+// Step 1: Define class
+int classIsland = rmDefineClass("island");
+
+// Step 2: Create constraint immediately (no areas in class yet - that's OK!)
+int avoidIsland = rmCreateClassDistanceConstraint("avoid island", classIsland, 30.0);
+
+// Step 3: Later, when creating areas, add to class BEFORE building
+int islandID = rmCreateArea("island");
+rmAddAreaToClass(islandID, classIsland);  // Add to class
+rmBuildArea(islandID);                     // Then build
+
+// ❌ WRONG - Using class before defining it
+int avoidIsland = rmCreateClassDistanceConstraint("avoid island", classIsland, 30.0);  // ERROR!
+int classIsland = rmDefineClass("island");  // Class used before definition!
+```
+
+**Key difference:** Area constraints need the area built first. Class constraints only need the class defined (areas can be added later).
+
+---
 
 ✅ **Define ALL constraints AFTER classes** (classes first, then constraints that reference them)  
 ✅ **Group constraints by category** (player, resource, terrain, etc.) with comments  
@@ -2923,7 +3339,7 @@ void main(void) {
 
 ---
 
-## 14. 🏝️ Areas
+## **14.** 🏝️ Areas
 
 **Purpose:** Areas are the building blocks of your map - islands, continents, forests, lakes, and terrain features. Understanding how to create and configure areas is essential for map generation.
 
@@ -4224,33 +4640,10 @@ Unlike the Versailles wall cliffs which use explicit positions (`if (j == 0)` se
 **Common uses for random placement:**
 
 ✅ **Decorative cliffs** - Scattered across map  
-✅ **Forests** - Most common use case (see below)  
+✅ **Forests** - Most common use case (see section 14.2.4)  
 ✅ **Rock formations** - Aesthetic terrain features  
 ✅ **Terrain patches** - Random dirt/grass/sand spots  
-✅ **Small decorative areas** - Ruins, clearings, etc.  
-
-**Forest example (same pattern):**
-
-```cpp
-// Create random forests across the map
-int forestCount = 8 + 2*cNumberNonGaiaPlayers;
-
-for (i=0; < forestCount) {
-    int forestID = rmCreateArea("forest "+i);
-    rmSetAreaSize(forestID, rmAreaTilesToFraction(50), rmAreaTilesToFraction(100));
-    rmSetAreaForestType(forestID, forestType);
-    rmSetAreaCoherence(forestID, 0.4);
-    
-    // Constraints define where forests can spawn
-    rmAddAreaConstraint(forestID, avoidTC);
-    rmAddAreaConstraint(forestID, avoidStartingResources);
-    rmAddAreaConstraint(forestID, forestConstraint);  // Avoid other forests
-    rmAddAreaConstraint(forestID, avoidImpassableLand);
-    
-    // Build at random valid location
-    rmBuildArea(forestID);
-}
-```
+✅ **Small decorative areas** - Ruins, clearings, etc.
 
 **Advantages:**
 - 🎯 Natural, organic distribution
@@ -4274,7 +4667,174 @@ for (i=0; < forestCount) {
 
 ---
 
-#### **14.2.4 Terrain Patches (Visual Variety):**
+#### **14.2.4 Forests:**
+
+Forests are one of the most common random placement features. They can be placed randomly across the map or confined to specific regions using directional or area-based constraints.
+
+**Example 1: Random Forests with Basic Settings**
+
+```cpp
+// Create random forests across the map
+int forestCount = 8 + 2*cNumberNonGaiaPlayers;
+
+for (i=0; < forestCount) {
+    int forestID = rmCreateArea("forest "+i);
+    rmSetAreaSize(forestID, rmAreaTilesToFraction(50), rmAreaTilesToFraction(100));
+    rmSetAreaForestType(forestID, forestType);
+    rmSetAreaCoherence(forestID, 0.4);
+    
+    // Constraints define where forests can spawn
+    rmAddAreaConstraint(forestID, avoidTC);
+    rmAddAreaConstraint(forestID, avoidStartingResources);
+    rmAddAreaConstraint(forestID, forestConstraint);  // Avoid other forests
+    rmAddAreaConstraint(forestID, avoidImpassableLand);
+    
+    // Build at random valid location
+    rmBuildArea(forestID);
+}
+```
+
+**Example 2: Single Large Forest Area**
+
+```cpp
+// Create a single large forest
+int forestID = rmCreateArea("main forest");
+rmSetAreaSize(forestID, 0.10);  // 10% of map
+rmSetAreaForestType(forestID, "Italian Forest");  // Mediterranean trees
+
+// Configure forest density and appearance
+rmSetAreaForestDensity(forestID, 0.7);       // 0.0 to 1.0 (70% dense)
+rmSetAreaForestClumpiness(forestID, 0.5);    // How clustered (0.0 = scattered, 1.0 = tight)
+rmSetAreaCoherence(forestID, 0.4);            // Shape coherence
+
+// Position and build
+rmSetAreaLocation(forestID, forestXLoc, forestYLoc);
+rmBuildArea(forestID);
+```
+
+**Example 3: Multiple Small Forest Patches**
+
+```cpp
+// Create scattered small forest patches
+int numberPatches = 15;
+
+for(i=0; < numberPatches) {
+   int smallForest = rmCreateArea("forest patch "+i);
+   rmSetAreaSize(smallForest, rmAreaTilesToFraction(60));
+   rmSetAreaForestType(smallForest, "z31 Mediterranean Coastal Forest");
+   rmSetAreaForestDensity(smallForest, 0.5);
+   rmSetAreaForestClumpiness(smallForest, 0.9);  // Very clustered
+   rmSetAreaCoherence(smallForest, 0.6);
+   
+   // Random placement across entire map
+   rmSetAreaLocation(smallForest, rmRandFloat(0.0, 1.0), rmRandFloat(0.0, 1.0));
+   rmBuildArea(smallForest);
+}
+```
+
+**Example 4: Sub-Biome Forests with Directional Constraints (Dead Sea Pattern)**
+
+This is a very common Age of Pirates pattern where different forest types are placed in different regions based on directional constraints, creating distinct sub-biomes.
+
+```cpp
+// Define directional constraints (pie constraints for cardinal directions)
+int Northward = rmCreatePieConstraint("northMapConstraint", 0.5, 0.5, 0, rmZFractionToMeters(0.5), 
+                                      rmDegreesToRadians(315), rmDegreesToRadians(135));
+int Southward = rmCreatePieConstraint("southMapConstraint", 0.5, 0.5, 0, rmZFractionToMeters(0.5), 
+                                      rmDegreesToRadians(135), rmDegreesToRadians(315));
+
+// Northern forests (desert vegetation)
+int numTriesNorth = 20 + 7*cNumberNonGaiaPlayers;
+int failCount = 0;
+
+for (i=0; < numTriesNorth) {
+   int northForest = rmCreateArea("northforest"+i);
+   rmSetAreaWarnFailure(northForest, false);
+   rmSetAreaSize(northForest, rmAreaTilesToFraction(100), rmAreaTilesToFraction(200));
+   
+   // Desert forest type for northern biome
+   rmSetAreaForestType(northForest, "z45 arabian desert");
+   rmSetAreaForestDensity(northForest, 1.0);
+   rmSetAreaForestClumpiness(northForest, 0.0);
+   rmSetAreaForestUnderbrush(northForest, 0.0);
+   rmSetAreaCoherence(northForest, 0.4);
+   
+   // Standard constraints
+   rmAddAreaConstraint(northForest, avoidTownCenterFar);
+   rmAddAreaConstraint(northForest, avoidTradeRoute);
+   rmAddAreaConstraint(northForest, forestConstraint);  // Avoid other forests
+   
+   // ⚠️ KEY: Directional constraint keeps forests in NORTH only
+   rmAddAreaConstraint(northForest, Northward);
+   
+   // Build with failure handling
+   if(rmBuildArea(northForest)==false) {
+      failCount++;
+      if(failCount==5) break;  // Stop after 5 consecutive failures
+   }
+   else failCount=0;
+}
+
+// Southern forests (could be different vegetation type)
+int numTriesSouth = 5*cNumberNonGaiaPlayers;
+failCount = 0;
+
+for (i=0; < numTriesSouth) {
+   int southForest = rmCreateArea("southForest"+i);
+   rmSetAreaWarnFailure(southForest, false);
+   rmSetAreaSize(southForest, rmAreaTilesToFraction(100), rmAreaTilesToFraction(200));
+   
+   // Same type in Dead Sea, but could be different (e.g., "Borneo Palm Forest")
+   rmSetAreaForestType(southForest, "z45 arabian desert");
+   rmSetAreaForestDensity(southForest, 1.0);
+   rmSetAreaForestClumpiness(southForest, 0.0);
+   rmSetAreaCoherence(southForest, 0.4);
+   
+   rmAddAreaConstraint(southForest, avoidTownCenterFar);
+   rmAddAreaConstraint(southForest, avoidTradeRoute);
+   rmAddAreaConstraint(southForest, forestConstraint);
+   
+   // ⚠️ KEY: Directional constraint keeps forests in SOUTH only
+   rmAddAreaConstraint(southForest, Southward);
+   
+   if(rmBuildArea(southForest)==false) {
+      failCount++;
+      if(failCount==5) break;
+   }
+   else failCount=0;
+}
+```
+
+**Why use directional constraints for forests:**
+- 🎯 **Sub-biomes** - Create distinct vegetation zones (desert north, tropical south, etc.)
+- 🎯 **Thematic maps** - Match forest types to regional climate/theme
+- 🎯 **Visual variety** - Different areas look and feel different
+- 🎯 **Balance** - Ensure both regions have similar forest coverage
+
+**Directional constraint angles (for reference):**
+- **North:** 315° to 135° (upper half of map)
+- **South:** 135° to 315° (lower half of map)  
+- **East:** 45° to 225° (right half of map)
+- **West:** 225° to 45° (left half of map)
+
+**Common variations:**
+- Different forest types per region (`"Italian Forest"` north, `"Borneo Palm Forest"` south)
+- Different densities per region (sparse desert north, dense jungle south)
+- Can use area-based constraints instead (`stayInTeamIsland`, `stayInPlayerArea`)
+
+---
+
+**Forest Configuration Parameters:**
+
+- **`rmSetAreaForestType()`** - Forest type from `forest.xml` or `forest2.xml`
+- **`rmSetAreaForestDensity()`** - Tree density: 0.0 (sparse) to 1.0 (very dense)
+- **`rmSetAreaForestClumpiness()`** - Tree clustering: 0.0 (evenly spaced) to 1.0 (tight clumps)
+- **`rmSetAreaCoherence()`** - Overall shape coherence (affects forest boundary smoothness)
+- **`rmSetAreaForestUnderbrush()`** - Undergrowth density: 0.0 (none) to 1.0 (thick)
+
+---
+
+#### **14.2.5 Terrain Patches (Visual Variety):**
 
 Terrain patches are simple areas that use different terrain mixes to add visual variety to the map. They're one of the easiest ways to improve map aesthetics without affecting gameplay.
 
@@ -4458,7 +5018,7 @@ rmSetAreaSize(patchID, 0.05, 0.1);
 
 ---
 
-#### **14.2.5 Multi-Layered Structures (Volcanoes, Pyramids)**
+#### **14.2.6 Multi-Layered Structures (Volcanoes, Pyramids)**
 
 The layered area approach can also be used for complex 3D structures like **volcanoes, mountains, and pyramids**. These features stack multiple cliff and terrain areas on top of each other at the same location with decreasing sizes and increasing heights.
 
@@ -4472,7 +5032,7 @@ This is an advanced technique that combines areas, cliffs, trade routes, and gro
 
 ---
 
-#### **14.2.6 Connections**
+#### **14.2.7 Connections**
 
 
 **Purpose:** Connections create pathways between areas, ensuring players can reach different parts of the map. Critical for island maps and multi-plateau layouts.
@@ -5360,7 +5920,7 @@ STEP 4-5: Build Land
 
 ---
 
-## 15. 🚂 Trade Routes
+## **15.** 🚂 Trade Routes
 
 Trade routes are visual paths across the map where caravans, ships, or trains travel. They allow players to build Trading Posts at trade sockets along the route to generate resources. Trade routes are defined in two places:
 - **Route types:** `traderoutedefs.xml` - Defines visual appearance and units
@@ -6619,7 +7179,7 @@ rmPlaceGroupingAtLoc(stationGrouping005, 0,
 
 ---
 
-## 16. 🤖 Rivers
+## **16.** 🤖 Rivers
 
 Rivers are decorative water features that add visual variety and gameplay depth to maps. They use a dedicated river creation system separate from regular water areas.
 
@@ -7284,13 +7844,13 @@ rmRiverBuild(riverID2);
 
 ---
 
-## 17. 👥 Players
+## **17.** 👥 Players
 
 This chapter covers player positioning and placement on random maps.
 
 ---
 
-### 17.1. Player Positioning
+### **17.1. Player Positioning**
 
 Player positioning determines where players spawn on the map. Age of Empires III offers several placement methods, each suited for different map types and gameplay scenarios.
 
@@ -7363,6 +7923,35 @@ else{
 
 **Uses:** `rmPlacePlayersCircular(float minPlayerDist, float maxPlayerDist, float distVariance)`
 
+##### **Understanding Distance Values**
+
+**⚠️ CRITICAL: Distance is measured from map center (0.5, 0.5) as a fraction of map radius**
+
+The distance values represent how far from the center players spawn:
+- **0.0** = exact center of map (0.5, 0.5)
+- **0.5** = at the map edge (maximum possible value)
+- **Distance = fraction of radius** (not diameter!)
+
+**Example values and their meaning:**
+```cpp
+// Near center - players start close together
+rmPlacePlayersCircular(0.15, 0.15, 0.0);
+// Players spawn at 15% of map radius from center
+
+// Medium distance - balanced gameplay
+rmPlacePlayersCircular(0.35, 0.40, 0.05);
+// Players spawn 35-40% from center with 5% variance
+
+// Close to edge - maximum safe distance
+rmPlacePlayersCircular(0.45, 0.45, 0.0);
+// Players spawn at 45% of map radius (near edge but safe)
+```
+
+**⚠️ WARNING:** Avoid using values over **0.45**!
+- Values of 0.5 or higher may cause **player spawn failures**
+- Players will spawn in fallback location (usually bunched together)
+- Map edge constraints prevent reliable spawning at extreme distances
+
 ##### **A) Two Circulars for Two Teams (with spawn variations)**
 
 **Example from Black Sea** (shown above in 17.1.1)
@@ -7374,18 +7963,19 @@ else{
 rmSetPlacementSection(0.0, 1.0);  // Full circle (0 to 2π radians)
 rmPlacePlayersCircular(0.35, 0.40, 0.05);
 //                      │     │     └─ distance variance (randomness)
-//                      │     └─────── maximum distance from center
-//                      └──────────── minimum distance from center
+//                      │     └─────── maximum distance from center (fraction of radius)
+//                      └──────────── minimum distance from center (fraction of radius)
 ```
 
 **Distance parameters depend on map design:**
 - **Cliff positions** - Players must spawn outside cliff areas
 - **Trade route layout** - Avoid spawning on trade route path
+  - Example: If trade route circle is at 0.3-0.4 range, place players at 0.15 or 0.45
 - **Water areas** - Distance from lakes, rivers, or ocean
 - **Center features** - Distance from central island, monastery, or monuments
 - **Map size** - Available space for player areas
 
-**Example values:**
+**Practical examples:**
 ```cpp
 // Close to center (when center is empty or has resources only)
 rmPlacePlayersCircular(0.25, 0.30, 0.0);
@@ -7394,7 +7984,10 @@ rmPlacePlayersCircular(0.25, 0.30, 0.0);
 rmPlacePlayersCircular(0.35, 0.40, 0.05);
 
 // Far from center (when center has cliffs, water, or major features)
-rmPlacePlayersCircular(0.40, 0.42, 0.0);
+rmPlacePlayersCircular(0.45, 0.45, 0.0);
+
+// INSIDE a circular trade route (trade route at 0.3-0.5 range)
+rmPlacePlayersCircular(0.15, 0.20, 0.0);
 ```
 
 ##### **C) Circular with Team Spacing Modifier**
@@ -7731,7 +8324,7 @@ if (blockadeSpawn == 1) {
 
 ---
 
-### 17.2. Player Placement
+### **17.2. Player Placement**
 
 Player placement involves spawning Town Centers, starting units, resources, and water flags for each player.
 
@@ -8132,13 +8725,13 @@ rmPlaceObjectDefAtLoc(startingShipID, i, rmPlayerLocXFraction(i), rmPlayerLocZFr
 
 ---
 
-## 18. 📦 Objects
+## **18.** 📦 Objects
 
 Objects are individual entities placed on the map, including resources, animals, treasures, decorative props, and special controllers.
 
 ---
 
-### 18.1. Object Definition - Multiple Objects (Herds/Chunks)
+### **18.1. Object Definition - Multiple Objects (Herds/Chunks)**
 
 You can place multiple objects of the same type together as a "herd" or "chunk" using `rmAddObjectDefItem()` count parameter.
 
@@ -8353,7 +8946,7 @@ rmPlaceObjectDefPerPlayer(deerID, false, 2);
 
 ---
 
-### 18.2. Object Classes and Map Patterns
+### **18.2. Object Classes and Map Patterns**
 
 Different object types serve specific gameplay purposes. Here are the standard patterns:
 
@@ -8467,7 +9060,7 @@ rmPlaceObjectDefAtLoc(plantID, 0, 0.5, 0.5, 50);
 
 ---
 
-### 18.3. Fishes - Common Patterns
+### **18.3. Fishes - Common Patterns**
 
 Fish are placed in water using specific constraints and typical herd patterns.
 
@@ -8526,7 +9119,7 @@ rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, 5);  // 5 whales on map
 
 ---
 
-### 18.4. Nuggets (Treasures)
+### **18.4. Nuggets (Treasures)**
 
 Nuggets are treasure objects with different difficulty levels and rewards. Defined in `data/nuggetmods.xml`.
 
@@ -8620,7 +9213,7 @@ rmPlaceObjectDefInArea(diverNuggetID, 0, reefAreaID, 3);
 
 ---
 
-### 18.5. Controllers (Special Object Class)
+### **18.5. Controllers (Special Object Class)**
 
 **Controllers** are invisible placement markers used to precisely position groupings and other objects. They use the `"zpSPCWaterSpawnPoint"` proto unit.
 
@@ -8731,11 +9324,11 @@ rmAddObjectDefConstraint(mineID, avoidController);  // Keep mines away from nati
 
 ---
 
-## 19. 🏘️ Groupings (Native Villages, City States, Decorative Structures)
+## **19.** 🏘️ Groupings (Native Villages, City States, Decorative Structures)
 
 ⚠️ **COORDINATE WARNING:** Grouping placement uses `rmPlaceGroupingAtLoc()` with X/Z coordinates!
 - **MUST READ:** `docs/map_coordinate_system.md` before placing groupings
-- Code coordinates are rotated 45° from visual minimap
+- Common issues: coordinates are rotated 45° from visual minimap
 - Example: To place on visual "West", use low X + high Z like `(0.15, 0.85)`
 
 **Locations:**
@@ -9521,58 +10114,733 @@ rmPlaceGroupingAtLoc(randomBlock, 0, locX2, locZ4);
 - `randmaps/zpflorence.xs` - Simpler grid system, easier to understand
 - Base game `paris.xs` - Original implementation (if accessible)
 
----
-
-## 20. ⚠️ Unorganized Content (To Be Sorted)
+[↑ Back to Table of Contents](#2--table-of-contents)
 
 ---
 
-## 21. 📝 Practical Usage Examples
+## **20.** 🎯 Map Triggers
 
-⚠️ **REMINDER:** Before placing objects with coordinates, review `docs/map_coordinate_system.md`!
-- Code coordinates are rotated 45° from visual display
-- When examples show `(0.15, 0.85)`, understand this is low X + high Z = visual West
+**Triggers** enable dynamic gameplay events, tech activation, and politician systems on your maps.
 
----
+### **When to Use Triggers**
 
-### **Forest Types - Area Usage:**
+- ✅ Activating starting technologies for all players
+- ✅ Enabling consulate politicians (Asian civilizations, pirates, etc.)
+- ✅ Assigning random leaders/captains to AI players
+- ✅ Creating timed events or conditional gameplay
+- ✅ Balancing civilization-specific features
+
+### **Trigger Reference Files**
+
+| File | Purpose |
+|------|---------|
+| **`data/trigger/triggerdata.xml`** | Complete trigger definitions (effects, conditions, parameters) |
+| **`data/techtreemods.xml`** | Technology definitions and availability by region |
+| **[docs/map_trigger_guide.md](map_trigger_guide.md)** | **Complete trigger implementation guide** ⭐ |
+
+### **Quick Trigger Example**
 
 ```cpp
-// Create a forest area
-int forestID = rmCreateArea("main forest");
-rmSetAreaSize(forestID, 0.10);  // 10% of map
-rmSetAreaForestType(forestID, "Italian Forest");  // Mediterranean trees
+// Activate a starting tech for all players
+rmCreateTrigger("Starting Techs");
+rmSwitchToTrigger(rmTriggerID("Starting Techs"));
 
-// Configure forest density
-rmSetAreaForestDensity(forestID, 0.7);  // 0.0 to 1.0
-rmSetAreaForestClumpiness(forestID, 0.5);  // How clustered
-
-// Position and build
-rmSetAreaCoherence(forestID, 0.4);
-rmSetAreaLocation(forestID, forestXLoc, forestYLoc);
-rmBuildArea(forestID);
-
-// Example: Multiple small forest patches
-for(i=0; <numberPatches)
-{
-   int smallForest = rmCreateArea("forest patch "+i);
-   rmSetAreaSize(smallForest, rmAreaTilesToFraction(60));
-   rmSetAreaForestType(smallForest, "z31 Mediterranean Coastal Forest");
-   rmSetAreaForestDensity(smallForest, 0.5);
-   rmSetAreaForestClumpiness(smallForest, 0.9);  // Very clustered
-   rmSetAreaCoherence(smallForest, 0.6);
-   rmSetAreaLocation(smallForest, rmRandFloat(0.0, 1.0), rmRandFloat(0.0, 1.0));
-   rmBuildArea(smallForest);
+for(i=0; <= cNumberNonGaiaPlayers) {
+    rmAddTriggerEffect("ZP Set Tech Status (XS)");
+    rmSetTriggerEffectParamInt("PlayerID",i);
+    rmSetTriggerEffectParam("TechID","cTechzpSpanishHabsburgs"); // Activate Spanish Habsburgs for all players
+    rmSetTriggerEffectParamInt("Status",2);
 }
+
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
 ```
 
-## 22. 🎯 Best Practices for AI Agents
+### **📚 For Complete Trigger Documentation**
 
-⚠️ **COORDINATE SYSTEM WARNING:** Always reference `docs/map_coordinate_system.md` when working with positions!
+See **[Map Trigger Guide](map_trigger_guide.md)** for:
+- Starting tech activation
+- Universal consulate setup (Japan, China, India, Pirates)
+- AI leader/captain selection
+- Regional pirate variants (Mediterranean, Baltic, Australia)
+- Supporting triggers (Italian balance, research speed)
+- Complete working examples
+- Best practices and troubleshooting
+
+**See also:**
+- [Chapter 12: Reference Documentation](#12--reference-documentation) - Technology and trigger file references
+- [Chapter 6: Finding Object Names](#6--finding-object-names) - Locating trigger and tech names
+
+[↑ Back to Table of Contents](#2--table-of-contents)
+
+---
+
+## **21.** 📞 Troubleshooting
+
+### **21.1. 🚨 Map Crashes on Load (Critical Errors)**
+
+These errors prevent the map from loading and will crash the game.
+
+---
+
+#### **❌ Undefined Variable**
+
+**Problem:** Using a variable that was never declared.
+
+**Example:**
+```cpp
+// ❌ WRONG - avoidBlock is never defined
+rmAddObjectDefConstraint(mineID, avoidBlock);
+```
+
+**Fix:** Ensure all variables are defined before use:
+```cpp
+// ✅ CORRECT - Define constraint first
+int avoidBlock = rmCreateClassDistanceConstraint("avoid block", classBlock, 5.0);
+rmAddObjectDefConstraint(mineID, avoidBlock);
+```
+
+---
+
+#### **❌ Same Variable Defined Twice**
+
+**Problem:** Declaring the same variable multiple times causes a compilation error.
+
+**Example from zpblacksea.xs:**
+
+```cpp
+// ✅ BEST PRACTICE - Define variable BEFORE conditions
+int riverID = -1;  // Defined once at the top
+
+if (cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 4)
+    riverID = rmRiverCreate(-1, seaType2, 4, 4, 72, 72);
+else if (cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 6)
+    riverID = rmRiverCreate(-1, seaType2, 4, 4, 75, 75);
+// Variable already exists, just reassigning value ✅
+```
+
+```cpp
+// ⚠️ VALID but harder to read - Define in first if only
+if (cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 4)
+    int riverID = rmRiverCreate(-1, seaType2, 4, 4, 72, 72);  // First if has "int"
+else if (cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 6)
+    riverID = rmRiverCreate(-1, seaType2, 4, 4, 75, 75);  // No "int" - reusing variable
+// This works but is confusing to read
+```
+
+```cpp
+// ❌ WRONG - Variable defined twice = CRASH!
+if (cNumberNonGaiaPlayers == 3 || cNumberNonGaiaPlayers == 4)
+    int riverID = rmRiverCreate(-1, seaType2, 4, 4, 72, 72);  // Defined with "int"
+else if (cNumberNonGaiaPlayers == 5 || cNumberNonGaiaPlayers == 6)
+    int riverID = rmRiverCreate(-1, seaType2, 4, 4, 75, 75);  // ERROR: "int" again!
+// Causes map loading error or game crash!
+```
+
+**Fix:** Only define the variable once at the beginning of the function or code block.
+
+---
+
+#### **❌ Missing `rmTerrainInitialize()`**
+
+**Problem:** Map lacks base terrain initialization.
+
+**Fix:** Add immediately after `rmSetMapSize()`:
+```cpp
+rmSetMapSize(size, size);
+rmTerrainInitialize("water");  // or "grass", etc.
+```
+
+---
+
+#### **❌ Invalid Syntax**
+
+**Problem:** Using incorrect or untested XS syntax patterns.
+
+**Fix:**
+1. Check [XS Documentation](https://aoe3mc.github.io/ai-guide/xs/) for correct syntax
+2. Compare with working map scripts in `randmaps/` folder
+3. **Always inform user** if using a new pattern not found in existing maps
+4. Avoid inventing new patterns - stick to proven examples
+
+**Common syntax errors:**
+```cpp
+// ❌ WRONG - Missing variable name in comparison
+for(i=1; <=cNumberPlayers; i++)
+//       ↑ Says "less than or equal" but doesn't say WHAT to compare!
+
+// ✅ CORRECT - Need "i<" to compare i with cNumberPlayers
+for(i=1; i<cNumberPlayers; i++)
+//       ↑ Now it says "while i is less than cNumberPlayers, increment i"
+```
+
+---
+
+#### **❌ Invalid Array Syntax**
+
+**Problem:** Using C-style array declaration `type name[] = {...}` which XS doesn't support.
+
+**Example of crash:**
+```cpp
+// ❌ WRONG - XS doesn't support this array syntax!
+string playerTerrains[] = {"great plains grass", "carolina grass", "italy grass", "texas grass"};
+int randomTerrain = rmRandInt(0, 3);
+rmSetAreaMix(playerID, playerTerrains[randomTerrain]);  // CRASH!
+```
+
+**Fix:** Use if/else chains instead:
+```cpp
+// ✅ CORRECT - Use conditional statements
+int randomTerrain = rmRandInt(1, 4);
+if (randomTerrain == 1)
+   rmSetAreaMix(playerID, "great plains grass");
+else if (randomTerrain == 2)
+   rmSetAreaMix(playerID, "carolina grass");
+else if (randomTerrain == 3)
+   rmSetAreaMix(playerID, "italy grass");
+else
+   rmSetAreaMix(playerID, "texas grass");
+```
+
+**Note:** While XS technically supports arrays in some contexts, the `type name[] = {...}` initialization syntax is NOT supported and will crash the map. Always use patterns found in existing map scripts.
+
+**⚠️ EXPERIMENTAL CODE RULE:** If you use any code pattern not found in:
+- [XS Documentation](https://aoe3mc.github.io/ai-guide/xs/)
+- Existing map scripts in `randmaps/` folder
+
+Always mark it with a comment: `// EXPERIMENTAL - may cause crashes`
+
+---
+
+### **21.2. ⚠️ Content Doesn't Spawn (Very serious but not Critical Issues)**
+
+These errors don't crash the map but content won't appear in-game. The game typically uses fallback/default values.
+
+**Root cause:** Usually undefined string names (not in reference files).
+
+---
+
+#### **⚠️ Invalid Water Type Name**
+
+**Problem:** Water type not defined in either water file → water area doesn't spawn or uses fallback.
+
+**Example:**
+```cpp
+// ❌ May not exist
+rmSetSeaType("Mediterranean Sea");
+```
+
+**Fix:** Search BOTH water files:
+```bash
+# Check mod file FIRST:
+grep "name=" data/waterbodies2.xml | grep -i "mediterranean"
+
+# Then check base game:
+grep "name=" scripts/source/waterbodies.xml | grep -i "mediterranean"
+```
+
+Use exact name from `name=` attribute:
+```cpp
+// ✅ Use exact name found
+rmSetSeaType("ZP Mediterranean");
+```
+
+**Reference:** [Chapter 12: Reference Documentation](#12--reference-documentation)
+
+---
+
+#### **⚠️ Invalid Terrain Mix Name**
+
+**Problem:** Terrain mix not in `art/terrain/mix/` folder → area uses base terrain as backup.
+
+**Fix:** List available terrain mixes:
+```bash
+ls scripts/source/art/terrain/mix/ | grep -i "italy"
+```
+
+Use exact filename WITHOUT `.xml`:
+```cpp
+// ❌ WRONG
+rmSetAreaMix(areaID, "Italian Grass");
+
+// ✅ CORRECT - exact filename without .xml
+rmSetAreaMix(areaID, "italy_grass");
+```
+
+**Reference:** [Chapter 12.4: Terrain Mixes](#124-terrain-mixes)
+
+---
+
+#### **⚠️ Invalid Terrain Type Name**
+
+**Problem:** Terrain type not defined in terrain type files → terrain doesn't appear.
+
+**Fix:** Check terrain type files:
+```bash
+# Mod terrain types:
+grep "name=" data/terraintypes2.xml | grep -i "[terrain name]"
+
+# Base game terrain types (multiple files):
+grep "name=" scripts/source/art/terrain/terraintypes.xml
+grep "name=" scripts/source/art/terrain/terraintypes2.xml
+grep "name=" scripts/source/art/terrain/terraintypes3.xml
+```
+
+Use exact name from `name=` attribute:
+```cpp
+// ✅ Use exact name
+rmSetAreaTerrainType(areaID, "lava\\volcano_dirt");
+```
+
+**Terrain type file locations:**
+- Mod: `data/terraintypes2.xml`
+- Base game: `scripts/source/art/terrain/terraintypes*.xml` (multiple files)
+
+**Reference:** [Chapter 12.3: Terrain Types](#123-terrain-types)
+
+---
+
+#### **⚠️ Invalid Native Civ ID**
+
+**Problem:** Native civ not defined in civ files → natives can't be used by players (not properly initialized).
+
+**Fix:** Check civilization files:
+```bash
+# Mod civs (check FIRST):
+grep "name=" data/civmods.xml | grep -i "pirate"
+
+# Base game civs:
+grep "name=" scripts/source/civs.xml | grep -i "aztec"
+```
+
+Use exact subciv name:
+```cpp
+// ✅ Correct format
+subCiv0 = rmGetCivID("natpirates");
+if (subCiv0 >= 0)
+    rmSetSubCiv(0, "natpirates");
+```
+
+**Reference:** [Chapter 12.6: Native Civilizations](#126-native-civilizations)
+
+---
+
+#### **⚠️ Invalid Object Name**
+
+**Problem:** Object not defined in proto files → object doesn't spawn, game uses backup/default.
+
+**Fix:** Check proto files:
+```bash
+# Mod objects (check FIRST):
+grep "name=" data/protomods.xml | grep -i "whale"
+
+# Base game objects:
+grep "name=" scripts/source/protoy.xml | grep -i "deer"
+```
+
+Use exact proto name:
+```cpp
+// ✅ Use exact proto name
+rmAddObjectDefItem(huntID, "deer", 8, 4.0);
+rmAddObjectDefItem(fishID, "FishMahi", 3, 8.0);
+```
+
+**Reference:** [Chapter 12.1: Units and Buildings](#121-units-and-buildings-protoyxml)
+
+---
+
+#### **⚠️ Invalid Grouping Name**
+
+**Problem:** Grouping not defined in grouping files → grouping doesn't spawn.
+
+**Fix:** Check grouping folders:
+```bash
+# Base game groupings:
+ls Game/RandMaps/groupings/ | grep -i "pirate"
+
+# Mod groupings:
+ls <MOD_WORKSPACE>/randmaps/groupings/ | grep -i "scientist"
+```
+
+Use exact grouping name:
+```cpp
+// ✅ Use exact grouping name
+int piratesID = rmCreateGrouping("pirates", "pirate_village02");
+int scientistsID = rmCreateGrouping("scientists", "scientist_lab01");
+```
+
+**Grouping file locations:**
+- Base game: `Game/RandMaps/groupings/*.xml`
+- Mod: `<MOD_WORKSPACE>/randmaps/groupings/*.xml`
+
+**Reference:** [Chapter 19: Groupings](#19-️-groupings-native-villages-city-states-decorative-structures)
+
+---
+
+#### **⚠️ Spawn on Impossible Location**
+
+**Problem:** Objects/groupings don't spawn because they're placed on unsupported terrain or invalid locations.
+
+**Common causes:**
+
+##### **1. Land Objects (or grouping) on Water**
+
+**Scenario:** Small player islands on water map
+
+```cpp
+// Define player island (small landmass in center)
+int islandID = rmCreateArea("player island");
+rmSetAreaSize(islandID, rmAreaTilesToFraction(3000), rmAreaTilesToFraction(3000));
+rmSetAreaLocation(islandID, 0.1, 0.5);  // South-West
+rmSetAreaWaterType(islandID, "ZP Black Sea Lagoon");
+rmSetAreaBaseHeight(islandID, 2.0);
+rmSetAreaMix(islandID, "great plains grass");
+rmAddAreaToClass(islandID, classIsland);
+rmBuildArea(islandID);
+```
+
+**❌ WRONG - Deers spawn outside island (on other side of map in water):**
+```cpp
+// No terrain constraint! Deers may spawn anywhere on map
+int deerID = rmCreateObjectDef("deer");
+rmAddObjectDefItem(deerID, "deer", 8, 4.0);
+rmSetObjectDefMinDistance(deerID, 0.0);
+rmSetObjectDefMaxDistance(deerID, 30); // max distance too short to cover the whole map
+rmPlaceObjectDefAtLoc(deerID, 0, 0.9, 0.5); // north-east (there is no northIsland in there)
+// Result: Deers try to spawn in water → Fail to spawn
+```
+
+**✅ CORRECT - Deers spawn in center of island:**
+```cpp
+// Place at correct location matching island position
+int deerID = rmCreateObjectDef("deer");
+rmAddObjectDefItem(deerID, "deer", 8, 4.0);
+rmSetObjectDefMinDistance(deerID, 0.0);
+rmSetObjectDefMaxDistance(deerID, 30.0);  // Search only nearby
+rmPlaceObjectDefAtLoc(deerID, 0, 0.1, 0.5);  // Place at island center (matches island location!)
+// Result: Deers spawn successfully in center of island
+```
+
+**Alternative solution - Use constraints with larger search area:**
+```cpp
+// Define constraints first
+int stayOnIsland = rmCreateClassDistanceConstraint("stay on island", classIsland, -10.0);
+int avoidWater = rmCreateTerrainDistanceConstraint("avoid water", "water", true, 8.0);
+
+// Use constraints to keep deers ON the island even with large search area
+int deerID = rmCreateObjectDef("deer");
+rmAddObjectDefItem(deerID, "deer", 8, 4.0);
+rmSetObjectDefMinDistance(deerID, 0.0);
+rmSetObjectDefMaxDistance(deerID, rmXFractionToMeters(0.5));  // Can search entire map
+rmAddObjectDefConstraint(deerID, avoidWater);    // Stay on land terrain!
+rmAddObjectDefConstraint(deerID, stayOnIsland);  // Stay within island class!
+rmPlaceObjectDefAtLoc(deerID, 0, 0.9, 0.5);  // Even placed far from island...
+// Result: Constraints force spawn on island → Deers spawn successfully
+```
+
+**Key difference:**
+- **Placement method:** Small search radius at correct location → Simple but requires precise placement
+- **Constraint method:** Large search radius with terrain constraints → More flexible, works from any placement location
+
+##### **2. Objects on Cliffs**
+
+**Important:** Objects CAN spawn on cliff tops (flat elevated areas), but NOT on cliff edges (steep slopes).
+
+**Scenario:** Circular cliff plateau
+
+```cpp
+// Create circular cliff plateau
+int cliffID = rmCreateArea("cliff plateau");
+rmSetAreaSize(cliffID, rmAreaTilesToFraction(2000), rmAreaTilesToFraction(2000));
+rmSetAreaLocation(cliffID, 0.3, 0.3);  // Center of cliff
+rmSetAreaBaseHeight(cliffID, 6.0);  // Elevated
+rmSetAreaCliffType(cliffID, "ZP Smoky Mountain Cliff");
+rmSetAreaCliffEdge(cliffID, 1, 1.0, 0.0, 0.0, 0);
+rmSetAreaCliffHeight(cliffID, 6.0, 0.0, 0.5);
+rmSetAreaMix(cliffID, "great plains grass");
+rmBuildArea(cliffID);
+```
+
+**❌ WRONG - Grouping spawned on cliff edge:**
+```cpp
+// Placed at edge of cliff (0.35, 0.35 is near the edge of the circular cliff)
+int villageID = rmCreateGrouping("native village", "native_village01");
+rmSetGroupingMinDistance(villageID, 0.0);
+rmSetGroupingMaxDistance(villageID, 0.0);
+rmPlaceGroupingAtLoc(villageID, 0, 0.35, 0.35);  // Near cliff edge!
+// Result: Spawns on steep slope → Won't place (impassable terrain)
+```
+
+**✅ CORRECT - Grouping spawned in middle of cliff:**
+```cpp
+// Placed at center of cliff plateau (flat area)
+int villageID = rmCreateGrouping("native village", "native_village01");
+rmSetGroupingMinDistance(villageID, 0.0);
+rmSetGroupingMaxDistance(villageID, 0.0);
+rmPlaceGroupingAtLoc(villageID, 0, 0.3, 0.3);  // Center of cliff plateau!
+// Result: Spawns on flat cliff top → Success!
+```
+
+**Key difference:**
+- **Edge placement:** Steep slope is impassable → Spawn fails
+- **Center placement:** Flat elevated area is passable → Spawn succeeds
+
+##### **3. Groupings on Trade Route Path**
+
+**Important:** Groupings are MORE problematic than objects - they can't easily be moved by constraints!
+
+**Scenario:** Circular trade route with waypoints
+
+```cpp
+// Create circular trade route
+int tradeRouteID = rmCreateTradeRoute();
+rmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.2);
+rmAddTradeRouteWaypoint(tradeRouteID, 0.7, 0.35);
+rmAddTradeRouteWaypoint(tradeRouteID, 0.8, 0.5);
+rmAddTradeRouteWaypoint(tradeRouteID, 0.7, 0.65);
+rmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.8);
+rmBuildTradeRoute(tradeRouteID, "water");
+```
+
+**❌ WRONG - Grouping placed directly on trade route:**
+```cpp
+// Placed at trade route waypoint location!
+int piratesID = rmCreateGrouping("pirates", "pirate_village02");
+rmSetGroupingMinDistance(piratesID, 0.0);
+rmSetGroupingMaxDistance(piratesID, 0.0);
+rmPlaceGroupingAtLoc(piratesID, 0, 0.5, 0.2);  // This is waypoint location!
+// Result: Grouping blocks trade route OR fails to spawn
+```
+
+**✅ CORRECT - Grouping placed away from trade route:**
+```cpp
+// Placed far from trade route path
+int piratesID = rmCreateGrouping("pirates", "pirate_village02");
+rmSetGroupingMinDistance(piratesID, 0.0);
+rmSetGroupingMaxDistance(piratesID, 0.0);
+rmAddGroupingConstraint(piratesID, avoidTradeRoute);  // Helps but may not always work
+rmPlaceGroupingAtLoc(piratesID, 0, 0.1, 0.5);  // Far from trade route waypoints!
+// Result: Grouping spawns successfully away from route
+```
+
+**Key difference:**
+- **On route:** Grouping conflicts with trade route → Spawn fails or blocks route
+- **Away from route:** Grouping has clear space → Success
+
+**Note:** Unlike objects, groupings have fixed structures and can't easily adjust to constraints. **Always place groupings at locations you KNOW are clear of trade routes!**
+
+**Key constraints for valid spawning:**
+- **`avoidWater`** - Keep land objects on land terrain
+- **`stayOnIsland`** / **`stayNearShore`** - Keep within defined land areas
+- **`avoidImpassableLand`** - Avoid cliffs and impassable terrain
+- **`avoidTradeRoute`** - Don't block trade route paths
+- **`avoidPlayer`** - Don't spawn too close to player starting locations
+
+**Debugging tip:** If objects don't spawn, check terrain type and add appropriate constraints!
+
+---
+
+#### **⚠️ Players Circular Issues**
+
+**Problem:** Players don't spawn in circular placement, all appear bunched together in fallback location.
+
+**Root cause:** Player placement conflicts with constraints, especially trade routes.
+
+##### **Case Study: Circular Trade Route Conflict**
+
+```cpp
+// Trade route circle waypoints (creates circle at ~0.3 radius from center)
+rmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.2);
+rmAddTradeRouteWaypoint(tradeRouteID, 0.7, 0.35);
+rmAddTradeRouteWaypoint(tradeRouteID, 0.8, 0.5);
+rmAddTradeRouteWaypoint(tradeRouteID, 0.7, 0.65);
+rmAddTradeRouteWaypoint(tradeRouteID, 0.5, 0.8);
+// ... continues in circle
+// Trade route passes through 0.2-0.8 range (radius ~0.3 from center 0.5, 0.5)
+
+// ❌ WRONG - Players placed directly on trade route path!
+rmPlacePlayersCircular(0.30, 0.30, 0.0);  // Places players at 0.3 radius = ON trade route!
+
+// Player areas (objects) usually have constraint:
+rmAddAreaConstraint(playerID, avoidTradeRouteFar);  // Must be 30 units away
+// → Players spawn ON the trade route path!
+// → Player areas can't build (violate avoidTradeRouteFar constraint)
+// → Fallback spawn used → All players bunched together!
+
+// ✅ CORRECT - Players outside trade route circle
+rmPlacePlayersCircular(0.45, 0.45, 0.0);  // Safely outside trade route (0.45 > 0.3)
+// Now player areas can build successfully
+```
+
+**How to calculate safe player placement:**
+
+1. **Find trade route radius:**
+   - Look at waypoint coordinates
+   - Calculate distance from center (0.5, 0.5)
+   - Example: waypoints at 0.2-0.8 range → radius ~0.3 from center
+
+2. **Check constraint distances:**
+   - `avoidTradeRoute` = typically 15.0 units
+   - `avoidTradeRouteFar` = typically 30.0 units
+
+3. **Place players either:**
+   - **Inside:** Much closer to center (e.g., 0.10-0.15) if trade route is far out
+   - **Outside:** Beyond constraint range (e.g., 0.40-0.45) if trade route is closer
+
+**Warning signs of placement failure:**
+- All players spawn in same corner/edge
+- Players appear bunched together despite circular placement code
+- Only some players spawn (others use fallback location)
+
+**Solution:** Adjust player placement distance to avoid conflicting with:
+- Trade route paths and constraints
+- Water areas (if land-based players)
+- Cliffs and impassable terrain
+- Large central features (lakes, monuments, etc.)
+
+---
+
+### **21.3. ⚠️ Objects Appear in Wrong Locations**
+
+**Problem:** Objects spawn in unexpected positions on the map.
+
+⚠️ **COORDINATE TROUBLESHOOTING:** The XS coordinate system is rotated 45° from the visual minimap!
+
+**Example Issue:**
+- User requests "place on West side"
+- You use `(0.0, 0.5)` (thinking X=0 is west)
+- Objects appear on **Southwest** instead
+
+**Fix:** Use correct coordinate mapping:
+```cpp
+// Visual West = Code Northwest
+rmPlaceGroupingAtLoc(groupID, 0, 0.15, 0.85);  // Low X + High Z
+
+// Visual North = Code Northeast  
+rmPlaceGroupingAtLoc(groupID, 0, 0.85, 0.85);  // High X + High Z
+
+// Visual East = Code Southeast
+rmPlaceGroupingAtLoc(groupID, 0, 0.85, 0.15);  // High X + Low Z
+
+// Visual South = Code Southwest
+rmPlaceGroupingAtLoc(groupID, 0, 0.15, 0.15);  // Low X + Low Z
+```
+
+**Must read:** [Chapter 3: Understanding Coordinates](#3-️-understanding-coordinates-critical) for complete coordinate system explanation with diagrams.
+
+---
+
+### **21.4. 🔧 Debugging Workflow**
+
+#### **For Map Crashes:**
+
+1. **Check script syntax** - ensure all variables defined before use
+   - Reference: [XS Documentation](https://aoe3mc.github.io/ai-guide/xs/) for correct syntax patterns
+2. **Verify all names** against reference files (see Chapter 12)
+3. **Comment out sections** - disable features one by one to isolate the problem:
+   ```cpp
+   // Comment out problematic areas to test
+   // rmBuildArea(suspiciousArea);
+   // rmPlaceGroupingAtLoc(groupID, 0, 0.5, 0.5);
+   ```
+   - Check [XS syntax documentation](https://aoe3mc.github.io/ai-guide/xs/) if unsure about correct patterns
+4. **Compare to working map** - find similar map in `randmaps/` folder and copy patterns
+5. **Start simple, add features gradually** - get basic map working first, then add complexity
+
+#### **For Spawn Issues:**
+
+1. **Verify all string names** exist in reference files (water, terrain, objects, groupings)
+2. **Check constraints** - may be too restrictive (objects can't find valid placement)
+3. **Test with fallbacks** - use generic names (`"water"`, `"grass"`) to isolate issue
+4. **Increase placement attempts** - add more object counts or area tries
+5. **Disable `rmSetAreaWarnFailure()`** - set to `false` to prevent failed area warnings
+
+#### **Type Name Search Strategy:**
+
+1. **Search by theme:**
+   ```bash
+   # For water types (search BOTH files!):
+   grep -i "[map theme]" data/waterbodies2.xml  # Check mod first!
+   grep -i "[map theme]" scripts/source/waterbodies.xml  # Then base game
+   
+   # For terrain mixes:
+   ls scripts/source/art/terrain/mix/ | grep -i "[map theme]"
+   
+   # For objects:
+   grep -i "[object type]" data/protomods.xml  # Mod first
+   grep -i "[object type]" scripts/source/protoy.xml  # Base game
+   ```
+
+2. **If no match found:**
+   - Use closest thematic alternative
+   - Explain to user what names exist
+   - Document the decision in map's `.md` file
+
+3. **If user requests non-existent feature:**
+   - Check if similar feature exists in working maps
+   - Suggest closest alternative
+   - Document what's technically possible
+
+---
+
+### **21.5. 💡 Generic Fallbacks (Always Work)**
+
+When in doubt, use these safe defaults:
+```cpp
+rmSetSeaType("water");           // Always works
+rmSetBaseTerrainMix("grass");    // Always works
+rmSetLightingSet("texas");       // Generic outdoor lighting
+```
+
+---
+
+### **21.6. 📋 Testing Checklist**
+
+Before declaring map complete, verify all of the following:
+
+**Essential Tests:**
+- ✅ Map loads without crashing
+- ✅ All players spawn correctly
+- ✅ Starting units appear for all players
+- ✅ Resources present and accessible (mines, huntables, berries)
+- ✅ Natives spawn correctly (if included)
+- ✅ Trade route appears correctly (if included)
+
+**Visual/Terrain Tests:**
+- ✅ Water appears at correct height/type
+- ✅ Terrain looks appropriate for map theme
+- ✅ No z-fighting or visual glitches
+- ✅ Cliffs render properly (if included)
+- ✅ Forests placed correctly (if included)
+
+**Multiplayer Tests:**
+- ✅ Test with different player counts (2, 4, 6, 8)
+- ✅ Player starting positions are balanced
+- ✅ Resource distribution is fair across all players
+
+**Documentation:**
+- ✅ Create matching `.xml` file with map metadata
+- ✅ Create matching `.md` documentation file
+- ✅ Document all custom types used (water, terrain, natives, etc.)
+
+**See also:**
+- [Chapter 12: Reference Documentation](#12--reference-documentation) - All type references
+- [Chapter 6: Finding Object Names](#6--finding-object-names) - How to verify names exist
+- [Chapter 10: Required Files](#10--required-files) - Complete file requirements
+
+[↑ Back to Table of Contents](#2--table-of-contents)
+
+---
+
+## **22.** 🎯 Best Practices for AI Agents
+
+⚠️ **COORDINATE SYSTEM WARNING:** Always reference Chapter 3 (Understanding Coordinates) when working with positions!
 
 ### **✅ DO:**
 
-1. **Read `docs/map_coordinate_system.md` before placing any objects:**
+1. **Read Chapter 3 (Understanding Coordinates) before placing any objects:**
    - ⚠️ **CRITICAL:** Coordinate system is rotated 45° from visual display
    - Code "NE" (1.0, 1.0) → Visual North (top of minimap)
    - Code "SE" (1.0, 0.0) → Visual East (right of minimap)
@@ -9628,25 +10896,132 @@ for(i=0; <numberPatches)
    - Start with working map structure
    - Modify variables, not logic
 
-4. **Don't forget both files:**
+4. **Don't use experimental/undocumented syntax:**
+   - ❌ Array initialization: `string arr[] = {"a", "b", "c"};` (CRASHES!)
+   - ❌ C-style for loops: `for(i=0; <10; i++)` (CRASHES! - XS doesn't support `i++`)
+   - ❌ Any pattern not in XS docs or existing maps
+   - ✅ **Correct XS for loop syntax:** `for(i=0; <10)` (no increment operator!)
+   - ✅ If you must experiment, mark it clearly: `// EXPERIMENTAL - may cause crashes`
+   - ✅ Test thoroughly before using in production maps
+   - ✅ Use if/else chains instead of arrays
+   
+   **Example - C-style for loop error:**
+   ```cpp
+   // ❌ WRONG - Causes crash! (C-style increment)
+   for(i=0; <3; i++)
+   {
+       int bonusID=rmCreateArea("bonus "+i);
+       rmBuildArea(bonusID);
+   }
+   
+   // ✅ CORRECT - XS syntax (no i++)
+   for(i=0; <3)
+   {
+       int bonusID=rmCreateArea("bonus "+i);
+       rmBuildArea(bonusID);
+   }
+   ```
+
+5. **Don't forget both files:**
    - Must have `.xs` AND `.xml`
 
----
+### **🚀 Quick Start Checklist**
 
-## 24. 🔧 Step-by-Step Workflow
+**Before creating ANY new map:**
 
-⚠️ **BEFORE YOU START:** Read `docs/map_coordinate_system.md` to understand coordinate rotation!
+- [ ] ⚠️ **CRITICAL:** Read Chapter 3 (Understanding Coordinates) - understand 45° rotation!
+- [ ] Read [rm_commands_reference.md](rm_commands_reference.md) (274 RM commands)
+- [ ] Find similar working map (non-encoded!)
+- [ ] Copy working map to root game `RandMaps/` folder
+- [ ] **Search** `data/waterbodies2.xml` FIRST, then `scripts/source/waterbodies.xml` for water names (don't guess!)
+- [ ] **List** `scripts/source/art/terrain/mix/` folder for matching terrain mixes
+- [ ] **Search** `data/clifftypes2.xml` + `scripts/source/clifftypes.xml` for cliff types (if needed)
+- [ ] Rename to `000zp[MapName].xs` and `.xml`
+- [ ] **Organize variables at top of `.xs` file** (water, terrain, cliffs, natives, etc.)
+- [ ] Update all variables with VERIFIED names from reference files
+- [ ] Update native civs
+- [ ] Test in-game (does it load?)
+- [ ] Create `.md` documentation file
 
-### **Phase 1: Choose Base Map**
+**Never:**
+- [ ] ❌ Copy encoded maps (`eu*`, `af*`)
+- [ ] ❌ Guess water/terrain type names
+- [ ] ❌ Write maps from scratch
+- [ ] ❌ Skip testing after each change
+
+### **📊 Quick Reference: Type Categories**
+
+| Type Category | Reference Files | Search Method | Used In | Example |
+|--------------|----------------|---------------|---------|---------|
+| **Water Types** | `data/waterbodies2.xml` (mod) + `scripts/source/waterbodies.xml` (base) | `grep -i "[theme]"` in BOTH files | `rmSetSeaType()`, `rmSetAreaWaterType()`, `rmRiverCreate()` | `"ZP Iceland"`, `"Caribbean Coast"` |
+| **Terrain Types** | `art/terrain/terraintypes*.xml` | Browse `<subtype>` tags | `rmTerrainInitialize()`, `rmSetAreaTerrainType()` | `"lava\volcano_snow"`, `"city\ground1_cob_dark"` |
+| **Terrain Mixes** | `art/terrain/mix/*.xml` (258 files) | `ls` folder, use filename without .xml | `rmSetBaseTerrainMix()`, `rmSetAreaMix()` | `"italy_grass"` (underscores!) |
+| **Cliff Types** | `clifftypes.xml`, `data/clifftypes2.xml` | `grep name=` in both files | `rmSetAreaCliffType()` | `"ZP Iceland Fjord"`, `"ZP Iceland High"` |
+| **Forest Types** | `forest.xml` (29 types), `forest2.xml` (49+ types) | `grep 'forest name='` in both files | `rmSetAreaForestType()` | `"Italian Forest"`, `"z31 Mediterranean Coastal Forest"` |
+| **Huntables** | `data/protomods.xml` | `grep "<unittype>Huntable</unittype>"` | `rmAddObjectDefItem()` | `"ypIbex"`, `"deer"`, `"Sheep"` |
+| **Fish** | Check existing region maps | Look at maps: zp_mediterranean.xs, zp_venice.xs | `rmAddObjectDefItem()` | `"ypFishTuna"`, `"FishSalmon"` |
+| **Whales** | Check existing region maps | Mediterranean→MinkeWhale, Pacific→HumpbackWhale | `rmAddObjectDefItem()` | `"MinkeWhale"`, `"HumpbackWhale"` |
+| **Mines** | `data/protomods.xml` | Standard: "Mine" | `rmAddObjectDefItem()` | `"Mine"`, `"MineCopper"` |
+| **Berries** | Standard | Always use "BerryBush" | `rmAddObjectDefItem()` | `"BerryBush"` |
+| **Map Types** | `maptypes.xml`, `data/maptypemods.xml` | Define as variables (layoutType, nuggetType, tradeType, specialType1/2) | `rmSetMapType()` | `"water"`, `"mediEurope"`, `"euroNavalTradeRoute"`, `"piratehistoricalmap"` |
+| **Natives (Subcivs)** | `scripts/source/civs.xml` + `data/civmods.xml` ⚠️ **SEARCH BOTH!** | `grep "<name>"` in BOTH files; check `<subcivtype>`; prefer SPC variants | `rmGetCivID()`, `rmSetSubCiv()` | `"Habsburg"`, `"SPCBourbon"`, `"NatPirates"` |
+| **Groupings** | `game/randmaps/groupings/*.xml` (100+ files) | `ls \| findstr/grep` to find exact filenames ⚠️ **NEVER GUESS!** | `rmCreateGrouping()`, `rmPlaceGroupingAtLoc()` ⚠️ **ALWAYS player 0!** | `"zpHabsburg_SP_01"`, `"scientist_lab03"`, `"pirate_village05"` |
+
+**Usage Pattern:**
+```cpp
+// 1. Define variables at top of file
+string seaType = "Caribbean Coast";        // Water type
+string baseMix = "caribbean grass";        // Terrain mix
+string volcCliff = "ZP Iceland High";      // Cliff type
+string volcTerrain = "lava\volcano_dirt";  // Terrain type
+
+// 2. Use variables throughout script
+rmSetSeaType(seaType);                     // Base ocean
+rmSetBaseTerrainMix(baseMix);              // Base terrain
+rmSetAreaCliffType(cliffID, volcCliff);    // Cliff area
+rmSetAreaTerrainType(areaID, volcTerrain); // Specific terrain
+```
+
+### **🔧 Step-by-Step Workflow**
+
+⚠️ **BEFORE YOU START:** Read Chapter 3 (Understanding Coordinates) to understand coordinate rotation!
+
+#### **Phase 1: Choose Base Map**
 
 1. **User provides concept/image**
-2. **Find similar working map:**
-   - Island map? → `caribbean.xs`, `zp_philiphines.xs`
-   - River map? → `greatplains.xs`, `yellowriver.xs`
-   - Coastal map? → `california.xs`, `yucatan.xs`
-3. **Verify map is readable (not encoded)**
 
-### **Phase 2: Copy & Verify**
+2. **Identify map layout pattern:**
+
+| Pattern | Description | Key Techniques | Example Maps |
+|---------|-------------|----------------|--------------|
+| **Player Island** | Each player gets their own island | `rmSetAreaLocPlayer()` for individual islands | `zpphilippines.xs`, `Indonesia.xs`, `Hispaniola.xs` |
+| **Team Island** | Teams share islands, players subdivided | `rmSetAreaLocTeam()` | `caribbean.xs` (2v2+), `game/randmaps/zpBalearicIslands.xs` (teams) |
+| **Single Central Island** | One large central island (can also have an additional smaller bonus island) | `rmSetAreaLocation() with fixed coordinates`) | `game/randmaps/zpnewguinea.xs`, `game/randmaps/zpaustralia.xs`, `Borneo.xs` |
+| **Players around Central Island** | Players around central island with player /team areas around it | Large central area (+ player areas via `rmSetAreaLocation() with fixed coordinates`) | `Ceylon.xs`, `game/randmaps/zpphiliphines.xs`, `game/randmaps/zpBalearicIslands.xs` |
+| **Fixed Islands (N/S or E/W)** | Pre-positioned islands at cardinal directions + bonus islands | `rmSetAreaLocation()` with fixed coordinates | `game/randmaps/zptortuga.xs`, `amazonia.xs`, `game/randmaps/zpvenice.xs` (big/med/small islands) |
+| **Water Trade Route** | Circular/path trade route on water with island(s) | `rmCreateTradeRoute()` + `"water_trail"` | `game/randmaps/zpphiliphines.xs`, `game/randmaps/zpmediterranean.xs` |
+| **Land Trade Route** | Trade route crosses land areas | `rmCreateTradeRoute()` + `"dirt"` or `"road"` | `silkRoad.xs`, `great plains.xs` |
+| **Central Lake** | Large lake in center, land around edges | Water terrain in center + land rim | `great lakes.xs` (Lake Michigan), `afLakeVictoria.xs`, `zpdeadsea.xs`, `zpeyrebasin.xs` |
+| **River Map** | Major river(s) crossing the map | `rmRiverCreate()` with waypoints | `yellow river.xs`, `Orinoco.xs`, `Panama.xs` |
+| **Archipelago** | Many small scattered islands | Multiple small areas with `rmCreateArea()` loops | `game/randmaps/zpmelanesia.xs`, `game/randmaps/zpmediterranean.xs`, `game/randmaps/zpkurils.xs` |
+| **Mountain/Plateau** | Elevated terrain with cliffs | `rmSetAreaCliffType()` + `rmSetAreaBaseHeight()` | `Andes.xs`, `Rockies.xs`, `Himalayas.xs` |
+| **Urban/Grid Layout** | City buildings in grid pattern | Groupings with city blocks | `randmaps/zpazteccity.xs`, `randmaps/zpparis.xs` |
+| **Floating Islands** | Islands at different elevations (not on water) | Elevated `rmSetAreaBaseHeight()` with no water below | `randmaps/zpvenicecity.xs`, `randmaps/zpelbe.xs` |
+| **Fake Water Areas** | Land constrained from invisible water | Water areas player can't see but constraints use | `randmaps/zpcivilwar.xs`, `randmaps/zpblacksea.xs` |
+
+3. **Find similar working map:**
+   - Match your concept to the pattern above
+   - Choose a readable (non-encoded) reference map
+   - **⚠️ Avoid:** Maps with `eu*` or `af*` prefix (encoded)
+   
+   **📁 Map Search Locations:**
+   - `game/randmaps/` = Mod workspace maps (published Age of Pirates maps)
+   - `randmaps/` = Local development maps (experimental/in-progress)
+   - No prefix = Base game maps in `C:\Program Files (x86)\Steam\steamapps\common\AoE3DE\Game\RandMaps\`
+   
+4. **Verify map is readable (not encoded)**
+
+#### **Phase 2: Copy & Verify**
 
 1. **Copy to root game RandMaps folder:**
    ```bash
@@ -9660,7 +11035,7 @@ for(i=0; <numberPatches)
    Check: scripts/source/art/terraintypes.xml
    ```
 
-### **Phase 3: Modify Variables**
+#### **Phase 3: Modify Variables**
 
 **⚠️ BEST PRACTICE: Define ALL type names as variables at the top of the file!**
 
@@ -9734,11 +11109,11 @@ string mapType2 = "water" or "grass";
 - ✅ Clear documentation of dependencies
 - ✅ Prevents hardcoded strings throughout code
 
-### **Phase 4: Update Native Logic**
+#### **Phase 4: Update Native Logic**
 
 ⚠️ **COORDINATE REMINDER:** When placing natives at specific locations, remember the 45° rotation!
 - If user says "place on West", use low X + high Z (e.g., 0.2, 0.8)
-- Review `docs/map_coordinate_system.md` for details
+- Review Chapter 3 (Understanding Coordinates) for details
 
 **Find and replace native placement code:**
 ```cpp
@@ -9753,7 +11128,7 @@ if (subCiv0 >= 0)
     rmSetSubCiv(0, "Berbers");
 ```
 
-### **Phase 5: Test**
+#### **Phase 5: Test**
 
 1. **Launch game**
 2. **Create Skirmish game**
@@ -9764,7 +11139,7 @@ if (subCiv0 >= 0)
    - Resources present?
    - Natives spawn?
 
-### **Phase 6: Document**
+#### **Phase 6: Document**
 
 **Create `.md` file with same name:**
 ```
@@ -9780,45 +11155,8 @@ if (subCiv0 >= 0)
 
 ---
 
-## 25. ⚠️ Common Issues & Fixes
 
-### **Issue: Map crashes on load**
-
-**Likely causes:**
-1. **Invalid water type name**
-   - Fix: Search BOTH `data/waterbodies2.xml` and `scripts/source/waterbodies.xml`, use exact name from `name=` attribute
-2. **Invalid terrain mix name**
-   - Fix: List `art/terrain/mix/` folder, use exact filename (without .xml)
-3. **Invalid native civ ID**
-   - Fix: Check `civs.xml` for valid subciv names
-4. **Missing `rmTerrainInitialize()`**
-   - Fix: Add after `rmSetMapSize()`, before player placement
-5. **Invalid loop syntax**
-   - Fix: Use `for(i=1; <cNumberPlayers)` not `for(i=1; <=cNumberPlayers)`
-
-### **Issue: Water looks wrong**
-
-**Fix:** Search BOTH water files for available options:
-```bash
-# Check mod file first:
-grep "name=" data/waterbodies2.xml
-# Then check base game:
-grep "name=" scripts/source/waterbodies.xml | grep -i "coast"
-```
-Then test with exact names from results, or use generic `"water"` fallback.
-
-### **Issue: Natives don't spawn**
-
-**Possible causes:**
-1. Invalid subciv name
-2. Wrong grouping name format
-3. Constraints too restrictive
-
-**Fix:** Check existing working map for exact native placement code.
-
----
-
-## 26. 📖 Example: Creating Balearic Islands
+## **23.** 📖 Complete Example: Creating Balearic Islands
 
 ### **Bad Approach (what NOT to do):**
 ```cpp
@@ -9867,152 +11205,7 @@ subCiv1=rmGetCivID("zpCorsairs");  // change from wokou
 
 ---
 
-## 27. 🎓 Learning from Working Maps
-
-### **Good Reference Maps:**
-
-1. **`zp_philiphines.xs`** (Age of Pirates mod)
-   - Clean variable structure
-   - Multiple islands
-   - Good native placement
-   - Asian theme
-
-2. **`caribbean.xs`** (Base game)
-   - Proven island generation
-   - Trade route system
-   - Team placement logic
-   - Resource distribution
-
-3. **`Ceylon.xs`** (Base game)
-   - Asian theme
-   - Center island design
-   - Multiple natives
-
-### **Read These Sections:**
-
-1. **Variable declarations** (top of file)
-2. **Player placement** (`rmPlacePlayersCircular()`)
-3. **Island creation** (`rmCreateArea()` loops)
-4. **Native placement** (`rmCreateGrouping()`)
-5. **Resource distribution** (mines, hunt, fish)
-
----
-
-## 28. 📂 File Organization
-
-### **For New Map Development:**
-
-```
-C:/Program Files (x86)/Steam/steamapps/common/AoE3DE/Game/RandMaps/
-├── 000zpBalearicIslands.xs   (script - place here for testing)
-├── 000zpBalearicIslands.xml  (metadata - place here for testing)
-└── 000zpBalearicIslands.md   (documentation - place here)
-```
-
-### **Reference Files (in mod workspace):**
-
-```
-<workspace>/scripts/source/
-├── waterbodies.xml              (⚠️ CHECK: Base game water types!)
-├── clifftypes.xml               (⚠️ CHECK: Base game cliff types!)
-├── forest.xml                   (⚠️ CHECK: Base game forest types - 29 types!)
-├── forest2.xml                  (⚠️ CHECK: Expanded forest types - 49+ types!)
-├── art/
-│   ├── terrain/
-│   │   ├── terraintypes.xml     (⚠️ CHECK: Individual terrain textures!)
-│   │   ├── terraintypes2.xml
-│   │   ├── terraintypes3.xml
-│   │   ├── terraintypescherry.xml
-│   │   └── mix/                 (⚠️ CHECK: Terrain mixes - 258 files!)
-│   │       ├── caribbean grass.xml
-│   │       ├── italy_grass.xml
-│   │       └── ...
-├── protoy.xml                   (base game proto units)
-├── civs.xml                     (civilization definitions)
-└── randmaps/
-
-<workspace>/data/
-├── waterbodies2.xml             (⚠️ CHECK FIRST: Mod-specific water types! "ZP" prefix)
-└── clifftypes2.xml              (⚠️ CHECK: Mod-specific cliff types!)
-```
-
----
-
-## 29. 🚀 Quick Start Checklist
-
-**Before creating ANY new map:**
-
-- [ ] ⚠️ **CRITICAL:** Read `docs/map_coordinate_system.md` (understand 45° rotation!)
-- [ ] Read [rm_commands_reference.md](rm_commands_reference.md) (274 RM commands)
-- [ ] Find similar working map (non-encoded!)
-- [ ] Copy working map to root game `RandMaps/` folder
-- [ ] **Search** `data/waterbodies2.xml` FIRST, then `scripts/source/waterbodies.xml` for water names (don't guess!)
-- [ ] **List** `scripts/source/art/terrain/mix/` folder for matching terrain mixes
-- [ ] **Search** `data/clifftypes2.xml` + `scripts/source/clifftypes.xml` for cliff types (if needed)
-- [ ] Rename to `000zp[MapName].xs` and `.xml`
-- [ ] **Organize variables at top of `.xs` file** (water, terrain, cliffs, natives, etc.)
-- [ ] Update all variables with VERIFIED names from reference files
-- [ ] Update native civs
-- [ ] Test in-game (does it load?)
-- [ ] Create `.md` documentation file
-
-**Never:**
-- [ ] ❌ Copy encoded maps (`eu*`, `af*`)
-- [ ] ❌ Guess water/terrain type names
-- [ ] ❌ Write maps from scratch
-- [ ] ❌ Skip testing after each change
-
----
-
-## 30. 💡 Pro Tips
-
-1. **Use Ceylon/Caribbean as templates** - they're readable and well-structured
-2. **Test early, test often** - load map in-game after every major change
-3. **Keep working backups** - copy `.xs` file before major changes
-4. **Document as you go** - note what types you used and why
-5. **When in doubt, use generic fallbacks:**
-   ```cpp
-   rmSetSeaType("water");           // always works
-   rmSetBaseTerrainMix("grass");    // always works
-   rmSetLightingSet("texas");       // generic outdoor lighting
-   ```
-
----
-
-## 31. 📞 Troubleshooting for AI Agents
-
-⚠️ **COORDINATE TROUBLESHOOTING:** If objects appear in wrong locations, check `docs/map_coordinate_system.md`!
-- User reports "West" but objects appear elsewhere? You likely used wrong X/Z values
-- Remember: Visual West = Code NW = Low X + High Z
-
-**If map crashes:**
-1. Read error in game console (if visible)
-2. Check all type names against reference files
-3. Simplify - comment out features until map loads
-4. Compare to working source map
-
-**If unsure about type name:**
-1. Search based on map description:
-   ```bash
-   # For water types (search BOTH files!):
-   grep -i "[map theme]" data/waterbodies2.xml  # Check mod first!
-   grep -i "[map theme]" scripts/source/waterbodies.xml  # Then base game
-   
-   # For terrain mixes:
-   ls scripts/source/art/terrain/mix/ | grep -i "[map theme]"
-   ```
-2. If no match found, use closest thematic alternative or generic fallback
-3. Explain to user what names exist and why you chose the alternative
-4. Document the decision in the `.md` file
-
-**If user requests non-existent feature:**
-1. Check if similar feature exists in working maps
-2. Suggest closest alternative
-3. Document what's technically possible vs. requested
-
----
-
-## 32. 🔄 Example Tasks
+## **24.** 🔄 Example Tasks
 
 This section provides step-by-step guides for common map modification tasks that AI agents may encounter.
 
@@ -10386,91 +11579,36 @@ After rotation, verify:
 
 ---
 
-## 33. 📊 Quick Reference: Type Categories
+## **25.** ⚠️ Unorganized Content (To Be Sorted)
 
-| Type Category | Reference Files | Search Method | Used In | Example |
-|--------------|----------------|---------------|---------|---------|
-| **Water Types** | `data/waterbodies2.xml` (mod) + `scripts/source/waterbodies.xml` (base) | `grep -i "[theme]"` in BOTH files | `rmSetSeaType()`, `rmSetAreaWaterType()`, `rmRiverCreate()` | `"ZP Iceland"`, `"Caribbean Coast"` |
-| **Terrain Types** | `art/terrain/terraintypes*.xml` | Browse `<subtype>` tags | `rmTerrainInitialize()`, `rmSetAreaTerrainType()` | `"lava\volcano_snow"`, `"city\ground1_cob_dark"` |
-| **Terrain Mixes** | `art/terrain/mix/*.xml` (258 files) | `ls` folder, use filename without .xml | `rmSetBaseTerrainMix()`, `rmSetAreaMix()` | `"italy_grass"` (underscores!) |
-| **Cliff Types** | `clifftypes.xml`, `data/clifftypes2.xml` | `grep name=` in both files | `rmSetAreaCliffType()` | `"ZP Iceland Fjord"`, `"ZP Iceland High"` |
-| **Forest Types** | `forest.xml` (29 types), `forest2.xml` (49+ types) | `grep 'forest name='` in both files | `rmSetAreaForestType()` | `"Italian Forest"`, `"z31 Mediterranean Coastal Forest"` |
-| **Huntables** | `data/protomods.xml` | `grep "<unittype>Huntable</unittype>"` | `rmAddObjectDefItem()` | `"ypIbex"`, `"deer"`, `"Sheep"` |
-| **Fish** | Check existing region maps | Look at maps: zp_mediterranean.xs, zp_venice.xs | `rmAddObjectDefItem()` | `"ypFishTuna"`, `"FishSalmon"` |
-| **Whales** | Check existing region maps | Mediterranean→MinkeWhale, Pacific→HumpbackWhale | `rmAddObjectDefItem()` | `"MinkeWhale"`, `"HumpbackWhale"` |
-| **Mines** | `data/protomods.xml` | Standard: "Mine" | `rmAddObjectDefItem()` | `"Mine"`, `"MineCopper"` |
-| **Berries** | Standard | Always use "BerryBush" | `rmAddObjectDefItem()` | `"BerryBush"` |
-| **Map Types** | `maptypes.xml`, `data/maptypemods.xml` | Define as variables (layoutType, nuggetType, tradeType, specialType1/2) | `rmSetMapType()` | `"water"`, `"mediEurope"`, `"euroNavalTradeRoute"`, `"piratehistoricalmap"` |
-| **Natives (Subcivs)** | `scripts/source/civs.xml` + `data/civmods.xml` ⚠️ **SEARCH BOTH!** | `grep "<name>"` in BOTH files; check `<subcivtype>`; prefer SPC variants | `rmGetCivID()`, `rmSetSubCiv()` | `"Habsburg"`, `"SPCBourbon"`, `"NatPirates"` |
-| **Groupings** | `game/randmaps/groupings/*.xml` (100+ files) | `ls \| findstr/grep` to find exact filenames ⚠️ **NEVER GUESS!** | `rmCreateGrouping()`, `rmPlaceGroupingAtLoc()` ⚠️ **ALWAYS player 0!** | `"zpHabsburg_SP_01"`, `"scientist_lab03"`, `"pirate_village05"` |
+### **Trigger Debugging (To be moved to Chapter 20 - Triggers)**
 
-**Usage Pattern:**
-```cpp
-// 1. Define variables at top of file
-string seaType = "Caribbean Coast";        // Water type
-string baseMix = "caribbean grass";        // Terrain mix
-string volcCliff = "ZP Iceland High";      // Cliff type
-string volcTerrain = "lava\volcano_dirt";  // Terrain type
+#### **⚠️ Console Output and Trigger Debugging in AoE3 DE**
 
-// 2. Use variables throughout script
-rmSetSeaType(seaType);                     // Base ocean
-rmSetBaseTerrainMix(baseMix);              // Base terrain
-rmSetAreaCliffType(cliffID, volcCliff);    // Cliff area
-rmSetAreaTerrainType(areaID, volcTerrain); // Specific terrain
-```
+**Note:** These methods are for **trigger debugging only**, not for random map script debugging.
 
----
+**Problem:** Developer console (`modeTrack` in `game.cfg`) often doesn't show output in AoE3 DE.
 
-## 34. 🎯 Map Triggers
+**Alternative debugging methods for triggers:**
 
-**Triggers** enable dynamic gameplay events, tech activation, and politician systems on your maps.
+1. **Use `rmEchoInfo()` statements:**
+   ```cpp
+   // Add logging in trigger code
+   rmEchoInfo("Starting player placement", 0);
+   rmEchoInfo("Player count: " + cNumberNonGaiaPlayers, 0);
+   rmEchoInfo("Created area: " + areaID, 0);
+   ```
+   
+2. **Check `trigtemp.xs` file:**
+   - Location: Generated in `My Documents\My Games\Age of Empires 3 DE\` when loading map with triggers in editor
+   - Contains compiled trigger code
+   - Useful for debugging trigger syntax errors
+   - **Only works for triggers, not random map scripts**
 
-### When to Use Triggers
-
-- ✅ Activating starting technologies for all players
-- ✅ Enabling consulate politicians (Asian civilizations, pirates, etc.)
-- ✅ Assigning random leaders/captains to AI players
-- ✅ Creating timed events or conditional gameplay
-- ✅ Balancing civilization-specific features
-
-### Trigger Reference Files
-
-| File | Purpose |
-|------|---------|
-| **`data/trigger/triggerdata.xml`** | Complete trigger definitions (effects, conditions, parameters) |
-| **`data/techtreemods.xml`** | Technology definitions and availability by region |
-| **[docs/map_trigger_guide.md](map_trigger_guide.md)** | **Complete trigger implementation guide** ⭐ |
-
-### Quick Trigger Example
-
-```cpp
-// Activate a starting tech for all players
-rmCreateTrigger("Starting Techs");
-rmSwitchToTrigger(rmTriggerID("Starting Techs"));
-
-for(i=0; <= cNumberNonGaiaPlayers) {
-    rmAddTriggerEffect("ZP Set Tech Status (XS)");
-    rmSetTriggerEffectParamInt("PlayerID",i);
-    rmSetTriggerEffectParam("TechID","cTechzpSpanishHabsburgs"); // Activate Spanish Habsburgs for all players
-    rmSetTriggerEffectParamInt("Status",2);
-}
-
-rmSetTriggerPriority(4);
-rmSetTriggerActive(true);
-rmSetTriggerRunImmediately(true);
-rmSetTriggerLoop(false);
-```
-
-### 📚 For Complete Trigger Documentation
-
-See **[Map Trigger Guide](map_trigger_guide.md)** for:
-- Starting tech activation
-- Universal consulate setup (Japan, China, India, Pirates)
-- AI leader/captain selection
-- Regional pirate variants (Mediterranean, Baltic, Australia)
-- Supporting triggers (Italian balance, research speed)
-- Complete working examples
-- Best practices and troubleshooting
+3. **Test in Map Editor:**
+   - Load your map in the Scenario Editor
+   - Trigger errors may appear in editor interface
+   - Faster iteration than launching full game
 
 ---
 
