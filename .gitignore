@@ -7,3 +7,5 @@ docs/local_instructions.md
 
 # Playground folder for testing (not committed to version control)
 playground/
+# Local machine configuration
+config.local.md
