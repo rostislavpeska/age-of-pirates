@@ -3580,6 +3580,31 @@ for (i=0; <cNumberPlayers)
 }
 ```
 
+**⚠️ CRITICAL RECOMMENDATION - Building Islands:**
+
+When creating bonus/random islands AFTER player/team islands, use **individual `rmBuildArea()`** instead of `rmBuildAllAreas()`:
+
+```cpp
+// ❌ WRONG - Can cause spawn issues
+for(i=0; <3) {
+    int bonusID = rmCreateArea("bonus "+i);
+    // ... configure area ...
+}
+rmBuildAllAreas();  // May interfere with already-built player islands
+
+// ✅ CORRECT - Build each island individually
+for(i=0; <3) {
+    int bonusID = rmCreateArea("bonus "+i);
+    // ... configure area ...
+    rmBuildArea(bonusID);  // Build immediately in the loop
+}
+```
+
+**Why this matters:**
+- `rmBuildAllAreas()` rebuilds ALL areas, including already-built player islands
+- This can cause player spawn failures or overlapping islands
+- Building individually prevents interference with existing areas
+
 **Key characteristics:**
 - ✅ **Loop starts at 1:** `for(i=1; <cNumberPlayers)` - player 0 is Gaia
 - ✅ **Individual ownership:** Each player owns their island
@@ -10185,6 +10210,54 @@ These errors prevent the map from loading and will crash the game.
 
 ---
 
+#### **🔄 AI Agent Recovery Protocol for Critical Errors**
+
+**When a map fails to load with a critical error:**
+
+1. **Ask the user:** "Did the previous version (before my latest edits) work correctly?"
+
+2. **If user says YES:**
+   - Automatically create a backup of the current broken version
+   - Ask: "Would you like me to:
+     - A) Restore the map from the backup (working version)
+     - B) Troubleshoot the current version manually"
+
+3. **If user chooses A (Restore):**
+   - Copy the `.backup` file back to the main file
+   - Explain what was reverted
+   - Suggest testing the restored version
+
+4. **If user chooses B (Troubleshoot):**
+   - Analyze the recent changes
+   - Identify likely causes (undefined variables, syntax errors, etc.)
+   - Propose specific fixes
+
+**Example workflow:**
+```
+User: "The map crashes on load!"
+
+AI: "Did the previous version (before my latest edits) work correctly?"
+
+User: "Yes"
+
+AI: [Creates backup]
+    "I've created a backup of the current version.
+     Would you like me to:
+     A) Restore from the working backup
+     B) Troubleshoot the current version manually"
+
+User: "A"
+
+AI: [Restores backup]
+    "Restored the working version. The issue was likely in the pirate 
+     placement code I just added. Would you like me to try a different 
+     approach?"
+```
+
+**⚠️ CRITICAL:** Always create a backup BEFORE attempting fixes, so the working version is preserved.
+
+---
+
 #### **❌ Undefined Variable**
 
 **Problem:** Using a variable that was never declared.
@@ -10311,6 +10384,157 @@ else
 - Existing map scripts in `randmaps/` folder
 
 Always mark it with a comment: `// EXPERIMENTAL - may cause crashes`
+
+---
+
+#### **🔍 Cooperative Debugging with Comments**
+
+When a map fails to load and the issue isn't immediately obvious, use **comment-based debugging** to isolate the problem.
+
+**Comment Syntax in XS:**
+
+```cpp
+// Single-line comment - everything after // is ignored
+
+/* Multi-line comment
+   Everything between /* and */ is ignored
+   Can span multiple lines
+*/
+
+/* Block comment for large sections
+for(i=0; <10) {
+    int someID = rmCreateArea("test");
+    rmBuildArea(someID);
+}
+*/
+```
+
+**⚠️ CRITICAL SYNTAX RULE:** 
+- Closing comment must be `*/` NOT `*/"` or `*/ "` 
+- Extra characters after `*/` will cause syntax errors!
+
+---
+
+**Cooperative Debugging Workflow:**
+
+**1. User Requests Comment-Out**
+
+When the user says "comment out the recently added code" or "comment out section X":
+
+```
+User: "Comment out the pirate placement code"
+
+AI: [Wraps code in /* ... */]
+    [Restores previous working code]
+    [Labels: "COMMENTED OUT - [reason]"]
+```
+
+**2. AI Sees User Comments**
+
+When the AI detects user has commented out code:
+
+```cpp
+/* User commented this out
+int pirateVillageID = rmCreateGrouping(...);
+rmPlaceGroupingAtLoc(...);
+*/
+```
+
+**⚠️ AI RULE:** Do NOT remove or uncomment user's comments until the issue is fixed and user confirms the map works!
+
+**3. Binary Search Debugging**
+
+When user says "the map works with section X commented out":
+
+```
+User: "Map works when pirate code is commented out"
+
+AI: "The issue is in the pirate placement section. Let me analyze 
+     that specific code block rather than the whole file."
+     
+     [Examines only the problematic section]
+     [Identifies specific line causing crash]
+     [Proposes targeted fix]
+```
+
+**DO NOT** browse through the entire document - focus on the commented section!
+
+---
+
+**Example Debugging Session:**
+
+```
+User: "Map crashes on load!"
+
+AI: "Did the previous version work?" [Recovery Protocol]
+
+User: "Yes, before you added the Balearic Islands pattern"
+
+AI: [Comments out Balearic pattern]
+    [Restores simple placement]
+    "Try this version. Does it load?"
+
+User: "Yes, it loads now"
+
+AI: "The issue is in the Balearic Islands code. Let me check 
+     that specific section..."
+     
+     [Analyzes only lines 295-353]
+     [Finds: missing variable declaration]
+     
+     "Found it! Line 297 uses variable 'k' but it's not declared.
+      Should I add 'int k=0;' before the loop?"
+
+User: "Yes"
+
+AI: [Fixes the specific issue]
+    [Uncomments the working code]
+    "Fixed. The Balearic pattern should work now."
+```
+
+---
+
+**Best Practices:**
+
+✅ **DO:**
+- Comment out large sections to isolate problems
+- Keep commented code for reference
+- Label commented sections clearly
+- Focus debugging on the commented section only
+- Wait for user confirmation before uncommenting
+
+❌ **DON'T:**
+- Remove user's comments during debugging
+- Uncomment code until issue is confirmed fixed
+- Browse entire file when problem is isolated
+- Delete commented code (keep for reference)
+- Add extra characters after `*/`
+
+---
+
+**Common Comment Patterns:**
+
+```cpp
+// Temporary disable for testing
+/* 
+int problematicCode = ...;
+*/
+
+// COMMENTED OUT - Causes crash, investigating
+/*
+for(i=0; <10) {
+    // ... code ...
+}
+*/
+
+// COMMENTED OUT - Balearic Islands pattern (kept for reference)
+/*
+// Original implementation
+for(k=0; <2) {
+    // ... code ...
+}
+*/
+```
 
 ---
 

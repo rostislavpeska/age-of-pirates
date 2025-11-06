@@ -2541,7 +2541,104 @@ Pre-built coastal settlements that must spawn at the **land-water transition zon
 
 ---
 
-##### **Example 6: Harbour Grouping (Naval Trade Route Socket)**
+##### **Example 6: Common Coastal Native Spawn Failure**
+
+**⚠️ CRITICAL DEBUGGING PATTERN:** This is one of the **MOST COMMON** issues when placing coastal native settlements. Understanding this pattern is essential for debugging controller-based placement.
+
+**What You See in the Screenshot:**
+
+<img src="images/spawn_issue_example.png" alt="Coastal Native Spawn Failure" width="600"/>
+
+**Visual Evidence:**
+
+1. **✅ Controller Spawned:** Small invisible spawn point visible on shore (zpSPCWaterSpawnPoint)
+2. **✅ Water Flag Spawned:** Barrel/buoy visible in water (correct placement)
+3. **❌ Grouping MISSING:** No pirate settlement buildings visible on shore
+
+**What This Means:**
+
+The controller found a valid coastal location and the water flag placed successfully, but the **native grouping failed to spawn**. This indicates the grouping placement constraints were not satisfied.
+
+**Common Causes:**
+
+**1. Controller Too Close to Shore**
+```xs
+rmSetObjectDefMaxDistance(pirateControllerID, 25.0);  // May place controller in shallow water
+rmAddObjectDefConstraint(pirateControllerID, ferryOnShore);  // Within 18m of water
+```
+- Controller can spawn very close to water edge
+- Grouping needs more land space than controller location provides
+- Grouping has `ferryOnShore` constraint but no minimum land depth
+
+**2. Insufficient Land Area**
+- Pirate villages are **large groupings** (15x15m or more)
+- Need flat, passable terrain
+- Controller point may be valid, but surrounding area isn't
+- Beach terrain may be too narrow
+
+**3. Conflicting Constraints**
+```xs
+rmAddGroupingConstraint(piratesVillageID, ferryOnShore);  // Must be near water
+rmSetGroupingMaxDistance(piratesVillageID, 20);  // Must be within 20m of controller
+```
+- Controller near water edge
+- Grouping needs to be near water AND near controller
+- No valid location satisfies both constraints
+
+**4. Terrain Height Issues**
+- Controller on steep slope or cliff edge
+- Grouping needs flat terrain
+- Beach transition too abrupt
+
+**How to Diagnose:**
+
+1. **Check if controller spawned** - Look for zpSPCWaterSpawnPoint unit
+2. **Check if water flag spawned** - Look for water spawn flag in ocean
+3. **Check if grouping spawned** - Look for settlement buildings
+4. **Pattern:** Controller ✅ + Flag ✅ + Grouping ❌ = **Placement constraint conflict**
+
+**Solutions:**
+
+**Option 1: Increase controller search distance from shore**
+```xs
+rmSetObjectDefMinDistance(pirateControllerID, 10.0);  // Start search 10m from target
+rmSetObjectDefMaxDistance(pirateControllerID, 40.0);  // Search up to 40m away
+```
+
+**Option 2: Remove ferryOnShore from grouping**
+```xs
+// rmAddGroupingConstraint(piratesVillageID, ferryOnShore);  // Remove this
+rmSetGroupingMaxDistance(piratesVillageID, 30);  // Increase search radius
+```
+
+**Option 3: Use direct placement without controller**
+```xs
+// Place grouping directly at fixed coordinates
+rmPlaceGroupingAtLoc(piratesVillageID, 0, 0.42, 0.50, 1);
+```
+
+**Option 4: Add terrain height constraint**
+```xs
+int flatLand = rmCreateTerrainMaxDistanceConstraint("flat land", "land", false, 20.0);
+rmAddGroupingConstraint(piratesVillageID, flatLand);
+```
+
+**Best Practice:**
+
+When using controller-based placement for coastal groupings:
+1. **Test without constraints first** - Verify grouping can spawn
+2. **Add constraints incrementally** - One at a time
+3. **Increase search radius** - Give more placement options
+4. **Check terrain in editor** - Verify sufficient flat coastal land
+
+**Related Issues:**
+- See "Pirate Haven" example for successful coastal placement
+- See "Debugging Checklist" for systematic troubleshooting
+- See "Common Errors" section for constraint conflicts
+
+---
+
+##### **Example 7: Harbour Grouping (Naval Trade Route Socket)**
 
 **⚠️ CRITICAL DISTINCTION:** This is **NOT a native settlement grouping** like the previous examples. Harbour groupings are **TRADE ROUTE SOCKETS** similar to capturable land/naval sockets, but with a different function and appearance.
 
