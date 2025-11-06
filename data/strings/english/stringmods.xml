@@ -3506,6 +3506,14 @@
       <string _locid="400214">The Grinch hated Christmas! The whole Christmas season! Now, please don't ask why. No one quite knows the reason. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Start with the Grinch on Mt. Crumpit. \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Start in the valley with a large Christmas Village. \n\nSettlements: Mt. Crumpit, Christmas Village</string>
 
       <!-- ===================================== -->
+      <!-- Christmas 2025 -->
+      <!-- ===================================== -->
+      <string _locid="400300">Arctic Archipelago Festive</string>
+      <string _locid="400301">Resources are sparse and solid land is limited in this arctic archipelago frozen over for winter.  \n\nSettlements: Mt. Crumpit, Christmas Village</string>
+      <string _locid="400302">LOAD DETAILS Resources are sparse and solid land is limited in this arctic archipelago frozen over for winter.  \n\nSettlements: Mt. Crumpit, Christmas Village</string>
+
+
+      <!-- ===================================== -->
       <!-- ===================================== -->
 
     </language>

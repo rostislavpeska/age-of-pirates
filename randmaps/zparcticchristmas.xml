@@ -1,0 +1,7 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "400301" displayNameID = "400300" loadDetails="400302" largeMapName = "zparcticchristmas"
+    imagepath = "ui\random_map\arcticchristmas\arctic_archipelago_mini" cannotReplace = "" loadBackground="ui\random_map\arcticchristmas\ArcticArchipelago_map">
+   <loadss>ui\random_map\arcticchristmas\arctic_archipelago_01</loadss>
+   <loadss>ui\random_map\arcticchristmas\arctic_archipelago_02</loadss>
+   <loadss>ui\random_map\arcticchristmas\arctic_archipelago_03</loadss>
+</mapinfo>
