@@ -5348,7 +5348,7 @@ rmBuildConnection(connectionID2);
 |---------|----------------|-------------------------|
 | **Base Height** | > 1.0 (above water) | 0.0-0.9 (below water) |
 | **Terrain Replacement** | ✅ Works | ❌ Doesn't work underwater |
-| **Walkable** | ✅ Yes | ❌ No (ships only) |
+| **Walkable** | ✅ Yes | ⚠️ Only while being less than 0.5m below the water level |
 | **Visual Result** | Land bridge, beach | Shallow water, reef |
 | **Use Case** | Connect player spawn islands | Connect bonus/resource islands |
 
@@ -5607,7 +5607,7 @@ The depth difference is defined in the XML water definitions:
 ```xml
 <!-- DEEP WATER (center) -->
 <ocean name="ZP Dead Sea" 
-       depth="2.0000"                           <!-- Deep water: 2.0 meters -->
+       depth="2.0000"                           <!-- Deep water: 2.0 meters - not walkable, ship access-->
        bottom="california\groundshore1_cal"
        bank="AfricaDesert\ground_dirt1_afriDesert"
        color="9 110 88" 
@@ -5625,7 +5625,7 @@ The depth difference is defined in the XML water definitions:
 
 <!-- SHALLOW WATER (outer ring) -->
 <ocean name="ZP Dead Sea Shallow" 
-       depth="0.5000"                           <!-- Shallow water: 0.5 meters -->
+       depth="0.5000"                           <!-- Shallow water: 0.5 meters - walkable, no ship access -->
        bottom="DeadSea\ground_dirt1_DeadSea"    <!-- Visible bottom -->
        bank="AfricaDesert\ground_dirt1_afriDesert"
        color="9 110 88" 
@@ -5698,6 +5698,8 @@ depth="5.0"     // Very dark, mysterious
 ```
 
 **Creating depth constraints:**
+
+Useful wnen you want to spawn objects in the walkable shallow waters but make them avoid the deep water area.
 
 ```cpp
 // Define classes for different depths
@@ -6270,7 +6272,7 @@ Because the trade route needs to have a diamond-like shape. Uneven placement of 
 **Key differences from land routes:**
 - ⚠️ **Timing critical** - Must build before `rmCreateArea()` for islands
 - ⚠️ **Blockade variations** - Some gameplay modes skip edge waypoints
-- ⚠️ **Stopper placement** - Required to prevent island spawn failures
+- ⚠️ **Stopper placement** - Required to prevent floating island spawn failures
 - ⚠️ **Constraint dependency** - Islands use `rmCreateTradeRouteDistanceConstraint()` on this route
 
 **Common water route mistakes:**
@@ -8041,7 +8043,7 @@ Player positioning determines where players spawn on the map. Age of Empires III
 
 #### **17.1.1. Player Coordinates (Fixed Positions)**
 
-**Best for:** 2-player maps, mirrored team spawns, when precise positioning is required
+**Best for:** 2-team spawn, mirrored team spawns, when precise positioning is required
 
 **Uses:** Fixed X/Z coordinates with `rmPlacePlayer()`
 
