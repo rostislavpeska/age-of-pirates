@@ -2563,97 +2563,6 @@ rmPlaceGroupingAtLoc(piratesVillageID, 0,
 - ✅ Creates realistic coastal settlements
 - ❌ Without it: Natives spawn too far inland or in water
 
----
-
-### **I) Cardinal Directions**
-
-⚠️ **CRITICAL:** Map coordinates are **rotated 45° clockwise** from visual appearance!
-
-#### **Visual vs Code Coordinates**
-
-**On minimap (what you SEE):**
-```
-        North
-         ↑
-    NW   |   NE
-         |
-West ←---+---→ East
-         |
-    SW   |   SE
-         ↓
-        South
-```
-
-**In code (what you WRITE):**
-```
-Code coordinates rotated 45° clockwise:
-
-         Z=1.0 (Code North = Visual NE)
-              ↑
-    X=0.0 ←---+---→ X=1.0
-(Code W       |       Code E
-= Visual NW)  |       = Visual SE)
-              ↓
-         Z=0.0 (Code South = Visual SW)
-```
-
-#### **Conversion Table**
-
-| Visual Direction | Code X | Code Z | Example |
-|-----------------|--------|--------|---------|
-| **North** (top) | 0.5 | 1.0 | `rmSetAreaLocation(id, 0.5, 1.0)` |
-| **South** (bottom) | 0.5 | 0.0 | `rmSetAreaLocation(id, 0.5, 0.0)` |
-| **East** (right) | 1.0 | 0.5 | `rmSetAreaLocation(id, 1.0, 0.5)` |
-| **West** (left) | 0.0 | 0.5 | `rmSetAreaLocation(id, 0.0, 0.5)` |
-| **NE** (top-right) | 0.85 | 0.85 | `rmSetAreaLocation(id, 0.85, 0.85)` |
-| **SE** (bottom-right) | 0.85 | 0.15 | `rmSetAreaLocation(id, 0.85, 0.15)` |
-| **SW** (bottom-left) | 0.15 | 0.15 | `rmSetAreaLocation(id, 0.15, 0.15)` |
-| **NW** (top-left) | 0.15 | 0.85 | `rmSetAreaLocation(id, 0.15, 0.85)` |
-
-#### **Practical Examples**
-
-```cpp
-// To place area on VISUAL NORTH (top of minimap)
-rmSetAreaLocation(northArea, 0.5, 1.0);  // High Z = North
-
-// To place area on VISUAL SOUTH (bottom of minimap)
-rmSetAreaLocation(southArea, 0.5, 0.0);  // Low Z = South
-
-// To place area on VISUAL WEST (left side of minimap)
-rmSetAreaLocation(westArea, 0.0, 0.5);   // Low X = West
-
-// To place area on VISUAL EAST (right side of minimap)
-rmSetAreaLocation(eastArea, 1.0, 0.5);   // High X = East
-```
-
-#### **Box Constraints for Regions**
-
-```cpp
-// Keep objects in VISUAL NORTH (top half)
-int stayNorth = rmCreateBoxConstraint("stay north", 0.0, 0.5, 1.0, 1.0);
-// Args: (name, minX, minZ, maxX, maxZ)
-// minZ=0.5 means "only in upper half where Z >= 0.5"
-
-// Keep objects in VISUAL SOUTH (bottom half)
-int staySouth = rmCreateBoxConstraint("stay south", 0.0, 0.0, 1.0, 0.5);
-
-// Keep objects in VISUAL WEST (left half)
-int stayWest = rmCreateBoxConstraint("stay west", 0.0, 0.0, 0.5, 1.0);
-
-// Keep objects in VISUAL EAST (right half)
-int stayEast = rmCreateBoxConstraint("stay east", 0.5, 0.0, 1.0, 1.0);
-```
-
-**Key principle:**
-- **X axis** = West-East (left-right on minimap)
-  - X=0.0 = West (left)
-  - X=1.0 = East (right)
-- **Z axis** = South-North (bottom-top on minimap)
-  - Z=0.0 = South (bottom)
-  - Z=1.0 = North (top)
-
----
-
 #### **Water Constraint Summary:**
 
 | Constraint Type | Terrain Type | Passable | Distance | Use Case |
@@ -2669,7 +2578,127 @@ int stayEast = rmCreateBoxConstraint("stay east", 0.5, 0.0, 1.0, 1.0);
 
 ---
 
-#### **How to Apply Constraints:**
+### **I) Cardinal Directions**
+
+⚠️ **CRITICAL:** Map coordinates are **rotated 45°** from visual appearance! Visual cardinal directions use **diagonal coordinates**, not axis-aligned coordinates.
+
+**📚 For complete coordinate system details, see [Section 3: Understanding Coordinates (CRITICAL)](#3-️-understanding-coordinates-critical)**
+
+#### **1. Pie Constraints (Preferred for Circular Maps)**
+
+Pie constraints create circular arcs that follow visual directions. Use these for circular/round maps.
+
+##### **✅ Best Practice: Following Real Visual Directions**
+
+This pattern correctly follows the visual minimap directions (diagonal coordinates):
+
+```cpp
+// Visual North (top of minimap) - 315° to 135° arc
+int Northward = rmCreatePieConstraint("northMapConstraint", 0.5, 0.5, 0, 
+    rmZFractionToMeters(0.5), rmDegreesToRadians(315), rmDegreesToRadians(135));
+
+// Visual South (bottom of minimap) - 135° to 315° arc
+int Southward = rmCreatePieConstraint("southMapConstraint", 0.5, 0.5, 0, 
+    rmZFractionToMeters(0.5), rmDegreesToRadians(135), rmDegreesToRadians(315));
+
+// Visual East (right of minimap) - 45° to 225° arc
+int Eastward = rmCreatePieConstraint("eastMapConstraint", 0.5, 0.5, 0, 
+    rmZFractionToMeters(0.5), rmDegreesToRadians(45), rmDegreesToRadians(225));
+
+// Visual West (left of minimap) - 225° to 45° arc
+int Westward = rmCreatePieConstraint("westMapConstraint", 0.5, 0.5, 0, 
+    rmZFractionToMeters(0.5), rmDegreesToRadians(225), rmDegreesToRadians(45));
+```
+
+**Why these angles?**
+- **315° to 135°** = Arc covering visual North direction (toward `(1.0, 1.0)`)
+- **135° to 315°** = Arc covering visual South direction (toward `(0.0, 0.0)`)
+- **45° to 225°** = Arc covering visual East direction (toward `(1.0, 0.0)`)
+- **225° to 45°** = Arc covering visual West direction (toward `(0.0, 1.0)`)
+
+##### **⚠️ Code Quadrant Pattern: Axis-Aligned Angles (For Biome/Region Differentiation)**
+
+**When to use:** When you need to distinguish between **code quadrants** (NE, SE, SW, NW) for different biomes, regions, or gameplay mechanics. This pattern uses axis-aligned angles that divide the map into four code coordinate quadrants.
+
+**Naming Convention:**
+- Use **"Visual"** prefix for constraints following visual minimap directions (diagonal coordinates)
+- Use **"Code"** prefix or **quadrant names** (NE, SE, SW, NW) for axis-aligned quadrant constraints
+
+**Example from Black Sea map (biome differentiation):**
+
+```cpp
+// Code quadrant constraints - for distinguishing NE vs SW regions
+// These use axis-aligned angles to create distinct quadrants for different biomes
+
+// Code "North" quadrant (high Z) - covers NE and NW code regions
+int codeNorthQuadrant = rmCreatePieConstraint("codeNorthQuadrant", 0.5, 0.5, 0, 
+    rmZFractionToMeters(0.5), rmDegreesToRadians(0), rmDegreesToRadians(180));
+// This creates a half-circle covering the upper half (Z >= 0.5)
+
+// Code "South" quadrant (low Z) - covers SE and SW code regions  
+int codeSouthQuadrant = rmCreatePieConstraint("codeSouthQuadrant", 0.5, 0.5, 0, 
+    rmZFractionToMeters(0.5), rmDegreesToRadians(180), rmDegreesToRadians(0));
+// This creates a half-circle covering the lower half (Z <= 0.5)
+
+// Code "East" quadrant (high X) - covers NE and SE code regions
+int codeEastQuadrant = rmCreatePieConstraint("codeEastQuadrant", 0.5, 0.5, 0, 
+    rmZFractionToMeters(0.5), rmDegreesToRadians(90), rmDegreesToRadians(270));
+// This creates a half-circle covering the right half (X >= 0.5)
+
+// Code "West" quadrant (low X) - covers NW and SW code regions
+int codeWestQuadrant = rmCreatePieConstraint("codeWestQuadrant", 0.5, 0.5, 0, 
+    rmZFractionToMeters(0.5), rmDegreesToRadians(270), rmDegreesToRadians(90));
+// This creates a half-circle covering the left half (X <= 0.5)
+```
+
+**Naming Convention Guidelines:**
+
+1. **Visual Directions (Best Practice):**
+   - `visualNorth`, `visualSouth`, `visualEast`, `visualWest`
+   - Or: `northward`, `southward`, `eastward`, `westward` (if context is clear)
+   - Use angles: 315°/135°, 45°/225°, etc.
+
+2. **Code Quadrants (For Biome Differentiation):**
+   - `codeNorthQuadrant`, `codeSouthQuadrant`, `codeEastQuadrant`, `codeWestQuadrant`
+   - Or: `neQuadrant`, `seQuadrant`, `swQuadrant`, `nwQuadrant`
+   - Use angles: 0°/180°, 90°/270°, etc.
+
+**When to use each:**
+- **Visual directions:** For general placement constraints (players, resources, natives) following visual minimap
+- **Code quadrants:** For biome differentiation, regional variations, or when you need to distinguish between NE/SW or SE/NW areas
+
+**Example use case:** Black Sea map uses code quadrants to create different biomes:
+- Code North quadrant (high Z) = Different biome than Code South quadrant (low Z)
+- This allows distinguishing between the NE+NW regions vs SE+SW regions for biome placement
+
+#### **2. Box Constraints (For Rectangular Maps)**
+
+Box constraints use **axis-aligned rectangles**. Use these for rectangular/square maps that can't use visual directions.
+
+**⚠️ Important:** Rectangular maps use the **rotated code coordinate system** (not visual directions) because box constraints are always axis-aligned.
+
+```cpp
+float mapCenter = 0.5;
+
+// Code "North" (high Z) - axis-aligned box
+int Northward = rmCreateBoxConstraint("northMapConstraint", 0.0, mapCenter, 1.0, 1.0, 0.01);
+// Args: (name, minX, minZ, maxX, maxZ, buffer)
+// This creates a box in the upper half (Z >= mapCenter)
+
+// Code "South" (low Z) - axis-aligned box
+int Southward = rmCreateBoxConstraint("southMapConstraint", 0.0, 0.0, 1.0, mapCenter, 0.01);
+// This creates a box in the lower half (Z <= mapCenter)
+```
+
+**Key points:**
+- Box constraints work with **code coordinates** (axis-aligned), not visual directions
+- For rectangular maps, use code coordinate system: X=0.0 (West) to X=1.0 (East), Z=0.0 (South) to Z=1.0 (North)
+- These are approximations that work well for rectangular map layouts
+
+---
+
+
+### **J) How to Apply Constraints:**
 
 **To Areas:**
 ```cpp
