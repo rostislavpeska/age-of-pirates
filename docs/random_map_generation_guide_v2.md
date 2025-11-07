@@ -138,6 +138,12 @@
 
 **⚠️ IMPORTANT:** The XZ coordinate system used in `.xs` scripts is **rotated 45° from the visual minimap display!**
 
+**🔑 Key Insight:** Because of this 45° rotation, the visual cardinal directions (N, E, S, W) correspond to **diagonal coordinates** in the code system, not axis-aligned coordinates. For example:
+- Visual **North** (top of minimap) = coordinates with **both X and Z high** (e.g., `0.8, 0.8`)
+- Visual **South** (bottom of minimap) = coordinates with **both X and Z low** (e.g., `0.2, 0.2`)
+- Visual **East** (right of minimap) = coordinates with **high X, low Z** (e.g., `0.8, 0.2`)
+- Visual **West** (left of minimap) = coordinates with **low X, high Z** (e.g., `0.2, 0.8`)
+
 ---
 
 ### **Visual Representation**
@@ -162,57 +168,157 @@ X-axis              |                    X-axis
 ```
                     N (North)
                     ↑
-               (0.5, 1.0)
+              (1.0, 1.0) ←─── Visual North corner
                    /|\
                   / | \
                  /  |  \
-                /   |   \
-               /    |    \
-              /     |     \
-     (0.0, 1.0)    |    (1.0, 1.0)
+        (0.0, 1.0) |  (1.0, 0.0)
          W ←───(0.5, 0.5)───→ E
-     (0.0, 0.5)    |    (1.0, 0.5)
-              \    |    /
-               \   |   /
-                \  |  /
+        (top-left) |  (bottom-right)
                  \ | /
                   \|/
-               (0.5, 0.0)
+              (0.0, 0.0) ←─── Visual South corner
                     ↓
                     S (South)
 ```
+
+**⚠️ IMPORTANT:** The visual cardinal directions are at the **corners** of the coordinate system:
+- **N (North)** = `(1.0, 1.0)` - top-right corner
+- **E (East)** = `(1.0, 0.0)` - bottom-right corner
+- **S (South)** = `(0.0, 0.0)` - bottom-left corner
+- **W (West)** = `(0.0, 1.0)` - top-left corner
+
+**🟢 Green Diamond Playable Area:** The green diamond is centered at `(0.5, 0.5)` with **diagonal boundaries** (not axis-aligned):
+- **Top (Visual North):** approximately `(0.8, 0.8)` - diagonal toward `(1.0, 1.0)`
+- **Right (Visual East):** approximately `(0.8, 0.2)` - diagonal toward `(1.0, 0.0)`
+- **Bottom (Visual South):** approximately `(0.2, 0.2)` - diagonal toward `(0.0, 0.0)`
+- **Left (Visual West):** approximately `(0.2, 0.8)` - diagonal toward `(0.0, 1.0)`
+
+---
+
+### **📐 Map Coordinate System Diagram**
+
+<img src="images/map_coordinates.png" alt="Map Coordinate System with Playable Area and Out-of-Bounds Zones" width="600"/>
+
+**⚠️ CRITICAL: Playable Area vs Out-of-Bounds Zones**
+
+This diagram shows the complete coordinate system with important visual distinctions:
+
+**🟢 Green Diamond (Playable Area):**
+- **Central green diamond** = The **playable map area** where all game content must spawn
+- **⚠️ IMPORTANT:** Because of the 45° rotation, the diamond's points are **diagonal**, not axis-aligned!
+- **Approximate boundaries (diagonal coordinates):**
+  - **Top point (Visual North):** `(0.8, 0.8)` - diagonal toward `(1.0, 1.0)`
+  - **Right point (Visual East):** `(0.8, 0.2)` - diagonal toward `(1.0, 0.0)`
+  - **Bottom point (Visual South):** `(0.2, 0.2)` - diagonal toward `(0.0, 0.0)`
+  - **Left point (Visual West):** `(0.2, 0.8)` - diagonal toward `(0.0, 1.0)`
+  - **Center:** `(0.5, 0.5)`
+- **All objects, areas, players, resources, and groupings MUST be placed within this green diamond**
+- The map **always follows a circular shape** - content must respect this boundary
+- **Safe coordinate range:** Keep both X and Z between `0.1` and `0.9` to stay within the diamond
+
+**🔴 Red Zones (Out-of-Bounds - DO NOT SPAWN):**
+- **Four triangular red regions** at the corners = **OUT-OF-BOUNDS ZONES**
+- **NEVER place any content in red zones:**
+  - ❌ No players
+  - ❌ No resources (gold, hunts, fish)
+  - ❌ No native settlements
+  - ❌ No trade routes
+  - ❌ No areas
+  - ❌ No objects of any kind
+- **Red zones extend to the absolute corners** `(0.0, 0.0)`, `(1.0, 0.0)`, `(0.0, 1.0)`, `(1.0, 1.0)`
+- **These are outside the circular playable map boundary**
+
+**🟡 Yellow Zones (Transition Areas):**
+- **Four trapezoidal yellow regions** = Transition zones between red corners and green diamond
+- **Generally avoid placing content here** - these are edge areas
+- **If content must be near edges, ensure it stays within the green diamond boundary**
+
+**🎯 Key Rules for AI Agents:**
+1. **ALWAYS constrain placement to the green diamond area** (approximately 0.1-0.9 range for both X and Z)
+2. **NEVER place content in red zones** - these are guaranteed out-of-bounds
+3. **Respect the circular map shape** - the green diamond represents the playable boundary
+4. **Use distance constraints** to ensure objects stay within bounds:
+   ```xs
+   // Example: Constrain to playable area
+   rmSetObjectDefMinDistance(objectID, 0.1);  // Avoid edges
+   rmSetObjectDefMaxDistance(objectID, 0.9);  // Stay within diamond
+   ```
 
 ---
 
 ### **Coordinate Mapping Table**
 
-#### **Corner Positions**
+#### **Extreme Corners (Visual Map Boundaries)**
 
-| Code Name | Code Coordinates (X, Z) | Visual Map Direction | Description |
+| Code Name | Code Coordinates (X, Z) | Visual Map Position | Description |
 |-----------|------------------------|---------------------|-------------|
-| **NE** (Northeast in code) | `(1.0, 1.0)` | **N** (North/Top) | High X, High Z → Top of diamond |
-| **SE** (Southeast in code) | `(1.0, 0.0)` | **E** (East/Right) | High X, Low Z → Right of diamond |
-| **SW** (Southwest in code) | `(0.0, 0.0)` | **S** (South/Bottom) | Low X, Low Z → Bottom of diamond |
-| **NW** (Northwest in code) | `(0.0, 1.0)` | **W** (West/Left) | Low X, High Z → Left of diamond |
+| **NE** (Northeast in code) | `(1.0, 1.0)` | **North corner (Top)** | Extreme top-right of visual map - code "NE" |
+| **SE** (Southeast in code) | `(1.0, 0.0)` | **East corner (Right)** | Extreme bottom-right of visual map - code "SE" |
+| **SW** (Southwest in code) | `(0.0, 0.0)` | **South corner (Bottom)** | Extreme bottom-left of visual map - code "SW" |
+| **NW** (Northwest in code) | `(0.0, 1.0)` | **West corner (Left)** | Extreme top-left of visual map - code "NW" |
+| **Center** | `(0.5, 0.5)` | **Center** | Mid X, Mid Z → Center |
 
-#### **Center Position**
-| Code Name | Code Coordinates (X, Z) | Visual Map Direction |
-|-----------|------------------------|---------------------|
-| **Center** | `(0.5, 0.5)` | **Center** |
+#### **Typical Visual Directions (Within Playable Area)**
+
+| Visual Direction | Typical Coordinates | Notes |
+|-----------------|-------------------|-------|
+| **North** | `(0.8, 0.8)` | Both X and Z high - diagonal toward (1.0, 1.0) |
+| **East** | `(0.8, 0.2)` | High X, low Z - diagonal toward (1.0, 0.0) |
+| **South** | `(0.2, 0.2)` | Both X and Z low - diagonal toward (0.0, 0.0) |
+| **West** | `(0.2, 0.8)` | Low X, high Z - diagonal toward (0.0, 1.0) |
 
 ---
 
-### **Understanding the Axes**
+### **🚫 Forbidden Coordinates (Red Out-of-Bounds Zones)**
 
-#### **X-Axis (Horizontal in code)**
-- **X = 0.0** → Left side of code grid → **West + South** on visual map
-- **X = 0.5** → Center horizontal
-- **X = 1.0** → Right side of code grid → **East + North** on visual map
+**⚠️ CRITICAL:** The map always follows a circular shape. The following coordinates are in RED OUT-OF-BOUNDS ZONES. **NEVER use these coordinates** for any game content!
 
-#### **Z-Axis (Vertical in code)**
-- **Z = 0.0** → Bottom of code grid → **South + East** on visual map
-- **Z = 0.5** → Center vertical
-- **Z = 1.0** → Top of code grid → **North + West** on visual map
+#### **Mathematical Rules for Forbidden Zones:**
+
+1. **North Red Zone:** `X + Z > 1.8` (sum exceeds 1.8)
+2. **East Red Zone:** `X - Z >= 0.8` (difference is greater than or equal to 0.8, high X, low Z)
+3. **South Red Zone:** `X + Z < 0.2` (sum is less than 0.2)
+4. **West Red Zone:** `Z - X >= 0.8` (difference is greater than or equal to 0.8, low X, high Z)
+
+**✅ Safe coordinates:** Use coordinates where:
+- `0.1 < X < 0.9` AND `0.1 < Z < 0.9`
+- AND `X + Z ≤ 1.8` (not in North zone)
+- AND `X + Z ≥ 0.2` (not in South zone)
+- AND `X - Z < 0.8` (not in East zone)
+- AND `Z - X < 0.8` (not in West zone)
+
+**Examples of forbidden coordinates:**
+- **North:** `(1.0, 1.0)`, `(0.9, 1.0)`, `(1.0, 0.9)`, `(0.8, 1.0)`, `(0.9, 0.9)`, `(1.0, 0.8)`
+- **East:** `(1.0, 0.0)`, `(0.9, 0.0)`, `(1.0, 0.1)`, `(0.8, 0.0)`, `(0.9, 0.1)`, `(1.0, 0.2)`
+- **South:** `(0.0, 0.0)`, `(0.1, 0.0)`, `(0.0, 0.1)`, `(0.2, 0.0)`, `(0.1, 0.1)`, `(0.0, 0.2)`
+- **West:** `(0.0, 1.0)`, `(0.0, 0.9)`, `(0.1, 1.0)`, `(0.0, 0.8)`, `(0.1, 0.9)`, `(0.2, 1.0)`
+
+---
+
+### **Understanding Coordinates in Map Analysis**
+
+When analyzing a minimap and correlating with map script code:
+
+**Visual "North" (Top of minimap):**
+- Code uses: **High X** (0.7-1.0) + **High Z** (0.7-1.0) - **diagonal coordinates**
+- Example: `(0.8, 0.8)` appears at the **top** of the minimap
+- The visual North direction points toward `(1.0, 1.0)` in code coordinates
+
+**Visual "East" (Right of minimap):**
+- Code uses: **High X** (0.7-1.0) + **Low Z** (0.0-0.3) - **diagonal coordinates**
+- Example: `(0.8, 0.2)` appears on the **right** of the minimap
+- The visual East direction points toward `(1.0, 0.0)` in code coordinates
+
+**Visual "South" (Bottom of minimap):**
+- Code uses: **Low X** (0.0-0.3) + **Low Z** (0.0-0.3) - **diagonal coordinates**
+- Example: `(0.2, 0.2)` appears at the **bottom** of the minimap
+- The visual South direction points toward `(0.0, 0.0)` in code coordinates
+
+**Visual "West" (Left of minimap):**
+- Code uses: **Low X** (0.0-0.3) + **High Z** (0.7-1.0) - **diagonal coordinates**
+- Example: `(0.2, 0.8)` appears on the **left** of the minimap
+- The visual West direction points toward `(0.0, 1.0)` in code coordinates
 
 ---
 
@@ -221,26 +327,27 @@ X-axis              |                    X-axis
 #### **Example 1: Placing Object in Visual "North"**
 **Goal:** Place something at the top of the minimap (visual North)
 
-**Code coordinates:** `(0.5, 1.0)` or nearby like `(0.6, 0.9)`
-- High Z value (close to 1.0)
-- Moderate X value (around 0.5)
+**Code coordinates:** `(0.8, 0.8)` or `(0.75, 0.75)` (diagonal coordinates, both high)
+- High X value (0.7-0.9)
+- High Z value (0.7-0.9)
+- Both coordinates high = visual North
 
 ```xs
-float objectX = 0.5;
-float objectZ = 0.9;  // High Z = visual North
+float objectX = 0.75;  // High X
+float objectZ = 0.75;  // High Z - diagonal coordinates for visual North
 rmPlaceObjectDefAtLoc(objectID, 0, objectX, objectZ);
 ```
 
 #### **Example 2: Placing Object in Visual "West"**
 **Goal:** Place something on the left side of the minimap (visual West)
 
-**Code coordinates:** `(0.2, 0.8)` or similar
-- Low X value (close to 0.0)
-- High Z value (close to 1.0)
+**Code coordinates:** `(0.2, 0.8)` or similar (diagonal coordinates, low X, high Z)
+- Low X value (0.1-0.3)
+- High Z value (0.7-0.9)
 
 ```xs
 float objectX = 0.2;   // Low X
-float objectZ = 0.8;   // High Z
+float objectZ = 0.8;   // High Z - diagonal coordinates for visual West
 // This appears on the left (West) of the visual map
 rmPlaceObjectDefAtLoc(objectID, 0, objectX, objectZ);
 ```
@@ -253,19 +360,19 @@ The code uses `IslandLoc` to randomize the bonus island position:
 if (IslandLoc == 1) {
    // Code NE → Visual N (Top)
    bonusX = 0.80;  // High X
-   bonusZ = 0.80;  // High Z
+   bonusZ = 0.80;  // High Z - diagonal coordinates
 } else if (IslandLoc == 2) {
    // Code SE → Visual E (Right)
    bonusX = 0.85;  // High X
-   bonusZ = 0.15;  // Low Z
+   bonusZ = 0.15;  // Low Z - diagonal coordinates
 } else if (IslandLoc == 3) {
    // Code SW → Visual S (Bottom)
    bonusX = 0.15;  // Low X
-   bonusZ = 0.15;  // Low Z
+   bonusZ = 0.15;  // Low Z - diagonal coordinates
 } else {
    // Code NW → Visual W (Left)
    bonusX = 0.15;  // Low X
-   bonusZ = 0.85;  // High Z
+   bonusZ = 0.85;  // High Z - diagonal coordinates
 }
 ```
 
@@ -276,17 +383,23 @@ if (IslandLoc == 1) {
 
 ### **Quick Reference: Visual Direction → Code Coordinates**
 
-| Visual Direction | X Range | Z Range | Code Name | Example Coords |
-|-----------------|---------|---------|-----------|----------------|
-| **North (Top)** | 0.4-0.6 | 0.8-1.0 | NE region | `(0.5, 0.9)` |
-| **East (Right)** | 0.8-1.0 | 0.4-0.6 | SE region | `(0.9, 0.5)` |
-| **South (Bottom)** | 0.4-0.6 | 0.0-0.2 | SW region | `(0.5, 0.1)` |
-| **West (Left)** | 0.0-0.2 | 0.4-0.6 | NW region | `(0.1, 0.5)` |
-| **Northeast** | 0.7-1.0 | 0.7-1.0 | True NE | `(0.85, 0.85)` |
-| **Southeast** | 0.7-1.0 | 0.0-0.3 | True SE | `(0.85, 0.15)` |
-| **Southwest** | 0.0-0.3 | 0.0-0.3 | True SW | `(0.15, 0.15)` |
-| **Northwest** | 0.0-0.3 | 0.7-1.0 | True NW | `(0.15, 0.85)` |
-| **Center** | 0.4-0.6 | 0.4-0.6 | Center | `(0.5, 0.5)` |
+**⚠️ CRITICAL:** Because the visual minimap is rotated 45° from the code coordinate system, the visual cardinal directions correspond to **diagonal coordinates**, not axis-aligned coordinates!
+
+**⚠️ BOUNDARY WARNING:** The coordinate ranges below are **within the playable green diamond area**. The extreme corners `(0.0, 0.0)`, `(1.0, 0.0)`, `(0.0, 1.0)`, `(1.0, 1.0)` are in **RED OUT-OF-BOUNDS ZONES** - never place content there!
+
+| Visual Direction | X Range | Z Range | Code Name | Example Coords | Notes |
+|-----------------|---------|---------|-----------|----------------|-------|
+| **North (Top)** | 0.7-0.9 | 0.7-0.9 | NE region | `(0.8, 0.8)` | Within green diamond |
+| **East (Right)** | 0.7-0.9 | 0.1-0.3 | SE region | `(0.8, 0.2)` | Within green diamond |
+| **South (Bottom)** | 0.1-0.3 | 0.1-0.3 | SW region | `(0.2, 0.2)` | Within green diamond |
+| **West (Left)** | 0.1-0.3 | 0.7-0.9 | NW region | `(0.2, 0.8)` | Within green diamond |
+| **Center** | 0.4-0.6 | 0.4-0.6 | Center | `(0.5, 0.5)` | Safe center area |
+
+**⚠️ Extreme Corners (OUT-OF-BOUNDS - DO NOT USE):**
+- **Visual North corner** = `(1.0, 1.0)` in code (code "NE") - **🔴 RED ZONE**
+- **Visual East corner** = `(1.0, 0.0)` in code (code "SE") - **🔴 RED ZONE**
+- **Visual South corner** = `(0.0, 0.0)` in code (code "SW") - **🔴 RED ZONE**
+- **Visual West corner** = `(0.0, 1.0)` in code (code "NW") - **🔴 RED ZONE**
 
 ---
 
@@ -302,9 +415,23 @@ float z = 0.9;
 #### **✅ Correct: Think in X/Z, Convert to Visual**
 ```xs
 // Want visual "West" (left side of minimap)?
-// Use low X, high Z
-float westX = 0.15;   // Low X value
-float westZ = 0.85;   // High Z value
+// Use low X, high Z (diagonal coordinates)
+float westX = 0.2;   // Low X value
+float westZ = 0.8;   // High Z value
+```
+
+#### **❌ Mistake: Using Axis-Aligned Coordinates for Visual Directions**
+```xs
+// WRONG: This places at visual "North" edge, not center North
+float northX = 0.5;   // Mid X
+float northZ = 0.9;   // High Z
+```
+
+#### **✅ Correct: Use Diagonal Coordinates**
+```xs
+// CORRECT: This places in visual North direction
+float northX = 0.75;  // High X
+float northZ = 0.75;  // High Z - diagonal coordinates
 ```
 
 ---
@@ -314,10 +441,10 @@ float westZ = 0.85;   // High Z value
 #### **Player Descriptions vs Code Coordinates**
 
 When a player says:
-- **"It's in the North"** → Look for **high Z** values (0.7-1.0), moderate X (0.4-0.6)
-- **"It's in the South"** → Look for **low Z** values (0.0-0.3), moderate X (0.4-0.6)
-- **"It's in the East"** → Look for **high X** values (0.7-1.0), moderate Z (0.4-0.6)
-- **"It's in the West"** → Look for **low X** values (0.0-0.3), moderate Z or high Z (0.4-0.8)
+- **"It's in the North"** → Look for **high X and high Z** values (0.7-0.9 for both) - diagonal coordinates
+- **"It's in the South"** → Look for **low X and low Z** values (0.1-0.3 for both) - diagonal coordinates
+- **"It's in the East"** → Look for **high X, low Z** values (0.7-0.9 X, 0.1-0.3 Z) - diagonal coordinates
+- **"It's in the West"** → Look for **low X, high Z** values (0.1-0.3 X, 0.7-0.9 Z) - diagonal coordinates
 
 ---
 
@@ -325,17 +452,17 @@ When a player says:
 
 #### **Method 1: Use Fixed Positions**
 ```xs
-// Test visual North placement
-rmPlaceObjectDefAtLoc(testObject, 0, 0.5, 0.95);
+// Test visual North placement (diagonal coordinates)
+rmPlaceObjectDefAtLoc(testObject, 0, 0.75, 0.75);
 
-// Test visual West placement
-rmPlaceObjectDefAtLoc(testObject, 0, 0.15, 0.85);
+// Test visual West placement (diagonal coordinates)
+rmPlaceObjectDefAtLoc(testObject, 0, 0.2, 0.8);
 
-// Test visual East placement
-rmPlaceObjectDefAtLoc(testObject, 0, 0.85, 0.15);
+// Test visual East placement (diagonal coordinates)
+rmPlaceObjectDefAtLoc(testObject, 0, 0.8, 0.2);
 
-// Test visual South placement
-rmPlaceObjectDefAtLoc(testObject, 0, 0.5, 0.05);
+// Test visual South placement (diagonal coordinates)
+rmPlaceObjectDefAtLoc(testObject, 0, 0.2, 0.2);
 ```
 
 #### **Method 2: Debug with Echo**
@@ -349,16 +476,18 @@ Check the in-game console or log files to see where objects actually placed.
 
 ### **Summary**
 
-✅ **Key Takeaway:** The XZ coordinate system is rotated 45° from the visual minimap!
+✅ **Key Takeaway:** The XZ coordinate system is rotated 45° from the visual minimap! Visual cardinal directions use **diagonal coordinates**, not axis-aligned coordinates.
 
 | To place in... | Use coordinates... |
 |---------------|-------------------|
-| **Visual North** | High Z (0.8-1.0), Mid X (0.4-0.6) |
-| **Visual East** | High X (0.8-1.0), Mid Z (0.4-0.6) |
-| **Visual South** | Low Z (0.0-0.2), Mid X (0.4-0.6) |
-| **Visual West** | Low X (0.0-0.2), High Z (0.7-1.0) |
+| **Visual North** | High X (0.7-0.9) AND High Z (0.7-0.9) - diagonal |
+| **Visual East** | High X (0.7-0.9) AND Low Z (0.1-0.3) - diagonal |
+| **Visual South** | Low X (0.1-0.3) AND Low Z (0.1-0.3) - diagonal |
+| **Visual West** | Low X (0.1-0.3) AND High Z (0.7-0.9) - diagonal |
 
-**Always think in terms of X and Z values, not cardinal directions from the code!**
+**Always think in terms of X and Z values with diagonal coordinates, not axis-aligned coordinates!**
+
+**🚫 Remember:** Never place content in red forbidden zones. Keep coordinates within the green diamond playable area (0.1-0.9 range for both X and Z, respecting the mathematical boundary rules).
 
 **See also:**
 - [Chapter 14 (Areas)](#14-️-areas) - Practical coordinate usage in area placement
