@@ -533,6 +533,14 @@ void main(void)
             
             rmClearClosestPointConstraints();
          }
+
+		int piratePortID1 = rmCreateGrouping("pirate port 1", "Platform_Universal");
+		rmAddClosestPointConstraint(portOnShore);
+
+		vector closeToVillageA = rmFindClosestPointVector(pirateControllerLoc, rmXFractionToMeters(1.0));
+		rmPlaceGroupingAtLoc(piratePortID1, 0, rmXMetersToFraction(xsVectorGetX(closeToVillageA)), rmZMetersToFraction(xsVectorGetZ(closeToVillageA)));
+
+		rmClearClosestPointConstraints();
    }
 
    // ************** jesuits in the middle *****************

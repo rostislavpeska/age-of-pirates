@@ -66891,6 +66891,7 @@
     <flag>TileAlignPlacement</flag>
     <flag>ColonyBuilding</flag>
     <flag>ObscuresUnits</flag>
+    <flag>PlaceAnywhere</flag>
     <flag>FlattenGround</flag>
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
@@ -66947,6 +66948,7 @@
     <flag>UseAlignedObstructionOnMinimap</flag>
     <flag>NoIdleActions</flag>
     <flag>TileAlignPlacement</flag>
+    <flag>PlaceAnywhere</flag>
     <flag>ColonyBuilding</flag>
     <flag>ObscuresUnits</flag>
     <flag>FlattenGround</flag>
@@ -67007,6 +67009,7 @@
     <flag>TileAlignPlacement</flag>
     <flag>ColonyBuilding</flag>
     <flag>ObscuresUnits</flag>
+    <flag>PlaceAnywhere</flag>
     <flag>FlattenGround</flag>
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
@@ -67067,6 +67070,7 @@
     <flag>PaintTextureWhenPlacing</flag>
     <flag>FlattenGround</flag>
     <flag>ColonyBuilding</flag>
+    <flag>PlaceAnywhere</flag>
     <flag>wallBuild</flag>
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>

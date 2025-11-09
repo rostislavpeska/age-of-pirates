@@ -3011,7 +3011,7 @@
         <attachdummy>bone_nuggetA</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianMusketeer</unit>
+        <unit>zpGuardianRevolutionary</unit>
         <idleanim>NuggetPirate2_Idle</idleanim>
         <exitanim>NuggetPirate2_Exit</exitanim>
         <attachdummy>bone_nuggetB</attachdummy>
@@ -3032,13 +3032,13 @@
         <unit>zpGuardianRevolutionary</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianMissionary</unit>
+        <unit>zpGuardianRevolutionary</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianMusketeer</unit>
+        <unit>zpGuardianRevolutionary</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianMusketeer</unit>
+        <unit>zpGuardianRevolutionary</unit>
       </guardianunit>
       <difficulty>506</difficulty>
     </nugget>
