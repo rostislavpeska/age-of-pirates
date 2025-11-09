@@ -11643,3 +11643,111 @@ minInterval 10
 
    //aiChat(1, "totalResources: " + totalResources + " totalUnit: " + totalUnit);
 }
+
+
+//==============================================================================
+/* villagerGarrison: 
+   steps through villagers and has them garrison if they are under attack
+*/
+//==============================================================================
+rule villagerGarrison
+inactive
+group tcComplete
+minInterval 5
+{
+   static int villagerGarrisonPlan = -1;
+
+   if (villagerGarrisonPlan < 0)
+   {
+      villagerGarrisonPlan = aiPlanCreate("Villager Garrison Plan", cPlanReserve);
+      aiPlanAddUnitType(villagerGarrisonPlan, gEconUnit, 0, 200, 200);
+      aiPlanSetDesiredPriority(villagerGarrisonPlan, 1);
+      aiPlanSetActive(villagerGarrisonPlan);
+   }
+
+   int villagerQuery = createSimpleUnitQuery(gEconUnit, cMyID, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(villagerQuery);
+   int unitID = -1;
+   vector unitLocation = cInvalidVector;
+   int closestTCID = -1;
+   bool allClear = true;
+
+   // First pass, see if a villager is under attack and if they are, garrison in closest TC or tower
+   for (i = 0; < numberFound)
+   {
+      closestTCID = -1;
+      unitID = kbUnitQueryGetResult(villagerQuery, i);
+      unitLocation = kbUnitGetPosition(unitID);
+
+      if (getAreaStrength(unitLocation, 14, cPlayerRelationEnemyNotGaia) > 100.0) // greater than 1 musk
+      {
+         closestTCID = getClosestUnitByLocation(cUnitTypeAgeUpBuilding, cPlayerRelationSelf, cUnitStateAlive,
+            unitLocation, 50); 
+
+         if (closestTCID > 0)
+         {
+            aiPlanAddUnit(villagerGarrisonPlan, unitID);
+            aiTaskUnitEnter(unitID, closestTCID);
+            continue;
+         }
+
+         closestTCID = getClosestUnitByLocation(gTowerUnit, cPlayerRelationSelf, cUnitStateAlive,
+            unitLocation, 50); 
+         if (closestTCID > 0)
+         {
+            aiPlanAddUnit(villagerGarrisonPlan, unitID);
+            aiTaskUnitEnter(unitID, closestTCID);
+            continue;
+         }
+
+         allClear = false;
+      }
+      else
+      {
+         aiPlanRemoveUnit(villagerGarrisonPlan, unitID);
+      }
+   }
+
+   // Second pass, check all our town centers and towers and see if we can eject villagers
+   int tcQuery = createSimpleUnitQuery(cUnitTypeAgeUpBuilding, cMyID, cUnitStateAlive);
+   int numberTCFound = kbUnitQueryExecute(tcQuery);
+   int tcID = -1;
+   vector tcLocation = cInvalidVector;
+
+   for (i = 0; < numberTCFound)
+   {
+      tcID = kbUnitQueryGetResult(tcQuery, i);
+      tcLocation = kbUnitGetPosition(tcID);
+
+      if (getUnitByLocation(gEconUnit, cMyID, cUnitStateAlive, tcLocation, 1.0) > 0 &&
+         (getAreaStrength(tcLocation, 24, cPlayerRelationEnemyNotGaia) <= 100.0))
+      {
+         aiTaskUnitEject(tcID);
+      }
+   }
+   int towerQuery = createSimpleUnitQuery(gTowerUnit, cMyID, cUnitStateAlive);
+   int numberTowerFound = kbUnitQueryExecute(towerQuery);
+   int towerID = -1;
+   vector towerLoc = cInvalidVector;
+
+   for (i = 0; < numberTowerFound)
+   {
+      towerID = kbUnitQueryGetResult(towerQuery, i);
+      towerLoc = kbUnitGetPosition(towerID);
+
+      if (getUnitByLocation(gEconUnit, cMyID, cUnitStateAlive, towerLoc, 1.0) > 0 &&
+         (getAreaStrength(towerLoc, 24, cPlayerRelationEnemyNotGaia) < 100.0))
+      {
+         aiTaskUnitEject(towerID);
+      }
+   }
+
+   if (allClear == true)
+   {
+      aiPlanSetDesiredPriority(villagerGarrisonPlan, 1);
+   }
+   else
+   {
+      aiPlanSetDesiredPriority(villagerGarrisonPlan, 100);
+   }
+}
