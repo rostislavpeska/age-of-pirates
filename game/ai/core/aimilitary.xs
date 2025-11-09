@@ -208,6 +208,11 @@ void updateMilitaryTrainPlanBuildings(int baseID = -1)
       }
       else
       {
+         // AssertiveWall: set the base ID for the maintain plan since none of this other stuff seems to do anything
+         aiPlanSetBaseID(planID, baseID);
+         aiPlanSetVariableInt(planID, cTrainPlanMaintainBaseID, 0, baseID);
+         aiPlanSetVariableInt(planID, cTrainPlanIntoBaseID, 0, baseID);
+
          // Restrict train plan to train from the base if we can.
          if (buildingQuery < 0)
          {
@@ -239,7 +244,7 @@ void updateMilitaryTrainPlanBuildings(int baseID = -1)
             aiPlanSetNumberVariableValues(planID, cTrainPlanBuildingID, numberBuildings, true);
             for (j = 0; < numberBuildings)
             {
-               aiPlanSetVariableInt(planID, cTrainPlanBuildingID, j, xsArrayGetInt(buildingIDs, j));
+               aiPlanSetVariableInt(planID, cTrainPlanBuildingID, j, xsArrayGetInt(buildingIDs, j)); 
             }
          }
       }

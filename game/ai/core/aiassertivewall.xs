@@ -8468,9 +8468,11 @@ void establishForwardBase()
    if (gForwardBaseState != cForwardBaseStateActive)
    {
       gForwardBaseState = cForwardBaseStateActive;
-      gForwardBaseID = kbBaseCreate(cMyID, "Base at Amphibious Beach Head: " + kbBaseGetNextID(), gAmphibiousAssaultTarget, 60.0);
+      gForwardBaseID = kbUnitGetBaseID(forwardBaseBuilding);
       gForwardBaseLocation = gAmphibiousAssaultTarget;
       gForwardBaseUpTime = xsGetTime();
+      kbBaseSetPositionAndDistance(cMyID, gForwardBaseID, gForwardBaseLocation, 40.0);
+      updateMilitaryTrainPlanBuildings(gForwardBaseID); // update immediately. Otherwise gets updated in militarymanager
       //gForwardBaseShouldDefend = true; // Can't transport to defend it
 
       kbBaseSetMilitary(cMyID, gForwardBaseID, true);
@@ -11395,7 +11397,7 @@ minInterval 30
       }
       case cForwardBaseStateBuilding:
       {
-         fortUnitID = getUnitByLocation(gTowerUnit, cMyID, cUnitStateAlive, gForwardBaseLocation, 100.0);
+         fortUnitID = getUnitByLocation(gTowerUnit, cMyID, cUnitStateAlive, gForwardBaseLocation, 30.0);
          vector fortUnitLoc = kbUnitGetPosition(fortUnitID);
          if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(fortUnitLoc), 
                                           kbAreaGroupGetIDByPosition(gForwardBaseLocation)) == false)
@@ -11406,7 +11408,7 @@ minInterval 30
          if (fortUnitID < 0)
          {
             // Check for other military buildings.
-            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 100.0);
+            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 30.0);
             numberFound = kbUnitQueryExecute(buildingQuery);
             numberMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
             for (i = 0; < numberFound)
@@ -11426,7 +11428,8 @@ minInterval 30
                }
             }
          }
-         else if (fortUnitID >= 0)
+         
+         if (fortUnitID >= 0)
          { // Building exists and is complete, go to state Active.
             if (kbUnitGetBaseID(fortUnitID) >= 0)
             { // Base has been created for it.
@@ -11436,15 +11439,24 @@ minInterval 30
                   xsEnableRule("forwardBaseWall"); // AssertiveWall: Chain of rules to build walls and towers
                }
                gForwardBaseState = cForwardBaseStateActive;
-               gForwardBaseID = kbBaseCreate(cMyID, "Forward Tower Base: " + kbBaseGetNextID(), kbUnitGetPosition(fortUnitID), 40.0);
+               gForwardBaseID = kbUnitGetBaseID(fortUnitID);
                gForwardBaseLocation = kbUnitGetPosition(fortUnitID);
                gForwardBaseUpTime = xsGetTime();
                gForwardBaseShouldDefend = kbUnitIsType(fortUnitID, gTowerUnit);
+               kbBaseSetPositionAndDistance(cMyID, gForwardBaseID, gForwardBaseLocation, 40.0);
                debugBuildings("Forward base location is " + gForwardBaseLocation + ", Base ID is " + 
                   gForwardBaseID + ", Unit ID is " + fortUnitID);
                debugBuildings("");
                debugBuildings("FORWARD BASE COMPLETED, GOING TO STATE ACTIVE");
                debugBuildings("");
+
+               // Shift everyone over to the new forward base
+               kbBaseAddUnit(cMyID, gForwardBaseID, fortUnitID);
+               for (i = 0; < numberFound)
+               {
+                  buildingID = kbUnitQueryGetResult(buildingQuery, i);
+                  kbBaseAddUnit(cMyID, gForwardBaseID, buildingID);
+               }
             }
             else
             {
@@ -11453,29 +11465,28 @@ minInterval 30
                debugBuildings("");
             }
          }
-         else // Check if plan still exists. If not, go back to state 'none'.
-         {
-            if (aiPlanGetState(gForwardBaseBuildPlan) < 0)
-            { // It failed?
-               gForwardBaseState = cForwardBaseStateNone;
-               gForwardBaseLocation = cInvalidVector;
-               gForwardBaseID = -1;
-               gForwardBaseBuildPlan = -1;
-               gForwardBaseShouldDefend = false;
-               debugBuildings("");
-               debugBuildings("FORWARD BASE PLAN FAILED, RETURNING TO STATE NONE");
-               debugBuildings("");
-            }
+         
+         // Check if plan still exists. If not, go back to state 'none'.
+         if (fortUnitID < 0 && aiPlanGetState(gForwardBaseBuildPlan) < 0)
+         { // It failed?
+            gForwardBaseState = cForwardBaseStateNone;
+            gForwardBaseLocation = cInvalidVector;
+            gForwardBaseID = -1;
+            gForwardBaseBuildPlan = -1;
+            gForwardBaseShouldDefend = false;
+            debugBuildings("");
+            debugBuildings("FORWARD BASE PLAN FAILED, RETURNING TO STATE NONE");
+            debugBuildings("");
          }
          break;
       }
       case cForwardBaseStateActive:
       { // Normal state. If fort is destroyed and base overrun, bail.
-         fortUnitID = getUnitByLocation(gTowerUnit, cMyID, cUnitStateAlive, gForwardBaseLocation, 50.0);
+         fortUnitID = getUnitByLocation(gTowerUnit, cMyID, cUnitStateAlive, gForwardBaseLocation, 40.0);
          if (fortUnitID < 0)
          {
             // Check for other military buildings.
-            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 100.0);
+            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 30.0);
             numberFound = kbUnitQueryExecute(buildingQuery);
             numberMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
             for (i = 0; < numberFound)
@@ -11495,6 +11506,7 @@ minInterval 30
                }
             }
          }
+
          if (fortUnitID < 0)
          {
             // Fort is missing, is base still OK?
@@ -11660,8 +11672,9 @@ minInterval 5
    if (villagerGarrisonPlan < 0)
    {
       villagerGarrisonPlan = aiPlanCreate("Villager Garrison Plan", cPlanReserve);
-      aiPlanAddUnitType(villagerGarrisonPlan, gEconUnit, 0, 200, 200);
+      aiPlanAddUnitType(villagerGarrisonPlan, gEconUnit, 0, 0, 200);
       aiPlanSetDesiredPriority(villagerGarrisonPlan, 1);
+      aiPlanSetNoMoreUnits(villagerGarrisonPlan, true); // manuall control who enters and exits
       aiPlanSetActive(villagerGarrisonPlan);
    }
 

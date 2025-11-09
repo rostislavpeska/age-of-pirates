@@ -1604,6 +1604,12 @@ void revoltedHandler(int techID = -1)
       gRevolutionType = cRevolutionMilitary;
    }
 
+   // AssertiveWall: Turn off villager garrisoning for french revolution and military revolution
+   if (techID == cTechDERevolutionFrance || gRevolutionType == cRevolutionMilitary)
+   {
+      xsDisableRule("villagerGarrison");
+   }
+
    if (gRevolutionType == cRevolutionMilitary)
    {
       int numPlans = aiPlanGetActiveCount();

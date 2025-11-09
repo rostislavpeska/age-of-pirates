@@ -1842,7 +1842,7 @@ minInterval 30
    int buildingID = -1;
    int availableFortWagon = findWagonToBuild(cUnitTypeFortFrontier);
    
-   // AssertiveWall: On island maps, run the forwardtowerbase if we don't have a fort wagon or base already going
+   // AssertiveWall: On island maps, run the amphibious assault
    if (gStartOnDifferentIslands == true && availableFortWagon < 0 && gForwardBaseState == cForwardBaseStateNone)
    {
       // Try calling it individually
@@ -1858,6 +1858,29 @@ minInterval 30
       }
       return;
    }
+
+   // AssertiveWall: If we don't have a wagon, try running the tower forward base after waiting a while for the cooldown
+   static int lastFBattempt = -1;
+   static int fbCooldown = -1;
+   if (fbCooldown < 0)
+   {
+      // Logic here is that rushing civs more aggressively try to establish forward bases and map control
+      // I'll admit there isn't much sense to these cooldowns, other than trying to avoid excessive attempts
+      // and making things different for the sake of it
+      if (gStrategy == cStrategyRush) { fbCooldown = 120000; } // 2 mins
+      else if (gStrategy == cStrategyNakedFF) { fbCooldown = 180000; } // 3 mins
+      else if (gStrategy == cStrategySafeFF) { fbCooldown = 300000; } // 5 mins
+      else if (gStrategy == cStrategyFastIndustrial) { fbCooldown = 240000; } // 4 mins
+      else { fbCooldown = 180000; } // 3 min default
+   }
+
+   if (gForwardBaseState == cForwardBaseStateNone && 
+       gStartOnDifferentIslands != true && availableFortWagon < 0 && xsGetTime() > (lastFBattempt + fbCooldown))
+   {
+      // individually try making the tower version
+      forwardTowerBaseManager();
+   }
+   
 
    // We have a Fort Wagon but also already have a forward base, default the Fort position.
    if ((availableFortWagon >= 0) && (gForwardBaseState != cForwardBaseStateNone))
@@ -1878,6 +1901,7 @@ minInterval 30
             //vector location = cInvalidVector;  AssertiveWall: moved up above
    
             // AssertiveWall: Use the forward island
+            // NOTE: never get here now that the amphibiousAssault runs. Leaving active as a note
             if (gStartOnDifferentIslands == true && (gMigrationMap == false)) // && (btOffenseDefense >= -10.0)
             {
                location = selectForwardBaseBeachHead();
@@ -1951,16 +1975,24 @@ minInterval 30
       }
       case cForwardBaseStateBuilding:
       {
-         fortUnitID = getUnitByLocation(cUnitTypeFortFrontier, cMyID, cUnitStateAlive, gForwardBaseLocation, 100.0);
+         fortUnitID = getUnitByLocation(cUnitTypeFortFrontier, cMyID, cUnitStateAlive, gForwardBaseLocation, 40.0); 
+         // AssertiveWall: down from 100. It has been grabbing the most random things
          if (fortUnitID < 0)
          {
             // Check for other military buildings.
-            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 100.0);
+            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 20.0);
             numberFound = kbUnitQueryExecute(buildingQuery);
             numberMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
             for (i = 0; < numberFound)
             {
                buildingID = kbUnitQueryGetResult(buildingQuery, i);
+
+               if (kbUnitIsType(buildingID, gTowerUnit) == true)
+               {
+                  fortUnitID = buildingID;
+                  break;
+               }
+
                for (j = 0; < numberMilitaryBuildings)
                {
                   if (kbUnitIsType(buildingID, xsArrayGetInt(gMilitaryBuildings, j)) == true)
@@ -1969,12 +2001,14 @@ minInterval 30
                      break;
                   }
                }
+
                if (fortUnitID >= 0)
                {
                   break;
                }
             }
          }
+
          if (fortUnitID >= 0)
          { // Building exists and is complete, go to state Active.
             if (kbUnitGetBaseID(fortUnitID) >= 0)
@@ -1989,11 +2023,20 @@ minInterval 30
                gForwardBaseLocation = kbUnitGetPosition(fortUnitID);
                gForwardBaseUpTime = xsGetTime();
                gForwardBaseShouldDefend = kbUnitIsType(fortUnitID, cUnitTypeFortFrontier);
+               kbBaseSetPositionAndDistance(cMyID, gForwardBaseID, gForwardBaseLocation, 40.0);
                debugBuildings("Forward base location is " + gForwardBaseLocation + ", Base ID is " + 
                   gForwardBaseID + ", Unit ID is " + fortUnitID);
                debugBuildings("");
                debugBuildings("FORWARD BASE COMPLETED, GOING TO STATE ACTIVE");
                debugBuildings("");
+
+               // Shift everyone over to the new forward base
+               kbBaseAddUnit(cMyID, gForwardBaseID, fortUnitID);
+               for (i = 0; < numberFound)
+               {
+                  buildingID = kbUnitQueryGetResult(buildingQuery, i);
+                  kbBaseAddUnit(cMyID, gForwardBaseID, buildingID);
+               }
             }
             else
             {
@@ -2030,6 +2073,13 @@ minInterval 30
             for (i = 0; < numberFound)
             {
                buildingID = kbUnitQueryGetResult(buildingQuery, i);
+
+               if (kbUnitIsType(buildingID, gTowerUnit) == true)
+               {
+                  fortUnitID = buildingID;
+                  break;
+               }
+
                for (j = 0; < numberMilitaryBuildings)
                {
                   if (kbUnitIsType(buildingID, xsArrayGetInt(gMilitaryBuildings, j)) == true)
