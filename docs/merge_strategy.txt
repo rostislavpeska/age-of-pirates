@@ -1,0 +1,34 @@
+﻿# MERGE STRATEGY FOR RM COMMANDS REFERENCE
+
+## What We Have:
+1. Official docs: Well-structured categories with detailed explanations
+2. Our list: 274 commands with signatures
+
+## Recommended Approach:
+
+### Option A: Single Large File (rm_commands_reference.md)
+- Pro: All commands in one place
+- Con: Very large file (~300KB+)
+
+### Option B: Category Files (NEW - Best for AI)
+- rm_general.md (General Purpose)
+- rm_players.md (Player commands)  
+- rm_areas.md (Area commands)
+- rm_connections.md (Connections)
+- rm_objects.md (Objects)
+- rm_constraints.md (Constraints)
+- rm_traderoutes.md (Trade Routes)
+- rm_groupings.md (Groupings) 
+- rm_triggers.md (Triggers)
+- Master file links to all
+
+### Option C: Hybrid (RECOMMENDED)
+- Keep current simple list for quick reference
+- Add new structured guide with examples
+- Both co-exist for different use cases
+
+## MY RECOMMENDATION: Option C
+- rm_commands_reference.md = Quick alphabetical list (274 commands)
+- rm_commands_guide.md = NEW structured guide with categories & examples
+
+Which would you prefer?

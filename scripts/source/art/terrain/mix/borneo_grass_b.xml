@@ -1,0 +1,21 @@
+<mix>
+  <title>Borneo Grass B</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="10" persistence="0.5">
+    <texture weight="3">borneo\ground_grass5_borneo</texture>
+    <texture weight="3">borneo\ground_grass4_borneo</texture>
+    <texture weight="3">borneo\ground_grass3_borneo</texture>
+    <texture weight="3">borneo\ground_sand3_borneo</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.3" octaves="3" persistence="0.2" emptyweight="60" posoffset="0.5">
+    <model weight="3">terrain\underbrush\underbrush_borneo_underbrush_01</model>
+    <model weight="3">terrain\underbrush\underbrush_borneo_underbrush_02</model>
+    <model weight="3">terrain\underbrush\underbrush_borneo_underbrush_03</model>
+    <model weight="3">terrain\underbrush\underbrush_borneo_underbrush_04</model>
+    <model weight="1">terrain\underbrush\underbrush_borneo_underbrush_05</model>
+    <model weight="1">terrain\underbrush\underbrush_borneo_grass_01</model>
+    <model weight="1">terrain\underbrush\underbrush_borneo_rock_02</model>
+    <model weight="1">terrain\underbrush\underbrush_borneo_rock_03</model>
+    <model weight="1">terrain\underbrush\underbrush_borneo_rock_04</model>
+  </objects>
+</mix>

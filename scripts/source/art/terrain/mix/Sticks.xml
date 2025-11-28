@@ -1,0 +1,14 @@
+<mix>
+  <title>Sticks</title>
+  <icon>terrain\mix\jimmy</icon>
+  <objects mode="turbulence" freq="0.5" octaves="3" persistence="0.9" emptyweight="0.1" posoffset="0.5">
+    <model weight="1" scalemin="0.3" scalemax="1.0">terrain\patagonia\underbrush_log_a_pat</model>
+    <model weight="1" scalemin="1.0" scalemax="4.0">terrain\patagonia\underbrush_log_b_pat</model>
+    <model weight="1" scalemin="0.1" scalemax="0.6">terrain\underbrush\underbrush_forest_log1</model>
+    <model weight="1" scalemin="0.1" scalemax="0.6">terrain\underbrush\underbrush_forest_log2</model>
+    <model weight="1" scalemin="0.1" scalemax="0.6">terrain\underbrush\underbrush_forest_log3</model>
+    <model weight="0.3" scalemin="0.3" scalemax="0.8">terrain\new_england\cliff_rock_a_ne</model>
+    <model weight="0.3" scalemin="0.3" scalemax="0.8">terrain\new_england\cliff_rock_b_ne</model>
+    <model weight="0.3" scalemin="0.2" scalemax="0.5">terrain\new_england\cliff_rock_c_ne</model>
+  </objects>
+</mix>

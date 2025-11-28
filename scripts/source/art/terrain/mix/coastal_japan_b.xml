@@ -1,0 +1,26 @@
+<mix>
+  <title>Coastal Japan B</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="10" persistence="0.5">
+    <texture weight="2">coastal_japan\ground_grass2_co_japan</texture>
+    <texture weight="1">coastal_japan\ground_grass1_co_japan</texture>
+    <texture weight="2">coastal_japan\ground_grass3_co_japan</texture>
+    <texture weight="1">coastal_japan\ground_dirt1_co_japan</texture>
+    <texture weight="1">coastal_japan\ground_forest_con_japan</texture>
+    <texture weight="1">coastal_japan\ground_dirt2_co_japan</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.3" octaves="3" persistence="0.6" emptyweight="60" posoffset="0.5">
+    <model weight="2">terrain\underbrush\underbrush_co_japan_rock_01</model>
+    <model weight="2">terrain\underbrush\underbrush_co_japan_rock_03</model>
+    <model weight="2">terrain\underbrush\underbrush_co_japan_rock_04</model>
+    <model weight="1">terrain\underbrush\underbrush_co_japan_pine_01</model>
+    <model weight="1">terrain\underbrush\underbrush_co_japan_pine_02</model>
+    <model weight="1">terrain\underbrush\underbrush_co_japan_pine_03</model>
+    <model weight="2">terrain\underbrush\underbrush_co_japan_bush_01</model>
+    <model weight="2">terrain\underbrush\underbrush_co_japan_bush_02</model>
+    <model weight="2">terrain\underbrush\underbrush_co_japan_bush_03</model>
+    <model weight="2">terrain\underbrush\underbrush_co_japan_bush_04</model>
+    <model weight="2">terrain\underbrush\underbrush_co_japan_grass_01</model>
+    <model weight="2">terrain\underbrush\underbrush_co_japan_grass_02</model>
+  </objects>
+</mix>

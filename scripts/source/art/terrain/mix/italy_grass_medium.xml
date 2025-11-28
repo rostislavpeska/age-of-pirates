@@ -1,0 +1,16 @@
+<mix>
+  <title>Italy Grass Medium</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.10" octaves="4" persistence="0.5">
+    <texture weight="1">araucania\ground12_ara</texture>
+    <texture weight="1">great_lakes\ground_grass1_gls</texture>
+    <texture weight="2">great_lakes\ground_shoreline3_gls</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="60" posoffset="0.5">
+    <model weight="1">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_bush2</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_bush3</model>
+    <model weight="1">terrain\great_plains\flower05</model>
+    <model weight="1">terrain\great_plains\flower01</model>
+  </objects>
+</mix>

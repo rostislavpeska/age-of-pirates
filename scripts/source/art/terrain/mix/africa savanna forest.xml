@@ -1,0 +1,29 @@
+<mix>
+  <title>Africa Savanna Forest</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="3">AfricaSavanna\ground_forest1_afriSavanna</texture>
+    <texture weight="1">AfricaSavanna\ground_grass1_afriSavanna</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.65" octaves="4" persistence="0.75" emptyweight="95" posoffset="0.99">
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant1</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant2</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant3</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant4</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant5</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant6</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant7</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant8</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant12</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_rock3</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_rock4</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_rock6</model>
+  </objects>
+  <objects mode="turbulence" freq="0.85" octaves="3" persistence="0.75" emptyweight="75" posoffset="0.5">
+    <model weight="2" scalemin="1.0" scalemax="1.2">terrain\underbrush\underbrush_jungle_brush1</model>
+    <model weight="3" scalemin="1.0" scalemax="1.2">terrain\underbrush\underbrush_jungle_brush3</model>
+    <model weight="2" scalemin="0.75" scalemax="1.0">terrain\amazon\plant_b</model>
+    <model weight="2" scalemin="0.75" scalemax="1.0">terrain\amazon\plant_c</model>
+    <model weight="2" scalemin="0.75" scalemax="1.0">terrain\amazon\plant_d</model>
+  </objects>
+</mix>

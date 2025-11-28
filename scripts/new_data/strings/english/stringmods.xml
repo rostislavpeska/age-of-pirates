@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stringtable>
+  <language name="English">
+    
+    <!-- TestSufiCastle Building Strings -->
+    <string _locid="990001">Test Sufi Castle</string>
+    <string _locid="990002">ZP Test Sufi Castle</string>
+    <string _locid="990003">Powerful defensive building that automatically spawns and maintains Sufi Settlers or War Elephants. Switch between unit types using tactic commands. Provides aura buffs to nearby units.</string>
+    
+    <!-- Maintain Action Strings -->
+    <string _locid="990004">Maintain Sufi Settlers</string>
+    <string _locid="990005">Maintain War Elephants</string>
+    
+    <!-- Tactic Command Strings -->
+    <string _locid="990006">Settlers Mode</string>
+    <string _locid="990007">Switch to producing Sufi Settlers (ignores build limits)</string>
+    <string _locid="990008">Elephants Mode</string>
+    <string _locid="990009">Switch to producing War Elephants (respects 8 unit limit)</string>
+
+    <!-- zpCossackBarracks Building Strings -->
+    <string _locid="990010">Cossack Barracks</string>
+    <string _locid="990011">ZP Cossack Barracks (Test)</string>
+    <string _locid="990012">Military building that automatically spawns and maintains Cossack infantry or cavalry units. Switch between unit types using tactics.</string>
+    
+    <!-- Maintain Action Strings -->
+    <string _locid="990013">Spawn Cossack Infantry</string>
+    <string _locid="990014">Spawn Cossack Cavalry</string>
+    
+    <!-- Tactic Command Strings -->
+    <string _locid="990015">Maintain 3 Cossack Infantry</string>
+    <string _locid="990016">Maintain 3 Zaporozhya Cossack Riders</string>
+    
+  </language>
+</stringtable>

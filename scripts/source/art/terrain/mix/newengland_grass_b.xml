@@ -1,0 +1,16 @@
+<mix>
+  <title>New England Grass B</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.1" octaves="6" persistence="0.58">
+    <texture weight="5">new_england\ground1_tex</texture>
+    <texture weight="4">new_england\ground2_tex</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.45" octaves="3" persistence="0.4" emptyweight="55" posoffset="0.55">
+    <model weight="3">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="4">terrain\underbrush\underbrush_forest_bush3</model>
+    <model weight="4">terrain\underbrush\underbrush_forest_bush2</model>
+    <model weight="1">terrain\underbrush\underbrush_forest_rock1</model>
+    <model weight="2">terrain\underbrush\underbrush_forest_rock2</model>
+    <model weight="3">terrain\underbrush\underbrush_forest_rock3</model>
+  </objects>
+</mix>

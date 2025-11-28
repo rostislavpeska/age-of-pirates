@@ -448,7 +448,7 @@
       <string _locid="300446">Ships Maltese heavy cannons.</string>
       <string _locid="300447">ZP NAT Gatling Camel</string>
       <string _locid="300448">Honored Gatling Camel</string>
-      <string _locid="300449">Legendary Gatling Camel</string>
+      <string _locid="300449">Exalted Gatling Camel</string>
       <string _locid="300450">Disciplined Gatling Camel</string>
       <string _locid="300451">German Universities</string>
       <string _locid="300452">All research is done faster by 25%</string>
@@ -1859,7 +1859,7 @@
       <string _locid="301858">Domesticated Pig</string>
       <string _locid="301859">ZP Domesticated Pig</string>
       <string _locid="301860">ZP Vineyard</string>
-      <string _locid="301861">ZP Cherry Orchad Socket</string>
+      <string _locid="301861">ZP Vineyard Socket</string>
       <string _locid="301862">Can build Vineyard</string>
       <string _locid="301863">Build Vineyard</string>
       <string _locid="301864">Vineyard Foundetion</string>
@@ -2218,7 +2218,7 @@
       <string _locid="302217">Team Improvised Constructions</string>
       <string _locid="302218">Increases Warship training speed</string>
       <string _locid="302219">Caribbean Wars</string>
-      <string _locid="302220">Achieve a naval dominance over the Caribbean Sea. This historical map brings you to the true Golden Age of Piracy and unlocks the full Pirate potential. \n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; variable (based on selection) including a special naval version of KING OF THE HILL. \n\nSettlements: Pirate Towns, Maltese, Caribs \n\nThis map does not support the treaty mode.</string>
+      <string _locid="302220">Achieve a naval dominance over the Caribbean Sea. This map brings you to the true Golden Age of Piracy and unlocks the full Pirate potential. Naval version of KING OF THE HILL. \n\nSettlements: Pirate Towns, Maltese, Caribs \n\nThis map does not support the treaty mode.</string>
       <string _locid="302221">Local Pirates are more powerful than any other Pirates in the world. They managed to build two heavily fortified towns. Help them to build the fortifications and use these towns to achieve the true naval dominance.</string>
       <string _locid="302222">ZP Native House Pirate No Decal</string>
       <string _locid="302223">Capture a Pirate Town and use pirate ships and fixed guns to protect the coast.</string>
@@ -3242,10 +3242,10 @@
       <string _locid="303243">City of Istanbul</string>
       <string _locid="303244">Disciplined Sultan's Guard</string>
       <string _locid="303245">Honored Sultan's Guard</string>
-      <string _locid="303246">Improves all Sultanate units attack and hitpoints.</string>
+      <string _locid="303246">Improves all Sultanate units attack and hitpoints. Also improves all specific faction units.</string>
       <string _locid="303247">Disciplined Sultan's Guard</string>
       <string _locid="303248">Honored Sultan's Guard</string>
-      <string _locid="303249">Legendary Sultan's Guard</string>
+      <string _locid="303249">Exalted Sultan's Guard</string>
       <string _locid="303250">Main Court Faction</string>
       <string _locid="303251">Pick the most influential faction on the Sultan's Court and unlock additional units and techs. \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n •  Upgrades Black Sea trade route to the maximum level.</string>
       <string _locid="303252">Phanar Faction</string>
@@ -3265,7 +3265,7 @@
       <string _locid="303266">Nearly landlocked sea with a single trade route passing through the city of Istanbul (Constantinopole). The area of the Black Sea offers you verious resources like copper or plenty of fishes. Naval King of the Hill option is available. \n\nNative settlements: Cossacks, Orhodox, Sultanate</string>
       <string _locid="303267">Who controls the Bosporus Strait, controls the Black Sea. The city of Istanbul is located at the entrance of the Black Sea and it's control is your key to victory.</string>
       <string _locid="303268">Bosporus Blockade</string>
-      <string _locid="303269">Disables Home City shipments for all enemy and allied players for 4 minutes. \n • &lt;color=1.0, 0.0, 0.0&gt;Can be activated only when your team holds both City of Istanbul sockets.&lt;/color&gt;</string>
+      <string _locid="303269">Disables Home City Shipments for all enemy players for 4 minutes. \n • &lt;color=1.0, 0.0, 0.0&gt;Can be activated only when your team holds both City of Istanbul sockets.&lt;/color&gt;</string>
       <string _locid="303270">Your enemy is blocking the Bosporus Strait.</string>
       <string _locid="303271">Bosporus Blockade Time Remaining</string>
       <string _locid="303272">You're blocking the Bosporus Strait, temporarily blockading their Home Cities!</string>
@@ -3285,8 +3285,29 @@
       <string _locid="303286">Mighty Fixed gun, can only attack ships.</string>
       <string _locid="303287">ZP SPC Dock Avoider</string>
       <string _locid="303288">Can't build Dock next to a King of the Sea Castle</string>
+      <string _locid="303289">ZP PROP Fisherman</string>
+      <string _locid="303290">King of the Sea Victory in</string>
+      <string _locid="303291">Capture the King of the Sea Castle on the other side of the Bosporus Strait and hold it until the time runs out.</string>
+      <string _locid="303292">Balearic Islands</string>
+      <string _locid="303293">Classic map crafted in a typical Age of Pirates style. Team islands map with special resources like pearls, water trade route and a town with a cathedral in the middle of the map. \n\nNatives: Jesuits, Habsburgs, Pirates.</string>
+      <string _locid="303294">In the azure waters of the western Mediterranean, the Balearic archipelago rises like jewels from the sea. The central island hides treasures beyond measure - rich sources of pearls that glisten beneath turquoise shallows, pirate hideouts nestled in secluded coves, and quiet meditation places for Jesuit priests who seek solitude among the cliffs. Where ancient mountains meet crystalline waters, the beauty of these islands has drawn conquerors, traders, and seekers for centuries.</string>
+      <string _locid="303295">ZP Nat Area Flattener</string>
+      <string _locid="303296">Grand Bazaar</string>
+      <string _locid="303297">Georgian Skirmisher with high hitpoints that is particularly strong against Heavy Infantry.</string>
+      <string _locid="303298">Grand Bazaar</string>
+      <string _locid="303299">ZP PROP Jewish Market Stall</string>
+      <string _locid="303300">ZP PROP Ottoman Props</string>
+      <string _locid="303301">ZP PROP Sufi House</string>
+      <string _locid="303302">ZP Cherry Orchard</string>
+      <string _locid="303303">ZP Cherry Orchard Socket</string>
+      <string _locid="303304">Cherry Orchard Foundation</string>
+      <string _locid="303305">Can build Cherry Orchard</string>
+      <string _locid="303306">Build Cherry Orchard</string>
+      <string _locid="303307">ZP Cherry Orchard Socket</string>
 
-      
+
+
+
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
       <!-- ======================================== -->

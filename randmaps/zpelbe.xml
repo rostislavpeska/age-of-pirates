@@ -1,7 +1,6 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <mapinfo details = "303012" displayNameID = "303011" loadDetails="303013"
     imagepath = "ui\random_map\elbe\elbe_mini" cannotReplace = "" loadBackground="ui\random_map\elbe\elbe_map">
-    <filter>Historical</filter>
     <loadss>ui\random_map\elbe\elbe_01</loadss>
     <loadss>ui\random_map\elbe\elbe_02</loadss>
     <loadss>ui\random_map\elbe\elbe_03</loadss>

@@ -2058,8 +2058,8 @@
     <tech row="0" page="2" column="4">zpNatCossackRada</tech>
     <tech row="0" page="1" column="1">zpCossackExpansion</tech>
 
-    <tech row="0" page="1" column="1">zpNatVeteranSultanate</tech>
-    <tech row="0" page="1" column="1">zpNatGuardSultanate</tech>
+    <tech row="0" page="1" column="1">zpVeteranSultanate</tech>
+    <tech row="0" page="1" column="1">zpGuardSultanate</tech>
     <tech row="0" page="1" column="1">zpSultanateExpansion</tech>
     <tech row="0" page="2" column="1">zpNatIstanbulBrigade</tech>
     <tech row="0" page="2" column="0">zpNatHaremSweats</tech>
@@ -8314,6 +8314,7 @@
     <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
     <unittype>LogicalTypeGarrisonInShips</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
     <unittype>LogicalTypeVillagersAttack</unittype>
     <unittype>LogicalTypeHandUnitsAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
@@ -8345,7 +8346,7 @@
     <tactics>swordsman.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
-      <damage>9.000000</damage>
+      <damage>14.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
     </protoaction>
@@ -19221,7 +19222,7 @@
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\natives\orthodox_jaeger_icon.png</icon>
     <portraiticon>resources\art\units\natives\orthodox_jaeger_portrait.png</portraiticon>
-    <rollovertextid>122107</rollovertextid>
+    <rollovertextid>303297</rollovertextid>
     <shortrollovertextid>122171</shortrollovertextid>
     <initialhitpoints>200.0000</initialhitpoints>
     <maxhitpoints>200.0000</maxhitpoints>
@@ -20182,6 +20183,9 @@
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
+    <flag>NoIdleActions</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NotSelectable</flag>
   </unit>
   <unit id="20430" name="zpSPCPropZenCastle">
     <dbid>20430</dbid>
@@ -31746,6 +31750,7 @@
     <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
     <unittype>LogicalTypeGarrisonInShips</unittype>
     <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
     <unittype>LogicalTypeVillagersAttack</unittype>
     <unittype>LogicalTypeHandUnitsAttack</unittype>
     <unittype>LogicalTypeRangedUnitsAttack</unittype>
@@ -31778,7 +31783,7 @@
     <tactics>swordsman.tactics</tactics>
     <protoaction>
       <name>BuildingAttack</name>
-      <damage>9.000000</damage>
+      <damage>14.000000</damage>
       <damagetype>Siege</damagetype>
       <rof>3.000000</rof>
     </protoaction>
@@ -35260,6 +35265,7 @@
     <unittype>Nature</unittype>
     <unittype>AbstractFish</unittype>
     <unittype>AbstractFishOrWhale</unittype>
+    <unittype>MovableFish</unittype>
     <flag>DontRotateObstruction</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>DieAtZeroResources</flag>
@@ -35373,6 +35379,7 @@
     <unittype>Nature</unittype>
     <unittype>AbstractFish</unittype>
     <unittype>AbstractFishOrWhale</unittype>
+    <unittype>MovableFish</unittype>
     <flag>DontRotateObstruction</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>DieAtZeroResources</flag>
@@ -45299,7 +45306,7 @@
     <physicsinfo>dude</physicsinfo>
     <icon>resources\art\units\natives\orthodox_jaeger_icon.png</icon>
     <portraiticon>resources\art\units\natives\orthodox_jaeger_portrait.png</portraiticon>
-    <rollovertextid>122107</rollovertextid>
+    <rollovertextid>303297</rollovertextid>
     <shortrollovertextid>122171</shortrollovertextid>
     <initialhitpoints>200.0000</initialhitpoints>
     <maxhitpoints>200.0000</maxhitpoints>
@@ -47758,6 +47765,7 @@
       <rof>3.000000</rof>
       <damagebonus type="AbstractFort">3.000000</damagebonus>
       <damagebonus type="TradingPost">0.500000</damagebonus>
+      <damagebonus type="AbstractFishingBoat">0.500000</damagebonus>
       <damagebonus type="Frigate">2.000000</damagebonus>
       <damagebonus type="ypFuchuan">2.000000</damagebonus>
       <damagebonus type="ypTekkousen">2.000000</damagebonus>
@@ -51543,7 +51551,7 @@
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
-    <movementtype>air</movementtype>
+    <movementtype>land</movementtype>
     <civflagoverride>objects\flags\papal</civflagoverride>
     <animfile>buildings\native_settlement\venetian_buildings3.xml</animfile>
     <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
@@ -51588,7 +51596,7 @@
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
-    <movementtype>air</movementtype>
+    <movementtype>land</movementtype>
     <civflagoverride>objects\flags\florence</civflagoverride>
     <animfile>buildings\native_settlement\venetian_buildings3.xml</animfile>
     <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
@@ -60234,42 +60242,24 @@
     <buildingworkrate>1.0000</buildingworkrate>
     <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
     </minimapcolor>
-    <unittype>LogicalTypeValidSabotage</unittype>
-    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
-    <unittype>LogicalTypeVillagersAttack</unittype>
-    <unittype>LogicalTypeHandUnitsAttack</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeRangedUnitsAttack</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
-    <unittype>BuildingClass</unittype>
+    <unittype>EmbellishmentClass</unittype>
     <unittype>Unattackable</unittype>
-    <unittype>NativeBuilding</unittype>
-    <unittype>Building</unittype>
-    <flag>NotSelectable</flag>
-    <flag>TieToWaterSurface</flag>
-    <flag>Doppled</flag>
-    <flag>PaintTextureWhenPlacing</flag>
-    <flag>InvulnerableIfGaia</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>DoNotDieAtZeroHitpoints</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>ObscuresUnits</flag>
-    <flag>Immoveable</flag>
-    <flag>NonCollideable</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>HideHitpointsIfGaia</flag>
-    <flag>RMCanRotate</flag>
-    <flag>HasGatherPoint</flag>
-    <flag>VisibleUnderFogIfGaia</flag>
-    <flag>ColorTransformNonGaia</flag>
+    <unittype>Unit</unittype>
     <flag>NoHPBar</flag>
     <flag>DoNotShowOnMiniMap</flag>
-    <flag>FlattenGround</flag>
-    <flag>Tracked</flag>
-    <flag>NoIdleActions</flag>
-    <flag>StartOnNoUpdate</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
   </unit>
   <unit id="20829" name="zpNatEUPropFencDarkBrick">
     <dbid>20829</dbid>
@@ -64854,7 +64844,7 @@
     <obstructionradiusx>0.0001</obstructionradiusx>
     <obstructionradiusz>0.0001</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
-    <movementtype>air</movementtype>
+    <movementtype>land</movementtype>
     <civflagoverride>objects\flags\spanishhabsburg</civflagoverride>
     <animfile>buildings\native_settlement\venetian_buildings3.xml</animfile>
     <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
@@ -64866,27 +64856,31 @@
     <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
     </minimapcolor>
     <unittype>BuildingClass</unittype>
-    <unittype>AbstractCityManisonB</unittype>
-    <flag>DontMarkExtraFog</flag>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <flag>ObscuresUnits</flag>
     <flag>NoHPBar</flag>
-    <flag>Immoveable</flag>
     <flag>NoBloodOnDeath</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>VisibleUnderFog</flag>
-    <flag>NotSelectable</flag>
     <flag>NoUnitAI</flag>
-    <flag>StartOnNoUpdate</flag>
-    <flag>NoIdleActions</flag>
-    <flag>DoNotCreateUnitGroupAutomatically</flag>
-    <flag>RMCanRotate</flag>
     <flag>DoNotShowOnMiniMap</flag>
-    <flag>NotSearchable</flag>
-    <flag>NoFadeOnDeath</flag>
-    <flag>TieToWaterSurface</flag>
-    <flag>PlaceAnywhere</flag>
-    <flag>VariationLocked</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
     <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>NotDeleteable</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>FlattenGround</flag>
     <flag>InvulnerableIfGaia</flag>
+    <flag>NotSelectable</flag>
   </unit>
   <unit id="20893" name="zpHabsburgFlagSP">
     <dbid>20893</dbid>
@@ -65978,6 +65972,7 @@
       <rof>3.000000</rof>
       <damagebonus type="AbstractFort">3.000000</damagebonus>
       <damagebonus type="TradingPost">0.500000</damagebonus>
+      <damagebonus type="AbstractFishingBoat">0.500000</damagebonus>
       <damagebonus type="Frigate">2.000000</damagebonus>
       <damagebonus type="ypFuchuan">2.000000</damagebonus>
       <damagebonus type="ypTekkousen">2.000000</damagebonus>
@@ -66896,6 +66891,7 @@
     <flag>TileAlignPlacement</flag>
     <flag>ColonyBuilding</flag>
     <flag>ObscuresUnits</flag>
+    <flag>PlaceAnywhere</flag>
     <flag>FlattenGround</flag>
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
@@ -66952,6 +66948,7 @@
     <flag>UseAlignedObstructionOnMinimap</flag>
     <flag>NoIdleActions</flag>
     <flag>TileAlignPlacement</flag>
+    <flag>PlaceAnywhere</flag>
     <flag>ColonyBuilding</flag>
     <flag>ObscuresUnits</flag>
     <flag>FlattenGround</flag>
@@ -67012,6 +67009,7 @@
     <flag>TileAlignPlacement</flag>
     <flag>ColonyBuilding</flag>
     <flag>ObscuresUnits</flag>
+    <flag>PlaceAnywhere</flag>
     <flag>FlattenGround</flag>
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
@@ -67072,6 +67070,7 @@
     <flag>PaintTextureWhenPlacing</flag>
     <flag>FlattenGround</flag>
     <flag>ColonyBuilding</flag>
+    <flag>PlaceAnywhere</flag>
     <flag>wallBuild</flag>
     <flag>Tracked</flag>
     <flag>Invulnerable</flag>
@@ -67250,7 +67249,7 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\church\church_icon.png</icon>
     <minimapicon>ui\minimap\religious_small</minimapicon>
-    <portraiticon>resources\art\buildings\church\church_portrait.png</portraiticon>
+    <portraiticon>resources\art\buildings\spc\sultan_mosque.png</portraiticon>
     <rollovertextid>302308</rollovertextid>
     <shortrollovertextid>302307</shortrollovertextid>
     <initialhitpoints>3000.0000</initialhitpoints>
@@ -67587,7 +67586,7 @@
     <tactics>socketcapture.tactics</tactics>
     <command page="1" column="0">deSocketBuild</command>
   </unit>
-  <unit id="20924" name="ZPNatEvzoneProxy">
+  <unit id="20924" name="zpNatEvzoneProxy">
     <dbid>20924</dbid>
     <displaynameid>122102</displaynameid>
     <editornameid>122103</editornameid>
@@ -67678,7 +67677,7 @@
     </sharedbuildlimitunittypes>
     <flag>UseSharedBuildLimit</flag>
   </unit>
-  <unit id="20925" name="ZPNatBoyarProxy">
+  <unit id="20925" name="zpNatBoyarProxy">
     <dbid>20925</dbid>
     <displaynameid>122094</displaynameid>
     <editornameid>122095</editornameid>
@@ -67997,7 +67996,7 @@
     <flag>UseSharedBuildLimit</flag>
     <flag>NotPlayerplaceable</flag>
   </unit>
-  <unit id="20929" name="ZPNatPirateSultanate">
+  <unit id="20929" name="zpNatPirateSultanate">
     <dbid>20929</dbid>
     <displaynameid>35253</displaynameid>
     <editornameid>300025</editornameid>
@@ -68409,7 +68408,7 @@
   </unit>
   <unit id="20934" name="zpSPCCityMarketOriental">
     <dbid>20934</dbid>
-    <displaynameid>301831</displaynameid>
+    <displaynameid>303296</displaynameid>
     <editornameid>303283</editornameid>
     <obstructionradiusx>5.0000</obstructionradiusx>
     <obstructionradiusz>5.0000</obstructionradiusz>
@@ -68584,10 +68583,403 @@
     <flag>DoNotShowOnMiniMap</flag>
     <tactics>waterspawnpoint.tactics</tactics>
   </unit>
+  <unit id="20937" name="zpHCFisherman">
+    <dbid>20937</dbid>
+    <displaynameid>303289</displaynameid>
+    <editornameid>303289</editornameid>
+    <obstructionradiusx>0.2000</obstructionradiusx>
+    <obstructionradiusz>0.2000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>homecity\homecity_units\zpfisherman.xml</animfile>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\spc\pirates\pirate_ranged_icon.png</icon>
+    <portraiticon>resources\art\units\spc\pirates\pirate_ranged_portrait.png</portraiticon>
+    <rollovertextid>33797</rollovertextid>
+    <shortrollovertextid>33796</shortrollovertextid>
+    <initialhitpoints>1315.0000</initialhitpoints>
+    <maxhitpoints>1315.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <command page="10" column="0">Delete</command>
+    <tactics>garrisonable.tactics</tactics>
+  </unit>
+  <unit id="20938" name="zpInvisibleGroundFlattener">
+    <dbid>20938</dbid>
+    <displaynameid>303295</displaynameid>
+    <obstructionradiusx>20.0000</obstructionradiusx>
+    <obstructionradiusz>20.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0.0000</los>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>ForceToGaia</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>FlattenGround</flag>
+    <flag>NonSolid</flag>
+    <flag>PlaceAnywhere</flag>
+  </unit>
+  <unit id="20939" name="zpSPROPBuildingMixCliffPlacement">
+    <dbid>20939</dbid>
+    <displaynameid>22839</displaynameid>
+    <editornameid>302387</editornameid>
+    <populationcapaddition>10</populationcapaddition>
+    <obstructionradiusx>2.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\hc_buildings\zpcity_mix.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>villagebuildingsmall.xml</placementfile>
+    <icon>resources\art\buildings\house\house_icon.png</icon>
+    <portraiticon>resources\art\buildings\house\house_portrait.png</portraiticon>
+    <civflagoverride>objects\flags\italian</civflagoverride>
+    <rollovertextid>41971</rollovertextid>
+    <shortrollovertextid>41970</shortrollovertextid>
+    <initialhitpoints>1200.0000</initialhitpoints>
+    <maxhitpoints>1200.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>10.0000</buildpoints>
+    <buildlimit>20</buildlimit>
+    <bounty>40.0000</bounty>
+    <buildbounty>20.0000</buildbounty>
+    <cost resourcetype="Wood">100.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <buildingworkrate>0.5000</buildingworkrate>
+    <unittype>BuildingClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <flag>ObscuresUnits</flag>
+    <flag>NoHPBar</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoUnitAI</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NotPlayerPlaceable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>NotDeleteable</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>FlattenGround</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NotSelectable</flag>
+  </unit>
+  <unit id="20940" name="zpSPCPoles">
+    <dbid>20940</dbid>
+    <displaynameid>300730</displaynameid>
+    <editornameid>300746</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\props_colony\props_poles.xml</animfile>
+    <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>Unit</unittype>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>HideHitpointsIfGaia</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NotPlayerPlaceable</flag>
+  </unit>
+  <unit id="20941" name="zpPropJewishMarketStall">
+    <dbid>20941</dbid>
+    <displaynameid>303299</displaynameid>
+    <obstructionradiusx>0.2000</obstructionradiusx>
+    <obstructionradiusz>0.2000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>buildings\native_settlement\arabian\jewish_stall.xml</animfile>
+    <physicsinfo>dude</physicsinfo>
+    <initialhitpoints>1315.0000</initialhitpoints>
+    <maxhitpoints>1315.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+  </unit>
+  <unit id="20942" name="zpPropOttomanProps">
+    <dbid>20942</dbid>
+    <displaynameid>303300</displaynameid>
+    <obstructionradiusx>0.2000</obstructionradiusx>
+    <obstructionradiusz>0.2000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>buildings\native_settlement\arabian\ottoman_props.xml</animfile>
+    <physicsinfo>dude</physicsinfo>
+    <initialhitpoints>1315.0000</initialhitpoints>
+    <maxhitpoints>1315.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+  </unit>
+  <unit id="20943" name="zpNativeSufiCity">
+    <dbid>20943</dbid>
+    <displaynameid>303301</displaynameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <civflagoverride>objects\flags\pirate</civflagoverride>
+    <animfile>buildings\native_settlement\sufi_temple.xml</animfile>
+    <icon>resources\art\buildings\native_settlement\SM_indian_guy_icon_64.png</icon>
+    <portraiticon>resources\art\buildings\native_settlement\SM_indian_guy_icon_portrait.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+   <unittype>BuildingClass</unittype>
+    <unittype>AbstractCityManisonB</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>NoIdleActions</flag>
+    <flag>StartOnNoUpdate</flag>
+  </unit>
+  <unit id="20944" name="zpCherryOrchardBuilt">
+    <dbid>20944</dbid>
+    <displaynameid>65997</displaynameid>
+    <editornameid>303302</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <placementobstructionradiusx>15.0000</placementobstructionradiusx>
+    <placementobstructionradiusz>15.0000</placementobstructionradiusz>
+    <deadreplacement>zpBerryBuildingSocket</deadreplacement>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\asian_civs\orchard\orchard.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <icon>resources\art\buildings\asian_civs\orchard\orchard_icon_64.png</icon>
+    <portraiticon>resources\art\buildings\asian_civs\orchard\orchard_icon_portrait.png</portraiticon>
+    <rollovertextid>65996</rollovertextid>
+    <shortrollovertextid>65995</shortrollovertextid>
+    <los>12.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <initialresource resourcetype="Food">5000.0000</initialresource>
+    <gathererlimit>28</gathererlimit>
+    <resourcesubtype>forage</resourcesubtype>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="0.5000" blue="0.2500" green="0.2000">
+    </minimapcolor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeVillagersRespondToAttack</unittype>
+    <rollovertextid>302060</rollovertextid>
+    <shortrollovertextid>302060</shortrollovertextid>
+    <los>12.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <cost resourcetype="Wood">200.0000</cost>
+    <initialresource resourcetype="Food">3000.0000</initialresource>
+    <gathererlimit>28</gathererlimit>
+    <resourcesubtype>forage</resourcesubtype>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="0.5000" blue="0.2500" green="0.2000">
+    </minimapcolor>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeVillagersRespondToAttack</unittype>
+    <unittype>Resource</unittype>
+    <unittype>Nature</unittype>
+    <unittype>Food</unittype>
+    <unittype>AbstractFruit</unittype>
+    <unittype>AbstractBerryBush</unittype>
+    <unittype>Building</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <socketunittype>TowerSocket</socketunittype>
+    <flag>AllowPlacementOnIce</flag>
+    <flag>OptionalSocketPlacement</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>NotDeleteable</flag>
+    <flag>DieAtZeroResources</flag>
+    <flag>Invulnerable</flag>
+    <flag>DoNotValidateResourceInventory</flag>
+    <flag>NeverCountDeathAsLoss</flag>
+    <flag>Tracked</flag>
+    <flag>StartEnabled</flag>
+    <flag>PlaceAnywhere</flag>
+    <tactics>zpautoconvert.tactics</tactics>
+    <command page="10" column="7">Delete</command>
+  </unit>
+  <unit id="20945" name="zpCherryOrchardSocket">
+    <dbid>20945</dbid>
+    <displaynameid>303304</displaynameid>
+    <editornameid>303307</editornameid>
+    <socketbuildprotounit>zpCherryOrchardBuilt</socketbuildprotounit>
+    <socketbuildrate>20.0000</socketbuildrate>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <buildpoints>0.0000</buildpoints>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\city_tower\city_tower_socket.xml</animfile>
+    <placementfile>orchard.xml</placementfile>
+    <icon>resources\art\buildings\asian_civs\orchard\orchard_icon_64.png</icon>
+    <portraiticon>resources\art\buildings\asian_civs\orchard\orchard_icon_portrait.png</portraiticon>
+    <rollovertextid>303305</rollovertextid>
+    <shortrollovertextid>303305</shortrollovertextid>
+    <los>5.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>CapturableSocket</unittype>
+    <unittype>TowerSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>AllowSocketPlacement</flag>
+    <flag>NotDeleteable</flag>
+    <tactics>zpautoconvert.tactics</tactics>
+    <command page="1" column="0">zpSocketBuildOrchadOrig</command>
+  </unit>
 
   
 
-  
+  <!--TEST AND TEMPORARY CONTENT-->
 
   <!--<unit mergeMode='replace' id="1710" name="CommunityPlaza">
     <dbid>2281</dbid>

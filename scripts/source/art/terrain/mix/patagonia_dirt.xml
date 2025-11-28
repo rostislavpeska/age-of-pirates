@@ -1,0 +1,25 @@
+<mix>
+  <title>Patagonia Dirt</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.05" octaves="3" persistence="0.75">
+    <texture weight="8">patagonia\ground_grass3_pat</texture>
+    <texture weight="6">patagonia\ground_dirt1_pat</texture>
+    <texture weight="3">patagonia\ground_dirt2_pat</texture>
+    <texture weight="8">patagonia\ground_dirt3_pat</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.35" octaves="3" persistence="0.70" emptyweight="40" posoffset="0.35">
+    <model weight="2" scalemin="0.5" scalemax="0.8">terrain\great_plains\treegrass01_gp</model>
+    <model weight="2" scalemin="0.5" scalemax="0.8">terrain\great_plains\treegrass_gp</model>
+    <model weight="1" scalemin="1.5" scalemax="2.0">terrain\patagonia\underbrush_group_a_pat_rock</model>
+    <model weight="1" scalemin="1.5" scalemax="2.0">terrain\patagonia\underbrush_brush_a_pat</model>
+    <model weight="1" scalemin="1.5" scalemax="2.0">terrain\patagonia\underbrush_brush_b_pat</model>
+    <model weight="1" scalemin="1.5" scalemax="2.5">terrain\patagonia\underbrush_brush_c_pat</model>
+    <model weight="1" scalemin="1.3" scalemax="1.8">terrain\patagonia\underbrush_log_a_pat</model>
+    <model weight="1" scalemin="1.3" scalemax="2.0">terrain\patagonia\underbrush_log_b_pat</model>
+    <model weight="1" scalemin="0.8" scalemax="1.5">terrain\patagonia\underbrush_rock_a_pat</model>
+    <model weight="1" scalemin="0.8" scalemax="1.5">terrain\patagonia\underbrush_rock_b_pat</model>
+    <model weight="1" scalemin="0.8" scalemax="1.5">terrain\patagonia\underbrush_rock_c_pat</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\patagonia\underbrush_rock_d_pat</model>
+    <model weight="1" scalemin="0.5" scalemax="1.0">terrain\patagonia\underbrush_rock_e_pat</model>
+  </objects>
+</mix>

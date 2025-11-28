@@ -1,0 +1,21 @@
+<mix>
+  <title>Deccan Grassy Dirt A</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.25" octaves="3" persistence="0.5">
+    <texture weight="3">deccan\ground_dirt3_deccan</texture>
+    <texture weight="2">deccan\ground_dirt4_deccan</texture>
+    <texture weight="1">deccan\ground_dirt5_deccan</texture>
+    <texture weight="1">deccan\ground_dirt2_deccan</texture>
+    <texture weight="1">deccan\ground_grass3_deccan</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="60" posoffset="0.5">
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_grass_01</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_group_01</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_shrub_01</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_grass_02</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_group_02</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_shrub_02</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_shrub_03</model>
+    <model weight="1" scalemin="0.9" scalemax="1.1">terrain\underbrush\underbrush_deccan_rocks_01</model>
+  </objects>
+</mix>

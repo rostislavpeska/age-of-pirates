@@ -1,0 +1,22 @@
+<mix>
+  <title>Texas Dirt</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.05" octaves="4" persistence="0.9">
+    <texture weight="4">texas\ground4_tex</texture>
+    <texture weight="1">texas\ground3_tex</texture>
+    <texture weight="1">texas\walking_path_tex</texture>
+    <texture weight="1">texas\Path_Blend</texture>
+    <texture weight="4">texas\ground5_tex</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.75" octaves="3" persistence="0.7" emptyweight="55" posoffset="0.5">
+    <model weight="1">terrain\underbrush\underbrush_desert_bush1</model>
+    <model weight="1">terrain\underbrush\underbrush_desert_bush3</model>
+    <model weight="1">terrain\underbrush\underbrush_desert_bush5</model>
+    <model weight="1" scalemin="0.5" scalemax="1.1">terrain\underbrush\underbrush_desert_rock1</model>
+    <model weight="1" scalemin="0.5" scalemax="1.1">terrain\underbrush\underbrush_desert_rock2</model>
+    <model weight="1" scalemin="0.5" scalemax="1.1">terrain\underbrush\underbrush_desert_rock3</model>
+    <model weight="1" scalemin="0.5" scalemax="1.1">terrain\underbrush\underbrush_desert_rock4</model>
+    <model weight="1" scalemin="0.5" scalemax="1.1">terrain\underbrush\underbrush_desert_rock5</model>
+    <model weight="1" scalemin="0.5" scalemax="1.1">terrain\underbrush\underbrush_desert_rock6</model>
+  </objects>
+</mix>

@@ -4891,22 +4891,12 @@
       <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatWarElephantProxy</target>
       </effect>
-      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatGatlingCamel</target>
-      </effect>
-      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatGatlingCamel</target>
-      </effect>
       <effect type="TechStatus" status="active">ypNatDisciplinedSufi</effect>
       <effect type="SetName" proto="zpNatQizilbashProxy" culture="none" newname="61180">
       </effect>
       <effect type="SetName" proto="zpNatQizilbashProxy" culture="none" newname="61186" reqtech="ImpLegendaryNativesShadow">
       </effect>
       <effect type="TechStatus" status="active">ypNatDisciplinedSufi</effect>
-      <effect type="SetName" proto="zpNatGatlingCamel" culture="none" newname="300450">
-      </effect>
-      <effect type="SetName" proto="zpNatGatlingCamel" culture="none" newname="300449" reqtech="ImpLegendaryNativesShadow">
-      </effect>
       <effect type="TechStatus" status="active">ypNatDisciplinedBhakti</effect>
       <effect type="SetName" proto="zpNatWarElephantProxy" culture="none" newname="61153">
       </effect>
@@ -5272,6 +5262,8 @@
     <effects>
       <effect mergemode="add" type="SetName" proto="zpNatPirate" culture="none" newname="300318">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatPirateSultanate" culture="none" newname="300318">
+      </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMalteseGuard" culture="none" newname="300317">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMalteseKnight" culture="none" newname="300316">
@@ -5295,6 +5287,8 @@
       <effect mergemode="add" type="SetName" proto="zpNatQizilbashProxy" culture="none" newname="61186">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatCorsair" culture="none" newname="300348">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatCorsairSultanate" culture="none" newname="300348">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatHoopThrower" culture="none" newname="300516">
       </effect>
@@ -5491,6 +5485,14 @@
       <effect mergemode="add" type ="SetName" proto ="zpNatJanissary" culture="none" newname="303249">
       </effect>
       <effect mergemode="add" type ="SetName" proto ="zpNatMercJanissary" culture="none" newname="303249">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatEvzoneProxy" culture="none" newname="122452">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatBoyarProxy" culture="none" newname="124622">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatQizilbashSultanate" culture="none" newname="61186">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatGatlingCamelSultanate" culture="none" newname="300449">
       </effect>
     </effects>
   </tech>
@@ -21196,6 +21198,12 @@
       <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatCossackDragoon</target>
       </effect>
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatGatlingCamel</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatGatlingCamel</target>
+      </effect>
     </effects>
 	</tech>
   <tech name="zpUnlockPalazzoAuditore" type="Normal">
@@ -32851,6 +32859,12 @@
     <effects>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHabsburgElDeguello</effect>
       <effect mergemode="add" type="TechStatus" status="active">zpNatHabsburgRadetzyMarch</effect>
+      <effect type="CommandRemove" tech="zpNatHabsburgRadetzyMarch">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpNatHabsburgElDeguello">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSpanishHabsburgColonialize" type="Normal">
@@ -34192,6 +34206,9 @@
       <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCPirateDockB" relativity ="Absolute">
 				<target type ="Player"></target>
 			</effect>
+      <effect type ="Data" amount ="0.00" subtype ="UpdateVisual" unittype ="zpSPCMenagerie" relativity ="Absolute">
+				<target type ="Player"></target>
+			</effect>
 		</effects>
 	</tech>
   <tech name="zpUnknownAllianceCorsairsEnabler" type="Normal">
@@ -34372,8 +34389,11 @@
       <effect type="TechStatus" status="obtainable">zpSultanateTradeRouteUpgrade</effect>
       <effect type="TechStatus" status="active">zpSultanateNativeSetup</effect>
       <effect type="TechStatus" status="active">zpCorsairDocksUpdateShadow</effect>
+      <effect type="Data" amount="0.00" subtype="CopyTechIcon" tech="zpBlessedCityOrientalIcon" relativity="Absolute">
+        <target type="Tech">zpSPCBlessedCity</target>
+      </effect>
       <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
-        <target type="ProtoUnit">zpHanseaticChurch</target>
+        <target type="ProtoUnit">zpTradingPostCaptureNavalOriental</target>
       </effect>
       <effect type="Data" action="Autoconvert" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpSPCIstanbulMosque</target>
@@ -34525,12 +34545,11 @@
       <effect type="TechStatus" status="obtainable">zpNatIstanbulBrigade</effect>
       <effect type="TechStatus" status="obtainable">zpNatSultanCommand</effect>
       <effect type="TechStatus" status="obtainable">zpNatHaremSweats</effect>
-
       <effect type="TechStatus" status="obtainable">zpNativeTradeTreatySultanate</effect>
       <effect type="TechStatus" status="obtainable">zpIndianFriendshipSultanate</effect>
       <effect type="TechStatus" status="obtainable">zpNativeTreatySultanate</effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
       <effect type="TechStatus" status="obtainable">zpSultanateExpansion</effect>
-
       <effect type="TechStatus" status="obtainable">DENatPhanarArmatoli</effect>
       <effect type="TechStatus" status="obtainable">DENatPhanarMountAthos</effect>
       <effect type="TechStatus" status="obtainable">DENatPhanarByzantineLegacy</effect>
@@ -34556,7 +34575,7 @@
     <cost resourcetype="Gold">125.0000</cost>
     <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\veteran_infantry\veteran_infantry.png</icon>
+    <icon>resources\images\icons\techs\asians\disciplined_natives.png</icon>
     <rollovertextid>303246</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>UpgradeTech</flag>
@@ -34591,7 +34610,23 @@
       </effect>
       <effect type="SetName" proto="zpNatJanissaryProxy" culture="none" newname="303249" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      
+      <effect type="SetName" proto="zpNatQizilbashSultanate" culture="none" newname="61180">
+      </effect>
+      <effect type="SetName" proto="zpNatQizilbashSultanate" culture="none" newname="61186" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatEvzoneProxy" culture="none" newname="122450">
+      </effect>
+      <effect type="SetName" proto="zpNatEvzoneProxy" culture="none" newname="122452" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="SetName" proto ="zpNatPirateSultanate" culture ="none" newname ="300037">
+      </effect>
+      <effect type="SetName" proto="zpNatPirateSultanate" culture="none" newname="300318" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="SetName" proto ="zpNatCorsairSultanate" culture ="none" newname ="300346">
+      </effect>
+      <effect type="SetName" proto="zpNatCorsairSultanate" culture="none" newname="300348" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+
       <effect type="TechStatus" status="active">DEVeteranPhanar</effect>
       <effect type="TechStatus" status="active">zpNatDisciplinedSufiClone</effect>
       <effect type="TechStatus" status="active">zpNatDisciplinedPirate</effect>
@@ -34604,7 +34639,7 @@
 		<cost resourcetype ="Gold">300.0000</cost>
     <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\guard_infantry\guard_infantry.png</icon>
+    <icon>resources\images\icons\techs\asians\honered_natives.png</icon>
     <rollovertextid>303246</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>UpgradeTech</flag>
@@ -34640,7 +34675,30 @@
       </effect>
       <effect type="SetName" proto="zpNatJanissaryProxy" culture="none" newname="303249" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      
+      <effect type="SetName" proto="zpNatQizilbashSultanate" culture="none" newname="61182">
+      </effect>
+      <effect type="SetName" proto="zpNatQizilbashSultanate" culture="none" newname="61186" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatGatlingCamelSultanate" culture="none" newname="300448">
+      </effect>
+      <effect type="SetName" proto="zpNatGatlingCamelSultanate" culture="none" newname="300449" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatEvzoneProxy" culture="none" newname="122451">
+      </effect>
+      <effect type="SetName" proto="zpNatEvzoneProxy" culture="none" newname="122452" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="SetName" proto="zpNatBoyarProxy" culture="none" newname="124621">
+      </effect>
+      <effect type="SetName" proto="zpNatBoyarProxy" culture="none" newname="124622" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="SetName" proto ="zpNatPirateSultanate" culture ="none" newname ="300039">
+      </effect>
+      <effect type="SetName" proto="zpNatPirateSultanate" culture="none" newname="300318" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="SetName" proto ="zpNatCorsairSultanate" culture ="none" newname ="300347">
+      </effect>
+      <effect type="SetName" proto="zpNatCorsairSultanate" culture="none" newname="300348" reqtech="ImpLegendaryNativesShadow">
+      </effect>    
       <effect type="TechStatus" status="active">DEGuardPhanar</effect>
       <effect type="TechStatus" status="active">zpNatHonoredSufiClone</effect>
       <effect type="TechStatus" status="active">zpNatHonoredPirate</effect>
@@ -35219,6 +35277,31 @@
       <effect type="TechStatus" status="obtainable">zpSPCOttomanHeritage</effect>
       <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
       <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
+      <effect type="Data" amount="0.00" subtype="CopyTechIcon" tech="zpBlessedCityOrientalIcon" relativity="Absolute">
+        <target type="Tech">zpSPCBlessedCity</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpBlessedCityOrientalIcon" type="Normal">
+    <dbid>41329</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <icon>resources\images\icons\techs\historical_maps\immam_voice.png</icon>
+  </tech>
+  <tech name="zpSPCRogueBalearic" type="Normal">
+    <dbid>41330</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpSPCTaulaDeCanviClone</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCPapalBlessingClone</effect>
+      <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMediciPatronage</effect>
+      <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCArtPatronCathedral</effect>
     </effects>
   </tech>
   
@@ -35227,7 +35310,7 @@
 
 
 
-<!--TEST-->
+<!--TEST TECHS-->
 
   <!--<tech name="zpNativeSaxonKing" type="Normal">
     <dbid></dbid>

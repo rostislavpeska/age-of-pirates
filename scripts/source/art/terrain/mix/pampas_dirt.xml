@@ -1,0 +1,21 @@
+<mix>
+  <title>Pampas Dirt</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.4">
+    <texture weight="1">pampas\ground3_pam</texture>
+    <texture weight="1">pampas\ground2_pam</texture>
+    <texture weight="4">pampas\ground1_pam</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.7" octaves="4" persistence="0.7" emptyweight="70" posoffset="0.8">
+    <model weight="1" scalemin="0.7" scalemax="1.0">terrain\underbrush\underbrush_desert_bush1</model>
+    <model weight="1" scalemin="0.7" scalemax="1.0">terrain\underbrush\underbrush_desert_bush5</model>
+    <model weight="1" scalemin="0.7" scalemax="1.0">terrain\underbrush\underbrush_desert_bush3</model>
+    <model weight="1" scalemin="0.7" scalemax="1.0">terrain\underbrush\underbrush_desert_bush4</model>
+    <model weight="2" scalemin="0.7" scalemax="1.2">terrain\underbrush\underbrush_desert_rock1</model>
+    <model weight="2" scalemin="0.7" scalemax="1.2">terrain\underbrush\underbrush_desert_rock2</model>
+    <model weight="2" scalemin="0.7" scalemax="1.2">terrain\underbrush\underbrush_desert_rock3</model>
+    <model weight="2" scalemin="0.7" scalemax="1.2">terrain\underbrush\underbrush_desert_rock4</model>
+    <model weight="2" scalemin="0.7" scalemax="1.2">terrain\underbrush\underbrush_desert_rock5</model>
+    <model weight="2" scalemin="0.7" scalemax="1.2">terrain\underbrush\underbrush_desert_rock6</model>
+  </objects>
+</mix>

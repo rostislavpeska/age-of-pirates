@@ -1,0 +1,8 @@
+<mix>
+  <title>Africa Savanna Sand</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.2" octaves="6" persistence="0.5">
+    <texture weight="1">AfricaSavanna\ground_sand1_afriSavanna</texture>
+    <texture weight="4">AfricaSavanna\ground_sand2_afriSavanna</texture>
+  </paint>
+</mix>

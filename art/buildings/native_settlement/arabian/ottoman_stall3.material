@@ -10,5 +10,13 @@
       <texture name="Masks" override="homecity\ottoman\market_stalls\textures\market_stalls_mata_Masks">
       </texture>
     </parameters>
+     <parameters variant="1">
+      <texture name="BaseColor" override="homecity\ottoman\market_stalls\textures\market_stalls_jewish_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\ottoman\market_stalls\textures\market_stalls_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\ottoman\market_stalls\textures\market_stalls_mata_Masks">
+      </texture>
+    </parameters>
   </submaterial>
 </material>

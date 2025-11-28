@@ -984,7 +984,6 @@
         <count>1</count>
       </unitcounts>
     </multipleblocktrain>
-
     <multipleblocktrain>
       <building>TradingPost</building>
       <multipleblockunit>zpNatCorsairSultanate</multipleblockunit>
@@ -1005,7 +1004,6 @@
         <count>1</count>
       </unitcounts>
     </multipleblocktrain>
-
     <multipleblocktrain>
       <building>TradingPost</building>
       <multipleblockunit>zpNatQizilbashSultanate</multipleblockunit>

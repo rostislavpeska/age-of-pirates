@@ -939,13 +939,11 @@ for(i=1; <cNumberPlayers) {
    //rmForbidTradeMonopoly(true);
 
    // ____________________ MAP OBJECTIVES ____________________
-    rmObjectiveScreenSetTitle(302219);
-    rmObjectiveScreenSetGoal(302869);
-    if (rmGetIsKOTH())
+   rmObjectiveScreenSetTitle(302219);
+   rmObjectiveScreenSetGoal(302869);
+   if (rmGetIsKOTH())
       rmObjectiveAdd(302236, 302232, true, true, true);
-    else
-      rmObjectiveAdd(302225, 302226, true, true, true);
-    rmObjectiveAdd(302223, 302224, false, true, true);
+   rmObjectiveAdd(302223, 302224, false, true, true);
 
 
 // ------Triggers--------//
@@ -1037,136 +1035,154 @@ rmSetTriggerEffectParamInt("Status",2);
 // **************** KotH Victory ************************
 
 if (rmGetIsKOTH()){
-   for (k=1; <= cNumberNonGaiaPlayers) {
-   rmCreateTrigger("ConvertKotH_Player"+k);
-   }
-
-   rmSwitchToTrigger(rmTriggerID("Revolution_MusicEnd"+i));
-   rmAddTriggerCondition("Timer");
-   rmSetTriggerConditionParamInt("Param1",5);
-   rmAddTriggerEffect("Music Play");
-   rmSetTriggerPriority(1);
-   rmSetTriggerActive(false);
-   rmSetTriggerRunImmediately(false);
-   rmSetTriggerLoop(false);
 
    // KotH Conversion
+   
    for (k=1; <= cNumberNonGaiaPlayers) {
-   rmSwitchToTrigger(rmTriggerID("ConvertKotH_Player"+k));
-   rmAddTriggerCondition("Units in Area");
-   rmSetTriggerConditionParam("DstObject",""+kothCastleMod);
-   rmSetTriggerConditionParamInt("Player",k);
-   rmSetTriggerConditionParamInt("Dist",25);
-   rmSetTriggerConditionParam("UnitType","AbstractWarShip");
-   rmSetTriggerConditionParam("Op",">=");
-   rmSetTriggerConditionParamFloat("Count",1);
-   for (i=1; <= cNumberNonGaiaPlayers) {
-      if (i != k){
-         rmAddTriggerCondition("Units in Area");
-         rmSetTriggerConditionParam("DstObject",""+kothCastleMod);
-         rmSetTriggerConditionParamInt("Player",i);
-         rmSetTriggerConditionParamInt("Dist",25);
-         rmSetTriggerConditionParam("UnitType","AbstractWarShip");
-         rmSetTriggerConditionParam("Op","==");
-         rmSetTriggerConditionParamFloat("Count",0);
+      rmCreateTrigger("ConvertKotH_Player"+k);
+
+      rmSwitchToTrigger(rmTriggerID("ConvertKotH_Player"+k));
+      rmAddTriggerCondition("Units in Area");
+      rmSetTriggerConditionParam("DstObject",""+kothCastleMod);
+      rmSetTriggerConditionParamInt("Player",k);
+      rmSetTriggerConditionParamInt("Dist",25);
+      rmSetTriggerConditionParam("UnitType","AbstractWarShip");
+      rmSetTriggerConditionParam("Op",">=");
+      rmSetTriggerConditionParamFloat("Count",1);
+      for (i=1; <= cNumberNonGaiaPlayers) {
+         if (i != k){
+            rmAddTriggerCondition("Units in Area");
+            rmSetTriggerConditionParam("DstObject",""+kothCastleMod);
+            rmSetTriggerConditionParamInt("Player",i);
+            rmSetTriggerConditionParamInt("Dist",25);
+            rmSetTriggerConditionParam("UnitType","AbstractWarShip");
+            rmSetTriggerConditionParam("Op","==");
+            rmSetTriggerConditionParamFloat("Count",0);
+         }
       }
-   }
-   rmAddTriggerEffect("Convert");
-   rmSetTriggerEffectParam("SrcObject",""+kothCastleMod);
-   rmSetTriggerEffectParamInt("PlayerID",k);
-   for (i=0; <= cNumberNonGaiaPlayers) {
-      rmAddTriggerEffect("Convert Units in Area");
+      rmAddTriggerEffect("Convert");
       rmSetTriggerEffectParam("SrcObject",""+kothCastleMod);
-      rmSetTriggerEffectParamInt("SrcPlayer",i);
-      rmSetTriggerEffectParamInt("TrgPlayer",k);
-      rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
-      rmSetTriggerEffectParamInt("Dist",15);
-   }
-   for (i=1; <= cNumberNonGaiaPlayers) {
-      if (i != k){
-         rmAddTriggerEffect("Fire Event");
-         rmSetTriggerEffectParamInt("EventID", rmTriggerID("ConvertKotH_Player"+i));
+      rmSetTriggerEffectParamInt("PlayerID",k);
+      for (i=0; <= cNumberNonGaiaPlayers) {
+         rmAddTriggerEffect("Convert Units in Area");
+         rmSetTriggerEffectParam("SrcObject",""+kothCastleMod);
+         rmSetTriggerEffectParamInt("SrcPlayer",i);
+         rmSetTriggerEffectParamInt("TrgPlayer",k);
+         rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
+         rmSetTriggerEffectParamInt("Dist",15);
       }
+      for (i=1; <= cNumberNonGaiaPlayers) {
+         if (i != k){
+            rmAddTriggerEffect("Fire Event");
+            rmSetTriggerEffectParamInt("EventID", rmTriggerID("ConvertKotH_Player"+i));
+         }
+      }
+      rmAddTriggerEffect("Play Soundset");
+      rmSetTriggerEffectParam("Soundset","SheepFound");
+      rmSetTriggerPriority(4);
+      rmSetTriggerActive(true);
+      rmSetTriggerRunImmediately(true);
+      rmSetTriggerLoop(false);
    }
-   rmAddTriggerEffect("Play Soundset");
-   rmSetTriggerEffectParam("Soundset","SheepFound");
-   rmSetTriggerPriority(4);
-   rmSetTriggerActive(true);
-   rmSetTriggerRunImmediately(true);
-   rmSetTriggerLoop(false);
+
+   // Team Victory and handling Objectives
+
+   for(i = 1; < cNumberTeams+1) {
+      rmCreateTrigger("TeamVictory"+i);
+      rmCreateTrigger("KotH_ON"+i);
+      rmCreateTrigger("KotH_OFF"+i);
+      rmCreateTrigger("Revolution_MusicEnd"+i);
    }
 
    for(i = 1; < cNumberTeams+1) {
-   rmCreateTrigger("TeamVictory"+i);
-   rmCreateTrigger("KotH_ON"+i);
-   }
-   for(i = 1; < cNumberTeams+1) {
 
-   // Team Victory 
-   rmSwitchToTrigger(rmTriggerID("TeamVictory"+i));
-   rmAddTriggerEffect("Team Victory");
-   rmSetTriggerEffectParamInt("TeamID", i);
-   rmSetTriggerPriority(4); 
-   rmSetTriggerActive(false);
-   rmSetTriggerRunImmediately(true);
-   rmSetTriggerLoop(false);
+      // Team Victory 
+      rmSwitchToTrigger(rmTriggerID("TeamVictory"+i));
+      rmAddTriggerEffect("Team Victory");
+      rmSetTriggerEffectParamInt("TeamID", i);
+      rmSetTriggerPriority(4); 
+      rmSetTriggerActive(false);
+      rmSetTriggerRunImmediately(true);
+      rmSetTriggerLoop(false);
 
-   // Team KotH Ownership
-   rmSwitchToTrigger(rmTriggerID("KotH_ON"+i));
-   rmAddTriggerCondition("Team Unit Count");
-   rmSetTriggerConditionParamInt("TeamID",i);
-   rmSetTriggerConditionParam("Protounit","zpKingsHillNaval");
-   rmSetTriggerConditionParam("Op",">=");
-   rmSetTriggerConditionParamInt("Count",1);
-   for(x=1; <= cNumberNonGaiaPlayers) {
-      if (rmGetPlayerTeam(x) == i-1) {
-         rmAddTriggerEffect("Flare Minimap");
-         rmSetTriggerEffectParamInt("PlayerID", x, false);
-         rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-         rmSetTriggerEffectParam("Position", ""+xsVectorGetX(kothLoc)+","+xsVectorGetY(kothLoc)+","+xsVectorGetZ(kothLoc), false);
-         rmSetTriggerEffectParam("Flash", "True", false);
+      // Team owns KotH
+      rmSwitchToTrigger(rmTriggerID("KotH_ON"+i));
+      rmAddTriggerCondition("Team Unit Count");
+      rmSetTriggerConditionParamInt("TeamID",i);
+      rmSetTriggerConditionParam("Protounit","zpKingsHillNaval");
+      rmSetTriggerConditionParam("Op",">=");
+      rmSetTriggerConditionParamInt("Count",1);
+      for(x=1; <= cNumberNonGaiaPlayers) {
+         if (rmGetPlayerTeam(x) == i-1) {
+            rmAddTriggerEffect("Flare Minimap");
+            rmSetTriggerEffectParamInt("PlayerID", x, false);
+            rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+            rmSetTriggerEffectParam("Position", ""+xsVectorGetX(kothLoc)+","+xsVectorGetY(kothLoc)+","+xsVectorGetZ(kothLoc), false);
+            rmSetTriggerEffectParam("Flash", "True", false);
+         }
       }
-   }
-   rmAddTriggerEffect("Counter:Add Timer");
-   rmSetTriggerEffectParam("Name","VictoryCounter"+i);
-   rmSetTriggerEffectParamInt("Start", victoryCountDown);
-   rmSetTriggerEffectParamInt("Stop",0);
-   rmAddTriggerEffect("ZP Set Tech Status (XS)");
-   rmSetTriggerEffectParamInt("PlayerID",1);
-   rmSetTriggerEffectParam("TechID","cTechzpKingOfTheSeasShadow"); // Europen Map
-   rmSetTriggerEffectParamInt("Status",2);
-   rmAddTriggerEffect("Music Filename");
-   rmSetTriggerEffectParam("Music","ypack\music\strategy\Koth.mp3"); // Music Filename
-   rmSetTriggerEffectParamFloat("Duration",0.5);
-   rmAddTriggerEffect("Sound Timer");
-   rmSetTriggerEffectParamInt("Time", 61000);
-   rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd"+i));
-   rmAddTriggerEffect("Play Soundset");
-	rmSetTriggerEffectParam("Soundset","UI_Strategywarning");
-   if (i==1)
-      rmSetTriggerEffectParam("Msg","{302234}"); // Counter Revolutionaries
-   else
-      rmSetTriggerEffectParam("Msg","{302235}"); // Counter Revolutionaries
-   rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+i));
+      rmAddTriggerEffect("Counter:Add Timer");
+      rmSetTriggerEffectParam("Name","VictoryCounter"+i);
+      rmSetTriggerEffectParamInt("Start", victoryCountDown);
+      rmSetTriggerEffectParamInt("Stop",0);
+      rmSetTriggerEffectParam("Msg","{303290}"); // Universal text for all players
+      rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+i));
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID",1);
+      rmSetTriggerEffectParam("TechID","cTechzpKingOfTheSeasShadow"); // Europen Map
+      rmSetTriggerEffectParamInt("Status",2);
+      rmAddTriggerEffect("Music Filename");
+      rmSetTriggerEffectParam("Music","ypack\music\strategy\Koth.mp3"); // Music Filename
+      rmSetTriggerEffectParamFloat("Duration",0.5);
+      rmAddTriggerEffect("Sound Timer");
+      rmSetTriggerEffectParamInt("Time", 61000);
+      rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd"+i));
+      rmAddTriggerEffect("Play Soundset");
+      rmSetTriggerEffectParam("Soundset","UI_Strategywarning");
+      rmAddTriggerEffect("Fire Event");
+      rmSetTriggerEffectParamInt("EventID", rmTriggerID("KotH_OFF"+i));
+      rmAddTriggerEffect("Flash Units");
+      rmSetTriggerEffectParam("SrcObject", ""+kothCastleMod, false);
+      rmSetTriggerPriority(4);
+      rmSetTriggerActive(true);
+      rmSetTriggerRunImmediately(true);
+      rmSetTriggerLoop(false);
 
-   rmAddTriggerEffect("Flash Units");
-   rmSetTriggerEffectParam("SrcObject", ""+kothCastleMod, false);
-   if (i==1){
+      // Team Lost KotH
+      rmSwitchToTrigger(rmTriggerID("KotH_OFF"+i));
+      rmAddTriggerCondition("Team Unit Count");
+      rmSetTriggerConditionParamInt("TeamID",i);
+      rmSetTriggerConditionParam("Protounit","zpKingsHillNaval");
+      rmSetTriggerConditionParam("Op","==");
+      rmSetTriggerConditionParamInt("Count",0);
+      for(x=1; <= cNumberNonGaiaPlayers) {
+         if (rmGetPlayerTeam(x) == i-1) {
+            rmAddTriggerEffect("Flare Minimap");
+            rmSetTriggerEffectParamInt("PlayerID", x, false);
+            rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+            rmSetTriggerEffectParam("Position", ""+xsVectorGetX(kothLoc)+","+xsVectorGetY(kothLoc)+","+xsVectorGetZ(kothLoc), false);
+            rmSetTriggerEffectParam("Flash", "True", false);
+         }
+      }
       rmAddTriggerEffect("Counter Stop");
-      rmSetTriggerEffectParam("Name","VictoryCounter2");
+      rmSetTriggerEffectParam("Name","VictoryCounter"+i);
       rmAddTriggerEffect("Fire Event");
-      rmSetTriggerEffectParamInt("EventID", rmTriggerID("KotH_ON2"));
-   }
-   else{
-      rmAddTriggerEffect("Counter Stop");
-      rmSetTriggerEffectParam("Name","VictoryCounter1");
-      rmAddTriggerEffect("Fire Event");
-      rmSetTriggerEffectParamInt("EventID", rmTriggerID("KotH_ON1"));
-   }
-   rmSetTriggerPriority(4);
-   rmSetTriggerActive(true);
-   rmSetTriggerRunImmediately(true);
-   rmSetTriggerLoop(false);
+      rmSetTriggerEffectParamInt("EventID", rmTriggerID("KotH_ON"+i));
+      rmSetTriggerPriority(4);
+      rmSetTriggerActive(false);
+      rmSetTriggerRunImmediately(true);
+      rmSetTriggerLoop(false);
+
+      // Revolution Music End
+      rmSwitchToTrigger(rmTriggerID("Revolution_MusicEnd"+i));
+      rmAddTriggerCondition("Timer");
+      rmSetTriggerConditionParamInt("Param1",5);
+      rmAddTriggerEffect("Music Play");
+      rmSetTriggerPriority(1);
+      rmSetTriggerActive(false);
+      rmSetTriggerRunImmediately(false);
+      rmSetTriggerLoop(false);
+
    }
 }
 
@@ -2809,7 +2825,6 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
-
 
 
 // Testing

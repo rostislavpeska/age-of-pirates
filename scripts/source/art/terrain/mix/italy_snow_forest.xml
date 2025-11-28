@@ -1,0 +1,21 @@
+<mix>
+  <title>Italy Snow Forest</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.20" octaves="10" persistence="0.5">
+    <texture weight="1">rockies\groundsnow8_roc</texture>
+    <texture weight="3">rockies\groundforestsnow_roc</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="60" posoffset="0.5">
+    <model weight="1">terrain\underbrush\underbrush_snow_grass1</model>
+    <model weight="1">terrain\underbrush\underbrush_snow_grass2</model>
+    <model weight="2">terrain\underbrush\underbrush_forest_bushsnow1</model>
+    <model weight="2">terrain\underbrush\underbrush_forest_bushsnow2</model>
+    <model weight="2">terrain\underbrush\underbrush_snow_log1</model>
+    <model weight="2">terrain\underbrush\underbrush_snow_log2</model>
+    <model weight="2">terrain\underbrush\underbrush_snow_log3</model>
+    <model weight="2">terrain\underbrush\underbrush_snow_stump1</model>
+    <model weight="2">terrain\underbrush\underbrush_snow_stump2</model>
+    <model weight="1">terrain\underbrush\underbrush_snow_group1</model>
+    <model weight="1">terrain\underbrush\underbrush_snow_group2</model>
+  </objects>
+</mix>

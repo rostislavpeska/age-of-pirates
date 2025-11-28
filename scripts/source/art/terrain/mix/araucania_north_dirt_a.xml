@@ -1,0 +1,22 @@
+<mix>
+  <title>Araucania North Dirt A</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="1.5" octaves="10" persistence="0.5">
+    <texture weight="5">araucania\ground07_ara</texture>
+    <texture weight="4">araucania\ground07b_ara</texture>
+    <texture weight="4">araucania\ground08_ara</texture>
+    <texture weight="4">araucania\groundshore1_Light_ara</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.6" octaves="3" persistence="0.7" emptyweight="50" posoffset="0.5">
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_forest_fern1</model>
+    <model weight="1" scalemin="0.5" scalemax="2.0">terrain\patagonia\underbrush_log_a_pat</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_forest_fern2</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_forest_bush2</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_forest_bush3</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_forest_group4</model>
+    <model weight="1" scalemin="1.0" scalemax="3.2">terrain\patagonia\underbrush_log_b_pat</model>
+    <model weight="2" scalemin="0.3" scalemax="0.5">terrain\california\rock1_cal</model>
+    <model weight="2" scalemin="0.3" scalemax="0.5">terrain\california\rock11_cal</model>
+    <model weight="2" scalemin="0.3" scalemax="0.5">terrain\california\rock12_cal</model>
+  </objects>
+</mix>

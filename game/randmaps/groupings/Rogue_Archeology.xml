@@ -7,6 +7,7 @@
 	<selectassingleunit>0</selectassingleunit>
 	<workonassingleunit>0</workonassingleunit>
 	<units>
+		<unit variation="97" posx="0" posz="0" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpInvisibleGroundFlattener</unit>
 		<unit variation="32" posx="-6.5085" posz="-15.3280" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsJungle</unit>
 		<unit variation="196" posx="-4.5095" posz="-16.3137" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsJungle</unit>
 		<unit variation="165" posx="-7.3097" posz="-15.1593" orientx="0.9238" orienty="0.0000" orientz="0.3828">zpBridgeWallSmall</unit>

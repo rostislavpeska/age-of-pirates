@@ -1,0 +1,7 @@
+<mix>
+  <title>Desert Forest Floor California</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.15" octaves="6" persistence="0.65">
+    <texture weight="5">california\desert2_cal</texture>
+  </paint>
+</mix>

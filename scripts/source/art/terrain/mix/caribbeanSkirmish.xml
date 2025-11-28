@@ -1,0 +1,33 @@
+<mix>
+  <title>Caribbean Skirmish</title>
+  <icon>terrain\mix\jimmy</icon>
+  <paint mode="turbulence" freq="0.5" octaves="3" persistence="0.5">
+    <texture weight="0.5">caribbean\ground1_crb</texture>
+    <texture weight="2">caribbean\ground4_crb</texture>
+    <texture weight="2">caribbean\ground3_crb</texture>
+    <texture weight="1">caribbean\groundforest_crb</texture>
+  </paint>
+  <objects mode="turbulence" freq="0.9" octaves="1" persistence="0.2" emptyweight="15" posoffset="0.9">
+    <model weight="2" scalemin="0.4" scalemax="0.7">terrain\underbrush\underbrush_shell_01</model>
+    <model weight="1" scalemin="0.8" scalemax="1.6">terrain\underbrush\underbrush_jungle_plant1</model>
+    <model weight="1" scalemin="0.8" scalemax="1.6">terrain\underbrush\underbrush_jungle_plant2</model>
+    <model weight="1" scalemin="0.8" scalemax="1.6">terrain\underbrush\underbrush_jungle_plant3</model>
+    <model weight="1" scalemin="0.8" scalemax="1.6">terrain\underbrush\underbrush_jungle_plant4</model>
+    <model weight="1" scalemin="0.8" scalemax="1.6">terrain\underbrush\underbrush_jungle_plant5</model>
+    <model weight="1" scalemin="0.1" scalemax="0.3">terrain\california\log_a_cal</model>
+    <model weight="1" scalemin="0.1" scalemax="0.3">terrain\california\log_b_cal</model>
+    <model weight="1" scalemin="0.8" scalemax="1.6">terrain\underbrush\underbrush_jungle_plant6</model>
+    <model weight="1" scalemin="0.8" scalemax="1.6">terrain\underbrush\underbrush_jungle_plant7</model>
+    <model weight="1" scalemin="0.8" scalemax="1.6">terrain\underbrush\underbrush_jungle_plant8</model>
+    <model weight="2.5" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant9</model>
+    <model weight="2.5" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant10</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant11</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_plant12</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_group1</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_group2</model>
+    <model weight="1" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_group3</model>
+    <model weight="1.5" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_log1</model>
+    <model weight="1.5" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_log2</model>
+    <model weight="1.5" scalemin="0.8" scalemax="1.2">terrain\underbrush\underbrush_jungle_log3</model>
+  </objects>
+</mix>

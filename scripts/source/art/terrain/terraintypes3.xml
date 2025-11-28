@@ -1,0 +1,23 @@
+<terraintypes version="1" edgetype="edge_of_world\edge_of_world" edgedensity="8">
+  <type name="PassableLand" uiname="Land" mapcolor="1 56 184" impassablewater="">
+    <uiclass uiname="Bayou">
+    </uiclass>
+  </type>
+  <type name="Ice" uiname="Ice/Passable All Nonbuildable" impassablewater="" nonsolid="">
+    <uiclass uiname="Bayou">
+    </uiclass>
+  </type>
+  <type name="Ice" uiname="Ice/Passable All Nonbuildable AllowPlacementOnIce" impassablewater="" nonsolid="" allowplacementonice="">
+    <uiclass uiname="Great Lakes">
+      <subtype impacttype="terrainsnow" bump="great_lakes\ground_ice1_bump_gl" height_strength="0.0000" texture_scale="10.0000" bump_scale="0.5000" grass_length="0.0000" chroma_key_tolerance="1.0000" chroma_key_color="0.450 0.940 0.050" height_offset="0.0000" grass_lean_strength="1.0000" grass_atlas_begin="0" grass_atlas_end="3" chroma_key_blur="0" chroma_key_contrast="1.0000" chroma_key_offset="0.0000" cutscene_texture_scale="0.0000" grass_width="1.0000" mapcolor_name="Ice" uiname="Great Lakes Ground Ice 1">great_lakes\ground_ice1_gl</subtype>
+      <subtype impacttype="terrainsnow" bump="great_lakes\ground_ice1_bump_gl" height_strength="0.0000" texture_scale="10.0000" bump_scale="0.5000" grass_length="0.0000" chroma_key_tolerance="1.0000" chroma_key_color="0.450 0.940 0.050" height_offset="0.0170" grass_lean_strength="1.0000" grass_atlas_begin="0" grass_atlas_end="3" chroma_key_blur="0" chroma_key_contrast="1.0000" chroma_key_offset="0.0000" cutscene_texture_scale="0.0000" grass_width="1.0000" mapcolor_name="Ice" uiname="Great Lakes Ground Ice 2">great_lakes\ground_ice2_gl</subtype>
+      <subtype impacttype="terrainsnow" bump="great_lakes\ground_ice1_bump_gl" height_strength="1.1650" texture_scale="20.0000" bump_scale="0.4870" grass_length="0.0000" chroma_key_tolerance="1.0000" chroma_key_color="0.450 0.940 0.050" height_offset="-0.5000" grass_lean_strength="1.0000" grass_atlas_begin="0" grass_atlas_end="3" chroma_key_blur="0" chroma_key_contrast="1.0000" chroma_key_offset="0.0000" cutscene_texture_scale="20.0000" grass_width="1.0000" mapcolor_name="Ice" uiname="Great Lakes Ground Ice 3">great_lakes\ground_ice3_gl</subtype>
+      <subtype impacttype="terrainsnow" bump="great_lakes\ground_ice1_bump_gl" height_strength="1.0000" texture_scale="17.0000" bump_scale="1.0000" grass_length="0.0000" chroma_key_tolerance="1.0000" chroma_key_color="0.450 0.940 0.050" height_offset="0.0000" grass_lean_strength="1.0000" grass_atlas_begin="0" grass_atlas_end="3" chroma_key_blur="0" chroma_key_contrast="1.0000" chroma_key_offset="0.0000" cutscene_texture_scale="0.0000" grass_width="1.0000" mapcolor_name="Ice" uiname="Great Lakes Ground Ice 1 W">great_lakes\ground_ice1_glw</subtype>
+      <subtype impacttype="terrainsnow" bump="great_lakes\ground_ice1_bump_gl" height_strength="1.0000" texture_scale="17.0000" bump_scale="1.0000" grass_length="0.0000" chroma_key_tolerance="1.0000" chroma_key_color="0.450 0.940 0.050" height_offset="0.0000" grass_lean_strength="1.0000" grass_atlas_begin="0" grass_atlas_end="3" chroma_key_blur="0" chroma_key_contrast="1.0000" chroma_key_offset="0.0000" cutscene_texture_scale="0.0000" grass_width="1.0000" mapcolor_name="Ice" uiname="Great Lakes Ground Ice 2 W">great_lakes\ground_ice2_glw</subtype>
+      <subtype impacttype="terrainsnow" bump="great_lakes\ground_ice1_bump_gl" height_strength="1.0000" texture_scale="17.0000" bump_scale="1.0000" grass_length="0.0000" chroma_key_tolerance="1.0000" chroma_key_color="0.450 0.940 0.050" height_offset="0.0000" grass_lean_strength="1.0000" grass_atlas_begin="0" grass_atlas_end="3" chroma_key_blur="0" chroma_key_contrast="1.0000" chroma_key_offset="0.0000" cutscene_texture_scale="0.0000" grass_width="1.0000" mapcolor_name="Ice" uiname="Great Lakes Ground Ice 3 W">great_lakes\ground_ice3_glw</subtype>
+    </uiclass>
+    <uiclass uiname="Africa Desert">
+      <subtype impacttype="terraindirt" bump="great_plains\ground6bump_gp" height_strength="1.3590" texture_scale="23.0000" bump_scale="2.3330" grass_length="0.0000" chroma_key_tolerance="0.0100" chroma_key_color="0.450 0.940 0.050" height_offset="0.0000" grass_lean_strength="1.0000" grass_atlas_begin="33" grass_atlas_end="33" chroma_key_blur="0" chroma_key_contrast="1.0000" chroma_key_offset="0.0000" cutscene_texture_scale="50.0000" grass_width="0.0000" mapcolor_name="Sand" uiname="Africa Desert Rock Impassable">AfricaDesert\ground_rock_impassable_afriDesert</subtype>
+    </uiclass>
+  </type>
+</terraintypes>
