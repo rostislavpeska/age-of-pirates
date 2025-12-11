@@ -74582,7 +74582,7 @@
   <dbid>21161</dbid>
   <displaynameid>400303</displaynameid>
   <editornameid>400304</editornameid>
-  <subciv>zpNativeXmassNutcrackerVillage</subciv>
+  <subciv>zpXmassNutcrackerVillage</subciv>
   <populationcount>0</populationcount>
   <buildlimit>16</buildlimit>
   <obstructionradiusx>0.4900</obstructionradiusx>
@@ -74693,7 +74693,7 @@
   <displaynameid>400308</displaynameid>
   <editornameid>400309</editornameid>
   <populationcount>0</populationcount>
-  <subciv>zpNativeXmassNutcrackerVillage</subciv>
+  <subciv>zpXmassNutcrackerVillage</subciv>
   <obstructionradiusx>0.4900</obstructionradiusx>
   <obstructionradiusz>0.4900</obstructionradiusz>
   <formationcategory>Ranged</formationcategory>

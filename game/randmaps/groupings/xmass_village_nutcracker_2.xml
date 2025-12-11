@@ -2,7 +2,7 @@
 
 <grouping>
 	<width>12</width>
-	<height>15</height>
+	<height>13</height>
 	<ignoreplacementrules>0</ignoreplacementrules>
 	<selectassingleunit>1</selectassingleunit>
 	<workonassingleunit>0</workonassingleunit>
@@ -10,18 +10,20 @@
 		<unit variation="195" posx="2.4305" posz="-9.3534" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">FirewoodPile</unit>
 		<unit variation="1" posx="-1.2178" posz="-9.6725" orientx="1.0000" orienty="0.0000" orientz="-0.0002">PropsPoles</unit>
 		<unit variation="48" posx="-1.4482" posz="-8.7733" orientx="-1.0000" orienty="0.0000" orientz="0.0002">dePropsResourceCratesSpecial</unit>
-		<unit variation="189" posx="6.3527" posz="-8.9033" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock2</unit>
-		<unit variation="135" posx="-6.6638" posz="-6.4460" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">assSocketNutcrackerVillage</unit>
+		<unit variation="0" posx="6.3527" posz="-8.9033" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock2</unit>
 		<unit variation="0" posx="1.3665" posz="-8.8395" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
-		<unit variation="13" posx="8.3541" posz="-5.9800" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="135" posx="-6.6638" posz="-6.4460" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">assSocketNutcrackerVillage</unit>
+		<unit variation="0" posx="8.3541" posz="-5.9800" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="41" posx="-1.8855" posz="-5.7931" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">SPCPathBlock3</unit>
 		<unit variation="147" posx="4.5044" posz="-6.4837" orientx="-1.0000" orienty="0.0000" orientz="0.0002">zpXmassWorkshopProp</unit>
+		<unit variation="59" posx="-5.9493" posz="-2.1182" orientx="0.0000" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="1" posx="-2.8949" posz="-0.4102" orientx="1.0000" orienty="0.0000" orientz="-0.0002">PropsPoles</unit>
 		<unit variation="0" posx="3.5167" posz="-1.6138" orientx="1.0000" orienty="0.0000" orientz="-0.0002">PropsPoles</unit>
 		<unit variation="135" posx="-8.1624" posz="-1.2497" orientx="0.9238" orienty="0.0000" orientz="-0.3828">zpPropPenalColony</unit>
 		<unit variation="211" posx="-6.2794" posz="3.5023" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">deSPCWaterlooChurchProp</unit>
 		<unit variation="0" posx="-9.0367" posz="1.1853" orientx="1.0000" orienty="0.0000" orientz="-0.0002">SPCPathBlock3</unit>
 		<unit variation="67" posx="7.2450" posz="0.7271" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">deSPCViennaHouseProp</unit>
-		<unit variation="39" posx="8.4634" posz="1.4109" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="0" posx="8.4634" posz="1.4109" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
 		<unit variation="11" posx="-9.0255" posz="-0.5405" orientx="0.0002" orienty="0.0000" orientz="1.0000">dePropsResourceCratesWood</unit>
 		<unit variation="0" posx="-10.3695" posz="0.4233" orientx="1.0000" orienty="0.0000" orientz="-0.0002">PropsPoles</unit>
 		<unit variation="238" posx="4.0919" posz="1.5571" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">FirewoodPile</unit>
@@ -30,14 +32,14 @@
 		<unit variation="16" posx="-2.6488" posz="5.1558" orientx="-1.0000" orienty="0.0000" orientz="0.0002">dePropsResourceCratesSpecial</unit>
 		<unit variation="155" posx="0.9937" posz="6.8423" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">deSPCViennaHouseProp</unit>
 		<unit variation="87" posx="6.8799" posz="6.4180" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deSPCViennaHouseProp</unit>
-		<unit variation="228" posx="8.4159" posz="6.8290" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">SPCPathBlock2</unit>
+		<unit variation="0" posx="8.4159" posz="6.8290" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">SPCPathBlock2</unit>
 		<unit variation="1" posx="-2.1568" posz="6.1715" orientx="1.0000" orienty="0.0000" orientz="-0.0002">PropsPoles</unit>
 		<unit variation="29" posx="-3.4225" posz="7.4248" orientx="1.0000" orienty="0.0000" orientz="-0.0002">dePropsResourceCratesWood</unit>
 		<unit variation="7" posx="-3.5607" posz="8.3206" orientx="1.0000" orienty="0.0000" orientz="-0.0002">dePropsResourceCratesWood</unit>
 		<unit variation="6" posx="-3.7641" posz="9.1990" orientx="1.0000" orienty="0.0000" orientz="-0.0002">dePropsResourceCratesWood</unit>
 		<unit variation="0" posx="-5.9692" posz="8.9281" orientx="0.0002" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
-		<unit variation="72" posx="1.7590" posz="8.9263" orientx="-0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
-		<unit variation="132" posx="5.4031" posz="9.0455" orientx="-0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="0" posx="1.7590" posz="8.9263" orientx="-0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="0" posx="5.4031" posz="9.0455" orientx="-0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
 	</units>
 	<tiles></tiles>
 </grouping>
