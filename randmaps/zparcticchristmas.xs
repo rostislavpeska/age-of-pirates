@@ -28,9 +28,9 @@ void main(void)
 	string food2 = "elk";
 	string treeType2 = "TreeYukonSnow";
 	string treeType1 = "TreeChristmas";
-	string natType1 = "zpXmassVillage";
+	string natType1 = "zpXmassNutcrackerVillage";
 	string natType2 = "inuitnatives";	
-	string natGrpName1 = "XMass_Village0";
+	string natGrpName1 = "xmass_village_nutcracker_";
 	string natGrpName2 = "native inuit village 0";
 
 /* // original natives - removed by vividlyplain
@@ -114,6 +114,7 @@ void main(void)
 
 	int classIsland=rmDefineClass("island");
 	int classBonusIsland=rmDefineClass("bonus island");
+	int classIce = rmDefineClass("classIce");
 	rmDefineClass("corner");
 
 		// added by vividlyplain
@@ -168,6 +169,9 @@ void main(void)
 	
 	// Decoration avoidance
 	int avoidAll=rmCreateTypeDistanceConstraint("avoid all", "all", 6.0);
+
+	// Avoid Ice
+	int avoidIce = rmCreateClassDistanceConstraint("avoid ice", rmClassID("classIce"), 12.0);
 
 	// VP avoidance
 	int avoidImportantItem = rmCreateClassDistanceConstraint("secrets etc avoid each other", rmClassID("importantItem"), 50.0);
@@ -239,18 +243,18 @@ void main(void)
 
    // Place Ice sheet if Winter.
 
-	/*int IceArea1ID=rmCreateArea("Ice Area 1");
-	rmSetAreaSize(IceArea1ID, 0.5);
+	int IceArea1ID=rmCreateArea("Ice Area 1");
+	rmSetAreaSize(IceArea1ID, 0.6);
 	rmSetAreaLocation(IceArea1ID, 0.46, 0.50);
 	//rmSetAreaTerrainType(IceArea1ID, "great_lakes\ground_ice1_glw");
 	rmSetAreaMix(IceArea1ID, "great_lakes_ice");
-	rmAddAreaToClass(IceArea1ID, classGreatLake);
-	rmSetAreaBaseHeight(IceArea1ID, 0.0);
+	//rmAddAreaToClass(IceArea1ID, classGreatLake);
+	rmSetAreaBaseHeight(IceArea1ID, 2.0);
 		rmAddAreaInfluencePoint(IceArea1ID, 0.54, 0.5);
 		rmSetAreaObeyWorldCircleConstraint(IceArea1ID, false);
 	rmSetAreaSmoothDistance(IceArea1ID, 8);
 	rmSetAreaCoherence(IceArea1ID, 0.8);
-	rmBuildArea(IceArea1ID); */
+	rmBuildArea(IceArea1ID); 
 
 	// ____________________ Player Placement ____________________
 	int teamZeroCount = rmGetNumberPlayersOnTeam(0);
@@ -469,16 +473,31 @@ void main(void)
 
 	// ____________________ Natives ____________________
 	// Native Islands
+	float island1x = 0.50 + rmRandFloat(-0.02,0.02);
+	float island1y = 0.625 + rmRandFloat(-0.08,0.08);
+	float island2x = 0.625 + rmRandFloat(-0.02,0.02);
+	float island2y = 0.50 + rmRandFloat(-0.08,0.08);
+	float island3x = 0.375 + rmRandFloat(-0.02,0.02);
+	float island3y = 0.50 + rmRandFloat(-0.08,0.08);
+	float island4x = 0.50 + rmRandFloat(-0.02,0.02); 
+	float island4y = 0.375 + rmRandFloat(-0.08,0.08);
+
+	if (TeamNum == 2)
+	{
+		island1x = 0.90 + rmRandFloat(-0.02,0.02);
+		island1y = 0.50 + rmRandFloat(-0.08,0.08);
+		island4x = 0.10 + rmRandFloat(-0.02,0.02);
+		island4y = 0.50 + rmRandFloat(-0.08,0.08);
+	}
+
+
 	int natIslandID=rmCreateArea("Native Island 1");
 	rmSetAreaSize(natIslandID, rmAreaTilesToFraction(500));
 	rmSetAreaMix(natIslandID, paintMix); 
 	rmAddAreaToClass(natIslandID, classIsland);
 	rmSetAreaBaseHeight(natIslandID, 4.0);
 	rmSetAreaCoherence(natIslandID, 0.75);
-	if (TeamNum == 2)
-		rmSetAreaLocation(natIslandID, 0.90, 0.50);
-	else
-		rmSetAreaLocation(natIslandID, 0.50, 0.625);
+	rmSetAreaLocation(natIslandID, island1x, island1y);
 	rmBuildArea(natIslandID); 			
 	
 	int natIsland2ID=rmCreateArea("Native Island 2");
@@ -487,7 +506,7 @@ void main(void)
 	rmAddAreaToClass(natIsland2ID, classIsland);
 	rmSetAreaBaseHeight(natIsland2ID, 4.0);
 	rmSetAreaCoherence(natIsland2ID, 0.75);
-	rmSetAreaLocation(natIsland2ID, 0.625, 0.50);
+	rmSetAreaLocation(natIsland2ID, island2x, island2y);
 	rmBuildArea(natIsland2ID); 	
 	
 	int natIsland3ID=rmCreateArea("Native Island 3");
@@ -496,7 +515,7 @@ void main(void)
 	rmAddAreaToClass(natIsland3ID, classIsland);
 	rmSetAreaBaseHeight(natIsland3ID, 4.0);
 	rmSetAreaCoherence(natIsland3ID, 0.75);
-	rmSetAreaLocation(natIsland3ID, 0.375, 0.50);
+	rmSetAreaLocation(natIsland3ID, island3x, island3y);
 	rmBuildArea(natIsland3ID); 	
 	
 	int natIsland4ID=rmCreateArea("Native Island 4");
@@ -505,10 +524,7 @@ void main(void)
 	rmAddAreaToClass(natIsland4ID, classIsland);
 	rmSetAreaBaseHeight(natIsland4ID, 4.0);
 	rmSetAreaCoherence(natIsland4ID, 0.75);
-	if (TeamNum == 2)
-		rmSetAreaLocation(natIsland4ID, 0.10, 0.50);
-	else
-		rmSetAreaLocation(natIsland4ID, 0.50, 0.375);
+	rmSetAreaLocation(natIsland4ID, island4x, island4y);
 	rmBuildArea(natIsland4ID); 	
 	
 	// Set up Natives
@@ -528,7 +544,7 @@ void main(void)
 	int nativeID3 = -1;
 
 	int whichNative = rmRandInt(1,2);
-	int whichVillage = rmRandInt(1,3);
+	int whichVillage = rmRandInt(1,2);
 	
 	nativeID0 = rmCreateGrouping("native A", natGrpName1+whichVillage);
 	nativeID1 = rmCreateGrouping("native B", natGrpName1+whichVillage);
@@ -540,7 +556,24 @@ void main(void)
 	rmAddGroupingToClass(nativeID2, classNative);
 	rmAddGroupingToClass(nativeID3, classNative);
 
-	if (TeamNum == 2) {
+
+	if (whichNative == 1) {
+		rmPlaceGroupingAtLoc(nativeID0, 0, island1x, island1y);
+		rmPlaceGroupingAtLoc(nativeID1, 0, island4x, island4y);
+		rmPlaceGroupingAtLoc(nativeID2, 0, island3x, island3y);
+		rmPlaceGroupingAtLoc(nativeID3, 0, island2x, island2y);
+		}
+	else {
+		rmPlaceGroupingAtLoc(nativeID0, 0, island2x, island2y);
+		rmPlaceGroupingAtLoc(nativeID1, 0, island3x, island3y);
+		rmPlaceGroupingAtLoc(nativeID2, 0, island1x, island1y);
+		rmPlaceGroupingAtLoc(nativeID3, 0, island4x, island4y);
+		}
+
+
+
+
+	/*if (TeamNum == 2) {
 		if (whichNative == 1) {
 			rmPlaceGroupingAtLoc(nativeID0, 0, 0.90, 0.50);
 			rmPlaceGroupingAtLoc(nativeID1, 0, 0.10, 0.50);
@@ -567,7 +600,7 @@ void main(void)
 			rmPlaceGroupingAtLoc(nativeID2, 0, 0.625, 0.50);
 			rmPlaceGroupingAtLoc(nativeID3, 0, 0.375, 0.50);
 			}
-		}
+		}*/
 	
 	// ____________________ Swamp Islands ____________________
 	for (i=0; <10*PlayerNum) {
@@ -576,8 +609,9 @@ void main(void)
 		rmSetAreaMix(swampislandID, swampIslandPaintMix);
 		rmSetAreaWarnFailure(swampislandID, false);
 		rmAddAreaToClass(swampislandID, classIsland);
+		rmAddAreaToClass(swampislandID, classIce);
 		rmSetAreaCoherence(swampislandID, 0.50);
-		rmSetAreaBaseHeight(swampislandID, 4.0);
+		rmSetAreaBaseHeight(swampislandID, 2.0);
 		rmSetAreaObeyWorldCircleConstraint(swampislandID, false);
 		if (TeamNum == 2)
 			rmAddAreaConstraint(swampislandID, avoidIslandTiny);	// short
@@ -597,8 +631,9 @@ void main(void)
 		rmSetAreaMix(bonusIslandID, swampIslandPaintMix);
 		rmSetAreaWarnFailure(bonusIslandID, false);
 		rmAddAreaToClass(bonusIslandID, classIsland);
+		rmAddAreaToClass(bonusIslandID, classIce);
 		rmSetAreaCoherence(bonusIslandID, 0.50);
-		rmSetAreaBaseHeight(bonusIslandID, 4.0);
+		rmSetAreaBaseHeight(bonusIslandID, 2.0);
 		rmSetAreaObeyWorldCircleConstraint(bonusIslandID, false);
 		rmAddAreaConstraint(bonusIslandID, avoidIslandTiny);	
 		rmAddAreaConstraint(bonusIslandID, avoidNativesFar);	
@@ -888,13 +923,14 @@ void main(void)
 	
 	// Starting trees
 	int playerTreeID = rmCreateObjectDef("player trees");
-	rmAddObjectDefItem(playerTreeID, treeType2, 6, 5.0);
+	rmAddObjectDefItem(playerTreeID, treeType2, 10, 5.0);
     rmSetObjectDefMinDistance(playerTreeID, 18);
     rmSetObjectDefMaxDistance(playerTreeID, 18);
 	rmAddObjectDefToClass(playerTreeID, classStartingResource);
 	rmAddObjectDefToClass(playerTreeID, classForest);
 	rmAddObjectDefConstraint(playerTreeID, avoidNativesShort);
 	rmAddObjectDefConstraint(playerTreeID, avoidStartingResources);
+	rmAddObjectDefConstraint(playerTreeID, avoidIce);
 
 	// Extra Starting trees
 	int playerExtraTreeID = rmCreateObjectDef("extra player trees");
@@ -1272,6 +1308,7 @@ if ( cNumberTeams == 2 )
 	rmAddObjectDefConstraint(silverID, avoidGoldFar);
 	rmAddObjectDefConstraint(silverID, avoidStartingResources);
 	rmAddObjectDefConstraint(silverID, avoidTownCenter);
+	rmAddObjectDefConstraint(silverID, avoidIce);
 //	if (PlayerNum == 2) {
 //		rmAddObjectDefConstraint(silverID, avoidPlayerIsland1);
 //		rmAddObjectDefConstraint(silverID, avoidPlayerIsland2);
@@ -1289,7 +1326,7 @@ if ( cNumberTeams == 2 )
 
 	// Trees
 	int mapTreesID=rmCreateObjectDef("map trees");
-	rmAddObjectDefItem(mapTreesID, treeType2, 3, 8.0);
+	rmAddObjectDefItem(mapTreesID, treeType2, 8, 8.0);
 	rmAddObjectDefToClass(mapTreesID, rmClassID("Forest")); 
 	rmSetObjectDefMinDistance(mapTreesID, 20);
 	rmSetObjectDefMaxDistance(mapTreesID, rmXFractionToMeters(0.50));
@@ -1299,6 +1336,7 @@ if ( cNumberTeams == 2 )
 	rmAddObjectDefConstraint(mapTreesID, avoidGoldShort);	
 	rmAddObjectDefConstraint(mapTreesID, avoidStartingResources);
 	rmAddObjectDefConstraint(mapTreesID, shortAvoidImpassableLand);
+	rmAddObjectDefConstraint(mapTreesID, avoidIce);
 	if (PlayerNum == 2) {
 		rmAddObjectDefConstraint(mapTreesID, avoidPlayerIsland1);
 		rmAddObjectDefConstraint(mapTreesID, avoidPlayerIsland2);
@@ -1317,6 +1355,7 @@ if ( cNumberTeams == 2 )
 	rmAddObjectDefConstraint(randTreesID, avoidTownCenterMed);	
 	rmAddObjectDefConstraint(randTreesID, avoidGoldMin);	
 	rmAddObjectDefConstraint(randTreesID, avoidStartingResourcesShort);
+	rmAddObjectDefConstraint(randTreesID, avoidIce);
 //	rmAddObjectDefConstraint(randTreesID, shortAvoidImpassableLand);
 	rmPlaceObjectDefAtLoc(randTreesID, 0, 0.5, 0.5, 10+10*PlayerNum);
 
@@ -1499,12 +1538,13 @@ if ( cNumberTeams == 2 )
 	rmAddObjectDefConstraint(randomEagleTreeID, avoidNuggetMin);
 	rmAddObjectDefConstraint(randomEagleTreeID, avoidKOTH);
 	rmAddObjectDefConstraint(randomEagleTreeID, avoidKingIsland);
+	rmAddObjectDefConstraint(randomEagleTreeID, avoidIce);
 	rmPlaceObjectDefAtLoc(randomEagleTreeID, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers);
 
 	int treeVsLand = rmCreateTerrainDistanceConstraint("tree v. land", "land", true, 2.0);
 	int nearShore=rmCreateTerrainMaxDistanceConstraint("tree v. water", "land", true, 14.0);
 
-	int randomWaterTreeID=rmCreateObjectDef("random tree in water");
+	/*int randomWaterTreeID=rmCreateObjectDef("random tree in water");
 	rmAddObjectDefItem(randomWaterTreeID, "treeBayouMarshSkirmish", 1, 0.0);
 	rmSetObjectDefMinDistance(randomWaterTreeID, 0.0);
 	rmSetObjectDefMaxDistance(randomWaterTreeID, rmXFractionToMeters(0.5));
@@ -1522,14 +1562,15 @@ if ( cNumberTeams == 2 )
 	rmAddObjectDefConstraint(randomWaterTreeID, avoidHunt1Min);
 	rmAddObjectDefConstraint(randomWaterTreeID, avoidHunt2Min);
 	rmAddObjectDefConstraint(randomWaterTreeID, avoidNuggetMin);
+	rmAddObjectDefConstraint(randomWaterTreeID, avoidIce);*/
 
-	int randomTurtlesID=rmCreateObjectDef("random turtles in water");
+	/*int randomTurtlesID=rmCreateObjectDef("random turtles in water");
 	rmAddObjectDefItem(randomTurtlesID, "propTurtles", 1, 3.0);
 	rmSetObjectDefMinDistance(randomTurtlesID, 0.0);
 	rmSetObjectDefMaxDistance(randomTurtlesID, rmXFractionToMeters(0.5));
 	//rmAddObjectDefConstraint(randomTurtlesID, nearShore);
 	rmAddObjectDefConstraint(randomTurtlesID, treeVsLand);
-	rmAddObjectDefConstraint(randomTurtlesID, avoidForestMin);
+	rmAddObjectDefConstraint(randomTurtlesID, avoidForestMin);*/
 
 	int randomWaterRocksID=rmCreateObjectDef("random rocks in water");
 	rmAddObjectDefItem(randomWaterRocksID, "underbrushLake", rmRandInt(3,6), 3.0);
@@ -1540,12 +1581,12 @@ if ( cNumberTeams == 2 )
 	rmAddObjectDefConstraint(randomWaterRocksID, avoidForestMin);
 	
 	//Added by Paul - current particles - change second line to change particle type 
-	int randomWaterFlowID=rmCreateObjectDef("random flow in water");
+	/*int randomWaterFlowID=rmCreateObjectDef("random flow in water");
 	rmAddObjectDefItem(randomWaterFlowID, "RiverEdgeFlow", 1, 0);
 	rmSetObjectDefMinDistance(randomWaterFlowID, 0.0);
 	rmSetObjectDefMaxDistance(randomWaterFlowID, rmXFractionToMeters(0.5));
 	//rmAddObjectDefConstraint(randomWaterFlowID, nearShore);
-	//rmAddObjectDefConstraint(randomWaterFlowID, treeVsLand);
+	//rmAddObjectDefConstraint(randomWaterFlowID, treeVsLand);*/
 
 	int avoidSwans = rmCreateTypeDistanceConstraint("avoids swans", "PropSwan", 80.0);
 	int avoidSwansShort = rmCreateTypeDistanceConstraint("avoids swans short", "PropSwan", 20.0);
@@ -1576,13 +1617,13 @@ if ( cNumberTeams == 2 )
 	rmAddObjectDefConstraint(fishID, fishLand);
 	//rmPlaceObjectDefInArea(fishID, 0, bayID, 3*cNumberNonGaiaPlayers);
 */
-	rmPlaceObjectDefAtLoc(randomWaterTreeID, 0, 0.5, 0.5, 10+cNumberNonGaiaPlayers);
-	rmPlaceObjectDefAtLoc(randomTurtlesID, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers);
-	rmPlaceObjectDefAtLoc(randomWaterRocksID, 0, 0.5, 0.5, 20*cNumberNonGaiaPlayers);
-	rmPlaceObjectDefAtLoc(randSwanID, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers);
-	rmPlaceObjectDefAtLoc(randomDucksID, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers);
+	//rmPlaceObjectDefAtLoc(randomWaterTreeID, 0, 0.5, 0.5, 10+cNumberNonGaiaPlayers);
+	//rmPlaceObjectDefAtLoc(randomTurtlesID, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers);
+	//rmPlaceObjectDefAtLoc(randomWaterRocksID, 0, 0.5, 0.5, 20*cNumberNonGaiaPlayers);
+	//rmPlaceObjectDefAtLoc(randSwanID, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers);
+	//rmPlaceObjectDefAtLoc(randomDucksID, 0, 0.5, 0.5, 2+cNumberNonGaiaPlayers);
 	//added by Paul - change end number for amount
-	rmPlaceObjectDefAtLoc(randomWaterFlowID, 0, 0.5, 0.5, 100*cNumberNonGaiaPlayers);
+	//rmPlaceObjectDefAtLoc(randomWaterFlowID, 0, 0.5, 0.5, 100*cNumberNonGaiaPlayers);
 /*
 	for (i=0; <20)
       {
@@ -1631,18 +1672,28 @@ if ( cNumberTeams == 2 )
 	else
 	{   rmEnableOutlaw("SaloonOutlawRifleman");
 		rmEnableOutlaw("SaloonOutlawRider"); }
+		
 
-	// Add 2 christmas Mercs
-	/*int xmassMercRandInt = rmRandInt(1, 3);  
+	// Add 3 christmas Mercs
+	// NOTE: now that there are more than 3 christmas mers, we need to select them randomly here. 
+	//       Some techs are still tied to cTechzpXmassMercenaries, but it no longer enables mercs
+	int xmassMercRandInt = rmRandInt(1, 4);  
 	if (xmassMercRandInt == 1)
 	{   rmEnableMerc("zpChristmasGrenadier", -1);
-		rmEnableMerc("zpChristmasPolearm", -1); }
+		rmEnableMerc("zpChristmasPolearm", -1); 
+		rmEnableMerc("zpChristmasOrganGun", -1); }
 	else if (xmassMercRandInt == 2)
 	{   rmEnableMerc("zpChristmasGrenadier", -1);
-		rmEnableMerc("zpChristmasOrganGun", -1); }
+		rmEnableMerc("zpChristmasPolearm", -1); 
+		rmEnableMerc("zpChristmasNutcrackerBlunderbussMerc", -1); }
+	else if (xmassMercRandInt == 3)
+	{   rmEnableMerc("zpChristmasGrenadier", -1);
+		rmEnableMerc("zpChristmasOrganGun", -1); 
+		rmEnableMerc("zpChristmasNutcrackerBlunderbussMerc", -1); }
 	else
-	{   rmEnableMerc("zpChristmasPolearm", -1);
-		rmEnableMerc("zpChristmasOrganGun", -1); }*/
+	{   rmEnableMerc("zpChristmasPolearm", -1); 
+		rmEnableMerc("zpChristmasOrganGun", -1); 
+		rmEnableMerc("zpChristmasNutcrackerBlunderbussMerc", -1); }
 
 	// One random one in addition to the festive ones
     int mercRandInt = rmRandInt(1, 9);

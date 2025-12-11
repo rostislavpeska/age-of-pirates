@@ -3465,7 +3465,7 @@
       <string _locid="400152" symbol="cStringNativePreAlly"> "For fifty-three years we've put up with it now! We MUST stop this Christmas from coming! ... But HOW?"</string>
       <string _locid="400153">Nutcracker Village</string>
       <string _locid="400154">zp Nutcracker Village</string>
-      <string _locid="400155" symbol="cStringNativePreAlly"> "Nutcracker PLACEHOLDER"</string>
+      <string _locid="400155" symbol="cStringNativePreAlly"> "A festive town home to a talented toymaker with a penchant for making nutcrackers."</string>
       <string _locid="400156">C3 Light Cannon</string>
       <string _locid="400157">zp C3 Light Cannon</string>
       <string _locid="400158">C6 Hardy Light Cannon</string>
@@ -3530,9 +3530,44 @@
       <!-- Christmas 2025 -->
       <!-- ===================================== -->
       <string _locid="400300">Arctic Archipelago Festive</string>
-      <string _locid="400301">Resources are sparse and solid land is limited in this arctic archipelago frozen over for winter.  \n\nSettlements: Mt. Crumpit, Christmas Village</string>
-      <string _locid="400302">LOAD DETAILS Resources are sparse and solid land is limited in this arctic archipelago frozen over for winter.  \n\nSettlements: Mt. Crumpit, Christmas Village</string>
-
+      <string _locid="400301">Resources are sparse and solid land is limited in this arctic archipelago frozen over for winter.  \n\nSettlements: Inuit, Nutcracker Village</string>
+      <string _locid="400302">LOAD DETAILS Resources are sparse and solid land is limited in this arctic archipelago frozen over for winter.  \n\nSettlements: Inuit, Nutcracker Village</string>
+      <string _locid="400303">Nutcracker Halberdier</string>
+      <string _locid="400304">zp Nutcracker Halberdier</string>
+      <string _locid="400305">Nutcracker soldier armed with a heavy melee weapon.</string>
+      <string _locid="400306">Clara's Nutcracker Army</string>
+      <string _locid="400307">Unlocks Nutcracker Halberdiers and additional techs.</string>
+      <string _locid="400308">Nutcracker Musketeer</string>
+      <string _locid="400309">zp Nutcracker Musketeer</string>
+      <string _locid="400310">Nutcracker soldier armed with a short range musket.</string>
+      <string _locid="400311">Musket armed Nutcracker.</string>
+      <string _locid="400312">Nutcracker with a melee weapon.</string>
+      <string _locid="400313">Christmas Carol Village</string>
+      <string _locid="400314">zp Christmas Carol Village</string>
+      <string _locid="400315" symbol="cStringNativePreAlly"> "Christmas Carol PLACEHOLDER"</string>
+      <string _locid="400316">Hardy Nutcracker Musketeer</string>
+      <string _locid="400317">Seasoned Nutcracker Musketeer</string>
+      <string _locid="400318">Storied Nutcracker Musketeer</string>
+      <string _locid="400319">Hardy Nutcracker Halberdier</string>
+      <string _locid="400320">Seasoned Nutcracker Halberdier</string>
+      <string _locid="400321">Storied Nutcracker Halberdier</string>
+      <string _locid="400322">Nutcracker Blunderbuss Regiment</string>
+      <string _locid="400323">Ships a number of nutcracker blunderbuss mercenaries that are stronger and reload faster than standard Nutcracker Musketeers.</string>
+      <string _locid="400324">Cracked Nuts</string>
+      <string _locid="400325">Supplies your nutcrackers with walnuts to crack, resulting in a food trickle for the rest of the game.</string>
+      <string _locid="400326">Santa's Cookies</string>
+      <string _locid="400327">Put out cookies for santa and he'll deliver presents of wood and gold.</string>
+      <string _locid="400328">Mass Production</string>
+      <string _locid="400329">Replace your nutcrackers with mass produced ones that are cheaper, more numerous, but less effective.</string>
+      <string _locid="400330">Candy Artillery Battery</string>
+      <string _locid="400331">Ships a pair of candy howitzers.</string>
+      <string _locid="400332">Nutcracker Blunderbuss</string>
+      <string _locid="400333">zp Nutcracker Blunderbuss</string>
+      <string _locid="400334">Nutcracker soldier armed with a short range, fast loading blunderbuss.</string>
+      <string _locid="400335">Christmas Village Cocoa Cafe</string>
+      <string _locid="400336">zp PROP Xmass Village Cocoa Cafe</string>
+      <string _locid="400337">Christmas Village Workshop</string>
+      <string _locid="400338">zp PROP Xmass Village Workshop</string>
 
       <!-- ===================================== -->
       <!-- ===================================== -->

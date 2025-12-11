@@ -1868,9 +1868,15 @@
     <tech row="0" page="2" column="1">zpNativeGrinchEmbassy</tech>
     <tech row="0" page="2" column="2">zpNatGrinchBuildingRob</tech>
     <tech row="0" page="2" column="3">zpXmassOvertime</tech>
-    <!--<tech row="0" page="2" column="0">zpNatGrinchLargeBatch</tech>-->
-    <!--<tech row="0" page="2" column="2">zpNatGrinchCostReduction</tech>-->
-    <!--<tech row="0" page="2" column="3">zpNatGrinchChimneyDivers</tech>-->
+
+    <train row="0" page="0" column="1">zpNutcrackerSoldier</train>
+    <train row="0" page="0" column="2">zpNutcrackerSoldierMelee</train>
+    <tech row="0" page="2" column="0">zpNutcrackerExpansion</tech>
+    <tech row="0" page="1" column="1">zpNutcrackerVeteranTech</tech>
+    <tech row="0" page="1" column="1">zpNutcrackerGuardTech</tech>
+    <tech row="0" page="2" column="0">zpNatNutcrackerBlunderbuss</tech>
+    <tech row="0" page="2" column="1">zpNatNutcrackerSantaCookies</tech>
+    <tech row="0" page="2" column="2">zpNatNutcrackerCrackedNuts</tech>
 
     <!-- =============================================== -->
 
@@ -2135,6 +2141,8 @@
     <train row="0" page="0" column="100">zpSantaHelper</train>
     <train row="0" page="0" column="101">zpTilanusGrinch</train>
     <train row="0" page="0" column="102">zpTilanusGrinchMerc</train>
+    <train row="0" page="0" column="103">zpNutcrackerSoldier</train>
+    <train row="0" page="0" column="104">zpNutcrackerSoldierMelee</train>
       <!-- Techs for grinch embassy -->
     <tech row="0" page="2" column="0">zpNatGrinchTeammatePathfinding</tech>
     <tech row="0" page="2" column="1">zpNatGrinchTeammateBuildLimit</tech>
@@ -27901,6 +27909,7 @@
     <train row="0" page="0" column="104">zpChristmasPolearm</train>
     <train row="0" page="0" column="105">zpChristmasGrenadier</train>
     <train row="0" page="0" column="106">zpChristmasOrganGun</train>
+    <train row="0" page="0" column="107">zpChristmasNutcrackerBlunderbussMerc</train>
   </unit>
   <unit name="ypMonastery">
     <train row="0" page="0" column="33">zpMarquesanHorseman</train>
@@ -27914,6 +27923,7 @@
     <train row="0" page="0" column="104">zpChristmasPolearm</train>
     <train row="0" page="0" column="105">zpChristmasGrenadier</train>
     <train row="0" page="0" column="106">zpChristmasOrganGun</train>
+    <train row="0" page="0" column="107">zpChristmasNutcrackerBlunderbussMerc</train>
   </unit>
   <unit name="deLombard">
     <train row="0" page="2" column="33">zpMarquesanHorseman</train>
@@ -27927,6 +27937,7 @@
     <train row="0" page="2" column="104">zpChristmasPolearm</train>
     <train row="0" page="2" column="105">zpChristmasGrenadier</train>
     <train row="0" page="2" column="106">zpChristmasOrganGun</train>
+    <train row="0" page="0" column="107">zpChristmasNutcrackerBlunderbussMerc</train>
   </unit>
   <unit name="dePalace">
     <train row="0" page="0" column="33">zpMarquesanHorseman</train>
@@ -27940,6 +27951,7 @@
     <train row="0" page="0" column="104">zpChristmasPolearm</train>
     <train row="0" page="0" column="105">zpChristmasGrenadier</train>
     <train row="0" page="0" column="106">zpChristmasOrganGun</train>
+    <train row="0" page="0" column="107">zpChristmasNutcrackerBlunderbussMerc</train>
   </unit>
   <unit name="deTavern">
     <train row="0" page="0" column="33">zpMarquesanHorseman</train>
@@ -27953,6 +27965,7 @@
     <train row="0" page="0" column="104">zpChristmasPolearm</train>
     <train row="0" page="0" column="105">zpChristmasGrenadier</train>
     <train row="0" page="0" column="106">zpChristmasOrganGun</train>
+    <train row="0" page="0" column="107">zpChristmasNutcrackerBlunderbussMerc</train>
   </unit>
   <unit id="20315" name="zpEscapedPrisoner">
     <dbid>20315</dbid>
@@ -43054,6 +43067,8 @@
     <train row="0" page="0" column="100">zpSantaHelper</train>
     <train row="0" page="0" column="101">zpTilanusGrinch</train>
     <train row="0" page="0" column="102">zpTilanusGrinchMerc</train>
+    <train row="0" page="0" column="101">zpNutcrackerSoldier</train>
+    <train row="0" page="0" column="102">zpNutcrackerSoldierMelee</train>
 
     <train row="0" page="0" column="81">zpNatPirate</train>
     <train row="0" page="0" column="83">zpNatMalteseGuard</train>
@@ -73690,7 +73705,7 @@
   <dbid>21151</dbid>
   <displaynameid>400153</displaynameid>
   <editornameid>400154</editornameid>
-  <subciv>zpXmassVillage</subciv>
+  <subciv>zpXmassNutcrackerVillage</subciv>
   <socketbuildprotounit>TradingPost</socketbuildprotounit>
   <socketbuildrate>1.0286</socketbuildrate>
   <socketbuildcommandid>deSocketBuildAsian</socketbuildcommandid>
@@ -74510,5 +74525,547 @@
     <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
   </protoaction>
 </unit>
+
+<!-- Christmas 2025 -->
+<unit id="21160" name="zpSocketChristmasCarol">
+  <dbid>21160</dbid>
+  <displaynameid>400313</displaynameid>
+  <editornameid>400314</editornameid>
+  <subciv>zpXmassVictorianVillage</subciv>
+  <socketbuildprotounit>TradingPost</socketbuildprotounit>
+  <socketbuildrate>1.0286</socketbuildrate>
+  <socketbuildcommandid>deSocketBuildAsian</socketbuildcommandid>
+  <obstructionradiusx>4.0000</obstructionradiusx>
+  <obstructionradiusz>4.0000</obstructionradiusz>
+  <maxvelocity>0.0000</maxvelocity>
+  <movementtype>land</movementtype>
+  <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+  <animfile>buildings\trading_post\jesuit_outpost_socket.xml</animfile>
+  <minimapicon>ui\minimap\asian_native_site</minimapicon>
+  <capturedminimapicon>ui\minimap\asian_native_site_c</capturedminimapicon>
+  <portraiticon>resources\art\units\natives\christmass_content\victorian_village.png</portraiticon>
+  <rollovertextid>400315</rollovertextid>
+  <shortrollovertextid>400315</shortrollovertextid>
+  <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+  <los>9.0000</los>
+  <unittype>LogicalTypeBuildingsNotWalls</unittype>
+  <unittype>LogicalTypeShipsAndBuildings</unittype>
+  <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+  <unittype>Socket</unittype>
+  <unittype>NativeSocket</unittype>
+  <unittype>TradePostSocket</unittype>
+  <unittype>Building</unittype>
+  <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+  <unittype>Unattackable</unittype>
+  <unittype>NativeBuilding</unittype>
+  <unittype>EmbellishmentClass</unittype>
+  <unittype>CapturableSocket</unittype>
+  <flag>MinimapDisplayOnTop</flag>
+  <flag>Immoveable</flag>
+  <flag>NoBloodOnDeath</flag>
+  <flag>NoHPBar</flag>
+  <flag>NonAutoFormedUnit</flag>
+  <flag>Doppled</flag>
+  <flag>Invulnerable</flag>
+  <flag>ColorTransformNonGaia</flag>
+  <flag>SelectWithObstruction</flag>
+  <flag>Tracked</flag>
+  <flag>NativePreview</flag>
+  <flag>NotDeleteable</flag>
+  <flag>SocketSubCivAlliance</flag>
+  <flag>ForceUpdateVisualWhenCnverted</flag>
+  <flag>FlattenGround</flag>
+  <flag>EnterHotkeyContext</flag>
+  <tactics>socketcapture.tactics</tactics>
+</unit>
+<unit id="21161" name="zpNutcrackerSoldierMelee">
+  <dbid>21161</dbid>
+  <displaynameid>400303</displaynameid>
+  <editornameid>400304</editornameid>
+  <subciv>zpNativeXmassNutcrackerVillage</subciv>
+  <populationcount>0</populationcount>
+  <buildlimit>16</buildlimit>
+  <obstructionradiusx>0.4900</obstructionradiusx>
+  <obstructionradiusz>0.4900</obstructionradiusz>
+  <formationcategory>Body</formationcategory>
+  <maxvelocity>4.2500</maxvelocity>
+  <maxrunvelocity>6.2500</maxrunvelocity>
+  <movementtype>land</movementtype>
+  <turnrate>18.0000</turnrate>
+  <animfile>units\christmas_units\toy_soldier_melee\toy_soldier_melee.xml</animfile>
+  <impacttype>Flesh</impacttype>
+  <physicsinfo>dude</physicsinfo>
+  <icon>resources\art\units\natives\christmass_content\nutcracker_melee_64x64.png</icon>
+  <portraiticon>resources\art\units\natives\christmass_content\nutcracker_melee.png</portraiticon>
+  <rollovertextid>400305</rollovertextid>
+  <shortrollovertextid>400312</shortrollovertextid>
+  <initialhitpoints>180.0000</initialhitpoints>
+  <maxhitpoints>180.0000</maxhitpoints>
+  <los>12.0000</los>
+  <unitaitype>HandCombative</unitaitype>
+  <trainpoints>33.0000</trainpoints>
+  <rechargetime>60.0000</rechargetime>
+  <bounty>13.0000</bounty>
+  <buildbounty>13.0000</buildbounty>
+  <cost resourcetype="Wood">50.0000</cost>
+  <cost resourcetype="Gold">40.0000</cost>
+  <allowedage>1</allowedage>
+  <armor type="Siege" value="0.2000">
+  </armor>
+  <unittype>LogicalTypeHealed</unittype>
+  <unittype>LogicalTypeValidSharpshoot</unittype>
+  <unittype>LogicalTypeNeededForVictory</unittype>
+  <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+  <unittype>LogicalTypeLandMilitary</unittype>
+  <unittype>LogicalTypeScout</unittype>
+  <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+  <unittype>LogicalTypeGarrisonInShips</unittype>
+  <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+  <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+  <unittype>LogicalTypeVillagersAttack</unittype>
+  <unittype>LogicalTypeHandUnitsAttack</unittype>
+  <unittype>LogicalTypeRangedUnitsAttack</unittype>
+  <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+  <unittype>ConvertsHerds</unittype>
+  <unittype>AbstractHandInfantry</unittype>
+  <unittype>CountsTowardMilitaryScore</unittype>
+  <unittype>AbstractCavalryInfantry</unittype>
+  <unittype>HasBountyValue</unittype>
+  <unittype>Unit</unittype>
+  <unittype>UnitClass</unittype>
+  <unittype>Military</unittype>
+  <unittype>AbstractNativeWarrior</unittype>
+  <unittype>AbstractHeavyInfantry</unittype>
+  <unittype>AbstractInfantry</unittype>
+  <unittype>AbstractPikeman</unittype>
+  <unittype>AbstractArchaicInfantry</unittype>
+  <flag>CollidesWithProjectiles</flag>
+  <flag>ApplyHandicapTraining</flag>
+  <flag>CorpseDecays</flag>
+  <flag>ShowGarrisonButton</flag>
+  <flag>DontRotateObstruction</flag>
+  <flag>ObscuredByUnits</flag>
+  <flag>Tracked</flag>
+  <command page="10" column="1">Stop</command>
+  <command page="10" column="0">Garrison</command>
+  <command page="10" column="7">Delete</command>
+  <command page="11" column="0">Abilities</command>
+  <tactics>pikemanshield.tactics</tactics>
+  <protoaction>
+    <name>BuildingAttack</name>
+    <damage>20.000000</damage>
+    <damagetype>Siege</damagetype>
+    <rof>3.000000</rof>
+  </protoaction>
+  <protoaction>
+    <name>CoverBuildingAttack</name>
+    <damage>10.000000</damage>
+    <damagetype>Siege</damagetype>
+    <rof>3.000000</rof>
+  </protoaction>
+  <protoaction>
+    <name>CoverHandAttack</name>
+    <damage>11.000000</damage>
+    <damagetype>Hand</damagetype>
+    <rof>1.500000</rof>
+    <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">1.600000</damagebonus>
+  </protoaction>
+  <protoaction>
+    <name>DefendHandAttack</name>
+    <damage>22.000000</damage>
+    <damagetype>Hand</damagetype>
+    <rof>1.500000</rof>
+    <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">1.600000</damagebonus>
+  </protoaction>
+  <protoaction>
+    <name>MeleeHandAttack</name>
+    <damage>22.000000</damage>
+    <damagetype>Hand</damagetype>
+    <rof>1.500000</rof>
+    <damagebonus type="AbstractCavalry">2.000000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">1.600000</damagebonus>
+  </protoaction>
+</unit>
+<unit id="21162" name="zpNutcrackerSoldier">
+  <dbid>21162</dbid>
+  <displaynameid>400308</displaynameid>
+  <editornameid>400309</editornameid>
+  <populationcount>0</populationcount>
+  <subciv>zpNativeXmassNutcrackerVillage</subciv>
+  <obstructionradiusx>0.4900</obstructionradiusx>
+  <obstructionradiusz>0.4900</obstructionradiusz>
+  <formationcategory>Ranged</formationcategory>
+  <maxvelocity>4.0000</maxvelocity>
+  <maxrunvelocity>6.0000</maxrunvelocity>
+  <movementtype>land</movementtype>
+  <turnrate>18.0000</turnrate>
+  <buildlimit>16</buildlimit>
+  <animfile>units\christmas_units\toy_soldier\toy_soldier.xml</animfile>
+  <impacttype>Wood</impacttype>
+  <physicsinfo>dude</physicsinfo>
+  <icon>resources\art\units\natives\christmass_content\nutcracker_64x64.png</icon>
+  <portraiticon>resources\art\units\natives\christmass_content\nutcracker.png</portraiticon>
+  <rollovertextid>400310</rollovertextid>
+  <shortrollovertextid>400311</shortrollovertextid>
+  <initialhitpoints>140.0000</initialhitpoints>
+  <maxhitpoints>140.0000</maxhitpoints>
+  <los>14.0000</los>
+  <projectileprotounit>InvisibleProjectile</projectileprotounit>
+  <unitaitype>RangedCombative</unitaitype>
+  <trainpoints>30.0000</trainpoints>
+  <bounty>12.0000</bounty>
+  <buildbounty>12.0000</buildbounty>
+  <cost resourcetype="Wood">90.0000</cost>
+  <allowedage>1</allowedage>
+  <armor type="Hand" value="0.3000">
+  </armor>
+  <unittype>LogicalTypeHealed</unittype>
+  <unittype>LogicalTypeValidSharpshoot</unittype>
+  <unittype>LogicalTypeNeededForVictory</unittype>
+  <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+  <unittype>LogicalTypeLandMilitary</unittype>
+  <unittype>LogicalTypeScout</unittype>
+  <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+  <unittype>LogicalTypeGarrisonInShips</unittype>
+  <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+  <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+  <unittype>LogicalTypeVillagersAttack</unittype>
+  <unittype>LogicalTypeHandUnitsAttack</unittype>
+  <unittype>LogicalTypeRangedUnitsAttack</unittype>
+  <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+  <unittype>Unit</unittype>
+  <unittype>Military</unittype>
+  <unittype>UnitClass</unittype>
+  <unittype>AbstractInfantry</unittype>
+  <unittype>AbstractHeavyInfantry</unittype>
+  <unittype>HasBountyValue</unittype>
+  <unittype>AbstractGunpowderTrooper</unittype>
+  <unittype>Ranged</unittype>
+  <unittype>CountsTowardMilitaryScore</unittype>
+  <unittype>AbstractCavalryInfantry</unittype>
+  <unittype>ConvertsHerds</unittype>
+  <unittype>AbstractRangedInfantry</unittype>
+  <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+  <unittype>AbstractMusketeer</unittype>
+  <unittype>AbstractNativeWarrior</unittype>
+  <flag>CollidesWithProjectiles</flag>
+  <flag>ApplyHandicapTraining</flag>
+  <flag>CorpseDecays</flag>
+  <flag>ShowGarrisonButton</flag>
+  <flag>DontRotateObstruction</flag>
+  <flag>ObscuredByUnits</flag>
+  <flag>Tracked</flag>
+  <command page="10" column="1">Stop</command>
+  <command page="10" column="0">Garrison</command>
+  <command page="10" column="7">Delete</command>
+  <command page="11" column="0">Abilities</command>
+  <tactics>musketBayonet.tactics</tactics>
+  <protoaction>
+    <name>BuildingAttack</name>
+    <damage>20.000000</damage>
+    <damagetype>Siege</damagetype>
+    <rof>3.000000</rof>
+  </protoaction>
+  <protoaction>
+    <name>DefendHandAttack</name>
+    <damage>13.000000</damage>
+    <damagetype>Hand</damagetype>
+    <rof>1.500000</rof>
+    <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">2.250000</damagebonus>
+  </protoaction>
+  <protoaction>
+    <name>DefendRangedAttack</name>
+    <damage>25.000000</damage>
+    <damagetype>Ranged</damagetype>
+    <maxrange>11.000000</maxrange>
+    <rof>3.000000</rof>
+  </protoaction>
+  <protoaction>
+    <name>MeleeHandAttack</name>
+    <damage>13.000000</damage>
+    <damagetype>Hand</damagetype>
+    <rof>1.500000</rof>
+    <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">2.250000</damagebonus>
+  </protoaction>
+  <protoaction>
+    <name>StaggerHandAttack</name>
+    <damage>13.000000</damage>
+    <damagetype>Hand</damagetype>
+    <rof>1.500000</rof>
+    <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">2.250000</damagebonus>
+  </protoaction>
+  <protoaction>
+    <name>StaggerRangedAttack</name>
+    <damage>25.000000</damage>
+    <damagetype>Ranged</damagetype>
+    <maxrange>11.000000</maxrange>
+    <rof>3.000000</rof>
+  </protoaction>
+  <protoaction>
+    <name>VolleyHandAttack</name>
+    <damage>13.000000</damage>
+    <damagetype>Hand</damagetype>
+    <rof>1.500000</rof>
+    <damagebonus type="AbstractCavalry">3.000000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">2.250000</damagebonus>
+  </protoaction>
+  <protoaction>
+    <name>VolleyRangedAttack</name>
+    <damage>25.000000</damage>
+    <damagetype>Ranged</damagetype>
+    <maxrange>11.000000</maxrange>
+    <rof>3.000000</rof>
+  </protoaction>
+</unit>
+<unit id="21163" name="zpChristmasNutcrackerBlunderbussMerc">
+  <dbid>21163</dbid>
+  <displaynameid>400332</displaynameid>
+  <editornameid>400333</editornameid>
+  <populationcount>2</populationcount>
+  <obstructionradiusx>0.4900</obstructionradiusx>
+  <obstructionradiusz>0.4900</obstructionradiusz>
+  <formationcategory>Ranged</formationcategory>
+  <maxvelocity>4.0000</maxvelocity>
+  <maxrunvelocity>6.0000</maxrunvelocity>
+  <movementtype>land</movementtype>
+  <turnrate>18.0000</turnrate>
+  <animfile>units\christmas_units\toy_soldier_blunderbuss\toy_soldier.xml</animfile>
+  <impacttype>Flesh</impacttype>
+  <physicsinfo>dude</physicsinfo>
+  <icon>resources\art\units\natives\christmass_content\nutcracker_bb_64x64.png</icon>
+  <portraiticon>resources\art\units\natives\christmass_content\nutcracker_bb.png</portraiticon>
+  <rollovertextid>400334</rollovertextid>
+  <shortrollovertextid>400334</shortrollovertextid>
+  <initialhitpoints>375.0000</initialhitpoints>
+  <maxhitpoints>375.0000</maxhitpoints>
+  <los>14.0000</los>
+  <projectileprotounit>InvisibleProjectile</projectileprotounit>
+  <unitaitype>RangedCombative</unitaitype>
+  <trainpoints>40.0000</trainpoints>
+  <bounty>20.0000</bounty>
+  <buildbounty>20.0000</buildbounty>
+  <cost resourcetype="Gold">190.0000</cost>
+  <allowedage>2</allowedage>
+  <armor type="Hand" value="0.3">
+  </armor>
+  <unittype>LogicalTypeHealed</unittype>
+  <unittype>LogicalTypeValidSharpshoot</unittype>
+  <unittype>LogicalTypeNeededForVictory</unittype>
+  <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+  <unittype>LogicalTypeLandMilitary</unittype>
+  <unittype>LogicalTypeScout</unittype>
+  <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+  <unittype>LogicalTypeGarrisonInShips</unittype>
+  <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+  <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+  <unittype>LogicalTypeVillagersAttack</unittype>
+  <unittype>LogicalTypeHandUnitsAttack</unittype>
+  <unittype>LogicalTypeRangedUnitsAttack</unittype>
+  <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+  <unittype>AbstractGunpowderTrooper</unittype>
+  <unittype>Ranged</unittype>
+  <unittype>HasBountyValue</unittype>
+  <unittype>AbstractCavalryInfantry</unittype>
+  <unittype>CountsTowardMilitaryScore</unittype>
+  <unittype>AbstractRangedInfantry</unittype>
+  <unittype>LogicalTypeInfantryVolleyTactic</unittype>
+  <unittype>ConvertsHerds</unittype>
+  <unittype>Military</unittype>
+  <unittype>UnitClass</unittype>
+  <unittype>Unit</unittype>
+  <unittype>AbstractInfantry</unittype>
+  <unittype>Mercenary</unittype>
+  <unittype>FortressMercenary</unittype>
+  <unittype>LogicalTypePickableMerc</unittype>
+  <unittype>LogicalTypePickableMercOutlaw</unittype>
+  <unittype>AbstractHeavyInfantry</unittype>
+  <unittype>AbstractMusketeer</unittype>
+  <flag>CollidesWithProjectiles</flag>
+  <flag>ApplyHandicapTraining</flag>
+  <flag>CorpseDecays</flag>
+  <flag>ShowGarrisonButton</flag>
+  <flag>DontRotateObstruction</flag>
+  <flag>ObscuredByUnits</flag>
+  <flag>Tracked</flag>
+  <command page="10" column="1">Stop</command>
+  <command page="10" column="0">Garrison</command>
+  <command page="10" column="7">Delete</command>
+  <command page="11" column="0">Abilities</command>
+  <tactics>musketBayonet.tactics</tactics>
+  <protoaction>
+    <name>BuildingAttack</name>
+    <damage>35.000000</damage>
+    <damagetype>Siege</damagetype>
+    <rof>3.000000</rof>
+  </protoaction>
+  <protoaction>
+    <name>DefendHandAttack</name>
+    <damage>28.000000</damage>
+    <damagetype>Hand</damagetype>
+    <rof>1.500000</rof>
+    <damagebonus type="AbstractCavalry">1.500000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+  </protoaction>
+  <protoaction>
+    <name>DefendRangedAttack</name>
+    <damage>42.000000</damage>
+    <damagetype>Ranged</damagetype>
+    <maxrange>10.000000</maxrange>
+    <rof>1.500000</rof>
+  </protoaction>
+  <protoaction>
+    <name>MeleeHandAttack</name>
+    <damage>28.000000</damage>
+    <damagetype>Hand</damagetype>
+    <rof>1.500000</rof>
+    <damagebonus type="AbstractCavalry">1.500000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+  </protoaction>
+  <protoaction>
+    <name>StaggerHandAttack</name>
+    <damage>28.000000</damage>
+    <damagetype>Hand</damagetype>
+    <rof>1.500000</rof>
+    <damagebonus type="AbstractCavalry">1.500000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+  </protoaction>
+  <protoaction>
+    <name>StaggerRangedAttack</name>
+    <damage>42.000000</damage>
+    <damagetype>Ranged</damagetype>
+    <maxrange>10.000000</maxrange>
+    <rof>1.500000</rof>
+  </protoaction>
+  <protoaction>
+    <name>VolleyHandAttack</name>
+    <damage>28.000000</damage>
+    <damagetype>Hand</damagetype>
+    <rof>1.500000</rof>
+    <damagebonus type="AbstractCavalry">1.500000</damagebonus>
+    <damagebonus type="AbstractLightInfantry">1.500000</damagebonus>
+  </protoaction>
+  <protoaction>
+    <name>VolleyRangedAttack</name>
+    <damage>42.000000</damage>
+    <damagetype>Ranged</damagetype>
+    <maxrange>10.000000</maxrange>
+    <rof>1.500000</rof>
+  </protoaction>
+</unit>
+<unit id="21164" name="zpXmassCocoaCafeProp">
+  <dbid>21164</dbid>
+  <displaynameid>400335</displaynameid>
+  <editornameid>400336</editornameid>
+  <populationcapaddition>10</populationcapaddition>
+  <obstructionradiusx>2.0000</obstructionradiusx>
+  <obstructionradiusz>2.0000</obstructionradiusz>
+  <maxvelocity>0.0000</maxvelocity>
+  <movementtype>land</movementtype>
+  <animfile>units\christmas_units\cocoa_cafe\tavern.xml</animfile>
+  <impacttype>Wood</impacttype>
+  <physicsinfo>house</physicsinfo>
+  <placementfile>villagebuildingsmall.xml</placementfile>
+  <icon>resources\art\buildings\house\house_icon.png</icon>
+  <portraiticon>resources\art\buildings\house\house_portrait.png</portraiticon>
+  <civflagoverride>objects\flags\italian</civflagoverride>
+  <rollovertextid>41971</rollovertextid>
+  <shortrollovertextid>41970</shortrollovertextid>
+  <initialhitpoints>1200.0000</initialhitpoints>
+  <maxhitpoints>1200.0000</maxhitpoints>
+  <los>12.0000</los>
+  <buildpoints>10.0000</buildpoints>
+  <buildlimit>20</buildlimit>
+  <bounty>40.0000</bounty>
+  <buildbounty>20.0000</buildbounty>
+  <cost resourcetype="Wood">100.0000</cost>
+  <buildingworkrate>1.0000</buildingworkrate>
+  <allowedage>0</allowedage>
+  <armor type="Siege" value="0.0000">
+  </armor>
+  <builderlimit>8</builderlimit>
+  <buildingworkrate>0.5000</buildingworkrate>
+  <unittype>BuildingClass</unittype>
+  <unittype>Building</unittype>
+  <unittype>AbstractCityManison</unittype>
+  <flag>DoNotShowOnMiniMap</flag>
+  <flag>CollidesWithProjectiles</flag>
+  <flag>StartsAtFullEfficiency</flag>
+  <flag>Immoveable</flag>
+  <flag>NoBloodOnDeath</flag>
+  <flag>ObscuresUnits</flag>
+  <flag>NoIdleActions</flag>
+  <flag>NonAutoFormedUnit</flag>
+  <flag>Doppled</flag>
+  <flag>SelectWithObstruction</flag>
+  <flag>PaintTextureWhenPlacing</flag>
+  <flag>ColonyBuilding</flag>
+  <flag>ColonyPlacementL</flag>
+  <flag>Tracked</flag>
+  <flag>HasGatherPoint</flag>
+  <flag>ForceToGaia</flag>
+  <flag>NotSelectable</flag>
+  <flag>Invulnerable</flag>
+  <flag>StartOnNoUpdate</flag>
+</unit>
+<unit id="21165" name="zpXmassWorkshopProp">
+  <dbid>21165</dbid>
+  <displaynameid>400337</displaynameid>
+  <editornameid>400338</editornameid>
+  <obstructionradiusx>2.0000</obstructionradiusx>
+  <obstructionradiusz>2.0000</obstructionradiusz>
+  <maxvelocity>0.0000</maxvelocity>
+  <movementtype>land</movementtype>
+  <animfile>units\christmas_units\workshops\workshop.xml</animfile>
+  <impacttype>Wood</impacttype>
+  <physicsinfo>house</physicsinfo>
+  <placementfile>villagebuildingsmall.xml</placementfile>
+  <icon>resources\art\buildings\house\house_icon.png</icon>
+  <portraiticon>resources\art\buildings\house\house_portrait.png</portraiticon>
+  <civflagoverride>objects\flags\italian</civflagoverride>
+  <rollovertextid>41971</rollovertextid>
+  <shortrollovertextid>41970</shortrollovertextid>
+  <initialhitpoints>1200.0000</initialhitpoints>
+  <maxhitpoints>1200.0000</maxhitpoints>
+  <los>12.0000</los>
+  <buildpoints>10.0000</buildpoints>
+  <buildlimit>20</buildlimit>
+  <bounty>40.0000</bounty>
+  <buildbounty>20.0000</buildbounty>
+  <cost resourcetype="Wood">100.0000</cost>
+  <buildingworkrate>1.0000</buildingworkrate>
+  <allowedage>0</allowedage>
+  <armor type="Siege" value="0.0000">
+  </armor>
+  <builderlimit>8</builderlimit>
+  <buildingworkrate>0.5000</buildingworkrate>
+  <unittype>BuildingClass</unittype>
+  <unittype>Building</unittype>
+  <unittype>AbstractCityManison</unittype>
+  <flag>DoNotShowOnMiniMap</flag>
+  <flag>CollidesWithProjectiles</flag>
+  <flag>StartsAtFullEfficiency</flag>
+  <flag>Immoveable</flag>
+  <flag>NoBloodOnDeath</flag>
+  <flag>ObscuresUnits</flag>
+  <flag>NoIdleActions</flag>
+  <flag>NonAutoFormedUnit</flag>
+  <flag>Doppled</flag>
+  <flag>SelectWithObstruction</flag>
+  <flag>PaintTextureWhenPlacing</flag>
+  <flag>ColonyBuilding</flag>
+  <flag>ColonyPlacementL</flag>
+  <flag>Tracked</flag>
+  <flag>HasGatherPoint</flag>
+  <flag>ForceToGaia</flag>
+  <flag>NotSelectable</flag>
+  <flag>Invulnerable</flag>
+  <flag>StartOnNoUpdate</flag>
+</unit>
+
 
 </protomods>

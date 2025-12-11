@@ -36117,7 +36117,7 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+      <!--<effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpChristmasOrganGun</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
@@ -36126,13 +36126,16 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpChristmasPolearm</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpChristmasNutcrackerBlunderbussMerc</target>
+      </effect>-->
       <!--<effect type="TechStatus" status="obtainable">zpXmassGrenadierShadow</effect>-->
     </effects>
   </tech>
   <tech name="zpXmassGrenadierShadow" type="Normal">
     <dbid>50052</dbid>
     <researchpoints>0.0000</researchpoints>
-    <status>OBTAINABLE</status>
+    <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <prereqs>
       <techstatus status="Active">zpXmassMercenaries</techstatus>
@@ -36547,6 +36550,361 @@
       </effect>
     </effects>
   </tech>
+
+  <!-- Christmas 2025 -->
+  <tech name="zpNativeXmassNutcrackerVillage" type="Normal">
+    <dbid>50073</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpNutcrackerExpansion</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+              <target type="ProtoUnit">zpNutcrackerSoldier</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTradeTreatyNutcrackerXmas</effect>
+      <effect type="TechStatus" status="obtainable">zpNativeTreatyNutcrackerXmas</effect>
+      <effect type="TechStatus" status="obtainable">zpIndianFriendshipNutcrackerXmas</effect>
+    
+      <effect type="TechStatus" status="obtainable">zpNutcrackerVeteranTech</effect>
+      <effect type="TechStatus" status="obtainable">zpNutcrackerGuardTech</effect>
+
+      <effect type="TechStatus" status="obtainable">zpNatNutcrackerBlunderbuss</effect>
+      <effect type="TechStatus" status="obtainable">zpNatNutcrackerCrackedNuts</effect>
+      <effect type="TechStatus" status="obtainable">zpNatNutcrackerSantaCookies</effect>
+      <effect type="TechStatus" status="obtainable">zpNatNutcrackerMassProduction</effect>
+      <effect type="TechStatus" status="obtainable">zpNatNutcrackerHowitzers</effect>
+
+      <effect type="TechStatus" status="obtainable">zpSendWorkshopWood</effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpWorkshop</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpNutcrackerExpansion" type ="Normal">
+		<dbid>50074</dbid>
+		<displaynameid>400306</displaynameid>
+  	<researchpoints>40.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\art\units\natives\christmass_content\nutcracker_small.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\art\units\natives\christmass_content\nutcracker_big.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+		<rollovertextid>400307</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>NativeDance</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNutcrackerSoldierMelee</target>
+      </effect>
+      <effect type="CreatePower" protopower="deToySoldiersSound">
+      </effect>
+      <effect type="CommandAdd" tech="zpSendWorkshopWood" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatNutcrackerMassProduction" page="2" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatNutcrackerHowitzers" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+	</tech>
+  <tech name="zpNutcrackerVeteranTech" type="Normal">
+    <dbid>50075</dbid>
+    <displaynameid>400040</displaynameid>
+    <cost resourcetype="Wood">100.0000</cost>
+    <cost resourcetype="Gold">75.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\veteran_infantry\veteran_infantry.png</icon>
+    <rollovertextid>400041</rollovertextid>
+    <flag>UpgradeTech</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldier</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldier</target>
+      </effect>
+      <effect type ="SetName" proto ="zpNutcrackerSoldier" culture ="none" newname ="400316">
+      </effect>
+      <effect type="SetName" proto="zpNutcrackerSoldier" culture="none" newname="400318" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldierMelee</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldierMelee</target>
+      </effect>
+      <effect type ="SetName" proto ="zpNutcrackerSoldierMelee" culture ="none" newname ="400319">
+      </effect>
+      <effect type="SetName" proto="zpNutcrackerSoldierMelee" culture="none" newname="400321" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNutcrackerGuardTech" type="Normal">
+    <dbid>50076</dbid>
+		<displaynameid>400042</displaynameid>
+		<cost resourcetype ="Wood">400.0000</cost>
+		<cost resourcetype ="Gold">300.0000</cost>
+		<researchpoints>10.0000</researchpoints>
+		<status>UNOBTAINABLE</status>
+		<icon>resources\images\icons\techs\guard_infantry\guard_infantry.png</icon>
+		<rollovertextid>400043</rollovertextid>
+		<flag>YPNativeImprovement</flag>
+		<flag>UpgradeTech</flag>
+    <flag>DENativeUnitUpgrade</flag>
+		<flag>CountsTowardMilitaryScore</flag>
+		<prereqs>
+			<techstatus status ="active">Industrialize</techstatus>
+			<techstatus status ="active">zpNutcrackerVeteranTech</techstatus>
+		</prereqs>
+    <effects>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldier</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldier</target>
+      </effect>
+      <effect type ="SetName" proto ="zpNutcrackerSoldier" culture ="none" newname ="400317">
+      </effect>
+      <effect type="SetName" proto="zpNutcrackerSoldier" culture="none" newname="400318" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldierMelee</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldierMelee</target>
+      </effect>
+      <effect type ="SetName" proto ="zpNutcrackerSoldierMelee" culture ="none" newname ="400320">
+      </effect>
+      <effect type="SetName" proto="zpNutcrackerSoldierMelee" culture="none" newname="400321" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTreatyNutcrackerXmas" type="Normal">
+    <dbid>50077</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">HCNativeTreaties</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNutcrackerSoldier" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpIndianFriendshipNutcrackerXmas" type="Normal">
+    <dbid>50078</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNutcrackerSoldier" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpNutcrackerVeteranTech</effect>
+      <effect type="TechStatus" status="active">zpNutcrackerGuardTech</effect>
+    </effects>
+  </tech>
+  <tech name="zpNativeTradeTreatyNutcrackerXmas" type="Normal">
+    <dbid>50079</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatNutcrackerBlunderbuss" type="Normal">
+    <dbid>50080</dbid>
+    <displaynameid>400322</displaynameid>
+    <cost resourcetype="Gold">300.0000</cost>
+    <cost resourcetype="Wood">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\nutcracker_blunderbuss.png</icon>
+    <rollovertextid>400323</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpChristmasNutcrackerBlunderbussMerc" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatNutcrackerCrackedNuts" type="Normal">
+    <dbid>50081</dbid>
+    <displaynameid>400324</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\nutcracker_crackednuts.png</icon>
+    <rollovertextid>400325</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="1.25" subtype="ResourceTrickleRate" resource="Food" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatNutcrackerSantaCookies" type="Normal">
+    <dbid>50082</dbid>
+    <displaynameid>400326</displaynameid>
+    <cost resourcetype="Food">300.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\nutcracker_santacookies.png</icon>
+    <rollovertextid>400327</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="1" subtype="FreeHomeCityUnit" unittype="GiftWood" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1" subtype="FreeHomeCityUnit" unittype="GiftCoin" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatNutcrackerMassProduction" type="Normal">
+    <dbid>50083</dbid>
+    <displaynameid>400328</displaynameid>
+    <cost resourcetype="Gold">200.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\nutcracker_massproduction.png</icon>
+    <rollovertextid>400329</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="0.65" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldier</target>
+      </effect>
+      <effect type="Data" amount="0.65" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldier</target>
+      </effect>
+      <effect type="Data" amount="0.65" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldierMelee</target>
+      </effect>
+      <effect type="Data" amount="0.65" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldierMelee</target>
+      </effect>
+
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldier</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldierMelee</target>
+      </effect>
+
+      <effect type="Data" amount="0.6" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldier</target>
+      </effect>
+      <effect type="Data" amount="0.6" subtype="TrainPoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldierMelee</target>
+      </effect>
+      <effect type="Data" amount="0.5" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldier</target>
+      </effect>
+      <effect type="Data" amount="0.5" subtype="Cost" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldier</target>
+      </effect>
+      <effect type="Data" amount="0.5" subtype="Cost" resource="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldierMelee</target>
+      </effect>
+      <effect type="Data" amount="0.5" subtype="Cost" resource="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpNutcrackerSoldierMelee</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatNutcrackerHowitzers" type="Normal">
+    <dbid>50084</dbid>
+    <displaynameid>400330</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Wood">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\nutcracker_howitzers.png</icon>
+    <rollovertextid>400331</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPNativeImprovement</flag>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpCandyHowitzer" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatNutcrackerWoodWorkshop" type="Normal">
+    <dbid>50085</dbid>
+    <displaynameid>400034</displaynameid>
+    <cost resourcetype="Food">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\art\units\natives\christmass_content\workshop_64x64.png</icon>
+    <rollovertextid>400033</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>CheckLandHCGatherPoint</flag>
+    <flag>YPNativeImprovement</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpWorkshopWagon" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="SetName" proto="zpWorkshop" culture="none" newname="400034">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNutcrackerExpansionShadow" type="Normal">
+    <dbid>50086</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpNutcrackerExpansion</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" action="SpawnWoodGifts" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpWorkshop</target>
+      </effect>
+    </effects>
+  </tech>
+
 
 
   <!-- ====================================== -->

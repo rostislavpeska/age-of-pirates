@@ -1,0 +1,24 @@
+<animfile>
+  <component>musket
+    <logic type="Tech">
+      <none>
+        <assetreference type="GrannyModel">
+          <file>units\infantry_ranged\strelet\strelet_musket_age02</file>
+        </assetreference>
+      </none>
+      <zpChristmasVeteranTech>
+        <assetreference type="GrannyModel">
+          <file>units\infantry_ranged\strelet\strelet_musket_age03</file>
+        </assetreference>
+      </zpChristmasVeteranTech>
+      <zpChristmasGuardTech>
+        <assetreference type="GrannyModel">
+          <file>units\infantry_ranged\strelet\strelet_musket_age04</file>
+        </assetreference>
+      </zpChristmasGuardTech>
+    </logic>
+  </component>
+  <anim>Idle
+    <component>musket</component>
+  </anim>
+</animfile>

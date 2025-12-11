@@ -1497,17 +1497,26 @@ void main(void)
 	{   rmEnableOutlaw("SaloonOutlawRifleman");
 		rmEnableOutlaw("SaloonOutlawRider"); }
 
-	// Add 2 christmas Mercs
-	/*int xmassMercRandInt = rmRandInt(1, 3);  
+	// Add 3 christmas Mercs
+	// NOTE: now that there are more than 3 christmas mers, we need to select them randomly here. 
+	//       Some techs are still tied to cTechzpXmassMercenaries, but it no longer enables mercs
+	int xmassMercRandInt = rmRandInt(1, 4);  
 	if (xmassMercRandInt == 1)
 	{   rmEnableMerc("zpChristmasGrenadier", -1);
-		rmEnableMerc("zpChristmasPolearm", -1); }
+		rmEnableMerc("zpChristmasPolearm", -1); 
+		rmEnableMerc("zpChristmasOrganGun", -1); }
 	else if (xmassMercRandInt == 2)
 	{   rmEnableMerc("zpChristmasGrenadier", -1);
-		rmEnableMerc("zpChristmasOrganGun", -1); }
+		rmEnableMerc("zpChristmasPolearm", -1); 
+		rmEnableMerc("zpChristmasNutcrackerBlunderbussMerc", -1); }
+	else if (xmassMercRandInt == 3)
+	{   rmEnableMerc("zpChristmasGrenadier", -1);
+		rmEnableMerc("zpChristmasOrganGun", -1); 
+		rmEnableMerc("zpChristmasNutcrackerBlunderbussMerc", -1); }
 	else
-	{   rmEnableMerc("zpChristmasPolearm", -1);
-		rmEnableMerc("zpChristmasOrganGun", -1); }*/
+	{   rmEnableMerc("zpChristmasPolearm", -1); 
+		rmEnableMerc("zpChristmasOrganGun", -1); 
+		rmEnableMerc("zpChristmasNutcrackerBlunderbussMerc", -1); }
 
 	// One random one in addition to the festive ones
     int mercRandInt = rmRandInt(1, 9);
