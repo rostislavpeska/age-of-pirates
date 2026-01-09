@@ -1,0 +1,231 @@
+<animfile>
+    <definebone>Bone_front_wake</definebone>
+    <definebone>Bone_sidewake</definebone>
+    <definebone>bone_main</definebone>
+    <definebone>bone_banner_a1</definebone>
+    <definebone>bone_banner_a2</definebone>
+    <definebone>Bone_front_bombard</definebone>
+    <definebone>Bone_middle_bombard</definebone>
+    <definebone>Bone_front_wake_right</definebone>
+    <definebone>Bone_front_wake_left</definebone>
+    <definebone>Bone_sidewake</definebone>
+    <definebone>bone_launchpoint</definebone>
+    <definebone>bone_fuse</definebone>
+    <definebone>bone_cart</definebone>
+    <definebone>bone_muzzlel01</definebone>
+    <definebone>bone_muzzlel02</definebone>
+    <definebone>bone_muzzlel03</definebone>
+    <definebone>bone_muzzlel04</definebone>
+    <definebone>bone_muzzlel05</definebone>
+    <definebone>bone_muzzlel06</definebone>
+    <definebone>bone_muzzlel07</definebone>
+    <definebone>bone_muzzlel08</definebone>
+    <definebone>bone_muzzlel09</definebone>
+    <definebone>bone_muzzlel10</definebone>
+    <definebone>bone_muzzlel11</definebone>
+    <definebone>bone_muzzlel12</definebone>
+    <definebone>bone_muzzlel13</definebone>
+    <definebone>bone_muzzlel14</definebone>
+    <definebone>bone_muzzlel15</definebone>
+    <definebone>bone_muzzlel16</definebone>
+    <definebone>bone_muzzler01</definebone>
+    <definebone>bone_muzzler02</definebone>
+    <definebone>bone_muzzler03</definebone>
+    <definebone>bone_muzzler04</definebone>
+    <definebone>bone_muzzler05</definebone>
+    <definebone>bone_muzzler06</definebone>
+    <definebone>bone_muzzler07</definebone>
+    <definebone>bone_muzzler08</definebone>
+    <definebone>bone_muzzler09</definebone>
+    <definebone>bone_muzzler10</definebone>
+    <definebone>bone_muzzler11</definebone>
+    <definebone>bone_muzzler12</definebone>
+    <definebone>bone_muzzler13</definebone>
+    <definebone>bone_muzzler14</definebone>
+    <definebone>bone_muzzler15</definebone>
+    <definebone>bone_muzzler16</definebone>
+    <definebone>bone_debris_1a</definebone>
+    <definebone>bone_debris_1b</definebone>
+    <definebone>bone_debris_1c</definebone>
+    <definebone>bone_debris_1d</definebone>
+    <definebone>bone_debris_2a</definebone>
+    <definebone>bone_debris_2b</definebone>
+    <definebone>bone_debris_2c</definebone>
+    <definebone>bone_debris_2d</definebone>
+    <definebone>bone_debris_2e</definebone>
+    <definebone>bone_debris_3a</definebone>
+    <definebone>bone_debris_3b</definebone>
+    <definebone>bone_debris_4a</definebone>
+    <definebone>bone_debris_4b</definebone>
+    <definebone>bone_debris_4c</definebone>
+    <definebone>bone_debris_5a</definebone>
+    <definebone>bone_debris_5b</definebone>
+    <definebone>bone_debris_5c</definebone>
+    <definebone>bone_debris_6a</definebone>
+    <definebone>bone_debris_6b</definebone>
+    <definebone>bone_debris_6c</definebone>
+    <definebone>bone_f1</definebone>
+    <attachment>IdleWaterFoam
+        <component>Idlefoam
+            <assetreference type="popcornFx">
+                <file>water_effects\idle_waterFoam_large.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>Idlefoam</component>
+        </anim>
+    </attachment>
+    <attachment>MoveWaterFoam
+        <component>Movefoam
+            <assetreference type="popcornFx">
+                <file>water_effects\move_waterFoam_large.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>Movefoam</component>
+        </anim>
+    </attachment>
+    <attachment>DeathWaterFoam
+        <component>Deathfoam
+            <assetreference type="popcornFx">
+                <file>water_effects\death_waterFoam_Xlarge.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>Deathfoam</component>
+        </anim>
+    </attachment>
+    <attachment>Death_EXP
+        <component>exp
+            <assetreference type="popcornFx">
+                <file>units\spc\fire_ship\Exp_frigate_ship.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>exp</component>
+        </anim>
+    </attachment>
+    <attachment>Death_EXP_Wood
+        <component>exp
+            <assetreference type="popcornFx">
+                <file>projectiles\ship_debris_wood.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>exp</component>
+        </anim>
+    </attachment>
+    <attachment>boat flag
+        <component>l
+            <assetreference type="ClothFlag">
+                <flag>
+                    <blending>alphatest_color</blending>
+                    <specialtexture></specialtexture>
+                    <width>2.00</width>
+                    <height>1.00</height>
+                </flag>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>l</component>
+        </anim>
+    </attachment>
+    <attachment>pendentflag_a2
+        <component>flag
+            <assetreference type="ClothFlag">
+                <flag>
+                    <blending>alphatest_nocolor</blending>
+                    <texture>buildings\flags\pendent_yellow</texture>
+                    <width>3.00</width>
+                    <height>0.80</height>
+                </flag>
+            </assetreference>
+        </component>
+        <anim>Idle
+            <component>flag</component>
+        </anim>
+    </attachment>
+    	<attachment>
+		pendentflag_a3
+		<component>
+			flag
+			<assetreference type="ClothFlag">
+				<flag>
+					<blending>alphatest_color</blending>
+					<texture>buildings\flags\pendent01</texture>
+					<width>2.00</width>
+					<height>1.00</height>
+				</flag>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>flag</component>
+		</anim>
+	</attachment>
+    <component>ModelComp
+        <assetreference type="GrannyModel">
+            <file>units\naval\vasa_galleon\swedish_vasa_ship05_model</file>
+        </assetreference>
+        <decal>
+            <effecttype>default</effecttype>
+            <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+            <width>12.00</width>
+            <height>20.00</height>
+        </decal>
+        <watersplash>
+            <texture>units\naval\colony_ship\colony_ship_hullmask</texture>
+            <width>10.0</width>
+            <height>10.0</height>
+        </watersplash>
+    </component>
+    <component>Death
+        <assetreference type="GrannyModel">
+            <file>units\naval\vasa_galleon\swedish_vasa_ship05_deathmodel</file>
+        </assetreference>
+        <decal>
+            <effecttype>default</effecttype>
+            <selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+            <width>12.00</width>
+            <height>20.00</height>
+        </decal>
+        <watersplash>
+            <texture>units\naval\colony_ship\colony_ship_hullmask</texture>
+            <width>10.0</width>
+            <height>10.0</height>
+        </watersplash>
+    </component>
+    <anim>Idle
+        <assetreference type="GrannyAnim">
+            <file>units\naval\vasa_galleon\swedish_vasa_ship05_idle_anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+        <simskeleton>
+            <model>units\naval\vasa_galleon\swedish_vasa_ship05_model</model>
+        </simskeleton>
+        <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        <attach a="pendentflag_a3" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"/>
+        <attach a="pendentflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"/>
+    </anim>
+    <anim>Walk
+        <assetreference type="GrannyAnim">
+            <file>units\naval\vasa_galleon\swedish_vasa_ship05_walk_anim</file>
+        </assetreference>
+        <component>ModelComp</component>
+        <simskeleton>
+            <model>units\naval\vasa_galleon\swedish_vasa_ship05_model</model>
+        </simskeleton>
+        <attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        <attach a="pendentflag_a3" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"/>
+        <attach a="pendentflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"/>
+    </anim>
+    <anim>Death
+        <assetreference type="GrannyAnim">
+            <file>units\naval\vasa_galleon\swedish_vasa_ship05_deathanim</file>
+        </assetreference>
+        <component>Death</component>
+        <attach a="Death_EXP" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        <attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        <attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+    </anim>
+</animfile>
