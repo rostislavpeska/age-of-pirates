@@ -1,0 +1,170 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\trade\trade_ships\textures\trade_ship_03_mata_Basecolor">
+      </texture>
+      <texture name="Normals" override="units\trade\trade_ships\textures\trade_ship_03_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\trade\trade_ships\textures\trade_ship_03_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\ostinder\textures\ostinder_sails_matb_Basecolor">
+      </texture>
+      <texture name="Normals" override="units\trade\trade_ships\textures\trade_ship_03_matb_Normals">
+      </texture>
+      <texture name="Masks" override="units\trade\trade_ships\textures\trade_ship_03_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\dock_props\atlas\dock_props_mata_Basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\dock_props\atlas\dock_props_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\dock_props\atlas\dock_props_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\dock_props\textures\new_net_matb_Basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\dock_props\textures\new_net_matb_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\dock_props\textures\new_net_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+       <texture name="BaseColor" override="units\naval\galleon\textures\galleon_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\naval\galleon\textures\galleon_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\naval\galleon\textures\galleon_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matf">
+   <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\swedish\swedish_vasa_ship\textures\vasa_mate_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\swedish\swedish_vasa_ship\textures\vasa_mate_normals">
+      </texture>
+      <texture name="Masks" override="homecity\swedish\swedish_vasa_ship\textures\vasa_mate_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matg">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\dutch\hc_harbor_dutch\textures\hc_harbor_dutch_mata_Basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\dutch\hc_harbor_dutch\textures\hc_harbor_dutch_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\dutch\hc_harbor_dutch\textures\hc_harbor_dutch_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="math">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+       <texture name="BaseColor" override="homecity\swedish\swedish_vasa_ship\textures\vasa_math_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\swedish\swedish_vasa_ship\textures\vasa_math_normals">
+      </texture>
+      <texture name="Masks" override="homecity\swedish\swedish_vasa_ship\textures\vasa_math_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mati">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\asians_accessories\textures\Asians_accessories_mata_Basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\asians_accessories\textures\Asians_accessories_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\asians_accessories\textures\Asians_accessories_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matj">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\props_colony\influence_crate\texture\influence_crate_mata_Basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\props_colony\influence_crate\texture\influence_crate_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\props_colony\influence_crate\texture\influence_crate_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matk">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\props_additional\props_treasure\atlas\props_treasure_Basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\props_additional\props_treasure\atlas\props_treasure_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\props_additional\props_treasure\atlas\props_treasure_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matl">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\props_colony\xp_crate\textures\xp_crate_a_Basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\props_colony\xp_crate\textures\xp_crate_a_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\props_colony\xp_crate\textures\xp_crate_a_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matm">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\props_colony\xp_crate\textures\xp_crate_b_Basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\props_colony\xp_crate\textures\xp_crate_b_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\props_colony\xp_crate\textures\xp_crate_b_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matn">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\field_hospital\west_shelter_age2\textures\west_shelter_age2_mata_Basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\field_hospital\west_shelter_age2\textures\west_shelter_age2_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\field_hospital\west_shelter_age2\textures\west_shelter_age2_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
