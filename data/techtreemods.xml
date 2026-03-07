@@ -35304,6 +35304,26 @@
       <effect type="TechStatus" status="obtainable">zpSPCArtPatronCathedral</effect>
     </effects>
   </tech>
+  <tech name="ImperialManOWar">
+    <effects>
+      <effect meergemode="add" type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCRegalShip</target>
+      </effect>
+      <effect meergemode="add" type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCRegalShip</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="ypImperialManOWar">
+    <effects>
+      <effect meergemode="add" type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCRegalShip</target>
+      </effect>
+      <effect meergemode="add" type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCRegalShip</target>
+      </effect>
+    </effects>
+  </tech>
   
   
 

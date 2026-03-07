@@ -3304,8 +3304,13 @@
       <string _locid="303305">Can build Cherry Orchard</string>
       <string _locid="303306">Build Cherry Orchard</string>
       <string _locid="303307">ZP Cherry Orchard Socket</string>
-
-
+      <string _locid="303308">Regal Ship</string>
+      <string _locid="303309">ZP RegalShip</string>
+      <string _locid="303310">Heavy double-hulled warship. Stronger than Frigate but slower. Very powerful broadside attack.</string>
+      <string _locid="303311">Heavy double-hulled warship</string>
+      <string _locid="303312">Armed Merchantman</string>
+      <string _locid="303313">ZP Armed Merchantman</string>
+      <string _locid="303314">East Indiaman armed with cannons.</string>
 
 
       <!-- ======================================== -->
