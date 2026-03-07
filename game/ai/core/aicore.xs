@@ -2698,7 +2698,8 @@ minInterval 5
       
       if (cvOkToExplore == true)
       {
-         findEnemyBase(); // Create a one-off explore plan to probe the likely enemy base location.
+         // AssertiveWall: Disable this. It quits early and causes issues, and exploreMonitor already looks for enemy base
+         //findEnemyBase(); // Create a one-off explore plan to probe the likely enemy base location.
          
          if ((gIslandMap == true) && (gSPC == false))
          {

@@ -94,9 +94,9 @@ void main(void)
 	rmEnableLocalWater(false);
 	rmSetBaseTerrainMix("rockies_snow");
 	rmTerrainInitialize("water");
-	rmSetMapType("bayou");
-	rmSetMapType("water");
-	//	rmSetMapType("grass");
+	rmSetMapType("yukon"); 
+	rmSetMapType("snow");
+	rmSetMapType("land");
 	rmSetWorldCircleConstraint(true);
 
 	// Choose mercs.
