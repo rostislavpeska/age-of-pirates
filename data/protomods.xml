@@ -75297,5 +75297,158 @@
   <flag>StartOnNoUpdate</flag>
 </unit>
 
+<!-- Battleship Challenge -->
+<unit id="22100" name="zpScenarioBattleship">
+  <dbid>22100</dbid>
+  <displaynameid>110591</displaynameid>
+  <editornameid>410000</editornameid>
+  <buildlimit>1</buildlimit>
+  <obstructionradiusx>2.9900</obstructionradiusx>
+  <obstructionradiusz>2.9900</obstructionradiusz>
+  <formationcategory>Ranged</formationcategory>
+  <maxvelocity>4.7500</maxvelocity>
+  <maxrunvelocity>6.7500</maxrunvelocity>
+  <movementtype>water</movementtype>
+  <turnrate>0.5000</turnrate>
+  <animfile>units\naval\battleship\battleship.xml</animfile>
+  <impacttype>Wood</impacttype>
+  <physicsinfo>house</physicsinfo>
+  <icon>resources\art\units\naval\battleship\battleship_icon.png</icon>
+  <portraiticon>resources\art\units\naval\battleship\battleship_portrait.png</portraiticon>
+  <rollovertextid>110594</rollovertextid>
+  <shortrollovertextid>110593</shortrollovertextid>
+  <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
+  <initialhitpoints>4500.0000</initialhitpoints>
+  <maxhitpoints>4500.0000</maxhitpoints>
+  <unitregen idletimeout="3.5">0.2500</unitregen>
+  <los>40.0000</los>
+  <projectileprotounit>Cannonball</projectileprotounit>
+  <unitaitype>RangedCombative</unitaitype>
+  <trainpoints>70.0000</trainpoints>
+  <bounty>200.0000</bounty>
+  <buildbounty>200.0000</buildbounty>
+  <cost resourcetype="Gold">1000.0000</cost>
+  <cost resourcetype="Wood">1000.0000</cost>
+  <maxcontained>100</maxcontained>
+  <allowedage>2</allowedage>
+  <armor type="Ranged" value="0.75000">
+  </armor>
+  <detonationprotoaction>ExplosionAttack</detonationprotoaction>
+  <detonationcommand>deBattleshipDetonate</detonationcommand>
+  <detonationhitpointthreshold>0.2500</detonationhitpointthreshold>
+  <detonationhitpointdecay>1.0000</detonationhitpointdecay>
+  <unittype>LogicalTypeNavalMilitary</unittype>
+  <unittype>LogicalTypeValidSabotage</unittype>
+  <unittype>LogicalTypeNeededForVictory</unittype>
+  <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+  <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+  <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+  <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+  <unittype>LogicalTypeVillagersAttack</unittype>
+  <unittype>LogicalTypeHandUnitsAttack</unittype>
+  <unittype>LogicalTypeShipsAndBuildings</unittype>
+  <unittype>LogicalTypeRangedUnitsAttack</unittype>
+  <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+  <unittype>Ship</unittype>
+  <unittype>Transport</unittype>
+  <unittype>Unit</unittype>
+  <unittype>UnitClass</unittype>
+  <unittype>Military</unittype>
+  <unittype>AbstractWarShip</unittype>
+  <unittype>HasBountyValue</unittype>
+  <unittype>Ranged</unittype>
+  <unittype>CountsTowardMilitaryScore</unittype>
+  <unittype>MercType5</unittype>
+    <train row="0" page="6" column="0">Outpost</train>
+    <train row="0" page="6" column="1">TradingPost</train>
+    <train row="0" page="6" column="2">deSPCRowboat</train>
+    <train row="0" page="6" column="3">FishingBoat</train>
+    <train row="0" page="6" column="4">Canoe</train>
+    <train row="0" page="6" column="5">Caravel</train>
+    <tech row="0" page="2" column="1">Bayonet</tech>
+  <flag>TieToWaterSurface</flag>
+  <flag>CollidesWithProjectiles</flag>
+  <flag>DontRotateObstruction</flag>
+  <flag>ApplyHandicapTraining</flag>
+  <flag>NavalUnit</flag>
+  <flag>DecalStickToWaterSurface</flag>
+  <flag>NoFadeOnDeath</flag>
+  <flag>FadeOutDecalOnDeath</flag>
+  <flag>CanAutoHeal</flag>
+  <flag>NoBloodOnDeath</flag>
+  <flag>HeroName1</flag>
+  <flag>HasGatherPoint</flag>
+  <flag>AllowAutoGarrison</flag>
+  <flag>ObscuresUnits</flag>
+  <flag>ForceBuildingData</flag>
+  <flag>Tracked</flag>
+  <contain indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
+  <contain>LogicalTypeGarrisonInShips</contain>
+  <command page="10" column="5">Eject</command>
+  <command page="10" column="1">Stop</command>
+  <command page="10" column="7">Delete</command>
+  <command page="10" column="3">SetGatherPointMilitary</command>
+  <command page="11" column="0">Abilities</command>
+  <tactics>steamer.tactics</tactics>
+  <protoaction>
+    <name>BroadsideAttack</name>
+    <damage>32.000000</damage>
+    <damagetype>Siege</damagetype>
+    <maxrange>32.000000</maxrange>
+    <rof>0.050000</rof>
+    <damagecap>80.000000</damagecap>
+    <damagebonus type="Ship">1.500000</damagebonus>
+    <damagearea>1.000000</damagearea>
+    <damageflags>GAIAEnemy</damageflags>
+  </protoaction>
+  <protoaction>
+    <name>RangedAttack</name>
+    <damage>35.000000</damage>
+    <damagetype>Siege</damagetype>
+    <maxrange>32.000000</maxrange>
+    <rof>0.500000</rof>
+    <damagecap>70.000000</damagecap>
+    <damagebonus type="AbstractArtillery">0.340000</damagebonus>
+    <damagearea>1.000000</damagearea>
+    <damageflags>GAIAEnemy</damageflags>
+  </protoaction>
+  <protoaction>
+    <name>Heal</name>
+    <type>Heal</type>
+    <rate type="Ship">25.000000</rate>
+  </protoaction>
+  <protoaction>
+    <name>ExplosionAttack</name>
+    <damage>300.000000</damage>
+    <damagetype>Siege</damagetype>
+    <rof>0.00001</rof>
+    <maxrange>20.000000</maxrange>
+    <damagebonus type="Ship">5.000000</damagebonus>
+    <damagebonus type="Building">5.000000</damagebonus>
+    <damagebonus type="HuntedResource">0.000001</damagebonus>
+    <damagebonus type="AbstractVillager">0.200000</damagebonus>
+    <damagearea>20.000000</damagearea>
+    <damageflags>SelfAllyEnemy</damageflags>
+  </protoaction>
+  <protoaction>
+    <name>LongRangeAttack</name>
+    <damage>200.000000</damage>
+    <damagetype>Siege</damagetype>
+    <maxrange>64.000000</maxrange>
+    <rof>20.000000</rof>
+    <damagecap>400.000000</damagecap>
+    <damagebonus type="Building">10.000000</damagebonus>
+    <damagearea>8.000000</damagearea>
+    <damageflags>GAIAEnemy</damageflags>
+    <damagebonus type="AbstractDock">0.500000</damagebonus>
+    <damagebonus type="AbstractVillager">0.200000</damagebonus>
+    <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+  </protoaction>
+  <protoaction>
+    <name>Build</name>
+    <rate type="TradingPost">3.000000</rate>
+    <rate type="Outpost">3.000000</rate>
+  </protoaction>
+</unit>
 
 </protomods>
