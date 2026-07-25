@@ -63,6 +63,14 @@
     <nauticallevelname>64989</nauticallevelname>
     <icontexture>resources\art\trade_route\trade2.png</icontexture>
     <nauticalicontexture>resources\art\units\asians\shared\rickshaw\rickshaw2_icon_portrait.png</nauticalicontexture>
+    <upgrade>
+      <from>arctic1</from>
+      <to>arctic2</to>
+    </upgrade>
+    <upgrade>
+      <from>arctic_water_trail</from>
+      <to>arctic_water2_trail</to>
+    </upgrade>
   </level>
   <level>
     <upgrade>
@@ -110,6 +118,14 @@
     <nauticallevelname>31652</nauticallevelname>
     <icontexture>resources\art\trade_route\trade3.png</icontexture>
     <nauticalicontexture>resources\art\trade_route\trade3.png</nauticalicontexture>
+    <upgrade>
+      <from>arctic2</from>
+      <to>arctic3</to>
+    </upgrade>
+    <upgrade>
+      <from>arctic_water2_trail</from>
+      <to>arctic_water3_trail</to>
+    </upgrade>
   </level>
   <buildresourceaward>
   </buildresourceaward>
