@@ -36,7 +36,7 @@ REPO = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)),
 SKIP_TOP = {".git", ".github", ".claude", "docs", "scripts", "playground"}
 
 # Attributes that identify a record, in priority order.
-KEY_ATTRS = ("name", "id", "type", "unit", "protounit", "tech")
+KEY_ATTRS = ("name", "id", "type", "unit", "protounit", "proto", "tech", "resourcetype")
 
 # Records identified by child elements rather than an attribute or <name>.
 # Add an entry here when `report` flags a tag as not-keyable but it does have a
@@ -133,17 +133,29 @@ def record_key(el, tag_count):
     return None
 
 
-def records(root):
-    """-> ({tag: {key: element}}, unkeyable_count)."""
+def tag_counts(root):
     counts = {}
     for c in root:
         if not callable(c.tag):
             counts[c.tag] = counts.get(c.tag, 0) + 1
+    return counts
+
+
+def records(root, counts=None):
+    """-> ({tag: {key: element}}, unkeyable_tags).
+
+    `counts` must be the COMBINED per-tag counts of both sides. Deciding
+    singleton-vs-list from one side alone is asymmetric: a tag appearing once in
+    vanilla and twice in the mod would be keyed SINGLETON on one side and by text
+    on the other, so vanilla's record would look dropped when it is present.
+    """
+    if counts is None:
+        counts = tag_counts(root)
     out, unkeyable = {}, set()
     for c in root:
         if callable(c.tag):
             continue
-        k = record_key(c, counts[c.tag])
+        k = record_key(c, counts.get(c.tag, 1))
         if k is None:
             unkeyable.add(c.tag)
             continue
@@ -218,8 +230,11 @@ def analyse(rel, key, mod_dir, index, loose):
         a.status = f"root mismatch ({mod.tag} vs {van.tag})"
         return a
 
-    mrec, mu = records(mod)
-    vrec, vu = records(van)
+    combined = tag_counts(mod)
+    for t, n in tag_counts(van).items():
+        combined[t] = max(combined.get(t, 0), n)
+    mrec, mu = records(mod, combined)
+    vrec, vu = records(van, combined)
     a.unkeyable = mu | vu
     if a.unkeyable:
         a.status = "not-keyable:" + ",".join(sorted(a.unkeyable))
