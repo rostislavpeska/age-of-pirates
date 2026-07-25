@@ -1219,6 +1219,9 @@
       <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
+      <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
       <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="Mill" relativity="BasePercent">
         <target type="ProtoUnit">AbstractWagon</target>
       </effect>
@@ -4792,6 +4795,9 @@
       <effect type="Data" action="Gather" amount="1.10" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
+      <effect type="Data" action="Gather" amount="1.10" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
       <effect type="Data" action="Gather" amount="1.10" subtype="WorkRate" unittype="Plantation" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
@@ -6965,6 +6971,9 @@
         <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
           <target type="ProtoUnit">AbstractVillager</target>
         </effect>
+        <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
+          <target type="ProtoUnit">AbstractVillager</target>
+        </effect>
         <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Food" unittype="ypRicePaddy" relativity="BasePercent">
           <target type="ProtoUnit">AbstractVillager</target>
         </effect>
@@ -7076,6 +7085,9 @@
           <target type="ProtoUnit">AbstractVillager</target>
         </effect>
         <effect type="Data" action="Gather" amount="1.20" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
+          <target type="ProtoUnit">AbstractVillager</target>
+        </effect>
+        <effect type="Data" action="Gather" amount="1.20" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
           <target type="ProtoUnit">AbstractVillager</target>
         </effect>
         <effect type="Data2" action="Gather" amount="1.20" subtype="WorkRateSpecific" resource="Food" unittype="ypRicePaddy" relativity="BasePercent">
@@ -7750,7 +7762,7 @@
       <techstatus status="Active">HCNativeTreaties</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatMersSettlementMilitia" relativity="Absolute">
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatMercSettlementMilitia" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -7765,7 +7777,7 @@
       <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatMersSettlementMilitia" relativity="Absolute">
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatMercSettlementMilitia" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -8405,6 +8417,9 @@
       <effect type="Data" action="Gather" amount="1.07" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
+      <effect type="Data" action="Gather" amount="1.07" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
       <effect type="Data" action="Gather" amount="1.07" subtype="WorkRate" unittype="Mill" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
@@ -8444,6 +8459,9 @@
         <target type="ProtoUnit">deHacienda</target>
       </effect>
       <effect type="Data" action="Gather" amount="1.07" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.07" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
       <effect type="Data" action="Gather" amount="1.07" subtype="WorkRate" unittype="Mill" relativity="BasePercent">
@@ -8673,6 +8691,9 @@
       <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
+      <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
       <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="ypBerryBuilding" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
@@ -8746,6 +8767,9 @@
         <target type="ProtoUnit">AbstractFishingBoat</target>
       </effect>
       <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
       <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="ypBerryBuilding" relativity="BasePercent">
@@ -14538,6 +14562,9 @@
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
       <effect type="Data" action="Gather" amount="1.30" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.30" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
       <effect type="Data2" action="Gather" amount="1.30" subtype="WorkRateSpecific" resource="Food" unittype="ypRicePaddy" relativity="BasePercent">
@@ -26828,6 +26855,9 @@
       <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
+      <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
       <effect type="Data" action="Gather" amount="1.150" subtype="WorkRate" unittype="Plantation" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
@@ -33372,6 +33402,9 @@
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
       <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
       <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="Plantation" relativity="BasePercent">
