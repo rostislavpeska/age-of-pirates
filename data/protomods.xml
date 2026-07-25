@@ -64561,6 +64561,7 @@
     <shortrollovertextid>122503</shortrollovertextid>
     <initialhitpoints>165.0000</initialhitpoints>
     <maxhitpoints>165.0000</maxhitpoints>
+    <rechargetime>20.0000</rechargetime>
     <los>16.0000</los>
     <recharge init="0" type="Attacks">15.0000</recharge>
     <autoattackrange>16.0000</autoattackrange>
