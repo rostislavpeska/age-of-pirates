@@ -52,7 +52,7 @@
           </soundset>
         </choice>
         <choice name="Japanese">
-          <soundset name="PortugueseFrigateSelect">
+          <soundset name="JapaneseShipsSelect">
           </soundset>
         </choice>
         <choice name="Chinese">
@@ -212,8 +212,16 @@
           </soundset>
         </choice>
         <choice name="Japanese">
-          <soundset name="PortugueseFrigateAcknowledge">
-          </soundset>
+          <targetlogic>
+            <choice name="default">
+              <soundset name="JapaneseShipsAcknowledge">
+              </soundset>
+            </choice>
+            <choice name="enemy">
+              <soundset name="JapaneseShipsAttack">
+              </soundset>
+            </choice>
+          </targetlogic>
         </choice>
         <choice name="Chinese">
           <soundset name="PortugueseFrigateAcknowledge">
