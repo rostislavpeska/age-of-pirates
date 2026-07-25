@@ -4,7 +4,7 @@
   <attachment>goose_attach
     <component>goose
         <assetreference type="GrannyModel">
-            <file>units\animals\goose\Goose</file>
+            <file>units\animals\goose\zpgoose</file>
         </assetreference>
     </component>
     <anim>Idle

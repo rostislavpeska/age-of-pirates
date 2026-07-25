@@ -27051,10 +27051,10 @@
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
     <wanderdistance>4</wanderdistance>
-    <animfile>units\animals\pig\pig.xml</animfile>
+    <animfile>units\animals\pig\zppig.xml</animfile>
     <impacttype>Animal</impacttype>
-    <icon>resources\art\units\animals\pig\pig_portrait.png</icon>
-    <portraiticon>resources\art\units\animals\pig\pig_portrait.png</portraiticon>
+    <icon>resources\art\units\animals\pig\feral_pig_portrait.png</icon>
+    <portraiticon>resources\art\units\animals\pig\feral_pig_portrait.png</portraiticon>
     <rollovertextid>301187</rollovertextid>
     <shortrollovertextid>301316</shortrollovertextid>
     <initialhitpoints>20.0000</initialhitpoints>
@@ -37756,16 +37756,15 @@
     <maxrunvelocity>6.0000</maxrunvelocity>
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
-    <wanderdistance>4</wanderdistance>
     <animfile>units\animals\pig\pig.xml</animfile>
     <impacttype>Animal</impacttype>
-    <icon>resources\art\units\animals\pig\pig_portrait.png</icon>
+    <icon>resources\art\units\animals\pig\pig_icon.png</icon>
     <portraiticon>resources\art\units\animals\pig\pig_portrait.png</portraiticon>
     <rollovertextid>22828</rollovertextid>
     <shortrollovertextid>25709</shortrollovertextid>
     <initialhitpoints>20.0000</initialhitpoints>
     <maxhitpoints>20.0000</maxhitpoints>
-    <los>9.0000</los>
+    <los>3.0000</los>
     <unitaitype>HerdAnimal</unitaitype>
     <trainpoints>10.0000</trainpoints>
     <buildlimit>30</buildlimit>
@@ -37775,8 +37774,8 @@
     </sharedbuildlimitunittypes>
     <bounty>0.0000</bounty>
     <cost resourcetype="Food">100.0000</cost>
-    <carrycapacity resourcetype="Food">400.0000</carrycapacity>
-    <initialresource resourcetype="Food">50.0000</initialresource>
+    <carrycapacity resourcetype="Food">300.0000</carrycapacity>
+    <initialresource resourcetype="Food">100.0000</initialresource>
     <resourcedecay>0.7500</resourcedecay>
     <resourcesubtype>meat</resourcesubtype>
     <allowedage>0</allowedage>
@@ -37801,7 +37800,6 @@
     <flag>CivSpecificText</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>InvulnerableIfGaia</flag>
-    <flag>ColorTransformNonGaia</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ConstrainOrientation</flag>
     <flag>CorpseDecays</flag>
@@ -37823,6 +37821,10 @@
     <command page="10" column="0">Garrison</command>
     <command page="10" column="1">Stop</command>
     <tactics>herd.tactics</tactics>
+    <protoaction>
+      <name>AutoConvert</name>
+      <active>0</active>
+    </protoaction>
     <protoaction>
       <name>AutoGatherFood</name>
       <rate type="Food">0.200000</rate>
@@ -59767,7 +59769,7 @@
     <movementtype>land</movementtype>
     <turnrate>18.0000</turnrate>
     <wanderdistance>3</wanderdistance>
-    <animfile>units\animals\goose\goose.xml</animfile>
+    <animfile>units\animals\goose\zpgoose.xml</animfile>
     <impacttype>Animal</impacttype>
     <icon>resources\art\units\animals\goose\goose_portrait.png</icon>
     <portraiticon>resources\art\units\animals\goose\goose_portrait.png</portraiticon>
