@@ -6889,6 +6889,8 @@
       <rate type="deHacienda" resource="Food">0.500000</rate>
       <rate type="deHacienda" resource="Gold">0.340000</rate>
       <rate type="deHacienda" resource="Wood">0.500000</rate>
+      <rate type="deFishingHole">0.670000</rate>
+      <rate type="AbstractFolwark">0.500000</rate>
     </protoaction>
     <protoaction>
       <name>HandAttack</name>
@@ -7693,6 +7695,8 @@
       <rate type="deHacienda" resource="Food">0.500000</rate>
       <rate type="deHacienda" resource="Gold">0.340000</rate>
       <rate type="deHacienda" resource="Wood">0.500000</rate>
+      <rate type="deFishingHole">0.670000</rate>
+      <rate type="AbstractFolwark">0.500000</rate>
     </protoaction>
     <protoaction>
       <name>HandAttack</name>
@@ -9110,6 +9114,8 @@
       <rate type="deHacienda" resource="Food">0.500000</rate>
       <rate type="deHacienda" resource="Gold">0.340000</rate>
       <rate type="deHacienda" resource="Wood">0.500000</rate>
+      <rate type="deFishingHole">0.670000</rate>
+      <rate type="AbstractFolwark">0.500000</rate>
     </protoaction>
     <protoaction>
       <name>HandAttack</name>
@@ -10644,6 +10650,8 @@
     <train row="0" page="255" column="0">ypWICharminarGate2</train>
     <train row="0" page="255" column="0">ypWIAgraFort5</train>
     <train row="0" page="255" column="0">ypWIAgraFort4</train>
+    <train row="0" page="6" column="3">deFolwark</train>
+    <train row="0" page="6" column="0">deHouseDanish</train>
     <tech row="0" page="1" column="0">YPWonderJapaneseGiantBuddha3</tech>
     <tech row="0" page="1" column="0">YPWonderJapaneseGiantBuddha4</tech>
     <tech row="0" page="1" column="0">YPWonderJapaneseGoldenPavillion2</tech>
@@ -10790,6 +10798,8 @@
       <rate type="deHacienda" resource="Food">0.500000</rate>
       <rate type="deHacienda" resource="Gold">0.340000</rate>
       <rate type="deHacienda" resource="Wood">0.500000</rate>
+      <rate type="deFishingHole">0.670000</rate>
+      <rate type="AbstractFolwark">0.500000</rate>
     </protoaction>
     <protoaction>
       <name>HandAttack</name>
@@ -11459,6 +11469,8 @@
       <rate type="deHacienda" resource="Food">0.500000</rate>
       <rate type="deHacienda" resource="Gold">0.340000</rate>
       <rate type="deHacienda" resource="Wood">0.500000</rate>
+      <rate type="deFishingHole">0.670000</rate>
+      <rate type="AbstractFolwark">0.500000</rate>
     </protoaction>
     <protoaction>
       <name>HandAttack</name>
@@ -17251,6 +17263,8 @@
     <train row="0" page="1" column="16">zpCatamaran</train>
     <train row="0" page="1" column="17">zpSubmarine</train>
     <train row="0" page="1" column="17">zpSubmarineTransport</train>
+    <train row="0" page="1" column="6">deOutlawWhalingShip</train>
+    <train row="0" page="1" column="5">deGunboat</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -29353,6 +29367,8 @@
     <train row="0" page="255" column="0">ypWICharminarGate2</train>
     <train row="0" page="255" column="0">ypWIAgraFort5</train>
     <train row="0" page="255" column="0">ypWIAgraFort4</train>
+    <train row="0" page="6" column="3">deFolwark</train>
+    <train row="0" page="6" column="0">deHouseDanish</train>
     <tech row="0" page="1" column="0">YPWonderJapaneseGiantBuddha3</tech>
     <tech row="0" page="1" column="0">YPWonderJapaneseGiantBuddha4</tech>
     <tech row="0" page="1" column="0">YPWonderJapaneseGoldenPavillion2</tech>
@@ -29499,6 +29515,8 @@
       <rate type="deHacienda" resource="Food">0.500000</rate>
       <rate type="deHacienda" resource="Gold">0.340000</rate>
       <rate type="deHacienda" resource="Wood">0.500000</rate>
+      <rate type="deFishingHole">0.670000</rate>
+      <rate type="AbstractFolwark">0.500000</rate>
     </protoaction>
     <protoaction>
       <name>HandAttack</name>
@@ -33119,6 +33137,8 @@
     <train row="0" page="6" column="11">ypBarracksJapanese</train>
     <train row="0" page="6" column="11">YPBarracksIndian</train>
     <train row="0" page="6" column="4">deFurTrade</train>
+    <train row="0" page="6" column="3">deFolwark</train>
+    <train row="0" page="6" column="0">deHouseDanish</train>
     <tech row="0" page="1" column="0">YPWonderJapaneseToshoguShrine4</tech>
     <tech row="0" page="1" column="0">YPWonderIndianTowerOfVictory3</tech>
     <tech row="0" page="1" column="0">YPWonderIndianKarniMata5</tech>
@@ -33265,6 +33285,8 @@
       <rate type="deHacienda" resource="Food">0.500000</rate>
       <rate type="deHacienda" resource="Gold">0.340000</rate>
       <rate type="deHacienda" resource="Wood">0.500000</rate>
+      <rate type="deFishingHole">0.670000</rate>
+      <rate type="AbstractFolwark">0.500000</rate>
     </protoaction>
     <protoaction>
       <name>HandAttack</name>
@@ -38883,6 +38905,8 @@
     <train row="0" page="255" column="0">ypWICharminarGate2</train>
     <train row="0" page="255" column="0">ypWIAgraFort5</train>
     <train row="0" page="255" column="0">ypWIAgraFort4</train>
+    <train row="0" page="6" column="3">deFolwark</train>
+    <train row="0" page="6" column="0">deHouseDanish</train>
     <tech row="0" page="1" column="0">YPWonderJapaneseGiantBuddha3</tech>
     <tech row="0" page="1" column="0">YPWonderJapaneseGiantBuddha4</tech>
     <tech row="0" page="1" column="0">YPWonderJapaneseGoldenPavillion2</tech>
@@ -39015,6 +39039,8 @@
       <rate type="deHacienda" resource="Food">0.630000</rate>
       <rate type="deHacienda" resource="Gold">0.430000</rate>
       <rate type="deHacienda" resource="Wood">0.940000</rate>
+      <rate type="deFishingHole">0.830000</rate>
+      <rate type="AbstractFolwark">0.630000</rate>
     </protoaction>
     <protoaction>
       <name>Hunting</name>
@@ -39574,6 +39600,8 @@
     <train row="0" page="255" column="0">ypWICharminarGate2</train>
     <train row="0" page="255" column="0">ypWIAgraFort5</train>
     <train row="0" page="255" column="0">ypWIAgraFort4</train>
+    <train row="0" page="6" column="3">deFolwark</train>
+    <train row="0" page="6" column="0">deHouseDanish</train>
     <tech row="0" page="1" column="0">YPWonderJapaneseGiantBuddha3</tech>
     <tech row="0" page="1" column="0">YPWonderJapaneseGiantBuddha4</tech>
     <tech row="0" page="1" column="0">YPWonderJapaneseGoldenPavillion2</tech>
@@ -39708,6 +39736,8 @@
       <rate type="deHacienda" resource="Food">0.630000</rate>
       <rate type="deHacienda" resource="Gold">0.430000</rate>
       <rate type="deHacienda" resource="Wood">0.940000</rate>
+      <rate type="deFishingHole">0.830000</rate>
+      <rate type="AbstractFolwark">0.630000</rate>
     </protoaction>
     <protoaction>
       <name>Hunting</name>
@@ -46461,6 +46491,7 @@
       <rate type="zpLivestockPenClone">0.500000</rate>
       <rate type="zpSPCTownMill">0.250000</rate>
       <rate type="zpSPCAztecGranary">0.500000</rate>
+      <rate type="deFolwarkLivestock">0.500000</rate>
     </protoaction>
     <protoaction>
       <name>GatherHacienda</name>
@@ -46481,6 +46512,7 @@
       <rate type="zpLivestockPenClone">0.500000</rate>
       <rate type="zpSPCTownMill">0.250000</rate>
       <rate type="zpSPCAztecGranary">0.500000</rate>
+      <rate type="deFolwarkLivestock">0.750000</rate>
     </protoaction>
     <protoaction>
       <name>GatherHacienda</name>
@@ -46501,6 +46533,7 @@
       <rate type="zpLivestockPenClone">0.500000</rate>
       <rate type="zpSPCTownMill">0.250000</rate>
       <rate type="zpSPCAztecGranary">0.500000</rate>
+      <rate type="deFolwarkLivestock">1.000000</rate>
     </protoaction>
     <protoaction>
       <name>GatherHacienda</name>
@@ -53827,6 +53860,8 @@
       <rate type="deHacienda" resource="Food">0.500000</rate>
       <rate type="deHacienda" resource="Gold">0.340000</rate>
       <rate type="deHacienda" resource="Wood">0.500000</rate>
+      <rate type="deFishingHole">0.670000</rate>
+      <rate type="AbstractFolwark">0.500000</rate>
     </protoaction>
     <protoaction>
       <name>HandAttack</name>
@@ -61165,6 +61200,11 @@
     <train row="0" page="6" column="11">ypBarracksJapanese</train>
     <train row="0" page="6" column="11">YPBarracksIndian</train>
     <train row="0" page="6" column="4">deFurTrade</train>
+    <train row="0" page="6" column="3">deFolwark</train>
+    <train row="0" page="6" column="0">deHouseDanish</train>
+    <train row="0" page="6" column="10">deChurchDanish</train>
+    <train row="0" page="6" column="10">deChurchPolish</train>
+    <train row="0" page="6" column="17">deSejm</train>
     <tech row="0" page="1" column="0">YPWonderJapaneseToshoguShrine4</tech>
     <tech row="0" page="1" column="0">YPWonderIndianTowerOfVictory3</tech>
     <tech row="0" page="1" column="0">YPWonderIndianKarniMata5</tech>
@@ -61311,6 +61351,8 @@
       <rate type="deHacienda" resource="Food">0.500000</rate>
       <rate type="deHacienda" resource="Gold">0.340000</rate>
       <rate type="deHacienda" resource="Wood">0.500000</rate>
+      <rate type="deFishingHole">0.670000</rate>
+      <rate type="AbstractFolwark">0.500000</rate>
     </protoaction>
     <protoaction>
       <name>HandAttack</name>
