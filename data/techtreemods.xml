@@ -18474,6 +18474,8 @@
       <effect type="TechStatus" status="unobtainable">DERevolutionHungaryMaltese</effect>
       <effect type="TechStatus" status="unobtainable">DERevolutionFrance</effect>
       <effect type="TechStatus" status="unobtainable">DERevolutionFranceNE</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionLivonia</effect>
+      <effect type="TechStatus" status="unobtainable">DERevolutionWarsaw</effect>
       <effect type="CommandRemove" tech="XPRevolutionLouverture">
           <target type="ProtoUnit">TownCenter</target>
       </effect>
@@ -18588,6 +18590,15 @@
       <effect type="CommandRemove" tech="DERevolutionFranceNE">
           <target type="ProtoUnit">TownCenter</target>
       </effect>
+      <effect type="CommandRemove" tech="DERevolutionLivonia">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionCossackHetmanate">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionWarsaw">
+          <target type="ProtoUnit">TownCenter</target>
+      </effect>
       <effect type="CommandRemove" tech="XPRevolutionLouverture">
           <target type="ProtoUnit">deSPCCommandPost</target>
       </effect>
@@ -18700,6 +18711,15 @@
           <target type="ProtoUnit">deSPCCommandPost</target>
       </effect>
       <effect type="CommandRemove" tech="DERevolutionFranceNE">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionLivonia">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionCossackHetmanate">
+          <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DERevolutionWarsaw">
           <target type="ProtoUnit">deSPCCommandPost</target>
       </effect>
     </effects>
@@ -30542,6 +30562,9 @@
         </target>
       </effect>
       <effect type="SetName" proto ="zpMercTeutonicCavalry" culture ="none" newname="302990">
+      </effect>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="zpMercTeutonicCavalry" relativity="Absolute">
+        <target type="Player" />
       </effect>
     </effects>
   </tech>

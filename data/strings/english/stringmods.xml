@@ -2833,15 +2833,15 @@
       <string _locid="302834">Once Rathaus is destroyed, you lose the game - even if you already finished a cathedral construction!</string>
       <string _locid="302835">You completed the Metropolitan Cathedral!</string>
       <string _locid="302836">%s completed the Metropolitan Cathedral!</string>
-      <string _locid="302837">Eger (Rathaus)</string>
-      <string _locid="302838">Strasbourg (Rathaus)</string>
-      <string _locid="302839">Regensburg (Rathaus)</string>
-      <string _locid="302840">Cologne (Rathaus)</string>
-      <string _locid="302841">Leipzig (Rathaus)</string>
-      <string _locid="302842">Graz (Rathaus)</string>
-      <string _locid="302843">Ulm (Rathaus)</string>
-      <string _locid="302844">Mainz (Rathaus)</string>
-      <string _locid="302845">Pilsen (Rathaus)</string>
+      <string _locid="302837">Eger</string>
+      <string _locid="302838">Strasbourg</string>
+      <string _locid="302839">Regensburg</string>
+      <string _locid="302840">Cologne</string>
+      <string _locid="302841">Leipzig</string>
+      <string _locid="302842">Graz</string>
+      <string _locid="302843">Ulm</string>
+      <string _locid="302844">Mainz</string>
+      <string _locid="302845">Pilsen</string>
       <string _locid="302846">After the death of Charles V. in 1558 the Holy Roman Empire became a federation of independent kingdoms and duchies. Use resources from the whole empire to construct a monumental Metropolitan Cathedral!\n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Complete the construction of the Metropolitan Cathedral and protect your Town center. Multiple Team gameplay or FFA is supported for this historical map. \n\nNative Settlements: Prince Electors, Hussites \n\nShadow aliances: Habsburg, Wettin, Hannover, Wittelsbach and Oldenburg</string>
       <string _locid="302847">Use resources from the whole Empire to construct an amazing Metropolitan Cathedral. Make sure you always have enough resources for the next phase of construction before you get to the next phase of your conquest.</string>
       <string _locid="302848">Upgrades the Cathedral construction to the next level. \n • Increases maximum population capacity by 10. &lt;color=0.0, 1.0, 0.0&gt;\n • Once you start the research, it will continue even if you lose access to the specific Elector House.&lt;/color&gt;</string>

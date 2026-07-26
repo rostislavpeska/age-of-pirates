@@ -3,11 +3,11 @@
     <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="buildings\church\textures\cossack_church_mata_basecolor">
+      <texture name="BaseColor" override="buildings\church\textures\zpcossack_church_mata_basecolor">
       </texture>
-      <texture name="Normals" override="buildings\church\textures\cossack_church_mata_normals">
+      <texture name="Normals" override="buildings\church\textures\zpcossack_church_mata_normals">
       </texture>
-      <texture name="Masks" override="buildings\church\textures\cossack_church_mata_masks">
+      <texture name="Masks" override="buildings\church\textures\zpcossack_church_mata_masks">
       </texture>
     </parameters>
   </submaterial>
