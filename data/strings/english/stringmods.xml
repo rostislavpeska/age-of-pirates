@@ -3306,13 +3306,16 @@
       <string _locid="303307">ZP Cherry Orchard Socket</string>
       <string _locid="303308">Regal Ship</string>
       <string _locid="303309">ZP RegalShip</string>
-      <string _locid="303310">Heavy double-hulled warship. Stronger than Frigate but slower. Very powerful broadside attack.</string>
-      <string _locid="303311">Heavy double-hulled warship</string>
+      <string _locid="303310">Heavy double-hulled war ship. Stronger than Frigate but slower. Very powerful broadside attack.</string>
+      <string _locid="303311">Heavy double-hulled war ship</string>
       <string _locid="303312">Armed Merchantman</string>
       <string _locid="303313">ZP Armed Merchantman</string>
       <string _locid="303314">East Indiaman armed with cannons.</string>
       <string _locid="303315">ZP Tortuga House</string>
       <string _locid="303316">ZP Tortuga Tower</string>
+      <string _locid="303317">Dispatch Vessel</string>
+      <string _locid="303318">ZP Dispatch Vessel</string>
+      <string _locid="303319">Frigate Class heavy steam-powered war ship.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

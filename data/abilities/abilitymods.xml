@@ -422,6 +422,9 @@
   <zpspcregalship>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpspcregalship>
+  <zpdispatchvessel>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpdispatchvessel>
 
   <zpwokoudiver>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
