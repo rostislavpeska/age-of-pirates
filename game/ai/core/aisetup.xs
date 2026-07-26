@@ -2341,11 +2341,6 @@ void init(void)
          }
       }
       
-      if (gTCSearchVector == cInvalidVector)
-      {
-         debugSetup("Could not find gTCSearchVector");
-      }
-
       debugSetup("Creating startup Town Center build plan");
       // Make a town center, pri 100, econ, main base, 1 builder.
       int buildPlan = aiPlanCreate("Startup TC Build plan", cPlanBuild);
