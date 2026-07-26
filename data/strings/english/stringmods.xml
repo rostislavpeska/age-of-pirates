@@ -2873,9 +2873,9 @@
       <string _locid="302874">ZP NAT EU Venetian Fence Brick A</string>
       <string _locid="302875">ZP NAT EU Fence Brick B</string>
       <string _locid="302876">ZP NAT EU Venetian Fence Brick B</string>
-      <string _locid="302877">Teutonic Knight</string>
-      <string _locid="302878">ZP NAT Teutonic Knight</string>
-      <string _locid="302879">ZP NAT Teutonic Knight</string>
+      <string _locid="302877">Order Knight</string>
+      <string _locid="302878">ZP NAT Order Knight</string>
+      <string _locid="302879">ZP NAT Order Knight</string>
       <string _locid="302880">German Crusader and protector of the Eastern regions.</string>
       <string _locid="302881">Hanseatic legionary Footman with lower initial stats. Benefits from promotions.</string>
       <string _locid="302882">ZP NAT Hansa Legion</string>
@@ -2894,9 +2894,9 @@
       <string _locid="302895">Teutonic Fort</string>
       <string _locid="302896">Mounted Crussader</string>
       <string _locid="302897">ZP MERC Mounted Crussader</string>
-      <string _locid="302898">Powerful Teutonic Order Cavalry. Provides healing aura for nearby Teutonic Knights.</string>
+      <string _locid="302898">Powerful Teutonic Order Cavalry. Provides healing aura for nearby Order Knights.</string>
       <string _locid="302899">Zeal</string>
-      <string _locid="302900">Increases damage for following nearby units: Mounted Crussader, Teutonic Knight, Maltese Knight, Maltese Guard</string>
+      <string _locid="302900">Increases damage for following nearby units: Mounted Crussader, Order Knight, Maltese Knight, Maltese Guard, Teutonic Knight</string>
       <string _locid="302901">Kontor Fluyt</string>
       <string _locid="302902">ZP SHP Hansa Kontor Fluyt</string>
       <string _locid="302903">Hanseatic Merchant</string>
@@ -2908,8 +2908,8 @@
       <string _locid="302909">Veteran Hanseatic Legion</string>
       <string _locid="302910">Guard Hanseatic Legion</string>
       <string _locid="302911">Imperial Hanseatic Legion</string>
-      <string _locid="302912">Teutonic Knight Guard</string>
-      <string _locid="302913">Imperial Teutonic Knight</string>
+      <string _locid="302912">Order Knight Guard</string>
+      <string _locid="302913">Imperial Order Knight</string>
       <string _locid="302914">Increases Hanseatic land military attack and hitpoints.</string>
       <string _locid="302915">Kontor Aliance Pact</string>
       <string _locid="302916">Unlocks more Hanseatic units and techs. </string>
@@ -2924,7 +2924,7 @@
       <string _locid="302925">Central Faction</string>
       <string _locid="302926">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHanseatic Merchant \n\nEconomical faction providing you with a special building. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nKontor Trade Center</string>
       <string _locid="302927">Eastern Faction</string>
-      <string _locid="302928">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nTeutonic Knight \n\nTeutonic Order units and techs, military faction. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nEastern Base</string>
+      <string _locid="302928">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nOrder Knight \n\nTeutonic Order units and techs, military faction. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nEastern Base</string>
       <string _locid="302929">Eastern Base</string>
       <string _locid="302930">Ships a Teutonic Fort Wagon able to construct a Teutonic Fort.</string>
       <string _locid="302931">War Cog</string>
@@ -2943,8 +2943,8 @@
       <string _locid="302944">Pfahlrecht</string>
       <string _locid="302945">Constructing Trading Posts has never been easier. Reduces Trading Post costs. Increases Trading Post hitpoints.</string>
       <string _locid="302946">Order's Protection</string>
-      <string _locid="302947">Every Hanseatic Settlement you own spawns 3 Teutonic Knights.</string>
-      <string _locid="302948">Spawn Teutonic Knights</string>
+      <string _locid="302947">Every Hanseatic Settlement you own spawns 3 Order Knights.</string>
+      <string _locid="302948">Spawn Order Knights</string>
       <string _locid="302949">ZP NAT House Hansa Big</string>
       <string _locid="302950">ZP Socket Hansa</string>
       <string _locid="302951">Hamburg (Hansa Kontor)</string>
@@ -2979,11 +2979,11 @@
       <string _locid="302980">Wolkenfahrer</string>
       <string _locid="302981">Perle von Reval</string>
       <string _locid="302982">ZP Hansa Trade Route Ship</string>
-      <string _locid="302983">ZP NAT MERC Teutonic Knight</string>
+      <string _locid="302983">ZP NAT MERC Order Knight</string>
       <string _locid="302984">Crusader Concord</string>
       <string _locid="302985">Unlock Maltese allies trainable from the Teutonic Fort.</string>
       <string _locid="302986">Crusader Legion</string>
-      <string _locid="302987">Ships additional Teutonic Knights to protect your town</string>
+      <string _locid="302987">Ships additional Order Knights to protect your town</string>
       <string _locid="302988">Eastern Commandship</string>
       <string _locid="302989">Upgrades Mounted Crussaders into Teutonic Commanders with higher attack and hitpoints, but increases their polulation cost.</string>
       <string _locid="302990">Teutonic Commander</string>

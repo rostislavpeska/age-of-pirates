@@ -1502,6 +1502,9 @@
   <unit id="2616" name="deDinghy">
     <contain mergeMode='remove' indelay="3.0" outdelay="0.0">AbstractArtillery</contain>
   </unit>
+  <unit id="2932" name="deREVTeutonicKnight">
+    <unittype>AbstractCrussaderKnight</unittype>
+  </unit>
 
 
   <unit id="20007" name="zpSPCQueenAnne">
