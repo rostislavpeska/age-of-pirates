@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- converted from XMB to XML -->
+<animfile>
+<definebone>bone_prop</definebone>
+<definebone>bone_brazier</definebone>
+	<attachment>brazier_fire
+            <component>emiter
+                <assetreference type="popcornFx">
+                    <file>fire\fire_torch_oil.pkfx</file>
+                </assetreference>
+            </component>
+            <anim>Idle
+                <component>emiter</component>
+            </anim>
+        </attachment>
+	<component>
+		building
+        <assetreference type="GrannyModel">
+            <file>buildings\tortuga\tortuga_tower</file>
+        </assetreference>
+        <attach a="brazier_fire" frombone="ATTACHPOINT" tobone="bone_brazier" syncanims="0"></attach>
+    		<decal>
+			<effecttype>default</effecttype>
+			<selectedtexture>shadows_selections\selection_circle_64x64</selectedtexture>
+			<width>4.00</width>
+			<height>4.00</height>
+		</decal>
+	</component>
+	<anim>
+		Idle
+        <assetreference type="GrannyAnim">
+            <file>buildings\tortuga\tortuga_tower_idle</file>
+        </assetreference>
+		<component>building</component>
+	</anim>
+</animfile>

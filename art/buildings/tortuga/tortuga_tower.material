@@ -1,0 +1,90 @@
+<material>
+<submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\town_center\towncenter_generic\textures\towncenter_generic_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\town_center\towncenter_generic\textures\towncenter_generic_matA_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\town_center\towncenter_generic\textures\towncenter_generic_matA_Masks">
+      </texture>
+      <texture name="Details" override="buildings\town_center\towncenter_generic\textures\towncenter_generic_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\naval\fluyt\textures\fluyt_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\naval\fluyt\textures\fluyt_mata_normals">
+      </texture>
+      <texture name="Masks" override="units\naval\fluyt\textures\fluyt_mata_masks">
+      </texture>
+      <texture name="Details" override="buildings\town_center\towncenter_generic\textures\towncenter_generic_matA_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+       <texture name="BaseColor" override="buildings\saloon\textures\saloon_age4_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\saloon\textures\saloon_age4_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\saloon\textures\saloon_age4_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+     <texture name="BaseColor" override="buildings\spc\fort\textures\spc_fort_wall_barracks_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\spc\fort\textures\spc_fort_wall_barracks_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\spc\fort\textures\spc_fort_wall_barracks_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="mate">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\asian_civs\spc\indian_fort\indian_fort walls\textures\indian_ft_barracks_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\asian_civs\spc\indian_fort\indian_fort walls\textures\indian_ft_barracks_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\asian_civs\spc\indian_fort\indian_fort walls\textures\indian_ft_barracks_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matf">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+       <texture name="BaseColor" override="buildings\tortuga\textures\pirate_flag_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\tortuga\textures\pirate_flag_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\tortuga\textures\pirate_flag_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matg">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\african_civs\port\textures\port_age4_matb_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\african_civs\port\textures\port_age4_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\african_civs\port\textures\port_age4_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
