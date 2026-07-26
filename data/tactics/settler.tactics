@@ -90,6 +90,7 @@
     <rate type="zpCongregation" resource="Food">0.600000</rate>
     <rate type="zpCongregation" resource="XP">0.700000</rate>
     <!-- Congregation Gather End -->
+    <typedanim type="deFishingHole">GatherFish</typedanim>
   </action>
   <action>
     <name stringid="69183">NoWork</name>
@@ -232,5 +233,18 @@
     <persistent>1</persistent>
     <rate type="Gold">0.100000</rate>
   </action>
-  <tactic>Normal<speedmodifier>1.0</speedmodifier><action>Build</action><action>Gather</action><action>Discover</action><action>NoWork</action><action>CrateGather</action><action>Hunting</action><action>AutoGatherTrade</action><action>AutoGatherXP</action><action>AutoGatherWoodField</action><action>AutoGatherCoinHunt</action><action>NATAutoGatherCoinAnimal</action><action>NATAutoGatherCoinPlant</action><action priority="100">BuildingAttack</action><action priority="90">ChopAttack</action><action priority="50">SpearAttack</action><action priority="50">BlunderbussAttack</action><action priority="25">HandAttack</action><action priority="20">HandAttackCrate</action><attacktype>LogicalTypeVillagersAttack</attacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget></tactic>
+  <action>
+    <name stringid="110152">IncreaseHPWithUnits</name>
+    <type>LikeBonus</type>
+    <modifyratebytype>1</modifyratebytype>
+    <modifyabstracttype>Settler</modifyabstracttype>
+    <active>0</active>
+    <maxrange>20</maxrange>
+    <rate type="Settler">0.05</rate>
+    <persistent>1</persistent>
+    <modifytype>MaxHP</modifytype>
+    <modifybase>1.0</modifybase>
+    <modifyratecap>1.13</modifyratecap>
+  </action>
+  <tactic>Normal<speedmodifier>1.0</speedmodifier><action>Build</action><action>Gather</action><action>Discover</action><action>NoWork</action><action>CrateGather</action><action>Hunting</action><action>AutoGatherTrade</action><action>AutoGatherXP</action><action>AutoGatherWoodField</action><action>AutoGatherCoinHunt</action><action>NATAutoGatherCoinAnimal</action><action>NATAutoGatherCoinPlant</action><action priority="100">BuildingAttack</action><action priority="90">ChopAttack</action><action priority="50">SpearAttack</action><action priority="50">BlunderbussAttack</action><action priority="25">HandAttack</action><action priority="20">HandAttackCrate</action><attacktype>LogicalTypeVillagersAttack</attacktype><attackresponsetype>LogicalTypeRangedUnitsAttack</attackresponsetype><runaway>0</runaway><autoretarget>1</autoretarget><action>IncreaseHPWithUnits</action></tactic>
 </tactics>

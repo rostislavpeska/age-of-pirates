@@ -734,6 +734,17 @@
     </usemultiple>
   </protounitcommand>
   <protounitcommand>
+    <name>zpNatInuitArcticAcclimationSmall</name>
+    <icon>resources\images\icons\abilities\ability_arctic_acclimation.png</icon>
+    <associatedtech>zpNatInuitArcticAcclimation</associatedtech>
+    <associatedpower>zpNatPowerArcticAcclimation</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>Inuit</subciv>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
+  <protounitcommand>
     <name>TacticCossackRider</name>
     <icon>resources\images\icons\command\cossack_outlaw_off.png</icon>
     <activeicon>resources\images\icons\command\cossack_outlaw_on.png</activeicon>

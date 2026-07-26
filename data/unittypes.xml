@@ -4,6 +4,18 @@
   <unittype>LogicalTypeImprovedByWaterCeremony</unittype>
   <unittype>AbstractConsulate</unittype>
   <unittype>AbstractResourceEnclosure</unittype>
+  <unittype>AbstractTrainingShip</unittype>
+  <unittype>AbstractRegent</unittype>
+  <unittype>AbstractFolwark</unittype>
+  <unittype>AbstractShogunate</unittype>
+  <unittype>LogicalTypeStealthUnit</unittype>
+  <unittype>AbstractGoldenPavillion</unittype>
+  <unittype>AbstractRebuildableWonder</unittype>
+  <unittype>LogicalTypeCanSpawnCattle</unittype>
+  <unittype>AbstractToriiGates</unittype>
+  <unittype>AbstractWhitePagoda</unittype>
+  <unittype>AbstractPorcelainTower</unittype>
+  <unittype>AbstractTowerOfVictory</unittype>
   <unittype>AbstractLegendaryShip</unittype>
   <unittype>AbstractTradeRouteBuilding</unittype>
   <unittype>AbstractArmoredTrain</unittype>

@@ -677,6 +677,7 @@
       <texture distance="3" variance="1">ceylon\ground_shoreline2_ceylon</texture>
       <texture distance="14.0" variance="4">ceylon\ground_sand4_ceylon</texture>
       <texture distance="20.0" variance="4">ceylon\ground_sand1_ceylon</texture>
+      <texture distance="5" variance="1">ceylon\seafloor3_ceylon</texture>
     </beachtextureplacement>
     <shoreline>
       <shorelong name="ShorelineFoam" distance="2.0" randomyaw="false">

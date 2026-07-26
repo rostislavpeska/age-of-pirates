@@ -92,6 +92,24 @@
       <effect type="TechStatus" status="obtainable">zpHabsburgAustrianColonialize</effect>
     </effects>
   </tech>
+  <tech name="zpExtendedInuits" type="Normal">
+    <dbid>41331</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" command="deNatInuitArcticAcclimation">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" command="zpNatInuitArcticAcclimationSmall" page="0" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpInuitAcclimationBig</effect>
+      <effect type="TechStatus" status="obtainable">zpInuitAcclimationSmall</effect>
+      <effect type="CommandAdd" tech="zpNatInuitInfluence" page="1" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
   <tech name="zpChateauRoyalShadow" type="Normal">
     <dbid>40823</dbid>
     <researchpoints>0.0000</researchpoints>
@@ -1217,6 +1235,9 @@
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
       <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
       <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="Mill" relativity="BasePercent">
@@ -4792,6 +4813,9 @@
       <effect type="Data" action="Gather" amount="1.10" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
+      <effect type="Data" action="Gather" amount="1.10" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
       <effect type="Data" action="Gather" amount="1.10" subtype="WorkRate" unittype="Plantation" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
@@ -6965,6 +6989,9 @@
         <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
           <target type="ProtoUnit">AbstractVillager</target>
         </effect>
+        <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
+          <target type="ProtoUnit">AbstractVillager</target>
+        </effect>
         <effect type="Data2" action="Gather" amount="1.15" subtype="WorkRateSpecific" resource="Food" unittype="ypRicePaddy" relativity="BasePercent">
           <target type="ProtoUnit">AbstractVillager</target>
         </effect>
@@ -7076,6 +7103,9 @@
           <target type="ProtoUnit">AbstractVillager</target>
         </effect>
         <effect type="Data" action="Gather" amount="1.20" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
+          <target type="ProtoUnit">AbstractVillager</target>
+        </effect>
+        <effect type="Data" action="Gather" amount="1.20" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
           <target type="ProtoUnit">AbstractVillager</target>
         </effect>
         <effect type="Data2" action="Gather" amount="1.20" subtype="WorkRateSpecific" resource="Food" unittype="ypRicePaddy" relativity="BasePercent">
@@ -7750,7 +7780,7 @@
       <techstatus status="Active">HCNativeTreaties</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatMersSettlementMilitia" relativity="Absolute">
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatMercSettlementMilitia" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -7765,7 +7795,7 @@
       <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatMersSettlementMilitia" relativity="Absolute">
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatMercSettlementMilitia" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -8405,6 +8435,9 @@
       <effect type="Data" action="Gather" amount="1.07" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
+      <effect type="Data" action="Gather" amount="1.07" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
       <effect type="Data" action="Gather" amount="1.07" subtype="WorkRate" unittype="Mill" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
@@ -8444,6 +8477,9 @@
         <target type="ProtoUnit">deHacienda</target>
       </effect>
       <effect type="Data" action="Gather" amount="1.07" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.07" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
       <effect type="Data" action="Gather" amount="1.07" subtype="WorkRate" unittype="Mill" relativity="BasePercent">
@@ -8673,6 +8709,9 @@
       <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
+      <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
       <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="ypBerryBuilding" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
@@ -8746,6 +8785,9 @@
         <target type="ProtoUnit">AbstractFishingBoat</target>
       </effect>
       <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
       <effect type="Data" action="Gather" amount="1.05" subtype="WorkRate" unittype="ypBerryBuilding" relativity="BasePercent">
@@ -9044,214 +9086,6 @@
       </effect>
     </effects>
   </tech>
-  <tech name="zpNativeInuits" type="Normal">
-    <dbid>40262</dbid>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatInuitHarpooner</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpInuitDogVillager</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">Canoe</target>
-      </effect>
-      <effect type="TechStatus" status="obtainable">zpNatInuitHuntingDogs</effect>
-      <effect type="TechStatus" status="obtainable">zpNatInuitInsuksuks</effect>
-      <effect type="TechStatus" status="obtainable">zpChampionInuit</effect>
-      <effect type="TechStatus" status="obtainable">zpNatInuitBlizzardBravers</effect>
-      <effect type="TechStatus" status="obtainable">zpWarriorSocietyInuit</effect>
-      <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
-      <effect type="TechStatus" status="obtainable">NativeTreatyInuit</effect>
-      <effect type="TechStatus" status="obtainable">DEIndianFriendshipInuit</effect>
-      <effect type="TechStatus" status="obtainable">ypNativeTradeTreatyInuit</effect>
-      <effect type="TechStatus" status="obtainable">zpNatInuitInfluence</effect>
-      <effect type="TechStatus" status="obtainable">zpInuitFeeders</effect>
-      <effect type="TechStatus" status="obtainable">zpInuitUmiaks</effect>
-      <effect type="TechStatus" status="obtainable">zpInuitFriends</effect>
-    </effects>
-  </tech>
-  <tech name="zpNatInuitHuntingDogs" type="Normal">
-    <dbid>40263</dbid>
-    <displaynameid>300574</displaynameid>
-    <cost resourcetype="Wood">100.0000</cost>
-    <cost resourcetype="Food">75.0000</cost>
-    <researchpoints>10.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\NatInuitHuntingDogs.png</icon>
-    <rollovertextid>300575</rollovertextid>
-    <flag>CountsTowardEconomicScore</flag>
-    <flag>YPNativeImprovement</flag>
-    <effects>
-      <effect type="Data" action="Gather" amount="1.25" subtype="WorkRate" unittype="Huntable" relativity="BasePercent">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpNatInuitInsuksuks" type="Normal">
-    <dbid>40264</dbid>
-    <displaynameid>300576</displaynameid>
-    <cost resourcetype="Wood">80.0000</cost>
-    <cost resourcetype="Food">50.0000</cost>
-    <researchpoints>10.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\NatInsuksuks.png</icon>
-    <rollovertextid>300577</rollovertextid>
-    <flag>CountsTowardMilitaryScore</flag>
-    <flag>YPNativeImprovement</flag>
-    <effects>
-      <effect type="Data" amount="6.00" subtype="LOS" relativity="Absolute">
-        <target type="ProtoUnit">Building</target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpNatInuitBlizzardBravers" type="Normal">
-    <dbid>40265</dbid>
-    <displaynameid>300578</displaynameid>
-    <cost resourcetype="Food">100.0000</cost>
-    <cost resourcetype="Wood">100.0000</cost>
-    <researchpoints>10.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\NatBlizzardBravers.png</icon>
-    <rollovertextid>300579</rollovertextid>
-    <flag>CountsTowardMilitaryScore</flag>
-    <flag>YPNativeImprovement</flag>
-    <effects>
-      <effect type="Data" amount="1.20" subtype="MaximumVelocity" relativity="BasePercent">
-        <target type="ProtoUnit">AbstractInfantry</target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpWarriorSocietyInuit" type="Normal">
-    <dbid>40266</dbid>
-    <displaynameid>300580</displaynameid>
-    <cost resourcetype="Wood">100.0000</cost>
-    <cost resourcetype="Gold">75.0000</cost>
-    <researchpoints>10.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\warrior_society\warrior_society.png</icon>
-    <rollovertextid>300581</rollovertextid>
-    <flag>YPNativeImprovement</flag>
-    <flag>UpgradeTech</flag>
-    <flag>CountsTowardMilitaryScore</flag>
-    <flag>DENativeUnitUpgrade</flag>
-    <flag>DENoTextMessageIfFree</flag>
-    <prereqs>
-      <techstatus status="Active">Fortressize</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatInuitHarpooner</target>
-      </effect>
-      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatInuitHarpooner</target>
-      </effect>
-      <effect type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300582">
-      </effect>
-      <effect type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300584" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpInuitTorchman</target>
-      </effect>
-      <effect type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpInuitTorchman</target>
-      </effect>
-      <effect type="SetName" proto="zpInuitTorchman" culture="none" newname="300591">
-      </effect>
-      <effect type="SetName" proto="zpInuitTorchman" culture="none" newname="300593" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-    </effects>
-  </tech>
-  <tech name="zpChampionInuit" type="Normal">
-    <dbid>40267</dbid>
-    <displaynameid>300585</displaynameid>
-    <cost resourcetype="Wood">400.0000</cost>
-    <cost resourcetype="Gold">300.0000</cost>
-    <researchpoints>10.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\champion_natives\champion_natives.png</icon>
-    <rollovertextid>300581</rollovertextid>
-    <flag>UpgradeTech</flag>
-    <flag>CountsTowardMilitaryScore</flag>
-    <flag>YPNativeImprovement</flag>
-    <flag>DENativeUnitUpgrade</flag>
-    <flag>DENoTextMessageIfFree</flag>
-    <prereqs>
-      <techstatus status="Active">Industrialize</techstatus>
-      <techstatus status="Active">zpWarriorSocietyInuit</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatInuitHarpooner</target>
-      </effect>
-      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatInuitHarpooner</target>
-      </effect>
-      <effect type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300583">
-      </effect>
-      <effect type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="300584" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpInuitTorchman</target>
-      </effect>
-      <effect type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpInuitTorchman</target>
-      </effect>
-      <effect type="SetName" proto="zpInuitTorchman" culture="none" newname="300592">
-      </effect>
-      <effect type="SetName" proto="zpInuitTorchman" culture="none" newname="300593" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-    </effects>
-  </tech>
-  <tech name="NativeTreatyInuit" type="Normal">
-    <dbid>40268</dbid>
-    <researchpoints>0.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <prereqs>
-      <techstatus status="Active">HCNativeTreaties</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatInuitHarpooner" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="DEIndianFriendshipInuit" type="Normal">
-    <dbid>40269</dbid>
-    <researchpoints>0.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <prereqs>
-      <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="zpNatInuitHarpooner" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="TechStatus" status="active">zpWarriorSocietyInuit</effect>
-      <effect type="TechStatus" status="active">zpChampionInuit</effect>
-    </effects>
-  </tech>
-  <tech name="ypNativeTradeTreatyInuit" type="Normal">
-    <dbid>40270</dbid>
-    <researchpoints>0.0000</researchpoints>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <prereqs>
-      <techstatus status="Active">YPHCNativeTradeTax</techstatus>
-    </prereqs>
-    <effects>
-      <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-    </effects>
-  </tech>
   <tech name ="zpNatInuitInfluence" type ="Normal">
 		<dbid>40271</dbid>
 		<displaynameid>300589</displaynameid>
@@ -9272,9 +9106,6 @@
     <flag>NativeDance</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpInuitTorchman</target>
-      </effect>
-      <effect type="Data" amount="4.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatInuitHarpooner</target>
       </effect>
       <effect type="CommandAdd" tech="zpInuitUmiaks" page="2" column="6">
@@ -9283,7 +9114,7 @@
       <effect type="CommandAdd" tech="zpInuitFriends" page="2" column="7">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" proto="zpInuitTorchman" page="0" column="2">
+      <effect type="CommandAdd" tech="zpInuitFeeders" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -14538,6 +14369,9 @@
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
       <effect type="Data" action="Gather" amount="1.30" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.30" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
       <effect type="Data2" action="Gather" amount="1.30" subtype="WorkRateSpecific" resource="Food" unittype="ypRicePaddy" relativity="BasePercent">
@@ -26828,6 +26662,9 @@
       <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
+      <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
       <effect type="Data" action="Gather" amount="1.150" subtype="WorkRate" unittype="Plantation" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
@@ -32320,74 +32157,6 @@
       </effect>
     </effects>
   </tech>
-  <tech name="zpUnknownAllianceInuits" type="Normal">
-    <dbid>41226</dbid>
-    <displaynameid>300640</displaynameid>
-    <status>UNOBTAINABLE</status>
-    <researchpoints>5.0000</researchpoints>
-    <icon>resources\images\icons\techs\aliance_inuits.png</icon>
-    <flag>Shadow</flag>
-    <effects>
-      <effect civ="InuitNatives" type="Data" amount="1.00" subtype="UpgradeSubCivAlliance" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatInuitHarpooner</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpInuitDogVillager</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">Canoe</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpInuitDogVillager" page="0" column="1">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="TechStatus" status="obtainable">zpWarriorSocietyInuit</effect>
-      <effect type="TechStatus" status="obtainable">zpChampionInuit</effect>
-      <effect type="TechStatus" status="obtainable">zpNatInuitHuntingDogs</effect>
-      <effect type="TechStatus" status="obtainable">zpNatInuitInsuksuks</effect>
-      <effect type="TechStatus" status="obtainable">zpNatInuitBlizzardBravers</effect>
-      <effect type="TechStatus" status="obtainable">zpInuitFeeders</effect>
-      <effect type="CommandAdd" tech="zpWarriorSocietyInuit" page="1" column="25">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpChampionInuit" page="1" column="25">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpNatInuitHuntingDogs" page="1" column="25">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpNatInuitInsuksuks" page="1" column="25">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpNatInuitBlizzardBravers" page="1" column="25">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="CommandAdd" tech="zpInuitFeeders" page="1" column="25">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="TechStatus" status="active">DEUnknownAlliancesShadow</effect>
-    </effects>
-  </tech>
-  <tech name="zpUnknownAllianceInuitsEnabler" type="Normal">
-    <dbid>41227</dbid>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-    <effects>
-      <effect type="TechStatus" status="obtainable">zpUnknownAllianceInuits</effect>
-      <effect type="CommandAdd" tech="zpUnknownAllianceInuits" page="1" column="1">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="Data" amount="-1.00" subtype="AllowedAge" relativity="Absolute">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">NativeEmbassy</target>
-      </effect>
-    </effects>
-  </tech>
   <tech name="zpUnknownAlliancePenalColony" type="Normal">
     <dbid>41228</dbid>
     <displaynameid>300086</displaynameid>
@@ -33372,6 +33141,9 @@
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
       <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="Farm" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractVillager</target>
+      </effect>
+      <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="AbstractFolwark" relativity="BasePercent">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
       <effect type="Data" action="Gather" amount="1.15" subtype="WorkRate" unittype="Plantation" relativity="BasePercent">
@@ -35325,7 +35097,48 @@
     </effects>
   </tech>
   
-  
+  <tech name="zpInuitAcclimationBig" type="Normal">
+    <dbid>41332</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="active">DENatInuitResourcefulness</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="zpInuitAcclimationSmall" type="Normal">
+    <dbid>41333</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="active">DENatInuitResourcefulness</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="zpNatInuitArcticAcclimation" type="Normal">
+    <dbid>41334</dbid>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\abilities\ability_arctic_acclimation.png</icon>
+    <rollovertextid>124593</rollovertextid>
+    <flag>YPNoTextMessage</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DEHideAdvancedRollover</flag>
+  </tech>
+  <!--INUIT EXTENSION-->
+  <tech name="DENatInuitResourcefulness">
+    <effects>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatInuitArcticAcclimation</effect>
+    </effects>
+  </tech>
+  <tech name="DENativeInuit">
+    <effects>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpNatInuitInfluence</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpInuitFriends</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpInuitUmiaks</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpInuitFeeders</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpNatInuitArcticAcclimation</effect>
+    </effects>
+  </tech>
 
 
 
@@ -37614,4 +37427,5 @@ BRITISH
       </effect>
     </effects>
   </tech>-->
+
 </techtreemods>

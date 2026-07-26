@@ -17,15 +17,15 @@ void main(void)
 
    if (rmAllocateSubCivs(3) == true)
    {
-		subCiv0=rmGetCivID("inuitnatives");
-      rmEchoInfo("subCiv0 is inuitnatives "+subCiv0);
+		subCiv0=rmGetCivID("Inuit");
+      rmEchoInfo("subCiv0 is Inuit "+subCiv0);
       if (subCiv0 >= 0)
-         rmSetSubCiv(0, "inuitnatives");
+         rmSetSubCiv(0, "Inuit");
 
-      subCiv1=rmGetCivID("inuitnatives");
-      rmEchoInfo("subCiv1 is inuitnatives "+subCiv1);
+      subCiv1=rmGetCivID("Inuit");
+      rmEchoInfo("subCiv1 is Inuit "+subCiv1);
       if (subCiv1 >= 0)
-			rmSetSubCiv(1, "inuitnatives");
+			rmSetSubCiv(1, "Inuit");
   
 		subCiv2=rmGetCivID("zpscientists");
 		rmEchoInfo("subCiv2 is zpscientists "+subCiv2);
@@ -110,8 +110,8 @@ void main(void)
 
    //Socket Constraints
    int avoidSocket = rmCreateClassDistanceConstraint("avoid socket", rmClassID("Socket"), 10.0);
-   int avoidSocketLong=rmCreateTypeDistanceConstraint("avoid socket long", "zpSocketInuits", 50.0);
-   int avoidSocketLongNootka=rmCreateTypeDistanceConstraint("avoid socket long nootka", "zpSocketInuits", 50.0);
+   int avoidSocketLong=rmCreateTypeDistanceConstraint("avoid socket long", "deSocketInuit", 50.0);
+   int avoidSocketLongNootka=rmCreateTypeDistanceConstraint("avoid socket long nootka", "deSocketInuit", 50.0);
    int avoidSocketLongTrade=rmCreateTypeDistanceConstraint("avoid socket long trade", "SocketTradeRoute", 50.0);
 
    // Bonus Area Constraints
@@ -608,7 +608,7 @@ rmBuildArea(bonusIsland2);
 
    // Inuit West
 
-   if (subCiv1 == rmGetCivID("inuitnatives"))
+   if (subCiv1 == rmGetCivID("Inuit"))
    {  
       int tengri1VillageID = -1;
       int tengri1VillageType = rmRandInt(1,5);
@@ -653,7 +653,7 @@ rmBuildArea(bonusIsland2);
 
    // Nootka
 
-   if (subCiv0 == rmGetCivID("inuitnatives"))
+   if (subCiv0 == rmGetCivID("Inuit"))
    {  
       int nootka1VillageID = -1;
       int nootka1VillageType = rmRandInt(1,5);
@@ -1284,6 +1284,22 @@ rmSetTriggerActive(true);
 rmSetTriggerRunImmediately(true);
 rmSetTriggerLoop(false);
 }
+
+// Inuit extension - unlocks the AoP big button on the DLC Inuit trading post
+
+for(k=1; <= cNumberNonGaiaPlayers) {
+rmCreateTrigger("Extended Inuits Plr"+k);
+rmAddTriggerCondition("Always");
+rmAddTriggerEffect("ZP Set Tech Status (XS)");
+rmSetTriggerEffectParamInt("PlayerID",k);
+rmSetTriggerEffectParam("TechID","cTechzpExtendedInuits");
+rmSetTriggerEffectParamInt("Status",2);
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+}
+
 
 
 // Submarine Training

@@ -684,6 +684,10 @@
       <param name="Ignore" dispname="$$22405$$Ignore Event on Abort" vartype="bool">false</param>
       <param name="Seconds" dispname="$$22293$$Milliseconds" vartype="long">1</param>
       <command>trSoundPlayDialogue("%StringID%", %EventID%, %Ignore%, %Seconds%);</command>
+      <param name="Player" dispname="Player" vartype="player">-1</param>
+      <param name="CharacterStrID" dispname="Character" vartype="stringid"></param>
+      <param name="PortraitStrID" dispname="Portrait" vartype="stringid"></param>
+      <param name="Sound" dispname="Sound" vartype="soundsimple"></param>
     </effect>
     <effect name="Music Mood">
       <param name="MoodID" dispname="$$22407$$Mood ID" vartype="long">0</param>
@@ -4794,6 +4798,36 @@
       <command>}</command>
       <command>}</command>
       <command>rule reosedsefwfrege96 active { if (true) { //</command>
+    </effect>
+    <effect name="Unit: Set Variation">
+      <param name="SrcObject" dispname="Units" vartype="unit">default</param>
+      <param name="Variation" dispname="Variation" vartype="long">0</param>
+      <command>trUnitSelectClear();</command>
+      <command loop="" loopparm="SrcObject">trUnitSelect("%SrcObject%");</command>
+      <command>trUnitSetVariation(%Variation%);</command>
+    </effect>
+    <effect name="Player: Set Global Yield">
+      <param name="Player" dispname="Player" vartype="player">1</param>
+      <param name="Yield" dispname="Yield Rate" vartype="float">1</param>
+      <command>trPlayerSetGlobalYield(%Player%, %Yield%);</command>
+    </effect>
+    <effect name="Scenario: Enable Revolutions">
+      <param name="Enable" dispname="Enable" vartype="bool">true</param>
+      <command>trEnableRevolutions(%Enable%);</command>
+    </effect>
+    <effect name="Protounit: Set Unit Type">
+      <param name="PlayerID" dispname="Player" vartype="player">1</param>
+      <param name="ProtoUnit" dispname="Unit Type" vartype="unittype">Villager</param>
+      <param name="UnitType" dispname="Unit Type" vartype="abstractunittype"></param>
+      <param name="Set" dispname="Set" vartype="bool">true</param>
+      <command>trProtoUnitSetUnitType(%PlayerID%, "%ProtoUnit%", "%UnitType%", %Set%);</command>
+    </effect>
+    <effect name="Protounit: Set Flag">
+      <param name="PlayerID" dispname="Player" vartype="player">1</param>
+      <param name="ProtoUnit" dispname="Unit Type" vartype="unittype">Villager</param>
+      <param name="Flag" dispname="Flag" vartype="protounitflag"></param>
+      <param name="Set" dispname="Set" vartype="bool">true</param>
+      <command>trProtoUnitSetFlag(%PlayerID%, "%ProtoUnit%", "%Flag%", %Set%);</command>
     </effect>
   </effects>
 </trigger>
