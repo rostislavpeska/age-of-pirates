@@ -21,9 +21,9 @@
         <attach a="brazier_fire" frombone="ATTACHPOINT" tobone="bone_brazier" syncanims="0"></attach>
     		<decal>
 			<effecttype>default</effecttype>
-			<selectedtexture>shadows_selections\selection_circle_64x64</selectedtexture>
-			<width>4.00</width>
-			<height>4.00</height>
+			<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+			<width>8.00</width>
+			<height>8.00</height>
 		</decal>
 	</component>
 	<anim>

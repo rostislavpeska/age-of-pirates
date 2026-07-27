@@ -46607,7 +46607,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\tavern\pirate_tavern.xml</animfile>
+    <animfile>buildings\tortuga\tortuga_pub.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Wood</impacttype>
@@ -46957,7 +46957,7 @@
     <obstructionradiusz>4.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
-    <animfile>buildings\tavern\pirate_tavern.xml</animfile>
+    <animfile>buildings\tortuga\tortuga_pub.xml</animfile>
     <deadreplacement>BuildingRubble4x4</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>
     <impacttype>Wood</impacttype>
