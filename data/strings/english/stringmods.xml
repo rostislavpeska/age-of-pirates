@@ -3538,6 +3538,14 @@
       <!-- ===================================== -->
       <!-- ===================================== -->
 
+      <string _locid="400215">Colonial Estate</string>
+      <string _locid="400216">ZP Colonial Estate</string>
+      <string _locid="400217">The pride of the American colonies. Wealthy landowners and gentleman planters who answer to no crown but their own standing, and who arm their tenants to prove it.</string>
+      <string _locid="400218">Estate Militia</string>
+      <string _locid="400219">ZP Estate Militia</string>
+      <string _locid="400220">Estate Economy</string>
+      <string _locid="400221">Naval Inventions</string>
+      <string _locid="400222">Ships a Dispatch Vessel and allows Dispatch Vessels to be trained at the Dock.</string>
     </language>
   </stringtable>
 </stringmods>

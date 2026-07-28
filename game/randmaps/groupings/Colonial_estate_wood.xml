@@ -1,0 +1,206 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>12</width>
+	<height>12</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="124" posx="2.9726" posz="-10.3785" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
+		<unit variation="211" posx="0.8927" posz="-10.0352" orientx="-0.7071" orienty="0.0000" orientz="0.7071">deNatEUPropVilMale</unit>
+		<unit variation="205" posx="7.0474" posz="-11.4916" orientx="-1.0000" orienty="0.0000" orientz="0.0010">zpNatEUPropFencDarkBrick</unit>
+		<unit variation="0" posx="-0.1963" posz="-11.4768" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">zpNativeWallFullB</unit>
+		<unit variation="0" posx="4.1694" posz="-11.4415" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">zpNativeWallFullB</unit>
+		<unit variation="135" posx="9.3992" posz="-10.1558" orientx="-1.0000" orienty="0.0000" orientz="0.0015">zpPropWaterTowerBarrel</unit>
+		<unit variation="33" posx="-6.0577" posz="-8.1581" orientx="-1.0000" orienty="0.0000" orientz="0.0003">zpSocketColonialEstate</unit>
+		<unit variation="41" posx="-1.2479" posz="-8.1750" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="41" posx="1.7247" posz="-7.7724" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="41" posx="0.2935" posz="-8.1511" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="41" posx="10.1839" posz="-8.1669" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="41" posx="8.1778" posz="-7.4558" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="41" posx="5.9348" posz="-7.2629" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="148" posx="4.5769" posz="-9.0864" orientx="-1.0000" orienty="0.0000" orientz="0.0005">zpNativeHouseWesternVillageB</unit>
+		<unit variation="41" posx="2.4978" posz="-11.2056" orientx="-0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="41" posx="7.6776" posz="-11.3555" orientx="-0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="41" posx="3.5951" posz="-7.5829" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
+		<unit variation="142" posx="-1.0830" posz="-7.8217" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
+		<unit variation="100" posx="0.2742" posz="-7.5480" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">deNatEUPropVilLeaders</unit>
+		<unit variation="88" posx="2.5343" posz="-8.7132" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="6" posx="0.4286" posz="-8.8785" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpCityStateFlag</unit>
+		<unit variation="0" posx="6.9640" posz="-8.8637" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpNativeWallFullB</unit>
+		<unit variation="181" posx="-0.4573" posz="-7.3337" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropVilFemale</unit>
+		<unit variation="239" posx="9.8897" posz="-6.9136" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
+		<unit variation="99" posx="7.7387" posz="-5.7779" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="110" posx="2.4256" posz="-4.9761" orientx="-1.0000" orienty="0.0000" orientz="0.0003">deNatEUPropWingG</unit>
+		<unit variation="92" posx="10.3881" posz="-6.8148" orientx="-0.9989" orienty="0.0000" orientz="-0.0470">ypSMJesuitAccessory</unit>
+		<unit variation="220" posx="8.6026" posz="-4.4846" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
+		<unit variation="92" posx="10.1934" posz="-3.7283" orientx="-0.9989" orienty="0.0000" orientz="-0.0470">ypSMJesuitAccessory</unit>
+		<unit variation="41" posx="-2.2493" posz="-3.8457" orientx="-0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="35" posx="2.4873" posz="-3.2261" orientx="0.0002" orienty="0.0000" orientz="1.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="35" posx="5.4817" posz="-3.4611" orientx="1.0000" orienty="0.0000" orientz="-0.0002">zpSPCCityBuildingMix</unit>
+		<unit variation="41" posx="7.1447" posz="-3.0203" orientx="-0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="226" posx="-6.2735" posz="-3.0911" orientx="1.0000" orienty="0.0000" orientz="-0.0011">zpNatEUPropFencDarkBrick</unit>
+		<unit variation="195" posx="-2.8342" posz="-3.3123" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpPropsColony</unit>
+		<unit variation="216" posx="-2.2652" posz="-2.4069" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpPropsColony</unit>
+		<unit variation="239" posx="-8.8565" posz="-1.9543" orientx="-0.1419" orienty="0.0000" orientz="-0.9899">ypSMJesuitAccessory</unit>
+		<unit variation="238" posx="-8.9685" posz="-2.6392" orientx="0.0586" orienty="0.0000" orientz="-0.9983">ypSMJesuitAccessory</unit>
+		<unit variation="47" posx="8.4930" posz="-3.6531" orientx="1.0000" orienty="0.0000" orientz="-0.0012">zpPropHorse</unit>
+		<unit variation="133" posx="8.5403" posz="-2.0773" orientx="1.0000" orienty="0.0000" orientz="-0.0025">zpPropHorse</unit>
+		<unit variation="41" posx="-2.4020" posz="-2.0019" orientx="-0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="41" posx="6.7299" posz="-1.3888" orientx="0.0002" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="205" posx="-6.3159" posz="-1.4810" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrick</unit>
+		<unit variation="226" posx="-2.4914" posz="-1.5353" orientx="-0.0011" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrick</unit>
+		<unit variation="205" posx="-4.0881" posz="-1.4811" orientx="0.0003" orienty="0.0000" orientz="1.0000">zpNatEUPropFencDarkBrick</unit>
+		<unit variation="183" posx="-3.7836" posz="-0.4670" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpPropsColony</unit>
+		<unit variation="93" posx="-7.2739" posz="0.4546" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-9.8283" posz="0.6248" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-9.8222" posz="0.1775" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-9.9196" posz="-0.4468" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-9.9278" posz="-0.5099" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-10.1773" posz="-0.3668" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="92" posx="-10.7601" posz="0.7522" orientx="0.9999" orienty="0.0000" orientz="0.0142">ypSMJesuitAccessory</unit>
+		<unit variation="92" posx="-9.0791" posz="-0.7288" orientx="-0.0142" orienty="0.0000" orientz="0.9999">ypSMJesuitAccessory</unit>
+		<unit variation="239" posx="-1.1241" posz="0.1681" orientx="-0.1418" orienty="0.0000" orientz="-0.9899">ypSMJesuitAccessory</unit>
+		<unit variation="126" posx="8.5986" posz="-0.2127" orientx="1.0000" orienty="0.0000" orientz="-0.0005">zpPropHorse</unit>
+		<unit variation="92" posx="10.0783" posz="-0.5031" orientx="-0.9989" orienty="0.0000" orientz="-0.0470">ypSMJesuitAccessory</unit>
+		<unit variation="41" posx="6.3751" posz="0.2259" orientx="0.0002" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="164" posx="2.9098" posz="1.1080" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpPropsColony</unit>
+		<unit variation="93" posx="-9.0000" posz="1.0000" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-3.0000" posz="1.0000" orientx="-0.8215" orienty="0.0000" orientz="0.5702">TreeCarolinaGrass</unit>
+		<unit variation="9" posx="-1.0000" posz="1.0000" orientx="0.3366" orienty="0.0000" orientz="0.9416">TreeCarolinaGrass</unit>
+		<unit variation="239" posx="-11.5737" posz="1.6238" orientx="-0.9688" orienty="0.0000" orientz="-0.2478">ypSMJesuitAccessory</unit>
+		<unit variation="239" posx="-4.7291" posz="1.8564" orientx="-0.6001" orienty="0.0000" orientz="0.7999">ypSMJesuitAccessory</unit>
+		<unit variation="170" posx="-2.8573" posz="1.9606" orientx="-0.2941" orienty="0.0000" orientz="0.9558">ypSMJesuitAccessory</unit>
+		<unit variation="239" posx="0.6982" posz="1.9834" orientx="-0.9688" orienty="0.0000" orientz="-0.2478">ypSMJesuitAccessory</unit>
+		<unit variation="53" posx="-0.9619" posz="1.8204" orientx="-0.3683" orienty="-0.0000" orientz="-0.9297">ypSMJesuitAccessory</unit>
+		<unit variation="92" posx="8.5262" posz="1.7952" orientx="0.0470" orienty="0.0000" orientz="-0.9989">ypSMJesuitAccessory</unit>
+		<unit variation="93" posx="-6.3980" posz="1.9382" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="224" posx="10.5058" posz="2.8800" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
+		<unit variation="93" posx="-9.3572" posz="4.1339" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-9.1486" posz="3.5086" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-7.6315" posz="3.6907" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-7.6051" posz="3.1883" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-9.6371" posz="4.0801" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="92" posx="-10.8095" posz="4.0023" orientx="0.9999" orienty="0.0000" orientz="0.0142">ypSMJesuitAccessory</unit>
+		<unit variation="93" posx="-6.2901" posz="3.0093" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-6.6176" posz="3.9647" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="57" posx="-3.0000" posz="3.0000" orientx="-0.5038" orienty="0.0000" orientz="0.8638">TreeCarolinaGrass</unit>
+		<unit variation="173" posx="-1.0000" posz="3.0000" orientx="0.7814" orienty="0.0000" orientz="-0.6241">TreeCarolinaGrass</unit>
+		<unit variation="17" posx="7.3255" posz="3.3775" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">zpPropWindMill</unit>
+		<unit variation="93" posx="-4.4560" posz="4.0467" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-3.9614" posz="3.4075" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-3.4492" posz="3.2820" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="114" posx="4.9994" posz="6.4873" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSawMill</unit>
+		<unit variation="51" posx="9.7743" posz="4.8779" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
+		<unit variation="93" posx="-9.0000" posz="5.0000" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-9.0000" posz="5.0000" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-9.0000" posz="5.0000" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-10.3044" posz="6.4072" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="92" posx="-10.7454" posz="6.8560" orientx="0.9999" orienty="0.0000" orientz="0.0142">ypSMJesuitAccessory</unit>
+		<unit variation="40" posx="-8.6190" posz="6.5602" orientx="-0.9875" orienty="0.0000" orientz="-0.1576">ypSMJesuitAccessory</unit>
+		<unit variation="150" posx="-8.7901" posz="6.3046" orientx="-0.1127" orienty="0.0000" orientz="-0.9936">ypSMJesuitAccessory</unit>
+		<unit variation="93" posx="-6.3359" posz="5.0213" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-6.7127" posz="5.6815" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="108" posx="-3.0000" posz="5.0000" orientx="0.9404" orienty="0.0000" orientz="-0.3401">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-7.1308" posz="8.5030" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-8.5374" posz="8.3218" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-9.3324" posz="8.1120" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-9.6440" posz="7.9086" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-10.1322" posz="7.3439" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="100" posx="-9.6059" posz="7.7619" orientx="0.9883" orienty="0.0000" orientz="-0.1522">ypSMJesuitAccessory</unit>
+		<unit variation="93" posx="-4.8132" posz="8.4343" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-5.3827" posz="7.6797" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-6.1130" posz="8.6186" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="74" posx="-3.0000" posz="7.0000" orientx="-0.2686" orienty="0.0000" orientz="-0.9633">TreeCarolinaGrass</unit>
+		<unit variation="14" posx="-1.0000" posz="7.0000" orientx="-0.8980" orienty="0.0000" orientz="0.4401">TreeCarolinaGrass</unit>
+		<unit variation="93" posx="-9.0000" posz="9.0000" orientx="0.8213" orienty="0.0000" orientz="-0.5705">TreeCarolinaGrass</unit>
+		<unit variation="144" posx="-5.0000" posz="9.0000" orientx="-0.6411" orienty="0.0000" orientz="0.7674">TreeCarolinaGrass</unit>
+		<unit variation="149" posx="-1.0000" posz="9.0000" orientx="0.9589" orienty="0.0000" orientz="-0.2838">TreeCarolinaGrass</unit>
+		<unit variation="186" posx="-3.0000" posz="9.0000" orientx="0.5130" orienty="0.0000" orientz="-0.8584">TreeCarolinaGrass</unit>
+		<unit variation="92" posx="-10.8397" posz="9.2030" orientx="0.9999" orienty="0.0000" orientz="0.0142">ypSMJesuitAccessory</unit>
+		<unit variation="92" posx="-9.3114" posz="10.4659" orientx="0.0142" orienty="0.0000" orientz="-0.9999">ypSMJesuitAccessory</unit>
+		<unit variation="74" posx="-9.7318" posz="9.3430" orientx="0.7117" orienty="0.0000" orientz="-0.7025">ypSMJesuitAccessory</unit>
+		<unit variation="92" posx="-2.6679" posz="10.3741" orientx="0.0142" orienty="0.0000" orientz="-0.9999">ypSMJesuitAccessory</unit>
+		<unit variation="92" posx="-5.2471" posz="10.4688" orientx="0.0142" orienty="0.0000" orientz="-0.9999">ypSMJesuitAccessory</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="texas\Cliff_gravel_tex">
+			<block startx="-6" startz="-5" endx="-6" endz="-5"></block>
+			<block startx="-5" startz="-6" endx="-5" endz="-5"></block>
+			<block startx="-6" startz="-4" endx="-6" endz="-3"></block>
+			<block startx="-5" startz="-4" endx="-5" endz="-3"></block>
+			<block startx="0" startz="1" endx="0" endz="1"></block>
+			<block startx="-4" startz="-6" endx="-4" endz="-6"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="-6"></block>
+			<block startx="3" startz="-6" endx="3" endz="-6"></block>
+			<block startx="4" startz="-6" endx="4" endz="-6"></block>
+			<block startx="5" startz="-6" endx="5" endz="-5"></block>
+			<block startx="4" startz="1" endx="4" endz="3"></block>
+			<block startx="5" startz="1" endx="5" endz="1"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="city\ground1_cob">
+			<block startx="-4" startz="-4" endx="-4" endz="-4"></block>
+			<block startx="-3" startz="-4" endx="-3" endz="-3"></block>
+			<block startx="-2" startz="-4" endx="-2" endz="-3"></block>
+			<block startx="-1" startz="-4" endx="-1" endz="-3"></block>
+			<block startx="0" startz="-4" endx="0" endz="-4"></block>
+			<block startx="1" startz="-4" endx="1" endz="-4"></block>
+			<block startx="-4" startz="-5" endx="-4" endz="-5"></block>
+			<block startx="-3" startz="-5" endx="-3" endz="-5"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="-5"></block>
+			<block startx="-1" startz="-5" endx="-1" endz="-5"></block>
+			<block startx="0" startz="-5" endx="0" endz="-5"></block>
+			<block startx="1" startz="-5" endx="1" endz="-5"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="Texas\ground5_tex">
+			<block startx="-5" startz="-2" endx="-5" endz="-2"></block>
+			<block startx="-4" startz="-3" endx="-4" endz="-2"></block>
+			<block startx="-3" startz="-2" endx="-3" endz="-1"></block>
+			<block startx="-2" startz="-2" endx="-2" endz="0"></block>
+			<block startx="-1" startz="-2" endx="-1" endz="-1"></block>
+			<block startx="-1" startz="3" endx="-1" endz="3"></block>
+			<block startx="0" startz="0" endx="0" endz="0"></block>
+			<block startx="0" startz="3" endx="0" endz="3"></block>
+			<block startx="1" startz="-1" endx="1" endz="3"></block>
+			<block startx="2" startz="-4" endx="2" endz="-4"></block>
+			<block startx="2" startz="-1" endx="2" endz="1"></block>
+			<block startx="3" startz="-3" endx="3" endz="-3"></block>
+			<block startx="3" startz="-1" endx="3" endz="3"></block>
+			<block startx="2" startz="-6" endx="2" endz="-5"></block>
+			<block startx="1" startz="4" endx="1" endz="4"></block>
+			<block startx="2" startz="4" endx="2" endz="4"></block>
+			<block startx="3" startz="4" endx="3" endz="4"></block>
+			<block startx="4" startz="-5" endx="4" endz="-5"></block>
+			<block startx="4" startz="-4" endx="4" endz="0"></block>
+			<block startx="5" startz="-4" endx="5" endz="0"></block>
+			<block startx="5" startz="2" endx="5" endz="2"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="carolinas\ground_grass3_car">
+			<block startx="-6" startz="-1" endx="-6" endz="1"></block>
+			<block startx="-6" startz="3" endx="-6" endz="3"></block>
+			<block startx="-5" startz="0" endx="-5" endz="3"></block>
+			<block startx="-4" startz="2" endx="-4" endz="2"></block>
+			<block startx="-3" startz="1" endx="-3" endz="2"></block>
+			<block startx="-6" startz="5" endx="-6" endz="5"></block>
+			<block startx="-5" startz="4" endx="-5" endz="5"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="carolinas\groundforest_car">
+			<block startx="-5" startz="-1" endx="-5" endz="-1"></block>
+			<block startx="-4" startz="-1" endx="-4" endz="0"></block>
+			<block startx="-3" startz="0" endx="-3" endz="0"></block>
+			<block startx="-2" startz="2" endx="-2" endz="2"></block>
+			<block startx="-1" startz="0" endx="-1" endz="0"></block>
+			<block startx="-2" startz="4" endx="-2" endz="4"></block>
+			<block startx="-1" startz="4" endx="-1" endz="4"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="carolinas\ground_grass5_car">
+			<block startx="-6" startz="2" endx="-6" endz="2"></block>
+			<block startx="-4" startz="1" endx="-4" endz="1"></block>
+			<block startx="-6" startz="4" endx="-6" endz="4"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="carolinas\ground_grass2_car">
+			<block startx="-2" startz="3" endx="-2" endz="3"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

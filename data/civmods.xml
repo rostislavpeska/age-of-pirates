@@ -1149,4 +1149,22 @@
     <visible>0</visible>
     <visibleineditor>1</visibleineditor>
   </civ>-->
+  <civ>
+    <name>zpColonialEstate</name>
+    <main>0</main>
+    <subcivtype>3</subcivtype>
+    <portrait>ui\native_allies\aztec</portrait>
+    <culture>Stone</culture>
+    <displaynameid>400215</displaynameid>
+    <rollovernameid>45433</rollovernameid>
+    <alliedid>26446</alliedid>
+    <alliedotherid>26445</alliedotherid>
+    <unalliedid>26444</unalliedid>
+    <agetech>
+      <age>Age0</age>
+      <tech>zpNativeColonialEstate</tech>
+    </agetech>
+    <visible>0</visible>
+    <visibleineditor>0</visibleineditor>
+  </civ>
 </civsmods>
