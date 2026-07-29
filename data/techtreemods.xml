@@ -19663,7 +19663,7 @@
       <effect type="Data" action="AutoGatherXP" amount="1.50" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCMenagerie</target>
       </effect>
-      <effect type="Data" action="AutoGatherXPTeam" amount="1.50" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+      <effect type="Data" action="AutoGather" amount="1.50" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCSawMill</target>
       </effect>
     </effects>
@@ -22977,10 +22977,10 @@
       <effect type="Data" action="AutoGatherXPTeam" amount="1.15" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCAztecCityMarket</target>
       </effect>
-      <effect type="Data" action="AutoGatherXPTeam" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+      <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCSafehouse</target>
       </effect>
-      <effect type="Data" action="AutoGatherXPTeam" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+      <effect type="Data" action="AutoGather" amount="1.15" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCSawMill</target>
       </effect>
       <effect type="Data" action="AutoGatherCoin" amount="1.15" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
@@ -35262,7 +35262,7 @@
     <cost resourcetype="Gold">550.0000</cost>
     <researchpoints>20.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\art\units\naval\frigate\frigate_icon.png</icon>
+    <icon>resources\images\icons\techs\historical_maps\dispatch_vessel.png</icon>
     <rollovertextid>400222</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>

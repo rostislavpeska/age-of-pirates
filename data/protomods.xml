@@ -68930,8 +68930,8 @@
     <animfile>units\naval\paddle_steamer\paddle_steamer.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\units\naval\frigate\frigate_icon.png</icon>
-    <portraiticon>resources\art\units\naval\frigate\frigate_icon_portrait.png</portraiticon>
+    <icon>resources\art\units\naval\spc\dispatch_vessel_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\dispatch_vessel.png</portraiticon>
     <rollovertextid>303319</rollovertextid>
     <shortrollovertextid>303319</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
@@ -68941,7 +68941,7 @@
     <projectileprotounit>Cannonball</projectileprotounit>
     <unitaitype>RangedCombative</unitaitype>
     <trainpoints>40.0000</trainpoints>
-    <buildlimit>3</buildlimit>
+    <buildlimit>2</buildlimit>
     <bounty>100.0000</bounty>
     <buildbounty>100.0000</buildbounty>
     <cost resourcetype="Wood">450.0000</cost>
