@@ -5518,6 +5518,30 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatGatlingCamelSultanate" culture="none" newname="300449">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatTotenkopfEstate" culture="none" newname="400242">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatBrunswickerEstate" culture="none" newname="400245">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatConquistadorEstate" culture="none" newname="61196">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatArcabuceroEstate" culture="none" newname="300656">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatColonialWardenEstate" culture="none" newname="301608">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatConvictLabourerEstate" culture="none" newname="400254">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatCowpuncherEstate" culture="none" newname="301036">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatStageCoachEstate" culture="none" newname="400259">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatRevolutionaryEstate" culture="none" newname="301910">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatEclaireurEstate" culture="none" newname="302056">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatSettlementMilitiaEstate" culture="none" newname="301388">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatSettlerJewishEstate" culture="none" newname="400268">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -35210,6 +35234,8 @@
       <effect type="TechStatus" status="obtainable">zpJewishTorah</effect>
       <effect type="TechStatus" status="obtainable">zpJewishYomKippur</effect>
       <effect type="TechStatus" status="obtainable">zpNatAustralianFactory</effect>
+      <effect type="TechStatus" status="obtainable">zpVeteranColonialEstate</effect>
+      <effect type="TechStatus" status="obtainable">zpGuardColonialEstate</effect>
     </effects>
   </tech>
   <tech name="zpSPCEstateEconomy" type="Normal">
@@ -36037,6 +36063,528 @@
       </effect>
       <effect type="CommandRemove" proto="zpNatSettlerJewishEstate">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <!--COLONIAL ESTATE VETERAN / GUARD-->
+  <tech name="zpVeteranColonialEstate" type="Normal">
+    <dbid>41356</dbid>
+    <displaynameid>400269</displaynameid>
+    <cost resourcetype="Wood">125.0000</cost>
+    <cost resourcetype="Gold">125.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\veteran_infantry\veteran_infantry.png</icon>
+    <rollovertextid>400270</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">deNatTotenkopf</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">deNatTotenkopf</target>
+      </effect>
+      <effect type="SetName" proto="deNatTotenkopf" culture="none" newname="400240">
+      </effect>
+      <effect type="SetName" proto="deNatTotenkopf" culture="none" newname="400242" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatTotenkopfEstate</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatTotenkopfEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatTotenkopfEstate" culture="none" newname="400240">
+      </effect>
+      <effect type="SetName" proto="zpNatTotenkopfEstate" culture="none" newname="400242" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">deNatBrunswicker</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">deNatBrunswicker</target>
+      </effect>
+      <effect type="SetName" proto="deNatBrunswicker" culture="none" newname="400243">
+      </effect>
+      <effect type="SetName" proto="deNatBrunswicker" culture="none" newname="400245" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatBrunswickerEstate</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatBrunswickerEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatBrunswickerEstate" culture="none" newname="400243">
+      </effect>
+      <effect type="SetName" proto="zpNatBrunswickerEstate" culture="none" newname="400245" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistador</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistador</target>
+      </effect>
+      <effect type="SetName" proto="zpNatConquistador" culture="none" newname="400246">
+      </effect>
+      <effect type="SetName" proto="zpNatConquistador" culture="none" newname="61196" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistadorEstate</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistadorEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatConquistadorEstate" culture="none" newname="400246">
+      </effect>
+      <effect type="SetName" proto="zpNatConquistadorEstate" culture="none" newname="61196" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
+      </effect>
+      <effect type="SetName" proto="zpNatConquistadorMusketeer" culture="none" newname="400248">
+      </effect>
+      <effect type="SetName" proto="zpNatConquistadorMusketeer" culture="none" newname="300656" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatArcabuceroEstate</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatArcabuceroEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatArcabuceroEstate" culture="none" newname="400248">
+      </effect>
+      <effect type="SetName" proto="zpNatArcabuceroEstate" culture="none" newname="300656" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
+      </effect>
+      <effect type="SetName" proto="zpNatColonialGuardOrig" culture="none" newname="400250">
+      </effect>
+      <effect type="SetName" proto="zpNatColonialGuardOrig" culture="none" newname="301608" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialWardenEstate</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialWardenEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatColonialWardenEstate" culture="none" newname="400250">
+      </effect>
+      <effect type="SetName" proto="zpNatColonialWardenEstate" culture="none" newname="301608" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="SetName" proto="zpNatConvictLabourer" culture="none" newname="400252">
+      </effect>
+      <effect type="SetName" proto="zpNatConvictLabourer" culture="none" newname="400254" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConvictLabourerEstate</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConvictLabourerEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatConvictLabourerEstate" culture="none" newname="400252">
+      </effect>
+      <effect type="SetName" proto="zpNatConvictLabourerEstate" culture="none" newname="400254" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+      <effect type="SetName" proto="zpMountedOutlaw" culture="none" newname="400255">
+      </effect>
+      <effect type="SetName" proto="zpMountedOutlaw" culture="none" newname="301036" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatCowpuncherEstate</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatCowpuncherEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatCowpuncherEstate" culture="none" newname="400255">
+      </effect>
+      <effect type="SetName" proto="zpNatCowpuncherEstate" culture="none" newname="301036" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpStageCoach</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpStageCoach</target>
+      </effect>
+      <effect type="SetName" proto="zpStageCoach" culture="none" newname="400257">
+      </effect>
+      <effect type="SetName" proto="zpStageCoach" culture="none" newname="400259" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatStageCoachEstate</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatStageCoachEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatStageCoachEstate" culture="none" newname="400257">
+      </effect>
+      <effect type="SetName" proto="zpNatStageCoachEstate" culture="none" newname="400259" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRevolutionary</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRevolutionary</target>
+      </effect>
+      <effect type="SetName" proto="zpNatRevolutionary" culture="none" newname="400260">
+      </effect>
+      <effect type="SetName" proto="zpNatRevolutionary" culture="none" newname="301910" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRevolutionaryEstate</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRevolutionaryEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatRevolutionaryEstate" culture="none" newname="400260">
+      </effect>
+      <effect type="SetName" proto="zpNatRevolutionaryEstate" culture="none" newname="301910" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatEclaireur</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatEclaireur</target>
+      </effect>
+      <effect type="SetName" proto="zpNatEclaireur" culture="none" newname="400262">
+      </effect>
+      <effect type="SetName" proto="zpNatEclaireur" culture="none" newname="302056" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatEclaireurEstate</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatEclaireurEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatEclaireurEstate" culture="none" newname="400262">
+      </effect>
+      <effect type="SetName" proto="zpNatEclaireurEstate" culture="none" newname="302056" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlementMilitia</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlementMilitia</target>
+      </effect>
+      <effect type="SetName" proto="zpNatSettlementMilitia" culture="none" newname="400264">
+      </effect>
+      <effect type="SetName" proto="zpNatSettlementMilitia" culture="none" newname="301388" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlementMilitiaEstate</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlementMilitiaEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatSettlementMilitiaEstate" culture="none" newname="400264">
+      </effect>
+      <effect type="SetName" proto="zpNatSettlementMilitiaEstate" culture="none" newname="301388" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="SetName" proto="zpNatSettlerJewish" culture="none" newname="400266">
+      </effect>
+      <effect type="SetName" proto="zpNatSettlerJewish" culture="none" newname="400268" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlerJewishEstate</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlerJewishEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatSettlerJewishEstate" culture="none" newname="400266">
+      </effect>
+      <effect type="SetName" proto="zpNatSettlerJewishEstate" culture="none" newname="400268" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpGuardColonialEstate" type="Normal">
+    <dbid>41357</dbid>
+    <displaynameid>400271</displaynameid>
+    <cost resourcetype="Wood">350.0000</cost>
+    <cost resourcetype="Gold">350.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\veteran_infantry\veteran_infantry.png</icon>
+    <rollovertextid>400272</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>UpgradeTech</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DENativeUnitUpgrade</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <prereqs>
+      <techstatus status="Active">zpVeteranColonialEstate</techstatus>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">deNatTotenkopf</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">deNatTotenkopf</target>
+      </effect>
+      <effect type="SetName" proto="deNatTotenkopf" culture="none" newname="400241">
+      </effect>
+      <effect type="SetName" proto="deNatTotenkopf" culture="none" newname="400242" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatTotenkopfEstate</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatTotenkopfEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatTotenkopfEstate" culture="none" newname="400241">
+      </effect>
+      <effect type="SetName" proto="zpNatTotenkopfEstate" culture="none" newname="400242" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">deNatBrunswicker</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">deNatBrunswicker</target>
+      </effect>
+      <effect type="SetName" proto="deNatBrunswicker" culture="none" newname="400244">
+      </effect>
+      <effect type="SetName" proto="deNatBrunswicker" culture="none" newname="400245" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatBrunswickerEstate</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatBrunswickerEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatBrunswickerEstate" culture="none" newname="400244">
+      </effect>
+      <effect type="SetName" proto="zpNatBrunswickerEstate" culture="none" newname="400245" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistador</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistador</target>
+      </effect>
+      <effect type="SetName" proto="zpNatConquistador" culture="none" newname="400247">
+      </effect>
+      <effect type="SetName" proto="zpNatConquistador" culture="none" newname="61196" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistadorEstate</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistadorEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatConquistadorEstate" culture="none" newname="400247">
+      </effect>
+      <effect type="SetName" proto="zpNatConquistadorEstate" culture="none" newname="61196" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
+      </effect>
+      <effect type="SetName" proto="zpNatConquistadorMusketeer" culture="none" newname="400249">
+      </effect>
+      <effect type="SetName" proto="zpNatConquistadorMusketeer" culture="none" newname="300656" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatArcabuceroEstate</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatArcabuceroEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatArcabuceroEstate" culture="none" newname="400249">
+      </effect>
+      <effect type="SetName" proto="zpNatArcabuceroEstate" culture="none" newname="300656" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
+      </effect>
+      <effect type="SetName" proto="zpNatColonialGuardOrig" culture="none" newname="400251">
+      </effect>
+      <effect type="SetName" proto="zpNatColonialGuardOrig" culture="none" newname="301608" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialWardenEstate</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialWardenEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatColonialWardenEstate" culture="none" newname="400251">
+      </effect>
+      <effect type="SetName" proto="zpNatColonialWardenEstate" culture="none" newname="301608" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="SetName" proto="zpNatConvictLabourer" culture="none" newname="400253">
+      </effect>
+      <effect type="SetName" proto="zpNatConvictLabourer" culture="none" newname="400254" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConvictLabourerEstate</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatConvictLabourerEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatConvictLabourerEstate" culture="none" newname="400253">
+      </effect>
+      <effect type="SetName" proto="zpNatConvictLabourerEstate" culture="none" newname="400254" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+      <effect type="SetName" proto="zpMountedOutlaw" culture="none" newname="400256">
+      </effect>
+      <effect type="SetName" proto="zpMountedOutlaw" culture="none" newname="301036" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatCowpuncherEstate</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatCowpuncherEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatCowpuncherEstate" culture="none" newname="400256">
+      </effect>
+      <effect type="SetName" proto="zpNatCowpuncherEstate" culture="none" newname="301036" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpStageCoach</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpStageCoach</target>
+      </effect>
+      <effect type="SetName" proto="zpStageCoach" culture="none" newname="400258">
+      </effect>
+      <effect type="SetName" proto="zpStageCoach" culture="none" newname="400259" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatStageCoachEstate</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatStageCoachEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatStageCoachEstate" culture="none" newname="400258">
+      </effect>
+      <effect type="SetName" proto="zpNatStageCoachEstate" culture="none" newname="400259" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRevolutionary</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRevolutionary</target>
+      </effect>
+      <effect type="SetName" proto="zpNatRevolutionary" culture="none" newname="400261">
+      </effect>
+      <effect type="SetName" proto="zpNatRevolutionary" culture="none" newname="301910" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRevolutionaryEstate</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRevolutionaryEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatRevolutionaryEstate" culture="none" newname="400261">
+      </effect>
+      <effect type="SetName" proto="zpNatRevolutionaryEstate" culture="none" newname="301910" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatEclaireur</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatEclaireur</target>
+      </effect>
+      <effect type="SetName" proto="zpNatEclaireur" culture="none" newname="400263">
+      </effect>
+      <effect type="SetName" proto="zpNatEclaireur" culture="none" newname="302056" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatEclaireurEstate</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatEclaireurEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatEclaireurEstate" culture="none" newname="400263">
+      </effect>
+      <effect type="SetName" proto="zpNatEclaireurEstate" culture="none" newname="302056" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlementMilitia</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlementMilitia</target>
+      </effect>
+      <effect type="SetName" proto="zpNatSettlementMilitia" culture="none" newname="400265">
+      </effect>
+      <effect type="SetName" proto="zpNatSettlementMilitia" culture="none" newname="301388" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlementMilitiaEstate</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlementMilitiaEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatSettlementMilitiaEstate" culture="none" newname="400265">
+      </effect>
+      <effect type="SetName" proto="zpNatSettlementMilitiaEstate" culture="none" newname="301388" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="SetName" proto="zpNatSettlerJewish" culture="none" newname="400267">
+      </effect>
+      <effect type="SetName" proto="zpNatSettlerJewish" culture="none" newname="400268" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlerJewishEstate</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatSettlerJewishEstate</target>
+      </effect>
+      <effect type="SetName" proto="zpNatSettlerJewishEstate" culture="none" newname="400267">
+      </effect>
+      <effect type="SetName" proto="zpNatSettlerJewishEstate" culture="none" newname="400268" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>

@@ -29,13 +29,13 @@
     <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="units\naval\steamer\textures\steamer_matb_BaseColor">
+       <texture name="BaseColor" override="units\naval\paddle_steamer\textures\steamship_matb_BaseColor">
       </texture>
       <texture name="Normals" override="units\naval\steamer\textures\steamer_matb_Normals">
       </texture>
       <texture name="Masks" override="units\naval\steamer\textures\steamer_matb_Masks">
       </texture>
-      <texture name="Details" override="units\naval\steamer\textures\steamer_matb_Details">
+      <texture name="Details" override="units\naval\paddle_steamer\textures\steamship_matb_Details">
       </texture>
     </parameters>
     </submaterial>
@@ -43,13 +43,13 @@
     <materialdef name="default">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="units\naval\steamer\textures\steamer_mata_BaseColor">
+      <texture name="BaseColor" override="units\naval\paddle_steamer\textures\steamship_mata_BaseColor">
       </texture>
       <texture name="Normals" override="units\naval\steamer\textures\steamer_mata_Normals">
       </texture>
       <texture name="Masks" override="units\naval\steamer\textures\steamer_mata_Masks">
       </texture>
-      <texture name="Details" override="units\naval\steamer\textures\steamer_mata_Details">
+      <texture name="Details" override="units\naval\paddle_steamer\textures\steamship_mata_Details">
       </texture>
     </parameters>
   </submaterial>
