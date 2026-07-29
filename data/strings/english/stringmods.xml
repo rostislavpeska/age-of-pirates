@@ -3543,9 +3543,26 @@
       <string _locid="400217">The pride of the American colonies. Wealthy landowners and gentleman planters who answer to no crown but their own standing, and who arm their tenants to prove it.</string>
       <string _locid="400218">Estate Militia</string>
       <string _locid="400219">ZP Estate Militia</string>
-      <string _locid="400220">Estate Economy</string>
+      <string _locid="400220">Team Estate Economy</string>
       <string _locid="400221">Naval Inventions</string>
       <string _locid="400222">Ships a Dispatch Vessel and allows Dispatch Vessels to be trained at the Dock.</string>
+      <string _locid="400223">Colonial Estate Allegiance (Defenders)</string>
+      <string _locid="400224">Choose which colonial faction the Estate throws its weight behind. The choice is permanent.</string>
+      <string _locid="400225">Colonial Estate Allegiance (Attackers)</string>
+      <string _locid="400226">Choose which colonial faction the Estate throws its weight behind. The choice is permanent.</string>
+      <string _locid="400227">King George III</string>
+      <string _locid="400228">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBlack Brunswicker, Totenkopf Hussar \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nRoyal Scots Grey, Royal Card Games, Acts of Union, Victorian Era</string>
+      <string _locid="400229">James Oglethorpe</string>
+      <string _locid="400230">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nColonial Warden, Convict Labourer \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nColony Export, Shoemaker's Workshop, Convict Patrole, Fortified Colony</string>
+      <string _locid="400231">Jean de Br&#233;beuf</string>
+      <string _locid="400232">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nConquistador, Arcabucero \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nSmokeless Powder, Christian Schools, Flying Buttress, Secret Plans</string>
+      <string _locid="400233">Daniel Boone</string>
+      <string _locid="400234">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nCowpuncher, Armored Stagecoach \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nWhiskey Stills, Texan Longhorns, Fast Colts, Territorial Militia</string>
+      <string _locid="400235">Marquis de Lafayette</string>
+      <string _locid="400236">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nRevolutionary, &#201;claireur \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nSpirit of the Revolution, Loyal Districts, Storm the Barricades, Galerie Lafayette</string>
+      <string _locid="400237">Haym Salomon</string>
+      <string _locid="400238">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nSettlement Militia, Jewish Merchant \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nPessah, Torah, Yom Kippur, American Industry</string>
+      <string _locid="400239">American Industry</string>
     </language>
   </stringtable>
 </stringmods>

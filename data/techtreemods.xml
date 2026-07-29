@@ -19639,6 +19639,9 @@
       <effect type="Data" action="AutoGatherXP" amount="1.50" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCMenagerie</target>
       </effect>
+      <effect type="Data" action="AutoGatherXPTeam" amount="1.50" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCSawMill</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpAmericanEmbassyShadow" type="Normal">
@@ -35181,6 +35184,32 @@
       <effect type="TechStatus" status="obtainable">DEIndianFriendshipColonialEstate</effect>
       <effect type="TechStatus" status="obtainable">ypNativeTradeTreatyColonialEstate</effect>
       <effect type="TechStatus" status="obtainable">ypNativeEmbassyEnableShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpColonialEstateElectDefender</effect>
+      <effect type="TechStatus" status="obtainable">zpColonialEstateElectAttacker</effect>
+      <effect type="TechStatus" status="obtainable">DENatHanoverRoyalScotsGrey</effect>
+      <effect type="TechStatus" status="obtainable">DENatHanoverRoyalCardGames</effect>
+      <effect type="TechStatus" status="obtainable">DENatHanoverUnionActs</effect>
+      <effect type="TechStatus" status="obtainable">DENatHanoverVictorianEra</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitSmokelessPowder</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitSchools</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitFlyingButtress</effect>
+      <effect type="TechStatus" status="obtainable">zpNatJesuitTank</effect>
+      <effect type="TechStatus" status="obtainable">zpNatAustralianLabourers</effect>
+      <effect type="TechStatus" status="obtainable">zpNatShoemakerWorkshop</effect>
+      <effect type="TechStatus" status="obtainable">zpNatConvictPatrole</effect>
+      <effect type="TechStatus" status="obtainable">zpNatAustralianFort</effect>
+      <effect type="TechStatus" status="obtainable">zpWildWestWhiskeyFactory</effect>
+      <effect type="TechStatus" status="obtainable">zpWildWestCows</effect>
+      <effect type="TechStatus" status="obtainable">zpWildWestFastColts</effect>
+      <effect type="TechStatus" status="obtainable">zpWildWestMilitia</effect>
+      <effect type="TechStatus" status="obtainable">zpSansculotteSpiritRevolution</effect>
+      <effect type="TechStatus" status="obtainable">zpSansculotteLoyalDistricts</effect>
+      <effect type="TechStatus" status="obtainable">zpStormBarricades</effect>
+      <effect type="TechStatus" status="obtainable">zpGalerieLafayette</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishPessah</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishTorah</effect>
+      <effect type="TechStatus" status="obtainable">zpJewishYomKippur</effect>
+      <effect type="TechStatus" status="obtainable">zpNatAustralianFactory</effect>
     </effects>
   </tech>
   <tech name="zpSPCEstateEconomy" type="Normal">
@@ -35191,7 +35220,7 @@
     <cost resourcetype="Wood">150.0000</cost>
     <researchpoints>20.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\team_blessed_city.png</icon>
+    <icon>resources\images\icons\techs\historical_maps\estate_economy.png</icon>
     <rollovertextid>302306</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
@@ -35272,6 +35301,742 @@
       <effect type="Data" amount="300.00" subtype="Resource" resource="Trade" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+    </effects>
+  </tech>
+  <!--COLONIAL ESTATE ALLIANCES-->
+  <tech name="zpColonialEstateElectDefender" type="Normal">
+    <dbid>41341</dbid>
+    <displaynameid>400223</displaynameid>
+    <researchpoints>100.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\historical_maps\province_newyork.png</iconwpf>
+    <cost resourcetype="Gold">250.0000</cost>
+    <rollovertextid>400224</rollovertextid>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>YPInfiniteTech</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <flag>DoNotQueue</flag>
+    <flag>NativeDance</flag>
+    <flag>YPNeverLastInLine</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianFishingBoat</effect>
+      <effect type="TechStatus" status="active">zpTheBlackFlagGoldBallanceShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpColonialEstateElectAttacker" type="Normal">
+    <dbid>41342</dbid>
+    <displaynameid>400225</displaynameid>
+    <researchpoints>100.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\civilwar_usa_big.png</iconwpf>
+    <cost resourcetype="Gold">250.0000</cost>
+    <rollovertextid>400226</rollovertextid>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>YPInfiniteTech</flag>
+    <flag>DENoTextMessageIfFree</flag>
+    <flag>DoNotQueue</flag>
+    <flag>NativeDance</flag>
+    <flag>YPNeverLastInLine</flag>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianVillager</effect>
+      <effect type="SetOnTechResearchedTech" amount="0.00">DEShipItalianFishingBoat</effect>
+      <effect type="TechStatus" status="active">zpTheBlackFlagGoldBallanceShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateEstateHannover" type="Normal">
+    <dbid>41343</dbid>
+    <displaynameid>400227</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\prince_elector_small.png</icon>
+    <rollovertextid>400228</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatTotenkopfEstate</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatBrunswickerEstate</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpColonialEstateElectDefender</effect>
+      <effect type="CommandRemove" tech="zpColonialEstateElectDefender">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatTotenkopfEstate" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatBrunswickerEstate" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatHanoverRoyalScotsGrey" page="2" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatHanoverRoyalCardGames" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatHanoverUnionActs" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="DENatHanoverVictorianEra" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateEstatePenalColony" type="Normal">
+    <dbid>41344</dbid>
+    <displaynameid>400229</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\prince_elector_small.png</icon>
+    <rollovertextid>400230</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatColonialWardenEstate</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConvictLabourerEstate</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpColonialEstateElectDefender</effect>
+      <effect type="CommandRemove" tech="zpColonialEstateElectDefender">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatColonialWardenEstate" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatConvictLabourerEstate" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatAustralianLabourers" page="2" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatShoemakerWorkshop" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatConvictPatrole" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatAustralianFort" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateEstateJesuit" type="Normal">
+    <dbid>41345</dbid>
+    <displaynameid>400231</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\prince_elector_small.png</icon>
+    <rollovertextid>400232</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConquistadorEstate</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatArcabuceroEstate</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpColonialEstateElectDefender</effect>
+      <effect type="CommandRemove" tech="zpColonialEstateElectDefender">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatConquistadorEstate" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatArcabuceroEstate" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatJesuitSmokelessPowder" page="2" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatJesuitSchools" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatJesuitFlyingButtress" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatJesuitTank" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateEstateWestern" type="Normal">
+    <dbid>41346</dbid>
+    <displaynameid>400233</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\prince_elector_small.png</icon>
+    <rollovertextid>400234</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatCowpuncherEstate</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatStageCoachEstate</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpColonialEstateElectAttacker</effect>
+      <effect type="CommandRemove" tech="zpColonialEstateElectAttacker">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatCowpuncherEstate" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatStageCoachEstate" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpWildWestWhiskeyFactory" page="2" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpWildWestCows" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpWildWestFastColts" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpWildWestMilitia" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateEstateSansculottes" type="Normal">
+    <dbid>41347</dbid>
+    <displaynameid>400235</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\prince_elector_small.png</icon>
+    <rollovertextid>400236</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRevolutionaryEstate</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatEclaireurEstate</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpColonialEstateElectAttacker</effect>
+      <effect type="CommandRemove" tech="zpColonialEstateElectAttacker">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatRevolutionaryEstate" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatEclaireurEstate" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSansculotteSpiritRevolution" page="2" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpSansculotteLoyalDistricts" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpStormBarricades" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpGalerieLafayette" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpConsulateEstateJewish" type="Normal">
+    <dbid>41348</dbid>
+    <displaynameid>400237</displaynameid>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>1.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\prince_elector_small.png</icon>
+    <rollovertextid>400238</rollovertextid>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>YPConsulateTech</flag>
+    <flag>YPSequesterTech</flag>
+    <flag>DoNotQueue</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlementMilitiaEstate</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlerJewishEstate</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpColonialEstateElectAttacker</effect>
+      <effect type="CommandRemove" tech="zpColonialEstateElectAttacker">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatSettlementMilitiaEstate" page="0" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatSettlerJewishEstate" page="0" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpJewishPessah" page="2" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpJewishTorah" page="2" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpJewishYomKippur" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatAustralianFactory" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="SetName" tech="zpNatAustralianFactory" newname="400239">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpEstateSiteIncrease" type="Normal">
+    <dbid>41349</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatBrunswicker</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatTotenkopf</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+      <effect type="Data" amount="3.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConquistador</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatEclaireur</target>
+      </effect>
+      <effect type="Data" amount="3.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRevolutionary</target>
+      </effect>
+      <effect type="Data" amount="3.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlementMilitia</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpStageCoach</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpEstateSiteDecrease" type="Normal">
+    <dbid>41350</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="Data" amount="-2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatBrunswicker</target>
+      </effect>
+      <effect type="Data" amount="-2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deNatTotenkopf</target>
+      </effect>
+      <effect type="Data" amount="-2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+      <effect type="Data" amount="-3.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatColonialGuardOrig</target>
+      </effect>
+      <effect type="Data" amount="-2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConquistador</target>
+      </effect>
+      <effect type="Data" amount="-2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
+      </effect>
+      <effect type="Data" amount="-2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatConvictLabourer</target>
+      </effect>
+      <effect type="Data" amount="-2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatEclaireur</target>
+      </effect>
+      <effect type="Data" amount="-3.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRevolutionary</target>
+      </effect>
+      <effect type="Data" amount="-3.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlementMilitia</target>
+      </effect>
+      <effect type="Data" amount="-2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlerJewish</target>
+      </effect>
+      <effect type="Data" amount="-1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpStageCoach</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpTurnConsulateOffColonialEstateDefender" type="Normal">
+    <dbid>41353</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateFrenchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateGermansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateOttomansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulatePortugueseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateDutchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateSpanishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseAlliesClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxConstantinopole</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxAlexandria</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatCherokee</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatSeminole</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatLakota</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentConfederate</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralConfederate</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralConfederate</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateElectorHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateElectorWittelsbach</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateElectorWettin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateElectorHanover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateElectorOldenburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHansaWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateSultanatePhanar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateSultanateSufi</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPirates</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateEstateJesuit</effect>
+    </effects>
+  </tech>
+  <tech name="zpTurnConsulateOffColonialEstateAttacker" type="Normal">
+    <dbid>41354</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <flag>YPInfiniteTech</flag>
+    <effects>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateRussiansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateBritishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateFrenchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateGermansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateOttomansClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulatePortugueseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateDutchClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateSpanishClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpBigConsulateJapaneseAlliesClone</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesDutchman</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackJack</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseVenetians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseFlorentians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateMalteseJerusalem</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatMaya</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatZapotec</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatTupi</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistNemo</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistGortz</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateScientistValentine</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishAmericans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishGermans</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateJewishRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpconsulatescientistkhora</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouMadameChing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSiRigam</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceDolphin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceCornaro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateVeniceContarini</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxGeorgians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxBulgarians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxRussians</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass3</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass2</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateXMass1</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternWyatEarp</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternPinkertons</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateWesternJesseJames</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyParkes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyCunningham</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePenalColonyLogan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevNapoleon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevJacobine</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevLafayette</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxConstantinopole</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateOrthodoxAlexandria</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatCherokee</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatSeminole</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateNatLakota</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentConfederate</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralConfederate</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralConfederate</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevPresidentUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevGeneralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateRevAdmiralUnion</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesZizka</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesKing</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHussitesReformer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaJagiellon</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateKingOfBohemiaWittelsbach</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateElectorHabsburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateElectorWittelsbach</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateElectorWettin</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateElectorHanover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateElectorOldenburg</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHansaWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHansaCentral</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateHansaEast</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBeauregard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackBohdan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackMazepa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateCossackPetro</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateSultanatePhanar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateSultanateSufi</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
+      <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPirates</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackbeard</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesGrace</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulatePiratesBlackCaesar</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="obtainable">zpConsulateEstateJewish</effect>
+    </effects>
+  </tech>
+  <!--COLONIAL ESTATE SIDE UNLOCKS-->
+  <tech name="zpEstateUnlockDefender" type="Normal">
+    <dbid>41351</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandAdd" tech="zpColonialEstateElectDefender" page="1" column="3">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpEstateUnlockAttacker" type="Normal">
+    <dbid>41352</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandAdd" tech="zpColonialEstateElectAttacker" page="1" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <!--COLONIAL ESTATE DECK RESET-->
+  <tech name="zpColonialEstateNativeSetup" type="Normal">
+    <dbid>41355</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" tech="DENatHanoverRoyalScotsGrey">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatHanoverRoyalCardGames">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatHanoverUnionActs">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DENatHanoverVictorianEra">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpNatJesuitSmokelessPowder">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpNatJesuitSchools">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpNatJesuitFlyingButtress">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpNatJesuitTank">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpNatAustralianLabourers">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpNatShoemakerWorkshop">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpNatConvictPatrole">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpNatAustralianFort">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpWildWestWhiskeyFactory">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpWildWestCows">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpWildWestFastColts">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpWildWestMilitia">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpSansculotteSpiritRevolution">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpSansculotteLoyalDistricts">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpStormBarricades">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpGalerieLafayette">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpJewishPessah">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpJewishTorah">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpJewishYomKippur">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpNatAustralianFactory">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatTotenkopfEstate">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatBrunswickerEstate">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatConquistadorEstate">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatArcabuceroEstate">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatColonialWardenEstate">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatConvictLabourerEstate">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatCowpuncherEstate">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatStageCoachEstate">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatRevolutionaryEstate">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatEclaireurEstate">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatSettlementMilitiaEstate">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" proto="zpNatSettlerJewishEstate">
+        <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
   </tech>
