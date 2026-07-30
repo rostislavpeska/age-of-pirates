@@ -3563,39 +3563,16 @@
       <string _locid="400237">Haym Salomon</string>
       <string _locid="400238">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nSettlement Militia, Jewish Merchant \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nPessah, Torah, Yom Kippur, American Industry</string>
       <string _locid="400239">American Industry</string>
-      <string _locid="400240">Veteran Totenkopf Hussar</string>
-      <string _locid="400241">Guard Totenkopf Hussar</string>
-      <string _locid="400242">Imperial Totenkopf Hussar</string>
-      <string _locid="400243">Veteran Black Brunswicker</string>
-      <string _locid="400244">Guard Black Brunswicker</string>
-      <string _locid="400245">Imperial Black Brunswicker</string>
-      <string _locid="400246">Veteran Conquistador</string>
-      <string _locid="400247">Guard Conquistador</string>
-      <string _locid="400248">Veteran Arcabucero</string>
-      <string _locid="400249">Guard Arcabucero</string>
-      <string _locid="400250">Veteran Colonial Warden</string>
-      <string _locid="400251">Guard Colonial Warden</string>
-      <string _locid="400252">Veteran Convict Labourer</string>
-      <string _locid="400253">Guard Convict Labourer</string>
-      <string _locid="400254">Imperial Convict Labourer</string>
-      <string _locid="400255">Veteran Cowpuncher</string>
-      <string _locid="400256">Guard Cowpuncher</string>
-      <string _locid="400257">Veteran Armored Stagecoach</string>
-      <string _locid="400258">Guard Armored Stagecoach</string>
-      <string _locid="400259">Imperial Armored Stagecoach</string>
-      <string _locid="400260">Veteran Revolutionary</string>
-      <string _locid="400261">Guard Revolutionary</string>
-      <string _locid="400262">Veteran &#201;claireur</string>
-      <string _locid="400263">Guard &#201;claireur</string>
-      <string _locid="400264">Veteran Settlement Militia</string>
-      <string _locid="400265">Guard Settlement Militia</string>
-      <string _locid="400266">Veteran Jewish Merchant</string>
-      <string _locid="400267">Guard Jewish Merchant</string>
-      <string _locid="400268">Imperial Jewish Merchant</string>
       <string _locid="400269">Veteran Colonial Estate</string>
       <string _locid="400270">Upgrades every Colonial Estate unit to Veteran, +20% hitpoints and attack.</string>
       <string _locid="400271">Guard Colonial Estate</string>
       <string _locid="400272">Upgrades every Colonial Estate unit to Guard, +40% hitpoints and attack.</string>
+      <string _locid="400273">Veteran Estate Militia</string>
+      <string _locid="400274">Guard Estate Militia</string>
+      <string _locid="400275">Legendary Estate Militia</string>
+      <string _locid="400276">Imperial Dispatch Vessel</string>
+      <string _locid="400277">Rochambeau's Expedition</string>
+      <string _locid="400278">&lt;color=1.0, 0.9, 0.5&gt;SHIPS:&lt;/color&gt; \n1 Regal Ship carrying 24 Royal Musketeers \n\n&lt;color=1.0, 0.9, 0.5&gt;UPGRADES:&lt;/color&gt; \nNapoleonic Era, Veteran and Guard Bourbon</string>
     </language>
   </stringtable>
 </stringmods>

@@ -559,8 +559,8 @@
     <dbid>20143</dbid>
     <sharedbuildlimitunit>zpNatConquistadorMusketeer</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatArcabuceroEstate</unittype>
       <unittype>zpNatConquistadorMusketeer</unittype>
+      <unittype>zpNatArcabuceroEstate</unittype>
     </sharedbuildlimitunittypes>
     <displaynameid>300647</displaynameid>
     <editornameid>300648</editornameid>
@@ -642,6 +642,7 @@
     <unittype>AbstractNativeWarrior</unittype>
     <unittype>AbstractHeavyInfantry</unittype>
     <unittype>AbstractMusketeer</unittype>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -894,8 +895,8 @@
     <dbid>20562</dbid>
     <sharedbuildlimitunit>zpNatEclaireur</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatEclaireurEstate</unittype>
       <unittype>zpNatEclaireur</unittype>
+      <unittype>zpNatEclaireurEstate</unittype>
     </sharedbuildlimitunittypes>
     <displaynameid>126826</displaynameid>
     <editornameid>302054</editornameid>
@@ -967,6 +968,7 @@
     <unittype>AbstractNativeWarrior</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
     <unittype>AbstractFindScout</unittype>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -2044,6 +2046,8 @@
 
     <tech row="0" page="1" column="1">zpPrinceElectorElect</tech>
     <tech row="0" page="1" column="1">zpVeteranPrinceElector</tech>
+    <tech row="0" page="1" column="1">zpVeteranColonialEstate</tech>
+    <tech row="0" page="1" column="1">zpGuardColonialEstate</tech>
     <tech row="0" page="1" column="1">zpGuardPrinceElector</tech>
     <tech row="0" page="2" column="1">zpNatImperialQuotas</tech>
     <tech row="0" page="2" column="1">zpNatImperialTowers</tech>
@@ -10471,8 +10475,8 @@
     <dbid>20095</dbid>
     <sharedbuildlimitunit>zpNatSettlerJewish</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatSettlerJewishEstate</unittype>
       <unittype>zpNatSettlerJewish</unittype>
+      <unittype>zpNatSettlerJewishEstate</unittype>
     </sharedbuildlimitunittypes>
     <displaynameid>301391</displaynameid>
     <editornameid>300412</editornameid>
@@ -10536,6 +10540,7 @@
     <sharedselectionunittypes>
       <unittype>zpNatNomadSettlerJewish</unittype>
     </sharedselectionunittypes>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -14867,8 +14872,8 @@
     <dbid>20146</dbid>
     <sharedbuildlimitunit>zpNatConquistador</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatConquistadorEstate</unittype>
       <unittype>zpNatConquistador</unittype>
+      <unittype>zpNatConquistadorEstate</unittype>
     </sharedbuildlimitunittypes>
     <displaynameid>60803</displaynameid>
     <editornameid>300653</editornameid>
@@ -14929,6 +14934,7 @@
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -28460,8 +28466,8 @@
     <dbid>20326</dbid>
     <sharedbuildlimitunit>zpNatSettlementMilitia</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatSettlementMilitiaEstate</unittype>
       <unittype>zpNatSettlementMilitia</unittype>
+      <unittype>zpNatSettlementMilitiaEstate</unittype>
     </sharedbuildlimitunittypes>
     <displaynameid>300411</displaynameid>
     <editornameid>301381</editornameid>
@@ -28531,6 +28537,7 @@
       <unittype>zpNatNomadSettlementMilitia</unittype>
       <unittype>zpNatMercSettlementMilitia</unittype>
     </sharedselectionunittypes>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -32715,8 +32722,8 @@
     <dbid>20369</dbid>
     <sharedbuildlimitunit>zpNatConvictLabourer</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatConvictLabourerEstate</unittype>
       <unittype>zpNatConvictLabourer</unittype>
+      <unittype>zpNatConvictLabourerEstate</unittype>
     </sharedbuildlimitunittypes>
     <displaynameid>301576</displaynameid>
     <editornameid>301577</editornameid>
@@ -32778,6 +32785,7 @@
     <unittype>Economic</unittype>
     <unittype>AbstractVillager</unittype>
     <unittype>AbstractConvictLabourer</unittype>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -33172,8 +33180,8 @@
     <dbid>20373</dbid>
     <sharedbuildlimitunit>zpNatColonialGuardOrig</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatColonialWardenEstate</unittype>
       <unittype>zpNatColonialGuardOrig</unittype>
+      <unittype>zpNatColonialWardenEstate</unittype>
     </sharedbuildlimitunittypes>
     <displaynameid>301605</displaynameid>
     <editornameid>301609</editornameid>
@@ -33239,6 +33247,7 @@
     <unittype>AbstractNativeWarrior</unittype>
     <unittype>AbstractHeavyInfantry</unittype>
     <unittype>AbstractMusketeer</unittype>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -38862,8 +38871,8 @@
     <dbid>20516</dbid>
     <sharedbuildlimitunit>zpNatRevolutionary</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatRevolutionaryEstate</unittype>
       <unittype>zpNatRevolutionary</unittype>
+      <unittype>zpNatRevolutionaryEstate</unittype>
     </sharedbuildlimitunittypes>
     <displaynameid>301905</displaynameid>
     <editornameid>301906</editornameid>
@@ -38929,6 +38938,7 @@
     <unittype>LogicalTypeInfantryVolleyTactic</unittype>
     <unittype>AbstractMusketeer</unittype>
     <unittype>AbstractNativeWarrior</unittype>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -57526,8 +57536,9 @@
   <unit name="deNatBrunswicker">
     <sharedbuildlimitunit>deNatBrunswicker</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatBrunswickerEstate</unittype>
       <unittype>deNatBrunswicker</unittype>
+      <unittype>zpNatBrunswickerEstate</unittype>
+      <unittype>zpNatBrunswickerElector</unittype>
     </sharedbuildlimitunittypes>
     <flag>UseSharedBuildLimit</flag>
   </unit>
@@ -57612,8 +57623,9 @@
   <unit name="deNatTotenkopf">
     <sharedbuildlimitunit>deNatTotenkopf</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatTotenkopfEstate</unittype>
       <unittype>deNatTotenkopf</unittype>
+      <unittype>zpNatTotenkopfEstate</unittype>
+      <unittype>zpNatTotenkopfElector</unittype>
     </sharedbuildlimitunittypes>
     <flag>UseSharedBuildLimit</flag>
   </unit>
@@ -69276,8 +69288,9 @@
     </armor>
     <sharedbuildlimitunit>deNatTotenkopf</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatTotenkopfEstate</unittype>
       <unittype>deNatTotenkopf</unittype>
+      <unittype>zpNatTotenkopfEstate</unittype>
+      <unittype>zpNatTotenkopfElector</unittype>
     </sharedbuildlimitunittypes>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
@@ -69354,8 +69367,9 @@
     </armor>
     <sharedbuildlimitunit>deNatBrunswicker</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatBrunswickerEstate</unittype>
       <unittype>deNatBrunswicker</unittype>
+      <unittype>zpNatBrunswickerEstate</unittype>
+      <unittype>zpNatBrunswickerElector</unittype>
     </sharedbuildlimitunittypes>
     <unittype>LogicalTypeHealed</unittype>
     <unittype>LogicalTypeValidSharpshoot</unittype>
@@ -69404,8 +69418,8 @@
     <populationcount>0</populationcount>
     <sharedbuildlimitunit>zpNatConquistador</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatConquistadorEstate</unittype>
       <unittype>zpNatConquistador</unittype>
+      <unittype>zpNatConquistadorEstate</unittype>
     </sharedbuildlimitunittypes>
     <subciv>zpColonialEstate</subciv>
     <obstructionradiusx>0.7900</obstructionradiusx>
@@ -69463,6 +69477,7 @@
     <unittype>Unit</unittype>
     <unittype>UnitClass</unittype>
     <unittype>Military</unittype>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -69527,8 +69542,8 @@
     <populationcount>0</populationcount>
     <sharedbuildlimitunit>zpNatConquistadorMusketeer</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatArcabuceroEstate</unittype>
       <unittype>zpNatConquistadorMusketeer</unittype>
+      <unittype>zpNatArcabuceroEstate</unittype>
     </sharedbuildlimitunittypes>
     <subciv>zpColonialEstate</subciv>
     <obstructionradiusx>0.4900</obstructionradiusx>
@@ -69607,6 +69622,7 @@
     <unittype>AbstractNativeWarrior</unittype>
     <unittype>AbstractHeavyInfantry</unittype>
     <unittype>AbstractMusketeer</unittype>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -69697,8 +69713,8 @@
     <populationcount>0</populationcount>
     <sharedbuildlimitunit>zpNatColonialGuardOrig</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatColonialWardenEstate</unittype>
       <unittype>zpNatColonialGuardOrig</unittype>
+      <unittype>zpNatColonialWardenEstate</unittype>
     </sharedbuildlimitunittypes>
     <buildlimit>18</buildlimit>
     <subciv>zpColonialEstate</subciv>
@@ -69761,6 +69777,7 @@
     <unittype>AbstractNativeWarrior</unittype>
     <unittype>AbstractHeavyInfantry</unittype>
     <unittype>AbstractMusketeer</unittype>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -69847,8 +69864,8 @@
     <populationcount>0</populationcount>
     <sharedbuildlimitunit>zpNatConvictLabourer</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatConvictLabourerEstate</unittype>
       <unittype>zpNatConvictLabourer</unittype>
+      <unittype>zpNatConvictLabourerEstate</unittype>
     </sharedbuildlimitunittypes>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
@@ -69907,6 +69924,7 @@
     <unittype>Economic</unittype>
     <unittype>AbstractVillager</unittype>
     <unittype>AbstractConvictLabourer</unittype>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -70225,8 +70243,8 @@
     <populationcount>0</populationcount>
     <sharedbuildlimitunit>zpMountedOutlaw</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatCowpuncherEstate</unittype>
       <unittype>zpMountedOutlaw</unittype>
+      <unittype>zpNatCowpuncherEstate</unittype>
     </sharedbuildlimitunittypes>
     <subciv>zpColonialEstate</subciv>
     <buildlimit>15</buildlimit>
@@ -70286,6 +70304,7 @@
     <unittype>AbstractCavalryInfantry</unittype>
     <unittype>CountsTowardMilitaryScore</unittype>
     <unittype>AbstractNativeWarrior</unittype>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -70375,8 +70394,8 @@
     <populationcount>0</populationcount>
     <sharedbuildlimitunit>zpStageCoach</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatStageCoachEstate</unittype>
       <unittype>zpStageCoach</unittype>
+      <unittype>zpNatStageCoachEstate</unittype>
     </sharedbuildlimitunittypes>
     <subciv>zpColonialEstate</subciv>
     <obstructionradiusx>0.7900</obstructionradiusx>
@@ -70431,6 +70450,7 @@
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractRangedCavalry</unittype>
     <unittype>AbstractGunpowderCavalry</unittype>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -70470,8 +70490,8 @@
     <populationcount>0</populationcount>
     <sharedbuildlimitunit>zpNatRevolutionary</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatRevolutionaryEstate</unittype>
       <unittype>zpNatRevolutionary</unittype>
+      <unittype>zpNatRevolutionaryEstate</unittype>
     </sharedbuildlimitunittypes>
     <subciv>zpColonialEstate</subciv>
     <obstructionradiusx>0.4900</obstructionradiusx>
@@ -70534,6 +70554,7 @@
     <unittype>LogicalTypeInfantryVolleyTactic</unittype>
     <unittype>AbstractMusketeer</unittype>
     <unittype>AbstractNativeWarrior</unittype>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -70647,8 +70668,8 @@
     <populationcount>0</populationcount>
     <sharedbuildlimitunit>zpNatEclaireur</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatEclaireurEstate</unittype>
       <unittype>zpNatEclaireur</unittype>
+      <unittype>zpNatEclaireurEstate</unittype>
     </sharedbuildlimitunittypes>
     <subciv>zpColonialEstate</subciv>
     <obstructionradiusx>0.7900</obstructionradiusx>
@@ -70717,6 +70738,7 @@
     <unittype>AbstractNativeWarrior</unittype>
     <unittype>AbstractCanSeeStealth</unittype>
     <unittype>AbstractFindScout</unittype>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -70785,8 +70807,8 @@
     <populationcount>0</populationcount>
     <sharedbuildlimitunit>zpNatSettlementMilitia</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatSettlementMilitiaEstate</unittype>
       <unittype>zpNatSettlementMilitia</unittype>
+      <unittype>zpNatSettlementMilitiaEstate</unittype>
     </sharedbuildlimitunittypes>
     <subciv>zpColonialEstate</subciv>
     <buildlimit>17</buildlimit>
@@ -70853,6 +70875,7 @@
       <unittype>zpNatNomadSettlementMilitia</unittype>
       <unittype>zpNatMercSettlementMilitia</unittype>
     </sharedselectionunittypes>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -70955,8 +70978,8 @@
     <populationcount>0</populationcount>
     <sharedbuildlimitunit>zpNatSettlerJewish</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatSettlerJewishEstate</unittype>
       <unittype>zpNatSettlerJewish</unittype>
+      <unittype>zpNatSettlerJewishEstate</unittype>
     </sharedbuildlimitunittypes>
     <obstructionradiusx>0.4900</obstructionradiusx>
     <obstructionradiusz>0.4900</obstructionradiusz>
@@ -71017,6 +71040,7 @@
     <sharedselectionunittypes>
       <unittype>zpNatNomadSettlerJewish</unittype>
     </sharedselectionunittypes>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -74883,8 +74907,8 @@
     <dbid>21014</dbid>
     <sharedbuildlimitunit>zpStageCoach</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatStageCoachEstate</unittype>
       <unittype>zpStageCoach</unittype>
+      <unittype>zpNatStageCoachEstate</unittype>
     </sharedbuildlimitunittypes>
     <displaynameid>400060</displaynameid>
     <editornameid>400061</editornameid>
@@ -74942,6 +74966,7 @@
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractRangedCavalry</unittype>
     <unittype>AbstractGunpowderCavalry</unittype>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
@@ -74976,10 +75001,9 @@
   </unit>
   <unit id="21015" name="zpMountedOutlaw">
     <dbid>21015</dbid>
-    <sharedbuildlimitunit>zpMountedOutlaw</sharedbuildlimitunit>
     <sharedbuildlimitunittypes>
-      <unittype>zpNatCowpuncherEstate</unittype>
       <unittype>zpMountedOutlaw</unittype>
+      <unittype>zpNatCowpuncherEstate</unittype>
     </sharedbuildlimitunittypes>
     <displaynameid>400063</displaynameid>
     <editornameid>400064</editornameid>
@@ -75042,6 +75066,7 @@
     <unittype>AbstractCavalryInfantry</unittype>
     <unittype>CountsTowardMilitaryScore</unittype>
     <unittype>AbstractNativeWarrior</unittype>
+    <flag>UseSharedBuildLimit</flag>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>

@@ -5518,9 +5518,9 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatGatlingCamelSultanate" culture="none" newname="300449">
       </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatTotenkopfEstate" culture="none" newname="400242">
+      <effect mergemode="add" type="SetName" proto="zpNatTotenkopfEstate" culture="none" newname="122434">
       </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatBrunswickerEstate" culture="none" newname="400245">
+      <effect mergemode="add" type="SetName" proto="zpNatBrunswickerEstate" culture="none" newname="122433">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatConquistadorEstate" culture="none" newname="61196">
       </effect>
@@ -5528,11 +5528,7 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatColonialWardenEstate" culture="none" newname="301608">
       </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatConvictLabourerEstate" culture="none" newname="400254">
-      </effect>
       <effect mergemode="add" type="SetName" proto="zpNatCowpuncherEstate" culture="none" newname="301036">
-      </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatStageCoachEstate" culture="none" newname="400259">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatRevolutionaryEstate" culture="none" newname="301910">
       </effect>
@@ -5540,7 +5536,7 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatSettlementMilitiaEstate" culture="none" newname="301388">
       </effect>
-      <effect mergemode="add" type="SetName" proto="zpNatSettlerJewishEstate" culture="none" newname="400268">
+      <effect mergemode="add" type="SetName" proto="zpNatColonialEstateMilitia" culture="none" newname="400275">
       </effect>
     </effects>
   </tech>
@@ -35128,21 +35124,37 @@
   </tech>
   <tech name="ImperialManOWar">
     <effects>
-      <effect meergemode="add" type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCRegalShip</target>
       </effect>
-      <effect meergemode="add" type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCRegalShip</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpDispatchVessel</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpDispatchVessel</target>
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpDispatchVessel" culture="none" newname="400276">
       </effect>
     </effects>
   </tech>
   <tech name="ypImperialManOWar">
     <effects>
-      <effect meergemode="add" type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCRegalShip</target>
       </effect>
-      <effect meergemode="add" type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCRegalShip</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpDispatchVessel</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.50" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpDispatchVessel</target>
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpDispatchVessel" culture="none" newname="400276">
       </effect>
     </effects>
   </tech>
@@ -35228,7 +35240,7 @@
       <effect type="TechStatus" status="obtainable">zpWildWestMilitia</effect>
       <effect type="TechStatus" status="obtainable">zpSansculotteSpiritRevolution</effect>
       <effect type="TechStatus" status="obtainable">zpSansculotteLoyalDistricts</effect>
-      <effect type="TechStatus" status="obtainable">zpStormBarricades</effect>
+      <effect type="TechStatus" status="obtainable">zpSansculotteImperialExpedition</effect>
       <effect type="TechStatus" status="obtainable">zpGalerieLafayette</effect>
       <effect type="TechStatus" status="obtainable">zpJewishPessah</effect>
       <effect type="TechStatus" status="obtainable">zpJewishTorah</effect>
@@ -35266,6 +35278,9 @@
     <rollovertextid>400222</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
     <effects>
       <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpDispatchVessel" relativity="Absolute">
         <target type="Player">
@@ -35588,7 +35603,7 @@
       <effect type="CommandAdd" tech="zpSansculotteLoyalDistricts" page="2" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpStormBarricades" page="2" column="5">
+      <effect type="CommandAdd" tech="zpSansculotteImperialExpedition" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandAdd" tech="zpGalerieLafayette" page="2" column="6">
@@ -36085,59 +36100,49 @@
       <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialEstateMilitia</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialEstateMilitia</target>
+      </effect>
+      <effect type="SetName" proto="zpNatColonialEstateMilitia" culture="none" newname="400273">
+      </effect>
+      <effect type="SetName" proto="zpNatColonialEstateMilitia" culture="none" newname="400275" reqtech="ImpLegendaryNativesShadow">
+      </effect>
       <effect type="TechStatus" status="active">DEVeteranHanover</effect>
       <effect type="TechStatus" status="active">zpNatDisciplinedJesuit</effect>
       <effect type="TechStatus" status="active">zpVeteranPenalColony</effect>
       <effect type="TechStatus" status="active">zpWildWestVeteranCowboys</effect>
       <effect type="TechStatus" status="active">zpVeteranSansculottes</effect>
       <effect type="TechStatus" status="active">zpJewishVeteranMilitia</effect>
-      <effect type="SetName" proto="zpNatTotenkopfEstate" culture="none" newname="400240">
+      <effect type="SetName" proto="zpNatTotenkopfEstate" culture="none" newname="122428">
       </effect>
-      <effect type="SetName" proto="zpNatTotenkopfEstate" culture="none" newname="400242" reqtech="ImpLegendaryNativesShadow">
+      <effect type="SetName" proto="zpNatTotenkopfEstate" culture="none" newname="122434" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type="SetName" proto="zpNatBrunswickerEstate" culture="none" newname="400243">
-      </effect>
-      <effect type="SetName" proto="zpNatBrunswickerEstate" culture="none" newname="400245" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatConquistadorEstate" culture="none" newname="400246">
+      <effect type="SetName" proto="zpNatConquistadorEstate" culture="none" newname="61157">
       </effect>
       <effect type="SetName" proto="zpNatConquistadorEstate" culture="none" newname="61196" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type="SetName" proto="zpNatArcabuceroEstate" culture="none" newname="400248">
+      <effect type="SetName" proto="zpNatArcabuceroEstate" culture="none" newname="300654">
       </effect>
       <effect type="SetName" proto="zpNatArcabuceroEstate" culture="none" newname="300656" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type="SetName" proto="zpNatColonialWardenEstate" culture="none" newname="400250">
+      <effect type="SetName" proto="zpNatColonialWardenEstate" culture="none" newname="301606">
       </effect>
       <effect type="SetName" proto="zpNatColonialWardenEstate" culture="none" newname="301608" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type="SetName" proto="zpNatConvictLabourerEstate" culture="none" newname="400252">
-      </effect>
-      <effect type="SetName" proto="zpNatConvictLabourerEstate" culture="none" newname="400254" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatCowpuncherEstate" culture="none" newname="400255">
+      <effect type="SetName" proto="zpNatCowpuncherEstate" culture="none" newname="301034">
       </effect>
       <effect type="SetName" proto="zpNatCowpuncherEstate" culture="none" newname="301036" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type="SetName" proto="zpNatStageCoachEstate" culture="none" newname="400257">
-      </effect>
-      <effect type="SetName" proto="zpNatStageCoachEstate" culture="none" newname="400259" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatRevolutionaryEstate" culture="none" newname="400260">
+      <effect type="SetName" proto="zpNatRevolutionaryEstate" culture="none" newname="301908">
       </effect>
       <effect type="SetName" proto="zpNatRevolutionaryEstate" culture="none" newname="301910" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type="SetName" proto="zpNatEclaireurEstate" culture="none" newname="400262">
-      </effect>
-      <effect type="SetName" proto="zpNatEclaireurEstate" culture="none" newname="302056" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatSettlementMilitiaEstate" culture="none" newname="400264">
+      <effect type="SetName" proto="zpNatSettlementMilitiaEstate" culture="none" newname="301386">
       </effect>
       <effect type="SetName" proto="zpNatSettlementMilitiaEstate" culture="none" newname="301388" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatSettlerJewishEstate" culture="none" newname="400266">
-      </effect>
-      <effect type="SetName" proto="zpNatSettlerJewishEstate" culture="none" newname="400268" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>
@@ -36148,7 +36153,7 @@
     <cost resourcetype="Gold">350.0000</cost>
     <researchpoints>10.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\veteran_infantry\veteran_infantry.png</icon>
+    <icon>resources\images\icons\techs\guard_infantry\guard_infantry.png</icon>
     <rollovertextid>400272</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>UpgradeTech</flag>
@@ -36160,59 +36165,75 @@
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialEstateMilitia</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatColonialEstateMilitia</target>
+      </effect>
+      <effect type="SetName" proto="zpNatColonialEstateMilitia" culture="none" newname="400274">
+      </effect>
+      <effect type="SetName" proto="zpNatColonialEstateMilitia" culture="none" newname="400275" reqtech="ImpLegendaryNativesShadow">
+      </effect>
       <effect type="TechStatus" status="active">DEGuardHanover</effect>
       <effect type="TechStatus" status="active">zpNatHonoredJesuit</effect>
       <effect type="TechStatus" status="active">zpGuardPenalColony</effect>
       <effect type="TechStatus" status="active">zpWildWestGuardCowboys</effect>
       <effect type="TechStatus" status="active">zpGuardSansculottes</effect>
       <effect type="TechStatus" status="active">zpJewishGuardMilitia</effect>
-      <effect type="SetName" proto="zpNatTotenkopfEstate" culture="none" newname="400241">
+      <effect type="SetName" proto="zpNatTotenkopfEstate" culture="none" newname="122431">
       </effect>
-      <effect type="SetName" proto="zpNatTotenkopfEstate" culture="none" newname="400242" reqtech="ImpLegendaryNativesShadow">
+      <effect type="SetName" proto="zpNatTotenkopfEstate" culture="none" newname="122434" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type="SetName" proto="zpNatBrunswickerEstate" culture="none" newname="400244">
-      </effect>
-      <effect type="SetName" proto="zpNatBrunswickerEstate" culture="none" newname="400245" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatConquistadorEstate" culture="none" newname="400247">
+      <effect type="SetName" proto="zpNatConquistadorEstate" culture="none" newname="61173">
       </effect>
       <effect type="SetName" proto="zpNatConquistadorEstate" culture="none" newname="61196" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type="SetName" proto="zpNatArcabuceroEstate" culture="none" newname="400249">
+      <effect type="SetName" proto="zpNatArcabuceroEstate" culture="none" newname="300655">
       </effect>
       <effect type="SetName" proto="zpNatArcabuceroEstate" culture="none" newname="300656" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type="SetName" proto="zpNatColonialWardenEstate" culture="none" newname="400251">
+      <effect type="SetName" proto="zpNatColonialWardenEstate" culture="none" newname="301607">
       </effect>
       <effect type="SetName" proto="zpNatColonialWardenEstate" culture="none" newname="301608" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type="SetName" proto="zpNatConvictLabourerEstate" culture="none" newname="400253">
-      </effect>
-      <effect type="SetName" proto="zpNatConvictLabourerEstate" culture="none" newname="400254" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatCowpuncherEstate" culture="none" newname="400256">
+      <effect type="SetName" proto="zpNatCowpuncherEstate" culture="none" newname="301035">
       </effect>
       <effect type="SetName" proto="zpNatCowpuncherEstate" culture="none" newname="301036" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type="SetName" proto="zpNatStageCoachEstate" culture="none" newname="400258">
-      </effect>
-      <effect type="SetName" proto="zpNatStageCoachEstate" culture="none" newname="400259" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatRevolutionaryEstate" culture="none" newname="400261">
+      <effect type="SetName" proto="zpNatRevolutionaryEstate" culture="none" newname="301909">
       </effect>
       <effect type="SetName" proto="zpNatRevolutionaryEstate" culture="none" newname="301910" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type="SetName" proto="zpNatEclaireurEstate" culture="none" newname="400263">
-      </effect>
-      <effect type="SetName" proto="zpNatEclaireurEstate" culture="none" newname="302056" reqtech="ImpLegendaryNativesShadow">
-      </effect>
-      <effect type="SetName" proto="zpNatSettlementMilitiaEstate" culture="none" newname="400265">
+      <effect type="SetName" proto="zpNatSettlementMilitiaEstate" culture="none" newname="301387">
       </effect>
       <effect type="SetName" proto="zpNatSettlementMilitiaEstate" culture="none" newname="301388" reqtech="ImpLegendaryNativesShadow">
       </effect>
-      <effect type="SetName" proto="zpNatSettlerJewishEstate" culture="none" newname="400267">
-      </effect>
-      <effect type="SetName" proto="zpNatSettlerJewishEstate" culture="none" newname="400268" reqtech="ImpLegendaryNativesShadow">
+    </effects>
+  </tech>
+  <tech name="zpSansculotteImperialExpedition" type="Normal">
+    <dbid>41358</dbid>
+    <displaynameid>400277</displaynameid>
+    <cost resourcetype="Food">1000.0000</cost>
+    <cost resourcetype="Wood">1000.0000</cost>
+    <cost resourcetype="Gold">1000.0000</cost>
+    <researchpoints>30.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\historical_maps\rochambeau_expedition.png</icon>
+    <rollovertextid>400278</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TechStatus" status="active">zpRevolutionFranceNE</effect>
+      <effect type="TechStatus" status="active">zpNapoleonicEraNames</effect>
+      <effect type="TechStatus" status="active">zpNapoleonicEraIcons</effect>
+      <effect type="TechStatus" status="active">zpVeteranBourbon</effect>
+      <effect type="TechStatus" status="active">zpGuardBourbon</effect>
+      <effect type="Data2" amount="1.00" amount2="24.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCRegalShip" unittype2="zpNatRoyalMusketeer" relativity="Absolute">
+        <target type="Player"></target>
       </effect>
     </effects>
   </tech>
