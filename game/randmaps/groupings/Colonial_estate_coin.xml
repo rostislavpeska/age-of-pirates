@@ -83,6 +83,7 @@
 		<unit variation="205" posx="-4.9015" posz="10.1402" orientx="-0.0010" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrick</unit>
 		<unit variation="41" posx="-6.3742" posz="10.3969" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="41" posx="-3.7554" posz="10.3064" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
+		<unit variation="139" posx="0.0000" posz="0.0000" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpElectorCenter</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="texas\Cliff_gravel_tex">

@@ -123,13 +123,7 @@
 		<unit variation="141" posx="-0.6750" posz="14.0385" orientx="-0.9434" orienty="0.0024" orientz="0.3318">Cow</unit>
 		<unit variation="42" posx="2.8892" posz="13.3202" orientx="-0.5394" orienty="-0.0012" orientz="0.8420">Cow</unit>
 		<unit variation="92" posx="6.0698" posz="14.0605" orientx="0.9989" orienty="0.0000" orientz="0.0474">ypSMJesuitAccessory</unit>
-		<unit variation="107" posx="2.0000" posz="17.0000" orientx="0.3523" orienty="0.0000" orientz="0.9359">AIStart</unit>
-		<unit variation="19" posx="2.0000" posz="17.0000" orientx="0.9252" orienty="0.0000" orientz="-0.3795">AIStart</unit>
-		<unit variation="3" posx="2.0000" posz="17.0000" orientx="0.5985" orienty="0.0000" orientz="-0.8011">AIStart</unit>
-		<unit variation="43" posx="2.0000" posz="17.0000" orientx="-0.9834" orienty="0.0000" orientz="-0.1814">AIStart</unit>
-		<unit variation="165" posx="2.0000" posz="17.0000" orientx="0.6681" orienty="0.0000" orientz="-0.7441">AIStart</unit>
-		<unit variation="29" posx="2.0000" posz="17.0000" orientx="0.5904" orienty="0.0000" orientz="-0.8071">AIStart</unit>
-		<unit variation="139" posx="2.0000" posz="17.0000" orientx="0.2489" orienty="0.0000" orientz="-0.9685">AIStart</unit>
+		<unit variation="139" posx="0.0000" posz="0.0000" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpElectorCenter</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="Texas\cliff_edge_tex">

@@ -118,17 +118,25 @@ ladder is the same shape, extended from 4 sites to 6.
 
 ### What it counts
 
-`zpCityStateFlagTeam` — a generic embellishment proto with no subciv, placed
-inside the grouping XML, which converts to whoever captures the site.
+`zpElectorCenter` — the estate's central building, **exactly one per grouping**.
+Capture it with `rmGetGroupingInstanceUnitByType(placement, "zpElectorCenter")`
+and Convert it to the capturing player / back to gaia in the estate ON/OFF
+triggers; the ladder then counts it per player.
 
-> **Check first:** confirm the Colonial Estate groupings actually contain a
-> `zpCityStateFlagTeam` unit. If they do not, the ladder can never fire and the
-> grouping must be fixed before this task can work.
+> Do **not** count `zpCityStateFlag`: the coin estate grouping contains TWO of
+> them (food and wood contain one), so flag count is not proportional to estates
+> owned — one coin estate reads as two sites. Flags are converted with
+> `Convert Units in Area` (radius 20 around the socket) purely for the visual;
+> they play no part in counting. The Team variant (`zpCityStateFlagTeam`) is not
+> in these groupings at all.
 
-> **Conflict warning:** this proto is shared with the Prince Electors. If the map
-> hosts **both** Prince Elector and Colonial Estate sites, the counts will mix
-> and both ladders will misfire. On such a map, stop and report — a separate flag
-> proto is needed, which is a data-side change outside this assignment.
+> **Conflict warning:** `zpElectorCenter` is also used by Prince Elector
+> workshops. If the map hosts **both** Prince Elector and Colonial Estate sites,
+> the counts will mix and both ladders misfire. On such a map, stop and report.
+
+> **Working reference:** `000_independence_war.xs` implements the full verified
+> system — instance capture, ON/OFF conversion (id-based for center and the
+> three production buildings, area-based for flags), and the six-rung ladder.
 
 ### Structure
 
@@ -151,7 +159,9 @@ Decrease5  inactive <= 5 flags  ->  arms Increase6, Decrease4
 
 Every Increase fires `cTechzpEstateSiteIncrease` at status 2; every Decrease
 fires `cTechzpEstateSiteDecrease` at status 2. Both are `YPInfiniteTech`, so
-they can fire repeatedly.
+they can fire repeatedly. Their per-unit amounts equal each unit's **full base
+build limit** (limit = base x sites, the Elector design) — all 13 units
+including the Estate Militia.
 
 Note there is **no `Increase1`** — the first site is the unit's base build limit.
 `Increase2` is the only one created active; every other trigger starts inactive
@@ -167,7 +177,7 @@ yet, and the ladder is full of forward references.
 rmSwitchToTrigger(rmTriggerID("Estate Increase3"+k));
 rmAddTriggerCondition("Player Unit Count");
 rmSetTriggerConditionParamInt("PlayerID",k);
-rmSetTriggerConditionParam("ProtoUnit","zpCityStateFlagTeam");
+rmSetTriggerConditionParam("ProtoUnit","zpElectorCenter");
 rmSetTriggerConditionParam("Op",">=");
 rmSetTriggerConditionParamInt("Count",3);
 rmAddTriggerEffect("ZP Set Tech Status (XS)");

@@ -35663,37 +35663,40 @@
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
     <effects>
-      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="15.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">deNatBrunswicker</target>
       </effect>
-      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="12.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">deNatTotenkopf</target>
       </effect>
-      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="15.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpMountedOutlaw</target>
       </effect>
-      <effect type="Data" amount="3.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="20.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatColonialEstateMilitia</target>
+      </effect>
+      <effect type="Data" amount="18.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatColonialGuardOrig</target>
       </effect>
-      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="12.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatConquistador</target>
       </effect>
-      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="15.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
       </effect>
-      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="10.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatConvictLabourer</target>
       </effect>
-      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="10.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatEclaireur</target>
       </effect>
-      <effect type="Data" amount="3.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="19.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatRevolutionary</target>
       </effect>
-      <effect type="Data" amount="3.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="17.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatSettlementMilitia</target>
       </effect>
-      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="10.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatSettlerJewish</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
@@ -35701,6 +35704,7 @@
       </effect>
     </effects>
   </tech>
+
   <tech name="zpEstateSiteDecrease" type="Normal">
     <dbid>41350</dbid>
     <researchpoints>0.0000</researchpoints>
@@ -35708,37 +35712,40 @@
     <flag>Shadow</flag>
     <flag>YPInfiniteTech</flag>
     <effects>
-      <effect type="Data" amount="-2.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="-15.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">deNatBrunswicker</target>
       </effect>
-      <effect type="Data" amount="-2.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="-12.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">deNatTotenkopf</target>
       </effect>
-      <effect type="Data" amount="-2.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="-15.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpMountedOutlaw</target>
       </effect>
-      <effect type="Data" amount="-3.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="-20.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatColonialEstateMilitia</target>
+      </effect>
+      <effect type="Data" amount="-18.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatColonialGuardOrig</target>
       </effect>
-      <effect type="Data" amount="-2.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="-12.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatConquistador</target>
       </effect>
-      <effect type="Data" amount="-2.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="-15.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatConquistadorMusketeer</target>
       </effect>
-      <effect type="Data" amount="-2.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="-10.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatConvictLabourer</target>
       </effect>
-      <effect type="Data" amount="-2.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="-10.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatEclaireur</target>
       </effect>
-      <effect type="Data" amount="-3.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="-19.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatRevolutionary</target>
       </effect>
-      <effect type="Data" amount="-3.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="-17.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatSettlementMilitia</target>
       </effect>
-      <effect type="Data" amount="-2.00" subtype="BuildLimit" relativity="Absolute">
+      <effect type="Data" amount="-10.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatSettlerJewish</target>
       </effect>
       <effect type="Data" amount="-1.00" subtype="BuildLimit" relativity="Absolute">
@@ -35746,6 +35753,7 @@
       </effect>
     </effects>
   </tech>
+
   <tech name="zpTurnConsulateOffColonialEstateDefender" type="Normal">
     <dbid>41353</dbid>
     <status>UNOBTAINABLE</status>
