@@ -538,6 +538,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPirates</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOnJapanese" type="Normal">
@@ -628,6 +634,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnJapanese</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOnChinese" type="Normal">
@@ -718,6 +730,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnChinese</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpTurnConsulateOnIndian" type="Normal">
@@ -808,6 +826,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnIndian</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
 
@@ -2967,6 +2991,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMaltese</effect>     
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpNatMalteseExpeditionaryFleet" type="Normal">
@@ -3762,6 +3792,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokou</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpWokouCheapShipyard" type="Normal">
@@ -4472,6 +4508,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSwallow</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouSaoFeng</effect>
       <effect type="TechStatus" status="unobtainable">zpConsulateWokouTakanobu</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
    <tech name="zpBigConsulateChinaEuropean" type="Normal">
@@ -6719,6 +6761,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpConsulateNatZapotec" type="Normal">
@@ -7398,6 +7446,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffJewish</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpConsulateJewishGermans" type="Normal">
@@ -7636,6 +7690,12 @@
       
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffMalteseLand</effect>  
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpMalteseMarksmen" type="Normal">
@@ -8020,6 +8080,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientists</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpConsulateScientistNemo" type="Normal">
@@ -10006,6 +10072,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffVenice</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpNatVeteranVenetians" type="Normal">
@@ -11541,6 +11613,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffOrthodox</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name ="zpOrthodoxKolokol" type ="Normal">
@@ -11876,6 +11954,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffXMass</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name ="zpXMassExpansion" type ="Normal">
@@ -12352,6 +12436,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientistsLand</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpArmoredTrainEnableShadow" type="Normal">
@@ -12994,6 +13084,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
     
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffScientistsLand</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpNatSherriffOffice" type="Normal">
@@ -13521,6 +13617,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOnKhmer</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpBigConsulateJapaneseAlliesClone" type="Normal">
@@ -14983,6 +15085,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPiratesAustralia</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpTrainFlyingDutchman1" type="Normal">
@@ -15269,6 +15377,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWokouSouth</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpWokouSecondaryFlagship" type="Normal">
@@ -15476,6 +15590,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPiratesMedi</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpTrainSultana1" type="Normal">
@@ -16580,6 +16700,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpConsulatePenalColonyCunningham" type="Normal">
@@ -17984,6 +18110,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterTemple</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpConsulateNatTupi" type="Normal">
@@ -18449,6 +18581,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpForbidRevolutions" type="Normal">
@@ -22443,6 +22581,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffOrthodoxSouth</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpConsulateOrthodoxConstantinopole" type="Normal">
@@ -23252,6 +23396,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffKingOfBohemia</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpVeteranBohemianKing" type="Normal">
@@ -26133,6 +26283,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffWaterWarHut</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpConsulateNatSeminole" type="Normal">
@@ -26674,6 +26830,12 @@
       <effect type="TechStatus" status="obtainable">zpConsulateRevAdmiralUnion</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffRevUSA</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpConsulateRevPresidentConfederate" type="Normal">
@@ -26864,6 +27026,12 @@
       <effect type="TechStatus" status="obtainable">zpConsulateRevAdmiralConfederate</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffRevCSA</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpRevolutionUSAShadow" type="Normal">
@@ -27921,6 +28089,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffHussites</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpNativeTreatyHussites" type="Normal">
@@ -28346,6 +28520,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPrinceElector</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpConsulateElectorHanover" type="Normal">
@@ -30326,6 +30506,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffHansa</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpTrainHansaCog1" type="Normal">
@@ -31029,6 +31215,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffPiratesBaltic</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpTrainRevenantSteamer1" type="Normal">
@@ -32939,6 +33131,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffOrthodoxBalkan</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpNativeCossacks" type="Normal">
@@ -33401,6 +33599,12 @@
       <effect type="TechStatus" status="unobtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="unobtainable">zpTurnConsulateOffCossacks</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpSendBohdan" type="Normal">
@@ -34849,6 +35053,12 @@
       <effect type="TechStatus" status="obtainable">zpConsulateSultanateCorsairs</effect>
 
       <effect type="TechStatus" status="obtainable">zpTurnConsulateOffSultanate</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateHannover</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstatePenalColony</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJesuit</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateWestern</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateSansculottes</effect>
+      <effect type="TechStatus" status="unobtainable">zpConsulateEstateJewish</effect>
     </effects>
   </tech>
   <tech name="zpSultanateNativeSetup" type="Normal">
