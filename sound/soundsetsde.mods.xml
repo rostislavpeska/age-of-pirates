@@ -7,4 +7,8 @@
     <sound filename="DE\italiantankmove3.wav" volume="1.0000">
     </sound>
   </soundset>
+  <soundset name="American_Estate" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="zp_misc\american_estate.wav" volume="1.0000">
+    </sound>
+  </soundset>
 </soundsetdefmods>

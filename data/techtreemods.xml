@@ -20437,6 +20437,93 @@
       <effect type="TechStatus" status="obtainable">zpNatBourbonRoyalTax</effect>
     </effects>
   </tech>
+  <tech name="zpIndependenceWarSetup" type="Normal">
+    <dbid>408188</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpForbidRevolutions</effect>
+      <effect type="SetName" proto="zpSPCDestilery" newname="302561">
+      </effect>
+      <effect type="TechStatus" status="active">zpSPCActivateFieldGathering</effect>
+    </effects>
+  </tech>
+  <tech name="zpNatEstateLevy" type="Normal">
+    <dbid>408189</dbid>
+    <displaynameid>400286</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\abilities\estate_levy.png</icon>
+    <rollovertextid>400287</rollovertextid>
+    <flag>YPNoTextMessage</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DEHideAdvancedRollover</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="zpNativeColonialEstateColonialize" type="Normal">
+    <dbid>408190</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpNatEstateLevy</effect>
+      <effect type="CommandRemove" tech="zpNatEstateLevy">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpRevolutionAmerica" type="Normal">
+    <dbid>408191</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpPatriot</target>
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpPatriot" fromprotoid="Settler">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpPatriot" fromprotoid="Coureur">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpPatriot" fromprotoid="CoureurCree">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpPatriot" fromprotoid="deNatNomad">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpPatriot" fromprotoid="SettlerNative">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpPatriot" fromprotoid="Pilgrim">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpPatriot" fromprotoid="ypSettlerAsian">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpPatriot" fromprotoid="ypSettlerJapanese">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpPatriot" fromprotoid="ypSettlerIndian">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpPatriot" fromprotoid="deSettlerAfrican">
+      </effect>
+      <effect type="CommandAdd" proto="zpPatriot" page="0" column="1">
+        <target type="ProtoUnit">TownCenter</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpPatriot" page="0" column="1">
+        <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">Explorer</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpAmericanRevolutionShadow" type="Normal">
+    <dbid>408192</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpRevolutionAmerica</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TextEffectOutput" reason="Revolution" selfmsg="400289" playermsg="400290">
+      </effect>
+    </effects>
+  </tech>
   <tech name="zpBonusBourbon" type="Normal">
     <dbid>40817</dbid>
     <status>UNOBTAINABLE</status>
@@ -35425,6 +35512,7 @@
         <target type="ProtoUnit">zpNatColonialEstateMilitia</target>
       </effect>
       <effect type="TechStatus" status="obtainable">zpSPCEstateEconomy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatEstateLevy</effect>
       <effect type="TechStatus" status="obtainable">zpSPCNavalInventions</effect>
       <effect type="TechStatus" status="obtainable">NativeTreatyColonialEstate</effect>
       <effect type="TechStatus" status="obtainable">DEIndianFriendshipColonialEstate</effect>
@@ -35469,12 +35557,20 @@
     <researchpoints>20.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\historical_maps\estate_economy.png</icon>
-    <rollovertextid>302306</rollovertextid>
+    <rollovertextid>303320</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>TeamTech</flag>
     <effects>
-      <effect type="TechStatus" status="active">zpBlessedCityShadow</effect>
+      <effect type="Data" action="EstateEconomyAura" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCGoldSmelter</target>
+      </effect>
+      <effect type="Data" action="EstateEconomyAura" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCDestilery</target>
+      </effect>
+      <effect type="Data" action="EstateEconomyAura" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCSawMill</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpSPCNavalInventions" type="Normal">
@@ -35748,6 +35844,7 @@
     <flag>YPSequesterTech</flag>
     <flag>DoNotQueue</flag>
     <effects>
+      <effect type="TechStatus" status="active">zpRevolutionAmerica</effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatCowpuncherEstate</target>
       </effect>
@@ -35791,6 +35888,7 @@
     <flag>YPSequesterTech</flag>
     <flag>DoNotQueue</flag>
     <effects>
+      <effect type="TechStatus" status="active">zpRevolutionAmerica</effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatRevolutionaryEstate</target>
       </effect>
@@ -35834,6 +35932,7 @@
     <flag>YPSequesterTech</flag>
     <flag>DoNotQueue</flag>
     <effects>
+      <effect type="TechStatus" status="active">zpRevolutionAmerica</effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatSettlementMilitiaEstate</target>
       </effect>
@@ -35882,9 +35981,6 @@
       <effect type="Data" amount="15.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpMountedOutlaw</target>
       </effect>
-      <effect type="Data" amount="20.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">zpNatColonialEstateMilitia</target>
-      </effect>
       <effect type="Data" amount="18.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatColonialGuardOrig</target>
       </effect>
@@ -35930,9 +36026,6 @@
       </effect>
       <effect type="Data" amount="-15.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpMountedOutlaw</target>
-      </effect>
-      <effect type="Data" amount="-20.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">zpNatColonialEstateMilitia</target>
       </effect>
       <effect type="Data" amount="-18.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">zpNatColonialGuardOrig</target>
@@ -36445,12 +36538,7 @@
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="TechStatus" status="active">zpRevolutionFranceNE</effect>
-      <effect type="TechStatus" status="active">zpNapoleonicEraNames</effect>
-      <effect type="TechStatus" status="active">zpNapoleonicEraIcons</effect>
-      <effect type="TechStatus" status="active">zpVeteranBourbon</effect>
-      <effect type="TechStatus" status="active">zpGuardBourbon</effect>
-      <effect type="Data2" amount="1.00" amount2="24.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCRegalShip" unittype2="zpNatRoyalMusketeer" relativity="Absolute">
+      <effect type="Data2" amount="1.00" amount2="24.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCRegalShip" unittype2="ypConsulateVoltigeur" relativity="Absolute">
         <target type="Player"></target>
       </effect>
     </effects>

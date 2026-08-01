@@ -818,4 +818,25 @@
     <activerollovertextid>29586</activerollovertextid>
     <command>unitSetTactic("AutoGatherWood")</command>
   </protounitcommand>-->
+  <protounitcommand>
+    <name>zpNatEstateLevySmall</name>
+    <icon>resources\images\icons\abilities\estate_levy.png</icon>
+    <associatedtech>zpNatEstateLevy</associatedtech>
+    <associatedpower>zpPowerEstateLevy</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>zpColonialEstate</subciv>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpNatEstateLevyUniversal</name>
+    <icon>resources\images\icons\abilities\estate_levy.png</icon>
+    <associatedtech>zpNatEstateLevy</associatedtech>
+    <associatedpower>zpPowerEstateLevy</associatedpower>
+    <castpower>
+    </castpower>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
 </protounitcommandmods>

@@ -643,10 +643,17 @@
     <allowduringnorush>1</allowduringnorush>
     <isauxiliarypower>1</isauxiliarypower>
   </power>
-
-blockDE 
-
-
-
-
+ <power name="zpPowerEstateLevy" type="TempUnit">
+    <displaynameid>400286</displaynameid>
+    <rolloverid>400287</rolloverid>
+    <icon>resources\images\icons\abilities\estate_levy.png</icon>
+    <minimapeventtime sendalertto="ally">1</minimapeventtime>
+    <activetime>5</activetime>
+    <createunit pattern="Spawn" quantity="2" delay="0.0" permanent="">zpPatriot</createunit>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <rangeindicatorprotoid radius="12.0" indicatorcount="16" speed="0.6">PowerRanger</rangeindicatorprotoid>
+    <allowduringnorush>1</allowduringnorush>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+    <soundset type="StartSound" listenertype="All">American_Estate</soundset>
+  </power>
 </powermods>

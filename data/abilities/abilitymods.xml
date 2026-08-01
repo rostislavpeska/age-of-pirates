@@ -109,6 +109,7 @@
     <ability>zpNatPowerElDeguello<tech>zpSpanishHabsburgColonialize</tech><subciv>Habsburg</subciv><subcivalliancefactor>0.5</subcivalliancefactor><uicommand>uiFindNativeSiteSubCiv("Habsburg")</uicommand><rof>250</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
     <ability mergemode="replace">deNatPowerArcticAcclimation<tech>zpInuitAcclimationBig</tech><subciv>Inuit</subciv><subcivalliancefactor>0.1</subcivalliancefactor><usebigabilitybutton3>true</usebigabilitybutton3><rof>80</rof><castonself>true</castonself></ability>
     <ability>zpNatPowerArcticAcclimation<tech>zpInuitAcclimationSmall</tech><subciv>Inuit</subciv><subcivalliancefactor>0.1</subcivalliancefactor><rof>80</rof><castonself>true</castonself></ability>
+    <ability>zpPowerEstateLevy<tech>Colonialize</tech><subciv>zpColonialEstate</subciv><subcivalliancefactor>0.5</subcivalliancefactor><uicommand>uiFindNativeSiteSubCiv("zpColonialEstate")</uicommand><rof>240</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
   </tradingpost>
   <zparmoredtraingun>
     <ability>dePowerPeninsularFixedGunLongRangeAttack<rof>60</rof><tech>zpArmoredTrainImprove</tech></ability>
@@ -240,6 +241,7 @@
   </zppariscitadelpassage>
   <explorer>
     <ability>zpAbilityInspiringFlagFrench<tech>zprevolutionfrance</tech><rof>180</rof><donotforcestop>true</donotforcestop></ability>
+    <ability>deAbilityInspiringFlag<tech>zpRevolutionAmerica</tech><rof>180</rof><donotforcestop>true</donotforcestop></ability>
   </explorer>
   <zpspcdartagnan>
     <ability>deChargeAbilityChargedPistol<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
