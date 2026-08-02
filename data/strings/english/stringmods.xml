@@ -3548,7 +3548,7 @@
       <string _locid="400221">Naval Inventions</string>
       <string _locid="400222">Ships a Dispatch Vessel and allows Dispatch Vessels to be trained at the Dock.</string>
       <string _locid="400223">Renew Oath of Allegiance</string>
-      <string _locid="400224">Choose which colonial faction the Estate throws its weight behind. The choice is permanent.</string>
+      <string _locid="400224">Elects one of the Loyalist politicians and renews the Estate's oath of allegiance to the Crown. \n • Allows your Explorer, General or War Chief to construct Forts\n&lt;color=1.0, 0.0, 0.0&gt; • Available only for the team "DEFENDERS".&lt;/color&gt;</string>
       <string _locid="400225">Declaration of Independence</string>
       <string _locid="400226">Elects one of the Patriot politicians and rallies the Estate to the cause of independence. \n • Initiates the American Revolution \n • Transforms all your Settlers into Patriots \n • Allows Patriot training from your Town Center \n • Increases Explorer hitpoints by 30% \n • Changes your civilization to the United States of America without losing access to your original homecity or the option to advance to higher ages\n&lt;color=1.0, 0.0, 0.0&gt; • Available only for the team "ATTACKERS".&lt;/color&gt;</string>
       <string _locid="400227">King George III</string>

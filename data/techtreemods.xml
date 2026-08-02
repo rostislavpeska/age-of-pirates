@@ -20524,6 +20524,28 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpLoyalistAmerica" type="Normal">
+    <dbid>408193</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandAdd" proto="FortFrontier" page="6" column="-1">
+        <target type="ProtoUnit">Explorer</target>
+      </effect>
+      <effect type="CommandAdd" proto="FortFrontier" page="6" column="6">
+        <target type="ProtoUnit">xpIroquoisWarChief</target>
+      </effect>
+      <effect type="CommandAdd" proto="FortFrontier" page="6" column="6">
+        <target type="ProtoUnit">xpLakotaWarchief</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">FortFrontier</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">FortFrontier</target>
+      </effect>
+    </effects>
+  </tech>
   <tech name="zpBonusBourbon" type="Normal">
     <dbid>40817</dbid>
     <status>UNOBTAINABLE</status>
@@ -35715,6 +35737,7 @@
     <flag>YPSequesterTech</flag>
     <flag>DoNotQueue</flag>
     <effects>
+      <effect type="TechStatus" status="active">zpLoyalistAmerica</effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatTotenkopfEstate</target>
       </effect>
@@ -35758,6 +35781,7 @@
     <flag>YPSequesterTech</flag>
     <flag>DoNotQueue</flag>
     <effects>
+      <effect type="TechStatus" status="active">zpLoyalistAmerica</effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatColonialWardenEstate</target>
       </effect>
@@ -35801,6 +35825,7 @@
     <flag>YPSequesterTech</flag>
     <flag>DoNotQueue</flag>
     <effects>
+      <effect type="TechStatus" status="active">zpLoyalistAmerica</effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatConquistadorEstate</target>
       </effect>
@@ -35873,6 +35898,12 @@
       <effect type="CommandAdd" tech="zpWildWestMilitia" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpMountedOutlaw</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpStageCoach</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpConsulateEstateSansculottes" type="Normal">
@@ -35916,6 +35947,12 @@
       </effect>
       <effect type="CommandAdd" tech="zpGalerieLafayette" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRevolutionary</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatEclaireur</target>
       </effect>
     </effects>
   </tech>
@@ -35962,6 +35999,9 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="SetName" tech="zpNatAustralianFactory" newname="400239">
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatSettlementMilitia</target>
       </effect>
     </effects>
   </tech>

@@ -243,6 +243,12 @@
     <ability>zpAbilityInspiringFlagFrench<tech>zprevolutionfrance</tech><rof>180</rof><donotforcestop>true</donotforcestop></ability>
     <ability>deAbilityInspiringFlag<tech>zpRevolutionAmerica</tech><rof>180</rof><donotforcestop>true</donotforcestop></ability>
   </explorer>
+  <xpiroquoiswarchief>
+    <ability>deAbilityInspiringFlag<tech>zpRevolutionAmerica</tech><rof>180</rof><donotforcestop>true</donotforcestop></ability>
+  </xpiroquoiswarchief>
+  <xplakotawarchief>
+    <ability>deAbilityInspiringFlag<tech>zpRevolutionAmerica</tech><rof>180</rof><donotforcestop>true</donotforcestop></ability>
+  </xplakotawarchief>
   <zpspcdartagnan>
     <ability>deChargeAbilityChargedPistol<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
     <ability>PowerCrackshot<rof>90</rof></ability>

@@ -634,9 +634,6 @@ void main(void)
 	rmSetGroupingMinDistance(piratesVillageID2, 0.00);
 	rmSetGroupingMaxDistance(piratesVillageID2, 0.00);
 
-	rmPlaceGroupingAtLoc(piratesVillageID2, 0, rmXMetersToFraction(xsVectorGetX(pirateControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(pirateControllerLoc2)), 1);
-	rmEchoInfo("pirate village 2 placed");
-
 	// Water flags - one per settlement, dropped on the nearest water tile.
 
 	int piratewaterflagID1 = rmCreateObjectDef("pirate water flag 1");
@@ -647,6 +644,9 @@ void main(void)
 	rmPlaceObjectDefAtLoc(piratewaterflagID1, 0, rmXMetersToFraction(xsVectorGetX(closeToVillage1)), rmZMetersToFraction(xsVectorGetZ(closeToVillage1)));
 
 	rmClearClosestPointConstraints();
+
+	rmPlaceGroupingAtLoc(piratesVillageID2, 0, rmXMetersToFraction(xsVectorGetX(pirateControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(pirateControllerLoc2)), 1);
+	rmEchoInfo("pirate village 2 placed");
 
 	int piratewaterflagID2 = rmCreateObjectDef("pirate water flag 2");
 	rmAddObjectDefItem(piratewaterflagID2, "zpPirateWaterSpawnFlag2", 1, 1.0);
@@ -986,6 +986,14 @@ void main(void)
 	rmSetTeamSpacingModifier(0.6);
 
 	float teamStartLoc = rmRandFloat(0.0, 1.0);
+
+	// Spawn Switch (zpparis.xs): randomises which team holds which bank.
+	// Roles (Attacker/Defender cards, victory) follow TEAM numbers, not
+	// geography, so only the placement side flips.
+	float spawnSwitch = rmRandInt(0,1);
+	int eastTeam = 0;
+	if (spawnSwitch == 1)
+		eastTeam = 1;
 	if (useForts == 1)
 	{
 		// Slot tables. 1v1 ONLY: mirror-symmetric face-off straight across the
@@ -1000,8 +1008,8 @@ void main(void)
 		// water/cliffs at every size (30 m failed at 2p, 36-42 m spawned at
 		// 600 m); same-team separation >=62 m (40 m = touching walls,
 		// collided at 3p).
-		// Always 2 teams (historical, Florence-style): team 0 = Attacker =
-		// east bank, team 1 = Defender = west bank (estate-unlock convention).
+		// Always 2 teams (historical, Florence-style). Which team holds the
+		// east bank is randomised per game by spawnSwitch (zpparis.xs).
 		int slotNum = 0;
 		int eastCount = 0;
 		int westCount = 0;
@@ -1015,7 +1023,7 @@ void main(void)
 			// Per-team slot counters: works for any team assignment order.
 			// Each shore owns 4 slots (east 1/3/5/7, west 2/4/6/8), so
 			// uneven splits up to 4-a-side never leave their own bank.
-			if (rmGetPlayerTeam(i) == 0) {
+			if (rmGetPlayerTeam(i) == eastTeam) {
 				eastCount = eastCount + 1;
 				slotNum = 1;
 				if (eastCount == 2)
@@ -1062,6 +1070,18 @@ void main(void)
 			if (slotNum == 8) {
 				fortX = 0.316;	fortZ = 0.376;
 			}
+			// Flatten the fort site - the estateValley construct verbatim
+			// (700 tiles, coherence 0.8, base height 3.0, smooth 15, blend 2).
+			int fortValleyID = rmCreateArea("fortValley"+i);
+			rmSetAreaSize(fortValleyID, rmAreaTilesToFraction(700.0), rmAreaTilesToFraction(700.0));
+			rmSetAreaLocation(fortValleyID, fortX, fortZ);
+			rmSetAreaCoherence(fortValleyID, 0.8);
+			rmSetAreaBaseHeight(fortValleyID, 3.0);
+			rmSetAreaSmoothDistance(fortValleyID, 15);
+			rmSetAreaHeightBlend(fortValleyID, 2);
+			rmSetAreaElevationVariation(fortValleyID, 0.0);
+			rmSetAreaWarnFailure(fortValleyID, false);
+			rmBuildArea(fortValleyID);
 			rmPlacePlayer(i, fortX, fortZ);
 			rmPlaceGroupingAtLoc(playerFortID, i, fortX, fortZ, 1);
 		}
@@ -1092,12 +1112,22 @@ void main(void)
 			// sea (sim-measured up to 221 m offshore), which is why players
 			// went missing. Shores fixed per team like the fort tables:
 			// team 0 = Attacker = east bank, team 1 = west.
-			rmSetPlacementTeam(0);
-			rmSetPlacementSection(0.90, 0.10);
-			rmPlacePlayersCircular(0.22, 0.26, rmDegreesToRadians(5.0));
-			rmSetPlacementTeam(1);
-			rmSetPlacementSection(0.40, 0.60);
-			rmPlacePlayersCircular(0.22, 0.26, rmDegreesToRadians(5.0));
+			if (spawnSwitch == 0) {
+				rmSetPlacementTeam(0);
+				rmSetPlacementSection(0.90, 0.10);
+				rmPlacePlayersCircular(0.22, 0.26, rmDegreesToRadians(5.0));
+				rmSetPlacementTeam(1);
+				rmSetPlacementSection(0.40, 0.60);
+				rmPlacePlayersCircular(0.22, 0.26, rmDegreesToRadians(5.0));
+			}
+			else {
+				rmSetPlacementTeam(1);
+				rmSetPlacementSection(0.90, 0.10);
+				rmPlacePlayersCircular(0.22, 0.26, rmDegreesToRadians(5.0));
+				rmSetPlacementTeam(0);
+				rmSetPlacementSection(0.40, 0.60);
+				rmPlacePlayersCircular(0.22, 0.26, rmDegreesToRadians(5.0));
+			}
 		}
 	}
 
@@ -1443,15 +1473,15 @@ void main(void)
 
 	// Unit IDxs
 
-	int loneHarbourID1 = rmGetUnitPlaced(loneSocketID1, 0)+1;
-	int loneHarbourID2 = rmGetUnitPlaced(loneSocketID2, 0)+1;
-	int loneHarbourID3 = rmGetUnitPlaced(loneSocketID3, 0)+1;
-	int loneHarbourID4 = rmGetUnitPlaced(loneSocketID4, 0)+1;
+	int loneHarbourID1 = rmGetUnitPlaced(loneSocketID1, 0);
+	int loneHarbourID2 = rmGetUnitPlaced(loneSocketID2, 0);
+	int loneHarbourID3 = rmGetUnitPlaced(loneSocketID3, 0);
+	int loneHarbourID4 = rmGetUnitPlaced(loneSocketID4, 0);
 
-	int loneHarbourNuggetID1 = rmGetUnitPlaced(loneNuggetID1, 0)+1;
-	int loneHarbourNuggetID2 = rmGetUnitPlaced(loneNuggetID2, 0)+1;
-	int loneHarbourNuggetID3 = rmGetUnitPlaced(loneNuggetID3, 0)+1;
-	int loneHarbourNuggetID4 = rmGetUnitPlaced(loneNuggetID4, 0)+1;
+	int loneHarbourNuggetID1 = rmGetUnitPlaced(loneNuggetID1, 0);
+	int loneHarbourNuggetID2 = rmGetUnitPlaced(loneNuggetID2, 0);
+	int loneHarbourNuggetID3 = rmGetUnitPlaced(loneNuggetID3, 0);
+	int loneHarbourNuggetID4 = rmGetUnitPlaced(loneNuggetID4, 0);
 
 	// zpSocketPirates is the LAST unit inside both village groupings (29 units
 	// in pirate_village05, 26 in Pirate_Village06). Unit ids are consecutive in

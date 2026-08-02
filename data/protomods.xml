@@ -2213,6 +2213,7 @@
     <train row="0" page="0" column="133">zpNatCossackRider</train>
     <train row="0" page="0" column="134">zpNatCossackDragoon</train>
     <train row="0" page="0" column="135">zpNatJanissary</train>
+    <train row="0" page="0" column="136">zpNatColonialEstateMilitia</train>
   </unit>
   <unit name="NativeTownObstruction">
     <flag>Invulnerable</flag>
@@ -69178,8 +69179,6 @@
     <unittype>AbstractRifleman</unittype>
     <unittype>AbstractSkirmisher</unittype>
     <unittype>AbstractNativeWarrior</unittype>
-    <unittype>AbstractConsulateUnit</unittype>
-    <unittype>AbstractConsulateUnitColonial</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
