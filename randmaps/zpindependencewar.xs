@@ -53,13 +53,40 @@ void main(void)
 			rmSetSubCiv(2, "Iroquois");
 	}
 
+	// Map size follows the BIGGER TEAM, not the lobby total - a 4v1 needs
+	// the same shore as a 4v4. Size classes: S=480 (1v1), M=600 (2s),
+	// L=720 (3s), XL=792 (4+). The flags gate every size-dependent knob
+	// below (water bodies, harbour shift, village ladder, fort slots).
+	int eastTeamSize = 0;
+	int westTeamSize = 0;
+	for (i = 1; <cNumberPlayers) {
+		if (rmGetPlayerTeam(i) == 0)
+			eastTeamSize = eastTeamSize + 1;
+		else
+			westTeamSize = westTeamSize + 1;
+	}
+	int biggerTeamSize = eastTeamSize;
+	if (westTeamSize > biggerTeamSize)
+		biggerTeamSize = westTeamSize;
+	int mapS = 0;
+	int mapM = 0;
+	int mapL = 0;
+	int mapXL = 0;
 	int size = 480;
-	if (PlayerNum >=3)
+	if (biggerTeamSize <= 1)
+		mapS = 1;
+	if (biggerTeamSize == 2) {
+		mapM = 1;
 		size = 600;
-	if (PlayerNum >=5)
+	}
+	if (biggerTeamSize == 3) {
+		mapL = 1;
 		size = 720;
-	if (PlayerNum >=7)
+	}
+	if (biggerTeamSize >= 4) {
+		mapXL = 1;
 		size = 792;
+	}
 	rmSetMapSize(size, size);
 
 	rmSetMapElevationHeightBlend(1);
@@ -365,11 +392,11 @@ void main(void)
 
 	int riverArea1 = rmCreateArea("riverArea1");
 	rmSetAreaSize(riverArea1 , rmAreaTilesToFraction(2700), rmAreaTilesToFraction(2700));
-	if (PlayerNum >=3)
+	if (mapM == 1)
 		rmSetAreaSize(riverArea1 , rmAreaTilesToFraction(3500), rmAreaTilesToFraction(3500));
-	if (PlayerNum >=5)
+	if (mapL == 1)
 		rmSetAreaSize(riverArea1 , rmAreaTilesToFraction(4500), rmAreaTilesToFraction(4500));
-	if (PlayerNum >=7)
+	if (mapXL == 1)
 		rmSetAreaSize(riverArea1 , rmAreaTilesToFraction(6000), rmAreaTilesToFraction(6000));
 	rmSetAreaLocation(riverArea1 , 0.5, 0.4);
 	rmSetAreaCoherence(riverArea1 , 0.6);
@@ -382,11 +409,11 @@ void main(void)
 
 	int centralLake = rmCreateArea("centralLake");
 	rmSetAreaSize(centralLake , rmAreaTilesToFraction(7900), rmAreaTilesToFraction(7900));
-	if (PlayerNum >=3)
+	if (mapM == 1)
 		rmSetAreaSize(centralLake , rmAreaTilesToFraction(11600), rmAreaTilesToFraction(11600));
-	if (PlayerNum >=5)
+	if (mapL == 1)
 		rmSetAreaSize(centralLake , rmAreaTilesToFraction(16500), rmAreaTilesToFraction(16500));
-	if (PlayerNum >=7)
+	if (mapXL == 1)
 		rmSetAreaSize(centralLake , rmAreaTilesToFraction(21000), rmAreaTilesToFraction(21000));
 	rmSetAreaLocation(centralLake , 0.5, 0.3);
 	rmAddAreaInfluenceSegment(centralLake, 0.8, 0.1, 0.5, 0.3);
@@ -468,9 +495,17 @@ void main(void)
 	// size and 27-tile route offsets; classPlateau kept so forests stay off
 	// the harbour aprons.
 
+	// 2-player (480 m) games: the random route lane has no room inside the
+	// tight loop - east harbours/islands spawned nearly ON it, west ones
+	// too far. Move the four islands and harbour sockets 2 tiles east;
+	// the lane itself keeps its own spawn grid.
+	float harbourShiftX = 0.0;
+	if (mapS == 1)
+		harbourShiftX = rmXTilesToFraction(2);
+
 	int shoreLine1 = rmCreateArea("shoreLine1");
 	rmSetAreaSize(shoreLine1, rmAreaTilesToFraction(1300), rmAreaTilesToFraction(1300));
-	rmSetAreaLocation(shoreLine1, 0.5+rmXTilesToFraction(27), 0.74);
+	rmSetAreaLocation(shoreLine1, 0.5+rmXTilesToFraction(27)+harbourShiftX, 0.74);
 	rmSetAreaCoherence(shoreLine1, 1.0);
 	rmSetAreaBaseHeight(shoreLine1, 3.5);
 	rmSetAreaMix(shoreLine1, "newengland_grass");
@@ -483,7 +518,7 @@ void main(void)
 
 	int shoreLine2 = rmCreateArea("shoreLine2");
 	rmSetAreaSize(shoreLine2, rmAreaTilesToFraction(1300), rmAreaTilesToFraction(1300));
-	rmSetAreaLocation(shoreLine2, 0.5-rmXTilesToFraction(27), 0.64);
+	rmSetAreaLocation(shoreLine2, 0.5-rmXTilesToFraction(27)+harbourShiftX, 0.64);
 	rmSetAreaCoherence(shoreLine2, 1.0);
 	rmSetAreaBaseHeight(shoreLine2, 3.5);
 	rmSetAreaMix(shoreLine2, "newengland_grass");
@@ -496,7 +531,7 @@ void main(void)
 
 	int shoreLine3 = rmCreateArea("shoreLine3");
 	rmSetAreaSize(shoreLine3, rmAreaTilesToFraction(1300), rmAreaTilesToFraction(1300));
-	rmSetAreaLocation(shoreLine3, 0.6+rmXTilesToFraction(27), 0.5);
+	rmSetAreaLocation(shoreLine3, 0.6+rmXTilesToFraction(27)+harbourShiftX, 0.5);
 	rmSetAreaCoherence(shoreLine3, 1.0);
 	rmSetAreaBaseHeight(shoreLine3, 3.5);
 	rmSetAreaMix(shoreLine3, "newengland_grass");
@@ -509,7 +544,7 @@ void main(void)
 
 	int shoreLine4 = rmCreateArea("shoreLine4");
 	rmSetAreaSize(shoreLine4, rmAreaTilesToFraction(1300), rmAreaTilesToFraction(1300));
-	rmSetAreaLocation(shoreLine4, 0.4-rmXTilesToFraction(27), 0.5);
+	rmSetAreaLocation(shoreLine4, 0.4-rmXTilesToFraction(27)+harbourShiftX, 0.5);
 	rmSetAreaCoherence(shoreLine4, 1.0);
 	rmSetAreaBaseHeight(shoreLine4, 3.5);
 	rmSetAreaMix(shoreLine4, "newengland_grass");
@@ -683,17 +718,25 @@ void main(void)
 	// fort and estate, >=80 m from the pirates. 1/2/3 per shore by players.
 	// Village groupings and placement idiom copied from unknown.xs
 	// ("native iroquois village 1-5"); fixed variants keep builds deterministic.
+	// 1v1: the lone village moves to the north-central gap of each shore
+	// so the objects spread instead of stacking the mid-edge corridor.
+	float haudsV1x = 0.06;
+	float haudsV1z = 0.51;
+	if (mapS == 1) {
+		haudsV1x = 0.29;
+		haudsV1z = 0.69;
+	}
 	int iroquoisW1 = rmCreateGrouping("haudenosaunee village w1", "native iroquois village 1");
 	rmSetGroupingMinDistance(iroquoisW1, 0.00);
 	rmSetGroupingMaxDistance(iroquoisW1, 0.00);
-	rmPlaceGroupingAtLoc(iroquoisW1, 0, 0.06, 0.51, 1);
+	rmPlaceGroupingAtLoc(iroquoisW1, 0, haudsV1x, haudsV1z, 1);
 
 	int iroquoisE1 = rmCreateGrouping("haudenosaunee village e1", "native iroquois village 2");
 	rmSetGroupingMinDistance(iroquoisE1, 0.00);
 	rmSetGroupingMaxDistance(iroquoisE1, 0.00);
-	rmPlaceGroupingAtLoc(iroquoisE1, 0, 0.94, 0.51, 1);
+	rmPlaceGroupingAtLoc(iroquoisE1, 0, 1.0-haudsV1x, haudsV1z, 1);
 
-	if (PlayerNum >= 3) {
+	if (mapS == 0) {
 		int iroquoisW2 = rmCreateGrouping("haudenosaunee village w2", "native iroquois village 3");
 		rmSetGroupingMinDistance(iroquoisW2, 0.00);
 		rmSetGroupingMaxDistance(iroquoisW2, 0.00);
@@ -705,7 +748,7 @@ void main(void)
 		rmPlaceGroupingAtLoc(iroquoisE2, 0, 0.725, 0.70, 1);
 	}
 
-	if (PlayerNum >= 5) {
+	if (mapL == 1 || mapXL == 1) {
 		int iroquoisW3 = rmCreateGrouping("haudenosaunee village w3", "native iroquois village 5");
 		rmSetGroupingMinDistance(iroquoisW3, 0.00);
 		rmSetGroupingMaxDistance(iroquoisW3, 0.00);
@@ -935,17 +978,17 @@ void main(void)
 	// route line, in the water pocket in front of its cliff (cliff center is
 	// 27 tiles off) - docked BY the island coast, never on the route itself.
 
-	rmPlaceObjectDefAtLoc(loneSocketID1, 0, 0.5+rmXTilesToFraction(11), 0.74);
-	rmPlaceObjectDefAtLoc(loneNuggetID1, 0, 0.5+rmXTilesToFraction(11), 0.74);
+	rmPlaceObjectDefAtLoc(loneSocketID1, 0, 0.5+rmXTilesToFraction(11)+harbourShiftX, 0.74);
+	rmPlaceObjectDefAtLoc(loneNuggetID1, 0, 0.5+rmXTilesToFraction(11)+harbourShiftX, 0.74);
 
-	rmPlaceObjectDefAtLoc(loneSocketID2, 0, 0.5-rmXTilesToFraction(11), 0.64);
-	rmPlaceObjectDefAtLoc(loneNuggetID2, 0, 0.5-rmXTilesToFraction(11), 0.64);
+	rmPlaceObjectDefAtLoc(loneSocketID2, 0, 0.5-rmXTilesToFraction(11)+harbourShiftX, 0.64);
+	rmPlaceObjectDefAtLoc(loneNuggetID2, 0, 0.5-rmXTilesToFraction(11)+harbourShiftX, 0.64);
 
-	rmPlaceObjectDefAtLoc(loneSocketID3, 0, 0.6+rmXTilesToFraction(11), 0.5);
-	rmPlaceObjectDefAtLoc(loneNuggetID3, 0, 0.6+rmXTilesToFraction(11), 0.5);
+	rmPlaceObjectDefAtLoc(loneSocketID3, 0, 0.6+rmXTilesToFraction(11)+harbourShiftX, 0.5);
+	rmPlaceObjectDefAtLoc(loneNuggetID3, 0, 0.6+rmXTilesToFraction(11)+harbourShiftX, 0.5);
 
-	rmPlaceObjectDefAtLoc(loneSocketID4, 0, westLegX-rmXTilesToFraction(11), 0.5);
-	rmPlaceObjectDefAtLoc(loneNuggetID4, 0, westLegX-rmXTilesToFraction(11), 0.5);
+	rmPlaceObjectDefAtLoc(loneSocketID4, 0, westLegX-rmXTilesToFraction(11)+harbourShiftX, 0.5);
+	rmPlaceObjectDefAtLoc(loneNuggetID4, 0, westLegX-rmXTilesToFraction(11)+harbourShiftX, 0.5);
 
 
 	// >>>>>>>>>>>>>>>>>>>>>>>>>> Make Load bar move >>>>>>>>>>>>>>>>>>>>>>>>>
@@ -965,14 +1008,6 @@ void main(void)
 	// (Elbe-style, the pre-fort behavior kept below as the else path; the
 	// TCs avoid the estate ring via avoidEstate).
 	int useForts = 1;
-	int eastTeamSize = 0;
-	int westTeamSize = 0;
-	for (i = 1; <cNumberPlayers) {
-		if (rmGetPlayerTeam(i) == 0)
-			eastTeamSize = eastTeamSize + 1;
-		else
-			westTeamSize = westTeamSize + 1;
-	}
 	if (eastTeamSize > 4)
 		useForts = 0;
 	if (westTeamSize > 4)
@@ -1017,37 +1052,59 @@ void main(void)
 		{
 			float fortX = 0.755;
 			float fortZ = 0.53;
-			if (PlayerNum == 2) {
-				fortX = 0.652;	fortZ = 0.70;
-			}
-			// Per-team slot counters: works for any team assignment order.
-			// Each shore owns 4 slots (east 1/3/5/7, west 2/4/6/8), so
-			// uneven splits up to 4-a-side never leave their own bank.
+			// Fill order: strictly COAST -> UPSTREAM at every player count,
+			// 1v1 included. The seacoast bay slots settle first (east 5 then
+			// 7, west 6 then 8), then the inland harbour slots (1/4), and
+			// the near-bridge slots (3/2) settle last - the line of forts
+			// extends from the coast toward the bridge by team size.
+			// Teams of 1 (1v1) and the first player of a team of 2 take the
+			// inland river slot (9/10); a pair's second player goes to the
+			// coast slot - the two teammates end up most far from each other
+			// (~95 m at 600, vs 48 m of the old coast pair). Teams of 3-4
+			// keep the coast->upstream ladder 5/7/1/3 (west 6/8/4/2).
+			int myTeamSize = westTeamSize;
+			if (rmGetPlayerTeam(i) == 0)
+				myTeamSize = eastTeamSize;
 			if (rmGetPlayerTeam(i) == eastTeam) {
 				eastCount = eastCount + 1;
-				slotNum = 1;
-				if (eastCount == 2)
-					slotNum = 3;
-				if (eastCount == 3)
-					slotNum = 5;
-				if (eastCount == 4)
-					slotNum = 7;
+				slotNum = 5;
+				if (mapS == 1)
+					slotNum = 9;
+				if (myTeamSize == 2) {
+					slotNum = 9;
+					if (eastCount == 2)
+						slotNum = 5;
+				}
+				if (myTeamSize >= 3) {
+					if (eastCount == 2)
+						slotNum = 7;
+					if (eastCount == 3)
+						slotNum = 1;
+					if (eastCount == 4)
+						slotNum = 3;
+				}
 			}
 			else {
 				westCount = westCount + 1;
-				slotNum = 2;
-				if (westCount == 2)
-					slotNum = 4;
-				if (westCount == 3)
-					slotNum = 6;
-				if (westCount == 4)
-					slotNum = 8;
+				slotNum = 6;
+				if (mapS == 1)
+					slotNum = 10;
+				if (myTeamSize == 2) {
+					slotNum = 10;
+					if (westCount == 2)
+						slotNum = 6;
+				}
+				if (myTeamSize >= 3) {
+					if (westCount == 2)
+						slotNum = 8;
+					if (westCount == 3)
+						slotNum = 4;
+					if (westCount == 4)
+						slotNum = 2;
+				}
 			}
 			if (slotNum == 2) {
 				fortX = 0.376;	fortZ = 0.64;
-				if (PlayerNum == 2) {
-					fortX = 0.348;	fortZ = 0.70;
-				}
 			}
 			if (slotNum == 3) {
 				fortX = 0.62;	fortZ = 0.628;
@@ -1069,6 +1126,14 @@ void main(void)
 			}
 			if (slotNum == 8) {
 				fortX = 0.316;	fortZ = 0.376;
+			}
+			// Inland river slots (1v1 + pair leaders): sim-scanned, ~63 m
+			// water clearance at 480, more at larger sizes.
+			if (slotNum == 9) {
+				fortX = 0.75;	fortZ = 0.51;
+			}
+			if (slotNum == 10) {
+				fortX = 0.25;	fortZ = 0.51;
 			}
 			// Flatten the fort site - the estateValley construct verbatim
 			// (700 tiles, coherence 0.8, base height 3.0, smooth 15, blend 2).
@@ -1531,6 +1596,13 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID",x);
 		rmSetTriggerEffectParam("TechID","cTechzpIndependenceWarSetup"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
+		// Capturable-harbour resource crates: the naval unlock the engine
+		// auto-fires on vanilla water maps (Elbe rides it too) never fires
+		// for this custom route, so grant it here.
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",x);
+		rmSetTriggerEffectParam("TechID","cTechypTradeRouteCaptureable"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
 	}
 	rmAddTriggerEffect("Trade Route Set Level");
 	rmSetTriggerEffectParamInt("TradeRoute",1);
@@ -1539,6 +1611,26 @@ void main(void)
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
+
+	// Declaring independence upgrades the trade route to its maximum
+	// level (Cargo Boat -> Trade Steamer). zp_mississippi construct
+	// (AT_TR_Upgrade_Plr: Armored Trains -> Trade Route Set Level);
+	// no upgrade tech is researchable at the harbours on this map,
+	// so the Revolution is the only path.
+	for(k=1; <= cNumberNonGaiaPlayers) {
+	rmCreateTrigger("Revolution_TR_Upgrade"+k);
+	rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+	rmSetTriggerConditionParamInt("PlayerID",k);
+	rmSetTriggerConditionParam("TechID","cTechzpRevolutionAmerica");
+	rmSetTriggerConditionParamInt("Status",2);
+	rmAddTriggerEffect("Trade Route Set Level");
+	rmSetTriggerEffectParamInt("TradeRoute",1);
+	rmSetTriggerEffectParamInt("Level",2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
 
 	// Harbour conversion. Every harbour starts with AutoConvert suspended; it is
 	// released once its guardian nugget has been cleared.

@@ -16555,6 +16555,25 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpNatEstateColonyExport" type="Normal">
+    <dbid>408194</dbid>
+    <displaynameid>301591</displaynameid>
+    <cost resourcetype="Wood">300.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\colony_export.png</icon>
+    <rollovertextid>301592</rollovertextid>
+    <prereqs>
+			<techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <effects>
+      <effect type="Data" action="AutoGatherEstateColonyGold" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
   <tech name ="zpPenalColonyRevolt" type ="Normal">
 		<dbid>40595</dbid>
 		<displaynameid>301593</displaynameid>
@@ -35550,7 +35569,7 @@
       <effect type="TechStatus" status="obtainable">zpNatJesuitSchools</effect>
       <effect type="TechStatus" status="obtainable">zpNatJesuitFlyingButtress</effect>
       <effect type="TechStatus" status="obtainable">zpNatJesuitTank</effect>
-      <effect type="TechStatus" status="obtainable">zpNatAustralianLabourers</effect>
+      <effect type="TechStatus" status="obtainable">zpNatEstateColonyExport</effect>
       <effect type="TechStatus" status="obtainable">zpNatShoemakerWorkshop</effect>
       <effect type="TechStatus" status="obtainable">zpNatConvictPatrole</effect>
       <effect type="TechStatus" status="obtainable">zpNatAustralianFort</effect>
@@ -35798,7 +35817,7 @@
       <effect type="CommandAdd" proto="zpNatConvictLabourerEstate" page="0" column="3">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpNatAustralianLabourers" page="2" column="3">
+      <effect type="CommandAdd" tech="zpNatEstateColonyExport" page="2" column="3">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandAdd" tech="zpNatShoemakerWorkshop" page="2" column="4">
@@ -36346,7 +36365,7 @@
       <effect type="CommandRemove" tech="zpNatJesuitTank">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandRemove" tech="zpNatAustralianLabourers">
+      <effect type="CommandRemove" tech="zpNatEstateColonyExport">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandRemove" tech="zpNatShoemakerWorkshop">

@@ -2115,6 +2115,11 @@
       <rate type="Gold">2.000000</rate>
     </protoaction>
     <protoaction>
+      <name>AutoGatherEstateColonyGold</name>
+      <type>AutoGather</type>
+      <rate type="Gold">2.000000</rate>
+    </protoaction>
+    <protoaction>
       <name>AutoGatherKorowaiWood</name>
       <type>AutoGather</type>
       <rate type="Wood">3.000000</rate>
