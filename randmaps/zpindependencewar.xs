@@ -107,6 +107,7 @@ void main(void)
 	rmSetMapType("default");
 	rmSetMapType("newEngland");
 	rmSetMapType("piratehistoricalmap");
+	rmSetMapType("caribbeanwater");
 
 	chooseMercs();
 
@@ -1426,6 +1427,36 @@ void main(void)
 	rmAddObjectDefConstraint(berriesID2, avoidWater20);
 	rmAddObjectDefConstraint(berriesID2, eastLand);
 	rmPlaceObjectDefAtLoc(berriesID2, 0, 0.5, 0.5);
+
+	// Water nuggets - the standard Age of Pirates set (zpcaribbeanwars.xs
+	// construct verbatim). Difficulty 6 on caribbeanwater = privateer
+	// wrecks, native canoe wrecks and a shark rock; no diff-5 water
+	// treasure exists for our maptypes, so both defs use the guarded tier.
+	int waterNuggetAvoidLand = rmCreateTerrainDistanceConstraint("water nugget avoid land", "land", true, 15.0);
+	int avoidNuggetWater=rmCreateTypeDistanceConstraint("avoid water nuggets", "abstractNugget", 75.0);
+	int avoidNuggetWater2=rmCreateTypeDistanceConstraint("avoid water nuggets2", "abstractNugget", 120.0);
+
+	int nuggetWater= rmCreateObjectDef("nugget water");
+	rmAddObjectDefItem(nuggetWater, "ypNuggetBoat", 1, 0.0);
+	rmSetNuggetDifficulty(6, 6);
+	rmSetObjectDefMinDistance(nuggetWater, rmXFractionToMeters(0.0));
+	rmSetObjectDefMaxDistance(nuggetWater, rmXFractionToMeters(1.0));
+	rmAddObjectDefConstraint(nuggetWater, waterNuggetAvoidLand);
+	rmAddObjectDefConstraint(nuggetWater, ObjectAvoidTradeRoute);
+	rmAddObjectDefConstraint(nuggetWater, avoidNuggetWater2);
+	rmAddObjectDefConstraint(nuggetWater, playerEdgeConstraint);
+	rmPlaceObjectDefPerPlayer(nuggetWater, false, 1);
+
+	int nuggetWaterHard = rmCreateObjectDef("nugget water hard");
+	rmAddObjectDefItem(nuggetWaterHard, "ypNuggetBoat", 1, 0.0);
+	rmSetNuggetDifficulty(6, 6);
+	rmSetObjectDefMinDistance(nuggetWaterHard, rmXFractionToMeters(0.25));
+	rmSetObjectDefMaxDistance(nuggetWaterHard, rmXFractionToMeters(1.0));
+	rmAddObjectDefConstraint(nuggetWaterHard, waterNuggetAvoidLand);
+	rmAddObjectDefConstraint(nuggetWaterHard, ObjectAvoidTradeRoute);
+	rmAddObjectDefConstraint(nuggetWaterHard, avoidNuggetWater);
+	rmAddObjectDefConstraint(nuggetWaterHard, playerEdgeConstraint);
+	rmPlaceObjectDefPerPlayer(nuggetWaterHard, false, 1);
 
 	// Place some extra deer herds.
 	int deerHerdID=rmCreateObjectDef("western deer herd");

@@ -3,6 +3,7 @@
 <animfile>
 <definebone>bone_prop</definebone>
 <definebone>bone_brazier</definebone>
+<definebone>bone_flag_civ</definebone>
 	<attachment>brazier_fire
             <component>emiter
                 <assetreference type="popcornFx">

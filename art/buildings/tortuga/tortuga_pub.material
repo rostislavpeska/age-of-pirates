@@ -41,7 +41,7 @@
     <materialdef name="default">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="buildings\tavern\textures\pirate_tavern_mata_BaseColor">
+      <texture name="BaseColor" override="buildings\tortuga\textures\tortuga_tavern_mata_BaseColor">
       </texture>
       <texture name="Normals" override="buildings\tavern\textures\tavern_mata_Normals">
       </texture>

@@ -43,11 +43,11 @@
     <materialdef name="default">
     </materialdef>
     <parameters>
-     <texture name="BaseColor" override="buildings\spc\fort\textures\spc_fort_wall_barracks_mata_BaseColor">
+    <texture name="BaseColor" override="buildings\native_settlement\textures\piratecabin_mata_BaseColor">
       </texture>
-      <texture name="Normals" override="buildings\spc\fort\textures\spc_fort_wall_barracks_mata_Normals">
+      <texture name="Normals" override="buildings\cabin\cabin\textures\cabin_mata_Normals">
       </texture>
-      <texture name="Masks" override="buildings\spc\fort\textures\spc_fort_wall_barracks_mata_Masks">
+      <texture name="Masks" override="buildings\cabin\cabin\textures\cabin_mata_Masks">
       </texture>
     </parameters>
   </submaterial>
@@ -84,6 +84,18 @@
       <texture name="Normals" override="buildings\african_civs\port\textures\port_age4_matb_Normals">
       </texture>
       <texture name="Masks" override="buildings\african_civs\port\textures\port_age4_matb_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+   <submaterial name="math">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+       <texture name="BaseColor" override="homecity\dutch\hc_harbor_dutch\textures\hc_harbor_dutch_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\dutch\hc_harbor_dutch\textures\hc_harbor_dutch_mata_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\dutch\hc_harbor_dutch\textures\hc_harbor_dutch_mata_Masks">
       </texture>
     </parameters>
   </submaterial>
