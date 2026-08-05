@@ -15,7 +15,8 @@
         <civilization>DESwedish</civilization>
         <civilization>Spanish</civilization>
         <civilization>Germans</civilization>
-        <civilization>British</civilization>
         <civilization>Dutch</civilization>
+        <civilization>DEDanish</civilization>
+        <civilization>DEPolish</civilization>
     </recommendedSettings>
 </mapinfo>

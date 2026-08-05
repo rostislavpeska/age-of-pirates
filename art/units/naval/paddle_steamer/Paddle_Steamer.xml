@@ -1,0 +1,317 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>bone_front_wake</definebone>
+	<definebone>bone_wake01</definebone>
+	<definebone>bone_wake02</definebone>
+	<definebone>bone_wake03</definebone>
+	<definebone>bone_muzzlel01</definebone>
+	<definebone>bone_muzzlel02</definebone>
+	<definebone>bone_muzzlel03</definebone>
+	<definebone>bone_muzzlel04</definebone>
+	<definebone>bone_muzzlel05</definebone>
+	<definebone>bone_muzzler01</definebone>
+	<definebone>bone_muzzler02</definebone>
+	<definebone>bone_muzzler03</definebone>
+	<definebone>bone_muzzler04</definebone>
+	<definebone>bone_muzzler05</definebone>
+	<definebone>bone_master</definebone>
+	<definebone>bone_flag_civ</definebone>
+	<definebone>bone_garrisonflag</definebone>
+	<definebone>smoke</definebone>
+	<definebone>sidewheels</definebone>
+	 <attachment>IdleWaterFoam
+        <component>Idlefoam
+            <assetreference type="popcornFx">
+                <file>water_effects\idle_waterFoam_large.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>Idlefoam</component>
+        </anim>
+    </attachment>
+    <attachment>MoveWaterFoam
+        <component>Movefoam
+            <assetreference type="popcornFx">
+                <file>water_effects\move_waterFoam_large.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>Movefoam</component>
+        </anim>
+    </attachment>
+    <attachment>DeathWaterFoam
+        <component>Deathfoam
+            <assetreference type="popcornFx">
+                <file>water_effects\death_waterFoam_Xlarge.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>Deathfoam</component>
+        </anim>
+    </attachment>
+    <attachment>Death_EXP
+        <component>exp
+            <assetreference type="popcornFx">
+                <file>units\spc\fire_ship\Exp_frigate_ship.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>exp</component>
+        </anim>
+    </attachment>
+    <attachment>Death_EXP_Wood
+        <component>exp
+            <assetreference type="popcornFx">
+                <file>projectiles\ship_debris_wood.pkfx</file>
+            </assetreference>
+        </component>
+        <anim>None
+            <component>exp</component>
+        </anim>
+    </attachment>
+	<attachment>
+		boat_wake
+		<component>
+			boat_wake
+			<assetreference type="ParticleSystem">
+				<file>effects\wakes\wake_galleon.particle</file>
+			</assetreference>
+		</component>
+		<anim>
+			None
+			<component>boat_wake</component>
+		</anim>
+	</attachment>
+	<attachment>
+		attachment_boat_ripple
+		<component>
+			boat_ripple
+			<assetreference type="ParticleSystem">
+				<file>units\naval\galleon\galleon_idle_ripple.particle</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>boat_ripple</component>
+		</anim>
+	</attachment>
+	<attachment>
+		attachment_wake_front_splash
+		<component>
+			wake_front_splash
+			<assetreference type="ParticleSystem">
+				<file>units\naval\galleon\galleon_wake_front.particle</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>wake_front_splash</component>
+		</anim>
+	</attachment>
+	<attachment>
+		train_smoke
+		<component>
+			train_smoke
+			<assetreference type="ParticleSystem">
+				<file>effects\smoke\train_smoke.particle</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>train_smoke</component>
+		</anim>
+	</attachment>
+	<attachment>
+		smoke_A
+		<component>
+			white_smoke1
+			<assetreference type="ParticleSystem">
+				<file>effects\smoke\white_smoke_A.prt</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>white_smoke1</component>
+		</anim>
+	</attachment>
+	<attachment>
+		embers_attachment_A
+		<component>
+			embers_A
+			<assetreference type="ParticleSystem">
+				<file>effects\fire\embers_A.prt</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>embers_A</component>
+		</anim>
+	</attachment>
+	<attachment>
+		train_smoke_plume1
+		<component>
+			train_smoke_plume1
+			<assetreference type="ParticleSystem">
+				<file>effects\smoke\train_smoke_plume1.particle</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>train_smoke_plume1</component>
+		</anim>
+	</attachment>
+	<attachment>
+		train_smoke_plume2
+		<component>
+			train_smoke_plume2
+			<assetreference type="ParticleSystem">
+				<file>effects\smoke\train_smoke_plume2.particle</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>train_smoke_plume2</component>
+		</anim>
+	</attachment>
+	<attachment>
+		train_smoke_plume3
+		<component>
+			train_smoke_plume3
+			<assetreference type="ParticleSystem">
+				<file>effects\smoke\train_smoke_plume3.particle</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>train_smoke_plume3</component>
+		</anim>
+	</attachment>
+	<attachment>
+		train_smoke_plume4
+		<component>
+			train_smoke_plume4
+			<assetreference type="ParticleSystem">
+				<file>effects\smoke\train_smoke_plume4.particle</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>train_smoke_plume4</component>
+		</anim>
+	</attachment>
+	<attachment>
+		train_smoke_plume5
+		<component>
+			train_smoke_plume5
+			<assetreference type="ParticleSystem">
+				<file>effects\smoke\train_smoke_plume5.particle</file>
+			</assetreference>
+		</component>
+		<anim>
+			Idle
+			<component>train_smoke_plume5</component>
+		</anim>
+	</attachment>
+	<component>
+		ModelComp
+		<logic type="Destruction">
+			<p1>
+				<assetreference type="GrannyModel">
+					<file>units\naval\paddle_steamer\Paddle_Steamer01</file>
+				</assetreference>
+			</p1>
+			<p99>
+				<assetreference type="GrannyModel">
+					<file>units\naval\paddle_steamer\Paddle_Steamer01</file>
+				</assetreference>
+			</p99>
+		</logic>
+		<decal>
+			<effecttype>default</effecttype>
+			<selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+			<width>12.00</width>
+			<height>20.00</height>
+			<xoffset>0.00</xoffset>
+		</decal>
+		<watersplash>
+			<texture>units\naval\colony_ship\colony_ship_hullmask</texture>
+			<width>10.0</width>
+			<height>10.0</height>
+		</watersplash>
+	</component>
+	<component>
+		Death
+		<assetreference type="GrannyModel">
+			<file>units\naval\paddle_steamer\Paddle_Steamer_Death</file>
+		</assetreference>
+		<decal>
+			<effecttype>default</effecttype>
+			<selectedtexture>shadows_selections\selection_oval_64x128</selectedtexture>
+			<width>12.00</width>
+			<height>20.00</height>
+			<xoffset>0.00</xoffset>
+		</decal>
+		<watersplash>
+			<texture>units\naval\colony_ship\colony_ship_hullmask</texture>
+			<width>10.0</width>
+			<height>10.0</height>
+		</watersplash>
+	</component>
+	<anim>
+		Idle
+		<assetreference type="GrannyAnim">
+			<file>units\naval\paddle_steamer\Paddle_Steamer01_idle</file>
+		</assetreference>
+		<component>ModelComp</component>
+		<attach a="smoke_A" frombone="MASTER" tobone="smoke" syncanims="0"/>
+		<attach a="embers_attachment_A" frombone="MASTER" tobone="smoke" syncanims="0"/>
+		<attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+		<simskeleton>
+			<model>units\naval\Paddle_Steamer\Paddle_Steamer01</model>
+		</simskeleton>
+	</anim>
+	<anim>
+		Walk
+		<assetreference type="GrannyAnim">
+			<file>units\naval\paddle_steamer\Paddle_Steamer01_walk</file>
+		</assetreference>
+		<component>ModelComp</component>
+		<attach a="smoke_A" frombone="MASTER" tobone="smoke" syncanims="0"/>
+		<attach a="embers_attachment_A" frombone="MASTER" tobone="smoke" syncanims="0"/>
+		<attach a="train_smoke_plume1" frombone="MASTER" tobone="smoke" syncanims="0"/>
+		<attach a="train_smoke_plume2" frombone="MASTER" tobone="smoke" syncanims="0"/>
+		<attach a="train_smoke_plume3" frombone="MASTER" tobone="smoke" syncanims="0"/>
+		<attach a="train_smoke_plume4" frombone="MASTER" tobone="smoke" syncanims="0"/>
+		<attach a="train_smoke_plume5" frombone="MASTER" tobone="smoke" syncanims="0"/>
+		<attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+		<simskeleton>
+			<model>units\naval\Paddle_Steamer\Paddle_Steamer01</model>
+		</simskeleton>
+	</anim>
+	<anim>
+		Run
+		<assetreference type="GrannyAnim">
+			<file>units\naval\paddle_steamer\Paddle_Steamer01_walk</file>
+		</assetreference>
+		<component>ModelComp</component>
+		<attach a="smoke_A" frombone="MASTER" tobone="smoke" syncanims="0"/>
+		<attach a="train_smoke" frombone="MASTER" tobone="smoke" syncanims="0"/>
+		<attach a="embers_attachment_A" frombone="MASTER" tobone="smoke" syncanims="0"/>
+		<attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+		<simskeleton>
+			<model>units\naval\Paddle_Steamer\Paddle_Steamer01</model>
+		</simskeleton>
+		<attach a="boat_wake" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0" allowrotation="1"/>
+	</anim>
+	<anim>
+		Death
+		<assetreference type="GrannyAnim">
+			<file>units\naval\paddle_steamer\Paddle_Steamer_deathAnim</file>
+		</assetreference>
+		<component>Death</component>
+	<attach a="Death_EXP" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        <attach a="Death_EXP_wood" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+        <attach a="DeathWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
+	</anim>
+</animfile>

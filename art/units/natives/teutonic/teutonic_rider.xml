@@ -11,9 +11,18 @@
     <attachment>torch<include>effects\projectiles\torch_cavalry.xml</include></attachment>
     <attachment>helmet
 		<component>helmet
-			<assetreference type="GrannyModel">
-				<file>units\infantry\hospitaller\hospitaller_helmet</file>
-			</assetreference>
+			<logic type="Tech">
+				<none>
+					<assetreference type="GrannyModel">
+						<file>units\infantry\hospitaller\hospitaller_helmet</file>
+					</assetreference>
+				</none>
+				<zpteutonicarmybig>
+					<assetreference type="GrannyModel">
+						<file>units\natives\teutonic\TeutonicHelmet</file>
+					</assetreference>
+				</zpteutonicarmybig>
+			</logic>
 		</component>
 		<anim>Idle<component>helmet</component>
 		</anim>

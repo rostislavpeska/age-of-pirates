@@ -1,0 +1,2224 @@
+{
+ "map": "independence_war",
+ "snapshot": {
+  "file": "independence_war.snapshot.xs",
+  "sha256": "d1511d089a4306e06d76ad697724f3a1465f4f0240f54cde0565a484909bc51c",
+  "lines": 2919
+ },
+ "config": {
+  "size_ladder": [
+   [
+    1,
+    480
+   ],
+   [
+    3,
+    600
+   ],
+   [
+    5,
+    720
+   ],
+   [
+    7,
+    792
+   ]
+  ],
+  "sea_level": 1.0,
+  "terrain_init": "water",
+  "world_circle": true
+ },
+ "areas": [
+  {
+   "name": "riverArea1",
+   "line": 366,
+   "loc": {
+    "x": 0.5,
+    "z": 0.4
+   },
+   "size": {
+    "tiles": {
+     "ladder": [
+      [
+       1,
+       2700
+      ],
+      [
+       3,
+       3500
+      ],
+      [
+       5,
+       4500
+      ],
+      [
+       7,
+       6000
+      ]
+     ]
+    }
+   },
+   "base_height": null,
+   "creates_land": false,
+   "coherence": 0.6,
+   "smooth_distance": 0,
+   "obey_world_circle": false,
+   "classes": [
+    "classGreatLake"
+   ],
+   "notes": "invisible water-channel marker",
+   "influence_segments": [
+    [
+     0.5,
+     1.0,
+     0.5,
+     0.5
+    ]
+   ]
+  },
+  {
+   "name": "centralLake",
+   "line": 383,
+   "loc": {
+    "x": 0.5,
+    "z": 0.3
+   },
+   "size": {
+    "tiles": {
+     "ladder": [
+      [
+       1,
+       7900
+      ],
+      [
+       3,
+       11600
+      ],
+      [
+       5,
+       16500
+      ],
+      [
+       7,
+       21000
+      ]
+     ]
+    }
+   },
+   "base_height": null,
+   "creates_land": false,
+   "coherence": 0.8,
+   "smooth_distance": 0,
+   "classes": [
+    "classDeepWater"
+   ],
+   "notes": "invisible gulf marker",
+   "influence_segments": [
+    [
+     0.8,
+     0.1,
+     0.5,
+     0.3
+    ],
+    [
+     0.5,
+     0.3,
+     0.2,
+     0.1
+    ],
+    [
+     0.2,
+     0.1,
+     0.8,
+     0.1
+    ]
+   ]
+  },
+  {
+   "name": "playerIslandNorth",
+   "line": 403,
+   "loc": {
+    "x": 0.8,
+    "z": 0.8
+   },
+   "size": {
+    "fraction": 0.33
+   },
+   "base_height": 3,
+   "creates_land": true,
+   "coherence": 1.0,
+   "smooth_distance": 6,
+   "obey_world_circle": false,
+   "constraints": [
+    "greatLakesConstraint",
+    "avoidDeepWater",
+    "avoidTradeRouteFar3",
+    "avoidBridge"
+   ]
+  },
+  {
+   "name": "playerIslandSouth",
+   "line": 420,
+   "loc": {
+    "x": 0.2,
+    "z": 0.8
+   },
+   "size": {
+    "fraction": 0.33
+   },
+   "base_height": 3,
+   "creates_land": true,
+   "coherence": 1.0,
+   "smooth_distance": 6,
+   "obey_world_circle": false,
+   "constraints": [
+    "greatLakesConstraint",
+    "avoidDeepWater",
+    "avoidTradeRouteFar3",
+    "avoidBridge"
+   ]
+  },
+  {
+   "name": "bridgeDockEast",
+   "line": 439,
+   "loc": {
+    "x": {
+     "base": 0.5,
+     "meters": 44.0
+    },
+    "z": 0.88
+   },
+   "size": {
+    "tiles": 300
+   },
+   "base_height": 3.0,
+   "creates_land": true,
+   "coherence": 1.0,
+   "smooth_distance": 0,
+   "obey_world_circle": false,
+   "cliff_type": "ZP Elbe Cliff",
+   "classes": [
+    "classPlateau"
+   ]
+  },
+  {
+   "name": "bridgeDockWest",
+   "line": 451,
+   "loc": {
+    "x": {
+     "base": 0.5,
+     "meters": -44.0
+    },
+    "z": 0.88
+   },
+   "size": {
+    "tiles": 300
+   },
+   "base_height": 3.0,
+   "creates_land": true,
+   "coherence": 1.0,
+   "smooth_distance": 0,
+   "obey_world_circle": false,
+   "cliff_type": "ZP Elbe Cliff",
+   "classes": [
+    "classPlateau"
+   ]
+  },
+  {
+   "name": "shoreLine1",
+   "line": 471,
+   "loc": {
+    "x": {
+     "base": 0.5,
+     "tiles": 27.0
+    },
+    "z": 0.74
+   },
+   "size": {
+    "tiles": 1300
+   },
+   "base_height": 3.5,
+   "creates_land": true,
+   "coherence": 1.0,
+   "smooth_distance": 15,
+   "obey_world_circle": false,
+   "cliff_type": null,
+   "notes": "harbour flat - classic area since the cliff conversion (mix newengland_grass, height blend 2); classPlateau kept to hold forests off the aprons"
+  },
+  {
+   "name": "shoreLine2",
+   "line": 484,
+   "loc": {
+    "x": {
+     "base": 0.5,
+     "tiles": -27.0
+    },
+    "z": 0.64
+   },
+   "size": {
+    "tiles": 1300
+   },
+   "base_height": 3.5,
+   "creates_land": true,
+   "coherence": 1.0,
+   "smooth_distance": 15,
+   "obey_world_circle": false,
+   "cliff_type": null,
+   "notes": "harbour flat - classic area since the cliff conversion (mix newengland_grass, height blend 2); classPlateau kept to hold forests off the aprons"
+  },
+  {
+   "name": "shoreLine3",
+   "line": 497,
+   "loc": {
+    "x": {
+     "base": 0.6,
+     "tiles": 27.0
+    },
+    "z": 0.5
+   },
+   "size": {
+    "tiles": 1300
+   },
+   "base_height": 3.5,
+   "creates_land": true,
+   "coherence": 1.0,
+   "smooth_distance": 15,
+   "obey_world_circle": false,
+   "cliff_type": null,
+   "notes": "harbour flat - classic area since the cliff conversion (mix newengland_grass, height blend 2); classPlateau kept to hold forests off the aprons"
+  },
+  {
+   "name": "shoreLine4",
+   "line": 510,
+   "loc": {
+    "x": {
+     "base": 0.4,
+     "tiles": -27.0
+    },
+    "z": 0.5
+   },
+   "size": {
+    "tiles": 1300
+   },
+   "base_height": 3.5,
+   "creates_land": true,
+   "coherence": 1.0,
+   "smooth_distance": 15,
+   "obey_world_circle": false,
+   "cliff_type": null,
+   "notes": "harbour flat - classic area since the cliff conversion (mix newengland_grass, height blend 2); classPlateau kept to hold forests off the aprons"
+  },
+  {
+   "name": "playerHillsNorth",
+   "line": 526,
+   "loc": {
+    "x": 0.8,
+    "z": 0.8
+   },
+   "size": {
+    "fraction": 0.23
+   },
+   "base_height": 3,
+   "creates_land": true,
+   "coherence": 1.0,
+   "smooth_distance": 6,
+   "obey_world_circle": false,
+   "constraints": [
+    "avoidWater5",
+    "avoidBridge"
+   ],
+   "notes": "elevation overlay on north island"
+  },
+  {
+   "name": "playerHillsSouth",
+   "line": 545,
+   "loc": {
+    "x": 0.2,
+    "z": 0.8
+   },
+   "size": {
+    "fraction": 0.23
+   },
+   "base_height": 3,
+   "creates_land": true,
+   "coherence": 1.0,
+   "smooth_distance": 6,
+   "obey_world_circle": false,
+   "constraints": [
+    "avoidWater5",
+    "avoidBridge"
+   ],
+   "notes": "elevation overlay on south island"
+  },
+  {
+   "name": "pirate_site1",
+   "line": 596,
+   "loc": {
+    "x": 0.215,
+    "z": 0.24
+   },
+   "size": {
+    "tiles": 700
+   },
+   "base_height": 3.0,
+   "creates_land": true,
+   "coherence": 1.0,
+   "smooth_distance": 15,
+   "obey_world_circle": false,
+   "notes": "runtime-located at the pirate controller; literal anchor curated"
+  },
+  {
+   "name": "pirate_site2",
+   "line": 608,
+   "loc": {
+    "x": 0.79,
+    "z": 0.235
+   },
+   "size": {
+    "tiles": 700
+   },
+   "base_height": 3.0,
+   "creates_land": true,
+   "coherence": 1.0,
+   "smooth_distance": 15,
+   "obey_world_circle": false,
+   "notes": "runtime-located at the pirate controller; literal anchor curated"
+  },
+  {
+   "name": "estateValley1",
+   "line": 768,
+   "loc": {
+    "x": 0.29,
+    "z": 0.85
+   },
+   "size": {
+    "tiles": 700
+   },
+   "base_height": 3.0,
+   "creates_land": true,
+   "coherence": 0.8,
+   "smooth_distance": 15,
+   "notes": "warnFailure false"
+  },
+  {
+   "name": "estateValley2",
+   "line": 779,
+   "loc": {
+    "x": 0.135,
+    "z": 0.645
+   },
+   "size": {
+    "tiles": 700
+   },
+   "base_height": 3.0,
+   "creates_land": true,
+   "coherence": 0.8,
+   "smooth_distance": 15,
+   "notes": "warnFailure false"
+  },
+  {
+   "name": "estateValley3",
+   "line": 790,
+   "loc": {
+    "x": 0.13,
+    "z": 0.375
+   },
+   "size": {
+    "tiles": 700
+   },
+   "base_height": 3.0,
+   "creates_land": true,
+   "coherence": 0.8,
+   "smooth_distance": 15,
+   "notes": "warnFailure false"
+  },
+  {
+   "name": "estateValley4",
+   "line": 801,
+   "loc": {
+    "x": 0.71,
+    "z": 0.85
+   },
+   "size": {
+    "tiles": 700
+   },
+   "base_height": 3.0,
+   "creates_land": true,
+   "coherence": 0.8,
+   "smooth_distance": 15,
+   "notes": "warnFailure false"
+  },
+  {
+   "name": "estateValley5",
+   "line": 812,
+   "loc": {
+    "x": 0.865,
+    "z": 0.645
+   },
+   "size": {
+    "tiles": 700
+   },
+   "base_height": 3.0,
+   "creates_land": true,
+   "coherence": 0.8,
+   "smooth_distance": 15,
+   "notes": "warnFailure false"
+  },
+  {
+   "name": "estateValley6",
+   "line": 823,
+   "loc": {
+    "x": 0.87,
+    "z": 0.375
+   },
+   "size": {
+    "tiles": 700
+   },
+   "base_height": 3.0,
+   "creates_land": true,
+   "coherence": 0.8,
+   "smooth_distance": 15,
+   "notes": "warnFailure false"
+  },
+  {
+   "name": "westforest+i",
+   "line": 1238,
+   "engine_placed": true,
+   "size": {
+    "tiles": 300,
+    "tiles_min": 200
+   },
+   "base_height": null,
+   "creates_land": false,
+   "coherence": 0.4,
+   "smooth_distance": 0,
+   "count": {
+    "ladder": [
+     [
+      1,
+      52
+     ],
+     [
+      5,
+      66
+     ],
+     [
+      7,
+      80
+     ]
+    ]
+   },
+   "constraints": [
+    "avoidImportantItem",
+    "shortAvoidCoin",
+    "avoidTownCenterFar",
+    "avoidPlateauShort",
+    "avoidAll",
+    "avoidWater10",
+    "avoidTradeRouteFar2",
+    "forestConstraint",
+    "westLand"
+   ],
+   "notes": "forest loop; breaks after 5 consecutive build failures; warnFailure false",
+   "classes": [
+    "classForest"
+   ]
+  },
+  {
+   "name": "eastForest+i",
+   "line": 1277,
+   "engine_placed": true,
+   "size": {
+    "tiles": 300,
+    "tiles_min": 200
+   },
+   "base_height": null,
+   "creates_land": false,
+   "coherence": 0.4,
+   "smooth_distance": 0,
+   "count": {
+    "ladder": [
+     [
+      1,
+      52
+     ],
+     [
+      5,
+      66
+     ],
+     [
+      7,
+      80
+     ]
+    ]
+   },
+   "constraints": [
+    "avoidImportantItem",
+    "shortAvoidCoin",
+    "avoidTownCenterFar",
+    "avoidPlateauShort",
+    "avoidWater10",
+    "avoidAll",
+    "avoidTradeRouteFar2",
+    "forestConstraint",
+    "eastLand"
+   ],
+   "notes": "mirror forest loop",
+   "classes": [
+    "classForest"
+   ]
+  }
+ ],
+ "placements": [
+  {
+   "name": "bridge stopper",
+   "line": 246,
+   "proto": "zpSPCWaterSpawnPoint",
+   "kind": "at_point_runtime",
+   "route_docked": true,
+   "anchor": {
+    "runtime": "rmGetTradeRouteWayPoint(tradeRouteID, 0.5)",
+    "approx": [
+     0.5,
+     0.36
+    ]
+   },
+   "terrain_affinity": "water",
+   "category": "generic",
+   "notes": "0.5 is a route-length FRACTION, not a waypoint index; arc-length midpoint is ~(0.5,0.3) for 2-6p and ~(0.6,0.37) for the shorter 7-8p route; without the stopper the islands won't spawn"
+  },
+  {
+   "name": "lone socket 1",
+   "line": 255,
+   "proto": "zpTradingPostCaptureNavalLone",
+   "kind": "at_loc",
+   "route_docked": true,
+   "anchor": [
+    {
+     "base": 0.5,
+     "tiles": 11.0
+    },
+    0.74
+   ],
+   "min_dist_m": 0.0,
+   "max_dist_m": 0.5,
+   "terrain_affinity": "water",
+   "category": "generic",
+   "classes": [
+    "Socket",
+    "SocketTradeRoute",
+    "sockettraderoute"
+   ]
+  },
+  {
+   "name": "lone socket 2",
+   "line": 260,
+   "proto": "zpTradingPostCaptureNavalLone",
+   "kind": "at_loc",
+   "route_docked": true,
+   "anchor": [
+    {
+     "base": 0.5,
+     "tiles": -11.0
+    },
+    0.64
+   ],
+   "min_dist_m": 0.0,
+   "max_dist_m": 0.5,
+   "terrain_affinity": "water",
+   "category": "generic",
+   "classes": [
+    "Socket",
+    "SocketTradeRoute",
+    "sockettraderoute"
+   ]
+  },
+  {
+   "name": "lone socket 3",
+   "line": 265,
+   "proto": "zpTradingPostCaptureNavalLone",
+   "kind": "at_loc",
+   "route_docked": true,
+   "anchor": [
+    {
+     "base": 0.6,
+     "tiles": 11.0
+    },
+    0.5
+   ],
+   "min_dist_m": 0.0,
+   "max_dist_m": 0.5,
+   "terrain_affinity": "water",
+   "category": "generic",
+   "classes": [
+    "Socket",
+    "SocketTradeRoute",
+    "sockettraderoute"
+   ]
+  },
+  {
+   "name": "lone socket 4",
+   "line": 270,
+   "proto": "zpTradingPostCaptureNavalLone",
+   "kind": "at_loc",
+   "route_docked": true,
+   "anchor": [
+    {
+     "base": 0.4,
+     "tiles": -11.0
+    },
+    0.5
+   ],
+   "min_dist_m": 0.0,
+   "max_dist_m": 0.5,
+   "terrain_affinity": "water",
+   "category": "generic",
+   "classes": [
+    "Socket",
+    "SocketTradeRoute",
+    "sockettraderoute"
+   ]
+  },
+  {
+   "name": "lone nugget 1",
+   "line": 275,
+   "proto": "Nugget",
+   "kind": "at_loc",
+   "route_docked": true,
+   "anchor": [
+    {
+     "base": 0.5,
+     "tiles": 11.0
+    },
+    0.74
+   ],
+   "min_dist_m": 4.0,
+   "max_dist_m": 6.0,
+   "terrain_affinity": "water",
+   "category": "nugget_flag",
+   "notes": "guardian nugget, difficulty 101/101"
+  },
+  {
+   "name": "lone nugget 2",
+   "line": 280,
+   "proto": "Nugget",
+   "kind": "at_loc",
+   "route_docked": true,
+   "anchor": [
+    {
+     "base": 0.5,
+     "tiles": -11.0
+    },
+    0.64
+   ],
+   "min_dist_m": 4.0,
+   "max_dist_m": 6.0,
+   "terrain_affinity": "water",
+   "category": "nugget_flag"
+  },
+  {
+   "name": "lone nugget 3",
+   "line": 285,
+   "proto": "Nugget",
+   "kind": "at_loc",
+   "route_docked": true,
+   "anchor": [
+    {
+     "base": 0.6,
+     "tiles": 11.0
+    },
+    0.5
+   ],
+   "min_dist_m": 4.0,
+   "max_dist_m": 6.0,
+   "terrain_affinity": "water",
+   "category": "nugget_flag"
+  },
+  {
+   "name": "lone nugget 4",
+   "line": 290,
+   "proto": "Nugget",
+   "kind": "at_loc",
+   "route_docked": true,
+   "anchor": [
+    {
+     "base": 0.4,
+     "tiles": -11.0
+    },
+    0.5
+   ],
+   "min_dist_m": 4.0,
+   "max_dist_m": 6.0,
+   "terrain_affinity": "water",
+   "category": "nugget_flag"
+  },
+  {
+   "name": "bridge",
+   "line": 341,
+   "proto": "Bridge_universal_long",
+   "kind": "grouping_at_loc",
+   "anchor": [
+    0.5,
+    0.88
+   ],
+   "terrain_affinity": "either",
+   "category": "generic",
+   "notes": "grouping footprint 40x14 tiles; class classPlateau",
+   "classes": [
+    "classPlateau",
+    "zpBridgeFace"
+   ],
+   "footprint_tiles": [
+    40,
+    14
+   ]
+  },
+  {
+   "name": "pirate controller 1",
+   "line": 571,
+   "proto": "zpSPCWaterSpawnPoint",
+   "kind": "at_loc",
+   "anchor": [
+    0.215,
+    0.24
+   ],
+   "terrain_affinity": "water",
+   "category": "generic",
+   "notes": "position read back for all pirate-site placements"
+  },
+  {
+   "name": "pirate controller 2",
+   "line": 576,
+   "proto": "zpSPCWaterSpawnPoint",
+   "kind": "at_loc",
+   "anchor": [
+    0.79,
+    0.235
+   ],
+   "terrain_affinity": "water",
+   "category": "generic"
+  },
+  {
+   "name": "pirate city 1",
+   "line": 626,
+   "proto": "pirate_village05",
+   "kind": "grouping_at_loc",
+   "anchor": {
+    "runtime": "pirateControllerLoc1 readback",
+    "approx": [
+     0.215,
+     0.24
+    ]
+   },
+   "terrain_affinity": "land",
+   "category": "generic",
+   "notes": "no grouping constraints by design; NORMAL rmPlaceGroupingAtLoc (instance method corrupts non-city-state groupings - in-game verified 2026-07-30)"
+  },
+  {
+   "name": "pirate city 2",
+   "line": 633,
+   "proto": "Pirate_Village06",
+   "kind": "grouping_at_loc",
+   "anchor": {
+    "runtime": "pirateControllerLoc2 readback",
+    "approx": [
+     0.79,
+     0.235
+    ]
+   },
+   "terrain_affinity": "land",
+   "category": "generic",
+   "notes": "NORMAL rmPlaceGroupingAtLoc (see pirate city 1)"
+  },
+  {
+   "name": "pirate water flag 1",
+   "line": 642,
+   "proto": "zpPirateWaterSpawnFlag1",
+   "kind": "closest_point",
+   "anchor": {
+    "runtime": "rmFindClosestPointVector(pirateControllerLoc1) under flagLand",
+    "approx": [
+     0.215,
+     0.24
+    ]
+   },
+   "terrain_affinity": "water",
+   "category": "nugget_flag",
+   "constraints": [
+    "flagLand"
+   ]
+  },
+  {
+   "name": "pirate water flag 2",
+   "line": 651,
+   "proto": "zpPirateWaterSpawnFlag2",
+   "kind": "closest_point",
+   "anchor": {
+    "runtime": "rmFindClosestPointVector(pirateControllerLoc2) under flagLand",
+    "approx": [
+     0.79,
+     0.235
+    ]
+   },
+   "terrain_affinity": "water",
+   "category": "nugget_flag",
+   "constraints": [
+    "flagLand"
+   ]
+  },
+  {
+   "name": "pirate port 1",
+   "line": 662,
+   "proto": "pirateport03",
+   "kind": "closest_point",
+   "anchor": {
+    "runtime": "rmFindClosestPointVector(pirateControllerLoc1) under portOnShore",
+    "approx": [
+     0.215,
+     0.24
+    ]
+   },
+   "terrain_affinity": "water",
+   "category": "generic",
+   "constraints": [
+    "portOnShore"
+   ]
+  },
+  {
+   "name": "pirate port 2",
+   "line": 670,
+   "proto": "pirateport04",
+   "kind": "closest_point",
+   "anchor": {
+    "runtime": "rmFindClosestPointVector(pirateControllerLoc2) under portOnShore",
+    "approx": [
+     0.79,
+     0.235
+    ]
+   },
+   "terrain_affinity": "water",
+   "category": "generic",
+   "constraints": [
+    "portOnShore"
+   ]
+  },
+  {
+   "name": "estate west upper",
+   "line": 838,
+   "proto": "Colonial_estate_<upper>",
+   "kind": "grouping_at_loc",
+   "anchor": [
+    0.29,
+    0.85
+   ],
+   "terrain_affinity": "land",
+   "category": "generic",
+   "notes": "resource type from estateOrder = rmRandInt(1,6), mirrored on both banks",
+   "classes": [
+    "zpNativeHouseWesternVillageB"
+   ]
+  },
+  {
+   "name": "estate west middle",
+   "line": 843,
+   "proto": "Colonial_estate_<middle>",
+   "kind": "grouping_at_loc",
+   "anchor": [
+    0.135,
+    0.645
+   ],
+   "terrain_affinity": "land",
+   "category": "generic",
+   "classes": [
+    "zpNativeHouseWesternVillageB"
+   ]
+  },
+  {
+   "name": "estate west lower",
+   "line": 848,
+   "proto": "Colonial_estate_<lower>",
+   "kind": "grouping_at_loc",
+   "anchor": [
+    0.13,
+    0.375
+   ],
+   "terrain_affinity": "land",
+   "category": "generic",
+   "classes": [
+    "zpNativeHouseWesternVillageB"
+   ]
+  },
+  {
+   "name": "estate east upper",
+   "line": 853,
+   "proto": "Colonial_estate_<upper>",
+   "kind": "grouping_at_loc",
+   "anchor": [
+    0.71,
+    0.85
+   ],
+   "terrain_affinity": "land",
+   "category": "generic",
+   "classes": [
+    "zpNativeHouseWesternVillageB"
+   ]
+  },
+  {
+   "name": "estate east middle",
+   "line": 858,
+   "proto": "Colonial_estate_<middle>",
+   "kind": "grouping_at_loc",
+   "anchor": [
+    0.865,
+    0.645
+   ],
+   "terrain_affinity": "land",
+   "category": "generic",
+   "classes": [
+    "zpNativeHouseWesternVillageB"
+   ]
+  },
+  {
+   "name": "estate east lower",
+   "line": 863,
+   "proto": "Colonial_estate_<lower>",
+   "kind": "grouping_at_loc",
+   "anchor": [
+    0.87,
+    0.375
+   ],
+   "terrain_affinity": "land",
+   "category": "generic",
+   "classes": [
+    "zpNativeHouseWesternVillageB"
+   ]
+  },
+  {
+   "name": "king hill",
+   "line": 920,
+   "proto": "ypKingsHill",
+   "kind": "at_loc",
+   "anchor": [
+    0.5,
+    0.72
+   ],
+   "when": {
+    "koth": true
+   },
+   "terrain_affinity": "land",
+   "category": "generic",
+   "constraints": [
+    "avoidAll",
+    "playerEdgeConstraint",
+    "avoidWater10",
+    "avoidBridge"
+   ]
+  },
+  {
+   "name": "startingUnits",
+   "line": 1115,
+   "proto": "(starting units)",
+   "kind": "player_loop",
+   "per_player": true,
+   "anchor": {
+    "runtime": "TCLoc readback per player"
+   },
+   "terrain_affinity": "land",
+   "category": "generic"
+  },
+  {
+   "name": "player TC",
+   "line": 1117,
+   "proto": "TownCenter",
+   "kind": "player_loop",
+   "per_player": true,
+   "anchor": {
+    "runtime": "rmPlayerLocX/ZFraction(i)"
+   },
+   "min_dist_m": 0.0,
+   "max_dist_m": {
+    "cases": [
+     {
+      "when": {
+       "teams_eq": 2
+      },
+      "value": 20.0
+     }
+    ],
+    "default": 60.0
+   },
+   "terrain_affinity": "land",
+   "category": "player_tc",
+   "constraints": [
+    "avoidTownCenter",
+    "playerEdgeConstraint",
+    "avoidImpassableLand",
+    "avoidSocketLong",
+    "avoidWater10",
+    "avoidEstate"
+   ],
+   "notes": "classic-placement fallback only (a lumped shore has 5+ players): on the fort path the fort grouping carries the TownCenter and start resources",
+   "when": {
+    "offteam_players_gte": 5
+   }
+  },
+  {
+   "name": "player mine",
+   "line": 1132,
+   "proto": "mine",
+   "kind": "player_loop",
+   "per_player": true,
+   "anchor": {
+    "runtime": "TCLoc readback per player"
+   },
+   "min_dist_m": 10.0,
+   "max_dist_m": 30.0,
+   "terrain_affinity": "land",
+   "category": "generic",
+   "constraints": [
+    "avoidImpassableLand"
+   ],
+   "when": {
+    "offteam_players_gte": 5
+   },
+   "notes": "classic-placement fallback only (a lumped shore has 5+ players): on the fort path the fort grouping carries the TownCenter and start resources"
+  },
+  {
+   "name": "player deer",
+   "line": 1138,
+   "proto": "deer",
+   "kind": "player_loop",
+   "per_player": true,
+   "anchor": {
+    "runtime": "TCLoc readback per player"
+   },
+   "min_dist_m": 15.0,
+   "max_dist_m": 30.0,
+   "count": 15,
+   "terrain_affinity": "land",
+   "category": "generic",
+   "constraints": [
+    "avoidImpassableLand"
+   ],
+   "notes": "classic-placement fallback only (a lumped shore has 5+ players): on the fort path the fort grouping carries the TownCenter and start resources",
+   "when": {
+    "offteam_players_gte": 5
+   }
+  },
+  {
+   "name": "player trees",
+   "line": 1145,
+   "proto": "TreeNewEngland",
+   "kind": "player_loop",
+   "per_player": true,
+   "anchor": {
+    "runtime": "TCLoc readback per player"
+   },
+   "min_dist_m": 15.0,
+   "max_dist_m": 25.0,
+   "count": 15,
+   "terrain_affinity": "land",
+   "category": "generic",
+   "constraints": [
+    "avoidStartingResources",
+    "avoidImpassableLand"
+   ],
+   "when": {
+    "offteam_players_gte": 5
+   },
+   "notes": "classic-placement fallback only (a lumped shore has 5+ players): on the fort path the fort grouping carries the TownCenter and start resources"
+  },
+  {
+   "name": "colony ship",
+   "line": 1173,
+   "proto": "HomeCityWaterSpawnFlag",
+   "kind": "closest_point",
+   "per_player": true,
+   "anchor": {
+    "runtime": "rmFindClosestPointVector(TCLoc) under flag constraints"
+   },
+   "terrain_affinity": "water",
+   "category": "nugget_flag",
+   "constraints": [
+    "flagEdgeConstraint",
+    "flagVsFlag",
+    "flagLand",
+    "avoidBridgeLong"
+   ],
+   "notes": "under nomad the def gains an escort ship item (Galley for Ottomans, caravel otherwise)"
+  },
+  {
+   "name": "monastery builder",
+   "line": 1022,
+   "proto": "(ypMonasteryBuilder)",
+   "kind": "player_loop",
+   "per_player": true,
+   "anchor": {
+    "runtime": "TCLoc readback, Asian civs only"
+   },
+   "terrain_affinity": "land",
+   "category": "generic",
+   "notes": "gated on ypIsAsian(i) && !nomad - civ-dependent, runtime"
+  },
+  {
+   "name": "random mine",
+   "line": 1209,
+   "proto": "Mine",
+   "kind": "in_area",
+   "area_refs": [
+    "playerIslandSouth",
+    "playerIslandNorth"
+   ],
+   "min_dist_m": 0.0,
+   "max_dist_m": {
+    "frac_x": 0.45
+   },
+   "terrain_affinity": "land",
+   "category": "generic",
+   "constraints": [
+    "avoidCoin",
+    "avoidAll",
+    "avoidTownCenterFar",
+    "avoidSocketLong",
+    "avoidWater20",
+    "avoidTradeRoute",
+    "avoidEstate",
+    "playerEdgeConstraint"
+   ],
+   "notes": "count per island: cNumberNonGaiaPlayers*1.5"
+  },
+  {
+   "name": "berries west",
+   "line": 1311,
+   "proto": "berrybush",
+   "kind": "at_loc",
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "min_dist_m": 0.0,
+   "max_dist_m": {
+    "frac_x": 0.45
+   },
+   "count": 3,
+   "terrain_affinity": "land",
+   "category": "generic",
+   "constraints": [
+    "avoidCoin",
+    "avoidAll",
+    "avoidTradeRoute",
+    "avoidSocket",
+    "avoidWater20",
+    "westLand"
+   ]
+  },
+  {
+   "name": "berries east",
+   "line": 1323,
+   "proto": "berrybush",
+   "kind": "at_loc",
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "min_dist_m": 0.0,
+   "max_dist_m": {
+    "frac_x": 0.45
+   },
+   "count": 3,
+   "terrain_affinity": "land",
+   "category": "generic",
+   "constraints": [
+    "avoidCoin",
+    "avoidAll",
+    "avoidTradeRoute",
+    "avoidSocket",
+    "avoidWater20",
+    "eastLand"
+   ]
+  },
+  {
+   "name": "western deer herd",
+   "line": 1336,
+   "proto": "deer",
+   "kind": "at_loc",
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "min_dist_m": {
+    "frac_x": 0.03
+   },
+   "max_dist_m": {
+    "frac_x": 0.45
+   },
+   "terrain_affinity": "land",
+   "category": "generic",
+   "constraints": [
+    "shortAvoidCoin",
+    "avoidTradeSockets",
+    "avoidTownCenterFar",
+    "avoidWater20",
+    "avoidAll",
+    "avoidImpassableLand",
+    "deerConstraint",
+    "westLand"
+   ],
+   "count": 7,
+   "notes": "loop of 3*players attempts; herd of rmRandInt(4,7) per attempt (count records the max)"
+  },
+  {
+   "name": "eastern deer herd",
+   "line": 1355,
+   "proto": "deer",
+   "kind": "at_loc",
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "min_dist_m": {
+    "frac_x": 0.03
+   },
+   "max_dist_m": {
+    "frac_x": 0.45
+   },
+   "terrain_affinity": "land",
+   "category": "generic",
+   "constraints": [
+    "shortAvoidCoin",
+    "avoidTownCenterFar",
+    "avoidTradeSockets",
+    "avoidWater20",
+    "avoidAll",
+    "avoidImpassableLand",
+    "deerConstraint",
+    "eastLand"
+   ],
+   "count": 7,
+   "notes": "loop of 3*players attempts; herd of rmRandInt(4,7) per attempt (count records the max)"
+  },
+  {
+   "name": "nugget easy",
+   "line": 1379,
+   "proto": "Nugget",
+   "kind": "in_area",
+   "area_refs": [
+    "playerIslandSouth",
+    "playerIslandNorth"
+   ],
+   "terrain_affinity": "land",
+   "category": "nugget_flag",
+   "constraints": [
+    "shortPlayerConstraint",
+    "avoidTownCenter",
+    "avoidImpassableLand",
+    "avoidNuggets",
+    "avoidTradeSockets",
+    "avoidTradeRoute",
+    "avoidAll",
+    "avoidEstate",
+    "circleConstraint"
+   ],
+   "notes": "difficulty 1-2; count per island: cNumberNonGaiaPlayers*1.5"
+  },
+  {
+   "name": "nugget medium",
+   "line": 1395,
+   "proto": "Nugget",
+   "kind": "in_area",
+   "area_refs": [
+    "playerIslandSouth",
+    "playerIslandNorth"
+   ],
+   "terrain_affinity": "land",
+   "category": "nugget_flag",
+   "constraints": [
+    "shortPlayerConstraint",
+    "avoidImpassableLand",
+    "avoidNuggets",
+    "avoidTradeRoute",
+    "avoidTownCenterFar",
+    "avoidEstate",
+    "circleConstraint",
+    "avoidAll",
+    "avoidWater20"
+   ],
+   "notes": "difficulty 3-4; count per island: cNumberNonGaiaPlayers/2"
+  },
+  {
+   "name": "fish",
+   "line": 1413,
+   "proto": "FishCod",
+   "kind": "at_loc",
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "min_dist_m": 0.0,
+   "max_dist_m": {
+    "cases": [
+     {
+      "when": {
+       "koth": true
+      },
+      "value": {
+       "frac_x": 0.4
+      }
+     }
+    ],
+    "default": {
+     "frac_x": 0.45
+    }
+   },
+   "terrain_affinity": "water",
+   "category": "generic",
+   "constraints": [
+    "avoidFish1",
+    "fishLand"
+   ],
+   "notes": "count 50+10*players"
+  },
+  {
+   "name": "whale",
+   "line": 1424,
+   "proto": "MinkeWhale",
+   "kind": "at_loc",
+   "anchor": [
+    0.5,
+    0.5
+   ],
+   "min_dist_m": 0.0,
+   "max_dist_m": {
+    "frac_x": 0.5
+   },
+   "terrain_affinity": "water",
+   "category": "generic",
+   "constraints": [
+    "whaleVsWhaleID",
+    "whaleLand"
+   ],
+   "notes": "count 4*players"
+  },
+  {
+   "name": "village trees",
+   "line": 1433,
+   "proto": "TreeNewEngland",
+   "kind": "in_area",
+   "area_refs": [
+    "pirate_site1",
+    "pirate_site2"
+   ],
+   "count": 6,
+   "terrain_affinity": "land",
+   "category": "generic",
+   "constraints": [
+    "avoidAll"
+   ]
+  },
+  {
+   "name": "player fort",
+   "line": 981,
+   "proto": "Player_Fort_AM_Single",
+   "kind": "grouping_at_loc",
+   "anchor": [
+    {
+     "cases": [
+      {
+       "when": {
+        "players_lt": 3
+       },
+       "value": 0.652
+      }
+     ],
+     "default": 0.755
+    },
+    {
+     "cases": [
+      {
+       "when": {
+        "players_lt": 3
+       },
+       "value": 0.7
+      }
+     ],
+     "default": 0.53
+    }
+   ],
+   "min_dist_m": 0.0,
+   "max_dist_m": 0.0,
+   "terrain_affinity": "land",
+   "category": "generic",
+   "when": {
+    "offteam_players_lte": 4
+   },
+   "notes": "slot table: one def, one placement per player; diff sees p0 (player 1, east first slot; symmetric pair at 1v1). Off when a lumped shore has 5+ players (classic-placement fallback).",
+   "constraints": []
+  },
+  {
+   "name": "haudenosaunee village w1",
+   "line": 686,
+   "proto": "native iroquois village (fixed variant)",
+   "kind": "grouping_at_loc",
+   "anchor": [
+    0.06,
+    0.51
+   ],
+   "min_dist_m": 0.0,
+   "max_dist_m": 0.0,
+   "terrain_affinity": "land",
+   "category": "generic",
+   "constraints": []
+  },
+  {
+   "name": "haudenosaunee village e1",
+   "line": 691,
+   "proto": "native iroquois village (fixed variant)",
+   "kind": "grouping_at_loc",
+   "anchor": [
+    0.94,
+    0.51
+   ],
+   "min_dist_m": 0.0,
+   "max_dist_m": 0.0,
+   "terrain_affinity": "land",
+   "category": "generic",
+   "constraints": []
+  },
+  {
+   "name": "haudenosaunee village w2",
+   "line": 697,
+   "proto": "native iroquois village (fixed variant)",
+   "kind": "grouping_at_loc",
+   "anchor": [
+    0.275,
+    0.7
+   ],
+   "min_dist_m": 0.0,
+   "max_dist_m": 0.0,
+   "terrain_affinity": "land",
+   "category": "generic",
+   "constraints": [],
+   "when": {
+    "players_gte": 3
+   }
+  },
+  {
+   "name": "haudenosaunee village e2",
+   "line": 702,
+   "proto": "native iroquois village (fixed variant)",
+   "kind": "grouping_at_loc",
+   "anchor": [
+    0.725,
+    0.7
+   ],
+   "min_dist_m": 0.0,
+   "max_dist_m": 0.0,
+   "terrain_affinity": "land",
+   "category": "generic",
+   "constraints": [],
+   "when": {
+    "players_gte": 3
+   }
+  },
+  {
+   "name": "haudenosaunee village w3",
+   "line": 709,
+   "proto": "native iroquois village (fixed variant)",
+   "kind": "grouping_at_loc",
+   "anchor": [
+    0.405,
+    0.76
+   ],
+   "min_dist_m": 0.0,
+   "max_dist_m": 0.0,
+   "terrain_affinity": "land",
+   "category": "generic",
+   "constraints": [],
+   "when": {
+    "players_gte": 5
+   }
+  },
+  {
+   "name": "haudenosaunee village e3",
+   "line": 714,
+   "proto": "native iroquois village (fixed variant)",
+   "kind": "grouping_at_loc",
+   "anchor": [
+    0.595,
+    0.76
+   ],
+   "min_dist_m": 0.0,
+   "max_dist_m": 0.0,
+   "terrain_affinity": "land",
+   "category": "generic",
+   "constraints": [],
+   "when": {
+    "players_gte": 5
+   }
+  }
+ ],
+ "trade_route": {
+  "name": "river_trail",
+  "blocksize_m": 16.0,
+  "blocksize_source": "data/traderoutedefs.xml:18",
+  "waypoints": [
+   {
+    "point": [
+     0.5,
+     0.84
+    ]
+   },
+   {
+    "point": [
+     0.5,
+     0.56
+    ]
+   },
+   {
+    "point": [
+     0.6,
+     0.5
+    ]
+   },
+   {
+    "point": [
+     0.6,
+     0.4
+    ]
+   },
+   {
+    "point": [
+     0.5,
+     0.36
+    ]
+   },
+   {
+    "point": [
+     0.4,
+     0.4
+    ]
+   },
+   {
+    "point": [
+     0.4,
+     0.5
+    ]
+   },
+   {
+    "point": [
+     0.5,
+     0.56
+    ]
+   },
+   {
+    "point": [
+     0.5,
+     0.84
+    ]
+   }
+  ],
+  "docked": [
+   "bridge stopper",
+   "lone socket 1",
+   "lone socket 2",
+   "lone socket 3",
+   "lone socket 4",
+   "lone nugget 1",
+   "lone nugget 2",
+   "lone nugget 3",
+   "lone nugget 4"
+  ],
+  "notes": "full there-and-back loop, identical at every player count (deliberate divergence from Elbe)"
+ },
+ "player_placement": {
+  "team_spacing_modifier": 0.6,
+  "branches": [
+   {
+    "when": {
+     "players_eq": 2
+    },
+    "kind": "fixed",
+    "variants": [
+     {
+      "label": "symmetric 1v1",
+      "positions": [
+       [
+        1,
+        0.652,
+        0.7
+       ],
+       [
+        2,
+        0.348,
+        0.7
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "when": {
+     "players_eq": 3
+    },
+    "kind": "fixed",
+    "variants": [
+     {
+      "label": "fort table 3p (alternating teams)",
+      "positions": [
+       [
+        1,
+        0.755,
+        0.53
+       ],
+       [
+        2,
+        0.376,
+        0.64
+       ],
+       [
+        3,
+        0.62,
+        0.628
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "when": {
+     "players_eq": 4
+    },
+    "kind": "fixed",
+    "variants": [
+     {
+      "label": "fort table 4p (alternating teams)",
+      "positions": [
+       [
+        1,
+        0.755,
+        0.53
+       ],
+       [
+        2,
+        0.376,
+        0.64
+       ],
+       [
+        3,
+        0.62,
+        0.628
+       ],
+       [
+        4,
+        0.306,
+        0.559
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "when": {
+     "players_eq": 5
+    },
+    "kind": "fixed",
+    "variants": [
+     {
+      "label": "fort table 5p (alternating teams)",
+      "positions": [
+       [
+        1,
+        0.755,
+        0.53
+       ],
+       [
+        2,
+        0.376,
+        0.64
+       ],
+       [
+        3,
+        0.62,
+        0.628
+       ],
+       [
+        4,
+        0.306,
+        0.559
+       ],
+       [
+        5,
+        0.76,
+        0.352
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "when": {
+     "players_eq": 6
+    },
+    "kind": "fixed",
+    "variants": [
+     {
+      "label": "fort table 6p (alternating teams)",
+      "positions": [
+       [
+        1,
+        0.755,
+        0.53
+       ],
+       [
+        2,
+        0.376,
+        0.64
+       ],
+       [
+        3,
+        0.62,
+        0.628
+       ],
+       [
+        4,
+        0.306,
+        0.559
+       ],
+       [
+        5,
+        0.76,
+        0.352
+       ],
+       [
+        6,
+        0.24,
+        0.356
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "when": {
+     "players_eq": 7
+    },
+    "kind": "fixed",
+    "variants": [
+     {
+      "label": "fort table 7p (alternating teams)",
+      "positions": [
+       [
+        1,
+        0.755,
+        0.53
+       ],
+       [
+        2,
+        0.376,
+        0.64
+       ],
+       [
+        3,
+        0.62,
+        0.628
+       ],
+       [
+        4,
+        0.306,
+        0.559
+       ],
+       [
+        5,
+        0.76,
+        0.352
+       ],
+       [
+        6,
+        0.24,
+        0.356
+       ],
+       [
+        7,
+        0.684,
+        0.376
+       ]
+      ]
+     }
+    ]
+   },
+   {
+    "when": {
+     "players_eq": 8
+    },
+    "kind": "fixed",
+    "variants": [
+     {
+      "label": "fort table 8p (alternating teams)",
+      "positions": [
+       [
+        1,
+        0.755,
+        0.53
+       ],
+       [
+        2,
+        0.376,
+        0.64
+       ],
+       [
+        3,
+        0.62,
+        0.628
+       ],
+       [
+        4,
+        0.306,
+        0.559
+       ],
+       [
+        5,
+        0.76,
+        0.352
+       ],
+       [
+        6,
+        0.24,
+        0.356
+       ],
+       [
+        7,
+        0.684,
+        0.376
+       ],
+       [
+        8,
+        0.316,
+        0.376
+       ]
+      ]
+     }
+    ]
+   }
+  ],
+  "notes": "fort starts at every count; deterministic under the alternating team model"
+ },
+ "constraints": {
+  "playerEdgeConstraint": {
+   "kind": "pie",
+   "center": [
+    0.5,
+    0.5
+   ],
+   "r_min": {
+    "frac_x": 0.0
+   },
+   "r_max": {
+    "frac_x": 0.45
+   },
+   "arc": [
+    0,
+    360
+   ],
+   "line": 113
+  },
+  "longPlayerEdgeConstraint": {
+   "kind": "pie",
+   "center": [
+    0.5,
+    0.5
+   ],
+   "r_min": {
+    "frac_x": 0.0
+   },
+   "r_max": {
+    "frac_x": 0.42
+   },
+   "arc": [
+    0,
+    360
+   ],
+   "line": 114,
+   "applied": false
+  },
+  "circleConstraint": {
+   "kind": "pie",
+   "center": [
+    0.5,
+    0.5
+   ],
+   "r_min": 0,
+   "r_max": {
+    "frac_z": 0.47
+   },
+   "arc": [
+    0,
+    360
+   ],
+   "line": 122
+  },
+  "circleConstraint2": {
+   "kind": "pie",
+   "center": [
+    0.5,
+    0.5
+   ],
+   "r_min": 0,
+   "r_max": {
+    "frac_z": 0.48
+   },
+   "arc": [
+    0,
+    360
+   ],
+   "line": 359,
+   "applied": false
+  },
+  "flagEdgeConstraint": {
+   "kind": "pie",
+   "center": [
+    0.5,
+    0.5
+   ],
+   "r_min": {
+    "frac_x": 0.0
+   },
+   "r_max": {
+    "frac_x": 0.48
+   },
+   "arc": [
+    0,
+    360
+   ],
+   "line": 150
+  },
+  "landHalf": {
+   "kind": "box",
+   "box": [
+    0.0,
+    0.45,
+    1.0,
+    1.0
+   ],
+   "line": 134,
+   "applied": false
+  },
+  "westLand": {
+   "kind": "box",
+   "box": [
+    0.0,
+    0.0,
+    0.5,
+    1.0
+   ],
+   "line": 137
+  },
+  "eastLand": {
+   "kind": "box",
+   "box": [
+    0.5,
+    0.0,
+    1.0,
+    1.0
+   ],
+   "line": 138
+  },
+  "cityConstraint": {
+   "kind": "box",
+   "box": [
+    0.2,
+    0.0,
+    0.8,
+    1.0
+   ],
+   "line": 352,
+   "applied": false
+  },
+  "greatLakesConstraint": {
+   "kind": "class_distance",
+   "class": "classGreatLake",
+   "distance_m": 0.1,
+   "line": 208
+  },
+  "avoidDeepWater": {
+   "kind": "class_distance",
+   "class": "classDeepWater",
+   "distance_m": 20.0,
+   "line": 211
+  },
+  "avoidBridge": {
+   "kind": "class_distance",
+   "class": "zpBridgeFace",
+   "distance_m": 15.0,
+   "line": 236
+  },
+  "avoidBridgeLong": {
+   "kind": "class_distance",
+   "class": "zpBridgeFace",
+   "distance_m": 70.0,
+   "line": 237
+  },
+  "avoidWater5": {
+   "kind": "terrain",
+   "avoid": "water",
+   "distance_m": 5.0,
+   "line": 116
+  },
+  "avoidWater10": {
+   "kind": "terrain",
+   "avoid": "water",
+   "distance_m": 10.0,
+   "line": 117
+  },
+  "avoidWater20": {
+   "kind": "terrain",
+   "avoid": "water",
+   "distance_m": 20.0,
+   "line": 118
+  },
+  "avoidImpassableLand": {
+   "kind": "terrain",
+   "avoid": "water",
+   "distance_m": 6.0,
+   "line": 162
+  },
+  "flagLand": {
+   "kind": "terrain",
+   "avoid": "land",
+   "distance_m": 11.0,
+   "line": 184
+  },
+  "fishLand": {
+   "kind": "terrain",
+   "avoid": "land",
+   "distance_m": 6.0,
+   "line": 200
+  },
+  "whaleLand": {
+   "kind": "terrain",
+   "avoid": "land",
+   "distance_m": 35.0,
+   "line": 205
+  },
+  "portOnShore": {
+   "kind": "terrain",
+   "avoid": "land",
+   "distance_m": 3.5,
+   "line": 210
+  },
+  "avoidAll": {
+   "kind": "opaque",
+   "desc": "type all 6.0",
+   "line": 187
+  },
+  "avoidImportantItem": {
+   "kind": "opaque",
+   "desc": "class importantItem 10.0",
+   "line": 175
+  },
+  "shortAvoidCoin": {
+   "kind": "opaque",
+   "desc": "type gold 10.0",
+   "line": 157
+  },
+  "avoidCoin": {
+   "kind": "opaque",
+   "desc": "type Mine 30.0",
+   "line": 156
+  },
+  "avoidTownCenter": {
+   "kind": "opaque",
+   "desc": "type townCenter 25.0",
+   "line": 228
+  },
+  "avoidTownCenterFar": {
+   "kind": "opaque",
+   "desc": "type townCenter 30.0",
+   "line": 221
+  },
+  "avoidPlateauShort": {
+   "kind": "class_distance",
+   "class": "classPlateau",
+   "distance_m": 1.0,
+   "line": 356
+  },
+  "avoidTradeRoute": {
+   "kind": "route_distance",
+   "distance_m": 7.0,
+   "line": 193
+  },
+  "avoidTradeRouteFar2": {
+   "kind": "route_distance",
+   "distance_m": 10.0,
+   "line": 196
+  },
+  "avoidTradeSockets": {
+   "kind": "class_distance",
+   "class": "sockettraderoute",
+   "distance_m": 8.0,
+   "line": 198
+  },
+  "avoidSocket": {
+   "kind": "class_distance",
+   "class": "SocketTradeRoute",
+   "distance_m": 10.0,
+   "line": 212
+  },
+  "avoidSocketLong": {
+   "kind": "class_distance",
+   "class": "Socket",
+   "distance_m": 40.0,
+   "line": 214
+  },
+  "avoidEstate": {
+   "kind": "class_distance",
+   "class": "zpNativeHouseWesternVillageB",
+   "distance_m": 30.0,
+   "line": 220
+  },
+  "avoidNuggets": {
+   "kind": "opaque",
+   "desc": "class nuggets 60.0",
+   "line": 179
+  },
+  "shortPlayerConstraint": {
+   "kind": "opaque",
+   "desc": "class player 20.0",
+   "line": 145
+  },
+  "avoidStartingResources": {
+   "kind": "opaque",
+   "desc": "class startingResource 8.0",
+   "line": 147
+  },
+  "deerConstraint": {
+   "kind": "opaque",
+   "desc": "type deer 40.0",
+   "line": 180
+  },
+  "avoidFish1": {
+   "kind": "opaque",
+   "desc": "type FishCod 10.0",
+   "line": 201
+  },
+  "whaleVsWhaleID": {
+   "kind": "opaque",
+   "desc": "type MinkeWhale 50.0",
+   "line": 204
+  },
+  "flagVsFlag": {
+   "kind": "opaque",
+   "desc": "type HomeCityWaterSpawnFlag 30",
+   "line": 215
+  },
+  "forestConstraint": {
+   "kind": "opaque",
+   "desc": "class classForest 20.0",
+   "line": 154
+  },
+  "avoidTradeRouteFar3": {
+   "kind": "route_distance",
+   "distance_m": 12.0,
+   "line": 197
+  }
+ }
+}

@@ -1835,8 +1835,8 @@
       <string _locid="301834">ZP SPC Paris Bank</string>
       <string _locid="301835">ZP SPC Paris Mill</string>
       <string _locid="301836">Wind Mill</string>
-      <string _locid="301837">Gold Smelter</string>
-      <string _locid="301838">ZP SPC Paris Gold Smelter</string>
+      <string _locid="301837">Manufacture</string>
+      <string _locid="301838">ZP SPC Paris Manufacture</string>
       <string _locid="301839">Cognac Distillery</string>
       <string _locid="301840">ZP SPC Paris Cognac Distillery</string>
       <string _locid="301841">ZP SPC Paris Forester</string>
@@ -2833,15 +2833,15 @@
       <string _locid="302834">Once Rathaus is destroyed, you lose the game - even if you already finished a cathedral construction!</string>
       <string _locid="302835">You completed the Metropolitan Cathedral!</string>
       <string _locid="302836">%s completed the Metropolitan Cathedral!</string>
-      <string _locid="302837">Eger (Rathaus)</string>
-      <string _locid="302838">Strasbourg (Rathaus)</string>
-      <string _locid="302839">Regensburg (Rathaus)</string>
-      <string _locid="302840">Cologne (Rathaus)</string>
-      <string _locid="302841">Leipzig (Rathaus)</string>
-      <string _locid="302842">Graz (Rathaus)</string>
-      <string _locid="302843">Ulm (Rathaus)</string>
-      <string _locid="302844">Mainz (Rathaus)</string>
-      <string _locid="302845">Pilsen (Rathaus)</string>
+      <string _locid="302837">Eger</string>
+      <string _locid="302838">Strasbourg</string>
+      <string _locid="302839">Regensburg</string>
+      <string _locid="302840">Cologne</string>
+      <string _locid="302841">Leipzig</string>
+      <string _locid="302842">Graz</string>
+      <string _locid="302843">Ulm</string>
+      <string _locid="302844">Mainz</string>
+      <string _locid="302845">Pilsen</string>
       <string _locid="302846">After the death of Charles V. in 1558 the Holy Roman Empire became a federation of independent kingdoms and duchies. Use resources from the whole empire to construct a monumental Metropolitan Cathedral!\n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Complete the construction of the Metropolitan Cathedral and protect your Town center. Multiple Team gameplay or FFA is supported for this historical map. \n\nNative Settlements: Prince Electors, Hussites \n\nShadow aliances: Habsburg, Wettin, Hannover, Wittelsbach and Oldenburg</string>
       <string _locid="302847">Use resources from the whole Empire to construct an amazing Metropolitan Cathedral. Make sure you always have enough resources for the next phase of construction before you get to the next phase of your conquest.</string>
       <string _locid="302848">Upgrades the Cathedral construction to the next level. \n • Increases maximum population capacity by 10. &lt;color=0.0, 1.0, 0.0&gt;\n • Once you start the research, it will continue even if you lose access to the specific Elector House.&lt;/color&gt;</string>
@@ -3306,12 +3306,17 @@
       <string _locid="303307">ZP Cherry Orchard Socket</string>
       <string _locid="303308">Regal Ship</string>
       <string _locid="303309">ZP RegalShip</string>
-      <string _locid="303310">Heavy double-hulled warship. Stronger than Frigate but slower. Very powerful broadside attack.</string>
-      <string _locid="303311">Heavy double-hulled warship</string>
+      <string _locid="303310">Heavy double-hulled war ship. Stronger than Frigate but slower. Very powerful broadside attack.</string>
+      <string _locid="303311">Heavy double-hulled war ship</string>
       <string _locid="303312">Armed Merchantman</string>
       <string _locid="303313">ZP Armed Merchantman</string>
       <string _locid="303314">East Indiaman armed with cannons.</string>
-
+      <string _locid="303315">ZP Tortuga House</string>
+      <string _locid="303316">ZP Tortuga Tower</string>
+      <string _locid="303317">Dispatch Vessel</string>
+      <string _locid="303318">ZP Dispatch Vessel</string>
+      <string _locid="303319">Frigate Class heavy steam-powered war ship.</string>
+      <string _locid="303320">All Settlers around the colonial estates gather resources faster.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
@@ -3583,6 +3588,60 @@
       <string _locid="410000">zp Battleship Scenario</string>
 
 
+      <string _locid="400215">Colonial Estate</string>
+      <string _locid="400216">ZP Colonial Estate</string>
+      <string _locid="400217">The pride of the American colonies. Wealthy landowners and gentleman planters who answer to no crown but their own standing, and who arm their tenants to prove it.</string>
+      <string _locid="400218">Estate Militia</string>
+      <string _locid="400219">ZP Estate Militia</string>
+      <string _locid="400220">Estate Economy</string>
+      <string _locid="400221">Naval Inventions</string>
+      <string _locid="400222">Ships a Dispatch Vessel and allows Dispatch Vessels to be trained at the Dock.</string>
+      <string _locid="400223">Renew Oath of Allegiance</string>
+      <string _locid="400224">Elects one of the Loyalist politicians and renews the Estate's oath of allegiance to the Crown. \n • Allows your Explorer, General or War Chief to construct Forts\n&lt;color=1.0, 0.0, 0.0&gt; • Available only for the team "DEFENDERS".&lt;/color&gt;</string>
+      <string _locid="400225">Declaration of Independence</string>
+      <string _locid="400226">Elects one of the Patriot politicians and rallies the Estate to the cause of independence. \n • Initiates the American Revolution \n • Transforms all your Settlers into Patriots \n • Allows Patriot training from your Town Center \n • Increases Explorer hitpoints by 30% \n • Upgrades the trade route to its maximum level \n • Changes your civilization to the United States of America without losing access to your original homecity or the option to advance to higher ages\n&lt;color=1.0, 0.0, 0.0&gt; • Available only for the team "ATTACKERS".&lt;/color&gt;</string>
+      <string _locid="400227">King George III</string>
+      <string _locid="400228">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBlack Brunswicker, Totenkopf Hussar \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nRoyal Scots Grey, Royal Card Games, Acts of Union, Victorian Era</string>
+      <string _locid="400229">James Oglethorpe</string>
+      <string _locid="400230">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nColonial Warden, Convict Labourer \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nColony Export, Shoemaker's Workshop, Convict Patrole, Fortified Colony</string>
+      <string _locid="400231">Jean de Br&#233;beuf</string>
+      <string _locid="400232">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nConquistador, Arcabucero \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nSmokeless Powder, Christian Schools, Flying Buttress, Secret Plans</string>
+      <string _locid="400233">Daniel Boone</string>
+      <string _locid="400234">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nCowpuncher, Armored Stagecoach \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nWhiskey Stills, Texan Longhorns, Fast Colts, Territorial Militia</string>
+      <string _locid="400235">Marquis de Lafayette</string>
+      <string _locid="400236">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nRevolutionary, &#201;claireur \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nSpirit of the Revolution, Loyal Districts, Rochambeau's Expedition, Galerie Lafayette</string>
+      <string _locid="400237">Haym Salomon</string>
+      <string _locid="400238">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nSettlement Militia, Jewish Merchant \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nPessah, Torah, Yom Kippur, American Industry</string>
+      <string _locid="400239">American Industry</string>
+      <string _locid="400269">Veteran Colonial Estate</string>
+      <string _locid="400270">Upgrades every Colonial Estate unit to Veteran, +20% hitpoints and attack.</string>
+      <string _locid="400271">Guard Colonial Estate</string>
+      <string _locid="400272">Upgrades every Colonial Estate unit to Guard, +40% hitpoints and attack.</string>
+      <string _locid="400273">Veteran Estate Militia</string>
+      <string _locid="400274">Guard Estate Militia</string>
+      <string _locid="400275">Legendary Estate Militia</string>
+      <string _locid="400276">Imperial Dispatch Vessel</string>
+      <string _locid="400277">Rochambeau's Expedition</string>
+      <string _locid="400278">&lt;color=1.0, 0.9, 0.5&gt;SHIPS:&lt;/color&gt; \n1 Regal Ship carrying 24 Voltigeurs</string>
+      <string _locid="400279">Independence War</string>
+      <string _locid="400280">American War of Independence (1775-1783) Historical Map: 
+Two colonial shores face each other across a deep tidal gulf, joined by a single long bridge and circled by a river trade route with four capturable harbours. Both teams share one goal: capture and hold 4 of the 6 Colonial Estates for 10 minutes or destroy your opponents. Every estate is protected by Estate Guardians - defeat them before the estate can be claimed. 
+
+&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Patriots - minutemen and Continental regulars who answered the call to arms. 
+
+&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Loyalists - redcoat garrisons and colonists who kept faith with the crown. 
+
+Natives: Haudenosaunee, Caribbean Pirates</string>
+      <string _locid="400281">The thirteen colonies rise against the crown. Muster your militia, court the Six Nations, and hold the Colonial Estates that feed the war effort.</string>
+      <string _locid="400282">Achieve a Team Victory by capturing and holding 4 of the 6 Colonial Estates until the victory timer runs out.</string>
+      <string _locid="400283">The Elector Center inspires the estate lands: your Settlers within its influence gather all resources 25% faster - the estate fields, Mills and Plantations around it above all.</string>
+      <string _locid="400284">Patriot</string>
+      <string _locid="400285">ZP IW Patriot</string>
+      <string _locid="400286">Settler Muster</string>
+      <string _locid="400287">Spawns armed settlers from the estate.</string>
+      <string _locid="400288">United States of America</string>
+      <string _locid="400289">You declared the Independence of the United States of America!</string>
+      <string _locid="400290">%s has declared Independence!</string>
     </language>
   </stringtable>
 </stringmods>
