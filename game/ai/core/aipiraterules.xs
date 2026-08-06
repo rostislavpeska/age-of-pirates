@@ -2195,8 +2195,16 @@ rule tasmaniaFailsafe
 inactive
 minInterval 20
 {
+   int tcWagon = getUnit(cUnitTypeCoveredWagon, cMyID, cUnitStateAlive);
+
    if (kbUnitCount(cMyID, cUnitTypeCoveredWagon, cUnitStateAlive) > 0)
    {
+      //if (aiPlanGetActive(gTCBuildPlanID) == false)
+      //{
+         aiPlanDestroy(gTCBuildPlanID);
+         aiTaskUnitMove(tcWagon, getRandomPoint(gTCSearchVector, 10));
+         //aiChat(1, "Moving tcWagon");
+      //}
       init();
    }
    else

@@ -1,9 +1,9 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <mapinfo details = "400280" displayNameID = "400279" loadDetails="400281" 
-    imagepath = "ui\random_map\independencewar\independencewar_mini" cannotReplace = "" loadBackground="ui\random_map\independencewar\independencewar_map">
-    <loadss>ui\random_map\independencewar\independencewar_01</loadss>
-    <loadss>ui\random_map\independencewar\independencewar_02</loadss>
-    <loadss>ui\random_map\independencewar\independencewar_03</loadss>
+    imagepath = "ui\random_map\independence_war\independence_war_mini" cannotReplace = "" loadBackground="ui\random_map\independence_war\independence_war_map">
+    <loadss>ui\random_map\independence_war\independence_war_01</loadss>
+    <loadss>ui\random_map\independence_war\independence_war_02</loadss>
+    <loadss>ui\random_map\independence_war\independence_war_03</loadss>
     <enforcedSettings>
         <setting type="FFA" state="forbidden" />
         <setting type="RecordGame" state="forbidden" />

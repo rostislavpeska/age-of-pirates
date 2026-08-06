@@ -290,8 +290,8 @@ minInterval 5
 
       if (kbAreAreaGroupsPassableByLand(startingAreaGroupID, targetAreaGroupID) == false)
       {
-         childTransportPlan = createTransportPlan(startingPos, targetPos, 100, false, true);
          existingPlanUnitCount = aiPlanGetNumberUnits(existingPlanID, cUnitTypeLogicalTypeGarrisonInShips);
+         childTransportPlan = createTransportPlan(startingPos, targetPos, 100, false, true, existingPlanUnitCount);
 
          if (childTransportPlan > 0)
          {

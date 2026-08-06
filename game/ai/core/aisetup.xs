@@ -5,6 +5,28 @@
 
 */
 
+// AssertiveWall: BETA CHANGE: added initDebugCategories
+//==============================================================================
+// initDebugCategories
+//==============================================================================
+void initDebugCategories()
+{
+   gDebugMilitaryAttackingID = aiAddEchoCategory("Military Attacking");
+   gDebugMilitaryDefendingID = aiAddEchoCategory("Military Defending");
+   gDebugMilitaryUnitsID = aiAddEchoCategory("Military Units");
+   gDebugMilitaryNavyID = aiAddEchoCategory("Military Navy");
+   gDebugBuildingsID = aiAddEchoCategory("Buildings");
+   gDebugTechsID = aiAddEchoCategory("Technologies");
+   gDebugExplorationID = aiAddEchoCategory("Exploration");
+   gDebugEconomyID = aiAddEchoCategory("Economy");
+   gDebugEconomicUnitsID = aiAddEchoCategory("Economic Units");
+   gDebugSetupID = aiAddEchoCategory("Setup");
+   gDebugCoreID = aiAddEchoCategory("Core");
+   gDebugHCCardsID = aiAddEchoCategory("HC");
+   gDebugChatsID = aiAddEchoCategory("Chats");
+   gDebugUtilitiesID = aiAddEchoCategory("Utilities");
+}
+
 //==============================================================================
 /* initCivUnitTypes
    Initialize all global civilisation specific unit types.
