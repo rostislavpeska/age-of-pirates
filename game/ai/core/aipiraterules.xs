@@ -4663,7 +4663,7 @@ rule zpInuitTechMonitor
 inactive
 mininterval 60
 {
-   if (kbUnitCount(cMyID, cUnitTypezpSocketInuits, cUnitStateAny) == 0)
+   if (kbUnitCount(cMyID, cUnitTypedeSocketInuit, cUnitStateAny) == 0)
       {
       return; // Player has no Inuit socket.
       }
