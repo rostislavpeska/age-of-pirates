@@ -1623,16 +1623,18 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID",x);
 		rmSetTriggerEffectParam("TechID","cTechzpColonialEstateNativeSetup"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID",x);
-		rmSetTriggerEffectParam("TechID","cTechzpIndependenceWarSetup"); //operator
-		rmSetTriggerEffectParamInt("Status",2);
 		// Capturable-harbour resource crates: the naval unlock the engine
 		// auto-fires on vanilla water maps (Elbe rides it too) never fires
 		// for this custom route, so grant it here.
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",x);
 		rmSetTriggerEffectParam("TechID","cTechypTradeRouteCaptureable"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	for (x=0; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",x);
+		rmSetTriggerEffectParam("TechID","cTechzpIndependenceWarSetup"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 	}
 	rmAddTriggerEffect("Trade Route Set Level");
