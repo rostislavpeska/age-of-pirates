@@ -1,6 +1,7 @@
 *.fbx
 *.psd
 *.tga
+*.zip
 
 # Local machine-specific documentation
 docs/local_instructions.md
