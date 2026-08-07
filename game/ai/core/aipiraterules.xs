@@ -4659,7 +4659,7 @@ minInterval 30
 //==============================================================================
 // ZP Inuit Tech Monitor
 //==============================================================================
-rule zpInuitTechMonitor
+/* rule zpInuitTechMonitor
 inactive
 mininterval 60
 {
@@ -4688,7 +4688,7 @@ mininterval 60
           xsDisableSelf();
       }
   
-}
+}*/
 
 //==============================================================================
 // ZP Maltese Tech Monitor
