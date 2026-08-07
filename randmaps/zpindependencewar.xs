@@ -2780,6 +2780,110 @@ void main(void)
 	rmSetTriggerLoop(false);
 	}
 
+	// AI Revolutionary Fractions - mirrored from zpparis.xs, but for BOTH
+	// teams with side-specific persona sets. Once an AI player reaches the
+	// Industrial Age, a short timer elects one Colonial Estate persona from
+	// its side's set: attackers (team 0) draw Western / Sansculottes /
+	// Jewish - the Patriot picks that activate zpRevolutionAmerica on the
+	// xml side - defenders draw Hannover / Jesuit / PenalColony. Humans are
+	// excluded by the ZP PLAYER Human condition. The persona is baked per
+	// player at map generation (rmRandInt), same as zpparis.
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("ZP_Iniciate_Revolution"+k);
+		rmCreateTrigger("ZP_Execute_Revolution"+k);
+		rmCreateTrigger("ZP_Timer_Revolution"+k);
+
+		rmSwitchToTrigger(rmTriggerID("ZP_Iniciate_Revolution"+k));
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechIndustrialize");
+		rmSetTriggerConditionParamInt("Status",2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Timer_Revolution"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("ZP_Timer_Revolution"+k));
+		rmAddTriggerCondition("Timer");
+		rmSetTriggerConditionParamInt("Param1",10);
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechzpIndependenceWarSetup");
+		rmSetTriggerConditionParamInt("Status",2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Execute_Revolution"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("ZP_Execute_Revolution"+k));
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechzpIndependenceWarSetup");
+		rmSetTriggerConditionParamInt("Status",2);
+
+		int revPersona=-1;
+		revPersona = rmRandInt(1,3);
+
+		if (rmGetPlayerTeam(k) == 0) {
+			if (revPersona==1)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateEstateWestern"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+			if (revPersona==2)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateEstateSansculottes"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+			if (revPersona==3)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateEstateJewish"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+		}
+		if (rmGetPlayerTeam(k) != 0) {
+			if (revPersona==1)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateEstateHannover"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+			if (revPersona==2)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateEstateJesuit"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+			if (revPersona==3)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateEstatePenalColony"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
 	// Specific for human players
 
 	for(k=1; <= cNumberNonGaiaPlayers) {
