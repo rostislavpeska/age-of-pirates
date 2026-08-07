@@ -379,6 +379,13 @@ void main(void)
 	// Additional Constraints - based on dansil original constraints
 	int cityConstraint = rmCreateBoxConstraint("stay in the city", 0.2, 0.0, 0.8, 1.0);
 
+	// One-direction water gating. The gulf (low z) is the only home for
+	// whales and wreck treasures; naval spawn flags may use the channel but
+	// never the water past the bridge line at z=0.88. Fish are deliberately
+	// exempt - the river stays fishable.
+	int gulfWaterOnly = rmCreateBoxConstraint("gulf water only", 0.0, 0.0, 1.0, 0.34);
+	int belowBridgeWater = rmCreateBoxConstraint("below bridge water", 0.0, 0.0, 1.0, 0.86);
+
 	int classPatch = rmDefineClass("patch");
 	int avoidPatch = rmCreateClassDistanceConstraint("avoid patch", rmClassID("patch"), 22.0);
 	int avoidPlateauShort = rmCreateClassDistanceConstraint("avoid patch 1", rmClassID("classPlateau"), 1.0);
@@ -1279,6 +1286,7 @@ void main(void)
 		rmAddClosestPointConstraint(flagVsFlag);
 		rmAddClosestPointConstraint(flagLand);
 		rmAddClosestPointConstraint(avoidBridgeLong);
+		rmAddClosestPointConstraint(belowBridgeWater);
 		vector closestPoint = rmFindClosestPointVector(TCLoc, rmXFractionToMeters(1.0));
 
 		// Place resources
@@ -1445,6 +1453,7 @@ void main(void)
 	rmAddObjectDefConstraint(nuggetWater, ObjectAvoidTradeRoute);
 	rmAddObjectDefConstraint(nuggetWater, avoidNuggetWater2);
 	rmAddObjectDefConstraint(nuggetWater, playerEdgeConstraint);
+	rmAddObjectDefConstraint(nuggetWater, gulfWaterOnly);
 	rmPlaceObjectDefPerPlayer(nuggetWater, false, 1);
 
 	int nuggetWaterHard = rmCreateObjectDef("nugget water hard");
@@ -1456,6 +1465,7 @@ void main(void)
 	rmAddObjectDefConstraint(nuggetWaterHard, ObjectAvoidTradeRoute);
 	rmAddObjectDefConstraint(nuggetWaterHard, avoidNuggetWater);
 	rmAddObjectDefConstraint(nuggetWaterHard, playerEdgeConstraint);
+	rmAddObjectDefConstraint(nuggetWaterHard, gulfWaterOnly);
 	rmPlaceObjectDefPerPlayer(nuggetWaterHard, false, 1);
 
 	// Place some extra deer herds.
@@ -1547,12 +1557,26 @@ void main(void)
 	rmAddObjectDefConstraint(fishID, fishLand);
 	rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 50+10*cNumberNonGaiaPlayers);
 
+	// Fish economy boost: tarpon schools alongside the cod, same species set
+	// as vanilla New England/Carolina (FishCod, FishTarpon, MinkeWhale).
+	// No gulf constraint on purpose - fish are allowed in the river.
+	int avoidFish2=rmCreateTypeDistanceConstraint("fish v fish tarpon", "FishTarpon", 10.0);
+	int fish2ID=rmCreateObjectDef("fish 2");
+	rmAddObjectDefItem(fish2ID, "FishTarpon", 1, 0.0);
+	rmSetObjectDefMinDistance(fish2ID, 0.0);
+	rmSetObjectDefMaxDistance(fish2ID, rmXFractionToMeters(0.45));
+	rmAddObjectDefConstraint(fish2ID, avoidFish1);
+	rmAddObjectDefConstraint(fish2ID, avoidFish2);
+	rmAddObjectDefConstraint(fish2ID, fishLand);
+	rmPlaceObjectDefAtLoc(fish2ID, 0, 0.5, 0.5, 30+10*cNumberNonGaiaPlayers);
+
 	int whaleID=rmCreateObjectDef("whale");
 	rmAddObjectDefItem(whaleID, "MinkeWhale", 1, 0.0);
 	rmSetObjectDefMinDistance(whaleID, 0.0);
 	rmSetObjectDefMaxDistance(whaleID, rmXFractionToMeters(0.5));
 	rmAddObjectDefConstraint(whaleID, whaleVsWhaleID);
 	rmAddObjectDefConstraint(whaleID, whaleLand);
+	rmAddObjectDefConstraint(whaleID, gulfWaterOnly);
 	rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, 4*cNumberNonGaiaPlayers);
 
 	// VILLAGE TREES
