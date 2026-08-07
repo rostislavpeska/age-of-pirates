@@ -591,22 +591,3 @@ extern const bool cDebugHCCards = false;
 extern const bool cDebugChats = false;
 extern const bool cDebugSetup = false;
 extern const bool cDebugCore = false;
-
-// AssertiveWall: BETA CHANGE added new debug global variables
-//==============================================================================
-// Debug variables.
-//==============================================================================
-extern int gDebugUtilitiesID = -1;
-extern int gDebugBuildingsID = -1;
-extern int gDebugTechsID = -1;
-extern int gDebugExplorationID = -1;
-extern int gDebugEconomyID = -1;
-extern int gDebugEconomicUnitsID = -1;
-extern int gDebugMilitaryAttackingID = -1;
-extern int gDebugMilitaryDefendingID = -1;
-extern int gDebugMilitaryUnitsID = -1;
-extern int gDebugMilitaryNavyID = -1;
-extern int gDebugHCCardsID = -1;
-extern int gDebugChatsID = -1;
-extern int gDebugSetupID = -1;
-extern int gDebugCoreID = -1;

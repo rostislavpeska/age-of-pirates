@@ -81,7 +81,6 @@ mutable vector getDropoffPoint(vector pickup = cInvalidVector, vector dropoff = 
 mutable vector selectForwardBaseBeachHead(void) { return(cInvalidVector); }
 mutable void buildForwardTowers(void) { return; }
 mutable void setMilPopLimit(int age1Limit = -1, int age2Limit = -1, int age3Limit = -1, int age4Limit = -1, int age5Limit = -1) {}
-mutable void updateMilitaryTrainPlanBuildings(int baseID = -1) {}
 
 //==============================================================================
 // Includes.
@@ -1605,12 +1604,6 @@ void revoltedHandler(int techID = -1)
       gRevolutionType = cRevolutionMilitary;
    }
 
-   // AssertiveWall: Turn off villager garrisoning for french revolution and military revolution
-   if (techID == cTechDERevolutionFrance || gRevolutionType == cRevolutionMilitary)
-   {
-      xsDisableRule("villagerGarrison");
-   }
-
    if (gRevolutionType == cRevolutionMilitary)
    {
       int numPlans = aiPlanGetActiveCount();
@@ -2698,8 +2691,7 @@ minInterval 5
       
       if (cvOkToExplore == true)
       {
-         // AssertiveWall: Disable this. It quits early and causes issues, and exploreMonitor already looks for enemy base
-         //findEnemyBase(); // Create a one-off explore plan to probe the likely enemy base location.
+         findEnemyBase(); // Create a one-off explore plan to probe the likely enemy base location.
          
          if ((gIslandMap == true) && (gSPC == false))
          {

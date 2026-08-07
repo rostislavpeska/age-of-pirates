@@ -299,7 +299,7 @@ minInterval 30
                scoutUnitID = getUnit(scoutType, cMyID, cUnitStateAlive);
                if (scoutUnitID >= 0)
                {
-                  planID = createTransportPlan(kbBaseGetMilitaryGatherPoint(cMyID, kbBaseGetMainID(cMyID)), islandExplorePosition, 100, true, false, 1);
+                  planID = createTransportPlan(kbBaseGetMilitaryGatherPoint(cMyID, kbBaseGetMainID(cMyID)), islandExplorePosition, 100);
                   if (planID >= 0)
                   {
                      aiPlanAddUnitType(planID, scoutType, 1, 1, 1);

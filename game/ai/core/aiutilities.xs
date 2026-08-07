@@ -1986,7 +1986,7 @@ int createRepairPlan(int pri = 50)
 // createTransportPlan
 //==============================================================================
 int createTransportPlan(vector gatherPoint = cInvalidVector, vector targetPoint = cInvalidVector,
-                        int pri = 100, bool returnWhenDone = true, bool childBool = false, int unitsToTransport = 10)
+                        int pri = 100, bool returnWhenDone = true, bool childBool = false)
 {
    int shipQueryID = createSimpleUnitQuery(cUnitTypeTransport, cMyID, cUnitStateAlive);
    int numberFound = kbUnitQueryExecute(shipQueryID);
@@ -2008,12 +2008,6 @@ int createTransportPlan(vector gatherPoint = cInvalidVector, vector targetPoint 
       {
          continue;
       }
-
-      if (unitsToTransport > 5 && kbUnitGetProtoUnitID(shipID) == gFishingUnit)
-      {  // only use fishing boats if we have a small number of units to transport
-         continue;
-      }
-
       shipHitpoints = kbUnitGetCurrentHitpoints(shipID);
       // AssertiveWall: calculation for ship "value"
       tempShipValue = shipHitpoints * (100 - aiPlanGetDesiredPriority(unitPlanID));

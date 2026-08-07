@@ -208,11 +208,6 @@ void updateMilitaryTrainPlanBuildings(int baseID = -1)
       }
       else
       {
-         // AssertiveWall: set the base ID for the maintain plan since none of this other stuff seems to do anything
-         aiPlanSetBaseID(planID, baseID);
-         aiPlanSetVariableInt(planID, cTrainPlanMaintainBaseID, 0, baseID);
-         aiPlanSetVariableInt(planID, cTrainPlanIntoBaseID, 0, baseID);
-
          // Restrict train plan to train from the base if we can.
          if (buildingQuery < 0)
          {
@@ -244,7 +239,7 @@ void updateMilitaryTrainPlanBuildings(int baseID = -1)
             aiPlanSetNumberVariableValues(planID, cTrainPlanBuildingID, numberBuildings, true);
             for (j = 0; < numberBuildings)
             {
-               aiPlanSetVariableInt(planID, cTrainPlanBuildingID, j, xsArrayGetInt(buildingIDs, j)); 
+               aiPlanSetVariableInt(planID, cTrainPlanBuildingID, j, xsArrayGetInt(buildingIDs, j));
             }
          }
       }
@@ -3021,7 +3016,7 @@ void moveDefenseReflex(vector location = cInvalidVector, float radius = -1.0, in
 {
    if (radius < 0.0)
    {
-      radius = 20.0; //cvDefenseReflexRadiusActive; // AssertiveWall: BETA CHANGE. cvDefenseReflexRadiusActive no longer included 
+      radius = cvDefenseReflexRadiusActive;
    }
    // AssertiveWall: On The great turkish war, always leave the troops gathering at the command center if we're on defense
    if (cRandomMapName == "eugreatturkishwar" && btOffenseDefense == 0)
@@ -3100,7 +3095,7 @@ void pauseDefenseReflex(void)
       loc = gForwardBaseLocation;
    }
 
-   float radius = calculateDefenseReflexEngageRange(loc, 50.0, 15.0); // AssertiveWall: BETA CHANGE. cvDefenseReflexRadiusPassive no longer defined
+   float radius = calculateDefenseReflexEngageRange(loc, cvDefenseReflexRadiusPassive, 15.0);
 
    aiPlanSetVariableInt(gLandDefendPlan0, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
    aiPlanSetVariableVector(gLandDefendPlan0, cCombatPlanTargetPoint, 0, loc);
@@ -3141,11 +3136,11 @@ void endDefenseReflex(void)
       defLoc = gForwardBaseLocation;
       defBaseID = gForwardBaseID;
    }
-   float radius = calculateDefenseReflexEngageRange(defLoc, 50.0, 15.0); // AssertiveWall: BETA CHANGE. cvDefenseReflexRadiusActive = 50.0
+   float radius = calculateDefenseReflexEngageRange(defLoc, cvDefenseReflexRadiusActive, 15.0);
 
    radius = calculateDefenseReflexEngageRange(defLoc, radius, 15.0);
 
-   if (radius < 50.0) // AssertiveWall: BETA CHANGE. cvDefenseReflexRadiusActive = 50.0
+   if (radius < cvDefenseReflexRadiusActive)
    {
       aiPlanSetVariableInt(gLandDefendPlan0, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
       aiPlanSetVariableVector(gLandDefendPlan0, cCombatPlanTargetPoint, 0, defLoc);
@@ -3166,8 +3161,7 @@ void endDefenseReflex(void)
       aiPlanAddUnitType(gLandDefendPlan0, gEconUnit, 0, 0, 1);
    }
 
-   radius = calculateDefenseReflexEngageRange(resLoc, 50.0, 15.0);  // AssertiveWall: BETA CHANGE. cvDefenseReflexRadiusPassive no longer defined
-
+   radius = calculateDefenseReflexEngageRange(resLoc, cvDefenseReflexRadiusPassive, 15.0);
 
    aiPlanSetVariableInt(gLandReservePlan, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
    aiPlanSetVariableVector(gLandReservePlan, cCombatPlanTargetPoint, 0, resLoc);
@@ -3375,11 +3369,11 @@ minInterval 10
    if (gStartOnDifferentIslands == true)
    {
       //kbUnitQuerySetMaximumDistance(enemyArmyQuery, (kbGetMapXSize() * 0.60));
-      kbUnitQuerySetMaximumDistance(enemyArmyQuery, 60.0); // AssertiveWall: BETA CHANGE cvDefenseReflexSearchRadius = 60.0
+      kbUnitQuerySetMaximumDistance(enemyArmyQuery, cvDefenseReflexSearchRadius);
    }
    else
    {
-      kbUnitQuerySetMaximumDistance(enemyArmyQuery, 60.0);   // AssertiveWall: BETA CHANGE cvDefenseReflexSearchRadius = 60.0
+      kbUnitQuerySetMaximumDistance(enemyArmyQuery, cvDefenseReflexSearchRadius);
    }
    kbUnitQuerySetSeeableOnly(enemyArmyQuery, true);
    kbUnitQuerySetState(enemyArmyQuery, cUnitStateAlive);
@@ -3439,14 +3433,14 @@ minInterval 10
          {                                    // Size is OK to handle, shouldn't be in paused mode.
             if (gDefenseReflexPaused == true) // Need to turn it active.
             {
-               moveDefenseReflex(kbBaseGetLocation(cMyID, mainBaseID), 50.0, mainBaseID);  // AssertiveWall: BETA CHANGE. cvDefenseReflexRadiusActive = 50.0
+               moveDefenseReflex(kbBaseGetLocation(cMyID, mainBaseID), cvDefenseReflexRadiusActive, mainBaseID);
             }
          }
       }
       else // Defense reflex wasn't set to main base.
       {    // Need to set the defense reflex to home base...doesn't matter if it was inactive or guarding another base,
            // home base trumps all.
-         moveDefenseReflex(kbBaseGetLocation(cMyID, mainBaseID), 50.0, mainBaseID);  // AssertiveWall: BETA CHANGE. cvDefenseReflexRadiusActive = 50.0
+         moveDefenseReflex(kbBaseGetLocation(cMyID, mainBaseID), cvDefenseReflexRadiusActive, mainBaseID);
          // This is a new defense reflex in the main base.  Consider making a chat about it.
          int enemyPlayerID = kbUnitGetPlayerID(kbUnitQueryGetResult(enemyArmyQuery, 0));
          if ((enemyPlayerID > 0) && (kbGetAge() > cAge1))
@@ -3493,7 +3487,7 @@ minInterval 10
    if (gDefenseReflex == true) // Currently in a defense mode, let's see if it should remain
    {
       kbUnitQuerySetPosition(enemyArmyQuery, gDefenseReflexLocation);
-      kbUnitQuerySetMaximumDistance(enemyArmyQuery, 60.0);   // AssertiveWall: BETA CHANGE cvDefenseReflexSearchRadius = 60.0
+      kbUnitQuerySetMaximumDistance(enemyArmyQuery, cvDefenseReflexSearchRadius);
       kbUnitQuerySetSeeableOnly(enemyArmyQuery, true);
       kbUnitQuerySetState(enemyArmyQuery, cUnitStateAlive);
       kbUnitQueryResetResults(enemyArmyQuery);
@@ -3564,7 +3558,7 @@ minInterval 10
       { // Currently paused...should we remain paused, or go active?
          if (shouldPause == false)
          {
-            moveDefenseReflex(gDefenseReflexLocation, 50.0, gDefenseReflexBaseID); // Activate it  // AssertiveWall: BETA CHANGE. cvDefenseReflexRadiusActive = 50.0
+            moveDefenseReflex(gDefenseReflexLocation, cvDefenseReflexRadiusActive, gDefenseReflexBaseID); // Activate it
             debugMilitary("******** Enemy count " + enemyArmySize + ", my army count " + armySize);
          }
       }
@@ -3629,7 +3623,7 @@ minInterval 10
          // Check for overrun base.
          baseLoc = kbBaseGetLocation(cMyID, baseID);
          kbUnitQuerySetPosition(enemyArmyQuery, baseLoc);
-         kbUnitQuerySetMaximumDistance(enemyArmyQuery, 60.0);   // AssertiveWall: BETA CHANGE cvDefenseReflexSearchRadius = 60.0
+         kbUnitQuerySetMaximumDistance(enemyArmyQuery, cvDefenseReflexSearchRadius);
          kbUnitQuerySetSeeableOnly(enemyArmyQuery, true);
          kbUnitQuerySetUnitType(enemyArmyQuery, cUnitTypeLogicalTypeLandMilitary); // AssertiveWall: copied from above
          kbUnitQuerySetState(enemyArmyQuery, cUnitStateAlive);
@@ -3639,7 +3633,7 @@ minInterval 10
 
          if ((enemyArmySize >= 2))
          { // More than just a scout...set defense reflex for this base.
-            moveDefenseReflex(baseLoc, 50.0, baseID);  // AssertiveWall: BETA CHANGE. cvDefenseReflexRadiusActive = 50.0
+            moveDefenseReflex(baseLoc, cvDefenseReflexRadiusActive, baseID);
 
             debugMilitary("******** Enemy count is " + enemyArmySize + ", my army size is " + armySize);
 
@@ -3667,7 +3661,7 @@ minInterval 10
             }
             else
             {
-               moveDefenseReflex(baseLoc, 50.0, baseID);  // AssertiveWall: BETA CHANGE. cvDefenseReflexRadiusActive = 50.0
+               moveDefenseReflex(baseLoc, cvDefenseReflexRadiusActive, baseID);
             }
             return; // If we're in trouble in any base, ignore the others.
          }
