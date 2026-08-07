@@ -63,6 +63,14 @@
     <nauticallevelname>64989</nauticallevelname>
     <icontexture>resources\art\trade_route\trade2.png</icontexture>
     <nauticalicontexture>resources\art\units\asians\shared\rickshaw\rickshaw2_icon_portrait.png</nauticalicontexture>
+    <upgrade>
+      <from>arctic1</from>
+      <to>arctic2</to>
+    </upgrade>
+    <upgrade>
+      <from>arctic_water_trail</from>
+      <to>arctic_water2_trail</to>
+    </upgrade>
   </level>
   <level>
     <upgrade>
@@ -110,6 +118,14 @@
     <nauticallevelname>31652</nauticallevelname>
     <icontexture>resources\art\trade_route\trade3.png</icontexture>
     <nauticalicontexture>resources\art\trade_route\trade3.png</nauticalicontexture>
+    <upgrade>
+      <from>arctic2</from>
+      <to>arctic3</to>
+    </upgrade>
+    <upgrade>
+      <from>arctic_water2_trail</from>
+      <to>arctic_water3_trail</to>
+    </upgrade>
   </level>
   <buildresourceaward>
   </buildresourceaward>
@@ -528,6 +544,7 @@
       </orprereqs>
       <activeicon>resources\images\icons\command\generate_food_on.png</activeicon>
       <disabledicon>resources\images\icons\command\generate_food_off.png</disabledicon>
+      <techprereq>DETradeRouteUpgradeArctic1</techprereq>
     </unit>
     <unit>
       <name>deCrateofWoodEuropean</name>
@@ -543,6 +560,7 @@
       </orprereqs>
       <activeicon>resources\images\icons\command\generate_wood_on.png</activeicon>
       <disabledicon>resources\images\icons\command\generate_wood_off.png</disabledicon>
+      <techprereq>DETradeRouteUpgradeArctic1</techprereq>
     </unit>
     <unit>
       <name>deCrateofCoinEuropean</name>
@@ -558,6 +576,7 @@
       </orprereqs>
       <activeicon>resources\images\icons\command\generate_coin_on.png</activeicon>
       <disabledicon>resources\images\icons\command\generate_coin_off.png</disabledicon>
+      <techprereq>DETradeRouteUpgradeArctic1</techprereq>
     </unit>
     <unit>
       <name>CrateofXP</name>
@@ -569,6 +588,7 @@
       <disabledtooltipid>34060</disabledtooltipid>
       <activeicon>resources\images\icons\command\generate_fame_on.png</activeicon>
       <disabledicon>resources\images\icons\command\generate_fame_off.png</disabledicon>
+      <playertechprereq>DETradeRouteXPShadow</playertechprereq>
     </unit>
     <unit>
       <name>deTradeCrateofInfluence</name>
@@ -581,6 +601,21 @@
       <techprereq>DEAfricanTradeRouteInfluenceShadow</techprereq>
       <activeicon>resources\images\icons\command\generate_influence_on.png</activeicon>
       <disabledicon>resources\images\icons\command\generate_influence_off.png</disabledicon>
+      <playertechprereq>DEAfricanTradeRouteInfluenceShadow</playertechprereq>
+      <techprereq>ypTradeRouteUpgrade1</techprereq>
+      <techprereq>TradeRouteUpgrade1</techprereq>
+      <techprereq>deTradeRouteUpgradeAll1</techprereq>
+      <techprereq>deTradeRouteUpgradeAmerica1</techprereq>
+      <techprereq>DETradeRouteUpgradeMaghreb1</techprereq>
+      <techprereq>DETradeRouteUpgradeAfrica1</techprereq>
+      <techprereq>DETradeRouteUpgradeWater1</techprereq>
+      <techprereq>DETradeRouteUpgradeWaterAll1</techprereq>
+      <techprereq>DETradeRouteUpgradeRiver1</techprereq>
+      <techprereq>DETradeRouteUpgradeRiverAll1</techprereq>
+      <techprereq>DETradeRouteUpgradeEurope1</techprereq>
+      <techprereq>DETradeRouteUpgradeEuropeAll1</techprereq>
+      <techprereq>DETradeRouteUpgradeArctic1</techprereq>
+      <orprereqs></orprereqs>
     </unit>
     <unit>
       <name>ypNatGurkha</name>
@@ -693,6 +728,78 @@
       <techprereq>zpTradeRouteUpgradeHansaShadow</techprereq>
       <activeicon>resources\images\icons\command\tactic_ashigaru_on.png</activeicon>
       <disabledicon>resources\images\icons\command\tactic_ashigaru_off.png</disabledicon>
+    </unit>
+    <unit>
+      <name>deTradeCrateAll</name>
+      <count>1</count>
+      <mincount>1</mincount>
+      <maxcount>1</maxcount>
+      <countincrement>0</countincrement>
+      <activetooltipid>111420</activetooltipid>
+      <disabledtooltipid>111421</disabledtooltipid>
+      <playertechprereq>DETradeRouteAllResourcesShadow</playertechprereq>
+      <activeicon>resources\images\icons\command\tactic_rainbow_trickle_on.png</activeicon>
+      <disabledicon>resources\images\icons\command\tactic_rainbow_trickle_off.png</disabledicon>
+    </unit>
+    <unit>
+      <name>deTradeCrateofInfluenceCapture</name>
+      <count>1</count>
+      <mincount>1</mincount>
+      <maxcount>1</maxcount>
+      <countincrement>0</countincrement>
+      <restricttocapturabletp></restricttocapturabletp>
+      <activetooltipid>101083</activetooltipid>
+      <disabledtooltipid>101084</disabledtooltipid>
+      <playertechprereq>DEAfricanTradeRouteInfluenceShadow</playertechprereq>
+      <techprereq>ypTradeRouteCaptureable</techprereq>
+      <techprereq>deTradeRouteCaptureableAfrican</techprereq>
+      <techprereq>deTradeRouteCaptureableEuropean</techprereq>
+      <orprereqs></orprereqs>
+      <activeicon>resources\images\icons\command\generate_influence_on.png</activeicon>
+      <disabledicon>resources\images\icons\command\generate_influence_off.png</disabledicon>
+    </unit>
+    <unit>
+      <name>deTradeCrateofExport</name>
+      <count>1</count>
+      <mincount>1</mincount>
+      <maxcount>1</maxcount>
+      <countincrement>0</countincrement>
+      <activetooltipid>212126</activetooltipid>
+      <disabledtooltipid>212127</disabledtooltipid>
+      <playertechprereq>deConsulateSpanishMercantilismIndependence</playertechprereq>
+      <techprereq>ypTradeRouteUpgrade1</techprereq>
+      <techprereq>TradeRouteUpgrade1</techprereq>
+      <techprereq>deTradeRouteUpgradeAll1</techprereq>
+      <techprereq>deTradeRouteUpgradeAmerica1</techprereq>
+      <techprereq>DETradeRouteUpgradeMaghreb1</techprereq>
+      <techprereq>DETradeRouteUpgradeAfrica1</techprereq>
+      <techprereq>DETradeRouteUpgradeWater1</techprereq>
+      <techprereq>DETradeRouteUpgradeWaterAll1</techprereq>
+      <techprereq>DETradeRouteUpgradeRiver1</techprereq>
+      <techprereq>DETradeRouteUpgradeRiverAll1</techprereq>
+      <techprereq>DETradeRouteUpgradeEurope1</techprereq>
+      <techprereq>DETradeRouteUpgradeEuropeAll1</techprereq>
+      <techprereq>DETradeRouteUpgradeArctic1</techprereq>
+      <orprereqs></orprereqs>
+      <activeicon>resources\images\icons\command\generate_trade_on.png</activeicon>
+      <disabledicon>resources\images\icons\command\generate_trade_off.png</disabledicon>
+    </unit>
+    <unit>
+      <name>deTradeCrateofExportCapture</name>
+      <count>1</count>
+      <mincount>1</mincount>
+      <maxcount>1</maxcount>
+      <countincrement>0</countincrement>
+      <restricttocapturabletp></restricttocapturabletp>
+      <activetooltipid>212126</activetooltipid>
+      <disabledtooltipid>212127</disabledtooltipid>
+      <playertechprereq>deConsulateSpanishMercantilismIndependence</playertechprereq>
+      <techprereq>ypTradeRouteCaptureable</techprereq>
+      <techprereq>deTradeRouteCaptureableAfrican</techprereq>
+      <techprereq>deTradeRouteCaptureableEuropean</techprereq>
+      <orprereqs></orprereqs>
+      <activeicon>resources\images\icons\command\generate_trade_on.png</activeicon>
+      <disabledicon>resources\images\icons\command\generate_trade_off.png</disabledicon>
     </unit>
   </unitmultiples>
 </traderoutemanager>

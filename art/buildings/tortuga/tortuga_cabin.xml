@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<definebone>bone_prop</definebone>
+	<definebone>bone_chimney</definebone>
+	<component>
+	     house
+		<logic type="Variation">
+			<variationid0>
+					<assetreference type="GrannyModel">
+					<file>buildings\tortuga\tortuga_cabin</file>
+				</assetreference>
+			</variationid0>
+		</logic>
+			<decal>
+			<effecttype>bump</effecttype>
+			<texture>buildings\tavern\tavern_ground</texture>
+			<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+			<width>8.00</width>
+			<height>10.00</height>
+		</decal>
+	</component>
+	<anim>
+		Idle
+		<component>house</component>
+	</anim>
+</animfile>

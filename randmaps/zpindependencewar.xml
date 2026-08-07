@@ -1,0 +1,24 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "400280" displayNameID = "400279" loadDetails="400281" 
+    imagepath = "ui\random_map\independence_war\independence_war_mini" cannotReplace = "" loadBackground="ui\random_map\independence_war\independence_war_map">
+    <loadss>ui\random_map\independence_war\independence_war_01</loadss>
+    <loadss>ui\random_map\independence_war\independence_war_02</loadss>
+    <loadss>ui\random_map\independence_war\independence_war_03</loadss>
+    <enforcedSettings>
+        <setting type="FFA" state="forbidden" />
+        <setting type="RecordGame" state="forbidden" />
+        <setting type="TwoTeams" state="enforced" />
+        <setting type="DefaultRules" state="enforced" />
+        <setting type="AltTeamNames" state="enforced" />
+    </enforcedSettings>
+    <recommendedSettings>
+        <civilization>DEAmericans</civilization>
+        <civilization>British</civilization>
+        <civilization>French</civilization>
+        <civilization>XPIroquois</civilization>
+        <civilization>XPSioux</civilization>
+        <civilization>Germans</civilization>
+        <civilization>Spanish</civilization>
+        <civilization>Dutch</civilization>
+    </recommendedSettings>
+</mapinfo>

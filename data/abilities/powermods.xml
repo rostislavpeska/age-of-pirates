@@ -574,6 +574,23 @@
     <alwaysaddtoplayer>1</alwaysaddtoplayer>
     <soundset type="StartSound" listenertype="Caster">DENatPowerHabsburg</soundset>
   </power>
+  <power name="zpNatPowerArcticAcclimation" type="GeneralEffect">
+    <displaynameid>130669</displaynameid>
+    <rolloverid>130670</rolloverid>
+    <icon>resources\images\icons\abilities\ability_arctic_acclimation.png</icon>
+    <minimapeventtime sendalertto="none">1</minimapeventtime>
+    <activetime>5</activetime>
+    <effect type="ResourceExchange" fromresource="Gold" toresource="Wood" relativity="BasePercent" amount="0.5">
+      <target type="Player" />
+    </effect>
+    <effect type="ResourceExchange" fromresource="Food" toresource="Wood" relativity="BasePercent" amount="0.5">
+      <target type="Player" />
+    </effect>
+    <placement forceonmap="1" ally="">full</placement>
+    <allowduringnorush>1</allowduringnorush>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+    <soundset type="StartSound" listenertype="Caster">DENatPowerInuit</soundset>
+  </power>
   <power name="zpPassiveCossackUnity" type="UnitAction">
     <displaynameid>303166</displaynameid>
     <rolloverid>303167</rolloverid>
@@ -626,10 +643,17 @@
     <allowduringnorush>1</allowduringnorush>
     <isauxiliarypower>1</isauxiliarypower>
   </power>
-
-blockDE 
-
-
-
-
+ <power name="zpPowerEstateLevy" type="TempUnit">
+    <displaynameid>400286</displaynameid>
+    <rolloverid>400287</rolloverid>
+    <icon>resources\images\icons\abilities\estate_levy.png</icon>
+    <minimapeventtime sendalertto="ally">1</minimapeventtime>
+    <activetime>5</activetime>
+    <createunit pattern="Spawn" quantity="2" delay="0.0" permanent="">zpPatriot</createunit>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <rangeindicatorprotoid radius="12.0" indicatorcount="16" speed="0.6">PowerRanger</rangeindicatorprotoid>
+    <allowduringnorush>1</allowduringnorush>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+    <soundset type="StartSound" listenertype="All">American_Estate</soundset>
+  </power>
 </powermods>

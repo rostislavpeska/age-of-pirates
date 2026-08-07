@@ -588,7 +588,7 @@
       <string _locid="300587">ZP NAT Qamutiik</string>
       <string _locid="300588">Inuit Dog Sledding Artillery</string>
       <string _locid="300589">Inuit Expansion</string>
-      <string _locid="300590">Unlocks more Inuit units and techs</string>
+      <string _locid="300590">Allows you to train up to 7 Harpooners, elite hunters who outclass the Inuit Hunter. Unlocks three Inuit improvements: Inuit Feeders, Bering Strait Umiaks and Aurora.</string>
       <string _locid="300591">Elite Qamutiik</string>
       <string _locid="300592">Champion Qamutiik</string>
       <string _locid="300593">Legendary Qamutiik</string>
@@ -1835,8 +1835,8 @@
       <string _locid="301834">ZP SPC Paris Bank</string>
       <string _locid="301835">ZP SPC Paris Mill</string>
       <string _locid="301836">Wind Mill</string>
-      <string _locid="301837">Gold Smelter</string>
-      <string _locid="301838">ZP SPC Paris Gold Smelter</string>
+      <string _locid="301837">Manufacture</string>
+      <string _locid="301838">ZP SPC Paris Manufacture</string>
       <string _locid="301839">Cognac Distillery</string>
       <string _locid="301840">ZP SPC Paris Cognac Distillery</string>
       <string _locid="301841">ZP SPC Paris Forester</string>
@@ -2833,15 +2833,15 @@
       <string _locid="302834">Once Rathaus is destroyed, you lose the game - even if you already finished a cathedral construction!</string>
       <string _locid="302835">You completed the Metropolitan Cathedral!</string>
       <string _locid="302836">%s completed the Metropolitan Cathedral!</string>
-      <string _locid="302837">Eger (Rathaus)</string>
-      <string _locid="302838">Strasbourg (Rathaus)</string>
-      <string _locid="302839">Regensburg (Rathaus)</string>
-      <string _locid="302840">Cologne (Rathaus)</string>
-      <string _locid="302841">Leipzig (Rathaus)</string>
-      <string _locid="302842">Graz (Rathaus)</string>
-      <string _locid="302843">Ulm (Rathaus)</string>
-      <string _locid="302844">Mainz (Rathaus)</string>
-      <string _locid="302845">Pilsen (Rathaus)</string>
+      <string _locid="302837">Eger</string>
+      <string _locid="302838">Strasbourg</string>
+      <string _locid="302839">Regensburg</string>
+      <string _locid="302840">Cologne</string>
+      <string _locid="302841">Leipzig</string>
+      <string _locid="302842">Graz</string>
+      <string _locid="302843">Ulm</string>
+      <string _locid="302844">Mainz</string>
+      <string _locid="302845">Pilsen</string>
       <string _locid="302846">After the death of Charles V. in 1558 the Holy Roman Empire became a federation of independent kingdoms and duchies. Use resources from the whole empire to construct a monumental Metropolitan Cathedral!\n\n&lt;color=1.0, 1.0, 0.0&gt;Victory conditions:&lt;/color&gt; Complete the construction of the Metropolitan Cathedral and protect your Town center. Multiple Team gameplay or FFA is supported for this historical map. \n\nNative Settlements: Prince Electors, Hussites \n\nShadow aliances: Habsburg, Wettin, Hannover, Wittelsbach and Oldenburg</string>
       <string _locid="302847">Use resources from the whole Empire to construct an amazing Metropolitan Cathedral. Make sure you always have enough resources for the next phase of construction before you get to the next phase of your conquest.</string>
       <string _locid="302848">Upgrades the Cathedral construction to the next level. \n • Increases maximum population capacity by 10. &lt;color=0.0, 1.0, 0.0&gt;\n • Once you start the research, it will continue even if you lose access to the specific Elector House.&lt;/color&gt;</string>
@@ -2873,9 +2873,9 @@
       <string _locid="302874">ZP NAT EU Venetian Fence Brick A</string>
       <string _locid="302875">ZP NAT EU Fence Brick B</string>
       <string _locid="302876">ZP NAT EU Venetian Fence Brick B</string>
-      <string _locid="302877">Teutonic Knight</string>
-      <string _locid="302878">ZP NAT Teutonic Knight</string>
-      <string _locid="302879">ZP NAT Teutonic Knight</string>
+      <string _locid="302877">Order Knight</string>
+      <string _locid="302878">ZP NAT Order Knight</string>
+      <string _locid="302879">ZP NAT Order Knight</string>
       <string _locid="302880">German Crusader and protector of the Eastern regions.</string>
       <string _locid="302881">Hanseatic legionary Footman with lower initial stats. Benefits from promotions.</string>
       <string _locid="302882">ZP NAT Hansa Legion</string>
@@ -2894,9 +2894,9 @@
       <string _locid="302895">Teutonic Fort</string>
       <string _locid="302896">Mounted Crussader</string>
       <string _locid="302897">ZP MERC Mounted Crussader</string>
-      <string _locid="302898">Powerful Teutonic Order Cavalry. Provides healing aura for nearby Teutonic Knights.</string>
+      <string _locid="302898">Powerful Teutonic Order Cavalry. Provides healing aura for nearby Order Knights.</string>
       <string _locid="302899">Zeal</string>
-      <string _locid="302900">Increases damage for following nearby units: Mounted Crussader, Teutonic Knight, Maltese Knight, Maltese Guard</string>
+      <string _locid="302900">Increases damage for following nearby units: Mounted Crussader, Order Knight, Maltese Knight, Maltese Guard, Teutonic Knight</string>
       <string _locid="302901">Kontor Fluyt</string>
       <string _locid="302902">ZP SHP Hansa Kontor Fluyt</string>
       <string _locid="302903">Hanseatic Merchant</string>
@@ -2908,8 +2908,8 @@
       <string _locid="302909">Veteran Hanseatic Legion</string>
       <string _locid="302910">Guard Hanseatic Legion</string>
       <string _locid="302911">Imperial Hanseatic Legion</string>
-      <string _locid="302912">Teutonic Knight Guard</string>
-      <string _locid="302913">Imperial Teutonic Knight</string>
+      <string _locid="302912">Order Knight Guard</string>
+      <string _locid="302913">Imperial Order Knight</string>
       <string _locid="302914">Increases Hanseatic land military attack and hitpoints.</string>
       <string _locid="302915">Kontor Aliance Pact</string>
       <string _locid="302916">Unlocks more Hanseatic units and techs. </string>
@@ -2924,7 +2924,7 @@
       <string _locid="302925">Central Faction</string>
       <string _locid="302926">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nHanseatic Merchant \n\nEconomical faction providing you with a special building. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nKontor Trade Center</string>
       <string _locid="302927">Eastern Faction</string>
-      <string _locid="302928">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nTeutonic Knight \n\nTeutonic Order units and techs, military faction. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nEastern Base</string>
+      <string _locid="302928">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nOrder Knight \n\nTeutonic Order units and techs, military faction. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nEastern Base</string>
       <string _locid="302929">Eastern Base</string>
       <string _locid="302930">Ships a Teutonic Fort Wagon able to construct a Teutonic Fort.</string>
       <string _locid="302931">War Cog</string>
@@ -2943,8 +2943,8 @@
       <string _locid="302944">Pfahlrecht</string>
       <string _locid="302945">Constructing Trading Posts has never been easier. Reduces Trading Post costs. Increases Trading Post hitpoints.</string>
       <string _locid="302946">Order's Protection</string>
-      <string _locid="302947">Every Hanseatic Settlement you own spawns 3 Teutonic Knights.</string>
-      <string _locid="302948">Spawn Teutonic Knights</string>
+      <string _locid="302947">Every Hanseatic Settlement you own spawns 3 Order Knights.</string>
+      <string _locid="302948">Spawn Order Knights</string>
       <string _locid="302949">ZP NAT House Hansa Big</string>
       <string _locid="302950">ZP Socket Hansa</string>
       <string _locid="302951">Hamburg (Hansa Kontor)</string>
@@ -2979,11 +2979,11 @@
       <string _locid="302980">Wolkenfahrer</string>
       <string _locid="302981">Perle von Reval</string>
       <string _locid="302982">ZP Hansa Trade Route Ship</string>
-      <string _locid="302983">ZP NAT MERC Teutonic Knight</string>
+      <string _locid="302983">ZP NAT MERC Order Knight</string>
       <string _locid="302984">Crusader Concord</string>
       <string _locid="302985">Unlock Maltese allies trainable from the Teutonic Fort.</string>
       <string _locid="302986">Crusader Legion</string>
-      <string _locid="302987">Ships additional Teutonic Knights to protect your town</string>
+      <string _locid="302987">Ships additional Order Knights to protect your town</string>
       <string _locid="302988">Eastern Commandship</string>
       <string _locid="302989">Upgrades Mounted Crussaders into Teutonic Commanders with higher attack and hitpoints, but increases their polulation cost.</string>
       <string _locid="302990">Teutonic Commander</string>
@@ -3306,12 +3306,17 @@
       <string _locid="303307">ZP Cherry Orchard Socket</string>
       <string _locid="303308">Regal Ship</string>
       <string _locid="303309">ZP RegalShip</string>
-      <string _locid="303310">Heavy double-hulled warship. Stronger than Frigate but slower. Very powerful broadside attack.</string>
-      <string _locid="303311">Heavy double-hulled warship</string>
+      <string _locid="303310">Heavy double-hulled war ship. Stronger than Frigate but slower. Very powerful broadside attack.</string>
+      <string _locid="303311">Heavy double-hulled war ship</string>
       <string _locid="303312">Armed Merchantman</string>
       <string _locid="303313">ZP Armed Merchantman</string>
       <string _locid="303314">East Indiaman armed with cannons.</string>
-
+      <string _locid="303315">ZP Tortuga House</string>
+      <string _locid="303316">ZP Tortuga Tower</string>
+      <string _locid="303317">Dispatch Vessel</string>
+      <string _locid="303318">ZP Dispatch Vessel</string>
+      <string _locid="303319">Frigate Class heavy steam-powered war ship.</string>
+      <string _locid="303320">All Settlers around the colonial estates gather resources faster.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
@@ -3534,6 +3539,60 @@
       <!-- ===================================== -->
       <!-- ===================================== -->
 
+      <string _locid="400215">Colonial Estate</string>
+      <string _locid="400216">ZP Colonial Estate</string>
+      <string _locid="400217">The pride of the American colonies. Wealthy landowners and gentleman planters who answer to no crown but their own standing, and who arm their tenants to prove it.</string>
+      <string _locid="400218">Estate Militia</string>
+      <string _locid="400219">ZP Estate Militia</string>
+      <string _locid="400220">Estate Economy</string>
+      <string _locid="400221">Naval Inventions</string>
+      <string _locid="400222">Ships a Dispatch Vessel and allows Dispatch Vessels to be trained at the Dock.</string>
+      <string _locid="400223">Renew Oath of Allegiance</string>
+      <string _locid="400224">Elects one of the Loyalist politicians and renews the Estate's oath of allegiance to the Crown. \n • Allows your Explorer, General or War Chief to construct Forts\n&lt;color=1.0, 0.0, 0.0&gt; • Available only for the team "DEFENDERS".&lt;/color&gt;</string>
+      <string _locid="400225">Declaration of Independence</string>
+      <string _locid="400226">Elects one of the Patriot politicians and rallies the Estate to the cause of independence. \n • Initiates the American Revolution \n • Transforms all your Settlers into Patriots \n • Allows Patriot training from your Town Center \n • Increases Explorer hitpoints by 30% \n • Upgrades the trade route to its maximum level \n • Changes your civilization to the United States of America without losing access to your original homecity or the option to advance to higher ages\n&lt;color=1.0, 0.0, 0.0&gt; • Available only for the team "ATTACKERS".&lt;/color&gt;</string>
+      <string _locid="400227">King George III</string>
+      <string _locid="400228">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBlack Brunswicker, Totenkopf Hussar \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nRoyal Scots Grey, Royal Card Games, Acts of Union, Victorian Era</string>
+      <string _locid="400229">James Oglethorpe</string>
+      <string _locid="400230">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nColonial Warden, Convict Labourer \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nColony Export, Shoemaker's Workshop, Convict Patrole, Fortified Colony</string>
+      <string _locid="400231">Jean de Br&#233;beuf</string>
+      <string _locid="400232">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nConquistador, Arcabucero \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nSmokeless Powder, Christian Schools, Flying Buttress, Secret Plans</string>
+      <string _locid="400233">Daniel Boone</string>
+      <string _locid="400234">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nCowpuncher, Armored Stagecoach \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nWhiskey Stills, Texan Longhorns, Fast Colts, Territorial Militia</string>
+      <string _locid="400235">Marquis de Lafayette</string>
+      <string _locid="400236">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nRevolutionary, &#201;claireur \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nSpirit of the Revolution, Loyal Districts, Rochambeau's Expedition, Galerie Lafayette</string>
+      <string _locid="400237">Haym Salomon</string>
+      <string _locid="400238">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nSettlement Militia, Jewish Merchant \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nPessah, Torah, Yom Kippur, American Industry</string>
+      <string _locid="400239">American Industry</string>
+      <string _locid="400269">Veteran Colonial Estate</string>
+      <string _locid="400270">Upgrades every Colonial Estate unit to Veteran, +20% hitpoints and attack.</string>
+      <string _locid="400271">Guard Colonial Estate</string>
+      <string _locid="400272">Upgrades every Colonial Estate unit to Guard, +40% hitpoints and attack.</string>
+      <string _locid="400273">Veteran Estate Militia</string>
+      <string _locid="400274">Guard Estate Militia</string>
+      <string _locid="400275">Legendary Estate Militia</string>
+      <string _locid="400276">Imperial Dispatch Vessel</string>
+      <string _locid="400277">Rochambeau's Expedition</string>
+      <string _locid="400278">&lt;color=1.0, 0.9, 0.5&gt;SHIPS:&lt;/color&gt; \n1 Regal Ship carrying 24 Voltigeurs</string>
+      <string _locid="400279">Independence War</string>
+      <string _locid="400280">American War of Independence (1775-1783) Historical Map: 
+Two colonial shores face each other across a deep tidal gulf, joined by a single long bridge and circled by a river trade route with four capturable harbours. Both teams share one goal: capture and hold 4 of the 6 Colonial Estates for 10 minutes or destroy your opponents. Every estate is protected by Estate Guardians - defeat them before the estate can be claimed. 
+
+&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Patriots - minutemen and Continental regulars who answered the call to arms. 
+
+&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Loyalists - redcoat garrisons and colonists who kept faith with the crown. 
+
+Natives: Haudenosaunee, Caribbean Pirates</string>
+      <string _locid="400281">The thirteen colonies rise against the crown. Muster your militia, court the Six Nations, and hold the Colonial Estates that feed the war effort.</string>
+      <string _locid="400282">Achieve a Team Victory by capturing and holding 4 of the 6 Colonial Estates until the victory timer runs out.</string>
+      <string _locid="400283">The Elector Center inspires the estate lands: your Settlers within its influence gather all resources 25% faster - the estate fields, Mills and Plantations around it above all.</string>
+      <string _locid="400284">Patriot</string>
+      <string _locid="400285">ZP IW Patriot</string>
+      <string _locid="400286">Settler Muster</string>
+      <string _locid="400287">Spawns armed settlers from the estate.</string>
+      <string _locid="400288">United States of America</string>
+      <string _locid="400289">You declared the Independence of the United States of America!</string>
+      <string _locid="400290">%s has declared Independence!</string>
     </language>
   </stringtable>
 </stringmods>

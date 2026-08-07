@@ -1,0 +1,26 @@
+name: Mapsim Tests
+run-name: Testing mapsim in a push by ${{ github.actor }}
+
+on:
+  push:
+    paths:
+      - "scripts/mapsim/**"
+      - ".github/workflows/mapsim.yml"
+
+jobs:
+  pytest:
+    name: Mapsim Test Suite
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Python Setup
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.x"
+      - name: Install pytest
+        run: |
+          pip install pytest
+      - name: Run Tests
+        run: |
+          python -m pytest scripts/mapsim/tests -q

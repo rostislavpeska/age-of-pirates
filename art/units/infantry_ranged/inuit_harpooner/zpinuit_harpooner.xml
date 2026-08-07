@@ -3,12 +3,11 @@
   <definebone>bone_hat</definebone>
   <definebone>BIP01 PROP1</definebone>
   <attachment>torch<include>effects\projectiles\torch.xml</include></attachment>
-  <attachment>rifle<component>rifle<assetreference type="GrannyModel"><file>units\infantry_ranged\cacadore\cacadore_4age_gun</file></assetreference></component><anim>Idle<component>rifle</component></anim></attachment>
+  <attachment>rifle<component>rifle<assetreference type="GrannyModel"><file>units\spc\outlaws\harpoon</file></assetreference></component><anim>Idle<component>rifle</component></anim></attachment>
   <attachment>pickaxe<component>pickaxe<assetreference type="GrannyModel"><file>units\attachments\pickaxe_villager</file></assetreference></component><anim>Idle<component>pickaxe</component></anim></attachment>
   <attachment>axe<component>axe<assetreference type="GrannyModel"><file>units\attachments\axe_villager</file></assetreference></component><anim>Idle<component>axe</component></anim></attachment>
   <attachment>hammer<component>hammer<assetreference type="GrannyModel"><file>units\attachments\hammer_villager</file></assetreference></component><anim>Idle<component>hammer</component></anim></attachment>
-  <attachment>harpoon2_Model<component>harpoon2_Model<assetreference type="GrannyModel"><file>units\infantry_ranged\inuit_harpooner\harpoon2_Model</file></assetreference></component><anim>Idle<component>harpoon2_Model</component></anim></attachment>
-  <attachment>harpoon1_Model<component>harpoon1_Model<assetreference type="GrannyModel"><file>units\infantry_ranged\inuit_harpooner\harpoon1_Model</file></assetreference></component><anim>Idle<component>harpoon1_Model</component></anim></attachment>
+  <attachment>harpoon_projectile<include>units\spc\outlaws\harpoon_projectile.xml</include></attachment>
   <attachment>knife<component>knife<assetreference type="GrannyModel"><file>units\attachments\knife_villager</file></assetreference></component><anim>Idle<component>knife</component></anim></attachment>
   <attachment>measure tape<component>measure tape<assetreference type="GrannyModel"><file>units\attachments\measuring_tape</file></assetreference></component><anim>Idle<component>measure tape</component></anim></attachment>
   <attachment>saw<component>saw_villager<assetreference type="GrannyModel"><file>units\attachments\saw_villager</file></assetreference></component><anim>Idle<component>saw_villager</component></anim></attachment>
@@ -24,10 +23,9 @@
   </attachment>
   <component>ModelComp
     <assetreference type="GrannyModel">
-        <file>units\infantry_ranged\inuit_harpooner\harpooner</file>
+        <file>units\natives\europeans\inuit_sled\inuit_sled_rider</file>
     </assetreference>
-    <attach a="harpoon2_Model" frombone="MASTER" tobone="BIP01 PROP1" syncanims="0"></attach>
-    <attach a="harpoon1_Model" frombone="MASTER" tobone="BIP01 PROP1" syncanims="0"></attach>
+    <attach a="harpoon_projectile" frombone="ATTACHPOINT" tobone="Bip01 Prop1" syncanims="1"></attach>
     <decal>
         <effecttype>default</effecttype>
         <texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>

@@ -86,5 +86,8 @@
       <command>editorSetAllTradeRoutesToDef("hansa_water_trail")</command>
     </gadget>
 
+    <gadget name="TradeRoute_TypeFld" type="textField" dropdowndistance="140" fieldnametextfont="Arial nobold nodrop" fieldnametextfontsize="12" fieldnametextcolor="0 0 0" textfont="Arial nobold nodrop" textfontsize="12" textcolor="0 0 0" size1024="824 75 1009 95" background="ui\editor\background\background_field">$$56055$$Trade Route Type:
+      <dropdown></dropdown>
+    </gadget>
   </gadget>
 </layout>

@@ -1,0 +1,14 @@
+<soundsetdefmods>
+  <soundset name="zpGermanTankAcknowledge" volume="0.8000" maxnum="4" distance="1.0000">
+    <sound filename="germanmortarmove1.wav" volume="1.0000">
+    </sound>
+    <sound filename="germanmortarmove2.wav" volume="1.0000">
+    </sound>
+    <sound filename="DE\italiantankmove3.wav" volume="1.0000">
+    </sound>
+  </soundset>
+  <soundset name="American_Estate" volume="1.0000" maxnum="4" distance="1.0000">
+    <sound filename="zp_misc\american_estate.wav" volume="1.0000">
+    </sound>
+  </soundset>
+</soundsetdefmods>

@@ -9966,7 +9966,7 @@ rmSetGroupingMinDistance(istanbulEurope, 0.00);
 rmSetGroupingMaxDistance(istanbulEurope, 0.01);
 rmAddGroupingToClass(istanbulEurope, rmClassID("classPlateau"));
 
-// Special placement method for city states (optional - allows trigger access)
+// Special placement method for CITY STATES ONLY (allows trigger access)
 int istanbulInstanceID1 = rmPlaceGroupingInstanceAtLoc(
     istanbulEurope, 
     rmXMetersToFraction(xsVectorGetX(ControllerLoc1)) + rmXTilesToFraction(8), 
@@ -9974,6 +9974,35 @@ int istanbulInstanceID1 = rmPlaceGroupingInstanceAtLoc(
     0
 );
 ```
+
+**⚠️ CRITICAL — never invent terrain names (2026-07-30, expensive lesson):**
+Every string passed to `rmSetAreaMix`, `rmAddAreaTerrainLayer`,
+`rmSetAreaForestType`, `rmSetAreaCliffType`, `rmSetSeaType`,
+`rmSetLightingSet` or `rmTerrainInitialize` MUST be copied from a working map
+or verified in the data definitions — never composed by analogy
+("newengland_grass" exists, "newengland_grass_b" and
+"newengland_grass_leaves" do NOT, and plausible-looking invented names render
+broken terrain or abort generation). Verification one-liner: grep the name
+across `Game/RandMaps/*.xs` and the mod's `randmaps/` — if no working map
+uses it and no data file defines it, it does not exist.
+
+**⚠️ CRITICAL — in-game verified (2026-07-30, expensive lesson):**
+`rmPlaceGroupingInstanceAtLoc` works ONLY for city-state groupings (Istanbul,
+the Hanseatic cities and similar). Used on ANY other grouping (pirate villages,
+ports, camps, castles…) it corrupts the placement in-game — units bleed out of
+position. Always use the normal method for regular groupings:
+
+```cpp
+rmPlaceGroupingAtLoc(groupingID, player, x, z, count);
+```
+
+Two traps in one: the argument order also differs — `player` comes SECOND in
+`rmPlaceGroupingAtLoc` but LAST in `rmPlaceGroupingInstanceAtLoc`. And if a
+trigger needs a unit id from inside a normally-placed grouping, do NOT reach
+for the instance API: use consecutive-unit-id arithmetic anchored on the last
+unit placed before the grouping (unit ids are sequential in placement order —
+see the pirate socket lookup in 000_independence_war.xs, and the
+`rmGetUnitPlaced(...)+1` harbour idiom).
 
 ---
 

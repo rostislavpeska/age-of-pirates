@@ -1,0 +1,228 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>25</width>
+	<height>23</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="232" posx="4.4446" posz="6.8350" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">TownCenter</unit>
+		<unit variation="228" posx="-16.6606" posz="-19.4359" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">SPCFortWallMedium</unit>
+		<unit variation="228" posx="-12.5542" posz="-17.5803" orientx="0.7070" orienty="0.0000" orientz="-0.7072">SPCFortWallMedium</unit>
+		<unit variation="44" posx="-20.1014" posz="-19.4653" orientx="-0.7079" orienty="0.0000" orientz="-0.7063">SPCFortCorner</unit>
+		<unit variation="44" posx="-13.7896" posz="-19.8770" orientx="0.7062" orienty="0.0000" orientz="-0.7080">SPCFortCorner</unit>
+		<unit variation="228" posx="15.2781" posz="-19.6972" orientx="-0.0006" orienty="0.0000" orientz="-1.0000">SPCFortWallMedium</unit>
+		<unit variation="44" posx="18.5610" posz="-19.9148" orientx="0.7063" orienty="0.0000" orientz="-0.7079">SPCFortCorner</unit>
+		<unit variation="44" posx="11.0871" posz="-19.8337" orientx="-0.7082" orienty="0.0000" orientz="-0.7060">SPCFortCorner</unit>
+		<unit variation="228" posx="10.0887" posz="-17.5660" orientx="-0.7075" orienty="0.0000" orientz="-0.7067">SPCFortWallMedium</unit>
+		<unit variation="228" posx="19.1669" posz="-16.1444" orientx="1.0000" orienty="0.0000" orientz="-0.0006">SPCFortWallMedium</unit>
+		<unit variation="114" posx="13.5917" posz="-15.2497" orientx="0.7053" orienty="0.0000" orientz="-0.7089">SPCFortTower</unit>
+		<unit variation="114" posx="-15.6491" posz="-15.3084" orientx="-0.7089" orienty="0.0000" orientz="-0.7053">SPCFortTower</unit>
+		<unit variation="89" posx="3.1642" posz="-15.2392" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">SPCFortWallLarge</unit>
+		<unit variation="44" posx="7.5246" posz="-15.4879" orientx="-0.0023" orienty="0.0000" orientz="-1.0000">SPCFortCorner</unit>
+		<unit variation="89" posx="-5.9537" posz="-15.2386" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">SPCFortWallLarge</unit>
+		<unit variation="44" posx="-10.4068" posz="-15.4357" orientx="-0.0023" orienty="0.0000" orientz="-1.0000">SPCFortCorner</unit>
+		<unit variation="228" posx="-19.8186" posz="-15.5884" orientx="-1.0000" orienty="0.0000" orientz="0.0001">SPCFortWallMedium</unit>
+		<unit variation="228" posx="17.1033" posz="-11.6588" orientx="0.7076" orienty="0.0000" orientz="0.7067">SPCFortWallMedium</unit>
+		<unit variation="44" posx="-20.0551" posz="-12.3907" orientx="-0.7061" orienty="0.0000" orientz="0.7081">SPCFortCorner</unit>
+		<unit variation="44" posx="19.3608" posz="-13.1641" orientx="0.7083" orienty="0.0000" orientz="0.7059">SPCFortCorner</unit>
+		<unit variation="162" posx="8.0000" posz="-10.0000" orientx="0.9344" orienty="-0.0000" orientz="0.3562">deMineSilverBuildable</unit>
+		<unit variation="228" posx="-17.3137" posz="-10.6486" orientx="-0.7070" orienty="0.0000" orientz="0.7072">SPCFortWallMedium</unit>
+		<unit variation="49" posx="-2.0000" posz="-12.0000" orientx="0.9711" orienty="0.0000" orientz="0.2386">TreeNewEngland</unit>
+		<unit variation="230" posx="-4.0000" posz="-12.0000" orientx="0.5089" orienty="0.0000" orientz="0.8608">TreeNewEngland</unit>
+		<unit variation="235" posx="-6.0000" posz="-12.0000" orientx="-0.2539" orienty="0.0000" orientz="0.9672">TreeNewEngland</unit>
+		<unit variation="157" posx="0.0000" posz="-12.0000" orientx="0.8326" orienty="-0.0000" orientz="0.5539">TreeNewEngland</unit>
+		<unit variation="44" posx="15.8632" posz="-9.7653" orientx="1.0000" orienty="0.0000" orientz="-0.0021">SPCFortCorner</unit>
+		<unit variation="252" posx="-4.0000" posz="-10.0000" orientx="-0.0066" orienty="0.0000" orientz="1.0000">TreeNewEngland</unit>
+		<unit variation="12" posx="-6.0000" posz="-10.0000" orientx="-0.0118" orienty="0.0000" orientz="0.9999">TreeNewEngland</unit>
+		<unit variation="44" posx="-16.2835" posz="-8.4543" orientx="-1.0000" orienty="0.0000" orientz="0.0018">SPCFortCorner</unit>
+		<unit variation="39" posx="15.4720" posz="-7.7512" orientx="1.0000" orienty="0.0000" orientz="-0.0008">SPCFortWallSmall</unit>
+		<unit variation="13" posx="-4.0000" posz="-8.0000" orientx="0.7039" orienty="0.0000" orientz="-0.7103">TreeNewEngland</unit>
+		<unit variation="39" posx="-15.6757" posz="-6.9632" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCFortWallSmall</unit>
+		<unit variation="40" posx="-16.3083" posz="-0.2167" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCFortGate</unit>
+		<unit variation="40" posx="15.3543" posz="-0.8828" orientx="1.0000" orienty="0.0000" orientz="-0.0006">SPCFortGate</unit>
+		<unit variation="141" posx="2.0304" posz="-3.3400" orientx="-0.1260" orienty="0.0044" orientz="-0.9920">Deer</unit>
+		<unit variation="70" posx="0.9556" posz="-1.9037" orientx="-0.3280" orienty="-0.0024" orientz="0.9447">Deer</unit>
+		<unit variation="41" posx="-1.4756" posz="-0.8188" orientx="-0.2818" orienty="-0.0026" orientz="0.9595">Deer</unit>
+		<unit variation="192" posx="-4.2591" posz="-0.3112" orientx="-0.9878" orienty="0.0045" orientz="-0.1560">Deer</unit>
+		<unit variation="77" posx="-4.2365" posz="1.6757" orientx="0.7451" orienty="-0.0003" orientz="-0.6670">Deer</unit>
+		<unit variation="39" posx="-15.7895" posz="6.5223" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCFortWallSmall</unit>
+		<unit variation="39" posx="15.1653" posz="5.9184" orientx="1.0000" orienty="0.0000" orientz="-0.0008">SPCFortWallSmall</unit>
+		<unit variation="228" posx="-17.7694" posz="9.3242" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">SPCFortWallMedium</unit>
+		<unit variation="44" posx="-16.4163" posz="7.3091" orientx="-1.0000" orienty="0.0000" orientz="0.0018">SPCFortCorner</unit>
+		<unit variation="228" posx="16.8385" posz="9.9313" orientx="0.7068" orienty="0.0000" orientz="-0.7074">SPCFortWallMedium</unit>
+		<unit variation="44" posx="15.3776" posz="7.3595" orientx="1.0000" orienty="0.0000" orientz="-0.0021">SPCFortCorner</unit>
+		<unit variation="178" posx="-4.0000" posz="8.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="227" posx="-6.0000" posz="8.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="114" posx="-15.6260" posz="12.4483" orientx="-0.7071" orienty="0.0000" orientz="0.7071">SPCFortTower</unit>
+		<unit variation="44" posx="-20.1073" posz="10.3449" orientx="-0.7084" orienty="0.0000" orientz="-0.7058">SPCFortCorner</unit>
+		<unit variation="44" posx="18.2208" posz="10.9942" orientx="0.7062" orienty="0.0000" orientz="-0.7080">SPCFortCorner</unit>
+		<unit variation="114" posx="13.2307" posz="12.6514" orientx="0.7088" orienty="0.0000" orientz="0.7054">SPCFortTower</unit>
+		<unit variation="235" posx="-2.0000" posz="10.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="182" posx="-4.0000" posz="10.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="18" posx="-6.0000" posz="10.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">BerryBush</unit>
+		<unit variation="228" posx="-20.0645" posz="14.3001" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCFortWallMedium</unit>
+		<unit variation="228" posx="18.6750" posz="14.7943" orientx="1.0000" orienty="0.0000" orientz="-0.0004">SPCFortWallMedium</unit>
+		<unit variation="89" posx="3.2817" posz="13.2777" orientx="0.0001" orienty="0.0000" orientz="1.0000">SPCFortWallLarge</unit>
+		<unit variation="228" posx="9.5716" posz="15.2683" orientx="-0.7069" orienty="0.0000" orientz="0.7074">SPCFortWallMedium</unit>
+		<unit variation="44" posx="7.6818" posz="14.1033" orientx="0.0021" orienty="0.0000" orientz="1.0000">SPCFortCorner</unit>
+		<unit variation="228" posx="-11.5964" posz="15.9540" orientx="0.7071" orienty="0.0000" orientz="0.7071">SPCFortWallMedium</unit>
+		<unit variation="89" posx="-5.4288" posz="13.3772" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCFortWallLarge</unit>
+		<unit variation="44" posx="-8.9424" posz="14.1905" orientx="0.0021" orienty="0.0000" orientz="1.0000">SPCFortCorner</unit>
+		<unit variation="228" posx="-16.4096" posz="17.9355" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCFortWallMedium</unit>
+		<unit variation="228" posx="14.8458" posz="18.4990" orientx="0.0004" orienty="0.0000" orientz="1.0000">SPCFortWallMedium</unit>
+		<unit variation="44" posx="18.3927" posz="17.9083" orientx="0.7079" orienty="0.0000" orientz="0.7063">SPCFortCorner</unit>
+		<unit variation="44" posx="11.4268" posz="18.2337" orientx="-0.7062" orienty="0.0000" orientz="0.7080">SPCFortCorner</unit>
+		<unit variation="44" posx="-12.7246" posz="17.9334" orientx="0.7083" orienty="0.0000" orientz="0.7059">SPCFortCorner</unit>
+		<unit variation="44" posx="-20.0963" posz="17.9917" orientx="-0.7064" orienty="0.0000" orientz="0.7078">SPCFortCorner</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="texas\walking_path_tex">
+			<block startx="-10" startz="-9" endx="-10" endz="-8"></block>
+			<block startx="-10" startz="-7" endx="-10" endz="-7"></block>
+			<block startx="-9" startz="-6" endx="-9" endz="-6"></block>
+			<block startx="-8" startz="-5" endx="-8" endz="-4"></block>
+			<block startx="-7" startz="-4" endx="-7" endz="-2"></block>
+			<block startx="-6" startz="-4" endx="-6" endz="-4"></block>
+			<block startx="-5" startz="-1" endx="-5" endz="0"></block>
+			<block startx="-4" startz="0" endx="-4" endz="0"></block>
+			<block startx="-2" startz="-2" endx="-2" endz="-2"></block>
+			<block startx="-2" startz="0" endx="-2" endz="0"></block>
+			<block startx="-8" startz="5" endx="-8" endz="6"></block>
+			<block startx="-7" startz="3" endx="-7" endz="7"></block>
+			<block startx="-6" startz="2" endx="-6" endz="7"></block>
+			<block startx="-5" startz="1" endx="-5" endz="4"></block>
+			<block startx="-5" startz="7" endx="-5" endz="7"></block>
+			<block startx="-4" startz="7" endx="-4" endz="7"></block>
+			<block startx="-3" startz="6" endx="-3" endz="6"></block>
+			<block startx="-2" startz="6" endx="-2" endz="6"></block>
+			<block startx="-1" startz="1" endx="-1" endz="1"></block>
+			<block startx="-1" startz="4" endx="-1" endz="4"></block>
+			<block startx="-1" startz="6" endx="-1" endz="6"></block>
+			<block startx="0" startz="1" endx="0" endz="2"></block>
+			<block startx="0" startz="4" endx="0" endz="4"></block>
+			<block startx="0" startz="6" endx="0" endz="6"></block>
+			<block startx="1" startz="2" endx="1" endz="6"></block>
+			<block startx="2" startz="2" endx="2" endz="6"></block>
+			<block startx="3" startz="2" endx="3" endz="6"></block>
+			<block startx="4" startz="1" endx="4" endz="6"></block>
+			<block startx="5" startz="2" endx="5" endz="6"></block>
+			<block startx="6" startz="2" endx="6" endz="6"></block>
+			<block startx="-1" startz="-2" endx="-1" endz="-1"></block>
+			<block startx="0" startz="-2" endx="0" endz="-1"></block>
+			<block startx="1" startz="-5" endx="1" endz="-5"></block>
+			<block startx="2" startz="-5" endx="2" endz="-5"></block>
+			<block startx="2" startz="-3" endx="2" endz="-3"></block>
+			<block startx="3" startz="-4" endx="3" endz="-2"></block>
+			<block startx="3" startz="0" endx="3" endz="0"></block>
+			<block startx="4" startz="-2" endx="4" endz="-2"></block>
+			<block startx="5" startz="-3" endx="5" endz="-3"></block>
+			<block startx="6" startz="-1" endx="6" endz="0"></block>
+			<block startx="-9" startz="-10" endx="-9" endz="-9"></block>
+			<block startx="-8" startz="-10" endx="-8" endz="-10"></block>
+			<block startx="5" startz="-9" endx="5" endz="-8"></block>
+			<block startx="6" startz="-10" endx="6" endz="-8"></block>
+			<block startx="7" startz="-10" endx="7" endz="-8"></block>
+			<block startx="8" startz="-10" endx="8" endz="-8"></block>
+			<block startx="9" startz="-10" endx="9" endz="-8"></block>
+			<block startx="10" startz="-9" endx="10" endz="-8"></block>
+			<block startx="7" startz="-7" endx="7" endz="-7"></block>
+			<block startx="7" startz="-3" endx="7" endz="0"></block>
+			<block startx="8" startz="-7" endx="8" endz="-7"></block>
+			<block startx="8" startz="-5" endx="8" endz="-4"></block>
+			<block startx="9" startz="-7" endx="9" endz="-7"></block>
+			<block startx="7" startz="1" endx="7" endz="6"></block>
+			<block startx="8" startz="3" endx="8" endz="5"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="texas\Tree_gravel_tex">
+			<block startx="-9" startz="-7" endx="-9" endz="-7"></block>
+			<block startx="-8" startz="-7" endx="-8" endz="-6"></block>
+			<block startx="-7" startz="-7" endx="-7" endz="-5"></block>
+			<block startx="-6" startz="-7" endx="-6" endz="-5"></block>
+			<block startx="-5" startz="-7" endx="-5" endz="-4"></block>
+			<block startx="-5" startz="-2" endx="-5" endz="-2"></block>
+			<block startx="-4" startz="-4" endx="-4" endz="-4"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="-6"></block>
+			<block startx="-2" startz="-5" endx="-2" endz="-5"></block>
+			<block startx="-2" startz="-1" endx="-2" endz="-1"></block>
+			<block startx="-4" startz="1" endx="-4" endz="3"></block>
+			<block startx="-3" startz="1" endx="-3" endz="4"></block>
+			<block startx="-2" startz="1" endx="-2" endz="1"></block>
+			<block startx="-1" startz="2" endx="-1" endz="2"></block>
+			<block startx="1" startz="1" endx="1" endz="1"></block>
+			<block startx="2" startz="1" endx="2" endz="1"></block>
+			<block startx="3" startz="1" endx="3" endz="1"></block>
+			<block startx="5" startz="1" endx="5" endz="1"></block>
+			<block startx="6" startz="1" endx="6" endz="1"></block>
+			<block startx="-1" startz="-7" endx="-1" endz="-6"></block>
+			<block startx="-1" startz="0" endx="-1" endz="0"></block>
+			<block startx="0" startz="-7" endx="0" endz="-5"></block>
+			<block startx="0" startz="0" endx="0" endz="0"></block>
+			<block startx="1" startz="-7" endx="1" endz="-6"></block>
+			<block startx="2" startz="-7" endx="2" endz="-6"></block>
+			<block startx="3" startz="-7" endx="3" endz="-6"></block>
+			<block startx="4" startz="-7" endx="4" endz="-5"></block>
+			<block startx="5" startz="-7" endx="5" endz="-4"></block>
+			<block startx="6" startz="-7" endx="6" endz="-7"></block>
+			<block startx="6" startz="-2" endx="6" endz="-2"></block>
+			<block startx="-9" startz="-8" endx="-9" endz="-8"></block>
+			<block startx="-8" startz="-9" endx="-8" endz="-8"></block>
+			<block startx="-7" startz="-9" endx="-7" endz="-8"></block>
+			<block startx="-6" startz="-8" endx="-6" endz="-8"></block>
+			<block startx="0" startz="-8" endx="0" endz="-8"></block>
+			<block startx="1" startz="-8" endx="1" endz="-8"></block>
+			<block startx="2" startz="-8" endx="2" endz="-8"></block>
+			<block startx="7" startz="-6" endx="7" endz="-6"></block>
+			<block startx="7" startz="-4" endx="7" endz="-4"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="Texas\Path_Blend">
+			<block startx="-4" startz="-6" endx="-4" endz="-6"></block>
+			<block startx="-3" startz="-3" endx="-3" endz="-2"></block>
+			<block startx="-2" startz="-4" endx="-2" endz="-3"></block>
+			<block startx="-5" startz="5" endx="-5" endz="6"></block>
+			<block startx="-4" startz="6" endx="-4" endz="6"></block>
+			<block startx="-2" startz="2" endx="-2" endz="4"></block>
+			<block startx="-1" startz="3" endx="-1" endz="3"></block>
+			<block startx="0" startz="3" endx="0" endz="3"></block>
+			<block startx="-1" startz="-4" endx="-1" endz="-3"></block>
+			<block startx="0" startz="-4" endx="0" endz="-3"></block>
+			<block startx="1" startz="-4" endx="1" endz="0"></block>
+			<block startx="2" startz="-4" endx="2" endz="-4"></block>
+			<block startx="2" startz="-2" endx="2" endz="0"></block>
+			<block startx="3" startz="-5" endx="3" endz="-5"></block>
+			<block startx="3" startz="-1" endx="3" endz="-1"></block>
+			<block startx="4" startz="-4" endx="4" endz="-3"></block>
+			<block startx="4" startz="-1" endx="4" endz="0"></block>
+			<block startx="5" startz="-2" endx="5" endz="0"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="texas\groundforest_tex">
+			<block startx="6" startz="-6" endx="6" endz="-5"></block>
+			<block startx="7" startz="-5" endx="7" endz="-5"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="texas\Cliff_gravel_tex">
+			<block startx="-4" startz="-5" endx="-4" endz="-5"></block>
+			<block startx="-3" startz="-5" endx="-3" endz="-5"></block>
+			<block startx="-4" startz="4" endx="-4" endz="5"></block>
+			<block startx="-3" startz="5" endx="-3" endz="5"></block>
+			<block startx="-2" startz="5" endx="-2" endz="5"></block>
+			<block startx="-1" startz="5" endx="-1" endz="5"></block>
+			<block startx="0" startz="5" endx="0" endz="5"></block>
+			<block startx="6" startz="-4" endx="6" endz="-3"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="Texas\ground4_tex">
+			<block startx="-6" startz="-3" endx="-6" endz="-1"></block>
+			<block startx="-5" startz="-3" endx="-5" endz="-3"></block>
+			<block startx="-4" startz="-3" endx="-4" endz="-3"></block>
+			<block startx="-3" startz="-4" endx="-3" endz="-4"></block>
+			<block startx="-3" startz="-1" endx="-3" endz="0"></block>
+			<block startx="-6" startz="1" endx="-6" endz="1"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="texas\groundforestdirt_tex">
+			<block startx="-4" startz="-2" endx="-4" endz="-1"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="Texas\ground5_tex">
+			<block startx="-6" startz="0" endx="-6" endz="0"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

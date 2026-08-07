@@ -1,7 +1,7 @@
 <protounitsounddef>
   <protounit name="zpInuitWarCanoe">
     <soundtype name="Select">
-      <soundset name="Inuit_Ship_Select">
+      <soundset name="InuitSelect">
       </soundset>
     </soundtype>
     <soundtype name="Grunt">
@@ -13,17 +13,17 @@
       </soundset>
     </soundtype>
     <soundtype name="Creation">
-      <soundset name="MilitaryBirth">
+      <soundset name="NativeBirth">
       </soundset>
     </soundtype>
     <soundtype name="Acknowledge">
       <targetlogic>
         <choice name="default">
-          <soundset name="Inuit_Ship_Acknowledge">
+          <soundset name="InuitAcknowledge">
           </soundset>
         </choice>
         <choice name="enemy">
-          <soundset name="Inuit_Ship_Attack">
+          <soundset name="InuitAttack">
           </soundset>
         </choice>
         <choice name="build">

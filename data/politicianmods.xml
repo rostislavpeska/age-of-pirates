@@ -176,4 +176,16 @@
   <zpconsulaterevnapoleon portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_napoleon.png">
   </zpconsulaterevnapoleon>
 
+  <zpconsulateestatehannover portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/george_iii.png">
+  </zpconsulateestatehannover>
+  <zpconsulateestatejesuit portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/brebuf.png">
+  </zpconsulateestatejesuit>
+  <zpconsulateestatepenalcolony portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/olgenthorpe.png">
+  </zpconsulateestatepenalcolony>
+  <zpconsulateestatewestern portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/daniel_bone.png">
+  </zpconsulateestatewestern>
+  <zpconsulateestatesansculottes portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/rev_lafayette.png">
+  </zpconsulateestatesansculottes>
+  <zpconsulateestatejewish portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/solomon.png">
+  </zpconsulateestatejewish>
 </politicianmods>
