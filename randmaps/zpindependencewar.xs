@@ -111,6 +111,8 @@ void main(void)
 
 	chooseMercs();
 
+	rmSetOceanReveal(true);
+
 	// Corner constraint.
 	rmSetWorldCircleConstraint(true);
 
@@ -412,7 +414,6 @@ void main(void)
 	rmAddAreaToClass(riverArea1, classGreatLake);
 	rmAddAreaInfluenceSegment(riverArea1, 0.5, 1.0, 0.5, 0.5);
 	rmSetAreaObeyWorldCircleConstraint(riverArea1, false);
-	rmSetAreaReveal(riverArea1, 1);
 	rmBuildArea(riverArea1);
 
 	int centralLake = rmCreateArea("centralLake");
@@ -430,7 +431,6 @@ void main(void)
 	rmSetAreaCoherence(centralLake , 0.8);
 	rmSetAreaElevationVariation(centralLake, 0.0);
 	rmAddAreaToClass(centralLake, classDeepWater);
-	rmSetAreaReveal(centralLake, 1);
 	rmBuildArea(centralLake);
 
 	// Player landmasses
@@ -2788,6 +2788,12 @@ void main(void)
 	// xml side - defenders draw Hannover / Jesuit / PenalColony. Humans are
 	// excluded by the ZP PLAYER Human condition. The persona is baked per
 	// player at map generation (rmRandInt), same as zpparis.
+	//
+	// Timer and Execute both gate on cTechzpNativeColonialEstate, the
+	// estate's alliance shadow tech - the AI must actually own an estate
+	// trading post before it can elect a leader, exactly as zpparis gates
+	// its factions on cTechzpNativeSansculottes. Gating on the map setup
+	// tech instead would hand every AI a revolution leader for free.
 
 	for (k=1; <= cNumberNonGaiaPlayers) {
 		rmCreateTrigger("ZP_Iniciate_Revolution"+k);
@@ -2814,7 +2820,7 @@ void main(void)
 		rmSetTriggerConditionParamInt("Param1",10);
 		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
 		rmSetTriggerConditionParamInt("PlayerID",k);
-		rmSetTriggerConditionParam("TechID","cTechzpIndependenceWarSetup");
+		rmSetTriggerConditionParam("TechID","cTechzpNativeColonialEstate");
 		rmSetTriggerConditionParamInt("Status",2);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Execute_Revolution"+k));
@@ -2826,7 +2832,7 @@ void main(void)
 		rmSwitchToTrigger(rmTriggerID("ZP_Execute_Revolution"+k));
 		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
 		rmSetTriggerConditionParamInt("PlayerID",k);
-		rmSetTriggerConditionParam("TechID","cTechzpIndependenceWarSetup");
+		rmSetTriggerConditionParam("TechID","cTechzpNativeColonialEstate");
 		rmSetTriggerConditionParamInt("Status",2);
 
 		int revPersona=-1;
