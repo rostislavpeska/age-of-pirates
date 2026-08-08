@@ -476,7 +476,7 @@ void main(void)
 	rmSetAreaLocation(bridgeDockEast, bridgeX+rmXTilesToFraction(22), bridgeZ);
 	rmSetAreaCoherence(bridgeDockEast, 1.0);
 	rmSetAreaBaseHeight(bridgeDockEast, 3.0);
-	rmSetAreaCliffType(bridgeDockEast, "ZP Elbe Cliff");
+	rmSetAreaCliffType(bridgeDockEast, "New England");
 	rmSetAreaCliffEdge(bridgeDockEast, 1, 1.0, 0.1, 1.0, 0);
 	rmSetAreaCliffHeight(bridgeDockEast, 0, 0.0, 1.0);
 	rmAddAreaToClass(bridgeDockEast , rmClassID("classPlateau"));
@@ -488,7 +488,7 @@ void main(void)
 	rmSetAreaLocation(bridgeDockWest, bridgeX-rmXTilesToFraction(22), bridgeZ);
 	rmSetAreaCoherence(bridgeDockWest, 1.0);
 	rmSetAreaBaseHeight(bridgeDockWest, 3.0);
-	rmSetAreaCliffType(bridgeDockWest, "ZP Elbe Cliff");
+	rmSetAreaCliffType(bridgeDockWest, "New England");
 	rmSetAreaCliffEdge(bridgeDockWest, 1, 1.0, 0.1, 1.0, 0);
 	rmSetAreaCliffHeight(bridgeDockWest, 0, 0.0, 1.0);
 	rmAddAreaToClass(bridgeDockWest , rmClassID("classPlateau"));
