@@ -3324,22 +3324,22 @@
       <applystringid>66271</applystringid>
       <maptype>piratehistoricalmap</maptype>
       <guardianunit>
-        <unit>OutlawPistol</unit>
+        <unit>deGuardianHighwayman</unit>
         <idleanim>NuggetPirate1_Idle</idleanim>
         <exitanim>NuggetPirate1_Exit</exitanim>
         <attachdummy>bone_nuggetA</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>OutlawPistol</unit>
+        <unit>deGuardianHighwayman</unit>
         <idleanim>NuggetPirate2_Idle</idleanim>
         <exitanim>NuggetPirate2_Exit</exitanim>
         <attachdummy>bone_nuggetB</attachdummy>
       </guardianunit>
         <guardianunit>
-          <unit>OutlawPistol</unit>
+          <unit>deGuardianHighwayman</unit>
         </guardianunit>
         <guardianunit>
-          <unit>OutlawRifleman</unit>
+          <unit>deGuardianHighwayman</unit>
         </guardianunit>
       <difficulty>514</difficulty>
     </nugget>
