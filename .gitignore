@@ -10,3 +10,6 @@ docs/local_instructions.md
 playground/
 # Local machine configuration
 config.local.md
+__pycache__/
+*.pyc
+*.stackdump
