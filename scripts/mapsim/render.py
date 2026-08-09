@@ -95,32 +95,26 @@ def terrain_rgba(tg, cliff_band_cells: bool = False):
     return rgba
 
 
-def draw_cliff_outline(ax, tg, tr, raised_names=None, linewidth: float = 1.6,
+def draw_cliff_outline(ax, tg, tr, linewidth: float = 1.6,
                        zorder: float = 1.6) -> None:
-    """One closed CLIFF_EDGE contour per RAISED cliff shape, uniform
-    linewidth on every map and cliff size.
+    """One closed CLIFF_EDGE contour around EVERY cliff area's claimed
+    cells, uniform linewidth on every map and cliff size.
 
-    Only areas with a raised cliff (cliff_raised) are impassable walls and
-    get an outline. cliffHeight-0 cliff areas are PAINTED shore ledges —
-    crownlands'/elbe's "Italian Cliff River"/"ZP Elbe Cliff" shoreLines
-    and bridge docks — passable texture, not walls (the same discriminator
-    cliff_band already uses; their crescent claims drew as half-moons and
-    river-long bank outlines before, 2026-08-09). Their paint belongs to
-    the Layer-3 backlog. raised_names=None keeps every cliff (debug use).
-    The impassable band remains model truth (class_code / digest
-    untouched)."""
+    THE RULE IS DETERMINISTIC BY DIRECTIVE (user, 2026-08-09: "zero
+    guesswork, just deterministic system with honest limitation"): any
+    area with a cliff type gets its border drawn, regardless of cliff
+    height or surrounding terrain. HONEST LIMITATION: the outline marks
+    "a cliff area claims this ground" — it does NOT say whether that rim
+    is an impassable wall (raised) or a walkable painted ledge
+    (cliffHeight 0, e.g. crownlands/elbe shorelines). Passability lives
+    in the MODEL only: the cliff_band / class-3 cells, which keep the
+    evidence-based raised-rim semantics (class_code / digest untouched
+    by this display rule)."""
     import numpy as np
     if not tg.cliff:
         return
-
-    def keep(idx: int) -> bool:
-        if idx == 0:
-            return False
-        return (raised_names is None
-                or tg.cliff_order[idx - 1] in raised_names)
-
-    mask = np.array([[1.0 if keep(tg.cliff[j][i]) else 0.0
-                      for i in range(tg.nx)] for j in range(tg.nz)])
+    mask = np.array([[1.0 if tg.cliff[j][i] else 0.0 for i in range(tg.nx)]
+                     for j in range(tg.nz)])
     if not mask.any():
         return
     xs = (np.arange(tg.nx) + 0.5) / tg.nx
@@ -128,11 +122,6 @@ def draw_cliff_outline(ax, tg, tr, raised_names=None, linewidth: float = 1.6,
     cs = ax.contour(xs, zs, mask, levels=[0.5], colors=[CLIFF_EDGE],
                     linewidths=linewidth, zorder=zorder)
     cs.set_transform(tr)
-
-
-def _raised_cliff_names(rs) -> set:
-    return {a.name for a in rs.areas
-            if a.cliff_type is not None and a.cliff_raised()}
 
 
 def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
@@ -229,7 +218,7 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
     im = ax.imshow(rgba, extent=(0, 1, 0, 1), origin="lower",
                    interpolation="nearest", zorder=1.5)
     im.set_transform(tr)
-    draw_cliff_outline(ax, tg, tr, raised_names=_raised_cliff_names(rs))
+    draw_cliff_outline(ax, tg, tr)
 
     labeled: List[tuple] = []
     located = [a for a in rs.areas if a.x is not None]
@@ -443,7 +432,7 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
         Line2D([], [], marker="s", linestyle="", color=SHALLOW, label="shallow (walkable+buildable)"),
         Line2D([], [], marker="s", linestyle="", color=WATER, label="deep water"),
         Line2D([], [], linestyle="-", linewidth=1.6, color=CLIFF_EDGE,
-               label="cliff outline (impassable rim)"),
+               label="cliff area outline (wall OR painted ledge)"),
         Line2D([], [], color="#8f9aa8", linestyle=":", label="invisible mask"),
         Line2D([], [], marker="o", linestyle="", color=VERDICT_COLOR["OK"], label="OK"),
         Line2D([], [], marker="o", linestyle="", color=VERDICT_COLOR["EDGE_RISK"], label="warning"),
@@ -520,9 +509,7 @@ def render_layers(rs, out_dir: Path, title: str = "map",
         im = ax.imshow(terrain_rgba(tg), extent=(0, 1, 0, 1), origin="lower",
                        interpolation="nearest", zorder=1.5)
         im.set_transform(tr)
-        draw_cliff_outline(ax, tg, tr,
-                           raised_names=_raised_cliff_names(rs),
-                           linewidth=1.2)
+        draw_cliff_outline(ax, tg, tr, linewidth=1.2)
         # Highlight this step's freshly claimed cells.
         if st["cells"]:
             hi = np.zeros((tg.nz, tg.nx, 4), dtype=float)
