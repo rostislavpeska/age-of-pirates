@@ -728,18 +728,23 @@ work before G6 exits.
   zp_z_cookislands missing lobby .xml.
 - Layer 3 (grouping rectangles + object icons over the simmap) is now
   UNBLOCKED per the G6 exit criteria.
-- Post-gate (2026-08-09): cliff OUTLINE display rule is DETERMINISTIC by
-  user directive ("zero guesswork, honest limitation"): EVERY cliff area
-  draws its claim border, regardless of cliff height or surroundings.
-  The outline means "a cliff area claims this ground" and nothing more —
-  crownlands/elbe cliffHeight-0 shorelines draw their (walkable, painted)
-  crescents exactly like real walls, and the legend says so ("wall OR
-  painted ledge"). A raised-only filter was tried and REVERTED as
-  interpretive guesswork. Passability stays exclusively in the MODEL:
-  cliff_band / class-3 cells keep the evidence-based raised-rim
-  semantics for checks and goldens. Related honest limitation: partial
-  authored rims (edgeMountain cliffEdge(4,0.12) = 48%, canyon ramps)
-  draw nominal-full — the engine randomizes gap positions.
+- Post-gate (2026-08-09): CLIFF SUPER-SIMPLIFICATION (final, user
+  directive after forensic analysis of the leftover-crescent problem):
+  cliff areas draw as their AUTHORED CIRCLES — rmSetAreaLocation center,
+  rmSetAreaSize radius, nothing else. No growth, no build-order erasure,
+  no height filtering (a raised-only filter and a claim-contour approach
+  were both tried and REVERTED). The forensic finding that forced this:
+  the one-shape erasure left 8-20% crescent leftovers (elbe shoreLines
+  109/1300 cells, IW docks 32/300, riverina upper west 464/5080) that
+  rendered as unauthored half-moon shapes. NEW ENGINE RULE (user-verified
+  in-game): the engine keeps BLOCKING placements on a cliff area's
+  authored footprint even after ramps/later terrain replace the cliff —
+  an RM generation bug. The model reproduces it: cliff_band now PERSISTS
+  under land-area overrides (water overrides still clear it — flooded
+  ground blocks as water); IW goldens regenerated (+91 CLIFF cells, the
+  dock bands that estate/hill builds used to erase). Honest limitations:
+  authored circle is nominal, engine-placed cliff areas draw nothing,
+  partial rims (cliffEdge(4,0.12)) draw full.
 - Post-gate (2026-08-09): RECT-MAP COORDINATE RULE pinned — the engine
   reads RIVER waypoints as fractions of SIZE_X on both axes, while trade
   routes/areas/objects use true per-axis fractions. Evidence: wwcanyon

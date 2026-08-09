@@ -806,7 +806,13 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
                 wdepth[j][i] = 0.0
                 wwalk[j][i] = False
                 cliff[j][i] = 0
-                cliff_band[j][i] = False
+                # cliff_band DELIBERATELY PERSISTS here: the engine keeps
+                # blocking placements on a cliff's footprint even after a
+                # ramp / later land area builds over it — user-verified
+                # in-game 2026-08-09, an RM generation bug this model must
+                # reproduce for spawn checks to be truthful. Water builds
+                # (river/water-area/mask branches) still clear the band:
+                # flooded ground blocks as WATER, not as cliff.
         elif area.base_height is not None:
             # Submerged ground: explicit base height at/below sea level
             # (Cook Islands -0.25 shoals and -5.0 cliff rings, Civil War
