@@ -159,6 +159,25 @@ class ResolvedArea:
     constraints: List[str]
     classes: List[str] = field(default_factory=list)
     influence_segments: List[Tuple[float, float, float, float]] = field(default_factory=list)
+    water_type: Optional[str] = None    # rmSetAreaWaterType: paints real water
+    has_paint: bool = False             # painted a terrain mix/type/layer
+    approx: bool = False                # anchor derived (player/team ring), not literal
+    height_blend: float = 0.0           # rmSetAreaHeightBlend; >=2 flattens the stamp
+    has_elevation: bool = False         # any rmSetAreaElevation* call (flat-stamp marker)
+    cliff_height: Optional[float] = None  # rmSetAreaCliffHeight; None = default 4.0 (raised)
+
+    def cliff_raised(self) -> bool:
+        """Raised cliffs (height > 0, or unset -> engine default 4.0) are
+        rock massifs; height-0 cliffs are flat ground with a carved rim
+        (Elbe docks, Paris quays, Crownlands shores)."""
+        return self.cliff_height is None or self.cliff_height > 0.0
+
+    def is_invisible(self) -> bool:
+        """Pure constraint mask (guide:5824 'they mark where water should
+        STAY'): built but paints nothing — no height, no water, no cliff,
+        no terrain paint. Changes nothing on the map."""
+        return (self.base_height is None and self.water_type is None
+                and self.cliff_type is None and not self.has_paint)
 
     def radius_frac_x(self, grid: MapGrid) -> float:
         return grid.x_m_to_frac(self.radius_m)
@@ -201,7 +220,15 @@ class ResolvedScene:
     player_placement: Dict[str, Any]
     constraints: Dict[str, Any]
     trade_routes: List[List[Tuple[float, float]]] = field(default_factory=list)
-    rivers: List[Dict[str, Any]] = field(default_factory=list)  # {line, width_m, waypoints}
+    rivers: List[Dict[str, Any]] = field(default_factory=list)  # {line, width_m, waypoints, water_type}
+    connections: List[Dict[str, Any]] = field(default_factory=list)  # {line, width_m, base_height, x1..z2}
+    # Base terrain from rmTerrainInitialize: a flooded base ("water" or a
+    # water-type name) vs a land base at base_elevation_m. Default matches
+    # the historical assumption (water base) for curated scenes without the
+    # config keys.
+    base_is_water: bool = True
+    base_elevation_m: float = 0.0       # init height arg (default 0.0, guide:3145)
+    sea_type: Optional[str] = None      # rmSetSeaType water body name
 
     def all_routes(self) -> List[List[Tuple[float, float]]]:
         return self.trade_routes or ([self.trade_route_waypoints] if self.trade_route_waypoints else [])
@@ -272,6 +299,11 @@ class Scene:
                 constraints=list(raw.get("constraints", [])),
                 classes=list(raw.get("classes", [])),
                 influence_segments=[tuple(s) for s in raw.get("influence_segments", [])],
+                water_type=raw.get("water_type"),
+                has_paint=bool(raw.get("has_paint", False)),
+                height_blend=float(raw.get("height_blend", 0.0)),
+                has_elevation=bool(raw.get("has_elevation", False)),
+                cliff_height=raw.get("cliff_height"),
             ))
 
         placements = []
@@ -329,8 +361,11 @@ class Scene:
                 "line": int(raw.get("line", 0)),
                 "width_m": float(resolve_branch(raw["width_m"], sc, grid)),
                 "waypoints": [(float(p[0]), float(p[1])) for p in raw["waypoints"]],
+                "water_type": raw.get("water_type"),
             })
 
+        from scripts.mapsim.waterdata import is_water_type_name
+        terrain_init = str(cfg.get("terrain_init", "water"))
         return ResolvedScene(
             scenario=sc,
             grid=grid,
@@ -343,4 +378,7 @@ class Scene:
             constraints=self.data.get("constraints", {}),
             trade_routes=[waypoints] if waypoints else [],
             rivers=rivers,
+            base_is_water=is_water_type_name(terrain_init),
+            base_elevation_m=float(cfg.get("terrain_init_height", 0.0)),
+            sea_type=cfg.get("sea_type"),
         )

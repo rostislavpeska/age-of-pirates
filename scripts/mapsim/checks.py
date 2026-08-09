@@ -85,6 +85,63 @@ def _land_areas_at(rs: ResolvedScene, before_line: Optional[int]) -> List[Resolv
     return [a for a in areas if a.line <= before_line]
 
 
+def area_is_land(rs: ResolvedScene, a: ResolvedArea) -> bool:
+    """Whether the area's surface ends up above water: water types never,
+    explicit heights by comparison with sea level, everything else inherits
+    the rmTerrainInitialize base (rm_commands_reference.md:285-286) —
+    or the curated scene's explicit creates_land flag."""
+    if a.water_type is not None:
+        return False
+    if a.base_height is not None:
+        return a.base_height > rs.sea_level
+    return a.creates_land or not rs.base_is_water
+
+
+def _water_features_m(rs: ResolvedScene, before_line: Optional[int]):
+    """(kind-tuple, band_m, name) shapes of authored water on a LAND-base
+    map: water-type areas (disc + influence capsules, blob band) and river
+    bands (deterministic, zero band)."""
+    g = rs.grid
+    feats = []
+    for a in rs.areas:
+        if a.x is None:
+            continue
+        wet = (a.water_type is not None
+               or (a.base_height is not None and a.base_height <= rs.sea_level)
+               or (a.is_invisible() and a.has_elevation
+                   and a.height_blend < 2.0 and rs.sea_level >= 0.0))
+        if not wet:
+            continue
+        if before_line is not None and a.line > before_line:
+            continue
+        band = _area_band_m(a)
+        feats.append((("disc", g.x_frac_to_m(a.x), g.z_frac_to_m(a.z), a.radius_m),
+                      band, a.name))
+        from scripts.mapsim.field import connected_influence_segments
+        for x1, z1, x2, z2 in connected_influence_segments(a, g):
+            feats.append((("capsule", g.x_frac_to_m(x1), g.z_frac_to_m(z1),
+                           g.x_frac_to_m(x2), g.z_frac_to_m(z2), a.radius_m),
+                          band, a.name))
+    for r in rs.rivers:
+        if before_line is not None and int(r.get("line", 0)) > before_line:
+            continue
+        halfw = float(r["width_m"]) / 2.0
+        pts = [(g.x_frac_to_m(x), g.z_frac_to_m(z)) for x, z in r["waypoints"]]
+        for (x1, z1), (x2, z2) in zip(pts, pts[1:]):
+            feats.append((("capsule", x1, z1, x2, z2, halfw), 0.0, "river"))
+    return feats
+
+
+def _feat_axis_dist(anchor_m, feat) -> Tuple[float, float]:
+    """(distance to the shape's axis, shape radius)."""
+    from scripts.mapsim.geometry import dist_point_to_segment
+    if feat[0] == "disc":
+        _, cx, cz, r = feat
+        return dist(anchor_m, (cx, cz)), r
+    _, x1, z1, x2, z2, r = feat
+    return dist_point_to_segment(anchor_m, (x1, z1), (x2, z2)), r
+
+
 def _land_reach(
     rs: ResolvedScene, anchor_m: Tuple[float, float], r_min: float, r_max: float,
     before_line: Optional[int] = None,
@@ -94,6 +151,32 @@ def _land_reach(
     solid  — intersects a land disc shrunk by its uncertainty band
     possible — intersects a land disc expanded by its band
     """
+    if not rs.base_is_water:
+        # Land-base map: everything is land except authored water features.
+        # Land is unreachable only when the whole annulus sits inside one
+        # water feature (single-shape union approximation, same convention
+        # as the water-base single-disc rule below) AND no authored land
+        # area (island in a lake) reaches into the annulus either.
+        solid = possible = True
+        inside_of = None
+        for feat, band, name in _water_features_m(rs, before_line):
+            d, r = _feat_axis_dist(anchor_m, feat)
+            if d + r_max <= r + band:
+                solid = False
+                inside_of = name
+            if d + r_max <= max(0.0, r - band):
+                possible = False
+        if not solid or not possible:
+            for area in _land_areas_at(rs, before_line):
+                d = dist(anchor_m, (rs.grid.x_frac_to_m(area.x),
+                                    rs.grid.z_frac_to_m(area.z)))
+                band = _area_band_m(area)
+                if annulus_intersects_disc(d, r_min, r_max,
+                                           max(0.0, area.radius_m - band)):
+                    solid = True
+                if annulus_intersects_disc(d, r_min, r_max, area.radius_m + band):
+                    possible = True
+        return solid, possible, inside_of
     solid = possible = False
     nearest = None
     nearest_gap = math.inf
@@ -114,6 +197,17 @@ def _inside_land(
     rs: ResolvedScene, anchor_m, r_min, r_max, before_line: Optional[int] = None
 ) -> Tuple[bool, bool]:
     """(fully_inside_conf, fully_inside_expanded) any single land disc."""
+    if not rs.base_is_water:
+        # Land-base map: "inside land" means the annulus cannot touch any
+        # water feature (annulus geometry incl. the r_min hole).
+        conf = expanded = True
+        for feat, band, _name in _water_features_m(rs, before_line):
+            d, r = _feat_axis_dist(anchor_m, feat)
+            if annulus_intersects_disc(d, r_min, r_max, r + band):
+                conf = False
+            if annulus_intersects_disc(d, r_min, r_max, max(0.0, r - band)):
+                expanded = False
+        return conf, expanded
     conf = expanded = False
     for area in _land_areas_at(rs, before_line):
         d = dist(anchor_m, (rs.grid.x_frac_to_m(area.x), rs.grid.z_frac_to_m(area.z)))
@@ -131,13 +225,27 @@ def check_placement(p: ResolvedPlacement, rs: ResolvedScene) -> Finding:
                        "gated off in this scenario (mode condition)")
 
     if p.kind == "in_area":
-        missing = [ref for ref in p.area_refs if not any(a.name == ref for a in rs.areas)]
+        def ref_matches(ref: str) -> bool:
+            # Collapsed loop areas keep the loop prefix ("underwater_patch_
+            # area" for members ..._area0..4): match refs by prefix there.
+            return any(a.name == ref
+                       or (a.count > 1 and ref.startswith(a.name))
+                       for a in rs.areas)
+        unknown_runtime = [ref for ref in p.area_refs if ref == "?"]
+        missing = [ref for ref in p.area_refs
+                   if ref != "?" and not ref_matches(ref)]
         if missing:
             return Finding("placement", p.name, "CONFIG", "error",
                            f"references unknown areas: {missing}")
+        if unknown_runtime:
+            return Finding("placement", p.name, "UNKNOWN_RUNTIME", "info",
+                           "area reference resolved at runtime")
         if p.terrain_affinity == "land":
-            refs = [a for a in rs.areas if a.name in p.area_refs]
-            not_land = [a.name for a in refs if not a.creates_land]
+            refs = [a for a in rs.areas
+                    if a.name in p.area_refs
+                    or (a.count > 1 and any(r.startswith(a.name)
+                                            for r in p.area_refs))]
+            not_land = [a.name for a in refs if not area_is_land(rs, a)]
             if not_land:
                 return Finding("placement", p.name, "WRONG_TERRAIN", "error",
                                f"land placement in non-land areas: {not_land}")
@@ -170,7 +278,8 @@ def check_placement(p: ResolvedPlacement, rs: ResolvedScene) -> Finding:
     warnings: List[Finding] = []
 
     if rs.world_circle:
-        circle_r_m = grid.x_frac_to_m(WORLD_CIRCLE_R)
+        # True meter circle, diameter = the map's LONGER side (rect maps).
+        circle_r_m = WORLD_CIRCLE_R * max(grid.size_x_m, grid.size_z_m)
         if not annulus_intersects_disc(d_center_m, p.min_dist_m, p.max_dist_m, circle_r_m):
             msg = (f"entire search annulus outside the world circle "
                    f"(anchor r={d_center_m / circle_r_m * WORLD_CIRCLE_R:.3f} frac)")
@@ -183,7 +292,7 @@ def check_placement(p: ResolvedPlacement, rs: ResolvedScene) -> Finding:
                                msg + " — placement will silently fail or fall back",
                                approximate=p.approx)
         else:
-            r_frac = d_center_m / grid.size_x_m
+            r_frac = d_center_m / max(grid.size_x_m, grid.size_z_m)
             safe = SAFE_RADIUS_FRAC[p.category]
             if r_frac > safe:
                 warnings.append(Finding(
@@ -351,18 +460,31 @@ def check_player_ring(rs: ResolvedScene, samples: int = 256) -> List[Finding]:
         if branch.get("kind") not in ("circular", "circular_teams"):
             continue
         r_mid = (branch["min"] + branch["max"]) / 2.0
-        on_land = 0
+        on_land = maybe_land = 0
         for k in range(samples):
             theta = 2.0 * math.pi * k / samples
             x = 0.5 + r_mid * math.cos(theta)
             z = 0.5 + r_mid * math.sin(theta)
             anchor_m = rs.grid.frac_to_m(x, z)
-            solid, _, _ = _land_reach(rs, anchor_m, 0.0, 0.0)
+            solid, possible, _ = _land_reach(rs, anchor_m, 0.0, 0.0)
             if solid:
                 on_land += 1
+            elif possible:
+                maybe_land += 1
         coverage = on_land / samples
         label = f"ring r={branch['min']}-{branch['max']}"
-        if coverage == 0.0:
+        runtime_land = any(a.engine_placed and a.creates_land for a in rs.areas)
+        if coverage == 0.0 and maybe_land > 0:
+            findings.append(Finding(
+                "ring", label, "RING_LOW_LAND", "warning",
+                f"ring only reaches land inside area uncertainty bands "
+                f"({maybe_land}/{samples} sample points)",
+                details={"maybe": round(maybe_land / samples, 3)}))
+        elif coverage == 0.0 and runtime_land:
+            findings.append(Finding(
+                "ring", label, "UNKNOWN_RUNTIME", "info",
+                "ring lands on runtime-placed areas — not statically checkable"))
+        elif coverage == 0.0:
             findings.append(Finding("ring", label, "RING_OFF_LAND", "error",
                                     "no point of the player ring lies on authored land"))
         elif coverage < 0.25:

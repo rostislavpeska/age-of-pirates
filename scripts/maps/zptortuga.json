@@ -1,0 +1,32 @@
+{
+  "map": "zptortuga",
+  "version": 1,
+  "script": "game/randmaps/zptortuga.xs",
+  "notes": "Tortuga pilot profile (plan G3): engine-grown player islands make several model-tier checks fire on a map that verifiably plays.",
+  "evidence": [
+    {
+      "id": "tortuga-plays-2026-08-09",
+      "date": "2026-08-09",
+      "source": "in-game",
+      "claim": "Players spawn on their islands and the pirate controllers resolve; the map generates playable.",
+      "ref": "regular playtesting of the map by the author"
+    }
+  ],
+  "overrides": {},
+  "expectations": [],
+  "tests": [],
+  "known_issues": [
+    {
+      "check": "G2",
+      "match": "nominal anchor",
+      "why": "player islands are engine-grown at runtime; nominal ring anchors land on pre-island water, in-game spawns are on the islands (re-triage at G6)",
+      "evidence": "tortuga-plays-2026-08-09"
+    },
+    {
+      "check": "SIM:CONSTRAINT_UNSAT",
+      "match": "Controler",
+      "why": "controllers stand on water that later build steps turn into land; in-game they resolve (re-triage at G6)",
+      "evidence": "tortuga-plays-2026-08-09"
+    }
+  ]
+}

@@ -76,9 +76,11 @@ class TestPointAllowed:
             "player_placement": {}, "constraints": {},
         })
         ctx = FieldContext(scene.resolve(SC))
+        # The constraint measures from the road EDGE: authored distance
+        # plus ROUTE_HALF_WIDTH_M (16 m block road / 2).
         spec = {"kind": "route_distance", "distance_m": 10.0}
-        assert point_allowed(ctx, (211.0, 200.0), spec) is True
-        assert point_allowed(ctx, (209.0, 200.0), spec) is False
+        assert point_allowed(ctx, (219.0, 200.0), spec) is True
+        assert point_allowed(ctx, (217.0, 200.0), spec) is False
 
     def test_opaque_returns_none(self):
         ctx = self._ctx([])
