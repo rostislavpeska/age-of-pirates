@@ -433,6 +433,13 @@ class TerrainGrid:
     cliff_order: List[str] = dfield(default_factory=list)
     sea_level: float = 0.0
     shortfalls: Dict[str, Tuple[int, int]] = dfield(default_factory=dict)  # name -> (claimed, budget)
+    # Each cliff area's grown claim SNAPSHOT at build time — constraints
+    # and influence segments already shaped it (the growth model), and it
+    # is NEVER erased by later builds (user diagnosis 2026-08-09: "the
+    # code was not that bad, the problem was overriding cliffs with other
+    # land areas on top"). Display truth for cliff borders; the mutable
+    # cliff/cliff_band arrays stay the passability model.
+    cliff_claims: List[Tuple[str, List[Tuple[int, int]]]] = dfield(default_factory=list)
 
     def cell_of_frac(self, x: float, z: float) -> Tuple[int, int]:
         i = min(self.nx - 1, max(0, int(x * self.nx)))
@@ -517,6 +524,7 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
              for _ in range(nz)]
     cliff = [[0] * nx for _ in range(nz)]
     cliff_band = [[False] * nx for _ in range(nz)]
+    cliff_claims: List[Tuple[str, List[Tuple[int, int]]]] = []
     cliff_order: List[str] = []
     # Class geometry accumulates ACTUAL claimed cells per class as areas
     # build (build-order faithful). The analytic authored-disc fallback in
@@ -888,6 +896,7 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
             cliff_order.append(area.name)
             ccode = len(cliff_order)
             claim = set(cells)
+            cliff_claims.append((area.name, list(cells)))
             for i, j in cells:
                 cliff[j][i] = ccode
             # The impassable RIM band (the spawn killer, guide:10960):
@@ -923,7 +932,8 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
     return TerrainGrid(nx, nz, cell_tiles, land, marker, land_order,
                        water=water, wdepth=wdepth, wwalk=wwalk, cliff=cliff,
                        cliff_band=cliff_band, cliff_order=cliff_order,
-                       sea_level=rs.sea_level, shortfalls=shortfalls)
+                       sea_level=rs.sea_level, shortfalls=shortfalls,
+                       cliff_claims=cliff_claims)
 
 
 @dataclass

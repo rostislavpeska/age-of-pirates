@@ -95,34 +95,32 @@ def terrain_rgba(tg, cliff_band_cells: bool = False):
     return rgba
 
 
-def draw_cliff_outline(ax, rs, tr, linewidth: float = 1.6,
+def draw_cliff_outline(ax, tg, tr, linewidth: float = 1.6,
                        zorder: float = 2.8) -> None:
-    """AUTHORED cliff shapes — the super-simplification (user directive
-    2026-08-09): every area with a cliff type draws its authored circle,
-    center from rmSetAreaLocation, radius from rmSetAreaSize. Nothing
-    else: no growth, no constraints, no build-order erasure, no height
-    filtering. Deterministic from the .xs numbers alone.
-
-    This is also the TRUTHFUL spawn-hazard shape: the engine keeps
-    blocking placements on a cliff area's authored footprint even after
-    ramps or later terrain visually replace the cliff (user-verified
-    in-game — an RM generation bug; see the matching cliff_band
-    persistence in field.terrain_grid).
-
-    HONEST LIMITATIONS: the circle is the nominal authored shape, not the
-    grown footprint; engine-placed cliff areas (no static anchor) draw
-    nothing."""
-    from matplotlib.patches import Ellipse
-    g = rs.grid
-    for a in rs.areas:
-        if a.cliff_type is None or a.x is None or a.z is None:
+    """One uniform-weight border per cliff area, around its BUILD-TIME
+    GROWN CLAIM (TerrainGrid.cliff_claims): the shape the growth model
+    produced under the area's own constraints and influence segments —
+    and NOTHING later. The user diagnosis that settled this design
+    (2026-08-09): "the code was not that bad, the problem was overriding
+    cliffs with other land areas on top." Later builds may repaint the
+    ground (and the class grid tells that truth) but the cliff border
+    never erodes into leftover crescents again. Matches the engine bug
+    where placement blocking follows the cliff footprint even after
+    ramps/terrain replace it."""
+    import numpy as np
+    if not getattr(tg, "cliff_claims", None):
+        return
+    xs = (np.arange(tg.nx) + 0.5) / tg.nx
+    zs = (np.arange(tg.nz) + 0.5) / tg.nz
+    for _name, cells in tg.cliff_claims:
+        if not cells:
             continue
-        e = Ellipse((a.x, a.z), 2.0 * a.radius_m / g.size_x_m,
-                    2.0 * a.radius_m / g.size_z_m, facecolor="none",
-                    edgecolor=CLIFF_EDGE, linewidth=linewidth,
-                    zorder=zorder)
-        e.set_transform(tr)
-        ax.add_patch(e)
+        mask = np.zeros((tg.nz, tg.nx))
+        for i, j in cells:
+            mask[j][i] = 1.0
+        cs = ax.contour(xs, zs, mask, levels=[0.5], colors=[CLIFF_EDGE],
+                        linewidths=linewidth, zorder=zorder)
+        cs.set_transform(tr)
 
 
 def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
@@ -219,7 +217,7 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
     im = ax.imshow(rgba, extent=(0, 1, 0, 1), origin="lower",
                    interpolation="nearest", zorder=1.5)
     im.set_transform(tr)
-    draw_cliff_outline(ax, rs, tr)
+    draw_cliff_outline(ax, tg, tr)
 
     labeled: List[tuple] = []
     located = [a for a in rs.areas if a.x is not None]
@@ -433,7 +431,7 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
         Line2D([], [], marker="s", linestyle="", color=SHALLOW, label="shallow (walkable+buildable)"),
         Line2D([], [], marker="s", linestyle="", color=WATER, label="deep water"),
         Line2D([], [], linestyle="-", linewidth=1.6, color=CLIFF_EDGE,
-               label="cliff area (authored shape)"),
+               label="cliff area border (as built)"),
         Line2D([], [], color="#8f9aa8", linestyle=":", label="invisible mask"),
         Line2D([], [], marker="o", linestyle="", color=VERDICT_COLOR["OK"], label="OK"),
         Line2D([], [], marker="o", linestyle="", color=VERDICT_COLOR["EDGE_RISK"], label="warning"),
@@ -510,7 +508,7 @@ def render_layers(rs, out_dir: Path, title: str = "map",
         im = ax.imshow(terrain_rgba(tg), extent=(0, 1, 0, 1), origin="lower",
                        interpolation="nearest", zorder=1.5)
         im.set_transform(tr)
-        draw_cliff_outline(ax, rs, tr, linewidth=1.2)
+        draw_cliff_outline(ax, tg, tr, linewidth=1.2)
         # Highlight this step's freshly claimed cells.
         if st["cells"]:
             hi = np.zeros((tg.nz, tg.nx, 4), dtype=float)

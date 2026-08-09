@@ -728,23 +728,24 @@ work before G6 exits.
   zp_z_cookislands missing lobby .xml.
 - Layer 3 (grouping rectangles + object icons over the simmap) is now
   UNBLOCKED per the G6 exit criteria.
-- Post-gate (2026-08-09): CLIFF SUPER-SIMPLIFICATION (final, user
-  directive after forensic analysis of the leftover-crescent problem):
-  cliff areas draw as their AUTHORED CIRCLES — rmSetAreaLocation center,
-  rmSetAreaSize radius, nothing else. No growth, no build-order erasure,
-  no height filtering (a raised-only filter and a claim-contour approach
-  were both tried and REVERTED). The forensic finding that forced this:
-  the one-shape erasure left 8-20% crescent leftovers (elbe shoreLines
-  109/1300 cells, IW docks 32/300, riverina upper west 464/5080) that
-  rendered as unauthored half-moon shapes. NEW ENGINE RULE (user-verified
-  in-game): the engine keeps BLOCKING placements on a cliff area's
-  authored footprint even after ramps/later terrain replace the cliff —
-  an RM generation bug. The model reproduces it: cliff_band now PERSISTS
-  under land-area overrides (water overrides still clear it — flooded
-  ground blocks as water); IW goldens regenerated (+91 CLIFF cells, the
-  dock bands that estate/hill builds used to erase). Honest limitations:
-  authored circle is nominal, engine-placed cliff areas draw nothing,
-  partial rims (cliffEdge(4,0.12)) draw full.
+- Post-gate (2026-08-09): CLIFF RULE, FINAL FORM (after three iterations
+  with the user): the cliff border is the area's BUILD-TIME GROWN CLAIM
+  (TerrainGrid.cliff_claims) - the growth model's shape under the area's
+  own constraints and influence segments - captured when the area builds
+  and NEVER eroded by later builds. User diagnosis that settled it: "the
+  code was not that bad, the problem was overriding cliffs with other
+  land areas on top." The forensic numbers that exposed the problem:
+  one-shape erasure left 8-20% crescent leftovers (elbe shoreLines
+  109/~1300 cells, IW docks 32/300, riverina upper west 464/5080) which
+  rendered as unauthored half-moons. Authored-circle and raised-only
+  display variants were tried and rejected (circles ignored constraints/
+  segments; raised-only was interpretive). ENGINE RULE (user-verified
+  in-game): placement blocking persists on a cliff's footprint even
+  after ramps/later terrain replace it - an RM generation bug the model
+  reproduces: cliff_band persists under land-area overrides (water still
+  clears it; flooded ground blocks as water). IW goldens regenerated
+  (+91 CLIFF cells). Honest limitation: engine-placed cliff areas draw
+  nothing; partial authored rims (cliffEdge fractions) draw full.
 - Post-gate (2026-08-09): RECT-MAP COORDINATE RULE pinned — the engine
   reads RIVER waypoints as fractions of SIZE_X on both axes, while trade
   routes/areas/objects use true per-axis fractions. Evidence: wwcanyon
