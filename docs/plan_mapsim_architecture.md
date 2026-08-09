@@ -728,6 +728,15 @@ work before G6 exits.
   zp_z_cookislands missing lobby .xml.
 - Layer 3 (grouping rectangles + object icons over the simmap) is now
   UNBLOCKED per the G6 exit criteria.
+- Post-gate (2026-08-09): cliff OUTLINES honor the raised/flat
+  discriminator — only cliff_raised() areas (real walls) draw; a
+  cliffHeight-0 cliff area is a PAINTED passable ledge (crownlands/elbe
+  "shoreLine" banks and bridge docks authored cliffEdge(1,1.0) height 0)
+  whose crescent claims previously rendered as half-moons and
+  river-length bank outlines. Their texture is Layer-3 paint. Partial
+  authored rims (edgeMountain cliffEdge(4,0.12) = 48% of the border,
+  ramps through canyon walls) stay nominal-full-outline — engine
+  randomizes gap positions, not statically placeable.
 - Post-gate (2026-08-09): RECT-MAP COORDINATE RULE pinned — the engine
   reads RIVER waypoints as fractions of SIZE_X on both axes, while trade
   routes/areas/objects use true per-axis fractions. Evidence: wwcanyon
