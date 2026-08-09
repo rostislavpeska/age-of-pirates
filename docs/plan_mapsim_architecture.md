@@ -728,6 +728,18 @@ work before G6 exits.
   zp_z_cookislands missing lobby .xml.
 - Layer 3 (grouping rectangles + object icons over the simmap) is now
   UNBLOCKED per the G6 exit criteria.
+- Post-gate (2026-08-09): RECT-MAP COORDINATE RULE pinned — the engine
+  reads RIVER waypoints as fractions of SIZE_X on both axes, while trade
+  routes/areas/objects use true per-axis fractions. Evidence: wwcanyon
+  (400x560) authors its river to z=1.4 = exactly 560 m, minimap confirms
+  full span with the t=0.5 ford at map center; routes reach the far edge
+  with plain 1.0; vanilla rect maps (Baja/Pampas/Colorado/Araucania)
+  keep routes 0..1. The lost Discord author formula, reconstructed:
+  z_authored = z_wanted_frac * sizeZ / sizeX (rivers only). bridge.py
+  converts river waypoints to per-axis fractions; overshoot past the
+  edge clips like in-game (paris Seine). Measurement toolbox note: rect
+  minimaps crop with longer side = disc diameter (ratio 1.0), square
+  minimaps at 0.833.
 - Post-gate (2026-08-09): E7 resolved and fixed (see B5) —
   field.connected_influence_segments drops anchor-disconnected segment
   clusters at all four consumption sites (shapes, seeds, water features,

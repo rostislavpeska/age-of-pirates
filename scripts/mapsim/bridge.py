@@ -233,8 +233,20 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
                             "r2_m": grid.area_frac_to_radius_m(r2) if r2 else 0.0})
 
     rivers = []
+    # RECT-MAP RIVER UNITS (pinned 2026-08-09): the engine reads river
+    # waypoints as fractions of SIZE_X on BOTH axes, while trade routes
+    # (and areas/objects) use true per-axis fractions. Evidence: wwcanyon
+    # (400x560) authors its river to z=1.4 — exactly 1.4*400 = 560 m, the
+    # far z edge — and its minimap shows the full-span river with the
+    # t=0.5 ford at map center; its trade routes reach the far edge with
+    # a plain 1.0. Author-side formula: z_authored = z_wanted * sizeZ/sizeX.
+    # Converting here keeps every consumer in uniform per-axis fractions;
+    # square maps are a no-op. Waypoints past the map edge (paris' Seine
+    # at converted z=1.81) simply clip at the edge, like in-game.
+    z_over_x = ((ex.map_size_x / ex.map_size_z)
+                if ex.map_size_z else 1.0)
     for r in ex.rivers.values():
-        wps = [(float(x), float(z)) for x, z in r.waypoints
+        wps = [(float(x), float(z) * z_over_x) for x, z in r.waypoints
                if not isinstance(x, Tainted) and not isinstance(z, Tainted)]
         width = _num(r.width)
         if len(wps) >= 2 and width is not None:
