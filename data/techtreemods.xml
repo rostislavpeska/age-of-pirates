@@ -14914,7 +14914,7 @@
   <tech name="zpAmericanExpeditionaryFleet" type="Normal">
     <dbid>40564</dbid>
     <displaynameid>301420</displaynameid>
-    <cost resourcetype="Gold">1500.0000</cost>
+    <cost resourcetype="Gold">1700.0000</cost>
     <researchpoints>30.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\consulate_american_fleet.png</icon>
@@ -14925,7 +14925,7 @@
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data2" amount="1.00" amount2="12.00" subtype="FreeHomeCityUnitShipped" unittype="deSteamer" unittype2="zpNatConRegular" relativity="Absolute">
+      <effect type="Data2" amount="1.00" amount2="12.00" subtype="FreeHomeCityUnitShipped" unittype="zpDispatchVessel" unittype2="zpNatConRegular" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -35749,7 +35749,7 @@
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\prince_elector_small.png</icon>
+    <icon>resources\images\icons\techs\historical_maps\british_small.png</icon>
     <rollovertextid>400228</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
@@ -35793,7 +35793,7 @@
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\prince_elector_small.png</icon>
+    <icon>resources\images\icons\techs\historical_maps\british_small.png</icon>
     <rollovertextid>400230</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
@@ -35837,7 +35837,7 @@
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\prince_elector_small.png</icon>
+    <icon>resources\images\icons\techs\historical_maps\british_small.png</icon>
     <rollovertextid>400232</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
@@ -35881,7 +35881,7 @@
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\prince_elector_small.png</icon>
+    <icon>resources\images\icons\techs\tech_usa.png</icon>
     <rollovertextid>400234</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
@@ -35931,7 +35931,7 @@
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\prince_elector_small.png</icon>
+    <icon>resources\images\icons\techs\tech_usa.png</icon>
     <rollovertextid>400236</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
@@ -35958,10 +35958,10 @@
       <effect type="CommandAdd" tech="zpSansculotteSpiritRevolution" page="2" column="3">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpSansculotteLoyalDistricts" page="2" column="4">
+      <effect type="CommandAdd" tech="zpSansculotteLoyalDistricts" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpSansculotteImperialExpedition" page="2" column="5">
+      <effect type="CommandAdd" tech="zpSansculotteImperialExpedition" page="2" column="4">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="CommandAdd" tech="zpGalerieLafayette" page="2" column="6">
@@ -35981,7 +35981,7 @@
     <cost resourcetype="Gold">250.0000</cost>
     <researchpoints>1.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\prince_elector_small.png</icon>
+    <icon>resources\images\icons\techs\tech_usa.png</icon>
     <rollovertextid>400238</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPConsulateTech</flag>
@@ -36594,7 +36594,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <prereqs>
-      <techstatus status="Active">Industrialize</techstatus>
+      <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
       <effect type="Data2" amount="1.00" amount2="24.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCRegalShip" unittype2="ypConsulateVoltigeur" relativity="Absolute">
