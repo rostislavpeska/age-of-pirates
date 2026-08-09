@@ -77,6 +77,63 @@ class Catalog:
         return [self._entries[h].name for h in hits]
 
 
+def _install_groupings_dir() -> Optional[Path]:
+    """Vanilla grouping XMLs live as LOOSE files in the game install —
+    same detection as mapcheck.locate / the bar-extract skill."""
+    import os
+    env = os.environ.get("AOE3DE_GAME")
+    if env and (Path(env) / "RandMaps" / "groupings").is_dir():
+        return Path(env) / "RandMaps" / "groupings"
+    for cand in (
+        Path("C:/Program Files (x86)/Steam/steamapps/common/AoE3DE/Game"),
+        Path("C:/Program Files/Steam/steamapps/common/AoE3DE/Game"),
+        Path("D:/Steam/steamapps/common/AoE3DE/Game"),
+        Path("D:/SteamLibrary/steamapps/common/AoE3DE/Game"),
+    ):
+        d = cand / "RandMaps" / "groupings"
+        if d.is_dir():
+            return d
+    return None
+
+
+@lru_cache(maxsize=None)
+def grouping_dimensions_m(stem: str) -> Optional[tuple]:
+    """(width_m, height_m) of a grouping's footprint box, from the
+    <width>/<height> header of its XML. Those values are TILES (evidence:
+    pirate_village05 declares 9x11 while its unit posx/posz span +-8.7 /
+    -9.8 METERS — they only fit the box at 2 m per tile), so meters =
+    value * 2. The box is CENTERED on the placement anchor. Mod file
+    wins over the vanilla loose file; None when neither exists or the
+    header is missing."""
+    candidates = []
+    if MOD_GROUPINGS_DIR.is_dir():
+        candidates.append(MOD_GROUPINGS_DIR / f"{stem}.xml")
+        for f in MOD_GROUPINGS_DIR.glob("*.xml"):
+            if f.stem.lower() == stem.lower():
+                candidates.append(f)
+    inst = _install_groupings_dir()
+    if inst is not None:
+        candidates.append(inst / f"{stem}.xml")
+        for f in inst.glob("*.xml"):
+            if f.stem.lower() == stem.lower():
+                candidates.append(f)
+    for path in candidates:
+        if not path.is_file():
+            continue
+        try:
+            root = ET.parse(path).getroot()
+        except ET.ParseError:
+            continue
+        w, h = root.findtext("width"), root.findtext("height")
+        if w is None or h is None:
+            continue
+        try:
+            return (float(w) * 2.0, float(h) * 2.0)
+        except ValueError:
+            continue
+    return None
+
+
 class GroupingCatalog(Catalog):
     def resolve(self, ref: str) -> List[Entry]:
         """All stems the reference can select in-game: prefix match,

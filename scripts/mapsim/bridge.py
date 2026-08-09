@@ -196,6 +196,7 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
             active=True,
             classes=list(d.classes),
             footprint_tiles=None,
+            is_grouping=d.is_grouping,
         ))
 
     trade_routes = []

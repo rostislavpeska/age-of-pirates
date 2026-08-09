@@ -124,3 +124,16 @@ class TestKindDispatch:
 
     def test_cached_identity(self):
         assert catalog("proto") is catalog("proto")
+
+
+class TestGroupingDimensions:
+    def test_pirate_village_dimensions(self):
+        # pirate_village05.xml declares width 9 / height 11 (TILES): its
+        # unit posx/posz span +-8.7 / -9.8 METERS, which only fits the
+        # box at 2 m per tile -> 18 x 22 m.
+        from scripts.refdata.catalogs import grouping_dimensions_m
+        assert grouping_dimensions_m("pirate_village05") == (18.0, 22.0)
+
+    def test_unknown_stem_is_none(self):
+        from scripts.refdata.catalogs import grouping_dimensions_m
+        assert grouping_dimensions_m("no_such_grouping_xyz") is None

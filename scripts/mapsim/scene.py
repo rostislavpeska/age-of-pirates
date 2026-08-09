@@ -206,6 +206,8 @@ class ResolvedPlacement:
     active: bool                    # False when a mode gate (when) excluded it
     classes: List[str] = field(default_factory=list)
     footprint_tiles: Optional[Tuple[float, float]] = None
+    is_grouping: bool = False       # rmCreateGrouping def: proto = the
+                                    # grouping FILE reference (prefix-variant)
 
 
 @dataclass

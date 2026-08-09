@@ -379,6 +379,35 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
                         transform=ax.transAxes)
         break
 
+    # Layer 3, groupings: the REAL footprint box as a 50% dark rectangle.
+    # Dimensions from the grouping XML header (<width>/<height> in TILES,
+    # x2 = meters; box centered on the anchor — refdata.grouping_dimensions_m
+    # carries the evidence). Prefix-variant references use the FIRST variant
+    # (sorted) as the deterministic nominal; axis-aligned nominal box
+    # (grouping rotation is runtime). Runtime anchors stay undrawable.
+    from matplotlib.patches import Rectangle as _Rect
+    from scripts.refdata import catalog as _catalog
+    from scripts.refdata.catalogs import grouping_dimensions_m
+    _gcat = _catalog("grouping")
+    for p in rs.placements:
+        if not p.is_grouping or p.x is None or p.z is None:
+            continue
+        hits = _gcat.resolve(str(p.proto))
+        dims = None
+        for e in hits:
+            dims = grouping_dimensions_m(e.name)
+            if dims is not None:
+                break
+        if dims is None:
+            continue
+        w_f = dims[0] / grid.size_x_m
+        h_f = dims[1] / grid.size_z_m
+        r = _Rect((p.x - w_f / 2.0, p.z - h_f / 2.0), w_f, h_f,
+                  facecolor="#000000", alpha=0.5, edgecolor="#e8e0d0",
+                  linewidth=0.6, zorder=5.5)
+        r.set_transform(tr)
+        ax.add_patch(r)
+
     undrawable = 0
     for p in rs.placements:
         f = verdicts.get(p.name)
@@ -432,6 +461,9 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
         Line2D([], [], marker="s", linestyle="", color=WATER, label="deep water"),
         Line2D([], [], linestyle="-", linewidth=1.6, color=CLIFF_EDGE,
                label="cliff area border (as built)"),
+        Line2D([], [], marker="s", linestyle="", color="#000000", alpha=0.5,
+               markeredgecolor="#e8e0d0",
+               label="grouping footprint (real size)"),
         Line2D([], [], color="#8f9aa8", linestyle=":", label="invisible mask"),
         Line2D([], [], marker="o", linestyle="", color=VERDICT_COLOR["OK"], label="OK"),
         Line2D([], [], marker="o", linestyle="", color=VERDICT_COLOR["EDGE_RISK"], label="warning"),
