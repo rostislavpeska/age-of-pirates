@@ -126,14 +126,28 @@ class TestKindDispatch:
         assert catalog("proto") is catalog("proto")
 
 
-class TestGroupingDimensions:
-    def test_pirate_village_dimensions(self):
-        # pirate_village05.xml declares width 9 / height 11 (TILES): its
-        # unit posx/posz span +-8.7 / -9.8 METERS, which only fits the
-        # box at 2 m per tile -> 18 x 22 m.
-        from scripts.refdata.catalogs import grouping_dimensions_m
-        assert grouping_dimensions_m("pirate_village05") == (18.0, 22.0)
+class TestGroupingFootprint:
+    def test_pirate_village_footprint(self):
+        # Footprint = units' bounding box in METERS relative to the anchor
+        # (the <width>/<height> header is the editor canvas, NOT the
+        # footprint - forensic 2026-08-10). pirate_village05's units span
+        # x -7.02..8.74, z -9.79..6.11.
+        from scripts.refdata.catalogs import grouping_footprint_m
+        fp = grouping_footprint_m("pirate_village05")
+        assert fp is not None
+        x0, z0, x1, z1 = fp
+        # full-file bounds: x -8.14..8.74, z -9.79..9.80
+        assert -8.2 < x0 < -8.0 and 8.6 < x1 < 8.8
+        assert -9.9 < z0 < -9.7 and 9.7 < z1 < 9.9
+
+    def test_offcenter_compound(self):
+        # City_State_Inventors_01: canvas 46x50 but the real compound is
+        # ~49x51 m offset east - the header would have drawn 92x100.
+        from scripts.refdata.catalogs import grouping_footprint_m
+        x0, z0, x1, z1 = grouping_footprint_m("City_State_Inventors_01")
+        assert 45 < (x1 - x0) < 55 and 45 < (z1 - z0) < 55
+        assert x0 > -15   # off-center: nothing 46 m west of the anchor
 
     def test_unknown_stem_is_none(self):
-        from scripts.refdata.catalogs import grouping_dimensions_m
-        assert grouping_dimensions_m("no_such_grouping_xyz") is None
+        from scripts.refdata.catalogs import grouping_footprint_m
+        assert grouping_footprint_m("no_such_grouping_xyz") is None

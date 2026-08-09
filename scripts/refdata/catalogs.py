@@ -97,14 +97,17 @@ def _install_groupings_dir() -> Optional[Path]:
 
 
 @lru_cache(maxsize=None)
-def grouping_dimensions_m(stem: str) -> Optional[tuple]:
-    """(width_m, height_m) of a grouping's footprint box, from the
-    <width>/<height> header of its XML. Those values are TILES (evidence:
-    pirate_village05 declares 9x11 while its unit posx/posz span +-8.7 /
-    -9.8 METERS — they only fit the box at 2 m per tile), so meters =
-    value * 2. The box is CENTERED on the placement anchor. Mod file
-    wins over the vanilla loose file; None when neither exists or the
-    header is missing."""
+def grouping_footprint_m(stem: str) -> Optional[tuple]:
+    """(min_x, min_z, max_x, max_z) of a grouping's REAL footprint in
+    METERS, relative to the placement anchor: the bounding box of its
+    units' posx/posz. The <width>/<height> header is the EDITOR CANVAS,
+    not the footprint — City_State_Inventors_01 declares 46x50 while its
+    143 units occupy 49x51 m offset +14 m east of the anchor (forensic
+    2026-08-10; trusting the header drew 92x100 boxes). Unit positions
+    are meters in every file checked (pirate_village05 +-9.8 m compound,
+    Player_Fort_CivilWar 35x31 m, Railway_Station 27x31 m). Mod file
+    wins over the vanilla loose file; None when the file is missing or
+    empty."""
     candidates = []
     if MOD_GROUPINGS_DIR.is_dir():
         candidates.append(MOD_GROUPINGS_DIR / f"{stem}.xml")
@@ -124,13 +127,18 @@ def grouping_dimensions_m(stem: str) -> Optional[tuple]:
             root = ET.parse(path).getroot()
         except ET.ParseError:
             continue
-        w, h = root.findtext("width"), root.findtext("height")
-        if w is None or h is None:
-            continue
-        try:
-            return (float(w) * 2.0, float(h) * 2.0)
-        except ValueError:
-            continue
+        xs, zs = [], []
+        for u in root.iter("unit"):
+            px, pz = u.get("posx"), u.get("posz")
+            if px is None or pz is None:
+                continue
+            try:
+                xs.append(float(px))
+                zs.append(float(pz))
+            except ValueError:
+                continue
+        if xs:
+            return (min(xs), min(zs), max(xs), max(zs))
     return None
 
 

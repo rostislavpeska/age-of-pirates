@@ -32,6 +32,12 @@ RING = "#e0e6ee"
 LAND = "#6f9e57"           # buildable ground incl. cliff interiors
 CLIFF_EDGE = "#7a5230"     # the impassable rim band (spawn killer)
 
+# Per-placement verdict dots are DISABLED (user 2026-08-10: "get rid of
+# the green and red dots — we'll use it later but semantically, not
+# randomly"). The verdict engine still runs (findings/reports keep them);
+# only the scatter markers are gated. Flip to re-enable.
+DRAW_VERDICT_MARKERS = False
+
 # The game's eight player colors (lobby order — user screenshot
 # 2026-08-10): blue, red, yellow, purple, green, cyan, orange, pink.
 # Player-owned groupings/objects tint with these at 50% alpha; gaia
@@ -401,22 +407,27 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
     # nominal. Runtime anchors stay undrawable.
     from matplotlib.patches import Rectangle as _Rect
     from scripts.refdata import catalog as _catalog
-    from scripts.refdata.catalogs import grouping_dimensions_m
+    from scripts.refdata.catalogs import grouping_footprint_m
     _gcat = _catalog("grouping")
     boxed_groupings = set()
 
     def _grouping_dims(p):
         for e in _gcat.resolve(str(p.proto)):
-            dims = grouping_dimensions_m(e.name)
-            if dims is not None:
-                return dims
+            fp = grouping_footprint_m(e.name)
+            if fp is not None:
+                return fp
         return None
 
-    def _draw_gbox(px, pz, dims, player_id=None):
+    def _draw_gbox(px, pz, fp, player_id=None):
+        # fp = units' bounding box in meters RELATIVE TO THE ANCHOR —
+        # off-center compounds (Inventors +14 m east) draw where the
+        # buildings actually stand, not centered on the anchor.
         face = PLAYER_COLORS.get(player_id, "#000000")
-        w_f = dims[0] / grid.size_x_m
-        h_f = dims[1] / grid.size_z_m
-        r = _Rect((px - w_f / 2.0, pz - h_f / 2.0), w_f, h_f,
+        x0 = px + fp[0] / grid.size_x_m
+        z0 = pz + fp[1] / grid.size_z_m
+        w_f = (fp[2] - fp[0]) / grid.size_x_m
+        h_f = (fp[3] - fp[1]) / grid.size_z_m
+        r = _Rect((x0, z0), w_f, h_f,
                   facecolor=face, alpha=0.5, edgecolor="#e8e0d0",
                   linewidth=0.6, zorder=5.5)
         r.set_transform(tr)
@@ -448,14 +459,18 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
         verdict = f.verdict if f else "OK"
         color = VERDICT_COLOR.get(verdict, "#3fae4c")
         if p.kind == "in_area":
-            for ref in p.area_refs:
-                a = next((a for a in rs.areas if a.name == ref), None)
-                if a is not None and a.x is not None:
-                    ax.scatter([a.x], [a.z], marker="+", s=40, color=color,
-                               linewidths=1.0, zorder=6, alpha=0.8, transform=tr)
+            if DRAW_VERDICT_MARKERS:
+                for ref in p.area_refs:
+                    a = next((a for a in rs.areas if a.name == ref), None)
+                    if a is not None and a.x is not None:
+                        ax.scatter([a.x], [a.z], marker="+", s=40, color=color,
+                                   linewidths=1.0, zorder=6, alpha=0.8,
+                                   transform=tr)
             continue
         if p.x is None:
             undrawable += 1
+            continue
+        if not DRAW_VERDICT_MARKERS:
             continue
         marker = KIND_MARKER.get(p.kind, "o")
         hollow = p.approx or verdict == "UNKNOWN_RUNTIME"
@@ -502,11 +517,13 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
                alpha=0.5, markeredgecolor="#e8e0d0",
                label="player-owned grouping (player color)"),
         Line2D([], [], color="#8f9aa8", linestyle=":", label="invisible mask"),
+    ] + ([
         Line2D([], [], marker="o", linestyle="", color=VERDICT_COLOR["OK"], label="OK"),
         Line2D([], [], marker="o", linestyle="", color=VERDICT_COLOR["EDGE_RISK"], label="warning"),
         Line2D([], [], marker="o", linestyle="", color=VERDICT_COLOR["OFF_MAP"], label="error"),
         Line2D([], [], marker="o", linestyle="", markerfacecolor="none",
                color="#9aa0a6", label="runtime / approx"),
+    ] if DRAW_VERDICT_MARKERS else []) + [
         Line2D([], [], color=ROUTE, linestyle="--", label="trade route"),
         Line2D([], [], color=RING, linestyle="--", label="player ring"),
     ]
