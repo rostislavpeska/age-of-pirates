@@ -144,6 +144,10 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
             classes=list(d.classes),
             footprint_tiles=None,
             is_grouping=d.is_grouping,
+            player_id=next((int(pl) for pl in p.players
+                            if not isinstance(pl, Tainted)
+                            and isinstance(pl, (int, float))
+                            and 1 <= int(pl) <= 8), None),
         ))
 
     trade_routes = []

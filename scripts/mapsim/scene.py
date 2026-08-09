@@ -208,6 +208,7 @@ class ResolvedPlacement:
     footprint_tiles: Optional[Tuple[float, float]] = None
     is_grouping: bool = False       # rmCreateGrouping def: proto = the
                                     # grouping FILE reference (prefix-variant)
+    player_id: Optional[int] = None  # owning player 1-8; None/0 = gaia
 
 
 @dataclass

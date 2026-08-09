@@ -32,6 +32,15 @@ RING = "#e0e6ee"
 LAND = "#6f9e57"           # buildable ground incl. cliff interiors
 CLIFF_EDGE = "#7a5230"     # the impassable rim band (spawn killer)
 
+# The game's eight player colors (lobby order — user screenshot
+# 2026-08-10): blue, red, yellow, purple, green, cyan, orange, pink.
+# Player-owned groupings/objects tint with these at 50% alpha; gaia
+# (player 0 / no player) stays neutral dark.
+PLAYER_COLORS = {
+    1: "#2035e0", 2: "#e02020", 3: "#e8d020", 4: "#8020a0",
+    5: "#20a040", 6: "#20c8d8", 7: "#e88820", 8: "#e060b0",
+}
+
 VERDICT_COLOR = {
     "OK": "#3fae4c",
     "INACTIVE": "#9aa0a6",
@@ -403,11 +412,12 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
                 return dims
         return None
 
-    def _draw_gbox(px, pz, dims):
+    def _draw_gbox(px, pz, dims, player_id=None):
+        face = PLAYER_COLORS.get(player_id, "#000000")
         w_f = dims[0] / grid.size_x_m
         h_f = dims[1] / grid.size_z_m
         r = _Rect((px - w_f / 2.0, pz - h_f / 2.0), w_f, h_f,
-                  facecolor="#000000", alpha=0.5, edgecolor="#e8e0d0",
+                  facecolor=face, alpha=0.5, edgecolor="#e8e0d0",
                   linewidth=0.6, zorder=5.5)
         r.set_transform(tr)
         ax.add_patch(r)
@@ -424,10 +434,10 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
                     if a.x is None:
                         continue
                     if a.name == ref or (a.count > 1 and ref.startswith(a.name)):
-                        _draw_gbox(a.x, a.z, dims)
+                        _draw_gbox(a.x, a.z, dims, p.player_id)
                         boxed_groupings.add(id(p))
         elif p.x is not None and p.z is not None:
-            _draw_gbox(p.x, p.z, dims)
+            _draw_gbox(p.x, p.z, dims, p.player_id)
             boxed_groupings.add(id(p))
 
     undrawable = 0
@@ -487,7 +497,10 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
                label="cliff area border (as built)"),
         Line2D([], [], marker="s", linestyle="", color="#000000", alpha=0.5,
                markeredgecolor="#e8e0d0",
-               label="grouping footprint (real size)"),
+               label="grouping footprint (real size; gaia)"),
+        Line2D([], [], marker="s", linestyle="", color=PLAYER_COLORS[1],
+               alpha=0.5, markeredgecolor="#e8e0d0",
+               label="player-owned grouping (player color)"),
         Line2D([], [], color="#8f9aa8", linestyle=":", label="invisible mask"),
         Line2D([], [], marker="o", linestyle="", color=VERDICT_COLOR["OK"], label="OK"),
         Line2D([], [], marker="o", linestyle="", color=VERDICT_COLOR["EDGE_RISK"], label="warning"),

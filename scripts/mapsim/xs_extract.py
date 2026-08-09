@@ -578,11 +578,11 @@ TRIGGER_FUNCS = {
     "rmTriggerID", "rmAddTriggerEffectParam",
 }
 
-# Runtime-only reads -> Tainted. (rmPlayerLocX/ZFraction are NOT here:
-# they resolve to the deterministic NOMINAL ring position — see
-# ring_positions and the call handler.)
+# Runtime-only reads -> Tainted. (rmPlayerLocX/ZFraction and
+# rmGetTradeRouteWayPoint are NOT here: ring nominals and the authored
+# route polyline make them deterministic — see the call handlers.)
 TAINTED_FUNCS = {
-    "rmFindClosestPointVector", "rmGetTradeRouteWayPoint",
+    "rmFindClosestPointVector",
     "rmGetPlayerCiv",
     "rmGetPlayerName", "ypIsAsian",
     "rmGetNumberUnitsPlaced", "rmGetHomeCityLevel",
@@ -939,6 +939,38 @@ class Extractor:
 
         if name in NOOP_FUNCS or name in TRIGGER_FUNCS:
             return 0
+        if name == "rmGetTradeRouteWayPoint":
+            # Deterministic: the point at arc-length fraction t along the
+            # AUTHORED route polyline, as a METERS vector (the engine's
+            # return convention — callers wrap it in rmX/ZMetersToFraction).
+            # This is the anchor chain for train stations / route sockets /
+            # bridges (wwcanyon, bluemountains, civilwar): waypoint ->
+            # stopper -> readback -> grouping. Nominal: the real route
+            # snaps to 16 m blocks around this polyline.
+            handle = args[0] if args else None
+            t = args[1] if len(args) > 1 else None
+            wps = res.route_waypoints.get(handle) if not isinstance(handle, Tainted) else None
+            if (wps and not isinstance(t, Tainted) and t is not None
+                    and res.map_size_x and res.map_size_z
+                    and not any(isinstance(c, Tainted) for p_ in wps for c in p_)):
+                import math as _m
+                pts = [(float(x) * res.map_size_x, float(z) * res.map_size_z)
+                       for x, z in wps]
+                if len(pts) >= 2:
+                    segs = list(zip(pts, pts[1:]))
+                    L = sum(_m.hypot(x2 - x1, z2 - z1)
+                            for (x1, z1), (x2, z2) in segs)
+                    d = min(max(float(t), 0.0), 1.0) * L
+                    for (x1, z1), (x2, z2) in segs:
+                        sl = _m.hypot(x2 - x1, z2 - z1)
+                        if d <= sl and sl > 0:
+                            f = d / sl
+                            return ("vec", x1 + (x2 - x1) * f, 0.0,
+                                    z1 + (z2 - z1) * f)
+                        d -= sl
+                    return ("vec", pts[-1][0], 0.0, pts[-1][1])
+            return Tainted("rmGetTradeRouteWayPoint(...)")
+
         if name in ("rmPlayerLocXFraction", "rmPlayerLocZFraction"):
             # Deterministic NOMINAL ring position for the player (the same
             # doctrine as loc_player areas) — unlocks per-player content
