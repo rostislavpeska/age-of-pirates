@@ -19,84 +19,13 @@ def _num(v: Any) -> Optional[float]:
 
 
 def _ring_positions(ex: Extraction) -> Optional[list]:
-    """Nominal player positions from the first rmPlacePlayersCircular call.
-
-    The section arc [s0, s1] (wrapping when s1 <= s0) is split into N equal
-    slots, one player at each slot start — reproduces the 2-player
-    "(0.375, 0.374)" idiom placing players on opposite sides. Angle
-    convention 0 deg = +X CCW (the render's uncalibrated E3 assumption).
-    Deterministic; positions are NOMINAL (variance ignored), so consumers
-    must mark results approx.
-    """
-    import math
-    evs = [e for e in ex.player_events
-           if e.get("call") == "rmPlacePlayersCircular"
-           and _num(e.get("min")) is not None and _num(e.get("max")) is not None]
-    if not evs:
-        # Explicit rmPlacePlayer coordinates (Civil War's 2-player branch):
-        # first concrete (x, z) per player wins — mirror-variant branches
-        # repeat the same pair swapped, so first-seen is the deterministic
-        # nominal choice. Only a COMPLETE 1..n set is usable, because
-        # loc_player areas index this list by player number.
-        placed = {}
-        for e in ex.player_events:
-            if e.get("call") != "rmPlacePlayer":
-                continue
-            p = e.get("player")
-            x, z = _num(e.get("x")), _num(e.get("z"))
-            if (p is not None and not isinstance(p, Tainted)
-                    and x is not None and z is not None):
-                placed.setdefault(int(p), (x, z))
-        n = ex.scenario.players
-        if all(k in placed for k in range(1, n + 1)):
-            return [placed[k] for k in range(1, n + 1)]
-        return None
-
-    def _sec(ev):
-        sec = ev.get("section")
-        if sec and _num(sec[0]) is not None and _num(sec[1]) is not None:
-            s0, s1 = float(sec[0]), float(sec[1])
-        else:
-            s0, s1 = 0.0, 1.0
-        if s1 <= s0:
-            s1 += 1.0
-        return s0, s1
-
-    n = ex.scenario.players
-    n_teams = max(1, ex.scenario.teams)
-    # Team-sectioned placement (Hawaii: rmSetPlacementTeam + a section per
-    # team): each team's players spread across THEIR OWN arc. First event
-    # per team id wins (branch duplicates repeat the same pairs).
-    team_evs = {}
-    for e in evs:
-        t = e.get("team")
-        if t is not None and not isinstance(t, Tainted) and int(t) not in team_evs:
-            team_evs[int(t)] = e
-    out = []
-    if len(team_evs) >= 2:
-        members = {t: [k for k in range(n) if k * n_teams // n == t]
-                   for t in range(n_teams)}
-        for k in range(n):
-            t = k * n_teams // n
-            ev = team_evs.get(t, evs[0])
-            mn, mx = _num(ev.get("min")), _num(ev.get("max"))
-            r = (mn + mx) / 2.0
-            s0, s1 = _sec(ev)
-            mem = members[t]
-            idx = mem.index(k)
-            frac = s0 + (s1 - s0) * idx / max(1, len(mem))
-            th = 2.0 * math.pi * frac
-            out.append((0.5 + r * math.cos(th), 0.5 + r * math.sin(th)))
-        return out
-    ev = evs[0]
-    mn, mx = _num(ev.get("min")), _num(ev.get("max"))
-    r = (mn + mx) / 2.0
-    s0, s1 = _sec(ev)
-    arc = s1 - s0
-    for k in range(n):
-        t = 2.0 * math.pi * (s0 + arc * k / n)
-        out.append((0.5 + r * math.cos(t), 0.5 + r * math.sin(t)))
-    return out
+    """Nominal player positions — single implementation lives in
+    xs_extract.ring_positions (shared with the in-extractor
+    rmPlayerLocX/ZFraction resolution). Positions are NOMINAL (variance
+    ignored), so consumers must mark results approx."""
+    from scripts.mapsim.xs_extract import ring_positions
+    return ring_positions(ex.player_events, ex.scenario.players,
+                          ex.scenario.teams)
 
 
 def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
@@ -168,12 +97,30 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
 
     defs_by_line = {d.line: d for d in ex.defs.values()}
     placements: List[ResolvedPlacement] = []
-    seen_lines = set()
+    # Dedup key includes the ANCHOR: branch duplicates (same def, same
+    # spot) collapse, but per-player loop instances survive — Cook
+    # Islands creates ONE "player native" def line whose loop places six
+    # villages at six ring-resolved TC anchors (2026-08-10).
+    seen = set()
     for p in ex.placements:
-        if p.def_line in seen_lines:
+        key = (p.def_line,
+               round(p.x, 5) if isinstance(p.x, (int, float)) else None,
+               round(p.z, 5) if isinstance(p.z, (int, float)) else None,
+               tuple(p.area_refs))
+        if key in seen:
             continue
-        seen_lines.add(p.def_line)
+        seen.add(key)
         d: XDef = defs_by_line.get(p.def_line) or XDef(name=p.name, line=p.def_line)
+        # Grouping file reference: a literal string, or the literal PREFIX
+        # of a runtime concat ("maori_hawaii_0"+rand) — the engine resolves
+        # variants by prefix, so the prefix is the deterministic identity.
+        if d.is_grouping:
+            if isinstance(d.proto, str):
+                proto_ref = d.proto
+            else:
+                proto_ref = getattr(d.proto, "str_prefix", None) or ""
+        else:
+            proto_ref = str(d.proto or d.name)
         x, z = _num(p.x), _num(p.z)
         runtime = None
         if isinstance(p.x, Tainted) or isinstance(p.z, Tainted):
@@ -182,7 +129,7 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
         count = p.count if not isinstance(p.count, Tainted) else \
             (int(p.count.hi) if p.count.hi is not None else 1)
         placements.append(ResolvedPlacement(
-            name=d.name, line=p.def_line, proto=str(d.proto or d.name), kind=kind,
+            name=d.name, line=p.def_line, proto=proto_ref, kind=kind,
             x=x, z=z, runtime_expr=runtime, approx=False,
             min_dist_m=_num(d.min_dist) or 0.0,
             max_dist_m=_num(d.max_dist) or 0.0,

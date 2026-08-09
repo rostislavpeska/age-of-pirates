@@ -41,14 +41,22 @@ class ExtractError(Exception):
 
 
 class Tainted:
-    """Runtime-dependent value; propagates through arithmetic and concat."""
+    """Runtime-dependent value; propagates through arithmetic and concat.
 
-    __slots__ = ("expr", "lo", "hi")
+    str_prefix: when the value is a string concat whose LEFT part is a
+    literal ("maori_hawaii_0" + rmRandInt(1,5)), the literal survives here —
+    the engine's grouping variant mechanic resolves by prefix, so the
+    prefix IS the deterministically knowable identity of the reference."""
 
-    def __init__(self, expr: str, lo: Optional[float] = None, hi: Optional[float] = None):
+    __slots__ = ("expr", "lo", "hi", "str_prefix")
+
+    def __init__(self, expr: str, lo: Optional[float] = None,
+                 hi: Optional[float] = None,
+                 str_prefix: Optional[str] = None):
         self.expr = expr
         self.lo = lo
         self.hi = hi
+        self.str_prefix = str_prefix
 
     def __repr__(self) -> str:
         return f"?{self.expr}"
@@ -570,14 +578,93 @@ TRIGGER_FUNCS = {
     "rmTriggerID", "rmAddTriggerEffectParam",
 }
 
-# Runtime-only reads -> Tainted.
+# Runtime-only reads -> Tainted. (rmPlayerLocX/ZFraction are NOT here:
+# they resolve to the deterministic NOMINAL ring position — see
+# ring_positions and the call handler.)
 TAINTED_FUNCS = {
     "rmFindClosestPointVector", "rmGetTradeRouteWayPoint",
-    "rmPlayerLocXFraction", "rmPlayerLocZFraction", "rmGetPlayerCiv",
+    "rmGetPlayerCiv",
     "rmGetPlayerName", "ypIsAsian",
     "rmGetNumberUnitsPlaced", "rmGetHomeCityLevel",
     "rmGetGroupingInstanceUnitByType",
 }
+
+
+def ring_positions(player_events, players: int, teams: int):
+    """Deterministic NOMINAL player positions from the placement calls
+    recorded so far — the single implementation shared by the bridge and
+    the in-extractor rmPlayerLocX/ZFraction resolution (per-player content
+    like Cook Islands' Maori villages anchors on TC readbacks of these).
+
+    Circular placement: the section arc splits into equal slots (per-team
+    arcs honored, Hawaii). Fallback: explicit rmPlacePlayer literal
+    coordinates, first concrete pair per player, only when players 1..n
+    are all present (Civil War's 2-player branch). None when neither
+    form exists. Positions are NOMINAL — variance is ignored."""
+    import math
+
+    def _n(v):
+        return None if v is None or isinstance(v, Tainted) else float(v)
+
+    evs = [e for e in player_events
+           if e.get("call") == "rmPlacePlayersCircular"
+           and _n(e.get("min")) is not None and _n(e.get("max")) is not None]
+    if not evs:
+        placed = {}
+        for e in player_events:
+            if e.get("call") != "rmPlacePlayer":
+                continue
+            p = e.get("player")
+            x, z = _n(e.get("x")), _n(e.get("z"))
+            if (p is not None and not isinstance(p, Tainted)
+                    and x is not None and z is not None):
+                placed.setdefault(int(p), (x, z))
+        if all(k in placed for k in range(1, players + 1)):
+            return [placed[k] for k in range(1, players + 1)]
+        return None
+
+    def _sec(ev):
+        sec = ev.get("section")
+        if sec and _n(sec[0]) is not None and _n(sec[1]) is not None:
+            s0, s1 = float(sec[0]), float(sec[1])
+        else:
+            s0, s1 = 0.0, 1.0
+        if s1 <= s0:
+            s1 += 1.0
+        return s0, s1
+
+    n = players
+    n_teams = max(1, teams)
+    team_evs = {}
+    for e in evs:
+        t = e.get("team")
+        if t is not None and not isinstance(t, Tainted) and int(t) not in team_evs:
+            team_evs[int(t)] = e
+    out = []
+    if len(team_evs) >= 2:
+        members = {t: [k for k in range(n) if k * n_teams // n == t]
+                   for t in range(n_teams)}
+        for k in range(n):
+            t = k * n_teams // n
+            ev = team_evs.get(t, evs[0])
+            mn, mx = _n(ev.get("min")), _n(ev.get("max"))
+            r = (mn + mx) / 2.0
+            s0, s1 = _sec(ev)
+            mem = members[t]
+            idx = mem.index(k)
+            frac = s0 + (s1 - s0) * idx / max(1, len(mem))
+            th = 2.0 * math.pi * frac
+            out.append((0.5 + r * math.cos(th), 0.5 + r * math.sin(th)))
+        return out
+    ev = evs[0]
+    mn, mx = _n(ev.get("min")), _n(ev.get("max"))
+    r = (mn + mx) / 2.0
+    s0, s1 = _sec(ev)
+    arc = s1 - s0
+    for k in range(n):
+        t = 2.0 * math.pi * (s0 + arc * k / n)
+        out.append((0.5 + r * math.cos(t), 0.5 + r * math.sin(t)))
+    return out
 
 
 class Extractor:
@@ -775,7 +862,16 @@ class Extractor:
         a = self.eval(a_expr)
         b = self.eval(b_expr)
         if isinstance(a, Tainted) or isinstance(b, Tainted):
-            return Tainted(f"({a!r} {op} {b!r})")
+            # literal-string + runtime -> keep the literal as str_prefix
+            # (grouping variant refs like "maori_hawaii_0"+rand resolve
+            # deterministically by prefix)
+            prefix = None
+            if op == "+":
+                if isinstance(a, str):
+                    prefix = a + (b.str_prefix or "")
+                elif isinstance(a, Tainted) and a.str_prefix is not None:
+                    prefix = a.str_prefix
+            return Tainted(f"({a!r} {op} {b!r})", str_prefix=prefix)
         av = isinstance(a, tuple) and len(a) == 4 and a[0] == "vec"
         bv = isinstance(b, tuple) and len(b) == 4 and b[0] == "vec"
         if av or bv:
@@ -843,6 +939,21 @@ class Extractor:
 
         if name in NOOP_FUNCS or name in TRIGGER_FUNCS:
             return 0
+        if name in ("rmPlayerLocXFraction", "rmPlayerLocZFraction"):
+            # Deterministic NOMINAL ring position for the player (the same
+            # doctrine as loc_player areas) — unlocks per-player content
+            # anchored on TC/player-loc readbacks (Cook Islands Maori
+            # villages, starting trees). Tainted only when no placement
+            # call has run yet or the player index is runtime/invalid.
+            p = args[0] if args else None
+            if not isinstance(p, Tainted) and p is not None:
+                ring = ring_positions(res.player_events, sc.players, sc.teams)
+                k = int(p)
+                if ring is not None and 1 <= k <= len(ring):
+                    x, z = ring[k - 1]
+                    return x if name == "rmPlayerLocXFraction" else z
+            return Tainted(f"{name}(...)")
+
         if name in TAINTED_FUNCS:
             return Tainted(f"{name}(...)")
 
@@ -1318,7 +1429,10 @@ class Extractor:
                 players=[player], x=x, z=z, count=count,
                 variant="|".join(self.variant_stack)))
             return 1
-        if name == "rmPlaceObjectDefInArea":
+        if name in ("rmPlaceObjectDefInArea", "rmPlaceGroupingInArea"):
+            # Third grouping placement method (user 2026-08-10): random
+            # placement INSIDE an area — cookislands underwater patches,
+            # melanesia villages. Same signature as the object-def form.
             d = res.defs.get(args[0])
             if d is None:
                 return 0

@@ -27,6 +27,12 @@
       "match": "Controler",
       "why": "controllers stand on water that later build steps turn into land; in-game they resolve (re-triage at G6)",
       "evidence": "tortuga-plays-2026-08-09"
+    },
+    {
+      "check": "SIM:CONSTRAINT_UNSAT",
+      "match": "player ",
+      "why": "per-player starting defs (TC/silver/deer) anchor on nominal ring positions that sit on pre-island water - the same engine-grown-islands cause as the G2 entry; in-game they spawn on the islands (surfaced 2026-08-10 when ring-nominal anchors started resolving per player)",
+      "evidence": "tortuga-plays-2026-08-09"
     }
   ]
 }

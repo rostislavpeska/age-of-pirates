@@ -379,37 +379,61 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
                         transform=ax.transAxes)
         break
 
-    # Layer 3, groupings: the REAL footprint box as a 50% dark rectangle.
-    # Dimensions from the grouping XML header (<width>/<height> in TILES,
-    # x2 = meters; box centered on the anchor — refdata.grouping_dimensions_m
-    # carries the evidence). Prefix-variant references use the FIRST variant
-    # (sorted) as the deterministic nominal; axis-aligned nominal box
-    # (grouping rotation is runtime). Runtime anchors stay undrawable.
+    # Layer 3, groupings: the REAL footprint box as a 50% dark rectangle —
+    # and ONLY the box, never a verdict dot on top (user directive
+    # 2026-08-10). Dimensions from the grouping XML header (<width>/
+    # <height> in TILES, x2 = meters; box centered on the anchor —
+    # refdata.grouping_dimensions_m carries the evidence). All three
+    # placement methods draw: rmPlaceGroupingAtLoc / the city-state
+    # rmPlaceGroupingInstanceAtLoc (anchor box), and rmPlaceGroupingInArea
+    # (nominal box at the target area's anchor — the engine randomizes
+    # inside the area). Prefix-variant references (literal+random concat)
+    # resolve by their literal prefix, first variant = deterministic
+    # nominal. Runtime anchors stay undrawable.
     from matplotlib.patches import Rectangle as _Rect
     from scripts.refdata import catalog as _catalog
     from scripts.refdata.catalogs import grouping_dimensions_m
     _gcat = _catalog("grouping")
-    for p in rs.placements:
-        if not p.is_grouping or p.x is None or p.z is None:
-            continue
-        hits = _gcat.resolve(str(p.proto))
-        dims = None
-        for e in hits:
+    boxed_groupings = set()
+
+    def _grouping_dims(p):
+        for e in _gcat.resolve(str(p.proto)):
             dims = grouping_dimensions_m(e.name)
             if dims is not None:
-                break
-        if dims is None:
-            continue
+                return dims
+        return None
+
+    def _draw_gbox(px, pz, dims):
         w_f = dims[0] / grid.size_x_m
         h_f = dims[1] / grid.size_z_m
-        r = _Rect((p.x - w_f / 2.0, p.z - h_f / 2.0), w_f, h_f,
+        r = _Rect((px - w_f / 2.0, pz - h_f / 2.0), w_f, h_f,
                   facecolor="#000000", alpha=0.5, edgecolor="#e8e0d0",
                   linewidth=0.6, zorder=5.5)
         r.set_transform(tr)
         ax.add_patch(r)
 
+    for p in rs.placements:
+        if not p.is_grouping:
+            continue
+        dims = _grouping_dims(p)
+        if dims is None:
+            continue
+        if p.kind == "in_area":
+            for ref in p.area_refs:
+                for a in rs.areas:
+                    if a.x is None:
+                        continue
+                    if a.name == ref or (a.count > 1 and ref.startswith(a.name)):
+                        _draw_gbox(a.x, a.z, dims)
+                        boxed_groupings.add(id(p))
+        elif p.x is not None and p.z is not None:
+            _draw_gbox(p.x, p.z, dims)
+            boxed_groupings.add(id(p))
+
     undrawable = 0
     for p in rs.placements:
+        if id(p) in boxed_groupings:
+            continue    # the box IS the marker — no dot mixing
         f = verdicts.get(p.name)
         verdict = f.verdict if f else "OK"
         color = VERDICT_COLOR.get(verdict, "#3fae4c")

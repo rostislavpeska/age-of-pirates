@@ -223,6 +223,12 @@ def static_checks(path: Path, scenario) -> RunResult:
         if d.is_grouping:
             if isinstance(d.proto, str) and d.proto:
                 grouping_refs.setdefault(d.proto, d.line)
+            else:
+                # runtime concat with a literal prefix ("maori_hawaii_0"+
+                # rand): the prefix must still resolve to >=1 variant file
+                pref = getattr(d.proto, "str_prefix", None)
+                if pref:
+                    grouping_refs.setdefault(pref, d.line)
             continue
         for proto, _cnt in d.items:
             if isinstance(proto, str) and proto:
