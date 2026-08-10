@@ -385,7 +385,7 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
                 c.set_transform(tr)
                 ax.add_patch(c)
             sections = []
-            if "section" in branch:
+            if branch.get("section"):     # None when no rmSetPlacementSection
                 sections = [branch["section"]]
             elif branch.get("variants"):
                 sections = list(branch["variants"][0].get("sections", {}).values())
