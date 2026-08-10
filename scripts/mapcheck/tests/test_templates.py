@@ -32,7 +32,7 @@ class TestAreaClassProbe:
     def test_correct_probes_green(self):
         ctx = _ctx("two_islands")
         out = run_template("area_class_probe", {"probes": [
-            {"probe": [0.85, 0.5], "class": "LAND", "why": "east island"},
+            {"probe": [0.5, 0.85], "class": "LAND", "why": "north island"},
             {"probe": [0.5, 0.5], "class": "DEEP", "why": "open sea"},
         ]}, ctx)
         assert out == []
@@ -40,7 +40,7 @@ class TestAreaClassProbe:
     def test_wrong_probe_red(self):
         ctx = _ctx("two_islands")
         out = run_template("area_class_probe", {"probes": [
-            {"probe": [0.85, 0.5], "class": "DEEP",
+            {"probe": [0.5, 0.85], "class": "DEEP",
              "why": "deliberately wrong"},
         ]}, ctx)
         assert len(out) == 1 and out[0].severity == "FAIL"

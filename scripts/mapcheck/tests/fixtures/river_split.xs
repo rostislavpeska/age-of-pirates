@@ -9,9 +9,11 @@ void main(void) {
    rmSetWorldCircleConstraint(true);
    rmPlacePlayersCircular(0.35, 0.35, 0);
 
+   // Horizontal river between the ring's P2 north/south anchors (engine
+   // ring convention pinned 2026-08-10: fraction 0 = NORTH, clockwise).
    int riverID = rmRiverCreate(-1, "Amazon Rainforest River Muddy", 4, 4, 8, 8);
-   rmRiverAddWaypoint(riverID, 0.5, 0.0);
-   rmRiverAddWaypoint(riverID, 0.5, 1.0);
+   rmRiverAddWaypoint(riverID, 0.0, 0.5);
+   rmRiverAddWaypoint(riverID, 1.0, 0.5);
    rmRiverBuild(riverID);
 
    rmSetStatusText("", 1.0);

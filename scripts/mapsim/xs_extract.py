@@ -596,19 +596,45 @@ def ring_positions(player_events, players: int, teams: int):
     the in-extractor rmPlayerLocX/ZFraction resolution (per-player content
     like Cook Islands' Maori villages anchors on TC readbacks of these).
 
-    Circular placement: the section arc splits into equal slots (per-team
-    arcs honored, Hawaii). Fallback: explicit rmPlacePlayer literal
-    coordinates, first concrete pair per player, only when players 1..n
-    are all present (Civil War's 2-player branch). None when neither
-    form exists. Positions are NOMINAL — variance is ignored."""
+    ENGINE ANGLE CONVENTION (pinned 2026-08-10; the "Civil War forts"
+    bug): circle fraction s sits at position angle 90° − s·360° — s=0 at
+    authored NORTH (+z), increasing CLOCKWISE toward +x:
+        pos(s) = (0.5 + r·sin(2πs), 0.5 + r·cos(2πs))
+    i.e. the x/z SWAP of the naive math convention. Full rings (0..1)
+    produce the same uniform point set either way, which is why only
+    SECTIONED team maps exposed the transpose. Evidence: zpunknown's
+    8-way bay ladder pairs each bay compass point with the player
+    section opposite it — exact fit for this formula and no other;
+    zpcivilwar's P2 branch places both players literally at z=0.25
+    (south, mirrored about x=0.5, minimap-confirmed) and its P4+
+    sections (0.28-0.4 / 0.6-0.72) reproduce that design only under
+    this formula; the official RMS doc's minimap clock agrees.
+
+    rmPlacePlayersLine: players evenly spaced from (x1,z1) to (x2,z2),
+    ENDPOINTS INCLUDED, in lobby order (zpbarrierreef widens its line
+    span with player count to hold spacing — interior-only slots would
+    make its 2-player lines absurdly tight). Per-team lines honored
+    (bluemountains/paris shores).
+
+    Fallback: explicit rmPlacePlayer literal coordinates, first concrete
+    pair per player, only when players 1..n are all present (Civil War's
+    2-player branch). None when no form exists. Positions are NOMINAL —
+    variance/variation args are ignored."""
     import math
 
     def _n(v):
         return None if v is None or isinstance(v, Tainted) else float(v)
 
-    evs = [e for e in player_events
-           if e.get("call") == "rmPlacePlayersCircular"
-           and _n(e.get("min")) is not None and _n(e.get("max")) is not None]
+    def _is_circ(e):
+        return (e.get("call") == "rmPlacePlayersCircular"
+                and _n(e.get("min")) is not None and _n(e.get("max")) is not None)
+
+    def _is_line(e):
+        return (e.get("call") == "rmPlacePlayersLine"
+                and all(_n(e.get(k)) is not None
+                        for k in ("x1", "z1", "x2", "z2")))
+
+    evs = [e for e in player_events if _is_circ(e) or _is_line(e)]
     if not evs:
         placed = {}
         for e in player_events:
@@ -633,6 +659,17 @@ def ring_positions(player_events, players: int, teams: int):
             s1 += 1.0
         return s0, s1
 
+    def _pos(ev, idx, count):
+        if ev.get("call") == "rmPlacePlayersCircular":
+            r = (_n(ev.get("min")) + _n(ev.get("max"))) / 2.0
+            s0, s1 = _sec(ev)
+            th = 2.0 * math.pi * (s0 + (s1 - s0) * idx / max(1, count))
+            return (0.5 + r * math.sin(th), 0.5 + r * math.cos(th))
+        x1, z1 = _n(ev.get("x1")), _n(ev.get("z1"))
+        x2, z2 = _n(ev.get("x2")), _n(ev.get("z2"))
+        t = 0.5 if count <= 1 else idx / (count - 1.0)
+        return (x1 + (x2 - x1) * t, z1 + (z2 - z1) * t)
+
     n = players
     n_teams = max(1, teams)
     team_evs = {}
@@ -647,23 +684,20 @@ def ring_positions(player_events, players: int, teams: int):
         for k in range(n):
             t = k * n_teams // n
             ev = team_evs.get(t, evs[0])
-            mn, mx = _n(ev.get("min")), _n(ev.get("max"))
-            r = (mn + mx) / 2.0
-            s0, s1 = _sec(ev)
             mem = members[t]
-            idx = mem.index(k)
-            frac = s0 + (s1 - s0) * idx / max(1, len(mem))
-            th = 2.0 * math.pi * frac
-            out.append((0.5 + r * math.cos(th), 0.5 + r * math.sin(th)))
+            out.append(_pos(ev, mem.index(k), len(mem)))
         return out
     ev = evs[0]
-    mn, mx = _n(ev.get("min")), _n(ev.get("max"))
-    r = (mn + mx) / 2.0
-    s0, s1 = _sec(ev)
-    arc = s1 - s0
+    if ev.get("call") == "rmPlacePlayersCircular":
+        # full/sectioned single ring: n equal slots, no endpoint doubling
+        r = (_n(ev.get("min")) + _n(ev.get("max"))) / 2.0
+        s0, s1 = _sec(ev)
+        for k in range(n):
+            th = 2.0 * math.pi * (s0 + (s1 - s0) * k / n)
+            out.append((0.5 + r * math.sin(th), 0.5 + r * math.cos(th)))
+        return out
     for k in range(n):
-        t = 2.0 * math.pi * (s0 + arc * k / n)
-        out.append((0.5 + r * math.cos(t), 0.5 + r * math.sin(t)))
+        out.append(_pos(ev, k, n))
     return out
 
 
@@ -1536,7 +1570,16 @@ class Extractor:
                 "call": name, "player": args[0], "x": args[1], "z": args[2],
                 "variant": "|".join(self.variant_stack)})
             return 0
-        if name in ("rmPlacePlayersSquare", "rmPlacePlayersLine", "rmPlacePlayersRiver"):
+        if name == "rmPlacePlayersLine":
+            # (x1, z1, x2, z2[, distVariation, spacingVariation]) — the
+            # variations are noise around the line; nominal ignores them.
+            res.player_events.append({
+                "call": name,
+                "x1": args[0], "z1": args[1], "x2": args[2], "z2": args[3],
+                "team": self._pp_state["team"],
+                "variant": "|".join(self.variant_stack)})
+            return 0
+        if name in ("rmPlacePlayersSquare", "rmPlacePlayersRiver"):
             res.player_events.append({"call": name, "args": args,
                                       "variant": "|".join(self.variant_stack)})
             return 0

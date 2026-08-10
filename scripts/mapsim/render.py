@@ -38,6 +38,12 @@ CLIFF_EDGE = "#7a5230"     # the impassable rim band (spawn killer)
 # only the scatter markers are gated. Flip to re-enable.
 DRAW_VERDICT_MARKERS = False
 
+# Forensic overlay (env MAPSIM_DEBUG_ANCHORS=1): a magenta '+' at every
+# grouping ANCHOR, through the same view transform as the boxes — one
+# look separates "extraction coordinate wrong" from "box drawn wrong".
+import os as _os
+DEBUG_ANCHOR_CROSSES = _os.environ.get("MAPSIM_DEBUG_ANCHORS") == "1"
+
 # The game's eight player colors (lobby order — user screenshot
 # 2026-08-10): blue, red, yellow, purple, green, cyan, orange, pink.
 # Player-owned groupings/objects tint with these at 50% alpha; gaia
@@ -432,6 +438,9 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
                   linewidth=0.6, zorder=5.5)
         r.set_transform(tr)
         ax.add_patch(r)
+        if DEBUG_ANCHOR_CROSSES:
+            ax.scatter([px], [pz], marker="+", s=90, color="#ff00d0",
+                       linewidths=1.6, zorder=9, transform=tr)
 
     for p in rs.placements:
         if not p.is_grouping:

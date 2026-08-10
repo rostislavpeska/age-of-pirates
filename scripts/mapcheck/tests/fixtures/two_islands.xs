@@ -9,15 +9,17 @@ void main(void) {
    rmSetWorldCircleConstraint(true);
    rmPlacePlayersCircular(0.35, 0.35, 0);
 
-   int isle1 = rmCreateArea("isle east");
-   rmSetAreaLocation(isle1, 0.85, 0.5);
+   // Engine ring convention (pinned 2026-08-10): fraction 0 = NORTH,
+   // clockwise — a P2 full ring lands players at (0.5,0.85)/(0.5,0.15).
+   int isle1 = rmCreateArea("isle north");
+   rmSetAreaLocation(isle1, 0.5, 0.85);
    rmSetAreaSize(isle1, 0.05, 0.05);
    rmSetAreaBaseHeight(isle1, 4.0);
    rmSetAreaCoherence(isle1, 1.0);
    rmBuildArea(isle1);
 
-   int isle2 = rmCreateArea("isle west");
-   rmSetAreaLocation(isle2, 0.15, 0.5);
+   int isle2 = rmCreateArea("isle south");
+   rmSetAreaLocation(isle2, 0.5, 0.15);
    rmSetAreaSize(isle2, 0.05, 0.05);
    rmSetAreaBaseHeight(isle2, 4.0);
    rmSetAreaCoherence(isle2, 1.0);

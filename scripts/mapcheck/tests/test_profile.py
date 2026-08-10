@@ -168,6 +168,8 @@ class TestPilotProfiles:
         assert fails == [], [f"{f.check}: {f.message}" for f in fails]
         known = [f for f in res.findings
                  if f.message.startswith("[known:")]
-        # G2 player anchor + 2 controllers + 3 per-player starting defs
-        # (TC/silver/deer — resolve to ring nominals since 2026-08-10)
-        assert len(known) == 6
+        # 2 controllers + 3 per-player starting defs (TC/silver/deer).
+        # The G2 anchor entry stopped firing at P2 when the ring adopted
+        # the true engine convention (north-zero clockwise, 2026-08-10)
+        # — it still fires at P7, so the profile entry stays.
+        assert len(known) == 5

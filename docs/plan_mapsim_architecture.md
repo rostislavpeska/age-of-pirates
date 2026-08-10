@@ -764,3 +764,29 @@ work before G6 exits.
   render overlay); Australia's Uluru now builds as ONE massif at its
   anchor matching the minimap; zpaustralia goldens locked; 279 tests
   green with IW goldens byte-identical.
+- Post-gate (2026-08-10): PLAYER RING CONVENTION pinned (the "Civil War
+  forts" bug; user diagnosis "X is z and vice versa"). Circle fraction s
+  sits at position angle 90° − s·360° — s=0 at authored NORTH (+z),
+  increasing CLOCKWISE toward +x: pos(s) = (0.5 + r·sin 2πs,
+  0.5 + r·cos 2πs), the x/z swap of the naive math convention. Full
+  rings (section 0..1) produce the same uniform point set either way,
+  so only SECTIONED team maps exposed the transpose — why the bug read
+  as "mostly Civil War". Evidence: (1) zpunknown's bay ladder pairs 8
+  bay compass locations with the player section placed opposite — the
+  formula fits all 8 exactly and no other convention does; (2)
+  zpcivilwar's P2 branch places both players literally at z=0.25
+  (south, mirrored about x=0.5, minimap forts confirm) and its P4+
+  sections (0.28-0.4 / 0.6-0.72) reproduce that design only under this
+  formula; (3) the official RMS doc's clock reading agrees in rotation
+  direction. Same commit models rmPlacePlayersLine: per-team lines,
+  players evenly spaced ENDPOINTS INCLUDED in lobby order
+  (zpbarrierreef widens its line span with player count to hold
+  spacing — interior-only slots would collapse its 2-player lines);
+  unlocks bluemountains/paris player anchors. Implementation:
+  xs_extract.ring_positions (single shared site). Grouping-side
+  verification the same day: Civil War's 11 grouping anchors proved
+  correct end-to-end by magenta-cross debug overlay
+  (MAPSIM_DEBUG_ANCHORS=1) + sub-pixel affine fit + 50% minimap blend —
+  the Inventors socket landed within 2 m of its authored posx/posz.
+  Open question (nominal): slot phase within a section arc (slot-start
+  vs slot-center) — needs an in-game probe.
