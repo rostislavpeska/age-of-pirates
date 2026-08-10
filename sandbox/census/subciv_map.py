@@ -47,35 +47,15 @@ def proto_subciv() -> dict:
     return out
 
 
-def _grouping_file(stem: str):
-    for d in (MOD_GROUPINGS, INSTALL_GROUPINGS):       # mod wins
-        if not d.is_dir():
-            continue
-        p = d / f"{stem}.xml"
-        if p.is_file():
-            return p
-        for f in d.glob("*.xml"):
-            if f.stem.lower() == stem.lower():
-                return f
-    return None
-
-
 @lru_cache(maxsize=None)
 def grouping_sockets(stem: str) -> tuple:
-    """Socket unit names inside a grouping's XML (units whose name contains
-    'Socket'). Tuple for cacheability."""
-    p = _grouping_file(stem)
-    if p is None:
-        return ()
-    try:
-        root = ET.parse(p).getroot()
-    except ET.ParseError:
-        return ()
+    """Socket unit names inside a grouping's XML (units whose proto contains
+    'socket'). Built on the general reader (grouping_reader.read_grouping)."""
+    from grouping_reader import units_of
     socks = []
-    for u in root.iter("unit"):
-        t = (u.text or "").strip()
-        if "socket" in t.lower() and t not in socks:
-            socks.append(t)
+    for u in units_of(stem, "socket"):
+        if u["proto"] not in socks:
+            socks.append(u["proto"])
     return tuple(socks)
 
 

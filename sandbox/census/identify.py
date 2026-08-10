@@ -25,16 +25,23 @@ sys.path.insert(0, str(HERE))
 sys.path.insert(0, str(REPO))
 
 from subciv_map import grouping_sockets, proto_subciv     # noqa: E402
+from grouping_reader import read_grouping                 # noqa: E402
 
 
 def identify(grouping_name: str) -> dict:
-    """The chain for one grouping name.
-    Returns {name, sockets: [(socket, 'native:<subciv>' | 'trade socket')],
-             verdict: 'native:<subciv>' | 'trade socket' | 'no socket'}."""
+    """Identity of one grouping.
+
+    PRIMARY identity is the FILE NAME itself (self-explanatory in most
+    cases: 'pirate village 01', 'Hussite_Camp01') — that's what the .xs
+    grouping REFERENCE points at, and it's reliable. The socket -> subciv
+    chain is the TIEBREAKER for when the filename is ambiguous, and it
+    also states native-vs-trade definitively.
+
+    Returns {name, file_found, sockets:[(socket, class)], verdict}."""
     sub = proto_subciv()
+    reader = read_grouping(grouping_name)
     socks = grouping_sockets(grouping_name)
-    detail = []
-    natives = []
+    detail, natives = [], []
     for s in socks:
         if s in sub:
             detail.append((s, f"native: {sub[s]}"))
@@ -46,8 +53,10 @@ def identify(grouping_name: str) -> dict:
     elif socks:
         verdict = "TRADE / structure socket (no native subciv)"
     else:
-        verdict = "no socket unit in grouping"
-    return {"name": grouping_name, "sockets": detail, "verdict": verdict}
+        verdict = "no socket unit (identity = filename only)"
+    return {"name": grouping_name,
+            "file_found": bool(reader),
+            "sockets": detail, "verdict": verdict}
 
 
 def _map_groupings(xs_path: Path):
