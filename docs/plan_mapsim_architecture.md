@@ -790,3 +790,99 @@ work before G6 exits.
   the Inventors socket landed within 2 m of its authored posx/posz.
   Open question (nominal): slot phase within a section arc (slot-start
   vs slot-center) — needs an in-game probe.
+
+## Part H — Constraint-reactive grouping placement (planned 2026-08-10)
+
+User reports driving this (all verified forensically the same day):
+- WW Canyon: multiple groupings stacked at one spot, ignoring
+  constraints. Root cause: its four Sufi villages are ALL anchored at
+  (0.5,0.5) with a 20 m..half-map search annulus and mutual avoidance
+  (avoidSufi = 70 m from "SocketApache" — a unit INSIDE each placed
+  village); the maltese labs / jewish villages use 70 m annuli with
+  mountain/route/water constraints. The engine scatters them through
+  the feasible region; the sim stamps them all at the anchor.
+- Tortuga: Carib villages "missing". Root cause: rmPlaceGroupingInArea
+  boxes draw at the target AREA'S RAW ANCHOR — tortuga's islands
+  anchor at map edges ((1.0,0.7), (0.3,0.0), (0.1,0.9)) so the boxes
+  pin half-off the edge instead of inside the island's grown cells.
+  (Extraction itself is fine: refs resolve, footprints exist, install
+  groupings dir found.)
+- Paris: spawn chance not considered — jesuitMaltese = rmRandInt(1,2)
+  is Tainted, the both-arms policy places maltese AND jesuit at BOTH
+  mirror spots (4 boxes where the game rolls 2).
+
+Repo-wide constraint-kind inventory for grouping constraints (script
+scan 2026-08-10): type_distance 240, terrain 201, class_distance 89,
+pie 50, terrain_max 41, route_distance 16, area_avoid 8, area_max 1.
+29 maps place groupings with a non-zero max-distance annulus.
+
+H1. Constraint spec completeness (xs_extract).
+    Extract specs for the kinds groupings actually use and that the
+    solver must evaluate but the constraint dict does not yet carry:
+    rmCreateTypeDistanceConstraint -> {kind: type_distance, type,
+    distance_m}; rmCreateAreaConstraint -> {kind: area_avoid, area
+    name} (verify avoid-vs-inside semantics against the guide before
+    coding); rmCreateTerrainMaxDistanceConstraint -> {kind:
+    terrain_max, ...}; rmCreateAreaMaxDistanceConstraint. Groupings
+    keep their constraint name lists (already carried end-to-end).
+
+H2. Placed-type registry (new, small module).
+    {unit_type_lower: [(x_m, z_m), ...]} accumulated in BUILD ORDER:
+    trade-route socket defs, per-player starting defs at ring nominals
+    (TCs), object defs with concrete anchors, and every SOLVED
+    grouping's units (type = element text in the grouping XML, position
+    = solved anchor + unit offset). Type matching must consult protoy
+    UnitTypes so abstract names ("townCenter", "sockettraderoute")
+    match concrete protos; unresolvable types mark the constraint
+    UNEVALUATED (honest), never silently satisfied.
+
+H3. Deterministic annulus solver (field/new solver module).
+    Placements processed in SCRIPT ORDER. For each grouping placement:
+    max_dist == 0 -> anchor as today (Civil War unchanged). Else
+    search the annulus [min_dist, max_dist] around the anchor for the
+    NEAREST cell satisfying ALL evaluable constraints (terrain, class,
+    route, pie, box, area_avoid, type_distance vs the registry);
+    tie-break clockwise from north (the pinned ring convention).
+    in_area placements search INSIDE the area's claimed cell set
+    (nearest to the area centroid) under the same constraints — fixes
+    tortuga. Point feasibility only — grouping XMLs carry
+    ignoreplacementrules=1, so no invented footprint clearance. On
+    success: solved (x,z), approx flag when moved, deposit unit types
+    into the registry AND footprint cells into rmAddGroupingToClass
+    classes (so avoidMountains-style class constraints react to
+    earlier groupings). On failure: stay at anchor, CONSTRAINT_UNSAT
+    (existing finding), red-edged box. Deterministic throughout; the
+    engine's random scatter inside the feasible region is the honest
+    limitation (tether display, H5).
+    NOMINAL RULE DECISION: nearest-feasible-to-anchor (mathematical
+    precision doctrine; alternative considered and rejected: fake
+    low-discrepancy scatter).
+    NOTE ordering: solver runs AFTER terrain build (needs the class
+    grid) but replays placement calls in authored order.
+
+H4. Spawn-chance variants (bridge selection rule).
+    Placements already carry the tainted-if variant path
+    (XPlacement.variant). New nominal rule: for each tainted if, KEEP
+    placements only from the NOMINAL arm — rand conditions resolve by
+    rolling lo (rmRandInt(1,2) -> 1), matching the "first variant =
+    deterministic nominal" precedent from prefix resolution; state
+    stays last-write-wins (unchanged). Paris then shows exactly one
+    monastery per spot (maltese west / jesuit east, the lo-roll).
+    Alternative arms are dropped from display but counted in reports
+    ("N alternative-variant placements suppressed").
+
+H5. Render.
+    Box at the SOLVED spot (colors unchanged). When solved != anchor:
+    thin dotted tether anchor->box + tiny hollow anchor dot, so
+    engine-side scatter uncertainty stays visible. UNSAT = red edge at
+    anchor. Legend entries for tether and unsat.
+
+H6. Verification gate.
+    Unit tests: annulus (min ring honored, nearest chosen, clockwise
+    tie-break), type-registry chains (4 same-anchor mosques end >=70 m
+    apart), in_area interior solve, variant lo-roll selection,
+    max_dist=0 maps byte-identical (civilwar goldens). Integration:
+    wwcanyon (no overlapping mosque/lab boxes, labs off the
+    mountains), tortuga (villages inside their islands), paris (one
+    monastery per spot). Full suite + 13-map re-render + minimap
+    compare + artifact republish.
