@@ -820,14 +820,23 @@ deployed zp_z_tortuga_historical.xs are different variants; mismatched
 sources make intent-vs-reality lie. census_run auto-locates the
 deployed .xs by the editor's map-type name.
 
-HONEST LIMITATION: the fingerprint is grouping-specific, so
-subciv-conditional content reads as NEVER even when healthy — elbe
-requests Hansa/Elector/Hussite groupings but P4T2 rolls DE minor-states
-(Tengri/Habsburg/Hanover), so those fingerprints are absent by design.
-The tool is DEFINITIVE for UNCONDITIONAL groupings (caribs: NEVER =
-real bug) and ADVISORY for conditional ones (NEVER = confirm the
-config triggers it). Distinguishing the two is the human step the
-profile bootstrap will capture.
+DETERMINISTIC NATIVE IDENTIFICATION (subciv_map.py, user recipe
+2026-08-10) — resolves the conditional-vs-bug ambiguity WITHOUT human
+judgment. Grouping NAMES are unreliable; instead: grouping XML (mod
+game/randmaps/groupings over install RandMaps/groupings) -> its socket
+unit -> protoy/protomods <subciv>. A socket WITH <subciv> is a NATIVE
+grouping (conditional on that subciv rolling); a socket WITHOUT <subciv>
+is a STRUCTURE (harbour/port — NOT subciv-gated). So:
+  - NATIVE absent  = that subciv didn't roll at this config (expected).
+  - STRUCTURE absent = not explained by the roll -> a script-level
+    condition (water-only etc.) or a real failure — the one to check.
+Verified: tortuga rolls Caribs (native, requested + present); its
+Maltese/Pirate natives are pool members that didn't roll at P4T2 (not
+bugs); its harbours (zpSPCPortSocket, no subciv) flag as structures
+absent — worth a look. elbe rolls Hanover/Habsburg/Tengri; its
+Hansa/Elector/Hussite/pirate natives correctly read as "subciv not
+rolled", zero false alarms. census_judge now reports SUBCIVS ROLLED +
+native-vs-structure classification.
 
 Remaining (next increments):
 - Robust map selection (nav recipes are hand-calibrated; a new map
