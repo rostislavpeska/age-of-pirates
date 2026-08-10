@@ -791,6 +791,58 @@ work before G6 exits.
   Open question (nominal): slot phase within a section arc (slot-start
   vs slot-center) — needs an in-game probe.
 
+## Part I — ENGINE-IN-THE-LOOP testing (explored 2026-08-10; user pivot)
+
+User verdict after Part H: the simulator keeps producing "technically
+feasible but visibly wrong" spots (tortuga caribs solved onto map-edge
+slivers next to their edge-anchored islands; canyon spots can never
+match the engine's RANDOM picks point-wise). The nominal-anchor doctrine
+cannot predict random placement — only the engine can say what actually
+spawns. Pivot: automate "edit map -> engine generates -> census what
+spawned -> assert -> repeat".
+
+Findings (local evidence, this machine):
+- No headless/CLI map generation exists in DE; legacy startRandomGame
+  style args are undocumented/dead in DE. UI automation is required for
+  unattended generation.
+- THE GOLD PATH: the DE scenario EDITOR generates a map from any RMS
+  (mode 28 Editor -> mode 7 RandomMapGame observed in Age3Log.txt with
+  a parameterized MAP CODE line: '000_independence_war/4/26313/...' —
+  generation parameters incl. an apparent seed are logged per run) and
+  SAVES it as .age3Yscn — a complete spawn census on disk. The user
+  already works this way by hand (Crownlands G2/G3/Groupings, Hansa
+  Groupings scenarios in the profile folder).
+- .age3Yscn format: 'l33t' + zlib (repo already handles l33t), inner
+  binary = chunked node tree ('BG' root + u32 size, 'FH' file header
+  with build string; UTF-16 header strings) with proto NAMES as plain
+  length-prefixed ASCII string tables inside. Family of the legacy
+  AoE3Ed-documented format. A targeted census parser (proto, x, z,
+  owner per unit) is a bounded 1-2 session task, validated against the
+  user's own known hand-built scenarios + the protoy catalog.
+- AI census channel rejected: aiEcho/AI logging reported broken in DE;
+  triggers have no reliable file channel. Savegame parsing (.age3Ysav)
+  possible later with the same parser family but scenario saves are
+  smaller and state-free.
+
+Planned build (I1-I3):
+- I1 CENSUS PARSER + JUDGE: parse .age3Yscn -> unit census; new
+  mapcheck entry (--census file [--profile map.json]) running the SAME
+  template assertions (grouping_spawn_complete etc.) against REAL
+  engine output. Workflow: user generates+saves in the editor (their
+  existing habit), one command judges it. This alone removes the
+  eyeball-the-editor step.
+- I2 GENERATION DRIVER: AutoHotkey/pywinauto drives the running
+  editor: Generate Random Map (script/players/size) -> save scenario
+  (map_seed_N name) -> repeat N times unattended; Python file-watcher
+  parses each save and accumulates per-grouping spawn-rate statistics
+  across seeds (REAL spawn-chance measurement). Investigate MAP CODE
+  seed reproducibility for pinned-seed regression tests.
+- I3 FULL LOOP: watch the map .xs; on change deploy-copy (two-build
+  rules), drive N generations, parse, assert, report. The user's
+  requested "edit -> test spawns -> edit" cycle, unattended.
+- mapsim's role narrows to the instant pre-check layer (syntax,
+  structure, constraint sanity); the engine loop is ground truth.
+
 ## Part H — Constraint-reactive grouping placement (BUILT 2026-08-10)
 
 Build outcome (same day; 287 tests green): gsolve.py implements the
