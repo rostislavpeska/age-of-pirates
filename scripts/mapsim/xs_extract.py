@@ -48,15 +48,22 @@ class Tainted:
     the engine's grouping variant mechanic resolves by prefix, so the
     prefix IS the deterministically knowable identity of the reference."""
 
-    __slots__ = ("expr", "lo", "hi", "str_prefix")
+    __slots__ = ("expr", "lo", "hi", "str_prefix", "nominal_bool")
 
     def __init__(self, expr: str, lo: Optional[float] = None,
                  hi: Optional[float] = None,
-                 str_prefix: Optional[str] = None):
+                 str_prefix: Optional[str] = None,
+                 nominal_bool: Optional[bool] = None):
         self.expr = expr
         self.lo = lo
         self.hi = hi
         self.str_prefix = str_prefix
+        # For tainted COMPARISONS: the outcome under the deterministic
+        # nominal roll (rand values collapse to their LO bound — the same
+        # "first variant is the nominal" rule as prefix resolution). None
+        # when either side has no nominal scalar. Drives spawn-chance
+        # branch selection (plan Part H4, the Paris double-monastery bug).
+        self.nominal_bool = nominal_bool
 
     def __repr__(self) -> str:
         return f"?{self.expr}"
@@ -455,6 +462,7 @@ class XPlacement:
     area_refs: List[str] = dfield(default_factory=list)
     count: Any = 1
     variant: str = ""
+    nominal: bool = True               # False = alternative spawn-chance arm
 
 
 @dataclass
@@ -713,6 +721,9 @@ class Extractor:
         self.constraint_handles: Dict[int, str] = {}
         self.routes: Dict[int, bool] = {}
         self.variant_stack: List[str] = []
+        # Depth of enclosing NON-nominal tainted-if arms; placements
+        # recorded at depth > 0 carry nominal=False (Part H4).
+        self.alt_depth: int = 0
         self._pp_state: Dict[str, Any] = {"team": None, "section": None}
         # Literal-anchor rule for readbacks: last concrete placement anchor
         # per def handle, consumed by rmGetUnitPosition (the IW pirate-site
@@ -802,15 +813,31 @@ class Extractor:
             _, cond, then, els, line = stmt
             value = self.eval(cond)
             if isinstance(value, Tainted):
-                # Fork: both arms as labeled variants, last write wins.
+                # Fork: both arms as labeled variants, last write wins for
+                # STATE. For PLACEMENT recording one arm is the NOMINAL
+                # (Part H4): the outcome of the condition under the lo-roll
+                # (nominal_bool); unknown -> then-arm. Placements from the
+                # other arm are recorded nominal=False and suppressed from
+                # the nominal scene (the Paris jesuit/maltese swap places
+                # each compound once, not at both mirror spots).
+                nom_then = (value.nominal_bool
+                            if value.nominal_bool is not None else True)
                 self.variant_stack.append(f"{value.expr}@{line}:true")
+                if not nom_then:
+                    self.alt_depth += 1
                 for s in then:
                     self.exec_stmt(s)
+                if not nom_then:
+                    self.alt_depth -= 1
                 self.variant_stack.pop()
                 if els:
                     self.variant_stack.append(f"{value.expr}@{line}:false")
+                    if nom_then:
+                        self.alt_depth += 1
                     for s in els:
                         self.exec_stmt(s)
+                    if nom_then:
+                        self.alt_depth -= 1
                     self.variant_stack.pop()
                 return
             for s in (then if value else els):
@@ -905,6 +932,21 @@ class Extractor:
                     prefix = a + (b.str_prefix or "")
                 elif isinstance(a, Tainted) and a.str_prefix is not None:
                     prefix = a.str_prefix
+            if op in ("==", "!=", "<", "<=", ">", ">="):
+                # Nominal outcome under the lo-roll (Part H4): tainted
+                # rand values collapse to their LO bound; if both sides
+                # then have a scalar, the comparison resolves nominally.
+                def _nom(v):
+                    if isinstance(v, Tainted):
+                        return v.lo if isinstance(v.lo, (int, float)) else None
+                    return v if isinstance(v, (int, float)) else None
+                na, nb = _nom(a), _nom(b)
+                nominal = None
+                if na is not None and nb is not None:
+                    nominal = {"==": na == nb, "!=": na != nb,
+                               "<": na < nb, "<=": na <= nb,
+                               ">": na > nb, ">=": na >= nb}[op]
+                return Tainted(f"({a!r} {op} {b!r})", nominal_bool=nominal)
             return Tainted(f"({a!r} {op} {b!r})", str_prefix=prefix)
         av = isinstance(a, tuple) and len(a) == 4 and a[0] == "vec"
         bv = isinstance(b, tuple) and len(b) == 4 and b[0] == "vec"
@@ -1220,15 +1262,29 @@ class Extractor:
             }
             return h
         if name == "rmCreateTerrainMaxDistanceConstraint":
+            # Stay WITHIN d of the named terrain (AoM code reference:
+            # "a constraint to be close to terrain with a certain
+            # passability") — the near-water mirror of the terrain kind.
             h = self._new_handle()
             self.constraint_handles[h] = args[0]
-            res.constraints[args[0]] = {"kind": "opaque", "desc": "terrain_max", "line": line}
+            is_land_type = str(args[1]).lower() == "land"
+            near_land = (bool(args[2]) == is_land_type)
+            res.constraints[args[0]] = {
+                "kind": "terrain_max", "near": "land" if near_land else "water",
+                "distance_m": args[3], "line": line,
+            }
             return h
         if name == "rmCreateTypeDistanceConstraint":
+            # True type semantics (Part H): distance from every placed UNIT
+            # whose proto is (or counts as, via protoy UnitTypes) the named
+            # type — this is how same-anchor groupings scatter in-game
+            # (wwcanyon's avoidSufi = 70 m from "SocketApache", a unit
+            # INSIDE each placed village). Previously modeled as a
+            # class_distance to a class nothing joins: trivially true.
             h = self._new_handle()
             self.constraint_handles[h] = args[0]
             res.constraints[args[0]] = {
-                "kind": "class_distance", "class": str(args[1]),
+                "kind": "type_distance", "type": str(args[1]),
                 "distance_m": args[2], "line": line,
             }
             return h
@@ -1252,9 +1308,33 @@ class Extractor:
                 if cname == args[0]:
                     return h
             return Tainted(f"rmConstraintID({args[0]})")
+        if name in ("rmCreateAreaConstraint", "rmCreateAreaDistanceConstraint",
+                    "rmCreateAreaMaxDistanceConstraint"):
+            # AoM code reference semantics (verified 2026-08-10):
+            #   AreaConstraint            "remain WITHIN an area"
+            #   AreaDistanceConstraint    "stay AWAY from an area"
+            #   AreaMaxDistanceConstraint "remain within a distance of it"
+            # wwcanyon's west/eastMountainsConstraint therefore pins its
+            # labs and villages ONTO their mesas, not off them.
+            h = self._new_handle()
+            cname = str(args[0])
+            if cname in res.constraints:
+                cname = f"{cname}#{line}"
+            self.constraint_handles[h] = cname
+            target = res.areas.get(args[1])
+            aname = target.name if target is not None else None
+            kind = {"rmCreateAreaConstraint": "area_within",
+                    "rmCreateAreaDistanceConstraint": "area_distance",
+                    "rmCreateAreaMaxDistanceConstraint": "area_max"}[name]
+            spec = {"kind": kind, "area": aname, "line": line}
+            if name != "rmCreateAreaConstraint":
+                spec["distance_m"] = args[2] if len(args) > 2 else 0.0
+            if aname is None:
+                spec = {"kind": "opaque", "desc": name, "line": line}
+            res.constraints[cname] = spec
+            return h
         if name in ("rmCreateEdgeDistanceConstraint", "rmCreateCliffRampConstraint",
-                    "rmCreateAreaDistanceConstraint", "rmCreateAreaConstraint",
-                    "rmCreateAreaMaxDistanceConstraint", "rmCreateHCGPConstraint"):
+                    "rmCreateHCGPConstraint"):
             h = self._new_handle()
             self.constraint_handles[h] = str(args[0])
             res.constraints[str(args[0])] = {"kind": "opaque", "desc": name, "line": line}
@@ -1493,7 +1573,8 @@ class Extractor:
             res.placements.append(XPlacement(
                 def_line=d.line, name=d.name, kind="at_loc",
                 players=[player], x=x, z=z, count=count,
-                variant="|".join(self.variant_stack)))
+                variant="|".join(self.variant_stack),
+                nominal=self.alt_depth == 0))
             return 1
         if name in ("rmPlaceObjectDefInArea", "rmPlaceGroupingInArea"):
             # Third grouping placement method (user 2026-08-10): random
@@ -1507,7 +1588,8 @@ class Extractor:
             res.placements.append(XPlacement(
                 def_line=d.line, name=d.name, kind="in_area",
                 players=[args[1]], area_refs=[area_name], count=count,
-                variant="|".join(self.variant_stack)))
+                variant="|".join(self.variant_stack),
+                nominal=self.alt_depth == 0))
             return 1
         if name in ("rmPlaceObjectDefAtPoint", "rmPlaceGroupingAtPoint"):
             d = res.defs.get(args[0])
@@ -1525,7 +1607,8 @@ class Extractor:
                 def_line=d.line, name=d.name, kind="at_point",
                 players=[args[1]], x=x, z=z,
                 count=args[3] if len(args) > 3 else 1,
-                variant="|".join(self.variant_stack)))
+                variant="|".join(self.variant_stack),
+                nominal=self.alt_depth == 0))
             return 1
 
         # --- trade routes (per-handle: maps ship several separate routes) ---

@@ -209,6 +209,16 @@ class ResolvedPlacement:
     is_grouping: bool = False       # rmCreateGrouping def: proto = the
                                     # grouping FILE reference (prefix-variant)
     player_id: Optional[int] = None  # owning player 1-8; None/0 = gaia
+    items: Tuple[str, ...] = ()     # object-def item proto names (type registry)
+    # Grouping solver results (plan Part H3). anchor_x/z = the AUTHORED
+    # anchor when the solver moved the placement (tether display);
+    # solve_unsat = constraint names still violated at the kept spot
+    # (solver failed, red edge); solve_skipped = constraint names the
+    # model could not evaluate (honest limitation, reports only).
+    anchor_x: Optional[float] = None
+    anchor_z: Optional[float] = None
+    solve_unsat: Optional[List[str]] = None
+    solve_skipped: Optional[List[str]] = None
 
 
 @dataclass
@@ -232,6 +242,8 @@ class ResolvedScene:
     base_is_water: bool = True
     base_elevation_m: float = 0.0       # init height arg (default 0.0, guide:3145)
     sea_type: Optional[str] = None      # rmSetSeaType water body name
+    suppressed_variants: int = 0        # alt-arm placements dropped (Part H4)
+    groupings_solved: bool = False      # gsolve.ensure_solved ran (idempotence)
 
     def all_routes(self) -> List[List[Tuple[float, float]]]:
         return self.trade_routes or ([self.trade_route_waypoints] if self.trade_route_waypoints else [])
@@ -345,6 +357,9 @@ class Scene:
                 active=active,
                 classes=list(raw.get("classes", [])),
                 footprint_tiles=tuple(raw["footprint_tiles"]) if raw.get("footprint_tiles") else None,
+                is_grouping=(raw["kind"].startswith("grouping")
+                             or bool(raw.get("is_grouping", False))),
+                items=tuple(raw.get("items", [])),
             ))
 
         waypoints: List[Tuple[float, float]] = []

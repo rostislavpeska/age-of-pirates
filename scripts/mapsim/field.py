@@ -157,6 +157,39 @@ class FieldContext:
                     (g.x_frac_to_m(a.x), g.z_frac_to_m(a.z), a.radius_m, a.line))
                 for shape in _area_shapes_m(rs, a):
                     self.class_shapes.setdefault(cls.lower(), []).append((shape, a.line))
+        # Area shapes BY NAME: rmCreateAreaConstraint family targets one
+        # specific area ("remain within" / "stay away" / "stay near" —
+        # AoM code reference, verified 2026-08-10; wwcanyon mesas).
+        self.area_shapes_by_name: Dict[str, List[Tuple[tuple, int]]] = {}
+        for a in rs.areas:
+            if a.x is None:
+                continue
+            for shape in _area_shapes_m(rs, a):
+                self.area_shapes_by_name.setdefault(
+                    a.name.lower(), []).append((shape, a.line))
+        # Placed-type registry (plan Part H2): (type_lower, x_m, z_m, line)
+        # for every unit a placement puts on the ground — object-def items
+        # at the anchor, grouping XML units at anchor+offset. Grouping
+        # units enter only AFTER the solver ran (their anchors move);
+        # during solving gsolve deposits sequentially itself.
+        self.placed_types: List[Tuple[str, float, float, int]] = []
+        self._type_match_cache: Dict[str, List[Tuple[float, float, int]]] = {}
+        for p in rs.placements:
+            if p.x is None:
+                continue
+            px, pz = g.frac_to_m(p.x, p.z)
+            if p.is_grouping:
+                # PINNED groupings (max_dist 0) cannot move: their units
+                # are known before any solve and must constrain terrain
+                # growth (IW's water avoids the bridge's zpBridgeFace
+                # units). Annulus groupings enter only after the solver
+                # fixed their spot.
+                if (getattr(rs, "groupings_solved", False)
+                        or float(p.max_dist_m or 0.0) <= 0.0):
+                    self.deposit_grouping_types(p, px, pz)
+            else:
+                for t in getattr(p, "items", ()) or ():
+                    self.placed_types.append((t.lower(), px, pz, p.line))
         for p in rs.placements:
             if p.x is None or not p.classes:
                 continue
@@ -179,6 +212,34 @@ class FieldContext:
         if before_line is None:
             return self.land
         return [d for d in self.land if d[3] <= before_line]
+
+    def deposit_grouping_types(self, p, px_m: float, pz_m: float) -> None:
+        """Register the units INSIDE a grouping at its (solved) anchor —
+        the substrate of type-distance constraints (avoidSufi measures
+        from each village's SocketApache). First prefix variant = the
+        deterministic nominal, matching the footprint rule."""
+        from scripts.refdata import catalog as _catalog
+        from scripts.refdata.catalogs import grouping_units_m
+        for e in _catalog("grouping").resolve(str(p.proto)):
+            units = grouping_units_m(e.name)
+            if units:
+                for t, dx, dz in units:
+                    self.placed_types.append(
+                        (t.lower(), px_m + dx, pz_m + dz, p.line))
+                self._type_match_cache.clear()
+                return
+
+    def type_points(self, type_name: str) -> List[Tuple[float, float, int]]:
+        """Registry entries whose proto counts as type_name (cached; the
+        cache is cleared on every deposit)."""
+        key = type_name.lower()
+        hit = self._type_match_cache.get(key)
+        if hit is None:
+            from scripts.refdata.catalogs import proto_counts_as
+            hit = [(px, pz, ln) for t, px, pz, ln in self.placed_types
+                   if proto_counts_as(t, type_name)]
+            self._type_match_cache[key] = hit
+        return hit
 
 
 def point_allowed(ctx: FieldContext, p_m: Tuple[float, float], spec: Dict[str, Any],
@@ -249,6 +310,43 @@ def point_allowed(ctx: FieldContext, p_m: Tuple[float, float], spec: Dict[str, A
         lo, _ = dist_range_to_box(
             p_m, (g.x_frac_to_m(x0), g.z_frac_to_m(z0), g.x_frac_to_m(x1), g.z_frac_to_m(z1)))
         return lo == 0.0
+    if kind == "type_distance":
+        d = float(spec["distance_m"])
+        for px, pz, line in ctx.type_points(spec["type"]):
+            if before_line is not None and line > before_line:
+                continue
+            if exclude_line is not None and line == exclude_line:
+                continue
+            if dist(p_m, (px, pz)) < d:
+                return False
+        return True
+    if kind in ("area_within", "area_distance", "area_max"):
+        shapes = ctx.area_shapes_by_name.get((spec.get("area") or "").lower())
+        if not shapes:
+            return None    # target area unknown/unlocated: opaque
+        clear = min(_shape_clearance(p_m, s) for s, _ln in shapes)
+        if kind == "area_within":
+            return clear <= 0.0
+        if kind == "area_distance":
+            return clear >= float(spec.get("distance_m") or 0.0)
+        return clear <= float(spec.get("distance_m") or 0.0)
+    if kind == "terrain_max":
+        d = float(spec["distance_m"])
+        if not ctx.base_is_water:
+            if spec["near"] == "land":
+                return True     # land base: land is everywhere
+            shapes = [s for s, ln in ctx.water_shapes
+                      if before_line is None or ln <= before_line]
+            return any(_shape_clearance(p_m, s) <= d for s in shapes)
+        land = ctx._land_at(before_line)
+        if spec["near"] == "land":
+            return any(dist(p_m, (cx, cz)) - r <= d for cx, cz, r, _ in land)
+        # near water on a water base: distance to the nearest non-land
+        # point, approximated per containing disc; outside all discs the
+        # point already stands in water.
+        inside = [r - dist(p_m, (cx, cz)) for cx, cz, r, _ in land
+                  if dist(p_m, (cx, cz)) <= r]
+        return True if not inside else min(inside) <= d
     return None
 
 
@@ -259,7 +357,9 @@ def split_constraints(rs: ResolvedScene, names: List[str]) -> Tuple[List[Dict], 
         spec = rs.constraints.get(name)
         if spec is None or not spec.get("applied", True):
             continue
-        if spec.get("kind") in ("terrain", "class_distance", "route_distance", "pie", "box"):
+        if spec.get("kind") in ("terrain", "class_distance", "route_distance",
+                                "pie", "box", "type_distance", "area_within",
+                                "area_distance", "area_max", "terrain_max"):
             evaluable.append(spec)
         else:
             opaque.append(name)
@@ -440,6 +540,11 @@ class TerrainGrid:
     # land areas on top"). Display truth for cliff borders; the mutable
     # cliff/cliff_band arrays stay the passability model.
     cliff_claims: List[Tuple[str, List[Tuple[int, int]]]] = dfield(default_factory=list)
+    # ACTUAL claimed cells per class (build-order accumulated) — exposed
+    # for the grouping solver (Part H3): class/area distance measured from
+    # grown reality, not authored discs (a mesa's authored disc covers the
+    # valleys its grown claim leaves open).
+    class_cells: Dict[str, List[Tuple[int, int]]] = dfield(default_factory=dict)
 
     def cell_of_frac(self, x: float, z: float) -> Tuple[int, int]:
         i = min(self.nx - 1, max(0, int(x * self.nx)))
@@ -933,7 +1038,7 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
                        water=water, wdepth=wdepth, wwalk=wwalk, cliff=cliff,
                        cliff_band=cliff_band, cliff_order=cliff_order,
                        sea_level=rs.sea_level, shortfalls=shortfalls,
-                       cliff_claims=cliff_claims)
+                       cliff_claims=cliff_claims, class_cells=class_cells)
 
 
 @dataclass

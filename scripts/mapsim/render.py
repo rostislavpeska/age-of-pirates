@@ -160,6 +160,8 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
     from matplotlib.transforms import Affine2D
 
     from scripts.mapsim.field import FieldContext, terrain_grid
+    from scripts.mapsim.gsolve import ensure_solved
+    ensure_solved(rs)
 
     grid = rs.grid
     verdicts: Dict[str, Finding] = {f.name: f for f in findings if f.scope == "placement"}
@@ -424,7 +426,7 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
                 return fp
         return None
 
-    def _draw_gbox(px, pz, fp, player_id=None):
+    def _draw_gbox(px, pz, fp, player_id=None, unsat=False):
         # fp = units' bounding box in meters RELATIVE TO THE ANCHOR —
         # off-center compounds (Inventors +14 m east) draw where the
         # buildings actually stand, not centered on the anchor.
@@ -434,31 +436,37 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
         w_f = (fp[2] - fp[0]) / grid.size_x_m
         h_f = (fp[3] - fp[1]) / grid.size_z_m
         r = _Rect((x0, z0), w_f, h_f,
-                  facecolor=face, alpha=0.5, edgecolor="#e8e0d0",
-                  linewidth=0.6, zorder=5.5)
+                  facecolor=face, alpha=0.5,
+                  edgecolor="#e63946" if unsat else "#e8e0d0",
+                  linewidth=1.3 if unsat else 0.6, zorder=5.5)
         r.set_transform(tr)
         ax.add_patch(r)
         if DEBUG_ANCHOR_CROSSES:
             ax.scatter([px], [pz], marker="+", s=90, color="#ff00d0",
                        linewidths=1.6, zorder=9, transform=tr)
 
+    # Grouping boxes draw at their SOLVED spots (gsolve, plan Part H):
+    # the constraint-reactive nearest legal point. A moved grouping keeps
+    # a tether to its authored anchor — the engine scatters RANDOMLY
+    # through the same feasible region, so the tether marks the honest
+    # uncertainty; a red edge = no feasible spot found (engine placement
+    # would fail too).
     for p in rs.placements:
         if not p.is_grouping:
             continue
         dims = _grouping_dims(p)
-        if dims is None:
+        if dims is None or p.x is None or p.z is None:
             continue
-        if p.kind == "in_area":
-            for ref in p.area_refs:
-                for a in rs.areas:
-                    if a.x is None:
-                        continue
-                    if a.name == ref or (a.count > 1 and ref.startswith(a.name)):
-                        _draw_gbox(a.x, a.z, dims, p.player_id)
-                        boxed_groupings.add(id(p))
-        elif p.x is not None and p.z is not None:
-            _draw_gbox(p.x, p.z, dims, p.player_id)
-            boxed_groupings.add(id(p))
+        unsat = bool(p.solve_unsat)
+        _draw_gbox(p.x, p.z, dims, p.player_id, unsat=unsat)
+        boxed_groupings.add(id(p))
+        if p.anchor_x is not None and p.anchor_z is not None:
+            ax.plot([p.anchor_x, p.x], [p.anchor_z, p.z],
+                    color="#d8d2c0", linestyle=(0, (1, 2)), linewidth=0.9,
+                    alpha=0.85, zorder=5.4, transform=tr)
+            ax.scatter([p.anchor_x], [p.anchor_z], marker="o", s=12,
+                       facecolors="none", edgecolors="#d8d2c0",
+                       linewidths=0.8, alpha=0.85, zorder=5.4, transform=tr)
 
     undrawable = 0
     for p in rs.placements:
@@ -525,6 +533,12 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
         Line2D([], [], marker="s", linestyle="", color=PLAYER_COLORS[1],
                alpha=0.5, markeredgecolor="#e8e0d0",
                label="player-owned grouping (player color)"),
+        Line2D([], [], color="#d8d2c0", linestyle=(0, (1, 2)), marker="o",
+               markerfacecolor="none", markersize=4,
+               label="grouping moved by constraints (tether = authored anchor)"),
+        Line2D([], [], marker="s", linestyle="", color="#000000", alpha=0.5,
+               markeredgecolor="#e63946",
+               label="grouping with unsatisfiable constraints"),
         Line2D([], [], color="#8f9aa8", linestyle=":", label="invisible mask"),
     ] + ([
         Line2D([], [], marker="o", linestyle="", color=VERDICT_COLOR["OK"], label="OK"),
@@ -548,6 +562,9 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
     sc = rs.scenario
     tag = f"P{sc.players} T{sc.teams}" + (" KOTH" if sc.koth else "") + (" nomad" if sc.nomad else "")
     note = f" | {undrawable} runtime placements not drawable" if undrawable else ""
+    nsup = getattr(rs, "suppressed_variants", 0)
+    if nsup:
+        note += f" | {nsup} alternative spawn-chance placements suppressed"
     view = " | minimap view (+45°, Elbe-calibrated)" if minimap else ""
     ax.set_title((title or "map preview") + f" — {tag} — {grid.size_x_m:.0f} m{note}{view}",
                  fontsize=10)

@@ -551,6 +551,11 @@ def check_area_feasibility(rs: ResolvedScene) -> List[Finding]:
 
 
 def run_checks(rs: ResolvedScene, blocksize_m: float = 16.0) -> List[Finding]:
+    # Groupings solve their constraint-reactive spots ONCE per scene
+    # before any verdict is computed (plan Part H3) — checks then judge
+    # the SOLVED positions, exactly what the render shows.
+    from scripts.mapsim.gsolve import ensure_solved
+    ensure_solved(rs)
     findings = [check_placement(p, rs) for p in rs.placements]
     findings += check_area_overlaps(rs)
     findings += check_trade_route(rs, blocksize_m)

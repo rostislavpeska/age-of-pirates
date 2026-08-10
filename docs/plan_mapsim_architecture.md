@@ -791,7 +791,31 @@ work before G6 exits.
   Open question (nominal): slot phase within a section arc (slot-start
   vs slot-center) — needs an in-game probe.
 
-## Part H — Constraint-reactive grouping placement (planned 2026-08-10)
+## Part H — Constraint-reactive grouping placement (BUILT 2026-08-10)
+
+Build outcome (same day; 287 tests green): gsolve.py implements the
+deterministic solver exactly as planned, with two evidence-driven
+adjustments discovered during the build:
+- Class/area/terrain distances evaluate against the GROWN grid's
+  chamfer fields (TerrainGrid.class_cells newly exposed), not authored
+  discs — a mesa's authored disc covers the valley corridors its grown
+  claim leaves open (wwcanyon's whole annulus read as blocked until
+  this switch; growth-side class distance already worked this way).
+- PINNED groupings (max_dist 0) register their units in the placed-type
+  registry BEFORE terrain growth — IW's water avoids the bridge's 14
+  zpBridgeFace units in build order. This replaced the curated scene's
+  "zpBridgeFace" class shim (the real map only adds classPlateau); the
+  IW goldens were regenerated after visual verification (dock cliff
+  rings intact; ~100 cells shifted where point-based clearance differs
+  from the old 80x28 rect approximation, and dock-site land ownership
+  legitimately passes to the later-built playerHills).
+Type matching consults protoy UnitTypes (proto_counts_as); exact-name
+matches cover literal sockets (SocketApache, SocketTradeRoute).
+rmCreateTypeDistanceConstraint's old class_distance placeholder is
+gone. Verified live: wwcanyon mosques scatter >= 70 m apart from each
+other's sockets (both placed), tortuga carib villages solve INSIDE
+their islands' grown land, paris rolls ONE monastery per spot
+(suppressed alt-arm counter in the render title).
 
 User reports driving this (all verified forensically the same day):
 - WW Canyon: multiple groupings stacked at one spot, ignoring

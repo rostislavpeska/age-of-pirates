@@ -142,6 +142,83 @@ def grouping_footprint_m(stem: str) -> Optional[tuple]:
     return None
 
 
+@lru_cache(maxsize=None)
+def grouping_units_m(stem: str) -> Optional[tuple]:
+    """((unit_type, dx_m, dz_m), ...) for a grouping's units, anchor-
+    relative meters — the unit TYPE is the element text (proto name).
+    Feeds the placed-type registry (plan Part H2): type-distance
+    constraints like wwcanyon's avoidSufi measure from units INSIDE
+    placed groupings ("SocketApache" lives in each Apache village).
+    Same file resolution as grouping_footprint_m; None if unreadable."""
+    candidates = []
+    if MOD_GROUPINGS_DIR.is_dir():
+        candidates.append(MOD_GROUPINGS_DIR / f"{stem}.xml")
+        for f in MOD_GROUPINGS_DIR.glob("*.xml"):
+            if f.stem.lower() == stem.lower():
+                candidates.append(f)
+    inst = _install_groupings_dir()
+    if inst is not None:
+        candidates.append(inst / f"{stem}.xml")
+        for f in inst.glob("*.xml"):
+            if f.stem.lower() == stem.lower():
+                candidates.append(f)
+    for path in candidates:
+        if not path.is_file():
+            continue
+        try:
+            root = ET.parse(path).getroot()
+        except ET.ParseError:
+            continue
+        out = []
+        for u in root.iter("unit"):
+            t = (u.text or "").strip()
+            px, pz = u.get("posx"), u.get("posz")
+            if not t or px is None or pz is None:
+                continue
+            try:
+                out.append((t, float(px), float(pz)))
+            except ValueError:
+                continue
+        if out:
+            return tuple(out)
+    return None
+
+
+@lru_cache(maxsize=None)
+def _proto_unittypes() -> Dict[str, frozenset]:
+    """proto name (lower) -> frozenset of its <unittype> tags (lower),
+    mod layered over vanilla. Answers "does placed proto P count as the
+    abstract type T" for type-distance constraints ("townCenter",
+    "sockettraderoute"). One iterparse pass over each proto file."""
+    out: Dict[str, frozenset] = {}
+    for path in (MOD_PROTO, VANILLA_PROTO):
+        if not path.is_file():
+            continue
+        try:
+            for _, el in ET.iterparse(path, events=("end",)):
+                if el.tag == "unit":
+                    name = el.get("name")
+                    if name and name.lower() not in out:
+                        types = frozenset(
+                            (t.text or "").strip().lower()
+                            for t in el.findall("unittype") if t.text)
+                        out[name.lower()] = types
+                    el.clear()
+        except ET.ParseError:
+            continue
+    return out
+
+
+def proto_counts_as(proto_name: str, type_name: str) -> bool:
+    """True when a placed unit of proto_name satisfies a type-distance
+    query for type_name: exact name match, or type_name is one of the
+    proto's UnitTypes. Unknown protos only match by exact name."""
+    p, t = proto_name.lower(), type_name.lower()
+    if p == t:
+        return True
+    return t in _proto_unittypes().get(p, frozenset())
+
+
 class GroupingCatalog(Catalog):
     def resolve(self, ref: str) -> List[Entry]:
         """All stems the reference can select in-game: prefix match,

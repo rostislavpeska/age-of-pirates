@@ -102,7 +102,14 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
     # Islands creates ONE "player native" def line whose loop places six
     # villages at six ring-resolved TC anchors (2026-08-10).
     seen = set()
+    suppressed = 0
     for p in ex.placements:
+        # Spawn-chance branches (Part H4): the extractor runs BOTH arms of
+        # a tainted if but only the NOMINAL arm's placements (lo-roll)
+        # enter the scene — Paris rolls ONE monastery per spot, not both.
+        if not p.nominal:
+            suppressed += 1
+            continue
         key = (p.def_line,
                round(p.x, 5) if isinstance(p.x, (int, float)) else None,
                round(p.z, 5) if isinstance(p.z, (int, float)) else None,
@@ -148,6 +155,8 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
                             if not isinstance(pl, Tainted)
                             and isinstance(pl, (int, float))
                             and 1 <= int(pl) <= 8), None),
+            items=tuple(str(t) for t, _n in d.items
+                        if isinstance(t, str)),
         ))
 
     trade_routes = []
@@ -235,6 +244,7 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
     base_is_water = (ex.terrain_init is None
                      or is_water_type_name(ex.terrain_init))
     return ResolvedScene(
+        suppressed_variants=suppressed,
         scenario=ex.scenario,
         grid=grid,
         world_circle=ex.world_circle,
