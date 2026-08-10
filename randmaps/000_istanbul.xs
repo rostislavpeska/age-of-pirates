@@ -38,19 +38,20 @@ void main(void)
 	rmDefineClass("classBlock");
 	rmDefineClass("classStreet");
 
-	// ---- TWO TRADE ROUTES IN THE WATER (the Bosphorus lanes) -------------
-	// Placed first; everything else is measured from them (Versailles).
+	// ---- TWO WATER-TRAIL TRADE ROUTES, OPPOSITE DIRECTIONS --------------
+	// Placed first, in the Bosphorus; everything is measured from them
+	// (Versailles). North route runs WEST->EAST, south route EAST->WEST.
 	int tradeRouteN = rmCreateTradeRoute();
 	rmAddTradeRouteWaypoint(tradeRouteN, 0.0, 0.46);
 	rmAddTradeRouteWaypoint(tradeRouteN, 0.5, 0.46);
 	rmAddTradeRouteWaypoint(tradeRouteN, 1.0, 0.46);
-	rmBuildTradeRoute(tradeRouteN, "dirt");
+	rmBuildTradeRoute(tradeRouteN, "water_trail");
 
 	int tradeRouteS = rmCreateTradeRoute();
-	rmAddTradeRouteWaypoint(tradeRouteS, 0.0, 0.54);
-	rmAddTradeRouteWaypoint(tradeRouteS, 0.5, 0.54);
 	rmAddTradeRouteWaypoint(tradeRouteS, 1.0, 0.54);
-	rmBuildTradeRoute(tradeRouteS, "dirt");
+	rmAddTradeRouteWaypoint(tradeRouteS, 0.5, 0.54);
+	rmAddTradeRouteWaypoint(tradeRouteS, 0.0, 0.54);
+	rmBuildTradeRoute(tradeRouteS, "water_trail");
 
 	// ---- READ THE ROUTE CENTRES AS REFERENCE FRACTIONS (Versailles) ------
 	vector nRoutePt = rmGetTradeRouteWayPoint(tradeRouteN, 0.5);
@@ -58,27 +59,28 @@ void main(void)
 	vector sRoutePt = rmGetTradeRouteWayPoint(tradeRouteS, 0.5);
 	float sRouteZ = rmZMetersToFraction(xsVectorGetZ(sRoutePt));
 
-	// ---- BLOCK-GRID GEOMETRY, all measured from the routes ---------------
-	float step    = rmXTilesToFraction(16);   // 32 m block pitch (both axes)
-	float gap     = rmZTilesToFraction(12);   // route -> first block row
-	float colStart = 0.5 - step * 2.0;        // 5 columns centred on 0.5
-	float nFirstZ = nRouteZ - gap;            // north district grows NORTH
-	float sFirstZ = sRouteZ + gap;            // south district grows SOUTH
-	float m       = step * 0.6;               // terrain margin around the grid
+	// ---- DISTRICT GEOMETRY, all measured from the routes -----------------
+	// LAYOUT NOT FINAL: sizes/positions are a first pass; the districts are
+	// held well back from the routes so the water lanes stay clear.
+	float gap    = rmZTilesToFraction(30);    // route -> district edge (kept far)
+	float halfW  = rmXTilesToFraction(45);    // district half-width  (x)
+	float halfH  = rmZTilesToFraction(40);    // district half-height (z)
+	float nCz    = nRouteZ - gap - halfH;     // north district centre z
+	float sCz    = sRouteZ + gap + halfH;     // south district centre z
 
 	rmSetStatusText("", 0.30);
 
 	// ---- DISTRICT TERRAIN, measured from the routes ----------------------
+	// LAYOUT NOT FINAL: two rectangular districts, one either side of the
+	// Bosphorus, held back by `gap`. Box + influence segment => a rectangle.
 	int cityNbox = rmCreateBoxConstraint("north city box",
-		colStart - m, nFirstZ + m,
-		colStart + step * 4.0 + m, nFirstZ - step * 4.0 - m, 0.01);
+		0.5 - halfW, nCz - halfH, 0.5 + halfW, nCz + halfH, 0.01);
 	int cityN = rmCreateArea("cityNorth");
 	rmSetAreaSize(cityN, 0.4, 0.4);
-	rmSetAreaLocation(cityN, 0.5, nFirstZ - step * 2.0);
+	rmSetAreaLocation(cityN, 0.5, nCz);
 	rmSetAreaCoherence(cityN, 1.0);
 	rmSetAreaBaseHeight(cityN, 3.0);
-	rmAddAreaInfluenceSegment(cityN, colStart, nFirstZ - step * 2.0,
-		colStart + step * 4.0, nFirstZ - step * 2.0);
+	rmAddAreaInfluenceSegment(cityN, 0.5 - halfW, nCz, 0.5 + halfW, nCz);
 	rmSetAreaTerrainType(cityN, "city\ground1_cob_dark");
 	rmSetAreaCliffType(cityN, "ZP City");
 	rmSetAreaCliffEdge(cityN, 1, 1.0, 0.1, 1.0, 0);
@@ -89,15 +91,13 @@ void main(void)
 	rmBuildArea(cityN);
 
 	int citySbox = rmCreateBoxConstraint("south city box",
-		colStart - m, sFirstZ - m,
-		colStart + step * 4.0 + m, sFirstZ + step * 4.0 + m, 0.01);
+		0.5 - halfW, sCz - halfH, 0.5 + halfW, sCz + halfH, 0.01);
 	int cityS = rmCreateArea("citySouth");
 	rmSetAreaSize(cityS, 0.4, 0.4);
-	rmSetAreaLocation(cityS, 0.5, sFirstZ + step * 2.0);
+	rmSetAreaLocation(cityS, 0.5, sCz);
 	rmSetAreaCoherence(cityS, 1.0);
 	rmSetAreaBaseHeight(cityS, 3.0);
-	rmAddAreaInfluenceSegment(cityS, colStart, sFirstZ + step * 2.0,
-		colStart + step * 4.0, sFirstZ + step * 2.0);
+	rmAddAreaInfluenceSegment(cityS, 0.5 - halfW, sCz, 0.5 + halfW, sCz);
 	rmSetAreaTerrainType(cityS, "city\ground1_cob_dark");
 	rmSetAreaCliffType(cityS, "ZP City");
 	rmSetAreaCliffEdge(cityS, 1, 1.0, 0.1, 1.0, 0);
@@ -109,67 +109,45 @@ void main(void)
 
 	rmSetStatusText("", 0.55);
 
-	// ---- CITY-BLOCK GROUPINGS (the Paris block set) ----------------------
-	int b0 = rmCreateGrouping("blk house1", "EU_House_Block_01");
-	int b1 = rmCreateGrouping("blk house2", "EU_House_Block_02");
-	int b2 = rmCreateGrouping("blk food",   "EU_Resource_Block_Food1");
-	int b3 = rmCreateGrouping("blk gold",   "EU_Resource_Block_Gold1");
-	int b4 = rmCreateGrouping("blk wood",   "EU_Resource_Block_Wood1");
-	int b5 = rmCreateGrouping("blk house3", "EU_House_Block_03");
-	int b6 = rmCreateGrouping("blk market", "EU_Resource_Block_All2");
-	int b7 = rmCreateGrouping("blk house4", "EU_House_Block_04");
+	// ---- ISTANBUL (IS_) CITY BLOCKS -- random fill, NO GRID --------------
+	// LAYOUT NOT FINAL: for now just scatter the Istanbul blocks across each
+	// district (rmPlaceGroupingInArea). avoidBlock keeps them from
+	// overlapping; the exact block mix/positions are placeholders.
+	int avoidBlock = rmCreateClassDistanceConstraint("blocks avoid blocks",
+		rmClassID("classBlock"), 26.0);
 
-	rmSetGroupingMinDistance(b0, 0.0); rmSetGroupingMaxDistance(b0, 0.0); rmAddGroupingToClass(b0, rmClassID("classBlock"));
-	rmSetGroupingMinDistance(b1, 0.0); rmSetGroupingMaxDistance(b1, 0.0); rmAddGroupingToClass(b1, rmClassID("classBlock"));
-	rmSetGroupingMinDistance(b2, 0.0); rmSetGroupingMaxDistance(b2, 0.0); rmAddGroupingToClass(b2, rmClassID("classBlock"));
-	rmSetGroupingMinDistance(b3, 0.0); rmSetGroupingMaxDistance(b3, 0.0); rmAddGroupingToClass(b3, rmClassID("classBlock"));
-	rmSetGroupingMinDistance(b4, 0.0); rmSetGroupingMaxDistance(b4, 0.0); rmAddGroupingToClass(b4, rmClassID("classBlock"));
-	rmSetGroupingMinDistance(b5, 0.0); rmSetGroupingMaxDistance(b5, 0.0); rmAddGroupingToClass(b5, rmClassID("classBlock"));
-	rmSetGroupingMinDistance(b6, 0.0); rmSetGroupingMaxDistance(b6, 0.0); rmAddGroupingToClass(b6, rmClassID("classBlock"));
-	rmSetGroupingMinDistance(b7, 0.0); rmSetGroupingMaxDistance(b7, 0.0); rmAddGroupingToClass(b7, rmClassID("classBlock"));
+	int isHouse1 = rmCreateGrouping("is house1", "IS_House_Block_01");
+	int isHouse2 = rmCreateGrouping("is house2", "IS_House_Block_02");
+	int isHouse3 = rmCreateGrouping("is house3", "IS_House_Block_03");
+	int isHouse4 = rmCreateGrouping("is house4", "IS_House_Block_04");
+	int isFood   = rmCreateGrouping("is food",   "IS_Resource_Block_Food1");
+	int isGold   = rmCreateGrouping("is gold",   "IS_Resource_Block_Gold1");
+	int isWood   = rmCreateGrouping("is wood",   "IS_Resource_Block_Wood_01");
+	int isMosque = rmCreateGrouping("is mosque", "IS_Resource_Block_Mosque");
+	int isSufi   = rmCreateGrouping("is sufi",   "IS_Native_Block_Sufi");
 
-	int blockArr = xsArrayCreateInt(8, 0, "block types");
-	xsArraySetInt(blockArr, 0, b0);
-	xsArraySetInt(blockArr, 1, b1);
-	xsArraySetInt(blockArr, 2, b2);
-	xsArraySetInt(blockArr, 3, b3);
-	xsArraySetInt(blockArr, 4, b4);
-	xsArraySetInt(blockArr, 5, b5);
-	xsArraySetInt(blockArr, 6, b6);
-	xsArraySetInt(blockArr, 7, b7);
+	int isArr = xsArrayCreateInt(9, 0, "istanbul blocks");
+	xsArraySetInt(isArr, 0, isHouse1);
+	xsArraySetInt(isArr, 1, isHouse2);
+	xsArraySetInt(isArr, 2, isHouse3);
+	xsArraySetInt(isArr, 3, isHouse4);
+	xsArraySetInt(isArr, 4, isFood);
+	xsArraySetInt(isArr, 5, isGold);
+	xsArraySetInt(isArr, 6, isWood);
+	xsArraySetInt(isArr, 7, isMosque);
+	xsArraySetInt(isArr, 8, isSufi);
 
-	// ---- 5x5 BLOCK GRID per district, positions measured from the routes -
-	int typeIdx = 0;
-	float bx = 0.0;
-	float bz = 0.0;
-	int g = 0;
-
-	// North district: rows grow NORTH from nFirstZ (decreasing z)
-	for (int cn = 0; cn < 5; cn++)
+	int isg = 0;
+	for (int ib = 0; ib < 9; ib++)
 	{
-		for (int rn = 0; rn < 5; rn++)
-		{
-			bx = colStart + cn * step;
-			bz = nFirstZ - rn * step;
-			g = xsArrayGetInt(blockArr, typeIdx);
-			rmPlaceGroupingAtLoc(g, 0, bx, bz);
-			typeIdx = typeIdx + 1;
-			if (typeIdx >= 8) { typeIdx = 0; }
-		}
-	}
-
-	// South district: rows grow SOUTH from sFirstZ (increasing z)
-	for (int cs = 0; cs < 5; cs++)
-	{
-		for (int rs = 0; rs < 5; rs++)
-		{
-			bx = colStart + cs * step;
-			bz = sFirstZ + rs * step;
-			g = xsArrayGetInt(blockArr, typeIdx);
-			rmPlaceGroupingAtLoc(g, 0, bx, bz);
-			typeIdx = typeIdx + 1;
-			if (typeIdx >= 8) { typeIdx = 0; }
-		}
+		isg = xsArrayGetInt(isArr, ib);
+		rmSetGroupingMinDistance(isg, 0.0);
+		rmSetGroupingMaxDistance(isg, 0.5);
+		rmAddGroupingToClass(isg, rmClassID("classBlock"));
+		rmAddGroupingConstraint(isg, avoidBlock);
+		// scatter a few of each into both districts (random placement)
+		rmPlaceGroupingInArea(isg, 0, cityN, 2);
+		rmPlaceGroupingInArea(isg, 0, cityS, 2);
 	}
 
 	rmSetStatusText("", 0.85);
