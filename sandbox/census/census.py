@@ -52,6 +52,16 @@ def parse_units(path: Path):
     return out
 
 
+def census(path: Path):
+    """Parsed, name-resolved unit list — the importable entry point."""
+    by_id, by_dbid = proto_names()
+    units = parse_units(Path(path))
+    for u in units:
+        u["proto"] = by_id.get(u["proto_id"]) or by_dbid.get(u["proto_id"]) \
+            or f"unknown({u['proto_id']})"
+    return units
+
+
 def main(argv):
     if not argv:
         print(__doc__)

@@ -140,13 +140,26 @@ def type_text(text):
 
 
 def key(vk, times=1):
-    """Press a virtual key (0x0D Enter, 0x1B Esc, 0x2E Del, 0x08 Backspace)."""
+    """Press a virtual key (0x0D Enter, 0x1B Esc, 0x2E Del, 0x08 Backspace,
+    0x23 End, 0x24 Home)."""
     for _ in range(times):
         for flag in (0, KEYEVENTF_KEYUP):
             inp = _INPUT(type=INPUT_KEYBOARD)
             inp.u.ki = _KI(vk, 0, flag, 0, None)
             _send([inp])
         time.sleep(0.08)
+
+
+def clear_field(hwnd, cx, cy, width=12):
+    """Click a text field and empty it: End, then Backspace enough times."""
+    click(hwnd, cx, cy)
+    key(0x23)            # End
+    key(0x08, width)     # Backspace
+
+
+def set_field(hwnd, cx, cy, text, width=12):
+    clear_field(hwnd, cx, cy, width)
+    type_text(str(text))
 
 
 if __name__ == "__main__":
