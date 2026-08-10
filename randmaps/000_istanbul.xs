@@ -114,47 +114,52 @@ void main(void)
 	xsArraySetInt(blockArr, 7, b7);
 
 	// place exactly on the grid (min/max distance 0), block class
-	for (bi = 0; < 8)
-	{
-		int bh = xsArrayGetInt(blockArr, bi);
-		rmSetGroupingMinDistance(bh, 0.0);
-		rmSetGroupingMaxDistance(bh, 0.0);
-		rmAddGroupingToClass(bh, rmClassID("classBlock"));
-	}
+	// (C-style for with an inline-declared counter -- the only loop form
+	//  proven valid in the shipped maps, e.g. zpparis shuffle())
+	rmSetGroupingMinDistance(b0, 0.0); rmSetGroupingMaxDistance(b0, 0.0); rmAddGroupingToClass(b0, rmClassID("classBlock"));
+	rmSetGroupingMinDistance(b1, 0.0); rmSetGroupingMaxDistance(b1, 0.0); rmAddGroupingToClass(b1, rmClassID("classBlock"));
+	rmSetGroupingMinDistance(b2, 0.0); rmSetGroupingMaxDistance(b2, 0.0); rmAddGroupingToClass(b2, rmClassID("classBlock"));
+	rmSetGroupingMinDistance(b3, 0.0); rmSetGroupingMaxDistance(b3, 0.0); rmAddGroupingToClass(b3, rmClassID("classBlock"));
+	rmSetGroupingMinDistance(b4, 0.0); rmSetGroupingMaxDistance(b4, 0.0); rmAddGroupingToClass(b4, rmClassID("classBlock"));
+	rmSetGroupingMinDistance(b5, 0.0); rmSetGroupingMaxDistance(b5, 0.0); rmAddGroupingToClass(b5, rmClassID("classBlock"));
+	rmSetGroupingMinDistance(b6, 0.0); rmSetGroupingMaxDistance(b6, 0.0); rmAddGroupingToClass(b6, rmClassID("classBlock"));
+	rmSetGroupingMinDistance(b7, 0.0); rmSetGroupingMaxDistance(b7, 0.0); rmAddGroupingToClass(b7, rmClassID("classBlock"));
 
 	// ---- 6x5 BLOCK GRID on each district (~40 m spacing = 0.08 frac) -----
+	// Temp vars declared ONCE (no re-declaration across loops); loop
+	// counters use unique names with the inline C-style form proven in the
+	// shipped maps (zpparis shuffle: for(int i=end; i>start; i--)).
 	float spacing = 0.08;
-	int cols = 6;
-	int rows = 5;
+	int typeIdx = 0;
+	float bx = 0.0;
+	float bz = 0.0;
+	int g = 0;
 
 	// North district grid, centred on (0.5, 0.25)
-	float nStartX = 0.5 - spacing * 2.5;   // (cols-1)/2 = 2.5
-	float nStartZ = 0.25 - spacing * 2.0;  // (rows-1)/2 = 2.0
-	int idx = 0;
-	for (col = 0; < 6)
+	for (int cn = 0; cn < 6; cn++)
 	{
-		for (row = 0; < 5)
+		for (int rn = 0; rn < 5; rn++)
 		{
-			float bx = nStartX + col * spacing;
-			float bz = nStartZ + row * spacing;
-			int bh = xsArrayGetInt(blockArr, idx % 8);
-			rmPlaceGroupingAtLoc(bh, 0, bx, bz);
-			idx = idx + 1;
+			bx = 0.5 - spacing * 2.5 + cn * spacing;
+			bz = 0.25 - spacing * 2.0 + rn * spacing;
+			g = xsArrayGetInt(blockArr, typeIdx);
+			rmPlaceGroupingAtLoc(g, 0, bx, bz);
+			typeIdx = typeIdx + 1;
+			if (typeIdx >= 8) { typeIdx = 0; }
 		}
 	}
 
 	// South district grid, centred on (0.5, 0.75)
-	float sStartX = 0.5 - spacing * 2.5;
-	float sStartZ = 0.75 - spacing * 2.0;
-	for (col = 0; < 6)
+	for (int cs = 0; cs < 6; cs++)
 	{
-		for (row = 0; < 5)
+		for (int rs = 0; rs < 5; rs++)
 		{
-			float bx = sStartX + col * spacing;
-			float bz = sStartZ + row * spacing;
-			int bh = xsArrayGetInt(blockArr, idx % 8);
-			rmPlaceGroupingAtLoc(bh, 0, bx, bz);
-			idx = idx + 1;
+			bx = 0.5 - spacing * 2.5 + cs * spacing;
+			bz = 0.75 - spacing * 2.0 + rs * spacing;
+			g = xsArrayGetInt(blockArr, typeIdx);
+			rmPlaceGroupingAtLoc(g, 0, bx, bz);
+			typeIdx = typeIdx + 1;
+			if (typeIdx >= 8) { typeIdx = 0; }
 		}
 	}
 
