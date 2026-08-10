@@ -1,16 +1,20 @@
 // ============================================================================
 // 000_istanbul.xs  -  Istanbul city map (Age of Pirates)
 // ----------------------------------------------------------------------------
-// Layout source: Figma "AoE Maps", node 248:167 -- two diagonal city-block
-// grids split by the Bosphorus, NW district and SE district.
+// Layout source: Figma "AoE Maps", node 248:167. The Figma is drawn in
+// MINIMAP orientation (rotated ~45 deg like the in-game minimap), so the two
+// rotated block grids are AXIS-ALIGNED rectangles in real map space: a WEST
+// district and an EAST district split by the central Bosphorus channel, with
+// a trade route running down each bank of the water (structure mirrors
+// zpparis: two cities either side of a central water strip).
 //
-// MINIMAL v1 (2026-08-10). Only three things, on purpose:
-//   1. water base (the Bosphorus fills the whole map)
-//   2. two trade routes (one main street through each district)
-//   3. the raised city-block TERRAIN for the two districts (walled + paved)
+// MINIMAL v2 (2026-08-10). Only three things, on purpose:
+//   1. water base (Bosphorus fills the map)
+//   2. two trade routes, one down each bank of the channel (per Figma)
+//   3. the raised, RECTANGULAR city-block terrain for the two districts,
+//      shaped with BOX CONSTRAINTS (the zpparis technique)
 //
-// One size fits all -- fixed square map, no per-player scaling.
-// City-block groupings, natives, sockets, players: NOT here yet (next steps).
+// One size fits all -- fixed square map. Blocks/natives/players: next steps.
 // ============================================================================
 
 void main(void)
@@ -22,9 +26,7 @@ void main(void)
 	rmSetMapSize(size, size);
 	rmSetMapElevationHeightBlend(1);
 
-	// ---- WATER BASE ------------------------------------------------------
-	// The Bosphorus is the base: the whole map starts as water and the two
-	// city districts are raised out of it (same recipe as the island maps).
+	// ---- WATER BASE (the Bosphorus) --------------------------------------
 	rmSetSeaLevel(0.0);
 	rmSetSeaType("great lakes2");
 	rmTerrainInitialize("water");
@@ -36,62 +38,64 @@ void main(void)
 	rmSetStatusText("", 0.15);
 
 	// ---- CLASSES ---------------------------------------------------------
-	rmDefineClass("classPlateau");   // the walled city ground
+	rmDefineClass("classPlateau");   // walled city ground
 	rmDefineClass("classBlock");     // city-block groupings (later)
 	rmDefineClass("classStreet");    // paved streets (later)
 
-	// ---- TWO TRADE ROUTES ------------------------------------------------
-	// One main street per district, running NE->SW parallel to the Bosphorus
-	// and passing through the district centre so the blocks can line up on it.
-	int tradeRouteNW = rmCreateTradeRoute();
-	rmAddTradeRouteWaypoint(tradeRouteNW, 0.50, 0.08);
-	rmAddTradeRouteWaypoint(tradeRouteNW, 0.32, 0.32);
-	rmAddTradeRouteWaypoint(tradeRouteNW, 0.08, 0.50);
-	rmBuildTradeRoute(tradeRouteNW, "dirt");
+	// ---- BOX CONSTRAINTS: the two districts are RECTANGLES ----------------
+	// A big area budget + high coherence + a box constraint fills the box as
+	// a clean rectangle (the zpparis city technique). Central strip
+	// x[0.42,0.58] is left as open water = the Bosphorus.
+	int westCityBox = rmCreateBoxConstraint("west city box", 0.06, 0.12, 0.42, 0.88, 0.01);
+	int eastCityBox = rmCreateBoxConstraint("east city box", 0.58, 0.12, 0.94, 0.88, 0.01);
 
-	int tradeRouteSE = rmCreateTradeRoute();
-	rmAddTradeRouteWaypoint(tradeRouteSE, 0.92, 0.50);
-	rmAddTradeRouteWaypoint(tradeRouteSE, 0.68, 0.68);
-	rmAddTradeRouteWaypoint(tradeRouteSE, 0.50, 0.92);
-	rmBuildTradeRoute(tradeRouteSE, "dirt");
+	// ---- TWO TRADE ROUTES: one down each bank of the channel (per Figma) --
+	int tradeRouteWest = rmCreateTradeRoute();
+	rmAddTradeRouteWaypoint(tradeRouteWest, 0.40, 0.06);
+	rmAddTradeRouteWaypoint(tradeRouteWest, 0.40, 0.50);
+	rmAddTradeRouteWaypoint(tradeRouteWest, 0.40, 0.94);
+	rmBuildTradeRoute(tradeRouteWest, "dirt");
+
+	int tradeRouteEast = rmCreateTradeRoute();
+	rmAddTradeRouteWaypoint(tradeRouteEast, 0.60, 0.06);
+	rmAddTradeRouteWaypoint(tradeRouteEast, 0.60, 0.50);
+	rmAddTradeRouteWaypoint(tradeRouteEast, 0.60, 0.94);
+	rmBuildTradeRoute(tradeRouteEast, "dirt");
 
 	rmSetStatusText("", 0.45);
 
-	// ---- CITY-BLOCK TERRAIN: two raised districts ------------------------
-	// Raised land (base height above the water), walled with the ZP City
-	// cliff edge, paved with city cobblestone. This is the ground the city
-	// blocks will be placed onto next.
+	// ---- CITY-BLOCK TERRAIN: two rectangular districts -------------------
+	int cityWest = rmCreateArea("cityWest");
+	rmSetAreaSize(cityWest, 0.5, 0.5);
+	rmSetAreaLocation(cityWest, 0.24, 0.5);
+	rmSetAreaCoherence(cityWest, 1.0);
+	rmSetAreaBaseHeight(cityWest, 3.0);
+	rmSetAreaTerrainType(cityWest, "city\ground1_cob_dark");
+	rmSetAreaCliffType(cityWest, "ZP City");
+	rmSetAreaCliffEdge(cityWest, 1, 1.0, 0.1, 1.0, 0);
+	rmSetAreaCliffHeight(cityWest, 0, 0.0, 1.0);
+	rmAddAreaConstraint(cityWest, westCityBox);
+	rmAddAreaToClass(cityWest, rmClassID("classPlateau"));
+	rmSetAreaObeyWorldCircleConstraint(cityWest, false);
+	rmBuildArea(cityWest);
 
-	int cityNW = rmCreateArea("cityNW");
-	rmSetAreaSize(cityNW, 0.06, 0.06);
-	rmSetAreaLocation(cityNW, 0.32, 0.32);
-	rmSetAreaCoherence(cityNW, 1.0);
-	rmSetAreaBaseHeight(cityNW, 3.0);
-	rmSetAreaTerrainType(cityNW, "city\ground1_cob_dark");
-	rmSetAreaCliffType(cityNW, "ZP City");
-	rmSetAreaCliffEdge(cityNW, 1, 1.0, 0.1, 1.0, 0);
-	rmSetAreaCliffHeight(cityNW, 0, 0.0, 1.0);
-	rmAddAreaToClass(cityNW, rmClassID("classPlateau"));
-	rmSetAreaObeyWorldCircleConstraint(cityNW, false);
-	rmBuildArea(cityNW);
-
-	int citySE = rmCreateArea("citySE");
-	rmSetAreaSize(citySE, 0.06, 0.06);
-	rmSetAreaLocation(citySE, 0.68, 0.68);
-	rmSetAreaCoherence(citySE, 1.0);
-	rmSetAreaBaseHeight(citySE, 3.0);
-	rmSetAreaTerrainType(citySE, "city\ground1_cob_dark");
-	rmSetAreaCliffType(citySE, "ZP City");
-	rmSetAreaCliffEdge(citySE, 1, 1.0, 0.1, 1.0, 0);
-	rmSetAreaCliffHeight(citySE, 0, 0.0, 1.0);
-	rmAddAreaToClass(citySE, rmClassID("classPlateau"));
-	rmSetAreaObeyWorldCircleConstraint(citySE, false);
-	rmBuildArea(citySE);
+	int cityEast = rmCreateArea("cityEast");
+	rmSetAreaSize(cityEast, 0.5, 0.5);
+	rmSetAreaLocation(cityEast, 0.76, 0.5);
+	rmSetAreaCoherence(cityEast, 1.0);
+	rmSetAreaBaseHeight(cityEast, 3.0);
+	rmSetAreaTerrainType(cityEast, "city\ground1_cob_dark");
+	rmSetAreaCliffType(cityEast, "ZP City");
+	rmSetAreaCliffEdge(cityEast, 1, 1.0, 0.1, 1.0, 0);
+	rmSetAreaCliffHeight(cityEast, 0, 0.0, 1.0);
+	rmAddAreaConstraint(cityEast, eastCityBox);
+	rmAddAreaToClass(cityEast, rmClassID("classPlateau"));
+	rmSetAreaObeyWorldCircleConstraint(cityEast, false);
+	rmBuildArea(cityEast);
 
 	rmSetStatusText("", 0.80);
 
 	// ---- MINIMAL PLAYER PLACEMENT (stub so the map generates) ------------
-	// Real Istanbul spawns come later (players start inside the districts).
 	rmPlacePlayersCircular(0.42, 0.42, 0.0);
 
 	rmSetStatusText("", 1.00);
