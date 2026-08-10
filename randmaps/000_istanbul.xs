@@ -62,7 +62,7 @@ void main(void)
 	// ---- DISTRICT GEOMETRY, all measured from the routes -----------------
 	// LAYOUT NOT FINAL: sizes/positions are a first pass; the districts are
 	// held well back from the routes so the water lanes stay clear.
-	float gap    = rmZTilesToFraction(30);    // route -> district edge (kept far)
+	float gap    = rmZTilesToFraction(16);    // route -> district edge
 	float halfW  = rmXTilesToFraction(45);    // district half-width  (x)
 	float halfH  = rmZTilesToFraction(40);    // district half-height (z)
 	float nCz    = nRouteZ - gap - halfH;     // north district centre z
