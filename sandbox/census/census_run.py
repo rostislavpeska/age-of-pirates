@@ -20,17 +20,23 @@ import argparse
 import shutil
 import sys
 import time
-from collections import Counter
 from pathlib import Path
 
 HERE = Path(__file__).parent
 sys.path.insert(0, str(HERE))
 import game_driver as gd            # noqa: E402
 from census import census          # noqa: E402
+import census_judge                # noqa: E402
 
 SCEN_DIR = Path(r"C:\Users\TIGO\Games\Age of Empires 3 DE"
                 r"\76561198347905238\Scenario")
 SAMPLES = HERE / "samples"
+# Deployed map scripts the editor actually generates from — the census
+# reflects THESE, not the repo source (a repo/deploy skew otherwise makes
+# intent-vs-reality mismatch, e.g. repo zptortuga vs deployed
+# zp_z_tortuga_historical). Read-only.
+INSTALL_RANDMAPS = Path(r"C:\Program Files (x86)\Steam\steamapps"
+                        r"\common\AoE3DE\Game\RandMaps")
 
 # --- calibrated UI coordinates (client area, 2560x1080) --------------------
 C = dict(
@@ -84,21 +90,6 @@ def generate_one(h, cfg, seed, save_name, shot_path):
     gd.click(h, *C["save_button"]); time.sleep(2.5)
 
 
-def judge(map_key, cfg, results):
-    print(f"\n=== JUDGE: {map_key} ({len(results)} seeds) ===")
-    watch = list(cfg["expect"])
-    hdr = "seed      total  " + "  ".join(f"{w[:14]:>14}" for w in watch)
-    print(hdr)
-    print("-" * len(hdr))
-    for seed, units in results:
-        c = Counter(u["proto"] for u in units)
-        cells = []
-        for w in watch:
-            got = sum(n for name, n in c.items() if w.lower() in name.lower())
-            flag = "!" if got < cfg["expect"][w] else " "
-            cells.append(f"{got:>13}{flag}")
-        print(f"{seed:<9} {len(units):>5}  " + "  ".join(cells))
-    print("(! = below the healthy count; watch across seeds for flaky spawns)")
 
 
 def main(argv):
@@ -121,7 +112,7 @@ def main(argv):
         print("GAME NOT FOUND — open the DE scenario editor first.")
         return 1
 
-    results = []
+    census_paths = []
     for i in range(args.seeds):
         seed = args.seed0 + i
         name = f"census_{args.map}_s{seed}"
@@ -134,12 +125,20 @@ def main(argv):
             continue
         dst = SAMPLES / src.name
         shutil.copy(src, dst)
-        units = census(dst)
-        results.append((seed, units))
-        print(f"    saved + parsed: {len(units)} units")
+        census_paths.append(dst)
+        print(f"    saved + parsed: {len(census(dst))} units")
 
-    if results:
-        judge(args.map, cfg, results)
+    # Intent-vs-reality judge against the DEPLOYED script (what generated
+    # these saves), so grouping requests line up with what actually spawned.
+    if census_paths:
+        deployed = INSTALL_RANDMAPS / f"{cfg['map_type']}.xs"
+        if deployed.is_file():
+            census_judge.judge(deployed, census_paths,
+                               Scenario(players=cfg["players"],
+                                        teams=cfg["teams"]))
+        else:
+            print(f"\n(deployed script not found at {deployed}; "
+                  "skipping intent-vs-reality judge)")
     return 0
 
 

@@ -791,6 +791,54 @@ work before G6 exits.
   Open question (nominal): slot phase within a section arc (slot-start
   vs slot-center) — needs an in-game probe.
 
+## Part I — ENGINE-IN-THE-LOOP testing (BUILT 2026-08-10)
+
+Working end-to-end in sandbox/census/ (isolated from production; reads
+game files, writes only via the game's own Save). Pieces:
+- census.py: parses .age3Yscn (l33t+zlib; 'UN' records = 12 floats
+  pos/rot ending at the marker, then a u32 proto id resolved through
+  protoy id/dbid). Validated on the user's hand-built Crownlands
+  scenario (1001 units, fort walls in a line, TC behind).
+- game_driver.py: focus/screenshot/click/drag/type/clear via ctypes
+  SendInput — synthetic input only, nothing installed, no game write.
+- census_run.py: ONE command drives the editor unattended — File>New >
+  pick map (per-map nav recipe) > explicit seed > Generate > Save As >
+  repeat N seeds > parse > judge. Verified live: tortuga + elbe, elbe
+  x3 seeds hands-off.
+- census_judge.py: INTENT vs REALITY. Each rmCreateGrouping's XML gives
+  a socket/flag FINGERPRINT; the census is searched for it; across N
+  seeds -> appearance rate (5/5 reliable, 4/5 FLAKY, 0/5 never). No
+  hand-authored expectations.
+
+Proven: tortuga 'native carib village' = 1/1 count 4 (caribs DO spawn;
+the Python sim's "missing caribs" was a sim artifact, never the map).
+
+CRITICAL WORKFLOW RULE (learned the hard way): judge against the
+DEPLOYED script + deployed groupings (game install RandMaps /
+mod-deployed groupings), NOT the repo source — repo zptortuga.xs vs
+deployed zp_z_tortuga_historical.xs are different variants; mismatched
+sources make intent-vs-reality lie. census_run auto-locates the
+deployed .xs by the editor's map-type name.
+
+HONEST LIMITATION: the fingerprint is grouping-specific, so
+subciv-conditional content reads as NEVER even when healthy — elbe
+requests Hansa/Elector/Hussite groupings but P4T2 rolls DE minor-states
+(Tengri/Habsburg/Hanover), so those fingerprints are absent by design.
+The tool is DEFINITIVE for UNCONDITIONAL groupings (caribs: NEVER =
+real bug) and ADVISORY for conditional ones (NEVER = confirm the
+config triggers it). Distinguishing the two is the human step the
+profile bootstrap will capture.
+
+Remaining (next increments):
+- Robust map selection (nav recipes are hand-calibrated; a new map
+  needs a one-time screenshot-guided calibration; OCR or a stable
+  scroll model would remove that).
+- Profile bootstrap: run N seeds, write observed rates into
+  scripts/maps/<stem>.json census block, user annotates
+  conditional-vs-bug once; future runs assert against it.
+- mapcheck --census wiring so the judge reads the profile and emits
+  standard findings.
+
 ## Part I — ENGINE-IN-THE-LOOP testing (explored 2026-08-10; user pivot)
 
 User verdict after Part H: the simulator keeps producing "technically
