@@ -1,0 +1,358 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>16</width>
+	<height>81</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="145" posx="7.6500" posz="-72.6335" orientx="-1.0000" orienty="0.0000" orientz="0.0001">ypSPCIndianFortWallLarge</unit>
+		<unit variation="88" posx="10.4653" posz="-76.0415" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="133" posx="11.6209" posz="-75.1577" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="174" posx="12.6394" posz="-75.8730" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="246" posx="10.5048" posz="-71.1166" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHousePirateCity</unit>
+		<unit variation="145" posx="7.6468" posz="-63.2110" orientx="-1.0000" orienty="0.0000" orientz="0.0000">ypSPCIndianFortWallLarge</unit>
+		<unit variation="1" posx="11.0520" posz="-65.7099" orientx="-0.9239" orienty="0.0000" orientz="-0.3826">zpPropOttomanMarketStall</unit>
+		<unit variation="1" posx="10.6578" posz="-61.1438" orientx="-0.9238" orienty="0.0000" orientz="0.3828">zpPropJewishMarketStall</unit>
+		<unit variation="41" posx="-1.4490" posz="-58.7846" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpIndianFortCornerProp</unit>
+		<unit variation="41" posx="6.9271" posz="-58.8785" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpIndianFortCornerProp</unit>
+		<unit variation="208" posx="13.7188" posz="-62.5533" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="145" posx="3.4293" posz="-58.0107" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">ypSPCIndianFortWallLarge</unit>
+		<unit variation="145" posx="-4.7138" posz="-54.6440" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">ypSPCIndianFortWallLarge</unit>
+		<unit variation="122" posx="10.5123" posz="-58.0886" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="147" posx="7.2798" posz="-54.8629" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="254" posx="5.6177" posz="-54.0173" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="49" posx="4.7801" posz="-54.2502" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="246" posx="-8.6880" posz="-50.3504" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpIndianFortCornerProp</unit>
+		<unit variation="145" posx="-4.7463" posz="-46.4059" orientx="-0.7071" orienty="0.0000" orientz="0.7071">ypSPCIndianFortWallLarge</unit>
+		<unit variation="29" posx="9.6996" posz="-46.0413" orientx="-1.0000" orienty="-0.0000" orientz="0.0001">UnderbrushDeccan</unit>
+		<unit variation="26" posx="8.5343" posz="-46.7217" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="76" posx="6.8949" posz="-46.0146" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="145" posx="3.2472" posz="-43.2563" orientx="0.0000" orienty="0.0000" orientz="1.0000">ypSPCIndianFortWallLarge</unit>
+		<unit variation="41" posx="-2.3350" posz="-42.9655" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpIndianFortCornerProp</unit>
+		<unit variation="41" posx="7.1337" posz="-42.5394" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpIndianFortCornerProp</unit>
+		<unit variation="29" posx="9.7285" posz="-43.9592" orientx="-1.0000" orienty="-0.0000" orientz="0.0001">UnderbrushDeccan</unit>
+		<unit variation="3" posx="11.4128" posz="-44.6110" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpPropJewishMarketStall</unit>
+		<unit variation="145" posx="7.7861" posz="-38.4803" orientx="-1.0000" orienty="0.0000" orientz="0.0000">ypSPCIndianFortWallLarge</unit>
+		<unit variation="178" posx="12.5693" posz="-41.8796" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="99" posx="10.3122" posz="-39.4967" orientx="-0.0000" orienty="0.0000" orientz="1.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="145" posx="7.7497" posz="-28.5964" orientx="-1.0000" orienty="0.0000" orientz="0.0000">ypSPCIndianFortWallLarge</unit>
+		<unit variation="232" posx="10.3617" posz="-32.4840" orientx="-0.0000" orienty="0.0000" orientz="1.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="1" posx="11.0952" posz="-27.8694" orientx="0.9239" orienty="0.0000" orientz="0.3826">zpPropOttomanMarketStall</unit>
+		<unit variation="41" posx="-1.4106" posz="-24.6690" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpIndianFortCornerProp</unit>
+		<unit variation="41" posx="6.9410" posz="-24.7009" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpIndianFortCornerProp</unit>
+		<unit variation="219" posx="13.6000" posz="-27.1367" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="145" posx="3.7660" posz="-23.8931" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">ypSPCIndianFortWallLarge</unit>
+		<unit variation="145" posx="-4.0705" posz="-20.7402" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">ypSPCIndianFortWallLarge</unit>
+		<unit variation="111" posx="9.8970" posz="-24.6521" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="121" posx="6.6938" posz="-19.6391" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="145" posx="-4.4075" posz="-12.8724" orientx="-0.7071" orienty="0.0000" orientz="0.7071">ypSPCIndianFortWallLarge</unit>
+		<unit variation="19" posx="-8.2950" posz="-16.4268" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpIndianFortCornerProp</unit>
+		<unit variation="138" posx="7.1642" posz="-13.5250" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">zpPropsColony</unit>
+		<unit variation="51" posx="5.9577" posz="-13.9663" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">zpPropsColony</unit>
+		<unit variation="145" posx="3.0362" posz="-9.9078" orientx="0.0000" orienty="0.0000" orientz="1.0000">ypSPCIndianFortWallLarge</unit>
+		<unit variation="41" posx="-1.6255" posz="-9.8882" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpIndianFortCornerProp</unit>
+		<unit variation="18" posx="6.6554" posz="-9.1844" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">ypSPCIndianFortWallSmall</unit>
+		<unit variation="41" posx="6.7658" posz="-9.5634" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpIndianFortCornerProp</unit>
+		<unit variation="95" posx="6.4670" posz="-2.7576" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">ypSPCIndianFortGate</unit>
+		<unit variation="13" posx="6.8967" posz="4.7712" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">ypSPCIndianFortWallMedium</unit>
+		<unit variation="145" posx="1.3084" posz="6.6286" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">ypSPCIndianFortWallLarge</unit>
+		<unit variation="41" posx="6.3961" posz="6.0399" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpIndianFortCornerProp</unit>
+		<unit variation="145" posx="-6.3564" posz="9.7281" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">ypSPCIndianFortWallLarge</unit>
+		<unit variation="41" posx="-3.9518" posz="6.1292" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpIndianFortCornerProp</unit>
+		<unit variation="21" posx="6.1279" posz="9.9807" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="101" posx="4.5580" posz="10.0287" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="242" posx="-10.2206" posz="13.4334" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpIndianFortCornerProp</unit>
+		<unit variation="145" posx="-6.1576" posz="17.0018" orientx="-0.7071" orienty="0.0000" orientz="0.7071">ypSPCIndianFortWallLarge</unit>
+		<unit variation="93" posx="7.7602" posz="16.9959" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="153" posx="5.9987" posz="17.1074" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="131" posx="4.8890" posz="16.6150" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="216" posx="5.7375" posz="15.6403" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="204" posx="3.6589" posz="15.9155" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">zpPropsColony</unit>
+		<unit variation="145" posx="1.5363" posz="20.1693" orientx="0.0000" orienty="0.0000" orientz="1.0000">ypSPCIndianFortWallLarge</unit>
+		<unit variation="41" posx="5.5839" posz="21.0918" orientx="-0.7071" orienty="0.0000" orientz="0.7072">zpIndianFortCornerProp</unit>
+		<unit variation="41" posx="-3.5030" posz="20.0336" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpIndianFortCornerProp</unit>
+		<unit variation="2" posx="9.0679" posz="19.4182" orientx="0.3828" orienty="0.0000" orientz="0.9239">zpPropOttomanMarketStall</unit>
+		<unit variation="145" posx="6.1781" posz="25.6996" orientx="-1.0000" orienty="0.0000" orientz="0.0000">ypSPCIndianFortWallLarge</unit>
+		<unit variation="79" posx="12.1157" posz="21.0808" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="232" posx="8.9285" posz="23.5187" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="1" posx="9.6372" posz="28.7906" orientx="-1.0000" orienty="0.0000" orientz="0.0001">zpPropOttomanMarketStall</unit>
+		<unit variation="145" posx="6.1986" posz="34.0575" orientx="-1.0000" orienty="0.0000" orientz="0.0000">ypSPCIndianFortWallLarge</unit>
+		<unit variation="99" posx="8.7559" posz="33.0111" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="145" posx="1.7172" posz="38.9315" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">ypSPCIndianFortWallLarge</unit>
+		<unit variation="41" posx="-3.2464" posz="37.7435" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpIndianFortCornerProp</unit>
+		<unit variation="41" posx="5.6284" posz="38.2191" orientx="-0.7072" orienty="0.0000" orientz="-0.7071">zpIndianFortCornerProp</unit>
+		<unit variation="201" posx="12.8116" posz="36.2100" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="145" posx="-6.0593" posz="42.0504" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">ypSPCIndianFortWallLarge</unit>
+		<unit variation="190" posx="3.6988" posz="40.9734" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="35" posx="11.2945" posz="39.4961" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpNativeUnitVenetianFemale</unit>
+		<unit variation="202" posx="3.1067" posz="44.0220" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="37" posx="-10.4986" posz="45.9893" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpIndianFortCornerProp</unit>
+		<unit variation="145" posx="-5.8848" posz="50.3729" orientx="-0.7071" orienty="0.0000" orientz="0.7071">ypSPCIndianFortWallLarge</unit>
+		<unit variation="82" posx="3.6536" posz="49.1170" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="117" posx="4.0159" posz="51.1492" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="112" posx="5.6334" posz="50.5897" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="145" posx="2.0768" posz="53.8476" orientx="0.0000" orienty="0.0000" orientz="1.0000">ypSPCIndianFortWallLarge</unit>
+		<unit variation="41" posx="-2.8350" posz="54.2455" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpIndianFortCornerProp</unit>
+		<unit variation="41" posx="6.5706" posz="54.7122" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpIndianFortCornerProp</unit>
+		<unit variation="229" posx="9.6542" posz="53.2714" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
+		<unit variation="3" posx="9.6506" posz="55.7971" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpPropOttomanMarketStall</unit>
+		<unit variation="145" posx="6.7003" posz="60.2697" orientx="-1.0000" orienty="0.0000" orientz="0.0000">ypSPCIndianFortWallLarge</unit>
+		<unit variation="171" posx="12.3694" posz="58.5378" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="99" posx="9.0818" posz="61.8097" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="145" posx="6.7178" posz="69.4997" orientx="-1.0000" orienty="0.0000" orientz="0.0000">ypSPCIndianFortWallLarge</unit>
+		<unit variation="41" posx="9.5741" posz="66.1554" orientx="-0.7981" orienty="0.0000" orientz="-0.6026">TreeCaribbean</unit>
+		<unit variation="201" posx="12.4886" posz="70.0909" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="45" posx="1.1085" posz="-50.8460" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deSPCEuroTower</unit>
+		<unit variation="38" posx="1.2985" posz="-16.3077" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deSPCEuroTower</unit>
+		<unit variation="80" posx="-0.6058" posz="13.7877" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deSPCEuroTower</unit>
+		<unit variation="50" posx="-1.3703" posz="46.1122" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deSPCEuroTower</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="new_england\river1_ne">
+			<block startx="-8" startz="-40" endx="-8" endz="-34"></block>
+			<block startx="-7" startz="-40" endx="-7" endz="-34"></block>
+			<block startx="-6" startz="-40" endx="-6" endz="-34"></block>
+			<block startx="-5" startz="-40" endx="-5" endz="-34"></block>
+			<block startx="-4" startz="-40" endx="-4" endz="-34"></block>
+			<block startx="-3" startz="-40" endx="-3" endz="-34"></block>
+			<block startx="-2" startz="-40" endx="-2" endz="-34"></block>
+			<block startx="-1" startz="-40" endx="-1" endz="-34"></block>
+			<block startx="-8" startz="-25" endx="-8" endz="-18"></block>
+			<block startx="-7" startz="-25" endx="-7" endz="-18"></block>
+			<block startx="-6" startz="-25" endx="-6" endz="-18"></block>
+			<block startx="-5" startz="-24" endx="-5" endz="-18"></block>
+			<block startx="-4" startz="-23" endx="-4" endz="-18"></block>
+			<block startx="-3" startz="-23" endx="-3" endz="-18"></block>
+			<block startx="-2" startz="-22" endx="-2" endz="-18"></block>
+			<block startx="-1" startz="-22" endx="-1" endz="-18"></block>
+			<block startx="-8" startz="-33" endx="-8" endz="-26"></block>
+			<block startx="-7" startz="-33" endx="-7" endz="-26"></block>
+			<block startx="-6" startz="-33" endx="-6" endz="-26"></block>
+			<block startx="-5" startz="-33" endx="-5" endz="-27"></block>
+			<block startx="-4" startz="-33" endx="-4" endz="-28"></block>
+			<block startx="-3" startz="-33" endx="-3" endz="-28"></block>
+			<block startx="-2" startz="-33" endx="-2" endz="-28"></block>
+			<block startx="-1" startz="-33" endx="-1" endz="-28"></block>
+			<block startx="0" startz="-33" endx="0" endz="-29"></block>
+			<block startx="1" startz="-33" endx="1" endz="-29"></block>
+			<block startx="2" startz="-33" endx="2" endz="-29"></block>
+			<block startx="3" startz="-32" endx="3" endz="-30"></block>
+			<block startx="0" startz="-22" endx="0" endz="-18"></block>
+			<block startx="1" startz="-22" endx="1" endz="-18"></block>
+			<block startx="2" startz="-23" endx="2" endz="-18"></block>
+			<block startx="3" startz="-21" endx="3" endz="-18"></block>
+			<block startx="0" startz="-40" endx="0" endz="-34"></block>
+			<block startx="1" startz="-40" endx="1" endz="-34"></block>
+			<block startx="2" startz="-40" endx="2" endz="-34"></block>
+			<block startx="3" startz="-40" endx="3" endz="-38"></block>
+			<block startx="-8" startz="-9" endx="-8" endz="-2"></block>
+			<block startx="-7" startz="-9" endx="-7" endz="-2"></block>
+			<block startx="-6" startz="-9" endx="-6" endz="-2"></block>
+			<block startx="-5" startz="-9" endx="-5" endz="-2"></block>
+			<block startx="-4" startz="-7" endx="-4" endz="-2"></block>
+			<block startx="-3" startz="-6" endx="-3" endz="-2"></block>
+			<block startx="-2" startz="-6" endx="-2" endz="-2"></block>
+			<block startx="-1" startz="-7" endx="-1" endz="-2"></block>
+			<block startx="-8" startz="-17" endx="-8" endz="-10"></block>
+			<block startx="-7" startz="-17" endx="-7" endz="-10"></block>
+			<block startx="-6" startz="-17" endx="-6" endz="-10"></block>
+			<block startx="-5" startz="-17" endx="-5" endz="-10"></block>
+			<block startx="-4" startz="-17" endx="-4" endz="-10"></block>
+			<block startx="-3" startz="-17" endx="-3" endz="-11"></block>
+			<block startx="-2" startz="-17" endx="-2" endz="-12"></block>
+			<block startx="-1" startz="-17" endx="-1" endz="-12"></block>
+			<block startx="-8" startz="7" endx="-8" endz="14"></block>
+			<block startx="-7" startz="7" endx="-7" endz="14"></block>
+			<block startx="-6" startz="7" endx="-6" endz="14"></block>
+			<block startx="-5" startz="7" endx="-5" endz="14"></block>
+			<block startx="-4" startz="8" endx="-4" endz="14"></block>
+			<block startx="-3" startz="9" endx="-3" endz="14"></block>
+			<block startx="-2" startz="9" endx="-2" endz="14"></block>
+			<block startx="-1" startz="10" endx="-1" endz="14"></block>
+			<block startx="-8" startz="-1" endx="-8" endz="6"></block>
+			<block startx="-7" startz="-1" endx="-7" endz="6"></block>
+			<block startx="-6" startz="-1" endx="-6" endz="6"></block>
+			<block startx="-5" startz="-1" endx="-5" endz="6"></block>
+			<block startx="-4" startz="-1" endx="-4" endz="5"></block>
+			<block startx="-3" startz="-1" endx="-3" endz="4"></block>
+			<block startx="-2" startz="-1" endx="-2" endz="4"></block>
+			<block startx="-1" startz="-1" endx="-1" endz="4"></block>
+			<block startx="0" startz="-1" endx="0" endz="4"></block>
+			<block startx="1" startz="-1" endx="1" endz="4"></block>
+			<block startx="2" startz="-1" endx="2" endz="5"></block>
+			<block startx="3" startz="-1" endx="3" endz="5"></block>
+			<block startx="0" startz="10" endx="0" endz="14"></block>
+			<block startx="1" startz="10" endx="1" endz="14"></block>
+			<block startx="0" startz="-17" endx="0" endz="-12"></block>
+			<block startx="1" startz="-17" endx="1" endz="-12"></block>
+			<block startx="2" startz="-17" endx="2" endz="-13"></block>
+			<block startx="3" startz="-17" endx="3" endz="-14"></block>
+			<block startx="0" startz="-7" endx="0" endz="-2"></block>
+			<block startx="1" startz="-7" endx="1" endz="-2"></block>
+			<block startx="2" startz="-7" endx="2" endz="-2"></block>
+			<block startx="3" startz="-5" endx="3" endz="-2"></block>
+			<block startx="-8" startz="23" endx="-8" endz="30"></block>
+			<block startx="-7" startz="23" endx="-7" endz="30"></block>
+			<block startx="-6" startz="23" endx="-6" endz="30"></block>
+			<block startx="-5" startz="23" endx="-5" endz="30"></block>
+			<block startx="-4" startz="23" endx="-4" endz="30"></block>
+			<block startx="-3" startz="25" endx="-3" endz="30"></block>
+			<block startx="-2" startz="26" endx="-2" endz="30"></block>
+			<block startx="-1" startz="26" endx="-1" endz="30"></block>
+			<block startx="-8" startz="15" endx="-8" endz="22"></block>
+			<block startx="-7" startz="15" endx="-7" endz="22"></block>
+			<block startx="-6" startz="15" endx="-6" endz="22"></block>
+			<block startx="-5" startz="15" endx="-5" endz="22"></block>
+			<block startx="-4" startz="15" endx="-4" endz="22"></block>
+			<block startx="-3" startz="15" endx="-3" endz="22"></block>
+			<block startx="-2" startz="15" endx="-2" endz="21"></block>
+			<block startx="-1" startz="15" endx="-1" endz="21"></block>
+			<block startx="-8" startz="39" endx="-8" endz="40"></block>
+			<block startx="-7" startz="39" endx="-7" endz="40"></block>
+			<block startx="-6" startz="39" endx="-6" endz="40"></block>
+			<block startx="-5" startz="39" endx="-5" endz="40"></block>
+			<block startx="-4" startz="39" endx="-4" endz="40"></block>
+			<block startx="-3" startz="39" endx="-3" endz="40"></block>
+			<block startx="-2" startz="39" endx="-2" endz="40"></block>
+			<block startx="-1" startz="39" endx="-1" endz="40"></block>
+			<block startx="-8" startz="31" endx="-1" endz="38"></block>
+			<block startx="0" startz="31" endx="0" endz="38"></block>
+			<block startx="1" startz="31" endx="1" endz="38"></block>
+			<block startx="2" startz="31" endx="2" endz="38"></block>
+			<block startx="0" startz="39" endx="0" endz="40"></block>
+			<block startx="1" startz="39" endx="1" endz="40"></block>
+			<block startx="2" startz="39" endx="2" endz="40"></block>
+			<block startx="3" startz="39" endx="3" endz="40"></block>
+			<block startx="5" startz="40" endx="5" endz="40"></block>
+			<block startx="0" startz="15" endx="0" endz="21"></block>
+			<block startx="1" startz="15" endx="1" endz="21"></block>
+			<block startx="2" startz="15" endx="2" endz="21"></block>
+			<block startx="0" startz="26" endx="0" endz="30"></block>
+			<block startx="1" startz="26" endx="1" endz="30"></block>
+			<block startx="2" startz="27" endx="2" endz="30"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="new_england\cliff_side_ne">
+			<block startx="4" startz="-31" endx="4" endz="-30"></block>
+			<block startx="4" startz="-20" endx="4" endz="-18"></block>
+			<block startx="4" startz="-40" endx="4" endz="-40"></block>
+			<block startx="4" startz="-1" endx="4" endz="4"></block>
+			<block startx="4" startz="-17" endx="4" endz="-14"></block>
+			<block startx="4" startz="-3" endx="4" endz="-2"></block>
+			<block startx="4" startz="40" endx="4" endz="40"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="props\east_colony2">
+			<block startx="-5" startz="-25" endx="-5" endz="-25"></block>
+			<block startx="-4" startz="-25" endx="-4" endz="-24"></block>
+			<block startx="-3" startz="-25" endx="-3" endz="-24"></block>
+			<block startx="-2" startz="-25" endx="-2" endz="-23"></block>
+			<block startx="-1" startz="-25" endx="-1" endz="-23"></block>
+			<block startx="-5" startz="-26" endx="-5" endz="-26"></block>
+			<block startx="-4" startz="-27" endx="-4" endz="-26"></block>
+			<block startx="-3" startz="-27" endx="-3" endz="-26"></block>
+			<block startx="-2" startz="-27" endx="-2" endz="-26"></block>
+			<block startx="-1" startz="-27" endx="-1" endz="-26"></block>
+			<block startx="0" startz="-28" endx="0" endz="-26"></block>
+			<block startx="1" startz="-28" endx="1" endz="-26"></block>
+			<block startx="2" startz="-28" endx="2" endz="-26"></block>
+			<block startx="3" startz="-33" endx="3" endz="-33"></block>
+			<block startx="3" startz="-29" endx="3" endz="-26"></block>
+			<block startx="4" startz="-33" endx="4" endz="-32"></block>
+			<block startx="4" startz="-29" endx="4" endz="-26"></block>
+			<block startx="5" startz="-33" endx="5" endz="-26"></block>
+			<block startx="6" startz="-33" endx="6" endz="-26"></block>
+			<block startx="7" startz="-33" endx="7" endz="-26"></block>
+			<block startx="0" startz="-25" endx="0" endz="-23"></block>
+			<block startx="1" startz="-25" endx="1" endz="-23"></block>
+			<block startx="2" startz="-25" endx="2" endz="-24"></block>
+			<block startx="3" startz="-25" endx="3" endz="-22"></block>
+			<block startx="4" startz="-25" endx="4" endz="-21"></block>
+			<block startx="5" startz="-25" endx="5" endz="-18"></block>
+			<block startx="6" startz="-25" endx="6" endz="-18"></block>
+			<block startx="7" startz="-25" endx="7" endz="-18"></block>
+			<block startx="3" startz="-37" endx="3" endz="-34"></block>
+			<block startx="4" startz="-39" endx="4" endz="-34"></block>
+			<block startx="5" startz="-40" endx="5" endz="-34"></block>
+			<block startx="6" startz="-40" endx="6" endz="-34"></block>
+			<block startx="7" startz="-40" endx="7" endz="-34"></block>
+			<block startx="-4" startz="-9" endx="-4" endz="-8"></block>
+			<block startx="-3" startz="-9" endx="-3" endz="-7"></block>
+			<block startx="-2" startz="-9" endx="-2" endz="-7"></block>
+			<block startx="-1" startz="-9" endx="-1" endz="-8"></block>
+			<block startx="-3" startz="-10" endx="-3" endz="-10"></block>
+			<block startx="-2" startz="-11" endx="-2" endz="-10"></block>
+			<block startx="-1" startz="-11" endx="-1" endz="-10"></block>
+			<block startx="-4" startz="7" endx="-4" endz="7"></block>
+			<block startx="-3" startz="7" endx="-3" endz="8"></block>
+			<block startx="-2" startz="7" endx="-2" endz="8"></block>
+			<block startx="-1" startz="7" endx="-1" endz="9"></block>
+			<block startx="-4" startz="6" endx="-4" endz="6"></block>
+			<block startx="-3" startz="5" endx="-3" endz="6"></block>
+			<block startx="-2" startz="5" endx="-2" endz="6"></block>
+			<block startx="-1" startz="5" endx="-1" endz="6"></block>
+			<block startx="0" startz="5" endx="0" endz="6"></block>
+			<block startx="1" startz="5" endx="1" endz="6"></block>
+			<block startx="2" startz="6" endx="2" endz="6"></block>
+			<block startx="3" startz="6" endx="3" endz="6"></block>
+			<block startx="4" startz="5" endx="4" endz="6"></block>
+			<block startx="5" startz="-1" endx="5" endz="6"></block>
+			<block startx="6" startz="-1" endx="6" endz="6"></block>
+			<block startx="7" startz="-1" endx="7" endz="6"></block>
+			<block startx="0" startz="7" endx="0" endz="9"></block>
+			<block startx="1" startz="7" endx="1" endz="9"></block>
+			<block startx="2" startz="7" endx="2" endz="14"></block>
+			<block startx="3" startz="7" endx="3" endz="14"></block>
+			<block startx="4" startz="7" endx="4" endz="14"></block>
+			<block startx="5" startz="7" endx="5" endz="14"></block>
+			<block startx="6" startz="7" endx="6" endz="14"></block>
+			<block startx="7" startz="7" endx="7" endz="14"></block>
+			<block startx="0" startz="-11" endx="0" endz="-10"></block>
+			<block startx="1" startz="-11" endx="1" endz="-10"></block>
+			<block startx="2" startz="-12" endx="2" endz="-10"></block>
+			<block startx="3" startz="-13" endx="3" endz="-10"></block>
+			<block startx="4" startz="-13" endx="4" endz="-10"></block>
+			<block startx="5" startz="-17" endx="5" endz="-10"></block>
+			<block startx="6" startz="-17" endx="6" endz="-10"></block>
+			<block startx="7" startz="-17" endx="7" endz="-10"></block>
+			<block startx="0" startz="-9" endx="0" endz="-8"></block>
+			<block startx="1" startz="-9" endx="1" endz="-8"></block>
+			<block startx="2" startz="-9" endx="2" endz="-8"></block>
+			<block startx="3" startz="-9" endx="3" endz="-6"></block>
+			<block startx="4" startz="-9" endx="4" endz="-4"></block>
+			<block startx="5" startz="-9" endx="5" endz="-2"></block>
+			<block startx="6" startz="-9" endx="6" endz="-2"></block>
+			<block startx="7" startz="-9" endx="7" endz="-2"></block>
+			<block startx="-3" startz="23" endx="-3" endz="24"></block>
+			<block startx="-2" startz="23" endx="-2" endz="25"></block>
+			<block startx="-1" startz="23" endx="-1" endz="25"></block>
+			<block startx="-2" startz="22" endx="-2" endz="22"></block>
+			<block startx="-1" startz="22" endx="-1" endz="22"></block>
+			<block startx="3" startz="31" endx="3" endz="38"></block>
+			<block startx="4" startz="31" endx="4" endz="38"></block>
+			<block startx="5" startz="31" endx="5" endz="38"></block>
+			<block startx="6" startz="31" endx="6" endz="38"></block>
+			<block startx="7" startz="31" endx="7" endz="38"></block>
+			<block startx="4" startz="39" endx="4" endz="39"></block>
+			<block startx="5" startz="39" endx="5" endz="39"></block>
+			<block startx="6" startz="39" endx="6" endz="40"></block>
+			<block startx="7" startz="39" endx="7" endz="40"></block>
+			<block startx="0" startz="22" endx="0" endz="22"></block>
+			<block startx="1" startz="22" endx="1" endz="22"></block>
+			<block startx="2" startz="22" endx="2" endz="22"></block>
+			<block startx="3" startz="15" endx="3" endz="22"></block>
+			<block startx="4" startz="15" endx="4" endz="22"></block>
+			<block startx="5" startz="15" endx="5" endz="22"></block>
+			<block startx="6" startz="15" endx="6" endz="22"></block>
+			<block startx="7" startz="15" endx="7" endz="22"></block>
+			<block startx="0" startz="23" endx="0" endz="25"></block>
+			<block startx="1" startz="23" endx="1" endz="25"></block>
+			<block startx="2" startz="23" endx="2" endz="26"></block>
+			<block startx="3" startz="23" endx="3" endz="30"></block>
+			<block startx="4" startz="23" endx="4" endz="30"></block>
+			<block startx="5" startz="23" endx="5" endz="30"></block>
+			<block startx="6" startz="23" endx="6" endz="30"></block>
+			<block startx="7" startz="23" endx="7" endz="30"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

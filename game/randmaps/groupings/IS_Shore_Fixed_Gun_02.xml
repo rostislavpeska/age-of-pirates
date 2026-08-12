@@ -50,6 +50,19 @@
 			<block startx="5" startz="-7" endx="5" endz="-1"></block>
 			<block startx="6" startz="-7" endx="6" endz="-1"></block>
 			<block startx="7" startz="-6" endx="7" endz="-2"></block>
+					<block startx="-5" startz="-7" endx="-5" endz="-7"></block>
+			<block startx="-4" startz="-7" endx="-4" endz="-7"></block>
+			<block startx="-3" startz="-7" endx="-3" endz="-7"></block>
+			<block startx="-2" startz="-7" endx="-2" endz="-7"></block>
+			<block startx="-1" startz="-7" endx="-1" endz="-7"></block>
+			<block startx="0" startz="-7" endx="0" endz="-7"></block>
+			<block startx="1" startz="-7" endx="1" endz="-7"></block>
+			<block startx="2" startz="-7" endx="2" endz="-7"></block>
+			<block startx="3" startz="-7" endx="3" endz="-7"></block>
+					<block startx="-6" startz="-6" endx="-6" endz="-6"></block>
+			<block startx="-5" startz="-6" endx="-5" endz="-6"></block>
+			<block startx="3" startz="-6" endx="3" endz="-6"></block>
+			<block startx="4" startz="-6" endx="4" endz="-6"></block>
 		</tilegroup>
 		<tilegroup type="Shoreline" subtype="carolinas\ground_shoreline1_car">
 			<block startx="-8" startz="-4" endx="-8" endz="-1"></block>
@@ -74,14 +87,9 @@
 			<block startx="7" startz="-1" endx="7" endz="-1"></block>
 		</tilegroup>
 		<cliffgroup type="ZP City Italian">
-			<block startx="-6" startz="-6" endx="-6" endz="-2"></block>
-			<block startx="-5" startz="-7" endx="-5" endz="-6"></block>
+			<block startx="-6" startz="-5" endx="-6" endz="-2"></block>
 			<block startx="-5" startz="-2" endx="-5" endz="-1"></block>
-			<block startx="-4" startz="-7" endx="-4" endz="-7"></block>
 			<block startx="-4" startz="-1" endx="-4" endz="-1"></block>
-			<block startx="-3" startz="-7" endx="-3" endz="-7"></block>
-			<block startx="-2" startz="-7" endx="-2" endz="-7"></block>
-			<block startx="-1" startz="-7" endx="-1" endz="-7"></block>
 			<block startx="-4" startz="0" endx="-4" endz="2"></block>
 			<block startx="-3" startz="2" endx="-3" endz="3"></block>
 			<block startx="-2" startz="3" endx="-2" endz="3"></block>
@@ -89,13 +97,9 @@
 			<block startx="0" startz="3" endx="0" endz="3"></block>
 			<block startx="1" startz="2" endx="1" endz="3"></block>
 			<block startx="2" startz="0" endx="2" endz="2"></block>
-			<block startx="0" startz="-7" endx="0" endz="-7"></block>
-			<block startx="1" startz="-7" endx="1" endz="-7"></block>
-			<block startx="2" startz="-7" endx="2" endz="-7"></block>
 			<block startx="2" startz="-1" endx="2" endz="-1"></block>
-			<block startx="3" startz="-7" endx="3" endz="-6"></block>
 			<block startx="3" startz="-2" endx="3" endz="-1"></block>
-			<block startx="4" startz="-6" endx="4" endz="-2"></block>
+			<block startx="4" startz="-5" endx="4" endz="-2"></block>
 		</cliffgroup>
 		<heights>
 			<tiles x="-8" z="-8">0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 </tiles>

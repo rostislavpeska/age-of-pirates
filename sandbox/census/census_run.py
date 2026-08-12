@@ -62,6 +62,13 @@ MAPS = {
                     nav=dict(down=54, row=1),
                     expect={"SocketCaribs": 4, "NativeHouseCarib": 8,
                             "TownCenter": 4}),
+    # calibrated 2026-08-12 by screenshotting the open dropdown: the list is
+    # sorted case-insensitively, so "_" (0x5F) sorts AFTER every letter and
+    # 000_istanbul lands below the 000<letter> maps, not above them.
+    # Cross-check: 000_Elbe showed at down=4,row=9 - the elbe recipe exactly.
+    "istanbul": dict(map_type="000_istanbul", players=2, teams=2,
+                     nav=dict(down=8, row=9),
+                     expect={"TownCenter": 2}),
 }
 
 

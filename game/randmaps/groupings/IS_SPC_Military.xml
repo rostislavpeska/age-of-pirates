@@ -29,16 +29,11 @@
 		<unit variation="83" posx="9.8349" posz="-2.4433" orientx="1.0000" orienty="0.0000" orientz="0.0000">ypSPCIndianFortWallBarracks</unit>
 		<unit variation="91" posx="-10.5746" posz="-2.8038" orientx="0.6992" orienty="0.0000" orientz="-0.7149">zpNatEUPropObelisk</unit>
 		<unit variation="5" posx="-11.0301" posz="-0.4068" orientx="0.3828" orienty="0.0000" orientz="0.9238">PropsColony</unit>
-		<unit variation="173" posx="2.9398" posz="-0.9940" orientx="-0.8553" orienty="0.0006" orientz="0.5181">zpGuardianCardinalGuard</unit>
-		<unit variation="207" posx="0.5686" posz="-1.1926" orientx="0.6916" orienty="-0.0007" orientz="0.7222">zpGuardianCardinalGuard</unit>
 		<unit variation="117" posx="-7.3857" posz="0.8948" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">ypSPCIndianFortWallSmall</unit>
 		<unit variation="145" posx="2.3730" posz="1.2453" orientx="-0.0001" orienty="-0.0000" orientz="-1.0000">zpSPCCapturableFlagInvisible</unit>
 		<unit variation="167" posx="2.1682" posz="1.1551" orientx="-0.0001" orienty="-0.0000" orientz="-1.0000">zpParisFlagNoIcon</unit>
-		<unit variation="106" posx="1.6031" posz="-0.2785" orientx="-0.0001" orienty="0.0124" orientz="-0.9999">zpGuardianCardinalGuard</unit>
 		<unit variation="149" posx="2.3980" posz="0.9262" orientx="-0.0001" orienty="-0.0000" orientz="-1.0000">zpNuggetKidnapGuillotine</unit>
 		<unit variation="177" posx="-8.8440" posz="2.4385" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">ypSPCIndianFortCorner</unit>
-		<unit variation="252" posx="0.4135" posz="2.8741" orientx="-0.2194" orienty="0.0122" orientz="-0.9756">Settler</unit>
-		<unit variation="214" posx="2.1672" posz="2.8952" orientx="-0.0683" orienty="0.0042" orientz="-0.9977">deGuardianCuirassier</unit>
 		<unit variation="38" posx="10.8557" posz="4.4067" orientx="1.0000" orienty="0.0000" orientz="-0.0000">ypSPCIndianFortWallMedium</unit>
 		<unit variation="117" posx="-9.2651" posz="4.7057" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">ypSPCIndianFortWallSmall</unit>
 		<unit variation="0" posx="-14.3100" posz="5.5619" orientx="0.7070" orienty="0.0000" orientz="-0.7072">PropsPoles</unit>
@@ -56,8 +51,6 @@
 		<unit variation="7" posx="-14.3677" posz="14.0880" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
 		<unit variation="1" posx="-6.8892" posz="14.3411" orientx="1.0000" orienty="0.0000" orientz="-0.0001">PropsPoles</unit>
 		<unit variation="1" posx="6.5821" posz="14.7627" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsPoles</unit>
-		<unit variation="126" posx="6.3413" posz="-7.8734" orientx="1.0000" orienty="0.0000" orientz="-0.0001">Outpost</unit>
-		<unit variation="126" posx="-6.8602" posz="3.6967" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">Outpost</unit>
 	</units>
 	<tiles>
 		<tilegroup type="Block" subtype="props\east_colony">

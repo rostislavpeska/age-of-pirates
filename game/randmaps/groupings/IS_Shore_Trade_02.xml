@@ -22,7 +22,15 @@
 		<unit variation="241" posx="6.4802" posz="7.5813" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPlatform</unit>
 		<unit variation="17" posx="-5.2360" posz="9.8923" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
 		<unit variation="232" posx="0.1310" posz="9.9644" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
-		<unit variation="144" posx="-2.3773" posz="3.1930" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpTradingPostCaptureNavalOriental</unit>
+		<unit variation="48" posx="-4.7978" posz="-11.9503" orientx="0.7071" orienty="0.0000" orientz="0.7071">deNativePropsCivilianLeaders</unit>
+		<unit variation="84" posx="3.5014" posz="-10.5665" orientx="-0.9819" orienty="0.0000" orientz="0.1893">ypSMSufiAccessory</unit>
+		<unit variation="197" posx="-4.6810" posz="-10.3152" orientx="0.9239" orienty="0.0000" orientz="-0.3827">dePropsAnimalsCamel</unit>
+		<unit variation="226" posx="0.4972" posz="-9.5372" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpHCFountainA</unit>
+		<unit variation="0" posx="0.4736" posz="-9.5739" orientx="-1.0000" orienty="0.0000" orientz="0.0006">SPCPathBlock1</unit>
+		<unit variation="84" posx="5.3076" posz="-10.0673" orientx="-0.8282" orienty="0.0000" orientz="-0.5605">ypSMSufiAccessory</unit>
+		<unit variation="3" posx="5.1310" posz="-8.3915" orientx="0.9240" orienty="0.0000" orientz="0.3823">zpPropJewishMarketStall</unit>
+		<unit variation="84" posx="-4.1454" posz="-7.7751" orientx="-0.8282" orienty="0.0000" orientz="-0.5605">ypSMSufiAccessory</unit>
+		<unit variation="1" posx="0.2890" posz="-5.5426" orientx="0.0000" orienty="0.0000" orientz="1.0000">Nugget</unit>
 	</units>
 	<tiles>
 		<tilegroup type="Shoreline" subtype="carolinas\ground_shoreline1_car">
