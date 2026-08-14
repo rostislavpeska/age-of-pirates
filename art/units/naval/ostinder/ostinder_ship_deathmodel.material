@@ -15,7 +15,7 @@
     <materialdef name="default_doublesided">
     </materialdef>
     <parameters>
-      <texture name="BaseColor" override="units\naval\ostinder\textures\ostinder_sails_matb_Basecolor">
+      <texture name="BaseColor" override="units\naval\ostinder\textures\ostinder_sails_jones_matb_BaseColor">
       </texture>
       <texture name="Normals" override="units\trade\trade_ships\textures\trade_ship_03_matb_Normals">
       </texture>
