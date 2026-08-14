@@ -1577,6 +1577,65 @@
       <bottomedge>new_england\cliff_side_ne</bottomedge>
     </textures>
   </cliff>
+  <cliff name="ZP Italian Impassable" blockland="1" blockwater="0" iconname="ui\editor\cliffCaribbean">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\underbrush\underbrush_forest_bush1" minedgedist="0.5" maxedgedist="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="0.5" maxedgedist="1.0" chance="0.05" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\underbrush\underbrush_forest_bush1" minedgedist="0.2" maxedgedist="1.0" chance="0.1" minscale="0.5" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="0.2" maxedgedist="1.0" chance="0.1" minscale="0.5" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_group1" minedgedist="0.5" maxedgedist="1.0" chance="0.08" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_group2" minedgedist="0.2" maxedgedist="1.0" chance="0.08" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_group3" minedgedist="0.2" maxedgedist="1.0" chance="0.08" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_group4" minedgedist="0.2" maxedgedist="1.0" chance="0.08" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_grass1" minedgedist="0.5" maxedgedist="2.0" chance="0.02" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_grass2" minedgedist="0.5" maxedgedist="2.0" chance="0.03" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_a_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_b_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_c_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_d_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <faceobjects>
+    </faceobjects>
+    <parameters>
+      <displacementamount>0.160000</displacementamount>
+      <shapecurve>1v{-0.127,1.218|0.062,0.578|-0.032,0.898|23309}{0.044,0.628|0.089,0.441|0.067,0.535|27413}{0.141,0.358|0.277,0.282|0.209,0.320|7774}{0.407,0.046|0.527,0.060|0.467,0.053|28377}{0.620,0.102|0.765,0.273|0.692,0.188|28748}{0.766,0.277|0.796,0.480|0.781,0.379|23438}{0.701,0.691|1.076,0.746|0.889,0.719|15592}{0.914,0.384|0.976,0.632|0.945,0.508|18700}</shapecurve>
+      <displacementmedianvalue>0.684000</displacementmedianvalue>
+      <triplanarscale>0.119000</triplanarscale>
+      <normalstrength>1.566000</normalstrength>
+      <secondarynormalstrength>3.932000</secondarynormalstrength>
+      <terrainblendtop>0.094000</terrainblendtop>
+      <terrainblendbottom>0.061000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\new_england_inland\new_england_inland_cliffs_basecolor</basecolor>
+      <normals>terrain\cliffs\new_england_inland\new_england_inland_cliffs_normals</normals>
+      <secondarynormals>terrain\cliffs\default\cliff_missing_normal</secondarynormals>
+      <heightmap>terrain\cliffs\new_england_inland\new_england_inland_cliffs_height</heightmap>
+      <mask>terrain\cliffs\new_england_inland\new_england_inland_cliffs_masks</mask>
+      <top>new_england\ground_zp_impassable_ne</top>
+      <topedge>new_england\ground_zp_impassable_ne</topedge>
+      <side>new_england\cliff_side_ne</side>
+      <edge>new_england\ground_zp_impassable_ne</edge>
+      <bottomedge>new_england\cliff_side_ne</bottomedge>
+    </textures>
+  </cliff>
   <cliff name="Italian Cliff River" blockland="1" blockwater="0" iconname="ui\editor\cliffCaribbean">
     <modelset>Default</modelset>
     <topobjects>

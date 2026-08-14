@@ -21,7 +21,7 @@
 		<unit variation="177" posx="7.7310" posz="-10.2450" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">ypSPCIndianFortCorner</unit>
 		<unit variation="2" posx="-14.0039" posz="-9.3382" orientx="0.3829" orienty="0.0000" orientz="-0.9238">PropsColony</unit>
 		<unit variation="158" posx="-8.6701" posz="-9.7672" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHCFountainA</unit>
-		<unit variation="5" posx="-3.1968" posz="-4.3469" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">ypSPCIndianFortGate</unit>
+		<unit variation="5" posx="-3.1968" posz="-4.3469" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpPassableGateIndian</unit>
 		<unit variation="177" posx="10.5502" posz="-7.1044" orientx="0.7071" orienty="-0.0000" orientz="-0.7071">ypSPCIndianFortCorner</unit>
 		<unit variation="0" posx="-14.1054" posz="-5.8455" orientx="0.7070" orienty="0.0000" orientz="-0.7072">PropsPoles</unit>
 		<unit variation="1" posx="14.5427" posz="-6.6391" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">PropsPoles</unit>

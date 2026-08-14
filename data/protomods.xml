@@ -71370,7 +71370,35 @@
       <rate type="Tree">1.000000</rate>
     </protoaction>
   </unit>
-
+   <unit id="30044" name="zpPassableGateIndian">
+    <dbid>30044</dbid>
+    <displaynameid>29634</displaynameid>
+    <editornameid>303321</editornameid>
+    <obstructionradiusx>0.0001</obstructionradiusx>
+    <obstructionradiusz>0.0001</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <animfile>buildings\asian_civs\spc\indian_fort\spc_indian_fort_gate_open.xml</animfile>
+    <icon>resources\art\buildings\spc\fort\spc_fort_gate_icon64x64.png</icon>
+    <portraiticon>resources\art\buildings\spc\fort\spc_fort_gate_portrait.png</portraiticon>
+    <los>0.0000</los>
+    <unittype>AbstractWall</unittype>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>DoesNotAutoAttack</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>HideFromHelp</flag>
+    <flag>NotCommandable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoIdleActions</flag>
+    <flag>Invulnerable</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>NonCollideable</flag>
+    <flag>OrientUnitWithGround</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>NoHPBar</flag>
+    <flag>Tracked</flag>
+    <flag>PlaceAnywhere</flag>
+  </unit>
   
 
   <!--TEST AND TEMPORARY CONTENT-->

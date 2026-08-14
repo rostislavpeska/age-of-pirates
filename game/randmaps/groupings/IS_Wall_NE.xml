@@ -55,7 +55,7 @@
 		<unit variation="41" posx="1.6255" posz="9.8882" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpIndianFortCornerProp</unit>
 		<unit variation="18" posx="-6.6554" posz="9.1844" orientx="1" orienty="-0.0000" orientz="-0">ypSPCIndianFortWallSmall</unit>
 		<unit variation="41" posx="-6.7658" posz="9.5634" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpIndianFortCornerProp</unit>
-		<unit variation="95" posx="-6.467" posz="2.7576" orientx="1" orienty="-0.0000" orientz="-0">ypSPCIndianFortGate</unit>
+		<unit variation="95" posx="-6.467" posz="2.7576" orientx="1" orienty="-0.0000" orientz="-0">zpPassableGateIndian</unit>
 		<unit variation="13" posx="-6.8967" posz="-4.7712" orientx="1" orienty="-0.0000" orientz="-0">ypSPCIndianFortWallMedium</unit>
 		<unit variation="145" posx="-1.3084" posz="-6.6286" orientx="0" orienty="0.0000" orientz="1">ypSPCIndianFortWallLarge</unit>
 		<unit variation="41" posx="-6.3961" posz="-6.0399" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpIndianFortCornerProp</unit>
