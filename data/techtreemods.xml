@@ -19949,6 +19949,22 @@
       <effect type="TechStatus" status="unobtainable">zpConverGate</effect>
     </effects>
   </tech>
+  <tech name="zpConvertWallIndian" type="Normal">
+    <dbid>408195</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TransformUnit" toprotoid="zpSPCFortStable" fromprotoid="ypSPCIndianFortWallStable">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpSPCFortBarracks" fromprotoid="ypSPCIndianFortWallBarracks">
+      </effect>
+      <effect type="TransformUnit" toprotoid="deSPCEuroTower" fromprotoid="zpSPCFortTowerProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="ypSPCIndianFortGate" fromprotoid="zpPassableGateIndian">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpConvertWallIndian</effect>
+    </effects>
+  </tech>
   <tech name="zpConvertWallBack" type="Normal">
     <dbid>40806</dbid>
     <status>UNOBTAINABLE</status>
