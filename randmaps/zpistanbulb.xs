@@ -267,6 +267,20 @@ float routeRealZ(int tradeRouteID = -1)
 }
 
 
+// One Home City water flag on a fixed spot, owned by the given player.
+// The spot is a plain literal pair at the call site - tune it by editing
+// the two numbers, the countryside-column mechanism.
+int gFlagIdx = 0;
+void placeWaterFlag(int p = -1, float x = 0.0, float z = 0.0)
+{
+	gFlagIdx = gFlagIdx + 1;
+	int flag = rmCreateObjectDef("water flag " + gFlagIdx);
+	rmAddObjectDefItem(flag, "HomeCityWaterSpawnFlag", 1, 0.0);
+	rmSetObjectDefMinDistance(flag, 0.0);
+	rmSetObjectDefMaxDistance(flag, 1.0);
+	rmPlaceObjectDefAtLoc(flag, p, x, z);
+}
+
 void main(void)
 {
 	rmSetStatusText("", 0.01);
@@ -824,13 +838,24 @@ void main(void)
 	//  5b. PLAYERS - the Florence system (zp_z_zflorence.xs 51-160)
 	// ========================================================================
 	// Roles, not lobby seats: the k-th defender is the k-th-lowest player ID
-	// on team 1. Team 1 = NORTH island, team 0 = SOUTH. The team's first two
-	// players spawn in the city (row 5, per the concept scenario); the 3rd..7th
-	// spawn on the countryside outside the wall, each on its own literal spot
-	// with a pre-built clearing. 2-TEAM MAPS ONLY - other configs place
-	// nobody, exactly like Florence.
-	int teamZeroCount = rmGetNumberPlayersOnTeam(0);
-	int teamOneCount = rmGetNumberPlayersOnTeam(1);
+	// on the NORTH team, the k-th attacker the same on the SOUTH team. WHICH
+	// lobby team holds which island is a coin flip per generation (sideRoll),
+	// so team 1 can start north or south. Seats per team size:
+	//   1 player  -> the harbour corner seat (flank sea + pirate camp)
+	//   2 players -> harbour corner + the mid countryside spot by the gate
+	//   3 players -> both city seats + 1 countryside
+	//   4 and up  -> both city seats + the countryside column, as before
+	// 2-TEAM MAPS ONLY - other configs place nobody, exactly like Florence.
+	int sideRoll = rmRandInt(0, 1);
+	int northTeam = 1;
+	int southTeam = 0;
+	if (sideRoll == 1)
+	{
+		northTeam = 0;
+		southTeam = 1;
+	}
+	int northCount = rmGetNumberPlayersOnTeam(northTeam);
+	int southCount = rmGetNumberPlayersOnTeam(southTeam);
 	int firstDefender = -1;   int firstAttacker = -1;
 	int secondDefender = -1;   int secondAttacker = -1;
 	int thirdDefender = -1;   int thirdAttacker = -1;
@@ -839,43 +864,72 @@ void main(void)
 	int sixthDefender = -1;   int sixthAttacker = -1;
 	int seventhDefender = -1;   int seventhAttacker = -1;
 
-	for (pf = 1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == 1) { firstDefender = pf; break; } }
-	for (pf = firstDefender+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == 1) { secondDefender = pf; break; } }
-	for (pf = secondDefender+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == 1) { thirdDefender = pf; break; } }
-	for (pf = thirdDefender+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == 1) { fourthDefender = pf; break; } }
-	for (pf = fourthDefender+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == 1) { fifthDefender = pf; break; } }
-	for (pf = fifthDefender+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == 1) { sixthDefender = pf; break; } }
-	for (pf = sixthDefender+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == 1) { seventhDefender = pf; break; } }
-	for (pf = 1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == 0) { firstAttacker = pf; break; } }
-	for (pf = firstAttacker+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == 0) { secondAttacker = pf; break; } }
-	for (pf = secondAttacker+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == 0) { thirdAttacker = pf; break; } }
-	for (pf = thirdAttacker+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == 0) { fourthAttacker = pf; break; } }
-	for (pf = fourthAttacker+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == 0) { fifthAttacker = pf; break; } }
-	for (pf = fifthAttacker+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == 0) { sixthAttacker = pf; break; } }
-	for (pf = sixthAttacker+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == 0) { seventhAttacker = pf; break; } }
+	for (pf = 1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == northTeam) { firstDefender = pf; break; } }
+	for (pf = firstDefender+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == northTeam) { secondDefender = pf; break; } }
+	for (pf = secondDefender+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == northTeam) { thirdDefender = pf; break; } }
+	for (pf = thirdDefender+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == northTeam) { fourthDefender = pf; break; } }
+	for (pf = fourthDefender+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == northTeam) { fifthDefender = pf; break; } }
+	for (pf = fifthDefender+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == northTeam) { sixthDefender = pf; break; } }
+	for (pf = sixthDefender+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == northTeam) { seventhDefender = pf; break; } }
+	for (pf = 1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == southTeam) { firstAttacker = pf; break; } }
+	for (pf = firstAttacker+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == southTeam) { secondAttacker = pf; break; } }
+	for (pf = secondAttacker+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == southTeam) { thirdAttacker = pf; break; } }
+	for (pf = thirdAttacker+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == southTeam) { fourthAttacker = pf; break; } }
+	for (pf = fourthAttacker+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == southTeam) { fifthAttacker = pf; break; } }
+	for (pf = fifthAttacker+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == southTeam) { sixthAttacker = pf; break; } }
+	for (pf = sixthAttacker+1; <= cNumberNonGaiaPlayers) { if (rmGetPlayerTeam(pf) == southTeam) { seventhAttacker = pf; break; } }
 
 	int outN = 0;
 	int outS = 0;
+	int citySeatsN = 1;
+	int citySeatsS = 1;
+	int outFirstDef = -1;
+	int outFirstAtt = -1;
 	if (cNumberTeams == 2)
 	{
-		// city pair, row 5: north columns 2 and 5 (the concept scenario), the
-		// south pair turned 180 deg like fortS/factoryS - columns 4 and 1. A
-		// mirror (sx2) put the lone 1v1 attacker against the wall flank while
-		// the defender sat by the coast; rotation gives both the coast end.
-		rmPlacePlayer(firstDefender, nx2, nz5);
-		if (teamOneCount >= 2) { rmPlacePlayer(secondDefender, nx5, nz5); }
-		rmPlacePlayer(firstAttacker, sx4, sz5);
-		if (teamZeroCount >= 2) { rmPlacePlayer(secondAttacker, sx1, sz5); }
+		// city seats, row 5. The HARBOUR corner - (nx5,nz5) north, its 180 deg
+		// turn (sx1,sz5) south - borders the flank sea and the pirate camp, so
+		// a team's FIRST seat is there whenever it fields 1 or 2 players (a
+		// 2-player team keeps ONE city seat; its second player starts on the
+		// countryside instead). From 3 players up both city seats fill exactly
+		// as before: first at the wall-side column (nx2 / sx4, the concept
+		// scenario), second at the harbour corner.
+		if (northCount >= 3) citySeatsN = 2;
+		if (southCount >= 3) citySeatsS = 2;
+		if (citySeatsN == 1)
+		{
+			rmPlacePlayer(firstDefender, nx5, nz5);
+		}
+		if (citySeatsN == 2)
+		{
+			rmPlacePlayer(firstDefender, nx2, nz5);
+			rmPlacePlayer(secondDefender, nx5, nz5);
+		}
+		if (citySeatsS == 1)
+		{
+			rmPlacePlayer(firstAttacker, sx1, sz5);
+		}
+		if (citySeatsS == 2)
+		{
+			rmPlacePlayer(firstAttacker, sx4, sz5);
+			rmPlacePlayer(secondAttacker, sx1, sz5);
+		}
 
 		// countryside column outside each wall: separate literals per count,
 		// evenly spread, every spot >= 36 m from every lane segment incl. snap.
 		// South is NOT a point-mirror of north (the island sits 10 t west); its
 		// column is derived in its own frame.
-		outN = teamOneCount - 2;
-		outS = teamZeroCount - 2;
+		// The FIRST countryside player is the team's SECOND member when it
+		// fields exactly 2, the third member from 3 up.
+		outFirstDef = thirdDefender;
+		if (northCount == 2) outFirstDef = secondDefender;
+		outFirstAtt = thirdAttacker;
+		if (southCount == 2) outFirstAtt = secondAttacker;
+		outN = northCount - citySeatsN;
+		outS = southCount - citySeatsS;
 		if (outN == 1)
 		{
-			rmPlacePlayer(thirdDefender, 0.220, 0.750);
+			rmPlacePlayer(outFirstDef, 0.220, 0.750);
 		}
 		if (outN == 2)
 		{
@@ -905,7 +959,7 @@ void main(void)
 		}
 		if (outS == 1)
 		{
-			rmPlacePlayer(thirdAttacker, 0.745, 0.250);
+			rmPlacePlayer(outFirstAtt, 0.745, 0.250);
 		}
 		if (outS == 2)
 		{
@@ -1878,24 +1932,41 @@ void main(void)
 
 	if (cNumberTeams == 2)
 	{
-		rmPlaceGroupingAtLoc(blockStartCity, firstDefender, nx2, nz5);
-		rmPlaceGroupingAtLoc(blockConstrCity, 0, nx1, nz5);
-		rmPlaceGroupingAtLoc(blockConstrCity, 0, nx1, nz6);
-		rmPlaceGroupingAtLoc(blockConstrCity, 0, nx2, nz6);
-		if (teamOneCount >= 2)
+		// blocks mirror the seat logic: one city seat = the harbour-corner
+		// block + its own constr cells only; the wall-side columns stay in
+		// the house pool. Two seats = the exact original sequence.
+		if (citySeatsN == 2)
 		{
+			rmPlaceGroupingAtLoc(blockStartCity, firstDefender, nx2, nz5);
+			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx1, nz5);
+			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx1, nz6);
+			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx2, nz6);
 			rmPlaceGroupingAtLoc(blockStartCity, secondDefender, nx5, nz5);
 			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx4, nz5);
 			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx4, nz6);
 			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx5, nz6);
 		}
-		rmPlaceGroupingAtLoc(blockStartCity, firstAttacker, sx4, sz5);
-		rmPlaceGroupingAtLoc(blockConstrCity, 0, sx5, sz5);
-		rmPlaceGroupingAtLoc(blockConstrCity, 0, sx5, sz6);
-		rmPlaceGroupingAtLoc(blockConstrCity, 0, sx4, sz6);
-		if (teamZeroCount >= 2)
+		if (citySeatsN == 1)
 		{
+			rmPlaceGroupingAtLoc(blockStartCity, firstDefender, nx5, nz5);
+			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx4, nz5);
+			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx4, nz6);
+			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx5, nz6);
+		}
+		if (citySeatsS == 2)
+		{
+			rmPlaceGroupingAtLoc(blockStartCity, firstAttacker, sx4, sz5);
+			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx5, sz5);
+			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx5, sz6);
+			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx4, sz6);
 			rmPlaceGroupingAtLoc(blockStartCity, secondAttacker, sx1, sz5);
+			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx2, sz5);
+			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx2, sz6);
+			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx1, sz6);
+		}
+		if (citySeatsS == 1)
+		{
+			rmPlaceGroupingAtLoc(blockStartCity, firstAttacker, sx1, sz5);
 			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx2, sz5);
 			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx2, sz6);
 			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx1, sz6);
@@ -2297,8 +2368,12 @@ void main(void)
 			rmPlaceObjectDefAtLoc(playerStartUnits, pk,
 				rmPlayerLocXFraction(pk), rmPlayerLocZFraction(pk));
 			rmPlaceObjectDefAtLoc(aiUrban, pk, 0.5, 0.5);
-			if (pk != firstDefender && pk != secondDefender
-				&& pk != firstAttacker && pk != secondAttacker)
+			bool pkInCity = false;
+			if (pk == firstDefender) pkInCity = true;
+			if (pk == firstAttacker) pkInCity = true;
+			if (pk == secondDefender && citySeatsN == 2) pkInCity = true;
+			if (pk == secondAttacker && citySeatsS == 2) pkInCity = true;
+			if (pkInCity == false)
 			{
 				int postDef = rmCreateObjectDef("command post " + pk);
 				rmAddObjectDefItem(postDef, "deSPCCommandPost", 1, 2.0);
@@ -2534,6 +2609,57 @@ void main(void)
 	rmPlaceObjectDefInArea(nuggetCountry, 0, wildLowE, 2 + resScale);
 	rmPlaceObjectDefInArea(nuggetCountry, 0, fillW, 1 + resScale);
 	rmPlaceObjectDefInArea(nuggetCountry, 0, fillE, 1 + resScale);
+
+	// ========================================================================
+	//  PLAYER WATER FLAGS - fixed slots per TEAM MATE 1..7.
+	//  Defenders hold the NORTH island, so their flags stand in the BLACK
+	//  SEA; attackers get the MEDITERRANEAN - always their own sea, even
+	//  when the enemy sea is physically closer. The side swap re-keys the
+	//  roles, so the flags follow the team automatically.
+	//  Mates 1-3: off the MOLO HEADS - the three flank shoreline deco
+	//  piers, derived from the SAME measured anchors (decoNE/SW), pushed
+	//  flagMoloOut tiles further seaward. MEASURED from the grouping XML:
+	//  the pier head plank sits +8.06 m seaward of the grouping centre on
+	//  its mid line, so N = 7 t (14 m) puts the flag ~6 m off the head.
+	//  Move a pier, the flag follows.
+	//  Mates 4-7: the water band between the countryside shoreline and
+	//  the naval KotH fort, strung shore -> fort, plain literal pairs.
+	//  HARD LAW - radius: rmSetWorldCircleConstraint(true) drops any spot
+	//  further than ~half the map from (0.5, 0.5) SILENTLY. Measured on
+	//  this map: r 0.469 spawns, r 0.512 does not. Keep literals <= 0.455;
+	//  Slot order per coast: hinter-flank pier (behind the pirates) FIRST,
+	//  middle pier second, strait-side pier third. South open-water piers
+	//  go 10 t out; its hinter pier is capped at flagMoloOutS3 = 6: the
+	//  island sits 10 t west, so that pier is near the rim, and 6 t is the
+	//  most that keeps the flag under the proven-spawn radius (~0.466 vs
+	//  the 0.469 measured bound). More seaward = silent drop; if it must
+	//  move visually, shift its Z channel-ward instead.
+	// ========================================================================
+	if (cNumberTeams == 2)
+	{
+		int flagMoloOutN = 7;
+		int flagMoloOutS = 10;
+		int flagMoloOutS3 = 6;   // radius ceiling - see the HARD LAW above
+		float flagNEX = decoNEX + rmXTilesToFraction(flagMoloOutN);
+		float flagSWX = decoSWX - rmXTilesToFraction(flagMoloOutS);
+		float flagSWX3 = decoSWX - rmXTilesToFraction(flagMoloOutS3);
+		placeWaterFlag(firstDefender, flagNEX, decoNEZ3);
+		// middle-pier flags sit 2 t channel-ward, clear of the pirate buoy
+		if (northCount >= 2) placeWaterFlag(secondDefender, flagNEX, decoNEZ2 - rmZTilesToFraction(2));
+		if (northCount >= 3) placeWaterFlag(thirdDefender, flagNEX, decoNEZ1);
+		if (northCount >= 4) placeWaterFlag(fourthDefender, 0.76, 0.86);
+		if (northCount >= 5) placeWaterFlag(fifthDefender, 0.80, 0.82);
+		if (northCount >= 6) placeWaterFlag(sixthDefender, 0.84, 0.78);
+		if (northCount >= 7) placeWaterFlag(seventhDefender, 0.76, 0.81);
+
+		placeWaterFlag(firstAttacker, flagSWX3, decoSWZ3);
+		if (southCount >= 2) placeWaterFlag(secondAttacker, flagSWX, decoSWZ2 + rmZTilesToFraction(2));
+		if (southCount >= 3) placeWaterFlag(thirdAttacker, flagSWX, decoSWZ1);
+		if (southCount >= 4) placeWaterFlag(fourthAttacker, 0.22, 0.15);
+		if (southCount >= 5) placeWaterFlag(fifthAttacker, 0.18, 0.18);
+		if (southCount >= 6) placeWaterFlag(sixthAttacker, 0.16, 0.22);
+		if (southCount >= 7) placeWaterFlag(seventhAttacker, 0.22, 0.19);
+	}
 
 	// ========================================================================
 	//  UNIT IDS - every id a trigger targets, derived HERE and nowhere else
