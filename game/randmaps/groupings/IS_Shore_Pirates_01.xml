@@ -100,7 +100,7 @@
 		<unit variation="202" posx="-4.4868" posz="16.1580" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpHarbourPlatform</unit>
 		<unit variation="214" posx="-9.1637" posz="17.4906" orientx="1.0000" orienty="0.0000" orientz="-0.0001">zpHarbourPlatform</unit>
 		<unit variation="64" posx="1.4460" posz="18.5061" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
-		<unit variation="3" posx="1.5513" posz="14.9240" orientx="-0.7071" orienty="0.0000" orientz="0.7072">zpPropJewishMarketStall</unit>
+		<unit variation="2" posx="1.5513" posz="14.9240" orientx="-0.7071" orienty="0.0000" orientz="0.7072">zpPropJewishMarketStall</unit>
 		<unit variation="64" posx="7.3034" posz="8.5524" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSocketPirates</unit>
 	</units>
 	<tiles>

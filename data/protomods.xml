@@ -47716,6 +47716,75 @@
     <flag>NotDeleteable</flag>
     <flag>TieToWaterSurface</flag>
   </unit>
+  <unit id="30045" name="zpKingsHillNavalMedi">
+    <dbid>30045</dbid>
+    <displaynameid>303322</displaynameid>
+    <editornameid>303323</editornameid>
+    <obstructionradiusx>6.0000</obstructionradiusx>
+    <obstructionradiusz>6.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>buildings\wonders\agra_fort\water_fort.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\fort\fort_icon.png</icon>
+    <minimapicon>ui\minimap\fort_star_16x16</minimapicon>
+    <portraiticon>resources\art\buildings\waterfort_portrait.png</portraiticon>
+    <rollovertextid>302232</rollovertextid>
+    <shortrollovertextid>302233</shortrollovertextid>
+    <initialhitpoints>6500.0000</initialhitpoints>
+    <maxhitpoints>6500.0000</maxhitpoints>
+    <los>38.0000</los>
+    <bounty>240.0000</bounty>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>AbstractTownCenter</unittype>
+    <unittype>ConvertsHerds</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
+    <unittype>AbstractFindFort</unittype>
+    <flag>Invulnerable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>StartingColonyBuilding</flag>
+    <flag>ColonyPlacementCenter</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>Tracked</flag>
+    <flag>NotDeleteable</flag>
+    <flag>TieToWaterSurface</flag>
+  </unit>
   <unit id="20630" name="zpPropWaterTower">
     <dbid>20630</dbid>
     <displaynameid>302230</displaynameid>
@@ -71374,8 +71443,8 @@
     <dbid>30044</dbid>
     <displaynameid>29634</displaynameid>
     <editornameid>303321</editornameid>
-    <obstructionradiusx>0.0001</obstructionradiusx>
-    <obstructionradiusz>0.0001</obstructionradiusz>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <animfile>buildings\asian_civs\spc\indian_fort\spc_indian_fort_gate_open.xml</animfile>
     <icon>resources\art\buildings\spc\fort\spc_fort_gate_icon64x64.png</icon>
@@ -77539,54 +77608,4 @@
     <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
   </protoaction>
 </unit>
-
-  <unit id="20121" name="zpSocketInuits">
-    <dbid>20121</dbid>
-    <displaynameid>300564</displaynameid>
-    <editornameid>300563</editornameid>
-    <subciv>InuitNatives</subciv>
-    <socketbuildprotounit>TradingPost</socketbuildprotounit>
-    <socketbuildrate>1.2000</socketbuildrate>
-    <socketbuildcommandid>deSocketBuildNative</socketbuildcommandid>
-    <obstructionradiusx>4.0000</obstructionradiusx>
-    <obstructionradiusz>4.0000</obstructionradiusz>
-    <maxvelocity>0.0000</maxvelocity>
-    <movementtype>land</movementtype>
-    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
-    <animfile>buildings\trading_post\native_outpost_socket.xml</animfile>
-    <minimapicon>ui\minimap\n</minimapicon>
-    <capturedminimapicon>ui\minimap\n_c</capturedminimapicon>
-    <portraiticon>resources\art\units\natives\settlement_inuit.png</portraiticon>
-    <rollovertextid>32940</rollovertextid>
-    <shortrollovertextid>32940</shortrollovertextid>
-    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
-    <los>12.0000</los>
-    <unittype>LogicalTypeBuildingsNotWalls</unittype>
-    <unittype>LogicalTypeShipsAndBuildings</unittype>
-    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
-    <unittype>TradePostSocket</unittype>
-    <unittype>NativeSocket</unittype>
-    <unittype>Socket</unittype>
-    <unittype>Building</unittype>
-    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
-    <unittype>Unattackable</unittype>
-    <unittype>NativeBuilding</unittype>
-    <unittype>EmbellishmentClass</unittype>
-    <unittype>CapturableSocket</unittype>
-    <flag>Immoveable</flag>
-    <flag>NoBloodOnDeath</flag>
-    <flag>NoHPBar</flag>
-    <flag>NonAutoFormedUnit</flag>
-    <flag>Doppled</flag>
-    <flag>Invulnerable</flag>
-    <flag>ColorTransformNonGaia</flag>
-    <flag>SelectWithObstruction</flag>
-    <flag>Tracked</flag>
-    <flag>NativePreview</flag>
-    <flag>NotDeleteable</flag>
-    <flag>SocketSubCivAlliance</flag>
-    <flag>ForceUpdateVisualWhenCnverted</flag>
-    <flag>EnterHotkeyContext</flag>
-    <tactics>socketcapture.tactics</tactics>
-  </unit>
 </protomods>

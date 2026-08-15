@@ -15,7 +15,7 @@
 		<unit variation="91" posx="8.8371" posz="-9.7085" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpHarbourPlatform</unit>
 		<unit variation="137" posx="0.3776" posz="-12.2896" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpSPCDamagedProps</unit>
 		<unit variation="214" posx="13.2847" posz="-9.1301" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
-		<unit variation="3" posx="-2.5470" posz="-12.7271" orientx="0.7071" orienty="0.0000" orientz="-0.7072">zpPropJewishMarketStall</unit>
+		<unit variation="2" posx="-2.5470" posz="-12.7271" orientx="0.7071" orienty="0.0000" orientz="-0.7072">zpPropJewishMarketStall</unit>
 		<unit variation="102" posx="1.3924" posz="-9.4648" orientx="0.0001" orienty="-0.0000" orientz="1.0000">NativeTownObstruction</unit>
 		<unit variation="253" posx="-0.4322" posz="-11.3037" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCDamagedProps</unit>
 		<unit variation="42" posx="-0.2864" posz="-9.4589" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpSPCDamagedProps</unit>

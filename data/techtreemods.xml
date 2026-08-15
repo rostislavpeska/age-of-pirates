@@ -7849,6 +7849,10 @@
       </effect>
       <effect type="SetName" proto="ypSPCIndianFortWallSmall" culture="none" newname="34609">
       </effect>  
+      <effect type="SetName" proto="ypSPCIndianFortWallStable" culture="none" newname="34609">
+      </effect>  
+      <effect type="SetName" proto="ypSPCIndianFortWallBarracks" culture="none" newname="34609">
+      </effect>  
     </effects>
   </tech>
   <tech name="NativeTreatyJewish" type="Normal">
@@ -36087,7 +36091,7 @@
   </tech>
 
   <tech name="zpEstateSiteDecrease" type="Normal">
-    <dbid>41350</dbid>
+    <dbid>41351</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
@@ -36615,6 +36619,45 @@
     <effects>
       <effect type="Data2" amount="1.00" amount2="24.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCRegalShip" unittype2="ypConsulateVoltigeur" relativity="Absolute">
         <target type="Player"></target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpBosporusMapSetup" type="Normal">
+    <dbid>41359</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCOttomanHeritage</effect>
+      <effect type="TechStatus" status="obtainable">DESPCTaulaDeCanvi</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
+      <effect type="TechStatus" status="active">zpArabiaPlayerFortShadow</effect>
+      <effect type="Data" amount="0.00" subtype="CopyTechIcon" tech="zpBlessedCityOrientalIcon" relativity="Absolute">
+        <target type="Tech">zpSPCBlessedCity</target>
+      </effect>
+      <effect type="CommandRemove" tech="DESPCMercenaryBounties">
+        <target type="ProtoUnit">zpSPCIstanbulMosque</target>
+      </effect>
+      <effect type="CommandRemove" command="FourOfAKind">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="NativeEmbassy" relativity="Absolute">
+        <target type="ProtoUnit">deIconEuropeanEmbassy</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="CopyUnitPortraitAndIcon" unittype="deEmbassyTravois" relativity="Absolute">
+        <target type="ProtoUnit">deIconEuropeanEmbassyTravois</target>
+      </effect>
+      <effect type="SetName" proto="NativeEmbassy" culture="none" newname="124945">
+      </effect>
+      <effect type="SetName" proto="deEmbassyTravois" culture="none" newname="80597" newrollover="103345" newshortrollover="103344">
+      </effect>
+      <effect type="TechStatus" status="active">deMapIsEuropean</effect>
+      <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="NativeEmbassy" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>         
+      <effect type="SetName" proto="zpKingsHillNaval" culture="none" newname="303324">
       </effect>
     </effects>
   </tech>

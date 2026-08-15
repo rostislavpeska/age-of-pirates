@@ -950,9 +950,6 @@ void main(void)
 	rmPlaceObjectDefAtLoc(pirateFlagDefN, 0,
 		nPirateX + rmXMetersToFraction(13.2335),
 		nPirateZ - rmZMetersToFraction(14.3030));
-	int pirateFlagN = rmGetUnitPlaced(pirateFlagDefN, 0);
-	int pirateSocketN = pirateFlagN+1;
-	rmEchoInfo("pirate ids north: flag="+pirateFlagN+" socket="+pirateSocketN);
 
 	placeShoreIsland(pirateS, sPirateX, sPirateZ);   // south island, back of its coast
 	int pirateFlagDefS = rmCreateObjectDef("pirate water flag south");
@@ -960,9 +957,6 @@ void main(void)
 	rmPlaceObjectDefAtLoc(pirateFlagDefS, 0,
 		sPirateX - rmXMetersToFraction(13.5373),
 		sPirateZ + rmZMetersToFraction(16.0665));
-	int pirateFlagS = rmGetUnitPlaced(pirateFlagDefS, 0);
-	int pirateSocketS = pirateFlagS+1;
-	rmEchoInfo("pirate ids south: flag="+pirateFlagS+" socket="+pirateSocketS);
 
 
 	int flankSocketN = rmCreateObjectDef("flank harbour socket north");
@@ -2321,6 +2315,10 @@ void main(void)
 	// resource abundance grows with the lobby: 1 at 4 players, 2 at 8
 	int resScale = cNumberNonGaiaPlayers / 4;
 	int treeVsTree = rmCreateTypeDistanceConstraint("tree clump v tree clump", "deTreeCypress", 20.0);
+	// trees keep the socket approaches clear (000_blacksea.xs 242 idiom -
+	// "Socket" is the abstract type all sockets carry); a clump centre 20 m
+	// out keeps its widest items ~9 m off the socket ring
+	int avoidSocketTrees = rmCreateTypeDistanceConstraint("trees off sockets", "Socket", 20.0);
 	int mineVsMine = rmCreateTypeDistanceConstraint("mine v mine", "MineCopper", 70.0);
 	int deerVsDeer = rmCreateTypeDistanceConstraint("herd v herd", "Deer", 40.0);
 	int fishVsFish = rmCreateTypeDistanceConstraint("fish v fish", "FishSardine", 18.0);
@@ -2335,6 +2333,7 @@ void main(void)
 	rmAddObjectDefItem(contTrees, "TreeGreatLakes", rmRandInt(3, 5), 11.0);
 	rmAddObjectDefItem(contTrees, "ypTreeEucalyptus", rmRandInt(2, 4), 9.0);
 	rmAddObjectDefConstraint(contTrees, treeVsTree);
+	rmAddObjectDefConstraint(contTrees, avoidSocketTrees);
 	rmAddObjectDefConstraint(contTrees, dockAvoidBlocks);
 	rmAddObjectDefConstraint(contTrees, avoidWallObjTree);
 	rmAddObjectDefConstraint(contTrees, belowCliffs);
@@ -2393,12 +2392,55 @@ void main(void)
 
 	// fish and whales - Black Sea's block (000_blacksea.xs 1266-1288) with
 	// Aegean protos: sardines along the shores, humpbacks in open water
+	// ---- WATER FORTS - the zpcaribbeanwars.xs KotH castle (its 261-267) ---
+	// One per sea, the south one turned 180 deg through the map centre.
+	// Placed BEFORE the fish and whales so their avoid constraints react to
+	// the placed fort units (grouping loads from the profile folder).
+	// MEASURED clear water: the old (0.80, 0.86) sat 15 m off the north
+	// trade lane's (0.90,0.90) starting leg - the route corridor ate the
+	// fort. These spots keep 58+ m from BOTH route polylines, radius 0.44.
+	float waterFortNX = 0.88;   // Black Sea fort - tune both, south derives
+	float waterFortNZ = 0.72;
+	int waterFortN = rmCreateGrouping("water fort north", "Caribbean_Naval_KotH");
+	rmSetGroupingMinDistance(waterFortN, 0.00);
+	rmSetGroupingMaxDistance(waterFortN, 0.01);
+	rmAddGroupingToClass(waterFortN, rmClassID("classPlateau"));
+	// rmPlaceGroupingInstanceAtLoc is CITY-GROUND ONLY on this map - in the
+	// floating-water context it silently places nothing (the gun-island law).
+	rmPlaceGroupingAtLoc(waterFortN, 0, waterFortNX, waterFortNZ);
+
+	int waterFortS = rmCreateGrouping("water fort south", "Caribbean_Naval_KotH_medi");
+	rmSetGroupingMinDistance(waterFortS, 0.00);
+	rmSetGroupingMaxDistance(waterFortS, 0.01);
+	rmAddGroupingToClass(waterFortS, rmClassID("classPlateau"));
+	rmPlaceGroupingAtLoc(waterFortS, 0, 1.0 - waterFortNX, 1.0 - waterFortNZ);
+
+	// conversion anchors - one invisible revealer per fort at the knob spot;
+	// ids are EXACT (rmGetUnitPlaced, no shift), all trigger conditions and
+	// converts anchor here and act BY TYPE - no grouping-id arithmetic
+	int fortMarkDefN = rmCreateObjectDef("water fort marker north");
+	rmAddObjectDefItem(fortMarkDefN, "zpCinematicRevealer", 1, 0.0);
+	rmPlaceObjectDefAtLoc(fortMarkDefN, 0, waterFortNX, waterFortNZ);
+	int fortMarkDefS = rmCreateObjectDef("water fort marker south");
+	rmAddObjectDefItem(fortMarkDefS, "zpCinematicRevealer", 1, 0.0);
+	rmPlaceObjectDefAtLoc(fortMarkDefS, 0, 1.0 - waterFortNX, 1.0 - waterFortNZ);
+
+	// sea life keeps clear of the forts - zpcaribbeanwars 156-158 idiom
+	int avoidKotH = rmCreateTypeDistanceConstraint("fish off the water fort", "zpKingsHillNaval", 15.0);
+	int avoidKotHLong = rmCreateTypeDistanceConstraint("whales off the water fort", "zpKingsHillNaval", 25.0);
+	int avoidHarbourPlat = rmCreateTypeDistanceConstraint("fish off harbour platforms", "zpHarbourPlatform", 20.0);
+	int avoidKotHMedi = rmCreateTypeDistanceConstraint("fish off the medi fort", "zpKingsHillNavalMedi", 15.0);
+	int avoidKotHMediLong = rmCreateTypeDistanceConstraint("whales off the medi fort", "zpKingsHillNavalMedi", 25.0);
+
 	int fishSolo = rmCreateObjectDef("sea fish solo");
 	rmAddObjectDefItem(fishSolo, "FishSardine", 1, 0.0);
 	rmSetObjectDefMinDistance(fishSolo, 0.0);
 	rmSetObjectDefMaxDistance(fishSolo, rmXFractionToMeters(0.5));
 	rmAddObjectDefConstraint(fishSolo, fishVsFish);
 	rmAddObjectDefConstraint(fishSolo, fishOffLand);
+	rmAddObjectDefConstraint(fishSolo, avoidKotH);
+	rmAddObjectDefConstraint(fishSolo, avoidKotHMedi);
+	rmAddObjectDefConstraint(fishSolo, avoidHarbourPlat);
 	rmPlaceObjectDefAtLoc(fishSolo, 0, 0.5, 0.5, 12 + cNumberNonGaiaPlayers);
 	int fishPair = rmCreateObjectDef("sea fish pair");
 	rmAddObjectDefItem(fishPair, "FishSardine", 2, 4.0);
@@ -2406,6 +2448,9 @@ void main(void)
 	rmSetObjectDefMaxDistance(fishPair, rmXFractionToMeters(0.5));
 	rmAddObjectDefConstraint(fishPair, fishVsFish);
 	rmAddObjectDefConstraint(fishPair, fishOffLand);
+	rmAddObjectDefConstraint(fishPair, avoidKotH);
+	rmAddObjectDefConstraint(fishPair, avoidKotHMedi);
+	rmAddObjectDefConstraint(fishPair, avoidHarbourPlat);
 	rmPlaceObjectDefAtLoc(fishPair, 0, 0.5, 0.5, 16 + cNumberNonGaiaPlayers);
 	int fishSchool = rmCreateObjectDef("sea fish school");
 	rmAddObjectDefItem(fishSchool, "FishSardine", 3, 5.0);
@@ -2413,6 +2458,9 @@ void main(void)
 	rmSetObjectDefMaxDistance(fishSchool, rmXFractionToMeters(0.5));
 	rmAddObjectDefConstraint(fishSchool, fishVsFish);
 	rmAddObjectDefConstraint(fishSchool, fishOffLand);
+	rmAddObjectDefConstraint(fishSchool, avoidKotH);
+	rmAddObjectDefConstraint(fishSchool, avoidKotHMedi);
+	rmAddObjectDefConstraint(fishSchool, avoidHarbourPlat);
 	rmPlaceObjectDefAtLoc(fishSchool, 0, 0.5, 0.5, 16 + cNumberNonGaiaPlayers);
 
 	// whales: one pod per sea, box-fenced so they stay OUT of the strait.
@@ -2427,6 +2475,8 @@ void main(void)
 	rmSetObjectDefMaxDistance(whaleN, rmXFractionToMeters(0.5));
 	rmAddObjectDefConstraint(whaleN, whaleVsWhale);
 	rmAddObjectDefConstraint(whaleN, whaleOffLand);
+	rmAddObjectDefConstraint(whaleN, avoidKotHLong);
+	rmAddObjectDefConstraint(whaleN, avoidKotHMediLong);
 	rmAddObjectDefConstraint(whaleN, seaBoxNE);
 	rmPlaceObjectDefAtLoc(whaleN, 0, 0.80, 0.78, 3 + resScale * 2);
 
@@ -2436,6 +2486,8 @@ void main(void)
 	rmSetObjectDefMaxDistance(whaleS, rmXFractionToMeters(0.5));
 	rmAddObjectDefConstraint(whaleS, whaleVsWhale);
 	rmAddObjectDefConstraint(whaleS, whaleOffLand);
+	rmAddObjectDefConstraint(whaleS, avoidKotHLong);
+	rmAddObjectDefConstraint(whaleS, avoidKotHMediLong);
 	rmAddObjectDefConstraint(whaleS, seaBoxSW);
 	rmPlaceObjectDefAtLoc(whaleS, 0, 0.20, 0.22, 3 + resScale * 2);
 
@@ -2457,6 +2509,65 @@ void main(void)
 	rmPlaceObjectDefInArea(nuggetCountry, 0, fillE, 1 + resScale);
 
 	// ========================================================================
+	//  UNIT IDS - every id a trigger targets, derived HERE and nowhere else
+	// ------------------------------------------------------------------------
+	//  THE LAW (zp_z_zparis.xs 1685-1757 / 000_independence_war.xs 1601-1631):
+	//    rmGetUnitPlaced (object defs)          = EXACT, use raw
+	//    rmGetGroupingInstanceUnitByType        = +1  (Paris applies it to
+	//                                             EVERY instance query)
+	//    grouping-adjacent arithmetic (pirates) = socket is the LAST camp
+	//                                             unit, flag placed next:
+	//                                             socket = flag + 1 (in-game
+	//                                             verified on this map)
+	//  Nugget protos are the nuggetmods <nuggetunit> of the latched
+	//  difficulty: 517 harbours = ypNuggetTradingPost, 516/520/98 = the
+	//  invisible nugget. NEVER the authored placeholder proto.
+	// ========================================================================
+	int instanceIdShift = 1;
+
+	// -- placed object defs: exact --
+	int unit_harbourSocketN = rmGetUnitPlaced(harbourSocketN, 0);
+	int unit_harbourSocketS = rmGetUnitPlaced(harbourSocketS, 0);
+	int unit_flankSocketN = rmGetUnitPlaced(flankSocketN, 0);
+	int unit_flankSocketS = rmGetUnitPlaced(flankSocketS, 0);
+	int unit_flank2SocketN = rmGetUnitPlaced(flank2SocketN, 0);
+	int unit_flank2SocketS = rmGetUnitPlaced(flank2SocketS, 0);
+	int pirateFlagN = rmGetUnitPlaced(pirateFlagDefN, 0);
+	int pirateFlagS = rmGetUnitPlaced(pirateFlagDefS, 0);
+	int fortMarkN = rmGetUnitPlaced(fortMarkDefN, 0);
+	int fortMarkS = rmGetUnitPlaced(fortMarkDefS, 0);
+
+	// -- grouping-adjacent: pirate sockets --
+	int pirateSocketN = pirateFlagN+1;
+	int pirateSocketS = pirateFlagS+1;
+
+	// -- grouping instance queries: +1, the Paris law --
+	int unit_nugHN = rmGetGroupingInstanceUnitByType(tradeNPlacement, "ypNuggetTradingPost") + instanceIdShift;
+	int unit_nugHS = rmGetGroupingInstanceUnitByType(tradeSPlacement, "ypNuggetTradingPost") + instanceIdShift;
+	int unit_nugH3 = rmGetGroupingInstanceUnitByType(trade3Placement, "ypNuggetTradingPost") + instanceIdShift;
+	int unit_nugH4 = rmGetGroupingInstanceUnitByType(trade4Placement, "ypNuggetTradingPost") + instanceIdShift;
+	int unit_nugH5 = rmGetGroupingInstanceUnitByType(trade5Placement, "ypNuggetTradingPost") + instanceIdShift;
+	int unit_nugH6 = rmGetGroupingInstanceUnitByType(trade6Placement, "ypNuggetTradingPost") + instanceIdShift;
+	int unit_menagBN = rmGetGroupingInstanceUnitByType(menageriePlacementN, "zpSPCMenagerie") + instanceIdShift;
+	int unit_menagNugN = rmGetGroupingInstanceUnitByType(menageriePlacementN, "zpNuggetInvisible") + instanceIdShift;
+	int unit_menagBS = rmGetGroupingInstanceUnitByType(menageriePlacementS, "zpSPCMenagerie") + instanceIdShift;
+	int unit_menagNugS = rmGetGroupingInstanceUnitByType(menageriePlacementS, "zpNuggetInvisible") + instanceIdShift;
+	int unit_factBN = rmGetGroupingInstanceUnitByType(factoryPlacementN, "zpSPCCapturableFactoryFlorence") + instanceIdShift;
+	int unit_factNugN = rmGetGroupingInstanceUnitByType(factoryPlacementN, "zpNuggetInvisible") + instanceIdShift;
+	int unit_factBS = rmGetGroupingInstanceUnitByType(factoryPlacementS, "zpSPCCapturableFactoryFlorence") + instanceIdShift;
+	int unit_factNugS = rmGetGroupingInstanceUnitByType(factoryPlacementS, "zpNuggetInvisible") + instanceIdShift;
+	int unit_fortFlagN = rmGetGroupingInstanceUnitByType(fortPlacementN, "zpSPCCapturableFlagInvisible") + instanceIdShift;
+	int unit_fortNugN = rmGetGroupingInstanceUnitByType(fortPlacementN, "zpNuggetInvisible") + instanceIdShift;
+	int unit_fortFlagS = rmGetGroupingInstanceUnitByType(fortPlacementS, "zpSPCCapturableFlagInvisible") + instanceIdShift;
+	int unit_fortNugS = rmGetGroupingInstanceUnitByType(fortPlacementS, "zpNuggetInvisible") + instanceIdShift;
+
+	rmEchoInfo("pirate ids north: flag="+pirateFlagN+" socket="+pirateSocketN);
+	rmEchoInfo("pirate ids south: flag="+pirateFlagS+" socket="+pirateSocketS);
+	rmEchoInfo("water fort markers: N=" + fortMarkN + " S=" + fortMarkS);
+	rmEchoInfo("factory ids: BN=" + unit_factBN + " BS=" + unit_factBS);
+
+
+	// ========================================================================
 	//  TRADE HARBOUR CONVERSION  (000_independence_war.xs idiom)
 	// ------------------------------------------------------------------------
 	// Every trade socket starts with AutoConvert SUSPENDED, so nobody can take
@@ -2464,18 +2575,6 @@ void main(void)
 	// collectable the matching trigger releases the suspension.
 	// ========================================================================
 
-	int unit_harbourSocketN = rmGetUnitPlaced(harbourSocketN, 0);
-	int unit_nugHN = rmGetGroupingInstanceUnitByType(tradeNPlacement, "Nugget");
-	int unit_harbourSocketS = rmGetUnitPlaced(harbourSocketS, 0);
-	int unit_nugHS = rmGetGroupingInstanceUnitByType(tradeSPlacement, "Nugget");
-	int unit_flankSocketN = rmGetUnitPlaced(flankSocketN, 0);
-	int unit_nugH3 = rmGetGroupingInstanceUnitByType(trade3Placement, "Nugget");
-	int unit_flankSocketS = rmGetUnitPlaced(flankSocketS, 0);
-	int unit_nugH4 = rmGetGroupingInstanceUnitByType(trade4Placement, "Nugget");
-	int unit_flank2SocketN = rmGetUnitPlaced(flank2SocketN, 0);
-	int unit_nugH5 = rmGetGroupingInstanceUnitByType(trade5Placement, "Nugget");
-	int unit_flank2SocketS = rmGetUnitPlaced(flank2SocketS, 0);
-	int unit_nugH6 = rmGetGroupingInstanceUnitByType(trade6Placement, "Nugget");
 
 	rmCreateTrigger("Trade Harbours NoAutoConvert");
 	rmAddTriggerEffect("Unit Action Suspend");
@@ -2581,6 +2680,36 @@ void main(void)
 
 
 
+
+	int st = 0;
+	rmCreateTrigger("Starting Techs");
+	rmSwitchToTrigger(rmTriggerID("Starting techs"));
+	for (st = 1; <= cNumberNonGaiaPlayers)
+	{
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", st);
+	rmSetTriggerEffectParam("TechID", "cTechzpBosporusMapSetup");
+	rmSetTriggerEffectParamInt("Status", 2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", st);
+	rmSetTriggerEffectParam("TechID", "cTechdeEUMapUpdateVisuals"); // European Embassy - zp_z_zparis.xs 1810
+	rmSetTriggerEffectParamInt("Status", 2);
+	}
+	// gaia OUTSIDE the loop, explicit PlayerID 0 - the exact Paris shape
+	// (zp_z_zparis.xs 1814-1817); no reference map ever loops from 0 here
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", 0);
+	rmSetTriggerEffectParam("TechID", "cTechzpBosporusMapSetup");
+	rmSetTriggerEffectParamInt("Status", 2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", 0);
+	rmSetTriggerEffectParam("TechID", "cTechdeEUMapUpdateVisuals");
+	rmSetTriggerEffectParamInt("Status", 2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
 	// ========================================================================
 	//  PRODUCTION BUILDING CONVERSION  (zp_z_zparis.xs 1872-1961 idiom)
 	// ------------------------------------------------------------------------
@@ -2595,18 +2724,6 @@ void main(void)
 	//  functional Paris units (art kept Indian via 000_istanbul.mods.xml)
 	//  and the tower prop into deSPCEuroTower, 1:1 as Paris.
 	// ========================================================================
-	int unit_menagBN = rmGetGroupingInstanceUnitByType(menageriePlacementN, "zpSPCMenagerie");
-	int unit_menagNugN = rmGetGroupingInstanceUnitByType(menageriePlacementN, "zpNuggetInvisible");
-	int unit_menagBS = rmGetGroupingInstanceUnitByType(menageriePlacementS, "zpSPCMenagerie");
-	int unit_menagNugS = rmGetGroupingInstanceUnitByType(menageriePlacementS, "zpNuggetInvisible");
-	int unit_factBN = rmGetGroupingInstanceUnitByType(factoryPlacementN, "zpSPCCapturableFactoryFlorence");
-	int unit_factNugN = rmGetGroupingInstanceUnitByType(factoryPlacementN, "zpNuggetKidnapGuillotine");
-	int unit_factBS = rmGetGroupingInstanceUnitByType(factoryPlacementS, "zpSPCCapturableFactoryFlorence");
-	int unit_factNugS = rmGetGroupingInstanceUnitByType(factoryPlacementS, "zpNuggetKidnapGuillotine");
-	int unit_fortFlagN = rmGetGroupingInstanceUnitByType(fortPlacementN, "zpSPCCapturableFlagInvisible");
-	int unit_fortNugN = rmGetGroupingInstanceUnitByType(fortPlacementN, "zpNuggetKidnapGuillotine");
-	int unit_fortFlagS = rmGetGroupingInstanceUnitByType(fortPlacementS, "zpSPCCapturableFlagInvisible");
-	int unit_fortNugS = rmGetGroupingInstanceUnitByType(fortPlacementS, "zpNuggetKidnapGuillotine");
 
 	rmCreateTrigger("Production Convert OFF");
 	rmAddTriggerEffect("Unit Action Suspend");
@@ -2844,6 +2961,134 @@ void main(void)
 		rmAddTriggerEffect("Disable Trigger");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Fort_S_Plr" + fd));
 	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+
+	// ========================================================================
+	//  WATER FORT CONVERSION  (zpcaribbeanwars.xs 1042-1087, victory stripped)
+	// ------------------------------------------------------------------------
+	//  Uncontested-presence capture, each fort INDEPENDENT: >=1 own warship
+	//  and 0 enemy warships within 25 m of the fort's marker converts the
+	//  castle + city-state flags (15 m, from any owner incl. gaia). The
+	//  winner's trigger stays consumed; everyone else's re-arms - the
+	//  caribbeanwars tug-of-war. North = Black Sea (zpKingsHillNaval),
+	//  south = Mediterranean (zpKingsHillNavalMedi clone).
+	// ========================================================================
+
+	for (fc = 1; <= cNumberNonGaiaPlayers)
+	{
+	rmCreateTrigger("FortConvN Plr" + fc);
+	}
+	for (fc = 1; <= cNumberNonGaiaPlayers)
+	{
+	rmSwitchToTrigger(rmTriggerID("FortConvN_Plr" + fc));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject", ""+fortMarkN);
+	rmSetTriggerConditionParamInt("Player", fc);
+	rmSetTriggerConditionParamInt("Dist", 25);
+	rmSetTriggerConditionParam("UnitType", "AbstractWarShip");
+	rmSetTriggerConditionParam("Op", ">=");
+	rmSetTriggerConditionParamFloat("Count", 1);
+	for (fd = 1; <= cNumberNonGaiaPlayers)
+	{
+		if (fd != fc)
+		{
+			rmAddTriggerCondition("Units in Area");
+			rmSetTriggerConditionParam("DstObject", ""+fortMarkN);
+			rmSetTriggerConditionParamInt("Player", fd);
+			rmSetTriggerConditionParamInt("Dist", 25);
+			rmSetTriggerConditionParam("UnitType", "AbstractWarShip");
+			rmSetTriggerConditionParam("Op", "==");
+			rmSetTriggerConditionParamFloat("Count", 0);
+		}
+	}
+	for (fd = 0; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", ""+fortMarkN);
+		rmSetTriggerEffectParamInt("SrcPlayer", fd);
+		rmSetTriggerEffectParamInt("TrgPlayer", fc);
+		rmSetTriggerEffectParam("UnitType", "zpKingsHillNaval");
+		rmSetTriggerEffectParamInt("Dist", 15);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", ""+fortMarkN);
+		rmSetTriggerEffectParamInt("SrcPlayer", fd);
+		rmSetTriggerEffectParamInt("TrgPlayer", fc);
+		rmSetTriggerEffectParam("UnitType", "zpCityStateFlag");
+		rmSetTriggerEffectParamInt("Dist", 15);
+	}
+	for (fd = 1; <= cNumberNonGaiaPlayers)
+	{
+		if (fd != fc)
+		{
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("FortConvN_Plr" + fd));
+		}
+	}
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset", "SheepFound");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	for (fc = 1; <= cNumberNonGaiaPlayers)
+	{
+	rmCreateTrigger("FortConvS Plr" + fc);
+	}
+	for (fc = 1; <= cNumberNonGaiaPlayers)
+	{
+	rmSwitchToTrigger(rmTriggerID("FortConvS_Plr" + fc));
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject", ""+fortMarkS);
+	rmSetTriggerConditionParamInt("Player", fc);
+	rmSetTriggerConditionParamInt("Dist", 25);
+	rmSetTriggerConditionParam("UnitType", "AbstractWarShip");
+	rmSetTriggerConditionParam("Op", ">=");
+	rmSetTriggerConditionParamFloat("Count", 1);
+	for (fd = 1; <= cNumberNonGaiaPlayers)
+	{
+		if (fd != fc)
+		{
+			rmAddTriggerCondition("Units in Area");
+			rmSetTriggerConditionParam("DstObject", ""+fortMarkS);
+			rmSetTriggerConditionParamInt("Player", fd);
+			rmSetTriggerConditionParamInt("Dist", 25);
+			rmSetTriggerConditionParam("UnitType", "AbstractWarShip");
+			rmSetTriggerConditionParam("Op", "==");
+			rmSetTriggerConditionParamFloat("Count", 0);
+		}
+	}
+	for (fd = 0; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", ""+fortMarkS);
+		rmSetTriggerEffectParamInt("SrcPlayer", fd);
+		rmSetTriggerEffectParamInt("TrgPlayer", fc);
+		rmSetTriggerEffectParam("UnitType", "zpKingsHillNavalMedi");
+		rmSetTriggerEffectParamInt("Dist", 15);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", ""+fortMarkS);
+		rmSetTriggerEffectParamInt("SrcPlayer", fd);
+		rmSetTriggerEffectParamInt("TrgPlayer", fc);
+		rmSetTriggerEffectParam("UnitType", "zpCityStateFlag");
+		rmSetTriggerEffectParamInt("Dist", 15);
+	}
+	for (fd = 1; <= cNumberNonGaiaPlayers)
+	{
+		if (fd != fc)
+		{
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("FortConvS_Plr" + fd));
+		}
+	}
+	rmAddTriggerEffect("Play Soundset");
+	rmSetTriggerEffectParam("Soundset", "SheepFound");
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);

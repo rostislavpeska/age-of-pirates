@@ -1,0 +1,12 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo details = "303326" displayNameID = "303325" loadDetails="303327"
+     imagepath = "" cannotReplace = "" loadBackground="">
+    <loadss>ui\random_map\elbe\elbe_map</loadss>
+    <enforcedSettings>
+        <setting type="FFA" state="forbidden" />
+        <setting type="RecordGame" state="forbidden" />
+        <setting type="TwoTeams" state="enforced" />
+        <setting type="DefaultRules" state="enforced" />
+        <setting type="AltTeamNames" state="enforced" />
+    </enforcedSettings>
+</mapinfo>
