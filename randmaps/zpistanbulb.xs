@@ -1033,10 +1033,59 @@ void main(void)
 	rmAddGroupingToClass(gunNE, rmClassID("classGun"));
 	rmAddGroupingToClass(gunSW, rmClassID("classGun"));
 	rmAddGroupingToClass(gunSE, rmClassID("classGun"));
-	placeShoreIsland(gunNW, nx1, nGunZ);
-	placeShoreIsland(gunNE, nx5, nGunZ);
-	placeShoreIsland(gunSW, sx1, sGunZ);
-	placeShoreIsland(gunSE, sx5, sGunZ);
+	// ANTI-SHIP GUN SOCKETS. The gun groupings now carry zpSocketAntiShipGun
+	// instead of a finished gun, so each island is placed as an INSTANCE -
+	// only an instance placement can be queried back by type. The socket ids
+	// are derived in the UNIT IDS block (:2745) as
+	//     rmGetGroupingInstanceUnitByType(...) + instanceIdShift
+	// exactly like the factories, forts, menageries and harbour nuggets. They
+	// therefore inherit the SAME shift as every other instance query on this
+	// map - if instanceIdShift is ever re-measured, these move with it.
+	// GUN OWNERS - the countryside players of each team, per the standing rule:
+	//   1 countryside player  -> that player holds BOTH guns on their side
+	//   2 countryside players -> one gun each
+	//   3 or more             -> only the first two get a gun; the rest none
+	// The first countryside player is the team's SECOND member when it fields
+	// exactly 2, and the THIRD member from 3 up (the same derivation the
+	// countryside column uses at :924-927).
+	int gunOwnerN1 = -1;   int gunOwnerN2 = -1;
+	int gunOwnerS1 = -1;   int gunOwnerS2 = -1;
+	if (northCount == 1) { gunOwnerN1 = firstDefender;  gunOwnerN2 = firstDefender; }
+	if (northCount == 2) { gunOwnerN1 = secondDefender; gunOwnerN2 = secondDefender; }
+	if (northCount == 3) { gunOwnerN1 = thirdDefender;  gunOwnerN2 = thirdDefender; }
+	if (northCount >= 4) { gunOwnerN1 = thirdDefender;  gunOwnerN2 = fourthDefender; }
+	if (southCount == 1) { gunOwnerS1 = firstAttacker;  gunOwnerS2 = firstAttacker; }
+	if (southCount == 2) { gunOwnerS1 = secondAttacker; gunOwnerS2 = secondAttacker; }
+	if (southCount == 3) { gunOwnerS1 = thirdAttacker;  gunOwnerS2 = thirdAttacker; }
+	if (southCount >= 4) { gunOwnerS1 = thirdAttacker;  gunOwnerS2 = fourthAttacker; }
+	// Non-2-team lobbies resolve nobody; fall back to gaia so placement still
+	// succeeds exactly as it did before this system existed.
+	if (gunOwnerN1 < 0) gunOwnerN1 = 0;
+	if (gunOwnerN2 < 0) gunOwnerN2 = 0;
+	if (gunOwnerS1 < 0) gunOwnerS1 = 0;
+	if (gunOwnerS2 < 0) gunOwnerS2 = 0;
+
+	// PLACEMENT. INSTANCE placement, exactly like the factories (:1839), the
+	// forts (:1818), the menageries (:1951) and the trade harbours (:1133) -
+	// all of which are this same floating-island construction. The instance
+	// handle is what lets the UNIT IDS block query the socket back BY TYPE.
+	// Player comes LAST in rmPlaceGroupingInstanceAtLoc (guide 9999-10000),
+	// which is what makes the island and its socket belong to the countryside
+	// player instead of gaia.
+	rmSetGroupingMinDistance(gunNW, 0.0);   rmSetGroupingMaxDistance(gunNW, 0.01);
+	rmSetGroupingMinDistance(gunNE, 0.0);   rmSetGroupingMaxDistance(gunNE, 0.01);
+	rmSetGroupingMinDistance(gunSW, 0.0);   rmSetGroupingMaxDistance(gunSW, 0.01);
+	rmSetGroupingMinDistance(gunSE, 0.0);   rmSetGroupingMaxDistance(gunSE, 0.01);
+	rmAddGroupingToClass(gunNW, rmClassID("classPlateau"));
+	rmAddGroupingToClass(gunNE, rmClassID("classPlateau"));
+	rmAddGroupingToClass(gunSW, rmClassID("classPlateau"));
+	rmAddGroupingToClass(gunSE, rmClassID("classPlateau"));
+	int gunNWPlacement = rmPlaceGroupingInstanceAtLoc(gunNW, nx1, nGunZ, gunOwnerN1);
+	int gunNEPlacement = rmPlaceGroupingInstanceAtLoc(gunNE, nx5, nGunZ, gunOwnerN2);
+	int gunSWPlacement = rmPlaceGroupingInstanceAtLoc(gunSW, sx1, sGunZ, gunOwnerS1);
+	int gunSEPlacement = rmPlaceGroupingInstanceAtLoc(gunSE, sx5, sGunZ, gunOwnerS2);
+
+	rmEchoInfo("gun owners: N1="+gunOwnerN1+" N2="+gunOwnerN2+" S1="+gunOwnerS1+" S2="+gunOwnerS2);
 	// --- FLANK HARBOURS 3 / 4, same Venice trick as 1 / 2 -----------------
 	// Their lane now curves around this coast, so each socket can dock onto it.
 	int flank2SocketN = rmCreateObjectDef("flank harbour 5 socket");
@@ -2694,6 +2743,13 @@ void main(void)
 	int pirateSocketN = pirateFlagN+1;
 	int pirateSocketS = pirateFlagS+1;
 
+	// -- anti-ship gun sockets: instance query + the same shift as the rest --
+	int gunSocketNW = rmGetGroupingInstanceUnitByType(gunNWPlacement, "zpSocketAntiShipGun") + instanceIdShift;
+	int gunSocketNE = rmGetGroupingInstanceUnitByType(gunNEPlacement, "zpSocketAntiShipGun") + instanceIdShift;
+	int gunSocketSW = rmGetGroupingInstanceUnitByType(gunSWPlacement, "zpSocketAntiShipGun") + instanceIdShift;
+	int gunSocketSE = rmGetGroupingInstanceUnitByType(gunSEPlacement, "zpSocketAntiShipGun") + instanceIdShift;
+	rmEchoInfo("gun sockets: NW="+gunSocketNW+" NE="+gunSocketNE+" SW="+gunSocketSW+" SE="+gunSocketSE);
+
 	// -- grouping instance queries: +1, the Paris law --
 	int unit_nugHN = rmGetGroupingInstanceUnitByType(tradeNPlacement, "ypNuggetTradingPost") + instanceIdShift;
 	int unit_nugHS = rmGetGroupingInstanceUnitByType(tradeSPlacement, "ypNuggetTradingPost") + instanceIdShift;
@@ -2747,6 +2803,281 @@ void main(void)
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
+
+	// ========================================================================
+	//  ANTI-SHIP GUNS  -  prebuilt at load, then rebuildable from the socket
+	// ------------------------------------------------------------------------
+	// The gun groupings ship a SOCKET, not a gun. "Socket Build" (zpazteccity.xs
+	// 1597-1610) constructs the gun on it during load with RunImmediately, so a
+	// player never sees an empty socket at the start - only a finished gun.
+	// When that gun dies the engine returns the socket, and because the socket
+	// carries socketcapture.tactics (AutoConvert) whoever stands next to it
+	// takes it and may build their own gun. No id arithmetic anywhere.
+	//
+	// TRIGGER NAMES: no spaces at all (000_caribbeanwars.xs 2202 idiom), so
+	// create and rmTriggerID lookup match exactly - the editor-passes /
+	// Skirmish-fails class the nugget-targeting skill warns about.
+	// ========================================================================
+	// ONE TRIGGER PER PLAYER. zpazteccity's Defender_Setup0 carries its four
+	// Socket Build effects for a SINGLE player (firstDefender). Packing several
+	// different PlayerIDs into one trigger does not work - the trigger is
+	// authored per player, so each owner gets their own. Every non-gaia player
+	// gets a trigger; a player who owns no gun simply gets an empty one.
+	int gk = 0;
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("AntiShipGunsPrebuilt"+gk);
+		rmSwitchToTrigger(rmTriggerID("AntiShipGunsPrebuilt"+gk));
+		if (gunOwnerN1 == gk)
+		{
+			rmAddTriggerEffect("Socket Build");
+			rmSetTriggerEffectParamInt("PlayerID", gk);
+			rmSetTriggerEffectParam("Socket", ""+gunSocketNW);
+			rmSetTriggerEffectParam("Protounit", "zpAntiShipGun");
+		}
+		if (gunOwnerN2 == gk)
+		{
+			rmAddTriggerEffect("Socket Build");
+			rmSetTriggerEffectParamInt("PlayerID", gk);
+			rmSetTriggerEffectParam("Socket", ""+gunSocketNE);
+			rmSetTriggerEffectParam("Protounit", "zpAntiShipGun");
+		}
+		if (gunOwnerS1 == gk)
+		{
+			rmAddTriggerEffect("Socket Build");
+			rmSetTriggerEffectParamInt("PlayerID", gk);
+			rmSetTriggerEffectParam("Socket", ""+gunSocketSW);
+			rmSetTriggerEffectParam("Protounit", "zpAntiShipGun");
+		}
+		if (gunOwnerS2 == gk)
+		{
+			rmAddTriggerEffect("Socket Build");
+			rmSetTriggerEffectParamInt("PlayerID", gk);
+			rmSetTriggerEffectParam("Socket", ""+gunSocketSE);
+			rmSetTriggerEffectParam("Protounit", "zpAntiShipGun");
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
+	// AI ENABLEMENT. cTechzpSPCIstanbulSocketsAI enables zpSPCFixedGunAIProxy
+	// and CommandAdds it onto zpSocketAntiShipGun, which is how the AI "trains"
+	// at a socket. Granted to NON-HUMAN players only, exactly as
+	// 000_caribbeanwars.xs 1024-1032 does it.
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("AntiShipGunAITech"+gk);
+		rmSwitchToTrigger(rmTriggerID("AntiShipGunAITech"+gk));
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", gk);
+		rmSetTriggerEffectParam("TechID", "cTechzpSPCIstanbulSocketsAI");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
+	// AI REBUILD.  Three triggers per player per socket, the 000_caribbeanwars.xs
+	// 2202-2270 + 2332-2340 architecture, hardened for FOUR sockets and up to
+	// eight possible owners (caribbeanwars has two sockets and one owner each).
+	//
+	//  _AICHECK  fires once for a NON-HUMAN player and arms that player's four
+	//            ON triggers. Without this kick nothing ever starts - ON and OFF
+	//            are both created inactive, so they can only be entered by a
+	//            Fire Event. This was missing and is why AI never rebuilt.
+	//  _ON       arms and then WAITS until both of its conditions hold:
+	//              1. player k OWNS this socket (Units in Area on the socket
+	//                 proto itself, radius 2) - this is the routing gate. With
+	//                 four sockets and many players the proxy test alone is not
+	//                 enough; without it a player could answer a proxy near a
+	//                 socket that is not theirs, and Socket Build performs NO
+	//                 ownership check of its own.
+	//              2. player k has just trained the proxy next to it.
+	//            Because a waiting trigger keeps evaluating, ownership is
+	//            re-tested continuously - a socket captured mid-game starts
+	//            working for its new owner with no extra plumbing.
+	//  _OFF      debounces for 1200 ms then re-arms ON, so the pair survives
+	//            every subsequent destruction.
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("ASGunAICheck_Plr"+gk);
+		rmCreateTrigger("ASGunNW_ON_Plr"+gk);   rmCreateTrigger("ASGunNW_OFF_Plr"+gk);
+		rmCreateTrigger("ASGunNE_ON_Plr"+gk);   rmCreateTrigger("ASGunNE_OFF_Plr"+gk);
+		rmCreateTrigger("ASGunSW_ON_Plr"+gk);   rmCreateTrigger("ASGunSW_OFF_Plr"+gk);
+		rmCreateTrigger("ASGunSE_ON_Plr"+gk);   rmCreateTrigger("ASGunSE_OFF_Plr"+gk);
+
+		rmSwitchToTrigger(rmTriggerID("ASGunAICheck_Plr"+gk));
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ASGunNW_ON_Plr"+gk));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ASGunNE_ON_Plr"+gk));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ASGunSW_ON_Plr"+gk));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ASGunSE_ON_Plr"+gk));
+		rmSetTriggerPriority(4);
+		// SELF-STARTING. caribbeanwars leaves its AI_Check inactive because a
+		// CAPTURE trigger fires it (:2445) - its city states begin as gaia. Our
+		// sockets are already owned at map start, so no capture ever happens and
+		// an inactive check would never run. Active(true) is what ignites the
+		// whole chain, matching this map's own working triggers (:3086).
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("ASGunNW_ON_Plr"+gk));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", ""+gunSocketNW);
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("UnitType", "zpSocketAntiShipGun");
+		rmSetTriggerConditionParamInt("Dist", 2);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", ""+gunSocketNW);
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("UnitType", "zpSPCFixedGunAIProxy");
+		rmSetTriggerConditionParamInt("Dist", 10);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID", gk);
+		rmSetTriggerEffectParam("Socket", ""+gunSocketNW);
+		rmSetTriggerEffectParam("Protounit", "zpAntiShipGun");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ASGunNW_OFF_Plr"+gk));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("ASGunNW_OFF_Plr"+gk));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1", 1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ASGunNW_ON_Plr"+gk));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("ASGunNE_ON_Plr"+gk));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", ""+gunSocketNE);
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("UnitType", "zpSocketAntiShipGun");
+		rmSetTriggerConditionParamInt("Dist", 2);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", ""+gunSocketNE);
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("UnitType", "zpSPCFixedGunAIProxy");
+		rmSetTriggerConditionParamInt("Dist", 10);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID", gk);
+		rmSetTriggerEffectParam("Socket", ""+gunSocketNE);
+		rmSetTriggerEffectParam("Protounit", "zpAntiShipGun");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ASGunNE_OFF_Plr"+gk));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("ASGunNE_OFF_Plr"+gk));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1", 1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ASGunNE_ON_Plr"+gk));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("ASGunSW_ON_Plr"+gk));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", ""+gunSocketSW);
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("UnitType", "zpSocketAntiShipGun");
+		rmSetTriggerConditionParamInt("Dist", 2);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", ""+gunSocketSW);
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("UnitType", "zpSPCFixedGunAIProxy");
+		rmSetTriggerConditionParamInt("Dist", 10);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID", gk);
+		rmSetTriggerEffectParam("Socket", ""+gunSocketSW);
+		rmSetTriggerEffectParam("Protounit", "zpAntiShipGun");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ASGunSW_OFF_Plr"+gk));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("ASGunSW_OFF_Plr"+gk));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1", 1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ASGunSW_ON_Plr"+gk));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("ASGunSE_ON_Plr"+gk));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", ""+gunSocketSE);
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("UnitType", "zpSocketAntiShipGun");
+		rmSetTriggerConditionParamInt("Dist", 2);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", ""+gunSocketSE);
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("UnitType", "zpSPCFixedGunAIProxy");
+		rmSetTriggerConditionParamInt("Dist", 10);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID", gk);
+		rmSetTriggerEffectParam("Socket", ""+gunSocketSE);
+		rmSetTriggerEffectParam("Protounit", "zpAntiShipGun");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ASGunSE_OFF_Plr"+gk));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("ASGunSE_OFF_Plr"+gk));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1", 1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ASGunSE_ON_Plr"+gk));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
 
 	// ========================================================================
 	//  TRADE HARBOUR CONVERSION  (000_independence_war.xs idiom)
@@ -2995,31 +3326,31 @@ void main(void)
 	rmSetTriggerEffectParam("SrcObject", ""+unit_fortFlagN);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
 	rmSetTriggerEffectParamInt("TrgPlayer", fc);
-	rmSetTriggerEffectParam("UnitType", "ypSPCIndianFortCorner");
+	rmSetTriggerEffectParam("UnitType", "zpIndianFortCornerProp");
 	rmSetTriggerEffectParamInt("Dist", 35);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_fortFlagN);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
 	rmSetTriggerEffectParamInt("TrgPlayer", fc);
-	rmSetTriggerEffectParam("UnitType", "ypSPCIndianFortWallSmall");
+	rmSetTriggerEffectParam("UnitType", "zpIndianFortWallSmallProp");
 	rmSetTriggerEffectParamInt("Dist", 35);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_fortFlagN);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
 	rmSetTriggerEffectParamInt("TrgPlayer", fc);
-	rmSetTriggerEffectParam("UnitType", "ypSPCIndianFortWallMedium");
+	rmSetTriggerEffectParam("UnitType", "zpIndianFortWallMediumProp");
 	rmSetTriggerEffectParamInt("Dist", 35);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_fortFlagN);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
 	rmSetTriggerEffectParamInt("TrgPlayer", fc);
-	rmSetTriggerEffectParam("UnitType", "ypSPCIndianFortWallStable");
+	rmSetTriggerEffectParam("UnitType", "zpSPCFortStableProp");
 	rmSetTriggerEffectParamInt("Dist", 35);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_fortFlagN);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
 	rmSetTriggerEffectParamInt("TrgPlayer", fc);
-	rmSetTriggerEffectParam("UnitType", "ypSPCIndianFortWallBarracks");
+	rmSetTriggerEffectParam("UnitType", "zpSPCFortBarracksProp");
 	rmSetTriggerEffectParamInt("Dist", 35);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_fortFlagN);
@@ -3061,31 +3392,31 @@ void main(void)
 	rmSetTriggerEffectParam("SrcObject", ""+unit_fortFlagS);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
 	rmSetTriggerEffectParamInt("TrgPlayer", fc);
-	rmSetTriggerEffectParam("UnitType", "ypSPCIndianFortCorner");
+	rmSetTriggerEffectParam("UnitType", "zpIndianFortCornerProp");
 	rmSetTriggerEffectParamInt("Dist", 35);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_fortFlagS);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
 	rmSetTriggerEffectParamInt("TrgPlayer", fc);
-	rmSetTriggerEffectParam("UnitType", "ypSPCIndianFortWallSmall");
+	rmSetTriggerEffectParam("UnitType", "zpIndianFortWallSmallProp");
 	rmSetTriggerEffectParamInt("Dist", 35);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_fortFlagS);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
 	rmSetTriggerEffectParamInt("TrgPlayer", fc);
-	rmSetTriggerEffectParam("UnitType", "ypSPCIndianFortWallMedium");
+	rmSetTriggerEffectParam("UnitType", "zpIndianFortWallMediumProp");
 	rmSetTriggerEffectParamInt("Dist", 35);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_fortFlagS);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
 	rmSetTriggerEffectParamInt("TrgPlayer", fc);
-	rmSetTriggerEffectParam("UnitType", "ypSPCIndianFortWallStable");
+	rmSetTriggerEffectParam("UnitType", "zpSPCFortStableProp");
 	rmSetTriggerEffectParamInt("Dist", 35);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_fortFlagS);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
 	rmSetTriggerEffectParamInt("TrgPlayer", fc);
-	rmSetTriggerEffectParam("UnitType", "ypSPCIndianFortWallBarracks");
+	rmSetTriggerEffectParam("UnitType", "zpSPCFortBarracksProp");
 	rmSetTriggerEffectParamInt("Dist", 35);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_fortFlagS);

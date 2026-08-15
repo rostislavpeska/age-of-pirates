@@ -19958,13 +19958,21 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
-      <effect type="TransformUnit" toprotoid="zpSPCFortStable" fromprotoid="ypSPCIndianFortWallStable">
+      <effect type="TransformUnit" toprotoid="zpSPCFortStable" fromprotoid="zpSPCFortStableProp">
       </effect>
-      <effect type="TransformUnit" toprotoid="zpSPCFortBarracks" fromprotoid="ypSPCIndianFortWallBarracks">
+      <effect type="TransformUnit" toprotoid="zpSPCFortBarracks" fromprotoid="zpSPCFortBarracksProp">
       </effect>
       <effect type="TransformUnit" toprotoid="deSPCEuroTower" fromprotoid="zpSPCFortTowerProp">
       </effect>
       <effect type="TransformUnit" toprotoid="ypSPCIndianFortGate" fromprotoid="zpPassableGateIndian">
+      </effect>
+      <effect type="TransformUnit" toprotoid="ypSPCIndianFortCorner" fromprotoid="zpIndianFortCornerProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="ypSPCIndianFortWallSmall" fromprotoid="zpIndianFortWallSmallProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="ypSPCIndianFortWallMedium" fromprotoid="zpIndianFortWallMediumProp">
+      </effect>
+      <effect type="TransformUnit" toprotoid="ypSPCIndianFortWallLarge" fromprotoid="zpIndianFortWallLargeProp">
       </effect>
       <effect type="TechStatus" status="unobtainable">zpConvertWallIndian</effect>
     </effects>
@@ -22405,6 +22413,19 @@
       </effect>
       <effect type="CommandAdd" proto="zpSPCFixedGunAIProxy" page="0" column="4">
         <target type="ProtoUnit">zpSPCFixedGunSocket</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpSPCIstanbulSocketsAI" type="Normal">
+    <dbid>41401</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCFixedGunAIProxy</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCFixedGunAIProxy" page="0" column="4">
+        <target type="ProtoUnit">zpSocketAntiShipGun</target>
       </effect>
     </effects>
   </tech>

@@ -3324,6 +3324,11 @@
       <string _locid="303325">Struggle of the Bosporus</string>
       <string _locid="303326">Struggle of the Bosporus  Description</string>
       <string _locid="303327">Struggle of the Bosporus  Loading</string>
+      <string _locid="303328">Anti-Ship Gun</string>
+      <string _locid="303329">Anti-Ship Gun</string>
+      <string _locid="303330">Anti-Ship Gun Socket</string>
+      <string _locid="303331">A heavy coastal battery that fires only on ships. It cannot target land units, so it must be protected from the shore.</string>
+      <string _locid="303332">Build an Anti-Ship Gun here. Destroy an enemy gun to claim the socket for yourself.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

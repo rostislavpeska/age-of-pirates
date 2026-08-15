@@ -17,7 +17,6 @@
 		<unit variation="100" posx="-7.4662" posz="-9.7470" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpHarbourPlatform</unit>
 		<unit variation="235" posx="7.4368" posz="-4.9876" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpHarbourPlatform</unit>
 		<unit variation="147" posx="6.4134" posz="-5.0245" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
-		<unit variation="251" posx="-1.1994" posz="-6.6989" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCFixedGunBaseBig</unit>
 		<unit variation="223" posx="-10.0099" posz="-4.5324" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPlatform</unit>
 		<unit variation="177" posx="-7.9602" posz="-4.6906" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpHarbourPlatform</unit>
 		<unit variation="242" posx="-1.6365" posz="-6.6359" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSocketAntiShipGun</unit>

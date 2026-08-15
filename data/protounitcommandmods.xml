@@ -502,6 +502,16 @@
     <rollovertextid>302109</rollovertextid>
   </protounitcommand>
   <protounitcommand>
+    <name>zpSocketBuildAntiShipGun</name>
+    <icon>resources\images\icons\command\build_fixed_gun.png</icon>
+    <command>uiSocketBuild(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <socketbuild>
+    </socketbuild>
+    <rollovertextid>303332</rollovertextid>
+  </protounitcommand>
+  <protounitcommand>
     <name>zpAuditoreLighthouseSmall</name>
     <icon>resources\images\icons\abilities\eagle_vision.png</icon>
     <associatedtech>zpAuditoreLighthouse</associatedtech>

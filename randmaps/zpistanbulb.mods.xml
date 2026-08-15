@@ -182,10 +182,6 @@
 			<flag>NotRepairable</flag>
 			<unitregen damagetimeout="6.0">0.2500</unitregen>
 		</unit>
-		<unit name="deSPCEuroTower">
-			<flag>NotRepairable</flag>
-			<unitregen damagetimeout="6.0">0.2500</unitregen>
-		</unit>
         <unit name="zpNativeHousePirateNoDecal">
             <flag mergemode="remove">NotSelectable</flag>
         </unit>
@@ -215,5 +211,15 @@
         <unit name="zpSPCFortBarracks">
             <animfile>buildings\asian_civs\spc\indian_fort\spc_indian_fort_wall_barracks.xml</animfile>
         </unit>
+        <unit name="zpSPCFortStableProp">
+            <animfile>buildings\asian_civs\spc\indian_fort\spc_indian_fort_wall_stable.xml</animfile>
+        </unit>
+        <unit name="zpSPCFortBarracksProp">
+            <animfile>buildings\asian_civs\spc\indian_fort\spc_indian_fort_wall_barracks.xml</animfile>
+        </unit>
+		<unit name="deSPCEuroTower">
+			<flag>InvulnerableIfGaia</flag>
+			<flag>CannotAttackIfGaia</flag>
+		</unit>
     </protomods>
 </mods>

@@ -14,36 +14,36 @@
 		<unit variation="91" posx="-2.1499" posz="-11.1993" orientx="0.6992" orienty="0.0000" orientz="-0.7149">zpNatEUPropObelisk</unit>
 		<unit variation="1" posx="12.7243" posz="-11.5285" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="5" posx="0.2744" posz="-10.3051" orientx="0.9789" orienty="0.0000" orientz="0.2041">ypSMSufiAccessory</unit>
-		<unit variation="177" posx="3.3002" posz="-10.2734" orientx="-0.3826" orienty="-0.0000" orientz="-0.9239">ypSPCIndianFortCorner</unit>
-		<unit variation="180" posx="1.6248" posz="-8.5767" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">ypSPCIndianFortWallSmall</unit>
-		<unit variation="117" posx="9.4515" posz="-8.3323" orientx="0.7071" orienty="-0.0000" orientz="-0.7071">ypSPCIndianFortWallSmall</unit>
-		<unit variation="117" posx="5.6036" posz="-10.4329" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">ypSPCIndianFortWallSmall</unit>
-		<unit variation="177" posx="7.7310" posz="-10.2450" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">ypSPCIndianFortCorner</unit>
+		<unit variation="177" posx="3.3002" posz="-10.2734" orientx="-0.3826" orienty="-0.0000" orientz="-0.9239">zpIndianFortCornerProp</unit>
+		<unit variation="180" posx="1.6248" posz="-8.5767" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpIndianFortWallSmallProp</unit>
+		<unit variation="117" posx="9.4515" posz="-8.3323" orientx="0.7071" orienty="-0.0000" orientz="-0.7071">zpIndianFortWallSmallProp</unit>
+		<unit variation="117" posx="5.6036" posz="-10.4329" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpIndianFortWallSmallProp</unit>
+		<unit variation="177" posx="7.7310" posz="-10.2450" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">zpIndianFortCornerProp</unit>
 		<unit variation="2" posx="-14.0039" posz="-9.3382" orientx="0.3829" orienty="0.0000" orientz="-0.9238">PropsColony</unit>
 		<unit variation="158" posx="-8.6701" posz="-9.7672" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHCFountainA</unit>
 		<unit variation="5" posx="-3.1968" posz="-4.3469" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpPassableGateIndian</unit>
-		<unit variation="177" posx="10.5502" posz="-7.1044" orientx="0.7071" orienty="-0.0000" orientz="-0.7071">ypSPCIndianFortCorner</unit>
+		<unit variation="177" posx="10.5502" posz="-7.1044" orientx="0.7071" orienty="-0.0000" orientz="-0.7071">zpIndianFortCornerProp</unit>
 		<unit variation="0" posx="-14.1054" posz="-5.8455" orientx="0.7070" orienty="0.0000" orientz="-0.7072">PropsPoles</unit>
 		<unit variation="1" posx="14.5427" posz="-6.6391" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">PropsPoles</unit>
 		<unit variation="129" posx="-14.1081" posz="-4.3361" orientx="-0.3824" orienty="0.0000" orientz="-0.9240">UnderbrushForest</unit>
-		<unit variation="83" posx="9.8349" posz="-2.4433" orientx="1.0000" orienty="0.0000" orientz="0.0000">ypSPCIndianFortWallBarracks</unit>
+		<unit variation="83" posx="9.8349" posz="-2.4433" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCFortBarracksProp</unit>
 		<unit variation="91" posx="-10.5746" posz="-2.8038" orientx="0.6992" orienty="0.0000" orientz="-0.7149">zpNatEUPropObelisk</unit>
 		<unit variation="5" posx="-11.0301" posz="-0.4068" orientx="0.3828" orienty="0.0000" orientz="0.9238">PropsColony</unit>
-		<unit variation="117" posx="-7.3857" posz="0.8948" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">ypSPCIndianFortWallSmall</unit>
+		<unit variation="117" posx="-7.3857" posz="0.8948" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpIndianFortWallSmallProp</unit>
 		<unit variation="145" posx="2.3730" posz="1.2453" orientx="-0.0001" orienty="-0.0000" orientz="-1.0000">zpSPCCapturableFlagInvisible</unit>
 		<unit variation="167" posx="2.1682" posz="1.1551" orientx="-0.0001" orienty="-0.0000" orientz="-1.0000">zpParisFlagNoIcon</unit>
 		<unit variation="149" posx="2.3980" posz="0.9262" orientx="-0.0001" orienty="-0.0000" orientz="-1.0000">zpNuggetKidnapGuillotine</unit>
-		<unit variation="177" posx="-8.8440" posz="2.4385" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">ypSPCIndianFortCorner</unit>
-		<unit variation="38" posx="10.8557" posz="4.4067" orientx="1.0000" orienty="0.0000" orientz="-0.0000">ypSPCIndianFortWallMedium</unit>
-		<unit variation="117" posx="-9.2651" posz="4.7057" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">ypSPCIndianFortWallSmall</unit>
+		<unit variation="177" posx="-8.8440" posz="2.4385" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">zpIndianFortCornerProp</unit>
+		<unit variation="38" posx="10.8557" posz="4.4067" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpIndianFortWallMediumProp</unit>
+		<unit variation="117" posx="-9.2651" posz="4.7057" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">zpIndianFortWallSmallProp</unit>
 		<unit variation="0" posx="-14.3100" posz="5.5619" orientx="0.7070" orienty="0.0000" orientz="-0.7072">PropsPoles</unit>
 		<unit variation="1" posx="14.4906" posz="4.7840" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">PropsPoles</unit>
-		<unit variation="177" posx="-9.3075" posz="6.5249" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">ypSPCIndianFortCorner</unit>
-		<unit variation="33" posx="-0.9738" posz="9.2274" orientx="0.0000" orienty="0.0000" orientz="1.0000">ypSPCIndianFortWallStable</unit>
+		<unit variation="177" posx="-9.3075" posz="6.5249" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">zpIndianFortCornerProp</unit>
+		<unit variation="33" posx="-0.9738" posz="9.2274" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCFortStableProp</unit>
 		<unit variation="33" posx="10.5802" posz="9.3748" orientx="0.9239" orienty="-0.0000" orientz="-0.3827">zpSPCFortTowerProp</unit>
-		<unit variation="117" posx="-7.9006" posz="8.0364" orientx="-0.7071" orienty="-0.0000" orientz="0.7071">ypSPCIndianFortWallSmall</unit>
-		<unit variation="177" posx="-6.0927" posz="10.3462" orientx="-0.7071" orienty="-0.0000" orientz="0.7071">ypSPCIndianFortCorner</unit>
-		<unit variation="139" posx="5.2776" posz="10.2771" orientx="0.0000" orienty="0.0000" orientz="1.0000">ypSPCIndianFortWallMedium</unit>
+		<unit variation="117" posx="-7.9006" posz="8.0364" orientx="-0.7071" orienty="-0.0000" orientz="0.7071">zpIndianFortWallSmallProp</unit>
+		<unit variation="177" posx="-6.0927" posz="10.3462" orientx="-0.7071" orienty="-0.0000" orientz="0.7071">zpIndianFortCornerProp</unit>
+		<unit variation="139" posx="5.2776" posz="10.2771" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpIndianFortWallMediumProp</unit>
 		<unit variation="0" posx="-11.0081" posz="9.5850" orientx="1.0000" orienty="0.0000" orientz="0.0003">zpPropsFlowers</unit>
 		<unit variation="71" posx="-10.3697" posz="10.4787" orientx="0.3825" orienty="0.0000" orientz="-0.9240">NativePirates</unit>
 		<unit variation="1" posx="-6.2502" posz="13.8916" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsPoles</unit>

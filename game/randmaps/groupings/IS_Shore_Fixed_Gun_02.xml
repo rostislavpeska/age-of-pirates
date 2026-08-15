@@ -11,7 +11,6 @@
 		<unit variation="147" posx="-8.2393" posz="0.8460" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpHarbourPlatform</unit>
 		<unit variation="223" posx="7.7540" posz="0.7323" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPlatform</unit>
 		<unit variation="177" posx="6.1583" posz="0.8157" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
-		<unit variation="251" posx="-1.4828" posz="1.4268" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpSPCFixedGunBaseBig</unit>
 		<unit variation="168" posx="-12.7609" posz="5.5036" orientx="0.9800" orienty="0.0000" orientz="-0.1989">zpHarbourShip</unit>
 		<unit variation="100" posx="4.7992" posz="5.8980" orientx="0.7071" orienty="-0.0000" orientz="0.7071">zpHarbourPlatform</unit>
 		<unit variation="100" posx="-7.1790" posz="5.7430" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpHarbourPlatform</unit>
