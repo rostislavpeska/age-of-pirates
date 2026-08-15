@@ -2570,6 +2570,34 @@ void main(void)
 	rmEchoInfo("factory ids: BN=" + unit_factBN + " BS=" + unit_factBS);
 
 
+	// Paris order (zp_z_zparis.xs 1763 vs 1873): Starting Techs is defined
+	// BEFORE every suspend trigger - techs churn first, suspensions stick.
+	int st = 0;
+	rmCreateTrigger("Starting Techs");
+	rmSwitchToTrigger(rmTriggerID("Starting techs"));
+	for (st = 1; <= cNumberNonGaiaPlayers)
+	{
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", st);
+	rmSetTriggerEffectParam("TechID", "cTechzpBosporusMapSetup");
+	rmSetTriggerEffectParamInt("Status", 2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", st);
+	rmSetTriggerEffectParam("TechID", "cTechdeEUMapUpdateVisuals"); // European Embassy - zp_z_zparis.xs 1810
+	rmSetTriggerEffectParamInt("Status", 2);
+	}
+	// gaia gets ONLY the visual tech (zp_z_zparis.xs fires it for i=0..N;
+	// no reference map ever fires a SETUP tech for gaia - its unit-churning
+	// effects at startup are what reset AutoConvert suspensions)
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", 0);
+	rmSetTriggerEffectParam("TechID", "cTechdeEUMapUpdateVisuals");
+	rmSetTriggerEffectParamInt("Status", 2);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
 	// ========================================================================
 	//  TRADE HARBOUR CONVERSION  (000_independence_war.xs idiom)
 	// ------------------------------------------------------------------------
@@ -2684,34 +2712,6 @@ void main(void)
 
 
 
-	int st = 0;
-	rmCreateTrigger("Starting Techs");
-	rmSwitchToTrigger(rmTriggerID("Starting techs"));
-	for (st = 1; <= cNumberNonGaiaPlayers)
-	{
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID", st);
-	rmSetTriggerEffectParam("TechID", "cTechzpBosporusMapSetup");
-	rmSetTriggerEffectParamInt("Status", 2);
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID", st);
-	rmSetTriggerEffectParam("TechID", "cTechdeEUMapUpdateVisuals"); // European Embassy - zp_z_zparis.xs 1810
-	rmSetTriggerEffectParamInt("Status", 2);
-	}
-	// gaia OUTSIDE the loop, explicit PlayerID 0 - the exact Paris shape
-	// (zp_z_zparis.xs 1814-1817); no reference map ever loops from 0 here
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID", 0);
-	rmSetTriggerEffectParam("TechID", "cTechzpBosporusMapSetup");
-	rmSetTriggerEffectParamInt("Status", 2);
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID", 0);
-	rmSetTriggerEffectParam("TechID", "cTechdeEUMapUpdateVisuals");
-	rmSetTriggerEffectParamInt("Status", 2);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
 
 	// ========================================================================
 	//  PRODUCTION BUILDING CONVERSION  (zp_z_zparis.xs 1872-1961 idiom)
