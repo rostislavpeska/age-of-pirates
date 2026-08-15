@@ -133,10 +133,13 @@ void fillHouses(int startIndex = -1, int endIndex = -1, int offset = 0)
 		int row  = code - col * 100;
 
 		int pick = col + row + row + offset;
-		while (pick >= total)
-		{
-			pick = pick - total;
-		}
+		// wrap into [0, total) - pick is at most 22 (col 5 + 2*row 12 + offset 5)
+		// and total >= 6, so four bounded subtractions always suffice (no while:
+		// zero corpus uses in either reference corpus)
+		if (pick >= total) pick = pick - total;
+		if (pick >= total) pick = pick - total;
+		if (pick >= total) pick = pick - total;
+		if (pick >= total) pick = pick - total;
 
 		vector loc = xsArrayGetVector(gCityLocs, i);
 		rmPlaceGroupingAtLoc(xsArrayGetInt(gHouseBlocks, pick), 0,
