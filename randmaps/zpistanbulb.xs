@@ -2526,7 +2526,7 @@ void main(void)
 	//  difficulty: 517 harbours = ypNuggetTradingPost, 516/520/98 = the
 	//  invisible nugget. NEVER the authored placeholder proto.
 	// ========================================================================
-	int instanceIdShift = 1;
+	int instanceIdShift = 2;
 
 	// -- placed object defs: exact --
 	int unit_harbourSocketN = rmGetUnitPlaced(harbourSocketN, 0);
