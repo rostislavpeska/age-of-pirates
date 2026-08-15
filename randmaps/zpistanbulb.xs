@@ -1,5 +1,7 @@
 // ============================================================================
-// 000_gun_test.xs  -  Istanbul: two city islands + four floating gun islands
+// zpistanbulb.xs  -  Istanbul: two city islands + four floating gun islands
+// CANONICAL FILE (repo). Root 000_istanbul.xs / 000_gun_test.xs are copies
+// synced from this one after every edit - never edit those directly.
 // ----------------------------------------------------------------------------
 // HOW THE FLOATING ISLANDS WORK (guide 19.7):
 //   The engine cannot place an island on open water. It CAN place a grouping
@@ -582,6 +584,85 @@ void main(void)
 	rmDefineClass("classCliff");
 	rmDefineClass("classGun");
 
+	// ========================================================================
+	//  1b. GENERIC CONSTRAINTS - every order-free constraint DEFINED here,
+	//  once (the reference convention: type/terrain/box/pie constraints and
+	//  class constraints on the classes above). A constraint is only
+	//  EVALUATED when something is placed against it, so where it is defined
+	//  changes nothing about the layout. Area-tied constraints (the guard
+	//  areas) and boxes computed from measured lanes stay with their areas.
+	//  Values are user-tuned - copied here byte-identical, do not re-tune.
+	// ========================================================================
+
+	// -- streets and cliffs --
+	int avoidStreet = rmCreateClassDistanceConstraint("hinterland off the street",
+		rmClassID("classStreet"), 0.0);
+	// cliffs are 6 m higher and their faces + smoothing paint OUTSIDE their
+	// own cells - 8 m keeps all of that off the promenade
+	int cliffOffStreet = rmCreateClassDistanceConstraint("cliffs off the street",
+		rmClassID("classStreet"), 1.0);
+	int avoidWater10 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 9.0);
+	// trees stay one tile clear of the cliff
+	// Distance here is METRES, not a map fraction - every shipped map passes
+	// plain numbers (20.0, 30.0, 8.0) and not one passes a ToFraction helper.
+	// 1 tile = 2 m, so one tile of clearance is 2.0.
+	int avoidCliff = rmCreateClassDistanceConstraint("trees off the cliff",
+		rmClassID("classCliff"), 5.0);
+
+	// -- walls and docks --
+	int avoidWallObj = rmCreateTypeDistanceConstraint("avoid wall object",
+		"AbstractWall", 0.01);
+	int avoidWallObjLong = rmCreateTypeDistanceConstraint("avoid wall object long",
+	"AbstractWall", 2.00);
+	// resource standoff: treasures/herds/mines stay visually clear of the
+	// ramparts (0.01/1.0 above are the user-tuned fill fences - untouched)
+	int avoidWallObjXL = rmCreateTypeDistanceConstraint("avoid wall object xl",
+	"AbstractWall", 20.0);
+	int avoidWallObjTree = rmCreateTypeDistanceConstraint("avoid wall object trees",
+	"AbstractWall", 10.0);
+	int dockAvoidBlocks = rmCreateClassDistanceConstraint("docks off city blocks",
+		rmClassID("classBlock"), 8.0);
+	// class, not unit type: still holds if the cannon proto changes later
+	int dockAvoidGunClass = rmCreateClassDistanceConstraint("docks off the guns",
+		rmClassID("classGun"), 6.0);
+
+	// -- countryside fill --
+	int fillAvoidCliff = rmCreateClassDistanceConstraint("fill off cliffs",
+		rmClassID("classCliff"), 10.0);
+
+	// -- world circle --
+	// keep countryside objects INSIDE the world circle (a treasure was
+	// spawning half in the void at the rim) - Black Sea's pie idiom, r 0.46
+	int insideWorld = rmCreatePieConstraint("inside the world circle", 0.5, 0.5,
+		rmXFractionToMeters(0.0), rmXFractionToMeters(0.46),
+		rmDegreesToRadians(0), rmDegreesToRadians(360));
+
+	// -- resource spacing --
+	int treeVsTree = rmCreateTypeDistanceConstraint("tree clump v tree clump", "deTreeCypress", 20.0);
+	// trees keep the socket approaches clear (000_blacksea.xs 242 idiom -
+	// "Socket" is the abstract type all sockets carry); a clump centre 20 m
+	// out keeps its widest items ~9 m off the socket ring
+	int avoidSocketTrees = rmCreateTypeDistanceConstraint("trees off sockets", "Socket", 20.0);
+	int mineVsMine = rmCreateTypeDistanceConstraint("mine v mine", "MineCopper", 70.0);
+	int deerVsDeer = rmCreateTypeDistanceConstraint("herd v herd", "Deer", 40.0);
+	int fishVsFish = rmCreateTypeDistanceConstraint("fish v fish", "FishSardine", 18.0);
+	int whaleVsWhale = rmCreateTypeDistanceConstraint("whale v whale", "HumpbackWhale", 50.0);
+	int fishOffLand = rmCreateTerrainDistanceConstraint("fish off land", "Water", false, 6.0);
+	int whaleOffLand = rmCreateTerrainDistanceConstraint("whale off land", "Water", false, 25.0);
+	int nugVsNug = rmCreateTypeDistanceConstraint("nugget v nugget", "AbstractNugget", 60.0);
+
+	// -- sea life --
+	// sea life keeps clear of the forts - zpcaribbeanwars 156-158 idiom
+	int avoidKotH = rmCreateTypeDistanceConstraint("fish off the water fort", "zpKingsHillNaval", 15.0);
+	int avoidKotHLong = rmCreateTypeDistanceConstraint("whales off the water fort", "zpKingsHillNaval", 25.0);
+	int avoidHarbourPlat = rmCreateTypeDistanceConstraint("fish off harbour platforms", "zpHarbourPlatform", 20.0);
+	int avoidKotHMedi = rmCreateTypeDistanceConstraint("fish off the medi fort", "zpKingsHillNavalMedi", 15.0);
+	int avoidKotHMediLong = rmCreateTypeDistanceConstraint("whales off the medi fort", "zpKingsHillNavalMedi", 25.0);
+	// NE box = the Black Sea side (north lane entry waters), SW box = the
+	// Mediterranean side (south lane entry waters).
+	int seaBoxNE = rmCreateBoxConstraint("black sea side", 0.62, 0.52, 0.98, 0.98, 0.01);
+	int seaBoxSW = rmCreateBoxConstraint("mediterranean side", 0.02, 0.02, 0.38, 0.48, 0.01);
+
 
 	rmSetStatusText("", 0.08);
 
@@ -1095,8 +1176,6 @@ void main(void)
 	// the country can be told to keep off it. Distance 0.0 means it stops the
 	// instant it touches the cobbles: flush against the street, never over it.
 	// Same base height as the city, so there is no step where the two meet.
-	int avoidStreet = rmCreateClassDistanceConstraint("hinterland off the street",
-		rmClassID("classStreet"), 0.0);
 
 	float hinterDeep = rmZTilesToFraction(hinterReach);
 	float hinterSide = rmXTilesToFraction(hinterWiden);
@@ -1240,17 +1319,12 @@ void main(void)
 	// if a route snaps somewhere a guard blob happens to miss
 	int cliffLaneFallback = rmCreateTradeRouteDistanceConstraint("cliff lane fallback", 8.0);
 	// the countryside sits flush (0.0) because it is AT city height; the
-	// cliffs are 6 m higher and their faces + smoothing paint OUTSIDE their
-	// own cells - 8 m keeps all of that off the promenade
-	int cliffOffStreet = rmCreateClassDistanceConstraint("cliffs off the street",
-		rmClassID("classStreet"), 1.0);
 	int avoidGuardW = rmCreateAreaDistanceConstraint("off west guard", guardW, 4.0);
 	int avoidGuardE = rmCreateAreaDistanceConstraint("off east guard", guardE, 4.0);
 	int avoidGuardW_far = rmCreateAreaDistanceConstraint("off west guard far", guardW, 13.0);
 	int avoidGuardE_far = rmCreateAreaDistanceConstraint("off east guard far", guardE, 13.0);
 	int avoidGuardW_far2 = rmCreateAreaDistanceConstraint("off west guard far 2", guardW, 22.0);
 	int avoidGuardE_far2 = rmCreateAreaDistanceConstraint("off east guard far 2", guardE, 22.0);
-	int avoidWater10 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 9.0);
 
 	// --- the cliffs: coherent blobs shaped ONLY by the constraints ---------
 	int wildW = rmCreateArea("west flank cliff");
@@ -1347,12 +1421,6 @@ void main(void)
 
 
 
-	// trees stay one tile clear of the cliff
-	// Distance here is METRES, not a map fraction - every shipped map passes
-	// plain numbers (20.0, 30.0, 8.0) and not one passes a ToFraction helper.
-	// 1 tile = 2 m, so one tile of clearance is 2.0.
-	int avoidCliff = rmCreateClassDistanceConstraint("trees off the cliff",
-		rmClassID("classCliff"), 5.0);
 
 	// --- trees, placed one at a time across each countryside ---------------
 	// Four kinds of tree, one object def each, picked at random per spot.
@@ -1910,21 +1978,6 @@ void main(void)
 	//   seal area ~284 t worst case -> dockSizeTiles 550 = ~2x slack, r 13.2 t
 	//   sea docks sit 6 t sea-ward AND 6 t away from the gun (seed 33 m from
 	//   the nearest gun unit; 24 m gun field blankets the river approach)
-	int avoidWallObj = rmCreateTypeDistanceConstraint("avoid wall object",
-		"AbstractWall", 0.01);
-	int avoidWallObjLong = rmCreateTypeDistanceConstraint("avoid wall object long",
-	"AbstractWall", 2.00);
-	// resource standoff: treasures/herds/mines stay visually clear of the
-	// ramparts (0.01/1.0 above are the user-tuned fill fences - untouched)
-	int avoidWallObjXL = rmCreateTypeDistanceConstraint("avoid wall object xl",
-	"AbstractWall", 20.0);
-	int avoidWallObjTree = rmCreateTypeDistanceConstraint("avoid wall object trees",
-	"AbstractWall", 10.0);
-	int dockAvoidBlocks = rmCreateClassDistanceConstraint("docks off city blocks",
-		rmClassID("classBlock"), 8.0);
-	// class, not unit type: still holds if the cannon proto changes later
-	int dockAvoidGunClass = rmCreateClassDistanceConstraint("docks off the guns",
-		rmClassID("classGun"), 6.0);
 	int   dockSizeTiles = 450;
 	int   wallDockTiles = 47;  // back-end seed distance past the wall end
 	int   dockSeaTiles  = 1;   // sea-dock x-offset off the wall line
@@ -2028,8 +2081,6 @@ void main(void)
 	//                     overflows the rest of the wall grouping
 	//   cliffLaneFallback 8 m lane insurance so raised ground can never pave
 	//                     a trade route (stated addition beyond your two)
-	int fillAvoidCliff = rmCreateClassDistanceConstraint("fill off cliffs",
-		rmClassID("classCliff"), 10.0);
 
 	// west valley, between city, wall, terraces and wild cliffs
 	int fillW = rmCreateArea("countryside fill w");
@@ -2310,25 +2361,8 @@ void main(void)
 	// zp_z_verseilles.xs 1594-1630: objects scattered rmPlaceObjectDefInArea
 	// into the named countryside areas, spaced by type constraints. All the
 	// target areas exist by now (terraces, filler, back hinterland).
-	// keep countryside objects INSIDE the world circle (a treasure was
-	// spawning half in the void at the rim) - Black Sea's pie idiom, r 0.46
-	int insideWorld = rmCreatePieConstraint("inside the world circle", 0.5, 0.5,
-		rmXFractionToMeters(0.0), rmXFractionToMeters(0.46),
-		rmDegreesToRadians(0), rmDegreesToRadians(360));
 	// resource abundance grows with the lobby: 1 at 4 players, 2 at 8
 	int resScale = cNumberNonGaiaPlayers / 4;
-	int treeVsTree = rmCreateTypeDistanceConstraint("tree clump v tree clump", "deTreeCypress", 20.0);
-	// trees keep the socket approaches clear (000_blacksea.xs 242 idiom -
-	// "Socket" is the abstract type all sockets carry); a clump centre 20 m
-	// out keeps its widest items ~9 m off the socket ring
-	int avoidSocketTrees = rmCreateTypeDistanceConstraint("trees off sockets", "Socket", 20.0);
-	int mineVsMine = rmCreateTypeDistanceConstraint("mine v mine", "MineCopper", 70.0);
-	int deerVsDeer = rmCreateTypeDistanceConstraint("herd v herd", "Deer", 40.0);
-	int fishVsFish = rmCreateTypeDistanceConstraint("fish v fish", "FishSardine", 18.0);
-	int whaleVsWhale = rmCreateTypeDistanceConstraint("whale v whale", "HumpbackWhale", 50.0);
-	int fishOffLand = rmCreateTerrainDistanceConstraint("fish off land", "Water", false, 6.0);
-	int whaleOffLand = rmCreateTerrainDistanceConstraint("whale off land", "Water", false, 25.0);
-	int nugVsNug = rmCreateTypeDistanceConstraint("nugget v nugget", "AbstractNugget", 60.0);
 
 	// tree clumps: the map's own mix, cypress-led (Paris countrysideTrees style)
 	int contTrees = rmCreateObjectDef("countryside trees");
@@ -2428,12 +2462,6 @@ void main(void)
 	rmAddObjectDefItem(fortMarkDefS, "zpCinematicRevealer", 1, 0.0);
 	rmPlaceObjectDefAtLoc(fortMarkDefS, 0, 1.0 - waterFortNX, 1.0 - waterFortNZ);
 
-	// sea life keeps clear of the forts - zpcaribbeanwars 156-158 idiom
-	int avoidKotH = rmCreateTypeDistanceConstraint("fish off the water fort", "zpKingsHillNaval", 15.0);
-	int avoidKotHLong = rmCreateTypeDistanceConstraint("whales off the water fort", "zpKingsHillNaval", 25.0);
-	int avoidHarbourPlat = rmCreateTypeDistanceConstraint("fish off harbour platforms", "zpHarbourPlatform", 20.0);
-	int avoidKotHMedi = rmCreateTypeDistanceConstraint("fish off the medi fort", "zpKingsHillNavalMedi", 15.0);
-	int avoidKotHMediLong = rmCreateTypeDistanceConstraint("whales off the medi fort", "zpKingsHillNavalMedi", 25.0);
 
 	int fishSolo = rmCreateObjectDef("sea fish solo");
 	rmAddObjectDefItem(fishSolo, "FishSardine", 1, 0.0);
@@ -2467,10 +2495,6 @@ void main(void)
 	rmPlaceObjectDefAtLoc(fishSchool, 0, 0.5, 0.5, 16 + cNumberNonGaiaPlayers);
 
 	// whales: one pod per sea, box-fenced so they stay OUT of the strait.
-	// NE box = the Black Sea side (north lane entry waters), SW box = the
-	// Mediterranean side (south lane entry waters).
-	int seaBoxNE = rmCreateBoxConstraint("black sea side", 0.62, 0.52, 0.98, 0.98, 0.01);
-	int seaBoxSW = rmCreateBoxConstraint("mediterranean side", 0.02, 0.02, 0.38, 0.48, 0.01);
 
 	int whaleN = rmCreateObjectDef("whales black sea");
 	rmAddObjectDefItem(whaleN, "HumpbackWhale", 1, 0.0);
