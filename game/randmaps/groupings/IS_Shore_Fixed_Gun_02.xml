@@ -20,7 +20,7 @@
 		<unit variation="100" posx="-0.9423" posz="8.2953" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
 		<unit variation="59" posx="-9.1384" posz="7.5711" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpHarbourPlatform</unit>
 		<unit variation="23" posx="6.2466" posz="8.0172" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpHarbourPlatform</unit>
-		<unit variation="242" posx="-1.5395" posz="0.7357" orientx="0.0000" orienty="-0.0000" orientz="1.0000">SPCFixedGun</unit>
+		<unit variation="242" posx="-1.5395" posz="0.7357" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpSocketAntiShipGun</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="props\east_colony2">
