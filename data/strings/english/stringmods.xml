@@ -3329,6 +3329,16 @@
       <string _locid="303330">Anti-Ship Gun Socket</string>
       <string _locid="303331">A heavy coastal battery that fires only on ships. It cannot target land units, so it must be protected from the shore.</string>
       <string _locid="303332">Build an Anti-Ship Gun here. Destroy an enemy gun to claim the socket for yourself.</string>
+      <string _locid="303333">Corsair Galley</string>
+      <string _locid="303334">A corsair galley standing guard. Sink it to claim what it protects.</string>
+      <string _locid="303335">ZP Guardian Corsair Galley</string>
+      <string _locid="303336">ZP Nugget Invisible Water</string>
+      <string _locid="303337">City of Istanbul</string>
+      <string _locid="303338">ZP Capturable Flag Invisible Naval</string>
+      <string _locid="303339">Struggle of the Bosporus</string>
+      <string _locid="303340">Both teams fight for the straits. Seize the two naval forts that guard them - the Black Sea Fort and the Mediterranean Fort - and hold both to win.</string>
+      <string _locid="303341">Take control over both naval forts - the Black Sea Fort and the Mediterranean Fort - and hold them.</string>
+      <string _locid="303342">Sink a fort's guardian galleys and claim its treasure to unlock it, then bring warships alongside with no enemy vessels nearby. Holding both forts starts the victory timer.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

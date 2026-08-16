@@ -933,6 +933,7 @@
     <culture>Grass</culture>
     <displaynameid>300882</displaynameid>
     <rollovernameid>300882</rollovernameid>
+    <homecityflagtexture>objects\flags\ottoman_sultanate</homecityflagtexture>
     <alliedid>26446</alliedid>
     <alliedotherid>26445</alliedotherid>
     <unalliedid>26444</unalliedid>

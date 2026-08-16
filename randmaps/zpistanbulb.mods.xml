@@ -221,5 +221,10 @@
 			<flag>InvulnerableIfGaia</flag>
 			<flag>CannotAttackIfGaia</flag>
 		</unit>
+		<unit name="zpKingsHillNaval">
+			<displaynameid>303324</displaynameid>
+			<portraiticon>resources\art\buildings\waterfort_portrait.png</portraiticon>
+			<minimapicon>ui\minimap\highlighted item</minimapicon>
+		</unit>
     </protomods>
 </mods>

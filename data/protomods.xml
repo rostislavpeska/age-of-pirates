@@ -14641,6 +14641,105 @@
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
   </unit>
+  <unit id="20965" name="zpGuardianCorsairGalley">
+    <dbid>20965</dbid>
+    <displaynameid>303333</displaynameid>
+    <editornameid>303335</editornameid>
+    <obstructionradiusx>2.9900</obstructionradiusx>
+    <obstructionradiusz>2.9900</obstructionradiusz>
+    <formationcategory>Ranged</formationcategory>
+    <maxvelocity>5.5000</maxvelocity>
+    <maxrunvelocity>7.5000</maxrunvelocity>
+    <movementtype>water</movementtype>
+    <turnrate>3.0000</turnrate>
+    <animfile>units\naval\galley\corsair_galley.xml</animfile>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <icon>resources\art\units\naval\spc\corsair_galley_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\corsair_galley_portrait.png</portraiticon>
+    <rollovertextid>303334</rollovertextid>
+    <shortrollovertextid>303334</shortrollovertextid>
+    <initialhitpoints>700.0000</initialhitpoints>
+    <maxhitpoints>700.0000</maxhitpoints>
+    <los>26.0000</los>
+    <projectileprotounit>Cannonball</projectileprotounit>
+    <unitaitype>RangedCombative</unitaitype>
+    <trainpoints>40.0000</trainpoints>
+    <buildlimit>3</buildlimit>
+    <bounty>40.0000</bounty>
+    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Gold">100.0000</cost>
+    <maxcontained>50</maxcontained>
+    <allowedage>1</allowedage>
+    <armor type="Ranged" value="0.5000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeNeededForVictory</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeValidSPCUnitsDeadCondition</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeMinimapFilterMilitary</unittype>
+    <unittype>Unit</unittype>
+    <unittype>UnitClass</unittype>
+    <unittype>Military</unittype>
+    <unittype>Ship</unittype>
+    <unittype>Transport</unittype>
+    <unittype>CountsTowardMilitaryScore</unittype>
+    <unittype>Guardian</unittype>
+    <unittype>Ranged</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>WaterGuardian</unittype>
+    <flag>TieToWaterSurface</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>DontRotateObstruction</flag>
+    <flag>ApplyHandicapTraining</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>FadeOutDecalOnDeath</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>ForceBuildingData</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <contain>LogicalTypeGarrisonInShips</contain>
+    <command page="10" column="5">Eject</command>
+    <command page="10" column="1">Stop</command>
+    <command page="10" column="7">Delete</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="11" column="0">Abilities</command>
+    <tactics>seaJunk.tactics</tactics>
+    <protoaction>
+      <name>BroadsideAttack</name>
+      <damage>25.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>26.000000</maxrange>
+      <rof>0.050000</rof>
+      <damagecap>65.000000</damagecap>
+      <damagebonus type="Ship">3.000000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+    <protoaction>
+      <name>RangedAttack</name>
+      <damage>80.000000</damage>
+      <damagetype>Siege</damagetype>
+      <maxrange>18.000000</maxrange>
+      <rof>2.000000</rof>
+      <damagecap>160.000000</damagecap>
+      <damagebonus type="AbstractArtillery">0.500000</damagebonus>
+      <damagearea>1.000000</damagearea>
+      <damageflags>GAIAEnemy</damageflags>
+    </protoaction>
+  </unit>
   <unit id="20142" name="zpJesuitCathedral">
     <dbid>20142</dbid>
     <displaynameid>302098</displaynameid>
@@ -41529,6 +41628,44 @@
     <flag>OnlyInEditor</flag>
     <tactics>captureflag.tactics</tactics>
   </unit>
+  <unit id="20967" name="zpSPCCapturableFlagInvisibleNaval">
+    <dbid>20967</dbid>
+    <displaynameid>32671</displaynameid>
+    <editornameid>303338</editornameid>
+    <panelnameid>123194</panelnameid>
+    <panelrolloverid>123195</panelrolloverid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>water</movementtype>
+    <animfile>ui\editor\editor_revealer.xml</animfile>
+    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
+    <los>15.0000</los>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unit</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotCommandable</flag>
+    <flag>Tracked</flag>
+    <flag>VariationLocked</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>GivesLOSToAll</flag>
+  </unit>
   <unit id="20536" name="zpParisFlag">
     <dbid>20536</dbid>
     <displaynameid>32671</displaynameid>
@@ -46048,6 +46185,42 @@
     <flag>Nugget</flag>
     <flag>OnlyInEditor</flag>
   </unit>
+  <unit id="20966" name="zpNuggetInvisibleWater">
+    <dbid>20966</dbid>
+    <displaynameid>303336</displaynameid>
+    <editornameid>303336</editornameid>
+    <obstructionradiusx>0.1000</obstructionradiusx>
+    <obstructionradiusz>0.1000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>water</movementtype>
+    <animfile>nuggets\asian\trading_post_nugget\trading_post_nugget.xml</animfile>
+    <unittype>Unattackable</unittype>
+    <unittype>AbstractNugget</unittype>
+    <unittype>AbstractNuggetWater</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>NavalUnit</flag>
+    <flag>DecalStickToWaterSurface</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>VariationLocked</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>Nugget</flag>
+    <flag>OnlyInEditor</flag>
+  </unit>
   <unit id="20604" name="zpPropsFlowersBohemia">
     <dbid>20604</dbid>
     <displaynameid>25552</displaynameid>
@@ -47860,7 +48033,7 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\fort\fort_icon.png</icon>
-    <minimapicon>ui\minimap\fort_star_16x16</minimapicon>
+    <minimapicon>ui\minimap\highlighted item</minimapicon>
     <portraiticon>resources\art\buildings\waterfort_portrait.png</portraiticon>
     <rollovertextid>302232</rollovertextid>
     <shortrollovertextid>302233</shortrollovertextid>

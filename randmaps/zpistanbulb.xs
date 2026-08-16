@@ -590,6 +590,17 @@ void main(void)
 	rmSetMapType("eurotradeRouteCapture");
 	// the treasure-house nuggets are the DEFAULT ones, picked from this table
 	rmSetMapType("mediEurope");
+
+	// Full reveal from the start (zp_z_zparis.xs 122).
+	rmSetAllMapReveal(true);
+
+	// _________________ Map Objectives ______________________________
+	// zp_z_zparis.xs 1873-1879 shape. Paris adds one objective per team;
+	// both sides here share the same goal, so it is a single entry with no
+	// rmObjectiveSetTeam - it shows for everyone.
+	rmObjectiveScreenSetTitle(303339);
+	rmObjectiveScreenSetGoal(303340);
+	rmObjectiveAdd(303341, 303342, true, true, true);
 	rmSetWorldCircleConstraint(true);
 
 	rmDefineClass("classPlateau");
@@ -2562,19 +2573,25 @@ void main(void)
 	// fort. These spots keep 58+ m from BOTH route polylines, radius 0.44.
 	float waterFortNX = 0.88;   // Black Sea fort - tune both, south derives
 	float waterFortNZ = 0.72;
-	int waterFortN = rmCreateGrouping("water fort north", "Caribbean_Naval_KotH");
+	int waterFortN = rmCreateGrouping("water fort north", "Caribbean_Naval_KotH_Istanbul");
 	rmSetGroupingMinDistance(waterFortN, 0.00);
 	rmSetGroupingMaxDistance(waterFortN, 0.01);
 	rmAddGroupingToClass(waterFortN, rmClassID("classPlateau"));
-	// rmPlaceGroupingInstanceAtLoc is CITY-GROUND ONLY on this map - in the
-	// floating-water context it silently places nothing (the gun-island law).
-	rmPlaceGroupingAtLoc(waterFortN, 0, waterFortNX, waterFortNZ);
+	// INSTANCE placement, so the baked treasure can be queried back by type -
+	// the same call the gun islands, factories and harbours use. The nugget is
+	// INSIDE the grouping (never dropped on top of it), which is what makes the
+	// guardian galleys spawn with the fort instead of fighting its footprint.
+	// Difficulty 601 latches nuggetmods zpNuggetWaterFort = 2x
+	// zpGuardianCorsairGalley; restored to 519 after both forts are down.
+	rmSetNuggetDifficulty(601, 601);
+	int waterFortNPlacement = rmPlaceGroupingInstanceAtLoc(waterFortN, waterFortNX, waterFortNZ, 0);
 
 	int waterFortS = rmCreateGrouping("water fort south", "Caribbean_Naval_KotH_medi");
 	rmSetGroupingMinDistance(waterFortS, 0.00);
 	rmSetGroupingMaxDistance(waterFortS, 0.01);
 	rmAddGroupingToClass(waterFortS, rmClassID("classPlateau"));
-	rmPlaceGroupingAtLoc(waterFortS, 0, 1.0 - waterFortNX, 1.0 - waterFortNZ);
+	int waterFortSPlacement = rmPlaceGroupingInstanceAtLoc(waterFortS, 1.0 - waterFortNX, 1.0 - waterFortNZ, 0);
+	rmSetNuggetDifficulty(519, 519);
 
 	// conversion anchors - one invisible revealer per fort at the knob spot;
 	// ids are EXACT (rmGetUnitPlaced, no shift), all trigger conditions and
@@ -2585,6 +2602,12 @@ void main(void)
 	int fortMarkDefS = rmCreateObjectDef("water fort marker south");
 	rmAddObjectDefItem(fortMarkDefS, "zpCinematicRevealer", 1, 0.0);
 	rmPlaceObjectDefAtLoc(fortMarkDefS, 0, 1.0 - waterFortNX, 1.0 - waterFortNZ);
+	// Flare positions: the map's own readback idiom (:265, :1099, :1157...).
+	// Duration name and value copied from 000_caribbeanwars.xs 991.
+	int socketMinimapFlareDuration = 10;
+	vector waterFortLocN = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(fortMarkDefN, 0));
+	vector waterFortLocS = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(fortMarkDefS, 0));
+
 
 
 	int fishSolo = rmCreateObjectDef("sea fish solo");
@@ -2736,8 +2759,14 @@ void main(void)
 	int unit_flank2SocketS = rmGetUnitPlaced(flank2SocketS, 0);
 	int pirateFlagN = rmGetUnitPlaced(pirateFlagDefN, 0);
 	int pirateFlagS = rmGetUnitPlaced(pirateFlagDefS, 0);
-	int fortMarkN = rmGetUnitPlaced(fortMarkDefN, 0);
-	int fortMarkS = rmGetUnitPlaced(fortMarkDefS, 0);
+	// The fort groupings now bake a guardian treasure, so the markers placed
+	// after them are no longer raw-exact - they take the map's shift like
+	// every other queried id.
+	int fortMarkN = rmGetUnitPlaced(fortMarkDefN, 0) + instanceIdShift;
+	int fortMarkS = rmGetUnitPlaced(fortMarkDefS, 0) + instanceIdShift;
+	int unit_waterFortNugN = rmGetGroupingInstanceUnitByType(waterFortNPlacement, "zpNuggetInvisibleWater") + instanceIdShift;
+	int unit_waterFortNugS = rmGetGroupingInstanceUnitByType(waterFortSPlacement, "zpNuggetInvisibleWater") + instanceIdShift;
+	rmEchoInfo("water fort treasures: N="+unit_waterFortNugN+" S="+unit_waterFortNugS);
 
 	// -- grouping-adjacent: pirate sockets --
 	int pirateSocketN = pirateFlagN+1;
@@ -2799,6 +2828,16 @@ void main(void)
 	rmSetTriggerEffectParamInt("PlayerID", 0);
 	rmSetTriggerEffectParam("TechID", "cTechdeEUMapUpdateVisuals");
 	rmSetTriggerEffectParamInt("Status", 2);
+	// GAIA IDENTITY. The zp_z_zparis.xs 2038-2044 pair: Paris flies SPCBourbon
+	// and calls itself "City of Paris" (301968); the Bosporus flies the
+	// Sultanate (zpSultanate, data/civmods.xml) and calls itself
+	// "City of Istanbul" (303337).
+	rmAddTriggerEffect("Player : Override Civilization for Flag");
+	rmSetTriggerEffectParamInt("Player", 0);
+	rmSetTriggerEffectParam("Civilization", "zpSultanate");
+	rmAddTriggerEffect("Player : Override Civilization Name");
+	rmSetTriggerEffectParamInt("Player", 0);
+	rmSetTriggerEffectParam("StringID", "303337");
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -3497,13 +3536,19 @@ void main(void)
 		rmSetTriggerEffectParamInt("SrcPlayer", fd);
 		rmSetTriggerEffectParamInt("TrgPlayer", fc);
 		rmSetTriggerEffectParam("UnitType", "zpKingsHillNaval");
-		rmSetTriggerEffectParamInt("Dist", 15);
+		rmSetTriggerEffectParamInt("Dist", 20);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject", ""+fortMarkN);
 		rmSetTriggerEffectParamInt("SrcPlayer", fd);
 		rmSetTriggerEffectParamInt("TrgPlayer", fc);
 		rmSetTriggerEffectParam("UnitType", "zpCityStateFlag");
-		rmSetTriggerEffectParamInt("Dist", 15);
+		rmSetTriggerEffectParamInt("Dist", 20);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", ""+fortMarkN);
+		rmSetTriggerEffectParamInt("SrcPlayer", fd);
+		rmSetTriggerEffectParamInt("TrgPlayer", fc);
+		rmSetTriggerEffectParam("UnitType", "zpSPCCapturableFlagInvisibleNaval");
+		rmSetTriggerEffectParamInt("Dist", 20);
 	}
 	for (fd = 1; <= cNumberNonGaiaPlayers)
 	{
@@ -3513,10 +3558,19 @@ void main(void)
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("FortConvN_Plr" + fd));
 		}
 	}
+	for (fd = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("Flare Minimap");
+		rmSetTriggerEffectParamInt("PlayerID", fd, false);
+		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(waterFortLocN)+","+xsVectorGetY(waterFortLocN)+","+xsVectorGetZ(waterFortLocN), false);
+		rmSetTriggerEffectParam("Flash", "True", false);
+	}
 	rmAddTriggerEffect("Play Soundset");
 	rmSetTriggerEffectParam("Soundset", "SheepFound");
 	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
+	// LOCKED until the fort treasure is collected - FortNUnlock/FortSUnlock
+	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
@@ -3555,13 +3609,19 @@ void main(void)
 		rmSetTriggerEffectParamInt("SrcPlayer", fd);
 		rmSetTriggerEffectParamInt("TrgPlayer", fc);
 		rmSetTriggerEffectParam("UnitType", "zpKingsHillNavalMedi");
-		rmSetTriggerEffectParamInt("Dist", 15);
+		rmSetTriggerEffectParamInt("Dist", 20);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject", ""+fortMarkS);
 		rmSetTriggerEffectParamInt("SrcPlayer", fd);
 		rmSetTriggerEffectParamInt("TrgPlayer", fc);
 		rmSetTriggerEffectParam("UnitType", "zpCityStateFlag");
-		rmSetTriggerEffectParamInt("Dist", 15);
+		rmSetTriggerEffectParamInt("Dist", 20);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", ""+fortMarkS);
+		rmSetTriggerEffectParamInt("SrcPlayer", fd);
+		rmSetTriggerEffectParamInt("TrgPlayer", fc);
+		rmSetTriggerEffectParam("UnitType", "zpSPCCapturableFlagInvisibleNaval");
+		rmSetTriggerEffectParamInt("Dist", 20);
 	}
 	for (fd = 1; <= cNumberNonGaiaPlayers)
 	{
@@ -3571,12 +3631,124 @@ void main(void)
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("FortConvS_Plr" + fd));
 		}
 	}
+	for (fd = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("Flare Minimap");
+		rmSetTriggerEffectParamInt("PlayerID", fd, false);
+		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(waterFortLocS)+","+xsVectorGetY(waterFortLocS)+","+xsVectorGetZ(waterFortLocS), false);
+		rmSetTriggerEffectParam("Flash", "True", false);
+	}
 	rmAddTriggerEffect("Play Soundset");
 	rmSetTriggerEffectParam("Soundset", "SheepFound");
+	rmSetTriggerPriority(4);
+	// LOCKED until the fort treasure is collected - FortNUnlock/FortSUnlock
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
+
+	// ========================================================================
+	//  WATER FORT UNLOCK  -  guardians first, then the fort can change hands
+	// ------------------------------------------------------------------------
+	//  The forts have no AutoConvert action; capture is entirely trigger-driven
+	//  by FortConvN/S_Plr. So the guard is simply that those triggers start
+	//  INACTIVE and are ignited here once "Nugget Is Collectable" reports the
+	//  fort treasure claimed - the same condition the harbours use at :3122,
+	//  which releases a suspend instead.
+	//  These two MUST be Active(true): they are the only igniters in the chain,
+	//  and an inactive igniter would leave both forts permanently uncapturable.
+	// ========================================================================
+	int fu = 0;
+	rmCreateTrigger("FortNUnlock");
+	rmSwitchToTrigger(rmTriggerID("FortNUnlock"));
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", ""+unit_waterFortNugN);
+	for (fu = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("FortConvN_Plr" + fu));
+	}
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("FortSUnlock");
+	rmSwitchToTrigger(rmTriggerID("FortSUnlock"));
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", ""+unit_waterFortNugS);
+	for (fu = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("FortConvS_Plr" + fu));
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// ========================================================================
+	//  KOTH VICTORY  -  hold BOTH water forts for 10 minutes
+	// ------------------------------------------------------------------------
+	//  zp_z_zparis.xs 2298-2440 shape, unchanged. Paris counts ONE invisible
+	//  flag across its three landmark groupings and tests ">= 3"; both water
+	//  forts carry one zpSPCCapturableFlagInvisibleNaval, so "hold both" is
+	//  ">= 2" - a single condition, and its exact negation "< 2" for the OFF.
+	//  The counter's Event param is what fires TeamVictory - not a Fire Event.
+	//  Counter text reuses {303290} "King of the Sea Victory in".
+	// ========================================================================
+	int victoryCountDown = 600;
+	int vt = 0;
+	for (vt = 1; < cNumberTeams+1)
+	{
+		rmCreateTrigger("TeamVictory"+vt);
+		rmCreateTrigger("Victory_Counter"+vt);
+		rmCreateTrigger("Victory_Counter_OFF"+vt);
+	}
+	for (vt = 1; < cNumberTeams+1)
+	{
+		rmSwitchToTrigger(rmTriggerID("TeamVictory"+vt));
+		rmAddTriggerEffect("Team Victory");
+		rmSetTriggerEffectParamInt("TeamID", vt);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Victory_Counter"+vt));
+		rmAddTriggerCondition("Team Unit Count");
+		rmSetTriggerConditionParamInt("TeamID", vt);
+		rmSetTriggerConditionParam("Protounit", "zpSPCCapturableFlagInvisibleNaval");
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 2);
+		rmAddTriggerEffect("Counter:Add Timer");
+		rmSetTriggerEffectParam("Name", "VictoryCounter"+vt);
+		rmSetTriggerEffectParamInt("Start", victoryCountDown);
+		rmSetTriggerEffectParamInt("Stop", 0);
+		rmSetTriggerEffectParam("Msg", "{303290}");
+		rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+vt));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF"+vt));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("Victory_Counter_OFF"+vt));
+		rmAddTriggerCondition("Team Unit Count");
+		rmSetTriggerConditionParamInt("TeamID", vt);
+		rmSetTriggerConditionParam("Protounit", "zpSPCCapturableFlagInvisibleNaval");
+		rmSetTriggerConditionParam("Op", "<");
+		rmSetTriggerConditionParamInt("Count", 2);
+		rmAddTriggerEffect("Counter Stop");
+		rmSetTriggerEffectParam("Name", "VictoryCounter"+vt);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter"+vt));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
 	}
 
 	// ========================================================================
