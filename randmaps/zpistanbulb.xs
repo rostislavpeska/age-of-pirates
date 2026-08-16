@@ -2594,7 +2594,7 @@ void main(void)
 	rmSetNuggetDifficulty(519, 519);
 
 	// conversion anchors - one invisible revealer per fort at the knob spot;
-	// ids are EXACT (rmGetUnitPlaced, no shift), all trigger conditions and
+	// ids take instanceIdShiftIndividual, all trigger conditions and
 	// converts anchor here and act BY TYPE - no grouping-id arithmetic
 	int fortMarkDefN = rmCreateObjectDef("water fort marker north");
 	rmAddObjectDefItem(fortMarkDefN, "zpCinematicRevealer", 1, 0.0);
@@ -2737,7 +2737,7 @@ void main(void)
 	//  UNIT IDS - every id a trigger targets, derived HERE and nowhere else
 	// ------------------------------------------------------------------------
 	//  THE LAW (zp_z_zparis.xs 1685-1757 / 000_independence_war.xs 1601-1631):
-	//    rmGetUnitPlaced (object defs)          = EXACT, use raw
+	//    rmGetUnitPlaced (object defs)          = + instanceIdShiftIndividual
 	//    rmGetGroupingInstanceUnitByType        = +1  (Paris applies it to
 	//                                             EVERY instance query)
 	//    grouping-adjacent arithmetic (pirates) = socket is the LAST camp
@@ -2749,21 +2749,26 @@ void main(void)
 	//  invisible nugget. NEVER the authored placeholder proto.
 	// ========================================================================
 	int instanceIdShift = 2;
+	// Individually placed object defs need their own shift. It is also 2 today,
+	// but it is a SEPARATE number: it tracks single rmPlaceObjectDef* placements,
+	// while instanceIdShift tracks rmGetGroupingInstanceUnitByType queries. They
+	// drifted apart once the fort groupings started baking a guardian treasure.
+	int instanceIdShiftIndividual = 2;
 
-	// -- placed object defs: exact --
-	int unit_harbourSocketN = rmGetUnitPlaced(harbourSocketN, 0);
-	int unit_harbourSocketS = rmGetUnitPlaced(harbourSocketS, 0);
-	int unit_flankSocketN = rmGetUnitPlaced(flankSocketN, 0);
-	int unit_flankSocketS = rmGetUnitPlaced(flankSocketS, 0);
-	int unit_flank2SocketN = rmGetUnitPlaced(flank2SocketN, 0);
-	int unit_flank2SocketS = rmGetUnitPlaced(flank2SocketS, 0);
-	int pirateFlagN = rmGetUnitPlaced(pirateFlagDefN, 0);
-	int pirateFlagS = rmGetUnitPlaced(pirateFlagDefS, 0);
+	// -- placed object defs: + instanceIdShiftIndividual --
+	int unit_harbourSocketN = rmGetUnitPlaced(harbourSocketN, 0) + instanceIdShiftIndividual;
+	int unit_harbourSocketS = rmGetUnitPlaced(harbourSocketS, 0) + instanceIdShiftIndividual;
+	int unit_flankSocketN = rmGetUnitPlaced(flankSocketN, 0) + instanceIdShiftIndividual;
+	int unit_flankSocketS = rmGetUnitPlaced(flankSocketS, 0) + instanceIdShiftIndividual;
+	int unit_flank2SocketN = rmGetUnitPlaced(flank2SocketN, 0) + instanceIdShiftIndividual;
+	int unit_flank2SocketS = rmGetUnitPlaced(flank2SocketS, 0) + instanceIdShiftIndividual;
+	int pirateFlagN = rmGetUnitPlaced(pirateFlagDefN, 0) + instanceIdShiftIndividual;
+	int pirateFlagS = rmGetUnitPlaced(pirateFlagDefS, 0) + instanceIdShiftIndividual;
 	// The fort groupings now bake a guardian treasure, so the markers placed
 	// after them are no longer raw-exact - they take the map's shift like
 	// every other queried id.
-	int fortMarkN = rmGetUnitPlaced(fortMarkDefN, 0) + instanceIdShift;
-	int fortMarkS = rmGetUnitPlaced(fortMarkDefS, 0) + instanceIdShift;
+	int fortMarkN = rmGetUnitPlaced(fortMarkDefN, 0) + instanceIdShiftIndividual;
+	int fortMarkS = rmGetUnitPlaced(fortMarkDefS, 0) + instanceIdShiftIndividual;
 	int unit_waterFortNugN = rmGetGroupingInstanceUnitByType(waterFortNPlacement, "zpNuggetInvisibleWater") + instanceIdShift;
 	int unit_waterFortNugS = rmGetGroupingInstanceUnitByType(waterFortSPlacement, "zpNuggetInvisibleWater") + instanceIdShift;
 	rmEchoInfo("water fort treasures: N="+unit_waterFortNugN+" S="+unit_waterFortNugS);

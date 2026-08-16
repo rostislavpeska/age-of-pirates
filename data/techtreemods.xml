@@ -36674,7 +36674,6 @@
       </effect>
       <effect type="SetName" proto="deEmbassyTravois" culture="none" newname="80597" newrollover="103345" newshortrollover="103344">
       </effect>
-      <effect type="TechStatus" status="active">deMapIsEuropean</effect>
       <effect type="Data" amount="0.00" subtype="UpdateVisual" unittype="NativeEmbassy" relativity="Absolute">
         <target type="Player">
         </target>
@@ -36683,7 +36682,9 @@
         <target type="Player">
         </target>
       </effect>
-      <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>      
+      <effect type="TechStatus" status="active">deMapIsEuropean</effect>
+      <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>
+       <effect type="TechStatus" status="active">zpMediterraneanSufi</effect>      
       <effect type="SetName" proto="zpKingsHillNaval" culture="none" newname="303324">
       </effect>
     </effects>
