@@ -63,7 +63,7 @@
     </action>
     <action>
         <name stringid="43299">SpawnGalley</name>
-        <active>1</active>
+        <active>0</active>
         <type>Maintain</type>
         <rate type="zpVeniceGalley">1.0 </rate>
         <maintaintrainpoints>80</maintaintrainpoints>
@@ -99,27 +99,27 @@
         <action>DockWorkRateBonus</action>
         <protounitcommand>zpTacticTraining</protounitcommand>
         <transition>
-            <tactic>TacticQuality</tactic>
-            <length>2</length>
-            <exit>1</exit>
-        </transition>
-        <transition>
-            <tactic>TacticWeaponary</tactic>
-            <length>2</length>
-            <exit>1</exit>
-        </transition>
-        <transition>
-            <tactic>TacticNavigation</tactic>
-            <length>2</length>
-            <exit>1</exit>
-        </transition>
-        <transition>
             <tactic>TacticHeal</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>
         <transition>
             <tactic>TacticSpawnGalley</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnAXGalley</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnPrivateer</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnIronclad</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>
@@ -128,22 +128,7 @@
         <action>HealBonus</action>
         <protounitcommand>zpTacticHeal</protounitcommand>
         <transition>
-            <tactic>TacticQuality</tactic>
-            <length>2</length>
-            <exit>1</exit>
-        </transition>
-        <transition>
-            <tactic>TacticWeaponary</tactic>
-            <length>2</length>
-            <exit>1</exit>
-        </transition>
-        <transition>
             <tactic>TacticTraining</tactic>
-            <length>2</length>
-            <exit>1</exit>
-        </transition>
-        <transition>
-            <tactic>TacticNavigation</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>
@@ -152,24 +137,27 @@
             <length>2</length>
             <exit>1</exit>
         </transition>
+        <transition>
+            <tactic>TacticSpawnAXGalley</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnPrivateer</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnIronclad</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
     </tactic>
     <tactic>TacticSpawnGalley
+        <active>0</active>
         <action>Heal</action>
         <action>SpawnGalley</action>
-        <action>Spawnprivateer</action>
-        <action>SpawnAXGalley</action>
-        <action>SpawnIronclad</action>
         <protounitcommand>zpTacticSpawnGalley</protounitcommand>
-        <transition>
-            <tactic>TacticQuality</tactic>
-            <length>2</length>
-            <exit>1</exit>
-        </transition>
-        <transition>
-            <tactic>TacticWeaponary</tactic>
-            <length>2</length>
-            <exit>1</exit>
-        </transition>
         <transition>
             <tactic>TacticTraining</tactic>
             <length>2</length>
@@ -181,7 +169,110 @@
             <exit>1</exit>
         </transition>
         <transition>
-            <tactic>TacticNavigation</tactic>
+            <tactic>TacticSpawnAXGalley</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnPrivateer</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnIronclad</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+    </tactic>
+    <tactic>TacticSpawnAXGalley
+        <active>0</active>
+        <action>Heal</action>
+        <action>SpawnAXGalley</action>
+        <protounitcommand>zpTacticSpawnAXGalley</protounitcommand>
+        <transition>
+            <tactic>TacticTraining</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticHeal</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnGalley</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnPrivateer</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnIronclad</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+    </tactic>
+    <tactic>TacticSpawnPrivateer
+        <active>0</active>
+        <action>Heal</action>
+        <action>Spawnprivateer</action>
+        <protounitcommand>zpTacticSpawnPrivateer</protounitcommand>
+        <transition>
+            <tactic>TacticTraining</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticHeal</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnGalley</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnAXGalley</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnIronclad</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+    </tactic>
+    <tactic>TacticSpawnIronclad
+        <active>0</active>
+        <action>Heal</action>
+        <action>SpawnIronclad</action>
+        <protounitcommand>zpTacticSpawnIronclad</protounitcommand>
+        <transition>
+            <tactic>TacticTraining</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticHeal</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnGalley</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnAXGalley</tactic>
+            <length>2</length>
+            <exit>1</exit>
+        </transition>
+        <transition>
+            <tactic>TacticSpawnPrivateer</tactic>
             <length>2</length>
             <exit>1</exit>
         </transition>

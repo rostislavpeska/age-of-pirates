@@ -2274,8 +2274,8 @@
       <string _locid="302274">Ships Battery Tower Wagons allowing you to construct more Battery Towers. Increases Outpost hitpoints and line of sight.</string>
       <string _locid="302275">Women's Club</string>
       <string _locid="302276">ZP Socket Orthodox South</string>
-      <string _locid="302277">Alexandrian Galley</string>
-      <string _locid="302278">ZP SHP Alexandrian Galley</string>
+      <string _locid="302277">Levantine Galley</string>
+      <string _locid="302278">ZP SHP Levantine Galley</string>
       <string _locid="302279">Camel Rifleman</string>
       <string _locid="302280">ZP NAT Camel Rifleman</string>
       <string _locid="302281">Honored Camel Rifleman</string>
@@ -2283,9 +2283,9 @@
       <string _locid="302283">Patriarchate of Constantinople</string>
       <string _locid="302284">Team Improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nCataphract \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nTeam Tributary Payments, Team Byzantine Heritage</string>
       <string _locid="302285">Patriarchate of Alexandria</string>
-      <string _locid="302286">Naval Improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nCamel Rifleman \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nAlexandrian Galleys, Dry Dock</string>
-      <string _locid="302287">Alexandrian Galleys</string>
-      <string _locid="302288">Ships two Alexandrian Galleys</string>
+      <string _locid="302286">Naval Improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nCamel Rifleman \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nLevantine Galleys, Dry Dock</string>
+      <string _locid="302287">Levantine Galleys</string>
+      <string _locid="302288">Ships two Levantine Galleys</string>
       <string _locid="302289">Aetos tou Nileou</string>
       <string _locid="302290">Stavrofóros</string>
       <string _locid="302291">Agios Ploios</string>
@@ -3335,6 +3335,12 @@
       <string _locid="303336">ZP Nugget Invisible Water</string>
       <string _locid="303337">City of Istanbul</string>
       <string _locid="303338">ZP Capturable Flag Invisible Naval</string>
+      <string _locid="303343">Automatic Workshop \nSet the Dry Dock to build Privateers.</string>
+      <string _locid="303344">The Dry Dock is building Privateers.</string>
+      <string _locid="303345">Automatic Workshop \nSet the Dry Dock to build Levantine Galleys.</string>
+      <string _locid="303346">The Dry Dock is building Levantine Galleys.</string>
+      <string _locid="303347">Automatic Workshop \nSet the Dry Dock to build Ironclads.</string>
+      <string _locid="303348">The Dry Dock is building Ironclads.</string>
       <string _locid="303339">Struggle of the Bosporus</string>
       <string _locid="303340">Both teams fight for the straits. Seize the two naval forts that guard them - the Black Sea Fort and the Mediterranean Fort - and hold both to win.</string>
       <string _locid="303341">Take control over both naval forts - the Black Sea Fort and the Mediterranean Fort - and hold them.</string>

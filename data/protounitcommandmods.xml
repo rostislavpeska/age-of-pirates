@@ -182,6 +182,33 @@
     <command>unitSetTactic("TacticSpawnGalley")</command>
   </protounitcommand>
   <protounitcommand>
+    <name>zpTacticSpawnPrivateer</name>
+    <icon>resources\images\icons\command\drydock\drydock_privateer.png</icon>
+    <activeicon>resources\images\icons\command\drydock\drydock_privateer_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\drydock\drydock_privateer.png</disabledicon>
+    <rollovertextid>303343</rollovertextid>
+    <activerollovertextid>303344</activerollovertextid>
+    <command>unitSetTactic("TacticSpawnPrivateer")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticSpawnAXGalley</name>
+    <icon>resources\images\icons\command\drydock\drydock_alexandria.png</icon>
+    <activeicon>resources\images\icons\command\drydock\drydock_alexandria_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\drydock\drydock_alexandria.png</disabledicon>
+    <rollovertextid>303345</rollovertextid>
+    <activerollovertextid>303346</activerollovertextid>
+    <command>unitSetTactic("TacticSpawnAXGalley")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticSpawnIronclad</name>
+    <icon>resources\images\icons\command\drydock\drydock_ironclad.png</icon>
+    <activeicon>resources\images\icons\command\drydock\drydock_ironclad_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\drydock\drydock_ironclad.png</disabledicon>
+    <rollovertextid>303347</rollovertextid>
+    <activerollovertextid>303348</activerollovertextid>
+    <command>unitSetTactic("TacticSpawnIronclad")</command>
+  </protounitcommand>
+  <protounitcommand>
     <name>zpVeniceShipment</name>
     <command>researchByID(cTechzpNatVeteranVenetians, 252, 1)</command>
     <icon>resources\images\icons\techs\venetian_hc\venice_galley.png</icon>

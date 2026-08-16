@@ -17170,7 +17170,6 @@
     <contain indelay="3.0" outdelay="0.0">Canoe</contain>
     <command page="3" column="1">TacticTraining</command>
     <command page="3" column="2">zpTacticHeal</command>
-    <command page="3" column="3">zpTacticSpawnGalley</command>
     <command page="10" column="7">Delete</command>
     <command page="10" column="5">Eject</command>
     <command page="10" column="2">SetGatherPointEconomy</command>
