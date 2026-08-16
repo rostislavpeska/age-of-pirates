@@ -84,7 +84,7 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpDryDock</target>
       </effect>
-              <effect type="CommandAdd" command="zpTacticSpawnAXGalley" page="3" column="5">
+      <effect type="CommandAdd" command="zpTacticSpawnAXGalley" page="3" column="5">
         <target type="ProtoUnit">zpDrydock</target>
       </effect>
       <effect type="Data" action="SpawnAXGalley" amount="1.00" subtype="ActionEnable" relativity="Absolute">
@@ -115,9 +115,6 @@
         </target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpDryDock</target>
-      </effect>
-      <effect type="Data" action="SpawnGalley" amount="0.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpDryDock</target>
       </effect>
       <effect type="Data" action="SpawnIronclad" amount="1.00" subtype="ActionEnable" relativity="Absolute">
@@ -15268,10 +15265,7 @@
       <effect type="CommandAdd" tech="zpTortugaDryDock" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="Data" action="SpawnGalley" amount="0.00" subtype="ActionEnable" relativity="Absolute">
-        <target type="ProtoUnit">zpDryDock</target>
-      </effect>
-      <effect type="Data" action="Spawnprivateer" amount="1.00" subtype="ActionEnable" relativity="Absolute">
+      <effect type="Data" action="SpawnPrivateer" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpDryDock</target>
       </effect>
       <effect type="CommandAdd" proto="zpSPCPirateSteamerProxy" page="0" column="4">
@@ -22910,9 +22904,6 @@
       <effect type="CommandAdd" proto="zpAlexandrianRider" page="0" column="2">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="Data" action="SpawnGalley" amount="0.00" subtype="ActionEnable" relativity="Absolute">
-        <target type="ProtoUnit">zpDryDock</target>
-      </effect>
       <effect type="Data" action="SpawnAXGalley" amount="1.00" subtype="ActionEnable" relativity="Absolute">
         <target type="ProtoUnit">zpDryDock</target>
       </effect>
@@ -26790,6 +26781,9 @@
       </effect>
       <effect type="CommandRemove" proto="Monitor">
         <target type="ProtoUnit">ypDockAsian</target>
+      </effect>
+      <effect type="CommandRemove" proto="Monitor">
+        <target type="ProtoUnit">zpDryDock</target>
       </effect>
       <effect type="CommandRemove" tech="ShipHowitzers">
         <target type="ProtoUnit">ypDockAsian</target>
