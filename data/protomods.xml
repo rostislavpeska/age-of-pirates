@@ -45135,7 +45135,7 @@
     <shortrollovertextid>303331</shortrollovertextid>
     <initialhitpoints>2250.0000</initialhitpoints>
     <maxhitpoints>2250.0000</maxhitpoints>
-    <los>75.0000</los>
+    <los>95.0000</los>
     <buildpoints>15.0000</buildpoints>
     <displayedrange>45.0</displayedrange>
     <projectileprotounit>MortarShell</projectileprotounit>
@@ -45195,7 +45195,7 @@
       <damageflags>Enemy</damageflags>
       <damagetype>Siege</damagetype>
       <minrange>14.000000</minrange>
-      <maxrange>45.000000</maxrange>
+      <maxrange>65.000000</maxrange>
       <rof>6.000000</rof>
       <active>1</active>
       <projectile>FixedGunBall</projectile>

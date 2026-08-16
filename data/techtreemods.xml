@@ -36113,7 +36113,7 @@
   </tech>
 
   <tech name="zpEstateSiteDecrease" type="Normal">
-    <dbid>41351</dbid>
+    <dbid>41350</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>

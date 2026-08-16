@@ -70,7 +70,6 @@
 		<unit variation="0" posx="-9.0828" posz="9.6334" orientx="-1.0000" orienty="0.0000" orientz="0.0091">SPCPathBlock3</unit>
 		<unit variation="0" posx="-7.3920" posz="9.7251" orientx="-1.0000" orienty="0.0000" orientz="0.0091">SPCPathBlock3</unit>
 		<unit variation="3" posx="-8.4202" posz="8.9364" orientx="-1.0000" orienty="0.0000" orientz="0.0061">PropsPottedPlants</unit>
-		<unit variation="242" posx="4.6853" posz="9.0082" orientx="-0.3996" orienty="0.0000" orientz="-0.9167">deNativePropsCiviliansMaleSitting</unit>
 		<unit variation="0" posx="14.7010" posz="9.4976" orientx="-0.7141" orienty="0.0000" orientz="-0.7001">PropsPoles</unit>
 		<unit variation="0" posx="1.0590" posz="9.3847" orientx="-0.7141" orienty="0.0000" orientz="-0.7001">PropsPoles</unit>
 		<unit variation="0" posx="-9.7234" posz="8.5605" orientx="-0.7117" orienty="0.0000" orientz="-0.7025">zpNativeHouseVenetianB</unit>

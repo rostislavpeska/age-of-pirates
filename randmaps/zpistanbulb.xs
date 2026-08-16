@@ -337,7 +337,7 @@ void main(void)
 
 	// Where we ASK for the lanes. The engine will snap them; the real values
 	// are measured further down and everything is built from those.
-	float nRouteAsk   = 0.54;   // NORTH lane (higher Z = north), runs E -> W
+	float nRouteAsk   = 0.51;   // NORTH lane (higher Z = north), runs E -> W
 	float sRouteAsk   = 0.46;   // SOUTH lane (lower Z = south), runs W -> E
 
 	int   blockPitch      = 17;   // tiles between block centres (columns & rows)
@@ -422,11 +422,9 @@ void main(void)
 	// build on. Its spot is hardcoded below - no measuring, no constraints.
 	// Hardcoded. X: 0.0 west -> 1.0 east.  Z: 0.0 south -> 1.0 north.
 	// The south countryside runs z 0.06 -> 0.00, island centre is x 0.47.
-	float balanceCliffX   = 0.47;
-	float balanceCliffZ   = 0.02;   // lower = further back toward the edge
-	float balanceCliffLen = 0.055;  // half-length E-W; this is what makes it
-	                                // an ellipse instead of a circle
-	float balanceCliffSize= 0.006; // area as a fraction of the map
+	// (the southern balancing cliff was removed - the hinterlands are equal
+	//  now, so it was redundant. balanceRise below is still used by the flank
+	//  cliffs and all four wall docks.)
 	float balanceRise     = 6.0;   // how high it stands over the country
 
 
@@ -771,9 +769,9 @@ void main(void)
 	// north lane
 	rmAddTradeRouteWaypoint(tradeRouteN, 0.90, 0.90);   // NE corner
 	rmAddTradeRouteWaypoint(tradeRouteN, 0.70, 0.76);   // past flank harbour
-	rmAddTradeRouteWaypoint(tradeRouteN, 0.70, 0.54);   // into channel
-	rmAddTradeRouteWaypoint(tradeRouteN, 0.50, 0.54);   // mid channel
-	rmAddTradeRouteWaypoint(tradeRouteN, 0.25, 0.54);   // corner
+	rmAddTradeRouteWaypoint(tradeRouteN, 0.70, nRouteAsk);   // into channel
+	rmAddTradeRouteWaypoint(tradeRouteN, 0.50, nRouteAsk);   // mid channel
+	rmAddTradeRouteWaypoint(tradeRouteN, 0.25, nRouteAsk);   // corner
 	rmAddTradeRouteWaypoint(tradeRouteN, 0.00, 0.30);   // corner
 
 
@@ -783,9 +781,9 @@ void main(void)
 	// south lane
 	rmAddTradeRouteWaypoint(tradeRouteS, 0.10, 0.10);   // SW corner
 	rmAddTradeRouteWaypoint(tradeRouteS, 0.25, 0.25);   // past flank harbour
-	rmAddTradeRouteWaypoint(tradeRouteS, 0.25, 0.46);   // into channel
-	rmAddTradeRouteWaypoint(tradeRouteS, 0.50, 0.46);   // mid channel
-	rmAddTradeRouteWaypoint(tradeRouteS, 0.75, 0.46);   // corner
+	rmAddTradeRouteWaypoint(tradeRouteS, 0.25, sRouteAsk);   // into channel
+	rmAddTradeRouteWaypoint(tradeRouteS, 0.50, sRouteAsk);   // mid channel
+	rmAddTradeRouteWaypoint(tradeRouteS, 0.75, sRouteAsk);   // corner
 	rmAddTradeRouteWaypoint(tradeRouteS, 1.00, 0.70);   
 
 	rmBuildTradeRoute(tradeRouteS, "water_trail");
@@ -1381,11 +1379,6 @@ void main(void)
 	rmSetAreaObeyWorldCircleConstraint(grassTopS, false);
 	rmBuildArea(grassTopS);
 
-	// --- the balancing cliff, BEFORE the trees so they can keep off it -----
-	// stands on the south countryside already, so no land is laid (0)
-	cliffMass(balanceCliffX, balanceCliffZ, 0, balanceCliffSize,
-		balanceRise, balanceCliffLen);
-
 	// ===== FLANK CLIFFS, GUARD-AREA DESIGN ==================================
 	// Two INVISIBLE areas (no height, no terrain - they paint nothing) lie
 	// along the trade route corridors, each traced by just two influence
@@ -1404,11 +1397,11 @@ void main(void)
 	// Remove these two lines to make it invisible again.
 	//rmSetAreaBaseHeight(guardW, 2.0);
 	//rmSetAreaMix(guardW, "italy_grass");
-	rmSetAreaLocation(guardW, 0.25, 0.54);
-	// along the south lane entry run...
-	rmAddAreaInfluenceSegment(guardW, 0.50, 0.54, 0.25, 0.54);
+	rmSetAreaLocation(guardW, 0.25, nRouteAsk);
+	// along the north lane's west run...
+	rmAddAreaInfluenceSegment(guardW, 0.50, nRouteAsk, 0.25, nRouteAsk);
 	// ...and the north lane's west exit diagonal
-	rmAddAreaInfluenceSegment(guardW, 0.25, 0.54, 0.00, 0.30);
+	rmAddAreaInfluenceSegment(guardW, 0.25, nRouteAsk, 0.00, 0.30);
 	rmSetAreaObeyWorldCircleConstraint(guardW, false);
 	rmBuildArea(guardW);
 
@@ -1420,11 +1413,11 @@ void main(void)
 	// Remove these two lines to make it invisible again.
 	//rmSetAreaBaseHeight(guardE, 2.0);
 	//rmSetAreaMix(guardE, "italy_grass");
-	rmSetAreaLocation(guardE, 0.75, 0.46);
-	// along the north lane entry run...
-	rmAddAreaInfluenceSegment(guardE, 0.50, 0.46, 0.75, 0.46);
+	rmSetAreaLocation(guardE, 0.75, sRouteAsk);
+	// along the south lane's east run...
+	rmAddAreaInfluenceSegment(guardE, 0.50, sRouteAsk, 0.75, sRouteAsk);
 	// ...and the south lane's east exit diagonal
-	rmAddAreaInfluenceSegment(guardE, 0.75, 0.46, 1.00, 0.70);
+	rmAddAreaInfluenceSegment(guardE, 0.75, sRouteAsk, 1.00, 0.70);
 	rmSetAreaObeyWorldCircleConstraint(guardE, false);
 	rmBuildArea(guardE);
 
@@ -1445,7 +1438,7 @@ void main(void)
 	rmSetAreaWarnFailure(wildW, false);
 	// over-ask on purpose: the pocket between city, guard and rim is the
 	// shape; the ask just has to be big enough to flood it
-	rmSetAreaSize(wildW, 0.147, 0.147);
+	rmSetAreaSize(wildW, 0.155, 0.155);
 	rmSetAreaCoherence(wildW, 1.0);
 	rmSetAreaLocation(wildW, 0.20, 0.75);
 	rmSetAreaBaseHeight(wildW, cityHeight + balanceRise);
@@ -1466,7 +1459,7 @@ void main(void)
 
 	int wildE = rmCreateArea("east flank cliff");
 	rmSetAreaWarnFailure(wildE, false);
-	rmSetAreaSize(wildE, 0.147, 0.147);
+	rmSetAreaSize(wildE, 0.15, 0.15);
 	rmSetAreaCoherence(wildE, 1.0);
 	rmSetAreaLocation(wildE, 0.80, 0.25);
 	rmSetAreaBaseHeight(wildE, cityHeight + balanceRise);
@@ -1489,7 +1482,7 @@ void main(void)
 	rmSetAreaWarnFailure(wildLowW, false);
 	// over-ask on purpose: the pocket between city, guard and rim is the
 	// shape; the ask just has to be big enough to flood it
-	rmSetAreaSize(wildLowW, 0.14, 0.14);
+	rmSetAreaSize(wildLowW, 0.145, 0.145);
 	rmSetAreaCoherence(wildLowW, 1.0);
 	rmSetAreaLocation(wildLowW, 0.20, 0.75);
 	rmSetAreaBaseHeight(wildLowW, cityHeight);
@@ -1511,7 +1504,7 @@ void main(void)
 
 	int wildLowE = rmCreateArea("east flank cliff LOW");
 	rmSetAreaWarnFailure(wildLowE, false);
-	rmSetAreaSize(wildLowE, 0.14, 0.14);
+	rmSetAreaSize(wildLowE, 0.145, 0.145);
 	rmSetAreaCoherence(wildLowE, 1.0);
 	rmSetAreaLocation(wildLowE, 0.80, 0.25);
 	rmSetAreaBaseHeight(wildLowE, cityHeight);
@@ -2110,16 +2103,23 @@ void main(void)
 	//   sea docks sit 6 t sea-ward AND 6 t away from the gun (seed 33 m from
 	//   the nearest gun unit; 24 m gun field blankets the river approach)
 	int   dockSizeTiles = 450;
+	// The two BACK-END docks (1 and 4) reach the map edge, so they need more
+	// volume than the sea-side pair to close the gap against the wall.
+	int   dockSizeTilesBack = 780;
 	int   wallDockTiles = 47;  // back-end seed distance past the wall end
 	int   dockSeaTiles  = 1;   // sea-dock x-offset off the wall line
 
 	// north wall, back end
 	int dock1 = rmCreateArea("wall dock 1");
 	rmSetAreaWarnFailure(dock1, false);
-	rmSetAreaSize(dock1, rmAreaTilesToFraction(dockSizeTiles),
-		rmAreaTilesToFraction(dockSizeTiles));
+	rmSetAreaSize(dock1, rmAreaTilesToFraction(dockSizeTilesBack),
+		rmAreaTilesToFraction(dockSizeTilesBack));
 	rmSetAreaCoherence(dock1, 0.93);
 	rmSetAreaLocation(dock1, wallXN, wallZN + rmZTilesToFraction(wallDockTiles));
+	// Reach the NORTH map edge so nothing can walk round the back of the wall.
+	// Not bigger - just elongated onto the edge (the guardW/guardE idiom).
+	rmAddAreaInfluenceSegment(dock1, wallXN, wallZN + rmZTilesToFraction(wallDockTiles),
+		wallXN, 1.0);
 	rmSetAreaBaseHeight(dock1, cityHeight + balanceRise);
 	rmSetAreaHeightBlend(dock1, 3);
 	rmSetAreaMix(dock1, hinterMix);
@@ -2184,10 +2184,13 @@ void main(void)
 	// south wall, back end
 	int dock4 = rmCreateArea("wall dock 4");
 	rmSetAreaWarnFailure(dock4, false);
-	rmSetAreaSize(dock4, rmAreaTilesToFraction(dockSizeTiles),
-		rmAreaTilesToFraction(dockSizeTiles));
+	rmSetAreaSize(dock4, rmAreaTilesToFraction(dockSizeTilesBack),
+		rmAreaTilesToFraction(dockSizeTilesBack));
 	rmSetAreaCoherence(dock4, 0.93);
 	rmSetAreaLocation(dock4, wallXS, wallZS - rmZTilesToFraction(wallDockTiles));
+	// ...and dock4 reaches the SOUTH map edge, the mirror of dock1.
+	rmAddAreaInfluenceSegment(dock4, wallXS, wallZS - rmZTilesToFraction(wallDockTiles),
+		wallXS, 0.0);
 	rmSetAreaBaseHeight(dock4, cityHeight + balanceRise);
 	rmSetAreaHeightBlend(dock4, 3);
 	rmSetAreaMix(dock4, hinterMix);
