@@ -226,5 +226,10 @@
 			<portraiticon>resources\art\buildings\waterfort_portrait.png</portraiticon>
 			<minimapicon>ui\minimap\highlighted item</minimapicon>
 		</unit>
+		<unit name="zpTradingPostCaptureNavalOriental">
+			<obstructionradiusx>4.0000</obstructionradiusx>
+			<obstructionradiusz>4.0000</obstructionradiusz>
+			<flag mergemode="remove">TieToWaterSurface</flag>
+		</unit>
     </protomods>
 </mods>

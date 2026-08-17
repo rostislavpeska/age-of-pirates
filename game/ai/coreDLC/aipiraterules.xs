@@ -60,7 +60,8 @@ minInterval 1
    // AssertiveWall: Naval, but not starting on different islands
    if (cRandomMapName == "zphawaii" ||
        cRandomMapName == "zpcivilwar" ||
-       cRandomMapName == "zpelbe")
+       cRandomMapName == "zpelbe" ||
+       cRandomMapName == "zpistanbulb")
    {
       gIsPirateMap = true;
       gNavyMap = true;
@@ -182,6 +183,17 @@ minInterval 1
        cRandomMapName == "zpiceland")
    {
       xsEnableRule("tasmaniaStart");
+   }
+
+   // Istanbul Naval KOTH %%%%%%%%%%%%%%%%%%%%%%%
+   // Two forts, both tagged IstanbulVictoryObject. Kept separate from the
+   // zpKingsHillNaval block above so caribbeanwars and blacksea keep the
+   // single-hill behaviour they were tuned for.
+   if (getGaiaUnitCount(cUnitTypeIstanbulVictoryObject) > 0)
+   {
+      gAmphibiousAssaultStage = cForbidAmphibiousAssault;   // the forts are taken by fleet, never by landing
+      gIsIstanbulKOTH = true;
+      xsEnableRule("istanbulAttackKOTH");
    }
 
    // Naval KOTH Maps %%%%%%%%%%%%%%%%%%%%%%%
@@ -6553,4 +6565,140 @@ minInterval 1
          }
       }
    }
+}
+
+//==============================================================================
+// getIstanbulKothTarget
+// Istanbul carries TWO victory forts - the Black Sea fort and the Mediterranean
+// fort - both tagged IstanbulVictoryObject. The stock naval KOTH rule assumes a
+// single hill (getUnit + attack-or-defend), which cannot express "take both".
+//
+// Returns the fort worth going for: one our team does NOT already hold, nearest
+// to our Home City water spawn flag. That flag is the right anchor because every
+// player has one on a water map (aisetup.xs sets gWaterSpawnFlagID from
+// cUnitTypeHomeCityWaterSpawnFlag), unlike the pirate camp flag which a player
+// may never capture. Returns -1 when we already hold everything.
+//==============================================================================
+int getIstanbulKothTarget(void)
+{
+   int fortQuery = createSimpleUnitQuery(cUnitTypeIstanbulVictoryObject, cPlayerRelationAny, cUnitStateAlive);
+   int numberFound = kbUnitQueryExecute(fortQuery);
+   if (numberFound <= 0)
+   {
+      return(-1);
+   }
+
+   vector anchorLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   if (gWaterSpawnFlagID >= 0)
+   {
+      anchorLoc = kbUnitGetPosition(gWaterSpawnFlagID);
+   }
+
+   int bestFort = -1;
+   int bestDist = 99999;
+   int fortUnit = -1;
+   int fortDist = 0;
+   for (i = 0; < numberFound)
+   {
+      fortUnit = kbUnitQueryGetResult(fortQuery, i);
+      // skip the forts our own team already holds - those are for the defend rule
+      if (kbGetPlayerTeam(kbUnitGetPlayerID(fortUnit)) == kbGetPlayerTeam(cMyID))
+      {
+         continue;
+      }
+      fortDist = distance(kbUnitGetPosition(fortUnit), anchorLoc);
+      if (fortDist < bestDist)
+      {
+         bestDist = fortDist;
+         bestFort = fortUnit;
+      }
+   }
+   return(bestFort);
+}
+
+//==============================================================================
+// istanbulGuardiansAlive
+// A fort stays locked until its guardian corsair galleys are dead - only then
+// does the treasure become collectable and the flag convertible. So the first
+// objective at a fort is the escorts, not the fort itself.
+//==============================================================================
+bool istanbulGuardiansAlive(int fortUnit = -1)
+{
+   if (fortUnit < 0)
+   {
+      return(false);
+   }
+   int guardQuery = createSimpleUnitQuery(cUnitTypezpGuardianCorsairGalley, cPlayerRelationAny,
+                                          cUnitStateAlive, kbUnitGetPosition(fortUnit), 40.0);
+   if (kbUnitQueryExecute(guardQuery) > 0)
+   {
+      return(true);
+   }
+   return(false);
+}
+
+//==============================================================================
+// istanbulAttackKOTH
+// Modelled on waterAttackKOTH, with the two differences Istanbul needs:
+//   1. it picks between TWO forts instead of assuming one
+//   2. if the target still has guardians, the attack goes at the guardians
+// No landing is involved: the gate sets cForbidAmphibiousAssault, and the forts
+// are taken by holding warships alongside.
+//==============================================================================
+rule istanbulAttackKOTH
+inactive
+minInterval 30
+{
+   if (aiTreatyActive() == true)
+   {
+      return;
+   }
+   if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) < 1)
+   {
+      return;   // no fleet, no fort
+   }
+   if (gNavyAttackPlan >= 0)
+   {
+      return;   // one attack plan at a time, as waterAttackKOTH does
+   }
+
+   int targetFort = getIstanbulKothTarget();
+   gIstanbulKothTarget = targetFort;
+   if (targetFort < 0)
+   {
+      return;   // we already hold every fort - nothing to attack
+   }
+
+   vector targetLoc = kbUnitGetPosition(targetFort);
+   if (istanbulGuardiansAlive(targetFort) == true)
+   {
+      debugMilitary("Istanbul KOTH: guardians still alive, clearing escorts first");
+   }
+
+   // plan block cloned from waterAttackKOTH (aipiraterules.xs 6237-6248)
+   int navalTargetPlayer = kbUnitGetPlayerID(targetFort);
+   int shipMin = 3;
+   int shipDesired = 6;
+   if (cDifficultyCurrent >= cDifficultyHard)
+   {
+      shipMin = 5;
+      shipDesired = 10;
+   }
+
+   gNavyAttackPlan = aiPlanCreate("ISTANBUL KOTH fort: " + targetFort, cPlanCombat);
+   aiPlanAddUnitType(gNavyAttackPlan, cUnitTypeAbstractWarShip, shipMin, shipDesired, 200);
+   aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanCombatType, 0, cCombatPlanCombatTypeAttack);
+   aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanTargetMode, 0, cCombatPlanTargetModePoint);
+   aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanTargetPlayerID, 0, navalTargetPlayer);
+   aiPlanSetVariableVector(gNavyAttackPlan, cCombatPlanTargetPoint, 0, targetLoc);
+   aiPlanSetVariableVector(gNavyAttackPlan, cCombatPlanGatherPoint, 0, gNavyVec);
+   aiPlanSetVariableFloat(gNavyAttackPlan, cCombatPlanGatherDistance, 0, 40.0);
+   aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanAttackRoutePattern, 0, cCombatPlanAttackRoutePatternRandom);
+   aiPlanSetDesiredPriority(gNavyAttackPlan, 60);
+   aiPlanSetVariableBool(gNavyAttackPlan, cCombatPlanAllowMoreUnitsDuringAttack, 0, true);
+   aiPlanSetVariableInt(gNavyAttackPlan, cCombatPlanRefreshFrequency, 0, 300);
+   aiPlanSetActive(gNavyAttackPlan);
+
+   gLastNavalAttackTime = xsGetTime();
+   debugMilitary("Istanbul KOTH: attacking fort " + targetFort + " at " + targetLoc);
 }

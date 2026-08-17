@@ -36867,6 +36867,8 @@
       <effect type="TechStatus" status="active">deMapIsEuropean</effect>
       <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>
        <effect type="TechStatus" status="active">zpMediterraneanSufi</effect>      
+      <effect type="SetName" proto="zpKingsHillNaval" culture="none" newname="303324">
+      </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">deSPCCommandPost</target>
       </effect>

@@ -676,8 +676,8 @@ void main(void)
 
 	// -- sea life --
 	// sea life keeps clear of the forts - zpcaribbeanwars 156-158 idiom
-	int avoidKotH = rmCreateTypeDistanceConstraint("fish off the water fort", "zpKingsHillNavalBlackSea", 15.0);
-	int avoidKotHLong = rmCreateTypeDistanceConstraint("whales off the water fort", "zpKingsHillNavalBlackSea", 25.0);
+	int avoidKotH = rmCreateTypeDistanceConstraint("fish off the water fort", "zpKingsHillNaval", 15.0);
+	int avoidKotHLong = rmCreateTypeDistanceConstraint("whales off the water fort", "zpKingsHillNaval", 25.0);
 	int avoidHarbourPlat = rmCreateTypeDistanceConstraint("fish off harbour platforms", "zpHarbourPlatform", 20.0);
 	int avoidKotHMedi = rmCreateTypeDistanceConstraint("fish off the medi fort", "zpKingsHillNavalMedi", 15.0);
 	int avoidKotHMediLong = rmCreateTypeDistanceConstraint("whales off the medi fort", "zpKingsHillNavalMedi", 25.0);
@@ -3566,7 +3566,7 @@ void main(void)
 		rmSetTriggerEffectParam("SrcObject", ""+fortMarkN);
 		rmSetTriggerEffectParamInt("SrcPlayer", fd);
 		rmSetTriggerEffectParamInt("TrgPlayer", fc);
-		rmSetTriggerEffectParam("UnitType", "zpKingsHillNavalBlackSea");
+		rmSetTriggerEffectParam("UnitType", "zpKingsHillNaval");
 		rmSetTriggerEffectParamInt("Dist", 20);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject", ""+fortMarkN);

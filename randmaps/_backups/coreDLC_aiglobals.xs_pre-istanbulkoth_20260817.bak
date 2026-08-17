@@ -112,8 +112,6 @@ extern bool gPirateBlockWalls = false;       // Used to prevent wall building on
 extern bool gIsArchipelagoMap = false;       // Used for multi-island maps like archipelago
 extern bool gIsAtollMap = false;             // A subset of archipelago maps containing more, smaller islands
 extern bool gIsNavalKOTH = false;            // Maps with a naval KOTH fort on water
-extern bool gIsIstanbulKOTH = false;         // Istanbul: TWO naval forts, both must be held
-extern int  gIstanbulKothTarget = -1;        // the fort we are currently going for
 
 extern int gIslandAttackPlan = -1;              // Used on archipelago maps to tell ships to attack islands
 extern int forwardAttackWave = -1;
@@ -593,3 +591,22 @@ extern const bool cDebugHCCards = false;
 extern const bool cDebugChats = false;
 extern const bool cDebugSetup = false;
 extern const bool cDebugCore = false;
+
+// AssertiveWall: BETA CHANGE added new debug global variables
+//==============================================================================
+// Debug variables.
+//==============================================================================
+extern int gDebugUtilitiesID = -1;
+extern int gDebugBuildingsID = -1;
+extern int gDebugTechsID = -1;
+extern int gDebugExplorationID = -1;
+extern int gDebugEconomyID = -1;
+extern int gDebugEconomicUnitsID = -1;
+extern int gDebugMilitaryAttackingID = -1;
+extern int gDebugMilitaryDefendingID = -1;
+extern int gDebugMilitaryUnitsID = -1;
+extern int gDebugMilitaryNavyID = -1;
+extern int gDebugHCCardsID = -1;
+extern int gDebugChatsID = -1;
+extern int gDebugSetupID = -1;
+extern int gDebugCoreID = -1;
