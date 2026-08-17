@@ -780,8 +780,8 @@ void main(void)
 	int tradeRouteS = rmCreateTradeRoute();
 	// south lane
 	rmAddTradeRouteWaypoint(tradeRouteS, 0.10, 0.10);   // SW corner
-	rmAddTradeRouteWaypoint(tradeRouteS, 0.25, 0.25);   // past flank harbour
-	rmAddTradeRouteWaypoint(tradeRouteS, 0.25, sRouteAsk);   // into channel
+	rmAddTradeRouteWaypoint(tradeRouteS, 0.27, 0.25);   // past flank harbour
+	rmAddTradeRouteWaypoint(tradeRouteS, 0.27, sRouteAsk);   // into channel
 	rmAddTradeRouteWaypoint(tradeRouteS, 0.50, sRouteAsk);   // mid channel
 	rmAddTradeRouteWaypoint(tradeRouteS, 0.75, sRouteAsk);   // corner
 	rmAddTradeRouteWaypoint(tradeRouteS, 1.00, 0.70);   
