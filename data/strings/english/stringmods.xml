@@ -3335,16 +3335,26 @@
       <string _locid="303336">ZP Nugget Invisible Water</string>
       <string _locid="303337">City of Istanbul</string>
       <string _locid="303338">ZP Capturable Flag Invisible Naval</string>
+      <string _locid="303339">Struggle of the Bosporus</string>
+      <string _locid="303340">Both teams fight for the straits. Seize the two naval forts that guard them - the Black Sea Fort and the Mediterranean Fort - and hold both to win.</string>
+      <string _locid="303341">Take control over both naval forts - the Black Sea Fort and the Mediterranean Fort - and hold them.</string>
+      <string _locid="303342">Sink a fort's guardian galleys and claim its treasure to unlock it, then bring warships alongside with no enemy vessels nearby. Holding both forts starts the victory timer.</string>
       <string _locid="303343">Automatic Workshop \nSet the Dry Dock to build Privateers.</string>
       <string _locid="303344">The Dry Dock is building Privateers.</string>
       <string _locid="303345">Automatic Workshop \nSet the Dry Dock to build Levantine Galleys.</string>
       <string _locid="303346">The Dry Dock is building Levantine Galleys.</string>
       <string _locid="303347">Automatic Workshop \nSet the Dry Dock to build Ironclads.</string>
       <string _locid="303348">The Dry Dock is building Ironclads.</string>
-      <string _locid="303339">Struggle of the Bosporus</string>
-      <string _locid="303340">Both teams fight for the straits. Seize the two naval forts that guard them - the Black Sea Fort and the Mediterranean Fort - and hold both to win.</string>
-      <string _locid="303341">Take control over both naval forts - the Black Sea Fort and the Mediterranean Fort - and hold them.</string>
-      <string _locid="303342">Sink a fort's guardian galleys and claim its treasure to unlock it, then bring warships alongside with no enemy vessels nearby. Holding both forts starts the victory timer.</string>
+      <string _locid="303350">Grand Dragoman of the Porte</string>
+      <string _locid="303351">Opens the extended House of Phanar: unlocks the Aegean Dry Dock and the Mavrocordat Reforms.</string>
+      <string _locid="303352">Aegean Dry Dock</string>
+      <string _locid="303353">Ships a Dry Dock Wagon and lets your Dry Dock maintain Levantine Galleys.</string>
+      <string _locid="303354">Mavrocordat Reforms</string>
+      <string _locid="303355">The reforms of Alexander Mavrocordatos put the Phanariot quarters at your service: raises the Evzone build limit by 5 and the Boyar build limit by 3.</string>
+      <string _locid="303356">Maintain Venetian Galleys</string>
+      <string _locid="303357">Maintain Privateers</string>
+      <string _locid="303358">Maintain Levantine Galleys</string>
+      <string _locid="303359">Maintain Ironclads</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
@@ -3621,12 +3631,6 @@ Natives: Colonial Estate, Haudenosaunee, Pirates</string>
       <string _locid="400288">United States of America</string>
       <string _locid="400289">You declared the Independence of the United States of America!</string>
       <string _locid="400290">%s has declared Independence!</string>
-      <string _locid="303350">Grand Dragoman of the Porte</string>
-      <string _locid="303351">Opens the extended House of Phanar: unlocks the Aegean Dry Dock and the Loyal Districts of the Phanariotes.</string>
-      <string _locid="303352">Aegean Dry Dock</string>
-      <string _locid="303353">Ships a Dry Dock Wagon and lets your Dry Dock maintain Alexandrian Galleys.</string>
-      <string _locid="303354">Loyal Districts</string>
-      <string _locid="303355">The Phanariot quarters swear loyalty: increases your population limit by 15.</string>
     </language>
   </stringtable>
 </stringmods>

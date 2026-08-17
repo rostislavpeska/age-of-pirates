@@ -62,7 +62,7 @@
         <anim>RangedAttack</anim>
     </action>
     <action>
-        <name stringid="303356">SpawnGalley</name>
+        <name stringid="43299">SpawnGalley</name>
         <active>0</active>
         <type>Maintain</type>
         <rate type="zpVeniceGalley">1.0 </rate>
@@ -70,7 +70,7 @@
         <persistent>1</persistent>
     </action>
     <action>
-        <name stringid="303357">SpawnPrivateer</name>
+        <name stringid="43299">SpawnPrivateer</name>
         <active>0</active>
         <type>Maintain</type>
         <rate type="Privateer">1.0 </rate>
@@ -78,7 +78,7 @@
         <persistent>1</persistent>
     </action>
     <action>
-        <name stringid="303358">SpawnAXGalley</name>
+        <name stringid="43299">SpawnAXGalley</name>
         <active>0</active>
         <type>Maintain</type>
         <rate type="zpAlexandrianGalley">1.0 </rate>
@@ -86,7 +86,7 @@
         <persistent>1</persistent>
     </action>
     <action>
-        <name stringid="303359">SpawnIronclad</name>
+        <name stringid="43299">SpawnIronclad</name>
         <active>0</active>
         <type>Maintain</type>
         <rate type="xpIronclad">1.0</rate>
