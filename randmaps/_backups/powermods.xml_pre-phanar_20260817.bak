@@ -574,24 +574,6 @@
     <alwaysaddtoplayer>1</alwaysaddtoplayer>
     <soundset type="StartSound" listenertype="Caster">DENatPowerHabsburg</soundset>
   </power>
-  <power name="zpNatPowerGreekRevolution" type="TempUnit">
-    <displaynameid>125116</displaynameid>
-    <rolloverid>125117</rolloverid>
-    <icon>resources\images\icons\abilities\ability_greek_revolution_lrg.png</icon>
-    <minimapeventtime sendalertto="ally">1</minimapeventtime>
-    <activetime>120</activetime>
-    <createunit pattern="Spawn" quantity="2" delay="0.0" permanent="">deSacredBand</createunit>
-    <placement forceonmap="1">LOSDontCare</placement>
-    <rangeindicatorprotoid radius="12.0" indicatorcount="16" speed="0.6">PowerRanger</rangeindicatorprotoid>
-    <auxiliarypower>dePowerGreekRevolutionAux</auxiliarypower>
-    <auxiliarypowertargettype>self</auxiliarypowertargettype>
-    <powerescalation>1</powerescalation>
-    <powerescalationrate>4.0</powerescalationrate>
-    <powermaxlevel>20</powermaxlevel>
-    <allowduringnorush>1</allowduringnorush>
-    <alwaysaddtoplayer>1</alwaysaddtoplayer>
-    <soundset type="StartSound" listenertype="All">DENatPowerPhanar</soundset>
-  </power>
   <power name="zpNatPowerArcticAcclimation" type="GeneralEffect">
     <displaynameid>130669</displaynameid>
     <rolloverid>130670</rolloverid>

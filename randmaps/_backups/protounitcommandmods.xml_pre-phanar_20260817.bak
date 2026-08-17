@@ -782,17 +782,6 @@
     </usemultiple>
   </protounitcommand>
   <protounitcommand>
-    <name>zpNatPhanarGreekRevolutionSmall</name>
-    <icon>resources\images\icons\abilities\ability_greek_revolution_lrg.png</icon>
-    <associatedtech>zpNatPhanarGreekRevolution</associatedtech>
-    <associatedpower>zpNatPowerGreekRevolution</associatedpower>
-    <castpower>
-    </castpower>
-    <subciv>Phanar</subciv>
-    <usemultiple>
-    </usemultiple>
-  </protounitcommand>
-  <protounitcommand>
     <name>TacticCossackRider</name>
     <icon>resources\images\icons\command\cossack_outlaw_off.png</icon>
     <activeicon>resources\images\icons\command\cossack_outlaw_on.png</activeicon>

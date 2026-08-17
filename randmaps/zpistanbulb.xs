@@ -2777,8 +2777,8 @@ void main(void)
 	rmEchoInfo("water fort treasures: N="+unit_waterFortNugN+" S="+unit_waterFortNugS);
 
 	// -- grouping-adjacent: pirate sockets --
-	int pirateSocketN = pirateFlagN+1;
-	int pirateSocketS = pirateFlagS+1;
+	int pirateSocketN = pirateFlagN-1 ;
+	int pirateSocketS = pirateFlagS-1 ;
 
 	// -- anti-ship gun sockets: instance query + the same shift as the rest --
 	int gunSocketNW = rmGetGroupingInstanceUnitByType(gunNWPlacement, "zpSocketAntiShipGun") + instanceIdShift;
@@ -2850,6 +2850,29 @@ void main(void)
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
+
+	// EXTENDED ROYAL HOUSE. zpcoldwar.xs 1288-1301 / zplabradorcoast.xs 1264:
+	// an extended house sits dormant in the data until a map flips its shadow
+	// tech. cTechzpExtendedPhanar swaps the Greek Revolution ability down to a
+	// small button and opens the House of Phanar expansion big button, which in
+	// turn sells the Aegean Dry Dock (age IV) and Loyal Districts (age V).
+	// Phanar is always on this map - flipRoy (1763) only picks which island.
+	// Trigger name carries no spaces, per the law at 2864.
+	int ep = 0;
+	for (ep = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("ExtendedPhanar"+ep);
+		rmSwitchToTrigger(rmTriggerID("ExtendedPhanar"+ep));
+		rmAddTriggerCondition("Always");
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", ep);
+		rmSetTriggerEffectParam("TechID", "cTechzpExtendedPhanar");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
 
 	// ========================================================================
 	//  ANTI-SHIP GUNS  -  prebuilt at load, then rebuildable from the socket
@@ -3803,6 +3826,10 @@ void main(void)
 	rmCreateTrigger("Activate Consulate Chinese" + pt);
 	rmCreateTrigger("Activate Consulate Indians" + pt);
 	rmCreateTrigger("Activate Tortuga" + pt);
+	rmCreateTrigger("Activate Orthodox" + pt);
+	rmCreateTrigger("Italian Vilager Balance" + pt);
+	rmCreateTrigger("Italian Gondola Balance" + pt);
+	rmCreateTrigger("Cheat Returner" + pt);
 
 	rmSwitchToTrigger(rmTriggerID("PiratesNon_Player" + pt));
 	rmAddTriggerCondition("Units in Area");
@@ -4015,13 +4042,13 @@ void main(void)
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",""+pirateSocketN);
 	rmSetTriggerConditionParamInt("Player", pt);
-	rmSetTriggerConditionParam("UnitType", "zpSPCBlackPearlProxy");
+	rmSetTriggerConditionParam("UnitType", "zpSPCPirateGalleassProxy");
 	rmSetTriggerConditionParamInt("Dist", 35);
 	rmSetTriggerConditionParam("Op", ">=");
 	rmSetTriggerConditionParamInt("Count", 1);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID", pt);
-	rmSetTriggerEffectParam("TechID", "cTechzpTrainBlackPearl1");
+	rmSetTriggerEffectParam("TechID", "cTechzpTrainSultana1");
 	rmSetTriggerEffectParamInt("Status", 2);
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShipNTIME_Plr" + pt));
@@ -4168,13 +4195,13 @@ void main(void)
 	rmAddTriggerCondition("Units in Area");
 	rmSetTriggerConditionParam("DstObject",""+pirateSocketS);
 	rmSetTriggerConditionParamInt("Player", pt);
-	rmSetTriggerConditionParam("UnitType", "zpSPCBlackPearlProxy");
+	rmSetTriggerConditionParam("UnitType", "zpSPCPirateGalleassProxy");
 	rmSetTriggerConditionParamInt("Dist", 35);
 	rmSetTriggerConditionParam("Op", ">=");
 	rmSetTriggerConditionParamInt("Count", 1);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID", pt);
-	rmSetTriggerEffectParam("TechID", "cTechzpTrainBlackPearl2");
+	rmSetTriggerEffectParam("TechID", "cTechzpTrainSultana2");
 	rmSetTriggerEffectParamInt("Status", 2);
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShipSTIME_Plr" + pt));
@@ -4242,6 +4269,8 @@ void main(void)
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Indians" + pt));
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Tortuga" + pt));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Orthodox" + pt));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -4264,6 +4293,8 @@ void main(void)
 	rmSetTriggerEffectParamInt("Status", 2);
 	rmAddTriggerEffect("ZP Pick Consulate Tech");
 	rmSetTriggerEffectParamInt("Player", pt);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner" + pt));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -4286,6 +4317,8 @@ void main(void)
 	rmSetTriggerEffectParamInt("Status", 2);
 	rmAddTriggerEffect("ZP Pick Consulate Tech");
 	rmSetTriggerEffectParamInt("Player", pt);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner" + pt));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -4308,6 +4341,8 @@ void main(void)
 	rmSetTriggerEffectParamInt("Status", 2);
 	rmAddTriggerEffect("ZP Pick Consulate Tech");
 	rmSetTriggerEffectParamInt("Player", pt);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner" + pt));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
@@ -4319,7 +4354,7 @@ void main(void)
 	rmSetTriggerConditionParamInt("PlayerID", pt);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID", pt);
-	rmSetTriggerEffectParam("TechID", "cTechzpTurnConsulateOffPirates");
+	rmSetTriggerEffectParam("TechID", "cTechzpTurnConsulateOffPiratesMedi");
 	rmSetTriggerEffectParamInt("Status", 2);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID", pt);
@@ -4327,10 +4362,197 @@ void main(void)
 	rmSetTriggerEffectParamInt("Status", 2);
 	rmAddTriggerEffect("ZP Pick Consulate Tech");
 	rmSetTriggerEffectParamInt("Player", pt);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance" + pt));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance" + pt));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner" + pt));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(true);
+
+	// ORTHODOX POLITICIANS. zpblacksea.xs 1879-1904 - the Activate_Tortuga block
+	// above with two strings swapped. The Bosporus carries the Orthodox native
+	// (natOrthodox, 1716) but had no switcher, so allying with it left the
+	// consulate page empty. Not a rival to the pirate system: every
+	// zpTurnConsulateOff* tech is a TOTAL reset that sets every politician in
+	// the mod unobtainable and re-enables only its own three, so Pirates and
+	// Orthodox are alternative patrons, never simultaneous. Taking Orthodox
+	// Influence drops Blackbeard/Barbarossa/BlackCaesar; taking The Black Flag drops
+	// Georgians/Bulgarians/Constantinopole. Both stay Loop(true) and re-arm.
+	// BALKAN is blacksea's set - Georgians + Bulgarians + Constantinopole, the
+	// one that actually contains this city. OrthodoxSouth would trade
+	// Bulgarians for Alexandria if the Mediterranean side should win instead.
+	rmSwitchToTrigger(rmTriggerID("Activate_Orthodox" + pt));
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID", "cTechzpOrthodoxInfluence");
+	rmSetTriggerConditionParamInt("PlayerID", pt);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", pt);
+	rmSetTriggerEffectParam("TechID", "cTechzpTurnConsulateOffOrthodoxBalkan");
+	rmSetTriggerEffectParamInt("Status", 2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", pt);
+	rmSetTriggerEffectParam("TechID", "cTechzpBigButtonResearchDecrease");
+	rmSetTriggerEffectParamInt("Status", 2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player", pt);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance" + pt));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance" + pt));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner" + pt));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+
+	// BIG-BUTTON BALANCE + RETURNER. zpblacksea.xs 1697-1744, present on every
+	// map that ships a politician switcher. Each switcher grants
+	// cTechzpBigButtonResearchDecrease so the big button researches instantly;
+	// Cheat Returner hands the cost straight back 10ms later. Without it the
+	// discount is permanent and every later big button is free - blacksea calls
+	// it the "Speed Always Wins Returner". Istanbul granted the decrease from
+	// all four of its switchers and never returned it.
+	// The two Italian triggers repay what the faction big buttons take away:
+	// zpOrthodoxInfluence and zpTheBlackFlag both zero DEShipItalianVillager
+	// and DEShipItalianFishingBoat, so an Italian player loses those shipments
+	// unless the Ballance techs give them back. Asian consulate swaps do not
+	// touch the shipments, so they only need the returner.
+	rmSwitchToTrigger(rmTriggerID("Italian_Vilager_Balance" + pt));
+	rmAddTriggerCondition("ZP Player Civilization");
+	rmSetTriggerConditionParamInt("Player", pt);
+	rmSetTriggerConditionParam("Civilization", "DEItalians");
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", pt);
+	rmSetTriggerEffectParam("TechID", "cTechzpItalianSettlerBallance");
+	rmSetTriggerEffectParamInt("Status", 2);
+	rmSetTriggerPriority(2);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(false);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Italian_Gondola_Balance" + pt));
+	rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+	rmSetTriggerConditionParamInt("PlayerID", pt);
+	rmSetTriggerConditionParam("TechID", "cTechDEHCGondolas");
+	rmSetTriggerConditionParamInt("Status", 2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", pt);
+	rmSetTriggerEffectParam("TechID", "cTechzpItalianGondolaBallance");
+	rmSetTriggerEffectParamInt("Status", 2);
+	rmSetTriggerPriority(2);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(false);
+	rmSetTriggerLoop(false);
+
+	rmSwitchToTrigger(rmTriggerID("Cheat_Returner" + pt));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamInt("Param1", 10);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", pt);
+	rmSetTriggerEffectParam("TechID", "cTechzpBigButtonResearchIncrease");
+	rmSetTriggerEffectParamInt("Status", 2);
+	rmSetTriggerPriority(2);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(false);
+	rmSetTriggerLoop(false);
+	}
+
+
+	// ========================================================================
+	//  AI CAPTAINS  -  one politician rolled per non-human player
+	// ------------------------------------------------------------------------
+	// Humans pick a politician through the consulate page the Activate_* family
+	// swaps in; an AI never opens that page, so without these it allies and gets
+	// an empty consulate. zpmediterranean.xs 1886-1926 (pirates) and
+	// zpblacksea.xs 2667-2707 (Orthodox), verbatim but retabbed.
+	// rmRandInt runs at map generation, so the choice is baked per player.
+	// MEDITERRANEAN trio - Barbarossa in place of the Caribbean Grace.
+	// ========================================================================
+	int ac = 0;
+	for (ac = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("ZP Pick Pirate Captain" + ac);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player", ac);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerCondition("Tech Status Equals");
+		rmSetTriggerConditionParamInt("PlayerID", ac);
+		rmSetTriggerConditionParamInt("TechID", 586);
+		rmSetTriggerConditionParamInt("Status", 2);
+		int pirateCaptain = -1;
+		pirateCaptain = rmRandInt(1, 3);
+		if (pirateCaptain == 1)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", ac);
+			rmSetTriggerEffectParam("TechID", "cTechzpConsulatePiratesBlackbeard");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		if (pirateCaptain == 2)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", ac);
+			rmSetTriggerEffectParam("TechID", "cTechzpConsulatePiratesBarbarossa");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		if (pirateCaptain == 3)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", ac);
+			rmSetTriggerEffectParam("TechID", "cTechzpConsulatePiratesBlackCaesar");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
+	// ORTHODOX LEADERS - the Balkan trio, matching
+	// cTechzpTurnConsulateOffOrthodoxBalkan on the human side.
+	int oc = 0;
+	for (oc = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("ZP Pick Orthodox Captain" + oc);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player", oc);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerCondition("Tech Status Equals");
+		rmSetTriggerConditionParamInt("PlayerID", oc);
+		rmSetTriggerConditionParamInt("TechID", 586);
+		rmSetTriggerConditionParamInt("Status", 2);
+		int orthodoxCaptain = -1;
+		orthodoxCaptain = rmRandInt(1, 3);
+		if (orthodoxCaptain == 1)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", oc);
+			rmSetTriggerEffectParam("TechID", "cTechzpConsulateOrthodoxGeorgians");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		if (orthodoxCaptain == 2)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", oc);
+			rmSetTriggerEffectParam("TechID", "cTechzpConsulateOrthodoxBulgarians");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		if (orthodoxCaptain == 3)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", oc);
+			rmSetTriggerEffectParam("TechID", "cTechzpConsulateOrthodoxConstantinopole");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
 	}
 
 	rmSetStatusText("", 1.00);

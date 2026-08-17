@@ -3621,12 +3621,6 @@ Natives: Colonial Estate, Haudenosaunee, Pirates</string>
       <string _locid="400288">United States of America</string>
       <string _locid="400289">You declared the Independence of the United States of America!</string>
       <string _locid="400290">%s has declared Independence!</string>
-      <string _locid="303350">Grand Dragoman of the Porte</string>
-      <string _locid="303351">Opens the extended House of Phanar: unlocks the Aegean Dry Dock and the Loyal Districts of the Phanariotes.</string>
-      <string _locid="303352">Aegean Dry Dock</string>
-      <string _locid="303353">Ships a Dry Dock Wagon and lets your Dry Dock maintain Alexandrian Galleys.</string>
-      <string _locid="303354">Loyal Districts</string>
-      <string _locid="303355">The Phanariot quarters swear loyalty: increases your population limit by 15.</string>
     </language>
   </stringtable>
 </stringmods>
