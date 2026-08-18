@@ -13,8 +13,5 @@
   <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="302033">zpBridgeFace</distanceatleastfromtype>
   <distanceatleastfromtype player="any" foundation="any" distance="15" errorstringid="302256">zpNativeHouseVenetianD</distanceatleastfromtype>
   <distanceatleastfromtype player="any" foundation="any" distance="55" errorstringid="303288">zpKingsHillNaval</distanceatleastfromtype>
-  <distanceatleastfromtype player="any" foundation="any" distance="55" errorstringid="303288">zpKingsHillNavalBlackSea</distanceatleastfromtype>
-  <distanceatleastfromtype player="any" foundation="any" distance="55" errorstringid="303288">zpKingsHillNavalMedi</distanceatleastfromtype>
-  <distanceatleastfromtype player="enemy" foundation="any" distance="90" errorstringid="303361">zpAntiShipGun</distanceatleastfromtype>
   <distanceatleastfromtype player="any" foundation="any" distance="55" errorstringid="303288">zpSPCDockAvoider</distanceatleastfromtype>
 </placementrules>

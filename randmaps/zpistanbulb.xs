@@ -396,10 +396,11 @@ void main(void)
 	// Single-tree placement is the thing that demonstrably works here, so the
 	// loop just repeats it. Steps are whole tiles, and the accumulators are
 	// floats - int * float truncates to 0 in XS.
-	int   treeCols        = 34;   // trees along the shore
-	int   treeRows        = 5;    // trees inland (countryside is ~17 tiles)
+	int   treeCols        = 28;   // trees along the shore
+	int   treeRows        = 8;    // rows walking OUTWARD: 8 x 3 t = 24 t (48 m),
+	                              // far enough to carry the wood onto the beach
 	int   treeStepTiles   = 3;    // tiles between grid points
-	int   treesPerSpot    = 4;    // trees dropped at one spot
+	int   treesPerSpot    = 2;    // trees per spot (was 4 - the wood was too dense)
 	float treeSpotSpread  = 5.0;  // metres they cluster
 	int   treeJitter      = 4;    // tiles a tree may wander off its point.
 	                              // Bigger than the step, so neighbouring
@@ -686,6 +687,7 @@ void main(void)
 	int seaBoxNE = rmCreateBoxConstraint("black sea side", 0.62, 0.52, 0.98, 0.98, 0.01);
 	int seaBoxSW = rmCreateBoxConstraint("mediterranean side", 0.02, 0.02, 0.38, 0.48, 0.01);
 
+	int avoidTraderoute5 = rmCreateTradeRouteDistanceConstraint("avoid trade route 5", 3.0);
 
 	rmSetStatusText("", 0.08);
 
@@ -750,17 +752,17 @@ void main(void)
 		nz3Ask - rmZTilesToFraction(northFlank2Toward));
 	shoreScaffold(sx1 - flankProm - rmXTilesToFraction(southFlankDist),
 		sz3Ask + rmZTilesToFraction(southFlank2Toward));
+	// Pirate scaffold sized off the MEASURED grouping, not guessed.
+	// IS_Shore_Pirates_01/02 span 26.3 x 35.4 m -> 44.1 m diagonal.
+	// 1100 tiles gave a 74.8 m disc (1.70x cover) - far more land than the
+	// camp needs, which is what made the shore look bloated.
+	// Tightened to 452 tiles = 47.9 m disc - 3.8 m clear of the grouping.
+	// Floor is 382 tiles (44.1 m); below that the camp overhangs the land.
 	shoreScaffold(nx5 + flankProm + rmXTilesToFraction(northPirateDist),
-		nz3Ask + rmZTilesToFraction(northPirateBack), 1100);
+		nz3Ask + rmZTilesToFraction(northPirateBack), 452);
 	shoreScaffold(sx1 - flankProm - rmXTilesToFraction(southPirateDist),
-		sz3Ask - rmZTilesToFraction(southPirateBack), 1100);
-	// ground for the third deco piece BEHIND each pirate camp - 20 t past the
-	// pirate centre is beyond the 1100-disc rim (r ~18.7 t), so without these
-	// the deco stands over open water and silently never spawns
-	shoreScaffold(nx5 + flankProm + rmXTilesToFraction(northPirateDist),
-		nz3Ask + rmZTilesToFraction(northPirateBack + decoNEBehindPir));
-	shoreScaffold(sx1 - flankProm - rmXTilesToFraction(southPirateDist),
-		sz3Ask - rmZTilesToFraction(southPirateBack + decoSWBehindPir));
+		sz3Ask - rmZTilesToFraction(southPirateBack), 452);
+	// No scaffold behind the pirate camps - the deco does not need one.
 
 	// ========================================================================
 	//  4. TRADE ROUTES  ->  then MEASURE where they really are
@@ -1033,8 +1035,10 @@ void main(void)
 	// pirate platform is 25 t; scaffold 900 = disc 33.9 t; river 36x28
 	// uses the same cover ratios the gun rivers prove out (edge under-
 	// cover -3 t/side is the proven-safe regime, over-cover breaks shores)
-	shoreRiver(nPirateX, nPirateZ, 28, 0.06);
-	shoreRiver(sPirateX, sPirateZ, 28, 0.06);
+	// PIRATE RIVERS REMOVED - they are 28 wide with 0.06 reach, far bigger than
+	// the width-13 gun rivers, and they were eating the coastline.
+	shoreRiver(nPirateX, nPirateZ, 18, 0.038);
+	shoreRiver(sPirateX, sPirateZ, 18, 0.038);
 
 	// PHASE B - only now the guns go down
 	// classGun BEFORE placement, so the class constraint below sees them
@@ -1241,6 +1245,107 @@ void main(void)
 	// ========================================================================
 	//  7. THE CITY  -  painted last, over everything
 	// ========================================================================
+	
+
+	// City Beaches
+	// EDGE RING. Beaches may only live in a band hugging the map edge, so each
+	// player gets a strip of hinterland beach instead of sand in mid-map.
+	// rmCreatePieConstraint(name, centreX, centreZ, inner, outer, startAng, endAng)
+	// - the ring form from the guide (2340). Radii are METRES from map centre;
+	// half-width is 300 m, so 260..300 is the outermost 40 m. Outer overshoots
+	// the rim on purpose, otherwise the band the area can grow into gets shaved.
+	// The two shores need different depths - the north band reads well wide, the
+	// south one did not, so they are separate rings now. Only the INNER radius
+	// differs: bigger subtraction = beach reaches further inland.
+	int beachEdgeRingN = rmCreatePieConstraint("north beach hugs the map edge",
+		0.5, 0.5,
+		rmXFractionToMeters(0.5) - 32.0,   // 257..300 - 43 m band
+		rmXFractionToMeters(0.5) + 40.0,
+		rmDegreesToRadians(0), rmDegreesToRadians(360));
+	int beachEdgeRingS = rmCreatePieConstraint("south beach hugs the map edge",
+		0.5, 0.5,
+		rmXFractionToMeters(0.5) - 22.0,   // 273..300 - 27 m band
+		rmXFractionToMeters(0.5) + 40.0,
+		rmDegreesToRadians(0), rmDegreesToRadians(360));
+
+	int beachN = rmCreateArea("landing beach north");
+	rmSetAreaWarnFailure(beachN, false);
+	rmSetAreaSize(beachN, rmAreaTilesToFraction(1700), rmAreaTilesToFraction(1700));
+	rmSetAreaLocation(beachN, 0.7, 0.95);
+	rmSetAreaCoherence(beachN, 1.0);
+	rmSetAreaBaseHeight(beachN, 3);
+	rmSetAreaHeightBlend(beachN, 2);
+	rmSetAreaSmoothDistance(beachN, 10);
+	rmSetAreaMix(beachN, hinterMix);
+		rmAddAreaTerrainLayer(beachN, "carolinas\ground_shoreline2_car", 0, 2);
+		rmAddAreaTerrainLayer(beachN, "carolinas\ground_shoreline3_car", 2, 4);
+	rmSetAreaElevationVariation(beachN, 0.0);
+	rmSetAreaObeyWorldCircleConstraint(beachN, false);
+	rmAddAreaConstraint(beachN, avoidTraderoute5);
+	rmAddAreaConstraint(beachN, beachEdgeRingN);
+	rmBuildArea(beachN);
+
+	int beachS = rmCreateArea("landing beach south");
+	rmSetAreaWarnFailure(beachS, false);
+	rmSetAreaSize(beachS, rmAreaTilesToFraction(1500), rmAreaTilesToFraction(1500));
+	rmSetAreaLocation(beachS, 0.3, 0.05);
+	rmSetAreaCoherence(beachS, 1.0);
+	rmSetAreaBaseHeight(beachS, 3);
+	rmSetAreaHeightBlend(beachS, 2);
+	rmSetAreaSmoothDistance(beachS, 10);
+	rmSetAreaMix(beachS, hinterMix);
+		rmAddAreaTerrainLayer(beachS, "carolinas\ground_shoreline2_car", 0, 2);
+		rmAddAreaTerrainLayer(beachS, "carolinas\ground_shoreline3_car", 2, 4);
+	rmSetAreaElevationVariation(beachS, 0.0);
+	rmSetAreaObeyWorldCircleConstraint(beachS, false);
+	rmAddAreaConstraint(beachS, avoidTraderoute5);
+	rmAddAreaConstraint(beachS, beachEdgeRingS);
+	rmBuildArea(beachS);
+
+	// STRAIT BEACHES - small landing shelves facing the channel, separate from
+	// the big edge beaches. Deliberately NOT given beachEdgeRingN/S: that ring
+	// starts 257 m out from centre and these sit at 116 m, so the constraint
+	// would reject every seed and they would silently build nothing.
+	int beachStraitN = rmCreateArea("landing beach strait north");
+	rmSetAreaWarnFailure(beachStraitN, false);
+	rmSetAreaSize(beachStraitN, rmAreaTilesToFraction(350), rmAreaTilesToFraction(350));
+	rmSetAreaLocation(beachStraitN, 0.335, 0.57);
+	rmSetAreaCoherence(beachStraitN, 1.0);
+	rmSetAreaBaseHeight(beachStraitN, 3);
+	rmSetAreaHeightBlend(beachStraitN, 1);
+	rmSetAreaSmoothDistance(beachStraitN, 10);
+	rmSetAreaMix(beachStraitN, hinterMix);
+		rmAddAreaTerrainLayer(beachStraitN, "carolinas\ground_shoreline2_car", 0, 2);
+		rmAddAreaTerrainLayer(beachStraitN, "carolinas\ground_shoreline3_car", 2, 4);
+	rmSetAreaElevationVariation(beachStraitN, 0.0);
+	rmSetAreaObeyWorldCircleConstraint(beachStraitN, false);
+	rmAddAreaConstraint(beachStraitN, avoidTraderoute5);
+	rmBuildArea(beachStraitN);
+
+	int beachStraitS = rmCreateArea("landing beach strait south");
+	rmSetAreaWarnFailure(beachStraitS, false);
+	rmSetAreaSize(beachStraitS, rmAreaTilesToFraction(350), rmAreaTilesToFraction(350));
+	rmSetAreaLocation(beachStraitS, 0.673, 0.43);
+	rmSetAreaCoherence(beachStraitS, 1.0);
+	rmSetAreaBaseHeight(beachStraitS, 3);
+	rmSetAreaHeightBlend(beachStraitS, 1);
+	rmSetAreaSmoothDistance(beachStraitS, 10);
+	rmSetAreaMix(beachStraitS, hinterMix);
+		rmAddAreaTerrainLayer(beachStraitS, "carolinas\ground_shoreline2_car", 0, 2);
+		rmAddAreaTerrainLayer(beachStraitS, "carolinas\ground_shoreline3_car", 2, 4);
+	rmSetAreaElevationVariation(beachStraitS, 0.0);
+	rmSetAreaObeyWorldCircleConstraint(beachStraitS, false);
+	rmAddAreaConstraint(beachStraitS, avoidTraderoute5);
+	rmBuildArea(beachStraitS);
+
+	// Keep the wall dock cliffs off the strait beaches.
+	// 12 m, not 2. A cliff paints its face and smoothing OUTSIDE its own area -
+	// see line 624: "8 m keeps all of that off the promenade". 2 m is one tile,
+	// so the cliff simply spilled over the beach.
+	// Declared here because an area constraint needs the area already built.
+	int avoidBeachStraitN = rmCreateAreaDistanceConstraint("avoid strait beach north", beachStraitN, 1.0);
+	int avoidBeachStraitS = rmCreateAreaDistanceConstraint("avoid strait beach south", beachStraitS, 1.0);
+
 
 	// --- district terrain: a plateau bounded to its own grid ---------------
 	// The box reaches nz6, so the island carries the empty back row as land.
@@ -1539,12 +1644,6 @@ void main(void)
 	rmSetObjectDefMaxDistance(oneTree, rmXTilesToFraction(treeJitter));
 	rmSetObjectDefAllowOverlap(oneTree, true);
 	rmAddObjectDefConstraint(oneTree, avoidCliff);
-	int treeCarib = rmCreateObjectDef("tree caribbean");
-	rmAddObjectDefItem(treeCarib, "TreeCaribbean", treesPerSpot, treeSpotSpread);
-	rmSetObjectDefMinDistance(treeCarib, 0.0);
-	rmSetObjectDefMaxDistance(treeCarib, rmXTilesToFraction(treeJitter));
-	rmSetObjectDefAllowOverlap(treeCarib, true);
-	rmAddObjectDefConstraint(treeCarib, avoidCliff);
 	int treeLakes = rmCreateObjectDef("tree great lakes");
 	rmAddObjectDefItem(treeLakes, "TreeGreatLakes", treesPerSpot, treeSpotSpread);
 	rmSetObjectDefMinDistance(treeLakes, 0.0);
@@ -1558,18 +1657,17 @@ void main(void)
 	rmSetObjectDefAllowOverlap(treeEuca, true);
 	rmAddObjectDefConstraint(treeEuca, avoidCliff);
 
-	// Weighted draw: one slot = one chance in eight. Caribbean is the palm,
-	// so it gets a single slot - any more and the countryside reads jungle.
-	// To retune, move a slot from one kind to another.
+	// Weighted draw: one slot = one chance in eight. The palm is gone entirely;
+	// its slot went to cypress. To retune, move a slot between kinds.
 	int gTreeKinds = xsArrayCreateInt(8, -1, "tree kinds");
-	xsArraySetInt(gTreeKinds, 0, oneTree);     // cypress   3/8
+	xsArraySetInt(gTreeKinds, 0, oneTree);     // cypress    4/8
 	xsArraySetInt(gTreeKinds, 1, oneTree);
 	xsArraySetInt(gTreeKinds, 2, oneTree);
 	xsArraySetInt(gTreeKinds, 3, treeLakes);   // greatlakes 2/8
 	xsArraySetInt(gTreeKinds, 4, treeLakes);
 	xsArraySetInt(gTreeKinds, 5, treeEuca);    // eucalyptus 2/8
 	xsArraySetInt(gTreeKinds, 6, treeEuca);
-	xsArraySetInt(gTreeKinds, 7, treeCarib);   // caribbean  1/8
+	xsArraySetInt(gTreeKinds, 7, oneTree);     // cypress    4/8
 
 	float treeStepX = rmXTilesToFraction(treeStepTiles);
 	float treeStepZ = rmZTilesToFraction(treeStepTiles);
@@ -2102,12 +2200,13 @@ void main(void)
 	//   seal area ~284 t worst case -> dockSizeTiles 550 = ~2x slack, r 13.2 t
 	//   sea docks sit 6 t sea-ward AND 6 t away from the gun (seed 33 m from
 	//   the nearest gun unit; 24 m gun field blankets the river approach)
-	int   dockSizeTiles = 450;
+	int   dockSizeTiles = 350;
 	// The two BACK-END docks (1 and 4) reach the map edge, so they need more
 	// volume than the sea-side pair to close the gap against the wall.
 	int   dockSizeTilesBack = 780;
 	int   wallDockTiles = 47;  // back-end seed distance past the wall end
-	int   dockSeaTiles  = 1;   // sea-dock x-offset off the wall line
+	int   dockSeaTiles  = 6;   // sea-dock x-offset off the wall line (was 1 -
+	                           // docks 2/3 sat on the wall and would not spawn)
 
 	// north wall, back end
 	int dock1 = rmCreateArea("wall dock 1");
@@ -2143,8 +2242,8 @@ void main(void)
 	rmSetAreaCoherence(dock2, 0.93);
 	// centred in the MEASURED water band (front .. real lane) so the seed
 	// survives any +/-4 t route snap - never derived from the ASKED lane
-	rmSetAreaLocation(dock2, wallXN - rmXTilesToFraction(dockSeaTiles),
-		(nz1 - promenade + nRouteZ) * 0.5 + rmZTilesToFraction(13));
+	// x, z as plain map fractions. 0.0 west/south -> 1.0 east/north.
+	rmSetAreaLocation(dock2, 0.310, 0.600);
 	rmSetAreaBaseHeight(dock2, cityHeight + balanceRise);
 	rmSetAreaHeightBlend(dock2, 3);
 	rmSetAreaMix(dock2, hinterMix);
@@ -2156,6 +2255,8 @@ void main(void)
 	rmAddAreaConstraint(dock2, dockAvoidBlocks);
 	rmAddAreaConstraint(dock2, dockAvoidGunClass);
 	rmAddAreaConstraint(dock2, cliffLaneFallback);
+	rmAddAreaConstraint(dock2, avoidBeachStraitN);
+	rmAddAreaConstraint(dock2, avoidBeachStraitS);
 	rmSetAreaObeyWorldCircleConstraint(dock2, false);
 	rmBuildArea(dock2);
 
@@ -2165,8 +2266,8 @@ void main(void)
 	rmSetAreaSize(dock3, rmAreaTilesToFraction(dockSizeTiles),
 		rmAreaTilesToFraction(dockSizeTiles));
 	rmSetAreaCoherence(dock3, 0.93);
-	rmSetAreaLocation(dock3, wallXS + rmXTilesToFraction(dockSeaTiles),
-		(sz1 + promenade + sRouteZ) * 0.5 - rmZTilesToFraction(11));
+	// x, z as plain map fractions - the 180 degree mirror of dock2.
+	rmSetAreaLocation(dock3, 0.692, 0.390);
 	rmSetAreaBaseHeight(dock3, cityHeight + balanceRise);
 	rmSetAreaHeightBlend(dock3, 3);
 	rmSetAreaMix(dock3, hinterMix);
@@ -2178,6 +2279,8 @@ void main(void)
 	rmAddAreaConstraint(dock3, dockAvoidBlocks);
 	rmAddAreaConstraint(dock3, dockAvoidGunClass);
 	rmAddAreaConstraint(dock3, cliffLaneFallback);
+	rmAddAreaConstraint(dock3, avoidBeachStraitN);
+	rmAddAreaConstraint(dock3, avoidBeachStraitS);
 	rmSetAreaObeyWorldCircleConstraint(dock3, false);
 	rmBuildArea(dock3);
 
@@ -2371,6 +2474,18 @@ void main(void)
 	float lightSZ = sRouteZ - rmZTilesToFraction(lightSOffZ);
 	rmPlaceGroupingAtLoc(lightN, 0, lightNX, lightNZ);
 	rmPlaceGroupingAtLoc(lightS, 0, lightSX, lightSZ);
+
+	// ---- Sultan Palace, centred on each strait beach ---------------------
+	// Placed AFTER the other deco so nothing else lands on top of it.
+	// Same coordinates as the strait beaches themselves.
+	int palaceN = rmCreateGrouping("deco sultan palace n", "IS_Deco_Sultan_Palace_N");
+	rmSetGroupingMinDistance(palaceN, 0.0);
+	rmSetGroupingMaxDistance(palaceN, 0.01);
+	int palaceS = rmCreateGrouping("deco sultan palace s", "IS_Deco_Sultan_Palace_S");
+	rmSetGroupingMinDistance(palaceS, 0.0);
+	rmSetGroupingMaxDistance(palaceS, 0.01);
+	rmPlaceGroupingAtLoc(palaceN, 0, 0.335, 0.57);
+	rmPlaceGroupingAtLoc(palaceS, 0, 0.673, 0.428);
 
 
 	rmSetStatusText("", 0.85);
