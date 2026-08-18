@@ -34,14 +34,14 @@
 		<unit variation="57" posx="1.7866" posz="-3.0292" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeHousePirateNoDecal</unit>
 		<unit variation="102" posx="0.0525" posz="1.2824" orientx="0.0001" orienty="-0.0000" orientz="1.0000">NativeTownObstruction</unit>
 		<unit variation="0" posx="-3.2177" posz="-1.4294" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
-		<unit variation="0" posx="-9.2128" posz="-1.4078" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
-		<unit variation="0" posx="-12.2703" posz="1.9403" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
+		<unit variation="0" posx="-8.2128" posz="-1.4078" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="0" posx="-11.2703" posz="1.9403" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
 		<unit variation="243" posx="12.8297" posz="2.5718" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpHarbourPlatform</unit>
 		<unit variation="214" posx="7.5325" posz="2.0448" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
 		<unit variation="163" posx="13.4223" posz="2.1202" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPlatform</unit>
 		<unit variation="57" posx="0.4790" posz="-0.6852" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpNativeHousePirateNoDecal</unit>
 		<unit variation="110" posx="1.8707" posz="-0.8712" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpNativeHousePirateNoDecal</unit>
-		<unit variation="0" posx="-10.1684" posz="2.3111" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
+		<unit variation="0" posx="-9.1684" posz="2.3111" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
 		<unit variation="102" posx="-6.9050" posz="3.1368" orientx="0.0001" orienty="-0.0000" orientz="1.0000">NativeTownObstruction</unit>
 		<unit variation="0" posx="2.2521" posz="2.1998" orientx="-1.0000" orienty="0.0000" orientz="0.0001">SPCPathBlock3</unit>
 		<unit variation="102" posx="0.3828" posz="3.7398" orientx="0.0001" orienty="-0.0000" orientz="1.0000">NativeTownObstruction</unit>
@@ -50,7 +50,7 @@
 		<unit variation="142" posx="-2.8646" posz="1.8017" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpNativeHousePirateNoDecal</unit>
 		<unit variation="164" posx="-1.4544" posz="1.3395" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpPropHorse</unit>
 		<unit variation="57" posx="1.9976" posz="1.4786" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeHousePirateNoDecal</unit>
-		<unit variation="0" posx="-10.4551" posz="5.9141" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
+		<unit variation="0" posx="-9.4551" posz="5.9141" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
 		<unit variation="102" posx="-1.4956" posz="4.2484" orientx="0.0001" orienty="-0.0000" orientz="1.0000">NativeTownObstruction</unit>
 		<unit variation="5" posx="-1.3608" posz="4.1391" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpPropHorse</unit>
 		<unit variation="110" posx="2.0613" posz="3.8770" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeHousePirateNoDecal</unit>
@@ -81,7 +81,7 @@
 		<unit variation="14" posx="2.9408" posz="6.5116" orientx="-0.3827" orienty="0.0000" orientz="0.9239">NativePirates</unit>
 		<unit variation="121" posx="9.2151" posz="7.3112" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHousePirateNoDecal</unit>
 		<unit variation="19" posx="-7.9252" posz="7.5527" orientx="0.7071" orienty="0.0000" orientz="-0.7071">NativePirates</unit>
-		<unit variation="0" posx="-10.7116" posz="10.4828" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
+		<unit variation="0" posx="-9.7116" posz="10.4828" orientx="1.0000" orienty="0.0000" orientz="-0.0001">SPCPathBlock3</unit>
 		<unit variation="102" posx="-7.3233" posz="10.2795" orientx="0.0001" orienty="-0.0000" orientz="1.0000">NativeTownObstruction</unit>
 		<unit variation="57" posx="-10.1721" posz="9.9427" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHousePirateNoDecal</unit>
 		<unit variation="235" posx="-12.1762" posz="11.5824" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCDamagedProps</unit>
@@ -101,7 +101,7 @@
 		<unit variation="229" posx="1.2728" posz="18.7928" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPlatform</unit>
 		<unit variation="5" posx="12.6218" posz="15.0399" orientx="0.0000" orienty="0.0000" orientz="1.0000">NativePirates</unit>
 		<unit variation="248" posx="5.1630" posz="16.8388" orientx="0.0000" orienty="0.0000" orientz="1.0000">NativePirates</unit>
-		<unit variation="64" posx="-7.6071" posz="-6.7889" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpSocketPirates</unit>
+		<unit variation="64" posx="-8.6071" posz="-6.7889" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpSocketPirates</unit>
 	</units>
 	<tiles>
 		<tilegroup type="Shoreline" subtype="carolinas\ground_shoreline1_car">

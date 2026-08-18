@@ -674,4 +674,11 @@
     <alwaysaddtoplayer>1</alwaysaddtoplayer>
     <soundset type="StartSound" listenertype="All">American_Estate</soundset>
   </power>
+  <power name="zpFerryDeploy" type="GeneralEffect">
+    <displaynameid>303366</displaynameid>
+    <rolloverid>303367</rolloverid>
+    <icon>resources\images\icons\command\ability_ferry_eject.png</icon>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
 </powermods>

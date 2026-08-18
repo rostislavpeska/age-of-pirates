@@ -593,6 +593,8 @@ void main(void)
 	// Full reveal from the start (zp_z_zparis.xs 122).
 	rmSetAllMapReveal(true);
 
+	rmForbidTradeMonopoly(true);
+
 	// _________________ Map Objectives ______________________________
 	// zp_z_zparis.xs 1873-1879 shape. Paris adds one objective per team;
 	// both sides here share the same goal, so it is a single entry with no
@@ -743,15 +745,21 @@ void main(void)
 	shoreScaffold(nx5, nRouteAsk + rmZTilesToFraction(northGunDist));
 	shoreScaffold(sx1, sRouteAsk - rmZTilesToFraction(southGunDist));
 	shoreScaffold(sx5, sRouteAsk - rmZTilesToFraction(southGunDist));
-	shoreScaffold(nx3, nRouteAsk + rmZTilesToFraction(northTradeDist));
-	shoreScaffold(sx3, sRouteAsk - rmZTilesToFraction(southTradeDist));
+	// Trade harbour islands sized off the MEASURED groupings, like the pirates.
+	// IS_Shore_Trade_01..04 span 20-22 m, diagonal 29.1-29.9 m. The 650 default
+	// gave a 57.5 m disc - nearly double the harbour, which is the bloated shore.
+	// 290 tiles = 38.4 m, i.e. 19.2 tiles across: exactly the "~19 tiles" this
+	// comment block already claims, and 8.5 m clear so a lane snap still lands
+	// on island. Guns keep 650 until their groupings are measured too.
+	shoreScaffold(nx3, nRouteAsk + rmZTilesToFraction(northTradeDist), 290);
+	shoreScaffold(sx3, sRouteAsk - rmZTilesToFraction(southTradeDist), 290);
 	// flank harbours: x needs no lane, z uses the nominal middle row (z3)
-	shoreScaffold(nx5 + flankProm + rmXTilesToFraction(northFlankDist), nz3Ask);
-	shoreScaffold(sx1 - flankProm - rmXTilesToFraction(southFlankDist), sz3Ask);
+	shoreScaffold(nx5 + flankProm + rmXTilesToFraction(northFlankDist), nz3Ask, 290);
+	shoreScaffold(sx1 - flankProm - rmXTilesToFraction(southFlankDist), sz3Ask, 290);
 	shoreScaffold(nx5 + flankProm + rmXTilesToFraction(northFlankDist),
-		nz3Ask - rmZTilesToFraction(northFlank2Toward));
+		nz3Ask - rmZTilesToFraction(northFlank2Toward), 290);
 	shoreScaffold(sx1 - flankProm - rmXTilesToFraction(southFlankDist),
-		sz3Ask + rmZTilesToFraction(southFlank2Toward));
+		sz3Ask + rmZTilesToFraction(southFlank2Toward), 290);
 	// Pirate scaffold sized off the MEASURED grouping, not guessed.
 	// IS_Shore_Pirates_01/02 span 26.3 x 35.4 m -> 44.1 m diagonal.
 	// 1100 tiles gave a 74.8 m disc (1.70x cover) - far more land than the
@@ -1103,7 +1111,7 @@ void main(void)
 	// Their lane now curves around this coast, so each socket can dock onto it.
 	int flank2SocketN = rmCreateObjectDef("flank harbour 5 socket");
 	rmSetObjectDefTradeRouteID(flank2SocketN, tradeRouteN);
-	rmAddObjectDefItem(flank2SocketN, "zpTradingPostCaptureNavalOriental", 1, 0.0);
+	rmAddObjectDefItem(flank2SocketN, "zpOrientalFerry", 1, 0.0);
 	rmSetObjectDefMinDistance(flank2SocketN, 0.0);
 	rmSetObjectDefMaxDistance(flank2SocketN, 0.5);
 	rmPlaceObjectDefAtLoc(flank2SocketN, 0,
@@ -1123,7 +1131,7 @@ void main(void)
 
 	int flank2SocketS = rmCreateObjectDef("flank harbour 6 socket");
 	rmSetObjectDefTradeRouteID(flank2SocketS, tradeRouteS);
-	rmAddObjectDefItem(flank2SocketS, "zpTradingPostCaptureNavalOriental", 1, 0.0);
+	rmAddObjectDefItem(flank2SocketS, "zpOrientalFerry", 1, 0.0);
 	rmSetObjectDefMinDistance(flank2SocketS, 0.0);
 	rmSetObjectDefMaxDistance(flank2SocketS, 0.5);
 	rmPlaceObjectDefAtLoc(flank2SocketS, 0,
@@ -1161,7 +1169,7 @@ void main(void)
 
 	int flankSocketN = rmCreateObjectDef("flank harbour socket north");
 	rmSetObjectDefTradeRouteID(flankSocketN, tradeRouteN);
-	rmAddObjectDefItem(flankSocketN, "zpTradingPostCaptureNavalOriental", 1, 0.0);
+	rmAddObjectDefItem(flankSocketN, "zpOrientalFerry", 1, 0.0);
 	rmSetObjectDefMinDistance(flankSocketN, 0.0);
 	rmSetObjectDefMaxDistance(flankSocketN, 0.5);
 	rmPlaceObjectDefAtLoc(flankSocketN, 0,
@@ -1179,7 +1187,7 @@ void main(void)
 
 	int flankSocketS = rmCreateObjectDef("flank harbour socket south");
 	rmSetObjectDefTradeRouteID(flankSocketS, tradeRouteS);
-	rmAddObjectDefItem(flankSocketS, "zpTradingPostCaptureNavalOriental", 1, 0.0);
+	rmAddObjectDefItem(flankSocketS, "zpOrientalFerry", 1, 0.0);
 	rmSetObjectDefMinDistance(flankSocketS, 0.0);
 	rmSetObjectDefMaxDistance(flankSocketS, 0.5);
 	rmPlaceObjectDefAtLoc(flankSocketS, 0,
@@ -1202,7 +1210,7 @@ void main(void)
 	// harbour always lands wrapped around its own socket.
 	int harbourSocketN = rmCreateObjectDef("harbour socket north");
 	rmSetObjectDefTradeRouteID(harbourSocketN, tradeRouteN);
-	rmAddObjectDefItem(harbourSocketN, "zpTradingPostCaptureNavalOriental", 1, 0.0);
+	rmAddObjectDefItem(harbourSocketN, "zpOrientalFerry", 1, 0.0);
 	rmSetObjectDefMinDistance(harbourSocketN, 0.0);
 	rmSetObjectDefMaxDistance(harbourSocketN, 0.5);
 	rmPlaceObjectDefAtLoc(harbourSocketN, 0,
@@ -1222,7 +1230,7 @@ void main(void)
 
 	int harbourSocketS = rmCreateObjectDef("harbour socket south");
 	rmSetObjectDefTradeRouteID(harbourSocketS, tradeRouteS);
-	rmAddObjectDefItem(harbourSocketS, "zpTradingPostCaptureNavalOriental", 1, 0.0);
+	rmAddObjectDefItem(harbourSocketS, "zpOrientalFerry", 1, 0.0);
 	rmSetObjectDefMinDistance(harbourSocketS, 0.0);
 	rmSetObjectDefMaxDistance(harbourSocketS, 0.5);
 	rmPlaceObjectDefAtLoc(harbourSocketS, 0,

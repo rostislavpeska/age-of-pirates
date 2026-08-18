@@ -3357,7 +3357,13 @@
       <string _locid="303359">Maintain Ironclads</string>
       <string _locid="303360">ZP Black Sea Fort</string>
       <string _locid="303361">Can't build Dock within range of an enemy Anti-Ship Gun</string>
-
+      <string _locid="303362">Ferry Harbour</string>
+      <string _locid="303363">ZP Trade Harbour Capturable East Ferry</string>
+      <string _locid="303364">Capturable Trade Harbour. Garrisoned units can be ferried across to another Ferry Harbour.</string>
+      <string _locid="303365">Units cannot currently deploy from Ferry Harbours.</string>
+      <string _locid="303366">Ferry Crossing</string>
+      <string _locid="303367">Ferry all garrisoned units across to another Ferry Harbour.</string>
+      
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
       <!-- ======================================== -->

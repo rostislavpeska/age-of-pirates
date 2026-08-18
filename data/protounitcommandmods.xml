@@ -519,6 +519,25 @@
     </notcancellable>
   </protounitcommand>
   <protounitcommand>
+    <name>zpFerryDeploy</name>
+    <icon>resources\images\icons\command\ability_ferry_eject.png</icon>
+    <command>ejectAll(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <associatedtech>DECommanderyDeploy</associatedtech>
+    <associatedpower>deCommanderyDeploy</associatedpower>
+    <rollovertextid>303367</rollovertextid>
+    <disabledrollovertextid>303365</disabledrollovertextid>
+    <usemultiple>
+    </usemultiple>
+    <usemediumbutton3>
+    </usemediumbutton3>
+    <deploy>
+    </deploy>
+    <notcancellable>
+    </notcancellable>
+  </protounitcommand>
+  <protounitcommand>
     <name>zpSocketBuildFixedGun</name>
     <icon>resources\images\icons\command\build_fixed_gun.png</icon>
     <command>uiSocketBuild(%d)</command>

@@ -31,6 +31,13 @@
 		<unit variation="3" posx="5.1310" posz="7.4085" orientx="0.9240" orienty="0.0000" orientz="0.3823">zpPropJewishMarketStall</unit>
 		<unit variation="84" posx="-4.1454" posz="8.0249" orientx="-0.8282" orienty="0.0000" orientz="-0.5605">ypSMSufiAccessory</unit>
 		<unit variation="1" posx="0.1806" posz="2.2753" orientx="0.0000" orienty="0.0000" orientz="1.0000">Nugget</unit>
+		<unit variation="136" posx="3.0452" posz="-11.9146" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
+		<unit variation="85" posx="-4.3988" posz="-11.9400" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
+		<unit variation="20" posx="3.2041" posz="-9.9329" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
+		<unit variation="89" posx="-4.7151" posz="-9.8640" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
+		<unit variation="20" posx="0.8399" posz="-8.2875" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
+		<unit variation="20" posx="5.5526" posz="-8.3198" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
+		<unit variation="20" posx="-6.6940" posz="-8.0928" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPathBlock3</unit>
 	</units>
 	<tiles>
 		<tilegroup type="Shoreline" subtype="carolinas\ground_shoreline1_car">
