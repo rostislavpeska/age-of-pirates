@@ -2516,30 +2516,14 @@ void main(void)
 	// ---- Sultan Palace, centred on each strait beach ---------------------
 	// Placed AFTER the other deco so nothing else lands on top of it.
 	// Same coordinates as the strait beaches themselves.
-	// Strait-beach deco. Was the Sultan Palace pair; that silhouette now
-	// belongs to the two victory palaces on the waterfront, so the beaches
-	// take the tower instead. _S is the 180 degree twin, terrain included.
-	int decoTowerN = rmCreateGrouping("deco tower n", "IS_Deco_Tower_N");
-	rmSetGroupingMinDistance(decoTowerN, 0.0);
-	rmSetGroupingMaxDistance(decoTowerN, 0.01);
-	int decoTowerS = rmCreateGrouping("deco tower s", "IS_Deco_Tower_S");
-	rmSetGroupingMinDistance(decoTowerS, 0.0);
-	rmSetGroupingMaxDistance(decoTowerS, 0.01);
-	// Capturable towers: zpNuggetIstanbulTowerCapturable (522) - the ruin in
-	// the grouping is euNuggetRuinedTower, and collecting its treasure spawns
-	// a deSPCTowerCapturable for whoever cleared it. Guardians are the pirate
-	// band: privateer + crabat + 2 haramija, 1345 HP against the 1470 of the
-	// vanilla battery-tower set.
-	// Ambient difficulty here is 519 (set at :2210); restored right after.
-	rmSetNuggetDifficulty(522, 522);
-	// INSTANCE placement, not plain: every nugget-bearing grouping on this map
-	// that actually spawns guardians is placed this way - trade harbours,
-	// palaces, forts, factories, menageries, water forts. The two plain ones
-	// carry guardian-less nuggets. Argument order differs from the plain call:
-	// (grouping, x, z, player).
-	int decoTowerNPlacement = rmPlaceGroupingInstanceAtLoc(decoTowerN, 0.335, 0.57, 0);
-	int decoTowerSPlacement = rmPlaceGroupingInstanceAtLoc(decoTowerS, 0.673, 0.428, 0);
-	rmSetNuggetDifficulty(519, 519);   // restore the ambient difficulty
+	int palaceN = rmCreateGrouping("deco sultan palace n", "IS_Deco_Sultan_Palace_N");
+	rmSetGroupingMinDistance(palaceN, 0.0);
+	rmSetGroupingMaxDistance(palaceN, 0.01);
+	int palaceS = rmCreateGrouping("deco sultan palace s", "IS_Deco_Sultan_Palace_S");
+	rmSetGroupingMinDistance(palaceS, 0.0);
+	rmSetGroupingMaxDistance(palaceS, 0.01);
+	rmPlaceGroupingAtLoc(palaceN, 0, 0.335, 0.57);
+	rmPlaceGroupingAtLoc(palaceS, 0, 0.673, 0.428);
 
 
 	rmSetStatusText("", 0.85);
@@ -2779,19 +2763,6 @@ void main(void)
 	int socketMinimapFlareDuration = 10;
 	vector waterFortLocN = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(fortMarkDefN, 0));
 	vector waterFortLocS = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(fortMarkDefS, 0));
-
-	// Palace flare positions. Placed AFTER the fort markers on purpose - new
-	// object defs ahead of them would move fortMarkN/S relative to
-	// instanceIdShiftIndividual.
-	int palaceMarkDefN = rmCreateObjectDef("palace marker north");
-	rmAddObjectDefItem(palaceMarkDefN, "zpCinematicRevealer", 1, 0.0);
-	rmPlaceObjectDefAtLoc(palaceMarkDefN, 0, nx1, nz1);
-	int palaceMarkDefS = rmCreateObjectDef("palace marker south");
-	rmAddObjectDefItem(palaceMarkDefS, "zpCinematicRevealer", 1, 0.0);
-	rmPlaceObjectDefAtLoc(palaceMarkDefS, 0, sx5, sz1);
-	vector palaceLocN = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(palaceMarkDefN, 0));
-	vector palaceLocS = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(palaceMarkDefS, 0));
-	rmEchoInfo("palace flare: N=" + palaceLocN + "  S=" + palaceLocS);
 
 
 
@@ -3740,7 +3711,7 @@ void main(void)
 
 	for (fc = 1; <= cNumberNonGaiaPlayers)
 	{
-	rmCreateTrigger("FortConvN_Plr" + fc);
+	rmCreateTrigger("FortConvN Plr" + fc);
 	}
 	for (fc = 1; <= cNumberNonGaiaPlayers)
 	{
@@ -3813,7 +3784,7 @@ void main(void)
 
 	for (fc = 1; <= cNumberNonGaiaPlayers)
 	{
-	rmCreateTrigger("FortConvS_Plr" + fc);
+	rmCreateTrigger("FortConvS Plr" + fc);
 	}
 	for (fc = 1; <= cNumberNonGaiaPlayers)
 	{
@@ -3937,13 +3908,6 @@ void main(void)
 	//  zpSPCCapturableFlagInvisibleNaval that the victory counter actually
 	//  counts.
 	// ========================================================================
-	// created BEFORE the unlock below, which references them by name -
-	// rmTriggerID cannot resolve a trigger that does not exist yet.
-	for (pcN = 1; <= cNumberNonGaiaPlayers)
-	{
-		rmCreateTrigger("PalaceConvN_Plr" + pcN);
-	}
-
 	rmCreateTrigger("PalaceNUnlock");
 	rmSwitchToTrigger(rmTriggerID("PalaceNUnlock"));
 	rmAddTriggerCondition("Nugget Is Collectable");
@@ -3964,6 +3928,10 @@ void main(void)
 
 	for (pcN = 1; <= cNumberNonGaiaPlayers)
 	{
+		rmCreateTrigger("PalaceConvN_Plr" + pcN);
+	}
+	for (pcN = 1; <= cNumberNonGaiaPlayers)
+	{
 		rmSwitchToTrigger(rmTriggerID("PalaceConvN_Plr" + pcN));
 		rmAddTriggerCondition("Units Owned");
 		rmSetTriggerConditionParam("SrcObject", ""+unit_palaceCossackN);
@@ -3977,36 +3945,13 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID", pcN);
 		for (pdN = 1; <= cNumberNonGaiaPlayers)
 		{
-			// NEVER fire ourselves - that re-runs this trigger, which re-runs the
-			// flare, forever. FortConvN_Plr guards the same way with (fd != fc).
-			if (pdN != pcN)
-			{
-				rmAddTriggerEffect("Fire Event");
-				rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceConvN_Plr" + pdN));
-			}
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceConvN_Plr" + pdN));
 		}
-		// Flare for EVERY player - taken by you or taken from you, all see it.
-		for (pgN = 1; <= cNumberNonGaiaPlayers)
-		{
-			rmAddTriggerEffect("Flare Minimap");
-			rmSetTriggerEffectParamInt("PlayerID", pgN, false);
-			rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-			rmSetTriggerEffectParam("Position", ""+xsVectorGetX(palaceLocN)+","+xsVectorGetY(palaceLocN)+","+xsVectorGetZ(palaceLocN), false);
-			rmSetTriggerEffectParam("Flash", "True", false);
-		}
-		rmAddTriggerEffect("Play Soundset");
-		rmSetTriggerEffectParam("Soundset", "SheepFound");
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
-	}
-
-	// created BEFORE the unlock below, which references them by name -
-	// rmTriggerID cannot resolve a trigger that does not exist yet.
-	for (pcS = 1; <= cNumberNonGaiaPlayers)
-	{
-		rmCreateTrigger("PalaceConvS_Plr" + pcS);
 	}
 
 	rmCreateTrigger("PalaceSUnlock");
@@ -4029,6 +3974,10 @@ void main(void)
 
 	for (pcS = 1; <= cNumberNonGaiaPlayers)
 	{
+		rmCreateTrigger("PalaceConvS_Plr" + pcS);
+	}
+	for (pcS = 1; <= cNumberNonGaiaPlayers)
+	{
 		rmSwitchToTrigger(rmTriggerID("PalaceConvS_Plr" + pcS));
 		rmAddTriggerCondition("Units Owned");
 		rmSetTriggerConditionParam("SrcObject", ""+unit_palaceCossackS);
@@ -4042,25 +3991,9 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID", pcS);
 		for (pdS = 1; <= cNumberNonGaiaPlayers)
 		{
-			// NEVER fire ourselves - that re-runs this trigger, which re-runs the
-			// flare, forever. FortConvN_Plr guards the same way with (fd != fc).
-			if (pdS != pcS)
-			{
-				rmAddTriggerEffect("Fire Event");
-				rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceConvS_Plr" + pdS));
-			}
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceConvS_Plr" + pdS));
 		}
-		// Flare for EVERY player - taken by you or taken from you, all see it.
-		for (pgS = 1; <= cNumberNonGaiaPlayers)
-		{
-			rmAddTriggerEffect("Flare Minimap");
-			rmSetTriggerEffectParamInt("PlayerID", pgS, false);
-			rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-			rmSetTriggerEffectParam("Position", ""+xsVectorGetX(palaceLocS)+","+xsVectorGetY(palaceLocS)+","+xsVectorGetZ(palaceLocS), false);
-			rmSetTriggerEffectParam("Flash", "True", false);
-		}
-		rmAddTriggerEffect("Play Soundset");
-		rmSetTriggerEffectParam("Soundset", "SheepFound");
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);

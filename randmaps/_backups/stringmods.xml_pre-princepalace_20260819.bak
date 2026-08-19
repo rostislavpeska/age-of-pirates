@@ -3336,9 +3336,9 @@
       <string _locid="303337">City of Istanbul</string>
       <string _locid="303338">ZP Capturable Flag Invisible Naval</string>
       <string _locid="303339">Struggle of the Bosporus</string>
-      <string _locid="303340">Both teams fight for the straits. Seize all four victory objects - the Black Sea Fort, the Mediterranean Fort and the two Prince Palaces - and hold every one of them to win.</string>
-      <string _locid="303341">Take control of all four victory objects - the two naval forts and the two Prince Palaces - and hold them.</string>
-      <string _locid="303342">Sink a fort's guardian galleys, or cut down a Palace garrison, then claim the treasure to unlock it. Forts are taken by bringing warships alongside with no enemy vessels near; a Palace goes to whoever holds its grounds. Holding all four starts the victory timer.</string>
+      <string _locid="303340">Both teams fight for the straits. Seize the two naval forts that guard them - the Black Sea Fort and the Mediterranean Fort - and hold both to win.</string>
+      <string _locid="303341">Take control over both naval forts - the Black Sea Fort and the Mediterranean Fort - and hold them.</string>
+      <string _locid="303342">Sink a fort's guardian galleys and claim its treasure to unlock it, then bring warships alongside with no enemy vessels nearby. Holding both forts starts the victory timer.</string>
       <string _locid="303343">Automatic Workshop \nSet the Dry Dock to build Privateers.</string>
       <string _locid="303344">The Dry Dock is building Privateers.</string>
       <string _locid="303345">Automatic Workshop \nSet the Dry Dock to build Levantine Galleys.</string>
@@ -3363,10 +3363,6 @@
       <string _locid="303365">Units cannot currently deploy from Ferry Harbours.</string>
       <string _locid="303366">Ferry Crossing</string>
       <string _locid="303367">Ferry all garrisoned units across to another Ferry Harbour.</string>
-      <string _locid="303368">Prince Palace</string>
-      <string _locid="303369">ZP Prince Palace</string>
-      <string _locid="303370">Defeat the Palace guards and claim its treasure to unlock it, then hold the grounds with no enemy units nearby. Palaces and sea forts together start the victory timer.</string>
-      <string _locid="303371">Struggle of the Bosporus Victory in</string>
       
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

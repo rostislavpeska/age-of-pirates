@@ -1898,22 +1898,18 @@ void main(void)
 	// column - next to the gate, reachable by city AND countryside players.
 	// The other native keeps its waterfront cell, so each island still shows
 	// one native on the canal row with the park between.
-	// Palace guardians: zpNuggetSultanPalace (521) - 8 x deGuardianJanissary,
-	// every one of them STANDING. Cloned from zpNuggetFactoryIstanbul (516) but
-	// with two more guards and none of its seated pair - that nugget gives its
-	// first two guardians idleanim/exitanim/attachdummy on bone_nuggetA/B, which
-	// sits them down. A victory objective wants a garrison on its feet.
-	// Ambient difficulty here is 517 (set at :1123) and is restored below, so
-	// nothing else placed before the 520 at the fort block is disturbed.
-	rmSetNuggetDifficulty(521, 521);
-	// INSTANCE placement: the only way to query the ids back out.
-	// Note the argument order differs from rmPlaceGroupingAtLoc.
-	int palacePlacementN = rmPlaceGroupingInstanceAtLoc(cityPalaceN, nx1, nz1, 0);
+	// Palace guardians: zpNuggetFactoryIstanbul (516) - 6 x deGuardianJanissary.
+	// Classic Guardian-class units, not the 11 native musketeers Paris uses:
+	// Istanbul wants a fight you plan for, not a street brawl. Ambient
+	// difficulty here is 517 (set at :1123) and is restored below, so nothing
+	// else placed before the 520 at the fort block is disturbed.
+	rmSetNuggetDifficulty(516, 516);
+	rmPlaceGroupingAtLoc(cityPalaceN, 0, nx1, nz1);   // wall side, north
 	rmPlaceGroupingAtLoc(nEast,       0, nx5, nz1);
 	rmPlaceGroupingAtLoc(nWest,       0, nx1, nz3);   // displaced inland
 
 	rmPlaceGroupingAtLoc(sWest,       0, sx1, sz1);
-	int palacePlacementS = rmPlaceGroupingInstanceAtLoc(cityPalaceS, sx5, sz1, 0);
+	rmPlaceGroupingAtLoc(cityPalaceS, 0, sx5, sz1);   // wall side, south
 	rmPlaceGroupingAtLoc(sEast,       0, sx5, sz3);   // displaced inland
 	rmSetNuggetDifficulty(517, 517);   // restore the ambient difficulty
 
@@ -2516,30 +2512,14 @@ void main(void)
 	// ---- Sultan Palace, centred on each strait beach ---------------------
 	// Placed AFTER the other deco so nothing else lands on top of it.
 	// Same coordinates as the strait beaches themselves.
-	// Strait-beach deco. Was the Sultan Palace pair; that silhouette now
-	// belongs to the two victory palaces on the waterfront, so the beaches
-	// take the tower instead. _S is the 180 degree twin, terrain included.
-	int decoTowerN = rmCreateGrouping("deco tower n", "IS_Deco_Tower_N");
-	rmSetGroupingMinDistance(decoTowerN, 0.0);
-	rmSetGroupingMaxDistance(decoTowerN, 0.01);
-	int decoTowerS = rmCreateGrouping("deco tower s", "IS_Deco_Tower_S");
-	rmSetGroupingMinDistance(decoTowerS, 0.0);
-	rmSetGroupingMaxDistance(decoTowerS, 0.01);
-	// Capturable towers: zpNuggetIstanbulTowerCapturable (522) - the ruin in
-	// the grouping is euNuggetRuinedTower, and collecting its treasure spawns
-	// a deSPCTowerCapturable for whoever cleared it. Guardians are the pirate
-	// band: privateer + crabat + 2 haramija, 1345 HP against the 1470 of the
-	// vanilla battery-tower set.
-	// Ambient difficulty here is 519 (set at :2210); restored right after.
-	rmSetNuggetDifficulty(522, 522);
-	// INSTANCE placement, not plain: every nugget-bearing grouping on this map
-	// that actually spawns guardians is placed this way - trade harbours,
-	// palaces, forts, factories, menageries, water forts. The two plain ones
-	// carry guardian-less nuggets. Argument order differs from the plain call:
-	// (grouping, x, z, player).
-	int decoTowerNPlacement = rmPlaceGroupingInstanceAtLoc(decoTowerN, 0.335, 0.57, 0);
-	int decoTowerSPlacement = rmPlaceGroupingInstanceAtLoc(decoTowerS, 0.673, 0.428, 0);
-	rmSetNuggetDifficulty(519, 519);   // restore the ambient difficulty
+	int palaceN = rmCreateGrouping("deco sultan palace n", "IS_Deco_Sultan_Palace_N");
+	rmSetGroupingMinDistance(palaceN, 0.0);
+	rmSetGroupingMaxDistance(palaceN, 0.01);
+	int palaceS = rmCreateGrouping("deco sultan palace s", "IS_Deco_Sultan_Palace_S");
+	rmSetGroupingMinDistance(palaceS, 0.0);
+	rmSetGroupingMaxDistance(palaceS, 0.01);
+	rmPlaceGroupingAtLoc(palaceN, 0, 0.335, 0.57);
+	rmPlaceGroupingAtLoc(palaceS, 0, 0.673, 0.428);
 
 
 	rmSetStatusText("", 0.85);
@@ -2780,19 +2760,6 @@ void main(void)
 	vector waterFortLocN = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(fortMarkDefN, 0));
 	vector waterFortLocS = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(fortMarkDefS, 0));
 
-	// Palace flare positions. Placed AFTER the fort markers on purpose - new
-	// object defs ahead of them would move fortMarkN/S relative to
-	// instanceIdShiftIndividual.
-	int palaceMarkDefN = rmCreateObjectDef("palace marker north");
-	rmAddObjectDefItem(palaceMarkDefN, "zpCinematicRevealer", 1, 0.0);
-	rmPlaceObjectDefAtLoc(palaceMarkDefN, 0, nx1, nz1);
-	int palaceMarkDefS = rmCreateObjectDef("palace marker south");
-	rmAddObjectDefItem(palaceMarkDefS, "zpCinematicRevealer", 1, 0.0);
-	rmPlaceObjectDefAtLoc(palaceMarkDefS, 0, sx5, sz1);
-	vector palaceLocN = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(palaceMarkDefN, 0));
-	vector palaceLocS = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(palaceMarkDefS, 0));
-	rmEchoInfo("palace flare: N=" + palaceLocN + "  S=" + palaceLocS);
-
 
 
 	int fishSolo = rmCreateObjectDef("sea fish solo");
@@ -2956,20 +2923,6 @@ void main(void)
 	int fortMarkS = rmGetUnitPlaced(fortMarkDefS, 0) + instanceIdShiftIndividual;
 	int unit_waterFortNugN = rmGetGroupingInstanceUnitByType(waterFortNPlacement, "zpNuggetInvisibleWater") + instanceIdShift;
 	int unit_waterFortNugS = rmGetGroupingInstanceUnitByType(waterFortSPlacement, "zpNuggetInvisibleWater") + instanceIdShift;
-
-	// ---- PALACE IDS: nugget, converter flag, victory flag, building ------
-	// Same +instanceIdShift law as the forts above.
-	int unit_palaceNugN     = rmGetGroupingInstanceUnitByType(palacePlacementN, "zpNuggetInvisible") + instanceIdShift;
-	int unit_palaceCossackN = rmGetGroupingInstanceUnitByType(palacePlacementN, "deSPCCapturableFlagCossack") + instanceIdShift;
-	int unit_palaceFlagN    = rmGetGroupingInstanceUnitByType(palacePlacementN, "zpSPCCapturableFlagInvisibleNaval") + instanceIdShift;
-	int unit_palaceBldN     = rmGetGroupingInstanceUnitByType(palacePlacementN, "zpSPCPrincePalace") + instanceIdShift;
-
-	int unit_palaceNugS     = rmGetGroupingInstanceUnitByType(palacePlacementS, "zpNuggetInvisible") + instanceIdShift;
-	int unit_palaceCossackS = rmGetGroupingInstanceUnitByType(palacePlacementS, "deSPCCapturableFlagCossack") + instanceIdShift;
-	int unit_palaceFlagS    = rmGetGroupingInstanceUnitByType(palacePlacementS, "zpSPCCapturableFlagInvisibleNaval") + instanceIdShift;
-	int unit_palaceBldS     = rmGetGroupingInstanceUnitByType(palacePlacementS, "zpSPCPrincePalace") + instanceIdShift;
-	rmEchoInfo("palace ids: N flag=" + unit_palaceCossackN + " bld=" + unit_palaceBldN
-		+ "  S flag=" + unit_palaceCossackS + " bld=" + unit_palaceBldS);
 	rmEchoInfo("water fort treasures: N="+unit_waterFortNugN+" S="+unit_waterFortNugS);
 
 	// -- grouping-adjacent: pirate sockets --
@@ -3359,15 +3312,6 @@ void main(void)
 	rmSetTriggerEffectParam("SrcObject", ""+unit_harbourSocketN);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
 	rmSetTriggerEffectParam("Suspend", "True");
-	// The two palace flags ride along in the same startup suspension.
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", ""+unit_palaceCossackN);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", ""+unit_palaceCossackS);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_harbourSocketS);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
@@ -3740,7 +3684,7 @@ void main(void)
 
 	for (fc = 1; <= cNumberNonGaiaPlayers)
 	{
-	rmCreateTrigger("FortConvN_Plr" + fc);
+	rmCreateTrigger("FortConvN Plr" + fc);
 	}
 	for (fc = 1; <= cNumberNonGaiaPlayers)
 	{
@@ -3813,7 +3757,7 @@ void main(void)
 
 	for (fc = 1; <= cNumberNonGaiaPlayers)
 	{
-	rmCreateTrigger("FortConvS_Plr" + fc);
+	rmCreateTrigger("FortConvS Plr" + fc);
 	}
 	for (fc = 1; <= cNumberNonGaiaPlayers)
 	{
@@ -3925,149 +3869,6 @@ void main(void)
 	rmSetTriggerLoop(false);
 
 	// ========================================================================
-	//  PALACE UNLOCK + CONVERSION  -  the land half of the victory
-	// ------------------------------------------------------------------------
-	//  Same shape as WATER FORT UNLOCK above, and deliberately NOT Paris:
-	//  Paris releases its flags by counting guardians within 25 m, this map
-	//  releases on "Nugget Is Collectable" - the treasure is the gate.
-	//
-	//  deSPCCapturableFlagCossack carries socketcapture.tactics (AutoConvert,
-	//  12 m, persistent), so once the suspension lifts it changes hands on its
-	//  own. Everything else follows it by trigger: the palace building and the
-	//  zpSPCCapturableFlagInvisibleNaval that the victory counter actually
-	//  counts.
-	// ========================================================================
-	// created BEFORE the unlock below, which references them by name -
-	// rmTriggerID cannot resolve a trigger that does not exist yet.
-	for (pcN = 1; <= cNumberNonGaiaPlayers)
-	{
-		rmCreateTrigger("PalaceConvN_Plr" + pcN);
-	}
-
-	rmCreateTrigger("PalaceNUnlock");
-	rmSwitchToTrigger(rmTriggerID("PalaceNUnlock"));
-	rmAddTriggerCondition("Nugget Is Collectable");
-	rmSetTriggerConditionParam("NuggetObject", ""+unit_palaceNugN);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", ""+unit_palaceCossackN, false);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-	rmSetTriggerEffectParam("Suspend", "False", false);
-	for (puN = 1; <= cNumberNonGaiaPlayers)
-	{
-		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceConvN_Plr" + puN));
-	}
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	for (pcN = 1; <= cNumberNonGaiaPlayers)
-	{
-		rmSwitchToTrigger(rmTriggerID("PalaceConvN_Plr" + pcN));
-		rmAddTriggerCondition("Units Owned");
-		rmSetTriggerConditionParam("SrcObject", ""+unit_palaceCossackN);
-		rmSetTriggerConditionParamInt("Player", pcN);
-		// the building and the COUNTED flag follow the converter flag
-		rmAddTriggerEffect("Convert");
-		rmSetTriggerEffectParam("SrcObject", ""+unit_palaceBldN);
-		rmSetTriggerEffectParamInt("PlayerID", pcN);
-		rmAddTriggerEffect("Convert");
-		rmSetTriggerEffectParam("SrcObject", ""+unit_palaceFlagN);
-		rmSetTriggerEffectParamInt("PlayerID", pcN);
-		for (pdN = 1; <= cNumberNonGaiaPlayers)
-		{
-			// NEVER fire ourselves - that re-runs this trigger, which re-runs the
-			// flare, forever. FortConvN_Plr guards the same way with (fd != fc).
-			if (pdN != pcN)
-			{
-				rmAddTriggerEffect("Fire Event");
-				rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceConvN_Plr" + pdN));
-			}
-		}
-		// Flare for EVERY player - taken by you or taken from you, all see it.
-		for (pgN = 1; <= cNumberNonGaiaPlayers)
-		{
-			rmAddTriggerEffect("Flare Minimap");
-			rmSetTriggerEffectParamInt("PlayerID", pgN, false);
-			rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-			rmSetTriggerEffectParam("Position", ""+xsVectorGetX(palaceLocN)+","+xsVectorGetY(palaceLocN)+","+xsVectorGetZ(palaceLocN), false);
-			rmSetTriggerEffectParam("Flash", "True", false);
-		}
-		rmAddTriggerEffect("Play Soundset");
-		rmSetTriggerEffectParam("Soundset", "SheepFound");
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(false);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
-	}
-
-	// created BEFORE the unlock below, which references them by name -
-	// rmTriggerID cannot resolve a trigger that does not exist yet.
-	for (pcS = 1; <= cNumberNonGaiaPlayers)
-	{
-		rmCreateTrigger("PalaceConvS_Plr" + pcS);
-	}
-
-	rmCreateTrigger("PalaceSUnlock");
-	rmSwitchToTrigger(rmTriggerID("PalaceSUnlock"));
-	rmAddTriggerCondition("Nugget Is Collectable");
-	rmSetTriggerConditionParam("NuggetObject", ""+unit_palaceNugS);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", ""+unit_palaceCossackS, false);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-	rmSetTriggerEffectParam("Suspend", "False", false);
-	for (puS = 1; <= cNumberNonGaiaPlayers)
-	{
-		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceConvS_Plr" + puS));
-	}
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	for (pcS = 1; <= cNumberNonGaiaPlayers)
-	{
-		rmSwitchToTrigger(rmTriggerID("PalaceConvS_Plr" + pcS));
-		rmAddTriggerCondition("Units Owned");
-		rmSetTriggerConditionParam("SrcObject", ""+unit_palaceCossackS);
-		rmSetTriggerConditionParamInt("Player", pcS);
-		// the building and the COUNTED flag follow the converter flag
-		rmAddTriggerEffect("Convert");
-		rmSetTriggerEffectParam("SrcObject", ""+unit_palaceBldS);
-		rmSetTriggerEffectParamInt("PlayerID", pcS);
-		rmAddTriggerEffect("Convert");
-		rmSetTriggerEffectParam("SrcObject", ""+unit_palaceFlagS);
-		rmSetTriggerEffectParamInt("PlayerID", pcS);
-		for (pdS = 1; <= cNumberNonGaiaPlayers)
-		{
-			// NEVER fire ourselves - that re-runs this trigger, which re-runs the
-			// flare, forever. FortConvN_Plr guards the same way with (fd != fc).
-			if (pdS != pcS)
-			{
-				rmAddTriggerEffect("Fire Event");
-				rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceConvS_Plr" + pdS));
-			}
-		}
-		// Flare for EVERY player - taken by you or taken from you, all see it.
-		for (pgS = 1; <= cNumberNonGaiaPlayers)
-		{
-			rmAddTriggerEffect("Flare Minimap");
-			rmSetTriggerEffectParamInt("PlayerID", pgS, false);
-			rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-			rmSetTriggerEffectParam("Position", ""+xsVectorGetX(palaceLocS)+","+xsVectorGetY(palaceLocS)+","+xsVectorGetZ(palaceLocS), false);
-			rmSetTriggerEffectParam("Flash", "True", false);
-		}
-		rmAddTriggerEffect("Play Soundset");
-		rmSetTriggerEffectParam("Soundset", "SheepFound");
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(false);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
-	}
-
-	// ========================================================================
 	//  KOTH VICTORY  -  hold BOTH water forts for 10 minutes
 	// ------------------------------------------------------------------------
 	//  zp_z_zparis.xs 2298-2440 shape, unchanged. Paris counts ONE invisible
@@ -4077,7 +3878,7 @@ void main(void)
 	//  The counter's Event param is what fires TeamVictory - not a Fire Event.
 	//  Counter text reuses {303290} "King of the Sea Victory in".
 	// ========================================================================
-	int victoryCountDown = 240;
+	int victoryCountDown = 600;
 	int vt = 0;
 	for (vt = 1; < cNumberTeams+1)
 	{
@@ -4100,12 +3901,12 @@ void main(void)
 		rmSetTriggerConditionParamInt("TeamID", vt);
 		rmSetTriggerConditionParam("Protounit", "zpSPCCapturableFlagInvisibleNaval");
 		rmSetTriggerConditionParam("Op", ">=");
-		rmSetTriggerConditionParamInt("Count", 4);
+		rmSetTriggerConditionParamInt("Count", 2);
 		rmAddTriggerEffect("Counter:Add Timer");
 		rmSetTriggerEffectParam("Name", "VictoryCounter"+vt);
 		rmSetTriggerEffectParamInt("Start", victoryCountDown);
 		rmSetTriggerEffectParamInt("Stop", 0);
-		rmSetTriggerEffectParam("Msg", "{303371}");
+		rmSetTriggerEffectParam("Msg", "{303290}");
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+vt));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF"+vt));
@@ -4119,7 +3920,7 @@ void main(void)
 		rmSetTriggerConditionParamInt("TeamID", vt);
 		rmSetTriggerConditionParam("Protounit", "zpSPCCapturableFlagInvisibleNaval");
 		rmSetTriggerConditionParam("Op", "<");
-		rmSetTriggerConditionParamInt("Count", 4);
+		rmSetTriggerConditionParamInt("Count", 2);
 		rmAddTriggerEffect("Counter Stop");
 		rmSetTriggerEffectParam("Name", "VictoryCounter"+vt);
 		rmAddTriggerEffect("Fire Event");

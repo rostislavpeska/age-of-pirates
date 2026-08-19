@@ -2428,21 +2428,6 @@
       <maptype>piratehistoricalmap</maptype>
     </nugget>
     <nugget>
-      <name>zpNuggetIstanbulTowerCapturable</name>
-      <type>SpawnUnit</type>
-      <nuggetunit>euNuggetRuinedTower</nuggetunit>
-      <rolloverstringid>102270</rolloverstringid>
-      <applystringid>102271</applystringid>
-      <unittype>deSPCTowerCapturable</unittype>
-      <amount>1</amount>
-      <difficulty>522</difficulty>
-      <guardian>Pirate</guardian>
-      <guardian>deGuardianCrabat</guardian>
-      <guardian>deGuardianHaramija</guardian>
-      <guardian>deGuardianHaramija</guardian>
-      <maptype>piratehistoricalmap</maptype>
-    </nugget>
-    <nugget>
       <name>zpNuggetKingOfBohemia</name>
       <nuggetunit>zpNuggetInvisible</nuggetunit>
       <rolloverstringid>29084</rolloverstringid>

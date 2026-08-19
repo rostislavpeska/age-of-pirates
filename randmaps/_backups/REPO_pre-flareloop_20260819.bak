@@ -3977,13 +3977,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID", pcN);
 		for (pdN = 1; <= cNumberNonGaiaPlayers)
 		{
-			// NEVER fire ourselves - that re-runs this trigger, which re-runs the
-			// flare, forever. FortConvN_Plr guards the same way with (fd != fc).
-			if (pdN != pcN)
-			{
-				rmAddTriggerEffect("Fire Event");
-				rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceConvN_Plr" + pdN));
-			}
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceConvN_Plr" + pdN));
 		}
 		// Flare for EVERY player - taken by you or taken from you, all see it.
 		for (pgN = 1; <= cNumberNonGaiaPlayers)
@@ -4042,13 +4037,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID", pcS);
 		for (pdS = 1; <= cNumberNonGaiaPlayers)
 		{
-			// NEVER fire ourselves - that re-runs this trigger, which re-runs the
-			// flare, forever. FortConvN_Plr guards the same way with (fd != fc).
-			if (pdS != pcS)
-			{
-				rmAddTriggerEffect("Fire Event");
-				rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceConvS_Plr" + pdS));
-			}
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceConvS_Plr" + pdS));
 		}
 		// Flare for EVERY player - taken by you or taken from you, all see it.
 		for (pgS = 1; <= cNumberNonGaiaPlayers)

@@ -2516,30 +2516,14 @@ void main(void)
 	// ---- Sultan Palace, centred on each strait beach ---------------------
 	// Placed AFTER the other deco so nothing else lands on top of it.
 	// Same coordinates as the strait beaches themselves.
-	// Strait-beach deco. Was the Sultan Palace pair; that silhouette now
-	// belongs to the two victory palaces on the waterfront, so the beaches
-	// take the tower instead. _S is the 180 degree twin, terrain included.
-	int decoTowerN = rmCreateGrouping("deco tower n", "IS_Deco_Tower_N");
-	rmSetGroupingMinDistance(decoTowerN, 0.0);
-	rmSetGroupingMaxDistance(decoTowerN, 0.01);
-	int decoTowerS = rmCreateGrouping("deco tower s", "IS_Deco_Tower_S");
-	rmSetGroupingMinDistance(decoTowerS, 0.0);
-	rmSetGroupingMaxDistance(decoTowerS, 0.01);
-	// Capturable towers: zpNuggetIstanbulTowerCapturable (522) - the ruin in
-	// the grouping is euNuggetRuinedTower, and collecting its treasure spawns
-	// a deSPCTowerCapturable for whoever cleared it. Guardians are the pirate
-	// band: privateer + crabat + 2 haramija, 1345 HP against the 1470 of the
-	// vanilla battery-tower set.
-	// Ambient difficulty here is 519 (set at :2210); restored right after.
-	rmSetNuggetDifficulty(522, 522);
-	// INSTANCE placement, not plain: every nugget-bearing grouping on this map
-	// that actually spawns guardians is placed this way - trade harbours,
-	// palaces, forts, factories, menageries, water forts. The two plain ones
-	// carry guardian-less nuggets. Argument order differs from the plain call:
-	// (grouping, x, z, player).
-	int decoTowerNPlacement = rmPlaceGroupingInstanceAtLoc(decoTowerN, 0.335, 0.57, 0);
-	int decoTowerSPlacement = rmPlaceGroupingInstanceAtLoc(decoTowerS, 0.673, 0.428, 0);
-	rmSetNuggetDifficulty(519, 519);   // restore the ambient difficulty
+	int palaceN = rmCreateGrouping("deco sultan palace n", "IS_Deco_Sultan_Palace_N");
+	rmSetGroupingMinDistance(palaceN, 0.0);
+	rmSetGroupingMaxDistance(palaceN, 0.01);
+	int palaceS = rmCreateGrouping("deco sultan palace s", "IS_Deco_Sultan_Palace_S");
+	rmSetGroupingMinDistance(palaceS, 0.0);
+	rmSetGroupingMaxDistance(palaceS, 0.01);
+	rmPlaceGroupingAtLoc(palaceN, 0, 0.335, 0.57);
+	rmPlaceGroupingAtLoc(palaceS, 0, 0.673, 0.428);
 
 
 	rmSetStatusText("", 0.85);
@@ -3977,13 +3961,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID", pcN);
 		for (pdN = 1; <= cNumberNonGaiaPlayers)
 		{
-			// NEVER fire ourselves - that re-runs this trigger, which re-runs the
-			// flare, forever. FortConvN_Plr guards the same way with (fd != fc).
-			if (pdN != pcN)
-			{
-				rmAddTriggerEffect("Fire Event");
-				rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceConvN_Plr" + pdN));
-			}
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceConvN_Plr" + pdN));
 		}
 		// Flare for EVERY player - taken by you or taken from you, all see it.
 		for (pgN = 1; <= cNumberNonGaiaPlayers)
@@ -4042,13 +4021,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID", pcS);
 		for (pdS = 1; <= cNumberNonGaiaPlayers)
 		{
-			// NEVER fire ourselves - that re-runs this trigger, which re-runs the
-			// flare, forever. FortConvN_Plr guards the same way with (fd != fc).
-			if (pdS != pcS)
-			{
-				rmAddTriggerEffect("Fire Event");
-				rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceConvS_Plr" + pdS));
-			}
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceConvS_Plr" + pdS));
 		}
 		// Flare for EVERY player - taken by you or taken from you, all see it.
 		for (pgS = 1; <= cNumberNonGaiaPlayers)

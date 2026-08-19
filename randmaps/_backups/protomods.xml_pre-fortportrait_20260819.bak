@@ -48100,7 +48100,7 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\fort\fort_icon.png</icon>
     <minimapicon>ui\minimap\highlighted item</minimapicon>
-    <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
+    <portraiticon>resources\art\buildings\waterfort_portrait.png</portraiticon>
     <rollovertextid>302232</rollovertextid>
     <shortrollovertextid>302233</shortrollovertextid>
     <initialhitpoints>6500.0000</initialhitpoints>
@@ -48170,7 +48170,7 @@
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\fort\fort_icon.png</icon>
     <minimapicon>ui\minimap\highlighted item</minimapicon>
-    <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
+    <portraiticon>resources\art\buildings\waterfort_portrait.png</portraiticon>
     <rollovertextid>302232</rollovertextid>
     <shortrollovertextid>302233</shortrollovertextid>
     <initialhitpoints>6500.0000</initialhitpoints>
