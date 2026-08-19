@@ -112,8 +112,6 @@ extern bool gPirateBlockWalls = false;       // Used to prevent wall building on
 extern bool gIsArchipelagoMap = false;       // Used for multi-island maps like archipelago
 extern bool gIsAtollMap = false;             // A subset of archipelago maps containing more, smaller islands
 extern bool gIsNavalKOTH = false;            // Maps with a naval KOTH fort on water
-extern bool gIsIstanbulKOTH = false;         // Istanbul: TWO naval forts, both must be held
-extern int  gIstanbulKothTarget = -1;        // the fort we are currently going for
 
 extern int gIslandAttackPlan = -1;              // Used on archipelago maps to tell ships to attack islands
 extern int forwardAttackWave = -1;
