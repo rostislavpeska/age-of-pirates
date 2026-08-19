@@ -6791,7 +6791,14 @@ minInterval 30
 // only cAreaTypeWater, so a cliffed shore can return an impassable tile and the
 // eject then fails. This prints the verdict as a word so nothing needs decoding.
 //
-// Channel is aiChat, not aiEcho: aiEcho/AI logging is broken in DE.
+// Channel is aiEcho. An earlier session recorded "aiEcho/AI logging is broken
+// in DE" and moved everything to aiChat - that was WRONG. Since Update 61213
+// aiEchoes are not GENERATED unless showAiEchoes is in user.cfg (profile
+// Startup folder, not the Steam install). With showAiEchoes +
+// generateAIEchoesOutput every echo is written to
+//   Games\Age of Empires 3 DE\Logs\Age3DEAIOutputPlayer<N>.txt
+// and can be read off disk. aiChat only reached the chat window, where it
+// scrolled away - which is why five dock fixes all looked like "no change".
 // Reports 8 times then switches itself off, so it cannot flood the chat.
 //==============================================================================
 int gCoastProbeCount = 0;
@@ -6818,7 +6825,7 @@ minInterval 20
    vector p = getCoastalPoint(baseLoc, enemyLoc, 1, false);
    if (p == cInvalidVector)
    {
-      aiChat(1, "COAST p" + cMyID + " #" + gCoastProbeCount + " -> cInvalidVector (no point found)");
+      aiEcho("COAST p" + cMyID + " #" + gCoastProbeCount + " -> cInvalidVector (no point found)");
       return;
    }
 
@@ -6854,7 +6861,7 @@ minInterval 20
       verdict = "NO-AREA-unknown";
    }
 
-   aiChat(1, "COAST p" + cMyID + " #" + gCoastProbeCount
+   aiEcho("COAST p" + cMyID + " #" + gCoastProbeCount
              + " a=" + areaID + " g=" + pGroup + " mg=" + myGroup
              + " pass=" + pPass + " t=" + areaType + " " + verdict);
 
@@ -6863,7 +6870,7 @@ minInterval 20
    vector s = selectPickupPoint(baseLoc, enemyLoc, 1, false);
    if (s == cInvalidVector)
    {
-      aiChat(1, "PICKUP p" + cMyID + " #" + gCoastProbeCount + " -> cInvalidVector");
+      aiEcho("PICKUP p" + cMyID + " #" + gCoastProbeCount + " -> cInvalidVector");
       return;
    }
    int sArea = kbAreaGetIDByPosition(s);
@@ -6887,7 +6894,7 @@ minInterval 20
    {
       sVerdict = "NO-AREA-unknown";
    }
-   aiChat(1, "PICKUP p" + cMyID + " #" + gCoastProbeCount
+   aiEcho("PICKUP p" + cMyID + " #" + gCoastProbeCount
              + " a=" + sArea + " g=" + sGroup + " mg=" + myGroup
              + " pass=" + sPass + " t=" + sType + " " + sVerdict);
 }
@@ -6988,7 +6995,7 @@ minInterval 8
 
    if (shipsHeld < 1)
    {
-      aiChat(1, "GUARD p" + cMyID + " plan EMPTY - no free ship below pri 90");
+      aiEcho("GUARD p" + cMyID + " plan EMPTY - no free ship below pri 90");
       return;
    }
 
@@ -7069,11 +7076,11 @@ minInterval 8
    {
       if (guardsLeft == true)
       {
-         aiChat(1, "GUARD p" + cMyID + " " + tasked + " ships onto guardians");
+         aiEcho("GUARD p" + cMyID + " " + tasked + " ships onto guardians");
       }
       else
       {
-         aiChat(1, "HOLD p" + cMyID + " " + tasked + " ships onto fort (capture needs <=25)");
+         aiEcho("HOLD p" + cMyID + " " + tasked + " ships onto fort (capture needs <=25)");
       }
    }
 }
@@ -7166,7 +7173,7 @@ minInterval 10
 
    if (held > 0)
    {
-      aiChat(1, "GARRISON p" + cMyID + " " + held + " ships holding our fort");
+      aiEcho("GARRISON p" + cMyID + " " + held + " ships holding our fort");
    }
 }
 
@@ -7282,7 +7289,7 @@ minInterval 15
 
    if (sent > 0)
    {
-      aiChat(1, "RAID p" + cMyID + " " + sent + "/" + strongCount
+      aiEcho("RAID p" + cMyID + " " + sent + "/" + strongCount
                 + " galleon-class through the Bosporus at enemy fort");
    }
 }
@@ -7417,11 +7424,11 @@ minInterval 5
    vector spot = kbBuildingPlacementGetResultPosition(gIstanbulDockBP);
    if (spot == cInvalidVector)
    {
-      aiChat(1, "DOCKBP p" + cMyID + " engine offers NOTHING at floor 0");
+      aiEcho("DOCKBP p" + cMyID + " engine offers NOTHING at floor 0");
       return;   // leave the steering above in place
    }
 
-   aiChat(1, "DOCKBP p" + cMyID + " spot x=" + xsVectorGetX(spot)
+   aiEcho("DOCKBP p" + cMyID + " spot x=" + xsVectorGetX(spot)
              + " z=" + xsVectorGetZ(spot)
              + " value=" + kbBuildingPlacementGetResultValue(gIstanbulDockBP));
 
@@ -7535,7 +7542,7 @@ minInterval 15
    // HEARTBEAT. Every earlier chat line was inside a branch that never ran in
    // the failing state, which is why three fixes all looked like "no change" -
    // there was nothing to see. This prints unconditionally, before any gate.
-   aiChat(1, "DOCKMGR p" + cMyID + " age " + kbGetAge() + " have " + have
+   aiEcho("DOCKMGR p" + cMyID + " age " + kbGetAge() + " have " + have
              + " want " + want + " plan " + plan);
 
    // the one gate worth keeping from stock: no docks before the Age 2 push
@@ -7571,12 +7578,12 @@ minInterval 15
       {
          if (placeAt == cInvalidVector)
          {
-            aiChat(1, "DOCK p" + cMyID + " plan " + plan + " placement " + placeID
+            aiEcho("DOCK p" + cMyID + " plan " + plan + " placement " + placeID
                       + " NO LEGAL SPOT - have " + have + " want " + want);
          }
          else
          {
-            aiChat(1, "DOCK p" + cMyID + " plan " + plan + " engine picked x="
+            aiEcho("DOCK p" + cMyID + " plan " + plan + " engine picked x="
                       + xsVectorGetX(placeAt) + " z=" + xsVectorGetZ(placeAt)
                       + " - have " + have + " want " + want);
          }
@@ -7605,7 +7612,7 @@ minInterval 15
    aiPlanSetDesiredResourcePriority(newPlan, 60);
    gIstanbulDockPlan = newPlan;
    gIstanbulDockPlanSince = xsGetTime();
-   aiChat(1, "DOCK p" + cMyID + " age " + kbGetAge() + " want " + want + " have " + have
+   aiEcho("DOCK p" + cMyID + " age " + kbGetAge() + " want " + want + " have " + have
              + " -> plan " + newPlan);
 }
 
@@ -7649,16 +7656,16 @@ minInterval 20
    int baseGroup  = kbAreaGroupGetIDByPosition(baseLoc);
    int waterGroup = kbAreaGroupGetIDByPosition(waterLoc);
 
-   aiChat(1, "MAP p" + cMyID + " areas=" + kbAreaGetNumber()
+   aiEcho("MAP p" + cMyID + " areas=" + kbAreaGetNumber()
              + " groups=" + kbAreaGroupGetNumber()
              + " dist=" + distance(baseLoc, waterLoc));
 
-   aiChat(1, "MAP p" + cMyID + " base a=" + baseArea + " t=" + kbAreaGetType(baseArea)
+   aiEcho("MAP p" + cMyID + " base a=" + baseArea + " t=" + kbAreaGetType(baseArea)
              + " g=" + baseGroup + " tiles=" + kbAreaGetNumberTiles(baseArea)
              + " || water a=" + waterArea + " t=" + kbAreaGetType(waterArea)
              + " g=" + waterGroup);
 
-   aiChat(1, "MAP p" + cMyID + " landpath base<->water = "
+   aiEcho("MAP p" + cMyID + " landpath base<->water = "
              + kbAreAreaGroupsPassableByLand(baseGroup, waterGroup));
 
    // ---- terrain profile along the base -> water line -------------------
@@ -7707,7 +7714,7 @@ minInterval 20
       }
    }
 
-   aiChat(1, "MAP p" + cMyID + " profile(10m/char, water=" + cAreaTypeWater
+   aiEcho("MAP p" + cMyID + " profile(10m/char, water=" + cAreaTypeWater
              + " impass=" + cAreaTypeImpassableLand + " forest=" + cAreaTypeForest
              + "): " + prof);
 
@@ -7717,13 +7724,13 @@ minInterval 20
    // that answers it. It has never been called anywhere in this AI.
    if (lastDry == cInvalidVector)
    {
-      aiChat(1, "MAP p" + cMyID + " no dry sample before water - ray never left water");
+      aiEcho("MAP p" + cMyID + " no dry sample before water - ray never left water");
       xsDisableSelf();
       return;
    }
 
    int dryArea = kbAreaGetIDByPosition(lastDry);
-   aiChat(1, "MAP p" + cMyID + " shore x=" + xsVectorGetX(lastDry)
+   aiEcho("MAP p" + cMyID + " shore x=" + xsVectorGetX(lastDry)
              + " z=" + xsVectorGetZ(lastDry)
              + " a=" + dryArea + " t=" + kbAreaGetType(dryArea)
              + " g=" + kbAreaGroupGetIDByPosition(lastDry)
@@ -7837,17 +7844,17 @@ minInterval 20
       }
    }
 
-   aiChat(1, "SHORE p" + cMyID + " areas=" + total + " myGroup=" + myGroup
+   aiEcho("SHORE p" + cMyID + " areas=" + total + " myGroup=" + myGroup
              + " reachable-coast-areas=" + shoreSeen);
 
    if (bestArea < 0)
    {
-      aiChat(1, "SHORE p" + cMyID + " NO reachable land area touches water - dock impossible");
+      aiEcho("SHORE p" + cMyID + " NO reachable land area touches water - dock impossible");
       return;
    }
 
    gIstanbulShoreArea = bestArea;
-   aiChat(1, "SHORE p" + cMyID + " best area=" + bestArea
+   aiEcho("SHORE p" + cMyID + " best area=" + bestArea
              + " x=" + xsVectorGetX(bestLoc) + " z=" + xsVectorGetZ(bestLoc)
              + " tiles=" + kbAreaGetNumberTiles(bestArea)
              + " dist-to-home-water=" + bestScore);

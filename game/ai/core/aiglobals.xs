@@ -591,5 +591,5 @@ extern const bool cDebugEconomy = false;
 extern const bool cDebugMilitary = false;
 extern const bool cDebugHCCards = false;
 extern const bool cDebugChats = false;
-extern const bool cDebugSetup = false;
+extern const bool cDebugSetup = true;
 extern const bool cDebugCore = false;
