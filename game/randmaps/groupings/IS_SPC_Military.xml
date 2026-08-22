@@ -7,105 +7,108 @@
 	<selectassingleunit>0</selectassingleunit>
 	<workonassingleunit>0</workonassingleunit>
 	<units>
-		<unit variation="10" posx="12.9566" posz="-10.0626" orientx="-0.0000" orienty="0.0000" orientz="1.0000">PropsColony</unit>
-		<unit variation="0" posx="14.1406" posz="-5.1062" orientx="0.7072" orienty="0.0000" orientz="0.7070">PropsPoles</unit>
-		<unit variation="129" posx="13.9888" posz="12.2180" orientx="0.9240" orienty="0.0000" orientz="-0.3824">UnderbrushForest</unit>
-		<unit variation="1" posx="14.6820" posz="7.1257" orientx="-0.0000" orienty="0.0000" orientz="1.0000">PropsPoles</unit>
-		<unit variation="91" posx="11.1993" posz="-2.1499" orientx="0.7149" orienty="0.0000" orientz="0.6992">zpNatEUPropObelisk</unit>
-		<unit variation="1" posx="11.5285" posz="12.7243" orientx="-0.0000" orienty="0.0000" orientz="1.0000">PropsColony</unit>
-		<unit variation="5" posx="10.3051" posz="0.2744" orientx="-0.2041" orienty="0.0000" orientz="0.9789">ypSMSufiAccessory</unit>
-		<unit variation="177" posx="10.2734" posz="3.3002" orientx="0.9239" orienty="-0.0000" orientz="-0.3826">zpIndianFortCornerProp</unit>
-		<unit variation="180" posx="8.5767" posz="1.6248" orientx="0.7071" orienty="-0.0000" orientz="-0.7071">zpIndianFortWallSmallProp</unit>
-		<unit variation="117" posx="8.3323" posz="9.4515" orientx="0.7071" orienty="-0.0000" orientz="0.7071">zpIndianFortWallSmallProp</unit>
-		<unit variation="117" posx="10.4329" posz="5.6036" orientx="1.0000" orienty="-0.0000" orientz="0.0000">zpIndianFortWallSmallProp</unit>
-		<unit variation="177" posx="10.2450" posz="7.7310" orientx="0.9239" orienty="-0.0000" orientz="0.3827">zpIndianFortCornerProp</unit>
-		<unit variation="2" posx="9.3382" posz="-14.0039" orientx="0.9238" orienty="0.0000" orientz="0.3829">PropsColony</unit>
-		<unit variation="158" posx="9.7672" posz="-8.6701" orientx="0.0006" orienty="0.0000" orientz="1.0000">zpHCFountainA</unit>
-		<unit variation="5" posx="4.3469" posz="-3.1968" orientx="0.7071" orienty="-0.0000" orientz="-0.7071">zpPassableGateIndian</unit>
-		<unit variation="177" posx="7.1044" posz="10.5502" orientx="0.7071" orienty="-0.0000" orientz="0.7071">zpIndianFortCornerProp</unit>
-		<unit variation="0" posx="5.8455" posz="-14.1054" orientx="0.7072" orienty="0.0000" orientz="0.7070">PropsPoles</unit>
-		<unit variation="1" posx="6.6391" posz="14.5427" orientx="0.9238" orienty="-0.0000" orientz="-0.3829">PropsPoles</unit>
-		<unit variation="129" posx="4.3361" posz="-14.1081" orientx="0.9240" orienty="0.0000" orientz="-0.3824">UnderbrushForest</unit>
-		<unit variation="83" posx="2.4433" posz="9.8349" orientx="-0.0000" orienty="0.0000" orientz="1.0000">zpSPCFortBarracksProp</unit>
-		<unit variation="91" posx="2.8038" posz="-10.5746" orientx="0.7149" orienty="0.0000" orientz="0.6992">zpNatEUPropObelisk</unit>
-		<unit variation="5" posx="0.4068" posz="-11.0301" orientx="-0.9238" orienty="0.0000" orientz="0.3828">PropsColony</unit>
-		<unit variation="117" posx="-0.8948" posz="-7.3857" orientx="0.7071" orienty="-0.0000" orientz="-0.7071">zpIndianFortWallSmallProp</unit>
-		<unit variation="145" posx="-1.2453" posz="2.3730" orientx="1.0000" orienty="-0.0000" orientz="-0.0001">zpSPCCapturableFlagInvisible</unit>
-		<unit variation="167" posx="-1.1551" posz="2.1682" orientx="1.0000" orienty="-0.0000" orientz="-0.0001">zpParisFlagNoIcon</unit>
-		<unit variation="149" posx="-0.9262" posz="2.3980" orientx="1.0000" orienty="-0.0000" orientz="-0.0001">zpNuggetKidnapGuillotine</unit>
-		<unit variation="177" posx="-2.4385" posz="-8.8440" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">zpIndianFortCornerProp</unit>
-		<unit variation="38" posx="-4.4067" posz="10.8557" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpIndianFortWallMediumProp</unit>
-		<unit variation="117" posx="-4.7057" posz="-9.2651" orientx="0.0000" orienty="-0.0000" orientz="-1.0000">zpIndianFortWallSmallProp</unit>
-		<unit variation="0" posx="-5.5619" posz="-14.3100" orientx="0.7072" orienty="0.0000" orientz="0.7070">PropsPoles</unit>
-		<unit variation="1" posx="-4.7840" posz="14.4906" orientx="0.9239" orienty="-0.0000" orientz="-0.3827">PropsPoles</unit>
-		<unit variation="177" posx="-6.5249" posz="-9.3075" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpIndianFortCornerProp</unit>
-		<unit variation="33" posx="-9.2274" posz="-0.9738" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCFortStableProp</unit>
-		<unit variation="33" posx="-9.3748" posz="10.5802" orientx="0.3827" orienty="-0.0000" orientz="0.9239">zpSPCFortTowerProp</unit>
-		<unit variation="117" posx="-8.0364" posz="-7.9006" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpIndianFortWallSmallProp</unit>
-		<unit variation="177" posx="-10.3462" posz="-6.0927" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpIndianFortCornerProp</unit>
-		<unit variation="139" posx="-10.2771" posz="5.2776" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpIndianFortWallMediumProp</unit>
-		<unit variation="0" posx="-9.5850" posz="-11.0081" orientx="-0.0003" orienty="0.0000" orientz="1.0000">zpPropsFlowers</unit>
-		<unit variation="71" posx="-10.4787" posz="-10.3697" orientx="0.9240" orienty="0.0000" orientz="0.3825">NativePirates</unit>
-		<unit variation="1" posx="-13.8916" posz="-6.2502" orientx="-0.0000" orienty="0.0000" orientz="1.0000">PropsPoles</unit>
-		<unit variation="84" posx="-12.3899" posz="-14.2893" orientx="-0.5592" orienty="0.0000" orientz="0.8290">ypSMSufiAccessory</unit>
-		<unit variation="7" posx="-14.0880" posz="-14.3677" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">PropsColony</unit>
-		<unit variation="1" posx="-14.3411" posz="-6.8892" orientx="0.0001" orienty="0.0000" orientz="1.0000">PropsPoles</unit>
-		<unit variation="1" posx="-14.7627" posz="6.5821" orientx="-0.0000" orienty="0.0000" orientz="1.0000">PropsPoles</unit>
+		<unit variation="7" posx="-13.0880" posz="-14.3677" orientx="1.0000" orienty="0.0000" orientz="-0.0000">PropsColony</unit>
+		<unit variation="0" posx="-4.5619" posz="-14.3100" orientx="0.7072" orienty="0.0000" orientz="0.7070">PropsPoles</unit>
+		<unit variation="2" posx="10.3382" posz="-14.0039" orientx="0.9238" orienty="0.0000" orientz="0.3829">PropsColony</unit>
+		<unit variation="0" posx="6.8455" posz="-14.1054" orientx="0.7072" orienty="0.0000" orientz="0.7070">PropsPoles</unit>
+		<unit variation="129" posx="5.3361" posz="-14.1081" orientx="0.9240" orienty="0.0000" orientz="-0.3824">UnderbrushForest</unit>
+		<unit variation="84" posx="-11.3899" posz="-14.2893" orientx="-0.5592" orienty="0.0000" orientz="0.8290">ypSMSufiAccessory</unit>
+		<unit variation="0" posx="-8.5850" posz="-11.0081" orientx="-0.0003" orienty="0.0000" orientz="1.0000">zpPropsFlowers</unit>
+		<unit variation="91" posx="3.8038" posz="-10.5746" orientx="0.7149" orienty="0.0000" orientz="0.6992">zpNatEUPropObelisk</unit>
+		<unit variation="5" posx="1.4068" posz="-11.0301" orientx="-0.9238" orienty="0.0000" orientz="0.3828">PropsColony</unit>
+		<unit variation="10" posx="13.9566" posz="-10.0626" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsColony</unit>
+		<unit variation="117" posx="-3.7057" posz="-9.2651" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpIndianFortWallSmallProp</unit>
+		<unit variation="177" posx="-5.5249" posz="-9.3075" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpIndianFortCornerProp</unit>
+		<unit variation="177" posx="-1.4385" posz="-8.8440" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpIndianFortCornerProp</unit>
+		<unit variation="71" posx="-9.4787" posz="-10.3697" orientx="0.9240" orienty="0.0000" orientz="0.3825">NativePirates</unit>
+		<unit variation="66" posx="10.8731" posz="-8.8648" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCPathBlock1</unit>
+		<unit variation="117" posx="-7.0364" posz="-7.9006" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpIndianFortWallSmallProp</unit>
+		<unit variation="117" posx="0.1052" posz="-7.3857" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpIndianFortWallSmallProp</unit>
+		<unit variation="158" posx="10.7672" posz="-8.6701" orientx="0.0006" orienty="0.0000" orientz="1.0000">zpHCFountainA</unit>
+		<unit variation="177" posx="-9.3899" posz="-5.9412" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpIndianFortCornerProp</unit>
+		<unit variation="1" posx="-13.2708" posz="-5.5254" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsPoles</unit>
+		<unit variation="0" posx="15.1406" posz="-5.1062" orientx="0.7072" orienty="0.0000" orientz="0.7070">PropsPoles</unit>
+		<unit variation="33" posx="-8.0901" posz="-1.2278" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCFortStableProp</unit>
+		<unit variation="5" posx="5.3469" posz="-3.1968" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpPassableGateIndian</unit>
+		<unit variation="91" posx="12.1993" posz="-2.1499" orientx="0.7149" orienty="0.0000" orientz="0.6992">zpNatEUPropObelisk</unit>
+		<unit variation="180" posx="9.5767" posz="1.6248" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpIndianFortWallSmallProp</unit>
+		<unit variation="5" posx="11.3051" posz="0.2744" orientx="-0.2041" orienty="0.0000" orientz="0.9789">ypSMSufiAccessory</unit>
+		<unit variation="177" posx="11.2734" posz="3.3002" orientx="0.9239" orienty="0.0000" orientz="-0.3826">zpIndianFortCornerProp</unit>
+		<unit variation="145" posx="-0.2453" posz="2.3730" orientx="1.0000" orienty="0.0000" orientz="-0.0001">zpSPCCapturableFlagInvisible</unit>
+		<unit variation="167" posx="-0.1551" posz="2.1682" orientx="1.0000" orienty="0.0000" orientz="-0.0001">zpParisFlagNoIcon</unit>
+		<unit variation="149" posx="0.0738" posz="2.3980" orientx="1.0000" orienty="0.0000" orientz="-0.0001">zpNuggetKidnapGuillotine</unit>
+		<unit variation="139" posx="-9.2771" posz="5.2776" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpIndianFortWallMediumProp</unit>
+		<unit variation="117" posx="11.4329" posz="5.6036" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpIndianFortWallSmallProp</unit>
+		<unit variation="1" posx="-13.7627" posz="6.5821" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsPoles</unit>
+		<unit variation="1" posx="15.6820" posz="7.1257" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsPoles</unit>
+		<unit variation="177" posx="11.2450" posz="7.7310" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpIndianFortCornerProp</unit>
+		<unit variation="33" posx="-8.6788" posz="9.9389" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpSPCFortTowerProp</unit>
+		<unit variation="117" posx="9.3323" posz="9.4515" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpIndianFortWallSmallProp</unit>
+		<unit variation="83" posx="3.4433" posz="9.8349" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCFortBarracksProp</unit>
+		<unit variation="38" posx="-3.4067" posz="10.8557" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpIndianFortWallMediumProp</unit>
+		<unit variation="177" posx="8.1044" posz="10.5502" orientx="0.7071" orienty="0.0000" orientz="0.7071">zpIndianFortCornerProp</unit>
+		<unit variation="129" posx="14.9888" posz="12.2180" orientx="0.9240" orienty="0.0000" orientz="-0.3824">UnderbrushForest</unit>
+		<unit variation="1" posx="12.5285" posz="12.7243" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsColony</unit>
+		<unit variation="1" posx="-3.7840" posz="14.4906" orientx="0.9239" orienty="0.0000" orientz="-0.3827">PropsPoles</unit>
+		<unit variation="1" posx="7.6391" posz="14.5427" orientx="0.9238" orienty="0.0000" orientz="-0.3829">PropsPoles</unit>
 	</units>
 	<tiles>
 		<tilegroup type="Block" subtype="props\east_colony">
-			<block startx="0" startz="-7" endx="7" endz="-7"></block>
-			<block startx="0" startz="-6" endx="7" endz="-6"></block>
-			<block startx="0" startz="-5" endx="7" endz="-5"></block>
-			<block startx="0" startz="-4" endx="7" endz="-4"></block>
-			<block startx="0" startz="-3" endx="7" endz="-3"></block>
-			<block startx="1" startz="-2" endx="7" endz="-2"></block>
-			<block startx="2" startz="-1" endx="7" endz="-1"></block>
-			<block startx="3" startz="0" endx="7" endz="0"></block>
-			<block startx="-7" startz="-7" endx="-1" endz="-7"></block>
-			<block startx="-7" startz="-6" endx="-1" endz="-6"></block>
-			<block startx="-4" startz="-5" endx="-1" endz="-5"></block>
-			<block startx="-7" startz="-5" endx="-6" endz="-5"></block>
-			<block startx="-7" startz="-4" endx="-1" endz="-4"></block>
-			<block startx="-7" startz="-3" endx="-4" endz="-3"></block>
-			<block startx="-7" startz="-2" endx="-5" endz="-2"></block>
-			<block startx="-7" startz="-1" endx="-5" endz="-1"></block>
-			<block startx="-7" startz="0" endx="-5" endz="0"></block>
-			<block startx="-7" startz="1" endx="-5" endz="1"></block>
-			<block startx="-7" startz="2" endx="-6" endz="2"></block>
-			<block startx="-7" startz="3" endx="-6" endz="3"></block>
-			<block startx="-7" startz="4" endx="-6" endz="4"></block>
-			<block startx="-7" startz="5" endx="-5" endz="5"></block>
-			<block startx="-7" startz="6" endx="-1" endz="6"></block>
-			<block startx="-7" startz="7" endx="-1" endz="7"></block>
-			<block startx="4" startz="1" endx="7" endz="1"></block>
-			<block startx="5" startz="2" endx="7" endz="2"></block>
-			<block startx="5" startz="3" endx="7" endz="3"></block>
-			<block startx="4" startz="4" endx="7" endz="4"></block>
-			<block startx="0" startz="5" endx="7" endz="5"></block>
-			<block startx="0" startz="6" endx="7" endz="6"></block>
-			<block startx="0" startz="7" endx="7" endz="7"></block>
+			<block startx="-7" startz="-7" endx="-7" endz="0"></block>
+			<block startx="-6" startz="-7" endx="-6" endz="0"></block>
+			<block startx="-5" startz="-7" endx="-5" endz="-6"></block>
+			<block startx="-5" startz="-4" endx="-5" endz="0"></block>
+			<block startx="-4" startz="-7" endx="-4" endz="-3"></block>
+			<block startx="-3" startz="-7" endx="-3" endz="-4"></block>
+			<block startx="-2" startz="-7" endx="-2" endz="-4"></block>
+			<block startx="-1" startz="-7" endx="-1" endz="-4"></block>
+			<block startx="0" startz="-7" endx="0" endz="-3"></block>
+			<block startx="-7" startz="1" endx="-7" endz="7"></block>
+			<block startx="-6" startz="1" endx="-6" endz="7"></block>
+			<block startx="-5" startz="1" endx="-5" endz="1"></block>
+			<block startx="-5" startz="5" endx="-5" endz="7"></block>
+			<block startx="-4" startz="6" endx="-4" endz="7"></block>
+			<block startx="-3" startz="6" endx="-3" endz="7"></block>
+			<block startx="-2" startz="6" endx="-2" endz="7"></block>
+			<block startx="-1" startz="6" endx="-1" endz="7"></block>
+			<block startx="0" startz="5" endx="0" endz="7"></block>
+			<block startx="1" startz="5" endx="1" endz="7"></block>
+			<block startx="2" startz="5" endx="2" endz="7"></block>
+			<block startx="3" startz="5" endx="3" endz="7"></block>
+			<block startx="4" startz="1" endx="4" endz="1"></block>
+			<block startx="4" startz="4" endx="4" endz="7"></block>
+			<block startx="5" startz="1" endx="5" endz="7"></block>
+			<block startx="6" startz="1" endx="6" endz="7"></block>
+			<block startx="7" startz="1" endx="7" endz="7"></block>
+			<block startx="1" startz="-7" endx="1" endz="-2"></block>
+			<block startx="2" startz="-7" endx="2" endz="-1"></block>
+			<block startx="3" startz="-7" endx="3" endz="0"></block>
+			<block startx="4" startz="-7" endx="4" endz="0"></block>
+			<block startx="5" startz="-7" endx="5" endz="0"></block>
+			<block startx="6" startz="-7" endx="6" endz="0"></block>
+			<block startx="7" startz="-7" endx="7" endz="0"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="Texas\ground5_tex">
+			<block startx="-5" startz="-5" endx="-5" endz="-5"></block>
 		</tilegroup>
 		<tilegroup type="PassableLand" subtype="Texas\Path_Blend">
-			<block startx="0" startz="-2" endx="0" endz="-2"></block>
-			<block startx="0" startz="-1" endx="1" endz="-1"></block>
-			<block startx="0" startz="0" endx="2" endz="0"></block>
-			<block startx="-3" startz="-3" endx="-1" endz="-3"></block>
-			<block startx="-4" startz="-2" endx="-1" endz="-2"></block>
-			<block startx="-4" startz="-1" endx="-1" endz="-1"></block>
-			<block startx="-4" startz="0" endx="-1" endz="0"></block>
-			<block startx="-4" startz="1" endx="-1" endz="1"></block>
-			<block startx="-5" startz="2" endx="-1" endz="2"></block>
-			<block startx="-5" startz="3" endx="-1" endz="3"></block>
-			<block startx="-5" startz="4" endx="-1" endz="4"></block>
-			<block startx="-4" startz="5" endx="-1" endz="5"></block>
-			<block startx="0" startz="1" endx="3" endz="1"></block>
-			<block startx="0" startz="2" endx="4" endz="2"></block>
-			<block startx="0" startz="3" endx="4" endz="3"></block>
-			<block startx="0" startz="4" endx="3" endz="4"></block>
-		</tilegroup>
-		<tilegroup type="PassableLand" subtype="Texas\ground1_tex">
-			<block startx="-5" startz="-5" endx="-5" endz="-5"></block>
+			<block startx="-4" startz="-2" endx="-4" endz="0"></block>
+			<block startx="-3" startz="-3" endx="-3" endz="0"></block>
+			<block startx="-2" startz="-3" endx="-2" endz="0"></block>
+			<block startx="-1" startz="-3" endx="-1" endz="0"></block>
+			<block startx="0" startz="-2" endx="0" endz="0"></block>
+			<block startx="-5" startz="2" endx="-5" endz="4"></block>
+			<block startx="-4" startz="1" endx="-4" endz="5"></block>
+			<block startx="-3" startz="1" endx="-3" endz="5"></block>
+			<block startx="-2" startz="1" endx="-2" endz="5"></block>
+			<block startx="-1" startz="1" endx="-1" endz="5"></block>
+			<block startx="0" startz="1" endx="0" endz="4"></block>
+			<block startx="1" startz="1" endx="1" endz="4"></block>
+			<block startx="2" startz="1" endx="2" endz="4"></block>
+			<block startx="3" startz="1" endx="3" endz="4"></block>
+			<block startx="4" startz="2" endx="4" endz="3"></block>
+			<block startx="1" startz="-1" endx="1" endz="0"></block>
+			<block startx="2" startz="0" endx="2" endz="0"></block>
 		</tilegroup>
 	</tiles>
 </grouping>

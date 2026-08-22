@@ -2632,15 +2632,32 @@ void main(void)
 	// so each cliff is fenced on the side that faces the water, and left open
 	// on the map-edge side. Signs stay outside rmZTilesToFraction, which
 	// ignores a negative argument silently.
-	int cliffOffBelt = 2;         // tiles clear of the city's channel row
+	// ================= HOW FAR THE CLIFFS STAY OFF THE STRAIT ==============
+	// THIS IS THE ONLY NUMBER TO TOUCH. Tiles. BIGGER = FURTHER FROM THE
+	// WATER, on both islands. 2 was the old value; 5 is three tiles further.
+	int cliffOffBelt = 5;
+
+	// Why it cannot just be one line: the two islands run OPPOSITE ways in z.
+	// nz1 and sz1 are each city's channel-facing row, and the strait lies
+	// between them - so 'away from the water' is + on one side and - on the
+	// other. These two lines are the whole of that asymmetry:
+	float cliffEdgeN = nz1 + rmZTilesToFraction(cliffOffBelt);   // north: strait is BELOW it
+	float cliffEdgeS = sz1 - rmZTilesToFraction(cliffOffBelt);   // south: strait is ABOVE it
+
+	// rmCreateBoxConstraint(name, x1, z1, x2, z2, distance) - MUST BE INSIDE.
+	// One argument per line so it is obvious which edge each one is.
 	int wildBoxNE = rmCreateBoxConstraint("north-east cliff box",
-		nx5 + flankProm - rmXTilesToFraction(cliffIntoCity),
-		nz1 + rmZTilesToFraction(cliffOffBelt),
-		1.0, 1.0, 0.01);
+		nx5 + flankProm - rmXTilesToFraction(cliffIntoCity),   // x1  city-side edge
+		cliffEdgeN,                                            // z1  STRAIT side
+		1.0,                                                   // x2  map edge
+		1.0,                                                   // z2  map edge
+		0.01);
 	int wildBoxSW = rmCreateBoxConstraint("south-west cliff box",
-		0.0, 0.0,
-		sx1 - flankProm + rmXTilesToFraction(cliffIntoCity),
-		sz1 - rmZTilesToFraction(cliffOffBelt), 0.01);
+		0.0,                                                   // x1  map edge
+		0.0,                                                   // z1  map edge
+		sx1 - flankProm + rmXTilesToFraction(cliffIntoCity),   // x2  city-side edge
+		cliffEdgeS,                                            // z2  STRAIT side
+		0.01);
 
 	int guardN = rmCreateArea("north lane guard");
 	rmSetAreaWarnFailure(guardN, false);
@@ -4957,6 +4974,7 @@ void main(void)
 	rmCreateTrigger("Activate Consulate Indians" + pt);
 	rmCreateTrigger("Activate Tortuga" + pt);
 	rmCreateTrigger("Activate Orthodox" + pt);
+	rmCreateTrigger("Activate Cossacks" + pt);
 	rmCreateTrigger("Italian Vilager Balance" + pt);
 	rmCreateTrigger("Italian Gondola Balance" + pt);
 	rmCreateTrigger("Cheat Returner" + pt);
@@ -5401,6 +5419,8 @@ void main(void)
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Tortuga" + pt));
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Orthodox" + pt));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Cossacks" + pt));
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -5522,6 +5542,38 @@ void main(void)
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID", pt);
 	rmSetTriggerEffectParam("TechID", "cTechzpTurnConsulateOffOrthodoxBalkan");
+	rmSetTriggerEffectParamInt("Status", 2);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", pt);
+	rmSetTriggerEffectParam("TechID", "cTechzpBigButtonResearchDecrease");
+	rmSetTriggerEffectParamInt("Status", 2);
+	rmAddTriggerEffect("ZP Pick Consulate Tech");
+	rmSetTriggerEffectParamInt("Player", pt);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance" + pt));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance" + pt));
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner" + pt));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(true);
+
+	// COSSACK POLITICIANS. Same shape as Orthodox above - the map already
+	// registers zpCossacks as subCiv 4 (:371) and places Cossack_Camp_01..05,
+	// every one of which bakes zpSocketCossacks, so the alliance and its big
+	// button are reachable. zpNativeCossacks makes zpCossackExpansion
+	// obtainable; zpTurnConsulateOffCossacks then enables Bohdan, Mazepa and
+	// Petro and disables every rival politician - the OFF techs are total
+	// resets, so this and the Orthodox switcher cannot collide.
+	rmSwitchToTrigger(rmTriggerID("Activate_Cossacks" + pt));
+	rmAddTriggerCondition("ZP Tech Researching (XS)");
+	rmSetTriggerConditionParam("TechID", "cTechzpCossackExpansion");
+	rmSetTriggerConditionParamInt("PlayerID", pt);
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", pt);
+	rmSetTriggerEffectParam("TechID", "cTechzpTurnConsulateOffCossacks");
 	rmSetTriggerEffectParamInt("Status", 2);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID", pt);
@@ -5677,6 +5729,50 @@ void main(void)
 			rmAddTriggerEffect("ZP Set Tech Status (XS)");
 			rmSetTriggerEffectParamInt("PlayerID", oc);
 			rmSetTriggerEffectParam("TechID", "cTechzpConsulateOrthodoxConstantinopole");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
+	// COSSACK LEADERS - zpblacksea.xs 2624-2664. Humans pick from the
+	// consulate page the switcher above opens; an AI cannot, so without this
+	// an allied AI ends up with an empty consulate. Gate 586 and the shape
+	// are copied from the Orthodox roller directly above.
+	int cc = 0;
+	for (cc = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("ZP Pick Cossack Captain" + cc);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player", cc);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerCondition("Tech Status Equals");
+		rmSetTriggerConditionParamInt("PlayerID", cc);
+		rmSetTriggerConditionParamInt("TechID", 586);
+		rmSetTriggerConditionParamInt("Status", 2);
+		int cossackCaptain = -1;
+		cossackCaptain = rmRandInt(1, 3);
+		if (cossackCaptain == 1)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", cc);
+			rmSetTriggerEffectParam("TechID", "cTechzpConsulateCossackBohdan");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		if (cossackCaptain == 2)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", cc);
+			rmSetTriggerEffectParam("TechID", "cTechzpConsulateCossackMazepa");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		if (cossackCaptain == 3)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", cc);
+			rmSetTriggerEffectParam("TechID", "cTechzpConsulateCossackPetro");
 			rmSetTriggerEffectParamInt("Status", 2);
 		}
 		rmSetTriggerPriority(4);

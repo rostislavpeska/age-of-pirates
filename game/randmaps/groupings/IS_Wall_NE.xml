@@ -122,11 +122,11 @@
 		<unit variation="145" posx="-6.7178" posz="-77.4997" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpIndianFortWallLargeProp</unit>
 		<unit variation="41" posx="-9.5741" posz="-74.1554" orientx="0.7981" orienty="0.0000" orientz="0.6026">TreeCaribbean</unit>
 		<unit variation="201" posx="-12.4886" posz="-78.0909" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpNativeUnitVenetianPoles</unit>
-		<unit variation="45" posx="0.0730" posz="79.4504" orientx="0.7071" orienty="-0.0000" orientz="-0.7071">deSPCEuroTower</unit>
-		<unit variation="45" posx="-1.1085" posz="42.8460" orientx="0.0000" orienty="-0.0000" orientz="1.0000">deSPCEuroTower</unit>
-		<unit variation="38" posx="-1.2985" posz="8.3077" orientx="0.0000" orienty="-0.0000" orientz="1.0000">deSPCEuroTower</unit>
-		<unit variation="80" posx="0.6058" posz="-21.7877" orientx="0.0000" orienty="-0.0000" orientz="1.0000">deSPCEuroTower</unit>
-		<unit variation="50" posx="1.3703" posz="-54.1122" orientx="0.0000" orienty="-0.0000" orientz="1.0000">deSPCEuroTower</unit>
+		<unit variation="45" posx="2.3703" posz="79.4504" orientx="0.0000" orienty="-0.0000" orientz="1.0000">deSPCEuroTower</unit>
+		<unit variation="45" posx="2.3703" posz="42.8460" orientx="0.0000" orienty="-0.0000" orientz="1.0000">deSPCEuroTower</unit>
+		<unit variation="38" posx="2.3703" posz="8.3077" orientx="0.0000" orienty="-0.0000" orientz="1.0000">deSPCEuroTower</unit>
+		<unit variation="80" posx="2.3703" posz="-21.7877" orientx="0.0000" orienty="-0.0000" orientz="1.0000">deSPCEuroTower</unit>
+		<unit variation="50" posx="2.3703" posz="-54.1122" orientx="0.0000" orienty="-0.0000" orientz="1.0000">deSPCEuroTower</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="props\east_colony2">

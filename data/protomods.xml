@@ -37030,7 +37030,7 @@
     <tactics>parisbuilding.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
-      <rate type="Food">1.500000</rate>
+      <rate type="Food">1.600000</rate>
     </protoaction>
   </unit>
   <unit id="20482" name="zpSPCForester">
@@ -37195,7 +37195,7 @@
     <tactics>parisbuilding.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
-      <rate type="Wood">1.500000</rate>
+      <rate type="Wood">1.600000</rate>
     </protoaction>
   </unit>
   <unit id="20484" name="zpSPCMenagerie">
@@ -55097,7 +55097,7 @@
     <tactics>parisbuilding.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
-      <rate type="Wood">1.500000</rate>
+      <rate type="Wood">1.600000</rate>
     </protoaction>
   </unit>
   <unit id="20729" name="zpTrainStationProps">
