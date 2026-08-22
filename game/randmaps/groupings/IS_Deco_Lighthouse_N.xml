@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>10</width>
+	<height>7</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="78" posx="-0.5354" posz="-4.5607" orientx="0.0454" orienty="0.0000" orientz="0.9990">ShorelineRockSmallNE</unit>
+		<unit variation="180" posx="-3.3798" posz="-4.3362" orientx="-0.3698" orienty="0.0000" orientz="-0.9291">ShorelineRockSmallNE</unit>
+		<unit variation="134" posx="-5.3421" posz="-7.4041" orientx="-0.1359" orienty="0.0000" orientz="0.9907">ShorelineRockBigNE</unit>
+		<unit variation="71" posx="-8.2704" posz="-2.6417" orientx="-0.1449" orienty="0.0000" orientz="0.9894">ShorelineRockSmallNE</unit>
+		<unit variation="90" posx="-7.1469" posz="-3.0284" orientx="-0.5459" orienty="0.0000" orientz="-0.8379">ShorelineRockSmallNE</unit>
+		<unit variation="88" posx="-6.1110" posz="-3.4547" orientx="-0.9126" orienty="0.0000" orientz="-0.4088">ShorelineRockSmallNE</unit>
+		<unit variation="44" posx="-5.4044" posz="-3.6098" orientx="-0.6079" orienty="0.0000" orientz="-0.7940">ShorelineRockSmallNE</unit>
+		<unit variation="247" posx="-4.5259" posz="-3.5414" orientx="-0.7167" orienty="0.0000" orientz="0.6974">ShorelineRockSmallNE</unit>
+		<unit variation="183" posx="-2.7360" posz="-3.4046" orientx="0.3153" orienty="0.0000" orientz="0.9490">ShorelineRockSmallNE</unit>
+		<unit variation="65" posx="-0.9411" posz="-3.0621" orientx="0.5861" orienty="0.0000" orientz="0.8102">ShorelineRockSmallNE</unit>
+		<unit variation="217" posx="-0.1700" posz="-3.9141" orientx="-0.5598" orienty="0.0000" orientz="-0.8287">ShorelineRockSmallNE</unit>
+		<unit variation="220" posx="0.7759" posz="-3.3066" orientx="-0.3573" orienty="0.0000" orientz="0.9340">ShorelineRockSmallNE</unit>
+		<unit variation="175" posx="1.9757" posz="-2.2279" orientx="0.0314" orienty="0.0000" orientz="0.9995">ShorelineRockSmallNE</unit>
+		<unit variation="26" posx="0.8557" posz="-3.8589" orientx="-0.9963" orienty="0.0000" orientz="-0.0863">ShorelineRockSmallNE</unit>
+		<unit variation="22" posx="4.5103" posz="-3.2277" orientx="-0.9768" orienty="0.0000" orientz="0.2142">ShorelineRockBigNE</unit>
+		<unit variation="78" posx="-9.0846" posz="-2.1294" orientx="0.4678" orienty="0.0000" orientz="-0.8838">ShorelineRockSmallNE</unit>
+		<unit variation="19" posx="3.0463" posz="-1.4025" orientx="0.9995" orienty="0.0000" orientz="0.0328">ShorelineRockSmallNE</unit>
+		<unit variation="254" posx="3.4777" posz="-1.0149" orientx="0.6044" orienty="0.0000" orientz="0.7967">ShorelineRockSmallNE</unit>
+		<unit variation="234" posx="3.0615" posz="-0.3625" orientx="-0.8130" orienty="0.0000" orientz="0.5823">ShorelineRockSmallNE</unit>
+		<unit variation="127" posx="3.1909" posz="0.0091" orientx="-0.1184" orienty="0.0000" orientz="0.9930">ShorelineRockSmallNE</unit>
+		<unit variation="149" posx="-10.9775" posz="-0.4629" orientx="0.0107" orienty="0.0000" orientz="0.9999">ShorelineRockSmallNE</unit>
+		<unit variation="210" posx="-10.6737" posz="-0.4001" orientx="-0.1040" orienty="0.0000" orientz="0.9946">ShorelineRockSmallNE</unit>
+		<unit variation="96" posx="-9.9286" posz="-0.9704" orientx="-0.6962" orienty="0.0000" orientz="-0.7178">ShorelineRockSmallNE</unit>
+		<unit variation="21" posx="-9.4773" posz="-1.5512" orientx="-0.0702" orienty="0.0000" orientz="0.9975">ShorelineRockSmallNE</unit>
+		<unit variation="229" posx="2.2555" posz="2.0124" orientx="0.5590" orienty="0.0000" orientz="-0.8292">ShorelineRockSmallNE</unit>
+		<unit variation="35" posx="1.2178" posz="4.1902" orientx="0.9274" orienty="0.0000" orientz="0.3741">ShorelineRockSmallNE</unit>
+		<unit variation="175" posx="-0.7450" posz="1.2893" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpPropWaterTower</unit>
+		<unit variation="180" posx="0.7685" posz="7.2310" orientx="-0.9145" orienty="0.0000" orientz="0.4045">ShorelineRockSmallNE</unit>
+		<unit variation="135" posx="1.7488" posz="7.0641" orientx="-0.9354" orienty="0.0000" orientz="-0.3537">ShorelineRockSmallNE</unit>
+	</units>
+</grouping>

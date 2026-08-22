@@ -3681,6 +3681,24 @@
       <guardian>deGuardianHaramija</guardian>
       <difficulty>518</difficulty>
     </nugget>
+    <nugget>
+      <name>zpNuggetAcademyIstanbul</name>
+      <rolloverstringid>303381</rolloverstringid>
+      <applystringid>303382</applystringid>
+      <nuggetunit>NuggetCapturableBuildingBig</nuggetunit>
+      <type>ConvertUnit</type>
+      <amount>1</amount>
+      <maptype>piratehistoricalmap</maptype>
+      <convertunit>
+        <unit>zpAcademyReward</unit>
+        <attachdummy>bone_nuggetA</attachdummy>
+      </convertunit>
+      <guardian>deGuardianKlepht</guardian>
+      <guardian>deGuardianKlepht</guardian>
+      <guardian>deGuardianHaramija</guardian>
+      <guardian>deGuardianHaramija</guardian>
+      <difficulty>523</difficulty>
+    </nugget>
 
 
     <!--WATER NUGGETS-->

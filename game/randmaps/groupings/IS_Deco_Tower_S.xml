@@ -7,6 +7,7 @@
 	<selectassingleunit>0</selectassingleunit>
 	<workonassingleunit>0</workonassingleunit>
 	<units>
+		<unit variation="0" posx="0.0000" posz="0.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCDockAvoider</unit>
 		<unit variation="26" posx="19.0000" posz="16.0000" orientx="0.0000" orienty="-0.0000" orientz="1.0000">FishSardine</unit>
 		<unit variation="34" posx="13.0000" posz="20.0000" orientx="0.0000" orienty="-0.0000" orientz="1.0000">FishSardine</unit>
 		<unit variation="195" posx="3.6735" posz="6.6231" orientx="0.0000" orienty="-0.0000" orientz="1.0000">zpPropsColony</unit>

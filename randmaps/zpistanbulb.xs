@@ -97,6 +97,32 @@ bool filler(int groupingID = -1, int startIndex = -1, int endIndex = -1)
 	return false;
 }
 
+// Place a city-player block on a FIXED cell and mark that cell taken.
+// Without the marking the house weave has no idea the cell is spoken for
+// and drops a house straight onto the town centre - which is exactly what
+// the old code did, despite the comment beside it claiming otherwise.
+// Positions are compared with a tolerance rather than ==: they come from
+// the same nx*/nz* variables that built the vectors, but a float compare
+// that silently never matches would put the bug straight back.
+bool placeCityBlock(int groupingID = -1, int player = 0, float x = 0.0,
+	float z = 0.0, int startIndex = -1, int endIndex = -1)
+{
+	rmPlaceGroupingAtLoc(groupingID, player, x, z);
+	for (i = startIndex; <= endIndex)
+	{
+		vector loc = xsArrayGetVector(gCityLocs, i);
+		float dx = xsVectorGetX(loc) - x;
+		float dz = xsVectorGetZ(loc) - z;
+		if (dx >  0.0001) continue;
+		if (dx < -0.0001) continue;
+		if (dz >  0.0001) continue;
+		if (dz < -0.0001) continue;
+		xsArraySetBool(gCityLocsStatus, i, true);
+		return true;
+	}
+	return false;
+}
+
 // ---- Houses: never two of the same side by side --------------------------
 // gCityCode carries each cell's grid position as col*100 + row, and is
 // shuffled in lockstep with gCityLocs so the two never drift apart.
@@ -281,6 +307,26 @@ void placeWaterFlag(int p = -1, float x = 0.0, float z = 0.0)
 	rmPlaceObjectDefAtLoc(flag, p, x, z);
 }
 
+// Same flag, but placed ANYWHERE INSIDE an invisible zone instead of at
+// one exact coordinate. maxDistance is 30 m, not 1 m: with a 1 m search
+// and no constraints a flag had to land on its literal spot or vanish.
+int gFlagOffLand = -1;
+void placeWaterFlagInZone(int p = -1, int zone = -1)
+{
+	gFlagIdx = gFlagIdx + 1;
+	int flag = rmCreateObjectDef("water flag " + gFlagIdx);
+	rmAddObjectDefItem(flag, "HomeCityWaterSpawnFlag", 1, 0.0);
+	// NO rmSetObjectDefMinDistance / MaxDistance here. For a player-owned
+	// rmPlaceObjectDefInArea that band is measured from the PLAYER'S START,
+	// not from the area - and this zone is hundreds of metres out to sea,
+	// so any band silently rejects every candidate. performance_test.xs
+	// places into an area with constraints only, and that is why.
+	// Only the land check - the zone already guarantees water and fort
+	// clearance for every cell inside it.
+	rmAddObjectDefConstraint(flag, gFlagOffLand);
+	rmPlaceObjectDefInArea(flag, p, zone, 1);
+}
+
 void main(void)
 {
 	rmSetStatusText("", 0.01);
@@ -369,8 +415,15 @@ void main(void)
 	// Each island grows this many tiles toward its wall flank (north: WEST,
 	// south: EAST). The flank cliffs constrain off the street, so they mold
 	// around the extended city and the walls stand ON city ground.
-	int   cityExtendTilesN = 15;
-	int   cityExtendTilesS = 15;
+	int   cityExtendTilesN = 23;   // north city cliff reaches this far WEST (-X)
+	int   cityExtendTilesS = 23;   // south city cliff reaches this far EAST (+X)
+	
+	// How far the wild flank cliffs may overflow INTO the future city, in
+	// tiles along X. wildW comes from the west into the north city, wildE
+	// from the east into the south city.
+	// SCALE CHECK: 1 tile = 0.00333 of the map, so 6 t = 0.020 - about 5%
+	// of the north city's 0.417 width. 6 t = 12 m at the city edge.
+	int   wildIntoCity = 6;
 
 	float cityHeight      = 3.0;  // was 2.0 in 000_istanbul at sea level 0.0
 
@@ -466,11 +519,11 @@ void main(void)
 	float hSSocketOffX = -2.3773;   float hSSocketOffZ =  3.1930;
 	float hSGroupOffX  =  2.3773;   float hSGroupOffZ  = -3.1930;
 
-	float h3SocketOffX =  4.2043;   float h3SocketOffZ = -4.2629;
-	float h3GroupOffX  = -4.2043;   float h3GroupOffZ  =  4.2629;
+	float h3SocketOffX =  4.2043;   float h3SocketOffZ = -4.2629;   // DEAD - harbour 3/4 removed
+	float h3GroupOffX  = -4.2043;   float h3GroupOffZ  =  4.2629;   // DEAD - harbour 3/4 removed
 
-	float h4SocketOffX = -7.3477;   float h4SocketOffZ = -0.6680;
-	float h4GroupOffX  =  7.3477;   float h4GroupOffZ  =  0.6680;
+	float h4SocketOffX = -7.3477;   float h4SocketOffZ = -0.6680;   // DEAD - harbour 3/4 removed
+	float h4GroupOffX  =  7.3477;   float h4GroupOffZ  =  0.6680;   // DEAD - harbour 3/4 removed
 
 	float h5SocketOffX =  4.2043;   float h5SocketOffZ = -4.2629;
 	float h5GroupOffX  = -4.2043;   float h5GroupOffZ  =  4.2629;
@@ -481,8 +534,8 @@ void main(void)
 	// Trade harbours 3 & 4 sit on the FLANK coasts, not the lane side. The
 	// minimap is rotated 45 deg, so an island's code +x edge reads as its
 	// NORTH-EAST coast and its code -x edge as the SOUTH-WEST coast.
-	string tradeHarbour3  = "IS_Shore_Trade_04";   // north island, NE coast
-	string tradeHarbour4  = "IS_Shore_Trade_03";   // south island, SW coast
+	string tradeHarbour3  = "IS_Shore_Trade_04";   // north island, NE coast   // DEAD - harbour 3/4 removed
+	string tradeHarbour4  = "IS_Shore_Trade_03";   // south island, SW coast   // DEAD - harbour 3/4 removed
 	// Harbour 3 / 4 placement, two axes each:
 	//   ...FlankDist  = tiles OUT from the coast   (bigger = further into water)
 	//   ...FlankAlong = tiles ALONG the coast      (+ = north, - = south)
@@ -560,18 +613,75 @@ void main(void)
 	int   decoSWestFromGun = 17;
 	int   decoSEastFromGun = 17;
 
-	string piratesNorth   = "IS_Shore_Pirates_02";
-	string piratesSouth   = "IS_Shore_Pirates_01";
-	int   northPirateDist = 5;    // tiles out from that coast
-	int   northPirateBack = 34;   // tiles along the coast, away from the channel
-	int   southPirateDist = 5;
-	int   southPirateBack = 34;
+	// ====================================================================
+	//  PIRATE CAMPS - SINGLE SOURCE OF TRUTH
+	//
+	//  Edit ONLY the numbers in this block. The island under the camp, the
+	//  water around it, the camp grouping itself and the pirate water flag
+	//  all derive from them, so they move together and cannot drift apart.
+	//
+	//  The derived coordinates are a few lines below, straight after
+	//  rmSetMapSize - rmXTilesToFraction needs the map size, so they cannot
+	//  be computed up here.
+	// ====================================================================
+	string piratesNorth   = "IS_Shore_Pirates_03";
+	string piratesSouth   = "IS_Shore_Pirates_04";
+	
+	// WHERE EACH CAMP SITS, as a map fraction.
+	//   X: 0.0 = west edge,  1.0 = east edge
+	//   Z: 0.0 = south edge, 1.0 = north edge
+	float nPirateBaseX = 0.323;
+	float nPirateBaseZ = 0.570;
+	float sPirateBaseX = 0.673;
+	float sPirateBaseZ = 0.428;
+	
+	// FINE-TUNE in whole TILES (1 tile = 2 m). +X east, +Z north.
+	int   nPirateNudgeX = 1;
+	int   nPirateNudgeZ = 0;
+	int   sPirateNudgeX = 1;
+	int   sPirateNudgeZ = 0;
+	
+	// THE ISLAND under each camp. shoreScaffold takes AREA in tiles, so the
+	// radius is sqrt(tiles/pi) tiles x 2 m. 452 -> 24.0 m radius, clearing
+	// the 44.10 m camp diagonal by 3.8 m. Below 382 the camp overhangs.
+	int   pirateIslandTiles = 452;
+	
+	// THE WATER around each camp. shoreRiver(x, z, width, reach) - width in
+	// tiles, reach as a map fraction. Raise these to push the shoreline out.
+	int   pirateRiverWidth = 18;
+	float pirateRiverReach = 0.038;
+	
+	// THE WATER FLAG, in METRES from the camp centre. The SIGN decides which
+	// side of the camp the flag lands on, and that does NOT follow from the
+	// unit layout - it has to be seen in the editor. Both flags landed on dry
+	// land once already because the sign was derived instead of observed.
+	float nPirateFlagDX = -18.0665;
+	float nPirateFlagDZ = -15.5373;
+	float sPirateFlagDX = 16.0665;
+	float sPirateFlagDZ = 13.5373;
+	
+	// WHERE THE CAMPS USED TO BE, in tiles from nz3/sz3. The deco tower rows
+	// and FOUR player water flags still key off the old position - this is
+	// what keeps the harbours from being dragged into the strait with the
+	// camps. Not a pirate knob; it only shares the history.
+	int   decoOldPirateBackN = 130;
+	int   decoOldPirateBackS = 34;
 
 
 	// ========================================================================
 	//  1. MAP + WATER
 	// ========================================================================
 	rmSetMapSize(mapSize, mapSize);
+	
+	// ---- PIRATE CAMP COORDINATES - derived once, read everywhere --------
+	// Every consumer below reads these four floats and nothing recomputes a
+	// camp position. Writing the coordinate twice is what broke this map:
+	// the scaffold used nz3Ask while the camp used nz3, so the island and
+	// the camp sat at different Z and the terrain overran its neighbours.
+	float nPirateX = nPirateBaseX - rmXTilesToFraction(nPirateNudgeX);
+	float nPirateZ = nPirateBaseZ + rmZTilesToFraction(nPirateNudgeZ);
+	float sPirateX = sPirateBaseX + rmXTilesToFraction(sPirateNudgeX);
+	float sPirateZ = sPirateBaseZ + rmZTilesToFraction(sPirateNudgeZ);
 	rmSetMapElevationHeightBlend(1);
 
 	// This water setup is what lets groupings float. Changing it - above all
@@ -607,8 +717,22 @@ void main(void)
 	rmDefineClass("classPlateau");
 	rmDefineClass("classBlock");
 	rmDefineClass("classStreet");
+	// every road joins this - one class, so future roads are covered by
+	// the single avoidRoad constraint without touching any call site
+	rmDefineClass("classRoad");
 	rmDefineClass("classCliff");
 	rmDefineClass("classGun");
+	// the pirate camps get their own class - classPlateau is shared with
+	// the harbour islands and cannot single them out
+	rmDefineClass("classPirateCamp");
+	// per-island classes: the docks need a different distance on each
+	// side, and one class holding both camps cannot express that.
+	rmDefineClass("classPirateCampN");
+	// the two naval KotH forts get their own class so the water flags can
+	// keep clear of them and of nothing else. zpCinematicRevealer would
+	// have been wrong - the palaces use it too, and five other groupings.
+	rmDefineClass("classNavalFort");
+	rmDefineClass("classPirateCampS");
 
 	// ========================================================================
 	//  1b. GENERIC CONSTRAINTS - every order-free constraint DEFINED here,
@@ -627,6 +751,11 @@ void main(void)
 	// own cells - 8 m keeps all of that off the promenade
 	int cliffOffStreet = rmCreateClassDistanceConstraint("cliffs off the street",
 		rmClassID("classStreet"), 1.0);
+	// GLOBAL: keep anything off the roads. classStreet already holds them,
+	// but only at 1 m - this is the real clearance, and it scales to any
+	// road added later.
+	int avoidRoad = rmCreateClassDistanceConstraint("off the roads",
+		rmClassID("classRoad"), 6.0);
 	int avoidWater10 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 9.0);
 	// trees stay one tile clear of the cliff
 	// Distance here is METRES, not a map fraction - every shipped map passes
@@ -648,13 +777,53 @@ void main(void)
 	"AbstractWall", 10.0);
 	int dockAvoidBlocks = rmCreateClassDistanceConstraint("docks off city blocks",
 		rmClassID("classBlock"), 8.0);
+	// 8 m is a DOCK number - fine for an area edge, far too close for a
+	// treasure that landed beside the sawmill. The shelf buildings use
+	// this instead; shelf trees keep the 8 m (a sawmill in the woods is
+	// what it should look like). The HOUSES went back to 8 m too: at 16 m
+	// all three stopped spawning - a house has to clear the sawmill, the
+	// food block, the tower, the mine and the other two houses, and 16 m
+	// on every one of those leaves no tile on the shelf.
+	int shelfOffBlocks = rmCreateClassDistanceConstraint("shelf off city blocks",
+		rmClassID("classBlock"), 16.0);
+	// The short one, for what only needs to not sit ON a block: shelf
+	// houses and shelf trees. 8 m was a dock radius borrowed for objects
+	// a quarter the size.
+	int avoidBlockShort = rmCreateClassDistanceConstraint("avoid block short",
+		rmClassID("classBlock"), 5.0);
 	// class, not unit type: still holds if the cannon proto changes later
 	int dockAvoidGunClass = rmCreateClassDistanceConstraint("docks off the guns",
 		rmClassID("classGun"), 6.0);
+	// dock cliffs keep 3 tiles (6 m) off the pirate camps.
+	// Kept for wildW / wildE, which still use both camps together.
+	int dockAvoidPirate = rmCreateClassDistanceConstraint("docks off the pirate camps",
+		rmClassID("classPirateCamp"), 1.0);
+	// Split per island. Distances are METRES (1 tile = 2 m):
+	//   north 0.01 m - effectively off
+	//   south 2.00 m - one tile
+	int dockAvoidPirateN = rmCreateClassDistanceConstraint("dock off north pirate camp",
+		rmClassID("classPirateCampN"), 0.01);
+	int dockAvoidPirateS = rmCreateClassDistanceConstraint("dock off south pirate camp",
+		rmClassID("classPirateCampS"), 3.0);
+
+	// The class fence was a BOX round the whole camp grouping, which is why
+	// the dock cliff cut a rectangle out of the settlement. These three read
+	// concrete units instead, so the cliff follows the shape of what is
+	// actually standing there. Metres; 1 tile = 2 m.
+	// Placement order is fine: the camps go down at :1314 / :1335 and the
+	// dock cliffs are built last, at :2443 / :2469.
+	int avoidSocketPirate = rmCreateTypeDistanceConstraint("dock off the pirate socket",
+		"zpSocketPirates", 8.0);
+	int avoidPathBlock = rmCreateTypeDistanceConstraint("dock off path blocks",
+		"SPCPathBlock3", 7.0);
+	int avoidMarketStall = rmCreateTypeDistanceConstraint("dock off market stalls",
+		"zpPropJewishMarketStall", 8.0);
 
 	// -- countryside fill --
 	int fillAvoidCliff = rmCreateClassDistanceConstraint("fill off cliffs",
-		rmClassID("classCliff"), 10.0);
+		rmClassID("classCliff"), 12.0);
+	int fillAvoidCliffShort = rmCreateClassDistanceConstraint("fill off cliffs short",
+		rmClassID("classCliff"), 3.0);
 
 	// -- world circle --
 	// keep countryside objects INSIDE the world circle (a treasure was
@@ -754,8 +923,7 @@ void main(void)
 	shoreScaffold(nx3, nRouteAsk + rmZTilesToFraction(northTradeDist), 290);
 	shoreScaffold(sx3, sRouteAsk - rmZTilesToFraction(southTradeDist), 290);
 	// flank harbours: x needs no lane, z uses the nominal middle row (z3)
-	shoreScaffold(nx5 + flankProm + rmXTilesToFraction(northFlankDist), nz3Ask, 290);
-	shoreScaffold(sx1 - flankProm - rmXTilesToFraction(southFlankDist), sz3Ask, 290);
+	// harbours 3 / 4 removed - their scaffolds go with them; 5 / 6 keep theirs
 	shoreScaffold(nx5 + flankProm + rmXTilesToFraction(northFlankDist),
 		nz3Ask - rmZTilesToFraction(northFlank2Toward), 290);
 	shoreScaffold(sx1 - flankProm - rmXTilesToFraction(southFlankDist),
@@ -766,10 +934,9 @@ void main(void)
 	// camp needs, which is what made the shore look bloated.
 	// Tightened to 452 tiles = 47.9 m disc - 3.8 m clear of the grouping.
 	// Floor is 382 tiles (44.1 m); below that the camp overhangs the land.
-	shoreScaffold(nx5 + flankProm + rmXTilesToFraction(northPirateDist),
-		nz3Ask + rmZTilesToFraction(northPirateBack), 452);
-	shoreScaffold(sx1 - flankProm - rmXTilesToFraction(southPirateDist),
-		sz3Ask - rmZTilesToFraction(southPirateBack), 452);
+	// The island under each camp, reading the SAME coordinate the camp reads.
+	shoreScaffold(nPirateX, nPirateZ, pirateIslandTiles);
+	shoreScaffold(sPirateX, sPirateZ, pirateIslandTiles);
 	// No scaffold behind the pirate camps - the deco does not need one.
 
 	// ========================================================================
@@ -778,7 +945,7 @@ void main(void)
 	int tradeRouteN = rmCreateTradeRoute();
 	// north lane
 	rmAddTradeRouteWaypoint(tradeRouteN, 0.90, 0.90);   // NE corner
-	rmAddTradeRouteWaypoint(tradeRouteN, 0.70, 0.76);   // past flank harbour
+	rmAddTradeRouteWaypoint(tradeRouteN, 0.70, 0.63);   // past flank harbour
 	rmAddTradeRouteWaypoint(tradeRouteN, 0.70, nRouteAsk);   // into channel
 	rmAddTradeRouteWaypoint(tradeRouteN, 0.50, nRouteAsk);   // mid channel
 	rmAddTradeRouteWaypoint(tradeRouteN, 0.25, nRouteAsk);   // corner
@@ -790,7 +957,7 @@ void main(void)
 	int tradeRouteS = rmCreateTradeRoute();
 	// south lane
 	rmAddTradeRouteWaypoint(tradeRouteS, 0.10, 0.10);   // SW corner
-	rmAddTradeRouteWaypoint(tradeRouteS, 0.27, 0.25);   // past flank harbour
+	rmAddTradeRouteWaypoint(tradeRouteS, 0.27, 0.37);   // past flank harbour
 	rmAddTradeRouteWaypoint(tradeRouteS, 0.27, sRouteAsk);   // into channel
 	rmAddTradeRouteWaypoint(tradeRouteS, 0.50, sRouteAsk);   // mid channel
 	rmAddTradeRouteWaypoint(tradeRouteS, 0.75, sRouteAsk);   // corner
@@ -848,10 +1015,20 @@ void main(void)
 	float nFlank2Z = nz3 - rmZTilesToFraction(northFlank2Toward);
 	float sFlank2Z = sz3 + rmZTilesToFraction(southFlank2Toward);
 
-	float nPirateX = nx5 + flankProm + rmXTilesToFraction(northPirateDist);
-	float sPirateX = sx1 - flankProm - rmXTilesToFraction(southPirateDist);
-	float nPirateZ = nz3 + rmZTilesToFraction(northPirateBack);
-	float sPirateZ = sz3 - rmZTilesToFraction(southPirateBack);
+	// PIRATE CAMPS moved onto the old strait-beach spots, where the deco
+	// towers stand. These anchors drive the river, the island placement and
+	// the pirate water flags - all of which follow automatically.
+	// -5 tiles in X, toward the south-west. The scaffold above carries the
+	// same shift - it repeats the coordinate because it is built first.
+	// Camp coordinates are NOT defined here any more. They are derived once,
+	// straight after rmSetMapSize - search SINGLE SOURCE OF TRUTH.
+
+	// WHERE THE PIRATES USED TO BE. decoNEZ2/Z3 and decoSWZ2/Z3 derive from
+	// this, and they position FOUR PLAYER water flags. Keeping the old value
+	// here is what stops the harbours - and the AI dock builders that spawn
+	// on them - being dragged into the strait with the camps.
+	float nPirateZDeco = nz3 + rmZTilesToFraction(decoOldPirateBackN);
+	float sPirateZDeco = sz3 - rmZTilesToFraction(decoOldPirateBackS);
 
 	// ========================================================================
 	//  5b. PLAYERS - the Florence system (zp_z_zflorence.xs 51-160)
@@ -1017,8 +1194,7 @@ void main(void)
 	int gunSE = rmCreateGrouping("gun se", gunSouthShore);
 	int tradeN = rmCreateGrouping("trade harbour n", tradeHarbourN);
 	int tradeS = rmCreateGrouping("trade harbour s", tradeHarbourS);
-	int trade3 = rmCreateGrouping("trade harbour 3", tradeHarbour3);
-	int trade4 = rmCreateGrouping("trade harbour 4", tradeHarbour4);
+	// trade harbours 3 / 4 removed - one flank harbour per side, 5 and 6
 	int trade5 = rmCreateGrouping("trade harbour 5", tradeHarbour5);
 	int trade6 = rmCreateGrouping("trade harbour 6", tradeHarbour6);
 	int pirateN = rmCreateGrouping("pirates north", piratesNorth);
@@ -1036,8 +1212,7 @@ void main(void)
 	shoreRiver(sx5, sGunZ + rmZTilesToFraction(3));
 	shoreRiver(nx3, nTradeZ - rmZTilesToFraction(4));
 	shoreRiver(sx3, sTradeZ + rmZTilesToFraction(4));
-	shoreRiver(nFlankX, nFlankZ);
-	shoreRiver(sFlankX, sFlankZ);
+	// no river for harbours 3 / 4 - removed
 	shoreRiver(nFlankX, nFlank2Z);
 	shoreRiver(sFlankX, sFlank2Z);
 	// pirate platform is 25 t; scaffold 900 = disc 33.9 t; river 36x28
@@ -1045,8 +1220,8 @@ void main(void)
 	// cover -3 t/side is the proven-safe regime, over-cover breaks shores)
 	// PIRATE RIVERS REMOVED - they are 28 wide with 0.06 reach, far bigger than
 	// the width-13 gun rivers, and they were eating the coastline.
-	shoreRiver(nPirateX, nPirateZ, 18, 0.038);
-	shoreRiver(sPirateX, sPirateZ, 18, 0.038);
+	shoreRiver(nPirateX, nPirateZ, pirateRiverWidth, pirateRiverReach);
+	shoreRiver(sPirateX, sPirateZ, pirateRiverWidth, pirateRiverReach);
 
 	// PHASE B - only now the guns go down
 	// classGun BEFORE placement, so the class constraint below sees them
@@ -1147,6 +1322,9 @@ void main(void)
 		rmXMetersToFraction(xsVectorGetX(flank2LocS)) + rmXMetersToFraction(h6GroupOffX),
 		rmZMetersToFraction(xsVectorGetZ(flank2LocS)) + rmZMetersToFraction(h6GroupOffZ), 0);
 
+	// class BEFORE placement, so the dock constraint can see it
+	rmAddGroupingToClass(pirateN, rmClassID("classPirateCamp"));
+	rmAddGroupingToClass(pirateN, rmClassID("classPirateCampN"));
 	placeShoreIsland(pirateN, nPirateX, nPirateZ);   // north island, back of its coast
 	// PIRATE WATER FLAG - outside the grouping (a grouping selects as a
 	// single unit, so a flag inside it can never be targeted). Same authored
@@ -1156,52 +1334,30 @@ void main(void)
 	int pirateFlagDefN = rmCreateObjectDef("pirate water flag north");
 	rmAddObjectDefItem(pirateFlagDefN, "zpPirateWaterSpawnFlag1", 1, 1.0);
 	rmPlaceObjectDefAtLoc(pirateFlagDefN, 0,
-		nPirateX + rmXMetersToFraction(13.2335),
-		nPirateZ - rmZMetersToFraction(14.3030));
+		// Offset flag flipped to the water side. The +90 rotation was right
+		// about the ANGLE (_03 is _02 turned +90, measured at 3.42 m mean unit
+		// distance) but put the flag on LAND - the authored offset is a point
+		// in open water beside the camp, and which side the water is on does
+		// not follow from the unit layout. Both components negated.
+		// +2 m further out to sea on both axes.
+		// Offset in metres from the camp centre - knobs at the top of the file.
+		nPirateX + rmXMetersToFraction(nPirateFlagDX),
+		nPirateZ + rmZMetersToFraction(nPirateFlagDZ));
 
+	rmAddGroupingToClass(pirateS, rmClassID("classPirateCamp"));
+	rmAddGroupingToClass(pirateS, rmClassID("classPirateCampS"));
 	placeShoreIsland(pirateS, sPirateX, sPirateZ);   // south island, back of its coast
 	int pirateFlagDefS = rmCreateObjectDef("pirate water flag south");
 	rmAddObjectDefItem(pirateFlagDefS, "zpPirateWaterSpawnFlag2", 1, 1.0);
 	rmPlaceObjectDefAtLoc(pirateFlagDefS, 0,
-		sPirateX - rmXMetersToFraction(13.5373),
-		sPirateZ + rmZMetersToFraction(16.0665));
+		// Flipped to the water side, same as the north flag - the -90
+		// rotation had the angle right but put the flag on LAND. Which
+		// side the water lies on is not derivable from the unit layout.
+		// Offset in metres from the camp centre - see the north flag.
+		sPirateX + rmXMetersToFraction(sPirateFlagDX),
+		sPirateZ + rmZMetersToFraction(sPirateFlagDZ));
 
 
-	int flankSocketN = rmCreateObjectDef("flank harbour socket north");
-	rmSetObjectDefTradeRouteID(flankSocketN, tradeRouteN);
-	rmAddObjectDefItem(flankSocketN, "zpOrientalFerry", 1, 0.0);
-	rmSetObjectDefMinDistance(flankSocketN, 0.0);
-	rmSetObjectDefMaxDistance(flankSocketN, 0.5);
-	rmPlaceObjectDefAtLoc(flankSocketN, 0,
-		nFlankX + rmXMetersToFraction(h3SocketOffX),
-		nFlankZ + rmZMetersToFraction(h3SocketOffZ));
-	vector flankLocN = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(flankSocketN, 0));
-
-	// INSTANCE placement: its baked Nugget must stay targetable
-	rmSetGroupingMinDistance(trade3, 0.0);
-	rmSetGroupingMaxDistance(trade3, 0.01);
-	rmAddGroupingToClass(trade3, rmClassID("classPlateau"));
-	int trade3Placement = rmPlaceGroupingInstanceAtLoc(trade3,
-		rmXMetersToFraction(xsVectorGetX(flankLocN)) + rmXMetersToFraction(h3GroupOffX),
-		rmZMetersToFraction(xsVectorGetZ(flankLocN)) + rmZMetersToFraction(h3GroupOffZ), 0);
-
-	int flankSocketS = rmCreateObjectDef("flank harbour socket south");
-	rmSetObjectDefTradeRouteID(flankSocketS, tradeRouteS);
-	rmAddObjectDefItem(flankSocketS, "zpOrientalFerry", 1, 0.0);
-	rmSetObjectDefMinDistance(flankSocketS, 0.0);
-	rmSetObjectDefMaxDistance(flankSocketS, 0.5);
-	rmPlaceObjectDefAtLoc(flankSocketS, 0,
-		sFlankX + rmXMetersToFraction(h4SocketOffX),
-		sFlankZ + rmZMetersToFraction(h4SocketOffZ));
-	vector flankLocS = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(flankSocketS, 0));
-
-	// INSTANCE placement: its baked Nugget must stay targetable
-	rmSetGroupingMinDistance(trade4, 0.0);
-	rmSetGroupingMaxDistance(trade4, 0.01);
-	rmAddGroupingToClass(trade4, rmClassID("classPlateau"));
-	int trade4Placement = rmPlaceGroupingInstanceAtLoc(trade4,
-		rmXMetersToFraction(xsVectorGetX(flankLocS)) + rmXMetersToFraction(h4GroupOffX),
-		rmZMetersToFraction(xsVectorGetZ(flankLocS)) + rmZMetersToFraction(h4GroupOffZ), 0);
 	// --- TRADE HARBOURS, the Venice way ----------------------------------
 	// A capturable socket never works as part of a grouping (guide 19.7 step 5),
 	// so it is placed SEPARATELY first, at the exact spot it used to occupy in
@@ -1250,110 +1406,195 @@ void main(void)
 
 	rmSetStatusText("", 0.40);
 
+	// --- the two invisible lane guards (the red ovals) ---------------------
+	int guardW = rmCreateArea("west lane guard");
+	rmSetAreaWarnFailure(guardW, false);
+	rmSetAreaSize(guardW, 0.05, 0.05);
+	rmSetAreaCoherence(guardW, 0.6);
+	// TEST ONLY: raised above sea + painted, so the guard is visible.
+	// Remove these two lines to make it invisible again.
+	//rmSetAreaBaseHeight(guardW, 2.0);
+	//rmSetAreaMix(guardW, "italy_grass");
+	rmSetAreaLocation(guardW, 0.25, nRouteAsk);
+	// along the north lane's west run...
+	rmAddAreaInfluenceSegment(guardW, 0.50, nRouteAsk, 0.25, nRouteAsk);
+	// ...and the north lane's west exit diagonal
+	rmAddAreaInfluenceSegment(guardW, 0.25, nRouteAsk, 0.00, 0.30);
+	rmSetAreaObeyWorldCircleConstraint(guardW, false);
+	rmBuildArea(guardW);
+
+	int guardE = rmCreateArea("east lane guard");
+	rmSetAreaWarnFailure(guardE, false);
+	rmSetAreaSize(guardE, 0.05, 0.05);
+	rmSetAreaCoherence(guardE, 0.6);
+	// TEST ONLY: raised above sea + painted, so the guard is visible.
+	// Remove these two lines to make it invisible again.
+	//rmSetAreaBaseHeight(guardE, 2.0);
+	//rmSetAreaMix(guardE, "italy_grass");
+	rmSetAreaLocation(guardE, 0.75, sRouteAsk);
+	// along the south lane's east run...
+	rmAddAreaInfluenceSegment(guardE, 0.50, sRouteAsk, 0.75, sRouteAsk);
+	// ...and the south lane's east exit diagonal
+	rmAddAreaInfluenceSegment(guardE, 0.75, sRouteAsk, 1.00, 0.70);
+	rmSetAreaObeyWorldCircleConstraint(guardE, false);
+	rmBuildArea(guardE);
+
+	// cliffs keep a small gap off the guards; the guards carry the lanes
+	// fallback only - the guards carry the lanes; this catches an overlap
+	// if a route snaps somewhere a guard blob happens to miss
+	int cliffLaneFallback = rmCreateTradeRouteDistanceConstraint("cliff lane fallback", 8.0);
+	// the countryside sits flush (0.0) because it is AT city height; the
+	int avoidGuardW = rmCreateAreaDistanceConstraint("off west guard", guardW, 4.0);
+	int avoidGuardE = rmCreateAreaDistanceConstraint("off east guard", guardE, 4.0);
+	int avoidGuardW_far = rmCreateAreaDistanceConstraint("off west guard far", guardW, 13.0);
+	int avoidGuardE_far = rmCreateAreaDistanceConstraint("off east guard far", guardE, 13.0);
+	int avoidGuardW_far2 = rmCreateAreaDistanceConstraint("off west guard far 2", guardW, 42.0);
+	int avoidGuardE_far2 = rmCreateAreaDistanceConstraint("off east guard far 2", guardE, 42.0);
+
+	// --- how far each cliff may bite into the FUTURE city ------------------
+	// cityNbox / citySbox do not exist yet (they are built ~160 lines below),
+	// so the city's X edge is repeated here. Z is deliberately left 0..1: a
+	// box that misses the cliff would delete it silently, because
+	// rmSetAreaWarnFailure is false on both.
+	int wildBoxN = rmCreateBoxConstraint("wild cliff into north city",
+		0.0, 0.0,
+		nx1 - margin - rmXTilesToFraction(cityExtendTilesN)
+			+ rmXTilesToFraction(wildIntoCity), 1.0, 0.01);
+	int wildBoxE = rmCreateBoxConstraint("wild cliff into south city",
+		sx5 + margin + rmXTilesToFraction(cityExtendTilesS)
+			- rmXTilesToFraction(wildIntoCity), 0.0,
+		1.0, 1.0, 0.01);
+	
+	// --- the cliffs: coherent blobs shaped ONLY by the constraints ---------
+	int wildW = rmCreateArea("west flank cliff");
+	rmSetAreaWarnFailure(wildW, false);
+	// over-ask on purpose: the pocket between city, guard and rim is the
+	// shape; the ask just has to be big enough to flood it
+	rmSetAreaSize(wildW, 0.60, 0.160);
+	rmSetAreaCoherence(wildW, 1.0);
+	rmSetAreaLocation(wildW, 0.20, 0.75);
+	rmSetAreaBaseHeight(wildW, cityHeight);
+	rmSetAreaSmoothDistance(wildW, 5);
+	rmSetAreaHeightBlend(wildW, 2);
+	rmSetAreaMix(wildW, hinterMix);
+		rmAddAreaTerrainLayer(wildW, "carolinas\ground_shoreline2_car", 0, 1);
+		rmAddAreaTerrainLayer(wildW, "carolinas\ground_shoreline3_car", 1, 3);
+	
+	// no classCliff: the filler flows over this mass; open WATER is the
+	// filler's outer fence instead (avoid-water constraint)
+	// same constraint the back countryside uses: flush to the cobbles
+	rmAddAreaConstraint(wildW, cliffOffStreet);
+	rmAddAreaConstraint(wildW, cliffLaneFallback);
+	rmAddAreaConstraint(wildW, avoidGuardW);
+	rmAddAreaConstraint(wildW, avoidGuardE);
+	rmAddAreaConstraint(wildW, wildBoxN);
+	rmSetAreaObeyWorldCircleConstraint(wildW, false);
+	rmAddAreaConstraint(wildW, dockAvoidPirate);
+	rmBuildArea(wildW);
+
+	int wildE = rmCreateArea("east flank cliff");
+	rmSetAreaWarnFailure(wildE, false);
+	rmSetAreaSize(wildE, 0.16, 0.16);
+	rmSetAreaCoherence(wildE, 1.0);
+	rmSetAreaLocation(wildE, 0.80, 0.25);
+	rmSetAreaBaseHeight(wildE, cityHeight);
+	rmSetAreaSmoothDistance(wildE, 5);
+	rmSetAreaHeightBlend(wildE, 2);
+	rmSetAreaMix(wildE, hinterMix);
+		rmAddAreaTerrainLayer(wildE, "carolinas\ground_shoreline2_car", 0, 1);
+		rmAddAreaTerrainLayer(wildE, "carolinas\ground_shoreline3_car", 1, 3);
+
+	// no classCliff: the filler flows over this mass; open WATER is the
+	// filler's outer fence instead (avoid-water constraint)
+	rmAddAreaConstraint(wildE, cliffOffStreet);
+	rmAddAreaConstraint(wildE, cliffLaneFallback);
+	rmAddAreaConstraint(wildE, avoidGuardW);
+	rmAddAreaConstraint(wildE, avoidGuardE);
+	rmAddAreaConstraint(wildE, wildBoxE);
+	rmSetAreaObeyWorldCircleConstraint(wildE, false);
+	rmAddAreaConstraint(wildE, dockAvoidPirate);
+	rmBuildArea(wildE);
+
+	// ====================================================================
+	//  INNER FLANK CLIFFS - the mirror side.
+	//  wildW (0.20,0.75) and wildE (0.80,0.25) hold the OUTER flanks; these
+	//  two fill the opposite corners, between the city and the guards.
+	//  Recipe copied from the beach map's flank cliffs.
+	//  wildW / wildE have NO cliff type ON PURPOSE - in the redesign they
+	//  are plain raised terrain, not cliffs. These two are the cliffs.
+	// ====================================================================
+
+
+
 	// ========================================================================
 	//  7. THE CITY  -  painted last, over everything
 	// ========================================================================
 	
 
-	// City Beaches
-	// EDGE RING. Beaches may only live in a band hugging the map edge, so each
-	// player gets a strip of hinterland beach instead of sand in mid-map.
-	// rmCreatePieConstraint(name, centreX, centreZ, inner, outer, startAng, endAng)
-	// - the ring form from the guide (2340). Radii are METRES from map centre;
-	// half-width is 300 m, so 260..300 is the outermost 40 m. Outer overshoots
-	// the rim on purpose, otherwise the band the area can grow into gets shaved.
-	// The two shores need different depths - the north band reads well wide, the
-	// south one did not, so they are separate rings now. Only the INNER radius
-	// differs: bigger subtraction = beach reaches further inland.
-	int beachEdgeRingN = rmCreatePieConstraint("north beach hugs the map edge",
-		0.5, 0.5,
-		rmXFractionToMeters(0.5) - 32.0,   // 257..300 - 43 m band
-		rmXFractionToMeters(0.5) + 40.0,
-		rmDegreesToRadians(0), rmDegreesToRadians(360));
-	int beachEdgeRingS = rmCreatePieConstraint("south beach hugs the map edge",
-		0.5, 0.5,
-		rmXFractionToMeters(0.5) - 22.0,   // 273..300 - 27 m band
-		rmXFractionToMeters(0.5) + 40.0,
-		rmDegreesToRadians(0), rmDegreesToRadians(360));
-
-	int beachN = rmCreateArea("landing beach north");
-	rmSetAreaWarnFailure(beachN, false);
-	rmSetAreaSize(beachN, rmAreaTilesToFraction(1700), rmAreaTilesToFraction(1700));
-	rmSetAreaLocation(beachN, 0.7, 0.95);
-	rmSetAreaCoherence(beachN, 1.0);
-	rmSetAreaBaseHeight(beachN, 3);
-	rmSetAreaHeightBlend(beachN, 2);
-	rmSetAreaSmoothDistance(beachN, 10);
-	rmSetAreaMix(beachN, hinterMix);
-		rmAddAreaTerrainLayer(beachN, "carolinas\ground_shoreline2_car", 0, 2);
-		rmAddAreaTerrainLayer(beachN, "carolinas\ground_shoreline3_car", 2, 4);
-	rmSetAreaElevationVariation(beachN, 0.0);
-	rmSetAreaObeyWorldCircleConstraint(beachN, false);
-	rmAddAreaConstraint(beachN, avoidTraderoute5);
-	rmAddAreaConstraint(beachN, beachEdgeRingN);
-	rmBuildArea(beachN);
-
-	int beachS = rmCreateArea("landing beach south");
-	rmSetAreaWarnFailure(beachS, false);
-	rmSetAreaSize(beachS, rmAreaTilesToFraction(1500), rmAreaTilesToFraction(1500));
-	rmSetAreaLocation(beachS, 0.3, 0.05);
-	rmSetAreaCoherence(beachS, 1.0);
-	rmSetAreaBaseHeight(beachS, 3);
-	rmSetAreaHeightBlend(beachS, 2);
-	rmSetAreaSmoothDistance(beachS, 10);
-	rmSetAreaMix(beachS, hinterMix);
-		rmAddAreaTerrainLayer(beachS, "carolinas\ground_shoreline2_car", 0, 2);
-		rmAddAreaTerrainLayer(beachS, "carolinas\ground_shoreline3_car", 2, 4);
-	rmSetAreaElevationVariation(beachS, 0.0);
-	rmSetAreaObeyWorldCircleConstraint(beachS, false);
-	rmAddAreaConstraint(beachS, avoidTraderoute5);
-	rmAddAreaConstraint(beachS, beachEdgeRingS);
-	rmBuildArea(beachS);
-
-	// STRAIT BEACHES - small landing shelves facing the channel, separate from
-	// the big edge beaches. Deliberately NOT given beachEdgeRingN/S: that ring
-	// starts 257 m out from centre and these sit at 116 m, so the constraint
-	// would reject every seed and they would silently build nothing.
+	// ---- CITY BEACHES: two, and only two ---------------------------------
+	// The big map-edge beaches (beachN / beachS) and the beachEdgeRing pie
+	// constraints that existed only to serve them are gone for good - the
+	// coasts are hand-built for the redesign and the generated ones fought
+	// the new terrain.
+	//
+	// What is left is the pair of small landing shelves at the TIPS of the
+	// city cliffs, directly beneath the lighthouses. They deliberately have
+	// no edge-ring constraint: that ring started 257 m out from centre and
+	// these sit at ~116 m, so it would reject every seed and silently build
+	// nothing.
+	//
+	// ONE OWNER FOR THE COORDINATE. lightNX/NZ/SX/SZ are declared HERE, not
+	// down at the lighthouse placement where they used to be, so the beach
+	// and the tower read the same four floats. Move the lightNAlongX /
+	// lightNOffZ knobs (:596) and the beach follows the tower - there is no
+	// second copy of the formula to forget.
+	float lightNX = nx5 + flankProm + rmXTilesToFraction(lightNAlongX);
+	float lightNZ = nRouteZ + rmZTilesToFraction(lightNOffZ);
+	float lightSX = sx1 - flankProm - rmXTilesToFraction(lightSAlongX);
+	float lightSZ = sRouteZ - rmZTilesToFraction(lightSOffZ);
+	
+	int beachTiles = 100;
+	// The north shelf alone sits a tile further out along x. The beach
+	// and the tower share lightNX, so this offset is applied to the
+	// AREA only - the lighthouse does not move with it. Sign stays
+	// outside the call: a tile helper ignores a negative argument.
+	int beachNOutX = 1;   // tiles, north beach only   // was 350 - these are meant to be small
+	
 	int beachStraitN = rmCreateArea("landing beach strait north");
 	rmSetAreaWarnFailure(beachStraitN, false);
-	rmSetAreaSize(beachStraitN, rmAreaTilesToFraction(350), rmAreaTilesToFraction(350));
-	rmSetAreaLocation(beachStraitN, 0.335, 0.57);
+	rmSetAreaSize(beachStraitN, rmAreaTilesToFraction(beachTiles), rmAreaTilesToFraction(beachTiles));
+	rmSetAreaLocation(beachStraitN, lightNX + rmXTilesToFraction(beachNOutX), lightNZ);
 	rmSetAreaCoherence(beachStraitN, 1.0);
 	rmSetAreaBaseHeight(beachStraitN, 3);
 	rmSetAreaHeightBlend(beachStraitN, 1);
 	rmSetAreaSmoothDistance(beachStraitN, 10);
-	rmSetAreaMix(beachStraitN, hinterMix);
-		rmAddAreaTerrainLayer(beachStraitN, "carolinas\ground_shoreline2_car", 0, 2);
-		rmAddAreaTerrainLayer(beachStraitN, "carolinas\ground_shoreline3_car", 2, 4);
+	// ONE terrain across the whole shelf - no mix, no depth layers, so it
+	// reads as bare rock under the tower rather than sand.
+	rmSetAreaTerrainType(beachStraitN, "new_england\cliff_inland_side_ne");
 	rmSetAreaElevationVariation(beachStraitN, 0.0);
 	rmSetAreaObeyWorldCircleConstraint(beachStraitN, false);
 	rmAddAreaConstraint(beachStraitN, avoidTraderoute5);
 	rmBuildArea(beachStraitN);
-
+	
 	int beachStraitS = rmCreateArea("landing beach strait south");
 	rmSetAreaWarnFailure(beachStraitS, false);
-	rmSetAreaSize(beachStraitS, rmAreaTilesToFraction(350), rmAreaTilesToFraction(350));
-	rmSetAreaLocation(beachStraitS, 0.673, 0.43);
+	rmSetAreaSize(beachStraitS, rmAreaTilesToFraction(beachTiles), rmAreaTilesToFraction(beachTiles));
+	rmSetAreaLocation(beachStraitS, lightSX, lightSZ);
 	rmSetAreaCoherence(beachStraitS, 1.0);
 	rmSetAreaBaseHeight(beachStraitS, 3);
 	rmSetAreaHeightBlend(beachStraitS, 1);
 	rmSetAreaSmoothDistance(beachStraitS, 10);
-	rmSetAreaMix(beachStraitS, hinterMix);
-		rmAddAreaTerrainLayer(beachStraitS, "carolinas\ground_shoreline2_car", 0, 2);
-		rmAddAreaTerrainLayer(beachStraitS, "carolinas\ground_shoreline3_car", 2, 4);
+	rmSetAreaTerrainType(beachStraitS, "new_england\cliff_inland_side_ne");
 	rmSetAreaElevationVariation(beachStraitS, 0.0);
 	rmSetAreaObeyWorldCircleConstraint(beachStraitS, false);
 	rmAddAreaConstraint(beachStraitS, avoidTraderoute5);
 	rmBuildArea(beachStraitS);
-
-	// Keep the wall dock cliffs off the strait beaches.
-	// 12 m, not 2. A cliff paints its face and smoothing OUTSIDE its own area -
-	// see line 624: "8 m keeps all of that off the promenade". 2 m is one tile,
-	// so the cliff simply spilled over the beach.
-	// Declared here because an area constraint needs the area already built.
-	int avoidBeachStraitN = rmCreateAreaDistanceConstraint("avoid strait beach north", beachStraitN, 1.0);
-	int avoidBeachStraitS = rmCreateAreaDistanceConstraint("avoid strait beach south", beachStraitS, 1.0);
-
+	
+	// avoidBeachStraitN/S and their four uses on dock2 / dock3 stay
+	// commented. They are definable again now that the areas exist, but
+	// re-arming them changes how the dock cliffs behave.
+	//int avoidBeachStraitN = rmCreateAreaDistanceConstraint("avoid strait beach north", beachStraitN, 1.0);
+	//int avoidBeachStraitS = rmCreateAreaDistanceConstraint("avoid strait beach south", beachStraitS, 1.0);
 
 	// --- district terrain: a plateau bounded to its own grid ---------------
 	// The box reaches nz6, so the island carries the empty back row as land.
@@ -1501,94 +1742,6 @@ void main(void)
 	// they simply flood the pocket left between the city (flush) and the
 	// guards. Wild edge, zero procedural surprises on the cliff itself.
 
-	// --- the two invisible lane guards (the red ovals) ---------------------
-	int guardW = rmCreateArea("west lane guard");
-	rmSetAreaWarnFailure(guardW, false);
-	rmSetAreaSize(guardW, 0.05, 0.05);
-	rmSetAreaCoherence(guardW, 0.6);
-	// TEST ONLY: raised above sea + painted, so the guard is visible.
-	// Remove these two lines to make it invisible again.
-	//rmSetAreaBaseHeight(guardW, 2.0);
-	//rmSetAreaMix(guardW, "italy_grass");
-	rmSetAreaLocation(guardW, 0.25, nRouteAsk);
-	// along the north lane's west run...
-	rmAddAreaInfluenceSegment(guardW, 0.50, nRouteAsk, 0.25, nRouteAsk);
-	// ...and the north lane's west exit diagonal
-	rmAddAreaInfluenceSegment(guardW, 0.25, nRouteAsk, 0.00, 0.30);
-	rmSetAreaObeyWorldCircleConstraint(guardW, false);
-	rmBuildArea(guardW);
-
-	int guardE = rmCreateArea("east lane guard");
-	rmSetAreaWarnFailure(guardE, false);
-	rmSetAreaSize(guardE, 0.05, 0.05);
-	rmSetAreaCoherence(guardE, 0.6);
-	// TEST ONLY: raised above sea + painted, so the guard is visible.
-	// Remove these two lines to make it invisible again.
-	//rmSetAreaBaseHeight(guardE, 2.0);
-	//rmSetAreaMix(guardE, "italy_grass");
-	rmSetAreaLocation(guardE, 0.75, sRouteAsk);
-	// along the south lane's east run...
-	rmAddAreaInfluenceSegment(guardE, 0.50, sRouteAsk, 0.75, sRouteAsk);
-	// ...and the south lane's east exit diagonal
-	rmAddAreaInfluenceSegment(guardE, 0.75, sRouteAsk, 1.00, 0.70);
-	rmSetAreaObeyWorldCircleConstraint(guardE, false);
-	rmBuildArea(guardE);
-
-	// cliffs keep a small gap off the guards; the guards carry the lanes
-	// fallback only - the guards carry the lanes; this catches an overlap
-	// if a route snaps somewhere a guard blob happens to miss
-	int cliffLaneFallback = rmCreateTradeRouteDistanceConstraint("cliff lane fallback", 8.0);
-	// the countryside sits flush (0.0) because it is AT city height; the
-	int avoidGuardW = rmCreateAreaDistanceConstraint("off west guard", guardW, 4.0);
-	int avoidGuardE = rmCreateAreaDistanceConstraint("off east guard", guardE, 4.0);
-	int avoidGuardW_far = rmCreateAreaDistanceConstraint("off west guard far", guardW, 13.0);
-	int avoidGuardE_far = rmCreateAreaDistanceConstraint("off east guard far", guardE, 13.0);
-	int avoidGuardW_far2 = rmCreateAreaDistanceConstraint("off west guard far 2", guardW, 22.0);
-	int avoidGuardE_far2 = rmCreateAreaDistanceConstraint("off east guard far 2", guardE, 22.0);
-
-	// --- the cliffs: coherent blobs shaped ONLY by the constraints ---------
-	int wildW = rmCreateArea("west flank cliff");
-	rmSetAreaWarnFailure(wildW, false);
-	// over-ask on purpose: the pocket between city, guard and rim is the
-	// shape; the ask just has to be big enough to flood it
-	rmSetAreaSize(wildW, 0.155, 0.155);
-	rmSetAreaCoherence(wildW, 1.0);
-	rmSetAreaLocation(wildW, 0.20, 0.75);
-	rmSetAreaBaseHeight(wildW, cityHeight + balanceRise);
-	rmSetAreaSmoothDistance(wildW, 5);
-	rmSetAreaMix(wildW, hinterMix);
-	rmSetAreaCliffType(wildW, gCliffTypeImpassable);
-	rmSetAreaCliffEdge(wildW, 1, 1.0, 0.1, 1.0, 0);
-	rmSetAreaCliffHeight(wildW, 0, 0.0, 1.0);
-	// no classCliff: the filler flows over this mass; open WATER is the
-	// filler's outer fence instead (avoid-water constraint)
-	// same constraint the back countryside uses: flush to the cobbles
-	rmAddAreaConstraint(wildW, cliffOffStreet);
-	rmAddAreaConstraint(wildW, cliffLaneFallback);
-	rmAddAreaConstraint(wildW, avoidGuardW);
-	rmAddAreaConstraint(wildW, avoidGuardE);
-	rmSetAreaObeyWorldCircleConstraint(wildW, false);
-	rmBuildArea(wildW);
-
-	int wildE = rmCreateArea("east flank cliff");
-	rmSetAreaWarnFailure(wildE, false);
-	rmSetAreaSize(wildE, 0.15, 0.15);
-	rmSetAreaCoherence(wildE, 1.0);
-	rmSetAreaLocation(wildE, 0.80, 0.25);
-	rmSetAreaBaseHeight(wildE, cityHeight + balanceRise);
-	rmSetAreaSmoothDistance(wildE, 5);
-	rmSetAreaMix(wildE, hinterMix);
-	rmSetAreaCliffType(wildE, gCliffTypeImpassable);
-	rmSetAreaCliffEdge(wildE, 1, 1.0, 0.1, 1.0, 0);
-	rmSetAreaCliffHeight(wildE, 0, 0.0, 1.0);
-	// no classCliff: the filler flows over this mass; open WATER is the
-	// filler's outer fence instead (avoid-water constraint)
-	rmAddAreaConstraint(wildE, cliffOffStreet);
-	rmAddAreaConstraint(wildE, cliffLaneFallback);
-	rmAddAreaConstraint(wildE, avoidGuardW);
-	rmAddAreaConstraint(wildE, avoidGuardE);
-	rmSetAreaObeyWorldCircleConstraint(wildE, false);
-	rmBuildArea(wildE);
 
 // --- the cliffs: coherent blobs shaped ONLY by the constraints ---------
 	int wildLowW = rmCreateArea("west flank cliff LOW");
@@ -1598,12 +1751,7 @@ void main(void)
 	rmSetAreaSize(wildLowW, 0.145, 0.145);
 	rmSetAreaCoherence(wildLowW, 1.0);
 	rmSetAreaLocation(wildLowW, 0.20, 0.75);
-	rmSetAreaBaseHeight(wildLowW, cityHeight);
 	rmSetAreaSmoothDistance(wildLowW, 5);
-	rmSetAreaMix(wildLowW, hinterMix);
-	rmSetAreaCliffType(wildLowW, hinterCliff);
-	rmSetAreaCliffEdge(wildLowW, 1, 1.0, 0.1, 1.0, 0);
-	rmSetAreaCliffHeight(wildLowW, 0, 0.0, 1.0);
 	// no classCliff: the countryside FILLER must lie over this mass, and
 	// its avoid-cliff constraint would otherwise reject every seed here
 	// same constraint the back countryside uses: flush to the cobbles
@@ -1620,12 +1768,7 @@ void main(void)
 	rmSetAreaSize(wildLowE, 0.145, 0.145);
 	rmSetAreaCoherence(wildLowE, 1.0);
 	rmSetAreaLocation(wildLowE, 0.80, 0.25);
-	rmSetAreaBaseHeight(wildLowE, cityHeight);
 	rmSetAreaSmoothDistance(wildLowE, 5);
-	rmSetAreaMix(wildLowE, hinterMix);
-	rmSetAreaCliffType(wildLowE, hinterCliff);
-	rmSetAreaCliffEdge(wildLowE, 1, 1.0, 0.1, 1.0, 0);
-	rmSetAreaCliffHeight(wildLowE, 0, 0.0, 1.0);
 	// no classCliff: the countryside FILLER must lie over this mass, and
 	// its avoid-cliff constraint would otherwise reject every seed here
 	rmAddAreaConstraint(wildLowE, cliffOffStreet);
@@ -1635,11 +1778,6 @@ void main(void)
 	//rmAddAreaConstraint(wildLowE, avoidWater10);
 	rmSetAreaObeyWorldCircleConstraint(wildLowE, false);
 	rmBuildArea(wildLowE);
-
-
-	
-
-
 
 
 	// --- trees, placed one at a time across each countryside ---------------
@@ -1725,13 +1863,16 @@ void main(void)
 	int isPark      = rmCreateGrouping("is park",         "IS_House_Block_Park");
 	int isTreasure1 = rmCreateGrouping("is treasure 01",  "IS_House_Block_Treasure_01");
 	int isTreasure2 = rmCreateGrouping("is treasure 02",  "IS_House_Block_Treasure_02");
+	int isTreasure3 = rmCreateGrouping("is treasure 03",  "IS_House_Block_Treasure_03");
+	// The fourth treasure block is the ACADEMY, and it is not a plain
+	// treasure: it carries its own nugget on difficulty 523, so it is
+	// declared and latched separately - the embassy pattern.
+	int isAcademy   = rmCreateGrouping("is academy",      "IS_House_Block_Academy");
 	int isResAll1   = rmCreateGrouping("is res all 1",    "IS_Resource_Block_All1");
 	int isResAll2   = rmCreateGrouping("is res all 2",    "IS_Resource_Block_All2");
-	int isFood      = rmCreateGrouping("is food",         "IS_Resource_Block_Food1");
 	int isGold      = rmCreateGrouping("is gold",         "IS_Resource_Block_Gold1");
 	int isMenagere  = rmCreateGrouping("is menagere",     "IS_Resource_Block_Menagere");
 	int isMosque    = rmCreateGrouping("is mosque",       "IS_Resource_Block_Mosque");
-	int isWood      = rmCreateGrouping("is wood",         "IS_Resource_Block_Wood_01");
 	// ---- SULTAN PALACE: the waterfront objective ------------------------
 	// One per island, on the row-1 cell hard against the city wall. Square
 	// 15x15 grouping (29.4 x 29.4 m), so the south copy is the same silhouette
@@ -1764,13 +1905,13 @@ void main(void)
 	xsArraySetInt(gCityBlocks,  7, isPark);
 	xsArraySetInt(gCityBlocks,  8, isTreasure1);
 	xsArraySetInt(gCityBlocks,  9, isTreasure2);
-	xsArraySetInt(gCityBlocks, 10, isResAll1);
-	xsArraySetInt(gCityBlocks, 11, isResAll2);
-	xsArraySetInt(gCityBlocks, 12, isFood);
-	xsArraySetInt(gCityBlocks, 13, isGold);
-	xsArraySetInt(gCityBlocks, 14, isMenagere);
-	xsArraySetInt(gCityBlocks, 15, isMosque);
-	xsArraySetInt(gCityBlocks, 16, isWood);
+	xsArraySetInt(gCityBlocks, 10, isTreasure3);
+	xsArraySetInt(gCityBlocks, 11, isAcademy);
+	xsArraySetInt(gCityBlocks, 12, isResAll1);
+	xsArraySetInt(gCityBlocks, 13, isResAll2);
+	xsArraySetInt(gCityBlocks, 14, isGold);
+	xsArraySetInt(gCityBlocks, 15, isMenagere);
+	xsArraySetInt(gCityBlocks, 16, isMosque);
 	xsArraySetInt(gCityBlocks, 17, isAuditore);
 	xsArraySetInt(gCityBlocks, 18, isOrthodox);
 	xsArraySetInt(gCityBlocks, 19, isPhanar);
@@ -1831,7 +1972,7 @@ void main(void)
 	rmAddGroupingToClass(parkS, rmClassID("classBlock"));
 	rmPlaceGroupingAtLoc(parkS, 0, sx3, sz1);
 
-	// ---- NATIVES: two per island, flanking the park on the canal shore ----
+	// ---- NATIVES: two per island, one row back off the canal shore -------
 	// EUROPE = north island (Orthodox + Phanar), ASIA = south island (Sufi +
 	// Auditore). Each pair is one RELIGIOUS and one ROYAL block, and a single
 	// coin flip swaps which of the two takes the west slot on BOTH islands -
@@ -1891,13 +2032,13 @@ void main(void)
 	rmEchoInfo("natives: flipRel=" + flipRel + " flipRoy=" + flipRoy
 		+ " slotN=" + flipSlotN + " slotS=" + flipSlotS);
 
-	// canal row (z1), pushed out to the OUTER columns so the two natives sit
-	// at opposite ends of the waterfront with the park between them
-	// The wall-side row-1 cell on each island now carries the palace, so the
-	// native that used to sit there moves straight inland to row 3, same
-	// column - next to the gate, reachable by city AND countryside players.
-	// The other native keeps its waterfront cell, so each island still shows
-	// one native on the canal row with the park between.
+	// ROW 1 IS THE MILITARY / CEREMONIAL FRONT - no native stands on it:
+	//    north   x1 pool | x2 pool | x3 park | x4 PALACE | x5 FORT
+	//    south   x1 FORT | x2 PALACE | x3 park | x4 pool | x5 pool
+	// The shore native moved one row back to z2 on its own column, and the
+	// fort took the coastline cell it left. The palace sits between the park
+	// and the fort. The other native stays inland on row 3, same column -
+	// next to the gate, reachable by city AND countryside players.
 	// Palace guardians: zpNuggetSultanPalace (521) - 8 x deGuardianJanissary,
 	// every one of them STANDING. Cloned from zpNuggetFactoryIstanbul (516) but
 	// with two more guards and none of its seated pair - that nugget gives its
@@ -1908,12 +2049,12 @@ void main(void)
 	rmSetNuggetDifficulty(521, 521);
 	// INSTANCE placement: the only way to query the ids back out.
 	// Note the argument order differs from rmPlaceGroupingAtLoc.
-	int palacePlacementN = rmPlaceGroupingInstanceAtLoc(cityPalaceN, nx1, nz1, 0);
-	rmPlaceGroupingAtLoc(nEast,       0, nx5, nz1);
+	int palacePlacementN = rmPlaceGroupingInstanceAtLoc(cityPalaceN, nx4, nz1, 0);
+	rmPlaceGroupingAtLoc(nEast,       0, nx5, nz2);   // one row back off the shore
 	rmPlaceGroupingAtLoc(nWest,       0, nx1, nz3);   // displaced inland
 
-	rmPlaceGroupingAtLoc(sWest,       0, sx1, sz1);
-	int palacePlacementS = rmPlaceGroupingInstanceAtLoc(cityPalaceS, sx5, sz1, 0);
+	rmPlaceGroupingAtLoc(sWest,       0, sx1, sz2);   // one row back off the shore
+	int palacePlacementS = rmPlaceGroupingInstanceAtLoc(cityPalaceS, sx2, sz1, 0);
 	rmPlaceGroupingAtLoc(sEast,       0, sx5, sz3);   // displaced inland
 	rmSetNuggetDifficulty(517, 517);   // restore the ambient difficulty
 
@@ -1931,13 +2072,13 @@ void main(void)
 	rmSetGroupingMinDistance(fortN, 0.0);
 	rmSetGroupingMaxDistance(fortN, 0.5);
 	rmAddGroupingToClass(fortN, rmClassID("classBlock"));
-	int fortPlacementN = rmPlaceGroupingInstanceAtLoc(fortN, nx2, nz1, 0);
+	int fortPlacementN = rmPlaceGroupingInstanceAtLoc(fortN, nx5, nz1, 0);
 
 	int fortS = rmCreateGrouping("fort south", "IS_SPC_Military");
 	rmSetGroupingMinDistance(fortS, 0.0);
 	rmSetGroupingMaxDistance(fortS, 0.5);
 	rmAddGroupingToClass(fortS, rmClassID("classBlock"));
-	int fortPlacementS = rmPlaceGroupingInstanceAtLoc(fortS, sx4, sz1, 0);
+	int fortPlacementS = rmPlaceGroupingInstanceAtLoc(fortS, sx1, sz1, 0);
 
 	// ---- THE FACTORIES: the corner cell backing onto the pirate camp ------
 	// One row in from the back: row z4, on the flank-coast side. The pirates
@@ -1962,80 +2103,94 @@ void main(void)
 
 	// ---- CITY CELL TABLE: every free cell, grouped by zone ---------------
 	// NOT in here (fixed placements): the x3 spine (park/mosque/bazaar), the
-	// menagerie beside the mosque, the fort and the two natives on z1, the
+	// menagerie beside the mosque, the fort/palace pair on z1, both natives,
 	// factory on z4, the two construction blocks on the z5 corners, and the
-	// FORESTER, which now owns the middle cell of row 6 (x3,z6).
-	// ROWS 5 AND 6 ARE THEIR OWN ZONE (*_BACK): houses only. Resource
-	// buildings go through placeGroupings() into *_SUBURB, which is row 4
-	// ONLY, so nothing economic can reach the back rows.
+	// and the two row-6 middle cells (x3,z6) the forester used to own.  Those
+	// two are EMPTY now that the forester is gone - they are not yet in the
+	// pool, and adding them is part of the pending cell-table recalculation.
+	// ROWS 5 AND 6 ARE THEIR OWN ZONE (*_BACK): houses only. The *_SUBURB
+	// zone (row 4) is now empty of fixed blocks too - the mill and the
+	// forester were the only economic buildings in the grid and both are
+	// gone, so row 4 fills with houses like the back rows.
 	// Each cell stores col*100 + row for the no-repeat house weave.
-	const int N_CENTRE_START =  0;   const int N_CENTRE_END =  6;
-	const int N_SUBURB_START =  7;   const int N_SUBURB_END = 10;   // row 4 only
-	const int N_BACK_START   = 11;   const int N_BACK_END   = 19;   // rows 5 + 6
-	const int S_CENTRE_START = 20;   const int S_CENTRE_END = 26;
-	const int S_SUBURB_START = 27;   const int S_SUBURB_END = 30;   // row 4 only
-	const int S_BACK_START   = 31;   const int S_BACK_END   = 39;   // rows 5 + 6
-	const int NUM_CITY_LOCS  = 40;
+	// ONE TABLE PER ISLAND, IN TWO ORDERED HALVES. The centre / suburb /
+	// back districts are gone, but one rule survives them and is absolute:
+	//
+	//   ROWS 5 AND 6, OUTSIDE THE MIDDLE COLUMN, ARE CITY PLAYER GROUND.
+	//   Player 2x2s, or houses when a seat is unused. Never a treasure,
+	//   never a bank, never anything special.
+	//
+	// So the open cells come FIRST and every filler() is capped at
+	// *_OPEN_END, while fillHouses() still walks the whole island.
+	// The middle column of rows 5 and 6 sits in the OPEN half - that is
+	// what keeps (x3,z6) available for a resource building.
+	//   open      rows 1-4 (2+2+3+4=11) + (x3,z5) + (x3,z6)  = 13
+	//   reserved  rows 5 and 6, columns 1, 2, 4, 5           =  8
+	const int N_CITY_START = 0;    const int N_OPEN_END = 12;   const int N_CITY_END = 20;
+	const int S_CITY_START = 21;   const int S_OPEN_END = 33;   const int S_CITY_END = 41;
+	const int NUM_CITY_LOCS = 42;
 
 	gCityLocs       = xsArrayCreateVector(NUM_CITY_LOCS, cInvalidVector, "city cells");
 	gCityLocsStatus = xsArrayCreateBool(NUM_CITY_LOCS, false, "city cells taken");
 	gCityCode       = xsArrayCreateInt(NUM_CITY_LOCS, 0, "city cell col*100+row");
 
-	// north centre: the free z1 gap, then z2/z3 minus the menagerie cell
-	xsArraySetVector(gCityLocs,  0, xsVectorSet(nx4, 0.0, nz1));   xsArraySetInt(gCityCode,  0, 401);
-	xsArraySetVector(gCityLocs,  1, xsVectorSet(nx1, 0.0, nz2));   xsArraySetInt(gCityCode,  1, 102);
-	xsArraySetVector(gCityLocs,  2, xsVectorSet(nx2, 0.0, nz2));   xsArraySetInt(gCityCode,  2, 202);
-	xsArraySetVector(gCityLocs,  3, xsVectorSet(nx5, 0.0, nz2));   xsArraySetInt(gCityCode,  3, 502);
+	// NORTH OPEN, 13 cells. Absent because fixed: park/palace/fort z1,
+	// menagerie/mosque/native z2, bazaar + native z3, factory z4.
+	xsArraySetVector(gCityLocs,  0, xsVectorSet(nx1, 0.0, nz1));   xsArraySetInt(gCityCode,  0, 101);
+	xsArraySetVector(gCityLocs,  1, xsVectorSet(nx2, 0.0, nz1));   xsArraySetInt(gCityCode,  1, 201);
+	xsArraySetVector(gCityLocs,  2, xsVectorSet(nx1, 0.0, nz2));   xsArraySetInt(gCityCode,  2, 102);
+	xsArraySetVector(gCityLocs,  3, xsVectorSet(nx4, 0.0, nz2));   xsArraySetInt(gCityCode,  3, 402);
 	xsArraySetVector(gCityLocs,  4, xsVectorSet(nx2, 0.0, nz3));   xsArraySetInt(gCityCode,  4, 203);
 	xsArraySetVector(gCityLocs,  5, xsVectorSet(nx4, 0.0, nz3));   xsArraySetInt(gCityCode,  5, 403);
 	xsArraySetVector(gCityLocs,  6, xsVectorSet(nx5, 0.0, nz3));   xsArraySetInt(gCityCode,  6, 503);
-	// north suburb: ROW 4 ONLY, minus the factory corner
 	xsArraySetVector(gCityLocs,  7, xsVectorSet(nx1, 0.0, nz4));   xsArraySetInt(gCityCode,  7, 104);
 	xsArraySetVector(gCityLocs,  8, xsVectorSet(nx2, 0.0, nz4));   xsArraySetInt(gCityCode,  8, 204);
 	xsArraySetVector(gCityLocs,  9, xsVectorSet(nx3, 0.0, nz4));   xsArraySetInt(gCityCode,  9, 304);
 	xsArraySetVector(gCityLocs, 10, xsVectorSet(nx4, 0.0, nz4));   xsArraySetInt(gCityCode, 10, 404);
-	// north back: FULL row 5 (edge cells 105/505 fill with houses whenever
-	// no player start / constr block claims them first), row 6 minus forester
-	xsArraySetVector(gCityLocs, 11, xsVectorSet(nx1, 0.0, nz5));   xsArraySetInt(gCityCode, 11, 105);
-	xsArraySetVector(gCityLocs, 12, xsVectorSet(nx2, 0.0, nz5));   xsArraySetInt(gCityCode, 12, 205);
-	xsArraySetVector(gCityLocs, 13, xsVectorSet(nx3, 0.0, nz5));   xsArraySetInt(gCityCode, 13, 305);
-	xsArraySetVector(gCityLocs, 14, xsVectorSet(nx4, 0.0, nz5));   xsArraySetInt(gCityCode, 14, 405);
-	xsArraySetVector(gCityLocs, 15, xsVectorSet(nx5, 0.0, nz5));   xsArraySetInt(gCityCode, 15, 505);
-	xsArraySetVector(gCityLocs, 16, xsVectorSet(nx1, 0.0, nz6));   xsArraySetInt(gCityCode, 16, 106);
-	xsArraySetVector(gCityLocs, 17, xsVectorSet(nx2, 0.0, nz6));   xsArraySetInt(gCityCode, 17, 206);
-	xsArraySetVector(gCityLocs, 18, xsVectorSet(nx4, 0.0, nz6));   xsArraySetInt(gCityCode, 18, 406);
-	xsArraySetVector(gCityLocs, 19, xsVectorSet(nx5, 0.0, nz6));   xsArraySetInt(gCityCode, 19, 506);
+	xsArraySetVector(gCityLocs, 11, xsVectorSet(nx3, 0.0, nz5));   xsArraySetInt(gCityCode, 11, 305);
+	xsArraySetVector(gCityLocs, 12, xsVectorSet(nx3, 0.0, nz6));   xsArraySetInt(gCityCode, 12, 306);
 
-	// south centre + suburb
-	xsArraySetVector(gCityLocs, 20, xsVectorSet(sx2, 0.0, sz1));   xsArraySetInt(gCityCode, 20, 201);
-	xsArraySetVector(gCityLocs, 21, xsVectorSet(sx1, 0.0, sz2));   xsArraySetInt(gCityCode, 21, 102);
-	xsArraySetVector(gCityLocs, 22, xsVectorSet(sx4, 0.0, sz2));   xsArraySetInt(gCityCode, 22, 402);
-	xsArraySetVector(gCityLocs, 23, xsVectorSet(sx5, 0.0, sz2));   xsArraySetInt(gCityCode, 23, 502);
-	xsArraySetVector(gCityLocs, 24, xsVectorSet(sx1, 0.0, sz3));   xsArraySetInt(gCityCode, 24, 103);
-	xsArraySetVector(gCityLocs, 25, xsVectorSet(sx2, 0.0, sz3));   xsArraySetInt(gCityCode, 25, 203);
-	xsArraySetVector(gCityLocs, 26, xsVectorSet(sx4, 0.0, sz3));   xsArraySetInt(gCityCode, 26, 403);
-	xsArraySetVector(gCityLocs, 27, xsVectorSet(sx2, 0.0, sz4));   xsArraySetInt(gCityCode, 27, 204);
-	xsArraySetVector(gCityLocs, 28, xsVectorSet(sx3, 0.0, sz4));   xsArraySetInt(gCityCode, 28, 304);
-	xsArraySetVector(gCityLocs, 29, xsVectorSet(sx4, 0.0, sz4));   xsArraySetInt(gCityCode, 29, 404);
-	xsArraySetVector(gCityLocs, 30, xsVectorSet(sx5, 0.0, sz4));   xsArraySetInt(gCityCode, 30, 504);
+	// NORTH RESERVED, 8 cells - city players or houses, nothing else.
+	xsArraySetVector(gCityLocs, 13, xsVectorSet(nx1, 0.0, nz5));   xsArraySetInt(gCityCode, 13, 105);
+	xsArraySetVector(gCityLocs, 14, xsVectorSet(nx2, 0.0, nz5));   xsArraySetInt(gCityCode, 14, 205);
+	xsArraySetVector(gCityLocs, 15, xsVectorSet(nx4, 0.0, nz5));   xsArraySetInt(gCityCode, 15, 405);
+	xsArraySetVector(gCityLocs, 16, xsVectorSet(nx5, 0.0, nz5));   xsArraySetInt(gCityCode, 16, 505);
+	xsArraySetVector(gCityLocs, 17, xsVectorSet(nx1, 0.0, nz6));   xsArraySetInt(gCityCode, 17, 106);
+	xsArraySetVector(gCityLocs, 18, xsVectorSet(nx2, 0.0, nz6));   xsArraySetInt(gCityCode, 18, 206);
+	xsArraySetVector(gCityLocs, 19, xsVectorSet(nx4, 0.0, nz6));   xsArraySetInt(gCityCode, 19, 406);
+	xsArraySetVector(gCityLocs, 20, xsVectorSet(nx5, 0.0, nz6));   xsArraySetInt(gCityCode, 20, 506);
 
-	// south back: mirrored, full row 5, row 6 minus the forester
-	xsArraySetVector(gCityLocs, 31, xsVectorSet(sx1, 0.0, sz5));   xsArraySetInt(gCityCode, 31, 105);
-	xsArraySetVector(gCityLocs, 32, xsVectorSet(sx2, 0.0, sz5));   xsArraySetInt(gCityCode, 32, 205);
-	xsArraySetVector(gCityLocs, 33, xsVectorSet(sx3, 0.0, sz5));   xsArraySetInt(gCityCode, 33, 305);
-	xsArraySetVector(gCityLocs, 34, xsVectorSet(sx4, 0.0, sz5));   xsArraySetInt(gCityCode, 34, 405);
-	xsArraySetVector(gCityLocs, 35, xsVectorSet(sx5, 0.0, sz5));   xsArraySetInt(gCityCode, 35, 505);
-	xsArraySetVector(gCityLocs, 36, xsVectorSet(sx1, 0.0, sz6));   xsArraySetInt(gCityCode, 36, 106);
-	xsArraySetVector(gCityLocs, 37, xsVectorSet(sx2, 0.0, sz6));   xsArraySetInt(gCityCode, 37, 206);
-	xsArraySetVector(gCityLocs, 38, xsVectorSet(sx4, 0.0, sz6));   xsArraySetInt(gCityCode, 38, 406);
-	xsArraySetVector(gCityLocs, 39, xsVectorSet(sx5, 0.0, sz6));   xsArraySetInt(gCityCode, 39, 506);
+	// SOUTH OPEN, 13 cells, the same picture mirrored.
+	xsArraySetVector(gCityLocs, 21, xsVectorSet(sx4, 0.0, sz1));   xsArraySetInt(gCityCode, 21, 401);
+	xsArraySetVector(gCityLocs, 22, xsVectorSet(sx5, 0.0, sz1));   xsArraySetInt(gCityCode, 22, 501);
+	xsArraySetVector(gCityLocs, 23, xsVectorSet(sx2, 0.0, sz2));   xsArraySetInt(gCityCode, 23, 202);
+	xsArraySetVector(gCityLocs, 24, xsVectorSet(sx5, 0.0, sz2));   xsArraySetInt(gCityCode, 24, 502);
+	xsArraySetVector(gCityLocs, 25, xsVectorSet(sx1, 0.0, sz3));   xsArraySetInt(gCityCode, 25, 103);
+	xsArraySetVector(gCityLocs, 26, xsVectorSet(sx2, 0.0, sz3));   xsArraySetInt(gCityCode, 26, 203);
+	xsArraySetVector(gCityLocs, 27, xsVectorSet(sx4, 0.0, sz3));   xsArraySetInt(gCityCode, 27, 403);
+	xsArraySetVector(gCityLocs, 28, xsVectorSet(sx2, 0.0, sz4));   xsArraySetInt(gCityCode, 28, 204);
+	xsArraySetVector(gCityLocs, 29, xsVectorSet(sx3, 0.0, sz4));   xsArraySetInt(gCityCode, 29, 304);
+	xsArraySetVector(gCityLocs, 30, xsVectorSet(sx4, 0.0, sz4));   xsArraySetInt(gCityCode, 30, 404);
+	xsArraySetVector(gCityLocs, 31, xsVectorSet(sx5, 0.0, sz4));   xsArraySetInt(gCityCode, 31, 504);
+	xsArraySetVector(gCityLocs, 32, xsVectorSet(sx3, 0.0, sz5));   xsArraySetInt(gCityCode, 32, 305);
+	xsArraySetVector(gCityLocs, 33, xsVectorSet(sx3, 0.0, sz6));   xsArraySetInt(gCityCode, 33, 306);
+
+	// SOUTH RESERVED, 8 cells.
+	xsArraySetVector(gCityLocs, 34, xsVectorSet(sx1, 0.0, sz5));   xsArraySetInt(gCityCode, 34, 105);
+	xsArraySetVector(gCityLocs, 35, xsVectorSet(sx2, 0.0, sz5));   xsArraySetInt(gCityCode, 35, 205);
+	xsArraySetVector(gCityLocs, 36, xsVectorSet(sx4, 0.0, sz5));   xsArraySetInt(gCityCode, 36, 405);
+	xsArraySetVector(gCityLocs, 37, xsVectorSet(sx5, 0.0, sz5));   xsArraySetInt(gCityCode, 37, 505);
+	xsArraySetVector(gCityLocs, 38, xsVectorSet(sx1, 0.0, sz6));   xsArraySetInt(gCityCode, 38, 106);
+	xsArraySetVector(gCityLocs, 39, xsVectorSet(sx2, 0.0, sz6));   xsArraySetInt(gCityCode, 39, 206);
+	xsArraySetVector(gCityLocs, 40, xsVectorSet(sx4, 0.0, sz6));   xsArraySetInt(gCityCode, 40, 406);
+	xsArraySetVector(gCityLocs, 41, xsVectorSet(sx5, 0.0, sz6));   xsArraySetInt(gCityCode, 41, 506);
 	// shuffled in lockstep with gCityCode so cell and grid position stay paired
-	shuffleCells(N_CENTRE_START, N_CENTRE_END);
-	shuffleCells(N_SUBURB_START, N_SUBURB_END);
-	shuffleCells(N_BACK_START, N_BACK_END);
-	shuffleCells(S_CENTRE_START, S_CENTRE_END);
-	shuffleCells(S_SUBURB_START, S_SUBURB_END);
-	shuffleCells(S_BACK_START, S_BACK_END);
+	// each half shuffles on its own - shuffling across the boundary would
+	// drag reserved cells into filler()'s reach and undo the whole rule
+	shuffleCells(N_CITY_START, N_OPEN_END);
+	shuffleCells(N_OPEN_END + 1, N_CITY_END);
+	shuffleCells(S_CITY_START, S_OPEN_END);
+	shuffleCells(S_OPEN_END + 1, S_CITY_END);
 	// ---- CENTRE ZONE (rows z1-z3): bank, embassy, menagerie --------------
 	// bank + embassy flank the mosque on z2, menagerie beside the bazaar on z3
 	int bankN = rmCreateGrouping("bank north", "IS_Resource_Block_Gold1");
@@ -2060,15 +2215,17 @@ void main(void)
 	rmSetGroupingMinDistance(menagerieN, 0.0);
 	rmSetGroupingMaxDistance(menagerieN, 0.5);
 	rmAddGroupingToClass(menagerieN, rmClassID("classBlock"));
-	// fixed: right beside the mosque, on the flank-coast side of the spine
+	// Fixed, right beside the mosque - on the CHANNEL side of the spine,
+	// swapped across from the flank-coast side: with the park on z1 and
+	// the menagerie under it, that corner of the city read as all green.
 	rmSetNuggetDifficulty(98, 98);     // menagerie treasure
-	int menageriePlacementN = rmPlaceGroupingInstanceAtLoc(menagerieN, nx4, nz2, 0);
+	int menageriePlacementN = rmPlaceGroupingInstanceAtLoc(menagerieN, nx2, nz2, 0);
 
 	int menagerieS = rmCreateGrouping("menagerie south", "IS_Resource_Block_Menagere");
 	rmSetGroupingMinDistance(menagerieS, 0.0);
 	rmSetGroupingMaxDistance(menagerieS, 0.5);
 	rmAddGroupingToClass(menagerieS, rmClassID("classBlock"));
-	int menageriePlacementS = rmPlaceGroupingInstanceAtLoc(menagerieS, sx2, sz2, 0);
+	int menageriePlacementS = rmPlaceGroupingInstanceAtLoc(menagerieS, sx4, sz2, 0);
 
 	// ---- THE WALLS: between each city and its countryside ----------------
 	// One wall per island, INSTANCE-placed on the flank cliff. Four knobs,
@@ -2079,24 +2236,32 @@ void main(void)
 	int   wallOutTilesN = 6;
 	int   wallOffTilesN = 2;
 	int   wallOutTilesS = 6;
-	int   wallOffTilesS = 1;
+	int   wallOffTilesS = 3;
 
 	// wall positions (shared by both wall placements)
 	float wallXN = nx1 - margin - rmXTilesToFraction(wallOutTilesN);
-	float wallZN = (nz3 + nz4) * 0.5 + rmZTilesToFraction(wallOffTilesN);
+	float wallZN = (nz3 + nz4) * 0.5 - rmZTilesToFraction(wallOffTilesN);
 	float wallXS = sx5 + margin + rmXTilesToFraction(wallOutTilesS);
-	float wallZS = (sz3 + sz4) * 0.5 - rmZTilesToFraction(wallOffTilesS);
+	float wallZS = (sz3 + sz4) * 0.5 + rmZTilesToFraction(wallOffTilesS);
 
 	int wallSW = rmCreateGrouping("wall sw", "IS_Wall_SW");
 	rmSetGroupingMinDistance(wallSW, 0.0);
 	rmSetGroupingMaxDistance(wallSW, 0.5);
-	int wallPlacementSW = rmPlaceGroupingInstanceAtLoc(wallSW, wallXN, wallZN, 0);
+	// OWNED, not gaia. The player argument comes LAST here. wallSW is the
+	// NORTH island's wall, so it goes to that island's first city player;
+	// with a solid ypSPCIndianFortGate and PlayerOwnsObstruction, the owner
+	// walks through their own gate and everyone else has to break it.
+	// Guarded: both ids sit at -1 until the team scan at :1063 / :1070
+	// finds a player, and player -1 would be a bad placement.
+	int wallOwnerN = 0;   if (firstDefender > 0) wallOwnerN = firstDefender;
+	int wallOwnerS = 0;   if (firstAttacker > 0) wallOwnerS = firstAttacker;
+	int wallPlacementSW = rmPlaceGroupingInstanceAtLoc(wallSW, wallXN, wallZN, wallOwnerN);
 
 	// the 180-degree clone, on the south island's east flank
 	int wallNE = rmCreateGrouping("wall ne", "IS_Wall_NE");
 	rmSetGroupingMinDistance(wallNE, 0.0);
 	rmSetGroupingMaxDistance(wallNE, 0.5);
-	int wallPlacementNE = rmPlaceGroupingInstanceAtLoc(wallNE, wallXS, wallZS, 0);
+	int wallPlacementNE = rmPlaceGroupingInstanceAtLoc(wallNE, wallXS, wallZS, wallOwnerS);
 
 	// ---- CITY PLAYERS: TC block + 2x2 buildable area ---------------------
 	// Each city player gets IS_SPC_PlayerStart (carries a baked TownCenter,
@@ -2126,79 +2291,58 @@ void main(void)
 		// the house pool. Two seats = the exact original sequence.
 		if (citySeatsN == 2)
 		{
-			rmPlaceGroupingAtLoc(blockStartCity, firstDefender, nx2, nz5);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx1, nz5);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx1, nz6);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx2, nz6);
-			rmPlaceGroupingAtLoc(blockStartCity, secondDefender, nx5, nz5);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx4, nz5);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx4, nz6);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx5, nz6);
+			placeCityBlock(blockStartCity, firstDefender, nx2, nz5, N_CITY_START, N_CITY_END);
+			placeCityBlock(blockConstrCity, 0, nx1, nz5, N_CITY_START, N_CITY_END);
+			placeCityBlock(blockConstrCity, 0, nx1, nz6, N_CITY_START, N_CITY_END);
+			placeCityBlock(blockConstrCity, 0, nx2, nz6, N_CITY_START, N_CITY_END);
+			placeCityBlock(blockStartCity, secondDefender, nx5, nz5, N_CITY_START, N_CITY_END);
+			placeCityBlock(blockConstrCity, 0, nx4, nz5, N_CITY_START, N_CITY_END);
+			placeCityBlock(blockConstrCity, 0, nx4, nz6, N_CITY_START, N_CITY_END);
+			placeCityBlock(blockConstrCity, 0, nx5, nz6, N_CITY_START, N_CITY_END);
 		}
 		if (citySeatsN == 1)
 		{
-			rmPlaceGroupingAtLoc(blockStartCity, firstDefender, nx5, nz5);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx4, nz5);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx4, nz6);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, nx5, nz6);
+			placeCityBlock(blockStartCity, firstDefender, nx5, nz5, N_CITY_START, N_CITY_END);
+			placeCityBlock(blockConstrCity, 0, nx4, nz5, N_CITY_START, N_CITY_END);
+			placeCityBlock(blockConstrCity, 0, nx4, nz6, N_CITY_START, N_CITY_END);
+			placeCityBlock(blockConstrCity, 0, nx5, nz6, N_CITY_START, N_CITY_END);
 		}
 		if (citySeatsS == 2)
 		{
-			rmPlaceGroupingAtLoc(blockStartCity, firstAttacker, sx4, sz5);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx5, sz5);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx5, sz6);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx4, sz6);
-			rmPlaceGroupingAtLoc(blockStartCity, secondAttacker, sx1, sz5);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx2, sz5);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx2, sz6);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx1, sz6);
+			placeCityBlock(blockStartCity, firstAttacker, sx4, sz5, S_CITY_START, S_CITY_END);
+			placeCityBlock(blockConstrCity, 0, sx5, sz5, S_CITY_START, S_CITY_END);
+			placeCityBlock(blockConstrCity, 0, sx5, sz6, S_CITY_START, S_CITY_END);
+			placeCityBlock(blockConstrCity, 0, sx4, sz6, S_CITY_START, S_CITY_END);
+			placeCityBlock(blockStartCity, secondAttacker, sx1, sz5, S_CITY_START, S_CITY_END);
+			placeCityBlock(blockConstrCity, 0, sx2, sz5, S_CITY_START, S_CITY_END);
+			placeCityBlock(blockConstrCity, 0, sx2, sz6, S_CITY_START, S_CITY_END);
+			placeCityBlock(blockConstrCity, 0, sx1, sz6, S_CITY_START, S_CITY_END);
 		}
 		if (citySeatsS == 1)
 		{
-			rmPlaceGroupingAtLoc(blockStartCity, firstAttacker, sx1, sz5);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx2, sz5);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx2, sz6);
-			rmPlaceGroupingAtLoc(blockConstrCity, 0, sx1, sz6);
+			placeCityBlock(blockStartCity, firstAttacker, sx1, sz5, S_CITY_START, S_CITY_END);
+			placeCityBlock(blockConstrCity, 0, sx2, sz5, S_CITY_START, S_CITY_END);
+			placeCityBlock(blockConstrCity, 0, sx2, sz6, S_CITY_START, S_CITY_END);
+			placeCityBlock(blockConstrCity, 0, sx1, sz6, S_CITY_START, S_CITY_END);
 		}
 	}
 
-	// ---- SUBURB ZONE blocks ----------------------------------------------
-	int millN = rmCreateGrouping("mill north", "IS_Resource_Block_Food1");
-	rmSetGroupingMinDistance(millN, 0.0);  rmSetGroupingMaxDistance(millN, 0.5);
-	rmAddGroupingToClass(millN, rmClassID("classBlock"));
-	int millS = rmCreateGrouping("mill south", "IS_Resource_Block_Food1");
-	rmSetGroupingMinDistance(millS, 0.0);  rmSetGroupingMaxDistance(millS, 0.5);
-	rmAddGroupingToClass(millS, rmClassID("classBlock"));
-
-	int woodN = rmCreateGrouping("wood north", "IS_Resource_Block_Wood_01");
-	rmSetGroupingMinDistance(woodN, 0.0);  rmSetGroupingMaxDistance(woodN, 0.5);
-	rmAddGroupingToClass(woodN, rmClassID("classBlock"));
-	int woodS = rmCreateGrouping("wood south", "IS_Resource_Block_Wood_01");
-	rmSetGroupingMinDistance(woodS, 0.0);  rmSetGroupingMaxDistance(woodS, 0.5);
-	rmAddGroupingToClass(woodS, rmClassID("classBlock"));
+	// The SUBURB ZONE has no blocks of its own any more: the mill
+	// (IS_Resource_Block_Food1) and the forester (IS_Resource_Block_Wood_01)
+	// are both gone from the city, so row 4 is house pool and nothing
+	// economic is left anywhere in the grid.
 
 	// ---- ZONE LISTS: each building takes a random cell OF ITS ZONE --------
-	int nCentreBlocks = xsArrayCreateInt(2, -1, "north centre blocks");
-	xsArraySetInt(nCentreBlocks, 0, bankN);
-	xsArraySetInt(nCentreBlocks, 1, embassyN);
+	// filler(), not placeGroupings(): placeGroupings takes the first N slots
+	// of a range without checking whether anything already owns them. That
+	// was safe while the centre zone was rows 1-3 and the player 2x2s were
+	// rows 5-6, but with ONE zone per island the two can now overlap.
+	// filler() takes the first FREE slot, so it cannot.
 	rmSetNuggetDifficulty(518, 518);   // embassy treasure
-	placeGroupings(nCentreBlocks, N_CENTRE_START);
-
-	int sCentreBlocks = xsArrayCreateInt(2, -1, "south centre blocks");
-	xsArraySetInt(sCentreBlocks, 0, bankS);
-	xsArraySetInt(sCentreBlocks, 1, embassyS);
-	placeGroupings(sCentreBlocks, S_CENTRE_START);
-
-	int nSuburbBlocks = xsArrayCreateInt(1, -1, "north suburb blocks");
-	xsArraySetInt(nSuburbBlocks, 0, millN);
-	placeGroupings(nSuburbBlocks, N_SUBURB_START);
-	// forester: fixed on the middle cell of row 6, out of the pool
-	rmPlaceGroupingAtLoc(woodN, 0, nx3, nz6);
-
-	int sSuburbBlocks = xsArrayCreateInt(1, -1, "south suburb blocks");
-	xsArraySetInt(sSuburbBlocks, 0, millS);
-	placeGroupings(sSuburbBlocks, S_SUBURB_START);
-	rmPlaceGroupingAtLoc(woodS, 0, sx3, sz6);
+	filler(bankN,    N_CITY_START, N_OPEN_END);
+	filler(embassyN, N_CITY_START, N_OPEN_END);
+	filler(bankS,    S_CITY_START, S_OPEN_END);
+	filler(embassyS, S_CITY_START, S_OPEN_END);
 
 	// ---- TREASURES: one of each per island, random cell -------------------
 	// Paris idiom (lines 1057-1059): filler() drops them into the first free
@@ -2207,11 +2351,27 @@ void main(void)
 	// Treasure houses draw from the Istanbul city set: the six Florence city
 	// nuggets (difficulty 303) cloned as 519 with Janissary / Haramija guards,
 	// plus a 519 guillotine entry matching the proto these groupings bake.
+	// ---- THE ACADEMY: its own block, its own nugget ---------------------
+	// Block art and reward both moved off the Lombard, which read far too
+	// Italian for Istanbul: IS_House_Block_Academy carries the scenery and
+	// difficulty 523 holds exactly ONE nugget,
+	// zpNuggetAcademyIstanbul, which hands over zpAcademyReward - so the
+	// latch IS the whole definition, the way 518 is for the embassy.
+	// Its <maptype> gate lists mediEurope, which this map declares, so it
+	// is eligible here for the same reason it is on Florence.
+	// Placed BEFORE the 519 latch on purpose: everything downstream then
+	// still runs on 519, exactly as it did before the Lombard existed.
+	rmSetNuggetDifficulty(523, 523);
+	filler(isAcademy, N_CITY_START, N_OPEN_END);
+	filler(isAcademy, S_CITY_START, S_OPEN_END);
+
 	rmSetNuggetDifficulty(519, 519);
-	filler(isTreasure1, N_CENTRE_START, N_SUBURB_END);
-	filler(isTreasure2, N_CENTRE_START, N_SUBURB_END);
-	filler(isTreasure1, S_CENTRE_START, S_SUBURB_END);
-	filler(isTreasure2, S_CENTRE_START, S_SUBURB_END);
+	filler(isTreasure1, N_CITY_START, N_OPEN_END);
+	filler(isTreasure2, N_CITY_START, N_OPEN_END);
+	filler(isTreasure3, N_CITY_START, N_OPEN_END);
+	filler(isTreasure1, S_CITY_START, S_OPEN_END);
+	filler(isTreasure2, S_CITY_START, S_OPEN_END);
+	filler(isTreasure3, S_CITY_START, S_OPEN_END);
 
 	// ---- HOUSES: fill every cell the zone lists did not use ---------------
 	// Paris idiom (0000_paris_dansil.xs lines 1062-1085): pick a random house
@@ -2227,8 +2387,8 @@ void main(void)
 	xsArraySetInt(houseGroupings, 5, isHouse06);
 
 	gHouseBlocks = houseGroupings;
-	fillHouses(N_CENTRE_START, N_BACK_END, rmRandInt(0, 5));
-	fillHouses(S_CENTRE_START, S_BACK_END, rmRandInt(0, 5));
+	fillHouses(N_CITY_START, N_CITY_END, rmRandInt(0, 5));
+	fillHouses(S_CITY_START, S_CITY_END, rmRandInt(0, 5));
 
 	// ---- WALL-DOCK CLIFFS - Paris idiom, built LAST -----------------------
 	// Placed AFTER every city block, so no dock can deform a cell a block
@@ -2238,7 +2398,7 @@ void main(void)
 	//   seal area ~284 t worst case -> dockSizeTiles 550 = ~2x slack, r 13.2 t
 	//   sea docks sit 6 t sea-ward AND 6 t away from the gun (seed 33 m from
 	//   the nearest gun unit; 24 m gun field blankets the river approach)
-	int   dockSizeTiles = 350;
+	int   dockSizeTiles = 230;
 	// The two BACK-END docks (1 and 4) reach the map edge, so they need more
 	// volume than the sea-side pair to close the gap against the wall.
 	int   dockSizeTilesBack = 780;
@@ -2274,14 +2434,18 @@ void main(void)
 
 	// north wall, channel end - out at sea, clear of the gun
 	int dock2 = rmCreateArea("wall dock 2");
-	rmSetAreaWarnFailure(dock2, false);
+	// TRUE on purpose: if the dock still finds no seed, the engine
+	// reports it instead of failing silently. Set back to false
+	// once it spawns.
+	rmSetAreaWarnFailure(dock2, true);
 	rmSetAreaSize(dock2, rmAreaTilesToFraction(dockSizeTiles),
 		rmAreaTilesToFraction(dockSizeTiles));
 	rmSetAreaCoherence(dock2, 0.93);
 	// centred in the MEASURED water band (front .. real lane) so the seed
 	// survives any +/-4 t route snap - never derived from the ASKED lane
 	// x, z as plain map fractions. 0.0 west/south -> 1.0 east/north.
-	rmSetAreaLocation(dock2, 0.310, 0.600);
+	rmSetAreaLocation(dock2, 0.282, 0.595);
+	//rmAddAreaInfluenceSegment(dock2, 0.330, 0.630, 0.280, 0.600);
 	rmSetAreaBaseHeight(dock2, cityHeight + balanceRise);
 	rmSetAreaHeightBlend(dock2, 3);
 	rmSetAreaMix(dock2, hinterMix);
@@ -2293,19 +2457,23 @@ void main(void)
 	rmAddAreaConstraint(dock2, dockAvoidBlocks);
 	rmAddAreaConstraint(dock2, dockAvoidGunClass);
 	rmAddAreaConstraint(dock2, cliffLaneFallback);
-	rmAddAreaConstraint(dock2, avoidBeachStraitN);
-	rmAddAreaConstraint(dock2, avoidBeachStraitS);
+	// dock2 is on the NORTH island -> north camp only
+	rmAddAreaConstraint(dock2, avoidSocketPirate);
+	rmAddAreaConstraint(dock2, avoidPathBlock);
+	rmAddAreaConstraint(dock2, avoidMarketStall);
 	rmSetAreaObeyWorldCircleConstraint(dock2, false);
 	rmBuildArea(dock2);
 
 	// south wall, channel end - the mirror
 	int dock3 = rmCreateArea("wall dock 3");
-	rmSetAreaWarnFailure(dock3, false);
+	rmSetAreaWarnFailure(dock3, true);
 	rmSetAreaSize(dock3, rmAreaTilesToFraction(dockSizeTiles),
 		rmAreaTilesToFraction(dockSizeTiles));
 	rmSetAreaCoherence(dock3, 0.93);
 	// x, z as plain map fractions - the 180 degree mirror of dock2.
-	rmSetAreaLocation(dock3, 0.692, 0.390);
+	rmSetAreaLocation(dock3, 0.725, 0.400);
+	// 180 deg mirror of dock2 about the map centre: (x,z) -> (1-x, 1-z)
+	//rmAddAreaInfluenceSegment(dock3, 0.670, 0.370, 0.720, 0.400);
 	rmSetAreaBaseHeight(dock3, cityHeight + balanceRise);
 	rmSetAreaHeightBlend(dock3, 3);
 	rmSetAreaMix(dock3, hinterMix);
@@ -2317,8 +2485,10 @@ void main(void)
 	rmAddAreaConstraint(dock3, dockAvoidBlocks);
 	rmAddAreaConstraint(dock3, dockAvoidGunClass);
 	rmAddAreaConstraint(dock3, cliffLaneFallback);
-	rmAddAreaConstraint(dock3, avoidBeachStraitN);
-	rmAddAreaConstraint(dock3, avoidBeachStraitS);
+	// dock3 is on the SOUTH island -> south camp only
+	rmAddAreaConstraint(dock3, avoidSocketPirate);
+	rmAddAreaConstraint(dock3, avoidPathBlock);
+	rmAddAreaConstraint(dock3, avoidMarketStall);
 	rmSetAreaObeyWorldCircleConstraint(dock3, false);
 	rmBuildArea(dock3);
 
@@ -2358,6 +2528,23 @@ void main(void)
 	//                     a trade route (stated addition beyond your two)
 
 	// west valley, between city, wall, terraces and wild cliffs
+	int fillWTerrain = rmCreateArea("countryside fill w terrain");
+	rmSetAreaWarnFailure(fillWTerrain, false);
+	// over-ask: the cliff and building constraints ARE the shape
+	rmSetAreaSize(fillWTerrain, 0.13, 0.13);
+	rmSetAreaCoherence(fillWTerrain, 1.0);
+	rmSetAreaLocation(fillWTerrain, 0.20, 0.75);
+	rmSetAreaMix(fillWTerrain, hinterMix);
+	rmAddAreaConstraint(fillWTerrain, fillAvoidCliffShort);
+	rmAddAreaConstraint(fillWTerrain, avoidGuardW_far);
+	rmAddAreaConstraint(fillWTerrain, avoidGuardE_far);
+	rmAddAreaConstraint(fillWTerrain, avoidWallObj);
+	rmAddAreaConstraint(fillWTerrain, avoidWallObjLong);
+	//rmAddAreaConstraint(fillW, cliffLaneFallback);
+	//rmSetAreaObeyWorldCircleConstraint(fillW, false);
+	rmBuildArea(fillWTerrain);
+
+	// west valley, between city, wall, terraces and wild cliffs
 	int fillW = rmCreateArea("countryside fill w");
 	rmSetAreaWarnFailure(fillW, false);
 	// over-ask: the cliff and building constraints ARE the shape
@@ -2367,7 +2554,6 @@ void main(void)
 	rmSetAreaBaseHeight(fillW, cityHeight);
 	rmSetAreaHeightBlend(fillW, 2);
 	rmSetAreaSmoothDistance(fillW, 5);
-	rmSetAreaMix(fillW, hinterMix);
 	rmSetAreaElevationType(fillW, cElevTurbulence);
 	rmSetAreaElevationVariation(fillW, 6.0);
 	rmAddAreaConstraint(fillW, fillAvoidCliff);
@@ -2379,7 +2565,25 @@ void main(void)
 	//rmSetAreaObeyWorldCircleConstraint(fillW, false);
 	rmBuildArea(fillW);
 
-	// east valley - the mirror
+	// east valley - the mirror. TERRAIN MIX ONLY, split from the elevation
+	// pass below - same split as fillWTerrain / fillW on the west side.
+	int fillETerrain = rmCreateArea("countryside fill e terrain");
+	rmSetAreaWarnFailure(fillETerrain, false);
+	// over-ask: the cliff and building constraints ARE the shape
+	rmSetAreaSize(fillETerrain, 0.13, 0.13);
+	rmSetAreaCoherence(fillETerrain, 1.0);
+	rmSetAreaLocation(fillETerrain, 0.80, 0.25);
+	rmSetAreaMix(fillETerrain, hinterMix);
+	rmAddAreaConstraint(fillETerrain, fillAvoidCliffShort);
+	rmAddAreaConstraint(fillETerrain, avoidGuardW_far);
+	rmAddAreaConstraint(fillETerrain, avoidGuardE_far);
+	rmAddAreaConstraint(fillETerrain, avoidWallObj);
+	rmAddAreaConstraint(fillETerrain, avoidWallObjLong);
+	//rmAddAreaConstraint(fillE, cliffLaneFallback);
+	//rmSetAreaObeyWorldCircleConstraint(fillE, false);
+	rmBuildArea(fillETerrain);
+
+	// east valley - the mirror. ELEVATION ONLY - no rmSetAreaMix here.
 	int fillE = rmCreateArea("countryside fill e");
 	rmSetAreaWarnFailure(fillE, false);
 	// over-ask: the cliff and building constraints ARE the shape
@@ -2389,7 +2593,6 @@ void main(void)
 	rmSetAreaBaseHeight(fillE, cityHeight);
 	rmSetAreaHeightBlend(fillE, 2);
 	rmSetAreaSmoothDistance(fillE, 5);
-	rmSetAreaMix(fillE, hinterMix);
 	rmSetAreaElevationType(fillE, cElevTurbulence);
 	rmSetAreaElevationVariation(fillE, 6.0);
 	rmAddAreaConstraint(fillE, fillAvoidCliff);
@@ -2401,6 +2604,583 @@ void main(void)
 	//rmSetAreaObeyWorldCircleConstraint(fillE, false);
 	rmBuildArea(fillE);
 
+
+
+	// --- the two invisible lane guards (the red ovals) ---------------------
+	int avoidTree = rmCreateTypeDistanceConstraint("cliffs avoid trees", "Tree", 3.0);
+	// 12 m off the ferry buildings. Four of them (zpOrientalFerry at 1228,
+	// 1248, 1308, 1328), all placed long before these cliffs build.
+	int avoidFerry = rmCreateTypeDistanceConstraint("cliffs off the ferry", "zpOrientalFerry", 12.0);
+
+	// How far each cliff may reach INTO the city, in TILES. Small on purpose.
+	int cliffIntoCity = 3;        // 3 t = 6 m
+	//
+	// Two INDEPENDENT boxes, one per cliff. X ONLY - each starts a few tiles
+	// inside its city's flank edge (that is the little overlap) and runs out to
+	// the map rim. Z spans the whole map: these bound the X neighbourhood, they
+	// do not fence the cliff off any edge.
+	//
+	// Measured with flankPromExtra=2 (flankProm 0.0407):
+	//   wildNE box x starts 0.644, seed sits at 0.70   -> inside
+	//   wildSW box x ends   0.356, seed sits at 0.30   -> inside
+	// Sign stays OUTSIDE rmXTilesToFraction - it ignores negatives.
+	// The z bound keeps either cliff off the MIDDLE BELT - the strait, which
+	// lies between the two cities' channel-facing rows, sz1 and nz1. The two
+	// islands run opposite ways in z:
+	//    north  nz1 is its LOWEST row, rows climb to nz6   -> bound from below
+	//    south  sz1 is its HIGHEST row, rows fall to sz6   -> bound from above
+	// so each cliff is fenced on the side that faces the water, and left open
+	// on the map-edge side. Signs stay outside rmZTilesToFraction, which
+	// ignores a negative argument silently.
+	int cliffOffBelt = 2;         // tiles clear of the city's channel row
+	int wildBoxNE = rmCreateBoxConstraint("north-east cliff box",
+		nx5 + flankProm - rmXTilesToFraction(cliffIntoCity),
+		nz1 + rmZTilesToFraction(cliffOffBelt),
+		1.0, 1.0, 0.01);
+	int wildBoxSW = rmCreateBoxConstraint("south-west cliff box",
+		0.0, 0.0,
+		sx1 - flankProm + rmXTilesToFraction(cliffIntoCity),
+		sz1 - rmZTilesToFraction(cliffOffBelt), 0.01);
+
+	int guardN = rmCreateArea("north lane guard");
+	rmSetAreaWarnFailure(guardN, false);
+	rmSetAreaSize(guardN, 0.05, 0.05);
+	rmSetAreaCoherence(guardN, 0.7);
+	// TEST ONLY: raised above sea + painted, so the guard is visible.
+	// Remove these two lines to make it invisible again.
+	//rmSetAreaBaseHeight(guardW, 2.0);
+	//rmSetAreaMix(guardW, "italy_grass");
+	rmSetAreaLocation(guardN, 0.9, 0.9);
+	// along the north lane's west run...
+	rmAddAreaInfluenceSegment(guardN, 0.9, 1.0, 0.7, 0.55);
+	// ...and the north lane's west exit diagonal
+	rmSetAreaObeyWorldCircleConstraint(guardN, false);
+	rmBuildArea(guardN);
+
+	int guardS = rmCreateArea("south lane guard");
+	rmSetAreaWarnFailure(guardS, false);
+	rmSetAreaSize(guardS, 0.05, 0.05);
+	rmSetAreaCoherence(guardS, 0.7);
+	// TEST ONLY: raised above sea + painted, so the guard is visible.
+	// Remove these two lines to make it invisible again.
+	//rmSetAreaBaseHeight(guardE, 2.0);
+	//rmSetAreaMix(guardE, "italy_grass");
+	rmSetAreaLocation(guardS, 0.1, 0.1);
+	// 180-degree rotation of the north lane guard.
+	rmAddAreaInfluenceSegment(guardS, 0.1, 0.0, 0.31, 0.45);
+	rmSetAreaObeyWorldCircleConstraint(guardS, false);
+	rmBuildArea(guardS);
+
+	int avoidGuardN = rmCreateAreaDistanceConstraint("off north guard", guardN, 4.0);
+	int avoidGuardS = rmCreateAreaDistanceConstraint("off south guard", guardS, 4.0);
+	int avoidGuardN_far = rmCreateAreaDistanceConstraint("off north guard far", guardN, 13.0);
+	int avoidGuardS_far = rmCreateAreaDistanceConstraint("off south guard far", guardS, 13.0);
+	int avoidGuardN_far2 = rmCreateAreaDistanceConstraint("off north guard far 2", guardN, 18.0);
+	int avoidGuardS_far2 = rmCreateAreaDistanceConstraint("off south guard far 2", guardS, 18.0);
+	// far 3 = far 2 + 8 m. The ramps use these: at 22 m they were still
+	// reaching the high impassable flank cliffs.
+	int avoidGuardN_far3 = rmCreateAreaDistanceConstraint("off north guard far 3", guardN, 26.0);
+	int avoidGuardS_far3 = rmCreateAreaDistanceConstraint("off south guard far 3", guardS, 26.0);
+
+	// north island, east flank: between the north city and guard E
+	int wildNE = rmCreateArea("north-east flank cliff");
+	rmSetAreaWarnFailure(wildNE, false);
+	rmSetAreaSize(wildNE, 0.045, 0.045);
+	rmSetAreaCoherence(wildNE, 1.0);
+	// (0.7, 0.8) was inside seaBoxNE - the map's own 'black sea side' box,
+	// x 0.62..0.98 z 0.52..0.98 - so the cliff had no ground. This seed is
+	// land, fully surrounded by land, r 0.400, 66 m clear of guardN.
+	rmSetAreaLocation(wildNE, 0.664, 0.865);
+	rmSetAreaBaseHeight(wildNE, cityHeight + balanceRise);
+	rmSetAreaSmoothDistance(wildNE, 5);
+	rmSetAreaHeightBlend(wildNE, 2);
+	rmSetAreaMix(wildNE, hinterMix);
+	// ITALIAN IMPASSABLE - the same cliff the beach map gives its flanks
+	rmSetAreaCliffType(wildNE, gCliffTypeImpassable);
+	rmSetAreaCliffEdge(wildNE, 1, 1.0, 0.1, 1.0, 0);
+	rmSetAreaCliffHeight(wildNE, 0, 0.0, 1.0);
+	// off the CITY (classStreet) and off BOTH guards - the same fence the
+	// original flank cliffs use on the opposite side.
+	rmAddAreaConstraint(wildNE, dockAvoidBlocks);	
+	rmAddAreaConstraint(wildNE, cliffLaneFallback);
+	rmAddAreaConstraint(wildNE, avoidGuardS);
+	rmAddAreaConstraint(wildNE, avoidGuardN);
+	rmAddAreaConstraint(wildNE, avoidTree);
+	rmAddAreaConstraint(wildNE, avoidFerry);
+	rmAddAreaConstraint(wildNE, wildBoxNE);
+	rmSetAreaObeyWorldCircleConstraint(wildNE, false);
+	rmBuildArea(wildNE);
+
+	// INNER cliff, nested inside wildNE: 3 lower, and a STANDARD Italian
+	// cliff (hinterCliff = "Italian Cliff") so its terrain stays passable.
+	// Same fence as the outer ring except the guards, which use the _far2
+	// (22 m) variants instead of the 4 m ones.
+	int wildNEInner = rmCreateArea("wildNEInner");
+	rmSetAreaWarnFailure(wildNEInner, false);
+	rmSetAreaSize(wildNEInner, 0.03, 0.03);
+	rmSetAreaCoherence(wildNEInner, 1.0);
+	rmSetAreaLocation(wildNEInner, 0.664, 0.865);
+	rmSetAreaBaseHeight(wildNEInner, cityHeight + balanceRise - 3.0);
+	rmSetAreaSmoothDistance(wildNEInner, 5);
+	rmSetAreaHeightBlend(wildNEInner, 2);
+	rmSetAreaMix(wildNEInner, hinterMix);
+	rmSetAreaCliffType(wildNEInner, hinterCliff);
+	rmSetAreaCliffEdge(wildNEInner, 1, 1.0, 0.1, 1.0, 0);
+	rmSetAreaCliffHeight(wildNEInner, 0, 0.0, 1.0);
+	rmAddAreaConstraint(wildNEInner, dockAvoidBlocks);
+	rmAddAreaConstraint(wildNEInner, cliffLaneFallback);
+	rmAddAreaConstraint(wildNEInner, avoidGuardS_far2);
+	rmAddAreaConstraint(wildNEInner, avoidGuardN_far2);
+	rmAddAreaConstraint(wildNEInner, avoidTree);
+	rmAddAreaConstraint(wildNEInner, avoidFerry);
+	rmAddAreaConstraint(wildNEInner, wildBoxNE);
+	rmSetAreaObeyWorldCircleConstraint(wildNEInner, false);
+	rmBuildArea(wildNEInner);
+
+	// TERRAIN MIX ONLY on the lower inner shelf - no base height, no
+	// elevation, no cliff. Same footprint and the same constraints as
+	// wildNEInner, built after it so it paints that shelf's top. Same
+	// split as fillWTerrain / fillW in the countryside filler.
+	int wildNEInnerTerrain = rmCreateArea("wildNEInnerTerrain");
+	rmSetAreaWarnFailure(wildNEInnerTerrain, false);
+	rmSetAreaSize(wildNEInnerTerrain, 0.03, 0.03);
+	rmSetAreaCoherence(wildNEInnerTerrain, 1.0);
+	rmSetAreaLocation(wildNEInnerTerrain, 0.664, 0.865);
+	rmSetAreaMix(wildNEInnerTerrain, hinterMix);
+	rmAddAreaConstraint(wildNEInnerTerrain, dockAvoidBlocks);
+	rmAddAreaConstraint(wildNEInnerTerrain, cliffLaneFallback);
+	rmAddAreaConstraint(wildNEInnerTerrain, avoidGuardS_far3);
+	rmAddAreaConstraint(wildNEInnerTerrain, avoidGuardN_far3);
+	rmAddAreaConstraint(wildNEInnerTerrain, avoidTree);
+	rmAddAreaConstraint(wildNEInnerTerrain, avoidFerry);
+	rmAddAreaConstraint(wildNEInnerTerrain, wildBoxNE);
+	rmSetAreaObeyWorldCircleConstraint(wildNEInnerTerrain, false);
+	rmBuildArea(wildNEInnerTerrain);
+
+	// south island, west flank: between the south city and guard W
+	int wildSW = rmCreateArea("south-west flank cliff");
+	rmSetAreaWarnFailure(wildSW, false);
+	rmSetAreaSize(wildSW, 0.045, 0.045);
+	rmSetAreaCoherence(wildSW, 1.0);
+	// r 0.453, inside the 0.455 spawn ring. The old (0.3, 0.02) sat at
+	// r 0.520 - past the 0.469 hard bound, so nothing could build there.
+	rmSetAreaLocation(wildSW, 0.33, 0.08);
+	rmSetAreaBaseHeight(wildSW, cityHeight + balanceRise);
+	rmSetAreaSmoothDistance(wildSW, 5);
+	rmSetAreaHeightBlend(wildSW, 2);
+	rmSetAreaMix(wildSW, hinterMix);
+	// ITALIAN IMPASSABLE - the same cliff the beach map gives its flanks
+	rmSetAreaCliffType(wildSW, gCliffTypeImpassable);
+	rmSetAreaCliffEdge(wildSW, 1, 1.0, 0.1, 1.0, 0);
+	rmSetAreaCliffHeight(wildSW, 0, 0.0, 1.0);
+	// off the CITY (classStreet) and off BOTH guards - the same fence the
+	// original flank cliffs use on the opposite side.
+	rmAddAreaConstraint(wildSW, dockAvoidBlocks);	
+	rmAddAreaConstraint(wildSW, cliffLaneFallback);
+	rmAddAreaConstraint(wildSW, avoidGuardS);
+	rmAddAreaConstraint(wildSW, avoidGuardN);
+	rmAddAreaConstraint(wildSW, avoidTree);
+	rmAddAreaConstraint(wildSW, avoidFerry);
+	rmAddAreaConstraint(wildSW, wildBoxSW);
+	rmSetAreaObeyWorldCircleConstraint(wildSW, false);
+	rmBuildArea(wildSW);
+
+	// INNER cliff, nested inside wildSW: 3 lower, and a STANDARD Italian
+	// cliff (hinterCliff = "Italian Cliff") so its terrain stays passable.
+	// Same fence as the outer ring except the guards, which use the _far2
+	// (22 m) variants instead of the 4 m ones.
+	int wildSWInner = rmCreateArea("wildSWInner");
+	rmSetAreaWarnFailure(wildSWInner, false);
+	rmSetAreaSize(wildSWInner, 0.03, 0.03);
+	rmSetAreaCoherence(wildSWInner, 1.0);
+	rmSetAreaLocation(wildSWInner, 0.33, 0.08);
+	rmSetAreaBaseHeight(wildSWInner, cityHeight + balanceRise - 3.0);
+	rmSetAreaSmoothDistance(wildSWInner, 5);
+	rmSetAreaHeightBlend(wildSWInner, 2);
+	rmSetAreaMix(wildSWInner, hinterMix);
+	rmSetAreaCliffType(wildSWInner, hinterCliff);
+	rmSetAreaCliffEdge(wildSWInner, 1, 1.0, 0.1, 1.0, 0);
+	rmSetAreaCliffHeight(wildSWInner, 0, 0.0, 1.0);
+	rmAddAreaConstraint(wildSWInner, dockAvoidBlocks);
+	rmAddAreaConstraint(wildSWInner, cliffLaneFallback);
+	rmAddAreaConstraint(wildSWInner, avoidGuardS_far2);
+	rmAddAreaConstraint(wildSWInner, avoidGuardN_far2);
+	rmAddAreaConstraint(wildSWInner, avoidTree);
+	rmAddAreaConstraint(wildSWInner, avoidFerry);
+	rmAddAreaConstraint(wildSWInner, wildBoxSW);
+	rmSetAreaObeyWorldCircleConstraint(wildSWInner, false);
+	rmBuildArea(wildSWInner);
+
+	// TERRAIN MIX ONLY on the lower inner shelf - no base height, no
+	// elevation, no cliff. Same footprint and the same constraints as
+	// wildSWInner, built after it so it paints that shelf's top. Same
+	// split as fillWTerrain / fillW in the countryside filler.
+	int wildSWInnerTerrain = rmCreateArea("wildSWInnerTerrain");
+	rmSetAreaWarnFailure(wildSWInnerTerrain, false);
+	rmSetAreaSize(wildSWInnerTerrain, 0.03, 0.03);
+	rmSetAreaCoherence(wildSWInnerTerrain, 1.0);
+	rmSetAreaLocation(wildSWInnerTerrain, 0.33, 0.08);
+	rmSetAreaMix(wildSWInnerTerrain, hinterMix);
+	rmAddAreaConstraint(wildSWInnerTerrain, dockAvoidBlocks);
+	rmAddAreaConstraint(wildSWInnerTerrain, cliffLaneFallback);
+	rmAddAreaConstraint(wildSWInnerTerrain, avoidGuardS_far3);
+	rmAddAreaConstraint(wildSWInnerTerrain, avoidGuardN_far3);
+	rmAddAreaConstraint(wildSWInnerTerrain, avoidTree);
+	rmAddAreaConstraint(wildSWInnerTerrain, avoidFerry);
+	rmAddAreaConstraint(wildSWInnerTerrain, wildBoxSW);
+	rmSetAreaObeyWorldCircleConstraint(wildSWInnerTerrain, false);
+	rmBuildArea(wildSWInnerTerrain);
+
+	// ====================================================================
+	//  RAMPS - city plateau up to the flank cliffs.
+	//
+	//  Paris idiom, zpparis.xs:1392 'City Hill Ramp': a smooth height patch
+	//  with NO cliff type, straddling the plateau edge. The long
+	//  rmSetAreaSmoothDistance is what turns the step into a walkable slope;
+	//  Paris uses 150 tiles, blend 2, smooth 7, and one explicit height.
+	//
+	//  Heights here: the city sits at cityHeight (3.0), the flank cliffs at
+	//  cityHeight + balanceRise (9.0). The ramp takes the midpoint.
+	//
+	//  Built AFTER the cliffs so the ramp cuts through them. It carries the
+	//  _far2 (22 m) guard constraints so it can NEVER touch the high
+	//  impassable flank cliffs - a ramp that met one would be a ramp to
+	//  nowhere.
+	// ====================================================================
+	int   rampTiles  = 30;    // 6.2 m radius, ~12 m of ramp. Paris uses 150
+	int   rampSmooth = 3;     // 6 m of blend each side. Paris uses 7
+	float rampHeight = cityHeight + balanceRise * 0.5;   // 6.0, half way up
+	int   rampOut    = 3;    // NORTH: tiles outboard of the city's flank edge
+	int   rampOutS   = 1;    // SOUTH: 2 tiles further IN. At 3 the south ramps
+	                         // sat off the island and never showed.
+
+	// north island, between block rows 5 and 6
+	int rampN1 = rmCreateArea("ramp north rows 5-6");
+	rmSetAreaWarnFailure(rampN1, false);
+	rmSetAreaSize(rampN1, rmAreaTilesToFraction(rampTiles), rmAreaTilesToFraction(rampTiles));
+	rmSetAreaCoherence(rampN1, 1.0);
+	rmSetAreaLocation(rampN1, nx5 + flankProm + rmXTilesToFraction(rampOut), (nz5 + nz6) * 0.5);
+	rmSetAreaBaseHeight(rampN1, rampHeight);
+	rmSetAreaHeightBlend(rampN1, 2);
+	rmSetAreaSmoothDistance(rampN1, rampSmooth);
+	rmSetAreaMix(rampN1, hinterMix);
+	// NO cliff type on purpose - that is what keeps the ramp walkable.
+	// _far3 guards: never touch the high impassable cliffs.
+	rmAddAreaConstraint(rampN1, avoidGuardN_far3);
+	rmAddAreaConstraint(rampN1, avoidGuardS_far3);
+	rmSetAreaObeyWorldCircleConstraint(rampN1, false);
+	rmBuildArea(rampN1);
+
+	// north island, between block rows 3 and 4
+	int rampN2 = rmCreateArea("ramp north rows 3-4");
+	rmSetAreaWarnFailure(rampN2, false);
+	rmSetAreaSize(rampN2, rmAreaTilesToFraction(rampTiles), rmAreaTilesToFraction(rampTiles));
+	rmSetAreaCoherence(rampN2, 1.0);
+	rmSetAreaLocation(rampN2, nx5 + flankProm + rmXTilesToFraction(rampOut), (nz3 + nz4) * 0.5);
+	rmSetAreaBaseHeight(rampN2, rampHeight);
+	rmSetAreaHeightBlend(rampN2, 2);
+	rmSetAreaSmoothDistance(rampN2, rampSmooth);
+	rmSetAreaMix(rampN2, hinterMix);
+	// NO cliff type on purpose - that is what keeps the ramp walkable.
+	// _far3 guards: never touch the high impassable cliffs.
+	rmAddAreaConstraint(rampN2, avoidGuardN_far3);
+	rmAddAreaConstraint(rampN2, avoidGuardS_far3);
+	rmSetAreaObeyWorldCircleConstraint(rampN2, false);
+	rmBuildArea(rampN2);
+
+	// south island, the 180 mirror: between block rows 5 and 6
+	int rampS1 = rmCreateArea("ramp south rows 5-6");
+	rmSetAreaWarnFailure(rampS1, false);
+	rmSetAreaSize(rampS1, rmAreaTilesToFraction(rampTiles), rmAreaTilesToFraction(rampTiles));
+	rmSetAreaCoherence(rampS1, 1.0);
+	rmSetAreaLocation(rampS1, sx1 - flankProm - rmXTilesToFraction(rampOutS), (sz5 + sz6) * 0.5);
+	rmSetAreaBaseHeight(rampS1, rampHeight);
+	rmSetAreaHeightBlend(rampS1, 2);
+	rmSetAreaSmoothDistance(rampS1, rampSmooth);
+	rmSetAreaMix(rampS1, hinterMix);
+	// NO cliff type on purpose - that is what keeps the ramp walkable.
+	// _far3 guards: never touch the high impassable cliffs.
+	rmAddAreaConstraint(rampS1, avoidGuardN_far3);
+	rmAddAreaConstraint(rampS1, avoidGuardS_far3);
+	rmSetAreaObeyWorldCircleConstraint(rampS1, false);
+	rmBuildArea(rampS1);
+
+	// south island, between block rows 3 and 4
+	int rampS2 = rmCreateArea("ramp south rows 3-4");
+	rmSetAreaWarnFailure(rampS2, false);
+	rmSetAreaSize(rampS2, rmAreaTilesToFraction(rampTiles), rmAreaTilesToFraction(rampTiles));
+	rmSetAreaCoherence(rampS2, 1.0);
+	rmSetAreaLocation(rampS2, sx1 - flankProm - rmXTilesToFraction(rampOutS), (sz3 + sz4) * 0.5);
+	rmSetAreaBaseHeight(rampS2, rampHeight);
+	rmSetAreaHeightBlend(rampS2, 2);
+	rmSetAreaSmoothDistance(rampS2, rampSmooth);
+	rmSetAreaMix(rampS2, hinterMix);
+	// NO cliff type on purpose - that is what keeps the ramp walkable.
+	// _far3 guards: never touch the high impassable cliffs.
+	rmAddAreaConstraint(rampS2, avoidGuardN_far3);
+	rmAddAreaConstraint(rampS2, avoidGuardS_far3);
+	rmSetAreaObeyWorldCircleConstraint(rampS2, false);
+	rmBuildArea(rampS2);
+
+	// ====================================================================
+	//  ROADS - city out through the BACK ramp (block rows 5|6).
+	//
+	//  Paris idiom, zpparis.xs:1510 'City Road': a terrain-only patch whose
+	//  run is an influence segment. NO base height and no cliff type - the
+	//  road paints ground, it never lifts it. That is what keeps it subtle.
+	//
+	//  Built after the ramps so the track reads on top of them.
+	// ====================================================================
+	int roadTiles = 50;   // 2x the first try
+	int roadOut   = 10;   // tiles the road runs OUT from the ramp, away
+	                      // from the city and up onto the cliff
+	int roadEdgeZ = 5;    // BOTH: the road END and the food shift this many
+	                      // tiles toward their own map edge ALONG Z
+	                      // (north +Z, south -Z). X stays put - moving
+	                      // outward in X ran them into the sea.
+	int roadInS   = 3;    // SOUTH only: pull the whole road 3 tiles back
+	                      // toward the city. Its row line sits near the
+	                      // map edge, and moving cityward lowers the radius.
+
+	// north: from the city's east column out through rampN1
+	int roadN = rmCreateArea("road north back ramp");
+	rmSetAreaWarnFailure(roadN, false);
+	rmSetAreaSize(roadN, rmAreaTilesToFraction(roadTiles), rmAreaTilesToFraction(roadTiles));
+	rmSetAreaCoherence(roadN, 0.7);    // a road that wanders, not a ruled line
+	rmSetAreaTerrainType(roadN, "city\ground1_cob");   // same as cityN / cityS
+	rmSetAreaHeightBlend(roadN, 3);
+	rmSetAreaLocation(roadN, nx5 + flankProm + rmXTilesToFraction(rampOut), (nz5 + nz6) * 0.5);
+	// starts at the city's flank EDGE, not at nx5 - the old run cut deep
+	// into the city. From the edge it climbs out past the ramp.
+	rmAddAreaInfluenceSegment(roadN, nx5 + flankProm, (nz5 + nz6) * 0.5,
+		nx5 + flankProm + rmXTilesToFraction(rampOut + roadOut),
+			(nz5 + nz6) * 0.5 + rmZTilesToFraction(roadEdgeZ));
+	rmAddAreaToClass(roadN, rmClassID("classStreet"));
+	rmAddAreaToClass(roadN, rmClassID("classRoad"));
+	rmAddAreaToClass(roadN, rmClassID("classPlateau"));
+	rmSetAreaObeyWorldCircleConstraint(roadN, false);
+	rmBuildArea(roadN);
+
+	// south: the mirror, out through rampS1
+	int roadS = rmCreateArea("road south back ramp");
+	rmSetAreaWarnFailure(roadS, false);
+	rmSetAreaSize(roadS, rmAreaTilesToFraction(roadTiles), rmAreaTilesToFraction(roadTiles));
+	rmSetAreaCoherence(roadS, 0.7);    // a road that wanders, not a ruled line
+	rmSetAreaTerrainType(roadS, "city\ground1_cob");   // same as cityN / cityS
+	rmSetAreaHeightBlend(roadS, 3);
+	rmSetAreaLocation(roadS, sx1 - flankProm - rmXTilesToFraction(rampOutS)
+		+ rmXTilesToFraction(roadInS), (sz5 + sz6) * 0.5);
+	rmAddAreaInfluenceSegment(roadS,
+		sx1 - flankProm + rmXTilesToFraction(roadInS), (sz5 + sz6) * 0.5,
+		sx1 - flankProm - rmXTilesToFraction(rampOutS + roadOut)
+			+ rmXTilesToFraction(roadInS),
+			(sz5 + sz6) * 0.5 - rmZTilesToFraction(roadEdgeZ));
+	rmAddAreaToClass(roadS, rmClassID("classStreet"));
+	rmAddAreaToClass(roadS, rmClassID("classRoad"));
+	rmAddAreaToClass(roadS, rmClassID("classPlateau"));
+	rmSetAreaObeyWorldCircleConstraint(roadS, false);
+	rmBuildArea(roadS);
+
+	// ====================================================================
+	//  FOOD BLOCK at the far end of each road.
+	//
+	//  Grouping: IS_Resource_Block_Food3 (renamed from IT_ - it belongs to
+	//  the Istanbul family, and no other map referenced the old name).
+	//
+	//  foodBack pulls it a couple of tiles short of the road's tip, so it
+	//  sits ON the road rather than past it. Signs stay OUTSIDE
+	//  rmXTilesToFraction - it ignores negatives.
+	// ====================================================================
+	int foodBack = 4;   // tiles back from the road's far end
+	int foodInS  = 6;   // SOUTH only: 2 more tiles toward the city
+
+	int foodRoadN = rmCreateGrouping("food road end north", "IS_Resource_Block_Food3");
+	rmSetGroupingMinDistance(foodRoadN, 0.0);
+	rmSetGroupingMaxDistance(foodRoadN, 0.01);
+	rmAddGroupingToClass(foodRoadN, rmClassID("classBlock"));
+	rmPlaceGroupingAtLoc(foodRoadN, 0,
+		nx5 + flankProm + rmXTilesToFraction(rampOut + roadOut) - rmXTilesToFraction(foodBack),
+		(nz5 + nz6) * 0.5 + rmZTilesToFraction(roadEdgeZ));
+
+	int foodRoadS = rmCreateGrouping("food road end south", "IS_Resource_Block_Food3");
+	rmSetGroupingMinDistance(foodRoadS, 0.0);
+	rmSetGroupingMaxDistance(foodRoadS, 0.01);
+	rmAddGroupingToClass(foodRoadS, rmClassID("classBlock"));
+	rmPlaceGroupingAtLoc(foodRoadS, 0,
+		sx1 - flankProm - rmXTilesToFraction(rampOutS + roadOut)
+		+ rmXTilesToFraction(roadInS) + rmXTilesToFraction(foodBack)
+		- rmXTilesToFraction(foodInS),
+		(sz5 + sz6) * 0.5 - rmZTilesToFraction(roadEdgeZ));
+
+	// ====================================================================
+	//  SAWMILLS - lifted from Istanbul_Sawmills.age3Yscn.
+	//
+	//  Measured out of the scenario (zpSPCSawMill, name-table index 3161):
+	//     north (0.6767, 0.8102)   south (0.3267, 0.1702), both at y = 6.0
+	//  Those two are NOT exact mirrors - the south is 12 m off in z - so the
+	//  pair below is their average, mirrored properly. r = 0.365, well inside.
+	//
+	//  Grouping name is IS_SPC_Resoure_Wood - 'Resoure', missing the c. That
+	//  is the filename on disk; the lookup is exact.
+	// ====================================================================
+	int sawmillN = rmCreateGrouping("sawmill north", "IS_SPC_Resoure_Wood");
+	rmSetGroupingMinDistance(sawmillN, 0.0);
+	rmSetGroupingMaxDistance(sawmillN, 0.01);
+	rmAddGroupingToClass(sawmillN, rmClassID("classBlock"));
+	rmPlaceGroupingAtLoc(sawmillN, 0, 0.675, 0.820);
+
+	int sawmillS = rmCreateGrouping("sawmill south", "IS_SPC_Resoure_Wood");
+	rmSetGroupingMinDistance(sawmillS, 0.0);
+	rmSetGroupingMaxDistance(sawmillS, 0.01);
+	rmAddGroupingToClass(sawmillS, rmClassID("classBlock"));
+	rmPlaceGroupingAtLoc(sawmillS, 0, 0.325, 0.180);
+
+
+	// ====================================================================
+	//  CLIFF SHELF CONTENTS - tower, copper, houses, trees.
+	//  Every def carries the shelf fence AND all four mutual-avoid
+	//  constraints. Order is tower, mine, houses, trees: a def can only
+	//  avoid what is already down, so fussiest first, most numerous last.
+	//  Tower and mine JOIN classBlock, so dockAvoidBlocks treats them as
+	//  city blocks for everything downstream.
+	//  Trees are clumps, NOT a forest area - a forest area takes no object
+	//  constraints, so it grew over the houses and the mine.
+	// ====================================================================
+	int shelfHouses     = 3;
+
+	int shelfVsTower = rmCreateTypeDistanceConstraint("shelf off ruined tower", "euNuggetRuinedTower", 10.0);
+	int shelfVsMine  = rmCreateTypeDistanceConstraint("shelf off copper", "MineCopper", 8.0);
+	int shelfVsHouse = rmCreateTypeDistanceConstraint("shelf off houses", "deSPCCityStateHouseProp", 10.0);
+	int shelfVsTree  = rmCreateTypeDistanceConstraint("shelf off trees", "Tree", 8.0);
+	// trees pack tighter with each other than the buildings do: the three
+	// tree defs carry THIS instead of shelfVsTree.
+	int shelfTreeGap = rmCreateTypeDistanceConstraint("shelf tree spacing", "Tree", 4.0);
+	// 16 m x 3 houses was carving most of the shelf away from the trees;
+	// a tree 4 tiles off a house prop is close enough to read as a garden.
+	int shelfTreeVsHouse = rmCreateTypeDistanceConstraint("shelf trees off houses",
+		"deSPCCityStateHouseProp", 8.0);
+	// House-to-house. Paris puts SIX houses on a cliff with no mutual fence
+	// at all and they cluster into a village; three here at 16 m apart could
+	// not all find room and spawned 0-2 at random. Obstruction radius is 2.0,
+	// so 6 m centre-to-centre still leaves 2 m of daylight between them.
+	int shelfHouseGap = rmCreateTypeDistanceConstraint("shelf house spacing",
+		"deSPCCityStateHouseProp", 6.0);
+
+	// 1. ruined tower, difficulty 522
+	int shelfTower = rmCreateObjectDef("cliff shelf ruined tower");
+	rmAddObjectDefItem(shelfTower, "euNuggetRuinedTower", 1, 0.0);
+	rmAddObjectDefToClass(shelfTower, rmClassID("classBlock"));
+	rmAddObjectDefConstraint(shelfTower, shelfOffBlocks);
+	rmAddObjectDefConstraint(shelfTower, avoidGuardS_far3);
+	rmAddObjectDefConstraint(shelfTower, avoidGuardN_far3);
+	rmAddObjectDefConstraint(shelfTower, avoidFerry);
+	rmAddObjectDefConstraint(shelfTower, shelfVsTower);
+	rmAddObjectDefConstraint(shelfTower, shelfVsMine);
+	rmAddObjectDefConstraint(shelfTower, shelfVsHouse);
+	rmAddObjectDefConstraint(shelfTower, shelfVsTree);
+	rmAddObjectDefConstraint(shelfTower, avoidRoad);
+	rmAddObjectDefConstraint(shelfTower, insideWorld);
+	rmSetNuggetDifficulty(522, 522);
+	rmPlaceObjectDefInArea(shelfTower, 0, wildNEInnerTerrain, 1);
+	rmPlaceObjectDefInArea(shelfTower, 0, wildSWInnerTerrain, 1);
+	rmSetNuggetDifficulty(519, 519);
+
+	// 2. copper
+	int shelfMine = rmCreateObjectDef("cliff shelf copper");
+	rmAddObjectDefItem(shelfMine, "MineCopper", 1, 0.0);
+	rmAddObjectDefToClass(shelfMine, rmClassID("classBlock"));
+	rmAddObjectDefConstraint(shelfMine, shelfOffBlocks);
+	rmAddObjectDefConstraint(shelfMine, avoidGuardS_far3);
+	rmAddObjectDefConstraint(shelfMine, avoidGuardN_far3);
+	rmAddObjectDefConstraint(shelfMine, avoidFerry);
+	rmAddObjectDefConstraint(shelfMine, shelfVsTower);
+	rmAddObjectDefConstraint(shelfMine, shelfVsMine);
+	rmAddObjectDefConstraint(shelfMine, shelfVsHouse);
+	rmAddObjectDefConstraint(shelfMine, shelfVsTree);
+	rmAddObjectDefConstraint(shelfMine, avoidRoad);
+	rmAddObjectDefConstraint(shelfMine, insideWorld);
+	rmPlaceObjectDefInArea(shelfMine, 0, wildNEInnerTerrain, 1);
+	rmPlaceObjectDefInArea(shelfMine, 0, wildSWInnerTerrain, 1);
+
+	// 3. houses
+	int shelfHouse = rmCreateObjectDef("cliff shelf house");
+	rmAddObjectDefItem(shelfHouse, "deSPCCityStateHouseProp", 1, 0.0);
+	// avoidWallObj and cliffLaneFallback are gone from all six defs: the
+	// ramparts and the trade lane are both back at the city, nowhere near
+	// these shelves, and avoidWallObj is 0.01 m in any case.
+	// Radii, not count, were the problem: the tower's 20 m and the mine's
+	// 16 m each carved a disc out of the shelf for EVERYTHING placed
+	// after them - mine, houses and all 27 trees. 10 m and 8 m still
+	// keep them visually clear. Tower and mine are also in classBlock,
+	// so dockAvoidBlocks holds a further 8 m independently.
+	// holds the houses 8 m off them - the 20 m and 16 m type fences
+	// that used to do it were pure duplication, at 2.5x the radius.
+	rmAddObjectDefConstraint(shelfHouse, avoidBlockShort);
+	rmAddObjectDefConstraint(shelfHouse, avoidGuardS_far3);
+	rmAddObjectDefConstraint(shelfHouse, avoidGuardN_far3);
+	rmAddObjectDefConstraint(shelfHouse, avoidFerry);
+	rmAddObjectDefConstraint(shelfHouse, shelfVsTower);
+	rmAddObjectDefConstraint(shelfHouse, shelfVsMine);
+	rmAddObjectDefConstraint(shelfHouse, shelfHouseGap);
+	rmAddObjectDefConstraint(shelfHouse, shelfVsTree);
+	rmAddObjectDefConstraint(shelfHouse, avoidRoad);
+	rmAddObjectDefConstraint(shelfHouse, insideWorld);
+	rmPlaceObjectDefInArea(shelfHouse, 0, wildNEInnerTerrain, shelfHouses);
+	rmPlaceObjectDefInArea(shelfHouse, 0, wildSWInnerTerrain, shelfHouses);
+
+	// 4. trees, LAST and placed ONE AT A TIME.
+	//    A clump def must satisfy every constraint for the WHOLE clump at a
+	//    single spot; on a shelf this tight most clumps found nowhere to go.
+	//    Single-tree defs each solve for themselves.
+	//    Same total as the 4 clumps carried: 4 x (3.5 + 1.5 + 1.5) = 26.
+	int shelfCypress = 9;    // per shelf, all three equal
+	int shelfLakes   = 9;
+	int shelfEuca    = 9;
+
+	int shelfTreeCyp = rmCreateObjectDef("cliff shelf deTreeCypress");
+	rmAddObjectDefItem(shelfTreeCyp, "deTreeCypress", 1, 0.0);
+	rmAddObjectDefConstraint(shelfTreeCyp, avoidBlockShort);
+	rmAddObjectDefConstraint(shelfTreeCyp, avoidGuardS_far3);
+	rmAddObjectDefConstraint(shelfTreeCyp, avoidGuardN_far3);
+	rmAddObjectDefConstraint(shelfTreeCyp, avoidFerry);
+	rmAddObjectDefConstraint(shelfTreeCyp, shelfVsTower);
+	rmAddObjectDefConstraint(shelfTreeCyp, shelfVsMine);
+	rmAddObjectDefConstraint(shelfTreeCyp, shelfTreeVsHouse);
+	rmAddObjectDefConstraint(shelfTreeCyp, shelfTreeGap);
+	rmAddObjectDefConstraint(shelfTreeCyp, avoidRoad);
+	rmAddObjectDefConstraint(shelfTreeCyp, cliffOffStreet);
+	rmPlaceObjectDefInArea(shelfTreeCyp, 0, wildNEInnerTerrain, shelfCypress);
+	rmPlaceObjectDefInArea(shelfTreeCyp, 0, wildSWInnerTerrain, shelfCypress);
+
+	int shelfTreeLak = rmCreateObjectDef("cliff shelf TreeGreatLakes");
+	rmAddObjectDefItem(shelfTreeLak, "TreeGreatLakes", 1, 0.0);
+	rmAddObjectDefConstraint(shelfTreeLak, avoidBlockShort);
+	rmAddObjectDefConstraint(shelfTreeLak, avoidGuardS_far3);
+	rmAddObjectDefConstraint(shelfTreeLak, avoidGuardN_far3);
+	rmAddObjectDefConstraint(shelfTreeLak, avoidFerry);
+	rmAddObjectDefConstraint(shelfTreeLak, shelfVsTower);
+	rmAddObjectDefConstraint(shelfTreeLak, shelfVsMine);
+	rmAddObjectDefConstraint(shelfTreeLak, shelfTreeVsHouse);
+	rmAddObjectDefConstraint(shelfTreeLak, shelfTreeGap);
+	rmAddObjectDefConstraint(shelfTreeLak, avoidRoad);
+	rmAddObjectDefConstraint(shelfTreeLak, cliffOffStreet);
+	rmPlaceObjectDefInArea(shelfTreeLak, 0, wildNEInnerTerrain, shelfLakes);
+	rmPlaceObjectDefInArea(shelfTreeLak, 0, wildSWInnerTerrain, shelfLakes);
+
+	int shelfTreeEuc = rmCreateObjectDef("cliff shelf ypTreeEucalyptus");
+	rmAddObjectDefItem(shelfTreeEuc, "ypTreeEucalyptus", 1, 0.0);
+	rmAddObjectDefConstraint(shelfTreeEuc, avoidBlockShort);
+	rmAddObjectDefConstraint(shelfTreeEuc, avoidGuardS_far3);
+	rmAddObjectDefConstraint(shelfTreeEuc, avoidGuardN_far3);
+	rmAddObjectDefConstraint(shelfTreeEuc, avoidFerry);
+	rmAddObjectDefConstraint(shelfTreeEuc, shelfVsTower);
+	rmAddObjectDefConstraint(shelfTreeEuc, shelfVsMine);
+	rmAddObjectDefConstraint(shelfTreeEuc, shelfTreeVsHouse);
+	rmAddObjectDefConstraint(shelfTreeEuc, shelfTreeGap);
+	rmAddObjectDefConstraint(shelfTreeEuc, avoidRoad);
+	rmAddObjectDefConstraint(shelfTreeEuc, cliffOffStreet);
+	rmPlaceObjectDefInArea(shelfTreeEuc, 0, wildNEInnerTerrain, shelfEuca);
+	rmPlaceObjectDefInArea(shelfTreeEuc, 0, wildSWInnerTerrain, shelfEuca);
 
 
 	// --- the two 5 x 5 grids, row by row -----------------------------------
@@ -2455,63 +3235,49 @@ void main(void)
 	rmPlaceGroupingAtLoc(decoS,  0, decoSWestX, decoSZ);
 	rmPlaceGroupingAtLoc(decoS2, 0, decoSEastX, decoSZ);
 
-	// ---- NE coast of the north island: one piece per gap ------------------
-	int decoNE  = rmCreateGrouping("deco shoreline ne 1", decoShorelineNE);
-	rmSetGroupingMinDistance(decoNE, 0.0);
-	rmSetGroupingMaxDistance(decoNE, 0.01);
-	int decoNE2 = rmCreateGrouping("deco shoreline ne 2", decoShorelineNE);
-	rmSetGroupingMinDistance(decoNE2, 0.0);
-	rmSetGroupingMaxDistance(decoNE2, 0.01);
-
-	// same coast line as the flank harbours, and the midpoint of each gap
-	int decoNE3 = rmCreateGrouping("deco shoreline ne 3", decoShorelineNE);
-	rmSetGroupingMinDistance(decoNE3, 0.0);
-	rmSetGroupingMaxDistance(decoNE3, 0.01);
+	// ---- NE coast: flank deco piers REMOVED --------------------------------
+	// The GROUPINGS are gone. These anchors stay because the player water
+	// flags for Mates 1-3 are derived from them - see the molo-head block.
 
 	float decoNEX  = nx5 + flankProm + rmXTilesToFraction(decoNEDist);
 	float decoNEZ1 = (nFlank2Z + nFlankZ) * 0.5;   // between harbour 5 and harbour 3
-	float decoNEZ2 = (nFlankZ + nPirateZ) * 0.5;   // between harbour 3 and the pirates
-	float decoNEZ3 = nPirateZ + rmZTilesToFraction(decoNEBehindPir);   // behind the pirates
-	rmPlaceGroupingAtLoc(decoNE,  0, decoNEX, decoNEZ1);
-	rmPlaceGroupingAtLoc(decoNE2, 0, decoNEX, decoNEZ2);
-	rmPlaceGroupingAtLoc(decoNE3, 0, decoNEX, decoNEZ3);
+	// nPirateZDeco, not nPirateZ - the camps moved, the harbours did not.
+	float decoNEZ2 = (nFlankZ + nPirateZDeco) * 0.5;   // between harbour 3 and the old pirate row
+	float decoNEZ3 = nPirateZDeco + rmZTilesToFraction(decoNEBehindPir);
 
-	// ---- SW coast of the south island: mirror of the NE pair --------------
-	int decoSW  = rmCreateGrouping("deco shoreline sw 1", decoShorelineSW);
-	rmSetGroupingMinDistance(decoSW, 0.0);
-	rmSetGroupingMaxDistance(decoSW, 0.01);
-	int decoSW2 = rmCreateGrouping("deco shoreline sw 2", decoShorelineSW);
-	rmSetGroupingMinDistance(decoSW2, 0.0);
-	rmSetGroupingMaxDistance(decoSW2, 0.01);
-
-	int decoSW3 = rmCreateGrouping("deco shoreline sw 3", decoShorelineSW);
-	rmSetGroupingMinDistance(decoSW3, 0.0);
-	rmSetGroupingMaxDistance(decoSW3, 0.01);
+	// ---- SW coast: flank deco piers REMOVED --------------------------------
+	// Anchors kept for the attacker water flags, same as the NE side.
 
 	float decoSWX  = sx1 - flankProm - rmXTilesToFraction(decoSWDist);
 	float decoSWZ1 = (sFlank2Z + sFlankZ) * 0.5;   // between harbour 6 and harbour 4
-	float decoSWZ2 = (sFlankZ + sPirateZ) * 0.5;   // between harbour 4 and the pirates
-	float decoSWZ3 = sPirateZ - rmZTilesToFraction(decoSWBehindPir);   // behind the pirates
-	rmPlaceGroupingAtLoc(decoSW,  0, decoSWX, decoSWZ1);
-	rmPlaceGroupingAtLoc(decoSW2, 0, decoSWX, decoSWZ2);
-	rmPlaceGroupingAtLoc(decoSW3, 0, decoSWX, decoSWZ3);
+	// sPirateZDeco, not sPirateZ - see the north note.
+	float decoSWZ2 = (sFlankZ + sPirateZDeco) * 0.5;   // between harbour 4 and the old pirate row
+	float decoSWZ3 = sPirateZDeco - rmZTilesToFraction(decoSWBehindPir);
 
 	// ---- deco lighthouses on the harbour-wall corners ---------------------
 	// a GROUPING like the other IS_ deco (loose XML in Game/RandMaps/groupings,
 	// so a NEW file needs a game restart before it loads)
-	int lightN = rmCreateGrouping("deco lighthouse n", "IS_Deco_Lighthouse");
+	// Per-island now: the two carry their own rock skirts and face the
+	// right way. Terrain was stripped from both - they used to repaint
+	// the shelf the beach lays down.
+	int lightN = rmCreateGrouping("deco lighthouse n", "IS_Deco_Lighthouse_N");
 	rmSetGroupingMinDistance(lightN, 0.0);
 	rmSetGroupingMaxDistance(lightN, 0.01);
-	int lightS = rmCreateGrouping("deco lighthouse s", "IS_Deco_Lighthouse");
+	int lightS = rmCreateGrouping("deco lighthouse s", "IS_Deco_Lighthouse_S");
 	rmSetGroupingMinDistance(lightS, 0.0);
 	rmSetGroupingMaxDistance(lightS, 0.01);
 
-	float lightNX = nx5 + flankProm + rmXTilesToFraction(lightNAlongX);
-	float lightNZ = nRouteZ + rmZTilesToFraction(lightNOffZ);
-	float lightSX = sx1 - flankProm - rmXTilesToFraction(lightSAlongX);
-	float lightSZ = sRouteZ - rmZTilesToFraction(lightSOffZ);
-	rmPlaceGroupingAtLoc(lightN, 0, lightNX, lightNZ);
-	rmPlaceGroupingAtLoc(lightS, 0, lightSX, lightSZ);
+	// TOWER-ONLY offsets, in tiles, along the MAP axes. The beaches share
+	// lightNX/NZ/SX/SZ, so these are applied here at the placement and
+	// not to the shared coordinate - the two shelves do not move.
+	// All positive: the sign stays outside the call, because a tile
+	// helper ignores a negative argument silently.
+	int lightNTowerX = 2;   // north tower, +x
+	int lightSTowerX = 1;   // south tower, -x (the MINUS is in the call)
+	int lightSTowerZ = 1;   // south tower, +z
+	rmPlaceGroupingAtLoc(lightN, 0, lightNX + rmXTilesToFraction(lightNTowerX), lightNZ);
+	rmPlaceGroupingAtLoc(lightS, 0, lightSX - rmXTilesToFraction(lightSTowerX),
+		lightSZ + rmZTilesToFraction(lightSTowerZ));
 
 	// ---- Sultan Palace, centred on each strait beach ---------------------
 	// Placed AFTER the other deco so nothing else lands on top of it.
@@ -2756,12 +3522,15 @@ void main(void)
 	// Difficulty 601 latches nuggetmods zpNuggetWaterFort = 2x
 	// zpGuardianCorsairGalley; restored to 519 after both forts are down.
 	rmSetNuggetDifficulty(601, 601);
+	// class BEFORE placement, so the constraint below can see it
+	rmAddGroupingToClass(waterFortN, rmClassID("classNavalFort"));
 	int waterFortNPlacement = rmPlaceGroupingInstanceAtLoc(waterFortN, waterFortNX, waterFortNZ, 0);
 
 	int waterFortS = rmCreateGrouping("water fort south", "Caribbean_Naval_KotH_medi");
 	rmSetGroupingMinDistance(waterFortS, 0.00);
 	rmSetGroupingMaxDistance(waterFortS, 0.01);
 	rmAddGroupingToClass(waterFortS, rmClassID("classPlateau"));
+	rmAddGroupingToClass(waterFortS, rmClassID("classNavalFort"));
 	int waterFortSPlacement = rmPlaceGroupingInstanceAtLoc(waterFortS, 1.0 - waterFortNX, 1.0 - waterFortNZ, 0);
 	rmSetNuggetDifficulty(519, 519);
 
@@ -2785,10 +3554,10 @@ void main(void)
 	// instanceIdShiftIndividual.
 	int palaceMarkDefN = rmCreateObjectDef("palace marker north");
 	rmAddObjectDefItem(palaceMarkDefN, "zpCinematicRevealer", 1, 0.0);
-	rmPlaceObjectDefAtLoc(palaceMarkDefN, 0, nx1, nz1);
+	rmPlaceObjectDefAtLoc(palaceMarkDefN, 0, nx4, nz1);
 	int palaceMarkDefS = rmCreateObjectDef("palace marker south");
 	rmAddObjectDefItem(palaceMarkDefS, "zpCinematicRevealer", 1, 0.0);
-	rmPlaceObjectDefAtLoc(palaceMarkDefS, 0, sx5, sz1);
+	rmPlaceObjectDefAtLoc(palaceMarkDefS, 0, sx2, sz1);
 	vector palaceLocN = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(palaceMarkDefN, 0));
 	vector palaceLocS = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(palaceMarkDefS, 0));
 	rmEchoInfo("palace flare: N=" + palaceLocN + "  S=" + palaceLocS);
@@ -2892,6 +3661,54 @@ void main(void)
 	//  the 0.469 measured bound). More seaward = silent drop; if it must
 	//  move visually, shift its Z channel-ward instead.
 	// ========================================================================
+	// ====================================================================
+	//  PLAYER WATER FLAG ZONES - one ribbon of open water per island.
+	//
+	//  EDIT THE FOUR COORDINATE PAIRS BELOW. Nothing derives from them.
+	//     x   0.0 = west edge    1.0 = east edge
+	//     z   0.0 = south edge   1.0 = north edge
+	//
+	//  Keep every point within 0.455 of (0.5, 0.5). Past ~0.469 the engine
+	//  drops the spawn silently - this map's own measured law.
+	//
+	//  These lines run through flag spots the map ALREADY SHIPPED and that
+	//  already worked, so they are known water:
+	//     north  (0.76,0.86) (0.80,0.82) (0.84,0.78)
+	//     south  (0.22,0.15) (0.18,0.18) (0.16,0.22)
+	//
+	//  Built here on purpose: after every land area and river, before the
+	//  flags that spawn inside them.
+	// ====================================================================
+	gFlagOffLand = rmCreateTerrainDistanceConstraint("flags off land", "land", true, 4.0);
+	int zoneOffLand = rmCreateTerrainDistanceConstraint("flag zone off land", "land", true, 1.0);
+	int zoneOffFort = rmCreateClassDistanceConstraint("flag zone off naval forts",
+		rmClassID("classNavalFort"), 40.0);
+
+	int flagZoneN = rmCreateArea("flag zone north");
+	//rmSetAreaWaterType(flagZoneN, "ZP Australia Red Lake");   // TEST ONLY - delete to hide
+	//rmSetAreaWarnFailure(flagZoneN, false);
+	rmSetAreaSize(flagZoneN, 0.012, 0.012);
+	rmSetAreaCoherence(flagZoneN, 0.85);
+	// 180 deg mirror of zone south: (x,z) -> (1-x, 1-z)
+	rmSetAreaLocation(flagZoneN, 0.9, 0.6);
+	rmAddAreaInfluenceSegment(flagZoneN, 0.95, 0.6, 0.78, 0.45);
+	rmAddAreaConstraint(flagZoneN, zoneOffLand);
+	rmAddAreaConstraint(flagZoneN, zoneOffFort);
+	rmSetAreaObeyWorldCircleConstraint(flagZoneN, false);
+	rmBuildArea(flagZoneN);
+
+	int flagZoneS = rmCreateArea("flag zone south");
+	//rmSetAreaWaterType(flagZoneS, "ZP Australia Red Lake");   // TEST ONLY - delete to hide
+	//rmSetAreaWarnFailure(flagZoneS, false);
+	rmSetAreaSize(flagZoneS, 0.012, 0.012);
+	rmSetAreaCoherence(flagZoneS, 0.85);
+	rmSetAreaLocation(flagZoneS, 0.1, 0.4);
+	rmAddAreaInfluenceSegment(flagZoneS, 0.05, 0.4, 0.22, 0.55);
+	rmAddAreaConstraint(flagZoneS, zoneOffLand);
+	rmAddAreaConstraint(flagZoneS, zoneOffFort);
+	rmSetAreaObeyWorldCircleConstraint(flagZoneS, false);
+	rmBuildArea(flagZoneS);
+
 	if (cNumberTeams == 2)
 	{
 		int flagMoloOutN = 7;
@@ -2900,22 +3717,23 @@ void main(void)
 		float flagNEX = decoNEX + rmXTilesToFraction(flagMoloOutN);
 		float flagSWX = decoSWX - rmXTilesToFraction(flagMoloOutS);
 		float flagSWX3 = decoSWX - rmXTilesToFraction(flagMoloOutS3);
-		placeWaterFlag(firstDefender, flagNEX, decoNEZ3);
-		// middle-pier flags sit 2 t channel-ward, clear of the pirate buoy
-		if (northCount >= 2) placeWaterFlag(secondDefender, flagNEX, decoNEZ2 - rmZTilesToFraction(2));
-		if (northCount >= 3) placeWaterFlag(thirdDefender, flagNEX, decoNEZ1);
-		if (northCount >= 4) placeWaterFlag(fourthDefender, 0.76, 0.86);
-		if (northCount >= 5) placeWaterFlag(fifthDefender, 0.80, 0.82);
-		if (northCount >= 6) placeWaterFlag(sixthDefender, 0.84, 0.78);
-		if (northCount >= 7) placeWaterFlag(seventhDefender, 0.76, 0.81);
+		// SIDES SWAPPED: defenders take the SOUTH zone, attackers the NORTH.
+		placeWaterFlagInZone(firstDefender, flagZoneS);
+		if (northCount >= 2) placeWaterFlagInZone(secondDefender, flagZoneS);
+		if (northCount >= 3) placeWaterFlagInZone(thirdDefender, flagZoneS);
+		if (northCount >= 4) placeWaterFlagInZone(fourthDefender, flagZoneS);
+		if (northCount >= 5) placeWaterFlagInZone(fifthDefender, flagZoneS);
+		if (northCount >= 6) placeWaterFlagInZone(sixthDefender, flagZoneS);
+		if (northCount >= 7) placeWaterFlagInZone(seventhDefender, flagZoneS);
 
-		placeWaterFlag(firstAttacker, flagSWX3, decoSWZ3);
-		if (southCount >= 2) placeWaterFlag(secondAttacker, flagSWX, decoSWZ2 + rmZTilesToFraction(2));
-		if (southCount >= 3) placeWaterFlag(thirdAttacker, flagSWX, decoSWZ1);
-		if (southCount >= 4) placeWaterFlag(fourthAttacker, 0.22, 0.15);
-		if (southCount >= 5) placeWaterFlag(fifthAttacker, 0.18, 0.18);
-		if (southCount >= 6) placeWaterFlag(sixthAttacker, 0.16, 0.22);
-		if (southCount >= 7) placeWaterFlag(seventhAttacker, 0.22, 0.19);
+		// attackers take the NORTH zone - the mirror of the defenders'.
+		placeWaterFlagInZone(firstAttacker, flagZoneN);
+		if (southCount >= 2) placeWaterFlagInZone(secondAttacker, flagZoneN);
+		if (southCount >= 3) placeWaterFlagInZone(thirdAttacker, flagZoneN);
+		if (southCount >= 4) placeWaterFlagInZone(fourthAttacker, flagZoneN);
+		if (southCount >= 5) placeWaterFlagInZone(fifthAttacker, flagZoneN);
+		if (southCount >= 6) placeWaterFlagInZone(sixthAttacker, flagZoneN);
+		if (southCount >= 7) placeWaterFlagInZone(seventhAttacker, flagZoneN);
 	}
 
 	// ========================================================================
@@ -2943,8 +3761,6 @@ void main(void)
 	// -- placed object defs: + instanceIdShiftIndividual --
 	int unit_harbourSocketN = rmGetUnitPlaced(harbourSocketN, 0) + instanceIdShiftIndividual;
 	int unit_harbourSocketS = rmGetUnitPlaced(harbourSocketS, 0) + instanceIdShiftIndividual;
-	int unit_flankSocketN = rmGetUnitPlaced(flankSocketN, 0) + instanceIdShiftIndividual;
-	int unit_flankSocketS = rmGetUnitPlaced(flankSocketS, 0) + instanceIdShiftIndividual;
 	int unit_flank2SocketN = rmGetUnitPlaced(flank2SocketN, 0) + instanceIdShiftIndividual;
 	int unit_flank2SocketS = rmGetUnitPlaced(flank2SocketS, 0) + instanceIdShiftIndividual;
 	int pirateFlagN = rmGetUnitPlaced(pirateFlagDefN, 0) + instanceIdShiftIndividual;
@@ -2986,8 +3802,6 @@ void main(void)
 	// -- grouping instance queries: +1, the Paris law --
 	int unit_nugHN = rmGetGroupingInstanceUnitByType(tradeNPlacement, "ypNuggetTradingPost") + instanceIdShift;
 	int unit_nugHS = rmGetGroupingInstanceUnitByType(tradeSPlacement, "ypNuggetTradingPost") + instanceIdShift;
-	int unit_nugH3 = rmGetGroupingInstanceUnitByType(trade3Placement, "ypNuggetTradingPost") + instanceIdShift;
-	int unit_nugH4 = rmGetGroupingInstanceUnitByType(trade4Placement, "ypNuggetTradingPost") + instanceIdShift;
 	int unit_nugH5 = rmGetGroupingInstanceUnitByType(trade5Placement, "ypNuggetTradingPost") + instanceIdShift;
 	int unit_nugH6 = rmGetGroupingInstanceUnitByType(trade6Placement, "ypNuggetTradingPost") + instanceIdShift;
 	int unit_menagBN = rmGetGroupingInstanceUnitByType(menageriePlacementN, "zpSPCMenagerie") + instanceIdShift;
@@ -3373,14 +4187,6 @@ void main(void)
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
 	rmSetTriggerEffectParam("Suspend", "True");
 	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", ""+unit_flankSocketN);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", ""+unit_flankSocketS);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");
-	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_flank2SocketN);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
 	rmSetTriggerEffectParam("Suspend", "True");
@@ -3410,30 +4216,6 @@ void main(void)
 	rmSetTriggerConditionParam("NuggetObject", ""+unit_nugHS);
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_harbourSocketS, false);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-	rmSetTriggerEffectParam("Suspend", "False", false);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmCreateTrigger("Harbour 3 Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-	rmSetTriggerConditionParam("NuggetObject", ""+unit_nugH3);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", ""+unit_flankSocketN, false);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-	rmSetTriggerEffectParam("Suspend", "False", false);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmCreateTrigger("Harbour 4 Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-	rmSetTriggerConditionParam("NuggetObject", ""+unit_nugH4);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", ""+unit_flankSocketS, false);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
 	rmSetTriggerEffectParam("Suspend", "False", false);
 	rmSetTriggerPriority(4);

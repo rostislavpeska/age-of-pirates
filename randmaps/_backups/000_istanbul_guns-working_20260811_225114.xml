@@ -1,7 +1,0 @@
-<?xml version = "1.0" encoding = "UTF-8"?>
-<mapinfo
-    displayName = "Istanbul"
-    imagepath = "ui\random_map\elbe\elbe_mini"
-    cannotReplace = ""
-    loadBackground="ui\random_map\elbe\elbe_map">
-</mapinfo>

@@ -3367,6 +3367,17 @@
       <string _locid="303369">ZP Prince Palace</string>
       <string _locid="303370">Defeat the Palace guards and claim its treasure to unlock it, then hold the grounds with no enemy units nearby. Palaces and sea forts together start the victory timer.</string>
       <string _locid="303371">Struggle of the Bosporus Victory in</string>
+      <string _locid="303372">Neutral Cathedral</string>
+      <string _locid="303373">ZP Neutral Cathedral</string>
+      <string _locid="303374">A neutral cathedral. Every player holds their own copy of this building and interacts with it independently.</string>
+      <string _locid="303375">Neutral Cossack Church</string>
+      <string _locid="303376">ZP Neutral Cossack Church</string>
+      <string _locid="303377">Dock Builder</string>
+      <string _locid="303378">ZP Dock Builder</string>
+      <string _locid="303379">A shipwright's launch. Sails to a shore and raises a Dock where it stands. It cannot fight, and it is spent once the Dock is built.</string>
+      <string _locid="303380">ZP PROP Statues Home City</string>
+      <string _locid="303381">An abandoned Academy of Sciences. Drive off its guard and its scholars go back to work.</string>
+      <string _locid="303382">%1s has reclaimed the Academy of Sciences.</string>
       
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

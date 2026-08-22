@@ -1,4 +1,76 @@
 <techtreemods>
+  <!-- D2 PROBE ONLY. Player 2's half of the ownership test: makes
+       zpNeutralCathedralP2 selectable, granted unconditionally to player 2.
+       No reversal tech and no proximity gate on purpose - one variable.
+       Delete together with zpNeutralCathedralP2 once D2 is answered. -->
+  <tech name="zpNeutralCathedralSelectableP2" type="Normal">
+    <dbid>408198</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="ProtoUnitFlag" flagid="12" relativity="Assign">
+        <target type="ProtoUnit">zpNeutralCathedralP2</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="ProtoUnitFlag" flagid="230" relativity="Assign">
+        <target type="ProtoUnit">zpNeutralCathedralP2</target>
+      </effect>
+    </effects>
+  </tech>
+
+  <!-- ==================================================================
+       Neutral shared building - makes zpNeutralCathedralP1 clickable for its
+       owner only. Two effects, distilled from vanilla DESPCNapoleonicSetup:
+         flagid 12  = cSelectable          (the unit can be picked at all)
+         flagid 230 = cDisplaySocketPanel  (its panel is drawn when picked)
+       The other 82 effects of that tech are campaign setup - pop cap, build
+       limits, TechStatus churn, disabling House - and are gone.
+
+       KEEP THIS TECH AT THE TOP OF THE FILE. Techs sitting near the bottom of
+       techtreemods.xml do not apply fully; this one silently did nothing at
+       index 1262 of 1312 and worked immediately at index 0. That cost a whole
+       debugging session - do not "tidy" it further down.
+
+       Granted per player with the RM trigger effect "ZP Set Tech Status (XS)":
+       PlayerID 1, TechID cTechzpNeutralCathedralSelectableP1, Status 2.
+       Clones for players 2-8 take dbid 408197-408203 and their own proto.
+       ================================================================== -->
+  <tech name="zpNeutralCathedralSelectableP1" type="Normal">
+    <dbid>408196</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="ProtoUnitFlag" flagid="12" relativity="Assign">
+        <target type="ProtoUnit">zpNeutralCathedralP1</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="ProtoUnitFlag" flagid="230" relativity="Assign">
+        <target type="ProtoUnit">zpNeutralCathedralP1</target>
+      </effect>
+    </effects>
+  </tech>
+
+  <!-- Reversal of zpNeutralCathedralSelectableP1: same two flags, set back to
+       0. Needed because taking a tech from Active to Unobtainable does not undo
+       its effects - it only re-arms it. The map's proximity loop alternates the
+       two, always setting the opposite tech to status 0 before setting its own
+       to status 2, so each one can fire again next time the state flips.
+       KEEP AT THE TOP OF THE FILE - see the note on the tech above. -->
+  <tech name="zpNeutralCathedralUnselectableP1" type="Normal">
+    <dbid>408197</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="ProtoUnitFlag" flagid="12" relativity="Assign">
+        <target type="ProtoUnit">zpNeutralCathedralP1</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="ProtoUnitFlag" flagid="230" relativity="Assign">
+        <target type="ProtoUnit">zpNeutralCathedralP1</target>
+      </effect>
+    </effects>
+  </tech>
+
   <tech name="zpNatDryDock" type="Normal">
     <dbid>40320</dbid>
     <displaynameid>300768</displaynameid>
@@ -36872,6 +36944,8 @@
       </effect>
     </effects>
   </tech>
+
+
 <!--TEST TECHS-->
 
   <!--<tech name="zpNativeSaxonKing" type="Normal">

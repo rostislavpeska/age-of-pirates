@@ -264,10 +264,22 @@ minInterval 1
       xsEnableRule("PirateTechMonitor");
 
       // ON - Istanbul overrides of stock behaviour
-      xsEnableRule("istanbulDockSites");     // stock siting walks docks into the strait
+      // OFF - the map now spawns a zpDockBuilder on each water flag
+      // (zpistanbulb.xs placeWaterFlag). It is a water-borne AbstractWagon that
+      // trains Dock, so findWagonToBuild (aibuildings.xs:1477) assigns it as the
+      // plan's builder and the dock is raised where the boat floats. Steering
+      // cBuildPlanDockPlacementPoint on top of that would only fight it - and the
+      // engine ignored those points anyway: 307 written, 0 used, measured.
+      xsEnableRule("istanbulFirstDock");     // PARALLEL - direct build order, no plan
+      xsEnableRule("istanbulDockSites");   // aim the dock plan at the dock builder
       xsEnableRule("istanbulDockManager");   // stock dock COUNT collapses on a non-island naval map
-      xsEnableRule("istanbulMapProbe");      // DIAGNOSTIC - dumps the AI's own map view once
-      xsEnableRule("istanbulShoreSites");    // real shoreline from the area border graph
+      xsEnableRule("istanbulAreaRebuild");  // TEST - is the -1 area hole stale data?
+      xsEnableRule("istanbulMapProbe");     // DIAGNOSTIC - dumps the AI's own map view once
+      // OFF - istanbulShoreSites also grabs the dock build plan and sets
+      // cBuildPlanCenterPosition on it (see the rule body), which is exactly what
+      // breaks the engine dock solver. istanbulDockSites owns dock siting now;
+      // two rules writing the same plan variables cannot both be right.
+      // xsEnableRule("istanbulShoreSites");
 
       // ON - the two-fort victory condition
       xsEnableRule("istanbulAttackKOTH");
@@ -7295,6 +7307,312 @@ minInterval 15
 }
 
 //==============================================================================
+// istanbulAreaRebuild   -   is the -1 hole stale data, or real terrain?
+//
+// Measured on this map: p4 and p5's TOWN CENTRE reports area type -1, i.e. no
+// area at all, while p2 and p3 report 6 and build docks normally. baseToTc is
+// 0.000000 for every player, so the base IS the town - the graph has a hole
+// under two of the four starts. Nothing places there: Outposts fail with
+// state (3) 61 times in the same run, not only docks.
+//
+// analyzeMap calls kbAreaCalculate() during setup. If the hole is simply the
+// graph having been built before the map finished settling its city blocks,
+// rebuilding it later fills it in. If the hole is real terrain, it will not.
+//
+// Either answer is worth one rule: this reports the area type at the town
+// before and after, so a single game says which it is.
+//==============================================================================
+rule istanbulAreaRebuild
+inactive
+minInterval 30
+{
+   int    tcUnit = getUnit(cUnitTypeAgeUpBuilding, cMyID, cUnitStateAlive);
+   vector tcLoc  = cInvalidVector;
+   if (tcUnit >= 0)
+   {
+      tcLoc = kbUnitGetPosition(tcUnit);
+   }
+   else
+   {
+      tcLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   }
+
+   int typeBefore  = kbAreaGetType(kbAreaGetIDByPosition(tcLoc));
+   int areaBefore  = kbAreaGetNumber();
+   int groupBefore = kbAreaGroupGetNumber();
+
+   kbAreaCalculate();
+
+   int typeAfter  = kbAreaGetType(kbAreaGetIDByPosition(tcLoc));
+   int areaAfter  = kbAreaGetNumber();
+   int groupAfter = kbAreaGroupGetNumber();
+
+   aiEcho("AREAREBUILD p" + cMyID
+             + " tc=" + xsVectorGetX(tcLoc) + "," + xsVectorGetZ(tcLoc)
+             + " type " + typeBefore + " -> " + typeAfter
+             + " | areas " + areaBefore + " -> " + areaAfter
+             + " | groups " + groupBefore + " -> " + groupAfter);
+
+   xsDisableSelf();   // one rebuild is the test
+}
+
+int    gIstanbulHarbourBase = -1;            // base anchored on the team's working seat
+vector gIstanbulHarbourVec  = cInvalidVector; // that seat's position
+bool   gIstanbulHarbourDone = false;          // resolved once per game
+
+//==============================================================================
+// istanbulFirstDock   -   PARALLEL dock system, no build plan involved
+//
+// Dock siting on this map cannot be driven from XS. Measured across six runs:
+// 307 cBuildPlanDockPlacementPoint values written and 0 used; removing
+// cBuildPlanCenterPosition entirely still left 121 failed dock plans; and three
+// players re-aimed at a single fixed point 23, 24 and 24 times without ever
+// placing a dock, logging only 2-3 errors between them. The engine picks its own
+// spot and silently refuses ours.
+//
+// So this does not use a plan at all:
+//     bool aiTaskUnitBuild(int unitID, int buildingTypeID, vector position, bool queue)
+//         "Does a lightweight (no plan) build tasking of the given unit to build
+//          the given building."
+// One order - this boat, this dock, this position - past shouldBuildDock,
+// createSimpleBuildPlan, selectBuildPlanPosition and the placement scorer.
+//
+// WHERE: the map spawns a zpDockBuilder on the water flag, so the boat's own
+// position is the flag. Walk from there toward our own land until the water
+// ends; the last water tile before the shore is where a dock belongs. This works
+// even for a player whose town is stranded inland, because it never consults the
+// town at all - only the flag and the water.
+//==============================================================================
+int  gIstanbulFirstDockTries = 0;
+bool gIstanbulFirstDockDone  = false;
+
+rule istanbulFirstDock
+inactive
+minInterval 3
+{
+   if (gIstanbulFirstDockDone == true)
+   {
+      xsDisableSelf();
+      return;
+   }
+
+   int haveDocks = kbUnitCount(cMyID, gDockUnit, cUnitStateABQ);
+   int wantDocks = 3;
+
+   if (haveDocks >= wantDocks)
+   {
+      gIstanbulFirstDockDone = true;
+      aiEcho("FIRSTDOCK p" + cMyID + " have " + haveDocks + " docks - done");
+      xsDisableSelf();
+      return;
+   }
+
+   // ---------------------------------------------------------------------
+   // DOCKS 2+. Once one dock stands, the rest go BESIDE it - the AI stacks
+   // docks on the same beach anyway, and siting a fresh spot is precisely
+   // what fails on this map. Offset perpendicular to the dock -> land
+   // vector, i.e. along the waterline, alternating sides so they spread
+   // rather than pile on one tile.
+   //
+   // Built by any villager, again with aiTaskUnitBuild - no plan.
+   // ---------------------------------------------------------------------
+   if (haveDocks > 0)
+   {
+      int firstDock = getUnit(gDockUnit, cMyID, cUnitStateAlive);
+      if (firstDock < 0)
+      {
+         return;
+      }
+      vector dockPos = kbUnitGetPosition(firstDock);
+      vector inland  = kbGetPlayerStartingPosition(cMyID);
+      int    tcU     = getUnit(cUnitTypeAgeUpBuilding, cMyID, cUnitStateAlive);
+      if (tcU >= 0)
+      {
+         inland = kbUnitGetPosition(tcU);
+      }
+      if (dockPos == cInvalidVector || inland == cInvalidVector)
+      {
+         return;
+      }
+
+      int villager = getUnitByLocation(cUnitTypeAbstractVillager, cMyID, cUnitStateAlive, dockPos, 120.0);
+      if (villager < 0)
+      {
+         return;   // nobody nearby to build with - try again next pass
+      }
+
+      // along the waterline = perpendicular to dock -> land
+      // NB name must differ from the beach-search toLand above: XS scopes
+      // variables to the whole RULE, not the block, so a second "vector toLand"
+      // is "already defined" and the file fails to compile.
+      vector nextToLand = xsVectorNormalize(inland - dockPos);
+      float  alongX = 0.0 - xsVectorGetZ(nextToLand);
+      float  alongZ = xsVectorGetX(nextToLand);
+
+      float  step = 18.0 * ((haveDocks + 1) / 2);
+      if (haveDocks % 2 == 1)
+      {
+         step = 0.0 - step;
+      }
+
+      vector nextSpot = xsVectorSet(xsVectorGetX(dockPos) + alongX * step,
+                                    0.0,
+                                    xsVectorGetZ(dockPos) + alongZ * step);
+
+      gIstanbulFirstDockTries = gIstanbulFirstDockTries + 1;
+      aiEcho("NEXTDOCK p" + cMyID + " have " + haveDocks
+                + " villager=" + villager
+                + " from=" + xsVectorGetX(dockPos) + "," + xsVectorGetZ(dockPos)
+                + " -> " + xsVectorGetX(nextSpot) + "," + xsVectorGetZ(nextSpot)
+                + " offset=" + step);
+
+      aiTaskUnitBuild(villager, gDockUnit, nextSpot, false);
+
+      if (gIstanbulFirstDockTries > 40)
+      {
+         aiEcho("FIRSTDOCK p" + cMyID + " 40 attempts - stopping");
+         gIstanbulFirstDockDone = true;
+         xsDisableSelf();
+      }
+      return;
+   }
+
+   int builder = getUnit(cUnitTypezpDockBuilder, cMyID, cUnitStateAlive);
+   if (builder < 0)
+   {
+      gIstanbulFirstDockTries = gIstanbulFirstDockTries + 1;
+      if (gIstanbulFirstDockTries > 20)
+      {
+         aiEcho("FIRSTDOCK p" + cMyID + " no builder after 20 tries - giving up");
+         gIstanbulFirstDockDone = true;
+         xsDisableSelf();
+      }
+      return;   // boat not spawned yet, or already consumed
+   }
+
+   vector boatPos = kbUnitGetPosition(builder);   // the boat sits ON the flag
+
+   // Landward direction: prefer the town centre, fall back to the start seat.
+   vector landward = kbGetPlayerStartingPosition(cMyID);
+   int    tcUnit   = getUnit(cUnitTypeAgeUpBuilding, cMyID, cUnitStateAlive);
+   if (tcUnit >= 0)
+   {
+      landward = kbUnitGetPosition(tcUnit);
+   }
+   if (boatPos == cInvalidVector || landward == cInvalidVector)
+   {
+      return;
+   }
+
+   // ---------------------------------------------------------------------
+   // FIND A BEACH, not just a shore.
+   //
+   // Measured 2026-08-20: a single ray aimed at the town ended on stopType=3
+   // (cAreaTypeImpassableLand - CLIFF) for all seven AI, and none built a dock.
+   // This coast is roughly 95% cliff and 5% beach, so one ray almost always
+   // hits rock; the successes in the previous game were the rays that happened
+   // to land on a beach.
+   //
+   // So sweep a fan of directions from the boat - straight at the town, then
+   // swung progressively to either side along the coast - and take the FIRST
+   // ray that ends on passable land. Cliff, forest, VP site and no-area are all
+   // rejected: a dock cannot be raised against any of them.
+   //
+   // Directions are blended without trigonometry, the way this codebase builds
+   // vectors elsewhere: mix the to-town unit vector with its perpendicular and
+   // renormalise. The factors sweep about 0 to 63 degrees each way.
+   // ---------------------------------------------------------------------
+   vector toLand   = xsVectorNormalize(landward - boatPos);
+   float  perpX    = 0.0 - xsVectorGetZ(toLand);
+   float  perpZ    = xsVectorGetX(toLand);
+   int    raySpan  = distance(boatPos, landward) + 40;
+
+   vector lastWater = boatPos;
+   int    hereType  = -1;
+   bool   hitLand   = false;
+   float  fanMix    = 0.0;
+   int    fanUsed   = -1;
+
+   vector rayDir   = cInvalidVector;
+   vector rayPos   = cInvalidVector;
+   vector tryWater = cInvalidVector;
+
+   for (fan = 0; < 9)
+   {
+      // 0, -0.3, +0.3, -0.7, +0.7, -1.2, +1.2, -2.0, +2.0
+      fanMix = 0.0;
+      if (fan == 1) { fanMix = 0.0 - 0.3; }
+      if (fan == 2) { fanMix = 0.3; }
+      if (fan == 3) { fanMix = 0.0 - 0.7; }
+      if (fan == 4) { fanMix = 0.7; }
+      if (fan == 5) { fanMix = 0.0 - 1.2; }
+      if (fan == 6) { fanMix = 1.2; }
+      if (fan == 7) { fanMix = 0.0 - 2.0; }
+      if (fan == 8) { fanMix = 2.0; }
+
+      rayDir = xsVectorNormalize(xsVectorSet(
+                  xsVectorGetX(toLand) + perpX * fanMix,
+                  0.0,
+                  xsVectorGetZ(toLand) + perpZ * fanMix));
+
+      rayPos   = boatPos;
+      tryWater = boatPos;
+      hereType = -1;
+
+      for (k = 0; < raySpan)
+      {
+         rayPos   = rayPos + rayDir;
+         hereType = kbAreaGetType(kbAreaGetIDByPosition(rayPos));
+         if (hereType == cAreaTypeWater)
+         {
+            tryWater = rayPos;
+            continue;
+         }
+         break;   // anything not water ends this ray
+      }
+
+      // Accept only a ray that ended on REAL, PASSABLE ground - a beach.
+      if (hereType >= 0 &&
+          hereType != cAreaTypeWater &&
+          hereType != cAreaTypeImpassableLand &&
+          hereType != cAreaTypeForest &&
+          hereType != cAreaTypeVPSite)
+      {
+         lastWater = tryWater;
+         hitLand   = true;
+         fanUsed   = fan;
+         break;
+      }
+   }
+
+   if (hitLand == false)
+   {
+      // No beach in any direction. Fall back to the straight-at-town ray so the
+      // boat at least tries, rather than doing nothing at all.
+      lastWater = tryWater;
+   }
+
+   gIstanbulFirstDockTries = gIstanbulFirstDockTries + 1;
+
+   aiEcho("FIRSTDOCK p" + cMyID + " try " + gIstanbulFirstDockTries
+             + " boat=" + xsVectorGetX(boatPos) + "," + xsVectorGetZ(boatPos)
+             + " shore=" + xsVectorGetX(lastWater) + "," + xsVectorGetZ(lastWater)
+             + " walked=" + distance(boatPos, lastWater)
+             + " hitLand=" + hitLand + " stopType=" + hereType
+             + " fan=" + fanUsed);
+
+   // Direct build order. No plan, no placement search, no scoring.
+   aiTaskUnitBuild(builder, gDockUnit, lastWater, false);
+
+   if (gIstanbulFirstDockTries > 20)
+   {
+      aiEcho("FIRSTDOCK p" + cMyID + " 20 attempts, stopping - stock system keeps the boat");
+      gIstanbulFirstDockDone = true;
+      xsDisableSelf();
+   }
+}
+
+//==============================================================================
 // istanbulDockSites
 //
 // Stock dock siting finds a spot by picking a random FISH and walking from the
@@ -7349,7 +7667,27 @@ minInterval 15
 //==============================================================================
 int  gIstanbulDockBP        = -1;      // our own building-placement query
 bool gIstanbulDockBPWaiting = false;   // started last pass, read this pass
-
+//==============================================================================
+// istanbulDockSites   -   build the dock AT THE DOCK BUILDER
+//
+// The map spawns a zpDockBuilder on every water flag (zpistanbulb.xs
+// placeWaterFlag). It floats exactly where the dock belongs. Stock siting does
+// not know that: aibuildings.xs:1374-1376 aims the plan at
+//     point 0 = main base,  point 1 = gNavyVec (the flag)
+// and for a countryside player the base is ~270 m inland, so that pair spans the
+// map and the dock gets aimed at whatever lies between - the strait.
+//
+// Measured 2026-08-20, 8-player game: 4 of 7 AI built docks; P3/P4/P6 built none
+// and each sat on a live, stuck dock plan.
+//
+// aibuildings.xs:848-850 already does the right thing for a wagon -
+//     loc = kbUnitGetPosition(getUnit(cUnitTypeCoveredWagon));
+// - but it keys on cUnitTypeCoveredWagon specifically, so our builder never
+// triggers it. This rule supplies the missing step and nothing else.
+//
+// Deliberately minimal. No influence maps, no score floor, no offset ladder, no
+// standalone kbBuildingPlacement query - every one of those was tried and failed.
+//==============================================================================
 rule istanbulDockSites
 inactive
 minInterval 5
@@ -7357,100 +7695,115 @@ minInterval 5
    int dockPlan = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit);
    if (dockPlan < 0)
    {
-      return;   // no dock being built - nothing to steer
+      return;   // no dock being built
    }
 
-   vector baseLoc = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
-   vector homeWater = gNavyVec;
-   if (gWaterSpawnFlagID >= 0)
+   int builder = getUnit(cUnitTypezpDockBuilder, cMyID, cUnitStateAlive);
+   if (builder < 0)
    {
-      homeWater = kbUnitGetPosition(gWaterSpawnFlagID);
+      return;   // no builder left - leave stock siting alone
    }
-   if (homeWater == cInvalidVector || baseLoc == cInvalidVector)
+
+   vector at = kbUnitGetPosition(builder);
+   if (at == cInvalidVector)
    {
       return;
    }
 
-   // search our own sea, and let the engine choose the shore tile
-   aiPlanSetVariableVector(dockPlan, cBuildPlanCenterPosition, 0, homeWater);
-   aiPlanSetVariableFloat(dockPlan, cBuildPlanCenterPositionDistance, 0, 80.0);
-   aiPlanSetVariableVector(dockPlan, cBuildPlanInfluencePosition, 0, homeWater);
-   aiPlanSetVariableFloat(dockPlan, cBuildPlanInfluencePositionDistance, 0, 120.0);
-
-   // this keeps the footprint tight so a narrow shore qualifies
-   aiPlanSetVariableFloat(dockPlan, cBuildPlanBuildingBufferSpace, 0, 1.0);
-
    // ---------------------------------------------------------------------
-   // THE SCORE FLOOR. The AI has no rule against cliffs. Placement
-   // candidates are SCORED, and anything below the minimum is discarded:
-   //    kbBuildingPlacementSetMinimumValue( float minimumValue ):
-   //    "Sets the minimum acceptable value for evaluated spots in the BP."
-   // (signature read out of AoE3DE_s.exe). Cliff-adjacent shore evaluates
-   // low, so it is dropped - not refused. That threshold is NOT a build-plan
-   // variable: the engine build-plan table has BuildingPlacementID,
-   // CenterPosition, InfluenceUnit*, BuildingBufferSpace, Retries,
-   // FailureCause, CanPathStartIndex and 33 more, but no MinimumValue. So it
-   // can only be reached through the standalone kbBuildingPlacement API,
-   // which is what this does: run our own query with the floor at 0, then
-   // hand the winning spot to the plan.
+   // THE EXCLUSIONS. data/placementrules/dock_city.xml forbids a Dock within
+   //     55 m of zpKingsHillNaval / ...BlackSea / ...Medi   (player="any")
+   //     90 m of an ENEMY zpAntiShipGun                     (player="enemy")
+   // The AI never knew these existed, so it kept aiming at a spot the engine
+   // will always refuse - measured: three players re-aimed at ONE point 23, 24
+   // and 24 times running without ever placing a dock.
    //
-   // Two passes on purpose. kbBuildingPlacementStart is documented as
-   // "Starts the placement", so the result is not assumed ready in the same
-   // tick - start on one pass, read on the next.
+   // Check the same rings here. If the builder is standing inside one, move the
+   // BOAT out rather than re-aiming the plan: the dock is built at the builder
+   // (maxrange 3), so the builder's position IS the dock's position.
    // ---------------------------------------------------------------------
-   if (gIstanbulDockBP < 0)
+   int   blockGun   = getUnitByLocation(cUnitTypezpAntiShipGun, cPlayerRelationEnemyNotGaia, cUnitStateAlive, at, 80.0);
+   int   blockKoth  = getUnitByLocation(cUnitTypezpKingsHillNaval, cPlayerRelationAny, cUnitStateAlive, at, 55.0);
+   int   blockKothB = getUnitByLocation(cUnitTypezpKingsHillNavalBlackSea, cPlayerRelationAny, cUnitStateAlive, at, 55.0);
+   int   blockKothM = getUnitByLocation(cUnitTypezpKingsHillNavalMedi, cPlayerRelationAny, cUnitStateAlive, at, 55.0);
+   int   blockAvoid = getUnitByLocation(cUnitTypezpSPCDockAvoider, cPlayerRelationAny, cUnitStateAlive, at, 55.0);
+
+   vector blockPos = cInvalidVector;
+   float  clearAt  = 0.0;
+   if (blockGun >= 0)
    {
-      gIstanbulDockBP = kbBuildingPlacementCreate("Istanbul dock placement");
+      blockPos = kbUnitGetPosition(blockGun);
+      clearAt  = 84.0;            // 80 + margin - MIRRORS dock_city.xml:18
    }
-   if (gIstanbulDockBP < 0)
+   else
    {
-      return;   // engine would not give us one
+      if (blockAvoid >= 0)
+      {
+         // zpSPCDockAvoider exists only to push docks away - dock_city.xml:19,
+         // player="any" 55 m. The deco towers on the strait beaches now carry
+         // one at their centre, so this ring keeps AI docks off the strait.
+         blockPos = kbUnitGetPosition(blockAvoid);
+         clearAt  = 59.0;         // 55 + margin - MIRRORS dock_city.xml:19
+      }
+      else
+      {
+      if (blockKoth >= 0)
+      {
+         blockPos = kbUnitGetPosition(blockKoth);
+         clearAt  = 59.0;         // 55 + margin
+      }
+      else
+      {
+         if (blockKothB >= 0)
+         {
+            blockPos = kbUnitGetPosition(blockKothB);
+            clearAt  = 59.0;
+         }
+         else
+         {
+            if (blockKothM >= 0)
+            {
+               blockPos = kbUnitGetPosition(blockKothM);
+               clearAt  = 59.0;
+            }
+         }
+      }
+      }
    }
 
-   if (gIstanbulDockBPWaiting == false)
+   aiEcho("DOCKAT p" + cMyID + " builder=" + builder
+             + " x=" + xsVectorGetX(at) + " z=" + xsVectorGetZ(at)
+             + " plan=" + dockPlan
+             + " gun=" + blockGun + " koth=" + blockKoth
+             + " kothB=" + blockKothB + " kothM=" + blockKothM
+             + " avoid=" + blockAvoid);
+
+   if (blockPos != cInvalidVector)
    {
-      kbBuildingPlacementSelect(gIstanbulDockBP);
-      kbBuildingPlacementResetResults();
-      kbBuildingPlacementSetBuildingType(gDockUnit);
-      kbBuildingPlacementSetBaseID(kbBaseGetMainID(cMyID), cBuildingPlacementPreferenceFront);
-      kbBuildingPlacementSetCenterPosition(homeWater, 90.0, 1.0);
-      kbBuildingPlacementSetMinimumValue(0.0);   // take the worst legal tile
-      kbBuildingPlacementStart();
-      gIstanbulDockBPWaiting = true;
-      return;
+      // Straight out from the blocker, past its ring, and keep going in the
+      // direction we already are so the boat stays on its own side of the map.
+      vector outDir = xsVectorNormalize(at - blockPos);
+      vector clearSpot = xsVectorSet(
+         xsVectorGetX(blockPos) + xsVectorGetX(outDir) * clearAt,
+         0.0,
+         xsVectorGetZ(blockPos) + xsVectorGetZ(outDir) * clearAt);
+
+      aiEcho("DOCKAT p" + cMyID + " BLOCKED at " + distance(at, blockPos)
+                + " m - moving builder to "
+                + xsVectorGetX(clearSpot) + "," + xsVectorGetZ(clearSpot));
+
+      aiTaskUnitMove(builder, clearSpot, false);
+      return;   // do not aim the plan until the boat is out of the ring
    }
 
-   gIstanbulDockBPWaiting = false;
-   vector spot = kbBuildingPlacementGetResultPosition(gIstanbulDockBP);
-   if (spot == cInvalidVector)
-   {
-      aiEcho("DOCKBP p" + cMyID + " engine offers NOTHING at floor 0");
-      return;   // leave the steering above in place
-   }
-
-   aiEcho("DOCKBP p" + cMyID + " spot x=" + xsVectorGetX(spot)
-             + " z=" + xsVectorGetZ(spot)
-             + " value=" + kbBuildingPlacementGetResultValue(gIstanbulDockBP));
-
-   // pin the plan onto that exact spot
-   aiPlanSetVariableVector(dockPlan, cBuildPlanCenterPosition, 0, spot);
-   aiPlanSetVariableFloat(dockPlan, cBuildPlanCenterPositionDistance, 0, 12.0);
-   aiPlanSetVariableVector(dockPlan, cBuildPlanDockPlacementPoint, 1, spot);
-
-   // PUSH AWAY FROM DOCKS WE ALREADY HAVE. Steering every plan at the same
-   // homeWater point aims dock 2 at the water dock 1 already stands in, and on
-   // a coast that is ~5% beach that disc holds exactly one dock. Negative unit
-   // influence is the engine's own "not here"; aibuildings.xs:1252 uses the
-   // positive form to pull towers TOWARD docks.
-   aiPlanSetVariableInt(dockPlan, cBuildPlanInfluenceUnitTypeID, 0, gDockUnit);
-   aiPlanSetVariableFloat(dockPlan, cBuildPlanInfluenceUnitDistance, 0, 60.0);
-   aiPlanSetVariableFloat(dockPlan, cBuildPlanInfluenceUnitValue, 0, -40.0);
-   aiPlanSetVariableInt(dockPlan, cBuildPlanInfluenceUnitFalloff, 0, cBPIFalloffLinear);
-
-   // keep the dock pair pointing at real water in OUR sea, not at whatever
-   // fish the stock search wandered off to
-   aiPlanSetVariableVector(dockPlan, cBuildPlanDockPlacementPoint, 0, baseLoc);
-   aiPlanSetVariableVector(dockPlan, cBuildPlanDockPlacementPoint, 1, homeWater);
+   // Aim the plan at the builder. CenterPosition with a tight radius is the
+   // lever the archipelago economy uses; the placement-point pair is what stock
+   // sets. Set both, because an earlier measurement showed the engine ignoring
+   // the pair on its own (307 points written, 0 used).
+   aiPlanSetVariableVector(dockPlan, cBuildPlanCenterPosition, 0, at);
+   aiPlanSetVariableFloat(dockPlan, cBuildPlanCenterPositionDistance, 0, 20.0);
+   aiPlanSetVariableVector(dockPlan, cBuildPlanDockPlacementPoint, 0, at);
+   aiPlanSetVariableVector(dockPlan, cBuildPlanDockPlacementPoint, 1, at);
 }
 
 //==============================================================================
