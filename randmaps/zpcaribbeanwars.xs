@@ -1036,33 +1036,53 @@ rmSetTriggerEffectParamInt("Status",2);
 
 if (rmGetIsKOTH()){
 
-   // KotH Conversion
-   
+   // ------------------------------------------------------------------
+   //  NAVAL KOTH - the ENGINE owns the capture decision.
+   //
+   //  zpKingsHillNaval carries zpnavalkingshill.tactics, an AutoConvert
+   //  action at maxrange 25. Warships cannot normally trip it: ZERO of the
+   //  149 water-movement protos carry ConvertsHerds, a deliberate exclusion
+   //  in the base game, so the tech below grants it. That tech is a Shadow
+   //  tech flipped ONLY here and ONLY in KotH mode, so ships on every other
+   //  map are untouched and cannot steal herds.
+   //
+   //  No guardians on this castle, so no AutoConvert suspension - capture is
+   //  live from the start, which is what KotH mode wants.
+   //
+   //  What used to live here was a hand-rolled rule whose blocker test was
+   //  (i != k) - player IDENTITY, not hostility - so two ALLIES each waited
+   //  for the other to leave and the castle never changed hands. That whole
+   //  family is gone; the engine has no such edge case.
+   //  Identical to the system in zpblacksea.xs.
+   // ------------------------------------------------------------------
+   // The grant needs a trigger OF ITS OWN. rmAddTriggerEffect appends to
+   // whatever trigger was last switched to, so bare effects in open code
+   // silently land on the previous trigger.
+   rmCreateTrigger("UnlockNavalKotHTech");
+   rmSwitchToTrigger(rmTriggerID("UnlockNavalKotHTech"));
    for (k=1; <= cNumberNonGaiaPlayers) {
-      rmCreateTrigger("ConvertKotH_Player"+k);
+      rmAddTriggerEffect("ZP Set Tech Status (XS)");
+      rmSetTriggerEffectParamInt("PlayerID", k);
+      rmSetTriggerEffectParam("TechID", "cTechzpUnlockNavalKotH");
+      rmSetTriggerEffectParamInt("Status", 2);
+   }
+   rmSetTriggerPriority(4);
+   rmSetTriggerActive(true);
+   rmSetTriggerRunImmediately(true);
+   rmSetTriggerLoop(false);
 
-      rmSwitchToTrigger(rmTriggerID("ConvertKotH_Player"+k));
-      rmAddTriggerCondition("Units in Area");
-      rmSetTriggerConditionParam("DstObject",""+kothCastleMod);
+   //  FOLLOWERS - no logic, they only read who owns the castle. Exactly one
+   //  player can own it, so exactly one of these can ever be true: they need
+   //  no team test and cannot oscillate. AutoConvert converts ONLY the object
+   //  carrying the action, so the city-state flags need this to follow it.
+   for (k=1; <= cNumberNonGaiaPlayers) {
+      rmCreateTrigger("FollowKotH_Player"+k);
+   }
+   for (k=1; <= cNumberNonGaiaPlayers) {
+      rmSwitchToTrigger(rmTriggerID("FollowKotH_Player"+k));
+      rmAddTriggerCondition("Units Owned");
       rmSetTriggerConditionParamInt("Player",k);
-      rmSetTriggerConditionParamInt("Dist",25);
-      rmSetTriggerConditionParam("UnitType","AbstractWarShip");
-      rmSetTriggerConditionParam("Op",">=");
-      rmSetTriggerConditionParamFloat("Count",1);
-      for (i=1; <= cNumberNonGaiaPlayers) {
-         if (i != k){
-            rmAddTriggerCondition("Units in Area");
-            rmSetTriggerConditionParam("DstObject",""+kothCastleMod);
-            rmSetTriggerConditionParamInt("Player",i);
-            rmSetTriggerConditionParamInt("Dist",25);
-            rmSetTriggerConditionParam("UnitType","AbstractWarShip");
-            rmSetTriggerConditionParam("Op","==");
-            rmSetTriggerConditionParamFloat("Count",0);
-         }
-      }
-      rmAddTriggerEffect("Convert");
-      rmSetTriggerEffectParam("SrcObject",""+kothCastleMod);
-      rmSetTriggerEffectParamInt("PlayerID",k);
+      rmSetTriggerConditionParam("SrcObject",""+kothCastleMod);
       for (i=0; <= cNumberNonGaiaPlayers) {
          rmAddTriggerEffect("Convert Units in Area");
          rmSetTriggerEffectParam("SrcObject",""+kothCastleMod);
@@ -1071,10 +1091,11 @@ if (rmGetIsKOTH()){
          rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
          rmSetTriggerEffectParamInt("Dist",15);
       }
+      // arm the sister followers so the NEXT owner change is caught
       for (i=1; <= cNumberNonGaiaPlayers) {
          if (i != k){
             rmAddTriggerEffect("Fire Event");
-            rmSetTriggerEffectParamInt("EventID", rmTriggerID("ConvertKotH_Player"+i));
+            rmSetTriggerEffectParamInt("EventID", rmTriggerID("FollowKotH_Player"+i));
          }
       }
       rmAddTriggerEffect("Play Soundset");

@@ -1,0 +1,30 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\priests\sacerdote_ortodoxo\head\textures\dacoit_0_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\asians\mercenaries\fugitive_dacoit\textures\dacoit_0_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\asians\mercenaries\fugitive_dacoit\textures\dacoit_0_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\asians\mercenaries\fugitive_dacoit\textures\dacoit_0_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\priests\sacerdote_ortodoxo\head\textures\dacoit_0_mata_BaseColor">
+      </texture>
+      <texture name="Normals" override="units\asians\mercenaries\fugitive_dacoit\textures\dacoit_0_mata_Normals">
+      </texture>
+      <texture name="Masks" override="units\asians\mercenaries\fugitive_dacoit\textures\dacoit_0_mata_Masks">
+      </texture>
+      <texture name="Details" override="units\asians\mercenaries\fugitive_dacoit\textures\dacoit_0_mata_Details">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

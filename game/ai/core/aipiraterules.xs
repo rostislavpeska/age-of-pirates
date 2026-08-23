@@ -278,6 +278,14 @@ minInterval 1
       xsEnableRule("istanbulGuardianKiller");
       xsEnableRule("istanbulDefendKOTH");
       xsEnableRule("istanbulFortRaid");
+      xsEnableRule("istanbulGunRaid");
+      // the gun REBUILD - see buildPirateSocketTowers; the map already
+      // grants zpSPCIstanbulSocketsAI and waits for the proxy
+      xsEnableRule("buildPirateSocketTowers");
+      // targeted landings on the safe beaches; the stock amphibious
+      // machinery stays forbidden above - it is cliff-blind
+      xsEnableRule("istanbulLanding");
+      xsEnableRule("istanbulAreaRecalc");   // one-shot KB rebuild at ~90s
    }
 
    // Naval KOTH Maps %%%%%%%%%%%%%%%%%%%%%%%
@@ -1143,6 +1151,26 @@ minInterval 30
          {
             aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCFixedGunAIProxy);
             return; // return here so we only build one at a time
+         }
+      }
+
+      // ISTANBUL. Same step for zpSocketAntiShipGun: if our socket has no gun
+      // standing on it, train the proxy and let the map's ASGun_ON trigger do
+      // the Socket Build. zpSPCIstanbulSocketsAI CommandAdds this very proxy
+      // onto that socket, so it is the same proxy, not a new one. The gun
+      // costs 100w/600g like zpSPCFixedGun, so the gate above already fits.
+      socketTowerQuery = createSimpleUnitQuery(cUnitTypezpSocketAntiShipGun, cMyID, cUnitStateAny);
+      socketNumber = kbUnitQueryExecute(socketTowerQuery);
+
+      for (i = 0; < socketNumber)
+      {
+         tempSocketUnit = kbUnitQueryGetResult(socketTowerQuery, i);
+         socketPosition = kbUnitGetPosition(tempSocketUnit);
+
+         if (getUnitCountByLocation(cUnitTypezpAntiShipGun, cPlayerRelationAny, cUnitStateAlive, socketPosition, 10.0) <= 0)
+         {
+            aiTaskUnitTrain(tempSocketUnit, cUnitTypezpSPCFixedGunAIProxy);
+            return; // one at a time, as above
          }
       }
    }
@@ -7083,6 +7111,103 @@ minInterval 10
 // Ships are tasked directly rather than through a combat plan, because a plan
 // takes a unit TYPE and would sweep up every galley in the fleet.
 //==============================================================================
+// ---- ISTANBUL LANDING state (rule istanbulLanding, further down) --------
+// Declared here, above fortRaid/gunRaid, so their ship loops can skip the
+// landing ship instead of stealing it mid-crossing.
+int gIstanbulLandShip = -1;
+int gIstanbulLandPhase = 0;        // 0 idle, 1 boarding, 2 sailing
+int gIstanbulLandTime = -1;        // when the current phase began (ms)
+int gIstanbulLandNext = 0;         // earliest next launch attempt (ms)
+int gIstanbulLandArmyMin = 8;      // soldiers needed before we sail
+vector gIstanbulLandBeach = cInvalidVector;
+vector gIstanbulLandPickup = cInvalidVector;
+// OWNERSHIP - the arbitrated cause of "0 aboard" was that the soldiers and
+// the ship stayed property of stock plans re-tasking on a 0.3-10 s cadence.
+// These two reserve plans are the stock countermeasure, verbatim:
+//   army pri 99  - "Only lower than transport"       (aiassertivewall.xs:8722)
+//   ship pri 100 - "Let no one steal us"             (aiassertivewall.xs:8731)
+int gIstanbulLandArmyPlan = -1;
+int gIstanbulLandShipPlan = -1;
+// ============== TEST MODE - SET false FOR RELEASE ======================
+// true:  gun gate skipped, army bar 2, cooldowns 30 s, heartbeat every 20 s
+// false: full gates (gun dead, army 8, minutes-long cooldowns), heartbeat 60 s
+bool gIstanbulLandTestMode = false;
+int gIstanbulLandEchoTime = 0;
+
+// Destroy the plans and reset state. MUST run on every exit path - landed,
+// timed out, ship lost - or the pri-100 reserve permanently starves
+// gunRaid/fortRaid/fort defense of warships.
+void istanbulLandingReset(void)
+{
+   if (gIstanbulLandArmyPlan >= 0)
+   {
+      aiPlanDestroy(gIstanbulLandArmyPlan);
+   }
+   if (gIstanbulLandShipPlan >= 0)
+   {
+      aiPlanDestroy(gIstanbulLandShipPlan);
+   }
+   gIstanbulLandArmyPlan = -1;
+   gIstanbulLandShipPlan = -1;
+   gIstanbulLandShip = -1;
+   gIstanbulLandPhase = 0;
+}
+
+// The phase-0 heartbeat: names the gate that is refusing, throttled so it is
+// one line a minute, not spam. A silent refusal cost a whole test game to
+// diagnose once; never again.
+void istanbulLandingWait(string reason = "")
+{
+   int waitInterval = 60 * 1000;
+   if (gIstanbulLandTestMode == true)
+   {
+      waitInterval = 20 * 1000;
+   }
+   if (xsGetTime() < gIstanbulLandEchoTime + waitInterval)
+   {
+      return;
+   }
+   gIstanbulLandEchoTime = xsGetTime();
+   aiEcho("LANDWAIT p" + cMyID + " gate=" + reason);
+}
+
+// ESCORT - loop round 2. run_006 ended SHIP-LOST: the transport waits parked
+// at a fixed pickup for up to 3 minutes with AllowUnderAttackResponse false
+// ("try to finish transport"), and unlike stock's design the fleet is NOT
+// gathered around it - gunRaid/fortRaid own the navy. This walks up to 3
+// free warships to the transport every pass; warships auto-engage attackers
+// on their own, so a move order is a guard order. No plans, no locks - the
+// escorts stay stealable and the orders are re-issued anyway.
+void istanbulLandingEscort(void)
+{
+   if (gIstanbulLandShip < 0)
+   {
+      return;
+   }
+   vector escortPos = kbUnitGetPosition(gIstanbulLandShip);
+   int escortQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
+   int escortCount = kbUnitQueryExecute(escortQuery);
+   int escortsSent = 0;
+   for (i = 0; < escortCount)
+   {
+      int tempEscort = kbUnitQueryGetResult(escortQuery, i);
+      if (tempEscort == gIstanbulLandShip)
+      {
+         continue;
+      }
+      if (aiPlanGetActualPriority(kbUnitGetPlanID(tempEscort)) >= 95)
+      {
+         continue;   // fort garrisons and other transports keep their jobs
+      }
+      aiTaskUnitMove(tempEscort, escortPos);
+      escortsSent = escortsSent + 1;
+      if (escortsSent >= 3)
+      {
+         break;
+      }
+   }
+}
+
 int gIstanbulRaidShipMin = 3;      // never raid with fewer than this
 int gIstanbulRaidCostMin = 600;    // Galleon class
 
@@ -7160,6 +7285,10 @@ minInterval 15
    for (i = 0; < shipCount)
    {
       tempUnit = kbUnitQueryGetResult(shipQuery, i);
+      if (tempUnit == gIstanbulLandShip)
+      {
+         continue;   // the landing ship keeps its cargo
+      }
       puid = kbUnitGetProtoUnitID(tempUnit);
       shipCost = kbUnitCostPerResource(puid, cResourceWood)
                  + kbUnitCostPerResource(puid, cResourceGold)
@@ -7180,4 +7309,623 @@ minInterval 15
       aiEcho("RAID p" + cMyID + " " + sent + "/" + strongCount
                 + " galleon-class through the Bosporus at enemy fort");
    }
+}
+
+//==============================================================================
+// istanbulGunRaid   -   break the fixed guns once there is a fleet for it
+//
+// The anti-ship guns are what stop a fleet reaching anything, so this rule does
+// NOT wait for a fort of our own the way istanbulFortRaid does.
+//
+// WHICH HULLS COUNT is one comparison: puid == gMonitorUnit. That is vanilla's
+// per-civ monitor-class global - Monitor by default (aiglobals.xs:498),
+// xpIronclad for Asians (aisetup.xs:68), deCannonBoat for Africans (:185) - and
+// aiassertivewall.xs:7612 already uses the same test to pick the ship that
+// attacks an enemy tower. No proto list, and a new civ needs no edit here.
+//
+// Two ways to qualify:
+//    >= gIstanbulGunSiegeMin monitor-class hulls   (they carry the building bonus)
+//    >= gIstanbulGunShipMin  warships of any kind  (numbers instead of bonus)
+// No age gate: the monitor class is Age 3, so the short path cannot fire before
+// then and Colonial falls through to the 4-hull path by itself. A civ with no
+// monitor at all - Haudenosaunee, Aztec - simply always uses the long path.
+//==============================================================================
+int gIstanbulGunSiegeMin = 2;   // monitor-class hulls that are enough on their own
+int gIstanbulGunShipMin  = 4;   // ...or this many warships of any kind
+
+rule istanbulGunRaid
+inactive
+minInterval 15
+{
+   if (aiTreatyActive() == true)
+   {
+      return;
+   }
+
+   int gunQuery = createSimpleUnitQuery(cUnitTypezpAntiShipGun, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
+   int gunCount = kbUnitQueryExecute(gunQuery);
+   if (gunCount <= 0)
+   {
+      return;
+   }
+
+   // resolve the target BEFORE the second query runs, so the two result sets
+   // never overlap
+   vector homeBase = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   int targetGun = -1;
+   float bestDist = 100000.0;
+   float gunDist = 0.0;
+   int tempUnit = -1;
+   for (i = 0; < gunCount)
+   {
+      tempUnit = kbUnitQueryGetResult(gunQuery, i);
+      gunDist = distance(kbUnitGetPosition(tempUnit), homeBase);
+      if (gunDist < bestDist)
+      {
+         bestDist = gunDist;
+         targetGun = tempUnit;
+      }
+   }
+   if (targetGun < 0)
+   {
+      return;
+   }
+
+   int shipQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
+   int shipCount = kbUnitQueryExecute(shipQuery);
+   if (shipCount <= 0)
+   {
+      return;
+   }
+
+   int siegeCount = 0;
+   int puid = -1;
+   for (i = 0; < shipCount)
+   {
+      tempUnit = kbUnitQueryGetResult(shipQuery, i);
+      puid = kbUnitGetProtoUnitID(tempUnit);
+      if (puid == gMonitorUnit)
+      {
+         siegeCount = siegeCount + 1;
+      }
+   }
+
+   if (siegeCount < gIstanbulGunSiegeMin && shipCount < gIstanbulGunShipMin)
+   {
+      return;   // neither way qualifies - keep building
+   }
+
+   int sent = 0;
+   for (i = 0; < shipCount)
+   {
+      tempUnit = kbUnitQueryGetResult(shipQuery, i);
+      if (tempUnit == gIstanbulLandShip)
+      {
+         continue;   // the landing ship keeps its cargo
+      }
+      aiTaskUnitWork(tempUnit, targetGun);
+      sent = sent + 1;
+   }
+
+   // one line, both counters: says which path fired and by how much
+   aiEcho("GUNRAID p" + cMyID + " siege " + siegeCount + "/" + gIstanbulGunSiegeMin
+             + " hulls " + shipCount + "/" + gIstanbulGunShipMin
+             + " -> " + sent + " ships onto gun " + targetGun);
+}
+
+//==============================================================================
+// istanbulLanding   -   put troops on the enemy island over the safe beaches
+//
+// The stock amphibious machinery stays FORBIDDEN (the 99 near the top of this
+// file): its site pipeline never tests cAreaTypeImpassableLand, so on this map
+// it ejects troops onto cliff - docs/ai_technical_debt.md, and the one tested
+// fix regressed dock placement everywhere. This rule lands at a KNOWN point
+// instead: the strait beaches under the lighthouses.
+//
+// The beach is found BY OBJECT: each lighthouse grouping carries exactly one
+// zpPropWaterTower standing on the beach coordinate. The two naval forts carry
+// the same prop, so markers within 30 m of an IstanbulVictoryObject are
+// rejected; the two beaches are what remains.
+//
+// The beach is VALIDATED, not trusted - both tests are the engine's own
+// area-group primitive:
+//    land-passable from our own base  -> skip: the army can walk
+//    NOT land-passable to enemy start -> skip + echo: isolated shelf, landing
+//                                        there strands the army (MAP problem)
+//
+// Phases: 0 gates+board -> 1 boarding -> 2 sailing -> eject + attack -> 0.
+// Direct tasking only, no plans - the fortRaid/gunRaid house pattern. Boarding
+// count is the stock trick (aiassertivewall.xs:7842): garrisoned units report
+// the ship's own position.
+//==============================================================================
+rule istanbulLanding
+inactive
+minInterval 20
+{
+   if (aiTreatyActive() == true)
+   {
+      return;
+   }
+
+   if (gIstanbulLandPhase > 0 && gIstanbulLandShip < 0)
+   {  // should not happen; recover rather than wedge
+      gIstanbulLandPhase = 0;
+   }
+
+   // ---- phase 1: wait for the army to board, then sail -----------------
+   if (gIstanbulLandPhase == 1)
+   {
+      if (kbUnitGetPlayerID(gIstanbulLandShip) != cMyID)
+      {
+         aiEcho("LAND p" + cMyID + " boarding aborted - ship lost");
+         istanbulLandingReset();
+         xsSetRuleMinIntervalSelf(20);
+         return;
+      }
+      // RE-ISSUE EVERYTHING EVERY PASS - the stock idiom (loadForces
+      // 7789-7826 runs from a minInterval-3 rule): the ship move and every
+      // board order, from the plan's own roster. A repeat order is free.
+      aiTaskUnitMove(gIstanbulLandShip, gIstanbulLandPickup);
+      istanbulLandingEscort();
+      int planSoldiers = aiPlanGetNumberUnits(gIstanbulLandArmyPlan);
+      for (i = 0; < planSoldiers)
+      {
+         aiTaskUnitWork(aiPlanGetUnitByIndex(gIstanbulLandArmyPlan, i), gIstanbulLandShip, true);
+      }
+      // radius 1.0, not 8: garrisoned units report the ship's own position
+      // and stock relies on exactly this count (aiassertivewall.xs:7842)
+      int aboard = getUnitCountByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationSelf,
+         cUnitStateAlive, kbUnitGetPosition(gIstanbulLandShip), 1.0);
+      // WAVE DISCIPLINE (round 1) + STAGE-AND-TRIGGER (round 4, user design).
+      // waveReady: full wave at once, or half after 120 s - the round-1 rule.
+      // beachClear: no enemy fixed gun within 65 m (the gun's effective
+      // range, user-measured) of the target beach. Boarding never waits for
+      // the gun; a READY wave with a live gun HOLDS at the pickup, loaded,
+      // under escort, striking the blocker - and sails on the first pass
+      // after it dies. Reaction time beats the enemy's fast gun rebuild.
+      bool waveReady = false;
+      if (aboard > planSoldiers * 0.9 || (aboard * 2 >= planSoldiers && xsGetTime() > gIstanbulLandTime + 120 * 1000))
+      {
+         waveReady = true;
+      }
+      bool beachClear = true;
+      int blockGun = -1;
+      if (gIstanbulLandTestMode == false)
+      {
+         int gunQuery = createSimpleUnitQuery(cUnitTypezpAntiShipGun, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
+         int gunCount = kbUnitQueryExecute(gunQuery);
+         for (n = 0; < gunCount)
+         {
+            int tempGun = kbUnitQueryGetResult(gunQuery, n);
+            if (distance(kbUnitGetPosition(tempGun), gIstanbulLandBeach) < 65.0)
+            {
+               beachClear = false;
+               blockGun = tempGun;
+               break;
+            }
+         }
+      }
+      if (waveReady == true && beachClear == true)
+      {
+         aiTaskUnitMove(gIstanbulLandShip, gIstanbulLandBeach);
+         gIstanbulLandPhase = 2;
+         gIstanbulLandTime = xsGetTime();
+         aiEcho("LAND p" + cMyID + " sailing, " + aboard + "/" + planSoldiers + " aboard");
+         return;
+      }
+      if (waveReady == true && beachClear == false)
+      {
+         // fully staged: hold loaded, prosecute the blocker. blockGun's id
+         // is captured before the warship query re-executes the shared
+         // simple query object.
+         int strikeQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
+         int strikeCount = kbUnitQueryExecute(strikeQuery);
+         int strikesSent = 0;
+         for (n = 0; < strikeCount)
+         {
+            int tempStriker = kbUnitQueryGetResult(strikeQuery, n);
+            if (tempStriker == gIstanbulLandShip)
+            {
+               continue;
+            }
+            if (aiPlanGetActualPriority(kbUnitGetPlanID(tempStriker)) >= 95)
+            {
+               continue;   // transports and fort garrisons keep their jobs
+            }
+            aiTaskUnitWork(tempStriker, blockGun);
+            strikesSent = strikesSent + 1;
+            if (strikesSent >= 2)
+            {
+               break;
+            }
+         }
+         istanbulLandingWait("STAGED " + aboard + " aboard - holding for beach, striking gun with " + strikesSent + " ships");
+         return;   // deliberately no timeout while staged - holding IS the plan
+      }
+      if (xsGetTime() > gIstanbulLandTime + 180 * 1000)
+      {
+         aiEcho("LAND p" + cMyID + " boarding timed out at " + aboard + "/" + planSoldiers + " aboard");
+         istanbulLandingReset();
+         xsSetRuleMinIntervalSelf(20);
+         gIstanbulLandNext = xsGetTime() + 3 * 60 * 1000;
+         if (gIstanbulLandTestMode == true)
+         {
+            gIstanbulLandNext = xsGetTime() + 30 * 1000;
+         }
+      }
+      return;
+   }
+
+   // ---- phase 2: eject at the beach, aim the army ----------------------
+   if (gIstanbulLandPhase == 2)
+   {
+      if (kbUnitGetPlayerID(gIstanbulLandShip) != cMyID)
+      {
+         aiEcho("LAND p" + cMyID + " crossing aborted - ship lost");
+         istanbulLandingReset();
+         xsSetRuleMinIntervalSelf(20);
+         return;
+      }
+      // repeat the sail order every pass, same as boarding
+      aiTaskUnitMove(gIstanbulLandShip, gIstanbulLandBeach);
+      istanbulLandingEscort();
+      if (distance(kbUnitGetPosition(gIstanbulLandShip), gIstanbulLandBeach) < 18.0)
+      {
+         // SHIP-ANCHORED accounting - loop round 2. Troops emerge AT THE SHIP
+         // (up to 18 m from the beach anchor), so everything after the eject
+         // measures from the ship's position: run_004 counted 0 ashore of a
+         // full 6/6 wave through the old beach-anchored 25 m circle, run_005
+         // counted 7/7 only because the ship happened to park close. The
+         // Enhanced AI reference does the same (ainavalinvasion.xs:700-706:
+         // counts at galleonPosition radius 3, ejects with no target point).
+         vector ejectPos = kbUnitGetPosition(gIstanbulLandShip);
+         aiTaskUnitEject(gIstanbulLandShip, gIstanbulLandBeach);
+
+         // nearest enemy building within 90 m becomes the army's first target
+         int bldQuery = createSimpleUnitQuery(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia, cUnitStateAlive);
+         int bldCount = kbUnitQueryExecute(bldQuery);
+         int bestBld = -1;
+         float bestBldDist = 90.0;
+         for (i = 0; < bldCount)
+         {
+            int tempBld = kbUnitQueryGetResult(bldQuery, i);
+            float tempBldDist = distance(kbUnitGetPosition(tempBld), ejectPos);
+            if (tempBldDist < bestBldDist)
+            {
+               bestBldDist = tempBldDist;
+               bestBld = tempBld;
+            }
+         }
+         int ashoreQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+         int ashoreCount = kbUnitQueryExecute(ashoreQuery);
+         int pushed = 0;
+         for (i = 0; < ashoreCount)
+         {
+            int tempAshore = kbUnitQueryGetResult(ashoreQuery, i);
+            if (distance(kbUnitGetPosition(tempAshore), ejectPos) < 30.0)
+            {
+               if (bestBld >= 0)
+               {
+                  aiTaskUnitWork(tempAshore, bestBld);
+               }
+               pushed = pushed + 1;
+            }
+         }
+         aiEcho("LAND p" + cMyID + " LANDED - " + pushed + " ashore, first target " + bestBld);
+         istanbulLandingReset();
+         xsSetRuleMinIntervalSelf(20);
+         gIstanbulLandNext = xsGetTime() + 4 * 60 * 1000;
+         if (gIstanbulLandTestMode == true)
+         {
+            gIstanbulLandNext = xsGetTime() + 30 * 1000;
+         }
+         return;
+      }
+      if (xsGetTime() > gIstanbulLandTime + 180 * 1000)
+      {
+         // do NOT eject here - we may be over open water. Cargo stays aboard;
+         // the next launch re-picks a ship and a full hold re-boards instantly.
+         aiEcho("LAND p" + cMyID + " crossing timed out "
+                + distance(kbUnitGetPosition(gIstanbulLandShip), gIstanbulLandBeach) + " m out");
+         istanbulLandingReset();
+         xsSetRuleMinIntervalSelf(20);
+         gIstanbulLandNext = xsGetTime() + 2 * 60 * 1000;
+         if (gIstanbulLandTestMode == true)
+         {
+            gIstanbulLandNext = xsGetTime() + 30 * 1000;
+         }
+      }
+      return;
+   }
+
+   // ---- phase 0: gates, then launch -------------------------------------
+   if (xsGetTime() < gIstanbulLandNext)
+   {
+      return;
+   }
+
+   // an enemy start we cannot walk to; if every enemy is walkable, no landing
+   vector homeBase = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   int homeGroup = kbAreaGroupGetIDByPosition(homeBase);
+   vector enemyLoc = cInvalidVector;
+   for (p = 1; < cNumberPlayers)
+   {
+      if (kbGetPlayerTeam(p) == kbGetPlayerTeam(cMyID))
+      {
+         continue;
+      }
+      vector tempStart = kbGetPlayerStartingPosition(p);
+      if (kbAreAreaGroupsPassableByLand(homeGroup, kbAreaGroupGetIDByPosition(tempStart)) == false)
+      {
+         enemyLoc = tempStart;
+         break;
+      }
+   }
+   if (enemyLoc == cInvalidVector)
+   {
+      istanbulLandingWait("no cross-water enemy");
+      return;
+   }
+
+   // the beach markers, minus the two on the naval forts.
+   // createSimpleUnitQuery returns ONE SHARED query object (static int,
+   // aiutilities.xs:777). Reading fortQuery results after markQuery has
+   // re-executed that object actually reads MARKER results - which made every
+   // lighthouse marker filter ITSELF out (distance 0 "to a fort") and let the
+   // naval forts' own sea towers through to be judged instead. That is the
+   // whole reason no landing ever launched. Fort positions are therefore
+   // CACHED before the marker query runs - the same discipline gunRaid's
+   // "resolve the target BEFORE the second query" comment already records.
+   int fortQuery = createSimpleUnitQuery(cUnitTypeIstanbulVictoryObject, cPlayerRelationAny, cUnitStateAlive);
+   int fortCount = kbUnitQueryExecute(fortQuery);
+   vector fortPos0 = cInvalidVector;
+   vector fortPos1 = cInvalidVector;
+   vector fortPos2 = cInvalidVector;
+   vector fortPos3 = cInvalidVector;
+   if (fortCount > 0) fortPos0 = kbUnitGetPosition(kbUnitQueryGetResult(fortQuery, 0));
+   if (fortCount > 1) fortPos1 = kbUnitGetPosition(kbUnitQueryGetResult(fortQuery, 1));
+   if (fortCount > 2) fortPos2 = kbUnitGetPosition(kbUnitQueryGetResult(fortQuery, 2));
+   if (fortCount > 3) fortPos3 = kbUnitGetPosition(kbUnitQueryGetResult(fortQuery, 3));
+   int markQuery = createSimpleUnitQuery(cUnitTypezpPropWaterTower, cPlayerRelationAny, cUnitStateAny);
+   int markCount = kbUnitQueryExecute(markQuery);
+   if (markCount <= 0)
+   {
+      istanbulLandingWait("no beach markers in KB");
+      return;
+   }
+   vector beach = cInvalidVector;
+   float beachDist = 100000.0;
+   for (i = 0; < markCount)
+   {
+      vector markPos = kbUnitGetPosition(kbUnitQueryGetResult(markQuery, i));
+      bool markOnFort = false;
+      if (fortPos0 != cInvalidVector && distance(markPos, fortPos0) < 30.0) markOnFort = true;
+      if (fortPos1 != cInvalidVector && distance(markPos, fortPos1) < 30.0) markOnFort = true;
+      if (fortPos2 != cInvalidVector && distance(markPos, fortPos2) < 30.0) markOnFort = true;
+      if (fortPos3 != cInvalidVector && distance(markPos, fortPos3) < 30.0) markOnFort = true;
+      if (markOnFort == true)
+      {
+         continue;
+      }
+      // The tower prop is TieToWaterSurface - it stands AT the waterline, so
+      // its own tile can be WATER (or the cliff lip), and a water tile's area
+      // group is land-passable to nothing. Trusting it misread both beaches
+      // as isolated. Probe a small ring around the marker for the beach's
+      // actual LAND - not water, not impassable cliff - and judge THAT tile.
+      int markGroup = -1;
+      vector beachPos = cInvalidVector;
+      for (n = 0; < 9)
+      {
+         float probeDX = 0.0;
+         float probeDZ = 0.0;
+         if (n == 1) probeDX = 6.0;
+         if (n == 2) probeDX = 0.0 - 6.0;
+         if (n == 3) probeDZ = 6.0;
+         if (n == 4) probeDZ = 0.0 - 6.0;
+         if (n == 5) probeDX = 10.0;
+         if (n == 6) probeDX = 0.0 - 10.0;
+         if (n == 7) probeDZ = 10.0;
+         if (n == 8) probeDZ = 0.0 - 10.0;
+         vector probe = xsVectorSet(xsVectorGetX(markPos) + probeDX, 0.0,
+            xsVectorGetZ(markPos) + probeDZ);
+         int probeType = kbAreaGetType(kbAreaGetIDByPosition(probe));
+         if (probeType == cAreaTypeWater)
+         {
+            continue;
+         }
+         if (probeType == cAreaTypeImpassableLand)
+         {
+            continue;
+         }
+         markGroup = kbAreaGroupGetIDByPosition(probe);
+         beachPos = probe;
+         break;
+      }
+      if (markGroup < 0)
+      {
+         aiEcho("LAND p" + cMyID + " no walkable land within 10 m of marker " + markPos);
+         continue;
+      }
+      // TWO ORACLES, BELIEVE ANY YES. The KB area-group graph has measured
+      // holes on this map (TC areas of -1; both beaches reported unreachable
+      // while a human walked units off them), so its verdict alone cannot be
+      // trusted. kbCanPath2 is the engine's REAL per-unit-type pathfinder -
+      // the primitive docs/ai_technical_debt.md said landing needed, declared
+      // and never called until now. A truly sealed shelf fails both oracles;
+      // a KB hallucination is outvoted. istanbulAreaRecalc (below) re-runs
+      // kbAreaCalculate at ~90s, and since this gate re-asks every pass, the
+      // healed graph - if the recalc heals it - is picked up automatically.
+      bool walkGroup = kbAreAreaGroupsPassableByLand(markGroup, homeGroup);
+      bool walkPath = kbCanPath2(beachPos, homeBase, cUnitTypeMusketeer, 10.0);
+      if (walkGroup == true || walkPath == true)
+      {
+         continue;   // we can walk there from home - landing is pointless
+      }
+      bool reachGroup = kbAreAreaGroupsPassableByLand(markGroup, kbAreaGroupGetIDByPosition(enemyLoc));
+      bool reachPath = kbCanPath2(beachPos, enemyLoc, cUnitTypeMusketeer, 10.0);
+      if (reachGroup == false && reachPath == false)
+      {
+         aiEcho("LAND p" + cMyID + " beach " + beachPos
+                + " unreachable by BOTH oracles (kbGroup=no canPath=no)");
+         continue;
+      }
+      if (reachGroup == false && reachPath == true)
+      {
+         aiEcho("LAND p" + cMyID + " beach " + beachPos
+                + " OK via canPath only - KB group graph disagrees with real pathing");
+      }
+      if (reachGroup == true && reachPath == false)
+      {
+         aiEcho("LAND p" + cMyID + " beach " + beachPos
+                + " OK via KB group only - canPath disagrees");
+      }
+      float markDist = distance(beachPos, enemyLoc);
+      if (markDist < beachDist)
+      {
+         beachDist = markDist;
+         beach = beachPos;
+      }
+   }
+   if (beach == cInvalidVector)
+   {
+      istanbulLandingWait("no beach candidate (all filtered/walkable/unreachable)");
+      return;
+   }
+
+   // NO gun gate here any more - round 4, user design: boarding is the slow
+   // part (recruit + walk + load can take minutes) while the enemy rebuilds
+   // a dead gun in well under one. The wave STAGES regardless of the gun;
+   // the beach-clear check moved to the SAIL trigger in phase 1, where the
+   // reaction time is one 3-second pass.
+
+   // ship FIRST, army query LAST: getUnit and shipQuery both run through the
+   // shared simple query, so the army results the boarding loop reads must
+   // come from the final query executed before that loop.
+   // Never take a ship a plan already owns at >= 100 - the addWarshipsToPlan
+   // filter (aiwaterrules.xs:366-369); a transport mid-job stays a transport.
+   int landShip = getUnit(gGalleonUnit, cMyID, cUnitStateAlive);
+   if (landShip >= 0)
+   {
+      if (aiPlanGetActualPriority(kbUnitGetPlanID(landShip)) >= 100)
+      {
+         landShip = -1;
+      }
+   }
+   if (landShip < 0)
+   {
+      int shipQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
+      int shipCount = kbUnitQueryExecute(shipQuery);
+      for (i = 0; < shipCount)
+      {
+         int tempShip = kbUnitQueryGetResult(shipQuery, i);
+         if (aiPlanGetActualPriority(kbUnitGetPlanID(tempShip)) >= 100)
+         {
+            continue;
+         }
+         landShip = tempShip;
+         break;
+      }
+   }
+   if (landShip < 0)
+   {
+      istanbulLandingWait("no eligible ship (all owned at >=100 or none afloat)");
+      return;
+   }
+   int needArmy = gIstanbulLandArmyMin;
+   if (gIstanbulLandTestMode == true)
+   {
+      needArmy = 2;
+   }
+   int armyQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+   int armyCount = kbUnitQueryExecute(armyQuery);
+   if (armyCount < needArmy)
+   {
+      istanbulLandingWait("army " + armyCount + "/" + needArmy);
+      return;
+   }
+
+   // OWN before ordering. Ship into a pri-100 reserve BEFORE it moves (stock
+   // order, loadForces 7792-7793), army plan at 99, soldiers recruited only
+   // if nothing at >= 99 already owns them (gatherArmy 7362-7364).
+   gIstanbulLandShipPlan = aiPlanCreate("Istanbul Landing Transport", cPlanReserve);
+   aiPlanAddUnitType(gIstanbulLandShipPlan, cUnitTypeAbstractWarShip, 0, 0, 2);
+   aiPlanSetNoMoreUnits(gIstanbulLandShipPlan, true);
+   aiPlanSetDesiredPriority(gIstanbulLandShipPlan, 100);   // "Let no one steal us"
+   aiPlanSetAllowUnderAttackResponse(gIstanbulLandShipPlan, false);
+   aiPlanSetActive(gIstanbulLandShipPlan);
+   aiPlanAddUnit(gIstanbulLandShipPlan, landShip);
+
+   gIstanbulLandArmyPlan = aiPlanCreate("Istanbul Landing Army", cPlanReserve);
+   aiPlanAddUnitType(gIstanbulLandArmyPlan, cUnitTypeLogicalTypeLandMilitary, 0, 0, 200);
+   aiPlanSetNoMoreUnits(gIstanbulLandArmyPlan, true);
+   aiPlanSetDesiredPriority(gIstanbulLandArmyPlan, 99);    // "Only lower than transport"
+   aiPlanSetActive(gIstanbulLandArmyPlan);
+
+   // bring the ship to our own coast (friendly-side getCoastalPoint is the
+   // stock pickup idiom and the tested-working case)
+   vector pickup = getCoastalPoint(homeBase, kbUnitGetPosition(landShip), 2, true);
+   if (pickup == cInvalidVector)
+   {
+      pickup = kbUnitGetPosition(landShip);
+   }
+   aiTaskUnitMove(landShip, pickup);
+
+   int boarded = 0;
+   for (i = 0; < armyCount)
+   {
+      int tempSoldier = kbUnitQueryGetResult(armyQuery, i);
+      if (distance(kbUnitGetPosition(tempSoldier), homeBase) > 150.0)
+      {
+         continue;
+      }
+      if (aiPlanGetDesiredPriority(kbUnitGetPlanID(tempSoldier)) >= 99)
+      {
+         continue;   // already in the plan or on a transport
+      }
+      aiPlanAddUnit(gIstanbulLandArmyPlan, tempSoldier);
+      aiTaskUnitWork(tempSoldier, landShip, true);
+      boarded = boarded + 1;
+      if (boarded >= gIstanbulLandArmyMin + 4)
+      {
+         break;
+      }
+   }
+   if (boarded <= 0)
+   {
+      istanbulLandingWait("recruited 0 (all near soldiers owned at >=99)");
+      istanbulLandingReset();
+      return;
+   }
+   gIstanbulLandShip = landShip;
+   gIstanbulLandBeach = beach;
+   gIstanbulLandPickup = pickup;
+   gIstanbulLandPhase = 1;
+   gIstanbulLandTime = xsGetTime();
+   // boarding is driven at the stock cadence while a landing is in flight
+   xsSetRuleMinIntervalSelf(3);
+   aiEcho("LAND p" + cMyID + " boarding " + boarded + " onto ship " + landShip
+          + ", beach " + beach + " (" + beachDist + " m from the enemy)");
+}
+
+//==============================================================================
+// istanbulAreaRecalc   -   one-shot KB rebuild, the areaRebuild question answered
+//
+// This map's KB was measured with holes: kbArea reported type -1 under two of
+// the four town centres (docs/ai_technical_debt.md era), and both landing
+// beaches tested land-group-unreachable while a human walked units off them.
+// The removed istanbulAreaRebuild rule existed to ask whether re-running
+// kbAreaCalculate() heals the graph; it was deleted with the dock family
+// before the answer was recorded. This asks it again, once, at ~90 seconds.
+// Vanilla already ran kbAreaCalculate at load (aiMain), so the doc's "DO THIS
+// BEFORE ANYTHING ELSE" ordering warning is satisfied; the stale-cached-id
+// risk is small here because the Istanbul rules deliberately hold no plans.
+// If the recalc heals the graph, every kbArea consumer on this map benefits.
+//==============================================================================
+rule istanbulAreaRecalc
+inactive
+minInterval 90
+{
+   kbAreaCalculate();
+   aiEcho("AREARECALC p" + cMyID + " kbAreaCalculate re-run complete");
+   xsDisableSelf();
 }

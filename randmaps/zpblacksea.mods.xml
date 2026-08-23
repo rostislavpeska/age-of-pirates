@@ -156,6 +156,7 @@
         </unit>
 		<unit name="zpKingsHillNaval">
 			<civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>
+			<flag>ApplyFlagOverrideIfGaia</flag>
 		</unit>
 		<unit name="zpSPCFixedGun">
 			<civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>

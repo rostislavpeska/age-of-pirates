@@ -1,4 +1,43 @@
 <techtreemods>
+  <!-- ==================================================================
+       NAVAL KING OF THE HILL - lets warships capture a naval KotH fort.
+
+       Ships cannot AutoConvert anything in the base game: ZERO of the 149
+       water-movement protos carry ConvertsHerds, which is a deliberate
+       exclusion, not an oversight. So a naval fort with an AutoConvert
+       tactic would sit there unclaimable. This tech grants the missing
+       unittype, and ONLY on maps that ask for it - which is why it is a
+       map-flipped Shadow tech and not a protomods.xml edit. A permanent
+       edit would let warships steal herds on every map in the mod.
+
+       Vanilla precedent for every part of this:
+         AANativeStartingTechs  adds ConvertsHerds to a proto
+         DESPCDelugeSetup       sets ConvertsHerds on an ABSTRACT target,
+                                from a map/scenario setup tech
+         DEHCNavalInfantry      adds a unittype to warships specifically
+       59 vanilla techs use subtype="SetUnitType".
+
+       One effect, abstract target: AbstractWarShip covers all 114 warship
+       protos (47 vanilla + 67 this mod adds), so it needs no maintenance
+       when a new ship is added.
+
+       KEEP THIS TECH AT THE TOP OF THE FILE - see the note below.
+
+       Granted per player with the RM trigger effect "ZP Set Tech Status
+       (XS)": PlayerID p, TechID cTechzpUnlockNavalKotH, Status 2.
+       ================================================================== -->
+  <tech name="zpUnlockNavalKotH" type="Normal">
+    <dbid>408210</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" unittype="ConvertsHerds" subtype="SetUnitType" relativity="Absolute">
+        <target type="ProtoUnit">AbstractWarShip</target>
+      </effect>
+    </effects>
+  </tech>
+
   <!-- D2 PROBE ONLY. Player 2's half of the ownership test: makes
        zpNeutralCathedralP2 selectable, granted unconditionally to player 2.
        No reversal tech and no proximity gate on purpose - one variable.

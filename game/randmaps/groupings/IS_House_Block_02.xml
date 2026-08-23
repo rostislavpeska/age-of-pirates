@@ -7,31 +7,31 @@
 	<selectassingleunit>0</selectassingleunit>
 	<workonassingleunit>0</workonassingleunit>
 	<units>
+		<unit variation="1" posx="7.1257" posz="-14.6820" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsPoles</unit>
 		<unit variation="10" posx="-10.0626" posz="-12.9566" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="2" posx="8.9312" posz="-12.4309" orientx="0.0038" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
-		<unit variation="1" posx="7.1257" posz="-14.6820" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsPoles</unit>
 		<unit variation="0" posx="-6.2371" posz="-14.6806" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsPoles</unit>
 		<unit variation="5" posx="-10.8052" posz="-13.0265" orientx="0.9789" orienty="0.0000" orientz="0.2041">ypSMSufiAccessory</unit>
-		<unit variation="0" posx="6.2139" posz="-9.0441" orientx="-1.0000" orienty="0.0000" orientz="0.0007">SPCPathBlock3</unit>
 		<unit variation="41" posx="-9.6088" posz="-9.8877" orientx="-0.7113" orienty="0.0000" orientz="-0.7029">zpNativeHouseOrthodoxSouth</unit>
+		<unit variation="0" posx="6.2139" posz="-9.0441" orientx="-1.0000" orienty="0.0000" orientz="0.0007">SPCPathBlock3</unit>
 		<unit variation="1" posx="12.7243" posz="-11.5285" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
-		<unit variation="129" posx="-4.9035" posz="-10.4906" orientx="0.9240" orienty="0.0000" orientz="0.3824">deNativePropsCiviliansFemale</unit>
 		<unit variation="217" posx="11.5146" posz="-11.1618" orientx="0.3820" orienty="0.0000" orientz="-0.9242">UnderbrushCalifornia</unit>
+		<unit variation="129" posx="-4.9035" posz="-10.4906" orientx="0.9240" orienty="0.0000" orientz="0.3824">deNativePropsCiviliansFemale</unit>
 		<unit variation="3" posx="-6.6461" posz="-12.4271" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpPropOttomanMarketStall</unit>
 		<unit variation="140" posx="-1.2681" posz="-11.3090" orientx="1.0000" orienty="0.0000" orientz="-0.0005">zpNativeHouseVenetianD</unit>
 		<unit variation="0" posx="0.6851" posz="-11.2367" orientx="-0.0007" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="0" posx="3.9380" posz="-11.7073" orientx="0.0008" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="0" posx="-0.4988" posz="-8.7565" orientx="0.7066" orienty="0.0000" orientz="-0.7076">SPCPathBlock3</unit>
 		<unit variation="2" posx="3.0910" posz="-9.4579" orientx="-0.0004" orienty="-0.0000" orientz="-1.0000">zpNativeHouseVenetianB</unit>
-		<unit variation="0" posx="-14.6918" posz="-5.9290" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">PropsPoles</unit>
 		<unit variation="30" posx="-6.6429" posz="-6.6269" orientx="0.3830" orienty="0.0000" orientz="0.9238">deNativePropsCiviliansMale</unit>
 		<unit variation="2" posx="8.8132" posz="-7.6802" orientx="0.0038" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
 		<unit variation="1" posx="14.5427" posz="-6.6391" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">PropsPoles</unit>
 		<unit variation="129" posx="-13.4552" posz="-8.3559" orientx="-0.7076" orienty="0.0000" orientz="-0.7066">deNativePropsCiviliansFemale</unit>
+		<unit variation="0" posx="-14.6918" posz="-5.9290" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">PropsPoles</unit>
 		<unit variation="1" posx="-5.8728" posz="-8.4063" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpPropOttomanMarketStall</unit>
 		<unit variation="2" posx="-0.9127" posz="-8.7421" orientx="-0.7064" orienty="0.0000" orientz="0.7078">zpNativeWallFull</unit>
-		<unit variation="253" posx="11.1940" posz="-3.7653" orientx="-0.7073" orienty="-0.0000" orientz="-0.7069">zpNativeHouseMaltese</unit>
 		<unit variation="0" posx="4.0234" posz="-6.4527" orientx="-0.0007" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="253" posx="11.1940" posz="-3.7653" orientx="-0.7073" orienty="-0.0000" orientz="-0.7069">zpNativeHouseMaltese</unit>
 		<unit variation="246" posx="-10.5073" posz="-5.3545" orientx="-0.9238" orienty="0.0000" orientz="0.3830">deNativePropsCiviliansMale</unit>
 		<unit variation="3" posx="-12.0176" posz="-5.4553" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="0" posx="-12.3796" posz="-6.4374" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpPropOttomanMarketStall</unit>
@@ -42,50 +42,49 @@
 		<unit variation="0" posx="8.1275" posz="-0.6169" orientx="-0.7078" orienty="0.0000" orientz="-0.7065">SPCPathBlock3</unit>
 		<unit variation="3" posx="-14.3964" posz="-0.8472" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsColony</unit>
 		<unit variation="9" posx="-12.5915" posz="-0.8240" orientx="0.0038" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
-		<unit variation="158" posx="-0.9695" posz="-1.7987" orientx="1.0000" orienty="0.0000" orientz="-0.0005">zpHCFountainA</unit>
 		<unit variation="5" posx="-7.1690" posz="-1.4939" orientx="-0.9785" orienty="0.0000" orientz="-0.2061">ypSMSufiAccessory</unit>
+		<unit variation="158" posx="-0.9695" posz="-1.7987" orientx="1.0000" orienty="0.0000" orientz="-0.0005">zpHCFountainA</unit>
 		<unit variation="169" posx="5.0116" posz="-1.6599" orientx="0.8682" orienty="0.0000" orientz="0.4962">ypSMSufiAccessory</unit>
 		<unit variation="0" posx="11.8170" posz="1.3212" orientx="-1.0000" orienty="0.0000" orientz="0.0009">SPCPathBlock3</unit>
 		<unit variation="20" posx="7.6042" posz="-0.0086" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseIstanbul</unit>
 		<unit variation="0" posx="-11.7396" posz="3.6895" orientx="1.0000" orienty="0.0000" orientz="-0.0006">SPCPathBlock3</unit>
 		<unit variation="0" posx="-6.9014" posz="3.3743" orientx="1.0000" orienty="0.0000" orientz="-0.0006">SPCPathBlock3</unit>
 		<unit variation="0" posx="-9.2970" posz="0.6883" orientx="-0.0007" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="71" posx="11.0540" posz="0.0528" orientx="1.0000" orienty="0.0000" orientz="-0.0001">NativePirates</unit>
 		<unit variation="9" posx="6.3235" posz="2.5706" orientx="0.0038" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
 		<unit variation="86" posx="3.0514" posz="2.7941" orientx="-0.9240" orienty="-0.0000" orientz="-0.3824">deNativePropsCiviliansMale</unit>
 		<unit variation="1" posx="-9.0575" posz="2.4682" orientx="-0.0004" orienty="-0.0000" orientz="-1.0000">zpNativeHouseVenetianB</unit>
 		<unit variation="134" posx="-8.5932" posz="2.3160" orientx="1.0000" orienty="0.0000" orientz="-0.0001">NativePirates</unit>
-		<unit variation="71" posx="11.1851" posz="1.3652" orientx="1.0000" orienty="0.0000" orientz="-0.0001">NativePirates</unit>
+		<unit variation="0" posx="4.5213" posz="4.9075" orientx="-0.7077" orienty="0.0000" orientz="-0.7065">SPCPathBlock3</unit>
 		<unit variation="17" posx="-0.4060" posz="6.8287" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseOrthodoxSouth</unit>
 		<unit variation="0" posx="10.3208" posz="5.7755" orientx="-0.9242" orienty="0.0000" orientz="-0.3819">SPCPathBlock3</unit>
-		<unit variation="0" posx="4.5213" posz="4.9075" orientx="-0.7077" orienty="0.0000" orientz="-0.7065">SPCPathBlock3</unit>
 		<unit variation="0" posx="9.1520" posz="6.1407" orientx="0.6900" orienty="0.0000" orientz="-0.7238">SPCPathBlock3</unit>
 		<unit variation="0" posx="-7.0404" posz="5.6227" orientx="0.7076" orienty="0.0000" orientz="0.7067">SPCPathBlock3</unit>
+		<unit variation="0" posx="-15.0633" posz="6.0920" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">PropsPoles</unit>
 		<unit variation="246" posx="1.8925" posz="3.9463" orientx="-0.0003" orienty="-0.0000" orientz="-1.0000">deNativePropsCiviliansMale</unit>
 		<unit variation="1" posx="14.4906" posz="4.7840" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">PropsPoles</unit>
-		<unit variation="0" posx="-15.0633" posz="6.0920" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">PropsPoles</unit>
 		<unit variation="9" posx="3.1538" posz="5.8379" orientx="0.0038" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
 		<unit variation="5" posx="0.1857" posz="4.1403" orientx="0.1861" orienty="0.0000" orientz="0.9825">ypSMSufiAccessory</unit>
-		<unit variation="144" posx="11.6371" posz="3.7576" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseIstanbulB</unit>
-		<unit variation="0" posx="7.6195" posz="7.0590" orientx="0.6900" orienty="0.0000" orientz="-0.7238">SPCPathBlock3</unit>
-		<unit variation="0" posx="6.3463" posz="8.1292" orientx="-0.7065" orienty="0.0000" orientz="0.7077">SPCPathBlock3</unit>
+		<unit variation="211" posx="8.6999" posz="4.8496" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpNativeHouseIstanbulB2</unit>
 		<unit variation="0" posx="-12.0436" posz="7.1411" orientx="1.0000" orienty="0.0000" orientz="-0.0006">SPCPathBlock3</unit>
 		<unit variation="0" posx="-9.7536" posz="8.4378" orientx="0.7076" orienty="0.0000" orientz="0.7067">SPCPathBlock3</unit>
-		<unit variation="42" posx="9.6117" posz="6.1598" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseIstanbulB</unit>
-		<unit variation="0" posx="-1.5125" posz="9.5454" orientx="-0.7078" orienty="0.0000" orientz="-0.7065">SPCPathBlock3</unit>
-		<unit variation="0" posx="-2.5793" posz="8.6100" orientx="-0.7078" orienty="0.0000" orientz="-0.7065">SPCPathBlock3</unit>
+		<unit variation="0" posx="7.6195" posz="7.0590" orientx="0.6900" orienty="0.0000" orientz="-0.7238">SPCPathBlock3</unit>
+		<unit variation="0" posx="6.3463" posz="8.1292" orientx="-0.7065" orienty="0.0000" orientz="0.7077">SPCPathBlock3</unit>
+		<unit variation="87" posx="6.4834" posz="6.5851" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeHouseIstanbulB2</unit>
 		<unit variation="0" posx="6.6329" posz="9.3772" orientx="-0.3835" orienty="0.0000" orientz="-0.9235">SPCPathBlock3</unit>
 		<unit variation="0" posx="6.9425" posz="8.5563" orientx="0.6900" orienty="0.0000" orientz="-0.7238">SPCPathBlock3</unit>
+		<unit variation="0" posx="-1.5125" posz="9.5454" orientx="-0.7078" orienty="0.0000" orientz="-0.7065">SPCPathBlock3</unit>
+		<unit variation="0" posx="-2.5793" posz="8.6100" orientx="-0.7078" orienty="0.0000" orientz="-0.7065">SPCPathBlock3</unit>
 		<unit variation="2" posx="-11.9714" posz="8.0035" orientx="-1.0000" orienty="0.0000" orientz="0.0009">zpNativeWallFull</unit>
 		<unit variation="2" posx="-9.2335" posz="8.3276" orientx="0.7078" orienty="0.0000" orientz="0.7064">zpNativeWallFull</unit>
-		<unit variation="235" posx="7.7264" posz="7.0555" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseIstanbulB</unit>
-		<unit variation="42" posx="6.3972" posz="8.9614" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpNativeHouseIstanbulB</unit>
+		<unit variation="211" posx="5.3078" posz="8.4842" orientx="0.7071" orienty="-0.0000" orientz="-0.7071">zpNativeHouseIstanbulB2</unit>
 		<unit variation="56" posx="-11.6339" posz="10.5583" orientx="-0.0013" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrick</unit>
 		<unit variation="9" posx="-13.2372" posz="10.4659" orientx="0.0038" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
 		<unit variation="229" posx="-3.1719" posz="10.6085" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseIstanbul</unit>
-		<unit variation="134" posx="0.9271" posz="10.5725" orientx="1.0000" orienty="0.0000" orientz="-0.0001">NativePirates</unit>
+		<unit variation="144" posx="2.4473" posz="10.8103" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpNativeHouseIstanbulB</unit>
 		<unit variation="0" posx="1.1134" posz="10.9566" orientx="-0.0009" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="134" posx="0.0001" posz="10.8072" orientx="1.0000" orienty="0.0000" orientz="-0.0001">NativePirates</unit>
 		<unit variation="84" posx="-14.2893" posz="12.3899" orientx="0.8290" orienty="0.0000" orientz="0.5592">ypSMSufiAccessory</unit>
-		<unit variation="144" posx="4.0576" posz="11.0291" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpNativeHouseIstanbulB</unit>
 		<unit variation="7" posx="-14.3677" posz="14.0880" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
 		<unit variation="1" posx="-10.7099" posz="15.2608" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsPoles</unit>
 		<unit variation="1" posx="2.9612" posz="14.8579" orientx="1.0000" orienty="0.0000" orientz="0.0000">PropsPoles</unit>
@@ -162,9 +161,11 @@
 		<tilegroup type="PassableLand" subtype="Texas\ground1_tex">
 			<block startx="-5" startz="3" endx="-5" endz="4"></block>
 			<block startx="3" startz="2" endx="3" endz="2"></block>
-			<block startx="3" startz="4" endx="3" endz="4"></block>
 			<block startx="4" startz="1" endx="4" endz="2"></block>
 			<block startx="5" startz="2" endx="5" endz="2"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="Texas\ground3_tex">
+			<block startx="3" startz="4" endx="3" endz="4"></block>
 		</tilegroup>
 	</tiles>
 </grouping>

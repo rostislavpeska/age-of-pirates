@@ -690,7 +690,7 @@ void main(void)
 	rmSetSeaType("ZP Black Sea Lagoon");    // shoreless: keeps baked terrain
 	rmEnableLocalWater(false);
 	rmTerrainInitialize("water");
-	rmSetLightingSet("age3challenges09a");
+	rmSetLightingSet("rm_afri_goldCoast");   // Art/lightsets/rm_afri_goldCoast.lgt - capital C, the corpus keeps the lgt basename's camelCase
 	rmSetMapType("grass");
 	rmSetMapType("water");
 	rmSetMapType("eastEurope");
@@ -3789,6 +3789,13 @@ void main(void)
 	int fortMarkS = rmGetUnitPlaced(fortMarkDefS, 0) + instanceIdShiftIndividual;
 	int unit_waterFortNugN = rmGetGroupingInstanceUnitByType(waterFortNPlacement, "zpNuggetInvisibleWater") + instanceIdShift;
 	int unit_waterFortNugS = rmGetGroupingInstanceUnitByType(waterFortSPlacement, "zpNuggetInvisibleWater") + instanceIdShift;
+	// The castle itself, same +instanceIdShift law as the nuggets above. The
+	// capture logic keys off THIS rather than the fortMark revealer: it is what
+	// the follower triggers read, and it tightens the geometry - the furthest
+	// convertible sits 12.97 m from the castle against 16.77 m from the marker,
+	// so the margin inside the 20 m convert radius goes from 3.2 m to 7.0 m.
+	int unit_waterFortCastleN = rmGetGroupingInstanceUnitByType(waterFortNPlacement, "zpKingsHillNavalBlackSea") + instanceIdShift;
+	int unit_waterFortCastleS = rmGetGroupingInstanceUnitByType(waterFortSPlacement, "zpKingsHillNavalMedi") + instanceIdShift;
 
 	// ---- PALACE IDS: nugget, converter flag, victory flag, building ------
 	// Same +instanceIdShift law as the forts above.
@@ -3854,6 +3861,15 @@ void main(void)
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID", st);
 	rmSetTriggerEffectParam("TechID", "cTechdeEUMapUpdateVisuals"); // European Embassy - zp_z_zparis.xs 1810
+	rmSetTriggerEffectParamInt("Status", 2);
+	// NAVAL KOTH. Warships carry no ConvertsHerds in the base game - zero of
+	// the 149 water protos do - so a fort with an AutoConvert tactic would be
+	// unclaimable. This grants it, and ONLY on this map: it is a Shadow tech
+	// so ships on every other map are untouched and cannot steal herds.
+	// Pairs with zpnavalkingshill.tactics on zpKingsHillNavalBlackSea/Medi.
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", st);
+	rmSetTriggerEffectParam("TechID", "cTechzpUnlockNavalKotH");
 	rmSetTriggerEffectParamInt("Status", 2);
 	}
 	// gaia gets ONLY the visual tech (zp_z_zparis.xs fires it for i=0..N;
@@ -4199,6 +4215,16 @@ void main(void)
 	rmSetTriggerEffectParam("SrcObject", ""+unit_palaceCossackS);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
 	rmSetTriggerEffectParam("Suspend", "True");
+	// The two water fort castles ride along in the same startup suspension,
+	// so the guardians gate them exactly like every other capturable asset.
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+unit_waterFortCastleN);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+unit_waterFortCastleS);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_harbourSocketS);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
@@ -4386,6 +4412,7 @@ void main(void)
 	rmSetTriggerLoop(false);
 
 	int fc = 0;
+	int fo = 0;
 	int fd = 0;
 	for (fc = 1; <= cNumberNonGaiaPlayers)
 	{
@@ -4537,62 +4564,61 @@ void main(void)
 	//  south = Mediterranean (zpKingsHillNavalMedi clone).
 	// ========================================================================
 
-	for (fc = 1; <= cNumberNonGaiaPlayers)
+	// ---- CAPTURE: the engine owns it. -------------------------------------
+	// zpnavalkingshill.tactics puts an AutoConvert action (maxrange 25) on the
+	// castle, and cTechzpUnlockNavalKotH grants warships the ConvertsHerds
+	// unittype they otherwise lack - ZERO of the 149 water protos carry it, so
+	// without the tech AutoConvert cannot see a ship at all. The tech is a
+	// Shadow tech flipped only by this map, so ships elsewhere are untouched
+	// and cannot steal herds.
+	//
+	// Guardians gate it the same way every other convertible asset on this map
+	// is gated: the action is SUSPENDED at startup and released on
+	// "Nugget Is Collectable" - identical to the trade harbours and the two
+	// palace flags. There is no hand-rolled capture rule any more.
+	// ---- FAMILY B: THE FOLLOWERS. No logic - they only read the owner. ----
+	// Exactly one player can own the castle, so exactly one follower can ever
+	// be true. That is why this family cannot oscillate and needs no team
+	// test: it is driven by ownership, not by presence.
+	for (fo = 1; <= cNumberNonGaiaPlayers)
 	{
-	rmCreateTrigger("FortConvN_Plr" + fc);
+	rmCreateTrigger("FortFollowN_Plr" + fo);
 	}
-	for (fc = 1; <= cNumberNonGaiaPlayers)
+	for (fo = 1; <= cNumberNonGaiaPlayers)
 	{
-	rmSwitchToTrigger(rmTriggerID("FortConvN_Plr" + fc));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject", ""+fortMarkN);
-	rmSetTriggerConditionParamInt("Player", fc);
-	rmSetTriggerConditionParamInt("Dist", 25);
-	rmSetTriggerConditionParam("UnitType", "AbstractWarShip");
-	rmSetTriggerConditionParam("Op", ">=");
-	rmSetTriggerConditionParamFloat("Count", 1);
-	for (fd = 1; <= cNumberNonGaiaPlayers)
-	{
-		if (fd != fc)
-		{
-			rmAddTriggerCondition("Units in Area");
-			rmSetTriggerConditionParam("DstObject", ""+fortMarkN);
-			rmSetTriggerConditionParamInt("Player", fd);
-			rmSetTriggerConditionParamInt("Dist", 25);
-			rmSetTriggerConditionParam("UnitType", "AbstractWarShip");
-			rmSetTriggerConditionParam("Op", "==");
-			rmSetTriggerConditionParamFloat("Count", 0);
-		}
-	}
+	rmSwitchToTrigger(rmTriggerID("FortFollowN_Plr" + fo));
+	rmAddTriggerCondition("Units Owned");
+	rmSetTriggerConditionParamInt("Player", fo);
+	rmSetTriggerConditionParam("SrcObject", ""+unit_waterFortCastleN);
 	for (fd = 0; <= cNumberNonGaiaPlayers)
 	{
 		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject", ""+fortMarkN);
+		rmSetTriggerEffectParam("SrcObject", ""+unit_waterFortCastleN);
 		rmSetTriggerEffectParamInt("SrcPlayer", fd);
-		rmSetTriggerEffectParamInt("TrgPlayer", fc);
-		rmSetTriggerEffectParam("UnitType", "zpKingsHillNavalBlackSea");
-		rmSetTriggerEffectParamInt("Dist", 20);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject", ""+fortMarkN);
-		rmSetTriggerEffectParamInt("SrcPlayer", fd);
-		rmSetTriggerEffectParamInt("TrgPlayer", fc);
+		rmSetTriggerEffectParamInt("TrgPlayer", fo);
 		rmSetTriggerEffectParam("UnitType", "zpCityStateFlag");
 		rmSetTriggerEffectParamInt("Dist", 20);
 		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject", ""+fortMarkN);
+		rmSetTriggerEffectParam("SrcObject", ""+unit_waterFortCastleN);
 		rmSetTriggerEffectParamInt("SrcPlayer", fd);
-		rmSetTriggerEffectParamInt("TrgPlayer", fc);
+		rmSetTriggerEffectParamInt("TrgPlayer", fo);
 		rmSetTriggerEffectParam("UnitType", "zpSPCCapturableFlagInvisibleNaval");
 		rmSetTriggerEffectParamInt("Dist", 20);
 	}
+	// arm the sister followers so the NEXT owner change is caught
 	for (fd = 1; <= cNumberNonGaiaPlayers)
 	{
-		if (fd != fc)
+		if (fd != fo)
 		{
 			rmAddTriggerEffect("Fire Event");
-			rmSetTriggerEffectParamInt("EventID", rmTriggerID("FortConvN_Plr" + fd));
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("FortFollowN_Plr" + fd));
 		}
 	}
+	// Capture feedback. This used to hang off the old driver family; it
+	// belongs here now, because THIS is the trigger that fires exactly once
+	// per ownership change - the engine's AutoConvert has no trigger of its
+	// own to hang a flare on. Every player sees it: taken by you or taken
+	// from you, all get the ping.
 	for (fd = 1; <= cNumberNonGaiaPlayers)
 	{
 		rmAddTriggerEffect("Flare Minimap");
@@ -4601,71 +4627,70 @@ void main(void)
 		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(waterFortLocN)+","+xsVectorGetY(waterFortLocN)+","+xsVectorGetZ(waterFortLocN), false);
 		rmSetTriggerEffectParam("Flash", "True", false);
 	}
-	rmAddTriggerEffect("Play Soundset");
-	rmSetTriggerEffectParam("Soundset", "SheepFound");
 	rmSetTriggerPriority(4);
-	// LOCKED until the fort treasure is collected - FortNUnlock/FortSUnlock
-	rmSetTriggerActive(false);
+	// ACTIVE FROM THE START. These carry no capture logic - they only ask
+	// who owns the castle - so there is nothing to gate. The guardian gate
+	// lives on the castle's AutoConvert suspension instead.
+	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
 
-	for (fc = 1; <= cNumberNonGaiaPlayers)
+	// ---- CAPTURE: the engine owns it. -------------------------------------
+	// zpnavalkingshill.tactics puts an AutoConvert action (maxrange 25) on the
+	// castle, and cTechzpUnlockNavalKotH grants warships the ConvertsHerds
+	// unittype they otherwise lack - ZERO of the 149 water protos carry it, so
+	// without the tech AutoConvert cannot see a ship at all. The tech is a
+	// Shadow tech flipped only by this map, so ships elsewhere are untouched
+	// and cannot steal herds.
+	//
+	// Guardians gate it the same way every other convertible asset on this map
+	// is gated: the action is SUSPENDED at startup and released on
+	// "Nugget Is Collectable" - identical to the trade harbours and the two
+	// palace flags. There is no hand-rolled capture rule any more.
+	// ---- FAMILY B: THE FOLLOWERS. No logic - they only read the owner. ----
+	// Exactly one player can own the castle, so exactly one follower can ever
+	// be true. That is why this family cannot oscillate and needs no team
+	// test: it is driven by ownership, not by presence.
+	for (fo = 1; <= cNumberNonGaiaPlayers)
 	{
-	rmCreateTrigger("FortConvS_Plr" + fc);
+	rmCreateTrigger("FortFollowS_Plr" + fo);
 	}
-	for (fc = 1; <= cNumberNonGaiaPlayers)
+	for (fo = 1; <= cNumberNonGaiaPlayers)
 	{
-	rmSwitchToTrigger(rmTriggerID("FortConvS_Plr" + fc));
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject", ""+fortMarkS);
-	rmSetTriggerConditionParamInt("Player", fc);
-	rmSetTriggerConditionParamInt("Dist", 25);
-	rmSetTriggerConditionParam("UnitType", "AbstractWarShip");
-	rmSetTriggerConditionParam("Op", ">=");
-	rmSetTriggerConditionParamFloat("Count", 1);
-	for (fd = 1; <= cNumberNonGaiaPlayers)
-	{
-		if (fd != fc)
-		{
-			rmAddTriggerCondition("Units in Area");
-			rmSetTriggerConditionParam("DstObject", ""+fortMarkS);
-			rmSetTriggerConditionParamInt("Player", fd);
-			rmSetTriggerConditionParamInt("Dist", 25);
-			rmSetTriggerConditionParam("UnitType", "AbstractWarShip");
-			rmSetTriggerConditionParam("Op", "==");
-			rmSetTriggerConditionParamFloat("Count", 0);
-		}
-	}
+	rmSwitchToTrigger(rmTriggerID("FortFollowS_Plr" + fo));
+	rmAddTriggerCondition("Units Owned");
+	rmSetTriggerConditionParamInt("Player", fo);
+	rmSetTriggerConditionParam("SrcObject", ""+unit_waterFortCastleS);
 	for (fd = 0; <= cNumberNonGaiaPlayers)
 	{
 		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject", ""+fortMarkS);
+		rmSetTriggerEffectParam("SrcObject", ""+unit_waterFortCastleS);
 		rmSetTriggerEffectParamInt("SrcPlayer", fd);
-		rmSetTriggerEffectParamInt("TrgPlayer", fc);
-		rmSetTriggerEffectParam("UnitType", "zpKingsHillNavalMedi");
-		rmSetTriggerEffectParamInt("Dist", 20);
-		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject", ""+fortMarkS);
-		rmSetTriggerEffectParamInt("SrcPlayer", fd);
-		rmSetTriggerEffectParamInt("TrgPlayer", fc);
+		rmSetTriggerEffectParamInt("TrgPlayer", fo);
 		rmSetTriggerEffectParam("UnitType", "zpCityStateFlag");
 		rmSetTriggerEffectParamInt("Dist", 20);
 		rmAddTriggerEffect("Convert Units in Area");
-		rmSetTriggerEffectParam("SrcObject", ""+fortMarkS);
+		rmSetTriggerEffectParam("SrcObject", ""+unit_waterFortCastleS);
 		rmSetTriggerEffectParamInt("SrcPlayer", fd);
-		rmSetTriggerEffectParamInt("TrgPlayer", fc);
+		rmSetTriggerEffectParamInt("TrgPlayer", fo);
 		rmSetTriggerEffectParam("UnitType", "zpSPCCapturableFlagInvisibleNaval");
 		rmSetTriggerEffectParamInt("Dist", 20);
 	}
+	// arm the sister followers so the NEXT owner change is caught
 	for (fd = 1; <= cNumberNonGaiaPlayers)
 	{
-		if (fd != fc)
+		if (fd != fo)
 		{
 			rmAddTriggerEffect("Fire Event");
-			rmSetTriggerEffectParamInt("EventID", rmTriggerID("FortConvS_Plr" + fd));
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("FortFollowS_Plr" + fd));
 		}
 	}
+	// Capture feedback. This used to hang off the old driver family; it
+	// belongs here now, because THIS is the trigger that fires exactly once
+	// per ownership change - the engine's AutoConvert has no trigger of its
+	// own to hang a flare on. Every player sees it: taken by you or taken
+	// from you, all get the ping.
 	for (fd = 1; <= cNumberNonGaiaPlayers)
 	{
 		rmAddTriggerEffect("Flare Minimap");
@@ -4674,11 +4699,11 @@ void main(void)
 		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(waterFortLocS)+","+xsVectorGetY(waterFortLocS)+","+xsVectorGetZ(waterFortLocS), false);
 		rmSetTriggerEffectParam("Flash", "True", false);
 	}
-	rmAddTriggerEffect("Play Soundset");
-	rmSetTriggerEffectParam("Soundset", "SheepFound");
 	rmSetTriggerPriority(4);
-	// LOCKED until the fort treasure is collected - FortNUnlock/FortSUnlock
-	rmSetTriggerActive(false);
+	// ACTIVE FROM THE START. These carry no capture logic - they only ask
+	// who owns the castle - so there is nothing to gate. The guardian gate
+	// lives on the castle's AutoConvert suspension instead.
+	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	}
@@ -4686,24 +4711,26 @@ void main(void)
 	// ========================================================================
 	//  WATER FORT UNLOCK  -  guardians first, then the fort can change hands
 	// ------------------------------------------------------------------------
-	//  The forts have no AutoConvert action; capture is entirely trigger-driven
-	//  by FortConvN/S_Plr. So the guard is simply that those triggers start
-	//  INACTIVE and are ignited here once "Nugget Is Collectable" reports the
-	//  fort treasure claimed - the same condition the harbours use at :3122,
-	//  which releases a suspend instead.
-	//  These two MUST be Active(true): they are the only igniters in the chain,
-	//  and an inactive igniter would leave both forts permanently uncapturable.
+	//  The castles DO carry an AutoConvert action now (zpnavalkingshill.tactics),
+	//  so the guard is a suspension, not an inactive trigger: the action is
+	//  suspended for both castles in the startup block alongside the harbour
+	//  sockets and the palace flags, and released here once "Nugget Is
+	//  Collectable" reports the fort treasure claimed. Identical in shape to
+	//  "Harbour 1 Convert ON" and the palace unlocks.
+	//  These two MUST be Active(true): they are the only releasers in the chain,
+	//  and an inactive releaser would leave both forts permanently uncapturable.
 	// ========================================================================
 	int fu = 0;
 	rmCreateTrigger("FortNUnlock");
 	rmSwitchToTrigger(rmTriggerID("FortNUnlock"));
 	rmAddTriggerCondition("Nugget Is Collectable");
 	rmSetTriggerConditionParam("NuggetObject", ""+unit_waterFortNugN);
-	for (fu = 1; <= cNumberNonGaiaPlayers)
-	{
-		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("FortConvN_Plr" + fu));
-	}
+	// Release the castle's AutoConvert. Same shape as "Harbour 1 Convert ON"
+	// at :4236 and the palace unlocks - suspend at startup, release here.
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+unit_waterFortCastleN, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -4713,11 +4740,12 @@ void main(void)
 	rmSwitchToTrigger(rmTriggerID("FortSUnlock"));
 	rmAddTriggerCondition("Nugget Is Collectable");
 	rmSetTriggerConditionParam("NuggetObject", ""+unit_waterFortNugS);
-	for (fu = 1; <= cNumberNonGaiaPlayers)
-	{
-		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("FortConvS_Plr" + fu));
-	}
+	// Release the castle's AutoConvert. Same shape as "Harbour 1 Convert ON"
+	// at :4236 and the palace unlocks - suspend at startup, release here.
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+unit_waterFortCastleS, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -4777,7 +4805,7 @@ void main(void)
 		for (pdN = 1; <= cNumberNonGaiaPlayers)
 		{
 			// NEVER fire ourselves - that re-runs this trigger, which re-runs the
-			// flare, forever. FortConvN_Plr guards the same way with (fd != fc).
+			// flare, forever. The follower families guard the same way.
 			if (pdN != pcN)
 			{
 				rmAddTriggerEffect("Fire Event");
@@ -4842,7 +4870,7 @@ void main(void)
 		for (pdS = 1; <= cNumberNonGaiaPlayers)
 		{
 			// NEVER fire ourselves - that re-runs this trigger, which re-runs the
-			// flare, forever. FortConvN_Plr guards the same way with (fd != fc).
+			// flare, forever. The follower families guard the same way.
 			if (pdS != pcS)
 			{
 				rmAddTriggerEffect("Fire Event");

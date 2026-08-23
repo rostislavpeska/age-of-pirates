@@ -19,3 +19,12 @@ sandbox/census/*.png
 # Map backup snapshots (scoped: only the backup dir, only .xs) - working maps
 # elsewhere in randmaps/ stay tracked
 randmaps/_backups/*.xs
+
+# AI landing-test harness: keep the CODE (driver/calibrate/probe/NAVIGATION),
+# drop the per-run OUTPUT and anything calibrated to one machine.
+#   runs/          archived Age3Log slices + AI output, ~1.4 MB per campaign
+#   results.csv    one row per run, regenerated every campaign
+#   nav_points.json  screen pixel coordinates for THIS monitor only
+scripts/aitest/runs/
+scripts/aitest/results.csv
+scripts/aitest/nav_points.json
