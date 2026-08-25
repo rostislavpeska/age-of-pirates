@@ -1,11 +1,20 @@
-"""Record the named navigation points for driver.py - run once per resolution.
+"""Calibrate the driver's UI coordinates into a resolution-keyed sheet.
 
-Hover the target, then press Enter in this console. Records cursor position
-and the pixel colour under it (used by the driver to verify screen state
-before clicking). Writes nav_points.json next to this script.
+    python scripts/aitest/calibrate.py                 -> <RES>_default sheet
+    python scripts/aitest/calibrate.py --sheet 1920x1080_tv
+
+Per point: bring the game to the screen named in the prompt, hover the
+target, come back to this console and press Enter. Cursor position and the
+pixel colour under it are sampled at that moment.
+
+Sheets land in scripts/aitest/coords/<name>.json and are TRACKED - any
+device with the same resolution reuses them. whichsheet.json (GITIGNORED,
+device-local) is updated to select the freshly calibrated sheet; edit or
+delete it to switch sheets manually. See the ui-calibrate skill.
 
 Pure stdlib: ctypes against user32/gdi32, no dependencies.
 """
+import argparse
 import ctypes
 import json
 import os
@@ -13,6 +22,9 @@ import os
 user32 = ctypes.windll.user32
 gdi32 = ctypes.windll.gdi32
 user32.SetProcessDPIAware()
+SW = user32.GetSystemMetrics(0)
+SH = user32.GetSystemMetrics(1)
+HERE = os.path.dirname(os.path.abspath(__file__))
 
 
 class POINT(ctypes.Structure):
@@ -34,33 +46,49 @@ def pixel_at(x, y):
     return (raw & 0xFF, (raw >> 8) & 0xFF, (raw >> 16) & 0xFF)
 
 
+# The complete coordinate table the driver consumes - keep in sync with
+# driver.py's nav[...] uses.
 POINTS = [
-    ("main_single", "MAIN MENU: hover the Single Player button"),
-    ("sp_skirmish", "SINGLE PLAYER page: hover the Skirmish button"),
-    ("lobby_start", "SKIRMISH LOBBY: hover the Start Game button"),
-    ("esc_menu_restart", "IN MATCH: press Esc, hover the Restart entry"),
-    ("restart_confirm", "hover the Restart confirmation button (or Restart again if no dialog)"),
-    ("match_probe", "IN MATCH: hover a pixel that only looks like this during a match (fixed HUD corner)"),
-    ("menu_probe", "MAIN MENU: hover a pixel that only looks like this on the main menu"),
+    ("home_skirmish", "HOME SCREEN: hover the SKIRMISH button (doubles as the"
+                      " home-screen colour probe - pick a stable gold spot)"),
+    ("lobby_probe",   "SKIRMISH LOBBY: hover a spot whose colour only looks"
+                      " like this in the lobby (e.g. the map preview frame)"),
+    ("lobby_play",    "SKIRMISH LOBBY: hover the PLAY button"),
+    ("match_cog",     "IN A MATCH: hover the cog/menu button (top-right)"),
+    ("match_quit",    "COG MENU OPEN: hover the QUIT entry"),
+    ("quit_yes",      "QUIT CONFIRMATION: hover the YES button"),
+    ("minimap_center", "IN A MATCH: hover the CENTER of the minimap circle"
+                       " (bottom-right) - the observe-mode camera anchor"),
 ]
 
 
 def main():
-    out = {}
-    print("Calibration - %d points. Alt-tab to the game, hover, come back, press Enter." % len(POINTS))
-    print("(Screen is sampled at the moment you press Enter, so keep the cursor there.)")
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--sheet", default="%dx%d_default" % (SW, SH),
+                    help="sheet name (default: <resolution>_default)")
+    a = ap.parse_args()
+
+    out = {"_comment": "calibrated manually, screen %dx%d" % (SW, SH)}
+    print("Calibration -> coords/%s.json (%d points)." % (a.sheet, len(POINTS)))
+    print("Alt-tab to the game, hover, come back, press Enter."
+          " Screen is sampled at the moment you press Enter.")
     for name, desc in POINTS:
         input("\n[%s]\n  %s\n  ... hover now, then press Enter here: " % (name, desc))
         x, y = cursor_pos()
         rgb = pixel_at(x, y)
-        out[name] = {"x": x, "y": y, "rgb": rgb}
+        out[name] = {"x": x, "y": y, "rgb": list(rgb) if rgb else None}
         warn = ""
         if rgb is None or rgb == (0, 0, 0):
-            warn = "  <- WARNING: pure black / invalid. Exclusive fullscreen? Use windowed."
+            warn = "  <- WARNING: pure black / invalid. Exclusive fullscreen? Use borderless."
         print("  recorded (%d, %d) rgb=%s%s" % (x, y, rgb, warn))
-    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "nav_points.json")
+
+    cdir = os.path.join(HERE, "coords")
+    os.makedirs(cdir, exist_ok=True)
+    path = os.path.join(cdir, a.sheet + ".json")
     json.dump(out, open(path, "w"), indent=2)
-    print("\nWrote %s" % path)
+    json.dump({"sheet": a.sheet}, open(os.path.join(HERE, "whichsheet.json"), "w"),
+              indent=2)
+    print("\nWrote %s and selected it in whichsheet.json (device-local)." % path)
 
 
 if __name__ == "__main__":

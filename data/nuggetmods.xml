@@ -3636,28 +3636,28 @@
       <applystringid>66271</applystringid>
       <maptype>piratehistoricalmap</maptype>
       <guardianunit>
-        <unit>deGuardianJanissary</unit>
+        <unit>zpPalaceJanissary</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianJanissary</unit>
+        <unit>zpPalaceJanissary</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianJanissary</unit>
+        <unit>zpPalaceJanissary</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianJanissary</unit>
+        <unit>zpPalaceJanissary</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianJanissary</unit>
+        <unit>zpPalaceJanissary</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianJanissary</unit>
+        <unit>zpPalaceJanissary</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianJanissary</unit>
+        <unit>zpPalaceJanissary</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianJanissary</unit>
+        <unit>zpPalaceJanissary</unit>
       </guardianunit>
       <difficulty>521</difficulty>
     </nugget>

@@ -3383,6 +3383,12 @@
       <string _locid="303385">Orthodox Clergy</string>
       <string _locid="303386">ZP EU Balkan Guards</string>
       <string _locid="303387">Balkan Guards</string>
+      <string _locid="303388">TEAM Breaching Shot</string>
+      <string _locid="303389">Pirate, corsair and Wokou ships gain a 1.75x damage bonus against Anti-Ship Fixed Guns.</string>
+      <string _locid="303390">Hayreddin Barbarossa (Map Bonus)</string>
+      <string _locid="303391">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nSultana \n\n&lt;color=0.0, 1.0, 0.0&gt;Bonus:&lt;/color&gt; Ships Captain Hizir hero character. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nCorsair Emissary</string>
+      <string _locid="303392">ZP Tortuga House City</string>
+      <string _locid="303393">ZP Tortuga Tower City</string>
       
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

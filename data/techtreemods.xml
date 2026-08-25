@@ -2486,6 +2486,7 @@
       </effect>
       <effect type="TechStatus" status="obtainable">zpNatGambling</effect>
       <effect type="TechStatus" status="obtainable">zpNatThePiracy</effect>
+      <effect type="TechStatus" status="obtainable">zpNatBreachingShot</effect>
       <effect type="TechStatus" status="obtainable">zpNatHonoredPirate</effect>
       <effect type="TechStatus" status="obtainable">zpNatDisciplinedPirate</effect>
       <effect type="TechStatus" status="obtainable">zpPirateTreasures</effect>
@@ -36975,11 +36976,65 @@
         <target type="Player">
         </target>
       </effect>
+      <effect type="TechStatus" status="active">zpPirateGunners</effect>
       <effect type="TechStatus" status="active">deMapIsEuropean</effect>
       <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>
        <effect type="TechStatus" status="active">zpMediterraneanSufi</effect>      
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">deSPCCommandPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpNatBreachingShot" type="Normal">
+    <dbid>41507</dbid>
+    <displaynameid>303388</displaynameid>
+    <cost resourcetype="Wood">150.0000</cost>
+    <cost resourcetype="Gold">250.0000</cost>
+    <researchpoints>10.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\historical_maps\anti-fixedgun.png</icon>
+    <rollovertextid>303389</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>TeamTech</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.75" subtype="DamageBonus" unittype="zpAntiShipGun" allactions="1" relativity="Assign">
+        <target type="ProtoUnit">AbstractPirateShip</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpPirateGunners" type="Normal">
+    <dbid>41508</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" tech="zpNatThePiracy">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatBreachingShot" page="2" column="2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpNatBreachingShot</effect>
+      <effect type="SetName" tech="zpConsulatePiratesBarbarossa" newname="303390" newrollover="303391">
+      </effect>
+      <effect type="TechStatus" status="obtainable">zpSendHayreddin</effect>
+    </effects>
+  </tech>
+  <tech name="zpSendHayreddin" type="Normal">
+    <dbid>41509</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <researchpoints>0.0000</researchpoints>
+    <prereqs>
+      <techstatus status ="Active">zpConsulatePiratesBarbarossa</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCHayreddin" relativity="Absolute">
+        <target type="Player">
+        </target>
       </effect>
     </effects>
   </tech>

@@ -1232,7 +1232,7 @@ void main(void)
 	int electorSocket1 = rmGetUnitPlaced(spawnerID1, 0);
 	int electorSocket2 = rmGetUnitPlaced(spawnerID2, 0);
 
-	int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0);
+	int flag1 = rmGetUnitPlaced(piratewaterflagID1, 0)+1;
 
 	string pirate1ID = ""+(flag1-1);
 

@@ -1,18 +1,25 @@
-"""Unattended skirmish test driver - kill-cycle edition.
+"""Unattended skirmish test driver - hands-off-the-process edition.
 
     python scripts/aitest/driver.py --runs 20
 
+HARD RULE (user directive 2026-08-24): this script NEVER kills and NEVER
+launches the game process. Restarts are the user's job, done manually - and
+only ever needed for process-load data (art/xml), never for AI scripts, which
+recompile at every match start. When the driver cannot proceed (game not
+running, navigation lost, quit not confirmed) it STOPS and reports; it does
+not "fix" the situation by touching the process.
+
 Per run:
-  1. ensure the game is running (steam://rungameid/933110), wait for the home
-     menu (verified by the calibrated Skirmish-button pixel)
+  1. verify the game is running and at the home menu (calibrated
+     Skirmish-button pixel); if not, stop and ask the human
   2. click Skirmish (124,490) -> verify lobby pixel -> click Play (1647,1020)
   3. wait for the MATCH via the log: a new "Main is starting" appended to
      Age3Log.txt (the loading screen blits black, so pixels cannot see it -
      the log is authoritative)
-  4. tail the log live until a landing verdict or the 20-minute cap
+  4. tail the log live until a landing verdict or the --cap-min cap
   5. archive events + log slice to runs/run_NNN/, append results.csv
-  6. taskkill the game - every run recompiles the AI from disk, no Restart
-     ambiguity - and loop
+  6. graceful cog -> Quit -> Yes back to the home menu (this flushes the
+     per-player AI logs) - and loop
 
 STOP file next to this script = end batch after current run. Mouse to the
 top-left corner = instant abort. Writes only under scripts/aitest/.
@@ -21,6 +28,7 @@ resolution or UI scale changes (see NAVIGATION.md).
 """
 import argparse
 import ctypes
+import glob
 import json
 import os
 import re
@@ -107,6 +115,30 @@ def stop_requested():
     return os.path.exists(os.path.join(HERE, "STOP"))
 
 
+def load_coords():
+    """Device-agnostic UI coordinates. Sheets live in coords/*.json, named
+    <WIDTH>x<HEIGHT>_<variant> and are TRACKED (a sheet is reusable on any
+    device with the same resolution). whichsheet.json next to this script is
+    GITIGNORED, purely device-local, and selects the sheet:
+        {"sheet": "1920x1080_default"}
+    Without it, <current-resolution>_default is assumed. Missing sheet =
+    stop and calibrate (python scripts/aitest/calibrate.py - see the
+    ui-calibrate skill); the driver never guesses pixel positions."""
+    sel = os.path.join(HERE, "whichsheet.json")
+    if os.path.exists(sel):
+        name = json.load(open(sel))["sheet"]
+    else:
+        name = "%dx%d_default" % (SW, SH)
+    path = os.path.join(HERE, "coords", name + ".json")
+    if not os.path.exists(path):
+        sys.exit("no coordinate sheet '%s' (screen is %dx%d) - run\n"
+                 "  python scripts/aitest/calibrate.py\n"
+                 "or point scripts/aitest/whichsheet.json at an existing "
+                 "sheet in scripts/aitest/coords/" % (name, SW, SH))
+    print("   coordinate sheet: %s" % name)
+    return json.load(open(path))
+
+
 def game_running():
     try:
         out = subprocess.run(["tasklist", "/FI", "IMAGENAME eq " + EXE],
@@ -116,45 +148,54 @@ def game_running():
         return False
 
 
-def kill_game():
-    subprocess.run(["taskkill", "/IM", EXE, "/F"], capture_output=True, timeout=30)
-    time.sleep(8)
-
-
 def end_match(nav):
     """Graceful exit: cog -> Quit -> Yes -> home menu. Flushes the per-player
-    AI logs (a match quit writes Age3DEAIOutputPlayerN.txt) and keeps the game
-    process alive, so the next run skips the 75 s relaunch. Falls back to
-    taskkill if the home menu never comes back."""
+    AI logs (a match quit writes Age3DEAIOutputPlayerN.txt). NEVER touches the
+    game process - if the home menu does not come back, the driver stops and
+    leaves the machine to the human (see the HARD RULE in the header)."""
     guard(); click(nav["match_cog"]["x"], nav["match_cog"]["y"]); time.sleep(1.5)
     guard(); click(nav["match_quit"]["x"], nav["match_quit"]["y"]); time.sleep(2.5)
     guard(); click(nav["quit_yes"]["x"], nav["quit_yes"]["y"])
     if wait_probe(nav["home_skirmish"], 120):
         time.sleep(4)   # give the exit flush a moment
         return True
-    print("   graceful quit failed - killing the process")
-    kill_game()
+    print("   graceful quit did NOT reach the home menu - stopping;"
+          " the game process is untouched, hand it to the human")
     return False
 
 
 def start_recording(path, cap_s):
-    """Screen capture via ffmpeg gdigrab: 1280-wide, 10 fps, ~5-10 MB/min.
+    """Screen capture, 1280-wide, 10 fps, local file only.
+
+    Primary: ddagrab (Desktop Duplication API) - reads the GPU's real output,
+    so no gdigrab flicker (run_012 alternated two brightness levels every
+    frame; ddagrab measured flat). Fallback: the old gdigrab pipeline if the
+    ddagrab process dies within 2 s (no d3d11 device etc.).
     -t caps the recording so it self-stops even if the driver dies."""
     ff = os.path.join(os.environ.get("LOCALAPPDATA", ""), "Microsoft", "WinGet",
                       "Packages", "Gyan.FFmpeg_Microsoft.Winget.Source_8wekyb3d8bbwe",
                       "ffmpeg-9.0-full_build", "bin", "ffmpeg.exe")
     if not os.path.exists(ff):
         ff = "ffmpeg"
-    try:
-        return subprocess.Popen(
-            [ff, "-y", "-f", "gdigrab", "-framerate", "10", "-t", str(cap_s),
-             "-i", "desktop", "-vf", "scale=1280:-2",
-             "-c:v", "libx264", "-preset", "ultrafast", "-crf", "28",
-             "-pix_fmt", "yuv420p", path],
-            stdin=subprocess.PIPE, stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL)
-    except Exception:
-        return None
+    dda = [ff, "-y", "-t", str(cap_s),
+           "-filter_complex", "ddagrab=framerate=10,hwdownload,format=bgra,scale=1280:-2",
+           "-c:v", "libx264", "-preset", "ultrafast", "-crf", "26",
+           "-pix_fmt", "yuv420p", path]
+    gdi = [ff, "-y", "-f", "gdigrab", "-framerate", "10", "-t", str(cap_s),
+           "-i", "desktop", "-vf", "scale=1280:-2",
+           "-c:v", "libx264", "-preset", "ultrafast", "-crf", "28",
+           "-pix_fmt", "yuv420p", path]
+    for args in (dda, gdi):
+        try:
+            proc = subprocess.Popen(args, stdin=subprocess.PIPE,
+                                    stdout=subprocess.DEVNULL,
+                                    stderr=subprocess.DEVNULL)
+            time.sleep(2)
+            if proc.poll() is None:
+                return proc
+        except Exception:
+            continue
+    return None
 
 
 def stop_recording(proc):
@@ -228,27 +269,42 @@ def watch_verdict(pos, cap_s):
     t0 = time.time()
     events = []
     sail_at = None
+    capture_seen = False
     while True:
         guard()
         time.sleep(10)
+        # crash awareness: a dead game process is a first-class verdict, not
+        # a 30-minute log-tail wait. (The corner-abort also fires on crashes
+        # because Windows resets the cursor to 0,0 - this check names the
+        # cause properly and points at the freshest minidump if armed.)
+        if not game_running():
+            dumps = sorted(glob.glob(
+                "c:/Users/rosti/Games/Age of Empires 3 DE/CrashDumps/*.dmp"),
+                key=os.path.getmtime)
+            note = ("newest dump: " + os.path.basename(dumps[-1])) if dumps \
+                else "no dump found (LocalDumps not armed?)"
+            events.append("GAME PROCESS DIED - " + note)
+            return "GAME-CRASHED", events
         pos, chunk = new_log_content(pos)
         for line in chunk.splitlines():
-            if re.search(r"LAND p\d|LANDWAIT|GUNRAID|AREARECALC", line):
+            if re.search(r"LAND p\d|LANDWAIT|GUNRAID|AREARECALC|PALACE", line):
                 events.append(line.strip()[-170:])
         j = "\n".join(events)
-        if "LANDED" in j:
-            return "LANDED", events
-        if "boarding timed out" in j:
-            return "BOARD-FAIL", events
-        if "crossing timed out" in j:
-            return "CROSS-FAIL", events
-        if "ship lost" in j:
-            return "SHIP-LOST", events
-        if "sailing" in j and sail_at is None:
-            sail_at = time.time()
-        if sail_at and time.time() - sail_at > 6 * 60:
-            return "CROSS-FAIL", events
+        # PALACE CAMPAIGN semantics: LANDED is progress, not a terminal -
+        # the run succeeds when a landed force captures and garrisons the
+        # OVERSEAS flag (PALACEHOLD comes only from the mission rule).
+        # forensics FIX 5: the first PALACEHOLD used to END the run, leaving
+        # the home-side captures a 1-2 second observation window. Now the
+        # capture is latched and the run observes to the cap; boarding and
+        # crossing failures likewise stay non-terminal (they self-heal via
+        # the landing's cooldown retry).
+        if "PALACEHOLD" in j:
+            capture_seen = True
         if time.time() - t0 > cap_s:
+            if capture_seen:
+                return "PALACE-CAPTURED", events
+            if "LANDED" in j:
+                return "LANDED-NO-CAPTURE", events
             waits = re.findall(r"gate=([^\r\n]+)", j)
             if waits and "boarding" not in j:
                 return "GATES-STUCK", events
@@ -261,9 +317,14 @@ def main():
     ap.add_argument("--cap-min", type=int, default=20)
     ap.add_argument("--record", action="store_true",
                     help="capture the screen for each run into its archive")
+    ap.add_argument("--allow-restart", action="store_true",
+                    help="user-authorized (2026-08-25): relaunch the game via"
+                         " Steam after a crash and continue the batch."
+                         " Without it the driver stops and waits for a human."
+                         " Killing the process remains forbidden always.")
     a = ap.parse_args()
 
-    nav = json.load(open(os.path.join(HERE, "nav_points.json")))
+    nav = load_coords()
     runs_dir = os.path.join(HERE, "runs")
     os.makedirs(runs_dir, exist_ok=True)
     results = os.path.join(HERE, "results.csv")
@@ -283,16 +344,27 @@ def main():
         run_no = n0 + done + 1
         print("== run %d ==" % run_no)
         if not game_running():
-            print("   launching game (cold start)...")
+            if not a.allow_restart:
+                print("   game is NOT running - start it manually, then rerun,"
+                      " or pass --allow-restart. The driver never kills the"
+                      " process.")
+                break
+            print("   game not running - relaunching via Steam"
+                  " (--allow-restart)...")
             os.startfile(STEAM_URL)
-            time.sleep(90)
+            if not wait_probe(nav["home_skirmish"], 240):
+                print("   relaunch did not reach the home menu in 240 s -"
+                      " stopping for a human")
+                break
+            time.sleep(5)
         pos = start_match(nav)
         if pos < 0:
             lost += 1
             if lost >= 3:
                 print("   LOST %d times - stopping for a human" % lost); break
-            print("   navigation failed (%d/3) - fresh game process and retry" % lost)
-            kill_game()
+            print("   navigation failed (%d/3) - waiting 20 s and retrying,"
+                  " game process untouched" % lost)
+            time.sleep(20)
             continue
         lost = 0
         done = done + 1
@@ -320,7 +392,17 @@ def main():
                 os.replace(rec_tmp, os.path.join(rd, "match.mp4"))
             except OSError:
                 pass
-        end_match(nav)
+        if verdict == "GAME-CRASHED":
+            if not a.allow_restart:
+                print("   game process died mid-run - restart it manually and"
+                      " rerun, or pass --allow-restart; the driver never"
+                      " kills the process")
+                break
+            print("   game crashed - the next loop pass relaunches it"
+                  " (--allow-restart); dump triage:"
+                  " python scripts/aitest/crashdump_triage.py")
+            continue
+        quit_ok = end_match(nav)
         # archive the per-player AI logs the quit just flushed
         logdir = "c:/Users/rosti/Games/Age of Empires 3 DE/Logs"
         for pn in range(1, 9):
@@ -332,6 +414,10 @@ def main():
                         fo.write(fi.read())
                 except OSError:
                     pass
+        if not quit_ok:
+            print("   screen state unknown after failed quit - stopping the"
+                  " batch; the game process is untouched")
+            break
     print("batch done - results in %s" % results)
 
 

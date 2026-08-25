@@ -16,15 +16,20 @@ __pycache__/
 
 # Editor-driver screenshots / census captures (scoped: only this dir, only png)
 sandbox/census/*.png
-# Map backup snapshots (scoped: only the backup dir, only .xs) - working maps
-# elsewhere in randmaps/ stay tracked
-randmaps/_backups/*.xs
+# Backups live OUTSIDE the production folders, never beside working files.
+# Whole tree ignored: nothing in here is source.
+backups/
 
 # AI landing-test harness: keep the CODE (driver/calibrate/probe/NAVIGATION),
 # drop the per-run OUTPUT and anything calibrated to one machine.
 #   runs/          archived Age3Log slices + AI output, ~1.4 MB per campaign
 #   results.csv    one row per run, regenerated every campaign
-#   nav_points.json  screen pixel coordinates for THIS monitor only
+#   whichsheet.json  selects the local device's coordinate sheet
+#                    (sheets in coords/ are resolution-keyed and TRACKED)
 scripts/aitest/runs/
 scripts/aitest/results.csv
-scripts/aitest/nav_points.json
+scripts/aitest/whichsheet.json
+scripts/aitest/recording_tmp.mp4
+
+# external reference clones - never committed
+references/

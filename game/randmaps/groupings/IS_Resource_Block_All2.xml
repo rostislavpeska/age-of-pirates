@@ -40,7 +40,6 @@
 		<unit variation="0" posx="11.9093" posz="-7.1246" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPathBlock3</unit>
 		<unit variation="16" posx="-9.8615" posz="-9.1005" orientx="0.0000" orienty="0.0000" orientz="-1.0000">dePropsColonyAfrica</unit>
 		<unit variation="49" posx="-9.8083" posz="-8.9384" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropsColony</unit>
-		<unit variation="91" posx="-0.1316" posz="-9.6917" orientx="0.9999" orienty="0.0000" orientz="-0.0110">zpNatEUPropObelisk</unit>
 		<unit variation="9" posx="6.4180" posz="-8.9851" orientx="0.3827" orienty="0.0000" orientz="-0.9239">dePropsColonyAfrica</unit>
 		<unit variation="15" posx="6.5156" posz="-8.1665" orientx="0.3827" orienty="0.0000" orientz="-0.9239">dePropsColonyAfrica</unit>
 		<unit variation="15" posx="10.7109" posz="-8.4405" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">dePropsColonyAfrica</unit>

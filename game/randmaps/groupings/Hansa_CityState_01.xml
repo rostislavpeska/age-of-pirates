@@ -162,6 +162,10 @@
 		<unit variation="205" posx="-13.0038" posz="32.5309" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">zpHarbourPlatform</unit>
 		<unit variation="4" posx="-7.2405" posz="32.5182" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
 		<unit variation="4" posx="0.4295" posz="32.3742" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
+		<unit variation="219" posx="27.9542" posz="5.5830" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
+		<unit variation="219" posx="23.5754" posz="24.2333" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpHarbourPlatform</unit>
+		<unit variation="219" posx="-5.6955" posz="32.0544" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpHarbourPlatform</unit>
+		<unit variation="73" posx="2.7885" posz="26.8783" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
 		<unit variation="29" posx="-5.0482" posz="-18.3181" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deSPCSocketCityTower</unit>
 		<unit variation="29" posx="-19.9734" posz="-3.2683" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpSPCSocketCityTowerClone</unit>
 	</units>

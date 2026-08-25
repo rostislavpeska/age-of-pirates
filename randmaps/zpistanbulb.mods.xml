@@ -221,11 +221,6 @@
 			<flag>InvulnerableIfGaia</flag>
 			<flag>CannotAttackIfGaia</flag>
 		</unit>
-		<unit name="zpKingsHillNavalBlackSea">
-			<displaynameid>303324</displaynameid>
-			<portraiticon>resources\art\buildings\waterfort_portrait.png</portraiticon>
-			<minimapicon>ui\minimap\highlighted item</minimapicon>
-		</unit>
 		<unit name="zpTradingPostCaptureNavalOriental">
 			<obstructionradiusx>4.0000</obstructionradiusx>
 			<obstructionradiusz>4.0000</obstructionradiusz>

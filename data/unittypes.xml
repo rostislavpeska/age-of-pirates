@@ -49,4 +49,5 @@
   <unittype>AbstractSultanGuard</unittype>
   <unittype>MovableFish</unittype>
   <unittype>IstanbulVictoryObject</unittype>
+  <unittype>AbstractPirateShip</unittype>
 </unittypes>

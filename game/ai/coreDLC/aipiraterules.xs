@@ -279,6 +279,11 @@ minInterval 1
       xsEnableRule("istanbulDefendKOTH");
       xsEnableRule("istanbulFortRaid");
       xsEnableRule("istanbulGunRaid");
+      xsEnableRule("istanbulGunFleet");
+      xsEnableRule("istanbulMonitorMaintain");
+      xsEnableRule("istanbulPalaceMission");
+      xsEnableRule("istanbulPalaceHomeKiller");
+      xsEnableRule("istanbulPalaceHold");
       // the gun REBUILD - see buildPirateSocketTowers; the map already
       // grants zpSPCIstanbulSocketsAI and waits for the proxy
       xsEnableRule("buildPirateSocketTowers");
@@ -3749,6 +3754,11 @@ mininterval 60
       []() -> bool { return (kbUnitCount(cMyID, cUnitTypePrivateer, cUnitStateABQ) >= 3); },
       cUnitTypeTradingPost);
 
+      // Breaching Shot
+      canDisableSelf &= researchSimpleTechByCondition(cTechzpNatBreachingShot,
+      []() -> bool { return ((kbTechGetStatus(cTechzpPirateGunners) == cTechStatusActive) && ( kbGetAge() >= cAge1 )); },
+      cUnitTypeTradingPost);
+
       // Black Caesar Special Upgrade
       canDisableSelf &= researchSimpleTechByCondition(cTechzpNatCorsairRevolt,
       []() -> bool { return ((kbTechGetStatus(cTechzpConsulatePiratesBlackCaesar) == cTechStatusActive) && ( kbGetAge() >= cAge3 )); },
@@ -7126,7 +7136,8 @@ int gIstanbulLandShip = -1;
 int gIstanbulLandPhase = 0;        // 0 idle, 1 boarding, 2 sailing
 int gIstanbulLandTime = -1;        // when the current phase began (ms)
 int gIstanbulLandNext = 0;         // earliest next launch attempt (ms)
-int gIstanbulLandArmyMin = 8;      // soldiers needed before we sail
+int gIstanbulLandArmyMin = 8;      // legacy floor; the age ladder overrides
+int gIstanbulLandNeed = 8;         // this wave's target size (set in phase 0)
 vector gIstanbulLandBeach = cInvalidVector;
 vector gIstanbulLandPickup = cInvalidVector;
 // OWNERSHIP - the arbitrated cause of "0 aboard" was that the soldiers and
@@ -7141,6 +7152,93 @@ int gIstanbulLandShipPlan = -1;
 // false: full gates (gun dead, army 8, minutes-long cooldowns), heartbeat 60 s
 bool gIstanbulLandTestMode = false;
 int gIstanbulLandEchoTime = 0;
+
+//==============================================================================
+// istanbulGunFleet   -   the standing Fixed-Gun-killer pool (THE FLEET SPLIT)
+//
+// Fort guardians / gun killers / landing fleet. Gun-fleet membership has ONE
+// definition, istanbulIsGunFleetHull below: pirate hulls (the gun's 0.5 malus
+// plus the Breaching Shot bonus) and the per-civ monitor-class (the building
+// bonus) - pirates are rare, and monitors are the answer for a player with no
+// pirate settlement. The pool is a reserve at priority 96: above the guardian
+// killer sweep (90) and the fort garrison (95), below the landing army (99)
+// and transport (100) - no KOTH rule can steal from it, and it can never
+// steal from the landing. The escort helper skips >= 95, so pool hulls never
+// get pulled into escort duty. gIstanbulGunFleetMin is the FLOOR: fewer hulls
+// than this never engage a fixed gun - one ship against a gun is a gift.
+//==============================================================================
+int gIstanbulGunFleetPlan = -1;
+int gIstanbulGunPriority = -1;   // gun a staged landing needs dead, -1 = none
+int gIstanbulGunFleetMin = 2;    // FLOOR: never attack a gun with fewer
+
+// The single definition of gun-fleet membership - every rule asks this.
+bool istanbulIsGunFleetHull(int unitID = -1)
+{
+   if (kbUnitIsType(unitID, cUnitTypeAbstractPirateShip) == true)
+   {
+      return (true);
+   }
+   if (kbUnitGetProtoUnitID(unitID) == gMonitorUnit)
+   {
+      return (true);
+   }
+   return (false);
+}
+
+rule istanbulGunFleet
+inactive
+minInterval 10
+{
+   // ONE query over all warships, filtered by the membership predicate - two
+   // interleaved simple queries would share the single static query object
+   int fleetQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
+   int fleetCount = kbUnitQueryExecute(fleetQuery);
+   if (fleetCount <= 0)
+   {
+      return;
+   }
+   if (gIstanbulGunFleetPlan < 0)
+   {
+      gIstanbulGunFleetPlan = aiPlanCreate("Istanbul Gun Fleet", cPlanReserve);
+      aiPlanAddUnitType(gIstanbulGunFleetPlan, cUnitTypeAbstractWarShip, 0, 0, 24);
+      aiPlanSetNoMoreUnits(gIstanbulGunFleetPlan, true);
+      aiPlanSetDesiredPriority(gIstanbulGunFleetPlan, 96);
+      aiPlanSetActive(gIstanbulGunFleetPlan);
+   }
+   if (aiPlanGetNumberUnits(gIstanbulGunFleetPlan, cUnitTypeAbstractWarShip) >= 24)
+   {
+      return;   // at the plan cap - aiPlanAddUnit would fail silently
+   }
+   int collected = 0;
+   int tempUnit = -1;
+   for (i = 0; < fleetCount)
+   {
+      tempUnit = kbUnitQueryGetResult(fleetQuery, i);
+      if (istanbulIsGunFleetHull(tempUnit) == false)
+      {
+         continue;
+      }
+      if (tempUnit == gIstanbulLandShip)
+      {
+         continue;   // the landing ship keeps its cargo
+      }
+      if (kbUnitGetPlanID(tempUnit) == gIstanbulGunFleetPlan)
+      {
+         continue;   // already ours
+      }
+      if (aiPlanGetActualPriority(kbUnitGetPlanID(tempUnit)) >= 99)
+      {
+         continue;   // the landing plans keep their ships
+      }
+      aiPlanAddUnit(gIstanbulGunFleetPlan, tempUnit);
+      collected = collected + 1;
+   }
+   if (collected > 0)
+   {
+      aiEcho("GUNFLEET p" + cMyID + " +" + collected + " hulls, "
+                + aiPlanGetNumberUnits(gIstanbulGunFleetPlan, cUnitTypeAbstractWarShip) + " held");
+   }
+}
 
 // Destroy the plans and reset state. MUST run on every exit path - landed,
 // timed out, ship lost - or the pri-100 reserve permanently starves
@@ -7159,6 +7257,7 @@ void istanbulLandingReset(void)
    gIstanbulLandShipPlan = -1;
    gIstanbulLandShip = -1;
    gIstanbulLandPhase = 0;
+   gIstanbulGunPriority = -1;
 }
 
 // The phase-0 heartbeat: names the gate that is refusing, throttled so it is
@@ -7213,6 +7312,588 @@ void istanbulLandingEscort(void)
       {
          break;
       }
+   }
+   // FLEET-SPLIT fallback: a pirate-heavy navy holds most hulls in the gun
+   // fleet at pri 96, which the >= 95 skip above excludes - and an unescorted
+   // transport is exactly how run_006 died. Borrow up to 2 pool hulls, but
+   // never while the pool is striking a staged wave's blocker
+   // (gIstanbulGunPriority set): killing that gun outranks guard duty.
+   if (escortsSent == 0 && gIstanbulGunFleetPlan >= 0 && gIstanbulGunPriority < 0)
+   {
+      int poolHeld = aiPlanGetNumberUnits(gIstanbulGunFleetPlan, cUnitTypeAbstractWarShip);
+      for (i = 0; < poolHeld)
+      {
+         int tempPoolEscort = aiPlanGetUnitByIndex(gIstanbulGunFleetPlan, i);
+         if (tempPoolEscort < 0)
+         {
+            continue;
+         }
+         if (tempPoolEscort == gIstanbulLandShip)
+         {
+            continue;
+         }
+         aiTaskUnitMove(tempPoolEscort, escortPos);
+         escortsSent = escortsSent + 1;
+         if (escortsSent >= 2)
+         {
+            break;
+         }
+      }
+   }
+}
+
+
+
+//==============================================================================
+// istanbulMonitorMaintain - monitors are otherwise NEVER trained here:
+// navyManager rewrites gMonitorMaintain's quantity to the count of EXISTING
+// monitors (0) every 30 s (aimilitary.xs:2385-2392), so the stock plan can
+// never bootstrap. Own global, stock recipe (donor aimilitary.xs:2025),
+// gated on availability + a live dock. Trained monitors join the pri-96 gun
+// fleet automatically and break the STAGED beach-gun deadlocks.
+//==============================================================================
+int gIstanbulMonitorMaintain = -1;
+
+rule istanbulMonitorMaintain
+inactive
+minInterval 30
+{
+   if (gIstanbulMonitorMaintain >= 0)
+   {
+      xsDisableSelf();
+      return;
+   }
+   if (kbProtoUnitAvailable(gMonitorUnit) == false)
+   {
+      return;
+   }
+   if (kbUnitCount(cMyID, cUnitTypeAbstractDock, cUnitStateAlive) < 1)
+   {
+      return;
+   }
+   gIstanbulMonitorMaintain = createSimpleMaintainPlan(gMonitorUnit, 2, false, kbBaseGetMainID(cMyID), 1);
+   aiEcho("MONITORMAINT p" + cMyID + " maintain up - 2 monitor-class hulls");
+   xsDisableSelf();
+}
+
+//==============================================================================
+// THE PALACE CHAIN - the other half of the victory condition
+//
+// Victory needs 4 flags held (2 water forts + 2 palaces); every older rule
+// chases only the forts. Each palace: 8 gaia deGuardianJanissary (engine
+// cUnitTypeGuardian) guard the forecourt; killing them arms a 12 m
+// persistent AutoConvert on the Cossack flag; standing flips it, and an
+// unguarded flag defects to the first enemy who walks up.
+//
+// Doctrine (forensics of EsteGringo + AssertiveWall): the OBJECTIVE lives in
+// globals and a periodic rule, plans are disposable, and the force roster is
+// re-derived from GEOGRAPHY every tick - a land unit that cannot walk home
+// is expedition force, whoever it once belonged to. Troops are never
+// released into the void: the landing hands its wave over BEFORE destroying
+// the army plan, and the adoption sweep retro-captures any stray survivor.
+//==============================================================================
+int gIstanbulPalaceMissionPlan = -1;   // overseas expedition force, pri 99
+int gIstanbulPalaceHomePlan = -1;      // home-palace strike squad, pri 90
+int gIstanbulPalaceHoldPlan = -1;      // home-side flag garrison, pri 95
+// STABLE guardian targets - run_011: getUnitByLocation re-rolls its pick
+// every pass (380/2844/2568/5246... in consecutive passes), so focus fire
+// never accumulated and no janissary ever died. Cache; re-pick on death.
+int gIstanbulPalaceMissionTarget = -1;
+int gIstanbulPalaceHomeTarget = -1;
+
+// Adopt one land unit into the mission reserve, creating it on demand.
+void istanbulPalaceAdopt(int unitID = -1)
+{
+   if (gIstanbulPalaceMissionPlan < 0)
+   {
+      gIstanbulPalaceMissionPlan = aiPlanCreate("Istanbul Palace Mission", cPlanReserve);
+      aiPlanAddUnitType(gIstanbulPalaceMissionPlan, cUnitTypeLogicalTypeLandMilitary, 0, 0, 60);
+      aiPlanSetNoMoreUnits(gIstanbulPalaceMissionPlan, true);
+      aiPlanSetDesiredPriority(gIstanbulPalaceMissionPlan, 99);
+      aiPlanSetActive(gIstanbulPalaceMissionPlan);
+   }
+   aiPlanAddUnit(gIstanbulPalaceMissionPlan, unitID);
+}
+
+// The two palaces, split by DISTANCE: nearest to our main base = HOME, the
+// other = OVERSEAS. This replaced a KB-passability split after the KB's
+// area-group holes returned -1 for whole teams (the "no land-reachable
+// palace (KB group)" echoes, manual match 2026-08-24). Each team's palace
+// stands on its own island, so geometry decides correctly and has no holes.
+// GivesLOSToAll makes both palaces queryable from 0:00. Runs the shared
+// simple query - callers finish their own queries first.
+int istanbulGetPalace(bool overseas = false)
+{
+   int palaceQuery = createSimpleUnitQuery(cUnitTypezpSPCPrincePalace, cPlayerRelationAny, cUnitStateAlive);
+   int palaceCount = kbUnitQueryExecute(palaceQuery);
+   vector palHomeBase = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   int bestNear = -1;
+   int bestFar = -1;
+   float nearDist = 100000.0;
+   float farDist = -1.0;
+   for (i = 0; < palaceCount)
+   {
+      int tempPalace = kbUnitQueryGetResult(palaceQuery, i);
+      float palDist = distance(kbUnitGetPosition(tempPalace), palHomeBase);
+      if (palDist < nearDist)
+      {
+         nearDist = palDist;
+         bestNear = tempPalace;
+      }
+      if (palDist > farDist)
+      {
+         farDist = palDist;
+         bestFar = tempPalace;
+      }
+   }
+   if (overseas == true)
+   {
+      if (bestFar == bestNear)
+      {
+         return (-1);   // only one palace known - that one is home
+      }
+      return (bestFar);
+   }
+   return (bestNear);
+}
+
+// The capture anchor: the Cossack flag ~7 m into the forecourt. Its owner is
+// the authoritative capture state; its position is where troops must stand
+// (12 m AutoConvert). Falls back to the palace itself if not found.
+int istanbulGetPalaceFlag(vector palaceLoc = cInvalidVector)
+{
+   return (getUnitByLocation(cUnitTypedeSPCCapturableFlagCossack, cPlayerRelationAny,
+                             cUnitStateAlive, palaceLoc, 20.0));
+}
+
+//==============================================================================
+// istanbulPalaceMission - the ashore brain (overseas palace)
+//==============================================================================
+rule istanbulPalaceMission
+inactive
+minInterval 10
+{
+   // GEOGRAPHY-KEYED ADOPTION (EsteGringo ainavalnew.xs:493-503): any own
+   // land unit that cannot walk home is expedition force. Skips >= 99 so
+   // boarding waves and the landing army keep their troops; ejected and
+   // stranded survivors are planless or low-pri and get captured here.
+   vector homeBase = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   int homeGroup = kbAreaGroupGetIDByPosition(homeBase);
+   int landQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+   int landCount = kbUnitQueryExecute(landQuery);
+   int adopted = 0;
+   int tempUnit = -1;
+   for (i = 0; < landCount)
+   {
+      tempUnit = kbUnitQueryGetResult(landQuery, i);
+      if (kbAreAreaGroupsPassableByLand(homeGroup, kbAreaGroupGetIDByPosition(kbUnitGetPosition(tempUnit))) == true)
+      {
+         continue;   // can walk home - not expedition force
+      }
+      if (kbUnitGetPlanID(tempUnit) == gIstanbulPalaceMissionPlan)
+      {
+         continue;   // already ours
+      }
+      if (aiPlanGetActualPriority(kbUnitGetPlanID(tempUnit)) >= 99)
+      {
+         continue;   // boarding waves and transports keep their troops
+      }
+      istanbulPalaceAdopt(tempUnit);
+      adopted = adopted + 1;
+   }
+   int missionHeld = 0;
+   if (gIstanbulPalaceMissionPlan >= 0)
+   {
+      missionHeld = aiPlanGetNumberUnits(gIstanbulPalaceMissionPlan, cUnitTypeLogicalTypeLandMilitary);
+   }
+   if (adopted > 0)
+   {
+      aiEcho("PALACE p" + cMyID + " adopted " + adopted + " ashore, force " + missionHeld);
+   }
+   if (missionHeld < 1)
+   {
+      return;
+   }
+
+   int palace = istanbulGetPalace(true);
+   if (palace < 0)
+   {
+      return;
+   }
+   vector palaceLoc = kbUnitGetPosition(palace);
+   int flag = istanbulGetPalaceFlag(palaceLoc);
+   vector flagLoc = palaceLoc;
+   int flagOwner = kbUnitGetPlayerID(palace);
+   if (flag > 0)
+   {
+      flagLoc = kbUnitGetPosition(flag);
+      flagOwner = kbUnitGetPlayerID(flag);
+   }
+
+   // 1) guardians first - ONE shared target, orders re-issued every pass
+   //    (the house guardian-killer pattern; passive gaia never fights back
+   //    unprovoked, so the direct task is what starts the fight)
+   if (gIstanbulPalaceMissionTarget >= 0)
+   {
+      if (kbUnitGetCurrentHitpoints(gIstanbulPalaceMissionTarget) <= 0)
+      {
+         gIstanbulPalaceMissionTarget = -1;   // dead - next one
+      }
+   }
+   if (gIstanbulPalaceMissionTarget < 0)
+   {
+      gIstanbulPalaceMissionTarget = getUnitByLocation(cUnitTypezpPalaceJanissary, cPlayerRelationAny,
+                                                       cUnitStateAlive, palaceLoc, 45.0);
+   }
+   int guardian = gIstanbulPalaceMissionTarget;
+   int tasked = 0;
+   int tempSoldier = -1;
+   if (guardian > 0 && missionHeld < 4)
+   {
+      // ENGAGE FLOOR - run_011: 'force 1' charged 8 janissaries alone and
+      // achieved nothing. Mass first, exactly like the naval strength gate.
+      aiEcho("PALACE p" + cMyID + " massing " + missionHeld + "/4 before the guardians");
+      return;
+   }
+   if (guardian > 0)
+   {
+      for (i = 0; < missionHeld)
+      {
+         tempSoldier = aiPlanGetUnitByIndex(gIstanbulPalaceMissionPlan, i);
+         if (tempSoldier < 0)
+         {
+            continue;
+         }
+         aiTaskUnitWork(tempSoldier, guardian);
+         tasked = tasked + 1;
+      }
+      aiEcho("PALACE p" + cMyID + " " + tasked + " troops onto guardian " + guardian);
+      xsSetRuleMinIntervalSelf(4);
+      return;
+   }
+
+   // 2) flag not ours: stand INSIDE the 12 m AutoConvert ring
+   bool oursTeam = false;
+   if (flagOwner > 0)
+   {
+      if (kbGetPlayerTeam(flagOwner) == kbGetPlayerTeam(cMyID))
+      {
+         oursTeam = true;
+      }
+   }
+   if (oursTeam == false)
+   {
+      for (i = 0; < missionHeld)
+      {
+         tempSoldier = aiPlanGetUnitByIndex(gIstanbulPalaceMissionPlan, i);
+         if (tempSoldier < 0)
+         {
+            continue;
+         }
+         if (distance(kbUnitGetPosition(tempSoldier), flagLoc) > 8)
+         {
+            aiTaskUnitMove(tempSoldier, getRandomPoint(flagLoc, 6));
+            tasked = tasked + 1;
+         }
+      }
+      aiEcho("PALACE p" + cMyID + " " + tasked + " moving to flag, capture pending");
+      xsSetRuleMinIntervalSelf(4);
+      return;
+   }
+
+   // 3) flag ours: 4 hold the ring, the rest raid the nearest enemy
+   //    building - re-derived every tick, so the raid never runs dry
+   xsSetRuleMinIntervalSelf(10);
+   int enemyBld = getUnitByLocation(cUnitTypeBuilding, cPlayerRelationEnemyNotGaia,
+                                    cUnitStateAlive, palaceLoc, 200.0);
+   int holdCount = 0;
+   int raidCount = 0;
+   for (i = 0; < missionHeld)
+   {
+      tempSoldier = aiPlanGetUnitByIndex(gIstanbulPalaceMissionPlan, i);
+      if (tempSoldier < 0)
+      {
+         continue;
+      }
+      if (holdCount < 4)
+      {
+         holdCount = holdCount + 1;
+         if (distance(kbUnitGetPosition(tempSoldier), flagLoc) > 10)
+         {
+            aiTaskUnitMove(tempSoldier, getRandomPoint(flagLoc, 8));
+         }
+         continue;
+      }
+      if (enemyBld > 0)
+      {
+         aiTaskUnitWork(tempSoldier, enemyBld);
+         raidCount = raidCount + 1;
+      }
+      else if (distance(kbUnitGetPosition(tempSoldier), flagLoc) > 15)
+      {
+         aiTaskUnitMove(tempSoldier, getRandomPoint(flagLoc, 12));
+      }
+   }
+   aiEcho("PALACEHOLD p" + cMyID + " flag ours - " + holdCount + " holding, "
+             + raidCount + " raiding " + enemyBld);
+}
+
+//==============================================================================
+// istanbulPalaceHomeKiller - the free flag: no ship needed at home
+//==============================================================================
+rule istanbulPalaceHomeKiller
+inactive
+minInterval 8
+{
+   int palace = istanbulGetPalace(false);
+   if (palace < 0)
+   {
+      // forensics F3: this exit was silent and indistinguishable from the
+      // massing stall; a KB area-group hole (documented on this map) can
+      // put us here until istanbulAreaRecalc heals it
+      aiEcho("PALACEHOME p" + cMyID + " no palace exists in the KB");
+      xsSetRuleMinIntervalSelf(30);
+      return;
+   }
+   xsSetRuleMinIntervalSelf(8);
+   vector palaceLoc = kbUnitGetPosition(palace);
+   int flag = istanbulGetPalaceFlag(palaceLoc);
+   vector flagLoc = palaceLoc;
+   int flagOwner = kbUnitGetPlayerID(palace);
+   if (flag > 0)
+   {
+      flagLoc = kbUnitGetPosition(flag);
+      flagOwner = kbUnitGetPlayerID(flag);
+   }
+   if (flagOwner > 0)
+   {
+      if (kbGetPlayerTeam(flagOwner) == kbGetPlayerTeam(cMyID))
+      {
+         // ours: this squad's war is over - the hold rule garrisons
+         if (gIstanbulPalaceHomePlan >= 0)
+         {
+            aiPlanDestroy(gIstanbulPalaceHomePlan);
+            gIstanbulPalaceHomePlan = -1;
+         }
+         return;
+      }
+   }
+
+   if (gIstanbulPalaceHomeTarget >= 0)
+   {
+      if (kbUnitGetCurrentHitpoints(gIstanbulPalaceHomeTarget) <= 0)
+      {
+         gIstanbulPalaceHomeTarget = -1;   // dead - next one
+      }
+   }
+   if (gIstanbulPalaceHomeTarget < 0)
+   {
+      gIstanbulPalaceHomeTarget = getUnitByLocation(cUnitTypezpPalaceJanissary, cPlayerRelationAny,
+                                                    cUnitStateAlive, palaceLoc, 45.0);
+   }
+   int guardian = gIstanbulPalaceHomeTarget;
+
+   if (gIstanbulPalaceHomePlan < 0)
+   {
+      gIstanbulPalaceHomePlan = aiPlanCreate("Istanbul Home Palace Squad", cPlanReserve);
+      aiPlanAddUnitType(gIstanbulPalaceHomePlan, cUnitTypeLogicalTypeLandMilitary, 0, 0, 12);
+      aiPlanSetNoMoreUnits(gIstanbulPalaceHomePlan, true);
+      aiPlanSetDesiredPriority(gIstanbulPalaceHomePlan, 90);
+      aiPlanSetActive(gIstanbulPalaceHomePlan);
+   }
+
+   // recruit walk-capable land military below pri 90 - the landing recruit
+   // shape, home-island only by geography
+   int squadHeld = aiPlanGetNumberUnits(gIstanbulPalaceHomePlan, cUnitTypeLogicalTypeLandMilitary);
+   int tempUnit = -1;
+   if (squadHeld < 10)
+   {
+      int homeGroup = kbAreaGroupGetIDByPosition(palaceLoc);
+      int landQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+      int landCount = kbUnitQueryExecute(landQuery);
+      for (i = 0; < landCount)
+      {
+         tempUnit = kbUnitQueryGetResult(landQuery, i);
+         if (aiPlanGetActualPriority(kbUnitGetPlanID(tempUnit)) >= 90)
+         {
+            continue;
+         }
+         if (kbAreAreaGroupsPassableByLand(homeGroup, kbAreaGroupGetIDByPosition(kbUnitGetPosition(tempUnit))) == false)
+         {
+            continue;   // cannot walk to this palace
+         }
+         aiPlanAddUnit(gIstanbulPalaceHomePlan, tempUnit);
+         squadHeld = squadHeld + 1;
+         if (squadHeld >= 10)
+         {
+            break;
+         }
+      }
+   }
+   if (squadHeld < 1)
+   {
+      // 17:39 test: "clearing defender ... with 0" - the rescue had no
+      // troops and said nothing. Now it says so.
+      aiEcho("PALACEHOME p" + cMyID + " squad empty - all land military owned at >= 90");
+      xsSetRuleMinIntervalSelf(20);
+      return;
+   }
+
+   // ENGAGE FLOOR - the mission rule's proven gate: run_012 showed 5-6
+   // troops clear every guardian by focus fire. The old 1.5x HP gate was
+   // tuned for fleets and never opened for a 10-man land squad (forensics
+   // RC1: it was THE 15-minute home stall).
+   int tempSoldier = -1;
+   if (guardian > 0 && squadHeld < 4)
+   {
+      aiEcho("PALACEHOME p" + cMyID + " massing " + squadHeld + "/4 before the guardians");
+      return;
+   }
+   if (guardian > 0)
+   {
+      int tasked = 0;
+      for (i = 0; < squadHeld)
+      {
+         tempSoldier = aiPlanGetUnitByIndex(gIstanbulPalaceHomePlan, i);
+         if (tempSoldier < 0)
+         {
+            continue;
+         }
+         aiTaskUnitWork(tempSoldier, guardian);
+         tasked = tasked + 1;
+      }
+      aiEcho("PALACEHOME p" + cMyID + " " + tasked + " troops onto guardian " + guardian);
+      xsSetRuleMinIntervalSelf(3);
+      return;
+   }
+
+   // CONTESTED FLAG (forensics RC3): an enemy garrison inside the ring must
+   // die first - standing beside it is a permanent "capture pending"
+   int defender = getUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia,
+                                    cUnitStateAlive, flagLoc, 14.0);
+   if (defender > 0)
+   {
+      int cleared = 0;
+      for (i = 0; < squadHeld)
+      {
+         tempSoldier = aiPlanGetUnitByIndex(gIstanbulPalaceHomePlan, i);
+         if (tempSoldier < 0)
+         {
+            continue;
+         }
+         aiTaskUnitWork(tempSoldier, defender);
+         cleared = cleared + 1;
+      }
+      aiEcho("PALACEHOME p" + cMyID + " clearing defender " + defender + " with " + cleared);
+      xsSetRuleMinIntervalSelf(4);
+      return;
+   }
+
+   // guardians dead, flag not ours: stand the ring
+   xsSetRuleMinIntervalSelf(8);
+   int moved = 0;
+   for (i = 0; < squadHeld)
+   {
+      tempSoldier = aiPlanGetUnitByIndex(gIstanbulPalaceHomePlan, i);
+      if (tempSoldier < 0)
+      {
+         continue;
+      }
+      if (distance(kbUnitGetPosition(tempSoldier), flagLoc) > 8)
+      {
+         aiTaskUnitMove(tempSoldier, getRandomPoint(flagLoc, 6));
+         moved = moved + 1;
+      }
+   }
+   aiEcho("PALACEHOME p" + cMyID + " " + moved + " standing at flag, capture pending");
+}
+
+//==============================================================================
+// istanbulPalaceHold - garrison every home-side flag the team owns
+// (the overseas flag is garrisoned by the mission rule's hold state)
+//==============================================================================
+rule istanbulPalaceHold
+inactive
+minInterval 10
+{
+   int palace = istanbulGetPalace(false);
+   if (palace < 0)
+   {
+      return;
+   }
+   vector palaceLoc = kbUnitGetPosition(palace);
+   int flag = istanbulGetPalaceFlag(palaceLoc);
+   vector flagLoc = palaceLoc;
+   int flagOwner = kbUnitGetPlayerID(palace);
+   if (flag > 0)
+   {
+      flagLoc = kbUnitGetPosition(flag);
+      flagOwner = kbUnitGetPlayerID(flag);
+   }
+   bool oursTeam = false;
+   if (flagOwner > 0)
+   {
+      if (kbGetPlayerTeam(flagOwner) == kbGetPlayerTeam(cMyID))
+      {
+         oursTeam = true;
+      }
+   }
+   if (oursTeam == false)
+   {
+      return;   // nothing of ours to hold - the killer rules do their work
+   }
+
+   if (gIstanbulPalaceHoldPlan < 0)
+   {
+      gIstanbulPalaceHoldPlan = aiPlanCreate("Istanbul Palace Garrison", cPlanReserve);
+      aiPlanAddUnitType(gIstanbulPalaceHoldPlan, cUnitTypeLogicalTypeLandMilitary, 0, 0, 3);
+      aiPlanSetNoMoreUnits(gIstanbulPalaceHoldPlan, true);
+      aiPlanSetDesiredPriority(gIstanbulPalaceHoldPlan, 95);
+      aiPlanSetActive(gIstanbulPalaceHoldPlan);
+   }
+   int held = aiPlanGetNumberUnits(gIstanbulPalaceHoldPlan, cUnitTypeLogicalTypeLandMilitary);
+   int tempUnit = -1;
+   if (held < 3)
+   {
+      int flagGroup = kbAreaGroupGetIDByPosition(flagLoc);
+      int landQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+      int landCount = kbUnitQueryExecute(landQuery);
+      for (i = 0; < landCount)
+      {
+         tempUnit = kbUnitQueryGetResult(landQuery, i);
+         if (aiPlanGetActualPriority(kbUnitGetPlanID(tempUnit)) >= 95)
+         {
+            continue;
+         }
+         if (kbAreAreaGroupsPassableByLand(flagGroup, kbAreaGroupGetIDByPosition(kbUnitGetPosition(tempUnit))) == false)
+         {
+            continue;
+         }
+         aiPlanAddUnit(gIstanbulPalaceHoldPlan, tempUnit);
+         held = held + 1;
+         if (held >= 3)
+         {
+            break;
+         }
+      }
+   }
+   int parked = 0;
+   for (i = 0; < held)
+   {
+      tempUnit = aiPlanGetUnitByIndex(gIstanbulPalaceHoldPlan, i);
+      if (tempUnit < 0)
+      {
+         continue;
+      }
+      if (distance(kbUnitGetPosition(tempUnit), flagLoc) > 10)
+      {
+         aiTaskUnitMove(tempUnit, getRandomPoint(flagLoc, 8));
+      }
+      parked = parked + 1;
+   }
+   if (parked > 0)
+   {
+      aiEcho("PALACEGARRISON p" + cMyID + " " + parked + " holding our flag");
    }
 }
 
@@ -7273,6 +7954,10 @@ minInterval 15
    for (i = 0; < shipCount)
    {
       tempUnit = kbUnitQueryGetResult(shipQuery, i);
+      if (istanbulIsGunFleetHull(tempUnit) == true)
+      {
+         continue;   // gun-fleet hulls are not raiders
+      }
       puid = kbUnitGetProtoUnitID(tempUnit);
       shipCost = kbUnitCostPerResource(puid, cResourceWood)
                  + kbUnitCostPerResource(puid, cResourceGold)
@@ -7296,6 +7981,10 @@ minInterval 15
       if (tempUnit == gIstanbulLandShip)
       {
          continue;   // the landing ship keeps its cargo
+      }
+      if (istanbulIsGunFleetHull(tempUnit) == true)
+      {
+         continue;   // gun-fleet hulls are not raiders
       }
       puid = kbUnitGetProtoUnitID(tempUnit);
       shipCost = kbUnitCostPerResource(puid, cResourceWood)
@@ -7325,21 +8014,23 @@ minInterval 15
 // The anti-ship guns are what stop a fleet reaching anything, so this rule does
 // NOT wait for a fort of our own the way istanbulFortRaid does.
 //
-// WHICH HULLS COUNT is one comparison: puid == gMonitorUnit. That is vanilla's
-// per-civ monitor-class global - Monitor by default (aiglobals.xs:498),
-// xpIronclad for Asians (aisetup.xs:68), deCannonBoat for Africans (:185) - and
-// aiassertivewall.xs:7612 already uses the same test to pick the ship that
-// attacks an enemy tower. No proto list, and a new civ needs no edit here.
+// WHICH HULLS: the FLEET SPLIT (fort guardians / gun killers / landing fleet).
+// Gun killers are whatever istanbulIsGunFleetHull admits - pirate hulls and
+// the per-civ monitor-class - held by istanbulGunFleet at pri 96 so no KOTH
+// rule can steal them.
 //
 // Two ways to qualify:
-//    >= gIstanbulGunSiegeMin monitor-class hulls   (they carry the building bonus)
-//    >= gIstanbulGunShipMin  warships of any kind  (numbers instead of bonus)
-// No age gate: the monitor class is Age 3, so the short path cannot fire before
-// then and Colonial falls through to the 4-hull path by itself. A civ with no
-// monitor at all - Haudenosaunee, Aztec - simply always uses the long path.
+//    >= gIstanbulGunFleetMin hulls in the gun fleet   (pirates + monitors)
+//    >= gIstanbulGunShipMin  warships of any kind     (fallback: empty pool)
+// The fallback never touches ships in plans >= 90 - reserves keep their jobs -
+// so an AI with no specialists still answers the guns without wrecking the
+// KOTH fleet.
+//
+// While a landing wave is staged, gIstanbulGunPriority (the gun covering the
+// beach) overrides the nearest-to-home pick, so the gun fleet and the landing
+// converge on the same blocker instead of zigzagging between two targets.
 //==============================================================================
-int gIstanbulGunSiegeMin = 2;   // monitor-class hulls that are enough on their own
-int gIstanbulGunShipMin  = 4;   // ...or this many warships of any kind
+int gIstanbulGunShipMin = 4;   // fallback path: warships of any kind
 
 rule istanbulGunRaid
 inactive
@@ -7379,31 +8070,72 @@ minInterval 15
       return;
    }
 
-   int shipQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
-   int shipCount = kbUnitQueryExecute(shipQuery);
-   if (shipCount <= 0)
+   // staged landing override - see the header note
+   if (gIstanbulGunPriority >= 0)
    {
-      return;
-   }
-
-   int siegeCount = 0;
-   int puid = -1;
-   for (i = 0; < shipCount)
-   {
-      tempUnit = kbUnitQueryGetResult(shipQuery, i);
-      puid = kbUnitGetProtoUnitID(tempUnit);
-      if (puid == gMonitorUnit)
+      if (kbUnitGetCurrentHitpoints(gIstanbulGunPriority) > 0)
       {
-         siegeCount = siegeCount + 1;
+         targetGun = gIstanbulGunPriority;
       }
    }
 
-   if (siegeCount < gIstanbulGunSiegeMin && shipCount < gIstanbulGunShipMin)
+   // THE SPLIT: with a pool at or above the floor, gun work is theirs alone
+   // stale-roster guard (17:39 test: "fleet 7/2 -> 0 hulls" - dead ships
+   // counted as held): only hulls that still belong to us count
+   int gunHeld = 0;
+   int rosterN = 0;
+   if (gIstanbulGunFleetPlan >= 0)
    {
-      return;   // neither way qualifies - keep building
+      rosterN = aiPlanGetNumberUnits(gIstanbulGunFleetPlan, cUnitTypeAbstractWarShip);
+      for (i = 0; < rosterN)
+      {
+         tempUnit = aiPlanGetUnitByIndex(gIstanbulGunFleetPlan, i);
+         if (tempUnit < 0)
+         {
+            continue;
+         }
+         if (kbUnitGetPlayerID(tempUnit) != cMyID)
+         {
+            continue;
+         }
+         gunHeld = gunHeld + 1;
+      }
+   }
+   int sent = 0;
+   if (gunHeld >= gIstanbulGunFleetMin)
+   {
+      for (i = 0; < rosterN)
+      {
+         tempUnit = aiPlanGetUnitByIndex(gIstanbulGunFleetPlan, i);
+         if (tempUnit < 0)
+         {
+            continue;
+         }
+         if (kbUnitGetPlayerID(tempUnit) != cMyID)
+         {
+            continue;   // stale roster entry
+         }
+         if (tempUnit == gIstanbulLandShip)
+         {
+            continue;   // the landing ship keeps its cargo
+         }
+         aiTaskUnitWork(tempUnit, targetGun);
+         sent = sent + 1;
+      }
+      aiEcho("GUNRAID p" + cMyID + " fleet " + gunHeld + "/" + gIstanbulGunFleetMin
+                + " -> " + sent + " gun-fleet hulls onto gun " + targetGun);
+      return;
    }
 
-   int sent = 0;
+   // FALLBACK - no pirate camp, no specialists: any hulls, but never from a
+   // plan at >= 90 (guardian killer, garrison, gun fleet, landing) - stealing
+   // the KOTH machinery's ships is what stranded the fleet mid-ocean.
+   int shipQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
+   int shipCount = kbUnitQueryExecute(shipQuery);
+   if (shipCount < gIstanbulGunShipMin)
+   {
+      return;   // not a fleet yet - keep building
+   }
    for (i = 0; < shipCount)
    {
       tempUnit = kbUnitQueryGetResult(shipQuery, i);
@@ -7411,14 +8143,18 @@ minInterval 15
       {
          continue;   // the landing ship keeps its cargo
       }
+      if (aiPlanGetActualPriority(kbUnitGetPlanID(tempUnit)) >= 90)
+      {
+         continue;   // reserves keep their jobs
+      }
       aiTaskUnitWork(tempUnit, targetGun);
       sent = sent + 1;
    }
-
-   // one line, both counters: says which path fired and by how much
-   aiEcho("GUNRAID p" + cMyID + " siege " + siegeCount + "/" + gIstanbulGunSiegeMin
-             + " hulls " + shipCount + "/" + gIstanbulGunShipMin
-             + " -> " + sent + " ships onto gun " + targetGun);
+   if (sent > 0)
+   {
+      aiEcho("GUNRAID p" + cMyID + " fallback hulls " + shipCount + "/" + gIstanbulGunShipMin
+                + " -> " + sent + " ships onto gun " + targetGun);
+   }
 }
 
 //==============================================================================
@@ -7492,7 +8228,7 @@ minInterval 20
       // under escort, striking the blocker - and sails on the first pass
       // after it dies. Reaction time beats the enemy's fast gun rebuild.
       bool waveReady = false;
-      if (aboard > planSoldiers * 0.9 || (aboard * 2 >= planSoldiers && xsGetTime() > gIstanbulLandTime + 120 * 1000))
+      if (aboard >= gIstanbulLandNeed || (aboard * 2 >= gIstanbulLandNeed && xsGetTime() > gIstanbulLandTime + 120 * 1000))
       {
          waveReady = true;
       }
@@ -7515,6 +8251,7 @@ minInterval 20
       }
       if (waveReady == true && beachClear == true)
       {
+         gIstanbulGunPriority = -1;   // beach clear - back to normal targeting
          aiTaskUnitMove(gIstanbulLandShip, gIstanbulLandBeach);
          gIstanbulLandPhase = 2;
          gIstanbulLandTime = xsGetTime();
@@ -7523,28 +8260,57 @@ minInterval 20
       }
       if (waveReady == true && beachClear == false)
       {
-         // fully staged: hold loaded, prosecute the blocker. blockGun's id
-         // is captured before the warship query re-executes the shared
-         // simple query object.
-         int strikeQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
-         int strikeCount = kbUnitQueryExecute(strikeQuery);
+         // fully staged: hold loaded and mark the blocker as the fleet's
+         // priority gun - istanbulGunRaid re-targets the whole gun fleet onto
+         // it (gun work belongs to the gun fleet in the fleet split). The
+         // strikers below come from the gun fleet too; only when that pool is
+         // empty do free warships fill in, so the landing is never stranded
+         // waiting on a pirate camp we do not own.
+         gIstanbulGunPriority = blockGun;
          int strikesSent = 0;
-         for (n = 0; < strikeCount)
+         int fleetHeld = 0;
+         if (gIstanbulGunFleetPlan >= 0)
          {
-            int tempStriker = kbUnitQueryGetResult(strikeQuery, n);
-            if (tempStriker == gIstanbulLandShip)
+            fleetHeld = aiPlanGetNumberUnits(gIstanbulGunFleetPlan, cUnitTypeAbstractWarShip);
+         }
+         if (fleetHeld >= gIstanbulGunFleetMin)
+         {
+            for (n = 0; < fleetHeld)
             {
-               continue;
+               int tempStriker = aiPlanGetUnitByIndex(gIstanbulGunFleetPlan, n);
+               if (tempStriker < 0)
+               {
+                  continue;
+               }
+               if (tempStriker == gIstanbulLandShip)
+               {
+                  continue;
+               }
+               aiTaskUnitWork(tempStriker, blockGun);
+               strikesSent = strikesSent + 1;
             }
-            if (aiPlanGetActualPriority(kbUnitGetPlanID(tempStriker)) >= 95)
+         }
+         else
+         {
+            int strikeQuery = createSimpleUnitQuery(cUnitTypeAbstractWarShip, cMyID, cUnitStateAlive);
+            int strikeCount = kbUnitQueryExecute(strikeQuery);
+            for (n = 0; < strikeCount)
             {
-               continue;   // transports and fort garrisons keep their jobs
-            }
-            aiTaskUnitWork(tempStriker, blockGun);
-            strikesSent = strikesSent + 1;
-            if (strikesSent >= 2)
-            {
-               break;
+               int tempStrikerF = kbUnitQueryGetResult(strikeQuery, n);
+               if (tempStrikerF == gIstanbulLandShip)
+               {
+                  continue;
+               }
+               if (aiPlanGetActualPriority(kbUnitGetPlanID(tempStrikerF)) >= 95)
+               {
+                  continue;   // transports and fort garrisons keep their jobs
+               }
+               aiTaskUnitWork(tempStrikerF, blockGun);
+               strikesSent = strikesSent + 1;
+               if (strikesSent >= 2)
+               {
+                  break;
+               }
             }
          }
          istanbulLandingWait("STAGED " + aboard + " aboard - holding for beach, striking gun with " + strikesSent + " ships");
@@ -7620,6 +8386,20 @@ minInterval 20
             }
          }
          aiEcho("LAND p" + cMyID + " LANDED - " + pushed + " ashore, first target " + bestBld);
+         // HANDOFF (AssertiveWall aiassertivewall.xs:8505-8527): adopt the
+         // wave into the palace mission BEFORE the reset destroys the army
+         // plan - zero ownerless frames; the mission tick re-tasks within
+         // seconds. The first-strike order above still stands until then.
+         int handUnit = -1;
+         for (n = 0; < aiPlanGetNumberUnits(gIstanbulLandArmyPlan, cUnitTypeLogicalTypeLandMilitary))
+         {
+            handUnit = aiPlanGetUnitByIndex(gIstanbulLandArmyPlan, n);
+            if (handUnit < 0)
+            {
+               continue;
+            }
+            istanbulPalaceAdopt(handUnit);
+         }
          istanbulLandingReset();
          xsSetRuleMinIntervalSelf(20);
          gIstanbulLandNext = xsGetTime() + 4 * 60 * 1000;
@@ -7806,6 +8586,28 @@ minInterval 20
    // the beach-clear check moved to the SAIL trigger in phase 1, where the
    // reaction time is one 3-second pass.
 
+   // HOME FIRST (Paris doctrine): while our own palace flag is enemy-held,
+   // a new invasion wave would lock the very troops the rescue squad needs
+   // at pri 99 aboard a ship. The wave waits; the troops stay recruitable.
+   int homePalaceGate = istanbulGetPalace(false);
+   if (homePalaceGate >= 0)
+   {
+      int homeFlagGate = istanbulGetPalaceFlag(kbUnitGetPosition(homePalaceGate));
+      int homeOwnerGate = kbUnitGetPlayerID(homePalaceGate);
+      if (homeFlagGate > 0)
+      {
+         homeOwnerGate = kbUnitGetPlayerID(homeFlagGate);
+      }
+      if (homeOwnerGate > 0)
+      {
+         if (kbGetPlayerTeam(homeOwnerGate) != kbGetPlayerTeam(cMyID))
+         {
+            istanbulLandingWait("home palace enemy-held - rescue first");
+            return;
+         }
+      }
+   }
+
    // ship FIRST, army query LAST: getUnit and shipQuery both run through the
    // shared simple query, so the army results the boarding loop reads must
    // come from the final query executed before that loop.
@@ -7830,25 +8632,63 @@ minInterval 20
          {
             continue;
          }
+         if (istanbulIsGunFleetHull(tempShip) == true)
+         {
+            continue;   // gun specialists never ferry - the fleet split holds
+         }
          landShip = tempShip;
          break;
       }
    }
    if (landShip < 0)
    {
-      istanbulLandingWait("no eligible ship (all owned at >=100 or none afloat)");
+      istanbulLandingWait("no eligible ship (gun-fleet hulls excluded; rest at >=100 or none afloat)");
       return;
    }
-   int needArmy = gIstanbulLandArmyMin;
+   // WAVE SIZE - AW's enemy-age ladder (aiassertivewall.xs:8385-8402):
+   // 15/20/25/30 replaces the flat 8. One Galleon-class hull holds 50; the
+   // old 12-cap sailed three-quarters empty (17:39 test: waves of 2-12).
+   int needArmy = 15;
+   int enemyAge = kbGetAgeForPlayer(aiGetMostHatedPlayerID());
+   if (enemyAge >= cAge3)
+   {
+      needArmy = 20;
+   }
+   if (enemyAge >= cAge4)
+   {
+      needArmy = 25;
+   }
+   if (enemyAge >= cAge5)
+   {
+      needArmy = 30;
+   }
    if (gIstanbulLandTestMode == true)
    {
       needArmy = 2;
    }
+   gIstanbulLandNeed = needArmy;
    int armyQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
    int armyCount = kbUnitQueryExecute(armyQuery);
-   if (armyCount < needArmy)
+   // gate on RECRUITABLE, not total (AW's gatherArmy discipline, :7357-7374):
+   // the same filters the boarding loop applies, so a passing gate can no
+   // longer board a 2-man "wave" that self-approves as full
+   int recruitable = 0;
+   for (i = 0; < armyCount)
    {
-      istanbulLandingWait("army " + armyCount + "/" + needArmy);
+      int gateSoldier = kbUnitQueryGetResult(armyQuery, i);
+      if (distance(kbUnitGetPosition(gateSoldier), homeBase) > 150.0)
+      {
+         continue;
+      }
+      if (aiPlanGetDesiredPriority(kbUnitGetPlanID(gateSoldier)) >= 90)
+      {
+         continue;
+      }
+      recruitable = recruitable + 1;
+   }
+   if (recruitable < needArmy)
+   {
+      istanbulLandingWait("army " + recruitable + "/" + needArmy + " recruitable");
       return;
    }
 
@@ -7886,14 +8726,16 @@ minInterval 20
       {
          continue;
       }
-      if (aiPlanGetDesiredPriority(kbUnitGetPlanID(tempSoldier)) >= 99)
+      if (aiPlanGetDesiredPriority(kbUnitGetPlanID(tempSoldier)) >= 90)
       {
-         continue;   // already in the plan or on a transport
+         continue;   // palace squads (90/95) and landing plans (>= 99) keep
+                     // their troops - drafting a soldier mid-fight at the
+                     // palace made the 0/12 boarding timeouts
       }
       aiPlanAddUnit(gIstanbulLandArmyPlan, tempSoldier);
       aiTaskUnitWork(tempSoldier, landShip, true);
       boarded = boarded + 1;
-      if (boarded >= gIstanbulLandArmyMin + 4)
+      if (boarded >= 40)
       {
          break;
       }

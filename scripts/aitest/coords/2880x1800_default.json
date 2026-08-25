@@ -1,0 +1,50 @@
+{
+  "_comment": "self-calibrated by the agent from screenshots, 2880x1800 borderless, quit chain live-validated 2026-08-25",
+  "home_skirmish": {
+    "x": 187,
+    "y": 824,
+    "rgb": [
+      182,
+      147,
+      86
+    ]
+  },
+  "lobby_probe": {
+    "x": 2454,
+    "y": 645,
+    "rgb": [
+      188,
+      154,
+      89
+    ]
+  },
+  "lobby_play": {
+    "x": 2471,
+    "y": 1708,
+    "rgb": [
+      82,
+      34,
+      17
+    ]
+  },
+  "match_cog": {
+    "x": 2827,
+    "y": 48,
+    "rgb": null
+  },
+  "match_quit": {
+    "x": 2627,
+    "y": 615,
+    "rgb": null
+  },
+  "quit_yes": {
+    "x": 1139,
+    "y": 1008,
+    "rgb": null
+  },
+  "minimap_center": {
+    "x": 2641,
+    "y": 1562,
+    "rgb": null
+  }
+}

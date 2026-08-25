@@ -54,10 +54,23 @@ def click(x, y):
     send([dn]); time.sleep(0.09); send([up])
 
 
-def key_esc():
-    d = INPUT(type=1); d.u.ki = KEYBDINPUT(0x1B, 0, 0, 0, None)
-    u = INPUT(type=1); u.u.ki = KEYBDINPUT(0x1B, 0, 0x0002, 0, None)
+def key_vk(vk):
+    d = INPUT(type=1); d.u.ki = KEYBDINPUT(vk, 0, 0, 0, None)
+    u = INPUT(type=1); u.u.ki = KEYBDINPUT(vk, 0, 0x0002, 0, None)
     send([d]); time.sleep(0.06); send([u])
+
+
+def key_esc():
+    key_vk(0x1B)
+
+
+def type_text(text):
+    """Type unicode text via KEYEVENTF_UNICODE - reaches the game chat."""
+    for ch in text:
+        code = ord(ch)
+        d = INPUT(type=1); d.u.ki = KEYBDINPUT(0, code, 0x0004, 0, None)
+        u = INPUT(type=1); u.u.ki = KEYBDINPUT(0, code, 0x0004 | 0x0002, 0, None)
+        send([d]); time.sleep(0.02); send([u]); time.sleep(0.02)
 
 
 def shot(path):
@@ -90,5 +103,13 @@ if __name__ == "__main__":
         print(pixel(int(sys.argv[2]), int(sys.argv[3])))
     elif cmd == "key" and sys.argv[2] == "esc":
         key_esc(); print("esc")
+    elif cmd == "key" and sys.argv[2] == "enter":
+        key_vk(0x0D); print("enter")
+    elif cmd == "type":
+        type_text(" ".join(sys.argv[2:])); print("typed")
+    elif cmd == "cheat":
+        key_vk(0x0D); time.sleep(0.4)
+        type_text(" ".join(sys.argv[2:])); time.sleep(0.2)
+        key_vk(0x0D); print("cheat sent")
     elif cmd == "res":
         print("%dx%d" % (SW, SH))
