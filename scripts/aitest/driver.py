@@ -392,6 +392,20 @@ def main():
                 os.replace(rec_tmp, os.path.join(rd, "match.mp4"))
             except OSError:
                 pass
+        # deterministic criteria: every run judges itself; the table lands in
+        # the archive and the one-line verdict in the console. A stage of the
+        # campaign is DONE only after 3 consecutive all-PASS runs.
+        try:
+            crit = subprocess.run(
+                [sys.executable, os.path.join(HERE, "criteria.py"), rd],
+                capture_output=True, text=True, timeout=60)
+            with open(os.path.join(rd, "criteria.txt"), "w", encoding="utf-8") as f:
+                f.write(crit.stdout)
+            for ln in crit.stdout.splitlines():
+                if ln.startswith("RUN VERDICT"):
+                    print("   " + ln)
+        except Exception as e:
+            print("   criteria evaluation failed: %s" % e)
         if verdict == "GAME-CRASHED":
             if not a.allow_restart:
                 print("   game process died mid-run - restart it manually and"
