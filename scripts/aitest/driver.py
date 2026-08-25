@@ -93,6 +93,65 @@ def pixel_at(x, y):
     return (raw & 0xFF, (raw >> 8) & 0xFF, (raw >> 16) & 0xFF)
 
 
+def key_esc():
+    """Tap Escape - skips the intro videos during a cold boot (the home-menu
+    pixel never appears while they play; see the game-startup skill)."""
+    class KEYBDINPUT(ctypes.Structure):
+        _fields_ = [("wVk", ctypes.c_ushort), ("wScan", ctypes.c_ushort),
+                    ("dwFlags", ctypes.c_ulong), ("time", ctypes.c_ulong),
+                    ("dwExtraInfo", ctypes.POINTER(ctypes.c_ulong))]
+    class _IU(ctypes.Union):
+        _fields_ = [("ki", KEYBDINPUT)]
+    class INPUT(ctypes.Structure):
+        _fields_ = [("type", ctypes.c_ulong), ("u", _IU)]
+    down = INPUT(type=1); down.u.ki = KEYBDINPUT(0x1B, 0, 0, 0, None)
+    up = INPUT(type=1); up.u.ki = KEYBDINPUT(0x1B, 0, 2, 0, None)
+    for i in (down, up):
+        arr = (INPUT * 1)(i)
+        user32.SendInput(1, arr, ctypes.sizeof(INPUT))
+        time.sleep(0.06)
+
+
+def dismiss_crash_dialog():
+    """Close BugSplat's crash-report window with WM_CLOSE (the polite
+    'Don't send'). Steam refuses to relaunch while the dialog holds the dead
+    session. Returns how many dialogs were closed. Never touches the game
+    process itself."""
+    closed = []
+
+    @ctypes.WINFUNCTYPE(ctypes.c_bool, ctypes.c_void_p, ctypes.c_void_p)
+    def cb(hwnd, lparam):
+        buf = ctypes.create_unicode_buffer(160)
+        user32.GetWindowTextW(hwnd, buf, 160)
+        if "encountered a problem" in buf.value:
+            user32.PostMessageW(hwnd, 0x0010, 0, 0)   # WM_CLOSE
+            closed.append(buf.value)
+        return True
+
+    user32.EnumWindows(cb, 0)
+    return len(closed)
+
+
+def wait_home_with_skip(nav, timeout_s):
+    """Wait for the home menu after a cold boot: tap Esc every ~10 s to skip
+    intro videos, and every other cycle click the popup Close spot (weekly
+    reward popups dim the menu, defeat the pixel probe, and ignore Esc; on a
+    clean home screen that spot is background water, so the click is inert).
+    Returns True when the home probe matches."""
+    t0 = time.time()
+    cycle = 0
+    while time.time() - t0 < timeout_s:
+        guard()
+        if probe_ok(nav["home_skirmish"]):
+            return True
+        key_esc()
+        if cycle % 2 == 1 and "popup_close" in nav:
+            click(nav["popup_close"]["x"], nav["popup_close"]["y"])
+        cycle += 1
+        time.sleep(10)
+    return False
+
+
 def probe_ok(pt, tol=30):
     got = pixel_at(pt["x"], pt["y"])
     if got is None:
@@ -351,9 +410,15 @@ def main():
                 break
             print("   game not running - relaunching via Steam"
                   " (--allow-restart)...")
+            n = dismiss_crash_dialog()
+            if n:
+                print("   dismissed %d crash-report dialog(s)" % n)
+            t0 = time.time()
+            while game_running() and time.time() - t0 < 60:
+                time.sleep(5)   # let the dead session fully release
             os.startfile(STEAM_URL)
-            if not wait_probe(nav["home_skirmish"], 240):
-                print("   relaunch did not reach the home menu in 240 s -"
+            if not wait_home_with_skip(nav, 300):
+                print("   relaunch did not reach the home menu in 300 s -"
                       " stopping for a human")
                 break
             time.sleep(5)
