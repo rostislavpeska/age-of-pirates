@@ -7424,37 +7424,46 @@ void istanbulPalaceAdopt(int unitID = -1)
 // simple query - callers finish their own queries first.
 int istanbulGetPalace(bool overseas = false)
 {
-   int palaceQuery = createSimpleUnitQuery(cUnitTypezpSPCPrincePalace, cPlayerRelationAny, cUnitStateAlive);
-   int palaceCount = kbUnitQueryExecute(palaceQuery);
-   vector palHomeBase = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
-   int bestNear = -1;
-   int bestFar = -1;
-   float nearDist = 100000.0;
-   float farDist = -1.0;
-   for (i = 0; < palaceCount)
+   // Find the palace by the FLAG, with the lookup the FORT code uses - the
+   // one construct proven to work on this map (zpKingsHillNaval, 6219):
+   //   getUnit(type, cPlayerRelationAny, cUnitStateAny)
+   // The old createSimpleUnitQuery(..., cUnitStateAlive) is knowledge-base
+   // limited, so players who never scouted the far shore - and, as run_003
+   // showed, the whole north team - got ZERO palaces and the rule exited
+   // before doing anything ("no palace exists in the KB" x10 per player).
+   //
+   // HOME vs OVERSEAS is the transport question, so ask it directly:
+   // walkable == home (march), not walkable == overseas (needs the landing).
+   // Distance alone cannot answer it - the countryside spawns sit only
+   // 1.1x closer to their own palace than to the enemy's.
+   int flagQuery = createSimpleUnitQuery(cUnitTypedeSPCCapturableFlagCossack,
+                                         cPlayerRelationAny, cUnitStateAny);
+   int flagCount = kbUnitQueryExecute(flagQuery);
+   vector myStart = kbGetPlayerStartingPosition(cMyID);
+   int myGroup = kbAreaGroupGetIDByPosition(myStart);
+   int homeFlag = -1;
+   int awayFlag = -1;
+   int tempFlag = -1;
+   for (i = 0; < flagCount)
    {
-      int tempPalace = kbUnitQueryGetResult(palaceQuery, i);
-      float palDist = distance(kbUnitGetPosition(tempPalace), palHomeBase);
-      if (palDist < nearDist)
+      tempFlag = kbUnitQueryGetResult(flagQuery, i);
+      if (kbAreAreaGroupsPassableByLand(myGroup,
+             kbAreaGroupGetIDByPosition(kbUnitGetPosition(tempFlag))) == true)
       {
-         nearDist = palDist;
-         bestNear = tempPalace;
+         homeFlag = tempFlag;
       }
-      if (palDist > farDist)
+      else
       {
-         farDist = palDist;
-         bestFar = tempPalace;
+         awayFlag = tempFlag;
       }
    }
+   aiEcho("PALTRACE p" + cMyID + " GETPALACE flags=" + flagCount
+          + " home=" + homeFlag + " away=" + awayFlag);
    if (overseas == true)
    {
-      if (bestFar == bestNear)
-      {
-         return (-1);   // only one palace known - that one is home
-      }
-      return (bestFar);
+      return (awayFlag);
    }
-   return (bestNear);
+   return (homeFlag);
 }
 
 // The capture anchor: the Cossack flag ~7 m into the forecourt. Its owner is
@@ -7518,6 +7527,10 @@ minInterval 10
    int palace = istanbulGetPalace(true);
    if (palace < 0)
    {
+      // F3: this exit was SILENT - it hid the real bug for two full test
+      // runs while the mission adopted troops and then did nothing.
+      aiEcho("PALACE p" + cMyID + " no overseas palace - mission idle");
+      xsSetRuleMinIntervalSelf(20);
       return;
    }
    vector palaceLoc = kbUnitGetPosition(palace);
@@ -7529,6 +7542,28 @@ minInterval 10
       flagLoc = kbUnitGetPosition(flag);
       flagOwner = kbUnitGetPlayerID(flag);
    }
+
+   // OBSESSIVE TRACE - overseas mission, same contract as the home trace
+   int mTraceLead = aiPlanGetUnitByIndex(gIstanbulPalaceMissionPlan, 0);
+   float mTraceDist = -1.0;
+   if (mTraceLead >= 0)
+   {
+      mTraceDist = distance(kbUnitGetPosition(mTraceLead), flagLoc);
+   }
+   string aPalSide = "SOUTH";
+   if (xsVectorGetZ(palaceLoc) > xsVectorGetZ(kbGetMapCenter()))
+   {
+      aPalSide = "NORTH";
+   }
+   string aMySide = "SOUTH";
+   if (xsVectorGetZ(kbGetPlayerStartingPosition(cMyID)) > xsVectorGetZ(kbGetMapCenter()))
+   {
+      aMySide = "NORTH";
+   }
+   aiEcho("PALTRACE p" + cMyID + " AWAY target=" + aPalSide + " me=" + aMySide
+          + " palace=" + palace + " z=" + xsVectorGetZ(palaceLoc)
+          + " force=" + missionHeld + " guard=" + gIstanbulPalaceMissionTarget
+          + " flag=" + flag + " flagOwn=" + flagOwner + " dFlag=" + mTraceDist);
 
    // 1) guardians first - ONE shared target, orders re-issued every pass
    //    (the house guardian-killer pattern; passive gaia never fights back
@@ -7698,7 +7733,13 @@ minInterval 8
       gIstanbulPalaceHomePlan = aiPlanCreate("Istanbul Home Palace Squad", cPlanReserve);
       aiPlanAddUnitType(gIstanbulPalaceHomePlan, cUnitTypeLogicalTypeLandMilitary, 0, 0, 12);
       aiPlanSetNoMoreUnits(gIstanbulPalaceHomePlan, true);
-      aiPlanSetDesiredPriority(gIstanbulPalaceHomePlan, 90);
+      // 101: ABOVE the army plans (forwardArmy/forcedAttack 100,
+      // amphibious 99). At 90 this squad could never recruit - every
+      // land soldier is owned at 99-100, so the filter below rejected
+      // all of them (run_001: 499 'squad empty' refusals, palace never
+      // taken, and the landing rule deadlocked waiting for the rescue).
+      // Capped at 10 units, so the theft from the main army is bounded.
+      aiPlanSetDesiredPriority(gIstanbulPalaceHomePlan, 101);
       aiPlanSetActive(gIstanbulPalaceHomePlan);
    }
 
@@ -7714,7 +7755,7 @@ minInterval 8
       for (i = 0; < landCount)
       {
          tempUnit = kbUnitQueryGetResult(landQuery, i);
-         if (aiPlanGetActualPriority(kbUnitGetPlanID(tempUnit)) >= 90)
+         if (aiPlanGetActualPriority(kbUnitGetPlanID(tempUnit)) >= 101)
          {
             continue;
          }
@@ -7730,14 +7771,57 @@ minInterval 8
          }
       }
    }
+   // F2: aiPlanAddUnit does not populate the plan this tick, so the
+   // hand-incremented squadHeld over-counted and the engage floor opened
+   // with fewer real troops than it claimed (observed: "massing 2/4" then
+   // an attack with 2). Re-read the plan - it is the only truth.
+   squadHeld = aiPlanGetNumberUnits(gIstanbulPalaceHomePlan, cUnitTypeLogicalTypeLandMilitary);
    if (squadHeld < 1)
    {
       // 17:39 test: "clearing defender ... with 0" - the rescue had no
       // troops and said nothing. Now it says so.
-      aiEcho("PALACEHOME p" + cMyID + " squad empty - all land military owned at >= 90");
+      aiEcho("PALACEHOME p" + cMyID + " squad empty - all land military owned at >= 101");
       xsSetRuleMinIntervalSelf(20);
       return;
    }
+
+   // OBSESSIVE TRACE: one complete state line per pass. Testing is the
+   // expensive resource - a single match must answer every question, so
+   // every decision input is printed, not just the branch taken.
+   //   palace/z  WHICH palace (north and south differ by z)
+   //   walk      1 = land-reachable from our start (so: our island)
+   //   squad     real plan strength / cap      guard = current target
+   //   flagOwn   flag owner id (0 = gaia, ours = captured)
+   //   dFlag     metres from the first squad member to the flag ring
+   int traceLead = aiPlanGetUnitByIndex(gIstanbulPalaceHomePlan, 0);
+   float traceDist = -1.0;
+   if (traceLead >= 0)
+   {
+      traceDist = distance(kbUnitGetPosition(traceLead), flagLoc);
+   }
+   int traceWalk = 0;
+   if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(kbGetPlayerStartingPosition(cMyID)),
+                                     kbAreaGroupGetIDByPosition(palaceLoc)) == true)
+   {
+      traceWalk = 1;
+   }
+   // NORTH/SOUTH spelled out: the two islands differ by z, so compare
+   // against map centre. Raw z stays in the line as ground truth, so a
+   // wrong label can never hide the real position.
+   string hPalSide = "SOUTH";
+   if (xsVectorGetZ(palaceLoc) > xsVectorGetZ(kbGetMapCenter()))
+   {
+      hPalSide = "NORTH";
+   }
+   string hMySide = "SOUTH";
+   if (xsVectorGetZ(kbGetPlayerStartingPosition(cMyID)) > xsVectorGetZ(kbGetMapCenter()))
+   {
+      hMySide = "NORTH";
+   }
+   aiEcho("PALTRACE p" + cMyID + " HOME target=" + hPalSide + " me=" + hMySide
+          + " palace=" + palace + " z=" + xsVectorGetZ(palaceLoc)
+          + " walk=" + traceWalk + " squad=" + squadHeld + " guard=" + guardian
+          + " flag=" + flag + " flagOwn=" + flagOwner + " dFlag=" + traceDist);
 
    // ENGAGE FLOOR - the mission rule's proven gate: run_012 showed 5-6
    // troops clear every guardian by focus fire. The old 1.5x HP gate was
@@ -7762,7 +7846,8 @@ minInterval 8
          aiTaskUnitWork(tempSoldier, guardian);
          tasked = tasked + 1;
       }
-      aiEcho("PALACEHOME p" + cMyID + " " + tasked + " troops onto guardian " + guardian);
+      aiEcho("PALACEHOME p" + cMyID + " " + tasked + " troops onto guardian " + guardian
+                + " (palace " + palace + " z=" + xsVectorGetZ(palaceLoc) + ")");
       xsSetRuleMinIntervalSelf(3);
       return;
    }
