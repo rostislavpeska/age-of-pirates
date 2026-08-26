@@ -348,7 +348,11 @@ def watch_verdict(pos, cap_s):
             return "GAME-CRASHED", events
         pos, chunk = new_log_content(pos)
         for line in chunk.splitlines():
-            if re.search(r"LAND p\d|LANDWAIT|GUNRAID|AREARECALC|PALACE", line):
+            # widened 2026-08-27: the narrow filter discarded GUNFLEET/GARRISON/
+            # HOLD/MONITOR and the PALTRACE state lines, so the final tick
+            # before a crash was lost and north-vs-south was unverifiable.
+            if re.search(r"PALTRACE|LAND p\d|LANDWAIT|GUNRAID|GUNFLEET|AREARECALC"
+                         r"|PALACE|GARRISON|HOLD p\d|MONITOR|BOARD|CROSS", line):
                 events.append(line.strip()[-170:])
         j = "\n".join(events)
         # PALACE CAMPAIGN semantics: LANDED is progress, not a terminal -
