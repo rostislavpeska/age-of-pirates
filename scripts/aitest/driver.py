@@ -37,7 +37,9 @@ import sys
 import time
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-LOG = "c:/Users/rosti/Games/Age of Empires 3 DE/Logs/Age3Log.txt"
+# device-agnostic: the AoE3 user folder lives under the CURRENT profile
+USERDIR = os.path.join(os.path.expanduser("~"), "Games", "Age of Empires 3 DE")
+LOG = os.path.join(USERDIR, "Logs", "Age3Log.txt")
 AI_FILE = os.path.normpath(os.path.join(
     HERE, "..", "..", "game", "ai", "core", "aipiraterules.xs"))
 STEAM_URL = "steam://rungameid/933110"
@@ -338,7 +340,7 @@ def watch_verdict(pos, cap_s):
         # cause properly and points at the freshest minidump if armed.)
         if not game_running():
             dumps = sorted(glob.glob(
-                "c:/Users/rosti/Games/Age of Empires 3 DE/CrashDumps/*.dmp"),
+                os.path.join(USERDIR, "CrashDumps", "*.dmp")),
                 key=os.path.getmtime)
             note = ("newest dump: " + os.path.basename(dumps[-1])) if dumps \
                 else "no dump found (LocalDumps not armed?)"
@@ -483,7 +485,7 @@ def main():
             continue
         quit_ok = end_match(nav)
         # archive the per-player AI logs the quit just flushed
-        logdir = "c:/Users/rosti/Games/Age of Empires 3 DE/Logs"
+        logdir = os.path.join(USERDIR, "Logs")
         for pn in range(1, 9):
             src = os.path.join(logdir, "Age3DEAIOutputPlayer%d.txt" % pn)
             if os.path.exists(src) and os.path.getsize(src) > 0:

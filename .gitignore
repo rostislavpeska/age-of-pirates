@@ -30,6 +30,7 @@ scripts/aitest/runs/
 scripts/aitest/results.csv
 scripts/aitest/whichsheet.json
 scripts/aitest/recording_tmp.mp4
+scripts/aitest/STOP
 
 # external reference clones - never committed
 references/

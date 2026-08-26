@@ -3677,8 +3677,8 @@
     </nugget>
     <nugget>
       <name>zpNuggetAcademyIstanbul</name>
-      <rolloverstringid>303381</rolloverstringid>
-      <applystringid>303382</applystringid>
+      <rolloverstringid>124120</rolloverstringid>
+      <applystringid>124121</applystringid>
       <nuggetunit>NuggetCapturableBuildingBig</nuggetunit>
       <type>ConvertUnit</type>
       <amount>1</amount>

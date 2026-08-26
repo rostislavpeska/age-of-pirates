@@ -5,7 +5,7 @@ rem RIGHT-CLICK -> RUN AS ADMINISTRATOR (HKLM needs elevation).
 rem Read a dump afterwards with: python scripts\aitest\crashdump_triage.py <file.dmp>
 
 set KEY=HKLM\SOFTWARE\Microsoft\Windows\Windows Error Reporting\LocalDumps\AoE3DE_s.exe
-set DUMPDIR=C:\Users\rosti\Games\Age of Empires 3 DE\CrashDumps
+set DUMPDIR=%USERPROFILE%\Games\Age of Empires 3 DE\CrashDumps
 
 if not exist "%DUMPDIR%" mkdir "%DUMPDIR%"
 reg add "%KEY%" /f

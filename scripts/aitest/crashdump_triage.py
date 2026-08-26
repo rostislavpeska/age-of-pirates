@@ -13,7 +13,8 @@ import os
 import struct
 import sys
 
-DUMPDIR = "c:/Users/rosti/Games/Age of Empires 3 DE/CrashDumps"
+DUMPDIR = os.path.join(os.path.expanduser("~"), "Games",
+                       "Age of Empires 3 DE", "CrashDumps")
 
 EXC_NAMES = {
     0xC0000005: "ACCESS_VIOLATION",
