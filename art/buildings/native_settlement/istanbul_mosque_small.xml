@@ -1,0 +1,12 @@
+<animfile>
+	<component>
+		building
+		<assetreference type="GrannyModel">
+			<file>buildings\native_settlement\socket_jewish\house6</file>
+		</assetreference>
+	</component>
+	<anim>
+		Idle
+		<component>building</component>
+	</anim>
+</animfile>
