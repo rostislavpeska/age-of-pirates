@@ -15,6 +15,6 @@
   <unittype>zpSPCCapturableFactoryMed</unittype>
   <unittype>zpSPCCapturableFactoryFlorence</unittype>
   <unittype>zpHanseaticTradeship</unittype>
-  <unittype>deSejm</unittype>
-  <unittype tech="DEHCREVFrankfurtAssembly">Capitol</unittype>
+  <!--<unittype>deSejm</unittype>
+  <unittype tech="DEHCREVFrankfurtAssembly">Capitol</unittype>-->
 </tacticdisplay>
