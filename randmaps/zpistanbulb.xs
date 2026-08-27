@@ -1590,6 +1590,52 @@ void main(void)
 	rmAddAreaConstraint(beachStraitS, avoidTraderoute5);
 	rmBuildArea(beachStraitS);
 	
+	// ===================================================================
+	// EXPERIMENT 2026-08-27: TWO EXTRA LANDING BEACHES
+	// Positions taken from the two Player-1 zpSPCDockAvoider units in the
+	// scenario "Istanbul - Beach pattern.age3Yscn", decoded from the saved
+	// file (proto index 3356, coordinates at record offset -63):
+	//     north  x=397.95  y=3.0  z=396.25   -> fraction 0.6633, 0.6604
+	//     south  x=202.72  y=3.0  z=187.14   -> fraction 0.3379, 0.3119
+	// Map is 600 m square, so metres/600 = fraction. These are ABSOLUTE
+	// positions from the scenario, deliberately NOT derived from the
+	// lighthouse knobs - they are meant to sit where the dock avoiders are.
+	//
+	// Size 2000 tiles (the strait beaches above are 100). Everything else
+	// copies the strait-beach recipe verbatim: coherence 1.0, base height 3,
+	// height blend 1, smooth 10, one terrain, no elevation variation, world
+	// circle off, and the same trade-route constraint.
+	// ===================================================================
+	int beachTilesExtra = 2000;
+
+	int beachDockN = rmCreateArea("landing beach dockavoider north");
+	rmSetAreaWarnFailure(beachDockN, false);
+	rmSetAreaSize(beachDockN, rmAreaTilesToFraction(beachTilesExtra), rmAreaTilesToFraction(beachTilesExtra));
+	rmSetAreaLocation(beachDockN, 0.6633, 0.6604);
+	rmSetAreaCoherence(beachDockN, 1.0);
+	rmSetAreaBaseHeight(beachDockN, 3);
+	rmSetAreaHeightBlend(beachDockN, 1);
+	rmSetAreaSmoothDistance(beachDockN, 10);
+	rmSetAreaTerrainType(beachDockN, "new_england\cliff_inland_side_ne");
+	rmSetAreaElevationVariation(beachDockN, 0.0);
+	rmSetAreaObeyWorldCircleConstraint(beachDockN, false);
+	rmAddAreaConstraint(beachDockN, avoidTraderoute5);
+	rmBuildArea(beachDockN);
+
+	int beachDockS = rmCreateArea("landing beach dockavoider south");
+	rmSetAreaWarnFailure(beachDockS, false);
+	rmSetAreaSize(beachDockS, rmAreaTilesToFraction(beachTilesExtra), rmAreaTilesToFraction(beachTilesExtra));
+	rmSetAreaLocation(beachDockS, 0.3379, 0.3119);
+	rmSetAreaCoherence(beachDockS, 1.0);
+	rmSetAreaBaseHeight(beachDockS, 3);
+	rmSetAreaHeightBlend(beachDockS, 1);
+	rmSetAreaSmoothDistance(beachDockS, 10);
+	rmSetAreaTerrainType(beachDockS, "new_england\cliff_inland_side_ne");
+	rmSetAreaElevationVariation(beachDockS, 0.0);
+	rmSetAreaObeyWorldCircleConstraint(beachDockS, false);
+	rmAddAreaConstraint(beachDockS, avoidTraderoute5);
+	rmBuildArea(beachDockS);
+
 	// avoidBeachStraitN/S and their four uses on dock2 / dock3 stay
 	// commented. They are definable again now that the areas exist, but
 	// re-arming them changes how the dock cliffs behave.
@@ -3271,30 +3317,15 @@ void main(void)
 	float decoSWZ2 = (sFlankZ + sPirateZDeco) * 0.5;   // between harbour 4 and the old pirate row
 	float decoSWZ3 = sPirateZDeco - rmZTilesToFraction(decoSWBehindPir);
 
-	// ---- deco lighthouses on the harbour-wall corners ---------------------
-	// a GROUPING like the other IS_ deco (loose XML in Game/RandMaps/groupings,
-	// so a NEW file needs a game restart before it loads)
-	// Per-island now: the two carry their own rock skirts and face the
-	// right way. Terrain was stripped from both - they used to repaint
-	// the shelf the beach lays down.
-	int lightN = rmCreateGrouping("deco lighthouse n", "IS_Deco_Lighthouse_N");
-	rmSetGroupingMinDistance(lightN, 0.0);
-	rmSetGroupingMaxDistance(lightN, 0.01);
-	int lightS = rmCreateGrouping("deco lighthouse s", "IS_Deco_Lighthouse_S");
-	rmSetGroupingMinDistance(lightS, 0.0);
-	rmSetGroupingMaxDistance(lightS, 0.01);
-
-	// TOWER-ONLY offsets, in tiles, along the MAP axes. The beaches share
-	// lightNX/NZ/SX/SZ, so these are applied here at the placement and
-	// not to the shared coordinate - the two shelves do not move.
-	// All positive: the sign stays outside the call, because a tile
-	// helper ignores a negative argument silently.
-	int lightNTowerX = 2;   // north tower, +x
-	int lightSTowerX = 1;   // south tower, -x (the MINUS is in the call)
-	int lightSTowerZ = 1;   // south tower, +z
-	rmPlaceGroupingAtLoc(lightN, 0, lightNX + rmXTilesToFraction(lightNTowerX), lightNZ);
-	rmPlaceGroupingAtLoc(lightS, 0, lightSX - rmXTilesToFraction(lightSTowerX),
-		lightSZ + rmZTilesToFraction(lightSTowerZ));
+	// ---- deco lighthouses: REMOVED 2026-08-27 (crash suspect) --------------
+	// Both IS_Deco_Lighthouse_N / _S groupings and their two placements were
+	// deleted outright. The shared coordinates lightNX/NZ/SX/SZ stay where
+	// they are declared (up at the CITY BEACHES block) because the two strait
+	// landing beaches are laid on them - only the towers are gone.
+	// NOTE: these groupings carried zpPropWaterTower, which used to be the
+	// beach-marker source for the custom landing rule. That rule is stripped,
+	// so nothing reads those props any more. The naval fort groupings still
+	// carry their own zpPropWaterTower.
 
 	// ---- Sultan Palace, centred on each strait beach ---------------------
 	// Placed AFTER the other deco so nothing else lands on top of it.
