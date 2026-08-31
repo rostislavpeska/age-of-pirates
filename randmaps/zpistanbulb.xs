@@ -3816,6 +3816,12 @@ void main(void)
 	// every other queried id.
 	int fortMarkN = rmGetUnitPlaced(fortMarkDefN, 0) + instanceIdShiftIndividual;
 	int fortMarkS = rmGetUnitPlaced(fortMarkDefS, 0) + instanceIdShiftIndividual;
+	// wall controllers: one zpSPCWaterSpawnPoint sits at the centre of
+	// each wall grouping, purely as the anchor the gate/tower conversion
+	// measures from. Being inside the grouping, it drifts with the wall.
+	int unit_wallCtrlSW = rmGetGroupingInstanceUnitByType(wallPlacementSW, "zpSPCWaterSpawnPoint") + instanceIdShift;
+	int unit_wallCtrlNE = rmGetGroupingInstanceUnitByType(wallPlacementNE, "zpSPCWaterSpawnPoint") + instanceIdShift;
+
 	int unit_waterFortNugN = rmGetGroupingInstanceUnitByType(waterFortNPlacement, "zpNuggetInvisibleWater") + instanceIdShift;
 	int unit_waterFortNugS = rmGetGroupingInstanceUnitByType(waterFortSPlacement, "zpNuggetInvisibleWater") + instanceIdShift;
 	// The castle itself, same +instanceIdShift law as the nuggets above. The
@@ -4985,6 +4991,54 @@ void main(void)
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
 	}
+
+
+	// ========================================================================
+	//  WALL GATES AND TOWERS -> the island's player
+	// ------------------------------------------------------------------------
+	//  The wall grouping is placed as GAIA, because handing the whole
+	//  structure to a player crashed the map: 48 live units and 26 buildings
+	//  changed hands, while four of its types carry ForceToGaia and stayed
+	//  gaia regardless - one grouping, two owners.
+	//
+	//  Only the parts that SHOULD belong to someone are converted here: the
+	//  two passable gates and the five towers per wall.
+	//
+	//  Dist 85: the wall is 161.9 m long, so 81 m from the centre reaches
+	//  every target. The nearest same-type object is the fort's own
+	//  zpPassableGateIndian at 93 m, and the other wall is 190.6 m away.
+	// ========================================================================
+	rmCreateTrigger("Wall Parts To Owner");
+	rmSwitchToTrigger(rmTriggerID("Wall_Parts_To_Owner"));
+	rmAddTriggerCondition("Always");
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject", ""+unit_wallCtrlSW);
+	rmSetTriggerEffectParamInt("SrcPlayer", 0);
+	rmSetTriggerEffectParamInt("TrgPlayer", firstDefender);
+	rmSetTriggerEffectParam("UnitType", "deSPCEuroTower");
+	rmSetTriggerEffectParamInt("Dist", 85);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject", ""+unit_wallCtrlSW);
+	rmSetTriggerEffectParamInt("SrcPlayer", 0);
+	rmSetTriggerEffectParamInt("TrgPlayer", firstDefender);
+	rmSetTriggerEffectParam("UnitType", "zpPassableGateIndian");
+	rmSetTriggerEffectParamInt("Dist", 85);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject", ""+unit_wallCtrlNE);
+	rmSetTriggerEffectParamInt("SrcPlayer", 0);
+	rmSetTriggerEffectParamInt("TrgPlayer", firstAttacker);
+	rmSetTriggerEffectParam("UnitType", "deSPCEuroTower");
+	rmSetTriggerEffectParamInt("Dist", 85);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject", ""+unit_wallCtrlNE);
+	rmSetTriggerEffectParamInt("SrcPlayer", 0);
+	rmSetTriggerEffectParamInt("TrgPlayer", firstAttacker);
+	rmSetTriggerEffectParam("UnitType", "zpPassableGateIndian");
+	rmSetTriggerEffectParamInt("Dist", 85);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 
 	// ========================================================================
 	//  PIRATE CAMP TRIGGERS  (zp_mediterranean.xs idiom, its 1546-1885)

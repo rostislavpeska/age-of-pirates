@@ -7,6 +7,7 @@
 	<selectassingleunit>0</selectassingleunit>
 	<workonassingleunit>0</workonassingleunit>
 	<units>
+		<unit variation="0" posx="0.5000" posz="-2.9000" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
 		<unit variation="48" posx="9.1046" posz="-82.7425" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deNatEUPropStatue</unit>
 		<unit variation="133" posx="9.1029" posz="-83.5278" orientx="-0.7071" orienty="-0.0000" orientz="0.7071">zpNativeUnitVenetian</unit>
 		<unit variation="26" posx="10.2913" posz="-83.8500" orientx="-0.7071" orienty="-0.0000" orientz="0.7071">zpNativeUnitVenetian</unit>
