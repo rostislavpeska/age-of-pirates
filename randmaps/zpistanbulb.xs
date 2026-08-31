@@ -2299,15 +2299,13 @@ void main(void)
 	// walks through their own gate and everyone else has to break it.
 	// Guarded: both ids sit at -1 until the team scan at :1063 / :1070
 	// finds a player, and player -1 would be a bad placement.
-	int wallOwnerN = 0;   if (firstDefender > 0) wallOwnerN = firstDefender;
-	int wallOwnerS = 0;   if (firstAttacker > 0) wallOwnerS = firstAttacker;
-	int wallPlacementSW = rmPlaceGroupingInstanceAtLoc(wallSW, wallXN, wallZN, wallOwnerN);
+	int wallPlacementSW = rmPlaceGroupingInstanceAtLoc(wallSW, wallXN, wallZN, 0);
 
 	// the 180-degree clone, on the south island's east flank
 	int wallNE = rmCreateGrouping("wall ne", "IS_Wall_NE");
 	rmSetGroupingMinDistance(wallNE, 0.0);
 	rmSetGroupingMaxDistance(wallNE, 0.5);
-	int wallPlacementNE = rmPlaceGroupingInstanceAtLoc(wallNE, wallXS, wallZS, wallOwnerS);
+	int wallPlacementNE = rmPlaceGroupingInstanceAtLoc(wallNE, wallXS, wallZS, 0);
 
 	// ---- CITY PLAYERS: TC block + 2x2 buildable area ---------------------
 	// Each city player gets IS_SPC_PlayerStart (carries a baked TownCenter,

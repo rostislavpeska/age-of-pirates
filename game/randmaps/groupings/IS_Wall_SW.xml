@@ -32,7 +32,7 @@
 		<unit variation="88" posx="10.4653" posz="-68.0415" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
 		<unit variation="133" posx="11.6209" posz="-67.1577" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetian</unit>
 		<unit variation="174" posx="12.6394" posz="-67.8730" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeUnitVenetianPoles</unit>
-		<unit variation="95" posx="6.0896" posz="-61.8497" orientx="-1.0000" orienty="0.0039" orientz="0.0000">ypSPCIndianFortGate</unit>
+		<unit variation="95" posx="6.0896" posz="-61.8497" orientx="-1.0000" orienty="0.0039" orientz="0.0000">zpPassableGateIndian</unit>
 		<unit variation="13" posx="6.7124" posz="-54.2331" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpIndianFortWallMediumProp</unit>
 		<unit variation="41" posx="-1.4490" posz="-50.7846" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpIndianFortCornerProp</unit>
 		<unit variation="41" posx="6.9271" posz="-50.8785" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpIndianFortCornerProp</unit>
@@ -73,7 +73,7 @@
 		<unit variation="41" posx="6.7658" posz="-1.5634" orientx="-0.7071" orienty="0.0000" orientz="0.7071">zpIndianFortCornerProp</unit>
 		<unit variation="18" posx="6.6554" posz="-1.1844" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpIndianFortWallSmallProp</unit>
 		<unit variation="145" posx="3.0362" posz="-1.9078" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpIndianFortWallLargeProp</unit>
-		<unit variation="95" posx="6.4670" posz="5.2424" orientx="-1.0000" orienty="0.0039" orientz="0.0000">ypSPCIndianFortGate</unit>
+		<unit variation="95" posx="6.4670" posz="5.2424" orientx="-1.0000" orienty="0.0039" orientz="0.0000">zpPassableGateIndian</unit>
 		<unit variation="13" posx="6.8967" posz="12.7712" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpIndianFortWallMediumProp</unit>
 		<unit variation="41" posx="-3.9518" posz="14.1292" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpIndianFortCornerProp</unit>
 		<unit variation="145" posx="-6.3564" posz="17.7281" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpIndianFortWallLargeProp</unit>
