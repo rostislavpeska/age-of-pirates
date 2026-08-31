@@ -859,6 +859,14 @@ void main(void)
 	int seaBoxSW = rmCreateBoxConstraint("mediterranean side", 0.02, 0.02, 0.38, 0.48, 0.01);
 
 	int avoidTraderoute5 = rmCreateTradeRouteDistanceConstraint("avoid trade route 5", 3.0);
+	// The name above lies: it is 3.0, not 5. This one is the real standoff,
+	// used by the two flank beaches so they stop crowding the trade route.
+	int avoidTraderoute6  = rmCreateTradeRouteDistanceConstraint("avoid trade route 6", 6.0);
+	// The cliffs stand off much further than the beaches do: the beach is a
+	// landing shelf and may sit near the route, a cliff across it would wall
+	// the route off entirely.
+	int avoidTraderoute12 = rmCreateTradeRouteDistanceConstraint("avoid trade route 12", 14.0);
+	int avoidTraderoute20 = rmCreateTradeRouteDistanceConstraint("avoid trade route 20", 20.0);
 
 	rmSetStatusText("", 0.08);
 
@@ -1606,7 +1614,35 @@ void main(void)
 	// height blend 1, smooth 10, one terrain, no elevation variation, world
 	// circle off, and the same trade-route constraint.
 	// ===================================================================
-	int beachTilesExtra = 2000;
+	int beachTilesExtra = 1120;   // 2000 -> 1400 (-30%) -> 1120 (-20%)
+
+	// ============ HOW FAR THE FLANK BEACHES STAY OFF THE STRAIT ============
+	// The cliffs above these beaches use cliffOffBelt (:2682), which was
+	// raised to 15 tiles to widen the strait gap. The BEACHES keep the
+	// original 5 - they are the landing shelf under the cliff and are not
+	// meant to retreat with it. Same construction as wildBoxNE/wildBoxSW,
+	// its own numbers, so the two can be tuned independently.
+	//
+	// cliffIntoCity (:2660) is declared far below this point, so the beach
+	// box carries its own copy of that 3-tile reach.
+	int beachOffBeltN = 6;   // north: 5 + 1 tile
+	int beachOffBeltS = 8;   // south: 5 + 3 tiles
+	int beachIntoCity = 3;   // tiles the box may reach back into the city
+	// Signs stay OUTSIDE rmZTilesToFraction - it ignores a negative argument.
+	float beachEdgeN = nz1 + rmZTilesToFraction(beachOffBeltN);   // north: strait is BELOW it
+	float beachEdgeS = sz1 - rmZTilesToFraction(beachOffBeltS);   // south: strait is ABOVE it
+	int beachBoxNE = rmCreateBoxConstraint("north-east flank beach box",
+		nx5 + flankProm - rmXTilesToFraction(beachIntoCity),   // x1  city-side edge
+		beachEdgeN,                                            // z1  STRAIT side
+		1.0,                                                   // x2  map edge
+		1.0,                                                   // z2  map edge
+		0.01);
+	int beachBoxSW = rmCreateBoxConstraint("south-west flank beach box",
+		0.0,                                                   // x1  map edge
+		0.0,                                                   // z1  map edge
+		sx1 - flankProm + rmXTilesToFraction(beachIntoCity),   // x2  city-side edge
+		beachEdgeS,                                            // z2  STRAIT side
+		0.01);
 
 	int beachDockN = rmCreateArea("landing beach dockavoider north");
 	rmSetAreaWarnFailure(beachDockN, false);
@@ -1616,10 +1652,13 @@ void main(void)
 	rmSetAreaBaseHeight(beachDockN, 3);
 	rmSetAreaHeightBlend(beachDockN, 1);
 	rmSetAreaSmoothDistance(beachDockN, 10);
-	rmSetAreaTerrainType(beachDockN, "new_england\cliff_inland_side_ne");
+	rmSetAreaMix(beachDockN, hinterMix);
+	rmAddAreaTerrainLayer(beachDockN, "carolinas\ground_shoreline2_car", 0, 1);
+	rmAddAreaTerrainLayer(beachDockN, "carolinas\ground_shoreline3_car", 1, 3);
 	rmSetAreaElevationVariation(beachDockN, 0.0);
 	rmSetAreaObeyWorldCircleConstraint(beachDockN, false);
-	rmAddAreaConstraint(beachDockN, avoidTraderoute5);
+	rmAddAreaConstraint(beachDockN, avoidTraderoute6);
+	rmAddAreaConstraint(beachDockN, beachBoxNE);
 	rmBuildArea(beachDockN);
 
 	int beachDockS = rmCreateArea("landing beach dockavoider south");
@@ -1630,10 +1669,13 @@ void main(void)
 	rmSetAreaBaseHeight(beachDockS, 3);
 	rmSetAreaHeightBlend(beachDockS, 1);
 	rmSetAreaSmoothDistance(beachDockS, 10);
-	rmSetAreaTerrainType(beachDockS, "new_england\cliff_inland_side_ne");
+	rmSetAreaMix(beachDockS, hinterMix);
+	rmAddAreaTerrainLayer(beachDockS, "carolinas\ground_shoreline2_car", 0, 1);
+	rmAddAreaTerrainLayer(beachDockS, "carolinas\ground_shoreline3_car", 1, 3);
 	rmSetAreaElevationVariation(beachDockS, 0.0);
 	rmSetAreaObeyWorldCircleConstraint(beachDockS, false);
-	rmAddAreaConstraint(beachDockS, avoidTraderoute5);
+	rmAddAreaConstraint(beachDockS, avoidTraderoute6);
+	rmAddAreaConstraint(beachDockS, beachBoxSW);
 	rmBuildArea(beachDockS);
 
 	// avoidBeachStraitN/S and their four uses on dock2 / dock3 stay
@@ -2678,8 +2720,8 @@ void main(void)
 	// ignores a negative argument silently.
 	// ================= HOW FAR THE CLIFFS STAY OFF THE STRAIT ==============
 	// THIS IS THE ONLY NUMBER TO TOUCH. Tiles. BIGGER = FURTHER FROM THE
-	// WATER, on both islands. 2 was the old value; 5 is three tiles further.
-	int cliffOffBelt = 5;
+	// WATER, on both islands. 2 -> 5 -> 15 -> 20: fifteen tiles off the original.
+	int cliffOffBelt = 20;
 
 	// Why it cannot just be one line: the two islands run OPPOSITE ways in z.
 	// nz1 and sz1 are each city's channel-facing row, and the strait lies
@@ -2769,6 +2811,7 @@ void main(void)
 	rmAddAreaConstraint(wildNE, avoidTree);
 	rmAddAreaConstraint(wildNE, avoidFerry);
 	rmAddAreaConstraint(wildNE, wildBoxNE);
+	rmAddAreaConstraint(wildNE, avoidTraderoute12);
 	rmSetAreaObeyWorldCircleConstraint(wildNE, false);
 	rmBuildArea(wildNE);
 
@@ -2795,6 +2838,7 @@ void main(void)
 	rmAddAreaConstraint(wildNEInner, avoidTree);
 	rmAddAreaConstraint(wildNEInner, avoidFerry);
 	rmAddAreaConstraint(wildNEInner, wildBoxNE);
+	rmAddAreaConstraint(wildNEInner, avoidTraderoute20);
 	rmSetAreaObeyWorldCircleConstraint(wildNEInner, false);
 	rmBuildArea(wildNEInner);
 
@@ -2843,6 +2887,7 @@ void main(void)
 	rmAddAreaConstraint(wildSW, avoidTree);
 	rmAddAreaConstraint(wildSW, avoidFerry);
 	rmAddAreaConstraint(wildSW, wildBoxSW);
+	rmAddAreaConstraint(wildSW, avoidTraderoute12);
 	rmSetAreaObeyWorldCircleConstraint(wildSW, false);
 	rmBuildArea(wildSW);
 
@@ -2869,6 +2914,7 @@ void main(void)
 	rmAddAreaConstraint(wildSWInner, avoidTree);
 	rmAddAreaConstraint(wildSWInner, avoidFerry);
 	rmAddAreaConstraint(wildSWInner, wildBoxSW);
+	rmAddAreaConstraint(wildSWInner, avoidTraderoute20);
 	rmSetAreaObeyWorldCircleConstraint(wildSWInner, false);
 	rmBuildArea(wildSWInner);
 
@@ -3314,6 +3360,32 @@ void main(void)
 	// sPirateZDeco, not sPirateZ - see the north note.
 	float decoSWZ2 = (sFlankZ + sPirateZDeco) * 0.5;   // between harbour 4 and the old pirate row
 	float decoSWZ3 = sPirateZDeco - rmZTilesToFraction(decoSWBehindPir);
+	// ---- deco lighthouses on the harbour-wall corners ---------------------
+	// Restored from 570d65a2 (63409aa8 had removed them). A GROUPING like the
+	// other IS_ deco: loose XML in Game/RandMaps/groupings, so a NEW file
+	// needs a game restart before it loads.
+	// Per-island: the two carry their own rock skirts and face the right way.
+	// Terrain is stripped from both - they used to repaint the shelf the
+	// beach lays down.
+	int lightN = rmCreateGrouping("deco lighthouse n", "IS_Deco_Lighthouse_N");
+	rmSetGroupingMinDistance(lightN, 0.0);
+	rmSetGroupingMaxDistance(lightN, 0.01);
+	int lightS = rmCreateGrouping("deco lighthouse s", "IS_Deco_Lighthouse_S");
+	rmSetGroupingMinDistance(lightS, 0.0);
+	rmSetGroupingMaxDistance(lightS, 0.01);
+
+	// TOWER-ONLY offsets, in tiles, along the MAP axes. The beaches share
+	// lightNX/NZ/SX/SZ, so these are applied here at the placement and not
+	// to the shared coordinate - the two shelves do not move.
+	// All positive: the sign stays outside the call, because a tile helper
+	// ignores a negative argument silently.
+	int lightNTowerX = 2;   // north tower, +x
+	int lightSTowerX = 1;   // south tower, -x (the MINUS is in the call)
+	int lightSTowerZ = 1;   // south tower, +z
+	rmPlaceGroupingAtLoc(lightN, 0, lightNX + rmXTilesToFraction(lightNTowerX), lightNZ);
+	rmPlaceGroupingAtLoc(lightS, 0, lightSX - rmXTilesToFraction(lightSTowerX),
+		lightSZ + rmZTilesToFraction(lightSTowerZ));
+
 
 	// ---- deco lighthouses: REMOVED 2026-08-27 (crash suspect) --------------
 	// Both IS_Deco_Lighthouse_N / _S groupings and their two placements were
@@ -4498,7 +4570,7 @@ void main(void)
 	rmSetTriggerEffectParam("SrcObject", ""+unit_fortFlagN);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
 	rmSetTriggerEffectParamInt("TrgPlayer", fc);
-	rmSetTriggerEffectParam("UnitType", "zpPassableGateIndian");
+	rmSetTriggerEffectParam("UnitType", "ypSPCIndianFortGate");
 	rmSetTriggerEffectParamInt("Dist", 35);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_fortFlagN);
@@ -4564,7 +4636,7 @@ void main(void)
 	rmSetTriggerEffectParam("SrcObject", ""+unit_fortFlagS);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
 	rmSetTriggerEffectParamInt("TrgPlayer", fc);
-	rmSetTriggerEffectParam("UnitType", "zpPassableGateIndian");
+	rmSetTriggerEffectParam("UnitType", "ypSPCIndianFortGate");
 	rmSetTriggerEffectParamInt("Dist", 35);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_fortFlagS);
@@ -5002,11 +5074,11 @@ void main(void)
 	//  gaia regardless - one grouping, two owners.
 	//
 	//  Only the parts that SHOULD belong to someone are converted here: the
-	//  two passable gates and the five towers per wall.
+	//  two fort gates and the five towers per wall.
 	//
 	//  Dist 85: the wall is 161.9 m long, so 81 m from the centre reaches
 	//  every target. The nearest same-type object is the fort's own
-	//  zpPassableGateIndian at 93 m, and the other wall is 190.6 m away.
+	//  ypSPCIndianFortGate at 93 m, and the other wall is 190.6 m away.
 	// ========================================================================
 	rmCreateTrigger("Wall Parts To Owner");
 	rmSwitchToTrigger(rmTriggerID("Wall_Parts_To_Owner"));
@@ -5021,7 +5093,7 @@ void main(void)
 	rmSetTriggerEffectParam("SrcObject", ""+unit_wallCtrlSW);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
 	rmSetTriggerEffectParamInt("TrgPlayer", firstDefender);
-	rmSetTriggerEffectParam("UnitType", "zpPassableGateIndian");
+	rmSetTriggerEffectParam("UnitType", "ypSPCIndianFortGate");
 	rmSetTriggerEffectParamInt("Dist", 85);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_wallCtrlNE);
@@ -5033,7 +5105,7 @@ void main(void)
 	rmSetTriggerEffectParam("SrcObject", ""+unit_wallCtrlNE);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
 	rmSetTriggerEffectParamInt("TrgPlayer", firstAttacker);
-	rmSetTriggerEffectParam("UnitType", "zpPassableGateIndian");
+	rmSetTriggerEffectParam("UnitType", "ypSPCIndianFortGate");
 	rmSetTriggerEffectParamInt("Dist", 85);
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
