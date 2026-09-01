@@ -721,6 +721,7 @@ void main(void)
 	// the single avoidRoad constraint without touching any call site
 	rmDefineClass("classRoad");
 	rmDefineClass("classCliff");
+	rmDefineClass("classFlankCliff");
 	rmDefineClass("classGun");
 	// the pirate camps get their own class - classPlateau is shared with
 	// the harbour islands and cannot single them out
@@ -757,6 +758,13 @@ void main(void)
 	int avoidRoad = rmCreateClassDistanceConstraint("off the roads",
 		rmClassID("classRoad"), 6.0);
 	int avoidWater10 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 9.0);
+	// 6 m off the water, same form as avoidWater10 above (whose real value is 9).
+	int avoidWater6 = rmCreateTerrainDistanceConstraint("avoid water 6", "Land", false, 6.0);
+	// The FLANK cliffs carry their own class (classFlankCliff, added to wildNE and
+	// wildSW right before they build), so this can stay short without touching
+	// the classCliff constraints the rest of the map already uses.
+	int avoidFlankCliffs = rmCreateClassDistanceConstraint("trees off the flank cliffs",
+		rmClassID("classFlankCliff"), 1.0);
 	// trees stay one tile clear of the cliff
 	// Distance here is METRES, not a map fraction - every shipped map passes
 	// plain numbers (20.0, 30.0, 8.0) and not one passes a ToFraction helper.
@@ -865,8 +873,8 @@ void main(void)
 	// The cliffs stand off much further than the beaches do: the beach is a
 	// landing shelf and may sit near the route, a cliff across it would wall
 	// the route off entirely.
-	int avoidTraderoute12 = rmCreateTradeRouteDistanceConstraint("avoid trade route 12", 14.0);
-	int avoidTraderoute20 = rmCreateTradeRouteDistanceConstraint("avoid trade route 20", 20.0);
+	int avoidTraderoute12 = rmCreateTradeRouteDistanceConstraint("avoid trade route 12", 15.0);
+	int avoidTraderoute20 = rmCreateTradeRouteDistanceConstraint("avoid trade route 20", 21.0);
 
 	rmSetStatusText("", 0.08);
 
@@ -1411,6 +1419,68 @@ void main(void)
 	int tradeSPlacement = rmPlaceGroupingInstanceAtLoc(tradeS,
 		tradeSX,
 		tradeSZ, 0);
+	// ---- Fisherman's Guild islands: one per flank, off the landing beaches --
+	// Placed HERE, with the other floating islands (guns, trade harbours, pirate
+	// camps) and BEFORE the beaches build, so the grouping's own shoreline
+	// tiles and heights settle under whatever the beach lays down later. The
+	// grouping is the user's IS_SPC_Fisherman WITH its scaffold, shoreline
+	// paint and heights. IS_SPC_Fisherman_S is that file turned 180 deg
+	// (cells x -> -1-x, z -> -1-z, units negated, height rows reversed;
+	// round-trip verified) for the south flank.
+	// Placed like the pirate camps - placeShoreIsland: min/max 0/0.01,
+	// classPlateau - and NOT through the drowned-scaffold river (parts 1-2).
+	// Anchors: the two landing-beach centres, declared here so the beaches
+	// (below) and these islands sit on the SAME point.
+	float beachDockNX = 0.6633;   float beachDockNZ = 0.6604;
+	float beachDockSX = 0.3379;   float beachDockSZ = 0.3119;
+	// Knobs, TILES, ALL POSITIVE - the sign lives outside the helper, because
+	// rmXTilesToFraction ignores a negative argument silently. Turn the one you
+	// need, leave its opposite at 0. 1 tile = 2 m.
+	//
+	// NORTH. Ground truth (census of 'Istanbul - Beach pattern.age3Yscn',
+	// matched by position): the north route's post stands at (430, 382) m =
+	// frac (0.717, 0.637); from there the route leaves the coast at ~55 deg
+	// toward (0.90, 0.90) while the shore stays near x ~ 400-410. Straight out
+	// (+x only) drops this 44 x 36 m island on the post; the free water is UP
+	// the shore. Checked corner by corner: SE corner 15 m off the route line,
+	// west edge grazes the cliff foot by <= 3 m.
+	int guildNPlusX  = 15;   // +x  -> centre x ~ 426 m
+	int guildNMinusX = 0;
+	int guildNPlusZ  = 8;   // +z  -> centre z ~ 452 m
+	int guildNMinusZ = 0;
+	// SOUTH. Mirror: the south route's post is at (156, 204) m = frac (0.260,
+	// 0.339) and leaves the coast at ~56 deg toward (0.10, 0.10); the shore
+	// stays near x ~ 195-215, so free water is DOWN the shore (-z). Mirrored
+	// offsets plus 4 tiles more to sea: the exact mirror's east edge sat on
+	// the cliff foot. NW corner ~23 m off the route line.
+	int guildSPlusX  = 0;
+	int guildSMinusX = 20;   // -x  -> centre x ~ 167 m
+	int guildSPlusZ  = 0;
+	int guildSMinusZ = 7;   // -z  -> centre z ~ 131 m
+	int guildN = rmCreateGrouping("fisherman guild north", "IS_SPC_Fisherman");
+	int guildS = rmCreateGrouping("fisherman guild south", "IS_SPC_Fisherman_S");
+	float guildNX = beachDockNX + rmXTilesToFraction(guildNPlusX) - rmXTilesToFraction(guildNMinusX);
+	float guildNZ = beachDockNZ + rmZTilesToFraction(guildNPlusZ) - rmZTilesToFraction(guildNMinusZ);
+	float guildSX = beachDockSX + rmXTilesToFraction(guildSPlusX) - rmXTilesToFraction(guildSMinusX);
+	float guildSZ = beachDockSZ + rmZTilesToFraction(guildSPlusZ) - rmZTilesToFraction(guildSMinusZ);
+	// INSTANCE placement, not placeShoreIsland: the guild and its guardian
+	// treasure are targeted by id below (rmGetGroupingInstanceUnitByType), and
+	// only an instance placement returns the handle for that. Same settings
+	// as placeShoreIsland (min/max 0/0.01, classPlateau), same shape as the
+	// water forts at their 601 latch. Difficulty 602 = zpNuggetFishermansGuild
+	// in nuggetmods: zpNuggetInvisibleWater, ONE zpGuardianCorsairGalley - the
+	// baked zpNuggetInvisibleWater in each grouping is the placeholder it swaps
+	// at spawn. 517 is the latch in force here (:1306, the harbours); restored.
+	rmSetGroupingMinDistance(guildN, 0.0);
+	rmSetGroupingMaxDistance(guildN, 0.01);
+	rmAddGroupingToClass(guildN, rmClassID("classPlateau"));
+	rmSetGroupingMinDistance(guildS, 0.0);
+	rmSetGroupingMaxDistance(guildS, 0.01);
+	rmAddGroupingToClass(guildS, rmClassID("classPlateau"));
+	rmSetNuggetDifficulty(602, 602);
+	int guildNPlacement = rmPlaceGroupingInstanceAtLoc(guildN, guildNX, guildNZ, 0);
+	int guildSPlacement = rmPlaceGroupingInstanceAtLoc(guildS, guildSX, guildSZ, 0);
+	rmSetNuggetDifficulty(517, 517);
 
 	rmSetStatusText("", 0.40);
 
@@ -1647,7 +1717,7 @@ void main(void)
 	int beachDockN = rmCreateArea("landing beach dockavoider north");
 	rmSetAreaWarnFailure(beachDockN, false);
 	rmSetAreaSize(beachDockN, rmAreaTilesToFraction(beachTilesExtra), rmAreaTilesToFraction(beachTilesExtra));
-	rmSetAreaLocation(beachDockN, 0.6633, 0.6604);
+	rmSetAreaLocation(beachDockN, beachDockNX, beachDockNZ);
 	rmSetAreaCoherence(beachDockN, 1.0);
 	rmSetAreaBaseHeight(beachDockN, 3);
 	rmSetAreaHeightBlend(beachDockN, 1);
@@ -1664,7 +1734,7 @@ void main(void)
 	int beachDockS = rmCreateArea("landing beach dockavoider south");
 	rmSetAreaWarnFailure(beachDockS, false);
 	rmSetAreaSize(beachDockS, rmAreaTilesToFraction(beachTilesExtra), rmAreaTilesToFraction(beachTilesExtra));
-	rmSetAreaLocation(beachDockS, 0.3379, 0.3119);
+	rmSetAreaLocation(beachDockS, beachDockSX, beachDockSZ);
 	rmSetAreaCoherence(beachDockS, 1.0);
 	rmSetAreaBaseHeight(beachDockS, 3);
 	rmSetAreaHeightBlend(beachDockS, 1);
@@ -2813,6 +2883,7 @@ void main(void)
 	rmAddAreaConstraint(wildNE, wildBoxNE);
 	rmAddAreaConstraint(wildNE, avoidTraderoute12);
 	rmSetAreaObeyWorldCircleConstraint(wildNE, false);
+	rmAddAreaToClass(wildNE, rmClassID("classFlankCliff"));
 	rmBuildArea(wildNE);
 
 	// INNER cliff, nested inside wildNE: 3 lower, and a STANDARD Italian
@@ -2889,6 +2960,7 @@ void main(void)
 	rmAddAreaConstraint(wildSW, wildBoxSW);
 	rmAddAreaConstraint(wildSW, avoidTraderoute12);
 	rmSetAreaObeyWorldCircleConstraint(wildSW, false);
+	rmAddAreaToClass(wildSW, rmClassID("classFlankCliff"));
 	rmBuildArea(wildSW);
 
 	// INNER cliff, nested inside wildSW: 3 lower, and a STANDARD Italian
@@ -3288,6 +3360,28 @@ void main(void)
 	rmAddObjectDefConstraint(shelfTreeEuc, cliffOffStreet);
 	rmPlaceObjectDefInArea(shelfTreeEuc, 0, wildNEInnerTerrain, shelfEuca);
 	rmPlaceObjectDefInArea(shelfTreeEuc, 0, wildSWInnerTerrain, shelfEuca);
+
+	// ---- FLANK BEACH TREES: TreeCaribbean, one by one, off water and cliff --
+	// Placed HERE and not beside the beaches: a class-distance constraint only
+	// sees areas that already exist, and the flank cliffs build at :2878/:2954,
+	// long after the beaches. Each tree is its own placement (def holds ONE
+	// tree, count = how many attempts), so every tree honours the constraints
+	// individually. A tree that finds no legal spot is silently skipped, which
+	// is why the ask is a little above the ten wanted.
+	int beachTreesPerBeach = 6;    // six per beach (user)
+	// 5 m off the Fisherman's Guild building itself (placed at :1473, so it exists here).
+	int treesOffGuild = rmCreateTypeDistanceConstraint("trees off the fisherman guild", "zpSPCFishermansGuild", 5.0);
+	int beachTree = rmCreateObjectDef("flank beach TreeCaribbean");
+	rmAddObjectDefItem(beachTree, "TreeCaribbean", 1, 0.0);
+	rmAddObjectDefConstraint(beachTree, avoidWater6);
+	rmAddObjectDefConstraint(beachTree, avoidFlankCliffs);
+	rmAddObjectDefConstraint(beachTree, treesOffGuild);
+	rmAddObjectDefConstraint(beachTree, avoidBlockShort);   // 5 m off the city blocks (classBlock) - the shelf trees' own choice
+	rmAddObjectDefConstraint(beachTree, cliffOffStreet);    // 1 m off the cobbles (classStreet)
+	rmAddObjectDefConstraint(beachTree, shelfTreeGap);     // 4 m tree to tree, so they spread
+	rmAddObjectDefConstraint(beachTree, insideWorld);
+	rmPlaceObjectDefInArea(beachTree, 0, beachDockN, beachTreesPerBeach);
+	rmPlaceObjectDefInArea(beachTree, 0, beachDockS, beachTreesPerBeach);
 
 
 	// --- the two 5 x 5 grids, row by row -----------------------------------
@@ -3903,6 +3997,15 @@ void main(void)
 	// so the margin inside the 20 m convert radius goes from 3.2 m to 7.0 m.
 	int unit_waterFortCastleN = rmGetGroupingInstanceUnitByType(waterFortNPlacement, "zpKingsHillNavalBlackSea") + instanceIdShift;
 	int unit_waterFortCastleS = rmGetGroupingInstanceUnitByType(waterFortSPlacement, "zpKingsHillNavalMedi") + instanceIdShift;
+	// ---- FISHERMAN'S GUILD IDS: guardian treasure + the building ----------
+	// Same +instanceIdShift law as the water forts. The nugget is queried by
+	// the nuggetmods <nuggetunit> of difficulty 602 (zpNuggetInvisibleWater),
+	// never by the authored placeholder - here they happen to be the same proto.
+	int unit_guildNugN = rmGetGroupingInstanceUnitByType(guildNPlacement, "zpNuggetInvisibleWater") + instanceIdShift;
+	int unit_guildNugS = rmGetGroupingInstanceUnitByType(guildSPlacement, "zpNuggetInvisibleWater") + instanceIdShift;
+	int unit_guildBldN = rmGetGroupingInstanceUnitByType(guildNPlacement, "zpSPCFishermansGuild") + instanceIdShift;
+	int unit_guildBldS = rmGetGroupingInstanceUnitByType(guildSPlacement, "zpSPCFishermansGuild") + instanceIdShift;
+	rmEchoInfo("fisherman guild: N nug="+unit_guildNugN+" bld="+unit_guildBldN+"  S nug="+unit_guildNugS+" bld="+unit_guildBldS);
 
 	// ---- PALACE IDS: nugget, converter flag, victory flag, building ------
 	// Same +instanceIdShift law as the forts above.
@@ -4344,6 +4447,14 @@ void main(void)
 	rmSetTriggerEffectParam("SrcObject", ""+unit_flank2SocketS);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert");
 	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+unit_guildBldN);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+unit_guildBldS);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -4691,6 +4802,34 @@ void main(void)
 	{
 	rmCreateTrigger("FortFollowN_Plr" + fo);
 	}
+	// ---- FortFlareN_Plr<p>: the minimap flare, split out of the ownership family.
+	// Fires when player p owns the object AND this trigger is armed. Whoever
+	// takes the object disarms these for its OWN team and arms them for the
+	// OTHER team (below), so a hand-off inside a team stays silent and only a
+	// capture by the other team flares. All armed at start: gaia owns it.
+	for (fo = 1; <= cNumberNonGaiaPlayers)
+	{
+	rmCreateTrigger("FortFlareN_Plr" + fo);
+	}
+	for (fo = 1; <= cNumberNonGaiaPlayers)
+	{
+	rmSwitchToTrigger(rmTriggerID("FortFlareN_Plr" + fo));
+	rmAddTriggerCondition("Units Owned");
+	rmSetTriggerConditionParamInt("Player", fo);
+	rmSetTriggerConditionParam("SrcObject", ""+unit_waterFortCastleN);
+	for (fd = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("Flare Minimap");
+		rmSetTriggerEffectParamInt("PlayerID", fd, false);
+		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(waterFortLocN)+","+xsVectorGetY(waterFortLocN)+","+xsVectorGetZ(waterFortLocN), false);
+		rmSetTriggerEffectParam("Flash", "True", false);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	}
 	for (fo = 1; <= cNumberNonGaiaPlayers)
 	{
 	rmSwitchToTrigger(rmTriggerID("FortFollowN_Plr" + fo));
@@ -4726,13 +4865,25 @@ void main(void)
 	// per ownership change - the engine's AutoConvert has no trigger of its
 	// own to hang a flare on. Every player sees it: taken by you or taken
 	// from you, all get the ping.
+	// Flare moved to FortFlareN_Plr: arm it for the OTHER team, disarm it for ours.
+	// The owner's OWN flare trigger is left alone: it fires on this very capture
+	// and deactivates itself. Disabling it here loses the race (the conversion
+	// family evaluates first) and the capture never flares - seen in game.
 	for (fd = 1; <= cNumberNonGaiaPlayers)
 	{
-		rmAddTriggerEffect("Flare Minimap");
-		rmSetTriggerEffectParamInt("PlayerID", fd, false);
-		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(waterFortLocN)+","+xsVectorGetY(waterFortLocN)+","+xsVectorGetZ(waterFortLocN), false);
-		rmSetTriggerEffectParam("Flash", "True", false);
+		if (fd != fo)
+		{
+			if (rmGetPlayerTeam(fd) == rmGetPlayerTeam(fo))
+			{
+				rmAddTriggerEffect("Disable Trigger");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("FortFlareN_Plr" + fd));
+			}
+			else
+			{
+				rmAddTriggerEffect("Fire Event");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("FortFlareN_Plr" + fd));
+			}
+		}
 	}
 	rmSetTriggerPriority(4);
 	// ACTIVE FROM THE START. These carry no capture logic - they only ask
@@ -4762,6 +4913,34 @@ void main(void)
 	for (fo = 1; <= cNumberNonGaiaPlayers)
 	{
 	rmCreateTrigger("FortFollowS_Plr" + fo);
+	}
+	// ---- FortFlareS_Plr<p>: the minimap flare, split out of the ownership family.
+	// Fires when player p owns the object AND this trigger is armed. Whoever
+	// takes the object disarms these for its OWN team and arms them for the
+	// OTHER team (below), so a hand-off inside a team stays silent and only a
+	// capture by the other team flares. All armed at start: gaia owns it.
+	for (fo = 1; <= cNumberNonGaiaPlayers)
+	{
+	rmCreateTrigger("FortFlareS_Plr" + fo);
+	}
+	for (fo = 1; <= cNumberNonGaiaPlayers)
+	{
+	rmSwitchToTrigger(rmTriggerID("FortFlareS_Plr" + fo));
+	rmAddTriggerCondition("Units Owned");
+	rmSetTriggerConditionParamInt("Player", fo);
+	rmSetTriggerConditionParam("SrcObject", ""+unit_waterFortCastleS);
+	for (fd = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("Flare Minimap");
+		rmSetTriggerEffectParamInt("PlayerID", fd, false);
+		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(waterFortLocS)+","+xsVectorGetY(waterFortLocS)+","+xsVectorGetZ(waterFortLocS), false);
+		rmSetTriggerEffectParam("Flash", "True", false);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 	}
 	for (fo = 1; <= cNumberNonGaiaPlayers)
 	{
@@ -4798,13 +4977,25 @@ void main(void)
 	// per ownership change - the engine's AutoConvert has no trigger of its
 	// own to hang a flare on. Every player sees it: taken by you or taken
 	// from you, all get the ping.
+	// Flare moved to FortFlareS_Plr: arm it for the OTHER team, disarm it for ours.
+	// The owner's OWN flare trigger is left alone: it fires on this very capture
+	// and deactivates itself. Disabling it here loses the race (the conversion
+	// family evaluates first) and the capture never flares - seen in game.
 	for (fd = 1; <= cNumberNonGaiaPlayers)
 	{
-		rmAddTriggerEffect("Flare Minimap");
-		rmSetTriggerEffectParamInt("PlayerID", fd, false);
-		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(waterFortLocS)+","+xsVectorGetY(waterFortLocS)+","+xsVectorGetZ(waterFortLocS), false);
-		rmSetTriggerEffectParam("Flash", "True", false);
+		if (fd != fo)
+		{
+			if (rmGetPlayerTeam(fd) == rmGetPlayerTeam(fo))
+			{
+				rmAddTriggerEffect("Disable Trigger");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("FortFlareS_Plr" + fd));
+			}
+			else
+			{
+				rmAddTriggerEffect("Fire Event");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("FortFlareS_Plr" + fd));
+			}
+		}
 	}
 	rmSetTriggerPriority(4);
 	// ACTIVE FROM THE START. These carry no capture logic - they only ask
@@ -4858,6 +5049,36 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 
+	rmCreateTrigger("GuildNUnlock");
+	rmSwitchToTrigger(rmTriggerID("GuildNUnlock"));
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", ""+unit_guildNugN);
+	// Release the guild's AutoConvert - suspended at startup in "Trade
+	// Harbours NoAutoConvert", same shape as FortNUnlock above.
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+unit_guildBldN, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	rmCreateTrigger("GuildSUnlock");
+	rmSwitchToTrigger(rmTriggerID("GuildSUnlock"));
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", ""+unit_guildNugS);
+	// Release the guild's AutoConvert - suspended at startup in "Trade
+	// Harbours NoAutoConvert", same shape as FortNUnlock above.
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+unit_guildBldS, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
 	// ========================================================================
 	//  PALACE UNLOCK + CONVERSION  -  the land half of the victory
 	// ------------------------------------------------------------------------
@@ -4876,6 +5097,34 @@ void main(void)
 	for (pcN = 1; <= cNumberNonGaiaPlayers)
 	{
 		rmCreateTrigger("PalaceConvN_Plr" + pcN);
+	}
+	// ---- PalaceFlareN_Plr<p>: the minimap flare, split out of the ownership family.
+	// Fires when player p owns the object AND this trigger is armed. Whoever
+	// takes the object disarms these for its OWN team and arms them for the
+	// OTHER team (below), so a hand-off inside a team stays silent and only a
+	// capture by the other team flares. All armed at start: gaia owns it.
+	for (fo = 1; <= cNumberNonGaiaPlayers)
+	{
+	rmCreateTrigger("PalaceFlareN_Plr" + fo);
+	}
+	for (fo = 1; <= cNumberNonGaiaPlayers)
+	{
+	rmSwitchToTrigger(rmTriggerID("PalaceFlareN_Plr" + fo));
+	rmAddTriggerCondition("Units Owned");
+	rmSetTriggerConditionParamInt("Player", fo);
+	rmSetTriggerConditionParam("SrcObject", ""+unit_palaceCossackN);
+	for (fd = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("Flare Minimap");
+		rmSetTriggerEffectParamInt("PlayerID", fd, false);
+		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(palaceLocN)+","+xsVectorGetY(palaceLocN)+","+xsVectorGetZ(palaceLocN), false);
+		rmSetTriggerEffectParam("Flash", "True", false);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 	}
 
 	rmCreateTrigger("PalaceNUnlock");
@@ -4920,13 +5169,25 @@ void main(void)
 			}
 		}
 		// Flare for EVERY player - taken by you or taken from you, all see it.
+		// Flare moved to PalaceFlareN_Plr: arm it for the OTHER team, disarm it for ours.
+		// The owner's OWN flare trigger is left alone: it fires on this very capture
+		// and deactivates itself. Disabling it here loses the race (the conversion
+		// family evaluates first) and the capture never flares - seen in game.
 		for (pgN = 1; <= cNumberNonGaiaPlayers)
 		{
-			rmAddTriggerEffect("Flare Minimap");
-			rmSetTriggerEffectParamInt("PlayerID", pgN, false);
-			rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-			rmSetTriggerEffectParam("Position", ""+xsVectorGetX(palaceLocN)+","+xsVectorGetY(palaceLocN)+","+xsVectorGetZ(palaceLocN), false);
-			rmSetTriggerEffectParam("Flash", "True", false);
+			if (pgN != pcN)
+			{
+				if (rmGetPlayerTeam(pgN) == rmGetPlayerTeam(pcN))
+				{
+					rmAddTriggerEffect("Disable Trigger");
+					rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceFlareN_Plr" + pgN));
+				}
+				else
+				{
+					rmAddTriggerEffect("Fire Event");
+					rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceFlareN_Plr" + pgN));
+				}
+			}
 		}
 		rmAddTriggerEffect("Play Soundset");
 		rmSetTriggerEffectParam("Soundset", "SheepFound");
@@ -4941,6 +5202,34 @@ void main(void)
 	for (pcS = 1; <= cNumberNonGaiaPlayers)
 	{
 		rmCreateTrigger("PalaceConvS_Plr" + pcS);
+	}
+	// ---- PalaceFlareS_Plr<p>: the minimap flare, split out of the ownership family.
+	// Fires when player p owns the object AND this trigger is armed. Whoever
+	// takes the object disarms these for its OWN team and arms them for the
+	// OTHER team (below), so a hand-off inside a team stays silent and only a
+	// capture by the other team flares. All armed at start: gaia owns it.
+	for (fo = 1; <= cNumberNonGaiaPlayers)
+	{
+	rmCreateTrigger("PalaceFlareS_Plr" + fo);
+	}
+	for (fo = 1; <= cNumberNonGaiaPlayers)
+	{
+	rmSwitchToTrigger(rmTriggerID("PalaceFlareS_Plr" + fo));
+	rmAddTriggerCondition("Units Owned");
+	rmSetTriggerConditionParamInt("Player", fo);
+	rmSetTriggerConditionParam("SrcObject", ""+unit_palaceCossackS);
+	for (fd = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("Flare Minimap");
+		rmSetTriggerEffectParamInt("PlayerID", fd, false);
+		rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
+		rmSetTriggerEffectParam("Position", ""+xsVectorGetX(palaceLocS)+","+xsVectorGetY(palaceLocS)+","+xsVectorGetZ(palaceLocS), false);
+		rmSetTriggerEffectParam("Flash", "True", false);
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 	}
 
 	rmCreateTrigger("PalaceSUnlock");
@@ -4985,13 +5274,25 @@ void main(void)
 			}
 		}
 		// Flare for EVERY player - taken by you or taken from you, all see it.
+		// Flare moved to PalaceFlareS_Plr: arm it for the OTHER team, disarm it for ours.
+		// The owner's OWN flare trigger is left alone: it fires on this very capture
+		// and deactivates itself. Disabling it here loses the race (the conversion
+		// family evaluates first) and the capture never flares - seen in game.
 		for (pgS = 1; <= cNumberNonGaiaPlayers)
 		{
-			rmAddTriggerEffect("Flare Minimap");
-			rmSetTriggerEffectParamInt("PlayerID", pgS, false);
-			rmSetTriggerEffectParamInt("Duration", socketMinimapFlareDuration, false);
-			rmSetTriggerEffectParam("Position", ""+xsVectorGetX(palaceLocS)+","+xsVectorGetY(palaceLocS)+","+xsVectorGetZ(palaceLocS), false);
-			rmSetTriggerEffectParam("Flash", "True", false);
+			if (pgS != pcS)
+			{
+				if (rmGetPlayerTeam(pgS) == rmGetPlayerTeam(pcS))
+				{
+					rmAddTriggerEffect("Disable Trigger");
+					rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceFlareS_Plr" + pgS));
+				}
+				else
+				{
+					rmAddTriggerEffect("Fire Event");
+					rmSetTriggerEffectParamInt("EventID", rmTriggerID("PalaceFlareS_Plr" + pgS));
+				}
+			}
 		}
 		rmAddTriggerEffect("Play Soundset");
 		rmSetTriggerEffectParam("Soundset", "SheepFound");
@@ -5011,7 +5312,7 @@ void main(void)
 	//  The counter's Event param is what fires TeamVictory - not a Fire Event.
 	//  Counter text reuses {303290} "King of the Sea Victory in".
 	// ========================================================================
-	int victoryCountDown = 240;
+	int victoryCountDown = 150;   // seconds: 2 min 30 s (was 240)
 	int vt = 0;
 	for (vt = 1; < cNumberTeams+1)
 	{

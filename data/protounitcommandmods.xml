@@ -209,6 +209,33 @@
     <command>unitSetTactic("TacticSpawnIronclad")</command>
   </protounitcommand>
   <protounitcommand>
+    <name>zpTacticSpawnFishingBoat</name>
+    <icon>resources\images\icons\command\drydock\drydock_fishingboat.png</icon>
+    <activeicon>resources\images\icons\command\drydock\drydock_fishingboat_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\drydock\drydock_fishingboat.png</disabledicon>
+    <rollovertextid>303400</rollovertextid>
+    <activerollovertextid>303401</activerollovertextid>
+    <command>unitSetTactic("GuildFishingBoats")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticGuildFood</name>
+    <icon>resources\images\icons\techs\asians\shrine_food.png</icon>
+    <activeicon>resources\images\icons\techs\asians\shrine_food_on.png</activeicon>
+    <disabledicon>resources\images\icons\techs\asians\shrine_food.png</disabledicon>
+    <rollovertextid>303402</rollovertextid>
+    <activerollovertextid>303403</activerollovertextid>
+    <command>unitSetTactic("ShrineFood")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticGuildCoin</name>
+    <icon>resources\images\icons\techs\asians\shrine_coin.png</icon>
+    <activeicon>resources\images\icons\techs\asians\shrine_coin_on.png</activeicon>
+    <disabledicon>resources\images\icons\techs\asians\shrine_coin.png</disabledicon>
+    <rollovertextid>303404</rollovertextid>
+    <activerollovertextid>303405</activerollovertextid>
+    <command>unitSetTactic("ShrineCoin")</command>
+  </protounitcommand>
+  <protounitcommand>
     <name>zpVeniceShipment</name>
     <command>researchByID(cTechzpNatVeteranVenetians, 252, 1)</command>
     <icon>resources\images\icons\techs\venetian_hc\venice_galley.png</icon>

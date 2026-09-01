@@ -3390,6 +3390,18 @@
       <string _locid="303392">ZP Tortuga House City</string>
       <string _locid="303393">ZP Tortuga Tower City</string>
       <string _locid="303394">ZP Istanbul Mosque Small</string>
+      <string _locid="303395">Fisherman's Guild</string>
+      <string _locid="303396">ZP SPC Fisherman's Guild</string>
+      <string _locid="303397">Neutral fishermen's guild house</string>
+      <string _locid="303398">Neutral fishermen's guild house, captured by the player whose units stand next to it. Generates Food or Coin for the whole team, or slowly launches Fishing Boats for its owner.</string>
+      <string _locid="303399">Maintain Fishing Boats</string>
+      <string _locid="303400">Fishing Fleet \nSet the Fisherman's Guild to launch Fishing Boats.</string>
+      <string _locid="303401">The Fisherman's Guild is launching Fishing Boats.</string>
+      <string _locid="303402">Fish Market \nSet the Fisherman's Guild to produce Food for the whole team.</string>
+      <string _locid="303403">The Fisherman's Guild is producing Food for the whole team.</string>
+      <string _locid="303404">Fish Trade \nSet the Fisherman's Guild to produce Coin for the whole team.</string>
+      <string _locid="303405">The Fisherman's Guild is producing Coin for the whole team.</string>
+      <string _locid="303406">Can't build Dock next to a Fisherman's Guild</string>
       
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

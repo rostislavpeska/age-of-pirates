@@ -3959,6 +3959,16 @@
       <difficulty>601</difficulty>
     </nugget>
     <nugget>
+      <name>zpNuggetFishermansGuild</name>
+      <nuggetunit>zpNuggetInvisibleWater</nuggetunit>
+      <waternugget>true</waternugget>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardian>zpGuardianCorsairGalley</guardian>
+      <difficulty>602</difficulty>
+    </nugget>
+    <nugget>
       <name>zpWaterNuggetMu1</name>
       <type>AdjustResource</type>
       <nuggetunit>ypNuggetSeaLionRock</nuggetunit>

@@ -78890,4 +78890,94 @@
       <damagebonus type="AbstractLightInfantry">0.750000</damagebonus>
     </protoaction>
   </unit>
+  <unit id="21159" name="zpSPCFishermansGuild">
+    <dbid>21159</dbid>
+    <displaynameid>303395</displaynameid>
+    <editornameid>303396</editornameid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>buildings\spc\zpfisherman_guild\med_fisherman_guild.xml</animfile>
+    <deadreplacement>BuildingRubble4x4</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Wood</impacttype>
+    <physicsinfo>barracks</physicsinfo>
+    <icon>resources\art\buildings\spc\fisherman_guild.png</icon>
+    <minimapicon>ui\minimap\city_resource</minimapicon>
+    <portraiticon>resources\art\buildings\spc\fisherman_guild.png</portraiticon>
+    <rollovertextid>303398</rollovertextid>
+    <shortrollovertextid>303397</shortrollovertextid>
+    <legacyhotkeycontext>ShrineAccel</legacyhotkeycontext>
+    <initialhitpoints>3000.0000</initialhitpoints>
+    <maxhitpoints>3000.0000</maxhitpoints>
+    <los>12.0000</los>
+    <buildpoints>120.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>240.0000</bounty>
+    <cost resourcetype="Food">800.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>AbstractWonder</unittype>
+    <unittype>DisplayAbilitiesOnHUD</unittype>
+    <unittype>AbstractPoliticalWonder</unittype>
+    <unittype>Economic</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>BuildingShowTactics</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>DontFlattenGround</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>SnapPlacement</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>EnterHotkeyContext</flag>
+    <flag>Tracked</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>Invulnerable</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>CannotBeConvertedByAllies</flag>
+    <command page="9" column="0">zpTacticGuildFood</command>
+    <command page="9" column="1">zpTacticGuildCoin</command>
+    <command page="9" column="2">zpTacticSpawnFishingBoat</command>
+    <command page="10" column="2">SetGatherPointEconomy</command>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <tactics>zpfishermansguild.tactics</tactics>
+    <protoaction>
+      <name>AutoGatherCoin</name>
+      <rate type="Gold">1.500000</rate>
+    </protoaction>
+    <protoaction>
+      <name>AutoGatherFood</name>
+      <rate type="Food">1.500000</rate>
+    </protoaction>
+  </unit>
 </protomods>
