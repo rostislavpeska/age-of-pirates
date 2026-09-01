@@ -16,6 +16,37 @@ python .claude/skills/bar-extract/scripts/bartool.py <command> [pattern...]
 Run it from the repo root. The Steam path is auto-detected; override with
 `--game "<path>\AoE3DE\Game"` or the `AOE3DE_GAME` environment variable.
 
+## Standards: extracted game files never enter the repo
+
+Vanilla files pulled out of the archives are **scratch data**. The only vanilla
+content this repo tracks on purpose is the reference snapshot in
+`scripts/source/`. Anything else written inside the working tree is
+contamination the user has to notice and clean up (2026-09-01: a subagent left
+432 vanilla tactics in `bar_export/` at the repo root, because `extract`
+defaulted to the current directory and this file said to run from the repo root).
+
+1. **Prefer `cat`.** It writes nothing. Pipe it into `grep`, `awk`, `diff`, or
+   redirect it. A redirect target obeys rule 2.
+2. **`extract` always gets `-o` pointing at the session scratchpad** (the
+   directory named in the system prompt under "Scratchpad Directory") or a
+   subfolder of it. Never a path inside the repo, never a bare `extract` that
+   relies on the default, never `/tmp` when a scratchpad exists.
+3. **The tool enforces it.** `extract` refuses to write inside any git working
+   tree and exits 2. Without `-o` it writes to `$AOE3DE_EXPORT_DIR` or
+   `<tempdir>/aoe3-bar-export`, never the current directory.
+4. **`--in-repo` exists for exactly one job**: refreshing `scripts/source/`
+   after a game patch (example below). Do not use it for anything else.
+5. **Subagents and workflows inherit the rule.** A prompt that lets an agent
+   run bartool must say "read with `cat`; if you must `extract`, pass
+   `-o <scratchpad path>`" and must spell out the path. Agents never see this
+   file unless told to read it.
+6. **Bytecode stays out too.** Importing bartool as a module (as
+   `scripts/tools/check_anim_refs.py` does) writes `__pycache__/`; it is
+   gitignored and must never be tracked.
+7. **Clean-up check before finishing:** `git status --short` must show no
+   `bar_export/`, no stray `Data/`, `Art/` or `Sound/` trees and no
+   `__pycache__`. If it does, delete them.
+
 ## Commands
 
 | Command | Purpose |
@@ -23,7 +54,7 @@ Run it from the repo root. The Steam path is auto-detected; override with
 | `bars` | List the archives and their file counts |
 | `list [pattern...]` | Find files across all archives (`-l` for size/codec/archive) |
 | `cat <pattern>` | Print one file to stdout |
-| `extract [pattern...]` | Write matching files to a directory (`-o`, default `bar_export`) |
+| `extract [pattern...]` | Write matching files to a directory. Always pass `-o <scratchpad>`; the default is `<tempdir>/aoe3-bar-export`, never the current directory, and a path inside a git working tree is refused unless `--in-repo` |
 | `verify [pattern...]` | Decode matches and report failures — use after a game patch |
 
 ## Patterns
@@ -62,6 +93,7 @@ Two consequences:
 
 ```bash
 T=.claude/skills/bar-extract/scripts/bartool.py
+SCRATCH="<the Scratchpad Directory from the system prompt>"   # never a repo path
 
 # Where does a file live, and how big is it?
 python $T list -l soundsetsde
@@ -70,12 +102,13 @@ python $T list -l soundsetsde
 python $T cat data/tactics/dock.tactics | head -40
 
 # Refresh the reference snapshots in scripts/source/ after a patch,
-# then read the git diff to see exactly what the patch changed
-python $T extract protoy.xml techtreey.xml civs.xml -o scripts/source --flat
+# then read the git diff to see exactly what the patch changed.
+# This is the ONLY sanctioned in-repo target, hence --in-repo.
+python $T extract protoy.xml techtreey.xml civs.xml -o scripts/source --flat --in-repo
 git diff --stat scripts/source
 
-# Pull every vanilla file the mod overrides in one area
-python $T extract "sound/*_snds.xml" "sound/soundsets*.xml" -o /tmp/vanilla-sound
+# Pull every vanilla file the mod overrides in one area -- into the scratchpad
+python $T extract "sound/*_snds.xml" "sound/soundsets*.xml" -o "$SCRATCH/vanilla-sound"
 
 # Check what a patch changed under you (0 failures expected)
 python $T verify "*.xmb"
@@ -90,8 +123,8 @@ Extract the vanilla counterpart, then diff. The mod ships plain XML while vanill
 ships XMB, so decompiling (the default) is what makes the diff possible at all:
 
 ```bash
-python $T extract "sound/soundsetsde.xml" -o /tmp/v
-diff <(python -c "import re,sys;print(re.sub(r'\s+',' ',open(sys.argv[1]).read()))" /tmp/v/Sound/soundsetsde.xml) \
+python $T extract "sound/soundsetsde.xml" -o "$SCRATCH/v"
+diff <(python -c "import re,sys;print(re.sub(r'\s+',' ',open(sys.argv[1]).read()))" "$SCRATCH/v/Sound/soundsetsde.xml") \
      <(python -c "import re,sys;print(re.sub(r'\s+',' ',open(sys.argv[1]).read()))" sound/soundsetsde.xml)
 ```
 
@@ -111,8 +144,9 @@ which is a reliable *sufficient* signal but covers only a fraction of new files.
 - Indexing all 42 archives takes ~0.3 s (tail reads only); it happens per run, no cache.
 - Decoding runs at ~20 MB/s pure Python — Data.bar in ~17 s, all 16,800 XMB files
   in ~16 s. `pip install lz4` swaps in the C codec for roughly 10×; entirely optional.
-- The tool is **read-only**. It never touches the game install and only writes
-  under the `-o` directory you name.
+- The tool is **read-only** towards the game install and the repo. It writes only
+  under the `-o` directory you name, and refuses a directory inside a git
+  working tree unless `--in-repo` is passed (see Standards above).
 - There is no XMB *writer* here. To regenerate a paired `data/**.xml.xmb` after
   editing the `.xml`, use Resource Manager.
 
