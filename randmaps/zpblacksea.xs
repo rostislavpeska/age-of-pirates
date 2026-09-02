@@ -614,7 +614,7 @@ void main(void)
 	rmAddAreaConstraint(terrainElevatedID, avoidTradeRouteFar4);
 	rmSetAreaElevationType(terrainElevatedID, cElevTurbulence);
 	rmAddAreaConstraint(terrainElevatedID, avoidCityLong);
-    rmSetAreaElevationVariation(terrainElevatedID, 6.0);
+    rmSetAreaElevationVariation(terrainElevatedID, 9.0);   // was 6.0 - hillier countryside (knob)
     rmSetAreaElevationPersistence(terrainElevatedID, 0.2);
     rmSetAreaElevationNoiseBias(terrainElevatedID, 1);
     rmSetAreaObeyWorldCircleConstraint(terrainElevatedID, false);
@@ -624,6 +624,42 @@ void main(void)
     rmAddAreaInfluencePoint(terrainElevatedID, 0.3, 0.10);
 
 	rmBuildArea(terrainElevatedID);
+	// North shore: seven paint-only italy_cliff_top_dry patches (paintMix5) on the
+	// elevated countryside. Same constraints as terrain_elevated, plus avoidWater7
+	// so the beaches keep their own paint. No height, no elevation: paint only.
+	// No location: the engine rolls a random legal spot each time. Coherence 0.1
+	// = ragged blobs. Built right after the countryside, before any object.
+	for (i=0; < 7){
+		int patchCTn = rmCreateArea("clifftop patch n"+i);
+		rmSetAreaWarnFailure(patchCTn, false);
+		rmSetAreaSize(patchCTn, rmAreaTilesToFraction(600), rmAreaTilesToFraction(600));   // size knob
+		rmSetAreaCoherence(patchCTn, 0.1);
+		rmSetAreaMix(patchCTn, paintMix5);
+		rmAddAreaConstraint(patchCTn, farGreatLakesConstraint);
+		rmAddAreaConstraint(patchCTn, avoidTradeRouteFar4);
+		rmAddAreaConstraint(patchCTn, avoidCityLong);
+		rmAddAreaConstraint(patchCTn, avoidWater7);
+		rmAddAreaConstraint(patchCTn, Northward);
+		rmBuildArea(patchCTn);
+	}
+	// South shore: seven paint-only italy_cliff_top_dry patches (paintMix5) on the
+	// elevated countryside. Same constraints as terrain_elevated, plus avoidWater7
+	// so the beaches keep their own paint. No height, no elevation: paint only.
+	// No location: the engine rolls a random legal spot each time. Coherence 0.1
+	// = ragged blobs. Built right after the countryside, before any object.
+	for (i=0; < 7){
+		int patchCTs = rmCreateArea("clifftop patch s"+i);
+		rmSetAreaWarnFailure(patchCTs, false);
+		rmSetAreaSize(patchCTs, rmAreaTilesToFraction(600), rmAreaTilesToFraction(600));   // size knob
+		rmSetAreaCoherence(patchCTs, 0.1);
+		rmSetAreaMix(patchCTs, paintMix5);
+		rmAddAreaConstraint(patchCTs, farGreatLakesConstraint);
+		rmAddAreaConstraint(patchCTs, avoidTradeRouteFar4);
+		rmAddAreaConstraint(patchCTs, avoidCityLong);
+		rmAddAreaConstraint(patchCTs, avoidWater7);
+		rmAddAreaConstraint(patchCTs, Southward);
+		rmBuildArea(patchCTs);
+	}
 
 	for (i=0; < 100+cNumberNonGaiaPlayers*50){
 		int patchID2 = rmCreateArea("second patch"+i);
