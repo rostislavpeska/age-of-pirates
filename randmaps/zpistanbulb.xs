@@ -656,7 +656,7 @@ void main(void)
 	// unit layout - it has to be seen in the editor. Both flags landed on dry
 	// land once already because the sign was derived instead of observed.
 	float nPirateFlagDX = -18.0665;
-	float nPirateFlagDZ = -15.5373;
+	float nPirateFlagDZ = -18.5373;
 	float sPirateFlagDX = 16.0665;
 	float sPirateFlagDZ = 13.5373;
 	
@@ -1262,20 +1262,24 @@ void main(void)
 	// countryside column uses at :924-927).
 	int gunOwnerN1 = -1;   int gunOwnerN2 = -1;
 	int gunOwnerS1 = -1;   int gunOwnerS2 = -1;
-	if (northCount == 1) { gunOwnerN1 = firstDefender;  gunOwnerN2 = firstDefender; }
-	if (northCount == 2) { gunOwnerN1 = secondDefender; gunOwnerN2 = secondDefender; }
-	if (northCount == 3) { gunOwnerN1 = thirdDefender;  gunOwnerN2 = thirdDefender; }
-	if (northCount >= 4) { gunOwnerN1 = thirdDefender;  gunOwnerN2 = fourthDefender; }
-	if (southCount == 1) { gunOwnerS1 = firstAttacker;  gunOwnerS2 = firstAttacker; }
-	if (southCount == 2) { gunOwnerS1 = secondAttacker; gunOwnerS2 = secondAttacker; }
-	if (southCount == 3) { gunOwnerS1 = thirdAttacker;  gunOwnerS2 = thirdAttacker; }
-	if (southCount >= 4) { gunOwnerS1 = thirdAttacker;  gunOwnerS2 = fourthAttacker; }
+	// Both guns of a shore belong to that shore's FIRST CITY player, whatever the
+	// head-count (was: the first countryside player). The AntiShipGunsPrebuilt
+	// triggers read these, so nothing else moves.
+	gunOwnerN1 = firstDefender;   gunOwnerN2 = firstDefender;
+	gunOwnerS1 = firstAttacker;   gunOwnerS2 = firstAttacker;
 	// Non-2-team lobbies resolve nobody; fall back to gaia so placement still
 	// succeeds exactly as it did before this system existed.
 	if (gunOwnerN1 < 0) gunOwnerN1 = 0;
 	if (gunOwnerN2 < 0) gunOwnerN2 = 0;
 	if (gunOwnerS1 < 0) gunOwnerS1 = 0;
 	if (gunOwnerS2 < 0) gunOwnerS2 = 0;
+	// Wall towers + gates ('Wall Parts To Owner', far below): the SECOND city
+	// player when the team seats two in the city (3+ players -> citySeats 2;
+	// that player holds the harbour-corner seat), otherwise the only city player.
+	int wallOwnerN = firstDefender;   if (citySeatsN == 2) wallOwnerN = secondDefender;
+	int wallOwnerS = firstAttacker;   if (citySeatsS == 2) wallOwnerS = secondAttacker;
+	if (wallOwnerN < 0) wallOwnerN = 0;
+	if (wallOwnerS < 0) wallOwnerS = 0;
 
 	// PLACEMENT. INSTANCE placement, exactly like the factories (:1839), the
 	// forts (:1818), the menageries (:1951) and the trade harbours (:1133) -
@@ -1297,7 +1301,7 @@ void main(void)
 	int gunSWPlacement = rmPlaceGroupingInstanceAtLoc(gunSW, sx1, sGunZ, gunOwnerS1);
 	int gunSEPlacement = rmPlaceGroupingInstanceAtLoc(gunSE, sx5, sGunZ, gunOwnerS2);
 
-	rmEchoInfo("gun owners: N1="+gunOwnerN1+" N2="+gunOwnerN2+" S1="+gunOwnerS1+" S2="+gunOwnerS2);
+	rmEchoInfo("gun owners: N1="+gunOwnerN1+" N2="+gunOwnerN2+" S1="+gunOwnerS1+" S2="+gunOwnerS2+"  wall owners: N="+wallOwnerN+" S="+wallOwnerS);
 	// --- FLANK HARBOURS 3 / 4, same Venice trick as 1 / 2 -----------------
 	// Their lane now curves around this coast, so each socket can dock onto it.
 	int flank2SocketN = rmCreateObjectDef("flank harbour 5 socket");
@@ -2711,7 +2715,7 @@ void main(void)
 	rmSetAreaHeightBlend(fillW, 2);
 	rmSetAreaSmoothDistance(fillW, 5);
 	rmSetAreaElevationType(fillW, cElevTurbulence);
-	rmSetAreaElevationVariation(fillW, 6.0);
+	rmSetAreaElevationVariation(fillW, 10.0);
 	rmAddAreaConstraint(fillW, fillAvoidCliff);
 	rmAddAreaConstraint(fillW, avoidGuardW_far2);
 	rmAddAreaConstraint(fillW, avoidGuardE_far2);
@@ -2750,7 +2754,7 @@ void main(void)
 	rmSetAreaHeightBlend(fillE, 2);
 	rmSetAreaSmoothDistance(fillE, 5);
 	rmSetAreaElevationType(fillE, cElevTurbulence);
-	rmSetAreaElevationVariation(fillE, 6.0);
+	rmSetAreaElevationVariation(fillE, 10.0);
 	rmAddAreaConstraint(fillE, fillAvoidCliff);
 	rmAddAreaConstraint(fillE, avoidGuardW_far2);
 	rmAddAreaConstraint(fillE, avoidGuardE_far2);
@@ -3565,10 +3569,20 @@ void main(void)
 	rmSetObjectDefMinDistance(berryDef, 16.0);
 	rmSetObjectDefMaxDistance(berryDef, 17.0);
 	rmAddObjectDefConstraint(berryDef, belowCliffs);
+	// Countryside starting treasure: one difficulty-1 nugget just outside the
+	// berry ring. "Nugget" is a placeholder - the latch in force at placement
+	// picks the real record (Rule 1), so the latch is set to 1 around the kit
+	// loop below and restored afterwards. Placed as GAIA like every nugget.
+	int startNugDef = rmCreateObjectDef("countryside starting treasure");
+	rmAddObjectDefItem(startNugDef, "Nugget", 1, 0.0);
+	rmSetObjectDefMinDistance(startNugDef, 18.0);
+	rmSetObjectDefMaxDistance(startNugDef, 20.0);
+	rmAddObjectDefConstraint(startNugDef, belowCliffs);
 
 	int aiUrban = rmCreateObjectDef("is city map");
 	rmAddObjectDefItem(aiUrban, "zpAIStartUrbanMap", 1, 0.0);
 
+	rmSetNuggetDifficulty(1, 1);   // countryside starting treasure; 519 restored below
 	if (cNumberTeams == 2)
 	{
 		for (pk = 1; <= cNumberNonGaiaPlayers)
@@ -3597,6 +3611,8 @@ void main(void)
 					rmPlayerLocXFraction(pk), rmPlayerLocZFraction(pk));
 				rmPlaceObjectDefAtLoc(berryDef, pk,
 					rmPlayerLocXFraction(pk), rmPlayerLocZFraction(pk));
+				rmPlaceObjectDefAtLoc(startNugDef, 0,
+					rmPlayerLocXFraction(pk), rmPlayerLocZFraction(pk));
 			}
 		}
 	}
@@ -3609,6 +3625,7 @@ void main(void)
 	// Built last, nothing can touch their ground again.
 	// their ground: a plain flat grass island at city height - no cliff
 	// rim (the camps stand on ordinary ground, per the design).
+	rmSetNuggetDifficulty(519, 519);   // back to the latch in force before the kit loop
 	int campIsleW = rmCreateArea("campIsleW");
 	rmSetAreaWarnFailure(campIsleW, false);
 	rmSetAreaSize(campIsleW, rmAreaTilesToFraction(450), rmAreaTilesToFraction(450));
@@ -5387,25 +5404,25 @@ void main(void)
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_wallCtrlSW);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
-	rmSetTriggerEffectParamInt("TrgPlayer", firstDefender);
+	rmSetTriggerEffectParamInt("TrgPlayer", wallOwnerN);
 	rmSetTriggerEffectParam("UnitType", "deSPCEuroTower");
 	rmSetTriggerEffectParamInt("Dist", 85);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_wallCtrlSW);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
-	rmSetTriggerEffectParamInt("TrgPlayer", firstDefender);
+	rmSetTriggerEffectParamInt("TrgPlayer", wallOwnerN);
 	rmSetTriggerEffectParam("UnitType", "ypSPCIndianFortGate");
 	rmSetTriggerEffectParamInt("Dist", 85);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_wallCtrlNE);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
-	rmSetTriggerEffectParamInt("TrgPlayer", firstAttacker);
+	rmSetTriggerEffectParamInt("TrgPlayer", wallOwnerS);
 	rmSetTriggerEffectParam("UnitType", "deSPCEuroTower");
 	rmSetTriggerEffectParamInt("Dist", 85);
 	rmAddTriggerEffect("Convert Units in Area");
 	rmSetTriggerEffectParam("SrcObject", ""+unit_wallCtrlNE);
 	rmSetTriggerEffectParamInt("SrcPlayer", 0);
-	rmSetTriggerEffectParamInt("TrgPlayer", firstAttacker);
+	rmSetTriggerEffectParamInt("TrgPlayer", wallOwnerS);
 	rmSetTriggerEffectParam("UnitType", "ypSPCIndianFortGate");
 	rmSetTriggerEffectParamInt("Dist", 85);
 	rmSetTriggerPriority(4);

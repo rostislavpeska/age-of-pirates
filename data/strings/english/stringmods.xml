@@ -3321,9 +3321,9 @@
       <string _locid="303322">Mediterranean Fort</string>
       <string _locid="303323">ZP Mediterranean Fort</string>
       <string _locid="303324">Black Sea Fort</string>
-      <string _locid="303325">Struggle of the Bosporus</string>
-      <string _locid="303326">Struggle of the Bosporus  Description</string>
-      <string _locid="303327">Struggle of the Bosporus  Loading</string>
+      <string _locid="303325">Revelations of Istanbul</string>
+      <string _locid="303326">Istanbul 1512 Historical Map: \nSultan Bayezid II is old, and his sons are already at war for his throne. Selim, the Janissaries' favourite, marches on the capital while his brother Ahmed holds the Sultan's blessing. Both halves of the city arm themselves - and the Bosporus runs between them. \n\nTwo teams, two shores. Each team starts in its own half of Istanbul, walls at its back and the strait in front. Cross it, take the enemy's shore, and hold the whole city. \n\n&lt;color=1.0, 1.0, 0.0&gt;VICTORY CONDITIONS:&lt;/color&gt; Achieve a Team Victory by capturing all four victory objects and holding them together for a short time: the two &lt;color=0.6, 0.85, 1.0&gt;Naval Forts&lt;/color&gt; guarding the Black Sea and the Mediterranean, and the two &lt;color=1.0, 0.65, 0.3&gt;Prince's Palaces&lt;/color&gt; in the city. Every one of them is guarded - clear the guardians before it can be claimed. \n\n&lt;color=1.0, 1.0, 0.0&gt;OPTIMIZED FOR MULTIPLAYER:&lt;/color&gt; designed for cooperative team play - trade harbours, factories, pirate camps and fishermen's guilds are all capturable and shared with your team. Playable solo, but ideally 2 vs 2. \n\nSettlements: Sufi, Orthodox, House of Phanar, House of Auditore, Pirates, Cossacks</string>
+      <string _locid="303327">Who holds the Bosporus holds the empire. Capture the two Naval Forts and the two Prince's Palaces, and hold all four together for a short time to win. Work with your team - every harbour, factory and guild you take feeds everyone on your side.</string>
       <string _locid="303328">Anti-Ship Gun</string>
       <string _locid="303329">Anti-Ship Gun</string>
       <string _locid="303330">Anti-Ship Gun Socket</string>
@@ -3335,7 +3335,7 @@
       <string _locid="303336">ZP Nugget Invisible Water</string>
       <string _locid="303337">City of Istanbul</string>
       <string _locid="303338">ZP Capturable Flag Invisible Naval</string>
-      <string _locid="303339">Struggle of the Bosporus</string>
+      <string _locid="303339">Revelations of Istanbul</string>
       <string _locid="303340">Both teams fight for the straits. Seize all four victory objects - the Black Sea Fort, the Mediterranean Fort and the two Prince Palaces - and hold every one of them to win.</string>
       <string _locid="303341">Take control of all four victory objects - the two naval forts and the two Prince Palaces - and hold them.</string>
       <string _locid="303342">Sink a fort's guardian galleys, or cut down a Palace garrison, then claim the treasure to unlock it. Forts are taken by bringing warships alongside with no enemy vessels near; a Palace goes to whoever holds its grounds. Holding all four starts the victory timer.</string>
@@ -3366,7 +3366,7 @@
       <string _locid="303368">Prince Palace</string>
       <string _locid="303369">ZP Prince Palace</string>
       <string _locid="303370">Defeat the Palace guards and claim its treasure to unlock it, then hold the grounds with no enemy units nearby. Palaces and sea forts together start the victory timer.</string>
-      <string _locid="303371">Struggle of the Bosporus Victory in</string>
+      <string _locid="303371">Revelations of Istanbul Victory in</string>
       <string _locid="303372">Neutral Cathedral</string>
       <string _locid="303373">ZP Neutral Cathedral</string>
       <string _locid="303374">A neutral cathedral. Every player holds their own copy of this building and interacts with it independently.</string>

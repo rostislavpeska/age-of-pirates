@@ -226,5 +226,9 @@
 			<obstructionradiusz>4.0000</obstructionradiusz>
 			<flag mergemode="remove">TieToWaterSurface</flag>
 		</unit>
+		<unit name="ypSPCIndianFortGate">
+			<flag>NotRepairable</flag>
+			<unitregen damagetimeout="6.0">0.2500</unitregen>
+		</unit>
     </protomods>
 </mods>
