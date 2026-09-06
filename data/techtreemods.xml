@@ -408,6 +408,8 @@
       </effect>
       <effect type="TechStatus" status="unobtainable">zpPhanarAbilityBig</effect>
       <effect type="TechStatus" status="obtainable">zpPhanarAbilitySmall</effect>
+      <effect type="SetName" proto="deSocketPhanar" culture="none" newname="303407">
+      </effect>
     </effects>
   </tech>
   <tech name="zpChateauRoyalShadow" type="Normal">
