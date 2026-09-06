@@ -4420,6 +4420,237 @@ void main(void)
 	}
 
 	// ========================================================================
+	// GUN SOCKET CONVERSION LOCK. A socket keeps its vanilla AutoConvert
+	// (socketcapture.tactics, 12 m) even with a gun standing on it, so enemy
+	// units could flip the socket under a live gun. Vanilla primitives only.
+	// Per socket: one Lock per player (that player's zpAntiShipGun within 5 m,
+	// foundation included -> suspend AutoConvert, arm Release) and one
+	// Release (no player's gun within 5 m, one condition per player ANDed
+	// -> release, re-arm every Lock). Locks never touch each other: a second
+	// lock firing re-suspends (idempotent); only Release re-arms.
+	// Spec + engine model + trigtemp oracle: scripts/mapcheck/tests/
+	// test_gunsocket_lock.py. Socket ids: shift-corrected, UNIT IDS block.
+	// >>> GUN SOCKET CONVERSION LOCK BEGIN
+
+	// NW: one lock per player, one release. CREATE ALL FIRST - rmTriggerID is
+	// resolved at generation time, so a Fire Event at a not-yet-created trigger
+	// serialises as (None). Then fill.
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("GunSocketLockNW_Plr"+gk);
+	}
+	rmCreateTrigger("GunSocketReleaseNW");
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmSwitchToTrigger(rmTriggerID("GunSocketLockNW_Plr"+gk));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", ""+gunSocketNW);
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("UnitType", "zpAntiShipGun");
+		rmSetTriggerConditionParamInt("Dist", 5);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject", ""+gunSocketNW);
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "True");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("GunSocketReleaseNW"));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+	rmSwitchToTrigger(rmTriggerID("GunSocketReleaseNW"));
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", ""+gunSocketNW);
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("UnitType", "zpAntiShipGun");
+		rmSetTriggerConditionParamInt("Dist", 5);
+		rmSetTriggerConditionParam("Op", "==");
+		rmSetTriggerConditionParamInt("Count", 0);
+	}
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+gunSocketNW);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "False");
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("GunSocketLockNW_Plr"+gk));
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// NE: one lock per player, one release. CREATE ALL FIRST - rmTriggerID is
+	// resolved at generation time, so a Fire Event at a not-yet-created trigger
+	// serialises as (None). Then fill.
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("GunSocketLockNE_Plr"+gk);
+	}
+	rmCreateTrigger("GunSocketReleaseNE");
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmSwitchToTrigger(rmTriggerID("GunSocketLockNE_Plr"+gk));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", ""+gunSocketNE);
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("UnitType", "zpAntiShipGun");
+		rmSetTriggerConditionParamInt("Dist", 5);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject", ""+gunSocketNE);
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "True");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("GunSocketReleaseNE"));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+	rmSwitchToTrigger(rmTriggerID("GunSocketReleaseNE"));
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", ""+gunSocketNE);
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("UnitType", "zpAntiShipGun");
+		rmSetTriggerConditionParamInt("Dist", 5);
+		rmSetTriggerConditionParam("Op", "==");
+		rmSetTriggerConditionParamInt("Count", 0);
+	}
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+gunSocketNE);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "False");
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("GunSocketLockNE_Plr"+gk));
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// SW: one lock per player, one release. CREATE ALL FIRST - rmTriggerID is
+	// resolved at generation time, so a Fire Event at a not-yet-created trigger
+	// serialises as (None). Then fill.
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("GunSocketLockSW_Plr"+gk);
+	}
+	rmCreateTrigger("GunSocketReleaseSW");
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmSwitchToTrigger(rmTriggerID("GunSocketLockSW_Plr"+gk));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", ""+gunSocketSW);
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("UnitType", "zpAntiShipGun");
+		rmSetTriggerConditionParamInt("Dist", 5);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject", ""+gunSocketSW);
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "True");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("GunSocketReleaseSW"));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+	rmSwitchToTrigger(rmTriggerID("GunSocketReleaseSW"));
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", ""+gunSocketSW);
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("UnitType", "zpAntiShipGun");
+		rmSetTriggerConditionParamInt("Dist", 5);
+		rmSetTriggerConditionParam("Op", "==");
+		rmSetTriggerConditionParamInt("Count", 0);
+	}
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+gunSocketSW);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "False");
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("GunSocketLockSW_Plr"+gk));
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// SE: one lock per player, one release. CREATE ALL FIRST - rmTriggerID is
+	// resolved at generation time, so a Fire Event at a not-yet-created trigger
+	// serialises as (None). Then fill.
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("GunSocketLockSE_Plr"+gk);
+	}
+	rmCreateTrigger("GunSocketReleaseSE");
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmSwitchToTrigger(rmTriggerID("GunSocketLockSE_Plr"+gk));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", ""+gunSocketSE);
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("UnitType", "zpAntiShipGun");
+		rmSetTriggerConditionParamInt("Dist", 5);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject", ""+gunSocketSE);
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "True");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("GunSocketReleaseSE"));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+	rmSwitchToTrigger(rmTriggerID("GunSocketReleaseSE"));
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", ""+gunSocketSE);
+		rmSetTriggerConditionParamInt("Player", gk);
+		rmSetTriggerConditionParam("UnitType", "zpAntiShipGun");
+		rmSetTriggerConditionParamInt("Dist", 5);
+		rmSetTriggerConditionParam("Op", "==");
+		rmSetTriggerConditionParamInt("Count", 0);
+	}
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", ""+gunSocketSE);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "False");
+	for (gk = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("GunSocketLockSE_Plr"+gk));
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	// <<< GUN SOCKET CONVERSION LOCK END
+
+
+	// ========================================================================
 	//  TRADE HARBOUR CONVERSION  (000_independence_war.xs idiom)
 	// ------------------------------------------------------------------------
 	// Every trade socket starts with AutoConvert SUSPENDED, so nobody can take
