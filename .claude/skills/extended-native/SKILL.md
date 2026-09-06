@@ -69,10 +69,25 @@ swapped for the new gate. `usebigabilitybutton3` stays. Then the small twin:
 <ability>zpNatPowerGreekRevolution<tech>zpPhanarAbilitySmall</tech>...</ability>
 ```
 
-Same fields **minus `<usebigabilitybutton3>`**. Habsburg also drops
-`<subcivstartincooldown>`; Phanar keeps it. Everything else carries over -
-`subciv`, `subcivalliancefactor`, `activetimecooldown`, `uicommand`, `rof`,
-`castonself`, `donotallowoverpoplimit`.
+Same fields **minus `<usebigabilitybutton3>` AND minus
+`<subcivstartincooldown>`**. Everything else carries over - `subciv`,
+`subcivalliancefactor`, `activetimecooldown`, `uicommand`, `rof`, `castonself`,
+`donotallowoverpoplimit`.
+
+**The small twin is modelled on the mod's working small entries, never on the
+vanilla line.** The user's rule: "the redesigned small skills just can't start
+with wait, otherwise they break." Every working small entry in
+`abilitymods.xml` obeys it - Bourbon Royal March, Blanik Knights, Imperial
+Command, Sultan Command, both Habsburgs, Inuit, Estate Levy - and only the
+vanilla-replaced BIG entries keep `subcivstartincooldown`. The 2026-08-17
+Phanar chain copied the vanilla line verbatim, kept the flag, and shipped a
+dead ability that cost weeks; fixed 2026-09-06. Before writing, diff the new
+line against `zpPowerSultanCommand` (line ~105) - same shape, other names.
+
+Side effect worth knowing: a small ability that no longer starts in cooldown
+can be cast the instant it unlocks. For escalating powers (`powerescalation`)
+that first cast is uncharged - Greek Revolution gives 2 units, then 8 after
+every full cooldown. That is the vanilla mechanic, not a bug.
 
 ## C. Gate techs
 
@@ -120,6 +135,13 @@ Without these the buttons draw and do nothing. Both use `mergemode="add"`
     <effect mergemode="add" type="TechStatus" status="obtainable">zp<X>Expansion</effect>
     <effect mergemode="add" type="TechStatus" status="obtainable">zp<X>NewTech1</effect>
     <effect mergemode="add" type="TechStatus" status="obtainable">zp<X>NewTech2</effect>
+    <!-- ROYAL HOUSES ONLY: the player must be GRANTED the clone power, exactly
+         as vanilla grants the original one in this same tech. Without it the
+         small button draws and casts nothing. -->
+    <effect mergemode="add" type="Data" amount="1.00" subtype="GrantsPowerDuration" protopower="zpNat<X>PowerClone" relativity="Assign">
+      <target type="Player">
+      </target>
+    </effect>
   </effects>
 </tech>
 <tech name="DENative<Subciv>Colonialize">   <!-- the activator -->
@@ -135,6 +157,17 @@ Without these the buttons draw and do nothing. Both use `mergemode="add"`
 `DENativeHabsburg` (~33050) makes the ability clone, **both** expansion buttons
 and **all four** sub-techs obtainable - one hub, everything. Only override the
 `DENative<X>` path; neither Habsburg nor Inuit touches `deUnknown<X>Alliance`.
+
+**The power grant.** Vanilla hands every Royal-House power to the player from
+the house's Age0 tech with `GrantsPowerDuration` (nine of them: Bourbon,
+Habsburg, Hanover, Jagiellon, Oldenburg, Phanar, Vasa, Wettin, Wittelsbach -
+`grep GrantsPowerDuration` in vanilla `techtreey.xml` lists them). A clone
+power has a new name, so that grant does not cover it: the override MUST add
+the same effect for the clone (Bourbon: `techtreemods.xml` ~19596,
+`zpSPCNativeBourbon` grants `zpNatPowerRoyalMarch`). Regular natives (Inuit
+and the like) have no grant in vanilla and need none. `abilitytool.py plan`
+emits the line when vanilla grants the original; `verify` fails when it is
+missing.
 
 ## F. The extension shadow tech - must be at the TOP of techtreemods
 
@@ -189,15 +222,18 @@ that is not in the loaded `.xmb` references something that does not exist.
 
 ## Line endings - this has already destroyed a file
 
-| File | Endings |
+| File | Endings on disk (measured 2026-09-06, `core.autocrlf=true`) |
 |---|---|
-| `data/abilities/powermods.xml` | **CRLF** |
-| `data/abilities/abilitymods.xml` | **CRLF** |
-| `data/techtreemods.xml` | LF |
-| `data/protounitcommandmods.xml` | LF |
-| `data/strings/english/stringmods.xml` | LF |
+| `data/abilities/powermods.xml` | **CRLF** (683 lines, 0 bare LF) |
+| `data/abilities/abilitymods.xml` | **CRLF** (447, 0) |
+| `data/techtreemods.xml` | **CRLF** (38,985, 0) |
+| `data/protounitcommandmods.xml` | **CRLF** (935, 0) |
+| `data/strings/english/stringmods.xml` | **CRLF** (3,682, 0) |
 
-Read bytes, preserve, verify after writing. See `preserve-crlf-line-endings` in
+An earlier version of this table said LF for the last three; that was wrong.
+Never trust the table: read the bytes (`count(b"\r\n")` vs `count(b"\n")`)
+before writing, write with `newline=""`, and re-count afterwards - a `sed -i`
+or a text-mode write strips every CR. See `preserve-crlf-line-endings` in
 Claude memory.
 
 **Do not build inserts in a bash heredoc.** The heredoc collapses `\\` to `\`,

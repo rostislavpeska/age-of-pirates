@@ -35877,6 +35877,10 @@
       <effect mergemode="add" type="TechStatus" status="obtainable">zpPhanarExpansion</effect>
       <effect mergemode="add" type="TechStatus" status="obtainable">zpPhanarAegeanDryDock</effect>
       <effect mergemode="add" type="TechStatus" status="obtainable">zpPhanarLoyalDistricts</effect>
+      <effect mergemode="add" type="Data" amount="1.00" subtype="GrantsPowerDuration" protopower="zpNatPowerGreekRevolution" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
     </effects>
   </tech>
   <tech name="DENativePhanarColonialize">

@@ -48,6 +48,41 @@ it is `DENatInuitResourcefulness`, which ends with
 so the mod overrides that same tech and adds the clone. `plan` reports which
 vanilla tech activates a given ability; `verify` fails if nothing does.
 
+## The fifth layer: the small entry never starts in cooldown
+
+**User rule: "the redesigned small skills just can't start with wait, otherwise
+they break."** The small `<ability>` twin is written from the mod's working
+small entries (Bourbon Royal March, Sultan Command, Imperial Command, Blanik
+Knights, both Habsburgs, Inuit, Estate Levy), **never by renaming the vanilla
+line**. Concretely it drops TWO things from vanilla:
+
+| dropped | why |
+|---|---|
+| `<usebigabilitybutton3>true</usebigabilitybutton3>` | the size |
+| `<subcivstartincooldown>true</subcivstartincooldown>` | the wait - kept only on the vanilla-replaced BIG entry |
+
+Everything else stays (`subciv`, `subcivalliancefactor`, `activetimecooldown`,
+`uicommand`, `rof`, `castonself`, `donotallowoverpoplimit`). The 2026-08-17
+Phanar Greek Revolution chain was a verbatim vanilla copy, kept the cooldown
+start, and was dead in game until 2026-09-06. `plan` now strips both flags;
+`verify` fails on a small entry that still has `subcivstartincooldown`.
+
+**Royal Houses also need the power grant.** Vanilla hands each of the nine
+Royal-House powers to the player from the house's Age0 tech
+(`GrantsPowerDuration`, e.g. `DENativePhanar` -> `deNatPowerGreekRevolution`).
+A clone power has a new name, so add the same effect for it in that tech's
+override - Bourbon does (`zpSPCNativeBourbon` grants `zpNatPowerRoyalMarch`),
+Sultan/Imperial/Blanik do; Phanar got it 2026-09-06. `plan` emits the line
+when vanilla grants the original; `verify` warns when the clone is not granted
+(a warning, not a failure: both Habsburg smalls lack it and are recorded as
+working, so the grant's necessity is unproven - mirror Bourbon and do not
+argue with it).
+
+Side effect of no cooldown start: the first cast can happen the instant the
+ability unlocks. Escalating powers (`powerescalation`, "spawns more the longer
+you wait") then give their uncharged minimum on that first cast - Greek
+Revolution 2 units, then 8 after each full cooldown. Vanilla mechanic, not a bug.
+
 ## Which ability is live: the gate techs
 
 Both variants exist at once. Which one the player can cast is decided by the
@@ -85,7 +120,14 @@ Some vanilla abilities are placed as a **paired** `<tech>` *and* `<command>` at
 the same cell (Habsburg); others as a command only (Inuit). Only the paired ones
 need the `tech=` `CommandRemove`/`CommandAdd` as well. `plan` says which.
 
-## Three ways this silently fails
+## Five ways this silently fails
+
+- **The small entry starts in cooldown.** A vanilla `<ability>` line renamed
+  and gated is NOT a small entry; with `subcivstartincooldown` kept the
+  redesigned ability breaks. Model it on `zpPowerSultanCommand` instead.
+  `verify` fails on it.
+- **The clone power is never granted** (Royal Houses). The button draws, the
+  cast does nothing. `verify` warns.
 
 - **Stale `.xmb`.** The engine loads `foo.xml.xmb` in preference to `foo.xml`.
   When only some of the four files get recompiled you get a live button bound to
@@ -107,6 +149,7 @@ need the `tech=` `CommandRemove`/`CommandAdd` as well. `plan` says which.
 gates `zpInuitAcclimationBig`/`Small` and the activation added to
 `DENatInuitResourcefulness`. Confirmed working in game, both variants.
 
-Eight small chains exist in the mod: Bourbon Royal March, Auditore Lighthouse,
-Blanik Knights, Imperial Command, Sultan Command, both Habsburgs, and Inuit.
+Ten small chains exist in the mod: Bourbon Royal March, Auditore Lighthouse,
+Blanik Knights, Imperial Command, Sultan Command, both Habsburgs, Inuit,
+Phanar Greek Revolution (fixed 2026-09-06) and Estate Levy.
 `find --big-only` lists the 14 vanilla abilities still on a big button.
