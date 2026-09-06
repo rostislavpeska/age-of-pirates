@@ -101,6 +101,7 @@
 		<unit variation="214" posx="-7.3230" posz="11.7063" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
 		<unit variation="163" posx="-0.3651" posz="11.3912" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
 		<unit variation="5" posx="-13.2848" posz="10.5907" orientx="-1.0000" orienty="0.0000" orientz="0.0000">NativePirates</unit>
+		<unit variation="41" posx="6.8383" posz="-5.5998" orientx="-0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="64" posx="8.5440" posz="-10.6382" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSocketPirates</unit>
 	</units>
 	<tiles>

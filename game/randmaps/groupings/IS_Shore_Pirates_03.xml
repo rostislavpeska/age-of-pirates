@@ -101,6 +101,7 @@
 		<unit variation="200" posx="-0.8474" posz="8.2576" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpSPCDamagedProps</unit>
 		<unit variation="124" posx="3.5224" posz="7.9523" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpSPCDamagedProps</unit>
 		<unit variation="235" posx="9.7921" posz="7.8419" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSPCDamagedProps</unit>
+		<unit variation="41" posx="-5.0539" posz="2.5672" orientx="1.0000" orienty="0.0000" orientz="0.0000">SPCPathBlock3</unit>
 		<unit variation="64" posx="-9.9935" posz="3.0312" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpSocketPirates</unit>
 	</units>
 	<tiles>
