@@ -68770,7 +68770,7 @@
     <obstructionradiusz>3.0000</obstructionradiusz>
     <placementobstructionradiusx>15.0000</placementobstructionradiusx>
     <placementobstructionradiusz>15.0000</placementobstructionradiusz>
-    <deadreplacement>zpBerryBuildingSocket</deadreplacement>
+    <deadreplacement>zpCherryOrchardSocket</deadreplacement>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>buildings\asian_civs\orchard\orchard.xml</animfile>
