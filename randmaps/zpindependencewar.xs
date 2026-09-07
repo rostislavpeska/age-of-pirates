@@ -2612,7 +2612,7 @@ void main(void)
 		rmSetTriggerConditionParamInt("PlayerID",k);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPirates"); //operator
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPiratesIndependence"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2932,8 +2932,8 @@ void main(void)
 			rmCreateTrigger("UniqueShip"+s+"TIMEPlr"+k);
 			rmCreateTrigger("BlackbTrain"+s+"ONPlr"+k);
 			rmCreateTrigger("BlackbTrain"+s+"OFFPlr"+k);
-			rmCreateTrigger("GraceTrain"+s+"ONPlr"+k);
-			rmCreateTrigger("GraceTrain"+s+"OFFPlr"+k);
+			rmCreateTrigger("JonesTrain"+s+"ONPlr"+k);
+			rmCreateTrigger("JonesTrain"+s+"OFFPlr"+k);
 			rmCreateTrigger("CaesarTrain"+s+"ONPlr"+k);
 			rmCreateTrigger("CaesarTrain"+s+"OFFPlr"+k);
 
@@ -3029,32 +3029,32 @@ void main(void)
 			rmSetTriggerRunImmediately(true);
 			rmSetTriggerLoop(false);
 
-			rmSwitchToTrigger(rmTriggerID("GraceTrain"+s+"ONPlr"+k));
+			rmSwitchToTrigger(rmTriggerID("JonesTrain"+s+"ONPlr"+k));
 			rmAddTriggerCondition("Units in Area");
 			rmSetTriggerConditionParam("DstObject",""+pirateSocketID);
 			rmSetTriggerConditionParamInt("Player",k);
-			rmSetTriggerConditionParam("UnitType","zpSPCBlackPearlProxy");
+			rmSetTriggerConditionParam("UnitType","zpSPCBonhommeRichardProxy");
 			rmSetTriggerConditionParamInt("Dist",35);
 			rmSetTriggerConditionParam("Op",">=");
 			rmSetTriggerConditionParamInt("Count",1);
 			rmAddTriggerEffect("ZP Set Tech Status (XS)");
 			rmSetTriggerEffectParamInt("PlayerID",k);
-			rmSetTriggerEffectParam("TechID","cTechzpTrainBlackPearl"+s); //operator
+			rmSetTriggerEffectParam("TechID","cTechzpTrainBonhommeRichard"+s); //operator
 			rmSetTriggerEffectParamInt("Status",2);
 			rmAddTriggerEffect("Fire Event");
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip"+s+"TIMEPlr"+k));
 			rmAddTriggerEffect("Fire Event");
-			rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain"+s+"OFFPlr"+k));
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("JonesTrain"+s+"OFFPlr"+k));
 			rmSetTriggerPriority(4);
 			rmSetTriggerActive(false);
 			rmSetTriggerRunImmediately(true);
 			rmSetTriggerLoop(false);
 
-			rmSwitchToTrigger(rmTriggerID("GraceTrain"+s+"OFFPlr"+k));
+			rmSwitchToTrigger(rmTriggerID("JonesTrain"+s+"OFFPlr"+k));
 			rmAddTriggerCondition("Timer ms");
 			rmSetTriggerConditionParamInt("Param1",1200);
 			rmAddTriggerEffect("Fire Event");
-			rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain"+s+"ONPlr"+k));
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("JonesTrain"+s+"ONPlr"+k));
 			rmSetTriggerPriority(4);
 			rmSetTriggerActive(false);
 			rmSetTriggerRunImmediately(true);
@@ -3122,7 +3122,7 @@ void main(void)
 			rmAddTriggerEffect("Fire Event");
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain"+s+"ONPlr"+k));
 			rmAddTriggerEffect("Fire Event");
-			rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain"+s+"ONPlr"+k));
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("JonesTrain"+s+"ONPlr"+k));
 			rmAddTriggerEffect("Fire Event");
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain"+s+"ONPlr"+k));
 			rmSetTriggerPriority(4);
@@ -3148,7 +3148,7 @@ void main(void)
 			rmAddTriggerEffect("Disable Trigger");
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain"+s+"ONPlr"+k));
 			rmAddTriggerEffect("Disable Trigger");
-			rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain"+s+"ONPlr"+k));
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("JonesTrain"+s+"ONPlr"+k));
 			rmAddTriggerEffect("Disable Trigger");
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain"+s+"ONPlr"+k));
 			rmSetTriggerPriority(4);
@@ -3185,7 +3185,7 @@ void main(void)
 	{
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesGrace"); //operator
+		rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesJones"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 	}
 	if (pirateCaptain==3)

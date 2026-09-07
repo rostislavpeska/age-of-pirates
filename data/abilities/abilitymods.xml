@@ -445,4 +445,10 @@
   <zpwokoudiverland>
     <ability>zpPowerMGMove<rof>10</rof><castonself>true</castonself><forceshowrollover>true</forceshowrollover></ability>
   </zpwokoudiverland>
+  <zpspcbonhommerichard>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpspcbonhommerichard>
+  <zpspcserapis>
+    <ability>PowerBroadside<rof>60</rof></ability>
+  </zpspcserapis>
 </abilitymods>

@@ -3403,6 +3403,16 @@
       <string _locid="303405">The Fisherman's Guild is producing Coin for the whole team.</string>
       <string _locid="303406">Can't build Dock next to a Fisherman's Guild</string>
       <string _locid="303407">Phanar Academy</string>
+      <string _locid="303408">Jones Flagship</string>
+      <string _locid="303409">ZP SPC Bonhomme Richard</string>
+      <string _locid="303410">ZP SPC Serapis</string>
+      <string _locid="303411">Pirate flagship with a powerful broadside attack ability.</string>
+      <string _locid="303412">John Paul Jones (Map Bonus)</string>
+      <string _locid="303413">&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBonhomme Richard \n\n&lt;color=0.0, 1.0, 0.0&gt;Bonus:&lt;/color&gt; Ironclads and Steamers get 15% more hitpoints. \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECH:&lt;/color&gt; \nPrize of Flamborough Head</string>
+      <string _locid="303414">Bonhomme Richard</string>
+      <string _locid="303415">Serapis</string>
+      <string _locid="303416">Prize of Flamborough Head</string>
+      <string _locid="303417">Ships a second pirate flagship, the Serapis, and allows two flagships to sail at once.</string>
       
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

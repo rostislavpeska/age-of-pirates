@@ -55,6 +55,16 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>zpSPCPirateDock</building>
+      <multipleblockunit>zpSPCBonhommeRichardProxy</multipleblockunit>
+      <units>
+        <unit>zpSPCBonhommeRichard</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>zpSPCPirateDockB</building>
       <multipleblockunit>zpPrivateerProxy</multipleblockunit>
       <units>
@@ -89,6 +99,16 @@
       <multipleblockunit>zpSPCNeptuneGalleyProxy</multipleblockunit>
       <units>
         <unit>zpSPCNeptuneGalley</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
+      <building>zpSPCPirateDockB</building>
+      <multipleblockunit>zpSPCBonhommeRichardProxy</multipleblockunit>
+      <units>
+        <unit>zpSPCBonhommeRichard</unit>
       </units>
       <unitcounts>
         <count>1</count>
