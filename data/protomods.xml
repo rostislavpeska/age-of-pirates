@@ -37710,6 +37710,8 @@
       <rate type="YPLivestockPenAsian">0.500000</rate>
       <rate type="deLivestockMarket">0.250000</rate>
       <rate type="zpSPCTownMill">0.500000</rate>
+      <rate type="zpLivestockPenClone">0.500000</rate>
+      <rate type="zpSPCAztecGranary">0.500000</rate>
     </protoaction>
     <protoaction>
       <name>GatherHacienda</name>
@@ -73193,6 +73195,325 @@
     <flag>ForceUpdateVisualWhenCnverted</flag>
     <flag>TieToWaterSurface</flag>
     <flag>FlattenGround</flag>
+  </unit>
+  <!-- Herdables: let every livestock animal fatten at the mod's own
+       livestock buildings, the way Sheep / Cow / ypGoat already do.
+       Vanilla rates are kept verbatim; zpLivestockPenClone and
+       zpSPCAztecGranary take the animal's own LivestockPen rate and
+       zpSPCTownMill half of it, matching the existing three records.
+       GatherHacienda keeps deHacienda AND adds the Aztec granary. -->
+  <unit name="Llama">
+    <protoaction>
+      <name>Gather</name>
+      <rate type="LivestockPen">0.750000</rate>
+      <rate type="deLivestockMarket">0.375000</rate>
+      <rate type="Farm">0.750000</rate>
+      <rate type="ypVillage">0.750000</rate>
+      <rate type="YPLivestockPenAsian">0.750000</rate>
+      <rate type="deFolwarkLivestock">0.750000</rate>
+      <rate type="zpLivestockPenClone">0.750000</rate>
+      <rate type="zpSPCTownMill">0.375000</rate>
+      <rate type="zpSPCAztecGranary">0.750000</rate>
+    </protoaction>
+    <protoaction>
+      <name>GatherHacienda</name>
+      <rate type="deHacienda" inventoryrate="1.000000">1.000000</rate>
+      <rate type="zpSPCAztecGranary" inventoryrate="1.000000">1.000000</rate>
+      <rate type="deHacienda" resource="Food">0.133333</rate>
+      <rate type="zpSPCAztecGranary" resource="Food">0.133333</rate>
+      <rate type="deHacienda" resource="Gold">0.113334</rate>
+      <rate type="zpSPCAztecGranary" resource="Gold">0.113334</rate>
+      <rate type="deHacienda" resource="Wood">0.250000</rate>
+      <rate type="zpSPCAztecGranary" resource="Wood">0.250000</rate>
+    </protoaction>
+  </unit>
+  <unit name="ypWaterBuffalo">
+    <protoaction>
+      <name>Gather</name>
+      <rate type="LivestockPen">1.000000</rate>
+      <rate type="deLivestockMarket">0.500000</rate>
+      <rate type="Farm">1.000000</rate>
+      <rate type="ypVillage">1.000000</rate>
+      <rate type="YPLivestockPenAsian">1.000000</rate>
+      <rate type="deFolwarkLivestock">0.500000</rate>
+      <rate type="zpLivestockPenClone">1.000000</rate>
+      <rate type="zpSPCTownMill">0.500000</rate>
+      <rate type="zpSPCAztecGranary">1.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>GatherHacienda</name>
+      <rate type="deHacienda" inventoryrate="1.000000">1.000000</rate>
+      <rate type="zpSPCAztecGranary" inventoryrate="1.000000">1.000000</rate>
+      <rate type="deHacienda" resource="Food">0.166667</rate>
+      <rate type="zpSPCAztecGranary" resource="Food">0.166667</rate>
+      <rate type="deHacienda" resource="Gold">0.113334</rate>
+      <rate type="zpSPCAztecGranary" resource="Gold">0.113334</rate>
+      <rate type="deHacienda" resource="Wood">0.250000</rate>
+      <rate type="zpSPCAztecGranary" resource="Wood">0.250000</rate>
+    </protoaction>
+  </unit>
+  <unit name="ypYak">
+    <protoaction>
+      <name>Gather</name>
+      <rate type="LivestockPen">1.250000</rate>
+      <rate type="deLivestockMarket">0.625000</rate>
+      <rate type="Farm">1.250000</rate>
+      <rate type="ypVillage">1.250000</rate>
+      <rate type="YPLivestockPenAsian">1.250000</rate>
+      <rate type="deFolwarkLivestock">1.250000</rate>
+      <rate type="zpLivestockPenClone">1.250000</rate>
+      <rate type="zpSPCTownMill">0.625000</rate>
+      <rate type="zpSPCAztecGranary">1.250000</rate>
+    </protoaction>
+    <protoaction>
+      <name>GatherHacienda</name>
+      <rate type="deHacienda" inventoryrate="1.000000">1.000000</rate>
+      <rate type="zpSPCAztecGranary" inventoryrate="1.000000">1.000000</rate>
+      <rate type="deHacienda" resource="Food">0.133333</rate>
+      <rate type="zpSPCAztecGranary" resource="Food">0.133333</rate>
+      <rate type="deHacienda" resource="Gold">0.113334</rate>
+      <rate type="zpSPCAztecGranary" resource="Gold">0.113334</rate>
+      <rate type="deHacienda" resource="Wood">0.250000</rate>
+      <rate type="zpSPCAztecGranary" resource="Wood">0.250000</rate>
+    </protoaction>
+  </unit>
+  <unit name="ypGoatFat">
+    <protoaction>
+      <name>Gather</name>
+      <rate type="LivestockPen">0.750000</rate>
+      <rate type="deLivestockMarket">0.375000</rate>
+      <rate type="Farm">0.750000</rate>
+      <rate type="ypVillage">0.750000</rate>
+      <rate type="YPLivestockPenAsian">0.750000</rate>
+      <rate type="deFolwarkLivestock">0.750000</rate>
+      <rate type="zpLivestockPenClone">0.750000</rate>
+      <rate type="zpSPCTownMill">0.375000</rate>
+      <rate type="zpSPCAztecGranary">0.750000</rate>
+    </protoaction>
+    <protoaction>
+      <name>GatherHacienda</name>
+      <rate type="deHacienda" inventoryrate="1.000000">1.000000</rate>
+      <rate type="zpSPCAztecGranary" inventoryrate="1.000000">1.000000</rate>
+      <rate type="deHacienda" resource="Food">0.100000</rate>
+      <rate type="zpSPCAztecGranary" resource="Food">0.100000</rate>
+      <rate type="deHacienda" resource="Gold">0.068004</rate>
+      <rate type="zpSPCAztecGranary" resource="Gold">0.068004</rate>
+      <rate type="deHacienda" resource="Wood">0.150000</rate>
+      <rate type="zpSPCAztecGranary" resource="Wood">0.150000</rate>
+    </protoaction>
+  </unit>
+  <unit name="ypSacredCow">
+    <protoaction>
+      <name>Gather</name>
+      <rate type="LivestockPen">1.000000</rate>
+      <rate type="deLivestockMarket">0.500000</rate>
+      <rate type="Farm">1.000000</rate>
+      <rate type="ypVillage">1.000000</rate>
+      <rate type="YPLivestockPenAsian">1.000000</rate>
+      <rate type="deFolwarkLivestock">1.000000</rate>
+      <rate type="zpLivestockPenClone">1.000000</rate>
+      <rate type="zpSPCTownMill">0.500000</rate>
+      <rate type="zpSPCAztecGranary">1.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>GatherHacienda</name>
+      <rate type="deHacienda" inventoryrate="1.000000">1.000000</rate>
+      <rate type="zpSPCAztecGranary" inventoryrate="1.000000">1.000000</rate>
+      <rate type="deHacienda" resource="Food">0.166667</rate>
+      <rate type="zpSPCAztecGranary" resource="Food">0.166667</rate>
+      <rate type="deHacienda" resource="Gold">0.113334</rate>
+      <rate type="zpSPCAztecGranary" resource="Gold">0.113334</rate>
+      <rate type="deHacienda" resource="Wood">0.250000</rate>
+      <rate type="zpSPCAztecGranary" resource="Wood">0.250000</rate>
+    </protoaction>
+  </unit>
+  <unit name="deSangaCattle">
+    <protoaction>
+      <name>Gather</name>
+      <rate type="LivestockPen">1.000000</rate>
+      <rate type="Farm">1.000000</rate>
+      <rate type="ypVillage">1.000000</rate>
+      <rate type="YPLivestockPenAsian">1.000000</rate>
+      <rate type="deLivestockMarket">0.500000</rate>
+      <rate type="deFolwarkLivestock">1.000000</rate>
+      <rate type="zpLivestockPenClone">1.000000</rate>
+      <rate type="zpSPCTownMill">0.500000</rate>
+      <rate type="zpSPCAztecGranary">1.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>GatherHacienda</name>
+      <rate type="deHacienda" inventoryrate="1.000000">1.000000</rate>
+      <rate type="zpSPCAztecGranary" inventoryrate="1.000000">1.000000</rate>
+      <rate type="deHacienda" resource="Food">0.166667</rate>
+      <rate type="zpSPCAztecGranary" resource="Food">0.166667</rate>
+      <rate type="deHacienda" resource="Gold">0.113334</rate>
+      <rate type="zpSPCAztecGranary" resource="Gold">0.113334</rate>
+      <rate type="deHacienda" resource="Wood">0.250000</rate>
+      <rate type="zpSPCAztecGranary" resource="Wood">0.250000</rate>
+    </protoaction>
+  </unit>
+  <unit name="deZebuCattle">
+    <protoaction>
+      <name>Gather</name>
+      <rate type="LivestockPen">1.000000</rate>
+      <rate type="Farm">1.000000</rate>
+      <rate type="ypVillage">1.000000</rate>
+      <rate type="YPLivestockPenAsian">1.000000</rate>
+      <rate type="deLivestockMarket">0.500000</rate>
+      <rate type="deFolwarkLivestock">1.000000</rate>
+      <rate type="zpLivestockPenClone">1.000000</rate>
+      <rate type="zpSPCTownMill">0.500000</rate>
+      <rate type="zpSPCAztecGranary">1.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>GatherHacienda</name>
+      <rate type="deHacienda" inventoryrate="1.000000">1.000000</rate>
+      <rate type="zpSPCAztecGranary" inventoryrate="1.000000">1.000000</rate>
+      <rate type="deHacienda" resource="Food">0.166667</rate>
+      <rate type="zpSPCAztecGranary" resource="Food">0.166667</rate>
+      <rate type="deHacienda" resource="Gold">0.113334</rate>
+      <rate type="zpSPCAztecGranary" resource="Gold">0.113334</rate>
+      <rate type="deHacienda" resource="Wood">0.250000</rate>
+      <rate type="zpSPCAztecGranary" resource="Wood">0.250000</rate>
+    </protoaction>
+  </unit>
+  <unit name="deChonkyCattle">
+    <protoaction>
+      <name>Gather</name>
+      <rate type="LivestockPen">1.000000</rate>
+      <rate type="Farm">1.000000</rate>
+      <rate type="ypVillage">1.000000</rate>
+      <rate type="YPLivestockPenAsian">1.000000</rate>
+      <rate type="deLivestockMarket">0.500000</rate>
+      <rate type="deFolwarkLivestock">1.000000</rate>
+      <rate type="zpLivestockPenClone">1.000000</rate>
+      <rate type="zpSPCTownMill">0.500000</rate>
+      <rate type="zpSPCAztecGranary">1.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>GatherHacienda</name>
+      <rate type="deHacienda" inventoryrate="1.000000">1.000000</rate>
+      <rate type="zpSPCAztecGranary" inventoryrate="1.000000">1.000000</rate>
+      <rate type="deHacienda" resource="Food">0.300000</rate>
+      <rate type="zpSPCAztecGranary" resource="Food">0.300000</rate>
+      <rate type="deHacienda" resource="Gold">0.204012</rate>
+      <rate type="zpSPCAztecGranary" resource="Gold">0.204012</rate>
+      <rate type="deHacienda" resource="Wood">0.450000</rate>
+      <rate type="zpSPCAztecGranary" resource="Wood">0.450000</rate>
+    </protoaction>
+  </unit>
+  <unit name="deEggWoodCattle">
+    <protoaction>
+      <name>Gather</name>
+      <rate type="LivestockPen">1.000000</rate>
+      <rate type="Farm">1.000000</rate>
+      <rate type="ypVillage">1.000000</rate>
+      <rate type="YPLivestockPenAsian">1.000000</rate>
+      <rate type="deLivestockMarket">0.500000</rate>
+      <rate type="deFolwarkLivestock">1.000000</rate>
+      <rate type="zpLivestockPenClone">1.000000</rate>
+      <rate type="zpSPCTownMill">0.500000</rate>
+      <rate type="zpSPCAztecGranary">1.000000</rate>
+    </protoaction>
+  </unit>
+  <unit name="deUnknownWoodCattle">
+    <protoaction>
+      <name>Gather</name>
+      <rate type="LivestockPen">1.000000</rate>
+      <rate type="Farm">1.000000</rate>
+      <rate type="ypVillage">1.000000</rate>
+      <rate type="YPLivestockPenAsian">1.000000</rate>
+      <rate type="deLivestockMarket">0.500000</rate>
+      <rate type="deFolwarkLivestock">1.000000</rate>
+      <rate type="zpLivestockPenClone">1.000000</rate>
+      <rate type="zpSPCTownMill">0.500000</rate>
+      <rate type="zpSPCAztecGranary">1.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>GatherHacienda</name>
+      <rate type="deHacienda" inventoryrate="1.000000">1.000000</rate>
+      <rate type="zpSPCAztecGranary" inventoryrate="1.000000">1.000000</rate>
+      <rate type="deHacienda" resource="Food">0.166667</rate>
+      <rate type="zpSPCAztecGranary" resource="Food">0.166667</rate>
+      <rate type="deHacienda" resource="Gold">0.113334</rate>
+      <rate type="zpSPCAztecGranary" resource="Gold">0.113334</rate>
+      <rate type="deHacienda" resource="Wood">0.250000</rate>
+      <rate type="zpSPCAztecGranary" resource="Wood">0.250000</rate>
+    </protoaction>
+  </unit>
+  <unit name="deUnknownGoldCattle">
+    <protoaction>
+      <name>Gather</name>
+      <rate type="LivestockPen">1.000000</rate>
+      <rate type="Farm">1.000000</rate>
+      <rate type="ypVillage">1.000000</rate>
+      <rate type="YPLivestockPenAsian">1.000000</rate>
+      <rate type="deLivestockMarket">0.500000</rate>
+      <rate type="deFolwarkLivestock">1.000000</rate>
+      <rate type="zpLivestockPenClone">1.000000</rate>
+      <rate type="zpSPCTownMill">0.500000</rate>
+      <rate type="zpSPCAztecGranary">1.000000</rate>
+    </protoaction>
+    <protoaction>
+      <name>GatherHacienda</name>
+      <rate type="deHacienda" inventoryrate="1.000000">1.000000</rate>
+      <rate type="zpSPCAztecGranary" inventoryrate="1.000000">1.000000</rate>
+      <rate type="deHacienda" resource="Food">0.166667</rate>
+      <rate type="zpSPCAztecGranary" resource="Food">0.166667</rate>
+      <rate type="deHacienda" resource="Gold">0.113334</rate>
+      <rate type="zpSPCAztecGranary" resource="Gold">0.113334</rate>
+      <rate type="deHacienda" resource="Wood">0.250000</rate>
+      <rate type="zpSPCAztecGranary" resource="Wood">0.250000</rate>
+    </protoaction>
+  </unit>
+  <unit name="Pig">
+    <protoaction>
+      <name>Gather</name>
+      <rate type="LivestockPen">0.500000</rate>
+      <rate type="Farm">0.500000</rate>
+      <rate type="ypVillage">0.500000</rate>
+      <rate type="YPLivestockPenAsian">0.500000</rate>
+      <rate type="deLivestockMarket">0.250000</rate>
+      <rate type="deFolwarkLivestock">0.500000</rate>
+      <rate type="zpLivestockPenClone">0.500000</rate>
+      <rate type="zpSPCTownMill">0.250000</rate>
+      <rate type="zpSPCAztecGranary">0.500000</rate>
+    </protoaction>
+    <protoaction>
+      <name>GatherHacienda</name>
+      <rate type="deHacienda" inventoryrate="1.000000">1.000000</rate>
+      <rate type="zpSPCAztecGranary" inventoryrate="1.000000">1.000000</rate>
+      <rate type="deHacienda" resource="Food">0.100000</rate>
+      <rate type="zpSPCAztecGranary" resource="Food">0.100000</rate>
+      <rate type="deHacienda" resource="Gold">0.068004</rate>
+      <rate type="zpSPCAztecGranary" resource="Gold">0.068004</rate>
+      <rate type="deHacienda" resource="Wood">0.150000</rate>
+      <rate type="zpSPCAztecGranary" resource="Wood">0.150000</rate>
+    </protoaction>
+  </unit>
+  <unit name="Goose">
+    <protoaction>
+      <name>Gather</name>
+      <rate type="LivestockPen">0.500000</rate>
+      <rate type="Farm">0.500000</rate>
+      <rate type="ypVillage">0.500000</rate>
+      <rate type="YPLivestockPenAsian">0.500000</rate>
+      <rate type="deLivestockMarket">0.250000</rate>
+      <rate type="zpLivestockPenClone">0.500000</rate>
+      <rate type="zpSPCTownMill">0.250000</rate>
+      <rate type="zpSPCAztecGranary">0.500000</rate>
+    </protoaction>
+    <protoaction>
+      <name>GatherHacienda</name>
+      <rate type="deHacienda" inventoryrate="1.000000">1.000000</rate>
+      <rate type="zpSPCAztecGranary" inventoryrate="1.000000">1.000000</rate>
+      <rate type="deHacienda" resource="Food">0.100000</rate>
+      <rate type="zpSPCAztecGranary" resource="Food">0.100000</rate>
+      <rate type="deHacienda" resource="Gold">0.068004</rate>
+      <rate type="zpSPCAztecGranary" resource="Gold">0.068004</rate>
+      <rate type="deHacienda" resource="Wood">0.150000</rate>
+      <rate type="zpSPCAztecGranary" resource="Wood">0.150000</rate>
+    </protoaction>
   </unit>
   <!--TEST AND TEMPORARY CONTENT-->
 
