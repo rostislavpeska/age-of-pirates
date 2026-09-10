@@ -47787,7 +47787,7 @@
     <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
     <initialhitpoints>1560.0000</initialhitpoints>
     <maxhitpoints>1560.0000</maxhitpoints>
-    <los>9.0000</los>
+    <los>25.0000</los>
     <buildpoints>5.0000</buildpoints>
     <buildingworkrate>1.0000</buildingworkrate>
     <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
@@ -73146,6 +73146,53 @@
       <damagearea>1.000000</damagearea>
       <damageflags>GAIAEnemy</damageflags>
     </protoaction>
+  </unit>
+  <!-- Lighthouse prop that sits on ground: clone of zpPropWaterTower (20630),
+       differing ONLY by a 0.5 obstruction radius and the FlattenGround flag.
+       Used by the Istanbul deco lighthouse groupings; the naval-fort groupings
+       keep the original zero-obstruction zpPropWaterTower. -->
+  <unit id="21163" name="zpPropWaterTowerFlatten">
+    <dbid>21163</dbid>
+    <displaynameid>302230</displaynameid>
+    <editornameid>302230</editornameid>
+    <obstructionradiusx>0.5000</obstructionradiusx>
+    <obstructionradiusz>0.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>buildings\spc\lighthouse\lighthouse.xml</animfile>
+    <portraiticon>resources\art\units\natives\native_venetians.png</portraiticon>
+    <initialhitpoints>1560.0000</initialhitpoints>
+    <maxhitpoints>1560.0000</maxhitpoints>
+    <los>25.0000</los>
+    <buildpoints>5.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <minimapcolor red="1.0000" blue="1.0000" green="1.0000">
+    </minimapcolor>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>TowerSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>AllowSocketPlacement</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotDeleteable</flag>
+    <flag>NotSelectable</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>FlattenGround</flag>
   </unit>
   <!--TEST AND TEMPORARY CONTENT-->
 

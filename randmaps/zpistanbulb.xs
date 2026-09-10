@@ -5098,6 +5098,16 @@ void main(void)
 		rmSetTriggerEffectParamInt("TrgPlayer", fo);
 		rmSetTriggerEffectParam("UnitType", "zpSPCCapturableFlagInvisibleNaval");
 		rmSetTriggerEffectParamInt("Dist", 20);
+		// The lighthouse prop follows the fort too, so the tower reads as part
+		// of the captured fort instead of staying gaia. It sits 9.75 from the
+		// castle - well inside Dist 20 - and carries
+		// ForceUpdateVisualWhenCnverted, so its visual refreshes on the change.
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", ""+unit_waterFortCastleN);
+		rmSetTriggerEffectParamInt("SrcPlayer", fd);
+		rmSetTriggerEffectParamInt("TrgPlayer", fo);
+		rmSetTriggerEffectParam("UnitType", "zpPropWaterTower");
+		rmSetTriggerEffectParamInt("Dist", 20);
 	}
 	// arm the sister followers so the NEXT owner change is caught
 	for (fd = 1; <= cNumberNonGaiaPlayers)
@@ -5209,6 +5219,16 @@ void main(void)
 		rmSetTriggerEffectParamInt("SrcPlayer", fd);
 		rmSetTriggerEffectParamInt("TrgPlayer", fo);
 		rmSetTriggerEffectParam("UnitType", "zpSPCCapturableFlagInvisibleNaval");
+		rmSetTriggerEffectParamInt("Dist", 20);
+		// The lighthouse prop follows the fort too, so the tower reads as part
+		// of the captured fort instead of staying gaia. It sits 9.75 from the
+		// castle - well inside Dist 20 - and carries
+		// ForceUpdateVisualWhenCnverted, so its visual refreshes on the change.
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", ""+unit_waterFortCastleS);
+		rmSetTriggerEffectParamInt("SrcPlayer", fd);
+		rmSetTriggerEffectParamInt("TrgPlayer", fo);
+		rmSetTriggerEffectParam("UnitType", "zpPropWaterTower");
 		rmSetTriggerEffectParamInt("Dist", 20);
 	}
 	// arm the sister followers so the NEXT owner change is caught

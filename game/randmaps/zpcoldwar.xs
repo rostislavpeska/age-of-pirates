@@ -91,8 +91,8 @@ void main(void)
    rmSetSeaLevel(2.0);
    rmSetSeaType("ZP Bering Strait");
  	rmSetBaseTerrainMix("yukon snow");
-	rmSetMapType("yukon");
-   rmSetMapType("arcticwater");
+	rmSetMapType("arcticterritories");
+   rmSetMapType("arcticterritorieswater");
 	rmSetMapType("snow");
 	rmSetMapType("water");
 
@@ -180,6 +180,7 @@ void main(void)
    int mediumAvoidImpassableLand=rmCreateTerrainDistanceConstraint("medium avoid impassable land", "Land", false, 12.0);
    int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 40.0);
    int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 50.0);
+   int avoidFishingHole=rmCreateTypeDistanceConstraint("nugget avoid fishing hole", "deFishingHole", 12.0);
    int fishVsFishID=rmCreateTypeDistanceConstraint("fish v fish", "fishSalmon", 20.0);
    int RevealerVSRevealer=rmCreateTypeDistanceConstraint("revealer v revealer", "zpCinematicRevealerToAll", 10.0);
    int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 8.0);
@@ -637,7 +638,7 @@ rmBuildArea(bonusIsland2);
    rmAddTradeRouteWaypoint(tradeRouteID, 0.0, 0.6);
 
 
-	bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "snow");
+	bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "arctic1");
 
    vector socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.3);
       rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
@@ -666,7 +667,7 @@ rmBuildArea(bonusIsland2);
    rmAddTradeRouteWaypoint(tradeRouteID2, 0.6, 0.0);
 
 
-	bool placedTradeRoute2 = rmBuildTradeRoute(tradeRouteID2, "snow");
+	bool placedTradeRoute2 = rmBuildTradeRoute(tradeRouteID2, "arctic1");
 
    vector socketLoc2  = rmGetTradeRouteWayPoint(tradeRouteID2, 0.3);
       rmPlaceObjectDefAtPoint(socketID2, 0, socketLoc2);
@@ -854,7 +855,7 @@ rmAddObjectDefConstraint(TCID, avoidGlacier);
    rmAddObjectDefConstraint(playerSilverID, avoidImpassableLand); 
 
    int playerDeerID=rmCreateObjectDef("player deer");
-   rmAddObjectDefItem(playerDeerID, "caribou", rmRandInt(10,15), 10.0);
+   rmAddObjectDefItem(playerDeerID, "caribou", rmRandInt(8,12), 10.0);
    rmSetObjectDefMinDistance(playerDeerID, 15.0);
    rmSetObjectDefMaxDistance(playerDeerID, 30.0);
    rmAddObjectDefConstraint(playerDeerID, avoidImpassableLand);
@@ -998,6 +999,22 @@ rmClearClosestPointConstraints();
    // Text
 	rmSetStatusText("",0.70);
 
+   // FISHING HOLES - fixed positions: one on each side (north / south, 12 tiles) of both inventor settlements,
+   // taken from the measured settlement position, and one on the centre of each bonus island
+   int fishingHoleID=rmCreateObjectDef("fishing hole");
+   rmAddObjectDefItem(fishingHoleID, "deFishingHole", 1, 0.0);
+   rmSetObjectDefMinDistance(fishingHoleID, 0.0);
+   rmSetObjectDefMaxDistance(fishingHoleID, 6.0);
+   if (subCiv2 == rmGetCivID("zpscientists"))
+   {
+      rmPlaceObjectDefAtLoc(fishingHoleID, 0, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc1)) + rmXTilesToFraction(12));
+      rmPlaceObjectDefAtLoc(fishingHoleID, 0, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc1)) - rmXTilesToFraction(12));
+      rmPlaceObjectDefAtLoc(fishingHoleID, 0, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc2)) + rmXTilesToFraction(12));
+      rmPlaceObjectDefAtLoc(fishingHoleID, 0, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc2)) - rmXTilesToFraction(12));
+   }
+   rmPlaceObjectDefAtLoc(fishingHoleID, 0, 0.22, 0.22);
+   rmPlaceObjectDefAtLoc(fishingHoleID, 0, 0.78, 0.78);
+
 // Nuggets
  
 	int nuggetNorth= rmCreateObjectDef("nugget easy north"); 
@@ -1005,6 +1022,7 @@ rmClearClosestPointConstraints();
 	rmSetNuggetDifficulty(1, 1);
 	rmAddObjectDefConstraint(nuggetNorth, shortAvoidImpassableLand);
   	rmAddObjectDefConstraint(nuggetNorth, avoidNugget);
+  	rmAddObjectDefConstraint(nuggetNorth, avoidFishingHole);
   	rmAddObjectDefConstraint(nuggetNorth, avoidAll);
 	rmAddObjectDefConstraint(nuggetNorth, avoidTCshort);
    rmAddObjectDefConstraint(nuggetNorth, avoidWater4);
@@ -1017,6 +1035,7 @@ rmClearClosestPointConstraints();
 	rmSetNuggetDifficulty(1, 1);
 	rmAddObjectDefConstraint(nuggetSouth, shortAvoidImpassableLand);
   	rmAddObjectDefConstraint(nuggetSouth, avoidNugget);
+  	rmAddObjectDefConstraint(nuggetSouth, avoidFishingHole);
   	rmAddObjectDefConstraint(nuggetSouth, avoidAll);
 	rmAddObjectDefConstraint(nuggetSouth, avoidTCshort);
    rmAddObjectDefConstraint(nuggetSouth, labConstraint);
@@ -1029,6 +1048,7 @@ rmClearClosestPointConstraints();
 	rmSetNuggetDifficulty(4, 4);
 	rmAddObjectDefConstraint(nugget2, shortAvoidImpassableLand);
   	rmAddObjectDefConstraint(nugget2, avoidNugget);
+  	rmAddObjectDefConstraint(nugget2, avoidFishingHole);
   	rmAddObjectDefConstraint(nugget2, avoidAll);
 	rmAddObjectDefConstraint(nugget2, avoidTCshort);
    rmAddObjectDefConstraint(nugget2, avoidWater4);
@@ -1040,6 +1060,7 @@ rmClearClosestPointConstraints();
 	rmSetNuggetDifficulty(4, 4);
 	rmAddObjectDefConstraint(nugget1, shortAvoidImpassableLand);
   	rmAddObjectDefConstraint(nugget1, avoidNugget);
+  	rmAddObjectDefConstraint(nugget1, avoidFishingHole);
   	rmAddObjectDefConstraint(nugget1, avoidAll);
 	rmAddObjectDefConstraint(nugget1, avoidTCshort);
    rmAddObjectDefConstraint(nugget1, avoidWater4);
@@ -1070,9 +1091,9 @@ rmClearClosestPointConstraints();
    int deerID=rmCreateObjectDef("deer herd");
 	int bonusChance=rmRandFloat(0, 1);
    if(bonusChance<0.5)   
-      rmAddObjectDefItem(deerID, "muskOx", rmRandInt(4,6), 10.0);
+      rmAddObjectDefItem(deerID, "muskOx", rmRandInt(3,5), 10.0);
    else
-      rmAddObjectDefItem(deerID, "muskOx", rmRandInt(8,10), 10.0);
+      rmAddObjectDefItem(deerID, "muskOx", rmRandInt(6,8), 10.0);
    rmSetObjectDefMinDistance(deerID, 0.0);
    rmSetObjectDefMaxDistance(deerID, rmXFractionToMeters(0.5));
 	rmAddObjectDefConstraint(deerID, avoidAll);
@@ -1084,9 +1105,9 @@ rmClearClosestPointConstraints();
    // DEER	West
    int deer2ID=rmCreateObjectDef("mush deer herd");
    if(bonusChance<0.5)   
-      rmAddObjectDefItem(deer2ID, "ypmuskdeer", rmRandInt(4,6), 10.0);
+      rmAddObjectDefItem(deer2ID, "ypmuskdeer", rmRandInt(3,5), 10.0);
    else
-      rmAddObjectDefItem(deer2ID, "ypmuskdeer", rmRandInt(8,10), 10.0);
+      rmAddObjectDefItem(deer2ID, "ypmuskdeer", rmRandInt(6,8), 10.0);
    rmSetObjectDefMinDistance(deer2ID, 0.0);
    rmSetObjectDefMaxDistance(deer2ID, rmXFractionToMeters(0.5));
 	rmAddObjectDefConstraint(deer2ID, avoidAll);

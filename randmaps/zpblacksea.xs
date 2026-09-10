@@ -1634,6 +1634,16 @@ void main(void)
 				rmSetTriggerEffectParamInt("TrgPlayer",k);
 				rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
 				rmSetTriggerEffectParamInt("Dist",15);
+				// The lighthouse prop follows the castle too, so the tower reads
+				// as part of the captured fort instead of staying gaia. It sits
+				// 9.75 from the castle - inside Dist 15, same as the flags at
+				// 12.9 - and carries ForceUpdateVisualWhenCnverted.
+				rmAddTriggerEffect("Convert Units in Area");
+				rmSetTriggerEffectParam("SrcObject",""+kothCastleMod);
+				rmSetTriggerEffectParamInt("SrcPlayer",i);
+				rmSetTriggerEffectParamInt("TrgPlayer",k);
+				rmSetTriggerEffectParam("UnitType","zpPropWaterTower");
+				rmSetTriggerEffectParamInt("Dist",15);
 			}
 			// arm the sister followers so the NEXT owner change is caught
 			for (i=1; <= cNumberNonGaiaPlayers) {

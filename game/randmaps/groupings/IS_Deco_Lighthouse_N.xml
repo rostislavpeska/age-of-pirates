@@ -33,7 +33,7 @@
 		<unit variation="21" posx="-9.4773" posz="-1.5512" orientx="-0.0702" orienty="0.0000" orientz="0.9975">ShorelineRockSmallNE</unit>
 		<unit variation="229" posx="2.2555" posz="2.0124" orientx="0.5590" orienty="0.0000" orientz="-0.8292">ShorelineRockSmallNE</unit>
 		<unit variation="35" posx="1.2178" posz="4.1902" orientx="0.9274" orienty="0.0000" orientz="0.3741">ShorelineRockSmallNE</unit>
-		<unit variation="175" posx="-0.7450" posz="1.2893" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpPropWaterTower</unit>
+		<unit variation="175" posx="-0.7450" posz="1.2893" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpPropWaterTowerFlatten</unit>
 		<unit variation="180" posx="0.7685" posz="7.2310" orientx="-0.9145" orienty="0.0000" orientz="0.4045">ShorelineRockSmallNE</unit>
 		<unit variation="135" posx="1.7488" posz="7.0641" orientx="-0.9354" orienty="0.0000" orientz="-0.3537">ShorelineRockSmallNE</unit>
 	</units>
