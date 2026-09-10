@@ -2324,8 +2324,16 @@ rule tasmaniaFailsafe
 inactive
 minInterval 20
 {
+   int tcWagon = getUnit(cUnitTypeCoveredWagon, cMyID, cUnitStateAlive);
+
    if (kbUnitCount(cMyID, cUnitTypeCoveredWagon, cUnitStateAlive) > 0)
    {
+      //if (aiPlanGetActive(gTCBuildPlanID) == false)
+      //{
+         aiPlanDestroy(gTCBuildPlanID);
+         aiTaskUnitMove(tcWagon, getRandomPoint(gTCSearchVector, 10));
+         //aiChat(1, "Moving tcWagon");
+      //}
       init();
    }
    else
@@ -4793,11 +4801,11 @@ minInterval 30
 //==============================================================================
 // ZP Inuit Tech Monitor
 //==============================================================================
-/* rule zpInuitTechMonitor
+rule zpInuitTechMonitor
 inactive
 mininterval 60
 {
-   if (kbUnitCount(cMyID, cUnitTypezpSocketInuits, cUnitStateAny) == 0)
+   if (kbUnitCount(cMyID, cUnitTypedeSocketInuit, cUnitStateAny) == 0)
       {
       return; // Player has no Inuit socket.
       }
@@ -4822,7 +4830,7 @@ mininterval 60
           xsDisableSelf();
       }
   
-}*/
+}
 
 //==============================================================================
 // ZP Maltese Tech Monitor

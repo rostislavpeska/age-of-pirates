@@ -2734,7 +2734,7 @@ void updateResources()
             farmInfo = getValidResourceInfo(cResourceFood, cFarmNaturalResourceDistance, gResourceSearchAllAreaGroups);
          }
          
-         if ((gCountBerries == true) && (farmInfo.amountPerGatherer < cMinResourcePerGatherer))
+         if (farmInfo.amountPerGatherer < cMinResourcePerGatherer) //  AssertiveWall: removed if (gCountBerries == true)
          {
             gTimeToFarm = true;
             debugEconomy("It's time to start farming, maxDistance="+maxDistance+
