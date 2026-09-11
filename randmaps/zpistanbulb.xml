@@ -1,6 +1,6 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <mapinfo details = "503326" displayNameID = "503325" loadDetails="503327"
-     imagepath = "ui\random_map\istanbul\istanbul_mini" cannotReplace = "" loadBackground="">
+     imagepath = "ui\random_map\istanbul\istanbul_mini" cannotReplace = "" loadBackground="ui\random_map\istanbul\istanbul_map">
     <loadss>ui\random_map\istanbul\istanbul_01</loadss>
     <loadss>ui\random_map\istanbul\istanbul_02</loadss>
     <loadss>ui\random_map\istanbul\istanbul_03</loadss>
