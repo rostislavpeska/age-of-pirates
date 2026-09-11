@@ -424,6 +424,7 @@ extern bool gDefenseReflexPaused =
 extern int gDefenseReflexBaseID = -1;                  // Set to the base ID that we're defending in this emergency
 extern vector gDefenseReflexLocation = cInvalidVector; // Location we're defending in this emergency
 extern int gDefenseReflexTimeout = 0;
+extern bool gDefensivelyOverrun = false;
 
 extern int gLandUnitPicker = -1; // Picks the best land military units to train.
 
@@ -495,6 +496,10 @@ extern int gGalleonUnit = cUnitTypeGalleon;
 extern int gFrigateUnit = cUnitTypeFrigate;
 extern int gMonitorUnit = cUnitTypeMonitor;
 extern int gCanoeUnit = -1;                    // Canoe type determined in navymanager
+
+extern int gEnemyPlayers = -1;
+extern int gSameIslandEnemyPlayers = -1;
+extern bool gForceRansomExplorer = false;
 
 extern int gRaidPlanID = -1;             // AssertiveWall: used for persistent raid plan
 

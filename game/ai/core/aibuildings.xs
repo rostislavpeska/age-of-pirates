@@ -4832,3 +4832,187 @@ inactive
 
 
 
+// Added from DE
+
+//==============================================================================
+// roundChurchConstructionMonitor
+//==============================================================================
+rule roundChurchConstructionMonitor
+inactive
+minInterval 60
+{
+   if (cvOkToFortify == false)
+   {
+      return;
+   }
+   
+   debugBuildings("--- Running rule roundChurchConstructionMonitor ---");
+
+   int mainBaseID = kbBaseGetMainID(cMyID);
+   if (mainBaseID == -1)
+   {
+      debugBuildings("We have no mainbase, can't build.");
+      return;
+   }
+   if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypedeChurchDanish) >= 0)
+   {
+      debugBuildings("We already have a Round Church build plan going, don't stack them.");
+      return;
+   }
+   if (gDefensivelyOverrun == true)
+   {
+      debugBuildings("We're currently defensively overrun, don't start a new Round Church build plan.");
+      return;
+   }
+   
+   int churchesWanted = 1;
+   // Start building more off them starting in Fortress, don't want to overburden the economy early on.
+   if (kbGetAge() >= cAge3)
+   {
+      churchesWanted = selectByDifficulty(1, 1, 2, 2, 3, 3);
+   }
+   
+   int buildLimit = kbGetBuildLimit(cMyID, cUnitTypedeChurchDanish);
+   if (churchesWanted > buildLimit)
+   {
+      churchesWanted = buildLimit;
+      aiEchoWarning("Round Church BL is out of sync with our selectByDifficulty.");
+   }
+   debugBuildings("We want " + churchesWanted + " Round Churches.");
+   
+   // Don't make any more Tower build plans if we're already at our calculated limit.
+   if (kbUnitCount(cMyID, cUnitTypedeChurchDanish, cUnitStateABQ) >= churchesWanted)
+   {
+      debugBuildings("We already have our wanted number of Round Churches.");
+      return;
+   }
+   
+   createSimpleBuildPlan(cUnitTypedeChurchDanish, 1, 50, false, cMilitaryEscrowID, mainBaseID);
+}
+
+//==============================================================================
+// customsHouseConstructionMonitor
+// Always keep 1 Customs House alive.
+//==============================================================================
+rule customsHouseConstructionMonitor
+inactive
+minInterval 30
+{
+   if (cvOkToBuild == false)
+   {
+      return;
+   }
+   
+   debugBuildings("--- Running rule rule customsHouseConstructionMonitor ---");
+
+   int mainBaseID = kbBaseGetMainID(cMyID);
+   if (mainBaseID == -1)
+   {
+      debugBuildings("We have no mainbase, can't build.");
+      return;
+   }
+   if (kbUnitCount(cMyID, cUnitTypedeCustomsHouse, cUnitStateAlive) >= 1)
+   {
+      debugBuildings("We already have a Customs House alive.");
+      return;
+   }
+   if (aiGetFallenExplorerID() >= 0)
+   {
+      debugBuildings("Our Explorer is dead and we have no Customs House, start force ransoming him.");
+      gForceRansomExplorer = true;
+      return;
+   }
+   gForceRansomExplorer = false;
+   if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypedeCustomsHouse) >= 0)
+   {
+      debugBuildings("We already have a Customs House build plan going, BL of 1.");
+      return;
+   }
+   if (gDefensivelyOverrun == true)
+   {
+      debugBuildings("We're currently defensively overrun, don't start a new Customs House build plan.");
+      return;
+   }
+   
+   createSimpleBuildPlan(cUnitTypedeCustomsHouse, 1, 100, false, cMilitaryEscrowID, mainBaseID);
+}
+
+//==============================================================================
+// folwarkConstructionMonitor
+// We always want 1 Folwark alive, then our farming logic could upgrade it to be a proper 10 slot Mill.
+//==============================================================================
+rule folwarkConstructionMonitor
+inactive
+minInterval 30
+{
+   if (cvOkToBuild == false)
+   {
+      return;
+   }
+   
+   debugBuildings("--- Running rule folwarkConstructionMonitor ---");
+
+   int mainBaseID = kbBaseGetMainID(cMyID);
+   if (mainBaseID == -1)
+   {
+      debugBuildings("We have no mainbase, can't build.");
+      return;
+   }
+   if (kbUnitCount(cMyID, cUnitTypedeFolwark, cUnitStateAlive) >= 1)
+   {
+      debugBuildings("We currently have a Folwark alive, don't need to add more.");
+      return;
+   }
+   if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypedeFolwark) >= 0)
+   {
+      debugBuildings("We already have a Folwark build plan going, don't stack them.");
+      return;
+   }
+   if (gDefensivelyOverrun == true)
+   {
+      debugBuildings("We're currently defensively overrun, don't start a new Folwark build plan.");
+      return;
+   }
+   
+   createSimpleBuildPlan(cUnitTypedeFolwark, 1, 50, false, cEconomyEscrowID, mainBaseID);
+}
+
+//==============================================================================
+// sejmConstructionMonitor
+// Always keep 1 Sejm alive.
+//==============================================================================
+rule sejmConstructionMonitor
+inactive
+minInterval 30
+{
+   if (cvOkToBuild == false)
+   {
+      return;
+   }
+   
+   debugBuildings("--- Running rule sejmConstructionMonitor ---");
+
+   int mainBaseID = kbBaseGetMainID(cMyID);
+   if (mainBaseID == -1)
+   {
+      debugBuildings("We have no mainbase, can't build.");
+      return;
+   }
+   if (kbUnitCount(cMyID, cUnitTypedeSejm, cUnitStateAlive) >= 1)
+   {
+      debugBuildings("We already have a Sejm alive.");
+      return;
+   }
+   if (aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, cUnitTypedeSejm) >= 0)
+   {
+      debugBuildings("We already have a Sejm build plan going, BL of 1.");
+      return;
+   }
+   if (gDefensivelyOverrun == true)
+   {
+      debugBuildings("We're currently defensively overrun, don't start a new Sejm build plan.");
+      return;
+   }
+   
+   createSimpleBuildPlan(cUnitTypedeSejm, 1, 50, false, cEconomyEscrowID, mainBaseID);
+}

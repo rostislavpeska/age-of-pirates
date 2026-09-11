@@ -4076,3 +4076,44 @@ minInterval 20
    }
    */
 }
+
+// AssertiveWall: Added from DE
+//==============================================================================
+// sejmTacticMonitor
+//==============================================================================
+rule sejmTacticMonitor
+inactive
+minInterval 60
+{
+   int sejmID = getUnit(cUnitTypedeSejm);
+   if (sejmID < 0)
+   {
+      // Wait for us to build it.
+      return;
+   }
+   
+   int sejmTactic = -1;
+   switch (getMostNeededResource())
+   {
+      case cResourceGold:
+      {
+         debugEconomy("Setting our Sejm to collect: gold.");
+         sejmTactic = cTacticPolicyCoin;
+         break;
+      }
+      case cResourceWood:
+      {
+         debugEconomy("Setting our Sejm to collect: wood.");
+         sejmTactic = cTacticPolicyWood;
+         break;
+      }
+      default: // Food.
+      {
+         debugEconomy("Setting our Sejm to collect: food.");
+         sejmTactic = cTacticPolicyFood;
+         break;
+      }
+   }
+   
+   aiUnitSetTactic(sejmID, sejmTactic);
+}

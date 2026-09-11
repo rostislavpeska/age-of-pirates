@@ -67,7 +67,7 @@ void initCivUnitTypes()
          gHouseUnit = cUnitTypeHouse;
       }
       
-      if ((cMyCiv == cCivGermans) || (cMyCiv == cCivRussians))
+      if ((cMyCiv == cCivGermans) || (cMyCiv == cCivRussians) || (cMyCiv == cCivDEPolish)) // AssertiveWall: added poles per DE
       {
          gHouseUnit = cUnitTypeHouseEast;
       }
@@ -81,6 +81,10 @@ void initCivUnitTypes()
       if (cMyCiv == cCivDESwedish)
       {
          gHouseUnit = cUnitTypedeTorp;
+      }
+      else if (cMyCiv == cCivDEDanish)
+      {
+         gHouseUnit = cUnitTypedeHouseDanish;
       }
       
       if (cMyCiv == cCivDEAmericans || cMyCiv == cCivDEMexicans)
@@ -100,6 +104,11 @@ void initCivUnitTypes()
    
          gFarmFoodTactic = cTacticHaciendaFood;
          gFarmGoldTactic = cTacticHaciendaCoin;
+      }
+
+      if (cMyCiv == cCivDEPolish)
+      {
+         gFarmUnit = cUnitTypedeFolwarkFarm;
       }
 
       if (cMyCiv == cCivDEItalians)
@@ -1597,7 +1606,38 @@ void initPersonality(void)
       btBiasNative = 0.0;
       btBiasTrade = 0.0;
       break;
-   }      
+   }
+   // AssertiveWall: Adding DE civs
+      case cCivDEDanish: // King Christian: Fast fortress, trade.
+      {
+         btRushBoom = 0.0;
+         if (aiRandInt(10) < 4)
+         {
+            btRushBoom = -0.5;
+         }
+         btOffenseDefense = -0.5;
+         btBiasCav = 0.0;
+         btBiasInf = 0.4;
+         btBiasArt = 0.0;
+         btBiasNative = 0.0;
+         btBiasTrade = 0.5;
+         break;
+      }
+      case cCivDEPolish: // Jan Sobieski: Rusher, native and strong cavalry focus.
+      {
+         btRushBoom = 0.7;
+         if (aiRandInt(10) < 3)
+         {
+            btRushBoom = 0.0;
+         }
+         btOffenseDefense = 0.6;
+         btBiasCav = 0.5;
+         btBiasInf = 0.0;
+         btBiasArt = 0.2;
+         btBiasNative = 0.5;
+         btBiasTrade = 0.0;
+         break;
+      }
    }
 
    if (gSPC == false)
@@ -2902,6 +2942,13 @@ void deathMatchStartupBegin(void)
       {
          createSimpleBuildPlan(cUnitTypedeCommandery, 1, 98, false, cMilitaryEscrowID, mainBaseID, 2);
       }
+
+      // AssertiveWall: added from DE
+      if (cMyCiv == cCivDEDanish)
+      {
+         createSimpleBuildPlan(cUnitTypedeCustomsHouse, 1, 98, false, cMilitaryEscrowID, mainBaseID, 1);
+      }
+
       createSimpleBuildPlan(cUnitTypeArtilleryDepot, 1, 98, false, cMilitaryEscrowID, mainBaseID, 2);
    }
    else if (civIsNative() == true)
