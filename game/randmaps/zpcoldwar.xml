@@ -1,6 +1,6 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <mapinfo details = "500553" displayNameID = "500552" loadDetails="500554" largeMapName = "zpcoldwar"
-    imagepath = "ui\random_map\coldwar\coldwar_mini" cannotReplace = "" loadBackground="ui\random_map\coldwar\coldwar_map">
+    imagepath = "ui\random_map\coldwar\coldwar_mini" cannotReplace = "" loadBackground="ui\random_map\bp_bering_strait\bering_strait_map">
    <loadss>ui\random_map\coldwar\coldwar_01</loadss>
    <loadss>ui\random_map\coldwar\coldwar_02</loadss>
    <loadss>ui\random_map\coldwar\coldwar_03</loadss>

@@ -1,6 +1,6 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <mapinfo details = "503041" displayNameID = "503040" loadDetails="503042"
-    imagepath = "ui\random_map\iceland\iceland_mini" cannotReplace = "" loadBackground="ui\random_map\iceland\iceland_map">
+    imagepath = "ui\random_map\iceland\iceland_mini" cannotReplace = "" loadBackground="ui\random_map\bp_iceland\iceland_map">
     <filter>Historical</filter>
     <loadss>ui\random_map\iceland\iceland_01</loadss>
     <loadss>ui\random_map\iceland\iceland_02</loadss>
