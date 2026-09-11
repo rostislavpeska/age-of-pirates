@@ -327,7 +327,7 @@
 				<maxrange>16.000000</maxrange>
 				<rof>4.50000</rof>
 				<damagecap>280.000000</damagecap>
-				<damagebonus type="AbstractWarship">4.000000</damagebonus>
+				<damagebonus type="AbstractWarship">2.000000</damagebonus>
 				<damagearea>1.000000</damagearea>
 				<damageflags>GAIAEnemy</damageflags>
 			</protoaction>
