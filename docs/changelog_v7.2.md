@@ -44,6 +44,7 @@ Summer 2026 release. The headline is the clean blend with the Baltic Powers DLC 
 - **Regal Ship** — heavy double-hulled warship, stronger than a Frigate but slower, with a very powerful broadside (2100 HP, 600w/500g, French crew); arrives with the Sansculotte Imperial Expedition carrying 24 Voltigeurs and benefits from the Imperial Man-O-War upgrades.
 
 ## Other improvements
+- Minor visual update of some native settlements: Pirates (buildings and props — the Tortuga house set, tower textures and the new harbour/Tortuga clutter), Orthodox and Maltese (props only).
 - Fishing-rod and basket attachments for all mod villagers (they animate at fishing holes now).
 - Cherry Orchard now dies into its own foundation socket instead of the Vineyard's.
 - Herdable fattening rates follow each animal's own vanilla numbers.
