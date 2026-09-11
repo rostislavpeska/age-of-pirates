@@ -396,7 +396,7 @@ void main(void)
 	//rmPlaceGroupingAtLoc(bastilleGrouping, 0, 0.5-rmXTilesToFraction(1), 0.5+rmXTilesToFraction(4));
 	
 	rmSetNuggetDifficulty(297, 297);
-	int victoryGrouping1 = rmPlaceGroupingInstanceAtLoc(bastilleGrouping, 0.5-rmXTilesToFraction(1), 0.5+rmXTilesToFraction(4), 0);
+	int victoryGrouping1 = rmPlaceGroupingInstanceAtLoc(bastilleGrouping, 0.5-rmXTilesToFraction(1), 0.5+rmXTilesToFraction(4)-rmZMetersToFraction(1.0), 0);   // island 1 m south (Sep 2026)
 
     // Nothe Dame West
     int notredameGrouping = rmCreateGrouping("bridge2", "EU_island_Notre_Dame");
