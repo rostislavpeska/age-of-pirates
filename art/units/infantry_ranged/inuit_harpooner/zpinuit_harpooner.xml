@@ -23,7 +23,7 @@
   </attachment>
   <component>ModelComp
     <assetreference type="GrannyModel">
-        <file>units\natives\europeans\inuit_sled\inuit_sled_rider</file>
+        <file>units\infantry_ranged\inuit_harpooner\inuit_harpooner</file>
     </assetreference>
     <attach a="harpoon_projectile" frombone="ATTACHPOINT" tobone="Bip01 Prop1" syncanims="1"></attach>
     <decal>

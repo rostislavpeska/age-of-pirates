@@ -20347,6 +20347,8 @@
       <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
       <effect type="TechStatus" status="obtainable">zpSPCBlessedCity</effect>
       <effect type="TechStatus" status="active">zpForbidStandardWarshipdShadow</effect>
+      <!-- Gunboats on Paris (stats in randmaps/zpparis.mods.xml) -->
+      <effect type="TechStatus" status="active">zpUnlockGunboats</effect>
     </effects>
   </tech>
   <tech name="zpSansculotteSpiritRevolution" type="Normal">
@@ -22694,6 +22696,14 @@
       </effect>
       <effect type="Data" amount="-5.00" subtype="BuildLimit" relativity="Absolute">
         <target type="ProtoUnit">xpWarCanoe</target>
+      </effect>
+      <!-- the Bourbon settlement Battleship: its only train button is on the Dry Dock, and the settlement techs
+           only Enable it, so removing the button here (before they fire) keeps it off river maps for good -->
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deMercBattleship</target>
+      </effect>
+      <effect type="CommandRemove" proto="deMercBattleship">
+        <target type="ProtoUnit">zpDrydock</target>
       </effect>
     </effects>
   </tech>
@@ -37344,6 +37354,37 @@
       </effect>
       <effect type="CommandAdd" proto="zpNatInuitHarpooner" page="1" column="0">
         <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <!-- Gunboat unlock for the river maps (Paris etc.): the vanilla Danish deGunboat for every civ - enabled,
+       hitpoint drain (unitregen -2) off, dock button added where vanilla lacks it (the European Dock lists
+       it at page 0 column 5), build limit 2, and the vanilla long-range tech DEHCGunboatTactics activated
+       (mortar action + bombard ability + mortar model). Shadow - the map setup activates it; the map
+       mods file (randmaps/zpXXX.mods.xml) carries the stats. -->
+  <tech name="zpUnlockGunboats" type="Normal">
+    <dbid>41516</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deGunboat</target>
+      </effect>
+      <effect type="Data" amount="0.00" subtype="UnitRegenRate" relativity="Assign">
+        <target type="ProtoUnit">deGunboat</target>
+      </effect>
+      <effect type="CommandAdd" proto="deGunboat" page="0" column="5">
+        <target type="ProtoUnit">dePort</target>
+      </effect>
+      <effect type="CommandAdd" proto="deGunboat" page="0" column="5">
+        <target type="ProtoUnit">YPDockAsian</target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Assign">
+        <target type="ProtoUnit">deGunboat</target>
+      </effect>
+      <effect type="TechStatus" status="active">DEHCGunboatTactics</effect>
+      <effect type="SetName" proto="deGunboat" culture="none" newname="503418">
       </effect>
     </effects>
   </tech>

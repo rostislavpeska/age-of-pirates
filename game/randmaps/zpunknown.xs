@@ -300,7 +300,7 @@ void main(void)
 		subCiv42 = rmGetCivID("PenalColony");
 		subCiv43 = rmGetCivID("Maltese");
 		subCiv44 = rmGetCivID("Jewish");
-		subCiv45 = rmGetCivID("InuitNatives");
+		subCiv45 = rmGetCivID("Inuit");
 		subCiv46 = rmGetCivID("MaoriNatives");
 		subCiv47 = rmGetCivID("zpOrthodox");
 		subCiv48 = rmGetCivID("zpWesternVillage");
@@ -362,7 +362,7 @@ void main(void)
 		rmSetSubCiv(42, "PenalColony");
 		rmSetSubCiv(43, "Maltese");
 		rmSetSubCiv(44, "Jewish");
-		rmSetSubCiv(45, "InuitNatives");
+		rmSetSubCiv(45, "Inuit");
 		rmSetSubCiv(46, "MaoriNatives");
 		rmSetSubCiv(47, "zpOrthodox");
 		rmSetSubCiv(48, "zpWesternVillage");
