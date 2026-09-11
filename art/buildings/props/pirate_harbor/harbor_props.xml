@@ -1,0 +1,120 @@
+<animfile>
+  <!-- Age of Pirates zpPropsPirateHarbor: generic pirate harbour clutter, one random model per placement (Variation). Textures are the vanilla dock-prop atlases. -->
+  <definebone>bone_prop</definebone>
+  <component>ModelComp<logic type="Variation">
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\barrel_green</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\dock_props_boat_a</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\dock_props_boat_b</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\loobster_cage</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\barrel_brocken</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\tortuga\dock_props</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\loobster_cage_brocken</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\dock_props_boat_c</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\fishingnet_01</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\fishingnet_02</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\fishingnet_02</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\dock_props_net</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\box_broken</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\little_shed</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\dock_props_b</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\dock_props_c</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\fishrack_02</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\fishrack_01</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\little_shed_01</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\harborcrane</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\pirate_harbor\harborcrane_01</file>
+        </assetreference>
+      </data>
+    </logic>
+    <decal>
+      <effecttype>default</effecttype>
+      <selectedtexture>shadows_selections\selection_circle_64x64</selectedtexture>
+      <width>4.00</width>
+      <height>4.00</height>
+    </decal>
+  </component>
+  <anim>Idle<component>ModelComp</component>
+  </anim>
+</animfile>

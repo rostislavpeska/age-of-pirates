@@ -73896,6 +73896,90 @@
       <damagebonus type="AbstractVillager">0.500000</damagebonus>
     </protoaction>
   </unit>
+  <!-- Little props (community models on vanilla dock-prop atlases): two NativePirates-style embellishment units,
+       each a random pick from its set - generic pirate harbour clutter and Tortuga clutter. -->
+<unit id="21168" name="zpPropsPirateHarbor">
+    <dbid>21168</dbid>
+    <displaynameid>503428</displaynameid>
+    <editornameid>503428</editornameid>
+    <obstructionradiusx>0.2000</obstructionradiusx>
+    <obstructionradiusz>0.2000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>buildings\props\pirate_harbor\harbor_props.xml</animfile>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\spc\pirates\pirate_ranged_icon.png</icon>
+    <portraiticon>resources\art\units\spc\pirates\pirate_ranged_portrait.png</portraiticon>
+    <rollovertextid>33797</rollovertextid>
+    <shortrollovertextid>33796</shortrollovertextid>
+    <initialhitpoints>1315.0000</initialhitpoints>
+    <maxhitpoints>1315.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <command page="10" column="0">Delete</command>
+    <tactics>garrisonable.tactics</tactics>
+  </unit>
+<unit id="21169" name="zpPropsTortuga">
+    <dbid>21169</dbid>
+    <displaynameid>503429</displaynameid>
+    <editornameid>503429</editornameid>
+    <obstructionradiusx>0.2000</obstructionradiusx>
+    <obstructionradiusz>0.2000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>air</movementtype>
+    <animfile>buildings\props\tortuga\tortuga_props.xml</animfile>
+    <physicsinfo>dude</physicsinfo>
+    <icon>resources\art\units\spc\pirates\pirate_ranged_icon.png</icon>
+    <portraiticon>resources\art\units\spc\pirates\pirate_ranged_portrait.png</portraiticon>
+    <rollovertextid>33797</rollovertextid>
+    <shortrollovertextid>33796</shortrollovertextid>
+    <initialhitpoints>1315.0000</initialhitpoints>
+    <maxhitpoints>1315.0000</maxhitpoints>
+    <los>9.0000</los>
+    <buildpoints>20.0000</buildpoints>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>DontMarkExtraFog</flag>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NotSearchable</flag>
+    <flag>NoFadeOnDeath</flag>
+    <flag>TieToWaterSurface</flag>
+    <flag>PlaceAnywhere</flag>
+    <flag>Invulnerable</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <command page="10" column="0">Delete</command>
+    <tactics>garrisonable.tactics</tactics>
+  </unit>
   <!--TEST AND TEMPORARY CONTENT-->
 
   <!--<unit mergeMode='replace' id="1710" name="CommunityPlaza">

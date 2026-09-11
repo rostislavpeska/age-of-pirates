@@ -1,0 +1,60 @@
+<animfile>
+  <!-- Age of Pirates zpPropsTortuga: Tortuga clutter, one random model per placement (Variation). -->
+  <definebone>bone_prop</definebone>
+  <component>ModelComp<logic type="Variation">
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\tortuga\weapontable</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\tortuga\barrel</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\tortuga\shark_hanging</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\tortuga\cage_hanging</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\tortuga\barrels_hanging</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\tortuga\potted_fern_02</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\tortuga\potted_fern_01</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\tortuga\potted_fern</file>
+        </assetreference>
+      </data>
+      <data>
+        <assetreference type="GrannyModel">
+          <file>buildings\props\tortuga\scaffolding</file>
+        </assetreference>
+      </data>
+    </logic>
+    <decal>
+      <effecttype>default</effecttype>
+      <selectedtexture>shadows_selections\selection_circle_64x64</selectedtexture>
+      <width>4.00</width>
+      <height>4.00</height>
+    </decal>
+  </component>
+  <anim>Idle<component>ModelComp</component>
+  </anim>
+</animfile>

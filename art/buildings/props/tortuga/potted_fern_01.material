@@ -1,0 +1,26 @@
+<material>
+  <submaterial name="matg">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\home_city_props\ee_harbor_prop\textures\ee_harbor_prop02_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="homecity\home_city_props\ee_harbor_prop\textures\ee_harbor_prop02_mata_normals">
+      </texture>
+      <texture name="Masks" override="homecity\home_city_props\ee_harbor_prop\textures\ee_harbor_prop02_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="math">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\town_center\west\age_3\textures\veg_fern_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\town_center\west\age_3\textures\veg_fern_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\town_center\west\age_3\textures\veg_fern_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>
