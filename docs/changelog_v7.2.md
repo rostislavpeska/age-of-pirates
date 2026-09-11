@@ -4,6 +4,7 @@ Summer 2026 release. The headline is the clean blend with the Baltic Powers DLC 
 
 ## Baltic Powers compatibility (the clean blend)
 - The mod now runs on the DLC engine build (25040513) and loads every DLC civ, unit and building side by side with its own content.
+- **AI merged with the DLC AI**: the mod's AI is rebuilt on the DLC game build, so the AI script error message that hit everyone after the Baltic Powers update is gone; all the mod's own AI rules (natives, pirates, city states, Inuits) carry over on top of it.
 - **Art collisions resolved**: mod assets that sat on paths the DLC now uses were renamed, so DLC content renders with its own art again — Polish church, Ukrainian (Cossack) church, Goose, Pig and the Teutonic helmet.
 - **Stale overrides retired**: 105 vanilla values the game had added since our copies were made are back (settler fishing animation, healer gather rates, ship stealth mode, 60 trade-route decals, trade-crate techs, Capitol display entry, 12 unit-type registrations, Folwark building transforms, arctic trade-route upgrade paths). The 762-soundset sound override became a small additive file, restoring 268 soundsets.
 - **Danish and Polish voices** added to every mod unit that speaks per civ (plus Italian / Maltese / Japanese / Canadian / Haudenosaunee branches that were missing); Mexican units no longer speak Spanish, the Steamer's Japanese crew no longer speaks Portuguese.
