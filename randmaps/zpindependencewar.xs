@@ -673,7 +673,7 @@ void main(void)
 	rmPlaceGroupingAtLoc(piratesVillageID1, 0, rmXMetersToFraction(xsVectorGetX(pirateControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(pirateControllerLoc1)), 1);
 	rmEchoInfo("pirate village 1 placed");
 
-	int piratesVillageID2 = rmCreateGrouping("pirate city 2", "Pirate_Village06");
+	int piratesVillageID2 = rmCreateGrouping("pirate city 2", "pirate_village04");
 	rmSetGroupingMinDistance(piratesVillageID2, 0.00);
 	rmSetGroupingMaxDistance(piratesVillageID2, 0.00);
 
@@ -1603,8 +1603,8 @@ void main(void)
 	int loneHarbourNuggetID3 = rmGetUnitPlaced(loneNuggetID3, 0);
 	int loneHarbourNuggetID4 = rmGetUnitPlaced(loneNuggetID4, 0);
 
-	// zpSocketPirates is the LAST unit inside both village groupings (29 units
-	// in pirate_village05, 26 in Pirate_Village06). Unit ids are consecutive in
+	// zpSocketPirates is the LAST unit inside both village groupings (44 units
+	// in pirate_village05 and pirate_village04, which are identical). Unit ids are consecutive in
 	// placement order and the second controller is the last unit placed before
 	// the villages, so the sockets sit at fixed offsets from it - same
 	// consecutive-id idiom as the loneHarbour +1 lookups above.
