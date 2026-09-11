@@ -1596,7 +1596,7 @@
       <string _locid="501595">Sir Henry Parkes</string>
       <string _locid="501596">Transforms Convict Labourers into Australian Citzens \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nRum Corps \n\nAustralian Industry (Factory Wagon)</string>
       <string _locid="501597">Phil Cunningham</string>
-      <string _locid="501598">Transforms Guards to Deserters and Labourers to Mutineers \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGreat Rebellion \n\nUtopia (Additional Town)</string>
+      <string _locid="501598">Transforms Guards to Deserters and Labourers to Absconders \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nGreat Rebellion \n\nUtopia (Additional Town)</string>
       <string _locid="501599">Cpt. Patrick Logan</string>
       <string _locid="501600">Sets up a harsh regime in the penal colony \n\n&lt;color=1.0, 0.9, 0.5&gt;TECHS:&lt;/color&gt; \nConvict Patrole \n\nFortified Colony (Fort Wagon)</string>
       <string _locid="501601">Shoemaker's Workshop</string>
@@ -1617,7 +1617,7 @@
       <string _locid="501616">Convict Patrole</string>
       <string _locid="501617">Convict Labourers gather much faster when the guards are nearby.</string>
       <string _locid="501618">Convict Gather Rate Bonus</string>
-      <string _locid="501619">ZP NAT Mutineer AU</string>
+      <string _locid="501619">ZP NAT Absconder AU</string>
       <string _locid="501620">ZP NAT Deserter</string>
       <string _locid="501621">Deserter</string>
       <string _locid="501622">Deserted Colonial Footman with lower hitpoints but high damage.</string>
@@ -1625,7 +1625,7 @@
       <string _locid="501624">Guard deserter</string>
       <string _locid="501625">Legendary Deserter</string>
       <string _locid="501626">Great Rebellion</string>
-      <string _locid="501627">Ships Mutineers from all over the Australian continent. Slightly increases Mutineer build limit.</string>
+      <string _locid="501627">Ships Absconders from all over the Australian continent. Slightly increases Absconder build limit.</string>
       <string _locid="501628">Utopia</string>
       <string _locid="501629">Ships a covered wagon and increases Town Center Build Limit</string>
       <string _locid="501630">Spangled Perch</string>
@@ -3414,6 +3414,15 @@
       <string _locid="503416">Prize of Flamborough Head</string>
       <string _locid="503417">Ships a second pirate flagship, the Serapis, and allows two flagships to sail at once.</string>
       <string _locid="503418">River Monitor</string>
+      <string _locid="503419">ZP River Monitor</string>
+      <string _locid="503420">Pirate Gunboat</string>
+      <string _locid="503421">ZP Pirate Gunboat</string>
+      <string _locid="503422">Absconder</string>
+      <string _locid="503423">A mutinous sailor armed with a blunderbuss that sprays shot over an area. Good against heavy infantry, weak against cavalry and skirmishers. Can chop wood and repair ships.</string>
+      <string _locid="503424">Bloodthirsty Absconder</string>
+      <string _locid="503425">Notorious Absconder</string>
+      <string _locid="503426">Legendary Absconder</string>
+      <string _locid="503427">ZP Nat Merc Absconder AU</string>
       
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

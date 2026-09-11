@@ -287,50 +287,5 @@
 			<obstructionradiusx>1.5900</obstructionradiusx>
 			<obstructionradiusz>1.5900</obstructionradiusz>
 		</unit>
-		<!-- Gunboat on Paris: the vanilla Danish deGunboat, unlocked for every civ by zpUnlockGunboats; here its
-		     river-map stats - the mod icon, 4x hitpoints, double price, Age III, build limit 2, +50 % damage. -->
-		<unit name="deGunboat">
-			<icon>resources\art\units\naval\gunboat\gunboat_icon.png</icon>
-			<portraiticon>resources\art\units\naval\gunboat\gunboat_portrait.png</portraiticon>
-			<initialhitpoints>800.0000</initialhitpoints>
-			<maxhitpoints>800.0000</maxhitpoints>
-			<cost resourcetype="Wood">240.0000</cost>
-			<cost resourcetype="Gold">200.0000</cost>
-			<trainpoints>40.0000</trainpoints>
-			<allowedage>2</allowedage>
-			<buildlimit>3</buildlimit>
-			<maxvelocity>5.0000</maxvelocity>
-			<maxrunvelocity>6.500</maxrunvelocity>
-			<populationcount mergemode="remove">4</populationcount>
-			<flag mergemode="remove">HeroName1</flag>
-			<flag mergemode="remove">HideBaseName</flag>
-			<protoaction>
-				<name>LongRangeAttack</name>
-				<anim>Bombard_ranged_attack</anim>
-				<damage>120.000000</damage>
-				<damagetype>Siege</damagetype>
-				<maxrange>40.000000</maxrange>
-				<rof>3.000000</rof>
-				<damagecap>160.000000</damagecap>
-				<damagearea>3.000000</damagearea>
-				<damageflags>GAIAEnemy</damageflags>
-				<damagebonus type="AbstractArtillery">0.250000</damagebonus>
-				<damagebonus type="Building">6.000000</damagebonus>
-				<damagebonus type="AbstractVillager">0.250000</damagebonus>
-				<damagebonus type="AbstractDock">0.250000</damagebonus>
-				<attachlaunchpoint>1</attachlaunchpoint>
-			</protoaction>
-			<protoaction>
-				<name>RangedAttack</name>
-				<damage>80.000000</damage>
-				<damagetype>Siege</damagetype>
-				<maxrange>16.000000</maxrange>
-				<rof>4.50000</rof>
-				<damagecap>280.000000</damagecap>
-				<damagebonus type="AbstractWarship">2.000000</damagebonus>
-				<damagearea>1.000000</damagearea>
-				<damageflags>GAIAEnemy</damageflags>
-			</protoaction>
-		</unit>
 	</protomods>
 </mods>

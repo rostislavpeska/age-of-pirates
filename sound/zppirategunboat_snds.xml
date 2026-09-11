@@ -1,7 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <protounitsounddef>
-  <protounit name="zpSPCSerapis">
+  <!-- Age of Pirates zpPirateGunboat: the pirate crew answers with the British Privateer lines, every civ -->
+  <protounit name="zpPirateGunboat">
     <soundtype name="Select">
-      <soundset name="SPCAmericanSelect">
+      <soundset name="BritishPrivateerSelect">
       </soundset>
     </soundtype>
     <soundtype name="Death">
@@ -13,7 +15,7 @@
       </soundset>
     </soundtype>
     <soundtype name="Acknowledge">
-      <soundset name="SPCAmericanBoatAcknowledge">
+      <soundset name="BritishPrivateerAcknowledge">
       </soundset>
     </soundtype>
     <soundtype name="Exists">

@@ -5761,6 +5761,10 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMercMutineer" culture="none" newname="501526">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMutineerAU" culture="none" newname="503426">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercMutineerAU" culture="none" newname="503426">
+      </effect>
       <effect mergemode="add" type="SetName" proto="zpNatColonialGuard" culture="none" newname="501584">
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatColonialGuardOrig" culture="none" newname="501608">
@@ -17312,6 +17316,7 @@
     <dbid>40609</dbid>
     <flag>Shadow</flag>
     <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
     <prereqs>
       <techstatus status="Active">zpEnableMutineer</techstatus>
     </prereqs>
@@ -17334,8 +17339,15 @@
 				<target type ="ProtoUnit">zpNatMutineerAU</target></effect>
 			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
 				<target type ="ProtoUnit">zpNatMutineerAU</target></effect>
-			<effect type ="SetName" proto ="zpNatMutineerAU" culture ="none" newname ="501524"></effect>
-      <effect type="SetName" proto="zpNatMutineerAU" culture="none" newname="501526" reqtech="ImpLegendaryNativesShadow">
+			<effect type ="SetName" proto ="zpNatMutineerAU" culture ="none" newname ="503424"></effect>
+      <effect type="SetName" proto="zpNatMutineerAU" culture="none" newname="503426" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.20" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMutineerAU</target></effect>
+			<effect type ="Data" amount ="1.20" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMutineerAU</target></effect>
+			<effect type ="SetName" proto ="zpNatMercMutineerAU" culture ="none" newname ="503424"></effect>
+      <effect type="SetName" proto="zpNatMercMutineerAU" culture="none" newname="503426" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>
@@ -17343,6 +17355,7 @@
     <dbid>40610</dbid>
     <flag>Shadow</flag>
     <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
     <prereqs>
       <techstatus status="Active">zpEnableMutineer</techstatus>
     </prereqs>
@@ -17365,8 +17378,15 @@
 				<target type ="ProtoUnit">zpNatMutineerAU</target></effect>
 			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
 				<target type ="ProtoUnit">zpNatMutineerAU</target></effect>
-			<effect type ="SetName" proto ="zpNatMutineerAU" culture ="none" newname ="501525"></effect>
-      <effect type="SetName" proto="zpNatMutineerAU" culture="none" newname="501526" reqtech="ImpLegendaryNativesShadow">
+			<effect type ="SetName" proto ="zpNatMutineerAU" culture ="none" newname ="503425"></effect>
+      <effect type="SetName" proto="zpNatMutineerAU" culture="none" newname="503426" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type ="Data" amount ="1.40" subtype ="Damage" allactions ="1" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMutineerAU</target></effect>
+			<effect type ="Data" amount ="1.40" subtype ="Hitpoints" relativity ="BasePercent">
+				<target type ="ProtoUnit">zpNatMercMutineerAU</target></effect>
+			<effect type ="SetName" proto ="zpNatMercMutineerAU" culture ="none" newname ="503425"></effect>
+      <effect type="SetName" proto="zpNatMercMutineerAU" culture="none" newname="503426" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>
@@ -17385,7 +17405,7 @@
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
     <effects>
-      <effect type="Data" amount="20.00" subtype="FreeHomeCityUnit" unittype="zpNatMercMutineer" relativity="Absolute">
+      <effect type="Data" amount="20.00" subtype="FreeHomeCityUnit" unittype="zpNatMercMutineerAU" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -22704,6 +22724,13 @@
       </effect>
       <effect type="CommandRemove" proto="deMercBattleship">
         <target type="ProtoUnit">zpDrydock</target>
+      </effect>
+      <!-- the vanilla Danish levy gunboat: river maps use zpGunboat instead -->
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deGunboat</target>
+      </effect>
+      <effect type="CommandRemove" proto="deGunboat">
+        <target type="ProtoUnit">Dock</target>
       </effect>
     </effects>
   </tech>
@@ -37161,6 +37188,7 @@
       <effect type="CommandAdd" tech="zpPrizeOfFlamboroughHead" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="TechStatus" status="active">zpPirateGunboat</effect>
       <effect type="Data" amount="1.15" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">xpIronclad</target>
       </effect>
@@ -37357,11 +37385,9 @@
       </effect>
     </effects>
   </tech>
-  <!-- Gunboat unlock for the river maps (Paris etc.): the vanilla Danish deGunboat for every civ - enabled,
-       hitpoint drain (unitregen -2) off, dock button added where vanilla lacks it (the European Dock lists
-       it at page 0 column 5), build limit 2, and the vanilla long-range tech DEHCGunboatTactics activated
-       (mortar action + bombard ability + mortar model). Shadow - the map setup activates it; the map
-       mods file (randmaps/zpXXX.mods.xml) carries the stats. -->
+  <!-- Gunboat unlock for the river maps (Paris etc.): enables zpGunboat (the River Monitor, stats on the proto)
+       and puts it on every dock type at page 0 column 5 - the slot the forbid-standard-warships tech clears
+       of the vanilla Danish deGunboat. Shadow - the map setup activates it. -->
   <tech name="zpUnlockGunboats" type="Normal">
     <dbid>41516</dbid>
     <researchpoints>0.0000</researchpoints>
@@ -37369,22 +37395,29 @@
     <flag>Shadow</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deGunboat</target>
+        <target type="ProtoUnit">zpGunboat</target>
       </effect>
-      <effect type="Data" amount="0.00" subtype="UnitRegenRate" relativity="Assign">
-        <target type="ProtoUnit">deGunboat</target>
+      <effect type="CommandAdd" proto="zpGunboat" page="0" column="5">
+        <target type="ProtoUnit">Dock</target>
       </effect>
-      <effect type="CommandAdd" proto="deGunboat" page="0" column="5">
+      <effect type="CommandAdd" proto="zpGunboat" page="0" column="5">
         <target type="ProtoUnit">dePort</target>
       </effect>
-      <effect type="CommandAdd" proto="deGunboat" page="0" column="5">
+      <effect type="CommandAdd" proto="zpGunboat" page="0" column="5">
         <target type="ProtoUnit">YPDockAsian</target>
       </effect>
-      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Assign">
-        <target type="ProtoUnit">deGunboat</target>
-      </effect>
-      <effect type="TechStatus" status="active">DEHCGunboatTactics</effect>
-      <effect type="SetName" proto="deGunboat" culture="none" newname="503418">
+    </effects>
+  </tech>
+  <!-- Pirate Gunboat unlock: John Paul Jones (zpConsulatePiratesJones) activates it; the unit is trained on his
+       flagships (train entry + AllowTrainingOnWater on the protos). Shadow. -->
+  <tech name="zpPirateGunboat" type="Normal">
+    <dbid>41517</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpPirateGunboat</target>
       </effect>
     </effects>
   </tech>

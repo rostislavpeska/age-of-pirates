@@ -1,0 +1,236 @@
+<protounitsounddef>
+  <protounit name="zpGunboat">
+    <soundtype name="Select">
+      <civlogic>
+        <choice name="none">
+          <soundset name="DanishStealthSelect" />
+        </choice>
+        <choice name="DEDanish">
+          <soundset name="DanishStealthSelect" />
+        </choice>
+        <choice name="Nature" />
+        <choice name="Spanish">
+          <soundset name="SpanishCaravelSelect" />
+        </choice>
+        <choice name="British">
+          <soundset name="BritishCaravelSelect" />
+        </choice>
+        <choice name="French">
+          <soundset name="FrenchCaravelSelect" />
+        </choice>
+        <choice name="Portuguese">
+          <soundset name="PortugueseCaravelSelect" />
+        </choice>
+        <choice name="Dutch">
+          <soundset name="DutchCaravelSelect" />
+        </choice>
+        <choice name="Russians">
+          <soundset name="RussianCaravelSelect" />
+        </choice>
+        <choice name="Germans">
+          <soundset name="GermanCaravelSelect" />
+        </choice>
+        <choice name="Ottomans" />
+        <choice name="SPCAct1">
+          <soundset name="BritishCaravelSelect" />
+        </choice>
+        <choice name="SPCAct2">
+          <soundset name="BritishCaravelSelect" />
+        </choice>
+        <choice name="SPCAct3">
+          <soundset name="BritishCaravelSelect" />
+        </choice>
+        <choice name="TheCircle" />
+        <choice name="NativeAmerican" />
+        <choice name="Aztecs" />
+        <choice name="Caribs" />
+        <choice name="Cherokee" />
+        <choice name="Comanche" />
+        <choice name="Cree" />
+        <choice name="Incas" />
+        <choice name="Iroquois" />
+        <choice name="Lakota" />
+        <choice name="Maya" />
+        <choice name="Nootka" />
+        <choice name="Seminoles" />
+        <choice name="Tupi" />
+        <choice name="XPSPC">
+          <soundset name="FrenchCaravelSelect" />
+        </choice>
+        <choice name="XPIroquois">
+          <soundset name="IroquoisFishingBoatSelect" />
+        </choice>
+        <choice name="XPSioux">
+          <soundset name="SiouxFishingBoatSelect" />
+        </choice>
+        <choice name="XPAztec">
+          <soundset name="AztecFishingBoatSelect" />
+        </choice>
+        <choice name="Japanese">
+          <soundset name="JapaneseShipsSelect" />
+        </choice>
+        <choice name="Chinese">
+          <soundset name="ChineseShipsSelect" />
+        </choice>
+        <choice name="Indians">
+          <soundset name="IndianShipsSelect" />
+        </choice>
+        <choice name="SPCJapanese">
+          <soundset name="JapaneseShipsSelect" />
+        </choice>
+        <choice name="SPCChinese">
+          <soundset name="ChineseShipsSelect" />
+        </choice>
+        <choice name="SPCIndians">
+          <soundset name="IndianShipsSelect" />
+        </choice>
+        <choice name="DESwedish">
+          <soundset name="DESwedishCaravelSelect" />
+        </choice>
+        <choice name="DEEthiopians">
+          <soundset name="PortugueseCaravelSelect" />
+        </choice>
+        <choice name="Pirate">
+          <soundset name="BritishCaravelSelect" />
+        </choice>
+        <choice name="DEItalians">
+          <soundset name="DEItalianFalconetSelect" />
+        </choice>
+        <choice name="DEPolish">
+          <soundset name="PolishLightMilitarySelect" />
+        </choice>
+      </civlogic>
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="ShipDeath" />
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="ShipBirth" />
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <civlogic>
+        <choice name="none">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="DanishGunboatAcknowledge" />
+            </choice>
+            <choice name="enemy">
+              <soundset name="DanishGunboatAttack" />
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="DEDanish">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="DanishGunboatAcknowledge" />
+            </choice>
+            <choice name="enemy">
+              <soundset name="DanishGunboatAttack" />
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="Nature" />
+        <choice name="Spanish">
+          <soundset name="SpanishCaravelAcknowledge" />
+        </choice>
+        <choice name="British">
+          <soundset name="BritishCaravelAcknowledge" />
+        </choice>
+        <choice name="French">
+          <soundset name="FrenchCaravelAcknowledge" />
+        </choice>
+        <choice name="Portuguese">
+          <soundset name="PortugueseCaravelAcknowledge" />
+        </choice>
+        <choice name="Dutch">
+          <soundset name="DutchCaravelAcknowledge" />
+        </choice>
+        <choice name="Russians">
+          <soundset name="RussianCaravelAcknowledge" />
+        </choice>
+        <choice name="Germans">
+          <soundset name="GermanCaravelAcknowledge" />
+        </choice>
+        <choice name="Ottomans" />
+        <choice name="SPCAct1">
+          <soundset name="BritishCaravelAcknowledge" />
+        </choice>
+        <choice name="SPCAct2">
+          <soundset name="BritishCaravelAcknowledge" />
+        </choice>
+        <choice name="SPCAct3">
+          <soundset name="BritishCaravelAcknowledge" />
+        </choice>
+        <choice name="TheCircle" />
+        <choice name="NativeAmerican" />
+        <choice name="Aztecs" />
+        <choice name="Caribs" />
+        <choice name="Cherokee" />
+        <choice name="Comanche" />
+        <choice name="Cree" />
+        <choice name="Incas" />
+        <choice name="Iroquois" />
+        <choice name="Lakota" />
+        <choice name="Maya" />
+        <choice name="Nootka" />
+        <choice name="Seminoles" />
+        <choice name="Tupi" />
+        <choice name="XPSPC">
+          <soundset name="FrenchCaravelAcknowledge" />
+        </choice>
+        <choice name="XPIroquois">
+          <soundset name="IroquoisFishingBoatAcknowledge" />
+        </choice>
+        <choice name="XPSioux">
+          <soundset name="SiouxFishingBoatAcknowledge" />
+        </choice>
+        <choice name="XPAztec">
+          <soundset name="AztecFishingBoatAcknowledge" />
+        </choice>
+        <choice name="Japanese">
+          <soundset name="JapaneseShipsAcknowledge" />
+        </choice>
+        <choice name="Chinese">
+          <soundset name="ChineseShipsAcknowledge" />
+        </choice>
+        <choice name="Indians">
+          <soundset name="IndianShipsAcknowledge" />
+        </choice>
+        <choice name="SPCJapanese">
+          <soundset name="JapaneseShipsAcknowledge" />
+        </choice>
+        <choice name="SPCChinese">
+          <soundset name="ChineseShipsAcknowledge" />
+        </choice>
+        <choice name="SPCIndians">
+          <soundset name="IndianShipsAcknowledge" />
+        </choice>
+        <choice name="DESwedish">
+          <soundset name="DESwedishCaravelAcknowledge" />
+        </choice>
+        <choice name="DEEthiopians">
+          <soundset name="PortugueseCaravelAcknowledge" />
+        </choice>
+        <choice name="Pirate">
+          <soundset name="BritishCaravelAcknowledge" />
+        </choice>
+        <choice name="DEItalians">
+          <soundset name="DEItalianCaravelAcknowledge" />
+        </choice>
+        <choice name="DEPolish">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="PolishCaravelAcknowledge" />
+            </choice>
+            <choice name="enemy">
+              <soundset name="PolishCaravelAttack" />
+            </choice>
+          </targetlogic>
+        </choice>
+      </civlogic>
+    </soundtype>
+    <soundtype name="Exists">
+      <soundset name="AmbienceShip" />
+    </soundtype>
+  </protounit>
+</protounitsounddef>

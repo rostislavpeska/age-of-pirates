@@ -451,4 +451,13 @@
   <zpspcserapis>
     <ability>PowerBroadside<rof>60</rof></ability>
   </zpspcserapis>
+  <!-- Mutineers: the DLC Sailor's passive cards (Carpentry, Buckshot), verbatim -->
+  <zpnatmutineer>
+    <ability>deSailorChopWood<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+    <ability>deChargeAbilityBuckshot<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatmutineer>
+  <zpnatmercmutineer>
+    <ability>deSailorChopWood<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+    <ability>deChargeAbilityBuckshot<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatmercmutineer>
 </abilitymods>
