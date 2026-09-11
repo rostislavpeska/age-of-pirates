@@ -10,7 +10,7 @@ Summer 2026 release. The headline is the clean blend with the Baltic Powers DLC 
 - **Danish and Polish voices** added to every mod unit that speaks per civ (plus Italian / Maltese / Japanese / Canadian / Haudenosaunee branches that were missing); Mexican units no longer speak Spanish, the Steamer's Japanese crew no longer speaks Portuguese.
 - **Folwark, Danish houses and churches, the Sejm** are buildable by all mod villagers; every mod villager can work fishing holes and Folwarks at vanilla rates.
 - **Dry Dock** offers the DLC's Whaling Ship and Gunboat.
-- **DLC Inuits**: the mod's own Inuit civ was retired in favour of extending the DLC one (same approach as Aztecs and Maya). The Harpooner stays as an elite unit (build limit 7, 240 HP, 26 ranged damage, 100F/100W) on the DLC sled-rider model; Aurora, Inuit Whalers (ships the DLC Whaling Ship) and Inuit Expansion survive; Cold War and Labrador Coast use the DLC settlement.
+- **DLC Inuits**: the mod's own Inuit civ was retired in favour of extending the DLC one (see Natives).
 - **Herdables**: all 17 livestock animals — the DLC Pig and Goose included — can now fatten at the mod's Livestock Pen, Town Mill and Aztec Granary.
 - **Strings**: the mod's text block moved off the id row the DLC now uses (no more DLC lines showing mod text); all languages ship the English table.
 
@@ -27,6 +27,12 @@ Summer 2026 release. The headline is the clean blend with the Baltic Powers DLC 
 ### Colonial Estate (new)
 - City-state native representing colonial nobility. Capturing the estate lets you elect one of six historical personas, each granting two units and four techs, built on the Prince Elector system: King George III (Hannover), James Oglethorpe (Penal Colony) and Jean de Brébeuf (Jesuit) for defenders; Daniel Boone (Frontier Town), Marquis de Lafayette (Sansculottes) and Haym Salomon (Jewish) for attackers.
 - Estate Militia, Estate Economy aura, Naval Inventions (unlocks the Dispatch Vessel), Estate Colony Export; Veteran and Guard upgrades covering all estate units; Native Embassy roster.
+### Inuits (DLC civ, extended)
+- Baltic Powers brought its own Inuit natives, so the mod's Inuit civ was retired and the DLC one is extended instead, the way Aztecs and Maya already are: the DLC settlement, hunters and improvements stay vanilla, and the mod adds on top.
+- **Harpooner** kept as an elite unit next to the DLC Hunter: build limit 7, 240 HP, 26 ranged damage, 100F/100W, now on the DLC sled-rider model with its own harpoon and material.
+- **Umiak** war canoe (limit 5, 700 HP) — strong attack, efficient fishing and whaling, detects stealth units such as submarines.
+- Improvements: **Inuit Whalers** (ships two Whaling Ships and unlocks them at the Dock), **Aurora** (attracts champion warriors from other tribes), **Inuit Feeders** (draws caribou herds into the settlement), Arctic Acclimation, and the Inuit Expansion big button.
+- Inuit villages retextured with Rockies snow; Cold War and Labrador Coast use the DLC settlement and the arctic trade routes.
 ### Pirates
 - Tortuga settlement update: new house set and tower textures.
 - Dry Dock mechanics improved: instead of a single automatic workshop, the Dry Dock now has a dedicated maintenance tactic for each ship type it can maintain (Venetian Galley, Privateer, Alexandrian Galley, Ironclad), each unlocked by its own tech. Maintenance can be combined — one dock can keep, say, Privateers and Venetian Galleys in service at the same time — and no tech takes an already-earned ship away any more.
