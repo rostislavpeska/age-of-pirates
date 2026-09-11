@@ -127,7 +127,8 @@ bool civIsEuropean(void) { return (civIsNative() == false && civIsAsian() == fal
 bool civIsDEciv(void)
 {
    if ((cMyCiv == cCivDEInca) || (cMyCiv == cCivDESwedish) || (cMyCiv == cCivDEAmericans) || (cMyCiv == cCivDEEthiopians) ||
-       (cMyCiv == cCivDEHausa) || (cMyCiv == cCivDEMexicans) || (cMyCiv == cCivDEItalians) || (cMyCiv == cCivDEMaltese))
+       (cMyCiv == cCivDEHausa) || (cMyCiv == cCivDEMexicans) || (cMyCiv == cCivDEItalians) || (cMyCiv == cCivDEMaltese) ||
+       (cMyCiv == cCivDEDanish) || (cMyCiv == cCivDEPolish))
    {
       return (true);
    }
@@ -2269,3 +2270,104 @@ bool isDefendingOrAttacking()
    return (false);
 }
 
+
+// AssertiveWall: Added by DE
+//==============================================================================
+// selectByDifficultyCampaign
+//==============================================================================
+int selectByDifficultyCampaign(int standard = -1, int moderate = -1, int hard = -1)
+{
+   if (cDifficultyCurrent == cDifficultyEasy)
+   {
+      return standard;
+   }
+   if (cDifficultyCurrent == cDifficultyModerate)
+   {
+      return moderate;
+   }
+   if (cDifficultyCurrent == cDifficultyHard)
+   {
+      return hard;
+   }
+   aiEchoWarning("Invalid difficulty?");
+   return -1;
+}
+
+//==============================================================================
+// selectByDifficulty
+//==============================================================================
+int selectByDifficulty(int easy = -1, int standard = -1, int moderate = -1, int hard = -1, int expert = -1, int extreme = -1)
+{
+   if (cDifficultyCurrent == cDifficultySandbox)
+   {
+      return easy;
+   }
+   if (cDifficultyCurrent == cDifficultyEasy)
+   {
+      return standard;
+   }
+   if (cDifficultyCurrent == cDifficultyModerate)
+   {
+      return moderate;
+   }
+   if (cDifficultyCurrent == cDifficultyHard)
+   {
+      return hard;
+   }
+   if (cDifficultyCurrent == cDifficultyExpert)
+   {
+      return expert;
+   }
+   if (cDifficultyCurrent == cDifficultyExtreme)
+   {
+      return extreme;
+   }
+   aiEchoWarning("Invalid difficulty?");
+   return -1;
+}
+
+//==============================================================================
+// isHouseBoomingCiv
+//==============================================================================
+bool isHouseBoomingCiv()
+{
+   if (cMyCiv == cCivBritish ||
+       cMyCiv == cCivSPCAct3 ||
+       cMyCiv == cCivPirate ||
+       cMyCiv == cCivDEInca ||
+       cMyCiv == cCivDESwedish ||
+       cMyCiv == cCivJapanese ||  cMyCiv == cCivSPCJapanese || cMyCiv == cCivSPCJapaneseEnemy)
+   {
+      return true;
+   }
+   return false;
+}
+
+//==============================================================================
+// findScoutingUnit
+//==============================================================================
+int findScoutingUnit(int planID = -1, int outputCategoryID = -1)
+{
+   if (aiPlanGetVariableBool(gLandReservePlan, cCombatPlanInCombat, 0) == true)
+   {
+      aiEchoCategory(outputCategoryID, "Reserve units are in combat, not stealing from that plan now.");
+      return -1;
+   }
+   int numDefendingUnits = aiPlanGetNumberUnits(gLandReservePlan, -1, true);
+   for (int i = 0; i < numDefendingUnits; i++)
+   {
+      int unitID = aiPlanGetUnitByIndex(gLandReservePlan, i, true);
+      // Skip arty and heroes.
+      if (kbProtoUnitIsType(1, kbUnitGetProtoUnitID(unitID), cUnitTypeAbstractArtillery) == true ||
+          kbProtoUnitIsType(1, kbUnitGetProtoUnitID(unitID), cUnitTypeHero) == true ||
+          kbUnitGetProtoUnitID(unitID) == cUnitTypeypFlameThrower)
+      {
+         continue;
+      }
+      aiEchoCategory(outputCategoryID, "Adding unitID: " + unitID + " to the land explore plan.");
+      aiPlanAddUnitType(planID, kbUnitGetProtoUnitID(unitID), 1, 1, 1);
+      aiPlanAddUnit(planID, unitID);
+      return unitID;
+   }
+   return -1;
+}

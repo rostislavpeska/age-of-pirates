@@ -2395,6 +2395,12 @@ minInterval 5
          xsEnableRule("ceylonFailsafe");
       }
 
+      // AssertiveWall: build these as early as transition
+      if (cMyCiv == cCivDEDanish)
+      {
+         xsEnableRule("roundChurchConstructionMonitor");
+      }
+
       //if (gIsArchipelagoMap == true)
       //{
          //xsEnableRule("buildPlanDeletion");
@@ -2574,6 +2580,19 @@ minInterval 5
       //{
       //   xsEnableRule("navyManager");
       //}
+
+      // AssertiveWall: Added from DE
+      if (cMyCiv == cCivDEDanish)
+      {
+         xsEnableRule("customsHouseUpgradeMonitor");
+         xsEnableRule("customsHouseConstructionMonitor");
+      }
+      if (cMyCiv == cCivDEPolish)
+      {
+         xsEnableRule("folwarkConstructionMonitor");
+         xsEnableRule("sejmConstructionMonitor");
+         xsEnableRule("sejmTacticMonitor");
+      }
       
       setupNativeUpgrades();
 
