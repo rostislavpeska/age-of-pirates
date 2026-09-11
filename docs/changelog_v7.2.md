@@ -13,7 +13,6 @@ Summer 2026 release. The headline is the clean blend with the Baltic Powers DLC 
 - **DLC Inuits**: the mod's own Inuit civ was retired in favour of extending the DLC one (same approach as Aztecs and Maya). The Harpooner stays as an elite unit (build limit 7, 240 HP, 26 ranged damage, 100F/100W) on the DLC sled-rider model; Aurora, Inuit Whalers (ships the DLC Whaling Ship) and Inuit Expansion survive; Cold War and Labrador Coast use the DLC settlement.
 - **Herdables**: all 17 livestock animals — the DLC Pig and Goose included — can now fatten at the mod's Livestock Pen, Town Mill and Aztec Granary.
 - **Strings**: the mod's text block moved off the id row the DLC now uses (no more DLC lines showing mod text); all languages ship the English table.
-- Vanilla revolutions remain removed mod-wide; the DLC's revolution routes are handled per map.
 
 ## Maps
 - **Independence War** — American Revolutionary War map, attackers (Patriots) versus defenders (Loyalists). Fort tables for every player count, symmetric 1v1, harbours, pirate peninsulas, Haudenosaunee settlement ladder, spread estates with a guard gate, full trade loop with harbour crates, hold-the-estates victory countdown, Declaration of Independence flag/name/music. Natives: Colonial Estate, Haudenosaunee, Pirates. Playable civs include Spanish, Polish and the DLC civs.
