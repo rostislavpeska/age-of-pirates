@@ -105,7 +105,7 @@
     <persistent>1</persistent>
   </action>
   <action>
-    <name stringid="301125">ExtraDamage</name>
+    <name stringid="501125">ExtraDamage</name>
     <type>AutoRangedModify</type>
     <active>1</active>
     <maxrange>24</maxrange>
@@ -118,7 +118,7 @@
     <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
   </action>
   <action>
-    <name stringid="301126">ExtraHP</name>
+    <name stringid="501126">ExtraHP</name>
     <type>AutoRangedModify</type>
     <active>1</active>
     <maxrange>24</maxrange>

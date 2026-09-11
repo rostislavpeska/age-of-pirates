@@ -41,14 +41,29 @@ class ExtractError(Exception):
 
 
 class Tainted:
-    """Runtime-dependent value; propagates through arithmetic and concat."""
+    """Runtime-dependent value; propagates through arithmetic and concat.
 
-    __slots__ = ("expr", "lo", "hi")
+    str_prefix: when the value is a string concat whose LEFT part is a
+    literal ("maori_hawaii_0" + rmRandInt(1,5)), the literal survives here —
+    the engine's grouping variant mechanic resolves by prefix, so the
+    prefix IS the deterministically knowable identity of the reference."""
 
-    def __init__(self, expr: str, lo: Optional[float] = None, hi: Optional[float] = None):
+    __slots__ = ("expr", "lo", "hi", "str_prefix", "nominal_bool")
+
+    def __init__(self, expr: str, lo: Optional[float] = None,
+                 hi: Optional[float] = None,
+                 str_prefix: Optional[str] = None,
+                 nominal_bool: Optional[bool] = None):
         self.expr = expr
         self.lo = lo
         self.hi = hi
+        self.str_prefix = str_prefix
+        # For tainted COMPARISONS: the outcome under the deterministic
+        # nominal roll (rand values collapse to their LO bound — the same
+        # "first variant is the nominal" rule as prefix resolution). None
+        # when either side has no nominal scalar. Drives spawn-chance
+        # branch selection (plan Part H4, the Paris double-monastery bug).
+        self.nominal_bool = nominal_bool
 
     def __repr__(self) -> str:
         return f"?{self.expr}"
@@ -88,7 +103,7 @@ TOKEN_RE = re.compile(r'''
   | (?P<num>\d+\.\d*|\.\d+|\d+)
   | (?P<id>[A-Za-z_][A-Za-z0-9_]*)
   | (?P<str>"[^"\n]*")
-  | (?P<op>==|!=|<=|>=|&&|\|\||\+\+|--|[-+*/<>=!(){};,])
+  | (?P<op>==|!=|<=|>=|&&|\|\||\+\+|--|[-+*/%<>=!(){};,])
 ''', re.X)
 
 KEYWORDS = {"int", "float", "string", "bool", "vector", "void", "if", "else",
@@ -276,11 +291,14 @@ class Parser:
         _, _, line = self.next()
         self.expect("(")
         var = self.next()[1]
+        if var in ("int", "float", "bool", "string", "vector"):
+            var = self.next()[1]
         self.expect("=")
         start = self.parse_expr()
         self.expect(";")
-        # shorthand: `< bound` / `<= bound`; C-style: `i < bound; i++`
-        if self.peek()[1] in ("<", "<="):
+        # shorthand: `< bound` / `> bound` etc. (zpunknown:7986 uses
+        # `for (n=2; > fail*1000)`); C-style: `i < bound; i++`
+        if self.peek()[1] in ("<", "<=", ">", ">="):
             op = self.next()[1]
             bound = self.parse_expr()
             self.expect(")")
@@ -345,7 +363,7 @@ class Parser:
 
     def parse_mul(self):
         left = self.parse_unary()
-        while self.peek()[1] in ("*", "/"):
+        while self.peek()[1] in ("*", "/", "%"):
             op = self.next()[1]
             left = ("bin", op, left, self.parse_unary())
         return left
@@ -405,6 +423,13 @@ class XArea:
     smooth: float = 0.0
     obey_world_circle: bool = True
     cliff_type: Optional[str] = None
+    cliff_height: Optional[float] = None   # rmSetAreaCliffHeight val (rand -> lo)
+    water_type: Optional[str] = None   # rmSetAreaWaterType: paints real water
+    has_paint: bool = False            # rmSetAreaMix/TerrainType/TerrainLayer
+    loc_player: Optional[Any] = None   # rmSetAreaLocPlayer: anchored to player N
+    loc_team: Optional[Any] = None     # rmSetAreaLocTeam: anchored to team N
+    height_blend: float = 0.0          # rmSetAreaHeightBlend (>=2 flattens stamps)
+    has_elevation: bool = False        # any rmSetAreaElevation* call
     classes: List[str] = dfield(default_factory=list)
     constraints: List[str] = dfield(default_factory=list)
     influence_segments: List[Tuple[Any, Any, Any, Any]] = dfield(default_factory=list)
@@ -437,6 +462,7 @@ class XPlacement:
     area_refs: List[str] = dfield(default_factory=list)
     count: Any = 1
     variant: str = ""
+    nominal: bool = True               # False = alternative spawn-chance arm
 
 
 @dataclass
@@ -445,6 +471,19 @@ class XRiver:
     water_type: str
     width: Any = 10.0
     waypoints: List[Tuple[Any, Any]] = dfield(default_factory=list)
+    shallow_radius: Any = 15.0             # rmRiverSetShallowRadius (m)
+    shallows: List[Any] = dfield(default_factory=list)   # rmRiverAddShallow t
+
+
+@dataclass
+class XConnection:
+    """rmCreateConnection causeway: a band between two areas at a base
+    height (Tortuga/Cook waterline causeways, Hawaii island links)."""
+    line: int
+    width: Any = 10.0
+    base_height: Optional[float] = None
+    areas: List[int] = dfield(default_factory=list)
+    built: bool = False
 
 
 @dataclass
@@ -453,6 +492,9 @@ class Extraction:
     map_size_x: Optional[float] = None
     map_size_z: Optional[float] = None
     sea_level: Optional[float] = None
+    sea_type: Optional[str] = None            # rmSetSeaType
+    terrain_init: Optional[str] = None        # rmTerrainInitialize terrain arg
+    terrain_init_height: Optional[float] = None   # its height arg, when given
     world_circle: bool = False
     areas: Dict[int, XArea] = dfield(default_factory=dict)          # by handle
     defs: Dict[int, XDef] = dfield(default_factory=dict)
@@ -460,6 +502,7 @@ class Extraction:
     waypoints: List[Tuple[Any, Any]] = dfield(default_factory=list)
     route_waypoints: Dict[int, List[Tuple[Any, Any]]] = dfield(default_factory=dict)
     rivers: Dict[int, "XRiver"] = dfield(default_factory=dict)
+    connections: Dict[int, "XConnection"] = dfield(default_factory=dict)
     constraints: Dict[str, Dict[str, Any]] = dfield(default_factory=dict)
     player_events: List[Dict[str, Any]] = dfield(default_factory=list)
     warnings: List[str] = dfield(default_factory=list)
@@ -467,6 +510,20 @@ class Extraction:
     def warn(self, msg: str) -> None:
         if msg not in self.warnings:
             self.warnings.append(msg)
+
+
+# River half-width saturation (see rmRiverCreate handler). RECALIBRATED
+# 2026-08-09 (second pass, lake-calibrated transform + overlay method):
+# - low R is EXACT 2R, uncapped: crownlands R=14 -> 28 m band, riverina
+#   R=15 -> 30 m band, both hugging their minimap edges to the pixel;
+# - saturation is real: civilwar R=180 measures ~60-66 m full width on
+#   clean stretches (incl. the shallow tan fringe) -> cap half = 32;
+# - the original 27 came partly from elbe, whose "river" runs inside its
+#   open estuary and cannot be measured — that calibration is void.
+# Between R=32 and R=180 the corpus has no measurable river (elbe estuary,
+# kingofbohemia city-covered, venice lagoon) — refining the knee is
+# experiment E6 (in-game probe map).
+RIVER_HALF_WIDTH_CAP_M = 32.0
 
 
 class _Break(Exception):
@@ -480,21 +537,17 @@ class _Return(Exception):
 # Config / cosmetic / trigger calls that are correct to ignore entirely.
 NOOP_FUNCS = {
     "rmSetStatusText", "rmEchoInfo", "rmEchoError", "rmSetLightingSet",
-    "rmSetSeaType", "rmSetMapType", "rmEnableLocalWater",
+    "rmSetMapType", "rmEnableLocalWater",
     "rmSetMapElevationParameters", "rmSetMapElevationHeightBlend",
-    "rmTerrainInitialize", "rmSetWindMagnitude", "rmSetUnderbrushTree",
+    "rmSetWindMagnitude", "rmSetUnderbrushTree",
     "rmSetGlobalRain", "rmSetGlobalSnow", "rmSetMapElevationOctaves",
-    "rmSetAreaMix", "rmAddAreaTerrainLayer", "rmSetAreaTerrainType",
-    "rmSetAreaElevationType", "rmSetAreaElevationVariation",
-    "rmSetAreaElevationMinFrequency", "rmSetAreaElevationOctaves",
-    "rmSetAreaElevationPersistence", "rmSetAreaElevationNoiseBias",
-    "rmSetAreaHeightBlend", "rmSetAreaReveal", "rmSetAreaWarnFailure",
+    "rmSetAreaReveal", "rmSetAreaWarnFailure",
     "rmSetAreaForestType", "rmSetAreaForestDensity",
     "rmSetAreaForestClumpiness", "rmSetAreaForestUnderbrushDensity",
     "rmSetAreaForestUnderbrush",
     "rmSetAreaMinBlobs", "rmSetAreaMaxBlobs", "rmSetAreaMinBlobDistance",
     "rmSetAreaMaxBlobDistance", "rmAddAreaRemoveType", "rmAddAreaCliffEdge",
-    "rmSetAreaCliffEdge", "rmSetAreaCliffHeight", "rmSetAreaCliffPainting",
+    "rmSetAreaCliffEdge", "rmSetAreaCliffPainting",
     "rmSetAreaEdgeFilling", "rmSetAreaSmoothDistance2",
     "rmSetObjectDefAllowOverlap", "rmSetObjectDefForceFullRotation",
     "rmSetObjectDefCreateHerd", "rmSetObjectDefHerdAngle",
@@ -506,10 +559,15 @@ NOOP_FUNCS = {
     "rmDisableDefaultMercs", "rmDisableCivTypeMercRestriction",
     "rmEnableMerc", "rmDisableMerc", "rmSetBaseTerrainMix",
     "ypKingsHillPlacer", "rmBuildAllAreas", "rmSetPlacementArea",
-    "rmRiverSetShallowRadius", "rmRiverAddShallow",
     "rmRiverAddShallows", "rmRiverSetBankPercent", "rmRiverSetConnections",
     "rmRiverBuild", "rmRiverReveal", "rmRiverSetFoundationTerrain",
-    "rmSetTeamSpacing", "rmSetAreaWaterType",
+    "rmSetTeamSpacing",
+    "rmSetConnectionType", "rmSetConnectionCoherence",
+    "rmSetConnectionWarnFailure", "rmSetConnectionHeightBlend",
+    "rmSetConnectionSmoothDistance", "rmSetConnectionPositionVariance",
+    "rmAddConnectionTerrainReplacement", "rmAddConnectionStartConstraint",
+    "rmAddConnectionEndConstraint", "rmAddConnectionConstraint",
+    "kbGetPlayerName", "rmRiverSetBankNoiseParams", "rmSetOceanReveal",
     # objectives screen: UI-only, no geometry
     "rmObjectiveScreenSetTitle", "rmObjectiveScreenSetGoal",
     "rmObjectiveAdd", "rmObjectiveSetTeam",
@@ -528,15 +586,127 @@ TRIGGER_FUNCS = {
     "rmTriggerID", "rmAddTriggerEffectParam",
 }
 
-# Runtime-only reads -> Tainted.
+# Runtime-only reads -> Tainted. (rmPlayerLocX/ZFraction and
+# rmGetTradeRouteWayPoint are NOT here: ring nominals and the authored
+# route polyline make them deterministic — see the call handlers.)
 TAINTED_FUNCS = {
-    "rmGetUnitPosition", "rmGetUnitPlacedOfPlayer", "rmGetUnitPlaced",
-    "rmFindClosestPointVector", "rmGetTradeRouteWayPoint",
-    "rmPlayerLocXFraction", "rmPlayerLocZFraction", "rmGetPlayerCiv",
+    "rmFindClosestPointVector",
+    "rmGetPlayerCiv",
     "rmGetPlayerName", "ypIsAsian",
     "rmGetNumberUnitsPlaced", "rmGetHomeCityLevel",
     "rmGetGroupingInstanceUnitByType",
 }
+
+
+def ring_positions(player_events, players: int, teams: int):
+    """Deterministic NOMINAL player positions from the placement calls
+    recorded so far — the single implementation shared by the bridge and
+    the in-extractor rmPlayerLocX/ZFraction resolution (per-player content
+    like Cook Islands' Maori villages anchors on TC readbacks of these).
+
+    ENGINE ANGLE CONVENTION (pinned 2026-08-10; the "Civil War forts"
+    bug): circle fraction s sits at position angle 90° − s·360° — s=0 at
+    authored NORTH (+z), increasing CLOCKWISE toward +x:
+        pos(s) = (0.5 + r·sin(2πs), 0.5 + r·cos(2πs))
+    i.e. the x/z SWAP of the naive math convention. Full rings (0..1)
+    produce the same uniform point set either way, which is why only
+    SECTIONED team maps exposed the transpose. Evidence: zpunknown's
+    8-way bay ladder pairs each bay compass point with the player
+    section opposite it — exact fit for this formula and no other;
+    zpcivilwar's P2 branch places both players literally at z=0.25
+    (south, mirrored about x=0.5, minimap-confirmed) and its P4+
+    sections (0.28-0.4 / 0.6-0.72) reproduce that design only under
+    this formula; the official RMS doc's minimap clock agrees.
+
+    rmPlacePlayersLine: players evenly spaced from (x1,z1) to (x2,z2),
+    ENDPOINTS INCLUDED, in lobby order (zpbarrierreef widens its line
+    span with player count to hold spacing — interior-only slots would
+    make its 2-player lines absurdly tight). Per-team lines honored
+    (bluemountains/paris shores).
+
+    Fallback: explicit rmPlacePlayer literal coordinates, first concrete
+    pair per player, only when players 1..n are all present (Civil War's
+    2-player branch). None when no form exists. Positions are NOMINAL —
+    variance/variation args are ignored."""
+    import math
+
+    def _n(v):
+        return None if v is None or isinstance(v, Tainted) else float(v)
+
+    def _is_circ(e):
+        return (e.get("call") == "rmPlacePlayersCircular"
+                and _n(e.get("min")) is not None and _n(e.get("max")) is not None)
+
+    def _is_line(e):
+        return (e.get("call") == "rmPlacePlayersLine"
+                and all(_n(e.get(k)) is not None
+                        for k in ("x1", "z1", "x2", "z2")))
+
+    evs = [e for e in player_events if _is_circ(e) or _is_line(e)]
+    if not evs:
+        placed = {}
+        for e in player_events:
+            if e.get("call") != "rmPlacePlayer":
+                continue
+            p = e.get("player")
+            x, z = _n(e.get("x")), _n(e.get("z"))
+            if (p is not None and not isinstance(p, Tainted)
+                    and x is not None and z is not None):
+                placed.setdefault(int(p), (x, z))
+        if all(k in placed for k in range(1, players + 1)):
+            return [placed[k] for k in range(1, players + 1)]
+        return None
+
+    def _sec(ev):
+        sec = ev.get("section")
+        if sec and _n(sec[0]) is not None and _n(sec[1]) is not None:
+            s0, s1 = float(sec[0]), float(sec[1])
+        else:
+            s0, s1 = 0.0, 1.0
+        if s1 <= s0:
+            s1 += 1.0
+        return s0, s1
+
+    def _pos(ev, idx, count):
+        if ev.get("call") == "rmPlacePlayersCircular":
+            r = (_n(ev.get("min")) + _n(ev.get("max"))) / 2.0
+            s0, s1 = _sec(ev)
+            th = 2.0 * math.pi * (s0 + (s1 - s0) * idx / max(1, count))
+            return (0.5 + r * math.sin(th), 0.5 + r * math.cos(th))
+        x1, z1 = _n(ev.get("x1")), _n(ev.get("z1"))
+        x2, z2 = _n(ev.get("x2")), _n(ev.get("z2"))
+        t = 0.5 if count <= 1 else idx / (count - 1.0)
+        return (x1 + (x2 - x1) * t, z1 + (z2 - z1) * t)
+
+    n = players
+    n_teams = max(1, teams)
+    team_evs = {}
+    for e in evs:
+        t = e.get("team")
+        if t is not None and not isinstance(t, Tainted) and int(t) not in team_evs:
+            team_evs[int(t)] = e
+    out = []
+    if len(team_evs) >= 2:
+        members = {t: [k for k in range(n) if k * n_teams // n == t]
+                   for t in range(n_teams)}
+        for k in range(n):
+            t = k * n_teams // n
+            ev = team_evs.get(t, evs[0])
+            mem = members[t]
+            out.append(_pos(ev, mem.index(k), len(mem)))
+        return out
+    ev = evs[0]
+    if ev.get("call") == "rmPlacePlayersCircular":
+        # full/sectioned single ring: n equal slots, no endpoint doubling
+        r = (_n(ev.get("min")) + _n(ev.get("max"))) / 2.0
+        s0, s1 = _sec(ev)
+        for k in range(n):
+            th = 2.0 * math.pi * (s0 + (s1 - s0) * k / n)
+            out.append((0.5 + r * math.sin(th), 0.5 + r * math.cos(th)))
+        return out
+    for k in range(n):
+        out.append(_pos(ev, k, n))
+    return out
 
 
 class Extractor:
@@ -551,7 +721,15 @@ class Extractor:
         self.constraint_handles: Dict[int, str] = {}
         self.routes: Dict[int, bool] = {}
         self.variant_stack: List[str] = []
+        # Depth of enclosing NON-nominal tainted-if arms; placements
+        # recorded at depth > 0 carry nominal=False (Part H4).
+        self.alt_depth: int = 0
         self._pp_state: Dict[str, Any] = {"team": None, "section": None}
+        # Literal-anchor rule for readbacks: last concrete placement anchor
+        # per def handle, consumed by rmGetUnitPosition (the IW pirate-site
+        # idiom places a controller at a literal loc, reads its position
+        # back, and anchors an area there).
+        self.def_last_anchor: Dict[int, Tuple[float, float]] = {}
 
     # -- helpers -------------------------------------------------------------
 
@@ -635,15 +813,31 @@ class Extractor:
             _, cond, then, els, line = stmt
             value = self.eval(cond)
             if isinstance(value, Tainted):
-                # Fork: both arms as labeled variants, last write wins.
+                # Fork: both arms as labeled variants, last write wins for
+                # STATE. For PLACEMENT recording one arm is the NOMINAL
+                # (Part H4): the outcome of the condition under the lo-roll
+                # (nominal_bool); unknown -> then-arm. Placements from the
+                # other arm are recorded nominal=False and suppressed from
+                # the nominal scene (the Paris jesuit/maltese swap places
+                # each compound once, not at both mirror spots).
+                nom_then = (value.nominal_bool
+                            if value.nominal_bool is not None else True)
                 self.variant_stack.append(f"{value.expr}@{line}:true")
+                if not nom_then:
+                    self.alt_depth += 1
                 for s in then:
                     self.exec_stmt(s)
+                if not nom_then:
+                    self.alt_depth -= 1
                 self.variant_stack.pop()
                 if els:
                     self.variant_stack.append(f"{value.expr}@{line}:false")
+                    if nom_then:
+                        self.alt_depth += 1
                     for s in els:
                         self.exec_stmt(s)
+                    if nom_then:
+                        self.alt_depth -= 1
                     self.variant_stack.pop()
                 return
             for s in (then if value else els):
@@ -658,15 +852,22 @@ class Extractor:
                 return
             i = int(start_v)
             end = int(bound_v)
+            step = 1 if cmp_op in ("<", "<=") else -1
+            conds = {"<": lambda v: v < end, "<=": lambda v: v <= end,
+                     ">": lambda v: v > end, ">=": lambda v: v >= end}
+            cond = conds.get(cmp_op)
+            if cond is None:
+                raise ExtractError(f"line {line}: unsupported for-loop "
+                                   f"condition operator {cmp_op!r}")
             iterations = 0
-            while (i < end) if cmp_op == "<" else (i <= end):
+            while cond(i):
                 self.assign(var, i)
                 try:
                     for s in body:
                         self.exec_stmt(s)
                 except _Break:
                     break
-                i += 1
+                i += step
                 self.assign(var, i)
                 iterations += 1
                 if iterations > 5000:
@@ -722,7 +923,48 @@ class Extractor:
         a = self.eval(a_expr)
         b = self.eval(b_expr)
         if isinstance(a, Tainted) or isinstance(b, Tainted):
-            return Tainted(f"({a!r} {op} {b!r})")
+            # literal-string + runtime -> keep the literal as str_prefix
+            # (grouping variant refs like "maori_hawaii_0"+rand resolve
+            # deterministically by prefix)
+            prefix = None
+            if op == "+":
+                if isinstance(a, str):
+                    prefix = a + (b.str_prefix or "")
+                elif isinstance(a, Tainted) and a.str_prefix is not None:
+                    prefix = a.str_prefix
+            if op in ("==", "!=", "<", "<=", ">", ">="):
+                # Nominal outcome under the lo-roll (Part H4): tainted
+                # rand values collapse to their LO bound; if both sides
+                # then have a scalar, the comparison resolves nominally.
+                def _nom(v):
+                    if isinstance(v, Tainted):
+                        return v.lo if isinstance(v.lo, (int, float)) else None
+                    return v if isinstance(v, (int, float)) else None
+                na, nb = _nom(a), _nom(b)
+                nominal = None
+                if na is not None and nb is not None:
+                    nominal = {"==": na == nb, "!=": na != nb,
+                               "<": na < nb, "<=": na <= nb,
+                               ">": na > nb, ">=": na >= nb}[op]
+                return Tainted(f"({a!r} {op} {b!r})", nominal_bool=nominal)
+            return Tainted(f"({a!r} {op} {b!r})", str_prefix=prefix)
+        av = isinstance(a, tuple) and len(a) == 4 and a[0] == "vec"
+        bv = isinstance(b, tuple) and len(b) == 4 and b[0] == "vec"
+        if av or bv:
+            if op == "+" and av and bv:
+                return ("vec", a[1] + b[1], a[2] + b[2], a[3] + b[3])
+            if op == "-" and av and bv:
+                return ("vec", a[1] - b[1], a[2] - b[2], a[3] - b[3])
+            if op == "*" and av and not bv:
+                return ("vec", a[1] * b, a[2] * b, a[3] * b)
+            if op == "*" and bv and not av:
+                return ("vec", b[1] * a, b[2] * a, b[3] * a)
+            if op == "/" and av and not bv and float(b) != 0.0:
+                return ("vec", a[1] / b, a[2] / b, a[3] / b)
+            return Tainted(f"vec {op}")
+        if isinstance(a, tuple) or isinstance(b, tuple):
+            # opaque handles (unit_of refs) in arithmetic: runtime-dependent
+            return Tainted(f"({op} on handle)")
         if op == "+":
             if isinstance(a, str) or isinstance(b, str):
                 return _to_str(a) + _to_str(b)
@@ -733,6 +975,9 @@ class Extractor:
             return a * b
         if op == "/":
             return a / b
+        if op == "%":
+            # XS integer modulo (zpBalearicIslands:945 player parity)
+            return int(a) % int(b)
         if op == "==":
             return a == b
         if op == "!=":
@@ -770,6 +1015,53 @@ class Extractor:
 
         if name in NOOP_FUNCS or name in TRIGGER_FUNCS:
             return 0
+        if name == "rmGetTradeRouteWayPoint":
+            # Deterministic: the point at arc-length fraction t along the
+            # AUTHORED route polyline, as a METERS vector (the engine's
+            # return convention — callers wrap it in rmX/ZMetersToFraction).
+            # This is the anchor chain for train stations / route sockets /
+            # bridges (wwcanyon, bluemountains, civilwar): waypoint ->
+            # stopper -> readback -> grouping. Nominal: the real route
+            # snaps to 16 m blocks around this polyline.
+            handle = args[0] if args else None
+            t = args[1] if len(args) > 1 else None
+            wps = res.route_waypoints.get(handle) if not isinstance(handle, Tainted) else None
+            if (wps and not isinstance(t, Tainted) and t is not None
+                    and res.map_size_x and res.map_size_z
+                    and not any(isinstance(c, Tainted) for p_ in wps for c in p_)):
+                import math as _m
+                pts = [(float(x) * res.map_size_x, float(z) * res.map_size_z)
+                       for x, z in wps]
+                if len(pts) >= 2:
+                    segs = list(zip(pts, pts[1:]))
+                    L = sum(_m.hypot(x2 - x1, z2 - z1)
+                            for (x1, z1), (x2, z2) in segs)
+                    d = min(max(float(t), 0.0), 1.0) * L
+                    for (x1, z1), (x2, z2) in segs:
+                        sl = _m.hypot(x2 - x1, z2 - z1)
+                        if d <= sl and sl > 0:
+                            f = d / sl
+                            return ("vec", x1 + (x2 - x1) * f, 0.0,
+                                    z1 + (z2 - z1) * f)
+                        d -= sl
+                    return ("vec", pts[-1][0], 0.0, pts[-1][1])
+            return Tainted("rmGetTradeRouteWayPoint(...)")
+
+        if name in ("rmPlayerLocXFraction", "rmPlayerLocZFraction"):
+            # Deterministic NOMINAL ring position for the player (the same
+            # doctrine as loc_player areas) — unlocks per-player content
+            # anchored on TC/player-loc readbacks (Cook Islands Maori
+            # villages, starting trees). Tainted only when no placement
+            # call has run yet or the player index is runtime/invalid.
+            p = args[0] if args else None
+            if not isinstance(p, Tainted) and p is not None:
+                ring = ring_positions(res.player_events, sc.players, sc.teams)
+                k = int(p)
+                if ring is not None and 1 <= k <= len(ring):
+                    x, z = ring[k - 1]
+                    return x if name == "rmPlayerLocXFraction" else z
+            return Tainted(f"{name}(...)")
+
         if name in TAINTED_FUNCS:
             return Tainted(f"{name}(...)")
 
@@ -789,10 +1081,26 @@ class Extractor:
         if name == "rmRandFloat":
             return Tainted(f"rmRandFloat({args[0]},{args[1]})", lo=args[0], hi=args[1])
         if name in ("xsVectorGetX", "xsVectorGetY", "xsVectorGetZ"):
-            src = args[0].expr if isinstance(args[0], Tainted) else repr(args[0])
+            v = args[0]
+            if isinstance(v, tuple) and len(v) == 4 and v[0] == "vec":
+                return float(v[{"xsVectorGetX": 1, "xsVectorGetY": 2,
+                                "xsVectorGetZ": 3}[name]])
+            src = v.expr if isinstance(v, Tainted) else repr(v)
             return Tainted(f"{name}({src})")
         if name == "xsVectorSet":
+            if not any(isinstance(a, Tainted) for a in args[:3]):
+                return ("vec", float(args[0]), float(args[1]), float(args[2]))
             return Tainted(f"xsVectorSet({args[0]},{args[1]},{args[2]})")
+        if name in ("rmGetUnitPlacedOfPlayer", "rmGetUnitPlaced"):
+            return ("unit_of", args[0])
+        if name == "rmGetUnitPosition":
+            ref = args[0]
+            if isinstance(ref, tuple) and len(ref) == 2 and ref[0] == "unit_of":
+                anchor = self.def_last_anchor.get(ref[1])
+                if anchor is not None:
+                    sx, sz = self._need_size()
+                    return ("vec", anchor[0] * sx, 0.0, anchor[1] * sz)
+            return Tainted("rmGetUnitPosition(...)")
         if name in ("xsArrayCreateInt", "xsArrayCreateFloat", "xsArrayCreateString"):
             return {"__array__": [args[1]] * int(args[0]) if not isinstance(args[0], Tainted) else []}
         if name in ("xsArraySetInt", "xsArraySetFloat", "xsArraySetString"):
@@ -849,6 +1157,22 @@ class Extractor:
             return 0
         if name == "rmSetSeaLevel":
             res.sea_level = float(args[0])
+            return 0
+        if name == "rmSetSeaType":
+            if isinstance(args[0], Tainted):
+                res.warn(f"line {line}: rmSetSeaType is runtime-dependent; "
+                         "sea depth falls back to the default")
+            else:
+                res.sea_type = str(args[0])
+            return 0
+        if name == "rmTerrainInitialize":
+            if isinstance(args[0], Tainted):
+                res.warn(f"line {line}: rmTerrainInitialize terrain is "
+                         "runtime-dependent; base terrain unknown")
+            else:
+                res.terrain_init = str(args[0])
+            if len(args) > 1 and not isinstance(args[1], Tainted):
+                res.terrain_init_height = float(args[1])
             return 0
         if name == "rmSetWorldCircleConstraint":
             res.world_circle = bool(args[0])
@@ -938,15 +1262,29 @@ class Extractor:
             }
             return h
         if name == "rmCreateTerrainMaxDistanceConstraint":
+            # Stay WITHIN d of the named terrain (AoM code reference:
+            # "a constraint to be close to terrain with a certain
+            # passability") — the near-water mirror of the terrain kind.
             h = self._new_handle()
             self.constraint_handles[h] = args[0]
-            res.constraints[args[0]] = {"kind": "opaque", "desc": "terrain_max", "line": line}
+            is_land_type = str(args[1]).lower() == "land"
+            near_land = (bool(args[2]) == is_land_type)
+            res.constraints[args[0]] = {
+                "kind": "terrain_max", "near": "land" if near_land else "water",
+                "distance_m": args[3], "line": line,
+            }
             return h
         if name == "rmCreateTypeDistanceConstraint":
+            # True type semantics (Part H): distance from every placed UNIT
+            # whose proto is (or counts as, via protoy UnitTypes) the named
+            # type — this is how same-anchor groupings scatter in-game
+            # (wwcanyon's avoidSufi = 70 m from "SocketApache", a unit
+            # INSIDE each placed village). Previously modeled as a
+            # class_distance to a class nothing joins: trivially true.
             h = self._new_handle()
             self.constraint_handles[h] = args[0]
             res.constraints[args[0]] = {
-                "kind": "class_distance", "class": str(args[1]),
+                "kind": "type_distance", "type": str(args[1]),
                 "distance_m": args[2], "line": line,
             }
             return h
@@ -970,9 +1308,33 @@ class Extractor:
                 if cname == args[0]:
                     return h
             return Tainted(f"rmConstraintID({args[0]})")
-        if name in ("rmCreateEdgeDistanceConstraint", "rmCreateCliffRampConstraint",
-                    "rmCreateAreaDistanceConstraint", "rmCreateAreaConstraint",
+        if name in ("rmCreateAreaConstraint", "rmCreateAreaDistanceConstraint",
                     "rmCreateAreaMaxDistanceConstraint"):
+            # AoM code reference semantics (verified 2026-08-10):
+            #   AreaConstraint            "remain WITHIN an area"
+            #   AreaDistanceConstraint    "stay AWAY from an area"
+            #   AreaMaxDistanceConstraint "remain within a distance of it"
+            # wwcanyon's west/eastMountainsConstraint therefore pins its
+            # labs and villages ONTO their mesas, not off them.
+            h = self._new_handle()
+            cname = str(args[0])
+            if cname in res.constraints:
+                cname = f"{cname}#{line}"
+            self.constraint_handles[h] = cname
+            target = res.areas.get(args[1])
+            aname = target.name if target is not None else None
+            kind = {"rmCreateAreaConstraint": "area_within",
+                    "rmCreateAreaDistanceConstraint": "area_distance",
+                    "rmCreateAreaMaxDistanceConstraint": "area_max"}[name]
+            spec = {"kind": kind, "area": aname, "line": line}
+            if name != "rmCreateAreaConstraint":
+                spec["distance_m"] = args[2] if len(args) > 2 else 0.0
+            if aname is None:
+                spec = {"kind": "opaque", "desc": name, "line": line}
+            res.constraints[cname] = spec
+            return h
+        if name in ("rmCreateEdgeDistanceConstraint", "rmCreateCliffRampConstraint",
+                    "rmCreateHCGPConstraint"):
             h = self._new_handle()
             self.constraint_handles[h] = str(args[0])
             res.constraints[str(args[0])] = {"kind": "opaque", "desc": name, "line": line}
@@ -1014,10 +1376,60 @@ class Extractor:
             if a is not None:
                 a.obey_world_circle = bool(args[1])
             return 0
+        if name == "rmSetAreaHeightBlend":
+            a = res.areas.get(args[0])
+            if a is not None and not isinstance(args[1], Tainted):
+                a.height_blend = float(args[1])
+            return 0
+        if name == "rmSetAreaLocPlayer":
+            a = res.areas.get(args[0])
+            if a is not None and not isinstance(args[1], Tainted):
+                a.loc_player = int(args[1])
+            return 0
+        if name == "rmSetAreaLocTeam":
+            a = res.areas.get(args[0])
+            if a is not None and not isinstance(args[1], Tainted):
+                a.loc_team = int(args[1])
+            return 0
+        if name == "rmSetPlayerArea":
+            return 0
         if name == "rmSetAreaCliffType":
             a = res.areas.get(args[0])
             if a is not None:
                 a.cliff_type = str(args[1])
+            return 0
+        if name == "rmSetAreaCliffHeight":
+            a = res.areas.get(args[0])
+            if a is not None:
+                v = args[1]
+                if isinstance(v, Tainted):
+                    if v.lo is not None:      # rmRandInt(6,8): lower bound
+                        a.cliff_height = float(v.lo)
+                else:
+                    a.cliff_height = float(v)
+            return 0
+        if name == "rmSetAreaWaterType":
+            a = res.areas.get(args[0])
+            if a is None:
+                return 0
+            if isinstance(args[1], Tainted):
+                res.warn(f"line {line}: water type of area {a.name!r} is "
+                         "runtime-dependent; the lake may render as land")
+            else:
+                a.water_type = str(args[1])
+            return 0
+        if name in ("rmSetAreaMix", "rmSetAreaTerrainType", "rmAddAreaTerrainLayer"):
+            a = res.areas.get(args[0])
+            if a is not None:
+                a.has_paint = True
+            return 0
+        if name in ("rmSetAreaElevationType", "rmSetAreaElevationVariation",
+                    "rmSetAreaElevationMinFrequency", "rmSetAreaElevationOctaves",
+                    "rmSetAreaElevationPersistence", "rmSetAreaElevationNoiseBias",
+                    "rmSetAreaElevationEdgeFalloffDist"):
+            a = res.areas.get(args[0])
+            if a is not None:
+                a.has_elevation = True
             return 0
         if name == "rmAddAreaConstraint":
             a = res.areas.get(args[0])
@@ -1046,21 +1458,24 @@ class Extractor:
                     return h
             return Tainted(f"rmAreaID({args[0]})")
 
-        # --- rivers: painted water bands. Official reference (rm_commands_
-        #     reference.md:699): rmRiverCreate(areaID, waterType, breaks,
-        #     offset, minR, maxR) — minR/maxR are RADII from the centerline
-        #     in meters, so full width = minR + maxR. (guide v2:7400's
-        #     "width, shallowWidth" reading is an erratum; the Elbe bridge
-        #     geometry and the ground-truth band width both confirm radii.)
+        # --- rivers: painted water bands. rmRiverCreate(areaID, waterType,
+        #     breaks, offset, minR, maxR). CALIBRATED 2026-08-09 from
+        #     perpendicular pixel measurements on the minimaps: the args act
+        #     as a HALF-WIDTH that the engine SATURATES around 27 m —
+        #     riverina (15,15) measures 25-35 m wide, elbe (39,39) measures
+        #     38-56 m, civil war (150,150) measures 40-70 m (NOT 300).
+        #     width = 2 * min(avg(minR, maxR), RIVER_HALF_WIDTH_CAP_M).
         if name == "rmRiverCreate":
             h = self._new_handle()
             if len(args) > 5 and not isinstance(args[4], Tainted) \
                     and not isinstance(args[5], Tainted):
-                width = float(args[4]) + float(args[5])
+                half = (float(args[4]) + float(args[5])) / 2.0
             elif len(args) > 4 and not isinstance(args[4], Tainted):
-                width = 2.0 * float(args[4])
+                half = float(args[4])
             else:
-                width = Tainted("river width")
+                half = None
+            width = (2.0 * min(half, RIVER_HALF_WIDTH_CAP_M)
+                     if half is not None else Tainted("river width"))
             res.rivers[h] = XRiver(line=line, water_type=str(args[1]), width=width)
             return h
         if name == "rmRiverAddWaypoint":
@@ -1068,6 +1483,42 @@ class Extractor:
             if r is not None:
                 r.waypoints.append((args[1], args[2]))
             return 0
+        if name == "rmRiverSetShallowRadius":
+            r = res.rivers.get(args[0])
+            if r is not None and not isinstance(args[1], Tainted):
+                r.shallow_radius = float(args[1])
+            return 0
+        if name == "rmRiverAddShallow":
+            r = res.rivers.get(args[0])
+            if r is not None and not isinstance(args[1], Tainted):
+                r.shallows.append(float(args[1]))
+            return 0
+
+        # --- connections: causeway bands between two areas ---
+        if name == "rmCreateConnection":
+            h = self._new_handle()
+            res.connections[h] = XConnection(line=line)
+            return h
+        if name == "rmSetConnectionWidth":
+            c = res.connections.get(args[0])
+            if c is not None:
+                c.width = args[1]
+            return 0
+        if name == "rmSetConnectionBaseHeight":
+            c = res.connections.get(args[0])
+            if c is not None and not isinstance(args[1], Tainted):
+                c.base_height = float(args[1])
+            return 0
+        if name == "rmAddConnectionArea":
+            c = res.connections.get(args[0])
+            if c is not None:
+                c.areas.append(args[1])
+            return 0
+        if name == "rmBuildConnection":
+            c = res.connections.get(args[0])
+            if c is not None:
+                c.built = True
+            return True
 
         # --- object defs / groupings ---
         if name in ("rmCreateObjectDef", "rmCreateStartingUnitsObjectDef"):
@@ -1117,12 +1568,18 @@ class Extractor:
             else:
                 player, x, z = args[1], args[2], args[3]
                 count = args[4] if len(args) > 4 else 1
+            if not isinstance(x, Tainted) and not isinstance(z, Tainted):
+                self.def_last_anchor[args[0]] = (float(x), float(z))
             res.placements.append(XPlacement(
                 def_line=d.line, name=d.name, kind="at_loc",
                 players=[player], x=x, z=z, count=count,
-                variant="|".join(self.variant_stack)))
+                variant="|".join(self.variant_stack),
+                nominal=self.alt_depth == 0))
             return 1
-        if name == "rmPlaceObjectDefInArea":
+        if name in ("rmPlaceObjectDefInArea", "rmPlaceGroupingInArea"):
+            # Third grouping placement method (user 2026-08-10): random
+            # placement INSIDE an area — cookislands underwater patches,
+            # melanesia villages. Same signature as the object-def form.
             d = res.defs.get(args[0])
             if d is None:
                 return 0
@@ -1131,19 +1588,27 @@ class Extractor:
             res.placements.append(XPlacement(
                 def_line=d.line, name=d.name, kind="in_area",
                 players=[args[1]], area_refs=[area_name], count=count,
-                variant="|".join(self.variant_stack)))
+                variant="|".join(self.variant_stack),
+                nominal=self.alt_depth == 0))
             return 1
         if name in ("rmPlaceObjectDefAtPoint", "rmPlaceGroupingAtPoint"):
             d = res.defs.get(args[0])
             if d is None:
                 return 0
             vec = args[2]
-            expr = vec.expr if isinstance(vec, Tainted) else repr(vec)
+            if isinstance(vec, tuple) and len(vec) == 4 and vec[0] == "vec":
+                sx, sz = self._need_size()
+                x, z = vec[1] / sx, vec[3] / sz
+                self.def_last_anchor[args[0]] = (x, z)
+            else:
+                expr = vec.expr if isinstance(vec, Tainted) else repr(vec)
+                x, z = Tainted(expr), Tainted(expr)
             res.placements.append(XPlacement(
                 def_line=d.line, name=d.name, kind="at_point",
-                players=[args[1]], x=Tainted(expr), z=Tainted(expr),
+                players=[args[1]], x=x, z=z,
                 count=args[3] if len(args) > 3 else 1,
-                variant="|".join(self.variant_stack)))
+                variant="|".join(self.variant_stack),
+                nominal=self.alt_depth == 0))
             return 1
 
         # --- trade routes (per-handle: maps ship several separate routes) ---
@@ -1177,7 +1642,9 @@ class Extractor:
             return 0
         if name == "rmPlacePlayersCircular":
             res.player_events.append({
-                "call": name, "min": args[0], "max": args[1], "variance": args[2],
+                "call": name, "min": args[0],
+                "max": args[1] if len(args) > 1 else args[0],
+                "variance": args[2] if len(args) > 2 else 0.0,
                 "team": self._pp_state["team"], "section": self._pp_state["section"],
                 "variant": "|".join(self.variant_stack)})
             return 0
@@ -1186,7 +1653,16 @@ class Extractor:
                 "call": name, "player": args[0], "x": args[1], "z": args[2],
                 "variant": "|".join(self.variant_stack)})
             return 0
-        if name in ("rmPlacePlayersSquare", "rmPlacePlayersLine", "rmPlacePlayersRiver"):
+        if name == "rmPlacePlayersLine":
+            # (x1, z1, x2, z2[, distVariation, spacingVariation]) — the
+            # variations are noise around the line; nominal ignores them.
+            res.player_events.append({
+                "call": name,
+                "x1": args[0], "z1": args[1], "x2": args[2], "z2": args[3],
+                "team": self._pp_state["team"],
+                "variant": "|".join(self.variant_stack)})
+            return 0
+        if name in ("rmPlacePlayersSquare", "rmPlacePlayersRiver"):
             res.player_events.append({"call": name, "args": args,
                                       "variant": "|".join(self.variant_stack)})
             return 0
@@ -1212,7 +1688,8 @@ class Extractor:
             m = re.match(r"^(.*?)[ ]?(\d+)$", a.name)
             prefix = m.group(1) if m else a.name
             key = (prefix, repr(a.size_min_frac), a.base_height,
-                   a.coherence, a.cliff_type)
+                   a.coherence, a.cliff_type, a.water_type,
+                   a.loc_player, a.loc_team)
             groups.setdefault(key, []).append(h)
         for key, handles in groups.items():
             if len(handles) > 2:
@@ -1221,6 +1698,12 @@ class Extractor:
                 keep.count = len(handles)
                 for h in handles[1:]:
                     del res.areas[h]
+                # Connections referencing a collapsed member must follow the
+                # kept handle (Hawaii links its volcano rings/bonus islets in
+                # a loop — dangling handles silently dropped 6 causeways).
+                for c in res.connections.values():
+                    c.areas = [handles[0] if h in handles[1:] else h
+                               for h in c.areas]
 
         # Same def placed repeatedly merges into one record ONLY when the
         # anchors agree (per-player TCLoc-style runtime anchors, or identical
@@ -1304,6 +1787,13 @@ def diff_vs_scene(ex: Extraction, scene, sc: Scenario) -> List[str]:
         issues.append(f"config: sea level {ex.sea_level} != {rs.sea_level}")
     if ex.world_circle != rs.world_circle:
         issues.append("config: world-circle flag differs")
+    from scripts.mapsim.waterdata import is_water_type_name
+    ex_base_water = ex.terrain_init is None or is_water_type_name(ex.terrain_init)
+    if ex_base_water != rs.base_is_water:
+        issues.append(f"config: base terrain {ex.terrain_init!r} resolves "
+                      f"water={ex_base_water} != curated {rs.base_is_water}")
+    if (ex.sea_type or None) != (rs.sea_type or None) and rs.sea_type is not None:
+        issues.append(f"config: sea type {ex.sea_type} != {rs.sea_type}")
 
     # -- areas --
     ex_areas = {a.line: a for a in ex.areas.values()}
@@ -1342,6 +1832,8 @@ def diff_vs_scene(ex: Extraction, scene, sc: Scenario) -> List[str]:
             issues.append(f"area {ca.name}: obey_world_circle {xa.obey_world_circle} != {ca.obey_world_circle}")
         if (xa.cliff_type or None) != (ca.cliff_type or None):
             issues.append(f"area {ca.name}: cliff {xa.cliff_type} != {ca.cliff_type}")
+        if (xa.water_type or None) != (ca.water_type or None):
+            issues.append(f"area {ca.name}: water {xa.water_type} != {ca.water_type}")
     curated_lines = {a.line for a in rs.areas}
     for line, xa in ex_areas.items():
         if line not in curated_lines:
@@ -1375,7 +1867,13 @@ def diff_vs_scene(ex: Extraction, scene, sc: Scenario) -> List[str]:
         elif cp.kind in ("at_loc", "grouping_at_loc"):
             if cp.runtime_expr is not None:
                 if not isinstance(p0.x, Tainted):
-                    issues.append(f"{cp.name}: curated runtime anchor but extraction is concrete")
+                    # The vector-readback rule resolves anchors the curation
+                    # recorded as runtime-with-approx: accept when the
+                    # concrete value matches the curated approx anchor.
+                    if cp.x is None or not (_close(p0.x, cp.x) and _close(p0.z, cp.z)):
+                        issues.append(f"{cp.name}: concrete anchor "
+                                      f"({p0.x},{p0.z}) != curated approx "
+                                      f"({cp.x},{cp.z})")
             elif isinstance(p0.x, Tainted) or isinstance(p0.z, Tainted):
                 issues.append(f"{cp.name}: extracted anchor tainted but curated is literal")
             elif not (_close(p0.x, cp.x) and _close(p0.z, cp.z)):

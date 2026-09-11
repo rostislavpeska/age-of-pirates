@@ -868,9 +868,9 @@ void main(void)
 	rmForbidTradeMonopoly(true);
 
 	// ____________________ MAP OBJECTIVES ____________________
-    rmObjectiveScreenSetTitle(302118);
-    rmObjectiveScreenSetGoal(302119);
-    rmObjectiveAdd(302120, 302121, true, true, true);
+    rmObjectiveScreenSetTitle(502118);
+    rmObjectiveScreenSetGoal(502119);
+    rmObjectiveAdd(502120, 502121, true, true, true);
 
    	// ************************* TRIGGERS ******************************
 
@@ -1009,7 +1009,7 @@ void main(void)
 	rmSetTriggerEffectParam("Civilization","zpVenetians");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",0);
-	rmSetTriggerEffectParam("StringID","302124");
+	rmSetTriggerEffectParam("StringID","502124");
 	rmAddTriggerEffect("Trade Route Set Level");
 	rmSetTriggerEffectParamInt("TradeRoute",1);
 	rmSetTriggerEffectParamInt("Level",1);
@@ -1017,16 +1017,16 @@ void main(void)
 	// Change name does not work in RM, only in editor
 	rmAddTriggerEffect("Change Name");
 	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod1);
-	rmSetTriggerEffectParam("NewName","{302131}");
+	rmSetTriggerEffectParam("NewName","{502131}");
 	rmAddTriggerEffect("Change Name");
 	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod2);
-	rmSetTriggerEffectParam("NewName","{302133}");
+	rmSetTriggerEffectParam("NewName","{502133}");
 	rmAddTriggerEffect("Change Name");
 	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod3);
-	rmSetTriggerEffectParam("NewName","{302132}");
+	rmSetTriggerEffectParam("NewName","{502132}");
 	rmAddTriggerEffect("Change Name");
 	rmSetTriggerEffectParam("SrcObject",""+veniceSocketMod4);
-	rmSetTriggerEffectParam("NewName","{302134}");
+	rmSetTriggerEffectParam("NewName","{502134}");
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -1169,8 +1169,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF"+i));
 		rmAddTriggerEffect("Counter Set Text Team");
         rmSetTriggerEffectParam("Name", "VictoryCounter"+i);
-        rmSetTriggerEffectParam("Msg", "{302138}");
-        rmSetTriggerEffectParam("EnemyMsg", "{302139}");
+        rmSetTriggerEffectParam("Msg", "{502138}");
+        rmSetTriggerEffectParam("EnemyMsg", "{502139}");
         rmSetTriggerEffectParamInt("RefTeamID", i);
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);

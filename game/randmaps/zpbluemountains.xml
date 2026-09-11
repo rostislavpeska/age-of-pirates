@@ -1,5 +1,5 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<mapinfo details = "301564" displayNameID = "301563" loadDetails="301565" largeMapName = "zpbluemountains"
+<mapinfo details = "501564" displayNameID = "501563" loadDetails="501565" largeMapName = "zpbluemountains"
     imagepath = "ui\random_map\bluemountains\bluemountains_mini" cannotReplace = "" loadBackground="ui\random_map\bluemountains\bluemountains_map">
    <loadss>ui\random_map\bluemountains\bluemountains_01</loadss>
    <loadss>ui\random_map\bluemountains\bluemountains_02</loadss>

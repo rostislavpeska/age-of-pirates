@@ -25,6 +25,7 @@ import fnmatch
 import os
 import struct
 import sys
+import tempfile
 import xml.etree.ElementTree as ET
 
 sys.setrecursionlimit(20000)
@@ -363,7 +364,39 @@ def cmd_cat(args, index):
     return 0
 
 
+def default_out_dir():
+    """Where `extract` writes when -o is omitted: never the current directory.
+
+    Extracted game files are scratch data. The repo tracks vanilla content in
+    exactly one place, scripts/source/, and only via an explicit --in-repo.
+    """
+    return os.environ.get("AOE3DE_EXPORT_DIR") or os.path.join(
+        tempfile.gettempdir(), "aoe3-bar-export")
+
+
+def git_root(path):
+    """Return the git working tree that contains `path`, or None."""
+    p = os.path.abspath(path)
+    while True:
+        if os.path.exists(os.path.join(p, ".git")):
+            return p
+        parent = os.path.dirname(p)
+        if parent == p:
+            return None
+        p = parent
+
+
 def cmd_extract(args, index):
+    if args.out is None:
+        args.out = default_out_dir()
+    root = git_root(args.out)
+    if root and not args.in_repo:
+        print("refusing to extract into a git working tree: " + root, file=sys.stderr)
+        print("  target: " + os.path.abspath(args.out), file=sys.stderr)
+        print("  Extracted game files are scratch data, never repo content.", file=sys.stderr)
+        print("  Pass -o <session scratchpad>, omit -o to use " + default_out_dir() + ",", file=sys.stderr)
+        print("  or pass --in-repo only when refreshing the sanctioned snapshot scripts/source/.", file=sys.stderr)
+        return 2
     hits = match(index, args.pattern)
     if not hits:
         print("no match -- nothing extracted", file=sys.stderr)
@@ -467,7 +500,12 @@ def main(argv=None):
 
     p = sub.add_parser("extract", help="extract matching files to a directory")
     add_pattern(p)
-    p.add_argument("-o", "--out", default="bar_export", help="output dir (default: bar_export)")
+    p.add_argument("-o", "--out", default=None,
+                   help="output dir. Default: $AOE3DE_EXPORT_DIR, else <tempdir>/aoe3-bar-export. "
+                        "Never inside the repo: extracted game files are scratch data")
+    p.add_argument("--in-repo", action="store_true",
+                   help="allow writing inside a git working tree. Reserved for refreshing the "
+                        "sanctioned vanilla snapshot scripts/source/; anything else is contamination")
     p.add_argument("--raw", action="store_true",
                    help="write XMB as-is instead of decompiling to XML")
     p.add_argument("--flat", action="store_true", help="drop directory structure")

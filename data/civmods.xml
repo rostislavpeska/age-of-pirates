@@ -5,11 +5,11 @@
     <subcivtype>3</subcivtype>
     <portrait>ui\native_allies\aztec</portrait>
     <culture>Stone</culture>
-    <displaynameid>300011</displaynameid>
-    <rollovernameid>300011</rollovernameid>
-    <alliedid>300013</alliedid>
-    <alliedotherid>300014</alliedotherid>
-    <unalliedid>300012</unalliedid>
+    <displaynameid>500011</displaynameid>
+    <rollovernameid>500011</rollovernameid>
+    <alliedid>500013</alliedid>
+    <alliedotherid>500014</alliedotherid>
+    <unalliedid>500012</unalliedid>
     <agetech>
       <age>Age0</age>
       <tech>zpNativePirates</tech>
@@ -55,6 +55,16 @@
       </unitcounts>
     </multipleblocktrain>
     <multipleblocktrain>
+      <building>zpSPCPirateDock</building>
+      <multipleblockunit>zpSPCBonhommeRichardProxy</multipleblockunit>
+      <units>
+        <unit>zpSPCBonhommeRichard</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
+    <multipleblocktrain>
       <building>zpSPCPirateDockB</building>
       <multipleblockunit>zpPrivateerProxy</multipleblockunit>
       <units>
@@ -94,6 +104,16 @@
         <count>1</count>
       </unitcounts>
     </multipleblocktrain>
+    <multipleblocktrain>
+      <building>zpSPCPirateDockB</building>
+      <multipleblockunit>zpSPCBonhommeRichardProxy</multipleblockunit>
+      <units>
+        <unit>zpSPCBonhommeRichard</unit>
+      </units>
+      <unitcounts>
+        <count>1</count>
+      </unitcounts>
+    </multipleblocktrain>
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
   </civ>
@@ -103,11 +123,11 @@
     <subcivtype>3</subcivtype>
     <portrait>ui\native_allies\aztec</portrait>
     <culture>Stone</culture>
-    <displaynameid>300086</displaynameid>
-    <rollovernameid>300086</rollovernameid>
-    <alliedid>300013</alliedid>
-    <alliedotherid>300014</alliedotherid>
-    <unalliedid>300012</unalliedid>
+    <displaynameid>500086</displaynameid>
+    <rollovernameid>500086</rollovernameid>
+    <alliedid>500013</alliedid>
+    <alliedotherid>500014</alliedotherid>
+    <unalliedid>500012</unalliedid>
     <agetech>
       <age>Age0</age>
       <tech>zpNativePenalColony</tech>
@@ -121,8 +141,8 @@
     <subcivtype>4</subcivtype>
     <portrait>ui\native_allies\aztec</portrait>
     <culture>Stone</culture>
-    <displaynameid>300109</displaynameid>
-    <rollovernameid>300109</rollovernameid>
+    <displaynameid>500109</displaynameid>
+    <rollovernameid>500109</rollovernameid>
     <alliedid>26446</alliedid>
     <alliedotherid>26445</alliedotherid>
     <unalliedid>26444</unalliedid>
@@ -139,11 +159,11 @@
     <subcivtype>2</subcivtype>
     <portrait>ui\native_allies\aztec</portrait>
     <culture>Stone</culture>
-    <displaynameid>300184</displaynameid>
-    <rollovernameid>300011</rollovernameid>
-    <alliedid>300013</alliedid>
-    <alliedotherid>300014</alliedotherid>
-    <unalliedid>300012</unalliedid>
+    <displaynameid>500184</displaynameid>
+    <rollovernameid>500011</rollovernameid>
+    <alliedid>500013</alliedid>
+    <alliedotherid>500014</alliedotherid>
+    <unalliedid>500012</unalliedid>
     <agetech>
       <age>Age0</age>
       <tech>zpNativeWokou</tech>
@@ -237,7 +257,7 @@
     <subcivtype>3</subcivtype>
     <portrait>ui\native_allies\aztec</portrait>
     <culture>Stone</culture>
-    <displaynameid>300405</displaynameid>
+    <displaynameid>500405</displaynameid>
     <rollovernameid>45433</rollovernameid>
     <alliedid>26446</alliedid>
     <alliedotherid>26445</alliedotherid>
@@ -255,7 +275,7 @@
     <subcivtype>3</subcivtype>
     <portrait>ui\native_allies\aztec</portrait>
     <culture>Stone</culture>
-    <displaynameid>300405</displaynameid>
+    <displaynameid>500405</displaynameid>
     <rollovernameid>45433</rollovernameid>
     <alliedid>26446</alliedid>
     <alliedotherid>26445</alliedotherid>
@@ -313,8 +333,8 @@
     <subcivtype>1</subcivtype>
     <portrait>ui\native_allies\tupi</portrait>
     <culture>Grass</culture>
-    <displaynameid>300639</displaynameid>
-    <rollovernameid>300639</rollovernameid>
+    <displaynameid>500639</displaynameid>
+    <rollovernameid>500639</rollovernameid>
     <alliedid>26446</alliedid>
     <alliedotherid>26445</alliedotherid>
     <unalliedid>26444</unalliedid>
@@ -359,8 +379,8 @@
     <subcivtype>1</subcivtype>
     <portrait>ui\native_allies\tupi</portrait>
     <culture>Grass</culture>
-    <displaynameid>300701</displaynameid>
-    <rollovernameid>300701</rollovernameid>
+    <displaynameid>500701</displaynameid>
+    <rollovernameid>500701</rollovernameid>
     <alliedid>26446</alliedid>
     <alliedotherid>26445</alliedotherid>
     <unalliedid>26444</unalliedid>
@@ -379,8 +399,8 @@
     <subcivtype>1</subcivtype>
     <portrait>ui\native_allies\tupi</portrait>
     <culture>Grass</culture>
-    <displaynameid>300865</displaynameid>
-    <rollovernameid>300865</rollovernameid>
+    <displaynameid>500865</displaynameid>
+    <rollovernameid>500865</rollovernameid>
     <alliedid>26446</alliedid>
     <alliedotherid>26445</alliedotherid>
     <unalliedid>26444</unalliedid>
@@ -407,8 +427,8 @@
     <subcivtype>1</subcivtype>
     <portrait>ui\native_allies\tupi</portrait>
     <culture>Grass</culture>
-    <displaynameid>300882</displaynameid>
-    <rollovernameid>300882</rollovernameid>
+    <displaynameid>500882</displaynameid>
+    <rollovernameid>500882</rollovernameid>
     <alliedid>26446</alliedid>
     <alliedotherid>26445</alliedotherid>
     <unalliedid>26444</unalliedid>
@@ -425,8 +445,8 @@
     <subcivtype>1</subcivtype>
     <portrait>ui\native_allies\tupi</portrait>
     <culture>Grass</culture>
-    <displaynameid>300987</displaynameid>
-    <rollovernameid>300987</rollovernameid>
+    <displaynameid>500987</displaynameid>
+    <rollovernameid>500987</rollovernameid>
     <alliedid>26446</alliedid>
     <alliedotherid>26445</alliedotherid>
     <unalliedid>26444</unalliedid>
@@ -443,8 +463,8 @@
     <subcivtype>1</subcivtype>
     <portrait>ui\native_allies\tupi</portrait>
     <culture>Grass</culture>
-    <displaynameid>301178</displaynameid>
-    <rollovernameid>301178</rollovernameid>
+    <displaynameid>501178</displaynameid>
+    <rollovernameid>501178</rollovernameid>
     <alliedid>26446</alliedid>
     <alliedotherid>26445</alliedotherid>
     <unalliedid>26444</unalliedid>
@@ -461,8 +481,8 @@
     <subcivtype>1</subcivtype>
     <portrait>ui\native_allies\tupi</portrait>
     <culture>Grass</culture>
-    <displaynameid>301641</displaynameid>
-    <rollovernameid>301641</rollovernameid>
+    <displaynameid>501641</displaynameid>
+    <rollovernameid>501641</rollovernameid>
     <alliedid>26446</alliedid>
     <alliedotherid>26445</alliedotherid>
     <unalliedid>26444</unalliedid>
@@ -479,8 +499,8 @@
     <subcivtype>1</subcivtype>
     <portrait>ui\native_allies\tupi</portrait>
     <culture>Grass</culture>
-    <displaynameid>301641</displaynameid>
-    <rollovernameid>301641</rollovernameid>
+    <displaynameid>501641</displaynameid>
+    <rollovernameid>501641</rollovernameid>
     <alliedid>26446</alliedid>
     <alliedotherid>26445</alliedotherid>
     <unalliedid>26444</unalliedid>
@@ -494,9 +514,9 @@
   <civ>
     <name>zpRevParis</name>
     <main>0</main>
-    <displaynameid>301916</displaynameid>
+    <displaynameid>501916</displaynameid>
     <displayrevolutionflag>0</displayrevolutionflag>
-    <revolutionhomecityname>301916</revolutionhomecityname>
+    <revolutionhomecityname>501916</revolutionhomecityname>
     <homecityflagtexture>objects\flags\paris_republic</homecityflagtexture>
     <postgameflagiconwpf>resources/images/icons/flags/postgame_flag_paris_republic.png</postgameflagiconwpf>
     <homecityflagiconwpf>resources/images/icons/flags/flag_paris_republic.png</homecityflagiconwpf>
@@ -586,8 +606,8 @@
     <subcivtype>1</subcivtype>
     <portrait>ui\native_allies\tupi</portrait>
     <culture>Grass</culture>
-    <displaynameid>300882</displaynameid>
-    <rollovernameid>300882</rollovernameid>
+    <displaynameid>500882</displaynameid>
+    <rollovernameid>500882</rollovernameid>
     <alliedid>26446</alliedid>
     <alliedotherid>26445</alliedotherid>
     <unalliedid>26444</unalliedid>
@@ -669,9 +689,9 @@
   <civ>
     <name>zpRevCSA</name>
     <main>0</main>
-    <displaynameid>302589</displaynameid>
+    <displaynameid>502589</displaynameid>
     <displayrevolutionflag>0</displayrevolutionflag>
-    <revolutionhomecityname>302589</revolutionhomecityname>
+    <revolutionhomecityname>502589</revolutionhomecityname>
     <homecityflagtexture>objects\flags\csa_americans</homecityflagtexture>
     <postgameflagiconwpf>resources/images/icons/flags/postgame_flag_csa.png</postgameflagiconwpf>
     <homecityflagiconwpf>resources/images/icons/flags/flag_csa.png</homecityflagiconwpf>
@@ -714,8 +734,8 @@
     <subcivtype>1</subcivtype>
     <portrait>ui\native_allies\tupi</portrait>
     <culture>Grass</culture>
-    <displaynameid>300882</displaynameid>
-    <rollovernameid>300882</rollovernameid>
+    <displaynameid>500882</displaynameid>
+    <rollovernameid>500882</rollovernameid>
     <alliedid>26446</alliedid>
     <alliedotherid>26445</alliedotherid>
     <unalliedid>26444</unalliedid>
@@ -903,11 +923,11 @@
     <subcivtype>3</subcivtype>
     <portrait>buildings\native_settlement\native_site_bourbon_icon_portrait.png</portrait>
     <culture>Stone</culture>
-    <displaynameid>300086</displaynameid>
-    <rollovernameid>300086</rollovernameid>
-    <alliedid>300013</alliedid>
-    <alliedotherid>300014</alliedotherid>
-    <unalliedid>300012</unalliedid>
+    <displaynameid>500086</displaynameid>
+    <rollovernameid>500086</rollovernameid>
+    <alliedid>500013</alliedid>
+    <alliedotherid>500014</alliedotherid>
+    <unalliedid>500012</unalliedid>
     <multipleblocktrain>
       <building>TradingPost</building>
       <multipleblockunit>zpPirateCetbangProxy</multipleblockunit>
@@ -931,8 +951,9 @@
     <subcivtype>1</subcivtype>
     <portrait>ui\native_allies\tupi</portrait>
     <culture>Grass</culture>
-    <displaynameid>300882</displaynameid>
-    <rollovernameid>300882</rollovernameid>
+    <displaynameid>500882</displaynameid>
+    <rollovernameid>500882</rollovernameid>
+    <homecityflagtexture>objects\flags\ottoman_sultanate</homecityflagtexture>
     <alliedid>26446</alliedid>
     <alliedotherid>26445</alliedotherid>
     <unalliedid>26444</unalliedid>
@@ -1095,8 +1116,8 @@
     <main>1</main>
     <portrait>objects\flags\venetian</portrait>
     <culture>Mediterranean</culture>
-    <displaynameid>300701</displaynameid>
-    <rollovernameid>300701</rollovernameid>
+    <displaynameid>500701</displaynameid>
+    <rollovernameid>500701</rollovernameid>
     <alliedid>26446</alliedid>
     <alliedotherid>26445</alliedotherid>
     <unalliedid>26444</unalliedid>

@@ -10,8 +10,12 @@
   <distanceatleastfromtype player="any" foundation="any" distance="35" errorstringid="69985">ypKingsHill</distanceatleastfromtype>
   <distanceatleastfromtype player="enemy" foundation="any" distance="65" errorstringid="25521">FirstTC</distanceatleastfromtype>
   <distanceatleastfromtype player="any" foundation="any" distance="7" errorstringid="110197">deInspiringFlag</distanceatleastfromtype>
-  <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="302033">zpBridgeFace</distanceatleastfromtype>
-  <distanceatleastfromtype player="any" foundation="any" distance="15" errorstringid="302256">zpNativeHouseVenetianD</distanceatleastfromtype>
-  <distanceatleastfromtype player="any" foundation="any" distance="55" errorstringid="303288">zpKingsHillNaval</distanceatleastfromtype>
-  <distanceatleastfromtype player="any" foundation="any" distance="55" errorstringid="303288">zpSPCDockAvoider</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="10" errorstringid="502033">zpBridgeFace</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="15" errorstringid="502256">zpNativeHouseVenetianD</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="55" errorstringid="503288">zpKingsHillNaval</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="55" errorstringid="503288">zpKingsHillNavalBlackSea</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="55" errorstringid="503288">zpKingsHillNavalMedi</distanceatleastfromtype>
+  <distanceatleastfromtype player="enemy" foundation="any" distance="110" errorstringid="503361">zpAntiShipGun</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="55" errorstringid="503288">zpSPCDockAvoider</distanceatleastfromtype>
+  <distanceatleastfromtype player="any" foundation="any" distance="55" errorstringid="503406">zpSPCFishermansGuild</distanceatleastfromtype>
 </placementrules>

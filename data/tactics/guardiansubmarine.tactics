@@ -1,6 +1,6 @@
 <tactics>
   <action>
-      <name stringid="300482">CannonAttackDived</name>
+      <name stringid="500482">CannonAttackDived</name>
       <type>Attack</type>
       <attackaction>1</attackaction>
       <rangedlogic>1</rangedlogic>

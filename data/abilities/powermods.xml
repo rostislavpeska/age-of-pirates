@@ -1,7 +1,7 @@
 <powermods>
   <power name="PowerGreekFire" type="UnitAction">
-    <displaynameid>300006</displaynameid>
-    <rolloverid>300007</rolloverid>
+    <displaynameid>500006</displaynameid>
+    <rolloverid>500007</rolloverid>
     <icon>resources\images\icons\command\greekfire.png</icon>
     <minimapeventtime sendalertto="player">1</minimapeventtime>
     <activetime>60</activetime>
@@ -14,8 +14,8 @@
     <unitaction>FlameAttack</unitaction>
   </power>
   <power name="zpPowerFireBomb" type="UnitAction">
-    <displaynameid>300607</displaynameid>
-    <rolloverid>300609</rolloverid>
+    <displaynameid>500607</displaynameid>
+    <rolloverid>500609</rolloverid>
     <icon>resources\images\icons\command\firebomb.png</icon>
     <minimapeventtime sendalertto="player">1</minimapeventtime>
     <activetime>30</activetime>
@@ -25,8 +25,8 @@
     <unitaction>FireBomb</unitaction>
   </power>
   <power name="zpMustardGas" type="UnitAction">
-    <displaynameid>300608</displaynameid>
-    <rolloverid>300610</rolloverid>
+    <displaynameid>500608</displaynameid>
+    <rolloverid>500610</rolloverid>
     <icon>resources\images\icons\command\poison_bomb.png</icon>
     <minimapeventtime sendalertto="player">1</minimapeventtime>
     <activetime>30</activetime>
@@ -36,9 +36,9 @@
     <unitaction>PoisonBomb</unitaction>
   </power>
   <power name="zpAirshipLighthouse" type="GeneralEffect">
-    <displaynameid>300624</displaynameid>
-    <rolloverid>300625</rolloverid>
-    <timerrolloverid>300624</timerrolloverid>
+    <displaynameid>500624</displaynameid>
+    <rolloverid>500625</rolloverid>
+    <timerrolloverid>500624</timerrolloverid>
     <icon>resources\images\icons\command\telescope.png</icon>
     <minimapeventtime sendalertto="all">1</minimapeventtime>
     <activetime>10</activetime>
@@ -98,7 +98,7 @@
   </power>
   <power name="zpPowerShunt" type="UnitAction">
     <displaynameid>124809</displaynameid>
-    <rolloverid>300631</rolloverid>
+    <rolloverid>500631</rolloverid>
     <icon>resources\images\icons\command\submarine_ram.png</icon>
     <minimapeventtime sendalertto="player">1</minimapeventtime>
     <activetime>8</activetime>
@@ -121,8 +121,8 @@
     <allowduringnorush>0</allowduringnorush>
   </power>
   <power name="zpMustardGasWeak" type="UnitAction">
-    <displaynameid>300774</displaynameid>
-    <rolloverid>300775</rolloverid>
+    <displaynameid>500774</displaynameid>
+    <rolloverid>500775</rolloverid>
     <icon>resources\images\icons\command\plague_grenade.png</icon>
     <minimapeventtime sendalertto="player">1</minimapeventtime>
     <activetime>30</activetime>
@@ -132,8 +132,8 @@
     <unitaction>PoisonBombWeak</unitaction>
   </power>
   <power name="zpPowerArmouredTrain" type="UnitAction">
-    <displaynameid>300989</displaynameid>
-    <rolloverid>300990</rolloverid>
+    <displaynameid>500989</displaynameid>
+    <rolloverid>500990</rolloverid>
     <icon>resources\images\icons\command\armored_train_lrg.png</icon>
     <minimapeventtime sendalertto="all">1</minimapeventtime>
     <activetime>1</activetime>
@@ -144,8 +144,8 @@
     <unitaction>SpawnArmoredTrain</unitaction>
   </power>
   <power name="zpPowerArmouredTrainInactive" type="UnitAction">
-    <displaynameid>300989</displaynameid>
-    <rolloverid>301001</rolloverid>
+    <displaynameid>500989</displaynameid>
+    <rolloverid>501001</rolloverid>
     <icon>resources\images\icons\command\armored_train_lrg.png</icon>
     <minimapeventtime sendalertto="all">1</minimapeventtime>
     <activetime>1</activetime>
@@ -155,8 +155,8 @@
     <unitaction>SpawnArmoredTrain</unitaction>   
   </power>
   <power name="zpPowerArmouredTrainNoResource" type="UnitAction">
-    <displaynameid>300989</displaynameid>
-    <rolloverid>301078</rolloverid>
+    <displaynameid>500989</displaynameid>
+    <rolloverid>501078</rolloverid>
     <icon>resources\images\icons\command\armored_train_lrg.png</icon>
     <minimapeventtime sendalertto="all">1</minimapeventtime>
     <activetime>1</activetime>
@@ -166,26 +166,26 @@
     <unitaction>SpawnArmoredTrain</unitaction>   
   </power>
   <power name="zpGunpowderWagonAura" type="UnitAction">
-    <displaynameid>301079</displaynameid>
-    <rolloverid>301080</rolloverid>
+    <displaynameid>501079</displaynameid>
+    <rolloverid>501080</rolloverid>
     <icon>resources\images\icons\abilities\gunpowder_stores.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpKitchenAuraFieldKitchen" type="UnitAction">
-    <displaynameid>301081</displaynameid>
-    <rolloverid>301082</rolloverid>
+    <displaynameid>501081</displaynameid>
+    <rolloverid>501082</rolloverid>
     <icon>resources\images\icons\abilities\field_kitchen.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpKitchenAuraCantine" type="UnitAction">
-    <displaynameid>301083</displaynameid>
-    <rolloverid>301084</rolloverid>
+    <displaynameid>501083</displaynameid>
+    <rolloverid>501084</rolloverid>
     <icon>resources\images\icons\abilities\train_cantina.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpPowerAreaHeal" type="UnitAction">
-    <displaynameid>301085</displaynameid>
-    <rolloverid>301086</rolloverid>
+    <displaynameid>501085</displaynameid>
+    <rolloverid>501086</rolloverid>
     <icon>resources\images\icons\abilities\emergency.png</icon>
     <minimapeventtime sendalertto="player">1</minimapeventtime>
     <activetime>8</activetime>
@@ -197,32 +197,32 @@
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpProtectedZone" type="UnitAction">
-    <displaynameid>301116</displaynameid>
-    <rolloverid>301117</rolloverid>
+    <displaynameid>501116</displaynameid>
+    <rolloverid>501117</rolloverid>
     <icon>resources\images\icons\abilities\safe_zone.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpAmmo" type="UnitAction">
-    <displaynameid>301120</displaynameid>
-    <rolloverid>301119</rolloverid>
+    <displaynameid>501120</displaynameid>
+    <rolloverid>501119</rolloverid>
     <icon>resources\images\icons\abilities\ammo.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpApocalypseHorsemen" type="UnitAction">
     <displaynameid>400132</displaynameid>
-    <rolloverid>301124</rolloverid>
+    <rolloverid>501124</rolloverid>
     <icon>resources\art\units\natives\western_village\apocalypse_horsemen.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpAutoHealDocHolliday" type="UnitAction">
     <displaynameid>49283</displaynameid>
-    <rolloverid>301130</rolloverid>
+    <rolloverid>501130</rolloverid>
     <icon>resources\art\units\natives\western_village\doc_holiday_regenerate_health.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpPowerMGStatic" type="UnitAction">
-    <displaynameid>301139</displaynameid>
-    <rolloverid>301137</rolloverid>
+    <displaynameid>501139</displaynameid>
+    <rolloverid>501137</rolloverid>
     <icon>resources\images\icons\abilities\static_mg.png</icon>
     <activetime>4</activetime>
     <radius>5.0</radius>
@@ -231,8 +231,8 @@
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpPowerMGmove" type="UnitAction">
-    <displaynameid>301138</displaynameid>
-    <rolloverid>301136</rolloverid>
+    <displaynameid>501138</displaynameid>
+    <rolloverid>501136</rolloverid>
     <icon>resources\images\icons\abilities\ability_horse_dismount.png</icon>
     <activetime>4</activetime>
     <radius>5.0</radius>
@@ -241,8 +241,8 @@
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpPowerArmouredTrainInactiveStation" type="UnitAction">
-    <displaynameid>300989</displaynameid>
-    <rolloverid>301001</rolloverid>
+    <displaynameid>500989</displaynameid>
+    <rolloverid>501001</rolloverid>
     <icon>resources\images\icons\command\armored_train_lrg_disabled.png</icon>
     <minimapeventtime sendalertto="all">1</minimapeventtime>
     <activetime>1</activetime>
@@ -252,8 +252,8 @@
     <unitaction>SpawnArmoredTrain</unitaction>   
   </power>
   <power name="zpPowerArmouredTrainNoResourceStation" type="UnitAction">
-    <displaynameid>300989</displaynameid>
-    <rolloverid>301078</rolloverid>
+    <displaynameid>500989</displaynameid>
+    <rolloverid>501078</rolloverid>
     <icon>resources\images\icons\command\armored_train_lrg_disabled.png</icon>
     <minimapeventtime sendalertto="all">1</minimapeventtime>
     <activetime>1</activetime>
@@ -307,8 +307,8 @@
     <soundset type="StartSound" listenertype="Caster">DENatPowerBourbon</soundset>
   </power>
   <power name="zpPowerBourbonExpansion" type="UnitAction">
-    <displaynameid>301942</displaynameid>
-    <rolloverid>301944</rolloverid>
+    <displaynameid>501942</displaynameid>
+    <rolloverid>501944</rolloverid>
     <icon>resources\images\icons\techs\spcbourbon_expansion.png</icon>
     <minimapeventtime sendalertto="all">1</minimapeventtime>
     <activetime>1</activetime>
@@ -318,8 +318,8 @@
     <unitaction>SpawnArmoredTrain</unitaction>   
   </power>
   <power name="zpPowerSansculotteExpansion" type="UnitAction">
-    <displaynameid>301917</displaynameid>
-    <rolloverid>301945</rolloverid>
+    <displaynameid>501917</displaynameid>
+    <rolloverid>501945</rolloverid>
     <icon>resources\images\icons\techs\sansculottes_big.png</icon>
     <minimapeventtime sendalertto="all">1</minimapeventtime>
     <activetime>1</activetime>
@@ -330,7 +330,7 @@
   </power>
   <power name="zpAbilityInspiringFlagFrench" type="TempUnit">
     <displaynameid>110177</displaynameid>
-    <rolloverid>301996</rolloverid>
+    <rolloverid>501996</rolloverid>
     <icon>resources\images\icons\abilities\inspiring_flag_french_icon.png</icon>
     <minimapeventtime sendalertto="ally">1</minimapeventtime>
     <activetime>5</activetime>
@@ -342,8 +342,8 @@
     <alwaysaddtoplayer>1</alwaysaddtoplayer>
   </power>
   <power name="zpAthosCrewAura" type="UnitAction">
-    <displaynameid>302013</displaynameid>
-    <rolloverid>302014</rolloverid>
+    <displaynameid>502013</displaynameid>
+    <rolloverid>502014</rolloverid>
     <icon>resources\images\icons\abilities\musketeer_unity.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
@@ -354,15 +354,15 @@
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpAssassinBrotherhood" type="UnitAction">
-    <displaynameid>302179</displaynameid>
-    <rolloverid>302180</rolloverid>
+    <displaynameid>502179</displaynameid>
+    <rolloverid>502180</rolloverid>
     <icon>resources\images\icons\abilities\assassin_brotherhood.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpAuditoreLighthouse" type="GeneralEffect">
-    <displaynameid>302181</displaynameid>
-    <rolloverid>300625</rolloverid>
-    <timerrolloverid>302181</timerrolloverid>
+    <displaynameid>502181</displaynameid>
+    <rolloverid>500625</rolloverid>
+    <timerrolloverid>502181</timerrolloverid>
     <icon>resources\images\icons\abilities\eagle_vision.png</icon>
     <minimapeventtime sendalertto="all">1</minimapeventtime>
     <activetime>10</activetime>
@@ -423,8 +423,8 @@
     <soundset type="StartSound" listenertype="Caster">DENatPowerHabsburg</soundset>
   </power>
   <power name="zpNatPowerBlanikKnights" type="TempUnit">
-    <displaynameid>302383</displaynameid>
-    <rolloverid>302384</rolloverid>
+    <displaynameid>502383</displaynameid>
+    <rolloverid>502384</rolloverid>
     <icon>resources\images\icons\abilities\blanik_knights.png</icon>
     <minimapeventtime sendalertto="ally">1</minimapeventtime>
     <activetime>5</activetime>
@@ -454,19 +454,19 @@
     <startsoundset>PowerInformers</startsoundset>
   </power>
   <power name="zpPassiveMarketRainbow" type="UnitAction">
-    <displaynameid>301831</displaynameid>
+    <displaynameid>501831</displaynameid>
     <rolloverid>123236</rolloverid>
     <icon>resources\images\icons\abilities\passive_district_market.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpFlagConfederateData" type="TempUnit">
     <displaynameid>110177</displaynameid>
-    <rolloverid>302642</rolloverid>
+    <rolloverid>502642</rolloverid>
     <icon>resources\images\icons\abilities\inspiring_flag_confederate_icon.png</icon>
   </power>
   <power name="zpPowerImperialCommand" type="TempUnit">
-    <displaynameid>302782</displaynameid>
-    <rolloverid>302785</rolloverid>
+    <displaynameid>502782</displaynameid>
+    <rolloverid>502785</rolloverid>
     <icon>resources\images\icons\abilities\imperial_command.png</icon>
     <minimapeventtime sendalertto="ally">1</minimapeventtime>
     <activetime>120</activetime>
@@ -484,7 +484,7 @@
     <soundset type="StartSound" listenertype="All">German_Battlehymn</soundset>
   </power>
   <power name="zpPowerImperialCommandAux" type="GeneralEffect">
-    <timerrolloverid>302849</timerrolloverid>
+    <timerrolloverid>502849</timerrolloverid>
     <minimapeventtime sendalertto="none">1</minimapeventtime>
     <activetime>120</activetime>
     <effect type="Damage" relativity="BasePercent" amount="1.20">
@@ -496,44 +496,44 @@
     <isauxiliarypower>1</isauxiliarypower>
   </power>
   <power name="zpPassiveGlassmaker" type="UnitAction">
-    <displaynameid>302797</displaynameid>
-    <rolloverid>302812</rolloverid>
+    <displaynameid>502797</displaynameid>
+    <rolloverid>502812</rolloverid>
     <icon>resources\images\icons\abilities\workshop_bohemian_glass.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpPassiveCoppermaker" type="UnitAction">
-    <displaynameid>302795</displaynameid>
-    <rolloverid>302812</rolloverid>
+    <displaynameid>502795</displaynameid>
+    <rolloverid>502812</rolloverid>
     <icon>resources\images\icons\abilities\workshop_austrian_copper.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpPassiveBrickmaker" type="UnitAction">
-    <displaynameid>302799</displaynameid>
-    <rolloverid>302812</rolloverid>
+    <displaynameid>502799</displaynameid>
+    <rolloverid>502812</rolloverid>
     <icon>resources\images\icons\abilities\workshop_saxon_brick.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpPassiveLimestone" type="UnitAction">
-    <displaynameid>302801</displaynameid>
-    <rolloverid>302812</rolloverid>
+    <displaynameid>502801</displaynameid>
+    <rolloverid>502812</rolloverid>
     <icon>resources\images\icons\abilities\workshop_bavarian_limestone.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpPassiveZeal" type="UnitAction">
-    <displaynameid>302899</displaynameid>
-    <rolloverid>302900</rolloverid>
+    <displaynameid>502899</displaynameid>
+    <rolloverid>502900</rolloverid>
     <icon>resources\images\icons\abilities\crussader_zeal.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpPassiveFriendlyDock" type="UnitAction">
-    <displaynameid>303014</displaynameid>
-    <rolloverid>303015</rolloverid>
+    <displaynameid>503014</displaynameid>
+    <rolloverid>503015</rolloverid>
     <icon>resources\images\icons\abilities\friendly_dock.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpPowerSalve" type="UnitAction">
-		<displaynameid>303066</displaynameid>
-		<rolloverid>303069</rolloverid>
+		<displaynameid>503066</displaynameid>
+		<rolloverid>503069</rolloverid>
 		<icon>resources\images\icons\abilities\salve_attack.png</icon>
 		<minimapeventtime sendalertto="player">1</minimapeventtime>
 		<activetime>7</activetime>
@@ -543,8 +543,8 @@
 		<unitaction>SalveAttack</unitaction>
 	</power>
   <power name="zpNatPowerElDeguello" type="TempUnit">
-    <displaynameid>303071</displaynameid>
-    <rolloverid>303072</rolloverid>
+    <displaynameid>503071</displaynameid>
+    <rolloverid>503072</rolloverid>
     <icon>resources\images\icons\abilities\eldeguello.png</icon>
     <minimapeventtime sendalertto="ally">1</minimapeventtime>
     <activetime>5</activetime>
@@ -574,6 +574,24 @@
     <alwaysaddtoplayer>1</alwaysaddtoplayer>
     <soundset type="StartSound" listenertype="Caster">DENatPowerHabsburg</soundset>
   </power>
+  <power name="zpNatPowerGreekRevolution" type="TempUnit">
+    <displaynameid>125116</displaynameid>
+    <rolloverid>125117</rolloverid>
+    <icon>resources\images\icons\abilities\ability_greek_revolution_lrg.png</icon>
+    <minimapeventtime sendalertto="ally">1</minimapeventtime>
+    <activetime>120</activetime>
+    <createunit pattern="Spawn" quantity="2" delay="0.0" permanent="">deSacredBand</createunit>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <rangeindicatorprotoid radius="12.0" indicatorcount="16" speed="0.6">PowerRanger</rangeindicatorprotoid>
+    <auxiliarypower>dePowerGreekRevolutionAux</auxiliarypower>
+    <auxiliarypowertargettype>self</auxiliarypowertargettype>
+    <powerescalation>1</powerescalation>
+    <powerescalationrate>4.0</powerescalationrate>
+    <powermaxlevel>20</powermaxlevel>
+    <allowduringnorush>1</allowduringnorush>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+    <soundset type="StartSound" listenertype="All">DENatPowerPhanar</soundset>
+  </power>
   <power name="zpNatPowerArcticAcclimation" type="GeneralEffect">
     <displaynameid>130669</displaynameid>
     <rolloverid>130670</rolloverid>
@@ -592,30 +610,30 @@
     <soundset type="StartSound" listenertype="Caster">DENatPowerInuit</soundset>
   </power>
   <power name="zpPassiveCossackUnity" type="UnitAction">
-    <displaynameid>303166</displaynameid>
-    <rolloverid>303167</rolloverid>
+    <displaynameid>503166</displaynameid>
+    <rolloverid>503167</rolloverid>
     <icon>resources\images\icons\abilities\cossack_unity.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpPassiveCossackFather" type="UnitAction">
-    <displaynameid>303168</displaynameid>
-    <rolloverid>303169</rolloverid>
+    <displaynameid>503168</displaynameid>
+    <rolloverid>503169</rolloverid>
     <icon>resources\images\icons\abilities\cossack_father.png</icon>
     <allowduringnorush>1</allowduringnorush>
   </power>
   <power name="zpPowerSPCBosporBlockade" type="BlockHcTransport">
     <timerrolloverid>112856</timerrolloverid>
-    <msgselfstringid>303272</msgselfstringid>
-    <msgenemystringid>303273</msgenemystringid>
-    <msgallystringid>303274</msgallystringid>
+    <msgselfstringid>503272</msgselfstringid>
+    <msgenemystringid>503273</msgenemystringid>
+    <msgallystringid>503274</msgallystringid>
     <minimapeventtime sendalertto="none">1</minimapeventtime>
     <activetime>300</activetime>
     <placement forceonmap="1" ally="">full</placement>
     <soundset type="StartSound" listenertype="All">UI_StrategyWarning</soundset>
   </power>
   <power name="zpPowerSultanCommand" type="TempUnit">
-    <displaynameid>303279</displaynameid>
-    <rolloverid>303280</rolloverid>
+    <displaynameid>503279</displaynameid>
+    <rolloverid>503280</rolloverid>
     <icon>resources\images\icons\abilities\sultan_command.png</icon>
     <minimapeventtime sendalertto="ally">1</minimapeventtime>
     <activetime>120</activetime>
@@ -632,7 +650,7 @@
     <soundset type="StartSound" listenertype="All">zpOttomanSultanate</soundset>
   </power>
   <power name="zpPowerSultanCommandAux" type="GeneralEffect">
-    <timerrolloverid>303281</timerrolloverid>
+    <timerrolloverid>503281</timerrolloverid>
     <minimapeventtime sendalertto="none">1</minimapeventtime>
     <activetime>90</activetime>
     <effect type="Damage" relativity="BasePercent" amount="2.00">
@@ -655,5 +673,12 @@
     <allowduringnorush>1</allowduringnorush>
     <alwaysaddtoplayer>1</alwaysaddtoplayer>
     <soundset type="StartSound" listenertype="All">American_Estate</soundset>
+  </power>
+  <power name="zpFerryDeploy" type="GeneralEffect">
+    <displaynameid>503366</displaynameid>
+    <rolloverid>503367</rolloverid>
+    <icon>resources\images\icons\command\ability_ferry_eject.png</icon>
+    <placement forceonmap="1">LOSDontCare</placement>
+    <allowduringnorush>1</allowduringnorush>
   </power>
 </powermods>

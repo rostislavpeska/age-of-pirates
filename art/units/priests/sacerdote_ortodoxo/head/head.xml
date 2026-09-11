@@ -1,0 +1,128 @@
+<animfile>
+	<definebone>Bip01_AttachLt</definebone>
+	<definebone>Bip01_AttachRt</definebone>
+	<definebone>bip01 Prop1</definebone>
+	<definebone>bip01 Prop2</definebone>
+	<definebone>bone_hat</definebone>
+	<definebone>Bip01 Head</definebone>
+	<definebone>bone_backpack</definebone>
+	<definebone>bone_fur</definebone>
+	<definebone>bone_gun</definebone>
+	<definebone>HITPOINTBAR</definebone>
+	<definebone>bone_chief_aura</definebone>
+	<component>ModelComp
+			<assetreference type="GrannyModel">
+				<file>units\priests\sacerdote_ortodoxo\head\dacoit_0</file>
+			</assetreference>
+		<decal>
+			<effecttype>default</effecttype>
+			<texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture>
+			<selectedtexture>shadows_selections\selection_hero_64x64</selectedtexture>
+			<noncinematictexture>shadows_selections\shadow_hero_64x64</noncinematictexture>
+			<width>1.50</width>
+			<height>1.50</height>
+			<selectionextrawidth>1.0</selectionextrawidth>
+			<selectionextraheight>1.0</selectionextraheight>
+		</decal>
+	</component>
+	<anim>Idle<assetreference type="GrannyAnim">
+			<file>animation_library\shared\human_idle_generic_A</file>
+		</assetreference>
+		<component>ModelComp</component>
+	</anim>
+	<anim>Bored<assetreference type="GrannyAnim">
+			<file>animation_library\shared\human_bored_generic_A</file>
+		</assetreference>
+		<component>ModelComp</component>
+	</anim>
+	<anim>Heal<assetreference type="GrannyAnim">
+			<file>units\surgeons\surgeon_heal_anim</file>
+		</assetreference>
+		<component>ModelComp Heal</component>
+	</anim>
+	<anim>Walk<assetreference type="GrannyAnim">
+			<file>animation_library\shared\human_walk_generic_A</file>
+		</assetreference>
+		<component>ModelComp</component>
+	</anim>
+	<anim>Attack<assetreference type="GrannyAnim">
+			<file>animation_library\shared\human_attack_generic_A</file>
+			<tag type="Attack">0.58</tag>
+		</assetreference>
+		<component>ModelComp</component>
+	</anim>
+	<anim>Death<assetreference type="GrannyAnim">
+			<file>animation_library\shared\human_death_generic_A</file>
+		</assetreference>
+		<component>ModelComp</component>
+	</anim>
+	<anim>GatherBush<assetreference type="GrannyAnim">
+			<file>animation_library\villager\villager_gathefruit</file>
+		</assetreference>
+		<component>ModelComp</component>
+	</anim>
+	<anim>Death_by_havoc<assetreference type="GrannyAnim">
+			<file>animation_library\range\havoc_death</file>
+		</assetreference>
+		<assetreference type="GrannyAnim">
+			<file>animation_library\range\havoc_deathB</file>
+		</assetreference>
+		<assetreference type="GrannyAnim">
+			<file>animation_library\range\havoc_deathC</file>
+		</assetreference>
+		<assetreference type="GrannyAnim">
+			<file>animation_library\range\havoc_deathD</file>
+		</assetreference>
+		<component>ModelComp</component>
+	</anim>
+	<anim>Death_havoc_flail<assetreference type="GrannyAnim">
+			<file>animation_library\range\havoc_flail</file>
+		</assetreference>
+		<component>ModelComp</component>
+	</anim>
+	<anim>Death_havoc_spin<assetreference type="GrannyAnim">
+			<file>animation_library\range\havoc_spin</file>
+		</assetreference>
+		<component>ModelComp</component>
+	</anim>
+	<anim>Build<assetreference type="GrannyAnim">
+				<file>animation_library\villager\villager_male_build1</file>
+			</assetreference>
+			<assetreference type="GrannyAnim">
+				<file>animation_library\villager\villager_male_build2</file>
+			</assetreference>
+			<component>ModelComp</component>
+		</anim>
+		<anim>BuildLifting<assetreference type="GrannyAnim">
+				<file>animation_library\2_leg_task\BuildLifting</file>
+				<weight>90</weight>
+				<tag type="Attack">0.66</tag>
+			</assetreference>
+			<assetreference type="GrannyAnim">
+				<file>animation_library\2_leg_task\human_build_standing_idlea</file>
+				<weight>10</weight>
+				<tag type="Attack">0.66</tag>
+			</assetreference>
+			<component>Villager</component>
+		</anim>
+		<anim>BuildSaw<assetreference type="GrannyAnim">
+				<file>animation_library\2_leg_task\human_saw_standing</file>
+				<weight>90</weight>
+			</assetreference>
+			<assetreference type="GrannyAnim">
+				<file>animation_library\2_leg_task\human_saw_standing_idlea</file>
+				<weight>10</weight>
+			</assetreference>
+			<component>Villager</component>
+		</anim>
+		<anim>BuildStaking<assetreference type="GrannyAnim">
+				<file>animation_library\2_leg_task\human_saw_a</file>
+				<weight>90</weight>
+			</assetreference>
+			<assetreference type="GrannyAnim">
+				<file>animation_library\2_leg_task\human_saw_idlea</file>
+				<weight>10</weight>
+			</assetreference>
+			<component>Villager</component>
+		</anim>
+</animfile>

@@ -7,6 +7,7 @@
 	<selectassingleunit>1</selectassingleunit>
 	<workonassingleunit>1</workonassingleunit>
 	<units>
+		<unit variation="97" posx="0" posz="0" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpInvisibleGroundFlattener</unit>
 		<unit variation="255" posx="-8.0582" posz="-8.7310" orientx="-0.0510" orienty="0.0000" orientz="0.9987">bpNatPropIgloo</unit>
 		<unit variation="131" posx="2.5625" posz="-6.6742" orientx="-0.7071" orienty="0.0000" orientz="0.7071">NativeTownObstruction</unit>
 		<unit variation="131" posx="1.4707" posz="-8.3402" orientx="-0.7071" orienty="0.0000" orientz="0.7071">NativeTownObstruction</unit>
@@ -69,7 +70,7 @@
 		<unit variation="24" posx="-3.1300" posz="9.9701" orientx="-1.0000" orienty="-0.0000" orientz="-0.0011">UnderbrushSnow</unit>
 	</units>
 	<tiles>
-		<tilegroup type="PassableLand" subtype="yukon\ground1_yuk">
+		<tilegroup type="PassableLand" subtype="rockies\groundsnow3_roc">
 			<block startx="-7" startz="-4" endx="0" endz="3"></block>
 			<block startx="-7" startz="-6" endx="-7" endz="-5"></block>
 			<block startx="-6" startz="-6" endx="-6" endz="-5"></block>

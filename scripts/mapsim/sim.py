@@ -129,6 +129,10 @@ def main(argv: List[str]) -> int:
                              "(WP4/WP5 pipeline) instead of a curated scene")
     parser.add_argument("--minimap", action="store_true",
                         help="rotate the preview into the in-game diamond orientation")
+    parser.add_argument("--layers", action="store_true",
+                        help="layering debugger: render the terrain state after "
+                             "EVERY build step (river/causeway/area) as "
+                             "layer_NN_*.png plus a layers_*.json manifest")
     args = parser.parse_args(argv)
 
     if not args.matrix and (args.players is None or args.teams is None):
@@ -156,6 +160,17 @@ def main(argv: List[str]) -> int:
                                     field_entity=args.field, minimap=args.minimap,
                                     rs=rs, tag_prefix=prefix)
             any_error |= any(f.severity == "error" for f in findings)
+            if args.layers:
+                from scripts.mapsim import render
+                if render.available():
+                    layer_dir = args.out / f"layers_{prefix}{scenario_tag(sc)}"
+                    metas = render.render_layers(rs, layer_dir,
+                                                 title=args.xs.stem,
+                                                 minimap=args.minimap)
+                    manifest = layer_dir / "layers.json"
+                    with open(manifest, "w", encoding="utf-8") as f:
+                        json.dump(metas, f, indent=1)
+                    print(f"  layers: {len(metas)} steps -> {layer_dir}")
         print(f"reports written to {args.out}")
         return 1 if any_error else 0
 

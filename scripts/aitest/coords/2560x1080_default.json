@@ -1,0 +1,50 @@
+{
+  "_comment": "2560x1080 ultrawide. Menus render a CENTERED 1920x1080 safe area (x+320); lobby panel and in-match HUD are RIGHT-EDGE anchored (x+640). home/lobby/cog/quit measured live 2026-08-26. quit_yes still derived - confirm on first use. NOTE: the game eats the first click after losing focus - always AppActivate in the same step before clicking.",
+  "home_skirmish": {
+    "x": 444,
+    "y": 490,
+    "rgb": [
+      212,
+      181,
+      104
+    ]
+  },
+  "lobby_probe": {
+    "x": 2277,
+    "y": 430,
+    "rgb": [
+      169,
+      132,
+      76
+    ]
+  },
+  "lobby_play": {
+    "x": 2287,
+    "y": 1020,
+    "rgb": [
+      82,
+      34,
+      17
+    ]
+  },
+  "match_cog": {
+    "x": 2493,
+    "y": 39,
+    "rgb": null
+  },
+  "match_quit": {
+    "x": 2391,
+    "y": 411,
+    "rgb": null
+  },
+  "quit_yes": {
+    "x": 1081,
+    "y": 612,
+    "rgb": null
+  },
+  "minimap_center": {
+    "x": 2320,
+    "y": 900,
+    "rgb": null
+  }
+}

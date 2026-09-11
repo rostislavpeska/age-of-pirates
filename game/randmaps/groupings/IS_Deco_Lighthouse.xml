@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>12</width>
+	<height>12</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="59" posx="2.0145" posz="-4.7977" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPlatform</unit>
+		<unit variation="181" posx="1.3674" posz="0.6349" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpHarbourPlatform</unit>
+		<unit variation="59" posx="7.0161" posz="0.7072" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpHarbourPlatform</unit>
+		<unit variation="59" posx="-4.0064" posz="0.6363" orientx="0.0001" orienty="0.0000" orientz="1.0000">zpHarbourPlatform</unit>
+		<unit variation="175" posx="1.2550" posz="0.2893" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpPropWaterTower</unit>
+		<unit variation="59" posx="1.1526" posz="6.4902" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPlatform</unit>
+		<unit variation="226" posx="-3.6710" posz="5.9807" orientx="0.6476" orienty="0.0000" orientz="-0.7620">ShorelineRockBigNE</unit>
+	</units>
+</grouping>

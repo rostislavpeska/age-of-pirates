@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>7</width>
+	<height>10</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="248" posx="-0.4604" posz="-5.8893" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropJesuitFence</unit>
+		<unit variation="94" posx="2.0814" posz="-6.5745" orientx="-0.3529" orienty="0.0000" orientz="-0.9356">ypSMJesuitAccessory</unit>
+		<unit variation="79" posx="4.3767" posz="-4.9956" orientx="0.7794" orienty="0.0000" orientz="-0.6265">ypSMJesuitAccessory</unit>
+		<unit variation="225" posx="4.3427" posz="-5.0297" orientx="0.7819" orienty="0.0000" orientz="-0.6234">ypSMJesuitAccessory</unit>
+		<unit variation="29" posx="-2.3450" posz="-3.7545" orientx="0.9930" orienty="0.0000" orientz="-0.1178">ypSMJesuitAccessory</unit>
+		<unit variation="48" posx="-4.3462" posz="-3.5660" orientx="-0.7706" orienty="0.0000" orientz="-0.6373">ypSMJesuitAccessory</unit>
+		<unit variation="133" posx="-3.9153" posz="-3.5892" orientx="-0.9933" orienty="0.0000" orientz="-0.1157">ypSMJesuitAccessory</unit>
+		<unit variation="59" posx="-1.4855" posz="-4.0267" orientx="-0.9436" orienty="0.0000" orientz="0.3310">ypSMJesuitAccessory</unit>
+		<unit variation="245" posx="1.0330" posz="0.1006" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCSawMill</unit>
+		<unit variation="4" posx="-0.4634" posz="-1.4122" orientx="0.1359" orienty="0.0000" orientz="-0.9907">ypSMJesuitAccessory</unit>
+		<unit variation="14" posx="-2.8489" posz="-0.5224" orientx="0.7994" orienty="0.0000" orientz="0.6008">ypSMJesuitAccessory</unit>
+		<unit variation="85" posx="-3.3783" posz="2.4882" orientx="0.9079" orienty="0.0000" orientz="-0.4193">ypSMJesuitAccessory</unit>
+		<unit variation="225" posx="-3.9853" posz="4.3704" orientx="-0.8781" orienty="0.0000" orientz="0.4786">ypSMJesuitAccessory</unit>
+		<unit variation="201" posx="4.0121" posz="5.2198" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropHorse</unit>
+		<unit variation="36" posx="-2.6663" posz="6.6347" orientx="0.0042" orienty="0.0000" orientz="-1.0000">ypSMJesuitAccessory</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="Texas\Path_Blend">
+			<block startx="-3" startz="-3" endx="-3" endz="-3"></block>
+			<block startx="-2" startz="-4" endx="-2" endz="-3"></block>
+			<block startx="-1" startz="-4" endx="-1" endz="-3"></block>
+			<block startx="0" startz="-5" endx="0" endz="-3"></block>
+			<block startx="-3" startz="-2" endx="-3" endz="-1"></block>
+			<block startx="-3" startz="2" endx="-3" endz="2"></block>
+			<block startx="-2" startz="-2" endx="-2" endz="4"></block>
+			<block startx="-1" startz="-2" endx="-1" endz="4"></block>
+			<block startx="0" startz="-1" endx="0" endz="4"></block>
+			<block startx="1" startz="0" endx="1" endz="4"></block>
+			<block startx="2" startz="-2" endx="2" endz="0"></block>
+			<block startx="2" startz="3" endx="2" endz="3"></block>
+			<block startx="3" startz="-1" endx="3" endz="0"></block>
+			<block startx="3" startz="2" endx="3" endz="3"></block>
+			<block startx="1" startz="-4" endx="1" endz="-3"></block>
+			<block startx="2" startz="-4" endx="2" endz="-3"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

@@ -136,9 +136,12 @@ Box = Tuple[float, float, float, float]  # x0, z0, x1, z1 with x0<=x1, z0<=z1
 def dist_range_to_box(p: Point, box: Box) -> Tuple[float, float]:
     """Nearest and farthest distance from a point to an axis-aligned box."""
     px, pz = _require_point("p", p)
-    x0, z0, x1, z1 = (_require_finite(f"box[{i}]", v) for i, v in enumerate(box))
-    if x0 > x1 or z0 > z1:
-        raise ValueError(f"box must be (x0,z0,x1,z1) with x0<=x1, z0<=z1, got {box!r}")
+    bx0, bz0, bx1, bz1 = (_require_finite(f"box[{i}]", v) for i, v in enumerate(box))
+    # The engine forms the rectangle from the two corners in EITHER order
+    # (rmCreateBoxConstraint is often authored z0>z1 -- zpverseilles:391),
+    # so normalize rather than reject.
+    x0, x1 = min(bx0, bx1), max(bx0, bx1)
+    z0, z1 = min(bz0, bz1), max(bz0, bz1)
     dx = max(x0 - px, 0.0, px - x1)
     dz = max(z0 - pz, 0.0, pz - z1)
     nearest = math.hypot(dx, dz)

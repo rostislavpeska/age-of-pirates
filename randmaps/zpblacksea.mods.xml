@@ -147,15 +147,16 @@
             <civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>		
         </unit>
         <unit name="zpSPCPirateDockB">
-            <displaynameid>303262</displaynameid>
+            <displaynameid>503262</displaynameid>
             <civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>
         </unit>
         <unit name="zpSPCPirateDock">
-            <displaynameid>303262</displaynameid>
+            <displaynameid>503262</displaynameid>
             <civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>
         </unit>
 		<unit name="zpKingsHillNaval">
 			<civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>
+			<flag>ApplyFlagOverrideIfGaia</flag>
 		</unit>
 		<unit name="zpSPCFixedGun">
 			<civflagoverride>objects\flags\ottoman_sultanate</civflagoverride>

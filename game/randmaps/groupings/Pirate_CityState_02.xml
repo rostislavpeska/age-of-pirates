@@ -113,7 +113,7 @@
 		<unit variation="0" posx="-23.0244" posz="-0.5822" orientx="-0.0025" orienty="0.0000" orientz="1.0000">HarbourPathBlock</unit>
 		<unit variation="241" posx="-25.0648" posz="3.9145" orientx="0.7070" orienty="0.0000" orientz="0.7072">NativeTownObstruction</unit>
 		<unit variation="164" posx="-34.8671" posz="1.0921" orientx="1.0000" orienty="-0.0000" orientz="0.0028">zpCinematicRevealer</unit>
-		<unit variation="0" posx="-27.1342" posz="0.6507" orientx="-0.9234" orienty="0.0000" orientz="-0.3839">zpNativeHousePirateCity</unit>
+		<unit variation="130" posx="-26.1023" posz="1.4834" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpNativeHouseTortugaCity</unit>
 		<unit variation="5" posx="-22.0922" posz="1.4382" orientx="-1.0000" orienty="0.0000" orientz="-0.0020">zpNativeHousePirateCity</unit>
 		<unit variation="90" posx="-57.6867" posz="5.2477" orientx="-1.0000" orienty="0.0000" orientz="-0.0004">SPCFixedGunBase</unit>
 		<unit variation="81" posx="-57.6867" posz="5.2477" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCFixedGunSocket</unit>
@@ -168,7 +168,7 @@
 		<unit variation="0" posx="-35.7170" posz="20.7866" orientx="0.9247" orienty="0.0000" orientz="-0.3806">HarbourPathBlock</unit>
 		<unit variation="0" posx="-29.6031" posz="20.4905" orientx="-0.3803" orienty="0.0000" orientz="-0.9249">HarbourPathBlock</unit>
 		<unit variation="19" posx="-41.7701" posz="23.4475" orientx="0.0115" orienty="0.0000" orientz="-0.9999">zpHarbourPlatform</unit>
-		<unit variation="0" posx="-33.1874" posz="21.5256" orientx="-0.9242" orienty="0.0000" orientz="0.3819">zpNativeHousePirateCity</unit>
+		<unit variation="223" posx="-33.2406" posz="20.2413" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpNativeTowerTortugaCity</unit>
 		<unit variation="0" posx="-35.3350" posz="22.5668" orientx="0.9247" orienty="0.0000" orientz="-0.3806">HarbourPathBlock</unit>
 		<unit variation="0" posx="-33.9887" posz="23.6151" orientx="-0.3803" orienty="0.0000" orientz="-0.9249">HarbourPathBlock</unit>
 		<unit variation="0" posx="-31.5014" posz="22.3889" orientx="-0.3803" orienty="0.0000" orientz="-0.9249">HarbourPathBlock</unit>

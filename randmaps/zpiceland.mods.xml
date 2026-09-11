@@ -23,7 +23,7 @@
             <flag>NoIdleActions</flag>
 		</unit>
         <unit name="zpSPCSocketHansaKontorCitystate">
-			<displaynameid>303043</displaynameid>
+			<displaynameid>503043</displaynameid>
             <flag mergemode="remove">HeroName1</flag>
 		</unit>
         <unit name="YPNuggetSeaLionRock">

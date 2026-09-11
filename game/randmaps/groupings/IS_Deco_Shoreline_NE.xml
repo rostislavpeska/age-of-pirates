@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>14</width>
+	<height>17</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="217" posx="-12.0518" posz="-14.7516" orientx="-0.0008" orienty="0.0000" orientz="-1.0000">UnderbrushCalifornia</unit>
+		<unit variation="181" posx="-3.3040" posz="-10.0970" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
+		<unit variation="5" posx="-11.4407" posz="-11.6504" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpPropsColony</unit>
+		<unit variation="0" posx="-10.1262" posz="-9.3096" orientx="0.7141" orienty="0.0000" orientz="0.7000">PropsPoles</unit>
+		<unit variation="248" posx="-11.5024" posz="-9.4269" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
+		<unit variation="238" posx="-3.6906" posz="-4.2559" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPlatform</unit>
+		<unit variation="4" posx="-11.4316" posz="-6.5491" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
+		<unit variation="115" posx="-3.6174" posz="-0.5657" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPlatform</unit>
+		<unit variation="250" posx="3.5502" posz="-0.1939" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
+		<unit variation="70" posx="-12.6623" posz="-4.7126" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFence</unit>
+		<unit variation="217" posx="-10.9465" posz="-1.6805" orientx="-0.0008" orienty="0.0000" orientz="-1.0000">UnderbrushCalifornia</unit>
+		<unit variation="178" posx="8.0644" posz="0.1056" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPlatform</unit>
+		<unit variation="37" posx="-10.9417" posz="1.5504" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpPropOttomanMarketStall</unit>
+		<unit variation="245" posx="-11.4681" posz="4.9054" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
+		<unit variation="107" posx="-12.2927" posz="3.5614" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
+		<unit variation="142" posx="-3.8848" posz="6.6116" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPlatform</unit>
+		<unit variation="249" posx="-12.5674" posz="4.7476" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFence</unit>
+		<unit variation="0" posx="-9.7790" posz="7.8173" orientx="0.7141" orienty="0.0000" orientz="0.7000">PropsPoles</unit>
+		<unit variation="163" posx="-11.4557" posz="6.2847" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
+		<unit variation="230" posx="-11.2667" posz="8.0810" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
+		<unit variation="193" posx="-3.4959" posz="11.7488" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpHarbourPlatform</unit>
+		<unit variation="223" posx="-10.9554" posz="11.1451" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpPropsColony</unit>
+		<unit variation="130" posx="-11.0287" posz="12.4273" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpPropsColony</unit>
+		<unit variation="60" posx="-10.8065" posz="14.2600" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpPropsColony</unit>
+		<unit variation="3" posx="-11.9953" posz="13.9075" orientx="-0.7066" orienty="0.0000" orientz="0.7076">zpPropJewishMarketStall</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="city\ground1_cob">
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="props\east_colony2">
+		</tilegroup>
+		<tilegroup type="Shoreline" subtype="carolinas\ground_shoreline1_car">
+		</tilegroup>
+	</tiles>
+</grouping>

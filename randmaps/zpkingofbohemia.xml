@@ -1,5 +1,5 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<mapinfo details = "302345" displayNameID = "302344" loadDetails="302346"
+<mapinfo details = "502345" displayNameID = "502344" loadDetails="502346"
     imagepath = "ui\random_map\kingofbohemia\kingofbohemia_mini" cannotReplace = "" loadBackground="ui\random_map\kingofbohemia\kingofbohemia_map">
     <filter>Historical</filter>
     <loadss>ui\random_map\kingofbohemia\kingofbohemia_01</loadss>

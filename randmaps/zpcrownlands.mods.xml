@@ -307,7 +307,7 @@
             <placementfile>tradepost_city.xml</placementfile>
         </unit>
         <unit name="deSPCCommandPost">
-            <displaynameid>302831</displaynameid>
+            <displaynameid>502831</displaynameid>
             <animfile>buildings\town_center\rathaus.xml</animfile>
             <icon>resources\art\buildings\town_center\towncenter_icon.png</icon>
             <portraiticon>resources\art\buildings\town_center\towncenter_portrait.png</portraiticon>

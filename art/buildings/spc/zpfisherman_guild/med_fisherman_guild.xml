@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- converted from XMB to XML -->
+<animfile>
+<definebone>bone_flag_civ</definebone>
+	<component>
+		building
+        <assetreference type="GrannyModel">
+            <file>buildings\spc\zpfisherman_guild\med_fisherman_guild</file>
+        </assetreference>
+    		<decal>
+			<effecttype>default</effecttype>
+			<selectedtexture>shadows_selections\selection_square_128x128</selectedtexture>
+			<width>14.00</width>
+			<height>14.00</height>
+		</decal>
+	</component>
+	<anim>
+		Idle
+		<component>	building</component>
+	</anim>
+</animfile>

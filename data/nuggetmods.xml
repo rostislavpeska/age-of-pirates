@@ -118,8 +118,8 @@
       <type>AdjustResource</type>
       <maptype>tasmania</maptype>
       <nuggetunit>NuggetPirate</nuggetunit>
-      <rolloverstringid>301376</rolloverstringid>
-      <applystringid>301377</applystringid>
+      <rolloverstringid>501376</rolloverstringid>
+      <applystringid>501377</applystringid>
       <resource>Gold</resource>
       <amount>275</amount>
       <maptype>australia</maptype>
@@ -152,8 +152,8 @@
       <name>zpCoihue</name>
       <nuggetunit>NuggetPirate</nuggetunit>
       <type>AdjustResource</type>
-      <rolloverstringid>301374</rolloverstringid>
-      <applystringid>301375</applystringid>
+      <rolloverstringid>501374</rolloverstringid>
+      <applystringid>501375</applystringid>
       <resource>Wood</resource>
       <amount>120</amount>
       <maptype>australia</maptype>
@@ -204,8 +204,8 @@
       <name>zpBasswood</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetAbandonedCabin</nuggetunit>
-      <rolloverstringid>301374</rolloverstringid>
-      <applystringid>301375</applystringid>
+      <rolloverstringid>501374</rolloverstringid>
+      <applystringid>501375</applystringid>
       <maptype>australia</maptype>
       <maptype>barrierreef</maptype>
       <maptype>tasmania</maptype>
@@ -219,8 +219,8 @@
       <name>zpCrocodilesPlatypus</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetDroppedSupplies</nuggetunit>
-      <rolloverstringid>301332</rolloverstringid>
-      <applystringid>301333</applystringid>
+      <rolloverstringid>501332</rolloverstringid>
+      <applystringid>501333</applystringid>
       <resource>XP</resource>
       <amount>100</amount>
       <maptype>australia</maptype>
@@ -385,8 +385,8 @@
       <name>zpPlatypus</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetDroppedSupplies</nuggetunit>
-      <rolloverstringid>301332</rolloverstringid>
-      <applystringid>301333</applystringid>
+      <rolloverstringid>501332</rolloverstringid>
+      <applystringid>501333</applystringid>
       <resource>XP</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
@@ -397,8 +397,8 @@
       <name>zpPlatypus2</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetDroppedSupplies</nuggetunit>
-      <rolloverstringid>301332</rolloverstringid>
-      <applystringid>301333</applystringid>
+      <rolloverstringid>501332</rolloverstringid>
+      <applystringid>501333</applystringid>
       <resource>XP</resource>
       <amount>40</amount>
       <maptype>australia</maptype>
@@ -411,8 +411,8 @@
       <name>zpPlatypus3</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetWolfWagon</nuggetunit>
-      <rolloverstringid>301332</rolloverstringid>
-      <applystringid>301333</applystringid>
+      <rolloverstringid>501332</rolloverstringid>
+      <applystringid>501333</applystringid>
       <resource>XP</resource>
       <amount>80</amount>
       <maptype>australia</maptype>
@@ -634,8 +634,8 @@
       <name>zpJadeFigurine</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetCoveredWagon</nuggetunit>
-      <rolloverstringid>301334</rolloverstringid>
-      <applystringid>301335</applystringid>
+      <rolloverstringid>501334</rolloverstringid>
+      <applystringid>501335</applystringid>
       <resource>Gold</resource>
       <amount>120</amount>
       <maptype>hawaii</maptype>
@@ -652,8 +652,8 @@
       <name>zpJadeFigurine11</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetCoveredWagon</nuggetunit>
-      <rolloverstringid>301334</rolloverstringid>
-      <applystringid>301335</applystringid>
+      <rolloverstringid>501334</rolloverstringid>
+      <applystringid>501335</applystringid>
       <resource>Gold</resource>
       <amount>150</amount>
       <maptype>hawaii</maptype>
@@ -715,8 +715,8 @@
       <name>zpOCCibola1A</name>
       <type>AdjustResource</type>
       <nuggetunit>zpNuggetGeyser</nuggetunit>
-      <rolloverstringid>301361</rolloverstringid>
-      <applystringid>301360</applystringid>
+      <rolloverstringid>501361</rolloverstringid>
+      <applystringid>501360</applystringid>
       <resource>Food</resource>
       <amount>415</amount>
       <maptype>newzealand</maptype>
@@ -738,8 +738,8 @@
       <name>zpAUCibola1A</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetCave</nuggetunit>
-      <rolloverstringid>301361</rolloverstringid>
-      <applystringid>301360</applystringid>
+      <rolloverstringid>501361</rolloverstringid>
+      <applystringid>501360</applystringid>
       <resource>Food</resource>
       <amount>415</amount>
       <maptype>australia</maptype>
@@ -757,8 +757,8 @@
       <name>zpOCCibola1B</name>
       <type>AdjustResource</type>
       <nuggetunit>zpNuggetGeyser</nuggetunit>
-      <rolloverstringid>301361</rolloverstringid>
-      <applystringid>301360</applystringid>
+      <rolloverstringid>501361</rolloverstringid>
+      <applystringid>501360</applystringid>
       <resource>Food</resource>
       <amount>455</amount>
       <maptype>newzealand</maptype>
@@ -777,8 +777,8 @@
       <name>zAUCibola1B</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetCave</nuggetunit>
-      <rolloverstringid>301361</rolloverstringid>
-      <applystringid>301360</applystringid>
+      <rolloverstringid>501361</rolloverstringid>
+      <applystringid>501360</applystringid>
       <resource>Food</resource>
       <amount>455</amount>
       <maptype>australia</maptype>
@@ -795,8 +795,8 @@
       <name>zpOCCibola2A</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetPirate</nuggetunit>
-      <rolloverstringid>301341</rolloverstringid>
-      <applystringid>301340</applystringid>
+      <rolloverstringid>501341</rolloverstringid>
+      <applystringid>501340</applystringid>
       <resource>Wood</resource>
       <amount>250</amount>
       <maptype>newzealand</maptype>
@@ -833,8 +833,8 @@
       <name>zpOCCibola2C</name>
       <type>AdjustResource</type>
       <nuggetunit>zpNuggetGeyser</nuggetunit>
-      <rolloverstringid>301341</rolloverstringid>
-      <applystringid>301340</applystringid>
+      <rolloverstringid>501341</rolloverstringid>
+      <applystringid>501340</applystringid>
       <resource>Wood</resource>
       <amount>330</amount>
       <maptype>hawaii</maptype>
@@ -886,8 +886,8 @@
       <type>AdjustHP</type>
       <targettype>Hero</targettype>
       <nuggetunit>ypNuggetCaveAsian</nuggetunit>
-      <rolloverstringid>301338</rolloverstringid>
-      <applystringid>301339</applystringid>
+      <rolloverstringid>501338</rolloverstringid>
+      <applystringid>501339</applystringid>
       <amount>2</amount>
       <maptype>newzealand</maptype>
       <maptype>hawaii</maptype>
@@ -907,8 +907,8 @@
       <name>zpCibola1A</name>
       <type>AdjustResource</type>
       <nuggetunit>ypNuggetCaveAsian</nuggetunit>
-      <rolloverstringid>301341</rolloverstringid>
-      <applystringid>301340</applystringid>
+      <rolloverstringid>501341</rolloverstringid>
+      <applystringid>501340</applystringid>
       <resource>Gold</resource>
       <amount>400</amount>
       <maptype>newzealand</maptype>
@@ -929,8 +929,8 @@
       <name>zpBasswoodTeam</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetDroppedWood</nuggetunit>
-      <rolloverstringid>301811</rolloverstringid>
-      <applystringid>301812</applystringid>
+      <rolloverstringid>501811</rolloverstringid>
+      <applystringid>501812</applystringid>
       <resource>wood</resource>
       <amount>50</amount>
       <maptype>hawaii</maptype>
@@ -944,8 +944,8 @@
       <name>zpBasswoodTeam2</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetDroppedWood</nuggetunit>
-      <rolloverstringid>301811</rolloverstringid>
-      <applystringid>301812</applystringid>
+      <rolloverstringid>501811</rolloverstringid>
+      <applystringid>501812</applystringid>
       <resource>wood</resource>
       <amount>111</amount>
       <maptype>hawaii</maptype>
@@ -1011,8 +1011,8 @@
       <name>zpJournal2</name>
       <type>AdjustResource</type>
       <nuggetunit>zpNuggetHawaii</nuggetunit>
-      <rolloverstringid>301336</rolloverstringid>
-      <applystringid>301337</applystringid>
+      <rolloverstringid>501336</rolloverstringid>
+      <applystringid>501337</applystringid>
       <resource>XP</resource>
       <amount>320</amount>
       <maptype>hawaii</maptype>
@@ -1029,8 +1029,8 @@
       <name>zpJournal3</name>
       <type>AdjustResource</type>
       <nuggetunit>zpNavigationChart</nuggetunit>
-      <rolloverstringid>301336</rolloverstringid>
-      <applystringid>301337</applystringid>
+      <rolloverstringid>501336</rolloverstringid>
+      <applystringid>501337</applystringid>
       <resource>XP</resource>
       <amount>320</amount>
       <maptype>australia</maptype>
@@ -1047,8 +1047,8 @@
       <type>AdjustHP</type>
       <targettype>Hero</targettype>
       <nuggetunit>zpNuggetHawaii</nuggetunit>
-      <rolloverstringid>301338</rolloverstringid>
-      <applystringid>301339</applystringid>
+      <rolloverstringid>501338</rolloverstringid>
+      <applystringid>501339</applystringid>
       <amount>1.5</amount>
       <maptype>hawaii</maptype>
       <maptype>cookislands</maptype>
@@ -1310,8 +1310,8 @@
       <name>zpPlatypus3SPC</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetWolfWagon</nuggetunit>
-      <rolloverstringid>301332</rolloverstringid>
-      <applystringid>301333</applystringid>
+      <rolloverstringid>501332</rolloverstringid>
+      <applystringid>501333</applystringid>
       <resource>XP</resource>
       <amount>80</amount>
       <maptype>melanesia</maptype>
@@ -1349,8 +1349,8 @@
       <name>zpCrocodilesPlatypusSPC</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetDroppedSupplies</nuggetunit>
-      <rolloverstringid>301332</rolloverstringid>
-      <applystringid>301333</applystringid>
+      <rolloverstringid>501332</rolloverstringid>
+      <applystringid>501333</applystringid>
       <resource>XP</resource>
       <amount>150</amount>
       <maptype>melanesia</maptype>
@@ -1516,8 +1516,8 @@
       <name>zpAUCibola1ACannibalsSPC</name>
       <type>AdjustResource</type>
       <nuggetunit>ypNuggetCaveAsian</nuggetunit>
-      <rolloverstringid>301361</rolloverstringid>
-      <applystringid>301360</applystringid>
+      <rolloverstringid>501361</rolloverstringid>
+      <applystringid>501360</applystringid>
       <resource>Food</resource>
       <amount>415</amount>
       <maptype>melanesia</maptype>
@@ -1535,8 +1535,8 @@
       <name>zAUCibola1BCannibalsSPC</name>
       <type>AdjustResource</type>
       <nuggetunit>ypNuggetCaveAsian</nuggetunit>
-      <rolloverstringid>301361</rolloverstringid>
-      <applystringid>301360</applystringid>
+      <rolloverstringid>501361</rolloverstringid>
+      <applystringid>501360</applystringid>
       <resource>Food</resource>
       <amount>455</amount>
       <maptype>melanesia</maptype>
@@ -1790,8 +1790,8 @@
       <name>zpAUCibola1ACannibals</name>
       <type>AdjustResource</type>
       <nuggetunit>ypNuggetCaveAsian</nuggetunit>
-      <rolloverstringid>301361</rolloverstringid>
-      <applystringid>301360</applystringid>
+      <rolloverstringid>501361</rolloverstringid>
+      <applystringid>501360</applystringid>
       <resource>Food</resource>
       <amount>415</amount>
       <maptype>newguinea</maptype>
@@ -1807,8 +1807,8 @@
       <name>zAUCibola1BCannibals</name>
       <type>AdjustResource</type>
       <nuggetunit>ypNuggetCaveAsian</nuggetunit>
-      <rolloverstringid>301361</rolloverstringid>
-      <applystringid>301360</applystringid>
+      <rolloverstringid>501361</rolloverstringid>
+      <applystringid>501360</applystringid>
       <resource>Food</resource>
       <amount>455</amount>
       <maptype>newguinea</maptype>
@@ -1915,8 +1915,8 @@
       <name>zpPlatypusTasmania</name>
       <type>AdjustResource</type>
       <nuggetunit>NuggetDroppedSupplies</nuggetunit>
-      <rolloverstringid>301332</rolloverstringid>
-      <applystringid>301333</applystringid>
+      <rolloverstringid>501332</rolloverstringid>
+      <applystringid>501333</applystringid>
       <resource>XP</resource>
       <amount>40</amount>
       <maptype>tasmania</maptype>
@@ -2096,8 +2096,8 @@
       <name>zpGuillotine1</name>
       <type>AdjustResource</type>
       <nuggetunit>zpNuggetGuillotine</nuggetunit>
-      <rolloverstringid>302030</rolloverstringid>
-      <applystringid>302031</applystringid>
+      <rolloverstringid>502030</rolloverstringid>
+      <applystringid>502031</applystringid>
       <resource>Wood</resource>
       <amount>120</amount>
       <maptype>piratehistoricalmap</maptype>
@@ -2428,6 +2428,21 @@
       <maptype>piratehistoricalmap</maptype>
     </nugget>
     <nugget>
+      <name>zpNuggetIstanbulTowerCapturable</name>
+      <type>SpawnUnit</type>
+      <nuggetunit>euNuggetRuinedTower</nuggetunit>
+      <rolloverstringid>102270</rolloverstringid>
+      <applystringid>102271</applystringid>
+      <unittype>deSPCTowerCapturable</unittype>
+      <amount>1</amount>
+      <difficulty>522</difficulty>
+      <guardian>Pirate</guardian>
+      <guardian>deGuardianCrabat</guardian>
+      <guardian>deGuardianHaramija</guardian>
+      <guardian>deGuardianHaramija</guardian>
+      <maptype>piratehistoricalmap</maptype>
+    </nugget>
+    <nugget>
       <name>zpNuggetKingOfBohemia</name>
       <nuggetunit>zpNuggetInvisible</nuggetunit>
       <rolloverstringid>29084</rolloverstringid>
@@ -2511,6 +2526,45 @@
         <unit>deGuardianElmeti</unit>
       </guardianunit>
       <difficulty>302</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpNuggetFortIstanbul</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <maptype>mediEurope</maptype>
+      <guardianunit>
+        <unit>deGuardianJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianHaramija</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianHaramija</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianHaramija</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianCrabat</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianCrabat</unit>
+      </guardianunit>
+      <difficulty>520</difficulty>
     </nugget>
     <nugget>
       <name>zpFalc1</name>
@@ -2641,6 +2695,131 @@
         <unit>deGuardianPlagueDoctor</unit>
       </guardianunit>
       <difficulty>303</difficulty>
+      <killunitonapply>0</killunitonapply>
+    </nugget>
+    <nugget>
+      <name>zpFalc1Istanbul</name>
+      <type>SpawnUnit</type>
+      <nuggetunit>euDamagedCannon</nuggetunit>
+      <rolloverstringid>124000</rolloverstringid>
+      <applystringid>124001</applystringid>
+      <unittype>Falconet</unittype>
+      <amount>1</amount>
+      <difficulty>519</difficulty>
+      <maptype>piratehistoricalmap</maptype>
+      <maptype>mediEurope</maptype>
+      <guardian>deGuardianCrabat</guardian>
+      <guardian>deGuardianCrabat</guardian>
+      <guardian>deGuardianJanissary</guardian>
+      <guardian>deGuardianJanissary</guardian>
+    </nugget>
+    <nugget>
+      <name>zpFalc2Istanbul</name>
+      <type>SpawnUnit</type>
+      <nuggetunit>euDamagedCannon</nuggetunit>
+      <rolloverstringid>124000</rolloverstringid>
+      <applystringid>124001</applystringid>
+      <unittype>Falconet</unittype>
+      <amount>1</amount>
+      <difficulty>519</difficulty>
+      <maptype>piratehistoricalmap</maptype>
+      <maptype>mediEurope</maptype>
+      <guardian>deGuardianJanissary</guardian>
+      <guardian>deGuardianHaramija</guardian>
+      <guardian>deGuardianHaramija</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+    </nugget>
+    <nugget>
+      <name>zpFleeceIstanbul</name>
+      <rolloverstringid>124138</rolloverstringid>
+      <applystringid>124139</applystringid>
+      <nuggetunit>NuggetDroppedCoin</nuggetunit>
+      <type>adjustResource</type>
+      <resource>Gold</resource>
+      <amount>225</amount>
+      <maptype>piratehistoricalmap</maptype>
+      <maptype>mediEurope</maptype>
+      <guardian>deGuardianJanissary</guardian>
+      <guardian>deGuardianJanissary</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <difficulty>519</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpGoudaIstanbul</name>
+      <rolloverstringid>124132</rolloverstringid>
+      <applystringid>124133</applystringid>
+      <nuggetunit>NuggetDroppedFood</nuggetunit>
+      <type>adjustResource</type>
+      <resource>Food</resource>
+      <amount>130</amount>
+      <maptype>piratehistoricalmap</maptype>
+      <maptype>mediEurope</maptype>
+      <guardian>Pirate</guardian>
+      <guardian>Pirate</guardian>
+      <guardian>deGuardianHaramija</guardian>
+      <difficulty>519</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpEUJournalIstanbul</name>
+      <rolloverstringid>124156</rolloverstringid>
+      <applystringid>124157</applystringid>
+      <nuggetunit>NuggetDroppedSupplies</nuggetunit>
+      <type>adjustResource</type>
+      <resource>XP</resource>
+      <amount>300</amount>
+      <maptype>piratehistoricalmap</maptype>
+      <maptype>mediEurope</maptype>
+      <guardian>deGuardianCrabat</guardian>
+      <guardian>deGuardianCrabat</guardian>
+      <guardian>deGuardianHaramija</guardian>
+      <guardian>deGuardianHaramija</guardian>
+      <difficulty>519</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpEUHistoricalSettler3Istanbul</name>
+      <type>ConvertUnit</type>
+      <convertsettler>true</convertsettler>
+      <nuggetunit>NuggetKidnap</nuggetunit>
+      <rolloverstringid>36942</rolloverstringid>
+      <applystringid>36943</applystringid>
+      <convertunit>
+        <unit>Settler</unit>
+        <idleanim>Kidnap_HostageA_Idle</idleanim>
+        <exitanim>Kidnap_HostageA_Exit</exitanim>
+        <attachdummy>bone_hostage_A</attachdummy>
+      </convertunit>
+      <convertunit>
+        <unit>Settler</unit>
+        <idleanim>Kidnap_HostageA_Idle</idleanim>
+        <exitanim>Kidnap_HostageA_Exit</exitanim>
+        <attachdummy>bone_hostage_B</attachdummy>
+      </convertunit>
+      <maptype>piratehistoricalmap</maptype>
+      <maptype>mediEurope</maptype>
+      <guardianunit>
+        <unit>Pirate</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_A</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>Pirate</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_B</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>Pirate</unit>
+        <idleanim>Kidnap_OutlawA_Idle</idleanim>
+        <exitanim>Kidnap_OutlawA_Exit</exitanim>
+        <attachdummy>bone_outlaw_C</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianCrabat</unit>
+      </guardianunit>
+      <difficulty>519</difficulty>
       <killunitonapply>0</killunitonapply>
     </nugget>
     <nugget>
@@ -3324,22 +3503,22 @@
       <applystringid>66271</applystringid>
       <maptype>piratehistoricalmap</maptype>
       <guardianunit>
-        <unit>OutlawPistol</unit>
+        <unit>deGuardianHighwayman</unit>
         <idleanim>NuggetPirate1_Idle</idleanim>
         <exitanim>NuggetPirate1_Exit</exitanim>
         <attachdummy>bone_nuggetA</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>OutlawPistol</unit>
+        <unit>deGuardianHighwayman</unit>
         <idleanim>NuggetPirate2_Idle</idleanim>
         <exitanim>NuggetPirate2_Exit</exitanim>
         <attachdummy>bone_nuggetB</attachdummy>
       </guardianunit>
         <guardianunit>
-          <unit>OutlawPistol</unit>
+          <unit>deGuardianHighwayman</unit>
         </guardianunit>
         <guardianunit>
-          <unit>OutlawRifleman</unit>
+          <unit>deGuardianHighwayman</unit>
         </guardianunit>
       <difficulty>514</difficulty>
     </nugget>
@@ -3374,6 +3553,145 @@
         <unit>zpNatColonialEstateMilitia</unit>
       </guardianunit>
       <difficulty>515</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpNuggetCapturableTradeAnatolia</name>
+      <nuggetunit>ypNuggetTradingPost</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>Pirate</unit>
+        <idleanim>NuggetPirate2_Idle</idleanim>
+        <exitanim>NuggetPirate2_Exit</exitanim>
+        <attachdummy>bone_nuggetB</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>Pirate</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>Pirate</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>Pirate</unit>
+      </guardianunit>
+      <difficulty>517</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpNuggetCapturableTradeAnatolia2</name>
+      <nuggetunit>ypNuggetTradingPost</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>deGuardianJanissary</unit>
+        <idleanim>NuggetPirate2_Idle</idleanim>
+        <exitanim>NuggetPirate2_Exit</exitanim>
+        <attachdummy>bone_nuggetB</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianJanissary</unit>
+      </guardianunit>
+      <difficulty>517</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpNuggetFactoryIstanbul</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>deGuardianJanissary</unit>
+        <idleanim>NuggetPirate2_Idle</idleanim>
+        <exitanim>NuggetPirate2_Exit</exitanim>
+        <attachdummy>bone_nuggetA</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianJanissary</unit>
+        <idleanim>NuggetPirate2_Idle</idleanim>
+        <exitanim>NuggetPirate2_Exit</exitanim>
+        <attachdummy>bone_nuggetB</attachdummy>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deGuardianJanissary</unit>
+      </guardianunit>
+      <difficulty>516</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpNuggetSultanPalace</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>zpPalaceJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpPalaceJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpPalaceJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpPalaceJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpPalaceJanissary</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>zpPalaceJanissary</unit>
+      </guardianunit>
+      <difficulty>521</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpEmbassyIstanbul</name>
+      <rolloverstringid>124120</rolloverstringid>
+      <applystringid>124121</applystringid>
+      <nuggetunit>NuggetCapturableBuildingBig</nuggetunit>
+      <type>ConvertUnit</type>
+      <amount>1</amount>
+      <maptype>piratehistoricalmap</maptype>
+      <convertunit>
+        <unit>zpNativeEmbassyParisReward</unit>
+        <attachdummy>bone_nuggetA</attachdummy>
+      </convertunit>
+      <guardian>deGuardianJanissary</guardian>
+      <guardian>deGuardianJanissary</guardian>
+      <guardian>deGuardianJanissary</guardian>
+      <guardian>deGuardianHaramija</guardian>
+      <guardian>deGuardianHaramija</guardian>
+      <guardian>deGuardianHaramija</guardian>
+      <difficulty>518</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpNuggetAcademyIstanbul</name>
+      <rolloverstringid>124120</rolloverstringid>
+      <applystringid>124121</applystringid>
+      <nuggetunit>NuggetCapturableBuildingBig</nuggetunit>
+      <type>ConvertUnit</type>
+      <amount>1</amount>
+      <maptype>piratehistoricalmap</maptype>
+      <convertunit>
+        <unit>zpAcademyReward</unit>
+        <attachdummy>bone_nuggetA</attachdummy>
+      </convertunit>
+      <guardian>deGuardianKlepht</guardian>
+      <guardian>deGuardianKlepht</guardian>
+      <guardian>deGuardianHaramija</guardian>
+      <guardian>deGuardianHaramija</guardian>
+      <difficulty>523</difficulty>
     </nugget>
 
 
@@ -3630,6 +3948,27 @@
       <guardian>dePrivateerGuardian</guardian>
     </nugget>
     <nugget>
+      <name>zpNuggetWaterFort</name>
+      <nuggetunit>zpNuggetInvisibleWater</nuggetunit>
+      <waternugget>true</waternugget>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardian>zpGuardianCorsairGalley</guardian>
+      <guardian>zpGuardianCorsairGalley</guardian>
+      <difficulty>601</difficulty>
+    </nugget>
+    <nugget>
+      <name>zpNuggetFishermansGuild</name>
+      <nuggetunit>zpNuggetInvisibleWater</nuggetunit>
+      <waternugget>true</waternugget>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardian>zpGuardianCorsairGalley</guardian>
+      <difficulty>602</difficulty>
+    </nugget>
+    <nugget>
       <name>zpWaterNuggetMu1</name>
       <type>AdjustResource</type>
       <nuggetunit>ypNuggetSeaLionRock</nuggetunit>
@@ -3784,8 +4123,8 @@
       <type>SpawnUnit</type>
       <waternugget>true</waternugget>
       <nuggetunit>zpNuggetUnderwaterCave</nuggetunit>
-      <rolloverstringid>301761</rolloverstringid>
-      <applystringid>301762</applystringid>
+      <rolloverstringid>501761</rolloverstringid>
+      <applystringid>501762</applystringid>
       <unittype>zpDiver</unittype>
       <amount>2</amount>
       <maptype>cookislands</maptype>
@@ -3801,8 +4140,8 @@
       <type>SpawnUnit</type>
       <waternugget>true</waternugget>
       <nuggetunit>zpNuggetUnderwaterCave</nuggetunit>
-      <rolloverstringid>301763</rolloverstringid>
-      <applystringid>301764</applystringid>
+      <rolloverstringid>501763</rolloverstringid>
+      <applystringid>501764</applystringid>
       <unittype>zpPetDolphin</unittype>
       <amount>2</amount>
       <maptype>cookislands</maptype>
@@ -3821,8 +4160,8 @@
       <type>SpawnUnit</type>
       <waternugget>true</waternugget>
       <nuggetunit>zpNuggetUnderwaterCave</nuggetunit>
-      <rolloverstringid>301771</rolloverstringid>
-      <applystringid>301772</applystringid>
+      <rolloverstringid>501771</rolloverstringid>
+      <applystringid>501772</applystringid>
       <unittype>zpPetDolphin</unittype>
       <amount>1</amount>
       <maptype>cookislands</maptype>
@@ -3854,8 +4193,8 @@
       <type>SpawnUnit</type>
       <waternugget>true</waternugget>
       <nuggetunit>zpNuggetUnderwaterCave</nuggetunit>
-      <rolloverstringid>301761</rolloverstringid>
-      <applystringid>301762</applystringid>
+      <rolloverstringid>501761</rolloverstringid>
+      <applystringid>501762</applystringid>
       <unittype>zpDiver</unittype>
       <amount>3</amount>
       <maptype>cookislands</maptype>
@@ -3881,8 +4220,8 @@
       <type>SpawnUnit</type>
       <waternugget>true</waternugget>
       <nuggetunit>zpNuggetUnderwaterCave</nuggetunit>
-      <rolloverstringid>301807</rolloverstringid>
-      <applystringid>301808</applystringid>
+      <rolloverstringid>501807</rolloverstringid>
+      <applystringid>501808</applystringid>
       <unittype>zpDiver</unittype>
       <amount>1</amount>
       <maptype>cookislands</maptype>
@@ -3897,8 +4236,8 @@
       <type>SpawnUnit</type>
       <waternugget>true</waternugget>
       <nuggetunit>zpNuggetUnderwaterCave</nuggetunit>
-      <rolloverstringid>301761</rolloverstringid>
-      <applystringid>301762</applystringid>
+      <rolloverstringid>501761</rolloverstringid>
+      <applystringid>501762</applystringid>
       <unittype>zpDiver</unittype>
       <amount>2</amount>
       <maptype>cookislands</maptype>
@@ -3915,8 +4254,8 @@
       <type>SpawnUnit</type>
       <waternugget>true</waternugget>
       <nuggetunit>zpNuggetUnderwaterCave</nuggetunit>
-      <rolloverstringid>301807</rolloverstringid>
-      <applystringid>301808</applystringid>
+      <rolloverstringid>501807</rolloverstringid>
+      <applystringid>501808</applystringid>
       <unittype>zpDiver</unittype>
       <amount>1</amount>
       <maptype>cookislands</maptype>
@@ -3932,8 +4271,8 @@
       <type>SpawnUnit</type>
       <nuggetunit>ypNuggetSeaLionRock</nuggetunit>
       <waternugget>true</waternugget>
-      <rolloverstringid>301807</rolloverstringid>
-      <applystringid>301808</applystringid>
+      <rolloverstringid>501807</rolloverstringid>
+      <applystringid>501808</applystringid>
       <unittype>zpDiver</unittype>
       <amount>1</amount>
       <maptype>icelandWater</maptype>
@@ -3948,8 +4287,8 @@
       <type>SpawnUnit</type>
       <nuggetunit>ypNuggetEuropeanWreck</nuggetunit>
       <waternugget>true</waternugget>
-      <rolloverstringid>301761</rolloverstringid>
-      <applystringid>301762</applystringid>
+      <rolloverstringid>501761</rolloverstringid>
+      <applystringid>501762</applystringid>
       <unittype>zpDiver</unittype>
       <amount>2</amount>
       <maptype>icelandWater</maptype>
@@ -3965,8 +4304,8 @@
       <type>SpawnUnit</type>
       <waternugget>true</waternugget>
       <nuggetunit>ypNuggetSeaLionRock</nuggetunit>
-      <rolloverstringid>301761</rolloverstringid>
-      <applystringid>301762</applystringid>
+      <rolloverstringid>501761</rolloverstringid>
+      <applystringid>501762</applystringid>
       <unittype>zpDiver</unittype>
       <amount>3</amount>
       <maptype>icelandWater</maptype>

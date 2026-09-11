@@ -21,7 +21,7 @@
     <handattackdisplayrange>1</handattackdisplayrange>
   </action>
   <action>
-    <name stringid="301145">AreaAttack</name>
+    <name stringid="501145">AreaAttack</name>
     <reloadanim>Bombard_reload</reloadanim>
     <type>Attack</type>
     <attackaction>1</attackaction>
@@ -41,7 +41,7 @@
     <handattackdisplayrange>1</handattackdisplayrange>
   </action>
   <action>
-    <name stringid="301144">BuildingAttack</name>
+    <name stringid="501144">BuildingAttack</name>
     <reloadanim>Bombard_reload</reloadanim>
     <type>Attack</type>
     <attackaction>1</attackaction>

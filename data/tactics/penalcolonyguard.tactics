@@ -165,7 +165,7 @@
     <rate type="ypCastle">2.0</rate>
   </action>
   <action>
-    <name stringid="301618">MineGatherRateBonus</name>
+    <name stringid="501618">MineGatherRateBonus</name>
     <type>AutoRangedModify</type>
     <active>0</active>
     <maxrange>20</maxrange>
@@ -179,7 +179,7 @@
     <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
   </action>
   <action>
-    <name stringid="301618">FarmGatherRateBonus</name>
+    <name stringid="501618">FarmGatherRateBonus</name>
     <type>AutoRangedModify</type>
     <active>0</active>
     <maxrange>20</maxrange>
@@ -193,7 +193,7 @@
     <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
   </action>
   <action>
-    <name stringid="301618">HuntGatherRateBonus</name>
+    <name stringid="501618">HuntGatherRateBonus</name>
     <type>AutoRangedModify</type>
     <active>0</active>
     <maxrange>20</maxrange>
@@ -207,7 +207,7 @@
     <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
   </action>
   <action>
-    <name stringid="301618">TreeGatherRateBonus</name>
+    <name stringid="501618">TreeGatherRateBonus</name>
     <type>AutoRangedModify</type>
     <active>0</active>
     <maxrange>20</maxrange>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<animfile>
+	<submodel>
+		Evzone
+		<attachment>halberd_alt<component>halberd<assetreference type="GrannyModel"><file>units\infantry\papal_guard\papalguard_halberd</file></assetreference></component><anim>Idle<component>halberd</component></anim></attachment>
+		<component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\natives\europeans\evzone\evzone</file></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\natives\europeans\evzone\evzone</file></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+		<anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_idle</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
+	</submodel>
+	<submodel>
+		Haramija
+		<attachment>halberd_alt<component>halberd<assetreference type="GrannyModel"><file>units\infantry\papal_guard\papalguard_halberd</file></assetreference></component><anim>Idle<component>halberd</component></anim></attachment>
+		<attachment>hat<component>hat<assetreference type="GrannyModel"><file>units\asians\natives\sepoy\sepoy_03_hat</file></assetreference></component><anim>Idle<component>hat</component></anim></attachment>
+		<component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\asians\natives\sepoy\sepoy_02</file></assetreference><attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></normal><lowpoly><assetreference type="GrannyModel"><file>units\asians\natives\sepoy\sepoy_02</file></assetreference><attach a="hat" frombone="bone_hat" tobone="HEAD" syncanims="0"></attach></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+		<anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_idle</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
+	</submodel>
+	<submodel>
+		Janissary
+		<attachment>halberd_alt<component>halberd<assetreference type="GrannyModel"><file>units\infantry\papal_guard\papalguard_halberd</file></assetreference></component><anim>Idle<component>halberd</component></anim></attachment>
+		<component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\infantry_ranged\janissary\jannisary_guard</file></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\infantry_ranged\janissary\jannisary_guard</file></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal></component>
+		<anim>Idle<assetreference type="GrannyAnim"><file>animation_library\range\volley\volley_standing_idle</file></assetreference><component>ModelComp</component><attach a="halberd_alt" frombone="bone_gun" tobone="Bip01 Prop1" syncanims="0"></attach></anim>
+	</submodel>
+	<submodel>
+		Assassin
+		<attachment>sword<component>sword<assetreference type="GrannyModel"><file>units\natives\auditore\assasin Blades R_Model</file></assetreference></component><anim>Idle<component>sword</component></anim></attachment>
+		<attachment>sword2<component>sword2<assetreference type="GrannyModel"><file>units\natives\auditore\assasin Blades L_Model</file></assetreference></component><anim>Idle<component>sword2</component></anim></attachment>
+		<component>ModelComp<logic type="Variation"><data><logic type="LowPoly"><normal><assetreference type="GrannyModel"><file>units\natives\auditore\Assasin_M1_Model</file></assetreference></normal><lowpoly><assetreference type="GrannyModel"><file>units\natives\auditore\Assasin_M1_Model</file></assetreference></lowpoly></logic></data></logic><decal><effecttype>default</effecttype><texture isfakeshadow="1">shadows_selections\shadow_circle_32x32</texture><selectedtexture>shadows_selections\selection_circle_32x32</selectedtexture><width>1.0</width><height>1.0</height></decal><attach a="sword" frombone="bone_sword" tobone="bip01 R ForeArm" syncanims="0"></attach><attach a="sword2" frombone="bone_shield" tobone="Bip01 L ForeArm" syncanims="0"></attach></component>
+		<anim>Idle<assetreference type="GrannyAnim"><file>animation_library\shared\human_idle_generic_A</file></assetreference><component>ModelComp</component></anim>
+		<anim>Bored<assetreference type="GrannyAnim"><file>animation_library\shared\human_bored_generic_A</file></assetreference><component>ModelComp</component></anim>
+	</submodel>
+	<component>
+		<logic type="Variation">
+			<data>
+				<submodelref ref="Evzone"/>
+			</data>
+			<data>
+				<submodelref ref="Haramija"/>
+			</data>
+			<data>
+				<submodelref ref="Janissary"/>
+			</data>
+			<data>
+				<submodelref ref="Assassin"/>
+			</data>
+		</logic>
+	</component>
+</animfile>

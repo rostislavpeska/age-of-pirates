@@ -90,7 +90,7 @@
 		<unit variation="3" posx="-16.0132" posz="-12.8855" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpNativeHousePirateCity</unit>
 		<unit variation="34" posx="-7.6562" posz="-11.7822" orientx="0.0000" orienty="0.0000" orientz="-1.0000">NativePirates</unit>
 		<unit variation="0" posx="-1.3276" posz="-10.6300" orientx="-1.0000" orienty="0.0000" orientz="-0.0001">HarbourPathBlock</unit>
-		<unit variation="3" posx="18.0699" posz="-11.7542" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpNativeHousePirateCity</unit>
+		<unit variation="143" posx="18.0858" posz="-11.5778" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpNativeTowerTortugaCity</unit>
 		<unit variation="0" posx="17.4996" posz="-10.7957" orientx="0.3830" orienty="0.0000" orientz="-0.9238">HarbourPathBlock</unit>
 		<unit variation="241" posx="-4.2844" posz="-7.2509" orientx="0.7070" orienty="0.0000" orientz="0.7072">NativeTownObstruction</unit>
 		<unit variation="25" posx="-1.5259" posz="-8.9848" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
@@ -135,10 +135,10 @@
 		<unit variation="67" posx="5.6178" posz="-0.8525" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 		<unit variation="11" posx="23.2872" posz="1.9188" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsColony</unit>
 		<unit variation="5" posx="-16.3449" posz="0.0524" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeHousePirateCity</unit>
-		<unit variation="0" posx="-10.7012" posz="-0.1956" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpNativeHousePirateCity</unit>
+		<unit variation="230" posx="-9.8148" posz="-1.0965" orientx="0.9239" orienty="0.0000" orientz="0.3827">zpNativeHouseTortugaCity</unit>
 		<unit variation="46" posx="27.0657" posz="-0.4981" orientx="0.3827" orienty="0.0000" orientz="0.9239">NativePirates</unit>
 		<unit variation="0" posx="-10.1680" posz="1.1139" orientx="0.3828" orienty="0.0000" orientz="-0.9238">HarbourPathBlock</unit>
-		<unit variation="209" posx="11.6733" posz="3.5987" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPirateTavern</unit>
+		<unit variation="209" posx="11.6733" posz="3.5987" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPirateTavern</unit>
 		<unit variation="241" posx="21.7604" posz="6.1753" orientx="0.7070" orienty="0.0000" orientz="0.7072">NativeTownObstruction</unit>
 		<unit variation="239" posx="-11.7669" posz="2.7607" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpCinematicRevealer</unit>
 		<unit variation="1" posx="21.7221" posz="2.1541" orientx="-1.0000" orienty="0.0000" orientz="0.0000">SPCDamagedProps</unit>

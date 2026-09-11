@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>15</width>
+	<height>15</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
+	<units>
+		<unit variation="3" posx="-8.9602" posz="-14.8747" orientx="-1.0000" orienty="-0.0000" orientz="0.0009">zpPropsFlowersBohemia</unit>
+		<unit variation="3" posx="-13.2212" posz="-14.9322" orientx="-1.0000" orienty="-0.0000" orientz="0.0009">zpPropsFlowersBohemia</unit>
+		<unit variation="1" posx="-6.7832" posz="-14.5141" orientx="-1.0000" orienty="-0.0000" orientz="0.0009">PropsPoles</unit>
+		<unit variation="0" posx="-7.7855" posz="-14.7278" orientx="0.0009" orienty="0.0000" orientz="1.0000">PropsColony</unit>
+		<unit variation="217" posx="13.2677" posz="-14.0242" orientx="0.0007" orienty="-0.0000" orientz="1.0000">UnderbrushCalifornia</unit>
+		<unit variation="1" posx="4.7501" posz="-14.4725" orientx="-1.0000" orienty="-0.0000" orientz="0.0009">PropsPoles</unit>
+		<unit variation="8" posx="11.5559" posz="-14.3952" orientx="-0.7065" orienty="-0.0000" orientz="0.7077">PropsColony</unit>
+		<unit variation="31" posx="-4.2590" posz="-11.3086" orientx="-1.0000" orienty="0.0000" orientz="0.0012">ypNativeTempleSufi</unit>
+		<unit variation="219" posx="-5.7341" posz="-11.1315" orientx="1.0000" orienty="-0.0000" orientz="-0.0005">ypNativeTempleSufi</unit>
+		<unit variation="17" posx="-1.2042" posz="-11.2398" orientx="1.0000" orienty="-0.0000" orientz="-0.0003">ypNativeTempleSufi</unit>
+		<unit variation="31" posx="2.0376" posz="-11.2709" orientx="-1.0000" orienty="0.0000" orientz="0.0012">ypNativeTempleSufi</unit>
+		<unit variation="219" posx="3.4270" posz="-11.1281" orientx="1.0000" orienty="-0.0000" orientz="-0.0005">ypNativeTempleSufi</unit>
+		<unit variation="115" posx="-10.8287" posz="-9.9855" orientx="0.9999" orienty="0.0000" orientz="0.0151">ypSMSufiMan</unit>
+		<unit variation="0" posx="-8.2978" posz="-10.4740" orientx="-0.0017" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="98" posx="1.9186" posz="-9.0930" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="98" posx="-3.1187" posz="-9.1162" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="176" posx="7.8123" posz="-8.4592" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSocketSPCSufi</unit>
+		<unit variation="0" posx="-0.3993" posz="-10.7308" orientx="-0.0017" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="0" posx="2.8972" posz="-7.2979" orientx="1.0000" orienty="0.0000" orientz="-0.0017">SPCPathBlock3</unit>
+		<unit variation="1" posx="14.2576" posz="-8.2075" orientx="-1.0000" orienty="-0.0000" orientz="0.0007">PropsPoles</unit>
+		<unit variation="84" posx="14.4472" posz="-9.5630" orientx="-0.9821" orienty="-0.0000" orientz="0.1882">ypSMSufiAccessory</unit>
+		<unit variation="81" posx="-7.9619" posz="-9.9706" orientx="0.0007" orienty="0.0000" orientz="1.0000">ypSMSufiAccessory</unit>
+		<unit variation="149" posx="-8.7308" posz="-7.4210" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="31" posx="-12.2966" posz="-7.4581" orientx="0.0007" orienty="0.0000" orientz="1.0000">ypNativeTempleSufi</unit>
+		<unit variation="1" posx="-14.6395" posz="-6.3468" orientx="-1.0000" orienty="-0.0000" orientz="0.0007">PropsPoles</unit>
+		<unit variation="98" posx="-3.2670" posz="-4.1841" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="98" posx="1.8112" posz="-4.1405" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="96" posx="-10.5824" posz="-4.7043" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="21" posx="0.1023" posz="-6.1936" orientx="-0.8163" orienty="0.0000" orientz="-0.5777">ypSMSufiAccessory</unit>
+		<unit variation="169" posx="-8.4889" posz="-5.4883" orientx="0.8682" orienty="0.0000" orientz="0.4962">ypSMSufiAccessory</unit>
+		<unit variation="60" posx="-2.3513" posz="-5.3888" orientx="0.7872" orienty="0.0000" orientz="-0.6167">ypSMSufiAccessory</unit>
+		<unit variation="169" posx="5.8861" posz="-5.5844" orientx="0.8682" orienty="0.0000" orientz="0.4962">ypSMSufiAccessory</unit>
+		<unit variation="0" posx="6.9991" posz="-4.0066" orientx="-0.0017" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
+		<unit variation="81" posx="-0.7608" posz="-2.9929" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">ypSMSufiAccessory</unit>
+		<unit variation="149" posx="-8.7565" posz="-0.8500" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="79" posx="-9.5609" posz="-1.2160" orientx="0.0004" orienty="-0.0000" orientz="1.0000">ypNativeTempleSufi</unit>
+		<unit variation="149" posx="7.8220" posz="-1.7928" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="84" posx="1.6154" posz="-3.4946" orientx="-0.8271" orienty="-0.0000" orientz="-0.5621">ypSMSufiAccessory</unit>
+		<unit variation="165" posx="7.6772" posz="-1.4758" orientx="0.0348" orienty="0.0000" orientz="-0.9994">ypSMSufiGuy</unit>
+		<unit variation="98" posx="-3.2330" posz="0.7717" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="31" posx="10.1643" posz="1.4769" orientx="0.0007" orienty="0.0000" orientz="1.0000">ypNativeTempleSufi</unit>
+		<unit variation="98" posx="1.8012" posz="0.8147" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="5" posx="-5.1382" posz="1.4675" orientx="0.5648" orienty="0.0000" orientz="-0.8252">ypSMSufiAccessory</unit>
+		<unit variation="8" posx="-0.4982" posz="5.9756" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCBlueMosque</unit>
+		<unit variation="31" posx="-12.5090" posz="2.0606" orientx="0.0007" orienty="0.0000" orientz="1.0000">ypNativeTempleSufi</unit>
+		<unit variation="149" posx="-8.6375" posz="5.6432" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="149" posx="7.6514" posz="4.7831" orientx="-0.0002" orienty="-0.0000" orientz="-1.0000">ypNativeTempleSufi</unit>
+		<unit variation="31" posx="10.2231" posz="4.7907" orientx="0.0007" orienty="0.0000" orientz="1.0000">ypNativeTempleSufi</unit>
+		<unit variation="31" posx="-12.5310" posz="4.7355" orientx="0.0007" orienty="0.0000" orientz="1.0000">ypNativeTempleSufi</unit>
+		<unit variation="1" posx="14.5653" posz="4.7261" orientx="-1.0000" orienty="-0.0000" orientz="0.0007">PropsPoles</unit>
+		<unit variation="1" posx="-15.0235" posz="4.8245" orientx="-1.0000" orienty="-0.0000" orientz="0.0007">PropsPoles</unit>
+		<unit variation="5" posx="5.9147" posz="5.2547" orientx="-0.5463" orienty="0.0000" orientz="-0.8376">ypSMSufiAccessory</unit>
+		<unit variation="210" posx="8.4950" posz="8.3223" orientx="1.0000" orienty="0.0000" orientz="0.0000">ypNativeTempleSufi</unit>
+		<unit variation="210" posx="-10.5554" posz="8.5254" orientx="1.0000" orienty="0.0000" orientz="-0.0002">ypNativeTempleSufi</unit>
+		<unit variation="31" posx="-7.7122" posz="10.2270" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">ypNativeTempleSufi</unit>
+		<unit variation="31" posx="6.1167" posz="10.0786" orientx="1.0000" orienty="0.0000" orientz="-0.0001">ypNativeTempleSufi</unit>
+		<unit variation="1" posx="-1.7307" posz="14.5780" orientx="-1.0000" orienty="-0.0000" orientz="0.0007">PropsPoles</unit>
+		<unit variation="84" posx="-14.7879" posz="14.5789" orientx="-0.9821" orienty="-0.0000" orientz="0.1882">ypSMSufiAccessory</unit>
+	</units>
+	<tiles>
+		<tilegroup type="PassableLand" subtype="props\east_colony">
+			<block startx="-7" startz="-7" endx="0" endz="0"></block>
+			<block startx="-7" startz="1" endx="-7" endz="7"></block>
+			<block startx="-6" startz="1" endx="-6" endz="7"></block>
+			<block startx="-5" startz="1" endx="-5" endz="7"></block>
+			<block startx="-4" startz="1" endx="-4" endz="7"></block>
+			<block startx="-3" startz="1" endx="-3" endz="7"></block>
+			<block startx="-2" startz="1" endx="-2" endz="7"></block>
+			<block startx="-1" startz="1" endx="-1" endz="7"></block>
+			<block startx="0" startz="1" endx="0" endz="7"></block>
+			<block startx="1" startz="1" endx="1" endz="7"></block>
+			<block startx="2" startz="1" endx="2" endz="7"></block>
+			<block startx="3" startz="1" endx="3" endz="7"></block>
+			<block startx="4" startz="1" endx="4" endz="7"></block>
+			<block startx="5" startz="1" endx="5" endz="7"></block>
+			<block startx="6" startz="1" endx="6" endz="7"></block>
+			<block startx="7" startz="1" endx="7" endz="7"></block>
+			<block startx="1" startz="-7" endx="1" endz="0"></block>
+			<block startx="2" startz="-7" endx="2" endz="0"></block>
+			<block startx="3" startz="-7" endx="3" endz="0"></block>
+			<block startx="4" startz="-7" endx="4" endz="0"></block>
+			<block startx="5" startz="-7" endx="5" endz="0"></block>
+			<block startx="6" startz="-7" endx="6" endz="0"></block>
+			<block startx="7" startz="-7" endx="7" endz="0"></block>
+		</tilegroup>
+	</tiles>
+</grouping>

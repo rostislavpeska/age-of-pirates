@@ -206,6 +206,14 @@
     <persistent>0</persistent>
     <singleuse>1</singleuse>
   </action>
+  <action>
+    <name stringid="69776">SpawnBonhommeRichard</name>
+    <type>Spawn</type>
+    <rate type="zpSPCBonhommeRichard">1.0</rate>
+    <active>1</active>
+    <persistent>0</persistent>
+    <singleuse>1</singleuse>
+  </action>
   <tactic>Normal
     <action>Heal</action>
     <action>SpawnPrivateer</action>
@@ -227,5 +235,6 @@
     <action>SpawnHansaCog</action>
     <action>SpawnRevenantDestroyer</action>
     <action>SpawnRevenantSteamer</action>
+    <action>SpawnBonhommeRichard</action>
   </tactic>
 </tactics>

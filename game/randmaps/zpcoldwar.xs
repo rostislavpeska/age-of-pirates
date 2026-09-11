@@ -4,6 +4,48 @@ include "mercenaries.xs";
 include "ypAsianInclude.xs";
 include "ypKOTHInclude.xs";
 
+// Walrus herd helper (Cold War): one Walrus herd per glacier / bonus island, hauled out as close to the
+// water as the area allows. Tier 1 = within 5 m of water, tier 2 = within 20 m, tier 3 = anywhere on the
+// area. rmGetNumberUnitsPlaced is the documented way to retry a failed placement with fewer constraints.
+void zpPlaceWalrusHerd(string tag = "", int areaID = -1)
+{
+   int walrusAvoidAll = rmCreateTypeDistanceConstraint("walrus "+tag+" avoids all", "all", 6.0);
+   int walrusShore = rmCreateTerrainMaxDistanceConstraint("walrus "+tag+" at the shore", "water", true, 5.0);
+   int walrusNearWater = rmCreateTerrainMaxDistanceConstraint("walrus "+tag+" near water", "water", true, 20.0);
+
+   int walrusShoreID = rmCreateObjectDef("walrus herd "+tag+" shore");
+   rmAddObjectDefItem(walrusShoreID, "Walrus", rmRandInt(4,7), 10.0);
+   rmSetObjectDefMinDistance(walrusShoreID, 0.0);
+   rmSetObjectDefMaxDistance(walrusShoreID, rmXFractionToMeters(0.5));
+   rmAddObjectDefConstraint(walrusShoreID, walrusAvoidAll);
+   rmAddObjectDefConstraint(walrusShoreID, walrusShore);
+   rmSetObjectDefCreateHerd(walrusShoreID, true);
+   rmPlaceObjectDefInArea(walrusShoreID, 0, areaID, 1);
+
+   if (rmGetNumberUnitsPlaced(walrusShoreID) == 0)
+   {
+      int walrusNearID = rmCreateObjectDef("walrus herd "+tag+" near water");
+      rmAddObjectDefItem(walrusNearID, "Walrus", rmRandInt(4,7), 10.0);
+      rmSetObjectDefMinDistance(walrusNearID, 0.0);
+      rmSetObjectDefMaxDistance(walrusNearID, rmXFractionToMeters(0.5));
+      rmAddObjectDefConstraint(walrusNearID, walrusAvoidAll);
+      rmAddObjectDefConstraint(walrusNearID, walrusNearWater);
+      rmSetObjectDefCreateHerd(walrusNearID, true);
+      rmPlaceObjectDefInArea(walrusNearID, 0, areaID, 1);
+
+      if (rmGetNumberUnitsPlaced(walrusNearID) == 0)
+      {
+         int walrusAnyID = rmCreateObjectDef("walrus herd "+tag+" inland");
+         rmAddObjectDefItem(walrusAnyID, "Walrus", rmRandInt(4,7), 10.0);
+         rmSetObjectDefMinDistance(walrusAnyID, 0.0);
+         rmSetObjectDefMaxDistance(walrusAnyID, rmXFractionToMeters(0.5));
+         rmAddObjectDefConstraint(walrusAnyID, walrusAvoidAll);
+         rmSetObjectDefCreateHerd(walrusAnyID, true);
+         rmPlaceObjectDefInArea(walrusAnyID, 0, areaID, 1);
+      }
+   }
+}
+
 // Main entry point for random map script
 void main(void)
 {
@@ -49,8 +91,8 @@ void main(void)
    rmSetSeaLevel(2.0);
    rmSetSeaType("ZP Bering Strait");
  	rmSetBaseTerrainMix("yukon snow");
-	rmSetMapType("yukon");
-   rmSetMapType("arcticwater");
+	rmSetMapType("arcticterritories");
+   rmSetMapType("arcticterritorieswater");
 	rmSetMapType("snow");
 	rmSetMapType("water");
 
@@ -138,6 +180,7 @@ void main(void)
    int mediumAvoidImpassableLand=rmCreateTerrainDistanceConstraint("medium avoid impassable land", "Land", false, 12.0);
    int forestConstraint=rmCreateClassDistanceConstraint("forest vs. forest", rmClassID("classForest"), 40.0);
    int avoidNugget=rmCreateTypeDistanceConstraint("nugget avoid nugget", "abstractNugget", 50.0);
+   int avoidFishingHole=rmCreateTypeDistanceConstraint("nugget avoid fishing hole", "deFishingHole", 12.0);
    int fishVsFishID=rmCreateTypeDistanceConstraint("fish v fish", "fishSalmon", 20.0);
    int RevealerVSRevealer=rmCreateTypeDistanceConstraint("revealer v revealer", "zpCinematicRevealerToAll", 10.0);
    int fishLand = rmCreateTerrainDistanceConstraint("fish land", "land", true, 8.0);
@@ -546,6 +589,37 @@ rmBuildArea(bonusIsland2);
       rmBuildArea(eastLabRamp);
 
 
+   // Island paint overlays - Rockies Snow painted exactly on top of the main islands (paint only, no
+   // elevation). Each overlay is clipped to its island by the island's own area constraint; the over-ask
+   // floods to that fence, so the overlay covers the island footprint and nothing else.
+
+   int westIslandPaint = rmCreateArea ("west island paint");
+      rmSetAreaSize(westIslandPaint, 0.25, 0.25);
+      rmSetAreaLocation(westIslandPaint, 0.2, 0.8);
+      rmSetAreaWarnFailure(westIslandPaint, false);
+      rmSetAreaCoherence(westIslandPaint, 1.0);
+      rmSetAreaMix(westIslandPaint, "rockies_snow");
+      rmAddAreaConstraint(westIslandPaint, westIslandConstraint);
+      rmAddAreaInfluenceSegment(westIslandPaint, 0.1, 0.5, 0.5, 0.9);
+      rmAddAreaInfluenceSegment(westIslandPaint, 0.3, 0.9, 0.1, 0.7);
+      rmAddAreaInfluenceSegment(westIslandPaint, 0.2, 0.6, 0.4, 0.65);
+      rmAddAreaInfluenceSegment(westIslandPaint, 0.4, 1.0, 0.0, 0.6);
+      rmBuildArea(westIslandPaint);
+
+   int eastIslandPaint = rmCreateArea ("east island paint");
+      rmSetAreaSize(eastIslandPaint, 0.25, 0.25);
+      rmSetAreaLocation(eastIslandPaint, 0.9, 0.2);
+      rmSetAreaWarnFailure(eastIslandPaint, false);
+      rmSetAreaCoherence(eastIslandPaint, 1.0);
+      rmSetAreaMix(eastIslandPaint, "rockies_snow");
+      rmAddAreaConstraint(eastIslandPaint, eastIslandConstraint);
+      rmAddAreaInfluenceSegment(eastIslandPaint, 0.5, 0.1, 0.9, 0.5);
+      rmAddAreaInfluenceSegment(eastIslandPaint, 0.9, 0.3, 0.7, 0.1);
+      rmAddAreaInfluenceSegment(eastIslandPaint, 0.8, 0.4, 0.6, 0.35);
+      rmAddAreaInfluenceSegment(eastIslandPaint, 1.0, 0.4, 0.6, 0.0);
+      rmBuildArea(eastIslandPaint);
+
+
    // Place Trade Routes
 
    // Trade Route West
@@ -564,7 +638,7 @@ rmBuildArea(bonusIsland2);
    rmAddTradeRouteWaypoint(tradeRouteID, 0.0, 0.6);
 
 
-	bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "snow");
+	bool placedTradeRoute = rmBuildTradeRoute(tradeRouteID, "arctic1");
 
    vector socketLoc  = rmGetTradeRouteWayPoint(tradeRouteID, 0.3);
       rmPlaceObjectDefAtPoint(socketID, 0, socketLoc);
@@ -593,7 +667,7 @@ rmBuildArea(bonusIsland2);
    rmAddTradeRouteWaypoint(tradeRouteID2, 0.6, 0.0);
 
 
-	bool placedTradeRoute2 = rmBuildTradeRoute(tradeRouteID2, "snow");
+	bool placedTradeRoute2 = rmBuildTradeRoute(tradeRouteID2, "arctic1");
 
    vector socketLoc2  = rmGetTradeRouteWayPoint(tradeRouteID2, 0.3);
       rmPlaceObjectDefAtPoint(socketID2, 0, socketLoc2);
@@ -781,7 +855,7 @@ rmAddObjectDefConstraint(TCID, avoidGlacier);
    rmAddObjectDefConstraint(playerSilverID, avoidImpassableLand); 
 
    int playerDeerID=rmCreateObjectDef("player deer");
-   rmAddObjectDefItem(playerDeerID, "caribou", rmRandInt(10,15), 10.0);
+   rmAddObjectDefItem(playerDeerID, "caribou", rmRandInt(8,12), 10.0);
    rmSetObjectDefMinDistance(playerDeerID, 15.0);
    rmSetObjectDefMaxDistance(playerDeerID, 30.0);
    rmAddObjectDefConstraint(playerDeerID, avoidImpassableLand);
@@ -925,6 +999,22 @@ rmClearClosestPointConstraints();
    // Text
 	rmSetStatusText("",0.70);
 
+   // FISHING HOLES - fixed positions: one on each side (north / south, 12 tiles) of both inventor settlements,
+   // taken from the measured settlement position, and one on the centre of each bonus island
+   int fishingHoleID=rmCreateObjectDef("fishing hole");
+   rmAddObjectDefItem(fishingHoleID, "deFishingHole", 1, 0.0);
+   rmSetObjectDefMinDistance(fishingHoleID, 0.0);
+   rmSetObjectDefMaxDistance(fishingHoleID, 6.0);
+   if (subCiv2 == rmGetCivID("zpscientists"))
+   {
+      rmPlaceObjectDefAtLoc(fishingHoleID, 0, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc1)) + rmXTilesToFraction(12));
+      rmPlaceObjectDefAtLoc(fishingHoleID, 0, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc1)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc1)) - rmXTilesToFraction(12));
+      rmPlaceObjectDefAtLoc(fishingHoleID, 0, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc2)) + rmXTilesToFraction(12));
+      rmPlaceObjectDefAtLoc(fishingHoleID, 0, rmXMetersToFraction(xsVectorGetX(scientistControllerLoc2)), rmZMetersToFraction(xsVectorGetZ(scientistControllerLoc2)) - rmXTilesToFraction(12));
+   }
+   rmPlaceObjectDefAtLoc(fishingHoleID, 0, 0.22, 0.22);
+   rmPlaceObjectDefAtLoc(fishingHoleID, 0, 0.78, 0.78);
+
 // Nuggets
  
 	int nuggetNorth= rmCreateObjectDef("nugget easy north"); 
@@ -932,6 +1022,7 @@ rmClearClosestPointConstraints();
 	rmSetNuggetDifficulty(1, 1);
 	rmAddObjectDefConstraint(nuggetNorth, shortAvoidImpassableLand);
   	rmAddObjectDefConstraint(nuggetNorth, avoidNugget);
+  	rmAddObjectDefConstraint(nuggetNorth, avoidFishingHole);
   	rmAddObjectDefConstraint(nuggetNorth, avoidAll);
 	rmAddObjectDefConstraint(nuggetNorth, avoidTCshort);
    rmAddObjectDefConstraint(nuggetNorth, avoidWater4);
@@ -944,6 +1035,7 @@ rmClearClosestPointConstraints();
 	rmSetNuggetDifficulty(1, 1);
 	rmAddObjectDefConstraint(nuggetSouth, shortAvoidImpassableLand);
   	rmAddObjectDefConstraint(nuggetSouth, avoidNugget);
+  	rmAddObjectDefConstraint(nuggetSouth, avoidFishingHole);
   	rmAddObjectDefConstraint(nuggetSouth, avoidAll);
 	rmAddObjectDefConstraint(nuggetSouth, avoidTCshort);
    rmAddObjectDefConstraint(nuggetSouth, labConstraint);
@@ -956,6 +1048,7 @@ rmClearClosestPointConstraints();
 	rmSetNuggetDifficulty(4, 4);
 	rmAddObjectDefConstraint(nugget2, shortAvoidImpassableLand);
   	rmAddObjectDefConstraint(nugget2, avoidNugget);
+  	rmAddObjectDefConstraint(nugget2, avoidFishingHole);
   	rmAddObjectDefConstraint(nugget2, avoidAll);
 	rmAddObjectDefConstraint(nugget2, avoidTCshort);
    rmAddObjectDefConstraint(nugget2, avoidWater4);
@@ -967,6 +1060,7 @@ rmClearClosestPointConstraints();
 	rmSetNuggetDifficulty(4, 4);
 	rmAddObjectDefConstraint(nugget1, shortAvoidImpassableLand);
   	rmAddObjectDefConstraint(nugget1, avoidNugget);
+  	rmAddObjectDefConstraint(nugget1, avoidFishingHole);
   	rmAddObjectDefConstraint(nugget1, avoidAll);
 	rmAddObjectDefConstraint(nugget1, avoidTCshort);
    rmAddObjectDefConstraint(nugget1, avoidWater4);
@@ -997,9 +1091,9 @@ rmClearClosestPointConstraints();
    int deerID=rmCreateObjectDef("deer herd");
 	int bonusChance=rmRandFloat(0, 1);
    if(bonusChance<0.5)   
-      rmAddObjectDefItem(deerID, "muskOx", rmRandInt(4,6), 10.0);
+      rmAddObjectDefItem(deerID, "muskOx", rmRandInt(3,5), 10.0);
    else
-      rmAddObjectDefItem(deerID, "muskOx", rmRandInt(8,10), 10.0);
+      rmAddObjectDefItem(deerID, "muskOx", rmRandInt(6,8), 10.0);
    rmSetObjectDefMinDistance(deerID, 0.0);
    rmSetObjectDefMaxDistance(deerID, rmXFractionToMeters(0.5));
 	rmAddObjectDefConstraint(deerID, avoidAll);
@@ -1011,9 +1105,9 @@ rmClearClosestPointConstraints();
    // DEER	West
    int deer2ID=rmCreateObjectDef("mush deer herd");
    if(bonusChance<0.5)   
-      rmAddObjectDefItem(deer2ID, "ypmuskdeer", rmRandInt(4,6), 10.0);
+      rmAddObjectDefItem(deer2ID, "ypmuskdeer", rmRandInt(3,5), 10.0);
    else
-      rmAddObjectDefItem(deer2ID, "ypmuskdeer", rmRandInt(8,10), 10.0);
+      rmAddObjectDefItem(deer2ID, "ypmuskdeer", rmRandInt(6,8), 10.0);
    rmSetObjectDefMinDistance(deer2ID, 0.0);
    rmSetObjectDefMaxDistance(deer2ID, rmXFractionToMeters(0.5));
 	rmAddObjectDefConstraint(deer2ID, avoidAll);
@@ -1021,6 +1115,15 @@ rmClearClosestPointConstraints();
    rmAddObjectDefConstraint(deer2ID, avoidImpassableLand);
    rmSetObjectDefCreateHerd(deer2ID, true);
    rmPlaceObjectDefInArea(deer2ID, 0, westIsland, cNumberNonGaiaPlayers);
+
+
+   // WALRUS - one herd on every glacier and bonus island, hauled out next to the water (see zpPlaceWalrusHerd)
+   zpPlaceWalrusHerd("west glacier 1", westGlacier1);
+   zpPlaceWalrusHerd("west glacier 2", westGlacier2);
+   zpPlaceWalrusHerd("east glacier 1", eastGlacier1);
+   zpPlaceWalrusHerd("east glacier 2", eastGlacier2);
+   zpPlaceWalrusHerd("bonus island 1", bonusIsland1);
+   zpPlaceWalrusHerd("bonus island 2", bonusIsland2);
 
    // Text
 	rmSetStatusText("",0.90);

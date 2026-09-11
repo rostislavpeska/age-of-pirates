@@ -2,46 +2,45 @@
 <protounitsounddef>
   <protounit name="zpSPCHayreddin">
     <soundtype name="Select">
-      <soundset name="CherokeeRiflemanSelect">
-      </soundset>
+      <soundset name="OttomanExplorerSelect" />
     </soundtype>
     <soundtype name="Grunt">
-      <soundset name="CavalryGrunt">
-      </soundset>
+      <soundset name="GenericMaleGrunt" />
     </soundtype>
     <soundtype name="Death">
-      <soundset name="GenericMaleDeath">
-      </soundset>
+      <soundset name="GenericMaleDeath" />
     </soundtype>
     <soundtype name="Creation">
-      <soundset name="NativeBirth">
-      </soundset>
+      <soundset name="SettlerBirth" />
     </soundtype>
     <soundtype name="Acknowledge">
       <targetlogic>
         <choice name="default">
-          <soundset name="CheyenneRiderAcknowledge">
-          </soundset>
+          <soundset name="OttomanExplorerAcknowledge" />
         </choice>
         <choice name="enemy">
-          <soundset name="CheyenneRiderAttack">
-          </soundset>
+          <soundset name="OttomanExplorerAttack" />
         </choice>
-        <choice name="build">
-        </choice>
-        <choice name="Huntable">
-        </choice>
-        <choice name="Tree">
-        </choice>
-        <choice name="AbstractMine">
-        </choice>
-        <choice name="AbstractFarm">
-        </choice>
-        <choice name="AbstractResourceCrate">
-        </choice>
-        <choice name="AbstractFruit">
-        </choice>
+        <choice name="build" />
+        <choice name="Huntable" />
+        <choice name="Tree" />
+        <choice name="AbstractMine" />
+        <choice name="AbstractFarm" />
+        <choice name="AbstractResourceCrate" />
+        <choice name="AbstractFruit" />
       </targetlogic>
+    </soundtype>
+    <soundtype name="Claim">
+      <soundset name="OttomanExplorerClaim" />
+    </soundtype>
+    <soundtype name="KnockOut">
+      <soundset name="OttomanExplorerDisabled" />
+    </soundtype>
+    <soundtype name="KnockOutRevived">
+      <soundset name="OttomanExplorerRevived" />
+    </soundtype>
+    <soundtype name="Ransomed">
+      <soundset name="OttomanExplorerRansomed" />
     </soundtype>
   </protounit>
 </protounitsounddef>

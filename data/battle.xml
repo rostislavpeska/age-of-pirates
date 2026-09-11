@@ -688,7 +688,7 @@
     <activeicon>resources\images\icons\command\zp_surface_active.png</activeicon>
     <availableicon>resources\images\icons\command\zp_surface.png</availableicon>
     <unavailableicon>resources\images\icons\command\zp_surface.png</unavailableicon>
-    <rolloverstringid>300472</rolloverstringid>
+    <rolloverstringid>500472</rolloverstringid>
   </squadmode>
   <squadmode>
     <name>zpShipDive</name>
@@ -709,7 +709,7 @@
     <activeicon>resources\images\icons\command\zp_dive_active.png</activeicon>
     <availableicon>resources\images\icons\command\zp_dive.png</availableicon>
     <unavailableicon>resources\images\icons\command\zp_dive.png</unavailableicon>
-    <rolloverstringid>300471</rolloverstringid>
+    <rolloverstringid>500471</rolloverstringid>
   </squadmode>
   <squadmode>
     <name>zpShipProtectDock</name>
@@ -726,7 +726,7 @@
     <activeicon>resources\images\icons\command\submarine_defensive_active.png</activeicon>
     <availableicon>resources\images\icons\command\submarine_defensive.png</availableicon>
     <unavailableicon>resources\images\icons\command\submarine_defensive.png</unavailableicon>
-    <rolloverstringid>300501</rolloverstringid>
+    <rolloverstringid>500501</rolloverstringid>
   </squadmode>
   <squadmode>
     <name>zpShipStealth</name>
@@ -744,7 +744,7 @@
     <activeicon>resources\images\icons\command\submarine_stealth_active.png</activeicon>
     <availableicon>resources\images\icons\command\submarine_stealth.png</availableicon>
     <unavailableicon>resources\images\icons\command\submarine_stealth_disabled.png</unavailableicon>
-    <rolloverstringid>300473</rolloverstringid>
+    <rolloverstringid>500473</rolloverstringid>
   </squadmode>
   <squadmode>
     <name>zpAreaDamage</name>
@@ -761,7 +761,7 @@
     <activeicon>resources\images\icons\command\no_target_active.png</activeicon>
     <availableicon>resources\images\icons\command\no_target.png</availableicon>
     <unavailableicon>resources\images\icons\command\no_target.png</unavailableicon>
-    <rolloverstringid>301147</rolloverstringid>
+    <rolloverstringid>501147</rolloverstringid>
   </squadmode>
   <squadmode>
     <name>zpTargerFocus</name>
@@ -778,7 +778,7 @@
     <activeicon>resources\images\icons\command\target_unit_active.png</activeicon>
     <availableicon>resources\images\icons\command\target_unit.png</availableicon>
     <unavailableicon>resources\images\icons\command\target_unit.png</unavailableicon>
-    <rolloverstringid>301146</rolloverstringid>
+    <rolloverstringid>501146</rolloverstringid>
   </squadmode>
   <squadmode>
     <name>DiverStealth</name>
@@ -822,7 +822,7 @@
     <activeicon>resources\images\icons\techs\asians\shrine_food_on.png</activeicon>
     <availableicon>resources\images\icons\techs\asians\shrine_food.png</availableicon>
     <unavailableicon>resources\images\icons\techs\asians\shrine_food.png</unavailableicon>
-    <rolloverstringid>302965</rolloverstringid>
+    <rolloverstringid>502965</rolloverstringid>
   </squadmode>
   <squadmode>
     <name>CogWood</name>
@@ -831,7 +831,7 @@
     <activeicon>resources\images\icons\techs\asians\shrine_wood_on.png</activeicon>
     <availableicon>resources\images\icons\techs\asians\shrine_wood.png</availableicon>
     <unavailableicon>resources\images\icons\techs\asians\shrine_wood.png</unavailableicon>
-    <rolloverstringid>302966</rolloverstringid>
+    <rolloverstringid>502966</rolloverstringid>
   </squadmode>
   <squadmode>
     <name>CogGold</name>
@@ -840,7 +840,7 @@
     <activeicon>resources\images\icons\techs\asians\shrine_coin_on.png</activeicon>
     <availableicon>resources\images\icons\techs\asians\shrine_coin.png</availableicon>
     <unavailableicon>resources\images\icons\techs\asians\shrine_coin.png</unavailableicon>
-    <rolloverstringid>302967</rolloverstringid>
+    <rolloverstringid>502967</rolloverstringid>
   </squadmode>
   <squadmode>
     <name>CogXP</name>
@@ -849,7 +849,7 @@
     <activeicon>resources\images\icons\techs\asians\shrine_xp_on.png</activeicon>
     <availableicon>resources\images\icons\techs\asians\shrine_xp.png</availableicon>
     <unavailableicon>resources\images\icons\techs\asians\shrine_xp.png</unavailableicon>
-    <rolloverstringid>302968</rolloverstringid>
+    <rolloverstringid>502968</rolloverstringid>
   </squadmode>
   
   <!-- Added by AssertiveWall -->

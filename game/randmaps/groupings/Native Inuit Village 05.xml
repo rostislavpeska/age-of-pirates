@@ -7,6 +7,7 @@
 	<selectassingleunit>1</selectassingleunit>
 	<workonassingleunit>1</workonassingleunit>
 	<units>
+		<unit variation="97" posx="0" posz="0" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpInvisibleGroundFlattener</unit>
 		<unit variation="87" posx="-2.9010" posz="-13.9249" orientx="-0.9240" orienty="0.0000" orientz="0.3825">UnderbrushRockiesSnow</unit>
 		<unit variation="130" posx="-3.1504" posz="-12.9425" orientx="0.7073" orienty="-0.0000" orientz="-0.7070">UnderbrushSnow</unit>
 		<unit variation="135" posx="-2.0406" posz="-13.9702" orientx="0.7073" orienty="-0.0000" orientz="-0.7070">UnderbrushPatagoniaSnow</unit>
@@ -96,7 +97,7 @@
 		<unit variation="125" posx="7.1879" posz="15.6234" orientx="0.7073" orienty="0.0000" orientz="-0.7070">UnderbrushPatagoniaSnow</unit>
 	</units>
 	<tiles>
-		<tilegroup type="PassableLand" subtype="yukon\ground1_yuk">
+		<tilegroup type="PassableLand" subtype="rockies\groundsnow3_roc">
 			<block startx="-6" startz="-8" endx="-6" endz="-1"></block>
 			<block startx="-5" startz="-8" endx="-5" endz="-1"></block>
 			<block startx="-4" startz="-8" endx="3" endz="-1"></block>
@@ -109,7 +110,7 @@
 			<block startx="4" startz="-8" endx="4" endz="-1"></block>
 			<block startx="5" startz="-8" endx="5" endz="-1"></block>
 		</tilegroup>
-		<tilegroup type="PassableLand" subtype="yukon\ground3_yuk">
+		<tilegroup type="PassableLand" subtype="rockies\groundsnow3_roc">
 			<block startx="5" startz="0" endx="5" endz="0"></block>
 			<block startx="5" startz="3" endx="5" endz="3"></block>
 		</tilegroup>

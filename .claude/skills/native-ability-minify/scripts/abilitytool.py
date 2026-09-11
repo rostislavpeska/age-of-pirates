@@ -23,6 +23,20 @@ import bartool as B  # noqa: E402
 ABILITY_FLAG = 'usebigabilitybutton3'
 COMMAND_FLAG = 'usemediumbutton3'
 TECH_FLAG = 'DEUseMediumButton3'
+# a redesigned SMALL ability must never start in cooldown ("the redesigned small
+# skills just can't start with wait, otherwise they break" -- user rule; the
+# 2026-08-17 Phanar chain copied the vanilla line, kept it, and shipped dead)
+COOLDOWN_FLAG = 'subcivstartincooldown'
+# Royal-House powers are GRANTED to the player from the house's Age0 tech; a
+# clone power under a new name needs the same grant or it casts nothing
+GRANT_RE = r'subtype="GrantsPowerDuration"[^>]*protopower="%s"'
+
+
+def vanilla_grant(power):
+    """Name of the vanilla tech that grants `power` via GrantsPowerDuration, or None."""
+    m = re.search(r'<tech name="([^"]+)"[^>]*>(?:(?!</tech>).)*?' + GRANT_RE % re.escape(power),
+                  vanilla('techs'), re.S)
+    return m.group(1) if m else None
 
 VANILLA = {
     'commands': 'Data/protounitcommands.xml.XMB',
@@ -254,9 +268,13 @@ def cmd_plan(args):
         big = big.replace('<ability>', '<ability mergemode="replace">', 1)
         small = re.sub(r'<tech>[^<]*</tech>', f'<tech>{gate_small}</tech>', one, count=1)
         small = re.sub(r'<%s>[^<]*</%s>' % (ABILITY_FLAG, ABILITY_FLAG), '', small)
+        # the small twin never starts in cooldown -- see COOLDOWN_FLAG
+        small = re.sub(r'<%s>[^<]*</%s>' % (COOLDOWN_FLAG, COOLDOWN_FLAG), '', small)
         small = small.replace(power, new_power, 1)
         print('    ' + big)
         print('    ' + small)
+        print(f'#   the small twin dropped <{ABILITY_FLAG}> and <{COOLDOWN_FLAG}>;'
+              f' compare it with zpPowerSultanCommand in abilitymods.xml before writing')
     else:
         print('#   !! vanilla ability entry not found')
     print()
@@ -304,12 +322,31 @@ def cmd_plan(args):
     print()
 
     print('# ---- data/techtreemods.xml  (overrides so the clone actually switches on)')
+    granter = vanilla_grant(power)
     for t in enablers:
+        grant = ''
+        if granter == t:
+            grant = f'''
+      <effect mergemode="add" type="Data" amount="1.00" subtype="GrantsPowerDuration" protopower="{new_power}" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>'''
         print(f'''  <tech name="{t}">
     <effects>
-      <effect mergemode="add" type="TechStatus" status="obtainable">{new_tech}</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">{new_tech}</effect>{grant}
     </effects>
   </tech>''')
+    if granter and granter not in enablers:
+        print(f'''  <tech name="{granter}">   <!-- vanilla grants {power} here; the clone needs the same -->
+    <effects>
+      <effect mergemode="add" type="Data" amount="1.00" subtype="GrantsPowerDuration" protopower="{new_power}" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>''')
+    if not granter:
+        print(f'#   vanilla does not grant {power} via GrantsPowerDuration (regular native) - no grant needed')
     for t in activators:
         print(f'''  <tech name="{t}">
     <effects>
@@ -369,6 +406,20 @@ def cmd_verify(args):
         checks.append((bool(ablk), f'ability {power} present in abilitymods'))
         if ablk:
             checks.append((ABILITY_FLAG not in ablk, f'ability has no <{ABILITY_FLAG}>'))
+            checks.append((COOLDOWN_FLAG not in ablk,
+                           f'ability has no <{COOLDOWN_FLAG}> (small abilities never start in cooldown)'))
+        if power:
+            # Royal-House clone: vanilla grants the ORIGINAL power somewhere; the
+            # mod must grant the clone the same way or the button casts nothing
+            bare = lambda n: re.sub(r'^(?:de|DE|yp|xp|zp)', '', n or '')
+            orig = [p for p in re.findall(r'<power name="([^"]+)"', vanilla('powers'))
+                    if bare(p) == bare(power) and p != power]
+            granter = vanilla_grant(orig[0]) if orig else None
+            if granter and not re.search(GRANT_RE % re.escape(power), mtech):
+                # warning, not a failure: Bourbon/Sultan/Imperial/Blanik grant their
+                # clones, both Habsburg smalls do not and are recorded as working
+                print(f'    WARN clone power {power} is not granted via GrantsPowerDuration '
+                      f'(vanilla grants {orig[0]} in {granter}; Bourbon grants its clone - mirror it)')
         tblk = block(mtech, 'tech', tech) if tech else None
         checks.append((bool(tblk), f'tech {tech} defined in techtreemods'))
         if tblk:

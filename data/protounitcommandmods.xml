@@ -4,8 +4,8 @@
     <icon>resources\images\icons\command\sohei_tactic_off.png</icon>
     <activeicon>resources\images\icons\command\sohei_tactic_on.png</activeicon>
     <disabledicon>resources\images\icons\command\sohei_tactic_off.png</disabledicon>
-    <rollovertextid>300294</rollovertextid>
-    <activerollovertextid>300301</activerollovertextid>
+    <rollovertextid>500294</rollovertextid>
+    <activerollovertextid>500301</activerollovertextid>
     <command>unitSetTactic("SoheiInf")</command>
   </protounitcommand>
   <protounitcommand>
@@ -13,8 +13,8 @@
     <icon>resources\images\icons\command\soheiarcher_tactic_off.png</icon>
     <activeicon>resources\images\icons\command\soheiarcher_tactic_on.png</activeicon>
     <disabledicon>resources\images\icons\command\soheiarcher_tactic_off.png</disabledicon>
-    <rollovertextid>300295</rollovertextid>
-    <activerollovertextid>300302</activerollovertextid>
+    <rollovertextid>500295</rollovertextid>
+    <activerollovertextid>500302</activerollovertextid>
     <command>unitSetTactic("SoheiArcher")</command>
   </protounitcommand>
   <protounitcommand>
@@ -22,8 +22,8 @@
     <icon>resources\images\icons\command\soheicavalry_tactic_off.png</icon>
     <activeicon>resources\images\icons\command\soheicavalry_tactic_on.png</activeicon>
     <disabledicon>resources\images\icons\command\soheicavalry_tactic_off.png</disabledicon>
-    <rollovertextid>300971</rollovertextid>
-    <activerollovertextid>300972</activerollovertextid>
+    <rollovertextid>500971</rollovertextid>
+    <activerollovertextid>500972</activerollovertextid>
     <command>unitSetTactic("SoheiCavalry")</command>
   </protounitcommand>
   <protounitcommand>
@@ -31,8 +31,8 @@
     <icon>resources\images\icons\command\zp_dive.png</icon>
     <activeicon>resources\images\icons\command\zp_dive_active.png</activeicon>
     <disabledicon>resources\images\icons\command\zp_dive.png</disabledicon>
-    <rollovertextid>300471</rollovertextid>
-    <activerollovertextid>300471</activerollovertextid>
+    <rollovertextid>500471</rollovertextid>
+    <activerollovertextid>500471</activerollovertextid>
     <command>unitSetTactic("zpDive")</command>
   </protounitcommand>
   <protounitcommand>
@@ -40,8 +40,8 @@
     <icon>resources\images\icons\command\submarine_stealth.png</icon>
     <activeicon>resources\images\icons\command\submarine_stealth_active.png</activeicon>
     <disabledicon>resources\images\icons\command\submarine_stealth.png</disabledicon>
-    <rollovertextid>300473</rollovertextid>
-    <activerollovertextid>300473</activerollovertextid>
+    <rollovertextid>500473</rollovertextid>
+    <activerollovertextid>500473</activerollovertextid>
     <command>unitSetTactic("zpStealth")</command>
   </protounitcommand>
   <protounitcommand>
@@ -49,8 +49,8 @@
     <icon>resources\images\icons\command\zp_surface.png</icon>
     <activeicon>resources\images\icons\command\zp_surface_active.png</activeicon>
     <disabledicon>resources\images\icons\command\zp_surface.png</disabledicon>
-    <rollovertextid>300472</rollovertextid>
-    <activerollovertextid>300472</activerollovertextid>
+    <rollovertextid>500472</rollovertextid>
+    <activerollovertextid>500472</activerollovertextid>
     <command>unitSetTactic("zpSurface")</command>
   </protounitcommand>
   <protounitcommand>
@@ -58,8 +58,8 @@
     <icon>resources\images\icons\command\submarine_defensive.png</icon>
     <activeicon>resources\images\icons\command\submarine_defensive_active.png</activeicon>
     <disabledicon>resources\images\icons\command\submarine_defensive.png</disabledicon>
-    <rollovertextid>300501</rollovertextid>
-    <activerollovertextid>300501</activerollovertextid>
+    <rollovertextid>500501</rollovertextid>
+    <activerollovertextid>500501</activerollovertextid>
     <command>unitSetTactic("zpProtectDock")</command>
   </protounitcommand>
   <protounitcommand>
@@ -67,8 +67,8 @@
     <icon>resources\images\icons\command\academy\academy_chemistry.png</icon>
     <activeicon>resources\images\icons\command\academy\academy_chemistry_on.png</activeicon>
     <disabledicon>resources\images\icons\command\academy\academy_chemistry.png</disabledicon>
-    <rollovertextid>300531</rollovertextid>
-    <activerollovertextid>300532</activerollovertextid>
+    <rollovertextid>500531</rollovertextid>
+    <activerollovertextid>500532</activerollovertextid>
     <command>unitSetTactic("TacticChemistry")</command>
   </protounitcommand>
   <protounitcommand>
@@ -76,8 +76,8 @@
     <icon>resources\images\icons\command\academy\academy_biology.png</icon>
     <activeicon>resources\images\icons\command\academy\academy_biology_on.png</activeicon>
     <disabledicon>resources\images\icons\command\academy\academy_biology.png</disabledicon>
-    <rollovertextid>300527</rollovertextid>
-    <activerollovertextid>300528</activerollovertextid>
+    <rollovertextid>500527</rollovertextid>
+    <activerollovertextid>500528</activerollovertextid>
     <command>unitSetTactic("TacticBiology")</command>
   </protounitcommand>
   <protounitcommand>
@@ -85,8 +85,8 @@
     <icon>resources\images\icons\command\academy\academy_machinery.png</icon>
     <activeicon>resources\images\icons\command\academy\academy_machinery_on.png</activeicon>
     <disabledicon>resources\images\icons\command\academy\academy_machinery.png</disabledicon>
-    <rollovertextid>300529</rollovertextid>
-    <activerollovertextid>300530</activerollovertextid>
+    <rollovertextid>500529</rollovertextid>
+    <activerollovertextid>500530</activerollovertextid>
     <command>unitSetTactic("TacticMachinery")</command>
   </protounitcommand>
   <protounitcommand>
@@ -94,8 +94,8 @@
     <icon>resources\images\icons\command\academy\academy_architecture.png</icon>
     <activeicon>resources\images\icons\command\academy\academy_architecture_on.png</activeicon>
     <disabledicon>resources\images\icons\command\academy\academy_architecture.png</disabledicon>
-    <rollovertextid>300525</rollovertextid>
-    <activerollovertextid>300526</activerollovertextid>
+    <rollovertextid>500525</rollovertextid>
+    <activerollovertextid>500526</activerollovertextid>
     <command>unitSetTactic("TacticArchitecture")</command>
   </protounitcommand>
   <protounitcommand>
@@ -103,8 +103,8 @@
     <icon>resources\images\icons\command\academy\academy_astronomy.png</icon>
     <activeicon>resources\images\icons\command\academy\academy_astronomy_on.png</activeicon>
     <disabledicon>resources\images\icons\command\academy\academy_astronomy.png</disabledicon>
-    <rollovertextid>300533</rollovertextid>
-    <activerollovertextid>300534</activerollovertextid>
+    <rollovertextid>500533</rollovertextid>
+    <activerollovertextid>500534</activerollovertextid>
     <command>unitSetTactic("TacticAstronomy")</command>
   </protounitcommand>
   <protounitcommand>
@@ -112,8 +112,8 @@
     <icon>resources\images\icons\command\academy\academy_economy.png</icon>
     <activeicon>resources\images\icons\command\academy\academy_economy_on.png</activeicon>
     <disabledicon>resources\images\icons\command\academy\academy_economy.png</disabledicon>
-    <rollovertextid>300535</rollovertextid>
-    <activerollovertextid>300536</activerollovertextid>
+    <rollovertextid>500535</rollovertextid>
+    <activerollovertextid>500536</activerollovertextid>
     <command>unitSetTactic("TacticEconomy")</command>
   </protounitcommand>
   <protounitcommand>
@@ -122,8 +122,8 @@
     <associatedpower>zpAirshipLighthouse</associatedpower>
     <castpower>
     </castpower>
-    <rollovertextid>300625</rollovertextid>
-    <disabledrollovertextid>300625</disabledrollovertextid>
+    <rollovertextid>500625</rollovertextid>
+    <disabledrollovertextid>500625</disabledrollovertextid>
     <usemultiple>
     </usemultiple>
   </protounitcommand>
@@ -132,8 +132,8 @@
     <icon>resources\images\icons\command\tactic_rice_paddy_coin_off.png</icon>
     <activeicon>resources\images\icons\command\tactic_rice_paddy_coin_on.png</activeicon>
     <disabledicon>resources\images\icons\command\tactic_rice_paddy_coin_off.png</disabledicon>
-    <rollovertextid>300671</rollovertextid>
-    <activerollovertextid>300674</activerollovertextid>
+    <rollovertextid>500671</rollovertextid>
+    <activerollovertextid>500674</activerollovertextid>
     <command>unitSetTactic("ConCoin")</command>
   </protounitcommand>
   <protounitcommand>
@@ -141,8 +141,8 @@
     <icon>resources\images\icons\command\tactic_rice_paddy_food_off.png</icon>
     <activeicon>resources\images\icons\command\tactic_rice_paddy_food_on.png</activeicon>
     <disabledicon>resources\images\icons\command\tactic_rice_paddy_food_off.png</disabledicon>
-    <rollovertextid>300672</rollovertextid>
-    <activerollovertextid>300675</activerollovertextid>
+    <rollovertextid>500672</rollovertextid>
+    <activerollovertextid>500675</activerollovertextid>
     <command>unitSetTactic("ConFood")</command>
   </protounitcommand>
   <protounitcommand>
@@ -150,8 +150,8 @@
     <icon>resources\images\icons\techs\asians\shrine_xp.png</icon>
     <activeicon>resources\images\icons\techs\asians\shrine_xp_on.png</activeicon>
     <disabledicon>resources\images\icons\techs\asians\shrine_xp.png</disabledicon>
-    <rollovertextid>300670</rollovertextid>
-    <activerollovertextid>300673</activerollovertextid>
+    <rollovertextid>500670</rollovertextid>
+    <activerollovertextid>500673</activerollovertextid>
     <command>unitSetTactic("ConXP")</command>
   </protounitcommand>
   <protounitcommand>
@@ -159,8 +159,8 @@
     <icon>resources\images\icons\command\drydock\drydock_production.png</icon>
     <activeicon>resources\images\icons\command\drydock\drydock_production_on.png</activeicon>
     <disabledicon>resources\images\icons\command\drydock\drydock_production.png</disabledicon>
-    <rollovertextid>300803</rollovertextid>
-    <activerollovertextid>300802</activerollovertextid>
+    <rollovertextid>500803</rollovertextid>
+    <activerollovertextid>500802</activerollovertextid>
     <command>unitSetTactic("TacticTraining")</command>
   </protounitcommand>
   <protounitcommand>
@@ -168,8 +168,8 @@
     <icon>resources\images\icons\command\drydock\drydock_repair.png</icon>
     <activeicon>resources\images\icons\command\drydock\drydock_repair_on.png</activeicon>
     <disabledicon>resources\images\icons\command\drydock\drydock_repair.png</disabledicon>
-    <rollovertextid>300805</rollovertextid>
-    <activerollovertextid>300804</activerollovertextid>
+    <rollovertextid>500805</rollovertextid>
+    <activerollovertextid>500804</activerollovertextid>
     <command>unitSetTactic("TacticHeal")</command>
   </protounitcommand>
   <protounitcommand>
@@ -177,16 +177,70 @@
     <icon>resources\images\icons\command\drydock\drydock_galleys.png</icon>
     <activeicon>resources\images\icons\command\drydock\drydock_galleys_on.png</activeicon>
     <disabledicon>resources\images\icons\command\drydock\drydock_galleys.png</disabledicon>
-    <rollovertextid>300807</rollovertextid>
-    <activerollovertextid>300806</activerollovertextid>
+    <rollovertextid>500807</rollovertextid>
+    <activerollovertextid>500806</activerollovertextid>
     <command>unitSetTactic("TacticSpawnGalley")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticSpawnPrivateer</name>
+    <icon>resources\images\icons\command\drydock\drydock_privateer.png</icon>
+    <activeicon>resources\images\icons\command\drydock\drydock_privateer_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\drydock\drydock_privateer.png</disabledicon>
+    <rollovertextid>503343</rollovertextid>
+    <activerollovertextid>503344</activerollovertextid>
+    <command>unitSetTactic("TacticSpawnPrivateer")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticSpawnAXGalley</name>
+    <icon>resources\images\icons\command\drydock\drydock_alexandria.png</icon>
+    <activeicon>resources\images\icons\command\drydock\drydock_alexandria_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\drydock\drydock_alexandria.png</disabledicon>
+    <rollovertextid>503345</rollovertextid>
+    <activerollovertextid>503346</activerollovertextid>
+    <command>unitSetTactic("TacticSpawnAXGalley")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticSpawnIronclad</name>
+    <icon>resources\images\icons\command\drydock\drydock_ironclad.png</icon>
+    <activeicon>resources\images\icons\command\drydock\drydock_ironclad_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\drydock\drydock_ironclad.png</disabledicon>
+    <rollovertextid>503347</rollovertextid>
+    <activerollovertextid>503348</activerollovertextid>
+    <command>unitSetTactic("TacticSpawnIronclad")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticSpawnFishingBoat</name>
+    <icon>resources\images\icons\command\drydock\drydock_fishingboat.png</icon>
+    <activeicon>resources\images\icons\command\drydock\drydock_fishingboat_on.png</activeicon>
+    <disabledicon>resources\images\icons\command\drydock\drydock_fishingboat.png</disabledicon>
+    <rollovertextid>503400</rollovertextid>
+    <activerollovertextid>503401</activerollovertextid>
+    <command>unitSetTactic("GuildFishingBoats")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticGuildFood</name>
+    <icon>resources\images\icons\techs\asians\shrine_food.png</icon>
+    <activeicon>resources\images\icons\techs\asians\shrine_food_on.png</activeicon>
+    <disabledicon>resources\images\icons\techs\asians\shrine_food.png</disabledicon>
+    <rollovertextid>503402</rollovertextid>
+    <activerollovertextid>503403</activerollovertextid>
+    <command>unitSetTactic("ShrineFood")</command>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpTacticGuildCoin</name>
+    <icon>resources\images\icons\techs\asians\shrine_coin.png</icon>
+    <activeicon>resources\images\icons\techs\asians\shrine_coin_on.png</activeicon>
+    <disabledicon>resources\images\icons\techs\asians\shrine_coin.png</disabledicon>
+    <rollovertextid>503404</rollovertextid>
+    <activerollovertextid>503405</activerollovertextid>
+    <command>unitSetTactic("ShrineCoin")</command>
   </protounitcommand>
   <protounitcommand>
     <name>zpVeniceShipment</name>
     <command>researchByID(cTechzpNatVeteranVenetians, 252, 1)</command>
     <icon>resources\images\icons\techs\venetian_hc\venice_galley.png</icon>
     <disabledicon>resources\images\icons\techs\venetian_hc\venice_galley_inactive.png</disabledicon>
-    <rollovertextid>300019</rollovertextid>
+    <rollovertextid>500019</rollovertextid>
     <usemultiple>
     </usemultiple>
   </protounitcommand>
@@ -251,7 +305,7 @@
     <unittype>zpMachineGunnerLevy</unittype>
     <amount>8</amount>
     <associatedtech>zpArmoredTrainLevy</associatedtech>
-    <rollovertextid>301014</rollovertextid>
+    <rollovertextid>501014</rollovertextid>
     <donotallowoverpoplimit>
     </donotallowoverpoplimit>
   </protounitcommand>
@@ -263,12 +317,12 @@
     </commandpassesunitid>
     <socketbuild>
     </socketbuild>
-    <rollovertextid>301065</rollovertextid>
+    <rollovertextid>501065</rollovertextid>
   </protounitcommand>
   <protounitcommand>
     <name>zpBuildTrainStationInactive</name>
     <icon>resources\images\icons\command\buildtrainstation_inactive.png</icon>
-    <rollovertextid>301068</rollovertextid>
+    <rollovertextid>501068</rollovertextid>
   </protounitcommand>
   <protounitcommand>
     <name>zpStationDeploy</name>
@@ -279,7 +333,7 @@
     <associatedtech>DECommanderyDeploy</associatedtech>
     <associatedpower>deCommanderyDeploy</associatedpower>
     <rollovertextid>124673</rollovertextid>
-    <disabledrollovertextid>301071</disabledrollovertextid>
+    <disabledrollovertextid>501071</disabledrollovertextid>
     <usemultiple>
     </usemultiple>
     <usemediumbutton3>
@@ -298,7 +352,7 @@
     <associatedtech>zpWagonDeploy</associatedtech>
     <associatedpower>deCommanderyDeploy</associatedpower>
     <rollovertextid>124673</rollovertextid>
-    <disabledrollovertextid>301072</disabledrollovertextid>
+    <disabledrollovertextid>501072</disabledrollovertextid>
     <usemultiple>
     </usemultiple>
     <usemediumbutton3>
@@ -315,7 +369,7 @@
     <commandpassesunitid>
     </commandpassesunitid>
     <associatedtech>DEDepotDetonate</associatedtech>
-    <rollovertextid>301088</rollovertextid>
+    <rollovertextid>501088</rollovertextid>
     <usebigbutton>
     </usebigbutton>
     <notcancellable>
@@ -357,8 +411,8 @@
     <icon>resources\images\icons\command\school\hp_off.png</icon>
     <activeicon>resources\images\icons\command\school\hp_on.png</activeicon>
     <disabledicon>resources\images\icons\command\school\hp_off.png</disabledicon>
-    <rollovertextid>301225</rollovertextid>
-    <activerollovertextid>301226</activerollovertextid>
+    <rollovertextid>501225</rollovertextid>
+    <activerollovertextid>501226</activerollovertextid>
     <command>unitSetTactic("TacticHP")</command>
   </protounitcommand>
   <protounitcommand>
@@ -366,8 +420,8 @@
     <icon>resources\images\icons\command\school\damage_off.png</icon>
     <activeicon>resources\images\icons\command\school\damage_on.png</activeicon>
     <disabledicon>resources\images\icons\command\school\damage_off.png</disabledicon>
-    <rollovertextid>301227</rollovertextid>
-    <activerollovertextid>301228</activerollovertextid>
+    <rollovertextid>501227</rollovertextid>
+    <activerollovertextid>501228</activerollovertextid>
     <command>unitSetTactic("TacticDamage")</command>
   </protounitcommand>
   <protounitcommand>
@@ -375,8 +429,8 @@
     <icon>resources\images\icons\command\school\tracker_off.png</icon>
     <activeicon>resources\images\icons\command\school\tracker_on.png</activeicon>
     <disabledicon>resources\images\icons\command\school\tracker_off.png</disabledicon>
-    <rollovertextid>301229</rollovertextid>
-    <activerollovertextid>301230</activerollovertextid>
+    <rollovertextid>501229</rollovertextid>
+    <activerollovertextid>501230</activerollovertextid>
     <command>unitSetTactic("TacticMaintain")</command>
   </protounitcommand>
   <protounitcommand>
@@ -384,8 +438,8 @@
     <icon>resources\images\icons\techs\asians\shrine_xp.png</icon>
     <activeicon>resources\images\icons\techs\asians\shrine_xp_on.png</activeicon>
     <disabledicon>resources\images\icons\techs\asians\shrine_xp.png</disabledicon>
-    <rollovertextid>301769</rollovertextid>
-    <activerollovertextid>301770</activerollovertextid>
+    <rollovertextid>501769</rollovertextid>
+    <activerollovertextid>501770</activerollovertextid>
     <command>unitSetTactic("DivingBellXP")</command>
   </protounitcommand>
   <protounitcommand>
@@ -393,8 +447,8 @@
     <icon>resources\images\icons\techs\asians\shrine_coin.png</icon>
     <activeicon>resources\images\icons\techs\asians\shrine_coin_on.png</activeicon>
     <disabledicon>resources\images\icons\techs\asians\shrine_coin.png</disabledicon>
-    <rollovertextid>301767</rollovertextid>
-    <activerollovertextid>301768</activerollovertextid>
+    <rollovertextid>501767</rollovertextid>
+    <activerollovertextid>501768</activerollovertextid>
     <command>unitSetTactic("DivingBellCoin")</command>
   </protounitcommand>
   <protounitcommand>
@@ -402,8 +456,8 @@
     <icon>resources\images\icons\techs\asians\shrine_food.png</icon>
     <activeicon>resources\images\icons\techs\asians\shrine_food_on.png</activeicon>
     <disabledicon>resources\images\icons\techs\asians\shrine_food.png</disabledicon>
-    <rollovertextid>301765</rollovertextid>
-    <activerollovertextid>301766</activerollovertextid>
+    <rollovertextid>501765</rollovertextid>
+    <activerollovertextid>501766</activerollovertextid>
     <command>unitSetTactic("DivingBellFood")</command>
   </protounitcommand>
   <protounitcommand>
@@ -411,8 +465,8 @@
     <icon>resources\images\icons\command\tactics_build_stealth_avl.png</icon>
     <activeicon>resources\images\icons\command\tactics_build_stealth_cur.png</activeicon>
     <disabledicon>resources\images\icons\command\tactics_build_stealth_un_avl.png</disabledicon>
-    <rollovertextid>301776</rollovertextid>
-    <activerollovertextid>301777</activerollovertextid>
+    <rollovertextid>501776</rollovertextid>
+    <activerollovertextid>501777</activerollovertextid>
     <command>unitSetTactic("DivingBellStealth")</command>
   </protounitcommand>
   <protounitcommand>
@@ -423,7 +477,7 @@
     </commandpassesunitid>
     <socketbuild>
     </socketbuild>
-    <rollovertextid>301863</rollovertextid>
+    <rollovertextid>501863</rollovertextid>
   </protounitcommand>
   <protounitcommand>
     <name>zpNatBourbonRoyalMarchSmall</name>
@@ -481,7 +535,26 @@
     <associatedtech>DECommanderyDeploy</associatedtech>
     <associatedpower>deCommanderyDeploy</associatedpower>
     <rollovertextid>124673</rollovertextid>
-    <disabledrollovertextid>301986</disabledrollovertextid>
+    <disabledrollovertextid>501986</disabledrollovertextid>
+    <usemultiple>
+    </usemultiple>
+    <usemediumbutton3>
+    </usemediumbutton3>
+    <deploy>
+    </deploy>
+    <notcancellable>
+    </notcancellable>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpFerryDeploy</name>
+    <icon>resources\images\icons\command\ability_ferry_eject.png</icon>
+    <command>ejectAll(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <associatedtech>DECommanderyDeploy</associatedtech>
+    <associatedpower>deCommanderyDeploy</associatedpower>
+    <rollovertextid>503367</rollovertextid>
+    <disabledrollovertextid>503365</disabledrollovertextid>
     <usemultiple>
     </usemultiple>
     <usemediumbutton3>
@@ -499,7 +572,17 @@
     </commandpassesunitid>
     <socketbuild>
     </socketbuild>
-    <rollovertextid>302109</rollovertextid>
+    <rollovertextid>502109</rollovertextid>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpSocketBuildAntiShipGun</name>
+    <icon>resources\images\icons\command\build_fixed_gun.png</icon>
+    <command>uiSocketBuild(%d)</command>
+    <commandpassesunitid>
+    </commandpassesunitid>
+    <socketbuild>
+    </socketbuild>
+    <rollovertextid>503332</rollovertextid>
   </protounitcommand>
   <protounitcommand>
     <name>zpAuditoreLighthouseSmall</name>
@@ -531,15 +614,15 @@
     </commandpassesunitid>
     <socketbuild>
     </socketbuild>
-    <rollovertextid>302436</rollovertextid>
+    <rollovertextid>502436</rollovertextid>
   </protounitcommand>
   <protounitcommand>
     <name>aztecAltarWarPriest</name>
     <icon>resources\images\icons\command\aztecaltar\priest_off.png</icon>
     <activeicon>resources\images\icons\command\aztecaltar\priest_on.png</activeicon>
     <disabledicon>resources\images\icons\command\aztecaltar\priest_off.png</disabledicon>
-    <rollovertextid>302483</rollovertextid>
-    <activerollovertextid>302484</activerollovertextid>
+    <rollovertextid>502483</rollovertextid>
+    <activerollovertextid>502484</activerollovertextid>
     <command>unitSetTactic("TacticSpawnWarriorPriest")</command>
   </protounitcommand>
   <protounitcommand>
@@ -547,8 +630,8 @@
     <icon>resources\images\icons\command\tactic_rainbow_trickle_off.png</icon>
     <activeicon>resources\images\icons\command\tactic_rainbow_trickle_on.png</activeicon>
     <disabledicon>resources\images\icons\command\tactic_rainbow_trickle_off.png</disabledicon>
-    <rollovertextid>302485</rollovertextid>
-    <activerollovertextid>302486</activerollovertextid>
+    <rollovertextid>502485</rollovertextid>
+    <activerollovertextid>502486</activerollovertextid>
     <command>unitSetTactic("TacticSpawnRainbowCrate")</command>
   </protounitcommand>
   <protounitcommand>
@@ -556,8 +639,8 @@
     <icon>resources\images\icons\command\aztecaltar\skull_off.png</icon>
     <activeicon>resources\images\icons\command\aztecaltar\skull_on.png</activeicon>
     <disabledicon>resources\images\icons\command\aztecaltar\skull_off.png</disabledicon>
-    <rollovertextid>302489</rollovertextid>
-    <activerollovertextid>302490</activerollovertextid>
+    <rollovertextid>502489</rollovertextid>
+    <activerollovertextid>502490</activerollovertextid>
     <command>unitSetTactic("TacticSpawnSkullKnight")</command>
   </protounitcommand>
   <protounitcommand>
@@ -565,8 +648,8 @@
     <icon>resources\images\icons\command\aztecaltar\settler_off.png</icon>
     <activeicon>resources\images\icons\command\aztecaltar\settler_on.png</activeicon>
     <disabledicon>resources\images\icons\command\aztecaltar\settler_off.png</disabledicon>
-    <rollovertextid>302494</rollovertextid>
-    <activerollovertextid>302495</activerollovertextid>
+    <rollovertextid>502494</rollovertextid>
+    <activerollovertextid>502495</activerollovertextid>
     <command>unitSetTactic("TacticSpawnSettler")</command>
   </protounitcommand>
   <protounitcommand>
@@ -574,8 +657,8 @@
     <icon>resources\images\icons\command\aztecaltar\healer_off.png</icon>
     <activeicon>resources\images\icons\command\aztecaltar\healer_on.png</activeicon>
     <disabledicon>resources\images\icons\command\aztecaltar\healer_off.png</disabledicon>
-    <rollovertextid>302510</rollovertextid>
-    <activerollovertextid>302511</activerollovertextid>
+    <rollovertextid>502510</rollovertextid>
+    <activerollovertextid>502511</activerollovertextid>
     <command>unitSetTactic("TacticSpawnHealer")</command>
   </protounitcommand>
   <protounitcommand>
@@ -583,8 +666,8 @@
     <icon>resources\images\icons\techs\asians\shrine_xp.png</icon>
     <activeicon>resources\images\icons\techs\asians\shrine_xp_on.png</activeicon>
     <disabledicon>resources\images\icons\techs\asians\shrine_xp.png</disabledicon>
-    <rollovertextid>302512</rollovertextid>
-    <activerollovertextid>302513</activerollovertextid>
+    <rollovertextid>502512</rollovertextid>
+    <activerollovertextid>502513</activerollovertextid>
     <command>unitSetTactic("TacticGatherXP")</command>
   </protounitcommand>
   <protounitcommand>
@@ -592,8 +675,8 @@
     <icon>resources\images\icons\command\aztecaltar\canoe_off.png</icon>
     <activeicon>resources\images\icons\command\aztecaltar\canoe_on.png</activeicon>
     <disabledicon>resources\images\icons\command\aztecaltar\canoe_off.png</disabledicon>
-    <rollovertextid>302516</rollovertextid>
-    <activerollovertextid>302517</activerollovertextid>
+    <rollovertextid>502516</rollovertextid>
+    <activerollovertextid>502517</activerollovertextid>
     <command>unitSetTactic("TacticSpawnLakeCanoe")</command>
   </protounitcommand>
   <protounitcommand>
@@ -601,8 +684,8 @@
     <icon>resources\images\icons\command\tactic_rainbow_trickle_off.png</icon>
     <activeicon>resources\images\icons\command\tactic_rainbow_trickle_on.png</activeicon>
     <disabledicon>resources\images\icons\command\tactic_rainbow_trickle_off.png</disabledicon>
-    <rollovertextid>302524</rollovertextid>
-    <activerollovertextid>302525</activerollovertextid>
+    <rollovertextid>502524</rollovertextid>
+    <activerollovertextid>502525</activerollovertextid>
     <command>unitSetTactic("WonderRainbow")</command>
   </protounitcommand>
   <protounitcommand>
@@ -610,8 +693,8 @@
     <icon>resources\images\icons\techs\asians\shrine_coin.png</icon>
     <activeicon>resources\images\icons\techs\asians\shrine_coin_on.png</activeicon>
     <disabledicon>resources\images\icons\techs\asians\shrine_coin.png</disabledicon>
-    <rollovertextid>302522</rollovertextid>
-    <activerollovertextid>302523</activerollovertextid>
+    <rollovertextid>502522</rollovertextid>
+    <activerollovertextid>502523</activerollovertextid>
     <command>unitSetTactic("WonderCoin")</command>
   </protounitcommand>
   <protounitcommand>
@@ -619,8 +702,8 @@
     <icon>resources\images\icons\techs\asians\shrine_wood.png</icon>
     <activeicon>resources\images\icons\techs\asians\shrine_wood_on.png</activeicon>
     <disabledicon>resources\images\icons\techs\asians\shrine_wood.png</disabledicon>
-    <rollovertextid>302518</rollovertextid>
-    <activerollovertextid>302519</activerollovertextid>
+    <rollovertextid>502518</rollovertextid>
+    <activerollovertextid>502519</activerollovertextid>
     <command>unitSetTactic("WonderWood")</command>
   </protounitcommand>
   <protounitcommand>
@@ -628,8 +711,8 @@
     <icon>resources\images\icons\techs\asians\shrine_food.png</icon>
     <activeicon>resources\images\icons\techs\asians\shrine_food_on.png</activeicon>
     <disabledicon>resources\images\icons\techs\asians\shrine_food.png</disabledicon>
-    <rollovertextid>302520</rollovertextid>
-    <activerollovertextid>302521</activerollovertextid>
+    <rollovertextid>502520</rollovertextid>
+    <activerollovertextid>502521</activerollovertextid>
     <command>unitSetTactic("WonderFood")</command>
   </protounitcommand>
   <protounitcommand>
@@ -640,7 +723,7 @@
     </commandpassesunitid>
     <socketbuild>
     </socketbuild>
-    <rollovertextid>302653</rollovertextid>
+    <rollovertextid>502653</rollovertextid>
   </protounitcommand>
   <protounitcommand>
     <name>zpNatImperialCommandSmall</name>
@@ -667,21 +750,21 @@
     <name>zpTransformTradeCog</name>
     <icon>resources\images\icons\command\cogtrade_off.png</icon>
     <command>uiTransformSelectedUnit("zpHanseaticTradeship", true)</command>
-    <rollovertextid>302962</rollovertextid>
+    <rollovertextid>502962</rollovertextid>
   </protounitcommand>
   <protounitcommand>
     <name>zpTransformWarCog</name>
     <icon>resources\images\icons\command\tactics_melee_avl.png</icon>
     <command>uiTransformSelectedUnit("zpHanseaticWarship", true)</command>
-    <rollovertextid>302964</rollovertextid>
+    <rollovertextid>502964</rollovertextid>
   </protounitcommand>
   <protounitcommand>
     <name>zpTradeCogGold</name>
     <icon>resources\images\icons\techs\asians\shrine_coin.png</icon>
     <activeicon>resources\images\icons\techs\asians\shrine_coin_on.png</activeicon>
     <disabledicon>resources\images\icons\techs\asians\shrine_coin.png</disabledicon>
-    <rollovertextid>302967</rollovertextid>
-    <activerollovertextid>302967</activerollovertextid>
+    <rollovertextid>502967</rollovertextid>
+    <activerollovertextid>502967</activerollovertextid>
     <command>unitSetTactic("CogGold")</command>
   </protounitcommand>
   <protounitcommand>
@@ -689,8 +772,8 @@
     <icon>resources\images\icons\techs\asians\shrine_food.png</icon>
     <activeicon>resources\images\icons\techs\asians\shrine_food_on.png</activeicon>
     <disabledicon>resources\images\icons\techs\asians\shrine_food.png</disabledicon>
-    <rollovertextid>302965</rollovertextid>
-    <activerollovertextid>302965</activerollovertextid>
+    <rollovertextid>502965</rollovertextid>
+    <activerollovertextid>502965</activerollovertextid>
     <command>unitSetTactic("CogFood")</command>
   </protounitcommand>
   <protounitcommand>
@@ -698,8 +781,8 @@
     <icon>resources\images\icons\techs\asians\shrine_wood.png</icon>
     <activeicon>resources\images\icons\techs\asians\shrine_wood_on.png</activeicon>
     <disabledicon>resources\images\icons\techs\asians\shrine_wood.png</disabledicon>
-    <rollovertextid>302966</rollovertextid>
-    <activerollovertextid>302966</activerollovertextid>
+    <rollovertextid>502966</rollovertextid>
+    <activerollovertextid>502966</activerollovertextid>
     <command>unitSetTactic("CogWood")</command>
   </protounitcommand>
   <protounitcommand>
@@ -707,8 +790,8 @@
     <icon>resources\images\icons\techs\asians\shrine_xp.png</icon>
     <activeicon>resources\images\icons\techs\asians\shrine_xp_on.png</activeicon>
     <disabledicon>resources\images\icons\techs\asians\shrine_xp.png</disabledicon>
-    <rollovertextid>302968</rollovertextid>
-    <activerollovertextid>302968</activerollovertextid>
+    <rollovertextid>502968</rollovertextid>
+    <activerollovertextid>502968</activerollovertextid>
     <command>unitSetTactic("CogXP")</command>
   </protounitcommand>
   <protounitcommand>
@@ -745,12 +828,23 @@
     </usemultiple>
   </protounitcommand>
   <protounitcommand>
+    <name>zpNatPhanarGreekRevolutionSmall</name>
+    <icon>resources\images\icons\abilities\ability_greek_revolution_lrg.png</icon>
+    <associatedtech>zpNatPhanarGreekRevolution</associatedtech>
+    <associatedpower>zpNatPowerGreekRevolution</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>Phanar</subciv>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
+  <protounitcommand>
     <name>TacticCossackRider</name>
     <icon>resources\images\icons\command\cossack_outlaw_off.png</icon>
     <activeicon>resources\images\icons\command\cossack_outlaw_on.png</activeicon>
     <disabledicon>resources\images\icons\command\cossack_outlaw_off.png</disabledicon>
-    <rollovertextid>303124</rollovertextid>
-    <activerollovertextid>303126</activerollovertextid>
+    <rollovertextid>503124</rollovertextid>
+    <activerollovertextid>503126</activerollovertextid>
     <command>unitSetTactic("MaintainCossacks")</command>
   </protounitcommand>
   <protounitcommand>
@@ -758,8 +852,8 @@
     <icon>resources\images\icons\command\cossack_dragoons_off.png</icon>
     <activeicon>resources\images\icons\command\cossack_dragoons_on.png</activeicon>
     <disabledicon>resources\images\icons\command\cossack_dragoons_off.png</disabledicon>
-    <rollovertextid>303125</rollovertextid>
-    <activerollovertextid>303127</activerollovertextid>
+    <rollovertextid>503125</rollovertextid>
+    <activerollovertextid>503127</activerollovertextid>
     <command>unitSetTactic("MaintainDragoons")</command>
   </protounitcommand>
   <protounitcommand>
@@ -781,7 +875,7 @@
     </commandpassesunitid>
     <socketbuild>
     </socketbuild>
-    <rollovertextid>303306</rollovertextid>
+    <rollovertextid>503306</rollovertextid>
   </protounitcommand>
 
 

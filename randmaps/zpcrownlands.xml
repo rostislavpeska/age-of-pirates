@@ -1,5 +1,5 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<mapinfo details = "302846" displayNameID = "302823" loadDetails="302847"
+<mapinfo details = "502846" displayNameID = "502823" loadDetails="502847"
     imagepath = "ui\random_map\crownlands\crownlands_mini" cannotReplace = "" loadBackground="ui\random_map\crownlands\crownlands_map">
     <filter>Historical</filter>
     <loadss>ui\random_map\crownlands\crownlands_01</loadss>

@@ -763,10 +763,9 @@
    ],
    "terrain_affinity": "either",
    "category": "generic",
-   "notes": "grouping footprint 40x14 tiles; class classPlateau",
+   "notes": "grouping footprint 40x14 tiles; class classPlateau (zpBridgeFace shim removed 2026-08-10: type semantics come from the grouping units now)",
    "classes": [
-    "classPlateau",
-    "zpBridgeFace"
+    "classPlateau"
    ],
    "footprint_tiles": [
     40,
@@ -2046,16 +2045,16 @@
    "line": 211
   },
   "avoidBridge": {
-   "kind": "class_distance",
-   "class": "zpBridgeFace",
+   "kind": "type_distance",
    "distance_m": 15.0,
-   "line": 236
+   "line": 236,
+   "type": "zpBridgeFace"
   },
   "avoidBridgeLong": {
-   "kind": "class_distance",
-   "class": "zpBridgeFace",
+   "kind": "type_distance",
    "distance_m": 70.0,
-   "line": 237
+   "line": 237,
+   "type": "zpBridgeFace"
   },
   "avoidWater5": {
    "kind": "terrain",
@@ -2152,28 +2151,28 @@
    "line": 196
   },
   "avoidTradeSockets": {
-   "kind": "class_distance",
-   "class": "sockettraderoute",
+   "kind": "type_distance",
    "distance_m": 8.0,
-   "line": 198
+   "line": 198,
+   "type": "sockettraderoute"
   },
   "avoidSocket": {
-   "kind": "class_distance",
-   "class": "SocketTradeRoute",
+   "kind": "type_distance",
    "distance_m": 10.0,
-   "line": 212
+   "line": 212,
+   "type": "SocketTradeRoute"
   },
   "avoidSocketLong": {
-   "kind": "class_distance",
-   "class": "Socket",
+   "kind": "type_distance",
    "distance_m": 40.0,
-   "line": 214
+   "line": 214,
+   "type": "Socket"
   },
   "avoidEstate": {
-   "kind": "class_distance",
-   "class": "zpNativeHouseWesternVillageB",
+   "kind": "type_distance",
    "distance_m": 30.0,
-   "line": 220
+   "line": 220,
+   "type": "zpNativeHouseWesternVillageB"
   },
   "avoidNuggets": {
    "kind": "opaque",

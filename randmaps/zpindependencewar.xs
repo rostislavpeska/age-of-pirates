@@ -111,6 +111,8 @@ void main(void)
 
 	chooseMercs();
 
+	rmSetOceanReveal(true);
+
 	// Corner constraint.
 	rmSetWorldCircleConstraint(true);
 
@@ -379,6 +381,13 @@ void main(void)
 	// Additional Constraints - based on dansil original constraints
 	int cityConstraint = rmCreateBoxConstraint("stay in the city", 0.2, 0.0, 0.8, 1.0);
 
+	// One-direction water gating. The gulf (low z) is the only home for
+	// whales and wreck treasures; naval spawn flags may use the channel but
+	// never the water past the bridge line at z=0.88. Fish are deliberately
+	// exempt - the river stays fishable.
+	int gulfWaterOnly = rmCreateBoxConstraint("gulf water only", 0.0, 0.0, 1.0, 0.34);
+	int belowBridgeWater = rmCreateBoxConstraint("below bridge water", 0.0, 0.0, 1.0, 0.86);
+
 	int classPatch = rmDefineClass("patch");
 	int avoidPatch = rmCreateClassDistanceConstraint("avoid patch", rmClassID("patch"), 22.0);
 	int avoidPlateauShort = rmCreateClassDistanceConstraint("avoid patch 1", rmClassID("classPlateau"), 1.0);
@@ -405,7 +414,6 @@ void main(void)
 	rmAddAreaToClass(riverArea1, classGreatLake);
 	rmAddAreaInfluenceSegment(riverArea1, 0.5, 1.0, 0.5, 0.5);
 	rmSetAreaObeyWorldCircleConstraint(riverArea1, false);
-	rmSetAreaReveal(riverArea1, 1);
 	rmBuildArea(riverArea1);
 
 	int centralLake = rmCreateArea("centralLake");
@@ -423,7 +431,6 @@ void main(void)
 	rmSetAreaCoherence(centralLake , 0.8);
 	rmSetAreaElevationVariation(centralLake, 0.0);
 	rmAddAreaToClass(centralLake, classDeepWater);
-	rmSetAreaReveal(centralLake, 1);
 	rmBuildArea(centralLake);
 
 	// Player landmasses
@@ -469,7 +476,7 @@ void main(void)
 	rmSetAreaLocation(bridgeDockEast, bridgeX+rmXTilesToFraction(22), bridgeZ);
 	rmSetAreaCoherence(bridgeDockEast, 1.0);
 	rmSetAreaBaseHeight(bridgeDockEast, 3.0);
-	rmSetAreaCliffType(bridgeDockEast, "ZP Elbe Cliff");
+	rmSetAreaCliffType(bridgeDockEast, "New England");
 	rmSetAreaCliffEdge(bridgeDockEast, 1, 1.0, 0.1, 1.0, 0);
 	rmSetAreaCliffHeight(bridgeDockEast, 0, 0.0, 1.0);
 	rmAddAreaToClass(bridgeDockEast , rmClassID("classPlateau"));
@@ -481,7 +488,7 @@ void main(void)
 	rmSetAreaLocation(bridgeDockWest, bridgeX-rmXTilesToFraction(22), bridgeZ);
 	rmSetAreaCoherence(bridgeDockWest, 1.0);
 	rmSetAreaBaseHeight(bridgeDockWest, 3.0);
-	rmSetAreaCliffType(bridgeDockWest, "ZP Elbe Cliff");
+	rmSetAreaCliffType(bridgeDockWest, "New England");
 	rmSetAreaCliffEdge(bridgeDockWest, 1, 1.0, 0.1, 1.0, 0);
 	rmSetAreaCliffHeight(bridgeDockWest, 0, 0.0, 1.0);
 	rmAddAreaToClass(bridgeDockWest , rmClassID("classPlateau"));
@@ -1279,6 +1286,7 @@ void main(void)
 		rmAddClosestPointConstraint(flagVsFlag);
 		rmAddClosestPointConstraint(flagLand);
 		rmAddClosestPointConstraint(avoidBridgeLong);
+		rmAddClosestPointConstraint(belowBridgeWater);
 		vector closestPoint = rmFindClosestPointVector(TCLoc, rmXFractionToMeters(1.0));
 
 		// Place resources
@@ -1445,6 +1453,7 @@ void main(void)
 	rmAddObjectDefConstraint(nuggetWater, ObjectAvoidTradeRoute);
 	rmAddObjectDefConstraint(nuggetWater, avoidNuggetWater2);
 	rmAddObjectDefConstraint(nuggetWater, playerEdgeConstraint);
+	rmAddObjectDefConstraint(nuggetWater, gulfWaterOnly);
 	rmPlaceObjectDefPerPlayer(nuggetWater, false, 1);
 
 	int nuggetWaterHard = rmCreateObjectDef("nugget water hard");
@@ -1456,6 +1465,7 @@ void main(void)
 	rmAddObjectDefConstraint(nuggetWaterHard, ObjectAvoidTradeRoute);
 	rmAddObjectDefConstraint(nuggetWaterHard, avoidNuggetWater);
 	rmAddObjectDefConstraint(nuggetWaterHard, playerEdgeConstraint);
+	rmAddObjectDefConstraint(nuggetWaterHard, gulfWaterOnly);
 	rmPlaceObjectDefPerPlayer(nuggetWaterHard, false, 1);
 
 	// Place some extra deer herds.
@@ -1547,12 +1557,26 @@ void main(void)
 	rmAddObjectDefConstraint(fishID, fishLand);
 	rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 50+10*cNumberNonGaiaPlayers);
 
+	// Fish economy boost: tarpon schools alongside the cod, same species set
+	// as vanilla New England/Carolina (FishCod, FishTarpon, MinkeWhale).
+	// No gulf constraint on purpose - fish are allowed in the river.
+	int avoidFish2=rmCreateTypeDistanceConstraint("fish v fish tarpon", "FishTarpon", 10.0);
+	int fish2ID=rmCreateObjectDef("fish 2");
+	rmAddObjectDefItem(fish2ID, "FishTarpon", 1, 0.0);
+	rmSetObjectDefMinDistance(fish2ID, 0.0);
+	rmSetObjectDefMaxDistance(fish2ID, rmXFractionToMeters(0.45));
+	rmAddObjectDefConstraint(fish2ID, avoidFish1);
+	rmAddObjectDefConstraint(fish2ID, avoidFish2);
+	rmAddObjectDefConstraint(fish2ID, fishLand);
+	rmPlaceObjectDefAtLoc(fish2ID, 0, 0.5, 0.5, 30+10*cNumberNonGaiaPlayers);
+
 	int whaleID=rmCreateObjectDef("whale");
 	rmAddObjectDefItem(whaleID, "MinkeWhale", 1, 0.0);
 	rmSetObjectDefMinDistance(whaleID, 0.0);
 	rmSetObjectDefMaxDistance(whaleID, rmXFractionToMeters(0.5));
 	rmAddObjectDefConstraint(whaleID, whaleVsWhaleID);
 	rmAddObjectDefConstraint(whaleID, whaleLand);
+	rmAddObjectDefConstraint(whaleID, gulfWaterOnly);
 	rmPlaceObjectDefAtLoc(whaleID, 0, 0.5, 0.5, 4*cNumberNonGaiaPlayers);
 
 	// VILLAGE TREES
@@ -1623,16 +1647,18 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID",x);
 		rmSetTriggerEffectParam("TechID","cTechzpColonialEstateNativeSetup"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID",x);
-		rmSetTriggerEffectParam("TechID","cTechzpIndependenceWarSetup"); //operator
-		rmSetTriggerEffectParamInt("Status",2);
 		// Capturable-harbour resource crates: the naval unlock the engine
 		// auto-fires on vanilla water maps (Elbe rides it too) never fires
 		// for this custom route, so grant it here.
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",x);
 		rmSetTriggerEffectParam("TechID","cTechypTradeRouteCaptureable"); //operator
+		rmSetTriggerEffectParamInt("Status",2);
+	}
+	for (x=0; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",x);
+		rmSetTriggerEffectParam("TechID","cTechzpIndependenceWarSetup"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 	}
 	rmAddTriggerEffect("Trade Route Set Level");
@@ -2280,7 +2306,7 @@ void main(void)
 	// Trading Post's owner and back to gaia when the post falls - and the
 	// 480 s countdown fires Team Victory; dropping below 4 stops the clock,
 	// the ON/OFF triggers re-arm each other. Counter text reuses the shared
-	// strings {302138}/{302139}.
+	// strings {502138}/{502139}.
 	int victoryCountDown = 600;
 
 	for(i = 1; < cNumberTeams+1){
@@ -2315,8 +2341,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF"+i));
 		rmAddTriggerEffect("Counter Set Text Team");
 		rmSetTriggerEffectParam("Name", "VictoryCounter"+i);
-		rmSetTriggerEffectParam("Msg", "{302138}");
-		rmSetTriggerEffectParam("EnemyMsg", "{302139}");
+		rmSetTriggerEffectParam("Msg", "{502138}");
+		rmSetTriggerEffectParam("EnemyMsg", "{502139}");
 		rmSetTriggerEffectParamInt("RefTeamID", i);
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
@@ -2586,7 +2612,7 @@ void main(void)
 		rmSetTriggerConditionParamInt("PlayerID",k);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPirates"); //operator
+		rmSetTriggerEffectParam("TechID","cTechzpTurnConsulateOffPiratesIndependence"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
@@ -2754,6 +2780,116 @@ void main(void)
 	rmSetTriggerLoop(false);
 	}
 
+	// AI Revolutionary Fractions - mirrored from zpparis.xs, but for BOTH
+	// teams with side-specific persona sets. Once an AI player reaches the
+	// Industrial Age, a short timer elects one Colonial Estate persona from
+	// its side's set: attackers (team 0) draw Western / Sansculottes /
+	// Jewish - the Patriot picks that activate zpRevolutionAmerica on the
+	// xml side - defenders draw Hannover / Jesuit / PenalColony. Humans are
+	// excluded by the ZP PLAYER Human condition. The persona is baked per
+	// player at map generation (rmRandInt), same as zpparis.
+	//
+	// Timer and Execute both gate on cTechzpNativeColonialEstate, the
+	// estate's alliance shadow tech - the AI must actually own an estate
+	// trading post before it can elect a leader, exactly as zpparis gates
+	// its factions on cTechzpNativeSansculottes. Gating on the map setup
+	// tech instead would hand every AI a revolution leader for free.
+
+	for (k=1; <= cNumberNonGaiaPlayers) {
+		rmCreateTrigger("ZP_Iniciate_Revolution"+k);
+		rmCreateTrigger("ZP_Execute_Revolution"+k);
+		rmCreateTrigger("ZP_Timer_Revolution"+k);
+
+		rmSwitchToTrigger(rmTriggerID("ZP_Iniciate_Revolution"+k));
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player",k);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechIndustrialize");
+		rmSetTriggerConditionParamInt("Status",2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Timer_Revolution"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("ZP_Timer_Revolution"+k));
+		rmAddTriggerCondition("Timer");
+		rmSetTriggerConditionParamInt("Param1",10);
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechzpNativeColonialEstate");
+		rmSetTriggerConditionParamInt("Status",2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Execute_Revolution"+k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+
+		rmSwitchToTrigger(rmTriggerID("ZP_Execute_Revolution"+k));
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID",k);
+		rmSetTriggerConditionParam("TechID","cTechzpNativeColonialEstate");
+		rmSetTriggerConditionParamInt("Status",2);
+
+		int revPersona=-1;
+		revPersona = rmRandInt(1,3);
+
+		if (rmGetPlayerTeam(k) == 0) {
+			if (revPersona==1)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateEstateWestern"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+			if (revPersona==2)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateEstateSansculottes"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+			if (revPersona==3)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateEstateJewish"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+		}
+		if (rmGetPlayerTeam(k) != 0) {
+			if (revPersona==1)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateEstateHannover"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+			if (revPersona==2)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateEstateJesuit"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+			if (revPersona==3)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID",k);
+				rmSetTriggerEffectParam("TechID","cTechzpConsulateEstatePenalColony"); //operator
+				rmSetTriggerEffectParamInt("Status",2);
+			}
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
 	// Specific for human players
 
 	for(k=1; <= cNumberNonGaiaPlayers) {
@@ -2796,8 +2932,8 @@ void main(void)
 			rmCreateTrigger("UniqueShip"+s+"TIMEPlr"+k);
 			rmCreateTrigger("BlackbTrain"+s+"ONPlr"+k);
 			rmCreateTrigger("BlackbTrain"+s+"OFFPlr"+k);
-			rmCreateTrigger("GraceTrain"+s+"ONPlr"+k);
-			rmCreateTrigger("GraceTrain"+s+"OFFPlr"+k);
+			rmCreateTrigger("JonesTrain"+s+"ONPlr"+k);
+			rmCreateTrigger("JonesTrain"+s+"OFFPlr"+k);
 			rmCreateTrigger("CaesarTrain"+s+"ONPlr"+k);
 			rmCreateTrigger("CaesarTrain"+s+"OFFPlr"+k);
 
@@ -2893,32 +3029,32 @@ void main(void)
 			rmSetTriggerRunImmediately(true);
 			rmSetTriggerLoop(false);
 
-			rmSwitchToTrigger(rmTriggerID("GraceTrain"+s+"ONPlr"+k));
+			rmSwitchToTrigger(rmTriggerID("JonesTrain"+s+"ONPlr"+k));
 			rmAddTriggerCondition("Units in Area");
 			rmSetTriggerConditionParam("DstObject",""+pirateSocketID);
 			rmSetTriggerConditionParamInt("Player",k);
-			rmSetTriggerConditionParam("UnitType","zpSPCBlackPearlProxy");
+			rmSetTriggerConditionParam("UnitType","zpSPCBonhommeRichardProxy");
 			rmSetTriggerConditionParamInt("Dist",35);
 			rmSetTriggerConditionParam("Op",">=");
 			rmSetTriggerConditionParamInt("Count",1);
 			rmAddTriggerEffect("ZP Set Tech Status (XS)");
 			rmSetTriggerEffectParamInt("PlayerID",k);
-			rmSetTriggerEffectParam("TechID","cTechzpTrainBlackPearl"+s); //operator
+			rmSetTriggerEffectParam("TechID","cTechzpTrainBonhommeRichard"+s); //operator
 			rmSetTriggerEffectParamInt("Status",2);
 			rmAddTriggerEffect("Fire Event");
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("UniqueShip"+s+"TIMEPlr"+k));
 			rmAddTriggerEffect("Fire Event");
-			rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain"+s+"OFFPlr"+k));
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("JonesTrain"+s+"OFFPlr"+k));
 			rmSetTriggerPriority(4);
 			rmSetTriggerActive(false);
 			rmSetTriggerRunImmediately(true);
 			rmSetTriggerLoop(false);
 
-			rmSwitchToTrigger(rmTriggerID("GraceTrain"+s+"OFFPlr"+k));
+			rmSwitchToTrigger(rmTriggerID("JonesTrain"+s+"OFFPlr"+k));
 			rmAddTriggerCondition("Timer ms");
 			rmSetTriggerConditionParamInt("Param1",1200);
 			rmAddTriggerEffect("Fire Event");
-			rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain"+s+"ONPlr"+k));
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("JonesTrain"+s+"ONPlr"+k));
 			rmSetTriggerPriority(4);
 			rmSetTriggerActive(false);
 			rmSetTriggerRunImmediately(true);
@@ -2986,7 +3122,7 @@ void main(void)
 			rmAddTriggerEffect("Fire Event");
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain"+s+"ONPlr"+k));
 			rmAddTriggerEffect("Fire Event");
-			rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain"+s+"ONPlr"+k));
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("JonesTrain"+s+"ONPlr"+k));
 			rmAddTriggerEffect("Fire Event");
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain"+s+"ONPlr"+k));
 			rmSetTriggerPriority(4);
@@ -3012,7 +3148,7 @@ void main(void)
 			rmAddTriggerEffect("Disable Trigger");
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("BlackbTrain"+s+"ONPlr"+k));
 			rmAddTriggerEffect("Disable Trigger");
-			rmSetTriggerEffectParamInt("EventID", rmTriggerID("GraceTrain"+s+"ONPlr"+k));
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("JonesTrain"+s+"ONPlr"+k));
 			rmAddTriggerEffect("Disable Trigger");
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("CaesarTrain"+s+"ONPlr"+k));
 			rmSetTriggerPriority(4);
@@ -3049,7 +3185,7 @@ void main(void)
 	{
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",k);
-		rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesGrace"); //operator
+		rmSetTriggerEffectParam("TechID","cTechzpConsulatePiratesJones"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 	}
 	if (pirateCaptain==3)

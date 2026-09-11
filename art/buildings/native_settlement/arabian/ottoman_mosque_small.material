@@ -10,6 +10,14 @@
       <texture name="Masks" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_mata_Masks">
       </texture>
     </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\native_settlement\arabian\mosques\textures\hagiasophia_colormap1">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_mata_Masks">
+      </texture>
+    </parameters>
   </submaterial>
   <submaterial name="matB">
     <materialdef name="default">
@@ -22,12 +30,28 @@
       <texture name="Masks" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_matb_Masks">
       </texture>
     </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\native_settlement\arabian\mosques\textures\hagiasophia_colormap2">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_matb_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_matb_Masks">
+      </texture>
+    </parameters>
   </submaterial>
   <submaterial name="matC">
     <materialdef name="default_doublesided_cutout">
     </materialdef>
     <parameters>
       <texture name="BaseColor" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_mata_baseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_mata_Masks">
+      </texture>
+    </parameters>
+    <parameters variant="1">
+      <texture name="BaseColor" override="buildings\native_settlement\arabian\mosques\textures\hagiasophia_colormap1">
       </texture>
       <texture name="Normals" override="buildings\native_settlement\arabian\mosques\textures\ottoman_mosque_blue_mata_Normals">
       </texture>

@@ -76,9 +76,11 @@ class TestPointAllowed:
             "player_placement": {}, "constraints": {},
         })
         ctx = FieldContext(scene.resolve(SC))
+        # The constraint measures from the road EDGE: authored distance
+        # plus ROUTE_HALF_WIDTH_M (16 m block road / 2).
         spec = {"kind": "route_distance", "distance_m": 10.0}
-        assert point_allowed(ctx, (211.0, 200.0), spec) is True
-        assert point_allowed(ctx, (209.0, 200.0), spec) is False
+        assert point_allowed(ctx, (219.0, 200.0), spec) is True
+        assert point_allowed(ctx, (217.0, 200.0), spec) is False
 
     def test_opaque_returns_none(self):
         ctx = self._ctx([])
@@ -204,10 +206,19 @@ class TestTerrainGrid:
         assert not tg.is_land_frac(0.5, 0.35)
 
     def test_dock_cliff_is_its_own_area(self, tg):
+        # The dock CLIFF RING is the feature (frozen build-time claim);
+        # cell OWNERSHIP at the dock may legitimately pass to the later-
+        # built playerHills since avoidBridge measures 15 m from the
+        # bridge's zpBridgeFace UNITS (type semantics, Part H) — the old
+        # ownership assertion relied on a curator shim class the real map
+        # never had (rmAddGroupingToClass adds only classPlateau).
         i, j = tg.cell_of_frac(0.61, 0.88)
-        code = tg.land[j][i]
-        assert code != 0
-        assert tg.land_order[code - 1] == "bridgeDockEast"
+        assert tg.land[j][i] != 0, "dock site must be land"
+        east = next((cells for name, cells in tg.cliff_claims
+                     if name == "bridgeDockEast"), None)
+        assert east, "bridgeDockEast cliff claim must exist"
+        assert any(abs(ci - i) <= 3 and abs(cj - j) <= 3 for ci, cj in east), \
+            "dock cliff ring must reach the probe cell's neighborhood"
 
 
 class TestRealScene:

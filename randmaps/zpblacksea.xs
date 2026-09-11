@@ -614,7 +614,7 @@ void main(void)
 	rmAddAreaConstraint(terrainElevatedID, avoidTradeRouteFar4);
 	rmSetAreaElevationType(terrainElevatedID, cElevTurbulence);
 	rmAddAreaConstraint(terrainElevatedID, avoidCityLong);
-    rmSetAreaElevationVariation(terrainElevatedID, 6.0);
+    rmSetAreaElevationVariation(terrainElevatedID, 9.0);   // was 6.0 - hillier countryside (knob)
     rmSetAreaElevationPersistence(terrainElevatedID, 0.2);
     rmSetAreaElevationNoiseBias(terrainElevatedID, 1);
     rmSetAreaObeyWorldCircleConstraint(terrainElevatedID, false);
@@ -624,6 +624,42 @@ void main(void)
     rmAddAreaInfluencePoint(terrainElevatedID, 0.3, 0.10);
 
 	rmBuildArea(terrainElevatedID);
+	// North shore: seven paint-only italy_cliff_top_dry patches (paintMix5) on the
+	// elevated countryside. Same constraints as terrain_elevated, plus avoidWater7
+	// so the beaches keep their own paint. No height, no elevation: paint only.
+	// No location: the engine rolls a random legal spot each time. Coherence 0.1
+	// = ragged blobs. Built right after the countryside, before any object.
+	for (i=0; < 7){
+		int patchCTn = rmCreateArea("clifftop patch n"+i);
+		rmSetAreaWarnFailure(patchCTn, false);
+		rmSetAreaSize(patchCTn, rmAreaTilesToFraction(600), rmAreaTilesToFraction(600));   // size knob
+		rmSetAreaCoherence(patchCTn, 0.1);
+		rmSetAreaMix(patchCTn, paintMix5);
+		rmAddAreaConstraint(patchCTn, farGreatLakesConstraint);
+		rmAddAreaConstraint(patchCTn, avoidTradeRouteFar4);
+		rmAddAreaConstraint(patchCTn, avoidCityLong);
+		rmAddAreaConstraint(patchCTn, avoidWater7);
+		rmAddAreaConstraint(patchCTn, Northward);
+		rmBuildArea(patchCTn);
+	}
+	// South shore: seven paint-only italy_cliff_top_dry patches (paintMix5) on the
+	// elevated countryside. Same constraints as terrain_elevated, plus avoidWater7
+	// so the beaches keep their own paint. No height, no elevation: paint only.
+	// No location: the engine rolls a random legal spot each time. Coherence 0.1
+	// = ragged blobs. Built right after the countryside, before any object.
+	for (i=0; < 7){
+		int patchCTs = rmCreateArea("clifftop patch s"+i);
+		rmSetAreaWarnFailure(patchCTs, false);
+		rmSetAreaSize(patchCTs, rmAreaTilesToFraction(600), rmAreaTilesToFraction(600));   // size knob
+		rmSetAreaCoherence(patchCTs, 0.1);
+		rmSetAreaMix(patchCTs, paintMix5);
+		rmAddAreaConstraint(patchCTs, farGreatLakesConstraint);
+		rmAddAreaConstraint(patchCTs, avoidTradeRouteFar4);
+		rmAddAreaConstraint(patchCTs, avoidCityLong);
+		rmAddAreaConstraint(patchCTs, avoidWater7);
+		rmAddAreaConstraint(patchCTs, Southward);
+		rmBuildArea(patchCTs);
+	}
 
 	for (i=0; < 100+cNumberNonGaiaPlayers*50){
 		int patchID2 = rmCreateArea("second patch"+i);
@@ -1300,13 +1336,13 @@ void main(void)
 
 	// ____________________ MAP OBJECTIVES ____________________
     if (rmGetIsKOTH()){
-		rmObjectiveScreenSetTitle(303291);
-		rmObjectiveScreenSetGoal(303264);
+		rmObjectiveScreenSetTitle(503291);
+		rmObjectiveScreenSetGoal(503264);
 		if (blockadeSpawn == 1) {
-			rmObjectiveAdd(303291, 302232, true, true, true);
+			rmObjectiveAdd(503291, 502232, true, true, true);
 		}
 		else {
-			rmObjectiveAdd(302236, 302232, true, true, true);
+			rmObjectiveAdd(502236, 502232, true, true, true);
 		}
 	}
 
@@ -1544,33 +1580,53 @@ void main(void)
 
 	if (rmGetIsKOTH()){
 
-		// KotH Conversion
-		
+		// ------------------------------------------------------------------
+		//  NAVAL KOTH - the ENGINE owns the capture decision.
+		//
+		//  zpKingsHillNaval carries zpnavalkingshill.tactics, an AutoConvert
+		//  action at maxrange 25. Warships cannot normally trip it: ZERO of the
+		//  149 water-movement protos carry ConvertsHerds, a deliberate exclusion
+		//  in the base game, so the tech below grants it. That tech is a Shadow
+		//  tech flipped ONLY here and ONLY in KotH mode, so ships on every other
+		//  map are untouched and cannot steal herds.
+		//
+		//  No guardians on this castle, so no AutoConvert suspension - capture is
+		//  live from the start, which is what KotH mode wants. Istanbul suspends
+		//  its forts only because a guardian treasure gates them.
+		//
+		//  What used to live here was a hand-rolled rule whose blocker test was
+		//  (i != k) - player IDENTITY, not hostility - so two ALLIES each waited
+		//  for the other to leave and the castle never changed hands. That whole
+		//  family is gone; the engine has no such edge case.
+		// ------------------------------------------------------------------
+		// The grant needs a trigger OF ITS OWN. rmAddTriggerEffect appends to
+		// whatever trigger was last switched to - bare effects in open code
+		// land on the previous one, which here was "Harbour 3 Convert ON".
+		rmCreateTrigger("UnlockNavalKotHTech");
+		rmSwitchToTrigger(rmTriggerID("UnlockNavalKotHTech"));
 		for (k=1; <= cNumberNonGaiaPlayers) {
-			rmCreateTrigger("ConvertKotH_Player"+k);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpUnlockNavalKotH");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
 
-			rmSwitchToTrigger(rmTriggerID("ConvertKotH_Player"+k));
-			rmAddTriggerCondition("Units in Area");
-			rmSetTriggerConditionParam("DstObject",""+kothCastleMod);
+		//  FOLLOWERS - no logic, they only read who owns the castle. Exactly one
+		//  player can own it, so exactly one of these can ever be true: they need
+		//  no team test and cannot oscillate. AutoConvert converts ONLY the object
+		//  carrying the action, so the city-state flags need this to follow it.
+		for (k=1; <= cNumberNonGaiaPlayers) {
+			rmCreateTrigger("FollowKotH_Player"+k);
+		}
+		for (k=1; <= cNumberNonGaiaPlayers) {
+			rmSwitchToTrigger(rmTriggerID("FollowKotH_Player"+k));
+			rmAddTriggerCondition("Units Owned");
 			rmSetTriggerConditionParamInt("Player",k);
-			rmSetTriggerConditionParamInt("Dist",25);
-			rmSetTriggerConditionParam("UnitType","AbstractWarShip");
-			rmSetTriggerConditionParam("Op",">=");
-			rmSetTriggerConditionParamFloat("Count",1);
-			for (i=1; <= cNumberNonGaiaPlayers) {
-				if (i != k){
-					rmAddTriggerCondition("Units in Area");
-					rmSetTriggerConditionParam("DstObject",""+kothCastleMod);
-					rmSetTriggerConditionParamInt("Player",i);
-					rmSetTriggerConditionParamInt("Dist",25);
-					rmSetTriggerConditionParam("UnitType","AbstractWarShip");
-					rmSetTriggerConditionParam("Op","==");
-					rmSetTriggerConditionParamFloat("Count",0);
-				}
-			}
-			rmAddTriggerEffect("Convert");
-			rmSetTriggerEffectParam("SrcObject",""+kothCastleMod);
-			rmSetTriggerEffectParamInt("PlayerID",k);
+			rmSetTriggerConditionParam("SrcObject",""+kothCastleMod);
 			for (i=0; <= cNumberNonGaiaPlayers) {
 				rmAddTriggerEffect("Convert Units in Area");
 				rmSetTriggerEffectParam("SrcObject",""+kothCastleMod);
@@ -1578,11 +1634,22 @@ void main(void)
 				rmSetTriggerEffectParamInt("TrgPlayer",k);
 				rmSetTriggerEffectParam("UnitType","zpCityStateFlag");
 				rmSetTriggerEffectParamInt("Dist",15);
+				// The lighthouse prop follows the castle too, so the tower reads
+				// as part of the captured fort instead of staying gaia. It sits
+				// 9.75 from the castle - inside Dist 15, same as the flags at
+				// 12.9 - and carries ForceUpdateVisualWhenCnverted.
+				rmAddTriggerEffect("Convert Units in Area");
+				rmSetTriggerEffectParam("SrcObject",""+kothCastleMod);
+				rmSetTriggerEffectParamInt("SrcPlayer",i);
+				rmSetTriggerEffectParamInt("TrgPlayer",k);
+				rmSetTriggerEffectParam("UnitType","zpPropWaterTower");
+				rmSetTriggerEffectParamInt("Dist",15);
 			}
+			// arm the sister followers so the NEXT owner change is caught
 			for (i=1; <= cNumberNonGaiaPlayers) {
 				if (i != k){
 					rmAddTriggerEffect("Fire Event");
-					rmSetTriggerEffectParamInt("EventID", rmTriggerID("ConvertKotH_Player"+i));
+					rmSetTriggerEffectParamInt("EventID", rmTriggerID("FollowKotH_Player"+i));
 				}
 			}
 			rmAddTriggerEffect("Play Soundset");
@@ -1592,6 +1659,7 @@ void main(void)
 			rmSetTriggerRunImmediately(true);
 			rmSetTriggerLoop(false);
 		}
+
 
 		// Team Victory and handling Objectives
 
@@ -1633,7 +1701,7 @@ void main(void)
 			rmSetTriggerEffectParam("Name","VictoryCounter"+i);
 			rmSetTriggerEffectParamInt("Start", victoryCountDown);
 			rmSetTriggerEffectParamInt("Stop",0);
-			rmSetTriggerEffectParam("Msg","{303290}"); // Universal text for all players
+			rmSetTriggerEffectParam("Msg","{503290}"); // Universal text for all players
 			rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+i));
 			rmAddTriggerEffect("ZP Set Tech Status (XS)");
 			rmSetTriggerEffectParamInt("PlayerID",1);

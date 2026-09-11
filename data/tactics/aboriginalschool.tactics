@@ -17,7 +17,7 @@
     <modifytype>MaxHP</modifytype>
   </action>
   <action>
-    <name stringid="300297">MaintainTracker</name>
+    <name stringid="500297">MaintainTracker</name>
     <type>Maintain</type>
     <rate type="zpNatAboriginalTracker">1.0</rate>
     <maintaintrainpoints>40</maintaintrainpoints>

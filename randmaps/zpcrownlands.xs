@@ -1150,10 +1150,10 @@ void main(void)
     rmForbidTradeMonopoly(true);
 
 	// _________________ Map Objectives ______________________________
-	rmObjectiveScreenSetTitle(302344);
-	rmObjectiveScreenSetGoal(302824);
-	rmObjectiveAdd(302833, 302834, true, true, true); // General objective
-	rmObjectiveAdd(302825, 302826, true, true, true); // General objective
+	rmObjectiveScreenSetTitle(502344);
+	rmObjectiveScreenSetGoal(502824);
+	rmObjectiveAdd(502833, 502834, true, true, true); // General objective
+	rmObjectiveAdd(502825, 502826, true, true, true); // General objective
 
 	// ************************* TRIGGERS ******************************
 
