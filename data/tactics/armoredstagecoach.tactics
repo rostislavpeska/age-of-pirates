@@ -1,6 +1,6 @@
 <tactics>
   <action>
-    <name stringid="300500">GatlingAttack</name>
+    <name stringid="500500">GatlingAttack</name>
     <type>Attack</type>
     <attackaction>1</attackaction>
     <rangedlogic>1</rangedlogic>

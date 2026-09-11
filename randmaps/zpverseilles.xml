@@ -1,5 +1,5 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<mapinfo details = "302072" displayNameID = "302069" loadDetails="302070"
+<mapinfo details = "502072" displayNameID = "502069" loadDetails="502070"
     imagepath = "ui\random_map\verseilles\verseilles_mini" cannotReplace = "" loadBackground="ui\random_map\verseilles\verseilles_map">
     <loadss>ui\random_map\verseilles\verseilles_01</loadss>
     <loadss>ui\random_map\verseilles\verseilles_02</loadss>

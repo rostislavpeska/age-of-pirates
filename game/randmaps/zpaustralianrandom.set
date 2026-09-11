@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<randomMaps displayNameID="301431" imagepath="ui\random_map\australian_maps" helpTextID="301432" cannotReplace="">
+<randomMaps displayNameID="501431" imagepath="ui\random_map\australian_maps" helpTextID="501432" cannotReplace="">
   <map>zphawaii</map>
   <map>zpzealand</map>
   <map>zpaustralia</map>

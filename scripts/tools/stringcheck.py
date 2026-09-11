@@ -2,11 +2,11 @@
 """Keep string tables in ascending _locid order.
 
     python scripts/tools/stringcheck.py                 # audit every string file
-    python scripts/tools/stringcheck.py --where 303356  # WHERE does this id go?
+    python scripts/tools/stringcheck.py --where 503356  # WHERE does this id go?
     python scripts/tools/stringcheck.py --fix           # sort contiguous runs
 
 Why this exists: strings were once appended just before </language>, which put
-303350-303355 after 400290. The engine did not care - it keys on _locid - but a
+503350-503355 after 400290. The engine did not care - it keys on _locid - but a
 human reading the file could no longer find anything, and the next author
 appended to the wrong place again. Anchor a new string on the id that
 NUMERICALLY PRECEDES it, never on a structural tag like </language>.

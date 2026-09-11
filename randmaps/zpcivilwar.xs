@@ -1344,11 +1344,11 @@ void main(void)
 	rmForbidTradeMonopoly(true);
 
 	// ____________________ MAP OBJECTIVES ____________________
-    rmObjectiveScreenSetTitle(302544);
-    rmObjectiveScreenSetGoal(302643);
-    rmObjectiveAdd(302562, 302644, true, true, true);
+    rmObjectiveScreenSetTitle(502544);
+    rmObjectiveScreenSetGoal(502643);
+    rmObjectiveAdd(502562, 502644, true, true, true);
 	rmObjectiveSetTeam(1, 1);
-	rmObjectiveAdd(302563, 302644, true, true, true);
+	rmObjectiveAdd(502563, 502644, true, true, true);
 	rmObjectiveSetTeam(2, 2);
 	
 
@@ -1772,8 +1772,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF"+i));
 		rmAddTriggerEffect("Counter Set Text Team");
         rmSetTriggerEffectParam("Name", "VictoryCounter"+i);
-        rmSetTriggerEffectParam("Msg", "{302138}");
-        rmSetTriggerEffectParam("EnemyMsg", "{302139}");
+        rmSetTriggerEffectParam("Msg", "{502138}");
+        rmSetTriggerEffectParam("EnemyMsg", "{502139}");
         rmSetTriggerEffectParamInt("RefTeamID", i);
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
@@ -2134,7 +2134,7 @@ void main(void)
 		rmSetTriggerEffectParam("Civilization","zpRevCSA");
 		rmAddTriggerEffect("Player : Override Civilization Name");
 		rmSetTriggerEffectParamInt("Player",k);
-		rmSetTriggerEffectParam("StringID","302606");
+		rmSetTriggerEffectParam("StringID","502606");
 		rmAddTriggerEffect("Music Filename");
 		rmSetTriggerEffectParam("Music","ypack\music\strategy\Revolootin.mp3"); // Music Filename
 		rmSetTriggerEffectParamFloat("Duration",0.5);

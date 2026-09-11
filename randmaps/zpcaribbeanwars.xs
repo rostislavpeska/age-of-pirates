@@ -939,11 +939,11 @@ for(i=1; <cNumberPlayers) {
    //rmForbidTradeMonopoly(true);
 
    // ____________________ MAP OBJECTIVES ____________________
-   rmObjectiveScreenSetTitle(302219);
-   rmObjectiveScreenSetGoal(302869);
+   rmObjectiveScreenSetTitle(502219);
+   rmObjectiveScreenSetGoal(502869);
    if (rmGetIsKOTH())
-      rmObjectiveAdd(302236, 302232, true, true, true);
-   rmObjectiveAdd(302223, 302224, false, true, true);
+      rmObjectiveAdd(502236, 502232, true, true, true);
+   rmObjectiveAdd(502223, 502224, false, true, true);
 
 
 // ------Triggers--------//
@@ -1156,7 +1156,7 @@ if (rmGetIsKOTH()){
       rmSetTriggerEffectParam("Name","VictoryCounter"+i);
       rmSetTriggerEffectParamInt("Start", victoryCountDown);
       rmSetTriggerEffectParamInt("Stop",0);
-      rmSetTriggerEffectParam("Msg","{303290}"); // Universal text for all players
+      rmSetTriggerEffectParam("Msg","{503290}"); // Universal text for all players
       rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+i));
       rmAddTriggerEffect("ZP Set Tech Status (XS)");
       rmSetTriggerEffectParamInt("PlayerID",1);

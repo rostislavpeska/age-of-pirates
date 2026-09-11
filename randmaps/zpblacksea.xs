@@ -1336,13 +1336,13 @@ void main(void)
 
 	// ____________________ MAP OBJECTIVES ____________________
     if (rmGetIsKOTH()){
-		rmObjectiveScreenSetTitle(303291);
-		rmObjectiveScreenSetGoal(303264);
+		rmObjectiveScreenSetTitle(503291);
+		rmObjectiveScreenSetGoal(503264);
 		if (blockadeSpawn == 1) {
-			rmObjectiveAdd(303291, 302232, true, true, true);
+			rmObjectiveAdd(503291, 502232, true, true, true);
 		}
 		else {
-			rmObjectiveAdd(302236, 302232, true, true, true);
+			rmObjectiveAdd(502236, 502232, true, true, true);
 		}
 	}
 
@@ -1701,7 +1701,7 @@ void main(void)
 			rmSetTriggerEffectParam("Name","VictoryCounter"+i);
 			rmSetTriggerEffectParamInt("Start", victoryCountDown);
 			rmSetTriggerEffectParamInt("Stop",0);
-			rmSetTriggerEffectParam("Msg","{303290}"); // Universal text for all players
+			rmSetTriggerEffectParam("Msg","{503290}"); // Universal text for all players
 			rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+i));
 			rmAddTriggerEffect("ZP Set Tech Status (XS)");
 			rmSetTriggerEffectParamInt("PlayerID",1);

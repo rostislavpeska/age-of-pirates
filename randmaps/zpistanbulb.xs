@@ -709,9 +709,9 @@ void main(void)
 	// zp_z_zparis.xs 1873-1879 shape. Paris adds one objective per team;
 	// both sides here share the same goal, so it is a single entry with no
 	// rmObjectiveSetTeam - it shows for everyone.
-	rmObjectiveScreenSetTitle(303339);
-	rmObjectiveScreenSetGoal(303340);
-	rmObjectiveAdd(303341, 303342, true, true, true);
+	rmObjectiveScreenSetTitle(503339);
+	rmObjectiveScreenSetGoal(503340);
+	rmObjectiveAdd(503341, 503342, true, true, true);
 	rmSetWorldCircleConstraint(true);
 
 	rmDefineClass("classPlateau");
@@ -4107,15 +4107,15 @@ void main(void)
 	rmSetTriggerEffectParam("TechID", "cTechdeEUMapUpdateVisuals");
 	rmSetTriggerEffectParamInt("Status", 2);
 	// GAIA IDENTITY. The zp_z_zparis.xs 2038-2044 pair: Paris flies SPCBourbon
-	// and calls itself "City of Paris" (301968); the Bosporus flies the
+	// and calls itself "City of Paris" (501968); the Bosporus flies the
 	// Sultanate (zpSultanate, data/civmods.xml) and calls itself
-	// "City of Istanbul" (303337).
+	// "City of Istanbul" (503337).
 	rmAddTriggerEffect("Player : Override Civilization for Flag");
 	rmSetTriggerEffectParamInt("Player", 0);
 	rmSetTriggerEffectParam("Civilization", "zpSultanate");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player", 0);
-	rmSetTriggerEffectParam("StringID", "303337");
+	rmSetTriggerEffectParam("StringID", "503337");
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -5578,7 +5578,7 @@ void main(void)
 	//  forts carry one zpSPCCapturableFlagInvisibleNaval, so "hold both" is
 	//  ">= 2" - a single condition, and its exact negation "< 2" for the OFF.
 	//  The counter's Event param is what fires TeamVictory - not a Fire Event.
-	//  Counter text reuses {303290} "King of the Sea Victory in".
+	//  Counter text reuses {503290} "King of the Sea Victory in".
 	// ========================================================================
 	int victoryCountDown = 150;   // seconds: 2 min 30 s (was 240)
 	int vt = 0;
@@ -5608,7 +5608,7 @@ void main(void)
 		rmSetTriggerEffectParam("Name", "VictoryCounter"+vt);
 		rmSetTriggerEffectParamInt("Start", victoryCountDown);
 		rmSetTriggerEffectParamInt("Stop", 0);
-		rmSetTriggerEffectParam("Msg", "{303371}");
+		rmSetTriggerEffectParam("Msg", "{503371}");
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+vt));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF"+vt));

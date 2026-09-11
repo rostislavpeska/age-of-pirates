@@ -1,5 +1,5 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<mapinfo details = "303293" displayNameID = "303292" loadDetails="303294"
+<mapinfo details = "503293" displayNameID = "503292" loadDetails="503294"
     imagepath = "ui\random_map\balearic_islands\balearic_islands_mini" cannotReplace = "" loadBackground="ui\random_map\balearic_islands\balearic_islands_map">
     <filter>Historical</filter>
     <loadss>ui\random_map\balearic_islands\balearic_islands_01</loadss>

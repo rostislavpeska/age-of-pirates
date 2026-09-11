@@ -68,14 +68,14 @@
     <gadget name="asian_water_trail" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 470 185 490" mouseovertext="Editor use - sets all trade route definitons to the asian water[LV1] trade routes." z="1">Convert to Asian Water
       <command>editorSetAllTradeRoutesToDef("asian_water_trail")</command>
     </gadget>
-    <gadget name="asian_water_trail_Icon" type="button" bevelbutton="" mouseovertext="$$300308$$" foreground="ui\indian_fishing_boat_icon_64" sizerel1024="165 470 185 490" z="2">
+    <gadget name="asian_water_trail_Icon" type="button" bevelbutton="" mouseovertext="$$500308$$" foreground="ui\indian_fishing_boat_icon_64" sizerel1024="165 470 185 490" z="2">
       <command>editorSetAllTradeRoutesToDef("asian_water_trail")</command>
     </gadget>
 
     <gadget name="asian_water_trail" type="button" bevel="" background="ui\file_system\file_system_background" textfont="Arial nobold nodrop" textfontsize="12" sizerel1024="15 505 185 525" mouseovertext="Editor use - sets all trade route definitons to the american native water trade routes." z="1">Convert to American Water
       <command>editorSetAllTradeRoutesToDef("native_water_trail")</command>
     </gadget>
-    <gadget name="asian_water_trail_Icon" type="button" bevelbutton="" mouseovertext="$$300383$$" foreground="ui\canoe_icon" sizerel1024="165 505 185 525" z="2">
+    <gadget name="asian_water_trail_Icon" type="button" bevelbutton="" mouseovertext="$$500383$$" foreground="ui\canoe_icon" sizerel1024="165 505 185 525" z="2">
       <command>editorSetAllTradeRoutesToDef("native_water_trail")</command>
     </gadget>
 

@@ -2127,7 +2127,7 @@ void main(void)
 	// Trading Post's owner and back to gaia when the post falls - and the
 	// 480 s countdown fires Team Victory; dropping below 4 stops the clock,
 	// the ON/OFF triggers re-arm each other. Counter text reuses the shared
-	// strings {302138}/{302139}.
+	// strings {502138}/{502139}.
 	int victoryCountDown = 600;
 
 	for(i = 1; < cNumberTeams+1){
@@ -2162,8 +2162,8 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF"+i));
 		rmAddTriggerEffect("Counter Set Text Team");
 		rmSetTriggerEffectParam("Name", "VictoryCounter"+i);
-		rmSetTriggerEffectParam("Msg", "{302138}");
-		rmSetTriggerEffectParam("EnemyMsg", "{302139}");
+		rmSetTriggerEffectParam("Msg", "{502138}");
+		rmSetTriggerEffectParam("EnemyMsg", "{502139}");
 		rmSetTriggerEffectParamInt("RefTeamID", i);
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);

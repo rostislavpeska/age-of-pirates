@@ -1871,28 +1871,28 @@ rmSetStatusText("",0.70);
     rmForbidTradeMonopoly(true);
 
 	// _________________ Map Objectives ______________________________
-	rmObjectiveScreenSetTitle(302018);
-	rmObjectiveScreenSetGoal(302021);
-	rmObjectiveAdd(302022, 302023, true, true, true); // General objective REV
+	rmObjectiveScreenSetTitle(502018);
+	rmObjectiveScreenSetGoal(502021);
+	rmObjectiveAdd(502022, 502023, true, true, true); // General objective REV
 	rmObjectiveSetTeam(1, 1);
-	rmObjectiveAdd(302061, 302023, true, true, true); // General objective ROY
+	rmObjectiveAdd(502061, 502023, true, true, true); // General objective ROY
 	rmObjectiveSetTeam(2, 2);
-	rmObjectiveAdd(302237, 302238, false, true, true); // Secondary objective REV
+	rmObjectiveAdd(502237, 502238, false, true, true); // Secondary objective REV
 	rmObjectiveSetTeam(3, 1);
-	rmObjectiveAdd(302239, 302240, false, true, true); // Secondary objective ROY
+	rmObjectiveAdd(502239, 502240, false, true, true); // Secondary objective ROY
 	rmObjectiveSetTeam(4, 2);
 
-	/*rmObjectiveAdd(302024, 302023, true, true, true); // Royal Court REV
+	/*rmObjectiveAdd(502024, 502023, true, true, true); // Royal Court REV
 	rmObjectiveSetTeam(3, 1);
-	rmObjectiveAdd(302024, 302023, true, true, true); // Royal Court ROY
+	rmObjectiveAdd(502024, 502023, true, true, true); // Royal Court ROY
 	rmObjectiveSetTeam(4, 2);
-	rmObjectiveAdd(302025, 302023, true, true, true); // City Hall REV
+	rmObjectiveAdd(502025, 502023, true, true, true); // City Hall REV
 	rmObjectiveSetTeam(5, 1);
-	rmObjectiveAdd(302025, 302023, true, true, true); // City Hall ROY
+	rmObjectiveAdd(502025, 502023, true, true, true); // City Hall ROY
 	rmObjectiveSetTeam(6, 2);
-	rmObjectiveAdd(302026, 302023, true, true, true); // Bastille REV
+	rmObjectiveAdd(502026, 502023, true, true, true); // Bastille REV
 	rmObjectiveSetTeam(7, 1);
-	rmObjectiveAdd(302026, 302023, true, true, true); // Bastille ROY
+	rmObjectiveAdd(502026, 502023, true, true, true); // Bastille ROY
 	rmObjectiveSetTeam(8, 2);*/
 
 	// ************************* TRIGGERS ******************************
@@ -2040,7 +2040,7 @@ rmSetStatusText("",0.70);
 	rmSetTriggerEffectParam("Civilization","SPCBourbon");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",0);
-	rmSetTriggerEffectParam("StringID","301968");
+	rmSetTriggerEffectParam("StringID","501968");
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -2417,9 +2417,9 @@ rmSetStatusText("",0.70);
 		rmSetTriggerEffectParamInt("Stop",0);
 
 		if (i==1)
-			rmSetTriggerEffectParam("Msg","{302140}"); // Counter Revolutionaries
+			rmSetTriggerEffectParam("Msg","{502140}"); // Counter Revolutionaries
 		else
-			rmSetTriggerEffectParam("Msg","{302141}"); // Counter Revolutionaries
+			rmSetTriggerEffectParam("Msg","{502141}"); // Counter Revolutionaries
 		rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory"+i));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF"+i));
@@ -2704,7 +2704,7 @@ rmSetStatusText("",0.70);
 	rmSetTriggerEffectParam("Civilization","zpRevParis");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",k);
-	rmSetTriggerEffectParam("StringID","301916");
+	rmSetTriggerEffectParam("StringID","501916");
 	rmAddTriggerEffect("Music Filename");
 	rmSetTriggerEffectParam("Music","ypack\music\strategy\Revolootin.mp3"); // Music Filename
 	rmSetTriggerEffectParamFloat("Duration",0.5);
@@ -2728,7 +2728,7 @@ rmSetStatusText("",0.70);
 	rmSetTriggerEffectParam("Civilization","DERevFrance");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",k);
-	rmSetTriggerEffectParam("StringID","301925");
+	rmSetTriggerEffectParam("StringID","501925");
 	rmAddTriggerEffect("Music Filename");
 	rmSetTriggerEffectParam("Music","ypack\music\strategy\Revolootin.mp3"); // Music Filename
 	rmSetTriggerEffectParamFloat("Duration",0.5);
@@ -2752,7 +2752,7 @@ rmSetStatusText("",0.70);
 	rmSetTriggerEffectParam("Civilization","DERevFranceNE");
 	rmAddTriggerEffect("Player : Override Civilization Name");
 	rmSetTriggerEffectParamInt("Player",k);
-	rmSetTriggerEffectParam("StringID","301926");
+	rmSetTriggerEffectParam("StringID","501926");
 	rmAddTriggerEffect("Music Filename");
 	rmSetTriggerEffectParam("Music","ypack\music\strategy\Revolootin.mp3"); // Music Filename
 	rmSetTriggerEffectParamFloat("Duration",0.5);

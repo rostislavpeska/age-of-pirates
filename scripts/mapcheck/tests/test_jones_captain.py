@@ -28,9 +28,9 @@ ROOT_MAP = Path(r"C:/Program Files (x86)/Steam/steamapps/common/AoE3DE/Game/Rand
 
 SHIP, PROXY, SHIP2 = "zpSPCBonhommeRichard", "zpSPCBonhommeRichardProxy", "zpSPCSerapis"
 CAPTAIN, PRIZE, SET = "zpConsulatePiratesJones", "zpPrizeOfFlamboroughHead", "zpTurnConsulateOffPiratesIndependence"
-STR = {303408: "Jones Flagship", 303409: "ZP SPC Bonhomme Richard", 303410: "ZP SPC Serapis",
-       303411: "Pirate flagship with a powerful broadside attack ability.", 303412: "John Paul Jones (Map Bonus)",
-       303414: "Bonhomme Richard", 303415: "Serapis", 303416: "Prize of Flamborough Head"}
+STR = {503408: "Jones Flagship", 503409: "ZP SPC Bonhomme Richard", 503410: "ZP SPC Serapis",
+       503411: "Pirate flagship with a powerful broadside attack ability.", 503412: "John Paul Jones (Map Bonus)",
+       503414: "Bonhomme Richard", 503415: "Serapis", 503416: "Prize of Flamborough Head"}
 ICON = r"resources\art\units\naval\spc\jones_flagship_icon.png"
 PORTRAIT = r"resources\art\units\naval\spc\jones_flagship.png"
 TECH_ICON = r"resources\images\icons\techs\johnes_second_flagship_tech.png"
@@ -78,8 +78,8 @@ class TestProtos:
         for tag in ("maxhitpoints", "maxvelocity", "los", "bounty", "buildlimit", "obstructionradiusx", "sharedbuildlimitunit"):
             assert _c(b, tag) == _c(bp, tag), tag
         assert "<train " not in b and "<train " in bp
-        assert _c(b, "displaynameid") == "303408" and _c(b, "editornameid") == "303409"
-        assert _c(b, "rollovertextid") == "303411" and _c(b, "shortrollovertextid") == "300005"
+        assert _c(b, "displaynameid") == "503408" and _c(b, "editornameid") == "503409"
+        assert _c(b, "rollovertextid") == "503411" and _c(b, "shortrollovertextid") == "500005"
         assert _c(b, "icon") == ICON and _c(b, "portraiticon") == PORTRAIT
         assert re.findall(r"<name>([^<]+)</name>", b) == re.findall(r"<name>([^<]+)</name>", bp), "same protoactions"
         for t in ("AbstractPirateShip", "AbstractLegendaryShip", "AbstractWarShip"):
@@ -91,7 +91,7 @@ class TestProtos:
         assert re.findall(r'<cost resourcetype="(\w+)">([^<]+)</cost>', b) == [("Gold", "600.0000"), ("Wood", "200.0000")]
         assert _c(b, "trainpoints") == _c(bp, "trainpoints") == "40.0000"
         assert "<flag>NotPlayerPlaceable</flag>" in b and "<flag>UseSharedBuildLimit</flag>" in b
-        assert _c(b, "displaynameid") == "303408" and _c(b, "rollovertextid") == "303411"
+        assert _c(b, "displaynameid") == "503408" and _c(b, "rollovertextid") == "503411"
         assert _c(b, "icon") == ICON and _c(b, "portraiticon") == PORTRAIT
         assert _c(b, "sharedbuildlimitunit") == "zpSPCQueenAnne"
 
@@ -104,7 +104,7 @@ class TestProtos:
 
     def test_serapis_follows_the_prau_b_pattern(self):
         u = _units(); b = u[SHIP2]; a = u[SHIP]
-        assert _c(b, "editornameid") == "303410" and _c(b, "displaynameid") == "303408"
+        assert _c(b, "editornameid") == "503410" and _c(b, "displaynameid") == "503408"
         assert _c(b, "animfile") == _c(a, "animfile") and _c(b, "tactics") == _c(a, "tactics")
         assert _c(b, "buildlimit") == "1" and "<train " not in b
         assert "<unittype>AbstractLegendaryShip</unittype>" not in b, "PrauB drops AbstractLegendaryShip"
@@ -134,7 +134,7 @@ class TestTechs:
         for tag in ("cost", "researchpoints", "icon", "status"):
             assert re.search(r"<%s[^>]*>[^<]*</%s>" % (tag, tag), t).group(0) == re.search(r"<%s[^>]*>[^<]*</%s>" % (tag, tag), g).group(0), tag
         assert sorted(re.findall(r"<flag>([^<]+)</flag>", t)) == sorted(re.findall(r"<flag>([^<]+)</flag>", g))
-        assert _c(t, "displaynameid") == "303412" and _c(t, "rollovertextid") == "303413"
+        assert _c(t, "displaynameid") == "503412" and _c(t, "rollovertextid") == "503413"
         assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">%s</target>' % PROXY, t)
         for bld, col in (("TradingPost", "4"), ("zpSPCPirateDock", "1"), ("zpSPCPirateDockB", "1")):
             assert re.search(r'<effect type="CommandAdd" proto="%s" page="0" column="%s">\s*<target type="ProtoUnit">%s</target>' % (PROXY, col, bld), t), bld
@@ -154,7 +154,7 @@ class TestTechs:
         assert _c(t, "researchpoints") == _c(w, "researchpoints") == "30.0000"
         assert sorted(re.findall(r"<flag>([^<]+)</flag>", t)) == sorted(re.findall(r"<flag>([^<]+)</flag>", w) + ["DEHideAdvancedRollover"])
         assert 'status="Active">Industrialize</techstatus>' in t
-        assert _c(t, "icon") == TECH_ICON and _c(t, "displaynameid") == "303416" and _c(t, "rollovertextid") == "303417"
+        assert _c(t, "icon") == TECH_ICON and _c(t, "displaynameid") == "503416" and _c(t, "rollovertextid") == "503417"
         assert re.search(r'<effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">\s*<target type="ProtoUnit">zpSPCQueenAnne</target>', t)
         assert re.search(r'subtype="FreeHomeCityUnit" unittype="%s" relativity="Absolute">\s*<target type="Player">' % SHIP2, t)
 
@@ -203,18 +203,18 @@ class TestSideRecords:
         for tag in ("zpspcbonhommerichard", "zpspcserapis"):
             assert re.search(r"<%s>\s*<ability>PowerBroadside<rof>60</rof></ability>\s*</%s>" % (tag, tag), a), tag
         r = _read("randomnamemods.xml")
-        assert "<protounit>%s<civ>Default<title>303414</title></civ></protounit>" % SHIP in r
-        assert "<protounit>%s<civ>Default<title>303415</title></civ></protounit>" % SHIP2 in r
+        assert "<protounit>%s<civ>Default<title>503414</title></civ></protounit>" % SHIP in r
+        assert "<protounit>%s<civ>Default<title>503415</title></civ></protounit>" % SHIP2 in r
 
     def test_strings(self):
         s = _read("strings/english/stringmods.xml")
         for i, txt in STR.items():
             assert len(re.findall(r'_locid="%d"' % i, s)) == 1, i
             assert '<string _locid="%d">%s</string>' % (i, txt) in s, i
-        for i in (303413, 303417):
+        for i in (503413, 503417):
             assert len(re.findall(r'_locid="%d"' % i, s)) == 1, i
-        pol = re.search(r'<string _locid="303413">(.*?)</string>', s, re.S).group(1)
-        # the Barbarossa (Map Bonus) layout of 303391: TRAINING / ship / one green Bonus line / SPECIAL TECH
+        pol = re.search(r'<string _locid="503413">(.*?)</string>', s, re.S).group(1)
+        # the Barbarossa (Map Bonus) layout of 503391: TRAINING / ship / one green Bonus line / SPECIAL TECH
         Y, G, E = "&lt;color=1.0, 0.9, 0.5&gt;", "&lt;color=0.0, 1.0, 0.0&gt;", "&lt;/color&gt;"
         want = (Y + "TRAINING:" + E + " \\nBonhomme Richard \\n\\n" + G + "Bonus:" + E
                 + " Ironclads and Steamers get 15% more hitpoints. \\n\\n" + Y + "SPECIAL TECH:" + E + " \\nPrize of Flamborough Head")

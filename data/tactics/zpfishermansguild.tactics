@@ -14,7 +14,7 @@
     <autogatherteam>1</autogatherteam>
   </action>
   <action>
-    <name stringid="303399">SpawnFishingBoat</name>
+    <name stringid="503399">SpawnFishingBoat</name>
     <type>Maintain</type>
     <rate type="FishingBoat">1.0</rate>
     <maintaintrainpoints>50</maintaintrainpoints>

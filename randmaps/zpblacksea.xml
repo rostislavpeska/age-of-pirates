@@ -1,5 +1,5 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<mapinfo details = "303266" displayNameID = "303265" loadDetails="303267"
+<mapinfo details = "503266" displayNameID = "503265" loadDetails="503267"
     imagepath = "ui\random_map\blacksea\blacksea_mini" cannotReplace = "" loadBackground="ui\random_map\blacksea\blacksea_map">
     <filter>Historical</filter>
     <loadss>ui\random_map\blacksea\blacksea_01</loadss>

@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <protomods><unit id="20921" name="zpNatMercJanissary">
     <dbid>20921</dbid>
-    <displaynameid>303240</displaynameid>
-    <editornameid>303241</editornameid>
+    <displaynameid>503240</displaynameid>
+    <editornameid>503241</editornameid>
     <populationcount>0</populationcount>
     <buildlimit>12</buildlimit>
     <obstructionradiusx>0.4900</obstructionradiusx>

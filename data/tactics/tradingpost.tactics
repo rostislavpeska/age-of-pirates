@@ -351,7 +351,7 @@
     <autogatherteam>0</autogatherteam>
   </action>
   <action>
-    <name stringid="300989">SpawnArmoredTrain</name>
+    <name stringid="500989">SpawnArmoredTrain</name>
     <type>Attack</type>
     <attackaction>1</attackaction>
     <rangedlogic>1</rangedlogic>
@@ -373,7 +373,7 @@
     <excludefromrangeindicator>1</excludefromrangeindicator>
   </action>
   <action>
-    <name stringid="302787">SpawnBateryTowerWagon</name>
+    <name stringid="502787">SpawnBateryTowerWagon</name>
     <type>Spawn</type>
     <rate type="deBatteryTowerWagon">1.0</rate>
     <active>1</active>
@@ -382,7 +382,7 @@
     <singleuse>1</singleuse>
   </action>
   <action>
-    <name stringid="302948">SpawnTeutonicKnights</name>
+    <name stringid="502948">SpawnTeutonicKnights</name>
     <type>Spawn</type>
     <rate type="zpNatMercTeutonicKnight">3.0</rate>
     <active>1</active>
