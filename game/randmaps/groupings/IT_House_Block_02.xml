@@ -21,7 +21,7 @@
 		<unit variation="0" posx="-0.0540" posz="-11.3763" orientx="-0.0007" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="0" posx="-0.4988" posz="-8.7565" orientx="0.7066" orienty="0.0000" orientz="-0.7076">SPCPathBlock3</unit>
 		<unit variation="0" posx="3.9380" posz="-11.7073" orientx="0.0008" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
-		<unit variation="2" posx="3.0910" posz="-9.4579" orientx="-0.0004" orienty="-0.0000" orientz="-1.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="1" posx="3.0910" posz="-9.4579" orientx="-0.0004" orienty="-0.0000" orientz="-1.0000">zpNativeHouseVenetianE</unit>
 		<unit variation="186" posx="0.1287" posz="-9.1404" orientx="-0.5499" orienty="-0.0000" orientz="-0.8353">deSPCTreeCypressProp</unit>
 		<unit variation="0" posx="-14.6918" posz="-5.9290" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">PropsPoles</unit>
 		<unit variation="2" posx="8.8132" posz="-7.6802" orientx="0.0038" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
@@ -48,7 +48,7 @@
 		<unit variation="9" posx="6.3235" posz="2.5706" orientx="0.0038" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
 		<unit variation="245" posx="11.8107" posz="2.4678" orientx="0.9240" orienty="0.0000" orientz="0.3823">deNatEUPropFence</unit>
 		<unit variation="170" posx="3.0494" posz="3.1847" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropVilMale</unit>
-		<unit variation="1" posx="-9.0575" posz="2.4682" orientx="-0.0004" orienty="-0.0000" orientz="-1.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="0" posx="-9.0575" posz="2.4682" orientx="-0.0004" orienty="-0.0000" orientz="-1.0000">zpNativeHouseVenetianG</unit>
 		<unit variation="113" posx="9.6712" posz="2.3443" orientx="-0.9868" orienty="0.0000" orientz="-0.1618">deSPCTreeCypressProp</unit>
 		<unit variation="0" posx="-7.0404" posz="5.6227" orientx="0.7076" orienty="0.0000" orientz="0.7067">SPCPathBlock3</unit>
 		<unit variation="0" posx="10.3208" posz="5.7755" orientx="-0.9242" orienty="0.0000" orientz="-0.3819">SPCPathBlock3</unit>

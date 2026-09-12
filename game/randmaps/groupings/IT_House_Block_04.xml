@@ -57,7 +57,7 @@
 		<unit variation="3" posx="-1.4563" posz="-0.7093" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">PropsColony</unit>
 		<unit variation="229" posx="2.4846" posz="-2.4865" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deNatEUPropVilMale</unit>
 		<unit variation="214" posx="1.4524" posz="-1.2145" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropVilFemale</unit>
-		<unit variation="2" posx="8.7010" posz="-1.5942" orientx="-1.0000" orienty="-0.0000" orientz="0.0045">zpNativeHouseVenetianB</unit>
+		<unit variation="1" posx="8.7010" posz="-1.5942" orientx="-1.0000" orienty="-0.0000" orientz="0.0045">zpNativeHouseVenetianE</unit>
 		<unit variation="0" posx="-12.0314" posz="0.8250" orientx="1.0000" orienty="-0.0000" orientz="-0.0043">SPCPathBlock2</unit>
 		<unit variation="17" posx="4.1814" posz="2.6176" orientx="-0.3876" orienty="0.0000" orientz="-0.9218">zpNativeHouseOrthodoxSouth</unit>
 		<unit variation="3" posx="-12.2740" posz="0.2892" orientx="1.0000" orienty="-0.0000" orientz="-0.0036">zpPropsFlowersBohemia</unit>
@@ -94,6 +94,7 @@
 		<unit variation="0" posx="10.5621" posz="11.3995" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropMarketStall</unit>
 		<unit variation="0" posx="-8.3230" posz="14.9051" orientx="0.7044" orienty="0.0000" orientz="-0.7098">PropsPoles</unit>
 		<unit variation="0" posx="4.7142" posz="14.5532" orientx="0.7044" orienty="0.0000" orientz="-0.7098">PropsPoles</unit>
+		<unit variation="19" posx="7.4896" posz="-9.0262" orientx="0.0001" orienty="-0.0000" orientz="1.0000">NativeTownObstruction</unit>
 	</units>
 	<tiles>
 		<tilegroup type="Block" subtype="props\east_colony">

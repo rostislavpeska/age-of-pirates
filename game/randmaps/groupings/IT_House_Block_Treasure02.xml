@@ -29,7 +29,7 @@
 		<unit variation="2" posx="-8.0035" posz="-11.9714" orientx="-0.0009" orienty="0.0000" orientz="-1.0000">zpNativeWallFull</unit>
 		<unit variation="0" posx="-3.6895" posz="-11.7396" orientx="0.0006" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="2" posx="-8.3276" posz="-9.2335" orientx="-0.7064" orienty="0.0000" orientz="0.7078">zpNativeWallFull</unit>
-		<unit variation="1" posx="-2.4682" posz="-9.0575" orientx="1.0000" orienty="0.0000" orientz="-0.0004">zpNativeHouseVenetianB</unit>
+		<unit variation="0" posx="-2.4682" posz="-9.0575" orientx="1.0000" orienty="0.0000" orientz="-0.0004">zpNativeHouseVenetianG</unit>
 		<unit variation="186" posx="-7.4032" posz="-9.7431" orientx="0.8353" orienty="0.0000" orientz="-0.5499">deSPCTreeCypressProp</unit>
 		<unit variation="1" posx="3.4845" posz="-10.1411" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpPropMarketStall</unit>
 		<unit variation="0" posx="-5.6227" posz="-7.0404" orientx="-0.7067" orienty="0.0000" orientz="0.7076">SPCPathBlock3</unit>
@@ -62,7 +62,7 @@
 		<unit variation="0" posx="-8.1292" posz="6.3463" orientx="-0.7077" orienty="0.0000" orientz="-0.7065">SPCPathBlock3</unit>
 		<unit variation="0" posx="-9.3772" posz="6.6329" orientx="0.9235" orienty="0.0000" orientz="-0.3835">SPCPathBlock3</unit>
 		<unit variation="245" posx="1.2728" posz="8.7881" orientx="0.7071" orienty="0.0000" orientz="0.7071">deNatEUPropWingG</unit>
-		<unit variation="2" posx="9.5153" posz="4.7944" orientx="-1.0000" orienty="0.0000" orientz="0.0004">zpNativeHouseVenetianB</unit>
+		<unit variation="1" posx="9.5153" posz="4.7944" orientx="-1.0000" orienty="0.0000" orientz="0.0004">zpNativeHouseVenetianE</unit>
 		<unit variation="9" posx="-2.5706" posz="6.3235" orientx="-1.0000" orienty="0.0000" orientz="0.0038">PropsPottedPlants</unit>
 		<unit variation="1" posx="14.6820" posz="7.1257" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsPoles</unit>
 		<unit variation="213" posx="-11.3011" posz="6.0084" orientx="-0.9149" orienty="0.0000" orientz="0.4037">zpNativeWallFull</unit>
