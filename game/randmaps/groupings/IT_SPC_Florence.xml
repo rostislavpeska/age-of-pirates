@@ -333,6 +333,7 @@
 		<unit variation="78" posx="-16.7885" posz="18.1767" orientx="1.0000" orienty="0.0000" orientz="-0.0004">NativeTownObstruction</unit>
 		<unit variation="78" posx="-20.3230" posz="21.4611" orientx="1.0000" orienty="0.0000" orientz="-0.0004">NativeTownObstruction</unit>
 		<unit variation="78" posx="-24.7770" posz="21.9521" orientx="1.0000" orienty="0.0000" orientz="-0.0004">NativeTownObstruction</unit>
+		<unit variation="0" posx="21.6923" posz="-1.4879" orientx="-0.1134" orienty="0.0000" orientz="-0.9935">SPCPathBlock3</unit>
 	</units>
 	<tiles>
 		<tilegroup type="Block" subtype="props\east_colony">
