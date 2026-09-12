@@ -3236,6 +3236,7 @@
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
+    <flag>NotDeleteable</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>ObscuresUnits</flag>
     <flag>NonAutoFormedUnit</flag>
@@ -36802,6 +36803,7 @@
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
+    <flag>NotDeleteable</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>ObscuresUnits</flag>
     <flag>NonAutoFormedUnit</flag>
@@ -37215,6 +37217,7 @@
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
+    <flag>NotDeleteable</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>ObscuresUnits</flag>
     <flag>NoIdleActions</flag>
@@ -47483,6 +47486,7 @@
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
+    <flag>NotDeleteable</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>ObscuresUnits</flag>
     <flag>NonAutoFormedUnit</flag>
@@ -52123,6 +52127,7 @@
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
+    <flag>NotDeleteable</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>ObscuresUnits</flag>
     <flag>NonAutoFormedUnit</flag>
@@ -52205,6 +52210,7 @@
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
+    <flag>NotDeleteable</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>ObscuresUnits</flag>
     <flag>NoIdleActions</flag>
@@ -63632,6 +63638,7 @@
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
+    <flag>NotDeleteable</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>ObscuresUnits</flag>
     <flag>NoIdleActions</flag>
@@ -80175,6 +80182,7 @@
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
+    <flag>NotDeleteable</flag>
     <flag>NoBloodOnDeath</flag>
     <flag>ObscuresUnits</flag>
     <flag>NoIdleActions</flag>
