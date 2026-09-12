@@ -37099,6 +37099,7 @@
       </effect>
       <!-- tight harbour pockets: a deploy that finds no room is wasted, so every deploy building is 35% faster -->
       <effect type="TechStatus" status="active">zpFastDeployBuildings</effect>
+      <effect type="TechStatus" status="obtainable">zpIstanbulFerrySystem</effect>
     </effects>
   </tech>
   <tech name="zpNatBreachingShot" type="Normal">
@@ -37425,32 +37426,102 @@
   </tech>
   <!-- Faster deployment: every building carrying the deCommanderyDeploy ability (Maltese Commandery, Istanbul
        ferry harbour, both railway stations, the armoured-train barracks, both Paris citadel bastions) recharges
-       35% quicker. Shadow - a map setup activates it where harbours/bastions sit in tight spots. -->
+       30% quicker. Shadow - a map setup activates it where harbours/bastions sit in tight spots. -->
   <tech name="zpFastDeployBuildings" type="Normal">
     <dbid>41518</dbid>
     <researchpoints>0.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
-      <effect type="Data" amount="0.65" subtype="RechargeTime" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="RechargeTime" relativity="BasePercent">
         <target type="ProtoUnit">deCommandery</target>
       </effect>
-      <effect type="Data" amount="0.65" subtype="RechargeTime" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="RechargeTime" relativity="BasePercent">
         <target type="ProtoUnit">zpOrientalFerry</target>
       </effect>
-      <effect type="Data" amount="0.65" subtype="RechargeTime" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="RechargeTime" relativity="BasePercent">
         <target type="ProtoUnit">zpTrainStationA</target>
       </effect>
-      <effect type="Data" amount="0.65" subtype="RechargeTime" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="RechargeTime" relativity="BasePercent">
         <target type="ProtoUnit">zpTrainStationB</target>
       </effect>
-      <effect type="Data" amount="0.65" subtype="RechargeTime" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="RechargeTime" relativity="BasePercent">
         <target type="ProtoUnit">zpArmoredTrainBarracksStatic</target>
       </effect>
-      <effect type="Data" amount="0.65" subtype="RechargeTime" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="RechargeTime" relativity="BasePercent">
         <target type="ProtoUnit">zpParisCitadel</target>
       </effect>
-      <effect type="Data" amount="0.65" subtype="RechargeTime" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="RechargeTime" relativity="BasePercent">
+        <target type="ProtoUnit">zpParisCitadelPassage</target>
+      </effect>
+    </effects>
+  </tech>
+  <!-- Maltese card Advanced Commanderies: its PowerROF acts on the deCommanderyDeploy power itself (player-wide), so the
+       cooldown cut already reaches every deploy building; only the garrison capacity is per proto - extend it to them. -->
+  <tech name="DEHCAdvancedCommanderies">
+    <effects>
+      <effect mergemode="add" type="Data" amount="55.00" subtype="MaximumContained" relativity="Absolute">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="55.00" subtype="MaximumContained" relativity="Absolute">
+        <target type="ProtoUnit">zpTrainStationA</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="55.00" subtype="MaximumContained" relativity="Absolute">
+        <target type="ProtoUnit">zpTrainStationB</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="55.00" subtype="MaximumContained" relativity="Absolute">
+        <target type="ProtoUnit">zpArmoredTrainBarracksStatic</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="55.00" subtype="MaximumContained" relativity="Absolute">
+        <target type="ProtoUnit">zpParisCitadel</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="55.00" subtype="MaximumContained" relativity="Absolute">
+        <target type="ProtoUnit">zpParisCitadelPassage</target>
+      </effect>
+    </effects>
+  </tech>
+  <!-- Istanbul Ferry System: team tech researched at the Sultan Mosque (same shape as Team Blessed City) - the deploy
+       ability of every deploy building recharges a further 20% faster for the whole team; the map setup makes it
+       obtainable. Icon: PLACEHOLDER (team_blessed_city) until the user picks one. -->
+  <tech name="zpIstanbulFerrySystem" type="Normal">
+    <dbid>41519</dbid>
+    <displaynameid>503430</displaynameid>
+    <cost resourcetype="Gold">150.0000</cost>
+    <cost resourcetype="Wood">250.0000</cost>
+    <researchpoints>20.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\historical_maps\team_is_ferrysystem.png</icon>
+    <rollovertextid>503431</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>TeamTech</flag>
+    <effects>
+      <effect type="TechStatus" status="active">zpIstanbulFerrySystemShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpIstanbulFerrySystemShadow" type="Normal">
+    <dbid>41520</dbid>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.80" subtype="RechargeTime" relativity="BasePercent">
+        <target type="ProtoUnit">deCommandery</target>
+      </effect>
+      <effect type="Data" amount="0.80" subtype="RechargeTime" relativity="BasePercent">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="Data" amount="0.80" subtype="RechargeTime" relativity="BasePercent">
+        <target type="ProtoUnit">zpTrainStationA</target>
+      </effect>
+      <effect type="Data" amount="0.80" subtype="RechargeTime" relativity="BasePercent">
+        <target type="ProtoUnit">zpTrainStationB</target>
+      </effect>
+      <effect type="Data" amount="0.80" subtype="RechargeTime" relativity="BasePercent">
+        <target type="ProtoUnit">zpArmoredTrainBarracksStatic</target>
+      </effect>
+      <effect type="Data" amount="0.80" subtype="RechargeTime" relativity="BasePercent">
+        <target type="ProtoUnit">zpParisCitadel</target>
+      </effect>
+      <effect type="Data" amount="0.80" subtype="RechargeTime" relativity="BasePercent">
         <target type="ProtoUnit">zpParisCitadelPassage</target>
       </effect>
     </effects>

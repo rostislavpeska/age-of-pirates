@@ -274,6 +274,32 @@ void placeShoreIsland(int grouping = -1, float x = 0.0, float z = 0.0)
 	rmPlaceGroupingAtLoc(grouping, 0, x, z);
 }
 
+// One arm of a gate road (Florence idiom, zpflorence.xs:684 gateRoad1..4): a
+// paint-only strip from (x0,z0) to (x1,z1). No height, no cliff. Anchored at
+// (x0,z0) - the fork - so arms that share that point meet exactly. Its size
+// is length x width, both as map fractions, so it neither gaps nor balloons.
+// classRoad: avoidRoad (6 m) keeps objects placed after it off the track.
+// Knobs live here with the helper - XS functions cannot see main locals.
+string gRoadMix        = "italy_dirt";   // Black Sea's paintMix6
+float  gRoadWidthTiles = 3.0;            // float on purpose: int * float truncates to 0
+float  gRoadCoherence  = 0.7;            // a track that wanders, not a ruled line
+int    gRoadIdx        = 0;
+void roadArm(float x0 = 0.0, float z0 = 0.0, float x1 = 0.0, float z1 = 0.0)
+{
+	gRoadIdx = gRoadIdx + 1;
+	float len = sqrt((x1 - x0) * (x1 - x0) + (z1 - z0) * (z1 - z0));
+	float size = len * gRoadWidthTiles * rmXTilesToFraction(1);
+	int arm = rmCreateArea("gate road arm " + gRoadIdx);
+	rmSetAreaWarnFailure(arm, false);
+	rmSetAreaSize(arm, size, size);
+	rmSetAreaCoherence(arm, gRoadCoherence);
+	rmSetAreaMix(arm, gRoadMix);
+	rmSetAreaLocation(arm, x0, z0);
+	rmAddAreaInfluenceSegment(arm, x0, z0, x1, z1);
+	rmAddAreaToClass(arm, rmClassID("classRoad"));
+	rmSetAreaObeyWorldCircleConstraint(arm, false);
+	rmBuildArea(arm);
+}
 // Drop a controller onto a trade route and report where it REALLY landed.
 // This is the only trustworthy source of a lane's position.
 int gControllerIdx = 0;
@@ -439,6 +465,19 @@ void main(void)
 	                              // if the grass still creeps onto the back row.
 	string hinterMix      = "italy_grass_dry";   // Black Sea's paintMix
 	string hinterCliff    = "Italian Cliff";     // Florence's wall/shore cliff
+
+	// ---- FLANK PATCHES: paint-only blotches on wildW / wildE -------------
+	// Black Sea's clifftop-patch idiom (zpblacksea.xs:633). Two mixes, each
+	// rolled flankPatchCount times per flank: no location (the engine picks a
+	// random legal spot), coherence 0.1 (ragged), no height / elevation /
+	// cliff - paint only. Fence = the flank mass's own constraints plus
+	// avoidWater6, so the shoreline layers keep their sand. Built after the
+	// countryside fill (see there for why) - the last hinterMix pass over
+	// that ground.
+	string patchGreenMix  = "italy_grass";           // Black Sea's baseMix
+	string patchDryMix    = "italy_cliff_top_dry";   // Black Sea's paintMix5
+	int   flankPatchCount = 15;    // patches PER MIX PER FLANK: 15 green + 15 dry each side
+	int   flankPatchTiles = 80;    // one patch, in tiles (was 250 x 4: smaller but more)
 	// THE WOODS: a bunch of trees dropped at a point, scattered inside a
 	// radius. Forest AREAS put themselves where they liked on this map, so the
 	// trees are placed the way every other object here is placed - explicit
@@ -734,6 +773,8 @@ void main(void)
 	// have been wrong - the palaces use it too, and five other groupings.
 	rmDefineClass("classNavalFort");
 	rmDefineClass("classPirateCampS");
+	rmDefineClass("classPatchGreen");   // flank paint patches, one class per mix:
+	rmDefineClass("classPatchDry");     // green keeps off green, dry keeps off dry
 
 	// ========================================================================
 	//  1b. GENERIC CONSTRAINTS - every order-free constraint DEFINED here,
@@ -771,6 +812,16 @@ void main(void)
 	// 1 tile = 2 m, so one tile of clearance is 2.0.
 	int avoidCliff = rmCreateClassDistanceConstraint("trees off the cliff",
 		rmClassID("classCliff"), 5.0);
+	// 3 m off any tree. Was declared with the inner flank cliffs; moved here
+	// because the wall docks 1 / 4 (built earlier) share it.
+	int avoidTree = rmCreateTypeDistanceConstraint("cliffs avoid trees", "Tree", 3.0);
+	// flank patches keep 4 m (2 tiles) off earlier patches OF THE SAME MIX - the
+	// Black Sea 'patch vs. patch' idiom (zpblacksea.xs:194), split per mix so a
+	// green blotch may touch a dry one.
+	int avoidPatchGreen = rmCreateClassDistanceConstraint("green patch vs. green patch",
+		rmClassID("classPatchGreen"), 4.0);
+	int avoidPatchDry = rmCreateClassDistanceConstraint("dry patch vs. dry patch",
+		rmClassID("classPatchDry"), 4.0);
 
 	// -- walls and docks --
 	int avoidWallObj = rmCreateTypeDistanceConstraint("avoid wall object",
@@ -2589,6 +2640,7 @@ void main(void)
 	rmAddAreaConstraint(dock1, cliffLaneFallback);
 	rmAddAreaConstraint(dock1, avoidGuardW);
 	rmAddAreaConstraint(dock1, avoidGuardE);
+	rmAddAreaConstraint(dock1, avoidTree);
 	rmSetAreaObeyWorldCircleConstraint(dock1, false);
 	rmBuildArea(dock1);
 
@@ -2674,6 +2726,7 @@ void main(void)
 	rmAddAreaConstraint(dock4, cliffLaneFallback);
 	rmAddAreaConstraint(dock4, avoidGuardW);
 	rmAddAreaConstraint(dock4, avoidGuardE);
+	rmAddAreaConstraint(dock4, avoidTree);
 	rmSetAreaObeyWorldCircleConstraint(dock4, false);
 	rmBuildArea(dock4);
 
@@ -2764,10 +2817,94 @@ void main(void)
 	//rmSetAreaObeyWorldCircleConstraint(fillE, false);
 	rmBuildArea(fillE);
 
+	// ---- FLANK PATCHES on wildW / wildE - after the fill, on purpose ------
+	// The flank ground is painted twice: once when the mass is built (wildW /
+	// wildE, section 6) and again by fillWTerrain / fillETerrain just above,
+	// which flood the same pocket with hinterMix. Anything painted between
+	// the two is erased, so the patches go HERE, after the last hinterMix
+	// pass. Paint only: no base height, no elevation, no cliff. Same fence
+	// as the flank mass itself (its box keeps each side on its own flank)
+	// plus avoidWater6, so the shoreline layers keep their sand. Knobs sit
+	// with the hinterland tunables (flankPatchCount / flankPatchTiles).
+	// WEST flank, north island: the wildW fence.
+	for (i = 0; < flankPatchCount)
+	{
+		int patchGreenW = rmCreateArea("flank patch green w " + i);
+		rmSetAreaWarnFailure(patchGreenW, false);
+		rmSetAreaSize(patchGreenW, rmAreaTilesToFraction(flankPatchTiles), rmAreaTilesToFraction(flankPatchTiles));
+		rmSetAreaCoherence(patchGreenW, 0.1);
+		rmSetAreaMix(patchGreenW, patchGreenMix);
+		rmAddAreaConstraint(patchGreenW, cliffOffStreet);
+		rmAddAreaConstraint(patchGreenW, cliffLaneFallback);
+		rmAddAreaConstraint(patchGreenW, avoidGuardW);
+		rmAddAreaConstraint(patchGreenW, avoidGuardE);
+		rmAddAreaConstraint(patchGreenW, wildBoxN);
+		rmAddAreaConstraint(patchGreenW, dockAvoidPirate);
+		rmAddAreaConstraint(patchGreenW, avoidWater6);
+		rmAddAreaConstraint(patchGreenW, avoidPatchGreen);
+		rmAddAreaToClass(patchGreenW, rmClassID("classPatchGreen"));
+		rmSetAreaObeyWorldCircleConstraint(patchGreenW, false);
+		rmBuildArea(patchGreenW);
+
+		int patchDryW = rmCreateArea("flank patch dry w " + i);
+		rmSetAreaWarnFailure(patchDryW, false);
+		rmSetAreaSize(patchDryW, rmAreaTilesToFraction(flankPatchTiles), rmAreaTilesToFraction(flankPatchTiles));
+		rmSetAreaCoherence(patchDryW, 0.1);
+		rmSetAreaMix(patchDryW, patchDryMix);
+		rmAddAreaConstraint(patchDryW, cliffOffStreet);
+		rmAddAreaConstraint(patchDryW, cliffLaneFallback);
+		rmAddAreaConstraint(patchDryW, avoidGuardW);
+		rmAddAreaConstraint(patchDryW, avoidGuardE);
+		rmAddAreaConstraint(patchDryW, wildBoxN);
+		rmAddAreaConstraint(patchDryW, dockAvoidPirate);
+		rmAddAreaConstraint(patchDryW, avoidWater6);
+		rmAddAreaConstraint(patchDryW, avoidPatchDry);
+		rmAddAreaToClass(patchDryW, rmClassID("classPatchDry"));
+		rmSetAreaObeyWorldCircleConstraint(patchDryW, false);
+		rmBuildArea(patchDryW);
+	}
+	// EAST flank, south island: the wildE fence.
+	for (i = 0; < flankPatchCount)
+	{
+		int patchGreenE = rmCreateArea("flank patch green e " + i);
+		rmSetAreaWarnFailure(patchGreenE, false);
+		rmSetAreaSize(patchGreenE, rmAreaTilesToFraction(flankPatchTiles), rmAreaTilesToFraction(flankPatchTiles));
+		rmSetAreaCoherence(patchGreenE, 0.1);
+		rmSetAreaMix(patchGreenE, patchGreenMix);
+		rmAddAreaConstraint(patchGreenE, cliffOffStreet);
+		rmAddAreaConstraint(patchGreenE, cliffLaneFallback);
+		rmAddAreaConstraint(patchGreenE, avoidGuardW);
+		rmAddAreaConstraint(patchGreenE, avoidGuardE);
+		rmAddAreaConstraint(patchGreenE, wildBoxE);
+		rmAddAreaConstraint(patchGreenE, dockAvoidPirate);
+		rmAddAreaConstraint(patchGreenE, avoidWater6);
+		rmAddAreaConstraint(patchGreenE, avoidPatchGreen);
+		rmAddAreaToClass(patchGreenE, rmClassID("classPatchGreen"));
+		rmSetAreaObeyWorldCircleConstraint(patchGreenE, false);
+		rmBuildArea(patchGreenE);
+
+		int patchDryE = rmCreateArea("flank patch dry e " + i);
+		rmSetAreaWarnFailure(patchDryE, false);
+		rmSetAreaSize(patchDryE, rmAreaTilesToFraction(flankPatchTiles), rmAreaTilesToFraction(flankPatchTiles));
+		rmSetAreaCoherence(patchDryE, 0.1);
+		rmSetAreaMix(patchDryE, patchDryMix);
+		rmAddAreaConstraint(patchDryE, cliffOffStreet);
+		rmAddAreaConstraint(patchDryE, cliffLaneFallback);
+		rmAddAreaConstraint(patchDryE, avoidGuardW);
+		rmAddAreaConstraint(patchDryE, avoidGuardE);
+		rmAddAreaConstraint(patchDryE, wildBoxE);
+		rmAddAreaConstraint(patchDryE, dockAvoidPirate);
+		rmAddAreaConstraint(patchDryE, avoidWater6);
+		rmAddAreaConstraint(patchDryE, avoidPatchDry);
+		rmAddAreaToClass(patchDryE, rmClassID("classPatchDry"));
+		rmSetAreaObeyWorldCircleConstraint(patchDryE, false);
+		rmBuildArea(patchDryE);
+	}
+
 
 
 	// --- the two invisible lane guards (the red ovals) ---------------------
-	int avoidTree = rmCreateTypeDistanceConstraint("cliffs avoid trees", "Tree", 3.0);
+	// avoidTree is declared in 1b: the wall docks 1 / 4 build before this point and use it too.
 	// 12 m off the ferry buildings. Four of them (zpOrientalFerry at 1228,
 	// 1248, 1308, 1328), all placed long before these cliffs build.
 	int avoidFerry = rmCreateTypeDistanceConstraint("cliffs off the ferry", "zpOrientalFerry", 12.0);
@@ -3650,6 +3787,56 @@ void main(void)
 	rmSetAreaObeyWorldCircleConstraint(campIsleE, false);
 	rmBuildArea(campIsleE);
 
+	// ---- GATE ROADS: each wall gate -> fork -> Cossack camp, 3 arms per island
+	// Built after the camp isles (their hinterMix would erase the road) and
+	// before the camp groupings (their baked tiles cover the road ends under
+	// the camp); the flank patches are long painted, so the track reads on
+	// top of them. roadArm() at file scope carries the mix / width / coherence.
+	//
+	// Gate = wall origin + the gate's own offset inside the grouping XML, in
+	// metres - the harbour SocketOff convention. Read out of IS_Wall_SW.xml:
+	// unit #26 at (6.0896, -61.8497) is the gate toward the lane, unit #67 at
+	// (6.4670, 5.2424) the one toward the back. IS_Wall_NE is the exact
+	// 180-degree twin: same numbers, both signs flipped. Signs stay OUTSIDE
+	// the MetersToFraction helpers, like every other offset in this file.
+	float gateLaneOffX = 6.0896;   float gateLaneOffZ = 61.8497;
+	float gateBackOffX = 6.4670;   float gateBackOffZ = 5.2424;
+	// the camps' spots - the same literals placeShoreIsland gets below
+	float campWX = 0.07;   float campWZ = 0.60;
+	float campEX = 0.93;   float campEZ = 0.40;
+	// the fork sits on the line from the gates' midpoint (0.0) to the camp (1.0)
+	float roadForkFrac = 0.5;
+
+	// north island: IS_Wall_SW at (wallXN, wallZN) -> camp W
+	float gateNLaneX = wallXN + rmXMetersToFraction(gateLaneOffX);
+	float gateNLaneZ = wallZN - rmZMetersToFraction(gateLaneOffZ);
+	float gateNBackX = wallXN + rmXMetersToFraction(gateBackOffX);
+	float gateNBackZ = wallZN + rmZMetersToFraction(gateBackOffZ);
+	float forkNX = (gateNLaneX + gateNBackX) * 0.5;
+	float forkNZ = (gateNLaneZ + gateNBackZ) * 0.5;
+	forkNX = forkNX + (campWX - forkNX) * roadForkFrac;
+	forkNZ = forkNZ + (campWZ - forkNZ) * roadForkFrac;
+	rmEchoInfo("gate roads N: lane gate " + gateNLaneX + "," + gateNLaneZ
+		+ "  back gate " + gateNBackX + "," + gateNBackZ + "  fork " + forkNX + "," + forkNZ);
+	roadArm(forkNX, forkNZ, gateNLaneX, gateNLaneZ);
+	roadArm(forkNX, forkNZ, gateNBackX, gateNBackZ);
+	roadArm(forkNX, forkNZ, campWX, campWZ);
+
+	// south island: IS_Wall_NE at (wallXS, wallZS) -> camp E, the 180-degree twin
+	float gateSLaneX = wallXS - rmXMetersToFraction(gateLaneOffX);
+	float gateSLaneZ = wallZS + rmZMetersToFraction(gateLaneOffZ);
+	float gateSBackX = wallXS - rmXMetersToFraction(gateBackOffX);
+	float gateSBackZ = wallZS - rmZMetersToFraction(gateBackOffZ);
+	float forkSX = (gateSLaneX + gateSBackX) * 0.5;
+	float forkSZ = (gateSLaneZ + gateSBackZ) * 0.5;
+	forkSX = forkSX + (campEX - forkSX) * roadForkFrac;
+	forkSZ = forkSZ + (campEZ - forkSZ) * roadForkFrac;
+	rmEchoInfo("gate roads S: lane gate " + gateSLaneX + "," + gateSLaneZ
+		+ "  back gate " + gateSBackX + "," + gateSBackZ + "  fork " + forkSX + "," + forkSZ);
+	roadArm(forkSX, forkSZ, gateSLaneX, gateSLaneZ);
+	roadArm(forkSX, forkSZ, gateSBackX, gateSBackZ);
+	roadArm(forkSX, forkSZ, campEX, campEZ);
+
 	// cossack camps: random variant 1-5, the Black Sea idiom
 	// (000_blacksea.xs 750-751 + 816). SocketCossacks is baked in.
 	int cossackCampWType = rmRandInt(1, 5);
@@ -3678,6 +3865,7 @@ void main(void)
 	rmAddObjectDefConstraint(contTrees, belowCliffs);
 	rmAddObjectDefConstraint(contTrees, avoidWallObj);
 	rmAddObjectDefConstraint(contTrees, cliffLaneFallback);
+	rmAddObjectDefConstraint(contTrees, avoidRoad);   // 6 m off the gate roads
 	rmPlaceObjectDefInArea(contTrees, 0, wildLowW, 10);
 	rmPlaceObjectDefInArea(contTrees, 0, wildLowE, 10);
 	rmPlaceObjectDefInArea(contTrees, 0, fillW, 7);

@@ -67329,6 +67329,7 @@
     <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
     <tech row="0" page="11" column="2">DESPCMercenaryBounties</tech>
     <tech row="0" page="11" column="3">zpSPCBosporBlockade</tech>
+    <tech row="0" page="11" column="3">zpIstanbulFerrySystem</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
