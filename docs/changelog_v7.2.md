@@ -70,6 +70,7 @@ Summer 2026 release. The headline is the clean blend with the Baltic Powers DLC 
 - Mutineer: 150 HP, 80 gold, blunderbuss 12 damage; Absconder unchanged.
 
 ## Bugfixes
+- Units could get stuck inside the Italian city blocks (Florence, Rome, Venetian house blocks): the walkable house props are replaced by solid variants with the identical look, and the blocks received additional obstructions — fixed.
 - Hayreddin Barbarossa spoke with a Cherokee/Cheyenne native voice set instead of the Ottoman one — fixed.
 - Veteran and Guard Mutineer upgrades both applied the moment the unit was enabled, so the Penal Colony improvements changed nothing — fixed, they now follow the settlement's Veteran / Guard research.
 - Bourbon settlement's Battleship could be trained on river maps after the standard-warship ban — banned with the rest.

@@ -48,6 +48,9 @@ python $S/model_swap.py game/randmaps/groupings --from zpNativeHouseVenetianB --
 - **Obstruction is the point of the swap** but also a side effect: the target's footprint (E 3.4x4.1,
   G 3.8x3.0) may now overlap paths - place `NativeTownObstruction`/path blocks accordingly, and never
   swap inside wall groupings without the user (IS_Wall_* keep their B towers by decision).
+- **Editor re-exports are shifted by (-1, -1) m** relative to the original grouping file (seen on every
+  export today). Never merge or replace a grouping from an export without measuring the frame delta on
+  matched units first; re-frame the new units (+1, +1) into the repo file instead of taking the export.
 - Only the matched `<unit>` lines change; formatting, ordering and CRLF survive. Unit ORDER matters to
   some map scripts (sockets resolved as "last unit"), so never reorder.
 - User-edited groupings: the user often has newer copies in `RandMaps/groupings` (added obstructions).
