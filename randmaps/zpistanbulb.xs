@@ -276,13 +276,16 @@ void placeShoreIsland(int grouping = -1, float x = 0.0, float z = 0.0)
 
 // One arm of a gate road (Florence idiom, zpflorence.xs:684 gateRoad1..4): a
 // paint-only strip from (x0,z0) to (x1,z1). No height, no cliff. Anchored at
-// (x0,z0) - the fork - so arms that share that point meet exactly. Its size
-// is length x width, both as map fractions, so it neither gaps nor balloons.
+// the segment's MIDPOINT (Paris 'City Road' idiom, zpparis.xs:1510): the fill
+// grows out from the middle and reaches both ends. Anchored at the fork, the
+// three arms piled their tiles on the shared point and thinned out toward the
+// gates and the camp. Its size is length x width, both as map fractions, so
+// it neither gaps nor balloons.
 // classRoad: avoidRoad (6 m) keeps objects placed after it off the track.
 // Knobs live here with the helper - XS functions cannot see main locals.
 string gRoadMix        = "italy_dirt";   // Black Sea's paintMix6
 float  gRoadWidthTiles = 3.0;            // float on purpose: int * float truncates to 0
-float  gRoadCoherence  = 0.7;            // a track that wanders, not a ruled line
+float  gRoadCoherence  = 0.9;            // a firm track with a little wander (0.7 frayed, 1.0 was a ruled line)
 int    gRoadIdx        = 0;
 void roadArm(float x0 = 0.0, float z0 = 0.0, float x1 = 0.0, float z1 = 0.0)
 {
@@ -294,7 +297,7 @@ void roadArm(float x0 = 0.0, float z0 = 0.0, float x1 = 0.0, float z1 = 0.0)
 	rmSetAreaSize(arm, size, size);
 	rmSetAreaCoherence(arm, gRoadCoherence);
 	rmSetAreaMix(arm, gRoadMix);
-	rmSetAreaLocation(arm, x0, z0);
+	rmSetAreaLocation(arm, (x0 + x1) * 0.5, (z0 + z1) * 0.5);
 	rmAddAreaInfluenceSegment(arm, x0, z0, x1, z1);
 	rmAddAreaToClass(arm, rmClassID("classRoad"));
 	rmSetAreaObeyWorldCircleConstraint(arm, false);
@@ -798,6 +801,13 @@ void main(void)
 	// road added later.
 	int avoidRoad = rmCreateClassDistanceConstraint("off the roads",
 		rmClassID("classRoad"), 6.0);
+	// Tree CLUMPS need more than that: contTrees scatters its items up to
+	// 11 m round the anchor, so a 6 m anchor standoff still drops trees 5 m
+	// INTO a road that is only 6 m wide. 10 m is one clump radius: the trunks
+	// stay off the strip, the odd canopy may overhang it. (17 m - clearance
+	// plus the full spread - stripped a 40 m corridor bare; too much.)
+	int avoidRoadTrees = rmCreateClassDistanceConstraint("tree clumps off the roads",
+		rmClassID("classRoad"), 10.0);
 	int avoidWater10 = rmCreateTerrainDistanceConstraint("avoid water short", "Land", false, 9.0);
 	// 6 m off the water, same form as avoidWater10 above (whose real value is 9).
 	int avoidWater6 = rmCreateTerrainDistanceConstraint("avoid water 6", "Land", false, 6.0);
@@ -2743,8 +2753,11 @@ void main(void)
 	// west valley, between city, wall, terraces and wild cliffs
 	int fillWTerrain = rmCreateArea("countryside fill w terrain");
 	rmSetAreaWarnFailure(fillWTerrain, false);
-	// over-ask: the cliff and building constraints ARE the shape
-	rmSetAreaSize(fillWTerrain, 0.13, 0.13);
+	// over-ask: the cliff and building constraints ARE the shape. 0.18, not
+	// the elevation pass's 0.13: a compact blob of 0.13 is about the valley's
+	// own size, and the far pockets ran out of budget before the paint
+	// reached them - bare ground showed between the patches.
+	rmSetAreaSize(fillWTerrain, 0.18, 0.18);
 	rmSetAreaCoherence(fillWTerrain, 1.0);
 	rmSetAreaLocation(fillWTerrain, 0.20, 0.75);
 	rmSetAreaMix(fillWTerrain, hinterMix);
@@ -2782,8 +2795,9 @@ void main(void)
 	// pass below - same split as fillWTerrain / fillW on the west side.
 	int fillETerrain = rmCreateArea("countryside fill e terrain");
 	rmSetAreaWarnFailure(fillETerrain, false);
-	// over-ask: the cliff and building constraints ARE the shape
-	rmSetAreaSize(fillETerrain, 0.13, 0.13);
+	// over-ask: the cliff and building constraints ARE the shape. 0.18, not
+	// the elevation pass's 0.13 - same reason as fillWTerrain.
+	rmSetAreaSize(fillETerrain, 0.18, 0.18);
 	rmSetAreaCoherence(fillETerrain, 1.0);
 	rmSetAreaLocation(fillETerrain, 0.80, 0.25);
 	rmSetAreaMix(fillETerrain, hinterMix);
@@ -3266,7 +3280,7 @@ void main(void)
 	int roadN = rmCreateArea("road north back ramp");
 	rmSetAreaWarnFailure(roadN, false);
 	rmSetAreaSize(roadN, rmAreaTilesToFraction(roadTiles), rmAreaTilesToFraction(roadTiles));
-	rmSetAreaCoherence(roadN, 0.7);    // a road that wanders, not a ruled line
+	rmSetAreaCoherence(roadN, 0.9);    // a firm track with a little wander (0.7 frayed, 1.0 was a ruled line)
 	rmSetAreaTerrainType(roadN, "city\ground1_cob");   // same as cityN / cityS
 	rmSetAreaHeightBlend(roadN, 3);
 	rmSetAreaLocation(roadN, nx5 + flankProm + rmXTilesToFraction(rampOut), (nz5 + nz6) * 0.5);
@@ -3285,7 +3299,7 @@ void main(void)
 	int roadS = rmCreateArea("road south back ramp");
 	rmSetAreaWarnFailure(roadS, false);
 	rmSetAreaSize(roadS, rmAreaTilesToFraction(roadTiles), rmAreaTilesToFraction(roadTiles));
-	rmSetAreaCoherence(roadS, 0.7);    // a road that wanders, not a ruled line
+	rmSetAreaCoherence(roadS, 0.9);    // a firm track with a little wander (0.7 frayed, 1.0 was a ruled line)
 	rmSetAreaTerrainType(roadS, "city\ground1_cob");   // same as cityN / cityS
 	rmSetAreaHeightBlend(roadS, 3);
 	rmSetAreaLocation(roadS, sx1 - flankProm - rmXTilesToFraction(rampOutS)
@@ -3804,8 +3818,13 @@ void main(void)
 	// the camps' spots - the same literals placeShoreIsland gets below
 	float campWX = 0.07;   float campWZ = 0.60;
 	float campEX = 0.93;   float campEZ = 0.40;
-	// the fork sits on the line from the gates' midpoint (0.0) to the camp (1.0)
-	float roadForkFrac = 0.5;
+	// The fork: Z is the plain average of the two gates, so the crossing sits
+	// square in front of the wall's middle and both gate arms leave at the
+	// same angle. X alone moves inland, this fraction of the way from the
+	// gates' X (0.0) to the camp's X (1.0). Interpolating Z toward the camp
+	// as well dragged the crossing along the rampart - the main-gate arm ran
+	// right beneath the wall.
+	float roadForkFrac = 0.65;
 
 	// north island: IS_Wall_SW at (wallXN, wallZN) -> camp W
 	float gateNLaneX = wallXN + rmXMetersToFraction(gateLaneOffX);
@@ -3813,9 +3832,8 @@ void main(void)
 	float gateNBackX = wallXN + rmXMetersToFraction(gateBackOffX);
 	float gateNBackZ = wallZN + rmZMetersToFraction(gateBackOffZ);
 	float forkNX = (gateNLaneX + gateNBackX) * 0.5;
-	float forkNZ = (gateNLaneZ + gateNBackZ) * 0.5;
+	float forkNZ = (gateNLaneZ + gateNBackZ) * 0.5;   // gate average, stays
 	forkNX = forkNX + (campWX - forkNX) * roadForkFrac;
-	forkNZ = forkNZ + (campWZ - forkNZ) * roadForkFrac;
 	rmEchoInfo("gate roads N: lane gate " + gateNLaneX + "," + gateNLaneZ
 		+ "  back gate " + gateNBackX + "," + gateNBackZ + "  fork " + forkNX + "," + forkNZ);
 	roadArm(forkNX, forkNZ, gateNLaneX, gateNLaneZ);
@@ -3828,9 +3846,8 @@ void main(void)
 	float gateSBackX = wallXS - rmXMetersToFraction(gateBackOffX);
 	float gateSBackZ = wallZS - rmZMetersToFraction(gateBackOffZ);
 	float forkSX = (gateSLaneX + gateSBackX) * 0.5;
-	float forkSZ = (gateSLaneZ + gateSBackZ) * 0.5;
+	float forkSZ = (gateSLaneZ + gateSBackZ) * 0.5;   // gate average, stays
 	forkSX = forkSX + (campEX - forkSX) * roadForkFrac;
-	forkSZ = forkSZ + (campEZ - forkSZ) * roadForkFrac;
 	rmEchoInfo("gate roads S: lane gate " + gateSLaneX + "," + gateSLaneZ
 		+ "  back gate " + gateSBackX + "," + gateSBackZ + "  fork " + forkSX + "," + forkSZ);
 	roadArm(forkSX, forkSZ, gateSLaneX, gateSLaneZ);
@@ -3865,7 +3882,7 @@ void main(void)
 	rmAddObjectDefConstraint(contTrees, belowCliffs);
 	rmAddObjectDefConstraint(contTrees, avoidWallObj);
 	rmAddObjectDefConstraint(contTrees, cliffLaneFallback);
-	rmAddObjectDefConstraint(contTrees, avoidRoad);   // 6 m off the gate roads
+	rmAddObjectDefConstraint(contTrees, avoidRoadTrees);   // clump centre 10 m off the gate roads (one clump radius)
 	rmPlaceObjectDefInArea(contTrees, 0, wildLowW, 10);
 	rmPlaceObjectDefInArea(contTrees, 0, wildLowE, 10);
 	rmPlaceObjectDefInArea(contTrees, 0, fillW, 7);
