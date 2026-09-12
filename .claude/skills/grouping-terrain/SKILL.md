@@ -64,3 +64,16 @@ in `randmaps/zpXXX.xs` and its game-root twin under
 `C:\Program Files (x86)\Steam\steamapps\common\AoE3DE\Game\RandMaps\`). Moving the grouping by metres:
 `0.5 + rmXTilesToFraction(4) - rmZMetersToFraction(1.0)`. Edit both twins; their only legitimate
 difference is the user's local test-trigger block.
+
+## 4. `variation="N"` is a model index: entry N mod K
+
+A grouping unit's `variation` attribute picks the entry of the animfile's `<logic type="Variation">` list
+(K `<data>` children, file order, 0-based): **the engine shows entry `N mod K`**, so the editor's spinner
+"loops" - N and N+K look identical. Verified in the editor on 2026-09-12 with `IS_Validation_HouseSwap.xml`
+(House B, K=13: 13 = 0, 246 = 12, 99 = 8, 232 = 11). Submodel-based animfiles are expected to work the same
+through `<data><submodelref ref="TypeN">` entries (House D, K=4) - the D rows of the validation grouping check it. Consequences:
+- To reproduce one exact model on another proto, look up the model file in both animfiles and set the
+  target variation to its index there - texture and mesh are then 1:1 (same `.gr2`).
+- Large authored values (99, 232 ...) are not garbage; reduce them mod K before reading them.
+- `scripts/house_swap.py <dir> [--narrow] [--apply] [--also <user dir>]` does the Venetian case: walkable
+  House B (0.0001 obstruction) -> solid E/G (large houses) and optionally D (narrow towers), model-identical.

@@ -199,6 +199,10 @@
             <flag>NoIdleActions</flag>
             <flag>StartOnNoUpdate</flag>
             <flag>NotSelectable</flag>
+            <!-- solid 4x4 footprint on Istanbul: vanilla ships it 6x6 but NonCollideable, so units walk through it -->
+            <obstructionradiusx>5.0000</obstructionradiusx>
+            <obstructionradiusz>5.0000</obstructionradiusz>
+            <flag mergemode="remove">NonCollideable</flag>
         </unit>
         <unit name="zpNativeHouseJewish">
             <flag>NoIdleActions</flag>

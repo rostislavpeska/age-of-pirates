@@ -66721,8 +66721,8 @@
     <dbid>20912</dbid>
     <displaynameid>500730</displaynameid>
     <editornameid>503213</editornameid>
-    <obstructionradiusx>0.0001</obstructionradiusx>
-    <obstructionradiusz>0.0001</obstructionradiusz>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>buildings\native_settlement\istanbul_buildings.xml</animfile>
@@ -72551,8 +72551,8 @@
     <dbid>20979</dbid>
     <displaynameid>500730</displaynameid>
     <editornameid>503383</editornameid>
-    <obstructionradiusx>0.0001</obstructionradiusx>
-    <obstructionradiusz>0.0001</obstructionradiusz>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>buildings\native_settlement\istanbul_mosques2.xml</animfile>
@@ -72833,8 +72833,8 @@
     <dbid>20985</dbid>
     <displaynameid>500730</displaynameid>
     <editornameid>503394</editornameid>
-    <obstructionradiusx>0.0001</obstructionradiusx>
-    <obstructionradiusz>0.0001</obstructionradiusz>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
     <movementtype>land</movementtype>
     <animfile>buildings\native_settlement\istanbul_mosque_small.xml</animfile>

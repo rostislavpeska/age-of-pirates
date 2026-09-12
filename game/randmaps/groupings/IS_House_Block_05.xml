@@ -77,12 +77,12 @@
 		<unit variation="3" posx="-8.4202" posz="8.9364" orientx="-1.0000" orienty="0.0000" orientz="0.0061">PropsPottedPlants</unit>
 		<unit variation="0" posx="-0.4257" posz="9.2503" orientx="-0.7141" orienty="0.0000" orientz="-0.7001">PropsPoles</unit>
 		<unit variation="0" posx="14.7010" posz="9.4976" orientx="-0.7141" orienty="0.0000" orientz="-0.7001">PropsPoles</unit>
-		<unit variation="0" posx="-9.7234" posz="8.5605" orientx="-0.7117" orienty="0.0000" orientz="-0.7025">zpNativeHouseVenetianB</unit>
+		<unit variation="0" posx="-9.7234" posz="8.5605" orientx="-0.7117" orienty="0.0000" orientz="-0.7025">zpNativeHouseVenetianE</unit>
 		<unit variation="1" posx="11.9048" posz="7.6045" orientx="1.0000" orienty="0.0000" orientz="-0.0056">zpNativeWallFull</unit>
 		<unit variation="168" posx="10.5222" posz="10.8625" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">SPCPathBlock2</unit>
 		<unit variation="2" posx="1.4344" posz="12.2554" orientx="-0.3862" orienty="0.0000" orientz="-0.9224">PropsPottedPlants</unit>
 		<unit variation="1" posx="-12.9153" posz="9.4540" orientx="-1.0000" orienty="0.0000" orientz="0.0056">zpNativeWallFull</unit>
-		<unit variation="2" posx="7.5243" posz="9.3876" orientx="-0.7074" orienty="-0.0000" orientz="-0.7068">zpNativeHouseVenetianB</unit>
+		<unit variation="1" posx="7.5243" posz="9.3876" orientx="-0.7074" orienty="-0.0000" orientz="-0.7068">zpNativeHouseVenetianE</unit>
 		<unit variation="168" posx="3.2226" posz="11.5157" orientx="-0.7071" orienty="0.0000" orientz="0.7071">SPCPathBlock2</unit>
 		<unit variation="8" posx="-14.5758" posz="14.1895" orientx="0.7071" orienty="0.0000" orientz="-0.7071">PropsColony</unit>
 		<unit variation="1" posx="-11.7691" posz="12.1105" orientx="-0.7031" orienty="0.0000" orientz="0.7111">zpNativeWallFull</unit>

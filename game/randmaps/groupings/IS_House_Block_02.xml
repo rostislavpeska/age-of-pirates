@@ -22,7 +22,7 @@
 		<unit variation="0" posx="0.6851" posz="-11.2367" orientx="-0.0007" orienty="0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="0" posx="3.9380" posz="-11.7073" orientx="0.0008" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="0" posx="-0.4988" posz="-8.7565" orientx="0.7066" orienty="0.0000" orientz="-0.7076">SPCPathBlock3</unit>
-		<unit variation="2" posx="3.0910" posz="-9.4579" orientx="-0.0004" orienty="-0.0000" orientz="-1.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="1" posx="3.0910" posz="-9.4579" orientx="-0.0004" orienty="-0.0000" orientz="-1.0000">zpNativeHouseVenetianE</unit>
 		<unit variation="30" posx="-6.6429" posz="-6.6269" orientx="0.3830" orienty="0.0000" orientz="0.9238">deNativePropsCiviliansMale</unit>
 		<unit variation="2" posx="8.8132" posz="-7.6802" orientx="0.0038" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
 		<unit variation="1" posx="14.5427" posz="-6.6391" orientx="-0.3829" orienty="-0.0000" orientz="-0.9238">PropsPoles</unit>
@@ -53,7 +53,7 @@
 		<unit variation="71" posx="11.0540" posz="0.0528" orientx="1.0000" orienty="0.0000" orientz="-0.0001">NativePirates</unit>
 		<unit variation="9" posx="6.3235" posz="2.5706" orientx="0.0038" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
 		<unit variation="86" posx="3.0514" posz="2.7941" orientx="-0.9240" orienty="-0.0000" orientz="-0.3824">deNativePropsCiviliansMale</unit>
-		<unit variation="1" posx="-9.0575" posz="2.4682" orientx="-0.0004" orienty="-0.0000" orientz="-1.0000">zpNativeHouseVenetianB</unit>
+		<unit variation="0" posx="-9.0575" posz="2.4682" orientx="-0.0004" orienty="-0.0000" orientz="-1.0000">zpNativeHouseVenetianG</unit>
 		<unit variation="134" posx="-8.5932" posz="2.3160" orientx="1.0000" orienty="0.0000" orientz="-0.0001">NativePirates</unit>
 		<unit variation="0" posx="4.5213" posz="4.9075" orientx="-0.7077" orienty="0.0000" orientz="-0.7065">SPCPathBlock3</unit>
 		<unit variation="17" posx="-0.4060" posz="6.8287" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNativeHouseOrthodoxSouth</unit>

@@ -31,8 +31,9 @@
 		<unit variation="115" posx="2.5897" posz="-8.0157" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">zpNativeSufiCity</unit>
 		<unit variation="0" posx="1.0501" posz="-9.8927" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="48" posx="5.6946" posz="-8.6655" orientx="-0.3754" orienty="0.0000" orientz="0.9269">dePropsAnimalsCamel</unit>
-		<unit variation="0" posx="-9.4054" posz="-9.2974" orientx="-1.0000" orienty="0.0000" orientz="0.0085">zpNativeHouseVenetianB</unit>
+		<unit variation="0" posx="-9.4054" posz="-9.2974" orientx="-1.0000" orienty="0.0000" orientz="0.0085">zpNativeHouseVenetianE</unit>
 		<unit variation="20" posx="8.4971" posz="-9.9553" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpNativeHouseIstanbul</unit>
+		<unit variation="238" posx="8.4971" posz="-9.9553" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
 		<unit variation="121" posx="-12.3432" posz="-5.9921" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">zpNativeSufiCity</unit>
 		<unit variation="243" posx="4.0542" posz="-6.5571" orientx="0.7083" orienty="0.0000" orientz="0.7059">zpNativeSufiCity</unit>
 		<unit variation="0" posx="-5.8032" posz="-6.9893" orientx="-0.7206" orienty="0.0000" orientz="-0.6934">SPCPathBlock3</unit>
@@ -104,7 +105,7 @@
 		<unit variation="2" posx="11.7930" posz="7.4785" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpNativeWallFullB</unit>
 		<unit variation="217" posx="-0.0798" posz="11.5522" orientx="-0.0007" orienty="0.0000" orientz="-1.0000">UnderbrushCalifornia</unit>
 		<unit variation="217" posx="12.1723" posz="12.1148" orientx="0.7076" orienty="0.0000" orientz="0.7066">UnderbrushCalifornia</unit>
-		<unit variation="12" posx="-7.5750" posz="9.3303" orientx="0.7005" orienty="0.0000" orientz="-0.7137">zpNativeHouseVenetianB</unit>
+		<unit variation="1" posx="-7.5750" posz="9.3303" orientx="0.7005" orienty="0.0000" orientz="-0.7137">zpNativeHouseVenetianG</unit>
 		<unit variation="134" posx="0.8096" posz="10.0395" orientx="0.0002" orienty="0.0000" orientz="1.0000">NativePirates</unit>
 		<unit variation="43" posx="4.7188" posz="11.7619" orientx="-0.1800" orienty="-0.0000" orientz="-0.9837">ypSMSufiAccessory</unit>
 		<unit variation="2" posx="5.6986" posz="10.8068" orientx="-1.0000" orienty="0.0000" orientz="0.0007">zpNativeWallFullB</unit>
