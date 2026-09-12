@@ -7722,6 +7722,8 @@
       <rate type="AbstractMine">0.600000</rate>
       <rate type="Plantation">0.500000</rate>
       <rate type="Herdable">2.000000</rate>
+      <rate type="zpDomesticPig">0.000000</rate>
+      <rate type="Pig">0.000000</rate>
       <rate type="Huntable">0.840000</rate>
       <rate type="AbstractBerryBush">0.670000</rate>
       <rate type="CommunityPlaza">0.100000</rate>
@@ -7763,6 +7765,8 @@
     <protoaction>
       <name>Hunting</name>
       <rate type="Herdable">1.000000</rate>
+      <rate type="zpDomesticPig">0.000000</rate>
+      <rate type="Pig">0.000000</rate>
       <rate type="Huntable">1.000000</rate>
       <rate type="Tree">1.000000</rate>
     </protoaction>
@@ -10831,6 +10835,8 @@
       <rate type="AbstractMine">0.600000</rate>
       <rate type="Plantation">0.500000</rate>
       <rate type="Herdable">2.000000</rate>
+      <rate type="zpDomesticPig">0.000000</rate>
+      <rate type="Pig">0.000000</rate>
       <rate type="Huntable">0.840000</rate>
       <rate type="AbstractBerryBush">0.670000</rate>
       <rate type="CommunityPlaza">0.100000</rate>
@@ -10872,6 +10878,8 @@
     <protoaction>
       <name>Hunting</name>
       <rate type="Herdable">1.000000</rate>
+      <rate type="zpDomesticPig">0.000000</rate>
+      <rate type="Pig">0.000000</rate>
       <rate type="Huntable">1.000000</rate>
       <rate type="Tree">1.000000</rate>
     </protoaction>
@@ -11502,6 +11510,8 @@
       <rate type="AbstractMine">0.600000</rate>
       <rate type="Plantation">0.500000</rate>
       <rate type="Herdable">2.000000</rate>
+      <rate type="zpDomesticPig">0.000000</rate>
+      <rate type="Pig">0.000000</rate>
       <rate type="Huntable">0.840000</rate>
       <rate type="AbstractBerryBush">0.670000</rate>
       <rate type="CommunityPlaza">0.100000</rate>
@@ -11543,6 +11553,8 @@
     <protoaction>
       <name>Hunting</name>
       <rate type="Herdable">1.000000</rate>
+      <rate type="zpDomesticPig">0.000000</rate>
+      <rate type="Pig">0.000000</rate>
       <rate type="Huntable">1.000000</rate>
       <rate type="Tree">1.000000</rate>
     </protoaction>
@@ -29317,6 +29329,8 @@
       <rate type="AbstractMine">0.600000</rate>
       <rate type="Plantation">0.500000</rate>
       <rate type="Herdable">2.000000</rate>
+      <rate type="zpDomesticPig">0.000000</rate>
+      <rate type="Pig">0.000000</rate>
       <rate type="Huntable">0.840000</rate>
       <rate type="AbstractBerryBush">0.670000</rate>
       <rate type="CommunityPlaza">0.100000</rate>
@@ -29358,6 +29372,8 @@
     <protoaction>
       <name>Hunting</name>
       <rate type="Herdable">1.000000</rate>
+      <rate type="zpDomesticPig">0.000000</rate>
+      <rate type="Pig">0.000000</rate>
       <rate type="Huntable">1.000000</rate>
       <rate type="Tree">1.000000</rate>
     </protoaction>
@@ -71481,6 +71497,8 @@
       <rate type="AbstractMine">0.600000</rate>
       <rate type="Plantation">0.500000</rate>
       <rate type="Herdable">2.000000</rate>
+      <rate type="zpDomesticPig">0.000000</rate>
+      <rate type="Pig">0.000000</rate>
       <rate type="Huntable">0.840000</rate>
       <rate type="AbstractBerryBush">0.670000</rate>
       <rate type="CommunityPlaza">0.100000</rate>
@@ -71522,6 +71540,8 @@
     <protoaction>
       <name>Hunting</name>
       <rate type="Herdable">1.000000</rate>
+      <rate type="zpDomesticPig">0.000000</rate>
+      <rate type="Pig">0.000000</rate>
       <rate type="Huntable">1.000000</rate>
       <rate type="Tree">1.000000</rate>
     </protoaction>
