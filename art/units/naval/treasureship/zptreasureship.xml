@@ -157,7 +157,7 @@
                 <logic type="Destruction">
                     <p0>
                         <assetreference type="GrannyModel">
-                            <file>units\asians\spc\treasure_ship\spc_treasure_boat_dmg</file>
+                            <file>units\naval\treasureship\zptreasureship_dmg</file>
                         </assetreference>
                     </p0>
                     <p0.0001>
@@ -182,7 +182,7 @@
     </component>
     <component>battleshipDeath
         <assetreference type="GrannyModel">
-            <file>units\asians\spc\treasure_ship\spc_treasure_boat_dmg</file>
+            <file>units\naval\treasureship\zptreasureship_dmg</file>
         </assetreference>
         <decal>
             <effecttype>default</effecttype>
