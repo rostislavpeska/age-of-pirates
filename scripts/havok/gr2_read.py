@@ -161,5 +161,5 @@ if __name__ == '__main__':
             bones = g.array(sk['Bones'])
             print(f"skeleton '{sk['Name']}': {len(bones)} bones, LODType {sk.get('LODType')}")
             for b in bones[:8] + bones[-3:]:
-                lt = b['LocalTransform']; print(f"   {b['Name']:34} parent={b['ParentIndex'][0]:4} pos={tuple(round(x,3) for x in lt[1:4])} quat={tuple(round(x,3) for x in lt[4:8])} lod={b.get('LODError')}")
+                lt = b['Transform']; print(f"   {b['Name']:34} parent={b['ParentIndex'][0]:4} pos={tuple(round(x,3) for x in lt[1:4])} quat={tuple(round(x,3) for x in lt[4:8])} lod={b.get('LODError')}")
     print('meshes:', r['Meshes'][1] if r.get('Meshes') else None, '| models:', r['Models'][1] if r.get('Models') else None)
