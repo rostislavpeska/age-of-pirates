@@ -45,7 +45,10 @@ def gxo_world(path):
         t = l.split()
         if t and t[0] == 'b':
             name = t[1].strip('"'); par = int(t[2]); f = [float(x) for x in t[3:15]]
-            order.append(name); raw[name] = (par, np.array(f[0:9]).reshape(3, 3), np.array(f[9:12]))
+            # the GXO stores the 3x3 as row vectors (3ds Max convention): transpose to a column-vector
+            # rotation. Verified 2026-09-14: all 24 muzzle bones point outward along local +Y only this way
+            # (read untransposed they came out 180 deg turned in game).
+            order.append(name); raw[name] = (par, np.array(f[0:9]).reshape(3, 3).T, np.array(f[9:12]))
     world = {}
     for name in order:
         par, R, t = raw[name]
