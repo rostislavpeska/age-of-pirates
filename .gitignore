@@ -34,3 +34,6 @@ scripts/aitest/STOP
 
 # external reference clones - never committed
 references/
+
+# local-only skill: converter harness bound to this PC (WSL+Wine paths)
+.claude/skills/gxo-convert/
