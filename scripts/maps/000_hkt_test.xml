@@ -1,0 +1,5 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo displayNameID = "300052" detailsText = "Destruction physics test bench: House, Saloon and Sheriff Office 14 m from player 1 start; 700 damage at 25 s, death at 45 s."
+    imagepath = "ui\random_map\atols\atols_mini" cannotReplace = "" loadBackground = "ui\random_map\atols\atols_map">
+   <loadss>ui\random_map\atols\atols_01</loadss>
+</mapinfo>
