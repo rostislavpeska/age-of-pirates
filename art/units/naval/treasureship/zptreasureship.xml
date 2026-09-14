@@ -155,16 +155,16 @@
     </attachment>
     <component>battleship
                 <logic type="Destruction">
-                    <p0>
+                    <p1>
                         <assetreference type="GrannyModel">
-                            <file>units\asians\spc\treasure_ship\spc_treasure_boat_dmg</file>
+                            <file>units\naval\treasureship\zptreasureship_dmg</file>
                         </assetreference>
-                    </p0>
-                    <p0.0001>
+                    </p1>
+                    <p99>
                         <assetreference type="GrannyModel">
                             <file>units\naval\treasureship\zptreasureship</file>
                         </assetreference>
-                    </p0.0001>
+                    </p99>
                 </logic>
         <decal>
             <effecttype>default</effecttype>
@@ -182,7 +182,7 @@
     </component>
     <component>battleshipDeath
         <assetreference type="GrannyModel">
-            <file>units\asians\spc\treasure_ship\spc_treasure_boat_dmg</file>
+            <file>units\naval\treasureship\zptreasureship_dmg</file>
         </assetreference>
         <decal>
             <effecttype>default</effecttype>
@@ -202,7 +202,7 @@
         </assetreference>
         <component>battleship</component>
         <simskeleton>
-            <model>units\naval\treasureship\zptreasureship</model>
+            <model>units\naval\treasureship\zptreasureship_dmg</model>
         </simskeleton>
         <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
         <attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach>
@@ -216,7 +216,7 @@
         </assetreference>
         <component>battleship</component>
         <simskeleton>
-            <model>units\naval\treasureship\zptreasureship</model>
+            <model>units\naval\treasureship\zptreasureship_dmg</model>
         </simskeleton>
         <attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach>
         <attach a="civflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"></attach>
@@ -228,7 +228,7 @@
         </assetreference>
         <component>battleship</component>
         <simskeleton>
-            <model>units\naval\treasureship\zptreasureship</model>
+            <model>units\naval\treasureship\zptreasureship_dmg</model>
         </simskeleton>
         <attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
         <attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach>
@@ -258,7 +258,7 @@
         </assetreference>
         <component>battleship</component>
         <simskeleton>
-            <model>units\naval\treasureship\zptreasureship</model>
+            <model>units\naval\treasureship\zptreasureship_dmg</model>
         </simskeleton>
         <attach a="Fishing_net" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
         <attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach>
