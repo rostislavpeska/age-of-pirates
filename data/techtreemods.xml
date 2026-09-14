@@ -21346,6 +21346,9 @@
         <target type="ProtoUnit">zpGreatBasilica</target>
       </effect>
       <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCLondonBasilica</target>
+      </effect>
+      <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCSanMarco</target>
       </effect>
       <effect type="Data" action="AutoGather" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
