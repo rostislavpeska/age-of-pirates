@@ -1,0 +1,50 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\asians\spc\treasure_ship\textures\spc_treasure_ship_stage_final_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="units\asians\spc\treasure_ship\textures\spc_treasure_ship_stage_final_matA_Normals">
+      </texture>
+      <texture name="Masks" override="units\asians\spc\treasure_ship\textures\spc_treasure_ship_stage_final_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default_doublesided">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="units\asians\spc\treasure_ship\textures\spc_treasure_ship_stage_final_matb_basecolor">
+      </texture>
+      <texture name="Normals" override="units\asians\spc\treasure_ship\textures\spc_treasure_ship_stage_final_matB_Normals">
+      </texture>
+      <texture name="Masks" override="units\asians\spc\treasure_ship\textures\spc_treasure_ship_stage_final_matB_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matc">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="homecity\china_spc_ship\hull\textures\hulldragon_matA_BaseColor">
+      </texture>
+      <texture name="Normals" override="homecity\china_spc_ship\hull\textures\hulldragon_matA_Normals">
+      </texture>
+      <texture name="Masks" override="homecity\china_spc_ship\hull\textures\hulldragon_matA_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matz">
+    <materialdef name="destructible">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="generic_props\destruction\textures\destructionsheet_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="generic_props\destruction\textures\destructionsheet_mata_normals">
+      </texture>
+      <texture name="Masks" override="generic_props\destruction\textures\destructionsheet_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

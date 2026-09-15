@@ -1,0 +1,1 @@
+Treasure Ship furling sails - backup v4 FINAL (2026-09-15): intact + damaged models built at Granny level from the vanilla files, 8 sails, sails furl (idle) / hoist (walk) in both stages, masts fall with their sails, destruction works, garrison flag only, poses key the 88 sail bones only (zptreasureship_idle/walk.gxo are the pose sources). Sources: see bckp_dmg_v2/README.txt.

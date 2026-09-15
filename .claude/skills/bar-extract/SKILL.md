@@ -157,3 +157,16 @@ all archives parse with zero leftover bytes and fully contiguous data regions;
 16,800/16,800 XMB files decompile with byte-exact stream consumption;
 output cross-checked against an independently written reference parser (125/125
 identical) and against the mod's own `.xml`/`.xml.xmb` pairs.
+
+## Compiling XML back to XMB (no Resource Manager needed)
+
+`scripts/xmbc.py` is the inverse of the decoder: X1/XR v4 payload inside the alz4 wrapper,
+verified 2026-09-13 against Resource Manager's own output (same length conventions, decode-back
+tree identical, game loads it). Needs `pip install lz4`.
+
+```bash
+python .claude/skills/bar-extract/scripts/xmbc.py check data/protomods.xml   # compile in memory + decode back + compare
+python .claude/skills/bar-extract/scripts/xmbc.py build data/protomods.xml   # writes data/protomods.xml.xmb (refuses if the check differs)
+```
+
+`build` is what makes a `data/*.xml` edit real - the game loads the `.xmb`. Commit both files.
