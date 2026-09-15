@@ -245,5 +245,6 @@ for act, fn in ((idle, 'zptreasureship_idle.fbx'), (walk, 'zptreasureship_walk.f
                              bake_anim_use_nla_strips=False, bake_anim_use_all_actions=False, bake_anim_force_startend_keying=True,
                              bake_anim_step=1.0, bake_anim_simplify_factor=0.0, **FBX)
     print('EXPORTED', fn)
+idle.use_fake_user = walk.use_fake_user = True                 # keep both poses in the .blend (the inactive one has no user)
 arm.animation_data.action = idle; sc.frame_set(1)
 bpy.ops.wm.save_as_mainfile(filepath=os.path.join(out, 'rig.blend')); print('SAVED rig.blend')
