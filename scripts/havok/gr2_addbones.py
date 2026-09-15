@@ -136,6 +136,11 @@ def main():
         t = l.split()
         if t and t[0] == 'b': gxo_parent[t[1].strip('"')] = order[int(t[2]) - 1] if int(t[2]) else None
     world = {}                                                             # engine-frame world (R, t) of every new bone
+    existing_world = {}                                                    # engine-frame world of the file's own bones (parent chain)
+    for i, b in enumerate(bones):
+        t = b['Transform']; R = quat_to_R(t[4:8]) @ np.array(t[8:17]).reshape(3, 3); tt = np.array(t[1:4]); p = b['ParentIndex'][0]
+        if p >= 0: PR, pt = existing_world[names[p]]; existing_world[b['Name']] = (PR @ R, pt + PR @ tt)
+        else: existing_world[b['Name']] = (R, tt)
     for n in todo:
         Rg, tg = gw[n]
         Rw = M @ Rg @ M.T; tw = a.scale * (M @ tg)                       # world in the engine frame
@@ -143,6 +148,8 @@ def main():
         pn = gxo_parent.get(n)
         if pn in world:                                                    # parent is another new bone (scale chain): local to it
             PR, pt = world[pn]; parent_idx = nb + new_names.index(pn)
+        elif pn in names and pn != names[0]:                               # parent is an existing bone (a mast piece): local to it
+            PR, pt = existing_world[pn]; parent_idx = names.index(pn)
         else:                                                              # parent is the GXO root -> the model root
             PR, pt = R_root, t_root; parent_idx = 0
         Rl = PR.T @ Rw; tl = PR.T @ (tw - pt)

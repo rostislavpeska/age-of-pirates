@@ -200,6 +200,9 @@
         <assetreference type="GrannyAnim">
             <file>units\naval\treasureship\zptreasureship_idle</file>
         </assetreference>
+        <simskeleton>
+            <model>units\naval\treasureship\zptreasureship_dmg</model>
+        </simskeleton>
         <component>battleship</component>
         <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
     </anim>
@@ -208,12 +211,18 @@
             <file>units\naval\treasureship\zptreasureship_idle</file>
             <tag type="Attack">0.45</tag>
         </assetreference>
+        <simskeleton>
+            <model>units\naval\treasureship\zptreasureship_dmg</model>
+        </simskeleton>
         <component>battleship</component>
     </anim>
     <anim>Walk
         <assetreference type="GrannyAnim">
             <file>units\naval\treasureship\zptreasureship_walk</file>
         </assetreference>
+        <simskeleton>
+            <model>units\naval\treasureship\zptreasureship_dmg</model>
+        </simskeleton>
         <component>battleship</component>
         <attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
     </anim>
@@ -238,6 +247,9 @@
             <file>units\naval\treasureship\zptreasureship_idle</file>
             <tag type="SpecificSoundSet" checkvisible="1" set="SplashSmall">0.89</tag>
         </assetreference>
+        <simskeleton>
+            <model>units\naval\treasureship\zptreasureship_dmg</model>
+        </simskeleton>
         <component>battleship</component>
         <attach a="Fishing_net" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
     </anim>

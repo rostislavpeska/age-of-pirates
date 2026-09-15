@@ -118,15 +118,19 @@ def main():
             tris = np.array(by[name]); used = []; remap = {}
             for i in tris.flatten():
                 if i not in remap: remap[i] = len(used); used.append(i)
-            vbytes = b''.join(bytes(vbuf[vbase + i * stride: vbase + (i + 1) * stride]) for i in used)
-            voff = B.alloc(1, vbytes, 4)
-            new_ind = np.vectorize(remap.get)(tris).astype('<i4').tobytes(); ioff = B.alloc(2, new_ind, 4)
+            vbytes = bytearray(b''.join(bytes(vbuf[vbase + i * stride: vbase + (i + 1) * stride]) for i in used))
+            bi = next((off for mm, off in g.layout(*vtype)[0] if mm['name'] == 'BoneIndices'), None)
+            if bi is not None:                                            # destruction meshes: per-vertex bone index -> the new mesh's only binding
+                for k in range(len(used)): vbytes[k * stride + bi] = 0
+            vsec, isec = vdata[0], idx[2][0]                          # same sections as the source (1/2 rigid, 3/4 deformable)
+            voff = B.alloc(vsec, bytes(vbytes), 4)
+            new_ind = np.vectorize(remap.get)(tris).astype('<i4').tobytes(); ioff = B.alloc(isec, new_ind, 4)
             # VertexData record: Vertices (type ptr, count, data ptr) + VertexComponentNames (shared) + VertexAnnotationSets (none)
-            vdo = B.alloc(0, bytes(44)); B.ptr(0, vdo, vtype); B.i32(0, vdo + 8, len(used)); B.ptr(0, vdo + 12, (1, voff))
+            vdo = B.alloc(0, bytes(44)); B.ptr(0, vdo, vtype); B.i32(0, vdo + 8, len(used)); B.ptr(0, vdo + 12, (vsec, voff))
             vcn = vrec['VertexComponentNames']; B.i32(0, vdo + 20, vcn[1]); B.ptr(0, vdo + 24, vcn[2])
             # TriTopology record: one group, int32 indices
             grp = B.alloc(0, struct.pack('<3i', 0, 0, len(tris)))
-            tpo = B.alloc(0, bytes(132)); B.i32(0, tpo, 1); B.ptr(0, tpo + 4, (0, grp)); B.i32(0, tpo + 12, 3 * len(tris)); B.ptr(0, tpo + 16, (2, ioff))
+            tpo = B.alloc(0, bytes(132)); B.i32(0, tpo, 1); B.ptr(0, tpo + 4, (0, grp)); B.i32(0, tpo + 12, 3 * len(tris)); B.ptr(0, tpo + 16, (isec, ioff))
             # BoneBinding: bone name, OBB, no triangle list (as vanilla)
             sub = pos[used]; bbo = B.alloc(0, bytes(44)); B.ptr(0, bbo, B.string(rig_mb[name]))
             struct.pack_into('<6f', B.sec[0], bbo + 8, *sub.min(0), *sub.max(0))
@@ -139,9 +143,10 @@ def main():
             new_mesh_ptrs.append((0, mo)); new_topo_ptrs.append((0, tpo)); new_vd_ptrs.append((0, vdo))
             report.append((name, rig_mb[name], len(used), len(tris)))
         # --- the source mesh keeps its vertex data, gets a topology with the remaining triangles
-        hull = np.array(hull); ioff = B.alloc(2, hull.astype('<i4').tobytes(), 4)
+        isec = idx[2][0]                                              # the source's own index section
+        hull = np.array(hull); ioff = B.alloc(isec, hull.astype('<i4').tobytes(), 4)
         grp = B.alloc(0, struct.pack('<3i', 0, 0, len(hull)))
-        tpo = B.alloc(0, bytes(132)); B.i32(0, tpo, 1); B.ptr(0, tpo + 4, (0, grp)); B.i32(0, tpo + 12, 3 * len(hull)); B.ptr(0, tpo + 16, (2, ioff))
+        tpo = B.alloc(0, bytes(132)); B.i32(0, tpo, 1); B.ptr(0, tpo + 4, (0, grp)); B.i32(0, tpo + 12, 3 * len(hull)); B.ptr(0, tpo + 16, (isec, ioff))
         B.repoint(mloc[0], mloc[1] + 28, (0, tpo)); new_topo_ptrs.append((0, tpo))
         report.append((mrec['Name'], mrec['BoneBindings'] and g.array(mrec['BoneBindings'])[0]['BoneName'], nverts, len(hull)))
 
