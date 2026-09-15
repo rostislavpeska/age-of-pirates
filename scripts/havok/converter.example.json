@@ -3,7 +3,8 @@
 
   "backend": "manual",
 
-  "_wine-wsl": "GXOConverterAge3DE.exe under Wine inside a WSL distro (needed on PCs where Windows blocks the exe). Setup: the gxo-convert skill / OneDrive 'DE Converter' folder ('Install on this PC (run once).bat').",
+  "_converter": "The converter itself (GXOConverterAge3DE.exe + granny2_age3de.dll = GXO Exporter by Kevsoft, third-party, NOT part of this repo or its skills) has to be obtained from its author / the AoE3 DE modding community. Any tool that produces the same GXO text format works with the manual backend.",
+  "_wine-wsl": "The exe under Wine inside a WSL distro (needed on PCs where Windows blocks the exe). Setup guide: the gxo-convert skill (kept out of git).",
   "_wine-wsl_example": {"backend": "wine-wsl", "distro": "Ubuntu", "wineprefix": "$HOME/.wine_gxo", "exe": "$HOME/gxo/GXOConverterAge3DE.exe", "timeout": 900},
 
   "_native": "Run the exe directly (only where it is allowed to run - never launch it on a Smart App Control PC).",
