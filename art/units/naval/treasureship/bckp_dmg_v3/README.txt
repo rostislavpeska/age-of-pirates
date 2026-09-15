@@ -1,0 +1,1 @@
+Treasure Ship furling sails - backup v3 (2026-09-15): sails animate in both stages, destruction works, damaged root renamed Object02, root track dropped from the poses (zptreasureship_idle/walk.gxo = the pose sources in GXO form). Known issue at this point: garrison flag misplaced on the damaged model. Sources as in bckp_dmg_v2.
