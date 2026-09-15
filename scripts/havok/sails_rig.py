@@ -10,7 +10,7 @@ Exports the model FBX (rest pose) and one FBX per pose (armature only, 2 frames)
 
 usage: blender -b --python sails_rig.py -- split.blend old_base.fbx out_dir
 """
-import bpy, sys, os, json, math, collections, hashlib
+import bpy, sys, os, json, math, collections
 import numpy as np
 from mathutils import Vector, Matrix
 
@@ -109,11 +109,14 @@ for s in sails:
     P = np.array([s['obj_cloth'].matrix_world @ v.co for v in s['obj_cloth'].data.vertices])
     s['clo'], s['chi'] = P.min(0), P.max(0)
     s['root_world'] = np.array([(s['clo'][0] + s['chi'][0]) / 2, (s['clo'][1] + s['chi'][1]) / 2, s['clo'][2]])
-    s['bar_world'] = []
+    s['bar_world'] = []; s['bar_dir'] = []
     for o in s['obj_bars']:
         B = np.array([o.matrix_world @ v.co for v in o.data.vertices]); c = B.mean(0)
-        if s['mast_y'] is not None and B[:, 1].min() - 0.001 <= s['mast_y'] <= B[:, 1].max() + 0.001: c = np.array([c[0], s['mast_y'], c[2]])
-        s['bar_world'].append(c)
+        v = np.linalg.svd(B - c, full_matrices=False)[2][0]                     # the bar's long axis
+        if v[1] < 0: v = -v                                                      # pointing towards the stern (+Y)
+        if s['mast_y'] is not None and B[:, 1].min() - 0.001 <= s['mast_y'] <= B[:, 1].max() + 0.001 and abs(v[1]) > 0.5:
+            c = c + v * (s['mast_y'] - c[1]) / v[1]                              # pivot ON the bar where it crosses the mast
+        s['bar_world'].append(c); s['bar_dir'].append(v)
 
 # ---------------------------------------------------------------- units (proven convention: data in engine units, armature scale 0.01)
 SCALE = 2.54
@@ -167,30 +170,24 @@ for m in bpy.data.materials:
     tex = nt.nodes.new('ShaderNodeTexImage'); tex.image = img; nt.links.new(tex.outputs['Color'], bsdf.inputs['Base Color'])
     bsdf.inputs['Base Color'].default_value = col_; m.diffuse_color = col_
 
-# ---------------------------------------------------------------- poses: walk = hoisted (rest), idle = furled (Fuchuan numbers)
-# Fuchuan sail a, idle: root scale 0.197 along the sail, battens tilted about the across-ship axis
-# 28.7, 30.9, 23.7, 17.7, 12.3, 4.1, -2.3 deg from the root outwards; the user asked for "slightly" -> half of that.
-FUCHUAN_TILT = [28.7, 30.9, 23.7, 17.7, 12.3, 4.1, -2.3]
-TILT_FACTOR = 0.5
+# ---------------------------------------------------------------- poses: walk = hoisted (rest), idle = furled
+# The cloth is squashed vertically onto its boom (Fuchuan root scale, 0.197..0.248). The bars are rigid, so each one
+# FOLLOWS that squash: its pivot drops with the cloth and its slope flattens to atan(k * tan(slope)) - the affine image
+# of the bar's own axis - so every bar stays inside the compressed cloth instead of fanning out.
 COMPRESS = [0.20, 0.21, 0.25, 0.22, 0.24, 0.20]                    # per sail, Fuchuan range 0.197..0.248
-def tilt(u):                                                         # u = 0 at the root, 1 at the far end
-    x = u * (len(FUCHUAN_TILT) - 1); i = min(int(x), len(FUCHUAN_TILT) - 2); f = x - i
-    return TILT_FACTOR * (FUCHUAN_TILT[i] * (1 - f) + FUCHUAN_TILT[i + 1] * f)
-def jitter(name, span):                                              # deterministic per-bar variation
-    h = int(hashlib.md5(name.encode()).hexdigest()[:8], 16) / 0xffffffff; return (2 * h - 1) * span
 
 sc = bpy.context.scene; sc.render.fps = 30; sc.frame_start = 1; sc.frame_end = 2
 if not arm.animation_data: arm.animation_data_create()
 sail_bones = [b.name for b in arm.data.bones if b.name.startswith('bone_sail')]
-for pb in arm.pose.bones: pb.rotation_mode = 'XYZ'
+for pb in arm.pose.bones: pb.rotation_mode = 'QUATERNION'
 
 def key_all(frame):
     for n in sail_bones:
-        pb = arm.pose.bones[n]; pb.keyframe_insert('location', frame=frame); pb.keyframe_insert('rotation_euler', frame=frame); pb.keyframe_insert('scale', frame=frame)
+        pb = arm.pose.bones[n]; pb.keyframe_insert('location', frame=frame); pb.keyframe_insert('rotation_quaternion', frame=frame); pb.keyframe_insert('scale', frame=frame)
 
 walk = bpy.data.actions.new('zptreasureship_walk'); arm.animation_data.action = walk
 for n in sail_bones:
-    pb = arm.pose.bones[n]; pb.location = (0, 0, 0); pb.rotation_euler = (0, 0, 0); pb.scale = (1, 1, 1)
+    pb = arm.pose.bones[n]; pb.location = (0, 0, 0); pb.rotation_quaternion = (1, 0, 0, 0); pb.scale = (1, 1, 1)
 for f in (1, 2): key_all(f)
 
 idle = bpy.data.actions.new('zptreasureship_idle'); arm.animation_data.action = idle
@@ -198,16 +195,19 @@ pose_report = []
 for i, s in enumerate(sails):
     k = COMPRESS[i % len(COMPRESS)]
     arm.pose.bones['bone_sail' + s['letter']].scale = (1, k, 1)      # bone Y = up: the cloth drops onto its boom
-    z0 = s['root_world'][2]; height = s['chi'][2] - z0
-    for j, c in enumerate(s['bar_world']):
+    z0 = s['root_world'][2]
+    for j, (c, v) in enumerate(zip(s['bar_world'], s['bar_dir'])):
         pb = arm.pose.bones[f"bone_sail{s['letter']}mast_{j+1:02d}"]
-        u = (c[2] - z0) / height
-        dz = (k - 1) * (c[2] - z0) * 254.0                    # bars stack like the cloth; world -> engine units is x254
+        dz = (k - 1) * (c[2] - z0) * 254.0                    # the pivot drops with the cloth; world -> engine units is x254
+        w = np.array([v[0], v[1], k * v[2]]); w = w / np.linalg.norm(w)         # the bar's axis after the squash
+        axis = np.cross(v, w); sa = np.linalg.norm(axis); ang = math.atan2(sa, float(np.dot(v, w)))
+        axis = axis / sa if sa > 1e-9 else np.array([1.0, 0, 0])
+        al = (axis[0], axis[2], -axis[1])                       # world -> bone local (bone X = world X, Y = up, Z = -Y)
         pb.location = (0, dz, 0)                               # along the bone (= up), engine units
-        pb.rotation_euler = (math.radians(tilt(u) + jitter(pb.name + 'x', 3.0)), math.radians(jitter(pb.name + 'y', 2.0)), 0)
-        pose_report.append((pb.name, round(float(u), 2), round(float(dz), 2), round(math.degrees(pb.rotation_euler[0]), 1), round(math.degrees(pb.rotation_euler[1]), 1)))
+        pb.rotation_quaternion = (math.cos(ang / 2), *(math.sin(ang / 2) * a for a in al))   # minimal rotation v -> w
+        pose_report.append((pb.name, round(float(dz), 2), tuple(round(float(x), 2) for x in v), round(math.degrees(ang), 1)))
 for f in (1, 2): key_all(f)
-print('IDLE POSE (bar, u, drop, tilt, yaw):', pose_report[:8], '...')
+print('IDLE POSE (bar, drop, axis, turn deg):', pose_report[:8], '...')
 json.dump(dict(sails=[dict(name=s['name'], letter=s['letter'], bars=len(s['obj_bars']), root=[float(x) for x in s['root_world']], mast_y=None if s['mast_y'] is None else float(s['mast_y'])) for s in sails],
                pose=pose_report), open(os.path.join(out, 'rig.json'), 'w'), indent=1)
 
@@ -223,8 +223,8 @@ sc.render.resolution_x = 1600; sc.render.resolution_y = 900
 cam = bpy.data.cameras.new('cam'); cam.type = 'ORTHO'; camobj = bpy.data.objects.new('cam', cam); sc.collection.objects.link(camobj); sc.camera = camobj
 allP = np.array([o.matrix_world @ v.co for o in meshes for v in o.data.vertices]); lo, hi = allP.min(0), allP.max(0)
 centre = Vector(((lo + hi) / 2).tolist()); size = float(np.linalg.norm(hi - lo)); cam.ortho_scale = size * 1.05
-d = Vector((-1, 0, 0)); camobj.location = centre - d * size * 2; camobj.rotation_euler = d.to_track_quat('-Z', 'Y').to_euler()
-for act, name in ((idle, 'idle_side.png'), (walk, 'walk_side.png')):
+for act, name, dv in ((idle, 'idle_side.png', (-1, 0, 0)), (walk, 'walk_side.png', (-1, 0, 0)), (idle, 'idle_quarter.png', (-1, 1, -0.6))):
+    d = Vector(dv).normalized(); camobj.location = centre - d * size * 2; camobj.rotation_euler = d.to_track_quat('-Z', 'Y').to_euler()
     arm.animation_data.action = act; sc.frame_set(1)
     sc.render.filepath = os.path.join(out, name); bpy.ops.render.render(write_still=True); print('RENDER', name)
 bpy.data.objects.remove(camobj, do_unlink=True)
@@ -233,7 +233,7 @@ bpy.data.objects.remove(camobj, do_unlink=True)
 FBX = dict(add_leaf_bones=False, mesh_smooth_type='FACE', axis_forward='-Z', axis_up='Y', global_scale=1.0, apply_unit_scale=True,
            apply_scale_options='FBX_SCALE_NONE', bake_space_transform=False, path_mode='COPY', embed_textures=False)
 arm.animation_data.action = None
-for pb in arm.pose.bones: pb.location = (0, 0, 0); pb.rotation_euler = (0, 0, 0); pb.scale = (1, 1, 1)
+for pb in arm.pose.bones: pb.location = (0, 0, 0); pb.rotation_quaternion = (1, 0, 0, 0); pb.scale = (1, 1, 1)
 bpy.ops.object.select_all(action='DESELECT'); arm.select_set(True)
 for o in meshes: o.select_set(True)
 bpy.ops.export_scene.fbx(filepath=os.path.join(out, 'zptreasureship.fbx'), use_selection=True, object_types={'ARMATURE', 'MESH'}, bake_anim=False, **FBX)
