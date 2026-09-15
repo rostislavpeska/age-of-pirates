@@ -49,12 +49,14 @@ def gxo_world(path):
             # rotation. Verified 2026-09-14: all 24 muzzle bones point outward along local +Y only this way
             # (read untransposed they came out 180 deg turned in game).
             order.append(name); raw[name] = (par, np.array(f[0:9]).reshape(3, 3).T, np.array(f[9:12]))
+    # The GXO b line is the bone's ABSOLUTE (model-space) transform, not parent-relative: in a chain of bones
+    # with identical rest positions every b line repeats the same translation (measured 2026-09-15 on the
+    # scale chain; composing parent @ child doubled the positions). The GXO root's own transform (the
+    # converter's axis conversion) is ignored - mesh vertices, our calibration, do not carry it.
     world = {}
     for name in order:
         par, R, t = raw[name]
-        if par == 0: world[name] = (np.eye(3), np.zeros(3))     # the GXO root carries the converter's axis conversion;
-        else:                                                  # mesh vertices (our calibration) do not, so treat it as identity
-            PR, pt = world[order[par - 1]]; world[name] = (PR @ R, pt + PR @ t)
+        world[name] = (np.eye(3), np.zeros(3)) if par == 0 else (R, t)
     return order, world
 
 
@@ -129,19 +131,30 @@ def main():
     print(f'{len(names)} bones in {os.path.basename(a.dmg)}; adding {len(todo)}: {todo}')
     # ---- build the new bone records
     new_recs, new_names = [], []
+    gxo_parent = {}                                                        # GXO parent name per bone (for chains)
+    for l in open(a.gxo, encoding='utf-8', errors='replace'):
+        t = l.split()
+        if t and t[0] == 'b': gxo_parent[t[1].strip('"')] = order[int(t[2]) - 1] if int(t[2]) else None
+    world = {}                                                             # engine-frame world (R, t) of every new bone
     for n in todo:
         Rg, tg = gw[n]
         Rw = M @ Rg @ M.T; tw = a.scale * (M @ tg)                       # world in the engine frame
-        Rl = R_root.T @ Rw; tl = R_root.T @ (tw - t_root)                  # local to the root bone
+        world[n] = (Rw, tw)
+        pn = gxo_parent.get(n)
+        if pn in world:                                                    # parent is another new bone (scale chain): local to it
+            PR, pt = world[pn]; parent_idx = nb + new_names.index(pn)
+        else:                                                              # parent is the GXO root -> the model root
+            PR, pt = R_root, t_root; parent_idx = 0
+        Rl = PR.T @ Rw; tl = PR.T @ (tw - pt)
         q = R_to_quat(Rl)
         Mc = np.eye(4); Mc[:3, :3] = Rw; Mc[:3, 3] = tw; inv = np.linalg.inv(Mc).T
         rec = bytearray(164)
-        struct.pack_into('<i', rec, 8, 0)                                  # parent = root
+        struct.pack_into('<i', rec, 8, parent_idx)
         struct.pack_into('<I3f4f9f', rec, 12, 3, *tl, *q, 1, 0, 0, 0, 1, 0, 0, 0, 1)
         struct.pack_into('<16f', rec, 80, *inv.flatten())
         struct.pack_into('<f', rec, 144, a.lod)
         new_recs.append(rec); new_names.append(n)
-        print(f'   + {n:26} world pos {np.round(tw, 3)}  local pos {np.round(tl, 3)} quat {np.round(q, 3)}')
+        print(f'   + {n:26} parent {parent_idx:3d} world pos {np.round(tw, 3)}  local pos {np.round(tl, 3)} quat {np.round(q, 3)}')
     if a.inplace:
         return build_inplace(g, a, bp, nb, bsize, count_field, new_recs, new_names)
     # ---- new section (reuse the first empty one): [old bone bytes][new bones][name strings]
