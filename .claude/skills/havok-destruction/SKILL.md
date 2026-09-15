@@ -60,3 +60,12 @@ damaged file's own sections 3/4 - other sections crash the loader). Full sequenc
 
 Related: **gr2-granny-edit** (formats, GXO grammar, verification ladder, converter note), **unit-bones**,
 **ship-sails**; memory notes `hkt-destruction-format-decoded`, `animtrans-pattern-damaged-models`.
+
+## Reference: the Havok 2018.1 Content Tools manual (not in the repo)
+
+Havok's own 2470-page manual (filter manager, rigid-body / destruction export, preview, hkt tagfiles) is
+proprietary documentation, so it is NOT committed to this public repo. The owner keeps it in OneDrive, shared by
+all the owner's devices: `DE Converter\docs\Havok_2018-1-0_Content_Tools_Manual.pdf`, with a full text extract
+`...Manual.txt` beside it (2.1 M characters; grep it: `grep -n -i "keyframed" ".../docs/Havok_2018-1-0_Content_Tools_Manual.txt"`,
+each page starts with `=== page N ===`). Use it for the meaning of hkt fields and filters before guessing; the
+engine-specific facts (the four hkSimpleProperty keys, ignored velocities) are the mod's own measurements above.
