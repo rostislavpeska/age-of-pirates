@@ -128,9 +128,16 @@ bpy.ops.object.mode_set(mode='EDIT'); eb = arm.data.edit_bones; root = eb['Objec
 for b in eb: b.head = b.head * SCALE; b.tail = b.tail * SCALE
 def newbone(name, head_world, par=None, length=1.0):
     b = eb.new(name); b.head = (inv @ Vector(head_world)) * SCALE; b.tail = b.head + Vector((0, 0, length)); b.parent = par or root; return b
+def chainbone(name, head_world, par, length=1.0):
+    """bone pointing along armature +Y with zero roll = identity rest rotation relative to a +Y parent (the destroyer's
+    sail chain: the scaled bone carries a PURE scale key, rotation+scale in one key is what the engine mishandled)"""
+    b = eb.new(name); b.head = (inv @ Vector(head_world)) * SCALE; b.tail = b.head + Vector((0, length, 0)); b.roll = 0; b.parent = par; return b
 for s in sails:
-    newbone('bone_sail' + s['letter'], s['root_world'].tolist(), length=2.0)
-    for k, c in enumerate(s['bar_world']): newbone(f"bone_sail{s['letter']}mast_{k+1:02d}", c.tolist(), length=0.6)
+    L = s['letter']; p = s['root_world'].tolist()
+    rot = chainbone(f'bone_sail{L}_rot', p, root, 1.5)             # destroyer: bone_sail_front_rot (rotation only, unused here)
+    scl = chainbone(f'bone_sail{L}', p, rot, 1.0)                  # destroyer: bone_sail_front (pure scale key)
+    chainbone(f'bone_sail{L}_bottom', p, scl, 0.5)                 # destroyer: bone_sail_front_bottom (the mesh is bound here)
+    for k, c in enumerate(s['bar_world']): newbone(f"bone_sail{L}mast_{k+1:02d}", c.tolist(), length=0.6)
 tops = sorted(masts, key=lambda m: -st[m]['hi'][2])
 for name, m in zip(['bone_banner_a1', 'bone_banner_a2', 'bone_banner_a3'], tops[:3]):
     newbone(name, (st[m]['c'][0], st[m]['c'][1], st[m]['hi'][2]))
@@ -156,7 +163,7 @@ def bind(o, bone):
     o.modifiers.new('Armature', 'ARMATURE').object = arm
     o.parent = arm; o.parent_type = 'OBJECT'
 for s in sails:
-    bind(s['obj_cloth'], 'bone_sail' + s['letter'])
+    bind(s['obj_cloth'], f"bone_sail{s['letter']}_bottom")            # mesh on the child of the scaled bone (destroyer pattern)
     for k, o in enumerate(s['obj_bars']): bind(o, f"bone_sail{s['letter']}mast_{k+1:02d}")
 for mat, o in hull.items(): bind(o, base[mat][1])
 
@@ -194,7 +201,7 @@ idle = bpy.data.actions.new('zptreasureship_idle'); arm.animation_data.action = 
 pose_report = []
 for i, s in enumerate(sails):
     k = COMPRESS[i % len(COMPRESS)]
-    arm.pose.bones['bone_sail' + s['letter']].scale = (1, k, 1)      # bone Y = up: the cloth drops onto its boom
+    arm.pose.bones['bone_sail' + s['letter']].scale = (1, 1, k)      # +Y bone, zero roll: local Z = up; pure scale key
     z0 = s['root_world'][2]
     for j, (c, v) in enumerate(zip(s['bar_world'], s['bar_dir'])):
         pb = arm.pose.bones[f"bone_sail{s['letter']}mast_{j+1:02d}"]
