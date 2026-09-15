@@ -202,9 +202,6 @@
         </assetreference>
         <component>battleship</component>
         <attach a="IdleWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
-        <attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach>
-        <attach a="civflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"></attach>
-        <attach a="pendentflag_a3" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"></attach>
     </anim>
     <anim>RangedAttack
         <assetreference type="GrannyAnim">
@@ -212,9 +209,6 @@
             <tag type="Attack">0.45</tag>
         </assetreference>
         <component>battleship</component>
-        <attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach>
-        <attach a="civflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"></attach>
-        <attach a="pendentflag_a3" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"></attach>
     </anim>
     <anim>Walk
         <assetreference type="GrannyAnim">
@@ -222,9 +216,6 @@
         </assetreference>
         <component>battleship</component>
         <attach a="MoveWaterFoam" frombone="ATTACHPOINT" tobone="ATTACHPOINT" syncanims="0"></attach>
-        <attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach>
-        <attach a="civflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"></attach>
-        <attach a="pendentflag_a3" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"></attach>
     </anim>
     <anim>Death
         <component>battleshipDeath</component>
@@ -249,8 +240,5 @@
         </assetreference>
         <component>battleship</component>
         <attach a="Fishing_net" frombone="MASTER" tobone="MASTER" syncanims="0"></attach>
-        <attach a="civflag_a1" frombone="ATTACHPOINT" tobone="bone_banner_a1" syncanims="0"></attach>
-        <attach a="civflag_a2" frombone="ATTACHPOINT" tobone="bone_banner_a2" syncanims="0"></attach>
-        <attach a="pendentflag_a3" frombone="ATTACHPOINT" tobone="bone_banner_a3" syncanims="0"></attach>
     </anim>
 </animfile>
