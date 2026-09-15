@@ -49,10 +49,9 @@ for names in groups.values():
 cloth = [g for g in G if g['mats'] == {'matb'} and g['nv'] >= 60 and g['c'][2] > 0.02 and g['hi'][2] > 0.028]
 cloth.sort(key=lambda g: g['c'][1])
 sails = []
-for g in cloth:
-    if sails and abs(g['c'][1] - sails[-1]['cy']) < 0.004:
-        s = sails[-1]; s['groups'].append(g); s['cy'] = np.mean([x['c'][1] for x in s['groups']])
-    else: sails.append(dict(groups=[g], cy=g['c'][1]))
+for g in cloth:                                             # every sheet is its own sail: the twin sail's halves sit on two masts
+    sails.append(dict(groups=[g], cy=g['c'][1]))
+sails.sort(key=lambda s: (round(s['cy'], 3), s['groups'][0]['c'][0]))
 used = set()
 for i, s in enumerate(sails):
     s['name'] = f'sail_{i+1:02d}'; s['letter'] = 'abcdefgh'[i]
