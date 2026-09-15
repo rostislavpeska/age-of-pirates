@@ -74010,7 +74010,7 @@
   </unit>
   <unit id="21170" name="zpSPCLondonBasilica">
     <dbid>21170</dbid>
-    <displaynameid>503432</displaynameid>
+    <displaynameid>502063</displaynameid>
     <editornameid>503432</editornameid>
     <obstructionradiusx>7.8000</obstructionradiusx>
     <obstructionradiusz>8.5000</obstructionradiusz>
@@ -74023,13 +74023,13 @@
     <physicsinfo>house</physicsinfo>
     <placementfile>buildinglarge.xml</placementfile>
     <icon>resources\art\buildings\basilica\basilica_icon.png</icon>
-    <portraiticon>resources\art\buildings\basilica\basilica_portrait.png</portraiticon>
     <minimapicon>ui\minimap\religious_small</minimapicon>
-    <rollovertextid>123017</rollovertextid>
-    <shortrollovertextid>123016</shortrollovertextid>
+    <portraiticon>resources\art\buildings\spc\british_basilica.png</portraiticon>
+    <rollovertextid>502310</rollovertextid>
+    <shortrollovertextid>502309</shortrollovertextid>
     <initialhitpoints>5000.0000</initialhitpoints>
     <maxhitpoints>5000.0000</maxhitpoints>
-    <los>12.0000</los>
+    <los>24.0000</los>
     <displayedrange>20.0000</displayedrange>
     <buildpoints>40.0000</buildpoints>
     <buildlimit>1</buildlimit>
@@ -74063,13 +74063,14 @@
     <unittype>AbstractChurch</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
-    <train row="0" page="0" column="0">MercElmeti</train>
-    <train row="0" page="0" column="1">MercSwissPikeman</train>
-    <train row="0" page="0" column="2">deMercPistoleer</train>
-    <tech row="0" page="1" column="0">zpSPCArtPatronClone</tech>
-    <tech row="0" page="1" column="1">zpSPCVenetianFleet</tech>
-    <tech row="0" page="1" column="2">zpSPCPapalBlessingClone</tech>
-    <tech row="0" page="1" column="3">DESPCExcommunication</tech>
+    <flag>AllowAutoGarrison</flag>
+    <tech row="0" page="11" column="0">zpSPCArtPatronCathedral</tech>
+    <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
+    <tech row="0" page="11" column="1">zpSPCBlessedCitySingle</tech>
+    <tech row="0" page="11" column="2">DESPCPapalLegate</tech>
+    <tech row="0" page="11" column="2">zpSPCPapalLegateSingle</tech>
+    <tech row="0" page="11" column="3">zpSPCPapalBlessingPrague</tech>
+    <tech row="0" page="11" column="4">DESPCExcommunication</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -74088,14 +74089,14 @@
     <flag>Invulnerable</flag>
     <flag>NotDeleteable</flag>
     <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>ShowAreaHealRate</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
-    <command page="10" column="5">Eject</command>
-    <command page="11" column="1">Abilities</command>
-    <tactics>papalembassy.tactics</tactics>
+    <command page="11" column="4">Abilities</command>
+    <tactics>notre_dame.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
-      <rate type="XP">2.000000</rate>
+      <rate type="XP">4.000000</rate>
     </protoaction>
   </unit>
   <!--TEST AND TEMPORARY CONTENT-->

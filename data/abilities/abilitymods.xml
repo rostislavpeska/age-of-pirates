@@ -460,4 +460,7 @@
     <ability>deSailorChopWood<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
     <ability>deChargeAbilityBuckshot<bindtochargeaction>true</bindtochargeaction><forceshowrollover>true</forceshowrollover></ability>
   </zpnatmercmutineer>
+  <zpspclondonbasilica>
+    <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspclondonbasilica>
 </abilitymods>
