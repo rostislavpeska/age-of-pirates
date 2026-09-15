@@ -1,10 +1,15 @@
 # scripts/havok - Granny (.gr2), Havok (.hkt) and sail-rig tools
 
 Skills that document the workflows: `.claude/skills/gr2-granny-edit`, `ship-sails`, `unit-bones`,
-`havok-destruction` (+ the gitignored `gxo-convert` for the converter under Wine). Run everything from the repo
-root: `python scripts/havok/<tool>.py`. Blender tools: `blender -b --python scripts/havok/<tool>.py -- args`.
+`havok-destruction`. Run everything from the repo root: `python scripts/havok/<tool>.py`. Blender tools:
+`blender -b --python scripts/havok/<tool>.py -- args`.
 
-## Granny .gr2 (raw vanilla files; converter output is Oodle-compressed and unreadable here)
+No converter is part of the repo. The pipelines need a few gr2 <-> FBX / GXO conversions; do them with whatever
+converter you have (`converter.py` wraps a configured one or, in its default manual mode, prints what to produce
+and waits for the file). The owner's converter-specific skill (`gxo-convert`, gitignored) lives in OneDrive
+`DE Converter\claude-skills\`.
+
+## Granny .gr2 (raw vanilla files; converter output is usually Oodle-compressed and unreadable here)
 - `gr2_read.py`      reader (sections, relocations, types, CRC) - imported by every other gr2 tool
 - `gr2_dump.py`      structural dump: skeleton, meshes (layout, bindings, bbox), models, animations/curves
 - `gr2_pieces.py`    destruction models: per-piece vertex clouds; optional match against a GXO's sail meshes
@@ -13,8 +18,11 @@ root: `python scripts/havok/<tool>.py`. Blender tools: `blender -b --python scri
 - `gr2_splitmesh.py` cut labelled triangles into new rigid meshes on other bones, vertex bytes verbatim
 - `fbx_check.py`     Blender: compare a model's FBX with the vanilla FBX (positions/normals/UVs) + renders
 - `fbx_preview.py`   Blender: render an FBX with one colour per mesh
-- `converter.py`     run GXOConverterAge3DE under Wine with options (--format, --bang, --modify-gr2=...)
-- `anim_tracks.py`   keep/drop tracks in an anim GXO (poses must key only the sail bones)
+- `rig_table.py`     Blender: bone table + sail_* mesh vertices of a rig scene in GXO form (no converter needed)
+- `converter.py`     conversion wrapper: backend from the gitignored converter.local.json (wine-wsl / native /
+  command) or manual mode (prints the request, waits for the output file); --format gr2|gxo|fbx
+- `anim_tracks.py`   keep/drop tracks in an anim GXO, pin the track-group name (Blender bakes every bone; poses
+  must key only the sail bones)
 
 ## Sail rig (Treasure Ship worked example; see ship-sails)
 - `sails_analyze.py`  split the welded intact mesh into loose parts, stats, renders -> split.blend

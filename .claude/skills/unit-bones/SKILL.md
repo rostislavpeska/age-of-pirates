@@ -1,6 +1,6 @@
 ---
 name: unit-bones
-description: Add bones to a vanilla Age of Empires III DE model without re-exporting it - garrison flag, civ flag / banner points, cannon muzzles (bone_muzzleL/R##), projectile impact points (boneimpact##), attachment bones - into the intact model AND its damaged/destruction model, so the mod's animfile, .dmg damage templates and attachments find them. Uses the Granny-level appender (scripts/havok/gr2_addbones.py) with a bone table taken from a converter GXO or written by hand. Triggers on "add a bone", "garrison flag bone", "muzzle bones", "impact points", "attachment bone", "the damaged model is missing bones", "cannons fire from the wrong place".
+description: Add bones to a vanilla Age of Empires III DE model without re-exporting it - garrison flag, civ flag / banner points, cannon muzzles (bone_muzzleL/R##), projectile impact points (boneimpact##), attachment bones - into the intact model AND its damaged/destruction model, so the mod's animfile, .dmg damage templates and attachments find them. Uses the Granny-level appender (scripts/havok/gr2_addbones.py) with a bone table from a Blender rig (rig_table.py), from a GXO dump of a model that has the bones, or written by hand. Triggers on "add a bone", "garrison flag bone", "muzzle bones", "impact points", "attachment bone", "the damaged model is missing bones", "cannons fire from the wrong place".
 ---
 
 # Adding bones to vanilla models
@@ -11,24 +11,26 @@ Ship intact and damaged models (28, 115, 96 bones appended in various rounds; ca
 
 ## Where the bone table comes from
 
-Table format = converter GXO `b` lines (absolute model-space transform, row-major 3x3, 1-based parent, 0 = root):
+Table format = GXO `b` lines (absolute model-space transform, row-major 3x3, 1-based parent, 0 = root; grammar in
+**gr2-granny-edit**). Three sources, in order of preference:
 
-1. **A model that already has the bones** (e.g. the mod's converter-made base model, or a Blender rig exported
-   through the converter): `python scripts/havok/converter.py --format gxo MODEL.gr2` -> `MODEL.gxo`.
-   The appender skips names that already exist in the target and, with `--only`, takes just the listed bones.
-2. **Hand-written**: any text file with `b` lines. Generators: `scripts/havok/dmg_bonetable.py` (animtrans
-   chains for a damaged model) - copy its pattern. Frame: converter frame (x across, y along, z up) with
-   engine = (-gx, gz, -gy); positions in engine units.
-3. **From Blender**: place bones in a rig scene (armature scale 0.01, data in engine units, blender = M.T . engine),
-   export FBX (settings in `scripts/havok/sails_rig.py`, bottom), converter -> gr2 -> gxo -> table.
+1. **A Blender rig** (no converter): place the bones in a rig scene (armature scale 0.01, data in engine units,
+   x across, y along, z up; blender = M.T . engine) and write the table straight from the scene:
+   `blender -b RIG.blend --python scripts/havok/rig_table.py -- TABLE.gxo`.
+2. **A model that already has the bones** (e.g. the mod's older converter-made base model): dump it to GXO with
+   your converter -> `MODEL.gxo`. The appender skips names that already exist in the target and, with `--only`,
+   takes just the listed bones.
+3. **Hand-written**: any text file with `b` lines. Generators: `scripts/havok/dmg_bonetable.py` (animtrans
+   chains for a damaged model) - copy its pattern. Frame: x across, y along, z up with engine = (-gx, gz, -gy);
+   positions in engine units.
 
 ```
 python scripts/havok/gr2_addbones.py VANILLA.gr2 TABLE.gxo OUT.gr2 --inplace --map mirror [--scale 2.54] [--only bone_garrisonflag bone_muzzleL01 ...]
 python scripts/havok/gr2_dump.py OUT.gr2 --bones | grep -E "bone_garrison|muzzle"     # positions / parents
-python scripts/havok/converter.py --format gxo OUT.gr2                                 # loader test
+OUT.gr2 -> GXO with your converter (optional loader test: it runs the game's Granny DLL)
 ```
-`--scale 2.54` only when the table came from a GXO dumped from a VANILLA gr2 (Maya units); converter-made GXOs
-are already in engine units.
+`--scale 2.54` only when the table came from a GXO dumped from a VANILLA gr2 (Maya units); tables from Blender
+or from converter-made models are already in engine units.
 
 ## Rules learned the hard way
 
@@ -54,14 +56,13 @@ Animfile `<definebone>` lines are optional for attachments but keep them consist
 name `boneimpact*` and `bone_debris_*`; the engine finds the garrison flag by `bone_garrisonflag` and the civ
 flag by `bone_flag_civ`.
 
-Related: **gr2-granny-edit** (formats, verification ladder), **ship-sails**, **havok-destruction**.
+Related: **gr2-granny-edit** (formats, GXO grammar, verification ladder), **ship-sails**, **havok-destruction**.
 
-## Converter access (machine-specific, kept out of git)
+## Converter: not part of the repo, any tool that reads/writes GXO or FBX will do
 
-Every converter call in this skill goes through `python scripts/havok/converter.py` (`--format gr2|gxo|fbx`,
-`--bang`, `--modify-gr2 calculatetangents`, `--check`). It reads the gitignored `scripts/havok/converter.local.json`
-(copy `converter.example.json`) to pick the backend: `wine-wsl` (the exe under Wine in WSL - this PC, where Smart
-App Control blocks it; setup guide = the gitignored **gxo-convert** skill / OneDrive "DE Converter"), `native`
-(exe runs directly), `command` (any tool via a template), or `manual` (it prints the file, options and expected
-output and waits for you to produce it with a GUI / 3ds Max or Blender plugin / web converter). The pipeline is
-identical whichever backend is configured.
+Source 2 above and the optional loader test are the only places a converter appears; produce the GXO with
+whatever you have. `python scripts/havok/converter.py --format gxo MODEL.gr2` is a convenience wrapper: with a
+backend configured in the gitignored `scripts/havok/converter.local.json` (copy `converter.example.json`) it runs
+the conversion; with none (`manual`, the default) it prints what to produce and waits for the file. The owner's
+converter-specific skill (`gxo-convert`, gitignored) lives in OneDrive `DE Converter\claude-skills\gxo-convert`,
+shared by all the owner's devices - link or copy it into `.claude/skills/` there.

@@ -1,15 +1,18 @@
 """GR2 <-> GXO/FBX conversion behind ONE tracked entry point, with the machine-specific part in a gitignored config.
 
-The pipeline needs four things from "a converter" (GXOConverterAge3DE.exe by Kevsoft, or anything equivalent):
-    gr2 -> gxo     text dump: bones (absolute transforms), meshes, anim keys  - also the LOADER TEST (uses the game's granny2 DLL)
+The pipeline needs three things from "a converter" (any tool that reads/writes the GXO text form or FBX; the repo
+ships none - the owner's is GXOConverterAge3DE.exe by Kevsoft, third-party, not redistributable):
+    gr2 -> gxo     text dump: anim keys (to filter tracks), bones/meshes (tables) - also a LOADER TEST when the tool
+                   uses the game's granny2 DLL
     gr2 -> fbx     geometry for Blender
-    gxo/fbx -> gr2 animations (and label tables); --bang = engine mesh format, --modify-gr2=calculatetangents
+    gxo/fbx -> gr2 the pose animations (the only converter products that ship); --bang / --modify-gr2 are pass-through
+                   switches of Kevsoft's tool (mesh re-encoding; not used by the final pipeline)
 The output always lands next to the input with the target extension.
 
 Backend = scripts/havok/converter.local.json (gitignored; copy converter.example.json) or the env var AOE3_CONVERTER
 (same JSON). Backends:
     wine-wsl  : the exe under Wine inside a WSL distro (this PC: Smart App Control blocks the exe on the host;
-                setup guide = the gitignored .claude/skills/gxo-convert skill / OneDrive "DE Converter")
+                setup guide = the gitignored gxo-convert skill, master copy in OneDrive "DE Converter\claude-skills")
     native    : run the exe directly (a PC where it is allowed to run)
     command   : any shell template with {exe} {opts} {file} {dir} placeholders (other tool, wrapper, remote)
     manual    : print what to convert and wait for the output file (GUI drag-and-drop, 3ds Max / Blender plugin, web tool)

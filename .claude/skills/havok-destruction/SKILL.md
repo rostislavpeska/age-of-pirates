@@ -1,6 +1,6 @@
 ---
 name: havok-destruction
-description: Understand, inspect and adapt Age of Empires III DE destruction assets - the *_damaged.gr2 piece model, its Havok 2018 *_damaged.hkt rigid-body tagfile (piece types, keyframed vs dynamic, parent links), the .dmg damage templates and the animfile Destruction logic - and make a damaged model carry animation bones (animtrans pattern) so a unit keeps animating and its attachments through the damage stages. Uses scripts/havok/hkt_*.py, gr2_pieces.py, dmg_*.py. Triggers on "damaged model", "hkt", "destruction", "pieces fall", "mast falls", "simskeleton", "animtrans", "the damaged model doesn't animate", "progressive damage stopped working".
+description: Understand, inspect and adapt Age of Empires III DE destruction assets - the *_damaged.gr2 piece model, its Havok 2018 *_damaged.hkt rigid-body tagfile (piece types, keyframed vs dynamic, parent links), the .dmg damage templates and the animfile Destruction logic - and make a damaged model carry animation bones (animtrans pattern) so a unit keeps animating and its attachments through the damage stages. Uses scripts/havok/hkt_*.py, gr2_pieces.py, dmg_*.py; no converter needed. Triggers on "damaged model", "hkt", "destruction", "pieces fall", "mast falls", "simskeleton", "animtrans", "the damaged model doesn't animate", "progressive damage stopped working".
 ---
 
 # Destruction models (.hkt / _damaged.gr2) and animated damage stages
@@ -37,34 +37,26 @@ mast_wood_solid_N (physics piece, no anim track)
 ```
 so one anim pair drives both stages and a falling mast takes its sails and flags. Requirements found by test:
 1. intact root name == damaged root name == anim track group name (else the anim does not bind to the
-   damaged/sim skeleton: destruction works, nothing animates);
+   damaged/sim skeleton: destruction works, nothing animates) - rename the damaged root in place if needed;
 2. the damaged root keeps its vanilla 90-degree Y rest, so the anims must carry **no track for the root** and
    **no track for bones hung directly under the root** (flags, muzzles, impact points) - only for bones under
    animtrans (else the model turns 90 degrees / the flag and cannons sit off);
 3. `<simskeleton>` = damaged model on the unit's anims (this also brought progressive destruction back);
 4. the .hkt stays untouched: bodies are matched by bone name and the new bones have no bodies (like muzzles).
 
-Build: `scripts/havok/dmg_extract.py` (bones, pieces, labels, sail->mast from the gr2), `dmg_blender.py`
-(verification scene: pieces as vertex groups, sail bones under their masts, actions incl. a mast-fall demo),
-`dmg_bonetable.py` (animtrans + chains as a GXO bone table), then `gr2_addbones.py --inplace --map mirror`
-and `gr2_splitmesh.py` (new mesh data goes into the damaged file's own sections 3/4 - other sections crash
-the loader). Full sequence in **ship-sails**.
+Build (all Granny-level, no converter): `scripts/havok/dmg_extract.py` (bones, pieces, labels, sail->mast from
+the gr2 + the rig table from `rig_table.py`), `dmg_blender.py` (verification scene: pieces as vertex groups, sail
+bones under their masts, actions incl. a mast-fall demo), `dmg_bonetable.py` (animtrans + chains as a GXO bone
+table), then `gr2_addbones.py --inplace --map mirror` and `gr2_splitmesh.py` (new mesh data goes into the
+damaged file's own sections 3/4 - other sections crash the loader). Full sequence in **ship-sails**.
 
 ## What did not work (do not retry blindly)
 - A converter-built damaged model (GXO route) crashed nothing but animated nothing: its bone `b` lines were
-  written parent-relative while the converter reads them as absolute, and its root was still `bone_main`.
+  written parent-relative while the GXO form is absolute, and its root was still `bone_main`. Converters also
+  drop the per-vertex bone bindings of destruction models and crash on the big ones - never round-trip a
+  `_damaged` model through one; edit the vanilla file in place.
 - The test cube (own hkt from `hkt_write.py`): pieces existed, no progressive damage, chipped piece vanished;
   the map-based test harness crashed the editor three times. Cloning vanilla pairs is the proven route.
 
-Related: **gr2-granny-edit**, **unit-bones**, **ship-sails**; memory notes `hkt-destruction-format-decoded`,
-`animtrans-pattern-damaged-models`.
-
-## Converter access (machine-specific, kept out of git)
-
-Every converter call in this skill goes through `python scripts/havok/converter.py` (`--format gr2|gxo|fbx`,
-`--bang`, `--modify-gr2 calculatetangents`, `--check`). It reads the gitignored `scripts/havok/converter.local.json`
-(copy `converter.example.json`) to pick the backend: `wine-wsl` (the exe under Wine in WSL - this PC, where Smart
-App Control blocks it; setup guide = the gitignored **gxo-convert** skill / OneDrive "DE Converter"), `native`
-(exe runs directly), `command` (any tool via a template), or `manual` (it prints the file, options and expected
-output and waits for you to produce it with a GUI / 3ds Max or Blender plugin / web converter). The pipeline is
-identical whichever backend is configured.
+Related: **gr2-granny-edit** (formats, GXO grammar, verification ladder, converter note), **unit-bones**,
+**ship-sails**; memory notes `hkt-destruction-format-decoded`, `animtrans-pattern-damaged-models`.

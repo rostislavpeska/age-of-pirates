@@ -247,6 +247,9 @@ print('EXPORTED model')
 for act, fn in ((idle, 'zptreasureship_idle.fbx'), (walk, 'zptreasureship_walk.fbx')):
     arm.animation_data.action = act; sc.frame_set(1)
     bpy.ops.object.select_all(action='DESELECT'); arm.select_set(True)
+    # Blender bakes a track for EVERY bone here (with simplify_factor 0 the exporter force-keys all bones; with use_all_bones=False
+    # the result is identical - verified: 125 tracks either way), so the poses MUST be filtered to the sail bones afterwards
+    # (anim_tracks.py --keep bone_sail on the GXO form): root / flag / muzzle / impact tracks break the damaged model.
     bpy.ops.export_scene.fbx(filepath=os.path.join(out, fn), use_selection=True, object_types={'ARMATURE'}, bake_anim=True, bake_anim_use_all_bones=True,
                              bake_anim_use_nla_strips=False, bake_anim_use_all_actions=False, bake_anim_force_startend_keying=True,
                              bake_anim_step=1.0, bake_anim_simplify_factor=0.0, **FBX)

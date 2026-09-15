@@ -1,6 +1,6 @@
 ---
 name: ship-sails
-description: Give an Age of Empires III DE ship furling sails (sails lowered when the ship sits, hoisted when it moves) on BOTH its intact and its damaged/destruction model, the vanilla Fuchuan/Frigate way - one idle pose and one walk pose driving sail bones, the damaged model carrying the same bones under animtrans bones below its mast pieces so falling masts take their sails. The complete, repeatable pipeline that produced the mod's Treasure Ship (2026-09-15): Blender analysis and rig, poses, Granny-level model builds from the vanilla files, animfile wiring, verification. Triggers on "animate the sails", "furl the sails", "sail animation", "sails on the damaged model", "masts fall with sails", "treasure ship sails".
+description: Give an Age of Empires III DE ship furling sails (sails lowered when the ship sits, hoisted when it moves) on BOTH its intact and its damaged/destruction model, the vanilla Fuchuan/Frigate way - one idle pose and one walk pose driving sail bones, the damaged model carrying the same bones under animtrans bones below its mast pieces so falling masts take their sails. The complete, repeatable pipeline that produced the mod's Treasure Ship (2026-09-15): Blender analysis and rig, poses, Granny-level model builds from the vanilla files, animfile wiring, verification. Converter-neutral: the few gr2/FBX/GXO conversions are explicit steps you do with whatever converter you have. Triggers on "animate the sails", "furl the sails", "sail animation", "sails on the damaged model", "masts fall with sails", "treasure ship sails".
 ---
 
 # Furling sails for a ship (intact + damaged)
@@ -22,6 +22,14 @@ description: Give an Age of Empires III DE ship furling sails (sails lowered whe
 - Vanilla damaged models weld cloth + bars into the mast pieces (`mast_wood_solid_N`); the
   `sailrigging_cloth_solidhide` pieces are rope strips.
 
+## Conversions are your own step (see the last section)
+
+The pipeline touches a converter exactly three times, each marked **[convert]** below: vanilla gr2 -> FBX (once,
+geometry for Blender), pose FBX -> gr2 -> GXO text (to filter the tracks), filtered GXO -> gr2 (the two anims that
+ship). Everything that reaches the game as a MODEL is built at Granny level from the vanilla files by the repo's
+own tools - no converter involved. GXO = the converter text form (`b` bones, `m/mb/v` meshes, `a/cg/c/k` anims;
+grammar in **gr2-granny-edit**).
+
 ## Pipeline (Treasure Ship = worked example, `S` = a scratch dir)
 
 **0. Vanilla sources** (bar-extract): `spc_treasure_ship_stage_final.gr2` (intact), `spc_treasure_boat_dmg.gr2`
@@ -29,7 +37,7 @@ description: Give an Age of Empires III DE ship furling sails (sails lowered whe
 
 **1. Intact analysis in Blender** (headless, `blender -b --python ...`):
 ```
-python scripts/havok/converter.py --format fbx S/vanilla_intact.gr2      # geometry for Blender
+[convert] S/vanilla_intact.gr2 -> S/vanilla_intact.fbx                      # geometry for Blender (imports at engine/254)
 blender -b --python scripts/havok/sails_analyze.py -- S/vanilla_intact.fbx S/analysis   # loose parts, stats, renders -> split.blend
 ```
 **2. Rig + poses** (`sails_rig.py`): shared-vertex grouping (cloth = pure `matb` sheets, bars = thin `mata`
@@ -44,36 +52,47 @@ blender -b --python scripts/havok/sails_reexport.py -- S/rig/rig.blend S/rig_cle
 ```
 Let the user look at `rig_clean.blend` (actions `zptreasureship_idle/_walk`) before going on.
 
-**3. Poses and the label table** (the only converter products that reach the game are the anims):
+**3. Rig table** (bones + which vertices belong to which sail) straight from the Blender scene - no conversion:
 ```
-python scripts/havok/converter.py --format gr2 S/rig_clean/zptreasureship.fbx S/rig_clean/zptreasureship_idle.fbx S/rig_clean/zptreasureship_walk.fbx
-python scripts/havok/converter.py --format gxo S/rig_clean/zptreasureship.gr2            # -> rig GXO: bone table + sail meshes (labels)
-python scripts/havok/converter.py --format gxo S/rig_clean/zptreasureship_idle.gr2 S/rig_clean/zptreasureship_walk.gr2
-python scripts/havok/anim_tracks.py S/rig_clean/zptreasureship_idle.gxo S/poses/zptreasureship_idle.gxo --keep bone_sail   # same for walk
-python scripts/havok/converter.py --format gr2 S/poses/zptreasureship_idle.gxo S/poses/zptreasureship_walk.gxo
+blender -b S/rig_clean/rig_clean.blend --python scripts/havok/rig_table.py -- S/rig.gxo
 ```
-**4. Intact model at Granny level** (vanilla vertex data untouched):
+(Verified identical to a converter GXO dump of the exported model: 125 bones, transforms within 4e-6, same sail
+vertices. If you prefer the converter route: [convert] `zptreasureship.fbx -> .gr2 -> .gxo` gives the same table.)
+
+**4. Poses** - Blender bakes a track for EVERY bone (125), so the GXO filter is mandatory:
 ```
-python scripts/havok/gr2_addbones.py S/vanilla_intact.gr2 S/rig_clean/zptreasureship.gxo S/intact_bones.gr2 --inplace --map mirror
-python scripts/havok/gr2_splitmesh.py S/intact_bones.gr2 S/rig_clean/zptreasureship.gxo S/zptreasureship.gr2
+[convert] S/rig_clean/zptreasureship_idle.fbx -> .gr2 -> .gxo        # same for _walk
+python scripts/havok/anim_tracks.py S/rig_clean/zptreasureship_idle.gxo S/poses/zptreasureship_idle.gxo --keep bone_sail --group Object02
+python scripts/havok/anim_tracks.py S/rig_clean/zptreasureship_walk.gxo S/poses/zptreasureship_walk.gxo --keep bone_sail --group Object02
+[convert] S/poses/zptreasureship_idle.gxo -> zptreasureship_idle.gr2   # + walk: these two files ship in the mod
 ```
-**5. Damaged model**:
+`--group` forces the `cg` line (track group) to the root bone's name - the anim binds by that name; a converter
+that names it after the file or the armature would leave the sails static. Expected result: 88 `c` tracks, all
+`bone_sail*`, `a 3 60`.
+
+**5. Intact model at Granny level** (vanilla vertex data untouched):
 ```
-python scripts/havok/dmg_extract.py art/.../zptreasureship_dmg.gr2 S/rig_clean/zptreasureship.gxo S/dmg.json   # bones, pieces, labels, sail->mast
+python scripts/havok/gr2_addbones.py S/vanilla_intact.gr2 S/rig.gxo S/intact_bones.gr2 --inplace --map mirror
+python scripts/havok/gr2_splitmesh.py S/intact_bones.gr2 S/rig.gxo S/zptreasureship.gr2
+```
+**6. Damaged model**:
+```
+python scripts/havok/dmg_extract.py art/.../zptreasureship_dmg.gr2 S/rig.gxo S/dmg.json      # bones, pieces, labels, sail->mast
 blender -b --python scripts/havok/dmg_blender.py -- S/rig_clean/rig_clean.blend S/dmg.json S/zptreasureship_dmg_rig.blend   # user verification scene
-python scripts/havok/dmg_bonetable.py S/rig_clean/zptreasureship.gxo S/dmg.json S/dmg_bones.gxo   # animtrans_sailNN under each mast + chains/bars
+python scripts/havok/dmg_bonetable.py S/rig.gxo S/dmg.json S/dmg_bones.gxo                   # animtrans_sailNN under each mast + chains/bars
 python scripts/havok/gr2_addbones.py art/.../zptreasureship_dmg.gr2 S/dmg_bones.gxo S/dmg_bones.gr2 --inplace --map mirror
-python scripts/havok/gr2_splitmesh.py S/dmg_bones.gr2 S/rig_clean/zptreasureship.gxo S/zptreasureship_dmg.gr2
+python scripts/havok/gr2_splitmesh.py S/dmg_bones.gr2 S/rig.gxo S/zptreasureship_dmg.gr2
 ```
 then rename the damaged root string to the intact root's name (`bone_main` -> `Object02`, same length or
 shorter, in section 0, recompute the CRC - nothing in .hkt/.dmg/xml references it).
 
-**6. Animfile**: `Idle`, `RangedAttack`, `GatherFish` -> `..._idle`; `Walk` -> `..._walk`; on those four anims
+**7. Animfile**: `Idle`, `RangedAttack`, `GatherFish` -> `..._idle`; `Walk` -> `..._walk`; on those four anims
 `<simskeleton><model>units\...\zptreasureship_dmg</model></simskeleton>`; no flag attachments unless the model
 really has those bones (inherited `civflag_a1/a2`, `pendentflag_a3` lines become visible the moment the bones
 exist). CRLF preserved (byte-level edits).
 
-**7. Verify** (gr2-granny-edit ladder) both models, then restart the game (user closes it; relaunch watcher).
+**8. Verify** (gr2-granny-edit ladder) both models and both anims offline, then restart the game (user closes
+it; relaunch watcher). Never restart on an unverified file.
 
 ## Test checklist in game
 sails furled at rest, hoisted underway (both stages); after the first damage stage the sails still furl/hoist;
@@ -91,12 +110,15 @@ intermediate Granny files, pristine vanilla gr2s): `scripts/havok/sources/treasu
 sit beside production files); git tag `treasureship-sails-final`, older stages on branch
 `havok-destruction-experiment` (tags `treasureship-furl-v1`, `treasureship-dmg-v2/v3`).
 
-## Converter access (machine-specific, kept out of git)
+## Converter: not part of the repo, any tool that reads/writes GXO or FBX will do
 
-Every converter call in this skill goes through `python scripts/havok/converter.py` (`--format gr2|gxo|fbx`,
-`--bang`, `--modify-gr2 calculatetangents`, `--check`). It reads the gitignored `scripts/havok/converter.local.json`
-(copy `converter.example.json`) to pick the backend: `wine-wsl` (the exe under Wine in WSL - this PC, where Smart
-App Control blocks it; setup guide = the gitignored **gxo-convert** skill / OneDrive "DE Converter"), `native`
-(exe runs directly), `command` (any tool via a template), or `manual` (it prints the file, options and expected
-output and waits for you to produce it with a GUI / 3ds Max or Blender plugin / web converter). The pipeline is
-identical whichever backend is configured.
+The repo ships no converter and the skills never depend on a particular one. Each **[convert]** step names the
+input and the output; produce the output with whatever you have (drag-and-drop GUI, 3ds Max / Blender plugin,
+web tool, a command-line exe). `python scripts/havok/converter.py --format gr2|gxo|fbx FILE` is a convenience
+wrapper: with a backend configured in the gitignored `scripts/havok/converter.local.json` (copy
+`converter.example.json`: `wine-wsl`, `native`, `command`) it runs the conversion; with none (`manual`, the
+default) it prints the input, the options and the expected output path and waits until the file appears.
+The owner's own converter (GXO Exporter by Kevsoft, third-party, not redistributable) and the skill that drives it
+under Wine in WSL (`gxo-convert`, gitignored) live in OneDrive `DE Converter\claude-skills\gxo-convert`, shared by
+all the owner's devices - link or copy that folder into `.claude/skills/` there. Other people: own tool, manual
+backend, same pipeline.
