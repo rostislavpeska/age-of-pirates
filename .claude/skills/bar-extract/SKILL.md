@@ -147,8 +147,32 @@ which is a reliable *sufficient* signal but covers only a fraction of new files.
 - The tool is **read-only** towards the game install and the repo. It writes only
   under the `-o` directory you name, and refuses a directory inside a git
   working tree unless `--in-repo` is passed (see Standards above).
-- There is no XMB *writer* here. To regenerate a paired `data/**.xml.xmb` after
-  editing the `.xml`, use Resource Manager.
+- The writer is `scripts/xmbc.py`, see the next section. Resource Manager is the
+  fallback, not the default.
+
+## Compiling XML back to XMB (no Resource Manager needed)
+
+`scripts/xmbc.py` is the inverse of the decoder: X1/XR v4 payload inside the alz4 wrapper,
+verified 2026-09-13 against Resource Manager's own output (same length conventions, decode-back
+tree identical, game loads it). Needs `pip install lz4`.
+
+```bash
+python .claude/skills/bar-extract/scripts/xmbc.py check data/protomods.xml   # compile in memory + decode back + compare
+python .claude/skills/bar-extract/scripts/xmbc.py build data/protomods.xml   # writes data/protomods.xml.xmb (refuses if the check differs)
+```
+
+`build` is what makes a `data/*.xml` edit real - the game loads the `.xmb`. Commit both files.
+
+**When to build a twin (house rule, 2026-09-15):**
+
+1. Build the `.xml.xmb` only for an `.xml` that **already has one beside it**. A file with
+   no twin is compiled by the engine from source at load; adding a twin there changes
+   which copy the game reads and must be a deliberate decision.
+2. **Always build when the user asks for it explicitly**, whether or not a twin exists.
+3. Every `data/*.xml` edit ends with `check` then `build` for each edited file that has a
+   twin; list the files you rebuilt in the recap. An edited `.xml` whose twin was not
+   rebuilt is inert in game (the engine prefers the `.xmb`).
+4. XMBs load once at process start: after a build the game must be restarted.
 
 ## Verified against the current install
 
