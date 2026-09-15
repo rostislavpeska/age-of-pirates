@@ -118,7 +118,8 @@ def main():
             f.write('m "%s"\nmb "%s"\nmm %d\n' % (name, om['mb'], mm_map[om['mm']]))
             for src, i in verts:                    # interleaved per vertex, exactly as the converter writes and reads it
                 f.write('v %s\n' % ' '.join(fmt(x) for x in (np.array(src['v'][i]) @ M.T)))
-                f.write('vn %s\n' % ' '.join(fmt(x) for x in (np.array(src['vn'][i]) @ R.T)))   # verbatim magnitude
+                n = np.array(src['vn'][i]) @ R.T; n = n / (np.linalg.norm(n) or 1.0)     # the converter dumps packed int8 normals as value/254
+                f.write('vn %s\n' % ' '.join(fmt(x) for x in n))                          # (half length -> half-bright lighting); write unit normals
                 f.write('vt %s\n' % ' '.join(fmt(x) for x in src['vt'][i]))
             f.write('fg 1\n')
             for src, tri in om['tris']:

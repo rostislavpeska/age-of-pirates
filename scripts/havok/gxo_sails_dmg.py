@@ -165,7 +165,8 @@ def main():
             mbi = {b: i + 1 for i, b in enumerate(mb)}
             for v in verts:
                 f.write('v %s\n' % ' '.join(fmt(x) for x in (np.array(m['v'][v]) @ M.T)))
-                f.write('vn %s\n' % ' '.join(fmt(x) for x in (np.array(m['vn'][v]) @ C.T)))
+                n = np.array(m['vn'][v]) @ C.T; n = n / (np.linalg.norm(n) or 1.0)          # unit normals (the converter dumps packed int8 normals as value/254 = half length)
+                f.write('vn %s\n' % ' '.join(fmt(x) for x in n))
                 f.write('vt %s\n' % ' '.join(fmt(x) for x in m['vt'][v]))
                 if om['skinned']: k = mbi[B[v]]; f.write('vw 1 0 0 0 %d %d %d %d\n' % (k, k, k, k))
             f.write('fg 1\n')
