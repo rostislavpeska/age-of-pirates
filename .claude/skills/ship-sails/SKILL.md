@@ -86,5 +86,7 @@ sails static = root/model name mismatch (anim did not bind to the sim skeleton);
 root track in the anim; flag/cannons off on the damaged model = non-sail constant tracks; loader crash =
 new mesh data in the wrong sections; scale chain positions doubled = GXO b lines treated as parent-relative.
 
-Backups of the finished Treasure Ship: `art/units/naval/treasureship/bckp_dmg_v4_final/` (files + Blender/FBX/
-Granny sources), git tag `treasureship-sails-final`.
+Sources of the finished Treasure Ship (Blender scenes, FBX exports, rig GXO, damaged-model JSON, bone tables,
+intermediate Granny files, pristine vanilla gr2s): `scripts/havok/sources/treasureship/` (tracked; backups never
+sit beside production files); git tag `treasureship-sails-final`, older stages on branch
+`havok-destruction-experiment` (tags `treasureship-furl-v1`, `treasureship-dmg-v2/v3`).
