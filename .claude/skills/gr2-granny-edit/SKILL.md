@@ -25,7 +25,7 @@ Oodle1-compressed and the reader cannot open it - that is expected.
 | `gr2_addbones.py VANILLA.gr2 TABLE.gxo OUT.gr2 --inplace --map mirror [--only ...]` | append bones from a GXO `b` table into the vanilla skeleton, in place (see below) |
 | `gr2_splitmesh.py BONES.gr2 RIG.gxo OUT.gr2` | cut triangles whose vertices coincide with the GXO's `sail_*` meshes into new rigid meshes bound to those meshes' bones; vertex bytes copied verbatim |
 | `fbx_check.py NEW.fbx VANILLA.fbx OUT_DIR` | Blender headless: loop-by-loop comparison (positions, normals, UVs) + renders |
-| `converter.py --format gxo FILE.gr2` / `--format gr2 --bang` / `--modify-gr2 calculatetangents` | the converter under Wine with any option (see **gxo-convert**) |
+| `converter.py --format gxo FILE.gr2` / `--format gr2 --bang` / `--modify-gr2 calculatetangents` | the converter through the configured backend (see below) |
 | `anim_tracks.py IN.gxo OUT.gxo --keep bone_sail` / `--drop Object02` | filter animation tracks in GXO form |
 
 ## Facts that were each wrong once (do not re-derive)
@@ -80,3 +80,13 @@ The table is a GXO text file with `b "name" parent m00..m22 tx ty tz` lines, as 
 
 Related skills: **ship-sails** (the full sail pipeline that uses these tools), **unit-bones**,
 **havok-destruction**, **gxo-convert** (converter under Wine; GXO grammar), **bar-extract**.
+
+## Converter access (machine-specific, kept out of git)
+
+Every converter call in this skill goes through `python scripts/havok/converter.py` (`--format gr2|gxo|fbx`,
+`--bang`, `--modify-gr2 calculatetangents`, `--check`). It reads the gitignored `scripts/havok/converter.local.json`
+(copy `converter.example.json`) to pick the backend: `wine-wsl` (the exe under Wine in WSL - this PC, where Smart
+App Control blocks it; setup guide = the gitignored **gxo-convert** skill / OneDrive "DE Converter"), `native`
+(exe runs directly), `command` (any tool via a template), or `manual` (it prints the file, options and expected
+output and waits for you to produce it with a GUI / 3ds Max or Blender plugin / web converter). The pipeline is
+identical whichever backend is configured.

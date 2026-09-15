@@ -58,3 +58,13 @@ the loader). Full sequence in **ship-sails**.
 
 Related: **gr2-granny-edit**, **unit-bones**, **ship-sails**; memory notes `hkt-destruction-format-decoded`,
 `animtrans-pattern-damaged-models`.
+
+## Converter access (machine-specific, kept out of git)
+
+Every converter call in this skill goes through `python scripts/havok/converter.py` (`--format gr2|gxo|fbx`,
+`--bang`, `--modify-gr2 calculatetangents`, `--check`). It reads the gitignored `scripts/havok/converter.local.json`
+(copy `converter.example.json`) to pick the backend: `wine-wsl` (the exe under Wine in WSL - this PC, where Smart
+App Control blocks it; setup guide = the gitignored **gxo-convert** skill / OneDrive "DE Converter"), `native`
+(exe runs directly), `command` (any tool via a template), or `manual` (it prints the file, options and expected
+output and waits for you to produce it with a GUI / 3ds Max or Blender plugin / web converter). The pipeline is
+identical whichever backend is configured.

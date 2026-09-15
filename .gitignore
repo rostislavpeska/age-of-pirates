@@ -37,3 +37,6 @@ references/
 
 # local-only skill: converter harness bound to this PC (WSL+Wine paths)
 .claude/skills/gxo-convert/
+
+# machine-specific converter backend (see scripts/havok/converter.example.json)
+scripts/havok/converter.local.json

@@ -29,7 +29,7 @@ description: Give an Age of Empires III DE ship furling sails (sails lowered whe
 
 **1. Intact analysis in Blender** (headless, `blender -b --python ...`):
 ```
-python .claude/skills/gxo-convert/scripts/gxo.py --format fbx S/vanilla_intact.gr2      # geometry for Blender
+python scripts/havok/converter.py --format fbx S/vanilla_intact.gr2      # geometry for Blender
 blender -b --python scripts/havok/sails_analyze.py -- S/vanilla_intact.fbx S/analysis   # loose parts, stats, renders -> split.blend
 ```
 **2. Rig + poses** (`sails_rig.py`): shared-vertex grouping (cloth = pure `matb` sheets, bars = thin `mata`
@@ -46,11 +46,11 @@ Let the user look at `rig_clean.blend` (actions `zptreasureship_idle/_walk`) bef
 
 **3. Poses and the label table** (the only converter products that reach the game are the anims):
 ```
-python .claude/skills/gxo-convert/scripts/gxo.py --format gr2 S/rig_clean/zptreasureship.fbx S/rig_clean/zptreasureship_idle.fbx S/rig_clean/zptreasureship_walk.fbx
+python scripts/havok/converter.py --format gr2 S/rig_clean/zptreasureship.fbx S/rig_clean/zptreasureship_idle.fbx S/rig_clean/zptreasureship_walk.fbx
 python scripts/havok/converter.py --format gxo S/rig_clean/zptreasureship.gr2            # -> rig GXO: bone table + sail meshes (labels)
 python scripts/havok/converter.py --format gxo S/rig_clean/zptreasureship_idle.gr2 S/rig_clean/zptreasureship_walk.gr2
 python scripts/havok/anim_tracks.py S/rig_clean/zptreasureship_idle.gxo S/poses/zptreasureship_idle.gxo --keep bone_sail   # same for walk
-python .claude/skills/gxo-convert/scripts/gxo.py --format gr2 S/poses/zptreasureship_idle.gxo S/poses/zptreasureship_walk.gxo
+python scripts/havok/converter.py --format gr2 S/poses/zptreasureship_idle.gxo S/poses/zptreasureship_walk.gxo
 ```
 **4. Intact model at Granny level** (vanilla vertex data untouched):
 ```
@@ -90,3 +90,13 @@ Sources of the finished Treasure Ship (Blender scenes, FBX exports, rig GXO, dam
 intermediate Granny files, pristine vanilla gr2s): `scripts/havok/sources/treasureship/` (tracked; backups never
 sit beside production files); git tag `treasureship-sails-final`, older stages on branch
 `havok-destruction-experiment` (tags `treasureship-furl-v1`, `treasureship-dmg-v2/v3`).
+
+## Converter access (machine-specific, kept out of git)
+
+Every converter call in this skill goes through `python scripts/havok/converter.py` (`--format gr2|gxo|fbx`,
+`--bang`, `--modify-gr2 calculatetangents`, `--check`). It reads the gitignored `scripts/havok/converter.local.json`
+(copy `converter.example.json`) to pick the backend: `wine-wsl` (the exe under Wine in WSL - this PC, where Smart
+App Control blocks it; setup guide = the gitignored **gxo-convert** skill / OneDrive "DE Converter"), `native`
+(exe runs directly), `command` (any tool via a template), or `manual` (it prints the file, options and expected
+output and waits for you to produce it with a GUI / 3ds Max or Blender plugin / web converter). The pipeline is
+identical whichever backend is configured.

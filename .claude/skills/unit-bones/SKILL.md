@@ -55,3 +55,13 @@ name `boneimpact*` and `bone_debris_*`; the engine finds the garrison flag by `b
 flag by `bone_flag_civ`.
 
 Related: **gr2-granny-edit** (formats, verification ladder), **ship-sails**, **havok-destruction**.
+
+## Converter access (machine-specific, kept out of git)
+
+Every converter call in this skill goes through `python scripts/havok/converter.py` (`--format gr2|gxo|fbx`,
+`--bang`, `--modify-gr2 calculatetangents`, `--check`). It reads the gitignored `scripts/havok/converter.local.json`
+(copy `converter.example.json`) to pick the backend: `wine-wsl` (the exe under Wine in WSL - this PC, where Smart
+App Control blocks it; setup guide = the gitignored **gxo-convert** skill / OneDrive "DE Converter"), `native`
+(exe runs directly), `command` (any tool via a template), or `manual` (it prints the file, options and expected
+output and waits for you to produce it with a GUI / 3ds Max or Blender plugin / web converter). The pipeline is
+identical whichever backend is configured.

@@ -1,0 +1,17 @@
+{
+  "_comment": "Copy to scripts/havok/converter.local.json (gitignored) and keep ONE 'backend'. converter.py reads it; the skills only ever call converter.py.",
+
+  "backend": "manual",
+
+  "_wine-wsl": "GXOConverterAge3DE.exe under Wine inside a WSL distro (needed on PCs where Windows blocks the exe). Setup: the gxo-convert skill / OneDrive 'DE Converter' folder ('Install on this PC (run once).bat').",
+  "_wine-wsl_example": {"backend": "wine-wsl", "distro": "Ubuntu", "wineprefix": "$HOME/.wine_gxo", "exe": "$HOME/gxo/GXOConverterAge3DE.exe", "timeout": 900},
+
+  "_native": "Run the exe directly (only where it is allowed to run - never launch it on a Smart App Control PC).",
+  "_native_example": {"backend": "native", "exe": "C:/Tools/GXOConverterAge3DE/GXOConverterAge3DE.exe", "timeout": 900},
+
+  "_command": "Any shell template; placeholders {exe} {opts} {file} {dir} {name}. opts are the converter's own switches (--format=gr2 --bang --modify-gr2=...).",
+  "_command_example": {"backend": "command", "exe": "C:/Tools/GXOConverterAge3DE.exe", "command": "cd /d \"{dir}\" && \"{exe}\" {opts} \"{name}\"", "timeout": 900},
+
+  "_manual": "No automation: converter.py prints the file, the options and the expected output path, then waits until the output appears (GUI drag-and-drop, 3ds Max / Blender plugin, web converter). The pipeline still works, just with a human step.",
+  "_manual_example": {"backend": "manual", "timeout": 1800}
+}
