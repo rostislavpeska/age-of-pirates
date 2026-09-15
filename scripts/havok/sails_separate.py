@@ -4,7 +4,7 @@ vanilla bone binding. Starts from split.blend (sails_analyze.py output: every me
 
 Grouping is the same as sails_build.py: high parts that share vertex positions form one sheet; pure-matb sheets
 are sail cloth (two sheets at the same y = the two halves of a V-sail), pure-mata flat groups inside a sail's box
-are its battens. Cloth islands become sail_NN_cloth_MM (top to bottom), batten groups sail_NN_bar_MM (top to
+are its battens. The whole cloth of a sail is one object sail_NN_cloth, batten groups sail_NN_bar_MM (top to
 bottom); everything else is joined back into the three vanilla meshes.
 
 usage: blender -b --python sails_separate.py -- split.blend out.blend
@@ -28,7 +28,7 @@ for o in parts:
     pos[o.name] = P
 
 # --- shared-vertex groups among the high parts (identical to sails_build.py)
-cand = [n for n, s in st.items() if s['c'][2] > 0.02 and s['hi'][2] > 0.028 and abs(s['c'][0]) < 0.03]
+cand = [n for n, s in st.items() if s['c'][2] > 0.008 and abs(s['c'][0]) < 0.03]      # low enough to catch a sail's bottom strip/bar
 parent = {n: n for n in cand}
 def find(a):
     while parent[a] != a: parent[a] = parent[parent[a]]; a = parent[a]
@@ -45,7 +45,7 @@ G = []
 for names in groups.values():
     lo = np.min([st[n]['lo'] for n in names], 0); hi = np.max([st[n]['hi'] for n in names], 0)
     G.append(dict(names=names, nv=sum(st[n]['nv'] for n in names), lo=lo, hi=hi, d=hi - lo, c=(lo + hi) / 2, mats=set(st[n]['mat'] for n in names)))
-cloth = [g for g in G if g['mats'] == {'matb'} and g['nv'] >= 60]
+cloth = [g for g in G if g['mats'] == {'matb'} and g['nv'] >= 60 and g['c'][2] > 0.02 and g['hi'][2] > 0.028]   # sail sheets sit high
 cloth.sort(key=lambda g: g['c'][1])
 sails = []
 for g in cloth:                                             # merge the V halves (same y)
@@ -85,14 +85,12 @@ def move(o, c):
 report = []
 for s in sails:
     sc_col = bpy.data.collections.new(s['name']); col['Sails'].children.link(sc_col)
-    cloth_objs = []
-    for k, n in enumerate(sorted(s['cloth'], key=lambda n: -st[n]['c'][2])):          # top to bottom
-        o = bpy.data.objects[n]; o.name = f"{s['name']}_cloth_{k+1:02d}"; o.data.name = o.name; move(o, sc_col); cloth_objs.append(o)
+    o = join(s['cloth'], f"{s['name']}_cloth"); move(o, sc_col); cloth_objs = [o]     # the whole sail cloth is one object
     bar_objs = []
     for k, g in enumerate(s['batten_groups']):
         o = join(g['names'], f"{s['name']}_bar_{k+1:02d}"); move(o, sc_col); bar_objs.append(o)
     report.append((s['name'], len(cloth_objs), sum(len(o.data.vertices) for o in cloth_objs), len(bar_objs), sum(len(o.data.vertices) for o in bar_objs)))
-    print(f"SAIL {s['name']}: {len(cloth_objs)} cloth sections, {len(bar_objs)} bars; z {lo[2]*254:.1f}..{hi[2]*254:.1f} engine")
+    print(f"SAIL {s['name']}: cloth {len(cloth_objs[0].data.vertices)} verts, {len(bar_objs)} bars ({sum(len(o.data.vertices) for o in bar_objs)} verts)")
 
 # --- hull: everything else back into the three vanilla meshes
 rest = collections.defaultdict(list)
