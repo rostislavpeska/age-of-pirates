@@ -37515,25 +37515,25 @@
     <dbid>41520</dbid>
     <flag>Shadow</flag>
     <effects>
-      <effect type="Data" amount="0.80" subtype="RechargeTime" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="RechargeTime" relativity="BasePercent">
         <target type="ProtoUnit">deCommandery</target>
       </effect>
-      <effect type="Data" amount="0.80" subtype="RechargeTime" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="RechargeTime" relativity="BasePercent">
         <target type="ProtoUnit">zpOrientalFerry</target>
       </effect>
-      <effect type="Data" amount="0.80" subtype="RechargeTime" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="RechargeTime" relativity="BasePercent">
         <target type="ProtoUnit">zpTrainStationA</target>
       </effect>
-      <effect type="Data" amount="0.80" subtype="RechargeTime" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="RechargeTime" relativity="BasePercent">
         <target type="ProtoUnit">zpTrainStationB</target>
       </effect>
-      <effect type="Data" amount="0.80" subtype="RechargeTime" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="RechargeTime" relativity="BasePercent">
         <target type="ProtoUnit">zpArmoredTrainBarracksStatic</target>
       </effect>
-      <effect type="Data" amount="0.80" subtype="RechargeTime" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="RechargeTime" relativity="BasePercent">
         <target type="ProtoUnit">zpParisCitadel</target>
       </effect>
-      <effect type="Data" amount="0.80" subtype="RechargeTime" relativity="BasePercent">
+      <effect type="Data" amount="0.70" subtype="RechargeTime" relativity="BasePercent">
         <target type="ProtoUnit">zpParisCitadelPassage</target>
       </effect>
     </effects>
