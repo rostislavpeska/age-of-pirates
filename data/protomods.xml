@@ -43637,6 +43637,7 @@
     <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>Doppled</flag>
+    <flag>VisibleUnderFog</flag>
     <flag>SelectWithObstruction</flag>
     <flag>PaintTextureWhenPlacing</flag>
     <flag>FlattenGround</flag>
@@ -44035,6 +44036,7 @@
     <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>Doppled</flag>
+    <flag>VisibleUnderFog</flag>
     <flag>SelectWithObstruction</flag>
     <flag>PaintTextureWhenPlacing</flag>
     <flag>FlattenGround</flag>
@@ -44125,6 +44127,7 @@
     <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>Doppled</flag>
+    <flag>VisibleUnderFog</flag>
     <flag>SelectWithObstruction</flag>
     <flag>PaintTextureWhenPlacing</flag>
     <flag>FlattenGround</flag>
@@ -51927,6 +51930,7 @@
     <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>Doppled</flag>
+    <flag>VisibleUnderFog</flag>
     <flag>SelectWithObstruction</flag>
     <flag>PaintTextureWhenPlacing</flag>
     <flag>FlattenGround</flag>
@@ -67354,6 +67358,7 @@
     <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>Doppled</flag>
+    <flag>VisibleUnderFog</flag>
     <flag>SelectWithObstruction</flag>
     <flag>PaintTextureWhenPlacing</flag>
     <flag>FlattenGround</flag>
@@ -74079,6 +74084,7 @@
     <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>Doppled</flag>
+    <flag>VisibleUnderFog</flag>
     <flag>SelectWithObstruction</flag>
     <flag>PaintTextureWhenPlacing</flag>
     <flag>FlattenGround</flag>
