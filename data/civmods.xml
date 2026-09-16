@@ -554,7 +554,6 @@
       </unitcounts>
     </multipleblocktrain>
     <homecityflagtexture>objects\flags\natives\bourbon_french</homecityflagtexture>
-    <homecityflagiconwpf>resources/images/icons/flags/bourbon_french.png</homecityflagiconwpf>
     <visible>0</visible>
     <visibleineditor>0</visibleineditor>
   </civ>
