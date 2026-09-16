@@ -36410,7 +36410,7 @@
     <shortrollovertextid>502309</shortrollovertextid>
     <initialhitpoints>5000.0000</initialhitpoints>
     <maxhitpoints>5000.0000</maxhitpoints>
-    <los>12.0000</los>
+    <los>30.0000</los>
     <displayedrange>20.0000</displayedrange>
     <buildpoints>40.0000</buildpoints>
     <buildlimit>1</buildlimit>
@@ -36442,6 +36442,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>AbstractChurch</unittype>
+    <unittype>AbstractCathedral</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
@@ -43587,7 +43588,7 @@
     <shortrollovertextid>502309</shortrollovertextid>
     <initialhitpoints>5000.0000</initialhitpoints>
     <maxhitpoints>5000.0000</maxhitpoints>
-    <los>24.0000</los>
+    <los>30.0000</los>
     <displayedrange>20.0000</displayedrange>
     <buildpoints>40.0000</buildpoints>
     <buildlimit>1</buildlimit>
@@ -43619,6 +43620,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>AbstractChurch</unittype>
+    <unittype>AbstractCathedral</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
@@ -43987,7 +43989,7 @@
     <shortrollovertextid>123016</shortrollovertextid>
     <initialhitpoints>5000.0000</initialhitpoints>
     <maxhitpoints>5000.0000</maxhitpoints>
-    <los>12.0000</los>
+    <los>30.0000</los>
     <displayedrange>20.0000</displayedrange>
     <buildpoints>40.0000</buildpoints>
     <buildlimit>1</buildlimit>
@@ -44019,6 +44021,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>AbstractChurch</unittype>
+    <unittype>AbstractCathedral</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <train row="0" page="0" column="0">MercElmeti</train>
@@ -44078,7 +44081,7 @@
     <shortrollovertextid>123016</shortrollovertextid>
     <initialhitpoints>5000.0000</initialhitpoints>
     <maxhitpoints>5000.0000</maxhitpoints>
-    <los>12.0000</los>
+    <los>30.0000</los>
     <displayedrange>20.0000</displayedrange>
     <buildpoints>40.0000</buildpoints>
     <buildlimit>1</buildlimit>
@@ -44110,6 +44113,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>AbstractChurch</unittype>
+    <unittype>AbstractCathedral</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <train row="0" page="0" column="0">MercElmeti</train>
@@ -46380,7 +46384,7 @@
     <shortrollovertextid>502307</shortrollovertextid>
     <initialhitpoints>3000.0000</initialhitpoints>
     <maxhitpoints>3000.0000</maxhitpoints>
-    <los>12.0000</los>
+    <los>30.0000</los>
     <displayedrange>20.0000</displayedrange>
     <buildpoints>40.0000</buildpoints>
     <buildlimit>1</buildlimit>
@@ -46412,6 +46416,7 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractChurch</unittype>
+    <unittype>AbstractCathedral</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
@@ -46426,6 +46431,7 @@
     <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>Doppled</flag>
+    <flag>VisibleUnderFog</flag>
     <flag>SelectWithObstruction</flag>
     <flag>PaintTextureWhenPlacing</flag>
     <flag>FlattenGround</flag>
@@ -51883,7 +51889,7 @@
     <shortrollovertextid>502309</shortrollovertextid>
     <initialhitpoints>5000.0000</initialhitpoints>
     <maxhitpoints>5000.0000</maxhitpoints>
-    <los>24.0000</los>
+    <los>30.0000</los>
     <displayedrange>20.0000</displayedrange>
     <buildpoints>40.0000</buildpoints>
     <buildlimit>1</buildlimit>
@@ -51915,6 +51921,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>AbstractChurch</unittype>
+    <unittype>AbstractCathedral</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
@@ -55821,7 +55828,7 @@
     <shortrollovertextid>502307</shortrollovertextid>
     <initialhitpoints>3000.0000</initialhitpoints>
     <maxhitpoints>3000.0000</maxhitpoints>
-    <los>12.0000</los>
+    <los>30.0000</los>
     <displayedrange>20.0000</displayedrange>
     <buildpoints>40.0000</buildpoints>
     <buildlimit>1</buildlimit>
@@ -55853,6 +55860,7 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractChurch</unittype>
+    <unittype>AbstractCathedral</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
@@ -55868,6 +55876,7 @@
     <flag>NoIdleActions</flag>
     <flag>NonAutoFormedUnit</flag>
     <flag>Doppled</flag>
+    <flag>VisibleUnderFog</flag>
     <flag>SelectWithObstruction</flag>
     <flag>PaintTextureWhenPlacing</flag>
     <flag>FlattenGround</flag>
@@ -67310,7 +67319,7 @@
     <shortrollovertextid>502307</shortrollovertextid>
     <initialhitpoints>3000.0000</initialhitpoints>
     <maxhitpoints>3000.0000</maxhitpoints>
-    <los>12.0000</los>
+    <los>30.0000</los>
     <displayedrange>20.0000</displayedrange>
     <buildpoints>40.0000</buildpoints>
     <buildlimit>1</buildlimit>
@@ -67342,6 +67351,7 @@
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>ConvertsHerds</unittype>
     <unittype>AbstractChurch</unittype>
+    <unittype>AbstractCathedral</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
@@ -74034,7 +74044,7 @@
     <shortrollovertextid>502309</shortrollovertextid>
     <initialhitpoints>5000.0000</initialhitpoints>
     <maxhitpoints>5000.0000</maxhitpoints>
-    <los>24.0000</los>
+    <los>30.0000</los>
     <displayedrange>20.0000</displayedrange>
     <buildpoints>40.0000</buildpoints>
     <buildlimit>1</buildlimit>
@@ -74066,6 +74076,7 @@
     <unittype>HasBountyValue</unittype>
     <unittype>CountsTowardEconomicScore</unittype>
     <unittype>AbstractChurch</unittype>
+    <unittype>AbstractCathedral</unittype>
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
