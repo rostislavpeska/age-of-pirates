@@ -463,4 +463,7 @@
   <zpspclondonbasilica>
     <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
   </zpspclondonbasilica>
+  <zpspcminster>
+    <ability>ypPowerCeaseFire<rof>450</rof><castonself>true</castonself><usebigbutton>false</usebigbutton><forceshowrollover>true</forceshowrollover></ability>
+  </zpspcminster>
 </abilitymods>

@@ -74116,6 +74116,204 @@
       <rate type="XP">4.000000</rate>
     </protoaction>
   </unit>
+  <unit id="21171" name="zpNatEUBritishPalaces">
+    <dbid>21171</dbid>
+    <displaynameid>62299</displaynameid>
+    <editornameid>503433</editornameid>
+    <obstructionradiusx>7.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\british_palaces.xml</animfile>
+    <portraiticon>resources\art\buildings\native_settlement\native_site_hanover_icon_portrait.png</portraiticon>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>RMCanRotate</flag>
+  </unit>
+  <unit id="21172" name="zpSPCMinster">
+    <dbid>21172</dbid>
+    <displaynameid>503434</displaynameid>
+    <editornameid>503435</editornameid>
+    <obstructionradiusx>5.0000</obstructionradiusx>
+    <obstructionradiusz>8.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\landmark\landmark_minster.xml</animfile>
+    <deadreplacement>BuildingRubble6x6</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\basilica\basilica_icon.png</icon>
+    <minimapicon>ui\minimap\religious_small</minimapicon>
+    <portraiticon>resources\art\buildings\spc\landmark_minster_portrait.png</portraiticon>
+    <rollovertextid>502310</rollovertextid>
+    <shortrollovertextid>502309</shortrollovertextid>
+    <initialhitpoints>5000.0000</initialhitpoints>
+    <maxhitpoints>5000.0000</maxhitpoints>
+    <los>30.0000</los>
+    <displayedrange>20.0000</displayedrange>
+    <buildpoints>40.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>160.0000</bounty>
+    <buildbounty>80.0000</buildbounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>1</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>AbstractChurch</unittype>
+    <unittype>AbstractCathedral</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
+    <flag>AllowAutoGarrison</flag>
+    <tech row="0" page="11" column="0">zpSPCArtPatronCathedral</tech>
+    <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
+    <tech row="0" page="11" column="1">zpSPCBlessedCitySingle</tech>
+    <tech row="0" page="11" column="2">DESPCPapalLegate</tech>
+    <tech row="0" page="11" column="2">zpSPCPapalLegateSingle</tech>
+    <tech row="0" page="11" column="3">zpSPCPapalBlessingPrague</tech>
+    <tech row="0" page="11" column="4">DESPCExcommunication</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>ShowAreaHealRate</flag>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="11" column="4">Abilities</command>
+    <tactics>notre_dame.tactics</tactics>
+    <protoaction>
+      <name>Autogather</name>
+      <rate type="XP">4.000000</rate>
+    </protoaction>
+  </unit>
+  <unit id="21173" name="zpNatEUScottishPalaces">
+    <dbid>21173</dbid>
+    <displaynameid>62299</displaynameid>
+    <editornameid>503436</editornameid>
+    <obstructionradiusx>7.0000</obstructionradiusx>
+    <obstructionradiusz>2.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\scottish_palaces.xml</animfile>
+    <portraiticon>resources\art\buildings\native_settlement\native_stuart_site_portrait.png</portraiticon>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonCollideable</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>RMCanRotate</flag>
+  </unit>
+  <unit id="21174" name="zpSPCSocketStuart">
+    <dbid>21174</dbid>
+    <displaynameid>130600</displaynameid>
+    <editornameid>503437</editornameid>
+    <subciv>Stuart</subciv>
+    <socketbuildprotounit>TradingPost</socketbuildprotounit>
+    <socketbuildrate>1.0286</socketbuildrate>
+    <socketbuildcommandid>deSocketBuildEuropean</socketbuildcommandid>
+    <obstructionradiusx>4.0000</obstructionradiusx>
+    <obstructionradiusz>4.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <autoconvertsoundset>SocketCapture</autoconvertsoundset>
+    <animfile>buildings\trading_post\europe_outpost_socket.xml</animfile>
+    <minimapicon>ui\minimap\royal_house</minimapicon>
+    <capturedminimapicon>ui\minimap\royal_house_c</capturedminimapicon>
+    <portraiticon>resources\art\buildings\native_settlement\native_stuart_site_portrait.png</portraiticon>
+    <rollovertextid>122400</rollovertextid>
+    <shortrollovertextid>61104</shortrollovertextid>
+    <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>
+    <los>9.0000</los>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>Socket</unittype>
+    <unittype>NativeSocket</unittype>
+    <unittype>TradePostSocket</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>Unattackable</unittype>
+    <unittype>NativeBuilding</unittype>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>CapturableSocket</unittype>
+    <flag>MinimapDisplayOnTop</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>Invulnerable</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>Tracked</flag>
+    <flag>NativePreview</flag>
+    <flag>NotDeleteable</flag>
+    <flag>SocketSubCivAlliance</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+    <flag>FlattenGround</flag>
+    <flag>EnterHotkeyContext</flag>
+    <tactics>socketcapture.tactics</tactics>
+  </unit>
   <!--TEST AND TEMPORARY CONTENT-->
 
   <!--<unit mergeMode='replace' id="1710" name="CommunityPlaza">
