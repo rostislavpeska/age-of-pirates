@@ -96,6 +96,16 @@
                             </Setter>
                         </Style>
                     </ListView.ItemContainerStyle>
+                    <ListView.Style>
+                        <Style TargetType="ListView">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=Grid}}" Value="True">
+                                    <Setter Property="Visibility" Value="Visible"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </ListView.Style>
                 </ListView>
             </Grid>
         </DataTemplate>
@@ -267,6 +277,56 @@
             </Grid>
         </DataTemplate>
 
+        <DataTemplate x:Key="CarouselItemTemplate">
+            <Grid>
+                <Rectangle Width="290" Height="135">
+                    <Rectangle.Fill>
+                        <ImageBrush Stretch="Uniform" ImageSource="{Binding KeyArtPath}" />
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Image VerticalAlignment="Top" HorizontalAlignment="Left" Margin="5,5,0,0" Height="30" Width="30" Source="pack://siteoforigin:,,,/resources/dlc_checkbox_ticked.png" Visibility="{Binding IsPurchased, Converter={StaticResource BoolToVisibility}}" />
+                <Grid.Effect>
+                    <DropShadowEffect 
+                        Color="Black" 
+                        Direction="315" 
+                        ShadowDepth="5" 
+                        BlurRadius="10" 
+                        Opacity="0.5" />
+                </Grid.Effect>
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Opacity" Value="0" />
+
+                        <Style.Triggers>
+                            <Trigger Property="Visibility" Value="Visible">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard Name="FadeIn">
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                             From="0" To="1"
+                                             Duration="0:0:0.5" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                            </Trigger>
+
+                            <Trigger Property="Visibility" Value="Collapsed">
+                                <Trigger.EnterActions>
+                                    <BeginStoryboard>
+                                        <Storyboard>
+                                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                             To="0" 
+                                             Duration="0" />
+                                        </Storyboard>
+                                    </BeginStoryboard>
+                                </Trigger.EnterActions>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+            </Grid>
+        </DataTemplate>
+
     </Window.Resources>
     <Viewbox Style="{StaticResource ViewboxMain}" KeyboardNavigation.DirectionalNavigation="Contained">
         <Grid x:Name="mainGridPanel" Width="1920" Height="1080">
@@ -312,6 +372,76 @@
             </Grid>
             <Grid Grid.Column="1">
                 <Rectangle Width="6" HorizontalAlignment="Left" Margin="0,-5,0,-5" Fill="{StaticResource PanelBGStrokeGradientVertical}" Stroke="Black" StrokeThickness="2" />
+            </Grid>
+            <Grid Grid.Column="3" VerticalAlignment="Bottom" Margin="0,0,0,20" DataContext="{x:Static local:Age3DLCCarouselViewModel.Singleton}" Visibility="{Binding DisplayCarousel, Converter={StaticResource BoolToVisibility}}">
+                <Grid.Background>
+                    <ImageBrush ImageSource="pack://siteoforigin:,,,/resources/images/uifilemanager/uifilemanager_bg.png" />
+                </Grid.Background>
+                <Grid Margin="15,15,15,25" VerticalAlignment="Top">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50"/>
+                        <ColumnDefinition Width="290"/>
+                        <ColumnDefinition Width="50"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="40"/>
+                        <RowDefinition Height="150"/>
+                        <RowDefinition Height="15"/>
+                        <RowDefinition Height="75"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="$$49323$$Downloadable Content" Style="{StaticResource MainTitleTextBlockStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Top" FontSize="20" TextAlignment="Center" Margin="0,0,0,0" />
+                    <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" x:Name="CarouselDLCName" Text="{Binding DLCName}" Style="{StaticResource RegularTextBlockStyle}" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" FontSize="18" TextAlignment="Center" Margin="0,0,0,0" />
+                    <local:Age3Button x:Name="CarouselBackButton" Grid.Row="2" Style="{StaticResource BackButtonLarge}" Margin="0,0,0,0" Height="40" Width="40" HorizontalAlignment="Right" VerticalAlignment="Center" Command="{Binding PreviousDLCCommand}" Visibility="{Binding UseCarousel, Converter={StaticResource BoolToVisibility}}"/>
+                    <local:Age3Button x:Name="CarouselForwardButton" Grid.Row="2" Grid.Column="2" Style="{StaticResource ForwardButtonLarge}" Margin="0,0,0,0" Height="40" Width="40" HorizontalAlignment="Left" VerticalAlignment="Center" Command="{Binding NextDLCCommand}" Visibility="{Binding UseCarousel, Converter={StaticResource BoolToVisibility}}"/>
+                    <Grid Grid.Row="2" Grid.Column="1" Width="290" Height="135" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <ContentControl Content="{Binding DLCUnitedStates}" ContentTemplate="{StaticResource CarouselItemTemplate}" Visibility="{Binding CurrentDLC, Converter={StaticResource EnumToVisibility}, ConverterParameter=UnitedStates}"/>
+                        <ContentControl Content="{Binding DLCAfrica}" ContentTemplate="{StaticResource CarouselItemTemplate}" Visibility="{Binding CurrentDLC, Converter={StaticResource EnumToVisibility}, ConverterParameter=Africa}"/>
+                        <ContentControl Content="{Binding DLCMexico}" ContentTemplate="{StaticResource CarouselItemTemplate}" Visibility="{Binding CurrentDLC, Converter={StaticResource EnumToVisibility}, ConverterParameter=Mexico}"/>
+                        <ContentControl Content="{Binding DLCItalyMalta}" ContentTemplate="{StaticResource CarouselItemTemplate}" Visibility="{Binding CurrentDLC, Converter={StaticResource EnumToVisibility}, ConverterParameter=ItalyMalta}"/>
+                        <ContentControl Content="{Binding DLCSkins1}" ContentTemplate="{StaticResource CarouselItemTemplate}" Visibility="{Binding CurrentDLC, Converter={StaticResource EnumToVisibility}, ConverterParameter=Skins_1}"/>
+                        <ContentControl Content="{Binding DLCSkins2}" ContentTemplate="{StaticResource CarouselItemTemplate}" Visibility="{Binding CurrentDLC, Converter={StaticResource EnumToVisibility}, ConverterParameter=Skins_2}"/>
+                        <ContentControl Content="{Binding DLCSkins3}" ContentTemplate="{StaticResource CarouselItemTemplate}" Visibility="{Binding CurrentDLC, Converter={StaticResource EnumToVisibility}, ConverterParameter=Skins_3}"/>
+                        <ContentControl Content="{Binding DLCDanePolish}" ContentTemplate="{StaticResource CarouselItemTemplate}" Visibility="{Binding CurrentDLC, Converter={StaticResource EnumToVisibility}, ConverterParameter=DanePolish}"/>
+                    </Grid>
+                    <StackPanel Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Orientation="Horizontal" Margin="0,0,0,0" Visibility="{Binding UseCarousel, Converter={StaticResource BoolToVisibility}}">
+                        <Grid Margin="1,0">
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Source="pack://siteoforigin:,,,/resources/dlc_pip_off.png" />
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Source="pack://siteoforigin:,,,/resources/dlc_pip_on.png" Visibility="{Binding CurrentDLC, Converter={StaticResource EnumToVisibility}, ConverterParameter=UnitedStates}"/>
+                        </Grid>
+                        <Grid Margin="1,0">
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Source="pack://siteoforigin:,,,/resources/dlc_pip_off.png"/>
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Source="pack://siteoforigin:,,,/resources/dlc_pip_on.png" Visibility="{Binding CurrentDLC, Converter={StaticResource EnumToVisibility}, ConverterParameter=Africa}"/>
+                        </Grid>
+                        <Grid Margin="1,0">
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Source="pack://siteoforigin:,,,/resources/dlc_pip_off.png"/>
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Source="pack://siteoforigin:,,,/resources/dlc_pip_on.png" Visibility="{Binding CurrentDLC, Converter={StaticResource EnumToVisibility}, ConverterParameter=Mexico}"/>
+                        </Grid>
+                        <Grid Margin="1,0">
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Source="pack://siteoforigin:,,,/resources/dlc_pip_off.png"/>
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Source="pack://siteoforigin:,,,/resources/dlc_pip_on.png" Visibility="{Binding CurrentDLC, Converter={StaticResource EnumToVisibility}, ConverterParameter=ItalyMalta}"/>
+                        </Grid>
+                        <Grid Margin="1,0">
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Source="pack://siteoforigin:,,,/resources/dlc_pip_off.png"/>
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Source="pack://siteoforigin:,,,/resources/dlc_pip_on.png" Visibility="{Binding CurrentDLC, Converter={StaticResource EnumToVisibility}, ConverterParameter=Skins_1}"/>
+                        </Grid>
+                        <Grid Margin="1,0">
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Source="pack://siteoforigin:,,,/resources/dlc_pip_off.png"/>
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Source="pack://siteoforigin:,,,/resources/dlc_pip_on.png" Visibility="{Binding CurrentDLC, Converter={StaticResource EnumToVisibility}, ConverterParameter=Skins_2}"/>
+                        </Grid>
+                        <Grid Margin="1,0">
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Source="pack://siteoforigin:,,,/resources/dlc_pip_off.png"/>
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Source="pack://siteoforigin:,,,/resources/dlc_pip_on.png" Visibility="{Binding CurrentDLC, Converter={StaticResource EnumToVisibility}, ConverterParameter=Skins_3}"/>
+                        </Grid>
+                        <Grid Margin="1,0">
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Source="pack://siteoforigin:,,,/resources/dlc_pip_off.png"/>
+                            <Image VerticalAlignment="Center" HorizontalAlignment="Center" Height="15" Width="15" Source="pack://siteoforigin:,,,/resources/dlc_pip_on.png" Visibility="{Binding CurrentDLC, Converter={StaticResource EnumToVisibility}, ConverterParameter=DanePolish}"/>
+                        </Grid>
+                    </StackPanel>
+                    <local:Age3Button Grid.Row="4" Grid.Column="1" x:Name="CarouselStoreButton" Style="{StaticResource MainMenuButton}" Content="$$49331$$View Store Page" Command="{Binding ViewStoreCommand}">
+                        <Button.ToolTip>$$72665$$Select to open event challenges.</Button.ToolTip>
+                    </local:Age3Button>
+                </Grid>
             </Grid>
             <Grid Grid.Column="2">
                 <Button DataContext="{Binding LocalUser, Source={x:Static local:Age3MPDataCache.Current}}" HorizontalAlignment="Right" VerticalAlignment="Top"
@@ -389,13 +519,14 @@
                             </StackPanel>
 
                             <StackPanel Grid.Row="1" x:Name="BanMessageTextBox" Visibility="Collapsed">
-                                <TextBlock Background="{StaticResource main_menu_bg}" Margin="0,10" Padding="40,10" x:Name="BanMessageText" Style="{StaticResource MainTitleTextBlockStyle}" Text="You have been banned for 1 day. This is a really long message to test that." TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"  Foreground="#fff" FontSize="16" TextWrapping="Wrap"/>
+                                <TextBlock Background="{StaticResource main_menu_bg}" Margin="0,10" Padding="40,10" x:Name="BanMessageText" Style="{StaticResource RegularArialTextBlockStyle}" Text="You have been banned for 1 day. This is a really long message to test that." TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center"  Foreground="#fff" FontSize="16" TextWrapping="Wrap"/>
                             </StackPanel>
 
                             <!-- Box that advertises current DLC pack(s) -->
-                            <Grid x:Name="DLC_Panel" Visibility="{Binding HasUnboughtOrRecentDLC, Converter={StaticResource BoolToVisibility}, Source={x:Static local:Age3DLCDisplayViewModel.Singleton}}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="auto" Margin="0,10,0,0" >
+                            <Grid x:Name="DLC_Panel" DataContext="{x:Static local:Age3DLCDisplayViewModel.Singleton}" Visibility="{Binding HasUnboughtDLC, Converter={StaticResource BoolToVisibility}}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="auto" Margin="0,10,0,0" >
 
                                 <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
                                     <RowDefinition Height="auto"/>
@@ -407,15 +538,67 @@
                                     <Image Source="resources/dlcbanner_generic.png" Opacity="1.0"/>
                                     <Rectangle VerticalAlignment="Top" Height="2" Fill="#FFFFEC99"/>
                                     <Rectangle VerticalAlignment="Bottom" Height="2" Fill="#FFFFEC99"/>
-                                    <TextBlock Style="{StaticResource MainTitleTextBlockStyle}" Text="{Binding DLCPanelTitle.Text, Source={x:Static local:Age3DLCDisplayViewModel.Singleton}}" FontSize="25" Width="370" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Margin="0,0,0,0" />
+                                    <TextBlock Style="{StaticResource MainTitleTextBlockStyle}" Text="{Binding DLCPanelTitle.Text}" FontSize="25" Width="370" HorizontalAlignment="Center" VerticalAlignment="Center" TextAlignment="Center" TextWrapping="Wrap" Margin="0,0,0,0" />
                                 </Grid>
 
-                                <ContentPresenter Grid.Row="1" Content="{Binding DLCPack, Source={x:Static local:Age3DLCDisplayViewModel.Singleton}}" Margin="0,0,0,0"/>
+                                <Rectangle Grid.Row="1" Grid.RowSpan="3" Fill="Black" Opacity="0.75"/>
+                                <Rectangle Grid.Row="1" VerticalAlignment="Top" Height="2" Fill="#dbc564"/>
 
-                                <local:Age3Button Grid.Row="2" x:Name="DLC_StoreBtn" Visibility="{Binding HasUnboughtDLC, Converter={StaticResource BoolToVisibility}, Source={x:Static local:Age3DLCDisplayViewModel.Singleton}}" Command="{Binding GoToDLCStore, Source={x:Static local:Age3DLCDisplayViewModel.Singleton}}" Style="{StaticResource MainMenuButton}" Content="$$49331$$View Store Page">
+                                <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,10">
+                                    <Image Width="100" Source="{Binding DLCPack.DLCPackIcon}"/>
+                                    <TextBlock x:Name="DLC_Title" Text="{Binding DLCPack.DLCPackName.Text}" Style="{StaticResource RegularTextBlockStyle}" Width="250" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="10,5,0,0" />
+                                </StackPanel>
+
+                                <local:Age3Button Grid.Row="2" x:Name="DLC_StoreBtn" Visibility="{Binding HasUnboughtDLC, Converter={StaticResource BoolToVisibility}}" Command="{Binding GoToDLCStore, Source={x:Static local:Age3DLCDisplayViewModel.Singleton}}" Style="{StaticResource MainMenuButton}" Content="$$49331$$View Store Page">
                                     <Button.ToolTip>$$49332$$Select to open the store page for this DLC.</Button.ToolTip>
                                 </local:Age3Button>
-                                <local:Age3Button Grid.Row="3" x:Name="DLC_ExtraBtn" Visibility="{Binding HasUnboughtDLC, Converter={StaticResource FlippedBoolToVisibility}, Source={x:Static local:Age3DLCDisplayViewModel.Singleton}}" Command="{Binding DLCExtraBtn, Source={x:Static local:Age3DLCDisplayViewModel.Singleton}}" Style="{StaticResource MainMenuButton}" Content="$$105998$$Historical Maps"/>
+
+                                <StackPanel Grid.Row="3">
+                                    <TextBlock x:Name="DLC_Contents" local:Age3StringDB.StringId="49324" Grid.Row="2" Style="{StaticResource RegularTextBlockStyle}" Width="360" FontSize="18" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,10,0,8" />
+                                    <ListView SelectionMode="Single" ItemsSource="{Binding DLCPack.DLCPackItems, Source={x:Static local:Age3DLCDisplayViewModel.Singleton}}" HorizontalContentAlignment="Center" Margin="0,0,0,10">
+                                        <ListView.Resources>
+                                            <Style TargetType="GridViewColumnHeader">
+                                                <Setter Property="Visibility" Value="Collapsed" />
+                                            </Style>
+                                        </ListView.Resources>
+                                        <ListView.View>
+                                            <GridView>
+                                                <GridViewColumn Header="Name" />
+                                            </GridView>
+                                        </ListView.View>
+                                        <ListView.ItemContainerStyle>
+                                            <Style TargetType="ListViewItem">
+                                                <Setter Property="FocusVisualStyle" Value="{x:Null}"/>
+                                                <Setter Property="Template">
+                                                    <Setter.Value>
+                                                        <ControlTemplate TargetType="{x:Type ListViewItem}">
+                                                            <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="auto"/>
+                                                                    <ColumnDefinition Width="*"/>
+                                                                </Grid.ColumnDefinitions>
+                                                                <TextBlock Text="{Binding SubHeadingName.Text}" Grid.Row="0" Grid.Column="0" Style="{StaticResource RegularTextBlockStyle}" Foreground="#dbc564" FontSize="18" />
+                                                                <TextBlock Text="{Binding ListItemName.Text}" Grid.Row="0" Grid.Column="1" Style="{StaticResource RegularTextBlockStyle}" FontSize="16"  TextAlignment="Center" />
+                                                            </Grid>
+                                                        </ControlTemplate>
+                                                    </Setter.Value>
+                                                </Setter>
+                                            </Style>
+                                        </ListView.ItemContainerStyle>
+                                    </ListView>
+                                    <Rectangle VerticalAlignment="Bottom" Height="2" Fill="#dbc564"/>
+                                    <StackPanel.Style>
+                                        <Style TargetType="StackPanel">
+                                            <Setter Property="Visibility" Value="Collapsed"/>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource AncestorType=Grid}}" Value="True">
+                                                    <Setter Property="Visibility" Value="Visible"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </StackPanel.Style>
+                                </StackPanel>
+                                <local:Age3Button Grid.Row="4" x:Name="DLC_ExtraBtn" Visibility="{Binding HasUnboughtDLC, Converter={StaticResource FlippedBoolToVisibility}}" Command="{Binding DLCExtraBtn, Source={x:Static local:Age3DLCDisplayViewModel.Singleton}}" Style="{StaticResource MainMenuButton}" Content="$$105998$$Historical Maps"/>
                             </Grid>
 
                             <!-- FreePlay info -->
