@@ -55,12 +55,30 @@ an estimate from that ratio.
    map with a root working copy: same rule.
 2. **Rebuild every edited XMB twin** in Resource Manager (protomods, techtreemods,
    nuggetmods, stringmods, protounitcommandmods ...). The check flags stale ones.
+2b. **Build the string twins for all fifteen languages:**
+   `python scripts/tools/stringsync.py --build` (no flag = dry audit, `--vanilla` = also
+   verify the split). Only `english/stringmods.xml` is edited; the other fourteen folders
+   ship the `.xmb` alone, which the twin check cannot see, so the check runs the tool.
+   The English file has two marked sections and the tool builds each language as:
+   - `<!-- ===== REWRITES` block: overrides of VANILLA ids (today: 64988, the consulate
+     headline "Choose an Ally"). Every other language keeps its own translation of exactly
+     these ids in `data/strings/_rewrites/<language>.xml`, static, in that language; the
+     tool swaps the English block for that file. A language whose fragment is missing or
+     lacks an id is INCOMPLETE and is NOT written - add the translation, never English.
+   - `<!-- ===== NEW STRINGS` block: mod-own ids (400001-400290, 500001+; vanilla tops out
+     at 300366). Copied 1:1 into every language. New strings go here.
+   So a release replaces only the NEW STRINGS part of each language; its rewrites survive.
+   Adding a rewrite = one line in English + fourteen fragment lines, once, then never again.
 3. **Run the check.** Fix blocking items in the FOLDERS (delete strays, move
    backups out of the game dirs), never by editing the zip. Re-run until clean.
 4. **Zip the five folders at the archive root** - `art data game sound randmaps`
    directly inside the zip, no wrapper folder, nothing else. Write the zip
    OUTSIDE the game folders (the mod root is fine; `*.zip` is gitignored).
    `info.json` is optional in a zipped submission.
+   **The zip is made by the user, by hand, as the final deployment step.** Scripted zip
+   export has proven less reliable than the manual one (2026-09-17). Never create a zip
+   unprompted or as a side effect of the check; do it only when the user explicitly asks
+   for the export, and then audit the result with `--zip` before they upload it.
 5. **Size**: compressed zip <= 2 GB.
 6. **Upload** at https://www.ageofempires.com/mods/create/ (new) or the mod's own
    page (update). The portal refuses a mod without **tags**; set thumbnail and

@@ -1,0 +1,5 @@
+<!-- Rewrites of vanilla string ids for french. STATIC: keep these in french, never in English.
+     scripts/tools/stringsync.py splices these lines in place of the English REWRITES block, so this
+     file must hold exactly the ids that block holds. Each line: the official vanilla text, minimally edited.
+     64988 vanilla: Choisissez un allié étranger -->
+<string _locid="64988">Choisissez un allié</string>

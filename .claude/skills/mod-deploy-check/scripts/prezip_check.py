@@ -170,6 +170,38 @@ def audit(entries, rep, on_disk_root=None):
     if undecidable and BARTOOL is None:
         rep.info.append("XMB content check unavailable (bar-extract skill not found) - mtime fallback used")
 
+    # Language string twins: only english/ keeps a stringmods.xml; the other fourteen
+    # folders ship the .xmb alone, built by scripts/tools/stringsync.py as English NEW
+    # STRINGS plus that language's own REWRITES fragment, so the .xml/.xmb check above
+    # cannot see them and a byte comparison with English is meaningless. 2026-09-17: ten
+    # ids had been missing from every non-English player's game. Folder mode asks the
+    # tool itself (exact); zip mode can only check presence.
+    sync_tool = os.path.join(on_disk_root, "scripts", "tools", "stringsync.py") if on_disk_root else None
+    if sync_tool and os.path.isfile(sync_tool):
+        try:
+            r = subprocess.run([sys.executable, sync_tool], capture_output=True, text=True,
+                               encoding="utf-8", errors="replace", timeout=600)
+            if r.returncode != 0:
+                for line in r.stdout.splitlines():
+                    if re.search(r"\b(STALE|MISSING|INCOMPLETE)\b", line):
+                        rep.b("language string twin not current - run scripts/tools/stringsync.py --build "
+                              "(INCOMPLETE = its _rewrites fragment is missing or lacks ids)", line.strip())
+                if not any(re.search(r"\b(STALE|MISSING|INCOMPLETE)\b", l) for l in r.stdout.splitlines()):
+                    rep.b("stringsync.py failed", (r.stdout + r.stderr).strip()[-300:])
+            else:
+                rep.info.append("language string twins: all current (stringsync.py)")
+        except (OSError, subprocess.SubprocessError) as e:
+            rep.w("could not run stringsync.py (%s) - verify the language twins by hand" % e, "data/strings/")
+    else:
+        langs = sorted({n.split("/")[2] for n in names
+                        if n.lower().startswith("data/strings/") and n.count("/") == 3
+                        and not n.split("/")[2].startswith("_")})
+        for lang in langs:
+            if not any(k.lower() == "data/strings/%s/stringmods.xml.xmb" % lang.lower() for k in byname):
+                rep.b("language has no stringmods.xml.xmb (run scripts/tools/stringsync.py --build)",
+                      "data/strings/%s/" % lang)
+        rep.info.append("language string twins: presence checked only (zip mode); run stringsync.py on the folder for content")
+
     # git awareness, informational
     if on_disk_root:
         try:

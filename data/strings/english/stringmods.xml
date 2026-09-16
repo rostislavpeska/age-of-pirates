@@ -1,6 +1,12 @@
 <stringmods>
   <stringtable>
     <language name="English">
+      <!-- ===== REWRITES: overrides of vanilla string ids. Never copied 1:1. Every other language keeps its own
+           translation of exactly these ids in data/strings/_rewrites/LANGUAGE.xml, and
+           scripts/tools/stringsync.py swaps this block for that file when it builds that language. ===== -->
+      <string _locid="64988">Choose an Ally</string>
+      <!-- ===== NEW STRINGS: mod-own ids (400001-400290, 500001+). Copied 1:1 into every language by
+           scripts/tools/stringsync.py (build flag). Add new ids here, in ascending order (stringcheck.py). ===== -->
       <!--Version 1.1-->
       <string _locid="500001">ZP NAT Pirate</string>
       <string _locid="500002">ZP SPC Queen Anne's Revenge</string>

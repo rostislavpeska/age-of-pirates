@@ -1,0 +1,5 @@
+<!-- Rewrites of vanilla string ids for italian. STATIC: keep these in italian, never in English.
+     scripts/tools/stringsync.py splices these lines in place of the English REWRITES block, so this
+     file must hold exactly the ids that block holds. Each line: the official vanilla text, minimally edited.
+     64988 vanilla: Seleziona un alleato straniero -->
+<string _locid="64988">Seleziona un alleato</string>
