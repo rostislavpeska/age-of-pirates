@@ -18,6 +18,11 @@ python -m scripts.mapcheck 000_independence_war --matrix
 
 # fast static-only pass (parse, names, files; no simulator)
 python -m scripts.mapcheck zpaustralia --static-only
+python -m scripts.mapcheck zpcoldwar --static-only --live   # names also from the CURRENT build's protoy (Data.bar,
+                                                            # cached under LOCALAPPDATA); ends the stale-snapshot S4
+                                                            # false positives on DLC protos. Added 2026-09-17, with a
+                                                            # route-type check: rmBuildTradeRoute names must exist in
+                                                            # data/traderoutedefs.xml (else the engine builds dirt).
 
 # machine-readable findings
 python -m scripts.mapcheck zptortuga --json findings.json

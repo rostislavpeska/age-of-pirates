@@ -501,6 +501,8 @@ class Extraction:
     placements: List[XPlacement] = dfield(default_factory=list)
     waypoints: List[Tuple[Any, Any]] = dfield(default_factory=list)
     route_waypoints: Dict[int, List[Tuple[Any, Any]]] = dfield(default_factory=dict)
+    # rmBuildTradeRoute(handle, "<type>") -> the route-def name the engine looks up in traderoutedefs
+    route_types: Dict[int, Any] = dfield(default_factory=dict)
     rivers: Dict[int, "XRiver"] = dfield(default_factory=dict)
     connections: Dict[int, "XConnection"] = dfield(default_factory=dict)
     constraints: Dict[str, Dict[str, Any]] = dfield(default_factory=dict)
@@ -1624,6 +1626,7 @@ class Extractor:
             return 0
         if name == "rmBuildTradeRoute":
             self.routes[args[0]] = True
+            res.route_types[args[0]] = args[1] if len(args) > 1 else None
             return True
         if name == "rmAddRandomTradeRouteWaypoints":
             self.res.warn("rmAddRandomTradeRouteWaypoints: waypoints are runtime-dependent")

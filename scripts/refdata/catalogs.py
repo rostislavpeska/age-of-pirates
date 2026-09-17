@@ -252,9 +252,51 @@ def _build_water() -> Catalog:
     return Catalog("water", entries)
 
 
+def _live_proto_path() -> Optional[Path]:
+    """The CURRENT game build's protoy, decoded from Data.bar into a temp cache (never the repo).
+    Enabled by MAPCHECK_LIVE_PROTO=1 (mapcheck --live). The repo snapshot in scripts/source lags every
+    DLC/patch, so without this every new vanilla proto is a false S4 FAIL. Returns None when the
+    archives are not reachable (no game install on this machine)."""
+    import os
+    import sys
+    import tempfile
+    if not os.environ.get("MAPCHECK_LIVE_PROTO"):
+        return None
+    cache_dir = Path(os.environ.get("LOCALAPPDATA") or tempfile.gettempdir()) / "aoe3-mapcheck"
+    cache = cache_dir / "protoy_live.xml"
+    try:
+        sys.path.insert(0, str(REPO_ROOT / ".claude" / "skills" / "bar-extract" / "scripts"))
+        sys.dont_write_bytecode = True
+        import bartool  # noqa: WPS433
+        game = bartool.find_game_dir()
+        data_bar = Path(game) / "Data.bar"
+        if cache.is_file() and data_bar.is_file() and cache.stat().st_mtime >= data_bar.stat().st_mtime:
+            return cache
+        index = bartool.build_index(game)
+        entries = index.values() if isinstance(index, dict) else index
+        hit = None
+        for e in entries:
+            p = str(getattr(e, "path", "")).lower().replace("/", "\\")
+            if p in ("data\\protoy.xml", "data\\protoy.xml.xmb"):
+                hit = e
+                break
+        if hit is None:
+            return None
+        data, _dec = bartool.decode(bartool.read_entry(hit), True)
+        cache_dir.mkdir(parents=True, exist_ok=True)
+        cache.write_bytes(data)
+        return cache
+    except Exception:  # noqa: BLE001 - live names are best effort; the snapshot still applies
+        return None
+
+
 def _build_proto() -> Catalog:
     entries: Dict[str, Entry] = {}
-    for path, layer in ((MOD_PROTO, "mod"), (VANILLA_PROTO, "vanilla")):
+    sources = [(MOD_PROTO, "mod"), (VANILLA_PROTO, "vanilla")]
+    live = _live_proto_path()
+    if live is not None:
+        sources.append((live, "live"))
+    for path, layer in sources:
         for name in _proto_names(path):
             entries.setdefault(name.lower(), Entry(name, layer))
     return Catalog("proto", entries)

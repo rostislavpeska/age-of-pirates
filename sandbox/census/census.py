@@ -52,13 +52,45 @@ def parse_units(path: Path):
     return out
 
 
+MOD_BASE_OFFSET = 0     # verified 2026-09-17 (build 25040513) on two observations: zpNatInuitHarpooner
+                        # runtime 2820 = 2673 vanilla + 147 new-by-name records before it; zpSPCLondonBasilica
+                        # 3631 = 2673 + 958. Records written `name ="x"` (space before =) count too.
+
+
+def runtime_names():
+    """Runtime proto index -> name. The save stores the engine's proto INDEX, not the XML id:
+    vanilla units by file position in the CURRENT protoy (mapcheck --live cache; snapshot fallback),
+    then every protomods record whose name is not vanilla, in file order, from base = vanilla count +
+    MOD_BASE_OFFSET. Vanilla ids equal positions only for the first ~1460 records, so by_id alone
+    mis-names everything after CrateofCoinLarge400 and every mod unit."""
+    import os
+    live = Path(os.environ.get("LOCALAPPDATA", "")) / "aoe3-mapcheck" / "protoy_live.xml"
+    src = live if live.is_file() else REPO / "scripts" / "source" / "protoy.xml"
+    if not src.is_file():
+        return {}, None
+    text = src.read_text(encoding="utf-8", errors="replace")
+    van = [m.group(1) for m in re.finditer(r'<unit\b[^>]*\bname\s*=\s*"([^"]+)"', text)]
+    vset = set(van)
+    out = {i: n for i, n in enumerate(van)}
+    pm = REPO / "data" / "protomods.xml"
+    if pm.is_file():
+        k = 0
+        base = len(van) + MOD_BASE_OFFSET
+        for m in re.finditer(r'<unit\b[^>]*\bname\s*=\s*"([^"]+)"', pm.read_text(encoding="utf-8", errors="replace")):
+            if m.group(1) not in vset:
+                out[base + k] = m.group(1)
+                k += 1
+    return out, src
+
+
 def census(path: Path):
     """Parsed, name-resolved unit list — the importable entry point."""
     by_id, by_dbid = proto_names()
+    by_rt, _src = runtime_names()
     units = parse_units(Path(path))
     for u in units:
-        u["proto"] = by_id.get(u["proto_id"]) or by_dbid.get(u["proto_id"]) \
-            or f"unknown({u['proto_id']})"
+        pid = u["proto_id"]
+        u["proto"] = by_rt.get(pid) or by_id.get(pid) or by_dbid.get(pid) or f"unknown({pid})"
     return units
 
 

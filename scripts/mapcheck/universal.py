@@ -241,6 +241,18 @@ def static_checks(path: Path, scenario) -> RunResult:
                       + (f" — did you mean {sug[0]!r}?" if sug else "")
                       + " — object will not spawn",
                       map=stem, line=line, guide_ref="guide 21.2:10843"))
+    # Trade route types: rmBuildTradeRoute's second argument must be a <route> record in the mod's
+    # data/traderoutedefs.xml (the mod overrides the whole file). An unknown name is NOT an error in
+    # the engine: it silently builds the base route (Cold War "arctic1" hunt, 2026-09-10).
+    route_names = _traderoute_names()
+    if route_names:
+        for _h, rtype in sorted(getattr(ex, "route_types", {}).items(), key=lambda kv: str(kv[0])):
+            if isinstance(rtype, str) and rtype and rtype not in route_names:
+                close = [n for n in route_names if rtype.lower() in n.lower() or n.lower() in rtype.lower()]
+                F(Finding("S4", "FAIL", "deterministic",
+                          f"unknown trade route type {rtype!r} — engine silently falls back to the base route"
+                          + (f" — did you mean {close[0]!r}?" if close else ""),
+                          map=stem))
     for ref, line in sorted(grouping_refs.items()):
         if any(c in ref for c in ("/", "\\", ":")):
             F(Finding("S4", "FAIL", "deterministic",
@@ -452,6 +464,16 @@ def _profile_template_checks(res: RunResult, prof, scenario,
             "area_class_probe", {"probes": prof.expectations}, ctx)
     for t in prof.tests:
         res.findings += run_template(t["template"], t.get("params"), ctx)
+
+
+def _traderoute_names() -> set:
+    """Route-def names the engine can look up: every <route ...>NAME record in the mod's
+    data/traderoutedefs.xml (a full override of the vanilla file). Empty set if the file is absent."""
+    p = Path(__file__).resolve().parents[2] / "data" / "traderoutedefs.xml"
+    if not p.is_file():
+        return set()
+    text = p.read_text(encoding="utf-8", errors="ignore")
+    return set(re.findall(r"<route [^>]*>([A-Za-z0-9_]+)", text))
 
 
 def run(path: Path, scenario, static_only: bool = False,

@@ -59,7 +59,13 @@ def main(argv=None) -> int:
                     help="write findings JSON here")
     ap.add_argument("--strict", action="store_true",
                     help="WARN also fails the exit code")
+    ap.add_argument("--live", action="store_true",
+                    help="also accept proto names from the CURRENT game build (decoded from "
+                         "Data.bar into a temp cache); ends the stale-snapshot S4 false positives")
     args = ap.parse_args(argv)
+    if args.live:
+        import os
+        os.environ["MAPCHECK_LIVE_PROTO"] = "1"
 
     try:
         path = resolve_map(args.map)

@@ -5,6 +5,13 @@ description: Generate a random map in the live Scenario Editor and photograph it
 
 # map-minimap: see the terrain before testing it
 
+> **Device note (2026-09-17):** `load_map.py`, `gamectl.py` and `pw.py` below live in
+> `C:\Users\rosti\aop_harness\aitest` on the OTHER machine and are not in this repo. On the TIGO
+> machine (2560x1080 sheet) the same generate -> screenshot -> save loop is
+> `sandbox/census/census_run.py` (recipes) and `sandbox/census/bench_run.py` (one map, `--peek`
+> for the dropdown row); both use `sandbox/census/game_driver.py`'s calibrated client coordinates.
+> Skills: rm-unit-bench, rm-census.
+
 `mapcheck` proves a map is statically valid. This proves it *looks* right —
 the one check a simulator cannot do. Run it before spending an hour of play
 test on a map edit.
