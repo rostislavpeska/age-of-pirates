@@ -1,6 +1,21 @@
 <?xml version='1.0' encoding='utf-8'?>
 <animfile>
-  <definebone>bone_flag_civ</definebone>
+  <definebone>bone_flag</definebone>
+  <attachment>civflag
+    <component>flag
+      <assetreference type="ClothFlag">
+        <flag>
+          <blending>alphatest_color</blending>
+          <specialtexture></specialtexture>
+          <width>2.00</width>
+          <height>1.50</height>
+        </flag>
+      </assetreference>
+    </component>
+    <anim>Idle
+      <component>flag</component>
+    </anim>
+  </attachment>
   <attachment>collapse_smoke
     <component>collapse_smoke
       <assetreference type="popcornFx">
@@ -33,6 +48,7 @@
       <xoffset>0.00</xoffset>
       <zoffset>0.00</zoffset>
     </decal>
+    <attach a="civflag" frombone="bone_flag" tobone="bone_flag" syncanims="0"></attach>
   </component>
   <anim>Idle
     <component>ModelComp</component>
