@@ -74314,6 +74314,167 @@
     <flag>EnterHotkeyContext</flag>
     <tactics>socketcapture.tactics</tactics>
   </unit>
+  <unit id="21175" name="zpSPCTowerOfLondon">
+    <dbid>21175</dbid>
+    <displaynameid>503438</displaynameid>
+    <editornameid>503439</editornameid>
+    <obstructionradiusx>8.0000</obstructionradiusx>
+    <obstructionradiusz>9.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\tower_of_london\tower_of_london.xml</animfile>
+    <deadreplacement>BuildingRubble6x6</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\fort\fort_icon.png</icon>
+    <portraiticon>resources\art\buildings\spc\victory_building.png</portraiticon>
+    <rollovertextid>502029</rollovertextid>
+    <shortrollovertextid>502029</shortrollovertextid>
+    <initialhitpoints>6500.0000</initialhitpoints>
+    <maxhitpoints>6500.0000</maxhitpoints>
+    <los>30.0000</los>
+    <bounty>240.0000</bounty>
+    <allowedage>0</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>LogicalTypeValidSPCBuildingsDeadCondition</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>AbstractCanSeeStealth</unittype>
+    <unittype>AbstractTownCenter</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsHASRangedAttack</unittype>
+    <unittype>AbstractFindFort</unittype>
+    <flag>GivesLOSToAll</flag>
+    <flag>Invulnerable</flag>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>StartingColonyBuilding</flag>
+    <flag>ColonyPlacementCenter</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>ShowGarrisonButton</flag>
+    <flag>AllowAutoGarrison</flag>
+    <flag>ColorTransformNonGaia</flag>
+    <flag>Tracked</flag>
+    <flag>NotDeleteable</flag>
+    <flag>ForceUpdateVisualWhenCnverted</flag>
+  </unit>
+  <unit id="21176" name="zpSPCTowerOfLondonGXO">
+    <dbid>21176</dbid>
+    <displaynameid>503438</displaynameid>
+    <editornameid>503440</editornameid>
+    <obstructionradiusx>8.0000</obstructionradiusx>
+    <obstructionradiusz>9.5000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\spc\tower_of_london\tower_of_london_gxo.xml</animfile>
+    <deadreplacement>BuildingRubble6x6</deadreplacement>
+    <deadreplacementlifespan>15</deadreplacementlifespan>
+    <impacttype>Stone</impacttype>
+    <physicsinfo>house</physicsinfo>
+    <placementfile>buildinglarge.xml</placementfile>
+    <icon>resources\art\buildings\basilica\basilica_icon.png</icon>
+    <minimapicon>ui\minimap\religious_small</minimapicon>
+    <portraiticon>resources\art\buildings\spc\british_basilica.png</portraiticon>
+    <rollovertextid>502310</rollovertextid>
+    <shortrollovertextid>502309</shortrollovertextid>
+    <initialhitpoints>5000.0000</initialhitpoints>
+    <maxhitpoints>5000.0000</maxhitpoints>
+    <los>30.0000</los>
+    <displayedrange>20.0000</displayedrange>
+    <buildpoints>40.0000</buildpoints>
+    <buildlimit>1</buildlimit>
+    <bounty>160.0000</bounty>
+    <buildbounty>80.0000</buildbounty>
+    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Gold">200.0000</cost>
+    <buildingworkrate>1.0000</buildingworkrate>
+    <allowedage>1</allowedage>
+    <armor type="Siege" value="0.0000">
+    </armor>
+    <builderlimit>8</builderlimit>
+    <unittype>LogicalTypeValidSabotage</unittype>
+    <unittype>LogicalTypeMinimapFilterEconomic</unittype>
+    <unittype>LogicalTypeHandUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWalls</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttack</unittype>
+    <unittype>LogicalTypeRangedUnitsAutoAttackNoVillagers</unittype>
+    <unittype>LogicalTypeVillagersAttack</unittype>
+    <unittype>LogicalTypeHandUnitsAttack</unittype>
+    <unittype>LogicalTypeShipsAndBuildings</unittype>
+    <unittype>LogicalTypeRangedUnitsAttack</unittype>
+    <unittype>LogicalTypeBuildingsNotWallsOrGroves</unittype>
+    <unittype>ColonyBuilding</unittype>
+    <unittype>BuildingClass</unittype>
+    <unittype>Economic</unittype>
+    <unittype>Building</unittype>
+    <unittype>LogicalTypeBuildingsNoRangedAttack</unittype>
+    <unittype>HasBountyValue</unittype>
+    <unittype>CountsTowardEconomicScore</unittype>
+    <unittype>AbstractChurch</unittype>
+    <unittype>AbstractCathedral</unittype>
+    <unittype>AbstractCityManison</unittype>
+    <unittype>AbstractImportantCityBuilding</unittype>
+    <flag>AllowAutoGarrison</flag>
+    <tech row="0" page="11" column="0">zpSPCArtPatronCathedral</tech>
+    <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
+    <tech row="0" page="11" column="1">zpSPCBlessedCitySingle</tech>
+    <tech row="0" page="11" column="2">DESPCPapalLegate</tech>
+    <tech row="0" page="11" column="2">zpSPCPapalLegateSingle</tech>
+    <tech row="0" page="11" column="3">zpSPCPapalBlessingPrague</tech>
+    <tech row="0" page="11" column="4">DESPCExcommunication</tech>
+    <flag>CollidesWithProjectiles</flag>
+    <flag>StartsAtFullEfficiency</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>ObscuresUnits</flag>
+    <flag>NoIdleActions</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Doppled</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>SelectWithObstruction</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>FlattenGround</flag>
+    <flag>ColonyBuilding</flag>
+    <flag>ColonyPlacementL</flag>
+    <flag>HasGatherPoint</flag>
+    <flag>Tracked</flag>
+    <flag>Invulnerable</flag>
+    <flag>NotDeleteable</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
+    <flag>ShowAreaHealRate</flag>
+    <command page="10" column="3">SetGatherPointMilitary</command>
+    <command page="10" column="8">CancelAllQueued</command>
+    <command page="11" column="4">Abilities</command>
+    <tactics>notre_dame.tactics</tactics>
+    <protoaction>
+      <name>Autogather</name>
+      <rate type="XP">4.000000</rate>
+    </protoaction>
+  </unit>
   <!--TEST AND TEMPORARY CONTENT-->
 
   <!--<unit mergeMode='replace' id="1710" name="CommunityPlaza">
