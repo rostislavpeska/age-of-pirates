@@ -43,7 +43,13 @@ defaulted to the current directory and this file said to run from the repo root)
 6. **Bytecode stays out too.** Importing bartool as a module (as
    `scripts/tools/check_anim_refs.py` does) writes `__pycache__/`; it is
    gitignored and must never be tracked.
-7. **Clean-up check before finishing:** `git status --short` must show no
+7. **HARD RULE - never duplicate an archive asset into the mod.** A texture, model, decal, particle or sound the
+   game already ships is REFERENCED by its archive path (`homecity\british\british_tol\textures\british_tol_matA_BaseColor`
+   in a `.material`, `buildings\fort\west_fort_decal` in an animfile); it is never copied under `art/` or `sound/`, not
+   even renamed. Every byte in the mod folder ships in the portal zip. Only content the mod itself made is written
+   there (a new gr2, a new DDT built from a licensed/generated image). Violated once on 2026-09-17 (six vanilla
+   british_tol DDTs, 17 MB) - the user treats it as a heavy violation.
+8. **Clean-up check before finishing:** `git status --short` must show no
    `bar_export/`, no stray `Data/`, `Art/` or `Sound/` trees and no
    `__pycache__`. If it does, delete them.
 
