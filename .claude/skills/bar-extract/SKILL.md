@@ -53,6 +53,15 @@ defaulted to the current directory and this file said to run from the repo root)
    `bar_export/`, no stray `Data/`, `Art/` or `Sound/` trees and no
    `__pycache__`. If it does, delete them.
 
+## Writing runtime XML by hand: CRLF, always
+
+Every XML the engine parses from the mod folder at run time - animfiles under `art/`, `.material`, `_snds.xml`, `.lgt`,
+`.tactics` - must be **CRLF**. An LF-only file is silently ignored: the proto loads, the unit places, the decal draws, the
+model never renders, no error anywhere (Tower of London, 2026-09-17, ten game restarts). `cat`/`extract` output here is
+already CRLF; the Write tool and `open(..., 'w')` are not. After writing such a file run
+`python scripts/tools/check_art_eol.py` (`--fix` converts); the project hook in `.claude/settings.json` converts on every
+Write/Edit and `.gitattributes` keeps checkouts CRLF. "Model does not appear" -> check line endings first.
+
 ## Commands
 
 | Command | Purpose |

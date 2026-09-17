@@ -1,0 +1,19 @@
+# Runtime XML the engine parses straight from the mod folder MUST be CRLF: an LF-only animfile / .material / _snds
+# is silently ignored (unit places, model never renders). Index stays LF, every checkout gets CRLF.
+*.xml       text eol=crlf
+*.material  text eol=crlf
+*.lgt       text eol=crlf
+*.tactics   text eol=crlf
+*.xs        text eol=crlf
+*.xaml      text eol=crlf
+
+# binaries - never touch line endings
+*.gr2   binary
+*.ddt   binary
+*.xmb   binary
+*.hkt   binary
+*.png   binary
+*.tga   binary
+*.wav   binary
+*.mp3   binary
+*.pkfx  binary
