@@ -43,24 +43,14 @@ defaulted to the current directory and this file said to run from the repo root)
 6. **Bytecode stays out too.** Importing bartool as a module (as
    `scripts/tools/check_anim_refs.py` does) writes `__pycache__/`; it is
    gitignored and must never be tracked.
-7. **HARD RULE - never duplicate an archive asset into the mod.** A texture, model, decal, particle or sound the
-   game already ships is REFERENCED by its archive path (`homecity\british\british_tol\textures\british_tol_matA_BaseColor`
-   in a `.material`, `buildings\fort\west_fort_decal` in an animfile); it is never copied under `art/` or `sound/`, not
-   even renamed. Every byte in the mod folder ships in the portal zip. Only content the mod itself made is written
-   there (a new gr2, a new DDT built from a licensed/generated image). Violated once on 2026-09-17 (six vanilla
-   british_tol DDTs, 17 MB) - the user treats it as a heavy violation.
+7. **Never duplicate an archive asset into the mod** - reference it by archive path (rule 2 of `aoe-xml`; violated once on 2026-09-17, six vanilla DDTs).
 8. **Clean-up check before finishing:** `git status --short` must show no
    `bar_export/`, no stray `Data/`, `Art/` or `Sound/` trees and no
    `__pycache__`. If it does, delete them.
 
-## Writing runtime XML by hand: CRLF, always
+## Writing XML into the mod
 
-Every XML the engine parses from the mod folder at run time - animfiles under `art/`, `.material`, `_snds.xml`, `.lgt`,
-`.tactics` - must be **CRLF**. An LF-only file is silently ignored: the proto loads, the unit places, the decal draws, the
-model never renders, no error anywhere (Tower of London, 2026-09-17, ten game restarts). `cat`/`extract` output here is
-already CRLF; the Write tool and `open(..., 'w')` are not. After writing such a file run
-`python scripts/tools/check_art_eol.py` (`--fix` converts); the project hook in `.claude/settings.json` converts on every
-Write/Edit and `.gitattributes` keeps checkouts CRLF. "Model does not appear" -> check line endings first.
+Mechanics (CRLF for runtime XML, twins, placement, ids, reference rules, the checker) live in the **aoe-xml** skill - read it before writing any XML; this skill is the READ side (vanilla files, XMB compile).
 
 ## Commands
 

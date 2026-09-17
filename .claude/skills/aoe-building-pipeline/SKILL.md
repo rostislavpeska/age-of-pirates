@@ -3,6 +3,7 @@ name: aoe-building-pipeline
 description: Prepare static AoE3DE building rigs, FBX-to-GR2 conversion, textures, materials and minimal animation XML with measured verification and manual export fallback.
 ---
 # AoE3DE buildings
+**Prerequisite: the `aoe-xml` skill** (CRLF, references by archive path, placement, `xmlcheck.py`) - this skill only adds the model/texture/material recipe.
 Generic geometry/UV authoring belongs in the separate architecture skill repository. This version covers static buildings; multi-bone units, ships and war machines need a separately verified extension.
 Read [rig/export/converter](references/rig-export.md) before rigging/conversion, and [textures/XML/game](references/textures-xml.md) before packaging.
 

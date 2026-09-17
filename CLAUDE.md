@@ -2,6 +2,8 @@
 
 This folder IS the live mod: the game loads it directly. Every byte here ships in the portal zip.
 
+## Any XML -> read `.claude/skills/aoe-xml/SKILL.md` first, verify with `python .claude/skills/aoe-xml/scripts/xmlcheck.py`
+
 ## Hard rules
 
 1. **Runtime XML is CRLF.** Any XML the engine parses from this folder at run time - animfiles (`art/**/*.xml`),
