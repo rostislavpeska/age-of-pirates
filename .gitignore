@@ -43,3 +43,6 @@ scripts/havok/converter.local.json
 
 # unit-bench screenshots are evidence, not repo content (8 MB each); saves + verdict JSON are tracked
 sandbox/census/samples/bench/*.png
+
+# London census results (saves, screenshots, verdict JSON) are evidence, not repo content
+sandbox/census/samples/london/

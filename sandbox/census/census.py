@@ -29,12 +29,19 @@ def proto_names():
     return by_id, by_dbid
 
 
-def parse_units(path: Path):
+def parse_units(path: Path, size_x: float = 5000.0, size_z: float = 5000.0):
+    """Every 'UN' record with a numeric id. The position is the first float triple INSIDE the record
+    (after the proto id, before the next record) that reads as a map coordinate: x/z inside the map,
+    y a plausible height, and not the unit's (1,1,1) scale vector. Calibrated 2026-09-17 on a London
+    save (build 25040513): 5240/5241 records, command posts on the player spots, AI markers at the
+    map centre. Record layouts differ by unit type (props +186..188, buildings +272..274, starting
+    units +331), which is why the old fixed offset before the marker read garbage. Pass the map size
+    to tighten the test; the defaults accept any DE map."""
     raw = path.read_bytes()
     if raw[:4] != b"l33t":
         raise SystemExit(f"not an l33t-compressed file: {path}")
     d = zlib.decompress(raw[8:])
-    out = []
+    recs = []
     i, n = 0, len(d)
     while i < n - 12:
         if d[i] == 0x55 and d[i + 1] == 0x4E:      # 'UN'
@@ -42,13 +49,24 @@ def parse_units(path: Path):
             if 2 <= idlen <= 12 and i + 14 + idlen <= n:
                 sid = d[i + 10:i + 10 + idlen]
                 if sid[-1] == 0 and all(48 <= c <= 57 for c in sid[:-1]) and i >= 48:
-                    x, y, z = struct.unpack_from("<3f", d, i - 48)
                     proto = struct.unpack_from("<I", d, i + 10 + idlen)[0]
-                    out.append({"id": sid[:-1].decode(), "proto_id": proto,
-                                "x": x, "y": y, "z": z})
+                    recs.append((i, idlen, sid[:-1].decode(), proto))
                     i += 10 + idlen
                     continue
         i += 1
+    out = []
+    for k, (i, idlen, sid, proto) in enumerate(recs):
+        end = recs[k + 1][0] if k + 1 < len(recs) else min(n, i + 400)
+        x = y = z = float("nan")
+        for b in range(i + 40, end - 12):
+            px, py, pz = struct.unpack_from("<3f", d, b)
+            if not (0.5 <= px <= size_x and 0.5 <= pz <= size_z and -10 < py < 80):
+                continue
+            if px == 1.0 or pz == 1.0 or (px == py == pz):
+                continue
+            x, y, z = px, py, pz
+            break
+        out.append({"id": sid, "proto_id": proto, "x": x, "y": y, "z": z})
     return out
 
 

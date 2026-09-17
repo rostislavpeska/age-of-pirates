@@ -41,6 +41,26 @@ ids continuing the real sequence. Never beside an older related record.
 
 Overriding a vanilla record: same id, `mergeMode='replace'` (protomods has one: `CommunityPlaza`). Never re-declare a vanilla id without it.
 
+## Nuggets: land and naval are two different things (nuggetmods.xml)
+
+A `<nugget>` record is picked by the map script's `rmSetNuggetDifficulty(d, d)` latch at the moment a placeholder
+unit is placed (baked in a grouping or an object def). Two families, placed on different spots and never
+interchangeable:
+
+| | land nugget | naval (water) nugget |
+|---|---|---|
+| record | no `<waternugget>` | `<waternugget>true</waternugget>` |
+| `<nuggetunit>` | `zpNuggetInvisible`, `Nugget*`, `NuggetCapturableBuildingBig`... | `zpNuggetInvisibleWater`, `ypNuggetBoat`, `ypNuggetSeaLionRock`... |
+| placeholder in the script / grouping | `Nugget` (object def) or the baked land placeholder | `zpNuggetInvisibleWater` (Istanbul's forts / guild, London's harbours) |
+| where it may stand | on land (a plateau, a block cell, inside walls) | on water (in front of a pier, on a lane) |
+| guardians | `<guardian>` or `<guardianunit><unit>` land units - guardian clones (`deGuardian*`, `zpGuardian*`) OR plain aggressive units (`zpNuggetIstanbul` 512 = 9 x `zpNatJanissary`, `zpNuggetTowerOfLondon` 605 = 10 x `deSPCHMRedcoat`) | ships (`zpGuardianCorsairGalley`, `dePrivateerGuardian`) |
+| texts | copy `rolloverstringid` / `applystringid` from the record you clone - never new strings for a variant | same |
+
+A land record latched onto a water placeholder (or the reverse) spawns nothing, silently. The map type must be
+listed in the record (`<maptype>piratehistoricalmap</maptype>` for the pirate historical maps). Query a baked
+nugget's unit in the script by the record's `<nuggetunit>`, never by the authored placeholder proto (Istanbul's
+law). New records: `data/nuggetmods.xml` only loads at game start - XMB rebuild plus a restart before a test.
+
 ## Verification ladder (do all of it before a game test)
 
 ```

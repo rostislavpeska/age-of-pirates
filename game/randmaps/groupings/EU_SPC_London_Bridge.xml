@@ -1,0 +1,290 @@
+<?xml version="1.0"?>
+
+<grouping>
+	<width>24</width>
+	<height>48</height>
+	<ignoreplacementrules>1</ignoreplacementrules>
+	<selectassingleunit>0</selectassingleunit>
+	<workonassingleunit>0</workonassingleunit>
+	<units>
+		<unit variation="0" posx="-5.5355" posz="-38.0772" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="5.9355" posz="-39.1678" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="4.3320" posz="-39.0336" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="104" posx="-6.4258" posz="-39.5558" orientx="0.9910" orienty="0.0000" orientz="-0.1336">zpSPCEUHouseProp</unit>
+		<unit variation="0" posx="-7.3984" posz="-37.9706" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="5.9256" posz="-37.7105" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="120" posx="5.0733" posz="-38.0446" orientx="-0.9886" orienty="0.0000" orientz="-0.1504">deSPCWaterlooHouseProp</unit>
+		<unit variation="0" posx="4.2037" posz="-37.0955" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="208" posx="-3.3831" posz="-40.5978" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="66" posx="-5.4660" posz="-39.2903" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFace</unit>
+		<unit variation="161" posx="3.2094" posz="-39.2793" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFace</unit>
+		<unit variation="166" posx="-6.6928" posz="-32.0604" orientx="-1.0000" orienty="0.0000" orientz="0.0002">zpSPCCityBuildingMix</unit>
+		<unit variation="0" posx="-5.6603" posz="-31.2202" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="-7.4917" posz="-31.5978" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="6.7944" posz="-30.8376" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="35" posx="5.2239" posz="-32.9773" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="0" posx="4.1228" posz="-30.0080" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="9" posx="-5.4912" posz="-29.8179" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFace</unit>
+		<unit variation="45" posx="3.2122" posz="-29.9440" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFace</unit>
+		<unit variation="0" posx="-7.2380" posz="-24.7302" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="6.7317" posz="-24.3684" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="220" posx="4.7490" posz="-27.3683" orientx="-0.0859" orienty="0.0000" orientz="-0.9963">zpSPCEUHouseProp</unit>
+		<unit variation="0" posx="4.6684" posz="-24.4412" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="-5.5689" posz="-23.0775" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="159" posx="-5.9254" posz="-24.5108" orientx="0.9835" orienty="0.0000" orientz="0.1810">zpSPCEUHouseProp</unit>
+		<unit variation="0" posx="-5.7881" posz="-18.0323" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="199" posx="5.3002" posz="-21.1209" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="117" posx="-5.5311" posz="-20.4669" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFace</unit>
+		<unit variation="146" posx="3.2457" posz="-20.6601" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFace</unit>
+		<unit variation="0" posx="-7.3870" posz="-17.5319" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="165" posx="-6.5065" posz="-18.7122" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="0" posx="6.2999" posz="-16.5607" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="4.5820" posz="-16.3061" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="-13.1820" posz="-14.3263" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="11.5968" posz="-15.2317" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="181" posx="-6.9736" posz="-14.0945" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">zpSPCFortCornerPropFlat</unit>
+		<unit variation="71" posx="-4.1290" posz="-16.1758" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="153" posx="-0.7704" posz="-12.9707" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="68" posx="-10.8532" posz="-12.8495" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">SPCFortWallLarge</unit>
+		<unit variation="17" posx="-16.5144" posz="-12.0818" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSPCFortTowerPropFlat</unit>
+		<unit variation="17" posx="11.8247" posz="-12.1401" orientx="-1.0000" orienty="0.0000" orientz="0.0001">zpSPCFortTowerPropFlat</unit>
+		<unit variation="181" posx="4.2943" posz="-13.2962" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">zpSPCFortCornerPropFlat</unit>
+		<unit variation="68" posx="8.4193" posz="-12.6945" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">SPCFortWallLarge</unit>
+		<unit variation="0" posx="-13.0282" posz="-7.2956" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="-10.6710" posz="-6.9315" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="220" posx="10.2992" posz="-8.0543" orientx="0.0866" orienty="0.0000" orientz="0.9962">zpSPCEUHouseProp</unit>
+		<unit variation="0" posx="10.6489" posz="-6.3648" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="8.0286" posz="-6.0963" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="-11.1551" posz="-7.7208" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="93" posx="-12.0584" posz="-6.8865" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPROPBuildingMix</unit>
+		<unit variation="165" posx="-5.9298" posz="-8.5920" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="166" posx="9.5920" posz="-1.4835" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpSPCCityBuildingMix</unit>
+		<unit variation="0" posx="10.7306" posz="0.7128" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="8.4907" posz="0.5906" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="154" posx="-10.8661" posz="1.5821" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCPortSocket</unit>
+		<unit variation="95" posx="4.9588" posz="-3.4922" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="252" posx="-13.3198" posz="-0.7952" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFace</unit>
+		<unit variation="44" posx="8.0719" posz="-1.6941" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFace</unit>
+		<unit variation="2" posx="5.2726" posz="-0.6472" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropMarketStall</unit>
+		<unit variation="0" posx="10.7393" posz="5.7434" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="8.1796" posz="5.5887" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="2" posx="5.5167" posz="2.6015" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpPropMarketStall</unit>
+		<unit variation="120" posx="9.0304" posz="6.6118" orientx="-0.9887" orienty="0.0000" orientz="-0.1499">deSPCWaterlooHouseProp</unit>
+		<unit variation="103" posx="-1.5318" posz="10.1816" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCWaterSpawnPoint</unit>
+		<unit variation="19" posx="-15.0058" posz="10.2460" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpSPCFortTowerPropFlat</unit>
+		<unit variation="17" posx="11.8299" posz="10.0519" orientx="1.0000" orienty="0.0000" orientz="-0.0003">zpSPCFortTowerPropFlat</unit>
+		<unit variation="68" posx="8.6686" posz="9.6143" orientx="0.0003" orienty="0.0000" orientz="1.0000">SPCFortWallLarge</unit>
+		<unit variation="179" posx="-8.6503" posz="6.6088" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="65" posx="5.2310" posz="6.1931" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="181" posx="-7.2544" posz="11.0481" orientx="0.0004" orienty="0.0000" orientz="1.0000">zpSPCFortCornerPropFlat</unit>
+		<unit variation="0" posx="-7.8890" posz="13.9168" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="5.8809" posz="13.7051" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="68" posx="-11.0046" posz="10.1713" orientx="0.0003" orienty="0.0000" orientz="1.0000">SPCFortWallLarge</unit>
+		<unit variation="0" posx="4.7188" posz="13.7718" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="181" posx="4.2675" posz="10.3210" orientx="0.0004" orienty="0.0000" orientz="1.0000">zpSPCFortCornerPropFlat</unit>
+		<unit variation="0" posx="-5.8336" posz="15.0474" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="4.1522" posz="16.5791" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="220" posx="-6.6944" posz="17.4092" orientx="0.0862" orienty="0.0000" orientz="0.9963">zpSPCEUHouseProp</unit>
+		<unit variation="0" posx="6.5368" posz="18.3136" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="159" posx="5.3667" posz="16.7241" orientx="0.9835" orienty="0.0000" orientz="0.1807">zpSPCEUHouseProp</unit>
+		<unit variation="28" posx="-5.0057" posz="15.0639" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="229" posx="2.8465" posz="14.5995" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="117" posx="-5.6227" posz="19.1418" orientx="1.0000" orienty="0.0000" orientz="-0.0002">zpBridgeFace</unit>
+		<unit variation="117" posx="3.4216" posz="20.0093" orientx="-1.0000" orienty="0.0000" orientz="0.0001">zpBridgeFace</unit>
+		<unit variation="0" posx="-5.8524" posz="22.5601" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="-7.2088" posz="22.3374" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="36" posx="5.0748" posz="21.9839" orientx="-1.0000" orienty="0.0000" orientz="0.0005">zpSPCCityBuildingMix</unit>
+		<unit variation="0" posx="6.7577" posz="24.7451" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="4.5360" posz="24.5433" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="166" posx="-7.3130" posz="24.4432" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCCityBuildingMix</unit>
+		<unit variation="24" posx="-6.0551" posz="27.1723" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="238" posx="-7.5227" posz="26.9463" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">HarbourPathBlock</unit>
+		<unit variation="4" posx="5.4344" posz="27.0159" orientx="-0.0669" orienty="0.0000" orientz="-0.9978">deSPCWaterlooHouseProp</unit>
+		<unit variation="0" posx="-6.3662" posz="31.3612" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="-8.1754" posz="31.5426" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="4.1111" posz="31.3871" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="117" posx="-5.6752" posz="28.4953" orientx="1.0000" orienty="0.0000" orientz="-0.0002">zpBridgeFace</unit>
+		<unit variation="117" posx="3.4467" posz="29.3697" orientx="-1.0000" orienty="0.0000" orientz="0.0001">zpBridgeFace</unit>
+		<unit variation="0" posx="6.4342" posz="32.0968" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="35" posx="-7.5676" posz="33.2921" orientx="1.0000" orienty="0.0000" orientz="-0.0002">zpSPCCityBuildingMix</unit>
+		<unit variation="199" posx="5.1525" posz="33.0773" orientx="-1.0000" orienty="0.0000" orientz="0.0002">zpSPCCityBuildingMix</unit>
+		<unit variation="158" posx="-6.8002" posz="37.3941" orientx="0.9844" orienty="0.0000" orientz="-0.1758">deSPCWaterlooHouseProp</unit>
+		<unit variation="0" posx="-6.2300" posz="38.7062" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="6.7154" posz="38.9807" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="0" posx="4.1723" posz="38.3914" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
+		<unit variation="104" posx="5.2797" posz="39.7968" orientx="0.1339" orienty="0.0000" orientz="0.9910">zpSPCEUHouseProp</unit>
+		<unit variation="117" posx="-5.5834" posz="38.0417" orientx="1.0000" orienty="0.0000" orientz="-0.0002">zpBridgeFace</unit>
+		<unit variation="117" posx="3.3858" posz="38.6475" orientx="-1.0000" orienty="0.0000" orientz="0.0001">zpBridgeFace</unit>
+		<unit variation="52" posx="0.7455" posz="39.6545" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
+		<unit variation="0" posx="-5.1492" posz="41.8878" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
+	</units>
+	<tiles>
+		<tilegroup type="Shoreline" subtype="new_england\shoreline2_ne">
+			<block startx="-12" startz="-24" endx="-12" endz="23"></block>
+			<block startx="-11" startz="-24" endx="-11" endz="-9"></block>
+			<block startx="-11" startz="-3" endx="-11" endz="1"></block>
+			<block startx="-11" startz="7" endx="-11" endz="23"></block>
+			<block startx="-10" startz="-24" endx="-10" endz="-10"></block>
+			<block startx="-10" startz="-2" endx="-10" endz="0"></block>
+			<block startx="-10" startz="8" endx="-10" endz="23"></block>
+			<block startx="-9" startz="-24" endx="-9" endz="-10"></block>
+			<block startx="-9" startz="8" endx="-9" endz="23"></block>
+			<block startx="-8" startz="-24" endx="-8" endz="-10"></block>
+			<block startx="-8" startz="8" endx="-8" endz="23"></block>
+			<block startx="-7" startz="-24" endx="-7" endz="-24"></block>
+			<block startx="-7" startz="-21" endx="-7" endz="-16"></block>
+			<block startx="-7" startz="-12" endx="-7" endz="-10"></block>
+			<block startx="-7" startz="9" endx="-7" endz="18"></block>
+			<block startx="-7" startz="22" endx="-7" endz="23"></block>
+			<block startx="-6" startz="23" endx="-6" endz="23"></block>
+			<block startx="-5" startz="23" endx="-5" endz="23"></block>
+			<block startx="-4" startz="23" endx="-4" endz="23"></block>
+			<block startx="-3" startz="-24" endx="-3" endz="-24"></block>
+			<block startx="-3" startz="23" endx="-3" endz="23"></block>
+			<block startx="-2" startz="-24" endx="-2" endz="-24"></block>
+			<block startx="-2" startz="23" endx="-2" endz="23"></block>
+			<block startx="-1" startz="-24" endx="-1" endz="-24"></block>
+			<block startx="-1" startz="23" endx="-1" endz="23"></block>
+			<block startx="0" startz="-24" endx="0" endz="-24"></block>
+			<block startx="0" startz="23" endx="0" endz="23"></block>
+			<block startx="1" startz="-24" endx="1" endz="-24"></block>
+			<block startx="1" startz="23" endx="1" endz="23"></block>
+			<block startx="2" startz="-24" endx="2" endz="-24"></block>
+			<block startx="2" startz="23" endx="2" endz="23"></block>
+			<block startx="3" startz="-24" endx="3" endz="-24"></block>
+			<block startx="3" startz="23" endx="3" endz="23"></block>
+			<block startx="4" startz="-24" endx="4" endz="-23"></block>
+			<block startx="4" startz="-19" endx="4" endz="-10"></block>
+			<block startx="4" startz="8" endx="4" endz="18"></block>
+			<block startx="4" startz="22" endx="4" endz="23"></block>
+			<block startx="5" startz="-24" endx="5" endz="-10"></block>
+			<block startx="5" startz="8" endx="5" endz="23"></block>
+			<block startx="6" startz="-24" endx="6" endz="-10"></block>
+			<block startx="6" startz="-2" endx="6" endz="0"></block>
+			<block startx="6" startz="8" endx="6" endz="23"></block>
+			<block startx="7" startz="-24" endx="7" endz="-9"></block>
+			<block startx="7" startz="-3" endx="7" endz="1"></block>
+			<block startx="7" startz="7" endx="7" endz="23"></block>
+			<block startx="8" startz="-24" endx="8" endz="23"></block>
+			<block startx="9" startz="-24" endx="9" endz="23"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">
+			<block startx="-11" startz="-8" endx="-11" endz="-4"></block>
+			<block startx="-11" startz="2" endx="-11" endz="6"></block>
+			<block startx="-10" startz="-9" endx="-10" endz="-3"></block>
+			<block startx="-10" startz="1" endx="-10" endz="7"></block>
+			<block startx="-9" startz="-9" endx="-9" endz="7"></block>
+			<block startx="-8" startz="-9" endx="-8" endz="7"></block>
+			<block startx="-7" startz="-23" endx="-7" endz="-22"></block>
+			<block startx="-7" startz="-15" endx="-7" endz="-13"></block>
+			<block startx="-7" startz="-9" endx="-7" endz="8"></block>
+			<block startx="-7" startz="19" endx="-7" endz="21"></block>
+			<block startx="-6" startz="-24" endx="-6" endz="22"></block>
+			<block startx="-5" startz="-24" endx="-5" endz="22"></block>
+			<block startx="-4" startz="-24" endx="-4" endz="22"></block>
+			<block startx="-3" startz="-23" endx="-3" endz="22"></block>
+			<block startx="-2" startz="-23" endx="-2" endz="22"></block>
+			<block startx="-1" startz="-23" endx="-1" endz="22"></block>
+			<block startx="0" startz="-23" endx="0" endz="22"></block>
+			<block startx="1" startz="-23" endx="1" endz="22"></block>
+			<block startx="2" startz="-23" endx="2" endz="22"></block>
+			<block startx="3" startz="-23" endx="3" endz="22"></block>
+			<block startx="4" startz="-22" endx="4" endz="-20"></block>
+			<block startx="4" startz="-9" endx="4" endz="7"></block>
+			<block startx="4" startz="19" endx="4" endz="21"></block>
+			<block startx="5" startz="-9" endx="5" endz="7"></block>
+			<block startx="6" startz="-9" endx="6" endz="-3"></block>
+			<block startx="6" startz="1" endx="6" endz="7"></block>
+			<block startx="7" startz="-8" endx="7" endz="-4"></block>
+			<block startx="7" startz="2" endx="7" endz="6"></block>
+		</tilegroup>
+		<cliffgroup type="ZP Bridge">
+			<block startx="-9" startz="-2" endx="-9" endz="1"></block>
+			<block startx="-6" startz="-22" endx="-6" endz="-10"></block>
+			<block startx="-6" startz="9" endx="-6" endz="21"></block>
+			<block startx="3" startz="-22" endx="3" endz="-10"></block>
+			<block startx="3" startz="9" endx="3" endz="21"></block>
+			<block startx="5" startz="-2" endx="5" endz="1"></block>
+		</cliffgroup>
+		<cliffgroup type="ZP City">
+			<block startx="-11" startz="-8" endx="-11" endz="-4"></block>
+			<block startx="-11" startz="2" endx="-11" endz="6"></block>
+			<block startx="-10" startz="-9" endx="-10" endz="-8"></block>
+			<block startx="-10" startz="-4" endx="-10" endz="-3"></block>
+			<block startx="-10" startz="1" endx="-10" endz="2"></block>
+			<block startx="-10" startz="6" endx="-10" endz="7"></block>
+			<block startx="-9" startz="-9" endx="-9" endz="-9"></block>
+			<block startx="-9" startz="-3" endx="-9" endz="-3"></block>
+			<block startx="-9" startz="7" endx="-9" endz="7"></block>
+			<block startx="-8" startz="-9" endx="-8" endz="-9"></block>
+			<block startx="-8" startz="7" endx="-8" endz="7"></block>
+			<block startx="-7" startz="-9" endx="-7" endz="-9"></block>
+			<block startx="-7" startz="7" endx="-7" endz="7"></block>
+			<block startx="-6" startz="-9" endx="-6" endz="-9"></block>
+			<block startx="-6" startz="7" endx="-6" endz="8"></block>
+			<block startx="3" startz="-9" endx="3" endz="-9"></block>
+			<block startx="3" startz="7" endx="3" endz="8"></block>
+			<block startx="4" startz="-9" endx="4" endz="-9"></block>
+			<block startx="4" startz="7" endx="4" endz="7"></block>
+			<block startx="5" startz="-9" endx="5" endz="-9"></block>
+			<block startx="5" startz="-3" endx="5" endz="-3"></block>
+			<block startx="5" startz="7" endx="5" endz="7"></block>
+			<block startx="6" startz="-9" endx="6" endz="-8"></block>
+			<block startx="6" startz="-4" endx="6" endz="-3"></block>
+			<block startx="6" startz="1" endx="6" endz="2"></block>
+			<block startx="6" startz="6" endx="6" endz="7"></block>
+			<block startx="7" startz="-8" endx="7" endz="-4"></block>
+			<block startx="7" startz="2" endx="7" endz="6"></block>
+		</cliffgroup>
+		<heights>
+			<tiles x="-12" z="-24">-0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.009 -0.009 -0.009 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-23">-0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.009 -0.009 -0.009 -0.009 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-22">-0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.009 -0.009 -0.009 -0.009 -0.009 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-21">-0.051 -0.051 -0.051 -0.051 -0.051 1.146 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.009 -0.009 -0.009 -0.009 -0.009 -0.009 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-20">-0.051 -0.051 -0.051 -0.051 -0.051 0.865 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.009 -0.009 -0.009 -0.009 -0.009 -0.009 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-19">-0.051 -0.051 -0.051 -0.051 -0.051 0.597 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.009 -0.009 -0.009 -0.009 -0.009 -0.009 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-18">-0.051 -0.051 -0.051 -0.051 -0.051 0.198 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.009 -0.009 -0.009 -0.009 -0.009 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-17">-0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.009 -0.009 -0.009 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-16">-0.051 -0.051 -0.051 -0.051 -0.051 0.003 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.014 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-15">-0.051 -0.051 -0.051 -0.051 -0.051 0.558 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 0.405 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-14">-0.051 -0.051 -0.051 -0.051 -0.051 0.936 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 0.588 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-13">-0.051 -0.051 -0.051 -0.051 -0.048 1.331 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 0.763 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-12">-0.051 -0.051 -0.051 -0.051 -0.035 1.475 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 0.708 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-11">-0.051 -0.051 -0.051 -0.051 -0.051 0.644 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 0.081 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-10">-0.051 -0.047 0.228 0.292 0.292 0.587 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 0.275 0.130 0.016 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-9">-0.043 1.057 -0.051 -0.051 -0.051 -0.051 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.051 -0.051 -0.051 0.388 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-8">0.294 -0.051 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.051 -0.039 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-7">0.386 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.003 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-6">0.386 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.003 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-5">0.386 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.003 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-4">0.146 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.047 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-3">-0.051 -0.051 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-2">-0.051 -0.051 -0.051 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.051 0.337 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="-1">-0.051 -0.051 0.120 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 0.531 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="0">-0.051 -0.051 0.120 1.715 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="1">-0.051 -0.051 -0.051 1.647 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="2">-0.041 -0.051 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="3">0.519 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.044 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="4">0.841 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.001 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="5">0.841 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.001 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="6">0.841 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.001 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="7">0.665 -0.051 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.051 -0.041 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="8">0.040 1.294 -0.051 -0.051 -0.051 -0.042 -0.042 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.051 -0.051 -0.051 0.347 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="9">-0.051 -0.035 -0.042 -0.042 -0.042 -0.042 -0.042 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 0.742 0.086 -0.009 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="10">-0.051 -0.042 -0.042 -0.042 -0.042 -0.042 -0.042 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 0.300 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="11">-0.051 -0.042 -0.042 -0.042 -0.042 -0.042 -0.042 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 0.058 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="12">-0.042 -0.042 -0.042 -0.042 -0.042 -0.042 -0.042 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 0.512 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="13">-0.042 -0.042 -0.042 -0.042 -0.042 -0.042 -0.042 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 0.572 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="14">-0.042 -0.042 -0.042 -0.042 -0.042 -0.042 -0.042 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 0.572 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="15">-0.042 -0.042 -0.042 -0.042 -0.042 0.893 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 0.568 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="16">-0.042 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 0.185 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="17">-0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="18">-0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="19">-0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="20">-0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="21">-0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="22">-0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 4.949 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+			<tiles x="-12" z="23">-0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 -0.051 </tiles>
+		</heights>
+	</tiles>
+</grouping>

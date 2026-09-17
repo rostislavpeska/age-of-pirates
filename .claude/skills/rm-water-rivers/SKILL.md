@@ -28,7 +28,9 @@ the next. Width of the water is irrelevant. `bank=""` = no beach (ZP Black Sea L
   Rivers require banks, and banks paint sand and terrace the rim via minriverbankheight /
   maxriverbankheight. The clean river = a cloned body whose bank textures match the seabed and
   whose bank heights are 0/0; XMB regen after the edit.
-- River width = 2R uncapped at low R, saturating at half-width 32 m.
+- River width = 2R; NOT capped at 32 m (radius 40 measured ~84 m of water with height probes,
+  2026-09-17; the old cap was the mapsim model). Placement of islands on water: see the
+  rm-water-placement-rules memory / rm-groupings-deploy - land route first, nautical route after.
 - Rectangular maps: the engine reads river waypoints in size_x units on both axes;
   `z_authored = z_wanted * sizeZ / sizeX`.
 - Build ALL rivers before any land feature a river would drown (Istanbul: a river built after a gun

@@ -1,0 +1,23 @@
+<?xml version = "1.0" encoding = "UTF-8"?>
+<mapinfo displayName = "London" detailsText = "London (layout stage 2026-09-17): the Paris frame with London Bridge, two harbours, St Paul / Minster, Stuart / Parliament and the Tower of London. No resources yet. Images borrowed from Paris until London art exists."
+    imagepath = "ui\random_map\paris\paris_mini" cannotReplace = "" loadBackground="ui\random_map\paris\paris_map">
+    <filter>Historical</filter>
+    <loadss>ui\random_map\paris\paris_01</loadss>
+    <loadss>ui\random_map\paris\paris_02</loadss>
+    <loadss>ui\random_map\paris\paris_03</loadss>
+    <enforcedSettings>
+        <setting type="FFA" state="forbidden" />
+        <setting type="RecordGame" state="forbidden" />
+        <setting type="TwoTeams" state="enforced" />
+        <setting type="DefaultRules" state="enforced" />
+        <setting type="AltTeamNames" state="enforced" />
+    </enforcedSettings>
+    <recommendedSettings>
+        <civilization>British</civilization>
+        <civilization>French</civilization>
+        <civilization>Spanish</civilization>
+        <civilization>DEItalians</civilization>
+        <civilization>Germans</civilization>
+        <civilization>Russians</civilization>
+    </recommendedSettings>
+</mapinfo>
