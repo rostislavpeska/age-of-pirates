@@ -32,8 +32,8 @@ scripts/aitest/whichsheet.json
 scripts/aitest/recording_tmp.mp4
 scripts/aitest/STOP
 
-# external reference clones - never committed
-references/
+# external reference clones at the repo root - never committed (skill references/ folders ARE tracked)
+/references/
 
 # local-only skill: converter harness bound to this PC (WSL+Wine paths)
 .claude/skills/gxo-convert/
