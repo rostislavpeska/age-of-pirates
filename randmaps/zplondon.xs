@@ -15,7 +15,7 @@
 //   5  harbour posts docked on the lane, real positions read back              (law 1)
 //   6  London Bridge, instance API                                              (law 2)
 //   7  harbour groupings hung off the real posts, instance API                  (law 2)
-//   8  harbour guard nuggets - OPEN BUG, section frozen
+//   8  privateer treasures (water nuggets 603) beside the harbours - OPEN BUG, not seen spawning yet
 //   9  quays (one straight plateau per bank), streets, countryside
 //   10 blocks in Paris's order: fixed doubles, fixed singles, zones, fillers, houses
 //   11 riverside decorations, 12 players, 13 triggers (all at the end)
@@ -234,6 +234,18 @@ int unitAt(string name = "", string proto = "", float maxM = 0.0, float x = 0.5,
 	return(d);
 }
 
+// A water treasure's object def, zpcaribbeanwars's form: the ypNuggetBoat placeholder, the nuggetmods difficulty
+// latched, min 0 / max maxM search. Define only - the spawn is a separate rmPlaceObjectDefAtLoc at the caller.
+int waterNuggetDef(string name = "", int difficulty = 0, float maxM = 0.0)
+{
+	int d = rmCreateObjectDef(name);
+	rmAddObjectDefItem(d, "ypNuggetBoat", 1, 0.0);
+	rmSetNuggetDifficulty(difficulty, difficulty);
+	rmSetObjectDefMinDistance(d, 0.0);
+	rmSetObjectDefMaxDistance(d, maxM);
+	return(d);
+}
+
 // ---- triggers (Istanbul's shapes)
 // One "AutoConvert suspended" effect on the current trigger.
 void suspendAutoConvert(int unitId = -1)
@@ -360,6 +372,7 @@ void main(void)
 	rmTerrainInitialize("nwterritory\ground_grass2_nwt", 1.0);
 	rmSetMapType("grass");
 	rmSetMapType("land");
+	rmSetMapType("water");   // every map in the mod with water nuggets declares it (Istanbul, Caribbean, Independence, Iceland); added 2026-09-18 for the privateer treasures
 	rmSetMapType("default");
 	rmSetMapType("westEurope");
 	rmSetMapType("piratehistoricalmap");
@@ -417,10 +430,9 @@ void main(void)
 	// T5. handles and laws
 	float laneLegM = 16.0;              // the nautical U: legs this far off the river centre
 	float laneTurnFromRoadM = 80.0;     // the U's turn this far west of the road (in front of row 3; 60 m clear of the bridge)
-	float harbourGuardSideM = 26.0;     // guard nugget: pier origin -> along the shore toward the bridge (clear of the platforms and the pier's terrain box)
-	float harbourGuardOffWallM = 10.0;  // ... and off the quay wall line into the water (18 m short of the lane leg)
-	float towerFlagOffM = 14.0;         // SOUTH Tower only: block centre -> its capturable flag along the river (inside the walls)
-	float towerNugOffM = 20.0;          // ... -> its Redcoat guard nugget, toward the gate side (the north Tower bakes both)
+	float harbourGuardOffM = 30.0;      // privateer treasure: this far from its harbour's origin along the river toward the bridge (+x), 12 m clear of the pier's terrain box
+	float harbourGuardOffLegM = 6.0;    // ... and this far shoreward of the bank's REAL lane leg: ship-valid water (the census of 2026-09-18 11:23 shows nothing placed on the shallow bank 6-8 m off the quay wall)
+	float harbourGuardSearchM = 15.0;   // ... and the search radius around that spot
 	float decoMouthXM = 12.0;           // the first riverside deco (40 m) centred this far in: the mouth slot is only 26 m
 	int   instanceIdShiftIndividual = 0;   // rmGetUnitPlaced (object defs) + this = engine unit id (Istanbul measured 2; London 0, tuned when the triggers are watched)
 	int   instanceIdShift = 0;             // rmGetGroupingInstanceUnitByType (grouping instances) + this
@@ -484,6 +496,7 @@ void main(void)
 	float locX8 = locX7 - rmXMetersToFraction(rowPitchM);
 	float locX12 = (locX1 + locX2) * 0.5;
 	float locX78 = (locX7 + locX8) * 0.5;
+	float locX34 = (locX3 + locX4) * 0.5;   // the Stuart export's 2-row slot (see 10.1)
 	// columns along z off each bank's wall line (s = St Paul's / south, n = Minster / north); 12 = the 2-column centre
 	int col1 = colFirstTiles;
 	int col2 = colFirstTiles + colPitchTiles;
@@ -541,36 +554,20 @@ void main(void)
 	int harbourS2Grouping = rmCreateGrouping("harbour south 2", "EU_SPC_London_Harbour_SE_01");
 	int harbourS2Inst = placeIsland(harbourS2Grouping, harbourS2X, harbourS2Z);
 
-	// ---- 8. THE HARBOUR GUARDS - OPEN BUG (memory london-privateer-nugget-bug): one privateer WATER nugget per
-	// harbour, a separate object on the open water beside it, defined first, spawned after (zpcaribbeanwars's
-	// water-nugget form). nuggetmods zpNuggetLondonHarbour 603 = <waternugget>true, nuggetunit zpNuggetInvisibleWater
-	// + one dePrivateerGuardian; the placeholder is ypNuggetBoat; 15 m search radius.
-	int harbourN1GuardDef = rmCreateObjectDef("harbour guard north 1");
-	rmAddObjectDefItem(harbourN1GuardDef, "ypNuggetBoat", 1, 0.0);
-	rmSetNuggetDifficulty(603, 603);
-	rmSetObjectDefMinDistance(harbourN1GuardDef, 0.0);
-	rmSetObjectDefMaxDistance(harbourN1GuardDef, 15.0);
-	int harbourN2GuardDef = rmCreateObjectDef("harbour guard north 2");
-	rmAddObjectDefItem(harbourN2GuardDef, "ypNuggetBoat", 1, 0.0);
-	rmSetNuggetDifficulty(603, 603);
-	rmSetObjectDefMinDistance(harbourN2GuardDef, 0.0);
-	rmSetObjectDefMaxDistance(harbourN2GuardDef, 15.0);
-	int harbourS1GuardDef = rmCreateObjectDef("harbour guard south 1");
-	rmAddObjectDefItem(harbourS1GuardDef, "ypNuggetBoat", 1, 0.0);
-	rmSetNuggetDifficulty(603, 603);
-	rmSetObjectDefMinDistance(harbourS1GuardDef, 0.0);
-	rmSetObjectDefMaxDistance(harbourS1GuardDef, 15.0);
-	int harbourS2GuardDef = rmCreateObjectDef("harbour guard south 2");
-	rmAddObjectDefItem(harbourS2GuardDef, "ypNuggetBoat", 1, 0.0);
-	rmSetNuggetDifficulty(603, 603);
-	rmSetObjectDefMinDistance(harbourS2GuardDef, 0.0);
-	rmSetObjectDefMaxDistance(harbourS2GuardDef, 15.0);
-	// the guard spots: harbour origin + harbourGuardSideM along the shore toward the bridge, the bank's wall line +
-	// harbourGuardOffWallM into the river; echoed in metres so the log shows where each one was ASKED
-	float harbourN1GuardX = harbourN1X + rmXMetersToFraction(harbourGuardSideM);   float harbourN1GuardZ = wallN - rmZMetersToFraction(harbourGuardOffWallM);
-	float harbourN2GuardX = harbourN2X + rmXMetersToFraction(harbourGuardSideM);   float harbourN2GuardZ = wallN - rmZMetersToFraction(harbourGuardOffWallM);
-	float harbourS1GuardX = harbourS1X + rmXMetersToFraction(harbourGuardSideM);   float harbourS1GuardZ = wallS + rmZMetersToFraction(harbourGuardOffWallM);
-	float harbourS2GuardX = harbourS2X + rmXMetersToFraction(harbourGuardSideM);   float harbourS2GuardZ = wallS + rmZMetersToFraction(harbourGuardOffWallM);
+	// ---- 8. THE PRIVATEER TREASURES: one water nugget per harbour (nuggetmods zpNuggetLondonHarbour 603: waternugget,
+	// nuggetunit zpNuggetInvisibleWater, one dePrivateerGuardian), defined first, spawned after, each harbourGuardOffM
+	// along the river toward the bridge and harbourGuardOffLegM shoreward of the bank's real lane leg. Census 2026-09-18:
+	// the 603 record DOES resolve (a land placeholder under the latch became its nuggetunit); the water placeholder
+	// (ypNuggetBoat, movementtype water, obstruction 3 x 2) is what never placed on the bank - the ferry posts prove
+	// nothing about depth (zpOrientalFerry is an AIR unit). The asked spots are echoed in metres.
+	int harbourN1GuardDef = waterNuggetDef("harbour guard north 1", 603, harbourGuardSearchM);
+	int harbourN2GuardDef = waterNuggetDef("harbour guard north 2", 603, harbourGuardSearchM);
+	int harbourS1GuardDef = waterNuggetDef("harbour guard south 1", 603, harbourGuardSearchM);
+	int harbourS2GuardDef = waterNuggetDef("harbour guard south 2", 603, harbourGuardSearchM);
+	float harbourN1GuardX = harbourN1X + rmXMetersToFraction(harbourGuardOffM);   float harbourN1GuardZ = zLaneN + rmZMetersToFraction(harbourGuardOffLegM);
+	float harbourN2GuardX = harbourN2X + rmXMetersToFraction(harbourGuardOffM);   float harbourN2GuardZ = zLaneN + rmZMetersToFraction(harbourGuardOffLegM);
+	float harbourS1GuardX = harbourS1X + rmXMetersToFraction(harbourGuardOffM);   float harbourS1GuardZ = zLaneS - rmZMetersToFraction(harbourGuardOffLegM);
+	float harbourS2GuardX = harbourS2X + rmXMetersToFraction(harbourGuardOffM);   float harbourS2GuardZ = zLaneS - rmZMetersToFraction(harbourGuardOffLegM);
 	rmEchoInfo("LONDON guard spots asked (m): N1 " + rmXFractionToMeters(harbourN1GuardX) + "," + rmZFractionToMeters(harbourN1GuardZ) + " N2 " + rmXFractionToMeters(harbourN2GuardX) + "," + rmZFractionToMeters(harbourN2GuardZ) + " S1 " + rmXFractionToMeters(harbourS1GuardX) + "," + rmZFractionToMeters(harbourS1GuardZ) + " S2 " + rmXFractionToMeters(harbourS2GuardX) + "," + rmZFractionToMeters(harbourS2GuardZ));
 	rmPlaceObjectDefAtLoc(harbourN1GuardDef, 0, harbourN1GuardX, harbourN1GuardZ);
 	rmPlaceObjectDefAtLoc(harbourN2GuardDef, 0, harbourN2GuardX, harbourN2GuardZ);
@@ -629,27 +626,30 @@ void main(void)
 
 	// ---- 10.1 fixed doubles: St Paul / Minster rows 1-2 x cols 1-2, Stuart / Parliament row 3 x cols 1-2, the
 	// Towers rows 7-8 x cols 1-2 at the water (instances: the triggers need the Towers' ids). Each Tower's handle
-	// (Istanbul's palace): a capturable flag (deSPCCapturableFlagCossack, AutoConvert) inside the walls and a Redcoat
-	// guard nugget (nuggetmods zpNuggetTowerOfLondon 605, nuggetunit zpNuggetInvisible) between the gate and the flag.
-	// North: both BAKED in EU_SPC_London_Tower_02 - the 605 latch goes down BEFORE the instance (Istanbul's guild
-	// idiom), the ids come from the instance by type. South (EU_SPC_London_Tower_01): object defs off the block centre.
+	// (Istanbul's palace) is the EXPORT's own units, nothing is spawned by the script: the gate treasure each export
+	// carries (NuggetDroppedWood, Tower_01 (-0.99, -13.4) / Tower_02 (0.99, 13.4)) takes nuggetmods zpNuggetTowerOfLondon
+	// 605 (nuggetunit zpNuggetInvisible, ten Redcoats) through the latch set BEFORE both instances (Istanbul's guild
+	// idiom; no grouping between them bakes a nugget). Neither export carries a capturable flag: the flag-driven
+	// conversion family (13.3) is built only when a flag id exists.
 	rmPlaceGroupingAtLoc(blockStPaul, 0, locX12, locZs12);
-	rmPlaceGroupingAtLoc(blockStuart, 0, locX3, locZs12);
+	// STUART: the export EU_Native_Block_Stuart_01 is 30 x 15 tiles (60 m across the rows, 30 m along a column) - it
+	// does not fit the row 3 x cols 1-2 slot (30 x 62 m), so it takes rows 3-4 x col 1 and the south Park moves to
+	// row 3 col 2 (10.2). Same four cells, nothing else moves. An export in Parliament's orientation (15 x 30) goes
+	// back to (locX3, locZs12) with the Park back to (locX4, locZs1).
+	rmPlaceGroupingAtLoc(blockStuart, 0, locX34, locZs1);
+	rmSetNuggetDifficulty(605, 605);
 	int towerSInst = rmPlaceGroupingInstanceAtLoc(blockTowerS, locX78, locZs12, 0);
 	rmPlaceGroupingAtLoc(blockMinster, 0, locX12, locZn12);
 	rmPlaceGroupingAtLoc(blockParliament, 0, locX3, locZn12);
-	rmSetNuggetDifficulty(605, 605);
 	int towerNInst = rmPlaceGroupingInstanceAtLoc(blockTowerN, locX78, locZn12, 0);
-	int towerSFlagDef = unitAt("tower flag S", "deSPCCapturableFlagCossack", 2.0, locX78 + rmXMetersToFraction(towerFlagOffM), locZs12);
-	int towerSNugDef = unitAt("tower guard S", "Nugget", 2.0, locX78 + rmXMetersToFraction(towerNugOffM), locZs12);
 
-	// ---- 10.2 fixed singles: trade row 1 col 3, Construction row 0 col 1, Park row 4 col 1, Menagerie row 4 col 2,
+	// ---- 10.2 fixed singles: trade row 1 col 3, Construction row 0 col 1, Park row 4 col 1 (south: row 3 col 2), Menagerie row 4 col 2,
 	// Native Jewish row 6 col 3, Factory row 0 col 2 - nugget latches as Paris
 	rmPlaceGroupingAtLoc(blockTrade, 0, locX1, locZs3);
 	rmPlaceGroupingAtLoc(blockTrade, 0, locX1, locZn3);
 	rmPlaceGroupingAtLoc(blockConstruction, 0, locX0, locZs1);
 	rmPlaceGroupingAtLoc(blockConstruction, 0, locX0, locZn1);
-	rmPlaceGroupingAtLoc(blockPark, 0, locX4, locZs1);
+	rmPlaceGroupingAtLoc(blockPark, 0, locX3, locZs2);   // south: row 3 col 2 while Stuart holds rows 3-4 x col 1 (10.1)
 	rmPlaceGroupingAtLoc(blockPark, 0, locX4, locZn1);
 	rmSetNuggetDifficulty(98, 98);
 	int menagerieSInst = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locX4, locZs2, 0);
@@ -870,10 +870,10 @@ void main(void)
 	int factoryNNugUnit = rmGetGroupingInstanceUnitByType(factoryNInst, "zpNuggetInvisible") + instanceIdShift;
 	int towerSBldUnit = rmGetGroupingInstanceUnitByType(towerSInst, "zpSPCTowerOfLondon") + instanceIdShift;
 	int towerNBldUnit = rmGetGroupingInstanceUnitByType(towerNInst, "zpSPCTowerOfLondon") + instanceIdShift;
-	int towerSFlagUnit = rmGetUnitPlaced(towerSFlagDef, 0) + instanceIdShiftIndividual;
-	int towerNFlagUnit = rmGetGroupingInstanceUnitByType(towerNInst, "deSPCCapturableFlagCossack") + instanceIdShift;   // baked in Tower_02
-	int towerSNugUnit = rmGetUnitPlaced(towerSNugDef, 0) + instanceIdShiftIndividual;
-	int towerNNugUnit = rmGetGroupingInstanceUnitByType(towerNInst, "zpNuggetInvisible") + instanceIdShift;              // baked in Tower_02, nuggetmods 605
+	int towerSFlagUnit = rmGetGroupingInstanceUnitByType(towerSInst, "deSPCCapturableFlagCossack") + instanceIdShift;   // -1: no capturable flag in the exports yet
+	int towerNFlagUnit = rmGetGroupingInstanceUnitByType(towerNInst, "deSPCCapturableFlagCossack") + instanceIdShift;
+	int towerSNugUnit = rmGetGroupingInstanceUnitByType(towerSInst, "zpNuggetInvisible") + instanceIdShift;              // the gate treasure, resolved by 605
+	int towerNNugUnit = rmGetGroupingInstanceUnitByType(towerNInst, "zpNuggetInvisible") + instanceIdShift;
 	rmEchoInfo("LONDON ids: posts " + harbourN1PostUnit + " " + harbourN2PostUnit + " " + harbourS1PostUnit + " " + harbourS2PostUnit + " guards " + harbourN1GuardUnit + " " + harbourN2GuardUnit + " " + harbourS1GuardUnit + " " + harbourS2GuardUnit);
 	rmEchoInfo("LONDON ids: menageries " + menagerieSUnit + " " + menagerieNUnit + " nuggets " + menagerieSNugUnit + " " + menagerieNNugUnit + " factories " + factorySUnit + " " + factoryNUnit + " nuggets " + factorySNugUnit + " " + factoryNNugUnit);
 	rmEchoInfo("LONDON ids: towers " + towerSBldUnit + " " + towerNBldUnit + " flags " + towerSFlagUnit + " " + towerNFlagUnit + " nuggets " + towerSNugUnit + " " + towerNNugUnit);
@@ -888,8 +888,10 @@ void main(void)
 	suspendAutoConvert(menagerieNUnit);
 	suspendAutoConvert(factorySUnit);
 	suspendAutoConvert(factoryNUnit);
-	suspendAutoConvert(towerSFlagUnit);
-	suspendAutoConvert(towerNFlagUnit);
+	if (towerSFlagUnit >= 0)
+		suspendAutoConvert(towerSFlagUnit);
+	if (towerNFlagUnit >= 0)
+		suspendAutoConvert(towerNFlagUnit);
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -905,13 +907,20 @@ void main(void)
 	releaseOnNugget("Factory S Convert ON", factorySNugUnit, factorySUnit);
 	releaseOnNugget("Factory N Convert ON", factoryNNugUnit, factoryNUnit);
 
-	// ---- 13.3 the Towers (Istanbul's palace family), three passes, south then north in each
-	towerConvCreate("S");
-	towerConvCreate("N");
-	towerUnlock("S", towerSNugUnit, towerSFlagUnit);
-	towerUnlock("N", towerNNugUnit, towerNFlagUnit);
-	towerConvFill("S", towerSFlagUnit, towerSBldUnit);
-	towerConvFill("N", towerNFlagUnit, towerNBldUnit);
+	// ---- 13.3 the Towers (Istanbul's palace family), three passes per bank - only where the export carries a
+	// capturable flag (none does today: both families are skipped)
+	if (towerSFlagUnit >= 0)
+	{
+		towerConvCreate("S");
+		towerUnlock("S", towerSNugUnit, towerSFlagUnit);
+		towerConvFill("S", towerSFlagUnit, towerSBldUnit);
+	}
+	if (towerNFlagUnit >= 0)
+	{
+		towerConvCreate("N");
+		towerUnlock("N", towerNNugUnit, towerNFlagUnit);
+		towerConvFill("N", towerNFlagUnit, towerNBldUnit);
+	}
 
 	rmSetStatusText("",0.99);
 } // END
