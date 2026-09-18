@@ -3268,7 +3268,7 @@ void main(void)
 	int roadTiles = 50;   // 2x the first try
 	int roadOut   = 10;   // tiles the road runs OUT from the ramp, away
 	                      // from the city and up onto the cliff
-	int roadEdgeZ = 5;    // BOTH: the road END and the food shift this many
+	int roadEdgeZ = 8;    // BOTH: the road END and the food shift this many (5 -> 8 on 2026-09-18: the mill and the sawmill 6 m deeper into the shelf, off its centre-ward cliff edge)
 	                      // tiles toward their own map edge ALONG Z
 	                      // (north +Z, south -Z). X stays put - moving
 	                      // outward in X ran them into the sea.
@@ -3361,13 +3361,13 @@ void main(void)
 	rmSetGroupingMinDistance(sawmillN, 0.0);
 	rmSetGroupingMaxDistance(sawmillN, 0.01);
 	rmAddGroupingToClass(sawmillN, rmClassID("classBlock"));
-	rmPlaceGroupingAtLoc(sawmillN, 0, 0.675, 0.820);
+	rmPlaceGroupingAtLoc(sawmillN, 0, 0.675, 0.830);   // 0.820 -> 0.830 (2026-09-18): 6 m outward with the mill; the 4 m gap to it stays
 
 	int sawmillS = rmCreateGrouping("sawmill south", "IS_SPC_Resoure_Wood");
 	rmSetGroupingMinDistance(sawmillS, 0.0);
 	rmSetGroupingMaxDistance(sawmillS, 0.01);
 	rmAddGroupingToClass(sawmillS, rmClassID("classBlock"));
-	rmPlaceGroupingAtLoc(sawmillS, 0, 0.325, 0.180);
+	rmPlaceGroupingAtLoc(sawmillS, 0, 0.325, 0.170);   // 0.180 -> 0.170 (2026-09-18): the mirror
 
 
 	// ====================================================================

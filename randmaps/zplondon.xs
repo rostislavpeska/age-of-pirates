@@ -181,10 +181,13 @@ int cityBlock(string blockName = "", string blockFile = "")
 
 // ---- areas
 // A quay plateau (Paris "shore" area) clipped to a box: the box edge facing the water becomes the quay wall
-// ("ZP City" cliff, height 0); the streets paint (Paris "streets" area) uses the same box. Only the box
-// constrains it - plateau avoidance gapped the bridge.
+// ("ZP City" cliff, height 0); the streets paint (Paris "streets" area) uses the same box; then Paris's second
+// texture - the promenade band along the wall in the river's outerbank city_street_ground (Paris gets it by
+// stopping its streets paint 4 m short of the water; here it is painted, paintM wide from the wall line wallZ
+// toward the land, landSign +1.0 for the north bank / -1.0 for the south). Only the box constrains the
+// plateau - plateau avoidance gapped the bridge.
 int gQuayIdx = 0;
-void quaySegment(float x1 = 0.0, float z1 = 0.0, float x2 = 1.0, float z2 = 1.0, float sizeFrac = 0.7)
+void quaySegment(float x1 = 0.0, float z1 = 0.0, float x2 = 1.0, float z2 = 1.0, float sizeFrac = 0.7, float wallZ = 0.5, float landSign = 1.0, float paintM = 4.0)
 {
 	gQuayIdx = gQuayIdx + 1;
 	int box = rmCreateBoxConstraint("quay box " + gQuayIdx, x1, z1, x2, z2);
@@ -210,6 +213,23 @@ void quaySegment(float x1 = 0.0, float z1 = 0.0, float x2 = 1.0, float z2 = 1.0,
 	rmAddAreaConstraint(street, box);
 	rmSetAreaObeyWorldCircleConstraint(street, false);
 	rmBuildArea(street);
+	float promZ1 = wallZ;
+	float promZ2 = wallZ + landSign * rmZMetersToFraction(paintM);
+	if (landSign < 0.0)
+	{
+		promZ1 = promZ2;
+		promZ2 = wallZ;
+	}
+	int promBox = rmCreateBoxConstraint("promenade box " + gQuayIdx, x1, promZ1, x2, promZ2);
+	int prom = rmCreateArea("promenade " + gQuayIdx);
+	rmSetAreaSize(prom, 0.005, 0.005);   // below the strip's own share of the map (4 x 360 m = 0.007): ask < enclosed
+	rmSetAreaLocation(prom, (x1 + x2) * 0.5, (promZ1 + promZ2) * 0.5);
+	rmSetAreaCoherence(prom, 1.0);
+	rmSetAreaTerrainType(prom, "city\ground1_city_street_ground");
+	rmAddAreaInfluenceSegment(prom, x1 + (x2 - x1) * 0.02, (promZ1 + promZ2) * 0.5, x2 - (x2 - x1) * 0.02, (promZ1 + promZ2) * 0.5);
+	rmAddAreaConstraint(prom, promBox);
+	rmSetAreaObeyWorldCircleConstraint(prom, false);
+	rmBuildArea(prom);
 }
 
 // Countryside behind one bank (Paris's area, the italy_cliff_top mix of the British maps), kept off the plateaus.
@@ -393,7 +413,7 @@ void main(void)
 	rmSetAllMapReveal(true);
 	rmSetMapElevationHeightBlend(1);
 	rmSetSeaLevel(0.0);
-	rmSetLightingSet("NorthwestTerritory_Skirmish");   // Art/lightsets/NorthwestTerritory_Skirmish.lgt (user 2026-09-18; was age3challenges09a)
+	rmSetLightingSet("Andes_Skirmish");   // Art/lightsets/Andes_Skirmish.lgt - distinct from Paris (user 2026-09-18; tried NorthwestTerritory_Skirmish, GreatLakes_Summer_Skirmish; was age3challenges09a)
 	rmSetSeaType("great lakes2");
 	rmEnableLocalWater(false);
 	rmTerrainInitialize("nwterritory\ground_grass2_nwt", 1.0);
@@ -442,9 +462,10 @@ void main(void)
 	float rowGapFarM    = 18.0;    // road centre -> row 0 centre (row edge 3 m off the road)
 	float rowGapNearM   = 18.0;    // road centre -> row 1 centre (Paris's Z5 side)
 	float rowPitchM     = 34.0;    // 30 m block + 4 m street, rows across x
-	int   colFirstTiles = 10;      // wall line -> column 1 centre (a 5 m promenade + half a block)
+	int   colFirstTiles = 11;      // wall line -> column 1 centre: Paris's 7 m promenade + half a block (Paris: column 27 tiles off the centre, wall at 16; London had 10 = 5 m, too narrow for pathing and spawns - user 2026-09-18)
 	int   colPitchTiles = 16;      // 30 m block + 2 m street, columns along z
-	int   cityDepthTiles = 66;     // wall line -> column 4's outer edge (4 x 16 + the promenade)
+	int   cityDepthTiles = 67;     // wall line -> column 4's outer edge (11 + 3 x 16 + half a block = 66.5)
+	float promenadePaintM = 4.0;   // Paris's second quay texture: its streets paint stops 4 m short of the water and the river's outerbank city_street_ground shows; London paints that band explicitly
 
 	// T4. FILE FACTS - measured from the grouping exports, never tuned; re-measure when an export changes
 	float bridgeOffX = 0.78;       float bridgeOffZ = 0.4;   // EU_SPC_London_Bridge (24x48) origin off (road, river): deck on the road, arches over the water
@@ -601,9 +622,10 @@ void main(void)
 	rmPlaceObjectDefAtLoc(harbourS1GuardDef, 0, harbourS1GuardX, harbourS1GuardZ);
 	rmPlaceObjectDefAtLoc(harbourS2GuardDef, 0, harbourS2GuardX, harbourS2GuardZ);
 
-	// ---- 9. CITY FLOOR: one straight quay per bank (wall line -> column 4's outer edge), streets, countryside
-	quaySegment(0.0, wallS - rmZTilesToFraction(cityDepthTiles), 1.0, wallS, 0.7);
-	quaySegment(0.0, wallN, 1.0, wallN + rmZTilesToFraction(cityDepthTiles), 0.7);
+	// ---- 9. CITY FLOOR: one straight quay per bank (wall line -> column 4's outer edge), streets + the promenade
+	// band (Paris's two quay textures), countryside
+	quaySegment(0.0, wallS - rmZTilesToFraction(cityDepthTiles), 1.0, wallS, 0.7, wallS, -1.0, promenadePaintM);
+	quaySegment(0.0, wallN, 1.0, wallN + rmZTilesToFraction(cityDepthTiles), 0.7, wallN, 1.0, promenadePaintM);
 	countryside("countryside S", zRiver-rmZTilesToFraction(130), avoidPlateauShort);
 	countryside("countryside N", zRiver+rmZTilesToFraction(130), avoidPlateauShort);
 
