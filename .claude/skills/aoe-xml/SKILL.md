@@ -51,7 +51,7 @@ interchangeable:
 |---|---|---|
 | record | no `<waternugget>` | `<waternugget>true</waternugget>` |
 | `<nuggetunit>` | `zpNuggetInvisible`, `Nugget*`, `NuggetCapturableBuildingBig`... | `zpNuggetInvisibleWater`, `ypNuggetBoat`, `ypNuggetSeaLionRock`... |
-| placeholder in the script / grouping | `Nugget` (object def) or the baked land placeholder | object def: `ypNuggetBoat` (zpcaribbeanwars, zpindependencewar, zpIceland, London's harbour guards); baked in a grouping: `zpNuggetInvisibleWater` (Istanbul's forts / guild) |
+| placeholder in the script / grouping | `Nugget` (object def) or the baked land placeholder | object def: `ypNuggetBoat` (zpcaribbeanwars, zpindependencewar, zpIceland - SEA maps only: an rmRiverCreate river floats no collideable hull, London 2026-09-18); baked in a grouping: `zpNuggetInvisibleWater` (Istanbul's forts / guild) |
 | where it may stand | on land (a plateau, a block cell, inside walls) | on OPEN water - clear of a pier grouping's terrain box and of the lane (London 2026-09-18: 18 m in front of the pier = on the box edge, nothing spawned) |
 | guardians | `<guardian>` or `<guardianunit><unit>` land units - guardian clones (`deGuardian*`, `zpGuardian*`) OR plain aggressive units (`zpNuggetIstanbul` 512 = 9 x `zpNatJanissary`, `zpNuggetTowerOfLondon` 605 = 10 x `deSPCHMRedcoat`) | ships (`zpGuardianCorsairGalley`, `dePrivateerGuardian`) |
 | texts | copy `rolloverstringid` / `applystringid` from the record you clone - never new strings for a variant | same |

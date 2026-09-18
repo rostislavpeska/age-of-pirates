@@ -15,7 +15,8 @@
 //   5  harbour posts docked on the lane, real positions read back              (law 1)
 //   6  London Bridge, instance API                                              (law 2)
 //   7  harbour groupings hung off the real posts, instance API                  (law 2)
-//   8  privateer treasures (water nuggets 603) beside the harbours - OPEN BUG, not seen spawning yet
+//   8  harbour guards: the vanilla Euro trade-route post nugget (101) on the quay behind each harbour; the post
+//      is released by "Units in Area" (no guardian left around it), never by the object-def nugget's id
 //   9  quays (one straight plateau per bank), streets, countryside
 //   10 blocks in Paris's order: fixed doubles, fixed singles, zones, fillers, houses
 //   11 riverside decorations, 12 players, 13 triggers (all at the end)
@@ -30,6 +31,9 @@
 //   5  the running game keeps a loaded grouping's TERRAIN by file name; a terrain edit
 //      shows only under a new name or after a restart (units re-read)
 //   6  `label` and the other XS keywords are not identifiers
+//   7  a river from rmRiverCreate floats NO collideable hull (ship, boat nugget, ship guardian) - tested
+//      2026-09-18 with three water bodies; only a water-initialised map does, and that breaks the piers and
+//      the bridge. Water units on the Thames: air / NonCollideable only. Guards on the water are out.
 // Unit ids are positional: never add, drop or reorder a placement call without a census.
 // ============================================================================
 int PlayerNum = cNumberNonGaiaPlayers;
@@ -234,12 +238,12 @@ int unitAt(string name = "", string proto = "", float maxM = 0.0, float x = 0.5,
 	return(d);
 }
 
-// A water treasure's object def, zpcaribbeanwars's form: the ypNuggetBoat placeholder, the nuggetmods difficulty
-// latched, min 0 / max maxM search. Define only - the spawn is a separate rmPlaceObjectDefAtLoc at the caller.
-int waterNuggetDef(string name = "", int difficulty = 0, float maxM = 0.0)
+// A land treasure's object def, zpelbe.xs's "nuggets to dock Trade Posts" form: the "Nugget" placeholder, the
+// nuggets.xml difficulty latched, min 0 / max maxM search. Define only - the spawn is a separate rmPlaceObjectDefAtLoc.
+int landNuggetDef(string name = "", int difficulty = 0, float maxM = 0.0)
 {
 	int d = rmCreateObjectDef(name);
-	rmAddObjectDefItem(d, "ypNuggetBoat", 1, 0.0);
+	rmAddObjectDefItem(d, "Nugget", 1, 0.0);
 	rmSetNuggetDifficulty(difficulty, difficulty);
 	rmSetObjectDefMinDistance(d, 0.0);
 	rmSetObjectDefMaxDistance(d, maxM);
@@ -262,6 +266,29 @@ void releaseOnNugget(string name = "", int nuggetId = -1, int unitId = -1)
 	rmCreateTrigger(name);
 	rmAddTriggerCondition("Nugget Is Collectable");
 	rmSetTriggerConditionParam("NuggetObject", "" + nuggetId);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + unitId, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+}
+
+// "No Gaia guardian of this type left within distM of the unit -> its AutoConvert resumes": the harbour release that
+// needs only the POST's id (performance_test.xs's "Units in Area" form). An object-def nugget's own id is not a
+// safe trigger target: the nugget manager swaps the placeholder for the record's nuggetunit and adds the guardians.
+void releaseWhenClear(string name = "", int unitId = -1, string guardianType = "", int distM = 0)
+{
+	rmCreateTrigger(name);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject", "" + unitId);
+	rmSetTriggerConditionParamInt("Player", 0);
+	rmSetTriggerConditionParam("UnitType", guardianType);
+	rmSetTriggerConditionParamInt("Dist", distM);
+	rmSetTriggerConditionParam("Op", "==");
+	rmSetTriggerConditionParamInt("Count", 0);
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", "" + unitId, false);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
@@ -366,13 +393,12 @@ void main(void)
 	rmSetAllMapReveal(true);
 	rmSetMapElevationHeightBlend(1);
 	rmSetSeaLevel(0.0);
-	rmSetLightingSet("age3challenges09a");
+	rmSetLightingSet("NorthwestTerritory_Skirmish");   // Art/lightsets/NorthwestTerritory_Skirmish.lgt (user 2026-09-18; was age3challenges09a)
 	rmSetSeaType("great lakes2");
 	rmEnableLocalWater(false);
 	rmTerrainInitialize("nwterritory\ground_grass2_nwt", 1.0);
 	rmSetMapType("grass");
 	rmSetMapType("land");
-	rmSetMapType("water");   // every map in the mod with water nuggets declares it (Istanbul, Caribbean, Independence, Iceland); added 2026-09-18 for the privateer treasures
 	rmSetMapType("default");
 	rmSetMapType("westEurope");
 	rmSetMapType("piratehistoricalmap");
@@ -430,11 +456,13 @@ void main(void)
 	// T5. handles and laws
 	float laneLegM = 16.0;              // the nautical U: legs this far off the river centre
 	float laneTurnFromRoadM = 80.0;     // the U's turn this far west of the road (in front of row 3; 60 m clear of the bridge)
-	float harbourGuardOffM = 30.0;      // privateer treasure: this far from its harbour's origin along the river toward the bridge (+x), 12 m clear of the pier's terrain box
-	float harbourGuardOffLegM = 6.0;    // ... and this far shoreward of the bank's REAL lane leg: ship-valid water (the census of 2026-09-18 11:23 shows nothing placed on the shallow bank 6-8 m off the quay wall)
-	float harbourGuardSearchM = 15.0;   // ... and the search radius around that spot
+	int   harbourGuardDifficulty = 101; // nuggets.xml euNuggetCapturable2: the vanilla European trade-route post guard (ypNuggetTradingPost + four deGuardianMusketeer, maptype westEurope) - zpelbe.xs uses it the same way
+	float harbourGuardInM = 2.5;        // the guard nugget this far INTO the city off the bank's quay wall line = the middle of the 5 m promenade, at the harbour's x (behind the harbour building)
+	float harbourGuardSearchM = 3.0;    // ... and the search radius around that spot: stays on the promenade (6 m let it wander off the harbour - user 2026-09-18)
 	float decoMouthXM = 12.0;           // the first riverside deco (40 m) centred this far in: the mouth slot is only 26 m
-	int   instanceIdShiftIndividual = 0;   // rmGetUnitPlaced (object defs) + this = engine unit id (Istanbul measured 2; London 0, tuned when the triggers are watched)
+	int   instanceIdShiftIndividual = 1;   // rmGetUnitPlaced (object defs) + this = engine unit id: the lane's trade ship is created between the controllers and the posts (census 2026-09-18 13:26: posts = engine ids 7-10 after six RM placements; zpelbe uses +1 the same way)
+	string harbourGuardType = "deGuardianMusketeer";   // the 101 record's guardians - what the release trigger counts around the post
+	int   harbourGuardReachM = 25;         // ... within this distance of the post (nugget ~14 m behind it + the guardian spread)
 	int   instanceIdShift = 0;             // rmGetGroupingInstanceUnitByType (grouping instances) + this
 
 	rmSetStatusText("",0.10);
@@ -554,20 +582,19 @@ void main(void)
 	int harbourS2Grouping = rmCreateGrouping("harbour south 2", "EU_SPC_London_Harbour_SE_01");
 	int harbourS2Inst = placeIsland(harbourS2Grouping, harbourS2X, harbourS2Z);
 
-	// ---- 8. THE PRIVATEER TREASURES: one water nugget per harbour (nuggetmods zpNuggetLondonHarbour 603: waternugget,
-	// nuggetunit zpNuggetInvisibleWater, one dePrivateerGuardian), defined first, spawned after, each harbourGuardOffM
-	// along the river toward the bridge and harbourGuardOffLegM shoreward of the bank's real lane leg. Census 2026-09-18:
-	// the 603 record DOES resolve (a land placeholder under the latch became its nuggetunit); the water placeholder
-	// (ypNuggetBoat, movementtype water, obstruction 3 x 2) is what never placed on the bank - the ferry posts prove
-	// nothing about depth (zpOrientalFerry is an AIR unit). The asked spots are echoed in metres.
-	int harbourN1GuardDef = waterNuggetDef("harbour guard north 1", 603, harbourGuardSearchM);
-	int harbourN2GuardDef = waterNuggetDef("harbour guard north 2", 603, harbourGuardSearchM);
-	int harbourS1GuardDef = waterNuggetDef("harbour guard south 1", 603, harbourGuardSearchM);
-	int harbourS2GuardDef = waterNuggetDef("harbour guard south 2", 603, harbourGuardSearchM);
-	float harbourN1GuardX = harbourN1X + rmXMetersToFraction(harbourGuardOffM);   float harbourN1GuardZ = zLaneN + rmZMetersToFraction(harbourGuardOffLegM);
-	float harbourN2GuardX = harbourN2X + rmXMetersToFraction(harbourGuardOffM);   float harbourN2GuardZ = zLaneN + rmZMetersToFraction(harbourGuardOffLegM);
-	float harbourS1GuardX = harbourS1X + rmXMetersToFraction(harbourGuardOffM);   float harbourS1GuardZ = zLaneS - rmZMetersToFraction(harbourGuardOffLegM);
-	float harbourS2GuardX = harbourS2X + rmXMetersToFraction(harbourGuardOffM);   float harbourS2GuardZ = zLaneS - rmZMetersToFraction(harbourGuardOffLegM);
+	// ---- 8. THE HARBOUR GUARDS: one LAND nugget per harbour, the vanilla European trade-route post guard (law 7 rules
+	// the water out) - nuggets.xml difficulty 101 = ypNuggetTradingPost + four deGuardianMusketeer, zpelbe.xs's form -
+	// defined first, spawned after, on the quay harbourGuardInM inside the bank's wall line at the harbour's x.
+	// The post is released when no guardian is left around it (13.2, "Units in Area" on the post - the nugget's own id
+	// is not a safe target). The asked spots and the raw rmGetUnitPlaced ids are echoed for the census.
+	int harbourN1GuardDef = landNuggetDef("harbour guard north 1", harbourGuardDifficulty, harbourGuardSearchM);
+	int harbourN2GuardDef = landNuggetDef("harbour guard north 2", harbourGuardDifficulty, harbourGuardSearchM);
+	int harbourS1GuardDef = landNuggetDef("harbour guard south 1", harbourGuardDifficulty, harbourGuardSearchM);
+	int harbourS2GuardDef = landNuggetDef("harbour guard south 2", harbourGuardDifficulty, harbourGuardSearchM);
+	float harbourN1GuardX = harbourN1X;   float harbourN1GuardZ = wallN + rmZMetersToFraction(harbourGuardInM);
+	float harbourN2GuardX = harbourN2X;   float harbourN2GuardZ = wallN + rmZMetersToFraction(harbourGuardInM);
+	float harbourS1GuardX = harbourS1X;   float harbourS1GuardZ = wallS - rmZMetersToFraction(harbourGuardInM);
+	float harbourS2GuardX = harbourS2X;   float harbourS2GuardZ = wallS - rmZMetersToFraction(harbourGuardInM);
 	rmEchoInfo("LONDON guard spots asked (m): N1 " + rmXFractionToMeters(harbourN1GuardX) + "," + rmZFractionToMeters(harbourN1GuardZ) + " N2 " + rmXFractionToMeters(harbourN2GuardX) + "," + rmZFractionToMeters(harbourN2GuardZ) + " S1 " + rmXFractionToMeters(harbourS1GuardX) + "," + rmZFractionToMeters(harbourS1GuardZ) + " S2 " + rmXFractionToMeters(harbourS2GuardX) + "," + rmZFractionToMeters(harbourS2GuardZ));
 	rmPlaceObjectDefAtLoc(harbourN1GuardDef, 0, harbourN1GuardX, harbourN1GuardZ);
 	rmPlaceObjectDefAtLoc(harbourN2GuardDef, 0, harbourN2GuardX, harbourN2GuardZ);
@@ -856,10 +883,10 @@ void main(void)
 	int harbourN2PostUnit = rmGetUnitPlaced(harbourN2PostDef, 0) + instanceIdShiftIndividual;
 	int harbourS1PostUnit = rmGetUnitPlaced(harbourS1PostDef, 0) + instanceIdShiftIndividual;
 	int harbourS2PostUnit = rmGetUnitPlaced(harbourS2PostDef, 0) + instanceIdShiftIndividual;
-	int harbourN1GuardUnit = rmGetUnitPlaced(harbourN1GuardDef, 0) + instanceIdShiftIndividual;
-	int harbourN2GuardUnit = rmGetUnitPlaced(harbourN2GuardDef, 0) + instanceIdShiftIndividual;
-	int harbourS1GuardUnit = rmGetUnitPlaced(harbourS1GuardDef, 0) + instanceIdShiftIndividual;
-	int harbourS2GuardUnit = rmGetUnitPlaced(harbourS2GuardDef, 0) + instanceIdShiftIndividual;
+	int harbourN1GuardUnit = rmGetUnitPlaced(harbourN1GuardDef, 0);   // raw placeholder ids, echoed for the census only (no trigger targets them)
+	int harbourN2GuardUnit = rmGetUnitPlaced(harbourN2GuardDef, 0);
+	int harbourS1GuardUnit = rmGetUnitPlaced(harbourS1GuardDef, 0);
+	int harbourS2GuardUnit = rmGetUnitPlaced(harbourS2GuardDef, 0);
 	int menagerieSUnit = rmGetGroupingInstanceUnitByType(menagerieSInst, "zpSPCMenagerie") + instanceIdShift;
 	int menagerieNUnit = rmGetGroupingInstanceUnitByType(menagerieNInst, "zpSPCMenagerie") + instanceIdShift;
 	int menagerieSNugUnit = rmGetGroupingInstanceUnitByType(menagerieSInst, "zpNuggetInvisible") + instanceIdShift;   // nuggetmods 98
@@ -897,11 +924,12 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 
-	// ---- 13.2 releases: each guard nugget collectable -> its capturable converts again
-	releaseOnNugget("Harbour N1 Convert ON", harbourN1GuardUnit, harbourN1PostUnit);
-	releaseOnNugget("Harbour N2 Convert ON", harbourN2GuardUnit, harbourN2PostUnit);
-	releaseOnNugget("Harbour S1 Convert ON", harbourS1GuardUnit, harbourS1PostUnit);
-	releaseOnNugget("Harbour S2 Convert ON", harbourS2GuardUnit, harbourS2PostUnit);
+	// ---- 13.2 releases: harbours when their guardians are gone (by area around the post); Menageries and Factories
+	// when their baked nugget is collectable
+	releaseWhenClear("Harbour N1 Convert ON", harbourN1PostUnit, harbourGuardType, harbourGuardReachM);
+	releaseWhenClear("Harbour N2 Convert ON", harbourN2PostUnit, harbourGuardType, harbourGuardReachM);
+	releaseWhenClear("Harbour S1 Convert ON", harbourS1PostUnit, harbourGuardType, harbourGuardReachM);
+	releaseWhenClear("Harbour S2 Convert ON", harbourS2PostUnit, harbourGuardType, harbourGuardReachM);
 	releaseOnNugget("Menagerie S Convert ON", menagerieSNugUnit, menagerieSUnit);
 	releaseOnNugget("Menagerie N Convert ON", menagerieNNugUnit, menagerieNUnit);
 	releaseOnNugget("Factory S Convert ON", factorySNugUnit, factorySUnit);
