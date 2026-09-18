@@ -74606,6 +74606,32 @@
     <flag>ObscuresUnits</flag>
     <flag>Tracked</flag>
   </unit>
+  <unit id="21180" name="zpNatElectorPalaceG">
+    <dbid>21180</dbid>
+    <displaynameid>502731</displaynameid>
+    <editornameid>503445</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\medieval_palaces\medieval_palace_v6.xml</animfile>
+    <portraiticon>resources\art\units\natives\hussite_natives.png</portraiticon>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>RMCanRotate</flag>
+  </unit>
   
 <!--TEST AND TEMPORARY CONTENT-->
 

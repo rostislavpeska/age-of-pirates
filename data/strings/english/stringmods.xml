@@ -3446,6 +3446,7 @@
       <string _locid="503442">Gallows</string>
       <string _locid="503443" symbol="cStringNuggetCanelo" comment="1 - amount, 2 - resource">An unused gallows worth %1d %2s.</string>
       <string _locid="503444" symbol="cStringNuggetCaneloActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has discovered unused gallows worth %2d %3s.</string>
+      <string _locid="503445">ZP NAT Elector Palace G</string>
       
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
