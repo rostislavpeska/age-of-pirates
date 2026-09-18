@@ -18,7 +18,7 @@ Checks:
   B1 14 bridge faces centred within 6 m of the crossing
   S1 a non-prop unit on the road line at the crossing (the bridge socket)
   T1 one SocketTradeRoute per bank at row 1 x column 3 (the trade block beside the cathedral, socket toward the road)
-  F1 the Figma's fixed EU blocks: 2 zpSPCMenagerie (row 4 col 2), 2 zpSocketJewishEU (row 6 col 3), 2 zpSPCCapturableFactory (row 0 col 2); the Park has no fingerprint proto
+  F1 the Figma's fixed EU blocks: 2 zpSPCMenagerie (row 4 col 2), 2 zpSocketJewishEU (row 6 col 3), 2 zpSPCCapturableFactory (row 0 col 2), 2 Construction (row 0 col 1, fingerprint zpUnderbrushConstructionJesuitTemple); the Park has no fingerprint proto; the Mill (zpSPCTownMill) in the Destilery's place; no Forester in the city
   H2 harbour guards: 4 dePrivateerGuardian + 4 zpNuggetInvisibleWater (nuggetmods zpNuggetLondonHarbour, difficulty 603)
   T2 the Towers' capturable flags (2), their Redcoat guards (10 each, nugget 605), the two Academy rewards (nugget 604)
   D1 the Paris riverside decorations (EU_Riverside_SW_01_270 south / NE_01_270 north, 4 per bank): >= 10 PropSwan on the map
@@ -147,7 +147,7 @@ def main(argv=None):
         hmsg.append(f"{tag}: {len(plat)} platforms, ferry post {'at ' + str((round(near[0]['x'], 1), round(near[0]['z'], 1))) if near else 'MISSING'} (asked {px:.1f},{pz:.1f})")
     check("H1", hok, "harbours " + "; ".join(hmsg) + f"; zpOrientalFerry on the map {len(posts)} (4 expected)")
     fixed = {"zpSPCMenagerie": 2, "zpSocketJewishEU": 2, "zpSPCCapturableFactory": 2,
-             "zpSPCCityMarket": 2, "zpSPCNationalBank": 2, "zpSPCGoldSmelter": 2, "zpSPCDestilery": 2, "zpSPCTownMill": 2, "zpSPCForester": 2}
+             "zpSPCCityMarket": 2, "zpSPCNationalBank": 2, "zpSPCGoldSmelter": 2, "zpSPCTownMill": 2, "zpUnderbrushConstructionJesuitTemple": 2}
     got = {k: sum(1 for u in U if u["proto"] == k) for k in fixed}
     check("F1", all(got[k] == v for k, v in fixed.items()), f"EU blocks, one per bank each (fixed + Paris zone resources): {got}")
     guards = sum(1 for u in U if u["proto"] == "dePrivateerGuardian"); nugs = sum(1 for u in U if u["proto"] == "zpNuggetInvisibleWater")

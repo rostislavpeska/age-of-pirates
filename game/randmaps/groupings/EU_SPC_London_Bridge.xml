@@ -200,10 +200,10 @@
 		</tilegroup>
 		<cliffgroup type="ZP Bridge">
 			<block startx="-9" startz="-2" endx="-9" endz="1"></block>
-			<block startx="-6" startz="-22" endx="-6" endz="-10"></block>
-			<block startx="-6" startz="9" endx="-6" endz="21"></block>
-			<block startx="3" startz="-22" endx="3" endz="-10"></block>
-			<block startx="3" startz="9" endx="3" endz="21"></block>
+			<block startx="-6" startz="-20" endx="-6" endz="-10"></block>
+			<block startx="-6" startz="9" endx="-6" endz="19"></block>
+			<block startx="3" startz="-20" endx="3" endz="-10"></block>
+			<block startx="3" startz="9" endx="3" endz="19"></block>
 			<block startx="5" startz="-2" endx="5" endz="1"></block>
 		</cliffgroup>
 		<cliffgroup type="ZP City">

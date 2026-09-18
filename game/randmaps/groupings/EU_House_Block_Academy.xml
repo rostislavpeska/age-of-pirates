@@ -60,7 +60,7 @@
 		<unit variation="130" posx="13.9776" posz="-2.7759" orientx="0.7071" orienty="-0.0000" orientz="0.7071">zpPropsFlowers</unit>
 		<unit variation="204" posx="11.0801" posz="-1.8271" orientx="1.0000" orienty="0.0000" orientz="-0.0051">deNatEUPropFence</unit>
 		<unit variation="244" posx="10.0163" posz="-0.4169" orientx="0.0000" orienty="-0.0000" orientz="1.0000">UnderbrushCoastalJapan</unit>
-		<unit variation="155" posx="-0.5786" posz="0.7645" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NuggetCapturableBuildingBig</unit>
+		<unit variation="155" posx="-0.5786" posz="-1.5355" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NuggetCapturableBuildingBig</unit>
 		<unit variation="0" posx="-13.9655" posz="0.1010" orientx="-1.0000" orienty="0.0000" orientz="0.0007">PropsPoles</unit>
 		<unit variation="11" posx="-6.6045" posz="3.0044" orientx="0.0009" orienty="0.0000" orientz="1.0000">PropsPoles</unit>
 		<unit variation="11" posx="7.2047" posz="3.7392" orientx="-1.0000" orienty="0.0000" orientz="0.0009">PropsPoles</unit>
