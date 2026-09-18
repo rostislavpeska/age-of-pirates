@@ -190,4 +190,10 @@
   </zpconsulateestatejewish>
   <zpconsulatepiratesjones portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/johnpauljones.png">
   </zpconsulatepiratesjones>
+  <zpconsulateparliamentcromwell portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/cromwell.png">
+  </zpconsulateparliamentcromwell>
+  <zpconsulateparliamentinchiquin portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/inchiquin.png">
+  </zpconsulateparliamentinchiquin>
+  <zpconsulateparliamentmyddelton portraitfilename="ui\ingame\politicians\consulate_portuguese" portraitfilenamewpf="resources/images/icons/politicians/myddelton.png">
+  </zpconsulateparliamentmyddelton>
 </politicianmods>

@@ -174,7 +174,7 @@ class TestTechs:
     def test_every_other_set_turns_jones_off(self):
         te = _techs()
         sets = [n for n, b in te.items() if "zpConsulatePiratesBlackbeard</effect>" in b and n != SET]
-        assert len(sets) == 37, len(sets)
+        assert len(sets) == 38, len(sets)  # 2026-09-18: + zpTurnConsulateOffParliament
         for n in sets:
             assert 'status="unobtainable">%s</effect>' % CAPTAIN in te[n], n
 

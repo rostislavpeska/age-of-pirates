@@ -11,12 +11,13 @@ python .claude/skills/icon-forge/scripts/iconforge.py <art.png> <out.png> [optio
 
 | option | effect |
 |---|---|
-| `--kind` | `tech` `unit` `ability` `building` `team` `big` `portrait` (default `tech`) |
+| `--kind` | `tech` `unit` `ability` `building` `team` `big` `portrait` `politician` (default `tech`) |
 | `--full` | art fills the canvas and the border sits **on top** of it |
 | `--inset 0.06` | trim a fraction off each edge of the source first |
 | `--fit` | `cover` (crop to fill, default) or `contain` (letterbox) |
 | `--size N` | output size; portraits default to 512 |
 | `--disabled` | also write `<out>_disabled.png` |
+| `--cut X,Y[,W]` | politician only: cut a W x 2W window (default 512 = native scale) at X,Y and scale it to the card; W < 512 zooms in. Use it to give every portrait of a set the same head size (measure the face height on a grid render; the card's head should sit in the upper fifth) |
 
 Borders ship in `borders/` next to the script, so this works from a clone with
 no dependency on any local art folder. Needs Pillow.
@@ -27,6 +28,7 @@ no dependency on any local art folder. Needs Pillow.
 tech / unit / ability / building / team   128x128   window (14,18)-(115,114)  101x96
 big                                       270x410   window (34,36)-(239,377)  205x341
 portrait                                  512x512   no border
+politician                                512x1024  no border, RGB - the card portrait of politicianmods.xml
 ```
 
 All five square borders share one window, so they are one code path. Three
@@ -61,6 +63,7 @@ Match the convention already in the mod rather than inventing a path:
 ```
 data/wpfg/resources/images/icons/techs/<set>/<name>.png     tech icons
 data/wpfg/resources/art/units/natives/<name>.png            unit portraits
+data/wpfg/resources/images/icons/politicians/<name>.png      politician card portraits (politicianmods.xml portraitfilenamewpf, forward slashes)
 ```
 
 Then reference it from `protomods.xml` / `techtreemods.xml` with a

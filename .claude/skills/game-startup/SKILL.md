@@ -12,6 +12,14 @@ two cases (user amendment 2026-08-25): a direct user instruction, or the
 driver's explicit `--allow-restart` flag. Default automation without the
 flag stops and waits for a human.
 
+## user.cfg is not a toolbox
+
+`<profile>\Startup\user.cfg` holds exactly two lines for the harness (`showAiEchoes`,
+`generateAIEchoesOutput`). Never add `debugRandomMaps` (or any other engine debug switch) there: on the
+retail build it froze every random-map generation at 20-30 % once the next restart loaded it (2026-09-18,
+an evening of emergency bisecting on a map that was fine). If a generation hangs after a restart, that file
+is the first thing to read.
+
 ## Manual / agent-driven startup sequence
 
 1. **Launch**: `powershell -NoProfile -Command "Start-Process 'steam://rungameid/933110'"`

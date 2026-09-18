@@ -1,0 +1,36 @@
+<protounitsounddef>
+  <protounit name="zpNatLord">
+    <soundtype name="Select">
+      <soundset name="WarwickSelect" />
+    </soundtype>
+    <soundtype name="Grunt">
+      <soundset name="WarwickGrunt" />
+    </soundtype>
+    <soundtype name="Death">
+      <soundset name="WarwickDeath" />
+    </soundtype>
+    <soundtype name="Creation">
+      <soundset name="MilitaryBirth" />
+    </soundtype>
+    <soundtype name="Acknowledge">
+      <targetlogic>
+        <choice name="default">
+          <soundset name="WarwickAcknowledge" />
+        </choice>
+        <choice name="enemy">
+          <soundset name="WarwickAttack" />
+        </choice>
+        <choice name="build" />
+        <choice name="Huntable" />
+        <choice name="Tree" />
+        <choice name="AbstractMine" />
+        <choice name="AbstractFarm" />
+        <choice name="AbstractResourceCrate" />
+        <choice name="AbstractFruit" />
+      </targetlogic>
+    </soundtype>
+    <soundtype name="KnockOutRevived">
+      <soundset name="WarwickRevive" />
+    </soundtype>
+  </protounit>
+</protounitsounddef>

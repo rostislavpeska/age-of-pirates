@@ -3447,6 +3447,62 @@
       <string _locid="503443" symbol="cStringNuggetCanelo" comment="1 - amount, 2 - resource">An unused gallows worth %1d %2s.</string>
       <string _locid="503444" symbol="cStringNuggetCaneloActivate" comment="1 - player, 2 - amount, 3 - resource">%1s has discovered unused gallows worth %2d %3s.</string>
       <string _locid="503445">ZP NAT Elector Palace G</string>
+      <string _locid="503446">Parliamentarians</string>
+      <string _locid="503447">ZP Socket Parliament</string>
+      <string _locid="503448">Lord</string>
+      <string _locid="503449">ZP Nat Parliament Lord</string>
+      <string _locid="503451">Parliamentarian nobleman on horseback. Extremely tough hand cavalry that trains Parliamentarian units in the field. Good against artillery and heavy infantry.</string>
+      <string _locid="503452">Lord Lieutenant</string>
+      <string _locid="503453">Lord General</string>
+      <string _locid="503454">Lord Protector</string>
+      <string _locid="503455">Ironside</string>
+      <string _locid="503456">ZP Nat Ironside</string>
+      <string _locid="503457">Lifeguard Ironside</string>
+      <string _locid="503458">Legendary Ironside</string>
+      <string _locid="503459">Bonaght Soldier</string>
+      <string _locid="503460">ZP Nat Bonaght</string>
+      <string _locid="503461">Bonaght of the Guard</string>
+      <string _locid="503462">Legendary Bonaght</string>
+      <string _locid="503463">Welsh Longbowman</string>
+      <string _locid="503464">ZP Nat Welsh Longbowman</string>
+      <string _locid="503465">Welsh Guard Bowman</string>
+      <string _locid="503466">Legendary Welsh Bowman</string>
+      <string _locid="503467">Veteran Parliamentarians</string>
+      <string _locid="503468">Parliamentarian Guard</string>
+      <string _locid="503469">Improves Parliamentarian attack and hitpoints</string>
+      <string _locid="503470">Excise Ordinance</string>
+      <string _locid="503471">Parliament's excise on beer, meat and cloth pays for the war. Provides a small trickle of coin.</string>
+      <string _locid="503472">Trained Bands</string>
+      <string _locid="503473">The London Trained Bands drill every Sunday. All settlers gain 40% more hitpoints and attack.</string>
+      <string _locid="503474">Lines of Communication</string>
+      <string _locid="503475">The earthwork ring around London. Your barricades have 50% more hitpoints and Parliamentarian units can build them.</string>
+      <string _locid="503476">Eastern Association</string>
+      <string _locid="503477">Cromwell's regional army. Lords project a command aura: all nearby units gain 15% attack and 10% hitpoints. Auras of several Lords do not stack.</string>
+      <string _locid="503478">The Grand Remonstrance</string>
+      <string _locid="503479">Pick your leader of Parliament</string>
+      <string _locid="503480">Oliver Cromwell (Commonwealth)</string>
+      <string _locid="503481">Military improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nIronside \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nIronside Levy, New Model Army</string>
+      <string _locid="503482">Lord Inchiquin (Munster Protestants)</string>
+      <string _locid="503483">Naval and diplomatic improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBonaght Soldier \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nMunster Levies, Team Adventurers' Act</string>
+      <string _locid="503484">Sir Thomas Myddelton (North Wales)</string>
+      <string _locid="503485">Economic improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWelsh Longbowman \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nWelsh Drovers, Team New River Company</string>
+      <string _locid="503486">Ironside Levy</string>
+      <string _locid="503487">Ships a Regal Ship carrying 10 Ironsides.</string>
+      <string _locid="503488">New Model Army</string>
+      <string _locid="503489">Ironsides and Lords gain 20% attack and hitpoints and train 25% faster. Lord build limit +2.</string>
+      <string _locid="503490">Munster Levies</string>
+      <string _locid="503491">Ships a Regal Ship carrying 12 Bonaght Soldiers. Bonaght build limit +5.</string>
+      <string _locid="503492">Team Adventurers' Act</string>
+      <string _locid="503493">Investors fund the war against Irish land. Every team member receives a trickle of 1 coin per second.</string>
+      <string _locid="503494">Welsh Drovers</string>
+      <string _locid="503495">Ships 8 Sheep. Livestock fatten 25% faster.</string>
+      <string _locid="503496">Team New River Company</string>
+      <string _locid="503497">All convertable city resource buildings work faster by 50% while being owned either by you or any of your team members.</string>
+      <string _locid="503498">Parliament stands for the liberties of England against the tyranny of the Crown!</string>
+      <string _locid="503499">Parliament Quarter</string>
+      <string _locid="503500">ZP Parliament Flag</string>
+      <string _locid="503501">ZP Stuart Flag</string>
+      <string _locid="503502">City of London</string>
       
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

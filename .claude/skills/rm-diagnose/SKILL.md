@@ -11,6 +11,16 @@ but wrong stats. Theories before that step cost hours (the 2026-09-10 trade-rout
 
 ## The ladder (stop at the first rung that explains it)
 
+0. **Did the generation HANG (load bar frozen at 20-30 %) after a game restart?** Before any map theory:
+   `Startup\user.cfg` in the profile. A `debugRandomMaps` line there freezes EVERY random-map generation on
+   the retail build at the first placement after the water (2026-09-18: six restarts and a full bisect of the
+   London script and data cleared nothing; removing the line = the map generates unchanged). It takes effect
+   only at the next process start, so the damage appears hours after the edit and passes every diff of the
+   repo. Only `showAiEchoes` / `generateAIEchoesOutput` belong in that file. Then the other agents' data files:
+   `ls -lt data/*.xml` - anything newer than the last good generation is a suspect the map diff never shows.
+   The reproducible instrument is `sandbox/census/editor_regen.py <tag> <seed> [--in-editor|--from-menu]`:
+   kill/relaunch through Steam (user's word only), recognise the menu and the editor by pixels, File > New,
+   pick the map row, seed, Generate, load-bar readout every 10 s - one round ~4 min, no user time.
 1. **Which file did the game load?** Every same-name copy: repo `game/randmaps`, Steam
    `Game\RandMaps`, `<profile>\RandMaps`, other enabled mod folders. `md5sum` them. A stale twin is
    picked silently. Only age-of-pirates enabled? `<profile>\mods\age3-mod-status.json`.
@@ -36,6 +46,7 @@ but wrong stats. Theories before that step cost hours (the 2026-09-10 trade-rout
 | Symptom | First rung | Evidence from this project |
 |---|---|---|
 | route falls back to the base (dirt) route, other routes fine | 2 | traderoutedefs records pasted multi-line |
+| load bar frozen at 20-30 %, every seed, every variant | 0 | `debugRandomMaps` in user.cfg (2026-09-18) |
 | grouping never spawns | 1 + 3 | grouping XML only in the repo; editor not restarted |
 | unit spawns (census) but is invisible | 7 | LF-only animfile (Tower of London) |
 | mapcheck S4 "unknown proto" on a DLC unit | 4 | snapshot from Oct 2025 |

@@ -4,8 +4,8 @@
 	<width>30</width>
 	<height>15</height>
 	<ignoreplacementrules>1</ignoreplacementrules>
-	<selectassingleunit>0</selectassingleunit>
-	<workonassingleunit>0</workonassingleunit>
+	<selectassingleunit>1</selectassingleunit>
+	<workonassingleunit>1</workonassingleunit>
 	<units>
 		<unit variation="8" posx="-28.6640" posz="-14.0044" orientx="1.0000" orienty="0.0000" orientz="-0.0006">PropsPottedPlants</unit>
 		<unit variation="8" posx="-12.0007" posz="-14.2085" orientx="1.0000" orienty="0.0000" orientz="-0.0006">PropsPottedPlants</unit>
@@ -125,7 +125,7 @@
 		<unit variation="4" posx="-7.7487" posz="-1.4995" orientx="1.0000" orienty="0.0000" orientz="-0.0005">zpNativePropsCastleGuards</unit>
 		<unit variation="4" posx="-6.0100" posz="-1.4332" orientx="1.0000" orienty="0.0000" orientz="-0.0005">zpNativePropsCastleGuards</unit>
 		<unit variation="4" posx="-4.3543" posz="-1.4550" orientx="1.0000" orienty="0.0000" orientz="-0.0005">zpNativePropsCastleGuards</unit>
-		<unit variation="6" posx="-0.7208" posz="-0.5922" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCFlag</unit>
+		<unit variation="6" posx="-0.7208" posz="-0.5922" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpStuartFlag</unit>
 		<unit variation="4" posx="2.5898" posz="-1.0894" orientx="-1.0000" orienty="0.0000" orientz="0.0004">zpNativePropsCastleGuards</unit>
 		<unit variation="4" posx="2.6212" posz="-2.3886" orientx="-1.0000" orienty="0.0000" orientz="0.0004">zpNativePropsCastleGuards</unit>
 		<unit variation="4" posx="4.2660" posz="-2.3781" orientx="-1.0000" orienty="0.0000" orientz="0.0004">zpNativePropsCastleGuards</unit>

@@ -386,19 +386,25 @@ void main(void)
 	rmSetStatusText("",0.01);
 
 	// ---- 0. civs, frame, map types, classes, constraints --------------------------------------------
-	// natives: the Parliament block carries the one socket (zpSocketSansculottes) - allocated the Paris way
+	// natives: Parliamentarians (zpSocketParliament in the Parliament block), the House of Stuart (zpSPCSocketStuart in
+	// the Stuart block) and the Jewish quarter - London's own three, nothing inherited from Paris
 	int subCiv0=-1;
 	int subCiv1=-1;
-	if (rmAllocateSubCivs(2) == true)
+	int subCiv2=-1;
+	if (rmAllocateSubCivs(3) == true)
 	{
-		subCiv0=rmGetCivID("zpSansculottes");
-		rmEchoInfo("subCiv0 is zpSansculottes "+subCiv0);
+		subCiv0=rmGetCivID("zpParliament");
+		rmEchoInfo("subCiv0 is zpParliament "+subCiv0);
 		if (subCiv0 >= 0)
-			rmSetSubCiv(0, "zpSansculottes");
-		subCiv1=rmGetCivID("jewish");
-		rmEchoInfo("subCiv1 is jewish "+subCiv1);
+			rmSetSubCiv(0, "zpParliament");
+		subCiv1=rmGetCivID("Stuart");
+		rmEchoInfo("subCiv1 is Stuart "+subCiv1);
 		if (subCiv1 >= 0)
-			rmSetSubCiv(1, "jewish");
+			rmSetSubCiv(1, "Stuart");
+		subCiv2=rmGetCivID("jewish");
+		rmEchoInfo("subCiv2 is jewish "+subCiv2);
+		if (subCiv2 >= 0)
+			rmSetSubCiv(2, "jewish");
 	}
 
 	// Paris frame, long axis on z: 360 m = 6.6 + row 00 + 4 + row 0 + 10.2 + road + 3 + row 1 + 7 x 34 + 6.6
@@ -971,6 +977,351 @@ void main(void)
 		towerUnlock("N", towerNNugUnit, towerNFlagUnit);
 		towerConvFill("N", towerNFlagUnit, towerNBldUnit);
 	}
+
+
+	// ---- 14. Parliamentarians (Orthodox pattern): starting techs, the leader choice, the AI roll ----------------
+	// 14.1 starting techs for everybody: London setup (Military Camp) + no standard revolutions (Paris idiom)
+	rmCreateTrigger("LondonStartingTechs");
+	for (k=1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpLondonSetup");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpForbidRevolutions");
+		rmSetTriggerEffectParamInt("Status", 2);
+	}
+	// gaia flies the London flag and is called City of London (Paris: the Bourbon flag + "City of Paris"); the House of
+	// Stuart civ carries the London flag texture in civmods, its Royal Standard lives only on the zpStuartFlag unit
+	rmAddTriggerEffect("Player : Override Civilization for Flag");
+	rmSetTriggerEffectParamInt("Player", 0);
+	rmSetTriggerEffectParam("Civilization", "Stuart");
+	rmAddTriggerEffect("Player : Override Civilization Name");
+	rmSetTriggerEffectParamInt("Player", 0);
+	rmSetTriggerEffectParam("StringID", "503502");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
+	// 14.1b the balance / returner family (zpparis.xs "NATIVE POLITICIANS", map-politician-triggers Rule 0): every
+	// switcher grants cTechzpBigButtonResearchDecrease so its big button researches instantly - Cheat Returner hands
+	// the cost back 10 ms later; the two Italian triggers repay the villager / gondola shipments the faction big
+	// buttons zero out. Priority 2 (the switchers are 4), armed only by the switchers' Fire Events.
+	for (k=1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("Italian Vilager Balance" + k);
+		rmAddTriggerCondition("ZP Player Civilization");
+		rmSetTriggerConditionParamInt("Player", k);
+		rmSetTriggerConditionParam("Civilization", "DEItalians");
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpItalianSettlerBallance");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmSetTriggerPriority(2);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(false);
+		rmSetTriggerLoop(false);
+
+		rmCreateTrigger("Italian Gondola Balance" + k);
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID", k);
+		rmSetTriggerConditionParam("TechID", "cTechDEHCGondolas");
+		rmSetTriggerConditionParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpItalianGondolaBallance");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmSetTriggerPriority(2);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(false);
+		rmSetTriggerLoop(false);
+
+		rmCreateTrigger("Cheat Returner" + k);   // Paris: "Speed Always Wins Returner"
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamInt("Param1", 10);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpBigButtonResearchIncrease");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmSetTriggerPriority(2);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(false);
+		rmSetTriggerLoop(false);
+	}
+
+	// 14.1c the Asian civs' consulate switchers (zpparis.xs "Activate Consulate <civ>"): gated on the civ and on
+	// cTechzpPickConsulateTechAvailable, they turn that civ's consulate page on, research the pick instantly and
+	// fire the returner; the human check below arms them
+	for (k=1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("Activate Consulate Japan" + k);
+		rmAddTriggerCondition("ZP Player Civilization");
+		rmSetTriggerConditionParamInt("Player", k);
+		rmSetTriggerConditionParam("Civilization", "Japanese");
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID", "cTechzpPickConsulateTechAvailable");
+		rmSetTriggerConditionParamInt("PlayerID", k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpTurnConsulateOnJapanese");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpBigButtonResearchDecrease");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player", k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+	}
+	for (k=1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("Activate Consulate China" + k);
+		rmAddTriggerCondition("ZP Player Civilization");
+		rmSetTriggerConditionParamInt("Player", k);
+		rmSetTriggerConditionParam("Civilization", "Chinese");
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID", "cTechzpPickConsulateTechAvailable");
+		rmSetTriggerConditionParamInt("PlayerID", k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpTurnConsulateOnChinese");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpBigButtonResearchDecrease");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player", k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+	}
+	for (k=1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("Activate Consulate India" + k);
+		rmAddTriggerCondition("ZP Player Civilization");
+		rmSetTriggerConditionParamInt("Player", k);
+		rmSetTriggerConditionParam("Civilization", "Indians");
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID", "cTechzpPickConsulateTechAvailable");
+		rmSetTriggerConditionParamInt("PlayerID", k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpTurnConsulateOnIndian");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpBigButtonResearchDecrease");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player", k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+	}
+	for (k=1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("Activate Consulate Khmer" + k);
+		rmAddTriggerCondition("ZP Player Civilization");
+		rmSetTriggerConditionParamInt("Player", k);
+		rmSetTriggerConditionParam("Civilization", "Khmers");
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID", "cTechzpPickConsulateTechAvailable");
+		rmSetTriggerConditionParamInt("PlayerID", k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpTurnConsulateOnKhmers");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpBigButtonResearchDecrease");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player", k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+	}
+
+	// 14.2 the Grand Remonstrance big button -> the Parliament card set -> the pick dialog (Venice "Activate Orthodox")
+	for (k=1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("Activate Parliament" + k);
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID", "cTechzpParliamentRemonstrance");
+		rmSetTriggerConditionParamInt("PlayerID", k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpTurnConsulateOffParliament");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpBigButtonResearchDecrease");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player", k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance" + k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance" + k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+	}
+	// 14.3 the Jewish quarter: Star of David big button -> the Jewish card set -> the pick dialog (Versailles "Activate Jewish")
+	for (k=1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("Activate Jewish" + k);
+		rmAddTriggerCondition("ZP Tech Researching (XS)");
+		rmSetTriggerConditionParam("TechID", "cTechzpJewishStar");
+		rmSetTriggerConditionParamInt("PlayerID", k);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpTurnConsulateOffJewish");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpBigButtonResearchDecrease");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Pick Consulate Tech");
+		rmSetTriggerEffectParamInt("Player", k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Vilager_Balance" + k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Italian_Gondola_Balance" + k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Cheat_Returner" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(true);
+	}
+	// human players get the dialog; the AI rolls a leader instead (14.4)
+	for (k=1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("Human Check Plr" + k);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player", k);
+		rmSetTriggerConditionParam("MyBool", "true");
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpIsPirateMap");   // the mod's map flag, every mod map's human check grants it (Paris)
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Japan" + k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_China" + k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_India" + k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Consulate_Khmer" + k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Parliament" + k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Activate_Jewish" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+	// 14.4 AI leader roll (Venice "ZP Pick Orthodox Captain")
+	for (k=1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("PickParliamentLeader" + k);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player", k);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerCondition("Tech Status Equals");
+		rmSetTriggerConditionParamInt("PlayerID", k);
+		rmSetTriggerConditionParamInt("TechID", 586);
+		rmSetTriggerConditionParamInt("Status", 2);
+		int parliamentLeader = rmRandInt(1, 3);
+		if (parliamentLeader == 1)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpConsulateParliamentCromwell");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		if (parliamentLeader == 2)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpConsulateParliamentInchiquin");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		if (parliamentLeader == 3)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpConsulateParliamentMyddelton");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
+	// 14.5 AI Jewish faction roll (Versailles "ZP Pick Jewish Fraction")
+	for (k=1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("PickJewishFraction" + k);
+		rmAddTriggerCondition("ZP PLAYER Human");
+		rmSetTriggerConditionParamInt("Player", k);
+		rmSetTriggerConditionParam("MyBool", "false");
+		rmAddTriggerCondition("Tech Status Equals");
+		rmSetTriggerConditionParamInt("PlayerID", k);
+		rmSetTriggerConditionParamInt("TechID", 586);
+		rmSetTriggerConditionParamInt("Status", 2);
+		int jewishFraction = rmRandInt(1, 3);
+		if (jewishFraction == 1)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpConsulateJewishAmericans");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		if (jewishFraction == 2)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpConsulateJewishRussians");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		if (jewishFraction == 3)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpConsulateJewishGermans");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
 
 	rmSetStatusText("",0.99);
 } // END

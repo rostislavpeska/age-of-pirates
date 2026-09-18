@@ -3,18 +3,24 @@
 
     python iconforge.py <art.png> <out.png> [options]
 
-      --kind tech|unit|ability|building|team|big|portrait   (default tech)
+      --kind tech|unit|ability|building|team|big|portrait|politician   (default tech)
       --full            art fills the canvas and the border overlays it, hiding
                         any frame already painted into the art
       --inset 0.06      trim a fraction off each edge of the source first
       --fit cover|contain                                   (default cover)
       --size N          output size; portraits default to 512
+                        (politician = 512x1024 card portrait, no border)
+      --cut X,Y[,W]     politician only: cut a W x 2W window (default 512x1024, i.e.
+                        native scale) with its top-left at X,Y and scale it to the
+                        card; W < 512 zooms in - use it to match head sizes across a set
       --disabled        also write <out>_disabled.png
 
 Borders ship alongside this script in ../borders, so nothing depends on a local
 OneDrive path. All five square borders share one window, so a single geometry
 covers tech / unit / ability / building / team_tech; big is the only different
-one, and portrait uses no border at all.
+one, portrait uses no border at all, and politician is the 512x1024 (1:2) card
+portrait every entry in data/politicianmods.xml uses - no border, RGB, the
+source is cover-cropped to 1:2 (a 2:3 generation loses its outer sides).
 
     128x128 borders    window (14,18)-(115,114)  ->  101x96
     big_border 270x410 window (34,36)-(239,377)  ->  205x341
@@ -37,6 +43,7 @@ NAMES = {'tech': 'tech_border.png', 'unit': 'unit_border.png',
          'ability': 'ability_border.png', 'building': 'building_border.png',
          'team': 'team_tech.png', 'big': 'big_border.png'}
 PORTRAIT_DEFAULT = 512
+POLITICIAN_SIZE = (512, 1024)
 
 
 def window(border):
@@ -70,7 +77,7 @@ def main(argv=None):
     ap.add_argument('art')
     ap.add_argument('out')
     ap.add_argument('--kind', default='tech',
-                    choices=sorted(NAMES) + ['portrait'])
+                    choices=sorted(NAMES) + ['portrait', 'politician'])
     ap.add_argument('--inset', type=float, default=0.0)
     ap.add_argument('--fit', default='cover', choices=('cover', 'contain'))
     ap.add_argument('--full', action='store_true')
@@ -78,6 +85,7 @@ def main(argv=None):
                     help='output size; portraits default to 512, bordered kinds '
                          'default to the border resolution')
     ap.add_argument('--disabled', action='store_true')
+    ap.add_argument('--cut', default='', help='politician: X,Y of a native-scale 512x1024 window')
     a = ap.parse_args(argv)
 
     art = Image.open(a.art).convert('RGBA')
@@ -85,6 +93,28 @@ def main(argv=None):
         w, h = art.size
         dx, dy = round(w * a.inset), round(h * a.inset)
         art = art.crop((dx, dy, w - dx, h - dy))
+
+    if a.kind == 'politician':
+        w, h = POLITICIAN_SIZE
+        if a.size:
+            w, h = a.size, a.size * 2
+        if a.cut:
+            parts = [int(v) for v in a.cut.split(',')]
+            x, y = parts[0], parts[1]
+            cw = parts[2] if len(parts) > 2 else w          # window width; height is always 2x (the card is 1:2)
+            ch = cw * 2
+            if x < 0 or y < 0 or x + cw > art.width or y + ch > art.height:
+                sys.exit(f'--cut window {cw}x{ch} at ({x},{y}) leaves the {art.width}x{art.height} source')
+            canvas = art.crop((x, y, x + cw, y + ch)).convert('RGB')
+            if (cw, ch) != (w, h):
+                canvas = canvas.resize((w, h), Image.LANCZOS)
+            canvas.save(a.out)
+            print(f'{a.out}  {w}x{h}  politician card portrait (no border, RGB)  cut {cw}x{ch} at ({x},{y}) -> scale x{w / cw:.2f}')
+            return 0
+        canvas = fit(art, (w, h), a.fit).convert('RGB')
+        canvas.save(a.out)
+        print(f'{a.out}  {w}x{h}  politician card portrait (no border, RGB)  fit={a.fit} inset={a.inset}')
+        return 0
 
     if a.kind == 'portrait':
         n = a.size or PORTRAIT_DEFAULT
