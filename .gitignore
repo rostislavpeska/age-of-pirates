@@ -46,3 +46,6 @@ sandbox/census/samples/bench/*.png
 
 # London census results (saves, screenshots, verdict JSON) are evidence, not repo content
 sandbox/census/samples/london/
+
+# editor regeneration captures (politician dialog / editor / final screenshots) are evidence, not repo content
+sandbox/census/samples/regen/
