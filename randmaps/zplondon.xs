@@ -212,7 +212,7 @@ void quaySegment(float x1 = 0.0, float z1 = 0.0, float x2 = 1.0, float z2 = 1.0,
 	rmBuildArea(street);
 }
 
-// Plain grass countryside behind one bank (Paris), kept off the plateaus.
+// Countryside behind one bank (Paris's area, the italy_grass_dirt mix of the British maps), kept off the plateaus.
 void countryside(string name = "", float z = 0.5, int constraint = -1)
 {
 	int area = rmCreateArea(name);
@@ -221,7 +221,7 @@ void countryside(string name = "", float z = 0.5, int constraint = -1)
 	rmSetAreaCoherence(area, 1.0);
 	rmSetAreaBaseHeight(area, 1.0);
 	rmAddAreaConstraint(area, constraint);
-	rmSetAreaMix(area, "nwt_grass1");
+	rmSetAreaMix(area, "italy_grass_dirt");   // Art/terrain/mix/italy_grass_dirt (user 2026-09-18; was nwt_grass1)
 	rmSetAreaElevationVariation(area, 0.0);
 	rmBuildArea(area);
 }
