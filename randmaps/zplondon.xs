@@ -550,7 +550,7 @@ void main(void)
 	float harbourSZ = zLaneS - rmZTilesToFraction(harbourShoreTiles) + rmZMetersToFraction(hSTopEdgeM);
 
 	// ---- 4. THE RIVER (rect-map rule: river z is read in size_x units -> true z metres / sizeX) ----
-	int riverMain = rmRiverCreate(-1, "ZP Paris River", 4, 4, riverRadius, riverRadius);
+	int riverMain = rmRiverCreate(-1, "ZP London River", 4, 4, riverRadius, riverRadius);   // data/waterbodies2.xml: ZP Paris River's clone with the Thames colours (user 2026-09-18)
 	rmRiverAddWaypoint(riverMain, 0.0, rmXMetersToFraction(rmZFractionToMeters(zRiver)));
 	rmRiverAddWaypoint(riverMain, 1.0, rmXMetersToFraction(rmZFractionToMeters(zRiver)));
 	rmRiverBuild(riverMain);
