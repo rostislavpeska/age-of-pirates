@@ -296,7 +296,7 @@ class TestSideRecords:
 
     def test_strings_continue_the_sequence_and_are_one_line(self):
         s = _read("data/strings/english/stringmods.xml")
-        for i in [i for i in range(503446, 503529) if i != 503450]:  # 503450 was the merc Lord editor name, stripped
+        for i in [i for i in range(503446, 503532) if i != 503450]:  # 503450 was the merc Lord editor name, stripped
             assert re.search(r'<string _locid="%d">[^\n<]+</string>' % i, s), i
         for name in ("Lord Commander", "Lord Lieutenant", "Lord General", "Lifeguard Ironside", "The Grand Remonstrance",
                      "Oliver Cromwell (Commonwealth)", "Lord Inchiquin (Munster Protestants)", "Sir Thomas Myddelton (North Wales)"):
@@ -454,12 +454,11 @@ class TestFlags:
         c = _read("data/civmods.xml")
         m = re.search(r"<civ>\s*<name>Stuart</name>.*?</civ>", c, re.S)
         assert m and "flags" + chr(92) + "zplondon" in m.group(0)
-        assert "zpRevParliament" not in c and "zpRevRoyalist" not in c  # no player-flag overrides (2026-09-19)
+        assert "zpRevParliament" not in c and "zpRevRoyalist" not in c  # the aborted per-side flag civs stay gone
         s = _read("data/strings/english/stringmods.xml")
         assert '<string _locid="503502">City of London</string>' in s and "Commonwealth of England" not in s  # 503503 is a Lord name now
         t = (REPO / "randmaps/zplondon.xs").read_text(encoding="utf-8")
         assert (REPO / "randmaps/zplondon.xs").read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
-        assert 'rmCreateTrigger("Flag ' not in t
         i = t.index('rmCreateTrigger("LondonStartingTechs")'); seg = t[i:i + 2500]
         assert 'rmAddTriggerEffect("Player : Override Civilization for Flag")' in seg and 'rmSetTriggerEffectParam("Civilization", "Stuart")' in seg
         assert 'rmAddTriggerEffect("Player : Override Civilization Name")' in seg and 'rmSetTriggerEffectParam("StringID", "503502")' in seg
@@ -495,3 +494,39 @@ class TestTeamIronsides:
         st = _read("data/strings/english/stringmods.xml")
         assert '<string _locid="503488">Team New Model Army</string>' in st and "Ironside Levy, Team New Model Army" in st
         assert (REPO / "sound/zpnatmercironside_snds.xml").exists()
+
+# ------------------------------------------------------------------- the Commonwealth soft revolution (2026-09-19)
+class TestCommonwealth:
+    CIV, SHADOW = "zpRevCommonwealth", "zpCommonwealthRevolutionShadow"
+
+    def test_flag_civ_is_the_paris_republic_shape_on_the_parliamentarian_flag(self):
+        c = _read("data/civmods.xml")
+        m = re.search(r"<civ>\s*<name>%s</name>.*?</civ>" % self.CIV, c, re.S); b = m.group(0)
+        assert "<displaynameid>503531</displaynameid>" in b and "<revolutionhomecityname>503531</revolutionhomecityname>" in b
+        assert "<displayrevolutionflag>0</displayrevolutionflag>" in b
+        assert "<homecityflagtexture>objects" + chr(92) + "flags" + chr(92) + "zpparlamentarian</homecityflagtexture>" in b
+        for tag, png in (("postgameflagiconwpf", "postgame_flag_parlamentarian.png"), ("homecityflagiconwpf", "Flag_parlamentarian.png"),
+                         ("homecityflagbuttonwpf", "flag_hc_parlamentarian.png")):   # the user's own PNGs (2026-09-19)
+            assert "<%s>resources/images/icons/flags/%s</%s>" % (tag, png, tag) in b, tag
+            assert (REPO / "data/wpfg" / re.search(r"<%s>([^<]+)</%s>" % (tag, tag), b).group(1)).exists(), tag
+
+    def test_message_shadow_next_to_the_french_one(self):
+        s = _read("data/techtreemods.xml"); t = _techs()[self.SHADOW]
+        assert s.index('name="zpFrenchRevolutionShadow"') < s.index('name="%s"' % self.SHADOW) < s.index("<!--TEST TECHS-->")
+        assert _c(t, "dbid") == "41544" and "<status>OBTAINABLE</status>" in t and "<flag>OrPrereqs</flag>" in t and "<flag>Shadow</flag>" in t
+        for card in CARDS:
+            assert '<techstatus status="Active">%s</techstatus>' % card in t, card
+        assert '<effect type="TextEffectOutput" reason="Revolution" selfmsg="503529" playermsg="503530">' in t
+        st = _read("data/strings/english/stringmods.xml")
+        assert '<string _locid="503531">British Commonwealth</string>' in st and "%s has declared" in st
+
+    def test_london_flag_triggers_follow_independence_war(self):
+        t = (REPO / "randmaps/zplondon.xs").read_text(encoding="utf-8")
+        assert (REPO / "randmaps/zplondon.xs").read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
+        assert t.index('rmCreateTrigger("Revolution_MusicEnd" + k)') < t.index('rmTriggerID("Revolution_MusicEnd" + k)')
+        for tag, card in zip(("Cromwell", "Inchiquin", "Myddelton"), CARDS):   # CARDS is a dict keyed by card name
+            i = t.index('rmCreateTrigger("Flag %s" + k)' % tag); seg = t[i:i + 1300]
+            assert '"cTech%s"' % card in seg and '"%s"' % card not in seg   # the trigger wants the XS constant, never the bare name
+            assert 'rmSetTriggerEffectParam("Civilization", "%s")' % self.CIV in seg and 'rmSetTriggerEffectParam("StringID", "503531")' in seg
+            assert 'Revolootin.mp3' in seg and 'rmSetTriggerEffectParamInt("Time", 61000)' in seg and '"UI_Strategywarning"' in seg
+        assert "TransformUnit" not in t and "zpRevolutionFrance" not in t   # soft: no settler transform

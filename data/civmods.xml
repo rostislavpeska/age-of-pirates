@@ -1343,4 +1343,17 @@
     <name>Stuart</name>
     <homecityflagtexture>objects\flags\zplondon</homecityflagtexture>
   </civ>
+  <civ>
+    <name>zpRevCommonwealth</name>
+    <main>0</main>
+    <displaynameid>503531</displaynameid>
+    <displayrevolutionflag>0</displayrevolutionflag>
+    <revolutionhomecityname>503531</revolutionhomecityname>
+    <homecityflagtexture>objects\flags\zpparlamentarian</homecityflagtexture>
+    <postgameflagiconwpf>resources/images/icons/flags/postgame_flag_parlamentarian.png</postgameflagiconwpf>
+    <homecityflagiconwpf>resources/images/icons/flags/Flag_parlamentarian.png</homecityflagiconwpf>
+    <homecityflagbuttonwpf>resources/images/icons/flags/flag_hc_parlamentarian.png</homecityflagbuttonwpf>
+    <visible>0</visible>
+    <visibleineditor>0</visibleineditor>
+  </civ>
 </civsmods>

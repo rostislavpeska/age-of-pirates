@@ -1323,5 +1323,93 @@ void main(void)
 	}
 
 
+
+	// ---- 15. the Commonwealth (Paris / Independence War soft revolution): any Parliament leader turns the player's flag
+	// and name into the British Commonwealth (zpRevCommonwealth carries the Parliamentarian flag), plays the revolution
+	// music and the strategy warning; the message comes from zpCommonwealthRevolutionShadow. No settler transform.
+	for (k=1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("Revolution_MusicEnd" + k);
+		rmAddTriggerCondition("Timer");
+		rmSetTriggerConditionParamInt("Param1", 5);
+		rmAddTriggerEffect("Music Play");
+		rmSetTriggerPriority(1);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(false);
+		rmSetTriggerLoop(false);
+	}
+	for (k=1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("Flag Cromwell" + k);
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID", k);
+		rmSetTriggerConditionParam("TechID", "cTechzpConsulateParliamentCromwell");
+		rmSetTriggerConditionParamInt("Status", 2);
+		rmAddTriggerEffect("Player : Override Civilization for Flag");
+		rmSetTriggerEffectParamInt("Player", k);
+		rmSetTriggerEffectParam("Civilization", "zpRevCommonwealth");
+		rmAddTriggerEffect("Player : Override Civilization Name");
+		rmSetTriggerEffectParamInt("Player", k);
+		rmSetTriggerEffectParam("StringID", "503531");
+		rmAddTriggerEffect("Music Filename");
+		rmSetTriggerEffectParam("Music", "ypack\music\strategy\Revolootin.mp3");
+		rmSetTriggerEffectParamFloat("Duration", 0.5);
+		rmAddTriggerEffect("Sound Timer");
+		rmSetTriggerEffectParamInt("Time", 61000);
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd" + k));
+		rmAddTriggerEffect("Play Soundset");
+		rmSetTriggerEffectParam("Soundset", "UI_Strategywarning");
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		rmCreateTrigger("Flag Inchiquin" + k);
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID", k);
+		rmSetTriggerConditionParam("TechID", "cTechzpConsulateParliamentInchiquin");
+		rmSetTriggerConditionParamInt("Status", 2);
+		rmAddTriggerEffect("Player : Override Civilization for Flag");
+		rmSetTriggerEffectParamInt("Player", k);
+		rmSetTriggerEffectParam("Civilization", "zpRevCommonwealth");
+		rmAddTriggerEffect("Player : Override Civilization Name");
+		rmSetTriggerEffectParamInt("Player", k);
+		rmSetTriggerEffectParam("StringID", "503531");
+		rmAddTriggerEffect("Music Filename");
+		rmSetTriggerEffectParam("Music", "ypack\music\strategy\Revolootin.mp3");
+		rmSetTriggerEffectParamFloat("Duration", 0.5);
+		rmAddTriggerEffect("Sound Timer");
+		rmSetTriggerEffectParamInt("Time", 61000);
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd" + k));
+		rmAddTriggerEffect("Play Soundset");
+		rmSetTriggerEffectParam("Soundset", "UI_Strategywarning");
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		rmCreateTrigger("Flag Myddelton" + k);
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID", k);
+		rmSetTriggerConditionParam("TechID", "cTechzpConsulateParliamentMyddelton");
+		rmSetTriggerConditionParamInt("Status", 2);
+		rmAddTriggerEffect("Player : Override Civilization for Flag");
+		rmSetTriggerEffectParamInt("Player", k);
+		rmSetTriggerEffectParam("Civilization", "zpRevCommonwealth");
+		rmAddTriggerEffect("Player : Override Civilization Name");
+		rmSetTriggerEffectParamInt("Player", k);
+		rmSetTriggerEffectParam("StringID", "503531");
+		rmAddTriggerEffect("Music Filename");
+		rmSetTriggerEffectParam("Music", "ypack\music\strategy\Revolootin.mp3");
+		rmSetTriggerEffectParamFloat("Duration", 0.5);
+		rmAddTriggerEffect("Sound Timer");
+		rmSetTriggerEffectParamInt("Time", 61000);
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Revolution_MusicEnd" + k));
+		rmAddTriggerEffect("Play Soundset");
+		rmSetTriggerEffectParam("Soundset", "UI_Strategywarning");
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
 	rmSetStatusText("",0.99);
 } // END

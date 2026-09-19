@@ -74806,7 +74806,7 @@
     <animfile>buildings\trading_post\europe_outpost_socket_v3.xml</animfile>
     <minimapicon>ui\minimap\asian_native_site</minimapicon>
     <capturedminimapicon>ui\minimap\asian_native_site_c</capturedminimapicon>
-    <portraiticon>resources\art\units\natives\sanscoulottes.png</portraiticon>
+    <portraiticon>resources\art\units\natives\parliament_natives.png</portraiticon>
     <rollovertextid>503498</rollovertextid>
     <shortrollovertextid>503499</shortrollovertextid>
     <legacyhotkeycontext>SocketAccel</legacyhotkeycontext>

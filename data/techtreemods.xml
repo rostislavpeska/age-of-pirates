@@ -519,6 +519,22 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpCommonwealthRevolutionShadow" type="Normal">
+    <dbid>41544</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>OrPrereqs</flag>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">zpConsulateParliamentCromwell</techstatus>
+      <techstatus status="Active">zpConsulateParliamentInchiquin</techstatus>
+      <techstatus status="Active">zpConsulateParliamentMyddelton</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="TextEffectOutput" reason="Revolution" selfmsg="503529" playermsg="503530">
+      </effect>
+    </effects>
+  </tech>
   <tech name="zpSPCPirateRandomShip1Shadow" type="Normal">
     <dbid>40882</dbid>
     <researchpoints>0.0000</researchpoints>
