@@ -130,7 +130,7 @@
     <modifytype>Damage</modifytype>
     <modifymultiplier>1.15</modifymultiplier>
     <modifyrangeuselos>1</modifyrangeuselos>
-    <modelattachment>effects\military_aura\military_aura.xml</modelattachment>
+    <modelattachment>effects\ypack_auras\american_power.xml</modelattachment>
     <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
   </action>
   <action>
@@ -145,7 +145,7 @@
     <modifytype>MaxHP</modifytype>
     <modifymultiplier>1.10</modifymultiplier>
     <modifyrangeuselos>1</modifyrangeuselos>
-    <modelattachment>effects\military_aura\military_aura.xml</modelattachment>
+    <modelattachment>effects\ypack_auras\american_power.xml</modelattachment>
     <modelattachmentbone>bonethatdoesntexist</modelattachmentbone>
   </action>
   <tactic>Melee<action priority="100">BuildingAttack</action>

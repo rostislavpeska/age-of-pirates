@@ -218,6 +218,15 @@ def audit(entries, rep, on_disk_root=None):
         except Exception as ex:
             rep.info.append("git check skipped (%s)" % ex)
 
+    # HARD RULE (2026-09-19): a per-map .mods.xml lives in the repo only - a copy beside a root test map in the
+    # Steam Game\RandMaps folder crashes the game. Not zip content, but the same session that zips also tests.
+    steam_rm = r"C:\Program Files (x86)\Steam\steamapps\common\AoE3DE\Game\RandMaps"
+    if os.path.isdir(steam_rm):
+        for f in sorted(os.listdir(steam_rm)):
+            if f.lower().endswith(".mods.xml"):
+                rep.b("per-map .mods.xml in the Steam Game root - crashes the game, delete it (repo copy only)",
+                      os.path.join(steam_rm, f))
+
 
 def walk_disk(root):
     out = []

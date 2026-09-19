@@ -34,7 +34,7 @@ land bench), the Steam folder's `000zpTestMap.xs` (islands + player areas), and 
 |---|---|---|
 | `<stem>.xs` | the script | repo `game/randmaps/` (shipped, Skirmish) |
 | `<stem>.xml` | lobby identity: `displayNameID` or `displayName`, images, `loadss` | beside the .xs |
-| `<stem>.mods.xml` | optional per-map proto overrides | beside the .xs; it takes its own row in the editor list |
+| `<stem>.mods.xml` | optional per-map proto overrides | beside the .xs **in the repo only** - NEVER a copy in the Steam `Game\RandMaps` root, it crashes the game (2026-09-19) |
 | editor twin | the Scenario Editor reads ONLY the Steam `Game\RandMaps` folder | keep it byte-identical by copy after every edit; different stem is fine (zpcoldwar vs zp_coldwar) |
 | test maps `000_*`, `0000_*` | editor-only benches | Steam `Game\RandMaps`, never the mod folder |
 

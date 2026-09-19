@@ -651,7 +651,7 @@ void main(void)
 	int blockParliament = cityBlock("parliament natives", "EU_Native_Block_Parlam_01");
 	int blockTowerS = cityBlock("tower of london", "EU_SPC_London_Tower_01");
 	int blockTowerN = cityBlock("tower of london north", "EU_SPC_London_Tower_02");   // the user's north-west Tower: red, its capturable flag and guard nugget BAKED
-	int blockTrade = cityBlock("trade block", "EU_SPC_Block_Trade");                  // the 2024 trade block as exported (shared with the Steam Versailles tests); socket faces +z
+	int blockTrade = cityBlock("trade block", "EU_SPC_Block_Trade_02");               // London's variant of the 2024 trade block: units AND terrain turned a quarter (x,z -> z,-x) so the socket faces +x = the road from row 1 (user 2026-09-19; the shared original faces +z)
 	// the Figma's fixed blocks, one per bank: Park, Menagerie (nugget 98), Native Jewish, Factory (nugget 299),
 	// Construction (Paris's "Empty Blocks") at the bridge landing where a random cell sometimes stayed empty
 	int blockPark = cityBlock("park", "EU_House_Block_Park");

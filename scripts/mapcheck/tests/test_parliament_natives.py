@@ -64,6 +64,26 @@ class TestProtos:
             assert n in u, n
             assert _c(u[n], "dbid") == str(i) and ids.count(str(i)) == 1, (n, i)
             assert s.index('name="%s"' % n) < test_at, n
+        # the Lord is a veterancy unit: he lives in the top veterancy section next to the Eclaireur (2026-09-19)
+        assert s.index('name="zpNatEclaireur">') < s.index('name="zpNatLord">') < s.index('name="zpNatHanseaticLegion">')
+
+    def test_lord_veterancy_passive_ability_and_random_names(self):
+        b = _units()[LORD]
+        v = re.search(r"<veterancybonus>.*?</veterancybonus>", b, re.S).group(0)
+        assert re.findall(r'modifytype="(\w+)">([\d.]+)<', v) == [("MaxHP", "1.1500"), ("Damage", "1.1500"), ("MaxHP", "1.2250"), ("Damage", "1.2250"), ("MaxHP", "1.3500"), ("Damage", "1.3500")]
+        assert "<flag>ExperienceUnit</flag>" in b and "<flag>HeroName1</flag>" in b and '<command page="11" column="0">Abilities</command>' in b
+        a = _read("data/abilities/abilitymods.xml")
+        assert re.search(r"<zpnatlord>\s*<ability>dePromotionHpDMG<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>\s*</zpnatlord>", a)
+        r = _read("data/randomnamemods.xml")
+        m = re.search(r"<protounit>zpNatLord<civ>Default((?:<title>\d+</title>)+)</civ></protounit>", r)
+        ids = [int(x) for x in re.findall(r"\d+", m.group(1))]
+        assert ids == list(range(503503, 503528))
+        s = _read("data/strings/english/stringmods.xml")
+        for i in ids:
+            assert re.search(r'<string _locid="%d">[^<]*[A-Z][^<]*</string>' % i, s), i
+        for sid, name in ((503452, "Lord Commander"), (503453, "Lord Lieutenant"), (503454, "Lord General")):
+            assert '<string _locid="%d">%s</string>' % (sid, name) in s, name
+        assert "builds Trading Posts" in re.search(r'<string _locid="503451">([^<]*)</string>', s).group(1)
 
     def test_socket_is_the_stuart_socket_for_the_new_subciv(self):
         u = _units(); b = u[SOCKET]; st = u["zpSPCSocketStuart"]
@@ -225,9 +245,17 @@ class TestTechs:
         t = _techs()
         assert re.search(r'amount2="10\.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCRegalShip" unittype2="%s"' % IRON, t["zpParliamentIronsideLevy"])
         assert "CheckWaterHCGatherPoint" in t["zpParliamentIronsideLevy"]
-        nma = t["zpParliamentNewModelArmy"]
-        assert re.search(r'amount="2\.00" subtype="BuildLimit" relativity="Absolute">\s*<target type="ProtoUnit">%s<' % LORD, nma)
-        assert re.search(r'amount="0\.75" subtype="TrainPoints"[^>]*>\s*<target type="ProtoUnit">%s<' % IRON, nma)
+        nma = t["zpParliamentNewModelArmy"]  # 2026-09-19: the Cataphract embassy pattern, a team tech; no Lord effect
+        assert "<flag>TeamTech</flag>" in nma and LORD not in nma
+        assert re.search(r'amount="5\.00" subtype="BuildLimit" relativity="Absolute">\s*<target type="ProtoUnit">%s<' % IRON, nma)
+        for u in (IRON, "zpNatMercIronside"):
+            assert re.search(r'amount="0\.75" subtype="TrainPoints"[^>]*>\s*<target type="ProtoUnit">%s<' % u, nma)
+            assert re.search(r'amount="1\.20" subtype="Hitpoints"[^>]*>\s*<target type="ProtoUnit">%s<' % u, nma)
+        assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">zpNatMercIronside<', nma)
+        assert 'proto="zpNatMercIronside" page="0" column="137">' + chr(10) + '        <target type="ProtoUnit">NativeEmbassy<' in nma
+        assert '<effect type="CommandRemove" proto="%s">' % IRON + chr(10) + '        <target type="ProtoUnit">NativeEmbassy<' in nma
+        assert 'amount="1.00" subtype="FreeHomeCityUnit" unittype="zpNativeEmbassyWagon"' in nma and 'amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatMercIronside"' in nma
+        assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">NativeEmbassy<', nma)
         assert re.search(r'amount2="12\.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCRegalShip" unittype2="%s"' % BON, t["zpParliamentMunsterLevies"])
         assert re.search(r'amount="5\.00" subtype="BuildLimit" relativity="Absolute">\s*<target type="ProtoUnit">%s<' % BON, t["zpParliamentMunsterLevies"])
         adv = t["zpParliamentAdventurersAct"]
@@ -268,9 +296,9 @@ class TestSideRecords:
 
     def test_strings_continue_the_sequence_and_are_one_line(self):
         s = _read("data/strings/english/stringmods.xml")
-        for i in [i for i in range(503446, 503500) if i != 503450]:  # 503450 was the merc Lord editor name, stripped
+        for i in [i for i in range(503446, 503529) if i != 503450]:  # 503450 was the merc Lord editor name, stripped
             assert re.search(r'<string _locid="%d">[^\n<]+</string>' % i, s), i
-        for name in ("Lord Lieutenant", "Lord General", "Lord Protector", "Lifeguard Ironside", "The Grand Remonstrance",
+        for name in ("Lord Commander", "Lord Lieutenant", "Lord General", "Lifeguard Ironside", "The Grand Remonstrance",
                      "Oliver Cromwell (Commonwealth)", "Lord Inchiquin (Munster Protestants)", "Sir Thomas Myddelton (North Wales)"):
             assert ">%s<" % name in s, name
 
@@ -326,7 +354,7 @@ class TestSideRecords:
             for tag in ("persistent", "nostack", "nostackignorepuid", "modifyrangeuselos"):
                 assert _c(b, tag) == "1", tag
             assert _c(b, "modifytype") == mtype and _c(b, "modifymultiplier") == mult
-            assert _c(b, "modelattachment") == r"effects\military_aura\military_aura.xml"
+            assert _c(b, "modelattachment") == "effects" + chr(92) + "ypack_auras" + chr(92) + "american_power.xml"  # the US General's star ring (2026-09-19)
             assert _c(b, "modelattachmentbone") == "bonethatdoesntexist"
             assert "modifyself" not in b
         tactics = re.findall(r"<tactic>.*?</tactic>", t, re.S)
@@ -339,11 +367,11 @@ class TestSideRecords:
 # ------------------------------------------------------------------- London
 class TestLondon:
     def test_mods_file_barricades_weaker_than_paris_and_the_european_ferry(self):
-        for p in (REPO / "randmaps/zplondon.mods.xml", STEAM / "00000_zplondon.mods.xml"):
-            assert p.exists() and _crlf(p), p
-        a = (REPO / "randmaps/zplondon.mods.xml").read_bytes(); b = (STEAM / "00000_zplondon.mods.xml").read_bytes()
-        assert a == b
-        t = a.decode("utf-8")
+        p = REPO / "randmaps/zplondon.mods.xml"
+        assert p.exists() and _crlf(p), p
+        # HARD RULE (2026-09-19): a .mods.xml lives in the repo only - a root copy crashes the game
+        assert not list(STEAM.glob("*.mods.xml")), "per-map .mods.xml files in the Steam Game root crash the game"
+        t = p.read_bytes().decode("utf-8")
         for w in ("WallConnector", "WallStraight1", "WallStraight2", "WallStraight3", "WallStraight4", "WallStraight5"):
             assert '<unit name="%s">' % w in t, w
         assert t.count("400.0000") == 6 and t.count("550.0000") == 6 and "600.0000" not in t and "800.0000" not in t
@@ -382,7 +410,7 @@ class TestLondon:
     def test_native_blocks_work_as_one_unit_parliament_is_the_users_export(self):
         # Parliament block = the editor export of 2026-09-18 23:25 (select 0 / work 1 as exported); Stuart flipped to 1 / 1
         t = (REPO / "game/randmaps/groupings/EU_Native_Block_Parlam_01.xml").read_text(encoding="utf-8")
-        assert "<workonassingleunit>1</workonassingleunit>" in t and t.count("<unit ") == 141
+        assert "<workonassingleunit>1</workonassingleunit>" in t and t.count("<unit ") == 142  # export of 2026-09-19 12:16
         t = (REPO / "game/randmaps/groupings/EU_Native_Block_Stuart_01.xml").read_text(encoding="utf-8")
         assert "<selectassingleunit>1</selectassingleunit>" in t and "<workonassingleunit>1</workonassingleunit>" in t
         assert ">zpSPCSocketStuart</unit>" in (REPO / "game/randmaps/groupings/EU_Native_Block_Stuart_01.xml").read_text(encoding="utf-8")
@@ -428,7 +456,7 @@ class TestFlags:
         assert m and "flags" + chr(92) + "zplondon" in m.group(0)
         assert "zpRevParliament" not in c and "zpRevRoyalist" not in c  # no player-flag overrides (2026-09-19)
         s = _read("data/strings/english/stringmods.xml")
-        assert '<string _locid="503502">City of London</string>' in s and '_locid="503503"' not in s
+        assert '<string _locid="503502">City of London</string>' in s and "Commonwealth of England" not in s  # 503503 is a Lord name now
         t = (REPO / "randmaps/zplondon.xs").read_text(encoding="utf-8")
         assert (REPO / "randmaps/zplondon.xs").read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
         assert 'rmCreateTrigger("Flag ' not in t
@@ -436,3 +464,34 @@ class TestFlags:
         assert 'rmAddTriggerEffect("Player : Override Civilization for Flag")' in seg and 'rmSetTriggerEffectParam("Civilization", "Stuart")' in seg
         assert 'rmAddTriggerEffect("Player : Override Civilization Name")' in seg and 'rmSetTriggerEffectParam("StringID", "503502")' in seg
         assert seg.count('rmSetTriggerEffectParamInt("Player", 0)') == 2
+
+# ------------------------------------------------------------------- Team New Model Army: the Cataphract embassy chain (2026-09-19)
+class TestTeamIronsides:
+    def test_merc_ironside_is_the_cataphract_merc_shape(self):
+        u = _units(); b, base, cat, mcat = u["zpNatMercIronside"], u[IRON], u["zpNatCataphract"], u["zpNatMercCataphract"]
+        assert _c(b, "dbid") == "21189" and "<subciv>" not in b and "<subciv>zpParliament</subciv>" in base
+        assert _c(b, "sharedbuildlimitunit") == IRON and _c(mcat, "sharedbuildlimitunit") == "zpNatCataphract"
+        for x in (b, base):
+            assert re.search(r"<sharedbuildlimitunittypes>\s*<unittype>%s</unittype>\s*<unittype>zpNatMercIronside</unittype>\s*</sharedbuildlimitunittypes>" % IRON, x)
+            assert "<flag>UseSharedBuildLimit</flag>" in x and _c(x, "buildlimit") == "10"
+        assert "<unittype>MercType1</unittype>" in b and "<unittype>MercType1</unittype>" in mcat and "MercType1" not in base
+        for tag in ("maxhitpoints", "tactics", "animfile", "displaynameid", "cost", "allowedage"):
+            assert _c(b, tag) == _c(base, tag), tag
+        assert _c(b, "editornameid") == "503528"
+
+    def test_embassy_row_civ_block_and_upgrades_follow_the_cataphract(self):
+        s = _read("data/protomods.xml")
+        emb = re.search(r'<unit name="NativeEmbassy">.*?</unit>', s, re.S).group(0)
+        assert '<train row="0" page="0" column="96">zpNatCataphract</train>' in emb and '<train row="0" page="0" column="137">%s</train>' % IRON in emb
+        for col, u in ((138, BON), (139, BOW), (140, LORD)):  # every Parliament unit trains at the Embassy, own column each
+            assert '<train row="0" page="0" column="%d">%s</train>' % (col, u) in emb, u
+        c = _read("data/civmods.xml"); i = c.index("<name>zpParliament</name>"); blk = c[i:c.index("</civ>", i)]
+        assert re.search(r"<multipleblocktrain>\s*<building>NativeEmbassy</building>\s*<multipleblockunit>zpNatMercIronside</multipleblockunit>\s*<units>\s*<unit>%s</unit>\s*</units>\s*<unitcounts>\s*<count>1</count>" % IRON, blk)
+        t = _techs()
+        assert re.search(r'mergemode="add" type="Data" amount="1\.20" subtype="Hitpoints"[^>]*>\s*<target type="ProtoUnit">zpNatMercIronside<', t["DEVeteranNativesShadow"])
+        g = t[GUARD]
+        assert 'proto="zpNatMercIronside" culture="none" newname="503457"' in g and 'proto="zpNatMercIronside" culture="none" newname="503458" reqtech="ImpLegendaryNativesShadow"' in g
+        assert 'mergemode="add" type="SetName" proto="zpNatMercIronside" culture="none" newname="503458"' in t["ImpLegendaryNativesShadow"]
+        st = _read("data/strings/english/stringmods.xml")
+        assert '<string _locid="503488">Team New Model Army</string>' in st and "Ironside Levy, Team New Model Army" in st
+        assert (REPO / "sound/zpnatmercironside_snds.xml").exists()

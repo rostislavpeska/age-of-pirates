@@ -41,12 +41,18 @@ The editor only scans the **Steam install**, never the profile folder:
 C:\Program Files (x86)\Steam\steamapps\common\AoE3DE\Game\RandMaps\
 ```
 
-A map needs its `.xs`; `.xml` and `.mods.xml` come too if the version under
-test has them. Name them all after the same stem (`000_is_crashtest.*`).
+A map needs its `.xs`; the `.xml` comes too if the version under test has one.
+Name them after the same stem (`000_is_crashtest.*`).
+
+**HARD RULE - a `.mods.xml` NEVER goes into the Game root.** A `<stem>.mods.xml`
+beside a root test map crashes the game (2026-09-19, four root copies stripped,
+10 USD). Per-map overrides live ONLY in the repo (`randmaps/<map>.mods.xml`, the
+mod folder is live); the root test copy is the bare `.xs` (+ `.xml`). Never copy,
+mirror or "deploy" a `.mods.xml` to `Game\RandMaps`.
 
 ## Two traps
 
-**A `.mods.xml` occupies its own selector row.** Deploying one shifts every row
+**Any extra file occupies its own selector row.** Deploying one shifts every row
 below it, so `--row 8` can silently select a different map. That is what the
 dropdown screenshot is for — check it whenever the deployed file set changes.
 

@@ -78,7 +78,8 @@
 		<unit variation="12" posx="7.8938" posz="-2.0492" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNatElectorPalaceG</unit>
 		<unit variation="8" posx="3.0855" posz="-0.8780" orientx="0.0004" orienty="-0.0000" orientz="-1.0000">NativeTownObstruction</unit>
 		<unit variation="3" posx="-13.2023" posz="-1.6711" orientx="-1.0000" orienty="-0.0000" orientz="-0.0004">PropsPottedPlants</unit>
-		<unit variation="6" posx="3.2721" posz="-2.0544" orientx="-0.0051" orienty="-0.0000" orientz="-1.0000">zpParliamentFlag</unit>
+		<unit variation="6" posx="0.5269" posz="-9.8029" orientx="-0.0051" orienty="-0.0000" orientz="-1.0000">zpParliamentFlag</unit>
+		<unit variation="6" posx="0.7538" posz="6.0007" orientx="-0.0051" orienty="-0.0000" orientz="-1.0000">zpParliamentFlag</unit>
 		<unit variation="99" posx="-0.0477" posz="-1.9880" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropStatueHomeCity</unit>
 		<unit variation="3" posx="13.8984" posz="-2.5514" orientx="-1.0000" orienty="-0.0000" orientz="-0.0004">PropsPottedPlants</unit>
 		<unit variation="223" posx="-1.1266" posz="0.3812" orientx="1.0000" orienty="0.0000" orientz="0.0006">SPCPathBlock3</unit>

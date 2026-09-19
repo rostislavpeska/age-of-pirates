@@ -49,10 +49,13 @@ an estimate from that ratio.
 ## Deployment protocol
 
 1. **Root twins -> repo folder.** Istanbul is edited in the Game root
-   (`AoE3DE\Game\RandMaps\000_istanbul.xs`, `.mods.xml`); the mod ships
-   `randmaps\zpistanbulb.xs` / `.mods.xml`. Copy root over repo and `cmp` them
-   (identity `.xml` files stay different on purpose - two lobby names). Any other
-   map with a root working copy: same rule.
+   (`AoE3DE\Game\RandMaps\000_istanbul.xs`); the mod ships
+   `randmaps\zpistanbulb.xs` + `randmaps\zpistanbulb.mods.xml`. Copy the root `.xs`
+   over the repo `.xs` and `cmp` them (identity `.xml` files stay different on
+   purpose - two lobby names). Any other map with a root working copy: same rule.
+   **A `.mods.xml` exists in the repo ONLY - never in the Game root; a root copy
+   crashes the game (2026-09-19, four stripped, 10 USD).** The audit fails on any
+   `Game\RandMaps\*.mods.xml`.
 2. **Rebuild every edited XMB twin** in Resource Manager (protomods, techtreemods,
    nuggetmods, stringmods, protounitcommandmods ...). The check flags stale ones.
 2b. **Build the string twins for all fifteen languages:**

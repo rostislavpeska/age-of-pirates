@@ -3451,10 +3451,10 @@
       <string _locid="503447">ZP Socket Parliament</string>
       <string _locid="503448">Lord</string>
       <string _locid="503449">ZP Nat Parliament Lord</string>
-      <string _locid="503451">Parliamentarian nobleman on horseback. Extremely tough hand cavalry that trains Parliamentarian units in the field. Good against artillery and heavy infantry.</string>
-      <string _locid="503452">Lord Lieutenant</string>
-      <string _locid="503453">Lord General</string>
-      <string _locid="503454">Lord Protector</string>
+      <string _locid="503451">Parliamentarian nobleman on horseback. Tough hand cavalry that trains Parliamentarian units in the field, builds Trading Posts to ally with natives and collects treasures. Good against artillery and heavy infantry.</string>
+      <string _locid="503452">Lord Commander</string>
+      <string _locid="503453">Lord Lieutenant</string>
+      <string _locid="503454">Lord General</string>
       <string _locid="503455">Ironside</string>
       <string _locid="503456">ZP Nat Ironside</string>
       <string _locid="503457">Lifeguard Ironside</string>
@@ -3481,15 +3481,15 @@
       <string _locid="503478">The Grand Remonstrance</string>
       <string _locid="503479">Pick your leader of Parliament</string>
       <string _locid="503480">Oliver Cromwell (Commonwealth)</string>
-      <string _locid="503481">Military improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nIronside \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nIronside Levy, New Model Army</string>
+      <string _locid="503481">Military improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nIronside \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nIronside Levy, Team New Model Army</string>
       <string _locid="503482">Lord Inchiquin (Munster Protestants)</string>
       <string _locid="503483">Naval and diplomatic improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBonaght Soldier \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nMunster Levies, Team Adventurers' Act</string>
       <string _locid="503484">Sir Thomas Myddelton (North Wales)</string>
       <string _locid="503485">Economic improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWelsh Longbowman \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nWelsh Drovers, Team New River Company</string>
       <string _locid="503486">Ironside Levy</string>
       <string _locid="503487">Ships a Regal Ship carrying 10 Ironsides.</string>
-      <string _locid="503488">New Model Army</string>
-      <string _locid="503489">Ironsides and Lords gain 20% attack and hitpoints and train 25% faster. Lord build limit +2.</string>
+      <string _locid="503488">Team New Model Army</string>
+      <string _locid="503489">Ironsides gain 20% attack and hitpoints and train 25% faster; Ironside build limit +5. Ships an Embassy Wagon and allows the whole team to train Ironsides from the Native Embassy.</string>
       <string _locid="503490">Munster Levies</string>
       <string _locid="503491">Ships a Regal Ship carrying 12 Bonaght Soldiers. Bonaght build limit +5.</string>
       <string _locid="503492">Team Adventurers' Act</string>
@@ -3503,6 +3503,32 @@
       <string _locid="503500">ZP Parliament Flag</string>
       <string _locid="503501">ZP Stuart Flag</string>
       <string _locid="503502">City of London</string>
+      <string _locid="503503">Sir Thomas Fairfax</string>
+      <string _locid="503504">Robert Devereux, Earl of Essex</string>
+      <string _locid="503505">Edward Montagu, Earl of Manchester</string>
+      <string _locid="503506">Sir William Waller</string>
+      <string _locid="503507">Henry Ireton</string>
+      <string _locid="503508">John Lambert</string>
+      <string _locid="503509">Philip Skippon</string>
+      <string _locid="503510">Sir William Brereton</string>
+      <string _locid="503511">Robert Rich, Earl of Warwick</string>
+      <string _locid="503512">John Hampden</string>
+      <string _locid="503513">Sir Arthur Haselrig</string>
+      <string _locid="503514">Thomas Harrison</string>
+      <string _locid="503515">Charles Fleetwood</string>
+      <string _locid="503516">Edward Massey</string>
+      <string _locid="503517">Ferdinando, Lord Fairfax</string>
+      <string _locid="503518">Robert Greville, Lord Brooke</string>
+      <string _locid="503519">Sir John Meldrum</string>
+      <string _locid="503520">Edmund Ludlow</string>
+      <string _locid="503521">Thomas Pride</string>
+      <string _locid="503522">John Desborough</string>
+      <string _locid="503523">Rowland Laugharne</string>
+      <string _locid="503524">Michael Jones</string>
+      <string _locid="503525">Sir Charles Coote</string>
+      <string _locid="503526">Denzil Holles</string>
+      <string _locid="503527">Sir John Hotham</string>
+      <string _locid="503528">ZP Nat Merc Ironside</string>
       
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

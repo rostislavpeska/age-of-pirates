@@ -13,7 +13,7 @@
 		<unit variation="104" posx="-6.4258" posz="-39.5558" orientx="0.9910" orienty="0.0000" orientz="-0.1336">zpSPCEUHouseProp</unit>
 		<unit variation="0" posx="-7.3984" posz="-37.9706" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="5.9256" posz="-37.7105" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
-		<unit variation="120" posx="5.0733" posz="-38.0446" orientx="-0.9886" orienty="0.0000" orientz="-0.1504">deSPCWaterlooHouseProp</unit>
+		<unit variation="120" posx="4.7940" posz="-38.2078" orientx="-0.9886" orienty="0.0000" orientz="-0.1504">deSPCWaterlooHouseProp</unit>
 		<unit variation="0" posx="4.2037" posz="-37.0955" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
 		<unit variation="208" posx="-3.3831" posz="-40.5978" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="66" posx="-5.4660" posz="-39.2903" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFace</unit>
@@ -52,13 +52,13 @@
 		<unit variation="68" posx="8.4193" posz="-12.6945" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">SPCFortWallLarge</unit>
 		<unit variation="0" posx="-13.0282" posz="-7.2956" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="-10.6710" posz="-6.9315" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
-		<unit variation="220" posx="10.2992" posz="-8.0543" orientx="0.0866" orienty="0.0000" orientz="0.9962">zpSPCEUHouseProp</unit>
+		<unit variation="220" posx="8.5126" posz="-8.7831" orientx="-0.0866" orienty="0.0000" orientz="-0.9962">zpSPCEUHouseProp</unit>
 		<unit variation="0" posx="10.6489" posz="-6.3648" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="8.0286" posz="-6.0963" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="-11.1551" posz="-7.7208" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
 		<unit variation="93" posx="-12.0584" posz="-6.8865" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPROPBuildingMix</unit>
 		<unit variation="165" posx="-5.9298" posz="-8.5920" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
-		<unit variation="166" posx="9.5920" posz="-1.4835" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpSPCCityBuildingMix</unit>
+		<unit variation="166" posx="9.3304" posz="-1.4965" orientx="-1.0000" orienty="0.0000" orientz="0.0006">zpSPCCityBuildingMix</unit>
 		<unit variation="0" posx="10.7306" posz="0.7128" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="8.4907" posz="0.5906" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
 		<unit variation="154" posx="-10.8661" posz="1.5821" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCPortSocket</unit>
@@ -86,7 +86,7 @@
 		<unit variation="0" posx="4.1522" posz="16.5791" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
 		<unit variation="220" posx="-6.6944" posz="17.4092" orientx="0.0862" orienty="0.0000" orientz="0.9963">zpSPCEUHouseProp</unit>
 		<unit variation="0" posx="6.5368" posz="18.3136" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
-		<unit variation="159" posx="5.3667" posz="16.7241" orientx="0.9835" orienty="0.0000" orientz="0.1807">zpSPCEUHouseProp</unit>
+		<unit variation="159" posx="5.6436" posz="16.1043" orientx="0.9835" orienty="0.0000" orientz="0.1807">zpSPCEUHouseProp</unit>
 		<unit variation="28" posx="-5.0057" posz="15.0639" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="229" posx="2.8465" posz="14.5995" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="117" posx="-5.6227" posz="19.1418" orientx="1.0000" orienty="0.0000" orientz="-0.0002">zpBridgeFace</unit>
