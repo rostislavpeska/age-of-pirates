@@ -747,6 +747,26 @@ class TestSovereignOfTheSeas:
         assert "16 Whitecoats" in roll and "up to 20" in roll and "build limit" not in roll
         assert '<string _locid="503534">Sovereign of the Seas</string>' in st and '<string _locid="503548">Merhonour</string>' in st
 
+    def test_royal_burgh(self):
+        """The Scottish land tech at p2 c5: the charter (a Covered Wagon = a free Town Center) plus walls and
+        guns on every Town Center - 6500 -> 9100 hp, above FortFrontier's 9000, cannon 30 -> 75."""
+        T = _techs(); b = T["zpStuartRoyalBurgh"]; s = _read("data/techtreemods.xml")
+        assert _c(b, "dbid") == "41551" and _c(b, "displaynameid") == "503552" and _c(b, "rollovertextid") == "503553"
+        assert "<status>UNOBTAINABLE</status>" in b and ">Fortressize</techstatus>" in b
+        assert '<cost resourcetype="Food">500.0000</cost>' in b and '<cost resourcetype="Gold">500.0000</cost>' in b
+        assert 'subtype="FreeHomeCityUnit" unittype="CoveredWagon"' in b
+        assert re.search(r'amount="1.00" subtype="BuildLimit"[^>]*>\s*<target type="ProtoUnit">TownCenter<', b)
+        for amount, sub in (("1.40", "Hitpoints"), ("2.50", "Damage")):
+            assert re.search(r'amount="%s" subtype="%s"[^>]*>\s*<target type="ProtoUnit">AbstractTownCenter<' % (amount, sub), b), sub
+        assert b.count("<effect ") == 4
+        assert s.index('name="zpStuartRoyalBurgh"') < s.index("<!--TEST TECHS-->")
+        assert '<effect mergemode="add" type="TechStatus" status="obtainable">zpStuartRoyalBurgh</effect>' in T["DENativeStuart"]
+        assert '<effect type="CommandAdd" tech="zpStuartRoyalBurgh" page="2" column="5">' in T["zpStuartExpansion"]
+        st = _read("data/strings/english/stringmods.xml")
+        assert '<string _locid="503552">Royal Burgh</string>' in st
+        roll = re.search(r'<string _locid="503553">([^<]*)</string>', st).group(1)
+        assert "Covered Wagon" in roll and "royal burgh" in roll
+
     def test_expansion_big_button(self):
         T = _techs(); s = _read("data/techtreemods.xml"); b = T["zpStuartExpansion"]
         assert _c(b, "dbid") == "41550" and _c(b, "displaynameid") == "503549" and _c(b, "rollovertextid") == "503550"
@@ -756,7 +776,7 @@ class TestSovereignOfTheSeas:
         big = "resources" + chr(92) + "images" + chr(92) + "icons" + chr(92) + "techs" + chr(92) + "stuartextend_big.png"
         assert "<iconwpf>" + big + "</iconwpf>" in b and "<icontexturecoords>" in b   # the Phanar / Habsburg big-button shape
         assert (REPO / "data/wpfg" / big.replace(chr(92), "/")).exists()
-        assert b.count("<effect ") == 1                                    # nothing but CommandAdds for the new techs
+        assert b.count("<effect ") == 2                                    # nothing but CommandAdds for the new techs
         assert '<effect type="CommandAdd" tech="%s" page="2" column="6">' % self.TECH in b
         assert '<effect mergemode="add" type="TechStatus" status="obtainable">zpStuartExpansion</effect>' in T["DENativeStuart"]
         assert s.index('name ="zpStuartExpansion"') < s.index("<!--TEST TECHS-->")
