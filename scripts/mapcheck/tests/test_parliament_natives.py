@@ -691,8 +691,8 @@ class TestSovereignOfTheSeas:
         assert re.search(r'amount="20.00" subtype="BuildLimit"[^>]*>\s*<target type="ProtoUnit">%s<' % COAT, b)
         assert "Hitpoints" not in b and 'subtype="FreeHomeCityUnit"' not in b
         assert "<flag>CheckWaterHCGatherPoint</flag>" in b          # it ships a warship
-        icon = "resources" + chr(92) + "images" + chr(92) + "icons" + chr(92) + "techs" + chr(92) + "historical_maps" + chr(92) + "rochambeau_expedition.png"
-        assert "<icon>" + icon + "</icon>" in b                    # the Regal Ship icon Lafayette's Rochambeau tech uses
+        icon = "resources" + chr(92) + "images" + chr(92) + "icons" + chr(92) + "techs" + chr(92) + "stuart" + chr(92) + "sovereign_seas.png"
+        assert "<icon>" + icon + "</icon>" in b                    # the crown-and-anchor, forged from the user's art
         assert (REPO / "data/wpfg" / icon.replace(chr(92), "/")).exists()
         assert b.count("<effect ") == 4 and s.index('name="%s"' % self.TECH) < s.index("<!--TEST TECHS-->")
         assert '<effect mergemode="add" type="TechStatus" status="obtainable">%s</effect>' % self.TECH in T["DENativeStuart"]
