@@ -1,7 +1,7 @@
 // ============================================================================
 // zplondon.xs  -  London on the Paris rig (Figma sketch of 2026-09-17)
 // ----------------------------------------------------------------------------
-// The long axis is z (573 m), the Thames runs along x at the map's middle with
+// The long axis is z (573 m + the reserved columns, see 0.), the Thames runs along x at the map's middle with
 // a straight shoreline, the land route runs along z near the x = 1 edge; two
 // block rows behind the road, eight in front, players at both z ends. The
 // banks are mirrored. Editor twin: Steam Game\RandMaps\00000_zplondon.xs.
@@ -408,12 +408,20 @@ void main(void)
 	}
 
 	// Paris frame, long axis on z: 360 m = 6.6 + row 00 + 4 + row 0 + 10.2 + road + 3 + row 1 + 7 x 34 + 6.6
+	// RESERVED COLUMNS (user 2026-09-20): each bank is Paris's four columns deep plus extraColumns more - city floor
+	// and streets, no cells in the placement tables; only the 10.7 fixed blocks sit on them. x is full (the rows),
+	// so the city can only grow along z. The map grows by ONE bank's worth of columns in total, so the countryside
+	// gives up half of the growth: the strip beyond the last column is 108.5 m on Paris's frame and 60.5 m here
+	// (user: "proportionally decrease the countryside"). One column = colPitchTiles (16 tiles) = 32 m.
+	int extraColumns = 3;
+	int extraColumnM = 32;
 	int sizeX = 360;
-	int sizeZ = 573;
+	int baseSizeZ = 573;              // Paris's frame for this player count, before the reserved columns
 	if (cNumberNonGaiaPlayers >=3)
-		sizeZ = 653;
+		baseSizeZ = 653;
 	if (cNumberNonGaiaPlayers >=6)
-		sizeZ = 773;
+		baseSizeZ = 773;
+	int sizeZ = baseSizeZ + extraColumns * extraColumnM;   // ints only: 573 -> 669, 653 -> 749, 773 -> 869
 	rmSetMapSize(sizeX, sizeZ);
 
 	rmSetAllMapReveal(true);
@@ -470,7 +478,7 @@ void main(void)
 	float rowPitchM     = 34.0;    // 30 m block + 4 m street, rows across x
 	int   colFirstTiles = 11;      // wall line -> column 1 centre: Paris's 7 m promenade + half a block (Paris: column 27 tiles off the centre, wall at 16; London had 10 = 5 m, too narrow for pathing and spawns - user 2026-09-18)
 	int   colPitchTiles = 16;      // 30 m block + 2 m street, columns along z
-	int   cityDepthTiles = 67;     // wall line -> column 4's outer edge (11 + 3 x 16 + half a block = 66.5)
+	int   cityDepthTiles = 67 + colPitchTiles * extraColumns;     // wall line -> the LAST column's outer edge (11 + 3 x 16 + half a block = 66.5 for Paris's four; + 16 per reserved column)
 	float promenadePaintM = 4.0;   // Paris's second quay texture: its streets paint stops 4 m short of the water and the river's outerbank city_street_ground shows; London paints that band explicitly
 
 	// T4. FILE FACTS - measured from the grouping exports, never tuned; re-measure when an export changes
@@ -565,6 +573,16 @@ void main(void)
 	float locZn2 = wallN+rmZTilesToFraction(col2);
 	float locZn3 = wallN+rmZTilesToFraction(col3);
 	float locZn4 = wallN+rmZTilesToFraction(col4);
+	// the reserved columns 5-7 (extraColumns): grid locations only - no cityCell, no grouping, the quay paints them
+	int col5 = colFirstTiles + colPitchTiles * 4;
+	int col6 = colFirstTiles + colPitchTiles * 5;
+	int col7 = colFirstTiles + colPitchTiles * 6;
+	float locZs5 = wallS-rmZTilesToFraction(col5);
+	float locZs6 = wallS-rmZTilesToFraction(col6);
+	float locZs7 = wallS-rmZTilesToFraction(col7);
+	float locZn5 = wallN+rmZTilesToFraction(col5);
+	float locZn6 = wallN+rmZTilesToFraction(col6);
+	float locZn7 = wallN+rmZTilesToFraction(col7);
 	float locZs12 = wallS-rmZTilesToFraction(col1+col2)*0.5;
 	float locZn12 = wallN+rmZTilesToFraction(col1+col2)*0.5;
 	// the HARBOURS: two per bank, N1 / S1 at the Tower rows' (7-8) centre, N2 / S2 at the rows 4-5 centre halfway to
@@ -632,8 +650,8 @@ void main(void)
 	// band (Paris's two quay textures), countryside
 	quaySegment(0.0, wallS - rmZTilesToFraction(cityDepthTiles), 1.0, wallS, 0.7, wallS, -1.0, promenadePaintM);
 	quaySegment(0.0, wallN, 1.0, wallN + rmZTilesToFraction(cityDepthTiles), 0.7, wallN, 1.0, promenadePaintM);
-	countryside("countryside S", zRiver-rmZTilesToFraction(130), avoidPlateauShort);
-	countryside("countryside N", zRiver+rmZTilesToFraction(130), avoidPlateauShort);
+	countryside("countryside S", zRiver-rmZTilesToFraction(130 + colPitchTiles * extraColumns / 2), avoidPlateauShort);   // 130 tiles on the 573 frame + half the reserved depth = the same 26.5 m off the edge
+	countryside("countryside N", zRiver+rmZTilesToFraction(130 + colPitchTiles * extraColumns / 2), avoidPlateauShort);
 
 	rmSetStatusText("",0.50);
 
@@ -812,6 +830,23 @@ void main(void)
 		}
 	}
 
+	// ---- 10.7 THE RESERVED COLUMNS' FIXED BLOCKS (user 2026-09-20), placed after every id-sensitive placement of
+	// section 10 (ids are positional - header law): the big park EU_SPC_Park_big (the user's export, 32 x 32 tiles =
+	// a 2 x 2 block) on rows 00-0 x cols 5-6 at the +x end of each bank; behind it, in column 7, one house block on
+	// row 00 and the Food3 mill on row 0 under Paris's resource latch 195. Every other cell of cols 5-7 stays empty.
+	int blockParkBig = cityBlock("park big", "EU_SPC_Park_big");
+	int blockMillFood3 = cityBlock("Mill Food3", "EU_Resource_Block_Food3");
+	float locX000 = (locX00 + locX0) * 0.5;                          // the 2-row centre behind the road (34 + 30 = 64 m, the export's 64 m)
+	float locZs56 = wallS-rmZTilesToFraction(col5+col6)*0.5;         // the 2-column centre: cols 5-6 span the 64 m from column 4's edge
+	float locZn56 = wallN+rmZTilesToFraction(col5+col6)*0.5;
+	rmPlaceGroupingAtLoc(blockParkBig, 0, locX000, locZs56);
+	rmPlaceGroupingAtLoc(blockParkBig, 0, locX000, locZn56);
+	rmPlaceGroupingAtLoc(blockHouse1, 0, locX00, locZs7);
+	rmPlaceGroupingAtLoc(blockHouse1, 0, locX00, locZn7);
+	rmSetNuggetDifficulty(195, 195);
+	rmPlaceGroupingAtLoc(blockMillFood3, 0, locX0, locZs7);
+	rmPlaceGroupingAtLoc(blockMillFood3, 0, locX0, locZn7);
+
 	// ---- 11. RIVERSIDE DECORATIONS (Paris's EU_Riverside, turned for the x-running river: water side +z on the
 	// south bank, -z on the north), centred on the wall line, four per bank along x: before the first harbour,
 	// between the harbours, between the second harbour and the bridge, behind the bridge
@@ -835,46 +870,53 @@ void main(void)
 	rmSetStatusText("",0.80);
 
 	// ---- 12. PLAYERS (Paris's placement transposed onto the z axis) ---------------------------------
+	// z anchored in METRES from the map edge: 36 m for every player count = 24 m beyond the last column's outer edge
+	// (the strip is 60.5 m; Paris's 0.07 / 0.10 fractions of the old frame were 40 / 57 m). Floats only - law 4.
+	float zPlEdgeM = 36.0;
+	float zPlNear = rmZMetersToFraction(zPlEdgeM);
+	float zPlLine = rmZMetersToFraction(zPlEdgeM);
+	float zPlNearFar = 1.0 - zPlNear;
+	float zPlLineFar = 1.0 - zPlLine;
 	if (cNumberTeams == 2){
 		if (spawnSwitch ==0){
 			if (PlayerNum == 2)
 			{
-				rmPlacePlayer(1, 0.35, 0.07);
-				rmPlacePlayer(2, 0.65, 0.93);
+				rmPlacePlayer(1, 0.35, zPlNear);
+				rmPlacePlayer(2, 0.65, zPlNearFar);
 			}
 			if (PlayerNum == 3 || PlayerNum == 4)
 			{
 				rmSetPlacementTeam(0);
-				rmPlacePlayersLine(0.23, 0.1, 0.73, 0.1, 0, 0);
+				rmPlacePlayersLine(0.23, zPlLine, 0.73, zPlLine, 0, 0);
 				rmSetPlacementTeam(1);
-				rmPlacePlayersLine(0.73, 0.9, 0.23, 0.9, 0, 0);
+				rmPlacePlayersLine(0.73, zPlLineFar, 0.23, zPlLineFar, 0, 0);
 			}
 			rmSetPlacementTeam(0);
-			rmPlacePlayersLine(0.10, 0.10, 0.75, 0.10, 0, 0);
+			rmPlacePlayersLine(0.10, zPlLine, 0.75, zPlLine, 0, 0);
 			rmSetPlacementTeam(1);
-			rmPlacePlayersLine(0.90, 0.90, 0.25, 0.90, 0, 0);
+			rmPlacePlayersLine(0.90, zPlLineFar, 0.25, zPlLineFar, 0, 0);
 		}
 		else{
 			if (PlayerNum == 2)
 			{
-				rmPlacePlayer(2, 0.35, 0.07);
-				rmPlacePlayer(1, 0.65, 0.93);
+				rmPlacePlayer(2, 0.35, zPlNear);
+				rmPlacePlayer(1, 0.65, zPlNearFar);
 			}
 			if (PlayerNum == 3 || PlayerNum == 4)
 			{
 				rmSetPlacementTeam(1);
-				rmPlacePlayersLine(0.23, 0.1, 0.73, 0.1, 0, 0);
+				rmPlacePlayersLine(0.23, zPlLine, 0.73, zPlLine, 0, 0);
 				rmSetPlacementTeam(0);
-				rmPlacePlayersLine(0.73, 0.9, 0.23, 0.9, 0, 0);
+				rmPlacePlayersLine(0.73, zPlLineFar, 0.23, zPlLineFar, 0, 0);
 			}
 			rmSetPlacementTeam(1);
-			rmPlacePlayersLine(0.10, 0.10, 0.75, 0.10, 0, 0);
+			rmPlacePlayersLine(0.10, zPlLine, 0.75, zPlLine, 0, 0);
 			rmSetPlacementTeam(0);
-			rmPlacePlayersLine(0.90, 0.90, 0.25, 0.90, 0, 0);
+			rmPlacePlayersLine(0.90, zPlLineFar, 0.25, zPlLineFar, 0, 0);
 		}
 	}
 	else{
-		rmPlacePlayersLine(0.10, 0.10, 0.75, 0.10, 0, 0);
+		rmPlacePlayersLine(0.10, zPlLine, 0.75, zPlLine, 0, 0);
 	}
 
 	int playerStart = rmCreateStartingUnitsObjectDef(5.0);
