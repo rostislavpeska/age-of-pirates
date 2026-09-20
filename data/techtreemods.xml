@@ -38641,7 +38641,7 @@
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\dance-pirates.png</icon>
     <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
-    <iconwpf>resources\images\icons\techs\kingdom_bohemia_big.png</iconwpf>
+    <iconwpf>resources\images\icons\techs\stuartextend_big.png</iconwpf>
     <cost resourcetype ="Food">250.0000</cost>
     <cost resourcetype ="Wood">250.0000</cost>
     <cost resourcetype ="Gold">250.0000</cost>

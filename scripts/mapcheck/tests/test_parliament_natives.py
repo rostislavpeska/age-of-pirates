@@ -711,7 +711,9 @@ class TestSovereignOfTheSeas:
         assert "<status>UNOBTAINABLE</status>" in b and ">Fortressize</techstatus>" in b
         for flag in ("YPNativeImprovement", "CountsTowardEconomicScore", "NativeDance"):
             assert "<flag>%s</flag>" % flag in b, flag
-        assert "<iconwpf>" in b and "<icontexturecoords>" in b            # the Phanar / Habsburg big-button shape
+        big = "resources" + chr(92) + "images" + chr(92) + "icons" + chr(92) + "techs" + chr(92) + "stuartextend_big.png"
+        assert "<iconwpf>" + big + "</iconwpf>" in b and "<icontexturecoords>" in b   # the Phanar / Habsburg big-button shape
+        assert (REPO / "data/wpfg" / big.replace(chr(92), "/")).exists()
         assert b.count("<effect ") == 1                                    # nothing but CommandAdds for the new techs
         assert '<effect type="CommandAdd" tech="%s" page="2" column="6">' % self.TECH in b
         assert '<effect mergemode="add" type="TechStatus" status="obtainable">zpStuartExpansion</effect>' in T["DENativeStuart"]
