@@ -677,13 +677,14 @@ void main(void)
 	int blockJewish = cityBlock("jewish natives", "EU_Natives_Block_Jewish");
 	int blockFactory = cityBlock("factory", "EU_Resource_Block_All1");
 	int blockConstruction = cityBlock("Construction", "EU_SPC_Block_Constr");
-	// Paris's resource buildings by zone: Centre = Market, Bank, Embassy; Outer = Gold Smelter; Suburbs = Mill (Paris's
-	// Food1, in the Destilery's place - user 2026-09-18), Warehouse; Paris's Forester stays out of the city
+	// Paris's resource buildings by zone: Centre = Market, Bank, Embassy; Outer = Gold Smelter; Suburbs = the Cherry
+	// Orchard block (Food5 = Paris's Food2 with its Vineyards as Cherry Orchards - user 2026-09-21; it replaced Paris's
+	// Food1 mill, which had taken the Destilery's place on 2026-09-18), Warehouse; Paris's Forester stays out of the city
 	int blockMarket = cityBlock("market", "EU_Resource_Block_All2");
 	int blockBank = cityBlock("bank", "EU_Resource_Block_Gold1");
 	int blockEmbassy = cityBlock("Native Embassy", "EU_House_Block_Embassy");
 	int blockGoldSmelter = cityBlock("Gold Smelter", "EU_Resource_Block_Gold2");
-	int blockMill = cityBlock("Mill", "EU_Resource_Block_Food1");
+	int blockMill = cityBlock("Cherry Orchard", "EU_Resource_Block_Food5");
 	int blockWarehouse = cityBlock("Warehouse", "EU_Resource_Block_Wood1");
 	// fillers: the Academy (nuggetmods zpNuggetAcademyLondon 604) and Paris's two treasure blocks (London's gallows, 606)
 	int blockAcademy = cityBlock("Academy", "EU_House_Block_Academy");
