@@ -63,6 +63,20 @@ class TestHarpoonerStats:
                           ("AbstractNativeWarrior", "2.500000"), ("AbstractPet", "4.000000")):
             assert b.count('<damagebonus type="%s">%s</damagebonus>' % (kept, val)) == 7, kept
 
+    def test_merc_twin_follows_the_merc_convention(self):
+        """vanilla deNatMercInuitHunter / deNatMercClansman and the mod's zpNatMercIronside all differ from their
+        parent by exactly: id, dbid, editornameid, no <subciv>, and a trailing <unittype>MercType1</unittype>."""
+        s = _read("data/protomods.xml")
+        a = re.search(r'<unit id="\d+" name="%s">.*?</unit>' % HARP, s, re.S).group(0)
+        b = re.search(r'<unit id="\d+" name="%s">.*?</unit>' % MERC, s, re.S).group(0)
+        assert b.count("<unittype>MercType1</unittype>") == 1 and "MercType1" not in a
+
+        def norm(block, extra):
+            skip = ("<dbid>", "<editornameid>", "<unit id=") + extra
+            return [l for l in block.split(chr(10)) if not any(s in l for s in skip)]
+
+        assert norm(a, ("<subciv>",)) == norm(b, ("MercType1",))
+
     def test_merc_twin_has_its_own_pool(self):
         m = _unit(MERC)
         assert m and m.group(1) == "21192"

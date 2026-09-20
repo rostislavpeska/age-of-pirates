@@ -75800,6 +75800,7 @@
     <unittype>Military</unittype>
     <unittype>AbstractRifleman</unittype>
     <unittype>AbstractSkirmisher</unittype>
+    <unittype>MercType1</unittype>
     <flag>CollidesWithProjectiles</flag>
     <flag>ApplyHandicapTraining</flag>
     <flag>CorpseDecays</flag>
