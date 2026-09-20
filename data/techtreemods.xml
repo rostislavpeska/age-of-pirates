@@ -38717,6 +38717,18 @@
       <effect type="Data" amount="2.50" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">AbstractTownCenter</target>
       </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCivilWarCommandery</target>
+      </effect>
+      <effect type="Data" amount="2.50" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCivilWarCommandery</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCivilWarCommanderyCon</target>
+      </effect>
+      <effect type="Data" amount="2.50" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCCivilWarCommanderyCon</target>
+      </effect>
     </effects>
   </tech>
 <!--TEST TECHS-->
