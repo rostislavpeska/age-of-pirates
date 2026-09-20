@@ -9629,8 +9629,6 @@
       </effect>
       <effect type="TransformUnit" toprotoid="zpNatMercInuitHarpooner" fromprotoid="deNatMercInuitHunter">
       </effect>
-      <effect type="TechStatus" status="unobtainable">zpInuitHunterShipments</effect>
-      <effect type="TechStatus" status="obtainable">zpInuitHarpoonerShipments</effect>
     </effects>
 	</tech>
   <tech name="zpInuitFeeders" type="Normal">
@@ -36095,7 +36093,6 @@
       <effect mergemode="add" type="TechStatus" status="obtainable">zpInuitUmiaks</effect>
       <effect mergemode="add" type="TechStatus" status="obtainable">zpInuitFeeders</effect>
       <effect mergemode="add" type="TechStatus" status="obtainable">zpNatInuitArcticAcclimation</effect>
-      <effect mergemode="add" type="TechStatus" status="obtainable">zpInuitHunterShipments</effect>
       <effect mergemode="add" type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatMercInuitHarpooner</target>
       </effect>
@@ -38659,55 +38656,6 @@
       <effect type="CommandAdd" tech="zpStuartSovereignSeas" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-    </effects>
-  </tech>
-  <tech name="zpInuitHunterShipments" type="Normal">
-    <dbid>41551</dbid>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-  </tech>
-  <tech name="zpInuitHarpoonerShipments" type="Normal">
-    <dbid>41552</dbid>
-    <status>UNOBTAINABLE</status>
-    <flag>Shadow</flag>
-  </tech>
-  <tech name="DENativeTreatyInuit">
-    <effects>
-      <effect tech="zpInuitHunterShipments" type="Data" amount="5.00" subtype="FreeHomeCityUnitIfTechObtainable" unittype="deNatInuitHunter" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect tech="zpInuitHarpoonerShipments" type="Data" amount="5.00" subtype="FreeHomeCityUnitIfTechObtainable" unittype="zpNatInuitHarpooner" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-    </effects>
-  </tech>
-  <tech name="DEIndianFriendshipInuit">
-    <effects>
-      <effect tech="zpInuitHunterShipments" type="Data" amount="10.00" subtype="FreeHomeCityUnitIfTechObtainable" unittype="deNatInuitHunter" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect tech="zpInuitHarpoonerShipments" type="Data" amount="10.00" subtype="FreeHomeCityUnitIfTechObtainable" unittype="zpNatInuitHarpooner" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="TechStatus" status="active">DEWarriorSocietyInuit</effect>
-      <effect type="TechStatus" status="active">DEChampionInuit</effect>
-    </effects>
-  </tech>
-  <tech name="DEHCIniuitAllies1">
-    <effects>
-      <effect tech="zpInuitHunterShipments" type="Data" amount="9.00" subtype="FreeHomeCityUnitIfTechObtainable" unittype="deNatMercInuitHunter" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect tech="zpInuitHarpoonerShipments" type="Data" amount="9.00" subtype="FreeHomeCityUnitIfTechObtainable" unittype="zpNatMercInuitHarpooner" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="TextOutputTechName">110130</effect>
     </effects>
   </tech>
   <tech name="DEWarriorSocietyInuit">

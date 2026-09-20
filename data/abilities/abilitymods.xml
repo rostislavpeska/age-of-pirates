@@ -471,4 +471,10 @@
   <zpnatlord>
     <ability>dePromotionHpDMG<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
   </zpnatlord>
+  <zpnatinuitharpooner>
+    <ability>dePromotionRange<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatinuitharpooner>
+  <zpnatmercinuitharpooner>
+    <ability>dePromotionRange<alwaysdisabledingrid>true</alwaysdisabledingrid><forceshowrollover>true</forceshowrollover></ability>
+  </zpnatmercinuitharpooner>
 </abilitymods>
