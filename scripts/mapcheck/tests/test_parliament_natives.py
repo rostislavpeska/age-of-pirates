@@ -671,6 +671,9 @@ class TestSovereignOfTheSeas:
         assert 'subtype="FreeHomeCityUnit" unittype="%s"' % self.SHIP in b
         assert 'amount="1.00" subtype="BuildLimit"' in b and 'amount="1.20" subtype="Hitpoints"' in b
         assert "<flag>CheckWaterHCGatherPoint</flag>" in b          # it ships a warship
+        icon = "resources" + chr(92) + "images" + chr(92) + "icons" + chr(92) + "techs" + chr(92) + "historical_maps" + chr(92) + "rochambeau_expedition.png"
+        assert "<icon>" + icon + "</icon>" in b                    # the Regal Ship icon Lafayette's Rochambeau tech uses
+        assert (REPO / "data/wpfg" / icon.replace(chr(92), "/")).exists()
         assert b.count("<effect ") == 3 and s.index('name="%s"' % self.TECH) < s.index("<!--TEST TECHS-->")
         assert '<effect mergemode="add" type="TechStatus" status="obtainable">%s</effect>' % self.TECH in T["DENativeStuart"]
 

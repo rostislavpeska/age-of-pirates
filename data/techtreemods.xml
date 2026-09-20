@@ -38613,7 +38613,7 @@
     <cost resourcetype="Gold">600.0000</cost>
     <researchpoints>45.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\imperial_navy\imperial_navy.png</icon>
+    <icon>resources\images\icons\techs\historical_maps\rochambeau_expedition.png</icon>
     <rollovertextid>503533</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
