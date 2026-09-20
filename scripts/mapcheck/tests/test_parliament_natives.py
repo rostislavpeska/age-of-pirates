@@ -682,13 +682,19 @@ class TestSovereignOfTheSeas:
         assert "<status>UNOBTAINABLE</status>" in b and ">Industrialize</techstatus>" in b
         assert "<flag>YPNativeImprovement</flag>" in b and "<flag>CountsTowardMilitaryScore</flag>" in b
         assert '<cost resourcetype="Wood">800.0000</cost>' in b and '<cost resourcetype="Gold">600.0000</cost>' in b
-        assert 'subtype="FreeHomeCityUnit" unittype="%s"' % self.SHIP in b
-        assert 'amount="1.00" subtype="BuildLimit"' in b and 'amount="1.20" subtype="Hitpoints"' in b
+        COAT = "deSPCHMWhitecoat"
+        # the flagship arrives loaded and becomes where more Whitecoats are raised
+        assert 'amount2="16.00" subtype="FreeHomeCityUnitShipped" unittype="%s" unittype2="%s"' % (self.SHIP, COAT) in b
+        assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">%s<' % COAT, b)
+        # ships train land units on page 0 (Fluyt / Galleon / Corsair Galley); page 12 is for buildings
+        assert '<effect type="CommandAdd" proto="%s" page="0" column="1">' % COAT in b
+        assert re.search(r'amount="20.00" subtype="BuildLimit"[^>]*>\s*<target type="ProtoUnit">%s<' % COAT, b)
+        assert "Hitpoints" not in b and 'subtype="FreeHomeCityUnit"' not in b
         assert "<flag>CheckWaterHCGatherPoint</flag>" in b          # it ships a warship
         icon = "resources" + chr(92) + "images" + chr(92) + "icons" + chr(92) + "techs" + chr(92) + "historical_maps" + chr(92) + "rochambeau_expedition.png"
         assert "<icon>" + icon + "</icon>" in b                    # the Regal Ship icon Lafayette's Rochambeau tech uses
         assert (REPO / "data/wpfg" / icon.replace(chr(92), "/")).exists()
-        assert b.count("<effect ") == 3 and s.index('name="%s"' % self.TECH) < s.index("<!--TEST TECHS-->")
+        assert b.count("<effect ") == 4 and s.index('name="%s"' % self.TECH) < s.index("<!--TEST TECHS-->")
         assert '<effect mergemode="add" type="TechStatus" status="obtainable">%s</effect>' % self.TECH in T["DENativeStuart"]
 
     def test_voices_flip_to_english_on_the_tech(self):
@@ -717,6 +723,8 @@ class TestSovereignOfTheSeas:
         assert "<title>50359</title>" in line[0].split("<civ>French")[1].split("</civ>")[0]  # vanilla Frigate pools, per civ
         st = _read("data/strings/english/stringmods.xml")
         assert '<string _locid="503532">Sovereign of the Seas</string>' in st
+        roll = re.search(r'<string _locid="503533">([^<]*)</string>', st).group(1)
+        assert "16 Whitecoats" in roll and "up to 20" in roll and "build limit" not in roll
         assert '<string _locid="503534">Sovereign of the Seas</string>' in st and '<string _locid="503548">Merhonour</string>' in st
 
     def test_expansion_big_button(self):
