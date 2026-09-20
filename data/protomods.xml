@@ -75709,8 +75709,8 @@
     <animfile>units\naval\ostinder\ostinder_merchant.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\units\naval\frigate\frigate_icon.png</icon>
-    <portraiticon>resources\art\units\naval\frigate\frigate_icon_portrait.png</portraiticon>
+    <icon>resources\art\units\trade\zptradefluyt_unit_icon.png</icon>
+    <portraiticon>resources\art\units\trade\trade_fluyt_portrait.png</portraiticon>
     <rollovertextid>503314</rollovertextid>
     <shortrollovertextid>503314</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>
@@ -75823,8 +75823,8 @@
     <animfile>units\naval\vasa_galleon\vasa_galleon.xml</animfile>
     <impacttype>Wood</impacttype>
     <physicsinfo>house</physicsinfo>
-    <icon>resources\art\units\naval\frigate\frigate_icon.png</icon>
-    <portraiticon>resources\art\units\naval\frigate\frigate_icon_portrait.png</portraiticon>
+    <icon>resources\art\units\naval\spc\regal_ship_icon.png</icon>
+    <portraiticon>resources\art\units\naval\spc\regal_ship.png</portraiticon>
     <rollovertextid>503310</rollovertextid>
     <shortrollovertextid>503311</shortrollovertextid>
     <legacyhotkeycontext>BuildAccel</legacyhotkeycontext>

@@ -615,6 +615,13 @@ class TestArmedMerchantman:
         m = re.search(r'<unit id="%s" name="%s">.*?</unit>' % (self.UID, self.PROTO), s, re.S)
         assert m and m.start() < s.index("<!--TEST AND TEMPORARY CONTENT-->")
         b = m.group(0)
+        BS = chr(92)
+        icon = "resources" + BS + "art" + BS + "units" + BS + "trade" + BS + "zptradefluyt_unit_icon.png"
+        assert _c(b, "icon") == icon and (REPO / "data/wpfg" / icon.replace(BS, "/")).exists()
+        # the portrait is the vanilla trade fluyt's, referenced from the archive - never copied in
+        assert _c(b, "portraiticon") == "resources" + BS + "art" + BS + "units" + BS + "trade" + BS + "trade_fluyt_portrait.png"
+        assert not (REPO / "data/wpfg/resources/art/units/trade/trade_fluyt_portrait.png").exists()
+        assert "frigate_icon" not in b
         assert _c(b, "dbid") == self.UID and _c(b, "displaynameid") == "503312" and _c(b, "rollovertextid") == "503314"
         assert _c(b, "animfile") == "units" + self.BS + "naval" + self.BS + "ostinder" + self.BS + "ostinder_merchant.xml"
         assert _c(b, "initialhitpoints") == "2100.0000" and _c(b, "buildlimit") == "3"
@@ -660,6 +667,13 @@ class TestSovereignOfTheSeas:
         m = re.search(r'<unit id="%s" name="%s">.*?</unit>' % (self.UID, self.SHIP), s, re.S)
         assert m and m.start() < s.index("<!--TEST AND TEMPORARY CONTENT-->")
         assert _c(m.group(0), "dbid") == self.UID and _c(m.group(0), "buildlimit") == "3"
+        b = m.group(0)
+        BS = chr(92)
+        icon = "resources" + BS + "art" + BS + "units" + BS + "naval" + BS + "spc" + BS + "regal_ship_icon.png"
+        port = "resources" + BS + "art" + BS + "units" + BS + "naval" + BS + "spc" + BS + "regal_ship.png"
+        assert _c(b, "icon") == icon and _c(b, "portraiticon") == port and "frigate_icon" not in b
+        for f in (icon, port):
+            assert (REPO / "data/wpfg" / f.replace(BS, "/")).exists(), f
         assert s.count('name="%s"' % self.SHIP) == 1
 
     def test_the_tech(self):
