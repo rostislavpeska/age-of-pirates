@@ -759,6 +759,8 @@ class TestSovereignOfTheSeas:
         for amount, sub in (("1.40", "Hitpoints"), ("2.50", "Damage")):
             assert re.search(r'amount="%s" subtype="%s"[^>]*>\s*<target type="ProtoUnit">AbstractTownCenter<' % (amount, sub), b), sub
         assert b.count("<effect ") == 4
+        icon = "resources" + chr(92) + "images" + chr(92) + "icons" + chr(92) + "techs" + chr(92) + "stuart" + chr(92) + "royal_burgh.png"
+        assert "<icon>" + icon + "</icon>" in b and (REPO / "data/wpfg" / icon.replace(chr(92), "/")).exists()
         assert s.index('name="zpStuartRoyalBurgh"') < s.index("<!--TEST TECHS-->")
         assert '<effect mergemode="add" type="TechStatus" status="obtainable">zpStuartRoyalBurgh</effect>' in T["DENativeStuart"]
         assert '<effect type="CommandAdd" tech="zpStuartRoyalBurgh" page="2" column="5">' in T["zpStuartExpansion"]

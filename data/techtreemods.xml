@@ -38696,7 +38696,7 @@
     <cost resourcetype="Gold">500.0000</cost>
     <researchpoints>40.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\images\icons\techs\maltese_fort.png</icon>
+    <icon>resources\images\icons\techs\stuart\royal_burgh.png</icon>
     <rollovertextid>503553</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
