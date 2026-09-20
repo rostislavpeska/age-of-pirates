@@ -114,6 +114,23 @@ class TestHarpoonerStats:
         assert '<train row="0" page="0" column="3">%s</train>' % HARP not in s   # no longer shares the Husky's cell
         assert 'page="0" column="1"' in _tech("zpIncaTamboShadowHarpooner")      # the Tambo relocation follows
 
+    def test_it_wears_the_hunter_s_model_and_carries_no_copy_of_it(self):
+        """Same man, better weapon: the animfile uses the vanilla inuit_sled_rider that deNatInuitHunter uses,
+        so the mod's own mesh, material and 699 KB BaseColor are gone. harpooner.gr2 and harpooner_mata_*.ddt
+        stay - the war canoe references them."""
+        art = REPO / "art/units/infantry_ranged/inuit_harpooner"
+        b = (art / "zpinuit_harpooner.xml").read_bytes()
+        assert b.count(b"\r\n") == b.count(b"\n") > 0
+        s = b.decode("utf-8")
+        BS = chr(92)
+        assert "<file>units%snatives%seuropeans%sinuit_sled%sinuit_sled_rider</file>" % (BS, BS, BS, BS) in s
+        assert "inuit_harpooner%sinuit_harpooner" % BS not in s
+        assert "units%sspc%soutlaws%sharpoon" % (BS, BS, BS) in s          # the weapon that makes it a Harpooner
+        for gone in ("inuit_harpooner.gr2", "inuit_harpooner.material", "textures/inuit_harpooner_mata_BaseColor.ddt"):
+            assert not (art / gone).exists(), gone
+        for kept in ("harpooner.gr2", "harpooner.material", "textures/harpooner_mata_BaseColor.ddt"):
+            assert (art / kept).exists(), kept                             # the war canoe's rowers use these
+
     def test_stand_ground_exists(self):
         p = REPO / "data/tactics/zpharpooner.tactics"
         b = p.read_bytes()
