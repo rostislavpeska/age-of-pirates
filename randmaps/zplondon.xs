@@ -1006,6 +1006,23 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 
+	// 14.1a EXTENDED HOUSE OF STUART (zpistanbulb.xs "ExtendedPhanar"): the extension sleeps in the data until a map flips
+	// cTechzpExtendedStuart - it drops Highland Charge to a small button at p0 c4 (zpNatStuartHighlandChargeSmall). Always on
+	// London, every player. Trigger name without spaces.
+	for (k=1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("ExtendedStuart" + k);
+		rmAddTriggerCondition("Always");
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpExtendedStuart");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
 	// 14.1b the balance / returner family (zpparis.xs "NATIVE POLITICIANS", map-politician-triggers Rule 0): every
 	// switcher grants cTechzpBigButtonResearchDecrease so its big button researches instantly - Cheat Returner hands
 	// the cost back 10 ms later; the two Italian triggers repay the villager / gondola shipments the faction big

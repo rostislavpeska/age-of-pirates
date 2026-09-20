@@ -681,4 +681,22 @@
     <placement forceonmap="1">LOSDontCare</placement>
     <allowduringnorush>1</allowduringnorush>
   </power>
+  <power name="zpNatPowerHighlandCharge" type="GeneralEffect">
+    <displaynameid>130625</displaynameid>
+    <rolloverid>130787</rolloverid>
+    <icon>resources\images\icons\abilities\ability_highland_charge.png</icon>
+    <minimapeventtime sendalertto="none">1</minimapeventtime>
+    <activetime>20</activetime>
+    <effect type="Damage" relativity="BasePercent" amount="1.30">
+      <target type="ProtoUnit">AbstractHandInfantry</target>
+    </effect>
+    <effect type="CannotSnare">
+      <target type="ProtoUnit">AbstractHandInfantry</target>
+    </effect>
+    <messagealertplayerrelation>none</messagealertplayerrelation>
+    <placement forceonmap="1" ally="">unit</placement>
+    <allowduringnorush>1</allowduringnorush>
+    <alwaysaddtoplayer>1</alwaysaddtoplayer>
+    <soundset type="StartSound" listenertype="Caster">DENatPowerStuart</soundset>
+  </power>
 </powermods>

@@ -1,25 +1,633 @@
-<?xml version="1.0" encoding="utf-8"?>
 <protounitsounddef>
   <protounit name="zpSPCRegalShip">
     <soundtype name="Select">
-      <soundset name="FrenchFrigateSelect">
-      </soundset>
+      <civlogic>
+        <choice name="Nature" />
+        <choice name="French">
+          <techlogic>
+            <choice name="none">
+              <soundset name="FrenchFrigateSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="British">
+          <techlogic>
+            <choice name="none">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Russians">
+          <techlogic>
+            <choice name="none">
+              <soundset name="RussianFrigateSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Ottomans">
+          <techlogic>
+            <choice name="none">
+              <soundset name="OttomanFrigateSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Dutch">
+          <techlogic>
+            <choice name="none">
+              <soundset name="DutchFrigateSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Spanish">
+          <techlogic>
+            <choice name="none">
+              <soundset name="SpanishFrigateSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Portuguese">
+          <techlogic>
+            <choice name="none">
+              <soundset name="PortugueseFrigateSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Germans">
+          <techlogic>
+            <choice name="none">
+              <soundset name="GermanFrigateSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Aztecs" />
+        <choice name="Incas" />
+        <choice name="Maya" />
+        <choice name="Seminoles" />
+        <choice name="Caribs" />
+        <choice name="Cherokee" />
+        <choice name="Iroquois" />
+        <choice name="Cree" />
+        <choice name="Lakota" />
+        <choice name="Comanche" />
+        <choice name="Nootka" />
+        <choice name="Tupi" />
+        <choice name="SPCAct3">
+          <techlogic>
+            <choice name="none">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="SPCAct2">
+          <techlogic>
+            <choice name="none">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="XPIroquois">
+          <techlogic>
+            <choice name="none">
+              <soundset name="IroquoisCanoeSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="XPSioux">
+          <techlogic>
+            <choice name="none">
+              <soundset name="SiouxCanoeSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="XPAztec">
+          <techlogic>
+            <choice name="none">
+              <soundset name="AztecWarCanoeSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="XPSPC">
+          <techlogic>
+            <choice name="none">
+              <soundset name="FrenchFrigateSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Japanese">
+          <techlogic>
+            <choice name="none">
+              <soundset name="JapaneseShipsSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Chinese">
+          <techlogic>
+            <choice name="none">
+              <soundset name="ChineseShipsSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Indians">
+          <techlogic>
+            <choice name="none">
+              <soundset name="IndianShipsSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="SPCJapanese">
+          <techlogic>
+            <choice name="none">
+              <soundset name="JapaneseShipsSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="SPCChinese">
+          <techlogic>
+            <choice name="none">
+              <soundset name="ChineseShipsSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="SPCIndians">
+          <techlogic>
+            <choice name="none">
+              <soundset name="IndianShipsSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="DESwedish">
+          <techlogic>
+            <choice name="none">
+              <soundset name="DESwedishFrigateSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="DEAmericans">
+          <techlogic>
+            <choice name="none">
+              <soundset name="DEAmericanFrigateSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="DEHausa">
+          <techlogic>
+            <choice name="none">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Pirate">
+          <techlogic>
+            <choice name="none">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="DEMexicans">
+          <techlogic>
+            <choice name="none">
+              <soundset name="DEMexicanFrigateSelect" />
+            </choice>
+            <choice name="DEHCREVMXTexasNavy">
+              <soundset name="DEAmericanFrigateSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="DEItalians">
+          <techlogic>
+            <choice name="none">
+              <soundset name="DEItalianCulverinSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="DEMaltese">
+          <techlogic>
+            <choice name="none">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="DEPolish">
+          <techlogic>
+            <choice name="none">
+              <soundset name="PolishHeavyMilitarySelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="DEDanish">
+          <techlogic>
+            <choice name="none">
+              <soundset name="DanishHeavyMilitarySelect" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateSelect" />
+            </choice>
+          </techlogic>
+        </choice>
+      </civlogic>
     </soundtype>
     <soundtype name="Death">
-      <soundset name="ShipDeath">
-      </soundset>
+      <soundset name="ShipDeath" />
     </soundtype>
     <soundtype name="Creation">
-      <soundset name="ShipBirth">
-      </soundset>
+      <soundset name="ShipBirth" />
     </soundtype>
     <soundtype name="Acknowledge">
-      <soundset name="FrenchFrigateAcknowledge">
-      </soundset>
+      <civlogic>
+        <choice name="Nature" />
+        <choice name="French">
+          <techlogic>
+            <choice name="none">
+              <soundset name="FrenchFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="British">
+          <techlogic>
+            <choice name="none">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Russians">
+          <techlogic>
+            <choice name="none">
+              <soundset name="RussianFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Ottomans">
+          <techlogic>
+            <choice name="none">
+              <soundset name="OttomanFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Dutch">
+          <techlogic>
+            <choice name="none">
+              <soundset name="DutchFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Spanish">
+          <techlogic>
+            <choice name="none">
+              <soundset name="SpanishFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Portuguese">
+          <techlogic>
+            <choice name="none">
+              <soundset name="PortugueseFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Germans">
+          <techlogic>
+            <choice name="none">
+              <soundset name="GermanFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Aztecs" />
+        <choice name="Incas" />
+        <choice name="Maya" />
+        <choice name="Seminoles" />
+        <choice name="Caribs" />
+        <choice name="Cherokee" />
+        <choice name="Iroquois" />
+        <choice name="Cree" />
+        <choice name="Lakota" />
+        <choice name="Comanche" />
+        <choice name="Nootka" />
+        <choice name="Tupi" />
+        <choice name="SPCAct3">
+          <techlogic>
+            <choice name="none">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="SPCAct2">
+          <techlogic>
+            <choice name="none">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="XPIroquois">
+          <techlogic>
+            <choice name="none">
+              <soundset name="IroquoisCanoeAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="XPSioux">
+          <techlogic>
+            <choice name="none">
+              <soundset name="SiouxAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="XPAztec">
+          <techlogic>
+            <choice name="none">
+              <soundset name="AztecWarCanoeAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="XPSPC">
+          <techlogic>
+            <choice name="none">
+              <soundset name="FrenchFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Japanese">
+          <techlogic>
+            <choice name="none">
+              <soundset name="JapaneseShipsAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Chinese">
+          <techlogic>
+            <choice name="none">
+              <soundset name="ChineseShipsAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Indians">
+          <techlogic>
+            <choice name="none">
+              <soundset name="IndianShipsAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="SPCJapanese">
+          <techlogic>
+            <choice name="none">
+              <soundset name="JapaneseShipsAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="SPCChinese">
+          <techlogic>
+            <choice name="none">
+              <soundset name="ChineseShipsAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="SPCIndians">
+          <techlogic>
+            <choice name="none">
+              <soundset name="IndianShipsAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="DESwedish">
+          <techlogic>
+            <choice name="none">
+              <soundset name="DESwedishFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="DEAmericans">
+          <techlogic>
+            <choice name="none">
+              <soundset name="DEAmericanFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="DEHausa">
+          <techlogic>
+            <choice name="none">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="Pirate">
+          <techlogic>
+            <choice name="none">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="DEMexicans">
+          <techlogic>
+            <choice name="none">
+              <soundset name="DEMexicanFrigateAcknowledge" />
+            </choice>
+            <choice name="DEHCREVMXTexasNavy">
+              <soundset name="DEAmericanFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="DEItalians">
+          <techlogic>
+            <choice name="none">
+              <soundset name="DEItalianFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="DEMaltese">
+          <techlogic>
+            <choice name="none">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+            <choice name="zpStuartSovereignSeas">
+              <soundset name="BritishFrigateAcknowledge" />
+            </choice>
+          </techlogic>
+        </choice>
+        <choice name="DEPolish">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="PolishHeavyWarshipAcknowledge" />
+            </choice>
+            <choice name="enemy">
+              <soundset name="PolishHeavyWarshipAttack" />
+            </choice>
+          </targetlogic>
+        </choice>
+        <choice name="DEDanish">
+          <targetlogic>
+            <choice name="default">
+              <soundset name="DanishHeavyWarshipAcknowledge" />
+            </choice>
+            <choice name="enemy">
+              <soundset name="DanishHeavyWarshipAttack" />
+            </choice>
+          </targetlogic>
+        </choice>
+      </civlogic>
     </soundtype>
     <soundtype name="Exists">
-      <soundset name="AmbienceShip">
-      </soundset>
+      <soundset name="AmbienceShip" />
     </soundtype>
   </protounit>
 </protounitsounddef>

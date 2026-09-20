@@ -594,7 +594,7 @@
       <string _locid="500587">ZP NAT Qamutiik</string>
       <string _locid="500588">Inuit Dog Sledding Artillery</string>
       <string _locid="500589">Inuit Expansion</string>
-      <string _locid="500590">Allows you to train up to 7 Harpooners, elite hunters who outclass the Inuit Hunter. Unlocks three Inuit improvements: Inuit Feeders, Bering Strait Umiaks and Aurora.</string>
+      <string _locid="500590">Harpooners replace Inuit Hunters, in the field and in every shipment: elite hunters with the same build limit of 12. Unlocks three Inuit improvements: Inuit Feeders, Bering Strait Umiaks and Aurora.</string>
       <string _locid="500591">Elite Qamutiik</string>
       <string _locid="500592">Champion Qamutiik</string>
       <string _locid="500593">Legendary Qamutiik</string>
@@ -3487,11 +3487,11 @@
       <string _locid="503484">Sir Thomas Myddelton (North Wales)</string>
       <string _locid="503485">Economic improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWelsh Longbowman \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nWelsh Drovers, Team New River Company</string>
       <string _locid="503486">Ironside Levy</string>
-      <string _locid="503487">Ships a Regal Ship carrying 10 Ironsides.</string>
+      <string _locid="503487">Ships 12 Ironsides. Ironside build limit +2.</string>
       <string _locid="503488">Team New Model Army</string>
       <string _locid="503489">Ironsides gain 20% attack and hitpoints and train 25% faster; Ironside build limit +5. Ships an Embassy Wagon and allows the whole team to train Ironsides from the Native Embassy.</string>
       <string _locid="503490">Munster Levies</string>
-      <string _locid="503491">Ships a Regal Ship carrying 12 Bonaght Soldiers. Bonaght build limit +5.</string>
+      <string _locid="503491">Ships an Armed Merchantman carrying 12 Bonaght Soldiers. Bonaght build limit +5.</string>
       <string _locid="503492">Team Adventurers' Act</string>
       <string _locid="503493">Investors fund the war against Irish land. Every team member receives a trickle of 1 coin per second.</string>
       <string _locid="503494">Welsh Drovers</string>
@@ -3532,6 +3532,26 @@
       <string _locid="503529">Parliament declares the Commonwealth!</string>
       <string _locid="503530">%s has declared for Parliament and the Commonwealth!</string>
       <string _locid="503531">British Commonwealth</string>
+      <string _locid="503532">Sovereign of the Seas</string>
+      <string _locid="503533">Ships the Sovereign of the Seas, the King's Ship Money flagship, and commissions your Regal Ships into the Royal Navy: +1 build limit, +20% hitpoints and English crews.</string>
+      <string _locid="503534">Sovereign of the Seas</string>
+      <string _locid="503535">Royal Charles</string>
+      <string _locid="503536">Prince Royal</string>
+      <string _locid="503537">Constant Reformation</string>
+      <string _locid="503538">Rainbow</string>
+      <string _locid="503539">Triumph</string>
+      <string _locid="503540">St George</string>
+      <string _locid="503541">Lion</string>
+      <string _locid="503542">Unicorn</string>
+      <string _locid="503543">Victory</string>
+      <string _locid="503544">Swiftsure</string>
+      <string _locid="503545">Antelope</string>
+      <string _locid="503546">Bonaventure</string>
+      <string _locid="503547">Henrietta Maria</string>
+      <string _locid="503548">Merhonour</string>
+      <string _locid="503549">Divine Right of Kings</string>
+      <string _locid="503550">Opens the extended House of Stuart: unlocks Sovereign of the Seas.</string>
+      <string _locid="503551">ZP NAT Merc Inuit Harpooner</string>
       
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

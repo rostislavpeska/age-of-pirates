@@ -243,8 +243,11 @@ class TestTechs:
 
     def test_leader_techs(self):
         t = _techs()
-        assert re.search(r'amount2="10\.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCRegalShip" unittype2="%s"' % IRON, t["zpParliamentIronsideLevy"])
-        assert "CheckWaterHCGatherPoint" in t["zpParliamentIronsideLevy"]
+        levy = t["zpParliamentIronsideLevy"]     # 2026-09-20: land-only, so no hull and no water gather point
+        assert re.search(r'amount="12\.00" subtype="FreeHomeCityUnit" unittype="%s"' % IRON, levy)
+        assert re.search(r'amount="2\.00" subtype="BuildLimit" relativity="Absolute">\s*<target type="ProtoUnit">%s<' % IRON, levy)
+        assert "FreeHomeCityUnitShipped" not in levy and "zpSPCRegalShip" not in levy
+        assert "CheckWaterHCGatherPoint" not in levy and levy.count("<effect ") == 2
         nma = t["zpParliamentNewModelArmy"]  # 2026-09-19: the Cataphract embassy pattern, a team tech; no Lord effect
         assert "<flag>TeamTech</flag>" in nma and LORD not in nma
         assert re.search(r'amount="5\.00" subtype="BuildLimit" relativity="Absolute">\s*<target type="ProtoUnit">%s<' % IRON, nma)
@@ -256,8 +259,14 @@ class TestTechs:
         assert '<effect type="CommandRemove" proto="%s">' % IRON + chr(10) + '        <target type="ProtoUnit">NativeEmbassy<' in nma
         assert 'amount="1.00" subtype="FreeHomeCityUnit" unittype="zpNativeEmbassyWagon"' in nma and 'amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatMercIronside"' in nma
         assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">NativeEmbassy<', nma)
-        assert re.search(r'amount2="12\.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCRegalShip" unittype2="%s"' % BON, t["zpParliamentMunsterLevies"])
-        assert re.search(r'amount="5\.00" subtype="BuildLimit" relativity="Absolute">\s*<target type="ProtoUnit">%s<' % BON, t["zpParliamentMunsterLevies"])
+        mun = t["zpParliamentMunsterLevies"]     # the Armed Merchantman, not the French Regal Ship
+        assert re.search(r'amount2="12\.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCOstindedr" unittype2="%s"' % BON, mun)
+        assert re.search(r'amount="5\.00" subtype="BuildLimit" relativity="Absolute">\s*<target type="ProtoUnit">%s<' % BON, mun)
+        assert "CheckWaterHCGatherPoint" in mun and "zpSPCRegalShip" not in mun
+        assert '<cost resourcetype="Food">350.0000</cost>' in mun and '<cost resourcetype="Wood">150.0000</cost>' in mun
+        st = _read("data/strings/english/stringmods.xml")
+        assert '<string _locid="503487">Ships 12 Ironsides. Ironside build limit +2.</string>' in st
+        assert '<string _locid="503491">Ships an Armed Merchantman carrying 12 Bonaght Soldiers. Bonaght build limit +5.</string>' in st
         adv = t["zpParliamentAdventurersAct"]
         assert "<flag>TeamTech</flag>" in adv and 'amount="1.00" subtype="ResourceTrickleRate" resource="Gold"' in adv
         dr = t["zpParliamentWelshDrovers"]
@@ -530,3 +539,179 @@ class TestCommonwealth:
             assert 'rmSetTriggerEffectParam("Civilization", "%s")' % self.CIV in seg and 'rmSetTriggerEffectParam("StringID", "503531")' in seg
             assert 'Revolootin.mp3' in seg and 'rmSetTriggerEffectParamInt("Time", 61000)' in seg and '"UI_Strategywarning"' in seg
         assert "TransformUnit" not in t and "zpRevolutionFrance" not in t   # soft: no settler transform
+
+
+# ------------------------------------------------------------------- extended House of Stuart, step 1: the small Highland Charge (2026-09-19)
+class TestExtendedStuart:
+    BIG, SMALL, TECH, SHADOW = "zpStuartAbilityBig", "zpStuartAbilitySmall", "zpNatStuartHighlandCharge", "zpExtendedStuart"
+    CMD, POWER = "zpNatStuartHighlandChargeSmall", "zpNatPowerHighlandCharge"
+
+    def test_power_clone_is_the_vanilla_record(self):
+        s = _read("data/abilities/powermods.xml")
+        m = re.search(r'<power name="%s" type="GeneralEffect">.*?</power>' % self.POWER, s, re.S); b = m.group(0)
+        assert "<displaynameid>130625</displaynameid>" in b and "<rolloverid>130787</rolloverid>" in b and "<activetime>20</activetime>" in b
+        assert 'amount="1.30"' in b and 'type="CannotSnare"' in b and ">DENatPowerStuart<" in b
+        assert (REPO / "data/abilities/powermods.xml").read_bytes().count(b"\r\n") > 0
+
+    def test_ability_big_keeps_its_size_and_the_small_twin_drops_size_and_cooldown_start(self):
+        s = _read("data/abilities/abilitymods.xml")
+        tp = s[s.index("<tradingpost>"):s.index("</tradingpost>")]
+        big = [l for l in tp.splitlines() if "deNatPowerHighlandCharge<tech>" in l]; small = [l for l in tp.splitlines() if self.POWER + "<tech>" in l]
+        assert len(big) == 1 and len(small) == 1
+        assert 'mergemode="replace"' in big[0] and "<tech>%s</tech>" % self.BIG in big[0] and "usebigabilitybutton3" in big[0] and "subcivstartincooldown" in big[0]
+        assert "<tech>%s</tech>" % self.SMALL in small[0] and "usebigabilitybutton3" not in small[0] and "subcivstartincooldown" not in small[0]
+        for tag in ("<subciv>Stuart</subciv>", "<activetimecooldown>true</activetimecooldown>", "<rof>235</rof>", "<castonself>true</castonself>"):
+            assert tag in small[0], tag
+
+    def test_small_command_has_no_medium_flag(self):
+        s = _read("data/protounitcommandmods.xml")
+        b = re.search(r"<protounitcommand>\s*<name>%s</name>.*?</protounitcommand>" % self.CMD, s, re.S).group(0)
+        assert "<associatedtech>%s</associatedtech>" % self.TECH in b and "<associatedpower>%s</associatedpower>" % self.POWER in b
+        assert "<subciv>Stuart</subciv>" in b and "usemediumbutton3" not in b and "ability_highland_charge.png" in b
+        assert s.index(self.CMD) < s.index("<!--")   # above the commented block, after the last real record
+
+    def test_gates_tech_and_overrides(self):
+        T = _techs(); s = _read("data/techtreemods.xml")
+        assert _c(T[self.BIG], "dbid") == "41545" and "<status>OBTAINABLE</status>" in T[self.BIG] and "<flag>Shadow</flag>" in T[self.BIG]
+        assert _c(T[self.SMALL], "dbid") == "41546" and "<status>UNOBTAINABLE</status>" in T[self.SMALL]
+        assert _c(T[self.TECH], "dbid") == "41547" and "DEUseMediumButton3" not in T[self.TECH] and "<displaynameid>130625</displaynameid>" in T[self.TECH]
+        for n in (self.BIG, self.SMALL, self.TECH):
+            assert ">Colonialize</techstatus>" in T[n] and s.index('name="%s"' % n) < s.index("<!--TEST TECHS-->"), n
+        hub, col = T["DENativeStuart"], T["DENativeStuartColonialize"]
+        assert '<effect mergemode="add" type="TechStatus" status="obtainable">%s</effect>' % self.TECH in hub
+        assert 'subtype="GrantsPowerDuration" protopower="%s" relativity="Assign"' % self.POWER in hub   # Royal House: the clone must be granted
+        assert '<effect mergemode="add" type="TechStatus" status="active">%s</effect>' % self.TECH in col
+        assert '<effect type="CommandRemove" tech="%s">' % self.TECH in col
+        assert "mergeMode" not in hub + col
+
+    def test_shadow_sits_at_the_top_and_swaps_the_paired_entry(self):
+        s = _read("data/techtreemods.xml"); b = _techs()[self.SHADOW]
+        assert s.index('name="zpExtendedPhanar"') < s.index('name="%s"' % self.SHADOW) < 30000   # beside the other extension shadows
+        assert _c(b, "dbid") == "41548" and "<status>UNOBTAINABLE</status>" in b and "<flag>Shadow</flag>" in b
+        assert '<effect type="CommandRemove" command="deNatStuartHighlandCharge">' in b and '<effect type="CommandRemove" tech="deNatStuartHighlandCharge">' in b
+        assert '<effect type="CommandAdd" command="%s" page="0" column="4">' % self.CMD in b
+        assert '<effect type="CommandAdd" tech="%s" page="0" column="4">' % self.TECH in b
+        assert '<effect type="TechStatus" status="unobtainable">%s</effect>' % self.BIG in b and '<effect type="TechStatus" status="obtainable">%s</effect>' % self.SMALL in b
+        assert '<effect type="CommandAdd" tech="zpStuartExpansion" page="1" column="1">' in b
+        assert b.count("<effect ") == 7
+
+    def test_london_flips_the_shadow_for_every_player(self):
+        t = (REPO / "randmaps/zplondon.xs").read_text(encoding="utf-8")
+        assert (REPO / "randmaps/zplondon.xs").read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
+        i = t.index('rmCreateTrigger("ExtendedStuart" + k)'); seg = t[i:i + 700]
+        assert 'rmAddTriggerCondition("Always")' in seg and '"cTechzpExtendedStuart"' in seg and 'rmSetTriggerEffectParamInt("Status", 2)' in seg
+        assert 'rmCreateTrigger("Extended Stuart"' not in t and 'rmTriggerID("Extended' not in t   # trigger names carry no spaces
+        assert t.index('rmCreateTrigger("LondonStartingTechs")') < i < t.index('rmCreateTrigger("Activate Parliament" + k)')
+
+
+# ------------------------------------------------------------------- the Armed Merchantman (Ostinder promoted, 2026-09-20)
+class TestArmedMerchantman:
+    PROTO, UID = "zpSPCOstindedr", "21190"
+    JONES, PLAIN = "ostinder_sails_jones_matb_BaseColor", "ostinder_sails_matb_BaseColor"
+    BS = chr(92)
+
+    def test_proto_left_the_test_block_with_a_real_id(self):
+        s = _read("data/protomods.xml")
+        m = re.search(r'<unit id="%s" name="%s">.*?</unit>' % (self.UID, self.PROTO), s, re.S)
+        assert m and m.start() < s.index("<!--TEST AND TEMPORARY CONTENT-->")
+        b = m.group(0)
+        assert _c(b, "dbid") == self.UID and _c(b, "displaynameid") == "503312" and _c(b, "rollovertextid") == "503314"
+        assert _c(b, "animfile") == "units" + self.BS + "naval" + self.BS + "ostinder" + self.BS + "ostinder_merchant.xml"
+        assert _c(b, "initialhitpoints") == "2100.0000" and _c(b, "buildlimit") == "3"
+
+    def test_the_jones_flagship_keeps_the_original_animfile_and_sails(self):
+        u = _units()
+        for n in ("zpSPCBonhommeRichard", "zpSPCSerapis"):
+            assert _c(u[n], "animfile") == "units" + self.BS + "naval" + self.BS + "ostinder" + self.BS + "ostinder.xml", n
+        for f in ("ostinder_ship_model.material", "ostinder_ship_deathmodel.material"):
+            s = (REPO / "art/units/naval/ostinder" / f).read_text(encoding="utf-8")
+            matb = re.search(r'<submaterial name="matb">.*?</submaterial>', s, re.S).group(0)
+            default, variant = matb.split('<parameters variant="1">')
+            assert self.JONES in default and self.PLAIN not in default, f      # index 0 = Jones, untouched
+            assert self.PLAIN in variant and self.JONES not in variant, f      # index 1 = the plain East-Indiaman sails
+            assert s.count('<parameters variant="1">') == s.count("<submaterial "), f   # vanilla never ships a partial variant
+
+    def test_merchant_animfile_selects_variant_one_and_is_crlf(self):
+        p = REPO / "art/units/naval/ostinder/ostinder_merchant.xml"
+        b = p.read_bytes()
+        assert b.count(b"\r\n") == b.count(b"\n") > 0                          # runtime XML is CRLF or the engine ignores it
+        s = b.decode("utf-8")
+        assert s.count('<materialvariant index="1">') == 2                     # the model and the death model
+        assert s.count('<assetreference type="GrannyModel">') == 2
+
+    def test_voices_and_names_are_the_vanilla_per_civ_tables(self):
+        b = (REPO / "sound/zpspcostindedr_snds.xml").read_bytes()
+        assert b.count(b"\r\n") == b.count(b"\n") > 0
+        s = b.decode("utf-8")
+        assert '<protounit name="%s">' % self.PROTO in s and "<civlogic>" in s
+        assert '<choice name="British">' in s and "BritishFrigateSelect" in s and "FrenchFrigateSelect" in s
+        n = _read("data/randomnamemods.xml")
+        line = [l for l in n.splitlines() if self.PROTO in l]
+        assert len(line) == 1 and line[0].count("<civ>") >= 20                 # one line (XMB text whitespace trap), vanilla Galleon pools
+        assert "<civ>British" in line[0] and "<civ>Default" in line[0]
+
+
+# ------------------------------------------------------------------- Sovereign of the Seas: the Stuart naval tech (2026-09-20)
+class TestSovereignOfTheSeas:
+    TECH, SHIP, UID = "zpStuartSovereignSeas", "zpSPCRegalShip", "21191"
+
+    def test_regal_ship_left_the_test_block(self):
+        s = _read("data/protomods.xml")
+        m = re.search(r'<unit id="%s" name="%s">.*?</unit>' % (self.UID, self.SHIP), s, re.S)
+        assert m and m.start() < s.index("<!--TEST AND TEMPORARY CONTENT-->")
+        assert _c(m.group(0), "dbid") == self.UID and _c(m.group(0), "buildlimit") == "3"
+        assert s.count('name="%s"' % self.SHIP) == 1
+
+    def test_the_tech(self):
+        T = _techs(); b = T[self.TECH]; s = _read("data/techtreemods.xml")
+        assert _c(b, "dbid") == "41549" and _c(b, "displaynameid") == "503532" and _c(b, "rollovertextid") == "503533"
+        assert "<status>UNOBTAINABLE</status>" in b and ">Industrialize</techstatus>" in b
+        assert "<flag>YPNativeImprovement</flag>" in b and "<flag>CountsTowardMilitaryScore</flag>" in b
+        assert '<cost resourcetype="Wood">800.0000</cost>' in b and '<cost resourcetype="Gold">600.0000</cost>' in b
+        assert 'subtype="FreeHomeCityUnit" unittype="%s"' % self.SHIP in b
+        assert 'amount="1.00" subtype="BuildLimit"' in b and 'amount="1.20" subtype="Hitpoints"' in b
+        assert "<flag>CheckWaterHCGatherPoint</flag>" in b          # it ships a warship
+        assert b.count("<effect ") == 3 and s.index('name="%s"' % self.TECH) < s.index("<!--TEST TECHS-->")
+        assert '<effect mergemode="add" type="TechStatus" status="obtainable">%s</effect>' % self.TECH in T["DENativeStuart"]
+
+    def test_voices_flip_to_english_on_the_tech(self):
+        p = REPO / "sound/zpspcregalship_snds.xml"
+        b = p.read_bytes()
+        assert b.count(b"\r\n") == b.count(b"\n") > 0
+        s = b.decode("utf-8").replace(chr(13), "")
+        assert '<protounit name="%s">' % self.SHIP in s and s.count("<civlogic>") == 2      # Select + Acknowledge
+        assert s.count("<techlogic>") == s.count("</techlogic>") == 56
+        gates = re.findall(r'<choice name="%s">\n              <soundset name="(\w+)" />' % self.TECH, s)
+        assert sorted(set(gates)) == ["BritishFrigateAcknowledge", "BritishFrigateSelect"] and len(gates) == 56
+        assert '<choice name="DEHCREVMXTexasNavy">' in s                                     # the vanilla gate is kept
+        for civ, base in (("French", "FrenchFrigateSelect"), ("Spanish", "SpanishFrigateSelect")):
+            i = s.index('<choice name="%s">' % civ)
+            assert base in s[i:i + 300] and self.TECH in s[i:i + 400], civ                   # default stays the civ's own voice
+
+    def test_british_name_pool(self):
+        n = _read("data/randomnamemods.xml")
+        line = [l for l in n.splitlines() if "<protounit>%s<" % self.SHIP in l]
+        assert len(line) == 1
+        brit = line[0].split("<civ>British")[1]
+        ids = re.findall(r"<title>(\d+)</title>", brit.split("</civ>")[0])
+        assert ids == [str(i) for i in range(503534, 503549)]                                # the one authored exception
+        assert line[0].count("<civ>") == 25 and "<civ>French" in line[0] and "<civ>DEDanish" in line[0]
+        assert "<title>54339</title>" not in line[0]                                         # the French-for-everyone Default pool is gone
+        assert "<title>50359</title>" in line[0].split("<civ>French")[1].split("</civ>")[0]  # vanilla Frigate pools, per civ
+        st = _read("data/strings/english/stringmods.xml")
+        assert '<string _locid="503532">Sovereign of the Seas</string>' in st
+        assert '<string _locid="503534">Sovereign of the Seas</string>' in st and '<string _locid="503548">Merhonour</string>' in st
+
+    def test_expansion_big_button(self):
+        T = _techs(); s = _read("data/techtreemods.xml"); b = T["zpStuartExpansion"]
+        assert _c(b, "dbid") == "41550" and _c(b, "displaynameid") == "503549" and _c(b, "rollovertextid") == "503550"
+        assert "<status>UNOBTAINABLE</status>" in b and ">Fortressize</techstatus>" in b
+        for flag in ("YPNativeImprovement", "CountsTowardEconomicScore", "NativeDance"):
+            assert "<flag>%s</flag>" % flag in b, flag
+        assert "<iconwpf>" in b and "<icontexturecoords>" in b            # the Phanar / Habsburg big-button shape
+        assert b.count("<effect ") == 1                                    # nothing but CommandAdds for the new techs
+        assert '<effect type="CommandAdd" tech="%s" page="2" column="6">' % self.TECH in b
+        assert '<effect mergemode="add" type="TechStatus" status="obtainable">zpStuartExpansion</effect>' in T["DENativeStuart"]
+        assert s.index('name ="zpStuartExpansion"') < s.index("<!--TEST TECHS-->")
+        st = _read("data/strings/english/stringmods.xml")
+        assert '<string _locid="503549">Divine Right of Kings</string>' in st

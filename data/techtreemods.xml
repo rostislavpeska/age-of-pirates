@@ -412,6 +412,30 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpExtendedStuart" type="Normal">
+    <dbid>41548</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="CommandRemove" command="deNatStuartHighlandCharge">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" command="zpNatStuartHighlandChargeSmall" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="deNatStuartHighlandCharge">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpNatStuartHighlandCharge" page="0" column="4">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" tech="zpStuartExpansion" page="1" column="1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpStuartAbilityBig</effect>
+      <effect type="TechStatus" status="obtainable">zpStuartAbilitySmall</effect>
+    </effects>
+  </tech>
   <tech name="zpChateauRoyalShadow" type="Normal">
     <dbid>40823</dbid>
     <researchpoints>0.0000</researchpoints>
@@ -5950,6 +5974,8 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMercIronside" culture="none" newname="503458">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercInuitHarpooner" culture="none" newname="500584">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -9593,6 +9619,18 @@
       <effect type="CommandAdd" tech="zpInuitFeeders" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
+      <effect type="CommandRemove" proto="deNatInuitHunter">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatInuitHarpooner" page="0" column="1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpNatInuitHarpooner" fromprotoid="deNatInuitHunter">
+      </effect>
+      <effect type="TransformUnit" toprotoid="zpNatMercInuitHarpooner" fromprotoid="deNatMercInuitHunter">
+      </effect>
+      <effect type="TechStatus" status="unobtainable">zpInuitHunterShipments</effect>
+      <effect type="TechStatus" status="obtainable">zpInuitHarpoonerShipments</effect>
     </effects>
 	</tech>
   <tech name="zpInuitFeeders" type="Normal">
@@ -16255,6 +16293,7 @@
     <rollovertextid>501510</rollovertextid>
     <flag>CountsTowardMilitaryScore</flag>
     <flag>CheckLandHCGatherPoint</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
     <prereqs>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
@@ -16359,6 +16398,7 @@
     <rollovertextid>501513</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
     <effects>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatCorsair</target>
@@ -21825,6 +21865,12 @@
       <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatMercIronside</target>
       </effect>
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercInuitHarpooner</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercInuitHarpooner</target>
+      </effect>
     </effects>
 	</tech>
   <tech name="zpUnlockPalazzoAuditore" type="Normal">
@@ -22164,6 +22210,7 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPNativeImprovement</flag>
     <flag>TeamTech</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
     <prereqs>
       <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
@@ -35172,6 +35219,7 @@
     <flag>CountsTowardMilitaryScore</flag>
     <flag>YPNativeImprovement</flag>
     <flag>TeamTech</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
     <prereqs>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
@@ -36059,6 +36107,10 @@
       <effect mergemode="add" type="TechStatus" status="obtainable">zpInuitUmiaks</effect>
       <effect mergemode="add" type="TechStatus" status="obtainable">zpInuitFeeders</effect>
       <effect mergemode="add" type="TechStatus" status="obtainable">zpNatInuitArcticAcclimation</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpInuitHunterShipments</effect>
+      <effect mergemode="add" type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatMercInuitHarpooner</target>
+      </effect>
     </effects>
   </tech>
   <!--PHANAR EXTENSION-->
@@ -37225,6 +37277,7 @@
     <rollovertextid>400278</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
     <prereqs>
       <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
@@ -37553,6 +37606,16 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="500584" reqtech="ImpLegendaryNativesShadow">
       </effect>
+      <effect mergemode="add" type="Data" amount="1.35" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercInuitHarpooner</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.35" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercInuitHarpooner</target>
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercInuitHarpooner" culture="none" newname="500583">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercInuitHarpooner" culture="none" newname="500584" reqtech="ImpLegendaryNativesShadow">
+      </effect>
     </effects>
   </tech>
   <tech name="zpIncaTamboShadowHarpooner" type="Normal">
@@ -37568,7 +37631,7 @@
       <effect type="CommandRemove" proto="zpNatInuitHarpooner">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" proto="zpNatInuitHarpooner" page="1" column="0">
+      <effect type="CommandAdd" proto="zpNatInuitHarpooner" page="0" column="1">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -38138,13 +38201,16 @@
     <rollovertextid>503487</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
-    <flag>CheckWaterHCGatherPoint</flag>
     <prereqs>
       <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data2" amount="1.00" amount2="10.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCRegalShip" unittype2="zpNatIronside" relativity="Absolute">
-        <target type="Player"></target>
+      <effect type="Data" amount="12.00" subtype="FreeHomeCityUnit" unittype="zpNatIronside" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="2.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatIronside</target>
       </effect>
     </effects>
   </tech>
@@ -38210,8 +38276,8 @@
   <tech name="zpParliamentMunsterLevies" type="Normal">
     <dbid>41537</dbid>
     <displaynameid>503490</displaynameid>
-    <cost resourcetype="Food">400.0000</cost>
-    <cost resourcetype="Wood">200.0000</cost>
+    <cost resourcetype="Food">350.0000</cost>
+    <cost resourcetype="Wood">150.0000</cost>
     <researchpoints>20.0000</researchpoints>
     <status>UNOBTAINABLE</status>
     <icon>resources\images\icons\techs\parliament\munster_levies.png</icon>
@@ -38223,7 +38289,7 @@
       <techstatus status="Active">Fortressize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data2" amount="1.00" amount2="12.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCRegalShip" unittype2="zpNatBonaght" relativity="Absolute">
+      <effect type="Data2" amount="1.00" amount2="12.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCOstindedr" unittype2="zpNatBonaght" relativity="Absolute">
         <target type="Player"></target>
       </effect>
       <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
@@ -38503,6 +38569,157 @@
       <effect type="CommandAdd" proto="zpMilitaryCamp" page="6" column="2">
         <target type="ProtoUnit">Explorer</target>
       </effect>
+    </effects>
+  </tech>
+  <tech name="zpStuartAbilityBig" type="Normal">
+    <dbid>41545</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status ="active">Colonialize</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="zpStuartAbilitySmall" type="Normal">
+    <dbid>41546</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status ="active">Colonialize</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="zpNatStuartHighlandCharge" type="Normal">
+    <dbid>41547</dbid>
+    <displaynameid>130625</displaynameid>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\abilities\ability_highland_charge.png</icon>
+    <rollovertextid>130787</rollovertextid>
+    <flag>YPNoTextMessage</flag>
+    <flag>YPNativeImprovement</flag>
+    <flag>DEHideAdvancedRollover</flag>
+    <prereqs>
+      <techstatus status="Active">Colonialize</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="DENativeStuart">
+    <effects>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpNatStuartHighlandCharge</effect>
+      <effect mergemode="add" type="Data" amount="1.00" subtype="GrantsPowerDuration" protopower="zpNatPowerHighlandCharge" relativity="Assign">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpStuartExpansion</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpStuartSovereignSeas</effect>
+    </effects>
+  </tech>
+  <tech name="DENativeStuartColonialize">
+    <effects>
+      <effect mergemode="add" type="TechStatus" status="active">zpNatStuartHighlandCharge</effect>
+      <effect type="CommandRemove" tech="zpNatStuartHighlandCharge">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpStuartSovereignSeas" type="Normal">
+    <dbid>41549</dbid>
+    <displaynameid>503532</displaynameid>
+    <cost resourcetype="Wood">800.0000</cost>
+    <cost resourcetype="Gold">600.0000</cost>
+    <researchpoints>45.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\imperial_navy\imperial_navy.png</icon>
+    <rollovertextid>503533</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <flag>CheckWaterHCGatherPoint</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCRegalShip" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRegalShip</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpSPCRegalShip</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name ="zpStuartExpansion" type ="Normal">
+    <dbid>41550</dbid>
+    <displaynameid>503549</displaynameid>
+    <researchpoints>60.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\dance-pirates.png</icon>
+    <icontexturecoords>.400390625 .3046875 .59765625 .60546875</icontexturecoords>
+    <iconwpf>resources\images\icons\techs\kingdom_bohemia_big.png</iconwpf>
+    <cost resourcetype ="Food">250.0000</cost>
+    <cost resourcetype ="Wood">250.0000</cost>
+    <cost resourcetype ="Gold">250.0000</cost>
+    <rollovertextid>503550</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardEconomicScore</flag>
+    <flag>NativeDance</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="CommandAdd" tech="zpStuartSovereignSeas" page="2" column="6">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpInuitHunterShipments" type="Normal">
+    <dbid>41551</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+  </tech>
+  <tech name="zpInuitHarpoonerShipments" type="Normal">
+    <dbid>41552</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+  </tech>
+  <tech name="DENativeTreatyInuit">
+    <effects>
+      <effect tech="zpInuitHunterShipments" type="Data" amount="5.00" subtype="FreeHomeCityUnitIfTechObtainable" unittype="deNatInuitHunter" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect tech="zpInuitHarpoonerShipments" type="Data" amount="5.00" subtype="FreeHomeCityUnitIfTechObtainable" unittype="zpNatInuitHarpooner" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+    </effects>
+  </tech>
+  <tech name="DEIndianFriendshipInuit">
+    <effects>
+      <effect tech="zpInuitHunterShipments" type="Data" amount="10.00" subtype="FreeHomeCityUnitIfTechObtainable" unittype="deNatInuitHunter" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect tech="zpInuitHarpoonerShipments" type="Data" amount="10.00" subtype="FreeHomeCityUnitIfTechObtainable" unittype="zpNatInuitHarpooner" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">DEWarriorSocietyInuit</effect>
+      <effect type="TechStatus" status="active">DEChampionInuit</effect>
+    </effects>
+  </tech>
+  <tech name="DEHCIniuitAllies1">
+    <effects>
+      <effect tech="zpInuitHunterShipments" type="Data" amount="9.00" subtype="FreeHomeCityUnitIfTechObtainable" unittype="deNatMercInuitHunter" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect tech="zpInuitHarpoonerShipments" type="Data" amount="9.00" subtype="FreeHomeCityUnitIfTechObtainable" unittype="zpNatMercInuitHarpooner" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TextOutputTechName">110130</effect>
     </effects>
   </tech>
 <!--TEST TECHS-->

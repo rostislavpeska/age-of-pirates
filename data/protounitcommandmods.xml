@@ -877,6 +877,17 @@
     </socketbuild>
     <rollovertextid>503306</rollovertextid>
   </protounitcommand>
+  <protounitcommand>
+    <name>zpNatStuartHighlandChargeSmall</name>
+    <icon>resources\images\icons\abilities\ability_highland_charge.png</icon>
+    <associatedtech>zpNatStuartHighlandCharge</associatedtech>
+    <associatedpower>zpNatPowerHighlandCharge</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>Stuart</subciv>
+    <usemultiple>
+    </usemultiple>
+  </protounitcommand>
 
 
   <!--
