@@ -2,7 +2,9 @@
   <protounit name="zpSPCRegalShip">
     <soundtype name="Select">
       <civlogic>
-        <choice name="Nature" />
+        <choice name="Nature">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
         <choice name="French">
           <techlogic>
             <choice name="none">
@@ -83,18 +85,42 @@
             </choice>
           </techlogic>
         </choice>
-        <choice name="Aztecs" />
-        <choice name="Incas" />
-        <choice name="Maya" />
-        <choice name="Seminoles" />
-        <choice name="Caribs" />
-        <choice name="Cherokee" />
-        <choice name="Iroquois" />
-        <choice name="Cree" />
-        <choice name="Lakota" />
-        <choice name="Comanche" />
-        <choice name="Nootka" />
-        <choice name="Tupi" />
+        <choice name="Aztecs">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Incas">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Maya">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Seminoles">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Caribs">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Cherokee">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Iroquois">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Cree">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Lakota">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Comanche">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Nootka">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Tupi">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
         <choice name="SPCAct3">
           <techlogic>
             <choice name="none">
@@ -308,6 +334,396 @@
             </choice>
           </techlogic>
         </choice>
+        <choice name="SPCAct1">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="TheCircle">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="NativeAmerican">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCCompany">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCJapaneseEnemy">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DEInca">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCBarbaryPirates">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCAmericans">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCTatars">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCEthiopians">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCSomalis">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCRenoGang">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCHoleGang">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="XPSPCFalcon">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="XPSPCLakota">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DEEthiopians">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCMoroccans">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCCanadians">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Zapotec">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Huron">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Cheyenne">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Klamath">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Mapuche">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Navajo">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Apache">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Udasi">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Zen">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Shaolin">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Saltpeter">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Bhakti">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Jesuit">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Sufi">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DESPCBerbers">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Akan">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Yoruba">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Somali">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Sudanese">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Berbers">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DESPCLenape">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCCityState">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCMilitaryDistrict">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCMarketDistrict">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCArtilleryDistrict">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCReligiousDistrict">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Jagiellon">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Bourbon">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Habsburg">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Hanover">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Oldenburg">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Phanar">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Vasa">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Wettin">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Wittelsbach">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Tengri">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Stuart">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Inuit">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Sami">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Louverture">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Washington">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Hidalgo">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Bonifacio">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Bolivar">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SanMartin">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Santander">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="OHiggins">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevHaiti">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevUSA">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevMexico">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevBrazil">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevPeru">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevArgentina">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevColombia">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevChile">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevCanada">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevEgypt">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevFinland">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevHungary">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevIndonesia">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevRomania">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevSouthAfrica">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevBarbaryStates">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevMXCentralAmerica">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevMXBajaCalifornia">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevMXYucatan">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevMXRioGrande">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevMXMaya">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevMXCalifornia">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevMXTexas">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevFrance">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevFranceNE">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevCossacks">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevWarsaw">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevLivonia">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevPrussia">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DERevGermany">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="DEImpJapaneseFlag">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="NatPirates">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="PenalColony">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Maltese">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Wokou">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCZen">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCSufi">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Jewish">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpScientists">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="MaoriNatives">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCJesuit">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpVenetians">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpOrthodox">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpXmassVillage">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpWesternVillage">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="AboriginalNatives">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Korowai">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpSansculottes">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpRevParis">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCBourbon">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpGrinchVillage">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="Auditore">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpBohemianKing">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpRevCSA">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpHussites">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpPrinceElector">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpHansaKontor">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpPueblo">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpCossacks">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpSultanate">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpCivPirate">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="SPCVenetians">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpColonialEstate">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpParliament">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
+        <choice name="zpRevCommonwealth">
+          <soundset name="FrenchFrigateSelect" />
+        </choice>
       </civlogic>
     </soundtype>
     <soundtype name="Death">
@@ -318,7 +734,9 @@
     </soundtype>
     <soundtype name="Acknowledge">
       <civlogic>
-        <choice name="Nature" />
+        <choice name="Nature">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
         <choice name="French">
           <techlogic>
             <choice name="none">
@@ -399,18 +817,42 @@
             </choice>
           </techlogic>
         </choice>
-        <choice name="Aztecs" />
-        <choice name="Incas" />
-        <choice name="Maya" />
-        <choice name="Seminoles" />
-        <choice name="Caribs" />
-        <choice name="Cherokee" />
-        <choice name="Iroquois" />
-        <choice name="Cree" />
-        <choice name="Lakota" />
-        <choice name="Comanche" />
-        <choice name="Nootka" />
-        <choice name="Tupi" />
+        <choice name="Aztecs">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Incas">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Maya">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Seminoles">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Caribs">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Cherokee">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Iroquois">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Cree">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Lakota">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Comanche">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Nootka">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Tupi">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
         <choice name="SPCAct3">
           <techlogic>
             <choice name="none">
@@ -623,6 +1065,396 @@
               <soundset name="DanishHeavyWarshipAttack" />
             </choice>
           </targetlogic>
+        </choice>
+        <choice name="SPCAct1">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="TheCircle">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="NativeAmerican">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCCompany">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCJapaneseEnemy">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DEInca">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCBarbaryPirates">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCAmericans">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCTatars">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCEthiopians">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCSomalis">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCRenoGang">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCHoleGang">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="XPSPCFalcon">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="XPSPCLakota">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DEEthiopians">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCMoroccans">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCCanadians">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Zapotec">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Huron">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Cheyenne">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Klamath">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Mapuche">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Navajo">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Apache">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Udasi">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Zen">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Shaolin">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Saltpeter">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Bhakti">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Jesuit">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Sufi">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DESPCBerbers">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Akan">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Yoruba">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Somali">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Sudanese">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Berbers">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DESPCLenape">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCCityState">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCMilitaryDistrict">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCMarketDistrict">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCArtilleryDistrict">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCReligiousDistrict">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Jagiellon">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Bourbon">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Habsburg">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Hanover">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Oldenburg">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Phanar">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Vasa">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Wettin">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Wittelsbach">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Tengri">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Stuart">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Inuit">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Sami">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Louverture">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Washington">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Hidalgo">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Bonifacio">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Bolivar">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SanMartin">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Santander">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="OHiggins">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevHaiti">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevUSA">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevMexico">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevBrazil">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevPeru">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevArgentina">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevColombia">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevChile">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevCanada">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevEgypt">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevFinland">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevHungary">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevIndonesia">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevRomania">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevSouthAfrica">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevBarbaryStates">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevMXCentralAmerica">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevMXBajaCalifornia">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevMXYucatan">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevMXRioGrande">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevMXMaya">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevMXCalifornia">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevMXTexas">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevFrance">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevFranceNE">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevCossacks">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevWarsaw">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevLivonia">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevPrussia">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DERevGermany">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="DEImpJapaneseFlag">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="NatPirates">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="PenalColony">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Maltese">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Wokou">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCZen">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCSufi">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Jewish">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpScientists">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="MaoriNatives">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCJesuit">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpVenetians">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpOrthodox">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpXmassVillage">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpWesternVillage">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="AboriginalNatives">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Korowai">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpSansculottes">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpRevParis">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCBourbon">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpGrinchVillage">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="Auditore">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpBohemianKing">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpRevCSA">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpHussites">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpPrinceElector">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpHansaKontor">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpPueblo">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpCossacks">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpSultanate">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpCivPirate">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="SPCVenetians">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpColonialEstate">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpParliament">
+          <soundset name="FrenchFrigateAcknowledge" />
+        </choice>
+        <choice name="zpRevCommonwealth">
+          <soundset name="FrenchFrigateAcknowledge" />
         </choice>
       </civlogic>
     </soundtype>

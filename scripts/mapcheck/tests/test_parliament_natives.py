@@ -626,6 +626,19 @@ class TestArmedMerchantman:
         assert _c(b, "animfile") == "units" + self.BS + "naval" + self.BS + "ostinder" + self.BS + "ostinder_merchant.xml"
         assert _c(b, "initialhitpoints") == "2100.0000" and _c(b, "buildlimit") == "3"
 
+    def test_voices_and_names_fall_back_to_british(self):
+        s = (REPO / "sound/zpspcostindedr_snds.xml").read_bytes().decode("utf-8").replace(chr(13), "")
+        assert '<protounit name="%s">' % self.PROTO in s and s.count("<civlogic>") == 2
+        for civ in ("zpRevCommonwealth", "DERevFrance", "Stuart", "Bourbon", "zpCivPirate", "Inuit"):
+            assert '<choice name="%s">' % civ in s, civ
+        assert not re.search(r'<choice name="\w+" />', s)          # no branch left silent
+        assert s.count("BritishFrigateSelect") > 100 and "FrenchFrigateSelect" in s   # French civ keeps French
+        n = _read("data/randomnamemods.xml")
+        line = [l for l in n.splitlines() if "<protounit>%s<" % self.PROTO in l][0]
+        default = re.search(r"<civ>Default((?:(?!</civ>).)*)</civ>", line).group(1)
+        brit = re.search(r"<civ>British((?:(?!</civ>).)*)</civ>", line).group(1)
+        assert re.findall(r"<title>(\d+)</title>", default) == re.findall(r"<title>(\d+)</title>", brit)
+
     def test_the_jones_flagship_keeps_the_original_animfile_and_sails(self):
         u = _units()
         for n in ("zpSPCBonhommeRichard", "zpSPCSerapis"):
@@ -704,6 +717,11 @@ class TestSovereignOfTheSeas:
         s = b.decode("utf-8").replace(chr(13), "")
         assert '<protounit name="%s">' % self.SHIP in s and s.count("<civlogic>") == 2      # Select + Acknowledge
         assert s.count("<techlogic>") == s.count("</techlogic>") == 56
+        # every civ that exists has a branch; anything without its own language falls back to French
+        for civ in ("zpRevCommonwealth", "DERevFrance", "Stuart", "Bourbon", "zpCivPirate", "Inuit"):
+            assert '<choice name="%s">' % civ in s, civ
+        assert not re.search(r'<choice name="\w+" />', s)          # no branch left silent
+        assert s.count("FrenchFrigateSelect") > 100
         gates = re.findall(r'<choice name="%s">\n              <soundset name="(\w+)" />' % self.TECH, s)
         assert sorted(set(gates)) == ["BritishFrigateAcknowledge", "BritishFrigateSelect"] and len(gates) == 56
         assert '<choice name="DEHCREVMXTexasNavy">' in s                                     # the vanilla gate is kept
@@ -719,7 +737,9 @@ class TestSovereignOfTheSeas:
         ids = re.findall(r"<title>(\d+)</title>", brit.split("</civ>")[0])
         assert ids == [str(i) for i in range(503534, 503549)]                                # the one authored exception
         assert line[0].count("<civ>") == 25 and "<civ>French" in line[0] and "<civ>DEDanish" in line[0]
-        assert "<title>54339</title>" not in line[0]                                         # the French-for-everyone Default pool is gone
+        default = re.search(r"<civ>Default((?:(?!</civ>).)*)</civ>", line[0]).group(1)
+        assert re.findall(r"<title>(\d+)</title>", default) == ["54339", "50444"] + [str(i) for i in range(50359, 50368)]
+        # Default is the fallback branch: any civ without its own block sails under French names
         assert "<title>50359</title>" in line[0].split("<civ>French")[1].split("</civ>")[0]  # vanilla Frigate pools, per civ
         st = _read("data/strings/english/stringmods.xml")
         assert '<string _locid="503532">Sovereign of the Seas</string>' in st
