@@ -21836,12 +21836,6 @@
         <target type="ProtoUnit">zpNatGatlingCamel</target>
       </effect>
       <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatInuitHarpooner</target>
-      </effect>
-      <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatInuitHarpooner</target>
-      </effect>
-      <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
         <target type="ProtoUnit">zpNatIronside</target>
       </effect>
       <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
@@ -21864,12 +21858,6 @@
       </effect>
       <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpNatMercIronside</target>
-      </effect>
-      <effect mergemode="add" type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatMercInuitHarpooner</target>
-      </effect>
-      <effect mergemode="add" type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatMercInuitHarpooner</target>
       </effect>
     </effects>
 	</tech>
@@ -38720,6 +38708,30 @@
         </target>
       </effect>
       <effect type="TextOutputTechName">110130</effect>
+    </effects>
+  </tech>
+  <tech name="DEWarriorSocietyInuit">
+    <effects>
+      <effect mergemode="add" type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatInuitHarpooner</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatInuitHarpooner</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.25" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercInuitHarpooner</target>
+      </effect>
+      <effect mergemode="add" type="Data" amount="1.25" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercInuitHarpooner</target>
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="500582">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatInuitHarpooner" culture="none" newname="500584" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercInuitHarpooner" culture="none" newname="500582">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercInuitHarpooner" culture="none" newname="500584" reqtech="ImpLegendaryNativesShadow">
+      </effect>
     </effects>
   </tech>
 <!--TEST TECHS-->

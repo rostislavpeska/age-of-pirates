@@ -131,14 +131,21 @@ class TestReplacement:
         assert '<effect type="TechStatus" status="active">DEWarriorSocietyInuit</effect>' in _tech("DEIndianFriendshipInuit")
         assert "<effect type=\"TextOutputTechName\">110130</effect>" in _tech("DEHCIniuitAllies1")
 
-    def test_merc_twin_joins_the_veterancy_chain(self):
-        vet, champ, leg = _tech("DEVeteranNativesShadow"), _tech("DEChampionInuit"), _tech("ImpLegendaryNativesShadow")
-        for blk, amount in ((vet, "1.20"), (champ, "1.35")):
-            assert re.search(r'amount="%s" subtype="Hitpoints"[^>]*>\s*<target type="ProtoUnit">%s<' % (amount, MERC), blk)
-            assert re.search(r'amount="%s" subtype="Damage"[^>]*>\s*<target type="ProtoUnit">%s<' % (amount, MERC), blk)
-        assert '<effect mergemode="add" type="SetName" proto="%s" culture="none" newname="500583">' % MERC in champ
-        assert '<effect mergemode="add" type="SetName" proto="%s" culture="none" newname="500584" reqtech="ImpLegendaryNativesShadow">' % MERC in champ
-        assert '<effect mergemode="add" type="SetName" proto="%s" culture="none" newname="500584">' % MERC in leg
+    def test_both_harpooners_walk_the_hunter_s_upgrade_ladder(self):
+        """The Harpooner replaced the Hunter, so it inherits the Hunter's PAID ladder: x1.25 + Elite at
+        DEWarriorSocietyInuit, x1.35 + Champion at DEChampionInuit, legendary rename at the shadow. The free
+        x1.20 from DEVeteranNativesShadow must be gone, or the pair carries 1.20 x 1.25 where the Hunter has 1.25."""
+        vet, champ = _tech("DEWarriorSocietyInuit"), _tech("DEChampionInuit")
+        for unit in (HARP, MERC):
+            for blk, amount, name in ((vet, "1.25", "500582"), (champ, "1.35", "500583")):
+                assert re.search(r'amount="%s" subtype="Hitpoints"[^>]*>\s*<target type="ProtoUnit">%s<' % (amount, unit), blk), (unit, amount)
+                assert re.search(r'amount="%s" subtype="Damage" allactions="1"[^>]*>\s*<target type="ProtoUnit">%s<' % (amount, unit), blk), (unit, amount)
+                assert '<effect mergemode="add" type="SetName" proto="%s" culture="none" newname="%s">' % (unit, name) in blk
+                assert '<effect mergemode="add" type="SetName" proto="%s" culture="none" newname="500584" reqtech="ImpLegendaryNativesShadow">' % unit in blk
+            assert '<effect mergemode="add" type="SetName" proto="%s" culture="none" newname="500584">' % unit in _tech("ImpLegendaryNativesShadow")
+        free = _tech("DEVeteranNativesShadow")
+        assert HARP not in free and MERC not in free
+        assert "mergeMode" not in vet and "mergeMode" not in champ
 
     def test_rollover_tells_the_new_story(self):
         st = _read("data/strings/english/stringmods.xml")
