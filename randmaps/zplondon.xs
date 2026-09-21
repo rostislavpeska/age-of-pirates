@@ -1129,6 +1129,18 @@ void main(void)
 		if (attackerCount >= 4) rmPlacePlayer(fourthAttacker, locX12, locZaSeat);
 	}
 	rmEchoInfo("LONDON seats: seatsByRole " + seatsByRole + " defenders at z " + rmZFractionToMeters(locZdSeat) + " m, attackers at z " + rmZFractionToMeters(locZaSeat) + " m");
+	// every seat nobody takes gets the user's EU_SPC_Prop_Block (30 x 45 tiles, the seat block's own size, props only;
+	// user 2026-09-21) - Florence's Construction blocks on its unused seats; when 12.3 seats the players instead, all
+	// eight spots are free
+	int blockPropFiller = cityBlock("prop filler", "EU_SPC_Prop_Block");
+	if (seatsByRole == 0) rmPlaceGroupingAtLoc(blockPropFiller, 0, locX78, locZdSeat);
+	if (seatsByRole == 0 || defenderCount < 2) rmPlaceGroupingAtLoc(blockPropFiller, 0, locX34, locZdSeat);
+	if (seatsByRole == 0 || defenderCount < 3) rmPlaceGroupingAtLoc(blockPropFiller, 0, locX56, locZdSeat);
+	if (seatsByRole == 0 || defenderCount < 4) rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZdSeat);
+	if (seatsByRole == 0) rmPlaceGroupingAtLoc(blockPropFiller, 0, locX78, locZaSeat);
+	if (seatsByRole == 0 || attackerCount < 2) rmPlaceGroupingAtLoc(blockPropFiller, 0, locX34, locZaSeat);
+	if (seatsByRole == 0 || attackerCount < 3) rmPlaceGroupingAtLoc(blockPropFiller, 0, locX56, locZaSeat);
+	if (seatsByRole == 0 || attackerCount < 4) rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZaSeat);
 
 	// ---- 12.3 INTERIM PLACEMENT (Paris's placement transposed onto the z axis), spawnSwitch set in 0.5 from the
 	// landmark coin (team 1 on the defenders' bank) - only when 12.2 seats nobody --------------------------------

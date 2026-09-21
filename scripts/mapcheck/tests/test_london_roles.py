@@ -170,6 +170,18 @@ class TestSeats:
                          ("", "", "firstAttacker", "locX78", "locZaSeat"), ("attackerCount", "2", "secondAttacker", "locX34", "locZaSeat"),
                          ("attackerCount", "3", "thirdAttacker", "locX56", "locZaSeat"), ("attackerCount", "4", "fourthAttacker", "locX12", "locZaSeat")]
 
+    def test_free_seats_take_the_prop_block(self):
+        s = _code(_section(_text(LONDON), "// ---- 12.2 SEATS BY ROLE", "// ---- 12.3 INTERIM PLACEMENT"))
+        assert 'int blockPropFiller = cityBlock("prop filler", "EU_SPC_Prop_Block");' in s
+        fills = re.findall(r"if \((seatsByRole == 0(?: \|\| (\w+) < (\d))?)\) rmPlaceGroupingAtLoc\(blockPropFiller, 0, (locX\d+), (locZ[da]Seat)\);", s)
+        assert [(f[1], f[2], f[3], f[4]) for f in fills] == [
+            ("", "", "locX78", "locZdSeat"), ("defenderCount", "2", "locX34", "locZdSeat"), ("defenderCount", "3", "locX56", "locZdSeat"), ("defenderCount", "4", "locX12", "locZdSeat"),
+            ("", "", "locX78", "locZaSeat"), ("attackerCount", "2", "locX34", "locZaSeat"), ("attackerCount", "3", "locX56", "locZaSeat"), ("attackerCount", "4", "locX12", "locZaSeat")]
+        assert s.index("rmPlacePlayer(fourthAttacker") < s.index("int blockPropFiller")            # seats first, fillers after
+        w = (REPO / "game/randmaps/groupings/EU_SPC_Prop_Block.xml").read_text(encoding="utf-8")
+        assert "<width>30</width>" in w and "<height>45</height>" in w and "TownCenter" not in w and "Nugget" not in w
+        assert (REPO / "game/randmaps/groupings/EU_SPC_Prop_Block.xml").read_bytes() == (STEAM / "groupings/EU_SPC_Prop_Block.xml").read_bytes()
+
     def test_seated_players_get_the_block_not_the_command_post(self):
         t = _code(_text(LONDON))
         loop = t[t.index("for(i=1; < cNumberNonGaiaPlayers + 1) {"):t.index("int harbourN1PostUnit")]
