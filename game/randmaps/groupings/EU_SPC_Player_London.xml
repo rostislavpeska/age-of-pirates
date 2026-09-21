@@ -17,23 +17,23 @@
 		<unit variation="133" posx="21.0000" posz="-40.0000" orientx="-0.3131" orienty="0.0000" orientz="-0.9497">UnderbrushForest</unit>
 		<unit variation="176" posx="-5.0000" posz="-42.0000" orientx="-0.1526" orienty="0.0000" orientz="0.9883">TreeGreatLakes</unit>
 		<unit variation="127" posx="1.0000" posz="-42.0000" orientx="0.1692" orienty="0.0000" orientz="0.9856">TreeGreatLakes</unit>
-		<unit variation="231" posx="9.0000" posz="-42.0000" orientx="-0.0084" orienty="0.0000" orientz="-1.0000">TreeGreatLakes</unit>
-		<unit variation="95" posx="15.0000" posz="-42.0000" orientx="0.6131" orienty="0.0000" orientz="0.7900">TreeGreatLakes</unit>
+		<unit variation="231" posx="9.0000" posz="-42.0000" orientx="-0.0084" orienty="0.0000" orientz="-1.0000">TreeNewEngland</unit>
+		<unit variation="95" posx="15.0000" posz="-42.0000" orientx="0.6131" orienty="0.0000" orientz="0.7900">TreeNewEngland</unit>
 		<unit variation="236" posx="-11.0000" posz="-38.0000" orientx="-0.8787" orienty="0.0000" orientz="0.4773">UnderbrushForest</unit>
 		<unit variation="231" posx="5.0000" posz="-38.0000" orientx="-0.9141" orienty="0.0000" orientz="0.4056">UnderbrushForest</unit>
 		<unit variation="136" posx="21.0000" posz="-38.0000" orientx="0.8143" orienty="0.0000" orientz="-0.5804">UnderbrushForest</unit>
 		<unit variation="182" posx="9.0000" posz="-38.0000" orientx="-0.8323" orienty="0.0000" orientz="0.5544">UnderbrushForest</unit>
-		<unit variation="200" posx="-23.0000" posz="-40.0000" orientx="-0.1479" orienty="0.0000" orientz="-0.9890">TreeGreatLakes</unit>
-		<unit variation="13" posx="-9.0000" posz="-40.0000" orientx="-0.9974" orienty="0.0000" orientz="-0.0723">TreeGreatLakes</unit>
+		<unit variation="200" posx="-23.0000" posz="-40.0000" orientx="-0.1479" orienty="0.0000" orientz="-0.9890">TreeNewEngland</unit>
+		<unit variation="13" posx="-9.0000" posz="-40.0000" orientx="-0.9974" orienty="0.0000" orientz="-0.0723">TreeNewEngland</unit>
 		<unit variation="231" posx="-7.0000" posz="-40.0000" orientx="-0.1380" orienty="0.0000" orientz="-0.9904">TreeGreatLakes</unit>
 		<unit variation="92" posx="1.0000" posz="-40.0000" orientx="0.9951" orienty="0.0000" orientz="-0.0990">TreeGreatLakes</unit>
-		<unit variation="96" posx="-1.0000" posz="-40.0000" orientx="-0.7162" orienty="0.0000" orientz="-0.6978">TreeGreatLakes</unit>
+		<unit variation="96" posx="-1.0000" posz="-40.0000" orientx="-0.7162" orienty="0.0000" orientz="-0.6978">TreeNewEngland</unit>
 		<unit variation="209" posx="-17.0000" posz="-36.0000" orientx="-0.0532" orienty="0.0000" orientz="0.9986">UnderbrushForest</unit>
 		<unit variation="137" posx="-13.0000" posz="-36.0000" orientx="-0.2018" orienty="0.0000" orientz="0.9794">UnderbrushForest</unit>
-		<unit variation="175" posx="-17.0000" posz="-38.0000" orientx="0.9967" orienty="0.0000" orientz="0.0807">TreeGreatLakes</unit>
+		<unit variation="175" posx="-17.0000" posz="-38.0000" orientx="0.9967" orienty="0.0000" orientz="0.0807">TreeNewEngland</unit>
 		<unit variation="109" posx="-15.0000" posz="-38.0000" orientx="0.1014" orienty="0.0000" orientz="-0.9948">TreeGreatLakes</unit>
 		<unit variation="78" posx="-11.0000" posz="-38.0000" orientx="0.3523" orienty="0.0000" orientz="0.9359">TreeGreatLakes</unit>
-		<unit variation="15" posx="21.0000" posz="-38.0000" orientx="-0.4015" orienty="0.0000" orientz="0.9158">TreeGreatLakes</unit>
+		<unit variation="15" posx="21.0000" posz="-38.0000" orientx="-0.4015" orienty="0.0000" orientz="0.9158">TreeNewEngland</unit>
 		<unit variation="236" posx="1.0000" posz="-34.0000" orientx="-0.9997" orienty="0.0000" orientz="-0.0224">UnderbrushForest</unit>
 		<unit variation="169" posx="7.0000" posz="-36.0000" orientx="0.0998" orienty="0.0000" orientz="0.9950">TreeGreatLakes</unit>
 		<unit variation="55" posx="9.0000" posz="-36.0000" orientx="0.9490" orienty="0.0000" orientz="0.3153">TreeGreatLakes</unit>
@@ -41,46 +41,46 @@
 		<unit variation="86" posx="7.0000" posz="-32.0000" orientx="0.6669" orienty="0.0000" orientz="0.7452">UnderbrushForest</unit>
 		<unit variation="155" posx="3.0000" posz="-32.0000" orientx="-0.6235" orienty="0.0000" orientz="0.7818">UnderbrushForest</unit>
 		<unit variation="64" posx="-17.0000" posz="-34.0000" orientx="-0.9816" orienty="0.0000" orientz="-0.1912">TreeGreatLakes</unit>
-		<unit variation="238" posx="-7.0000" posz="-34.0000" orientx="0.1197" orienty="0.0000" orientz="0.9928">TreeGreatLakes</unit>
-		<unit variation="243" posx="-13.0000" posz="-34.0000" orientx="0.9988" orienty="0.0000" orientz="-0.0492">TreeGreatLakes</unit>
+		<unit variation="238" posx="-7.0000" posz="-34.0000" orientx="0.1197" orienty="0.0000" orientz="0.9928">TreeNewEngland</unit>
+		<unit variation="243" posx="-13.0000" posz="-34.0000" orientx="0.9988" orienty="0.0000" orientz="-0.0492">TreeNewEngland</unit>
 		<unit variation="44" posx="-5.0000" posz="-34.0000" orientx="-0.8007" orienty="0.0000" orientz="-0.5991">TreeGreatLakes</unit>
-		<unit variation="191" posx="3.0000" posz="-34.0000" orientx="-0.9670" orienty="0.0000" orientz="0.2548">TreeGreatLakes</unit>
+		<unit variation="191" posx="3.0000" posz="-34.0000" orientx="-0.9670" orienty="0.0000" orientz="0.2548">TreeNewEngland</unit>
 		<unit variation="184" posx="11.0000" posz="-34.0000" orientx="-0.9695" orienty="0.0000" orientz="0.2451">TreeGreatLakes</unit>
 		<unit variation="218" posx="-8.7029" posz="-31.5051" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
 		<unit variation="218" posx="-8.9176" posz="-31.2905" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
 		<unit variation="189" posx="-19.0000" posz="-32.0000" orientx="0.9992" orienty="0.0000" orientz="-0.0392">TreeGreatLakes</unit>
 		<unit variation="48" posx="5.0000" posz="-32.0000" orientx="0.9662" orienty="0.0000" orientz="0.2579">TreeGreatLakes</unit>
-		<unit variation="27" posx="13.0000" posz="-32.0000" orientx="0.9128" orienty="0.0000" orientz="0.4085">TreeGreatLakes</unit>
-		<unit variation="131" posx="23.0000" posz="-32.0000" orientx="0.9585" orienty="0.0000" orientz="-0.2852">TreeGreatLakes</unit>
+		<unit variation="27" posx="13.0000" posz="-32.0000" orientx="0.9128" orienty="0.0000" orientz="0.4085">TreeNewEngland</unit>
+		<unit variation="131" posx="23.0000" posz="-32.0000" orientx="0.9585" orienty="0.0000" orientz="-0.2852">TreeNewEngland</unit>
 		<unit variation="104" posx="7.0000" posz="-28.0000" orientx="0.9998" orienty="0.0000" orientz="0.0208">UnderbrushForest</unit>
 		<unit variation="58" posx="-21.0000" posz="-28.0000" orientx="0.9802" orienty="0.0000" orientz="-0.1979">UnderbrushForest</unit>
 		<unit variation="196" posx="-22.9513" posz="-28.8633" orientx="0.5742" orienty="0.0000" orientz="-0.8187">UnderbrushForest</unit>
 		<unit variation="218" posx="-12.0894" posz="-29.3576" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
 		<unit variation="11" posx="-19.0000" posz="-30.0000" orientx="0.9959" orienty="0.0000" orientz="0.0907">TreeGreatLakes</unit>
-		<unit variation="161" posx="-11.0000" posz="-30.0000" orientx="0.4720" orienty="0.0000" orientz="-0.8816">TreeGreatLakes</unit>
+		<unit variation="161" posx="-11.0000" posz="-30.0000" orientx="0.4720" orienty="0.0000" orientz="-0.8816">TreeNewEngland</unit>
 		<unit variation="166" posx="1.0000" posz="-30.0000" orientx="0.4720" orienty="0.0000" orientz="-0.8816">TreeGreatLakes</unit>
-		<unit variation="9" posx="9.0000" posz="-30.0000" orientx="0.8731" orienty="0.0000" orientz="-0.4875">TreeGreatLakes</unit>
-		<unit variation="18" posx="3.0000" posz="-30.0000" orientx="0.7895" orienty="0.0000" orientz="0.6137">TreeGreatLakes</unit>
+		<unit variation="9" posx="9.0000" posz="-30.0000" orientx="0.8731" orienty="0.0000" orientz="-0.4875">TreeNewEngland</unit>
+		<unit variation="18" posx="3.0000" posz="-30.0000" orientx="0.7895" orienty="0.0000" orientz="0.6137">TreeNewEngland</unit>
 		<unit variation="76" posx="13.0000" posz="-26.0000" orientx="-0.2602" orienty="0.0000" orientz="0.9656">UnderbrushForest</unit>
 		<unit variation="54" posx="11.0000" posz="-26.0000" orientx="0.5891" orienty="0.0000" orientz="0.8080">UnderbrushForest</unit>
 		<unit variation="218" posx="-16.1454" posz="-28.2381" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
 		<unit variation="33" posx="-23.0000" posz="-28.0000" orientx="-0.0284" orienty="0.0000" orientz="-0.9996">TreeGreatLakes</unit>
-		<unit variation="176" posx="5.0000" posz="-28.0000" orientx="0.3350" orienty="0.0000" orientz="-0.9422">TreeGreatLakes</unit>
+		<unit variation="176" posx="5.0000" posz="-28.0000" orientx="0.3350" orienty="0.0000" orientz="-0.9422">TreeNewEngland</unit>
 		<unit variation="62" posx="11.0000" posz="-28.0000" orientx="-0.6878" orienty="0.0000" orientz="-0.7259">TreeGreatLakes</unit>
-		<unit variation="145" posx="25.0000" posz="-28.0000" orientx="0.5155" orienty="0.0000" orientz="-0.8569">TreeGreatLakes</unit>
+		<unit variation="145" posx="25.0000" posz="-28.0000" orientx="0.5155" orienty="0.0000" orientz="-0.8569">TreeNewEngland</unit>
 		<unit variation="224" posx="-1.1569" posz="-22.3744" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">Market</unit>
 		<unit variation="236" posx="27.0000" posz="-24.0000" orientx="0.6973" orienty="0.0000" orientz="-0.7168">UnderbrushForest</unit>
 		<unit variation="218" posx="-16.7836" posz="-25.5444" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
 		<unit variation="218" posx="-17.9393" posz="-25.9856" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
-		<unit variation="185" posx="15.0000" posz="-26.0000" orientx="-0.9974" orienty="0.0000" orientz="-0.0723">TreeGreatLakes</unit>
+		<unit variation="185" posx="15.0000" posz="-26.0000" orientx="-0.9974" orienty="0.0000" orientz="-0.0723">TreeNewEngland</unit>
 		<unit variation="107" posx="-9.2121" posz="-23.3932" orientx="0.4229" orienty="0.0000" orientz="0.9062">zpSPCEUHouseProp</unit>
 		<unit variation="55" posx="6.1004" posz="-22.4210" orientx="-0.9239" orienty="0.0000" orientz="-0.3826">zpSPCEUHouseProp</unit>
 		<unit variation="254" posx="17.0000" posz="-22.0000" orientx="-0.3995" orienty="0.0000" orientz="0.9167">deMineCoalBuildable</unit>
 		<unit variation="151" posx="16.4237" posz="-23.0170" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="172" posx="-14.2839" posz="-23.1224" orientx="0.4453" orienty="0.0018" orientz="-0.8954">zpGoose</unit>
-		<unit variation="141" posx="-23.0000" posz="-24.0000" orientx="-0.8094" orienty="0.0000" orientz="0.5872">TreeGreatLakes</unit>
-		<unit variation="5" posx="13.0000" posz="-24.0000" orientx="-0.9162" orienty="0.0000" orientz="-0.4008">TreeGreatLakes</unit>
-		<unit variation="190" posx="25.0000" posz="-24.0000" orientx="0.5823" orienty="0.0000" orientz="-0.8130">TreeGreatLakes</unit>
+		<unit variation="141" posx="-23.0000" posz="-24.0000" orientx="-0.8094" orienty="0.0000" orientz="0.5872">TreeNewEngland</unit>
+		<unit variation="5" posx="13.0000" posz="-24.0000" orientx="-0.9162" orienty="0.0000" orientz="-0.4008">TreeNewEngland</unit>
+		<unit variation="190" posx="25.0000" posz="-24.0000" orientx="0.5823" orienty="0.0000" orientz="-0.8130">TreeNewEngland</unit>
 		<unit variation="203" posx="27.0000" posz="-24.0000" orientx="-0.0484" orienty="0.0000" orientz="-0.9988">TreeGreatLakes</unit>
 		<unit variation="96" posx="-14.1757" posz="-22.6063" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="167" posx="-15.4649" posz="-21.6538" orientx="0.1505" orienty="0.0033" orientz="-0.9886">zpGoose</unit>
@@ -95,13 +95,13 @@
 		<unit variation="21" posx="18.5900" posz="-17.7936" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="93" posx="18.4035" posz="-18.5354" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="116" posx="-19.6493" posz="-16.7366" orientx="-0.9239" orienty="-0.0000" orientz="0.3827">BerryBush</unit>
-		<unit variation="45" posx="21.0000" posz="-18.0000" orientx="0.5055" orienty="0.0000" orientz="0.8628">TreeGreatLakes</unit>
+		<unit variation="45" posx="21.0000" posz="-18.0000" orientx="0.5055" orienty="0.0000" orientz="0.8628">TreeNewEngland</unit>
 		<unit variation="153" posx="-4.6303" posz="-16.0876" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="215" posx="-4.7076" posz="-16.5548" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="16" posx="0.7999" posz="-15.6033" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="92" posx="1.3311" posz="-16.8149" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="65" posx="20.2541" posz="-15.2705" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="172" posx="25.0000" posz="-16.0000" orientx="0.2280" orienty="0.0000" orientz="0.9737">TreeGreatLakes</unit>
+		<unit variation="172" posx="25.0000" posz="-16.0000" orientx="0.2280" orienty="0.0000" orientz="0.9737">TreeNewEngland</unit>
 		<unit variation="155" posx="-21.2807" posz="-13.2376" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="12" posx="1.0329" posz="-14.4506" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="212" posx="-4.7161" posz="-14.7565" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
@@ -226,12 +226,12 @@
 		<unit variation="93" posx="-19.0000" posz="22.0000" orientx="-0.3971" orienty="0.0000" orientz="-0.9178">UnderbrushForest</unit>
 		<unit variation="57" posx="21.0000" posz="22.0000" orientx="-0.9485" orienty="0.0000" orientz="-0.3168">UnderbrushForest</unit>
 		<unit variation="157" posx="25.0000" posz="20.0000" orientx="0.8143" orienty="0.0000" orientz="-0.5804">TreeGreatLakes</unit>
-		<unit variation="99" posx="21.0000" posz="20.0000" orientx="-0.9719" orienty="0.0000" orientz="0.2354">TreeGreatLakes</unit>
+		<unit variation="99" posx="21.0000" posz="20.0000" orientx="-0.9719" orienty="0.0000" orientz="0.2354">TreeNewEngland</unit>
 		<unit variation="86" posx="25.0000" posz="24.0000" orientx="0.3240" orienty="0.0000" orientz="0.9460">UnderbrushForest</unit>
 		<unit variation="26" posx="-23.0000" posz="24.0000" orientx="0.3631" orienty="0.0000" orientz="-0.9318">UnderbrushForest</unit>
 		<unit variation="218" posx="21.8541" posz="23.3869" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
 		<unit variation="218" posx="21.8226" posz="23.1817" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
-		<unit variation="103" posx="-23.0000" posz="22.0000" orientx="-0.9500" orienty="0.0000" orientz="0.3123">TreeGreatLakes</unit>
+		<unit variation="103" posx="-23.0000" posz="22.0000" orientx="-0.9500" orienty="0.0000" orientz="0.3123">TreeNewEngland</unit>
 		<unit variation="190" posx="-21.0000" posz="22.0000" orientx="0.9246" orienty="0.0000" orientz="0.3809">TreeGreatLakes</unit>
 		<unit variation="43" posx="25.0000" posz="22.0000" orientx="0.5325" orienty="0.0000" orientz="-0.8464">TreeGreatLakes</unit>
 		<unit variation="58" posx="-13.0000" posz="26.0000" orientx="-0.5959" orienty="0.0000" orientz="-0.8030">UnderbrushForest</unit>
@@ -243,45 +243,45 @@
 		<unit variation="144" posx="-21.0000" posz="26.0000" orientx="0.2182" orienty="0.0000" orientz="0.9759">UnderbrushForest</unit>
 		<unit variation="218" posx="17.4481" posz="24.5344" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
 		<unit variation="218" posx="19.4600" posz="25.1904" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
-		<unit variation="56" posx="-19.0000" posz="24.0000" orientx="0.2280" orienty="0.0000" orientz="0.9737">TreeGreatLakes</unit>
+		<unit variation="56" posx="-19.0000" posz="24.0000" orientx="0.2280" orienty="0.0000" orientz="0.9737">TreeNewEngland</unit>
 		<unit variation="204" posx="-13.0000" posz="24.0000" orientx="-0.8640" orienty="0.0000" orientz="0.5035">TreeGreatLakes</unit>
 		<unit variation="147" posx="-11.0000" posz="24.0000" orientx="-0.3739" orienty="0.0000" orientz="0.9275">TreeGreatLakes</unit>
 		<unit variation="140" posx="25.0000" posz="28.0000" orientx="0.6210" orienty="0.0000" orientz="0.7838">UnderbrushForest</unit>
 		<unit variation="50" posx="-23.0000" posz="28.0000" orientx="0.7781" orienty="0.0000" orientz="-0.6282">UnderbrushForest</unit>
 		<unit variation="70" posx="11.0000" posz="28.0000" orientx="0.9290" orienty="0.0000" orientz="-0.3702">UnderbrushForest</unit>
 		<unit variation="218" posx="16.9444" posz="25.8416" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
-		<unit variation="248" posx="-23.0000" posz="26.0000" orientx="-0.9931" orienty="0.0000" orientz="0.1173">TreeGreatLakes</unit>
-		<unit variation="59" posx="-3.0000" posz="26.0000" orientx="-0.9058" orienty="0.0000" orientz="0.4238">TreeGreatLakes</unit>
+		<unit variation="248" posx="-23.0000" posz="26.0000" orientx="-0.9931" orienty="0.0000" orientz="0.1173">TreeNewEngland</unit>
+		<unit variation="59" posx="-3.0000" posz="26.0000" orientx="-0.9058" orienty="0.0000" orientz="0.4238">TreeNewEngland</unit>
 		<unit variation="38" posx="-19.0000" posz="30.0000" orientx="0.9458" orienty="0.0000" orientz="0.3248">UnderbrushForest</unit>
 		<unit variation="7" posx="4.7743" posz="28.2564" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="201" posx="1.0000" posz="30.0000" orientx="-0.9834" orienty="0.0000" orientz="-0.1814">UnderbrushForest</unit>
 		<unit variation="86" posx="9.0000" posz="30.0000" orientx="-0.6840" orienty="0.0000" orientz="0.7295">UnderbrushForest</unit>
 		<unit variation="30" posx="-15.0000" posz="28.0000" orientx="0.4529" orienty="0.0000" orientz="0.8916">TreeGreatLakes</unit>
-		<unit variation="233" posx="-5.0000" posz="28.0000" orientx="-0.8183" orienty="0.0000" orientz="-0.5748">TreeGreatLakes</unit>
+		<unit variation="233" posx="-5.0000" posz="28.0000" orientx="-0.8183" orienty="0.0000" orientz="-0.5748">TreeNewEngland</unit>
 		<unit variation="60" posx="7.0000" posz="28.0000" orientx="-0.4425" orienty="0.0000" orientz="-0.8968">TreeGreatLakes</unit>
 		<unit variation="185" posx="9.0000" posz="28.0000" orientx="-0.7946" orienty="0.0000" orientz="-0.6071">TreeGreatLakes</unit>
 		<unit variation="147" posx="15.0000" posz="28.0000" orientx="0.8016" orienty="0.0000" orientz="0.5978">TreeGreatLakes</unit>
 		<unit variation="98" posx="23.0000" posz="28.0000" orientx="1.0000" orienty="0.0000" orientz="-0.0092">TreeGreatLakes</unit>
 		<unit variation="251" posx="-8.4083" posz="30.8999" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="102" posx="-21.0000" posz="30.0000" orientx="0.6288" orienty="0.0000" orientz="0.7776">TreeGreatLakes</unit>
-		<unit variation="147" posx="5.0000" posz="30.0000" orientx="0.6052" orienty="0.0000" orientz="0.7961">TreeGreatLakes</unit>
-		<unit variation="250" posx="3.0000" posz="30.0000" orientx="-0.2698" orienty="0.0000" orientz="0.9629">TreeGreatLakes</unit>
+		<unit variation="147" posx="5.0000" posz="30.0000" orientx="0.6052" orienty="0.0000" orientz="0.7961">TreeNewEngland</unit>
+		<unit variation="250" posx="3.0000" posz="30.0000" orientx="-0.2698" orienty="0.0000" orientz="0.9629">TreeNewEngland</unit>
 		<unit variation="48" posx="-27.0000" posz="34.0000" orientx="-0.4955" orienty="0.0000" orientz="-0.8686">UnderbrushForest</unit>
 		<unit variation="243" posx="15.0000" posz="34.0000" orientx="-0.3646" orienty="0.0000" orientz="0.9312">UnderbrushForest</unit>
 		<unit variation="231" posx="17.0000" posz="34.0000" orientx="0.9001" orienty="0.0000" orientz="0.4357">UnderbrushForest</unit>
 		<unit variation="185" posx="15.0000" posz="34.0000" orientx="0.9168" orienty="0.0000" orientz="0.3993">UnderbrushForest</unit>
-		<unit variation="76" posx="-21.0000" posz="32.0000" orientx="-0.7823" orienty="0.0000" orientz="-0.6229">TreeGreatLakes</unit>
+		<unit variation="76" posx="-21.0000" posz="32.0000" orientx="-0.7823" orienty="0.0000" orientz="-0.6229">TreeNewEngland</unit>
 		<unit variation="149" posx="3.0000" posz="32.0000" orientx="-0.6235" orienty="0.0000" orientz="0.7818">TreeGreatLakes</unit>
-		<unit variation="95" posx="17.0000" posz="32.0000" orientx="-0.7502" orienty="0.0000" orientz="-0.6612">TreeGreatLakes</unit>
-		<unit variation="13" posx="11.0000" posz="32.0000" orientx="0.1609" orienty="0.0000" orientz="-0.9870">TreeGreatLakes</unit>
+		<unit variation="95" posx="17.0000" posz="32.0000" orientx="-0.7502" orienty="0.0000" orientz="-0.6612">TreeNewEngland</unit>
+		<unit variation="13" posx="11.0000" posz="32.0000" orientx="0.1609" orienty="0.0000" orientz="-0.9870">TreeNewEngland</unit>
 		<unit variation="147" posx="-25.0000" posz="36.0000" orientx="-0.3320" orienty="0.0000" orientz="-0.9433">UnderbrushForest</unit>
 		<unit variation="163" posx="19.0000" posz="36.0000" orientx="-0.5673" orienty="0.0000" orientz="0.8235">UnderbrushForest</unit>
 		<unit variation="101" posx="-9.0000" posz="34.0000" orientx="0.1296" orienty="0.0000" orientz="0.9916">TreeGreatLakes</unit>
-		<unit variation="66" posx="-13.0000" posz="34.0000" orientx="0.5494" orienty="0.0000" orientz="-0.8356">TreeGreatLakes</unit>
-		<unit variation="178" posx="-1.0000" posz="34.0000" orientx="-0.9658" orienty="0.0000" orientz="-0.2594">TreeGreatLakes</unit>
-		<unit variation="183" posx="17.0000" posz="34.0000" orientx="-0.8513" orienty="0.0000" orientz="-0.5247">TreeGreatLakes</unit>
+		<unit variation="66" posx="-13.0000" posz="34.0000" orientx="0.5494" orienty="0.0000" orientz="-0.8356">TreeNewEngland</unit>
+		<unit variation="178" posx="-1.0000" posz="34.0000" orientx="-0.9658" orienty="0.0000" orientz="-0.2594">TreeNewEngland</unit>
+		<unit variation="183" posx="17.0000" posz="34.0000" orientx="-0.8513" orienty="0.0000" orientz="-0.5247">TreeNewEngland</unit>
 		<unit variation="232" posx="13.0000" posz="34.0000" orientx="-0.9386" orienty="0.0000" orientz="-0.3451">TreeGreatLakes</unit>
-		<unit variation="6" posx="21.0000" posz="34.0000" orientx="-0.2890" orienty="0.0000" orientz="0.9573">TreeGreatLakes</unit>
+		<unit variation="6" posx="21.0000" posz="34.0000" orientx="-0.2890" orienty="0.0000" orientz="0.9573">TreeNewEngland</unit>
 		<unit variation="120" posx="19.0000" posz="34.0000" orientx="0.1987" orienty="0.0000" orientz="0.9801">TreeGreatLakes</unit>
 		<unit variation="71" posx="5.0000" posz="38.0000" orientx="0.5055" orienty="0.0000" orientz="0.8628">UnderbrushForest</unit>
 		<unit variation="169" posx="-25.0000" posz="36.0000" orientx="0.8314" orienty="0.0000" orientz="-0.5557">TreeGreatLakes</unit>
@@ -290,11 +290,11 @@
 		<unit variation="150" posx="5.0000" posz="40.0000" orientx="-0.0284" orienty="0.0000" orientz="-0.9996">UnderbrushForest</unit>
 		<unit variation="94" posx="-7.0000" posz="40.0000" orientx="0.3255" orienty="0.0000" orientz="-0.9455">UnderbrushForest</unit>
 		<unit variation="178" posx="-23.0000" posz="38.0000" orientx="0.9951" orienty="0.0000" orientz="-0.0990">TreeGreatLakes</unit>
-		<unit variation="57" posx="-15.0000" posz="38.0000" orientx="0.9640" orienty="0.0000" orientz="-0.2660">TreeGreatLakes</unit>
+		<unit variation="57" posx="-15.0000" posz="38.0000" orientx="0.9640" orienty="0.0000" orientz="-0.2660">TreeNewEngland</unit>
 		<unit variation="122" posx="-1.0000" posz="38.0000" orientx="0.9044" orienty="0.0000" orientz="0.4267">TreeGreatLakes</unit>
 		<unit variation="231" posx="-5.0000" posz="38.0000" orientx="0.9999" orienty="0.0000" orientz="0.0108">TreeGreatLakes</unit>
-		<unit variation="225" posx="5.0000" posz="38.0000" orientx="-0.7092" orienty="0.0000" orientz="-0.7050">TreeGreatLakes</unit>
-		<unit variation="241" posx="3.0000" posz="38.0000" orientx="-0.9937" orienty="0.0000" orientz="-0.1122">TreeGreatLakes</unit>
+		<unit variation="225" posx="5.0000" posz="38.0000" orientx="-0.7092" orienty="0.0000" orientz="-0.7050">TreeNewEngland</unit>
+		<unit variation="241" posx="3.0000" posz="38.0000" orientx="-0.9937" orienty="0.0000" orientz="-0.1122">TreeNewEngland</unit>
 		<unit variation="12" posx="3.0000" posz="40.0000" orientx="-0.9868" orienty="0.0000" orientz="-0.1617">TreeGreatLakes</unit>
 		<unit variation="220" posx="5.0000" posz="40.0000" orientx="-0.7436" orienty="0.0000" orientz="-0.6686">TreeGreatLakes</unit>
 	</units>
