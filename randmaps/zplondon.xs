@@ -1099,6 +1099,13 @@ void main(void)
 	int blockPlayerLondon = cityBlock("player london", "EU_SPC_Player_London");
 	int blockPropFiller = cityBlock("prop filler", "EU_SPC_Prop_Block");         // 30 x 45 like the seat block, props only
 	int blockParkBig02 = cityBlock("park big turned", "EU_SPC_Park_big_02");     // the user's "EU Park Rotated" export (2 x 2, the big park turned 180, a NuggetWolfRock placeholder)
+	// the SECOND Stuart post (user 2026-09-22): EU_Native_Block_Stuart_02 (16 x 16, the socket on its -z side) on the
+	// Stuart side only - inside the prop block's empty middle at the road (rows 1-2) while the strip has a prop block
+	// (one to three per side); with four per side, and when 12.3 seats the players, outside the city behind the centre
+	// gate, 18 tiles beyond the wall segment's centre (the segment reaches 7.5, the block 8: a 2-tile gap; 6 tiles
+	// stay to the map edge)
+	int blockStuart2 = cityBlock("stuart 2", "EU_Native_Block_Stuart_02");
+	int stuart2OutTiles = wallOutTiles + 18;
 	float locX56 = (locX5 + locX6) * 0.5;
 	float locZs56 = wallS-rmZTilesToFraction(col5+col6)*0.5;                     // the 2-column centre of cols 5-6
 	float locZn56 = wallN+rmZTilesToFraction(col5+col6)*0.5;
@@ -1106,12 +1113,14 @@ void main(void)
 	float locZd4 = locZs4;          float locZa4 = locZn4;
 	float locZd6 = locZs6;          float locZa6 = locZn6;
 	float locZd56 = locZs56;        float locZa56 = locZn56;
+	float locZaOut = wallN + rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);   // the attackers' countryside, behind the centre gate
 	if (defenderBank == 1)
 	{
 		locZdSeat = locZn5;         locZaSeat = locZs5;
 		locZd4 = locZn4;            locZa4 = locZs4;
 		locZd6 = locZn6;            locZa6 = locZs6;
 		locZd56 = locZn56;          locZa56 = locZs56;
+		locZaOut = wallS - rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);
 	}
 	int seatsByRole = 0;
 	if (cNumberTeams == 2 && defenderCount <= 4 && attackerCount <= 4)
@@ -1184,6 +1193,7 @@ void main(void)
 			rmPlaceGroupingAtLoc(blockHouse1, 0, locX3, locZa6);
 			rmPlaceGroupingAtLoc(blockHouse2, 0, locX4, locZa6);
 			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZaSeat);
+			rmPlaceGroupingAtLoc(blockStuart2, 0, locX12, locZaSeat);   // the second Stuart post, inside the prop block's hole
 		}
 		if (attackerCount == 2)
 		{
@@ -1199,6 +1209,7 @@ void main(void)
 			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZa6);
 			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZa6);
 			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZaSeat);
+			rmPlaceGroupingAtLoc(blockStuart2, 0, locX12, locZaSeat);   // the second Stuart post, inside the prop block's hole
 		}
 		if (attackerCount == 3)
 		{
@@ -1207,6 +1218,7 @@ void main(void)
 			rmPlacePlayer(secondAttacker, locX34, locZaSeat);
 			rmPlacePlayer(thirdAttacker, locX56, locZaSeat);
 			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZaSeat);
+			rmPlaceGroupingAtLoc(blockStuart2, 0, locX12, locZaSeat);   // the second Stuart post, inside the prop block's hole
 		}
 		if (attackerCount == 4)
 		{
@@ -1215,6 +1227,7 @@ void main(void)
 			rmPlacePlayer(secondAttacker, locX34, locZaSeat);
 			rmPlacePlayer(thirdAttacker, locX56, locZaSeat);
 			rmPlacePlayer(fourthAttacker, locX12, locZaSeat);
+			rmPlaceGroupingAtLoc(blockStuart2, 0, 0.5, locZaOut);        // no prop block: the second Stuart post outside the city
 		}
 	}
 	if (seatsByRole == 0)
@@ -1228,6 +1241,7 @@ void main(void)
 		rmPlaceGroupingAtLoc(blockPropFiller, 0, locX34, locZaSeat);
 		rmPlaceGroupingAtLoc(blockPropFiller, 0, locX56, locZaSeat);
 		rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZaSeat);
+		rmPlaceGroupingAtLoc(blockStuart2, 0, 0.5, locZaOut);            // five and more per side: the second Stuart post outside the city
 	}
 	rmEchoInfo("LONDON seats: seatsByRole " + seatsByRole + " defenders x" + defenderCount + " at z " + rmZFractionToMeters(locZdSeat) + " m, attackers x" + attackerCount + " at z " + rmZFractionToMeters(locZaSeat) + " m");
 

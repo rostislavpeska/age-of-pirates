@@ -171,6 +171,10 @@ class TestSeats:
         i = s.index("if (%sCount == %d)" % (side, k)); j = s.index("\n\t\t}", i)
         return re.findall(r"(rmPlacePlayer|rmSetNuggetDifficulty|rmPlaceGroupingAtLoc)\(([^)]*)\);", s[i:j])
 
+    def _stuart2(self, side, at):
+        """the attackers' (Stuart) strips end with the second Stuart post; the defenders' do not"""
+        return [("rmPlaceGroupingAtLoc", "blockStuart2, 0, " + at)] if side == "attacker" else []
+
     def test_blocks_and_the_bank_keyed_columns(self):
         s = self._sec()
         for line in ('int blockPlayerLondon = cityBlock("player london", "EU_SPC_Player_London");',
@@ -199,7 +203,7 @@ class TestSeats:
                 ("rmPlaceGroupingAtLoc", "blockHouse1, 0, locX3, %s" % z7),
                 ("rmPlaceGroupingAtLoc", "blockHouse2, 0, locX4, %s" % z7),
                 ("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, %s" % S),            # rows 1-2 x cols 4-6
-            ], side
+            ] + self._stuart2(side, "locX12, %s" % S), side
 
     def test_two_per_side(self):
         for side, o, S, z5, z7, z67 in self.SIDES:
@@ -209,14 +213,29 @@ class TestSeats:
                 ("rmPlaceGroupingAtLoc", "blockHouse5, 0, locX5, %s" % S), ("rmPlaceGroupingAtLoc", "blockHouse6, 0, locX6, %s" % S),
                 ("rmPlaceGroupingAtLoc", "blockHouse1, 0, locX5, %s" % z7), ("rmPlaceGroupingAtLoc", "blockHouse2, 0, locX6, %s" % z7),
                 ("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, %s" % S),
-            ], side
+            ] + self._stuart2(side, "locX12, %s" % S), side
 
     def test_three_and_four_per_side(self):
         for side, o, S, z5, z7, z67 in self.SIDES:
             assert self._block(side, 3) == [("rmPlacePlayer", "first%s, locX78, %s" % (o, S)), ("rmPlacePlayer", "second%s, locX34, %s" % (o, S)),
-                                            ("rmPlacePlayer", "third%s, locX56, %s" % (o, S)), ("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, %s" % S)], side
+                                            ("rmPlacePlayer", "third%s, locX56, %s" % (o, S)), ("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, %s" % S)] + self._stuart2(side, "locX12, %s" % S), side
             assert self._block(side, 4) == [("rmPlacePlayer", "first%s, locX78, %s" % (o, S)), ("rmPlacePlayer", "second%s, locX34, %s" % (o, S)),
-                                            ("rmPlacePlayer", "third%s, locX56, %s" % (o, S)), ("rmPlacePlayer", "fourth%s, locX12, %s" % (o, S))], side
+                                            ("rmPlacePlayer", "third%s, locX56, %s" % (o, S)), ("rmPlacePlayer", "fourth%s, locX12, %s" % (o, S))] + self._stuart2(side, "0.5, locZaOut"), side
+
+    def test_second_stuart_post_on_the_stuart_side(self):
+        s = self._sec()
+        assert 'int blockStuart2 = cityBlock("stuart 2", "EU_Native_Block_Stuart_02");' in s and "int stuart2OutTiles = wallOutTiles + 18;" in s
+        assert "float locZaOut = wallN + rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);" in s and "locZaOut = wallS - rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);" in s
+        for k in (1, 2, 3):          # inside the prop block's hole, right after the prop block
+            b = self._block("attacker", k)
+            assert b[-2:] == [("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, locZaSeat"), ("rmPlaceGroupingAtLoc", "blockStuart2, 0, locX12, locZaSeat")], k
+            assert not any("blockStuart2" in c[1] for c in self._block("defender", k)), k
+        assert self._block("attacker", 4)[-1] == ("rmPlaceGroupingAtLoc", "blockStuart2, 0, 0.5, locZaOut")
+        assert not any("blockStuart2" in c[1] for c in self._block("defender", 4))
+        fb = s[s.index("if (seatsByRole == 0)"):s.index('rmEchoInfo("LONDON seats:')]
+        assert fb.count("blockStuart2") == 1 and "rmPlaceGroupingAtLoc(blockStuart2, 0, 0.5, locZaOut);" in fb
+        w = (REPO / "game/randmaps/groupings/EU_Native_Block_Stuart_02.xml").read_bytes()
+        assert w.count(b"zpSPCSocketStuart") == 1 and b"<width>16</width>" in w and w == (STEAM / "groupings/EU_Native_Block_Stuart_02.xml").read_bytes()
 
     def test_fallback_fills_all_eight_spots(self):
         s = self._sec()
