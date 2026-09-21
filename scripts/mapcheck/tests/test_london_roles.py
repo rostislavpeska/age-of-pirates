@@ -273,9 +273,7 @@ class TestGateOrder:
     def test_gaia_gets_the_gate_tech_at_start(self):
         t = _code(_text(LONDON))
         s = t[t.index('rmCreateTrigger("LondonStartingTechs");'):t.index('rmAddTriggerEffect("Player : Override Civilization for Flag");')]
-        assert 'rmSetTriggerEffectParamInt("PlayerID", 0);
-	rmSetTriggerEffectParam("TechID", "cTechzpConverGate");
-	rmSetTriggerEffectParamInt("Status", 2);' in s
+        assert chr(10).join(['rmSetTriggerEffectParamInt("PlayerID", 0);', '\trmSetTriggerEffectParam("TechID", "cTechzpConverGate");', '\trmSetTriggerEffectParamInt("Status", 2);']) in s
         x = (REPO / "data/techtreemods.xml").read_text(encoding="utf-8", errors="replace")
         i = x.index('<tech name="zpConverGate"')
         assert 'toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocket"' in x[i:x.index("</tech>", i)]
