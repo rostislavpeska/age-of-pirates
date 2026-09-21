@@ -483,8 +483,8 @@ void main(void)
 	if (cNumberNonGaiaPlayers >=3)
 		baseSizeZ = 653;
 	if (cNumberNonGaiaPlayers >=6)
-		baseSizeZ = 773;
-	int sizeZ = baseSizeZ + extraColumns * extraColumnM - 2 * strippedColumns * extraColumnM;   // ints only: 613 -> 645, 653 -> 685, 773 -> 805 (the four-column city: 709 / 749 / 869)
+		baseSizeZ = 733;              // Paris's 773 - 40 m (user 2026-09-22: the 4v4 countryside slightly smaller)
+	int sizeZ = baseSizeZ + extraColumns * extraColumnM - 2 * strippedColumns * extraColumnM;   // ints only: 613 -> 645, 653 -> 685, 733 -> 765 (the four-column city: 709 / 749 / 869; the 6+ frame 773 -> 733 on 2026-09-22)
 	rmSetMapSize(sizeX, sizeZ);
 
 	rmSetAllMapReveal(true);
@@ -1102,11 +1102,11 @@ void main(void)
 	// the SECOND Stuart post (user 2026-09-22): EU_Native_Block_Stuart_02 (16 x 16, the socket on its -z side) on the
 	// Stuart side only - inside the prop block's empty middle at the road (rows 1-2) while the strip has a prop block
 	// (one to three per side); with four per side, and when 12.3 seats the players, outside the city behind the centre
-	// gate, 18 tiles beyond the wall segment's centre (the segment reaches 7.5, the block 8: a 2-tile gap; 6 tiles
-	// stay to the map edge)
+	// gate, 30 tiles beyond the wall segment's centre (user 2026-09-22: further out; on the 4v4 frame the strip beyond
+	// the last column is 70 tiles, so the block spans +30..+46 from the segment centre with 24 tiles to the map edge)
 	int blockStuart2 = cityBlock("stuart 2", "EU_Native_Block_Stuart_02");
 	rmSetGroupingMaxDistance(blockStuart2, 0.00);                                // pinned: the block's 0.5 m slack let it slide off the hole's centre
-	int stuart2OutTiles = wallOutTiles + 18;
+	int stuart2OutTiles = wallOutTiles + 30;
 	// inside the prop block the estate sat off-centre (user 2026-09-22, screenshot): a metre offset, rows along x
 	// (negative = away from the road, toward row 3), columns along z (positive = toward the outer edge on either bank
 	// once signed below) - tune here

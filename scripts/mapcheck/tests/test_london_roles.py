@@ -230,7 +230,7 @@ class TestSeats:
 
     def test_second_stuart_post_on_the_stuart_side(self):
         s = self._sec()
-        assert 'int blockStuart2 = cityBlock("stuart 2", "EU_Native_Block_Stuart_02");' in s and "int stuart2OutTiles = wallOutTiles + 18;" in s
+        assert 'int blockStuart2 = cityBlock("stuart 2", "EU_Native_Block_Stuart_02");' in s and "int stuart2OutTiles = wallOutTiles + 30;" in s
         assert "float locZaOut = wallN + rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);" in s and "locZaOut = wallS - rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);" in s
         for k in (1, 2, 3):          # inside the prop block's hole, right after the prop block
             b = self._block("attacker", k)
@@ -384,7 +384,7 @@ class TestScope:
         t = _code(_text(LONDON))
         assert 'rmTerrainInitialize("new_england' + chr(92) + 'cliff_inland_top_ne", 1.0);' in t and "rmSetBaseTerrainMix" not in t   # a plain type: a base MIX scatters its rocks (2026-09-21)
         assert 'rmSetAreaMix(area, "italy_cliff_top");' in t                                    # the same mix the countryside paints
-        assert "int baseSizeZ = 613;" in t and "baseSizeZ = 653;" in t and "baseSizeZ = 773;" in t
+        assert "int baseSizeZ = 613;" in t and "baseSizeZ = 653;" in t and "baseSizeZ = 733;" in t
 
     def test_park_bakes_the_royal_huntsman_rescue(self):
         t = _code(_text(LONDON))
