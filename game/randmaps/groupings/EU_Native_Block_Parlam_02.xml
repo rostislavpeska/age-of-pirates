@@ -94,33 +94,6 @@
 		<unit variation="167" posx="-10.0067" posz="11.1642" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpNativeTowerParliament</unit>
 	</units>
 	<tiles>
-		<tilegroup type="PassableLand" subtype="great_plains\default">
-			<block startx="-7" startz="-7" endx="-7" endz="0"></block>
-			<block startx="-6" startz="-7" endx="-6" endz="0"></block>
-			<block startx="-5" startz="-7" endx="-5" endz="-6"></block>
-			<block startx="-5" startz="-1" endx="-5" endz="0"></block>
-			<block startx="-4" startz="-7" endx="-4" endz="-7"></block>
-			<block startx="-7" startz="1" endx="-7" endz="7"></block>
-			<block startx="-6" startz="1" endx="-6" endz="7"></block>
-			<block startx="-5" startz="1" endx="-5" endz="7"></block>
-			<block startx="-4" startz="7" endx="-4" endz="7"></block>
-			<block startx="-3" startz="7" endx="-3" endz="7"></block>
-			<block startx="-2" startz="7" endx="-2" endz="7"></block>
-			<block startx="-1" startz="7" endx="-1" endz="7"></block>
-			<block startx="0" startz="7" endx="0" endz="7"></block>
-			<block startx="1" startz="7" endx="1" endz="7"></block>
-			<block startx="2" startz="7" endx="2" endz="7"></block>
-			<block startx="3" startz="7" endx="3" endz="7"></block>
-			<block startx="4" startz="7" endx="4" endz="7"></block>
-			<block startx="5" startz="6" endx="5" endz="7"></block>
-			<block startx="6" startz="4" endx="6" endz="7"></block>
-			<block startx="7" startz="1" endx="7" endz="7"></block>
-			<block startx="3" startz="-7" endx="3" endz="-7"></block>
-			<block startx="4" startz="-7" endx="4" endz="-7"></block>
-			<block startx="5" startz="-7" endx="5" endz="-5"></block>
-			<block startx="6" startz="-7" endx="6" endz="-4"></block>
-			<block startx="7" startz="-7" endx="7" endz="0"></block>
-		</tilegroup>
 		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
 			<block startx="-5" startz="-5" endx="-5" endz="-2"></block>
 			<block startx="-4" startz="-6" endx="-4" endz="0"></block>
