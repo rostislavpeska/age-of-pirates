@@ -225,6 +225,7 @@ class TestWalls:
         assert "int hillEdgeTiles = 360;" in s and "int hillInnerTiles = 200;" in s
         assert s.index("rmPlaceGroupingAtLoc(wallGateN, wallOwnerN, xGateMirror, wallZN);") < s.index('wallCliff("wall hill S1"')   # walls first: the hills avoid them
         assert 'int avoidTradeRouteWall = rmCreateTradeRouteDistanceConstraint("trade route wall", 4.0);' in t
+        assert 'rmCreateClassDistanceConstraint("avoid plateau short", rmClassID("classPlateau"), 6.0);' in t   # the hills' street clearance (2026-09-21, was 2.0)
         assert 'int avoidWall = rmCreateTypeDistanceConstraint("avoid wall object", "AbstractWall", 0.001);' in t
 
     def test_wall_terrain_twins_after_the_countryside(self):

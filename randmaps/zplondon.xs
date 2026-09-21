@@ -517,7 +517,7 @@ void main(void)
 	int spawnSwitch = rmRandInt(0,1);
 
 	int avoidTradeRouteMin = rmCreateTradeRouteDistanceConstraint("trade route min", 5.0);                            // 5+ player starts
-	int avoidPlateauShort = rmCreateClassDistanceConstraint("avoid plateau short", rmClassID("classPlateau"), 2.0);   // countryside (Paris)
+	int avoidPlateauShort = rmCreateClassDistanceConstraint("avoid plateau short", rmClassID("classPlateau"), 6.0);   // countryside (Paris: 2.0) and the wall hills; 6.0 since 2026-09-21 - the hills' cliff faces spilled onto the streets at 2 m (user: extend this one, no new constraint)
 	int avoidTradeRouteWall = rmCreateTradeRouteDistanceConstraint("trade route wall", 4.0);                          // Florence 358: the wall hills off the routes
 	int avoidWall = rmCreateTypeDistanceConstraint("avoid wall object", "AbstractWall", 0.001);                       // Florence 378: the wall hills off the walls
 
