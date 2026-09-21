@@ -1075,9 +1075,10 @@ void main(void)
 	rmAddObjectDefItem(aiStartUrban, "zpAIStartUrbanMap", 1, 0.0);
 
 	// the seated player's kit is the block itself (Istanbul's start block: the export's own Town Center, owner = the
-	// player); its capturable-building nugget resolves through London's resource / embassy latch 195, set here in
-	// so many words. The unseated player keeps Paris's command post.
-	rmSetNuggetDifficulty(195, 195);
+	// player); its baked treasure is a LEVEL 1 nugget (user 2026-09-21) - the latch Istanbul (2506) and Florence (1266)
+	// set before their start blocks; nuggetmods picks the level-1 entry, the export's placeholder proto is not what
+	// spawns. The unseated player keeps Paris's command post.
+	rmSetNuggetDifficulty(1, 1);
 	for(i=1; < cNumberNonGaiaPlayers + 1) {
 		int id=rmCreateArea("Player"+i);
 		rmSetPlayerArea(i, id);

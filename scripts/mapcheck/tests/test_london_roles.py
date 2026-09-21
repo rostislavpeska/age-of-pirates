@@ -177,7 +177,7 @@ class TestSeats:
         assert loop.count("deSPCCommandPost") == 1 and loop.index("else") < loop.index("deSPCCommandPost")
         assert loop.count("rmPlaceObjectDefAtLoc(playerStart, i") == 1 and loop.count("rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5)") == 1
         before = t[t.index("int aiStartUrban"):t.index("for(i=1; < cNumberNonGaiaPlayers + 1) {")]
-        assert "rmSetNuggetDifficulty(195, 195);" in before        # the export's capturable-building nugget: the resource / embassy latch
+        assert "rmSetNuggetDifficulty(1, 1);" in before and "rmSetNuggetDifficulty(195, 195);" not in before   # the player treasure is level 1 (Istanbul 2506, Florence 1266)
 
     def test_interim_line_only_when_nobody_is_seated(self):
         s = _code(_section(_text(LONDON), "// ---- 12.3 INTERIM PLACEMENT", "int playerStart = rmCreateStartingUnitsObjectDef"))
