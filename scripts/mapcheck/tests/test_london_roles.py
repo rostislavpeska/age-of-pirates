@@ -155,11 +155,37 @@ class TestRoles:
             assert len(re.findall(r"\b(?:int|float) %s\b" % name, t)) == 1, name
 
 
+class TestSeats:
+    """12.2: BLUE rows 7-8, RED rows 3-4, YELLOW rows 5-6, PURPLE rows 1-2 on the team's own bank, cumulative."""
+
+    def test_seats_by_role_on_the_reserved_columns(self):
+        s = _code(_section(_text(LONDON), "// ---- 12.2 SEATS BY ROLE", "// ---- 12.3 INTERIM PLACEMENT"))
+        assert 'int blockPlayerLondon = cityBlock("player london", "EU_SPC_Player_London");' in s
+        assert "float locX56 = (locX5 + locX6) * 0.5;" in s
+        assert re.search(r"float locZdSeat = locZs6;.*\n\tfloat locZaSeat = locZn6;\n\tif \(defenderBank == 1\)\n\t\{\n\t\tlocZdSeat = locZn6;\n\t\tlocZaSeat = locZs6;\n\t\}", s)
+        assert "if (cNumberTeams == 2 && defenderCount <= 4 && attackerCount <= 4)\n\t\tseatsByRole = 1;" in s
+        seats = re.findall(r"(?:if \((\w+) >= (\d)\) )?rmPlacePlayer\((\w+), (locX\d+), (locZ[da]Seat)\);", s)
+        assert seats == [("", "", "firstDefender", "locX78", "locZdSeat"), ("defenderCount", "2", "secondDefender", "locX34", "locZdSeat"),
+                         ("defenderCount", "3", "thirdDefender", "locX56", "locZdSeat"), ("defenderCount", "4", "fourthDefender", "locX12", "locZdSeat"),
+                         ("", "", "firstAttacker", "locX78", "locZaSeat"), ("attackerCount", "2", "secondAttacker", "locX34", "locZaSeat"),
+                         ("attackerCount", "3", "thirdAttacker", "locX56", "locZaSeat"), ("attackerCount", "4", "fourthAttacker", "locX12", "locZaSeat")]
+
+    def test_seated_players_get_the_block_not_the_command_post(self):
+        t = _code(_text(LONDON))
+        loop = t[t.index("for(i=1; < cNumberNonGaiaPlayers + 1) {"):t.index("int harbourN1PostUnit")]
+        assert "if (seatsByRole == 1)\n\t\t{\n\t\t\trmPlaceGroupingAtLoc(blockPlayerLondon, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));\n\t\t}" in loop
+        assert loop.count("deSPCCommandPost") == 1 and loop.index("else") < loop.index("deSPCCommandPost")
+        assert loop.count("rmPlaceObjectDefAtLoc(playerStart, i") == 1 and loop.count("rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5)") == 1
+        before = t[t.index("int aiStartUrban"):t.index("for(i=1; < cNumberNonGaiaPlayers + 1) {")]
+        assert "rmSetNuggetDifficulty(195, 195);" in before        # the export's capturable-building nugget: the resource / embassy latch
+
+    def test_interim_line_only_when_nobody_is_seated(self):
+        s = _code(_section(_text(LONDON), "// ---- 12.3 INTERIM PLACEMENT", "int playerStart = rmCreateStartingUnitsObjectDef"))
+        assert "if (seatsByRole == 0 && cNumberTeams == 2){" in s and "if (seatsByRole == 0 && cNumberTeams != 2){" in s
+        assert not re.search(r"\n\tif \(cNumberTeams == 2\)\{", s) and "else{\n\t\trmPlacePlayersLine" not in s
+
+
 class TestScope:
-    def test_harness_only_no_seat_by_role_yet(self):
-        t = _text(LONDON)
-        assert not re.search(r"rmPlacePlayer\((\w+)(Defender|Attacker)", _code(t))
-        assert "// ---- 12.2 SEATS BY ROLE: none yet" in t
 
     def test_reserved_columns_take_the_berry_mill(self):
         t = _code(_text(LONDON))

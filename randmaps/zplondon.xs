@@ -19,7 +19,7 @@
 //      is released by "Units in Area" (no guardian left around it), never by the object-def nugget's id
 //   9  quays (one straight plateau per bank), streets, countryside
 //   10 blocks in Paris's order: the landmark coin (10.0), fixed doubles, fixed singles, zones, fillers, houses
-//   11 riverside decorations, 12 players (12.1 the Florence roles, 12.3 the interim seats), 13 triggers (all at the end)
+//   11 riverside decorations, 12 players (12.1 the Florence roles, 12.2 seats by role on the reserved columns, 12.3 the interim line for the rest), 13 triggers (all at the end)
 //
 // LAWS (pinned by tests, dates in the memories)
 //   1  land route + docked controllers BEFORE any water; the lane BEFORE the river; a
@@ -986,12 +986,39 @@ void main(void)
 	rmEchoInfo("LONDON roles: spawnSwitch " + spawnSwitch + " defenderBank " + defenderBank + " defender team " + defenderTeam + " x" + defenderCount + " defenders " + firstDefender + " " + secondDefender + " " + thirdDefender + " " + fourthDefender + " " + fifthDefender + " " + sixthDefender + " " + seventhDefender);
 	rmEchoInfo("LONDON roles: attacker team " + attackerTeam + " x" + attackerCount + " attackers " + firstAttacker + " " + secondAttacker + " " + thirdAttacker + " " + fourthAttacker + " " + fifthAttacker + " " + sixthAttacker + " " + seventhAttacker + " oneVsAll " + oneVsAll);
 
-	// ---- 12.2 SEATS BY ROLE: none yet (user 2026-09-21: the harness only). Florence's shape goes here - one block
-	// per team size, if (defenderCount == k) { rmPlacePlayer(firstDefender, x, z); ... } on the defender bank and the
-	// same for the attackers on the other -
-	// and replaces 12.3 when it does.
+	// ---- 12.2 SEATS BY ROLE (user 2026-09-21, the Figma strip): each team's players sit on THEIR bank's reserved
+	// columns 5-7 in the user's EU_SPC_Player_London block (30 x 45 tiles = 2 rows x 3 columns, the Town Center at its
+	// centre), one block per 2-row pair, cumulative by head-count: the first player rows 7-8 (BLUE, the far end), the
+	// second rows 3-4 (RED), the third rows 5-6 (YELLOW), the fourth rows 1-2 (PURPLE, at the road). Defenders on the
+	// defender bank (10.0's coin), attackers on the other. Teams of five and more: ON HOLD (user) - such lobbies, and
+	// any non-2-team lobby, keep the interim line placement in 12.3 with Paris's command posts.
+	int blockPlayerLondon = cityBlock("player london", "EU_SPC_Player_London");
+	float locX56 = (locX5 + locX6) * 0.5;
+	float locZdSeat = locZs6;       // the 3-column centre of cols 5-7
+	float locZaSeat = locZn6;
+	if (defenderBank == 1)
+	{
+		locZdSeat = locZn6;
+		locZaSeat = locZs6;
+	}
+	int seatsByRole = 0;
+	if (cNumberTeams == 2 && defenderCount <= 4 && attackerCount <= 4)
+		seatsByRole = 1;
+	if (seatsByRole == 1)
+	{
+		rmPlacePlayer(firstDefender, locX78, locZdSeat);
+		if (defenderCount >= 2) rmPlacePlayer(secondDefender, locX34, locZdSeat);
+		if (defenderCount >= 3) rmPlacePlayer(thirdDefender, locX56, locZdSeat);
+		if (defenderCount >= 4) rmPlacePlayer(fourthDefender, locX12, locZdSeat);
+		rmPlacePlayer(firstAttacker, locX78, locZaSeat);
+		if (attackerCount >= 2) rmPlacePlayer(secondAttacker, locX34, locZaSeat);
+		if (attackerCount >= 3) rmPlacePlayer(thirdAttacker, locX56, locZaSeat);
+		if (attackerCount >= 4) rmPlacePlayer(fourthAttacker, locX12, locZaSeat);
+	}
+	rmEchoInfo("LONDON seats: seatsByRole " + seatsByRole + " defenders at z " + rmZFractionToMeters(locZdSeat) + " m, attackers at z " + rmZFractionToMeters(locZaSeat) + " m");
 
-	// ---- 12.3 INTERIM PLACEMENT (Paris's placement transposed onto the z axis), by the same coin as 12.1 ---------
+	// ---- 12.3 INTERIM PLACEMENT (Paris's placement transposed onto the z axis), by the same coin as 12.1 - only
+	// when 12.2 seats nobody ---------------------------------------------------------------------------------
 	// z anchored in METRES from the map edge: 36 m for every player count = 24 m beyond the last column's outer edge
 	// (the strip is 60.5 m; Paris's 0.07 / 0.10 fractions of the old frame were 40 / 57 m). Floats only - law 4.
 	float zPlEdgeM = 36.0;
@@ -999,7 +1026,7 @@ void main(void)
 	float zPlLine = rmZMetersToFraction(zPlEdgeM);
 	float zPlNearFar = 1.0 - zPlNear;
 	float zPlLineFar = 1.0 - zPlLine;
-	if (cNumberTeams == 2){
+	if (seatsByRole == 0 && cNumberTeams == 2){
 		if (spawnSwitch ==0){
 			if (PlayerNum == 2)
 			{
@@ -1037,7 +1064,7 @@ void main(void)
 			rmPlacePlayersLine(0.90, zPlLineFar, 0.25, zPlLineFar, 0, 0);
 		}
 	}
-	else{
+	if (seatsByRole == 0 && cNumberTeams != 2){
 		rmPlacePlayersLine(0.10, zPlLine, 0.75, zPlLine, 0, 0);
 	}
 
@@ -1047,20 +1074,31 @@ void main(void)
 	int aiStartUrban = rmCreateObjectDef("is city map");
 	rmAddObjectDefItem(aiStartUrban, "zpAIStartUrbanMap", 1, 0.0);
 
+	// the seated player's kit is the block itself (Istanbul's start block: the export's own Town Center, owner = the
+	// player); its capturable-building nugget resolves through London's resource / embassy latch 195, set here in
+	// so many words. The unseated player keeps Paris's command post.
+	rmSetNuggetDifficulty(195, 195);
 	for(i=1; < cNumberNonGaiaPlayers + 1) {
 		int id=rmCreateArea("Player"+i);
 		rmSetPlayerArea(i, id);
-		int startID = rmCreateObjectDef("object"+i);
-		rmAddObjectDefItem(startID, "deSPCCommandPost", 1, 2.0);
-		rmSetObjectDefMinDistance(startID, 0.0);
-		if (cNumberNonGaiaPlayers >=5){
-			rmSetObjectDefMaxDistance(startID, 10.0);
-			rmAddObjectDefConstraint(startID, avoidTradeRouteMin);
+		if (seatsByRole == 1)
+		{
+			rmPlaceGroupingAtLoc(blockPlayerLondon, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 		}
-		else{
-			rmSetObjectDefMaxDistance(startID, 1.0);
+		else
+		{
+			int startID = rmCreateObjectDef("object"+i);
+			rmAddObjectDefItem(startID, "deSPCCommandPost", 1, 2.0);
+			rmSetObjectDefMinDistance(startID, 0.0);
+			if (cNumberNonGaiaPlayers >=5){
+				rmSetObjectDefMaxDistance(startID, 10.0);
+				rmAddObjectDefConstraint(startID, avoidTradeRouteMin);
+			}
+			else{
+				rmSetObjectDefMaxDistance(startID, 1.0);
+			}
+			rmPlaceObjectDefAtLoc(startID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 		}
-		rmPlaceObjectDefAtLoc(startID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 		rmPlaceObjectDefAtLoc(playerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 		rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5);
 	}
