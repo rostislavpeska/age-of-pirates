@@ -1098,7 +1098,7 @@ void main(void)
 	// command posts, and the prop filler on all eight spots.
 	int blockPlayerLondon = cityBlock("player london", "EU_SPC_Player_London");
 	int blockPropFiller = cityBlock("prop filler", "EU_SPC_Prop_Block");         // 30 x 45 like the seat block, props only
-	int blockParkBig02 = cityBlock("park big turned", "EU_SPC_Park_big_02");     // the big park turned 180 (2 x 2)
+	int blockParkBig02 = cityBlock("park big turned", "EU_SPC_Park_big_02");     // the user's "EU Park Rotated" export (2 x 2, the big park turned 180, a NuggetWolfRock placeholder)
 	float locX56 = (locX5 + locX6) * 0.5;
 	float locZs56 = wallS-rmZTilesToFraction(col5+col6)*0.5;                     // the 2-column centre of cols 5-6
 	float locZn56 = wallN+rmZTilesToFraction(col5+col6)*0.5;
@@ -1124,7 +1124,7 @@ void main(void)
 			// ONE per side (the Figma of 2026-09-21): the seat at the far end, the turned park beside it on the outer
 			// two columns, houses on the inner column and on rows 3-4, the prop filler at the road
 			rmPlacePlayer(firstDefender, locX78, locZdSeat);
-			rmSetNuggetDifficulty(607, 607);                              // the turned park's Royal Huntsman rock, as the road parks'
+			rmSetNuggetDifficulty(295, 295);                              // the turned park's treasure: the abandoned tower (nuggetmods zpFrenchTowerCapturable - a capturable tower, four Revolutionaries - as on Paris; user 2026-09-21)
 			rmPlaceGroupingAtLoc(blockParkBig02, 0, locX56, locZd56);
 			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZd4);
 			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZd4);
@@ -1173,7 +1173,7 @@ void main(void)
 			// ONE per side (the Figma of 2026-09-21): the seat at the far end, the turned park beside it on the outer
 			// two columns, houses on the inner column and on rows 3-4, the prop filler at the road
 			rmPlacePlayer(firstAttacker, locX78, locZaSeat);
-			rmSetNuggetDifficulty(607, 607);                              // the turned park's Royal Huntsman rock, as the road parks'
+			rmSetNuggetDifficulty(295, 295);                              // the turned park's treasure: the abandoned tower (nuggetmods zpFrenchTowerCapturable - a capturable tower, four Revolutionaries - as on Paris; user 2026-09-21)
 			rmPlaceGroupingAtLoc(blockParkBig02, 0, locX56, locZa56);
 			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZa4);
 			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZa4);
