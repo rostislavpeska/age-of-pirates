@@ -157,11 +157,11 @@ class TestRoles:
 
 class TestSeats:
     """12.2: one strip layout per team size, Florence's `if (count == k)` blocks. ONE = the Figma (seat rows 7-8, the
-    turned park rows 5-6 x cols 6-7, houses rows 5-6 x col 5 and rows 3-4, the prop filler rows 1-2); TWO = seats
+    turned park rows 5-6 x cols 5-6, houses rows 5-6 x col 4 and rows 3-4, the prop filler rows 1-2); TWO = seats
     rows 7-8 + 3-4, houses rows 5-6, the filler; THREE = three seats + the filler; FOUR = four seats; 5+ and
     non-2-team lobbies = the interim line, all eight spots filled."""
 
-    SIDES = (("defender", "Defender", "locZdSeat", "locZd5", "locZd7", "locZd67"), ("attacker", "Attacker", "locZaSeat", "locZa5", "locZa7", "locZa67"))
+    SIDES = (("defender", "Defender", "locZdSeat", "locZd4", "locZd6", "locZd56"), ("attacker", "Attacker", "locZaSeat", "locZa4", "locZa6", "locZa56"))
 
     def _sec(self):
         return _code(_section(_text(LONDON), "// ---- 12.2 SEATS BY ROLE", "// ---- 12.3 INTERIM PLACEMENT"))
@@ -176,12 +176,12 @@ class TestSeats:
         for line in ('int blockPlayerLondon = cityBlock("player london", "EU_SPC_Player_London");',
                      'int blockPropFiller = cityBlock("prop filler", "EU_SPC_Prop_Block");',
                      'int blockParkBig02 = cityBlock("park big turned", "EU_SPC_Park_big_02");',
-                     "float locX56 = (locX5 + locX6) * 0.5;", "float locZs67 = wallS-rmZTilesToFraction(col6+col7)*0.5;",
-                     "float locZn67 = wallN+rmZTilesToFraction(col6+col7)*0.5;",
+                     "float locX56 = (locX5 + locX6) * 0.5;", "float locZs56 = wallS-rmZTilesToFraction(col5+col6)*0.5;",
+                     "float locZn56 = wallN+rmZTilesToFraction(col5+col6)*0.5;",
                      "if (cNumberTeams == 2 && defenderCount <= 4 && attackerCount <= 4)\n\t\tseatsByRole = 1;"):
             assert line in s, line
-        d = re.search(r"float locZdSeat = locZs6;.*?if \(defenderBank == 1\)\n\t\{(.*?)\n\t\}", s, re.S).group(1)
-        assert all(x in d for x in ("locZdSeat = locZn6;", "locZaSeat = locZs6;", "locZd5 = locZn5;", "locZa5 = locZs5;", "locZd7 = locZn7;", "locZa7 = locZs7;", "locZd67 = locZn67;", "locZa67 = locZs67;"))
+        d = re.search(r"float locZdSeat = locZs5;.*?if \(defenderBank == 1\)\n\t\{(.*?)\n\t\}", s, re.S).group(1)
+        assert all(x in d for x in ("locZdSeat = locZn5;", "locZaSeat = locZs5;", "locZd4 = locZn4;", "locZa4 = locZs4;", "locZd6 = locZn6;", "locZa6 = locZs6;", "locZd56 = locZn56;", "locZa56 = locZs56;"))
         assert s.index("if (seatsByRole == 1)") < s.index("if (defenderCount == 1)") < s.index("if (attackerCount == 1)") < s.index("if (seatsByRole == 0)")
 
     def test_one_per_side_is_the_figma_strip(self):
@@ -189,16 +189,16 @@ class TestSeats:
             assert self._block(side, 1) == [
                 ("rmPlacePlayer", "first%s, locX78, %s" % (o, S)),
                 ("rmSetNuggetDifficulty", "607, 607"),                                    # the turned park's Huntsman rock
-                ("rmPlaceGroupingAtLoc", "blockParkBig02, 0, locX56, %s" % z67),           # rows 5-6 x cols 6-7
-                ("rmPlaceGroupingAtLoc", "blockHouse1, 0, locX5, %s" % z5),                # rows 5-6 x col 5
+                ("rmPlaceGroupingAtLoc", "blockParkBig02, 0, locX56, %s" % z67),           # rows 5-6 x cols 5-6
+                ("rmPlaceGroupingAtLoc", "blockHouse1, 0, locX5, %s" % z5),                # rows 5-6 x col 4
                 ("rmPlaceGroupingAtLoc", "blockHouse2, 0, locX6, %s" % z5),
-                ("rmPlaceGroupingAtLoc", "blockHouse3, 0, locX3, %s" % z5),                # rows 3-4 x cols 5-7
+                ("rmPlaceGroupingAtLoc", "blockHouse3, 0, locX3, %s" % z5),                # rows 3-4 x cols 4-6
                 ("rmPlaceGroupingAtLoc", "blockHouse4, 0, locX4, %s" % z5),
                 ("rmPlaceGroupingAtLoc", "blockHouse5, 0, locX3, %s" % S),
                 ("rmPlaceGroupingAtLoc", "blockHouse6, 0, locX4, %s" % S),
                 ("rmPlaceGroupingAtLoc", "blockHouse1, 0, locX3, %s" % z7),
                 ("rmPlaceGroupingAtLoc", "blockHouse2, 0, locX4, %s" % z7),
-                ("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, %s" % S),            # rows 1-2 x cols 5-7
+                ("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, %s" % S),            # rows 1-2 x cols 4-6
             ], side
 
     def test_two_per_side(self):
@@ -359,7 +359,7 @@ class TestScope:
 
     def test_park_bakes_the_royal_huntsman_rescue(self):
         t = _code(_text(LONDON))
-        i = t.index("rmPlaceGroupingAtLoc(blockParkBig, 0, locX000, locZs56);")
+        i = t.index("rmPlaceGroupingAtLoc(blockParkBig, 0, locX000, locZs45);")
         assert t[t.rindex("rmSetNuggetDifficulty(", 0, i):i].startswith("rmSetNuggetDifficulty(607, 607);")
         park = (REPO / "game/randmaps/groupings/EU_SPC_Park_big.xml").read_bytes()
         assert park.count(b"Nugget") == 1 and b">NuggetDroppedWood</unit>" in park and b"<heights>" in park

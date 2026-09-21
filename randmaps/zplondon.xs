@@ -12,7 +12,7 @@
 //      team 0 attacks (St Paul + Stuart) - up front, the gates take owners
 //   1  nautical lane + fake stopper, real leg z per bank -> river centre, walls (law 1) - FIRST (Paris's gate order)
 //   2  land route DEFINED on the asked line, not built                          (Paris: gates before the road)
-//   3  the grid, derived from the asked road and the real walls (no placement)
+//   3  the grid (three core columns + the reserved 4-6), derived from the asked road and the real walls (no placement)
 //   3.5 the gates at fixed coordinates: six outer wall segments (their gates on the road line)
 //   3.9 the land route BUILT through the gates, real x read back for the census, the bridge socket docked
 //   4  the river (rect-map rule: z authored in size_x units), after the road
@@ -22,7 +22,7 @@
 //   8  harbour guards: the vanilla Euro trade-route post nugget (101) on the quay behind each harbour; the post
 //      is released by "Units in Area" (no guardian left around it), never by the object-def nugget's id
 //   9  quays (one straight plateau per bank), streets, countryside; 9.5 the wall terrain twins after it (Florence)
-//   10 blocks in Paris's order: the landmark coin (10.0), fixed doubles, fixed singles, zones, fillers, houses
+//   10 blocks in Paris's order: the landmark coin (10.0), fixed doubles, fixed singles, two Florence zones, fillers, houses
 //   11 riverside decorations, 12 players (12.1 roles: see 0.5; 12.2 seats by role on the reserved columns, 12.3 the interim line for the rest),
 //      12.5 the wall hills (Florence's Italian Cliff between the gate segments of 3.5), 13 triggers (all at the end)
 //
@@ -55,7 +55,7 @@ include "ypKOTHInclude.xs";
 // shuffled; placeGroupings takes the first cells of a zone in shuffled order, filler the first FREE cell of a range.
 int gCityLocs = -1;
 int gCityLocsStatus = -1;
-int gCellsPerBank = 24;   // the north bank's cell i is the south bank's cell i mirrored, at index i + gCellsPerBank
+int gCellsPerBank = 14;   // the north bank's cell i is the south bank's cell i mirrored, at index i + gCellsPerBank (three-column core, 2026-09-21)
 
 void shuffle(int arrayID = -1, int start = -1, int end = -1) {
 	for (int i = end; i > start; i--) {
@@ -466,20 +466,25 @@ void main(void)
 	}
 
 	// Paris frame, long axis on z: 360 m = 6.6 + row 00 + 4 + row 0 + 10.2 + road + 3 + row 1 + 7 x 34 + 6.6
-	// RESERVED COLUMNS (user 2026-09-20): each bank is Paris's four columns deep plus extraColumns more - city floor
+	// RESERVED COLUMNS (user 2026-09-20): each bank is the core (coreColumns) deep plus extraColumns more - city floor
 	// and streets, no cells in the placement tables; only the 10.7 fixed blocks sit on them. x is full (the rows),
 	// so the city can only grow along z. The map grows by ONE bank's worth of columns in total, so the countryside
 	// gives up half of the growth: the strip beyond the last column is 108.5 m on Paris's frame and 60.5 m here
 	// (user: "proportionally decrease the countryside"). One column = colPitchTiles (16 tiles) = 32 m.
 	int extraColumns = 3;
 	int extraColumnM = 32;
+	// THE CORE (user 2026-09-21): three columns next to the river, not Paris's four - the 4th column is stripped, the
+	// frame gives up one column per bank so the countryside beyond the walls keeps its metres, the reserved columns
+	// move one column inward (they are cols 4-6 now, numbered by their place). Florence-style two zones (10.3).
+	int coreColumns = 3;
+	int strippedColumns = 4 - coreColumns;
 	int sizeX = 360;
 	int baseSizeZ = 613;              // Paris's 573 + 40 m for two players (user 2026-09-21: 669 could not seat every countryside object; the 3-4 player frame is 749)
 	if (cNumberNonGaiaPlayers >=3)
 		baseSizeZ = 653;
 	if (cNumberNonGaiaPlayers >=6)
 		baseSizeZ = 773;
-	int sizeZ = baseSizeZ + extraColumns * extraColumnM;   // ints only: 613 -> 709, 653 -> 749, 773 -> 869
+	int sizeZ = baseSizeZ + extraColumns * extraColumnM - 2 * strippedColumns * extraColumnM;   // ints only: 613 -> 645, 653 -> 685, 773 -> 805 (the four-column city: 709 / 749 / 869)
 	rmSetMapSize(sizeX, sizeZ);
 
 	rmSetAllMapReveal(true);
@@ -542,7 +547,7 @@ void main(void)
 	float rowPitchM     = 34.0;    // 30 m block + 4 m street, rows across x
 	int   colFirstTiles = 11;      // wall line -> column 1 centre: Paris's 7 m promenade + half a block (Paris: column 27 tiles off the centre, wall at 16; London had 10 = 5 m, too narrow for pathing and spawns - user 2026-09-18)
 	int   colPitchTiles = 16;      // 30 m block + 2 m street, columns along z
-	int   cityDepthTiles = 67 + colPitchTiles * extraColumns;     // wall line -> the LAST column's outer edge (11 + 3 x 16 + half a block = 66.5 for Paris's four; + 16 per reserved column)
+	int   cityDepthTiles = colFirstTiles + colPitchTiles * (coreColumns - 1) + 8 + colPitchTiles * extraColumns;     // wall line -> the LAST column's outer edge: 11 + 2 x 16 + half a block (8) = 51 for the three-column core, + 16 per reserved column = 99 (Paris's four: 67 + 48)
 	float promenadePaintM = 4.0;   // Paris's second quay texture: its streets paint stops 4 m short of the water and the river's outerbank city_street_ground shows; London paints that band explicitly
 
 	// T4. FILE FACTS - measured from the grouping exports, never tuned; re-measure when an export changes
@@ -684,25 +689,23 @@ void main(void)
 	int col1 = colFirstTiles;
 	int col2 = colFirstTiles + colPitchTiles;
 	int col3 = colFirstTiles + colPitchTiles * 2;
-	int col4 = colFirstTiles + colPitchTiles * 3;
 	float locZs1 = wallS-rmZTilesToFraction(col1);
 	float locZs2 = wallS-rmZTilesToFraction(col2);
 	float locZs3 = wallS-rmZTilesToFraction(col3);
-	float locZs4 = wallS-rmZTilesToFraction(col4);
 	float locZn1 = wallN+rmZTilesToFraction(col1);
 	float locZn2 = wallN+rmZTilesToFraction(col2);
 	float locZn3 = wallN+rmZTilesToFraction(col3);
-	float locZn4 = wallN+rmZTilesToFraction(col4);
-	// the reserved columns 5-7 (extraColumns): grid locations only - no cityCell, no grouping, the quay paints them
-	int col5 = colFirstTiles + colPitchTiles * 4;
-	int col6 = colFirstTiles + colPitchTiles * 5;
-	int col7 = colFirstTiles + colPitchTiles * 6;
+	// the reserved columns (extraColumns), cols 4-6 beyond the three-column core: grid locations only - no cityCell,
+	// the fixed blocks of 10.7 and the strips of 12.2 sit on them, the quay paints them
+	int col4 = colFirstTiles + colPitchTiles * coreColumns;
+	int col5 = colFirstTiles + colPitchTiles * (coreColumns + 1);
+	int col6 = colFirstTiles + colPitchTiles * (coreColumns + 2);
+	float locZs4 = wallS-rmZTilesToFraction(col4);
 	float locZs5 = wallS-rmZTilesToFraction(col5);
 	float locZs6 = wallS-rmZTilesToFraction(col6);
-	float locZs7 = wallS-rmZTilesToFraction(col7);
+	float locZn4 = wallN+rmZTilesToFraction(col4);
 	float locZn5 = wallN+rmZTilesToFraction(col5);
 	float locZn6 = wallN+rmZTilesToFraction(col6);
-	float locZn7 = wallN+rmZTilesToFraction(col7);
 	float locZs12 = wallS-rmZTilesToFraction(col1+col2)*0.5;
 	float locZn12 = wallN+rmZTilesToFraction(col1+col2)*0.5;
 	// the HARBOURS: two per bank, N1 / S1 at the Tower rows' (7-8) centre, N2 / S2 at the rows 4-5 centre halfway to
@@ -823,12 +826,12 @@ void main(void)
 	rmPlaceObjectDefAtLoc(harbourS1GuardDef, 0, harbourS1GuardX, harbourS1GuardZ);
 	rmPlaceObjectDefAtLoc(harbourS2GuardDef, 0, harbourS2GuardX, harbourS2GuardZ);
 
-	// ---- 9. CITY FLOOR: one straight quay per bank (wall line -> column 4's outer edge), streets + the promenade
+	// ---- 9. CITY FLOOR: one straight quay per bank (wall line -> the last reserved column's outer edge), streets + the promenade
 	// band (Paris's two quay textures), countryside
 	quaySegment(0.0, wallS - rmZTilesToFraction(cityDepthTiles), 1.0, wallS, 0.7, wallS, -1.0, promenadePaintM);
 	quaySegment(0.0, wallN, 1.0, wallN + rmZTilesToFraction(cityDepthTiles), 0.7, wallN, 1.0, promenadePaintM);
-	countryside("countryside S", zRiver-rmZTilesToFraction(130 + colPitchTiles * extraColumns / 2), avoidPlateauShort);   // 130 tiles on the 573 frame + half the reserved depth = the same 26.5 m off the edge
-	countryside("countryside N", zRiver+rmZTilesToFraction(130 + colPitchTiles * extraColumns / 2), avoidPlateauShort);
+	countryside("countryside S", zRiver-rmZTilesToFraction(130 + colPitchTiles * extraColumns / 2 - colPitchTiles * strippedColumns), avoidPlateauShort);   // 130 tiles on the 573 frame + half the reserved depth - the stripped column = the same 26.5 m off the edge
+	countryside("countryside N", zRiver+rmZTilesToFraction(130 + colPitchTiles * extraColumns / 2 - colPitchTiles * strippedColumns), avoidPlateauShort);
 
 	// ---- 9.5 THE WALL TERRAIN, after the countryside (Florence 720-736: the wall exports' ground again, as terrain-
 	// only twins placed at the same six spots, so the countryside mix painted over the footprints in 9 gives way to
@@ -873,7 +876,7 @@ void main(void)
 	int blockJewish = cityBlock("jewish natives", "EU_Natives_Block_Jewish");
 	int blockFactory = cityBlock("factory", "EU_Resource_Block_All1");
 	int blockConstruction = cityBlock("Construction", "EU_SPC_Block_Constr");
-	// Paris's resource buildings by zone: Centre = Market, Bank, Embassy; Outer = Gold Smelter; Suburbs = the Cherry
+	// Paris's resource buildings by zone: Centre = Market, Bank, Embassy; Suburbs = Gold Smelter (Paris's Outer), the Cherry
 	// Orchard block (Food5 = Paris's Food2 with its Vineyards as Cherry Orchards - user 2026-09-21; it replaced Paris's
 	// Food1 mill, which had taken the Destilery's place on 2026-09-18), Warehouse; Paris's Forester stays out of the city
 	int blockMarket = cityBlock("market", "EU_Resource_Block_All2");
@@ -956,15 +959,15 @@ void main(void)
 
 	rmSetStatusText("",0.70);
 
-	// ---- 10.3 the cell table: 24 free cells per bank, the north bank the mirror of the south, each zone shuffled
-	// on its own. Centre (6) = around the Basilicas and along the shores, Outer (5), Suburbs (13) = col 4 + the far corners.
-	const int NUM_CELLS = 48;
+	// ---- 10.3 the cell table: 14 free cells per bank on the three-column core, the north bank the mirror of the
+	// south, each zone shuffled on its own - Florence's TWO zones (zpflorence.xs 779-788; user 2026-09-21): Centre (6)
+	// = around the Basilicas and along the shores, Suburbs (8) = col 3's other rows and the row-00 corners (Paris's
+	// Outer zone folded in; the old column 4 is gone).
+	const int NUM_CELLS = 28;
 	const int S_CENTER_START = 0;    const int S_CENTER_END = 5;
-	const int S_OUTER_START = 6;     const int S_OUTER_END = 10;
-	const int S_SUBURBS_START = 11;  const int S_SUBURBS_END = 23;
-	const int N_CENTER_START = 24;   const int N_CENTER_END = 29;
-	const int N_OUTER_START = 30;    const int N_OUTER_END = 34;
-	const int N_SUBURBS_START = 35;  const int N_SUBURBS_END = 47;
+	const int S_SUBURBS_START = 6;   const int S_SUBURBS_END = 13;
+	const int N_CENTER_START = 14;   const int N_CENTER_END = 19;
+	const int N_SUBURBS_START = 20;  const int N_SUBURBS_END = 27;
 	gCityLocs = xsArrayCreateVector(NUM_CELLS, cInvalidVector, "List of locations in the city");
 	gCityLocsStatus = xsArrayCreateBool(NUM_CELLS, false, "Flags a loc as taken or not");
 	//       idx  row     col S   col N
@@ -975,34 +978,21 @@ void main(void)
 	cityCell(3,  locX6,  locZs2, locZn2);
 	cityCell(4,  locX2,  locZs3, locZn3);
 	cityCell(5,  locX3,  locZs3, locZn3);
-	// Outer: col 3 rows 4, 5 / col 1 row 00 / col 2 row 00 / col 3 row 0
+	// Suburbs: col 3 rows 4, 5 / col 1 row 00 / col 2 row 00 / col 3 row 0 / col 3 rows 00, 7, 8
 	cityCell(6,  locX4,  locZs3, locZn3);
 	cityCell(7,  locX5,  locZs3, locZn3);
 	cityCell(8,  locX00, locZs1, locZn1);
 	cityCell(9,  locX00, locZs2, locZn2);
 	cityCell(10, locX0,  locZs3, locZn3);
-	// Suburbs: col 4 every row / col 3 rows 00, 7, 8
-	cityCell(11, locX00, locZs4, locZn4);
-	cityCell(12, locX0,  locZs4, locZn4);
-	cityCell(13, locX1,  locZs4, locZn4);
-	cityCell(14, locX2,  locZs4, locZn4);
-	cityCell(15, locX3,  locZs4, locZn4);
-	cityCell(16, locX4,  locZs4, locZn4);
-	cityCell(17, locX5,  locZs4, locZn4);
-	cityCell(18, locX6,  locZs4, locZn4);
-	cityCell(19, locX7,  locZs4, locZn4);
-	cityCell(20, locX8,  locZs4, locZn4);
-	cityCell(21, locX00, locZs3, locZn3);
-	cityCell(22, locX7,  locZs3, locZn3);
-	cityCell(23, locX8,  locZs3, locZn3);
+	cityCell(11, locX00, locZs3, locZn3);
+	cityCell(12, locX7,  locZs3, locZn3);
+	cityCell(13, locX8,  locZs3, locZn3);
 	shuffle(gCityLocs, S_CENTER_START, S_CENTER_END);
-	shuffle(gCityLocs, S_OUTER_START, S_OUTER_END);
 	shuffle(gCityLocs, S_SUBURBS_START, S_SUBURBS_END);
 	shuffle(gCityLocs, N_CENTER_START, N_CENTER_END);
-	shuffle(gCityLocs, N_OUTER_START, N_OUTER_END);
 	shuffle(gCityLocs, N_SUBURBS_START, N_SUBURBS_END);
 
-	// ---- 10.4 the resource buildings (Paris's nugget latch 195): one list per zone, placed on both banks
+	// ---- 10.4 the resource buildings (Paris's nugget latch 195): one list per zone (centre, suburbs), placed on both banks
 	rmSetNuggetDifficulty(195, 195);
 	int centerGroupings = xsArrayCreateInt(3, -1, "List of groupings for the city centre.");
 	xsArraySetInt(centerGroupings, 0, blockMarket);
@@ -1010,13 +1000,10 @@ void main(void)
 	xsArraySetInt(centerGroupings, 2, blockEmbassy);
 	placeGroupings(centerGroupings, S_CENTER_START);
 	placeGroupings(centerGroupings, N_CENTER_START);
-	int outerGroupings = xsArrayCreateInt(1, -1, "List of groupings for the outer centre.");
-	xsArraySetInt(outerGroupings, 0, blockGoldSmelter);
-	placeGroupings(outerGroupings, S_OUTER_START);
-	placeGroupings(outerGroupings, N_OUTER_START);
-	int suburbGroupings = xsArrayCreateInt(2, -1, "List of suburbs groupings.");
-	xsArraySetInt(suburbGroupings, 0, blockMill);
-	xsArraySetInt(suburbGroupings, 1, blockWarehouse);
+	int suburbGroupings = xsArrayCreateInt(3, -1, "List of suburbs groupings.");   // Paris's Outer list (the Gold Smelter) folded in - two zones
+	xsArraySetInt(suburbGroupings, 0, blockGoldSmelter);
+	xsArraySetInt(suburbGroupings, 1, blockMill);
+	xsArraySetInt(suburbGroupings, 2, blockWarehouse);
 	placeGroupings(suburbGroupings, S_SUBURBS_START);
 	placeGroupings(suburbGroupings, N_SUBURBS_START);
 
@@ -1053,28 +1040,28 @@ void main(void)
 
 	// ---- 10.7 THE RESERVED COLUMNS' FIXED BLOCKS (user 2026-09-20), placed after every id-sensitive placement of
 	// section 10 (ids are positional - header law): the big park EU_SPC_Park_big (the user's export, 32 x 32 tiles =
-	// a 2 x 2 block) on rows 00-0 x cols 5-6 at the +x end of each bank; behind it, in column 7, one house block on
+	// a 2 x 2 block) on rows 00-0 x cols 4-5 at the +x end of each bank; behind it, in column 6, one house block on
 	// row 00 and the Food4 mill (berry bushes, user 2026-09-21) on row 0 under Paris's resource latch 195. Every other
-	// cell of cols 5-7 stays empty.
+	// cell of cols 4-6 stays empty.
 	int blockParkBig = cityBlock("park big", "EU_SPC_Park_big");
 	int blockMillFood4 = cityBlock("Mill Food4", "EU_Resource_Block_Food4");
 	// the park's road edge sits 1 m further from the trade route than row 0's (user 2026-09-21: placed over the
 	// route, the park's path blocks made the whole grouping fail silently; 1 m off the route and it places)
 	float parkOffRoadM = 1.0;
 	float locX000 = (locX00 + locX0) * 0.5 + rmXMetersToFraction(parkOffRoadM);   // the 2-row centre behind the road (34 + 30 = 64 m, the export's 64 m) + 1 m
-	float locZs56 = wallS-rmZTilesToFraction(col5+col6)*0.5;         // the 2-column centre: cols 5-6 span the 64 m from column 4's edge
-	float locZn56 = wallN+rmZTilesToFraction(col5+col6)*0.5;
+	float locZs45 = wallS-rmZTilesToFraction(col4+col5)*0.5;         // the 2-column centre: cols 4-5 span the 64 m from column 3's edge
+	float locZn45 = wallN+rmZTilesToFraction(col4+col5)*0.5;
 	// the park's baked treasure (the export's NuggetDroppedWood placeholder, user 2026-09-21) is the Royal Huntsman on
 	// his rock among the wolves - nuggetmods zpRockRoyalHuntsman 607 - on both banks, through the latch set before
 	// the two placements (the guild idiom); the mill's 195 latch follows
 	rmSetNuggetDifficulty(607, 607);
-	rmPlaceGroupingAtLoc(blockParkBig, 0, locX000, locZs56);
-	rmPlaceGroupingAtLoc(blockParkBig, 0, locX000, locZn56);
-	rmPlaceGroupingAtLoc(blockHouse1, 0, locX00, locZs7);
-	rmPlaceGroupingAtLoc(blockHouse1, 0, locX00, locZn7);
+	rmPlaceGroupingAtLoc(blockParkBig, 0, locX000, locZs45);
+	rmPlaceGroupingAtLoc(blockParkBig, 0, locX000, locZn45);
+	rmPlaceGroupingAtLoc(blockHouse1, 0, locX00, locZs6);
+	rmPlaceGroupingAtLoc(blockHouse1, 0, locX00, locZn6);
 	rmSetNuggetDifficulty(195, 195);
-	rmPlaceGroupingAtLoc(blockMillFood4, 0, locX0, locZs7);
-	rmPlaceGroupingAtLoc(blockMillFood4, 0, locX0, locZn7);
+	rmPlaceGroupingAtLoc(blockMillFood4, 0, locX0, locZs6);
+	rmPlaceGroupingAtLoc(blockMillFood4, 0, locX0, locZn6);
 
 	// ---- 11. RIVERSIDE DECORATIONS (Paris's EU_Riverside, turned for the x-running river: water side +z on the
 	// south bank, -z on the north), centred on the wall line, four per bank along x: before the first harbour,
@@ -1100,7 +1087,7 @@ void main(void)
 
 	// ---- 12. PLAYERS (12.1 ROLES: resolved in 0.5, before the gates) ----------------------------------
 	// ---- 12.2 SEATS BY ROLE - one STRIP LAYOUT per team size (user 2026-09-21): each team's players sit on THEIR
-	// bank's reserved columns 5-7 (rows 1-8 along x, the three columns along z) in the user's EU_SPC_Player_London
+	// bank's reserved columns 4-6 (rows 1-8 along x, the three columns along z) in the user's EU_SPC_Player_London
 	// block (30 x 45 tiles = 2 rows x 3 columns, the Town Center at its centre), and every team size draws its own
 	// strip, Florence's per-count shape (user 2026-09-21): ONE = the Figma strip (park, houses, filler); TWO = two
 	// seats, houses on rows 5-6, the filler; THREE = three seats and the filler at the road; FOUR = all four seats.
@@ -1113,18 +1100,18 @@ void main(void)
 	int blockPropFiller = cityBlock("prop filler", "EU_SPC_Prop_Block");         // 30 x 45 like the seat block, props only
 	int blockParkBig02 = cityBlock("park big turned", "EU_SPC_Park_big_02");     // the big park turned 180 (2 x 2)
 	float locX56 = (locX5 + locX6) * 0.5;
-	float locZs67 = wallS-rmZTilesToFraction(col6+col7)*0.5;                     // the 2-column centre of cols 6-7
-	float locZn67 = wallN+rmZTilesToFraction(col6+col7)*0.5;
-	float locZdSeat = locZs6;       float locZaSeat = locZn6;                     // the 3-column centre of cols 5-7 (= col 6)
-	float locZd5 = locZs5;          float locZa5 = locZn5;
-	float locZd7 = locZs7;          float locZa7 = locZn7;
-	float locZd67 = locZs67;        float locZa67 = locZn67;
+	float locZs56 = wallS-rmZTilesToFraction(col5+col6)*0.5;                     // the 2-column centre of cols 5-6
+	float locZn56 = wallN+rmZTilesToFraction(col5+col6)*0.5;
+	float locZdSeat = locZs5;       float locZaSeat = locZn5;                     // the 3-column centre of cols 4-6 (= col 4)
+	float locZd4 = locZs4;          float locZa4 = locZn4;
+	float locZd6 = locZs6;          float locZa6 = locZn6;
+	float locZd56 = locZs56;        float locZa56 = locZn56;
 	if (defenderBank == 1)
 	{
-		locZdSeat = locZn6;         locZaSeat = locZs6;
-		locZd5 = locZn5;            locZa5 = locZs5;
-		locZd7 = locZn7;            locZa7 = locZs7;
-		locZd67 = locZn67;          locZa67 = locZs67;
+		locZdSeat = locZn5;         locZaSeat = locZs5;
+		locZd4 = locZn4;            locZa4 = locZs4;
+		locZd6 = locZn6;            locZa6 = locZs6;
+		locZd56 = locZn56;          locZa56 = locZs56;
 	}
 	int seatsByRole = 0;
 	if (cNumberTeams == 2 && defenderCount <= 4 && attackerCount <= 4)
@@ -1138,30 +1125,30 @@ void main(void)
 			// two columns, houses on the inner column and on rows 3-4, the prop filler at the road
 			rmPlacePlayer(firstDefender, locX78, locZdSeat);
 			rmSetNuggetDifficulty(607, 607);                              // the turned park's Royal Huntsman rock, as the road parks'
-			rmPlaceGroupingAtLoc(blockParkBig02, 0, locX56, locZd67);
-			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZd5);
-			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZd5);
-			rmPlaceGroupingAtLoc(blockHouse3, 0, locX3, locZd5);            // rows 3-4 x cols 5-7: the Figma's yellow 2 x 2 (cols 6-7) is not in the legend - houses until named
-			rmPlaceGroupingAtLoc(blockHouse4, 0, locX4, locZd5);
+			rmPlaceGroupingAtLoc(blockParkBig02, 0, locX56, locZd56);
+			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZd4);
+			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZd4);
+			rmPlaceGroupingAtLoc(blockHouse3, 0, locX3, locZd4);            // rows 3-4 x cols 4-6: the Figma's yellow 2 x 2 (cols 5-6) is not in the legend - houses until named
+			rmPlaceGroupingAtLoc(blockHouse4, 0, locX4, locZd4);
 			rmPlaceGroupingAtLoc(blockHouse5, 0, locX3, locZdSeat);
 			rmPlaceGroupingAtLoc(blockHouse6, 0, locX4, locZdSeat);
-			rmPlaceGroupingAtLoc(blockHouse1, 0, locX3, locZd7);
-			rmPlaceGroupingAtLoc(blockHouse2, 0, locX4, locZd7);
+			rmPlaceGroupingAtLoc(blockHouse1, 0, locX3, locZd6);
+			rmPlaceGroupingAtLoc(blockHouse2, 0, locX4, locZd6);
 			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZdSeat);
 		}
 		if (defenderCount == 2)
 		{
 			// TWO per side (the Figma of 2026-09-21, the red-stroked strip): seats at the far end (rows 7-8) and on
-			// rows 3-4, the prop filler at the road (rows 1-2); rows 5-6 x cols 5-7 are the Figma's YELLOW 2 x 3, not in
+			// rows 3-4, the prop filler at the road (rows 1-2); rows 5-6 x cols 4-6 are the Figma's YELLOW 2 x 3, not in
 			// the legend - houses until named
 			rmPlacePlayer(firstDefender, locX78, locZdSeat);
 			rmPlacePlayer(secondDefender, locX34, locZdSeat);
-			rmPlaceGroupingAtLoc(blockHouse3, 0, locX5, locZd5);
-			rmPlaceGroupingAtLoc(blockHouse4, 0, locX6, locZd5);
+			rmPlaceGroupingAtLoc(blockHouse3, 0, locX5, locZd4);
+			rmPlaceGroupingAtLoc(blockHouse4, 0, locX6, locZd4);
 			rmPlaceGroupingAtLoc(blockHouse5, 0, locX5, locZdSeat);
 			rmPlaceGroupingAtLoc(blockHouse6, 0, locX6, locZdSeat);
-			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZd7);
-			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZd7);
+			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZd6);
+			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZd6);
 			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZdSeat);
 		}
 		if (defenderCount == 3)
@@ -1187,30 +1174,30 @@ void main(void)
 			// two columns, houses on the inner column and on rows 3-4, the prop filler at the road
 			rmPlacePlayer(firstAttacker, locX78, locZaSeat);
 			rmSetNuggetDifficulty(607, 607);                              // the turned park's Royal Huntsman rock, as the road parks'
-			rmPlaceGroupingAtLoc(blockParkBig02, 0, locX56, locZa67);
-			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZa5);
-			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZa5);
-			rmPlaceGroupingAtLoc(blockHouse3, 0, locX3, locZa5);            // rows 3-4 x cols 5-7: the Figma's yellow 2 x 2 (cols 6-7) is not in the legend - houses until named
-			rmPlaceGroupingAtLoc(blockHouse4, 0, locX4, locZa5);
+			rmPlaceGroupingAtLoc(blockParkBig02, 0, locX56, locZa56);
+			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZa4);
+			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZa4);
+			rmPlaceGroupingAtLoc(blockHouse3, 0, locX3, locZa4);            // rows 3-4 x cols 4-6: the Figma's yellow 2 x 2 (cols 5-6) is not in the legend - houses until named
+			rmPlaceGroupingAtLoc(blockHouse4, 0, locX4, locZa4);
 			rmPlaceGroupingAtLoc(blockHouse5, 0, locX3, locZaSeat);
 			rmPlaceGroupingAtLoc(blockHouse6, 0, locX4, locZaSeat);
-			rmPlaceGroupingAtLoc(blockHouse1, 0, locX3, locZa7);
-			rmPlaceGroupingAtLoc(blockHouse2, 0, locX4, locZa7);
+			rmPlaceGroupingAtLoc(blockHouse1, 0, locX3, locZa6);
+			rmPlaceGroupingAtLoc(blockHouse2, 0, locX4, locZa6);
 			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZaSeat);
 		}
 		if (attackerCount == 2)
 		{
 			// TWO per side (the Figma of 2026-09-21, the red-stroked strip): seats at the far end (rows 7-8) and on
-			// rows 3-4, the prop filler at the road (rows 1-2); rows 5-6 x cols 5-7 are the Figma's YELLOW 2 x 3, not in
+			// rows 3-4, the prop filler at the road (rows 1-2); rows 5-6 x cols 4-6 are the Figma's YELLOW 2 x 3, not in
 			// the legend - houses until named
 			rmPlacePlayer(firstAttacker, locX78, locZaSeat);
 			rmPlacePlayer(secondAttacker, locX34, locZaSeat);
-			rmPlaceGroupingAtLoc(blockHouse3, 0, locX5, locZa5);
-			rmPlaceGroupingAtLoc(blockHouse4, 0, locX6, locZa5);
+			rmPlaceGroupingAtLoc(blockHouse3, 0, locX5, locZa4);
+			rmPlaceGroupingAtLoc(blockHouse4, 0, locX6, locZa4);
 			rmPlaceGroupingAtLoc(blockHouse5, 0, locX5, locZaSeat);
 			rmPlaceGroupingAtLoc(blockHouse6, 0, locX6, locZaSeat);
-			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZa7);
-			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZa7);
+			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZa6);
+			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZa6);
 			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZaSeat);
 		}
 		if (attackerCount == 3)
