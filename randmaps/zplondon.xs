@@ -867,7 +867,10 @@ void main(void)
 	// row 00 and the Food3 mill on row 0 under Paris's resource latch 195. Every other cell of cols 5-7 stays empty.
 	int blockParkBig = cityBlock("park big", "EU_SPC_Park_big");
 	int blockMillFood3 = cityBlock("Mill Food3", "EU_Resource_Block_Food3");
-	float locX000 = (locX00 + locX0) * 0.5;                          // the 2-row centre behind the road (34 + 30 = 64 m, the export's 64 m)
+	// the park's road edge sits 1 m further from the trade route than row 0's (user 2026-09-21: placed over the
+	// route, the park's path blocks made the whole grouping fail silently; 1 m off the route and it places)
+	float parkOffRoadM = 1.0;
+	float locX000 = (locX00 + locX0) * 0.5 + rmXMetersToFraction(parkOffRoadM);   // the 2-row centre behind the road (34 + 30 = 64 m, the export's 64 m) + 1 m
 	float locZs56 = wallS-rmZTilesToFraction(col5+col6)*0.5;         // the 2-column centre: cols 5-6 span the 64 m from column 4's edge
 	float locZn56 = wallN+rmZTilesToFraction(col5+col6)*0.5;
 	rmPlaceGroupingAtLoc(blockParkBig, 0, locX000, locZs56);
