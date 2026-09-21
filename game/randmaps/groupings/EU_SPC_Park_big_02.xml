@@ -294,7 +294,7 @@
 		<unit variation="124" posx="21.0000" posz="11.0000" orientx="0.1822" orienty="0.0000" orientz="-0.9833">TreeNewEngland</unit>
 		<unit variation="86" posx="29.0000" posz="11.0000" orientx="-0.1213" orienty="0.0000" orientz="0.9926">TreeGreatLakes</unit>
 		<unit variation="188" posx="27.0000" posz="11.0000" orientx="-0.7707" orienty="0.0000" orientz="-0.6372">TreeNewEngland</unit>
-		<unit variation="117" posx="10.7505" posz="12.6005" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deSPCVillageHouseTreasure</unit>
+		<unit variation="117" posx="10.7505" posz="12.6005" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCVillageHousePropB</unit>
 		<unit variation="27" posx="13.9118" posz="12.5831" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropsFlowers</unit>
 		<unit variation="25" posx="13.9585" posz="13.0735" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropsFlowers</unit>
 		<unit variation="201" posx="24.9898" posz="13.8658" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropsFlowersBohemia</unit>
