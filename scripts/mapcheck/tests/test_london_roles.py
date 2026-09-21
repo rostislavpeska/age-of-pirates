@@ -239,7 +239,7 @@ class TestSeats:
         assert self._block("attacker", 4)[-1] == ("rmPlaceGroupingAtLoc", "blockStuart2, 0, 0.5, locZaOut")
         assert not any("blockStuart2" in c[1] for c in self._block("defender", 4))
         fb = s[s.index("if (seatsByRole == 0)"):s.index('rmEchoInfo("LONDON seats:')]
-        assert fb.count("blockStuart2") == 1 and "rmPlaceGroupingAtLoc(blockStuart2, 0, 0.5, locZaOut);" in fb
+        assert fb.count("blockStuart2") == 2 and "rmPlaceGroupingAtLoc(blockStuart2, 0, (xRoad + 0.5) * 0.5, locZaOut);" in fb and "rmPlaceGroupingAtLoc(blockStuart2, 0, (0.5 + xGateMirror) * 0.5, locZaOut);" in fb   # more than four per side: two, both outside
         w = (REPO / "game/randmaps/groupings/EU_Native_Block_Stuart_02.xml").read_bytes()
         assert w.count(b"zpSPCSocketStuart") == 1 and b"<width>16</width>" in w and w == (STEAM / "groupings/EU_Native_Block_Stuart_02.xml").read_bytes()
 

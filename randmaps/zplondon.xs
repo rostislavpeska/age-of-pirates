@@ -1250,7 +1250,10 @@ void main(void)
 		rmPlaceGroupingAtLoc(blockPropFiller, 0, locX34, locZaSeat);
 		rmPlaceGroupingAtLoc(blockPropFiller, 0, locX56, locZaSeat);
 		rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZaSeat);
-		rmPlaceGroupingAtLoc(blockStuart2, 0, 0.5, locZaOut);            // five and more per side: the second Stuart post outside the city
+		// more than four per side (user 2026-09-22): TWO Stuart posts outside the city, one behind each gap between the
+		// gates - the road-to-centre gap and the centre-to-mirror gap (the wall hills sit on the same x, 33 tiles nearer)
+		rmPlaceGroupingAtLoc(blockStuart2, 0, (xRoad + 0.5) * 0.5, locZaOut);
+		rmPlaceGroupingAtLoc(blockStuart2, 0, (0.5 + xGateMirror) * 0.5, locZaOut);
 	}
 	rmEchoInfo("LONDON seats: seatsByRole " + seatsByRole + " defenders x" + defenderCount + " at z " + rmZFractionToMeters(locZdSeat) + " m, attackers x" + attackerCount + " at z " + rmZFractionToMeters(locZaSeat) + " m");
 
