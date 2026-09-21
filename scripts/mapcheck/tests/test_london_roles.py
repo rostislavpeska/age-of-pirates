@@ -2,10 +2,10 @@
 on the landmark coin, with no seat coordinates yet. Pins the contract so the seat tables can be written on top of it:
 
   - the helper is Florence's zpGetTeamPlayer, verbatim, at file scope (also Versailles');
-  - the landmark coin defenderBank (10.0) puts St Paul + Stuart (+ the Stuart-shaped 2 x 2 with Park and Menagerie)
-    on one bank and Minster + Parliament (+ the Parliament-shaped 2 x 2) on the other, exports never rotated;
-  - the 14 roles follow the helper's order: defenders = the team on the defender bank, attackers = the other team;
-    which lobby team holds which bank is the existing spawnSwitch, read the same way by the interim line placement;
+  - TEAM 1 DEFENDS (Minster + Parliament), TEAM 0 ATTACKS (St Paul + Stuart) - Florence's fixed binding; the one
+    coin defenderBank (0.5) says where the defenders' city stands, 10.0 places the natives by it (the Stuart-shaped
+    and the Parliament-shaped 2 x 2 with Park and Menagerie), exports never rotated; spawnSwitch is set from it;
+  - the 14 roles follow the helper's order on team 1 / team 0;
   - the roles resolve before any player is placed and stay -1 outside 2-team lobbies (Florence, Istanbul);
   - harness only: no rmPlacePlayer by role yet; the repo file and the Steam twin are identical and CRLF.
 """
@@ -71,28 +71,28 @@ class TestLandmarkCoin:
         north = dict(south); north.update(_assigns(after))   # the if-block overrides = defender bank north
         return south, north
 
-    def test_defender_bank_south_is_the_layout_that_shipped(self):
-        south, _ = self._layouts()
-        assert south["locZd12"] == "locZs12" and south["locZa12"] == "locZn12"
-        assert south["locZdStuart"] == "locZs1" and south["locZdPark"] == "locZs2"          # Stuart col 1, Park on its -z forecourt side
-        assert south["locZaParliament"] == "locZn12" and south["locZaPark"] == "locZn1"     # Parliament cols 1-2, Park row 4 col 1
-        assert south["locZsMenagerie"] == "locZs2" and south["locZnMenagerie"] == "locZn2"
+    def test_defenders_south_means_parliament_south_and_stuart_north(self):
+        south, _ = self._layouts()      # defenderBank 0: Minster + Parliament (team 1) south, St Paul + Stuart (team 0) north
+        assert south["locZMinster"] == "locZs12" and south["locZStPaul"] == "locZn12"
+        assert south["locZParliament"] == "locZs12" and south["locZParliamentPark"] == "locZs1"   # Parliament cols 1-2, Park row 4 col 1
+        assert south["locZStuart"] == "locZn2" and south["locZStuartPark"] == "locZn1"            # unrotated export faces -z: Stuart col 2, Park col 1
+        assert south["locZsMenagerie"] == "locZs2" and south["locZnMenagerie"] == "locZn1"       # behind the north (Stuart) Park
 
-    def test_defender_bank_north_keeps_stuarts_forecourt_toward_the_park(self):
-        _, north = self._layouts()
-        assert north["locZd12"] == "locZn12" and north["locZa12"] == "locZs12"
-        assert north["locZdStuart"] == "locZn2" and north["locZdPark"] == "locZn1"          # unrotated export faces -z: Stuart col 2, Park col 1
-        assert north["locZaParliament"] == "locZs12" and north["locZaPark"] == "locZs1"
-        assert north["locZsMenagerie"] == "locZs2" and north["locZnMenagerie"] == "locZn1"  # behind the north Park
+    def test_defenders_north_is_the_layout_that_first_shipped(self):
+        _, north = self._layouts()      # defenderBank 1: Stuart south col 1 with the Park in col 2, Parliament north
+        assert north["locZMinster"] == "locZn12" and north["locZStPaul"] == "locZs12"
+        assert north["locZParliament"] == "locZn12" and north["locZParliamentPark"] == "locZn1"
+        assert north["locZStuart"] == "locZs1" and north["locZStuartPark"] == "locZs2"
+        assert north["locZsMenagerie"] == "locZs2" and north["locZnMenagerie"] == "locZn2"
 
     def test_placements_use_the_keyed_locations_in_the_shipped_call_order(self):
         s = _code(_section(_text(LONDON), "// ---- 10.1 fixed doubles", "// ---- 10.3 the cell table"))
         calls = re.findall(r"rmPlaceGrouping(?:Instance)?AtLoc\((\w+), (?:0, )?(\w+), (\w+)(?:, 0)?\);", s)
-        assert calls[:7] == [("blockStPaul", "locX12", "locZd12"), ("blockStuart", "locX34", "locZdStuart"),
-                             ("blockTowerS", "locX78", "locZs12"), ("blockMinster", "locX12", "locZa12"),
-                             ("blockParliament", "locX3", "locZaParliament"), ("blockTowerN", "locX78", "locZn12"),
+        assert calls[:7] == [("blockStPaul", "locX12", "locZStPaul"), ("blockStuart", "locX34", "locZStuart"),
+                             ("blockTowerS", "locX78", "locZs12"), ("blockMinster", "locX12", "locZMinster"),
+                             ("blockParliament", "locX3", "locZParliament"), ("blockTowerN", "locX78", "locZn12"),
                              ("blockTrade", "locX1", "locZs3")]
-        assert ("blockPark", "locX3", "locZdPark") in calls and ("blockPark", "locX4", "locZaPark") in calls
+        assert ("blockPark", "locX3", "locZStuartPark") in calls and ("blockPark", "locX4", "locZParliamentPark") in calls
         assert ("blockMenagerie", "locX4", "locZsMenagerie") in calls and ("blockMenagerie", "locX4", "locZnMenagerie") in calls
         assert "int menagerieSInst = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locX4, locZsMenagerie, 0);" in s
         assert "int menagerieNInst = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locX4, locZnMenagerie, 0);" in s
@@ -113,14 +113,14 @@ class TestRoles:
             [(i + 1, "attackerTeam", o + "Attacker") for i, o in enumerate(ORDER)]
         assert s.count("g_zpTeamPlayerResult") == 14
 
-    def test_defender_team_is_the_team_on_the_defender_bank(self):
+    def test_team_1_defends_team_0_attacks_banks_and_spawnswitch_follow_the_coin(self):
         t = _text(LONDON)
-        s = _section(t, "// ---- 0.5 THE LOBBY", "// ---- 1. THE NAUTICAL LANE")
-        assert re.search(r"int northTeam = 1;\n\tint southTeam = 0;\n\tif \(spawnSwitch == 1\)\n\t\{\n\t\tnorthTeam = 0;\n\t\tsouthTeam = 1;\n\t\}", s)
-        assert re.search(r"int defenderTeam = southTeam;\n\tint attackerTeam = northTeam;\n\tif \(defenderBank == 1\)\n\t\{\n\t\tdefenderTeam = northTeam;\n\t\tattackerTeam = southTeam;\n\t\}", s)
+        s = _code(_section(t, "// ---- 0.5 THE LOBBY", "// ---- 1. THE NAUTICAL LANE"))
+        assert "int defenderTeam = 1;\n\tint attackerTeam = 0;" in s                                   # Florence's fixed binding
+        assert re.search(r"int northTeam = attackerTeam;\n\tint southTeam = defenderTeam;\n\tspawnSwitch = 1;\n\tif \(defenderBank == 1\)\n\t\{\n\t\tnorthTeam = defenderTeam;\n\t\tsouthTeam = attackerTeam;\n\t\tspawnSwitch = 0;\n\t\}", s)
         assert "int defenderCount = rmGetNumberPlayersOnTeam(defenderTeam);" in s and "int attackerCount = rmGetNumberPlayersOnTeam(attackerTeam);" in s
-        assert t.count("int spawnSwitch = rmRandInt(0,1);") == 1 and t.index("int spawnSwitch") < t.index("// ---- 0.5 THE LOBBY")
-        assert t.index("// ---- 0.5 THE LOBBY") < t.index("int defenderBank = rmRandInt(0, 1);") < t.index("int northTeam = 1;")
+        assert t.count("int spawnSwitch = 0;") == 1 and "rmRandInt(0,1)" not in t                     # no second coin
+        assert t.index("int spawnSwitch = 0;") < t.index("// ---- 0.5 THE LOBBY") < t.index("int defenderBank = rmRandInt(0, 1);") < t.index("int defenderTeam = 1;")
 
     def test_interim_placement_reads_the_coin_the_same_way(self):
         # spawnSwitch 0: team 1 on the far-z line (the north bank), team 0 on the near-z line (the south bank)
@@ -149,7 +149,7 @@ class TestRoles:
     def test_no_seat_names_collide_with_other_declarations(self):
         t = _text(LONDON)
         for name in ["northTeam", "southTeam", "defenderTeam", "attackerTeam", "defenderCount", "attackerCount", "oneVsAll",
-                     "defenderBank", "locZd12", "locZa12", "locZdStuart", "locZaParliament", "locZdPark", "locZaPark",
+                     "defenderBank", "locZMinster", "locZStPaul", "locZParliament", "locZStuart", "locZParliamentPark", "locZStuartPark",
                      "locZsMenagerie", "locZnMenagerie"] + \
                 [o + r for o in ORDER for r in ("Defender", "Attacker")]:
             assert len(re.findall(r"\b(?:int|float) %s\b" % name, t)) == 1, name
