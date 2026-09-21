@@ -3985,7 +3985,7 @@
       <topedge>new_england\ground3_ne</topedge>
       <side>new_england\cliff_side_ne</side>
       <edge>new_england\cliff_side_ne</edge>
-      <bottomedge>new_england\cliff_side_ne</bottomedge>
+      <bottomedge>new_england\ground3_ne</bottomedge>
     </textures>
   </cliff>
 </cliffs>
