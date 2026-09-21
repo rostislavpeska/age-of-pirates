@@ -21,10 +21,12 @@
 //   7  harbour groupings hung off the real posts, instance API                  (law 2)
 //   8  harbour guards: the vanilla Euro trade-route post nugget (101) on the quay behind each harbour; the post
 //      is released by "Units in Area" (no guardian left around it), never by the object-def nugget's id
-//   9  quays (one straight plateau per bank), streets, countryside; 9.5 the wall terrain twins after it (Florence)
+//   9  quays (one straight plateau per bank), streets, countryside (New England grass, Paris's turbulence); 9.2 the paint
+//      patches (Istanbul); 9.5 the wall terrain twins after them (Florence)
 //   10 blocks in Paris's order: the landmark coin (10.0), fixed doubles, fixed singles, two Florence zones, fillers, houses
 //   11 riverside decorations, 12 players (12.1 roles: see 0.5; 12.2 seats by role on the reserved columns, 12.3 the interim line for the rest),
-//      12.5 the wall hills (Florence's Italian Cliff between the gate segments of 3.5), 13 triggers (all at the end)
+//      12.5 the wall hills (ZP Cliff British between the gate segments of 3.5), 12.7 the countryside objects (Istanbul's way,
+//      after the hills), 13 triggers (all at the end)
 //
 // LAWS (pinned by tests, dates in the memories)
 //   1  land route + docked controllers BEFORE any water; the lane BEFORE the river; a
@@ -290,17 +292,43 @@ void quaySegment(float x1 = 0.0, float z1 = 0.0, float x2 = 1.0, float z2 = 1.0,
 	rmBuildArea(prom);
 }
 
-// Countryside behind one bank (Paris's area, the italy_cliff_top mix of the British maps), kept off the plateaus.
-void countryside(string name = "", float z = 0.5, int constraint = -1)
+// Countryside behind one bank (Paris's area), kept off the plateaus and 2 m off the walls: New England grass
+// (newengland_grass - textures only, no objects table, so no stray stones; user 2026-09-22) on Paris's gentle turbulence
+// (zpparis.xs 501-504: variation 2.0, persistence 0.2, noise bias 1). Returns the area, 12.7 places into it.
+int countryside(string name = "", float z = 0.5, int constraint = -1, int wallConstraint = -1)
 {
 	int area = rmCreateArea(name);
 	rmSetAreaSize(area, 0.6, 0.6);
 	rmSetAreaLocation(area, 0.5, z);
 	rmSetAreaCoherence(area, 1.0);
 	rmSetAreaBaseHeight(area, 1.0);
+	rmSetAreaElevationType(area, cElevTurbulence);
+	rmSetAreaElevationVariation(area, 2.0);
+	rmSetAreaElevationPersistence(area, 0.2);
+	rmSetAreaElevationNoiseBias(area, 1);
 	rmAddAreaConstraint(area, constraint);
-	rmSetAreaMix(area, "italy_cliff_top");   // Art/terrain/mix/italy_cliff_top - the British maps' countryside (user 2026-09-18; was nwt_grass1)
-	rmSetAreaElevationVariation(area, 0.0);
+	rmAddAreaConstraint(area, wallConstraint);
+	rmSetAreaMix(area, "newengland_grass");
+	rmBuildArea(area);
+	return(area);
+}
+
+// One paint patch on a bank's countryside (Istanbul's flank patches, zpistanbulb.xs 2843-2911: coherence 0.1, paint only,
+// no height, no elevation, 4 m off its own kind, no seed location - the bank's strip BOX is the fence and the engine
+// picks the spot, as Istanbul's wildBox does).
+void countryPatch(string name = "", string mix = "", int tiles = 60, int box = -1, int c1 = -1, int c2 = -1, int c3 = -1)
+{
+	int area = rmCreateArea(name);
+	rmSetAreaWarnFailure(area, false);
+	rmSetAreaSize(area, rmAreaTilesToFraction(tiles), rmAreaTilesToFraction(tiles));
+	rmSetAreaCoherence(area, 0.1);
+	rmAddAreaConstraint(area, box);
+	rmSetAreaMix(area, mix);
+	rmAddAreaConstraint(area, c1);
+	rmAddAreaConstraint(area, c2);
+	rmAddAreaConstraint(area, c3);
+	rmAddAreaToClass(area, rmClassID("classPatch"));
+	rmSetAreaObeyWorldCircleConstraint(area, false);
 	rmBuildArea(area);
 }
 
@@ -530,6 +558,23 @@ void main(void)
 	int avoidPlateauShort = rmCreateClassDistanceConstraint("avoid plateau short", rmClassID("classPlateau"), 4.0);   // countryside (Paris: 2.0) and the wall hills; 4.0 since 2026-09-21 - the hills' cliff faces spilled onto the streets at 2 m, 6 m was too much (user: extend this one, no new constraint)
 	int avoidTradeRouteWall = rmCreateTradeRouteDistanceConstraint("trade route wall", 4.0);                          // Florence 358: the wall hills off the routes
 	int avoidWall = rmCreateTypeDistanceConstraint("avoid wall object", "AbstractWall", 0.001);                       // Florence 378: the wall hills off the walls
+	// the countryside (user 2026-09-22, Istanbul's fences in metres - zpistanbulb.xs 1b): the areas 2 m off the walls
+	// (Paris 428), the patches 4 m off their own kind; the objects 5 m off the hill cliffs (classCliff), 8 m off any
+	// block or plateau, 20 m (trees 10) off the wall buildings, 8 m off the routes, under the hills by height, and
+	// spaced from their own kind
+	int avoidWallMedium = rmCreateTypeDistanceConstraint("avoid wall object medium", "AbstractWall", 2.0);
+	int avoidPatch = rmCreateClassDistanceConstraint("patch vs. patch", rmClassID("classPatch"), 4.0);
+	int avoidCliff5 = rmCreateClassDistanceConstraint("objects off the cliffs", rmClassID("classCliff"), 5.0);
+	int avoidBlocks8 = rmCreateClassDistanceConstraint("objects off the blocks", rmClassID("classBlock"), 8.0);
+	int avoidPlateau8 = rmCreateClassDistanceConstraint("objects off the plateaus", rmClassID("classPlateau"), 8.0);
+	int avoidWallObjXL = rmCreateTypeDistanceConstraint("avoid wall object xl", "AbstractWall", 20.0);
+	int avoidWallObjTree = rmCreateTypeDistanceConstraint("avoid wall object trees", "AbstractWall", 10.0);
+	int avoidTradeRouteRes = rmCreateTradeRouteDistanceConstraint("resources off the routes", 8.0);
+	int mineVsMine = rmCreateTypeDistanceConstraint("mine v mine", "MineTin", 60.0);
+	int deerVsDeer = rmCreateTypeDistanceConstraint("herd v herd", "Deer", 40.0);
+	int berryVsBerry = rmCreateTypeDistanceConstraint("berries v berries", "BerryBush", 40.0);
+	int nugVsNug = rmCreateTypeDistanceConstraint("treasure v treasure", "AbstractNugget", 50.0);
+	int treeVsTree = rmCreateTypeDistanceConstraint("tree clump v tree clump", "TreeNewEngland", 16.0);
 
 	// ---- T. TUNABLES --------------------------------------------------------------------------------
 	// T1. asked lines (the engine snaps the road; the real x / z are read back in 1 and 2)
@@ -830,8 +875,29 @@ void main(void)
 	// band (Paris's two quay textures), countryside
 	quaySegment(0.0, wallS - rmZTilesToFraction(cityDepthTiles), 1.0, wallS, 0.7, wallS, -1.0, promenadePaintM);
 	quaySegment(0.0, wallN, 1.0, wallN + rmZTilesToFraction(cityDepthTiles), 0.7, wallN, 1.0, promenadePaintM);
-	countryside("countryside S", zRiver-rmZTilesToFraction(130 + colPitchTiles * extraColumns / 2 - colPitchTiles * strippedColumns), avoidPlateauShort);   // 130 tiles on the 573 frame + half the reserved depth - the stripped column = the same 26.5 m off the edge
-	countryside("countryside N", zRiver+rmZTilesToFraction(130 + colPitchTiles * extraColumns / 2 - colPitchTiles * strippedColumns), avoidPlateauShort);
+	int countryS = countryside("countryside S", zRiver-rmZTilesToFraction(130 + colPitchTiles * extraColumns / 2 - colPitchTiles * strippedColumns), avoidPlateauShort, avoidWallMedium);   // 130 tiles on the 573 frame + half the reserved depth - the stripped column
+	int countryN = countryside("countryside N", zRiver+rmZTilesToFraction(130 + colPitchTiles * extraColumns / 2 - colPitchTiles * strippedColumns), avoidPlateauShort, avoidWallMedium);
+
+	// ---- 9.2 PAINT PATCHES on the countryside (Istanbul's flank patches, after the base pass; user 2026-09-22): per
+	// bank countryPatchCount of Italy Cliff Top Grass and as many of Italy Grass Dirt, countryPatchTiles each, anywhere
+	// in the strip beyond the last reserved column (a box per bank, 6 m in from the column's edge and the frame's edge -
+	// Istanbul's wildBox fence, the engine picks the spot - the box alone keeps them off the city floor), 2 m off the
+	// walls, 4 m off the routes and 4 m off each other
+	int countryPatchCount = 5;
+	int countryPatchTiles = 60;
+	// the strip's inner edge from the ASKED lane (the real legs drift by a metre or two; paint with 6 m margins does not
+	// care, and the static simulator can only resolve literals here)
+	float stripEdgeS = zRiverAsk - rmZMetersToFraction(laneLegM) - rmZTilesToFraction(cityDistTiles + cityDepthTiles);
+	float stripEdgeN = zRiverAsk + rmZMetersToFraction(laneLegM) + rmZTilesToFraction(cityDistTiles + cityDepthTiles);
+	int stripBoxS = rmCreateBoxConstraint("countryside strip S", 0.0, rmZMetersToFraction(6.0), 1.0, stripEdgeS - rmZMetersToFraction(6.0), 0.01);
+	int stripBoxN = rmCreateBoxConstraint("countryside strip N", 0.0, stripEdgeN + rmZMetersToFraction(6.0), 1.0, 1.0 - rmZMetersToFraction(6.0), 0.01);
+	for (cp = 0; < countryPatchCount)
+	{
+		countryPatch("country patch grass S " + cp, "italy_cliff_top_grass", countryPatchTiles, stripBoxS, avoidWallMedium, avoidTradeRouteWall, avoidPatch);
+		countryPatch("country patch dirt S " + cp, "italy_grass_dirt", countryPatchTiles, stripBoxS, avoidWallMedium, avoidTradeRouteWall, avoidPatch);
+		countryPatch("country patch grass N " + cp, "italy_cliff_top_grass", countryPatchTiles, stripBoxN, avoidWallMedium, avoidTradeRouteWall, avoidPatch);
+		countryPatch("country patch dirt N " + cp, "italy_grass_dirt", countryPatchTiles, stripBoxN, avoidWallMedium, avoidTradeRouteWall, avoidPatch);
+	}
 
 	// ---- 9.5 THE WALL TERRAIN, after the countryside (Florence 720-736: the wall exports' ground again, as terrain-
 	// only twins placed at the same six spots, so the countryside mix painted over the footprints in 9 gives way to
@@ -1368,7 +1434,7 @@ void main(void)
 		rmPlaceObjectDefAtLoc(playerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 		rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5);
 	}
-	// starting hunt / gold / berries and every map resource: deliberately absent at the layout stage
+	// the countryside resources and treasures follow in 12.7, after the wall hills; the seats' own food and coal are baked in the seat block
 
 	// ---- 12.5 THE WALL HILLS - Florence's wallCliffs (zpflorence.xs 1485-1526) between the gate segments placed in
 	// 3.5: Italian Cliff, one per gap, straddling the wall line 3 tiles inside the segment centre.
@@ -1394,6 +1460,117 @@ void main(void)
 	wallCliff("wall hill N2", hillX2, hillZN, hillInnerTiles, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
 	wallCliff("wall hill N3", hillX3, hillZN, hillInnerTiles, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
 	wallCliff("wall hill N4", hillX4, hillZN, hillEdgeTiles, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
+
+	// ---- 12.7 THE COUNTRYSIDE OBJECTS (user 2026-09-22), Istanbul's way (zpistanbulb.xs 3866-3937, 4056-4071): placed
+	// into each bank's countryside area AFTER the wall hills, so the cliff, wall, block and plateau fences see everything
+	// that stands; fussiest first (mines, herds), the tree clumps last. Counts per bank follow that bank's head-count
+	// (the seats already carry the block's berries, coal and deer), and resScale (players / 4: 0, 1, 2) adds a little
+	// on the big frames. Treasures are the map's own pool - westEurope (Jacobite, Highland, Scots records) at difficulty
+	// 3 and 4 - through the "Nugget" placeholder and the latch in force at placement (Istanbul's Rule 1).
+	int belowCliffs = rmCreateMaxHeightConstraint("below the cliffs", 3.5);   // the countryside sits at 1.0 (+2.0 turbulence), the hills at 8.0
+	// the map's rim (user 2026-09-22): Istanbul's world-circle pie (zpistanbulb.xs 900-902, "a treasure was spawning half
+	// in the void at the rim") with the radius on London's LONG axis, and - this frame is a rectangle, the circle alone
+	// leaves the long sides open - a box 8 m in from every edge; both on every countryside object
+	int insideWorld = rmCreatePieConstraint("inside the world circle", 0.5, 0.5,
+		rmZFractionToMeters(0.0), rmZFractionToMeters(0.47),
+		rmDegreesToRadians(0), rmDegreesToRadians(360));
+	int insideFrame = rmCreateBoxConstraint("inside the frame", rmXMetersToFraction(8.0), rmZMetersToFraction(8.0), 1.0 - rmXMetersToFraction(8.0), 1.0 - rmZMetersToFraction(8.0), 0.01);
+	int resScale = cNumberNonGaiaPlayers / 4;
+	int seatsBankD = defenderCount;
+	int seatsBankA = attackerCount;
+	if (cNumberTeams != 2)
+	{
+		seatsBankD = cNumberNonGaiaPlayers / 2;
+		seatsBankA = cNumberNonGaiaPlayers - seatsBankD;
+	}
+	if (seatsBankD < 1) seatsBankD = 1;
+	if (seatsBankA < 1) seatsBankA = 1;
+	int countryD = countryS;
+	int countryA = countryN;
+	if (defenderBank == 1)
+	{
+		countryD = countryN;
+		countryA = countryS;
+	}
+	// tin mines: one per player on the bank plus one, 60 m apart
+	int countryMine = rmCreateObjectDef("countryside tin");
+	rmAddObjectDefItem(countryMine, "MineTin", 1, 0.0);
+	rmAddObjectDefConstraint(countryMine, mineVsMine);
+	rmAddObjectDefConstraint(countryMine, avoidBlocks8);
+	rmAddObjectDefConstraint(countryMine, avoidPlateau8);
+	rmAddObjectDefConstraint(countryMine, avoidWallObjXL);
+	rmAddObjectDefConstraint(countryMine, avoidCliff5);
+	rmAddObjectDefConstraint(countryMine, belowCliffs);
+	rmAddObjectDefConstraint(countryMine, avoidTradeRouteRes);
+	rmAddObjectDefConstraint(countryMine, insideWorld);
+	rmAddObjectDefConstraint(countryMine, insideFrame);
+	rmPlaceObjectDefInArea(countryMine, 0, countryD, seatsBankD + 1);
+	rmPlaceObjectDefInArea(countryMine, 0, countryA, seatsBankA + 1);
+	// deer herds: one per player on the bank plus one, 40 m apart
+	int countryDeer = rmCreateObjectDef("countryside deer");
+	rmAddObjectDefItem(countryDeer, "Deer", rmRandInt(6, 8), 6.0);
+	rmSetObjectDefCreateHerd(countryDeer, true);
+	rmAddObjectDefConstraint(countryDeer, deerVsDeer);
+	rmAddObjectDefConstraint(countryDeer, avoidBlocks8);
+	rmAddObjectDefConstraint(countryDeer, avoidPlateau8);
+	rmAddObjectDefConstraint(countryDeer, avoidWallObjXL);
+	rmAddObjectDefConstraint(countryDeer, avoidCliff5);
+	rmAddObjectDefConstraint(countryDeer, belowCliffs);
+	rmAddObjectDefConstraint(countryDeer, avoidTradeRouteRes);
+	rmAddObjectDefConstraint(countryDeer, insideWorld);
+	rmAddObjectDefConstraint(countryDeer, insideFrame);
+	rmPlaceObjectDefInArea(countryDeer, 0, countryD, seatsBankD + 1);
+	rmPlaceObjectDefInArea(countryDeer, 0, countryA, seatsBankA + 1);
+	// berry clusters: one per player on the bank
+	int countryBerry = rmCreateObjectDef("countryside berries");
+	rmAddObjectDefItem(countryBerry, "BerryBush", 5, 4.0);
+	rmAddObjectDefConstraint(countryBerry, berryVsBerry);
+	rmAddObjectDefConstraint(countryBerry, avoidBlocks8);
+	rmAddObjectDefConstraint(countryBerry, avoidPlateau8);
+	rmAddObjectDefConstraint(countryBerry, avoidWallObjXL);
+	rmAddObjectDefConstraint(countryBerry, avoidCliff5);
+	rmAddObjectDefConstraint(countryBerry, belowCliffs);
+	rmAddObjectDefConstraint(countryBerry, avoidTradeRouteRes);
+	rmAddObjectDefConstraint(countryBerry, insideWorld);
+	rmAddObjectDefConstraint(countryBerry, insideFrame);
+	rmPlaceObjectDefInArea(countryBerry, 0, countryD, seatsBankD);
+	rmPlaceObjectDefInArea(countryBerry, 0, countryA, seatsBankA);
+	// default treasures: two of difficulty 3 and one of difficulty 4 per bank, one more of each on the 8-player frame
+	int countryNugget = rmCreateObjectDef("countryside treasure");
+	rmAddObjectDefItem(countryNugget, "Nugget", 1, 0.0);
+	rmAddObjectDefConstraint(countryNugget, nugVsNug);
+	rmAddObjectDefConstraint(countryNugget, avoidBlocks8);
+	rmAddObjectDefConstraint(countryNugget, avoidPlateau8);
+	rmAddObjectDefConstraint(countryNugget, avoidWallObjXL);
+	rmAddObjectDefConstraint(countryNugget, avoidCliff5);
+	rmAddObjectDefConstraint(countryNugget, belowCliffs);
+	rmAddObjectDefConstraint(countryNugget, avoidTradeRouteRes);
+	rmAddObjectDefConstraint(countryNugget, insideWorld);
+	rmAddObjectDefConstraint(countryNugget, insideFrame);
+	rmSetNuggetDifficulty(3, 3);
+	rmPlaceObjectDefInArea(countryNugget, 0, countryD, 2 + resScale);
+	rmPlaceObjectDefInArea(countryNugget, 0, countryA, 2 + resScale);
+	rmSetNuggetDifficulty(4, 4);
+	rmPlaceObjectDefInArea(countryNugget, 0, countryD, 1 + resScale);
+	rmPlaceObjectDefInArea(countryNugget, 0, countryA, 1 + resScale);
+	// tree clumps last: New England trees with a few Great Lakes ones and forest underbrush (the big park's mix)
+	int countryTrees = rmCreateObjectDef("countryside trees");
+	rmAddObjectDefItem(countryTrees, "TreeNewEngland", rmRandInt(5, 7), 10.0);
+	rmAddObjectDefItem(countryTrees, "TreeGreatLakes", rmRandInt(2, 3), 11.0);
+	rmAddObjectDefItem(countryTrees, "UnderbrushForest", rmRandInt(3, 4), 9.0);
+	rmAddObjectDefToClass(countryTrees, rmClassID("classForest"));
+	rmAddObjectDefConstraint(countryTrees, treeVsTree);
+	rmAddObjectDefConstraint(countryTrees, avoidBlocks8);
+	rmAddObjectDefConstraint(countryTrees, avoidPlateau8);
+	rmAddObjectDefConstraint(countryTrees, avoidWallObjTree);
+	rmAddObjectDefConstraint(countryTrees, avoidCliff5);
+	rmAddObjectDefConstraint(countryTrees, belowCliffs);
+	rmAddObjectDefConstraint(countryTrees, avoidTradeRouteRes);
+	rmAddObjectDefConstraint(countryTrees, insideWorld);
+	rmAddObjectDefConstraint(countryTrees, insideFrame);
+	rmPlaceObjectDefInArea(countryTrees, 0, countryD, 3 + 2 * resScale);
+	rmPlaceObjectDefInArea(countryTrees, 0, countryA, 3 + 2 * resScale);
+	rmEchoInfo("LONDON countryside: bank seats " + seatsBankD + " / " + seatsBankA + ", resScale " + resScale + " - tin " + (seatsBankD + 1) + "+" + (seatsBankA + 1) + ", deer herds the same, berries " + seatsBankD + "+" + seatsBankA + ", treasures " + (3 + 2 * resScale) + " per bank, tree clumps " + (3 + 2 * resScale) + " per bank");
 
 	// ============================================================================================
 	// 13. TRIGGERS, all at the end (Paris / Istanbul). Ids: object defs = rmGetUnitPlaced + instanceIdShiftIndividual,

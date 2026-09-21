@@ -333,6 +333,9 @@ class TestWalls:
     def test_the_british_cliff_exists(self):
         c = (REPO / "data/clifftypes2.xml").read_text(encoding="utf-8", errors="replace")
         assert '<cliff name="ZP Cliff British"' in c and (REPO / "data/clifftypes2.xml.xmb").is_file()
+        b = c[c.index('<cliff name="ZP Cliff British"'):]; b = b[:b.index("</cliff>")]
+        assert "<top>new_england" + chr(92) + "ground3_ne</top>" in b and "<topedge>new_england" + chr(92) + "ground3_ne</topedge>" in b
+        assert "<bottomedge>new_england" + chr(92) + "cliff_side_ne</bottomedge>" in b and "ceylon_cliff_basecolor" in b
 
     def test_walls_come_before_the_road_is_built_hills_after_the_players(self):
         t = _code(_text(LONDON))
@@ -379,6 +382,106 @@ class TestGateOrder:
         assert (REPO / "sandbox/backups/groupings/EU_SPC_London_Bridge_2026-09-21_waterspawn_placeholders.xml").is_file()
 
 
+class TestCountryside:
+    """9 / 9.2 / 12.7 (user 2026-09-22): New England grass on Paris's turbulence, Istanbul's patches and object method -
+    resources after the wall hills, fussiest first, counts per bank from that bank's head-count, treasures from the
+    westEurope pool at difficulty 3 and 4, every def fenced off cliffs, walls, blocks, plateaus and routes."""
+
+    def test_countryside_helper_new_england_grass_on_paris_turbulence(self):
+        t = _text(LONDON)
+        h = _code(t[t.index("int countryside(string name"):t.index("void countryPatch(")])
+        for line in ("rmSetAreaBaseHeight(area, 1.0);", "rmSetAreaElevationType(area, cElevTurbulence);", "rmSetAreaElevationVariation(area, 2.0);",
+                     "rmSetAreaElevationPersistence(area, 0.2);", "rmSetAreaElevationNoiseBias(area, 1);", "rmAddAreaConstraint(area, constraint);",
+                     "rmAddAreaConstraint(area, wallConstraint);", 'rmSetAreaMix(area, "newengland_grass");', "return(area);"):
+            assert line in h, line
+        assert "italy_cliff_top" not in h and "rmSetBaseTerrainMix" not in t
+        s = _code(_section(t, "// ---- 9. CITY FLOOR", "// ---- 9.2 PAINT PATCHES"))
+        assert re.search(r'int countryS = countryside\("countryside S", zRiver-rmZTilesToFraction\([^)]*\), avoidPlateauShort, avoidWallMedium\);', s)
+        assert re.search(r'int countryN = countryside\("countryside N", zRiver\+rmZTilesToFraction\([^)]*\), avoidPlateauShort, avoidWallMedium\);', s)
+
+    def test_patches_box_fenced_after_the_base_pass_before_the_wall_terrain(self):
+        t = _text(LONDON)
+        assert t.index("// ---- 9.2 PAINT PATCHES") < t.index("// ---- 9.5 THE WALL TERRAIN")
+        s = _code(_section(t, "// ---- 9.2 PAINT PATCHES", "// ---- 9.5 THE WALL TERRAIN"))
+        assert "int countryPatchCount = 5;" in s and "int countryPatchTiles = 60;" in s
+        assert "float stripEdgeS = zRiverAsk - rmZMetersToFraction(laneLegM) - rmZTilesToFraction(cityDistTiles + cityDepthTiles);" in s
+        assert 'int stripBoxS = rmCreateBoxConstraint("countryside strip S", 0.0, rmZMetersToFraction(6.0), 1.0, stripEdgeS - rmZMetersToFraction(6.0), 0.01);' in s
+        assert 'int stripBoxN = rmCreateBoxConstraint("countryside strip N", 0.0, stripEdgeN + rmZMetersToFraction(6.0), 1.0, 1.0 - rmZMetersToFraction(6.0), 0.01);' in s
+        calls = re.findall(r'countryPatch\("country patch (\w+) (S|N) " \+ cp, "([^"]*)", countryPatchTiles, (stripBox[SN]), avoidWallMedium, avoidTradeRouteWall, avoidPatch\);', s)
+        assert calls == [("grass", "S", "italy_cliff_top_grass", "stripBoxS"), ("dirt", "S", "italy_grass_dirt", "stripBoxS"),
+                         ("grass", "N", "italy_cliff_top_grass", "stripBoxN"), ("dirt", "N", "italy_grass_dirt", "stripBoxN")]
+        h = _code(t[t.index("void countryPatch("):t.index("// ---- object defs")])
+        assert "rmSetAreaCoherence(area, 0.1);" in h and 'rmAddAreaToClass(area, rmClassID("classPatch"));' in h and "rmSetAreaLocation" not in h and "BaseHeight" not in h
+
+    def test_constraints_in_metres(self):
+        t = _code(_text(LONDON))
+        for line in ('int avoidWallMedium = rmCreateTypeDistanceConstraint("avoid wall object medium", "AbstractWall", 2.0);',
+                     'int avoidPatch = rmCreateClassDistanceConstraint("patch vs. patch", rmClassID("classPatch"), 4.0);',
+                     'int avoidCliff5 = rmCreateClassDistanceConstraint("objects off the cliffs", rmClassID("classCliff"), 5.0);',
+                     'int avoidBlocks8 = rmCreateClassDistanceConstraint("objects off the blocks", rmClassID("classBlock"), 8.0);',
+                     'int avoidPlateau8 = rmCreateClassDistanceConstraint("objects off the plateaus", rmClassID("classPlateau"), 8.0);',
+                     'int avoidWallObjXL = rmCreateTypeDistanceConstraint("avoid wall object xl", "AbstractWall", 20.0);',
+                     'int avoidWallObjTree = rmCreateTypeDistanceConstraint("avoid wall object trees", "AbstractWall", 10.0);',
+                     'int avoidTradeRouteRes = rmCreateTradeRouteDistanceConstraint("resources off the routes", 8.0);',
+                     'int mineVsMine = rmCreateTypeDistanceConstraint("mine v mine", "MineTin", 60.0);',
+                     'int deerVsDeer = rmCreateTypeDistanceConstraint("herd v herd", "Deer", 40.0);',
+                     'int berryVsBerry = rmCreateTypeDistanceConstraint("berries v berries", "BerryBush", 40.0);',
+                     'int nugVsNug = rmCreateTypeDistanceConstraint("treasure v treasure", "AbstractNugget", 50.0);',
+                     'int treeVsTree = rmCreateTypeDistanceConstraint("tree clump v tree clump", "TreeNewEngland", 16.0);',
+                     'int belowCliffs = rmCreateMaxHeightConstraint("below the cliffs", 3.5);',
+                     'int insideWorld = rmCreatePieConstraint("inside the world circle", 0.5, 0.5,',
+                     'rmZFractionToMeters(0.0), rmZFractionToMeters(0.47),',
+                     'int insideFrame = rmCreateBoxConstraint("inside the frame", rmXMetersToFraction(8.0), rmZMetersToFraction(8.0), 1.0 - rmXMetersToFraction(8.0), 1.0 - rmZMetersToFraction(8.0), 0.01);'):
+            assert line in t, line
+        assert t.index("int avoidWallMedium") < t.index("int countryS = countryside(")
+
+    def _objects(self):
+        t = _text(LONDON)
+        return _code(_section(t, "// ---- 12.7 THE COUNTRYSIDE OBJECTS", "int harbourN1PostUnit"))
+
+    def test_objects_after_the_hills_fussiest_first_trees_last(self):
+        t = _code(_text(LONDON))
+        assert t.index('wallCliff("wall hill N4"') < t.index('rmCreateObjectDef("countryside tin")') < t.index("int harbourN1PostUnit")
+        s = self._objects()
+        order = [re.search(r'"countryside (\w+)"', m).group(1) for m in re.findall(r'rmCreateObjectDef\("countryside \w+"\)', s)]
+        assert order == ["tin", "deer", "berries", "treasure", "trees"]
+        assert "int resScale = cNumberNonGaiaPlayers / 4;" in s
+        assert re.search(r"int seatsBankD = defenderCount;\n\tint seatsBankA = attackerCount;\n\tif \(cNumberTeams != 2\)", s)
+        assert "if (seatsBankD < 1) seatsBankD = 1;" in s and "if (seatsBankA < 1) seatsBankA = 1;" in s
+        assert re.search(r"int countryD = countryS;\n\tint countryA = countryN;\n\tif \(defenderBank == 1\)\n\t\{\n\t\tcountryD = countryN;\n\t\tcountryA = countryS;\n\t\}", s)
+
+    def test_each_def_its_items_fences_and_counts(self):
+        s = self._objects()
+        def block(name):
+            i = s.index('rmCreateObjectDef("countryside %s")' % name); j = s.index("rmCreateObjectDef(", i + 10) if s.find("rmCreateObjectDef(", i + 10) > 0 else s.index("rmEchoInfo", i)
+            return s[i:j]
+        rim = {"insideWorld", "insideFrame"}        # the world-circle pie and the 8 m frame box (user 2026-09-22)
+        fences = {"tin": {"mineVsMine", "avoidBlocks8", "avoidPlateau8", "avoidWallObjXL", "avoidCliff5", "belowCliffs", "avoidTradeRouteRes"} | rim,
+                  "deer": {"deerVsDeer", "avoidBlocks8", "avoidPlateau8", "avoidWallObjXL", "avoidCliff5", "belowCliffs", "avoidTradeRouteRes"} | rim,
+                  "berries": {"berryVsBerry", "avoidBlocks8", "avoidPlateau8", "avoidWallObjXL", "avoidCliff5", "belowCliffs", "avoidTradeRouteRes"} | rim,
+                  "treasure": {"nugVsNug", "avoidBlocks8", "avoidPlateau8", "avoidWallObjXL", "avoidCliff5", "belowCliffs", "avoidTradeRouteRes"} | rim,
+                  "trees": {"treeVsTree", "avoidBlocks8", "avoidPlateau8", "avoidWallObjTree", "avoidCliff5", "belowCliffs", "avoidTradeRouteRes"} | rim}
+        items = {"tin": ['"MineTin", 1, 0.0'], "deer": ['"Deer", rmRandInt(6, 8), 6.0'], "berries": ['"BerryBush", 5, 4.0'], "treasure": ['"Nugget", 1, 0.0'],
+                 "trees": ['"TreeNewEngland", rmRandInt(5, 7), 10.0', '"TreeGreatLakes", rmRandInt(2, 3), 11.0', '"UnderbrushForest", rmRandInt(3, 4), 9.0']}
+        counts = {"tin": ["seatsBankD + 1", "seatsBankA + 1"], "deer": ["seatsBankD + 1", "seatsBankA + 1"], "berries": ["seatsBankD", "seatsBankA"],
+                  "treasure": ["2 + resScale", "2 + resScale", "1 + resScale", "1 + resScale"], "trees": ["3 + 2 * resScale", "3 + 2 * resScale"]}
+        for name in ("tin", "deer", "berries", "treasure", "trees"):
+            b = block(name)
+            assert set(re.findall(r"rmAddObjectDefConstraint\(\w+, (\w+)\);", b)) == fences[name], name
+            assert re.findall(r"rmAddObjectDefItem\(\w+, (.*?)\);", b) == items[name], name
+            got = re.findall(r"rmPlaceObjectDefInArea\(\w+, 0, (country[DA]), ([^)]*)\);", b)
+            assert [a for a, _ in got] == (["countryD", "countryA"] * (2 if name == "treasure" else 1)) and [c for _, c in got] == counts[name], name
+        assert "rmSetObjectDefCreateHerd(countryDeer, true);" in block("deer")
+        assert 'rmAddObjectDefToClass(countryTrees, rmClassID("classForest"));' in block("trees")
+        tb = block("treasure")
+        assert tb.index("rmSetNuggetDifficulty(3, 3);") < tb.index("rmPlaceObjectDefInArea(countryNugget, 0, countryD, 2 + resScale);") < tb.index("rmSetNuggetDifficulty(4, 4);") < tb.index("rmPlaceObjectDefInArea(countryNugget, 0, countryD, 1 + resScale);")
+
+    def test_the_treasure_pool_and_the_map_types(self):
+        t = _text(LONDON)
+        assert 'rmSetMapType("westEurope")' in t and 'rmSetMapType("piratehistoricalmap")' in t
+        assert "deliberately absent at the layout stage" not in t
+
+
 class TestScope:
 
     def test_reserved_columns_take_the_berry_mill(self):
@@ -389,7 +492,7 @@ class TestScope:
     def test_base_mix_and_the_1v1_frame(self):
         t = _code(_text(LONDON))
         assert 'rmTerrainInitialize("new_england' + chr(92) + 'cliff_inland_top_ne", 1.0);' in t and "rmSetBaseTerrainMix" not in t   # a plain type: a base MIX scatters its rocks (2026-09-21)
-        assert 'rmSetAreaMix(area, "italy_cliff_top");' in t                                    # the same mix the countryside paints
+        assert 'rmSetAreaMix(area, "newengland_grass");' in t                                    # the countryside's mix (2026-09-22)
         assert "int baseSizeZ = 613;" in t and "baseSizeZ = 653;" in t and "baseSizeZ = 733;" in t
 
     def test_park_bakes_the_royal_huntsman_rescue(self):
