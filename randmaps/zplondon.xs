@@ -12,15 +12,15 @@
 //   1  nautical lane + fake stopper, real leg z per bank -> river centre, walls (law 1) - FIRST (Paris's gate order)
 //   2  land route DEFINED on the asked line, not built                          (Paris: gates before the road)
 //   3  the grid, derived from the asked road and the real walls (no placement)
-//   3.5 the gates at fixed coordinates: six outer wall segments, London Bridge with its landing gates (instance API)
+//   3.5 the gates at fixed coordinates: six outer wall segments (their gates on the road line)
 //   3.9 the land route BUILT through the gates, real x read back for the census, the bridge socket docked
-//   4  the river (rect-map rule: z authored in size_x units), after the road and the bridge
+//   4  the river (rect-map rule: z authored in size_x units), after the road
 //   5  harbour posts docked on the lane, real positions read back              (law 1)
-//   6  (London Bridge: see 3.5)
+//   6  London Bridge, instance API, after the river (before the road with gates it did not spawn) (law 2)
 //   7  harbour groupings hung off the real posts, instance API                  (law 2)
 //   8  harbour guards: the vanilla Euro trade-route post nugget (101) on the quay behind each harbour; the post
 //      is released by "Units in Area" (no guardian left around it), never by the object-def nugget's id
-//   9  quays (one straight plateau per bank), streets, countryside
+//   9  quays (one straight plateau per bank), streets, countryside; 9.5 the wall terrain twins after it (Florence)
 //   10 blocks in Paris's order: the landmark coin (10.0), fixed doubles, fixed singles, zones, fillers, houses
 //   11 riverside decorations, 12 players (12.1 roles: see 0.5; 12.2 seats by role on the reserved columns, 12.3 the interim line for the rest),
 //      12.5 the wall hills (Florence's Italian Cliff between the gate segments of 3.5), 13 triggers (all at the end)
@@ -123,12 +123,12 @@ void zpGetTeamPlayer(int teamOrder = -1, int teamID = -1)
 }
 
 // Florence's hill between two wall segments (zpflorence.xs 1485-1500, the wallCliffs loop body, one hill per call):
-// 240 tiles of Italian Cliff at height 8, kept 2 m off the city floor (classPlateau, which it joins), 4 m off the
-// routes and off the walls themselves.
-void wallCliff(string name = "", float x = 0.5, float z = 0.5, int avoidFloor = -1, int avoidRoute = -1, int avoidWalls = -1)
+// Italian Cliff at height 8, kept 2 m off the city floor (classPlateau, which it joins), 4 m off the routes and off
+// the walls themselves; the size is the caller's (Florence: 240 tiles for its 30-38 m gaps).
+void wallCliff(string name = "", float x = 0.5, float z = 0.5, int tiles = 240, int avoidFloor = -1, int avoidRoute = -1, int avoidWalls = -1)
 {
 	int area = rmCreateArea(name);
-	rmSetAreaSize(area, rmAreaTilesToFraction(240), rmAreaTilesToFraction(240));
+	rmSetAreaSize(area, rmAreaTilesToFraction(tiles), rmAreaTilesToFraction(tiles));
 	rmSetAreaObeyWorldCircleConstraint(area, false);
 	rmAddAreaToClass(area, rmClassID("classPlateau"));
 	rmAddAreaConstraint(area, avoidFloor);
@@ -711,8 +711,9 @@ void main(void)
 	float harbourNZ = zLaneN + rmZTilesToFraction(harbourShoreTiles) - rmZMetersToFraction(hNTopEdgeM);
 	float harbourSZ = zLaneS - rmZTilesToFraction(harbourShoreTiles) + rmZMetersToFraction(hSTopEdgeM);
 
-	// ---- 3.5 THE GATES, BEFORE THE ROAD (user 2026-09-21, Paris's order zpparis.xs 309-350): every gate that the
-	// road will pass goes down now at fixed coordinates, and the road is built through them in 3.9.
+	// ---- 3.5 THE GATES, BEFORE THE ROAD (user 2026-09-21, Paris's order zpparis.xs 309-350): the wall gates the
+	// road will pass go down now at fixed coordinates, and the road is built through them in 3.9. (London Bridge
+	// tried the same and did not spawn - it is back in 6, after the river, with socket placeholders.)
 	// THE OUTER WALLS - Florence's system (zpflorence.xs 406-424 the gate segments at 0.2 / 0.5 / 0.8; the Italian
 	// Cliff hills between them are 12.5). Three gate segments per bank on the city's outer edge: over the land route,
 	// at the centre, and mirroring the route about the centre. The export's gate sits at its centre (SPCFortGate at
@@ -750,11 +751,6 @@ void main(void)
 	rmPlaceGroupingAtLoc(wallGateN, wallOwnerN, 0.5, wallZN);
 	rmPlaceGroupingAtLoc(wallGateN, wallOwnerN, xGateMirror, wallZN);
 	rmEchoInfo("LONDON walls: gates at x " + rmXFractionToMeters(xRoad) + " / 180 / " + rmXFractionToMeters(xGateMirror) + " m, lines at z " + rmZFractionToMeters(wallZS) + " / " + rmZFractionToMeters(wallZN) + " m, owners " + wallOwnerS + " / " + wallOwnerN);
-	// LONDON BRIDGE (law 2: instance API, max distance 0): deck on the road, arches over the river, deck height
-	// 4.949 - its two landing gates (the export's zpSPCWaterSpawnPoint placeholders turned SPCFortGate, 2026-09-21)
-	// are on the road, so the bridge too goes down before the road and, by the user's order, before the river (5).
-	int londonBridge = rmCreateGrouping("london bridge", "EU_SPC_London_Bridge");
-	int bridgeInst = placeIsland(londonBridge, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ));
 
 
 	// ---- 3.9 THE LAND ROUTE BUILT through the gates; the real x read back from two docked controllers for the
@@ -770,7 +766,7 @@ void main(void)
 	routeSocket(tradeRouteID, xRoad, zRiver);   // the one socket: on London Bridge, at the crossing
 
 	// ---- 4. THE RIVER (rect-map rule: river z is read in size_x units -> true z metres / sizeX); after the road
-	// (law 1) and, by the user's gate order, after the bridge ------------------------------------------------
+	// (law 1) ----------------------------------------------------------------------------------------------
 	int riverMain = rmRiverCreate(-1, "ZP London River", 4, 4, riverRadius, riverRadius);   // data/waterbodies2.xml: ZP Paris River's clone with the Thames colours (user 2026-09-18)
 	rmRiverAddWaypoint(riverMain, 0.0, rmXMetersToFraction(rmZFractionToMeters(zRiver)));
 	rmRiverAddWaypoint(riverMain, 1.0, rmXMetersToFraction(rmZFractionToMeters(zRiver)));
@@ -789,7 +785,11 @@ void main(void)
 	int harbourS2PostDef = harbourPost(waterRouteID, harbour2X, harbourSZ, hSPostWestM, hSPostToWaterM, 1.0);
 	float harbourS2X = gHarbourX;   float harbourS2Z = gHarbourZ;
 
-	// ---- 6. LONDON BRIDGE: placed in 3.5, before the road is built (its two gates sit on the road) ----------
+	// ---- 6. LONDON BRIDGE (law 2): deck on the road, arches over the river; deck height 4.949 - back here after the
+	// river and the posts (2026-09-21: placed before the road with baked gates it did not spawn; the walls did). Its two
+	// landing spots carry zpInvisibleGateSocket placeholders (the export's, in place of the old zpSPCWaterSpawnPoint)
+	int londonBridge = rmCreateGrouping("london bridge", "EU_SPC_London_Bridge");
+	int bridgeInst = placeIsland(londonBridge, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ));
 
 	// ---- 7. THE HARBOUR GROUPINGS at their origins (zpvenicecity's ControllerLoc idiom, law 2) --------
 	int harbourN1Grouping = rmCreateGrouping("harbour north 1", "EU_SPC_London_Harbour_NW_01");
@@ -826,6 +826,25 @@ void main(void)
 	quaySegment(0.0, wallN, 1.0, wallN + rmZTilesToFraction(cityDepthTiles), 0.7, wallN, 1.0, promenadePaintM);
 	countryside("countryside S", zRiver-rmZTilesToFraction(130 + colPitchTiles * extraColumns / 2), avoidPlateauShort);   // 130 tiles on the 573 frame + half the reserved depth = the same 26.5 m off the edge
 	countryside("countryside N", zRiver+rmZTilesToFraction(130 + colPitchTiles * extraColumns / 2), avoidPlateauShort);
+
+	// ---- 9.5 THE WALL TERRAIN, after the countryside (Florence 720-736: the wall exports' ground again, as terrain-
+	// only twins placed at the same six spots, so the countryside mix painted over the footprints in 9 gives way to
+	// the walls' own ground; user 2026-09-21). London's clones of IT_wall_*_terrain_player carry the passable city
+	// ground and the export's single zpSPCWaterSpawnPoint, placed as Florence places them (gaia).
+	int wallTerrainS = rmCreateGrouping("wall se terrain", "EU_SPC_London_Wall_SE_Terrain_01");
+	rmSetGroupingMinDistance(wallTerrainS, 0.00);
+	rmSetGroupingMaxDistance(wallTerrainS, 0.00);
+	rmAddGroupingToClass(wallTerrainS, rmClassID("classBlock"));
+	int wallTerrainN = rmCreateGrouping("wall nw terrain", "EU_SPC_London_Wall_NW_Terrain_01");
+	rmSetGroupingMinDistance(wallTerrainN, 0.00);
+	rmSetGroupingMaxDistance(wallTerrainN, 0.00);
+	rmAddGroupingToClass(wallTerrainN, rmClassID("classBlock"));
+	rmPlaceGroupingAtLoc(wallTerrainS, 0, xRoad, wallZS);
+	rmPlaceGroupingAtLoc(wallTerrainS, 0, 0.5, wallZS);
+	rmPlaceGroupingAtLoc(wallTerrainS, 0, xGateMirror, wallZS);
+	rmPlaceGroupingAtLoc(wallTerrainN, 0, xRoad, wallZN);
+	rmPlaceGroupingAtLoc(wallTerrainN, 0, 0.5, wallZN);
+	rmPlaceGroupingAtLoc(wallTerrainN, 0, xGateMirror, wallZN);
 
 	rmSetStatusText("",0.50);
 
@@ -1194,7 +1213,12 @@ void main(void)
 	// ---- 12.5 THE WALL HILLS - Florence's wallCliffs (zpflorence.xs 1485-1526) between the gate segments placed in
 	// 3.5: Italian Cliff, one per gap, straddling the wall line 3 tiles inside the segment centre.
 	// the hills: one per gap - edge to the road segment, road to centre, centre to mirror, mirror to edge (a segment
-	// is 37 tiles = 74 m wide, half of it wallHalfX)
+	// is 37 tiles = 74 m wide, half of it wallHalfX). London's gaps are not Florence's (user 2026-09-21): the two
+	// EDGE gaps are 43.8 m (road 279.2 m + 37 -> the x = 1 edge; its mirror), the two INNER gaps 25.2 m, so the
+	// edge hills are big enough to reach the map edge and the inner ones small enough to sit between two segments
+	// (a hill of N tiles is ~ a disc of diameter 2 * sqrt(4 N / pi) m: 360 -> 43 m, 200 -> 32 m; Florence's 240 -> 35 m).
+	int hillEdgeTiles = 360;    // user 2026-09-21: halfway between Florence's 240 and the first 480 - the 480 / 160 contrast was too big
+	int hillInnerTiles = 200;
 	float wallHalfX = rmXMetersToFraction(37.0);
 	float hillX1 = (1.0 + xRoad + wallHalfX) * 0.5;
 	float hillX2 = (xRoad + 0.5) * 0.5;
@@ -1202,14 +1226,14 @@ void main(void)
 	float hillX4 = (xGateMirror - wallHalfX) * 0.5;
 	float hillZS = wallS - rmZTilesToFraction(cityDepthTiles + wallOutTiles - 3);
 	float hillZN = wallN + rmZTilesToFraction(cityDepthTiles + wallOutTiles - 3);
-	wallCliff("wall hill S1", hillX1, hillZS, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
-	wallCliff("wall hill S2", hillX2, hillZS, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
-	wallCliff("wall hill S3", hillX3, hillZS, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
-	wallCliff("wall hill S4", hillX4, hillZS, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
-	wallCliff("wall hill N1", hillX1, hillZN, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
-	wallCliff("wall hill N2", hillX2, hillZN, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
-	wallCliff("wall hill N3", hillX3, hillZN, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
-	wallCliff("wall hill N4", hillX4, hillZN, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
+	wallCliff("wall hill S1", hillX1, hillZS, hillEdgeTiles, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
+	wallCliff("wall hill S2", hillX2, hillZS, hillInnerTiles, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
+	wallCliff("wall hill S3", hillX3, hillZS, hillInnerTiles, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
+	wallCliff("wall hill S4", hillX4, hillZS, hillEdgeTiles, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
+	wallCliff("wall hill N1", hillX1, hillZN, hillEdgeTiles, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
+	wallCliff("wall hill N2", hillX2, hillZN, hillInnerTiles, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
+	wallCliff("wall hill N3", hillX3, hillZN, hillInnerTiles, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
+	wallCliff("wall hill N4", hillX4, hillZN, hillEdgeTiles, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
 
 	// ============================================================================================
 	// 13. TRIGGERS, all at the end (Paris / Istanbul). Ids: object defs = rmGetUnitPlaced + instanceIdShiftIndividual,

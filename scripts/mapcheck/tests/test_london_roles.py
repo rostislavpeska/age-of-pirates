@@ -211,19 +211,34 @@ class TestWalls:
     def test_hills_are_florences_wallcliffs_in_the_four_gaps(self):
         t = _text(LONDON)
         h = _code(t[t.index("void wallCliff("):t.index("// One city cell on both banks")])
-        for line in ('rmSetAreaSize(area, rmAreaTilesToFraction(240), rmAreaTilesToFraction(240));', 'rmSetAreaCliffType(area, "Italian Cliff");',
+        for line in ('rmSetAreaSize(area, rmAreaTilesToFraction(tiles), rmAreaTilesToFraction(tiles));', 'rmSetAreaCliffType(area, "Italian Cliff");',
                      "rmSetAreaCliffEdge(area, 1, 1, 0.0, 0.0, 2);", "rmSetAreaCliffHeight(area, 0, 0, 0.5);", "rmSetAreaBaseHeight(area, 8.0);",
                      "rmSetAreaHeightBlend(area, 3);", "rmSetAreaCoherence(area, 0.93);", 'rmAddAreaToClass(area, rmClassID("classPlateau"));'):
             assert line in h, line
         s = _code(_section(t, "// ---- 3.5 THE GATES", "int harbourN1PostUnit"))
         assert "float hillX1 = (1.0 + xRoad + wallHalfX) * 0.5;" in s and "float hillX2 = (xRoad + 0.5) * 0.5;" in s
         assert "float hillX3 = (0.5 + xGateMirror) * 0.5;" in s and "float hillX4 = (xGateMirror - wallHalfX) * 0.5;" in s
-        hills = re.findall(r'wallCliff\("wall hill (\w+)", (hillX\d), (hillZ[SN]), avoidPlateauShort, avoidTradeRouteWall, avoidWall\);', s)
-        assert hills == [("S1", "hillX1", "hillZS"), ("S2", "hillX2", "hillZS"), ("S3", "hillX3", "hillZS"), ("S4", "hillX4", "hillZS"),
-                         ("N1", "hillX1", "hillZN"), ("N2", "hillX2", "hillZN"), ("N3", "hillX3", "hillZN"), ("N4", "hillX4", "hillZN")]
+        hills = re.findall(r'wallCliff\("wall hill (\w+)", (hillX\d), (hillZ[SN]), (hill\w+Tiles), avoidPlateauShort, avoidTradeRouteWall, avoidWall\);', s)
+        E, I = "hillEdgeTiles", "hillInnerTiles"   # London's gaps: 43.8 m at both edges, 25.2 m between segments
+        assert hills == [("S1", "hillX1", "hillZS", E), ("S2", "hillX2", "hillZS", I), ("S3", "hillX3", "hillZS", I), ("S4", "hillX4", "hillZS", E),
+                         ("N1", "hillX1", "hillZN", E), ("N2", "hillX2", "hillZN", I), ("N3", "hillX3", "hillZN", I), ("N4", "hillX4", "hillZN", E)]
+        assert "int hillEdgeTiles = 360;" in s and "int hillInnerTiles = 200;" in s
         assert s.index("rmPlaceGroupingAtLoc(wallGateN, wallOwnerN, xGateMirror, wallZN);") < s.index('wallCliff("wall hill S1"')   # walls first: the hills avoid them
         assert 'int avoidTradeRouteWall = rmCreateTradeRouteDistanceConstraint("trade route wall", 4.0);' in t
         assert 'int avoidWall = rmCreateTypeDistanceConstraint("avoid wall object", "AbstractWall", 0.001);' in t
+
+    def test_wall_terrain_twins_after_the_countryside(self):
+        t = _code(_text(LONDON))
+        s = t[t.index('countryside("countryside N"'):t.index('rmSetStatusText("",0.50);')]
+        assert 'int wallTerrainS = rmCreateGrouping("wall se terrain", "EU_SPC_London_Wall_SE_Terrain_01");' in s
+        assert 'int wallTerrainN = rmCreateGrouping("wall nw terrain", "EU_SPC_London_Wall_NW_Terrain_01");' in s
+        calls = re.findall(r"rmPlaceGroupingAtLoc\((wallTerrain[SN]), 0, ([\w.]+), (wallZ[SN])\);", s)
+        assert calls == [("wallTerrainS", "xRoad", "wallZS"), ("wallTerrainS", "0.5", "wallZS"), ("wallTerrainS", "xGateMirror", "wallZS"),
+                         ("wallTerrainN", "xRoad", "wallZN"), ("wallTerrainN", "0.5", "wallZN"), ("wallTerrainN", "xGateMirror", "wallZN")]
+        for g in ("EU_SPC_London_Wall_SE_Terrain_01", "EU_SPC_London_Wall_NW_Terrain_01"):
+            w = (REPO / ("game/randmaps/groupings/%s.xml" % g)).read_text(encoding="utf-8")
+            assert w.count("<tilegroup") == 1 and 'type="PassableLand" subtype="city' + chr(92) + 'ground1_city_street_ground"' in w
+            assert w.count("<unit ") == 1 and "zpSPCWaterSpawnPoint" in w     # Florence's terrain twin, as it is
 
     def test_walls_come_before_the_road_is_built_hills_after_the_players(self):
         t = _code(_text(LONDON))
@@ -244,7 +259,8 @@ class TestGateOrder:
         road_built = t.index('rmBuildTradeRoute(tradeRouteID, "dirt");')
         socket = t.index("routeSocket(tradeRouteID, xRoad, zRiver);")
         river = t.index("rmRiverCreate(")
-        assert lane < road_def < walls < bridge < road_built < socket < river
+        posts = t.index('int harbourN1PostDef')
+        assert lane < road_def < walls < road_built < socket < river < posts < bridge   # the bridge back after the river (2026-09-21: before the road it did not spawn)
         assert t.index("float zRiver = zRiverAsk;") < t.index("int waterRouteID = rmCreateTradeRoute();")
 
     def test_road_on_the_authored_line(self):
@@ -254,9 +270,9 @@ class TestGateOrder:
         assert "float xRoadReal = (road25X + road75X) * 0.5;" in t and "xRoad = (road25X" not in t   # the read-back is an echo only
         assert t.index('rmBuildTradeRoute(tradeRouteID, "dirt");') < t.index("routePoint(tradeRouteID, 0.25);")
 
-    def test_bridge_export_carries_gates_not_placeholders(self):
+    def test_bridge_export_carries_invisible_gate_sockets(self):
         b = (REPO / "game/randmaps/groupings/EU_SPC_London_Bridge.xml").read_bytes()
-        assert b.count(b">SPCFortGate</unit>") == 2 and b">zpSPCWaterSpawnPoint</unit>" not in b and b"<heights>" in b
+        assert b.count(b">zpInvisibleGateSocket</unit>") == 2 and b"SPCFortGate" not in b and b"zpSPCWaterSpawnPoint" not in b and b"<heights>" in b
         assert b == (STEAM / "groupings/EU_SPC_London_Bridge.xml").read_bytes()
         assert (REPO / "sandbox/backups/groupings/EU_SPC_London_Bridge_2026-09-21_waterspawn_placeholders.xml").is_file()
 
