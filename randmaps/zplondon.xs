@@ -1099,48 +1099,150 @@ void main(void)
 	rmSetStatusText("",0.80);
 
 	// ---- 12. PLAYERS (12.1 ROLES: resolved in 0.5, before the gates) ----------------------------------
-	// ---- 12.2 SEATS BY ROLE (user 2026-09-21, the Figma strip): each team's players sit on THEIR bank's reserved
-	// columns 5-7 in the user's EU_SPC_Player_London block (30 x 45 tiles = 2 rows x 3 columns, the Town Center at its
-	// centre), one block per 2-row pair, cumulative by head-count: the first player rows 7-8 (BLUE, the far end), the
-	// second rows 3-4 (RED), the third rows 5-6 (YELLOW), the fourth rows 1-2 (PURPLE, at the road). Defenders on the
-	// defender bank (10.0's coin), attackers on the other. Teams of five and more: ON HOLD (user) - such lobbies, and
-	// any non-2-team lobby, keep the interim line placement in 12.3 with Paris's command posts.
+	// ---- 12.2 SEATS BY ROLE - one STRIP LAYOUT per team size (user 2026-09-21): each team's players sit on THEIR
+	// bank's reserved columns 5-7 (rows 1-8 along x, the three columns along z) in the user's EU_SPC_Player_London
+	// block (30 x 45 tiles = 2 rows x 3 columns, the Town Center at its centre), and every team size draws its own
+	// strip, Florence's per-count shape (user 2026-09-21): ONE = the Figma strip (park, houses, filler); TWO = two
+	// seats, houses on rows 5-6, the filler; THREE = three seats and the filler at the road; FOUR = all four seats.
+	// The seats: the first player rows 7-8 (BLUE, the far end), the second rows 3-4 (RED), the third rows 5-6
+	// (YELLOW), the fourth rows 1-2 (PURPLE, at the road). Defenders on the defender bank (10.0's coin), attackers
+	// on the other. Teams of five and more: ON
+	// HOLD (user) - such lobbies, and any non-2-team lobby, keep the interim line placement in 12.3 with Paris's
+	// command posts, and the prop filler on all eight spots.
 	int blockPlayerLondon = cityBlock("player london", "EU_SPC_Player_London");
+	int blockPropFiller = cityBlock("prop filler", "EU_SPC_Prop_Block");         // 30 x 45 like the seat block, props only
+	int blockParkBig02 = cityBlock("park big turned", "EU_SPC_Park_big_02");     // the big park turned 180 (2 x 2)
 	float locX56 = (locX5 + locX6) * 0.5;
-	float locZdSeat = locZs6;       // the 3-column centre of cols 5-7
-	float locZaSeat = locZn6;
+	float locZs67 = wallS-rmZTilesToFraction(col6+col7)*0.5;                     // the 2-column centre of cols 6-7
+	float locZn67 = wallN+rmZTilesToFraction(col6+col7)*0.5;
+	float locZdSeat = locZs6;       float locZaSeat = locZn6;                     // the 3-column centre of cols 5-7 (= col 6)
+	float locZd5 = locZs5;          float locZa5 = locZn5;
+	float locZd7 = locZs7;          float locZa7 = locZn7;
+	float locZd67 = locZs67;        float locZa67 = locZn67;
 	if (defenderBank == 1)
 	{
-		locZdSeat = locZn6;
-		locZaSeat = locZs6;
+		locZdSeat = locZn6;         locZaSeat = locZs6;
+		locZd5 = locZn5;            locZa5 = locZs5;
+		locZd7 = locZn7;            locZa7 = locZs7;
+		locZd67 = locZn67;          locZa67 = locZs67;
 	}
 	int seatsByRole = 0;
 	if (cNumberTeams == 2 && defenderCount <= 4 && attackerCount <= 4)
 		seatsByRole = 1;
 	if (seatsByRole == 1)
 	{
-		rmPlacePlayer(firstDefender, locX78, locZdSeat);
-		if (defenderCount >= 2) rmPlacePlayer(secondDefender, locX34, locZdSeat);
-		if (defenderCount >= 3) rmPlacePlayer(thirdDefender, locX56, locZdSeat);
-		if (defenderCount >= 4) rmPlacePlayer(fourthDefender, locX12, locZdSeat);
-		rmPlacePlayer(firstAttacker, locX78, locZaSeat);
-		if (attackerCount >= 2) rmPlacePlayer(secondAttacker, locX34, locZaSeat);
-		if (attackerCount >= 3) rmPlacePlayer(thirdAttacker, locX56, locZaSeat);
-		if (attackerCount >= 4) rmPlacePlayer(fourthAttacker, locX12, locZaSeat);
+		// ---- the DEFENDERS' strip
+		if (defenderCount == 1)
+		{
+			// ONE per side (the Figma of 2026-09-21): the seat at the far end, the turned park beside it on the outer
+			// two columns, houses on the inner column and on rows 3-4, the prop filler at the road
+			rmPlacePlayer(firstDefender, locX78, locZdSeat);
+			rmSetNuggetDifficulty(607, 607);                              // the turned park's Royal Huntsman rock, as the road parks'
+			rmPlaceGroupingAtLoc(blockParkBig02, 0, locX56, locZd67);
+			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZd5);
+			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZd5);
+			rmPlaceGroupingAtLoc(blockHouse3, 0, locX3, locZd5);            // rows 3-4 x cols 5-7: the Figma's yellow 2 x 2 (cols 6-7) is not in the legend - houses until named
+			rmPlaceGroupingAtLoc(blockHouse4, 0, locX4, locZd5);
+			rmPlaceGroupingAtLoc(blockHouse5, 0, locX3, locZdSeat);
+			rmPlaceGroupingAtLoc(blockHouse6, 0, locX4, locZdSeat);
+			rmPlaceGroupingAtLoc(blockHouse1, 0, locX3, locZd7);
+			rmPlaceGroupingAtLoc(blockHouse2, 0, locX4, locZd7);
+			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZdSeat);
+		}
+		if (defenderCount == 2)
+		{
+			// TWO per side (the Figma of 2026-09-21, the red-stroked strip): seats at the far end (rows 7-8) and on
+			// rows 3-4, the prop filler at the road (rows 1-2); rows 5-6 x cols 5-7 are the Figma's YELLOW 2 x 3, not in
+			// the legend - houses until named
+			rmPlacePlayer(firstDefender, locX78, locZdSeat);
+			rmPlacePlayer(secondDefender, locX34, locZdSeat);
+			rmPlaceGroupingAtLoc(blockHouse3, 0, locX5, locZd5);
+			rmPlaceGroupingAtLoc(blockHouse4, 0, locX6, locZd5);
+			rmPlaceGroupingAtLoc(blockHouse5, 0, locX5, locZdSeat);
+			rmPlaceGroupingAtLoc(blockHouse6, 0, locX6, locZdSeat);
+			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZd7);
+			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZd7);
+			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZdSeat);
+		}
+		if (defenderCount == 3)
+		{
+			// THREE per side (user 2026-09-21): the three seats (rows 7-8, 3-4, 5-6) and the prop filler at the road
+			rmPlacePlayer(firstDefender, locX78, locZdSeat);
+			rmPlacePlayer(secondDefender, locX34, locZdSeat);
+			rmPlacePlayer(thirdDefender, locX56, locZdSeat);
+			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZdSeat);
+		}
+		if (defenderCount == 4)
+		{
+			// FOUR per side (user 2026-09-21): all four seats, no filler
+			rmPlacePlayer(firstDefender, locX78, locZdSeat);
+			rmPlacePlayer(secondDefender, locX34, locZdSeat);
+			rmPlacePlayer(thirdDefender, locX56, locZdSeat);
+			rmPlacePlayer(fourthDefender, locX12, locZdSeat);
+		}
+		// ---- the ATTACKERS' strip
+		if (attackerCount == 1)
+		{
+			// ONE per side (the Figma of 2026-09-21): the seat at the far end, the turned park beside it on the outer
+			// two columns, houses on the inner column and on rows 3-4, the prop filler at the road
+			rmPlacePlayer(firstAttacker, locX78, locZaSeat);
+			rmSetNuggetDifficulty(607, 607);                              // the turned park's Royal Huntsman rock, as the road parks'
+			rmPlaceGroupingAtLoc(blockParkBig02, 0, locX56, locZa67);
+			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZa5);
+			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZa5);
+			rmPlaceGroupingAtLoc(blockHouse3, 0, locX3, locZa5);            // rows 3-4 x cols 5-7: the Figma's yellow 2 x 2 (cols 6-7) is not in the legend - houses until named
+			rmPlaceGroupingAtLoc(blockHouse4, 0, locX4, locZa5);
+			rmPlaceGroupingAtLoc(blockHouse5, 0, locX3, locZaSeat);
+			rmPlaceGroupingAtLoc(blockHouse6, 0, locX4, locZaSeat);
+			rmPlaceGroupingAtLoc(blockHouse1, 0, locX3, locZa7);
+			rmPlaceGroupingAtLoc(blockHouse2, 0, locX4, locZa7);
+			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZaSeat);
+		}
+		if (attackerCount == 2)
+		{
+			// TWO per side (the Figma of 2026-09-21, the red-stroked strip): seats at the far end (rows 7-8) and on
+			// rows 3-4, the prop filler at the road (rows 1-2); rows 5-6 x cols 5-7 are the Figma's YELLOW 2 x 3, not in
+			// the legend - houses until named
+			rmPlacePlayer(firstAttacker, locX78, locZaSeat);
+			rmPlacePlayer(secondAttacker, locX34, locZaSeat);
+			rmPlaceGroupingAtLoc(blockHouse3, 0, locX5, locZa5);
+			rmPlaceGroupingAtLoc(blockHouse4, 0, locX6, locZa5);
+			rmPlaceGroupingAtLoc(blockHouse5, 0, locX5, locZaSeat);
+			rmPlaceGroupingAtLoc(blockHouse6, 0, locX6, locZaSeat);
+			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZa7);
+			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZa7);
+			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZaSeat);
+		}
+		if (attackerCount == 3)
+		{
+			// THREE per side (user 2026-09-21): the three seats (rows 7-8, 3-4, 5-6) and the prop filler at the road
+			rmPlacePlayer(firstAttacker, locX78, locZaSeat);
+			rmPlacePlayer(secondAttacker, locX34, locZaSeat);
+			rmPlacePlayer(thirdAttacker, locX56, locZaSeat);
+			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZaSeat);
+		}
+		if (attackerCount == 4)
+		{
+			// FOUR per side (user 2026-09-21): all four seats, no filler
+			rmPlacePlayer(firstAttacker, locX78, locZaSeat);
+			rmPlacePlayer(secondAttacker, locX34, locZaSeat);
+			rmPlacePlayer(thirdAttacker, locX56, locZaSeat);
+			rmPlacePlayer(fourthAttacker, locX12, locZaSeat);
+		}
 	}
-	rmEchoInfo("LONDON seats: seatsByRole " + seatsByRole + " defenders at z " + rmZFractionToMeters(locZdSeat) + " m, attackers at z " + rmZFractionToMeters(locZaSeat) + " m");
-	// every seat nobody takes gets the user's EU_SPC_Prop_Block (30 x 45 tiles, the seat block's own size, props only;
-	// user 2026-09-21) - Florence's Construction blocks on its unused seats; when 12.3 seats the players instead, all
-	// eight spots are free
-	int blockPropFiller = cityBlock("prop filler", "EU_SPC_Prop_Block");
-	if (seatsByRole == 0) rmPlaceGroupingAtLoc(blockPropFiller, 0, locX78, locZdSeat);
-	if (seatsByRole == 0 || defenderCount < 2) rmPlaceGroupingAtLoc(blockPropFiller, 0, locX34, locZdSeat);
-	if (seatsByRole == 0 || defenderCount < 3) rmPlaceGroupingAtLoc(blockPropFiller, 0, locX56, locZdSeat);
-	if (seatsByRole == 0 || defenderCount < 4) rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZdSeat);
-	if (seatsByRole == 0) rmPlaceGroupingAtLoc(blockPropFiller, 0, locX78, locZaSeat);
-	if (seatsByRole == 0 || attackerCount < 2) rmPlaceGroupingAtLoc(blockPropFiller, 0, locX34, locZaSeat);
-	if (seatsByRole == 0 || attackerCount < 3) rmPlaceGroupingAtLoc(blockPropFiller, 0, locX56, locZaSeat);
-	if (seatsByRole == 0 || attackerCount < 4) rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZaSeat);
+	if (seatsByRole == 0)
+	{
+		// 12.3 seats the players: the prop filler on all eight spots
+		rmPlaceGroupingAtLoc(blockPropFiller, 0, locX78, locZdSeat);
+		rmPlaceGroupingAtLoc(blockPropFiller, 0, locX34, locZdSeat);
+		rmPlaceGroupingAtLoc(blockPropFiller, 0, locX56, locZdSeat);
+		rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZdSeat);
+		rmPlaceGroupingAtLoc(blockPropFiller, 0, locX78, locZaSeat);
+		rmPlaceGroupingAtLoc(blockPropFiller, 0, locX34, locZaSeat);
+		rmPlaceGroupingAtLoc(blockPropFiller, 0, locX56, locZaSeat);
+		rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZaSeat);
+	}
+	rmEchoInfo("LONDON seats: seatsByRole " + seatsByRole + " defenders x" + defenderCount + " at z " + rmZFractionToMeters(locZdSeat) + " m, attackers x" + attackerCount + " at z " + rmZFractionToMeters(locZaSeat) + " m");
 
 	// ---- 12.3 INTERIM PLACEMENT (Paris's placement transposed onto the z axis), spawnSwitch set in 0.5 from the
 	// landmark coin (team 1 on the defenders' bank) - only when 12.2 seats nobody --------------------------------

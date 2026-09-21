@@ -156,31 +156,77 @@ class TestRoles:
 
 
 class TestSeats:
-    """12.2: BLUE rows 7-8, RED rows 3-4, YELLOW rows 5-6, PURPLE rows 1-2 on the team's own bank, cumulative."""
+    """12.2: one strip layout per team size, Florence's `if (count == k)` blocks. ONE = the Figma (seat rows 7-8, the
+    turned park rows 5-6 x cols 6-7, houses rows 5-6 x col 5 and rows 3-4, the prop filler rows 1-2); TWO = seats
+    rows 7-8 + 3-4, houses rows 5-6, the filler; THREE = three seats + the filler; FOUR = four seats; 5+ and
+    non-2-team lobbies = the interim line, all eight spots filled."""
 
-    def test_seats_by_role_on_the_reserved_columns(self):
-        s = _code(_section(_text(LONDON), "// ---- 12.2 SEATS BY ROLE", "// ---- 12.3 INTERIM PLACEMENT"))
-        assert 'int blockPlayerLondon = cityBlock("player london", "EU_SPC_Player_London");' in s
-        assert "float locX56 = (locX5 + locX6) * 0.5;" in s
-        assert re.search(r"float locZdSeat = locZs6;.*\n\tfloat locZaSeat = locZn6;\n\tif \(defenderBank == 1\)\n\t\{\n\t\tlocZdSeat = locZn6;\n\t\tlocZaSeat = locZs6;\n\t\}", s)
-        assert "if (cNumberTeams == 2 && defenderCount <= 4 && attackerCount <= 4)\n\t\tseatsByRole = 1;" in s
-        seats = re.findall(r"(?:if \((\w+) >= (\d)\) )?rmPlacePlayer\((\w+), (locX\d+), (locZ[da]Seat)\);", s)
-        assert seats == [("", "", "firstDefender", "locX78", "locZdSeat"), ("defenderCount", "2", "secondDefender", "locX34", "locZdSeat"),
-                         ("defenderCount", "3", "thirdDefender", "locX56", "locZdSeat"), ("defenderCount", "4", "fourthDefender", "locX12", "locZdSeat"),
-                         ("", "", "firstAttacker", "locX78", "locZaSeat"), ("attackerCount", "2", "secondAttacker", "locX34", "locZaSeat"),
-                         ("attackerCount", "3", "thirdAttacker", "locX56", "locZaSeat"), ("attackerCount", "4", "fourthAttacker", "locX12", "locZaSeat")]
+    SIDES = (("defender", "Defender", "locZdSeat", "locZd5", "locZd7", "locZd67"), ("attacker", "Attacker", "locZaSeat", "locZa5", "locZa7", "locZa67"))
 
-    def test_free_seats_take_the_prop_block(self):
-        s = _code(_section(_text(LONDON), "// ---- 12.2 SEATS BY ROLE", "// ---- 12.3 INTERIM PLACEMENT"))
-        assert 'int blockPropFiller = cityBlock("prop filler", "EU_SPC_Prop_Block");' in s
-        fills = re.findall(r"if \((seatsByRole == 0(?: \|\| (\w+) < (\d))?)\) rmPlaceGroupingAtLoc\(blockPropFiller, 0, (locX\d+), (locZ[da]Seat)\);", s)
-        assert [(f[1], f[2], f[3], f[4]) for f in fills] == [
-            ("", "", "locX78", "locZdSeat"), ("defenderCount", "2", "locX34", "locZdSeat"), ("defenderCount", "3", "locX56", "locZdSeat"), ("defenderCount", "4", "locX12", "locZdSeat"),
-            ("", "", "locX78", "locZaSeat"), ("attackerCount", "2", "locX34", "locZaSeat"), ("attackerCount", "3", "locX56", "locZaSeat"), ("attackerCount", "4", "locX12", "locZaSeat")]
-        assert s.index("rmPlacePlayer(fourthAttacker") < s.index("int blockPropFiller")            # seats first, fillers after
+    def _sec(self):
+        return _code(_section(_text(LONDON), "// ---- 12.2 SEATS BY ROLE", "// ---- 12.3 INTERIM PLACEMENT"))
+
+    def _block(self, side, k):
+        s = self._sec()
+        i = s.index("if (%sCount == %d)" % (side, k)); j = s.index("\n\t\t}", i)
+        return re.findall(r"(rmPlacePlayer|rmSetNuggetDifficulty|rmPlaceGroupingAtLoc)\(([^)]*)\);", s[i:j])
+
+    def test_blocks_and_the_bank_keyed_columns(self):
+        s = self._sec()
+        for line in ('int blockPlayerLondon = cityBlock("player london", "EU_SPC_Player_London");',
+                     'int blockPropFiller = cityBlock("prop filler", "EU_SPC_Prop_Block");',
+                     'int blockParkBig02 = cityBlock("park big turned", "EU_SPC_Park_big_02");',
+                     "float locX56 = (locX5 + locX6) * 0.5;", "float locZs67 = wallS-rmZTilesToFraction(col6+col7)*0.5;",
+                     "float locZn67 = wallN+rmZTilesToFraction(col6+col7)*0.5;",
+                     "if (cNumberTeams == 2 && defenderCount <= 4 && attackerCount <= 4)\n\t\tseatsByRole = 1;"):
+            assert line in s, line
+        d = re.search(r"float locZdSeat = locZs6;.*?if \(defenderBank == 1\)\n\t\{(.*?)\n\t\}", s, re.S).group(1)
+        assert all(x in d for x in ("locZdSeat = locZn6;", "locZaSeat = locZs6;", "locZd5 = locZn5;", "locZa5 = locZs5;", "locZd7 = locZn7;", "locZa7 = locZs7;", "locZd67 = locZn67;", "locZa67 = locZs67;"))
+        assert s.index("if (seatsByRole == 1)") < s.index("if (defenderCount == 1)") < s.index("if (attackerCount == 1)") < s.index("if (seatsByRole == 0)")
+
+    def test_one_per_side_is_the_figma_strip(self):
+        for side, o, S, z5, z7, z67 in self.SIDES:
+            assert self._block(side, 1) == [
+                ("rmPlacePlayer", "first%s, locX78, %s" % (o, S)),
+                ("rmSetNuggetDifficulty", "607, 607"),                                    # the turned park's Huntsman rock
+                ("rmPlaceGroupingAtLoc", "blockParkBig02, 0, locX56, %s" % z67),           # rows 5-6 x cols 6-7
+                ("rmPlaceGroupingAtLoc", "blockHouse1, 0, locX5, %s" % z5),                # rows 5-6 x col 5
+                ("rmPlaceGroupingAtLoc", "blockHouse2, 0, locX6, %s" % z5),
+                ("rmPlaceGroupingAtLoc", "blockHouse3, 0, locX3, %s" % z5),                # rows 3-4 x cols 5-7
+                ("rmPlaceGroupingAtLoc", "blockHouse4, 0, locX4, %s" % z5),
+                ("rmPlaceGroupingAtLoc", "blockHouse5, 0, locX3, %s" % S),
+                ("rmPlaceGroupingAtLoc", "blockHouse6, 0, locX4, %s" % S),
+                ("rmPlaceGroupingAtLoc", "blockHouse1, 0, locX3, %s" % z7),
+                ("rmPlaceGroupingAtLoc", "blockHouse2, 0, locX4, %s" % z7),
+                ("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, %s" % S),            # rows 1-2 x cols 5-7
+            ], side
+
+    def test_two_per_side(self):
+        for side, o, S, z5, z7, z67 in self.SIDES:
+            assert self._block(side, 2) == [
+                ("rmPlacePlayer", "first%s, locX78, %s" % (o, S)), ("rmPlacePlayer", "second%s, locX34, %s" % (o, S)),
+                ("rmPlaceGroupingAtLoc", "blockHouse3, 0, locX5, %s" % z5), ("rmPlaceGroupingAtLoc", "blockHouse4, 0, locX6, %s" % z5),
+                ("rmPlaceGroupingAtLoc", "blockHouse5, 0, locX5, %s" % S), ("rmPlaceGroupingAtLoc", "blockHouse6, 0, locX6, %s" % S),
+                ("rmPlaceGroupingAtLoc", "blockHouse1, 0, locX5, %s" % z7), ("rmPlaceGroupingAtLoc", "blockHouse2, 0, locX6, %s" % z7),
+                ("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, %s" % S),
+            ], side
+
+    def test_three_and_four_per_side(self):
+        for side, o, S, z5, z7, z67 in self.SIDES:
+            assert self._block(side, 3) == [("rmPlacePlayer", "first%s, locX78, %s" % (o, S)), ("rmPlacePlayer", "second%s, locX34, %s" % (o, S)),
+                                            ("rmPlacePlayer", "third%s, locX56, %s" % (o, S)), ("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, %s" % S)], side
+            assert self._block(side, 4) == [("rmPlacePlayer", "first%s, locX78, %s" % (o, S)), ("rmPlacePlayer", "second%s, locX34, %s" % (o, S)),
+                                            ("rmPlacePlayer", "third%s, locX56, %s" % (o, S)), ("rmPlacePlayer", "fourth%s, locX12, %s" % (o, S))], side
+
+    def test_fallback_fills_all_eight_spots(self):
+        s = self._sec()
+        b = s[s.index("if (seatsByRole == 0)"):s.index('rmEchoInfo("LONDON seats:')]
+        fills = re.findall(r"rmPlaceGroupingAtLoc\(blockPropFiller, 0, (locX\d+), (locZ[da]Seat)\);", b)
+        assert fills == [(x, z) for z in ("locZdSeat", "locZaSeat") for x in ("locX78", "locX34", "locX56", "locX12")]
         w = (REPO / "game/randmaps/groupings/EU_SPC_Prop_Block.xml").read_text(encoding="utf-8")
         assert "<width>30</width>" in w and "<height>45</height>" in w and "TownCenter" not in w and "Nugget" not in w
         assert (REPO / "game/randmaps/groupings/EU_SPC_Prop_Block.xml").read_bytes() == (STEAM / "groupings/EU_SPC_Prop_Block.xml").read_bytes()
+        assert (REPO / "game/randmaps/groupings/EU_SPC_Park_big_02.xml").read_bytes() == (STEAM / "groupings/EU_SPC_Park_big_02.xml").read_bytes()
 
     def test_seated_players_get_the_block_not_the_command_post(self):
         t = _code(_text(LONDON))
@@ -189,7 +235,7 @@ class TestSeats:
         assert loop.count("deSPCCommandPost") == 1 and loop.index("else") < loop.index("deSPCCommandPost")
         assert loop.count("rmPlaceObjectDefAtLoc(playerStart, i") == 1 and loop.count("rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5)") == 1
         before = t[t.index("int aiStartUrban"):t.index("for(i=1; < cNumberNonGaiaPlayers + 1) {")]
-        assert "rmSetNuggetDifficulty(1, 1);" in before and "rmSetNuggetDifficulty(195, 195);" not in before   # the player treasure is level 1 (Istanbul 2506, Florence 1266)
+        assert "rmSetNuggetDifficulty(1, 1);" in before        # the player treasure is level 1 (Istanbul 2506, Florence 1266)
 
     def test_interim_line_only_when_nobody_is_seated(self):
         s = _code(_section(_text(LONDON), "// ---- 12.3 INTERIM PLACEMENT", "int playerStart = rmCreateStartingUnitsObjectDef"))
