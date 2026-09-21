@@ -19,7 +19,7 @@
 //      is released by "Units in Area" (no guardian left around it), never by the object-def nugget's id
 //   9  quays (one straight plateau per bank), streets, countryside
 //   10 blocks in Paris's order: fixed doubles, fixed singles, zones, fillers, houses
-//   11 riverside decorations, 12 players, 13 triggers (all at the end)
+//   11 riverside decorations, 12 players (12.1 the Florence roles, 12.3 the interim seats), 13 triggers (all at the end)
 //
 // LAWS (pinned by tests, dates in the memories)
 //   1  land route + docked controllers BEFORE any water; the lane BEFORE the river; a
@@ -86,6 +86,36 @@ bool filler(int groupingID = -1, int startIndex = -1, int endIndex = -1) {
 	}
 
 	return false;
+}
+
+// ---- the Florence system (zpflorence.xs 41-67, zpverseilles.xs 41-67): the k-th player of a lobby team by lowest
+// player id, handed back through a global - the file's own words below, verbatim.
+// Get player order within a team
+
+int g_zpTeamPlayerResult = -1;
+
+void zpGetTeamPlayer(int teamOrder = -1, int teamID = -1)
+{
+    g_zpTeamPlayerResult = -1;
+    if (teamOrder <= 0) {
+        return;
+    }
+
+    int count = 0;
+    int i = 0;
+    for (i = 1; <= cNumberNonGaiaPlayers)
+    {
+        if (rmGetPlayerTeam(i) == teamID)
+        {
+            count = count + 1;
+            if (count == teamOrder)
+            {
+                g_zpTeamPlayerResult = i;  // "return" via global
+                return;
+            }
+        }
+    }
+    // not found => stays -1
 }
 
 // One city cell on both banks: the south one at index i, its mirror at i + gCellsPerBank.
@@ -870,7 +900,62 @@ void main(void)
 
 	rmSetStatusText("",0.80);
 
-	// ---- 12. PLAYERS (Paris's placement transposed onto the z axis) ---------------------------------
+	// ---- 12. PLAYERS ---------------------------------------------------------------------------------
+	// ---- 12.1 ROLES - the Florence system (zpflorence.xs 124-155, zpistanbulb.xs 5b). Roles, not lobby seats:
+	// the k-th DEFENDER is the k-th-lowest player id on the NORTH bank's team, the k-th ATTACKER the same on the
+	// SOUTH bank's. Which lobby team holds which bank is spawnSwitch (0: team 1 north / team 0 south, 1: swapped) -
+	// the coin the interim line placement in 12.3 already uses, so roles and seats can never disagree.
+	// 2-TEAM LOBBIES ONLY: any other lobby leaves every role at -1 (Florence, Istanbul); nothing may hand a role to
+	// the engine without Istanbul's gaia fallback (if (owner < 0) owner = 0).
+	int northTeam = 1;
+	int southTeam = 0;
+	if (spawnSwitch == 1)
+	{
+		northTeam = 0;
+		southTeam = 1;
+	}
+	int northCount = rmGetNumberPlayersOnTeam(northTeam);
+	int southCount = rmGetNumberPlayersOnTeam(southTeam);
+	zpGetTeamPlayer(1, northTeam);
+	int firstDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(2, northTeam);
+	int secondDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(3, northTeam);
+	int thirdDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(4, northTeam);
+	int fourthDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(5, northTeam);
+	int fifthDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(6, northTeam);
+	int sixthDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(7, northTeam);
+	int seventhDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(1, southTeam);
+	int firstAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(2, southTeam);
+	int secondAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(3, southTeam);
+	int thirdAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(4, southTeam);
+	int fourthAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(5, southTeam);
+	int fifthAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(6, southTeam);
+	int sixthAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(7, southTeam);
+	int seventhAttacker = g_zpTeamPlayerResult;
+	// One vs. All (zpflorence.xs 174-177): seven on one side
+	int oneVsAll = 0;
+	if (northCount >= 7 || southCount >= 7)
+		oneVsAll = 1;
+	rmEchoInfo("LONDON roles: spawnSwitch " + spawnSwitch + " north team " + northTeam + " x" + northCount + " defenders " + firstDefender + " " + secondDefender + " " + thirdDefender + " " + fourthDefender + " " + fifthDefender + " " + sixthDefender + " " + seventhDefender);
+	rmEchoInfo("LONDON roles: south team " + southTeam + " x" + southCount + " attackers " + firstAttacker + " " + secondAttacker + " " + thirdAttacker + " " + fourthAttacker + " " + fifthAttacker + " " + sixthAttacker + " " + seventhAttacker + " oneVsAll " + oneVsAll);
+
+	// ---- 12.2 SEATS BY ROLE: none yet (user 2026-09-21: the harness only). Florence's shape goes here - one block
+	// per team size, if (northCount == k) { rmPlacePlayer(firstDefender, x, z); ... } and the same for the south -
+	// and replaces 12.3 when it does.
+
+	// ---- 12.3 INTERIM PLACEMENT (Paris's placement transposed onto the z axis), by the same coin as 12.1 ---------
 	// z anchored in METRES from the map edge: 36 m for every player count = 24 m beyond the last column's outer edge
 	// (the strip is 60.5 m; Paris's 0.07 / 0.10 fractions of the old frame were 40 / 57 m). Floats only - law 4.
 	float zPlEdgeM = 36.0;
