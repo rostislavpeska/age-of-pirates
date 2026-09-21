@@ -1331,7 +1331,7 @@ void main(void)
 		rmSetTriggerEffectParamInt("Status", 2);
 	}
 	// the bridge's two zpInvisibleGateSocket placeholders become SPCFortGate the moment the game starts: zpConverGate
-	// (techtreemods: TransformUnit zpInvisibleGateSocket -> SPCFortGate, shadow) fired for gaia, the socket's owner -
+	// (techtreemods, shadow: turns every zpInvisibleGateSocket into an SPCFortGate) fired for gaia, the socket's owner -
 	// zpcivilwar.xs 1491-1494 does the same in its starting-techs trigger (user 2026-09-21)
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID", 0);

@@ -117,7 +117,7 @@ class TestRoles:
         t = _text(LONDON)
         s = _code(_section(t, "// ---- 0.5 THE LOBBY", "// ---- 1. THE NAUTICAL LANE"))
         assert "int defenderTeam = 1;\n\tint attackerTeam = 0;" in s                                   # Florence's fixed binding
-        assert re.search(r"int northTeam = attackerTeam;\n\tint southTeam = defenderTeam;\n\tspawnSwitch = 1;\n\tif \(defenderBank == 1\)\n\t\{\n\t\tnorthTeam = defenderTeam;\n\t\tsouthTeam = attackerTeam;\n\t\tspawnSwitch = 0;\n\t\}", s)
+        assert re.search(r"int northTeam = attackerTeam;\n\tint southTeam = defenderTeam;\n\tspawnSwitch = 1;[^\n]*\n\tif \(defenderBank == 1\)\n\t\{\n\t\tnorthTeam = defenderTeam;\n\t\tsouthTeam = attackerTeam;\n\t\tspawnSwitch = 0;[^\n]*\n\t\}", s)
         assert "int defenderCount = rmGetNumberPlayersOnTeam(defenderTeam);" in s and "int attackerCount = rmGetNumberPlayersOnTeam(attackerTeam);" in s
         assert t.count("int spawnSwitch = 0;") == 1 and "rmRandInt(0,1)" not in t                     # no second coin
         assert t.index("int spawnSwitch = 0;") < t.index("// ---- 0.5 THE LOBBY") < t.index("int defenderBank = rmRandInt(0, 1);") < t.index("int defenderTeam = 1;")
