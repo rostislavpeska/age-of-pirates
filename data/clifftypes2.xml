@@ -3929,4 +3929,63 @@
       <bottomedge>rockies\groundsnow1_roc</bottomedge>
     </textures>
   </cliff>
+  <cliff name="ZP Cliff British" blockland="1" blockwater="0" iconname="ui\editor\cliffCaribbean">
+    <modelset>Default</modelset>
+    <topobjects>
+      <object name="terrain\underbrush\underbrush_forest_bush1" minedgedist="0.5" maxedgedist="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="0.5" maxedgedist="1.0" chance="0.05" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush1" minedgedist="0.2" maxedgedist="1.0" chance="0.1" minscale="0.5" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_bush2" minedgedist="0.2" maxedgedist="1.0" chance="0.1" minscale="0.5" maxscale="1.0" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_grass1" minedgedist="0.5" maxedgedist="2.0" chance="0.02" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\underbrush\underbrush_forest_grass2" minedgedist="0.5" maxedgedist="2.0" chance="0.03" minscale="0.8" maxscale="1.5" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_a_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_b_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_c_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_d_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+    </topobjects>
+    <bottomobjects>
+      <object name="terrain\new_england\cliff_rock_a_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_b_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_c_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+      <object name="terrain\new_england\cliff_rock_d_ne" minedgedist="0.5" maxedgedist="5.0" minscale="0.5" maxscale="1.2" chance="0.2" randomyaw="true">
+      </object>
+    </bottomobjects>
+    <faceobjects>
+    </faceobjects>
+    <parameters>
+      <displacementamount>0.082000</displacementamount>
+      <shapecurve>1v{-0.062,1.188|0.067,0.797|0.003,0.992|11850}{0.055,0.701|0.115,0.515|0.085,0.608|7301}{0.219,0.395|0.317,0.302|0.268,0.349|30910}{0.548,0.148|0.694,0.164|0.621,0.156|9660}{0.802,0.338|0.931,0.264|0.867,0.301|19461}{0.910,0.246|1.004,-0.207|0.957,0.020|20089}</shapecurve>
+      <displacementmedianvalue>0.358000</displacementmedianvalue>
+      <triplanarscale>0.070000</triplanarscale>
+      <normalstrength>3.707000</normalstrength>
+      <secondarynormalstrength>0.905000</secondarynormalstrength>
+      <terrainblendtop>0.082000</terrainblendtop>
+      <terrainblendbottom>0.052000</terrainblendbottom>
+    </parameters>
+    <textures>
+      <basecolor>terrain\cliffs\ceylon\ceylon_cliff_basecolor</basecolor>
+      <normals>terrain\cliffs\ceylon\ceylon_cliff_normals_lrg</normals>
+      <secondarynormals>terrain\cliffs\ceylon\ceylon_cliff_normals_sml</secondarynormals>
+      <heightmap>terrain\cliffs\ceylon\ceylon_cliff_height</heightmap>
+      <mask>terrain\cliffs\ceylon\ceylon_cliff_masks</mask>
+      <top>new_england\river1_ne</top>
+      <topedge>new_england\river1_ne</topedge>
+      <side>new_england\cliff_side_ne</side>
+      <edge>new_england\cliff_side_ne</edge>
+      <bottomedge>new_england\cliff_side_ne</bottomedge>
+    </textures>
+  </cliff>
 </cliffs>
