@@ -270,6 +270,16 @@ class TestGateOrder:
         assert "float xRoadReal = (road25X + road75X) * 0.5;" in t and "xRoad = (road25X" not in t   # the read-back is an echo only
         assert t.index('rmBuildTradeRoute(tradeRouteID, "dirt");') < t.index("routePoint(tradeRouteID, 0.25);")
 
+    def test_gaia_gets_the_gate_tech_at_start(self):
+        t = _code(_text(LONDON))
+        s = t[t.index('rmCreateTrigger("LondonStartingTechs");'):t.index('rmAddTriggerEffect("Player : Override Civilization for Flag");')]
+        assert 'rmSetTriggerEffectParamInt("PlayerID", 0);
+	rmSetTriggerEffectParam("TechID", "cTechzpConverGate");
+	rmSetTriggerEffectParamInt("Status", 2);' in s
+        x = (REPO / "data/techtreemods.xml").read_text(encoding="utf-8", errors="replace")
+        i = x.index('<tech name="zpConverGate"')
+        assert 'toprotoid="SPCFortGate" fromprotoid="zpInvisibleGateSocket"' in x[i:x.index("</tech>", i)]
+
     def test_bridge_export_carries_invisible_gate_sockets(self):
         b = (REPO / "game/randmaps/groupings/EU_SPC_London_Bridge.xml").read_bytes()
         assert b.count(b">zpInvisibleGateSocket</unit>") == 2 and b"SPCFortGate" not in b and b"zpSPCWaterSpawnPoint" not in b and b"<heights>" in b

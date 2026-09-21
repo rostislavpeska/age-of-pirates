@@ -662,7 +662,7 @@ void main(void)
 
 	rmSetStatusText("",0.20);
 
-	// ---- 3. THE GRID, from the real road and the real walls (nothing is placed here) ---------------
+	// ---- 3. THE GRID, from the asked road line and the real walls (nothing is placed here) ----------
 	// rows across x: 00 and 0 behind the road (+x), 1..8 in front (-x); 12 / 78 = the 2-row block centres
 	float locX00 = xRoad + rmXMetersToFraction(rowGapFarM + rowPitchM);
 	float locX0 = xRoad + rmXMetersToFraction(rowGapFarM);
@@ -1326,6 +1326,13 @@ void main(void)
 		rmSetTriggerEffectParam("TechID", "cTechzpForbidRevolutions");
 		rmSetTriggerEffectParamInt("Status", 2);
 	}
+	// the bridge's two zpInvisibleGateSocket placeholders become SPCFortGate the moment the game starts: zpConverGate
+	// (techtreemods: TransformUnit zpInvisibleGateSocket -> SPCFortGate, shadow) fired for gaia, the socket's owner -
+	// zpcivilwar.xs 1491-1494 does the same in its starting-techs trigger (user 2026-09-21)
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", 0);
+	rmSetTriggerEffectParam("TechID", "cTechzpConverGate");
+	rmSetTriggerEffectParamInt("Status", 2);
 	// gaia flies the London flag and is called City of London (Paris: the Bourbon flag + "City of Paris"); the House of
 	// Stuart civ carries the London flag texture in civmods, its Royal Standard lives only on the zpStuartFlag unit
 	rmAddTriggerEffect("Player : Override Civilization for Flag");
