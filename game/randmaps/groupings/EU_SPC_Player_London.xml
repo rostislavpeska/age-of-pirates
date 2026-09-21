@@ -73,8 +73,8 @@
 		<unit variation="218" posx="-16.7836" posz="-25.5444" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
 		<unit variation="218" posx="-17.9393" posz="-25.9856" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
 		<unit variation="185" posx="15.0000" posz="-26.0000" orientx="-0.9974" orienty="0.0000" orientz="-0.0723">TreeNewEngland</unit>
-		<unit variation="107" posx="-9.2121" posz="-23.3932" orientx="0.4229" orienty="0.0000" orientz="0.9062">zpSPCEUHouseProp</unit>
-		<unit variation="55" posx="6.1004" posz="-22.4210" orientx="-0.9239" orienty="0.0000" orientz="-0.3826">zpSPCEUHouseProp</unit>
+		<unit variation="107" posx="-9.2121" posz="-23.3932" orientx="0.4229" orienty="0.0000" orientz="0.9062">zpSPCCityHouse</unit>
+		<unit variation="55" posx="6.1004" posz="-22.4210" orientx="-0.9239" orienty="0.0000" orientz="-0.3826">zpSPCCityHouse</unit>
 		<unit variation="254" posx="17.0000" posz="-22.0000" orientx="-0.3995" orienty="0.0000" orientz="0.9167">deMineCoalBuildable</unit>
 		<unit variation="151" posx="16.4237" posz="-23.0170" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="172" posx="-14.2839" posz="-23.1224" orientx="0.4453" orienty="0.0018" orientz="-0.8954">zpGoose</unit>
@@ -130,7 +130,6 @@
 		<unit variation="37" posx="7.5079" posz="-6.9592" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="34" posx="-10.7592" posz="-6.9898" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="232" posx="-22.0550" posz="-8.7398" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="243" posx="11.8246" posz="-7.2839" orientx="-0.5339" orienty="0.0000" orientz="0.8456">deGuardianHalberdier</unit>
 		<unit variation="211" posx="-21.4993" posz="-5.2482" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="24" posx="-21.8973" posz="-6.5453" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="91" posx="-12.7415" posz="-5.1353" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
@@ -138,10 +137,6 @@
 		<unit variation="233" posx="7.8186" posz="-5.9409" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="97" posx="22.0690" posz="-5.6826" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="153" posx="-5.1989" posz="-5.4154" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCFlag</unit>
-		<unit variation="9" posx="12.5547" posz="-5.4891" orientx="-0.1775" orienty="0.0000" orientz="-0.9841">deGuardianHalberdier</unit>
-		<unit variation="49" posx="11.3481" posz="-5.8517" orientx="0.0200" orienty="0.0000" orientz="0.9998">zpGuardianRevolutionary</unit>
-		<unit variation="220" posx="12.3851" posz="-4.9684" orientx="-0.1129" orienty="0.0000" orientz="0.9936">deGuardianHalberdier</unit>
-		<unit variation="217" posx="10.2448" posz="-5.4891" orientx="0.6606" orienty="0.0000" orientz="-0.7508">zpGuardianRevolutionary</unit>
 		<unit variation="89" posx="-15.1450" posz="-3.1135" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="245" posx="-15.6558" posz="-3.2663" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="185" posx="-17.0560" posz="-3.4560" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
@@ -161,9 +156,7 @@
 		<unit variation="162" posx="21.7339" posz="-4.3430" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="113" posx="22.2309" posz="-4.3334" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="252" posx="-14.0229" posz="-3.7582" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="159" posx="10.2448" posz="-4.4111" orientx="-0.9531" orienty="0.0000" orientz="0.3028">zpGuardianRevolutionary</unit>
 		<unit variation="138" posx="14.6338" posz="-1.1001" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NuggetCapturableBuildingBig</unit>
-		<unit variation="20" posx="14.6338" posz="0.5164" orientx="-1.0000" orienty="0.0000" orientz="-0.0000">zpNativeEmbassyParisReward</unit>
 		<unit variation="38" posx="-20.8260" posz="1.4331" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="26" posx="-17.4383" posz="1.4965" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="8" posx="-15.2890" posz="1.7296" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
