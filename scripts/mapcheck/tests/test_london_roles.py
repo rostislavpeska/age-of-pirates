@@ -169,7 +169,7 @@ class TestSeats:
     def _block(self, side, k):
         s = self._sec()
         i = s.index("if (%sCount == %d)" % (side, k)); j = s.index("\n\t\t}", i)
-        return re.findall(r"(rmPlacePlayer|rmSetNuggetDifficulty|rmPlaceGroupingAtLoc)\(([^)]*)\);", s[i:j])
+        return re.findall(r"(rmPlacePlayer|rmSetNuggetDifficulty|rmPlaceGroupingAtLoc)\((.*?)\);", s[i:j])   # non-greedy: the outside posts' x carries parentheses
 
     def _stuart2(self, side, at):
         """the attackers' (Stuart) strips end with the second Stuart post; the defenders' do not"""
@@ -226,7 +226,7 @@ class TestSeats:
             assert self._block(side, 3) == [("rmPlacePlayer", "first%s, locX78, %s" % (o, S)), ("rmPlacePlayer", "second%s, locX34, %s" % (o, S)),
                                             ("rmPlacePlayer", "third%s, locX56, %s" % (o, S)), ("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, %s" % S)] + self._stuart2(side, "locXStuart2In, locZaStuart2In"), side
             assert self._block(side, 4) == [("rmPlacePlayer", "first%s, locX78, %s" % (o, S)), ("rmPlacePlayer", "second%s, locX34, %s" % (o, S)),
-                                            ("rmPlacePlayer", "third%s, locX56, %s" % (o, S)), ("rmPlacePlayer", "fourth%s, locX12, %s" % (o, S))] + self._stuart2(side, "0.5, locZaOut"), side
+                                            ("rmPlacePlayer", "third%s, locX56, %s" % (o, S)), ("rmPlacePlayer", "fourth%s, locX12, %s" % (o, S))] + (self._stuart2(side, "(xRoad + 0.5) * 0.5, locZaOut") + self._stuart2(side, "(0.5 + xGateMirror) * 0.5, locZaOut")), side
 
     def test_second_stuart_post_on_the_stuart_side(self):
         s = self._sec()
@@ -236,7 +236,7 @@ class TestSeats:
             b = self._block("attacker", k)
             assert b[-2:] == [("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, locZaSeat"), ("rmPlaceGroupingAtLoc", "blockStuart2, 0, locXStuart2In, locZaStuart2In")], k
             assert not any("blockStuart2" in c[1] for c in self._block("defender", k)), k
-        assert self._block("attacker", 4)[-1] == ("rmPlaceGroupingAtLoc", "blockStuart2, 0, 0.5, locZaOut")
+        assert self._block("attacker", 4)[-2:] == [("rmPlaceGroupingAtLoc", "blockStuart2, 0, (xRoad + 0.5) * 0.5, locZaOut"), ("rmPlaceGroupingAtLoc", "blockStuart2, 0, (0.5 + xGateMirror) * 0.5, locZaOut")]   # four and more per side: two, both outside
         assert not any("blockStuart2" in c[1] for c in self._block("defender", 4))
         fb = s[s.index("if (seatsByRole == 0)"):s.index('rmEchoInfo("LONDON seats:')]
         assert fb.count("blockStuart2") == 2 and "rmPlaceGroupingAtLoc(blockStuart2, 0, (xRoad + 0.5) * 0.5, locZaOut);" in fb and "rmPlaceGroupingAtLoc(blockStuart2, 0, (0.5 + xGateMirror) * 0.5, locZaOut);" in fb   # more than four per side: two, both outside

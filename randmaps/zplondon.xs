@@ -1101,9 +1101,9 @@ void main(void)
 	int blockParkBig02 = cityBlock("park big turned", "EU_SPC_Park_big_02");     // the user's "EU Park Rotated" export (2 x 2, the big park turned 180, a NuggetWolfRock placeholder)
 	// the SECOND Stuart post (user 2026-09-22): EU_Native_Block_Stuart_02 (16 x 16, the socket on its -z side) on the
 	// Stuart side only - inside the prop block's empty middle at the road (rows 1-2) while the strip has a prop block
-	// (one to three per side); with four per side, and when 12.3 seats the players, outside the city behind the centre
-	// gate, 30 tiles beyond the wall segment's centre (user 2026-09-22: further out; on the 4v4 frame the strip beyond
-	// the last column is 70 tiles, so the block spans +30..+46 from the segment centre with 24 tiles to the map edge)
+	// (one to three per side); with four and more per side (no prop block) TWO of them outside the city, behind the two
+	// gaps between the gates, 30 tiles beyond the wall segment's centre (user 2026-09-22; on the 4v4 frame the strip
+	// beyond the last column is 70 tiles, so a block spans +30..+46 from the segment centre with 24 tiles to the edge)
 	int blockStuart2 = cityBlock("stuart 2", "EU_Native_Block_Stuart_02");
 	rmSetGroupingMaxDistance(blockStuart2, 0.00);                                // pinned: the block's 0.5 m slack let it slide off the hole's centre
 	int stuart2OutTiles = wallOutTiles + 30;
@@ -1236,7 +1236,10 @@ void main(void)
 			rmPlacePlayer(secondAttacker, locX34, locZaSeat);
 			rmPlacePlayer(thirdAttacker, locX56, locZaSeat);
 			rmPlacePlayer(fourthAttacker, locX12, locZaSeat);
-			rmPlaceGroupingAtLoc(blockStuart2, 0, 0.5, locZaOut);        // no prop block: the second Stuart post outside the city
+			// four and more per side (user 2026-09-22): no prop block, TWO Stuart posts outside the city, one behind each
+			// gap between the gates - the road-to-centre gap and the centre-to-mirror gap
+			rmPlaceGroupingAtLoc(blockStuart2, 0, (xRoad + 0.5) * 0.5, locZaOut);
+			rmPlaceGroupingAtLoc(blockStuart2, 0, (0.5 + xGateMirror) * 0.5, locZaOut);
 		}
 	}
 	if (seatsByRole == 0)
