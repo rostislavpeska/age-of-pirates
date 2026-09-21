@@ -124,7 +124,7 @@ void zpGetTeamPlayer(int teamOrder = -1, int teamID = -1)
 }
 
 // Florence's hill between two wall segments (zpflorence.xs 1485-1500, the wallCliffs loop body, one hill per call):
-// Italian Cliff at height 8, kept 2 m off the city floor (classPlateau, which it joins), 4 m off the routes and off
+// ZP Cliff British (Florence: Italian Cliff) at height 8, kept 2 m off the city floor (classPlateau, which it joins), 4 m off the routes and off
 // the walls themselves; the size is the caller's (Florence: 240 tiles for its 30-38 m gaps).
 void wallCliff(string name = "", float x = 0.5, float z = 0.5, int tiles = 240, int avoidFloor = -1, int avoidRoute = -1, int avoidWalls = -1)
 {
@@ -135,7 +135,7 @@ void wallCliff(string name = "", float x = 0.5, float z = 0.5, int tiles = 240, 
 	rmAddAreaConstraint(area, avoidFloor);
 	rmAddAreaConstraint(area, avoidRoute);
 	rmAddAreaConstraint(area, avoidWalls);
-	rmSetAreaCliffType(area, "Italian Cliff");
+	rmSetAreaCliffType(area, "ZP Cliff British");   // clifftypes2: the Italian Cliff's ground + edges, the Italian Cliff River's decorations, Ceylon's rock (user 2026-09-22; was Italian Cliff)
 	rmAddAreaToClass(area, rmClassID("classCliff"));
 	rmSetAreaCliffEdge(area, 1, 1, 0.0, 0.0, 2);
 	rmSetAreaCliffHeight(area, 0, 0, 0.5);

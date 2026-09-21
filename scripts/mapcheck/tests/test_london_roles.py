@@ -288,7 +288,7 @@ class TestWalls:
     def test_hills_are_florences_wallcliffs_in_the_four_gaps(self):
         t = _text(LONDON)
         h = _code(t[t.index("void wallCliff("):t.index("// One city cell on both banks")])
-        for line in ('rmSetAreaSize(area, rmAreaTilesToFraction(tiles), rmAreaTilesToFraction(tiles));', 'rmSetAreaCliffType(area, "Italian Cliff");',
+        for line in ('rmSetAreaSize(area, rmAreaTilesToFraction(tiles), rmAreaTilesToFraction(tiles));', 'rmSetAreaCliffType(area, "ZP Cliff British");',
                      "rmSetAreaCliffEdge(area, 1, 1, 0.0, 0.0, 2);", "rmSetAreaCliffHeight(area, 0, 0, 0.5);", "rmSetAreaBaseHeight(area, 8.0);",
                      "rmSetAreaHeightBlend(area, 3);", "rmSetAreaCoherence(area, 0.93);", 'rmAddAreaToClass(area, rmClassID("classPlateau"));'):
             assert line in h, line
@@ -317,6 +317,10 @@ class TestWalls:
             w = (REPO / ("game/randmaps/groupings/%s.xml" % g)).read_text(encoding="utf-8")
             assert w.count("<tilegroup") == 1 and 'type="PassableLand" subtype="city' + chr(92) + 'ground1_city_street_ground"' in w
             assert w.count("<unit ") == 1 and "zpSPCWaterSpawnPoint" in w     # Florence's terrain twin, as it is
+
+    def test_the_british_cliff_exists(self):
+        c = (REPO / "data/clifftypes2.xml").read_text(encoding="utf-8", errors="replace")
+        assert '<cliff name="ZP Cliff British"' in c and (REPO / "data/clifftypes2.xml.xmb").is_file()
 
     def test_walls_come_before_the_road_is_built_hills_after_the_players(self):
         t = _code(_text(LONDON))
