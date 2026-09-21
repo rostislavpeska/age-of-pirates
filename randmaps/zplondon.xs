@@ -19,7 +19,8 @@
 //      is released by "Units in Area" (no guardian left around it), never by the object-def nugget's id
 //   9  quays (one straight plateau per bank), streets, countryside
 //   10 blocks in Paris's order: the landmark coin (10.0), fixed doubles, fixed singles, zones, fillers, houses
-//   11 riverside decorations, 12 players (12.1 the Florence roles, 12.2 seats by role on the reserved columns, 12.3 the interim line for the rest), 13 triggers (all at the end)
+//   11 riverside decorations, 12 players (12.1 the Florence roles, 12.2 seats by role on the reserved columns, 12.3 the interim line for the rest),
+//      12.5 the outer walls (Florence's gate segments + Italian Cliff hills), 13 triggers (all at the end)
 //
 // LAWS (pinned by tests, dates in the memories)
 //   1  land route + docked controllers BEFORE any water; the lane BEFORE the river; a
@@ -116,6 +117,29 @@ void zpGetTeamPlayer(int teamOrder = -1, int teamID = -1)
         }
     }
     // not found => stays -1
+}
+
+// Florence's hill between two wall segments (zpflorence.xs 1485-1500, the wallCliffs loop body, one hill per call):
+// 240 tiles of Italian Cliff at height 8, kept 2 m off the city floor (classPlateau, which it joins), 4 m off the
+// routes and off the walls themselves.
+void wallCliff(string name = "", float x = 0.5, float z = 0.5, int avoidFloor = -1, int avoidRoute = -1, int avoidWalls = -1)
+{
+	int area = rmCreateArea(name);
+	rmSetAreaSize(area, rmAreaTilesToFraction(240), rmAreaTilesToFraction(240));
+	rmSetAreaObeyWorldCircleConstraint(area, false);
+	rmAddAreaToClass(area, rmClassID("classPlateau"));
+	rmAddAreaConstraint(area, avoidFloor);
+	rmAddAreaConstraint(area, avoidRoute);
+	rmAddAreaConstraint(area, avoidWalls);
+	rmSetAreaCliffType(area, "Italian Cliff");
+	rmAddAreaToClass(area, rmClassID("classCliff"));
+	rmSetAreaCliffEdge(area, 1, 1, 0.0, 0.0, 2);
+	rmSetAreaCliffHeight(area, 0, 0, 0.5);
+	rmSetAreaBaseHeight(area, 8.0);
+	rmSetAreaHeightBlend(area, 3);
+	rmSetAreaCoherence(area, 0.93);
+	rmSetAreaLocation(area, x, z);
+	rmBuildArea(area);
 }
 
 // One city cell on both banks: the south one at index i, its mirror at i + gCellsPerBank.
@@ -491,6 +515,8 @@ void main(void)
 
 	int avoidTradeRouteMin = rmCreateTradeRouteDistanceConstraint("trade route min", 5.0);                            // 5+ player starts
 	int avoidPlateauShort = rmCreateClassDistanceConstraint("avoid plateau short", rmClassID("classPlateau"), 2.0);   // countryside (Paris)
+	int avoidTradeRouteWall = rmCreateTradeRouteDistanceConstraint("trade route wall", 4.0);                          // Florence 358: the wall hills off the routes
+	int avoidWall = rmCreateTypeDistanceConstraint("avoid wall object", "AbstractWall", 0.001);                       // Florence 378: the wall hills off the walls
 
 	// ---- T. TUNABLES --------------------------------------------------------------------------------
 	// T1. asked lines (the engine snaps the road; the real x / z are read back in 1 and 2)
@@ -1104,6 +1130,61 @@ void main(void)
 		rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5);
 	}
 	// starting hunt / gold / berries and every map resource: deliberately absent at the layout stage
+
+	// ---- 12.5 THE OUTER WALLS - Florence's system (zpflorence.xs 406-424 the gate segments at 0.2 / 0.5 / 0.8,
+	// 1485-1526 the Italian Cliff hills in the gaps; user 2026-09-21). Three gate segments per bank on the city's
+	// outer edge: over the land route, at the centre, and mirroring the route about the centre. The export's gate
+	// sits at its centre (IT_wall_se_player: SPCFortGate at x -0.2 m), so a segment centred on the route puts its gate
+	// on the road. The south bank's line faces -z (the SE export), the north bank's +z (the NW export); each bank's
+	// walls belong to its team's first player - Florence gives them to firstDefender / firstAttacker - gaia in any
+	// other lobby (Istanbul's fallback). Segment centre wallOutTiles beyond the last column's outer edge: the wall
+	// line inside the export is 4 tiles toward the city, so the line stands 4 tiles out and 4.5 tiles off the player
+	// blocks (Florence: 2 and 4.5). The hills straddle the line 3 tiles inside the segment centre, as Florence's.
+	int wallOutTiles = 8;
+	int wallGateS = rmCreateGrouping("wall se", "IT_wall_se_player");
+	rmSetGroupingMinDistance(wallGateS, 0.00);
+	rmSetGroupingMaxDistance(wallGateS, 0.00);
+	rmAddGroupingToClass(wallGateS, rmClassID("classBlock"));
+	int wallGateN = rmCreateGrouping("wall nw", "IT_wall_nw_player");
+	rmSetGroupingMinDistance(wallGateN, 0.00);
+	rmSetGroupingMaxDistance(wallGateN, 0.00);
+	rmAddGroupingToClass(wallGateN, rmClassID("classBlock"));
+	int wallOwnerS = firstAttacker;
+	int wallOwnerN = firstDefender;
+	if (defenderBank == 0)
+	{
+		wallOwnerS = firstDefender;
+		wallOwnerN = firstAttacker;
+	}
+	if (wallOwnerS < 0) wallOwnerS = 0;
+	if (wallOwnerN < 0) wallOwnerN = 0;
+	float wallZS = wallS - rmZTilesToFraction(cityDepthTiles + wallOutTiles);
+	float wallZN = wallN + rmZTilesToFraction(cityDepthTiles + wallOutTiles);
+	float xGateMirror = 1.0 - xRoad;
+	rmPlaceGroupingAtLoc(wallGateS, wallOwnerS, xRoad, wallZS);
+	rmPlaceGroupingAtLoc(wallGateS, wallOwnerS, 0.5, wallZS);
+	rmPlaceGroupingAtLoc(wallGateS, wallOwnerS, xGateMirror, wallZS);
+	rmPlaceGroupingAtLoc(wallGateN, wallOwnerN, xRoad, wallZN);
+	rmPlaceGroupingAtLoc(wallGateN, wallOwnerN, 0.5, wallZN);
+	rmPlaceGroupingAtLoc(wallGateN, wallOwnerN, xGateMirror, wallZN);
+	rmEchoInfo("LONDON walls: gates at x " + rmXFractionToMeters(xRoad) + " / 180 / " + rmXFractionToMeters(xGateMirror) + " m, lines at z " + rmZFractionToMeters(wallZS) + " / " + rmZFractionToMeters(wallZN) + " m, owners " + wallOwnerS + " / " + wallOwnerN);
+	// the hills: one per gap - edge to the road segment, road to centre, centre to mirror, mirror to edge (a segment
+	// is 37 tiles = 74 m wide, half of it wallHalfX)
+	float wallHalfX = rmXMetersToFraction(37.0);
+	float hillX1 = (1.0 + xRoad + wallHalfX) * 0.5;
+	float hillX2 = (xRoad + 0.5) * 0.5;
+	float hillX3 = (0.5 + xGateMirror) * 0.5;
+	float hillX4 = (xGateMirror - wallHalfX) * 0.5;
+	float hillZS = wallS - rmZTilesToFraction(cityDepthTiles + wallOutTiles - 3);
+	float hillZN = wallN + rmZTilesToFraction(cityDepthTiles + wallOutTiles - 3);
+	wallCliff("wall hill S1", hillX1, hillZS, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
+	wallCliff("wall hill S2", hillX2, hillZS, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
+	wallCliff("wall hill S3", hillX3, hillZS, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
+	wallCliff("wall hill S4", hillX4, hillZS, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
+	wallCliff("wall hill N1", hillX1, hillZN, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
+	wallCliff("wall hill N2", hillX2, hillZN, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
+	wallCliff("wall hill N3", hillX3, hillZN, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
+	wallCliff("wall hill N4", hillX4, hillZN, avoidPlateauShort, avoidTradeRouteWall, avoidWall);
 
 	// ============================================================================================
 	// 13. TRIGGERS, all at the end (Paris / Istanbul). Ids: object defs = rmGetUnitPlaced + instanceIdShiftIndividual,

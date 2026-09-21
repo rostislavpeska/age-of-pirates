@@ -185,6 +185,49 @@ class TestSeats:
         assert not re.search(r"\n\tif \(cNumberTeams == 2\)\{", s) and "else{\n\t\trmPlacePlayersLine" not in s
 
 
+class TestWalls:
+    """12.5: Florence's three gate segments per bank - over the route, centre, the route's mirror - and its hills."""
+
+    def test_three_gates_per_bank_on_the_outer_edge(self):
+        s = _code(_section(_text(LONDON), "// ---- 12.5 THE OUTER WALLS", "// 13. TRIGGERS"))
+        assert 'int wallGateS = rmCreateGrouping("wall se", "IT_wall_se_player");' in s      # faces -z: the south bank's outer edge
+        assert 'int wallGateN = rmCreateGrouping("wall nw", "IT_wall_nw_player");' in s      # faces +z: the north bank's
+        assert "float xGateMirror = 1.0 - xRoad;" in s
+        assert "float wallZS = wallS - rmZTilesToFraction(cityDepthTiles + wallOutTiles);" in s
+        assert "float wallZN = wallN + rmZTilesToFraction(cityDepthTiles + wallOutTiles);" in s
+        calls = re.findall(r"rmPlaceGroupingAtLoc\((wallGate[SN]), (wallOwner[SN]), ([\w.]+), (wallZ[SN])\);", s)
+        assert calls == [("wallGateS", "wallOwnerS", "xRoad", "wallZS"), ("wallGateS", "wallOwnerS", "0.5", "wallZS"), ("wallGateS", "wallOwnerS", "xGateMirror", "wallZS"),
+                         ("wallGateN", "wallOwnerN", "xRoad", "wallZN"), ("wallGateN", "wallOwnerN", "0.5", "wallZN"), ("wallGateN", "wallOwnerN", "xGateMirror", "wallZN")]
+        for g in ("IT_wall_se_player", "IT_wall_nw_player"):
+            assert (REPO / ("game/randmaps/groupings/%s.xml" % g)).is_file()
+
+    def test_walls_belong_to_the_banks_first_player_gaia_otherwise(self):
+        s = _code(_section(_text(LONDON), "// ---- 12.5 THE OUTER WALLS", "// 13. TRIGGERS"))
+        assert re.search(r"int wallOwnerS = firstAttacker;\n\tint wallOwnerN = firstDefender;\n\tif \(defenderBank == 0\)\n\t\{\n\t\twallOwnerS = firstDefender;\n\t\twallOwnerN = firstAttacker;\n\t\}", s)
+        assert "if (wallOwnerS < 0) wallOwnerS = 0;" in s and "if (wallOwnerN < 0) wallOwnerN = 0;" in s
+
+    def test_hills_are_florences_wallcliffs_in_the_four_gaps(self):
+        t = _text(LONDON)
+        h = _code(t[t.index("void wallCliff("):t.index("// One city cell on both banks")])
+        for line in ('rmSetAreaSize(area, rmAreaTilesToFraction(240), rmAreaTilesToFraction(240));', 'rmSetAreaCliffType(area, "Italian Cliff");',
+                     "rmSetAreaCliffEdge(area, 1, 1, 0.0, 0.0, 2);", "rmSetAreaCliffHeight(area, 0, 0, 0.5);", "rmSetAreaBaseHeight(area, 8.0);",
+                     "rmSetAreaHeightBlend(area, 3);", "rmSetAreaCoherence(area, 0.93);", 'rmAddAreaToClass(area, rmClassID("classPlateau"));'):
+            assert line in h, line
+        s = _code(_section(t, "// ---- 12.5 THE OUTER WALLS", "// 13. TRIGGERS"))
+        assert "float hillX1 = (1.0 + xRoad + wallHalfX) * 0.5;" in s and "float hillX2 = (xRoad + 0.5) * 0.5;" in s
+        assert "float hillX3 = (0.5 + xGateMirror) * 0.5;" in s and "float hillX4 = (xGateMirror - wallHalfX) * 0.5;" in s
+        hills = re.findall(r'wallCliff\("wall hill (\w+)", (hillX\d), (hillZ[SN]), avoidPlateauShort, avoidTradeRouteWall, avoidWall\);', s)
+        assert hills == [("S1", "hillX1", "hillZS"), ("S2", "hillX2", "hillZS"), ("S3", "hillX3", "hillZS"), ("S4", "hillX4", "hillZS"),
+                         ("N1", "hillX1", "hillZN"), ("N2", "hillX2", "hillZN"), ("N3", "hillX3", "hillZN"), ("N4", "hillX4", "hillZN")]
+        assert s.index("rmPlaceGroupingAtLoc(wallGateN, wallOwnerN, xGateMirror, wallZN);") < s.index('wallCliff("wall hill S1"')   # walls first: the hills avoid them
+        assert 'int avoidTradeRouteWall = rmCreateTradeRouteDistanceConstraint("trade route wall", 4.0);' in t
+        assert 'int avoidWall = rmCreateTypeDistanceConstraint("avoid wall object", "AbstractWall", 0.001);' in t
+
+    def test_walls_come_after_every_placement_of_10_to_12(self):
+        t = _code(_text(LONDON))
+        assert t.index("rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5);") < t.index('rmCreateGrouping("wall se"') < t.index("int harbourN1PostUnit")
+
+
 class TestScope:
 
     def test_reserved_columns_take_the_berry_mill(self):
