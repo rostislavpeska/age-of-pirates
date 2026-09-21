@@ -487,8 +487,11 @@ void main(void)
 	rmSetLightingSet("Andes_Skirmish");   // Art/lightsets/Andes_Skirmish.lgt - distinct from Paris (user 2026-09-18; tried NorthwestTerritory_Skirmish, GreatLakes_Summer_Skirmish; was age3challenges09a)
 	rmSetSeaType("great lakes2");
 	rmEnableLocalWater(false);
-	rmSetBaseTerrainMix("italy_cliff_top");                    // the mix London's countryside paints (user 2026-09-21: not Paris's grass); zpcivilwar.xs 74-75 pairs the two calls this way
-	rmTerrainInitialize("nwterritory\ground_grass2_nwt", 1.0);
+	// the base ground is a PLAIN terrain type, not a mix - a base mix scatters its objects (italy_cliff_top's cliff
+	// rocks and ferns) over every unpainted tile, seen in game 2026-09-21. new_england\cliff_inland_top_ne is one of the
+	// three textures that mix paints (Art/terrain/mix/italy_cliff_top.xml: cliff_inland_top_ne 3, river1_ne 4,
+	// cliff_side_ne 1) and the ground London's own exports carry (St Paul, Minster, the Towers, the big park).
+	rmTerrainInitialize("new_england\cliff_inland_top_ne", 1.0);
 	rmSetMapType("grass");
 	rmSetMapType("land");
 	rmSetMapType("default");

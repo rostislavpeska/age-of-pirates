@@ -295,7 +295,7 @@ class TestScope:
 
     def test_base_mix_and_the_1v1_frame(self):
         t = _code(_text(LONDON))
-        assert t.index('rmSetBaseTerrainMix("italy_cliff_top");') < t.index('rmTerrainInitialize("nwterritory' + chr(92) + 'ground_grass2_nwt", 1.0);')   # zpcivilwar.xs 74-75
+        assert 'rmTerrainInitialize("new_england' + chr(92) + 'cliff_inland_top_ne", 1.0);' in t and "rmSetBaseTerrainMix" not in t   # a plain type: a base MIX scatters its rocks (2026-09-21)
         assert 'rmSetAreaMix(area, "italy_cliff_top");' in t                                    # the same mix the countryside paints
         assert "int baseSizeZ = 613;" in t and "baseSizeZ = 653;" in t and "baseSizeZ = 773;" in t
 
