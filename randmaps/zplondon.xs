@@ -7,20 +7,23 @@
 // banks are mirrored. Editor twin: Steam Game\RandMaps\00000_zplondon.xs.
 // History and open bugs: memory london-map-status / london-privateer-nugget-bug.
 //
-// BUILD ORDER (every step's position is inherited from a REAL trade-route object)
-//   1  land route, real road x from two docked controllers                     (law 1)
-//   2  nautical lane + fake stopper, real leg z per bank -> river centre, walls, the bridge socket (law 1)
-//   3  the grid, derived from the real road and the real walls (no placement)
-//   4  the river (rect-map rule: z authored in size_x units)
+// BUILD ORDER (z positions are inherited from REAL trade-route objects; x is the AUTHORED road line since 2026-09-21)
+//   0.5 the lobby: the coins (spawnSwitch, defenderBank) and the Florence roles, up front - the gates take owners
+//   1  nautical lane + fake stopper, real leg z per bank -> river centre, walls (law 1) - FIRST (Paris's gate order)
+//   2  land route DEFINED on the asked line, not built                          (Paris: gates before the road)
+//   3  the grid, derived from the asked road and the real walls (no placement)
+//   3.5 the gates at fixed coordinates: six outer wall segments, London Bridge with its landing gates (instance API)
+//   3.9 the land route BUILT through the gates, real x read back for the census, the bridge socket docked
+//   4  the river (rect-map rule: z authored in size_x units), after the road and the bridge
 //   5  harbour posts docked on the lane, real positions read back              (law 1)
-//   6  London Bridge, instance API                                              (law 2)
+//   6  (London Bridge: see 3.5)
 //   7  harbour groupings hung off the real posts, instance API                  (law 2)
 //   8  harbour guards: the vanilla Euro trade-route post nugget (101) on the quay behind each harbour; the post
 //      is released by "Units in Area" (no guardian left around it), never by the object-def nugget's id
 //   9  quays (one straight plateau per bank), streets, countryside
 //   10 blocks in Paris's order: the landmark coin (10.0), fixed doubles, fixed singles, zones, fillers, houses
-//   11 riverside decorations, 12 players (12.1 the Florence roles, 12.2 seats by role on the reserved columns, 12.3 the interim line for the rest),
-//      12.5 the outer walls (Florence's gate segments + Italian Cliff hills), 13 triggers (all at the end)
+//   11 riverside decorations, 12 players (12.1 roles: see 0.5; 12.2 seats by role on the reserved columns, 12.3 the interim line for the rest),
+//      12.5 the wall hills (Florence's Italian Cliff between the gate segments of 3.5), 13 triggers (all at the end)
 //
 // LAWS (pinned by tests, dates in the memories)
 //   1  land route + docked controllers BEFORE any water; the lane BEFORE the river; a
@@ -556,27 +559,75 @@ void main(void)
 	int   harbourGuardReachM = 25;         // ... within this distance of the post (nugget ~14 m behind it + the guardian spread)
 	int   instanceIdShift = 0;             // rmGetGroupingInstanceUnitByType (grouping instances) + this
 
+	// ---- 0.5 THE LOBBY: the coins and the roles - the Florence system (zpflorence.xs 124-155, zpistanbulb.xs 5b),
+	// resolved up front because the gates (3.5) take their owners from them. Roles, not lobby seats:
+	// the k-th DEFENDER is the k-th-lowest player id on the team holding the DEFENDER BANK (10.0's coin: St Paul +
+	// Stuart), the k-th ATTACKER the same on the other bank's team. Which lobby team holds which bank is spawnSwitch
+	// (0: team 1 north / team 0 south, 1: swapped) - the coin the interim line placement in 12.3 already uses, so
+	// roles and seats can never disagree. Two independent coins: WHO defends and WHERE the defenders' city stands.
+	// 2-TEAM LOBBIES ONLY: any other lobby leaves every role at -1 (Florence, Istanbul); nothing may hand a role to
+	// the engine without Istanbul's gaia fallback (if (owner < 0) owner = 0).
+	int defenderBank = rmRandInt(0, 1);   // the landmark coin: 0 = the south bank (wallS), 1 = the north bank (wallN) - 10.0 keys the city on it
+	int northTeam = 1;
+	int southTeam = 0;
+	if (spawnSwitch == 1)
+	{
+		northTeam = 0;
+		southTeam = 1;
+	}
+	int defenderTeam = southTeam;
+	int attackerTeam = northTeam;
+	if (defenderBank == 1)
+	{
+		defenderTeam = northTeam;
+		attackerTeam = southTeam;
+	}
+	int defenderCount = rmGetNumberPlayersOnTeam(defenderTeam);
+	int attackerCount = rmGetNumberPlayersOnTeam(attackerTeam);
+	zpGetTeamPlayer(1, defenderTeam);
+	int firstDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(2, defenderTeam);
+	int secondDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(3, defenderTeam);
+	int thirdDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(4, defenderTeam);
+	int fourthDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(5, defenderTeam);
+	int fifthDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(6, defenderTeam);
+	int sixthDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(7, defenderTeam);
+	int seventhDefender = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(1, attackerTeam);
+	int firstAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(2, attackerTeam);
+	int secondAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(3, attackerTeam);
+	int thirdAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(4, attackerTeam);
+	int fourthAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(5, attackerTeam);
+	int fifthAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(6, attackerTeam);
+	int sixthAttacker = g_zpTeamPlayerResult;
+	zpGetTeamPlayer(7, attackerTeam);
+	int seventhAttacker = g_zpTeamPlayerResult;
+	// One vs. All (zpflorence.xs 174-177): seven on one side
+	int oneVsAll = 0;
+	if (defenderCount >= 7 || attackerCount >= 7)
+		oneVsAll = 1;
+	rmEchoInfo("LONDON roles: spawnSwitch " + spawnSwitch + " defenderBank " + defenderBank + " defender team " + defenderTeam + " x" + defenderCount + " defenders " + firstDefender + " " + secondDefender + " " + thirdDefender + " " + fourthDefender + " " + fifthDefender + " " + sixthDefender + " " + seventhDefender);
+	rmEchoInfo("LONDON roles: attacker team " + attackerTeam + " x" + attackerCount + " attackers " + firstAttacker + " " + secondAttacker + " " + thirdAttacker + " " + fourthAttacker + " " + fifthAttacker + " " + sixthAttacker + " " + seventhAttacker + " oneVsAll " + oneVsAll);
+
+
 	rmSetStatusText("",0.10);
 
-	// ---- 1. LAND ROUTE (law 1) and its real x ---------------------------------------------------
-	int tradeRouteID = rmCreateTradeRoute();
-	rmAddTradeRouteWaypoint(tradeRouteID, roadAsk, 0.0);
-	rmAddTradeRouteWaypoint(tradeRouteID, roadAsk, 0.5);
-	rmAddTradeRouteWaypoint(tradeRouteID, roadAsk, 1.0);
-	rmBuildTradeRoute(tradeRouteID, "dirt");
-	routePoint(tradeRouteID, 0.25);
-	float road25X = gRealX;
-	routePoint(tradeRouteID, 0.75);
-	float road75X = gRealX;
-	float xRoad = (road25X + road75X) * 0.5;
-	rmEchoInfo("LONDON road x: asked " + roadAsk + " -> real " + xRoad);
-	float zRiver = zRiverAsk;   // asked; the real centre is measured in 2
-
-	rmSetStatusText("",0.20);
-
-	// ---- 2. THE NAUTICAL LANE (law 1: before the river, zpvenicecity's water_trail), Venice's fake stopper docked
+	// ---- 1. THE NAUTICAL LANE FIRST (law 1: before the river; user 2026-09-21, Paris's gate order: before the land
+	// route too - see 2 / 3.5 / 3.9), zpvenicecity's water_trail, Venice's fake stopper docked
 	// on it (zpSPCWaterSpawnPoint at waypoint 0.5, AllowOverlap, min / max 0: "without it the islands don't spawn"),
 	// then one docked controller per leg - their read-back z is the only z this map trusts from here on
+	float zRiver = zRiverAsk;   // asked; the real centre is measured below from the lane's legs
+	float xRoad = roadAsk;      // the road's x is AUTHORED from here on (Paris: gates at fixed coordinates, the road built through them in 3.9)
 	int waterRouteID = rmCreateTradeRoute();
 	float laneTurnX = xRoad - rmXMetersToFraction(laneTurnFromRoadM);
 	rmAddTradeRouteWaypoint(waterRouteID, 0.0, zRiver - rmZMetersToFraction(laneLegM));
@@ -599,7 +650,17 @@ void main(void)
 	float wallS = zLaneS - rmZTilesToFraction(cityDistTiles);      // the St Paul's bank's quay wall line
 	float wallN = zLaneN + rmZTilesToFraction(cityDistTiles);      // the Minster bank's quay wall line
 	rmEchoInfo("LONDON lane legs real " + rmZFractionToMeters(zLaneS) + " / " + rmZFractionToMeters(zLaneN) + " m; river centre " + rmZFractionToMeters(zRiver) + " m, walls " + rmZFractionToMeters(wallS) + " / " + rmZFractionToMeters(wallN) + " m");
-	routeSocket(tradeRouteID, xRoad, zRiver);   // the one socket: on London Bridge, at the real crossing
+
+	// ---- 2. THE LAND ROUTE, DEFINED AND NOT YET BUILT (Paris's gate order, zpparis.xs 309-350: the gates go down at
+	// fixed coordinates first, the road is built through them afterwards - a gate placed on a built road fails, as the
+	// park's path blocks did on 2026-09-21). x = the asked line roadAsk = xRoad, the coordinate every placement uses;
+	// the real x is read back in 3.9 for the census only.
+	int tradeRouteID = rmCreateTradeRoute();
+	rmAddTradeRouteWaypoint(tradeRouteID, roadAsk, 0.0);
+	rmAddTradeRouteWaypoint(tradeRouteID, roadAsk, 0.5);
+	rmAddTradeRouteWaypoint(tradeRouteID, roadAsk, 1.0);
+
+	rmSetStatusText("",0.20);
 
 	// ---- 3. THE GRID, from the real road and the real walls (nothing is placed here) ---------------
 	// rows across x: 00 and 0 behind the road (+x), 1..8 in front (-x); 12 / 78 = the 2-row block centres
@@ -650,7 +711,66 @@ void main(void)
 	float harbourNZ = zLaneN + rmZTilesToFraction(harbourShoreTiles) - rmZMetersToFraction(hNTopEdgeM);
 	float harbourSZ = zLaneS - rmZTilesToFraction(harbourShoreTiles) + rmZMetersToFraction(hSTopEdgeM);
 
-	// ---- 4. THE RIVER (rect-map rule: river z is read in size_x units -> true z metres / sizeX) ----
+	// ---- 3.5 THE GATES, BEFORE THE ROAD (user 2026-09-21, Paris's order zpparis.xs 309-350): every gate that the
+	// road will pass goes down now at fixed coordinates, and the road is built through them in 3.9.
+	// THE OUTER WALLS - Florence's system (zpflorence.xs 406-424 the gate segments at 0.2 / 0.5 / 0.8; the Italian
+	// Cliff hills between them are 12.5). Three gate segments per bank on the city's outer edge: over the land route,
+	// at the centre, and mirroring the route about the centre. The export's gate sits at its centre (SPCFortGate at
+	// x -0.2 m; London's clones of IT_wall_*_player), so a segment centred on the road line puts its gate on the road.
+	// The south bank's line faces -z (the SE export), the north bank's +z (the NW export); each bank's walls belong
+	// to its team's first player - Florence gives them to firstDefender / firstAttacker - gaia in any other lobby
+	// (Istanbul's fallback). Segment centre wallOutTiles beyond the last column's outer edge: the wall line inside the
+	// export is 4 tiles toward the city, so the line stands 4 tiles out and 4.5 tiles off the player blocks (Florence:
+	// 2 and 4.5).
+	int wallOutTiles = 8;
+	int wallGateS = rmCreateGrouping("wall se", "EU_SPC_London_Wall_SE_01");   // IT_wall_se_player without the Florentian flags, London's passable city ground
+	rmSetGroupingMinDistance(wallGateS, 0.00);
+	rmSetGroupingMaxDistance(wallGateS, 0.00);
+	rmAddGroupingToClass(wallGateS, rmClassID("classBlock"));
+	int wallGateN = rmCreateGrouping("wall nw", "EU_SPC_London_Wall_NW_01");   // IT_wall_nw_player without the Roman flags, the same ground
+	rmSetGroupingMinDistance(wallGateN, 0.00);
+	rmSetGroupingMaxDistance(wallGateN, 0.00);
+	rmAddGroupingToClass(wallGateN, rmClassID("classBlock"));
+	int wallOwnerS = firstAttacker;
+	int wallOwnerN = firstDefender;
+	if (defenderBank == 0)
+	{
+		wallOwnerS = firstDefender;
+		wallOwnerN = firstAttacker;
+	}
+	if (wallOwnerS < 0) wallOwnerS = 0;
+	if (wallOwnerN < 0) wallOwnerN = 0;
+	float wallZS = wallS - rmZTilesToFraction(cityDepthTiles + wallOutTiles);
+	float wallZN = wallN + rmZTilesToFraction(cityDepthTiles + wallOutTiles);
+	float xGateMirror = 1.0 - xRoad;
+	rmPlaceGroupingAtLoc(wallGateS, wallOwnerS, xRoad, wallZS);
+	rmPlaceGroupingAtLoc(wallGateS, wallOwnerS, 0.5, wallZS);
+	rmPlaceGroupingAtLoc(wallGateS, wallOwnerS, xGateMirror, wallZS);
+	rmPlaceGroupingAtLoc(wallGateN, wallOwnerN, xRoad, wallZN);
+	rmPlaceGroupingAtLoc(wallGateN, wallOwnerN, 0.5, wallZN);
+	rmPlaceGroupingAtLoc(wallGateN, wallOwnerN, xGateMirror, wallZN);
+	rmEchoInfo("LONDON walls: gates at x " + rmXFractionToMeters(xRoad) + " / 180 / " + rmXFractionToMeters(xGateMirror) + " m, lines at z " + rmZFractionToMeters(wallZS) + " / " + rmZFractionToMeters(wallZN) + " m, owners " + wallOwnerS + " / " + wallOwnerN);
+	// LONDON BRIDGE (law 2: instance API, max distance 0): deck on the road, arches over the river, deck height
+	// 4.949 - its two landing gates (the export's zpSPCWaterSpawnPoint placeholders turned SPCFortGate, 2026-09-21)
+	// are on the road, so the bridge too goes down before the road and, by the user's order, before the river (5).
+	int londonBridge = rmCreateGrouping("london bridge", "EU_SPC_London_Bridge");
+	int bridgeInst = placeIsland(londonBridge, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ));
+
+
+	// ---- 3.9 THE LAND ROUTE BUILT through the gates; the real x read back from two docked controllers for the
+	// census (it is NOT used - every placement sits on the asked line; a straight three-waypoint route should not
+	// drift), then the one socket, docked on London Bridge at the crossing
+	rmBuildTradeRoute(tradeRouteID, "dirt");
+	routePoint(tradeRouteID, 0.25);
+	float road25X = gRealX;
+	routePoint(tradeRouteID, 0.75);
+	float road75X = gRealX;
+	float xRoadReal = (road25X + road75X) * 0.5;
+	rmEchoInfo("LONDON road x: asked " + roadAsk + " -> real " + xRoadReal + " (placements use the asked line)");
+	routeSocket(tradeRouteID, xRoad, zRiver);   // the one socket: on London Bridge, at the crossing
+
+	// ---- 4. THE RIVER (rect-map rule: river z is read in size_x units -> true z metres / sizeX); after the road
+	// (law 1) and, by the user's gate order, after the bridge ------------------------------------------------
 	int riverMain = rmRiverCreate(-1, "ZP London River", 4, 4, riverRadius, riverRadius);   // data/waterbodies2.xml: ZP Paris River's clone with the Thames colours (user 2026-09-18)
 	rmRiverAddWaypoint(riverMain, 0.0, rmXMetersToFraction(rmZFractionToMeters(zRiver)));
 	rmRiverAddWaypoint(riverMain, 1.0, rmXMetersToFraction(rmZFractionToMeters(zRiver)));
@@ -669,9 +789,7 @@ void main(void)
 	int harbourS2PostDef = harbourPost(waterRouteID, harbour2X, harbourSZ, hSPostWestM, hSPostToWaterM, 1.0);
 	float harbourS2X = gHarbourX;   float harbourS2Z = gHarbourZ;
 
-	// ---- 6. LONDON BRIDGE (law 2): deck on the road, arches over the river; deck height 4.949 ---------
-	int londonBridge = rmCreateGrouping("london bridge", "EU_SPC_London_Bridge");
-	int bridgeInst = placeIsland(londonBridge, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ));
+	// ---- 6. LONDON BRIDGE: placed in 3.5, before the road is built (its two gates sit on the road) ----------
 
 	// ---- 7. THE HARBOUR GROUPINGS at their origins (zpvenicecity's ControllerLoc idiom, law 2) --------
 	int harbourN1Grouping = rmCreateGrouping("harbour north 1", "EU_SPC_London_Harbour_NW_01");
@@ -764,7 +882,7 @@ void main(void)
 	//   PARLIAMENT (15 x 30 = row 3 x cols 1-2, the socket facing -x): the Park (col 1) and the Menagerie (col 2)
 	//   on its row-4 side on either bank - x is not mirrored between the banks.
 	//   ST PAUL / MINSTER (32 x 32, the basilica centred, facing -z): the 2-column centre of rows 1-2, either bank.
-	int defenderBank = rmRandInt(0, 1);   // 0 = the south bank (wallS), 1 = the north bank (wallN)
+	// defenderBank is rolled in 0.5 (0 = the south bank (wallS), 1 = the north bank (wallN))
 	float locZd12 = locZs12;         float locZa12 = locZn12;         // St Paul / Minster
 	float locZdStuart = locZs1;      float locZaParliament = locZn12;
 	float locZdPark = locZs2;        float locZaPark = locZn1;
@@ -953,65 +1071,7 @@ void main(void)
 
 	rmSetStatusText("",0.80);
 
-	// ---- 12. PLAYERS ---------------------------------------------------------------------------------
-	// ---- 12.1 ROLES - the Florence system (zpflorence.xs 124-155, zpistanbulb.xs 5b). Roles, not lobby seats:
-	// the k-th DEFENDER is the k-th-lowest player id on the team holding the DEFENDER BANK (10.0's coin: St Paul +
-	// Stuart), the k-th ATTACKER the same on the other bank's team. Which lobby team holds which bank is spawnSwitch
-	// (0: team 1 north / team 0 south, 1: swapped) - the coin the interim line placement in 12.3 already uses, so
-	// roles and seats can never disagree. Two independent coins: WHO defends and WHERE the defenders' city stands.
-	// 2-TEAM LOBBIES ONLY: any other lobby leaves every role at -1 (Florence, Istanbul); nothing may hand a role to
-	// the engine without Istanbul's gaia fallback (if (owner < 0) owner = 0).
-	int northTeam = 1;
-	int southTeam = 0;
-	if (spawnSwitch == 1)
-	{
-		northTeam = 0;
-		southTeam = 1;
-	}
-	int defenderTeam = southTeam;
-	int attackerTeam = northTeam;
-	if (defenderBank == 1)
-	{
-		defenderTeam = northTeam;
-		attackerTeam = southTeam;
-	}
-	int defenderCount = rmGetNumberPlayersOnTeam(defenderTeam);
-	int attackerCount = rmGetNumberPlayersOnTeam(attackerTeam);
-	zpGetTeamPlayer(1, defenderTeam);
-	int firstDefender = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(2, defenderTeam);
-	int secondDefender = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(3, defenderTeam);
-	int thirdDefender = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(4, defenderTeam);
-	int fourthDefender = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(5, defenderTeam);
-	int fifthDefender = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(6, defenderTeam);
-	int sixthDefender = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(7, defenderTeam);
-	int seventhDefender = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(1, attackerTeam);
-	int firstAttacker = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(2, attackerTeam);
-	int secondAttacker = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(3, attackerTeam);
-	int thirdAttacker = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(4, attackerTeam);
-	int fourthAttacker = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(5, attackerTeam);
-	int fifthAttacker = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(6, attackerTeam);
-	int sixthAttacker = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(7, attackerTeam);
-	int seventhAttacker = g_zpTeamPlayerResult;
-	// One vs. All (zpflorence.xs 174-177): seven on one side
-	int oneVsAll = 0;
-	if (defenderCount >= 7 || attackerCount >= 7)
-		oneVsAll = 1;
-	rmEchoInfo("LONDON roles: spawnSwitch " + spawnSwitch + " defenderBank " + defenderBank + " defender team " + defenderTeam + " x" + defenderCount + " defenders " + firstDefender + " " + secondDefender + " " + thirdDefender + " " + fourthDefender + " " + fifthDefender + " " + sixthDefender + " " + seventhDefender);
-	rmEchoInfo("LONDON roles: attacker team " + attackerTeam + " x" + attackerCount + " attackers " + firstAttacker + " " + secondAttacker + " " + thirdAttacker + " " + fourthAttacker + " " + fifthAttacker + " " + sixthAttacker + " " + seventhAttacker + " oneVsAll " + oneVsAll);
-
+	// ---- 12. PLAYERS (12.1 ROLES: resolved in 0.5, before the gates) ----------------------------------
 	// ---- 12.2 SEATS BY ROLE (user 2026-09-21, the Figma strip): each team's players sit on THEIR bank's reserved
 	// columns 5-7 in the user's EU_SPC_Player_London block (30 x 45 tiles = 2 rows x 3 columns, the Town Center at its
 	// centre), one block per 2-row pair, cumulative by head-count: the first player rows 7-8 (BLUE, the far end), the
@@ -1131,43 +1191,8 @@ void main(void)
 	}
 	// starting hunt / gold / berries and every map resource: deliberately absent at the layout stage
 
-	// ---- 12.5 THE OUTER WALLS - Florence's system (zpflorence.xs 406-424 the gate segments at 0.2 / 0.5 / 0.8,
-	// 1485-1526 the Italian Cliff hills in the gaps; user 2026-09-21). Three gate segments per bank on the city's
-	// outer edge: over the land route, at the centre, and mirroring the route about the centre. The export's gate
-	// sits at its centre (SPCFortGate at x -0.2 m; London's clones of IT_wall_*_player), so a segment centred on the route puts its gate
-	// on the road. The south bank's line faces -z (the SE export), the north bank's +z (the NW export); each bank's
-	// walls belong to its team's first player - Florence gives them to firstDefender / firstAttacker - gaia in any
-	// other lobby (Istanbul's fallback). Segment centre wallOutTiles beyond the last column's outer edge: the wall
-	// line inside the export is 4 tiles toward the city, so the line stands 4 tiles out and 4.5 tiles off the player
-	// blocks (Florence: 2 and 4.5). The hills straddle the line 3 tiles inside the segment centre, as Florence's.
-	int wallOutTiles = 8;
-	int wallGateS = rmCreateGrouping("wall se", "EU_SPC_London_Wall_SE_01");   // IT_wall_se_player without the Florentian flags, London's passable city ground
-	rmSetGroupingMinDistance(wallGateS, 0.00);
-	rmSetGroupingMaxDistance(wallGateS, 0.00);
-	rmAddGroupingToClass(wallGateS, rmClassID("classBlock"));
-	int wallGateN = rmCreateGrouping("wall nw", "EU_SPC_London_Wall_NW_01");   // IT_wall_nw_player without the Roman flags, the same ground
-	rmSetGroupingMinDistance(wallGateN, 0.00);
-	rmSetGroupingMaxDistance(wallGateN, 0.00);
-	rmAddGroupingToClass(wallGateN, rmClassID("classBlock"));
-	int wallOwnerS = firstAttacker;
-	int wallOwnerN = firstDefender;
-	if (defenderBank == 0)
-	{
-		wallOwnerS = firstDefender;
-		wallOwnerN = firstAttacker;
-	}
-	if (wallOwnerS < 0) wallOwnerS = 0;
-	if (wallOwnerN < 0) wallOwnerN = 0;
-	float wallZS = wallS - rmZTilesToFraction(cityDepthTiles + wallOutTiles);
-	float wallZN = wallN + rmZTilesToFraction(cityDepthTiles + wallOutTiles);
-	float xGateMirror = 1.0 - xRoad;
-	rmPlaceGroupingAtLoc(wallGateS, wallOwnerS, xRoad, wallZS);
-	rmPlaceGroupingAtLoc(wallGateS, wallOwnerS, 0.5, wallZS);
-	rmPlaceGroupingAtLoc(wallGateS, wallOwnerS, xGateMirror, wallZS);
-	rmPlaceGroupingAtLoc(wallGateN, wallOwnerN, xRoad, wallZN);
-	rmPlaceGroupingAtLoc(wallGateN, wallOwnerN, 0.5, wallZN);
-	rmPlaceGroupingAtLoc(wallGateN, wallOwnerN, xGateMirror, wallZN);
-	rmEchoInfo("LONDON walls: gates at x " + rmXFractionToMeters(xRoad) + " / 180 / " + rmXFractionToMeters(xGateMirror) + " m, lines at z " + rmZFractionToMeters(wallZS) + " / " + rmZFractionToMeters(wallZN) + " m, owners " + wallOwnerS + " / " + wallOwnerN);
+	// ---- 12.5 THE WALL HILLS - Florence's wallCliffs (zpflorence.xs 1485-1526) between the gate segments placed in
+	// 3.5: Italian Cliff, one per gap, straddling the wall line 3 tiles inside the segment centre.
 	// the hills: one per gap - edge to the road segment, road to centre, centre to mirror, mirror to edge (a segment
 	// is 37 tiles = 74 m wide, half of it wallHalfX)
 	float wallHalfX = rmXMetersToFraction(37.0);

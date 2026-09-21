@@ -65,7 +65,7 @@ class TestLandmarkCoin:
     def _layouts(self):
         s = _section(_text(LONDON), "// ---- 10.0 THE LANDMARK COIN", "// ---- 10.1 fixed doubles")
         code = _code(s)
-        assert "int defenderBank = rmRandInt(0, 1);" in code
+        assert "int defenderBank = rmRandInt(0, 1);" not in code          # rolled in 0.5, before the gates
         before, after = code.split("if (defenderBank == 1)")
         south = _assigns(before)                     # defaults = defender bank south
         north = dict(south); north.update(_assigns(after))   # the if-block overrides = defender bank north
@@ -106,7 +106,7 @@ class TestLandmarkCoin:
 
 class TestRoles:
     def test_fourteen_roles_in_florence_order(self):
-        s = _section(_text(LONDON), "// ---- 12.1 ROLES", "// ---- 12.2 SEATS BY ROLE")
+        s = _section(_text(LONDON), "// ---- 0.5 THE LOBBY", "// ---- 1. THE NAUTICAL LANE")
         calls = re.findall(r"zpGetTeamPlayer\((\d), (defenderTeam|attackerTeam)\);\n\tint (\w+) = g_zpTeamPlayerResult;", s)
         assert [(int(k), team, name) for k, team, name in calls] == \
             [(i + 1, "defenderTeam", o + "Defender") for i, o in enumerate(ORDER)] + \
@@ -115,12 +115,12 @@ class TestRoles:
 
     def test_defender_team_is_the_team_on_the_defender_bank(self):
         t = _text(LONDON)
-        s = _section(t, "// ---- 12.1 ROLES", "// ---- 12.2 SEATS BY ROLE")
+        s = _section(t, "// ---- 0.5 THE LOBBY", "// ---- 1. THE NAUTICAL LANE")
         assert re.search(r"int northTeam = 1;\n\tint southTeam = 0;\n\tif \(spawnSwitch == 1\)\n\t\{\n\t\tnorthTeam = 0;\n\t\tsouthTeam = 1;\n\t\}", s)
         assert re.search(r"int defenderTeam = southTeam;\n\tint attackerTeam = northTeam;\n\tif \(defenderBank == 1\)\n\t\{\n\t\tdefenderTeam = northTeam;\n\t\tattackerTeam = southTeam;\n\t\}", s)
         assert "int defenderCount = rmGetNumberPlayersOnTeam(defenderTeam);" in s and "int attackerCount = rmGetNumberPlayersOnTeam(attackerTeam);" in s
-        assert t.count("int spawnSwitch = rmRandInt(0,1);") == 1 and t.index("int spawnSwitch") < t.index("// ---- 12.1 ROLES")
-        assert t.index("int defenderBank = rmRandInt(0, 1);") < t.index("// ---- 12.1 ROLES")
+        assert t.count("int spawnSwitch = rmRandInt(0,1);") == 1 and t.index("int spawnSwitch") < t.index("// ---- 0.5 THE LOBBY")
+        assert t.index("// ---- 0.5 THE LOBBY") < t.index("int defenderBank = rmRandInt(0, 1);") < t.index("int northTeam = 1;")
 
     def test_interim_placement_reads_the_coin_the_same_way(self):
         # spawnSwitch 0: team 1 on the far-z line (the north bank), team 0 on the near-z line (the south bank)
@@ -130,7 +130,7 @@ class TestRoles:
         assert re.search(r"rmSetPlacementTeam\(1\);\n\t\t\trmPlacePlayersLine\(0\.90, zPlLineFar,", first)
 
     def test_one_vs_all_and_the_echo(self):
-        s = _section(_text(LONDON), "// ---- 12.1 ROLES", "// ---- 12.2 SEATS BY ROLE")
+        s = _section(_text(LONDON), "// ---- 0.5 THE LOBBY", "// ---- 1. THE NAUTICAL LANE")
         assert "int oneVsAll = 0;\n\tif (defenderCount >= 7 || attackerCount >= 7)\n\t\toneVsAll = 1;" in s
         assert s.count('rmEchoInfo("LONDON roles:') == 2 and "seventhAttacker + \" oneVsAll \" + oneVsAll" in s
 
@@ -143,7 +143,7 @@ class TestRoles:
 
     def test_roles_are_not_gated_on_the_team_count(self):
         # Florence and Istanbul leave the roles at -1 in non-2-team lobbies instead of skipping them
-        s = _section(_text(LONDON), "// ---- 12.1 ROLES", "// ---- 12.2 SEATS BY ROLE")
+        s = _section(_text(LONDON), "// ---- 0.5 THE LOBBY", "// ---- 1. THE NAUTICAL LANE")
         assert "cNumberTeams" not in s
 
     def test_no_seat_names_collide_with_other_declarations(self):
@@ -189,7 +189,7 @@ class TestWalls:
     """12.5: Florence's three gate segments per bank - over the route, centre, the route's mirror - and its hills."""
 
     def test_three_gates_per_bank_on_the_outer_edge(self):
-        s = _code(_section(_text(LONDON), "// ---- 12.5 THE OUTER WALLS", "// 13. TRIGGERS"))
+        s = _code(_section(_text(LONDON), "// ---- 3.5 THE GATES", "// ---- 4. THE RIVER"))
         assert 'int wallGateS = rmCreateGrouping("wall se", "EU_SPC_London_Wall_SE_01");' in s      # faces -z: the south bank's outer edge
         assert 'int wallGateN = rmCreateGrouping("wall nw", "EU_SPC_London_Wall_NW_01");' in s      # faces +z: the north bank's
         assert "float xGateMirror = 1.0 - xRoad;" in s
@@ -204,7 +204,7 @@ class TestWalls:
             assert w.count("SPCFortGate") == 1 and w.count("deSPCEuroTower") == 2 and w.count("<unit ") == 27
 
     def test_walls_belong_to_the_banks_first_player_gaia_otherwise(self):
-        s = _code(_section(_text(LONDON), "// ---- 12.5 THE OUTER WALLS", "// 13. TRIGGERS"))
+        s = _code(_section(_text(LONDON), "// ---- 3.5 THE GATES", "// ---- 4. THE RIVER"))
         assert re.search(r"int wallOwnerS = firstAttacker;\n\tint wallOwnerN = firstDefender;\n\tif \(defenderBank == 0\)\n\t\{\n\t\twallOwnerS = firstDefender;\n\t\twallOwnerN = firstAttacker;\n\t\}", s)
         assert "if (wallOwnerS < 0) wallOwnerS = 0;" in s and "if (wallOwnerN < 0) wallOwnerN = 0;" in s
 
@@ -215,7 +215,7 @@ class TestWalls:
                      "rmSetAreaCliffEdge(area, 1, 1, 0.0, 0.0, 2);", "rmSetAreaCliffHeight(area, 0, 0, 0.5);", "rmSetAreaBaseHeight(area, 8.0);",
                      "rmSetAreaHeightBlend(area, 3);", "rmSetAreaCoherence(area, 0.93);", 'rmAddAreaToClass(area, rmClassID("classPlateau"));'):
             assert line in h, line
-        s = _code(_section(t, "// ---- 12.5 THE OUTER WALLS", "// 13. TRIGGERS"))
+        s = _code(_section(t, "// ---- 3.5 THE GATES", "int harbourN1PostUnit"))
         assert "float hillX1 = (1.0 + xRoad + wallHalfX) * 0.5;" in s and "float hillX2 = (xRoad + 0.5) * 0.5;" in s
         assert "float hillX3 = (0.5 + xGateMirror) * 0.5;" in s and "float hillX4 = (xGateMirror - wallHalfX) * 0.5;" in s
         hills = re.findall(r'wallCliff\("wall hill (\w+)", (hillX\d), (hillZ[SN]), avoidPlateauShort, avoidTradeRouteWall, avoidWall\);', s)
@@ -225,9 +225,40 @@ class TestWalls:
         assert 'int avoidTradeRouteWall = rmCreateTradeRouteDistanceConstraint("trade route wall", 4.0);' in t
         assert 'int avoidWall = rmCreateTypeDistanceConstraint("avoid wall object", "AbstractWall", 0.001);' in t
 
-    def test_walls_come_after_every_placement_of_10_to_12(self):
+    def test_walls_come_before_the_road_is_built_hills_after_the_players(self):
         t = _code(_text(LONDON))
-        assert t.index("rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5);") < t.index('rmCreateGrouping("wall se"') < t.index("int harbourN1PostUnit")
+        assert t.index('rmCreateGrouping("wall se"') < t.index('rmBuildTradeRoute(tradeRouteID, "dirt");')
+        assert t.index("rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5);") < t.index('wallCliff("wall hill S1"') < t.index("int harbourN1PostUnit")
+
+
+class TestGateOrder:
+    """Paris's gate order (zpparis.xs 309-350, user 2026-09-21): lane, road defined, gates at fixed coordinates,
+    road built through them, then the river."""
+
+    def test_lane_first_road_defined_gates_road_built_river(self):
+        t = _code(_text(LONDON))
+        lane = t.index('rmBuildTradeRoute(waterRouteID, "water_trail");')
+        road_def = t.index("int tradeRouteID = rmCreateTradeRoute();")
+        walls = t.index('rmCreateGrouping("wall se"')
+        bridge = t.index("int bridgeInst = placeIsland(londonBridge")
+        road_built = t.index('rmBuildTradeRoute(tradeRouteID, "dirt");')
+        socket = t.index("routeSocket(tradeRouteID, xRoad, zRiver);")
+        river = t.index("rmRiverCreate(")
+        assert lane < road_def < walls < bridge < road_built < socket < river
+        assert t.index("float zRiver = zRiverAsk;") < t.index("int waterRouteID = rmCreateTradeRoute();")
+
+    def test_road_on_the_authored_line(self):
+        t = _code(_text(LONDON))
+        assert t.count("float xRoad = roadAsk;") == 1 and t.index("float xRoad = roadAsk;") < t.index("int waterRouteID = rmCreateTradeRoute();")
+        assert re.search(r"rmAddTradeRouteWaypoint\(tradeRouteID, roadAsk, 0\.0\);\n\trmAddTradeRouteWaypoint\(tradeRouteID, roadAsk, 0\.5\);\n\trmAddTradeRouteWaypoint\(tradeRouteID, roadAsk, 1\.0\);", t)
+        assert "float xRoadReal = (road25X + road75X) * 0.5;" in t and "xRoad = (road25X" not in t   # the read-back is an echo only
+        assert t.index('rmBuildTradeRoute(tradeRouteID, "dirt");') < t.index("routePoint(tradeRouteID, 0.25);")
+
+    def test_bridge_export_carries_gates_not_placeholders(self):
+        b = (REPO / "game/randmaps/groupings/EU_SPC_London_Bridge.xml").read_bytes()
+        assert b.count(b">SPCFortGate</unit>") == 2 and b">zpSPCWaterSpawnPoint</unit>" not in b and b"<heights>" in b
+        assert b == (STEAM / "groupings/EU_SPC_London_Bridge.xml").read_bytes()
+        assert (REPO / "sandbox/backups/groupings/EU_SPC_London_Bridge_2026-09-21_waterspawn_placeholders.xml").is_file()
 
 
 class TestScope:
