@@ -309,6 +309,7 @@
 		<unit variation="226" posx="-13.0000" posz="5.0000" orientx="-0.7301" orienty="0.0000" orientz="-0.6834">TreeGreatLakes</unit>
 		<unit variation="32" posx="23.0000" posz="5.0000" orientx="-0.9295" orienty="0.0000" orientz="0.3687">TreeGreatLakes</unit>
 		<unit variation="146" posx="25.0000" posz="5.0000" orientx="0.9987" orienty="0.0000" orientz="0.0508">TreeGreatLakes</unit>
+		<unit variation="234" posx="5.9505" posz="7.5234" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCPathBlock2</unit>
 		<unit variation="129" posx="-9.0000" posz="9.0000" orientx="0.7966" orienty="0.0000" orientz="-0.6046">UnderbrushForest</unit>
 		<unit variation="40" posx="2.1289" posz="7.4238" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="26" posx="1.7565" posz="6.8130" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
@@ -320,6 +321,7 @@
 		<unit variation="168" posx="-23.0000" posz="7.0000" orientx="0.7033" orienty="0.0000" orientz="0.7109">TreeNewEngland</unit>
 		<unit variation="104" posx="-13.0000" posz="7.0000" orientx="0.9927" orienty="0.0000" orientz="0.1205">TreeGreatLakes</unit>
 		<unit variation="120" posx="19.0000" posz="7.0000" orientx="-0.5083" orienty="0.0000" orientz="0.8612">TreeNewEngland</unit>
+		<unit variation="9" posx="4.5475" posz="8.9655" orientx="0.7071" orienty="0.0000" orientz="-0.7071">SPCPathBlock2</unit>
 		<unit variation="234" posx="-23.2443" posz="9.1409" orientx="0.3827" orienty="0.0000" orientz="0.9239">deRocksLarge</unit>
 		<unit variation="200" posx="-20.5886" posz="8.9620" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="116" posx="-25.8754" posz="9.7099" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
