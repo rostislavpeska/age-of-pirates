@@ -1113,6 +1113,14 @@ void main(void)
 	float stuart2OffXM = -3.0;   // -6 was too much (user 2026-09-22)
 	float stuart2OffZM = 0.0;
 	float locXStuart2In = locX12 + rmXMetersToFraction(stuart2OffXM);
+	// the SECOND Parliament post (user 2026-09-22): EU_Native_Block_Parlam_02 (15 x 15, the socket on its -z side) on
+	// the Parliament side, the same way - inside the prop block with one to three per side, two outside with four
+	// and more; its own offset knobs
+	int blockParliament2 = cityBlock("parliament 2", "EU_Native_Block_Parlam_02");
+	rmSetGroupingMaxDistance(blockParliament2, 0.00);
+	float parl2OffXM = -3.0;
+	float parl2OffZM = 0.0;
+	float locXParl2In = locX12 + rmXMetersToFraction(parl2OffXM);
 	float locX56 = (locX5 + locX6) * 0.5;
 	float locZs56 = wallS-rmZTilesToFraction(col5+col6)*0.5;                     // the 2-column centre of cols 5-6
 	float locZn56 = wallN+rmZTilesToFraction(col5+col6)*0.5;
@@ -1122,6 +1130,8 @@ void main(void)
 	float locZd56 = locZs56;        float locZa56 = locZn56;
 	float locZaOut = wallN + rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);   // the attackers' countryside, behind the centre gate
 	float locZaStuart2In = locZn5 + rmZMetersToFraction(stuart2OffZM);              // the prop block's spot, the column offset signed outward
+	float locZdOut = wallS - rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);   // the defenders' countryside, the same depth
+	float locZdParl2In = locZs5 - rmZMetersToFraction(parl2OffZM);
 	if (defenderBank == 1)
 	{
 		locZdSeat = locZn5;         locZaSeat = locZs5;
@@ -1130,6 +1140,8 @@ void main(void)
 		locZd56 = locZn56;          locZa56 = locZs56;
 		locZaOut = wallS - rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);
 		locZaStuart2In = locZs5 - rmZMetersToFraction(stuart2OffZM);
+		locZdOut = wallN + rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);
+		locZdParl2In = locZn5 + rmZMetersToFraction(parl2OffZM);
 	}
 	int seatsByRole = 0;
 	if (cNumberTeams == 2 && defenderCount <= 4 && attackerCount <= 4)
@@ -1153,6 +1165,7 @@ void main(void)
 			rmPlaceGroupingAtLoc(blockHouse1, 0, locX3, locZd6);
 			rmPlaceGroupingAtLoc(blockHouse2, 0, locX4, locZd6);
 			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZdSeat);
+			rmPlaceGroupingAtLoc(blockParliament2, 0, locXParl2In, locZdParl2In);   // the second Parliament post, inside the prop block's hole, offset by the knobs
 		}
 		if (defenderCount == 2)
 		{
@@ -1168,6 +1181,7 @@ void main(void)
 			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZd6);
 			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZd6);
 			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZdSeat);
+			rmPlaceGroupingAtLoc(blockParliament2, 0, locXParl2In, locZdParl2In);   // the second Parliament post, inside the prop block's hole, offset by the knobs
 		}
 		if (defenderCount == 3)
 		{
@@ -1176,6 +1190,7 @@ void main(void)
 			rmPlacePlayer(secondDefender, locX34, locZdSeat);
 			rmPlacePlayer(thirdDefender, locX56, locZdSeat);
 			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZdSeat);
+			rmPlaceGroupingAtLoc(blockParliament2, 0, locXParl2In, locZdParl2In);   // the second Parliament post, inside the prop block's hole, offset by the knobs
 		}
 		if (defenderCount == 4)
 		{
@@ -1184,6 +1199,9 @@ void main(void)
 			rmPlacePlayer(secondDefender, locX34, locZdSeat);
 			rmPlacePlayer(thirdDefender, locX56, locZdSeat);
 			rmPlacePlayer(fourthDefender, locX12, locZdSeat);
+			// four and more per side: no prop block, TWO Parliament posts outside the city, behind the two gaps between the gates
+			rmPlaceGroupingAtLoc(blockParliament2, 0, (xRoad + 0.5) * 0.5, locZdOut);
+			rmPlaceGroupingAtLoc(blockParliament2, 0, (0.5 + xGateMirror) * 0.5, locZdOut);
 		}
 		// ---- the ATTACKERS' strip
 		if (attackerCount == 1)
@@ -1257,6 +1275,8 @@ void main(void)
 		// gates - the road-to-centre gap and the centre-to-mirror gap (the wall hills sit on the same x, 33 tiles nearer)
 		rmPlaceGroupingAtLoc(blockStuart2, 0, (xRoad + 0.5) * 0.5, locZaOut);
 		rmPlaceGroupingAtLoc(blockStuart2, 0, (0.5 + xGateMirror) * 0.5, locZaOut);
+		rmPlaceGroupingAtLoc(blockParliament2, 0, (xRoad + 0.5) * 0.5, locZdOut);
+		rmPlaceGroupingAtLoc(blockParliament2, 0, (0.5 + xGateMirror) * 0.5, locZdOut);
 	}
 	rmEchoInfo("LONDON seats: seatsByRole " + seatsByRole + " defenders x" + defenderCount + " at z " + rmZFractionToMeters(locZdSeat) + " m, attackers x" + attackerCount + " at z " + rmZFractionToMeters(locZaSeat) + " m");
 

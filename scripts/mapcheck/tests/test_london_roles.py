@@ -172,8 +172,10 @@ class TestSeats:
         return re.findall(r"(rmPlacePlayer|rmSetNuggetDifficulty|rmPlaceGroupingAtLoc)\((.*?)\);", s[i:j])   # non-greedy: the outside posts' x carries parentheses
 
     def _stuart2(self, side, at):
-        """the attackers' (Stuart) strips end with the second Stuart post; the defenders' do not"""
-        return [("rmPlaceGroupingAtLoc", "blockStuart2, 0, " + at)] if side == "attacker" else []
+        """each side's strips end with its second post: Stuart 2 on the attackers', Parliament 2 on the defenders'"""
+        if side == "attacker":
+            return [("rmPlaceGroupingAtLoc", "blockStuart2, 0, " + at)]
+        return [("rmPlaceGroupingAtLoc", "blockParliament2, 0, " + at.replace("locXStuart2In, locZaStuart2In", "locXParl2In, locZdParl2In").replace("locZaOut", "locZdOut"))]
 
     def test_second_stuart_post_is_pinned_with_offset_knobs(self):
         s = self._sec()
@@ -235,13 +237,17 @@ class TestSeats:
         for k in (1, 2, 3):          # inside the prop block's hole, right after the prop block
             b = self._block("attacker", k)
             assert b[-2:] == [("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, locZaSeat"), ("rmPlaceGroupingAtLoc", "blockStuart2, 0, locXStuart2In, locZaStuart2In")], k
-            assert not any("blockStuart2" in c[1] for c in self._block("defender", k)), k
+            assert self._block("defender", k)[-2:] == [("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, locZdSeat"), ("rmPlaceGroupingAtLoc", "blockParliament2, 0, locXParl2In, locZdParl2In")], k
         assert self._block("attacker", 4)[-2:] == [("rmPlaceGroupingAtLoc", "blockStuart2, 0, (xRoad + 0.5) * 0.5, locZaOut"), ("rmPlaceGroupingAtLoc", "blockStuart2, 0, (0.5 + xGateMirror) * 0.5, locZaOut")]   # four and more per side: two, both outside
-        assert not any("blockStuart2" in c[1] for c in self._block("defender", 4))
+        assert self._block("defender", 4)[-2:] == [("rmPlaceGroupingAtLoc", "blockParliament2, 0, (xRoad + 0.5) * 0.5, locZdOut"), ("rmPlaceGroupingAtLoc", "blockParliament2, 0, (0.5 + xGateMirror) * 0.5, locZdOut")]
         fb = s[s.index("if (seatsByRole == 0)"):s.index('rmEchoInfo("LONDON seats:')]
+        assert fb.count("blockParliament2") == 2 and "rmPlaceGroupingAtLoc(blockParliament2, 0, (xRoad + 0.5) * 0.5, locZdOut);" in fb
         assert fb.count("blockStuart2") == 2 and "rmPlaceGroupingAtLoc(blockStuart2, 0, (xRoad + 0.5) * 0.5, locZaOut);" in fb and "rmPlaceGroupingAtLoc(blockStuart2, 0, (0.5 + xGateMirror) * 0.5, locZaOut);" in fb   # more than four per side: two, both outside
         w = (REPO / "game/randmaps/groupings/EU_Native_Block_Stuart_02.xml").read_bytes()
         assert w.count(b"zpSPCSocketStuart") == 1 and b"<width>16</width>" in w and w == (STEAM / "groupings/EU_Native_Block_Stuart_02.xml").read_bytes()
+        w2 = (REPO / "game/randmaps/groupings/EU_Native_Block_Parlam_02.xml").read_bytes()
+        assert w2.count(b"zpSocketParliament") == 1 and b"<width>15</width>" in w2 and w2 == (STEAM / "groupings/EU_Native_Block_Parlam_02.xml").read_bytes()
+        s = self._sec(); assert "rmSetGroupingMaxDistance(blockParliament2, 0.00);" in s and "float parl2OffXM = " in s and "float locZdOut = wallS - rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);" in s
 
     def test_fallback_fills_all_eight_spots(self):
         s = self._sec()
