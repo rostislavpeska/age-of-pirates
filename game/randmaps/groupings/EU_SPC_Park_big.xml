@@ -645,7 +645,7 @@
 			<block startx="12" startz="-15" endx="12" endz="-15"></block>
 			<block startx="14" startz="-13" endx="14" endz="-13"></block>
 		</tilegroup>
-		<tilegroup type="PassableLand" subtype="Texas\Path_Blend">
+		<tilegroup type="PassableLand" subtype="new_england\ground4_ne">
 			<block startx="-14" startz="-2" endx="-14" endz="-2"></block>
 			<block startx="-11" startz="-2" endx="-11" endz="-2"></block>
 			<block startx="-10" startz="-2" endx="-10" endz="-2"></block>
