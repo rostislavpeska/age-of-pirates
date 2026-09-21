@@ -1110,7 +1110,7 @@ void main(void)
 	// inside the prop block the estate sat off-centre (user 2026-09-22, screenshot): a metre offset, rows along x
 	// (negative = away from the road, toward row 3), columns along z (positive = toward the outer edge on either bank
 	// once signed below) - tune here
-	float stuart2OffXM = -6.0;
+	float stuart2OffXM = -3.0;   // -6 was too much (user 2026-09-22)
 	float stuart2OffZM = 0.0;
 	float locXStuart2In = locX12 + rmXMetersToFraction(stuart2OffXM);
 	float locX56 = (locX5 + locX6) * 0.5;
