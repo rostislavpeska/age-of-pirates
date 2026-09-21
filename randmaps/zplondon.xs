@@ -473,12 +473,12 @@ void main(void)
 	int extraColumns = 3;
 	int extraColumnM = 32;
 	int sizeX = 360;
-	int baseSizeZ = 573;              // Paris's frame for this player count, before the reserved columns
+	int baseSizeZ = 613;              // Paris's 573 + 40 m for two players (user 2026-09-21: 669 could not seat every countryside object; the 3-4 player frame is 749)
 	if (cNumberNonGaiaPlayers >=3)
 		baseSizeZ = 653;
 	if (cNumberNonGaiaPlayers >=6)
 		baseSizeZ = 773;
-	int sizeZ = baseSizeZ + extraColumns * extraColumnM;   // ints only: 573 -> 669, 653 -> 749, 773 -> 869
+	int sizeZ = baseSizeZ + extraColumns * extraColumnM;   // ints only: 613 -> 709, 653 -> 749, 773 -> 869
 	rmSetMapSize(sizeX, sizeZ);
 
 	rmSetAllMapReveal(true);
@@ -487,6 +487,7 @@ void main(void)
 	rmSetLightingSet("Andes_Skirmish");   // Art/lightsets/Andes_Skirmish.lgt - distinct from Paris (user 2026-09-18; tried NorthwestTerritory_Skirmish, GreatLakes_Summer_Skirmish; was age3challenges09a)
 	rmSetSeaType("great lakes2");
 	rmEnableLocalWater(false);
+	rmSetBaseTerrainMix("italy_cliff_top");                    // the mix London's countryside paints (user 2026-09-21: not Paris's grass); zpcivilwar.xs 74-75 pairs the two calls this way
 	rmTerrainInitialize("nwterritory\ground_grass2_nwt", 1.0);
 	rmSetMapType("grass");
 	rmSetMapType("land");
@@ -517,7 +518,7 @@ void main(void)
 	int spawnSwitch = rmRandInt(0,1);
 
 	int avoidTradeRouteMin = rmCreateTradeRouteDistanceConstraint("trade route min", 5.0);                            // 5+ player starts
-	int avoidPlateauShort = rmCreateClassDistanceConstraint("avoid plateau short", rmClassID("classPlateau"), 6.0);   // countryside (Paris: 2.0) and the wall hills; 6.0 since 2026-09-21 - the hills' cliff faces spilled onto the streets at 2 m (user: extend this one, no new constraint)
+	int avoidPlateauShort = rmCreateClassDistanceConstraint("avoid plateau short", rmClassID("classPlateau"), 4.0);   // countryside (Paris: 2.0) and the wall hills; 4.0 since 2026-09-21 - the hills' cliff faces spilled onto the streets at 2 m, 6 m was too much (user: extend this one, no new constraint)
 	int avoidTradeRouteWall = rmCreateTradeRouteDistanceConstraint("trade route wall", 4.0);                          // Florence 358: the wall hills off the routes
 	int avoidWall = rmCreateTypeDistanceConstraint("avoid wall object", "AbstractWall", 0.001);                       // Florence 378: the wall hills off the walls
 

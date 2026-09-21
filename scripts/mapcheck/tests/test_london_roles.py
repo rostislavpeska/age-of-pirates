@@ -225,7 +225,7 @@ class TestWalls:
         assert "int hillEdgeTiles = 360;" in s and "int hillInnerTiles = 200;" in s
         assert s.index("rmPlaceGroupingAtLoc(wallGateN, wallOwnerN, xGateMirror, wallZN);") < s.index('wallCliff("wall hill S1"')   # walls first: the hills avoid them
         assert 'int avoidTradeRouteWall = rmCreateTradeRouteDistanceConstraint("trade route wall", 4.0);' in t
-        assert 'rmCreateClassDistanceConstraint("avoid plateau short", rmClassID("classPlateau"), 6.0);' in t   # the hills' street clearance (2026-09-21, was 2.0)
+        assert 'rmCreateClassDistanceConstraint("avoid plateau short", rmClassID("classPlateau"), 4.0);' in t   # the hills' street clearance (2026-09-21: 2 too little, 6 too much)
         assert 'int avoidWall = rmCreateTypeDistanceConstraint("avoid wall object", "AbstractWall", 0.001);' in t
 
     def test_wall_terrain_twins_after_the_countryside(self):
@@ -292,6 +292,12 @@ class TestScope:
         t = _code(_text(LONDON))
         assert 'cityBlock("Mill Food4", "EU_Resource_Block_Food4")' in t and "Food3" not in t
         assert (REPO / "game/randmaps/groupings/EU_Resource_Block_Food4.xml").is_file()
+
+    def test_base_mix_and_the_1v1_frame(self):
+        t = _code(_text(LONDON))
+        assert t.index('rmSetBaseTerrainMix("italy_cliff_top");') < t.index('rmTerrainInitialize("nwterritory' + chr(92) + 'ground_grass2_nwt", 1.0);')   # zpcivilwar.xs 74-75
+        assert 'rmSetAreaMix(area, "italy_cliff_top");' in t                                    # the same mix the countryside paints
+        assert "int baseSizeZ = 613;" in t and "baseSizeZ = 653;" in t and "baseSizeZ = 773;" in t
 
     def test_twin_identical_and_crlf(self):
         raw = LONDON.read_bytes()
