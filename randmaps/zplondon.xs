@@ -18,7 +18,7 @@
 //   8  harbour guards: the vanilla Euro trade-route post nugget (101) on the quay behind each harbour; the post
 //      is released by "Units in Area" (no guardian left around it), never by the object-def nugget's id
 //   9  quays (one straight plateau per bank), streets, countryside
-//   10 blocks in Paris's order: fixed doubles, fixed singles, zones, fillers, houses
+//   10 blocks in Paris's order: the landmark coin (10.0), fixed doubles, fixed singles, zones, fillers, houses
 //   11 riverside decorations, 12 players (12.1 the Florence roles, 12.3 the interim seats), 13 triggers (all at the end)
 //
 // LAWS (pinned by tests, dates in the memories)
@@ -728,36 +728,59 @@ void main(void)
 	int blockHouse5 = cityBlock("house5", "EU_House_Block_05");
 	int blockHouse6 = cityBlock("house6", "EU_House_Block_06");
 
-	// ---- 10.1 fixed doubles: St Paul / Minster rows 1-2 x cols 1-2, Stuart / Parliament row 3 x cols 1-2, the
-	// Towers rows 7-8 x cols 1-2 at the water (instances: the triggers need the Towers' ids). Each Tower's handle
-	// (Istanbul's palace) is the EXPORT's own units, nothing is spawned by the script: the gate treasure each export
-	// carries (NuggetDroppedWood, Tower_01 (-0.99, -13.4) / Tower_02 (0.99, 13.4)) takes nuggetmods zpNuggetTowerOfLondon
-	// 605 (nuggetunit zpNuggetInvisible, ten Redcoats) through the latch set BEFORE both instances (Istanbul's guild
-	// idiom; no grouping between them bakes a nugget). Neither export carries a capturable flag: the flag-driven
-	// conversion family (13.3) is built only when a flag id exists.
-	rmPlaceGroupingAtLoc(blockStPaul, 0, locX12, locZs12);
-	// STUART: the export EU_Native_Block_Stuart_01 is 30 x 15 tiles (60 m across the rows, 30 m along a column) - it
-	// does not fit the row 3 x cols 1-2 slot (30 x 62 m), so it takes rows 3-4 x col 1 and the south Park moves to
-	// row 3 col 2 (10.2). Same four cells, nothing else moves. An export in Parliament's orientation (15 x 30) goes
-	// back to (locX3, locZs12) with the Park back to (locX4, locZs1).
-	rmPlaceGroupingAtLoc(blockStuart, 0, locX34, locZs1);
+	// ---- 10.0 THE LANDMARK COIN (user 2026-09-21): the DEFENDERS' city is St Paul + the House of Stuart, the
+	// ATTACKERS' Minster + Parliament, on whichever bank the coin says - 12.1 keys the roles on it. Each natives block
+	// keeps its own 2 x 2 (rows 3-4 x cols 1-2) with the Park and the Menagerie, and exports are never rotated (house
+	// rule), so a block faces the same way in world space on either bank:
+	//   STUART (30 x 15 tiles = rows 3-4 x one column): the palace faces -z - socket, fountains and flag are its -z
+	//   forecourt - so the Park sits on its -z side and the Menagerie behind the Park: south bank Stuart col 1, Park
+	//   row 3 col 2, Menagerie row 4 col 2; north bank Stuart col 2, Park row 3 col 1, Menagerie row 4 col 1.
+	//   PARLIAMENT (15 x 30 = row 3 x cols 1-2, the socket facing -x): the Park (col 1) and the Menagerie (col 2)
+	//   on its row-4 side on either bank - x is not mirrored between the banks.
+	//   ST PAUL / MINSTER (32 x 32, the basilica centred, facing -z): the 2-column centre of rows 1-2, either bank.
+	int defenderBank = rmRandInt(0, 1);   // 0 = the south bank (wallS), 1 = the north bank (wallN)
+	float locZd12 = locZs12;         float locZa12 = locZn12;         // St Paul / Minster
+	float locZdStuart = locZs1;      float locZaParliament = locZn12;
+	float locZdPark = locZs2;        float locZaPark = locZn1;
+	float locZsMenagerie = locZs2;   float locZnMenagerie = locZn2;   // per BANK: the S / N instance handles feed the triggers
+	if (defenderBank == 1)
+	{
+		locZd12 = locZn12;           locZa12 = locZs12;
+		locZdStuart = locZn2;        locZaParliament = locZs12;
+		locZdPark = locZn1;          locZaPark = locZs1;
+		locZsMenagerie = locZs2;     locZnMenagerie = locZn1;
+	}
+	rmEchoInfo("LONDON landmarks: defenderBank " + defenderBank + " (0 south, 1 north) - St Paul + Stuart there, Minster + Parliament opposite");
+
+	// ---- 10.1 fixed doubles, by the coin: St Paul / Minster rows 1-2 x cols 1-2, Stuart rows 3-4 x one column,
+	// Parliament row 3 x cols 1-2, the Towers rows 7-8 x cols 1-2 at the water on their own banks (instances: the
+	// triggers need the Towers' ids). Each Tower's handle (Istanbul's palace) is the EXPORT's own units, nothing is
+	// spawned by the script: the gate treasure each export carries (NuggetDroppedWood, Tower_01 (-0.99, -13.4) /
+	// Tower_02 (0.99, 13.4)) takes nuggetmods zpNuggetTowerOfLondon 605 (nuggetunit zpNuggetInvisible, ten Redcoats)
+	// through the latch set BEFORE both instances (Istanbul's guild idiom; no grouping between them bakes a nugget).
+	// Neither export carries a capturable flag: the flag-driven conversion family (13.3) is built only when a flag id
+	// exists. Call order = unit ids (header law): unchanged, only the z of the coin-keyed calls moves.
+	rmPlaceGroupingAtLoc(blockStPaul, 0, locX12, locZd12);
+	rmPlaceGroupingAtLoc(blockStuart, 0, locX34, locZdStuart);
 	rmSetNuggetDifficulty(605, 605);
 	int towerSInst = rmPlaceGroupingInstanceAtLoc(blockTowerS, locX78, locZs12, 0);
-	rmPlaceGroupingAtLoc(blockMinster, 0, locX12, locZn12);
-	rmPlaceGroupingAtLoc(blockParliament, 0, locX3, locZn12);
+	rmPlaceGroupingAtLoc(blockMinster, 0, locX12, locZa12);
+	rmPlaceGroupingAtLoc(blockParliament, 0, locX3, locZaParliament);
 	int towerNInst = rmPlaceGroupingInstanceAtLoc(blockTowerN, locX78, locZn12, 0);
 
-	// ---- 10.2 fixed singles: trade row 1 col 3, Construction row 0 col 1, Park row 4 col 1 (south: row 3 col 2), Menagerie row 4 col 2,
-	// Native Jewish row 6 col 3, Factory row 0 col 2 - nugget latches as Paris
+	// ---- 10.2 fixed singles: trade row 1 col 3, Construction row 0 col 1, the Parks and the Menageries by the coin
+	// (10.0: the defenders' Park row 3 beside Stuart's forecourt, the attackers' row 4 col 1 beside Parliament; the
+	// Menageries row 4, col 2 except on a north defender bank, col 1), Native Jewish row 6 col 3, Factory row 0
+	// col 2 - nugget latches as Paris
 	rmPlaceGroupingAtLoc(blockTrade, 0, locX1, locZs3);
 	rmPlaceGroupingAtLoc(blockTrade, 0, locX1, locZn3);
 	rmPlaceGroupingAtLoc(blockConstruction, 0, locX0, locZs1);
 	rmPlaceGroupingAtLoc(blockConstruction, 0, locX0, locZn1);
-	rmPlaceGroupingAtLoc(blockPark, 0, locX3, locZs2);   // south: row 3 col 2 while Stuart holds rows 3-4 x col 1 (10.1)
-	rmPlaceGroupingAtLoc(blockPark, 0, locX4, locZn1);
+	rmPlaceGroupingAtLoc(blockPark, 0, locX3, locZdPark);   // the defenders' Park, Stuart's forecourt side
+	rmPlaceGroupingAtLoc(blockPark, 0, locX4, locZaPark);   // the attackers' Park, Parliament's row-4 side
 	rmSetNuggetDifficulty(98, 98);
-	int menagerieSInst = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locX4, locZs2, 0);
-	int menagerieNInst = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locX4, locZn2, 0);
+	int menagerieSInst = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locX4, locZsMenagerie, 0);
+	int menagerieNInst = rmPlaceGroupingInstanceAtLoc(blockMenagerie, locX4, locZnMenagerie, 0);
 	rmPlaceGroupingAtLoc(blockJewish, 0, locX6, locZs3);
 	rmPlaceGroupingAtLoc(blockJewish, 0, locX6, locZn3);
 	rmSetNuggetDifficulty(299, 299);
@@ -864,9 +887,10 @@ void main(void)
 	// ---- 10.7 THE RESERVED COLUMNS' FIXED BLOCKS (user 2026-09-20), placed after every id-sensitive placement of
 	// section 10 (ids are positional - header law): the big park EU_SPC_Park_big (the user's export, 32 x 32 tiles =
 	// a 2 x 2 block) on rows 00-0 x cols 5-6 at the +x end of each bank; behind it, in column 7, one house block on
-	// row 00 and the Food3 mill on row 0 under Paris's resource latch 195. Every other cell of cols 5-7 stays empty.
+	// row 00 and the Food4 mill (berry bushes, user 2026-09-21) on row 0 under Paris's resource latch 195. Every other
+	// cell of cols 5-7 stays empty.
 	int blockParkBig = cityBlock("park big", "EU_SPC_Park_big");
-	int blockMillFood3 = cityBlock("Mill Food3", "EU_Resource_Block_Food3");
+	int blockMillFood4 = cityBlock("Mill Food4", "EU_Resource_Block_Food4");
 	// the park's road edge sits 1 m further from the trade route than row 0's (user 2026-09-21: placed over the
 	// route, the park's path blocks made the whole grouping fail silently; 1 m off the route and it places)
 	float parkOffRoadM = 1.0;
@@ -878,8 +902,8 @@ void main(void)
 	rmPlaceGroupingAtLoc(blockHouse1, 0, locX00, locZs7);
 	rmPlaceGroupingAtLoc(blockHouse1, 0, locX00, locZn7);
 	rmSetNuggetDifficulty(195, 195);
-	rmPlaceGroupingAtLoc(blockMillFood3, 0, locX0, locZs7);
-	rmPlaceGroupingAtLoc(blockMillFood3, 0, locX0, locZn7);
+	rmPlaceGroupingAtLoc(blockMillFood4, 0, locX0, locZs7);
+	rmPlaceGroupingAtLoc(blockMillFood4, 0, locX0, locZn7);
 
 	// ---- 11. RIVERSIDE DECORATIONS (Paris's EU_Riverside, turned for the x-running river: water side +z on the
 	// south bank, -z on the north), centred on the wall line, four per bank along x: before the first harbour,
@@ -905,9 +929,10 @@ void main(void)
 
 	// ---- 12. PLAYERS ---------------------------------------------------------------------------------
 	// ---- 12.1 ROLES - the Florence system (zpflorence.xs 124-155, zpistanbulb.xs 5b). Roles, not lobby seats:
-	// the k-th DEFENDER is the k-th-lowest player id on the NORTH bank's team, the k-th ATTACKER the same on the
-	// SOUTH bank's. Which lobby team holds which bank is spawnSwitch (0: team 1 north / team 0 south, 1: swapped) -
-	// the coin the interim line placement in 12.3 already uses, so roles and seats can never disagree.
+	// the k-th DEFENDER is the k-th-lowest player id on the team holding the DEFENDER BANK (10.0's coin: St Paul +
+	// Stuart), the k-th ATTACKER the same on the other bank's team. Which lobby team holds which bank is spawnSwitch
+	// (0: team 1 north / team 0 south, 1: swapped) - the coin the interim line placement in 12.3 already uses, so
+	// roles and seats can never disagree. Two independent coins: WHO defends and WHERE the defenders' city stands.
 	// 2-TEAM LOBBIES ONLY: any other lobby leaves every role at -1 (Florence, Istanbul); nothing may hand a role to
 	// the engine without Istanbul's gaia fallback (if (owner < 0) owner = 0).
 	int northTeam = 1;
@@ -917,45 +942,53 @@ void main(void)
 		northTeam = 0;
 		southTeam = 1;
 	}
-	int northCount = rmGetNumberPlayersOnTeam(northTeam);
-	int southCount = rmGetNumberPlayersOnTeam(southTeam);
-	zpGetTeamPlayer(1, northTeam);
+	int defenderTeam = southTeam;
+	int attackerTeam = northTeam;
+	if (defenderBank == 1)
+	{
+		defenderTeam = northTeam;
+		attackerTeam = southTeam;
+	}
+	int defenderCount = rmGetNumberPlayersOnTeam(defenderTeam);
+	int attackerCount = rmGetNumberPlayersOnTeam(attackerTeam);
+	zpGetTeamPlayer(1, defenderTeam);
 	int firstDefender = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(2, northTeam);
+	zpGetTeamPlayer(2, defenderTeam);
 	int secondDefender = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(3, northTeam);
+	zpGetTeamPlayer(3, defenderTeam);
 	int thirdDefender = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(4, northTeam);
+	zpGetTeamPlayer(4, defenderTeam);
 	int fourthDefender = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(5, northTeam);
+	zpGetTeamPlayer(5, defenderTeam);
 	int fifthDefender = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(6, northTeam);
+	zpGetTeamPlayer(6, defenderTeam);
 	int sixthDefender = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(7, northTeam);
+	zpGetTeamPlayer(7, defenderTeam);
 	int seventhDefender = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(1, southTeam);
+	zpGetTeamPlayer(1, attackerTeam);
 	int firstAttacker = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(2, southTeam);
+	zpGetTeamPlayer(2, attackerTeam);
 	int secondAttacker = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(3, southTeam);
+	zpGetTeamPlayer(3, attackerTeam);
 	int thirdAttacker = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(4, southTeam);
+	zpGetTeamPlayer(4, attackerTeam);
 	int fourthAttacker = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(5, southTeam);
+	zpGetTeamPlayer(5, attackerTeam);
 	int fifthAttacker = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(6, southTeam);
+	zpGetTeamPlayer(6, attackerTeam);
 	int sixthAttacker = g_zpTeamPlayerResult;
-	zpGetTeamPlayer(7, southTeam);
+	zpGetTeamPlayer(7, attackerTeam);
 	int seventhAttacker = g_zpTeamPlayerResult;
 	// One vs. All (zpflorence.xs 174-177): seven on one side
 	int oneVsAll = 0;
-	if (northCount >= 7 || southCount >= 7)
+	if (defenderCount >= 7 || attackerCount >= 7)
 		oneVsAll = 1;
-	rmEchoInfo("LONDON roles: spawnSwitch " + spawnSwitch + " north team " + northTeam + " x" + northCount + " defenders " + firstDefender + " " + secondDefender + " " + thirdDefender + " " + fourthDefender + " " + fifthDefender + " " + sixthDefender + " " + seventhDefender);
-	rmEchoInfo("LONDON roles: south team " + southTeam + " x" + southCount + " attackers " + firstAttacker + " " + secondAttacker + " " + thirdAttacker + " " + fourthAttacker + " " + fifthAttacker + " " + sixthAttacker + " " + seventhAttacker + " oneVsAll " + oneVsAll);
+	rmEchoInfo("LONDON roles: spawnSwitch " + spawnSwitch + " defenderBank " + defenderBank + " defender team " + defenderTeam + " x" + defenderCount + " defenders " + firstDefender + " " + secondDefender + " " + thirdDefender + " " + fourthDefender + " " + fifthDefender + " " + sixthDefender + " " + seventhDefender);
+	rmEchoInfo("LONDON roles: attacker team " + attackerTeam + " x" + attackerCount + " attackers " + firstAttacker + " " + secondAttacker + " " + thirdAttacker + " " + fourthAttacker + " " + fifthAttacker + " " + sixthAttacker + " " + seventhAttacker + " oneVsAll " + oneVsAll);
 
 	// ---- 12.2 SEATS BY ROLE: none yet (user 2026-09-21: the harness only). Florence's shape goes here - one block
-	// per team size, if (northCount == k) { rmPlacePlayer(firstDefender, x, z); ... } and the same for the south -
+	// per team size, if (defenderCount == k) { rmPlacePlayer(firstDefender, x, z); ... } on the defender bank and the
+	// same for the attackers on the other -
 	// and replaces 12.3 when it does.
 
 	// ---- 12.3 INTERIM PLACEMENT (Paris's placement transposed onto the z axis), by the same coin as 12.1 ---------
