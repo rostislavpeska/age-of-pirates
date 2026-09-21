@@ -1105,7 +1105,14 @@ void main(void)
 	// gate, 18 tiles beyond the wall segment's centre (the segment reaches 7.5, the block 8: a 2-tile gap; 6 tiles
 	// stay to the map edge)
 	int blockStuart2 = cityBlock("stuart 2", "EU_Native_Block_Stuart_02");
+	rmSetGroupingMaxDistance(blockStuart2, 0.00);                                // pinned: the block's 0.5 m slack let it slide off the hole's centre
 	int stuart2OutTiles = wallOutTiles + 18;
+	// inside the prop block the estate sat off-centre (user 2026-09-22, screenshot): a metre offset, rows along x
+	// (negative = away from the road, toward row 3), columns along z (positive = toward the outer edge on either bank
+	// once signed below) - tune here
+	float stuart2OffXM = -6.0;
+	float stuart2OffZM = 0.0;
+	float locXStuart2In = locX12 + rmXMetersToFraction(stuart2OffXM);
 	float locX56 = (locX5 + locX6) * 0.5;
 	float locZs56 = wallS-rmZTilesToFraction(col5+col6)*0.5;                     // the 2-column centre of cols 5-6
 	float locZn56 = wallN+rmZTilesToFraction(col5+col6)*0.5;
@@ -1114,6 +1121,7 @@ void main(void)
 	float locZd6 = locZs6;          float locZa6 = locZn6;
 	float locZd56 = locZs56;        float locZa56 = locZn56;
 	float locZaOut = wallN + rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);   // the attackers' countryside, behind the centre gate
+	float locZaStuart2In = locZn5 + rmZMetersToFraction(stuart2OffZM);              // the prop block's spot, the column offset signed outward
 	if (defenderBank == 1)
 	{
 		locZdSeat = locZn5;         locZaSeat = locZs5;
@@ -1121,6 +1129,7 @@ void main(void)
 		locZd6 = locZn6;            locZa6 = locZs6;
 		locZd56 = locZn56;          locZa56 = locZs56;
 		locZaOut = wallS - rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);
+		locZaStuart2In = locZs5 - rmZMetersToFraction(stuart2OffZM);
 	}
 	int seatsByRole = 0;
 	if (cNumberTeams == 2 && defenderCount <= 4 && attackerCount <= 4)
@@ -1193,7 +1202,7 @@ void main(void)
 			rmPlaceGroupingAtLoc(blockHouse1, 0, locX3, locZa6);
 			rmPlaceGroupingAtLoc(blockHouse2, 0, locX4, locZa6);
 			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZaSeat);
-			rmPlaceGroupingAtLoc(blockStuart2, 0, locX12, locZaSeat);   // the second Stuart post, inside the prop block's hole
+			rmPlaceGroupingAtLoc(blockStuart2, 0, locXStuart2In, locZaStuart2In);   // the second Stuart post, inside the prop block's hole, offset by the knobs
 		}
 		if (attackerCount == 2)
 		{
@@ -1209,7 +1218,7 @@ void main(void)
 			rmPlaceGroupingAtLoc(blockHouse1, 0, locX5, locZa6);
 			rmPlaceGroupingAtLoc(blockHouse2, 0, locX6, locZa6);
 			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZaSeat);
-			rmPlaceGroupingAtLoc(blockStuart2, 0, locX12, locZaSeat);   // the second Stuart post, inside the prop block's hole
+			rmPlaceGroupingAtLoc(blockStuart2, 0, locXStuart2In, locZaStuart2In);   // the second Stuart post, inside the prop block's hole, offset by the knobs
 		}
 		if (attackerCount == 3)
 		{
@@ -1218,7 +1227,7 @@ void main(void)
 			rmPlacePlayer(secondAttacker, locX34, locZaSeat);
 			rmPlacePlayer(thirdAttacker, locX56, locZaSeat);
 			rmPlaceGroupingAtLoc(blockPropFiller, 0, locX12, locZaSeat);
-			rmPlaceGroupingAtLoc(blockStuart2, 0, locX12, locZaSeat);   // the second Stuart post, inside the prop block's hole
+			rmPlaceGroupingAtLoc(blockStuart2, 0, locXStuart2In, locZaStuart2In);   // the second Stuart post, inside the prop block's hole, offset by the knobs
 		}
 		if (attackerCount == 4)
 		{

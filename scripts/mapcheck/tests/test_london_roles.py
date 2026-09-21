@@ -175,6 +175,12 @@ class TestSeats:
         """the attackers' (Stuart) strips end with the second Stuart post; the defenders' do not"""
         return [("rmPlaceGroupingAtLoc", "blockStuart2, 0, " + at)] if side == "attacker" else []
 
+    def test_second_stuart_post_is_pinned_with_offset_knobs(self):
+        s = self._sec()
+        assert "rmSetGroupingMaxDistance(blockStuart2, 0.00);" in s and "float stuart2OffXM = " in s and "float stuart2OffZM = " in s
+        assert "float locXStuart2In = locX12 + rmXMetersToFraction(stuart2OffXM);" in s
+        assert "float locZaStuart2In = locZn5 + rmZMetersToFraction(stuart2OffZM);" in s and "locZaStuart2In = locZs5 - rmZMetersToFraction(stuart2OffZM);" in s
+
     def test_blocks_and_the_bank_keyed_columns(self):
         s = self._sec()
         for line in ('int blockPlayerLondon = cityBlock("player london", "EU_SPC_Player_London");',
@@ -203,7 +209,7 @@ class TestSeats:
                 ("rmPlaceGroupingAtLoc", "blockHouse1, 0, locX3, %s" % z7),
                 ("rmPlaceGroupingAtLoc", "blockHouse2, 0, locX4, %s" % z7),
                 ("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, %s" % S),            # rows 1-2 x cols 4-6
-            ] + self._stuart2(side, "locX12, %s" % S), side
+            ] + self._stuart2(side, "locXStuart2In, locZaStuart2In"), side
 
     def test_two_per_side(self):
         for side, o, S, z5, z7, z67 in self.SIDES:
@@ -213,12 +219,12 @@ class TestSeats:
                 ("rmPlaceGroupingAtLoc", "blockHouse5, 0, locX5, %s" % S), ("rmPlaceGroupingAtLoc", "blockHouse6, 0, locX6, %s" % S),
                 ("rmPlaceGroupingAtLoc", "blockHouse1, 0, locX5, %s" % z7), ("rmPlaceGroupingAtLoc", "blockHouse2, 0, locX6, %s" % z7),
                 ("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, %s" % S),
-            ] + self._stuart2(side, "locX12, %s" % S), side
+            ] + self._stuart2(side, "locXStuart2In, locZaStuart2In"), side
 
     def test_three_and_four_per_side(self):
         for side, o, S, z5, z7, z67 in self.SIDES:
             assert self._block(side, 3) == [("rmPlacePlayer", "first%s, locX78, %s" % (o, S)), ("rmPlacePlayer", "second%s, locX34, %s" % (o, S)),
-                                            ("rmPlacePlayer", "third%s, locX56, %s" % (o, S)), ("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, %s" % S)] + self._stuart2(side, "locX12, %s" % S), side
+                                            ("rmPlacePlayer", "third%s, locX56, %s" % (o, S)), ("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, %s" % S)] + self._stuart2(side, "locXStuart2In, locZaStuart2In"), side
             assert self._block(side, 4) == [("rmPlacePlayer", "first%s, locX78, %s" % (o, S)), ("rmPlacePlayer", "second%s, locX34, %s" % (o, S)),
                                             ("rmPlacePlayer", "third%s, locX56, %s" % (o, S)), ("rmPlacePlayer", "fourth%s, locX12, %s" % (o, S))] + self._stuart2(side, "0.5, locZaOut"), side
 
@@ -228,7 +234,7 @@ class TestSeats:
         assert "float locZaOut = wallN + rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);" in s and "locZaOut = wallS - rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);" in s
         for k in (1, 2, 3):          # inside the prop block's hole, right after the prop block
             b = self._block("attacker", k)
-            assert b[-2:] == [("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, locZaSeat"), ("rmPlaceGroupingAtLoc", "blockStuart2, 0, locX12, locZaSeat")], k
+            assert b[-2:] == [("rmPlaceGroupingAtLoc", "blockPropFiller, 0, locX12, locZaSeat"), ("rmPlaceGroupingAtLoc", "blockStuart2, 0, locXStuart2In, locZaStuart2In")], k
             assert not any("blockStuart2" in c[1] for c in self._block("defender", k)), k
         assert self._block("attacker", 4)[-1] == ("rmPlaceGroupingAtLoc", "blockStuart2, 0, 0.5, locZaOut")
         assert not any("blockStuart2" in c[1] for c in self._block("defender", 4))
