@@ -335,7 +335,7 @@ class TestWalls:
         assert '<cliff name="ZP Cliff British"' in c and (REPO / "data/clifftypes2.xml.xmb").is_file()
         b = c[c.index('<cliff name="ZP Cliff British"'):]; b = b[:b.index("</cliff>")]
         assert "<top>new_england" + chr(92) + "ground3_ne</top>" in b and "<topedge>new_england" + chr(92) + "ground3_ne</topedge>" in b
-        assert "<bottomedge>new_england" + chr(92) + "cliff_side_ne</bottomedge>" in b and "ceylon_cliff_basecolor" in b
+        assert "<bottomedge>new_england" + chr(92) + "ground3_ne</bottomedge>" in b and "ceylon_cliff_basecolor" in b
 
     def test_walls_come_before_the_road_is_built_hills_after_the_players(self):
         t = _code(_text(LONDON))
@@ -429,8 +429,8 @@ class TestCountryside:
                      'int nugVsNug = rmCreateTypeDistanceConstraint("treasure v treasure", "AbstractNugget", 50.0);',
                      'int treeVsTree = rmCreateTypeDistanceConstraint("tree clump v tree clump", "TreeNewEngland", 16.0);',
                      'int belowCliffs = rmCreateMaxHeightConstraint("below the cliffs", 3.5);',
-                     'int insideWorld = rmCreatePieConstraint("inside the world circle", 0.5, 0.5,',
-                     'rmZFractionToMeters(0.0), rmZFractionToMeters(0.47),',
+                     'float rimRadiusM = sqrt(rimHalfX * rimHalfX + rimHalfZ * rimHalfZ) - rimCornerM;',
+                     'int insideWorld = rmCreatePieConstraint("inside the world circle", 0.5, 0.5, 0.0, rimRadiusM, rmDegreesToRadians(0), rmDegreesToRadians(360));',
                      'int insideFrame = rmCreateBoxConstraint("inside the frame", rmXMetersToFraction(8.0), rmZMetersToFraction(8.0), 1.0 - rmXMetersToFraction(8.0), 1.0 - rmZMetersToFraction(8.0), 0.01);'):
             assert line in t, line
         assert t.index("int avoidWallMedium") < t.index("int countryS = countryside(")
@@ -500,7 +500,7 @@ class TestScope:
         i = t.index("rmPlaceGroupingAtLoc(blockParkBig, 0, locX000, locZs45);")
         assert t[t.rindex("rmSetNuggetDifficulty(", 0, i):i].startswith("rmSetNuggetDifficulty(607, 607);")
         park = (REPO / "game/randmaps/groupings/EU_SPC_Park_big.xml").read_bytes()
-        assert park.count(b"Nugget") == 1 and b">NuggetDroppedWood</unit>" in park and b"<heights>" in park
+        assert park.count(b"Nugget") == 1 and b">NuggetWolfRock</unit>" in park and b"<heights>" in park   # the user's 2026-09-22 01:35 export: the 607 huntsman record's own proto
         n = (REPO / "data/nuggetmods.xml").read_text(encoding="utf-8", errors="replace")
         assert "<name>zpRockRoyalHuntsman</name>" in n and n.count("<difficulty>607</difficulty>") == 1
 

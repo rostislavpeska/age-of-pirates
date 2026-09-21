@@ -7,289 +7,259 @@
 	<selectassingleunit>0</selectassingleunit>
 	<workonassingleunit>0</workonassingleunit>
 	<units>
-		<unit variation="170" posx="-1.9046" posz="-2.2394" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">TownCenter</unit>
-		<unit variation="17" posx="-17.0000" posz="-42.0000" orientx="-0.4604" orienty="0.0000" orientz="-0.8877">UnderbrushForest</unit>
-		<unit variation="82" posx="-1.0000" posz="-42.0000" orientx="0.7446" orienty="0.0000" orientz="0.6675">UnderbrushForest</unit>
-		<unit variation="46" posx="3.0000" posz="-42.0000" orientx="-0.5633" orienty="0.0000" orientz="-0.8262">UnderbrushForest</unit>
-		<unit variation="208" posx="11.0000" posz="-42.0000" orientx="0.9929" orienty="0.0000" orientz="-0.1189">UnderbrushForest</unit>
-		<unit variation="219" posx="-13.0000" posz="-40.0000" orientx="0.1395" orienty="0.0000" orientz="0.9902">UnderbrushForest</unit>
-		<unit variation="55" posx="-7.0000" posz="-40.0000" orientx="-0.3508" orienty="0.0000" orientz="-0.9365">UnderbrushForest</unit>
-		<unit variation="133" posx="21.0000" posz="-40.0000" orientx="-0.3131" orienty="0.0000" orientz="-0.9497">UnderbrushForest</unit>
-		<unit variation="176" posx="-5.0000" posz="-42.0000" orientx="-0.1526" orienty="0.0000" orientz="0.9883">TreeGreatLakes</unit>
-		<unit variation="127" posx="1.0000" posz="-42.0000" orientx="0.1692" orienty="0.0000" orientz="0.9856">TreeGreatLakes</unit>
-		<unit variation="231" posx="9.0000" posz="-42.0000" orientx="-0.0084" orienty="0.0000" orientz="-1.0000">TreeNewEngland</unit>
-		<unit variation="95" posx="15.0000" posz="-42.0000" orientx="0.6131" orienty="0.0000" orientz="0.7900">TreeNewEngland</unit>
-		<unit variation="236" posx="-11.0000" posz="-38.0000" orientx="-0.8787" orienty="0.0000" orientz="0.4773">UnderbrushForest</unit>
-		<unit variation="231" posx="5.0000" posz="-38.0000" orientx="-0.9141" orienty="0.0000" orientz="0.4056">UnderbrushForest</unit>
-		<unit variation="136" posx="21.0000" posz="-38.0000" orientx="0.8143" orienty="0.0000" orientz="-0.5804">UnderbrushForest</unit>
-		<unit variation="182" posx="9.0000" posz="-38.0000" orientx="-0.8323" orienty="0.0000" orientz="0.5544">UnderbrushForest</unit>
-		<unit variation="200" posx="-23.0000" posz="-40.0000" orientx="-0.1479" orienty="0.0000" orientz="-0.9890">TreeNewEngland</unit>
-		<unit variation="13" posx="-9.0000" posz="-40.0000" orientx="-0.9974" orienty="0.0000" orientz="-0.0723">TreeNewEngland</unit>
-		<unit variation="231" posx="-7.0000" posz="-40.0000" orientx="-0.1380" orienty="0.0000" orientz="-0.9904">TreeGreatLakes</unit>
-		<unit variation="92" posx="1.0000" posz="-40.0000" orientx="0.9951" orienty="0.0000" orientz="-0.0990">TreeGreatLakes</unit>
-		<unit variation="96" posx="-1.0000" posz="-40.0000" orientx="-0.7162" orienty="0.0000" orientz="-0.6978">TreeNewEngland</unit>
-		<unit variation="209" posx="-17.0000" posz="-36.0000" orientx="-0.0532" orienty="0.0000" orientz="0.9986">UnderbrushForest</unit>
-		<unit variation="137" posx="-13.0000" posz="-36.0000" orientx="-0.2018" orienty="0.0000" orientz="0.9794">UnderbrushForest</unit>
-		<unit variation="175" posx="-17.0000" posz="-38.0000" orientx="0.9967" orienty="0.0000" orientz="0.0807">TreeNewEngland</unit>
-		<unit variation="109" posx="-15.0000" posz="-38.0000" orientx="0.1014" orienty="0.0000" orientz="-0.9948">TreeGreatLakes</unit>
-		<unit variation="78" posx="-11.0000" posz="-38.0000" orientx="0.3523" orienty="0.0000" orientz="0.9359">TreeGreatLakes</unit>
-		<unit variation="15" posx="21.0000" posz="-38.0000" orientx="-0.4015" orienty="0.0000" orientz="0.9158">TreeNewEngland</unit>
-		<unit variation="236" posx="1.0000" posz="-34.0000" orientx="-0.9997" orienty="0.0000" orientz="-0.0224">UnderbrushForest</unit>
-		<unit variation="169" posx="7.0000" posz="-36.0000" orientx="0.0998" orienty="0.0000" orientz="0.9950">TreeGreatLakes</unit>
-		<unit variation="55" posx="9.0000" posz="-36.0000" orientx="0.9490" orienty="0.0000" orientz="0.3153">TreeGreatLakes</unit>
-		<unit variation="223" posx="19.0000" posz="-36.0000" orientx="-0.9999" orienty="0.0000" orientz="-0.0124">TreeGreatLakes</unit>
-		<unit variation="86" posx="7.0000" posz="-32.0000" orientx="0.6669" orienty="0.0000" orientz="0.7452">UnderbrushForest</unit>
-		<unit variation="155" posx="3.0000" posz="-32.0000" orientx="-0.6235" orienty="0.0000" orientz="0.7818">UnderbrushForest</unit>
-		<unit variation="64" posx="-17.0000" posz="-34.0000" orientx="-0.9816" orienty="0.0000" orientz="-0.1912">TreeGreatLakes</unit>
-		<unit variation="238" posx="-7.0000" posz="-34.0000" orientx="0.1197" orienty="0.0000" orientz="0.9928">TreeNewEngland</unit>
-		<unit variation="243" posx="-13.0000" posz="-34.0000" orientx="0.9988" orienty="0.0000" orientz="-0.0492">TreeNewEngland</unit>
-		<unit variation="44" posx="-5.0000" posz="-34.0000" orientx="-0.8007" orienty="0.0000" orientz="-0.5991">TreeGreatLakes</unit>
-		<unit variation="191" posx="3.0000" posz="-34.0000" orientx="-0.9670" orienty="0.0000" orientz="0.2548">TreeNewEngland</unit>
-		<unit variation="184" posx="11.0000" posz="-34.0000" orientx="-0.9695" orienty="0.0000" orientz="0.2451">TreeGreatLakes</unit>
-		<unit variation="218" posx="-8.7029" posz="-31.5051" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
-		<unit variation="218" posx="-8.9176" posz="-31.2905" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
-		<unit variation="189" posx="-19.0000" posz="-32.0000" orientx="0.9992" orienty="0.0000" orientz="-0.0392">TreeGreatLakes</unit>
-		<unit variation="48" posx="5.0000" posz="-32.0000" orientx="0.9662" orienty="0.0000" orientz="0.2579">TreeGreatLakes</unit>
-		<unit variation="27" posx="13.0000" posz="-32.0000" orientx="0.9128" orienty="0.0000" orientz="0.4085">TreeNewEngland</unit>
-		<unit variation="131" posx="23.0000" posz="-32.0000" orientx="0.9585" orienty="0.0000" orientz="-0.2852">TreeNewEngland</unit>
-		<unit variation="104" posx="7.0000" posz="-28.0000" orientx="0.9998" orienty="0.0000" orientz="0.0208">UnderbrushForest</unit>
-		<unit variation="58" posx="-21.0000" posz="-28.0000" orientx="0.9802" orienty="0.0000" orientz="-0.1979">UnderbrushForest</unit>
-		<unit variation="196" posx="-22.9513" posz="-28.8633" orientx="0.5742" orienty="0.0000" orientz="-0.8187">UnderbrushForest</unit>
-		<unit variation="218" posx="-12.0894" posz="-29.3576" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
-		<unit variation="11" posx="-19.0000" posz="-30.0000" orientx="0.9959" orienty="0.0000" orientz="0.0907">TreeGreatLakes</unit>
-		<unit variation="161" posx="-11.0000" posz="-30.0000" orientx="0.4720" orienty="0.0000" orientz="-0.8816">TreeNewEngland</unit>
-		<unit variation="166" posx="1.0000" posz="-30.0000" orientx="0.4720" orienty="0.0000" orientz="-0.8816">TreeGreatLakes</unit>
-		<unit variation="9" posx="9.0000" posz="-30.0000" orientx="0.8731" orienty="0.0000" orientz="-0.4875">TreeNewEngland</unit>
-		<unit variation="18" posx="3.0000" posz="-30.0000" orientx="0.7895" orienty="0.0000" orientz="0.6137">TreeNewEngland</unit>
-		<unit variation="76" posx="13.0000" posz="-26.0000" orientx="-0.2602" orienty="0.0000" orientz="0.9656">UnderbrushForest</unit>
-		<unit variation="54" posx="11.0000" posz="-26.0000" orientx="0.5891" orienty="0.0000" orientz="0.8080">UnderbrushForest</unit>
-		<unit variation="218" posx="-16.1454" posz="-28.2381" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
-		<unit variation="33" posx="-23.0000" posz="-28.0000" orientx="-0.0284" orienty="0.0000" orientz="-0.9996">TreeGreatLakes</unit>
-		<unit variation="176" posx="5.0000" posz="-28.0000" orientx="0.3350" orienty="0.0000" orientz="-0.9422">TreeNewEngland</unit>
-		<unit variation="62" posx="11.0000" posz="-28.0000" orientx="-0.6878" orienty="0.0000" orientz="-0.7259">TreeGreatLakes</unit>
-		<unit variation="145" posx="25.0000" posz="-28.0000" orientx="0.5155" orienty="0.0000" orientz="-0.8569">TreeNewEngland</unit>
-		<unit variation="224" posx="-1.1569" posz="-22.3744" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">Market</unit>
-		<unit variation="236" posx="27.0000" posz="-24.0000" orientx="0.6973" orienty="0.0000" orientz="-0.7168">UnderbrushForest</unit>
-		<unit variation="218" posx="-16.7836" posz="-25.5444" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
-		<unit variation="218" posx="-17.9393" posz="-25.9856" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
-		<unit variation="185" posx="15.0000" posz="-26.0000" orientx="-0.9974" orienty="0.0000" orientz="-0.0723">TreeNewEngland</unit>
-		<unit variation="107" posx="-9.2121" posz="-23.3932" orientx="0.4229" orienty="0.0000" orientz="0.9062">zpSPCCityHouse</unit>
-		<unit variation="55" posx="6.1004" posz="-22.4210" orientx="-0.9239" orienty="0.0000" orientz="-0.3826">zpSPCCityHouse</unit>
-		<unit variation="254" posx="17.0000" posz="-22.0000" orientx="-0.3995" orienty="0.0000" orientz="0.9167">deMineCoalBuildable</unit>
-		<unit variation="151" posx="16.4237" posz="-23.0170" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="172" posx="-14.2839" posz="-23.1224" orientx="0.4453" orienty="0.0018" orientz="-0.8954">zpGoose</unit>
-		<unit variation="141" posx="-23.0000" posz="-24.0000" orientx="-0.8094" orienty="0.0000" orientz="0.5872">TreeNewEngland</unit>
-		<unit variation="5" posx="13.0000" posz="-24.0000" orientx="-0.9162" orienty="0.0000" orientz="-0.4008">TreeNewEngland</unit>
-		<unit variation="190" posx="25.0000" posz="-24.0000" orientx="0.5823" orienty="0.0000" orientz="-0.8130">TreeNewEngland</unit>
-		<unit variation="203" posx="27.0000" posz="-24.0000" orientx="-0.0484" orienty="0.0000" orientz="-0.9988">TreeGreatLakes</unit>
-		<unit variation="96" posx="-14.1757" posz="-22.6063" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="167" posx="-15.4649" posz="-21.6538" orientx="0.1505" orienty="0.0033" orientz="-0.9886">zpGoose</unit>
-		<unit variation="234" posx="-15.2555" posz="-20.6051" orientx="0.9863" orienty="-0.0045" orientz="0.1649">zpGoose</unit>
-		<unit variation="92" posx="15.9418" posz="-18.9312" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="12" posx="23.0000" posz="-18.0000" orientx="-0.6156" orienty="0.0000" orientz="0.7880">UnderbrushForest</unit>
-		<unit variation="4" posx="25.0000" posz="-18.0000" orientx="0.0116" orienty="0.0000" orientz="-0.9999">UnderbrushForest</unit>
-		<unit variation="138" posx="-23.0000" posz="-18.0000" orientx="-0.7369" orienty="0.0000" orientz="-0.6761">UnderbrushForest</unit>
-		<unit variation="163" posx="-23.0000" posz="-20.0000" orientx="0.8016" orienty="0.0000" orientz="0.5978">TreeGreatLakes</unit>
-		<unit variation="116" posx="-18.7028" posz="-18.6955" orientx="-0.9239" orienty="-0.0000" orientz="0.3827">BerryBush</unit>
-		<unit variation="116" posx="-17.6767" posz="-19.6377" orientx="-0.9239" orienty="-0.0000" orientz="0.3827">BerryBush</unit>
-		<unit variation="21" posx="18.5900" posz="-17.7936" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="93" posx="18.4035" posz="-18.5354" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="116" posx="-19.6493" posz="-16.7366" orientx="-0.9239" orienty="-0.0000" orientz="0.3827">BerryBush</unit>
-		<unit variation="45" posx="21.0000" posz="-18.0000" orientx="0.5055" orienty="0.0000" orientz="0.8628">TreeNewEngland</unit>
-		<unit variation="153" posx="-4.6303" posz="-16.0876" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="215" posx="-4.7076" posz="-16.5548" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="16" posx="0.7999" posz="-15.6033" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="92" posx="1.3311" posz="-16.8149" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="65" posx="20.2541" posz="-15.2705" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="172" posx="25.0000" posz="-16.0000" orientx="0.2280" orienty="0.0000" orientz="0.9737">TreeNewEngland</unit>
-		<unit variation="155" posx="-21.2807" posz="-13.2376" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="12" posx="1.0329" posz="-14.4506" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="212" posx="-4.7161" posz="-14.7565" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="39" posx="0.9761" posz="-12.8942" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="42" posx="20.8972" posz="-13.6725" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="0" posx="2.1607" posz="-13.0507" orientx="-0.9236" orienty="0.0000" orientz="0.3834">PropsPoles</unit>
-		<unit variation="0" posx="-5.5373" posz="-12.6912" orientx="-0.9236" orienty="0.0000" orientz="0.3834">PropsPoles</unit>
-		<unit variation="83" posx="-21.6413" posz="-11.1729" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="13" posx="-21.3411" posz="-12.7323" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="72" posx="-4.8735" posz="-11.2350" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="196" posx="-4.6740" posz="-12.8036" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="151" posx="21.1348" posz="-11.5530" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="240" posx="20.9684" posz="-12.3922" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="255" posx="2.0245" posz="-11.3733" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="56" posx="-22.2728" posz="-8.8929" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="184" posx="-6.3599" posz="-10.2989" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="148" posx="4.5895" posz="-10.0529" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="197" posx="21.3110" posz="-10.5245" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="237" posx="-21.8590" posz="-7.9958" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="148" posx="-11.4737" posz="-7.1647" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="34" posx="-9.2875" posz="-8.3531" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="54" posx="6.8396" posz="-7.8620" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="231" posx="5.9951" posz="-8.8188" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="232" posx="21.9962" posz="-7.6810" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="249" posx="21.7289" posz="-8.8624" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="37" posx="7.5079" posz="-6.9592" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="34" posx="-10.7592" posz="-6.9898" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="232" posx="-22.0550" posz="-8.7398" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="211" posx="-21.4993" posz="-5.2482" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="24" posx="-21.8973" posz="-6.5453" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="91" posx="-12.7415" posz="-5.1353" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="23" posx="-12.2469" posz="-6.1067" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="233" posx="7.8186" posz="-5.9409" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="97" posx="22.0690" posz="-5.6826" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="153" posx="-5.1989" posz="-5.4154" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCFlag</unit>
-		<unit variation="89" posx="-15.1450" posz="-3.1135" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="245" posx="-15.6558" posz="-3.2663" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="185" posx="-17.0560" posz="-3.4560" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="150" posx="-18.1611" posz="-3.7284" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="175" posx="-19.7194" posz="-3.6141" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="193" posx="-20.3322" posz="-3.5362" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="90" posx="-13.6984" posz="-3.5063" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="40" posx="-13.0397" posz="-4.5497" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="88" posx="9.3852" posz="-3.1374" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="191" posx="8.8772" posz="-4.7835" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="110" posx="11.7594" posz="-3.3648" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="252" posx="13.5110" posz="-3.6528" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="142" posx="15.4619" posz="-3.6420" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="20" posx="17.3086" posz="-3.6726" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="3" posx="18.7364" posz="-3.6381" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="37" posx="20.4916" posz="-3.9052" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="162" posx="21.7339" posz="-4.3430" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="113" posx="22.2309" posz="-4.3334" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="252" posx="-14.0229" posz="-3.7582" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="138" posx="14.6338" posz="-1.1001" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NuggetCapturableBuildingBig</unit>
-		<unit variation="38" posx="-20.8260" posz="1.4331" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="26" posx="-17.4383" posz="1.4965" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="8" posx="-15.2890" posz="1.7296" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="237" posx="-20.6680" posz="1.9349" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="158" posx="-21.7090" posz="2.7869" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="81" posx="-13.7185" posz="1.6829" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="135" posx="8.7787" posz="2.4927" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="248" posx="9.6043" posz="2.3103" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="22" posx="17.2705" posz="2.2688" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="35" posx="15.5116" posz="2.0816" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="35" posx="13.9406" posz="2.1468" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="28" posx="12.2679" posz="2.2424" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="248" posx="10.2086" posz="2.4667" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="91" posx="21.4086" posz="2.8129" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="178" posx="21.3441" posz="2.2240" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="139" posx="19.7208" posz="2.1283" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="43" posx="-21.7920" posz="4.3948" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="171" posx="-13.4264" posz="3.3668" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="128" posx="-12.8150" posz="4.5427" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="168" posx="7.9233" posz="4.2334" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="47" posx="21.8199" posz="4.2793" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="100" posx="-12.0493" posz="5.7220" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="67" posx="-11.1049" posz="7.0151" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="71" posx="6.6590" posz="6.2413" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="17" posx="22.0479" posz="6.1976" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="194" posx="21.8808" posz="5.2287" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="24" posx="-21.8936" posz="7.5327" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="242" posx="-9.8670" posz="8.4557" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="98" posx="6.0656" posz="7.7342" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="69" posx="-21.6249" posz="9.0784" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="207" posx="4.5987" posz="9.0506" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="48" posx="-9.0129" posz="9.2980" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="8" posx="-7.7551" posz="10.3040" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="118" posx="-5.4691" posz="10.7496" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="57" posx="-3.9413" posz="10.8976" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="160" posx="2.3336" posz="9.6750" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="140" posx="3.4006" posz="9.3505" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="252" posx="2.1153" posz="10.6791" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="156" posx="22.1409" posz="9.3630" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="0" posx="-5.6456" posz="12.2693" orientx="-0.9236" orienty="0.0000" orientz="0.3834">PropsPoles</unit>
-		<unit variation="47" posx="-4.0875" posz="12.4766" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="190" posx="1.6347" posz="11.4305" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="0" posx="3.3561" posz="12.5993" orientx="-0.9236" orienty="0.0000" orientz="0.3834">PropsPoles</unit>
-		<unit variation="116" posx="21.0079" posz="12.2349" orientx="-0.9239" orienty="-0.0000" orientz="0.3827">BerryBush</unit>
-		<unit variation="87" posx="-21.0000" posz="16.0000" orientx="-0.3412" orienty="0.0000" orientz="-0.9400">deMineCoalBuildable</unit>
-		<unit variation="71" posx="8.7927" posz="18.0298" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">Barracks</unit>
-		<unit variation="106" posx="-3.9485" posz="14.9495" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="51" posx="-3.9990" posz="13.5823" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="35" posx="1.6422" posz="13.7815" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="116" posx="19.1382" posz="14.0114" orientx="-0.9239" orienty="-0.0000" orientz="0.3827">BerryBush</unit>
-		<unit variation="116" posx="18.3203" posz="15.0158" orientx="-0.9239" orienty="-0.0000" orientz="0.3827">BerryBush</unit>
-		<unit variation="33" posx="-10.9226" posz="17.9224" orientx="0.9239" orienty="0.0000" orientz="0.3827">Stable</unit>
-		<unit variation="89" posx="15.7336" posz="16.9096" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="175" posx="17.7431" posz="17.2464" orientx="0.1226" orienty="0.0034" orientz="-0.9924">zpGoose</unit>
-		<unit variation="28" posx="19.2204" posz="16.8079" orientx="-0.8392" orienty="0.0012" orientz="0.5438">zpGoose</unit>
-		<unit variation="30" posx="-1.5182" posz="20.2234" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deTavern</unit>
-		<unit variation="255" posx="16.2921" posz="18.6974" orientx="0.9953" orienty="-0.0035" orientz="-0.0970">zpGoose</unit>
-		<unit variation="26" posx="19.1844" posz="18.9547" orientx="0.9908" orienty="-0.0033" orientz="-0.1349">zpGoose</unit>
-		<unit variation="11" posx="19.4650" posz="17.8774" orientx="-0.2212" orienty="0.0047" orientz="-0.9752">zpGoose</unit>
-		<unit variation="93" posx="-19.0000" posz="22.0000" orientx="-0.3971" orienty="0.0000" orientz="-0.9178">UnderbrushForest</unit>
-		<unit variation="57" posx="21.0000" posz="22.0000" orientx="-0.9485" orienty="0.0000" orientz="-0.3168">UnderbrushForest</unit>
-		<unit variation="157" posx="25.0000" posz="20.0000" orientx="0.8143" orienty="0.0000" orientz="-0.5804">TreeGreatLakes</unit>
-		<unit variation="99" posx="21.0000" posz="20.0000" orientx="-0.9719" orienty="0.0000" orientz="0.2354">TreeNewEngland</unit>
-		<unit variation="86" posx="25.0000" posz="24.0000" orientx="0.3240" orienty="0.0000" orientz="0.9460">UnderbrushForest</unit>
-		<unit variation="26" posx="-23.0000" posz="24.0000" orientx="0.3631" orienty="0.0000" orientz="-0.9318">UnderbrushForest</unit>
-		<unit variation="218" posx="21.8541" posz="23.3869" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
-		<unit variation="218" posx="21.8226" posz="23.1817" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
-		<unit variation="103" posx="-23.0000" posz="22.0000" orientx="-0.9500" orienty="0.0000" orientz="0.3123">TreeNewEngland</unit>
-		<unit variation="190" posx="-21.0000" posz="22.0000" orientx="0.9246" orienty="0.0000" orientz="0.3809">TreeGreatLakes</unit>
-		<unit variation="43" posx="25.0000" posz="22.0000" orientx="0.5325" orienty="0.0000" orientz="-0.8464">TreeGreatLakes</unit>
-		<unit variation="58" posx="-13.0000" posz="26.0000" orientx="-0.5959" orienty="0.0000" orientz="-0.8030">UnderbrushForest</unit>
-		<unit variation="100" posx="-13.0000" posz="26.0000" orientx="-0.5633" orienty="0.0000" orientz="-0.8262">UnderbrushForest</unit>
-		<unit variation="52" posx="-9.0000" posz="26.0000" orientx="0.7966" orienty="0.0000" orientz="-0.6046">UnderbrushForest</unit>
-		<unit variation="120" posx="-3.0000" posz="26.0000" orientx="-0.6878" orienty="0.0000" orientz="-0.7259">UnderbrushForest</unit>
-		<unit variation="16" posx="-1.0000" posz="26.0000" orientx="-0.3553" orienty="0.0000" orientz="0.9348">UnderbrushForest</unit>
-		<unit variation="0" posx="13.0000" posz="26.0000" orientx="-0.2264" orienty="0.0000" orientz="-0.9740">UnderbrushForest</unit>
-		<unit variation="144" posx="-21.0000" posz="26.0000" orientx="0.2182" orienty="0.0000" orientz="0.9759">UnderbrushForest</unit>
-		<unit variation="218" posx="17.4481" posz="24.5344" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
-		<unit variation="218" posx="19.4600" posz="25.1904" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
-		<unit variation="56" posx="-19.0000" posz="24.0000" orientx="0.2280" orienty="0.0000" orientz="0.9737">TreeNewEngland</unit>
-		<unit variation="204" posx="-13.0000" posz="24.0000" orientx="-0.8640" orienty="0.0000" orientz="0.5035">TreeGreatLakes</unit>
-		<unit variation="147" posx="-11.0000" posz="24.0000" orientx="-0.3739" orienty="0.0000" orientz="0.9275">TreeGreatLakes</unit>
-		<unit variation="140" posx="25.0000" posz="28.0000" orientx="0.6210" orienty="0.0000" orientz="0.7838">UnderbrushForest</unit>
-		<unit variation="50" posx="-23.0000" posz="28.0000" orientx="0.7781" orienty="0.0000" orientz="-0.6282">UnderbrushForest</unit>
-		<unit variation="70" posx="11.0000" posz="28.0000" orientx="0.9290" orienty="0.0000" orientz="-0.3702">UnderbrushForest</unit>
-		<unit variation="218" posx="16.9444" posz="25.8416" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
-		<unit variation="248" posx="-23.0000" posz="26.0000" orientx="-0.9931" orienty="0.0000" orientz="0.1173">TreeNewEngland</unit>
-		<unit variation="59" posx="-3.0000" posz="26.0000" orientx="-0.9058" orienty="0.0000" orientz="0.4238">TreeNewEngland</unit>
-		<unit variation="38" posx="-19.0000" posz="30.0000" orientx="0.9458" orienty="0.0000" orientz="0.3248">UnderbrushForest</unit>
-		<unit variation="7" posx="4.7743" posz="28.2564" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="201" posx="1.0000" posz="30.0000" orientx="-0.9834" orienty="0.0000" orientz="-0.1814">UnderbrushForest</unit>
-		<unit variation="86" posx="9.0000" posz="30.0000" orientx="-0.6840" orienty="0.0000" orientz="0.7295">UnderbrushForest</unit>
-		<unit variation="30" posx="-15.0000" posz="28.0000" orientx="0.4529" orienty="0.0000" orientz="0.8916">TreeGreatLakes</unit>
-		<unit variation="233" posx="-5.0000" posz="28.0000" orientx="-0.8183" orienty="0.0000" orientz="-0.5748">TreeNewEngland</unit>
-		<unit variation="60" posx="7.0000" posz="28.0000" orientx="-0.4425" orienty="0.0000" orientz="-0.8968">TreeGreatLakes</unit>
-		<unit variation="185" posx="9.0000" posz="28.0000" orientx="-0.7946" orienty="0.0000" orientz="-0.6071">TreeGreatLakes</unit>
-		<unit variation="147" posx="15.0000" posz="28.0000" orientx="0.8016" orienty="0.0000" orientz="0.5978">TreeGreatLakes</unit>
-		<unit variation="98" posx="23.0000" posz="28.0000" orientx="1.0000" orienty="0.0000" orientz="-0.0092">TreeGreatLakes</unit>
-		<unit variation="251" posx="-8.4083" posz="30.8999" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="102" posx="-21.0000" posz="30.0000" orientx="0.6288" orienty="0.0000" orientz="0.7776">TreeGreatLakes</unit>
-		<unit variation="147" posx="5.0000" posz="30.0000" orientx="0.6052" orienty="0.0000" orientz="0.7961">TreeNewEngland</unit>
-		<unit variation="250" posx="3.0000" posz="30.0000" orientx="-0.2698" orienty="0.0000" orientz="0.9629">TreeNewEngland</unit>
-		<unit variation="48" posx="-27.0000" posz="34.0000" orientx="-0.4955" orienty="0.0000" orientz="-0.8686">UnderbrushForest</unit>
-		<unit variation="243" posx="15.0000" posz="34.0000" orientx="-0.3646" orienty="0.0000" orientz="0.9312">UnderbrushForest</unit>
-		<unit variation="231" posx="17.0000" posz="34.0000" orientx="0.9001" orienty="0.0000" orientz="0.4357">UnderbrushForest</unit>
-		<unit variation="185" posx="15.0000" posz="34.0000" orientx="0.9168" orienty="0.0000" orientz="0.3993">UnderbrushForest</unit>
-		<unit variation="76" posx="-21.0000" posz="32.0000" orientx="-0.7823" orienty="0.0000" orientz="-0.6229">TreeNewEngland</unit>
-		<unit variation="149" posx="3.0000" posz="32.0000" orientx="-0.6235" orienty="0.0000" orientz="0.7818">TreeGreatLakes</unit>
-		<unit variation="95" posx="17.0000" posz="32.0000" orientx="-0.7502" orienty="0.0000" orientz="-0.6612">TreeNewEngland</unit>
-		<unit variation="13" posx="11.0000" posz="32.0000" orientx="0.1609" orienty="0.0000" orientz="-0.9870">TreeNewEngland</unit>
-		<unit variation="147" posx="-25.0000" posz="36.0000" orientx="-0.3320" orienty="0.0000" orientz="-0.9433">UnderbrushForest</unit>
-		<unit variation="163" posx="19.0000" posz="36.0000" orientx="-0.5673" orienty="0.0000" orientz="0.8235">UnderbrushForest</unit>
-		<unit variation="101" posx="-9.0000" posz="34.0000" orientx="0.1296" orienty="0.0000" orientz="0.9916">TreeGreatLakes</unit>
-		<unit variation="66" posx="-13.0000" posz="34.0000" orientx="0.5494" orienty="0.0000" orientz="-0.8356">TreeNewEngland</unit>
-		<unit variation="178" posx="-1.0000" posz="34.0000" orientx="-0.9658" orienty="0.0000" orientz="-0.2594">TreeNewEngland</unit>
-		<unit variation="183" posx="17.0000" posz="34.0000" orientx="-0.8513" orienty="0.0000" orientz="-0.5247">TreeNewEngland</unit>
-		<unit variation="232" posx="13.0000" posz="34.0000" orientx="-0.9386" orienty="0.0000" orientz="-0.3451">TreeGreatLakes</unit>
-		<unit variation="6" posx="21.0000" posz="34.0000" orientx="-0.2890" orienty="0.0000" orientz="0.9573">TreeNewEngland</unit>
-		<unit variation="120" posx="19.0000" posz="34.0000" orientx="0.1987" orienty="0.0000" orientz="0.9801">TreeGreatLakes</unit>
-		<unit variation="71" posx="5.0000" posz="38.0000" orientx="0.5055" orienty="0.0000" orientz="0.8628">UnderbrushForest</unit>
-		<unit variation="169" posx="-25.0000" posz="36.0000" orientx="0.8314" orienty="0.0000" orientz="-0.5557">TreeGreatLakes</unit>
-		<unit variation="179" posx="1.0000" posz="40.0000" orientx="0.9999" orienty="0.0000" orientz="0.0108">UnderbrushForest</unit>
-		<unit variation="222" posx="3.0000" posz="40.0000" orientx="0.0116" orienty="0.0000" orientz="-0.9999">UnderbrushForest</unit>
-		<unit variation="150" posx="5.0000" posz="40.0000" orientx="-0.0284" orienty="0.0000" orientz="-0.9996">UnderbrushForest</unit>
-		<unit variation="94" posx="-7.0000" posz="40.0000" orientx="0.3255" orienty="0.0000" orientz="-0.9455">UnderbrushForest</unit>
-		<unit variation="178" posx="-23.0000" posz="38.0000" orientx="0.9951" orienty="0.0000" orientz="-0.0990">TreeGreatLakes</unit>
-		<unit variation="57" posx="-15.0000" posz="38.0000" orientx="0.9640" orienty="0.0000" orientz="-0.2660">TreeNewEngland</unit>
-		<unit variation="122" posx="-1.0000" posz="38.0000" orientx="0.9044" orienty="0.0000" orientz="0.4267">TreeGreatLakes</unit>
-		<unit variation="231" posx="-5.0000" posz="38.0000" orientx="0.9999" orienty="0.0000" orientz="0.0108">TreeGreatLakes</unit>
-		<unit variation="225" posx="5.0000" posz="38.0000" orientx="-0.7092" orienty="0.0000" orientz="-0.7050">TreeNewEngland</unit>
-		<unit variation="241" posx="3.0000" posz="38.0000" orientx="-0.9937" orienty="0.0000" orientz="-0.1122">TreeNewEngland</unit>
-		<unit variation="12" posx="3.0000" posz="40.0000" orientx="-0.9868" orienty="0.0000" orientz="-0.1617">TreeGreatLakes</unit>
-		<unit variation="220" posx="5.0000" posz="40.0000" orientx="-0.7436" orienty="0.0000" orientz="-0.6686">TreeGreatLakes</unit>
+		<unit variation="170" posx="-1.9046" posz="-3.2394" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">TownCenter</unit>
+		<unit variation="208" posx="11.0000" posz="-43.0000" orientx="0.9929" orienty="0.0000" orientz="-0.1189">UnderbrushForest</unit>
+		<unit variation="17" posx="-17.0000" posz="-43.0000" orientx="-0.4604" orienty="0.0000" orientz="-0.8877">UnderbrushForest</unit>
+		<unit variation="176" posx="-5.0000" posz="-43.0000" orientx="-0.1526" orienty="0.0000" orientz="0.9883">TreeGreatLakes</unit>
+		<unit variation="127" posx="1.0000" posz="-43.0000" orientx="0.1692" orienty="0.0000" orientz="0.9856">TreeGreatLakes</unit>
+		<unit variation="231" posx="9.0000" posz="-43.0000" orientx="-0.0084" orienty="0.0000" orientz="-1.0000">TreeNewEngland</unit>
+		<unit variation="95" posx="15.0000" posz="-43.0000" orientx="0.6131" orienty="0.0000" orientz="0.7900">TreeNewEngland</unit>
+		<unit variation="219" posx="-13.0000" posz="-41.0000" orientx="0.1395" orienty="0.0000" orientz="0.9902">UnderbrushForest</unit>
+		<unit variation="200" posx="-23.0000" posz="-41.0000" orientx="-0.1479" orienty="0.0000" orientz="-0.9890">TreeNewEngland</unit>
+		<unit variation="13" posx="-9.0000" posz="-41.0000" orientx="-0.9974" orienty="0.0000" orientz="-0.0723">TreeNewEngland</unit>
+		<unit variation="231" posx="-7.0000" posz="-41.0000" orientx="-0.1380" orienty="0.0000" orientz="-0.9904">TreeGreatLakes</unit>
+		<unit variation="92" posx="1.0000" posz="-41.0000" orientx="0.9951" orienty="0.0000" orientz="-0.0990">TreeGreatLakes</unit>
+		<unit variation="96" posx="-1.0000" posz="-41.0000" orientx="-0.7162" orienty="0.0000" orientz="-0.6978">TreeNewEngland</unit>
+		<unit variation="231" posx="5.0000" posz="-39.0000" orientx="-0.9141" orienty="0.0000" orientz="0.4056">UnderbrushForest</unit>
+		<unit variation="175" posx="-17.0000" posz="-39.0000" orientx="0.9967" orienty="0.0000" orientz="0.0807">TreeNewEngland</unit>
+		<unit variation="109" posx="-15.0000" posz="-39.0000" orientx="0.1014" orienty="0.0000" orientz="-0.9948">TreeGreatLakes</unit>
+		<unit variation="78" posx="-11.0000" posz="-39.0000" orientx="0.3523" orienty="0.0000" orientz="0.9359">TreeGreatLakes</unit>
+		<unit variation="15" posx="21.0000" posz="-39.0000" orientx="-0.4015" orienty="0.0000" orientz="0.9158">TreeNewEngland</unit>
+		<unit variation="137" posx="-13.0000" posz="-37.0000" orientx="-0.2018" orienty="0.0000" orientz="0.9794">UnderbrushForest</unit>
+		<unit variation="209" posx="-17.0000" posz="-37.0000" orientx="-0.0532" orienty="0.0000" orientz="0.9986">UnderbrushForest</unit>
+		<unit variation="169" posx="7.0000" posz="-37.0000" orientx="0.0998" orienty="0.0000" orientz="0.9950">TreeGreatLakes</unit>
+		<unit variation="55" posx="9.0000" posz="-37.0000" orientx="0.9490" orienty="0.0000" orientz="0.3153">TreeGreatLakes</unit>
+		<unit variation="223" posx="19.0000" posz="-37.0000" orientx="-0.9999" orienty="0.0000" orientz="-0.0124">TreeGreatLakes</unit>
+		<unit variation="236" posx="1.0000" posz="-35.0000" orientx="-0.9997" orienty="0.0000" orientz="-0.0224">UnderbrushForest</unit>
+		<unit variation="64" posx="-17.0000" posz="-35.0000" orientx="-0.9816" orienty="0.0000" orientz="-0.1912">TreeGreatLakes</unit>
+		<unit variation="243" posx="-13.0000" posz="-35.0000" orientx="0.9988" orienty="0.0000" orientz="-0.0492">TreeNewEngland</unit>
+		<unit variation="238" posx="-7.0000" posz="-35.0000" orientx="0.1197" orienty="0.0000" orientz="0.9928">TreeNewEngland</unit>
+		<unit variation="44" posx="-5.0000" posz="-35.0000" orientx="-0.8007" orienty="0.0000" orientz="-0.5991">TreeGreatLakes</unit>
+		<unit variation="191" posx="3.0000" posz="-35.0000" orientx="-0.9670" orienty="0.0000" orientz="0.2548">TreeNewEngland</unit>
+		<unit variation="184" posx="11.0000" posz="-35.0000" orientx="-0.9695" orienty="0.0000" orientz="0.2451">TreeGreatLakes</unit>
+		<unit variation="218" posx="-8.7029" posz="-32.5051" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
+		<unit variation="189" posx="-19.0000" posz="-33.0000" orientx="0.9992" orienty="0.0000" orientz="-0.0392">TreeGreatLakes</unit>
+		<unit variation="48" posx="5.0000" posz="-33.0000" orientx="0.9662" orienty="0.0000" orientz="0.2579">TreeGreatLakes</unit>
+		<unit variation="27" posx="13.0000" posz="-33.0000" orientx="0.9128" orienty="0.0000" orientz="0.4085">TreeNewEngland</unit>
+		<unit variation="131" posx="23.0000" posz="-33.0000" orientx="0.9585" orienty="0.0000" orientz="-0.2852">TreeNewEngland</unit>
+		<unit variation="218" posx="-8.9176" posz="-32.2905" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
+		<unit variation="11" posx="-19.0000" posz="-31.0000" orientx="0.9959" orienty="0.0000" orientz="0.0907">TreeGreatLakes</unit>
+		<unit variation="161" posx="-11.0000" posz="-31.0000" orientx="0.4720" orienty="0.0000" orientz="-0.8816">TreeNewEngland</unit>
+		<unit variation="166" posx="1.0000" posz="-31.0000" orientx="0.4720" orienty="0.0000" orientz="-0.8816">TreeGreatLakes</unit>
+		<unit variation="18" posx="3.0000" posz="-31.0000" orientx="0.7895" orienty="0.0000" orientz="0.6137">TreeNewEngland</unit>
+		<unit variation="9" posx="9.0000" posz="-31.0000" orientx="0.8731" orienty="0.0000" orientz="-0.4875">TreeNewEngland</unit>
+		<unit variation="58" posx="-21.0000" posz="-29.0000" orientx="0.9802" orienty="0.0000" orientz="-0.1979">UnderbrushForest</unit>
+		<unit variation="104" posx="7.0000" posz="-29.0000" orientx="0.9998" orienty="0.0000" orientz="0.0208">UnderbrushForest</unit>
+		<unit variation="218" posx="-12.0894" posz="-30.3576" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
+		<unit variation="218" posx="-16.1454" posz="-29.2381" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
+		<unit variation="33" posx="-23.0000" posz="-29.0000" orientx="-0.0284" orienty="0.0000" orientz="-0.9996">TreeGreatLakes</unit>
+		<unit variation="176" posx="5.0000" posz="-29.0000" orientx="0.3350" orienty="0.0000" orientz="-0.9422">TreeNewEngland</unit>
+		<unit variation="62" posx="11.0000" posz="-29.0000" orientx="-0.6878" orienty="0.0000" orientz="-0.7259">TreeGreatLakes</unit>
+		<unit variation="145" posx="25.0000" posz="-29.0000" orientx="0.5155" orienty="0.0000" orientz="-0.8569">TreeNewEngland</unit>
+		<unit variation="218" posx="-16.7836" posz="-26.5444" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
+		<unit variation="218" posx="-17.9393" posz="-26.9856" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
+		<unit variation="185" posx="15.0000" posz="-27.0000" orientx="-0.9974" orienty="0.0000" orientz="-0.0723">TreeNewEngland</unit>
+		<unit variation="224" posx="-1.1569" posz="-23.3744" orientx="-1.0000" orienty="0.0000" orientz="0.0000">Market</unit>
+		<unit variation="107" posx="-9.2121" posz="-24.3932" orientx="0.4229" orienty="0.0000" orientz="0.9062">zpSPCCityHouse</unit>
+		<unit variation="55" posx="6.1004" posz="-23.4210" orientx="-0.9239" orienty="0.0000" orientz="-0.3826">zpSPCCityHouse</unit>
+		<unit variation="254" posx="17.0000" posz="-23.0000" orientx="-0.3995" orienty="0.0000" orientz="0.9167">deMineCoalBuildable</unit>
+		<unit variation="141" posx="-23.0000" posz="-25.0000" orientx="-0.8094" orienty="0.0000" orientz="0.5872">TreeNewEngland</unit>
+		<unit variation="5" posx="13.0000" posz="-25.0000" orientx="-0.9162" orienty="0.0000" orientz="-0.4008">TreeNewEngland</unit>
+		<unit variation="190" posx="25.0000" posz="-25.0000" orientx="0.5823" orienty="0.0000" orientz="-0.8130">TreeNewEngland</unit>
+		<unit variation="203" posx="27.0000" posz="-25.0000" orientx="-0.0484" orienty="0.0000" orientz="-0.9988">TreeGreatLakes</unit>
+		<unit variation="96" posx="-14.1757" posz="-23.6063" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="151" posx="16.4237" posz="-24.0170" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="172" posx="-14.2839" posz="-24.1224" orientx="0.4453" orienty="0.0018" orientz="-0.8954">zpGoose</unit>
+		<unit variation="167" posx="-15.4649" posz="-22.6538" orientx="0.1505" orienty="0.0033" orientz="-0.9886">zpGoose</unit>
+		<unit variation="234" posx="-15.2555" posz="-21.6051" orientx="0.9863" orienty="-0.0045" orientz="0.1649">zpGoose</unit>
+		<unit variation="163" posx="-23.0000" posz="-21.0000" orientx="0.8016" orienty="0.0000" orientz="0.5978">TreeGreatLakes</unit>
+		<unit variation="116" posx="-17.6767" posz="-20.6377" orientx="-0.9239" orienty="0.0000" orientz="0.3827">BerryBush</unit>
+		<unit variation="93" posx="18.4035" posz="-19.5354" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="4" posx="25.0000" posz="-19.0000" orientx="0.0116" orienty="0.0000" orientz="-0.9999">UnderbrushForest</unit>
+		<unit variation="92" posx="15.9418" posz="-19.9312" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="116" posx="-18.7028" posz="-19.6955" orientx="-0.9239" orienty="0.0000" orientz="0.3827">BerryBush</unit>
+		<unit variation="45" posx="21.0000" posz="-19.0000" orientx="0.5055" orienty="0.0000" orientz="0.8628">TreeNewEngland</unit>
+		<unit variation="215" posx="-4.7076" posz="-17.5548" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="92" posx="1.3311" posz="-17.8149" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="21" posx="18.5900" posz="-18.7936" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="153" posx="-4.6303" posz="-17.0876" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="116" posx="-19.6493" posz="-17.7366" orientx="-0.9239" orienty="0.0000" orientz="0.3827">BerryBush</unit>
+		<unit variation="172" posx="25.0000" posz="-17.0000" orientx="0.2280" orienty="0.0000" orientz="0.9737">TreeNewEngland</unit>
+		<unit variation="212" posx="-4.7161" posz="-15.7565" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="-5.5373" posz="-13.6912" orientx="-0.9236" orienty="0.0000" orientz="0.3834">PropsPoles</unit>
+		<unit variation="16" posx="0.7999" posz="-16.6033" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="12" posx="1.0329" posz="-15.4506" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="2.1607" posz="-14.0507" orientx="-0.9236" orienty="0.0000" orientz="0.3834">PropsPoles</unit>
+		<unit variation="65" posx="20.2541" posz="-16.2705" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="155" posx="-21.2807" posz="-14.2376" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="13" posx="-21.3411" posz="-13.7323" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="196" posx="-4.6740" posz="-13.8036" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="39" posx="0.9761" posz="-13.8942" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="42" posx="20.8972" posz="-14.6725" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="240" posx="20.9684" posz="-13.3922" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="27.9338" posz="-11.7795" orientx="-0.7050" orienty="0.0000" orientz="0.7092">PropsPoles</unit>
+		<unit variation="83" posx="-21.6413" posz="-12.1729" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="72" posx="-4.8735" posz="-12.2350" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="184" posx="-6.3599" posz="-11.2989" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="255" posx="2.0245" posz="-12.3733" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="148" posx="4.5895" posz="-11.0529" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="151" posx="21.1348" posz="-12.5530" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="197" posx="21.3110" posz="-11.5245" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="-28.7050" posz="-10.1570" orientx="-0.7050" orienty="0.0000" orientz="0.7092">PropsPoles</unit>
+		<unit variation="56" posx="-22.2728" posz="-9.8929" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="232" posx="-22.0550" posz="-9.7398" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="34" posx="-9.2875" posz="-9.3531" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="231" posx="5.9951" posz="-9.8188" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="249" posx="21.7289" posz="-9.8624" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="237" posx="-21.8590" posz="-8.9958" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="24" posx="-21.8973" posz="-7.5453" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="148" posx="-11.4737" posz="-8.1647" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="34" posx="-10.7592" posz="-7.9898" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="23" posx="-12.2469" posz="-7.1067" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="153" posx="-5.1989" posz="-6.4154" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCFlag</unit>
+		<unit variation="54" posx="6.8396" posz="-8.8620" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="37" posx="7.5079" posz="-7.9592" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="233" posx="7.8186" posz="-6.9409" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="232" posx="21.9962" posz="-8.6810" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="211" posx="-21.4993" posz="-6.2482" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="91" posx="-12.7415" posz="-6.1353" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="40" posx="-13.0397" posz="-5.5497" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="191" posx="8.8772" posz="-5.7835" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="97" posx="22.0690" posz="-6.6826" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="37" posx="20.4916" posz="-4.9052" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="162" posx="21.7339" posz="-5.3430" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="113" posx="22.2309" posz="-5.3334" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="185" posx="-17.0560" posz="-4.4560" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="150" posx="-18.1611" posz="-4.7284" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="175" posx="-19.7194" posz="-4.6141" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="193" posx="-20.3322" posz="-4.5362" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="89" posx="-15.1450" posz="-4.1135" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="245" posx="-15.6558" posz="-4.2663" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="90" posx="-13.6984" posz="-4.5063" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="252" posx="-14.0229" posz="-4.7582" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="88" posx="9.3852" posz="-4.1374" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="110" posx="11.7594" posz="-4.3648" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="252" posx="13.5110" posz="-4.6528" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="142" posx="15.4619" posz="-4.6420" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="20" posx="17.3086" posz="-4.6726" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="3" posx="18.7364" posz="-4.6381" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="185" posx="12.8298" posz="-3.9041" orientx="-0.8739" orienty="0.0015" orientz="0.4861">Wolf</unit>
+		<unit variation="138" posx="14.6338" posz="-2.1001" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NuggetWheatBundleSmall</unit>
+		<unit variation="234" posx="-7.0000" posz="-2.0000" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">Explorer</unit>
+		<unit variation="38" posx="-20.8260" posz="0.4331" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="26" posx="-17.4383" posz="0.4965" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="237" posx="-20.6680" posz="0.9349" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="8" posx="-15.2890" posz="0.7296" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="81" posx="-13.7185" posz="0.6829" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="35" posx="15.5116" posz="1.0816" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="158" posx="-21.7090" posz="1.7869" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="171" posx="-13.4264" posz="2.3668" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="135" posx="8.7787" posz="1.4927" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="248" posx="9.6043" posz="1.3103" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="35" posx="13.9406" posz="1.1468" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="28" posx="12.2679" posz="1.2424" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="248" posx="10.2086" posz="1.4667" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="22" posx="17.2705" posz="1.2688" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="91" posx="21.4086" posz="1.8129" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="178" posx="21.3441" posz="1.2240" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="139" posx="19.7208" posz="1.1283" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="43" posx="-21.7920" posz="3.3948" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="128" posx="-12.8150" posz="3.5427" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="100" posx="-12.0493" posz="4.7220" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="47" posx="21.8199" posz="3.2793" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="194" posx="21.8808" posz="4.2287" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="168" posx="7.9233" posz="3.2334" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="24" posx="-21.8936" posz="6.5327" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="67" posx="-11.1049" posz="6.0151" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="71" posx="6.6590" posz="5.2413" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="98" posx="6.0656" posz="6.7342" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="17" posx="22.0479" posz="5.1976" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="28.6222" posz="7.9163" orientx="-0.7050" orienty="0.0000" orientz="0.7092">PropsPoles</unit>
+		<unit variation="0" posx="-29.2115" posz="8.4506" orientx="-0.7050" orienty="0.0000" orientz="0.7092">PropsPoles</unit>
+		<unit variation="69" posx="-21.6249" posz="8.0784" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="242" posx="-9.8670" posz="7.4557" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="48" posx="-9.0129" posz="8.2980" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="207" posx="4.5987" posz="8.0506" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="160" posx="2.3336" posz="8.6750" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="140" posx="3.4006" posz="8.3505" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="156" posx="22.1409" posz="8.3630" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="8" posx="-7.7551" posz="9.3040" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="118" posx="-5.4691" posz="9.7496" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="57" posx="-3.9413" posz="9.8976" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="-5.6456" posz="11.2693" orientx="-0.9236" orienty="0.0000" orientz="0.3834">PropsPoles</unit>
+		<unit variation="252" posx="2.1153" posz="9.6791" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="190" posx="1.6347" posz="10.4305" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="0" posx="3.3561" posz="11.5993" orientx="-0.9236" orienty="0.0000" orientz="0.3834">PropsPoles</unit>
+		<unit variation="116" posx="21.0079" posz="11.2349" orientx="-0.9239" orienty="0.0000" orientz="0.3827">BerryBush</unit>
+		<unit variation="47" posx="-4.0875" posz="11.4766" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="51" posx="-3.9990" posz="12.5823" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="35" posx="1.6422" posz="12.7815" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="116" posx="19.1382" posz="13.0114" orientx="-0.9239" orienty="0.0000" orientz="0.3827">BerryBush</unit>
+		<unit variation="87" posx="-21.0000" posz="15.0000" orientx="-0.3412" orienty="0.0000" orientz="-0.9400">deMineCoalBuildable</unit>
+		<unit variation="71" posx="8.7927" posz="17.0298" orientx="-0.3827" orienty="-0.0000" orientz="-0.9239">Barracks</unit>
+		<unit variation="33" posx="-10.9226" posz="16.9224" orientx="0.9239" orienty="0.0000" orientz="0.3827">Stable</unit>
+		<unit variation="106" posx="-3.9485" posz="13.9495" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="116" posx="18.3203" posz="14.0158" orientx="-0.9239" orienty="0.0000" orientz="0.3827">BerryBush</unit>
+		<unit variation="89" posx="15.7336" posz="15.9096" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="175" posx="17.7431" posz="16.2464" orientx="0.1226" orienty="0.0034" orientz="-0.9924">zpGoose</unit>
+		<unit variation="28" posx="19.2204" posz="15.8079" orientx="-0.8392" orienty="0.0012" orientz="0.5438">zpGoose</unit>
+		<unit variation="11" posx="19.4650" posz="16.8774" orientx="-0.2212" orienty="0.0047" orientz="-0.9752">zpGoose</unit>
+		<unit variation="30" posx="-1.5182" posz="19.2234" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deTavern</unit>
+		<unit variation="26" posx="19.1844" posz="17.9547" orientx="0.9909" orienty="-0.0033" orientz="-0.1349">zpGoose</unit>
+		<unit variation="255" posx="16.2921" posz="17.6974" orientx="0.9953" orienty="-0.0035" orientz="-0.0970">zpGoose</unit>
+		<unit variation="99" posx="21.0000" posz="19.0000" orientx="-0.9719" orienty="0.0000" orientz="0.2354">TreeNewEngland</unit>
+		<unit variation="157" posx="25.0000" posz="19.0000" orientx="0.8143" orienty="0.0000" orientz="-0.5804">TreeGreatLakes</unit>
+		<unit variation="103" posx="-23.0000" posz="21.0000" orientx="-0.9500" orienty="0.0000" orientz="0.3123">TreeNewEngland</unit>
+		<unit variation="190" posx="-21.0000" posz="21.0000" orientx="0.9246" orienty="0.0000" orientz="0.3809">TreeGreatLakes</unit>
+		<unit variation="43" posx="25.0000" posz="21.0000" orientx="0.5325" orienty="0.0000" orientz="-0.8464">TreeGreatLakes</unit>
+		<unit variation="218" posx="21.8541" posz="22.3869" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
+		<unit variation="218" posx="21.8226" posz="22.1817" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
+		<unit variation="56" posx="-19.0000" posz="23.0000" orientx="0.2280" orienty="0.0000" orientz="0.9737">TreeNewEngland</unit>
+		<unit variation="204" posx="-13.0000" posz="23.0000" orientx="-0.8640" orienty="0.0000" orientz="0.5035">TreeGreatLakes</unit>
+		<unit variation="147" posx="-11.0000" posz="23.0000" orientx="-0.3739" orienty="0.0000" orientz="0.9275">TreeGreatLakes</unit>
+		<unit variation="144" posx="-21.0000" posz="25.0000" orientx="0.2182" orienty="0.0000" orientz="0.9759">UnderbrushForest</unit>
+		<unit variation="0" posx="13.0000" posz="25.0000" orientx="-0.2264" orienty="0.0000" orientz="-0.9740">UnderbrushForest</unit>
+		<unit variation="52" posx="-9.0000" posz="25.0000" orientx="0.7966" orienty="0.0000" orientz="-0.6046">UnderbrushForest</unit>
+		<unit variation="218" posx="17.4481" posz="23.5344" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
+		<unit variation="218" posx="19.4600" posz="24.1904" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
+		<unit variation="218" posx="16.9444" posz="24.8416" orientx="-0.9625" orienty="0.0048" orientz="-0.2712">Deer</unit>
+		<unit variation="248" posx="-23.0000" posz="25.0000" orientx="-0.9931" orienty="0.0000" orientz="0.1173">TreeNewEngland</unit>
+		<unit variation="59" posx="-3.0000" posz="25.0000" orientx="-0.9058" orienty="0.0000" orientz="0.4238">TreeNewEngland</unit>
+		<unit variation="30" posx="-15.0000" posz="27.0000" orientx="0.4529" orienty="0.0000" orientz="0.8916">TreeGreatLakes</unit>
+		<unit variation="233" posx="-5.0000" posz="27.0000" orientx="-0.8183" orienty="0.0000" orientz="-0.5748">TreeNewEngland</unit>
+		<unit variation="60" posx="7.0000" posz="27.0000" orientx="-0.4425" orienty="0.0000" orientz="-0.8968">TreeGreatLakes</unit>
+		<unit variation="185" posx="9.0000" posz="27.0000" orientx="-0.7946" orienty="0.0000" orientz="-0.6071">TreeGreatLakes</unit>
+		<unit variation="147" posx="15.0000" posz="27.0000" orientx="0.8016" orienty="0.0000" orientz="0.5978">TreeGreatLakes</unit>
+		<unit variation="98" posx="23.0000" posz="27.0000" orientx="1.0000" orienty="0.0000" orientz="-0.0092">TreeGreatLakes</unit>
+		<unit variation="7" posx="4.7743" posz="27.2564" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="201" posx="1.0000" posz="29.0000" orientx="-0.9834" orienty="0.0000" orientz="-0.1814">UnderbrushForest</unit>
+		<unit variation="102" posx="-21.0000" posz="29.0000" orientx="0.6288" orienty="0.0000" orientz="0.7776">TreeGreatLakes</unit>
+		<unit variation="147" posx="5.0000" posz="29.0000" orientx="0.6052" orienty="0.0000" orientz="0.7961">TreeNewEngland</unit>
+		<unit variation="250" posx="3.0000" posz="29.0000" orientx="-0.2698" orienty="0.0000" orientz="0.9629">TreeNewEngland</unit>
+		<unit variation="251" posx="-8.4083" posz="29.8999" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
+		<unit variation="76" posx="-21.0000" posz="31.0000" orientx="-0.7823" orienty="0.0000" orientz="-0.6229">TreeNewEngland</unit>
+		<unit variation="149" posx="3.0000" posz="31.0000" orientx="-0.6235" orienty="0.0000" orientz="0.7818">TreeGreatLakes</unit>
+		<unit variation="13" posx="11.0000" posz="31.0000" orientx="0.1609" orienty="0.0000" orientz="-0.9870">TreeNewEngland</unit>
+		<unit variation="95" posx="17.0000" posz="31.0000" orientx="-0.7502" orienty="0.0000" orientz="-0.6612">TreeNewEngland</unit>
+		<unit variation="48" posx="-27.0000" posz="33.0000" orientx="-0.4955" orienty="0.0000" orientz="-0.8686">UnderbrushForest</unit>
+		<unit variation="101" posx="-9.0000" posz="33.0000" orientx="0.1296" orienty="0.0000" orientz="0.9916">TreeGreatLakes</unit>
+		<unit variation="66" posx="-13.0000" posz="33.0000" orientx="0.5494" orienty="0.0000" orientz="-0.8356">TreeNewEngland</unit>
+		<unit variation="178" posx="-1.0000" posz="33.0000" orientx="-0.9658" orienty="0.0000" orientz="-0.2594">TreeNewEngland</unit>
+		<unit variation="232" posx="13.0000" posz="33.0000" orientx="-0.9386" orienty="0.0000" orientz="-0.3451">TreeGreatLakes</unit>
+		<unit variation="183" posx="17.0000" posz="33.0000" orientx="-0.8513" orienty="0.0000" orientz="-0.5247">TreeNewEngland</unit>
+		<unit variation="6" posx="21.0000" posz="33.0000" orientx="-0.2890" orienty="0.0000" orientz="0.9573">TreeNewEngland</unit>
+		<unit variation="120" posx="19.0000" posz="33.0000" orientx="0.1987" orienty="0.0000" orientz="0.9801">TreeGreatLakes</unit>
+		<unit variation="169" posx="-25.0000" posz="35.0000" orientx="0.8314" orienty="0.0000" orientz="-0.5557">TreeGreatLakes</unit>
+		<unit variation="178" posx="-23.0000" posz="37.0000" orientx="0.9951" orienty="0.0000" orientz="-0.0990">TreeGreatLakes</unit>
+		<unit variation="57" posx="-15.0000" posz="37.0000" orientx="0.9640" orienty="0.0000" orientz="-0.2660">TreeNewEngland</unit>
+		<unit variation="122" posx="-1.0000" posz="37.0000" orientx="0.9044" orienty="0.0000" orientz="0.4267">TreeGreatLakes</unit>
+		<unit variation="231" posx="-5.0000" posz="37.0000" orientx="0.9999" orienty="0.0000" orientz="0.0108">TreeGreatLakes</unit>
+		<unit variation="225" posx="5.0000" posz="37.0000" orientx="-0.7092" orienty="0.0000" orientz="-0.7050">TreeNewEngland</unit>
+		<unit variation="241" posx="3.0000" posz="37.0000" orientx="-0.9937" orienty="0.0000" orientz="-0.1122">TreeNewEngland</unit>
+		<unit variation="94" posx="-7.0000" posz="39.0000" orientx="0.3255" orienty="0.0000" orientz="-0.9455">UnderbrushForest</unit>
+		<unit variation="179" posx="1.0000" posz="39.0000" orientx="0.9999" orienty="0.0000" orientz="0.0108">UnderbrushForest</unit>
+		<unit variation="12" posx="3.0000" posz="39.0000" orientx="-0.9868" orienty="0.0000" orientz="-0.1617">TreeGreatLakes</unit>
+		<unit variation="220" posx="5.0000" posz="39.0000" orientx="-0.7436" orienty="0.0000" orientz="-0.6686">TreeGreatLakes</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
@@ -314,18 +284,13 @@
 			<block startx="0" startz="-22" endx="0" endz="-22"></block>
 			<block startx="1" startz="-22" endx="1" endz="-22"></block>
 			<block startx="-15" startz="-5" endx="-15" endz="2"></block>
-			<block startx="-15" startz="-13" endx="-15" endz="-11"></block>
-			<block startx="-15" startz="-8" endx="-15" endz="-6"></block>
+			<block startx="-15" startz="-13" endx="-15" endz="-6"></block>
 			<block startx="-15" startz="11" endx="-15" endz="18"></block>
 			<block startx="-15" startz="3" endx="-15" endz="10"></block>
 			<block startx="-14" startz="3" endx="-14" endz="6"></block>
-			<block startx="-14" startz="9" endx="-14" endz="9"></block>
 			<block startx="-13" startz="3" endx="-13" endz="5"></block>
 			<block startx="-12" startz="3" endx="-12" endz="6"></block>
-			<block startx="-11" startz="5" endx="-11" endz="7"></block>
-			<block startx="-10" startz="6" endx="-10" endz="8"></block>
-			<block startx="-9" startz="8" endx="-9" endz="9"></block>
-			<block startx="-8" startz="9" endx="-8" endz="10"></block>
+			<block startx="-8" startz="10" endx="-8" endz="10"></block>
 			<block startx="-7" startz="10" endx="-7" endz="10"></block>
 			<block startx="-6" startz="11" endx="-6" endz="11"></block>
 			<block startx="-5" startz="11" endx="-5" endz="11"></block>
@@ -338,16 +303,17 @@
 			<block startx="-6" startz="3" endx="-6" endz="3"></block>
 			<block startx="-6" startz="10" endx="-6" endz="10"></block>
 			<block startx="-5" startz="3" endx="-5" endz="4"></block>
-			<block startx="-4" startz="3" endx="-4" endz="5"></block>
-			<block startx="-3" startz="3" endx="-3" endz="8"></block>
+			<block startx="-4" startz="3" endx="-4" endz="4"></block>
+			<block startx="-3" startz="3" endx="-3" endz="5"></block>
+			<block startx="-3" startz="7" endx="-3" endz="8"></block>
 			<block startx="-2" startz="3" endx="-2" endz="9"></block>
 			<block startx="-1" startz="3" endx="-1" endz="10"></block>
 			<block startx="0" startz="3" endx="0" endz="9"></block>
-			<block startx="1" startz="3" endx="1" endz="5"></block>
+			<block startx="1" startz="3" endx="1" endz="4"></block>
 			<block startx="-14" startz="-6" endx="-14" endz="-6"></block>
 			<block startx="-12" startz="-6" endx="-12" endz="-6"></block>
-			<block startx="-11" startz="-8" endx="-11" endz="-6"></block>
-			<block startx="-10" startz="-9" endx="-10" endz="-7"></block>
+			<block startx="-11" startz="-8" endx="-11" endz="-8"></block>
+			<block startx="-10" startz="-9" endx="-10" endz="-9"></block>
 			<block startx="-9" startz="-10" endx="-9" endz="-9"></block>
 			<block startx="-8" startz="-10" endx="-8" endz="-10"></block>
 			<block startx="-7" startz="-11" endx="-7" endz="-11"></block>
@@ -356,10 +322,10 @@
 			<block startx="-12" startz="-5" endx="-12" endz="2"></block>
 			<block startx="-11" startz="-5" endx="-11" endz="-5"></block>
 			<block startx="-11" startz="-1" endx="-11" endz="1"></block>
-			<block startx="-10" startz="-1" endx="-10" endz="1"></block>
-			<block startx="-9" startz="-1" endx="-9" endz="1"></block>
-			<block startx="-8" startz="-1" endx="-8" endz="1"></block>
-			<block startx="-7" startz="-2" endx="-7" endz="2"></block>
+			<block startx="-10" startz="-2" endx="-10" endz="0"></block>
+			<block startx="-9" startz="-2" endx="-9" endz="0"></block>
+			<block startx="-8" startz="-2" endx="-8" endz="1"></block>
+			<block startx="-7" startz="-3" endx="-7" endz="2"></block>
 			<block startx="-6" startz="-4" endx="-6" endz="2"></block>
 			<block startx="-5" startz="-5" endx="-5" endz="2"></block>
 			<block startx="-4" startz="-5" endx="-4" endz="2"></block>
@@ -371,11 +337,11 @@
 			<block startx="0" startz="-5" endx="0" endz="-1"></block>
 			<block startx="0" startz="1" endx="0" endz="1"></block>
 			<block startx="1" startz="-5" endx="1" endz="2"></block>
-			<block startx="-6" startz="-12" endx="-6" endz="-11"></block>
+			<block startx="-6" startz="-12" endx="-6" endz="-12"></block>
 			<block startx="-5" startz="-12" endx="-5" endz="-12"></block>
 			<block startx="-4" startz="-12" endx="-4" endz="-12"></block>
 			<block startx="-3" startz="-12" endx="-3" endz="-12"></block>
-			<block startx="-3" startz="-9" endx="-3" endz="-6"></block>
+			<block startx="-3" startz="-7" endx="-3" endz="-6"></block>
 			<block startx="-2" startz="-13" endx="-2" endz="-12"></block>
 			<block startx="-2" startz="-10" endx="-2" endz="-6"></block>
 			<block startx="-1" startz="-12" endx="-1" endz="-12"></block>
@@ -383,47 +349,36 @@
 			<block startx="0" startz="-12" endx="0" endz="-12"></block>
 			<block startx="0" startz="-9" endx="0" endz="-6"></block>
 			<block startx="1" startz="-12" endx="1" endz="-12"></block>
-			<block startx="2" startz="-12" endx="2" endz="-12"></block>
-			<block startx="3" startz="-12" endx="3" endz="-11"></block>
-			<block startx="4" startz="-11" endx="4" endz="-11"></block>
-			<block startx="5" startz="-11" endx="5" endz="-10"></block>
-			<block startx="6" startz="-10" endx="6" endz="-10"></block>
-			<block startx="7" startz="-10" endx="7" endz="-9"></block>
-			<block startx="8" startz="-9" endx="8" endz="-8"></block>
-			<block startx="9" startz="-9" endx="9" endz="-7"></block>
+			<block startx="3" startz="-12" endx="3" endz="-12"></block>
 			<block startx="2" startz="-5" endx="2" endz="2"></block>
-			<block startx="3" startz="-5" endx="3" endz="2"></block>
-			<block startx="4" startz="-4" endx="4" endz="2"></block>
-			<block startx="5" startz="-3" endx="5" endz="1"></block>
+			<block startx="3" startz="-4" endx="3" endz="1"></block>
+			<block startx="4" startz="-2" endx="4" endz="0"></block>
+			<block startx="5" startz="-2" endx="5" endz="1"></block>
 			<block startx="6" startz="-2" endx="6" endz="1"></block>
 			<block startx="7" startz="-2" endx="7" endz="1"></block>
 			<block startx="8" startz="-2" endx="8" endz="1"></block>
 			<block startx="9" startz="-2" endx="9" endz="1"></block>
-			<block startx="10" startz="-5" endx="10" endz="-5"></block>
-			<block startx="10" startz="-2" endx="10" endz="2"></block>
+			<block startx="10" startz="-2" endx="10" endz="1"></block>
 			<block startx="11" startz="-5" endx="11" endz="2"></block>
 			<block startx="12" startz="-5" endx="12" endz="2"></block>
 			<block startx="13" startz="-5" endx="13" endz="2"></block>
 			<block startx="14" startz="-5" endx="14" endz="2"></block>
-			<block startx="10" startz="-8" endx="10" endz="-6"></block>
-			<block startx="11" startz="-7" endx="11" endz="-6"></block>
-			<block startx="12" startz="-7" endx="12" endz="-6"></block>
-			<block startx="13" startz="-8" endx="13" endz="-6"></block>
+			<block startx="10" startz="-8" endx="10" endz="-8"></block>
+			<block startx="11" startz="-8" endx="11" endz="-6"></block>
+			<block startx="12" startz="-8" endx="12" endz="-6"></block>
+			<block startx="13" startz="-7" endx="13" endz="-6"></block>
 			<block startx="14" startz="-13" endx="14" endz="-6"></block>
-			<block startx="2" startz="3" endx="2" endz="4"></block>
-			<block startx="3" startz="3" endx="3" endz="3"></block>
-			<block startx="5" startz="10" endx="5" endz="10"></block>
-			<block startx="6" startz="9" endx="6" endz="10"></block>
-			<block startx="7" startz="8" endx="7" endz="9"></block>
-			<block startx="8" startz="7" endx="8" endz="8"></block>
-			<block startx="9" startz="6" endx="9" endz="7"></block>
-			<block startx="2" startz="11" endx="2" endz="12"></block>
-			<block startx="3" startz="11" endx="3" endz="12"></block>
+			<block startx="2" startz="3" endx="2" endz="3"></block>
+			<block startx="6" startz="10" endx="6" endz="10"></block>
+			<block startx="7" startz="9" endx="7" endz="9"></block>
+			<block startx="8" startz="8" endx="8" endz="8"></block>
+			<block startx="9" startz="7" endx="9" endz="7"></block>
+			<block startx="2" startz="12" endx="2" endz="12"></block>
+			<block startx="3" startz="12" endx="3" endz="12"></block>
 			<block startx="4" startz="11" endx="4" endz="12"></block>
 			<block startx="5" startz="11" endx="5" endz="11"></block>
 			<block startx="14" startz="11" endx="14" endz="18"></block>
-			<block startx="10" startz="3" endx="10" endz="3"></block>
-			<block startx="10" startz="5" endx="10" endz="7"></block>
+			<block startx="10" startz="5" endx="10" endz="6"></block>
 			<block startx="11" startz="3" endx="11" endz="6"></block>
 			<block startx="12" startz="3" endx="12" endz="5"></block>
 			<block startx="13" startz="3" endx="13" endz="6"></block>
@@ -443,7 +398,7 @@
 			<block startx="12" startz="-22" endx="12" endz="-22"></block>
 			<block startx="13" startz="-22" endx="13" endz="-22"></block>
 			<block startx="14" startz="-22" endx="14" endz="-22"></block>
-			<block startx="-15" startz="21" endx="-15" endz="22"></block>
+			<block startx="-15" startz="19" endx="-15" endz="22"></block>
 			<block startx="-14" startz="22" endx="-14" endz="22"></block>
 			<block startx="-13" startz="21" endx="-13" endz="22"></block>
 			<block startx="-12" startz="22" endx="-12" endz="22"></block>
@@ -485,13 +440,9 @@
 			<block startx="-8" startz="-21" endx="-8" endz="-14"></block>
 			<block startx="-7" startz="-21" endx="-7" endz="-14"></block>
 			<block startx="-6" startz="-21" endx="1" endz="-14"></block>
-			<block startx="-15" startz="-10" endx="-15" endz="-9"></block>
-			<block startx="-14" startz="7" endx="-14" endz="8"></block>
 			<block startx="-14" startz="10" endx="-14" endz="10"></block>
-			<block startx="-13" startz="6" endx="-13" endz="10"></block>
-			<block startx="-12" startz="7" endx="-12" endz="10"></block>
-			<block startx="-11" startz="8" endx="-11" endz="10"></block>
-			<block startx="-10" startz="9" endx="-10" endz="10"></block>
+			<block startx="-12" startz="7" endx="-12" endz="8"></block>
+			<block startx="-10" startz="10" endx="-10" endz="10"></block>
 			<block startx="-9" startz="10" endx="-9" endz="10"></block>
 			<block startx="-14" startz="11" endx="-7" endz="18"></block>
 			<block startx="-6" startz="12" endx="-6" endz="18"></block>
@@ -502,12 +453,15 @@
 			<block startx="-1" startz="13" endx="-1" endz="18"></block>
 			<block startx="0" startz="13" endx="0" endz="18"></block>
 			<block startx="1" startz="13" endx="1" endz="18"></block>
-			<block startx="-14" startz="-13" endx="-14" endz="-7"></block>
-			<block startx="-13" startz="-13" endx="-13" endz="-6"></block>
-			<block startx="-12" startz="-13" endx="-12" endz="-7"></block>
-			<block startx="-11" startz="-13" endx="-11" endz="-9"></block>
-			<block startx="-10" startz="-13" endx="-10" endz="-10"></block>
-			<block startx="-9" startz="-13" endx="-9" endz="-11"></block>
+			<block startx="-14" startz="-13" endx="-14" endz="-11"></block>
+			<block startx="-14" startz="-7" endx="-14" endz="-7"></block>
+			<block startx="-13" startz="-13" endx="-13" endz="-12"></block>
+			<block startx="-12" startz="-13" endx="-12" endz="-13"></block>
+			<block startx="-12" startz="-11" endx="-12" endz="-11"></block>
+			<block startx="-12" startz="-8" endx="-12" endz="-8"></block>
+			<block startx="-11" startz="-13" endx="-11" endz="-13"></block>
+			<block startx="-10" startz="-13" endx="-10" endz="-13"></block>
+			<block startx="-9" startz="-11" endx="-9" endz="-11"></block>
 			<block startx="-8" startz="-13" endx="-8" endz="-11"></block>
 			<block startx="-7" startz="-13" endx="-7" endz="-12"></block>
 			<block startx="-6" startz="-13" endx="-6" endz="-13"></block>
@@ -521,39 +475,40 @@
 			<block startx="3" startz="-13" endx="3" endz="-13"></block>
 			<block startx="4" startz="-13" endx="4" endz="-12"></block>
 			<block startx="5" startz="-13" endx="5" endz="-12"></block>
-			<block startx="6" startz="-13" endx="6" endz="-11"></block>
-			<block startx="7" startz="-13" endx="7" endz="-11"></block>
-			<block startx="8" startz="-13" endx="8" endz="-10"></block>
+			<block startx="6" startz="-13" endx="6" endz="-12"></block>
+			<block startx="7" startz="-13" endx="7" endz="-12"></block>
+			<block startx="8" startz="-13" endx="8" endz="-11"></block>
 			<block startx="9" startz="-13" endx="9" endz="-10"></block>
-			<block startx="10" startz="-13" endx="10" endz="-9"></block>
-			<block startx="11" startz="-13" endx="11" endz="-8"></block>
-			<block startx="12" startz="-13" endx="12" endz="-8"></block>
-			<block startx="13" startz="-13" endx="13" endz="-9"></block>
+			<block startx="10" startz="-13" endx="10" endz="-12"></block>
+			<block startx="10" startz="-10" endx="10" endz="-9"></block>
+			<block startx="11" startz="-13" endx="11" endz="-12"></block>
+			<block startx="11" startz="-9" endx="11" endz="-9"></block>
+			<block startx="12" startz="-13" endx="12" endz="-11"></block>
+			<block startx="13" startz="-13" endx="13" endz="-11"></block>
+			<block startx="13" startz="-9" endx="13" endz="-9"></block>
 			<block startx="7" startz="10" endx="7" endz="10"></block>
-			<block startx="8" startz="9" endx="8" endz="10"></block>
-			<block startx="9" startz="8" endx="9" endz="10"></block>
+			<block startx="8" startz="9" endx="8" endz="9"></block>
 			<block startx="2" startz="13" endx="2" endz="18"></block>
 			<block startx="3" startz="13" endx="3" endz="18"></block>
 			<block startx="4" startz="13" endx="4" endz="18"></block>
 			<block startx="5" startz="12" endx="5" endz="18"></block>
 			<block startx="6" startz="11" endx="6" endz="18"></block>
 			<block startx="7" startz="11" endx="7" endz="18"></block>
-			<block startx="8" startz="11" endx="8" endz="18"></block>
+			<block startx="8" startz="12" endx="8" endz="18"></block>
 			<block startx="9" startz="11" endx="9" endz="18"></block>
 			<block startx="10" startz="11" endx="10" endz="18"></block>
 			<block startx="11" startz="11" endx="11" endz="18"></block>
 			<block startx="12" startz="11" endx="12" endz="18"></block>
 			<block startx="13" startz="11" endx="13" endz="18"></block>
-			<block startx="10" startz="8" endx="10" endz="10"></block>
-			<block startx="11" startz="7" endx="11" endz="10"></block>
-			<block startx="12" startz="6" endx="12" endz="10"></block>
+			<block startx="11" startz="8" endx="11" endz="10"></block>
+			<block startx="12" startz="6" endx="12" endz="6"></block>
+			<block startx="12" startz="9" endx="12" endz="10"></block>
 			<block startx="13" startz="7" endx="13" endz="10"></block>
 			<block startx="2" startz="-21" endx="9" endz="-14"></block>
 			<block startx="10" startz="-21" endx="10" endz="-14"></block>
 			<block startx="11" startz="-21" endx="11" endz="-14"></block>
 			<block startx="12" startz="-21" endx="12" endz="-14"></block>
 			<block startx="13" startz="-20" endx="13" endz="-14"></block>
-			<block startx="-15" startz="19" endx="-15" endz="20"></block>
 			<block startx="-14" startz="19" endx="-14" endz="21"></block>
 			<block startx="-13" startz="19" endx="-13" endz="20"></block>
 			<block startx="-12" startz="19" endx="-12" endz="21"></block>
@@ -583,56 +538,76 @@
 			<block startx="12" startz="19" endx="12" endz="21"></block>
 			<block startx="13" startz="19" endx="13" endz="20"></block>
 		</tilegroup>
-		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">
-			<block startx="-11" startz="3" endx="-11" endz="4"></block>
-			<block startx="-10" startz="3" endx="-10" endz="5"></block>
-			<block startx="-9" startz="3" endx="-9" endz="7"></block>
-			<block startx="-8" startz="3" endx="-8" endz="8"></block>
+		<tilegroup type="PassableLand" subtype="new_england\cliff_top_ne">
+			<block startx="-14" startz="7" endx="-14" endz="9"></block>
+			<block startx="-13" startz="6" endx="-13" endz="10"></block>
+			<block startx="-12" startz="9" endx="-12" endz="10"></block>
+			<block startx="-11" startz="9" endx="-11" endz="10"></block>
+			<block startx="-14" startz="-10" endx="-14" endz="-8"></block>
+			<block startx="-13" startz="-11" endx="-13" endz="-6"></block>
+			<block startx="-12" startz="-12" endx="-12" endz="-12"></block>
+			<block startx="-12" startz="-10" endx="-12" endz="-9"></block>
+			<block startx="-12" startz="-7" endx="-12" endz="-7"></block>
+			<block startx="-11" startz="-12" endx="-11" endz="-9"></block>
+			<block startx="-10" startz="-12" endx="-10" endz="-10"></block>
+			<block startx="-9" startz="-13" endx="-9" endz="-12"></block>
+			<block startx="10" startz="-11" endx="10" endz="-11"></block>
+			<block startx="11" startz="-11" endx="11" endz="-10"></block>
+			<block startx="12" startz="-10" endx="12" endz="-9"></block>
+			<block startx="13" startz="-10" endx="13" endz="-10"></block>
+			<block startx="13" startz="-8" endx="13" endz="-8"></block>
+			<block startx="8" startz="10" endx="8" endz="10"></block>
+			<block startx="9" startz="8" endx="9" endz="10"></block>
+			<block startx="8" startz="11" endx="8" endz="11"></block>
+			<block startx="10" startz="7" endx="10" endz="10"></block>
+			<block startx="11" startz="7" endx="11" endz="7"></block>
+			<block startx="12" startz="7" endx="12" endz="8"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="new_england\ground4_ne">
+			<block startx="-11" startz="3" endx="-11" endz="8"></block>
+			<block startx="-10" startz="3" endx="-10" endz="9"></block>
+			<block startx="-9" startz="3" endx="-9" endz="9"></block>
+			<block startx="-8" startz="3" endx="-8" endz="5"></block>
+			<block startx="-8" startz="7" endx="-8" endz="9"></block>
 			<block startx="-7" startz="3" endx="-7" endz="9"></block>
-			<block startx="1" startz="11" endx="1" endz="11"></block>
 			<block startx="-6" startz="4" endx="-6" endz="9"></block>
-			<block startx="-5" startz="5" endx="-5" endz="10"></block>
-			<block startx="-4" startz="6" endx="-4" endz="10"></block>
-			<block startx="-3" startz="9" endx="-3" endz="10"></block>
-			<block startx="-2" startz="10" endx="-2" endz="10"></block>
-			<block startx="0" startz="10" endx="0" endz="10"></block>
-			<block startx="1" startz="6" endx="1" endz="10"></block>
-			<block startx="-10" startz="-6" endx="-10" endz="-6"></block>
+			<block startx="-5" startz="5" endx="-5" endz="9"></block>
+			<block startx="-4" startz="5" endx="-4" endz="8"></block>
+			<block startx="-3" startz="6" endx="-3" endz="6"></block>
+			<block startx="1" startz="5" endx="1" endz="10"></block>
+			<block startx="-11" startz="-7" endx="-11" endz="-6"></block>
+			<block startx="-10" startz="-8" endx="-10" endz="-6"></block>
 			<block startx="-9" startz="-8" endx="-9" endz="-6"></block>
 			<block startx="-8" startz="-9" endx="-8" endz="-6"></block>
 			<block startx="-7" startz="-10" endx="-7" endz="-6"></block>
-			<block startx="-11" startz="-4" endx="-11" endz="-2"></block>
+			<block startx="-11" startz="-4" endx="-11" endz="-4"></block>
 			<block startx="-11" startz="2" endx="-11" endz="2"></block>
-			<block startx="-10" startz="-5" endx="-10" endz="-2"></block>
-			<block startx="-10" startz="2" endx="-10" endz="2"></block>
-			<block startx="-9" startz="-5" endx="-9" endz="-2"></block>
-			<block startx="-9" startz="2" endx="-9" endz="2"></block>
-			<block startx="-8" startz="-5" endx="-8" endz="-2"></block>
+			<block startx="-10" startz="-5" endx="-10" endz="-3"></block>
+			<block startx="-10" startz="1" endx="-10" endz="2"></block>
+			<block startx="-9" startz="-5" endx="-9" endz="-3"></block>
+			<block startx="-9" startz="1" endx="-9" endz="2"></block>
+			<block startx="-8" startz="-5" endx="-8" endz="-3"></block>
 			<block startx="-8" startz="2" endx="-8" endz="2"></block>
-			<block startx="-7" startz="-5" endx="-7" endz="-3"></block>
+			<block startx="-7" startz="-5" endx="-7" endz="-4"></block>
 			<block startx="-6" startz="-5" endx="-6" endz="-5"></block>
-			<block startx="-2" startz="-1" endx="-2" endz="-1"></block>
-			<block startx="-1" startz="-1" endx="-1" endz="-1"></block>
-			<block startx="0" startz="0" endx="0" endz="0"></block>
-			<block startx="0" startz="2" endx="0" endz="2"></block>
-			<block startx="-6" startz="-10" endx="-6" endz="-6"></block>
+			<block startx="-6" startz="-11" endx="-6" endz="-6"></block>
 			<block startx="-5" startz="-11" endx="-5" endz="-6"></block>
-			<block startx="-4" startz="-11" endx="-4" endz="-6"></block>
-			<block startx="-3" startz="-11" endx="-3" endz="-10"></block>
-			<block startx="-2" startz="-11" endx="-2" endz="-11"></block>
-			<block startx="-1" startz="-11" endx="-1" endz="-11"></block>
-			<block startx="0" startz="-11" endx="0" endz="-10"></block>
-			<block startx="1" startz="-11" endx="1" endz="-6"></block>
-			<block startx="2" startz="-11" endx="2" endz="-6"></block>
-			<block startx="3" startz="-10" endx="3" endz="-6"></block>
-			<block startx="4" startz="-10" endx="4" endz="-6"></block>
-			<block startx="5" startz="-9" endx="5" endz="-6"></block>
-			<block startx="6" startz="-9" endx="6" endz="-6"></block>
-			<block startx="7" startz="-8" endx="7" endz="-6"></block>
-			<block startx="8" startz="-7" endx="8" endz="-6"></block>
-			<block startx="9" startz="-6" endx="9" endz="-6"></block>
-			<block startx="4" startz="-5" endx="4" endz="-5"></block>
-			<block startx="5" startz="-5" endx="5" endz="-4"></block>
+			<block startx="-4" startz="-10" endx="-4" endz="-6"></block>
+			<block startx="-3" startz="-9" endx="-3" endz="-8"></block>
+			<block startx="1" startz="-11" endx="1" endz="-7"></block>
+			<block startx="2" startz="-12" endx="2" endz="-6"></block>
+			<block startx="3" startz="-11" endx="3" endz="-6"></block>
+			<block startx="4" startz="-11" endx="4" endz="-6"></block>
+			<block startx="5" startz="-11" endx="5" endz="-6"></block>
+			<block startx="6" startz="-11" endx="6" endz="-6"></block>
+			<block startx="7" startz="-11" endx="7" endz="-6"></block>
+			<block startx="8" startz="-10" endx="8" endz="-6"></block>
+			<block startx="9" startz="-9" endx="9" endz="-6"></block>
+			<block startx="3" startz="-5" endx="3" endz="-5"></block>
+			<block startx="3" startz="2" endx="3" endz="2"></block>
+			<block startx="4" startz="-5" endx="4" endz="-3"></block>
+			<block startx="4" startz="1" endx="4" endz="2"></block>
+			<block startx="5" startz="-5" endx="5" endz="-3"></block>
 			<block startx="5" startz="2" endx="5" endz="2"></block>
 			<block startx="6" startz="-5" endx="6" endz="-3"></block>
 			<block startx="6" startz="2" endx="6" endz="2"></block>
@@ -642,15 +617,40 @@
 			<block startx="8" startz="2" endx="8" endz="2"></block>
 			<block startx="9" startz="-5" endx="9" endz="-3"></block>
 			<block startx="9" startz="2" endx="9" endz="2"></block>
-			<block startx="10" startz="-4" endx="10" endz="-3"></block>
-			<block startx="2" startz="5" endx="2" endz="10"></block>
-			<block startx="3" startz="4" endx="3" endz="10"></block>
+			<block startx="10" startz="-5" endx="10" endz="-3"></block>
+			<block startx="10" startz="2" endx="10" endz="2"></block>
+			<block startx="10" startz="-7" endx="10" endz="-6"></block>
+			<block startx="2" startz="4" endx="2" endz="10"></block>
+			<block startx="3" startz="3" endx="3" endz="10"></block>
 			<block startx="4" startz="3" endx="4" endz="10"></block>
-			<block startx="5" startz="3" endx="5" endz="9"></block>
-			<block startx="6" startz="3" endx="6" endz="8"></block>
-			<block startx="7" startz="3" endx="7" endz="7"></block>
-			<block startx="8" startz="3" endx="8" endz="6"></block>
-			<block startx="9" startz="3" endx="9" endz="5"></block>
+			<block startx="5" startz="3" endx="5" endz="10"></block>
+			<block startx="6" startz="3" endx="6" endz="9"></block>
+			<block startx="7" startz="3" endx="7" endz="8"></block>
+			<block startx="8" startz="3" endx="8" endz="7"></block>
+			<block startx="9" startz="3" endx="9" endz="6"></block>
+			<block startx="2" startz="11" endx="2" endz="11"></block>
+			<block startx="3" startz="11" endx="3" endz="11"></block>
+			<block startx="10" startz="3" endx="10" endz="3"></block>
+		</tilegroup>
+		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">
+			<block startx="-8" startz="6" endx="-8" endz="6"></block>
+			<block startx="1" startz="11" endx="1" endz="11"></block>
+			<block startx="-5" startz="10" endx="-5" endz="10"></block>
+			<block startx="-4" startz="9" endx="-4" endz="10"></block>
+			<block startx="-3" startz="9" endx="-3" endz="10"></block>
+			<block startx="-2" startz="10" endx="-2" endz="10"></block>
+			<block startx="0" startz="10" endx="0" endz="10"></block>
+			<block startx="-11" startz="-3" endx="-11" endz="-2"></block>
+			<block startx="-2" startz="-1" endx="-2" endz="-1"></block>
+			<block startx="-1" startz="-1" endx="-1" endz="-1"></block>
+			<block startx="0" startz="0" endx="0" endz="0"></block>
+			<block startx="0" startz="2" endx="0" endz="2"></block>
+			<block startx="-4" startz="-11" endx="-4" endz="-11"></block>
+			<block startx="-3" startz="-11" endx="-3" endz="-10"></block>
+			<block startx="-2" startz="-11" endx="-2" endz="-11"></block>
+			<block startx="-1" startz="-11" endx="-1" endz="-11"></block>
+			<block startx="0" startz="-11" endx="0" endz="-10"></block>
+			<block startx="1" startz="-6" endx="1" endz="-6"></block>
 			<block startx="10" startz="4" endx="10" endz="4"></block>
 		</tilegroup>
 	</tiles>

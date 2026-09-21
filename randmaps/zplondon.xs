@@ -1468,12 +1468,15 @@ void main(void)
 	// on the big frames. Treasures are the map's own pool - westEurope (Jacobite, Highland, Scots records) at difficulty
 	// 3 and 4 - through the "Nugget" placeholder and the latch in force at placement (Istanbul's Rule 1).
 	int belowCliffs = rmCreateMaxHeightConstraint("below the cliffs", 3.5);   // the countryside sits at 1.0 (+2.0 turbulence), the hills at 8.0
-	// the map's rim (user 2026-09-22): Istanbul's world-circle pie (zpistanbulb.xs 900-902, "a treasure was spawning half
-	// in the void at the rim") with the radius on London's LONG axis, and - this frame is a rectangle, the circle alone
-	// leaves the long sides open - a box 8 m in from every edge; both on every countryside object
-	int insideWorld = rmCreatePieConstraint("inside the world circle", 0.5, 0.5,
-		rmZFractionToMeters(0.0), rmZFractionToMeters(0.47),
-		rmDegreesToRadians(0), rmDegreesToRadians(360));
+	// the map's rim (user 2026-09-22): a world-circle pie and a frame box, both on every countryside object. This frame
+	// is a rectangle, so the pie is sized from its corner, not its long axis (0.47 x 645 m reached only 244 m at the long
+	// sides - inside the city - and shut both countryside corners; verified 2026-09-22): the radius is the half diagonal
+	// less rimCornerM, a chamfer that trims the four corners only; the box, 8 m in from every edge, fences the sides
+	float rimCornerM = 30.0;
+	float rimHalfX = rmXFractionToMeters(0.5);
+	float rimHalfZ = rmZFractionToMeters(0.5);
+	float rimRadiusM = sqrt(rimHalfX * rimHalfX + rimHalfZ * rimHalfZ) - rimCornerM;   // 339 / 357 / 393 m on 645 / 685 / 765
+	int insideWorld = rmCreatePieConstraint("inside the world circle", 0.5, 0.5, 0.0, rimRadiusM, rmDegreesToRadians(0), rmDegreesToRadians(360));
 	int insideFrame = rmCreateBoxConstraint("inside the frame", rmXMetersToFraction(8.0), rmZMetersToFraction(8.0), 1.0 - rmXMetersToFraction(8.0), 1.0 - rmZMetersToFraction(8.0), 0.01);
 	int resScale = cNumberNonGaiaPlayers / 4;
 	int seatsBankD = defenderCount;
@@ -1535,7 +1538,7 @@ void main(void)
 	rmAddObjectDefConstraint(countryBerry, insideFrame);
 	rmPlaceObjectDefInArea(countryBerry, 0, countryD, seatsBankD);
 	rmPlaceObjectDefInArea(countryBerry, 0, countryA, seatsBankA);
-	// default treasures: two of difficulty 3 and one of difficulty 4 per bank, one more of each on the 8-player frame
+	// default treasures: two of difficulty 3 and one of difficulty 4 per bank, one more of each per resScale step (4 and 8 players)
 	int countryNugget = rmCreateObjectDef("countryside treasure");
 	rmAddObjectDefItem(countryNugget, "Nugget", 1, 0.0);
 	rmAddObjectDefConstraint(countryNugget, nugVsNug);
@@ -1571,6 +1574,7 @@ void main(void)
 	rmPlaceObjectDefInArea(countryTrees, 0, countryD, 3 + 2 * resScale);
 	rmPlaceObjectDefInArea(countryTrees, 0, countryA, 3 + 2 * resScale);
 	rmEchoInfo("LONDON countryside: bank seats " + seatsBankD + " / " + seatsBankA + ", resScale " + resScale + " - tin " + (seatsBankD + 1) + "+" + (seatsBankA + 1) + ", deer herds the same, berries " + seatsBankD + "+" + seatsBankA + ", treasures " + (3 + 2 * resScale) + " per bank, tree clumps " + (3 + 2 * resScale) + " per bank");
+	rmEchoInfo("countryside rim: pie radius " + rimRadiusM + " m (corner chamfer " + rimCornerM + " m), frame box 8 m");
 
 	// ============================================================================================
 	// 13. TRIGGERS, all at the end (Paris / Istanbul). Ids: object defs = rmGetUnitPlaced + instanceIdShiftIndividual,
