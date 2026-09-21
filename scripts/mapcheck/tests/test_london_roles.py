@@ -190,16 +190,18 @@ class TestWalls:
 
     def test_three_gates_per_bank_on_the_outer_edge(self):
         s = _code(_section(_text(LONDON), "// ---- 12.5 THE OUTER WALLS", "// 13. TRIGGERS"))
-        assert 'int wallGateS = rmCreateGrouping("wall se", "IT_wall_se_player");' in s      # faces -z: the south bank's outer edge
-        assert 'int wallGateN = rmCreateGrouping("wall nw", "IT_wall_nw_player");' in s      # faces +z: the north bank's
+        assert 'int wallGateS = rmCreateGrouping("wall se", "EU_SPC_London_Wall_SE_01");' in s      # faces -z: the south bank's outer edge
+        assert 'int wallGateN = rmCreateGrouping("wall nw", "EU_SPC_London_Wall_NW_01");' in s      # faces +z: the north bank's
         assert "float xGateMirror = 1.0 - xRoad;" in s
         assert "float wallZS = wallS - rmZTilesToFraction(cityDepthTiles + wallOutTiles);" in s
         assert "float wallZN = wallN + rmZTilesToFraction(cityDepthTiles + wallOutTiles);" in s
         calls = re.findall(r"rmPlaceGroupingAtLoc\((wallGate[SN]), (wallOwner[SN]), ([\w.]+), (wallZ[SN])\);", s)
         assert calls == [("wallGateS", "wallOwnerS", "xRoad", "wallZS"), ("wallGateS", "wallOwnerS", "0.5", "wallZS"), ("wallGateS", "wallOwnerS", "xGateMirror", "wallZS"),
                          ("wallGateN", "wallOwnerN", "xRoad", "wallZN"), ("wallGateN", "wallOwnerN", "0.5", "wallZN"), ("wallGateN", "wallOwnerN", "xGateMirror", "wallZN")]
-        for g in ("IT_wall_se_player", "IT_wall_nw_player"):
-            assert (REPO / ("game/randmaps/groupings/%s.xml" % g)).is_file()
+        for g in ("EU_SPC_London_Wall_SE_01", "EU_SPC_London_Wall_NW_01"):
+            w = (REPO / ("game/randmaps/groupings/%s.xml" % g)).read_text(encoding="utf-8")
+            assert "Flag" not in w and w.count("<tilegroup") == 1 and 'type="PassableLand" subtype="city' + chr(92) + 'ground1_city_street_ground"' in w
+            assert w.count("SPCFortGate") == 1 and w.count("deSPCEuroTower") == 2 and w.count("<unit ") == 27
 
     def test_walls_belong_to_the_banks_first_player_gaia_otherwise(self):
         s = _code(_section(_text(LONDON), "// ---- 12.5 THE OUTER WALLS", "// 13. TRIGGERS"))

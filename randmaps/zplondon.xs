@@ -1134,18 +1134,18 @@ void main(void)
 	// ---- 12.5 THE OUTER WALLS - Florence's system (zpflorence.xs 406-424 the gate segments at 0.2 / 0.5 / 0.8,
 	// 1485-1526 the Italian Cliff hills in the gaps; user 2026-09-21). Three gate segments per bank on the city's
 	// outer edge: over the land route, at the centre, and mirroring the route about the centre. The export's gate
-	// sits at its centre (IT_wall_se_player: SPCFortGate at x -0.2 m), so a segment centred on the route puts its gate
+	// sits at its centre (SPCFortGate at x -0.2 m; London's clones of IT_wall_*_player), so a segment centred on the route puts its gate
 	// on the road. The south bank's line faces -z (the SE export), the north bank's +z (the NW export); each bank's
 	// walls belong to its team's first player - Florence gives them to firstDefender / firstAttacker - gaia in any
 	// other lobby (Istanbul's fallback). Segment centre wallOutTiles beyond the last column's outer edge: the wall
 	// line inside the export is 4 tiles toward the city, so the line stands 4 tiles out and 4.5 tiles off the player
 	// blocks (Florence: 2 and 4.5). The hills straddle the line 3 tiles inside the segment centre, as Florence's.
 	int wallOutTiles = 8;
-	int wallGateS = rmCreateGrouping("wall se", "IT_wall_se_player");
+	int wallGateS = rmCreateGrouping("wall se", "EU_SPC_London_Wall_SE_01");   // IT_wall_se_player without the Florentian flags, London's passable city ground
 	rmSetGroupingMinDistance(wallGateS, 0.00);
 	rmSetGroupingMaxDistance(wallGateS, 0.00);
 	rmAddGroupingToClass(wallGateS, rmClassID("classBlock"));
-	int wallGateN = rmCreateGrouping("wall nw", "IT_wall_nw_player");
+	int wallGateN = rmCreateGrouping("wall nw", "EU_SPC_London_Wall_NW_01");   // IT_wall_nw_player without the Roman flags, the same ground
 	rmSetGroupingMinDistance(wallGateN, 0.00);
 	rmSetGroupingMaxDistance(wallGateN, 0.00);
 	rmAddGroupingToClass(wallGateN, rmClassID("classBlock"));
