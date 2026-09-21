@@ -1064,6 +1064,10 @@ void main(void)
 	float locX000 = (locX00 + locX0) * 0.5 + rmXMetersToFraction(parkOffRoadM);   // the 2-row centre behind the road (34 + 30 = 64 m, the export's 64 m) + 1 m
 	float locZs56 = wallS-rmZTilesToFraction(col5+col6)*0.5;         // the 2-column centre: cols 5-6 span the 64 m from column 4's edge
 	float locZn56 = wallN+rmZTilesToFraction(col5+col6)*0.5;
+	// the park's baked treasure (the export's NuggetDroppedWood placeholder, user 2026-09-21) is the Royal Huntsman on
+	// his rock among the wolves - nuggetmods zpRockRoyalHuntsman 607 - on both banks, through the latch set before
+	// the two placements (the guild idiom); the mill's 195 latch follows
+	rmSetNuggetDifficulty(607, 607);
 	rmPlaceGroupingAtLoc(blockParkBig, 0, locX000, locZs56);
 	rmPlaceGroupingAtLoc(blockParkBig, 0, locX000, locZn56);
 	rmPlaceGroupingAtLoc(blockHouse1, 0, locX00, locZs7);

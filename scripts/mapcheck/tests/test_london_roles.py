@@ -299,6 +299,15 @@ class TestScope:
         assert 'rmSetAreaMix(area, "italy_cliff_top");' in t                                    # the same mix the countryside paints
         assert "int baseSizeZ = 613;" in t and "baseSizeZ = 653;" in t and "baseSizeZ = 773;" in t
 
+    def test_park_bakes_the_royal_huntsman_rescue(self):
+        t = _code(_text(LONDON))
+        i = t.index("rmPlaceGroupingAtLoc(blockParkBig, 0, locX000, locZs56);")
+        assert t[t.rindex("rmSetNuggetDifficulty(", 0, i):i].startswith("rmSetNuggetDifficulty(607, 607);")
+        park = (REPO / "game/randmaps/groupings/EU_SPC_Park_big.xml").read_bytes()
+        assert park.count(b"Nugget") == 1 and b">NuggetDroppedWood</unit>" in park and b"<heights>" in park
+        n = (REPO / "data/nuggetmods.xml").read_text(encoding="utf-8", errors="replace")
+        assert "<name>zpRockRoyalHuntsman</name>" in n and n.count("<difficulty>607</difficulty>") == 1
+
     def test_twin_identical_and_crlf(self):
         raw = LONDON.read_bytes()
         assert raw == (STEAM / "00000_zplondon.xs").read_bytes()
