@@ -961,8 +961,8 @@ void main(void)
 
 	// ---- 10.3 the cell table: 14 free cells per bank on the three-column core, the north bank the mirror of the
 	// south, each zone shuffled on its own - Florence's TWO zones (zpflorence.xs 779-788; user 2026-09-21): Centre (6)
-	// = around the Basilicas and along the shores, Suburbs (8) = col 3's other rows and the row-00 corners (Paris's
-	// Outer zone folded in; the old column 4 is gone).
+	// = the cells beside the landmarks, Suburbs (8) = behind the trade route and the far end at the Towers (user
+	// 2026-09-22; the old column 4 is gone).
 	const int NUM_CELLS = 28;
 	const int S_CENTER_START = 0;    const int S_CENTER_END = 5;
 	const int S_SUBURBS_START = 6;   const int S_SUBURBS_END = 13;
@@ -971,20 +971,22 @@ void main(void)
 	gCityLocs = xsArrayCreateVector(NUM_CELLS, cInvalidVector, "List of locations in the city");
 	gCityLocsStatus = xsArrayCreateBool(NUM_CELLS, false, "Flags a loc as taken or not");
 	//       idx  row     col S   col N
-	// Centre: col 1 rows 5, 6 / col 2 rows 5, 6 / col 3 rows 2, 3
-	cityCell(0,  locX5,  locZs1, locZn1);
-	cityCell(1,  locX6,  locZs1, locZn1);
-	cityCell(2,  locX5,  locZs2, locZn2);
-	cityCell(3,  locX6,  locZs2, locZn2);
-	cityCell(4,  locX2,  locZs3, locZn3);
-	cityCell(5,  locX3,  locZs3, locZn3);
-	// Suburbs: col 3 rows 4, 5 / col 1 row 00 / col 2 row 00 / col 3 row 0 / col 3 rows 00, 7, 8
-	cityCell(6,  locX4,  locZs3, locZn3);
-	cityCell(7,  locX5,  locZs3, locZn3);
-	cityCell(8,  locX00, locZs1, locZn1);
-	cityCell(9,  locX00, locZs2, locZn2);
-	cityCell(10, locX0,  locZs3, locZn3);
-	cityCell(11, locX00, locZs3, locZn3);
+	// Centre (6): the cells beside the Basilica and the natives - col 3 rows 2, 3, 4 and row 5 on cols 1, 2, 3
+	// (user 2026-09-22: the suburbs less around the palace / parliament / cathedral blocks)
+	cityCell(0,  locX2,  locZs3, locZn3);
+	cityCell(1,  locX3,  locZs3, locZn3);
+	cityCell(2,  locX4,  locZs3, locZn3);
+	cityCell(3,  locX5,  locZs1, locZn1);
+	cityCell(4,  locX5,  locZs2, locZn2);
+	cityCell(5,  locX5,  locZs3, locZn3);
+	// Suburbs (8): everything behind the trade route - rows 00 and 0 (beside the Construction and Factory blocks) -
+	// and the far end at the Towers: row 6 on cols 1, 2 and col 3 rows 7, 8
+	cityCell(6,  locX00, locZs1, locZn1);
+	cityCell(7,  locX00, locZs2, locZn2);
+	cityCell(8,  locX00, locZs3, locZn3);
+	cityCell(9,  locX0,  locZs3, locZn3);
+	cityCell(10, locX6,  locZs1, locZn1);
+	cityCell(11, locX6,  locZs2, locZn2);
 	cityCell(12, locX7,  locZs3, locZn3);
 	cityCell(13, locX8,  locZs3, locZn3);
 	shuffle(gCityLocs, S_CENTER_START, S_CENTER_END);
