@@ -91,6 +91,10 @@ class TestBigButtonsGreyed:
             for tag in ("<icon>resources\\images\\icons\\techs\\%s</icon>" % icon, "<associatedtech>zpNat%soffShadow</associatedtech>" % side, "<associatedpower>%s</associatedpower>" % power, "<subciv>%s</subciv>" % subciv, "<usebigbutton>"):
                 assert tag in c, (fake, tag)
             assert cm.index(fake) < cm.index("<!--") and ('<command page="1" column="1">%s</command>' % fake) in pm
+        st = _text(REPO / "data/strings/english/stringmods.xml")     # Paris 501944 / 501945: the description, then the red team block
+        for i, team in ((503565, "DEFENDERS"), (503566, "ATTACKERS")):
+            s = st[st.index('_locid="%d"' % i):st.index("</string>", st.index('_locid="%d"' % i))]
+            assert "&lt;color=1.0, 0.0, 0.0&gt;" in s and ('Available only for the team "%s".&lt;/color&gt;' % team) in s and s.count(chr(0x2022)) >= 3, i
         i = pm.index('<command page="1" column="1">zpSansculottexpansionFake</command>'); assert pm.index("zpParliamentRemonstranceFake</command>") > i and pm.index("zpStuartExpansionFake</command>") > i
 
 
@@ -105,7 +109,7 @@ class TestLondonExtension:
         hub = _tech("DENativeStuart")     # Paris 19804-19805: the hub grants the generic AND the SPC button (2026-09-22: without it the button never shows)
         assert '<effect mergemode="add" type="TechStatus" status="obtainable">zpStuartExpansion</effect>' in hub and '<effect mergemode="add" type="TechStatus" status="obtainable">zpStuartExpansionSPC</effect>' in hub
         st = _text(REPO / "data/strings/english/stringmods.xml")
-        assert 'Only the DEFENDERS of London' in st[st.index('_locid="503565"'):st.index('_locid="503566"')] and 'Only the ATTACKERS of London' in st[st.index('_locid="503566"'):]
+        assert 'Available only for the team "DEFENDERS"' in st[st.index('_locid="503565"'):st.index('_locid="503566"')] and 'Available only for the team "ATTACKERS"' in st[st.index('_locid="503566"'):]
         g = _tech("zpStuartExpansion"); l = _tech("zpStuartExpansionSPC")
         norm = lambda b: re.sub(r"<dbid>\d+</dbid>", "", b).replace("zpStuartExpansionSPC", "zpStuartExpansion")
         assert norm(g) == norm(l) and "<displaynameid>503549</displaynameid>" in l and "stuartextend_big.png" in l
