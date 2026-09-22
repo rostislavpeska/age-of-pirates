@@ -122,12 +122,12 @@ class TestRoles:
         assert t.count("int spawnSwitch = 0;") == 1 and "rmRandInt(0,1)" not in t                     # no second coin
         assert t.index("int spawnSwitch = 0;") < t.index("// ---- 0.5 THE LOBBY") < t.index("int defenderBank = rmRandInt(0, 1);") < t.index("int defenderTeam = 1;")
 
-    def test_interim_placement_reads_the_coin_the_same_way(self):
-        # spawnSwitch 0: team 1 on the far-z line (the north bank), team 0 on the near-z line (the south bank)
-        s = _section(_text(LONDON), "// ---- 12.3 INTERIM PLACEMENT", "int playerStart = rmCreateStartingUnitsObjectDef")
-        first = s[s.index("if (spawnSwitch ==0){"):s.index("else{")]
-        assert re.search(r"rmSetPlacementTeam\(0\);\n\t\t\trmPlacePlayersLine\(0\.10, zPlLine,", first)
-        assert re.search(r"rmSetPlacementTeam\(1\);\n\t\t\trmPlacePlayersLine\(0\.90, zPlLineFar,", first)
+    def test_strip_seats_read_the_coin_the_same_way(self):
+        # defenderBank 0: the defenders' strip on the south bank (wallS), the attackers' on the north; 1: swapped (2026-09-22)
+        s = _code(_section(_text(LONDON), "// ---- 12.2 SEATS BY ROLE", "// ---- 12.3 INTERIM PLACEMENT"))
+        assert "float stripZd1 = wallS - rmZTilesToFraction(cityDepthTiles);" in s and "float stripZa2 = wallN + rmZTilesToFraction(cityDepthTiles);" in s
+        d = re.search(r"if \(defenderBank == 1\)\n\t\{(.*?)\n\t\}", s, re.S).group(1)
+        assert "stripZd1 = wallN + rmZTilesToFraction(col4 - 8);" in d and "stripZa1 = wallS - rmZTilesToFraction(cityDepthTiles);" in d
 
     def test_one_vs_all_and_the_echo(self):
         s = _section(_text(LONDON), "// ---- 0.5 THE LOBBY", "// ---- 1. THE NAUTICAL LANE")
@@ -158,8 +158,8 @@ class TestRoles:
 class TestSeats:
     """12.2: one strip layout per team size, Florence's `if (count == k)` blocks. ONE = the Figma (seat rows 7-8, the
     turned park rows 5-6 x cols 5-6, houses rows 5-6 x col 4 and rows 3-4, the prop filler rows 1-2); TWO = seats
-    rows 7-8 + 3-4, houses rows 5-6, the filler; THREE = three seats + the filler; FOUR = four seats; 5+ and
-    non-2-team lobbies = the interim line, all eight spots filled."""
+    rows 7-8 + 3-4, houses rows 5-6, the filler; THREE = three seats + the filler; FOUR = four seats; FIVE AND MORE =
+    the grass strip (TestStripSeats); non-2-team lobbies = the interim line, all eight spots filled."""
 
     SIDES = (("defender", "Defender", "locZdSeat", "locZd4", "locZd6", "locZd56"), ("attacker", "Attacker", "locZaSeat", "locZa4", "locZa6", "locZa56"))
 
@@ -190,7 +190,7 @@ class TestSeats:
                      'int blockParkBig02 = cityBlock("park big turned", "EU_SPC_Park_big_02");',
                      "float locX56 = (locX5 + locX6) * 0.5;", "float locZs56 = wallS-rmZTilesToFraction(col5+col6)*0.5;",
                      "float locZn56 = wallN+rmZTilesToFraction(col5+col6)*0.5;",
-                     "if (cNumberTeams == 2 && defenderCount <= 4 && attackerCount <= 4)\n\t\tseatsByRole = 1;"):
+                     "if (cNumberTeams == 2)\n\t\tseatsByRole = 1;"):
             assert line in s, line
         d = re.search(r"float locZdSeat = locZs5;.*?if \(defenderBank == 1\)\n\t\{(.*?)\n\t\}", s, re.S).group(1)
         assert all(x in d for x in ("locZdSeat = locZn5;", "locZaSeat = locZs5;", "locZd4 = locZn4;", "locZa4 = locZs4;", "locZd6 = locZn6;", "locZa6 = locZs6;", "locZd56 = locZn56;", "locZa56 = locZs56;"))
@@ -262,16 +262,102 @@ class TestSeats:
     def test_seated_players_get_the_block_not_the_command_post(self):
         t = _code(_text(LONDON))
         loop = t[t.index("for(i=1; < cNumberNonGaiaPlayers + 1) {"):t.index("int harbourN1PostUnit")]
-        assert "if (seatsByRole == 1)\n\t\t{\n\t\t\trmPlaceGroupingAtLoc(blockPlayerLondon, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));\n\t\t}" in loop
-        assert loop.count("deSPCCommandPost") == 1 and loop.index("else") < loop.index("deSPCCommandPost")
+        assert "if (seatsByRole == 1 && areaSeat == 0)\n\t\t{\n\t\t\trmPlaceGroupingAtLoc(blockPlayerLondon, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));\n\t\t}" in loop
+        assert loop.count("deSPCCommandPost") == 1 and loop.index("if (seatsByRole == 0)") < loop.index("deSPCCommandPost")
         assert loop.count("rmPlaceObjectDefAtLoc(playerStart, i") == 1 and loop.count("rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5)") == 1
         before = t[t.index("int aiStartUrban"):t.index("for(i=1; < cNumberNonGaiaPlayers + 1) {")]
         assert "rmSetNuggetDifficulty(1, 1);" in before        # the player treasure is level 1 (Istanbul 2506, Florence 1266)
 
-    def test_interim_line_only_when_nobody_is_seated(self):
+    def test_interim_line_only_for_the_non_2_team_lobbies(self):
         s = _code(_section(_text(LONDON), "// ---- 12.3 INTERIM PLACEMENT", "int playerStart = rmCreateStartingUnitsObjectDef"))
-        assert "if (seatsByRole == 0 && cNumberTeams == 2){" in s and "if (seatsByRole == 0 && cNumberTeams != 2){" in s
-        assert not re.search(r"\n\tif \(cNumberTeams == 2\)\{", s) and "else{\n\t\trmPlacePlayersLine" not in s
+        assert "if (seatsByRole == 0 && cNumberTeams != 2){" in s and "rmPlacePlayersLine(0.10, zPlLine, 0.75, zPlLine, 0, 0);" in s
+        assert "cNumberTeams == 2" not in s and "spawnSwitch" not in s and "PlayerNum" not in s and "rmSetPlacementTeam" not in s   # the 2-team branch went with the strip (2026-09-22)
+
+
+class TestStripSeats:
+    """12.2 + the kit loop (user 2026-09-22): five and more per side - no block on that bank's reserved columns, one flat
+    grass strip over rows 1-8 x cols 4-6 instead, the team spaced along it on an all-integer tile pitch, each seat's kit
+    (the seat block's own protos) laid out by hand around the seat; the 2-team interim line is gone."""
+
+    def _sec(self):
+        return _code(_section(_text(LONDON), "// ---- 12.2 SEATS BY ROLE", "// ---- 12.3 INTERIM PLACEMENT"))
+
+    def test_helper_is_the_quays_rectangle_flat_plain_grass(self):
+        t = _text(LONDON)
+        h = _code(t[t.index("void seatStrip("):t.index("int countryside(string name")])
+        for line in ('int box = rmCreateBoxConstraint(name + " box", x1, z1, x2, z2);', "rmSetAreaSize(strip, 0.7, 0.7);",
+                     "rmSetAreaLocation(strip, (x1 + x2) * 0.5, (z1 + z2) * 0.5);", "rmSetAreaCoherence(strip, 1.0);", "rmSetAreaBaseHeight(strip, 1.0);",
+                     "rmAddAreaInfluenceSegment(strip, x1 + (x2 - x1) * 0.1, (z1 + z2) * 0.5, x2 - (x2 - x1) * 0.1, (z1 + z2) * 0.5);",
+                     'rmSetAreaTerrainType(strip, "new_england' + chr(92) + 'ground3_ne");', "rmAddAreaConstraint(strip, box);",
+                     "rmSetAreaObeyWorldCircleConstraint(strip, false);", "rmBuildArea(strip);"):
+            assert line in h, line
+        assert "rmSetAreaMix" not in h and "Elevation" not in h and "CliffType" not in h
+        assert t.index("void quaySegment(") < t.index("void seatStrip(") < t.index("int countryside(string name")
+
+    def test_strip_box_on_rows_1_to_8_and_the_reserved_columns_keyed_by_the_coin(self):
+        s = self._sec()
+        for line in ("float stripX1 = locX8 - rmXMetersToFraction(15.0);", "float stripX2 = locX1 + rmXMetersToFraction(15.0);",
+                     "float stripZd1 = wallS - rmZTilesToFraction(cityDepthTiles);", "float stripZd2 = wallS - rmZTilesToFraction(col4 - 8);",
+                     "float stripZa1 = wallN + rmZTilesToFraction(col4 - 8);", "float stripZa2 = wallN + rmZTilesToFraction(cityDepthTiles);",
+                     "int stripLenTiles = 134;", "int seatPitchTiles = 0;", "float seatXk = 0.0;", "if (cNumberTeams == 2)\n\t\tseatsByRole = 1;"):
+            assert line in s, line
+        d = re.search(r"if \(defenderBank == 1\)\n\t\{(.*?)\n\t\}", s, re.S).group(1)
+        for line in ("stripZd1 = wallN + rmZTilesToFraction(col4 - 8);", "stripZd2 = wallN + rmZTilesToFraction(cityDepthTiles);",
+                     "stripZa1 = wallS - rmZTilesToFraction(cityDepthTiles);", "stripZa2 = wallS - rmZTilesToFraction(col4 - 8);"):
+            assert line in d, line
+        assert "defenderCount <= 4" not in s and "attackerCount <= 4" not in s
+
+    def test_five_and_more_per_side(self):
+        s = self._sec()
+        for side, team, z_seat, strip, zs, post, z_out in (("defender", "defenderTeam", "locZdSeat", "D", "stripZd1, stripX2, stripZd2", "blockParliament2", "locZdOut"),
+                                                            ("attacker", "attackerTeam", "locZaSeat", "A", "stripZa1, stripX2, stripZa2", "blockStuart2", "locZaOut")):
+            i = s.index("if (%sCount >= 5)" % side); b = s[i:s.index("\n\t\t}", i)]
+            for line in ('seatStrip("seat strip %s", stripX1, %s);' % (strip, zs),
+                         "seatPitchTiles = stripLenTiles / %sCount;" % side,
+                         "seatXk = stripX1 + rmXTilesToFraction((stripLenTiles - seatPitchTiles * %sCount) / 2) + rmXTilesToFraction(seatPitchTiles) * 0.5;" % side,
+                         "for (k = 1; <= %sCount)" % side, "zpGetTeamPlayer(k, %s);" % team, "rmPlacePlayer(g_zpTeamPlayerResult, seatXk, %s);" % z_seat,
+                         "seatXk = seatXk + rmXTilesToFraction(seatPitchTiles);",
+                         "rmPlaceGroupingAtLoc(%s, 0, (xRoad + 0.5) * 0.5, %s);" % (post, z_out), "rmPlaceGroupingAtLoc(%s, 0, (0.5 + xGateMirror) * 0.5, %s);" % (post, z_out)):
+                assert line in b, (side, line)
+            assert "blockPropFiller" not in b and "blockHouse" not in b and "blockPlayerLondon" not in b and "blockParkBig02" not in b
+        assert s.index("if (defenderCount == 4)") < s.index("if (defenderCount >= 5)") < s.index("if (attackerCount == 1)") < s.index("if (attackerCount >= 5)") < s.index("if (seatsByRole == 0)")
+
+    def test_the_kit_is_the_seat_blocks_protos_laid_out_the_same_way_for_every_seat(self):
+        t = _code(_text(LONDON))
+        defs = t[t.index('int areaTC = rmCreateObjectDef("strip seat town center");'):t.index("rmSetNuggetDifficulty(1, 1);")]
+        items = re.findall(r'rmAddObjectDefItem\((\w+), (.*?)\);', defs)
+        assert items == [("areaTC", '"TownCenter", 1, 0.0'), ("areaMine", '"deMineCoalBuildable", 2, 5.0'), ("areaBerry", '"BerryBush", 6, 4.0'), ("areaDeer", '"Deer", 11, 6.0'),
+                         ("areaTrees", '"TreeNewEngland", 14, 9.0'), ("areaTrees", '"TreeGreatLakes", 14, 9.0'), ("areaTrees", '"UnderbrushForest", 8, 8.0'), ("areaNugget", '"Nugget", 1, 0.0')]
+        assert "rmSetObjectDefCreateHerd(areaDeer, true);" in defs and 'rmAddObjectDefToClass(areaTrees, rmClassID("classForest"));' in defs
+        assert "rmSetObjectDefMaxDistance(areaTC, 0.0);" in defs and defs.count("rmSetObjectDefMaxDistance(") == 6
+        block = _text(LONDON)
+        w = (REPO / "game/randmaps/groupings/EU_SPC_Player_London.xml").read_text(encoding="utf-8")
+        for proto, n in (("TownCenter", 1), ("deMineCoalBuildable", 2), ("BerryBush", 6), ("Deer", 11)):
+            assert w.count(">%s</unit>" % proto) == n, proto                                        # the kit's counts are the block's
+        loop = t[t.index("for(i=1; < cNumberNonGaiaPlayers + 1) {"):t.index("int harbourN1PostUnit")]
+        a = loop[loop.index("if (areaSeat == 1)"):loop.index("if (seatsByRole == 0)")]
+        places = re.findall(r"rmPlaceObjectDefAtLoc\((\w+), (\w+), (.*?)\);", a)
+        assert places == [("areaTC", "i", "seatX, seatZ"),
+                          ("areaMine", "0", "seatX + rmXMetersToFraction(8.0), seatZ - outZ * rmZMetersToFraction(16.0)"),
+                          ("areaBerry", "0", "seatX - rmXMetersToFraction(8.0), seatZ - outZ * rmZMetersToFraction(16.0)"),
+                          ("areaNugget", "0", "seatX, seatZ - outZ * rmZMetersToFraction(32.0)"),
+                          ("areaDeer", "0", "seatX, seatZ + outZ * rmZMetersToFraction(22.0)"),
+                          ("areaTrees", "0", "seatX - rmXMetersToFraction(10.0), seatZ + outZ * rmZMetersToFraction(38.0)"),
+                          ("areaTrees", "0", "seatX + rmXMetersToFraction(10.0), seatZ + outZ * rmZMetersToFraction(38.0)")]
+        assert "float outZ = 1.0;" in a and "if (seatZ < 0.5)\n\t\t\t\toutZ = -1.0;" in a
+        gate = loop[loop.index("int areaSeat = 0;"):loop.index("if (areaSeat == 1)")]
+        assert "if (seatsByRole == 1 && rmGetPlayerTeam(i) == defenderTeam && defenderCount >= 5)\n\t\t\tareaSeat = 1;" in gate
+        assert "if (seatsByRole == 1 && rmGetPlayerTeam(i) == attackerTeam && attackerCount >= 5)\n\t\t\tareaSeat = 1;" in gate
+        assert "if (seatsByRole == 1 && areaSeat == 0)" in gate
+        assert loop.count("rmPlaceObjectDefAtLoc(playerStart, i") == 1                             # the starting units for every seat, the Town Center apart (Black Sea)
+
+    def test_no_int_times_float_and_no_name_collisions(self):
+        t = _code(_text(LONDON)); main = t[t.index("void main("):]
+        for name in ("stripX1", "stripX2", "stripZd1", "stripZd2", "stripZa1", "stripZa2", "stripLenTiles", "seatPitchTiles", "seatXk", "areaSeat",
+                     "seatX", "seatZ", "outZ", "areaTC", "areaMine", "areaBerry", "areaDeer", "areaTrees", "areaNugget"):
+            assert len(re.findall(r"\b(?:int|float) %s\b" % name, main)) == 1, name
+        assert not re.search(r"\b(?:defenderCount|attackerCount|seatPitchTiles|stripLenTiles|k)\s*\*\s*(?:seatXk|outZ|stripX\d|stripZ\w+)\b", main)
+        assert not re.search(r"\b(?:seatXk|outZ|stripX\d|stripZ\w+)\s*\*\s*(?:defenderCount|attackerCount|seatPitchTiles|stripLenTiles|k)\b", main)
 
 
 class TestWalls:

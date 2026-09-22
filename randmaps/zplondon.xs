@@ -295,6 +295,24 @@ void quaySegment(float x1 = 0.0, float z1 = 0.0, float x2 = 1.0, float z2 = 1.0,
 // Countryside behind one bank (Paris's area), kept off the plateaus and 2 m off the walls: New England grass
 // (newengland_grass - textures only, no objects table, so no stray stones; user 2026-09-22) on Paris's gentle turbulence
 // (zpparis.xs 501-504: variation 2.0, persistence 0.2, noise bias 1). Returns the area, 12.7 places into it.
+// One flat grass strip for a side of five and more (user 2026-09-22): the quay's rectangle idiom (box + over-ask + the
+// influence segment along x, coherence 1.0) at the city floor's height 1.0, painted plain New England ground 3 - the grass
+// the British cliff tops wear; the newengland_grass MIX would scatter its rocks and underbrush through the bases
+void seatStrip(string name = "", float x1 = 0.0, float z1 = 0.0, float x2 = 1.0, float z2 = 1.0)
+{
+	int box = rmCreateBoxConstraint(name + " box", x1, z1, x2, z2);
+	int strip = rmCreateArea(name);
+	rmSetAreaSize(strip, 0.7, 0.7);
+	rmSetAreaLocation(strip, (x1 + x2) * 0.5, (z1 + z2) * 0.5);
+	rmSetAreaCoherence(strip, 1.0);
+	rmSetAreaBaseHeight(strip, 1.0);
+	rmAddAreaInfluenceSegment(strip, x1 + (x2 - x1) * 0.1, (z1 + z2) * 0.5, x2 - (x2 - x1) * 0.1, (z1 + z2) * 0.5);
+	rmSetAreaTerrainType(strip, "new_england\ground3_ne");
+	rmAddAreaConstraint(strip, box);
+	rmSetAreaObeyWorldCircleConstraint(strip, false);
+	rmBuildArea(strip);
+}
+
 int countryside(string name = "", float z = 0.5, int constraint = -1, int wallConstraint = -1)
 {
 	int area = rmCreateArea(name);
@@ -1161,9 +1179,10 @@ void main(void)
 	// seats, houses on rows 5-6, the filler; THREE = three seats and the filler at the road; FOUR = all four seats.
 	// The seats: the first player rows 7-8 (BLUE, the far end), the second rows 3-4 (RED), the third rows 5-6
 	// (YELLOW), the fourth rows 1-2 (PURPLE, at the road). Defenders on the defender bank (10.0's coin), attackers
-	// on the other. Teams of five and more: ON
-	// HOLD (user) - such lobbies, and any non-2-team lobby, keep the interim line placement in 12.3 with Paris's
-	// command posts, and the prop filler on all eight spots.
+	// on the other. FIVE AND MORE per side (user 2026-09-22, the Figma of seven): that bank's reserved columns hold no
+	// block at all - one flat grass strip over rows 1-8 x cols 4-6 instead, the team spaced evenly along it, each seat's
+	// kit laid out by hand in the kit loop below. Non-2-team lobbies keep the interim line in 12.3 with Paris's command
+	// posts and the prop filler on all eight spots.
 	int blockPlayerLondon = cityBlock("player london", "EU_SPC_Player_London");
 	int blockPropFiller = cityBlock("prop filler", "EU_SPC_Prop_Block");         // 30 x 45 like the seat block, props only
 	int blockParkBig02 = cityBlock("park big turned", "EU_SPC_Park_big_02");     // the user's "EU Park Rotated" export (2 x 2, the big park turned 180, a NuggetWolfRock placeholder)
@@ -1200,6 +1219,19 @@ void main(void)
 	float locZaStuart2In = locZn5 + rmZMetersToFraction(stuart2OffZM);              // the prop block's spot, the column offset signed outward
 	float locZdOut = wallS - rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);   // the defenders' countryside, the same depth
 	float locZdParl2In = locZs5 - rmZMetersToFraction(parl2OffZM);
+	// the grass strip (five and more per side, user 2026-09-22): rows 1-8 along x (row 8's far edge to row 1's road edge,
+	// half a 30 m block beyond each centre), the three reserved columns along z (column 3's outer edge to column 6's), keyed
+	// to the bank by the coin below; the seats sit on the strip's centre line (locZdSeat / locZaSeat = column 5) on an
+	// integer tile pitch - the strip's 134 tiles over the head-count, the remainder split to both ends (ints only, law 4)
+	float stripX1 = locX8 - rmXMetersToFraction(15.0);
+	float stripX2 = locX1 + rmXMetersToFraction(15.0);
+	float stripZd1 = wallS - rmZTilesToFraction(cityDepthTiles);
+	float stripZd2 = wallS - rmZTilesToFraction(col4 - 8);
+	float stripZa1 = wallN + rmZTilesToFraction(col4 - 8);
+	float stripZa2 = wallN + rmZTilesToFraction(cityDepthTiles);
+	int stripLenTiles = 134;                                                       // rows 1-8: 7 x 34 m + 30 m = 268 m
+	int seatPitchTiles = 0;
+	float seatXk = 0.0;                                                            // the float accumulator (law 4)
 	if (defenderBank == 1)
 	{
 		locZdSeat = locZn5;         locZaSeat = locZs5;
@@ -1210,9 +1242,14 @@ void main(void)
 		locZaStuart2In = locZs5 - rmZMetersToFraction(stuart2OffZM);
 		locZdOut = wallN + rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);
 		locZdParl2In = locZn5 + rmZMetersToFraction(parl2OffZM);
+		stripZd1 = wallN + rmZTilesToFraction(col4 - 8);
+		stripZd2 = wallN + rmZTilesToFraction(cityDepthTiles);
+		stripZa1 = wallS - rmZTilesToFraction(cityDepthTiles);
+		stripZa2 = wallS - rmZTilesToFraction(col4 - 8);
 	}
 	int seatsByRole = 0;
-	if (cNumberTeams == 2 && defenderCount <= 4 && attackerCount <= 4)
+	// every 2-team lobby seats by role (user 2026-09-22): one to four per side in the blocks, five and more on the strip
+	if (cNumberTeams == 2)
 		seatsByRole = 1;
 	if (seatsByRole == 1)
 	{
@@ -1268,6 +1305,22 @@ void main(void)
 			rmPlacePlayer(thirdDefender, locX56, locZdSeat);
 			rmPlacePlayer(fourthDefender, locX12, locZdSeat);
 			// four and more per side: no prop block, TWO Parliament posts outside the city, behind the two gaps between the gates
+			rmPlaceGroupingAtLoc(blockParliament2, 0, (xRoad + 0.5) * 0.5, locZdOut);
+			rmPlaceGroupingAtLoc(blockParliament2, 0, (0.5 + xGateMirror) * 0.5, locZdOut);
+		}
+		if (defenderCount >= 5)
+		{
+			// FIVE AND MORE per side (user 2026-09-22): the grass strip, the team along it from the far end (the first
+			// player where BLUE sits), the two Parliament posts outside as with four
+			seatStrip("seat strip D", stripX1, stripZd1, stripX2, stripZd2);
+			seatPitchTiles = stripLenTiles / defenderCount;
+			seatXk = stripX1 + rmXTilesToFraction((stripLenTiles - seatPitchTiles * defenderCount) / 2) + rmXTilesToFraction(seatPitchTiles) * 0.5;
+			for (k = 1; <= defenderCount)
+			{
+				zpGetTeamPlayer(k, defenderTeam);
+				rmPlacePlayer(g_zpTeamPlayerResult, seatXk, locZdSeat);
+				seatXk = seatXk + rmXTilesToFraction(seatPitchTiles);
+			}
 			rmPlaceGroupingAtLoc(blockParliament2, 0, (xRoad + 0.5) * 0.5, locZdOut);
 			rmPlaceGroupingAtLoc(blockParliament2, 0, (0.5 + xGateMirror) * 0.5, locZdOut);
 		}
@@ -1327,6 +1380,22 @@ void main(void)
 			rmPlaceGroupingAtLoc(blockStuart2, 0, (xRoad + 0.5) * 0.5, locZaOut);
 			rmPlaceGroupingAtLoc(blockStuart2, 0, (0.5 + xGateMirror) * 0.5, locZaOut);
 		}
+		if (attackerCount >= 5)
+		{
+			// FIVE AND MORE per side (user 2026-09-22): the grass strip, the team along it from the far end (the first
+			// player where BLUE sits), the two Stuart posts outside as with four
+			seatStrip("seat strip A", stripX1, stripZa1, stripX2, stripZa2);
+			seatPitchTiles = stripLenTiles / attackerCount;
+			seatXk = stripX1 + rmXTilesToFraction((stripLenTiles - seatPitchTiles * attackerCount) / 2) + rmXTilesToFraction(seatPitchTiles) * 0.5;
+			for (k = 1; <= attackerCount)
+			{
+				zpGetTeamPlayer(k, attackerTeam);
+				rmPlacePlayer(g_zpTeamPlayerResult, seatXk, locZaSeat);
+				seatXk = seatXk + rmXTilesToFraction(seatPitchTiles);
+			}
+			rmPlaceGroupingAtLoc(blockStuart2, 0, (xRoad + 0.5) * 0.5, locZaOut);
+			rmPlaceGroupingAtLoc(blockStuart2, 0, (0.5 + xGateMirror) * 0.5, locZaOut);
+		}
 	}
 	if (seatsByRole == 0)
 	{
@@ -1347,54 +1416,15 @@ void main(void)
 		rmPlaceGroupingAtLoc(blockParliament2, 0, (0.5 + xGateMirror) * 0.5, locZdOut);
 	}
 	rmEchoInfo("LONDON seats: seatsByRole " + seatsByRole + " defenders x" + defenderCount + " at z " + rmZFractionToMeters(locZdSeat) + " m, attackers x" + attackerCount + " at z " + rmZFractionToMeters(locZaSeat) + " m");
+	rmEchoInfo("LONDON strip seats: pitch " + seatPitchTiles + " tiles (0 = no side of five and more)");
 
 	// ---- 12.3 INTERIM PLACEMENT (Paris's placement transposed onto the z axis), spawnSwitch set in 0.5 from the
-	// landmark coin (team 1 on the defenders' bank) - only when 12.2 seats nobody --------------------------------
+	// landmark coin - the non-2-team lobbies only (user 2026-09-22: every 2-team lobby seats in 12.2, five and more per
+	// side on the grass strip) ------------------------------------------------------------------------------------
 	// z anchored in METRES from the map edge: 36 m for every player count = 24 m beyond the last column's outer edge
 	// (the strip is 60.5 m; Paris's 0.07 / 0.10 fractions of the old frame were 40 / 57 m). Floats only - law 4.
 	float zPlEdgeM = 36.0;
-	float zPlNear = rmZMetersToFraction(zPlEdgeM);
 	float zPlLine = rmZMetersToFraction(zPlEdgeM);
-	float zPlNearFar = 1.0 - zPlNear;
-	float zPlLineFar = 1.0 - zPlLine;
-	if (seatsByRole == 0 && cNumberTeams == 2){
-		if (spawnSwitch ==0){
-			if (PlayerNum == 2)
-			{
-				rmPlacePlayer(1, 0.35, zPlNear);
-				rmPlacePlayer(2, 0.65, zPlNearFar);
-			}
-			if (PlayerNum == 3 || PlayerNum == 4)
-			{
-				rmSetPlacementTeam(0);
-				rmPlacePlayersLine(0.23, zPlLine, 0.73, zPlLine, 0, 0);
-				rmSetPlacementTeam(1);
-				rmPlacePlayersLine(0.73, zPlLineFar, 0.23, zPlLineFar, 0, 0);
-			}
-			rmSetPlacementTeam(0);
-			rmPlacePlayersLine(0.10, zPlLine, 0.75, zPlLine, 0, 0);
-			rmSetPlacementTeam(1);
-			rmPlacePlayersLine(0.90, zPlLineFar, 0.25, zPlLineFar, 0, 0);
-		}
-		else{
-			if (PlayerNum == 2)
-			{
-				rmPlacePlayer(2, 0.35, zPlNear);
-				rmPlacePlayer(1, 0.65, zPlNearFar);
-			}
-			if (PlayerNum == 3 || PlayerNum == 4)
-			{
-				rmSetPlacementTeam(1);
-				rmPlacePlayersLine(0.23, zPlLine, 0.73, zPlLine, 0, 0);
-				rmSetPlacementTeam(0);
-				rmPlacePlayersLine(0.73, zPlLineFar, 0.23, zPlLineFar, 0, 0);
-			}
-			rmSetPlacementTeam(1);
-			rmPlacePlayersLine(0.10, zPlLine, 0.75, zPlLine, 0, 0);
-			rmSetPlacementTeam(0);
-			rmPlacePlayersLine(0.90, zPlLineFar, 0.25, zPlLineFar, 0, 0);
-		}
-	}
 	if (seatsByRole == 0 && cNumberTeams != 2){
 		rmPlacePlayersLine(0.10, zPlLine, 0.75, zPlLine, 0, 0);
 	}
@@ -1404,6 +1434,38 @@ void main(void)
 	rmSetObjectDefMaxDistance(playerStart, 12.0);
 	int aiStartUrban = rmCreateObjectDef("is city map");
 	rmAddObjectDefItem(aiStartUrban, "zpAIStartUrbanMap", 1, 0.0);
+	// the grass strip's kit (five and more per side, user 2026-09-22): the seat block's own protos and counts
+	// (EU_SPC_Player_London: TownCenter 1, deMineCoalBuildable 2, BerryBush 6, Deer 11, TreeNewEngland / TreeGreatLakes /
+	// UnderbrushForest, one Nugget - level 1 through the latch below), the Town Center pinned on the seat, the rest with
+	// 3 m of slack around their spots; the Town Center goes with the starting units as on Black Sea (zpblacksea.xs 949-955)
+	int areaTC = rmCreateObjectDef("strip seat town center");
+	rmAddObjectDefItem(areaTC, "TownCenter", 1, 0.0);
+	rmSetObjectDefMinDistance(areaTC, 0.0);
+	rmSetObjectDefMaxDistance(areaTC, 0.0);
+	int areaMine = rmCreateObjectDef("strip seat coal");
+	rmAddObjectDefItem(areaMine, "deMineCoalBuildable", 2, 5.0);
+	rmSetObjectDefMinDistance(areaMine, 0.0);
+	rmSetObjectDefMaxDistance(areaMine, 3.0);
+	int areaBerry = rmCreateObjectDef("strip seat berries");
+	rmAddObjectDefItem(areaBerry, "BerryBush", 6, 4.0);
+	rmSetObjectDefMinDistance(areaBerry, 0.0);
+	rmSetObjectDefMaxDistance(areaBerry, 3.0);
+	int areaDeer = rmCreateObjectDef("strip seat deer");
+	rmAddObjectDefItem(areaDeer, "Deer", 11, 6.0);
+	rmSetObjectDefCreateHerd(areaDeer, true);
+	rmSetObjectDefMinDistance(areaDeer, 0.0);
+	rmSetObjectDefMaxDistance(areaDeer, 3.0);
+	int areaTrees = rmCreateObjectDef("strip seat trees");
+	rmAddObjectDefItem(areaTrees, "TreeNewEngland", 14, 9.0);
+	rmAddObjectDefItem(areaTrees, "TreeGreatLakes", 14, 9.0);
+	rmAddObjectDefItem(areaTrees, "UnderbrushForest", 8, 8.0);
+	rmAddObjectDefToClass(areaTrees, rmClassID("classForest"));
+	rmSetObjectDefMinDistance(areaTrees, 0.0);
+	rmSetObjectDefMaxDistance(areaTrees, 3.0);
+	int areaNugget = rmCreateObjectDef("strip seat treasure");
+	rmAddObjectDefItem(areaNugget, "Nugget", 1, 0.0);
+	rmSetObjectDefMinDistance(areaNugget, 0.0);
+	rmSetObjectDefMaxDistance(areaNugget, 3.0);
 
 	// the seated player's kit is the block itself (Istanbul's start block: the export's own Town Center, owner = the
 	// player); its baked treasure is a LEVEL 1 nugget (user 2026-09-21) - the latch Istanbul (2506) and Florence (1266)
@@ -1413,11 +1475,34 @@ void main(void)
 	for(i=1; < cNumberNonGaiaPlayers + 1) {
 		int id=rmCreateArea("Player"+i);
 		rmSetPlayerArea(i, id);
-		if (seatsByRole == 1)
+		int areaSeat = 0;                                              // five and more on this player's side (user 2026-09-22): the strip's kit instead of the block
+		if (seatsByRole == 1 && rmGetPlayerTeam(i) == defenderTeam && defenderCount >= 5)
+			areaSeat = 1;
+		if (seatsByRole == 1 && rmGetPlayerTeam(i) == attackerTeam && attackerCount >= 5)
+			areaSeat = 1;
+		if (seatsByRole == 1 && areaSeat == 0)
 		{
 			rmPlaceGroupingAtLoc(blockPlayerLondon, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 		}
-		else
+		if (areaSeat == 1)
+		{
+			// the seat block's kit laid out the same way for every seat: the Town Center on the seat, the coal and the
+			// berries 16 m on the city side, the treasure 32 m on the city side, the deer 22 m and two tree clumps 38 m on
+			// the wall side (the strip is 96 m deep, 48 m either side of the seat); outZ points away from the river
+			float seatX = rmPlayerLocXFraction(i);
+			float seatZ = rmPlayerLocZFraction(i);
+			float outZ = 1.0;
+			if (seatZ < 0.5)
+				outZ = -1.0;
+			rmPlaceObjectDefAtLoc(areaTC, i, seatX, seatZ);
+			rmPlaceObjectDefAtLoc(areaMine, 0, seatX + rmXMetersToFraction(8.0), seatZ - outZ * rmZMetersToFraction(16.0));
+			rmPlaceObjectDefAtLoc(areaBerry, 0, seatX - rmXMetersToFraction(8.0), seatZ - outZ * rmZMetersToFraction(16.0));
+			rmPlaceObjectDefAtLoc(areaNugget, 0, seatX, seatZ - outZ * rmZMetersToFraction(32.0));
+			rmPlaceObjectDefAtLoc(areaDeer, 0, seatX, seatZ + outZ * rmZMetersToFraction(22.0));
+			rmPlaceObjectDefAtLoc(areaTrees, 0, seatX - rmXMetersToFraction(10.0), seatZ + outZ * rmZMetersToFraction(38.0));
+			rmPlaceObjectDefAtLoc(areaTrees, 0, seatX + rmXMetersToFraction(10.0), seatZ + outZ * rmZMetersToFraction(38.0));
+		}
+		if (seatsByRole == 0)
 		{
 			int startID = rmCreateObjectDef("object"+i);
 			rmAddObjectDefItem(startID, "deSPCCommandPost", 1, 2.0);
