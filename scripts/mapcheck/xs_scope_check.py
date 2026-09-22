@@ -17,6 +17,8 @@ KEYWORDS = {"if", "else", "for", "while", "return", "break", "continue", "true",
             "maxInterval", "highFrequency", "runImmediately", "group", "priority", "label", "goto", "switch", "case",
             "default", "class", "dbg", "breakpoint", "infiniteLoop"}
 TYPES = ("int", "float", "string", "bool", "vector", "void")
+NL = chr(10)
+BS = chr(92)
 
 
 def builtins_from_dump(dump: Path):
@@ -27,12 +29,28 @@ def builtins_from_dump(dump: Path):
 
 
 def strip(src: str) -> str:
-    src = re.sub(r"/\*.*?\*/", lambda m: re.sub(r"[^\n]", " ", m.group(0)), src, flags=re.S)
-    src = re.sub(r"//[^\n]*", lambda m: " " * len(m.group(0)), src)
-    return re.sub(r'"(?:[^"\\\n]|\\.)*"', lambda m: '"' + " " * (len(m.group(0)) - 2) + '"', src)
+    """One pass: string literals -> quotes with spaces inside, // and /* */ comments -> spaces (newlines kept)."""
+    out = []; i = 0; n = len(src)
+    while i < n:
+        c = src[i]
+        if c == '"':
+            j = i + 1
+            while j < n and src[j] != '"' and src[j] != NL:
+                j += 2 if src[j] == BS else 1
+            closed = j < n and src[j] == '"'
+            out.append('"' + " " * (min(j, n) - i - 1) + ('"' if closed else "")); i = j + 1 if closed else j
+        elif src.startswith("//", i):
+            j = src.find(NL, i); j = n if j < 0 else j
+            out.append(" " * (j - i)); i = j
+        elif src.startswith("/*", i):
+            j = src.find("*/", i + 2); j = n if j < 0 else j + 2
+            out.append("".join(NL if ch == NL else " " for ch in src[i:j])); i = j
+        else:
+            out.append(c); i += 1
+    return "".join(out)
 
 
-def line_of(src, pos): return src.count("\n", 0, pos) + 1
+def line_of(src, pos): return src.count(NL, 0, pos) + 1
 
 
 def functions(src):
@@ -55,7 +73,6 @@ def check(path: Path, funcs_builtin, consts_builtin, verbose=False):
     raw = path.read_text(encoding="utf-8", errors="replace"); src = strip(raw); findings = []
     fns = functions(src)
     fn_pos = {n: p for n, _, _, _, p in fns}
-    # globals: typed declarations outside every function body
     in_fn = [(a, b) for _, _, a, b, _ in fns]
     def inside_fn(pos): return any(a <= pos <= b for a, b in in_fn)
     globals_ = {}
@@ -63,20 +80,17 @@ def check(path: Path, funcs_builtin, consts_builtin, verbose=False):
         if not inside_fn(m.start()) and not re.search(r"\(\s*$", src[max(0, m.start() - 40):m.start()]):
             globals_.setdefault(m.group(2), m.start())
     for name, params, a, b, sigpos in fns:
-        body = src[a:b]; declared = {}; order = []
+        body = src[a:b]; declared = {}
         for p in params: declared[p] = a
-        # declarations in body order (any nesting - no block scope)
         for m in re.finditer(r"\b(int|float|string|bool|vector)\s+([A-Za-z_]\w*)\s*(=|;)", body):
             v = m.group(2); pos = a + m.start()
             if v in declared and declared[v] != a:
                 findings.append((line_of(src, pos), name, "DOUBLE", "%s declared again in %s (first at line %d)" % (v, name, line_of(src, declared[v]))))
             else:
                 declared.setdefault(v, pos)
-        # bare for-loop variables: auto-declared at their first for
         for m in re.finditer(r"\bfor\s*\(\s*([A-Za-z_]\w*)\s*=", body):
             v = m.group(1); pos = a + m.start()
             declared.setdefault(v, pos)
-        # identifier uses
         for m in re.finditer(r"\b([A-Za-z_]\w*)\b", body):
             v = m.group(1); pos = a + m.start()
             nxt = body[m.end():m.end() + 2].lstrip()
@@ -93,11 +107,9 @@ def check(path: Path, funcs_builtin, consts_builtin, verbose=False):
             if v in declared:
                 if declared[v] > pos: findings.append((line_of(src, pos), name, "BEFORE_DECL", "%s used before its declaration (line %d)" % (v, line_of(src, declared[v]))))
                 continue
-            if v in globals_ or v in consts_builtin or v.startswith(("c", "g")) and (v in consts_builtin or v in globals_): continue
+            if v in globals_ or v in consts_builtin: continue
             if re.fullmatch(r"c[A-Z]\w*", v): continue                                       # engine constants cNumber..., cTech..., cElev...
-            if v.startswith(("rm", "xs", "tr")) and v in funcs_builtin: continue
             findings.append((line_of(src, pos), name, "UNDEFINED", "%s is not declared anywhere before use" % v))
-    # dedupe by (line, msg)
     seen = set(); out = []
     for f in sorted(findings):
         k = (f[0], f[3])
