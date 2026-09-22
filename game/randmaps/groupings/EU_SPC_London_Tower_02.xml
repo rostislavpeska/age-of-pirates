@@ -66,8 +66,6 @@
 		<unit variation="223" posx="12.0556" posz="-24.6892" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="223" posx="10.5960" posz="-23.0931" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="223" posx="-9.8500" posz="-24.8593" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
-		<unit variation="187" posx="-19.5350" posz="-20.0482" orientx="-0.7077" orienty="0.0000" orientz="-0.7065">zpSPCSocketCityTowerWooden</unit>
-		<unit variation="187" posx="21.4007" posz="-20.4477" orientx="0.7058" orienty="0.0000" orientz="-0.7084">zpSPCSocketCityTowerWooden</unit>
 		<unit variation="9" posx="14.9525" posz="-22.0103" orientx="-0.3835" orienty="0.0000" orientz="-0.9235">deSPCFortCornerProp</unit>
 		<unit variation="9" posx="-13.7554" posz="-22.2136" orientx="0.3824" orienty="0.0000" orientz="-0.9240">deSPCFortCornerProp</unit>
 		<unit variation="9" posx="6.6379" posz="-22.5508" orientx="-0.0013" orienty="0.0000" orientz="-1.0000">deSPCFortCornerProp</unit>
@@ -162,9 +160,7 @@
 		<unit variation="0" posx="-11.1556" posz="16.2278" orientx="0.7055" orienty="0.0000" orientz="-0.7087">PropsPoles</unit>
 		<unit variation="0" posx="10.0861" posz="16.2629" orientx="0.7055" orienty="0.0000" orientz="-0.7087">PropsPoles</unit>
 		<unit variation="225" posx="23.3967" posz="18.5341" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deSPCFortWallMediumProp</unit>
-		<unit variation="187" posx="-19.6310" posz="21.7181" orientx="-0.7058" orienty="0.0000" orientz="0.7084">zpSPCSocketCityTowerWooden</unit>
 		<unit variation="9" posx="-24.4933" posz="19.7311" orientx="-0.9241" orienty="0.0000" orientz="-0.3821">deSPCFortCornerProp</unit>
-		<unit variation="187" posx="21.5068" posz="22.0601" orientx="0.7084" orienty="0.0000" orientz="0.7058">zpSPCSocketCityTowerWooden</unit>
 		<unit variation="9" posx="25.8586" posz="20.1173" orientx="0.9236" orienty="0.0000" orientz="-0.3834">deSPCFortCornerProp</unit>
 		<unit variation="225" posx="-23.9482" posz="22.0872" orientx="-1.0000" orienty="0.0000" orientz="0.0001">deSPCFortWallMediumProp</unit>
 		<unit variation="38" posx="10.5176" posz="21.8954" orientx="0.0000" orienty="0.0000" orientz="1.0000">deSPCFortWallLargeProp</unit>
@@ -254,6 +250,10 @@
 		<unit variation="49" posx="-3.6777" posz="31.0417" orientx="0.0000" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
 		<unit variation="174" posx="16.7447" posz="30.7834" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpPropsColony</unit>
 		<unit variation="152" posx="29.7005" posz="30.6432" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpPropsColony</unit>
+		<unit variation="187" posx="-19.5350" posz="-20.0482" orientx="-0.7077" orienty="0.0000" orientz="-0.7065">zpSPCSocketCityTowerWooden</unit>
+		<unit variation="187" posx="21.4007" posz="-20.4477" orientx="0.7058" orienty="0.0000" orientz="-0.7084">zpSPCSocketCityTowerWooden</unit>
+		<unit variation="187" posx="-19.6310" posz="21.7181" orientx="-0.7058" orienty="0.0000" orientz="0.7084">zpSPCSocketCityTowerWooden</unit>
+		<unit variation="187" posx="21.5068" posz="22.0601" orientx="0.7084" orienty="0.0000" orientz="0.7058">zpSPCSocketCityTowerWooden</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">

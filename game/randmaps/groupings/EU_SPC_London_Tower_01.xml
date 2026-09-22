@@ -61,7 +61,6 @@
 		<unit variation="20" posx="11.0023" posz="-25.8211" orientx="0.0008" orienty="-0.0000" orientz="1.0000">deSPCTreeOakProp</unit>
 		<unit variation="225" posx="20.2741" posz="-25.7953" orientx="-0.0001" orienty="0.0000" orientz="-1.0000">deSPCFortWallMediumProp</unit>
 		<unit variation="54" posx="-17.6772" posz="-23.8973" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deSPCFortWallMediumProp</unit>
-		<unit variation="187" posx="-21.5068" posz="-22.0601" orientx="-0.7084" orienty="0.0000" orientz="-0.7058">zpSPCSocketCityTowerWooden</unit>
 		<unit variation="223" posx="-14.3622" posz="-25.7651" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="225" posx="15.7141" posz="-23.8981" orientx="-0.7072" orienty="0.0000" orientz="-0.7071">deSPCFortWallMediumProp</unit>
 		<unit variation="223" posx="11.0695" posz="-25.1801" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
@@ -88,7 +87,6 @@
 		<unit variation="223" posx="-12.4415" posz="-23.9680" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
 		<unit variation="9" posx="5.4852" posz="-23.5596" orientx="-0.0007" orienty="0.0000" orientz="-1.0000">deSPCFortCornerProp</unit>
 		<unit variation="225" posx="23.9482" posz="-22.0872" orientx="1.0000" orienty="0.0000" orientz="-0.0001">deSPCFortWallMediumProp</unit>
-		<unit variation="187" posx="19.6310" posz="-21.7181" orientx="0.7058" orienty="0.0000" orientz="-0.7084">zpSPCSocketCityTowerWooden</unit>
 		<unit variation="9" posx="-15.7575" posz="-22.8590" orientx="0.3824" orienty="0.0000" orientz="-0.9240">deSPCFortCornerProp</unit>
 		<unit variation="9" posx="13.0032" posz="-22.9158" orientx="-0.3829" orienty="0.0000" orientz="-0.9238">deSPCFortCornerProp</unit>
 		<unit variation="223" posx="10.9795" posz="-23.8511" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>
@@ -174,9 +172,7 @@
 		<unit variation="0" posx="7.5154" posz="15.9372" orientx="-0.7055" orienty="0.0000" orientz="0.7087">PropsPoles</unit>
 		<unit variation="9" posx="-26.3999" posz="17.8994" orientx="-0.9242" orienty="0.0000" orientz="-0.3820">deSPCFortCornerProp</unit>
 		<unit variation="9" posx="24.8790" posz="17.6962" orientx="0.9236" orienty="0.0000" orientz="-0.3833">deSPCFortCornerProp</unit>
-		<unit variation="187" posx="19.5350" posz="20.0482" orientx="0.7077" orienty="0.0000" orientz="0.7065">zpSPCSocketCityTowerWooden</unit>
 		<unit variation="74" posx="-10.6974" posz="18.1138" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpPropsColony</unit>
-		<unit variation="187" posx="-21.4007" posz="20.4477" orientx="-0.7058" orienty="0.0000" orientz="0.7084">zpSPCSocketCityTowerWooden</unit>
 		<unit variation="54" posx="-25.8165" posz="20.8251" orientx="-1.0000" orienty="0.0000" orientz="0.0000">deSPCFortWallMediumProp</unit>
 		<unit variation="54" posx="24.7242" posz="20.6561" orientx="1.0000" orienty="0.0000" orientz="-0.0001">deSPCFortWallMediumProp</unit>
 		<unit variation="11" posx="11.9092" posz="18.7505" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpPropsColony</unit>
@@ -254,6 +250,10 @@
 		<unit variation="0" posx="-22.6961" posz="31.0107" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropsColony</unit>
 		<unit variation="137" posx="6.6883" posz="30.9982" orientx="-0.3827" orienty="0.0000" orientz="0.9239">zpPropsColony</unit>
 		<unit variation="165" posx="15.3984" posz="30.7429" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropsColony</unit>
+		<unit variation="187" posx="-21.5068" posz="-22.0601" orientx="-0.7084" orienty="0.0000" orientz="-0.7058">zpSPCSocketCityTowerWooden</unit>
+		<unit variation="187" posx="19.6310" posz="-21.7181" orientx="0.7058" orienty="0.0000" orientz="-0.7084">zpSPCSocketCityTowerWooden</unit>
+		<unit variation="187" posx="19.5350" posz="20.0482" orientx="0.7077" orienty="0.0000" orientz="0.7065">zpSPCSocketCityTowerWooden</unit>
+		<unit variation="187" posx="-21.4007" posz="20.4477" orientx="-0.7058" orienty="0.0000" orientz="0.7084">zpSPCSocketCityTowerWooden</unit>
 	</units>
 	<tiles>
 		<tilegroup type="Block" subtype="city\ground1_city_street_ground">

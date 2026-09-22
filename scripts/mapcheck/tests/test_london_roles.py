@@ -686,6 +686,55 @@ class TestTowerOwnership:
         made = set(re.findall(r'rmCreateTrigger\("([^"]+)"', s)); used = set(re.findall(r'rmTriggerID\("([^"]+)"', s))
         assert made == used and len(made) == 10, (made ^ used)
 
+    SOCKET_VARS = ("towerSSocket1Unit", "towerSSocket2Unit", "towerSSocket3Unit", "towerSSocket4Unit", "towerNSocket1Unit", "towerNSocket2Unit", "towerNSocket3Unit", "towerNSocket4Unit")
+
+    def test_sockets_last_in_the_exports(self):
+        # AztecCity's order law (user 2026-09-22): the tower sockets are the export's last four units, so a marker placed right after
+        # the grouping addresses them as marker - 1 .. - 4
+        for name in self.SOCKETS:
+            lines = (REPO / ("game/randmaps/groupings/%s.xml" % name)).read_bytes().decode("utf-8").split(chr(13) + chr(10))
+            end = lines.index(chr(9) + "</units>")
+            assert all(l.endswith(">zpSPCSocketCityTowerWooden</unit>") for l in lines[end - 4:end]) and not lines[end - 5].endswith(">zpSPCSocketCityTowerWooden</unit>")
+
+    def test_markers_right_after_the_groupings(self):
+        t = re.sub(r"[ \t]+//[^\n]*", "", _code(_text(LONDON)))   # trailing comments off
+        for bank, var, x, z in (("S", "towerSMark", "locX78", "locZs12"), ("N", "towerNMark", "locX78", "locZn12")):
+            seg = chr(10).join(["\tint tower%sInst = rmPlaceGroupingInstanceAtLoc(blockTower%s, %s, %s, 0);" % (bank, bank, x, z),
+                                '\tint %s = rmCreateObjectDef("tower mark %s");' % (var, "south" if bank == "S" else "north"),
+                                '\trmAddObjectDefItem(%s, "zpSPCWaterSpawnPoint", 1, 0.0);' % var,
+                                "\trmSetObjectDefAllowOverlap(%s, true);" % var, "\trmSetObjectDefMinDistance(%s, 0.0);" % var, "\trmSetObjectDefMaxDistance(%s, 0.0);" % var,
+                                "\trmPlaceObjectDefAtLoc(%s, 0, %s, %s);" % (var, x, z)])
+            assert t.count(seg) == 1, bank
+            assert ("int %sUnit = rmGetUnitPlaced(%s, 0) + instanceIdShift;" % (var, var)) in t       # Istanbul 4205-4206
+            for n in range(1, 5):
+                assert ("int tower%sSocket%dUnit = %sUnit - %d;" % (bank, n, var, 5 - n)) in t     # AztecCity 1348-1351
+
+    def test_ai_socket_build_is_the_last_block(self):
+        raw = _text(LONDON); h = raw.index("// ---- 16. AI SOCKET BUILD"); t = _code(raw); i = t.index('rmCreateTrigger("LondonAI_Plr" + k);'); s = t[i:]
+        assert raw[h:].count("// ----") == 1 and raw.rindex("rmCreateTrigger(") > h and s.rstrip().endswith("} // END")
+        assert chr(10).join(['\t\trmAddTriggerCondition("ZP PLAYER Human");', '\t\trmSetTriggerConditionParamInt("Player", k);', '\t\trmSetTriggerConditionParam("MyBool", "false");',
+                             '\t\trmAddTriggerEffect("ZP Set Tech Status (XS)");', '\t\trmSetTriggerEffectParamInt("PlayerID", k);',
+                             '\t\trmSetTriggerEffectParam("TechID", "cTechzpSPCPirateCityStatesAI");', '\t\trmSetTriggerEffectParamInt("Status", 2);']) in s
+        for var in self.SOCKET_VARS:
+            tag = var[5] + var[12]     # towerSSocket1Unit -> S1
+            on = chr(10).join(['\t\trmSwitchToTrigger(rmTriggerID("BuildTower%s_ON_Plr" + k));' % tag, '\t\trmAddTriggerCondition("Units in Area");',
+                               '\t\trmSetTriggerConditionParam("DstObject", "" + %s);' % var, '\t\trmSetTriggerConditionParamInt("Player", k);',
+                               '\t\trmSetTriggerConditionParam("UnitType", "zpSPCWoodenTowerAIProxy");', '\t\trmSetTriggerConditionParamInt("Dist", 10);',
+                               '\t\trmSetTriggerConditionParam("Op", ">=");', '\t\trmSetTriggerConditionParamInt("Count", 1);',
+                               '\t\trmAddTriggerEffect("Socket Build");', '\t\trmSetTriggerEffectParamInt("PlayerID", k);',
+                               '\t\trmSetTriggerEffectParam("Socket", "" + %s);' % var, '\t\trmSetTriggerEffectParam("Protounit", "zpSPCCityTowerWooden");',
+                               '\t\trmAddTriggerEffect("Fire Event");', '\t\trmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower%s_OFF_Plr" + k));' % tag])
+            assert s.count(on) == 1, var
+            off = chr(10).join(['\t\trmSwitchToTrigger(rmTriggerID("BuildTower%s_OFF_Plr" + k));' % tag, '\t\trmAddTriggerCondition("Timer ms");',
+                                '\t\trmSetTriggerConditionParamFloat("Param1", 1200);', '\t\trmAddTriggerEffect("Fire Event");',
+                                '\t\trmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower%s_ON_Plr" + k));' % tag])
+            assert s.count(off) == 1, var
+            assert ('rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower%s_ON_Plr" + k));' % tag) in s[:s.index('rmSwitchToTrigger(rmTriggerID("BuildTowerS1_ON_Plr" + k));')]
+        made = set(re.findall(r'rmCreateTrigger\("([^"]+)"', s)); used = set(re.findall(r'rmTriggerID\("([^"]+)"', s))
+        assert made == used and len(made) == 17, (made ^ used)
+        tt = (REPO / "data/techtreemods.xml").read_text(encoding="utf-8", errors="replace"); j = tt.index('<tech name="zpSPCPirateCityStatesAI"')
+        assert '<effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">' in tt[j:tt.index("</tech>", j)] and "<target type=\"ProtoUnit\">zpSPCSocketCityTowerWooden</target>" in tt[j:tt.index("</tech>", j)]
+
     def test_twin_identical_and_crlf(self):
         a = LONDON.read_bytes(); b = (STEAM / "00000_zplondon.xs").read_bytes()
         assert a == b and a.count(b"\r\n") == a.count(b"\n")
@@ -722,7 +771,8 @@ class TestScope:
             assert ("int harbour%sPostUnit = %d;" % (s, post)) in t and ("int harbour%sGuardUnit = %d;" % (s, guard)) in t and ("rmSetTriggerConditionParam(\"NuggetObject\", \"\" + harbour%sGuardUnit);" % s) in t
         inst = re.findall(r"int \w+ = rmGetGroupingInstanceUnitByType\([^;]*;", t)
         assert len(inst) == 18 and all(r.endswith("+ instanceIdShift;") for r in inst)   # 14 + the four gate sockets (13.3, 2026-09-22)
-        assert not re.search(r"\\w*(Unit|Id|Flag|Nug|Socket|Bld|Post)\w*\s*[-+]\s*\d+\s*[;)]", t.replace("Idx", "").replace("Tiles", ""))   # no literal id arithmetic
+        plain = chr(10).join(l for l in t.split(chr(10)) if not re.match(r"\s*int \w+Socket\dUnit = \w+MarkUnit - [1-4];$", l))   # AztecCity 1348-1351: marker - n is the one admitted literal form
+        assert not re.search(r"\\w*(Unit|Id|Flag|Nug|Socket|Bld|Post)\w*\s*[-+]\s*\d+\s*[;)]", plain.replace("Idx", "").replace("Tiles", ""))   # no other literal id arithmetic
 
     def test_twin_identical_and_crlf(self):
         raw = LONDON.read_bytes()
