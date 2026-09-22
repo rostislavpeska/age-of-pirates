@@ -1,5 +1,5 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
-<mapinfo displayName = "London" detailsText = "London (layout stage 2026-09-17): the Paris frame with London Bridge, two harbours, St Paul / Minster, Stuart / Parliament and the Tower of London. No resources yet. Images borrowed from Paris until London art exists."
+<mapinfo details = "503568" displayNameID = "503567" loadDetails="503569"
     imagepath = "ui\random_map\paris\paris_mini" cannotReplace = "" loadBackground="ui\random_map\paris\paris_map">
     <filter>Historical</filter>
     <loadss>ui\random_map\paris\paris_01</loadss>

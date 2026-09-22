@@ -426,8 +426,7 @@ class TestWalls:
         c = (REPO / "data/clifftypes2.xml").read_text(encoding="utf-8", errors="replace")
         assert '<cliff name="ZP Cliff British"' in c and (REPO / "data/clifftypes2.xml.xmb").is_file()
         b = c[c.index('<cliff name="ZP Cliff British"'):]; b = b[:b.index("</cliff>")]
-        assert "<top>new_england" + chr(92) + "ground3_ne</top>" in b and "<topedge>new_england" + chr(92) + "ground3_ne</topedge>" in b
-        assert "<bottomedge>new_england" + chr(92) + "ground3_ne</bottomedge>" in b and "ceylon_cliff_basecolor" in b
+        assert "<top>new_england" + chr(92) + "ground3_ne</top>" in b and "ceylon_cliff_basecolor" in b   # the edge textures are the user's live choice (clifftypes2.xml, 2026-09-22), not pinned
 
     def test_walls_come_before_the_road_is_built_hills_after_the_players(self):
         t = _code(_text(LONDON))
@@ -888,6 +887,24 @@ class TestBridgeOwnership:
     def test_twin_identical_and_crlf(self):
         a = LONDON.read_bytes(); b = (STEAM / "00000_zplondon.xs").read_bytes()
         assert a == b and a.count(b"\r\n") == a.count(b"\n")
+
+
+class TestMapInfo:
+    """Paris's shape (zpparis.xml: displayNameID / details / loadDetails; user 2026-09-22 AGREE): the title, the 1660 details with
+    both sides in yellow, the settlements and the player count, the loading text with the victory condition and each side's natives."""
+
+    def test_xml_and_strings(self):
+        x = (REPO / "randmaps/zplondon.xml").read_text(encoding="utf-8")
+        assert '<mapinfo details = "503568" displayNameID = "503567" loadDetails="503569"' in x and "detailsText" not in x and "<filter>Historical</filter>" in x
+        st = (REPO / "data/strings/english/stringmods.xml").read_text(encoding="utf-8")
+        assert '<string _locid="503567">Restoration of the Monarchy</string>' in st
+        d = st[st.index('_locid="503568"'):st.index('_locid="503569"')]
+        for s in ("London 1660 Historical Map", "both Royal Keeps", "ATTACKERS:", "House of Stuart techs", "DEFENDERS:", "Parliament techs", "Settlements: House of Stuart, Parliament, Jewish Quarter", "Maximum recommended players: 8"):
+            assert s in d, s
+        l = st[st.index('_locid="503569"'):st.index("</string>", st.index('_locid="503569"'))]
+        for s in ("both Royal Keeps for eight minutes", "Toll Station on London Bridge", "House of Stuart natives", "Parliament natives"):
+            assert s in l, s
+        assert "London 1660 Historical Map" in st[st.index('_locid="503558"'):st.index('_locid="503559"')] and "1642" not in st[st.index('_locid="503558"'):st.index('_locid="503559"')]
 
 
 class TestScope:
