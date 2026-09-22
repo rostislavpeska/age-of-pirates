@@ -38774,7 +38774,7 @@
         <target type="ProtoUnit">zpSPCSocketCityTowerWooden</target>
       </effect>
       <effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">
-        <target type="ProtoUnit">zpSPCSocketCityTowerFlat</target>
+        <target type="ProtoUnit">deSPCSocketCityTower</target>
       </effect>
     </effects>
   </tech>
@@ -38825,6 +38825,8 @@
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
       <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
       <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
+      <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
     </effects>
   </tech>
   <tech name="zpLondonDefenderSetup" type="Normal">
@@ -38847,6 +38849,8 @@
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
       <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
       <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
+      <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
     </effects>
   </tech>
   <tech name="zpNatParliamentoffShadow" type="Normal">

@@ -746,20 +746,20 @@ class TestTowerOwnership:
 class TestBridgeOwnership:
     """13.5 / 13.6 (user 2026-09-22): London Bridge follows its port socket like Paris's walls; its four tower sockets are
     the city-tower family (Venice / Bohemia's deSPCSocketCityTower -> deSPCCityTower, 'battery towers, not wooden ones')
-    as Flat clones (the city tower's FlattenGround would cut the deck - the reason the user's Flat props exist), placed
+    with Venice's own protos and per-map overrides (deSPCCityTower an air unit), placed
     last and read off a marker; gaia's towers are built from the sockets at start (AztecCity); the AI rebuilds through
     zpSPCLondonAI. Only the Tower of London keeps the wooden family."""
 
-    SWEEP = ("SPCFortGate", "deSPCFortWallLargeProp", "zpSPCFortCornerPropFlat", "zpSPCSocketCityTowerFlat", "zpSPCCityTowerFlat")
+    SWEEP = ("SPCFortGate", "deSPCFortWallLargeProp", "zpSPCFortCornerPropFlat", "deSPCSocketCityTower", "deSPCCityTower")
     BRIDGE_VARS = ("bridgeSocket1Unit", "bridgeSocket2Unit", "bridgeSocket3Unit", "bridgeSocket4Unit")
 
     def test_export_flat_sockets_last_and_unique_gate_sockets(self):
         b = (REPO / "game/randmaps/groupings/EU_SPC_London_Bridge.xml").read_bytes()
         assert b.count(b"\r\n") == b.count(b"\n") and b"zpSPCFortTowerPropFlat" not in b and b"SPCFortGate" not in b and b"Wooden" not in b
-        assert b.count(b">zpSPCSocketCityTowerFlat</unit>") == 4 and b.count(b">zpInvisibleGateSocket</unit>") == 2
+        assert b.count(b">deSPCSocketCityTower</unit>") == 4 and b.count(b">zpInvisibleGateSocket</unit>") == 2
         assert b.count(b">deSPCFortWallLargeProp</unit>") == 4 and b">SPCFortWallLarge</unit>" not in b     # prop walls like the Tower (user 2026-09-22)
         lines = b.decode("utf-8").split(chr(13) + chr(10)); end = lines.index(chr(9) + "</units>")
-        assert all(l.endswith(">zpSPCSocketCityTowerFlat</unit>") for l in lines[end - 4:end]) and not lines[end - 5].endswith(">zpSPCSocketCityTowerFlat</unit>")
+        assert all(l.endswith(">deSPCSocketCityTower</unit>") for l in lines[end - 4:end]) and not lines[end - 5].endswith(">deSPCSocketCityTower</unit>")
         gens = [i for i, l in enumerate(lines) if l.endswith(">zpInvisibleGateSocket</unit>")]
         for i, proto in zip(gens, ("zpInvisibleGateSocketE", "zpInvisibleGateSocketF")):
             head = lines[i][:lines[i].index(">zpInvisibleGateSocket</unit>")]
@@ -767,34 +767,23 @@ class TestBridgeOwnership:
         old = (REPO / "sandbox/backups/groupings/EU_SPC_London_Bridge_2026-09-22_flatprops.xml").read_bytes()
         assert old.count(b">zpSPCFortTowerPropFlat</unit>") == 4 and b.count(b"</unit>") == old.count(b"</unit>") + 2
         for l in lines[end - 4:end]:
-            assert (l.replace(">zpSPCSocketCityTowerFlat</unit>", ">zpSPCFortTowerPropFlat</unit>") + chr(13) + chr(10)).encode("utf-8") in old
+            assert (l.replace(">deSPCSocketCityTower</unit>", ">zpSPCFortTowerPropFlat</unit>") + chr(13) + chr(10)).encode("utf-8") in old
 
-    def test_flat_city_tower_clones_tech_strings_sound(self):
-        pm = (REPO / "data/protomods.xml").read_text(encoding="utf-8", errors="replace")
-        def rec(i, n):
-            j = pm.index('<unit id="%d" name="%s">' % (i, n)); return pm[j:pm.index("</unit>", j)]
-        assert pm.count('id="21196"') == 1 and pm.count('id="21197"') == 1 and pm.count('name="zpSPCSocketCityTowerFlat"') == 1 and pm.count('name="zpSPCCityTowerFlat"') == 1
-        assert "zpSPCSocketCityTowerWoodenFlat" not in pm and "zpSPCCityTowerWoodenFlat" not in pm
-        s = rec(21196, "zpSPCSocketCityTowerFlat")
-        for line in ("<dbid>21196</dbid>", "<displaynameid>123003</displaynameid>", "<editornameid>503563</editornameid>", "<socketbuildprotounit>zpSPCCityTowerFlat</socketbuildprotounit>",
-                     "<socketbuildrate>20.0000</socketbuildrate>", "<unittype>TowerSocket</unittype>", '<command page="1" column="0">deSocketBuildCityTower</command>', "<flag>AllowSocketPlacement</flag>"):
-            assert line in s, line
-        assert "FlattenGround" not in s and "deSPCCityTower<" not in s
-        w = rec(21197, "zpSPCCityTowerFlat")
-        for line in ("<dbid>21197</dbid>", "<displaynameid>123003</displaynameid>", "<editornameid>503564</editornameid>", "<socketunittype>TowerSocket</socketunittype>",
-                     "<initialhitpoints>2000.0000</initialhitpoints>", "<movementtype>air</movementtype>", "<flag>InvulnerableIfGaia</flag>", "<flag>CannotAttackIfGaia</flag>", "<tactics>"):
-            assert line in w, line
-        assert "FlattenGround" not in w and "tower_hm1.xml" in w and "Wooden" not in w
-        assert pm.index('<!--TEST AND TEMPORARY CONTENT-->') > pm.index('id="21197"') > pm.index('id="21196"') > pm.index('id="21195"')
-        tt = (REPO / "data/techtreemods.xml").read_text(encoding="utf-8", errors="replace"); j = tt.index('<tech name="zpSPCLondonAI" type="Normal">'); tech = tt[j:tt.index("</tech>", j)]
-        assert "<status>UNOBTAINABLE</status>" in tech and "<flag>Shadow</flag>" in tech and tt.index("<!--TEST TECHS-->") > j
-        assert '<effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">' in tech and '<target type="ProtoUnit">zpSPCWoodenTowerAIProxy</target>' in tech
-        for sock in ("zpSPCSocketCityTowerWooden", "zpSPCSocketCityTowerFlat"):
-            assert ('<effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">' + chr(10) + '        <target type="ProtoUnit">%s</target>' % sock) in tech     # read_text normalises CRLF
-        st = (REPO / "data/strings/english/stringmods.xml").read_text(encoding="utf-8")
-        assert '<string _locid="503563">ZP SPC Socket City Tower Flat</string>' in st and '<string _locid="503564">ZP SPC City Tower Flat</string>' in st
-        snd = (REPO / "sound/zpspccitytowerflat_snds.xml").read_bytes()
-        assert snd.count(b"\r\n") == snd.count(b"\n") and b'<protounit name="zpSPCCityTowerFlat">' in snd and b'<soundset name="UI_Select_Building_Outpost">' in snd and b'<soundset name="BuildingDestruction">' in snd
+    def test_venice_tower_family(self):
+        # user 2026-09-22: Venice's own towers, not clones - the vanilla tower techs must apply
+        pm = _text(REPO / "data/protomods.xml"); assert "CityTowerFlat" not in pm and 'id="21196"' not in pm and 'id="21197"' not in pm
+        lm = _text(REPO / "randmaps/zplondon.mods.xml")
+        assert re.search(r'<unit name="deSPCCityTower">\s*<movementtype>air</movementtype>\s*<flag mergeMode="remove">ColorTransformNonGaia</flag>\s*</unit>', lm)
+        assert re.search(r'<unit name="deSPCSocketCityTower">\s*<flag mergeMode="remove">ColorTransformNonGaia</flag>\s*</unit>', lm)
+        assert re.search(r'<unit name="deSPCCityTower">\s*<unittype mergemode="remove">AbstractCallMinutemen</unittype>\s*</unit>', lm)
+        tt = _text(REPO / "data/techtreemods.xml"); j = tt.index('<tech name="zpSPCLondonAI" type="Normal">'); tech = tt[j:tt.index("</tech>", j)]
+        for sock in ("zpSPCSocketCityTowerWooden", "deSPCSocketCityTower"):
+            assert ('<effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">' + chr(10) + '        <target type="ProtoUnit">%s</target>' % sock) in tech
+        for n in ("zpLondonAttackerSetup", "zpLondonDefenderSetup"):
+            k = tt.index('<tech name="%s"' % n); b = tt[k:tt.index("</tech>", k)]
+            assert '<effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>' in b, n     # zpVeniceCitySetup's unlock
+        st = _text(REPO / "data/strings/english/stringmods.xml"); assert '_locid="503563"' not in st and '_locid="503564"' not in st
+        assert not (REPO / "sound/zpspccitytowerflat_snds.xml").exists()
         for f in ("data/protomods.xml", "data/techtreemods.xml"):
             assert (REPO / (f + ".xmb")).stat().st_mtime >= (REPO / f).stat().st_mtime, f
 
@@ -862,15 +851,15 @@ class TestBridgeOwnership:
         s1 = s[s.index('rmSwitchToTrigger(rmTriggerID("BridgeTowers_Setup1"));'):s.index('rmSwitchToTrigger(rmTriggerID("BridgeTowers_Gaia"));')]
         sg = s[s.index('rmSwitchToTrigger(rmTriggerID("BridgeTowers_Gaia"));'):]
         # AztecCity 1565-1580 / 1618-1690: the sockets to the builder first, the builds in the next trigger, then back to gaia
-        assert conv("0", "1", "zpSPCSocketCityTowerFlat") in s0 and 'rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeTowers_Setup1"));' in s0 and s0.count("rmSetTriggerActive(true);") == 1
+        assert conv("0", "1", "deSPCSocketCityTower") in s0 and 'rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeTowers_Setup1"));' in s0 and s0.count("rmSetTriggerActive(true);") == 1
         assert '\trmAddTriggerCondition("Timer ms");' + chr(10) + '\trmSetTriggerConditionParamInt("Param1", 10);' in s0 and s0.count('rmAddTriggerEffect("Socket Build");') == 0
         for var in self.BRIDGE_VARS:
             assert chr(10).join(['\trmAddTriggerEffect("Socket Build");', '\trmSetTriggerEffectParamInt("PlayerID", 1);', '\trmSetTriggerEffectParam("Socket", "" + %s);' % var,
-                                 '\trmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");']) in s1, var
+                                 '\trmSetTriggerEffectParam("Protounit", "deSPCCityTower");']) in s1, var
         assert s1.count('rmAddTriggerEffect("Socket Build");') == 4 and 'rmSetTriggerEffectParamInt("PlayerID", 0);' not in s
-        assert s1.index(conv("1", "0", "zpSPCCityTowerFlat")) > s1.rindex('rmAddTriggerEffect("Socket Build");') and conv("1", "0", "zpSPCSocketCityTowerFlat") in s1
+        assert s1.index(conv("1", "0", "deSPCCityTower")) > s1.rindex('rmAddTriggerEffect("Socket Build");') and conv("1", "0", "deSPCSocketCityTower") in s1
         assert 'rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeTowers_Gaia"));' in s1 and s1.count("rmSetTriggerActive(false);") == 1
-        assert '\trmAddTriggerCondition("Timer ms");' + chr(10) + '\trmSetTriggerConditionParamInt("Param1", 2000);' in sg and conv("1", "0", "zpSPCCityTowerFlat") in sg and conv("1", "0", "zpSPCSocketCityTowerFlat") in sg
+        assert '\trmAddTriggerCondition("Timer ms");' + chr(10) + '\trmSetTriggerConditionParamInt("Param1", 2000);' in sg and conv("1", "0", "deSPCCityTower") in sg and conv("1", "0", "deSPCSocketCityTower") in sg
         assert sg.count("rmSetTriggerActive(false);") == 1 and "SPCFortWallLarge\"" not in t
         ai = t[t.index('rmCreateTrigger("LondonAI_Plr" + k);'):]
         for n, var in enumerate(self.BRIDGE_VARS, 1):
@@ -882,9 +871,9 @@ class TestBridgeOwnership:
                                '\t\trmSetTriggerConditionParam("UnitType", "zpSPCWoodenTowerAIProxy");', '\t\trmSetTriggerConditionParamInt("Dist", 10);',
                                '\t\trmSetTriggerConditionParam("Op", ">=");', '\t\trmSetTriggerConditionParamInt("Count", 1);',
                                '\t\trmAddTriggerEffect("Socket Build");', '\t\trmSetTriggerEffectParamInt("PlayerID", k);',
-                               '\t\trmSetTriggerEffectParam("Socket", "" + %s);' % var, '\t\trmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");'])
+                               '\t\trmSetTriggerEffectParam("Socket", "" + %s);' % var, '\t\trmSetTriggerEffectParam("Protounit", "deSPCCityTower");'])
             assert ai.count(on) == 1, var
-        assert ai.count('rmSetTriggerEffectParam("Protounit", "zpSPCCityTowerWooden");') == 8 and ai.count('rmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");') == 4
+        assert ai.count('rmSetTriggerEffectParam("Protounit", "zpSPCCityTowerWooden");') == 8 and ai.count('rmSetTriggerEffectParam("Protounit", "deSPCCityTower");') == 4
 
 
     def test_twin_identical_and_crlf(self):

@@ -209,5 +209,17 @@
 		<unit name="dePort">
 			<placementfile>dock_city.xml</placementfile>
 		</unit>
+		<!-- Venice's bridge / island towers (zpvenicecity.mods.xml, user 2026-09-22): deSPCCityTower is an air unit so a run-time
+		     Socket Build lands on the bridge deck; the vanilla tower techs (DESPCCannonTowers, DESPCTraceItalienne) apply -->
+		<unit name="deSPCCityTower">
+			<movementtype>air</movementtype>
+			<flag mergeMode="remove">ColorTransformNonGaia</flag>
+		</unit>
+		<unit name="deSPCSocketCityTower">
+			<flag mergeMode="remove">ColorTransformNonGaia</flag>
+		</unit>
+		<unit name="deSPCCityTower">
+			<unittype mergemode="remove">AbstractCallMinutemen</unittype>
+		</unit>
 	</protomods>
 </mods>
