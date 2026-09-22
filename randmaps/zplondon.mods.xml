@@ -229,5 +229,75 @@
 		<unit name="zpCinematicRevealerToAll">
 			<los>60</los>
 		</unit>
+		<!-- Paris's prop overrides (zpparis.mods.xml 209-249) for every prop London's groupings use, then London's own props in the
+		     same two shapes (user 2026-09-22): zpSPCCityHouse off the minimap and asleep like the Waterloo house, the dark-brick
+		     fences, colony props, Orthodox house, statue, fountain and obelisk asleep like Paris's fences and statues -->
+		<unit name="zpSPCEUHouseProp">
+			<animfile>buildings\native_settlement\zp_native_eu_houses_nosmoke.xml</animfile>
+		</unit>
+		<unit name="zpSPCVillageHouseProp">
+			<animfile>buildings\native_settlement\zp_native_village_houses_nosmoke.xml</animfile>
+		</unit>
+		<unit name="deNatEUPropStatue">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="deNatEUPropFence">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="ypSMJesuitAccessory">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+			<flag>NotSelectable</flag>
+		</unit>
+		<unit name="zpNativeStatueVenetian">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNativeUnitVenetian">
+			<flag>NoIdleActions</flag>
+		</unit>
+		<unit name="deNatEUPropVilGuards">
+			<flag>NoIdleActions</flag>
+		</unit>
+		<unit name="deNatEUPropVilMale">
+			<flag>NoIdleActions</flag>
+		</unit>
+		<unit name="deNatEUPropVilFemale">
+			<flag>NoIdleActions</flag>
+		</unit>
+		<unit name="zpSPCCityHouse">
+			<flag>DoNotShowOnMiniMap</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNatEUPropFencDarkBrickB">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNatEUPropFencDarkBrick">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpPropsColony">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNativeHouseOrthodox">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpPropStatueHomeCity">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpHCFountainC">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
+		<unit name="zpNatEUPropObelisk">
+			<flag>NoIdleActions</flag>
+			<flag>StartOnNoUpdate</flag>
+		</unit>
 	</protomods>
 </mods>
