@@ -282,16 +282,22 @@ class TestStripSeats:
     def _sec(self):
         return _code(_section(_text(LONDON), "// ---- 12.2 SEATS BY ROLE", "// ---- 12.3 INTERIM PLACEMENT"))
 
-    def test_helper_is_the_quays_rectangle_flat_dry_mix(self):
+    def test_helper_is_two_flat_layers_city_tiles_then_inset_grass(self):
         t = _text(LONDON)
         h = _code(t[t.index("void seatStrip("):t.index("int countryside(string name")])
-        for line in ('int box = rmCreateBoxConstraint(name + " box", x1, z1, x2, z2);', "rmSetAreaSize(strip, 0.7, 0.7);",
-                     "rmSetAreaLocation(strip, (x1 + x2) * 0.5, (z1 + z2) * 0.5);", "rmSetAreaCoherence(strip, 1.0);", "rmSetAreaBaseHeight(strip, 1.0);",
-                     "rmAddAreaInfluenceSegment(strip, x1 + (x2 - x1) * 0.1, (z1 + z2) * 0.5, x2 - (x2 - x1) * 0.1, (z1 + z2) * 0.5);",
-                     'rmSetAreaMix(strip, "italy_path");', "rmAddAreaConstraint(strip, box);",
-                     "rmSetAreaObeyWorldCircleConstraint(strip, false);", "rmBuildArea(strip);"):
-            assert line in h, line
-        assert "rmSetAreaTerrainType" not in h and "Elevation" not in h and "CliffType" not in h   # a MIX, the dry italy_path (user 2026-09-22)
+        assert "float walkM = 4.0)" in h
+        for layer, box, paint in (("strip", "box", 'rmSetAreaTerrainType(strip, "city' + chr(92) + 'ground1_city_street_ground");'),
+                                  ("lawn", "lawnBox", 'rmSetAreaMix(lawn, "newengland_grass");')):
+            for line in ("rmSetAreaSize(%s, 0.7, 0.7);" % layer, "rmSetAreaLocation(%s, (x1 + x2) * 0.5, (z1 + z2) * 0.5);" % layer,
+                         "rmSetAreaCoherence(%s, 1.0);" % layer, "rmSetAreaBaseHeight(%s, 1.0);" % layer,
+                         "rmAddAreaInfluenceSegment(%s, x1 + (x2 - x1) * 0.1, (z1 + z2) * 0.5, x2 - (x2 - x1) * 0.1, (z1 + z2) * 0.5);" % layer,
+                         paint, "rmAddAreaConstraint(%s, %s);" % (layer, box), "rmSetAreaObeyWorldCircleConstraint(%s, false);" % layer, "rmBuildArea(%s);" % layer):
+                assert line in h, line
+        assert 'int box = rmCreateBoxConstraint(name + " box", x1, z1, x2, z2);' in h
+        assert 'int lawnBox = rmCreateBoxConstraint(name + " lawn box", x1 + rmXMetersToFraction(walkM), z1 + rmZMetersToFraction(walkM), x2 - rmXMetersToFraction(walkM), z2 - rmZMetersToFraction(walkM));' in h
+        assert h.index("rmBuildArea(strip);") < h.index("int lawnBox") and "Elevation" not in h and "CliffType" not in h
+        g = (REPO / "game/randmaps/groupings/EU_SPC_Player_London.xml").read_text(encoding="utf-8")
+        assert 'type="PassableLand" subtype="city' + chr(92) + 'ground1_city_street_ground"' in g                # the groupings' own city tiles
         assert t.index("void quaySegment(") < t.index("void seatStrip(") < t.index("int countryside(string name")
 
     def test_strip_box_on_rows_1_to_8_and_the_reserved_columns_keyed_by_the_coin(self):
