@@ -38619,6 +38619,7 @@
         </target>
       </effect>
       <effect mergemode="add" type="TechStatus" status="obtainable">zpStuartExpansion</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpStuartExpansionSPC</effect>
       <effect mergemode="add" type="TechStatus" status="obtainable">zpStuartSovereignSeas</effect>
       <effect mergemode="add" type="TechStatus" status="obtainable">zpStuartRoyalBurgh</effect>
     </effects>

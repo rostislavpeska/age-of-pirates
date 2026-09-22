@@ -65,8 +65,8 @@ class TestStartingTechsByTeam:
 
 
 class TestBigButtonsGreyed:
-    SIDES = {"Parliament": ("zpParliamentRemonstrance", "parliament_hm_big.png", "zpParliament", "zpPowerParliamentRemonstrance", "zpParliamentRemonstranceFake", "503478", "503479"),
-             "Stuart": ("zpStuartExpansion", "stuartextend_big.png", "Stuart", "zpPowerStuartExpansion", "zpStuartExpansionFake", "503549", "503550")}
+    SIDES = {"Parliament": ("zpParliamentRemonstrance", "parliament_hm_big.png", "zpParliament", "zpPowerParliamentRemonstrance", "zpParliamentRemonstranceFake", "503478", "503565"),
+             "Stuart": ("zpStuartExpansion", "stuartextend_big.png", "Stuart", "zpPowerStuartExpansion", "zpStuartExpansionFake", "503549", "503566")}
 
     def test_tech_pairs_paris_shape(self):
         for side, (button, icon, subciv, power, fake, disp, roll) in self.SIDES.items():
@@ -100,6 +100,10 @@ class TestLondonExtension:
         s = _text(REPO / "data/techtreemods.xml"); assert s.index('name="zpExtendedStuart"') < s.index('name="zpExtendedStuartLondon"') < s.index('name="zpChateauRoyalShadow"')
 
     def test_spc_button_is_a_clone(self):
+        hub = _tech("DENativeStuart")     # Paris 19804-19805: the hub grants the generic AND the SPC button (2026-09-22: without it the button never shows)
+        assert '<effect mergemode="add" type="TechStatus" status="obtainable">zpStuartExpansion</effect>' in hub and '<effect mergemode="add" type="TechStatus" status="obtainable">zpStuartExpansionSPC</effect>' in hub
+        st = _text(REPO / "data/strings/english/stringmods.xml")
+        assert 'Only the DEFENDERS of London' in st[st.index('_locid="503565"'):st.index('_locid="503566"')] and 'Only the ATTACKERS of London' in st[st.index('_locid="503566"'):]
         g = _tech("zpStuartExpansion"); l = _tech("zpStuartExpansionSPC")
         norm = lambda b: re.sub(r"<dbid>\d+</dbid>", "", b).replace("zpStuartExpansionSPC", "zpStuartExpansion")
         assert norm(g) == norm(l) and "<displaynameid>503549</displaynameid>" in l and "stuartextend_big.png" in l

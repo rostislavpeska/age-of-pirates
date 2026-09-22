@@ -701,7 +701,7 @@
   </power>
   <power name="zpPowerParliamentRemonstrance" type="UnitAction">
     <displaynameid>503478</displaynameid>
-    <rolloverid>503479</rolloverid>
+    <rolloverid>503565</rolloverid>
     <icon>resources\images\icons\techs\parliament_hm_big.png</icon>
     <minimapeventtime sendalertto="all">1</minimapeventtime>
     <activetime>1</activetime>
@@ -712,7 +712,7 @@
   </power>
   <power name="zpPowerStuartExpansion" type="UnitAction">
     <displaynameid>503549</displaynameid>
-    <rolloverid>503550</rolloverid>
+    <rolloverid>503566</rolloverid>
     <icon>resources\images\icons\techs\stuartextend_big.png</icon>
     <minimapeventtime sendalertto="all">1</minimapeventtime>
     <activetime>1</activetime>
