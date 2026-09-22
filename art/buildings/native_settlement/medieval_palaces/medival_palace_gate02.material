@@ -111,7 +111,7 @@
       </texture>
     </parameters>
     <parameters variant="6">
-      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matb_v2_basecolor">
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matb_v1_basecolor">
       </texture>
       <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matb_Normals">
       </texture>
