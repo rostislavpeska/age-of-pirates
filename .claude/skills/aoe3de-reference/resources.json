@@ -9,7 +9,10 @@
     "references/provenance.md",
     "references/rm_commands_reference.md",
     "references/runtime-xml.md",
-    "references/sources.json"
+    "references/sources.json",
+    "references/coverage.md",
+    "scripts/check_reference_bundle.py",
+    "tests/test_reference_integrity.py"
   ],
   "skills": [],
   "external": []

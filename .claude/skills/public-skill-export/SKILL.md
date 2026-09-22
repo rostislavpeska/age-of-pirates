@@ -37,15 +37,17 @@ For each selected package, review its `SKILL.md`, supporting documents and helpe
   required helper missing from the package does. The converter's header check is not
   a substitute for the required GR2 structural inspection.
 
-Run the [resource audit](../skill-library-audit/SKILL.md) on the selected AoP
-packages and their declared companions before export. Its initial fixture tests
-pass, but it is not yet integrated into the synchronizer or public CI. Review
-dynamic/prose-only dependencies and provenance manually. Six packages currently
-have declarations; report other packages as unaudited. Companion dependencies must
-be explicitly allowlisted before release; do not widen the allowlist automatically.
-The current exporter cannot create a new public package from an absent destination.
-Implement and test explicit onboarding before exporting new packages; do not copy
-folders manually or remove baselines to get around a refusal.
+The exporter audits an isolated copy of exactly the selected target's allowlisted
+packages before any write. Missing files, undeclared imports and omitted companion
+packages refuse the release. It also preflights all selected package/support-file
+change directions. This is file-only validation; application readiness, dynamic
+references and reference provenance require separate review.
+
+New packages require explicit allowlisting plus `export --onboard`. This creates a
+missing public package only when it has no prior baseline. A previously exported
+package disappearing is a refusal, not automatic re-creation. New reference texts
+must retain their coverage and attribution notes; a source hash does not establish
+redistribution rights. Do not publish unresolved third-party material as MIT.
 
 ## Preview and export
 
@@ -70,14 +72,18 @@ writing, compare package contents, run destination metadata/resource checks and
 relevant helper tests, and inspect the destination diff. Report separately what was
 exported locally, what was tested and whether anything was published to GitHub.
 
-Agent setup has one maintained implementation in AoP. It expects a physical
-`.claude/skills` source and creates only the ignored `.agents/skills` link. Public
-checkouts still use their legacy `skills/` layout while exports are held. Before
-exporting this helper or setup documentation, migrate the selected public layout,
-synchronizer destination mapping and CI together. Do not export the helper alone
-into an old-layout checkout. Preserve the allowlist and baseline hashes.
-`CLAUDE.md` and `GEMINI.md` import each repository's own `AGENTS.md`; never export
-AoP's project rules. Links and local device configuration are not exported.
-Native activation is separate from file-identity validation.
+Both public checkouts use physical `.claude/skills` and the ignored `.agents/skills`
+directory link. The exporter refuses legacy or linked canonical roots. ZIP users
+run the shipped setup helper once; Git is not required for setup. The shared setup
+fixture tests creation/editing through both paths and refuses conflicting copies.
+Public CI validates metadata, the entire resource closure, reference text integrity,
+and setup tests on Windows and Linux. Native host discovery and installed external
+applications remain separate checks. `CLAUDE.md` and `GEMINI.md` import each public
+repository's own `AGENTS.md`; AoP rules and device settings are not exported.
+
+For each local export run the destination's `scripts/validate_skills.py`, setup and
+`--check`, and relevant tests. Review diffs before any GitHub publication. Preflight
+prevents known invalid releases before writing, but I/O failures can still leave an
+item-by-item transfer partially applied; inspect status before retrying.
 
 Edit a skill only in AoP. Do not repair an export by editing the public copy; fix the canonical source and export again. Outside contributions are the exception and must enter through `public-skill-import`.

@@ -2,20 +2,25 @@
   "files": {
     "aoe3de/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
     "aoe3de/GEMINI.md": "42fbbc9d55ee0d149c90e4bf93abe8b7278a5482b232be6f5bfc59cc0465e694",
-    "aoe3de/docs/agent-setup.md": "030086b05d975afb6e4a55162d853729464dbe3639a47ba675ddd7a4a95a9ce9",
+    "aoe3de/docs/agent-setup.md": "eb8d215bebbd9c0e8b354c0dc8475f5ae707ae923db9db956e6dc87ec4d9febe",
     "aoe3de/scripts/install_user_skills.py": "2aaf26442858cb7abc02ce86e2aa3857ed929e82efd013cb1ddceb5b1ec62f4e",
-    "aoe3de/scripts/setup_repo_skill_links.py": "fe69cc07451e0429da45170bacf8a006b8419187a73b7ff8d6640d8e5b2f1f9a",
+    "aoe3de/scripts/setup_repo_skill_links.py": "b6dbcef381404513156ee37db04dc587f7aaa76449490a30e26275afd78de92a",
+    "aoe3de/scripts/test_agent_setup.py": "2b161e89cda046a2a012da315ea442f657ac1aad487d4212464a9c6485ace2f2",
     "architecture/CLAUDE.md": "336cc4fbf19beaada7ccf9986414fa91851a8d7a07dfb3ccbe800a69eed0ab49",
     "architecture/GEMINI.md": "42fbbc9d55ee0d149c90e4bf93abe8b7278a5482b232be6f5bfc59cc0465e694",
-    "architecture/docs/agent-setup.md": "030086b05d975afb6e4a55162d853729464dbe3639a47ba675ddd7a4a95a9ce9",
+    "architecture/docs/agent-setup.md": "eb8d215bebbd9c0e8b354c0dc8475f5ae707ae923db9db956e6dc87ec4d9febe",
     "architecture/scripts/install_user_skills.py": "2aaf26442858cb7abc02ce86e2aa3857ed929e82efd013cb1ddceb5b1ec62f4e",
-    "architecture/scripts/setup_repo_skill_links.py": "fe69cc07451e0429da45170bacf8a006b8419187a73b7ff8d6640d8e5b2f1f9a"
+    "architecture/scripts/setup_repo_skill_links.py": "b6dbcef381404513156ee37db04dc587f7aaa76449490a30e26275afd78de92a",
+    "architecture/scripts/test_agent_setup.py": "2b161e89cda046a2a012da315ea442f657ac1aad487d4212464a9c6485ace2f2"
   },
   "schemaVersion": 1,
   "skills": {
-    "aoe3de/aoe3de-bar-archives": "8f00f998731b2648e73ad578a04c2091cca22f752e0d11e951fb2ceaf5b7824e",
-    "aoe3de/aoe3de-building-export": "95ee3bbf05238b412d8c923b992d4573c09eddb301dd7b7d6c1834bf73514c22",
-    "architecture/blender-architecture": "b932c0fe1b28e552f0b4530226cfd2b8f2bb396d557526b0df0c35601f0a7105",
-    "architecture/blender-architecture-texturing": "fca8bb7d82ff86a0ce9586a7101c1f6d75c323955027c0c72206965ab53c9bb1"
+    "aoe3de/aoe3de-bar-archives": "c42bf158813fb5b6bed4f0ad58a9f0b6013f74900c6d49e7cea029d0cb8a3519",
+    "aoe3de/aoe3de-building-export": "d3beef66efd2b2825823d0b14e464606ef2cc8d6290e7faac34a9ff29c7fa1b2",
+    "aoe3de/aoe3de-reference": "a2af8e948abf41cf880fab121f59d76dbc51048abf6d3d521c8eb91c21c8c184",
+    "aoe3de/skill-library-audit": "7c2556b2f47056e65938b139f156039429187aec625323b6d7525903314d3b53",
+    "architecture/blender-architecture": "0c8ab7fb430a29d557153bdd3a4005e38c057a665adf75a2a435cedd03106d4b",
+    "architecture/blender-architecture-texturing": "a08122808d551530fd367f9c9e9767e299ed2421b3773e6c45c3882f577fd429",
+    "architecture/skill-library-audit": "7c2556b2f47056e65938b139f156039429187aec625323b6d7525903314d3b53"
   }
 }

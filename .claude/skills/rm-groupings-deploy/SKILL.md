@@ -1,6 +1,6 @@
 ---
 name: rm-groupings-deploy
-description: Groupings on random maps - the three copies (repo game/randmaps/groupings is canonical, Steam Game\RandMaps\groupings and the profile folder are deploy targets), the one-way deploy flow, the process-start indexing rule, the grouping XML anatomy (units, tilegroup base terrain, flattener line, variation index, socket-last), and how to prove a grouping spawned. Use when a grouping does not spawn, when editing or cloning a grouping, when two copies differ, or when repainting a grouping's ground. Triggers on "grouping", "rmCreateGrouping", "village does not spawn", "deploy the grouping", "tilegroup", "ground flattener", "variation", "socket last".
+description: Groupings on random maps - the three copies (repo game/randmaps/groupings is canonical, only the profile folder is a deploy target; Steam Game\RandMaps\groupings is vanilla-only), the one-way deploy flow, the process-start indexing rule, the grouping XML anatomy (units, tilegroup base terrain, flattener line, variation index, socket-last), and how to prove a grouping spawned. Use when a grouping does not spawn, when editing or cloning a grouping, when two copies differ, or when repainting a grouping's ground. Triggers on "grouping", "rmCreateGrouping", "village does not spawn", "deploy the grouping", "tilegroup", "ground flattener", "variation", "socket last".
 ---
 
 # rm-groupings-deploy
@@ -10,14 +10,29 @@ description: Groupings on random maps - the three copies (repo game/randmaps/gro
 | Copy | Role |
 |---|---|
 | `game/randmaps/groupings/<Name>.xml` (repo) | CANONICAL. Edit here only. Shipped by the mod. |
-| Steam `Game\RandMaps\groupings\` | what the Scenario Editor indexes |
-| `<profile>\RandMaps\groupings\` | what the game indexes for Skirmish/editor too |
+| `<profile>\RandMaps\groupings\` | the ONLY deploy target - what the game indexes for Skirmish and the editor |
+| Steam `Game\RandMaps\groupings\` | VANILLA ONLY. Never write, copy, edit or delete there (user rule 2026-09-22). |
 
-Deploy = copy repo -> both targets, then restart the game: the grouping index is built at process
+Deploy = copy repo -> the profile folder only, then restart the game: the grouping index is built at process
 start (File > New does not re-read it). A grouping the map names that is missing from the index
 spawns NOTHING, silently (IS_Shore harbours, 2026-08-14). Before any transform, diff unit counts
-across the three copies; if they differ, say so and use the repo copy - deployed copies go stale
+across the two copies (repo, profile); if they differ, say so and use the repo copy - deployed copies go stale
 and editor re-saves land under new names (`native inuit village 1.xml` vs `Native Inuit Village 01.xml`).
+
+## The Steam root is off limits (user rule, 2026-09-22)
+
+`Game\RandMaps\groupings\` belongs to Steam: 680 stock groupings in two install clusters (2024-06-26
+and the 2026-09-10 DLC update, incl. `european\` and the Stuart/Sami/Inuit villages). Mod copies that had
+accumulated there (85 files; 46 stale against the repo, the whole Istanbul set a month behind) were stripped
+on 2026-09-22 after verifying a repo copy existed for each. A stale root copy shadows the repo silently, so:
+
+- never deploy, edit or re-save a mod grouping into the Steam root; the profile folder is the deploy target;
+- never delete anything there either - the two mod files WITHOUT a repo copy (`IS_SPC_Construction`,
+  `IS_SPC_Fisherman_Float`, the latter used by the root-only 000_istanbul test copy) stay until the user decides;
+- audit recipe: any top-level file whose mtime is outside the Steam clusters, or whose name exists in the
+  repo, is a mod copy - report it, and delete only on the user's word after confirming the repo copy exists;
+- the vanilla stem index `scripts/source/groupings_index.txt` was listed from that folder while it was
+  contaminated (Aug 2026); refresh it only from a clean root and never from the profile folder.
 
 ## Anatomy of a grouping XML
 

@@ -43,9 +43,10 @@ Windows junctions point to absolute locations: after moving a checkout, inspect 
 remove only the old link itself before rerunning setup. Never recursively delete a
 discovery path. The helper intentionally refuses to guess about broken links.
 
-AoP has migrated to this layout. The public repositories remain on their existing
-`skills/` layout while exports are held; follow their shipped setup instructions.
-Before exporting the new helper, migrate and validate their layout and CI together.
+For ZIP downloads, extract the entire repository, including dot-directories. Claude
+uses `.claude/skills` directly. Codex needs the setup command once; Git is not needed
+for setup, but Python 3.10+ is. Restart the host if its catalog still advertises paths
+from an earlier layout; a new task alone may reuse cached discovery metadata.
 
 ## Optional use outside this checkout
 

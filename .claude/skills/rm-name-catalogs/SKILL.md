@@ -29,6 +29,22 @@ into a LOCALAPPDATA cache once per game build) or refresh the snapshot with the 
 in the bar-extract skill (`extract ... -o scripts/source --flat --in-repo`) and commit the diff.
 The unit bench pre-flight already checks the live protoy.
 
+The grouping snapshot also needs provenance checks. On 2026-09-22,
+`scripts/source/groupings_index.txt` still had the 2026-08-09 header, the mod names
+`Verseilles_Fixed_Gun_L` and `Verseilles_Fixed_Gun_R`, and a literal `european/`
+directory marker instead of that subfolder's XML stems. It is not a stock authority.
+The install contained 188 XML files under `european/` at inspection, plus known
+non-stock leftovers in its top level; counts alone do not establish a clean install.
+
+When refreshing, read both the stock top-level directory and `european/`, preserve
+relative subfolder paths, and strip only the `.xml` suffix. Establish stock provenance
+against a known-clean installation or verified file manifest. Exclude confirmed mod
+additions; flag names shared with `game/randmaps/groupings/` for review rather than
+blindly excluding them, since a mod may legitimately override a stock name. Timestamps
+alone are not proof of origin. If stock provenance is unresolved, report that limitation
+instead of labeling the resulting list vanilla. Do not modify the Steam directory to
+refresh a catalog; see `rm-groupings-deploy` for the profile-only deployment rule.
+
 ## Rules
 
 - Mod first, then vanilla: a mod record with the same name overrides.

@@ -29,3 +29,7 @@ The `.xs` reference is documentation, not an executable map or an AI script to
 install. This package ships no game data, tools, game executable or third-party
 manual PDF. Third-party provenance/redistribution questions remain documented in
 the provenance notes; local inclusion does not approve public redistribution.
+
+Read [coverage](references/coverage.md) before claiming completeness. Verify the
+four source texts with `scripts/check_reference_bundle.py`; this checks integrity,
+not current-build API coverage.

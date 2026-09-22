@@ -15,6 +15,8 @@ from pathlib import Path
 import re
 import shutil
 import sys
+import runpy
+import tempfile
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -29,7 +31,7 @@ FORBIDDEN_SUFFIXES = {
     ".exe", ".dll", ".pdb", ".blend", ".blend1", ".fbx", ".psd", ".spp",
     ".gr2", ".gxo", ".ddt", ".tga", ".bar", ".xmb", ".zip", ".7z",
 }
-TEXT_SUFFIXES = {".md", ".txt", ".json", ".yaml", ".yml", ".py", ".ps1", ".toml"}
+TEXT_SUFFIXES = {".md", ".txt", ".json", ".yaml", ".yml", ".py", ".ps1", ".toml", ".xs"}
 PRIVATE_PATTERNS = {
     "absolute Windows user path": re.compile(r"[A-Za-z]:[\\/]Users[\\/]", re.IGNORECASE),
     "Windows profile data path": re.compile(r"AppData[\\/]", re.IGNORECASE),
@@ -94,7 +96,7 @@ def safety_scan(root: Path) -> None:
     problems = []
     for path in [root] if root.is_file() else sorted(root.rglob("*")):
         rel = Path(path.name) if path == root else path.relative_to(root)
-        if path.is_symlink():
+        if path.is_symlink() or (getattr(path.stat(follow_symlinks=False), "st_file_attributes", 0) & 0x400):
             problems.append(f"symlink: {rel}")
             continue
         if not path.is_file() or any(part in IGNORED_NAMES for part in rel.parts):
@@ -145,8 +147,8 @@ def replace_tree(source: Path, destination: Path) -> None:
     incoming = parent / f".{destination.name}.sync-new"
     backup = parent / f".{destination.name}.sync-old"
     for transient in (incoming, backup):
-        if transient.exists():
-            shutil.rmtree(transient)
+        if os.path.lexists(transient):
+            raise ValueError(f"Previous staging path exists; review before retrying: {transient}")
     shutil.copytree(source, incoming, ignore=shutil.ignore_patterns("__pycache__", "*.pyc"))
     validate_skill(incoming, destination.name)
     safety_scan(incoming)
@@ -162,18 +164,33 @@ def replace_tree(source: Path, destination: Path) -> None:
         shutil.rmtree(backup)
 
 
-def load_context():
+def public_root(repo: Path) -> Path:
+    source = repo / '.claude' / 'skills'
+    if not source.is_dir() or source.is_symlink() or (getattr(source.stat(follow_symlinks=False), 'st_file_attributes', 0) & 0x400):
+        raise ValueError(f'Expected physical .claude/skills directory: {repo}')
+    if os.path.lexists(repo / 'skills'):
+        raise ValueError(f'Legacy skills/ tree remains: {repo}')
+    return source
+
+
+def load_context(requested="all"):
     manifest = read_json(MANIFEST_PATH)
     config = read_json(CONFIG_PATH)
     state = read_json(STATE_PATH) if STATE_PATH.exists() else {"schemaVersion": 1, "skills": {}}
     repositories = config.get("repositories", {})
     contexts = {}
     for target, spec in manifest.get("targets", {}).items():
+        if requested != 'all' and target != requested:
+            continue
         if target not in repositories:
             raise SystemExit(f"No repository path configured for target {target!r} in {CONFIG_PATH}")
         repo = Path(repositories[target]).expanduser().resolve()
-        if not (repo / ".git").exists() or not (repo / "skills").is_dir():
+        if not (repo / ".git").exists():
             raise SystemExit(f"Configured {target} repository is invalid: {repo}")
+        try:
+            public_root(repo)
+        except ValueError as exc:
+            raise SystemExit(str(exc))
         if is_within(repo, ROOT) or is_within(ROOT, repo):
             raise SystemExit(f"Public repository must remain separate from AoP: {repo}")
         contexts[target] = (repo, list(spec.get("skills", [])))
@@ -202,6 +219,33 @@ def selected_targets(requested: str, contexts: dict) -> list[str]:
     if requested not in contexts:
         raise SystemExit(f"Unknown target {requested!r}; choose from all, {', '.join(sorted(contexts))}")
     return [requested]
+
+
+def skill_status(aop, public, name, base, command, onboard=False):
+    validate_skill(aop, name)
+    safety_scan(aop)
+    if not public.exists():
+        if command == 'export' and onboard and base is None:
+            return 'new-public'
+        raise ValueError(f'{name}: missing public package; new packages require export --onboard and no existing baseline')
+    validate_skill(public, name)
+    safety_scan(public)
+    status = classify(digest_tree(aop), digest_tree(public), base)
+    if command != 'status' and status not in {'equal', 'untracked-equal', 'aop-ahead' if command == 'export' else 'public-ahead'}:
+        raise ValueError(f'{name}: refusing {status}; reconcile or use the correct direction')
+    return status
+
+
+def audit_release(source, names):
+    """Audit only the prospective release, so missing allowlisted companions fail."""
+    audit = runpy.run_path(str(SOURCE_ROOT / 'skill-library-audit/scripts/audit_library.py'))['audit']
+    with tempfile.TemporaryDirectory(prefix='skill-release-audit-') as tmp:
+        staged = Path(tmp)
+        for name in names:
+            shutil.copytree(source / name, staged / name, ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
+        report = audit(staged, names)
+        if report['exitCode']:
+            raise ValueError('Release resource audit failed: ' + json.dumps(report['errors'] + report['incomplete']))
 
 
 def sync_support_files(mapping, repo, target, state, command, write):
@@ -264,14 +308,34 @@ def main() -> int:
     parser.add_argument("command", choices=("status", "export", "import"))
     parser.add_argument("--target", default="all")
     parser.add_argument("--write", action="store_true", help="perform copies; otherwise preview only")
+    parser.add_argument("--onboard", action="store_true", help="explicitly create newly allowlisted public packages without a prior baseline")
     args = parser.parse_args()
     if args.command == "status" and args.write:
         parser.error("status is always read-only")
 
-    manifest, state, contexts = load_context()
+    if args.onboard and args.command != 'export':
+        parser.error('--onboard is only valid for export')
+    manifest, state, contexts = load_context(args.target)
     state_skills = state.setdefault("skills", {})
     failed = False
     state_changed = False
+
+    # Validate every selected release and change direction before the first write.
+    if args.command != 'status':
+        try:
+            for target in selected_targets(args.target, contexts):
+                repo, skills = contexts[target]
+                for skill in skills:
+                    skill_status(SOURCE_ROOT / skill, public_root(repo) / skill, skill,
+                                 state_skills.get(f'{target}/{skill}'), args.command, args.onboard)
+                audit_release(SOURCE_ROOT if args.command == 'export' else public_root(repo), skills)
+                bad, _ = sync_support_files(manifest.get('supportFiles', {}), repo, target,
+                                            state, args.command, False)
+                if bad:
+                    raise ValueError(f'{target}: support-file preflight failed')
+        except (ValueError, OSError) as exc:
+            print(f'REFUSED before writing: {exc}')
+            return 1
 
     for target in selected_targets(args.target, contexts):
         repo, skills = contexts[target]
@@ -282,23 +346,18 @@ def main() -> int:
         state_changed = state_changed or adapter_changed
         for skill in skills:
             aop = SOURCE_ROOT / skill
-            public = repo / "skills" / skill
+            public = public_root(repo) / skill
             try:
-                validate_skill(aop, skill)
-                validate_skill(public, skill)
-                safety_scan(aop)
-                if args.command == "import":
-                    safety_scan(public)
+                status = skill_status(aop, public, skill, state_skills.get(f'{target}/{skill}'), args.command, args.onboard)
             except ValueError as exc:
                 print(f"ERROR {skill}: {exc}")
                 failed = True
                 continue
 
             aop_hash = digest_tree(aop)
-            public_hash = digest_tree(public)
+            public_hash = digest_tree(public) if public.exists() else None
             key = f"{target}/{skill}"
             base_hash = state_skills.get(key)
-            status = classify(aop_hash, public_hash, base_hash)
             print(f"  {skill}: {status}")
 
             if status == "untracked-equal":
@@ -321,7 +380,7 @@ def main() -> int:
                     state_changed = True
                 continue
 
-            permitted = (args.command == "export" and status == "aop-ahead") or (
+            permitted = (args.command == "export" and status in {"aop-ahead", "new-public"}) or (
                 args.command == "import" and status == "public-ahead"
             )
             if args.command == "status":

@@ -32,21 +32,20 @@ proposal in [the earlier research](skill-library-research.md) and
 The headless Claude plugin tests do not prove Desktop UI activation; the actual UI
 probe failed. This implementation avoids that registration path entirely.
 
-Public checkouts have NOT migrated or received exports. They still use their own
-physical `skills/` and shipped discovery helpers. AoP's synchronizer now reads the
-new canonical source but retains those public destination paths and existing hashes.
-Before a future export, migrate public layout/setup/CI together; the new source setup
-helper expects `.claude/skills` and must not be exported alone into a legacy checkout.
-Release snapshots between repositories are intentional; no local agent skill copies
-are maintained.
+Both local public checkouts now use physical `.claude/skills` plus a generated,
+ignored `.agents/skills` link. Their legacy trees were moved after verified backups.
+Local exports include the dependency closure: three packages in 3D and four in
+modding. These changes are not yet published to GitHub. Copied reference provenance
+still needs review before publication. Public consumers edit their own canonical
+checkout; the maintainer imports reviewed contributions into AoP before re-export.
 
 ## Repositories and ownership
 
 | Repository / sync target | Purpose | Currently exported packages |
 | --- | --- | --- |
 | Age of Pirates | Complete authoring suite, mod policy, private workflows and examples | Canonical source; not a public skill pack |
-| [rts-3D-modelling](https://github.com/rostislavpeska/rts-3D-modelling), `architecture` | Reusable architectural modeling and texturing | `blender-architecture`, `blender-architecture-texturing` |
-| [aoe3-modding-skills](https://github.com/rostislavpeska/aoe3-modding-skills), `aoe3de` | Reusable AoE3DE modding workflows | `aoe3de-bar-archives`, `aoe3de-building-export` |
+| [rts-3D-modelling](https://github.com/rostislavpeska/rts-3D-modelling), `architecture` | Reusable architectural modeling and texturing | `blender-architecture`, `blender-architecture-texturing`, `skill-library-audit` |
+| [aoe3-modding-skills](https://github.com/rostislavpeska/aoe3-modding-skills), `aoe3de` | Reusable AoE3DE modding workflows | `aoe3de-bar-archives`, `aoe3de-building-export`, `aoe3de-reference`, `skill-library-audit` |
 
 The public repositories are separate Git checkouts outside AoP, not submodules or
 nested repositories. Local folder names may differ from GitHub names. The current
@@ -121,8 +120,9 @@ The working AoP library now contains `aoe3de-reference` and `skill-library-audit
 The four shared reference texts have one maintained home in the reference package;
 old documentation paths forward there, and AoP-specific XML observations remain
 in the original documentation file. Curated map/trigger and runtime XML summaries
-are included. Neither new package is export-allowlisted. Exports are on hold; the
-reference provenance notes identify unresolved redistribution questions. The table
+are included. Both new packages are now allowlisted and exported locally as required companions.
+GitHub publication has not occurred. Provenance notes retain unresolved
+redistribution questions. The table
 below records the resource treatment, including helper extraction still pending.
 
 | Existing AoP resource | Planned reusable treatment |
@@ -197,7 +197,8 @@ It checks resource reachability and reports prerequisites without installing or
 launching applications. Six packages have resource declarations: the four existing
 public-package sources, the reference library and the audit itself. Other AoP
 packages remain explicitly unaudited until their dependencies are declared.
-The public metadata validator is unchanged, and export/CI integration is pending.
+Both public validators and the exporter now audit the release resource closure.
+Public CI includes Windows/Linux setup, audit fixtures and reference integrity.
 
 The audit accepts a library root and selected skills, and reports separately:
 
@@ -225,10 +226,10 @@ tested; never label the whole workflow ready because static checks pass.
 
 The 21 initial failure/positive fixtures and the six-package static audit pass.
 Machine compatibility and live application connections are not established by them.
-Integrate the checker into export validation and public CI in a later reviewed step. New-package onboarding also needs a tested
-export path: the current synchronizer requires both package directories to exist
-and will not bootstrap a missing public skill. Do not bypass that refusal by copying
-packages manually or deleting synchronization baselines.
+New allowlisted packages require explicit `export --onboard`; a missing previously
+baselined package remains an error. All selected releases are preflighted before
+writes. The XS/XML bundle has LF-normalized SHA-256 checks of its four original
+reference texts: these prove integrity, not factual/current-build completeness.
 
 ## How agents find the same content
 
@@ -319,10 +320,10 @@ the state file to force an overwrite.
 
 Other practical limits of the current implementation:
 
-- Both configured repositories must be valid, even when selecting one target.
-  Each currently needs a `.git` entry and a legacy public `skills/` directory.
-- A new skill requires deliberate onboarding: both package directories must exist
-  and validate. Adding its name to the manifest alone does not bootstrap it.
+- Only selected repositories are validated. Each needs `.git` and physical
+  `.claude/skills`; remaining legacy `skills/` trees are refused.
+- New packages require allowlisting and `export --onboard`, without a prior baseline.
+  Omitted companion resources refuse export before any writes.
 - Sync replaces a whole selected package, so deleted files in the source are
   deleted in the destination too. Inspect the preview.
 - Writes happen item by item. A later refusal can leave earlier items updated.
@@ -330,7 +331,7 @@ Other practical limits of the current implementation:
 - Package replacement uses temporary staging and rollback for the rename step.
   It is not a transaction across all packages/repos, and no permanent backup is kept.
   After interruption, preserve and inspect `.sync-new` / `.sync-old` remnants
-  and working-tree diffs before retrying; a package retry removes old staging remnants.
+  and working-tree diffs before retrying; a retry refuses existing staging remnants until they are reviewed.
   A crash before the final state write can leave contents and baseline out of sync.
 - The scan rejects known private path patterns, listed binary/source formats and
   symbolic links. It is not an exhaustive secret, licensing or code-safety review.
@@ -350,7 +351,7 @@ authoring suite to remember.
 3. Open a fresh agent session in that checkout. Skill activation remains a host check.
 4. Configure tool connections and ignored device paths separately. If using public
    sync, initialize `config/skill-sync.local.json` from its example and run status.
-   Public exports remain held; follow each public checkout's existing setup meanwhile.
+   Public checkouts now use the same layout; publication remains separate.
 
 Repeat setup in each worktree: the link must resolve to that worktree's physical
 library. Windows junctions use absolute paths; relocating a checkout needs explicit
@@ -421,3 +422,26 @@ Reading the canonical skill and its construction reference succeeded, and all se
 layout tests passed. This establishes filesystem/resource access, not successful
 native loading. Stale host metadata is suspected; its refresh remains unresolved.
 No model-speed claim or fresh Claude Desktop UI success is inferred from these tests.
+
+## Public portability follow-up (2026-09-22)
+
+Both local public checkouts migrated to the Claude-first layout and received reviewed
+local exports through the updated synchronizer. The 3D release has geometry,
+texturing and audit packages. Modding has BAR/XMB, building export, reference and
+audit packages. Setup, metadata/resource validation and extraction from ZIP without
+Git passed on this Windows device. Public tests passed: 23 in 3D, 27 in modding.
+Export/import previews both returned success with unchanged repository and baseline
+hashes. CI now specifies Windows and Linux; hosted CI has not run for these changes.
+Fresh native agent discovery and installed application operation remain unverified.
+
+All four original reference texts match their recorded packaged hashes and the
+normalized historical source scope (including the XML guide's pre-Placement Rules
+boundary). Modding now bundles 2,454 lines of XS/AI reference, 883 lines of RM commands,
+2,146 lines of shared XML documentation and 82 lines of UI commands, plus the curated
+runtime XML/map-trigger summaries. These are inclusion counts, not an exhaustive
+current DE function/attribute inventory. Original raw hashes reflect working-copy
+line endings; LF-normalized hashes enable portable integrity checks.
+
+Changes are local and uncommitted; no public GitHub push was performed. Before
+publishing copied reference texts, resolve the provenance/redistribution notes.
+Application binaries, local tool paths and private AoP wrappers were not exported.

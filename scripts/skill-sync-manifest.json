@@ -5,19 +5,23 @@
     "scripts/install_user_skills.py": "scripts/tools/install_user_skills.py",
     "docs/agent-setup.md": "docs/agent-skills.md",
     "CLAUDE.md": "CLAUDE.md",
-    "GEMINI.md": "GEMINI.md"
+    "GEMINI.md": "GEMINI.md",
+    "scripts/test_agent_setup.py": "scripts/tools/test_agent_setup.py"
   },
   "targets": {
     "architecture": {
       "skills": [
         "blender-architecture",
-        "blender-architecture-texturing"
+        "blender-architecture-texturing",
+        "skill-library-audit"
       ]
     },
     "aoe3de": {
       "skills": [
         "aoe3de-bar-archives",
-        "aoe3de-building-export"
+        "aoe3de-building-export",
+        "aoe3de-reference",
+        "skill-library-audit"
       ]
     }
   }

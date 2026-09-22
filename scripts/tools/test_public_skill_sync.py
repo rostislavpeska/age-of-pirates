@@ -2,6 +2,7 @@ import importlib.util
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 
 MODULE_PATH = Path(__file__).with_name("public_skill_sync.py")
@@ -11,6 +12,50 @@ SPEC.loader.exec_module(sync)
 
 
 class PublicSkillSyncTests(unittest.TestCase):
+    def test_new_package_requires_explicit_onboarding_and_no_prior_baseline(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            source = Path(tmp) / 'demo'
+            source.mkdir()
+            (source / 'SKILL.md').write_text('---\nname: demo\ndescription: Example\n---\n')
+            destination = Path(tmp) / 'missing'
+            with self.assertRaises(ValueError):
+                sync.skill_status(source, destination, 'demo', None, 'export')
+            self.assertEqual(sync.skill_status(source, destination, 'demo', None, 'export', True), 'new-public')
+            for command, base in [('import', None), ('export', 'existing-baseline')]:
+                with self.assertRaises(ValueError):
+                    sync.skill_status(source, destination, 'demo', base, command, True)
+
+    def test_release_audit_refuses_omitted_companion(self):
+        with self.assertRaisesRegex(ValueError, 'resource audit'):
+            sync.audit_release(sync.SOURCE_ROOT, ['aoe3de-building-export'])
+
+    def test_public_root_refuses_legacy_tree(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            (root / '.claude/skills').mkdir(parents=True)
+            self.assertEqual(sync.public_root(root), root / '.claude/skills')
+            (root / 'skills').mkdir()
+            with self.assertRaises(ValueError):
+                sync.public_root(root)
+
+    def test_failed_replacement_restores_previous_package(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source, dest = root / 'src/demo', root / 'dst/demo'
+            source.mkdir(parents=True); dest.mkdir(parents=True)
+            header = '---\nname: demo\ndescription: Example\n---\n'
+            (source / 'SKILL.md').write_text(header + 'new')
+            (dest / 'SKILL.md').write_text(header + 'old')
+            original = Path.rename
+            def fail_incoming(path, target):
+                if path.name.endswith('.sync-new'):
+                    raise OSError('simulated rename failure')
+                return original(path, target)
+            with patch.object(Path, 'rename', fail_incoming):
+                with self.assertRaises(OSError):
+                    sync.replace_tree(source, dest)
+            self.assertEqual((dest / 'SKILL.md').read_text(), header + 'old')
+
     def test_change_direction_and_conflict_classification(self):
         self.assertEqual(sync.classify("a", "a", None), "untracked-equal")
         self.assertEqual(sync.classify("a", "b", None), "untracked-different")
