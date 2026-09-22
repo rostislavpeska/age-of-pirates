@@ -595,6 +595,102 @@ class TestVictory:
         assert all(('_locid="%d"' % i) in st for i in range(503557, 503563))
 
 
+class TestTowerOwnership:
+    """13.3 (user 2026-09-22, 'wrong towers' / 'wrong unit'): the Tower complex follows the flag's owner. Exports: the four
+    corner zpSPCFortTowerProp are Caribbean Wars' tower socket zpSPCSocketCityTowerWooden (the owner builds
+    zpSPCCityTowerWooden on it), each SPCFortGate has King of Bohemia's unique invisible gate socket under it
+    (A/B in Tower_01, C/D in Tower_02, file order). Script: the building by id, Caribbean Wars' area sweep by UnitType
+    from the building over every source player, the gate sockets converted by id, Bohemia's GateN_Rebuilt (transform
+    tech per socket) fired on capture with a 500 ms deactivator."""
+
+    SWEEP = ("SPCFortGate", "zpSPCSocketCityTowerWooden", "zpSPCCityTowerWooden", "deSPCFortWallMediumProp", "deSPCFortCornerProp", "zpSPCFortWallProp")
+    SOCKETS = {"EU_SPC_London_Tower_01": ("zpInvisibleGateSocketA", "zpInvisibleGateSocketB"), "EU_SPC_London_Tower_02": ("zpInvisibleGateSocketC", "zpInvisibleGateSocketD")}
+
+    def _block(self):
+        t = _code(_text(LONDON))
+        return t, t[t.index("int towerSweepM = 40;"):t.index("int victoryCountDown = 480;")]
+
+    def test_exports_tower_sockets_and_unique_gate_sockets(self):
+        for name, sockets in self.SOCKETS.items():
+            b = (REPO / ("game/randmaps/groupings/%s.xml" % name)).read_bytes()
+            assert b.count(b"\r\n") == b.count(b"\n") and b"zpSPCFortTowerProp" not in b
+            assert b.count(b">zpSPCSocketCityTowerWooden</unit>") == 4 and b.count(b">SPCFortGate</unit>") == 2
+            assert b.count(b">zpInvisibleGateSocket</unit>") == 0
+            lines = b.decode("utf-8").split(chr(13) + chr(10))
+            gates = [i for i, l in enumerate(lines) if l.endswith(">SPCFortGate</unit>")]
+            assert len(gates) == 2
+            for i, proto in zip(gates, sockets):
+                head = lines[i][:lines[i].index(">SPCFortGate</unit>")]
+                assert lines[i + 1] == head + ">" + proto + "</unit>", (name, proto)     # same position and orientation as the gate
+            old = (REPO / ("sandbox/backups/groupings/%s_2026-09-22_towerprops.xml" % name)).read_bytes()
+            assert old.replace(b">zpSPCFortTowerProp</unit>", b">zpSPCSocketCityTowerWooden</unit>").count(b"</unit>") == b.count(b"</unit>") - 2
+            for l in lines:
+                if l.endswith(">zpSPCSocketCityTowerWooden</unit>"):
+                    assert (l.replace(">zpSPCSocketCityTowerWooden</unit>", ">zpSPCFortTowerProp</unit>") + chr(13) + chr(10)).encode("utf-8") in old
+
+    def test_protos_and_transform_techs_exist(self):
+        pm = (REPO / "data/protomods.xml").read_text(encoding="utf-8", errors="replace")
+        i = pm.index('name="zpSPCSocketCityTowerWooden"'); u = pm[i:pm.index("</unit>", i)]
+        assert "<socketbuildprotounit>zpSPCCityTowerWooden</socketbuildprotounit>" in u and "<unittype>TowerSocket</unittype>" in u
+        assert 'name="zpSPCCityTowerWooden"' in pm
+        tt = (REPO / "data/techtreemods.xml").read_text(encoding="utf-8", errors="replace")
+        for n, proto in enumerate(("zpInvisibleGateSocketA", "zpInvisibleGateSocketB", "zpInvisibleGateSocketC", "zpInvisibleGateSocketD"), 1):
+            assert ('name="%s"' % proto) in pm
+            j = tt.index('<tech name="zpConverGate%d"' % n)
+            assert 'toprotoid="SPCFortGate" fromprotoid="%s"' % proto in tt[j:tt.index("</tech>", j)]
+
+    def test_id_block_and_placement_order(self):
+        t, _ = self._block()
+        for var, inst, proto in (("towerSGate1SocketUnit", "towerSInst", "zpInvisibleGateSocketA"), ("towerSGate2SocketUnit", "towerSInst", "zpInvisibleGateSocketB"),
+                                 ("towerNGate1SocketUnit", "towerNInst", "zpInvisibleGateSocketC"), ("towerNGate2SocketUnit", "towerNInst", "zpInvisibleGateSocketD")):
+            assert ('int %s = rmGetGroupingInstanceUnitByType(%s, "%s") + instanceIdShift;' % (var, inst, proto)) in t
+        # the literal harbour indices (fix B) hold: both Towers are placed after section 8's guard nuggets
+        assert t.index("rmPlaceObjectDefAtLoc(harbourS2GuardDef, 0, harbourS2GuardX, harbourS2GuardZ);") < t.index("int towerSInst = rmPlaceGroupingInstanceAtLoc(blockTowerS")
+
+    def test_sweep_from_the_building_over_every_source_player(self):
+        _, s = self._block()
+        assert "int towerGateRebuildM = 15;" in s
+        for bank, bld, g1, g2 in (("S", "towerSBldUnit", "towerSGate1SocketUnit", "towerSGate2SocketUnit"), ("N", "towerNBldUnit", "towerNGate1SocketUnit", "towerNGate2SocketUnit")):
+            fam = s[s.index('rmSwitchToTrigger(rmTriggerID("TowerConv%s_Plr" + p));' % bank):s.index('rmSwitchToTrigger(rmTriggerID("Tower%sGate1_Rebuilt" + k));' % bank)]
+            assert fam.count('rmAddTriggerEffect("Convert");') == 3 and ('rmSetTriggerEffectParam("SrcObject", "" + %s);' % bld) in fam
+            assert fam.index("for (i = 0; <= cNumberNonGaiaPlayers)") < fam.index('rmSetTriggerEffectParam("SrcObject", "" + %s);' % g1) < fam.index('rmSetTriggerEffectParam("SrcObject", "" + %s);' % g2)
+            for proto in self.SWEEP:
+                seg = chr(10).join(['\t\t\t\trmAddTriggerEffect("Convert Units in Area");', '\t\t\t\trmSetTriggerEffectParam("SrcObject", "" + %s);' % bld,
+                                    '\t\t\t\trmSetTriggerEffectParamInt("SrcPlayer", i);', '\t\t\t\trmSetTriggerEffectParamInt("TrgPlayer", p);',
+                                    '\t\t\t\trmSetTriggerEffectParam("UnitType", "%s");' % proto, '\t\t\t\trmSetTriggerEffectParamInt("Dist", towerSweepM);'])
+                assert fam.count(seg) == 1, (bank, proto)
+            assert fam.count('rmAddTriggerEffect("Convert Units in Area");') == len(self.SWEEP)
+            for ev in ("Tower%sGate1_Rebuilt" % bank, "Tower%sGate2_Rebuilt" % bank, "Tower%sGate_Rebuilt_Deactivator" % bank):
+                assert ('rmSetTriggerEffectParamInt("EventID", rmTriggerID("%s" + p));' % ev) in fam
+            assert fam.index('rmTriggerID("Tower%sGate_Rebuilt_Deactivator" + p)' % bank) < fam.index('rmTriggerID("TowerConv%s_Plr" + q)' % bank)
+        assert '"zpInvisibleGateSocket"' not in s     # the generic socket is the bridge's (gaia's zpConverGate at start)
+
+    def test_bohemia_rebuild_once_on_capture(self):
+        _, s = self._block()
+        for bank, socks in (("S", (("towerSGate1SocketUnit", "cTechzpConverGate1"), ("towerSGate2SocketUnit", "cTechzpConverGate2"))),
+                            ("N", (("towerNGate1SocketUnit", "cTechzpConverGate3"), ("towerNGate2SocketUnit", "cTechzpConverGate4")))):
+            for n, (g, tech) in enumerate(socks, 1):
+                body = chr(10).join(['\t\t\trmSwitchToTrigger(rmTriggerID("Tower%sGate%d_Rebuilt" + k));' % (bank, n), '\t\t\trmAddTriggerCondition("Units in Area");',
+                                     '\t\t\trmSetTriggerConditionParam("DstObject", "" + %s);' % g, '\t\t\trmSetTriggerConditionParamInt("Player", k);',
+                                     '\t\t\trmSetTriggerConditionParam("UnitType", "SPCFortGate");', '\t\t\trmSetTriggerConditionParamInt("Dist", towerGateRebuildM);',
+                                     '\t\t\trmSetTriggerConditionParam("Op", "==");', '\t\t\trmSetTriggerConditionParamInt("Count", 0);',
+                                     '\t\t\trmAddTriggerEffect("ZP Set Tech Status (XS)");', '\t\t\trmSetTriggerEffectParamInt("PlayerID", k);',
+                                     '\t\t\trmSetTriggerEffectParam("TechID", "%s");' % tech, '\t\t\trmSetTriggerEffectParamInt("Status", 2);',
+                                     '\t\t\trmSetTriggerPriority(4);', '\t\t\trmSetTriggerActive(false);', '\t\t\trmSetTriggerRunImmediately(true);', '\t\t\trmSetTriggerLoop(false);'])
+                assert s.count(body) == 1, (bank, n)
+            de = chr(10).join(['\t\t\trmSwitchToTrigger(rmTriggerID("Tower%sGate_Rebuilt_Deactivator" + k));' % bank, '\t\t\trmAddTriggerCondition("Timer ms");',
+                               '\t\t\trmSetTriggerConditionParamInt("Param1", 500);', '\t\t\trmAddTriggerEffect("Disable Trigger");',
+                               '\t\t\trmSetTriggerEffectParamInt("EventID", rmTriggerID("Tower%sGate1_Rebuilt" + k));' % bank, '\t\t\trmAddTriggerEffect("Disable Trigger");',
+                               '\t\t\trmSetTriggerEffectParamInt("EventID", rmTriggerID("Tower%sGate2_Rebuilt" + k));' % bank])
+            assert s.count(de) == 1, bank
+        made = set(re.findall(r'rmCreateTrigger\("([^"]+)"', s)); used = set(re.findall(r'rmTriggerID\("([^"]+)"', s))
+        assert made == used and len(made) == 10, (made ^ used)
+
+    def test_twin_identical_and_crlf(self):
+        a = LONDON.read_bytes(); b = (STEAM / "00000_zplondon.xs").read_bytes()
+        assert a == b and a.count(b"\r\n") == a.count(b"\n")
+
+
 class TestScope:
 
     def test_reserved_columns_take_the_berry_mill(self):
@@ -625,7 +721,7 @@ class TestScope:
         for s, post, guard in (("N1", 169, 363), ("N2", 170, 368), ("S1", 171, 373), ("S2", 172, 378)):                # fix B: literal indices (census 2026-09-22)
             assert ("int harbour%sPostUnit = %d;" % (s, post)) in t and ("int harbour%sGuardUnit = %d;" % (s, guard)) in t and ("rmSetTriggerConditionParam(\"NuggetObject\", \"\" + harbour%sGuardUnit);" % s) in t
         inst = re.findall(r"int \w+ = rmGetGroupingInstanceUnitByType\([^;]*;", t)
-        assert len(inst) == 14 and all(r.endswith("+ instanceIdShift;") for r in inst)
+        assert len(inst) == 18 and all(r.endswith("+ instanceIdShift;") for r in inst)   # 14 + the four gate sockets (13.3, 2026-09-22)
         assert not re.search(r"\\w*(Unit|Id|Flag|Nug|Socket|Bld|Post)\w*\s*[-+]\s*\d+\s*[;)]", t.replace("Idx", "").replace("Tiles", ""))   # no literal id arithmetic
 
     def test_twin_identical_and_crlf(self):

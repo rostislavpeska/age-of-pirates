@@ -1620,9 +1620,14 @@ void main(void)
 	int towerNFlagUnit = rmGetGroupingInstanceUnitByType(towerNInst, "zpSPCCapturableFlagNoIcon") + instanceIdShift;
 	int towerSNugUnit = rmGetGroupingInstanceUnitByType(towerSInst, "zpNuggetInvisible") + instanceIdShift;              // the gate treasure, resolved by 605
 	int towerNNugUnit = rmGetGroupingInstanceUnitByType(towerNInst, "zpNuggetInvisible") + instanceIdShift;
+	int towerSGate1SocketUnit = rmGetGroupingInstanceUnitByType(towerSInst, "zpInvisibleGateSocketA") + instanceIdShift;   // King of Bohemia's unique gate sockets (zpkingofbohemia.xs 1176-1183):
+	int towerSGate2SocketUnit = rmGetGroupingInstanceUnitByType(towerSInst, "zpInvisibleGateSocketB") + instanceIdShift;   // one proto per gate under the gate, one transform tech each (zpConverGate1-4)
+	int towerNGate1SocketUnit = rmGetGroupingInstanceUnitByType(towerNInst, "zpInvisibleGateSocketC") + instanceIdShift;
+	int towerNGate2SocketUnit = rmGetGroupingInstanceUnitByType(towerNInst, "zpInvisibleGateSocketD") + instanceIdShift;
 	rmEchoInfo("LONDON ids: posts " + harbourN1PostUnit + " " + harbourN2PostUnit + " " + harbourS1PostUnit + " " + harbourS2PostUnit + " guards " + harbourN1GuardUnit + " " + harbourN2GuardUnit + " " + harbourS1GuardUnit + " " + harbourS2GuardUnit);
 	rmEchoInfo("LONDON ids: menageries " + menagerieSUnit + " " + menagerieNUnit + " nuggets " + menagerieSNugUnit + " " + menagerieNNugUnit + " factories " + factorySUnit + " " + factoryNUnit + " nuggets " + factorySNugUnit + " " + factoryNNugUnit);
 	rmEchoInfo("LONDON ids: towers " + towerSBldUnit + " " + towerNBldUnit + " flags " + towerSFlagUnit + " " + towerNFlagUnit + " nuggets " + towerSNugUnit + " " + towerNNugUnit);
+	rmEchoInfo("LONDON ids: gate sockets S " + towerSGate1SocketUnit + " " + towerSGate2SocketUnit + " N " + towerNGate1SocketUnit + " " + towerNGate2SocketUnit);
 
 	// ---- 13.1 startup: every capturable's AutoConvert suspended (Istanbul "Trade Harbours NoAutoConvert")
 	rmCreateTrigger("London NoAutoConvert");
@@ -1764,13 +1769,27 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 
-	// ---- 13.3 the Towers (Istanbul's palace family), three passes per bank - only where the export carries a
-	// capturable flag (none does today: both families are skipped)
+	// ---- 13.3 the Towers (Istanbul's palace family), three passes per bank, guarded on the export's capturable flag
+	// (both carry Paris's zpSPCCapturableFlagNoIcon). The whole complex follows the flag's owner (user 2026-09-22):
+	// the building by id, then Caribbean Wars' area sweep by UnitType from the building (zpcaribbeanwars.xs
+	// 1083-1101: from every source player 0..N so a flag that flips between players carries everything along;
+	// 2411-2427: the corner tower sockets zpSPCSocketCityTowerWooden and the wooden towers the owner builds on
+	// them), the gates, Paris's wall props (zpparis.xs 2870-2980), and King of Bohemia's gates: one unique
+	// zpInvisibleGateSocketA-D under each SPCFortGate, converted by id, and a gate found missing right after the
+	// capture rebuilt once from its socket (zpkingofbohemia.xs 1906-1935, 1984-2000, 2251-2269, 2388-2408:
+	// GateN_Rebuilt + a 500 ms deactivator; the transform consumes the socket, so each gate rebuilds once).
+	// towerSweepM: the export's farthest wall prop is 37.1 m from the building, the nearest foreign unit of any
+	// swept proto (the city wall gates) 176 m away.
+	int towerSweepM = 40;
+	int towerGateRebuildM = 15;
 	if (towerSFlagUnit >= 0)
 	{
 		for (k = 1; <= cNumberNonGaiaPlayers)
 		{
 			rmCreateTrigger("TowerConvS_Plr" + k);
+			rmCreateTrigger("TowerSGate1_Rebuilt" + k);
+			rmCreateTrigger("TowerSGate2_Rebuilt" + k);
+			rmCreateTrigger("TowerSGate_Rebuilt_Deactivator" + k);
 		}
 		rmCreateTrigger("TowerSUnlock");
 		rmSwitchToTrigger(rmTriggerID("TowerSUnlock"));
@@ -1798,6 +1817,57 @@ void main(void)
 			rmAddTriggerEffect("Convert");
 			rmSetTriggerEffectParam("SrcObject", "" + towerSBldUnit);
 			rmSetTriggerEffectParamInt("PlayerID", p);
+			for (i = 0; <= cNumberNonGaiaPlayers)
+			{
+				rmAddTriggerEffect("Convert Units in Area");
+				rmSetTriggerEffectParam("SrcObject", "" + towerSBldUnit);
+				rmSetTriggerEffectParamInt("SrcPlayer", i);
+				rmSetTriggerEffectParamInt("TrgPlayer", p);
+				rmSetTriggerEffectParam("UnitType", "SPCFortGate");
+				rmSetTriggerEffectParamInt("Dist", towerSweepM);
+				rmAddTriggerEffect("Convert Units in Area");
+				rmSetTriggerEffectParam("SrcObject", "" + towerSBldUnit);
+				rmSetTriggerEffectParamInt("SrcPlayer", i);
+				rmSetTriggerEffectParamInt("TrgPlayer", p);
+				rmSetTriggerEffectParam("UnitType", "zpSPCSocketCityTowerWooden");
+				rmSetTriggerEffectParamInt("Dist", towerSweepM);
+				rmAddTriggerEffect("Convert Units in Area");
+				rmSetTriggerEffectParam("SrcObject", "" + towerSBldUnit);
+				rmSetTriggerEffectParamInt("SrcPlayer", i);
+				rmSetTriggerEffectParamInt("TrgPlayer", p);
+				rmSetTriggerEffectParam("UnitType", "zpSPCCityTowerWooden");
+				rmSetTriggerEffectParamInt("Dist", towerSweepM);
+				rmAddTriggerEffect("Convert Units in Area");
+				rmSetTriggerEffectParam("SrcObject", "" + towerSBldUnit);
+				rmSetTriggerEffectParamInt("SrcPlayer", i);
+				rmSetTriggerEffectParamInt("TrgPlayer", p);
+				rmSetTriggerEffectParam("UnitType", "deSPCFortWallMediumProp");
+				rmSetTriggerEffectParamInt("Dist", towerSweepM);
+				rmAddTriggerEffect("Convert Units in Area");
+				rmSetTriggerEffectParam("SrcObject", "" + towerSBldUnit);
+				rmSetTriggerEffectParamInt("SrcPlayer", i);
+				rmSetTriggerEffectParamInt("TrgPlayer", p);
+				rmSetTriggerEffectParam("UnitType", "deSPCFortCornerProp");
+				rmSetTriggerEffectParamInt("Dist", towerSweepM);
+				rmAddTriggerEffect("Convert Units in Area");
+				rmSetTriggerEffectParam("SrcObject", "" + towerSBldUnit);
+				rmSetTriggerEffectParamInt("SrcPlayer", i);
+				rmSetTriggerEffectParamInt("TrgPlayer", p);
+				rmSetTriggerEffectParam("UnitType", "zpSPCFortWallProp");
+				rmSetTriggerEffectParamInt("Dist", towerSweepM);
+			}
+			rmAddTriggerEffect("Convert");
+			rmSetTriggerEffectParam("SrcObject", "" + towerSGate1SocketUnit);
+			rmSetTriggerEffectParamInt("PlayerID", p);
+			rmAddTriggerEffect("Convert");
+			rmSetTriggerEffectParam("SrcObject", "" + towerSGate2SocketUnit);
+			rmSetTriggerEffectParamInt("PlayerID", p);
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerSGate1_Rebuilt" + p));
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerSGate2_Rebuilt" + p));
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerSGate_Rebuilt_Deactivator" + p));
 			for (q = 1; <= cNumberNonGaiaPlayers)
 			{
 				if (q != p)
@@ -1813,12 +1883,61 @@ void main(void)
 			rmSetTriggerRunImmediately(false);
 			rmSetTriggerLoop(false);
 		}
+		for (k = 1; <= cNumberNonGaiaPlayers)
+		{
+			rmSwitchToTrigger(rmTriggerID("TowerSGate1_Rebuilt" + k));
+			rmAddTriggerCondition("Units in Area");
+			rmSetTriggerConditionParam("DstObject", "" + towerSGate1SocketUnit);
+			rmSetTriggerConditionParamInt("Player", k);
+			rmSetTriggerConditionParam("UnitType", "SPCFortGate");
+			rmSetTriggerConditionParamInt("Dist", towerGateRebuildM);
+			rmSetTriggerConditionParam("Op", "==");
+			rmSetTriggerConditionParamInt("Count", 0);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpConverGate1");
+			rmSetTriggerEffectParamInt("Status", 2);
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(false);
+			rmSwitchToTrigger(rmTriggerID("TowerSGate2_Rebuilt" + k));
+			rmAddTriggerCondition("Units in Area");
+			rmSetTriggerConditionParam("DstObject", "" + towerSGate2SocketUnit);
+			rmSetTriggerConditionParamInt("Player", k);
+			rmSetTriggerConditionParam("UnitType", "SPCFortGate");
+			rmSetTriggerConditionParamInt("Dist", towerGateRebuildM);
+			rmSetTriggerConditionParam("Op", "==");
+			rmSetTriggerConditionParamInt("Count", 0);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpConverGate2");
+			rmSetTriggerEffectParamInt("Status", 2);
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(false);
+			rmSwitchToTrigger(rmTriggerID("TowerSGate_Rebuilt_Deactivator" + k));
+			rmAddTriggerCondition("Timer ms");
+			rmSetTriggerConditionParamInt("Param1", 500);
+			rmAddTriggerEffect("Disable Trigger");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerSGate1_Rebuilt" + k));
+			rmAddTriggerEffect("Disable Trigger");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerSGate2_Rebuilt" + k));
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(false);
+		}
 	}
 	if (towerNFlagUnit >= 0)
 	{
 		for (k = 1; <= cNumberNonGaiaPlayers)
 		{
 			rmCreateTrigger("TowerConvN_Plr" + k);
+			rmCreateTrigger("TowerNGate1_Rebuilt" + k);
+			rmCreateTrigger("TowerNGate2_Rebuilt" + k);
+			rmCreateTrigger("TowerNGate_Rebuilt_Deactivator" + k);
 		}
 		rmCreateTrigger("TowerNUnlock");
 		rmSwitchToTrigger(rmTriggerID("TowerNUnlock"));
@@ -1846,6 +1965,57 @@ void main(void)
 			rmAddTriggerEffect("Convert");
 			rmSetTriggerEffectParam("SrcObject", "" + towerNBldUnit);
 			rmSetTriggerEffectParamInt("PlayerID", p);
+			for (i = 0; <= cNumberNonGaiaPlayers)
+			{
+				rmAddTriggerEffect("Convert Units in Area");
+				rmSetTriggerEffectParam("SrcObject", "" + towerNBldUnit);
+				rmSetTriggerEffectParamInt("SrcPlayer", i);
+				rmSetTriggerEffectParamInt("TrgPlayer", p);
+				rmSetTriggerEffectParam("UnitType", "SPCFortGate");
+				rmSetTriggerEffectParamInt("Dist", towerSweepM);
+				rmAddTriggerEffect("Convert Units in Area");
+				rmSetTriggerEffectParam("SrcObject", "" + towerNBldUnit);
+				rmSetTriggerEffectParamInt("SrcPlayer", i);
+				rmSetTriggerEffectParamInt("TrgPlayer", p);
+				rmSetTriggerEffectParam("UnitType", "zpSPCSocketCityTowerWooden");
+				rmSetTriggerEffectParamInt("Dist", towerSweepM);
+				rmAddTriggerEffect("Convert Units in Area");
+				rmSetTriggerEffectParam("SrcObject", "" + towerNBldUnit);
+				rmSetTriggerEffectParamInt("SrcPlayer", i);
+				rmSetTriggerEffectParamInt("TrgPlayer", p);
+				rmSetTriggerEffectParam("UnitType", "zpSPCCityTowerWooden");
+				rmSetTriggerEffectParamInt("Dist", towerSweepM);
+				rmAddTriggerEffect("Convert Units in Area");
+				rmSetTriggerEffectParam("SrcObject", "" + towerNBldUnit);
+				rmSetTriggerEffectParamInt("SrcPlayer", i);
+				rmSetTriggerEffectParamInt("TrgPlayer", p);
+				rmSetTriggerEffectParam("UnitType", "deSPCFortWallMediumProp");
+				rmSetTriggerEffectParamInt("Dist", towerSweepM);
+				rmAddTriggerEffect("Convert Units in Area");
+				rmSetTriggerEffectParam("SrcObject", "" + towerNBldUnit);
+				rmSetTriggerEffectParamInt("SrcPlayer", i);
+				rmSetTriggerEffectParamInt("TrgPlayer", p);
+				rmSetTriggerEffectParam("UnitType", "deSPCFortCornerProp");
+				rmSetTriggerEffectParamInt("Dist", towerSweepM);
+				rmAddTriggerEffect("Convert Units in Area");
+				rmSetTriggerEffectParam("SrcObject", "" + towerNBldUnit);
+				rmSetTriggerEffectParamInt("SrcPlayer", i);
+				rmSetTriggerEffectParamInt("TrgPlayer", p);
+				rmSetTriggerEffectParam("UnitType", "zpSPCFortWallProp");
+				rmSetTriggerEffectParamInt("Dist", towerSweepM);
+			}
+			rmAddTriggerEffect("Convert");
+			rmSetTriggerEffectParam("SrcObject", "" + towerNGate1SocketUnit);
+			rmSetTriggerEffectParamInt("PlayerID", p);
+			rmAddTriggerEffect("Convert");
+			rmSetTriggerEffectParam("SrcObject", "" + towerNGate2SocketUnit);
+			rmSetTriggerEffectParamInt("PlayerID", p);
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerNGate1_Rebuilt" + p));
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerNGate2_Rebuilt" + p));
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerNGate_Rebuilt_Deactivator" + p));
 			for (q = 1; <= cNumberNonGaiaPlayers)
 			{
 				if (q != p)
@@ -1859,6 +2029,52 @@ void main(void)
 			rmSetTriggerPriority(4);
 			rmSetTriggerActive(false);
 			rmSetTriggerRunImmediately(false);
+			rmSetTriggerLoop(false);
+		}
+		for (k = 1; <= cNumberNonGaiaPlayers)
+		{
+			rmSwitchToTrigger(rmTriggerID("TowerNGate1_Rebuilt" + k));
+			rmAddTriggerCondition("Units in Area");
+			rmSetTriggerConditionParam("DstObject", "" + towerNGate1SocketUnit);
+			rmSetTriggerConditionParamInt("Player", k);
+			rmSetTriggerConditionParam("UnitType", "SPCFortGate");
+			rmSetTriggerConditionParamInt("Dist", towerGateRebuildM);
+			rmSetTriggerConditionParam("Op", "==");
+			rmSetTriggerConditionParamInt("Count", 0);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpConverGate3");
+			rmSetTriggerEffectParamInt("Status", 2);
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(false);
+			rmSwitchToTrigger(rmTriggerID("TowerNGate2_Rebuilt" + k));
+			rmAddTriggerCondition("Units in Area");
+			rmSetTriggerConditionParam("DstObject", "" + towerNGate2SocketUnit);
+			rmSetTriggerConditionParamInt("Player", k);
+			rmSetTriggerConditionParam("UnitType", "SPCFortGate");
+			rmSetTriggerConditionParamInt("Dist", towerGateRebuildM);
+			rmSetTriggerConditionParam("Op", "==");
+			rmSetTriggerConditionParamInt("Count", 0);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpConverGate4");
+			rmSetTriggerEffectParamInt("Status", 2);
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(false);
+			rmSwitchToTrigger(rmTriggerID("TowerNGate_Rebuilt_Deactivator" + k));
+			rmAddTriggerCondition("Timer ms");
+			rmSetTriggerConditionParamInt("Param1", 500);
+			rmAddTriggerEffect("Disable Trigger");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerNGate1_Rebuilt" + k));
+			rmAddTriggerEffect("Disable Trigger");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerNGate2_Rebuilt" + k));
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(true);
 			rmSetTriggerLoop(false);
 		}
 	}
