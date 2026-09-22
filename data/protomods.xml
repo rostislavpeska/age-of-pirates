@@ -76102,7 +76102,7 @@
     <obstructionradiusx>2.5000</obstructionradiusx>
     <obstructionradiusz>2.5000</obstructionradiusz>
     <maxvelocity>0.0000</maxvelocity>
-    <movementtype>land</movementtype>
+    <movementtype>air</movementtype>
     <animfile>buildings\spc\tower\tower_hm1.xml</animfile>
     <deadreplacement>BuildingRubble2x2</deadreplacement>
     <deadreplacementlifespan>15</deadreplacementlifespan>

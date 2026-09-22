@@ -762,10 +762,7 @@ void main(void)
 	// river and the posts (2026-09-21: placed before the road with baked gates it did not spawn; the walls did). Its two
 	// landing spots carry zpInvisibleGateSocket placeholders (the export's, in place of the old zpSPCWaterSpawnPoint)
 	int londonBridge = rmCreateGrouping("london bridge", "EU_SPC_London_Bridge");
-	rmSetGroupingMinDistance(londonBridge, 0.0);
-	rmSetGroupingMaxDistance(londonBridge, 0.00);
-	rmAddGroupingToClass(londonBridge, rmClassID("classPlateau"));
-	int bridgeInst = rmPlaceGroupingInstanceAtLoc(londonBridge, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ), 1);   // placed as PLAYER 1 (user 2026-09-22): the sockets belong to the builder
+	int bridgeInst = placeIsland(londonBridge, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ));
 	int bridgeMark = rmCreateObjectDef("bridge mark");   // AztecCity 624-631: the marker right after the grouping - its id - 1 .. - 4 are the export's last four units, the tower sockets
 	rmAddObjectDefItem(bridgeMark, "zpSPCWaterSpawnPoint", 1, 0.0);
 	rmSetObjectDefAllowOverlap(bridgeMark, true);
@@ -2411,11 +2408,33 @@ void main(void)
 		rmSetTriggerLoop(false);
 	}
 
-	// ---- 13.6 the bridge's four towers stand from the start (AztecCity 1618-1690): the bridge is placed as player 1 (6),
-	// so the sockets are player 1's, and the Socket Builds are issued for player 1 (user 2026-09-22). The Flat city tower
-	// (21197) is deSPCCityTower 2315 without FlattenGround - the deck stays.
-	rmCreateTrigger("BridgeTowers_Setup");
-	rmSwitchToTrigger(rmTriggerID("BridgeTowers_Setup"));
+	// ---- 13.6 the bridge's four towers stand from the start - AztecCity's Defender_Setup0 / 1 (zpazteccity.xs 1565-1690):
+	// the sockets are handed to the builder FIRST (Aztec converts its outpost sockets to the defender, then builds in the next
+	// trigger 10 ms later). Here the builder is player 1 (user 2026-09-22: a build for gaia placed nothing, and a build for
+	// player 1 on gaia's sockets neither); sockets and towers go back to gaia right after the builds (Caribbean's sweep
+	// 1 -> 0 around the port socket) and once more 2000 ms later in case the built tower lands a frame late.
+	// InvulnerableIfGaia / CannotAttackIfGaia keep gaia's towers inert until the bridge is taken, then 13.5 converts them
+	// with the sockets. The Flat city tower (21197) is deSPCCityTower 2315 without FlattenGround - the deck stays; Venice /
+	// Bohemia's socket family, the Tower of London keeps the wooden one.
+	rmCreateTrigger("BridgeTowers_Setup0");
+	rmCreateTrigger("BridgeTowers_Setup1");
+	rmCreateTrigger("BridgeTowers_Gaia");
+	rmSwitchToTrigger(rmTriggerID("BridgeTowers_Setup0"));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamInt("Param1", 10);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+	rmSetTriggerEffectParamInt("SrcPlayer", 0);
+	rmSetTriggerEffectParamInt("TrgPlayer", 1);
+	rmSetTriggerEffectParam("UnitType", "zpSPCSocketCityTowerFlat");
+	rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeTowers_Setup1"));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	rmSwitchToTrigger(rmTriggerID("BridgeTowers_Setup1"));
 	rmAddTriggerCondition("Timer ms");
 	rmSetTriggerConditionParamInt("Param1", 10);
 	rmAddTriggerEffect("Socket Build");
@@ -2434,8 +2453,41 @@ void main(void)
 	rmSetTriggerEffectParamInt("PlayerID", 1);
 	rmSetTriggerEffectParam("Socket", "" + bridgeSocket4Unit);
 	rmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+	rmSetTriggerEffectParamInt("SrcPlayer", 1);
+	rmSetTriggerEffectParamInt("TrgPlayer", 0);
+	rmSetTriggerEffectParam("UnitType", "zpSPCCityTowerFlat");
+	rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+	rmSetTriggerEffectParamInt("SrcPlayer", 1);
+	rmSetTriggerEffectParamInt("TrgPlayer", 0);
+	rmSetTriggerEffectParam("UnitType", "zpSPCSocketCityTowerFlat");
+	rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeTowers_Gaia"));
 	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
+	rmSetTriggerActive(false);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	rmSwitchToTrigger(rmTriggerID("BridgeTowers_Gaia"));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamInt("Param1", 2000);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+	rmSetTriggerEffectParamInt("SrcPlayer", 1);
+	rmSetTriggerEffectParamInt("TrgPlayer", 0);
+	rmSetTriggerEffectParam("UnitType", "zpSPCCityTowerFlat");
+	rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+	rmSetTriggerEffectParamInt("SrcPlayer", 1);
+	rmSetTriggerEffectParamInt("TrgPlayer", 0);
+	rmSetTriggerEffectParam("UnitType", "zpSPCSocketCityTowerFlat");
+	rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 
@@ -2459,10 +2511,6 @@ void main(void)
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID", 0);
 	rmSetTriggerEffectParam("TechID", "cTechzpConverGate");
-	rmSetTriggerEffectParamInt("Status", 2);
-	rmAddTriggerEffect("ZP Set Tech Status (XS)");
-	rmSetTriggerEffectParamInt("PlayerID", 1);
-	rmSetTriggerEffectParam("TechID", "cTechzpConverGate");   // the bridge is player 1's (6): its placeholders too
 	rmSetTriggerEffectParamInt("Status", 2);
 	// gaia flies the London flag and is called City of London (Paris: the Bourbon flag + "City of Paris"); the House of
 	// Stuart civ carries the London flag texture in civmods, its Royal Standard lives only on the zpStuartFlag unit
