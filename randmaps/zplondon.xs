@@ -190,34 +190,6 @@ void routeSocket(int tradeRouteID = -1, float x = 0.5, float z = 0.5)
 	rmPlaceObjectDefAtLoc(sock, 0, x, z);
 }
 
-// A harbour's post (zpOrientalFerry, Istanbul's ferry) linked to the lane, min 0 / max 0.5 - zpvenicecity's
-// "sockets to dock Trade Posts" 1:1. Asked where the harbour's export has the post (its origin - postWestM in x,
-// origin + postToWaterM toward the water: waterSign -1.0 on the north bank, +1.0 on the south), placed BEFORE the
-// harbour grouping; the grouping origin is rebuilt from the post's REAL position into gHarbourX / gHarbourZ -
-// copy them on the next line. Returns the post's object def.
-float gHarbourX = 0.5;
-float gHarbourZ = 0.5;
-int gPostIdx = 0;
-int harbourPost(int laneID = -1, float originX = 0.5, float originZ = 0.5, float postWestM = 0.0, float postToWaterM = 0.0, float waterSign = 1.0)
-{
-	gPostIdx = gPostIdx + 1;
-	float x = originX - rmXMetersToFraction(postWestM);
-	float z = originZ + waterSign * rmZMetersToFraction(postToWaterM);
-	int post = rmCreateObjectDef("harbour post " + gPostIdx);
-	rmSetObjectDefTradeRouteID(post, laneID);
-	rmAddObjectDefItem(post, "zpOrientalFerry", 1, 0.0);
-	rmSetObjectDefMinDistance(post, 0.0);
-	rmSetObjectDefMaxDistance(post, 0.5);
-	rmPlaceObjectDefAtLoc(post, 0, x, z);
-	vector loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(post, 0));
-	float realX = rmXMetersToFraction(xsVectorGetX(loc));
-	float realZ = rmZMetersToFraction(xsVectorGetZ(loc));
-	gHarbourX = realX + rmXMetersToFraction(postWestM);
-	gHarbourZ = realZ - waterSign * rmZMetersToFraction(postToWaterM);
-	rmEchoInfo("LONDON harbour post " + gPostIdx + " asked " + rmXFractionToMeters(x) + "," + rmZFractionToMeters(z) + " m -> real " + xsVectorGetX(loc) + "," + xsVectorGetZ(loc));
-	return(post);
-}
-
 // ---- groupings
 // An island grouping at an exact spot (law 2); returns the instance for rmGetGroupingInstanceUnitByType.
 int placeIsland(int grouping = -1, float x = 0.0, float z = 0.0)
@@ -853,16 +825,50 @@ void main(void)
 
 	rmSetStatusText("",0.30);
 
-	// ---- 5. THE HARBOUR POSTS (zpvenicecity: right after the river, BEFORE the groupings). Each harbour's names:
-	// harbour<bank><k>PostDef, harbour<bank><k>X / Z = its grouping origin rebuilt from the REAL post
-	int harbourN1PostDef = harbourPost(waterRouteID, harbour1X, harbourNZ, hNPostWestM, hNPostToWaterM, -1.0);
-	float harbourN1X = gHarbourX;   float harbourN1Z = gHarbourZ;
-	int harbourN2PostDef = harbourPost(waterRouteID, harbour2X, harbourNZ, hNPostWestM, hNPostToWaterM, -1.0);
-	float harbourN2X = gHarbourX;   float harbourN2Z = gHarbourZ;
-	int harbourS1PostDef = harbourPost(waterRouteID, harbour1X, harbourSZ, hSPostWestM, hSPostToWaterM, 1.0);
-	float harbourS1X = gHarbourX;   float harbourS1Z = gHarbourZ;
-	int harbourS2PostDef = harbourPost(waterRouteID, harbour2X, harbourSZ, hSPostWestM, hSPostToWaterM, 1.0);
-	float harbourS2X = gHarbourX;   float harbourS2Z = gHarbourZ;
+	// ---- 5. THE HARBOUR POSTS (zpvenicecity: right after the river, BEFORE the groupings), each its OWN object def at main
+	// scope with a literal name - Istanbul's socket form 1:1 (zpistanbulb.xs 1448-1456; user 2026-09-22: the helper that wrapped
+	// them is gone, rmGetUnitPlaced must see plain defs). Asked at the export's post spot (origin - postWestM in x, origin +-
+	// postToWaterM toward the water); harbour<bank><k>X / Z = the grouping origin rebuilt from the post's REAL position
+	int harbourN1PostDef = rmCreateObjectDef("harbour post N1");
+	rmSetObjectDefTradeRouteID(harbourN1PostDef, waterRouteID);
+	rmAddObjectDefItem(harbourN1PostDef, "zpOrientalFerry", 1, 0.0);
+	rmSetObjectDefMinDistance(harbourN1PostDef, 0.0);
+	rmSetObjectDefMaxDistance(harbourN1PostDef, 0.5);
+	rmPlaceObjectDefAtLoc(harbourN1PostDef, 0, harbour1X - rmXMetersToFraction(hNPostWestM), harbourNZ - rmZMetersToFraction(hNPostToWaterM));
+	vector harbourN1Loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbourN1PostDef, 0));
+	float harbourN1X = rmXMetersToFraction(xsVectorGetX(harbourN1Loc)) + rmXMetersToFraction(hNPostWestM);
+	float harbourN1Z = rmZMetersToFraction(xsVectorGetZ(harbourN1Loc)) + rmZMetersToFraction(hNPostToWaterM);
+	rmEchoInfo("LONDON harbour post N1 real " + xsVectorGetX(harbourN1Loc) + "," + xsVectorGetZ(harbourN1Loc) + " m");
+	int harbourN2PostDef = rmCreateObjectDef("harbour post N2");
+	rmSetObjectDefTradeRouteID(harbourN2PostDef, waterRouteID);
+	rmAddObjectDefItem(harbourN2PostDef, "zpOrientalFerry", 1, 0.0);
+	rmSetObjectDefMinDistance(harbourN2PostDef, 0.0);
+	rmSetObjectDefMaxDistance(harbourN2PostDef, 0.5);
+	rmPlaceObjectDefAtLoc(harbourN2PostDef, 0, harbour2X - rmXMetersToFraction(hNPostWestM), harbourNZ - rmZMetersToFraction(hNPostToWaterM));
+	vector harbourN2Loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbourN2PostDef, 0));
+	float harbourN2X = rmXMetersToFraction(xsVectorGetX(harbourN2Loc)) + rmXMetersToFraction(hNPostWestM);
+	float harbourN2Z = rmZMetersToFraction(xsVectorGetZ(harbourN2Loc)) + rmZMetersToFraction(hNPostToWaterM);
+	rmEchoInfo("LONDON harbour post N2 real " + xsVectorGetX(harbourN2Loc) + "," + xsVectorGetZ(harbourN2Loc) + " m");
+	int harbourS1PostDef = rmCreateObjectDef("harbour post S1");
+	rmSetObjectDefTradeRouteID(harbourS1PostDef, waterRouteID);
+	rmAddObjectDefItem(harbourS1PostDef, "zpOrientalFerry", 1, 0.0);
+	rmSetObjectDefMinDistance(harbourS1PostDef, 0.0);
+	rmSetObjectDefMaxDistance(harbourS1PostDef, 0.5);
+	rmPlaceObjectDefAtLoc(harbourS1PostDef, 0, harbour1X - rmXMetersToFraction(hSPostWestM), harbourSZ + rmZMetersToFraction(hSPostToWaterM));
+	vector harbourS1Loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbourS1PostDef, 0));
+	float harbourS1X = rmXMetersToFraction(xsVectorGetX(harbourS1Loc)) + rmXMetersToFraction(hSPostWestM);
+	float harbourS1Z = rmZMetersToFraction(xsVectorGetZ(harbourS1Loc)) - rmZMetersToFraction(hSPostToWaterM);
+	rmEchoInfo("LONDON harbour post S1 real " + xsVectorGetX(harbourS1Loc) + "," + xsVectorGetZ(harbourS1Loc) + " m");
+	int harbourS2PostDef = rmCreateObjectDef("harbour post S2");
+	rmSetObjectDefTradeRouteID(harbourS2PostDef, waterRouteID);
+	rmAddObjectDefItem(harbourS2PostDef, "zpOrientalFerry", 1, 0.0);
+	rmSetObjectDefMinDistance(harbourS2PostDef, 0.0);
+	rmSetObjectDefMaxDistance(harbourS2PostDef, 0.5);
+	rmPlaceObjectDefAtLoc(harbourS2PostDef, 0, harbour2X - rmXMetersToFraction(hSPostWestM), harbourSZ + rmZMetersToFraction(hSPostToWaterM));
+	vector harbourS2Loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbourS2PostDef, 0));
+	float harbourS2X = rmXMetersToFraction(xsVectorGetX(harbourS2Loc)) + rmXMetersToFraction(hSPostWestM);
+	float harbourS2Z = rmZMetersToFraction(xsVectorGetZ(harbourS2Loc)) - rmZMetersToFraction(hSPostToWaterM);
+	rmEchoInfo("LONDON harbour post S2 real " + xsVectorGetX(harbourS2Loc) + "," + xsVectorGetZ(harbourS2Loc) + " m");
 
 	// ---- 6. LONDON BRIDGE (law 2): deck on the road, arches over the river; deck height 4.949 - back here after the
 	// river and the posts (2026-09-21: placed before the road with baked gates it did not spawn; the walls did). Its two
