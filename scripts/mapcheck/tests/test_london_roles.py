@@ -598,10 +598,10 @@ class TestScope:
     def test_unit_ids_derive_in_one_block_through_the_two_shifts(self):
         # Istanbul's architecture (zpistanbulb.xs 4173-4193): both shifts declared together at the head of 13, every id through them
         t = _code(_text(LONDON))
-        assert t.count("int instanceIdShift = 3;") == 1 and t.count("int instanceIdShiftIndividual = 3;") == 1   # grouping 3 measured 2026-09-22; individual under test
-        assert t.index('rmCreateObjectDef("countryside tin")') < t.index("int instanceIdShift = 3;") < t.index("int instanceIdShiftIndividual = 3;") < t.index("int harbourN1PostUnit")
-        assert t.count("rmGetUnitPlaced(") == 8                                                    # 4 post indices read at placement (5), 4 raw guard ids
-        assert all(("int harbour%sPostRaw = rmGetUnitPlaced(harbour%sPostDef, 0);" % (s, s)) in t and ("int harbour%sPostUnit = harbour%sPostRaw + instanceIdShiftIndividual;" % (s, s)) in t for s in ("N1", "N2", "S1", "S2"))
+        assert t.count("int instanceIdShift = 3;") == 1 and "instanceIdShiftIndividual" not in t   # grouping shift measured 2026-09-22; the object-def ids are literal indices (fix B)
+        assert t.index('rmCreateObjectDef("countryside tin")') < t.index("int instanceIdShift = 3;") < t.index("int harbourN1PostUnit")
+        for s, post, guard in (("N1", 169, 363), ("N2", 170, 368), ("S1", 171, 373), ("S2", 172, 378)):                # fix B: literal indices (census 2026-09-22)
+            assert ("int harbour%sPostUnit = %d;" % (s, post)) in t and ("int harbour%sGuardUnit = %d;" % (s, guard)) in t and ("rmSetTriggerConditionParam(\"NuggetObject\", \"\" + harbour%sGuardUnit);" % s) in t
         inst = re.findall(r"int \w+ = rmGetGroupingInstanceUnitByType\([^;]*;", t)
         assert len(inst) == 14 and all(r.endswith("+ instanceIdShift;") for r in inst)
         assert not re.search(r"\\w*(Unit|Id|Flag|Nug|Socket|Bld|Post)\w*\s*[-+]\s*\d+\s*[;)]", t.replace("Idx", "").replace("Tiles", ""))   # no literal id arithmetic

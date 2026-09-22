@@ -501,8 +501,6 @@ void main(void)
 	float harbourGuardInM = 2.5;        // the guard nugget this far INTO the city off the bank's quay wall line = the middle of the 5 m promenade, at the harbour's x (behind the harbour building)
 	float harbourGuardSearchM = 3.0;    // ... and the search radius around that spot: stays on the promenade (6 m let it wander off the harbour - user 2026-09-18)
 	float decoMouthXM = 12.0;           // the first riverside deco (40 m) centred this far in: the mouth slot is only 26 m
-	string harbourGuardType = "deGuardianMusketeer";   // the 101 record's guardians - what the release trigger counts around the post
-	int   harbourGuardReachM = 25;         // ... within this distance of the post (nugget ~14 m behind it + the guardian spread)
 
 	// ---- 0.5 THE LOBBY: the coin and the roles - the Florence system (zpflorence.xs 124-155, zpistanbulb.xs 5b),
 	// resolved up front because the gates (3.5) take their owners from them. TEAM 1 DEFENDS, TEAM 0 ATTACKS - Florence's
@@ -725,7 +723,6 @@ void main(void)
 	rmSetObjectDefMinDistance(harbourN1PostDef, 0.0);
 	rmSetObjectDefMaxDistance(harbourN1PostDef, 0.5);
 	rmPlaceObjectDefAtLoc(harbourN1PostDef, 0, harbour1X - rmXMetersToFraction(hNPostWestM), harbourNZ - rmZMetersToFraction(hNPostToWaterM));
-	int harbourN1PostRaw = rmGetUnitPlaced(harbourN1PostDef, 0);   // the unit INDEX, read before the next ferry docks: the trigger script of 18:29 showed a late read hands the compiler an engine id (trUnitSelect("262148") = no-op), only the last-docked post kept its index
 	vector harbourN1Loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbourN1PostDef, 0));
 	float harbourN1X = rmXMetersToFraction(xsVectorGetX(harbourN1Loc)) + rmXMetersToFraction(hNPostWestM);
 	float harbourN1Z = rmZMetersToFraction(xsVectorGetZ(harbourN1Loc)) + rmZMetersToFraction(hNPostToWaterM);
@@ -736,7 +733,6 @@ void main(void)
 	rmSetObjectDefMinDistance(harbourN2PostDef, 0.0);
 	rmSetObjectDefMaxDistance(harbourN2PostDef, 0.5);
 	rmPlaceObjectDefAtLoc(harbourN2PostDef, 0, harbour2X - rmXMetersToFraction(hNPostWestM), harbourNZ - rmZMetersToFraction(hNPostToWaterM));
-	int harbourN2PostRaw = rmGetUnitPlaced(harbourN2PostDef, 0);   // the unit INDEX, read before the next ferry docks: the trigger script of 18:29 showed a late read hands the compiler an engine id (trUnitSelect("262148") = no-op), only the last-docked post kept its index
 	vector harbourN2Loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbourN2PostDef, 0));
 	float harbourN2X = rmXMetersToFraction(xsVectorGetX(harbourN2Loc)) + rmXMetersToFraction(hNPostWestM);
 	float harbourN2Z = rmZMetersToFraction(xsVectorGetZ(harbourN2Loc)) + rmZMetersToFraction(hNPostToWaterM);
@@ -747,7 +743,6 @@ void main(void)
 	rmSetObjectDefMinDistance(harbourS1PostDef, 0.0);
 	rmSetObjectDefMaxDistance(harbourS1PostDef, 0.5);
 	rmPlaceObjectDefAtLoc(harbourS1PostDef, 0, harbour1X - rmXMetersToFraction(hSPostWestM), harbourSZ + rmZMetersToFraction(hSPostToWaterM));
-	int harbourS1PostRaw = rmGetUnitPlaced(harbourS1PostDef, 0);   // the unit INDEX, read before the next ferry docks: the trigger script of 18:29 showed a late read hands the compiler an engine id (trUnitSelect("262148") = no-op), only the last-docked post kept its index
 	vector harbourS1Loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbourS1PostDef, 0));
 	float harbourS1X = rmXMetersToFraction(xsVectorGetX(harbourS1Loc)) + rmXMetersToFraction(hSPostWestM);
 	float harbourS1Z = rmZMetersToFraction(xsVectorGetZ(harbourS1Loc)) - rmZMetersToFraction(hSPostToWaterM);
@@ -758,7 +753,6 @@ void main(void)
 	rmSetObjectDefMinDistance(harbourS2PostDef, 0.0);
 	rmSetObjectDefMaxDistance(harbourS2PostDef, 0.5);
 	rmPlaceObjectDefAtLoc(harbourS2PostDef, 0, harbour2X - rmXMetersToFraction(hSPostWestM), harbourSZ + rmZMetersToFraction(hSPostToWaterM));
-	int harbourS2PostRaw = rmGetUnitPlaced(harbourS2PostDef, 0);   // the unit INDEX, read before the next ferry docks: the trigger script of 18:29 showed a late read hands the compiler an engine id (trUnitSelect("262148") = no-op), only the last-docked post kept its index
 	vector harbourS2Loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbourS2PostDef, 0));
 	float harbourS2X = rmXMetersToFraction(xsVectorGetX(harbourS2Loc)) + rmXMetersToFraction(hSPostWestM);
 	float harbourS2Z = rmZMetersToFraction(xsVectorGetZ(harbourS2Loc)) - rmZMetersToFraction(hSPostToWaterM);
@@ -1577,14 +1571,14 @@ void main(void)
 	rmEchoInfo("countryside rim: pie radius " + rimRadiusM + " m (corner chamfer " + rimCornerM + " m), frame box 8 m");
 
 	// ============================================================================================
-	// 13. TRIGGERS, all at the end (Paris / Istanbul). Ids: object defs = rmGetUnitPlaced + instanceIdShiftIndividual,
+	// 13. TRIGGERS, all at the end (Paris / Istanbul). Ids: object defs = literal unit indices (fix B),
 	//     grouping instances = rmGetGroupingInstanceUnitByType + instanceIdShift; a baked nugget is queried by its
 	//     nuggetmods <nuggetunit>, never by the authored placeholder (Istanbul).
 	// ============================================================================================
 	// ========================================================================
 	//  UNIT IDS - every id a trigger targets, derived HERE and nowhere else (Istanbul's block, zpistanbulb.xs 4173-4193)
 	// ------------------------------------------------------------------------
-	//  THE LAW: rmGetUnitPlaced (object defs) = + instanceIdShiftIndividual; rmGetGroupingInstanceUnitByType (grouping
+	//  THE LAW: object defs = literal unit INDICES (fix B, 18:38, the harbour block below); rmGetGroupingInstanceUnitByType (grouping
 	//  instances) = + instanceIdShift; no literal arithmetic on an id anywhere. The shift is the number of units the
 	//  ENGINE creates ahead of the target that the RM count does not see: here the two trade routes' own units - the
 	//  lane's ship (built in 1) and the land route's wagon (built in 3.9, Paris's gate order) - both before the harbour
@@ -1593,18 +1587,25 @@ void main(void)
 	//  00000_zplondon_shift0..3); the individual shift is still under test on the same copies.
 	//  Nugget protos are the nuggetmods <nuggetunit> of the latched difficulty, never the authored placeholder.
 	// ========================================================================
-	int instanceIdShift = 3;   // measured in game 2026-09-22 with the four shift test copies (0..3): the instances answer to 3
-	// kept SEPARATE on purpose (Istanbul): single rmPlaceObjectDef* placements and grouping
-	// instance queries drift apart the moment a grouping bakes a unit the engine spawns on its own
-	int instanceIdShiftIndividual = 3;   // measured 2026-09-22 18:30 (LondonIndivUnitIDs census): the ferries are indices 169-172 in placement order, the RM count before N1 is 166 -> +3; the compiler resolves an INDEX to trUnitSelectByID, an engine id (a late rmGetUnitPlaced) to a no-op trUnitSelect("...")
-	int harbourN1PostUnit = harbourN1PostRaw + instanceIdShiftIndividual;
-	int harbourN2PostUnit = harbourN2PostRaw + instanceIdShiftIndividual;
-	int harbourS1PostUnit = harbourS1PostRaw + instanceIdShiftIndividual;
-	int harbourS2PostUnit = harbourS2PostRaw + instanceIdShiftIndividual;
-	int harbourN1GuardUnit = rmGetUnitPlaced(harbourN1GuardDef, 0);   // raw placeholder ids, echoed for the census only (no trigger targets them)
-	int harbourN2GuardUnit = rmGetUnitPlaced(harbourN2GuardDef, 0);
-	int harbourS1GuardUnit = rmGetUnitPlaced(harbourS1GuardDef, 0);
-	int harbourS2GuardUnit = rmGetUnitPlaced(harbourS2GuardDef, 0);
+	int instanceIdShift = 3;   // the ONLY shift left: rmGetGroupingInstanceUnitByType + 3 = the index the trigger compiler wants (measured 2026-09-22)
+	// THE HARBOUR IDS ARE LITERAL INDICES (fix B, in game 2026-09-22 18:38): a trigger parameter is a unit INDEX - the trigger
+	// compiler resolves it to the engine id (Trigger/trigtemp.xs: trUnitSelectByID(...)); anything else is emitted as
+	// trUnitSelect("..."), a select-by-name that hits nothing. rmGetUnitPlaced on a ferry docked on the lane returns the
+	// ENGINE id (the docking re-creates the unit in the 0x40000 pool: 262146 / 262145 / 262147), useless as a parameter, and
+	// a "Nugget" placeholder's read is the placeholder, not the record's nugget unit. The indices come from the census of
+	// LondonIndivUnitIDs.age3Yscn: ferries 169-172 in placement order, resolved ypNuggetTradingPost units 363 / 368 / 373 /
+	// 378 (five apart: nugget + four guardians). They hold as long as NOTHING placed before section 8 changes its unit
+	// count (lane stopper + 2 controllers, 6 wall gates x 27, 2 road controllers + socket, 4 ferries, bridge, 4 piers) - any
+	// such change: generate, save, re-census (sandbox/census/census.py <save> --full), update the eight numbers.
+
+	int harbourN1PostUnit = 169;
+	int harbourN2PostUnit = 170;
+	int harbourS1PostUnit = 171;
+	int harbourS2PostUnit = 172;
+	int harbourN1GuardUnit = 363;
+	int harbourN2GuardUnit = 368;
+	int harbourS1GuardUnit = 373;
+	int harbourS2GuardUnit = 378;
 	int menagerieSUnit = rmGetGroupingInstanceUnitByType(menagerieSInst, "zpSPCMenagerie") + instanceIdShift;
 	int menagerieNUnit = rmGetGroupingInstanceUnitByType(menagerieNInst, "zpSPCMenagerie") + instanceIdShift;
 	int menagerieSNugUnit = rmGetGroupingInstanceUnitByType(menagerieSInst, "zpNuggetInvisible") + instanceIdShift;   // nuggetmods 98
@@ -1672,16 +1673,11 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 
-	// ---- 13.2 releases: harbours when their guardians are gone (by area around the post); Menageries and Factories
-	// when their baked nugget is collectable
+	// ---- 13.2 releases: every capturable when its guard nugget is collectable - Istanbul "Harbour 1 Convert ON" (4915) and
+	// Elbe's lone harbours (1379); the harbours' nuggets by their literal indices (above), the Menageries' and Factories' by instance
 	rmCreateTrigger("Harbour N1 Convert ON");
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject", "" + harbourN1PostUnit);
-	rmSetTriggerConditionParamInt("Player", 0);
-	rmSetTriggerConditionParam("UnitType", harbourGuardType);
-	rmSetTriggerConditionParamInt("Dist", harbourGuardReachM);
-	rmSetTriggerConditionParam("Op", "==");
-	rmSetTriggerConditionParamInt("Count", 0);
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", "" + harbourN1GuardUnit);
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", "" + harbourN1PostUnit, false);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
@@ -1691,13 +1687,8 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	rmCreateTrigger("Harbour N2 Convert ON");
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject", "" + harbourN2PostUnit);
-	rmSetTriggerConditionParamInt("Player", 0);
-	rmSetTriggerConditionParam("UnitType", harbourGuardType);
-	rmSetTriggerConditionParamInt("Dist", harbourGuardReachM);
-	rmSetTriggerConditionParam("Op", "==");
-	rmSetTriggerConditionParamInt("Count", 0);
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", "" + harbourN2GuardUnit);
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", "" + harbourN2PostUnit, false);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
@@ -1707,13 +1698,8 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	rmCreateTrigger("Harbour S1 Convert ON");
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject", "" + harbourS1PostUnit);
-	rmSetTriggerConditionParamInt("Player", 0);
-	rmSetTriggerConditionParam("UnitType", harbourGuardType);
-	rmSetTriggerConditionParamInt("Dist", harbourGuardReachM);
-	rmSetTriggerConditionParam("Op", "==");
-	rmSetTriggerConditionParamInt("Count", 0);
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", "" + harbourS1GuardUnit);
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", "" + harbourS1PostUnit, false);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
@@ -1723,13 +1709,8 @@ void main(void)
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	rmCreateTrigger("Harbour S2 Convert ON");
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject", "" + harbourS2PostUnit);
-	rmSetTriggerConditionParamInt("Player", 0);
-	rmSetTriggerConditionParam("UnitType", harbourGuardType);
-	rmSetTriggerConditionParamInt("Dist", harbourGuardReachM);
-	rmSetTriggerConditionParam("Op", "==");
-	rmSetTriggerConditionParamInt("Count", 0);
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", "" + harbourS2GuardUnit);
 	rmAddTriggerEffect("Unit Action Suspend");
 	rmSetTriggerEffectParam("SrcObject", "" + harbourS2PostUnit, false);
 	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
