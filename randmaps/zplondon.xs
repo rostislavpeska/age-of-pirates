@@ -1653,14 +1653,15 @@ void main(void)
 	rmAddObjectDefItem(bridgeRevealer, "zpCinematicRevealerToAll", 1, 0.0);
 	rmPlaceObjectDefAtLoc(bridgeRevealer, 0, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ), 1);
 
-	// ---- 12.9 WATER FLAGS (user 2026-09-23) - Elbe's shape (zpelbe.xs 189 / 220 / 247 / 932-943): each player's
-	// HomeCityWaterSpawnFlag on the closest water point to the town centre that is 11 m off land, 30 m off another flag,
-	// 40 m off a ferry post (the four harbours) and 70 m off the bridge faces, and WEST of London Bridge - the box keeps
-	// the river between the bridge and the map edge empty. Placed last: no literal index moves.
-	int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 11.0);
-	int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 30.0);
-	int flagVsFerry = rmCreateTypeDistanceConstraint("flag avoid ferry harbour", "zpOrientalFerry", 40.0);
-	int flagVsBridge = rmCreateTypeDistanceConstraint("flag avoid bridge", "zpBridgeFace", 70.0);
+	// ---- 12.9 WATER FLAGS (user 2026-09-23) - Elbe's shape (zpelbe.xs 189 / 220 / 932-943): each player's
+	// HomeCityWaterSpawnFlag on the closest water point to the town centre that is 8 m off land, 20 m off another flag,
+	// 8 m off the pier and bridge plateaus (classPlateau, placeIsland's class: the groupings' own footprints - a 40 m
+	// radius around the four ferry posts blanked the river along rows 3-9 on both banks and most 4v4 flags never
+	// spawned) and WEST of London Bridge - the box keeps the river between the bridge and the map edge empty; 1v7 must
+	// seat seven flags on one bank. Placed last: no literal index moves.
+	int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 8.0);
+	int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 20.0);
+	int flagVsPlateau = rmCreateClassDistanceConstraint("flag avoid piers and bridge", rmClassID("classPlateau"), 8.0);
 	int flagBox = rmCreateBoxConstraint("flag west of the bridge", 0.0, 0.0, xRoad - rmXMetersToFraction(30.0), 1.0, 0.0);
 	int waterFlag = -1;
 	vector tcLoc = xsVectorSet(0.0, 0.0, 0.0);
@@ -1671,8 +1672,7 @@ void main(void)
 		rmAddObjectDefItem(waterFlag, "HomeCityWaterSpawnFlag", 1, 1.0);
 		rmAddClosestPointConstraint(flagLand);
 		rmAddClosestPointConstraint(flagVsFlag);
-		rmAddClosestPointConstraint(flagVsFerry);
-		rmAddClosestPointConstraint(flagVsBridge);
+		rmAddClosestPointConstraint(flagVsPlateau);
 		rmAddClosestPointConstraint(flagBox);
 		tcLoc = xsVectorSet(rmXFractionToMeters(rmPlayerLocXFraction(i)), 0.0, rmZFractionToMeters(rmPlayerLocZFraction(i)));
 		flagLoc = rmFindClosestPointVector(tcLoc, rmXFractionToMeters(1.0));

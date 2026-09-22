@@ -975,17 +975,16 @@ class TestWaterFlags:
     posts and the bridge faces, and a box that keeps every flag west of London Bridge; placed after every literal-indexed unit."""
 
     def test_elbe_shape_with_the_box(self):
-        t = _code(_text(LONDON)); s = t[t.index('int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 11.0);'):t.index("int instanceIdShift = 3;")]
-        for line in ('int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 30.0);',
-                     'int flagVsFerry = rmCreateTypeDistanceConstraint("flag avoid ferry harbour", "zpOrientalFerry", 40.0);',
-                     'int flagVsBridge = rmCreateTypeDistanceConstraint("flag avoid bridge", "zpBridgeFace", 70.0);',
+        t = _code(_text(LONDON)); s = t[t.index('int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 8.0);'):t.index("int instanceIdShift = 3;")]
+        for line in ('int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 20.0);',
+                     'int flagVsPlateau = rmCreateClassDistanceConstraint("flag avoid piers and bridge", rmClassID("classPlateau"), 8.0);',
                      'int flagBox = rmCreateBoxConstraint("flag west of the bridge", 0.0, 0.0, xRoad - rmXMetersToFraction(30.0), 1.0, 0.0);',
                      'rmAddObjectDefItem(waterFlag, "HomeCityWaterSpawnFlag", 1, 1.0);',
                      "tcLoc = xsVectorSet(rmXFractionToMeters(rmPlayerLocXFraction(i)), 0.0, rmZFractionToMeters(rmPlayerLocZFraction(i)));",
                      "flagLoc = rmFindClosestPointVector(tcLoc, rmXFractionToMeters(1.0));",
                      "rmPlaceObjectDefAtLoc(waterFlag, i, rmXMetersToFraction(xsVectorGetX(flagLoc)), rmZMetersToFraction(xsVectorGetZ(flagLoc)));"):
             assert line in s, line
-        for c in ("flagLand", "flagVsFlag", "flagVsFerry", "flagVsBridge", "flagBox"):
+        for c in ("flagLand", "flagVsFlag", "flagVsPlateau", "flagBox"):
             assert ("rmAddClosestPointConstraint(%s);" % c) in s, c
         assert s.index("rmAddClosestPointConstraint(flagBox);") < s.index("rmFindClosestPointVector(")
         assert t.index("rmPlaceObjectDefAtLoc(bridgeRevealer") < t.index('int flagLand = ') and t.index("rmPlaceObjectDefAtLoc(harbourS2GuardDef") < t.index("int flagLand = ")
