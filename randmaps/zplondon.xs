@@ -920,13 +920,23 @@ void main(void)
 	// Parliament row 3 x cols 1-2, the Towers rows 7-8 x cols 1-2 at the water on their own banks (instances: the
 	// triggers need the Towers' ids). Each Tower's handle (Istanbul's palace) is the EXPORT's own units, nothing is
 	// spawned by the script: the gate treasure each export carries (NuggetDroppedWood, Tower_01 (-0.99, -13.4) /
-	// Tower_02 (0.99, 13.4)) takes nuggetmods zpNuggetTowerOfLondon 605 (nuggetunit zpNuggetInvisible, ten Redcoats)
-	// through the latch set BEFORE both instances (Istanbul's guild idiom; no grouping between them bakes a nugget).
+	// Tower_02 (0.99, 13.4)) takes a nuggetmods record through the latch set before EACH instance (Istanbul's guild
+	// idiom; no grouping between them bakes a nugget) - by the COIN, not by the export (user 2026-09-23 'dynamic per
+	// team spawn site not per grouping type'): the attackers' Keep zpNuggetTowerOfLondon 605 (nuggetunit
+	// zpNuggetInvisible, ten Redcoats, no change), the defenders' Keep zpNuggetTowerOfLondonWhitecoat 610 (the same
+	// record, ten deSPCHMWhitecoat). defenderBank 0 = the south bank = Tower S defends.
 	// Neither export carries a capturable flag: the flag-driven conversion family (13.3) is built only when a flag id
 	// exists. Call order = unit ids (header law): unchanged, only the z of the coin-keyed calls moves.
 	rmPlaceGroupingAtLoc(blockStPaul, 0, locX12, locZStPaul);
 	rmPlaceGroupingAtLoc(blockStuart, 0, locX34, locZStuart);
-	rmSetNuggetDifficulty(605, 605);
+	if (defenderBank == 0)
+	{
+		rmSetNuggetDifficulty(610, 610);   // Tower S is the defenders' Keep: Whitecoats
+	}
+	else
+	{
+		rmSetNuggetDifficulty(605, 605);   // Tower S is the attackers' Keep: Redcoats
+	}
 	int towerSInst = rmPlaceGroupingInstanceAtLoc(blockTowerS, locX78, locZs12, 0);
 	int towerSMark = rmCreateObjectDef("tower mark south");   // AztecCity 624-631 / Istanbul 4205: the marker placed right after the grouping - its id - 1 .. - 4 are the export's last four units, the tower sockets (sockets last, user 2026-09-22)
 	rmAddObjectDefItem(towerSMark, "zpSPCWaterSpawnPoint", 1, 0.0);
@@ -936,6 +946,14 @@ void main(void)
 	rmPlaceObjectDefAtLoc(towerSMark, 0, locX78, locZs12);
 	rmPlaceGroupingAtLoc(blockMinster, 0, locX12, locZMinster);
 	rmPlaceGroupingAtLoc(blockParliament, 0, locX3, locZParliament);
+	if (defenderBank == 1)
+	{
+		rmSetNuggetDifficulty(610, 610);   // Tower N is the defenders' Keep: Whitecoats
+	}
+	else
+	{
+		rmSetNuggetDifficulty(605, 605);   // Tower N is the attackers' Keep: Redcoats
+	}
 	int towerNInst = rmPlaceGroupingInstanceAtLoc(blockTowerN, locX78, locZn12, 0);
 	int towerNMark = rmCreateObjectDef("tower mark north");   // AztecCity 624-631 / Istanbul 4205: the marker placed right after the grouping - its id - 1 .. - 4 are the export's last four units, the tower sockets (sockets last, user 2026-09-22)
 	rmAddObjectDefItem(towerNMark, "zpSPCWaterSpawnPoint", 1, 0.0);
@@ -943,6 +961,7 @@ void main(void)
 	rmSetObjectDefMinDistance(towerNMark, 0.0);
 	rmSetObjectDefMaxDistance(towerNMark, 0.0);
 	rmPlaceObjectDefAtLoc(towerNMark, 0, locX78, locZn12);
+	rmEchoInfo("LONDON keeps: defenderBank " + defenderBank + " - Whitecoats (610) guard the defenders' Keep, Redcoats (605) the attackers'");
 
 	// ---- 10.2 fixed singles: trade row 1 col 3, Construction row 0 col 1, the Parks and the Menageries by the coin
 	// (10.0: Stuart's Park row 3 beside its forecourt, Parliament's row 4 col 1; the Menageries row 4, col 2 except
@@ -1729,7 +1748,7 @@ void main(void)
 	int towerNBldUnit = rmGetGroupingInstanceUnitByType(towerNInst, "zpSPCTowerOfLondon") + instanceIdShift;
 	int towerSFlagUnit = rmGetGroupingInstanceUnitByType(towerSInst, "zpSPCCapturableFlagNoIcon") + instanceIdShift;   // Paris's victory flag (zpSPCCapturableFlagNoIcon) in both Tower exports since 2026-09-22
 	int towerNFlagUnit = rmGetGroupingInstanceUnitByType(towerNInst, "zpSPCCapturableFlagNoIcon") + instanceIdShift;
-	int towerSNugUnit = rmGetGroupingInstanceUnitByType(towerSInst, "zpNuggetInvisible") + instanceIdShift;              // the gate treasure, resolved by 605
+	int towerSNugUnit = rmGetGroupingInstanceUnitByType(towerSInst, "zpNuggetInvisible") + instanceIdShift;              // the gate treasure, resolved by 605 / 610 (the coin)
 	int towerNNugUnit = rmGetGroupingInstanceUnitByType(towerNInst, "zpNuggetInvisible") + instanceIdShift;
 	int towerSGate1SocketUnit = rmGetGroupingInstanceUnitByType(towerSInst, "zpInvisibleGateSocketA") + instanceIdShift;   // King of Bohemia's unique gate sockets (zpkingofbohemia.xs 1176-1183):
 	int towerSGate2SocketUnit = rmGetGroupingInstanceUnitByType(towerSInst, "zpInvisibleGateSocketB") + instanceIdShift;   // one proto per gate under the gate, one transform tech each (zpConverGate1-4)

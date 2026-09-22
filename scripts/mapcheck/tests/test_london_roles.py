@@ -778,6 +778,29 @@ class TestTowerOwnership:
         tt = (REPO / "data/techtreemods.xml").read_text(encoding="utf-8", errors="replace"); j = tt.index('<tech name="zpSPCLondonAI"')
         assert '<effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">' in tt[j:tt.index("</tech>", j)] and "<target type=\"ProtoUnit\">zpSPCSocketCityTowerWooden</target>" in tt[j:tt.index("</tech>", j)]
 
+class TestKeepGuards:
+    """User 2026-09-23: the attackers' Keep keeps its Redcoats (nuggetmods 605, no change), the defenders' Keep is guarded by
+    Whitecoats through a new record (610, the same shape, deSPCHMWhitecoat x10). The export's placeholder stays; the latch
+    set before EACH Tower instance follows the coin (defenderBank 0 = south = Tower S defends), not the export."""
+
+    def test_whitecoat_record_and_the_coin_keyed_latch(self):
+        n = _text(REPO / "data/nuggetmods.xml")
+        for name, unit, diff in (("zpNuggetTowerOfLondon", "deSPCHMRedcoat", 605), ("zpNuggetTowerOfLondonWhitecoat", "deSPCHMWhitecoat", 610)):
+            i = n.index("<name>%s</name>" % name); rec = n[n.rfind("<nugget>", 0, i):n.index("</nugget>", i)]
+            assert rec.count("<unit>%s</unit>" % unit) == 10 and rec.count("<guardianunit>") == 10, name
+            assert "<nuggetunit>zpNuggetInvisible</nuggetunit>" in rec and "<maptype>piratehistoricalmap</maptype>" in rec and ("<difficulty>%d</difficulty>" % diff) in rec, name
+        assert n.count("<difficulty>610</difficulty>") == 1
+        assert (REPO / "data/nuggetmods.xml.xmb").stat().st_mtime >= (REPO / "data/nuggetmods.xml").stat().st_mtime
+        t = re.sub(r"[ \t]+//[^\n]*", "", _code(_text(LONDON)))   # trailing comments off, as the markers test
+        s_latch = chr(10).join(["\tif (defenderBank == 0)", "\t{", "\t\trmSetNuggetDifficulty(610, 610);", "\t}", "\telse", "\t{", "\t\trmSetNuggetDifficulty(605, 605);", "\t}",
+                                "\tint towerSInst = rmPlaceGroupingInstanceAtLoc(blockTowerS, locX78, locZs12, 0);"])
+        n_latch = chr(10).join(["\tif (defenderBank == 1)", "\t{", "\t\trmSetNuggetDifficulty(610, 610);", "\t}", "\telse", "\t{", "\t\trmSetNuggetDifficulty(605, 605);", "\t}",
+                                "\tint towerNInst = rmPlaceGroupingInstanceAtLoc(blockTowerN, locX78, locZn12, 0);"])
+        assert t.count(s_latch) == 1 and t.count(n_latch) == 1 and t.index(s_latch) < t.index(n_latch)
+        assert t.count("rmSetNuggetDifficulty(605, 605);") == 2 and t.count("rmSetNuggetDifficulty(610, 610);") == 2
+        assert LONDON.read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
+
+
 class TestBridgeOwnership:
     """13.5 / 13.6 (user 2026-09-22): London Bridge follows its port socket like Paris's walls; its four tower sockets are
     the city-tower family (Venice / Bohemia's deSPCSocketCityTower -> deSPCCityTower, 'battery towers, not wooden ones')

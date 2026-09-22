@@ -5196,5 +5196,43 @@
       <killunitonapply>0</killunitonapply>
       <difficulty>609</difficulty>
     </nugget>
+    <nugget>
+      <name>zpNuggetTowerOfLondonWhitecoat</name>
+      <nuggetunit>zpNuggetInvisible</nuggetunit>
+      <rolloverstringid>29084</rolloverstringid>
+      <applystringid>66271</applystringid>
+      <maptype>piratehistoricalmap</maptype>
+      <guardianunit>
+        <unit>deSPCHMWhitecoat</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCHMWhitecoat</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCHMWhitecoat</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCHMWhitecoat</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCHMWhitecoat</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCHMWhitecoat</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCHMWhitecoat</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCHMWhitecoat</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCHMWhitecoat</unit>
+      </guardianunit>
+      <guardianunit>
+        <unit>deSPCHMWhitecoat</unit>
+      </guardianunit>
+      <difficulty>610</difficulty>
+    </nugget>
   </nuggets>
 </nuggetmods>
