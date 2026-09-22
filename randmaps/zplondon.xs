@@ -1596,7 +1596,7 @@ void main(void)
 	int instanceIdShift = 3;   // measured in game 2026-09-22 with the four shift test copies (0..3): the instances answer to 3
 	// kept SEPARATE on purpose (Istanbul): single rmPlaceObjectDef* placements and grouping
 	// instance queries drift apart the moment a grouping bakes a unit the engine spawns on its own
-	int instanceIdShiftIndividual = 2;   // measured 2026-09-22 18:29: the last post's index 169 + 2 = 171 is the ferry the compiler resolved (trUnitSelectByID); 3 hit nothing
+	int instanceIdShiftIndividual = 3;   // measured 2026-09-22 18:30 (LondonIndivUnitIDs census): the ferries are indices 169-172 in placement order, the RM count before N1 is 166 -> +3; the compiler resolves an INDEX to trUnitSelectByID, an engine id (a late rmGetUnitPlaced) to a no-op trUnitSelect("...")
 	int harbourN1PostUnit = harbourN1PostRaw + instanceIdShiftIndividual;
 	int harbourN2PostUnit = harbourN2PostRaw + instanceIdShiftIndividual;
 	int harbourS1PostUnit = harbourS1PostRaw + instanceIdShiftIndividual;
