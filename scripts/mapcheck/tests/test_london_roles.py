@@ -714,7 +714,7 @@ class TestTowerOwnership:
         assert raw[h:].count("// ----") == 1 and raw.rindex("rmCreateTrigger(") > h and s.rstrip().endswith("} // END")
         assert chr(10).join(['\t\trmAddTriggerCondition("ZP PLAYER Human");', '\t\trmSetTriggerConditionParamInt("Player", k);', '\t\trmSetTriggerConditionParam("MyBool", "false");',
                              '\t\trmAddTriggerEffect("ZP Set Tech Status (XS)");', '\t\trmSetTriggerEffectParamInt("PlayerID", k);',
-                             '\t\trmSetTriggerEffectParam("TechID", "cTechzpSPCPirateCityStatesAI");', '\t\trmSetTriggerEffectParamInt("Status", 2);']) in s
+                             '\t\trmSetTriggerEffectParam("TechID", "cTechzpSPCLondonAI");', '\t\trmSetTriggerEffectParamInt("Status", 2);']) in s
         for var in self.SOCKET_VARS:
             tag = var[5] + var[12]     # towerSSocket1Unit -> S1
             on = chr(10).join(['\t\trmSwitchToTrigger(rmTriggerID("BuildTower%s_ON_Plr" + k));' % tag, '\t\trmAddTriggerCondition("Units in Area");',
@@ -731,9 +731,140 @@ class TestTowerOwnership:
             assert s.count(off) == 1, var
             assert ('rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower%s_ON_Plr" + k));' % tag) in s[:s.index('rmSwitchToTrigger(rmTriggerID("BuildTowerS1_ON_Plr" + k));')]
         made = set(re.findall(r'rmCreateTrigger\("([^"]+)"', s)); used = set(re.findall(r'rmTriggerID\("([^"]+)"', s))
-        assert made == used and len(made) == 17, (made ^ used)
-        tt = (REPO / "data/techtreemods.xml").read_text(encoding="utf-8", errors="replace"); j = tt.index('<tech name="zpSPCPirateCityStatesAI"')
+        assert made == used and len(made) == 25, (made ^ used)     # LondonAI + 8 Tower + 4 bridge sockets x ON / OFF
+        tt = (REPO / "data/techtreemods.xml").read_text(encoding="utf-8", errors="replace"); j = tt.index('<tech name="zpSPCLondonAI"')
         assert '<effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">' in tt[j:tt.index("</tech>", j)] and "<target type=\"ProtoUnit\">zpSPCSocketCityTowerWooden</target>" in tt[j:tt.index("</tech>", j)]
+
+class TestBridgeOwnership:
+    """13.5 / 13.6 (user 2026-09-22): London Bridge follows its port socket like Paris's walls; its four tower sockets are
+    the city-tower family (Venice / Bohemia's deSPCSocketCityTower -> deSPCCityTower, 'battery towers, not wooden ones')
+    as Flat clones (the city tower's FlattenGround would cut the deck - the reason the user's Flat props exist), placed
+    last and read off a marker; gaia's towers are built from the sockets at start (AztecCity); the AI rebuilds through
+    zpSPCLondonAI. Only the Tower of London keeps the wooden family."""
+
+    SWEEP = ("SPCFortGate", "SPCFortWallLarge", "zpSPCFortCornerPropFlat", "zpSPCSocketCityTowerFlat", "zpSPCCityTowerFlat")
+    BRIDGE_VARS = ("bridgeSocket1Unit", "bridgeSocket2Unit", "bridgeSocket3Unit", "bridgeSocket4Unit")
+
+    def test_export_flat_sockets_last_and_unique_gate_sockets(self):
+        b = (REPO / "game/randmaps/groupings/EU_SPC_London_Bridge.xml").read_bytes()
+        assert b.count(b"\r\n") == b.count(b"\n") and b"zpSPCFortTowerPropFlat" not in b and b"SPCFortGate" not in b and b"Wooden" not in b
+        assert b.count(b">zpSPCSocketCityTowerFlat</unit>") == 4 and b.count(b">zpInvisibleGateSocket</unit>") == 2
+        lines = b.decode("utf-8").split(chr(13) + chr(10)); end = lines.index(chr(9) + "</units>")
+        assert all(l.endswith(">zpSPCSocketCityTowerFlat</unit>") for l in lines[end - 4:end]) and not lines[end - 5].endswith(">zpSPCSocketCityTowerFlat</unit>")
+        gens = [i for i, l in enumerate(lines) if l.endswith(">zpInvisibleGateSocket</unit>")]
+        for i, proto in zip(gens, ("zpInvisibleGateSocketE", "zpInvisibleGateSocketF")):
+            head = lines[i][:lines[i].index(">zpInvisibleGateSocket</unit>")]
+            assert lines[i + 1] == head + ">" + proto + "</unit>"
+        old = (REPO / "sandbox/backups/groupings/EU_SPC_London_Bridge_2026-09-22_flatprops.xml").read_bytes()
+        assert old.count(b">zpSPCFortTowerPropFlat</unit>") == 4 and b.count(b"</unit>") == old.count(b"</unit>") + 2
+        for l in lines[end - 4:end]:
+            assert (l.replace(">zpSPCSocketCityTowerFlat</unit>", ">zpSPCFortTowerPropFlat</unit>") + chr(13) + chr(10)).encode("utf-8") in old
+
+    def test_flat_city_tower_clones_tech_strings_sound(self):
+        pm = (REPO / "data/protomods.xml").read_text(encoding="utf-8", errors="replace")
+        def rec(i, n):
+            j = pm.index('<unit id="%d" name="%s">' % (i, n)); return pm[j:pm.index("</unit>", j)]
+        assert pm.count('id="21196"') == 1 and pm.count('id="21197"') == 1 and pm.count('name="zpSPCSocketCityTowerFlat"') == 1 and pm.count('name="zpSPCCityTowerFlat"') == 1
+        assert "zpSPCSocketCityTowerWoodenFlat" not in pm and "zpSPCCityTowerWoodenFlat" not in pm
+        s = rec(21196, "zpSPCSocketCityTowerFlat")
+        for line in ("<dbid>21196</dbid>", "<displaynameid>123003</displaynameid>", "<editornameid>503563</editornameid>", "<socketbuildprotounit>zpSPCCityTowerFlat</socketbuildprotounit>",
+                     "<socketbuildrate>20.0000</socketbuildrate>", "<unittype>TowerSocket</unittype>", '<command page="1" column="0">deSocketBuildCityTower</command>', "<flag>AllowSocketPlacement</flag>"):
+            assert line in s, line
+        assert "FlattenGround" not in s and "deSPCCityTower<" not in s
+        w = rec(21197, "zpSPCCityTowerFlat")
+        for line in ("<dbid>21197</dbid>", "<displaynameid>123003</displaynameid>", "<editornameid>503564</editornameid>", "<socketunittype>TowerSocket</socketunittype>",
+                     "<initialhitpoints>2000.0000</initialhitpoints>", "<flag>InvulnerableIfGaia</flag>", "<flag>CannotAttackIfGaia</flag>", "<tactics>"):
+            assert line in w, line
+        assert "FlattenGround" not in w and "tower_hm1.xml" in w and "Wooden" not in w
+        assert pm.index('<!--TEST AND TEMPORARY CONTENT-->') > pm.index('id="21197"') > pm.index('id="21196"') > pm.index('id="21195"')
+        tt = (REPO / "data/techtreemods.xml").read_text(encoding="utf-8", errors="replace"); j = tt.index('<tech name="zpSPCLondonAI" type="Normal">'); tech = tt[j:tt.index("</tech>", j)]
+        assert "<status>UNOBTAINABLE</status>" in tech and "<flag>Shadow</flag>" in tech and tt.index("<!--TEST TECHS-->") > j
+        assert '<effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">' in tech and '<target type="ProtoUnit">zpSPCWoodenTowerAIProxy</target>' in tech
+        for sock in ("zpSPCSocketCityTowerWooden", "zpSPCSocketCityTowerFlat"):
+            assert ('<effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">' + chr(10) + '        <target type="ProtoUnit">%s</target>' % sock) in tech     # read_text normalises CRLF
+        st = (REPO / "data/strings/english/stringmods.xml").read_text(encoding="utf-8")
+        assert '<string _locid="503563">ZP SPC Socket City Tower Flat</string>' in st and '<string _locid="503564">ZP SPC City Tower Flat</string>' in st
+        snd = (REPO / "sound/zpspccitytowerflat_snds.xml").read_bytes()
+        assert snd.count(b"\r\n") == snd.count(b"\n") and b'<protounit name="zpSPCCityTowerFlat">' in snd and b'<soundset name="UI_Select_Building_Outpost">' in snd and b'<soundset name="BuildingDestruction">' in snd
+        for f in ("data/protomods.xml", "data/techtreemods.xml"):
+            assert (REPO / (f + ".xmb")).stat().st_mtime >= (REPO / f).stat().st_mtime, f
+
+    def test_bridge_marker_ids_and_guard_shift(self):
+        t = re.sub(r"[ " + chr(92) + "t]+//[^" + chr(92) + "n]*", "", _code(_text(LONDON)))
+        seg = chr(10).join(["\tint bridgeInst = placeIsland(londonBridge, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ));",
+                            '\tint bridgeMark = rmCreateObjectDef("bridge mark");', '\trmAddObjectDefItem(bridgeMark, "zpSPCWaterSpawnPoint", 1, 0.0);',
+                            "\trmSetObjectDefAllowOverlap(bridgeMark, true);", "\trmSetObjectDefMinDistance(bridgeMark, 0.0);", "\trmSetObjectDefMaxDistance(bridgeMark, 0.0);",
+                            "\trmPlaceObjectDefAtLoc(bridgeMark, 0, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ));"])
+        assert t.count(seg) == 1
+        for line in ('int bridgeSocketUnit = rmGetGroupingInstanceUnitByType(bridgeInst, "zpSPCPortSocket") + instanceIdShift;',
+                     'int bridgeGate1SocketUnit = rmGetGroupingInstanceUnitByType(bridgeInst, "zpInvisibleGateSocketE") + instanceIdShift;',
+                     'int bridgeGate2SocketUnit = rmGetGroupingInstanceUnitByType(bridgeInst, "zpInvisibleGateSocketF") + instanceIdShift;',
+                     "int bridgeMarkUnit = rmGetUnitPlaced(bridgeMark, 0) + instanceIdShift;",
+                     "int bridgeSocket1Unit = bridgeMarkUnit - 4;", "int bridgeSocket4Unit = bridgeMarkUnit - 1;"):
+            assert line in t, line
+        # the bridge is placed before section 8: its two new sockets and its marker move every guard index by 3
+        assert t.index("int bridgeInst = placeIsland(") < t.index("rmPlaceObjectDefAtLoc(harbourN1GuardDef") and "int harbourN1GuardUnit = 366;" in t and "int harbourS2GuardUnit = 381;" in t
+
+    def test_bridge_follows_its_port_socket_paris_shape(self):
+        t = _code(_text(LONDON)); s = t[t.index("int bridgePostM = 8;"):t.index('rmCreateTrigger("BridgeTowers_Setup");')]
+        assert "int bridgeSweepM = 30;" in s and t.index("int bridgePostM = 8;") > t.index("int victoryCountDown = 480;")
+        for name in ("Bridge_ON_Plr", "Bridge_OFF_Plr", "BridgeGate1_Rebuilt", "BridgeGate2_Rebuilt", "BridgeGate_Rebuilt_Deactivator"):
+            assert ('rmCreateTrigger("%s" + k);' % name) in s and ('rmSwitchToTrigger(rmTriggerID("%s" + k));' % name) in s
+        on = s[s.index('rmSwitchToTrigger(rmTriggerID("Bridge_ON_Plr" + k));'):s.index('rmSwitchToTrigger(rmTriggerID("Bridge_OFF_Plr" + k));')]
+        off = s[s.index('rmSwitchToTrigger(rmTriggerID("Bridge_OFF_Plr" + k));'):s.index('rmSwitchToTrigger(rmTriggerID("BridgeGate1_Rebuilt" + k));')]
+        cond = chr(10).join(['\t\trmAddTriggerCondition("Units in Area");', '\t\trmSetTriggerConditionParam("DstObject", "" + bridgeSocketUnit);', '\t\trmSetTriggerConditionParamInt("Player", k);',
+                             '\t\trmSetTriggerConditionParam("UnitType", "TradingPost");', '\t\trmSetTriggerConditionParamInt("Dist", bridgePostM);'])
+        assert on.count(cond + chr(10) + '\t\trmSetTriggerConditionParam("Op", ">=");' + chr(10) + '\t\trmSetTriggerConditionParamInt("Count", 1);') == 1
+        assert off.count(cond + chr(10) + '\t\trmSetTriggerConditionParam("Op", "==");' + chr(10) + '\t\trmSetTriggerConditionParamInt("Count", 0);') == 1
+        for proto in self.SWEEP:
+            for blk, src, trg in ((on, "0", "k"), (off, "k", "0")):
+                seg = chr(10).join(['\t\trmAddTriggerEffect("Convert Units in Area");', '\t\trmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);',
+                                    '\t\trmSetTriggerEffectParamInt("SrcPlayer", %s);' % src, '\t\trmSetTriggerEffectParamInt("TrgPlayer", %s);' % trg,
+                                    '\t\trmSetTriggerEffectParam("UnitType", "%s");' % proto, '\t\trmSetTriggerEffectParamInt("Dist", bridgeSweepM);'])
+                assert blk.count(seg) == 1, (proto, src)
+        assert "Wooden" not in s
+        for g in ("bridgeGate1SocketUnit", "bridgeGate2SocketUnit"):
+            assert on.count('\t\trmAddTriggerEffect("Convert");' + chr(10) + '\t\trmSetTriggerEffectParam("SrcObject", "" + %s);' % g + chr(10) + '\t\trmSetTriggerEffectParamInt("PlayerID", k);') == 1
+            assert off.count('\t\trmAddTriggerEffect("Convert");' + chr(10) + '\t\trmSetTriggerEffectParam("SrcObject", "" + %s);' % g + chr(10) + '\t\trmSetTriggerEffectParamInt("PlayerID", 0);') == 1
+        for ev in ("Bridge_OFF_Plr", "BridgeGate1_Rebuilt", "BridgeGate2_Rebuilt", "BridgeGate_Rebuilt_Deactivator"):
+            assert ('rmAddTriggerEffect("Fire Event");' + chr(10) + '\t\trmSetTriggerEffectParamInt("EventID", rmTriggerID("%s" + k));' % ev) in on
+        assert 'rmSetTriggerEffectParamInt("EventID", rmTriggerID("Bridge_ON_Plr" + k));' in off and off.count('rmAddTriggerEffect("Disable Trigger");') == 2
+        assert on.count("rmSetTriggerActive(true);") == 1 and off.count("rmSetTriggerActive(false);") == 1
+        for n, g, tech in ((1, "bridgeGate1SocketUnit", "cTechzpConverGate5"), (2, "bridgeGate2SocketUnit", "cTechzpConverGate6")):
+            body = chr(10).join(['\t\trmSwitchToTrigger(rmTriggerID("BridgeGate%d_Rebuilt" + k));' % n, '\t\trmAddTriggerCondition("Units in Area");',
+                                 '\t\trmSetTriggerConditionParam("DstObject", "" + %s);' % g, '\t\trmSetTriggerConditionParamInt("Player", k);',
+                                 '\t\trmSetTriggerConditionParam("UnitType", "SPCFortGate");', '\t\trmSetTriggerConditionParamInt("Dist", towerGateRebuildM);',
+                                 '\t\trmSetTriggerConditionParam("Op", "==");', '\t\trmSetTriggerConditionParamInt("Count", 0);',
+                                 '\t\trmAddTriggerEffect("ZP Set Tech Status (XS)");', '\t\trmSetTriggerEffectParamInt("PlayerID", k);',
+                                 '\t\trmSetTriggerEffectParam("TechID", "%s");' % tech, '\t\trmSetTriggerEffectParamInt("Status", 2);'])
+            assert s.count(body) == 1, n
+        tt = (REPO / "data/techtreemods.xml").read_text(encoding="utf-8", errors="replace")
+        for n, proto in ((5, "zpInvisibleGateSocketE"), (6, "zpInvisibleGateSocketF")):
+            j = tt.index('<tech name="zpConverGate%d"' % n); assert 'toprotoid="SPCFortGate" fromprotoid="%s"' % proto in tt[j:tt.index("</tech>", j)]
+        made = set(re.findall(r'rmCreateTrigger\("([^"]+)"', s)); used = set(re.findall(r'rmTriggerID\("([^"]+)"', s))
+        assert made == used and len(made) == 5, (made ^ used)
+
+    def test_bridge_towers_built_at_start_and_ai_rebuild(self):
+        t = _code(_text(LONDON)); s = t[t.index('rmCreateTrigger("BridgeTowers_Setup");'):t.index('rmCreateTrigger("LondonStartingTechs")')]
+        assert chr(10).join(['\trmSwitchToTrigger(rmTriggerID("BridgeTowers_Setup"));', '\trmAddTriggerCondition("Timer ms");', '\trmSetTriggerConditionParamInt("Param1", 10);']) in s
+        for var in self.BRIDGE_VARS:
+            assert chr(10).join(['\trmAddTriggerEffect("Socket Build");', '\trmSetTriggerEffectParamInt("PlayerID", 0);', '\trmSetTriggerEffectParam("Socket", "" + %s);' % var,
+                                 '\trmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");']) in s, var
+        assert s.count('rmAddTriggerEffect("Socket Build");') == 4 and "rmSetTriggerActive(true);" in s
+        ai = t[t.index('rmCreateTrigger("LondonAI_Plr" + k);'):]
+        for n, var in enumerate(self.BRIDGE_VARS, 1):
+            tag = "B%d" % n
+            assert ('rmCreateTrigger("BuildTower%s_ON_Plr" + k);' % tag) in ai and ('rmCreateTrigger("BuildTower%s_OFF_Plr" + k);' % tag) in ai
+            assert ('rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTower%s_ON_Plr" + k));' % tag) in ai[:ai.index('rmSwitchToTrigger(rmTriggerID("BuildTowerS1_ON_Plr" + k));')]
+            on = chr(10).join(['\t\trmSwitchToTrigger(rmTriggerID("BuildTower%s_ON_Plr" + k));' % tag, '\t\trmAddTriggerCondition("Units in Area");',
+                               '\t\trmSetTriggerConditionParam("DstObject", "" + %s);' % var, '\t\trmSetTriggerConditionParamInt("Player", k);',
+                               '\t\trmSetTriggerConditionParam("UnitType", "zpSPCWoodenTowerAIProxy");', '\t\trmSetTriggerConditionParamInt("Dist", 10);',
+                               '\t\trmSetTriggerConditionParam("Op", ">=");', '\t\trmSetTriggerConditionParamInt("Count", 1);',
+                               '\t\trmAddTriggerEffect("Socket Build");', '\t\trmSetTriggerEffectParamInt("PlayerID", k);',
+                               '\t\trmSetTriggerEffectParam("Socket", "" + %s);' % var, '\t\trmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");'])
+            assert ai.count(on) == 1, var
+        assert ai.count('rmSetTriggerEffectParam("Protounit", "zpSPCCityTowerWooden");') == 8 and ai.count('rmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");') == 4
+
 
     def test_twin_identical_and_crlf(self):
         a = LONDON.read_bytes(); b = (STEAM / "00000_zplondon.xs").read_bytes()
@@ -767,10 +898,10 @@ class TestScope:
         t = _code(_text(LONDON))
         assert t.count("int instanceIdShift = 3;") == 1 and "instanceIdShiftIndividual" not in t   # grouping shift measured 2026-09-22; the object-def ids are literal indices (fix B)
         assert t.index('rmCreateObjectDef("countryside tin")') < t.index("int instanceIdShift = 3;") < t.index("int harbourN1PostUnit")
-        for s, post, guard in (("N1", 169, 363), ("N2", 170, 368), ("S1", 171, 373), ("S2", 172, 378)):                # fix B: literal indices (census 2026-09-22)
+        for s, post, guard in (("N1", 169, 366), ("N2", 170, 371), ("S1", 171, 376), ("S2", 172, 381)):                # fix B: literal indices (census 2026-09-22) + 3 for the bridge's E / F sockets and marker (2026-09-22 late)
             assert ("int harbour%sPostUnit = %d;" % (s, post)) in t and ("int harbour%sGuardUnit = %d;" % (s, guard)) in t and ("rmSetTriggerConditionParam(\"NuggetObject\", \"\" + harbour%sGuardUnit);" % s) in t
         inst = re.findall(r"int \w+ = rmGetGroupingInstanceUnitByType\([^;]*;", t)
-        assert len(inst) == 18 and all(r.endswith("+ instanceIdShift;") for r in inst)   # 14 + the four gate sockets (13.3, 2026-09-22)
+        assert len(inst) == 21 and all(r.endswith("+ instanceIdShift;") for r in inst)   # 14 + the four Tower gate sockets + the bridge's port socket and E / F (2026-09-22)
         plain = chr(10).join(l for l in t.split(chr(10)) if not re.match(r"\s*int \w+Socket\dUnit = \w+MarkUnit - [1-4];$", l))   # AztecCity 1348-1351: marker - n is the one admitted literal form
         assert not re.search(r"\\w*(Unit|Id|Flag|Nug|Socket|Bld|Post)\w*\s*[-+]\s*\d+\s*[;)]", plain.replace("Idx", "").replace("Tiles", ""))   # no other literal id arithmetic
 

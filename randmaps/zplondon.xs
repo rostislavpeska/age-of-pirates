@@ -763,6 +763,12 @@ void main(void)
 	// landing spots carry zpInvisibleGateSocket placeholders (the export's, in place of the old zpSPCWaterSpawnPoint)
 	int londonBridge = rmCreateGrouping("london bridge", "EU_SPC_London_Bridge");
 	int bridgeInst = placeIsland(londonBridge, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ));
+	int bridgeMark = rmCreateObjectDef("bridge mark");   // AztecCity 624-631: the marker right after the grouping - its id - 1 .. - 4 are the export's last four units, the tower sockets
+	rmAddObjectDefItem(bridgeMark, "zpSPCWaterSpawnPoint", 1, 0.0);
+	rmSetObjectDefAllowOverlap(bridgeMark, true);
+	rmSetObjectDefMinDistance(bridgeMark, 0.0);
+	rmSetObjectDefMaxDistance(bridgeMark, 0.0);
+	rmPlaceObjectDefAtLoc(bridgeMark, 0, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ));
 
 	// ---- 7. THE HARBOUR GROUPINGS at their origins (zpvenicecity's ControllerLoc idiom, law 2) --------
 	int harbourN1Grouping = rmCreateGrouping("harbour north 1", "EU_SPC_London_Harbour_NW_01");
@@ -1609,15 +1615,17 @@ void main(void)
 	// 378 (five apart: nugget + four guardians). They hold as long as NOTHING placed before section 8 changes its unit
 	// count (lane stopper + 2 controllers, 6 wall gates x 27, 2 road controllers + socket, 4 ferries, bridge, 4 piers) - any
 	// such change: generate, save, re-census (sandbox/census/census.py <save> --full), update the eight numbers.
+	// 2026-09-22 late: the bridge export grew by two (gate sockets E / F) and its marker follows it: the guards moved
+	// 363 / 368 / 373 / 378 -> 366 / 371 / 376 / 381 (index = placement order; confirm on the next census).
 
 	int harbourN1PostUnit = 169;
 	int harbourN2PostUnit = 170;
 	int harbourS1PostUnit = 171;
 	int harbourS2PostUnit = 172;
-	int harbourN1GuardUnit = 363;
-	int harbourN2GuardUnit = 368;
-	int harbourS1GuardUnit = 373;
-	int harbourS2GuardUnit = 378;
+	int harbourN1GuardUnit = 366;
+	int harbourN2GuardUnit = 371;
+	int harbourS1GuardUnit = 376;
+	int harbourS2GuardUnit = 381;
 	int menagerieSUnit = rmGetGroupingInstanceUnitByType(menagerieSInst, "zpSPCMenagerie") + instanceIdShift;
 	int menagerieNUnit = rmGetGroupingInstanceUnitByType(menagerieNInst, "zpSPCMenagerie") + instanceIdShift;
 	int menagerieSNugUnit = rmGetGroupingInstanceUnitByType(menagerieSInst, "zpNuggetInvisible") + instanceIdShift;   // nuggetmods 98
@@ -1646,11 +1654,20 @@ void main(void)
 	int towerNSocket2Unit = towerNMarkUnit - 3;
 	int towerNSocket3Unit = towerNMarkUnit - 2;
 	int towerNSocket4Unit = towerNMarkUnit - 1;
+	int bridgeSocketUnit = rmGetGroupingInstanceUnitByType(bridgeInst, "zpSPCPortSocket") + instanceIdShift;   // Paris 1909: the wall's port socket - the TradingPost on it names the owner
+	int bridgeGate1SocketUnit = rmGetGroupingInstanceUnitByType(bridgeInst, "zpInvisibleGateSocketE") + instanceIdShift;
+	int bridgeGate2SocketUnit = rmGetGroupingInstanceUnitByType(bridgeInst, "zpInvisibleGateSocketF") + instanceIdShift;
+	int bridgeMarkUnit = rmGetUnitPlaced(bridgeMark, 0) + instanceIdShift;
+	int bridgeSocket1Unit = bridgeMarkUnit - 4;
+	int bridgeSocket2Unit = bridgeMarkUnit - 3;
+	int bridgeSocket3Unit = bridgeMarkUnit - 2;
+	int bridgeSocket4Unit = bridgeMarkUnit - 1;
 	rmEchoInfo("LONDON ids: posts " + harbourN1PostUnit + " " + harbourN2PostUnit + " " + harbourS1PostUnit + " " + harbourS2PostUnit + " guards " + harbourN1GuardUnit + " " + harbourN2GuardUnit + " " + harbourS1GuardUnit + " " + harbourS2GuardUnit);
 	rmEchoInfo("LONDON ids: menageries " + menagerieSUnit + " " + menagerieNUnit + " nuggets " + menagerieSNugUnit + " " + menagerieNNugUnit + " factories " + factorySUnit + " " + factoryNUnit + " nuggets " + factorySNugUnit + " " + factoryNNugUnit);
 	rmEchoInfo("LONDON ids: towers " + towerSBldUnit + " " + towerNBldUnit + " flags " + towerSFlagUnit + " " + towerNFlagUnit + " nuggets " + towerSNugUnit + " " + towerNNugUnit);
 	rmEchoInfo("LONDON ids: gate sockets S " + towerSGate1SocketUnit + " " + towerSGate2SocketUnit + " N " + towerNGate1SocketUnit + " " + towerNGate2SocketUnit);
 	rmEchoInfo("LONDON ids: tower markers " + towerSMarkUnit + " " + towerNMarkUnit + " sockets S " + towerSSocket1Unit + ".." + towerSSocket4Unit + " N " + towerNSocket1Unit + ".." + towerNSocket4Unit);
+	rmEchoInfo("LONDON ids: bridge socket " + bridgeSocketUnit + " gate sockets " + bridgeGate1SocketUnit + " " + bridgeGate2SocketUnit + " marker " + bridgeMarkUnit + " tower sockets " + bridgeSocket1Unit + ".." + bridgeSocket4Unit);
 
 	// ---- 13.1 startup: every capturable's AutoConvert suspended (Istanbul "Trade Harbours NoAutoConvert")
 	rmCreateTrigger("London NoAutoConvert");
@@ -2217,6 +2234,209 @@ void main(void)
 	}
 
 
+	// ---- 13.5 LONDON BRIDGE follows its port socket - Paris's wall gates (zpparis.xs 3012-3160): Gate1_ON_Plr k when k's
+	// TradingPost stands on the socket -> the bridge's gates, walls, corner props, tower sockets and towers convert gaia -> k
+	// around the socket, the two unique gate sockets (Bohemia's E / F) by id, a missing gate rebuilt once (13.3's law);
+	// Gate1_OFF_Plr k when the post is gone -> everything back to gaia, ON re-armed. The two gates come from the export's
+	// generic zpInvisibleGateSocket placeholders at start (14: gaia's zpConverGate); E / F stay under them for the rebuild
+	// (zpConverGate5 / 6). bridgePostM 8 (Paris 10): the land route's own SocketTradeRoute stands 10.3 m from the port
+	// socket and must not count; bridgeSweepM 30: the far tower socket is 26.5 m off, nothing foreign within 30.
+	int bridgePostM = 8;
+	int bridgeSweepM = 30;
+	for (k = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("Bridge_ON_Plr" + k);
+		rmCreateTrigger("Bridge_OFF_Plr" + k);
+		rmCreateTrigger("BridgeGate1_Rebuilt" + k);
+		rmCreateTrigger("BridgeGate2_Rebuilt" + k);
+		rmCreateTrigger("BridgeGate_Rebuilt_Deactivator" + k);
+	}
+	for (k = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmSwitchToTrigger(rmTriggerID("Bridge_ON_Plr" + k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", "" + bridgeSocketUnit);
+		rmSetTriggerConditionParamInt("Player", k);
+		rmSetTriggerConditionParam("UnitType", "TradingPost");
+		rmSetTriggerConditionParamInt("Dist", bridgePostM);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+		rmSetTriggerEffectParamInt("SrcPlayer", 0);
+		rmSetTriggerEffectParamInt("TrgPlayer", k);
+		rmSetTriggerEffectParam("UnitType", "SPCFortGate");
+		rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+		rmSetTriggerEffectParamInt("SrcPlayer", 0);
+		rmSetTriggerEffectParamInt("TrgPlayer", k);
+		rmSetTriggerEffectParam("UnitType", "SPCFortWallLarge");
+		rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+		rmSetTriggerEffectParamInt("SrcPlayer", 0);
+		rmSetTriggerEffectParamInt("TrgPlayer", k);
+		rmSetTriggerEffectParam("UnitType", "zpSPCFortCornerPropFlat");
+		rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+		rmSetTriggerEffectParamInt("SrcPlayer", 0);
+		rmSetTriggerEffectParamInt("TrgPlayer", k);
+		rmSetTriggerEffectParam("UnitType", "zpSPCSocketCityTowerFlat");
+		rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+		rmSetTriggerEffectParamInt("SrcPlayer", 0);
+		rmSetTriggerEffectParamInt("TrgPlayer", k);
+		rmSetTriggerEffectParam("UnitType", "zpSPCCityTowerFlat");
+		rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+		rmAddTriggerEffect("Convert");
+		rmSetTriggerEffectParam("SrcObject", "" + bridgeGate1SocketUnit);
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmAddTriggerEffect("Convert");
+		rmSetTriggerEffectParam("SrcObject", "" + bridgeGate2SocketUnit);
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Bridge_OFF_Plr" + k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeGate1_Rebuilt" + k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeGate2_Rebuilt" + k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeGate_Rebuilt_Deactivator" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		rmSwitchToTrigger(rmTriggerID("Bridge_OFF_Plr" + k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", "" + bridgeSocketUnit);
+		rmSetTriggerConditionParamInt("Player", k);
+		rmSetTriggerConditionParam("UnitType", "TradingPost");
+		rmSetTriggerConditionParamInt("Dist", bridgePostM);
+		rmSetTriggerConditionParam("Op", "==");
+		rmSetTriggerConditionParamInt("Count", 0);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+		rmSetTriggerEffectParamInt("SrcPlayer", k);
+		rmSetTriggerEffectParamInt("TrgPlayer", 0);
+		rmSetTriggerEffectParam("UnitType", "SPCFortGate");
+		rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+		rmSetTriggerEffectParamInt("SrcPlayer", k);
+		rmSetTriggerEffectParamInt("TrgPlayer", 0);
+		rmSetTriggerEffectParam("UnitType", "SPCFortWallLarge");
+		rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+		rmSetTriggerEffectParamInt("SrcPlayer", k);
+		rmSetTriggerEffectParamInt("TrgPlayer", 0);
+		rmSetTriggerEffectParam("UnitType", "zpSPCFortCornerPropFlat");
+		rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+		rmSetTriggerEffectParamInt("SrcPlayer", k);
+		rmSetTriggerEffectParamInt("TrgPlayer", 0);
+		rmSetTriggerEffectParam("UnitType", "zpSPCSocketCityTowerFlat");
+		rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+		rmAddTriggerEffect("Convert Units in Area");
+		rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+		rmSetTriggerEffectParamInt("SrcPlayer", k);
+		rmSetTriggerEffectParamInt("TrgPlayer", 0);
+		rmSetTriggerEffectParam("UnitType", "zpSPCCityTowerFlat");
+		rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+		rmAddTriggerEffect("Convert");
+		rmSetTriggerEffectParam("SrcObject", "" + bridgeGate1SocketUnit);
+		rmSetTriggerEffectParamInt("PlayerID", 0);
+		rmAddTriggerEffect("Convert");
+		rmSetTriggerEffectParam("SrcObject", "" + bridgeGate2SocketUnit);
+		rmSetTriggerEffectParamInt("PlayerID", 0);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Bridge_ON_Plr" + k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeGate1_Rebuilt" + k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeGate2_Rebuilt" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		rmSwitchToTrigger(rmTriggerID("BridgeGate1_Rebuilt" + k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", "" + bridgeGate1SocketUnit);
+		rmSetTriggerConditionParamInt("Player", k);
+		rmSetTriggerConditionParam("UnitType", "SPCFortGate");
+		rmSetTriggerConditionParamInt("Dist", towerGateRebuildM);
+		rmSetTriggerConditionParam("Op", "==");
+		rmSetTriggerConditionParamInt("Count", 0);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpConverGate5");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		rmSwitchToTrigger(rmTriggerID("BridgeGate2_Rebuilt" + k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", "" + bridgeGate2SocketUnit);
+		rmSetTriggerConditionParamInt("Player", k);
+		rmSetTriggerConditionParam("UnitType", "SPCFortGate");
+		rmSetTriggerConditionParamInt("Dist", towerGateRebuildM);
+		rmSetTriggerConditionParam("Op", "==");
+		rmSetTriggerConditionParamInt("Count", 0);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpConverGate6");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		rmSwitchToTrigger(rmTriggerID("BridgeGate_Rebuilt_Deactivator" + k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamInt("Param1", 500);
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeGate1_Rebuilt" + k));
+		rmAddTriggerEffect("Disable Trigger");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeGate2_Rebuilt" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
+
+	// ---- 13.6 the bridge's four towers stand from the start - AztecCity 1618-1690 (Socket Build on every socket from a 10 ms
+	// timer), here for gaia: InvulnerableIfGaia / CannotAttackIfGaia keep them inert until the bridge is taken, then 13.5
+	// converts them with the sockets. The Flat city tower (21197) is deSPCCityTower 2315 without FlattenGround - the deck
+	// stays; Venice / Bohemia's socket family, the Tower of London keeps the wooden one (user 2026-09-22).
+	rmCreateTrigger("BridgeTowers_Setup");
+	rmSwitchToTrigger(rmTriggerID("BridgeTowers_Setup"));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamInt("Param1", 10);
+	rmAddTriggerEffect("Socket Build");
+	rmSetTriggerEffectParamInt("PlayerID", 0);
+	rmSetTriggerEffectParam("Socket", "" + bridgeSocket1Unit);
+	rmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");
+	rmAddTriggerEffect("Socket Build");
+	rmSetTriggerEffectParamInt("PlayerID", 0);
+	rmSetTriggerEffectParam("Socket", "" + bridgeSocket2Unit);
+	rmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");
+	rmAddTriggerEffect("Socket Build");
+	rmSetTriggerEffectParamInt("PlayerID", 0);
+	rmSetTriggerEffectParam("Socket", "" + bridgeSocket3Unit);
+	rmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");
+	rmAddTriggerEffect("Socket Build");
+	rmSetTriggerEffectParamInt("PlayerID", 0);
+	rmSetTriggerEffectParam("Socket", "" + bridgeSocket4Unit);
+	rmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+
 	// ---- 14. Parliamentarians (Orthodox pattern): starting techs, the leader choice, the AI roll ----------------
 	// 14.1 starting techs for everybody: London setup (Military Camp) + no standard revolutions (Paris idiom)
 	rmCreateTrigger("LondonStartingTechs");
@@ -2675,8 +2895,9 @@ void main(void)
 
 	// ---- 16. AI SOCKET BUILD - last in the file on purpose: a trigger whose TechID the running process cannot resolve is
 	// dropped by the serializer and can take everything after it along (nugget-targeting skill, process-stale-data law).
-	// Caribbean Wars 1023-1033: the AI-only tech (ZP PLAYER Human false) adds the zpSPCWoodenTowerAIProxy train command to
-	// zpSPCSocketCityTowerWooden; 2302-2330: a proxy of player k within 10 m of a socket -> Socket Build the wooden tower
+	// Caribbean Wars 1023-1033: the AI-only tech (ZP PLAYER Human false; zpSPCLondonAI = zpSPCPirateCityStatesAI's shape) adds
+	// the zpSPCWoodenTowerAIProxy train command to zpSPCSocketCityTowerWooden (the Towers) and zpSPCSocketCityTowerFlat (the bridge);
+	// 2302-2330: a proxy of player k within 10 m of a socket -> Socket Build its tower (the Flat city tower on the bridge)
 	// for k on it, re-armed 1200 ms later (BuildTowerN_ON / _OFF). Armed at start for every AI player (Caribbean arms
 	// them at the capture; only the socket's owner can train the proxy there, so an early arm is inert until k owns it).
 	for (k = 1; <= cNumberNonGaiaPlayers)
@@ -2698,6 +2919,14 @@ void main(void)
 		rmCreateTrigger("BuildTowerN3_OFF_Plr" + k);
 		rmCreateTrigger("BuildTowerN4_ON_Plr" + k);
 		rmCreateTrigger("BuildTowerN4_OFF_Plr" + k);
+		rmCreateTrigger("BuildTowerB1_ON_Plr" + k);
+		rmCreateTrigger("BuildTowerB1_OFF_Plr" + k);
+		rmCreateTrigger("BuildTowerB2_ON_Plr" + k);
+		rmCreateTrigger("BuildTowerB2_OFF_Plr" + k);
+		rmCreateTrigger("BuildTowerB3_ON_Plr" + k);
+		rmCreateTrigger("BuildTowerB3_OFF_Plr" + k);
+		rmCreateTrigger("BuildTowerB4_ON_Plr" + k);
+		rmCreateTrigger("BuildTowerB4_OFF_Plr" + k);
 	}
 	for (k = 1; <= cNumberNonGaiaPlayers)
 	{
@@ -2707,7 +2936,7 @@ void main(void)
 		rmSetTriggerConditionParam("MyBool", "false");
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID", k);
-		rmSetTriggerEffectParam("TechID", "cTechzpSPCPirateCityStatesAI");
+		rmSetTriggerEffectParam("TechID", "cTechzpSPCLondonAI");
 		rmSetTriggerEffectParamInt("Status", 2);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTowerS1_ON_Plr" + k));
@@ -2725,6 +2954,14 @@ void main(void)
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTowerN3_ON_Plr" + k));
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTowerN4_ON_Plr" + k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTowerB1_ON_Plr" + k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTowerB2_ON_Plr" + k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTowerB3_ON_Plr" + k));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTowerB4_ON_Plr" + k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
@@ -2941,6 +3178,114 @@ void main(void)
 		rmSetTriggerConditionParamFloat("Param1", 1200);
 		rmAddTriggerEffect("Fire Event");
 		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTowerN4_ON_Plr" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		rmSwitchToTrigger(rmTriggerID("BuildTowerB1_ON_Plr" + k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", "" + bridgeSocket1Unit);
+		rmSetTriggerConditionParamInt("Player", k);
+		rmSetTriggerConditionParam("UnitType", "zpSPCWoodenTowerAIProxy");
+		rmSetTriggerConditionParamInt("Dist", 10);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("Socket", "" + bridgeSocket1Unit);
+		rmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTowerB1_OFF_Plr" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		rmSwitchToTrigger(rmTriggerID("BuildTowerB1_OFF_Plr" + k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1", 1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTowerB1_ON_Plr" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		rmSwitchToTrigger(rmTriggerID("BuildTowerB2_ON_Plr" + k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", "" + bridgeSocket2Unit);
+		rmSetTriggerConditionParamInt("Player", k);
+		rmSetTriggerConditionParam("UnitType", "zpSPCWoodenTowerAIProxy");
+		rmSetTriggerConditionParamInt("Dist", 10);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("Socket", "" + bridgeSocket2Unit);
+		rmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTowerB2_OFF_Plr" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		rmSwitchToTrigger(rmTriggerID("BuildTowerB2_OFF_Plr" + k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1", 1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTowerB2_ON_Plr" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		rmSwitchToTrigger(rmTriggerID("BuildTowerB3_ON_Plr" + k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", "" + bridgeSocket3Unit);
+		rmSetTriggerConditionParamInt("Player", k);
+		rmSetTriggerConditionParam("UnitType", "zpSPCWoodenTowerAIProxy");
+		rmSetTriggerConditionParamInt("Dist", 10);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("Socket", "" + bridgeSocket3Unit);
+		rmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTowerB3_OFF_Plr" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		rmSwitchToTrigger(rmTriggerID("BuildTowerB3_OFF_Plr" + k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1", 1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTowerB3_ON_Plr" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		rmSwitchToTrigger(rmTriggerID("BuildTowerB4_ON_Plr" + k));
+		rmAddTriggerCondition("Units in Area");
+		rmSetTriggerConditionParam("DstObject", "" + bridgeSocket4Unit);
+		rmSetTriggerConditionParamInt("Player", k);
+		rmSetTriggerConditionParam("UnitType", "zpSPCWoodenTowerAIProxy");
+		rmSetTriggerConditionParamInt("Dist", 10);
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		rmAddTriggerEffect("Socket Build");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("Socket", "" + bridgeSocket4Unit);
+		rmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTowerB4_OFF_Plr" + k));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		rmSwitchToTrigger(rmTriggerID("BuildTowerB4_OFF_Plr" + k));
+		rmAddTriggerCondition("Timer ms");
+		rmSetTriggerConditionParamFloat("Param1", 1200);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("BuildTowerB4_ON_Plr" + k));
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
 		rmSetTriggerRunImmediately(true);
