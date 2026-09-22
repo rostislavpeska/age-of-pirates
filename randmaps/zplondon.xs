@@ -17,10 +17,11 @@
 //   3.9 the land route BUILT through the gates, real x read back for the census, the bridge socket docked
 //   4  the river (rect-map rule: z authored in size_x units), after the road
 //   5  harbour posts docked on the lane, real positions read back              (law 1)
-//   6  London Bridge, instance API, after the river (before the road with gates it did not spawn) (law 2)
-//   7  harbour groupings hung off the real posts, instance API                  (law 2)
-//   8  harbour guards: the vanilla Euro trade-route post nugget (101) on the quay behind each harbour; the post
-//      is released by "Nugget Is Collectable" on its guard nugget (Elbe's lone harbours), never by the object-def nugget's id
+//   5  harbours, one Istanbul block each: the ferry socket docked on the lane, its id read on the next line, its pier
+//      hung off the real ferry (instance API) - never two sockets docking back to back (law 2)
+//   6  London Bridge, instance API, after the piers (before the road with gates it did not spawn) (law 2)
+//   8  harbour guards: the vanilla Euro trade-route post nugget (101) on the quay behind each harbour, its id read at
+//      placement; the post is released by "Nugget Is Collectable" on that nugget (Elbe's lone harbours)
 //   9  quays (one straight plateau per bank), streets, countryside (New England grass, Paris's turbulence); 9.2 the paint
 //      patches (Istanbul); 9.5 the wall terrain twins after them (Florence)
 //   10 blocks in Paris's order: the landmark coin (10.0), fixed doubles, fixed singles, two Florence zones, fillers, houses
