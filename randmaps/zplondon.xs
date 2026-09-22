@@ -718,7 +718,7 @@ void main(void)
 	// leg, in London's own narrow-strip recipe (quaySegment / seatStrip): ask 0.7, an influence segment along the spine, the
 	// box as the ONLY constraint (the legs' inside less eyotClearM = the lane clearance; a second avoidance on a strip gapped
 	// the bridge, the quay helper's law), coherence 1, no world circle so it reaches the edge; newengland_grass at the quays'
-	// height with Elbe's bank (zpelbe.xs 493-495: height blend 2, smooth 6). The first cut (a 0.004 ask, no skeleton, route
+	// height, walled by the ZP City cliff like the quays (user: 'spawn it as the city cliff'). The first cut (a 0.004 ask, no skeleton, route
 	// and plateau constraints on top) never spawned. An area adds no unit: the literal indices of 8 hold; the water flags
 	// (12.9) keep 8 m off it through flagLand.
 	float eyotLenM = rmXFractionToMeters(laneTurnX) * eyotLenFrac;
@@ -732,8 +732,9 @@ void main(void)
 	rmSetAreaLocation(eyot, eyotX2 * 0.5, zRiver);
 	rmSetAreaCoherence(eyot, 1.0);
 	rmSetAreaBaseHeight(eyot, eyotHeightM);
-	rmSetAreaHeightBlend(eyot, 2);
-	rmSetAreaSmoothDistance(eyot, 6);
+	rmSetAreaCliffType(eyot, "ZP City");   // the quay wall around it (quaySegment: the same three lines), user 2026-09-23
+	rmSetAreaCliffEdge(eyot, 1, 1.0, 0.1, 1.0, 0);
+	rmSetAreaCliffHeight(eyot, 0, 0.0, 1.0);
 	rmAddAreaInfluenceSegment(eyot, eyotX2 * 0.1, zRiver, eyotX2 * 0.9, zRiver);
 	rmSetAreaMix(eyot, "newengland_grass");
 	rmAddAreaConstraint(eyot, eyotBox);

@@ -1002,6 +1002,7 @@ class TestEyot:
         s = t[t.index("float eyotLenM = rmXFractionToMeters(laneTurnX) * eyotLenFrac;"):t.index("rmBuildArea(eyot);")]
         for line in ('int eyotBox = rmCreateBoxConstraint("eyot box", 0.0, eyotZ1, eyotX2, eyotZ2);', "rmSetAreaSize(eyot, 0.7, 0.7);",
                      "rmSetAreaLocation(eyot, eyotX2 * 0.5, zRiver);", "rmSetAreaCoherence(eyot, 1.0);", "rmSetAreaBaseHeight(eyot, eyotHeightM);",
+                     'rmSetAreaCliffType(eyot, "ZP City");', "rmSetAreaCliffEdge(eyot, 1, 1.0, 0.1, 1.0, 0);", "rmSetAreaCliffHeight(eyot, 0, 0.0, 1.0);",
                      "rmAddAreaInfluenceSegment(eyot, eyotX2 * 0.1, zRiver, eyotX2 * 0.9, zRiver);", 'rmSetAreaMix(eyot, "newengland_grass");',
                      "rmAddAreaConstraint(eyot, eyotBox);", "rmSetAreaObeyWorldCircleConstraint(eyot, false);"):
             assert line in s, line
