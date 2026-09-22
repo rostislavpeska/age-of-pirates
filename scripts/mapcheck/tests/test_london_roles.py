@@ -603,7 +603,7 @@ class TestTowerOwnership:
     from the building over every source player, the gate sockets converted by id, Bohemia's GateN_Rebuilt (transform
     tech per socket) fired on capture with a 500 ms deactivator."""
 
-    SWEEP = ("SPCFortGate", "zpSPCSocketCityTowerWooden", "zpSPCCityTowerWooden", "deSPCFortWallMediumProp", "deSPCFortCornerProp", "zpSPCFortWallProp")
+    SWEEP = ("SPCFortGate", "zpSPCSocketCityTowerWooden", "zpSPCCityTowerWooden", "deSPCFortWallMediumProp", "deSPCFortCornerProp", "deSPCFortWallLargeProp")
     SOCKETS = {"EU_SPC_London_Tower_01": ("zpInvisibleGateSocketA", "zpInvisibleGateSocketB"), "EU_SPC_London_Tower_02": ("zpInvisibleGateSocketC", "zpInvisibleGateSocketD")}
 
     def _block(self):
@@ -613,7 +613,7 @@ class TestTowerOwnership:
     def test_exports_tower_sockets_and_unique_gate_sockets(self):
         for name, sockets in self.SOCKETS.items():
             b = (REPO / ("game/randmaps/groupings/%s.xml" % name)).read_bytes()
-            assert b.count(b"\r\n") == b.count(b"\n") and b"zpSPCFortTowerProp" not in b
+            assert b.count(b"\r\n") == b.count(b"\n") and b"zpSPCFortTowerProp" not in b and b"zpSPCFortWallProp" not in b and b.count(b">deSPCFortWallLargeProp</unit>") == 10
             assert b.count(b">zpSPCSocketCityTowerWooden</unit>") == 4 and b.count(b">SPCFortGate</unit>") == 2
             assert b.count(b">zpInvisibleGateSocket</unit>") == 0
             lines = b.decode("utf-8").split(chr(13) + chr(10))

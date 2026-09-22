@@ -97,15 +97,15 @@
 		<unit variation="1" posx="-13.0638" posz="-23.7172" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="9" posx="-25.8586" posz="-20.1173" orientx="-0.9236" orienty="0.0000" orientz="0.3834">deSPCFortCornerProp</unit>
 		<unit variation="225" posx="-23.3967" posz="-18.5341" orientx="-0.7071" orienty="0.0000" orientz="0.7071">deSPCFortWallMediumProp</unit>
-		<unit variation="38" posx="-10.5176" posz="-21.8954" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCFortWallProp</unit>
+		<unit variation="38" posx="-10.5176" posz="-21.8954" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deSPCFortWallLargeProp</unit>
 		<unit variation="9" posx="24.4933" posz="-19.7311" orientx="0.9241" orienty="0.0000" orientz="0.3821">deSPCFortCornerProp</unit>
-		<unit variation="186" posx="9.4822" posz="-21.9102" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpSPCFortWallProp</unit>
+		<unit variation="186" posx="9.4822" posz="-21.9102" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deSPCFortWallLargeProp</unit>
 		<unit variation="225" posx="21.6728" posz="-17.3495" orientx="0.7072" orienty="0.0000" orientz="0.7071">deSPCFortWallMediumProp</unit>
 		<unit variation="9" posx="-22.4081" posz="-16.2085" orientx="-0.9238" orienty="0.0000" orientz="0.3829">deSPCFortCornerProp</unit>
 		<unit variation="9" posx="20.8840" posz="-15.7169" orientx="0.9240" orienty="0.0000" orientz="0.3824">deSPCFortCornerProp</unit>
 		<unit variation="0" posx="11.1556" posz="-16.2278" orientx="-0.7055" orienty="0.0000" orientz="0.7087">PropsPoles</unit>
 		<unit variation="0" posx="-10.0861" posz="-16.2629" orientx="-0.7055" orienty="0.0000" orientz="0.7087">PropsPoles</unit>
-		<unit variation="93" posx="-21.3281" posz="-11.9651" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCFortWallProp</unit>
+		<unit variation="93" posx="-21.3281" posz="-11.9651" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deSPCFortWallLargeProp</unit>
 		<unit variation="210" posx="-13.5916" posz="-13.7840" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpPropsColony</unit>
 		<unit variation="239" posx="-6.7355" posz="-14.1175" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpPropStatueHomeCity</unit>
 		<unit variation="22" posx="6.9860" posz="-13.8984" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpPropStatueHomeCity</unit>
@@ -115,7 +115,7 @@
 		<unit variation="41" posx="-6.8599" posz="-14.2014" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock1</unit>
 		<unit variation="38" posx="-0.9868" posz="-13.3950" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">NuggetDroppedWood</unit>
 		<unit variation="41" posx="7.0052" posz="-13.7261" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock1</unit>
-		<unit variation="186" posx="20.0395" posz="-10.4390" orientx="1.0000" orienty="0.0000" orientz="-0.0001">zpSPCFortWallProp</unit>
+		<unit variation="186" posx="20.0395" posz="-10.4390" orientx="1.0000" orienty="0.0000" orientz="-0.0001">deSPCFortWallLargeProp</unit>
 		<unit variation="85" posx="-13.3883" posz="-12.5406" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpPropsColony</unit>
 		<unit variation="186" posx="-15.1855" posz="-13.4231" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpPropsColony</unit>
 		<unit variation="250" posx="25.1722" posz="-13.3038" orientx="0.7079" orienty="0.0000" orientz="0.7063">deNatEUPropVilFemale</unit>
@@ -135,9 +135,9 @@
 		<unit variation="8" posx="-16.7098" posz="-5.0806" orientx="-1.0000" orienty="-0.0000" orientz="0.0010">PropsPottedPlants</unit>
 		<unit variation="6" posx="14.5799" posz="-5.3400" orientx="-1.0000" orienty="-0.0000" orientz="0.0010">PropsPottedPlants</unit>
 		<unit variation="0" posx="27.4945" posz="-6.1497" orientx="0.0020" orienty="0.0000" orientz="1.0000">zpPropMarketStall</unit>
-		<unit variation="117" posx="-21.3554" posz="-2.2436" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCFortWallProp</unit>
+		<unit variation="117" posx="-21.3554" posz="-2.2436" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deSPCFortWallLargeProp</unit>
 		<unit variation="159" posx="23.5491" posz="-4.5064" orientx="0.9836" orienty="0.0000" orientz="0.1801">zpSPCCityHouse</unit>
-		<unit variation="186" posx="20.2681" posz="-1.0811" orientx="1.0000" orienty="0.0000" orientz="-0.0001">zpSPCFortWallProp</unit>
+		<unit variation="186" posx="20.2681" posz="-1.0811" orientx="1.0000" orienty="0.0000" orientz="-0.0001">deSPCFortWallLargeProp</unit>
 		<unit variation="220" posx="-25.6797" posz="-2.4830" orientx="-0.0869" orienty="0.0000" orientz="-0.9962">zpSPCCityHouse</unit>
 		<unit variation="6" posx="-16.7556" posz="-2.4603" orientx="-1.0000" orienty="-0.0000" orientz="0.0010">PropsPottedPlants</unit>
 		<unit variation="2" posx="27.2740" posz="-2.4193" orientx="-0.3837" orienty="0.0000" orientz="-0.9235">zpPropMarketStall</unit>
@@ -147,7 +147,7 @@
 		<unit variation="57" posx="23.0627" posz="1.3308" orientx="-1.0000" orienty="0.0000" orientz="0.0006">zpSPCCityBuildingMix</unit>
 		<unit variation="223" posx="-24.2256" posz="3.8334" orientx="1.0000" orienty="-0.0000" orientz="0.0000">SPCPathBlock3</unit>
 		<unit variation="223" posx="-23.1925" posz="3.0476" orientx="1.0000" orienty="-0.0000" orientz="0.0000">SPCPathBlock3</unit>
-		<unit variation="90" posx="-21.4006" posz="6.7985" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpSPCFortWallProp</unit>
+		<unit variation="90" posx="-21.4006" posz="6.7985" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deSPCFortWallLargeProp</unit>
 		<unit variation="223" posx="-26.4782" posz="4.2190" orientx="1.0000" orienty="-0.0000" orientz="0.0000">SPCPathBlock3</unit>
 		<unit variation="94" posx="31.0153" posz="2.4598" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropsColony</unit>
 		<unit variation="0" posx="-30.7644" posz="3.6569" orientx="0.7061" orienty="0.0000" orientz="-0.7081">PropsPoles</unit>
@@ -157,7 +157,7 @@
 		<unit variation="1" posx="27.2050" posz="2.9706" orientx="-0.0010" orienty="0.0000" orientz="-1.0000">zpPropMarketStall</unit>
 		<unit variation="199" posx="-25.3208" posz="4.1261" orientx="-1.0000" orienty="0.0000" orientz="0.0008">zpSPCCityBuildingMix</unit>
 		<unit variation="4" posx="23.6556" posz="6.0541" orientx="0.0677" orienty="0.0000" orientz="0.9977">deSPCWaterlooHouseProp</unit>
-		<unit variation="186" posx="20.4488" posz="8.7446" orientx="1.0000" orienty="0.0000" orientz="-0.0001">zpSPCFortWallProp</unit>
+		<unit variation="186" posx="20.4488" posz="8.7446" orientx="1.0000" orienty="0.0000" orientz="-0.0001">deSPCFortWallLargeProp</unit>
 		<unit variation="8" posx="-16.8149" posz="6.9796" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPottedPlants</unit>
 		<unit variation="8" posx="15.1632" posz="6.7099" orientx="-1.0000" orienty="-0.0000" orientz="0.0010">PropsPottedPlants</unit>
 		<unit variation="15" posx="-25.8859" posz="9.1666" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpPropsColony</unit>
@@ -184,9 +184,9 @@
 		<unit variation="0" posx="30.9070" posz="20.0220" orientx="0.7061" orienty="0.0000" orientz="-0.7081">PropsPoles</unit>
 		<unit variation="9" posx="-14.9525" posz="22.0103" orientx="0.3835" orienty="0.0000" orientz="0.9236">deSPCFortCornerProp</unit>
 		<unit variation="54" posx="-17.2112" posz="23.1571" orientx="0.7071" orienty="0.0000" orientz="0.7071">deSPCFortWallMediumProp</unit>
-		<unit variation="250" posx="-10.7568" posz="21.4371" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCFortWallProp</unit>
+		<unit variation="250" posx="-10.7568" posz="21.4371" orientx="0.0000" orienty="0.0000" orientz="1.0000">deSPCFortWallLargeProp</unit>
 		<unit variation="9" posx="13.7554" posz="22.2136" orientx="-0.3824" orienty="0.0000" orientz="0.9240">deSPCFortCornerProp</unit>
-		<unit variation="250" posx="9.5983" posz="21.8711" orientx="0.0001" orienty="0.0000" orientz="1.0000">zpSPCFortWallProp</unit>
+		<unit variation="250" posx="9.5983" posz="21.8711" orientx="0.0001" orienty="0.0000" orientz="1.0000">deSPCFortWallLargeProp</unit>
 		<unit variation="54" posx="15.9060" posz="23.2997" orientx="-0.7070" orienty="0.0000" orientz="0.7072">deSPCFortWallMediumProp</unit>
 		<unit variation="17" posx="-0.6021" posz="21.9431" orientx="0.0002" orienty="-0.0000" orientz="1.0000">SPCFortGate</unit>
 		<unit variation="17" posx="-0.6021" posz="21.9431" orientx="0.0002" orienty="-0.0000" orientz="1.0000">zpInvisibleGateSocketB</unit>

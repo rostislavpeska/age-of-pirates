@@ -1774,7 +1774,8 @@ void main(void)
 	// the building by id, then Caribbean Wars' area sweep by UnitType from the building (zpcaribbeanwars.xs
 	// 1083-1101: from every source player 0..N so a flag that flips between players carries everything along;
 	// 2411-2427: the corner tower sockets zpSPCSocketCityTowerWooden and the wooden towers the owner builds on
-	// them), the gates, Paris's wall props (zpparis.xs 2870-2980), and King of Bohemia's gates: one unique
+	// them), the gates, Paris's wall props (zpparis.xs 2870-2980, 3018-3040: the vanilla de*Prop family - the mod's
+	// zpSPCFortWallProp is selectable with a build cost, not a prop, user 2026-09-22), and King of Bohemia's gates: one unique
 	// zpInvisibleGateSocketA-D under each SPCFortGate, converted by id, and a gate found missing right after the
 	// capture rebuilt once from its socket (zpkingofbohemia.xs 1906-1935, 1984-2000, 2251-2269, 2388-2408:
 	// GateN_Rebuilt + a 500 ms deactivator; the transform consumes the socket, so each gate rebuilds once).
@@ -1853,7 +1854,7 @@ void main(void)
 				rmSetTriggerEffectParam("SrcObject", "" + towerSBldUnit);
 				rmSetTriggerEffectParamInt("SrcPlayer", i);
 				rmSetTriggerEffectParamInt("TrgPlayer", p);
-				rmSetTriggerEffectParam("UnitType", "zpSPCFortWallProp");
+				rmSetTriggerEffectParam("UnitType", "deSPCFortWallLargeProp");
 				rmSetTriggerEffectParamInt("Dist", towerSweepM);
 			}
 			rmAddTriggerEffect("Convert");
@@ -2001,7 +2002,7 @@ void main(void)
 				rmSetTriggerEffectParam("SrcObject", "" + towerNBldUnit);
 				rmSetTriggerEffectParamInt("SrcPlayer", i);
 				rmSetTriggerEffectParamInt("TrgPlayer", p);
-				rmSetTriggerEffectParam("UnitType", "zpSPCFortWallProp");
+				rmSetTriggerEffectParam("UnitType", "deSPCFortWallLargeProp");
 				rmSetTriggerEffectParamInt("Dist", towerSweepM);
 			}
 			rmAddTriggerEffect("Convert");
