@@ -991,26 +991,6 @@ class TestWaterFlags:
         assert LONDON.read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
 
 
-class TestEyot:
-    """4.1 (user 2026-09-23): a narrow island inside the lane's U from the west edge to a third of the leg, in London's own
-    narrow-strip recipe (quaySegment: ask 0.7, skeleton, the box as the only constraint) - the first cut with a tiny ask and
-    extra constraints never spawned."""
-
-    def test_quay_strip_recipe(self):
-        t = _code(_text(LONDON)); k = dict(re.findall(r"(?:float |int )?(\w+)\s*=\s*([\w.]+);", t))
-        assert 0.0 < float(k["eyotLenFrac"]) <= 0.5 and float(k["eyotClearM"]) < float(k["laneLegM"]) and float(k["eyotHeightM"]) == 1.0
-        s = t[t.index("float eyotLenM = rmXFractionToMeters(laneTurnX) * eyotLenFrac;"):t.index("rmBuildArea(eyot);")]
-        for line in ('int eyotBox = rmCreateBoxConstraint("eyot box", 0.0, eyotZ1, eyotX2, eyotZ2);', "rmSetAreaSize(eyot, 0.7, 0.7);",
-                     "rmSetAreaLocation(eyot, eyotX2 * 0.5, zRiver);", "rmSetAreaCoherence(eyot, 1.0);", "rmSetAreaBaseHeight(eyot, eyotHeightM);",
-                     'rmSetAreaCliffType(eyot, "ZP City");', "rmSetAreaCliffEdge(eyot, 1, 1.0, 0.1, 1.0, 0);", "rmSetAreaCliffHeight(eyot, 0, 0.0, 1.0);",
-                     "rmAddAreaInfluenceSegment(eyot, eyotX2 * 0.1, zRiver, eyotX2 * 0.9, zRiver);", 'rmSetAreaMix(eyot, "newengland_grass");',
-                     "rmAddAreaConstraint(eyot, eyotBox);", "rmSetAreaObeyWorldCircleConstraint(eyot, false);"):
-            assert line in s, line
-        assert s.count("rmAddAreaConstraint(") == 1      # the box only (the quay helper's law)
-        assert t.index("rmRiverBuild(riverMain);") < t.index("rmBuildArea(eyot);") < t.index("int harbourN1PostDef")
-        assert LONDON.read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
-
-
 class TestScope:
 
     def test_reserved_columns_take_the_berry_mill(self):

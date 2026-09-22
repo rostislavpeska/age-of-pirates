@@ -497,9 +497,6 @@ void main(void)
 	// T5. handles and laws
 	float laneLegM = 16.0;              // the nautical U: legs this far off the river centre
 	float laneTurnFromRoadM = 80.0;     // the U's turn this far west of the road (in front of row 3; 60 m clear of the bridge)
-	float eyotLenFrac  = 0.33;          // the eyot (4.1) runs from the west map edge this far along the lane's leg
-	float eyotClearM   = 9.0;           // off both lane legs (7 -> 9, user 2026-09-23) (rmCreateTradeRouteDistanceConstraint) - the box uses the same clearance
-	float eyotHeightM  = 1.0;           // the quays' height
 	int   harbourGuardDifficulty = 101; // nuggets.xml euNuggetCapturable2: the vanilla European trade-route post guard (ypNuggetTradingPost + four deGuardianMusketeer, maptype westEurope) - zpelbe.xs uses it the same way
 	float harbourGuardInM = 2.5;        // the guard nugget this far INTO the city off the bank's quay wall line = the middle of the 5 m promenade, at the harbour's x (behind the harbour building)
 	float harbourGuardSearchM = 3.0;    // ... and the search radius around that spot: stays on the promenade (6 m let it wander off the harbour - user 2026-09-18)
@@ -713,34 +710,6 @@ void main(void)
 	rmRiverAddWaypoint(riverMain, 0.0, rmXMetersToFraction(rmZFractionToMeters(zRiver)));
 	rmRiverAddWaypoint(riverMain, 1.0, rmXMetersToFraction(rmZFractionToMeters(zRiver)));
 	rmRiverBuild(riverMain);
-
-	// ---- 4.1 THE EYOT (user 2026-09-23): a narrow island INSIDE the lane's U, from the west map edge to eyotLenFrac of the
-	// leg, in London's own narrow-strip recipe (quaySegment / seatStrip): ask 0.7, an influence segment along the spine, the
-	// box as the ONLY constraint (the legs' inside less eyotClearM = the lane clearance; a second avoidance on a strip gapped
-	// the bridge, the quay helper's law), coherence 1, no world circle so it reaches the edge; newengland_grass at the quays'
-	// height, walled by the ZP City cliff like the quays (user: 'spawn it as the city cliff'). The first cut (a 0.004 ask, no skeleton, route
-	// and plateau constraints on top) never spawned. An area adds no unit: the literal indices of 8 hold; the water flags
-	// (12.9) keep 8 m off it through flagLand.
-	float eyotLenM = rmXFractionToMeters(laneTurnX) * eyotLenFrac;
-	float eyotHalfM = laneLegM - eyotClearM;
-	float eyotX2 = rmXMetersToFraction(eyotLenM);
-	float eyotZ1 = zRiver - rmZMetersToFraction(eyotHalfM);
-	float eyotZ2 = zRiver + rmZMetersToFraction(eyotHalfM);
-	int eyotBox = rmCreateBoxConstraint("eyot box", 0.0, eyotZ1, eyotX2, eyotZ2);
-	int eyot = rmCreateArea("the eyot");
-	rmSetAreaSize(eyot, 0.7, 0.7);
-	rmSetAreaLocation(eyot, eyotX2 * 0.5, zRiver);
-	rmSetAreaCoherence(eyot, 1.0);
-	rmSetAreaBaseHeight(eyot, eyotHeightM);
-	rmSetAreaCliffType(eyot, "ZP City");   // the quay wall around it (quaySegment: the same three lines), user 2026-09-23
-	rmSetAreaCliffEdge(eyot, 1, 1.0, 0.1, 1.0, 0);
-	rmSetAreaCliffHeight(eyot, 0, 0.0, 1.0);
-	rmAddAreaInfluenceSegment(eyot, eyotX2 * 0.1, zRiver, eyotX2 * 0.9, zRiver);
-	rmSetAreaMix(eyot, "newengland_grass");
-	rmAddAreaConstraint(eyot, eyotBox);
-	rmSetAreaObeyWorldCircleConstraint(eyot, false);
-	rmBuildArea(eyot);
-	rmEchoInfo("LONDON eyot: " + eyotLenM + " m from the west edge, box half " + eyotHalfM + " m about the river centre");
 
 	rmSetStatusText("",0.30);
 
