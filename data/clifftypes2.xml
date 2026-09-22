@@ -3982,10 +3982,10 @@
       <heightmap>terrain\cliffs\ceylon\ceylon_cliff_height</heightmap>
       <mask>terrain\cliffs\ceylon\ceylon_cliff_masks</mask>
       <top>new_england\ground3_ne</top>
-      <topedge>new_england\ground3_ne</topedge>
-      <side>new_england\cliff_side_ne</side>
-      <edge>new_england\cliff_side_ne</edge>
-      <bottomedge>new_england\cliff_side_ne</bottomedge>
+      <topedge>new_england\cliff_top_ne</topedge>
+      <side>new_england\river1_ne</side>
+      <edge>new_england\river1_ne</edge>
+      <bottomedge>new_england\river1_ne</bottomedge>
     </textures>
   </cliff>
 </cliffs>

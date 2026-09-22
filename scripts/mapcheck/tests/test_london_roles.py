@@ -331,13 +331,13 @@ class TestStripSeats:
         t = _code(_text(LONDON))
         defs = t[t.index('int areaTC = rmCreateObjectDef("strip seat town center");'):t.index("rmSetNuggetDifficulty(1, 1);")]
         items = re.findall(r'rmAddObjectDefItem\((\w+), (.*?)\);', defs)
-        assert items == [("areaTC", '"TownCenter", 1, 0.0'), ("areaMine", '"deMineCoalBuildable", 1, 0.0'), ("areaBerry", '"BerryBush", 6, 4.0'), ("areaDeer", '"Deer", 11, 6.0'),
+        assert items == [("areaTC", '"TownCenter", 1, 0.0'), ("areaMine", '"deMineCoalBuildable", 1, 0.0'), ("areaBerry", '"BerryBush", 6, 4.0'), ("areaDeer", '"Deer", 3, 6.0'),
                          ("areaTrees", '"TreeNewEngland", 14, 9.0'), ("areaTrees", '"TreeGreatLakes", 14, 9.0'), ("areaTrees", '"UnderbrushForest", 8, 8.0'), ("areaNugget", '"Nugget", 1, 0.0')]
         assert "rmSetObjectDefCreateHerd(areaDeer, true);" in defs and 'rmAddObjectDefToClass(areaTrees, rmClassID("classForest"));' in defs
         assert "rmSetObjectDefMaxDistance(areaTC, 0.0);" in defs and defs.count("rmSetObjectDefMaxDistance(") == 6
         block = _text(LONDON)
         w = (REPO / "game/randmaps/groupings/EU_SPC_Player_London.xml").read_text(encoding="utf-8")
-        for proto, n in (("TownCenter", 1), ("deMineCoalBuildable", 2), ("BerryBush", 6), ("Deer", 11)):
+        for proto, n in (("TownCenter", 1), ("deMineCoalBuildable", 2), ("BerryBush", 6), ("Deer", 3)):
             assert w.count(">%s</unit>" % proto) == n, proto                                        # the kit's counts are the block's
         loop = t[t.index("for(i=1; < cNumberNonGaiaPlayers + 1) {"):t.index("int harbourN1PostUnit")]
         a = loop[loop.index("if (areaSeat == 1)"):loop.index("if (seatsByRole == 0)")]
@@ -529,12 +529,13 @@ class TestCountryside:
         t = _text(LONDON)
         return _code(_section(t, "// ---- 12.7 THE COUNTRYSIDE OBJECTS", "int harbourN1PostUnit"))
 
-    def test_objects_after_the_hills_fussiest_first_trees_last(self):
+    def test_objects_after_the_hills_fussiest_first_forests_last(self):
         t = _code(_text(LONDON))
         assert t.index('wallCliff("wall hill N4"') < t.index('rmCreateObjectDef("countryside tin")') < t.index("int harbourN1PostUnit")
         s = self._objects()
         order = [re.search(r'"countryside (\w+)"', m).group(1) for m in re.findall(r'rmCreateObjectDef\("countryside \w+"\)', s)]
-        assert order == ["tin", "deer", "berries", "treasure", "trees"]
+        assert order == ["tin", "deer", "berries", "treasure"]          # the trees are AREAS now, not a def
+        assert s.index('rmCreateObjectDef("countryside treasure")') < s.index('rmCreateArea("countryside forest D "')
         assert "int resScale = cNumberNonGaiaPlayers / 4;" in s
         assert re.search(r"int seatsBankD = defenderCount;\n\tint seatsBankA = attackerCount;\n\tif \(cNumberTeams != 2\)", s)
         assert "if (seatsBankD < 1) seatsBankD = 1;" in s and "if (seatsBankA < 1) seatsBankA = 1;" in s
@@ -549,22 +550,57 @@ class TestCountryside:
         fences = {"tin": {"mineVsMine", "avoidBlocks8", "avoidPlateau8", "avoidWallObjXL", "avoidCliff5", "belowCliffs", "avoidTradeRouteRes"} | rim,
                   "deer": {"deerVsDeer", "avoidBlocks8", "avoidPlateau8", "avoidWallObjXL", "avoidCliff5", "belowCliffs", "avoidTradeRouteRes"} | rim,
                   "berries": {"berryVsBerry", "avoidBlocks8", "avoidPlateau8", "avoidWallObjXL", "avoidCliff5", "belowCliffs", "avoidTradeRouteRes"} | rim,
-                  "treasure": {"nugVsNug", "avoidBlocks8", "avoidPlateau8", "avoidWallObjXL", "avoidCliff5", "belowCliffs", "avoidTradeRouteRes"} | rim,
-                  "trees": {"treeVsTree", "avoidBlocks8", "avoidPlateau8", "avoidWallObjTree", "avoidCliff5", "belowCliffs", "avoidTradeRouteRes"} | rim}
-        items = {"tin": ['"MineTin", 1, 0.0'], "deer": ['"Deer", rmRandInt(6, 8), 6.0'], "berries": ['"BerryBush", 5, 4.0'], "treasure": ['"Nugget", 1, 0.0'],
-                 "trees": ['"TreeNewEngland", rmRandInt(5, 7), 10.0', '"TreeGreatLakes", rmRandInt(2, 3), 11.0', '"UnderbrushForest", rmRandInt(3, 4), 9.0']}
+                  "treasure": {"nugVsNug", "avoidBlocks8", "avoidPlateau8", "avoidWallObjXL", "avoidCliff5", "belowCliffs", "avoidTradeRouteRes"} | rim}
+        items = {"tin": ['"MineTin", 1, 0.0'], "deer": ['"Deer", rmRandInt(6, 8), 6.0'], "berries": ['"BerryBush", 5, 4.0'], "treasure": ['"Nugget", 1, 0.0']}
         counts = {"tin": ["seatsBankD + 1", "seatsBankA + 1"], "deer": ["seatsBankD + 1", "seatsBankA + 1"], "berries": ["seatsBankD", "seatsBankA"],
-                  "treasure": ["2 + resScale", "2 + resScale", "1 + resScale", "1 + resScale"], "trees": ["3 + 2 * resScale", "3 + 2 * resScale"]}
-        for name in ("tin", "deer", "berries", "treasure", "trees"):
+                  "treasure": ["2 + resScale", "2 + resScale", "1 + resScale", "1 + resScale"]}
+        for name in ("tin", "deer", "berries", "treasure"):
             b = block(name)
             assert set(re.findall(r"rmAddObjectDefConstraint\(\w+, (\w+)\);", b)) == fences[name], name
             assert re.findall(r"rmAddObjectDefItem\(\w+, (.*?)\);", b) == items[name], name
             got = re.findall(r"rmPlaceObjectDefInArea\(\w+, 0, (country[DA]), ([^)]*)\);", b)
             assert [a for a, _ in got] == (["countryD", "countryA"] * (2 if name == "treasure" else 1)) and [c for _, c in got] == counts[name], name
         assert "rmSetObjectDefCreateHerd(countryDeer, true);" in block("deer")
-        assert 'rmAddObjectDefToClass(countryTrees, rmClassID("classForest"));' in block("trees")
         tb = block("treasure")
         assert tb.index("rmSetNuggetDifficulty(3, 3);") < tb.index("rmPlaceObjectDefInArea(countryNugget, 0, countryD, 2 + resScale);") < tb.index("rmSetNuggetDifficulty(4, 4);") < tb.index("rmPlaceObjectDefInArea(countryNugget, 0, countryD, 1 + resScale);")
+
+    def test_the_countryside_forests_are_real_forest_areas(self):
+        """12.7 (user 2026-09-22: "the countryside forests are most likely not even forests - can we make them real
+        forests and bigger"). The clumps were an object def with no forest type, so no forest floor and no forest
+        shape. They are AREAS now, on Crownlands' block (zpcrownlands.xs 942-972) and its forest type, whose
+        definition is London's own mix: TreeNewEngland + TreeGreatLakes + TreeSaguenay with underbrush."""
+        s = self._objects()
+        assert 'rmCreateObjectDef("countryside trees")' not in s        # the clump def is gone for good
+        assert "int countryForestTiles = 240;" in s                      # the knob for "bigger"; Crownlands 150
+        assert "int countryForestCount = 4 + 2 * resScale;" in s         # per bank; the clumps were 3 + 2 * resScale
+        assert 'int forestVsForest = rmCreateClassDistanceConstraint("forest v forest", rmClassID("classForest"), 20.0);' in s
+        assert re.search(r"int stripBoxD = stripBoxS;\n\tint stripBoxA = stripBoxN;\n\tif \(defenderBank == 1\)\n\t\{\n\t\tstripBoxD = stripBoxN;\n\t\tstripBoxA = stripBoxS;\n\t\}", s)
+        assert "for (cf = 0; < countryForestCount)" in s
+        for area, box in (("forestD", "stripBoxD"), ("forestA", "stripBoxA")):
+            b = s[s.index('rmCreateArea("countryside forest %s "' % area[-1]):]
+            b = b[:b.index("rmBuildArea(%s);" % area)]
+            for line in ("rmSetAreaWarnFailure(%s, false);" % area,
+                         "rmSetAreaSize(%s, rmAreaTilesToFraction(countryForestTiles), rmAreaTilesToFraction(countryForestTiles));" % area,
+                         'rmSetAreaForestType(%s, "z69 North New England");' % area,
+                         "rmSetAreaForestDensity(%s, 0.6);" % area,
+                         "rmSetAreaForestClumpiness(%s, 0.1);" % area,
+                         "rmSetAreaForestUnderbrush(%s, 0.6);" % area,
+                         "rmSetAreaMinBlobs(%s, 1);" % area,
+                         "rmSetAreaMaxBlobs(%s, 5);" % area,
+                         "rmSetAreaMinBlobDistance(%s, 16.0);" % area,
+                         "rmSetAreaMaxBlobDistance(%s, 40.0);" % area,
+                         "rmSetAreaCoherence(%s, 0.4);" % area,
+                         "rmSetAreaSmoothDistance(%s, 10);" % area,
+                         'rmAddAreaToClass(%s, rmClassID("classForest"));' % area,
+                         "rmSetAreaObeyWorldCircleConstraint(%s, false);" % area):
+                assert line in b, (area, line)
+            got = set(re.findall(r"rmAddAreaConstraint\(%s, (\w+)\);" % area, b))
+            # avoidPlateau8 is DELIBERATELY absent (mapcheck bisect 2026-09-22: on its own it leaves 0 feasible
+            # tiles - classPlateau holds the quays, oversized areas clipped by their box). classCliff holds the
+            # wall hills alone, so avoidCliff5 fences them, and the strip box keeps the forests off the quays.
+            assert got == {box, "forestVsForest", "avoidBlocks8", "avoidWallObjTree", "avoidCliff5",
+                           "avoidTradeRouteRes", "belowCliffs"}, (area, got)
+            assert "avoidPlateau8" not in got, area
 
     def test_the_treasure_pool_and_the_map_types(self):
         t = _text(LONDON)

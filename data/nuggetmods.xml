@@ -3758,8 +3758,8 @@
       <resource>Wood</resource>
       <amount>120</amount>
       <maptype>piratehistoricalmap</maptype>
-      <guardian>zpGuardianRevolutionary</guardian>
-      <guardian>zpGuardianRevolutionary</guardian>
+      <guardian>deGuardianHighwayman</guardian>
+      <guardian>deGuardianHighwayman</guardian>
       <difficulty>606</difficulty>
     </nugget>
     <nugget>
@@ -3776,25 +3776,25 @@
         <attachdummy>bone_hostage_A</attachdummy>
       </convertunit>
       <guardianunit>
-        <unit>zpGuardianCardinalGuard</unit>
+        <unit>deGuardianGallowglass</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_A</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>zpGuardianCardinalGuard</unit>
+        <unit>deGuardianGallowglass</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_B</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>zpGuardianCardinalGuard</unit>
+        <unit>deGuardianGallowglass</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_C</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianCuirassier</unit>
+        <unit>deGuardianBritishDragoon</unit>
       </guardianunit>
       <killunitonapply>0</killunitonapply>
       <difficulty>606</difficulty>
@@ -3819,28 +3819,28 @@
         <attachdummy>bone_hostage_B</attachdummy>
       </convertunit>
       <guardianunit>
-        <unit>zpGuardianRevolutionary</unit>
+        <unit>deGuardianHighlander</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_A</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>zpGuardianRevolutionary</unit>
+        <unit>deGuardianHighlander</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_B</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>zpGuardianRevolutionary</unit>
+        <unit>deGuardianHighlander</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_C</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianCuirassier</unit>
+        <unit>deGuardianBritishDragoon</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianCuirassier</unit>
+        <unit>deGuardianBritishDragoon</unit>
       </guardianunit>
       <killunitonapply>0</killunitonapply>
       <difficulty>606</difficulty>
@@ -3854,8 +3854,8 @@
       <resource>Wood</resource>
       <amount>120</amount>
       <maptype>piratehistoricalmap</maptype>
-      <guardian>zpGuardianRevolutionary</guardian>
-      <guardian>zpGuardianRevolutionary</guardian>
+      <guardian>deGuardianLandsknecht</guardian>
+      <guardian>deGuardianLandsknecht</guardian>
       <difficulty>307</difficulty>
     </nugget>
     <nugget>
@@ -3872,25 +3872,25 @@
         <attachdummy>bone_hostage_A</attachdummy>
       </convertunit>
       <guardianunit>
-        <unit>zpGuardianCardinalGuard</unit>
+        <unit>deGuardianMusketeer</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_A</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>zpGuardianCardinalGuard</unit>
+        <unit>deGuardianMusketeer</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_B</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>zpGuardianCardinalGuard</unit>
+        <unit>deGuardianMusketeer</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_C</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianCuirassier</unit>
+        <unit>deGuardianElmeti</unit>
       </guardianunit>
       <killunitonapply>0</killunitonapply>
       <difficulty>307</difficulty>
@@ -3915,28 +3915,28 @@
         <attachdummy>bone_hostage_B</attachdummy>
       </convertunit>
       <guardianunit>
-        <unit>zpGuardianRevolutionary</unit>
+        <unit>deGuardianMusketeer</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_A</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>zpGuardianRevolutionary</unit>
+        <unit>deGuardianMusketeer</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_B</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>zpGuardianRevolutionary</unit>
+        <unit>deGuardianMusketeer</unit>
         <idleanim>Kidnap_OutlawA_Idle</idleanim>
         <exitanim>Kidnap_OutlawA_Exit</exitanim>
         <attachdummy>bone_outlaw_C</attachdummy>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianCuirassier</unit>
+        <unit>deGuardianElmeti</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deGuardianCuirassier</unit>
+        <unit>deGuardianElmeti</unit>
       </guardianunit>
       <killunitonapply>0</killunitonapply>
       <difficulty>307</difficulty>

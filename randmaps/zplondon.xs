@@ -1358,7 +1358,7 @@ void main(void)
 	int aiStartUrban = rmCreateObjectDef("is city map");
 	rmAddObjectDefItem(aiStartUrban, "zpAIStartUrbanMap", 1, 0.0);
 	// the grass strip's kit (five and more per side, user 2026-09-22): the seat block's own protos and counts
-	// (EU_SPC_Player_London: TownCenter 1, deMineCoalBuildable 2, BerryBush 6, Deer 11, TreeNewEngland / TreeGreatLakes /
+	// (EU_SPC_Player_London: TownCenter 1, deMineCoalBuildable 2, BerryBush 6, Deer 3, TreeNewEngland / TreeGreatLakes /
 	// UnderbrushForest, one Nugget - level 1 through the latch below), the Town Center pinned on the seat, the coal mines the
 	// player's own (deMineCoalBuildable is a Building, owned by the seat's player as the block's are), the rest gaia with
 	// 3 m of slack around their spots; the Town Center goes with the starting units as on Black Sea (zpblacksea.xs 949-955)
@@ -1375,7 +1375,7 @@ void main(void)
 	rmSetObjectDefMinDistance(areaBerry, 0.0);
 	rmSetObjectDefMaxDistance(areaBerry, 3.0);
 	int areaDeer = rmCreateObjectDef("strip seat deer");
-	rmAddObjectDefItem(areaDeer, "Deer", 11, 6.0);
+	rmAddObjectDefItem(areaDeer, "Deer", 3, 6.0);
 	rmSetObjectDefCreateHerd(areaDeer, true);
 	rmSetObjectDefMinDistance(areaDeer, 0.0);
 	rmSetObjectDefMaxDistance(areaDeer, 3.0);
@@ -1568,23 +1568,80 @@ void main(void)
 	rmSetNuggetDifficulty(4, 4);
 	rmPlaceObjectDefInArea(countryNugget, 0, countryD, 1 + resScale);
 	rmPlaceObjectDefInArea(countryNugget, 0, countryA, 1 + resScale);
-	// tree clumps last: New England trees with a few Great Lakes ones and forest underbrush (the big park's mix)
-	int countryTrees = rmCreateObjectDef("countryside trees");
-	rmAddObjectDefItem(countryTrees, "TreeNewEngland", rmRandInt(5, 7), 10.0);
-	rmAddObjectDefItem(countryTrees, "TreeGreatLakes", rmRandInt(2, 3), 11.0);
-	rmAddObjectDefItem(countryTrees, "UnderbrushForest", rmRandInt(3, 4), 9.0);
-	rmAddObjectDefToClass(countryTrees, rmClassID("classForest"));
-	rmAddObjectDefConstraint(countryTrees, treeVsTree);
-	rmAddObjectDefConstraint(countryTrees, avoidBlocks8);
-	rmAddObjectDefConstraint(countryTrees, avoidPlateau8);
-	rmAddObjectDefConstraint(countryTrees, avoidWallObjTree);
-	rmAddObjectDefConstraint(countryTrees, avoidCliff5);
-	rmAddObjectDefConstraint(countryTrees, belowCliffs);
-	rmAddObjectDefConstraint(countryTrees, avoidTradeRouteRes);
-	rmAddObjectDefConstraint(countryTrees, insideWorld);
-	rmAddObjectDefConstraint(countryTrees, insideFrame);
-	rmPlaceObjectDefInArea(countryTrees, 0, countryD, 3 + 2 * resScale);
-	rmPlaceObjectDefInArea(countryTrees, 0, countryA, 3 + 2 * resScale);
+	// REAL FORESTS last (user 2026-09-22: "the countryside forests are most likely not even forests - can we make
+	// them real forests and bigger"). They were not forests: an object def scattered 5-7 TreeNewEngland, 2-3
+	// TreeGreatLakes and 3-4 UnderbrushForest inside a 10 m disc - no forest type, so no forest floor mix, no blob
+	// shape, no forest density. A real forest is an AREA with rmSetAreaForestType, and this mod already has the block
+	// for this exact tree mix: Crownlands (zpcrownlands.xs 942-972) and King of Bohemia both use "z69 North New
+	// England", whose definition is TreeNewEngland + TreeGreatLakes + TreeSaguenay with Underbrushcarolinasforest on
+	// the z_Maple_Saplings floor - London's own mix plus its underbrush, in one type. Its density, clumpiness,
+	// underbrush, blob and coherence numbers are Crownlands' proven ones; only the size is raised (Crownlands 150
+	// tiles, Elbe 200-300, the old clumps were ~20 m blobs). The bank's strip BOX is the fence and the engine picks
+	// the spot, exactly as the 9.2 paint patches do - no seed location.
+	// NOT avoidPlateau8 (mapcheck bisect 2026-09-22: it alone leaves 0 feasible tiles): classPlateau holds the
+	// QUAYS as well as the hills, and a quay is an oversized area clipped by its box - the simulator models it
+	// as a disc that swallows the whole strip. classCliff holds the wall hills ALONE, so avoidCliff5 fences the
+	// hills on its own and the strip box already keeps the forests off the quays and the city floor.
+	int countryForestTiles = 240;                 // ~15 x 15 tiles of trees per forest - the knob for "bigger"
+	int countryForestCount = 4 + 2 * resScale;    // per bank; the clumps were 3 + 2 * resScale
+	int forestVsForest = rmCreateClassDistanceConstraint("forest v forest", rmClassID("classForest"), 20.0);
+	int stripBoxD = stripBoxS;
+	int stripBoxA = stripBoxN;
+	if (defenderBank == 1)
+	{
+		stripBoxD = stripBoxN;
+		stripBoxA = stripBoxS;
+	}
+	for (cf = 0; < countryForestCount)
+	{
+		int forestD = rmCreateArea("countryside forest D " + cf);
+		rmSetAreaWarnFailure(forestD, false);
+		rmSetAreaSize(forestD, rmAreaTilesToFraction(countryForestTiles), rmAreaTilesToFraction(countryForestTiles));
+		rmSetAreaForestType(forestD, "z69 North New England");
+		rmSetAreaForestDensity(forestD, 0.6);
+		rmSetAreaForestClumpiness(forestD, 0.1);
+		rmSetAreaForestUnderbrush(forestD, 0.6);
+		rmSetAreaMinBlobs(forestD, 1);
+		rmSetAreaMaxBlobs(forestD, 5);
+		rmSetAreaMinBlobDistance(forestD, 16.0);
+		rmSetAreaMaxBlobDistance(forestD, 40.0);
+		rmSetAreaCoherence(forestD, 0.4);
+		rmSetAreaSmoothDistance(forestD, 10);
+		rmAddAreaToClass(forestD, rmClassID("classForest"));
+		rmAddAreaConstraint(forestD, stripBoxD);
+		rmAddAreaConstraint(forestD, forestVsForest);
+		rmAddAreaConstraint(forestD, avoidBlocks8);
+		rmAddAreaConstraint(forestD, avoidWallObjTree);
+		rmAddAreaConstraint(forestD, avoidCliff5);
+		rmAddAreaConstraint(forestD, avoidTradeRouteRes);
+		rmAddAreaConstraint(forestD, belowCliffs);
+		rmSetAreaObeyWorldCircleConstraint(forestD, false);
+		rmBuildArea(forestD);
+
+		int forestA = rmCreateArea("countryside forest A " + cf);
+		rmSetAreaWarnFailure(forestA, false);
+		rmSetAreaSize(forestA, rmAreaTilesToFraction(countryForestTiles), rmAreaTilesToFraction(countryForestTiles));
+		rmSetAreaForestType(forestA, "z69 North New England");
+		rmSetAreaForestDensity(forestA, 0.6);
+		rmSetAreaForestClumpiness(forestA, 0.1);
+		rmSetAreaForestUnderbrush(forestA, 0.6);
+		rmSetAreaMinBlobs(forestA, 1);
+		rmSetAreaMaxBlobs(forestA, 5);
+		rmSetAreaMinBlobDistance(forestA, 16.0);
+		rmSetAreaMaxBlobDistance(forestA, 40.0);
+		rmSetAreaCoherence(forestA, 0.4);
+		rmSetAreaSmoothDistance(forestA, 10);
+		rmAddAreaToClass(forestA, rmClassID("classForest"));
+		rmAddAreaConstraint(forestA, stripBoxA);
+		rmAddAreaConstraint(forestA, forestVsForest);
+		rmAddAreaConstraint(forestA, avoidBlocks8);
+		rmAddAreaConstraint(forestA, avoidWallObjTree);
+		rmAddAreaConstraint(forestA, avoidCliff5);
+		rmAddAreaConstraint(forestA, avoidTradeRouteRes);
+		rmAddAreaConstraint(forestA, belowCliffs);
+		rmSetAreaObeyWorldCircleConstraint(forestA, false);
+		rmBuildArea(forestA);
+	}
 	rmEchoInfo("LONDON countryside: bank seats " + seatsBankD + " / " + seatsBankA + ", resScale " + resScale + " - tin " + (seatsBankD + 1) + "+" + (seatsBankA + 1) + ", deer herds the same, berries " + seatsBankD + "+" + seatsBankA + ", treasures " + (3 + 2 * resScale) + " per bank, tree clumps " + (3 + 2 * resScale) + " per bank");
 	rmEchoInfo("countryside rim: pie radius " + rimRadiusM + " m (corner chamfer " + rimCornerM + " m), frame box 8 m");
 
