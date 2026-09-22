@@ -776,6 +776,7 @@ class TestBridgeOwnership:
         assert re.search(r'<unit name="deSPCCityTower">\s*<movementtype>air</movementtype>\s*<flag mergeMode="remove">ColorTransformNonGaia</flag>\s*</unit>', lm)
         assert re.search(r'<unit name="deSPCSocketCityTower">\s*<flag mergeMode="remove">ColorTransformNonGaia</flag>\s*</unit>', lm)
         assert re.search(r'<unit name="deSPCCityTower">\s*<unittype mergemode="remove">AbstractCallMinutemen</unittype>\s*</unit>', lm)
+        assert re.search(r'<unit name="deSPCCityTower">\s*<flag mergeMode="remove">FlattenGround</flag>\s*</unit>', lm)     # the deck stays flat (London only, user 2026-09-22)
         tt = _text(REPO / "data/techtreemods.xml"); j = tt.index('<tech name="zpSPCLondonAI" type="Normal">'); tech = tt[j:tt.index("</tech>", j)]
         for sock in ("zpSPCSocketCityTowerWooden", "deSPCSocketCityTower"):
             assert ('<effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">' + chr(10) + '        <target type="ProtoUnit">%s</target>' % sock) in tech

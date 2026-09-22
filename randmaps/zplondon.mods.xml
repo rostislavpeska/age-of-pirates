@@ -221,5 +221,9 @@
 		<unit name="deSPCCityTower">
 			<unittype mergemode="remove">AbstractCallMinutemen</unittype>
 		</unit>
+		<!-- the built tower must not flatten the bridge deck (the reason the Flat props exist; user 2026-09-22) -->
+		<unit name="deSPCCityTower">
+			<flag mergeMode="remove">FlattenGround</flag>
+		</unit>
 	</protomods>
 </mods>
