@@ -1653,6 +1653,33 @@ void main(void)
 	rmAddObjectDefItem(bridgeRevealer, "zpCinematicRevealerToAll", 1, 0.0);
 	rmPlaceObjectDefAtLoc(bridgeRevealer, 0, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ), 1);
 
+	// ---- 12.9 WATER FLAGS (user 2026-09-23) - Elbe's shape (zpelbe.xs 189 / 220 / 247 / 932-943): each player's
+	// HomeCityWaterSpawnFlag on the closest water point to the town centre that is 11 m off land, 30 m off another flag,
+	// 40 m off a ferry post (the four harbours) and 70 m off the bridge faces, and WEST of London Bridge - the box keeps
+	// the river between the bridge and the map edge empty. Placed last: no literal index moves.
+	int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 11.0);
+	int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 30.0);
+	int flagVsFerry = rmCreateTypeDistanceConstraint("flag avoid ferry harbour", "zpOrientalFerry", 40.0);
+	int flagVsBridge = rmCreateTypeDistanceConstraint("flag avoid bridge", "zpBridgeFace", 70.0);
+	int flagBox = rmCreateBoxConstraint("flag west of the bridge", 0.0, 0.0, xRoad - rmXMetersToFraction(30.0), 1.0, 0.0);
+	int waterFlag = -1;
+	vector tcLoc = xsVectorSet(0.0, 0.0, 0.0);
+	vector flagLoc = xsVectorSet(0.0, 0.0, 0.0);
+	for (i = 1; <= cNumberNonGaiaPlayers)
+	{
+		waterFlag = rmCreateObjectDef("water flag " + i);
+		rmAddObjectDefItem(waterFlag, "HomeCityWaterSpawnFlag", 1, 1.0);
+		rmAddClosestPointConstraint(flagLand);
+		rmAddClosestPointConstraint(flagVsFlag);
+		rmAddClosestPointConstraint(flagVsFerry);
+		rmAddClosestPointConstraint(flagVsBridge);
+		rmAddClosestPointConstraint(flagBox);
+		tcLoc = xsVectorSet(rmXFractionToMeters(rmPlayerLocXFraction(i)), 0.0, rmZFractionToMeters(rmPlayerLocZFraction(i)));
+		flagLoc = rmFindClosestPointVector(tcLoc, rmXFractionToMeters(1.0));
+		rmPlaceObjectDefAtLoc(waterFlag, i, rmXMetersToFraction(xsVectorGetX(flagLoc)), rmZMetersToFraction(xsVectorGetZ(flagLoc)));
+		rmEchoInfo("LONDON water flag " + i + " at " + xsVectorGetX(flagLoc) + " / " + xsVectorGetZ(flagLoc) + " m");
+	}
+
 	// 13. TRIGGERS, all at the end (Paris / Istanbul). Ids: object defs = literal unit indices (fix B),
 	//     grouping instances = rmGetGroupingInstanceUnitByType + instanceIdShift; a baked nugget is queried by its
 	//     nuggetmods <nuggetunit>, never by the authored placeholder (Istanbul).

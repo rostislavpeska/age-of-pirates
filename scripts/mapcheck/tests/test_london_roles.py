@@ -970,6 +970,28 @@ class TestNewEnglandGroupings:
         assert 'cityBlock("Academy", "EU_House_Block_Academy");' in t
 
 
+class TestWaterFlags:
+    """12.9 (user 2026-09-23): Elbe's water-flag shape - closest water point to the town centre, off land, off other flags, off the ferry
+    posts and the bridge faces, and a box that keeps every flag west of London Bridge; placed after every literal-indexed unit."""
+
+    def test_elbe_shape_with_the_box(self):
+        t = _code(_text(LONDON)); s = t[t.index('int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 11.0);'):t.index("int instanceIdShift = 3;")]
+        for line in ('int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 30.0);',
+                     'int flagVsFerry = rmCreateTypeDistanceConstraint("flag avoid ferry harbour", "zpOrientalFerry", 40.0);',
+                     'int flagVsBridge = rmCreateTypeDistanceConstraint("flag avoid bridge", "zpBridgeFace", 70.0);',
+                     'int flagBox = rmCreateBoxConstraint("flag west of the bridge", 0.0, 0.0, xRoad - rmXMetersToFraction(30.0), 1.0, 0.0);',
+                     'rmAddObjectDefItem(waterFlag, "HomeCityWaterSpawnFlag", 1, 1.0);',
+                     "tcLoc = xsVectorSet(rmXFractionToMeters(rmPlayerLocXFraction(i)), 0.0, rmZFractionToMeters(rmPlayerLocZFraction(i)));",
+                     "flagLoc = rmFindClosestPointVector(tcLoc, rmXFractionToMeters(1.0));",
+                     "rmPlaceObjectDefAtLoc(waterFlag, i, rmXMetersToFraction(xsVectorGetX(flagLoc)), rmZMetersToFraction(xsVectorGetZ(flagLoc)));"):
+            assert line in s, line
+        for c in ("flagLand", "flagVsFlag", "flagVsFerry", "flagVsBridge", "flagBox"):
+            assert ("rmAddClosestPointConstraint(%s);" % c) in s, c
+        assert s.index("rmAddClosestPointConstraint(flagBox);") < s.index("rmFindClosestPointVector(")
+        assert t.index("rmPlaceObjectDefAtLoc(bridgeRevealer") < t.index('int flagLand = ') and t.index("rmPlaceObjectDefAtLoc(harbourS2GuardDef") < t.index("int flagLand = ")
+        assert LONDON.read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
+
+
 class TestScope:
 
     def test_reserved_columns_take_the_berry_mill(self):
