@@ -848,9 +848,16 @@ class TestBridgeOwnership:
         t = _code(_text(LONDON)); s = t[t.index('rmCreateTrigger("BridgeTowers_Setup");'):t.index('rmCreateTrigger("LondonStartingTechs")')]
         assert chr(10).join(['\trmSwitchToTrigger(rmTriggerID("BridgeTowers_Setup"));', '\trmAddTriggerCondition("Timer ms");', '\trmSetTriggerConditionParamInt("Param1", 10);']) in s
         for var in self.BRIDGE_VARS:
-            assert chr(10).join(['\trmAddTriggerEffect("Socket Build");', '\trmSetTriggerEffectParamInt("PlayerID", 0);', '\trmSetTriggerEffectParam("Socket", "" + %s);' % var,
-                                 '\trmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");']) in s, var
-        assert s.count('rmAddTriggerEffect("Socket Build");') == 4 and "rmSetTriggerActive(true);" in s
+            assert chr(10).join(['\trmAddTriggerEffect("Socket Build");', '\trmSetTriggerEffectParamInt("PlayerID", 1);', '\trmSetTriggerEffectParam("Socket", "" + %s);' % var,
+                                 '\trmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");']) in s, var     # built for player 1: a build for gaia placed nothing (2026-09-22)
+        assert s.count('rmAddTriggerEffect("Socket Build");') == 4 and 'rmSetTriggerEffectParamInt("PlayerID", 0);' not in s
+        conv = chr(10).join(['\trmAddTriggerEffect("Convert Units in Area");', '\trmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);', '\trmSetTriggerEffectParamInt("SrcPlayer", 1);',
+                             '\trmSetTriggerEffectParamInt("TrgPlayer", 0);', '\trmSetTriggerEffectParam("UnitType", "zpSPCCityTowerFlat");', '\trmSetTriggerEffectParamInt("Dist", bridgeSweepM);'])
+        assert s.count(conv) == 2 and s.index(conv) > s.rindex('rmAddTriggerEffect("Socket Build");')          # in the same trigger after the builds, and again in the safety trigger
+        setup = s[:s.index('rmSwitchToTrigger(rmTriggerID("BridgeTowers_Gaia"));')]; gaia = s[s.index('rmSwitchToTrigger(rmTriggerID("BridgeTowers_Gaia"));'):]
+        assert 'rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeTowers_Gaia"));' in setup and setup.count("rmSetTriggerActive(true);") == 1
+        assert '\trmAddTriggerCondition("Timer ms");' + chr(10) + '\trmSetTriggerConditionParamInt("Param1", 2000);' in gaia and gaia.count("rmSetTriggerActive(false);") == 1
+        assert 'rmCreateTrigger("BridgeTowers_Gaia");' in s
         ai = t[t.index('rmCreateTrigger("LondonAI_Plr" + k);'):]
         for n, var in enumerate(self.BRIDGE_VARS, 1):
             tag = "B%d" % n
