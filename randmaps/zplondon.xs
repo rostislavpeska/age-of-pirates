@@ -1456,7 +1456,7 @@ void main(void)
 	rmSetObjectDefMinDistance(areaTC, 0.0);
 	rmSetObjectDefMaxDistance(areaTC, 0.0);
 	int areaMine = rmCreateObjectDef("strip seat coal");
-	rmAddObjectDefItem(areaMine, "deMineCoalBuildable", 2, 5.0);
+	rmAddObjectDefItem(areaMine, "deMineCoalBuildable", 1, 0.0);   // ONE per placement, placed twice per seat: two 6 m buildings never fit one 5 m disc (the game 2026-09-22: no mine spawned)
 	rmSetObjectDefMinDistance(areaMine, 0.0);
 	rmSetObjectDefMaxDistance(areaMine, 3.0);
 	int areaBerry = rmCreateObjectDef("strip seat berries");
@@ -1499,8 +1499,8 @@ void main(void)
 		}
 		if (areaSeat == 1)
 		{
-			// the seat block's kit laid out the same way for every seat: the Town Center on the seat, the coal and the
-			// berries 16 m on the city side, the treasure 32 m on the city side, the deer 22 m and two tree clumps 32 m on
+			// the seat block's kit laid out the same way for every seat: the Town Center on the seat, the two coal mines 12 m
+			// either side of it and the berries between them, 18 m on the city side, the treasure 32 m on the city side, the deer 22 m and two tree clumps 32 m on
 			// the wall side (the strip is 96 m deep, 48 m either side of the seat, the outer 4 m the sidewalk - the clumps'
 			// 9 m radius ends at 41 m, on the grass; user 2026-09-22); outZ points away from the river
 			float seatX = rmPlayerLocXFraction(i);
@@ -1509,8 +1509,9 @@ void main(void)
 			if (seatZ < 0.5)
 				outZ = -1.0;
 			rmPlaceObjectDefAtLoc(areaTC, i, seatX, seatZ);
-			rmPlaceObjectDefAtLoc(areaMine, i, seatX + rmXMetersToFraction(8.0), seatZ - outZ * rmZMetersToFraction(16.0));   // the player's own starting coal mines (user 2026-09-22) - a Building-class mine, owned as the block's are
-			rmPlaceObjectDefAtLoc(areaBerry, 0, seatX - rmXMetersToFraction(8.0), seatZ - outZ * rmZMetersToFraction(16.0));
+			rmPlaceObjectDefAtLoc(areaMine, i, seatX + rmXMetersToFraction(12.0), seatZ - outZ * rmZMetersToFraction(18.0));   // the player's own starting coal mines (user 2026-09-22) - a Building-class mine, owned as the block's are
+			rmPlaceObjectDefAtLoc(areaMine, i, seatX - rmXMetersToFraction(12.0), seatZ - outZ * rmZMetersToFraction(18.0));
+			rmPlaceObjectDefAtLoc(areaBerry, 0, seatX, seatZ - outZ * rmZMetersToFraction(18.0));
 			rmPlaceObjectDefAtLoc(areaNugget, 0, seatX, seatZ - outZ * rmZMetersToFraction(32.0));
 			rmPlaceObjectDefAtLoc(areaDeer, 0, seatX, seatZ + outZ * rmZMetersToFraction(22.0));
 			rmPlaceObjectDefAtLoc(areaTrees, 0, seatX - rmXMetersToFraction(10.0), seatZ + outZ * rmZMetersToFraction(32.0));

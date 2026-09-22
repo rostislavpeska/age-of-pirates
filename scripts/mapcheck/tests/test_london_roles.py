@@ -332,7 +332,7 @@ class TestStripSeats:
         t = _code(_text(LONDON))
         defs = t[t.index('int areaTC = rmCreateObjectDef("strip seat town center");'):t.index("rmSetNuggetDifficulty(1, 1);")]
         items = re.findall(r'rmAddObjectDefItem\((\w+), (.*?)\);', defs)
-        assert items == [("areaTC", '"TownCenter", 1, 0.0'), ("areaMine", '"deMineCoalBuildable", 2, 5.0'), ("areaBerry", '"BerryBush", 6, 4.0'), ("areaDeer", '"Deer", 11, 6.0'),
+        assert items == [("areaTC", '"TownCenter", 1, 0.0'), ("areaMine", '"deMineCoalBuildable", 1, 0.0'), ("areaBerry", '"BerryBush", 6, 4.0'), ("areaDeer", '"Deer", 11, 6.0'),
                          ("areaTrees", '"TreeNewEngland", 14, 9.0'), ("areaTrees", '"TreeGreatLakes", 14, 9.0'), ("areaTrees", '"UnderbrushForest", 8, 8.0'), ("areaNugget", '"Nugget", 1, 0.0')]
         assert "rmSetObjectDefCreateHerd(areaDeer, true);" in defs and 'rmAddObjectDefToClass(areaTrees, rmClassID("classForest"));' in defs
         assert "rmSetObjectDefMaxDistance(areaTC, 0.0);" in defs and defs.count("rmSetObjectDefMaxDistance(") == 6
@@ -344,8 +344,9 @@ class TestStripSeats:
         a = loop[loop.index("if (areaSeat == 1)"):loop.index("if (seatsByRole == 0)")]
         places = re.findall(r"rmPlaceObjectDefAtLoc\((\w+), (\w+), (.*?)\);", a)
         assert places == [("areaTC", "i", "seatX, seatZ"),
-                          ("areaMine", "i", "seatX + rmXMetersToFraction(8.0), seatZ - outZ * rmZMetersToFraction(16.0)"),
-                          ("areaBerry", "0", "seatX - rmXMetersToFraction(8.0), seatZ - outZ * rmZMetersToFraction(16.0)"),
+                          ("areaMine", "i", "seatX + rmXMetersToFraction(12.0), seatZ - outZ * rmZMetersToFraction(18.0)"),
+                          ("areaMine", "i", "seatX - rmXMetersToFraction(12.0), seatZ - outZ * rmZMetersToFraction(18.0)"),
+                          ("areaBerry", "0", "seatX, seatZ - outZ * rmZMetersToFraction(18.0)"),
                           ("areaNugget", "0", "seatX, seatZ - outZ * rmZMetersToFraction(32.0)"),
                           ("areaDeer", "0", "seatX, seatZ + outZ * rmZMetersToFraction(22.0)"),
                           ("areaTrees", "0", "seatX - rmXMetersToFraction(10.0), seatZ + outZ * rmZMetersToFraction(32.0)"),
