@@ -60,6 +60,8 @@ class TestStartingTechsByTeam:
             assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">zpMilitaryCamp<', b) and 'proto="zpMilitaryCamp" page="6" column="2"' in b
             assert '<effect type="Data" amount="250.00" subtype="PopulationCap" relativity="Absolute">' in b     # Istanbul's zpBosporusMapSetup
             assert '<effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>' in b
+            for tech in ("DESPCPapalLegate", "DESPCExcommunication", "DESPCBankLoan", "DESPCMercenaryBounties"):     # Versailles / Paris: the Metropolitan cathedral and the bank techs
+                assert ('<effect type="TechStatus" status="obtainable">%s</effect>' % tech) in b, tech
         s = _text(REPO / "data/techtreemods.xml")
         assert s.index('name="zpLondonDefenderSetup"') < s.index("<!--TEST TECHS-->") and 'name="zpLondonSetup"' in s     # the old setup stays, unreferenced
 
