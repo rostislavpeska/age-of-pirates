@@ -581,12 +581,20 @@ class TestVictory:
         t = _code(_text(LONDON)); v = t[t.index("rmObjectiveScreenSetTitle(503557);"):t.index('rmCreateTrigger("LondonStartingTechs")')]
         for line in ("rmObjectiveScreenSetGoal(503558);", "rmObjectiveAdd(503559, 502023, true, true, true);", "rmObjectiveSetTeam(1, 1);",
                      "rmObjectiveAdd(503560, 502023, true, true, true);", "rmObjectiveSetTeam(2, 2);", "int victoryCountDown = 480;",
-                     'rmCreateTrigger("TeamVictory" + i);', 'rmCreateTrigger("Towers_ON" + i);', 'rmCreateTrigger("Victory_Counter" + i);', 'rmCreateTrigger("Victory_Counter_OFF" + i);',
+                     'rmCreateTrigger("TeamVictory" + i);', 'rmCreateTrigger("Victory_Counter" + i);', 'rmCreateTrigger("Victory_Counter_OFF" + i);',
                      'rmAddTriggerEffect("Team Victory");', 'rmSetTriggerConditionParam("Protounit", "zpSPCCapturableFlagNoIcon");',
                      'rmSetTriggerConditionParamInt("Count", 2);', 'rmAddTriggerEffect("Counter:Add Timer");', 'rmSetTriggerEffectParamInt("Start", victoryCountDown);',
                      'rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory" + i));', 'rmAddTriggerEffect("Counter Stop");', 'rmSetTriggerEffectParam("Msg", "{503561}");', 'rmSetTriggerEffectParam("Msg", "{503562}");'):
             assert line in v, line
         assert v.count('rmSetTriggerConditionParam("Protounit", "zpSPCCapturableFlagNoIcon");') == 2 and 'rmSetTriggerConditionParam("Op", "<");' in v
+        # 2026-09-22 the persistent flare: no team-count flare trigger (two Towers of one proto ping-pong); the flare fires once per
+        # capture inside 13.3's per-player conversion (Units Owned on the flag), for the capturing player's team, at that Tower
+        assert "Towers_ON" not in t and 'rmSetTriggerConditionParam("Protounit", "zpSPCTowerOfLondon");' not in t
+        conv = t[t.index('rmSwitchToTrigger(rmTriggerID("TowerConvS_Plr" + p));'):t.index('rmSwitchToTrigger(rmTriggerID("TowerSGate1_Rebuilt" + k));')]
+        assert conv.count('rmAddTriggerEffect("Flare Minimap");') == 1 and "if (rmGetPlayerTeam(x) == rmGetPlayerTeam(p))" in conv and "xsVectorGetX(towerSLoc)" in conv
+        assert conv.index('rmAddTriggerEffect("Flare Minimap");') < conv.index('rmTriggerID("TowerConvS_Plr" + q)') and conv.count('rmAddTriggerEffect("Flash Units");') == 1
+        assert t.count('rmAddTriggerEffect("Flare Minimap");') == 2 and t.index("int victoryFlareDuration = 10;") < t.index('rmCreateTrigger("TowerConvS_Plr" + k);')
+        assert t.index("vector towerSLoc = rmGetUnitPosition(towerSBldUnit);") < t.index('rmSwitchToTrigger(rmTriggerID("TowerConvS_Plr" + p));')
         assert 'rmGetGroupingInstanceUnitByType(towerSInst, "zpSPCCapturableFlagNoIcon") + instanceIdShift;' in t and 'rmGetGroupingInstanceUnitByType(towerNInst, "zpSPCCapturableFlagNoIcon") + instanceIdShift;' in t
         for n in ("EU_SPC_London_Tower_01", "EU_SPC_London_Tower_02"):
             w = (REPO / ("game/randmaps/groupings/%s.xml" % n)).read_bytes()

@@ -1823,6 +1823,9 @@ void main(void)
 	// swept proto (the city wall gates) 176 m away.
 	int towerSweepM = 40;
 	int towerGateRebuildM = 15;
+	int victoryFlareDuration = 10;      // Paris socketMinimapFlareDuration
+	vector towerSLoc = rmGetUnitPosition(towerSBldUnit);   // Paris 1966-1968: the flare spot from the building's id
+	vector towerNLoc = rmGetUnitPosition(towerNBldUnit);
 	if (towerSFlagUnit >= 0)
 	{
 		for (k = 1; <= cNumberNonGaiaPlayers)
@@ -1909,6 +1912,19 @@ void main(void)
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerSGate2_Rebuilt" + p));
 			rmAddTriggerEffect("Fire Event");
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerSGate_Rebuilt_Deactivator" + p));
+			for (x = 1; <= cNumberNonGaiaPlayers)
+			{
+				if (rmGetPlayerTeam(x) == rmGetPlayerTeam(p))
+				{
+					rmAddTriggerEffect("Flare Minimap");
+					rmSetTriggerEffectParamInt("PlayerID", x, false);
+					rmSetTriggerEffectParamInt("Duration", victoryFlareDuration, false);
+					rmSetTriggerEffectParam("Position", "" + xsVectorGetX(towerSLoc) + "," + xsVectorGetY(towerSLoc) + "," + xsVectorGetZ(towerSLoc), false);
+					rmSetTriggerEffectParam("Flash", "True", false);
+				}
+			}
+			rmAddTriggerEffect("Flash Units");
+			rmSetTriggerEffectParam("SrcObject", "" + towerSBldUnit, false);
 			for (q = 1; <= cNumberNonGaiaPlayers)
 			{
 				if (q != p)
@@ -2057,6 +2073,19 @@ void main(void)
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerNGate2_Rebuilt" + p));
 			rmAddTriggerEffect("Fire Event");
 			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerNGate_Rebuilt_Deactivator" + p));
+			for (x = 1; <= cNumberNonGaiaPlayers)
+			{
+				if (rmGetPlayerTeam(x) == rmGetPlayerTeam(p))
+				{
+					rmAddTriggerEffect("Flare Minimap");
+					rmSetTriggerEffectParamInt("PlayerID", x, false);
+					rmSetTriggerEffectParamInt("Duration", victoryFlareDuration, false);
+					rmSetTriggerEffectParam("Position", "" + xsVectorGetX(towerNLoc) + "," + xsVectorGetY(towerNLoc) + "," + xsVectorGetZ(towerNLoc), false);
+					rmSetTriggerEffectParam("Flash", "True", false);
+				}
+			}
+			rmAddTriggerEffect("Flash Units");
+			rmSetTriggerEffectParam("SrcObject", "" + towerNBldUnit, false);
 			for (q = 1; <= cNumberNonGaiaPlayers)
 			{
 				if (q != p)
@@ -2124,8 +2153,9 @@ void main(void)
 	// ---- 13.4 VICTORY - Paris's system (zpparis.xs 1873-1883 objectives, 2298-2440 triggers) on the two Towers: the team
 	// that holds BOTH Tower flags (zpSPCCapturableFlagNoIcon, Paris's victory flag, baked in both exports) for
 	// victoryCountDown seconds wins. Objective numbering is Paris's: objective/team 1 = rmGetPlayerTeam 0 = the ATTACKERS
-	// (the Stuart side, 0.5), 2 = the DEFENDERS (Parliament). Both Towers are one proto, so one Towers_ON per team flares
-	// both spots; the per-player conversions and the guard unlock are 13.3 (Istanbul's palace family).
+	// (the Stuart side, 0.5), 2 = the DEFENDERS (Parliament). The capture flares live in 13.3's per-player conversions
+	// (one event per capture): a Paris-style Team Unit Count trigger per proto ping-pongs with two Towers of ONE proto
+	// (2026-09-22, the persistent flare - one Tower per team keeps both teams' conditions true).
 	rmObjectiveScreenSetTitle(503557);
 	rmObjectiveScreenSetGoal(503558);
 	rmObjectiveAdd(503559, 502023, true, true, true);   // ATTACKERS (Stuart)
@@ -2133,13 +2163,9 @@ void main(void)
 	rmObjectiveAdd(503560, 502023, true, true, true);   // DEFENDERS (Parliament)
 	rmObjectiveSetTeam(2, 2);
 	int victoryCountDown = 480;         // Paris: 8 minutes holding every victory building
-	int victoryFlareDuration = 10;      // Paris socketMinimapFlareDuration
-	vector towerSLoc = rmGetUnitPosition(towerSBldUnit);   // Paris 1966-1968: the flare spot from the building's id
-	vector towerNLoc = rmGetUnitPosition(towerNBldUnit);
 	for (i = 1; < cNumberTeams + 1)
 	{
 		rmCreateTrigger("TeamVictory" + i);
-		rmCreateTrigger("Towers_ON" + i);
 		rmCreateTrigger("Victory_Counter" + i);
 		rmCreateTrigger("Victory_Counter_OFF" + i);
 	}
@@ -2151,48 +2177,6 @@ void main(void)
 		rmSetTriggerEffectParamInt("TeamID", i);
 		rmSetTriggerPriority(4);
 		rmSetTriggerActive(false);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
-		// a Tower held: flare both Tower spots for the team, flash the buildings, re-arm the other team's trigger
-		rmSwitchToTrigger(rmTriggerID("Towers_ON" + i));
-		rmAddTriggerCondition("Team Unit Count");
-		rmSetTriggerConditionParamInt("TeamID", i);
-		rmSetTriggerConditionParam("Protounit", "zpSPCTowerOfLondon");
-		rmSetTriggerConditionParam("Op", ">=");
-		rmSetTriggerConditionParamInt("Count", 1);
-		for (x = 1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(x) == i - 1)
-			{
-				rmAddTriggerEffect("Flare Minimap");
-				rmSetTriggerEffectParamInt("PlayerID", x, false);
-				rmSetTriggerEffectParamInt("Duration", victoryFlareDuration, false);
-				rmSetTriggerEffectParam("Position", "" + xsVectorGetX(towerSLoc) + "," + xsVectorGetY(towerSLoc) + "," + xsVectorGetZ(towerSLoc), false);
-				rmSetTriggerEffectParam("Flash", "True", false);
-			}
-		}
-		for (x = 1; <= cNumberNonGaiaPlayers)
-		{
-			if (rmGetPlayerTeam(x) == i - 1)
-			{
-				rmAddTriggerEffect("Flare Minimap");
-				rmSetTriggerEffectParamInt("PlayerID", x, false);
-				rmSetTriggerEffectParamInt("Duration", victoryFlareDuration, false);
-				rmSetTriggerEffectParam("Position", "" + xsVectorGetX(towerNLoc) + "," + xsVectorGetY(towerNLoc) + "," + xsVectorGetZ(towerNLoc), false);
-				rmSetTriggerEffectParam("Flash", "True", false);
-			}
-		}
-		rmAddTriggerEffect("Flash Units");
-		rmSetTriggerEffectParam("SrcObject", "" + towerSBldUnit, false);
-		rmAddTriggerEffect("Flash Units");
-		rmSetTriggerEffectParam("SrcObject", "" + towerNBldUnit, false);
-		rmAddTriggerEffect("Fire Event");
-		if (i == 1)
-			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Towers_ON2"));
-		else
-			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Towers_ON1"));
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(true);
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
 		// the hold: both flags owned by the team -> the countdown to Team Victory; one lost -> stop and re-arm
