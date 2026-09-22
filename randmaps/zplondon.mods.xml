@@ -299,5 +299,13 @@
 			<flag>NoIdleActions</flag>
 			<flag>StartOnNoUpdate</flag>
 		</unit>
+		<!-- no chimney smoke, Paris's GPU rule (user 2026-09-22): zpSPCCityHouse shares zp_native_eu_houses.xml with zpSPCEUHouseProp, the park house
+		     shares hb_villages house.xml with zpSPCVillageHouseProp - the same no-smoke twins -->
+		<unit name="zpSPCCityHouse">
+			<animfile>buildings\native_settlement\zp_native_eu_houses_nosmoke.xml</animfile>
+		</unit>
+		<unit name="zpSPCVillageHousePropB">
+			<animfile>buildings\native_settlement\zp_native_village_houses_nosmoke.xml</animfile>
+		</unit>
 	</protomods>
 </mods>
