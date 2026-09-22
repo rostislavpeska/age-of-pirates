@@ -1,0 +1,33 @@
+{
+  "packagedOn": "2026-09-22",
+  "entries": [
+    {
+      "file": "data_xml_guide.md",
+      "origin": "AoP docs/data_xml_guide.md",
+      "originalSha256": "a7d77b38b5b0cd18325a5511523da9397cf18a6882abb92b90923f450a53e6e2",
+      "packagedSha256": "a4fd2d5bd6082ca963c6eb811cd7f2c212398a9b911322042b95658ef94af866",
+      "scope": "pre-Placement Rules shared reference"
+    },
+    {
+      "file": "rm_commands_reference.md",
+      "origin": "AoP docs/rm_commands_reference.md",
+      "originalSha256": "54991c496f33062720af07385e97142fe0791e639da31722ca324cc549dcdb00",
+      "packagedSha256": "558f2a6d8a6d8a065083f6e728e3b5105d9d0401d85e849b14749a72e34683c7",
+      "scope": "full original text; trailing empty lines removed"
+    },
+    {
+      "file": "ai_reference.xs",
+      "origin": "AoP docs/ai_reference.xs",
+      "originalSha256": "b0b5cfdd27a1feb06bf3af7d1c83a4c666bf851c4b7951630683d9d8086d7615",
+      "packagedSha256": "b0b5cfdd27a1feb06bf3af7d1c83a4c666bf851c4b7951630683d9d8086d7615",
+      "scope": "full original text"
+    },
+    {
+      "file": "command_list.md",
+      "origin": "AoP docs/command_list.md",
+      "originalSha256": "81847201dd18853766accffd7532a41f633c3d95a73341b8e166de56e4ac3f3d",
+      "packagedSha256": "81847201dd18853766accffd7532a41f633c3d95a73341b8e166de56e4ac3f3d",
+      "scope": "full original text"
+    }
+  ]
+}

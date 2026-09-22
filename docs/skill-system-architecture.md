@@ -78,6 +78,150 @@ files. Curate public-safe content in AoP before exporting; keep private addition
 outside those packages. Local-only `skills/gxo-convert/` and
 `scripts/havok/converter.local.json` remain ignored machine setup.
 
+## Resource completeness and reference ownership
+
+A portable skill must carry its required instructions, examples and helper source,
+or declare an available dependency that carries them. A valid `SKILL.md` and a
+successful metadata test do not establish this. Check instructions, referenced
+documents, script imports, data files and transitive dependencies together.
+
+Distinguish four kinds of resource:
+
+| Kind | Where it belongs | What counts as available |
+| --- | --- | --- |
+| Required documentation and helper source | The owning skill's `references/`, `scripts/` or `assets/` | Exists in the exported package; all required local references resolve |
+| Shared reusable knowledge | An explicitly declared companion skill package | Included in the target library and installed with the consuming skill |
+| Consumer data and examples | The consuming mod, with requirements stated in the skill | Supplied by that mod; a named AoP example is not a portable prerequisite |
+| Applications, game archives, licenses and connections | The user's machine or account | Checked for the selected operation using the local-tool procedure below |
+
+Keep one editable source for each reference. When moving a document into a skill,
+update its callers and leave a short forwarding page at its old documentation path
+when needed. Do not maintain two independently editable full copies. Exported
+snapshots in separate repositories remain intentional copies.
+
+Large references should be linked with their purpose and useful search terms, not
+loaded wholesale for every task. Record attribution, source URL when known, document
+date, game/tool version where known, and whether statements are documented,
+measured or unverified. A source that says "all functions" is not proof of coverage
+of the current game build. Preserve third-party attribution and check redistribution
+terms before publication; the repository's MIT license does not establish rights
+to third-party manuals.
+
+### Reference packaging work identified on 2026-09-22
+
+The working AoP library now contains `aoe3de-reference` and `skill-library-audit`.
+The four shared reference texts have one maintained home in the reference package;
+old documentation paths forward there, and AoP-specific XML observations remain
+in the original documentation file. Curated map/trigger and runtime XML summaries
+are included. Neither new package is export-allowlisted. Exports are on hold; the
+reference provenance notes identify unresolved redistribution questions. The table
+below records the resource treatment, including helper extraction still pending.
+
+| Existing AoP resource | Planned reusable treatment |
+| --- | --- |
+| `docs/data_xml_guide.md` | Package XML semantics with provenance; separate AoP occurrence counts, ids and unverified executable observations from portable guidance |
+| `docs/rm_commands_reference.md` | Package the RM function reference; reconcile its coverage claims and retain version limitations |
+| `docs/ai_reference.xs` | Package as reference text, not an executable map; preserve the community attribution and version warning |
+| `docs/command_list.md` | Package UI-command reference with its coverage and provenance limitations |
+| `docs/random_map_generation_guide_v2.md`, `docs/map_trigger_guide.md` | Curate reusable map/trigger guidance; keep AoP deployment paths, factions and worked maps in the AoP layer |
+| `scripts/havok/`, `scripts/mapcheck/`, `scripts/refdata/`, `sandbox/census/` | Follow imports and required data before selecting reusable helpers; do not export whole directories or private artifacts by default |
+
+The current two public AoE3DE packages have their directly linked local resources,
+but the building workflow still needs an explicit GR2 inspection capability for
+its required structural validation. Its converter wrapper checks only the header
+and file size. Do not report complete building validation until the required
+inspector and evidence are available.
+
+## Local application prerequisites
+
+Skills contain procedures and wrapper source; they do not contain installed
+Blender, Photoshop, Resource Manager, the game, GR2 converter binaries, licenses,
+plugins or running MCP servers. Installation, discoverability, connection and
+task readiness are separate facts. Copying a skill does not establish any of them.
+
+Describe prerequisites per operation, including whether an alternative is allowed:
+
+| Operation | Local prerequisites and read-only evidence | Fallback or boundary |
+| --- | --- | --- |
+| Blender geometry/UV work | Installed Blender; supported operator or automation route; confirm version, active file, scene and target objects | Saved-file/background inspection cannot establish live unsaved state |
+| Layered Photoshop edits | Installed/licensed Photoshop when PSD fidelity is required; confirm active document, unsaved state and required layer/export capabilities | An agreed alternative must preserve the source; a flattened image is not a PSD replacement |
+| Painter work | Installed Painter plus a compatible, connected integration if automating; inspect project and texture sets | Use the documented Blender/image-editor fallback only when it fits the requested task |
+| BAR/XMB inspection | Python, installed game archives and any required Python modules; verify paths and a narrow read-only archive listing | Bundled BAR helpers can satisfy this operation without a GUI Resource Manager |
+| Resource Manager workflow | Identify the exact product/version and required format operation, then check its installation and operator/automation route | "Resource Manager" alone is not a sufficient executable or capability specification |
+| FBX to GR2 conversion | Locally installed converter with the wrapper's observed command interface; explicit executable path; verified target profile | A GUI-only/different converter requires its own procedure or manual handoff |
+| GR2 structural inspection | Reader that exposes actual meshes, bones, bindings and bounds for the output format | A converter success code or recognized header is insufficient |
+| Texture validation | The chosen Python interpreter and Pillow for the bundled TGA/DDT validator | Document-only work does not need Photoshop or Blender |
+
+Before an operation that depends on an application:
+
+1. Resolve its location from explicit task input, existing device configuration or
+   the environment. Keep machine paths and connection details out of public skill
+   files. Never store credentials or proprietary binaries in the repository.
+2. Check availability without starting or modifying the application. A discovered
+   path proves presence only. Confirm the exact product/version when relevant;
+   use a documented read-only version probe only if it is safe for that tool.
+3. For live automation, inspect the actually available connector and its read-only
+   session/document state. Do not infer tool availability from an old skill name,
+   a previous machine's setup or an installed application alone.
+4. Establish capability for the selected operation. Record `available`, `missing`,
+   `incompatible`, `unverified`, or `not-required`, with the evidence and blocked
+   step. Absence of an optional tool does not block unrelated work.
+5. Preserve source files and unsaved work before any later mutation. Use a scratch
+   output and a known reference for a needed capability test. Do not run document
+   macros, Blender embedded scripts or arbitrary probe commands during a resource
+   audit. Installation, upgrades and new integrations are separate scoped work,
+   not automatic preflight repairs.
+6. When a prerequisite is missing, continue independent work and report the exact
+   limitation. Use manual export or an already agreed compatible alternative where
+   appropriate. Do not silently replace the requested application or claim a
+   simulated/background result is a live application result.
+
+Local configuration is an input, not proof of compatibility. Generic instructions
+and safe example configuration may be versioned; actual paths and session details
+remain ignored device state. Do not create a second configuration system when a
+working one already exists. Version ranges should reflect tested evidence; where
+none exists, say that compatibility remains unverified.
+
+## Skill-library audit
+
+The [audit skill](../skills/skill-library-audit/SKILL.md) is implemented in AoP.
+It checks resource reachability and reports prerequisites without installing or
+launching applications. Six packages have resource declarations: the four existing
+public-package sources, the reference library and the audit itself. Other AoP
+packages remain explicitly unaudited until their dependencies are declared.
+The public metadata validator is unchanged, and export/CI integration is pending.
+
+The audit accepts a library root and selected skills, and reports separately:
+
+- **Package integrity:** frontmatter; required local files; Markdown file links;
+  referenced script/data resources; declared companion skills and their transitive
+  dependencies; unresolved references and links escaping the installed library.
+- **Dependency declaration coverage:** each maintained public package needs a small
+  machine-readable resource declaration for paths that prose cannot identify
+  reliably, conditional prerequisites and external-tool requirements. Legacy AoP
+  skills without declarations are reported as unaudited, never silently complete.
+- **Machine readiness (optional):** non-executing discovery of configured files,
+  executables and Python distributions; application connections and actual
+  capabilities remain unverified until their read-only session check is performed.
+- **Reference provenance (manual review):** source/version/coverage notes for bundled knowledge;
+  web references listed as unchecked unless a separate network check was requested.
+  An HTTP success is not evidence that a reference is correct or complete.
+
+Use positive fixtures and failure fixtures: deleted reference, missing companion
+skill, transitive missing file, path escape, undeclared dependency, malformed
+declaration, unavailable optional application and missing required application.
+Audit runs must not launch applications, evaluate commands supplied by manifests,
+install dependencies or modify consumer assets. A file-only CI run must work on a
+machine without the game or commercial applications. Report which stages were
+tested; never label the whole workflow ready because static checks pass.
+
+The 21 initial failure/positive fixtures and the six-package static audit pass.
+Machine compatibility and live application connections are not established by them.
+Integrate the checker into export validation and public CI in a later reviewed step. New-package onboarding also needs a tested
+export path: the current synchronizer requires both package directories to exist
+and will not bootstrap a missing public skill. Do not bypass that refusal by copying
+packages manually or deleting synchronization baselines.
+
 ## How agents find the same content
 
 The setup helper creates `.agents/skills` and `.claude/skills` pointing at `skills/`.

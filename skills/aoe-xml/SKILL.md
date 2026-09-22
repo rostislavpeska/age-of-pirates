@@ -76,7 +76,9 @@ and the **`rm-unit-bench`** skill for a new unit/building (offline pre-flight + 
 ## References (read the one you need)
 
 - `references/data-xml.md` - the data files: record families, which twin, id ranges, string sections, mergeMode, the
-  sections of `docs/data_xml_guide.md` to read for attribute semantics.
+  sections of [the shared XML reference](../aoe3de-reference/references/data_xml_guide.md)
+  to read for attribute semantics. AoP-specific placement/nugget/map-override
+  observations remain in `docs/data_xml_guide.md`.
 - `references/art-xml.md` - animfile grammar (components, anims, attachments, logic types, decal, materialvariant),
   `.material` grammar and texture profile, `_snds.xml` grammar and generation rules, path resolution table.
 
@@ -84,4 +86,5 @@ and the **`rm-unit-bench`** skill for a new unit/building (offline pre-flight + 
 
 `bar-extract` (read vanilla, compile XMB), `rm-unit-bench` (see it in game), `mod-deploy-check` (release audit),
 `gr2-granny-edit` / `aoe-building-pipeline` (models and textures), the recipes: `extended-native`, `native-politician`,
-`native-ability-minify`, `add-unit`, `add-building`, `add-tech` (each starts with "Prerequisite: aoe-xml").
+`native-ability-minify`. Separate `add-unit`, `add-building` and `add-tech` packages
+do not currently exist; use this skill and the relevant existing recipe instead.

@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/painter-mcp.md",
+    "references/regions-density.md",
+    "references/sources-seamless.md",
+    "references/uv-ao.md",
+    "scripts/check_tile.py",
+    "scripts/validate_uv.py"
+  ],
+  "skills": [
+    "skill-library-audit"
+  ],
+  "external": [
+    {
+      "id": "blender",
+      "kind": "application",
+      "requiredFor": [
+        "uv-edit"
+      ],
+      "optional": false,
+      "note": "Confirm version, intended scene and a working session or saved-copy inspection route.",
+      "commands": [
+        "blender"
+      ],
+      "modules": [
+        "bpy"
+      ]
+    },
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": [
+        "tile-check",
+        "uv-check"
+      ],
+      "optional": false,
+      "note": "Use the selected interpreter; presence does not establish runtime compatibility.",
+      "commands": [
+        "python",
+        "python3"
+      ]
+    },
+    {
+      "id": "pillow",
+      "kind": "python-package",
+      "requiredFor": [
+        "tile-check"
+      ],
+      "optional": false,
+      "note": "Required in the standalone helper interpreter.",
+      "distribution": "Pillow",
+      "modules": [
+        "PIL"
+      ]
+    },
+    {
+      "id": "numpy",
+      "kind": "python-package",
+      "requiredFor": [
+        "tile-check"
+      ],
+      "optional": false,
+      "note": "Used by the standalone tiling checker.",
+      "distribution": "numpy",
+      "modules": [
+        "numpy"
+      ]
+    },
+    {
+      "id": "photoshop",
+      "kind": "application",
+      "requiredFor": [
+        "photoshop-edit"
+      ],
+      "optional": false,
+      "note": "Required only for the selected Photoshop workflow; confirm layered source and active document."
+    },
+    {
+      "id": "painter",
+      "kind": "application",
+      "requiredFor": [
+        "painter-edit"
+      ],
+      "optional": false,
+      "note": "Only for the selected Painter workflow; inspect project, texture sets and integration capabilities."
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/construction.md",
+    "scripts/audit_mesh.py"
+  ],
+  "skills": [
+    "blender-architecture-texturing",
+    "skill-library-audit"
+  ],
+  "external": [
+    {
+      "id": "blender",
+      "kind": "application",
+      "requiredFor": [
+        "geometry-edit"
+      ],
+      "optional": false,
+      "note": "Confirm version, intended scene and a working session or saved-copy inspection route.",
+      "commands": [
+        "blender"
+      ],
+      "modules": [
+        "bpy"
+      ]
+    }
+  ]
+}

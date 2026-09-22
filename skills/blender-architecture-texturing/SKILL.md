@@ -5,6 +5,23 @@ description: Plans and validates architectural texture regions, texel density, r
 # Architecture texturing
 This is the initial policy/repair baseline. Detailed UV automation requires a later dedicated review with the user; do not present it as settled.
 
+## Local prerequisites
+
+Follow the [local-tool readiness guidance](../skill-library-audit/references/local-tools.md).
+
+UV/material edits need locally installed Blender and a verified route to the
+intended scene. Layered image edits need the selected editor and source document:
+when using Photoshop, confirm its version, active document, unsaved state and the
+required layer/export capabilities through an available read-only connection or
+operator check. Photoshop, its license and its integration are local prerequisites,
+not bundled parts of this skill. Do not silently replace a PSD workflow with flat
+images or install/upgrade an editor or connector during preflight.
+
+The standalone tiling checker needs Python, **NumPy** and **Pillow**; the JSON UV
+validator uses Python's standard library. These offline checks do not establish
+that Blender, Photoshop or Painter is connected. Missing optional Painter support
+does not block Blender-only work; use it only for the selected workflow.
+
 1. Read [regions and density](references/regions-density.md) before unwrapping. Plan semantic regions, not just efficient packing.
 2. Read [sources and seamless textures](references/sources-seamless.md) when acquiring/generating materials. ALWAYS research real ornament. Preserve rich detail through texture/normal relief where silhouettes do not need geometry.
 3. Read [UV repair and AO](references/uv-ao.md) before atlas edits, baking and postproduction. Identify exact faces; preserve unrelated geometry, UVs, materials, normals and pixels. Do not repack an atlas to repair one window.

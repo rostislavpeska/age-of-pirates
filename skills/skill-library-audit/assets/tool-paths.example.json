@@ -1,0 +1,10 @@
+{
+  "tools": {
+    "blender": {"path": ""},
+    "photoshop": {"path": ""},
+    "resource-manager": {"path": ""},
+    "gr2-converter": {"path": ""},
+    "gr2-inspector": {"path": ""},
+    "game-archives": {"path": ""}
+  }
+}

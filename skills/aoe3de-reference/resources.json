@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/ai_reference.xs",
+    "references/command_list.md",
+    "references/data_xml_guide.md",
+    "references/map-trigger-workflow.md",
+    "references/provenance.md",
+    "references/rm_commands_reference.md",
+    "references/runtime-xml.md",
+    "references/sources.json"
+  ],
+  "skills": [],
+  "external": []
+}

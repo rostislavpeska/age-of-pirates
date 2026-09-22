@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "assets/tool-paths.example.json",
+    "references/local-tools.md",
+    "references/resource-contract.md",
+    "scripts/audit_library.py",
+    "tests/test_audit_library.py"
+  ],
+  "skills": [],
+  "external": [
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": [
+        "audit"
+      ],
+      "optional": false,
+      "note": "Use the selected interpreter; presence does not establish runtime compatibility.",
+      "commands": [
+        "python",
+        "python3"
+      ]
+    }
+  ]
+}

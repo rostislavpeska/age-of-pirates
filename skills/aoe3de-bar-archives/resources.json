@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "references/commands.md",
+    "scripts/bartool.py",
+    "scripts/xmbc.py"
+  ],
+  "skills": [
+    "skill-library-audit"
+  ],
+  "external": [
+    {
+      "id": "python",
+      "kind": "executable",
+      "requiredFor": [
+        "archive-read",
+        "xml-check",
+        "xmb-build"
+      ],
+      "optional": false,
+      "note": "Use the selected interpreter; presence does not establish runtime compatibility.",
+      "commands": [
+        "python",
+        "python3"
+      ]
+    },
+    {
+      "id": "lz4",
+      "kind": "python-package",
+      "requiredFor": [
+        "xmb-build"
+      ],
+      "optional": false,
+      "note": "Required for compressed XMB output; archive reader has its own fallback.",
+      "distribution": "lz4",
+      "modules": [
+        "lz4"
+      ]
+    },
+    {
+      "id": "game-archives",
+      "kind": "directory",
+      "requiredFor": [
+        "archive-read"
+      ],
+      "optional": false,
+      "note": "Readable installed game archives; auto-detection may need explicit AOE3DE_GAME.",
+      "environment": "AOE3DE_GAME"
+    },
+    {
+      "id": "resource-manager",
+      "kind": "application",
+      "requiredFor": [
+        "resource-manager"
+      ],
+      "optional": false,
+      "note": "Only for an explicitly selected GUI workflow; identify exact product and format capability."
+    }
+  ]
+}

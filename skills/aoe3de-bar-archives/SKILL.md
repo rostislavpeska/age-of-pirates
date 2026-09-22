@@ -19,6 +19,21 @@ Paths above are relative to this skill folder. Set `AOE3DE_GAME` or pass `--game
 
 Read [command and format reference](references/commands.md) for pattern matching, raw output, dependencies and XML/XMB comparison behavior.
 
+## Local prerequisites
+
+Follow the [local-tool readiness guidance](../skill-library-audit/references/local-tools.md).
+
+Use an installed Python interpreter. Archive operations need a readable local game
+installation; `bars` is a read-only discovery check. The Python `lz4` distribution
+is required for compressed XMB output, but optional for archive reading. Inspect
+the selected interpreter's dependencies before building. Missing game archives do
+not prevent checking a supplied XML file.
+
+A GUI Resource Manager is not required by these bundled helpers. If the task calls
+for a specific Resource Manager, identify its product/version and format capability
+before choosing a local automation or manual route. Do not install applications,
+fetch game assets or change the environment as an incidental archive check.
+
 ## Engine and tool rules
 
 - **Tool behavior:** prefer `cat` for inspection because it writes nothing.
