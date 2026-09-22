@@ -4,6 +4,7 @@ census the save and judge spawn / not spawn with explicit criteria.
     python sandbox/census/bench_run.py --peek                          # open the Type dropdown, screenshot it, stop
     python sandbox/census/bench_run.py --proto zpSPCLondonBasilica --nav 8,3 --players 2
     python sandbox/census/bench_run.py --proto zpSPCLondonBasilica --nav 8,3 --seed 4242 --json out.json
+    python sandbox/census/bench_run.py --proto zpSPCLondonBasilica --nav 8,3 --dry-run   # print, never touch
 
 Preconditions (the runner checks what it can and stops otherwise):
   - the game is running and the Scenario Editor is open (File menu visible); this runner never
@@ -23,6 +24,11 @@ Verdicts (census = ground truth for SPAWN, screenshot = ground truth for RENDER)
 Reads the census with sandbox/census/census.py; writes the screenshot, the save copy and a JSON
 verdict under sandbox/census/samples/bench/. The screenshot is what a human (or Claude, via the
 Read tool) inspects for "renders / renders wrong / invisible".
+
+--dry-run prints the window, its monitor and every click / key it WOULD make (normalised and pixel
+coordinates) and makes none; no screenshot, no save. Exit 2 without any input event when there is no
+game window. Positions: the 2560x1080 client sheet of census_run.py, normalised through gamewin.py
+so the window may sit on any monitor.
 """
 from __future__ import annotations
 
@@ -39,9 +45,12 @@ from pathlib import Path
 HERE = Path(__file__).parent
 sys.path.insert(0, str(HERE))
 sys.dont_write_bytecode = True
-import game_driver as gd            # noqa: E402
+import gamewin as gw               # noqa: E402
 from census import census          # noqa: E402
 from census_run import C, SCEN_DIR  # noqa: E402  (calibrated 2560x1080 client coordinates)
+
+N = gw.normalise_sheet(C)           # census_run.py:41-49, 2560x1080 client pixels -> 0..1
+ROW_H = C["dd_row_h"] / gw.CALIBRATION[1]   # dropdown row pitch, 31 px of 1080
 
 OUT = HERE / "samples" / "bench"
 DUMP_GLOB = os.path.join(os.environ.get("LOCALAPPDATA", ""), "Temp", "AoE3DE_s*.dmp")
@@ -57,19 +66,19 @@ def newest_dump(since: float):
     return max(dumps, key=os.path.getmtime) if dumps else None
 
 
-def open_dropdown(h):
-    gd.focus(h)
-    gd.click(h, *C["file_menu"]); time.sleep(0.6)
-    gd.click(h, *C["file_new"]); time.sleep(1.0)
-    gd.click(h, *C["type_arrow"]); time.sleep(0.6)
-    gd.drag(h, *C["dd_thumb_top_from"], *C["dd_thumb_top_to"]); time.sleep(0.3)
+def open_dropdown(P):
+    P.focus()
+    P.click(*N["file_menu"], "File"); P.wait(0.6)
+    P.click(*N["file_new"], "New"); P.wait(1.0)
+    P.click(*N["type_arrow"], "Type dropdown arrow"); P.wait(0.6)
+    P.drag(N["dd_thumb_top_from"], N["dd_thumb_top_to"], "dropdown thumb to the top"); P.wait(0.3)
 
 
-def select_row(h, down: int, row: int):
+def select_row(P, down: int, row: int):
     for _ in range(down):
-        gd.click(h, *C["dd_down_arrow"]); time.sleep(0.12)
-    row_y = C["dd_row1"][1] + (row - 1) * C["dd_row_h"]
-    gd.click(h, C["dd_row1"][0], row_y); time.sleep(0.5)
+        P.click(*N["dd_down_arrow"], "dropdown down arrow"); P.wait(0.12)
+    row_y = N["dd_row1"][1] + (row - 1) * ROW_H
+    P.click(N["dd_row1"][0], row_y, f"dropdown row {row}"); P.wait(0.5)
 
 
 def judge(units, proto, control, players, dist, tol=3.0):
@@ -147,16 +156,18 @@ def main(argv=None) -> int:
     ap.add_argument("--wait", type=int, default=30, help="seconds to wait for generation")
     ap.add_argument("--peek", action="store_true", help="only open the dropdown and screenshot it")
     ap.add_argument("--json")
+    ap.add_argument("--dry-run", action="store_true", help="print every click / key, perform none")
     a = ap.parse_args(argv)
-    OUT.mkdir(parents=True, exist_ok=True)
-    h = gd.find_game()
-    if not h:
+    P = gw.open_pilot(a.dry_run)
+    if not P:
         print("GAME NOT FOUND - open the DE Scenario Editor first")
         return 2
+    if not a.dry_run:
+        OUT.mkdir(parents=True, exist_ok=True)
     if a.peek:
-        open_dropdown(h)
+        open_dropdown(P)
         p = OUT / "peek_dropdown.png"
-        gd.shot(h, str(p))
+        P.shot(str(p))
         print(f"dropdown screenshot: {p}  (read it, count down-clicks and the visible row, then pass --nav down,row)")
         return 0
     if not a.proto or not a.nav:
@@ -166,12 +177,21 @@ def main(argv=None) -> int:
     t0 = time.time()
     # the editor's Save As field keeps ~30 characters: keep the tag short and unique
     tag = f"ub_{a.stem[4:]}_s{a.seed}"[:30]
-    open_dropdown(h)
-    select_row(h, down, row)
-    gd.shot(h, str(OUT / f"{tag}_picked.png"))
-    gd.set_field(h, *C["seed_field"], a.seed, width=6)
-    gd.click(h, *C["generate"])
-    time.sleep(a.wait)
+    open_dropdown(P)
+    select_row(P, down, row)
+    P.shot(str(OUT / f"{tag}_picked.png"))
+    P.set_field(*N["seed_field"], a.seed, width=6, label="seed")
+    P.click(*N["generate"], "Generate")
+    P.wait(a.wait, "for the generation")
+    if a.dry_run:
+        P.shot(str(OUT / f"{tag}_generated.png"))
+        P.click(*N["file_menu"], "File"); P.wait(0.6)
+        P.click(*N["file_saveas"], "Save As"); P.wait(1.0)
+        P.set_field(*N["save_name"], tag, width=40, label="save name")
+        P.wait(0.3)
+        P.click(*N["save_button"], "Save"); P.wait(2.5)
+        print(f"DRY then census {SCEN_DIR / (tag + '.age3Yscn')} copied to {OUT}")
+        return 0
     result = {"proto": a.proto, "control": a.control, "stem": a.stem, "seed": a.seed, "players": a.players}
     if not alive():
         d = newest_dump(t0)
@@ -182,15 +202,15 @@ def main(argv=None) -> int:
         _write(a.json, result)
         return 1
     shot = OUT / f"{tag}_generated.png"
-    gd.shot(h, str(shot))
-    gd.click(h, *C["file_menu"]); time.sleep(0.6)
-    gd.click(h, *C["file_saveas"]); time.sleep(1.0)
-    gd.set_field(h, *C["save_name"], tag, width=40)
-    time.sleep(0.3)
-    gd.click(h, *C["save_button"]); time.sleep(2.5)
+    P.shot(str(shot))
+    P.click(*N["file_menu"], "File"); P.wait(0.6)
+    P.click(*N["file_saveas"], "Save As"); P.wait(1.0)
+    P.set_field(*N["save_name"], tag, width=40, label="save name")
+    P.wait(0.3)
+    P.click(*N["save_button"], "Save"); P.wait(2.5)
     src = SCEN_DIR / f"{tag}.age3Yscn"
     if not src.is_file():
-        gd.shot(h, str(OUT / f"{tag}_after_save.png"))
+        P.shot(str(OUT / f"{tag}_after_save.png"))
         result.update(verdict="NO_SAVE", screenshot=str(shot))
         print(f"VERDICT NO_SAVE  (expected {src}; see {OUT / (tag + '_after_save.png')})")
         _write(a.json, result)
