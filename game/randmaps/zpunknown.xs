@@ -252,8 +252,10 @@ void main(void)
 	int subCiv58=-1;
 	int subCiv59=-1;
 	int subCiv60=-1;
+	int subCiv61=-1;
+	int subCiv62=-1;
 
-	if (rmAllocateSubCivs(61) == true)
+	if (rmAllocateSubCivs(63) == true)
 	{
 		subCiv0 = rmGetCivID("Aztecs");
 		subCiv1 = rmGetCivID("Caribs");
@@ -316,6 +318,8 @@ void main(void)
 		subCiv58 = rmGetCivID("zpPrinceElector");
 		subCiv59 = rmGetCivID("zphansakontor");
 		subCiv60 = rmGetCivID("zpCossacks");
+		subCiv61 = rmGetCivID("Sami");
+		subCiv62 = rmGetCivID("Stuart");
 
 		rmSetSubCiv(0, "Aztecs");
 		rmSetSubCiv(1, "Caribs");
@@ -378,6 +382,8 @@ void main(void)
 		rmSetSubCiv(58, "zpPrinceElector");
 		rmSetSubCiv(59, "zphansakontor");
 		rmSetSubCiv(60, "zpCossacks");
+		rmSetSubCiv(61, "Sami");
+		rmSetSubCiv(62, "Stuart");
 	}
 
 	// ============= Base terrain ============= 
@@ -386,6 +392,7 @@ void main(void)
 	int treasureIsle = -1;		// chance to spawn islands in side bay or center lake
 	int carolinaMap = -1;
 	int saguenayMap = -1;
+	int yukonMap = -1;
 	int rockiesMap = -1;
 	int sonoraMap = -1;
 	int californiaMap = -1;
@@ -432,6 +439,9 @@ void main(void)
 	int corsairMerc = -1;
 	int mamaMerc = -1;
 	int mercBohemianKnight = -1;
+	int mercCranequinier = -1;
+	int mercGallowglass = -1;
+	int mercWagon = -1;
 	int mercHussiteWagon = -1;
 	int mercSwissPike = -1;
 	int mercHacka = -1;
@@ -452,6 +462,9 @@ void main(void)
 	int mercLandshark = -1;
 	int mercStrad = -1;
 	int outlawCount = 2;
+	int sailorOutlaw = -1;
+	int qivittoqOutlaw = -1;
+	int harpoonOutlaw = -1;
 	int crabatOutlaw = -1;
 	int hajdukOutlaw = -1;
 	int highwayOutlaw = -1;
@@ -521,11 +534,12 @@ void main(void)
 	string toiletPaper = "";
 	string mineralz = "";
 	string petName1 = "";
+	string petName2 = "";
 	string propz = "";
 	string shineAlight = "";
 
 	float baseTerrain = rmRandFloat(0,1);	// RNG to select biome
-//		baseTerrain = 0.06;		// for testing
+//		baseTerrain = 0.63;		// for testing
 		rmEchoInfo("base terrain = "+baseTerrain);
 	
 	if(baseTerrain <= 0.001)	// trollolo
@@ -989,7 +1003,10 @@ void main(void)
 			critterOneName = "caribou";
 			startingCritterName = "muskOx";
 			treeName = "treeRockiesSnow";
-			petName1 = "PetBear";	
+			if (rmRandFloat(0,1) <= 0.50)
+				petName1 = "deNatHusky";
+			else
+				petName1 = "PetBear";
 		}
 		critterTwoName = "muskOx";
 		livestockName = "cow";
@@ -1343,7 +1360,10 @@ void main(void)
 		toiletPaper = "water";
 		mineralz = "MineGold";	
 		petName1 = "ypPetTibetanMacaque";	
-		propz = "GroundPropsYukon";	
+		if (rmRandFloat(0,1) <= 0.50)
+			propz = "SPCXPBarnCapturable";
+		else
+			propz = "GroundPropsYukon";	
 
 	    if (rmRandFloat(0,1) <= 0.69 && everyoneGetsAWagon == 981)
 		{
@@ -1952,7 +1972,7 @@ void main(void)
 				oceanName = "Danish Coast";
 				pondName = "Danish Shallow";
 				cliffName = "Italian Cliff";
-				startingCritterName = "deer";
+				startingCritterName = "deFeralSheep";
 				shineAlight = "cascade_range_skirmish";		// Rockie_Skirmish
 			}
 			else if (northeastEU == 1)	// lithuania
@@ -2108,9 +2128,9 @@ void main(void)
 			rmTerrainInitialize("pampas\ground5_pam", 0);
 		critterOneName = "deer";
 		critterTwoName = "ypIbex";
-/*		if (rmRandFloat(0,1) <= 0.333)
-			livestockName = "zpDomesticPig";
-		else*/ if (rmRandFloat(0,1) <= 0.50)
+		if (rmRandFloat(0,1) <= 0.333)
+			livestockName = "Pig";
+		else if (rmRandFloat(0,1) <= 0.50)
 			livestockName = "sheep";
 		else
 			livestockName = "cow";
@@ -2118,7 +2138,12 @@ void main(void)
 		whaleName = "MinkeWhale";
 		toiletPaper = "dirt";
 		mineralz = "zpValuableSource";	
-		petName1 = "deNatRoyalHuntsman";	
+		if (northEU == 1)
+			petName1 = "deNatNoaidi";	
+		else if (rmRandFloat(0,1) <= 0.69)
+			petName1 = "deNatRoyalHuntsman";	
+		else
+			petName1 = "deREVChern";	
 		propz = "PropSwan";	
 
 		// set-up tech for outlaws and native skins
@@ -2144,7 +2169,25 @@ void main(void)
 		for(n = 0; < outlawCount) // picks 2 outlaws
 		{
 			rmEchoInfo("choosing outlaws"+n);
-			if (rmRandInt(1,5) == 1 && crabatOutlaw != 1)
+			if (rmRandInt(1,8) == 1 && sailorOutlaw != 1)
+			{
+	    	    rmEnableOutlaw("deSaloonSailor");
+				sailorOutlaw = 1;
+				rmEchoInfo("outlaw is sailor");
+			}
+			else if (rmRandInt(1,7) == 1 && qivittoqOutlaw != 1)
+			{
+	    	    rmEnableOutlaw("deSaloonQivittoq");
+				qivittoqOutlaw = 1;
+				rmEchoInfo("outlaw is qivittoq");
+			}
+			else if (rmRandInt(1,6) == 1 && harpoonOutlaw != 1)
+			{
+	    	    rmEnableOutlaw("deSaloonHarpooner");
+				harpoonOutlaw = 1;
+				rmEchoInfo("outlaw is harpooner");
+			}
+			else if (rmRandInt(1,5) == 1 && crabatOutlaw != 1)
 			{
 	    	    rmEnableOutlaw("deSaloonCrabat");
 				crabatOutlaw = 1;
@@ -2185,7 +2228,25 @@ void main(void)
 			for(n = 0; < mercCount)
 			{
 				rmEchoInfo("choosing mercs"+n);
-				if (rmRandInt(1,20) <= 4 && mercBohemianKnight != 1)
+				if (rmRandInt(1,23) <= 4 && mercGallowglass != 1)
+				{
+   			        rmEnableMerc("deMercGallowglass", -1);
+					mercGallowglass = 1;
+					rmEchoInfo("merc is gallowglass");
+				}
+				else if (rmRandInt(1,22) <= 4 && mercCranequinier != 1)
+				{
+   			        rmEnableMerc("deMercCranequinier", -1);
+					mercCranequinier = 1;
+					rmEchoInfo("merc is Cranequinier");
+				}
+				else if (rmRandInt(1,21) <= 4 && mercWagon != 1)
+				{
+   			        rmEnableMerc("deMercWagon", -1);
+					mercWagon = 1;
+					rmEchoInfo("merc is merc wagon");
+				}
+				else if (rmRandInt(1,20) <= 4 && mercBohemianKnight != 1)
 				{
    			        rmEnableMerc("zpMercBohemianKnight", -1);
 					mercBohemianKnight = 1;
@@ -2388,11 +2449,14 @@ void main(void)
 		oceanName = "ZP Iceland Lake";
 		pondName = "ZP Iceland Lake";
 		cliffName = "ZP Iceland Low";
-		startingCritterName = "caribou";
+		startingCritterName = "Walrus";
 		shineAlight = "spcjc4aflashback";
 		if (floodedLand != 1)
 			rmTerrainInitialize("pampas\ground5_pam", 0);
-		critterOneName = "caribou";
+		if (rmRandFloat(0,1) <= 0.05)
+			critterOneName = "deNatSamiReindeer";
+		else
+			critterOneName = "caribou";
 		critterTwoName = "caribou";
 		livestockName = "sheep";
 		fishName = "FishSalmon";
@@ -2431,7 +2495,25 @@ void main(void)
 		for(n = 0; < outlawCount) // picks 2 outlaws
 		{
 			rmEchoInfo("choosing outlaws"+n);
-			if (rmRandInt(1,5) == 1 && crabatOutlaw != 1)
+			if (rmRandInt(1,8) == 1 && sailorOutlaw != 1)
+			{
+	    	    rmEnableOutlaw("deSaloonSailor");
+				sailorOutlaw = 1;
+				rmEchoInfo("outlaw is sailor");
+			}
+			else if (rmRandInt(1,7) == 1 && qivittoqOutlaw != 1)
+			{
+	    	    rmEnableOutlaw("deSaloonQivittoq");
+				qivittoqOutlaw = 1;
+				rmEchoInfo("outlaw is qivittoq");
+			}
+			else if (rmRandInt(1,6) == 1 && harpoonOutlaw != 1)
+			{
+	    	    rmEnableOutlaw("deSaloonHarpooner");
+				harpoonOutlaw = 1;
+				rmEchoInfo("outlaw is harpooner");
+			}
+			else if (rmRandInt(1,5) == 1 && crabatOutlaw != 1)
 			{
 	    	    rmEnableOutlaw("deSaloonCrabat");
 				crabatOutlaw = 1;
@@ -2472,7 +2554,25 @@ void main(void)
 			for(n = 0; < mercCount)
 			{
 				rmEchoInfo("choosing mercs"+n);
-				if (rmRandInt(1,20) <= 4 && mercBohemianKnight != 1)
+				if (rmRandInt(1,23) <= 4 && mercGallowglass != 1)
+				{
+   			        rmEnableMerc("deMercGallowglass", -1);
+					mercGallowglass = 1;
+					rmEchoInfo("merc is gallowglass");
+				}
+				else if (rmRandInt(1,22) <= 4 && mercCranequinier != 1)
+				{
+   			        rmEnableMerc("deMercCranequinier", -1);
+					mercCranequinier = 1;
+					rmEchoInfo("merc is Cranequinier");
+				}
+				else if (rmRandInt(1,21) <= 4 && mercWagon != 1)
+				{
+   			        rmEnableMerc("deMercWagon", -1);
+					mercWagon = 1;
+					rmEchoInfo("merc is merc wagon");
+				}
+				else if (rmRandInt(1,20) <= 4 && mercBohemianKnight != 1)
 				{
    			        rmEnableMerc("zpMercBohemianKnight", -1);
 					mercBohemianKnight = 1;
@@ -5478,6 +5578,12 @@ void main(void)
 							rmAddObjectDefItem(plateauPropsID, "ypShogunTokugawa", 10, 8.0);
 						else if (rmRandFloat(0,1) <= 0.001)
 							rmAddObjectDefItem(plateauPropsID, "deMercGatlingCamel", 10, 8.0);
+						else if (rmRandFloat(0,1) <= 0.17)
+							rmAddObjectDefItem(plateauPropsID, "deRMWoodCabin", 10, 8.0);
+						else if (euMap == 1)
+							rmAddObjectDefItem(plateauPropsID, "zpGrapeBush", 10, 8.0);
+						else if (oceaniaMap == 1)
+							rmAddObjectDefItem(plateauPropsID, "zpPineapleBush", 10, 8.0);
 						else
 							rmAddObjectDefItem(plateauPropsID, "BerryBush", 10, 8.0);
 					}
@@ -5873,6 +5979,8 @@ void main(void)
 							rmAddObjectDefItem(plateauSidePropsID, "ypShogunTokugawa", 10, 8.0);
 						else if (rmRandFloat(0,1) <= 0.001)
 							rmAddObjectDefItem(plateauSidePropsID, "deMercGatlingCamel", 10, 8.0);
+						else if (rmRandFloat(0,1) <= 0.17)
+							rmAddObjectDefItem(plateauSidePropsID, "deRMWoodCabin", 10, 8.0);
 						else if (euMap == 1)
 							rmAddObjectDefItem(plateauSidePropsID, "zpGrapeBush", 10, 8.0);
 						else if (oceaniaMap == 1)
@@ -6051,6 +6159,8 @@ void main(void)
 						rmAddObjectDefItem(rushMineID, "ypShogunTokugawa", 10, 8.0);
 					else if (rmRandFloat(0,1) <= 0.001)
 						rmAddObjectDefItem(rushMineID, "deMercGatlingCamel", 10, 8.0);
+					else if (rmRandFloat(0,1) <= 0.17)
+						rmAddObjectDefItem(rushMineID, "deRMWoodCabin", 10, 8.0);
 					else if (euMap == 1)
 						rmAddObjectDefItem(rushMineID, "zpGrapeBush", 10, 8.0);
 					else if (oceaniaMap == 1)
@@ -6419,7 +6529,6 @@ void main(void)
 		int rogueAztecTempleID = rmGetGroupingInstanceUnitByType(rogueSiteInstanceID1, "zpSPCAztecMediumTemple");
 		int rogueMosqueID = rmGetGroupingInstanceUnitByType(rogueSiteInstanceID1, "zpSPCIstanbulMosque");
 		int rogueBazaarID = rmGetGroupingInstanceUnitByType(rogueSiteInstanceID1, "zpSPCCityMarketOriental");
-
 
 		// Conversion Suspend
 		rmCreateTrigger("RogueState Convert OFF");
@@ -8128,6 +8237,8 @@ void main(void)
 	int counterEzio = -1;
 	int counterHussite = -1;
 	int counterCossack = -1;
+	int counterSami = -1;
+	int counterStuart = -1;
 	int orthodoxSpawn = -1;	// 1 for north, 2 for south
 	if (rmRandFloat(0,1) <= 0.50)
 	    orthodoxSpawn = 1;
@@ -8376,7 +8487,7 @@ void main(void)
 
 	for(i = 0; <(nativeNumber-aopNativeNumber-pirateNumber-electorNumber))
 	{
-		nativeChance = rmRandFloat(0,0.54);
+		nativeChance = rmRandFloat(0,0.56);
 //			nativeChance = 0.41;		// for testing
 
 		natLocX = rmRandFloat(0.05,0.95);
@@ -8418,7 +8529,7 @@ void main(void)
 		else if(nativeChance < 0.06 && counterPhan < 1)
 		{
 			rmEchoInfo("subCiv"+i+" is Phanar");
-			unknownVillageID = rmCreateGrouping("Phanar village "+i, "european\native eu phanar village italian "+rmRandInt(1,7));
+			unknownVillageID = rmCreateGrouping("Phanar village "+i, "Native_Phanar_Palace_0"+rmRandInt(1,3));
 			counterPhan++;
 		}
 		else if(nativeChance < 0.07 && counterVasa < 1)
@@ -8743,6 +8854,18 @@ void main(void)
 			rmEchoInfo("subCiv"+i+" is Cossacks");
 			unknownVillageID = rmCreateGrouping("Cossacks camp AOP"+i, "Cossack_Camp_0"+rmRandInt(1,5));
 			counterCossack++;
+		}
+		else if(nativeChance < 0.55 && counterSami < 1)
+		{
+			rmEchoInfo("subCiv"+i+" is Sami");
+			unknownVillageID = rmCreateGrouping("sami village "+i, "native sami village "+rmRandInt(1,5));
+			counterSami++;
+		}
+		else if(nativeChance < 0.56 && counterStuart < 1)
+		{
+			rmEchoInfo("subCiv"+i+" is Stuart");
+			unknownVillageID = rmCreateGrouping("stuart village "+i, "ZP_House_Stuart_0"+rmRandInt(1,3));
+			counterStuart++;
 		}
 		else // this is there to still have as much native tps as decided because some can not spawn if you have already 2. Thx Riki.
 		{
@@ -9153,6 +9276,8 @@ void main(void)
 	else
 	{
 		if (rmRandFloat(0,1) <= 0.001)
+		   rmAddObjectDefItem(playerSilverID, "deTradeCrateAll", 1, 0.0);
+		else if (rmRandFloat(0,1) <= 0.001)
 		   rmAddObjectDefItem(playerSilverID, "deFauxMine", 1, 0.0);
 		else if (rmRandFloat(0,1) <= 0.05)
 		   rmAddObjectDefItem(playerSilverID, "zpValuableSource", 2, 3.0);
@@ -9583,7 +9708,7 @@ void main(void)
 			// tech spawns a wagon
 		}
 		else
-		rmAddObjectDefItem(playerWagonID, "deTradingPostWagon", 1, 0.0);
+			rmAddObjectDefItem(playerWagonID, "deTradingPostWagon", 1, 0.0);
 	}
 	else if (everyoneGetsAWagon <= 971)
 	{
@@ -9898,8 +10023,8 @@ void main(void)
 	if (riverWidthController != 1 && riverExists == 1)
 	{
 		if (rmRandFloat(0,1) <= 0.20)
-			whaleSpawner =1;
-		placeWaterFlag =1;
+			whaleSpawner = 1;
+		placeWaterFlag = 1;
 	}
 
 	// Now place all these definitions
@@ -11287,6 +11412,8 @@ void main(void)
 	int bisonID = rmCreateObjectDef("large herds");
    	if (trollMap == 1 || rmRandFloat(0,1) <= 0.0001)
 	{
+	   rmAddObjectDefItem(bisonID, "Walrus", 1, 10.0);
+	   rmAddObjectDefItem(bisonID, "deFeralSheep", 1, 10.0);
 	   rmAddObjectDefItem(bisonID, "zpFeralPig", 1, 10.0);
 	   rmAddObjectDefItem(bisonID, "zpRedNeckedWallaby", 1, 10.0);
 	   rmAddObjectDefItem(bisonID, "zpRedKangaroo", 1, 10.0);
@@ -12159,6 +12286,38 @@ void main(void)
 			rmPlaceObjectDefAtLoc(nuggetWetID, 0, 0.5, 0.5, cNumberNonGaiaPlayers*3);
 			if (oceanRing == 1 || splitIsland == 1)
 				rmPlaceObjectDefAtLoc(nuggetWetID, 0, 0.5, 0.5, cNumberNonGaiaPlayers*3);
+		}
+	}
+	
+	if (frozenLake == 1)
+	{
+		int fishingholecount = 3*cNumberNonGaiaPlayers + 6; 
+
+		for (i= 0; < fishingholecount)
+		{
+			int fishHoleID = rmCreateObjectDef("fishinghole"+i);
+			rmAddObjectDefItem(fishHoleID, "deFishingHole", 1, 0.0);
+			rmSetObjectDefMinDistance(fishHoleID, 0.0);
+			rmSetObjectDefMaxDistance(fishHoleID, rmXFractionToMeters(0.50));
+			rmAddObjectDefConstraint(fishHoleID, fishVsFishID);
+			rmAddObjectDefConstraint(fishHoleID, avoidPiratesShort);
+			rmAddObjectDefConstraint(fishHoleID, avoidNativesShort);
+			rmAddObjectDefConstraint(fishHoleID, avoidElectorsShort);
+//			rmAddObjectDefConstraint(fishHoleID, pondConstraintFish);
+			if (oceanMiddle == 1 && sideBay == 1)
+			{
+				if (i < fishingholecount/2)
+					rmAddObjectDefConstraint(fishHoleID, stayInLake);
+				else
+					rmAddObjectDefConstraint(fishHoleID, stayInBay);
+			}
+			else if (oceanMiddle == 1 && frozenLake == 1)
+					rmAddObjectDefConstraint(fishHoleID, stayInLake);
+			else if (sideBay == 1 && frozenLake == 1)
+					rmAddObjectDefConstraint(fishHoleID, stayInBay);
+			rmAddObjectDefConstraint(fishHoleID, avoidAll);
+			rmAddObjectDefConstraint(fishHoleID, avoidPlayersFar1);
+			rmPlaceObjectDefAtLoc(fishHoleID, 0, 0.5, 0.5, 1);
 		}
 	}
 
@@ -16775,6 +16934,25 @@ void main(void)
 			rmSetTriggerEffectParamInt("PlayerID", i);
 			rmSetTriggerEffectParamInt("Status", 2);
 		}
+	}
+	// extended natives: Inuits, Phanar, Stuart - same idiom as the Maya block above
+	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("Set Tech Status");
+		rmSetTriggerEffectParamInt("TechID", rmGetTechID("zpExtendedInuits"), false);
+		rmSetTriggerEffectParamInt("PlayerID", i);
+		rmSetTriggerEffectParamInt("Status", 2);
+	}
+	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("Set Tech Status");
+		rmSetTriggerEffectParamInt("TechID", rmGetTechID("zpExtendedPhanar"), false);
+		rmSetTriggerEffectParamInt("PlayerID", i);
+		rmSetTriggerEffectParamInt("Status", 2);
+	}
+	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("Set Tech Status");
+		rmSetTriggerEffectParamInt("TechID", rmGetTechID("zpExtendedStuart"), false);
+		rmSetTriggerEffectParamInt("PlayerID", i);
+		rmSetTriggerEffectParamInt("Status", 2);
 	}
 
 	// Activate a specific type of pirate tiggers
