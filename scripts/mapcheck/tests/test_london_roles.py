@@ -244,9 +244,9 @@ class TestSeats:
         assert fb.count("blockParliament2") == 2 and "rmPlaceGroupingAtLoc(blockParliament2, 0, (xRoad + 0.5) * 0.5, locZdOut);" in fb
         assert fb.count("blockStuart2") == 2 and "rmPlaceGroupingAtLoc(blockStuart2, 0, (xRoad + 0.5) * 0.5, locZaOut);" in fb and "rmPlaceGroupingAtLoc(blockStuart2, 0, (0.5 + xGateMirror) * 0.5, locZaOut);" in fb   # more than four per side: two, both outside
         w = (REPO / "game/randmaps/groupings/EU_Native_Block_Stuart_02.xml").read_bytes()
-        assert w.count(b"zpSPCSocketStuart") == 1 and b"<width>16</width>" in w and w == (STEAM / "groupings/EU_Native_Block_Stuart_02.xml").read_bytes()
+        assert w.count(b"zpSPCSocketStuart") == 1 and b"<width>16</width>" in w
         w2 = (REPO / "game/randmaps/groupings/EU_Native_Block_Parlam_02.xml").read_bytes()
-        assert w2.count(b"zpSocketParliament") == 1 and b"<width>15</width>" in w2 and w2 == (STEAM / "groupings/EU_Native_Block_Parlam_02.xml").read_bytes()
+        assert w2.count(b"zpSocketParliament") == 1 and b"<width>15</width>" in w2
         s = self._sec(); assert "rmSetGroupingMaxDistance(blockParliament2, 0.00);" in s and "float parl2OffXM = " in s and "float locZdOut = wallS - rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);" in s
 
     def test_fallback_fills_all_eight_spots(self):
@@ -256,8 +256,7 @@ class TestSeats:
         assert fills == [(x, z) for z in ("locZdSeat", "locZaSeat") for x in ("locX78", "locX34", "locX56", "locX12")]
         w = (REPO / "game/randmaps/groupings/EU_SPC_Prop_Block.xml").read_text(encoding="utf-8")
         assert "<width>30</width>" in w and "<height>45</height>" in w and "TownCenter" not in w and "Nugget" not in w
-        assert (REPO / "game/randmaps/groupings/EU_SPC_Prop_Block.xml").read_bytes() == (STEAM / "groupings/EU_SPC_Prop_Block.xml").read_bytes()
-        assert (REPO / "game/randmaps/groupings/EU_SPC_Park_big_02.xml").read_bytes() == (STEAM / "groupings/EU_SPC_Park_big_02.xml").read_bytes()
+        # no Steam-root copies: Game/RandMaps/groupings is vanilla-only (user rule 2026-09-22, rm-groupings-deploy)
 
     def test_seated_players_get_the_block_not_the_command_post(self):
         t = _code(_text(LONDON))
@@ -471,7 +470,6 @@ class TestGateOrder:
     def test_bridge_export_carries_invisible_gate_sockets(self):
         b = (REPO / "game/randmaps/groupings/EU_SPC_London_Bridge.xml").read_bytes()
         assert b.count(b">zpInvisibleGateSocket</unit>") == 2 and b"SPCFortGate" not in b and b"zpSPCWaterSpawnPoint" not in b and b"<heights>" in b
-        assert b == (STEAM / "groupings/EU_SPC_London_Bridge.xml").read_bytes()
         assert (REPO / "sandbox/backups/groupings/EU_SPC_London_Bridge_2026-09-21_waterspawn_placeholders.xml").is_file()
 
 
