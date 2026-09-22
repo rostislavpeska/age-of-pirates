@@ -1589,6 +1589,13 @@ void main(void)
 	rmEchoInfo("countryside rim: pie radius " + rimRadiusM + " m (corner chamfer " + rimCornerM + " m), frame box 8 m");
 
 	// ============================================================================================
+	// ---- 12.8 THE BRIDGE REVEALER (King of Bohemia 374-379: zpCinematicRevealerToAll, gaia's, reveals to every player) at
+	// the bridge's origin, placed LAST among the placements so no literal index moves; zplondon.mods.xml lifts its los
+	// 30 -> 60 (Bohemia lifts its revealer to 90 the same way).
+	int bridgeRevealer = rmCreateObjectDef("bridge revealer");
+	rmAddObjectDefItem(bridgeRevealer, "zpCinematicRevealerToAll", 1, 0.0);
+	rmPlaceObjectDefAtLoc(bridgeRevealer, 0, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ), 1);
+
 	// 13. TRIGGERS, all at the end (Paris / Istanbul). Ids: object defs = literal unit indices (fix B),
 	//     grouping instances = rmGetGroupingInstanceUnitByType + instanceIdShift; a baked nugget is queried by its
 	//     nuggetmods <nuggetunit>, never by the authored placeholder (Istanbul).

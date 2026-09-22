@@ -788,6 +788,14 @@ class TestBridgeOwnership:
         for f in ("data/protomods.xml", "data/techtreemods.xml"):
             assert (REPO / (f + ".xmb")).stat().st_mtime >= (REPO / f).stat().st_mtime, f
 
+    def test_bridge_revealer_for_all_placed_last(self):
+        t = _code(_text(LONDON))
+        seg = chr(10).join(['\tint bridgeRevealer = rmCreateObjectDef("bridge revealer");', '\trmAddObjectDefItem(bridgeRevealer, "zpCinematicRevealerToAll", 1, 0.0);',
+                            "\trmPlaceObjectDefAtLoc(bridgeRevealer, 0, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ), 1);"])
+        assert t.count(seg) == 1 and t.index("rmPlaceObjectDefAtLoc(harbourS2GuardDef") < t.index(seg) < t.index("int instanceIdShift = 3;")   # gaia's, Bohemia 374-379, after every literal-indexed unit
+        lm = _text(REPO / "randmaps/zplondon.mods.xml")
+        assert re.search(r'<unit name="zpCinematicRevealerToAll">\s*<los>60</los>\s*</unit>', lm)
+
     def test_bridge_marker_ids_and_guard_shift(self):
         t = re.sub(r"[ " + chr(92) + "t]+//[^" + chr(92) + "n]*", "", _code(_text(LONDON)))
         seg = chr(10).join(["\tint bridgeInst = placeIsland(londonBridge, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ));",

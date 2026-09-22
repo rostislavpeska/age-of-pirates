@@ -225,5 +225,9 @@
 		<unit name="deSPCCityTower">
 			<flag mergeMode="remove">FlattenGround</flag>
 		</unit>
+		<!-- the bridge revealer sees the whole crossing (King of Bohemia lifts its revealer to 90 the same way) -->
+		<unit name="zpCinematicRevealerToAll">
+			<los>60</los>
+		</unit>
 	</protomods>
 </mods>
