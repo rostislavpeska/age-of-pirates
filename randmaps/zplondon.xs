@@ -1448,7 +1448,8 @@ void main(void)
 	rmAddObjectDefItem(aiStartUrban, "zpAIStartUrbanMap", 1, 0.0);
 	// the grass strip's kit (five and more per side, user 2026-09-22): the seat block's own protos and counts
 	// (EU_SPC_Player_London: TownCenter 1, deMineCoalBuildable 2, BerryBush 6, Deer 11, TreeNewEngland / TreeGreatLakes /
-	// UnderbrushForest, one Nugget - level 1 through the latch below), the Town Center pinned on the seat, the rest with
+	// UnderbrushForest, one Nugget - level 1 through the latch below), the Town Center pinned on the seat, the coal mines the
+	// player's own (deMineCoalBuildable is a Building, owned by the seat's player as the block's are), the rest gaia with
 	// 3 m of slack around their spots; the Town Center goes with the starting units as on Black Sea (zpblacksea.xs 949-955)
 	int areaTC = rmCreateObjectDef("strip seat town center");
 	rmAddObjectDefItem(areaTC, "TownCenter", 1, 0.0);
@@ -1508,7 +1509,7 @@ void main(void)
 			if (seatZ < 0.5)
 				outZ = -1.0;
 			rmPlaceObjectDefAtLoc(areaTC, i, seatX, seatZ);
-			rmPlaceObjectDefAtLoc(areaMine, 0, seatX + rmXMetersToFraction(8.0), seatZ - outZ * rmZMetersToFraction(16.0));
+			rmPlaceObjectDefAtLoc(areaMine, i, seatX + rmXMetersToFraction(8.0), seatZ - outZ * rmZMetersToFraction(16.0));   // the player's own starting coal mines (user 2026-09-22) - a Building-class mine, owned as the block's are
 			rmPlaceObjectDefAtLoc(areaBerry, 0, seatX - rmXMetersToFraction(8.0), seatZ - outZ * rmZMetersToFraction(16.0));
 			rmPlaceObjectDefAtLoc(areaNugget, 0, seatX, seatZ - outZ * rmZMetersToFraction(32.0));
 			rmPlaceObjectDefAtLoc(areaDeer, 0, seatX, seatZ + outZ * rmZMetersToFraction(22.0));

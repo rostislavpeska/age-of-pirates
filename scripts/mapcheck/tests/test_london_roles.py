@@ -344,7 +344,7 @@ class TestStripSeats:
         a = loop[loop.index("if (areaSeat == 1)"):loop.index("if (seatsByRole == 0)")]
         places = re.findall(r"rmPlaceObjectDefAtLoc\((\w+), (\w+), (.*?)\);", a)
         assert places == [("areaTC", "i", "seatX, seatZ"),
-                          ("areaMine", "0", "seatX + rmXMetersToFraction(8.0), seatZ - outZ * rmZMetersToFraction(16.0)"),
+                          ("areaMine", "i", "seatX + rmXMetersToFraction(8.0), seatZ - outZ * rmZMetersToFraction(16.0)"),
                           ("areaBerry", "0", "seatX - rmXMetersToFraction(8.0), seatZ - outZ * rmZMetersToFraction(16.0)"),
                           ("areaNugget", "0", "seatX, seatZ - outZ * rmZMetersToFraction(32.0)"),
                           ("areaDeer", "0", "seatX, seatZ + outZ * rmZMetersToFraction(22.0)"),
