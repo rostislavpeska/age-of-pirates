@@ -498,7 +498,7 @@ void main(void)
 	float laneLegM = 16.0;              // the nautical U: legs this far off the river centre
 	float laneTurnFromRoadM = 80.0;     // the U's turn this far west of the road (in front of row 3; 60 m clear of the bridge)
 	float eyotLenFrac  = 0.33;          // the eyot (4.1) runs from the west map edge this far along the lane's leg
-	float eyotClearM   = 7.0;           // off both lane legs (rmCreateTradeRouteDistanceConstraint) - the box uses the same clearance
+	float eyotClearM   = 9.0;           // off both lane legs (7 -> 9, user 2026-09-23) (rmCreateTradeRouteDistanceConstraint) - the box uses the same clearance
 	float eyotHeightM  = 1.0;           // the quays' height
 	int   harbourGuardDifficulty = 101; // nuggets.xml euNuggetCapturable2: the vanilla European trade-route post guard (ypNuggetTradingPost + four deGuardianMusketeer, maptype westEurope) - zpelbe.xs uses it the same way
 	float harbourGuardInM = 2.5;        // the guard nugget this far INTO the city off the bank's quay wall line = the middle of the 5 m promenade, at the harbour's x (behind the harbour building)
