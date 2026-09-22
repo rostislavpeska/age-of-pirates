@@ -497,6 +497,10 @@ void main(void)
 	// T5. handles and laws
 	float laneLegM = 16.0;              // the nautical U: legs this far off the river centre
 	float laneTurnFromRoadM = 80.0;     // the U's turn this far west of the road (in front of row 3; 60 m clear of the bridge)
+	float eyotLenFrac  = 0.33;          // the eyot (4.1) runs from the west map edge this far along the lane's leg
+	float eyotWidthM   = 14.0;          // its ask across the river: the legs are 2 x laneLegM apart, eyotClearM off each = 18 m at most
+	float eyotClearM   = 7.0;           // off both lane legs (rmCreateTradeRouteDistanceConstraint) - the box uses the same clearance
+	float eyotHeightM  = 1.0;           // the quays' height
 	int   harbourGuardDifficulty = 101; // nuggets.xml euNuggetCapturable2: the vanilla European trade-route post guard (ypNuggetTradingPost + four deGuardianMusketeer, maptype westEurope) - zpelbe.xs uses it the same way
 	float harbourGuardInM = 2.5;        // the guard nugget this far INTO the city off the bank's quay wall line = the middle of the 5 m promenade, at the harbour's x (behind the harbour building)
 	float harbourGuardSearchM = 3.0;    // ... and the search radius around that spot: stays on the promenade (6 m let it wander off the harbour - user 2026-09-18)
@@ -710,6 +714,31 @@ void main(void)
 	rmRiverAddWaypoint(riverMain, 0.0, rmXMetersToFraction(rmZFractionToMeters(zRiver)));
 	rmRiverAddWaypoint(riverMain, 1.0, rmXMetersToFraction(rmZFractionToMeters(zRiver)));
 	rmRiverBuild(riverMain);
+
+	// ---- 4.1 THE EYOT (user 2026-09-23): a narrow island INSIDE the lane's U - from the west map edge to eyotLenFrac of the
+	// leg, boxed to the legs' inside less the clearance and kept off both legs by the trade-route constraint (Elbe's islands,
+	// zpelbe.xs 487-503: coherence 1, height blend 2, smooth 6, no world circle); newengland_grass like the lawns, at the
+	// quays' height. The ask (length x width) stays under the box (length x 2 x half) - the area-shape law. An area adds no
+	// unit: the literal indices of 8 hold; the water flags (12.9) keep 8 m off it through flagLand.
+	float eyotLenM = rmXFractionToMeters(laneTurnX) * eyotLenFrac;
+	float eyotHalfM = laneLegM - eyotClearM;
+	float eyotAreaFrac = eyotLenM * eyotWidthM / (rmXFractionToMeters(1.0) * rmZFractionToMeters(1.0));
+	int eyotVsRoutes = rmCreateTradeRouteDistanceConstraint("eyot vs the routes", eyotClearM);
+	int eyotBox = rmCreateBoxConstraint("eyot box", 0.0, zRiver - rmZMetersToFraction(eyotHalfM), rmXMetersToFraction(eyotLenM), zRiver + rmZMetersToFraction(eyotHalfM), 0.0);
+	int eyot = rmCreateArea("the eyot");
+	rmSetAreaSize(eyot, eyotAreaFrac, eyotAreaFrac);
+	rmSetAreaCoherence(eyot, 1.0);
+	rmSetAreaMix(eyot, "newengland_grass");
+	rmSetAreaBaseHeight(eyot, eyotHeightM);
+	rmSetAreaHeightBlend(eyot, 2);
+	rmSetAreaSmoothDistance(eyot, 6);
+	rmSetAreaObeyWorldCircleConstraint(eyot, false);
+	rmAddAreaConstraint(eyot, eyotVsRoutes);
+	rmAddAreaConstraint(eyot, eyotBox);
+	rmAddAreaConstraint(eyot, avoidPlateauShort);
+	rmSetAreaLocation(eyot, rmXMetersToFraction(eyotLenM * 0.5), zRiver);
+	rmBuildArea(eyot);
+	rmEchoInfo("LONDON eyot: " + eyotLenM + " m from the west edge, ask " + eyotWidthM + " m wide, box half " + eyotHalfM + " m, area " + eyotAreaFrac);
 
 	rmSetStatusText("",0.30);
 

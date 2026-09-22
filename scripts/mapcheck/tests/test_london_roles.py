@@ -991,6 +991,26 @@ class TestWaterFlags:
         assert LONDON.read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
 
 
+class TestEyot:
+    """4.1 (user 2026-09-23): a narrow island inside the lane's U from the west edge to a third of the leg, Elbe's island shape,
+    kept off the legs by a trade-route constraint and a box; built right after the river, before any placed unit."""
+
+    def test_shape_and_order(self):
+        t = _code(_text(LONDON)); k = dict(re.findall(r"(?:float |int )?(\w+)\s*=\s*([\w.]+);", t))   # the tunables are column-aligned
+        assert float(k["eyotWidthM"]) < 2 * (float(k["laneLegM"]) - float(k["eyotClearM"]))      # the ask fits between the legs less the clearance
+        assert 0.0 < float(k["eyotLenFrac"]) <= 0.5 and float(k["eyotHeightM"]) == 1.0
+        s = t[t.index("float eyotLenM = rmXFractionToMeters(laneTurnX) * eyotLenFrac;"):t.index("rmBuildArea(eyot);")]
+        for line in ('int eyotVsRoutes = rmCreateTradeRouteDistanceConstraint("eyot vs the routes", eyotClearM);',
+                     'int eyotBox = rmCreateBoxConstraint("eyot box", 0.0, zRiver - rmZMetersToFraction(eyotHalfM), rmXMetersToFraction(eyotLenM), zRiver + rmZMetersToFraction(eyotHalfM), 0.0);',
+                     "rmSetAreaSize(eyot, eyotAreaFrac, eyotAreaFrac);", "rmSetAreaCoherence(eyot, 1.0);", 'rmSetAreaMix(eyot, "newengland_grass");',
+                     "rmSetAreaBaseHeight(eyot, eyotHeightM);", "rmSetAreaObeyWorldCircleConstraint(eyot, false);",
+                     "rmAddAreaConstraint(eyot, eyotVsRoutes);", "rmAddAreaConstraint(eyot, eyotBox);", "rmAddAreaConstraint(eyot, avoidPlateauShort);",
+                     "rmSetAreaLocation(eyot, rmXMetersToFraction(eyotLenM * 0.5), zRiver);"):
+            assert line in s, line
+        assert t.index("rmRiverBuild(riverMain);") < t.index("rmBuildArea(eyot);") < t.index("int harbourN1PostDef")
+        assert LONDON.read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
+
+
 class TestScope:
 
     def test_reserved_columns_take_the_berry_mill(self):
