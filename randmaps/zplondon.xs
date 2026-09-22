@@ -292,9 +292,6 @@ void quaySegment(float x1 = 0.0, float z1 = 0.0, float x2 = 1.0, float z2 = 1.0,
 	rmBuildArea(prom);
 }
 
-// Countryside behind one bank (Paris's area), kept off the plateaus and 2 m off the walls: New England grass
-// (newengland_grass - textures only, no objects table, so no stray stones; user 2026-09-22) on Paris's gentle turbulence
-// (zpparis.xs 501-504: variation 2.0, persistence 0.2, noise bias 1). Returns the area, 12.7 places into it.
 // One flat strip for a side of five and more (user 2026-09-22): the quay's rectangle idiom (box + over-ask + the influence
 // segment along x, coherence 1.0) at the city floor's height 1.0, in TWO LAYERS (user 2026-09-22): the whole box in the
 // groupings' city tiles (the blocks' PassableLand ground), then the New England Grass mix on a box walkM in from every
@@ -325,6 +322,9 @@ void seatStrip(string name = "", float x1 = 0.0, float z1 = 0.0, float x2 = 1.0,
 	rmBuildArea(lawn);
 }
 
+// Countryside behind one bank (Paris's area), kept off the plateaus and 2 m off the walls: New England grass
+// (newengland_grass - textures only, no objects table, so no stray stones; user 2026-09-22) on Paris's gentle turbulence
+// (zpparis.xs 501-504: variation 2.0, persistence 0.2, noise bias 1). Returns the area, 12.7 places into it.
 int countryside(string name = "", float z = 0.5, int constraint = -1, int wallConstraint = -1)
 {
 	int area = rmCreateArea(name);
@@ -649,8 +649,8 @@ void main(void)
 	// own fixed binding (user 2026-09-21: Parliament holds London, the Stuarts come to reclaim it - the King left
 	// Whitehall in January 1642 and his army was turned back at Turnham Green that November). The k-th DEFENDER is
 	// the k-th-lowest player id on team 1, the k-th ATTACKER the same on team 0. The ONE coin, defenderBank, says
-	// WHERE the defenders' city (Minster + Parliament, 10.0) stands; the teams' banks and spawnSwitch (the interim
-	// line placement in 12.3 reads it) follow it, so roles, natives and seats can never disagree.
+	// WHERE the defenders' city (Minster + Parliament, 10.0) stands; the teams' banks and spawnSwitch (echoed below,
+	// unread since the 2-team interim line went on 2026-09-22) follow it, so roles, natives and seats can never disagree.
 	// 2-TEAM LOBBIES ONLY: any other lobby leaves every role at -1 (Florence, Istanbul); nothing may hand a role to
 	// the engine without Istanbul's gaia fallback (if (owner < 0) owner = 0).
 	int defenderBank = rmRandInt(0, 1);   // the landmark coin: 0 = the south bank (wallS), 1 = the north bank (wallN) - 10.0 keys the city on it
@@ -1191,7 +1191,7 @@ void main(void)
 	// seats, houses on rows 5-6, the filler; THREE = three seats and the filler at the road; FOUR = all four seats.
 	// The seats: the first player rows 7-8 (BLUE, the far end), the second rows 3-4 (RED), the third rows 5-6
 	// (YELLOW), the fourth rows 1-2 (PURPLE, at the road). Defenders on the defender bank (10.0's coin), attackers
-	// on the other. FIVE AND MORE per side (user 2026-09-22, the Figma of seven): that bank's reserved columns hold no
+	// on the other. FIVE AND MORE per side (user 2026-09-22, the Figma of seven): that bank's rows 1-8 x cols 4-6 hold no
 	// block at all - one flat grass strip over rows 1-8 x cols 4-6 instead, the team spaced evenly along it, each seat's
 	// kit laid out by hand in the kit loop below. Non-2-team lobbies keep the interim line in 12.3 with Paris's command
 	// posts and the prop filler on all eight spots.
@@ -1234,7 +1234,7 @@ void main(void)
 	// the grass strip (five and more per side, user 2026-09-22): rows 1-8 along x (row 8's far edge to row 1's road edge,
 	// half a 30 m block beyond each centre), the three reserved columns along z (column 3's outer edge to column 6's), keyed
 	// to the bank by the coin below; the seats sit on the strip's centre line (locZdSeat / locZaSeat = column 5) on an
-	// integer tile pitch - the strip's 134 tiles over the head-count, the remainder split to both ends (ints only, law 4)
+	// integer tile pitch - the strip's 134 tiles over the head-count, the remainder halved by int division - an odd tile goes to the road end (ints only, law 4)
 	float stripX1 = locX8 - rmXMetersToFraction(15.0);
 	float stripX2 = locX1 + rmXMetersToFraction(15.0);
 	float stripZd1 = wallS - rmZTilesToFraction(cityDepthTiles);
@@ -1430,8 +1430,9 @@ void main(void)
 	rmEchoInfo("LONDON seats: seatsByRole " + seatsByRole + " defenders x" + defenderCount + " at z " + rmZFractionToMeters(locZdSeat) + " m, attackers x" + attackerCount + " at z " + rmZFractionToMeters(locZaSeat) + " m");
 	rmEchoInfo("LONDON strip seats: pitch " + seatPitchTiles + " tiles (0 = no side of five and more)");
 
-	// ---- 12.3 INTERIM PLACEMENT (Paris's placement transposed onto the z axis), spawnSwitch set in 0.5 from the
-	// landmark coin - the non-2-team lobbies only (user 2026-09-22: every 2-team lobby seats in 12.2, five and more per
+	// ---- 12.3 INTERIM PLACEMENT (Paris's placement transposed onto the z axis) - the non-2-team lobbies only
+	// (user 2026-09-22: every 2-team lobby seats in 12.2, five and more per side on the grass strip; spawnSwitch is
+	// set in 0.5 and echoed there, nothing reads it here any more; every 2-team lobby seats in 12.2, five and more per
 	// side on the grass strip) ------------------------------------------------------------------------------------
 	// z anchored in METRES from the map edge: 36 m for every player count = 24 m beyond the last column's outer edge
 	// (the strip is 60.5 m; Paris's 0.07 / 0.10 fractions of the old frame were 40 / 57 m). Floats only - law 4.
@@ -1473,6 +1474,7 @@ void main(void)
 	rmAddObjectDefItem(areaTrees, "TreeGreatLakes", 14, 9.0);
 	rmAddObjectDefItem(areaTrees, "UnderbrushForest", 8, 8.0);
 	rmAddObjectDefToClass(areaTrees, rmClassID("classForest"));
+	rmAddObjectDefConstraint(areaTrees, avoidTradeRouteRes);   // 8 m off the road: at seven per side the last seat's road-side clump reached the route (verification 2026-09-22)
 	rmSetObjectDefMinDistance(areaTrees, 0.0);
 	rmSetObjectDefMaxDistance(areaTrees, 3.0);
 	int areaNugget = rmCreateObjectDef("strip seat treasure");
