@@ -348,8 +348,8 @@ class TestStripSeats:
                           ("areaBerry", "0", "seatX - rmXMetersToFraction(8.0), seatZ - outZ * rmZMetersToFraction(16.0)"),
                           ("areaNugget", "0", "seatX, seatZ - outZ * rmZMetersToFraction(32.0)"),
                           ("areaDeer", "0", "seatX, seatZ + outZ * rmZMetersToFraction(22.0)"),
-                          ("areaTrees", "0", "seatX - rmXMetersToFraction(10.0), seatZ + outZ * rmZMetersToFraction(38.0)"),
-                          ("areaTrees", "0", "seatX + rmXMetersToFraction(10.0), seatZ + outZ * rmZMetersToFraction(38.0)")]
+                          ("areaTrees", "0", "seatX - rmXMetersToFraction(10.0), seatZ + outZ * rmZMetersToFraction(32.0)"),
+                          ("areaTrees", "0", "seatX + rmXMetersToFraction(10.0), seatZ + outZ * rmZMetersToFraction(32.0)")]
         assert "float outZ = 1.0;" in a and "if (seatZ < 0.5)\n\t\t\t\toutZ = -1.0;" in a
         gate = loop[loop.index("int areaSeat = 0;"):loop.index("if (areaSeat == 1)")]
         assert "if (seatsByRole == 1 && rmGetPlayerTeam(i) == defenderTeam && defenderCount >= 5)\n\t\t\tareaSeat = 1;" in gate

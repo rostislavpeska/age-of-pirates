@@ -1499,8 +1499,9 @@ void main(void)
 		if (areaSeat == 1)
 		{
 			// the seat block's kit laid out the same way for every seat: the Town Center on the seat, the coal and the
-			// berries 16 m on the city side, the treasure 32 m on the city side, the deer 22 m and two tree clumps 38 m on
-			// the wall side (the strip is 96 m deep, 48 m either side of the seat); outZ points away from the river
+			// berries 16 m on the city side, the treasure 32 m on the city side, the deer 22 m and two tree clumps 32 m on
+			// the wall side (the strip is 96 m deep, 48 m either side of the seat, the outer 4 m the sidewalk - the clumps'
+			// 9 m radius ends at 41 m, on the grass; user 2026-09-22); outZ points away from the river
 			float seatX = rmPlayerLocXFraction(i);
 			float seatZ = rmPlayerLocZFraction(i);
 			float outZ = 1.0;
@@ -1511,8 +1512,8 @@ void main(void)
 			rmPlaceObjectDefAtLoc(areaBerry, 0, seatX - rmXMetersToFraction(8.0), seatZ - outZ * rmZMetersToFraction(16.0));
 			rmPlaceObjectDefAtLoc(areaNugget, 0, seatX, seatZ - outZ * rmZMetersToFraction(32.0));
 			rmPlaceObjectDefAtLoc(areaDeer, 0, seatX, seatZ + outZ * rmZMetersToFraction(22.0));
-			rmPlaceObjectDefAtLoc(areaTrees, 0, seatX - rmXMetersToFraction(10.0), seatZ + outZ * rmZMetersToFraction(38.0));
-			rmPlaceObjectDefAtLoc(areaTrees, 0, seatX + rmXMetersToFraction(10.0), seatZ + outZ * rmZMetersToFraction(38.0));
+			rmPlaceObjectDefAtLoc(areaTrees, 0, seatX - rmXMetersToFraction(10.0), seatZ + outZ * rmZMetersToFraction(32.0));
+			rmPlaceObjectDefAtLoc(areaTrees, 0, seatX + rmXMetersToFraction(10.0), seatZ + outZ * rmZMetersToFraction(32.0));
 		}
 		if (seatsByRole == 0)
 		{
