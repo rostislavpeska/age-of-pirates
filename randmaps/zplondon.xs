@@ -296,8 +296,9 @@ void quaySegment(float x1 = 0.0, float z1 = 0.0, float x2 = 1.0, float z2 = 1.0,
 // (newengland_grass - textures only, no objects table, so no stray stones; user 2026-09-22) on Paris's gentle turbulence
 // (zpparis.xs 501-504: variation 2.0, persistence 0.2, noise bias 1). Returns the area, 12.7 places into it.
 // One flat grass strip for a side of five and more (user 2026-09-22): the quay's rectangle idiom (box + over-ask + the
-// influence segment along x, coherence 1.0) at the city floor's height 1.0, painted plain New England ground 3 - the grass
-// the British cliff tops wear; the newengland_grass MIX would scatter its rocks and underbrush through the bases
+// influence segment along x, coherence 1.0) at the city floor's height 1.0, painted with a MIX (user 2026-09-22): italy_path,
+// the driest of the New England-textured mixes (ground2_ne dirt-with-grass x3, ground4_ne bare dirt x2, turbulence) and
+// the only one without rock / underbrush objects - the bases stay clear (newengland_grass and the cliff mixes scatter rocks)
 void seatStrip(string name = "", float x1 = 0.0, float z1 = 0.0, float x2 = 1.0, float z2 = 1.0)
 {
 	int box = rmCreateBoxConstraint(name + " box", x1, z1, x2, z2);
@@ -307,7 +308,7 @@ void seatStrip(string name = "", float x1 = 0.0, float z1 = 0.0, float x2 = 1.0,
 	rmSetAreaCoherence(strip, 1.0);
 	rmSetAreaBaseHeight(strip, 1.0);
 	rmAddAreaInfluenceSegment(strip, x1 + (x2 - x1) * 0.1, (z1 + z2) * 0.5, x2 - (x2 - x1) * 0.1, (z1 + z2) * 0.5);
-	rmSetAreaTerrainType(strip, "new_england\ground3_ne");
+	rmSetAreaMix(strip, "italy_path");
 	rmAddAreaConstraint(strip, box);
 	rmSetAreaObeyWorldCircleConstraint(strip, false);
 	rmBuildArea(strip);

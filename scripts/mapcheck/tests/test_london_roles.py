@@ -282,16 +282,16 @@ class TestStripSeats:
     def _sec(self):
         return _code(_section(_text(LONDON), "// ---- 12.2 SEATS BY ROLE", "// ---- 12.3 INTERIM PLACEMENT"))
 
-    def test_helper_is_the_quays_rectangle_flat_plain_grass(self):
+    def test_helper_is_the_quays_rectangle_flat_dry_mix(self):
         t = _text(LONDON)
         h = _code(t[t.index("void seatStrip("):t.index("int countryside(string name")])
         for line in ('int box = rmCreateBoxConstraint(name + " box", x1, z1, x2, z2);', "rmSetAreaSize(strip, 0.7, 0.7);",
                      "rmSetAreaLocation(strip, (x1 + x2) * 0.5, (z1 + z2) * 0.5);", "rmSetAreaCoherence(strip, 1.0);", "rmSetAreaBaseHeight(strip, 1.0);",
                      "rmAddAreaInfluenceSegment(strip, x1 + (x2 - x1) * 0.1, (z1 + z2) * 0.5, x2 - (x2 - x1) * 0.1, (z1 + z2) * 0.5);",
-                     'rmSetAreaTerrainType(strip, "new_england' + chr(92) + 'ground3_ne");', "rmAddAreaConstraint(strip, box);",
+                     'rmSetAreaMix(strip, "italy_path");', "rmAddAreaConstraint(strip, box);",
                      "rmSetAreaObeyWorldCircleConstraint(strip, false);", "rmBuildArea(strip);"):
             assert line in h, line
-        assert "rmSetAreaMix" not in h and "Elevation" not in h and "CliffType" not in h
+        assert "rmSetAreaTerrainType" not in h and "Elevation" not in h and "CliffType" not in h   # a MIX, the dry italy_path (user 2026-09-22)
         assert t.index("void quaySegment(") < t.index("void seatStrip(") < t.index("int countryside(string name")
 
     def test_strip_box_on_rows_1_to_8_and_the_reserved_columns_keyed_by_the_coin(self):
