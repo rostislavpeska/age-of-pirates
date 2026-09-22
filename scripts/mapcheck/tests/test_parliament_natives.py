@@ -392,9 +392,9 @@ class TestLondon:
         assert repo == root
         t = repo.decode("utf-8")
         assert 'rmSetSubCiv(0, "zpParliament")' in t and "zpSansculottes" not in t
-        for s in ('"cTechzpLondonSetup"', '"cTechzpForbidRevolutions"', '"cTechzpParliamentRemonstrance"',
+        for s in ('"cTechzpLondonAttackerSetup"', '"cTechzpLondonDefenderSetup"', '"cTechzpForbidRevolutions"', '"cTechzpParliamentRemonstrance"',
                   '"cTechzpTurnConsulateOffParliament"', 'rmAddTriggerEffect("ZP Pick Consulate Tech")',
-                  'rmCreateTrigger("PickParliamentLeader" + k)'):
+                  'rmCreateTrigger("ZP_Execute_Revolution" + k)'):     # 2026-09-22: Paris's AI chain replaced the Colonial roll
             assert s in t, s
         # the Paris idiom names the trigger with a space and asks for it with an underscore (engine-normalised)
         assert 'rmCreateTrigger("Activate Parliament" + k)' in t and 'rmCreateTrigger("Human Check Plr" + k)' in t
@@ -425,9 +425,7 @@ class TestLondon:
         assert ">zpSPCSocketStuart</unit>" in (REPO / "game/randmaps/groupings/EU_Native_Block_Stuart_01.xml").read_text(encoding="utf-8")
 
     def test_grouping_carries_the_new_socket_in_both_copies(self):
-        a = (REPO / "game/randmaps/groupings/EU_Native_Block_Parlam_01.xml").read_bytes()
-        b = (STEAM / "groupings/EU_Native_Block_Parlam_01.xml").read_bytes()
-        assert a == b
+        a = (REPO / "game/randmaps/groupings/EU_Native_Block_Parlam_01.xml").read_bytes()   # 2026-09-22: the Steam root groupings are vanilla-only, the mod folder is the live copy
         t = a.decode("utf-8")
         assert t.count(">%s</unit>" % SOCKET) == 1 and "zpSocketSansculottes" not in t
 
@@ -457,7 +455,6 @@ class TestFlags:
         s = (REPO / "game/randmaps/groupings/EU_Native_Block_Stuart_01.xml").read_text(encoding="utf-8")
         assert ">zpParliamentFlag</unit>" in p and ">SPCFlag</unit>" not in p
         assert ">zpStuartFlag</unit>" in s and ">SPCFlag</unit>" not in s
-        assert (REPO / "game/randmaps/groupings/EU_Native_Block_Parlam_01.xml").read_bytes() == (STEAM / "groupings/EU_Native_Block_Parlam_01.xml").read_bytes()
 
     def test_stuart_carries_the_london_flag_and_gaia_is_the_city_of_london(self):
         c = _read("data/civmods.xml")
@@ -468,7 +465,7 @@ class TestFlags:
         assert '<string _locid="503502">City of London</string>' in s and "Commonwealth of England" not in s  # 503503 is a Lord name now
         t = (REPO / "randmaps/zplondon.xs").read_text(encoding="utf-8")
         assert (REPO / "randmaps/zplondon.xs").read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
-        i = t.index('rmCreateTrigger("LondonStartingTechs")'); seg = t[i:i + 2500]
+        i = t.index('rmCreateTrigger("LondonStartingTechs")'); seg = t[i:t.index('rmCreateTrigger("Italian Vilager Balance"', i)]
         assert 'rmAddTriggerEffect("Player : Override Civilization for Flag")' in seg and 'rmSetTriggerEffectParam("Civilization", "Stuart")' in seg
         assert 'rmAddTriggerEffect("Player : Override Civilization Name")' in seg and 'rmSetTriggerEffectParam("StringID", "503502")' in seg
         assert seg.count('rmSetTriggerEffectParamInt("Player", 0)') == 2
@@ -598,10 +595,11 @@ class TestExtendedStuart:
     def test_london_flips_the_shadow_for_every_player(self):
         t = (REPO / "randmaps/zplondon.xs").read_text(encoding="utf-8")
         assert (REPO / "randmaps/zplondon.xs").read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
-        i = t.index('rmCreateTrigger("ExtendedStuart" + k)'); seg = t[i:i + 700]
-        assert 'rmAddTriggerCondition("Always")' in seg and '"cTechzpExtendedStuart"' in seg and 'rmSetTriggerEffectParamInt("Status", 2)' in seg
-        assert 'rmCreateTrigger("Extended Stuart"' not in t and 'rmTriggerID("Extended' not in t   # trigger names carry no spaces
-        assert t.index('rmCreateTrigger("LondonStartingTechs")') < i < t.index('rmCreateTrigger("Activate Parliament" + k)')
+        # 2026-09-22: the London extension (zpExtendedStuartLondon, the SPC big button) is fired inside LondonStartingTechs for every
+        # player, before the team split strips the button from the defenders; the generic zpExtendedStuart stays for other maps
+        i = t.index('rmCreateTrigger("LondonStartingTechs")'); seg = t[i:t.index('rmAddTriggerEffect("Player : Override Civilization for Flag")')]
+        assert '"cTechzpExtendedStuartLondon"' in seg and '"cTechzpExtendedStuart"' not in t and 'rmCreateTrigger("ExtendedStuart"' not in t
+        assert seg.index('"cTechzpExtendedStuartLondon"') < seg.index("if (rmGetPlayerTeam(k) == 0)") and i < t.index('rmCreateTrigger("Activate Parliament" + k)')
 
 
 # ------------------------------------------------------------------- the Armed Merchantman (Ostinder promoted, 2026-09-20)

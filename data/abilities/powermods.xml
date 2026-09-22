@@ -699,4 +699,26 @@
     <alwaysaddtoplayer>1</alwaysaddtoplayer>
     <soundset type="StartSound" listenertype="Caster">DENatPowerStuart</soundset>
   </power>
+  <power name="zpPowerParliamentRemonstrance" type="UnitAction">
+    <displaynameid>503478</displaynameid>
+    <rolloverid>503479</rolloverid>
+    <icon>resources\images\icons\techs\parliament_hm_big.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>   
+  </power>
+  <power name="zpPowerStuartExpansion" type="UnitAction">
+    <displaynameid>503549</displaynameid>
+    <rolloverid>503550</rolloverid>
+    <icon>resources\images\icons\techs\stuartextend_big.png</icon>
+    <minimapeventtime sendalertto="all">1</minimapeventtime>
+    <activetime>1</activetime>
+    <radius>10.0</radius>
+    <placement forceonmap="1" enemy="" allowgaia="">unit</placement>
+    <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
+    <unitaction>SpawnArmoredTrain</unitaction>   
+  </power>
 </powermods>

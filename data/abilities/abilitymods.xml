@@ -98,6 +98,8 @@
     <ability>zpNatPowerRoyalMarch<tech>Colonialize</tech><subciv>SPCBourbon</subciv><activetimecooldown>true</activetimecooldown><rof>275.0</rof><castonself>true</castonself></ability>
     <ability>zpPowerBourbonExpansion<tech>zpNatBourbonBigbuttonDisableShadow</tech><subciv>SPCBourbon</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
     <ability>zpPowerSansculotteExpansion<tech>zpNatSansculotteBigbuttonDisableShadow</tech><subciv>zpSansculottes</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>    
+    <ability>zpPowerParliamentRemonstrance<tech>zpNatParliamentBigbuttonDisableShadow</tech><subciv>zpParliament</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
+    <ability>zpPowerStuartExpansion<tech>zpNatStuartBigbuttonDisableShadow</tech><subciv>Stuart</subciv><rof>70</rof><castifnotselected>true</castifnotselected></ability>
     <ability>zpAuditoreLighthouse<tech>Colonialize</tech><subciv>Auditore</subciv><rof>120.0</rof><castonself>true</castonself></ability>
     <ability>zpNatPowerBlanikKnights<tech>Colonialize</tech><subciv>zpBohemianKing</subciv><subcivalliancefactor>0.5</subcivalliancefactor><uicommand>uiFindNativeSiteSubCiv("zpBohemianKing")</uicommand><rof>250</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>
     <ability>zpPowerImperialCommand<tech>Colonialize</tech><subciv>zpPrinceElector</subciv><subcivalliancefactor>0.5</subcivalliancefactor><activetimecooldown>true</activetimecooldown><uicommand>uiFindNativeSiteSubCiv("zpPrinceElector")</uicommand><rof>450</rof><castonself>true</castonself><donotallowoverpoplimit>true</donotallowoverpoplimit></ability>

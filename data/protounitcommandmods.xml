@@ -889,6 +889,32 @@
     </usemultiple>
   </protounitcommand>
 
+  <protounitcommand>
+    <name>zpParliamentRemonstranceFake</name>
+    <icon>resources\images\icons\techs\parliament_hm_big.png</icon>
+    <associatedtech>zpNatParliamentoffShadow</associatedtech>
+    <associatedpower>zpPowerParliamentRemonstrance</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>zpParliament</subciv>
+    <usemultiple>
+    </usemultiple>
+    <usebigbutton>
+    </usebigbutton>
+  </protounitcommand>
+  <protounitcommand>
+    <name>zpStuartExpansionFake</name>
+    <icon>resources\images\icons\techs\stuartextend_big.png</icon>
+    <associatedtech>zpNatStuartoffShadow</associatedtech>
+    <associatedpower>zpPowerStuartExpansion</associatedpower>
+    <castpower>
+    </castpower>
+    <subciv>Stuart</subciv>
+    <usemultiple>
+    </usemultiple>
+    <usebigbutton>
+    </usebigbutton>
+  </protounitcommand>
 
   <!--
 

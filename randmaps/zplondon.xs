@@ -2476,17 +2476,64 @@ void main(void)
 	rmSetTriggerLoop(false);
 
 	// ---- 14. Parliamentarians (Orthodox pattern): starting techs, the leader choice, the AI roll ----------------
-	// 14.1 starting techs for everybody: London setup (Military Camp) + no standard revolutions (Paris idiom)
+	// 14.1 starting techs - Paris's Starting Techs (zpparis.xs 1984-2047): per player no standard revolutions and the London
+	// extension of the House of Stuart (zpExtendedStuartLondon: zpExtendedStuart with the London big button zpStuartExpansionSPC,
+	// Paris's zpBourbonExpansionSPC swap; other maps keep zpExtendedStuart), then BY TEAM (Paris 2003-2022): the attackers
+	// (team 0, the Stuart side) get zpLondonAttackerSetup and see the Parliament big button greyed (its DisableShadow strips
+	// the button, its offShadow lights the fake), the defenders (team 1, Parliament) get zpLondonDefenderSetup and the Stuart
+	// pair; both setups = Military Camp + Istanbul's PopulationCap 250 + zpSPCDisableHousesShadow. Then players 0..N
+	// (Paris 2024-2033, gaia included): the Toll Station name and icon on the port socket, the European embassy design.
 	rmCreateTrigger("LondonStartingTechs");
 	for (k=1; <= cNumberNonGaiaPlayers)
 	{
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID", k);
-		rmSetTriggerEffectParam("TechID", "cTechzpLondonSetup");
+		rmSetTriggerEffectParam("TechID", "cTechzpForbidRevolutions");
 		rmSetTriggerEffectParamInt("Status", 2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID", k);
-		rmSetTriggerEffectParam("TechID", "cTechzpForbidRevolutions");
+		rmSetTriggerEffectParam("TechID", "cTechzpExtendedStuartLondon");
+		rmSetTriggerEffectParamInt("Status", 2);
+		if (rmGetPlayerTeam(k) == 0)
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpLondonAttackerSetup");
+			rmSetTriggerEffectParamInt("Status", 2);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpNatParliamentBigbuttonDisableShadow");
+			rmSetTriggerEffectParamInt("Status", 2);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpNatParliamentoffShadow");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+		else
+		{
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpLondonDefenderSetup");
+			rmSetTriggerEffectParamInt("Status", 2);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpNatStuartBigbuttonDisableShadow");
+			rmSetTriggerEffectParamInt("Status", 2);
+			rmAddTriggerEffect("ZP Set Tech Status (XS)");
+			rmSetTriggerEffectParamInt("PlayerID", k);
+			rmSetTriggerEffectParam("TechID", "cTechzpNatStuartoffShadow");
+			rmSetTriggerEffectParamInt("Status", 2);
+		}
+	}
+	for (i = 0; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", i);
+		rmSetTriggerEffectParam("TechID", "cTechzpTollstation");
+		rmSetTriggerEffectParamInt("Status", 2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", i);
+		rmSetTriggerEffectParam("TechID", "cTechdeEUMapUpdateVisuals");
 		rmSetTriggerEffectParamInt("Status", 2);
 	}
 	// the bridge's two zpInvisibleGateSocket placeholders become SPCFortGate the moment the game starts: zpConverGate
@@ -2508,23 +2555,6 @@ void main(void)
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
-
-	// 14.1a EXTENDED HOUSE OF STUART (zpistanbulb.xs "ExtendedPhanar"): the extension sleeps in the data until a map flips
-	// cTechzpExtendedStuart - it drops Highland Charge to a small button at p0 c4 (zpNatStuartHighlandChargeSmall). Always on
-	// London, every player. Trigger name without spaces.
-	for (k=1; <= cNumberNonGaiaPlayers)
-	{
-		rmCreateTrigger("ExtendedStuart" + k);
-		rmAddTriggerCondition("Always");
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID", k);
-		rmSetTriggerEffectParam("TechID", "cTechzpExtendedStuart");
-		rmSetTriggerEffectParamInt("Status", 2);
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(true);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
-	}
 
 	// 14.1b the balance / returner family (zpparis.xs "NATIVE POLITICIANS", map-politician-triggers Rule 0): every
 	// switcher grants cTechzpBigButtonResearchDecrease so its big button researches instantly - Cheat Returner hands
@@ -2764,43 +2794,77 @@ void main(void)
 		rmSetTriggerRunImmediately(true);
 		rmSetTriggerLoop(false);
 	}
-	// 14.4 AI leader roll (Venice "ZP Pick Orthodox Captain")
+	// 14.4 AI Commonwealth - Paris's AI Revolutionary Fractions (zpparis.xs 3393-3466): only the defenders' AIs (Parliament
+	// sits in their city; the attackers see its button greyed), at Industrial, and only while the AI HOLDS a Parliament
+	// post - cTechzpNativeParliament is zpParliament's Age0 agetech (civmods), active only with the post, checked in the
+	// timer and again at execution (Paris reads cTechzpNativeSansculottes the same way). The old roll fired for every AI
+	// on both teams at Colonial with no post (user 2026-09-22: 'AI players always revolt to Parliament').
 	for (k=1; <= cNumberNonGaiaPlayers)
 	{
-		rmCreateTrigger("PickParliamentLeader" + k);
-		rmAddTriggerCondition("ZP PLAYER Human");
-		rmSetTriggerConditionParamInt("Player", k);
-		rmSetTriggerConditionParam("MyBool", "false");
-		rmAddTriggerCondition("Tech Status Equals");
-		rmSetTriggerConditionParamInt("PlayerID", k);
-		rmSetTriggerConditionParamInt("TechID", 586);
-		rmSetTriggerConditionParamInt("Status", 2);
-		int parliamentLeader = rmRandInt(1, 3);
-		if (parliamentLeader == 1)
+		if (rmGetPlayerTeam(k) == 1)
 		{
-			rmAddTriggerEffect("ZP Set Tech Status (XS)");
-			rmSetTriggerEffectParamInt("PlayerID", k);
-			rmSetTriggerEffectParam("TechID", "cTechzpConsulateParliamentCromwell");
-			rmSetTriggerEffectParamInt("Status", 2);
+			rmCreateTrigger("ZP_Iniciate_Revolution" + k);
+			rmCreateTrigger("ZP_Execute_Revolution" + k);
+			rmCreateTrigger("ZP_Timer_Revolution" + k);
+			rmSwitchToTrigger(rmTriggerID("ZP_Iniciate_Revolution" + k));
+			rmAddTriggerCondition("ZP PLAYER Human");
+			rmSetTriggerConditionParamInt("Player", k);
+			rmSetTriggerConditionParam("MyBool", "false");
+			rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+			rmSetTriggerConditionParamInt("PlayerID", k);
+			rmSetTriggerConditionParam("TechID", "cTechIndustrialize");
+			rmSetTriggerConditionParamInt("Status", 2);
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Timer_Revolution" + k));
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(true);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(false);
+			rmSwitchToTrigger(rmTriggerID("ZP_Timer_Revolution" + k));
+			rmAddTriggerCondition("Timer");
+			rmSetTriggerConditionParamInt("Param1", 10);
+			rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+			rmSetTriggerConditionParamInt("PlayerID", k);
+			rmSetTriggerConditionParam("TechID", "cTechzpNativeParliament");
+			rmSetTriggerConditionParamInt("Status", 2);
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("ZP_Execute_Revolution" + k));
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(false);
+			rmSwitchToTrigger(rmTriggerID("ZP_Execute_Revolution" + k));
+			rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+			rmSetTriggerConditionParamInt("PlayerID", k);
+			rmSetTriggerConditionParam("TechID", "cTechzpNativeParliament");
+			rmSetTriggerConditionParamInt("Status", 2);
+			int parliamentLeader = rmRandInt(1, 3);
+			if (parliamentLeader == 1)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID", k);
+				rmSetTriggerEffectParam("TechID", "cTechzpConsulateParliamentCromwell");
+				rmSetTriggerEffectParamInt("Status", 2);
+			}
+			if (parliamentLeader == 2)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID", k);
+				rmSetTriggerEffectParam("TechID", "cTechzpConsulateParliamentInchiquin");
+				rmSetTriggerEffectParamInt("Status", 2);
+			}
+			if (parliamentLeader == 3)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID", k);
+				rmSetTriggerEffectParam("TechID", "cTechzpConsulateParliamentMyddelton");
+				rmSetTriggerEffectParamInt("Status", 2);
+			}
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(true);
+			rmSetTriggerLoop(false);
 		}
-		if (parliamentLeader == 2)
-		{
-			rmAddTriggerEffect("ZP Set Tech Status (XS)");
-			rmSetTriggerEffectParamInt("PlayerID", k);
-			rmSetTriggerEffectParam("TechID", "cTechzpConsulateParliamentInchiquin");
-			rmSetTriggerEffectParamInt("Status", 2);
-		}
-		if (parliamentLeader == 3)
-		{
-			rmAddTriggerEffect("ZP Set Tech Status (XS)");
-			rmSetTriggerEffectParamInt("PlayerID", k);
-			rmSetTriggerEffectParam("TechID", "cTechzpConsulateParliamentMyddelton");
-			rmSetTriggerEffectParamInt("Status", 2);
-		}
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(true);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
 	}
 
 	// 14.5 AI Jewish faction roll (Versailles "ZP Pick Jewish Fraction")
