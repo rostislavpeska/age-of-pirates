@@ -865,8 +865,8 @@ void main(void)
 	int blockTrade = cityBlock("trade block", "EU_SPC_Block_Trade_02");               // London's variant of the 2024 trade block: units AND terrain turned a quarter (x,z -> z,-x) so the socket faces +x = the road from row 1 (user 2026-09-19; the shared original faces +z)
 	// the Figma's fixed blocks, one per bank: Park, Menagerie (nugget 98), Native Jewish, Factory (nugget 299),
 	// Construction (Paris's "Empty Blocks") at the bridge landing where a random cell sometimes stayed empty
-	int blockPark = cityBlock("park", "EU_House_Block_Park");
-	int blockMenagerie = cityBlock("menagerie", "EU_Resource_Block_Menagerie");
+	int blockPark = cityBlock("park", "EU_House_Block_Park_London");   // the New England repaint (user 2026-09-22); the Paris / Versailles original stays
+	int blockMenagerie = cityBlock("menagerie", "EU_Resource_Block_Menagerie_London");   // the New England repaint (user 2026-09-22); the Paris / Versailles original stays
 	int blockJewish = cityBlock("jewish natives", "EU_Natives_Block_Jewish");
 	int blockFactory = cityBlock("factory", "EU_Resource_Block_All1");
 	int blockConstruction = cityBlock("Construction", "EU_SPC_Block_Constr");
@@ -875,7 +875,7 @@ void main(void)
 	// Food1 mill, which had taken the Destilery's place on 2026-09-18), Warehouse; Paris's Forester stays out of the city
 	int blockMarket = cityBlock("market", "EU_Resource_Block_All2");
 	int blockBank = cityBlock("bank", "EU_Resource_Block_Gold1");
-	int blockEmbassy = cityBlock("Native Embassy", "EU_House_Block_Embassy");
+	int blockEmbassy = cityBlock("Native Embassy", "EU_House_Block_Embassy_London");   // the New England repaint (user 2026-09-22); the Paris / Versailles original stays
 	int blockGoldSmelter = cityBlock("Gold Smelter", "EU_Resource_Block_Gold2");
 	int blockMill = cityBlock("Cherry Orchard", "EU_Resource_Block_Food5");
 	int blockWarehouse = cityBlock("Warehouse", "EU_Resource_Block_Wood1");

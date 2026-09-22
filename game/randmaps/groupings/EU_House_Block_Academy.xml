@@ -172,7 +172,7 @@
 			<block startx="6" startz="-7" endx="6" endz="0"></block>
 			<block startx="7" startz="-7" endx="7" endz="0"></block>
 		</tilegroup>
-		<tilegroup type="PassableLand" subtype="nwterritory\ground_grass1_nwt">
+		<tilegroup type="PassableLand" subtype="new_england\ground1_ne">
 			<block startx="-5" startz="-2" endx="-5" endz="-1"></block>
 			<block startx="-4" startz="-5" endx="-4" endz="-5"></block>
 			<block startx="-5" startz="2" endx="-5" endz="3"></block>
@@ -204,18 +204,18 @@
 			<block startx="4" startz="-4" endx="4" endz="-2"></block>
 			<block startx="5" startz="-2" endx="5" endz="-1"></block>
 		</tilegroup>
-		<tilegroup type="PassableLand" subtype="nwterritory\ground_grass5_nwt">
+		<tilegroup type="PassableLand" subtype="new_england\ground2_ne">
 			<block startx="3" startz="-5" endx="3" endz="-5"></block>
 			<block startx="4" startz="-5" endx="4" endz="-5"></block>
 		</tilegroup>
-		<tilegroup type="PassableLand" subtype="nwterritory\ground_grass3_nwt">
+		<tilegroup type="PassableLand" subtype="new_england\cliff_top_ne">
 			<block startx="-2" startz="-4" endx="-2" endz="-4"></block>
 			<block startx="-3" startz="5" endx="-3" endz="5"></block>
 			<block startx="-2" startz="4" endx="-2" endz="4"></block>
 			<block startx="2" startz="-2" endx="2" endz="-2"></block>
 			<block startx="3" startz="-2" endx="3" endz="-2"></block>
 		</tilegroup>
-		<tilegroup type="PassableLand" subtype="nwterritory\ground_grass1a_nwt">
+		<tilegroup type="PassableLand" subtype="new_england\ground3_ne">
 			<block startx="-4" startz="3" endx="-4" endz="3"></block>
 			<block startx="-2" startz="5" endx="-2" endz="5"></block>
 		</tilegroup>

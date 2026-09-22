@@ -907,6 +907,32 @@ class TestMapInfo:
         assert "London 1660 Historical Map" in st[st.index('_locid="503558"'):st.index('_locid="503559"')] and "1642" not in st[st.index('_locid="503558"'):st.index('_locid="503559"')]
 
 
+class TestNewEnglandGroupings:
+    """User 2026-09-22: the newengland_grass mix as the pattern - Academy repainted in place, Park / Embassy / Menagerie cloned as
+    _London (the Paris / Versailles originals untouched), cypress props -> oak in the two house blocks."""
+    FOREIGN = ("nwterritory", "great_lakes", "california", "Texas", "araucania")
+    CLONES = {"EU_House_Block_Park": "park", "EU_House_Block_Embassy": "Native Embassy", "EU_Resource_Block_Menagerie": "menagerie"}
+
+    def test_repainted_files_and_untouched_originals(self):
+        for n in ("EU_House_Block_Academy", "EU_House_Block_Park_London", "EU_House_Block_Embassy_London", "EU_Resource_Block_Menagerie_London"):
+            b = (REPO / ("game/randmaps/groupings/%s.xml" % n)).read_bytes(); t = b.decode("utf-8")
+            assert b.count(b"\r\n") == b.count(b"\n") and all(f not in t for f in self.FOREIGN), n
+            subs = set(re.findall(r'subtype="([^"]*)"', t)); assert subs and all(s.startswith("new_england") or s.startswith("city") for s in subs), (n, subs)
+            assert len(re.findall(r'<tilegroup type="([^"]*)" subtype="([^"]*)"', t)) == len(set(re.findall(r'<tilegroup type="([^"]*)" subtype="([^"]*)"', t)))   # merged, no duplicate keys
+        for n in self.CLONES:
+            o = (REPO / ("game/randmaps/groupings/%s.xml" % n)).read_text(encoding="utf-8", errors="replace")
+            assert any(f in o for f in self.FOREIGN), n    # the shared original keeps its Paris paint
+        for n in ("EU_House_Block_Park_London", "EU_House_Block_Embassy_London"):
+            t = (REPO / ("game/randmaps/groupings/%s.xml" % n)).read_text(encoding="utf-8")
+            assert "deSPCTreeCypressProp" not in t and ">deSPCTreeOakProp</unit>" in t
+
+    def test_script_names_the_clones(self):
+        t = _code(_text(LONDON))
+        for n, label in self.CLONES.items():
+            assert ('cityBlock("%s", "%s_London");' % (label, n)) in t and ('"%s"' % n) not in t, n
+        assert 'cityBlock("Academy", "EU_House_Block_Academy");' in t
+
+
 class TestScope:
 
     def test_reserved_columns_take_the_berry_mill(self):
