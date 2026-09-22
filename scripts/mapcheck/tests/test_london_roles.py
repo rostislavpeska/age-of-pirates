@@ -910,14 +910,15 @@ class TestMapInfo:
 class TestNewEnglandGroupings:
     """User 2026-09-22: the newengland_grass mix as the pattern - Academy repainted in place, Park / Embassy / Menagerie cloned as
     _London (the Paris / Versailles originals untouched), cypress props -> oak in the two house blocks."""
-    FOREIGN = ("nwterritory", "great_lakes", "california", "Texas", "araucania")
+    FOREIGN = ("nwterritory", "great_lakes", "california", "araucania")     # Texas Path_Blend is the mod-wide path, kept (user 2026-09-22)
     CLONES = {"EU_House_Block_Park": "park", "EU_House_Block_Embassy": "Native Embassy", "EU_Resource_Block_Menagerie": "menagerie"}
 
     def test_repainted_files_and_untouched_originals(self):
         for n in ("EU_House_Block_Academy", "EU_House_Block_Park_London", "EU_House_Block_Embassy_London", "EU_Resource_Block_Menagerie_London"):
             b = (REPO / ("game/randmaps/groupings/%s.xml" % n)).read_bytes(); t = b.decode("utf-8")
             assert b.count(b"\r\n") == b.count(b"\n") and all(f not in t for f in self.FOREIGN), n
-            subs = set(re.findall(r'subtype="([^"]*)"', t)); assert subs and all(s.startswith("new_england") or s.startswith("city") for s in subs), (n, subs)
+            subs = set(re.findall(r'subtype="([^"]*)"', t)); assert subs and all(s.startswith("new_england") or s.startswith("city") or s == "Texas" + chr(92) + "Path_Blend" for s in subs), (n, subs)
+            assert "river1_ne" not in t and "ground4_ne" not in t     # no river, no New England path: Texas paths, cliff_inland_top_ne for the old shoreline
             assert len(re.findall(r'<tilegroup type="([^"]*)" subtype="([^"]*)"', t)) == len(set(re.findall(r'<tilegroup type="([^"]*)" subtype="([^"]*)"', t)))   # merged, no duplicate keys
         for n in self.CLONES:
             o = (REPO / ("game/randmaps/groupings/%s.xml" % n)).read_text(encoding="utf-8", errors="replace")
