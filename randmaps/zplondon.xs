@@ -2271,7 +2271,7 @@ void main(void)
 		rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
 		rmSetTriggerEffectParamInt("SrcPlayer", 0);
 		rmSetTriggerEffectParamInt("TrgPlayer", k);
-		rmSetTriggerEffectParam("UnitType", "SPCFortWallLarge");
+		rmSetTriggerEffectParam("UnitType", "deSPCFortWallLargeProp");
 		rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
@@ -2327,7 +2327,7 @@ void main(void)
 		rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
 		rmSetTriggerEffectParamInt("SrcPlayer", k);
 		rmSetTriggerEffectParamInt("TrgPlayer", 0);
-		rmSetTriggerEffectParam("UnitType", "SPCFortWallLarge");
+		rmSetTriggerEffectParam("UnitType", "deSPCFortWallLargeProp");
 		rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
 		rmAddTriggerEffect("Convert Units in Area");
 		rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
@@ -2408,17 +2408,33 @@ void main(void)
 		rmSetTriggerLoop(false);
 	}
 
-	// ---- 13.6 the bridge's four towers stand from the start - AztecCity 1618-1690 (Socket Build on every socket from a 10 ms
-	// timer). Built for PLAYER 1 and converted to gaia in the same trigger (Caribbean's sweep, 1 -> 0 around the port
-	// socket): a build for gaia itself (player 0) placed nothing in game (2026-09-22, the compiled trSocketBuild(0, ...)
-	// ran), and no map in the mod builds for gaia - AztecCity builds for its defender. BridgeTowers_Gaia repeats the
-	// convert 2000 ms later in case the built tower lands a frame after the build. InvulnerableIfGaia / CannotAttackIfGaia
-	// keep gaia's towers inert until the bridge is taken, then 13.5 converts them with the sockets. The Flat city tower
-	// (21197) is deSPCCityTower 2315 without FlattenGround - the deck stays; Venice / Bohemia's socket family, the Tower
-	// of London keeps the wooden one (user 2026-09-22).
-	rmCreateTrigger("BridgeTowers_Setup");
+	// ---- 13.6 the bridge's four towers stand from the start - AztecCity's Defender_Setup0 / 1 (zpazteccity.xs 1565-1690):
+	// the sockets are handed to the builder FIRST (Aztec converts its outpost sockets to the defender, then builds in the next
+	// trigger 10 ms later). Here the builder is player 1 (user 2026-09-22: a build for gaia placed nothing, and a build for
+	// player 1 on gaia's sockets neither); sockets and towers go back to gaia right after the builds (Caribbean's sweep
+	// 1 -> 0 around the port socket) and once more 2000 ms later in case the built tower lands a frame late.
+	// InvulnerableIfGaia / CannotAttackIfGaia keep gaia's towers inert until the bridge is taken, then 13.5 converts them
+	// with the sockets. The Flat city tower (21197) is deSPCCityTower 2315 without FlattenGround - the deck stays; Venice /
+	// Bohemia's socket family, the Tower of London keeps the wooden one.
+	rmCreateTrigger("BridgeTowers_Setup0");
+	rmCreateTrigger("BridgeTowers_Setup1");
 	rmCreateTrigger("BridgeTowers_Gaia");
-	rmSwitchToTrigger(rmTriggerID("BridgeTowers_Setup"));
+	rmSwitchToTrigger(rmTriggerID("BridgeTowers_Setup0"));
+	rmAddTriggerCondition("Timer ms");
+	rmSetTriggerConditionParamInt("Param1", 10);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+	rmSetTriggerEffectParamInt("SrcPlayer", 0);
+	rmSetTriggerEffectParamInt("TrgPlayer", 1);
+	rmSetTriggerEffectParam("UnitType", "zpSPCSocketCityTowerFlat");
+	rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+	rmAddTriggerEffect("Fire Event");
+	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeTowers_Setup1"));
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	rmSwitchToTrigger(rmTriggerID("BridgeTowers_Setup1"));
 	rmAddTriggerCondition("Timer ms");
 	rmSetTriggerConditionParamInt("Param1", 10);
 	rmAddTriggerEffect("Socket Build");
@@ -2443,10 +2459,16 @@ void main(void)
 	rmSetTriggerEffectParamInt("TrgPlayer", 0);
 	rmSetTriggerEffectParam("UnitType", "zpSPCCityTowerFlat");
 	rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+	rmSetTriggerEffectParamInt("SrcPlayer", 1);
+	rmSetTriggerEffectParamInt("TrgPlayer", 0);
+	rmSetTriggerEffectParam("UnitType", "zpSPCSocketCityTowerFlat");
+	rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
 	rmAddTriggerEffect("Fire Event");
 	rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeTowers_Gaia"));
 	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
+	rmSetTriggerActive(false);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 	rmSwitchToTrigger(rmTriggerID("BridgeTowers_Gaia"));
@@ -2457,6 +2479,12 @@ void main(void)
 	rmSetTriggerEffectParamInt("SrcPlayer", 1);
 	rmSetTriggerEffectParamInt("TrgPlayer", 0);
 	rmSetTriggerEffectParam("UnitType", "zpSPCCityTowerFlat");
+	rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
+	rmAddTriggerEffect("Convert Units in Area");
+	rmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);
+	rmSetTriggerEffectParamInt("SrcPlayer", 1);
+	rmSetTriggerEffectParamInt("TrgPlayer", 0);
+	rmSetTriggerEffectParam("UnitType", "zpSPCSocketCityTowerFlat");
 	rmSetTriggerEffectParamInt("Dist", bridgeSweepM);
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(false);

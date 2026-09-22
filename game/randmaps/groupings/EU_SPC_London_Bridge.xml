@@ -46,9 +46,9 @@
 		<unit variation="71" posx="-4.1290" posz="-16.1758" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="153" posx="-0.7704" posz="-12.9707" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpInvisibleGateSocket</unit>
 		<unit variation="153" posx="-0.7704" posz="-12.9707" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpInvisibleGateSocketE</unit>
-		<unit variation="68" posx="-10.8532" posz="-12.8495" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">SPCFortWallLarge</unit>
+		<unit variation="68" posx="-10.8532" posz="-12.8495" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">deSPCFortWallLargeProp</unit>
 		<unit variation="181" posx="4.2943" posz="-13.2962" orientx="-0.0004" orienty="0.0000" orientz="-1.0000">zpSPCFortCornerPropFlat</unit>
-		<unit variation="68" posx="8.4193" posz="-12.6945" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">SPCFortWallLarge</unit>
+		<unit variation="68" posx="8.4193" posz="-12.6945" orientx="-0.0003" orienty="0.0000" orientz="-1.0000">deSPCFortWallLargeProp</unit>
 		<unit variation="0" posx="-13.0282" posz="-7.2956" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="-10.6710" posz="-6.9315" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
 		<unit variation="220" posx="8.5126" posz="-8.7831" orientx="-0.0866" orienty="0.0000" orientz="-0.9962">zpSPCEUHouseProp</unit>
@@ -71,13 +71,13 @@
 		<unit variation="120" posx="9.0304" posz="6.6118" orientx="-0.9887" orienty="0.0000" orientz="-0.1499">deSPCWaterlooHouseProp</unit>
 		<unit variation="103" posx="-1.5318" posz="10.1816" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpInvisibleGateSocket</unit>
 		<unit variation="103" posx="-1.5318" posz="10.1816" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpInvisibleGateSocketF</unit>
-		<unit variation="68" posx="8.6686" posz="9.6143" orientx="0.0003" orienty="0.0000" orientz="1.0000">SPCFortWallLarge</unit>
+		<unit variation="68" posx="8.6686" posz="9.6143" orientx="0.0003" orienty="0.0000" orientz="1.0000">deSPCFortWallLargeProp</unit>
 		<unit variation="179" posx="-8.6503" posz="6.6088" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="65" posx="5.2310" posz="6.1931" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="181" posx="-7.2544" posz="11.0481" orientx="0.0004" orienty="0.0000" orientz="1.0000">zpSPCFortCornerPropFlat</unit>
 		<unit variation="0" posx="-7.8890" posz="13.9168" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="5.8809" posz="13.7051" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
-		<unit variation="68" posx="-11.0046" posz="10.1713" orientx="0.0003" orienty="0.0000" orientz="1.0000">SPCFortWallLarge</unit>
+		<unit variation="68" posx="-11.0046" posz="10.1713" orientx="0.0003" orienty="0.0000" orientz="1.0000">deSPCFortWallLargeProp</unit>
 		<unit variation="0" posx="4.7188" posz="13.7718" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
 		<unit variation="181" posx="4.2675" posz="10.3210" orientx="0.0004" orienty="0.0000" orientz="1.0000">zpSPCFortCornerPropFlat</unit>
 		<unit variation="0" posx="-5.8336" posz="15.0474" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>

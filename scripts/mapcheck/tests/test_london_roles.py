@@ -742,13 +742,14 @@ class TestBridgeOwnership:
     last and read off a marker; gaia's towers are built from the sockets at start (AztecCity); the AI rebuilds through
     zpSPCLondonAI. Only the Tower of London keeps the wooden family."""
 
-    SWEEP = ("SPCFortGate", "SPCFortWallLarge", "zpSPCFortCornerPropFlat", "zpSPCSocketCityTowerFlat", "zpSPCCityTowerFlat")
+    SWEEP = ("SPCFortGate", "deSPCFortWallLargeProp", "zpSPCFortCornerPropFlat", "zpSPCSocketCityTowerFlat", "zpSPCCityTowerFlat")
     BRIDGE_VARS = ("bridgeSocket1Unit", "bridgeSocket2Unit", "bridgeSocket3Unit", "bridgeSocket4Unit")
 
     def test_export_flat_sockets_last_and_unique_gate_sockets(self):
         b = (REPO / "game/randmaps/groupings/EU_SPC_London_Bridge.xml").read_bytes()
         assert b.count(b"\r\n") == b.count(b"\n") and b"zpSPCFortTowerPropFlat" not in b and b"SPCFortGate" not in b and b"Wooden" not in b
         assert b.count(b">zpSPCSocketCityTowerFlat</unit>") == 4 and b.count(b">zpInvisibleGateSocket</unit>") == 2
+        assert b.count(b">deSPCFortWallLargeProp</unit>") == 4 and b">SPCFortWallLarge</unit>" not in b     # prop walls like the Tower (user 2026-09-22)
         lines = b.decode("utf-8").split(chr(13) + chr(10)); end = lines.index(chr(9) + "</units>")
         assert all(l.endswith(">zpSPCSocketCityTowerFlat</unit>") for l in lines[end - 4:end]) and not lines[end - 5].endswith(">zpSPCSocketCityTowerFlat</unit>")
         gens = [i for i, l in enumerate(lines) if l.endswith(">zpInvisibleGateSocket</unit>")]
@@ -806,7 +807,7 @@ class TestBridgeOwnership:
         assert t.index("int bridgeInst = placeIsland(") < t.index("rmPlaceObjectDefAtLoc(harbourN1GuardDef") and "int harbourN1GuardUnit = 366;" in t and "int harbourS2GuardUnit = 381;" in t
 
     def test_bridge_follows_its_port_socket_paris_shape(self):
-        t = _code(_text(LONDON)); s = t[t.index("int bridgePostM = 8;"):t.index('rmCreateTrigger("BridgeTowers_Setup");')]
+        t = _code(_text(LONDON)); s = t[t.index("int bridgePostM = 8;"):t.index('rmCreateTrigger("BridgeTowers_Setup0");')]
         assert "int bridgeSweepM = 30;" in s and t.index("int bridgePostM = 8;") > t.index("int victoryCountDown = 480;")
         for name in ("Bridge_ON_Plr", "Bridge_OFF_Plr", "BridgeGate1_Rebuilt", "BridgeGate2_Rebuilt", "BridgeGate_Rebuilt_Deactivator"):
             assert ('rmCreateTrigger("%s" + k);' % name) in s and ('rmSwitchToTrigger(rmTriggerID("%s" + k));' % name) in s
@@ -845,19 +846,24 @@ class TestBridgeOwnership:
         assert made == used and len(made) == 5, (made ^ used)
 
     def test_bridge_towers_built_at_start_and_ai_rebuild(self):
-        t = _code(_text(LONDON)); s = t[t.index('rmCreateTrigger("BridgeTowers_Setup");'):t.index('rmCreateTrigger("LondonStartingTechs")')]
-        assert chr(10).join(['\trmSwitchToTrigger(rmTriggerID("BridgeTowers_Setup"));', '\trmAddTriggerCondition("Timer ms");', '\trmSetTriggerConditionParamInt("Param1", 10);']) in s
+        t = _code(_text(LONDON)); s = t[t.index('rmCreateTrigger("BridgeTowers_Setup0");'):t.index('rmCreateTrigger("LondonStartingTechs")')]
+        def conv(src, trg, proto):
+            return chr(10).join(['\trmAddTriggerEffect("Convert Units in Area");', '\trmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);', '\trmSetTriggerEffectParamInt("SrcPlayer", %s);' % src,
+                                 '\trmSetTriggerEffectParamInt("TrgPlayer", %s);' % trg, '\trmSetTriggerEffectParam("UnitType", "%s");' % proto, '\trmSetTriggerEffectParamInt("Dist", bridgeSweepM);'])
+        s0 = s[s.index('rmSwitchToTrigger(rmTriggerID("BridgeTowers_Setup0"));'):s.index('rmSwitchToTrigger(rmTriggerID("BridgeTowers_Setup1"));')]
+        s1 = s[s.index('rmSwitchToTrigger(rmTriggerID("BridgeTowers_Setup1"));'):s.index('rmSwitchToTrigger(rmTriggerID("BridgeTowers_Gaia"));')]
+        sg = s[s.index('rmSwitchToTrigger(rmTriggerID("BridgeTowers_Gaia"));'):]
+        # AztecCity 1565-1580 / 1618-1690: the sockets to the builder first, the builds in the next trigger, then back to gaia
+        assert conv("0", "1", "zpSPCSocketCityTowerFlat") in s0 and 'rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeTowers_Setup1"));' in s0 and s0.count("rmSetTriggerActive(true);") == 1
+        assert '\trmAddTriggerCondition("Timer ms");' + chr(10) + '\trmSetTriggerConditionParamInt("Param1", 10);' in s0 and s0.count('rmAddTriggerEffect("Socket Build");') == 0
         for var in self.BRIDGE_VARS:
             assert chr(10).join(['\trmAddTriggerEffect("Socket Build");', '\trmSetTriggerEffectParamInt("PlayerID", 1);', '\trmSetTriggerEffectParam("Socket", "" + %s);' % var,
-                                 '\trmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");']) in s, var     # built for player 1: a build for gaia placed nothing (2026-09-22)
-        assert s.count('rmAddTriggerEffect("Socket Build");') == 4 and 'rmSetTriggerEffectParamInt("PlayerID", 0);' not in s
-        conv = chr(10).join(['\trmAddTriggerEffect("Convert Units in Area");', '\trmSetTriggerEffectParam("SrcObject", "" + bridgeSocketUnit);', '\trmSetTriggerEffectParamInt("SrcPlayer", 1);',
-                             '\trmSetTriggerEffectParamInt("TrgPlayer", 0);', '\trmSetTriggerEffectParam("UnitType", "zpSPCCityTowerFlat");', '\trmSetTriggerEffectParamInt("Dist", bridgeSweepM);'])
-        assert s.count(conv) == 2 and s.index(conv) > s.rindex('rmAddTriggerEffect("Socket Build");')          # in the same trigger after the builds, and again in the safety trigger
-        setup = s[:s.index('rmSwitchToTrigger(rmTriggerID("BridgeTowers_Gaia"));')]; gaia = s[s.index('rmSwitchToTrigger(rmTriggerID("BridgeTowers_Gaia"));'):]
-        assert 'rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeTowers_Gaia"));' in setup and setup.count("rmSetTriggerActive(true);") == 1
-        assert '\trmAddTriggerCondition("Timer ms");' + chr(10) + '\trmSetTriggerConditionParamInt("Param1", 2000);' in gaia and gaia.count("rmSetTriggerActive(false);") == 1
-        assert 'rmCreateTrigger("BridgeTowers_Gaia");' in s
+                                 '\trmSetTriggerEffectParam("Protounit", "zpSPCCityTowerFlat");']) in s1, var
+        assert s1.count('rmAddTriggerEffect("Socket Build");') == 4 and 'rmSetTriggerEffectParamInt("PlayerID", 0);' not in s
+        assert s1.index(conv("1", "0", "zpSPCCityTowerFlat")) > s1.rindex('rmAddTriggerEffect("Socket Build");') and conv("1", "0", "zpSPCSocketCityTowerFlat") in s1
+        assert 'rmSetTriggerEffectParamInt("EventID", rmTriggerID("BridgeTowers_Gaia"));' in s1 and s1.count("rmSetTriggerActive(false);") == 1
+        assert '\trmAddTriggerCondition("Timer ms");' + chr(10) + '\trmSetTriggerConditionParamInt("Param1", 2000);' in sg and conv("1", "0", "zpSPCCityTowerFlat") in sg and conv("1", "0", "zpSPCSocketCityTowerFlat") in sg
+        assert sg.count("rmSetTriggerActive(false);") == 1 and "SPCFortWallLarge\"" not in t
         ai = t[t.index('rmCreateTrigger("LondonAI_Plr" + k);'):]
         for n, var in enumerate(self.BRIDGE_VARS, 1):
             tag = "B%d" % n
