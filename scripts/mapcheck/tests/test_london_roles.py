@@ -598,8 +598,8 @@ class TestScope:
     def test_unit_ids_derive_in_one_block_through_the_two_shifts(self):
         # Istanbul's architecture (zpistanbulb.xs 4173-4193): both shifts declared together at the head of 13, every id through them
         t = _code(_text(LONDON))
-        assert t.count("int instanceIdShift = 2;") == 1 and t.count("int instanceIdShiftIndividual = 2;") == 1
-        assert t.index('rmCreateObjectDef("countryside tin")') < t.index("int instanceIdShift = 2;") < t.index("int instanceIdShiftIndividual = 2;") < t.index("int harbourN1PostUnit")
+        assert t.count("int instanceIdShift = 3;") == 1 and t.count("int instanceIdShiftIndividual = 2;") == 1   # grouping 3 measured 2026-09-22; individual under test
+        assert t.index('rmCreateObjectDef("countryside tin")') < t.index("int instanceIdShift = 3;") < t.index("int instanceIdShiftIndividual = 2;") < t.index("int harbourN1PostUnit")
         reads = re.findall(r"(int \w+ = rmGetUnitPlaced\([^;]*;)", t)
         assert all("+ instanceIdShiftIndividual;" in r for r in reads if "GuardDef" not in r) and len(reads) == 8
         inst = re.findall(r"int \w+ = rmGetGroupingInstanceUnitByType\([^;]*;", t)

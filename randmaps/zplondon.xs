@@ -1689,11 +1689,12 @@ void main(void)
 	//  ENGINE creates ahead of the target that the RM count does not see: here the two trade routes' own units - the
 	//  lane's ship (built in 1) and the land route's wagon (built in 3.9, Paris's gate order) - both before the harbour
 	//  posts (7-8) and before every section-10 instance. The 2026-09-18 13:26 census measured +1 when only the lane
-	//  existed (posts = engine ids 7-10 after six RM placements); 2 / 2 since the road went in first (user 2026-09-22).
+	//  existed (posts = engine ids 7-10 after six RM placements). Grouping instances: 3, measured 2026-09-22 (test copies
+	//  00000_zplondon_shift0..3); the individual shift is still under test on the same copies.
 	//  Nugget protos are the nuggetmods <nuggetunit> of the latched difficulty, never the authored placeholder.
 	// ========================================================================
-	int instanceIdShift = 2;
-	// the same number today, kept SEPARATE on purpose (Istanbul): single rmPlaceObjectDef* placements and grouping
+	int instanceIdShift = 3;   // measured in game 2026-09-22 with the four shift test copies (0..3): the instances answer to 3
+	// kept SEPARATE on purpose (Istanbul): single rmPlaceObjectDef* placements and grouping
 	// instance queries drift apart the moment a grouping bakes a unit the engine spawns on its own
 	int instanceIdShiftIndividual = 2;
 	int harbourN1PostUnit = rmGetUnitPlaced(harbourN1PostDef, 0) + instanceIdShiftIndividual;
