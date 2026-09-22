@@ -151,7 +151,7 @@
 		<unit variation="147" posx="-16.3517" posz="14.0429" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
 		<unit variation="2" posx="-28.2668" posz="13.4377" orientx="-0.0019" orienty="0.0000" orientz="-1.0000">zpPropMarketStall</unit>
 		<unit variation="38" posx="0.9868" posz="13.3950" orientx="0.0000" orienty="-0.0000" orientz="1.0000">NuggetDroppedWood</unit>
-		<unit variation="0" posx="-0.0133" posz="13.3950" orientx="0.0000" orienty="0.0000" orientz="1.0000">deSPCCapturableFlagCossack</unit>
+		<unit variation="0" posx="-0.0133" posz="13.3950" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCCapturableFlagNoIcon</unit>
 		<unit variation="41" posx="6.8599" posz="14.2014" orientx="0.0000" orienty="0.0000" orientz="1.0000">SPCPathBlock1</unit>
 		<unit variation="9" posx="-20.8840" posz="15.7169" orientx="-0.9240" orienty="0.0000" orientz="-0.3824">deSPCFortCornerProp</unit>
 		<unit variation="225" posx="-21.6728" posz="17.3495" orientx="-0.7072" orienty="0.0000" orientz="-0.7071">deSPCFortWallMediumProp</unit>

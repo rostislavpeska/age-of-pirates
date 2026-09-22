@@ -573,6 +573,28 @@ class TestCountryside:
         assert "deliberately absent at the layout stage" not in t
 
 
+class TestVictory:
+    """13.4 (user 2026-09-22): Paris's victory system on the two Towers - both zpSPCCapturableFlagNoIcon flags held by one team
+    for 480 s -> Team Victory; objectives per side; the flag proto swapped in both Tower exports."""
+
+    def test_paris_shape_on_two_flags(self):
+        t = _code(_text(LONDON)); v = t[t.index("rmObjectiveScreenSetTitle(503557);"):t.index('rmCreateTrigger("LondonStartingTechs")')]
+        for line in ("rmObjectiveScreenSetGoal(503558);", "rmObjectiveAdd(503559, 502023, true, true, true);", "rmObjectiveSetTeam(1, 1);",
+                     "rmObjectiveAdd(503560, 502023, true, true, true);", "rmObjectiveSetTeam(2, 2);", "int victoryCountDown = 480;",
+                     'rmCreateTrigger("TeamVictory" + i);', 'rmCreateTrigger("Towers_ON" + i);', 'rmCreateTrigger("Victory_Counter" + i);', 'rmCreateTrigger("Victory_Counter_OFF" + i);',
+                     'rmAddTriggerEffect("Team Victory");', 'rmSetTriggerConditionParam("Protounit", "zpSPCCapturableFlagNoIcon");',
+                     'rmSetTriggerConditionParamInt("Count", 2);', 'rmAddTriggerEffect("Counter:Add Timer");', 'rmSetTriggerEffectParamInt("Start", victoryCountDown);',
+                     'rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory" + i));', 'rmAddTriggerEffect("Counter Stop");', 'rmSetTriggerEffectParam("Msg", "{503561}");', 'rmSetTriggerEffectParam("Msg", "{503562}");'):
+            assert line in v, line
+        assert v.count('rmSetTriggerConditionParam("Protounit", "zpSPCCapturableFlagNoIcon");') == 2 and 'rmSetTriggerConditionParam("Op", "<");' in v
+        assert 'rmGetGroupingInstanceUnitByType(towerSInst, "zpSPCCapturableFlagNoIcon") + instanceIdShift;' in t and 'rmGetGroupingInstanceUnitByType(towerNInst, "zpSPCCapturableFlagNoIcon") + instanceIdShift;' in t
+        for n in ("EU_SPC_London_Tower_01", "EU_SPC_London_Tower_02"):
+            w = (REPO / ("game/randmaps/groupings/%s.xml" % n)).read_bytes()
+            assert w.count(b">zpSPCCapturableFlagNoIcon</unit>") == 1 and b"deSPCCapturableFlagCossack" not in w and b">SPCFortWallMedium</unit>" not in w
+        st = (REPO / "data/strings/english/stringmods.xml").read_text(encoding="utf-8")
+        assert all(('_locid="%d"' % i) in st for i in range(503557, 503563))
+
+
 class TestScope:
 
     def test_reserved_columns_take_the_berry_mill(self):

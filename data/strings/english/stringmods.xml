@@ -3557,6 +3557,12 @@
       <string _locid="503554">ZP Prop Parliament Tower</string>
       <string _locid="503555">ZP Native Church Parliament</string>
       <string _locid="503556">ZP Prop Stuart Tower</string>
+      <string _locid="503557">The Tower of London</string>
+      <string _locid="503558">London 1642 Historical Map: Parliament holds the city, the Stuart cause returns to reclaim it. Achieve a Team Victory by capturing and holding BOTH Towers of London for 8 minutes. A Tower converts to the team standing at it once its Redcoat guard is beaten.</string>
+      <string _locid="503559">Achieve &lt;color=1.0, 1.0, 0.0&gt;ATTACKERS&lt;/color&gt; (Stuart) Team Victory by capturing and holding both Towers of London.</string>
+      <string _locid="503560">Achieve &lt;color=1.0, 1.0, 0.0&gt;DEFENDERS&lt;/color&gt; (Parliament) Team Victory by capturing and holding both Towers of London.</string>
+      <string _locid="503561">Team ATTACKERS (Stuart) wins in</string>
+      <string _locid="503562">Team DEFENDERS (Parliament) wins in</string>
       
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

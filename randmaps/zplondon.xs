@@ -1616,8 +1616,8 @@ void main(void)
 	int factoryNNugUnit = rmGetGroupingInstanceUnitByType(factoryNInst, "zpNuggetInvisible") + instanceIdShift;
 	int towerSBldUnit = rmGetGroupingInstanceUnitByType(towerSInst, "zpSPCTowerOfLondon") + instanceIdShift;
 	int towerNBldUnit = rmGetGroupingInstanceUnitByType(towerNInst, "zpSPCTowerOfLondon") + instanceIdShift;
-	int towerSFlagUnit = rmGetGroupingInstanceUnitByType(towerSInst, "deSPCCapturableFlagCossack") + instanceIdShift;   // -1: no capturable flag in the exports yet
-	int towerNFlagUnit = rmGetGroupingInstanceUnitByType(towerNInst, "deSPCCapturableFlagCossack") + instanceIdShift;
+	int towerSFlagUnit = rmGetGroupingInstanceUnitByType(towerSInst, "zpSPCCapturableFlagNoIcon") + instanceIdShift;   // Paris's victory flag (zpSPCCapturableFlagNoIcon) in both Tower exports since 2026-09-22
+	int towerNFlagUnit = rmGetGroupingInstanceUnitByType(towerNInst, "zpSPCCapturableFlagNoIcon") + instanceIdShift;
 	int towerSNugUnit = rmGetGroupingInstanceUnitByType(towerSInst, "zpNuggetInvisible") + instanceIdShift;              // the gate treasure, resolved by 605
 	int towerNNugUnit = rmGetGroupingInstanceUnitByType(towerNInst, "zpNuggetInvisible") + instanceIdShift;
 	rmEchoInfo("LONDON ids: posts " + harbourN1PostUnit + " " + harbourN2PostUnit + " " + harbourS1PostUnit + " " + harbourS2PostUnit + " guards " + harbourN1GuardUnit + " " + harbourN2GuardUnit + " " + harbourS1GuardUnit + " " + harbourS2GuardUnit);
@@ -1861,6 +1861,119 @@ void main(void)
 			rmSetTriggerRunImmediately(false);
 			rmSetTriggerLoop(false);
 		}
+	}
+
+
+	// ---- 13.4 VICTORY - Paris's system (zpparis.xs 1873-1883 objectives, 2298-2440 triggers) on the two Towers: the team
+	// that holds BOTH Tower flags (zpSPCCapturableFlagNoIcon, Paris's victory flag, baked in both exports) for
+	// victoryCountDown seconds wins. Objective numbering is Paris's: objective/team 1 = rmGetPlayerTeam 0 = the ATTACKERS
+	// (the Stuart side, 0.5), 2 = the DEFENDERS (Parliament). Both Towers are one proto, so one Towers_ON per team flares
+	// both spots; the per-player conversions and the guard unlock are 13.3 (Istanbul's palace family).
+	rmObjectiveScreenSetTitle(503557);
+	rmObjectiveScreenSetGoal(503558);
+	rmObjectiveAdd(503559, 502023, true, true, true);   // ATTACKERS (Stuart)
+	rmObjectiveSetTeam(1, 1);
+	rmObjectiveAdd(503560, 502023, true, true, true);   // DEFENDERS (Parliament)
+	rmObjectiveSetTeam(2, 2);
+	int victoryCountDown = 480;         // Paris: 8 minutes holding every victory building
+	int victoryFlareDuration = 10;      // Paris socketMinimapFlareDuration
+	vector towerSLoc = rmGetUnitPosition(towerSBldUnit);   // Paris 1966-1968: the flare spot from the building's id
+	vector towerNLoc = rmGetUnitPosition(towerNBldUnit);
+	for (i = 1; < cNumberTeams + 1)
+	{
+		rmCreateTrigger("TeamVictory" + i);
+		rmCreateTrigger("Towers_ON" + i);
+		rmCreateTrigger("Victory_Counter" + i);
+		rmCreateTrigger("Victory_Counter_OFF" + i);
+	}
+	for (i = 1; < cNumberTeams + 1)
+	{
+		// Team Victory, fired by the counter
+		rmSwitchToTrigger(rmTriggerID("TeamVictory" + i));
+		rmAddTriggerEffect("Team Victory");
+		rmSetTriggerEffectParamInt("TeamID", i);
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		// a Tower held: flare both Tower spots for the team, flash the buildings, re-arm the other team's trigger
+		rmSwitchToTrigger(rmTriggerID("Towers_ON" + i));
+		rmAddTriggerCondition("Team Unit Count");
+		rmSetTriggerConditionParamInt("TeamID", i);
+		rmSetTriggerConditionParam("Protounit", "zpSPCTowerOfLondon");
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 1);
+		for (x = 1; <= cNumberNonGaiaPlayers)
+		{
+			if (rmGetPlayerTeam(x) == i - 1)
+			{
+				rmAddTriggerEffect("Flare Minimap");
+				rmSetTriggerEffectParamInt("PlayerID", x, false);
+				rmSetTriggerEffectParamInt("Duration", victoryFlareDuration, false);
+				rmSetTriggerEffectParam("Position", "" + xsVectorGetX(towerSLoc) + "," + xsVectorGetY(towerSLoc) + "," + xsVectorGetZ(towerSLoc), false);
+				rmSetTriggerEffectParam("Flash", "True", false);
+			}
+		}
+		for (x = 1; <= cNumberNonGaiaPlayers)
+		{
+			if (rmGetPlayerTeam(x) == i - 1)
+			{
+				rmAddTriggerEffect("Flare Minimap");
+				rmSetTriggerEffectParamInt("PlayerID", x, false);
+				rmSetTriggerEffectParamInt("Duration", victoryFlareDuration, false);
+				rmSetTriggerEffectParam("Position", "" + xsVectorGetX(towerNLoc) + "," + xsVectorGetY(towerNLoc) + "," + xsVectorGetZ(towerNLoc), false);
+				rmSetTriggerEffectParam("Flash", "True", false);
+			}
+		}
+		rmAddTriggerEffect("Flash Units");
+		rmSetTriggerEffectParam("SrcObject", "" + towerSBldUnit, false);
+		rmAddTriggerEffect("Flash Units");
+		rmSetTriggerEffectParam("SrcObject", "" + towerNBldUnit, false);
+		rmAddTriggerEffect("Fire Event");
+		if (i == 1)
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Towers_ON2"));
+		else
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("Towers_ON1"));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		// the hold: both flags owned by the team -> the countdown to Team Victory; one lost -> stop and re-arm
+		rmSwitchToTrigger(rmTriggerID("Victory_Counter" + i));
+		rmAddTriggerCondition("Team Unit Count");
+		rmSetTriggerConditionParamInt("TeamID", i);
+		rmSetTriggerConditionParam("Protounit", "zpSPCCapturableFlagNoIcon");
+		rmSetTriggerConditionParam("Op", ">=");
+		rmSetTriggerConditionParamInt("Count", 2);
+		rmAddTriggerEffect("Counter:Add Timer");
+		rmSetTriggerEffectParam("Name", "VictoryCounter" + i);
+		rmSetTriggerEffectParamInt("Start", victoryCountDown);
+		rmSetTriggerEffectParamInt("Stop", 0);
+		if (i == 1)
+			rmSetTriggerEffectParam("Msg", "{503561}");   // Team ATTACKERS (Stuart) wins in
+		else
+			rmSetTriggerEffectParam("Msg", "{503562}");   // Team DEFENDERS (Parliament) wins in
+		rmSetTriggerEffectParamInt("Event", rmTriggerID("TeamVictory" + i));
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter_OFF" + i));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		rmSwitchToTrigger(rmTriggerID("Victory_Counter_OFF" + i));
+		rmAddTriggerCondition("Team Unit Count");
+		rmSetTriggerConditionParamInt("TeamID", i);
+		rmSetTriggerConditionParam("Protounit", "zpSPCCapturableFlagNoIcon");
+		rmSetTriggerConditionParam("Op", "<");
+		rmSetTriggerConditionParamInt("Count", 2);
+		rmAddTriggerEffect("Counter Stop");
+		rmSetTriggerEffectParam("Name", "VictoryCounter" + i);
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("Victory_Counter" + i));
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
 	}
 
 
