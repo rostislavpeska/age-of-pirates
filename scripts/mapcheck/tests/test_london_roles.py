@@ -595,6 +595,17 @@ class TestScope:
         n = (REPO / "data/nuggetmods.xml").read_text(encoding="utf-8", errors="replace")
         assert "<name>zpRockRoyalHuntsman</name>" in n and n.count("<difficulty>607</difficulty>") == 1
 
+    def test_unit_ids_derive_in_one_block_through_the_two_shifts(self):
+        # Istanbul's architecture (zpistanbulb.xs 4173-4193): both shifts declared together at the head of 13, every id through them
+        t = _code(_text(LONDON))
+        assert t.count("int instanceIdShift = 2;") == 1 and t.count("int instanceIdShiftIndividual = 2;") == 1
+        assert t.index("// ---- 12.7 THE COUNTRYSIDE OBJECTS") < t.index("int instanceIdShift = 2;") < t.index("int instanceIdShiftIndividual = 2;") < t.index("int harbourN1PostUnit")
+        reads = re.findall(r"(int \w+ = rmGetUnitPlaced\([^;]*;)", t)
+        assert all("+ instanceIdShiftIndividual;" in r for r in reads if "GuardDef" not in r) and len(reads) == 8
+        inst = re.findall(r"int \w+ = rmGetGroupingInstanceUnitByType\([^;]*;", t)
+        assert len(inst) == 14 and all(r.endswith("+ instanceIdShift;") for r in inst)
+        assert not re.search(r"\w*(Unit|Id|Flag|Nug|Socket|Bld|Post)\w*\s*[-+]\s*\d+\s*[;)]", t.replace("Idx", "").replace("Tiles", ""))   # no literal id arithmetic
+
     def test_twin_identical_and_crlf(self):
         raw = LONDON.read_bytes()
         assert raw == (STEAM / "00000_zplondon.xs").read_bytes()

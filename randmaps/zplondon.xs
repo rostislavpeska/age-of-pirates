@@ -639,10 +639,8 @@ void main(void)
 	float harbourGuardInM = 2.5;        // the guard nugget this far INTO the city off the bank's quay wall line = the middle of the 5 m promenade, at the harbour's x (behind the harbour building)
 	float harbourGuardSearchM = 3.0;    // ... and the search radius around that spot: stays on the promenade (6 m let it wander off the harbour - user 2026-09-18)
 	float decoMouthXM = 12.0;           // the first riverside deco (40 m) centred this far in: the mouth slot is only 26 m
-	int   instanceIdShiftIndividual = 1;   // rmGetUnitPlaced (object defs) + this = engine unit id: the lane's trade ship is created between the controllers and the posts (census 2026-09-18 13:26: posts = engine ids 7-10 after six RM placements; zpelbe uses +1 the same way)
 	string harbourGuardType = "deGuardianMusketeer";   // the 101 record's guardians - what the release trigger counts around the post
 	int   harbourGuardReachM = 25;         // ... within this distance of the post (nugget ~14 m behind it + the guardian spread)
-	int   instanceIdShift = 0;             // rmGetGroupingInstanceUnitByType (grouping instances) + this
 
 	// ---- 0.5 THE LOBBY: the coin and the roles - the Florence system (zpflorence.xs 124-155, zpistanbulb.xs 5b),
 	// resolved up front because the gates (3.5) take their owners from them. TEAM 1 DEFENDS, TEAM 0 ATTACKS - Florence's
@@ -1683,6 +1681,21 @@ void main(void)
 	//     grouping instances = rmGetGroupingInstanceUnitByType + instanceIdShift; a baked nugget is queried by its
 	//     nuggetmods <nuggetunit>, never by the authored placeholder (Istanbul).
 	// ============================================================================================
+	// ========================================================================
+	//  UNIT IDS - every id a trigger targets, derived HERE and nowhere else (Istanbul's block, zpistanbulb.xs 4173-4193)
+	// ------------------------------------------------------------------------
+	//  THE LAW: rmGetUnitPlaced (object defs) = + instanceIdShiftIndividual; rmGetGroupingInstanceUnitByType (grouping
+	//  instances) = + instanceIdShift; no literal arithmetic on an id anywhere. The shift is the number of units the
+	//  ENGINE creates ahead of the target that the RM count does not see: here the two trade routes' own units - the
+	//  lane's ship (built in 1) and the land route's wagon (built in 3.9, Paris's gate order) - both before the harbour
+	//  posts (7-8) and before every section-10 instance. The 2026-09-18 13:26 census measured +1 when only the lane
+	//  existed (posts = engine ids 7-10 after six RM placements); 2 / 2 since the road went in first (user 2026-09-22).
+	//  Nugget protos are the nuggetmods <nuggetunit> of the latched difficulty, never the authored placeholder.
+	// ========================================================================
+	int instanceIdShift = 2;
+	// the same number today, kept SEPARATE on purpose (Istanbul): single rmPlaceObjectDef* placements and grouping
+	// instance queries drift apart the moment a grouping bakes a unit the engine spawns on its own
+	int instanceIdShiftIndividual = 2;
 	int harbourN1PostUnit = rmGetUnitPlaced(harbourN1PostDef, 0) + instanceIdShiftIndividual;
 	int harbourN2PostUnit = rmGetUnitPlaced(harbourN2PostDef, 0) + instanceIdShiftIndividual;
 	int harbourS1PostUnit = rmGetUnitPlaced(harbourS1PostDef, 0) + instanceIdShiftIndividual;
