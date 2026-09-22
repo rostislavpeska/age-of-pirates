@@ -444,7 +444,7 @@ class TestGateOrder:
         lane = t.index('rmBuildTradeRoute(waterRouteID, "water_trail");')
         road_def = t.index("int tradeRouteID = rmCreateTradeRoute();")
         walls = t.index('rmCreateGrouping("wall se"')
-        bridge = t.index("int bridgeInst = placeIsland(londonBridge")
+        bridge = t.index("int bridgeInst = rmPlaceGroupingInstanceAtLoc(londonBridge")
         road_built = t.index('rmBuildTradeRoute(tradeRouteID, "dirt");')
         socket = t.index("routeSocket(tradeRouteID, xRoad, zRiver);")
         river = t.index("rmRiverCreate(")
@@ -501,7 +501,7 @@ class TestCountryside:
         calls = re.findall(r'countryPatch\("country patch (\w+) (S|N) " \+ cp, "([^"]*)", countryPatchTiles, (stripBox[SN]), avoidWallMedium, avoidTradeRouteWall, avoidPatch\);', s)
         assert calls == [("grass", "S", "italy_cliff_top_grass", "stripBoxS"), ("dirt", "S", "italy_grass_dirt", "stripBoxS"),
                          ("grass", "N", "italy_cliff_top_grass", "stripBoxN"), ("dirt", "N", "italy_grass_dirt", "stripBoxN")]
-        h = _code(t[t.index("void countryPatch("):t.index("// ---- object defs")])
+        h = _code(t[t.index("void countryPatch("):t.index("void main(void)")])
         assert "rmSetAreaCoherence(area, 0.1);" in h and 'rmAddAreaToClass(area, rmClassID("classPatch"));' in h and "rmSetAreaLocation" not in h and "BaseHeight" not in h
 
     def test_constraints_in_metres(self):
