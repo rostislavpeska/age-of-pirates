@@ -53,7 +53,7 @@
 		<unit variation="199" posx="-9.0956" posz="-2.3934" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropsColony</unit>
 		<unit variation="188" posx="-1.8184" posz="-1.0642" orientx="-0.9239" orienty="0.0000" orientz="0.3827">deNatEUPropVilLeaders</unit>
 		<unit variation="172" posx="11.4942" posz="-1.4064" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">zpNatEUPropFencDarkBrickB</unit>
-		<unit variation="147" posx="-9.6473" posz="5.3526" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropWingC</unit>
+		<unit variation="1" posx="-9.6473" posz="5.3526" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNatEUScottishPalaces</unit>
 		<unit variation="79" posx="1.1610" posz="-1.7400" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">deNatEUPropVilGuards</unit>
 		<unit variation="73" posx="-3.1574" posz="2.0244" orientx="-1.0000" orienty="-0.0000" orientz="0.0002">NativeTownObstruction</unit>
 		<unit variation="154" posx="-4.5334" posz="1.5425" orientx="0.9239" orienty="0.0000" orientz="-0.3827">deNatEUPropVilLeaders</unit>
@@ -82,7 +82,7 @@
 		<unit variation="26" posx="-11.5216" posz="7.6049" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpPropsColony</unit>
 		<unit variation="29" posx="-6.4719" posz="8.0627" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpPropsColony</unit>
 		<unit variation="160" posx="11.4001" posz="8.8026" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNatEUPropFencDarkBrickB</unit>
-		<unit variation="147" posx="-4.5008" posz="10.6148" orientx="-0.0000" orienty="0.0000" orientz="1.0000">deNatEUPropWingC</unit>
+		<unit variation="1" posx="-4.5008" posz="10.6148" orientx="-0.0000" orienty="0.0000" orientz="1.0000">zpNatEUScottishPalaces</unit>
 		<unit variation="121" posx="-12.0735" posz="9.8911" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpPropsColony</unit>
 		<unit variation="172" posx="10.0908" posz="10.3081" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">zpNatEUPropFencDarkBrickB</unit>
 		<unit variation="124" posx="5.2142" posz="11.3488" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">SPCPathBlock3</unit>

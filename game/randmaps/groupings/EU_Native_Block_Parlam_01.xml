@@ -28,11 +28,11 @@
 		<unit variation="15" posx="-1.8677" posz="-22.4266" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNativeChurchParliament</unit>
 		<unit variation="1" posx="-6.9308" posz="-25.5052" orientx="-0.9254" orienty="0.0000" orientz="-0.3790">zpPropsFlowers</unit>
 		<unit variation="52" posx="6.3296" posz="-25.4050" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">zpPropsColony</unit>
-		<unit variation="146" posx="-9.7374" posz="-18.5590" orientx="1.0000" orienty="0.0000" orientz="-0.0034">deNatEUPropWingC</unit>
-		<unit variation="146" posx="8.3873" posz="-17.6855" orientx="-1.0000" orienty="0.0000" orientz="0.0014">deNatEUPropWingC</unit>
+		<unit variation="1" posx="-9.7374" posz="-18.5590" orientx="1.0000" orienty="0.0000" orientz="-0.0034">zpNatEUScottishPalaces</unit>
+		<unit variation="1" posx="8.3873" posz="-17.6855" orientx="-1.0000" orienty="0.0000" orientz="0.0014">zpNatEUScottishPalaces</unit>
 		<unit variation="8" posx="13.4250" posz="-23.5194" orientx="0.0006" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
-		<unit variation="146" posx="3.3664" posz="-22.8565" orientx="0.0014" orienty="0.0000" orientz="1.0000">deNatEUPropWingC</unit>
-		<unit variation="146" posx="-4.5929" posz="-23.6100" orientx="0.0033" orienty="0.0000" orientz="1.0000">deNatEUPropWingC</unit>
+		<unit variation="1" posx="3.3664" posz="-22.8565" orientx="0.0014" orienty="0.0000" orientz="1.0000">zpNatEUScottishPalaces</unit>
+		<unit variation="1" posx="-4.5929" posz="-23.6100" orientx="0.0033" orienty="0.0000" orientz="1.0000">zpNatEUScottishPalaces</unit>
 		<unit variation="0" posx="5.9478" posz="-23.4231" orientx="-0.0009" orienty="0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="8" posx="3.5070" posz="-20.8126" orientx="-1.0000" orienty="-0.0000" orientz="-0.0004">NativeTownObstruction</unit>
 		<unit variation="0" posx="9.3565" posz="-20.4992" orientx="-1.0000" orienty="0.0000" orientz="-0.0009">SPCPathBlock3</unit>
@@ -62,9 +62,9 @@
 		<unit variation="8" posx="-2.3440" posz="-13.4390" orientx="-1.0000" orienty="-0.0000" orientz="-0.0004">NativeTownObstruction</unit>
 		<unit variation="104" posx="5.8221" posz="-14.7448" orientx="-0.9239" orienty="-0.0000" orientz="-0.3827">zpPropsColony</unit>
 		<unit variation="64" posx="-10.0260" posz="-13.7477" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropFencDarkBrickB</unit>
-		<unit variation="202" posx="5.7607" posz="-12.5148" orientx="0.0015" orienty="0.0000" orientz="1.0000">deNatEUPropWingCshort</unit>
-		<unit variation="202" posx="8.3931" posz="-9.9005" orientx="-1.0000" orienty="0.0000" orientz="0.0015">deNatEUPropWingCshort</unit>
-		<unit variation="202" posx="3.1267" posz="-9.9467" orientx="-1.0000" orienty="0.0000" orientz="0.0015">deNatEUPropWingCshort</unit>
+		<unit variation="0" posx="5.7607" posz="-12.5148" orientx="0.0015" orienty="0.0000" orientz="1.0000">zpNatEUScottishPalaces</unit>
+		<unit variation="0" posx="8.3931" posz="-9.9005" orientx="-1.0000" orienty="0.0000" orientz="0.0015">zpNatEUScottishPalaces</unit>
+		<unit variation="0" posx="3.1267" posz="-9.9467" orientx="-1.0000" orienty="0.0000" orientz="0.0015">zpNatEUScottishPalaces</unit>
 		<unit variation="176" posx="-2.4439" posz="-14.9865" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpHCFountainA</unit>
 		<unit variation="0" posx="9.4484" posz="-11.3210" orientx="-1.0000" orienty="0.0000" orientz="-0.0009">SPCPathBlock3</unit>
 		<unit variation="203" posx="-4.0450" posz="-11.9476" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deNatEUPropVilMale</unit>
@@ -83,7 +83,7 @@
 		<unit variation="6" posx="-4.0784" posz="-8.7110" orientx="-0.0051" orienty="-0.0000" orientz="-1.0000">zpParliamentFlag</unit>
 		<unit variation="38" posx="-7.1418" posz="-9.0962" orientx="-1.0000" orienty="0.0000" orientz="0.0037">zpNatEUPropFencDarkBrickB</unit>
 		<unit variation="0" posx="12.6079" posz="-8.5475" orientx="0.7033" orienty="0.0000" orientz="-0.7109">PropsPoles</unit>
-		<unit variation="202" posx="5.7464" posz="-7.3063" orientx="0.0015" orienty="0.0000" orientz="1.0000">deNatEUPropWingCshort</unit>
+		<unit variation="0" posx="5.7464" posz="-7.3063" orientx="0.0015" orienty="0.0000" orientz="1.0000">zpNatEUScottishPalaces</unit>
 		<unit variation="8" posx="5.4281" posz="-3.6851" orientx="-0.9233" orienty="0.0000" orientz="0.3841">NativeTownObstruction</unit>
 		<unit variation="0" posx="9.2174" posz="-4.5967" orientx="1.0000" orienty="0.0000" orientz="-0.0005">SPCPathBlock3</unit>
 		<unit variation="64" posx="-7.1771" posz="-7.1347" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropFencDarkBrickB</unit>
@@ -121,7 +121,7 @@
 		<unit variation="64" posx="-8.4418" posz="6.1424" orientx="-0.7071" orienty="0.0000" orientz="-0.7071">zpNatEUPropFencDarkBrickB</unit>
 		<unit variation="38" posx="-7.0080" posz="4.7549" orientx="1.0000" orienty="0.0000" orientz="-0.0018">zpNatEUPropFencDarkBrickB</unit>
 		<unit variation="72" posx="8.7741" posz="5.4972" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpNatEUPropFencDarkBrickB</unit>
-		<unit variation="146" posx="-9.3923" posz="12.7809" orientx="1.0000" orienty="0.0000" orientz="-0.0066">deNatEUPropWingC</unit>
+		<unit variation="1" posx="-9.3923" posz="12.7809" orientx="1.0000" orienty="0.0000" orientz="-0.0066">zpNatEUScottishPalaces</unit>
 		<unit variation="8" posx="13.2175" posz="6.9149" orientx="0.0006" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
 		<unit variation="0" posx="-9.5341" posz="9.7578" orientx="-1.0000" orienty="0.0000" orientz="-0.0009">SPCPathBlock3</unit>
 		<unit variation="0" posx="8.7787" posz="8.7848" orientx="-1.0000" orienty="0.0000" orientz="-0.0009">SPCPathBlock3</unit>
@@ -134,7 +134,7 @@
 		<unit variation="8" posx="-6.6221" posz="12.0584" orientx="-1.0000" orienty="0.0000" orientz="0.0015">NativeTownObstruction</unit>
 		<unit variation="13" posx="-5.4740" posz="10.6915" orientx="0.3827" orienty="0.0000" orientz="0.9239">deNatEUPropVilLeaders</unit>
 		<unit variation="218" posx="-1.3106" posz="11.6467" orientx="-0.7071" orienty="0.0000" orientz="0.7071">deNatEUPropVilLeaders</unit>
-		<unit variation="146" posx="6.1742" posz="17.7242" orientx="1.0000" orienty="0.0000" orientz="-0.0030">deNatEUPropWingC</unit>
+		<unit variation="1" posx="6.1742" posz="17.7242" orientx="1.0000" orienty="0.0000" orientz="-0.0030">zpNatEUScottishPalaces</unit>
 		<unit variation="192" posx="-3.3751" posz="11.0813" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">deNatEUPropStatue</unit>
 		<unit variation="0" posx="-9.9726" posz="15.1664" orientx="-1.0000" orienty="0.0000" orientz="-0.0009">SPCPathBlock3</unit>
 		<unit variation="0" posx="7.2788" posz="14.6315" orientx="-1.0000" orienty="0.0000" orientz="-0.0009">SPCPathBlock3</unit>
@@ -145,9 +145,9 @@
 		<unit variation="8" posx="13.0737" posz="13.9340" orientx="0.0006" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
 		<unit variation="79" posx="-2.8833" posz="14.1643" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativePropsCastleLeaders</unit>
 		<unit variation="8" posx="-14.8517" posz="15.9621" orientx="0.0006" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
-		<unit variation="202" posx="-9.3654" posz="20.1574" orientx="-1.0000" orienty="0.0000" orientz="0.0016">deNatEUPropWingCshort</unit>
-		<unit variation="202" posx="-6.8213" posz="17.5589" orientx="0.0016" orienty="0.0000" orientz="1.0000">deNatEUPropWingCshort</unit>
-		<unit variation="202" posx="-4.1446" posz="20.1865" orientx="-1.0000" orienty="0.0000" orientz="0.0016">deNatEUPropWingCshort</unit>
+		<unit variation="0" posx="-9.3654" posz="20.1574" orientx="-1.0000" orienty="0.0000" orientz="0.0016">zpNatEUScottishPalaces</unit>
+		<unit variation="0" posx="-6.8213" posz="17.5589" orientx="0.0016" orienty="0.0000" orientz="1.0000">zpNatEUScottishPalaces</unit>
+		<unit variation="0" posx="-4.1446" posz="20.1865" orientx="-1.0000" orienty="0.0000" orientz="0.0016">zpNatEUScottishPalaces</unit>
 		<unit variation="0" posx="-10.0518" posz="19.6285" orientx="-1.0000" orienty="0.0000" orientz="-0.0009">SPCPathBlock3</unit>
 		<unit variation="8" posx="3.8188" posz="18.5880" orientx="-1.0000" orienty="-0.0000" orientz="-0.0004">NativeTownObstruction</unit>
 		<unit variation="8" posx="-7.3851" posz="19.4116" orientx="-0.9233" orienty="0.0000" orientz="0.3841">NativeTownObstruction</unit>
@@ -161,8 +161,8 @@
 		<unit variation="8" posx="-14.8883" posz="22.7334" orientx="0.0006" orienty="0.0000" orientz="1.0000">PropsPottedPlants</unit>
 		<unit variation="3" posx="-1.7109" posz="20.6776" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpPropsColony</unit>
 		<unit variation="3" posx="8.7713" posz="21.0739" orientx="1.0000" orienty="0.0000" orientz="0.0000">deNatEUPropVilFemale</unit>
-		<unit variation="202" posx="-6.7544" posz="22.8171" orientx="0.0016" orienty="0.0000" orientz="1.0000">deNatEUPropWingCshort</unit>
-		<unit variation="146" posx="1.1495" posz="22.8243" orientx="0.0046" orienty="0.0000" orientz="1.0000">deNatEUPropWingC</unit>
+		<unit variation="0" posx="-6.7544" posz="22.8171" orientx="0.0016" orienty="0.0000" orientz="1.0000">zpNatEUScottishPalaces</unit>
+		<unit variation="1" posx="1.1495" posz="22.8243" orientx="0.0046" orienty="0.0000" orientz="1.0000">zpNatEUScottishPalaces</unit>
 		<unit variation="0" posx="-6.6167" posz="20.7290" orientx="-0.0032" orienty="0.0000" orientz="-1.0000">zpNativeTowerParliament</unit>
 		<unit variation="1" posx="9.9455" posz="21.5002" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropMarketStall</unit>
 		<unit variation="0" posx="8.5826" posz="23.0191" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropMarketStall</unit>
