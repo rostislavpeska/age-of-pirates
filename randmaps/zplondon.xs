@@ -358,116 +358,6 @@ int landNuggetDef(string name = "", int difficulty = 0, float maxM = 0.0)
 	return(d);
 }
 
-// ---- triggers (Istanbul's shapes)
-// One "AutoConvert suspended" effect on the current trigger.
-void suspendAutoConvert(int unitId = -1)
-{
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + unitId);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");
-}
-
-// "Guard nugget collectable -> the capturable converts again" (Istanbul "Harbour k Convert ON").
-void releaseOnNugget(string name = "", int nuggetId = -1, int unitId = -1)
-{
-	rmCreateTrigger(name);
-	rmAddTriggerCondition("Nugget Is Collectable");
-	rmSetTriggerConditionParam("NuggetObject", "" + nuggetId);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + unitId, false);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-	rmSetTriggerEffectParam("Suspend", "False", false);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-}
-
-// "No Gaia guardian of this type left within distM of the unit -> its AutoConvert resumes": the harbour release that
-// needs only the POST's id (performance_test.xs's "Units in Area" form). An object-def nugget's own id is not a
-// safe trigger target: the nugget manager swaps the placeholder for the record's nuggetunit and adds the guardians.
-void releaseWhenClear(string name = "", int unitId = -1, string guardianType = "", int distM = 0)
-{
-	rmCreateTrigger(name);
-	rmAddTriggerCondition("Units in Area");
-	rmSetTriggerConditionParam("DstObject", "" + unitId);
-	rmSetTriggerConditionParamInt("Player", 0);
-	rmSetTriggerConditionParam("UnitType", guardianType);
-	rmSetTriggerConditionParamInt("Dist", distM);
-	rmSetTriggerConditionParam("Op", "==");
-	rmSetTriggerConditionParamInt("Count", 0);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + unitId, false);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-	rmSetTriggerEffectParam("Suspend", "False", false);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-}
-
-// The Tower family (Istanbul's palace), three passes so every name exists before a Fire Event references it:
-// pass 1 creates the per-player conversion triggers; pass 2 the unlock (guard nugget collectable -> the flag
-// converts again, all conversions armed); pass 3 fills each conversion (player p holds the flag -> the Tower
-// building converts to p, the OTHER players' conversions re-armed).
-void towerConvCreate(string side = "")
-{
-	for (k = 1; <= cNumberNonGaiaPlayers)
-	{
-		rmCreateTrigger("TowerConv" + side + "_Plr" + k);
-	}
-}
-
-void towerUnlock(string side = "", int nuggetId = -1, int flagId = -1)
-{
-	rmCreateTrigger("Tower" + side + "Unlock");
-	rmSwitchToTrigger(rmTriggerID("Tower" + side + "Unlock"));
-	rmAddTriggerCondition("Nugget Is Collectable");
-	rmSetTriggerConditionParam("NuggetObject", "" + nuggetId);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + flagId, false);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-	rmSetTriggerEffectParam("Suspend", "False", false);
-	for (k = 1; <= cNumberNonGaiaPlayers)
-	{
-		rmAddTriggerEffect("Fire Event");
-		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerConv" + side + "_Plr" + k));
-	}
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-}
-
-void towerConvFill(string side = "", int flagId = -1, int buildingId = -1)
-{
-	for (p = 1; <= cNumberNonGaiaPlayers)
-	{
-		rmSwitchToTrigger(rmTriggerID("TowerConv" + side + "_Plr" + p));
-		rmAddTriggerCondition("Units Owned");
-		rmSetTriggerConditionParam("SrcObject", "" + flagId);
-		rmSetTriggerConditionParamInt("Player", p);
-		rmAddTriggerEffect("Convert");
-		rmSetTriggerEffectParam("SrcObject", "" + buildingId);
-		rmSetTriggerEffectParamInt("PlayerID", p);
-		for (q = 1; <= cNumberNonGaiaPlayers)
-		{
-			if (q != p)
-			{
-				rmAddTriggerEffect("Fire Event");
-				rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerConv" + side + "_Plr" + q));
-			}
-		}
-		rmAddTriggerEffect("Play Soundset");
-		rmSetTriggerEffectParam("Soundset", "SheepFound");
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(false);
-		rmSetTriggerRunImmediately(false);
-		rmSetTriggerLoop(false);
-	}
-}
-
 // ============================================================================
 void main(void)
 {
@@ -1731,18 +1621,48 @@ void main(void)
 
 	// ---- 13.1 startup: every capturable's AutoConvert suspended (Istanbul "Trade Harbours NoAutoConvert")
 	rmCreateTrigger("London NoAutoConvert");
-	suspendAutoConvert(harbourN1PostUnit);
-	suspendAutoConvert(harbourN2PostUnit);
-	suspendAutoConvert(harbourS1PostUnit);
-	suspendAutoConvert(harbourS2PostUnit);
-	suspendAutoConvert(menagerieSUnit);
-	suspendAutoConvert(menagerieNUnit);
-	suspendAutoConvert(factorySUnit);
-	suspendAutoConvert(factoryNUnit);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + harbourN1PostUnit);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + harbourN2PostUnit);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + harbourS1PostUnit);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + harbourS2PostUnit);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + menagerieSUnit);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + menagerieNUnit);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + factorySUnit);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + factoryNUnit);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
 	if (towerSFlagUnit >= 0)
-		suspendAutoConvert(towerSFlagUnit);
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject", "" + towerSFlagUnit);
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "True");
 	if (towerNFlagUnit >= 0)
-		suspendAutoConvert(towerNFlagUnit);
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject", "" + towerNFlagUnit);
+		rmSetTriggerEffectParam("ActionName", "AutoConvert");
+		rmSetTriggerEffectParam("Suspend", "True");
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
@@ -1750,28 +1670,212 @@ void main(void)
 
 	// ---- 13.2 releases: harbours when their guardians are gone (by area around the post); Menageries and Factories
 	// when their baked nugget is collectable
-	releaseWhenClear("Harbour N1 Convert ON", harbourN1PostUnit, harbourGuardType, harbourGuardReachM);
-	releaseWhenClear("Harbour N2 Convert ON", harbourN2PostUnit, harbourGuardType, harbourGuardReachM);
-	releaseWhenClear("Harbour S1 Convert ON", harbourS1PostUnit, harbourGuardType, harbourGuardReachM);
-	releaseWhenClear("Harbour S2 Convert ON", harbourS2PostUnit, harbourGuardType, harbourGuardReachM);
-	releaseOnNugget("Menagerie S Convert ON", menagerieSNugUnit, menagerieSUnit);
-	releaseOnNugget("Menagerie N Convert ON", menagerieNNugUnit, menagerieNUnit);
-	releaseOnNugget("Factory S Convert ON", factorySNugUnit, factorySUnit);
-	releaseOnNugget("Factory N Convert ON", factoryNNugUnit, factoryNUnit);
+	rmCreateTrigger("Harbour N1 Convert ON");
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject", "" + harbourN1PostUnit);
+	rmSetTriggerConditionParamInt("Player", 0);
+	rmSetTriggerConditionParam("UnitType", harbourGuardType);
+	rmSetTriggerConditionParamInt("Dist", harbourGuardReachM);
+	rmSetTriggerConditionParam("Op", "==");
+	rmSetTriggerConditionParamInt("Count", 0);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + harbourN1PostUnit, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	rmCreateTrigger("Harbour N2 Convert ON");
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject", "" + harbourN2PostUnit);
+	rmSetTriggerConditionParamInt("Player", 0);
+	rmSetTriggerConditionParam("UnitType", harbourGuardType);
+	rmSetTriggerConditionParamInt("Dist", harbourGuardReachM);
+	rmSetTriggerConditionParam("Op", "==");
+	rmSetTriggerConditionParamInt("Count", 0);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + harbourN2PostUnit, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	rmCreateTrigger("Harbour S1 Convert ON");
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject", "" + harbourS1PostUnit);
+	rmSetTriggerConditionParamInt("Player", 0);
+	rmSetTriggerConditionParam("UnitType", harbourGuardType);
+	rmSetTriggerConditionParamInt("Dist", harbourGuardReachM);
+	rmSetTriggerConditionParam("Op", "==");
+	rmSetTriggerConditionParamInt("Count", 0);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + harbourS1PostUnit, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	rmCreateTrigger("Harbour S2 Convert ON");
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject", "" + harbourS2PostUnit);
+	rmSetTriggerConditionParamInt("Player", 0);
+	rmSetTriggerConditionParam("UnitType", harbourGuardType);
+	rmSetTriggerConditionParamInt("Dist", harbourGuardReachM);
+	rmSetTriggerConditionParam("Op", "==");
+	rmSetTriggerConditionParamInt("Count", 0);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + harbourS2PostUnit, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	rmCreateTrigger("Menagerie S Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", "" + menagerieSNugUnit);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + menagerieSUnit, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	rmCreateTrigger("Menagerie N Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", "" + menagerieNNugUnit);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + menagerieNUnit, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	rmCreateTrigger("Factory S Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", "" + factorySNugUnit);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + factorySUnit, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+	rmCreateTrigger("Factory N Convert ON");
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", "" + factoryNNugUnit);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + factoryNUnit, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
 
 	// ---- 13.3 the Towers (Istanbul's palace family), three passes per bank - only where the export carries a
 	// capturable flag (none does today: both families are skipped)
 	if (towerSFlagUnit >= 0)
 	{
-		towerConvCreate("S");
-		towerUnlock("S", towerSNugUnit, towerSFlagUnit);
-		towerConvFill("S", towerSFlagUnit, towerSBldUnit);
+		for (k = 1; <= cNumberNonGaiaPlayers)
+		{
+			rmCreateTrigger("TowerConvS_Plr" + k);
+		}
+		rmCreateTrigger("TowerSUnlock");
+		rmSwitchToTrigger(rmTriggerID("TowerSUnlock"));
+		rmAddTriggerCondition("Nugget Is Collectable");
+		rmSetTriggerConditionParam("NuggetObject", "" + towerSNugUnit);
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject", "" + towerSFlagUnit, false);
+		rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+		rmSetTriggerEffectParam("Suspend", "False", false);
+		for (k = 1; <= cNumberNonGaiaPlayers)
+		{
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerConvS_Plr" + k));
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		for (p = 1; <= cNumberNonGaiaPlayers)
+		{
+			rmSwitchToTrigger(rmTriggerID("TowerConvS_Plr" + p));
+			rmAddTriggerCondition("Units Owned");
+			rmSetTriggerConditionParam("SrcObject", "" + towerSFlagUnit);
+			rmSetTriggerConditionParamInt("Player", p);
+			rmAddTriggerEffect("Convert");
+			rmSetTriggerEffectParam("SrcObject", "" + towerSBldUnit);
+			rmSetTriggerEffectParamInt("PlayerID", p);
+			for (q = 1; <= cNumberNonGaiaPlayers)
+			{
+				if (q != p)
+				{
+					rmAddTriggerEffect("Fire Event");
+					rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerConvS_Plr" + q));
+				}
+			}
+			rmAddTriggerEffect("Play Soundset");
+			rmSetTriggerEffectParam("Soundset", "SheepFound");
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(false);
+			rmSetTriggerLoop(false);
+		}
 	}
 	if (towerNFlagUnit >= 0)
 	{
-		towerConvCreate("N");
-		towerUnlock("N", towerNNugUnit, towerNFlagUnit);
-		towerConvFill("N", towerNFlagUnit, towerNBldUnit);
+		for (k = 1; <= cNumberNonGaiaPlayers)
+		{
+			rmCreateTrigger("TowerConvN_Plr" + k);
+		}
+		rmCreateTrigger("TowerNUnlock");
+		rmSwitchToTrigger(rmTriggerID("TowerNUnlock"));
+		rmAddTriggerCondition("Nugget Is Collectable");
+		rmSetTriggerConditionParam("NuggetObject", "" + towerNNugUnit);
+		rmAddTriggerEffect("Unit Action Suspend");
+		rmSetTriggerEffectParam("SrcObject", "" + towerNFlagUnit, false);
+		rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+		rmSetTriggerEffectParam("Suspend", "False", false);
+		for (k = 1; <= cNumberNonGaiaPlayers)
+		{
+			rmAddTriggerEffect("Fire Event");
+			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerConvN_Plr" + k));
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		for (p = 1; <= cNumberNonGaiaPlayers)
+		{
+			rmSwitchToTrigger(rmTriggerID("TowerConvN_Plr" + p));
+			rmAddTriggerCondition("Units Owned");
+			rmSetTriggerConditionParam("SrcObject", "" + towerNFlagUnit);
+			rmSetTriggerConditionParamInt("Player", p);
+			rmAddTriggerEffect("Convert");
+			rmSetTriggerEffectParam("SrcObject", "" + towerNBldUnit);
+			rmSetTriggerEffectParamInt("PlayerID", p);
+			for (q = 1; <= cNumberNonGaiaPlayers)
+			{
+				if (q != p)
+				{
+					rmAddTriggerEffect("Fire Event");
+					rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerConvN_Plr" + q));
+				}
+			}
+			rmAddTriggerEffect("Play Soundset");
+			rmSetTriggerEffectParam("Soundset", "SheepFound");
+			rmSetTriggerPriority(4);
+			rmSetTriggerActive(false);
+			rmSetTriggerRunImmediately(false);
+			rmSetTriggerLoop(false);
+		}
 	}
 
 
