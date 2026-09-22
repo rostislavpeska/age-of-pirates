@@ -24,19 +24,19 @@ against vanilla, which is what the two skills below exist to do.
 
 Two Claude skills were built first, because none of the rest is tractable by hand.
 
-**`skills/bar-extract`** — reads the 42 `.bar` archives (~122,000 files)
+**`.claude/skills/bar-extract`** — reads the 42 `.bar` archives (~122,000 files)
 directly: ESPN v6 container, `alz4` compression, XMB→XML decompile. Standard
 library only, no Resource Manager. Everything downstream reads vanilla through
 this, so no unpacked copy of the game is needed.
 
-**`skills/vanilla-merge`** — classifies every mod file as override or
+**`.claude/skills/vanilla-merge`** — classifies every mod file as override or
 new, reports which records an override drops, and splices the missing ones back
 without touching the mod's own changes. Current state: **141 overrides, 5905
 mod-only files**.
 
 A third skill came later, out of the Inuit work:
 
-**`skills/native-ability-minify`** — shrinks a native civ's 2×2 ability
+**`.claude/skills/native-ability-minify`** — shrinks a native civ's 2×2 ability
 button to a 1×1 grid button. See [Phase 2](#phase-2--inuits).
 
 ## Phase 1 — stale overrides

@@ -1,5 +1,9 @@
 # Handoff: refactor the shared skill library
 
+> Historical proposal, superseded on 2026-09-22 by the user-approved Claude-first
+> implementation. Read [current architecture](skill-system-architecture.md):
+> physical `.claude/skills`, one ignored `.agents/skills` link, no AoP plugin.
+
 Prepared 2026-09-22. This document is the execution brief for the next agent.
 The proposed filesystem migration has NOT been performed.
 
@@ -234,7 +238,7 @@ Initial public main commits are already pushed, with green CI:
 - AoE3DE: `e8467001c6add4c01ac545a5e96057a402a6bc89`
 They still use the old layout. Recheck remote heads before writing/pushing.
 
-## Official sources — use targeted follow-ups only
+## Official sources â€” use targeted follow-ups only
 
 - https://learn.chatgpt.com/docs/build-skills
 - https://learn.chatgpt.com/docs/config-file/config-reference

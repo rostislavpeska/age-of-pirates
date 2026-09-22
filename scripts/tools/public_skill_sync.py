@@ -18,7 +18,7 @@ import sys
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SOURCE_ROOT = ROOT / "skills"
+SOURCE_ROOT = ROOT / ".claude" / "skills"
 MANIFEST_PATH = ROOT / "scripts" / "skill-sync-manifest.json"
 CONFIG_PATH = ROOT / "config" / "skill-sync.local.json"
 STATE_PATH = ROOT / "scripts" / "skill-sync-state.json"

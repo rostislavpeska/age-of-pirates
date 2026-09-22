@@ -1,6 +1,6 @@
 # Shared agent setup
 
-Author skill content in `skills/<name>/SKILL.md`. There is one physical source per checkout.
+Author skill content in `.claude/skills/<name>/SKILL.md`. There is one physical source per checkout.
 Repository rules live in `AGENTS.md`; `CLAUDE.md` and `GEMINI.md` import that file.
 Only relevant skills and references should be loaded into context.
 
@@ -20,7 +20,7 @@ maintainer's AoP suite with the same skill names.
 
 ## Set up a checkout
 
-Requires Python 3.10 or later. From a public repository's root:
+Requires Python 3.10 or later. For a checkout using this layout, the public helper name is:
 
 ```bash
 python scripts/setup_repo_skill_links.py
@@ -30,16 +30,22 @@ python scripts/setup_repo_skill_links.py --check
 In the AoP authoring repository, the same helper is
 `python scripts/tools/setup_agent_skill_link.py`.
 
-The helper creates two ignored directory links to this checkout's `skills/`.
+The helper creates one ignored `.agents/skills` directory link to the physical
+`.claude/skills/` source. Claude uses the source directly.
 On Windows it uses directory junctions; elsewhere relative symbolic links.
 It preflights every destination, refuses existing copies or unexpected/broken links,
 preserves agent settings, and never deletes files. `--check` is read-only and verifies
 file identity, not merely matching content.
 
 Run setup separately after each clone, including CI, worktrees and remote workers.
+Each worktree links to its own `.claude/skills`, never the main checkout.
 Windows junctions point to absolute locations: after moving a checkout, inspect and
 remove only the old link itself before rerunning setup. Never recursively delete a
 discovery path. The helper intentionally refuses to guess about broken links.
+
+AoP has migrated to this layout. The public repositories remain on their existing
+`skills/` layout while exports are held; follow their shipped setup instructions.
+Before exporting the new helper, migrate and validate their layout and CI together.
 
 ## Optional use outside this checkout
 

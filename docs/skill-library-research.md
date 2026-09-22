@@ -1,5 +1,9 @@
 # Research: one editable skill library across agents
 
+> Historical proposal, superseded on 2026-09-22 by the user-approved Claude-first
+> implementation. Read [current architecture](skill-system-architecture.md):
+> physical `.claude/skills`, one ignored `.agents/skills` link, no AoP plugin.
+
 Date: 2026-09-22. **Recommendation only; no directory migration has been applied.**
 The [architecture document](skill-system-architecture.md) describes the current implementation.
 

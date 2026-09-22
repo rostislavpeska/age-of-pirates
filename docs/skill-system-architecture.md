@@ -4,33 +4,41 @@ This is the maintainer's overview of the implemented skill system. Keep it in Ag
 Pirates (AoP). It covers AoP and both public repositories; it is not itself exported.
 For agent setup and compatibility, see [Shared agent setup](agent-skills.md).
 
-The [one-library research](skill-library-research.md) proposes replacing discovery
-junctions with a physical shared skill tree and a local Claude plugin. That proposal
-has not been migrated; the implementation described below remains current.
-
 ## Source of truth
 
-**Author skills in AoP `skills/<name>/SKILL.md`.** All AoP, Blender and reusable AoE3DE
-skills live there. Public repositories receive selected, reviewed snapshots.
-Outside contributions can be reviewed and imported back into AoP.
+**Edit skills in AoP `.claude/skills/<name>/SKILL.md`.** This is the physical,
+tracked library for Claude, Codex and the other supported agents. It includes all
+43 current skills, their references, scripts and resources. Claude is the primary
+authoring agent; Codex uses the same files for 3D work and other tasks.
 
-Inside each checkout there is one physical skill directory. `.agents/skills` and
-`.claude/skills` are filesystem links to it, not independently maintained copies.
-Expanding either link in an editor displays the same files.
+Claude Code discovers that directory directly. `.agents/skills` is a single ignored
+directory link to it for Codex, Cursor, Gemini CLI and VS Code Copilot. Creating or
+editing a skill through either path changes the same file, including newly created
+skill directories. No top-level `skills/`, generated instruction copies, forwarding
+skill bodies, local marketplace or plugin registration is needed in AoP.
 
 ```mermaid
 flowchart LR
-    Agents["Agents working in AoP"] --> Links[".agents/skills and .claude/skills"]
-    Links --> Source["AoP skills/ — authoring source"]
-    Source -->|Reviewed export| ThreeD["rts-3D-modelling — public snapshot"]
-    Source -->|Reviewed export| AoE["aoe3-modding-skills — public snapshot"]
-    ThreeD -->|Reviewed import| Source
-    AoE -->|Reviewed import| Source
+    Claude["Claude Code"] --> Source["AoP .claude/skills Ă˘â‚¬â€ť edit here"]
+    Codex["Codex and other agents"] --> Link[".agents/skills Ă˘â‚¬â€ť ignored filesystem link"]
+    Link --> Source
+    Source -->|Reviewed export, currently held| ThreeD["rts-3D-modelling snapshot"]
+    Source -->|Reviewed export, currently held| AoE["aoe3-modding-skills snapshot"]
 ```
 
-Each public checkout has its own `skills/` and discovery links for its consumers.
-Copies between independent repositories are intentional release snapshots. Copies
-between agents in the same checkout are unnecessary and must not be created.
+The user approved this Claude-first layout on 2026-09-22, superseding the plugin
+proposal in [the earlier research](skill-library-research.md) and
+[handoff](skill-library-refactor-handoff.md). Those documents remain historical evidence.
+The headless Claude plugin tests do not prove Desktop UI activation; the actual UI
+probe failed. This implementation avoids that registration path entirely.
+
+Public checkouts have NOT migrated or received exports. They still use their own
+physical `skills/` and shipped discovery helpers. AoP's synchronizer now reads the
+new canonical source but retains those public destination paths and existing hashes.
+Before a future export, migrate public layout/setup/CI together; the new source setup
+helper expects `.claude/skills` and must not be exported alone into a legacy checkout.
+Release snapshots between repositories are intentional; no local agent skill copies
+are maintained.
 
 ## Repositories and ownership
 
@@ -47,7 +55,7 @@ device configuration determines their locations.
 
 | Content | Maintained in | Transfer behavior |
 | --- | --- | --- |
-| Skill instructions, references and bundled helpers | AoP `skills/` | Only allowlisted packages are synchronized |
+| Skill instructions, references and bundled helpers | AoP `.claude/skills/` | Only allowlisted packages are synchronized |
 | Shared project rules | AoP `AGENTS.md` | Never exported as public project rules |
 | Discovery helper, user installer, setup guide, instruction import stubs | AoP files mapped in `supportFiles` | Synchronized to both public repos |
 | Public README, AGENTS.md, LICENSE, contribution docs and CI | Each public repository | Not managed by the synchronizer |
@@ -57,7 +65,7 @@ device configuration determines their locations.
 The authoritative export list and shared-file mapping live in
 [`scripts/skill-sync-manifest.json`](../scripts/skill-sync-manifest.json).
 Update the table above if that manifest changes. The exporter does not automatically
-include a new package just because it exists in `skills/`.
+include a new package just because it exists in `.claude/skills/`.
 
 ## Portable workflows and AoP policy
 
@@ -75,7 +83,7 @@ package must not require an unexported AoP skill to work.
 Export is an allowlist-based copy, **not automatic sanitization or rewriting**.
 Files inside an approved package are transfer candidates, apart from ignored cache
 files. Curate public-safe content in AoP before exporting; keep private additions
-outside those packages. Local-only `skills/gxo-convert/` and
+outside those packages. Local-only `.claude/skills/gxo-convert/` and
 `scripts/havok/converter.local.json` remain ignored machine setup.
 
 ## Resource completeness and reference ownership
@@ -184,7 +192,7 @@ none exists, say that compatibility remains unverified.
 
 ## Skill-library audit
 
-The [audit skill](../skills/skill-library-audit/SKILL.md) is implemented in AoP.
+The [audit skill](../.claude/skills/skill-library-audit/SKILL.md) is implemented in AoP.
 It checks resource reachability and reports prerequisites without installing or
 launching applications. Six packages have resource declarations: the four existing
 public-package sources, the reference library and the audit itself. Other AoP
@@ -224,19 +232,24 @@ packages manually or deleting synchronization baselines.
 
 ## How agents find the same content
 
-The setup helper creates `.agents/skills` and `.claude/skills` pointing at `skills/`.
-On Windows these are directory junctions; elsewhere they are relative symlinks.
-The links are ignored by Git and must be created for each clone or worktree.
+The setup helper creates only `.agents/skills`, pointing at `.claude/skills`.
+Windows uses a directory junction; other systems use a relative symbolic link.
+The canonical directory must be physical. The helper refuses a second top-level
+`skills/` tree and conflicting or broken adapters, without deleting content.
+`--check` verifies identity of every discovered SKILL.md without writing.
 
-Codex, Cursor, Gemini CLI and VS Code Copilot use the `.agents` discovery path;
-Claude Code uses `.claude`. Shared instructions live in `AGENTS.md`.
-`CLAUDE.md` and `GEMINI.md` are small imports of that file, not duplicate policy.
-See the [setup guide](agent-skills.md) for the compatibility table and official sources.
+Both agents create and edit the same library. Filesystem resolution introduces no
+extra model-directed instruction-loading step; overall agent speed has not been
+benchmarked. Session skill catalogs can still require refresh after adding skills.
 
-There is no extra `.codex/skills`, `.cursor/skills` or `.gemini/skills` mirror.
-Start the agent in the intended repository and load only relevant skills and
-references. Discovering a skill does not establish an MCP connection, install a
-converter, select the correct Blender session or grant application permissions.
+Shared rules remain in `AGENTS.md`, imported by `CLAUDE.md` and `GEMINI.md`.
+Do not add `.codex/skills`, `.cursor/skills` or `.gemini/skills` mirrors. Perform Git
+operations on canonical paths. Do not restore old tracked trees into a live alias
+or recursively delete through the adapter. File operations through the link really
+do change the canonical source; it is not a backup or an isolated workspace.
+See [agent setup](agent-skills.md) for setup and verification.
+
+Discovery does not install applications, connect MCP servers or grant permissions.
 
 ## Configuration and synchronization state
 
@@ -279,8 +292,8 @@ python -B scripts/tools/public_skill_sync.py export --target architecture --writ
 ```
 
 Use `import --target aoe3de --write` for a reviewed incoming AoE3DE change.
-The [export skill](../skills/public-skill-export/SKILL.md) and
-[import skill](../skills/public-skill-import/SKILL.md) are the task entry points.
+The [export skill](../.claude/skills/public-skill-export/SKILL.md) and
+[import skill](../.claude/skills/public-skill-import/SKILL.md) are the task entry points.
 Export refreshes local checkouts; publishing to GitHub remains a separate action.
 
 Shared setup files also participate in both directions. After importing a shared
@@ -307,7 +320,7 @@ the state file to force an overwrite.
 Other practical limits of the current implementation:
 
 - Both configured repositories must be valid, even when selecting one target.
-  Each needs a `.git` entry and a `skills/` directory.
+  Each currently needs a `.git` entry and a legacy public `skills/` directory.
 - A new skill requires deliberate onboarding: both package directories must exist
   and validate. Adding its name to the manifest alone does not bootstrap it.
 - Sync replaces a whole selected package, so deleted files in the source are
@@ -331,28 +344,19 @@ authoring suite to remember.
 
 ## Another device or a fresh clone
 
-1. Clone AoP and the two public repos into separate folders.
-2. Copy `config/skill-sync.example.json` to `config/skill-sync.local.json` and
-   set both paths for that machine. Do not commit the local config.
-3. In AoP run `python scripts/tools/setup_agent_skill_link.py`, then `--check`.
-4. In each public repo run `python scripts/setup_repo_skill_links.py`, then
-   `--check`. These create links, not content copies.
-5. Run sync `status` before any write. Open fresh agent sessions in the intended
-   checkout and verify discovery. Configure required tools/MCP separately.
+1. Clone AoP. Edit skills only in `.claude/skills/`.
+2. Run `python scripts/tools/setup_agent_skill_link.py`, then repeat with `--check`.
+   Claude needs no adapter; the command creates the Codex/shared discovery link.
+3. Open a fresh agent session in that checkout. Skill activation remains a host check.
+4. Configure tool connections and ignored device paths separately. If using public
+   sync, initialize `config/skill-sync.local.json` from its example and run status.
+   Public exports remain held; follow each public checkout's existing setup meanwhile.
 
-The helper refuses existing copied folders or unexpected/broken links. Inspect
-them instead of overwriting them. After relocating a Windows checkout, remove only
-the obsolete junction itself before recreating it; never recursively delete through
-a discovery link.
-
-Older AoP commits tracked files under `.claude/skills`. Do not restore those paths
-through the current junction: a historical write can reach the canonical source.
-Inspect old skill history in a separate checkout instead.
-
-Optional public consumer installation links individual skills into user-level
-discovery folders; see the setup guide. It is unnecessary for repository-local use.
-Do not install public snapshots globally over the maintainer's AoP skill names:
-that can create ambiguous or stale discovery.
+Repeat setup in each worktree: the link must resolve to that worktree's physical
+library. Windows junctions use absolute paths; relocating a checkout needs explicit
+repair of the verified link entry. The helper never replaces a conflicting path.
+No global installation is needed for AoP. Optional user-scope installation is intended
+for public consumers, not for shadowing the maintainer's repository skills.
 
 ## Testing and feedback
 
@@ -379,16 +383,41 @@ checks and link setup. CI does not prove Blender/Photoshop or in-game outcomes.
 On 2026-09-22 native metadata checks discovered 41 AoP packages and two in each
 public repo in Claude Code and Codex. This was discovery evidence, not paid model
 execution or a behavior test. Cursor, Gemini and Copilot runtime discovery was not
-tested in that check; see [feedback](../skills/FEEDBACK.md) for the recorded assessment.
+tested in that check; see [feedback](../.claude/skills/FEEDBACK.md) for the recorded assessment.
 
 For a strict dry-run audit, use read-only commands, compare before/after hashes and
 Git status, and inspect write logic without executing it. Report actual writes as
 **untested**. Do not run fixture tests, setup without `--check`, or sync with
 `--write` under a no-write instruction.
 
-Record concrete failures and evidence in [`skills/FEEDBACK.md`](../skills/FEEDBACK.md):
+Record concrete failures and evidence in [`.claude/skills/FEEDBACK.md`](../.claude/skills/FEEDBACK.md):
 task, expected/actual behavior, affected skill, cost, and smallest proposed fix.
 Treat feedback as findings to verify, not automatic instructions. Fix the relevant
 canonical instruction or helper, reproduce the failure with a small check, and
 export only once the improvement is supported. Preserve useful operator feedback;
 avoid adding a new framework or mandatory long audit for every minor edit.
+
+## Claude-first migration verification (2026-09-22)
+
+All 122 source files were backed up outside the live mod and hash-verified before
+and immediately after the move. Existing grouping-skill edits were carried forward;
+unrelated census work and Claude settings/hooks were preserved. Intentional edits
+update root-relative commands, Markdown links and helper repository-root calculations.
+The allowlist and synchronization baselines were not changed. No public export or
+publication was performed by this migration.
+
+Verification passed: 7 layout tests, 4 synchronization tests and 21 resource-audit
+fixtures (32 total); metadata validation of all 43 skills; and the six-package
+resource audit. The layout fixtures create a skill through the Codex link and edit
+it through the Claude source, verifying file identity and content in both directions.
+All 122 pre-move files remain present, with 25 intentionally changed for paths/docs.
+Export preview succeeded; import preview correctly refused incoming changes in the
+wrong direction. Hash comparisons confirmed both previews left public packages,
+support files and sync baselines unchanged; both public Git checkouts remain clean.
+The resource audit still covers six declared packages, not all 43. The user
+reported that a verification Codex task listed both Blender skills but advertised
+the removed top-level `skills/` paths, so loading through that metadata failed.
+Reading the canonical skill and its construction reference succeeded, and all seven
+layout tests passed. This establishes filesystem/resource access, not successful
+native loading. Stale host metadata is suspected; its refresh remains unresolved.
+No model-speed claim or fresh Claude Desktop UI success is inferred from these tests.

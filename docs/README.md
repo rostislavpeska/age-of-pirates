@@ -30,7 +30,7 @@ Read these **BEFORE** working on specific file types:
 
 ### Step-by-Step Workflows
 
-**🔧 [workflows/](workflows/)** - Complete procedures for complex tasks
+**🔧 [workflows/](workflows)** - Complete procedures for complex tasks
 
 - **[creating-spawning-building.md](workflows/creating-spawning-building.md)** - Buildings with tactic-based unit spawning (Maintain system, switchable tactics, complete templates, testing checklist)
 

@@ -36,7 +36,7 @@ scripts/aitest/STOP
 /references/
 
 # local-only skill: converter harness bound to this PC (WSL+Wine paths)
-/skills/gxo-convert/
+/.claude/skills/gxo-convert/
 /.agents/
 
 # machine-specific converter backend (see scripts/havok/converter.example.json)
@@ -54,5 +54,5 @@ sandbox/census/samples/london/
 # editor regeneration captures (politician dialog / editor / final screenshots) are evidence, not repo content
 sandbox/census/samples/regen/
 
-# Generated agent discovery adapters; author skills/ only
-/.claude/skills/
+# Claude skills are tracked source; only device settings stay local
+/.claude/settings.local.json

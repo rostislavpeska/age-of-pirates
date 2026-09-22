@@ -17,7 +17,7 @@ sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="repla
 REPO = str(Path(__file__).resolve().parents[2])
 os.chdir(REPO)
 spec = importlib.util.spec_from_file_location(
-    "bartool", "skills/aoe3de-bar-archives/scripts/bartool.py")
+    "bartool", ".claude/skills/aoe3de-bar-archives/scripts/bartool.py")
 bt = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(bt)
 
@@ -55,7 +55,7 @@ def load_animfile(ref):
     try:
         import subprocess
         out = subprocess.run(
-            [sys.executable, "skills/aoe3de-bar-archives/scripts/bartool.py",
+            [sys.executable, ".claude/skills/aoe3de-bar-archives/scripts/bartool.py",
              "cat", "art/" + r],
             capture_output=True, timeout=120)
         if out.returncode == 0 and out.stdout:

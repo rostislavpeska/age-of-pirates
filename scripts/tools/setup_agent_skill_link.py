@@ -1,4 +1,4 @@
-"""Expose one skills/ source to Claude Code, Codex, Cursor, Gemini CLI and Copilot.
+"""Expose one .claude/skills/ source to Claude Code, Codex, Cursor, Gemini CLI and Copilot.
 
 Maintained in AoP; public repositories receive reviewed snapshots of this helper.
 Python 3.10+. No skill copies, deletion, agent launches or machine-specific paths.
@@ -9,17 +9,26 @@ import os
 import subprocess
 
 
-ROOT = next(path for path in Path(__file__).resolve().parents if (path / "skills").is_dir())
+ROOT = next(path for path in Path(__file__).resolve().parents if (path / "AGENTS.md").is_file())
 ADAPTERS = (".agents", ".claude")
 
 
+def is_link(path: Path) -> bool:
+    return path.is_symlink() or bool(getattr(path.lstat(), "st_file_attributes", 0) & 0x400)
+
+
 def setup(root: Path = ROOT, *, user_home: Path | None = None, check: bool = False) -> None:
-    source = root.resolve() / "skills"
+    root = root.resolve()
+    source = root / ".claude" / "skills"
+    if not source.is_dir() or is_link(source):
+        raise SystemExit(f"Expected physical canonical skill directory: {source}")
+    if os.path.lexists(root / "skills"):
+        raise SystemExit("Unexpected legacy skills/ tree. Review the migration before setup.")
     skills = sorted(path.parent for path in source.glob("*/SKILL.md"))
     if not skills:
         raise SystemExit(f"No skills found in {source}")
     if user_home is None:
-        pairs = [(root / agent / "skills", source) for agent in ADAPTERS]
+        pairs = [(root / ".agents" / "skills", source)]
     else:
         pairs = [(user_home / agent / "skills" / skill.name, skill)
                  for agent in ADAPTERS for skill in skills]
@@ -28,7 +37,7 @@ def setup(root: Path = ROOT, *, user_home: Path | None = None, check: bool = Fal
     missing = []
     for link, target in pairs:
         if os.path.lexists(link):
-            if not link.exists() or not os.path.samefile(link, target):
+            if not is_link(link) or not link.exists() or not os.path.samefile(link, target):
                 raise SystemExit(f"Refusing to replace existing path: {link}. Review it manually.")
         else:
             missing.append((link, target))

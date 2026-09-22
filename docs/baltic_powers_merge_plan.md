@@ -2,8 +2,8 @@
 
 Status against game build `24241387` (`open_beta`). Written 2026-07-25.
 
-Tooling: `skills/bar-extract` (read vanilla out of the `.bar` archives)
-and `skills/vanilla-merge` (find and re-add dropped records).
+Tooling: `.claude/skills/bar-extract` (read vanilla out of the `.bar` archives)
+and `.claude/skills/vanilla-merge` (find and re-add dropped records).
 
 ## Done
 

@@ -1,7 +1,7 @@
 # Reference location
 
-The maintained shared reference is [data_xml_guide.md](../skills/aoe3de-reference/references/data_xml_guide.md).
-Read its [source and coverage notes](../skills/aoe3de-reference/references/provenance.md).
+The maintained shared reference is [data_xml_guide.md](../.claude/skills/aoe3de-reference/references/data_xml_guide.md).
+Read its [source and coverage notes](../.claude/skills/aoe3de-reference/references/provenance.md).
 
 The following AoP-specific observations remain here; counts and executable addresses
 are historical evidence, not a portable schema or current-build guarantee.
