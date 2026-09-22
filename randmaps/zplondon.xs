@@ -835,6 +835,7 @@ void main(void)
 	rmSetObjectDefMinDistance(harbourN1PostDef, 0.0);
 	rmSetObjectDefMaxDistance(harbourN1PostDef, 0.5);
 	rmPlaceObjectDefAtLoc(harbourN1PostDef, 0, harbour1X - rmXMetersToFraction(hNPostWestM), harbourNZ - rmZMetersToFraction(hNPostToWaterM));
+	int harbourN1PostRaw = rmGetUnitPlaced(harbourN1PostDef, 0);   // read NOW, before the next ferry docks on the lane (census 2026-09-22 17:21: read in 13, three of four handles were dead - 0x40000 | n - only the last docked survived)
 	vector harbourN1Loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbourN1PostDef, 0));
 	float harbourN1X = rmXMetersToFraction(xsVectorGetX(harbourN1Loc)) + rmXMetersToFraction(hNPostWestM);
 	float harbourN1Z = rmZMetersToFraction(xsVectorGetZ(harbourN1Loc)) + rmZMetersToFraction(hNPostToWaterM);
@@ -845,6 +846,7 @@ void main(void)
 	rmSetObjectDefMinDistance(harbourN2PostDef, 0.0);
 	rmSetObjectDefMaxDistance(harbourN2PostDef, 0.5);
 	rmPlaceObjectDefAtLoc(harbourN2PostDef, 0, harbour2X - rmXMetersToFraction(hNPostWestM), harbourNZ - rmZMetersToFraction(hNPostToWaterM));
+	int harbourN2PostRaw = rmGetUnitPlaced(harbourN2PostDef, 0);   // read NOW, before the next ferry docks on the lane (census 2026-09-22 17:21: read in 13, three of four handles were dead - 0x40000 | n - only the last docked survived)
 	vector harbourN2Loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbourN2PostDef, 0));
 	float harbourN2X = rmXMetersToFraction(xsVectorGetX(harbourN2Loc)) + rmXMetersToFraction(hNPostWestM);
 	float harbourN2Z = rmZMetersToFraction(xsVectorGetZ(harbourN2Loc)) + rmZMetersToFraction(hNPostToWaterM);
@@ -855,6 +857,7 @@ void main(void)
 	rmSetObjectDefMinDistance(harbourS1PostDef, 0.0);
 	rmSetObjectDefMaxDistance(harbourS1PostDef, 0.5);
 	rmPlaceObjectDefAtLoc(harbourS1PostDef, 0, harbour1X - rmXMetersToFraction(hSPostWestM), harbourSZ + rmZMetersToFraction(hSPostToWaterM));
+	int harbourS1PostRaw = rmGetUnitPlaced(harbourS1PostDef, 0);   // read NOW, before the next ferry docks on the lane (census 2026-09-22 17:21: read in 13, three of four handles were dead - 0x40000 | n - only the last docked survived)
 	vector harbourS1Loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbourS1PostDef, 0));
 	float harbourS1X = rmXMetersToFraction(xsVectorGetX(harbourS1Loc)) + rmXMetersToFraction(hSPostWestM);
 	float harbourS1Z = rmZMetersToFraction(xsVectorGetZ(harbourS1Loc)) - rmZMetersToFraction(hSPostToWaterM);
@@ -865,6 +868,7 @@ void main(void)
 	rmSetObjectDefMinDistance(harbourS2PostDef, 0.0);
 	rmSetObjectDefMaxDistance(harbourS2PostDef, 0.5);
 	rmPlaceObjectDefAtLoc(harbourS2PostDef, 0, harbour2X - rmXMetersToFraction(hSPostWestM), harbourSZ + rmZMetersToFraction(hSPostToWaterM));
+	int harbourS2PostRaw = rmGetUnitPlaced(harbourS2PostDef, 0);   // read NOW, before the next ferry docks on the lane (census 2026-09-22 17:21: read in 13, three of four handles were dead - 0x40000 | n - only the last docked survived)
 	vector harbourS2Loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbourS2PostDef, 0));
 	float harbourS2X = rmXMetersToFraction(xsVectorGetX(harbourS2Loc)) + rmXMetersToFraction(hSPostWestM);
 	float harbourS2Z = rmZMetersToFraction(xsVectorGetZ(harbourS2Loc)) - rmZMetersToFraction(hSPostToWaterM);
@@ -1696,17 +1700,17 @@ void main(void)
 	//  lane's ship (built in 1) and the land route's wagon (built in 3.9, Paris's gate order) - both before the harbour
 	//  posts (7-8) and before every section-10 instance. The 2026-09-18 13:26 census measured +1 when only the lane
 	//  existed (posts = engine ids 7-10 after six RM placements). Grouping instances: 3, measured 2026-09-22 (test copies
-	//  00000_zplondon_shift0..3); the individual shift is still under test on the same copies.
+	//  00000_zplondon_shift0..3); individual 3 from the 17:21 census (raw 169 + 3 = the ferry at 172).
 	//  Nugget protos are the nuggetmods <nuggetunit> of the latched difficulty, never the authored placeholder.
 	// ========================================================================
 	int instanceIdShift = 3;   // measured in game 2026-09-22 with the four shift test copies (0..3): the instances answer to 3
 	// kept SEPARATE on purpose (Istanbul): single rmPlaceObjectDef* placements and grouping
 	// instance queries drift apart the moment a grouping bakes a unit the engine spawns on its own
-	int instanceIdShiftIndividual = 2;
-	int harbourN1PostUnit = rmGetUnitPlaced(harbourN1PostDef, 0) + instanceIdShiftIndividual;
-	int harbourN2PostUnit = rmGetUnitPlaced(harbourN2PostDef, 0) + instanceIdShiftIndividual;
-	int harbourS1PostUnit = rmGetUnitPlaced(harbourS1PostDef, 0) + instanceIdShiftIndividual;
-	int harbourS2PostUnit = rmGetUnitPlaced(harbourS2PostDef, 0) + instanceIdShiftIndividual;
+	int instanceIdShiftIndividual = 3;   // the same 3 as the instances (census 2026-09-22 17:21: the last post's raw 169 -> ferry 172)
+	int harbourN1PostUnit = harbourN1PostRaw + instanceIdShiftIndividual;
+	int harbourN2PostUnit = harbourN2PostRaw + instanceIdShiftIndividual;
+	int harbourS1PostUnit = harbourS1PostRaw + instanceIdShiftIndividual;
+	int harbourS2PostUnit = harbourS2PostRaw + instanceIdShiftIndividual;
 	int harbourN1GuardUnit = rmGetUnitPlaced(harbourN1GuardDef, 0);   // raw placeholder ids, echoed for the census only (no trigger targets them)
 	int harbourN2GuardUnit = rmGetUnitPlaced(harbourN2GuardDef, 0);
 	int harbourS1GuardUnit = rmGetUnitPlaced(harbourS1GuardDef, 0);

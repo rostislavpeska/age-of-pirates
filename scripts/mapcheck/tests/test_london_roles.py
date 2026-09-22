@@ -598,10 +598,10 @@ class TestScope:
     def test_unit_ids_derive_in_one_block_through_the_two_shifts(self):
         # Istanbul's architecture (zpistanbulb.xs 4173-4193): both shifts declared together at the head of 13, every id through them
         t = _code(_text(LONDON))
-        assert t.count("int instanceIdShift = 3;") == 1 and t.count("int instanceIdShiftIndividual = 2;") == 1   # grouping 3 measured 2026-09-22; individual under test
-        assert t.index('rmCreateObjectDef("countryside tin")') < t.index("int instanceIdShift = 3;") < t.index("int instanceIdShiftIndividual = 2;") < t.index("int harbourN1PostUnit")
-        reads = re.findall(r"(int \w+ = rmGetUnitPlaced\([^;]*;)", t)
-        assert all("+ instanceIdShiftIndividual;" in r for r in reads if "GuardDef" not in r) and len(reads) == 8
+        assert t.count("int instanceIdShift = 3;") == 1 and t.count("int instanceIdShiftIndividual = 3;") == 1   # both measured 2026-09-22 (shift copies, the 17:21 census)
+        assert t.index('rmCreateObjectDef("countryside tin")') < t.index("int instanceIdShift = 3;") < t.index("int instanceIdShiftIndividual = 3;") < t.index("int harbourN1PostUnit")
+        assert t.count("rmGetUnitPlaced(") == 8                                                    # 4 post ids read at placement (5), 4 raw guard ids
+        assert all(("int harbour%sPostRaw = rmGetUnitPlaced(harbour%sPostDef, 0);" % (s, s)) in t and ("int harbour%sPostUnit = harbour%sPostRaw + instanceIdShiftIndividual;" % (s, s)) in t for s in ("N1", "N2", "S1", "S2"))
         inst = re.findall(r"int \w+ = rmGetGroupingInstanceUnitByType\([^;]*;", t)
         assert len(inst) == 14 and all(r.endswith("+ instanceIdShift;") for r in inst)
         assert not re.search(r"\\w*(Unit|Id|Flag|Nug|Socket|Bld|Post)\w*\s*[-+]\s*\d+\s*[;)]", t.replace("Idx", "").replace("Tiles", ""))   # no literal id arithmetic
