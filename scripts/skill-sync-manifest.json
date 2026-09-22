@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "supportFiles": {
+    "scripts/setup_repo_skill_links.py": "scripts/tools/setup_agent_skill_link.py",
+    "scripts/install_user_skills.py": "scripts/tools/install_user_skills.py",
+    "docs/agent-setup.md": "docs/agent-skills.md",
+    "CLAUDE.md": "CLAUDE.md",
+    "GEMINI.md": "GEMINI.md"
+  },
+  "targets": {
+    "architecture": {
+      "skills": [
+        "blender-architecture",
+        "blender-architecture-texturing"
+      ]
+    },
+    "aoe3de": {
+      "skills": [
+        "aoe3de-bar-archives",
+        "aoe3de-building-export"
+      ]
+    }
+  }
+}

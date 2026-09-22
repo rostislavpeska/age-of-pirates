@@ -265,7 +265,7 @@ def _live_proto_path() -> Optional[Path]:
     cache_dir = Path(os.environ.get("LOCALAPPDATA") or tempfile.gettempdir()) / "aoe3-mapcheck"
     cache = cache_dir / "protoy_live.xml"
     try:
-        sys.path.insert(0, str(REPO_ROOT / ".claude" / "skills" / "bar-extract" / "scripts"))
+        sys.path.insert(0, str(REPO_ROOT / "skills" / "aoe3de-bar-archives" / "scripts"))
         sys.dont_write_bytecode = True
         import bartool  # noqa: WPS433
         game = bartool.find_game_dir()

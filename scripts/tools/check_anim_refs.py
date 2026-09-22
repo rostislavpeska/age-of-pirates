@@ -10,14 +10,14 @@ import io
 import os
 import re
 import sys
+from pathlib import Path
 
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding="utf-8", errors="replace")
 
-REPO = ("c:/Users/rosti/Games/Age of Empires 3 DE/76561199512878537/mods/local/"
-        "age-of-pirates")
+REPO = str(Path(__file__).resolve().parents[2])
 os.chdir(REPO)
 spec = importlib.util.spec_from_file_location(
-    "bartool", ".claude/skills/bar-extract/scripts/bartool.py")
+    "bartool", "skills/aoe3de-bar-archives/scripts/bartool.py")
 bt = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(bt)
 
@@ -55,7 +55,7 @@ def load_animfile(ref):
     try:
         import subprocess
         out = subprocess.run(
-            [sys.executable, ".claude/skills/bar-extract/scripts/bartool.py",
+            [sys.executable, "skills/aoe3de-bar-archives/scripts/bartool.py",
              "cat", "art/" + r],
             capture_output=True, timeout=120)
         if out.returncode == 0 and out.stdout:

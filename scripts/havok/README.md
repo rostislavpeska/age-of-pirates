@@ -1,6 +1,6 @@
 # scripts/havok - Granny (.gr2), Havok (.hkt) and sail-rig tools
 
-Skills that document the workflows: `.claude/skills/gr2-granny-edit`, `ship-sails`, `unit-bones`,
+Skills that document the workflows: `skills/gr2-granny-edit`, `ship-sails`, `unit-bones`,
 `havok-destruction`. Run everything from the repo root: `python scripts/havok/<tool>.py`. Blender tools:
 `blender -b --python scripts/havok/<tool>.py -- args`.
 

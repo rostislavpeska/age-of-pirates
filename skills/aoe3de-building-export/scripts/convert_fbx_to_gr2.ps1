@@ -26,4 +26,3 @@ $magicTask=([BitConverter]::ToString($dataTask,0,16)).Replace('-','').ToLowerInv
 if($magicTask -notin @('29de6cc0baa4532b25f5b7a5f666e2ee','e59b495e6f631f141e13eba990beedc4')){throw 'Unexpected GR2 header.'}
 Get-Item -LiteralPath $resultTask | Select-Object FullName,Length
 Get-FileHash -LiteralPath $resultTask -Algorithm SHA256
-

@@ -41,7 +41,7 @@ import sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(REPO / ".claude" / "skills" / "bar-extract" / "scripts"))
+sys.path.insert(0, str(REPO / "skills" / "aoe3de-bar-archives" / "scripts"))
 sys.dont_write_bytecode = True
 
 BS = chr(92)

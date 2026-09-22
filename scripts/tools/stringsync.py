@@ -35,7 +35,7 @@ import tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
-SKILL = os.path.join(REPO, '.claude', 'skills', 'bar-extract', 'scripts')
+SKILL = os.path.join(REPO, 'skills', 'aoe3de-bar-archives', 'scripts')
 STRINGS = os.path.join(REPO, 'data', 'strings')
 SOURCE_LANG = 'english'
 NAME = 'stringmods.xml'

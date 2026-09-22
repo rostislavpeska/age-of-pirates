@@ -1,6 +1,6 @@
 ---
 name: bar-extract
-description: Apply Age of Pirates archive-reference, extraction and XMB-twin policies when inspecting vanilla files or rebuilding AoP data. Complements the reusable aoe3de-bar-archives skill.
+description: AoP entry point for archive lookup, extraction and XMB rebuilding. Start here in Age of Pirates; applies this mod's policies, then uses aoe3de-bar-archives for the shared tools and commands.
 ---
 
 # AoP archive and XMB conventions

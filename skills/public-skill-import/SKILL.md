@@ -23,3 +23,5 @@ python scripts/tools/public_skill_sync.py import --target architecture --write
 ```
 
 Run the relevant AoP skill tests after import. The tool scans incoming files, rejects private paths and forbidden binaries, validates each skill, updates the synchronization hash and never commits either repository.
+
+The manifest also maps shared agent setup files. Review their changes as executable code before importing them; the same conflict checks apply. Repository-specific public READMEs and `AGENTS.md` files are not imported into AoP.

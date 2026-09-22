@@ -26,7 +26,7 @@ from pathlib import Path
 import xml.etree.ElementTree as ET
 
 REPO = Path(__file__).resolve().parents[2]
-sys.path.insert(0, str(REPO / ".claude" / "skills" / "bar-extract" / "scripts"))
+sys.path.insert(0, str(REPO / "skills" / "aoe3de-bar-archives" / "scripts"))
 sys.dont_write_bytecode = True
 
 ID_TAGS = {"from", "to", "unit", "name", "proto", "animfile", "tactics", "file", "texture",

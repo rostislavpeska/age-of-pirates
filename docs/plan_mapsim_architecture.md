@@ -644,8 +644,8 @@ scripts/mapcheck/
 ### G5. Claude skills — two skills, thin, pointing at real commands
 
 ```
-.claude/skills/mapcheck/SKILL.md       "run + read the map checker"
-.claude/skills/map-profile/SKILL.md    "author/patch a map profile"
+skills/mapcheck/SKILL.md       "run + read the map checker"
+skills/map-profile/SKILL.md    "author/patch a map profile"
 ```
 - **mapcheck skill:** canonical invocations (single map, --matrix, roster
   via pytest), how to read findings JSON (severity/basis semantics, the
@@ -709,7 +709,7 @@ work before G6 exits.
 - G4 DONE: registry + player_spawn_complete / grouping_spawn_complete /
   area_class_probe; profile expectations are area_class_probe sugar;
   unregistered template -> FAIL "generalize first".
-- G5 DONE: .claude/skills/mapcheck + map-profile.
+- G5 DONE: skills/mapcheck + map-profile.
 - G6 DONE: pilot matrix 0 FAIL on zp_z_z_zcivilwar2 /
   000_independence_war / zp_z_hawaii; roster S-tier green over all 33
   mod maps (test_roster.py, OPEN_STATIC backlog with stale-entry guard).

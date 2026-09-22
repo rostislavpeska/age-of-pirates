@@ -1,6 +1,6 @@
 ---
 name: aoe-building-pipeline
-description: Apply the Age of Pirates building profile and St Pauls/Basilica evidence to the reusable AoE3DE export workflow, including AoP XML, material and deployment conventions.
+description: AoP entry point for building export, materials and deployment. Start here in Age of Pirates; applies this mod's profile and St Pauls/Basilica evidence, then uses aoe3de-building-export for the shared workflow.
 ---
 
 # AoP building profile

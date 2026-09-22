@@ -367,8 +367,8 @@ def cmd_cat(args, index):
 def default_out_dir():
     """Where `extract` writes when -o is omitted: never the current directory.
 
-    Extracted game files are scratch data. The repo tracks vanilla content in
-    exactly one place, scripts/source/, and only via an explicit --in-repo.
+    Extracted game files default to scratch data. A consuming project may permit
+    an intentionally maintained snapshot via an explicit --in-repo.
     """
     return os.environ.get("AOE3DE_EXPORT_DIR") or os.path.join(
         tempfile.gettempdir(), "aoe3-bar-export")
@@ -393,9 +393,9 @@ def cmd_extract(args, index):
     if root and not args.in_repo:
         print("refusing to extract into a git working tree: " + root, file=sys.stderr)
         print("  target: " + os.path.abspath(args.out), file=sys.stderr)
-        print("  Extracted game files are scratch data, never repo content.", file=sys.stderr)
+        print("  Extracted game files default to scratch storage outside repositories.", file=sys.stderr)
         print("  Pass -o <session scratchpad>, omit -o to use " + default_out_dir() + ",", file=sys.stderr)
-        print("  or pass --in-repo only when refreshing the sanctioned snapshot scripts/source/.", file=sys.stderr)
+        print("  or pass --in-repo only for a snapshot permitted by your project's policy.", file=sys.stderr)
         return 2
     hits = match(index, args.pattern)
     if not hits:
@@ -502,10 +502,10 @@ def main(argv=None):
     add_pattern(p)
     p.add_argument("-o", "--out", default=None,
                    help="output dir. Default: $AOE3DE_EXPORT_DIR, else <tempdir>/aoe3-bar-export. "
-                        "Never inside the repo: extracted game files are scratch data")
+                        "Repository targets require an explicit --in-repo")
     p.add_argument("--in-repo", action="store_true",
-                   help="allow writing inside a git working tree. Reserved for refreshing the "
-                        "sanctioned vanilla snapshot scripts/source/; anything else is contamination")
+                   help="allow writing inside a git working tree for an intentionally maintained "
+                        "snapshot permitted by the consuming project's policy")
     p.add_argument("--raw", action="store_true",
                    help="write XMB as-is instead of decompiling to XML")
     p.add_argument("--flat", action="store_true", help="drop directory structure")

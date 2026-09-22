@@ -1,6 +1,6 @@
 ---
 name: aoe3de-bar-archives
-description: Find, inspect and extract stock Age of Empires III DE assets from BAR archives, decompile XMB to XML, or compile edited XML back to XMB. Use for vanilla asset lookup, archive comparison, game-patch inspection and XML/XMB round trips.
+description: Reusable cross-mod BAR/XMB tools for Age of Empires III DE. Find, inspect and extract vanilla assets, compare archives and decompile or compile XML/XMB. Apply a consuming project's archive-policy entry skill first when one is provided.
 ---
 
 # AoE3DE BAR archives and XMB

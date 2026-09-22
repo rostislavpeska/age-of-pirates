@@ -1,6 +1,6 @@
 ---
 name: aoe3de-building-export
-description: Prepare and verify static Age of Empires III DE building rigs, FBX-to-GR2 conversion, textures, materials and minimal animation XML. Use after geometry and UV authoring when packaging a building for an AoE3DE mod.
+description: Reusable cross-mod workflow for static Age of Empires III DE building rigs, FBX-to-GR2 conversion, textures, materials and animation XML. Use after geometry and UV authoring; apply a consuming project's building profile first when one is provided.
 ---
 
 # Static AoE3DE building export

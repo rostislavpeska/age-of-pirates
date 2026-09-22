@@ -142,7 +142,7 @@ Each of these cost real debugging time.
 3. **To check whether an edit actually reached the game**, decompile the XMB —
    `data/*.xml.xmb` is `alz4`-wrapped, so unwrap first:
    `bt.xmb_to_xml(bt.unwrap_alz4(open(path,'rb').read()))` using
-   `.claude/skills/bar-extract/scripts/bartool.py`.
+   `skills/aoe3de-bar-archives/scripts/bartool.py`.
 4. **Copy blocks, do not derive them.** The one proto written from scratch
    (`editor_revealer.xml` anim, hand-picked flags) failed and cost a session;
    every verbatim clone worked.
