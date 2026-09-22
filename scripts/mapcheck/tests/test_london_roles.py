@@ -444,7 +444,7 @@ class TestGateOrder:
         lane = t.index('rmBuildTradeRoute(waterRouteID, "water_trail");')
         road_def = t.index("int tradeRouteID = rmCreateTradeRoute();")
         walls = t.index('rmCreateGrouping("wall se"')
-        bridge = t.index("int bridgeInst = rmPlaceGroupingInstanceAtLoc(londonBridge")
+        bridge = t.index("int bridgeInst = placeIsland(londonBridge")
         road_built = t.index('rmBuildTradeRoute(tradeRouteID, "dirt");')
         socket = t.index("routeSocket(tradeRouteID, xRoad, zRiver);")
         river = t.index("rmRiverCreate(")
@@ -501,7 +501,7 @@ class TestCountryside:
         calls = re.findall(r'countryPatch\("country patch (\w+) (S|N) " \+ cp, "([^"]*)", countryPatchTiles, (stripBox[SN]), avoidWallMedium, avoidTradeRouteWall, avoidPatch\);', s)
         assert calls == [("grass", "S", "italy_cliff_top_grass", "stripBoxS"), ("dirt", "S", "italy_grass_dirt", "stripBoxS"),
                          ("grass", "N", "italy_cliff_top_grass", "stripBoxN"), ("dirt", "N", "italy_grass_dirt", "stripBoxN")]
-        h = _code(t[t.index("void countryPatch("):t.index("void main(void)")])
+        h = _code(t[t.index("void countryPatch("):t.index("// ---- object defs")])
         assert "rmSetAreaCoherence(area, 0.1);" in h and 'rmAddAreaToClass(area, rmClassID("classPatch"));' in h and "rmSetAreaLocation" not in h and "BaseHeight" not in h
 
     def test_constraints_in_metres(self):
@@ -598,10 +598,10 @@ class TestScope:
     def test_unit_ids_derive_in_one_block_through_the_two_shifts(self):
         # Istanbul's architecture (zpistanbulb.xs 4173-4193): both shifts declared together at the head of 13, every id through them
         t = _code(_text(LONDON))
-        assert t.count("int instanceIdShift = 3;") == 1 and t.count("int instanceIdShiftIndividual = 3;") == 1   # both measured 2026-09-22 (shift copies, the 17:21 census)
-        assert t.index('rmCreateObjectDef("countryside tin")') < t.index("int instanceIdShift = 3;") < t.index("int instanceIdShiftIndividual = 3;") < t.index("int harbourN1PostUnit")
-        assert t.count("rmGetUnitPlaced(") == 8                                                    # 4 post ids read at placement (5), 4 raw guard ids
-        assert all(("int harbour%sPostRaw = rmGetUnitPlaced(harbour%sPostDef, 0);" % (s, s)) in t and ("int harbour%sPostUnit = harbour%sPostRaw + instanceIdShiftIndividual;" % (s, s)) in t for s in ("N1", "N2", "S1", "S2"))
+        assert t.count("int instanceIdShift = 3;") == 1 and t.count("int instanceIdShiftIndividual = 2;") == 1   # grouping 3 measured 2026-09-22; individual under test
+        assert t.index('rmCreateObjectDef("countryside tin")') < t.index("int instanceIdShift = 3;") < t.index("int instanceIdShiftIndividual = 2;") < t.index("int harbourN1PostUnit")
+        reads = re.findall(r"(int \w+ = rmGetUnitPlaced\([^;]*;)", t)
+        assert all("+ instanceIdShiftIndividual;" in r for r in reads if "GuardDef" not in r) and len(reads) == 8
         inst = re.findall(r"int \w+ = rmGetGroupingInstanceUnitByType\([^;]*;", t)
         assert len(inst) == 14 and all(r.endswith("+ instanceIdShift;") for r in inst)
         assert not re.search(r"\\w*(Unit|Id|Flag|Nug|Socket|Bld|Post)\w*\s*[-+]\s*\d+\s*[;)]", t.replace("Idx", "").replace("Tiles", ""))   # no literal id arithmetic

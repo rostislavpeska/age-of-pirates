@@ -17,11 +17,10 @@
 //   3.9 the land route BUILT through the gates, real x read back for the census, the bridge socket docked
 //   4  the river (rect-map rule: z authored in size_x units), after the road
 //   5  harbour posts docked on the lane, real positions read back              (law 1)
-//   5  harbours, one Istanbul block each: the ferry socket docked on the lane, its id read on the next line, its pier
-//      hung off the real ferry (instance API) - never two sockets docking back to back (law 2)
-//   6  London Bridge, instance API, after the piers (before the road with gates it did not spawn) (law 2)
-//   8  harbour guards: the vanilla Euro trade-route post nugget (101) on the quay behind each harbour, its id read at
-//      placement; the post is released by "Nugget Is Collectable" on that nugget (Elbe's lone harbours)
+//   6  London Bridge, instance API, after the river (before the road with gates it did not spawn) (law 2)
+//   7  harbour groupings hung off the real posts, instance API                  (law 2)
+//   8  harbour guards: the vanilla Euro trade-route post nugget (101) on the quay behind each harbour; the post
+//      is released by "Units in Area" (no guardian left around it), never by the object-def nugget's id
 //   9  quays (one straight plateau per bank), streets, countryside (New England grass, Paris's turbulence); 9.2 the paint
 //      patches (Istanbul); 9.5 the wall terrain twins after them (Florence)
 //   10 blocks in Paris's order: the landmark coin (10.0), fixed doubles, fixed singles, two Florence zones, fillers, houses
@@ -192,6 +191,26 @@ void routeSocket(int tradeRouteID = -1, float x = 0.5, float z = 0.5)
 }
 
 // ---- groupings
+// An island grouping at an exact spot (law 2); returns the instance for rmGetGroupingInstanceUnitByType.
+int placeIsland(int grouping = -1, float x = 0.0, float z = 0.0)
+{
+	rmSetGroupingMinDistance(grouping, 0.0);
+	rmSetGroupingMaxDistance(grouping, 0.00);
+	rmAddGroupingToClass(grouping, rmClassID("classPlateau"));
+	int placement = rmPlaceGroupingInstanceAtLoc(grouping, x, z, 0);
+	return(placement);
+}
+
+// One city block grouping, Paris settings.
+int cityBlock(string blockName = "", string blockFile = "")
+{
+	int g = rmCreateGrouping(blockName, blockFile);
+	rmSetGroupingMinDistance(g, 0.00);
+	rmSetGroupingMaxDistance(g, 0.50);
+	rmAddGroupingToClass(g, rmClassID("classBlock"));
+	return(g);
+}
+
 // ---- areas
 // A quay plateau (Paris "shore" area) clipped to a box: the box edge facing the water becomes the quay wall
 // ("ZP City" cliff, height 0); the streets paint (Paris "streets" area) uses the same box; then Paris's second
@@ -313,6 +332,140 @@ void countryPatch(string name = "", string mix = "", int tiles = 60, int box = -
 	rmAddAreaToClass(area, rmClassID("classPatch"));
 	rmSetAreaObeyWorldCircleConstraint(area, false);
 	rmBuildArea(area);
+}
+
+// ---- object defs
+// A single unit at an exact spot, min 0 / max maxM; returns the def (rmGetUnitPlaced needs it).
+int unitAt(string name = "", string proto = "", float maxM = 0.0, float x = 0.5, float z = 0.5)
+{
+	int d = rmCreateObjectDef(name);
+	rmAddObjectDefItem(d, proto, 1, 0.0);
+	rmSetObjectDefMinDistance(d, 0.0);
+	rmSetObjectDefMaxDistance(d, maxM);
+	rmPlaceObjectDefAtLoc(d, 0, x, z);
+	return(d);
+}
+
+// A land treasure's object def, zpelbe.xs's "nuggets to dock Trade Posts" form: the "Nugget" placeholder, the
+// nuggets.xml difficulty latched, min 0 / max maxM search. Define only - the spawn is a separate rmPlaceObjectDefAtLoc.
+int landNuggetDef(string name = "", int difficulty = 0, float maxM = 0.0)
+{
+	int d = rmCreateObjectDef(name);
+	rmAddObjectDefItem(d, "Nugget", 1, 0.0);
+	rmSetNuggetDifficulty(difficulty, difficulty);
+	rmSetObjectDefMinDistance(d, 0.0);
+	rmSetObjectDefMaxDistance(d, maxM);
+	return(d);
+}
+
+// ---- triggers (Istanbul's shapes)
+// One "AutoConvert suspended" effect on the current trigger.
+void suspendAutoConvert(int unitId = -1)
+{
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + unitId);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert");
+	rmSetTriggerEffectParam("Suspend", "True");
+}
+
+// "Guard nugget collectable -> the capturable converts again" (Istanbul "Harbour k Convert ON").
+void releaseOnNugget(string name = "", int nuggetId = -1, int unitId = -1)
+{
+	rmCreateTrigger(name);
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", "" + nuggetId);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + unitId, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+}
+
+// "No Gaia guardian of this type left within distM of the unit -> its AutoConvert resumes": the harbour release that
+// needs only the POST's id (performance_test.xs's "Units in Area" form). An object-def nugget's own id is not a
+// safe trigger target: the nugget manager swaps the placeholder for the record's nuggetunit and adds the guardians.
+void releaseWhenClear(string name = "", int unitId = -1, string guardianType = "", int distM = 0)
+{
+	rmCreateTrigger(name);
+	rmAddTriggerCondition("Units in Area");
+	rmSetTriggerConditionParam("DstObject", "" + unitId);
+	rmSetTriggerConditionParamInt("Player", 0);
+	rmSetTriggerConditionParam("UnitType", guardianType);
+	rmSetTriggerConditionParamInt("Dist", distM);
+	rmSetTriggerConditionParam("Op", "==");
+	rmSetTriggerConditionParamInt("Count", 0);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + unitId, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+}
+
+// The Tower family (Istanbul's palace), three passes so every name exists before a Fire Event references it:
+// pass 1 creates the per-player conversion triggers; pass 2 the unlock (guard nugget collectable -> the flag
+// converts again, all conversions armed); pass 3 fills each conversion (player p holds the flag -> the Tower
+// building converts to p, the OTHER players' conversions re-armed).
+void towerConvCreate(string side = "")
+{
+	for (k = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("TowerConv" + side + "_Plr" + k);
+	}
+}
+
+void towerUnlock(string side = "", int nuggetId = -1, int flagId = -1)
+{
+	rmCreateTrigger("Tower" + side + "Unlock");
+	rmSwitchToTrigger(rmTriggerID("Tower" + side + "Unlock"));
+	rmAddTriggerCondition("Nugget Is Collectable");
+	rmSetTriggerConditionParam("NuggetObject", "" + nuggetId);
+	rmAddTriggerEffect("Unit Action Suspend");
+	rmSetTriggerEffectParam("SrcObject", "" + flagId, false);
+	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
+	rmSetTriggerEffectParam("Suspend", "False", false);
+	for (k = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmAddTriggerEffect("Fire Event");
+		rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerConv" + side + "_Plr" + k));
+	}
+	rmSetTriggerPriority(4);
+	rmSetTriggerActive(true);
+	rmSetTriggerRunImmediately(true);
+	rmSetTriggerLoop(false);
+}
+
+void towerConvFill(string side = "", int flagId = -1, int buildingId = -1)
+{
+	for (p = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmSwitchToTrigger(rmTriggerID("TowerConv" + side + "_Plr" + p));
+		rmAddTriggerCondition("Units Owned");
+		rmSetTriggerConditionParam("SrcObject", "" + flagId);
+		rmSetTriggerConditionParamInt("Player", p);
+		rmAddTriggerEffect("Convert");
+		rmSetTriggerEffectParam("SrcObject", "" + buildingId);
+		rmSetTriggerEffectParamInt("PlayerID", p);
+		for (q = 1; <= cNumberNonGaiaPlayers)
+		{
+			if (q != p)
+			{
+				rmAddTriggerEffect("Fire Event");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerConv" + side + "_Plr" + q));
+			}
+		}
+		rmAddTriggerEffect("Play Soundset");
+		rmSetTriggerEffectParam("Soundset", "SheepFound");
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(false);
+		rmSetTriggerRunImmediately(false);
+		rmSetTriggerLoop(false);
+	}
 }
 
 // ============================================================================
@@ -458,6 +611,8 @@ void main(void)
 	float harbourGuardInM = 2.5;        // the guard nugget this far INTO the city off the bank's quay wall line = the middle of the 5 m promenade, at the harbour's x (behind the harbour building)
 	float harbourGuardSearchM = 3.0;    // ... and the search radius around that spot: stays on the promenade (6 m let it wander off the harbour - user 2026-09-18)
 	float decoMouthXM = 12.0;           // the first riverside deco (40 m) centred this far in: the mouth slot is only 26 m
+	string harbourGuardType = "deGuardianMusketeer";   // the 101 record's guardians - what the release trigger counts around the post
+	int   harbourGuardReachM = 25;         // ... within this distance of the post (nugget ~14 m behind it + the guardian spread)
 
 	// ---- 0.5 THE LOBBY: the coin and the roles - the Florence system (zpflorence.xs 124-155, zpistanbulb.xs 5b),
 	// resolved up front because the gates (3.5) take their owners from them. TEAM 1 DEFENDS, TEAM 0 ATTACKS - Florence's
@@ -670,128 +825,85 @@ void main(void)
 
 	rmSetStatusText("",0.30);
 
-	// ---- 5. THE HARBOURS, one Istanbul block each (zpistanbulb.xs 1448-1466; user 2026-09-22): the socket as its own
-	// object def docked on the lane, its unit id read on the NEXT line, its grouping hung off the socket's real position -
-	// socket, grouping, socket, grouping, never two sockets docking back to back (the four-in-a-row form left three of
-	// four ids dead: 0x40000 | n in the 17:21 census). Asked at the export's post spot (origin - postWestM in x,
-	// origin +- postToWaterM toward the water); harbour<bank><k>X / Z = the grouping origin rebuilt from the real post
-
+	// ---- 5. THE HARBOUR POSTS (zpvenicecity: right after the river, BEFORE the groupings), each its OWN object def at main
+	// scope with a literal name - Istanbul's socket form 1:1 (zpistanbulb.xs 1448-1456; user 2026-09-22: the helper that wrapped
+	// them is gone, rmGetUnitPlaced must see plain defs). Asked at the export's post spot (origin - postWestM in x, origin +-
+	// postToWaterM toward the water); harbour<bank><k>X / Z = the grouping origin rebuilt from the post's REAL position
 	int harbourN1PostDef = rmCreateObjectDef("harbour post N1");
 	rmSetObjectDefTradeRouteID(harbourN1PostDef, waterRouteID);
 	rmAddObjectDefItem(harbourN1PostDef, "zpOrientalFerry", 1, 0.0);
 	rmSetObjectDefMinDistance(harbourN1PostDef, 0.0);
 	rmSetObjectDefMaxDistance(harbourN1PostDef, 0.5);
 	rmPlaceObjectDefAtLoc(harbourN1PostDef, 0, harbour1X - rmXMetersToFraction(hNPostWestM), harbourNZ - rmZMetersToFraction(hNPostToWaterM));
-	int harbourN1PostRaw = rmGetUnitPlaced(harbourN1PostDef, 0);
 	vector harbourN1Loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbourN1PostDef, 0));
 	float harbourN1X = rmXMetersToFraction(xsVectorGetX(harbourN1Loc)) + rmXMetersToFraction(hNPostWestM);
 	float harbourN1Z = rmZMetersToFraction(xsVectorGetZ(harbourN1Loc)) + rmZMetersToFraction(hNPostToWaterM);
-	int harbourN1Grouping = rmCreateGrouping("harbour north 1", "EU_SPC_London_Harbour_NW_01");
-	rmSetGroupingMinDistance(harbourN1Grouping, 0.0);
-	rmSetGroupingMaxDistance(harbourN1Grouping, 0.00);
-	rmAddGroupingToClass(harbourN1Grouping, rmClassID("classPlateau"));
-	int harbourN1Inst = rmPlaceGroupingInstanceAtLoc(harbourN1Grouping, harbourN1X, harbourN1Z, 0);
-
+	rmEchoInfo("LONDON harbour post N1 real " + xsVectorGetX(harbourN1Loc) + "," + xsVectorGetZ(harbourN1Loc) + " m");
 	int harbourN2PostDef = rmCreateObjectDef("harbour post N2");
 	rmSetObjectDefTradeRouteID(harbourN2PostDef, waterRouteID);
 	rmAddObjectDefItem(harbourN2PostDef, "zpOrientalFerry", 1, 0.0);
 	rmSetObjectDefMinDistance(harbourN2PostDef, 0.0);
 	rmSetObjectDefMaxDistance(harbourN2PostDef, 0.5);
 	rmPlaceObjectDefAtLoc(harbourN2PostDef, 0, harbour2X - rmXMetersToFraction(hNPostWestM), harbourNZ - rmZMetersToFraction(hNPostToWaterM));
-	int harbourN2PostRaw = rmGetUnitPlaced(harbourN2PostDef, 0);
 	vector harbourN2Loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbourN2PostDef, 0));
 	float harbourN2X = rmXMetersToFraction(xsVectorGetX(harbourN2Loc)) + rmXMetersToFraction(hNPostWestM);
 	float harbourN2Z = rmZMetersToFraction(xsVectorGetZ(harbourN2Loc)) + rmZMetersToFraction(hNPostToWaterM);
-	int harbourN2Grouping = rmCreateGrouping("harbour north 2", "EU_SPC_London_Harbour_NW_01");
-	rmSetGroupingMinDistance(harbourN2Grouping, 0.0);
-	rmSetGroupingMaxDistance(harbourN2Grouping, 0.00);
-	rmAddGroupingToClass(harbourN2Grouping, rmClassID("classPlateau"));
-	int harbourN2Inst = rmPlaceGroupingInstanceAtLoc(harbourN2Grouping, harbourN2X, harbourN2Z, 0);
-
+	rmEchoInfo("LONDON harbour post N2 real " + xsVectorGetX(harbourN2Loc) + "," + xsVectorGetZ(harbourN2Loc) + " m");
 	int harbourS1PostDef = rmCreateObjectDef("harbour post S1");
 	rmSetObjectDefTradeRouteID(harbourS1PostDef, waterRouteID);
 	rmAddObjectDefItem(harbourS1PostDef, "zpOrientalFerry", 1, 0.0);
 	rmSetObjectDefMinDistance(harbourS1PostDef, 0.0);
 	rmSetObjectDefMaxDistance(harbourS1PostDef, 0.5);
 	rmPlaceObjectDefAtLoc(harbourS1PostDef, 0, harbour1X - rmXMetersToFraction(hSPostWestM), harbourSZ + rmZMetersToFraction(hSPostToWaterM));
-	int harbourS1PostRaw = rmGetUnitPlaced(harbourS1PostDef, 0);
 	vector harbourS1Loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbourS1PostDef, 0));
 	float harbourS1X = rmXMetersToFraction(xsVectorGetX(harbourS1Loc)) + rmXMetersToFraction(hSPostWestM);
 	float harbourS1Z = rmZMetersToFraction(xsVectorGetZ(harbourS1Loc)) - rmZMetersToFraction(hSPostToWaterM);
-	int harbourS1Grouping = rmCreateGrouping("harbour south 1", "EU_SPC_London_Harbour_SE_01");
-	rmSetGroupingMinDistance(harbourS1Grouping, 0.0);
-	rmSetGroupingMaxDistance(harbourS1Grouping, 0.00);
-	rmAddGroupingToClass(harbourS1Grouping, rmClassID("classPlateau"));
-	int harbourS1Inst = rmPlaceGroupingInstanceAtLoc(harbourS1Grouping, harbourS1X, harbourS1Z, 0);
-
+	rmEchoInfo("LONDON harbour post S1 real " + xsVectorGetX(harbourS1Loc) + "," + xsVectorGetZ(harbourS1Loc) + " m");
 	int harbourS2PostDef = rmCreateObjectDef("harbour post S2");
 	rmSetObjectDefTradeRouteID(harbourS2PostDef, waterRouteID);
 	rmAddObjectDefItem(harbourS2PostDef, "zpOrientalFerry", 1, 0.0);
 	rmSetObjectDefMinDistance(harbourS2PostDef, 0.0);
 	rmSetObjectDefMaxDistance(harbourS2PostDef, 0.5);
 	rmPlaceObjectDefAtLoc(harbourS2PostDef, 0, harbour2X - rmXMetersToFraction(hSPostWestM), harbourSZ + rmZMetersToFraction(hSPostToWaterM));
-	int harbourS2PostRaw = rmGetUnitPlaced(harbourS2PostDef, 0);
 	vector harbourS2Loc = rmGetUnitPosition(rmGetUnitPlacedOfPlayer(harbourS2PostDef, 0));
 	float harbourS2X = rmXMetersToFraction(xsVectorGetX(harbourS2Loc)) + rmXMetersToFraction(hSPostWestM);
 	float harbourS2Z = rmZMetersToFraction(xsVectorGetZ(harbourS2Loc)) - rmZMetersToFraction(hSPostToWaterM);
-	int harbourS2Grouping = rmCreateGrouping("harbour south 2", "EU_SPC_London_Harbour_SE_01");
-	rmSetGroupingMinDistance(harbourS2Grouping, 0.0);
-	rmSetGroupingMaxDistance(harbourS2Grouping, 0.00);
-	rmAddGroupingToClass(harbourS2Grouping, rmClassID("classPlateau"));
-	int harbourS2Inst = rmPlaceGroupingInstanceAtLoc(harbourS2Grouping, harbourS2X, harbourS2Z, 0);
+	rmEchoInfo("LONDON harbour post S2 real " + xsVectorGetX(harbourS2Loc) + "," + xsVectorGetZ(harbourS2Loc) + " m");
 
-	// ---- 6. LONDON BRIDGE (law 2): deck on the road, arches over the river; deck height 4.949 - after the river, the
-	// posts and the piers (2026-09-21: placed before the road with baked gates it did not spawn; the walls did). Its two
+	// ---- 6. LONDON BRIDGE (law 2): deck on the road, arches over the river; deck height 4.949 - back here after the
+	// river and the posts (2026-09-21: placed before the road with baked gates it did not spawn; the walls did). Its two
 	// landing spots carry zpInvisibleGateSocket placeholders (the export's, in place of the old zpSPCWaterSpawnPoint)
 	int londonBridge = rmCreateGrouping("london bridge", "EU_SPC_London_Bridge");
-	rmSetGroupingMinDistance(londonBridge, 0.0);
-	rmSetGroupingMaxDistance(londonBridge, 0.00);
-	rmAddGroupingToClass(londonBridge, rmClassID("classPlateau"));
-	int bridgeInst = rmPlaceGroupingInstanceAtLoc(londonBridge, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ), 0);
+	int bridgeInst = placeIsland(londonBridge, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ));
 
+	// ---- 7. THE HARBOUR GROUPINGS at their origins (zpvenicecity's ControllerLoc idiom, law 2) --------
+	int harbourN1Grouping = rmCreateGrouping("harbour north 1", "EU_SPC_London_Harbour_NW_01");
+	int harbourN1Inst = placeIsland(harbourN1Grouping, harbourN1X, harbourN1Z);
+	int harbourN2Grouping = rmCreateGrouping("harbour north 2", "EU_SPC_London_Harbour_NW_01");
+	int harbourN2Inst = placeIsland(harbourN2Grouping, harbourN2X, harbourN2Z);
+	int harbourS1Grouping = rmCreateGrouping("harbour south 1", "EU_SPC_London_Harbour_SE_01");
+	int harbourS1Inst = placeIsland(harbourS1Grouping, harbourS1X, harbourS1Z);
+	int harbourS2Grouping = rmCreateGrouping("harbour south 2", "EU_SPC_London_Harbour_SE_01");
+	int harbourS2Inst = placeIsland(harbourS2Grouping, harbourS2X, harbourS2Z);
 
 	// ---- 8. THE HARBOUR GUARDS: one LAND nugget per harbour, the vanilla European trade-route post guard (law 7 rules
 	// the water out) - nuggets.xml difficulty 101 = ypNuggetTradingPost + four deGuardianMusketeer, zpelbe.xs's form -
 	// defined first, spawned after, on the quay harbourGuardInM inside the bank's wall line at the harbour's x.
-	// The post is released when this nugget is collectable (13.2, Elbe's lone harbours zpelbe.xs 1212 / 1379); the nugget's id
-	// is read on the line after its placement. The asked spots and the ids are echoed for the census.
-	int harbourN1GuardDef = rmCreateObjectDef("harbour guard north 1");
-	rmAddObjectDefItem(harbourN1GuardDef, "Nugget", 1, 0.0);
-	rmSetNuggetDifficulty(harbourGuardDifficulty, harbourGuardDifficulty);
-	rmSetObjectDefMinDistance(harbourN1GuardDef, 0.0);
-	rmSetObjectDefMaxDistance(harbourN1GuardDef, harbourGuardSearchM);
-
-	int harbourN2GuardDef = rmCreateObjectDef("harbour guard north 2");
-	rmAddObjectDefItem(harbourN2GuardDef, "Nugget", 1, 0.0);
-	rmSetNuggetDifficulty(harbourGuardDifficulty, harbourGuardDifficulty);
-	rmSetObjectDefMinDistance(harbourN2GuardDef, 0.0);
-	rmSetObjectDefMaxDistance(harbourN2GuardDef, harbourGuardSearchM);
-
-	int harbourS1GuardDef = rmCreateObjectDef("harbour guard south 1");
-	rmAddObjectDefItem(harbourS1GuardDef, "Nugget", 1, 0.0);
-	rmSetNuggetDifficulty(harbourGuardDifficulty, harbourGuardDifficulty);
-	rmSetObjectDefMinDistance(harbourS1GuardDef, 0.0);
-	rmSetObjectDefMaxDistance(harbourS1GuardDef, harbourGuardSearchM);
-
-	int harbourS2GuardDef = rmCreateObjectDef("harbour guard south 2");
-	rmAddObjectDefItem(harbourS2GuardDef, "Nugget", 1, 0.0);
-	rmSetNuggetDifficulty(harbourGuardDifficulty, harbourGuardDifficulty);
-	rmSetObjectDefMinDistance(harbourS2GuardDef, 0.0);
-	rmSetObjectDefMaxDistance(harbourS2GuardDef, harbourGuardSearchM);
-
+	// The post is released when no guardian is left around it (13.2, "Units in Area" on the post - the nugget's own id
+	// is not a safe target). The asked spots and the raw rmGetUnitPlaced ids are echoed for the census.
+	int harbourN1GuardDef = landNuggetDef("harbour guard north 1", harbourGuardDifficulty, harbourGuardSearchM);
+	int harbourN2GuardDef = landNuggetDef("harbour guard north 2", harbourGuardDifficulty, harbourGuardSearchM);
+	int harbourS1GuardDef = landNuggetDef("harbour guard south 1", harbourGuardDifficulty, harbourGuardSearchM);
+	int harbourS2GuardDef = landNuggetDef("harbour guard south 2", harbourGuardDifficulty, harbourGuardSearchM);
 	float harbourN1GuardX = harbourN1X;   float harbourN1GuardZ = wallN + rmZMetersToFraction(harbourGuardInM);
 	float harbourN2GuardX = harbourN2X;   float harbourN2GuardZ = wallN + rmZMetersToFraction(harbourGuardInM);
 	float harbourS1GuardX = harbourS1X;   float harbourS1GuardZ = wallS - rmZMetersToFraction(harbourGuardInM);
 	float harbourS2GuardX = harbourS2X;   float harbourS2GuardZ = wallS - rmZMetersToFraction(harbourGuardInM);
 	rmEchoInfo("LONDON guard spots asked (m): N1 " + rmXFractionToMeters(harbourN1GuardX) + "," + rmZFractionToMeters(harbourN1GuardZ) + " N2 " + rmXFractionToMeters(harbourN2GuardX) + "," + rmZFractionToMeters(harbourN2GuardZ) + " S1 " + rmXFractionToMeters(harbourS1GuardX) + "," + rmZFractionToMeters(harbourS1GuardZ) + " S2 " + rmXFractionToMeters(harbourS2GuardX) + "," + rmZFractionToMeters(harbourS2GuardZ));
 	rmPlaceObjectDefAtLoc(harbourN1GuardDef, 0, harbourN1GuardX, harbourN1GuardZ);
-	int harbourN1GuardRaw = rmGetUnitPlaced(harbourN1GuardDef, 0);
 	rmPlaceObjectDefAtLoc(harbourN2GuardDef, 0, harbourN2GuardX, harbourN2GuardZ);
-	int harbourN2GuardRaw = rmGetUnitPlaced(harbourN2GuardDef, 0);
 	rmPlaceObjectDefAtLoc(harbourS1GuardDef, 0, harbourS1GuardX, harbourS1GuardZ);
-	int harbourS1GuardRaw = rmGetUnitPlaced(harbourS1GuardDef, 0);
 	rmPlaceObjectDefAtLoc(harbourS2GuardDef, 0, harbourS2GuardX, harbourS2GuardZ);
-	int harbourS2GuardRaw = rmGetUnitPlaced(harbourS2GuardDef, 0);
 
 	// ---- 9. CITY FLOOR: one straight quay per bank (wall line -> the last reserved column's outer edge), streets + the promenade
 	// band (Paris's two quay textures), countryside
@@ -1584,21 +1696,21 @@ void main(void)
 	//  lane's ship (built in 1) and the land route's wagon (built in 3.9, Paris's gate order) - both before the harbour
 	//  posts (7-8) and before every section-10 instance. The 2026-09-18 13:26 census measured +1 when only the lane
 	//  existed (posts = engine ids 7-10 after six RM placements). Grouping instances: 3, measured 2026-09-22 (test copies
-	//  00000_zplondon_shift0..3); individual 3 from the 17:21 census (raw 169 + 3 = the ferry at 172).
+	//  00000_zplondon_shift0..3); the individual shift is still under test on the same copies.
 	//  Nugget protos are the nuggetmods <nuggetunit> of the latched difficulty, never the authored placeholder.
 	// ========================================================================
 	int instanceIdShift = 3;   // measured in game 2026-09-22 with the four shift test copies (0..3): the instances answer to 3
 	// kept SEPARATE on purpose (Istanbul): single rmPlaceObjectDef* placements and grouping
 	// instance queries drift apart the moment a grouping bakes a unit the engine spawns on its own
-	int instanceIdShiftIndividual = 3;   // the same 3 as the instances (census 2026-09-22 17:21: the last post's raw 169 -> ferry 172)
-	int harbourN1PostUnit = harbourN1PostRaw + instanceIdShiftIndividual;
-	int harbourN2PostUnit = harbourN2PostRaw + instanceIdShiftIndividual;
-	int harbourS1PostUnit = harbourS1PostRaw + instanceIdShiftIndividual;
-	int harbourS2PostUnit = harbourS2PostRaw + instanceIdShiftIndividual;
-	int harbourN1GuardUnit = harbourN1GuardRaw + instanceIdShiftIndividual;   // the guard nugget, Elbe's lone-harbour form (zpelbe.xs 1212): the release condition targets it
-	int harbourN2GuardUnit = harbourN2GuardRaw + instanceIdShiftIndividual;
-	int harbourS1GuardUnit = harbourS1GuardRaw + instanceIdShiftIndividual;
-	int harbourS2GuardUnit = harbourS2GuardRaw + instanceIdShiftIndividual;
+	int instanceIdShiftIndividual = 2;
+	int harbourN1PostUnit = rmGetUnitPlaced(harbourN1PostDef, 0) + instanceIdShiftIndividual;
+	int harbourN2PostUnit = rmGetUnitPlaced(harbourN2PostDef, 0) + instanceIdShiftIndividual;
+	int harbourS1PostUnit = rmGetUnitPlaced(harbourS1PostDef, 0) + instanceIdShiftIndividual;
+	int harbourS2PostUnit = rmGetUnitPlaced(harbourS2PostDef, 0) + instanceIdShiftIndividual;
+	int harbourN1GuardUnit = rmGetUnitPlaced(harbourN1GuardDef, 0);   // raw placeholder ids, echoed for the census only (no trigger targets them)
+	int harbourN2GuardUnit = rmGetUnitPlaced(harbourN2GuardDef, 0);
+	int harbourS1GuardUnit = rmGetUnitPlaced(harbourS1GuardDef, 0);
+	int harbourS2GuardUnit = rmGetUnitPlaced(harbourS2GuardDef, 0);
 	int menagerieSUnit = rmGetGroupingInstanceUnitByType(menagerieSInst, "zpSPCMenagerie") + instanceIdShift;
 	int menagerieNUnit = rmGetGroupingInstanceUnitByType(menagerieNInst, "zpSPCMenagerie") + instanceIdShift;
 	int menagerieSNugUnit = rmGetGroupingInstanceUnitByType(menagerieSInst, "zpNuggetInvisible") + instanceIdShift;   // nuggetmods 98
@@ -1617,257 +1729,49 @@ void main(void)
 	rmEchoInfo("LONDON ids: menageries " + menagerieSUnit + " " + menagerieNUnit + " nuggets " + menagerieSNugUnit + " " + menagerieNNugUnit + " factories " + factorySUnit + " " + factoryNUnit + " nuggets " + factorySNugUnit + " " + factoryNNugUnit);
 	rmEchoInfo("LONDON ids: towers " + towerSBldUnit + " " + towerNBldUnit + " flags " + towerSFlagUnit + " " + towerNFlagUnit + " nuggets " + towerSNugUnit + " " + towerNNugUnit);
 
-	// ---- 13.1 startup: every capturable's AutoConvert suspended - Istanbul "Trade Harbours NoAutoConvert" (zpistanbulb.xs 4866)
+	// ---- 13.1 startup: every capturable's AutoConvert suspended (Istanbul "Trade Harbours NoAutoConvert")
 	rmCreateTrigger("London NoAutoConvert");
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + harbourN1PostUnit);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + harbourN2PostUnit);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + harbourS1PostUnit);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + harbourS2PostUnit);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + menagerieSUnit);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + menagerieNUnit);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + factorySUnit);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + factoryNUnit);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert");
-	rmSetTriggerEffectParam("Suspend", "True");
+	suspendAutoConvert(harbourN1PostUnit);
+	suspendAutoConvert(harbourN2PostUnit);
+	suspendAutoConvert(harbourS1PostUnit);
+	suspendAutoConvert(harbourS2PostUnit);
+	suspendAutoConvert(menagerieSUnit);
+	suspendAutoConvert(menagerieNUnit);
+	suspendAutoConvert(factorySUnit);
+	suspendAutoConvert(factoryNUnit);
 	if (towerSFlagUnit >= 0)
-	{
-		rmAddTriggerEffect("Unit Action Suspend");
-		rmSetTriggerEffectParam("SrcObject", "" + towerSFlagUnit);
-		rmSetTriggerEffectParam("ActionName", "AutoConvert");
-		rmSetTriggerEffectParam("Suspend", "True");
-	}
+		suspendAutoConvert(towerSFlagUnit);
 	if (towerNFlagUnit >= 0)
-	{
-		rmAddTriggerEffect("Unit Action Suspend");
-		rmSetTriggerEffectParam("SrcObject", "" + towerNFlagUnit);
-		rmSetTriggerEffectParam("ActionName", "AutoConvert");
-		rmSetTriggerEffectParam("Suspend", "True");
-	}
+		suspendAutoConvert(towerNFlagUnit);
 	rmSetTriggerPriority(4);
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
 
-	// ---- 13.2 releases: a harbour when its guard nugget is collectable (Elbe's lone harbours, zpelbe.xs 1379; Istanbul "Harbour 1
-	// Convert ON" 4915), a Menagerie or Factory when its baked nugget is collectable - the same trigger, four lines each
-	rmCreateTrigger("Harbour N1 Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-	rmSetTriggerConditionParam("NuggetObject", "" + harbourN1GuardUnit);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + harbourN1PostUnit, false);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-	rmSetTriggerEffectParam("Suspend", "False", false);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmCreateTrigger("Harbour N2 Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-	rmSetTriggerConditionParam("NuggetObject", "" + harbourN2GuardUnit);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + harbourN2PostUnit, false);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-	rmSetTriggerEffectParam("Suspend", "False", false);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmCreateTrigger("Harbour S1 Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-	rmSetTriggerConditionParam("NuggetObject", "" + harbourS1GuardUnit);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + harbourS1PostUnit, false);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-	rmSetTriggerEffectParam("Suspend", "False", false);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmCreateTrigger("Harbour S2 Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-	rmSetTriggerConditionParam("NuggetObject", "" + harbourS2GuardUnit);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + harbourS2PostUnit, false);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-	rmSetTriggerEffectParam("Suspend", "False", false);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmCreateTrigger("Menagerie S Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-	rmSetTriggerConditionParam("NuggetObject", "" + menagerieSNugUnit);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + menagerieSUnit, false);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-	rmSetTriggerEffectParam("Suspend", "False", false);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmCreateTrigger("Menagerie N Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-	rmSetTriggerConditionParam("NuggetObject", "" + menagerieNNugUnit);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + menagerieNUnit, false);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-	rmSetTriggerEffectParam("Suspend", "False", false);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmCreateTrigger("Factory S Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-	rmSetTriggerConditionParam("NuggetObject", "" + factorySNugUnit);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + factorySUnit, false);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-	rmSetTriggerEffectParam("Suspend", "False", false);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
-
-	rmCreateTrigger("Factory N Convert ON");
-	rmAddTriggerCondition("Nugget Is Collectable");
-	rmSetTriggerConditionParam("NuggetObject", "" + factoryNNugUnit);
-	rmAddTriggerEffect("Unit Action Suspend");
-	rmSetTriggerEffectParam("SrcObject", "" + factoryNUnit, false);
-	rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-	rmSetTriggerEffectParam("Suspend", "False", false);
-	rmSetTriggerPriority(4);
-	rmSetTriggerActive(true);
-	rmSetTriggerRunImmediately(true);
-	rmSetTriggerLoop(false);
+	// ---- 13.2 releases: harbours when their guardians are gone (by area around the post); Menageries and Factories
+	// when their baked nugget is collectable
+	releaseWhenClear("Harbour N1 Convert ON", harbourN1PostUnit, harbourGuardType, harbourGuardReachM);
+	releaseWhenClear("Harbour N2 Convert ON", harbourN2PostUnit, harbourGuardType, harbourGuardReachM);
+	releaseWhenClear("Harbour S1 Convert ON", harbourS1PostUnit, harbourGuardType, harbourGuardReachM);
+	releaseWhenClear("Harbour S2 Convert ON", harbourS2PostUnit, harbourGuardType, harbourGuardReachM);
+	releaseOnNugget("Menagerie S Convert ON", menagerieSNugUnit, menagerieSUnit);
+	releaseOnNugget("Menagerie N Convert ON", menagerieNNugUnit, menagerieNUnit);
+	releaseOnNugget("Factory S Convert ON", factorySNugUnit, factorySUnit);
+	releaseOnNugget("Factory N Convert ON", factoryNNugUnit, factoryNUnit);
 
 	// ---- 13.3 the Towers (Istanbul's palace family), three passes per bank - only where the export carries a
-	// capturable flag (none does today: both families are skipped). Pass 1 creates the per-player conversion triggers,
-	// pass 2 the unlock (guard nugget collectable -> the flag converts again, every conversion armed), pass 3 fills each
-	// conversion (player p holds the flag -> the Tower building converts to p, the other players' conversions re-armed)
+	// capturable flag (none does today: both families are skipped)
 	if (towerSFlagUnit >= 0)
 	{
-		for (k = 1; <= cNumberNonGaiaPlayers)
-		{
-			rmCreateTrigger("TowerConvS_Plr" + k);
-		}
-		rmCreateTrigger("TowerSUnlock");
-		rmSwitchToTrigger(rmTriggerID("TowerSUnlock"));
-		rmAddTriggerCondition("Nugget Is Collectable");
-		rmSetTriggerConditionParam("NuggetObject", "" + towerSNugUnit);
-		rmAddTriggerEffect("Unit Action Suspend");
-		rmSetTriggerEffectParam("SrcObject", "" + towerSFlagUnit, false);
-		rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-		rmSetTriggerEffectParam("Suspend", "False", false);
-		for (k = 1; <= cNumberNonGaiaPlayers)
-		{
-			rmAddTriggerEffect("Fire Event");
-			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerConvS_Plr" + k));
-		}
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(true);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
-		for (p = 1; <= cNumberNonGaiaPlayers)
-		{
-			rmSwitchToTrigger(rmTriggerID("TowerConvS_Plr" + p));
-			rmAddTriggerCondition("Units Owned");
-			rmSetTriggerConditionParam("SrcObject", "" + towerSFlagUnit);
-			rmSetTriggerConditionParamInt("Player", p);
-			rmAddTriggerEffect("Convert");
-			rmSetTriggerEffectParam("SrcObject", "" + towerSBldUnit);
-			rmSetTriggerEffectParamInt("PlayerID", p);
-			for (q = 1; <= cNumberNonGaiaPlayers)
-			{
-				if (q != p)
-				{
-					rmAddTriggerEffect("Fire Event");
-					rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerConvS_Plr" + q));
-				}
-			}
-			rmAddTriggerEffect("Play Soundset");
-			rmSetTriggerEffectParam("Soundset", "SheepFound");
-			rmSetTriggerPriority(4);
-			rmSetTriggerActive(false);
-			rmSetTriggerRunImmediately(false);
-			rmSetTriggerLoop(false);
-		}
+		towerConvCreate("S");
+		towerUnlock("S", towerSNugUnit, towerSFlagUnit);
+		towerConvFill("S", towerSFlagUnit, towerSBldUnit);
 	}
-
 	if (towerNFlagUnit >= 0)
 	{
-		for (k = 1; <= cNumberNonGaiaPlayers)
-		{
-			rmCreateTrigger("TowerConvN_Plr" + k);
-		}
-		rmCreateTrigger("TowerNUnlock");
-		rmSwitchToTrigger(rmTriggerID("TowerNUnlock"));
-		rmAddTriggerCondition("Nugget Is Collectable");
-		rmSetTriggerConditionParam("NuggetObject", "" + towerNNugUnit);
-		rmAddTriggerEffect("Unit Action Suspend");
-		rmSetTriggerEffectParam("SrcObject", "" + towerNFlagUnit, false);
-		rmSetTriggerEffectParam("ActionName", "AutoConvert", false);
-		rmSetTriggerEffectParam("Suspend", "False", false);
-		for (k = 1; <= cNumberNonGaiaPlayers)
-		{
-			rmAddTriggerEffect("Fire Event");
-			rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerConvN_Plr" + k));
-		}
-		rmSetTriggerPriority(4);
-		rmSetTriggerActive(true);
-		rmSetTriggerRunImmediately(true);
-		rmSetTriggerLoop(false);
-		for (p = 1; <= cNumberNonGaiaPlayers)
-		{
-			rmSwitchToTrigger(rmTriggerID("TowerConvN_Plr" + p));
-			rmAddTriggerCondition("Units Owned");
-			rmSetTriggerConditionParam("SrcObject", "" + towerNFlagUnit);
-			rmSetTriggerConditionParamInt("Player", p);
-			rmAddTriggerEffect("Convert");
-			rmSetTriggerEffectParam("SrcObject", "" + towerNBldUnit);
-			rmSetTriggerEffectParamInt("PlayerID", p);
-			for (q = 1; <= cNumberNonGaiaPlayers)
-			{
-				if (q != p)
-				{
-					rmAddTriggerEffect("Fire Event");
-					rmSetTriggerEffectParamInt("EventID", rmTriggerID("TowerConvN_Plr" + q));
-				}
-			}
-			rmAddTriggerEffect("Play Soundset");
-			rmSetTriggerEffectParam("Soundset", "SheepFound");
-			rmSetTriggerPriority(4);
-			rmSetTriggerActive(false);
-			rmSetTriggerRunImmediately(false);
-			rmSetTriggerLoop(false);
-		}
+		towerConvCreate("N");
+		towerUnlock("N", towerNNugUnit, towerNFlagUnit);
+		towerConvFill("N", towerNFlagUnit, towerNBldUnit);
 	}
 
 
