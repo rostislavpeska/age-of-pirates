@@ -1,5 +1,5 @@
 {
-  "_comment": "self-calibrated by the agent from screenshots, 2880x1800 borderless, quit chain live-validated 2026-08-25; 2026-09-23: home_skirmish moved up to the Skirmish button under the new Continue button, lobby_probe = the Play button (the map-name button's text changes with the map); 2026-09-23: map picker points (lobby map button, All Maps tile, search box, first result tile, OK) measured on Amazonia; 2026-09-24: menu_live_probe / menu_post_probe = button background (48,19,9) of the in-match menu at y 615 (Quit) and the post-match menu at y 414 (Quit; Restart in the live menu)",
+  "_comment": "self-calibrated by the agent from screenshots, 2880x1800 borderless, quit chain live-validated 2026-08-25; 2026-09-23: home_skirmish moved up to the Skirmish button under the new Continue button, lobby_probe = the Play button (the map-name button's text changes with the map); 2026-09-23: map picker points (lobby map button, All Maps tile, search box, first result tile, OK) measured on Amazonia; 2026-09-24: menu_live_probe / menu_post_probe = button background (81,34,17) at x 2560 - the plateau of a left-edge gradient, x 2460 = (48,19,9), x 2500 = (68,29,14): MEASURE, never shift a probe unmeasured - of the in-match menu at y 615 (Quit) and the post-match menu at y 414 (Quit; Restart in the live menu)",
   "home_skirmish": {
     "x": 187,
     "y": 652,
@@ -87,21 +87,21 @@
     "rgb": null
   },
   "menu_live_probe": {
-    "x": 2500,
+    "x": 2560,
     "y": 615,
     "rgb": [
-      48,
-      19,
-      9
+      81,
+      34,
+      17
     ]
   },
   "menu_post_probe": {
-    "x": 2500,
+    "x": 2560,
     "y": 414,
     "rgb": [
-      48,
-      19,
-      9
+      81,
+      34,
+      17
     ]
   }
 }

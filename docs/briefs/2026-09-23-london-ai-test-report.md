@@ -331,3 +331,30 @@ The Trading Post failures are investigated offline in the meantime.
 
 **Harness edit:** `end_match` now reads which menu is open from button-background pixels (`menu_live_probe` at y 615,
 `menu_post_probe` at y 414) and clicks only the matching Quit. An unknown state gets an Escape and a retry.
+
+## Run 21 - round 4 repeat - London 3v2, 30 min cap - commit e8215632 (+ possibly 5c3e7233, see below)
+
+AI players: Garibaldi and Ivan the Terrible with the human, against Queen Elizabeth and Queen Isabella. Game time
+reached 55 minutes.
+
+**The run is AMBIGUOUS for the Trading Post filter.** The filter's edit was saved 60 s after Play, and London
+generates slowly (issues log I11). The driver now hashes the AI at Play and after the load.
+
+**Harness:** the new menu-aware quit failed 4 times with "no menu recognised". Cause: the probes had been moved to
+x=2500 without being measured there. The buttons' left edge is a gradient: x 2460 = (48,19,9), x 2500 = (68,29,14),
+plateau (81,34,17) from x 2560. The probes now sit at x 2560 with the measured colour. `end_match` was then run by
+hand on the open live menu: state "live", the home menu was reached and the logs flushed.
+
+**Verdict: FAIL (P2, P3).** L0-L8, P0, P1, U1 and U2 PASS.
+
+| Player | Failures at 30:00 / 55:00 | Top failures | Plantations at the end |
+|---|---|---|---|
+| P2 | 29 / 89 | Artillery Depot 37, Barracks 32, Trading Post 20 | 9 |
+| P3 | 30 / 69 | Trading Post 27, Forward Tower 17, Forward Barracks 15 | 6 |
+| P4 | 36 / 127 | Forward Tower 48, Trading Post 19, Outpost 19, Plantation 15 | 7 |
+| P5 | 35 / 165 | Forward Tower 42, Blockhouse 40, Plantation 27, Mill 27 | 2 |
+
+**Reading:** after 30 minutes the failures are forward-base buildings (a stock mechanism at the forward base),
+Trading Posts, and countryside Mills and Plantations. The countryside fills around a single gate point (60 m
+radius). **Next:** run 22 tests the Trading Post socket filter alone. The candidates after that: spread the
+countryside over the team's three wall gates, and forward-base placement on London.
