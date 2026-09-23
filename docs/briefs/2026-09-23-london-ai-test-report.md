@@ -88,3 +88,65 @@ The one edit is the round-2 code, below.
 The assignment asks for two consecutive passes of a round before the next round starts. The owner's budget is 5 runs
 in total, so round 1 was not run a second time on its own. Every later run still judges L0-L3, U1 and U2, so the next
 run is also the second round-1 check.
+
+## Run 16 - round 2 - commit c75a3b0b
+
+`driver.py --runs 1 --cap-min 20 --blind --criteria london`. The lobby had the same setup. The random personality this
+time was Queen Isabella, Spain. The match reached 24:17 of game time.
+
+**Verdict: PASS**, all of L0-L6, U1 and U2. This run is also the second round-1 check.
+
+### Harness fault found
+
+The quit confirm left the match on the resign screen ("You abandon your town") with the short post-match cog menu
+open. The per-player file was not flushed and the driver stopped. The agent clicked that menu's Quit at (2631,414)
+by hand. The first click was eaten; the second reached the home menu and flushed the file, which was then archived
+and judged.
+
+- **Fix in `driver.py`:** `end_match` now focuses the game first. If the home menu does not come back within 20 s,
+  it tries cog then `postmatch_quit`, twice.
+- **Sheet:** `postmatch_quit` added to the 2880x1800 sheet.
+
+### Criteria
+
+| Id | Res | Measured |
+|---|---|---|
+| L0-L3, U1 | PASS | build r2 at 0:01; setup at 0:11 (the AI was on the other bank this time: ours 207, keepNear 1049); 8 diag passes |
+| U2 | PASS | worst gap 61 s |
+| L4 | PASS | `held` at 0:21; `released - crossing open` at 13:13, 77 held passes |
+| L5 | PASS | near Keep gate 1104 down at 7:09 |
+| L6 | PASS | 0 |
+
+### The record lines that decided it
+
+    00:04:48 LONDONGATE p2 tasked 12 on 1104 nearKeep guard 374 ... strength 14.1 vs 0
+    00:07:09 LONDONGATE p2 gate 1104 down kind nearKeep hp 0 owner -1 next 1000 nearKeep
+    00:07:54 LONDONGATE p2 gate 1000 down kind nearKeep hp 4200 owner 2 next 207 bridgeOurs   <- our Keep captured, its gate converted to p2
+    00:11:36 LONDONGATE p2 gate 207 down kind bridgeOurs
+    00:13:13 LONDONWAR p2 released - crossing open after 77 held passes
+    00:13:17 LONDONGATE p2 gate 232 down kind bridgeFar
+    00:15:48 LONDONGATE p2 gate 1744 down kind farKeep
+    00:16:34 LONDONGATE p2 gate 1844 down kind farKeep hp 4500 owner 2 next -1   <- the far Keep captured too
+    00:16:34 LONDONGATE p2 no gate left - reserve released to the stock attack
+
+### Reading
+
+- **Both Keeps were captured without any capture mission.** The reserve killed the guards first and then stood at
+  each Keep's second gate. Both flags converted. Each "down" line with owner 2 is the Keep complex, gates included,
+  converting to p2.
+- **The AI held both Keeps from 16:34.** That is the victory condition, with an 8-minute countdown. The match was cut
+  at 24:17, before the win.
+- **Nothing garrisoned the Keeps.** After 16:34 the whole army went to the stock attack. A human opponent could have
+  retaken either flag unopposed.
+- **The reserve gathered everything (up to 102 units) for 16 minutes.** That is fine while the bridge is shut, since
+  nothing can reach the base by land. Defence against a naval landing was not tested.
+- **Not on the critical path, for later:**
+  - From 17:44 every Barracks and Outpost build fails with "building placement failed with state (3)".
+  - `BuildCaribTP` and Trading Post plans fail with "can't path" before the crossing opened.
+
+### Hypothesis and edit
+
+The one hypothesis for the next run: a garrison at priority 101 on each Keep the team owns keeps the flags.
+
+The one edit is round 3, trimmed to the hold. The measured capture already works, so the Istanbul-style capture
+mission is not built.
