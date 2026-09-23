@@ -8,7 +8,10 @@ allowlist entry fails the suite, so the list can only shrink honestly.
 
 from __future__ import annotations
 
+import os
+import re
 import sys
+from functools import lru_cache
 from pathlib import Path
 
 import pytest
@@ -36,6 +39,32 @@ OPEN_STATIC = {
 }
 
 
+@lru_cache(maxsize=None)
+def _live_vanilla_protos() -> frozenset:
+    """Proto names of the CURRENT game build (catalogs' live layer: Data.bar decoded to a LOCALAPPDATA cache), empty
+    where the install is not reachable. scripts/source/protoy.xml is the 2025-10-10 snapshot and lags every DLC:
+    zpcoldwar / zpunknown place Walrus, deFishingHole, deFeralSheep, deRMWoodCabin, which the live game has."""
+    from scripts.refdata import catalogs
+    was = os.environ.get("MAPCHECK_LIVE_PROTO")
+    os.environ["MAPCHECK_LIVE_PROTO"] = "1"
+    try:
+        live = catalogs._live_proto_path()
+    except SystemExit:      # bartool.find_game_dir() exits where there is no install; the live layer promises None
+        live = None
+    finally:
+        if was is None:
+            os.environ.pop("MAPCHECK_LIVE_PROTO")
+        else:
+            os.environ["MAPCHECK_LIVE_PROTO"] = was
+    return frozenset(n.lower() for n in catalogs._proto_names(live)) if live else frozenset()
+
+
+def _snapshot_lag(f) -> bool:
+    """An S4 'unknown proto' the live game has: the repo snapshot is behind, the map is fine."""
+    m = re.match(r"unknown proto '([^']+)'", f.message) if f.check == "S4" else None
+    return bool(m) and m.group(1).lower() in _live_vanilla_protos()
+
+
 def _scenario():
     from scripts.mapsim.scene import Scenario
     return Scenario(players=2, teams=2)
@@ -44,7 +73,7 @@ def _scenario():
 @pytest.mark.parametrize("path", MOD_MAPS, ids=[p.stem for p in MOD_MAPS])
 def test_static_tier(path):
     res = run(path, _scenario(), static_only=True)
-    fails = [f for f in res.findings if f.severity == "FAIL"]
+    fails = [f for f in res.findings if f.severity == "FAIL" and not _snapshot_lag(f)]
     allowed = OPEN_STATIC.get(path.stem, set())
 
     unexpected = [f for f in fails
