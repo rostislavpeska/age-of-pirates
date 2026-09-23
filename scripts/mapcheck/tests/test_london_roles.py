@@ -1020,8 +1020,8 @@ class TestFish:
     placed after the water flags, before the triggers."""
 
     def test_paris_shape_more_fish(self):
-        t = re.sub(r"[ ' + chr(92) + 't]+//[^' + chr(92) + 'n]*", "", _code(_text(LONDON)))
-        k = dict(re.findall(r"(?:float |int )?(' + chr(92) + 'w+)' + chr(92) + 's*=' + chr(92) + 's*([' + chr(92) + 'w.]+);", t))
+        t = re.sub(r"[ \t]+//[^\n]*", "", _code(_text(LONDON)))   # trailing comments off, as the markers test
+        k = dict(re.findall(r"(?:float |int )?(\w+)\s*=\s*([\w.]+);", t))
         assert int(k["fishPerPlayer"]) > 20 and 0.0 < float(k["fishSpacingM"]) <= 12.0
         s = t[t.index('int fishVsPlateau = rmCreateClassDistanceConstraint("fish avoid piers and bridge", rmClassID("classPlateau"), 2.0);'):t.index("int instanceIdShift = 3;")]
         for line in ('int fishVsFish = rmCreateTypeDistanceConstraint("fish vs other fish", "FishBass", fishSpacingM);',
