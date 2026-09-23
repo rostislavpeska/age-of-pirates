@@ -39,7 +39,9 @@ def load(run_dir):
     out = {}
     for path in sorted(glob.glob(os.path.join(run_dir, "Age3DEAIOutputPlayer*.txt"))):
         m = re.search(r"Player(\d+)", os.path.basename(path))
-        lines = [l for l in decode(path).split("\n") if l.strip()]
+        # the engine's own echoes (BuildPlan ... failing) end without a newline: split at every stamp, not at "\n"
+        text = re.sub(r"(?<!^)(?<!\n)(\d{2}:\d{2}:\d{2}  \()", r"\n\1", decode(path))
+        lines = [l for l in text.split("\n") if l.strip()]
         if m and lines:
             out[int(m.group(1))] = lines
     return out
@@ -111,6 +113,41 @@ def evaluate(files, events_path=None):
         if gaps and max(gaps) > worst:
             worst, worst_p = max(gaps), "P%d" % p
     add("U2", "max gap between LONDON echoes per AI player < 120 s", worst < 120, "worst %ds (%s)" % (worst, worst_p))
+
+    # round 2 - applicable once the build echo says r2 or later
+    r2 = [p for p in players if any(re.search(r"LONDON p%d build r([2-9])" % p, l) for l in ai[p])]
+    if r2:
+        # L4 attacks held: the first LONDONWAR held precedes any released; every released line says the crossing is open
+        bad = []
+        for p in r2:
+            war = [l for l in ai[p] if "LONDONWAR p%d" % p in l]
+            held = [i for i, l in enumerate(war) if " held - " in l]
+            rel = [i for i, l in enumerate(war) if " released" in l]
+            if not held or (rel and rel[0] < held[0]) or any("crossing open" not in war[i] for i in rel):
+                bad.append("P%d(held %d released %d)" % (p, len(held), len(rel)))
+        add("L4", "LONDONWAR held precedes any released; released only with the crossing open", not bad, "failing: %s" % (bad or "none"))
+
+        # L5 near Keep gate down by 12:00 (test mode)
+        bad = []
+        for p in r2:
+            t = [gtime(l) for l in ai[p] if re.search(r"LONDONGATE p%d gate \d+ down kind nearKeep" % p, l)]
+            if not t or t[0] is None or t[0] > 720:
+                bad.append("P%d(%s)" % (p, "%ds" % t[0] if t and t[0] is not None else "never"))
+        add("L5", "LONDONGATE gate <id> down kind nearKeep by 12:00", not bad, "failing: %s" % (bad or "none"))
+
+        # L6 no unreachable order: no 'tasked ... on <id>' in the same pass (same stamp) as 'skip <id> unreachable'
+        n = 0
+        for p in r2:
+            skips = set()
+            for l in ai[p]:
+                m = re.search(r"LONDONGATE p%d skip (\d+) unreachable" % p, l)
+                if m:
+                    skips.add((gtime(l), m.group(1)))
+            for l in ai[p]:
+                m = re.search(r"LONDONGATE p%d tasked \d+ on (\d+)" % p, l)
+                if m and (gtime(l), m.group(1)) in skips:
+                    n += 1
+        add("L6", "no LONDONGATE tasked on a target the same pass skipped as unreachable", n == 0, "count %d" % n)
     return results
 
 

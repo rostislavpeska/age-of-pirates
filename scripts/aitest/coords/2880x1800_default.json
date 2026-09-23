@@ -1,8 +1,8 @@
 {
-  "_comment": "self-calibrated by the agent from screenshots, 2880x1800 borderless, quit chain live-validated 2026-08-25",
+  "_comment": "self-calibrated by the agent from screenshots, 2880x1800 borderless, quit chain live-validated 2026-08-25; 2026-09-23: home_skirmish moved up to the Skirmish button under the new Continue button, lobby_probe = the Play button (the map-name button's text changes with the map)",
   "home_skirmish": {
     "x": 187,
-    "y": 824,
+    "y": 652,
     "rgb": [
       182,
       147,
@@ -10,12 +10,12 @@
     ]
   },
   "lobby_probe": {
-    "x": 2454,
-    "y": 645,
+    "x": 2471,
+    "y": 1708,
     "rgb": [
-      188,
-      154,
-      89
+      82,
+      34,
+      17
     ]
   },
   "lobby_play": {

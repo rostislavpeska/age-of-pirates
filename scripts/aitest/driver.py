@@ -534,11 +534,13 @@ def main():
                   " python scripts/aitest/crashdump_triage.py")
             continue
         quit_ok = end_match(nav)
-        # archive the per-player AI logs the quit just flushed
+        # archive the per-player AI logs the quit just flushed; only files written
+        # during this run - a smaller match leaves the higher players' old files
         logdir = os.path.join(USERDIR, "Logs")
         for pn in range(1, 9):
             src = os.path.join(logdir, "Age3DEAIOutputPlayer%d.txt" % pn)
-            if os.path.exists(src) and os.path.getsize(src) > 0:
+            if (os.path.exists(src) and os.path.getsize(src) > 0
+                    and os.path.getmtime(src) >= t0):
                 try:
                     with open(src, "rb") as fi, open(
                             os.path.join(rd, os.path.basename(src)), "wb") as fo:
