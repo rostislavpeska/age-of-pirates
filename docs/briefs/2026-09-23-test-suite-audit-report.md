@@ -178,14 +178,14 @@ commit, and whether any test or workflow would catch a repeat today:
 | Regression | Fix / evidence | Caught today? |
 |---|---|---|
 | LF-only art XML silently ignored, model never renders (issue #31; Tower of London "ten restarts"; ostinder materials) | `5b98edc1`, `29c8a064`, `12dab92c`, `b7cf6b00` "CRLF restored on the ostinder materials" | **no** - `check_art_eol.py` exists but no test or workflow runs it, and nothing asserts that `.gitattributes` covers every runtime extension |
-| XMB twin not rebuilt -> the game loads the old `.xmb` | AGENTS.md rule 4; memory "Aug 7 merge", `mod-deploy-check` exists for it | only by **mtime** inside a few mapcheck tests (London, Parliament, Jones), none in CI |
+| XMB twin not rebuilt -> the game loads the old `.xmb` | AGENTS.md rule 4; `mod-deploy-check` exists for it | only by **mtime** inside a few mapcheck tests (London, Parliament, Jones), none in CI - by content since `922b6c35`; all 27 twins: proposal E2 |
 | Language string twins stale ("ten ids missing from every non-English player's game", 2026-09-17) | `scripts/tools/stringsync.py` audit; `prezip_check.py` calls it | **no** test, no workflow |
 | Mod string ids colliding with the DLC's 300000 row | `e948b4f5` | **no** - `_stringtables.py` checks format / duplicates / empties only |
 | DLC-only `tacticdisplay` entries crash the retail build (the Capitol crash) | `2451aa57` | **no** |
 | A typo'd reference in a tech effect (`Spawnprivateer`) | `215ed4f1` | **no** in CI; `xmlcheck.py` checks proto references but needs the archive index (24 183 errors with `--no-archive`) |
 | Merge dropped every `zpNatInuitHarpooner` effect | `aug7` memory, `test_inuit_harpooner.py` | yes, locally (mapcheck, not in CI) |
 | A bad splice deleted two tests (`c5f15253`) | `5e8adb17` | no (a test file can lose tests silently) |
-| XS reserved word used as an identifier -> "Random Map failed to load" | memory "XS reserved words" | not checked by `xs_scope_check.py` (verify in Phase E) |
+| XS reserved word used as an identifier -> "Random Map failed to load" (2026-09-17, zplondon `cityBlock(string label = "")`) | memory "XS reserved words" | **no** - verified: `xs_scope_check.py` skips keywords where they are used but never flags a declaration named with one (proposal E6) |
 | Test self-bug: `chr(92)` join written inside a string, the regex matched nothing | `749da70b` | n/a - shows why tests must be run once red before trusting them green |
 
 ## 3. Classification (Phase C)
@@ -225,7 +225,8 @@ Where a class mixes portable and machine-bound methods, the method is named.
 | mapcheck `test_inuit_harpooner.py` both classes | KEEP | guards the Aug-7 merge regression | - |
 | mapcheck `test_jones_captain.py` TestProtos | FIX | the `<train ` absence asserts predate `31344a7d` (Pirate Gunboat trained on the flagships) | assert the new contract |
 | mapcheck `test_jones_captain.py` TestSideRecords | FIX | `test_voice_lines_are_the_american_frigate` predates `31344a7d` (SPCAmerican crew sets) | assert the SPCAmerican sets |
-| mapcheck `test_jones_captain.py` TestPlacement | FIX | "Jones is LAST" expires by design the moment the next record is appended (house rule); the durable invariant is "above the TEST section, in id order" | assert that |
+| mapcheck `test_jones_captain.py` TestPlacement `test_protos_sit_above_...`, `test_techs_sit_last_...` | FIX | "Jones is LAST" expires by design the moment the next record is appended (house rule); the durable invariant is "above the TEST section, only later (higher id / dbid) records after it" | assert that |
+| mapcheck `test_jones_captain.py` TestPlacement `test_side_records_are_last` | PROPOSE-DELETE | the same expired "last" for politicianmods / abilitymods / randomnamemods / civmods, whose records carry no id, so there is no durable order to assert; their content is TestSideRecords' | decision 2 |
 | mapcheck `test_jones_captain.py` TestTechs, TestSettlementTraining | KEEP | repo data | - |
 | mapcheck `test_jones_captain.py` TestMapAndDeploy `test_root_map_mirrors_repo` | QUARANTINE | Steam `000_independence_war.xs`; already skips | mark `local("steam")` |
 | mapcheck `test_jones_captain.py` TestMapAndDeploy `test_twin_fresh` (7) | FIX | XMB freshness by mtime | content comparison |
@@ -249,5 +250,111 @@ Where a class mixes portable and machine-bound methods, the method is named.
 | skills `aoe3de-reference`, `grouping-centering`, `rm-trigger-testing`, `skill-library-audit` | KEEP | offline fixtures | - |
 | sandbox `census/tests/test_gamewin.py` | KEEP | dry-run, inputs faked; never touches the game | - |
 
-No test was found that tests a thing that no longer exists; the one PROPOSE-DELETE is the
-working-tree check above.
+No test was found that tests a component that no longer exists; the two PROPOSE-DELETE rows
+are the working-tree check and the expired side-record placement check.
+
+## 4. What was changed (Phase D)
+
+Every commit names only its own files (`git add <path>`), was run before and after, and says the
+verdict and the reason in its message. Pushed in three groups; CI results read on github.com.
+
+| Commit | Change | Verdict | CI after the push |
+|---|---|---|---|
+| `e343d6ba` | this report, phases A-C | - | pushed with `6059d1d7` |
+| `7954455b` | `local(*needs)` marker in `pytest.ini`; new root `conftest.py` skips a marked test where the Steam install / profile folder is missing; marked TestBiasGuard, TestWWCanyonScatter, TestTrigtempOracle, the two Game-root twin tests, `test_civilwar_expectations_hold`; `mapsim.yml` runs `-m "not local"` and triggers on `conftest.py` / `pytest.ini` | QUARANTINE | pushed with `6059d1d7` |
+| `509cadf8` | TestTrigtempOracle skips a trigtemp.xs without Istanbul's `rule _PalaceSUnlock` (generated from another map) | QUARANTINE + FIX | pushed with `6059d1d7` |
+| `6059d1d7` | `test_xs_scope.py`: the 19 builtins pinned, no dump read; + UNKNOWN_FN injection (one-line extension of the existing injected-error test); + `local("profile")` cross-check of the pin | FIX | Mapsim #29 **failed** (the two known mapsim failures, not yet fixed); Proto / StringTable / TechTree / XML #1200 success |
+| `0719122a` | `steam_twin` fixture: the ten London / Parliament Steam-twin comparisons run after the repo checks and skip where the twin is absent | QUARANTINE (tail) | pushed with `d4172f14` |
+| `922b6c35` | `xmb_current` / `language_twins_current` fixtures: every mtime twin assertion (Jones x7, London roles x2, London revolt, Parliament) is now a content comparison / the stringsync audit | FIX | pushed with `d4172f14` |
+| `a8774da4` | mapsim TestBoxes: `test_malformed_box_raises` -> `test_reversed_corners_normalise_and_non_finite_raises` (the `5d130aa5` contract) | FIX | pushed with `d4172f14` |
+| `d4172f14` | mapsim TestSnapshot: hash of the LF-normalised bytes, re-baselined to the `e948b4f5` content | FIX | **Mapsim #30 success - the first green Mapsim run in the workflow's 30-run history**; Proto / StringTable / TechTree / XML #1201 success; PR #33: all 5 checks green |
+| `4f779191` | refdata TestGroupingFootprint: the unit-bounds rule pinned on a fixture grouping in `tmp_path` | FIX | Mapsim not triggered (paths); validators #1202 at `b06ff441` |
+| `ee29cc8d` | Jones TestProtos / TestSideRecords: flagships train exactly `zpPirateGunboat` + AllowTrainingOnWater; voices `SPCAmericanSelect` / `SPCAmericanBoatAcknowledge` (the `31344a7d` contract); voice test renamed | FIX | as above |
+| `489ba7c6` | Jones TestPlacement: "only later (higher id / dbid) records follow the Jones block", not "Jones is last" (2 of 3 tests; `test_side_records_are_last` untouched - decision 2) | FIX | as above |
+| `b06ff441` | roster: an S4 "unknown proto" the live game has is snapshot lag (only where the install is reachable) | FIX | as above |
+
+### 4.1 Result after the changes (2026-09-23, `b06ff441`)
+
+| Run | Before (`749da70b`) | After |
+|---|---|---|
+| all suites, this machine | 670 passed, 16 failed | 681 passed, 1 failed (`test_side_records_are_last`, decision 2), 4 skipped (trigtemp from another map) |
+| all suites, CI simulation (Steam + profile hidden) | 633 passed, 23 failed, 30 skipped | 661 passed, 3 failed (`test_side_records_are_last`; roster `zpcoldwar`, `zpunknown` = snapshot lag, decision 3), 23 skipped |
+| `mapsim` as CI runs it (`-m "not local"`) | 2 failed on every run since #1 | 184 passed locally; Mapsim #30 green on GitHub |
+
+Every skip now names its cause: `local (steam): needs <path>`, `local (profile): needs <path>`,
+`local (steam): no <twin> - every repo-side assertion before this line passed`, `trigtemp.xs was
+generated from another map`, `no lz4 package ...`.
+
+Observed during the final local run: `TestLondon::test_twins_are_fresh` failed once and passed on
+the rerun - another session saved `data/civmods.xml` at 10:21:58 and rebuilt its `.xmb` at
+10:22:06, and the run hit that eight-second stale window. That is the content check working; the
+old mtime check would have passed it too, but only by accident of timestamps.
+
+## 5. Proposals needing the owner's decision
+
+### 5.1 New tests (Phase E)
+
+Measured on today's tree; "passes today" means it would be green if merged now.
+
+| # | Name | Asserts | Regression it would have caught | Cost | Today |
+|---|---|---|---|---|---|
+| E1 | `test_runtime_xml_is_crlf` | `.gitattributes` gives `eol=crlf` to every runtime extension (`git check-attr` on `*.xml *.material *.lgt *.tactics *.xs`, none marked binary / `-text`), and `scripts/tools/check_art_eol.py` finds 0 LF-only files | issue #31 (models not appearing on a git checkout); Tower of London 10 restarts (`5b98edc1`, `29c8a064`); ostinder materials (`b7cf6b00`) | < 1 s, repo only | passes |
+| E2 | `test_every_data_twin_is_current` | every `data/**/*.xml.xmb` with a `.xml` decodes to the same tree (the `xmb_current` fixture over all 27) | AGENTS.md rule 4 (edits inert until rebuilt); today's 8-second window | 0.7 s, stdlib only, CI-capable | passes |
+| E3 | `test_language_twins_are_current` | `scripts/tools/stringsync.py` audit exits 0 (all 15 languages) | 2026-09-17: ten ids missing from every non-English player's game | 1.2 s; CI needs `pip install lz4` | passes |
+| E4 | `test_mod_string_ids_stay_in_mod_rows` | every `_locid` in the NEW STRINGS block of `english/stringmods.xml` is in 400001-400290 or >= 500001; every REWRITES id <= 300366 | `e948b4f5`: 363 mod ids collided with the DLC's 300000 row (DLC lines showed mod strings) | < 0.1 s | passes (3808 new ids, 1 rewrite) |
+| E5 | `test_techtree_references_resolve` | every `TechStatus` target and `<target type="ProtoUnit">` in `techtreemods.xml` exists in the mod, the vanilla snapshot, the live game (when reachable) or the unit-type list; an allowlist like the roster's OPEN_STATIC for triaged cases | `215ed4f1` (the `Spawnprivateer` typo) | 0.4 s | **fails today** - finds real bugs, see decision 17 |
+| E6 | `test_no_reserved_word_identifiers` | no variable, parameter or function in `randmaps/*.xs` + `game/randmaps/*.xs` is named with an XS reserved word (`label`, `goto`, `rule`, `group`, ...) | 2026-09-17 zplondon `cityBlock(string label = "")` -> "Random Map: zplondon failed to load", no log, clean mapcheck (memory `xs-reserved-words`) | 1 s (52 maps) | passes |
+| E7 | roster over `randmaps/*.xs` too | `test_static_tier` also parametrised over the 19 maps in `randmaps/` (it only globs `game/randmaps/`, 33 maps - London, Paris, Istanbul are not covered) | any S4/S5 map bug in the maps under active work | +1.8 s | fails today on 2 dev maps (decision 18) |
+| E8 | `test_protomods_ids_append_only` | after the first mod id of the current sequence (21160), no real unit with a higher id sits above one with a lower id | the house rule "new records at the end" (memory `new-content-placement`) | < 0.2 s | fails today: `zpNatLord` 21182 and `zpNatMercInuitHarpooner` 21192 sit mid-file (decision 19) |
+
+Recommended top five: E1, E2, E3, E4, E6 (all green today, all under 1.2 s, all CI-capable).
+E5 is the most valuable once decision 17 is answered. Nothing here was written yet except the
+one-line extension noted in commit `6059d1d7` (the UNKNOWN_FN injection).
+
+### 5.2 CI (Phase F)
+
+| Workflow | Runs something that matters? | Status on `Pirate-rework` |
+|---|---|---|
+| Mapsim Tests | yes - but only on pushes that touch `scripts/mapsim/**` (+ the workflow, `conftest.py`, `pytest.ini`), while the suite also reads `scripts/refdata/`, `scripts/source/`, `game/randmaps/`; matplotlib is not installed, so the 2 render smoke tests never run in CI | green since #30 |
+| Proto Validation | yes - duplicate name / id / dbid in `protomods.xml` (edited daily) | green |
+| StringTable Validation | partly - checks the English table only; the 14 other languages are `.xmb`-only and unchecked (E3) | green |
+| TechTree Validation | yes - duplicate name / dbid in `techtreemods.xml`; references unchecked (E5) | green |
+| XML Malformation Check | yes - every `.xml/.tactics/.material/.dmg` parses (2 s) | green |
+| (none) | the mapcheck, refdata, tools, skills and census suites (497 tests) run in no workflow | - |
+
+Every job warns "Node.js 20 is deprecated ... actions/checkout@v4, actions/setup-python@v4" and
+"ubuntu-latest will migrate to Ubuntu 26 beginning October 19, 2026". No workflow validates a file
+nobody edits; none is noise.
+
+### 5.3 Decisions
+
+Answer as "1 yes, 2 no, 3 later".
+
+1. Delete `test_gunsocket_lock.py::TestDeploy::test_triggerdata_untouched` - it asserts `git status` of `data/trigger` is clean, i.e. it tests the shared working tree, not the repository (fails whenever any session has an uncommitted trigger edit, vacuous on every clean checkout).
+2. Delete `test_jones_captain.py::TestPlacement::test_side_records_are_last` - "Jones is the last record" in politicianmods / abilitymods / randomnamemods / civmods expired by design with the next append, those records have no ids to state a durable order, and their content is covered by TestSideRecords. It is the one failing test left on this machine.
+3. Replace the 8 MB vanilla `scripts/source/protoy.xml` (2025-10-10 snapshot, tracked since `51d5e044`, a vanilla file in the repo against AGENTS.md rule 3) by a names-only index refreshed from the live Data.bar, the way `groupings_index.txt` works (small change in `scripts/refdata/catalogs.py`). Makes roster `zpcoldwar` / `zpunknown` green off-machine and shrinks the repo. Alternative: refresh the 8 MB file.
+4. One-line fix in `scripts/refdata/catalogs.py::_live_proto_path`: `except Exception` -> also `SystemExit` (bartool.find_game_dir exits without an install, so `mapcheck --live` crashes off-machine instead of returning None as documented).
+5. New workflow "Repo Tests": `pip install pytest lz4`, `python -m pytest scripts/mapcheck/tests scripts/refdata/tests scripts/tools .claude/skills/aoe3de-reference/tests .claude/skills/grouping-centering/tests .claude/skills/rm-trigger-testing/tests .claude/skills/skill-library-audit/tests sandbox/census/tests -m "not local"` on every push (~70 s). Green once 2 and 3 are done.
+6. `mapsim.yml`: install matplotlib so the render smoke tests run (+~15 s), or keep them skipped in CI.
+7. `mapsim.yml`: widen `paths` to `scripts/refdata/**`, `scripts/source/**`, `game/randmaps/**` (what the suite reads), or drop the filter (~60 s per push).
+8. All five workflows: `actions/checkout@v4` -> v5, `actions/setup-python@v4` -> v5 (Node 20 deprecation warning on every job).
+9. Write E1 (runtime XML CRLF).
+10. Write E2 (all data twins by content).
+11. Write E3 (language twins; needs lz4 in CI).
+12. Write E4 (string id rows).
+13. Write E5 (techtree references) with an allowlist for what decision 17 keeps.
+14. Write E6 (XS reserved words).
+15. Write E7 (roster over `randmaps/`).
+16. Write E8 (protomods append-only ids).
+17. Data bugs E5 found today, who fixes them: `data/techtreemods.xml:23574` `<effect type="TechStatus" status="unobtainable">"zpPirateLockCitystateTechs</effect>` (stray quote since `1066ebba`, 2025-01-17 - the effect is a no-op); ProtoUnit targets `zzpNatMercVeniceGuard`, `deREVBarbaryMarksmant`, `None`; TechStatus targets defined nowhere (not in the mod, not in the live game): `zpBigButtonResearchDone`, `zpChampionInuit`, `zpGuardHansa`, `zpIndianFriendshipSansculottes`, `zpNatMalteseFishCuisineFrench`, `zpNativeTradeTreatySansculottes`, `zpScientistsActive`, `zpTurnConsulateOnKhmer`, `zpUnknownAllianceInuits`, `zpVeteranHansa`, `zpWarriorSocietyInuit`, `ypBigConsulateJapaneseAllies`, `ypBigSequesterInitial`, `ypBigSequesterRemove`. (`DERevolutionLivonia` / `DERevolutionWarsaw` exist in the live game - snapshot lag only.)
+18. `randmaps/performance_test.xs` (no `.xml`, never in the lobby) and `randmaps/zpvenicecit_test.xs` (groupings `EU_Island_Venice_Academia`, `_SanGiorgi`, `_SanMarco`, ... match no file) ship in the zip folder: keep (allowlist them for E7), move out of `randmaps/`, or delete.
+19. `zpNatLord` (21182) and `zpNatMercInuitHarpooner` (21192) sit above the Jones block (21160-21162) in `protomods.xml`, against the append rule: move them to the end, or accept and start E8 after them.
+
+## 6. What could not be determined
+
+| Item | Why | Cheapest decisive check |
+|---|---|---|
+| The literal first failing assertion of Mapsim runs #1-#29 on GitHub | job logs need a signed-in admin (browser not signed in; API 403 "Must have admin rights"); reproduced locally instead (section 1.7) | open run #1's log once while signed in |
+| That `rule _PalaceSUnlock` is how the engine names Istanbul's PalaceSUnlock trigger in trigtemp.xs | inferred from the `rule _<name>` form the same test already matches; no Istanbul trigtemp on disk today | next Istanbul generation, then `python -m pytest scripts/mapcheck/tests/test_gunsocket_lock.py -m local` |
+| Issue #31's AI xml error and the Penal Colony big button | need the game | - |
+| Whether the 14 undefined TechStatus targets (decision 17) break anything in game | the engine ignores an unknown tech name silently, so probably a no-op each | in game, the tech that carries each effect behaves as intended |
