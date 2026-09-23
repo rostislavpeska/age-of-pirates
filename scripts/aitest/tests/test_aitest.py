@@ -206,7 +206,8 @@ def enclosing_headers(lines, i):
 
 
 class TestLondonOnlyPlacement:
-    HELPERS = ("londonCountrysidePoint", "londonFieldPoint", "londonSelectFieldPosition", "londonSocketExcluded")
+    HELPERS = ("londonCountrysidePoint", "londonFieldPoint", "londonSelectFieldPosition", "londonSocketExcluded",
+               "londonTowerPoint")
 
     @pytest.mark.parametrize("h", HELPERS)
     def test_helpers_return_at_once_off_london(self, h):
@@ -219,10 +220,18 @@ class TestLondonOnlyPlacement:
 
     def test_every_other_london_line_sits_inside_a_gisLondon_guard(self):
         lines = core("aibuildings.xs").splitlines()
-        text = "\n".join(lines)
-        start = text.index("vector londonCountrysidePoint(")
-        end = text.index("void selectTCBuildPlanPosition(")
-        helper_lines = set(range(text[:start].count("\n"), text[:end].count("\n")))
+        # every london* function body is a helper (each starts with 'if (gIsLondon == false) return', tested above)
+        helper_lines = set()
+        for i, l in enumerate(lines):
+            if re.match(r"^(?:bool|vector|int|void)\s+london\w+\(", l):
+                depth, j, opened = 0, i, False
+                while j < len(lines):
+                    depth += lines[j].count("{") - lines[j].count("}")
+                    opened = opened or "{" in lines[j]
+                    helper_lines.add(j)
+                    if opened and depth == 0:
+                        break
+                    j += 1
         hits = [i for i, l in enumerate(lines)
                 if re.search(r"london|LONDON", l) and i not in helper_lines and not l.strip().startswith("//")]
         assert hits, "no London code found outside the helpers"

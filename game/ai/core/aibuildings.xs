@@ -1246,6 +1246,93 @@ void selectTCBuildPlanPosition(int buildPlan = -1, int baseID = -1)
    plan that just avoids other towers.
 */
 //==============================================================================
+//==============================================================================
+// londonTowerPoint - London: 25 m outside whichever of our own city wall gates has the fewest of our towers within
+// 40 m, while one has fewer than 2; cInvalidVector = every gate guarded (the stock ring takes over). The stock ring
+// (selectTowerBuildPlanPosition) tests points ~31 m around the base centre with a ~15 m search - inside London's
+// city blocks (run 22: Blockhouse / Outpost placement failures up to 66 per player); the gates guard the countryside
+// fields instead.
+//==============================================================================
+vector londonTowerPoint(void)
+{
+   static int towerGateArr = -1;
+   int marker = -1;
+   int gateQuery = -1;
+   int gateCount = 0;
+   int gate = -1;
+   int n = 0;
+   int towers = 0;
+   int bestTowers = 2;
+   int bestGate = -1;
+   float side = 1.0;
+   float gateOff = 0.0;
+   float tcOff = 0.0;
+   vector tcVec = cInvalidVector;
+   vector bridgeVec = cInvalidVector;
+   vector gateVec = cInvalidVector;
+   vector point = cInvalidVector;
+   vector bestPoint = cInvalidVector;
+
+   if (gIsLondon == false)
+   {
+      return (cInvalidVector);
+   }
+   if (towerGateArr < 0)
+   {
+      towerGateArr = xsArrayCreateInt(8, -1, "London tower gates");
+   }
+   tcVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   marker = getUnit(cUnitTypezpAILondonBridge, cMyID, cUnitStateAny);
+   if (marker < 0 || tcVec == cInvalidVector)
+   {
+      return (cInvalidVector);
+   }
+   bridgeVec = kbUnitGetPosition(marker);
+   if (xsVectorGetZ(tcVec) < xsVectorGetZ(bridgeVec))
+   {
+      side = -1.0;
+   }
+   gateQuery = createSimpleUnitQuery(cUnitTypeSPCFortGate, cPlayerRelationAlly, cUnitStateAlive, tcVec, 400.0);
+   gateCount = kbUnitQueryExecute(gateQuery);
+   for (i = 0; < gateCount)
+   {
+      gate = kbUnitQueryGetResult(gateQuery, i);
+      gateVec = kbUnitGetPosition(gate);
+      gateOff = xsVectorGetZ(gateVec) - xsVectorGetZ(bridgeVec);
+      gateOff = gateOff * side;
+      tcOff = xsVectorGetZ(tcVec) - xsVectorGetZ(bridgeVec);
+      tcOff = tcOff * side + 20.0;
+      if (gateOff < tcOff)
+      {
+         continue;
+      }
+      if (n < 8)
+      {
+         xsArraySetInt(towerGateArr, n, gate);
+         n = n + 1;
+      }
+   }
+   for (k = 0; < n)
+   {
+      gate = xsArrayGetInt(towerGateArr, k);
+      gateVec = kbUnitGetPosition(gate);
+      point = xsVectorSet(xsVectorGetX(gateVec), 0.0, xsVectorGetZ(gateVec) + side * 25.0);
+      towers = getUnitCountByLocation(gTowerUnit, cMyID, cUnitStateABQ, point, 40.0);
+      if (towers < bestTowers)
+      {
+         bestTowers = towers;
+         bestGate = gate;
+         bestPoint = point;
+      }
+   }
+   if (bestGate >= 0)
+   {
+      aiEcho("LONDONPLACE p" + cMyID + " tower " + kbGetProtoUnitName(gTowerUnit) + " at gate " + bestGate + " ("
+             + bestTowers + " there, " + n + " gates)");
+   }
+   return (bestPoint);
+}
+
 void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 {
    int towerBL = kbGetBuildLimit(cMyID, gTowerUnit);
@@ -1261,6 +1348,18 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 
    static int towerSearch = -1;
    bool success = false;
+
+   // LONDON: towers guard our own city wall gates and the countryside behind them (londonTowerPoint)
+   if (gIsLondon == true)
+   {
+      vector londonTowerVec = londonTowerPoint();
+      if (londonTowerVec != cInvalidVector)
+      {
+         aiPlanSetVariableVector(buildPlan, cBuildPlanCenterPosition, 0, londonTowerVec);
+         aiPlanSetVariableFloat(buildPlan, cBuildPlanCenterPositionDistance, 0, 30.0);
+         return;
+      }
+   }
 
    if ((startingVec == cInvalidVector) || (baseVec != kbBaseGetLocation(cMyID, baseID))) // Base changed.
    {
