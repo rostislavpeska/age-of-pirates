@@ -206,7 +206,7 @@ def enclosing_headers(lines, i):
 
 
 class TestLondonOnlyPlacement:
-    HELPERS = ("londonCountrysidePoint", "londonSelectFieldPosition", "londonSocketExcluded")
+    HELPERS = ("londonCountrysidePoint", "londonFieldPoint", "londonSelectFieldPosition", "londonSocketExcluded")
 
     @pytest.mark.parametrize("h", HELPERS)
     def test_helpers_return_at_once_off_london(self, h):

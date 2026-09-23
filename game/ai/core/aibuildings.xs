@@ -905,6 +905,101 @@ vector londonCountrysidePoint(void)
 }
 
 //==============================================================================
+// londonFieldPoint - London: the countryside point for the NEXT economic building - 40 m beyond whichever of our own
+// city wall gates (the side away from the river) has the fewest buildings within 50 m; distance to the base breaks
+// ties. Run 21: one point per player filled up (Plantation / Mill placement failures up to 27 each after ~7 fields).
+//==============================================================================
+vector londonFieldPoint(void)
+{
+   static int gateArr = -1;
+   int marker = -1;
+   int gateQuery = -1;
+   int gateCount = 0;
+   int gate = -1;
+   int n = 0;
+   int crowd = 0;
+   int bestGate = -1;
+   int bestCrowd = 0;
+   float side = 1.0;
+   float gateOff = 0.0;
+   float tcOff = 0.0;
+   float score = 0.0;
+   float bestScore = 1000000.0;
+   vector tcVec = cInvalidVector;
+   vector bridgeVec = cInvalidVector;
+   vector gateVec = cInvalidVector;
+   vector point = cInvalidVector;
+   vector bestPoint = cInvalidVector;
+
+   if (gIsLondon == false)
+   {
+      return (cInvalidVector);
+   }
+   if (gateArr < 0)
+   {
+      gateArr = xsArrayCreateInt(8, -1, "London field gates");
+   }
+   tcVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   marker = getUnit(cUnitTypezpAILondonBridge, cMyID, cUnitStateAny);
+   if (marker < 0 || tcVec == cInvalidVector)
+   {
+      return (cInvalidVector);
+   }
+   bridgeVec = kbUnitGetPosition(marker);
+   if (xsVectorGetZ(tcVec) < xsVectorGetZ(bridgeVec))
+   {
+      side = -1.0;
+   }
+   // the gates first, into the array (one shared query object: read it before any other query runs)
+   gateQuery = createSimpleUnitQuery(cUnitTypeSPCFortGate, cPlayerRelationAlly, cUnitStateAlive, tcVec, 400.0);
+   gateCount = kbUnitQueryExecute(gateQuery);
+   for (i = 0; < gateCount)
+   {
+      gate = kbUnitQueryGetResult(gateQuery, i);
+      gateVec = kbUnitGetPosition(gate);
+      gateOff = xsVectorGetZ(gateVec) - xsVectorGetZ(bridgeVec);
+      gateOff = gateOff * side;
+      tcOff = xsVectorGetZ(tcVec) - xsVectorGetZ(bridgeVec);
+      tcOff = tcOff * side + 20.0;
+      if (gateOff < tcOff)
+      {
+         continue;
+      }
+      if (n < 8)
+      {
+         xsArraySetInt(gateArr, n, gate);
+         n = n + 1;
+      }
+   }
+   for (k = 0; < n)
+   {
+      gate = xsArrayGetInt(gateArr, k);
+      gateVec = kbUnitGetPosition(gate);
+      point = xsVectorSet(xsVectorGetX(gateVec), 0.0, xsVectorGetZ(gateVec) + side * 40.0);
+      crowd = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAlly, cUnitStateABQ, point, 50.0);
+      score = crowd * 30.0;
+      score = score + distance(point, tcVec) / 10.0;
+      if (score < bestScore)
+      {
+         bestScore = score;
+         bestGate = gate;
+         bestCrowd = crowd;
+         bestPoint = point;
+      }
+   }
+   if (bestGate < 0)
+   {
+      return (londonCountrysidePoint());
+   }
+   if (xsGetTime() - gLondonPlaceEcho >= 30000)
+   {
+      aiEcho("LONDONPLACE p" + cMyID + " field point behind gate " + bestGate + " of " + n + " gates, " + bestCrowd
+             + " buildings there");
+   }
+   return (bestPoint);
+}
+
+//==============================================================================
 // londonSelectFieldPosition - London: the economic buildings (Mill / Farm / Plantation / Hacienda / Folwark / rice
 // paddy) at the countryside point, the Town Center's centre-position placement; false = not handled (default path)
 //==============================================================================
@@ -922,7 +1017,7 @@ bool londonSelectFieldPosition(int planID = -1, int puid = -1)
    {
       return (false);
    }
-   point = londonCountrysidePoint();
+   point = londonFieldPoint();
    if (point == cInvalidVector)
    {
       return (false);
