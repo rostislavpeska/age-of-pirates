@@ -77,7 +77,8 @@ class TestProtos:
         assert _c(b, "tactics") == _c(bp, "tactics") == "frigate.tactics"
         for tag in ("maxhitpoints", "maxvelocity", "los", "bounty", "buildlimit", "obstructionradiusx", "sharedbuildlimitunit"):
             assert _c(b, tag) == _c(bp, tag), tag
-        assert "<train " not in b and "<train " in bp
+        # 31344a7d: none of the Black Pearl's pirate crews - the Pirate Gunboat only, trained on the water
+        assert re.findall(r"<train [^>]*>([^<]+)</train>", b) == ["zpPirateGunboat"] and "<train " in bp and "<flag>AllowTrainingOnWater</flag>" in b
         assert _c(b, "displaynameid") == "503408" and _c(b, "editornameid") == "503409"
         assert _c(b, "rollovertextid") == "503411" and _c(b, "shortrollovertextid") == "500005"
         assert _c(b, "icon") == ICON and _c(b, "portraiticon") == PORTRAIT
@@ -106,7 +107,7 @@ class TestProtos:
         u = _units(); b = u[SHIP2]; a = u[SHIP]
         assert _c(b, "editornameid") == "503410" and _c(b, "displaynameid") == "503408"
         assert _c(b, "animfile") == _c(a, "animfile") and _c(b, "tactics") == _c(a, "tactics")
-        assert _c(b, "buildlimit") == "1" and "<train " not in b
+        assert _c(b, "buildlimit") == "1" and re.findall(r"<train [^>]*>([^<]+)</train>", b) == ["zpPirateGunboat"]   # 31344a7d
         assert "<unittype>AbstractLegendaryShip</unittype>" not in b, "PrauB drops AbstractLegendaryShip"
         assert "<unittype>AbstractPirateShip</unittype>" in b
         assert SHIP2 + "Proxy" not in u
@@ -222,15 +223,16 @@ class TestSideRecords:
         assert "\n" not in pol and "Map Bonus" not in pol and "•" not in pol
 
     @pytest.mark.parametrize("ship", [SHIP, SHIP2])
-    def test_voice_lines_are_the_american_frigate(self, ship):
+    def test_voice_lines_are_the_spc_american_crew(self, ship):
         """sound/<protoname lowercased>_snds.xml, found by name; cloned from the
-        Black Pearl's file with the DE American Frigate voice."""
+        Black Pearl's file, voiced with the campaign SPCAmerican crew sets (31344a7d;
+        the DE American Frigate voice before)."""
         p = REPO / "sound" / (ship.lower() + "_snds.xml")
         assert p.exists(), p
         s = p.read_text(encoding="utf-8", errors="replace")
         assert '<protounit name="%s">' % ship in s
         pick = lambda t: re.search(r'<soundtype name="%s">\s*<soundset name="([^"]+)">' % t, s).group(1)  # noqa: E731
-        assert pick("Select") == "DEAmericanFrigateSelect" and pick("Acknowledge") == "DEAmericanFrigateAcknowledge"
+        assert pick("Select") == "SPCAmericanSelect" and pick("Acknowledge") == "SPCAmericanBoatAcknowledge"
         assert pick("Death") == "ShipDeath" and pick("Creation") == "ShipBirth" and pick("Exists") == "AmbienceShip"
         b = p.read_bytes(); assert b.count(b"\n") == b.count(b"\r\n"), "CRLF like the other _snds files"
 
