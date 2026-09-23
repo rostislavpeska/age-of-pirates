@@ -783,14 +783,14 @@ class TestKeepGuards:
     Whitecoats through a new record (610, the same shape, deSPCHMWhitecoat x10). The export's placeholder stays; the latch
     set before EACH Tower instance follows the coin (defenderBank 0 = south = Tower S defends), not the export."""
 
-    def test_whitecoat_record_and_the_coin_keyed_latch(self, steam_twin):
+    def test_whitecoat_record_and_the_coin_keyed_latch(self, steam_twin, xmb_current):
         n = _text(REPO / "data/nuggetmods.xml")
         for name, unit, diff in (("zpNuggetTowerOfLondon", "deSPCHMRedcoat", 605), ("zpNuggetTowerOfLondonWhitecoat", "deSPCHMWhitecoat", 610)):
             i = n.index("<name>%s</name>" % name); rec = n[n.rfind("<nugget>", 0, i):n.index("</nugget>", i)]
             assert rec.count("<unit>%s</unit>" % unit) == 10 and rec.count("<guardianunit>") == 10, name
             assert "<nuggetunit>zpNuggetInvisible</nuggetunit>" in rec and "<maptype>piratehistoricalmap</maptype>" in rec and ("<difficulty>%d</difficulty>" % diff) in rec, name
         assert n.count("<difficulty>610</difficulty>") == 1
-        assert (REPO / "data/nuggetmods.xml.xmb").stat().st_mtime >= (REPO / "data/nuggetmods.xml").stat().st_mtime
+        xmb_current("data/nuggetmods.xml")
         t = re.sub(r"[ \t]+//[^\n]*", "", _code(_text(LONDON)))   # trailing comments off, as the markers test
         s_latch = chr(10).join(["\tif (defenderBank == 0)", "\t{", "\t\trmSetNuggetDifficulty(610, 610);", "\t}", "\telse", "\t{", "\t\trmSetNuggetDifficulty(605, 605);", "\t}",
                                 "\tint towerSInst = rmPlaceGroupingInstanceAtLoc(blockTowerS, locX78, locZs12, 0);"])
@@ -827,7 +827,7 @@ class TestBridgeOwnership:
         for l in lines[end - 4:end]:
             assert (l.replace(">deSPCSocketCityTower</unit>", ">zpSPCFortTowerPropFlat</unit>") + chr(13) + chr(10)).encode("utf-8") in old
 
-    def test_venice_tower_family(self):
+    def test_venice_tower_family(self, xmb_current):
         # user 2026-09-22: Venice's own towers, not clones - the vanilla tower techs must apply
         pm = _text(REPO / "data/protomods.xml"); assert "CityTowerFlat" not in pm and 'id="21196"' not in pm and 'id="21197"' not in pm
         lm = _text(REPO / "randmaps/zplondon.mods.xml")
@@ -844,7 +844,7 @@ class TestBridgeOwnership:
         st = _text(REPO / "data/strings/english/stringmods.xml"); assert '_locid="503563"' not in st and '_locid="503564"' not in st
         assert not (REPO / "sound/zpspccitytowerflat_snds.xml").exists()
         for f in ("data/protomods.xml", "data/techtreemods.xml"):
-            assert (REPO / (f + ".xmb")).stat().st_mtime >= (REPO / f).stat().st_mtime, f
+            xmb_current(f)
 
     def test_bridge_revealer_for_all_placed_last(self):
         t = _code(_text(LONDON))

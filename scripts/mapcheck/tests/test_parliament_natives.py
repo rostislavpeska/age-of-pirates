@@ -429,15 +429,10 @@ class TestLondon:
         t = a.decode("utf-8")
         assert t.count(">%s</unit>" % SOCKET) == 1 and "zpSocketSansculottes" not in t
 
-    def test_twins_are_fresh(self):
-        for f in ("protomods", "techtreemods", "civmods", "politicianmods"):
-            src, xmb = D / ("%s.xml" % f), D / ("%s.xml.xmb" % f)
-            assert xmb.exists() and xmb.stat().st_mtime >= src.stat().st_mtime, f
-        eng = D / "strings/english/stringmods.xml"
-        for lang in D.joinpath("strings").iterdir():
-            x = lang / "stringmods.xml.xmb"
-            if x.exists():
-                assert x.stat().st_mtime >= eng.stat().st_mtime, lang.name
+    def test_twins_are_fresh(self, xmb_current, language_twins_current):
+        for f in ("protomods", "techtreemods", "civmods", "politicianmods", "strings/english/stringmods"):
+            xmb_current("data/%s.xml" % f)
+        language_twins_current()   # the 14 other languages ship the .xmb alone: stringsync.py's audit, not an mtime
 
 # ------------------------------------------------------------------- flags (2026-09-19)
 class TestFlags:

@@ -323,5 +323,5 @@ class TestMapAndDeploy:
 
     @pytest.mark.parametrize("f", ["protomods.xml", "techtreemods.xml", "civmods.xml", "politicianmods.xml",
                                    "randomnamemods.xml", "abilities/abilitymods.xml", "strings/english/stringmods.xml"])
-    def test_twin_fresh(self, f):
-        assert os.path.getmtime(D / (f + ".xmb")) >= os.path.getmtime(D / f), f"rebuild {f}.xmb"
+    def test_twin_fresh(self, f, xmb_current):
+        xmb_current("data/" + f)
