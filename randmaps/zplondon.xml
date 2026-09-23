@@ -1,10 +1,11 @@
 <?xml version = "1.0" encoding = "UTF-8"?>
 <mapinfo details = "503568" displayNameID = "503567" loadDetails="503569"
-    imagepath = "ui\random_map\paris\paris_mini" cannotReplace = "" loadBackground="ui\random_map\paris\paris_map">
+    imagepath = "ui\random_map\london\london_mini" cannotReplace = "" loadBackground="ui\random_map\london\london_map">
     <filter>Historical</filter>
-    <loadss>ui\random_map\paris\paris_01</loadss>
-    <loadss>ui\random_map\paris\paris_02</loadss>
-    <loadss>ui\random_map\paris\paris_03</loadss>
+    <loadss>ui\random_map\london\london_01</loadss>
+    <loadss>ui\random_map\london\london_02</loadss>
+    <loadss>ui\random_map\london\london_03</loadss>
+    <loadss>ui\random_map\london\london_04</loadss>
     <enforcedSettings>
         <setting type="FFA" state="forbidden" />
         <setting type="RecordGame" state="forbidden" />
