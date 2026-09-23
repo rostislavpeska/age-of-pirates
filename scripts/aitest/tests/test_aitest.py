@@ -270,3 +270,41 @@ def test_home_probe_needs_a_second_pixel():
     import json
     sheet = json.load(open(os.path.join(AITEST, "coords", "2880x1800_default.json")))
     assert "also" in sheet["home_skirmish"]
+
+
+# ---- XS syntax lint: constructs the engine's parser rejected in game (each one cost a run) ----------------------
+
+def xs_conditions(text):
+    """(line number, condition text) of every if / while condition, the parentheses matched."""
+    for m in re.finditer(r"\b(?:if|while)\s*\(", text):
+        i, depth = m.end(), 1
+        while i < len(text) and depth:
+            depth += {"(": 1, ")": -1}.get(text[i], 0)
+            i += 1
+        yield text[:m.start()].count("\n") + 1, text[m.end():i - 1]
+
+
+def suspect_group_product_compare(cond):
+    """True for the shape the engine rejected in run 19 (2026-09-23), aibuildings.xs(883):
+        if ((xsVectorGetZ(g) - xsVectorGetZ(b)) * side < (xsVectorGetZ(t) - xsVectorGetZ(b)) * side + 20.0)
+    -> XS Error 0308 illogical or invalid expression / 0135 parseConditionDecl failed; every AI player dead.
+    The exact trigger is NOT isolated: the stock core compiles '(a - b) * f(x) >= g(y)' (aieconomy.xs 1609) and
+    '(a + b) < (c * d)' (aiassertivewall.xs 11130). Flagged: a parenthesised group that contains a call, multiplied by
+    a bare identifier, then compared - the rejected line's shape, which the stock core never uses. Plain steps into
+    locals are the safe form."""
+    group = r"\((?:[^()]|\([^()]*\))*\w\([^()]*\)(?:[^()]|\([^()]*\))*\)"   # a group holding a call, one nesting level
+    return re.search(group + r"\s*\*\s*[A-Za-z_]\w*\s*[<>]", cond) is not None
+
+
+@pytest.mark.parametrize("name", sorted(f for f in os.listdir(CORE) if f.endswith(".xs")))
+def test_no_condition_has_the_run_19_rejected_shape(name):
+    text = re.sub(r"//[^\n]*", "", core(name))
+    bad = [(n, c.strip()[:90]) for n, c in xs_conditions(text) if suspect_group_product_compare(c)]
+    assert not bad, bad
+
+
+def test_the_lint_catches_the_run_19_line():
+    assert suspect_group_product_compare("(xsVectorGetZ(a) - xsVectorGetZ(b)) * side < (xsVectorGetZ(c) - 1.0) * side + 20.0")
+    assert not suspect_group_product_compare("(totalAmount - lastTotalGoldAmount) * xsArrayGetFloat(g, c) >= x")
+    assert not suspect_group_product_compare("(friendlyStrength + allyStrength) < (enemyStrength * strengthFactor)")
+    assert not suspect_group_product_compare("gateOff < tcOff")

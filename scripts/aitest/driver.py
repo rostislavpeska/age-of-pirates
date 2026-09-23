@@ -443,6 +443,15 @@ def start_match(nav, from_lobby=False, blind=False, load_s=150, map_name=None):
         t0 = time.time()
         while time.time() - t0 < load_s:
             guard(); time.sleep(5)
+        # an AI compile error kills every AI player and shows a modal dialog the blind driver cannot see
+        # (run 19, 2026-09-23): the game log names it - stop the batch instead of watching dead AIs for 30 minutes
+        _, chunk = new_log_content(pos)
+        errs = [ln.strip() for ln in chunk.splitlines() if "XS: Error" in ln]
+        if errs:
+            print("   AI COMPILE ERROR - stopping; first lines:")
+            for ln in errs[:3]:
+                print("     " + ln[-160:])
+            return -2
         return pos
     t0 = time.time()
     buf = ""
@@ -592,6 +601,9 @@ def main():
         # --from-lobby holds for the first match only: every quit returns to the home menu, and the lobby keeps
         # its setup (map, players, teams) for the next Skirmish click
         pos = start_match(nav, a.from_lobby and done == 0, a.blind, a.load_s, a.map)
+        if pos == -2:
+            print("   fix the AI file, dismiss the dialog (its OK moves with the error length), quit the match; rerun")
+            break
         if pos < 0:
             lost += 1
             if lost >= 3:

@@ -846,6 +846,8 @@ vector londonCountrysidePoint(void)
    float bestDist = 100000.0;
    float side = 1.0;
    float d = 0.0;
+   float gateOff = 0.0;
+   float tcOff = 0.0;
    vector tcVec = cInvalidVector;
    vector bridgeVec = cInvalidVector;
    vector gateVec = cInvalidVector;
@@ -880,7 +882,12 @@ vector londonCountrysidePoint(void)
       gate = kbUnitQueryGetResult(gateQuery, i);
       gateVec = kbUnitGetPosition(gate);
       // the city wall stands beyond the seats, away from the river; the Keeps' and the bridge's gates are riverward
-      if ((xsVectorGetZ(gateVec) - xsVectorGetZ(bridgeVec)) * side < (xsVectorGetZ(tcVec) - xsVectorGetZ(bridgeVec)) * side + 20.0)
+      // (plain steps: XS rejects '(a - b) * c < ...' in a condition - Error 0308, run 19)
+      gateOff = xsVectorGetZ(gateVec) - xsVectorGetZ(bridgeVec);
+      gateOff = gateOff * side;
+      tcOff = xsVectorGetZ(tcVec) - xsVectorGetZ(bridgeVec);
+      tcOff = tcOff * side + 20.0;
+      if (gateOff < tcOff)
       {
          continue;
       }
