@@ -220,19 +220,12 @@ void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
             {
                continue;
             }
-            // LONDON: the river and the wall hills are not 'another island' - only a separate LAND group stops the growth
+            // LONDON: nothing here is 'another island' - the river, the wall hills, and the countryside behind the city
+            // wall, which the knowledge base keeps as its own land group (run 19: every base froze at 100 m on 'area
+            // type -1 group 5/6/7' while its Plantations stood out there). The 120 m cap below keeps the base on its bank.
             if (gIsLondon == true)
             {
-               if (kbAreaGetType(i) == cAreaTypeWater || kbAreaGetType(i) == cAreaTypeImpassableLand)
-               {
-                  continue;
-               }
-               if (kbAreaGroupGetType(kbAreaGroupGetIDByPosition(location)) == cAreaGroupTypeWater)
-               {
-                  continue;
-               }
-               aiEcho("LONDONPLACE p" + cMyID + " base " + baseID + " growth refused at " + newDistance + " m: area " + i
-                      + " type " + kbAreaGetType(i) + " group " + kbAreaGroupGetIDByPosition(location));
+               continue;
             }
             for (j = 0; < 5)
             {

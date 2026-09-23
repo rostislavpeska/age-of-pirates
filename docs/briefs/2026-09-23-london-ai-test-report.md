@@ -270,3 +270,31 @@ failures 87 (48 per 10 min)`
 minute, which confirms the diagnosis: the freeze is the stock handler's behaviour, not a London defect. The London
 fix therefore is London's own. On standard maps the floor stays whatever the stock AI does, and B4 guards against
 things getting worse.
+
+## Run 19 - round 4 (placement) - London 3v2, 30 min cap - commit 91c523af
+
+Setup: P1 human (passive), Queen Isabella and Spanish on the human's team, Frederick the Great and Giuseppe Garibaldi
+opposite. Game time reached 55:03 at the cap. Before this run, a first attempt died on an XS syntax error (I8 in the
+issues log); it was fixed and did not count.
+
+**Verdict: FAIL (P1, P2, P3). L0-L8, P0, U1 and U2 PASS for all 4 AI players**, so round 3 has passed twice (runs 17
+and 19): **round 3 is done.**
+
+| Player | Age at 25:00 | Villagers at 25:00 | Plantations at the end | Base radius | Failures at 55:00 | Top failure |
+|---|---|---|---|---|---|---|
+| P2 | V | 91 | 7 | 70 | 78 | ArtilleryDepot 36 |
+| P3 | V | 83 | 4 | 70 | 75 | Forward Barracks 28 |
+| P4 | V | 86 | 5 | 40 (60 at 55:00) | 67 | Barracks 30, ArtilleryDepot 30 |
+| P5 | V | 100 | 10 | 70 | 343 | Arsenal 161, Basilica 76 |
+
+**Reading:**
+- **The countryside placement works.** Every player's Plantations were placed behind its own wall gate (`LONDONPLACE
+  field Plantation ... at the countryside`), and the economies are strong: the Imperial Age and 90-100 villagers by
+  25:00.
+- **The failures that remain are base-driven military and tech buildings.** Each base grows to 70-100 m, then every
+  further growth is refused on `area N type -1 group 5/6/7`. That area is land of its own knowledge-base group: the
+  countryside behind the city wall. The city and the bridge are group 2 (LONDONDIAG). So the handler still treats
+  the countryside as "another island", although the base's own Plantations stand there.
+
+**Hypothesis and edit:** on London, no area stops the growth; the 120 m cap alone keeps the base on its bank. That
+removes the refusal and its echo spam (342 lines for P5). One edit, the handler's London branch.
