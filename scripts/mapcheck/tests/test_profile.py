@@ -149,6 +149,7 @@ class TestPilotProfiles:
         assert len(prof.known_issues) == 3
 
     @pytest.mark.slow
+    @pytest.mark.local("steam")
     def test_civilwar_expectations_hold(self):
         from scripts.mapcheck.locate import resolve_map
         try:

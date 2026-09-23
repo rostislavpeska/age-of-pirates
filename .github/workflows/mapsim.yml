@@ -6,6 +6,8 @@ on:
     paths:
       - "scripts/mapsim/**"
       - ".github/workflows/mapsim.yml"
+      - "conftest.py"
+      - "pytest.ini"
 
 jobs:
   pytest:
@@ -23,4 +25,4 @@ jobs:
           pip install pytest
       - name: Run Tests
         run: |
-          python -m pytest scripts/mapsim/tests -q
+          python -m pytest scripts/mapsim/tests -q -m "not local"

@@ -207,6 +207,7 @@ class TestModel:
 
 # ------------------------------------------------------------------- 3 oracle
 @pytest.mark.slow
+@pytest.mark.local("profile")
 class TestTrigtempOracle:
     """Needs the game to have generated trigtemp.xs from THIS map."""
 
@@ -234,6 +235,7 @@ class TestTrigtempOracle:
 
 # ------------------------------------------------------------------- 4 deploy
 class TestDeploy:
+    @pytest.mark.local("steam")
     def test_repo_map_is_one_to_one_with_the_game_root_copy(self):
         if not ROOT_MAP.exists():
             pytest.skip("no Game-root working copy on this machine")

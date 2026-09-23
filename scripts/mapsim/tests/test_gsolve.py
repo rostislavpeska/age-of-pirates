@@ -76,6 +76,7 @@ void main(void) {
         assert rs.suppressed_variants == 2
 
 
+@pytest.mark.local("steam")   # the Sufi mosque groupings are vanilla: read from the install's Game/RandMaps/groupings
 class TestWWCanyonScatter:
     @pytest.fixture(scope="class")
     def rs(self):

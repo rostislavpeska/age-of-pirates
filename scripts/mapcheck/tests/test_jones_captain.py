@@ -315,6 +315,7 @@ class TestMapAndDeploy:
             if other.name != MAP.name:
                 assert SET not in other.read_text(encoding="utf-8", errors="replace"), other.name
 
+    @pytest.mark.local("steam")
     def test_root_map_mirrors_repo(self):
         if not ROOT_MAP.exists():
             pytest.skip("no Game-root copy here")

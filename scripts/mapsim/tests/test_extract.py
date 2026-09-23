@@ -158,6 +158,7 @@ class TestGoldenGate:
         assert diff_vs_scene(ex, scene, sc) == []
 
 
+@pytest.mark.local("steam")
 class TestBiasGuard:
     """Genuinely stock maps (never touched by this mod) must extract."""
 
