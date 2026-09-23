@@ -150,3 +150,56 @@ The one hypothesis for the next run: a garrison at priority 101 on each Keep the
 
 The one edit is round 3, trimmed to the hold. The measured capture already works, so the Istanbul-style capture
 mission is not built.
+
+## Run 17 - round 3 - commit 36e4d5fd (round-3 code f5b1d90d)
+
+`driver.py --runs 1 --cap-min 20 --blind --criteria london`. The lobby had the same setup. The random personality this
+time was Ivan the Terrible, Russia, and the AI started on the other bank again.
+
+**The AI won the match.** The owner (P1, passive) watched it take both Keeps. The 8-minute Keep countdown was
+running ("Team Defenders wins in 2:57") when the AI destroyed the owner's Town Centre at about 21:00 of game time.
+The owner asked for the test to stop there.
+
+The agent stopped the driver (its own Python process only, never the game) and quit the match through cog, then Quit,
+by hand. The per-player file had already been flushed when P1 went out.
+
+**Verdict: PASS**, all of L0-L8, U1 and U2. Round 2 has now passed twice in a row (runs 16 and 17): **round 2 is
+done.** Round 3 has passed once.
+
+### Criteria
+
+| Id | Res | Measured |
+|---|---|---|
+| L0-L3, U1, U2 | PASS | build r3 at 0:01; setup at 0:11 (ours 232, keepNear 1764); worst gap 50 s |
+| L4 | PASS | `held` at 0:21; `released - crossing open` at 12:54, 75 held passes |
+| L5 | PASS | near Keep gate 1744 down at 8:15 |
+| L6 | PASS | 0 |
+| L7 | PASS | `LONDONKEEP p2 flag ours keep 1764 near` at 9:12 |
+| L8 | PASS | `LONDONHOLD` 5-6 holding every 30 s from 9:12 to the end; far Keep 6 holding from 16:12 |
+
+### The record lines that decided it
+
+    00:08:55 LONDONGATE p2 gate 1844 down kind nearKeep hp 5250 owner 2        <- near Keep captured
+    00:09:12 LONDONKEEP p2 flag ours keep 1764 near owner 2 garrison plan 193 cap 6
+    00:12:47 LONDONGATE p2 gate 207 down kind bridgeFar
+    00:12:54 LONDONWAR p2 released - crossing open after 75 held passes
+    00:15:53 LONDONGATE p2 gate 1000 down kind farKeep hp 5250 owner 2        <- far Keep captured
+    00:16:12 LONDONKEEP p2 flag ours keep 1049 far owner 2 garrison plan 416 cap 6
+    00:20:43 LONDONHOLD p2 5 holding keep 1764 near / 6 holding keep 1049 far
+
+### Reading
+
+- **The whole London sequence works end to end:**
+  1. Hold the attacks while the bridge is shut.
+  2. Break the near Keep's gates and take the flag.
+  3. Garrison the Keep.
+  4. Break both bridge gates and release the stock attack.
+  5. Break the far Keep's gates and take the flag.
+  6. Garrison that Keep too, and win.
+- **The near garrison fell to 5 at 15:42 and stayed at 5.** The refill loop did not bring it back to 6. The AI still
+  held the Keep, but the refill needs a look in the next round: likely `aiPlanAddUnit` refused a unit that the stock
+  attack plan owned.
+- **Not on the critical path, for later:**
+  - Build placement failures ("state (3)") for TownCenter, Plantation, Blockhouse and Forward Tower late in the game.
+  - Trading Post and `BuildCaribTP` plans fail with "can't path" before the crossing opens: the Trading Post sites
+    are on the far bank or on the bridge.
