@@ -31,7 +31,8 @@ class TestSnapshot:
     def test_snapshot_hash_matches_recorded(self, scene):
         meta = scene.data["snapshot"]
         snapshot = FIXTURES / meta["file"]
-        digest = hashlib.sha256(snapshot.read_bytes()).hexdigest()
+        # line endings normalised: the checkout decides CRLF or LF, the content is what the scene was curated from
+        digest = hashlib.sha256(snapshot.read_bytes().replace(b"\r\n", b"\n")).hexdigest()
         assert digest == meta["sha256"], (
             "vendored snapshot changed - re-baseline the scene (plan section 1.3)"
         )
