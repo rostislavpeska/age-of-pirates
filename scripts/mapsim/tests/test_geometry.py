@@ -125,9 +125,12 @@ class TestBoxes:
         assert not annulus_intersects_box((0.5, 0.5), 0.6, 0.7, self.BOX)  # box max reach ~0.566
         assert annulus_intersects_box((1.5, 0.5), 0.6, 0.7, self.BOX)
 
-    def test_malformed_box_raises(self):
+    def test_reversed_corners_normalise_and_non_finite_raises(self):
+        # 5d130aa5: the engine forms the rectangle from either corner order (zpverseilles:391 authors z0>z1)
+        assert dist_range_to_box((0.0, 0.0), (0.9, 0.9, 0.1, 0.1)) == dist_range_to_box((0.0, 0.0), self.BOX)
+        assert dist_range_to_box((1.0, 0.5), (0.1, 0.9, 0.9, 0.1)) == dist_range_to_box((1.0, 0.5), self.BOX)
         with pytest.raises(ValueError):
-            dist_range_to_box((0.0, 0.0), (0.9, 0.1, 0.1, 0.9))
+            dist_range_to_box((0.0, 0.0), (0.1, float("nan"), 0.9, 0.9))
 
 
 class TestIntervals:
