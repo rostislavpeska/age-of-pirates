@@ -220,6 +220,20 @@ void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
             {
                continue;
             }
+            // LONDON: the river and the wall hills are not 'another island' - only a separate LAND group stops the growth
+            if (gIsLondon == true)
+            {
+               if (kbAreaGetType(i) == cAreaTypeWater || kbAreaGetType(i) == cAreaTypeImpassableLand)
+               {
+                  continue;
+               }
+               if (kbAreaGroupGetType(kbAreaGroupGetIDByPosition(location)) == cAreaGroupTypeWater)
+               {
+                  continue;
+               }
+               aiEcho("LONDONPLACE p" + cMyID + " base " + baseID + " growth refused at " + newDistance + " m: area " + i
+                      + " type " + kbAreaGetType(i) + " group " + kbAreaGroupGetIDByPosition(location));
+            }
             for (j = 0; < 5)
             {
                if (xsArrayGetInt(basesToAvoid, j) == -1)
@@ -238,10 +252,20 @@ void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
       return;
    }
 
+   // LONDON: the base stays on its own bank - the river is 120 m and more from the seats (zplondon.xs 12.2)
+   if (gIsLondon == true && newDistance > 120.0)
+   {
+      return;
+   }
+
    int time = xsGetTime();
    if ((time - lastExpansionTime) > expansionInterval) // AssertiveWall: old expansionInterval = 60 sec
    {
       debugBuildings("Expanding base " + baseID + " to " + newDistance);
+      if (gIsLondon == true)
+      {
+         aiEcho("LONDONPLACE p" + cMyID + " base " + baseID + " grows to " + newDistance + " m after a " + kbGetProtoUnitName(puid) + " failure");
+      }
       kbBaseSetPositionAndDistance(cMyID, baseID, baseLocation, newDistance);
       lastExpansionTime = time;
    }
@@ -797,6 +821,123 @@ void selectGranaryBuildPlanPosition(int planID = -1, int baseID = -1)
 //==============================================================================
 // selectTCBuildPlanPosition
 //==============================================================================
+//==============================================================================
+// LONDON placement (2026-09-23, docs/briefs/2026-09-23-london-ai-test-report.md) - every line below acts only when
+// gIsLondon is true (the player's own zpAILondonBridge marker, initializePirateRules); other maps never enter it.
+// London's city blocks leave little room inside the 40 m main base, and the placement-failed handler refuses to grow
+// a base that would cover another area group (the river, the wall hills), so the base froze and Barracks, Plantations
+// and Town Centers failed placement for the rest of the game (runs 15-17). The countryside behind the team's own city
+// wall is open ground (owner 2026-09-23: 'AI can absolutely use the space behind the walls ... farms / plantations /
+// mills / Folwarks'): economic buildings go there, a Town Center that failed twice goes there, and the handler may
+// grow the base over water and impassable areas.
+//==============================================================================
+
+//==============================================================================
+// londonCountrysidePoint - 40 m beyond our own city wall gate nearest the main base (the side away from the river),
+// cached while that gate stands; cInvalidVector when the walls are not ours or an ally's (non-2-team lobbies: gaia)
+//==============================================================================
+vector londonCountrysidePoint(void)
+{
+   int marker = -1;
+   int gateQuery = -1;
+   int gateCount = 0;
+   int gate = -1;
+   int best = -1;
+   float bestDist = 100000.0;
+   float side = 1.0;
+   float d = 0.0;
+   vector tcVec = cInvalidVector;
+   vector bridgeVec = cInvalidVector;
+   vector gateVec = cInvalidVector;
+
+   if (gIsLondon == false)
+   {
+      return (cInvalidVector);
+   }
+   if (gLondonFieldVec != cInvalidVector && gLondonFieldGate >= 0)
+   {
+      if (kbUnitGetCurrentHitpoints(gLondonFieldGate) > 0.0)
+      {
+         return (gLondonFieldVec);
+      }
+   }
+   tcVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   marker = getUnit(cUnitTypezpAILondonBridge, cMyID, cUnitStateAny);
+   if (marker < 0 || tcVec == cInvalidVector)
+   {
+      return (cInvalidVector);
+   }
+   bridgeVec = kbUnitGetPosition(marker);
+   // the river runs along x (zplondon.xs 4): our bank is the side of the bridge middle our base is on
+   if (xsVectorGetZ(tcVec) < xsVectorGetZ(bridgeVec))
+   {
+      side = -1.0;
+   }
+   gateQuery = createSimpleUnitQuery(cUnitTypeSPCFortGate, cPlayerRelationAlly, cUnitStateAlive, tcVec, 300.0);
+   gateCount = kbUnitQueryExecute(gateQuery);
+   for (i = 0; < gateCount)
+   {
+      gate = kbUnitQueryGetResult(gateQuery, i);
+      gateVec = kbUnitGetPosition(gate);
+      // the city wall stands beyond the seats, away from the river; the Keeps' and the bridge's gates are riverward
+      if ((xsVectorGetZ(gateVec) - xsVectorGetZ(bridgeVec)) * side < (xsVectorGetZ(tcVec) - xsVectorGetZ(bridgeVec)) * side + 20.0)
+      {
+         continue;
+      }
+      d = distance(gateVec, tcVec);
+      if (d < bestDist)
+      {
+         bestDist = d;
+         best = gate;
+      }
+   }
+   if (best < 0)
+   {
+      aiEcho("LONDONPLACE p" + cMyID + " no own city wall gate within 300 m - default placement");
+      return (cInvalidVector);
+   }
+   gateVec = kbUnitGetPosition(best);
+   gLondonFieldGate = best;
+   gLondonFieldVec = xsVectorSet(xsVectorGetX(gateVec), 0.0, xsVectorGetZ(gateVec) + side * 40.0);
+   aiEcho("LONDONPLACE p" + cMyID + " countryside " + xsVectorGetX(gLondonFieldVec) + "/" + xsVectorGetZ(gLondonFieldVec)
+          + " behind gate " + best + " (" + bestDist + " m from the base)");
+   return (gLondonFieldVec);
+}
+
+//==============================================================================
+// londonSelectFieldPosition - London: the economic buildings (Mill / Farm / Plantation / Hacienda / Folwark / rice
+// paddy) at the countryside point, the Town Center's centre-position placement; false = not handled (default path)
+//==============================================================================
+bool londonSelectFieldPosition(int planID = -1, int puid = -1)
+{
+   vector point = cInvalidVector;
+
+   if (gIsLondon == false)
+   {
+      return (false);
+   }
+   if (puid != gFarmUnit && puid != gPlantationUnit && puid != cUnitTypeMill && puid != cUnitTypePlantation &&
+       puid != cUnitTypeFarm && puid != cUnitTypedeHacienda && puid != cUnitTypedeFolwark &&
+       puid != cUnitTypedeFolwarkFarm && puid != cUnitTypeypRicePaddy)
+   {
+      return (false);
+   }
+   point = londonCountrysidePoint();
+   if (point == cInvalidVector)
+   {
+      return (false);
+   }
+   aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, point);
+   aiPlanSetVariableFloat(planID, cBuildPlanCenterPositionDistance, 0, 60.0);
+   if (xsGetTime() - gLondonPlaceEcho >= 30000)
+   {
+      gLondonPlaceEcho = xsGetTime();
+      aiEcho("LONDONPLACE p" + cMyID + " field " + kbGetProtoUnitName(puid) + " plan " + planID + " at the countryside "
+             + xsVectorGetX(point) + "/" + xsVectorGetZ(point));
+   }
+   return (true);
+}
+
 void selectTCBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 {
    // We need to figure out where to put the new TC.  Start with the current main base as an anchor.
@@ -862,6 +1003,17 @@ void selectTCBuildPlanPosition(int buildPlan = -1, int baseID = -1)
             unitID = getUnit(gEconUnit, cMyID, cUnitStateAlive);
          }
          loc = kbUnitGetPosition(unitID);
+      }
+   }
+
+   // LONDON: after two Town Center placement failures the city has no room - the countryside behind our wall
+   if (gIsLondon == true && gPlacementFailuresTC >= 2)
+   {
+      vector londonTCVec = londonCountrysidePoint();
+      if (londonTCVec != cInvalidVector)
+      {
+         loc = londonTCVec;
+         aiEcho("LONDONPLACE p" + cMyID + " town center plan " + buildPlan + " in the countryside after " + gPlacementFailuresTC + " failures");
       }
    }
 
@@ -1282,6 +1434,15 @@ void DEPRICATEDselectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 //==============================================================================
 bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
 {
+   // LONDON: economic buildings behind our own city wall (londonSelectFieldPosition; false on every other map)
+   if (gIsLondon == true)
+   {
+      if (londonSelectFieldPosition(planID, puid) == true)
+      {
+         return (true);
+      }
+   }
+
    // AssertiveWall: Switch to archipelago version when desired:
    if ((gIsArchipelagoMap == true && kbGetAge() >= cAge2) || (gIsArchipelagoMap == true && kbProtoUnitIsType(cMyID, puid, cUnitTypeAbstractWonder) == true))
    {

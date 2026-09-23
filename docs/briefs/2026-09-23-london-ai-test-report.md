@@ -203,3 +203,70 @@ done.** Round 3 has passed once.
   - Build placement failures ("state (3)") for TownCenter, Plantation, Blockhouse and Forward Tower late in the game.
   - Trading Post and `BuildCaribTP` plans fail with "can't path" before the crossing opens: the Trading Post sites
     are on the far bank or on the bridge.
+
+# Campaign 2 - placement (2026-09-23 evening): the London build problem, the night session
+
+## The problem and the design
+
+From 16-18 minutes of game time, the AI's Barracks, Plantation, Blockhouse and Town Center plans failed with "building
+placement failed with state (3)", in runs 16 and 17.
+
+The code shows why:
+- **Base-driven buildings stay inside the main base.** It starts at 40 m (`aisetup.xs:2664`).
+- **The base grows only through `buildingPlacementFailedHandler`** (`aibuildings.xs`), by 20 m per failure. It never
+  grows once any area of another area group lies inside the new radius. On London that means the river and the wall
+  hills.
+- **The player's own block fills up.** `EU_SPC_Player_London` carries 82 real trees 20-45 m from the Town Center, and
+  seven buildings are already placed in it.
+
+The owner decided (2026-09-23):
+- The fix is London only; other maps stay clean.
+- The countryside behind the team's own city wall is the building ground for Mills, Plantations, Farms and Folwarks.
+- No grouping edit for now. Thinning the player block's inner tree row is a morning fallback, pending approval.
+
+The changes (round 4, all behind `gIsLondon`):
+- **Economic buildings** go to a point 40 m beyond our own city wall gate nearest the base
+  (`londonCountrysidePoint` / `londonSelectFieldPosition`). The types are Mill, Farm, Plantation, Hacienda, Folwark,
+  Folwark farm and rice paddy.
+- **The handler** skips water and impassable areas and caps the base at 120 m.
+- **A Town Center** that failed twice is placed in the countryside.
+
+## Test criteria (all automatic, per run)
+
+| Id | Criterion | Boundary |
+|---|---|---|
+| L0-L8, U1, U2 | the earlier rounds, unchanged | as above |
+| P0 | AIDIAG says london 1 for every AI player | every player |
+| P1 | main base radius > 60 m | by 20:00 |
+| P2 | placement failures per 10 game minutes | <= 4 |
+| P3 | a `LONDONPLACE field` line and a Mill / Plantation / Farm standing | by 25:00 |
+| B0-B5 | standard-map regression (`criteria_baseline.py --floor runs/run_018/metrics.json`) | see the script |
+
+Offline tests: `python -m pytest scripts/aitest/tests -q`, 33 tests. They cover the criteria scripts, the static
+London-only guard (every London line in `aibuildings.xs` sits inside a `gIsLondon` check), the echo-only diagnostic,
+CRLF, and the driver's input struct.
+
+## Harness work this evening
+
+- **`driver.py --map NAME`** selects a map in the lobby. The picker keeps its search text and applies it only when it
+  opens, so the driver clears, types, presses Escape, reopens, takes the first tile and presses OK. Verified on
+  Carolina and Amazonia.
+- **Two harness bugs found and fixed:**
+  1. The driver's keyboard `INPUT` struct lacked the mouse member, so `SendInput` silently dropped every key: Escape
+     and all typing.
+  2. The home probe matched in-match terrain, so the driver took a resign screen for the home menu and the logs never
+     flushed (run 18).
+- Every run saves `end.png` before the quit.
+
+## Run 18 - standard-map baseline (the regression FLOOR) - Amazonia 1v1, Extreme, Fast, 15 min cap, commit 1fe95bd2
+
+Italy was the AI (P2); the human stayed passive. The quit stuck on the resign screen, so the agent quit by hand and
+archived the record. Verdict: B0 and B5 PASS.
+
+`P2 at 18:01: age III, score 39365, vills 85, army 72, navy 8, TCs 3, houses 15, buildings 38, baseR 40 m, placement
+failures 87 (48 per 10 min)`
+
+**Reading:** the stock AI's base never grows past 40 m on a vanilla map either. It fails placement about 5 times a
+minute, which confirms the diagnosis: the freeze is the stock handler's behaviour, not a London defect. The London
+fix therefore is London's own. On standard maps the floor stays whatever the stock AI does, and B4 guards against
+things getting worse.

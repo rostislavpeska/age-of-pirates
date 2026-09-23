@@ -188,3 +188,85 @@ class TestDriverInput:
         sheet = json.load(open(os.path.join(AITEST, "coords", "2880x1800_default.json")))
         for k in ("lobby_mapbutton", "picker_search", "picker_first", "picker_ok", "lobby_probe", "postmatch_quit"):
             assert k in sheet, k
+
+
+# ---- round 4: London-only placement ----------------------------------------------------------------------------
+
+def enclosing_headers(lines, i):
+    """The block headers (the line before each '{') enclosing line i, innermost first."""
+    heads, depth = [], 0
+    for j in range(i - 1, -1, -1):
+        depth += lines[j].count("}") - lines[j].count("{")
+        if depth < 0:
+            k = j if lines[j].strip() != "{" else j - 1
+            heads.append(lines[k].strip())
+            depth = 0
+    return heads
+
+
+class TestLondonOnlyPlacement:
+    HELPERS = ("londonCountrysidePoint", "londonSelectFieldPosition")
+
+    def test_helpers_return_at_once_off_london(self):
+        s = core("aibuildings.xs")
+        for h in self.HELPERS:
+            body = s[s.index(("vector " if h == self.HELPERS[0] else "bool ") + h):]
+            first_if = body[body.index("{") + 1:].split("if (", 1)[1].split(")", 1)[0]
+            assert first_if == "gIsLondon == false", (h, first_if)
+
+    def test_every_other_london_line_sits_inside_a_gisLondon_guard(self):
+        lines = core("aibuildings.xs").splitlines()
+        text = "\n".join(lines)
+        start = text.index("vector londonCountrysidePoint(")
+        end = text.index("void selectTCBuildPlanPosition(")
+        helper_lines = set(range(text[:start].count("\n"), text[:end].count("\n")))
+        hits = [i for i, l in enumerate(lines)
+                if re.search(r"london|LONDON", l) and i not in helper_lines and not l.strip().startswith("//")]
+        assert hits, "no London code found outside the helpers"
+        for i in hits:
+            if "gIsLondon == true" in lines[i]:
+                continue
+            assert any("gIsLondon == true" in h for h in enclosing_headers(lines, i)), (i + 1, lines[i])
+
+    def test_build_echo_is_round_four(self):
+        assert "build r4 2026-09-23" in core("aipiraterules.xs")
+
+
+def diag4(t, p=2, baseR=40.0, fails=0, farms=0, plant=0, london=1):
+    m, s = divmod(t, 60)
+    return ("00:%02d:%02d  (%d): AIDIAG p%d age 2 score 1000 vills 30 army 5 navy 0 tcs 1 houses 3 milbldg 1 farms %d"
+            " plant %d bldg 9 baseR %.6f fails %d failsTC 0 london %d" % (m, s, t * 1000, p, farms, plant, baseR, fails, london))
+
+
+class TestRoundFourCriteria:
+    def record(self, **kw):
+        L = [l.replace("build r3", "build r4") for l in london_record()]
+        L += [diag4(t, **kw) for t in range(60, 1560, 60)]
+        L += ["00:12:00  (1): LONDONPLACE p2 field Mill plan 5 at the countryside 1/2"]
+        return sorted(L, key=criteria_london.gtime)
+
+    def verdicts(self, L):
+        return {r[0]: r[2] for r in criteria_london.evaluate({2: L})}
+
+    def test_a_growing_base_with_fields_passes(self):
+        v = self.verdicts(self.record(baseR=80.0, fails=3, farms=2))
+        assert (v["P0"], v["P1"], v["P2"], v["P3"]) == ("PASS",) * 4, v
+
+    def test_a_frozen_base_fails_p1(self):
+        assert self.verdicts(self.record(baseR=40.0, farms=2))["P1"] == "FAIL"
+
+    def test_failure_spam_fails_p2(self):
+        assert self.verdicts(self.record(baseR=80.0, fails=40, farms=2))["P2"] == "FAIL"
+
+    def test_no_eco_building_fails_p3(self):
+        assert self.verdicts(self.record(baseR=80.0))["P3"] == "FAIL"
+
+    def test_london_flag_off_fails_p0(self):
+        assert self.verdicts(self.record(baseR=80.0, farms=2, london=0))["P0"] == "FAIL"
+
+
+def test_home_probe_needs_a_second_pixel():
+    # the in-match terrain under the Skirmish button matched the single home pixel (run 18): two pixels now
+    import json
+    sheet = json.load(open(os.path.join(AITEST, "coords", "2880x1800_default.json")))
+    assert "also" in sheet["home_skirmish"]

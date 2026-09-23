@@ -626,3 +626,6 @@ extern bool gAITestDiag = true;                 // AIDIAG echo once a minute on 
 extern int gPlacementFailures = 0;              // buildingPlacementFailedHandler calls (every building type)
 extern int gPlacementFailuresTC = 0;            // ... of them Town Centers
 extern bool gIsLondon = false;                  // set by initializePirateRules on the player's own zpAILondonBridge marker
+extern vector gLondonFieldVec = cInvalidVector; // London: the countryside point behind our own city wall gate (londonCountrysidePoint)
+extern int gLondonFieldGate = -1;               // ... the wall gate it was taken from (re-found when it dies)
+extern int gLondonPlaceEcho = -60000;           // LONDONPLACE echo throttle

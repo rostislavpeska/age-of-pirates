@@ -178,6 +178,39 @@ def evaluate(files, events_path=None):
             if not good or gap > 60:
                 bad.append("P%d(%d good lines, max gap %ds)" % (p, len(good), gap))
         add("L8", "LONDONHOLD k>=3 holding every <= 60 s after L7", not bad, "failing: %s" % (bad or "none"))
+
+    # round 4 (placement, London only) - applicable once the build echo says r4 or later; reads the AIDIAG line
+    r4 = [p for p in players if any(re.search(r"LONDON p%d build r([4-9])" % p, l) for l in ai[p])]
+    if r4:
+        diag = re.compile(r"AIDIAG p(\d+) age (-?\d+) .*? farms (-?\d+) plant (-?\d+) bldg (-?\d+) baseR (-?[\d.]+) fails (-?\d+) failsTC (-?\d+) london (\d)")
+        rows = {p: [(gtime(l), diag.search(l)) for l in ai[p] if diag.search(l) and gtime(l) is not None] for p in r4}
+        # P0 the London flag is on for every London AI player (the placement code acts only then)
+        off = [p for p in r4 if not rows[p] or rows[p][-1][1].group(9) != "1"]
+        add("P0", "AIDIAG london 1 for every AI player", not off, "failing: %s" % (off or "none"))
+        # P1 the main base grows past its 40 m start by 20:00 (only judged when the record reaches 20:00)
+        bad = []
+        for p in r4:
+            late = [(t, m) for t, m in rows[p] if t <= 1200]
+            if rows[p] and rows[p][-1][0] >= 1200 and max(float(m.group(6)) for t, m in late) <= 60.0:
+                bad.append("P%d(%.0f m)" % (p, max(float(m.group(6)) for t, m in late)))
+        add("P1", "main base radius > 60 m by 20:00", not bad, "failing: %s" % (bad or "none"))
+        # P2 placement failures <= 4 per 10 game minutes (runs 16-17: 13 and 15 in about 20 minutes, most endless)
+        bad = []
+        for p in r4:
+            if rows[p]:
+                t, m = rows[p][-1]
+                rate = int(m.group(7)) * 600.0 / t if t else 0.0
+                if rate > 4.0:
+                    bad.append("P%d(%d fails in %ds = %.1f / 10 min)" % (p, int(m.group(7)), t, rate))
+        add("P2", "placement failures <= 4 per 10 game minutes", not bad, "failing: %s" % (bad or "none"))
+        # P3 the economy uses the countryside: a LONDONPLACE field line and a Mill / Plantation / Farm standing by 25:00
+        bad = []
+        for p in r4:
+            field = any(re.search(r"LONDONPLACE p%d field " % p, l) for l in ai[p])
+            eco = any(int(m.group(3)) + int(m.group(4)) > 0 for t, m in rows[p] if t <= 1500)
+            if rows[p] and rows[p][-1][0] >= 1500 and not (field and eco):
+                bad.append("P%d(field line %s, eco building %s)" % (p, field, eco))
+        add("P3", "a countryside field placement and an eco building by 25:00", not bad, "failing: %s" % (bad or "none"))
     return results
 
 

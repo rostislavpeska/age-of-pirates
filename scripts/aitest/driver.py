@@ -247,7 +247,14 @@ def probe_ok(pt, tol=30):
     got = pixel_at(pt["x"], pt["y"])
     if got is None:
         return False
-    return max(abs(a - b) for a, b in zip(pt["rgb"], got)) <= tol
+    if max(abs(a - b) for a, b in zip(pt["rgb"], got)) > tol:
+        return False
+    # a point may carry a second pixel that must match too (2026-09-23: the in-match terrain under the Skirmish
+    # button matched the home probe, the driver took a resign screen for the home menu and the logs never flushed)
+    also = pt.get("also")
+    if also:
+        return probe_ok(also, tol)
+    return True
 
 
 def abort_requested():
@@ -582,7 +589,9 @@ def main():
                       " stopping for a human")
                 break
             time.sleep(5)
-        pos = start_match(nav, a.from_lobby, a.blind, a.load_s, a.map)
+        # --from-lobby holds for the first match only: every quit returns to the home menu, and the lobby keeps
+        # its setup (map, players, teams) for the next Skirmish click
+        pos = start_match(nav, a.from_lobby and done == 0, a.blind, a.load_s, a.map)
         if pos < 0:
             lost += 1
             if lost >= 3:
