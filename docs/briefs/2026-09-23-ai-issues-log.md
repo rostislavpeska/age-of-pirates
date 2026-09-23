@@ -38,3 +38,23 @@ implemented.
   - the London-only guard pattern and its static test;
   - the rejected-constructs list (I8);
   - "run `python -m pytest scripts/aitest/tests -q` before any match".
+
+## Lint rules taken from the AI scripting guide (added during the night of 2026-09-24)
+
+Rules from the AOE3 AI Scripting Guide (`references/ai-guide/docs/xs`) went into `scripts/aitest/tests` only where
+the stock core complies with them. A rule that the compiling core breaks would be a false rule.
+
+| Rule | Guide | Core check | Status |
+|---|---|---|---|
+| no name defined twice unless one is a `mutable` stub | functions.md 1.2 | 43 duplicates, all `mutable` stubs in `aicore.xs` | test added |
+| no local variable named like a function or rule | variables.md 2.1.2 | 0 hits | test added |
+| no scalar times vector (`2.0 * v`) | vectors.md 4.3 | 0 hits | test added |
+| block comments do not nest | comments.md | `aimilitary.xs` 4944 has one and compiles | not added: the guide's warning is about closing, not about a literal `/*` inside |
+| duplicate labels | labels.md | not used | not added |
+
+**Open:** the exact trigger of I8 is still unknown. The candidates are:
+- a function-call difference inside the group;
+- the variable name `side`;
+- `* var <` directly before a comparison.
+
+A compile-only probe (P-T1 b) would settle it in about 60 s per candidate.

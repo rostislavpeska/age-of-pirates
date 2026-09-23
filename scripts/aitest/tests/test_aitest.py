@@ -308,3 +308,53 @@ def test_the_lint_catches_the_run_19_line():
     assert not suspect_group_product_compare("(totalAmount - lastTotalGoldAmount) * xsArrayGetFloat(g, c) >= x")
     assert not suspect_group_product_compare("(friendlyStrength + allyStrength) < (enemyStrength * strengthFactor)")
     assert not suspect_group_product_compare("gateOff < tcOff")
+
+
+# lint rules from the AOE3 AI scripting guide (references/ai-guide/docs/xs), kept only where the stock core complies
+def _strip_comments(t):
+    return re.sub(r"/\*.*?\*/", "", re.sub(r"//[^\n]*", "", t), flags=re.S)
+
+
+def _core_files():
+    return {f: _strip_comments(core(f)) for f in sorted(os.listdir(CORE)) if f.endswith(".xs")}
+
+
+def _top_level_names(files):
+    """{name: [(file, mutable)]} of every function DEFINITION (a body follows) and every rule."""
+    import collections
+    out = collections.defaultdict(list)
+    for f, s in files.items():
+        for m in re.finditer(r"^(mutable\s+)?(?:void|int|float|bool|vector|string)\s+(\w+)\s*\([^;{]*\)\s*\{", s, re.M):
+            out[m.group(2)].append((f, bool(m.group(1))))
+        for m in re.finditer(r"^rule\s+(\w+)", s, re.M):
+            out[m.group(1)].append((f, False))
+    return out
+
+
+def test_no_name_is_defined_twice_without_a_mutable_stub():
+    # functions.md 1.2: a name may not repeat a function / rule; the core's pattern is a 'mutable' stub in aicore.xs
+    # overridden by the real body later
+    bad = {k: v for k, v in _top_level_names(_core_files()).items() if len(v) > 1 and not any(mu for _, mu in v)}
+    assert not bad, bad
+
+
+def test_no_local_is_named_like_a_function_or_rule():
+    # variables.md 2.1.2: a variable may not share a function's or rule's name (checked while writing londonWarPlan:
+    # 'far', 'open'); the compile error kills every AI player
+    files = _core_files()
+    names = set(_top_level_names(files))
+    bad = [(f, s[:m.start()].count("\n") + 1, m.group(1)) for f, s in files.items()
+           for m in re.finditer(r"^\s+(?:static\s+)?(?:int|float|bool|vector|string)\s+(\w+)\s*[=;]", s, re.M)
+           if m.group(1) in names]
+    assert not bad, bad
+
+
+def test_no_scalar_times_vector():
+    # vectors.md 4.3: '2.0 * v' is an error, 'v * 2.0' is the form
+    files = _core_files()
+    vecs = set()
+    for s in files.values():
+        vecs |= set(re.findall(r"\bvector\s+(\w+)", s))
+    bad = [(f, s[:m.start()].count("\n") + 1, m.group(0)) for f, s in files.items()
+           for m in re.finditer(r"\b\d+(?:\.\d+)?\s*\*\s*(\w+)\b", s) if m.group(1) in vecs]
+    assert not bad, bad
