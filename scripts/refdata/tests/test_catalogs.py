@@ -127,18 +127,27 @@ class TestKindDispatch:
 
 
 class TestGroupingFootprint:
-    def test_pirate_village_footprint(self):
+    def test_pirate_village_footprint(self, tmp_path, monkeypatch):
         # Footprint = units' bounding box in METERS relative to the anchor
         # (the <width>/<height> header is the editor canvas, NOT the
-        # footprint - forensic 2026-08-10). pirate_village05's units span
-        # x -7.02..8.74, z -9.79..6.11.
-        from scripts.refdata.catalogs import grouping_footprint_m
-        fp = grouping_footprint_m("pirate_village05")
+        # footprint - forensic 2026-08-10). Pinned on a pirate_village05-shaped
+        # fixture (11x11 canvas, units +-9.8 m): the real file is re-exported
+        # by the owner (0f8639db moved it to x -9.78..8.74, z -7.79..11.80).
+        from scripts.refdata import catalogs
+        stem = "zz_test_footprint_pirate_village"
+        (tmp_path / f"{stem}.xml").write_text(
+            '<?xml version="1.0"?>\n<grouping>\n\t<width>11</width>\n\t<height>11</height>\n\t<units>\n'
+            '\t\t<unit variation="219" posx="-8.1400" posz="1.2000" orientx="0.3827" orienty="0.0000" orientz="-0.9239">NativeTownObstruction</unit>\n'
+            '\t\t<unit variation="236" posx="8.7360" posz="-9.7900" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpNativeHousePirate</unit>\n'
+            '\t\t<unit variation="236" posx="0.5000" posz="9.8000" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpNativeHousePirate</unit>\n'
+            '\t</units>\n</grouping>\n', encoding="utf-8")
+        monkeypatch.setattr(catalogs, "MOD_GROUPINGS_DIR", tmp_path)
+        fp = catalogs.grouping_footprint_m(stem)
         assert fp is not None
         x0, z0, x1, z1 = fp
-        # full-file bounds: x -8.14..8.74, z -9.79..9.80
         assert -8.2 < x0 < -8.0 and 8.6 < x1 < 8.8
         assert -9.9 < z0 < -9.7 and 9.7 < z1 < 9.9
+        assert x1 - x0 > 11 and z1 - z0 > 11      # wider than the 11 x 11 header canvas
 
     def test_offcenter_compound(self):
         # City_State_Inventors_01: canvas 46x50 but the real compound is
