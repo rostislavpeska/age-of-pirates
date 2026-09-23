@@ -497,6 +497,8 @@ void main(void)
 	// T5. handles and laws
 	float laneLegM = 16.0;              // the nautical U: legs this far off the river centre
 	float laneTurnFromRoadM = 80.0;     // the U's turn this far west of the road (in front of row 3; 60 m clear of the bridge)
+	int fishPerPlayer = 30;             // 12.10: FishBass asked per player (Paris: 20 cod) - London is the naval map
+	float fishSpacingM = 10.0;          // between fish (Paris: 12)
 	int   harbourGuardDifficulty = 101; // nuggets.xml euNuggetCapturable2: the vanilla European trade-route post guard (ypNuggetTradingPost + four deGuardianMusketeer, maptype westEurope) - zpelbe.xs uses it the same way
 	float harbourGuardInM = 2.5;        // the guard nugget this far INTO the city off the bank's quay wall line = the middle of the 5 m promenade, at the harbour's x (behind the harbour building)
 	float harbourGuardSearchM = 3.0;    // ... and the search radius around that spot: stays on the promenade (6 m let it wander off the harbour - user 2026-09-18)
@@ -1698,6 +1700,24 @@ void main(void)
 		rmPlaceObjectDefAtLoc(waterFlag, i, rmXMetersToFraction(xsVectorGetX(flagLoc)), rmZMetersToFraction(xsVectorGetZ(flagLoc)));
 		rmEchoInfo("LONDON water flag " + i + " at " + xsVectorGetX(flagLoc) + " / " + xsVectorGetZ(flagLoc) + " m");
 	}
+
+	// ---- 12.10 FISH (user 2026-09-23 'Fish Bass ... London is more a naval map, so should have more fishes than Paris') -
+	// Paris's block (zpparis.xs 1847-1858): one object def placed from the map centre with a 0.9-map reach, the water unit
+	// finds the water by itself (Paris's Seine is a rmRiverCreate river too), 2 m off the plateaus (classPlateau: piers,
+	// bridge, quays), fishSpacingM between fish (Paris 12), inside London's frame (Paris: a 10-tile edge box),
+	// fishPerPlayer x players (Paris 20 x). Placed after the water flags: no literal index moves.
+	int fishVsPlateau = rmCreateClassDistanceConstraint("fish avoid piers and bridge", rmClassID("classPlateau"), 2.0);
+	int fishVsFish = rmCreateTypeDistanceConstraint("fish vs other fish", "FishBass", fishSpacingM);
+	int fishCount = fishPerPlayer * cNumberNonGaiaPlayers;
+	int fishDef = rmCreateObjectDef("fishies");
+	rmAddObjectDefItem(fishDef, "FishBass", 1, 2.0);
+	rmSetObjectDefMinDistance(fishDef, 0.0);
+	rmSetObjectDefMaxDistance(fishDef, rmXFractionToMeters(0.9));
+	rmAddObjectDefConstraint(fishDef, fishVsFish);
+	rmAddObjectDefConstraint(fishDef, fishVsPlateau);
+	rmAddObjectDefConstraint(fishDef, insideFrame);
+	rmPlaceObjectDefAtLoc(fishDef, 0, 0.5, 0.5, fishCount);
+	rmEchoInfo("LONDON fish: " + fishCount + " FishBass asked, " + fishSpacingM + " m apart");
 
 	// 13. TRIGGERS, all at the end (Paris / Istanbul). Ids: object defs = literal unit indices (fix B),
 	//     grouping instances = rmGetGroupingInstanceUnitByType + instanceIdShift; a baked nugget is queried by its

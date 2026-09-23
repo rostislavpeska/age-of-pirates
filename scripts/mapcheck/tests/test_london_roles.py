@@ -1014,6 +1014,26 @@ class TestWaterFlags:
         assert LONDON.read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
 
 
+class TestFish:
+    """12.10 (user 2026-09-23): FishBass in Paris's shape (zpparis.xs 1847-1858) - one def from the map centre, 0.9-map reach,
+    2 m off classPlateau, fishSpacingM apart, inside the frame, fishPerPlayer x players - more than Paris's 20 cod at 12 m;
+    placed after the water flags, before the triggers."""
+
+    def test_paris_shape_more_fish(self):
+        t = re.sub(r"[ ' + chr(92) + 't]+//[^' + chr(92) + 'n]*", "", _code(_text(LONDON)))
+        k = dict(re.findall(r"(?:float |int )?(' + chr(92) + 'w+)' + chr(92) + 's*=' + chr(92) + 's*([' + chr(92) + 'w.]+);", t))
+        assert int(k["fishPerPlayer"]) > 20 and 0.0 < float(k["fishSpacingM"]) <= 12.0
+        s = t[t.index('int fishVsPlateau = rmCreateClassDistanceConstraint("fish avoid piers and bridge", rmClassID("classPlateau"), 2.0);'):t.index("int instanceIdShift = 3;")]
+        for line in ('int fishVsFish = rmCreateTypeDistanceConstraint("fish vs other fish", "FishBass", fishSpacingM);',
+                     "int fishCount = fishPerPlayer * cNumberNonGaiaPlayers;", 'rmAddObjectDefItem(fishDef, "FishBass", 1, 2.0);',
+                     "rmSetObjectDefMinDistance(fishDef, 0.0);", "rmSetObjectDefMaxDistance(fishDef, rmXFractionToMeters(0.9));",
+                     "rmAddObjectDefConstraint(fishDef, fishVsFish);", "rmAddObjectDefConstraint(fishDef, fishVsPlateau);",
+                     "rmAddObjectDefConstraint(fishDef, insideFrame);", "rmPlaceObjectDefAtLoc(fishDef, 0, 0.5, 0.5, fishCount);"):
+            assert line in s, line
+        assert t.index("rmPlaceObjectDefAtLoc(waterFlag, i,") < t.index("int fishVsPlateau") < t.index("int instanceIdShift = 3;")
+        assert LONDON.read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
+
+
 class TestScope:
 
     def test_reserved_columns_take_the_berry_mill(self):
