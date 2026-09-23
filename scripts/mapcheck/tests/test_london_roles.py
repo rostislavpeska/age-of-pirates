@@ -1017,7 +1017,7 @@ class TestWaterFlags:
 class TestFish:
     """12.10 (user 2026-09-23): FishBass in Paris's shape (zpparis.xs 1847-1858) - one def from the map centre, 0.9-map reach,
     2 m off classPlateau, fishSpacingM apart, inside the frame, fishBase + fishPerPlayer x ALL players floored at fishMin (60 at 2,
-    150 at 8; Paris: 20 cod x players at 12 m);
+    150 at 8; Paris: 20 cod x players at 12 m), split fishBassPct FishBass / the rest FishSalmon, both off every AbstractFish;
     placed after the water flags, before the triggers."""
 
     def test_paris_shape_more_fish(self):
@@ -1025,14 +1025,19 @@ class TestFish:
         k = dict(re.findall(r"(?:float |int )?(\w+)\s*=\s*([\w.]+);", t))
         base, per, lo = int(k["fishBase"]), int(k["fishPerPlayer"]), int(k["fishMin"])     # user: 60 is the bottom line (2 players), 150 borderline (8)
         assert base + 2 * per == lo == 60 and base + 8 * per <= 150 and 0.0 < float(k["fishSpacingM"]) <= 12.0
+        assert 60 <= int(k["fishBassPct"]) <= 80     # user: 70 % bass and 30 % salmon +/-
         s = t[t.index('int fishVsPlateau = rmCreateClassDistanceConstraint("fish avoid piers and bridge", rmClassID("classPlateau"), 2.0);'):t.index("int instanceIdShift = 3;")]
-        for line in ('int fishVsFish = rmCreateTypeDistanceConstraint("fish vs other fish", "FishBass", fishSpacingM);',
+        for line in ('int fishVsFish = rmCreateTypeDistanceConstraint("fish vs other fish", "AbstractFish", fishSpacingM);',
                      "int fishCount = fishBase + fishPerPlayer * cNumberNonGaiaPlayers;", "if (fishCount < fishMin)", "fishCount = fishMin;",
-                     'rmAddObjectDefItem(fishDef, "FishBass", 1, 2.0);',
-                     "rmSetObjectDefMinDistance(fishDef, 0.0);", "rmSetObjectDefMaxDistance(fishDef, rmXFractionToMeters(0.9));",
-                     "rmAddObjectDefConstraint(fishDef, fishVsFish);", "rmAddObjectDefConstraint(fishDef, fishVsPlateau);",
-                     "rmAddObjectDefConstraint(fishDef, insideFrame);", "rmPlaceObjectDefAtLoc(fishDef, 0, 0.5, 0.5, fishCount);"):
+                     "int bassCount = fishCount * fishBassPct / 100;", "int salmonCount = fishCount - bassCount;",
+                     'rmAddObjectDefItem(fishDef, "FishBass", 1, 2.0);', 'rmAddObjectDefItem(salmonDef, "FishSalmon", 1, 2.0);',
+                     "rmPlaceObjectDefAtLoc(fishDef, 0, 0.5, 0.5, bassCount);", "rmPlaceObjectDefAtLoc(salmonDef, 0, 0.5, 0.5, salmonCount);"):
             assert line in s, line
+        for d in ("fishDef", "salmonDef"):        # Paris's shape on both kinds
+            for line in ("rmSetObjectDefMinDistance(%s, 0.0);", "rmSetObjectDefMaxDistance(%s, rmXFractionToMeters(0.9));",
+                         "rmAddObjectDefConstraint(%s, fishVsFish);", "rmAddObjectDefConstraint(%s, fishVsPlateau);", "rmAddObjectDefConstraint(%s, insideFrame);"):
+                assert (line % d) in s, line % d
+        assert s.index("rmPlaceObjectDefAtLoc(fishDef, 0, 0.5, 0.5, bassCount);") < s.index('int salmonDef = rmCreateObjectDef("salmon");')
         assert t.index("rmPlaceObjectDefAtLoc(waterFlag, i,") < t.index("int fishVsPlateau") < t.index("int instanceIdShift = 3;")
         assert LONDON.read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
 

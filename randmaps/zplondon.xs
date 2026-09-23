@@ -501,6 +501,7 @@ void main(void)
 	int fishPerPlayer = 15;             // bottom line', '150 is borderline'): 2 players 60, 4 = 90, 6 = 120, 8 = 150 (Paris: 20 x players)
 	int fishMin = 60;                   // the floor (a lone player) - the ONLY quantity keyed on the overall player count
 	float fishSpacingM = 10.0;          // between fish (Paris: 12)
+	int fishBassPct = 70;               // this share of the fish are FishBass, the rest FishSalmon (user 2026-09-23 '70% bass and 30% salmon +/-')
 	int   harbourGuardDifficulty = 101; // nuggets.xml euNuggetCapturable2: the vanilla European trade-route post guard (ypNuggetTradingPost + four deGuardianMusketeer, maptype westEurope) - zpelbe.xs uses it the same way
 	float harbourGuardInM = 2.5;        // the guard nugget this far INTO the city off the bank's quay wall line = the middle of the 5 m promenade, at the harbour's x (behind the harbour building)
 	float harbourGuardSearchM = 3.0;    // ... and the search radius around that spot: stays on the promenade (6 m let it wander off the harbour - user 2026-09-18)
@@ -1707,24 +1708,35 @@ void main(void)
 	// Paris's block (zpparis.xs 1847-1858): one object def placed from the map centre with a 0.9-map reach, the water unit
 	// finds the water by itself (Paris's Seine is a rmRiverCreate river too), 2 m off the plateaus (classPlateau: piers,
 	// bridge, quays), fishSpacingM between fish (Paris 12), inside London's frame (Paris: a 10-tile edge box),
-	// fishBase + fishPerPlayer x ALL players floored at fishMin - 60 at 2 players, 150 at 8 (Paris 20 x players). Placed
-	// after the water flags: no literal index moves.
+	// fishBase + fishPerPlayer x ALL players floored at fishMin - 60 at 2 players, 150 at 8 (Paris 20 x players), split
+	// fishBassPct FishBass / the rest FishSalmon (user: '70% bass and 30% salmon +/-'), each kind kept fishSpacingM off
+	// every fish through AbstractFish (both protos carry it). Placed after the water flags: no literal index moves.
 	int fishVsPlateau = rmCreateClassDistanceConstraint("fish avoid piers and bridge", rmClassID("classPlateau"), 2.0);
-	int fishVsFish = rmCreateTypeDistanceConstraint("fish vs other fish", "FishBass", fishSpacingM);
+	int fishVsFish = rmCreateTypeDistanceConstraint("fish vs other fish", "AbstractFish", fishSpacingM);
 	int fishCount = fishBase + fishPerPlayer * cNumberNonGaiaPlayers;
 	if (fishCount < fishMin)
 	{
 		fishCount = fishMin;
 	}
-	int fishDef = rmCreateObjectDef("fishies");
+	int bassCount = fishCount * fishBassPct / 100;   // integer share
+	int salmonCount = fishCount - bassCount;
+	int fishDef = rmCreateObjectDef("bass");
 	rmAddObjectDefItem(fishDef, "FishBass", 1, 2.0);
 	rmSetObjectDefMinDistance(fishDef, 0.0);
 	rmSetObjectDefMaxDistance(fishDef, rmXFractionToMeters(0.9));
 	rmAddObjectDefConstraint(fishDef, fishVsFish);
 	rmAddObjectDefConstraint(fishDef, fishVsPlateau);
 	rmAddObjectDefConstraint(fishDef, insideFrame);
-	rmPlaceObjectDefAtLoc(fishDef, 0, 0.5, 0.5, fishCount);
-	rmEchoInfo("LONDON fish: " + fishCount + " FishBass asked, " + fishSpacingM + " m apart");
+	rmPlaceObjectDefAtLoc(fishDef, 0, 0.5, 0.5, bassCount);
+	int salmonDef = rmCreateObjectDef("salmon");
+	rmAddObjectDefItem(salmonDef, "FishSalmon", 1, 2.0);
+	rmSetObjectDefMinDistance(salmonDef, 0.0);
+	rmSetObjectDefMaxDistance(salmonDef, rmXFractionToMeters(0.9));
+	rmAddObjectDefConstraint(salmonDef, fishVsFish);
+	rmAddObjectDefConstraint(salmonDef, fishVsPlateau);
+	rmAddObjectDefConstraint(salmonDef, insideFrame);
+	rmPlaceObjectDefAtLoc(salmonDef, 0, 0.5, 0.5, salmonCount);
+	rmEchoInfo("LONDON fish: " + bassCount + " FishBass + " + salmonCount + " FishSalmon asked, " + fishSpacingM + " m apart");
 
 	// 13. TRIGGERS, all at the end (Paris / Istanbul). Ids: object defs = literal unit indices (fix B),
 	//     grouping instances = rmGetGroupingInstanceUnitByType + instanceIdShift; a baked nugget is queried by its
