@@ -216,7 +216,10 @@ class TestTrigtempOracle:
             pytest.skip("no generated trigtemp.xs")
         if TRIGTEMP.stat().st_mtime < MAP.stat().st_mtime:
             pytest.skip("trigtemp.xs older than the map - regenerate in game first")
-        return TRIGTEMP.read_text(encoding="utf-8", errors="replace")
+        text = TRIGTEMP.read_text(encoding="utf-8", errors="replace")
+        if "rule _PalaceSUnlock" not in text:   # Istanbul's own trigger, outside this spec: every generation rewrites trigtemp.xs
+            pytest.skip("trigtemp.xs was generated from another map - regenerate Istanbul in game first")
+        return text
 
     @pytest.mark.parametrize("s", SOCKETS)
     def test_rules_use_the_same_socket_id_as_the_ai_family(self, s):
