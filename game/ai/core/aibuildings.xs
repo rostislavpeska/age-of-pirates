@@ -938,6 +938,46 @@ bool londonSelectFieldPosition(int planID = -1, int puid = -1)
    return (true);
 }
 
+//==============================================================================
+// londonSocketExcluded - London: sockets the stock Trading Post rule must leave alone. The bridge's zpSPCPortSocket
+// (it owns the bridge gates; the plan gives it its own rule) and every socket on the far bank - the map's natives are
+// team-specific ('Take your team's native trading posts'), and the far bank is shut while the bridge gates stand.
+// Run 20: Trading Post plans were the largest remaining placement / 'can't path' failure (up to 22 per player).
+//==============================================================================
+bool londonSocketExcluded(int socketID = -1)
+{
+   int marker = -1;
+   float socketOff = 0.0;
+   float baseOff = 0.0;
+   vector bridgeVec = cInvalidVector;
+   vector baseVec = cInvalidVector;
+
+   if (gIsLondon == false)
+   {
+      return (false);
+   }
+   if (kbUnitGetProtoUnitID(socketID) == cUnitTypezpSPCPortSocket)
+   {
+      return (true);
+   }
+   marker = getUnit(cUnitTypezpAILondonBridge, cMyID, cUnitStateAny);
+   baseVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   if (marker < 0 || baseVec == cInvalidVector)
+   {
+      return (false);
+   }
+   bridgeVec = kbUnitGetPosition(marker);
+   // the river runs along x: opposite signs of the z offsets from the bridge middle = the far bank
+   socketOff = xsVectorGetZ(kbUnitGetPosition(socketID)) - xsVectorGetZ(bridgeVec);
+   baseOff = xsVectorGetZ(baseVec) - xsVectorGetZ(bridgeVec);
+   socketOff = socketOff * baseOff;
+   if (socketOff < 0.0)
+   {
+      return (true);
+   }
+   return (false);
+}
+
 void selectTCBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 {
    // We need to figure out where to put the new TC.  Start with the current main base as an anchor.
@@ -4034,6 +4074,15 @@ minInterval 5
       {
          claimedNumber += 1;
          continue;
+      }
+
+      // LONDON: the bridge's port socket and the far bank's sockets are not ours to claim (londonSocketExcluded)
+      if (gIsLondon == true)
+      {
+         if (londonSocketExcluded(socketID) == true)
+         {
+            continue;
+         }
       }
 
       kbUnitQuerySetPosition(enemyQuery, socketPosition);

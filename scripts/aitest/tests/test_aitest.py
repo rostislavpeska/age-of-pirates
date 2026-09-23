@@ -206,14 +206,16 @@ def enclosing_headers(lines, i):
 
 
 class TestLondonOnlyPlacement:
-    HELPERS = ("londonCountrysidePoint", "londonSelectFieldPosition")
+    HELPERS = ("londonCountrysidePoint", "londonSelectFieldPosition", "londonSocketExcluded")
 
-    def test_helpers_return_at_once_off_london(self):
+    @pytest.mark.parametrize("h", HELPERS)
+    def test_helpers_return_at_once_off_london(self, h):
         s = core("aibuildings.xs")
-        for h in self.HELPERS:
-            body = s[s.index(("vector " if h == self.HELPERS[0] else "bool ") + h):]
-            first_if = body[body.index("{") + 1:].split("if (", 1)[1].split(")", 1)[0]
-            assert first_if == "gIsLondon == false", (h, first_if)
+        m = re.search(r"^(?:bool|vector|int|void)\s+%s\(" % h, s, re.M)
+        assert m, h
+        body = s[m.end():]
+        first_if = body[body.index("{") + 1:].split("if (", 1)[1].split(")", 1)[0]
+        assert first_if == "gIsLondon == false", (h, first_if)
 
     def test_every_other_london_line_sits_inside_a_gisLondon_guard(self):
         lines = core("aibuildings.xs").splitlines()
