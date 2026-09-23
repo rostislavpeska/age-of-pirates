@@ -225,11 +225,28 @@ def end_match(nav):
     AI logs (a match quit writes Age3DEAIOutputPlayerN.txt). NEVER touches the
     game process - if the home menu does not come back, the driver stops and
     leaves the machine to the human (see the HARD RULE in the header)."""
+    focus_game()
     guard(); click(nav["match_cog"]["x"], nav["match_cog"]["y"]); time.sleep(1.5)
     guard(); click(nav["match_quit"]["x"], nav["match_quit"]["y"]); time.sleep(2.5)
     guard(); click(nav["quit_yes"]["x"], nav["quit_yes"]["y"])
-    if wait_probe(nav["home_skirmish"], 120):
+    if wait_probe(nav["home_skirmish"], 20):
         time.sleep(4)   # give the exit flush a moment
+        return True
+    # run 16 (2026-09-23): the match can stop on the resign screen ("You abandon your town") with the short
+    # post-match cog menu, whose Quit leaves without a confirm; the game eats the first click after focus changes
+    pq = nav.get("postmatch_quit")
+    if pq:
+        print("   still in the match after the quit - trying the post-match menu's Quit")
+        for _ in range(2):
+            focus_game()
+            guard(); click(nav["match_cog"]["x"], nav["match_cog"]["y"]); time.sleep(1.5)
+            guard(); click(pq["x"], pq["y"]); time.sleep(1.0)
+            guard(); click(pq["x"], pq["y"])
+            if wait_probe(nav["home_skirmish"], 30):
+                time.sleep(4)
+                return True
+    if wait_probe(nav["home_skirmish"], 60):
+        time.sleep(4)
         return True
     print("   graceful quit did NOT reach the home menu - stopping;"
           " the game process is untouched, hand it to the human")

@@ -42,6 +42,11 @@
     "y": 1008,
     "rgb": null
   },
+  "postmatch_quit": {
+    "x": 2631,
+    "y": 414,
+    "rgb": null
+  },
   "minimap_center": {
     "x": 2641,
     "y": 1562,
