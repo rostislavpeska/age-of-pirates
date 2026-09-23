@@ -120,6 +120,11 @@ minInterval 3
 //==============================================================================
 void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
 {
+   gPlacementFailures = gPlacementFailures + 1;   // AI test campaign counter (aiTestDiag), no behaviour
+   if (puid == cUnitTypeTownCenter)
+   {
+      gPlacementFailuresTC = gPlacementFailuresTC + 1;
+   }
    if (puid == gDockUnit || puid == cUnitTypezpDrydock || puid == cUnitTypezpWaterFort)
    {
       return;

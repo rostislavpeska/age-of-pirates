@@ -109,20 +109,98 @@ def pixel_at(x, y):
 def key_esc():
     """Tap Escape - skips the intro videos during a cold boot (the home-menu
     pixel never appears while they play; see the game-startup skill)."""
-    class KEYBDINPUT(ctypes.Structure):
-        _fields_ = [("wVk", ctypes.c_ushort), ("wScan", ctypes.c_ushort),
-                    ("dwFlags", ctypes.c_ulong), ("time", ctypes.c_ulong),
-                    ("dwExtraInfo", ctypes.POINTER(ctypes.c_ulong))]
-    class _IU(ctypes.Union):
-        _fields_ = [("ki", KEYBDINPUT)]
-    class INPUT(ctypes.Structure):
-        _fields_ = [("type", ctypes.c_ulong), ("u", _IU)]
-    down = INPUT(type=1); down.u.ki = KEYBDINPUT(0x1B, 0, 0, 0, None)
-    up = INPUT(type=1); up.u.ki = KEYBDINPUT(0x1B, 0, 2, 0, None)
-    for i in (down, up):
-        arr = (INPUT * 1)(i)
-        user32.SendInput(1, arr, ctypes.sizeof(INPUT))
-        time.sleep(0.06)
+    key_vk(0x1B)   # the old keyboard-only INPUT struct was silently dropped by SendInput (2026-09-23)
+
+
+class KEYBDINPUT(ctypes.Structure):
+    _fields_ = [("wVk", ctypes.c_ushort), ("wScan", ctypes.c_ushort),
+                ("dwFlags", ctypes.c_ulong), ("time", ctypes.c_ulong),
+                ("dwExtraInfo", ctypes.POINTER(ctypes.c_ulong))]
+
+
+class _KIU(ctypes.Union):
+    # the union MUST hold the mouse member too: SendInput checks cbSize against the full INPUT (40 bytes on x64)
+    # and silently drops keyboard-only structs (2026-09-23: every typed key of the map search was lost)
+    _fields_ = [("mi", MOUSEINPUT), ("ki", KEYBDINPUT)]
+
+
+class KINPUT(ctypes.Structure):
+    _fields_ = [("type", ctypes.c_ulong), ("u", _KIU)]
+
+
+def _send_key(vk, scan, flags):
+    arr = (KINPUT * 1)()
+    arr[0].type = 1
+    arr[0].u.ki = KEYBDINPUT(vk, scan, flags, 0, None)
+    return user32.SendInput(1, arr, ctypes.sizeof(KINPUT))
+
+
+def key_vk(vk):
+    # the game reads the scan code (a VK-only backspace is ignored, 2026-09-23); Delete/End/arrows are extended keys
+    scan = user32.MapVirtualKeyW(vk, 0)
+    ext = 0x0001 if vk in (0x23, 0x24, 0x25, 0x26, 0x27, 0x28, 0x2D, 0x2E) else 0
+    _send_key(vk, scan, ext); time.sleep(0.03)
+    _send_key(vk, scan, ext | 0x0002); time.sleep(0.03)
+
+
+def type_text(text):
+    """Unicode typing (KEYEVENTF_UNICODE), probe.py's type_text."""
+    for ch in text:
+        _send_key(0, ord(ch), 0x0004); time.sleep(0.03)
+        _send_key(0, ord(ch), 0x0004 | 0x0002); time.sleep(0.03)
+
+
+def minimap_signature():
+    """A coarse fingerprint of the lobby's minimap (2880x1800 sheet: centre 2330,360, radius ~180): a 9 x 9 grid
+    of pixels. It changes whenever another map is selected."""
+    cx, cy = int(2330 * SW / 2880), int(360 * SH / 1800)
+    r = int(150 * SW / 2880)
+    return tuple(pixel_at(cx + dx * r // 4, cy + dy * r // 4) for dx in range(-4, 5) for dy in range(-4, 5))
+
+
+def select_map(nav, name, shot_path=None):
+    """Lobby -> map picker -> the map whose name matches `name` -> OK (calibrated 2026-09-23 on Amazonia/Carolina).
+    The picker's rules, measured: it REMEMBERS its search text and applies it only when it opens (an open picker
+    with text shows the filtered list); typing into an open picker filters nothing; emptying the box resets it to
+    the category grid, whose first tile is 'All Maps' (a RANDOM map). So: open, clear, type, cancel, reopen (now the
+    filtered list), take the first tile, OK. `name` must be specific enough that the wanted map is the first tile.
+    Verified twice: the lobby preview must be a round minimap (not the square All Maps parchment) and must differ
+    from before unless it was already this map. shot_path: a lobby screenshot for the visual check."""
+    for k in ("lobby_mapbutton", "picker_search", "picker_first", "picker_ok"):
+        if k not in nav:
+            print("   coordinate sheet lacks %s - cannot select a map" % k); return False
+    before = minimap_signature()
+    focus_game()
+    guard(); click(nav["lobby_mapbutton"]["x"], nav["lobby_mapbutton"]["y"]); time.sleep(3)
+    guard(); click(nav["picker_search"]["x"], nav["picker_search"]["y"]); time.sleep(0.8)
+    for _ in range(40):   # the click drops the caret mid-word: clear both sides
+        key_vk(0x2E)      # Delete
+        key_vk(0x08)      # Backspace
+    time.sleep(1.5)
+    type_text(name); time.sleep(1.0)
+    key_esc(); time.sleep(2.5)                     # cancel: the picker keeps the text
+    if not wait_probe(nav["lobby_probe"], 10):
+        print("   the picker did not close on Escape"); return False
+    guard(); click(nav["lobby_mapbutton"]["x"], nav["lobby_mapbutton"]["y"]); time.sleep(3.5)   # reopens filtered
+    guard(); click(nav["picker_first"]["x"], nav["picker_first"]["y"]); time.sleep(1.5)
+    guard(); click(nav["picker_ok"]["x"], nav["picker_ok"]["y"]); time.sleep(3)
+    if not wait_probe(nav["lobby_probe"], 15):
+        print("   map picker did not return to the lobby"); return False
+    time.sleep(2)
+    corner = pixel_at(int(2185 * SW / 2880), int(215 * SH / 1800))
+    if corner is None or max(corner) > 70:
+        print("   the lobby shows no round minimap (corner %s) - probably the random 'All Maps' tile; '%s' not selected"
+              % (corner, name))
+        return False
+    if minimap_signature() == before:
+        print("   the lobby minimap did not change - '%s' was already selected, or the pick failed" % name)
+    if shot_path:
+        try:
+            subprocess.run([sys.executable, os.path.join(HERE, "probe.py"), "shot", shot_path], timeout=30)
+        except Exception as e:
+            print("   lobby screenshot failed: %s" % e)
+    print("   map selected: %s" % name)
+    return True
 
 
 def dismiss_crash_dialog():
@@ -330,7 +408,7 @@ def wait_probe(pt, timeout_s):
     return False
 
 
-def start_match(nav, from_lobby=False, blind=False, load_s=150):
+def start_match(nav, from_lobby=False, blind=False, load_s=150, map_name=None):
     """Home menu -> Skirmish -> Play -> wait for 'Main is starting' in the log.
     from_lobby: the lobby is already open with the map, skip the home-menu step.
     blind (2026-09-23, the live echo channel is silent since the September patch):
@@ -344,6 +422,9 @@ def start_match(nav, from_lobby=False, blind=False, load_s=150):
         time.sleep(4)
     if not wait_probe(nav["lobby_probe"], 30):
         print("   lobby not detected"); return -1
+    if map_name:
+        if not select_map(nav, map_name, os.path.join(HERE, "last_lobby.png")):
+            return -1
     pos = log_size()
     focus_game(); guard(); click(nav["lobby_play"]["x"], nav["lobby_play"]["y"])
     time.sleep(6)
@@ -426,10 +507,10 @@ def watch_verdict(pos, cap_s, blind=False):
             return ("NO-DATA" if not events else "GATES-STUCK"), events
 
 
-def run_criteria(script, rd):
+def run_criteria(script, rd, extra=None):
     """Run a criteria module on the run folder; the table to criteria.txt, the verdict line to the console."""
     try:
-        crit = subprocess.run([sys.executable, os.path.join(HERE, script), rd],
+        crit = subprocess.run([sys.executable, os.path.join(HERE, script), rd] + (extra or []),
                               capture_output=True, text=True, timeout=60)
         with open(os.path.join(rd, "criteria.txt"), "w", encoding="utf-8") as f:
             f.write(crit.stdout)
@@ -457,6 +538,8 @@ def main():
                     help="no live echo channel: after Play wait --load-s, then the cap, then quit;"
                          " the verdict comes from the per-player AI files (criteria module)")
     ap.add_argument("--load-s", type=int, default=150, help="--blind: seconds for map generation + load")
+    ap.add_argument("--floor", default=None, help="--criteria baseline: the floor run's metrics.json to judge against")
+    ap.add_argument("--map", default=None, help="select this map in the lobby first (the picker's search text, e.g. Amazonia)")
     ap.add_argument("--criteria", default="istanbul", help="istanbul (criteria.py) or london (criteria_london.py)")
     a = ap.parse_args()
 
@@ -499,7 +582,7 @@ def main():
                       " stopping for a human")
                 break
             time.sleep(5)
-        pos = start_match(nav, a.from_lobby, a.blind, a.load_s)
+        pos = start_match(nav, a.from_lobby, a.blind, a.load_s, a.map)
         if pos < 0:
             lost += 1
             if lost >= 3:
@@ -538,7 +621,7 @@ def main():
         # the archive and the one-line verdict in the console. A stage of the
         # campaign is DONE only after 3 consecutive all-PASS runs. The London
         # criteria read the per-player files, so they run after the quit's flush.
-        if a.criteria != "london":
+        if a.criteria not in ("london", "baseline"):
             run_criteria("criteria.py", rd)
         if verdict == "GAME-CRASHED":
             if not a.allow_restart:
@@ -550,6 +633,10 @@ def main():
                   " (--allow-restart); dump triage:"
                   " python scripts/aitest/crashdump_triage.py")
             continue
+        try:   # the match as it stands at the cap: score, age, minimap - the visual record of every run
+            subprocess.run([sys.executable, os.path.join(HERE, "probe.py"), "shot", os.path.join(rd, "end.png")], timeout=30)
+        except Exception as e:
+            print("   end screenshot failed: %s" % e)
         quit_ok = end_match(nav)
         # archive the per-player AI logs the quit just flushed; only files written
         # during this run - a smaller match leaves the higher players' old files
@@ -564,6 +651,8 @@ def main():
                         fo.write(fi.read())
                 except OSError:
                     pass
+        if a.criteria == "baseline":   # standard map: the AIDIAG regression floor
+            run_criteria("criteria_baseline.py", rd, ["--floor", a.floor] if a.floor else None)
         if a.criteria == "london":
             run_criteria("criteria_london.py", rd)
         if not quit_ok:

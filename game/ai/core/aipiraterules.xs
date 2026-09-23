@@ -19,7 +19,6 @@
 // LONDON globals (docs/briefs/2026-09-23-london-ai-plan.md) - declared before the first rule (declare-before-use);
 // the London rules are the LONDON section at the end of this file.
 //==============================================================================
-extern bool gIsLondon = false;
 extern bool gLondonTestMode = true;             // round-1 diagnostics on; false for release (mod-deploy-check will assert it)
 extern vector gLondonBridgeVec = cInvalidVector;   // the player's own zpAILondonBridge marker = the bridge middle
 extern int gLondonPortSocket = -1;              // zpSPCPortSocket on the deck: the post that owns the bridge
@@ -45,6 +44,12 @@ rule initializePirateRules
 active
 minInterval 1
 {
+   // AI test campaign: the echo-only diagnostic on every map (aiTestDiag at the end of this file)
+   if (gAITestDiag == true)
+   {
+      xsEnableRule("aiTestDiag");
+   }
+
    // Water Maps %%%%%%%%%%%%%%%%%%%%%%%
    // AssertiveWall: Age of Pirates maps that we want to count as Starting on Different Islands
    if (cRandomMapName == "zpburma_b" ||
@@ -8641,4 +8646,41 @@ minInterval 30
 {
    gLondonHoldPlanNear = londonHoldKeep(gLondonKeepNear, gLondonHoldPlanNear, "near");
    gLondonHoldPlanFar = londonHoldKeep(gLondonKeepFar, gLondonHoldPlanFar, "far");
+}
+
+//==============================================================================
+// AI TEST DIAG (2026-09-23) - the regression floor of the AI test campaign: one echo a minute on every map, read by
+// scripts/aitest/criteria_baseline.py and criteria_london.py. Echo only: it creates no plan, tasks no unit and
+// changes no variable any other rule reads. Enabled by gAITestDiag (aiglobals.xs), false for release.
+//==============================================================================
+rule aiTestDiag
+inactive
+minInterval 60
+{
+   int mainBase = kbBaseGetMainID(cMyID);
+   float baseRadius = -1.0;
+   int score = aiGetScore(cMyID);
+   int london = 0;
+
+   if (gIsLondon == true)
+   {
+      london = 1;
+   }
+
+   if (mainBase >= 0)
+   {
+      baseRadius = kbBaseGetDistance(cMyID, mainBase);
+   }
+   aiEcho("AIDIAG p" + cMyID + " age " + kbGetAge() + " score " + score
+          + " vills " + kbUnitCount(cMyID, cUnitTypeAbstractVillager, cUnitStateAlive)
+          + " army " + kbUnitCount(cMyID, cUnitTypeLogicalTypeLandMilitary, cUnitStateAlive)
+          + " navy " + kbUnitCount(cMyID, cUnitTypeLogicalTypeNavalMilitary, cUnitStateAlive)
+          + " tcs " + kbUnitCount(cMyID, cUnitTypeAgeUpBuilding, cUnitStateAlive)
+          + " houses " + kbUnitCount(cMyID, gHouseUnit, cUnitStateAlive)
+          + " milbldg " + kbUnitCount(cMyID, cUnitTypeMilitaryBuilding, cUnitStateAlive)
+          + " farms " + kbUnitCount(cMyID, gFarmUnit, cUnitStateAlive)
+          + " plant " + kbUnitCount(cMyID, gPlantationUnit, cUnitStateAlive)
+          + " bldg " + kbUnitCount(cMyID, cUnitTypeLogicalTypeBuildingsNotWalls, cUnitStateAlive)
+          + " baseR " + baseRadius + " fails " + gPlacementFailures + " failsTC " + gPlacementFailuresTC
+          + " london " + london);
 }

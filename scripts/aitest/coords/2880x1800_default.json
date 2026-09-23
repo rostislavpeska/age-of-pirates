@@ -1,5 +1,5 @@
 {
-  "_comment": "self-calibrated by the agent from screenshots, 2880x1800 borderless, quit chain live-validated 2026-08-25; 2026-09-23: home_skirmish moved up to the Skirmish button under the new Continue button, lobby_probe = the Play button (the map-name button's text changes with the map)",
+  "_comment": "self-calibrated by the agent from screenshots, 2880x1800 borderless, quit chain live-validated 2026-08-25; 2026-09-23: home_skirmish moved up to the Skirmish button under the new Continue button, lobby_probe = the Play button (the map-name button's text changes with the map); 2026-09-23: map picker points (lobby map button, All Maps tile, search box, first result tile, OK) measured on Amazonia",
   "home_skirmish": {
     "x": 187,
     "y": 652,
@@ -55,6 +55,26 @@
   "popup_close": {
     "x": 1064,
     "y": 1244,
+    "rgb": null
+  },
+  "lobby_mapbutton": {
+    "x": 2455,
+    "y": 642,
+    "rgb": null
+  },
+  "picker_search": {
+    "x": 1843,
+    "y": 307,
+    "rgb": null
+  },
+  "picker_first": {
+    "x": 307,
+    "y": 605,
+    "rgb": null
+  },
+  "picker_ok": {
+    "x": 2294,
+    "y": 1604,
     "rgb": null
   }
 }

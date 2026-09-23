@@ -617,3 +617,12 @@ extern int gDebugHCCardsID = -1;
 extern int gDebugChatsID = -1;
 extern int gDebugSetupID = -1;
 extern int gDebugCoreID = -1;
+
+//==============================================================================
+// AI test campaign (2026-09-23, docs/briefs/2026-09-23-london-ai-test-report.md). Declared here because
+// aibuildings.xs (the placement code) is compiled before aipiraterules.xs.
+//==============================================================================
+extern bool gAITestDiag = true;                 // AIDIAG echo once a minute on EVERY map - echo only, no behaviour; false for release
+extern int gPlacementFailures = 0;              // buildingPlacementFailedHandler calls (every building type)
+extern int gPlacementFailuresTC = 0;            // ... of them Town Centers
+extern bool gIsLondon = false;                  // set by initializePirateRules on the player's own zpAILondonBridge marker
