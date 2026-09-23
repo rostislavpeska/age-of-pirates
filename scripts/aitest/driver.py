@@ -76,6 +76,17 @@ def send(inputs):
     user32.SendInput(len(inputs), arr, ctypes.sizeof(INPUT))
 
 
+def focus_game():
+    """Bring the game window to the front: the game eats the first click after
+    losing focus (coords sheet note). The Alt tap lifts the foreground lock."""
+    h = user32.FindWindowW(None, "Age of Empires III: Definitive Edition")
+    if not h:
+        return False
+    user32.keybd_event(0x12, 0, 0, 0); user32.SetForegroundWindow(h); user32.keybd_event(0x12, 0, 2, 0)
+    time.sleep(1.0)
+    return True
+
+
 def click(x, y):
     mv = INPUT(type=0)
     mv.u.mi = MOUSEINPUT(int(x * 65535 / SW), int(y * 65535 / SH), 0,
@@ -302,17 +313,32 @@ def wait_probe(pt, timeout_s):
     return False
 
 
-def start_match(nav):
+def start_match(nav, from_lobby=False, blind=False, load_s=150):
     """Home menu -> Skirmish -> Play -> wait for 'Main is starting' in the log.
+    from_lobby: the lobby is already open with the map, skip the home-menu step.
+    blind (2026-09-23, the live echo channel is silent since the September patch):
+    after Play wait load_s for generation + load and return; the verdict then
+    comes from the per-player AI files the quit flushes.
     Returns the log offset at match start, or -1."""
-    if not wait_probe(nav["home_skirmish"], 150):
-        print("   home menu not detected"); return -1
-    guard(); click(nav["home_skirmish"]["x"], nav["home_skirmish"]["y"])
-    time.sleep(4)
+    if not from_lobby:
+        if not wait_probe(nav["home_skirmish"], 150):
+            print("   home menu not detected"); return -1
+        focus_game(); guard(); click(nav["home_skirmish"]["x"], nav["home_skirmish"]["y"])
+        time.sleep(4)
     if not wait_probe(nav["lobby_probe"], 30):
-        print("   lobby not detected after Skirmish click"); return -1
+        print("   lobby not detected"); return -1
     pos = log_size()
-    guard(); click(nav["lobby_play"]["x"], nav["lobby_play"]["y"])
+    focus_game(); guard(); click(nav["lobby_play"]["x"], nav["lobby_play"]["y"])
+    time.sleep(6)
+    if probe_ok(nav["lobby_play"]):   # the first click after a focus change is eaten: the lobby is still up, click once more
+        print("   lobby still up after Play - clicking Play once more")
+        guard(); click(nav["lobby_play"]["x"], nav["lobby_play"]["y"])
+    if blind:
+        print("   blind mode: %d s for generation + load" % load_s)
+        t0 = time.time()
+        while time.time() - t0 < load_s:
+            guard(); time.sleep(5)
+        return pos
     t0 = time.time()
     buf = ""
     while time.time() - t0 < 300:          # map gen + load can be slow
@@ -326,11 +352,18 @@ def start_match(nav):
     return -1
 
 
-def watch_verdict(pos, cap_s):
+def watch_verdict(pos, cap_s, blind=False):
     t0 = time.time()
     events = []
     sail_at = None
     capture_seen = False
+    if blind:   # no live channel: keep the process alive to the cap, judge from the per-player files afterwards
+        while time.time() - t0 < cap_s:
+            guard(); time.sleep(10)
+            if not game_running():
+                events.append("GAME PROCESS DIED - blind mode")
+                return "GAME-CRASHED", events
+        return "BLIND-CAP", events
     while True:
         guard()
         time.sleep(10)
@@ -376,6 +409,20 @@ def watch_verdict(pos, cap_s):
             return ("NO-DATA" if not events else "GATES-STUCK"), events
 
 
+def run_criteria(script, rd):
+    """Run a criteria module on the run folder; the table to criteria.txt, the verdict line to the console."""
+    try:
+        crit = subprocess.run([sys.executable, os.path.join(HERE, script), rd],
+                              capture_output=True, text=True, timeout=60)
+        with open(os.path.join(rd, "criteria.txt"), "w", encoding="utf-8") as f:
+            f.write(crit.stdout)
+        for ln in crit.stdout.splitlines():
+            if ln.startswith("RUN VERDICT"):
+                print("   " + ln)
+    except Exception as e:
+        print("   criteria evaluation failed: %s" % e)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--runs", type=int, default=10)
@@ -387,6 +434,13 @@ def main():
                          " Steam after a crash and continue the batch."
                          " Without it the driver stops and waits for a human."
                          " Killing the process remains forbidden always.")
+    ap.add_argument("--from-lobby", action="store_true",
+                    help="the lobby is already open with the map: skip the home-menu and Skirmish steps")
+    ap.add_argument("--blind", action="store_true",
+                    help="no live echo channel: after Play wait --load-s, then the cap, then quit;"
+                         " the verdict comes from the per-player AI files (criteria module)")
+    ap.add_argument("--load-s", type=int, default=150, help="--blind: seconds for map generation + load")
+    ap.add_argument("--criteria", default="istanbul", help="istanbul (criteria.py) or london (criteria_london.py)")
     a = ap.parse_args()
 
     nav = load_coords()
@@ -428,7 +482,7 @@ def main():
                       " stopping for a human")
                 break
             time.sleep(5)
-        pos = start_match(nav)
+        pos = start_match(nav, a.from_lobby, a.blind, a.load_s)
         if pos < 0:
             lost += 1
             if lost >= 3:
@@ -446,7 +500,7 @@ def main():
         t0 = time.time()
         ai_mtime = time.strftime("%Y%m%d-%H%M%S",
                                  time.localtime(os.path.getmtime(AI_FILE)))
-        verdict, events = watch_verdict(pos, a.cap_min * 60)
+        verdict, events = watch_verdict(pos, a.cap_min * 60, a.blind)
         secs = int(time.time() - t0)
         rd = os.path.join(runs_dir, "run_%03d" % run_no)
         os.makedirs(rd, exist_ok=True)
@@ -465,18 +519,10 @@ def main():
                 pass
         # deterministic criteria: every run judges itself; the table lands in
         # the archive and the one-line verdict in the console. A stage of the
-        # campaign is DONE only after 3 consecutive all-PASS runs.
-        try:
-            crit = subprocess.run(
-                [sys.executable, os.path.join(HERE, "criteria.py"), rd],
-                capture_output=True, text=True, timeout=60)
-            with open(os.path.join(rd, "criteria.txt"), "w", encoding="utf-8") as f:
-                f.write(crit.stdout)
-            for ln in crit.stdout.splitlines():
-                if ln.startswith("RUN VERDICT"):
-                    print("   " + ln)
-        except Exception as e:
-            print("   criteria evaluation failed: %s" % e)
+        # campaign is DONE only after 3 consecutive all-PASS runs. The London
+        # criteria read the per-player files, so they run after the quit's flush.
+        if a.criteria != "london":
+            run_criteria("criteria.py", rd)
         if verdict == "GAME-CRASHED":
             if not a.allow_restart:
                 print("   game process died mid-run - restart it manually and"
@@ -499,6 +545,8 @@ def main():
                         fo.write(fi.read())
                 except OSError:
                     pass
+        if a.criteria == "london":
+            run_criteria("criteria_london.py", rd)
         if not quit_ok:
             print("   screen state unknown after failed quit - stopping the"
                   " batch; the game process is untouched")

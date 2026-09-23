@@ -15,6 +15,21 @@
 // Interval set long to avoid interfering with setup.xs
 //==============================================================================
 
+//==============================================================================
+// LONDON globals (docs/briefs/2026-09-23-london-ai-plan.md) - declared before the first rule (declare-before-use);
+// the London rules are the LONDON section at the end of this file.
+//==============================================================================
+extern bool gIsLondon = false;
+extern bool gLondonTestMode = true;             // round-1 diagnostics on; false for release (mod-deploy-check will assert it)
+extern vector gLondonBridgeVec = cInvalidVector;   // the player's own zpAILondonBridge marker = the bridge middle
+extern int gLondonPortSocket = -1;              // zpSPCPortSocket on the deck: the post that owns the bridge
+extern int gLondonGateA = -1;                   // the two bridge gates (gaia SPCFortGate within 25 m of the marker)
+extern int gLondonGateB = -1;
+extern int gLondonGateOurs = -1;                // the gate closer to our town centre
+extern int gLondonKeepNear = -1;                // gaia zpSPCTowerOfLondon the pathfinder reaches from our town centre
+extern int gLondonKeepFar = -1;
+extern int gLondonDiagPass = 0;
+
 rule initializePirateRules
 active
 minInterval 1
@@ -291,6 +306,19 @@ minInterval 1
       // rule below sees a fixed gun die - that preserves the one gate the
       // custom rule had which the stock system has no equivalent for.
       xsEnableRule("istanbulAreaRecalc");   // one-shot KB rebuild at ~90s
+   }
+
+   // London %%%%%%%%%%%%%%%%%%%%%%%
+   // Detected by the player's OWN bridge marker (zpAILondonBridge, one per player at the bridge middle, zplondon.xs):
+   // the Paris urban marker is not placed on London, so the Paris gate chain stays off here. The London rules are the
+   // LONDON section at the end of this file (docs/briefs/2026-09-23-london-ai-plan.md).
+   if (kbUnitCount(cMyID, cUnitTypezpAILondonBridge, cUnitStateAny) > 0)
+   {
+      gIsPirateMap = true;
+      gIsLondon = true;
+      xsEnableRule("buildPirateSocketTowers");   // rebuilds the Keep and bridge towers: it already queries both socket protos
+      xsEnableRule("londonSetup");
+      aiEcho("LONDON p" + cMyID + " build r1 2026-09-23 - marker found, London rules on");
    }
 
    // Naval KOTH Maps %%%%%%%%%%%%%%%%%%%%%%%
@@ -7935,4 +7963,193 @@ minInterval 90
    kbAreaCalculate();
    aiEcho("AREARECALC p" + cMyID + " kbAreaCalculate re-run complete");
    xsDisableSelf();
+}
+
+//==============================================================================
+// LONDON - round 1 (2026-09-23): setup + diagnostics. Plan, criteria and the next rounds:
+// docs/briefs/2026-09-23-london-ai-plan.md. Echo vocabulary: LONDON / LONDONSETUP / LONDONDIAG.
+//==============================================================================
+
+//==============================================================================
+// londonSetup - one shot: the bridge geometry from the player's own marker
+//==============================================================================
+rule londonSetup
+inactive
+minInterval 10
+{
+   int marker = -1;
+   int tc = -1;
+   int gateQuery = -1;
+   int gateCount = 0;
+   int keepQuery = -1;
+   int keepCount = 0;
+   int swap = -1;
+   int nearPath = 0;
+   int farPath = 0;
+   vector tcVec = cInvalidVector;
+   vector sortFrom = cInvalidVector;
+
+   marker = getUnit(cUnitTypezpAILondonBridge, cMyID, cUnitStateAny);
+   if (marker < 0)
+   {
+      aiEcho("LONDONSETUP p" + cMyID + " marker not found yet");
+      return;
+   }
+   gLondonBridgeVec = kbUnitGetPosition(marker);
+   gLondonPortSocket = getClosestGaiaUnit(cUnitTypezpSPCPortSocket, gLondonBridgeVec, 40.0);
+
+   // the two bridge gates: gaia SPCFortGate within 25 m of the marker (the export: 13 m and 10 m off the middle)
+   gateQuery = createAdvancedGaiaUnitQuery(cUnitTypeSPCFortGate, cUnitStateAlive, gLondonBridgeVec, 25.0, true);
+   gateCount = kbUnitQueryExecute(gateQuery);
+   if (gateCount > 0)
+   {
+      gLondonGateA = kbUnitQueryGetResult(gateQuery, 0);
+   }
+   if (gateCount > 1)
+   {
+      gLondonGateB = kbUnitQueryGetResult(gateQuery, 1);
+   }
+
+   // our side = the gate closer to our town centre
+   tc = getUnit(cUnitTypeTownCenter, cMyID, cUnitStateAlive);
+   if (tc >= 0)
+   {
+      tcVec = kbUnitGetPosition(tc);
+   }
+   gLondonGateOurs = gLondonGateA;
+   if (gLondonGateB >= 0 && tc >= 0)
+   {
+      if (distance(kbUnitGetPosition(gLondonGateB), tcVec) < distance(kbUnitGetPosition(gLondonGateA), tcVec))
+      {
+         gLondonGateOurs = gLondonGateB;
+      }
+   }
+
+   // the Keeps: gaia zpSPCTowerOfLondon, sorted by distance from our town centre (the marker when no centre yet);
+   // the pathfinder overrides the straight line when it reaches only the farther one
+   sortFrom = gLondonBridgeVec;
+   if (tc >= 0)
+   {
+      sortFrom = tcVec;
+   }
+   keepQuery = createAdvancedGaiaUnitQuery(cUnitTypezpSPCTowerOfLondon, cUnitStateAlive, sortFrom, -1.0, true);
+   keepCount = kbUnitQueryExecute(keepQuery);
+   if (keepCount > 0)
+   {
+      gLondonKeepNear = kbUnitQueryGetResult(keepQuery, 0);
+   }
+   if (keepCount > 1)
+   {
+      gLondonKeepFar = kbUnitQueryGetResult(keepQuery, 1);
+   }
+   if (tc >= 0 && gLondonKeepNear >= 0)
+   {
+      if (kbCanPath2(tcVec, kbUnitGetPosition(gLondonKeepNear), cUnitTypeMusketeer, 0.0) == true)
+      {
+         nearPath = 1;
+      }
+   }
+   if (tc >= 0 && gLondonKeepFar >= 0)
+   {
+      if (kbCanPath2(tcVec, kbUnitGetPosition(gLondonKeepFar), cUnitTypeMusketeer, 0.0) == true)
+      {
+         farPath = 1;
+      }
+   }
+   if (nearPath == 0 && farPath == 1)
+   {
+      swap = gLondonKeepNear;
+      gLondonKeepNear = gLondonKeepFar;
+      gLondonKeepFar = swap;
+   }
+   aiEcho("LONDONSETUP p" + cMyID + " marker " + gLondonBridgeVec + " socket " + gLondonPortSocket + " gates " + gLondonGateA + " " + gLondonGateB
+          + " ours " + gLondonGateOurs + " keepNear " + gLondonKeepNear + " keepFar " + gLondonKeepFar + " pathNear " + nearPath + " pathFar " + farPath
+          + " gates found " + gateCount + " keeps found " + keepCount + " tc " + tc);
+   if (gLondonTestMode == true)
+   {
+      xsEnableRule("londonDiag");
+   }
+   xsDisableSelf();
+}
+
+//==============================================================================
+// londonDiag - test mode only: the knowledge base's view of London once a minute; kbAreaCalculate re-run on pass 2
+// (Istanbul's cure for its holes, istanbulAreaRecalc) so pass 3 can be compared with pass 1. Data for round 2, not a rule.
+//==============================================================================
+rule londonDiag
+inactive
+minInterval 60
+{
+   int tc = -1;
+   int enemyTc = -1;
+   int groups = 0;
+   int myGroup = -1;
+   int bridgeGroup = -1;
+   int farGroup = -1;
+   int enemyGroup = -1;
+   int pathNear = 0;
+   int pathBridge = 0;
+   int pathFar = 0;
+   int pathEnemy = 0;
+   int exploreState = -1;
+   vector tcVec = cInvalidVector;
+   vector farVec = cInvalidVector;
+
+   gLondonDiagPass = gLondonDiagPass + 1;
+   tc = getUnit(cUnitTypeTownCenter, cMyID, cUnitStateAlive);
+   if (tc < 0)
+   {
+      aiEcho("LONDONDIAG p" + cMyID + " pass " + gLondonDiagPass + " no town centre");
+      return;
+   }
+   tcVec = kbUnitGetPosition(tc);
+   groups = kbAreaGroupGetNumber();
+   myGroup = kbAreaGroupGetIDByPosition(tcVec);
+   bridgeGroup = kbAreaGroupGetIDByPosition(gLondonBridgeVec);
+   if (gLondonKeepFar >= 0)
+   {
+      farVec = kbUnitGetPosition(gLondonKeepFar);
+      farGroup = kbAreaGroupGetIDByPosition(farVec);
+      if (kbCanPath2(tcVec, farVec, cUnitTypeMusketeer, 0.0) == true)
+      {
+         pathFar = 1;
+      }
+   }
+   if (gLondonKeepNear >= 0)
+   {
+      if (kbCanPath2(tcVec, kbUnitGetPosition(gLondonKeepNear), cUnitTypeMusketeer, 0.0) == true)
+      {
+         pathNear = 1;
+      }
+   }
+   if (kbCanPath2(tcVec, gLondonBridgeVec, cUnitTypeMusketeer, 0.0) == true)
+   {
+      pathBridge = 1;
+   }
+   // the enemy's centre, when the knowledge base has seen one
+   enemyTc = getUnit(cUnitTypeTownCenter, cPlayerRelationEnemy, cUnitStateAlive);
+   if (enemyTc >= 0)
+   {
+      enemyGroup = kbAreaGroupGetIDByPosition(kbUnitGetPosition(enemyTc));
+      if (kbCanPath2(tcVec, kbUnitGetPosition(enemyTc), cUnitTypeMusketeer, 0.0) == true)
+      {
+         pathEnemy = 1;
+      }
+   }
+   if (gLandExplorePlan >= 0)
+   {
+      exploreState = aiPlanGetState(gLandExplorePlan);
+   }
+   aiEcho("LONDONDIAG p" + cMyID + " pass " + gLondonDiagPass + " groups " + groups + " myGroup " + myGroup + " bridgeGroup " + bridgeGroup
+          + " farKeepGroup " + farGroup + " enemyTc " + enemyTc + " enemyGroup " + enemyGroup + " path near " + pathNear + " bridge " + pathBridge
+          + " farKeep " + pathFar + " enemy " + pathEnemy + " explorePlan " + gLandExplorePlan + " state " + exploreState);
+   if (gLondonDiagPass == 2)
+   {
+      kbAreaCalculate();
+      aiEcho("LONDONDIAG p" + cMyID + " kbAreaCalculate re-run - compare pass 3 with pass 1");
+   }
+   if (gLondonDiagPass >= 8)
+   {
+      xsDisableSelf();
+   }
 }

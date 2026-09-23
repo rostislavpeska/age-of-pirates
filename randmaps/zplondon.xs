@@ -1379,8 +1379,14 @@ void main(void)
 	int playerStart = rmCreateStartingUnitsObjectDef(5.0);
 	rmSetObjectDefMinDistance(playerStart, 7.0);
 	rmSetObjectDefMaxDistance(playerStart, 12.0);
-	int aiStartUrban = rmCreateObjectDef("is city map");
-	rmAddObjectDefItem(aiStartUrban, "zpAIStartUrbanMap", 1, 0.0);
+	// London's AI marker (user 2026-09-23, docs/briefs/2026-09-23-london-ai-plan.md): one zpAILondonBridge per player at the
+	// bridge middle, in the slot the Paris urban marker (zpAIStartUrbanMap) had - same unit count and order, no trigger index
+	// moves. The Paris gate chain is OFF on London: the AI's LONDON rules (aipiraterules.xs) read the bridge from this marker.
+	int aiLondonMark = rmCreateObjectDef("london bridge marker");
+	rmAddObjectDefItem(aiLondonMark, "zpAILondonBridge", 1, 0.0);
+	rmSetObjectDefAllowOverlap(aiLondonMark, true);
+	rmSetObjectDefMinDistance(aiLondonMark, 0.0);
+	rmSetObjectDefMaxDistance(aiLondonMark, 0.0);
 	// the grass strip's kit (five and more per side, user 2026-09-22): the seat block's own protos and counts
 	// (EU_SPC_Player_London: TownCenter 1, deMineCoalBuildable 2, BerryBush 6, Deer 3, TreeNewEngland / TreeGreatLakes /
 	// UnderbrushForest, one Nugget - level 1 through the latch below), the Town Center pinned on the seat, the coal mines the
@@ -1468,7 +1474,7 @@ void main(void)
 			rmPlaceObjectDefAtLoc(startID, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
 		}
 		rmPlaceObjectDefAtLoc(playerStart, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));
-		rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5);
+		rmPlaceObjectDefAtLoc(aiLondonMark, i, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ));
 	}
 	// the countryside resources and treasures follow in 12.7, after the wall hills; the seats' own food and coal are baked in the seat block
 

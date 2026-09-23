@@ -263,8 +263,8 @@ class TestSeats:
         loop = t[t.index("for(i=1; < cNumberNonGaiaPlayers + 1) {"):t.index("int harbourN1PostUnit")]
         assert "if (seatsByRole == 1 && areaSeat == 0)\n\t\t{\n\t\t\trmPlaceGroupingAtLoc(blockPlayerLondon, i, rmPlayerLocXFraction(i), rmPlayerLocZFraction(i));\n\t\t}" in loop
         assert loop.count("deSPCCommandPost") == 1 and loop.index("if (seatsByRole == 0)") < loop.index("deSPCCommandPost")
-        assert loop.count("rmPlaceObjectDefAtLoc(playerStart, i") == 1 and loop.count("rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5)") == 1
-        before = t[t.index("int aiStartUrban"):t.index("for(i=1; < cNumberNonGaiaPlayers + 1) {")]
+        assert loop.count("rmPlaceObjectDefAtLoc(playerStart, i") == 1 and loop.count("rmPlaceObjectDefAtLoc(aiLondonMark, i, xRoad + rmXMetersToFraction(bridgeOffX), zRiver + rmZMetersToFraction(bridgeOffZ))") == 1 and "zpAIStartUrbanMap" not in t
+        before = t[t.index("int aiLondonMark"):t.index("for(i=1; < cNumberNonGaiaPlayers + 1) {")]
         assert "rmSetNuggetDifficulty(1, 1);" in before        # the player treasure is level 1 (Istanbul 2506, Florence 1266)
 
     def test_interim_line_only_for_the_non_2_team_lobbies(self):
@@ -431,7 +431,7 @@ class TestWalls:
     def test_walls_come_before_the_road_is_built_hills_after_the_players(self):
         t = _code(_text(LONDON))
         assert t.index('rmCreateGrouping("wall se"') < t.index('rmBuildTradeRoute(tradeRouteID, "dirt");')
-        assert t.index("rmPlaceObjectDefAtLoc(aiStartUrban, i, 0.5, 0.5);") < t.index('wallCliff("wall hill S1"') < t.index("int harbourN1PostUnit")
+        assert t.index("rmPlaceObjectDefAtLoc(aiLondonMark, i, xRoad") < t.index('wallCliff("wall hill S1"') < t.index("int harbourN1PostUnit")
 
 
 class TestGateOrder:
@@ -829,7 +829,7 @@ class TestBridgeOwnership:
 
     def test_venice_tower_family(self, xmb_current):
         # user 2026-09-22: Venice's own towers, not clones - the vanilla tower techs must apply
-        pm = _text(REPO / "data/protomods.xml"); assert "CityTowerFlat" not in pm and 'id="21196"' not in pm and 'id="21197"' not in pm
+        pm = _text(REPO / "data/protomods.xml"); assert "CityTowerFlat" not in pm and '<unit id="21196" name="zpAILondonBridge">' in pm and 'id="21197"' not in pm   # 21196 = the London AI marker since 2026-09-23
         lm = _text(REPO / "randmaps/zplondon.mods.xml")
         assert re.search(r'<unit name="deSPCCityTower">\s*<movementtype>air</movementtype>\s*<flag mergeMode="remove">ColorTransformNonGaia</flag>\s*</unit>', lm)
         assert re.search(r'<unit name="deSPCSocketCityTower">\s*<flag mergeMode="remove">ColorTransformNonGaia</flag>\s*</unit>', lm)
@@ -959,7 +959,7 @@ class TestMapInfo:
         st = (REPO / "data/strings/english/stringmods.xml").read_text(encoding="utf-8")
         assert '<string _locid="503567">Restoration of the Monarchy</string>' in st
         d = st[st.index('_locid="503568"'):st.index('_locid="503569"')]
-        for s in ("London 1660 Historical Map", "both Royal Keeps", "ATTACKERS:", "House of Stuart techs", "DEFENDERS:", "Parliament techs", "Settlements: House of Stuart, Parliament, Jewish Quarter", "Maximum recommended players: 8"):
+        for s in ("London 1660 Historical Map", "both Royal Keeps", "ATTACKERS:", "House of Stuart techs", "DEFENDERS:", "Parliament techs", "Settlements: House of Stuart, Parliament, Jewish Quarter", "Maximum recommended players: 4"):
             assert s in d, s
         l = st[st.index('_locid="503569"'):st.index("</string>", st.index('_locid="503569"'))]
         for s in ("both Royal Keeps for eight minutes", "Toll Station on London Bridge", "House of Stuart natives", "Parliament natives"):
