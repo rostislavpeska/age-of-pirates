@@ -29,6 +29,13 @@ extern int gLondonGateOurs = -1;                // the gate closer to our town c
 extern int gLondonKeepNear = -1;                // gaia zpSPCTowerOfLondon the pathfinder reaches from our town centre
 extern int gLondonKeepFar = -1;
 extern int gLondonDiagPass = 0;
+// round 2 (2026-09-23): war plan + gate killer. Run 15 measured kbCanPath2 = 1 across both standing gaia bridge
+// gates and one area group for both banks, so the crossing is judged by the gates' state, not by the pathfinder.
+extern int gLondonWarState = 0;                 // 0 not started, 1 held (crossing closed), 2 released (crossing open)
+extern int gLondonWarPasses = 0;                // passes held
+extern int gLondonGatePlan = -1;                // the gate killer's reserve, pri 90 (Paris cityGateKiller)
+extern int gLondonGateKind = 0;                 // the current target: 1 near Keep gate, 2 our bridge gate, 3 far bridge gate, 4 far Keep gate
+extern int gLondonArmyFloor = 20;               // units in the reserve before any order; londonSetup sets 8 in test mode
 
 rule initializePirateRules
 active
@@ -318,7 +325,7 @@ minInterval 1
       gIsLondon = true;
       xsEnableRule("buildPirateSocketTowers");   // rebuilds the Keep and bridge towers: it already queries both socket protos
       xsEnableRule("londonSetup");
-      aiEcho("LONDON p" + cMyID + " build r1 2026-09-23 - marker found, London rules on");
+      aiEcho("LONDON p" + cMyID + " build r2 2026-09-23 - marker found, London rules on");
    }
 
    // Naval KOTH Maps %%%%%%%%%%%%%%%%%%%%%%%
@@ -8068,7 +8075,10 @@ minInterval 10
    if (gLondonTestMode == true)
    {
       xsEnableRule("londonDiag");
+      gLondonArmyFloor = 8;
    }
+   xsEnableRule("londonWarPlan");
+   xsEnableRule("londonGateKiller");
    xsDisableSelf();
 }
 
@@ -8151,5 +8161,338 @@ minInterval 60
    if (gLondonDiagPass >= 8)
    {
       xsDisableSelf();
+   }
+}
+
+//==============================================================================
+// LONDON - round 2 (2026-09-23): the war plan and the gate killer. Echo vocabulary: LONDONWAR / LONDONGATE.
+// Run 15 (round 1) measured kbCanPath2 = 1 from the town centre to the bridge, the far Keep and the enemy centre
+// while both gaia bridge gates stood, and both banks in one area group: the pathfinder query does not see gates,
+// so the crossing is judged by the gates themselves (the brief's reading of 'path bridge 1').
+//==============================================================================
+
+//==============================================================================
+// londonGateBlocks - true while a gate stands in our way: alive and neither ours nor an ally's
+//==============================================================================
+bool londonGateBlocks(int gate = -1)
+{
+   int owner = -1;
+
+   if (gate < 0)
+   {
+      return (false);
+   }
+   if (kbUnitGetCurrentHitpoints(gate) <= 0.0)
+   {
+      return (false);
+   }
+   owner = kbUnitGetPlayerID(gate);
+   if (owner == cMyID)
+   {
+      return (false);
+   }
+   if (owner > 0)
+   {
+      if (kbIsPlayerAlly(owner) == true)
+      {
+         return (false);
+      }
+   }
+   return (true);
+}
+
+//==============================================================================
+// londonFarBridgeGate - the bridge gate on the enemy's side
+//==============================================================================
+int londonFarBridgeGate(void)
+{
+   if (gLondonGateOurs == gLondonGateA)
+   {
+      return (gLondonGateB);
+   }
+   return (gLondonGateA);
+}
+
+//==============================================================================
+// londonKeepGate - the closest standing gaia SPCFortGate of a Keep's walls (within 40 m: the export's gates stand
+// 13.4 m off the building, 13.3's sweep is 40 m), never a bridge gate
+//==============================================================================
+int londonKeepGate(int keep = -1)
+{
+   int gateQuery = -1;
+   int gateCount = 0;
+   int gate = -1;
+
+   if (keep < 0)
+   {
+      return (-1);
+   }
+   gateQuery = createAdvancedGaiaUnitQuery(cUnitTypeSPCFortGate, cUnitStateAlive, kbUnitGetPosition(keep), 40.0, true);
+   gateCount = kbUnitQueryExecute(gateQuery);
+   for (i = 0; < gateCount)
+   {
+      gate = kbUnitQueryGetResult(gateQuery, i);
+      if (gate != gLondonGateA && gate != gLondonGateB)
+      {
+         return (gate);
+      }
+   }
+   return (-1);
+}
+
+//==============================================================================
+// londonGateTarget - the ordered target list: the near Keep's gates, our bridge gate, the far bridge gate, and the
+// far Keep's gates only after the war plan released; sets gLondonGateKind
+//==============================================================================
+int londonGateTarget(void)
+{
+   int gate = -1;
+
+   gLondonGateKind = 0;
+   gate = londonKeepGate(gLondonKeepNear);
+   if (gate >= 0)
+   {
+      gLondonGateKind = 1;
+      return (gate);
+   }
+   if (londonGateBlocks(gLondonGateOurs) == true)
+   {
+      gLondonGateKind = 2;
+      return (gLondonGateOurs);
+   }
+   gate = londonFarBridgeGate();
+   if (londonGateBlocks(gate) == true)
+   {
+      gLondonGateKind = 3;
+      return (gate);
+   }
+   if (gLondonWarState == 2)
+   {
+      gate = londonKeepGate(gLondonKeepFar);
+      if (gate >= 0)
+      {
+         gLondonGateKind = 4;
+         return (gate);
+      }
+   }
+   return (-1);
+}
+
+string londonGateKindName(int kind = 0)
+{
+   if (kind == 1)
+   {
+      return ("nearKeep");
+   }
+   if (kind == 2)
+   {
+      return ("bridgeOurs");
+   }
+   if (kind == 3)
+   {
+      return ("bridgeFar");
+   }
+   if (kind == 4)
+   {
+      return ("farKeep");
+   }
+   return ("none");
+}
+
+//==============================================================================
+// londonWarPlan - holds the stock attack rules and the attack permission while a bridge gate blocks the crossing,
+// releases them when both are down or ours; takes them back if the crossing closes again. The stock enables
+// (aicore.xs 2478-2490, the Age II transition) run only while cvOkToAttack is true, so the release enables the
+// three rules itself.
+//==============================================================================
+rule londonWarPlan
+inactive
+minInterval 10
+{
+   static int lastBeat = -60000;
+   bool crossingOpen = true;
+   int farGate = londonFarBridgeGate();
+
+   if (londonGateBlocks(gLondonGateOurs) == true)
+   {
+      crossingOpen = false;
+   }
+   if (londonGateBlocks(farGate) == true)
+   {
+      crossingOpen = false;
+   }
+
+   if (crossingOpen == false)
+   {
+      gLondonWarPasses = gLondonWarPasses + 1;
+      cvOkToAttack = false;
+      if (xsIsRuleEnabled("attackManager") == true)
+      {
+         xsDisableRule("attackManager");
+      }
+      if (xsIsRuleEnabled("raidEnabler") == true)
+      {
+         xsDisableRule("raidEnabler");
+      }
+      if (gLondonWarState != 1)
+      {
+         gLondonWarState = 1;
+         lastBeat = xsGetTime();
+         aiEcho("LONDONWAR p" + cMyID + " held - crossing closed, ours " + gLondonGateOurs + " hp " + kbUnitGetCurrentHitpoints(gLondonGateOurs)
+                + " owner " + kbUnitGetPlayerID(gLondonGateOurs) + " far " + farGate + " hp " + kbUnitGetCurrentHitpoints(farGate) + " owner " + kbUnitGetPlayerID(farGate));
+         return;
+      }
+      if (xsGetTime() - lastBeat >= 60000)
+      {
+         lastBeat = xsGetTime();
+         aiEcho("LONDONWAR p" + cMyID + " path closed, held " + gLondonWarPasses + " passes, ours " + gLondonGateOurs + " hp " + kbUnitGetCurrentHitpoints(gLondonGateOurs)
+                + " far " + farGate + " hp " + kbUnitGetCurrentHitpoints(farGate) + " age " + kbGetAge());
+      }
+      return;
+   }
+
+   if (gLondonWarState != 2)
+   {
+      gLondonWarState = 2;
+      lastBeat = xsGetTime();
+      cvOkToAttack = true;
+      xsEnableRule("mostHatedEnemy");
+      xsEnableRule("attackManager");
+      xsEnableRule("raidEnabler");
+      aiEcho("LONDONWAR p" + cMyID + " released - crossing open after " + gLondonWarPasses + " held passes, ours " + gLondonGateOurs + " owner " + kbUnitGetPlayerID(gLondonGateOurs)
+             + " far " + farGate + " owner " + kbUnitGetPlayerID(farGate));
+      return;
+   }
+   if (xsGetTime() - lastBeat >= 60000)
+   {
+      lastBeat = xsGetTime();
+      if (xsIsRuleEnabled("attackManager") == true)
+      {
+         aiEcho("LONDONWAR p" + cMyID + " open, attacks on, attackManager on");
+      }
+      else
+      {
+         aiEcho("LONDONWAR p" + cMyID + " open, attacks on, attackManager off");
+      }
+   }
+}
+
+//==============================================================================
+// londonGateKiller - Paris cityGateKiller's mechanics (reserve at 90, guardians first, 1.5 strength ratio) on the
+// ordered London list; a mass floor before any order; every target path-checked from the reserve before an order
+// (unreachable = a skip echo, never a task). Ends when the list is empty; the stock attack takes over.
+//==============================================================================
+rule londonGateKiller
+inactive
+minInterval 5
+{
+   static int lastTarget = -1;
+   static int lastKind = 0;
+   static int lastBeat = -60000;
+   int target = -1;
+   int count = 0;
+   int unit = -1;
+   int guard = -1;
+   float friendlyStrength = 0.0;
+   float enemyStrength = 0.0;
+   vector targetLoc = cInvalidVector;
+   vector fromLoc = cInvalidVector;
+
+   target = londonGateTarget();
+   if (lastTarget >= 0 && target != lastTarget)
+   {
+      if (londonGateBlocks(lastTarget) == false)
+      {
+         aiEcho("LONDONGATE p" + cMyID + " gate " + lastTarget + " down kind " + londonGateKindName(lastKind) + " hp " + kbUnitGetCurrentHitpoints(lastTarget)
+                + " owner " + kbUnitGetPlayerID(lastTarget) + " next " + target + " " + londonGateKindName(gLondonGateKind));
+      }
+      else
+      {
+         aiEcho("LONDONGATE p" + cMyID + " retarget " + lastTarget + " -> " + target + " " + londonGateKindName(gLondonGateKind));
+      }
+   }
+   lastTarget = target;
+   lastKind = gLondonGateKind;
+
+   if (target < 0)
+   {
+      if (gLondonWarState == 2)
+      {
+         aiEcho("LONDONGATE p" + cMyID + " no gate left - reserve released to the stock attack");
+         aiPlanDestroy(gLondonGatePlan);
+         gLondonGatePlan = -1;
+         xsDisableSelf();
+         return;
+      }
+      if (xsGetTime() - lastBeat >= 60000)
+      {
+         lastBeat = xsGetTime();
+         aiEcho("LONDONGATE p" + cMyID + " no target, war state " + gLondonWarState);
+      }
+      return;
+   }
+
+   if (gLondonGatePlan < 0)
+   {
+      gLondonGatePlan = aiPlanCreate("London Gate Killer", cPlanReserve);
+      aiPlanAddUnitType(gLondonGatePlan, cUnitTypeLogicalTypeLandMilitary, 0, 100, 200);
+      aiPlanSetDesiredPriority(gLondonGatePlan, 90);
+      aiPlanSetActive(gLondonGatePlan);
+      aiEcho("LONDONGATE p" + cMyID + " reserve " + gLondonGatePlan + " created, floor " + gLondonArmyFloor + " first target " + target + " " + londonGateKindName(gLondonGateKind));
+   }
+
+   count = aiPlanGetNumberUnits(gLondonGatePlan, cUnitTypeLogicalTypeLandMilitary);
+   targetLoc = kbUnitGetPosition(target);
+   if (count < gLondonArmyFloor)
+   {
+      if (xsGetTime() - lastBeat >= 60000)
+      {
+         lastBeat = xsGetTime();
+         aiEcho("LONDONGATE p" + cMyID + " gathering " + count + "/" + gLondonArmyFloor + " target " + target + " " + londonGateKindName(gLondonGateKind));
+      }
+      return;
+   }
+
+   fromLoc = kbUnitGetPosition(aiPlanGetUnitByIndex(gLondonGatePlan, 0));
+   if (kbCanPath2(fromLoc, targetLoc, cUnitTypeMusketeer, 12.0) == false)
+   {
+      if (xsGetTime() - lastBeat >= 30000)
+      {
+         lastBeat = xsGetTime();
+         aiEcho("LONDONGATE p" + cMyID + " skip " + target + " unreachable " + londonGateKindName(gLondonGateKind) + " from " + xsVectorGetX(fromLoc) + "/" + xsVectorGetZ(fromLoc));
+      }
+      return;
+   }
+
+   friendlyStrength = getFriendlyArmyValue(gLondonGatePlan);
+   enemyStrength = getAreaStrength(targetLoc, 30, cPlayerRelationEnemy);
+   if (friendlyStrength <= 1.5 * enemyStrength)
+   {
+      if (xsGetTime() - lastBeat >= 60000)
+      {
+         lastBeat = xsGetTime();
+         aiEcho("LONDONGATE p" + cMyID + " waiting, strength " + friendlyStrength + " vs " + enemyStrength + " at " + target + " " + londonGateKindName(gLondonGateKind) + " units " + count);
+      }
+      return;
+   }
+
+   guard = getClosestGaiaUnit(cUnitTypeLogicalTypeLandMilitary, targetLoc, 30.0);
+   for (i = 0; < count)
+   {
+      unit = aiPlanGetUnitByIndex(gLondonGatePlan, i);
+      if (guard >= 0)
+      {
+         aiTaskUnitWork(unit, guard);
+      }
+      else
+      {
+         aiTaskUnitWork(unit, target);
+      }
+   }
+   if (xsGetTime() - lastBeat >= 30000)
+   {
+      lastBeat = xsGetTime();
+      aiEcho("LONDONGATE p" + cMyID + " tasked " + count + " on " + target + " " + londonGateKindName(gLondonGateKind) + " guard " + guard + " hp " + kbUnitGetCurrentHitpoints(target)
+             + " strength " + friendlyStrength + " vs " + enemyStrength);
    }
 }
