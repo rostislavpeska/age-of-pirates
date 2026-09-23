@@ -36,6 +36,10 @@ extern int gLondonWarPasses = 0;                // passes held
 extern int gLondonGatePlan = -1;                // the gate killer's reserve, pri 90 (Paris cityGateKiller)
 extern int gLondonGateKind = 0;                 // the current target: 1 near Keep gate, 2 our bridge gate, 3 far bridge gate, 4 far Keep gate
 extern int gLondonArmyFloor = 20;               // units in the reserve before any order; londonSetup sets 8 in test mode
+// round 3 (2026-09-23): the Keep garrisons (istanbulPalaceHold on each Keep)
+extern int gLondonKeepGarrison = 10;            // units per Keep garrison, pri 101; londonSetup sets 6 in test mode
+extern int gLondonHoldPlanNear = -1;
+extern int gLondonHoldPlanFar = -1;
 
 rule initializePirateRules
 active
@@ -325,7 +329,7 @@ minInterval 1
       gIsLondon = true;
       xsEnableRule("buildPirateSocketTowers");   // rebuilds the Keep and bridge towers: it already queries both socket protos
       xsEnableRule("londonSetup");
-      aiEcho("LONDON p" + cMyID + " build r2 2026-09-23 - marker found, London rules on");
+      aiEcho("LONDON p" + cMyID + " build r3 2026-09-23 - marker found, London rules on");
    }
 
    // Naval KOTH Maps %%%%%%%%%%%%%%%%%%%%%%%
@@ -8076,8 +8080,10 @@ minInterval 10
    {
       xsEnableRule("londonDiag");
       gLondonArmyFloor = 8;
+      gLondonKeepGarrison = 6;
    }
    xsEnableRule("londonWarPlan");
+   xsEnableRule("londonKeepHold");
    xsEnableRule("londonGateKiller");
    xsDisableSelf();
 }
@@ -8495,4 +8501,144 @@ minInterval 5
       aiEcho("LONDONGATE p" + cMyID + " tasked " + count + " on " + target + " " + londonGateKindName(gLondonGateKind) + " guard " + guard + " hp " + kbUnitGetCurrentHitpoints(target)
              + " strength " + friendlyStrength + " vs " + enemyStrength);
    }
+}
+
+//==============================================================================
+// LONDON - round 3 (2026-09-23): the Keep hold. Echo vocabulary: LONDONKEEP / LONDONHOLD.
+// Run 16 (round 2) measured the capture itself: the gate killer's reserve, standing at each Keep's second gate,
+// took both Keeps' flags (gate 1000 at 7:54 and gate 1844 at 16:34 came back owned by p2), so the separate capture
+// mission of the plan is not built; this round adds only what run 16 lacked, a garrison that keeps the flags.
+//==============================================================================
+
+//==============================================================================
+// londonKeepFlagOwner - the owner of a Keep's capturable flag (the building's when the flag is not seen)
+//==============================================================================
+int londonKeepFlagOwner(int keep = -1)
+{
+   int flag = -1;
+
+   if (keep < 0)
+   {
+      return (-1);
+   }
+   flag = getClosestUnitByLocation(cUnitTypezpSPCCapturableFlagNoIcon, cPlayerRelationAny, cUnitStateAlive, kbUnitGetPosition(keep), 40.0);
+   if (flag >= 0)
+   {
+      return (kbUnitGetPlayerID(flag));
+   }
+   return (kbUnitGetPlayerID(keep));
+}
+
+//==============================================================================
+// londonKeepFlagLoc - where the garrison stands: the flag, else the building
+//==============================================================================
+vector londonKeepFlagLoc(int keep = -1)
+{
+   int flag = -1;
+
+   flag = getClosestUnitByLocation(cUnitTypezpSPCCapturableFlagNoIcon, cPlayerRelationAny, cUnitStateAlive, kbUnitGetPosition(keep), 40.0);
+   if (flag >= 0)
+   {
+      return (kbUnitGetPosition(flag));
+   }
+   return (kbUnitGetPosition(keep));
+}
+
+//==============================================================================
+// londonHoldKeep - istanbulPalaceHold's garrison (reserve at 101, filled by hand, capped) on one Keep; the plan is
+// made the first time the Keep is ours and kept after a loss, so the same garrison walks back to retake the flag
+//==============================================================================
+int londonHoldKeep(int keep = -1, int plan = -1, string side = "")
+{
+   int owner = -1;
+   bool oursTeam = false;
+   int held = 0;
+   int tempUnit = -1;
+   int landQuery = -1;
+   int landCount = 0;
+   int parked = 0;
+   vector flagLoc = cInvalidVector;
+
+   if (keep < 0)
+   {
+      return (plan);
+   }
+   owner = londonKeepFlagOwner(keep);
+   if (owner > 0)
+   {
+      if (kbGetPlayerTeam(owner) == kbGetPlayerTeam(cMyID))
+      {
+         oursTeam = true;
+      }
+   }
+   if (oursTeam == false && plan < 0)
+   {
+      return (plan);   // never ours yet - the gate killer does the taking
+   }
+   flagLoc = londonKeepFlagLoc(keep);
+
+   if (plan < 0)
+   {
+      plan = aiPlanCreate("London Keep Garrison " + side, cPlanReserve);
+      aiPlanAddUnitType(plan, cUnitTypeLogicalTypeLandMilitary, 0, 0, gLondonKeepGarrison);
+      aiPlanSetNoMoreUnits(plan, true);
+      aiPlanSetDesiredPriority(plan, 101);   // Istanbul: stock gatherArmy skips only >= 99
+      aiPlanSetActive(plan);
+      aiEcho("LONDONKEEP p" + cMyID + " flag ours keep " + keep + " " + side + " owner " + owner + " garrison plan " + plan + " cap " + gLondonKeepGarrison);
+   }
+
+   held = aiPlanGetNumberUnits(plan, cUnitTypeLogicalTypeLandMilitary);
+   if (held < gLondonKeepGarrison)
+   {
+      landQuery = createSimpleUnitQuery(cUnitTypeLogicalTypeLandMilitary, cMyID, cUnitStateAlive);
+      landCount = kbUnitQueryExecute(landQuery);
+      for (i = 0; < landCount)
+      {
+         tempUnit = kbUnitQueryGetResult(landQuery, i);
+         if (aiPlanGetActualPriority(kbUnitGetPlanID(tempUnit)) >= 101)
+         {
+            continue;
+         }
+         aiPlanAddUnit(plan, tempUnit);
+         held = held + 1;
+         if (held >= gLondonKeepGarrison)
+         {
+            break;
+         }
+      }
+   }
+
+   for (i = 0; < held)
+   {
+      tempUnit = aiPlanGetUnitByIndex(plan, i);
+      if (tempUnit < 0)
+      {
+         continue;
+      }
+      if (distance(kbUnitGetPosition(tempUnit), flagLoc) > 10)
+      {
+         aiTaskUnitMove(tempUnit, getRandomPoint(flagLoc, 8));
+      }
+      parked = parked + 1;
+   }
+   if (oursTeam == true)
+   {
+      aiEcho("LONDONHOLD p" + cMyID + " " + parked + " holding keep " + keep + " " + side + " owner " + owner);
+   }
+   else
+   {
+      aiEcho("LONDONHOLD p" + cMyID + " " + parked + " retaking keep " + keep + " " + side + " owner " + owner);
+   }
+   return (plan);
+}
+
+//==============================================================================
+// londonKeepHold - both Keeps every 30 s (the heartbeat L8 reads)
+//==============================================================================
+rule londonKeepHold
+inactive
+minInterval 30
+{
+   gLondonHoldPlanNear = londonHoldKeep(gLondonKeepNear, gLondonHoldPlanNear, "near");
+   gLondonHoldPlanFar = londonHoldKeep(gLondonKeepFar, gLondonHoldPlanFar, "far");
 }

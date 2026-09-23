@@ -148,6 +148,36 @@ def evaluate(files, events_path=None):
                 if m and (gtime(l), m.group(1)) in skips:
                     n += 1
         add("L6", "no LONDONGATE tasked on a target the same pass skipped as unreachable", n == 0, "count %d" % n)
+
+    # round 3 - applicable once the build echo says r3 or later
+    r3 = [p for p in players if any(re.search(r"LONDON p%d build r([3-9])" % p, l) for l in ai[p])]
+    if r3:
+        # L7 Keep captured by 15:00
+        bad = []
+        l7 = {}
+        for p in r3:
+            t = [gtime(l) for l in ai[p] if re.search(r"LONDONKEEP p%d flag ours" % p, l)]
+            if t and t[0] is not None:
+                l7[p] = t[0]
+            if p not in l7 or l7[p] > 900:
+                bad.append("P%d(%s)" % (p, "%ds" % l7[p] if p in l7 else "never"))
+        add("L7", "LONDONKEEP flag ours by 15:00", not bad, "failing: %s" % (bad or "none"))
+
+        # L8 Keep held: after L7, 'LONDONHOLD <k> holding' with k >= 3 at least every 60 s (retaking lines break it)
+        bad = []
+        for p in r3:
+            if p not in l7:
+                bad.append("P%d(no capture)" % p)
+                continue
+            ts = [(gtime(l), int(m.group(1))) for l in ai[p]
+                  for m in [re.search(r"LONDONHOLD p%d (\d+) holding" % p, l)] if m and gtime(l) is not None]
+            good = [t for t, k in ts if k >= 3 and t >= l7[p]]
+            end = max(gtime(l) for l in ai[p] if gtime(l) is not None)
+            marks = [l7[p]] + good + [end]
+            gap = max(b - a for a, b in zip(marks, marks[1:])) if len(marks) > 1 else 0
+            if not good or gap > 60:
+                bad.append("P%d(%d good lines, max gap %ds)" % (p, len(good), gap))
+        add("L8", "LONDONHOLD k>=3 holding every <= 60 s after L7", not bad, "failing: %s" % (bad or "none"))
     return results
 
 
