@@ -268,7 +268,7 @@ verdict and the reason in its message. Pushed in three groups; CI results read o
 | `922b6c35` | `xmb_current` / `language_twins_current` fixtures: every mtime twin assertion (Jones x7, London roles x2, London revolt, Parliament) is now a content comparison / the stringsync audit | FIX | pushed with `d4172f14` |
 | `a8774da4` | mapsim TestBoxes: `test_malformed_box_raises` -> `test_reversed_corners_normalise_and_non_finite_raises` (the `5d130aa5` contract) | FIX | pushed with `d4172f14` |
 | `d4172f14` | mapsim TestSnapshot: hash of the LF-normalised bytes, re-baselined to the `e948b4f5` content | FIX | **Mapsim #30 success - the first green Mapsim run in the workflow's 30-run history**; Proto / StringTable / TechTree / XML #1201 success; PR #33: all 5 checks green |
-| `4f779191` | refdata TestGroupingFootprint: the unit-bounds rule pinned on a fixture grouping in `tmp_path` | FIX | Mapsim not triggered (paths); validators #1202 at `b06ff441` |
+| `4f779191` | refdata TestGroupingFootprint: the unit-bounds rule pinned on a fixture grouping in `tmp_path` | FIX | Mapsim not triggered (paths); Proto / StringTable / TechTree / XML #1202 at `b06ff441` success |
 | `ee29cc8d` | Jones TestProtos / TestSideRecords: flagships train exactly `zpPirateGunboat` + AllowTrainingOnWater; voices `SPCAmericanSelect` / `SPCAmericanBoatAcknowledge` (the `31344a7d` contract); voice test renamed | FIX | as above |
 | `489ba7c6` | Jones TestPlacement: "only later (higher id / dbid) records follow the Jones block", not "Jones is last" (2 of 3 tests; `test_side_records_are_last` untouched - decision 2) | FIX | as above |
 | `b06ff441` | roster: an S4 "unknown proto" the live game has is snapshot lag (only where the install is reachable) | FIX | as above |
