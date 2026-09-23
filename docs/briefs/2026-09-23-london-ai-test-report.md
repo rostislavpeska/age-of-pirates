@@ -358,3 +358,25 @@ hand on the open live menu: state "live", the home menu was reached and the logs
 Trading Posts, and countryside Mills and Plantations. The countryside fills around a single gate point (60 m
 radius). **Next:** run 22 tests the Trading Post socket filter alone. The candidates after that: spread the
 countryside over the team's three wall gates, and forward-base placement on London.
+
+## Run 22 - Trading Post socket filter - London 3v2, 30 min cap - commit 1b37a023 (AI 5c3e7233)
+
+The driver's hash confirms the AI files were unchanged during the load (9150429366a1). The quit worked unattended
+(menu-aware `end_match`). Game time reached 46 minutes. The civs were not recorded.
+
+**Verdict: FAIL (P2, P3 for P3 only).** L0-L8, P0, P1, U1 and U2 PASS.
+
+| Player | Failures at 30:00 / 46:00 | Trading Post failures (30:00 / 46:00) | Top failures | Plantations |
+|---|---|---|---|---|
+| P2 | 23 / 50 | 5 / 7 | Barracks 23, Artillery Depot 19 | 7 |
+| P3 | 34 / 104 | 5 / 9 | Blockhouse 66, Forward Tower 17 | 7 |
+| P4 | 31 / 80 | 5 / 7 | Outpost 27, Forward Barracks 25, Forward Tower 20 | 4 |
+| P5 | 13 / 60 | 1 / 3 | Outpost 29, Barracks 17 | 5 |
+
+**Reading:** the socket filter works. Trading Post failures fell from 19-27 per player (run 21, 55 minutes) to 3-9 (46
+minutes). The largest groups now are:
+- towers (Blockhouse and Outpost), whose placement uses fixed points on a square around the base centre;
+- Barracks;
+- forward-base buildings.
+
+**Next:** run 23 tests the gate spreading for economic buildings, committed as f417f295.
