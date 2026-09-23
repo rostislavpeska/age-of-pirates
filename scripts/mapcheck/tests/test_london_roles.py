@@ -1016,16 +1016,19 @@ class TestWaterFlags:
 
 class TestFish:
     """12.10 (user 2026-09-23): FishBass in Paris's shape (zpparis.xs 1847-1858) - one def from the map centre, 0.9-map reach,
-    2 m off classPlateau, fishSpacingM apart, inside the frame, fishPerPlayer x players - more than Paris's 20 cod at 12 m;
+    2 m off classPlateau, fishSpacingM apart, inside the frame, fishBase + fishPerPlayer x ALL players floored at fishMin (60 at 2,
+    150 at 8; Paris: 20 cod x players at 12 m);
     placed after the water flags, before the triggers."""
 
     def test_paris_shape_more_fish(self):
         t = re.sub(r"[ \t]+//[^\n]*", "", _code(_text(LONDON)))   # trailing comments off, as the markers test
         k = dict(re.findall(r"(?:float |int )?(\w+)\s*=\s*([\w.]+);", t))
-        assert int(k["fishPerPlayer"]) > 20 and 0.0 < float(k["fishSpacingM"]) <= 12.0
+        base, per, lo = int(k["fishBase"]), int(k["fishPerPlayer"]), int(k["fishMin"])     # user: 60 is the bottom line (2 players), 150 borderline (8)
+        assert base + 2 * per == lo == 60 and base + 8 * per <= 150 and 0.0 < float(k["fishSpacingM"]) <= 12.0
         s = t[t.index('int fishVsPlateau = rmCreateClassDistanceConstraint("fish avoid piers and bridge", rmClassID("classPlateau"), 2.0);'):t.index("int instanceIdShift = 3;")]
         for line in ('int fishVsFish = rmCreateTypeDistanceConstraint("fish vs other fish", "FishBass", fishSpacingM);',
-                     "int fishCount = fishPerPlayer * cNumberNonGaiaPlayers;", 'rmAddObjectDefItem(fishDef, "FishBass", 1, 2.0);',
+                     "int fishCount = fishBase + fishPerPlayer * cNumberNonGaiaPlayers;", "if (fishCount < fishMin)", "fishCount = fishMin;",
+                     'rmAddObjectDefItem(fishDef, "FishBass", 1, 2.0);',
                      "rmSetObjectDefMinDistance(fishDef, 0.0);", "rmSetObjectDefMaxDistance(fishDef, rmXFractionToMeters(0.9));",
                      "rmAddObjectDefConstraint(fishDef, fishVsFish);", "rmAddObjectDefConstraint(fishDef, fishVsPlateau);",
                      "rmAddObjectDefConstraint(fishDef, insideFrame);", "rmPlaceObjectDefAtLoc(fishDef, 0, 0.5, 0.5, fishCount);"):

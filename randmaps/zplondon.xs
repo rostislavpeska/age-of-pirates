@@ -497,7 +497,9 @@ void main(void)
 	// T5. handles and laws
 	float laneLegM = 16.0;              // the nautical U: legs this far off the river centre
 	float laneTurnFromRoadM = 80.0;     // the U's turn this far west of the road (in front of row 3; 60 m clear of the bridge)
-	int fishPerPlayer = 30;             // 12.10: FishBass asked per player (Paris: 20 cod) - London is the naval map
+	int fishBase = 30;                  // 12.10: FishBass asked = fishBase + fishPerPlayer x ALL players (user 2026-09-23: '60 is
+	int fishPerPlayer = 15;             // bottom line', '150 is borderline'): 2 players 60, 4 = 90, 6 = 120, 8 = 150 (Paris: 20 x players)
+	int fishMin = 60;                   // the floor (a lone player) - the ONLY quantity keyed on the overall player count
 	float fishSpacingM = 10.0;          // between fish (Paris: 12)
 	int   harbourGuardDifficulty = 101; // nuggets.xml euNuggetCapturable2: the vanilla European trade-route post guard (ypNuggetTradingPost + four deGuardianMusketeer, maptype westEurope) - zpelbe.xs uses it the same way
 	float harbourGuardInM = 2.5;        // the guard nugget this far INTO the city off the bank's quay wall line = the middle of the 5 m promenade, at the harbour's x (behind the harbour building)
@@ -1705,10 +1707,15 @@ void main(void)
 	// Paris's block (zpparis.xs 1847-1858): one object def placed from the map centre with a 0.9-map reach, the water unit
 	// finds the water by itself (Paris's Seine is a rmRiverCreate river too), 2 m off the plateaus (classPlateau: piers,
 	// bridge, quays), fishSpacingM between fish (Paris 12), inside London's frame (Paris: a 10-tile edge box),
-	// fishPerPlayer x players (Paris 20 x). Placed after the water flags: no literal index moves.
+	// fishBase + fishPerPlayer x ALL players floored at fishMin - 60 at 2 players, 150 at 8 (Paris 20 x players). Placed
+	// after the water flags: no literal index moves.
 	int fishVsPlateau = rmCreateClassDistanceConstraint("fish avoid piers and bridge", rmClassID("classPlateau"), 2.0);
 	int fishVsFish = rmCreateTypeDistanceConstraint("fish vs other fish", "FishBass", fishSpacingM);
-	int fishCount = fishPerPlayer * cNumberNonGaiaPlayers;
+	int fishCount = fishBase + fishPerPlayer * cNumberNonGaiaPlayers;
+	if (fishCount < fishMin)
+	{
+		fishCount = fishMin;
+	}
 	int fishDef = rmCreateObjectDef("fishies");
 	rmAddObjectDefItem(fishDef, "FishBass", 1, 2.0);
 	rmSetObjectDefMinDistance(fishDef, 0.0);
