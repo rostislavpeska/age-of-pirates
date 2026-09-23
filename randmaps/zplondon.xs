@@ -2311,6 +2311,7 @@ void main(void)
 	// (the Stuart side, 0.5), 2 = the DEFENDERS (Parliament). The capture flares live in 13.3's per-player conversions
 	// (one event per capture): a Paris-style Team Unit Count trigger per proto ping-pongs with two Towers of ONE proto
 	// (2026-09-22, the persistent flare - one Tower per team keeps both teams' conditions true).
+	rmForbidTradeMonopoly(true);   // no Trade Monopoly victory on London (user 2026-09-23) - Paris's line (zpparis.xs 1871), right above the objectives
 	rmObjectiveScreenSetTitle(503557);
 	rmObjectiveScreenSetGoal(503558);
 	rmObjectiveAdd(503559, 502023, true, true, true);   // ATTACKERS (Stuart)

@@ -612,6 +612,10 @@ class TestVictory:
     """13.4 (user 2026-09-22): Paris's victory system on the two Towers - both zpSPCCapturableFlagNoIcon flags held by one team
     for 480 s -> Team Victory; objectives per side; the flag proto swapped in both Tower exports."""
 
+    def test_trade_monopoly_forbidden_as_paris(self):
+        t = _code(_text(LONDON))     # zpparis.xs 1871: the one call, right above the objectives
+        assert t.count("rmForbidTradeMonopoly(true);") == 1 and t.index("rmForbidTradeMonopoly(true);") < t.index("rmObjectiveScreenSetTitle(503557);")
+
     def test_paris_shape_on_two_flags(self):
         t = _code(_text(LONDON)); v = t[t.index("rmObjectiveScreenSetTitle(503557);"):t.index('rmCreateTrigger("LondonStartingTechs")')]
         for line in ("rmObjectiveScreenSetGoal(503558);", "rmObjectiveAdd(503559, 502023, true, true, true);", "rmObjectiveSetTeam(1, 1);",
