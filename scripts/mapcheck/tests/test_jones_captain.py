@@ -285,14 +285,19 @@ class TestPlacement:
         pos = [s.find('name="%s"' % n) for n in (SHIP, PROXY, SHIP2)]
         assert all(0 < p < marker for p in pos) and pos == sorted(pos)
         end_of_serapis = s.find("</unit>", pos[2])
-        assert "<unit id=" not in s[end_of_serapis:marker], "the new protos must be the last real units before the test section"
+        # appended, not wedged: whatever follows before the test section came later (house rule - ids continue)
+        jones = [int(re.search(r'<unit id="(\d+)" name="%s"' % n, s).group(1)) for n in (SHIP, PROXY, SHIP2)]
+        later = [int(i) for i in re.findall(r'<unit id="(\d+)"', s[end_of_serapis:marker])]
+        assert all(i > max(jones) for i in later), "only later (higher-id) units may follow the new protos before the test section"
 
-    def test_techs_sit_last_before_the_test_techs(self):
+    def test_techs_sit_above_the_test_techs_and_only_later_ones_follow(self):
         s = _read("techtreemods.xml")
         marker = s.find("<!--TEST TECHS-->")
         pos = [s.find('<tech name="%s"' % n) for n in (CAPTAIN, PRIZE, SET, "zpTrainBonhommeRichard1", "zpTrainBonhommeRichard2")]
         assert all(0 < p < marker for p in pos) and pos == sorted(pos)
-        assert not re.search(r'<tech\s+name', s[s.find("</tech>", pos[-1]):marker]), "nothing after the new techs but the test marker"
+        jones = [int(_c(_techs()[n], "dbid")) for n in (CAPTAIN, PRIZE, SET, "zpTrainBonhommeRichard1", "zpTrainBonhommeRichard2")]
+        later = [int(d) for d in re.findall(r"<dbid>(\d+)</dbid>", s[s.find("</tech>", pos[-1]):marker])]   # dbid-less vanilla merge records may follow
+        assert all(d > max(jones) for d in later), "only later (higher-dbid) techs may follow the new techs before the test marker"
 
     def test_side_records_are_last(self):
         p = _read("politicianmods.xml")
