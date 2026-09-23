@@ -783,7 +783,7 @@ class TestKeepGuards:
     Whitecoats through a new record (610, the same shape, deSPCHMWhitecoat x10). The export's placeholder stays; the latch
     set before EACH Tower instance follows the coin (defenderBank 0 = south = Tower S defends), not the export."""
 
-    def test_whitecoat_record_and_the_coin_keyed_latch(self):
+    def test_whitecoat_record_and_the_coin_keyed_latch(self, steam_twin):
         n = _text(REPO / "data/nuggetmods.xml")
         for name, unit, diff in (("zpNuggetTowerOfLondon", "deSPCHMRedcoat", 605), ("zpNuggetTowerOfLondonWhitecoat", "deSPCHMWhitecoat", 610)):
             i = n.index("<name>%s</name>" % name); rec = n[n.rfind("<nugget>", 0, i):n.index("</nugget>", i)]
@@ -798,7 +798,7 @@ class TestKeepGuards:
                                 "\tint towerNInst = rmPlaceGroupingInstanceAtLoc(blockTowerN, locX78, locZn12, 0);"])
         assert t.count(s_latch) == 1 and t.count(n_latch) == 1 and t.index(s_latch) < t.index(n_latch)
         assert t.count("rmSetNuggetDifficulty(605, 605);") == 2 and t.count("rmSetNuggetDifficulty(610, 610);") == 2
-        assert LONDON.read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
+        steam_twin(LONDON, "00000_zplondon.xs")
 
 
 class TestBridgeOwnership:
@@ -943,9 +943,10 @@ class TestBridgeOwnership:
         assert ai.count('rmSetTriggerEffectParam("Protounit", "zpSPCCityTowerWooden");') == 8 and ai.count('rmSetTriggerEffectParam("Protounit", "deSPCCityTower");') == 4
 
 
-    def test_twin_identical_and_crlf(self):
-        a = LONDON.read_bytes(); b = (STEAM / "00000_zplondon.xs").read_bytes()
-        assert a == b and a.count(b"\r\n") == a.count(b"\n")
+    def test_twin_identical_and_crlf(self, steam_twin):
+        a = LONDON.read_bytes()
+        assert a.count(b"\r\n") == a.count(b"\n")
+        steam_twin(LONDON, "00000_zplondon.xs")
 
 
 class TestMapInfo:
@@ -997,7 +998,7 @@ class TestWaterFlags:
     """12.9 (user 2026-09-23): Elbe's water-flag shape - closest water point to the town centre, off land, off other flags, off the ferry
     posts and the bridge faces, and a box that keeps every flag west of London Bridge; placed after every literal-indexed unit."""
 
-    def test_elbe_shape_with_the_box(self):
+    def test_elbe_shape_with_the_box(self, steam_twin):
         t = _code(_text(LONDON)); s = t[t.index('int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 8.0);'):t.index("int instanceIdShift = 3;")]
         for line in ('int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 20.0);',
                      'int flagVsPlateau = rmCreateClassDistanceConstraint("flag avoid piers and bridge", rmClassID("classPlateau"), 8.0);',
@@ -1011,7 +1012,7 @@ class TestWaterFlags:
             assert ("rmAddClosestPointConstraint(%s);" % c) in s, c
         assert s.index("rmAddClosestPointConstraint(flagBox);") < s.index("rmFindClosestPointVector(")
         assert t.index("rmPlaceObjectDefAtLoc(bridgeRevealer") < t.index('int flagLand = ') and t.index("rmPlaceObjectDefAtLoc(harbourS2GuardDef") < t.index("int flagLand = ")
-        assert LONDON.read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
+        steam_twin(LONDON, "00000_zplondon.xs")
 
 
 class TestFish:
@@ -1020,7 +1021,7 @@ class TestFish:
     150 at 8; Paris: 20 cod x players at 12 m), split fishBassPct FishBass / the rest FishSalmon, both off every AbstractFish;
     placed after the water flags, before the triggers."""
 
-    def test_paris_shape_more_fish(self):
+    def test_paris_shape_more_fish(self, steam_twin):
         t = re.sub(r"[ \t]+//[^\n]*", "", _code(_text(LONDON)))   # trailing comments off, as the markers test
         k = dict(re.findall(r"(?:float |int )?(\w+)\s*=\s*([\w.]+);", t))
         base, per, lo = int(k["fishBase"]), int(k["fishPerPlayer"]), int(k["fishMin"])     # user: 60 is the bottom line (2 players), 150 borderline (8)
@@ -1039,7 +1040,7 @@ class TestFish:
                 assert (line % d) in s, line % d
         assert s.index("rmPlaceObjectDefAtLoc(fishDef, 0, 0.5, 0.5, bassCount);") < s.index('int salmonDef = rmCreateObjectDef("salmon");')
         assert t.index("rmPlaceObjectDefAtLoc(waterFlag, i,") < t.index("int fishVsPlateau") < t.index("int instanceIdShift = 3;")
-        assert LONDON.read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
+        steam_twin(LONDON, "00000_zplondon.xs")
 
 
 class TestScope:
@@ -1076,7 +1077,7 @@ class TestScope:
         plain = chr(10).join(l for l in t.split(chr(10)) if not re.match(r"\s*int \w+Socket\dUnit = \w+MarkUnit - [1-4];$", l))   # AztecCity 1348-1351: marker - n is the one admitted literal form
         assert not re.search(r"\\w*(Unit|Id|Flag|Nug|Socket|Bld|Post)\w*\s*[-+]\s*\d+\s*[;)]", plain.replace("Idx", "").replace("Tiles", ""))   # no other literal id arithmetic
 
-    def test_twin_identical_and_crlf(self):
+    def test_twin_identical_and_crlf(self, steam_twin):
         raw = LONDON.read_bytes()
-        assert raw == (STEAM / "00000_zplondon.xs").read_bytes()
         assert raw.count(b"\r\n") == raw.count(b"\n")
+        steam_twin(LONDON, "00000_zplondon.xs")

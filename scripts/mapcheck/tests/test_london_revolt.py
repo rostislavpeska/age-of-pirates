@@ -171,7 +171,7 @@ class TestMapMods:
             assert ("<animfile>buildings" + B + "native_settlement" + B + twin + "</animfile>") in "".join(re.findall(r'<unit name="%s">.*?</unit>' % n, lm, re.S)), n
             assert (REPO / "art/buildings/native_settlement" / twin).read_bytes().count(b"\r\n") > 0, twin     # runtime XML, CRLF
 
-    def test_twins_built_and_twin_identical(self):
+    def test_twins_built_and_twin_identical(self, steam_twin):
         for f in ("data/techtreemods.xml", "data/protomods.xml", "data/protounitcommandmods.xml", "data/abilities/powermods.xml", "data/abilities/abilitymods.xml"):
             assert (REPO / (f + ".xmb")).stat().st_mtime >= (REPO / f).stat().st_mtime, f
-        assert LONDON.read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
+        steam_twin(LONDON, "00000_zplondon.xs")

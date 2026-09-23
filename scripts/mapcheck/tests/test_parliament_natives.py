@@ -387,9 +387,8 @@ class TestLondon:
         assert r"buildings\wall\barricade\wall_1x2.xml" in t
         assert re.search(r'<unit name="zpOrientalFerry">\s*<animfile>buildings\\market\\west market standin.xml</animfile>', t)
 
-    def test_map_switched_to_the_new_subciv_with_the_trigger_chain_root_equals_repo(self):
-        repo = (REPO / "randmaps/zplondon.xs").read_bytes(); root = (STEAM / "00000_zplondon.xs").read_bytes()
-        assert repo == root
+    def test_map_switched_to_the_new_subciv_with_the_trigger_chain_root_equals_repo(self, steam_twin):
+        repo = (REPO / "randmaps/zplondon.xs").read_bytes()
         t = repo.decode("utf-8")
         assert 'rmSetSubCiv(0, "zpParliament")' in t and "zpSansculottes" not in t
         for s in ('"cTechzpLondonAttackerSetup"', '"cTechzpLondonDefenderSetup"', '"cTechzpForbidRevolutions"', '"cTechzpParliamentRemonstrance"',
@@ -402,6 +401,7 @@ class TestLondon:
             assert '"cTech%s"' % c in t, c
         # every trigger is created before anything asks for its id
         assert t.index('rmCreateTrigger("Activate Parliament" + k)') < t.index('rmTriggerID("Activate_Parliament" + k)')
+        steam_twin(REPO / "randmaps/zplondon.xs", "00000_zplondon.xs")
 
     def test_london_allocates_its_own_three_natives_and_the_jewish_chain(self):
         t = (REPO / "randmaps/zplondon.xs").read_text(encoding="utf-8")
@@ -456,7 +456,7 @@ class TestFlags:
         assert ">zpParliamentFlag</unit>" in p and ">SPCFlag</unit>" not in p
         assert ">zpStuartFlag</unit>" in s and ">SPCFlag</unit>" not in s
 
-    def test_stuart_carries_the_london_flag_and_gaia_is_the_city_of_london(self):
+    def test_stuart_carries_the_london_flag_and_gaia_is_the_city_of_london(self, steam_twin):
         c = _read("data/civmods.xml")
         m = re.search(r"<civ>\s*<name>Stuart</name>.*?</civ>", c, re.S)
         assert m and "flags" + chr(92) + "zplondon" in m.group(0)
@@ -464,7 +464,7 @@ class TestFlags:
         s = _read("data/strings/english/stringmods.xml")
         assert '<string _locid="503502">City of London</string>' in s and "Commonwealth of England" not in s  # 503503 is a Lord name now
         t = (REPO / "randmaps/zplondon.xs").read_text(encoding="utf-8")
-        assert (REPO / "randmaps/zplondon.xs").read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
+        steam_twin(REPO / "randmaps/zplondon.xs", "00000_zplondon.xs")
         i = t.index('rmCreateTrigger("LondonStartingTechs")'); seg = t[i:t.index('rmCreateTrigger("Italian Vilager Balance"', i)]
         assert 'rmAddTriggerEffect("Player : Override Civilization for Flag")' in seg and 'rmSetTriggerEffectParam("Civilization", "Stuart")' in seg
         assert 'rmAddTriggerEffect("Player : Override Civilization Name")' in seg and 'rmSetTriggerEffectParam("StringID", "503502")' in seg
@@ -526,9 +526,9 @@ class TestCommonwealth:
         st = _read("data/strings/english/stringmods.xml")
         assert '<string _locid="503531">British Commonwealth</string>' in st and "%s has declared" in st
 
-    def test_london_flag_triggers_follow_independence_war(self):
+    def test_london_flag_triggers_follow_independence_war(self, steam_twin):
         t = (REPO / "randmaps/zplondon.xs").read_text(encoding="utf-8")
-        assert (REPO / "randmaps/zplondon.xs").read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
+        steam_twin(REPO / "randmaps/zplondon.xs", "00000_zplondon.xs")
         assert t.index('rmCreateTrigger("Revolution_MusicEnd" + k)') < t.index('rmTriggerID("Revolution_MusicEnd" + k)')
         for tag, card in zip(("Cromwell", "Inchiquin", "Myddelton"), CARDS):   # CARDS is a dict keyed by card name
             i = t.index('rmCreateTrigger("Flag %s" + k)' % tag); seg = t[i:i + 1300]
@@ -592,9 +592,9 @@ class TestExtendedStuart:
         assert '<effect type="CommandAdd" tech="zpStuartExpansion" page="1" column="1">' in b
         assert b.count("<effect ") == 7
 
-    def test_london_flips_the_shadow_for_every_player(self):
+    def test_london_flips_the_shadow_for_every_player(self, steam_twin):
         t = (REPO / "randmaps/zplondon.xs").read_text(encoding="utf-8")
-        assert (REPO / "randmaps/zplondon.xs").read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
+        steam_twin(REPO / "randmaps/zplondon.xs", "00000_zplondon.xs")
         # 2026-09-22: the London extension (zpExtendedStuartLondon, the SPC big button) is fired inside LondonStartingTechs for every
         # player, before the team split strips the button from the defenders; the generic zpExtendedStuart stays for other maps
         i = t.index('rmCreateTrigger("LondonStartingTechs")'); seg = t[i:t.index('rmAddTriggerEffect("Player : Override Civilization for Flag")')]

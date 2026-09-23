@@ -24,3 +24,15 @@ def pytest_runtest_setup(item):
             path = LOCAL_NEEDS[need]
             if not path.is_dir():
                 pytest.skip(f"local ({need}): needs {path} - the owner's machine only")
+
+
+@pytest.fixture
+def steam_twin():
+    """steam_twin(repo_file, name): byte identity with Game/RandMaps/<name> of the Steam install. Skips where that
+    copy is absent, so call it AFTER a test's repo-side assertions - those then still run everywhere."""
+    def check(repo_file, name):
+        twin = STEAM_GAME / "RandMaps" / name
+        if not twin.is_file():
+            pytest.skip(f"local (steam): no {twin} - every repo-side assertion before this line passed")
+        assert Path(repo_file).read_bytes() == twin.read_bytes(), f"{twin} differs from {repo_file} - copy the repo file over"
+    return check
