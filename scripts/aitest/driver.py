@@ -305,34 +305,48 @@ def game_running():
         return False
 
 
+def menu_state(nav):
+    """Which cog menu is open (2026-09-24, measured): 'live' = the in-match menu (Photo Mode ... Resign, Quit - a
+    button at y 615); 'post' = the short post-match menu (View Postgame ... Quit at y 414, where the LIVE menu has
+    Restart); None = no menu. Decided on button-background pixels, never on text."""
+    live = nav.get("menu_live_probe")
+    post = nav.get("menu_post_probe")
+    if live and probe_ok(live, 12):
+        return "live"
+    if post and probe_ok(post, 12):
+        return "post"
+    return None
+
+
 def end_match(nav):
-    """Graceful exit: cog -> Quit -> Yes -> home menu. Flushes the per-player
-    AI logs (a match quit writes Age3DEAIOutputPlayerN.txt). NEVER touches the
-    game process - if the home menu does not come back, the driver stops and
-    leaves the machine to the human (see the HARD RULE in the header)."""
-    focus_game()
-    guard(); click(nav["match_cog"]["x"], nav["match_cog"]["y"]); time.sleep(1.5)
-    guard(); click(nav["match_quit"]["x"], nav["match_quit"]["y"]); time.sleep(2.5)
-    guard(); click(nav["quit_yes"]["x"], nav["quit_yes"]["y"])
-    if wait_probe(nav["home_skirmish"], 20):
-        time.sleep(4)   # give the exit flush a moment
-        return True
-    # run 16 (2026-09-23): the match can stop on the resign screen ("You abandon your town") with the short
-    # post-match cog menu, whose Quit leaves without a confirm; the game eats the first click after focus changes
-    pq = nav.get("postmatch_quit")
-    if pq:
-        print("   still in the match after the quit - trying the post-match menu's Quit")
-        for _ in range(2):
-            focus_game()
+    """Graceful exit to the home menu (flushes the per-player AI logs). NEVER touches the game process - if the home
+    menu does not come back, the driver stops and leaves the machine to the human (see the HARD RULE in the header).
+    Run 20 (2026-09-24): a blind 'post-match Quit' click on the LIVE menu hit Restart and left a 'Restart current
+    game?' dialog; so every click now follows a menu-state check, and an unknown state is answered with Escape."""
+    for attempt in range(4):
+        if probe_ok(nav["home_skirmish"]):
+            time.sleep(4)
+            return True
+        focus_game()
+        state = menu_state(nav)
+        if state is None:
             guard(); click(nav["match_cog"]["x"], nav["match_cog"]["y"]); time.sleep(1.5)
-            guard(); click(pq["x"], pq["y"]); time.sleep(1.0)
-            guard(); click(pq["x"], pq["y"])
-            if wait_probe(nav["home_skirmish"], 30):
-                time.sleep(4)
-                return True
-    if wait_probe(nav["home_skirmish"], 60):
-        time.sleep(4)
-        return True
+            state = menu_state(nav)
+        if state == "live":
+            guard(); click(nav["match_quit"]["x"], nav["match_quit"]["y"]); time.sleep(2.5)
+            guard(); click(nav["quit_yes"]["x"], nav["quit_yes"]["y"])
+        elif state == "post":
+            guard(); click(nav["postmatch_quit"]["x"], nav["postmatch_quit"]["y"]); time.sleep(1.5)
+            if menu_state(nav) == "post":          # the first click after a focus change is eaten
+                guard(); click(nav["postmatch_quit"]["x"], nav["postmatch_quit"]["y"])
+        else:
+            print("   quit attempt %d: no menu recognised - Escape and retry" % (attempt + 1))
+            key_esc(); time.sleep(1.5)
+            continue
+        if wait_probe(nav["home_skirmish"], 25):
+            time.sleep(4)   # give the exit flush a moment
+            return True
+        print("   quit attempt %d (%s menu) did not reach the home menu" % (attempt + 1, state))
     print("   graceful quit did NOT reach the home menu - stopping;"
           " the game process is untouched, hand it to the human")
     return False

@@ -186,7 +186,8 @@ class TestDriverInput:
     def test_select_map_needs_its_sheet_points(self):
         import json
         sheet = json.load(open(os.path.join(AITEST, "coords", "2880x1800_default.json")))
-        for k in ("lobby_mapbutton", "picker_search", "picker_first", "picker_ok", "lobby_probe", "postmatch_quit"):
+        for k in ("lobby_mapbutton", "picker_search", "picker_first", "picker_ok", "lobby_probe", "postmatch_quit",
+                  "menu_live_probe", "menu_post_probe"):
             assert k in sheet, k
 
 

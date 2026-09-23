@@ -298,3 +298,36 @@ and 19): **round 3 is done.**
 
 **Hypothesis and edit:** on London, no area stops the growth; the 120 m cap alone keeps the base on its bank. That
 removes the refusal and its echo spam (342 lines for P5). One edit, the handler's London branch.
+
+## Run 20 - round 4, second edit (base growth) - London 3v2, 30 min cap - commit 4f865d58
+
+AI players: French and Ivan the Terrible with the human, against Napoleon and French. P5 (French) was knocked out
+during the match.
+
+**Harness failure:** the first quit step missed, and the fallback clicked the "post-match Quit" point on the LIVE
+menu, which is Restart there. That left a "Restart current game?" dialog, and the driver stopped. The agent clicked
+No, then quit through Quit and Yes by hand. The logs were flushed at 00:38 and judged: 28 minutes of game time.
+
+**Verdict: FAIL (P2, P3).** L0-L8, P0, P1, U1 and U2 PASS.
+
+| Player | Base radius at 20:00 / end | Failures (per 10 min) | Top failure | Plantations at the end |
+|---|---|---|---|---|
+| P2 | 100 / 100 | 31 (11.1) | Trading Post 14+5 | 4 |
+| P3 | 100 / 120 | 18 (6.4) | Artillery Depot 9, Trading Post 3+7 | 0 |
+| P4 | 80 / 110 | 37 (13.2) | Blockhouse 25 | 1 |
+| P5 | 120 / 120 (out) | 24 (9.2) | Trading Post 16+6 | 2 |
+
+**Reading:**
+- **The base-growth edit works.** Every base grows to 100-120 m (P1 PASS), and no refusal spam remains.
+- **Failures are down but not to the P2 bound.** They are 6-13 per 10 minutes, against the vanilla floor of 48
+  (run 18) and run 19's 12-62.
+- **The largest remaining group is Trading Post plans** ("placement failed" and "can't path"), which are
+  socket-bound. After that come Blockhouse (P4) and Artillery Depot.
+- **P3 issued field placements but never finished a Plantation.** This is not explained yet.
+- **P2's bound (<= 4) was set before any data.** It stays unchanged; its realism is a question for the owner.
+
+**Next:** run 21 is the same AI with the rewritten quit (below), to repeat the round-4 sample and prove the harness.
+The Trading Post failures are investigated offline in the meantime.
+
+**Harness edit:** `end_match` now reads which menu is open from button-background pixels (`menu_live_probe` at y 615,
+`menu_post_probe` at y 414) and clicks only the matching Quit. An unknown state gets an Escape and a retry.

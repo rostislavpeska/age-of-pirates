@@ -18,6 +18,7 @@ implemented.
 | I6 | evening | the map search did nothing, or picked the random "All Maps" tile | the picker keeps its text and applies it only on open | clear, type, Escape, reopen; round-minimap pixel check |
 | I7 | evening | `randmaps/zplondon.mods.xml` permanently "modified" | commit 240a4195 stored 7 CRLF lines in the blob; a checkout is byte-identical to the working file | not fixed: needs a one-line `git add --renormalize` commit, pending the owner's go |
 | I8 | run 19 | **every AI dead at match start**: `aiBuildings.xs(883) XS Error 0308 illogical or invalid expression / 0135 parseConditionDecl failed`, and a modal dialog on the loading screen | `if ((xsVectorGetZ(g) - xsVectorGetZ(b)) * side < (...) * side + 20.0)`. The exact trigger is not isolated: the stock core compiles `(a - b) * f(x) >= g(y)` and `(a + b) < (c * d)` | rewritten as plain steps into locals; lint `test_no_condition_has_the_run_19_rejected_shape` over every core file flags exactly the old line 883 |
+| I10 | run 20 | "Restart current game?" dialog; the batch stopped | the quit fallback clicked the post-match Quit point blind, and in the LIVE menu that spot is Restart | `end_match` decides the menu from button-background pixels and clicks only the matching Quit; unknown state = Escape |
 | I9 | evening | three `test_london_roles.py` tests fail | they need `sandbox/backups/groupings/*` files that are not on this machine | none (not an AI issue); noted for the owner |
 
 ## Proposals
