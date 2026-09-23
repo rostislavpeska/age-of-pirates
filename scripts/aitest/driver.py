@@ -43,6 +43,7 @@ LOG = os.path.join(USERDIR, "Logs", "Age3Log.txt")
 AI_FILE = os.path.normpath(os.path.join(
     HERE, "..", "..", "game", "ai", "core", "aipiraterules.xs"))
 STEAM_URL = "steam://rungameid/933110"
+AI_HASH_AT_PLAY = None
 EXE = "AoE3DE_s.exe"
 
 user32 = ctypes.windll.user32
@@ -407,6 +408,18 @@ def log_size():
         return 0
 
 
+def ai_files_hash():
+    """One hash over game/ai/core/*.xs - the AI compiles at match start, so an edit between Play and the end of the
+    load makes the run ambiguous (run 21, 2026-09-24: an edit landed 60 s after Play on a slow London generation)."""
+    import hashlib
+    h = hashlib.sha1()
+    core = os.path.join(os.path.dirname(AI_FILE))
+    for f in sorted(glob.glob(os.path.join(core, "*.xs"))):
+        with open(f, "rb") as fi:
+            h.update(fi.read())
+    return h.hexdigest()[:12]
+
+
 def new_log_content(pos):
     size = log_size()
     if size < pos:
@@ -447,6 +460,8 @@ def start_match(nav, from_lobby=False, blind=False, load_s=150, map_name=None):
         if not select_map(nav, map_name, os.path.join(HERE, "last_lobby.png")):
             return -1
     pos = log_size()
+    global AI_HASH_AT_PLAY
+    AI_HASH_AT_PLAY = ai_files_hash()
     focus_game(); guard(); click(nav["lobby_play"]["x"], nav["lobby_play"]["y"])
     time.sleep(6)
     if probe_ok(nav["lobby_play"]):   # the first click after a focus change is eaten: the lobby is still up, click once more
@@ -459,6 +474,10 @@ def start_match(nav, from_lobby=False, blind=False, load_s=150, map_name=None):
             guard(); time.sleep(5)
         # an AI compile error kills every AI player and shows a modal dialog the blind driver cannot see
         # (run 19, 2026-09-23): the game log names it - stop the batch instead of watching dead AIs for 30 minutes
+        if ai_files_hash() != AI_HASH_AT_PLAY:
+            print("   WARNING: game/ai/core changed during generation + load - this run is AMBIGUOUS (which AI compiled?)")
+        else:
+            print("   AI files unchanged during the load (hash %s)" % AI_HASH_AT_PLAY)
         _, chunk = new_log_content(pos)
         errs = [ln.strip() for ln in chunk.splitlines() if "XS: Error" in ln]
         if errs:
