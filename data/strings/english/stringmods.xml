@@ -3593,10 +3593,10 @@
 
       <string _locid="503592">British Castle</string>
       <string _locid="503593">ZP NAT British Castles</string>
-      <string _locid="503594">London Deptford Station</string>
-      <string _locid="503595">The railway reaches London from Deptford: the land trade route is upgraded to trains for every player. Once one player builds it, no one else can.</string>
+      <string _locid="503594">St Pancras Station</string>
+      <string _locid="503595">Upgrades London's land Trade Route to Trains (level 2) for all players: Trains deliver resources faster and provide greater line of sight. Only one player can research it.</string>
       <string _locid="503596">East India Trading Company</string>
-      <string _locid="503597">The East India Trading Company is chartered at Westminster: the river trade route is upgraded to its ships for every player. Once one player charters it, no one else can.</string>
+      <string _locid="503597">Upgrades London's Thames Trade Route to East India Trading Company ships (level 2) for all players: they deliver resources faster and provide greater line of sight. Only one player can research it.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

@@ -56,8 +56,8 @@ def test_no_post_offers_an_upgrade(xmb_current):
 
 
 def test_st_pauls_and_minster_route_techs(xmb_current):
-    for name, dbid, icon, proto in (("zpLondonDeptfordStation", 50074, "trains" + chr(92) + "train_europe_icon.png", "zpSPCLondonBasilica"),
-                                    ("zpLondonEastIndiaCompany", 50075, "trade" + chr(92) + "trade_fluyt_icon.png", "zpSPCMinster")):
+    for name, dbid, icon, proto in (("zpLondonDeptfordStation", 50074, "historical_maps" + chr(92) + "pankras_station.png", "zpSPCLondonBasilica"),
+                                    ("zpLondonEastIndiaCompany", 50075, "historical_maps" + chr(92) + "east_india.png", "zpSPCMinster")):
         b = _tech(name)
         for line in ("<dbid>%d</dbid>" % dbid, '<cost resourcetype="Wood">300.0000</cost>', '<cost resourcetype="Gold">400.0000</cost>',
                      "<researchpoints>60.0000</researchpoints>", "<status>UNOBTAINABLE</status>", '<techstatus status="Active">Industrialize</techstatus>'):
@@ -70,7 +70,7 @@ def test_st_pauls_and_minster_route_techs(xmb_current):
                         ("3", "DESPCPapalLegate"), ("3", "zpSPCPapalLegateSingle"), ("4", "zpSPCPapalBlessingPrague"),
                         ("5", "DESPCExcommunication"), ("6", "Abilities")], (proto, cols)   # by border: gold, green, blue
     s = _text(REPO / "data/strings/english/stringmods.xml")
-    assert '<string _locid="503594">London Deptford Station</string>' in s and '<string _locid="503596">East India Trading Company</string>' in s
+    assert '<string _locid="503594">St Pancras Station</string>' in s and '<string _locid="503596">East India Trading Company</string>' in s
     xmb_current("data/protomods.xml")
 
 

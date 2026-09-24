@@ -39380,7 +39380,7 @@
     <cost resourcetype="Gold">400.0000</cost>
     <researchpoints>60.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\art\units\trains\train_europe_icon.png</icon>
+    <icon>resources\images\icons\techs\historical_maps\pankras_station.png</icon>
     <rollovertextid>503595</rollovertextid>
     <flag>CountsTowardEconomicScore</flag>
     <prereqs>
@@ -39394,7 +39394,7 @@
     <cost resourcetype="Gold">400.0000</cost>
     <researchpoints>60.0000</researchpoints>
     <status>UNOBTAINABLE</status>
-    <icon>resources\art\units\trade\trade_fluyt_icon.png</icon>
+    <icon>resources\images\icons\techs\historical_maps\east_india.png</icon>
     <rollovertextid>503597</rollovertextid>
     <flag>CountsTowardEconomicScore</flag>
     <prereqs>
