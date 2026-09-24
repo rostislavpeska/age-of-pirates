@@ -389,10 +389,11 @@ class TestLondon:
         repo = (REPO / "randmaps/zplondon.xs").read_bytes()
         t = repo.decode("utf-8")
         assert 'rmSetSubCiv(0, "zpParliament")' in t and "zpSansculottes" not in t
-        for s in ('"cTechzpLondonAttackerSetup"', '"cTechzpLondonDefenderSetup"', '"cTechzpForbidRevolutions"', '"cTechzpParliamentRemonstrance"',
+        for s in ('"cTechzpLondonAttackerSetup"', '"cTechzpLondonDefenderSetup"', '"cTechzpParliamentRemonstrance"',
                   '"cTechzpTurnConsulateOffParliament"', 'rmAddTriggerEffect("ZP Pick Consulate Tech")',
                   'rmCreateTrigger("ZP_Execute_Revolution" + k)'):     # 2026-09-22: Paris's AI chain replaced the Colonial roll
             assert s in t, s
+        assert '<effect type="TechStatus" status="active">zpForbidRevolutions</effect>' in _techs()["zpLondonSetup"]     # 2026-09-24: the shared setup
         # the Paris idiom names the trigger with a space and asks for it with an underscore (engine-normalised)
         assert 'rmCreateTrigger("Activate Parliament" + k)' in t and 'rmCreateTrigger("Human Check Plr" + k)' in t
         for c in CARDS:
@@ -588,11 +589,14 @@ class TestExtendedStuart:
     def test_london_flips_the_shadow_for_every_player(self, steam_twin):
         t = (REPO / "randmaps/zplondon.xs").read_text(encoding="utf-8")
         steam_twin(REPO / "randmaps/zplondon.xs", "00000_zplondon.xs")
-        # 2026-09-22: the London extension (zpExtendedStuartLondon, the SPC big button) is fired inside LondonStartingTechs for every
-        # player, before the team split strips the button from the defenders; the generic zpExtendedStuart stays for other maps
-        i = t.index('rmCreateTrigger("LondonStartingTechs")'); seg = t[i:t.index('rmAddTriggerEffect("Player : Override Civilization for Flag")')]
-        assert '"cTechzpExtendedStuartLondon"' in seg and '"cTechzpExtendedStuart"' not in t and 'rmCreateTrigger("ExtendedStuart"' not in t
-        assert seg.index('"cTechzpExtendedStuartLondon"') < seg.index("if (rmGetPlayerTeam(k) == 0)") and i < t.index('rmCreateTrigger("Activate Parliament" + k)')
+        # 2026-09-24 (no duplicities): the London extension (zpExtendedStuartLondon, the SPC big button) sits in zpLondonSetup, which both
+        # side techs activate BEFORE they strip the other side's button; the generic zpExtendedStuart stays for other maps
+        T_ = _techs()
+        assert '<effect type="TechStatus" status="active">zpExtendedStuartLondon</effect>' in T_["zpLondonSetup"]
+        for side, strip in (("zpLondonAttackerSetup", "zpNatParliamentBigbuttonDisableShadow"), ("zpLondonDefenderSetup", "zpNatStuartBigbuttonDisableShadow")):
+            b = T_[side]; assert b.index(">zpLondonSetup<") < b.index(">%s<" % strip), side
+        i = t.index('rmCreateTrigger("LondonStartingTechs")')
+        assert '"cTechzpExtendedStuart"' not in t and 'rmCreateTrigger("ExtendedStuart"' not in t and i < t.index('rmCreateTrigger("Activate Parliament" + k)')
 
 
 # ------------------------------------------------------------------- the Armed Merchantman (Ostinder promoted, 2026-09-20)

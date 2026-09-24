@@ -77,12 +77,11 @@ def test_st_pauls_and_minster_route_techs(xmb_current):
 def test_london_capture_type_levels_and_route_triggers(steam_twin):
     t = _text(LONDON)
     assert 'rmSetMapType("euroTradeRouteCapture");' in t and 'rmSetMapType("euroTradeRouteUpgradeAll")' not in t
-    a = t.index('rmCreateTrigger("LondonStartingTechs");')
-    loop = t[t.index("for (k=1; <= cNumberNonGaiaPlayers)", a):t.index("for (i = 0; <= cNumberNonGaiaPlayers)", a)]   # players 1..N, not gaia
-    for tech, st in (("cTechzpDisableAllTradeRouteUpgrades", 2), ("cTechDETradeRouteAllResourcesShadow", 2),
-                     ("cTechzpLondonDeptfordStation", 1), ("cTechzpLondonEastIndiaCompany", 1)):
-        assert ('rmSetTriggerEffectParamInt("PlayerID", k);\n\t\trmSetTriggerEffectParam("TechID", "%s");\n\t\trmSetTriggerEffectParamInt("Status", %d);' % (tech, st)) in loop, tech
-        assert t.count('"TechID", "%s");' % tech) == (1 if st == 2 else 3), tech          # the route techs: grant + condition + take-away
+    setup = _tech("zpLondonSetup")                                  # every London player gets it through the side setup techs
+    for tech, st in (("zpDisableAllTradeRouteUpgrades", "active"), ("DETradeRouteAllResourcesShadow", "active"),
+                     ("zpLondonDeptfordStation", "obtainable"), ("zpLondonEastIndiaCompany", "obtainable")):
+        assert ('<effect type="TechStatus" status="%s">%s</effect>' % (st, tech)) in setup, tech
+        assert t.count('"TechID", "cTech%s");' % tech) == (0 if st == "active" else 2), tech   # the route techs: condition + take-away only
     for trig, tech, route in (("London_Deptford_Plr", "cTechzpLondonDeptfordStation", 2), ("London_EastIndia_Plr", "cTechzpLondonEastIndiaCompany", 1)):
         i = t.index('rmSwitchToTrigger(rmTriggerID("%s" + k));' % trig)
         b = t[i:t.index("rmSetTriggerLoop(false);", i)]

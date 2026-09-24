@@ -1,8 +1,9 @@
 """London's revolt / setup system (user 2026-09-22): Paris's shapes.
-  - starting techs by team (zpparis.xs 1984-2047): attackers (team 0, Stuart) get zpLondonAttackerSetup and the Parliament big
-    button greyed (DisableShadow strips it, offShadow lights the fake), defenders (team 1, Parliament) get zpLondonDefenderSetup and
-    the Stuart pair; everyone zpForbidRevolutions + zpExtendedStuartLondon (the London big button zpStuartExpansionSPC); players 0..N
-    zpTollstation + deEUMapUpdateVisuals (Paris 2024-2033, gaia included);
+  - starting techs by team (zpparis.xs 1984-2047): ONE tech per player (user 2026-09-24: 'no duplicities') - attackers (team 0,
+    Stuart) zpLondonAttackerSetup, defenders (team 1, Parliament) zpLondonDefenderSetup; both activate zpLondonSetup (the shared
+    setup: Military Camp, PopulationCap 250, no houses, the cathedral / bank / tower techs, zpForbidRevolutions,
+    zpExtendedStuartLondon, the trade-route plan) and then grey the other side's big button (DisableShadow strips it, offShadow
+    lights the fake); players 0..N zpTollstation + deEUMapUpdateVisuals (Paris 2024-2033, gaia included);
   - the AI Commonwealth: Paris's Iniciate / Timer / Execute chain (3393-3466) for the defenders only, gated twice on holding a
     Parliament post (cTechzpNativeParliament, zpParliament's Age0 agetech);
   - the fake-button trio per side (tech pair + power + ability + protounitcommand on the TradingPost), Paris's records as the mould;
@@ -41,29 +42,33 @@ class TestStartingTechsByTeam:
     def test_paris_shape(self):
         t = _code(_text(LONDON)); s = t[t.index('rmCreateTrigger("LondonStartingTechs");'):t.index('rmAddTriggerEffect("Player : Override Civilization for Flag");')]
         loop = s[s.index("for (k=1; <= cNumberNonGaiaPlayers)"):s.index("for (i = 0; <= cNumberNonGaiaPlayers)")]
-        assert _set("k", "cTechzpForbidRevolutions", 2) in loop and _set("k", "cTechzpExtendedStuartLondon", 2) in loop
         att = loop[loop.index("if (rmGetPlayerTeam(k) == 0)"):loop.index("else")]; dfd = loop[loop.index("else"):]
-        for tech in ("cTechzpLondonAttackerSetup", "cTechzpNatParliamentBigbuttonDisableShadow", "cTechzpNatParliamentoffShadow"):
-            assert _set("k", tech, 3) in att and tech not in dfd, tech
-        for tech in ("cTechzpLondonDefenderSetup", "cTechzpNatStuartBigbuttonDisableShadow", "cTechzpNatStuartoffShadow"):
-            assert _set("k", tech, 3) in dfd and tech not in att, tech
-        assert loop.index('"cTechzpExtendedStuartLondon"') < loop.index("if (rmGetPlayerTeam(k) == 0)")
+        assert _set("k", "cTechzpLondonAttackerSetup", 3) in att and "cTechzpLondonDefenderSetup" not in att     # one tech per player
+        assert _set("k", "cTechzpLondonDefenderSetup", 3) in dfd and "cTechzpLondonAttackerSetup" not in dfd
+        assert loop.count('rmAddTriggerEffect("ZP Set Tech Status (XS)");') == 2
         gaia = s[s.index("for (i = 0; <= cNumberNonGaiaPlayers)"):]
         assert _set("i", "cTechzpTollstation", 2) in gaia and _set("i", "cTechdeEUMapUpdateVisuals", 2) in gaia
         assert _set("0", "cTechzpConverGate", 1) in gaia and "cTechzpLondonSetup" not in t and "cTechzpExtendedStuart\"" not in t
         assert 'rmCreateTrigger("ExtendedStuart"' not in t and s.count("rmCreateTrigger(") == 1
 
     def test_setup_techs(self):
-        for n in ("zpLondonAttackerSetup", "zpLondonDefenderSetup"):
-            b = _tech(n)
-            assert "<status>UNOBTAINABLE</status>" in b and "<flag>Shadow</flag>" in b
-            assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">zpMilitaryCamp<', b) and 'proto="zpMilitaryCamp" page="6" column="2"' in b
-            assert '<effect type="Data" amount="250.00" subtype="PopulationCap" relativity="Absolute">' in b     # Istanbul's zpBosporusMapSetup
-            assert '<effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>' in b
-            for tech in ("DESPCPapalLegate", "DESPCExcommunication", "DESPCBankLoan", "DESPCMercenaryBounties"):     # Versailles / Paris: the Metropolitan cathedral and the bank techs
-                assert ('<effect type="TechStatus" status="obtainable">%s</effect>' % tech) in b, tech
+        b = _tech("zpLondonSetup")                     # the shared setup, once (user 2026-09-24: 'the system is dirty and has duplicities')
+        assert "<status>UNOBTAINABLE</status>" in b and "<flag>Shadow</flag>" in b
+        assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">zpMilitaryCamp<', b) and 'proto="zpMilitaryCamp" page="6" column="2"' in b
+        assert '<effect type="Data" amount="250.00" subtype="PopulationCap" relativity="Absolute">' in b     # Istanbul's zpBosporusMapSetup
+        for st, tech in (("active", "zpSPCDisableHousesShadow"), ("obtainable", "DESPCPapalLegate"), ("obtainable", "DESPCExcommunication"),
+                         ("obtainable", "DESPCBankLoan"), ("obtainable", "DESPCMercenaryBounties"), ("active", "zpForbidRevolutions"),
+                         ("active", "zpExtendedStuartLondon")):     # Versailles / Paris: the Metropolitan cathedral and the bank techs
+            assert ('<effect type="TechStatus" status="%s">%s</effect>' % (st, tech)) in b, tech
+        for n, pair in (("zpLondonAttackerSetup", ("zpNatParliamentBigbuttonDisableShadow", "zpNatParliamentoffShadow")),
+                        ("zpLondonDefenderSetup", ("zpNatStuartBigbuttonDisableShadow", "zpNatStuartoffShadow"))):
+            s_ = _tech(n)
+            assert "<status>UNOBTAINABLE</status>" in s_ and "<flag>Shadow</flag>" in s_
+            got = re.findall(r'<effect [^>]*>[^<]*</effect>', s_)
+            assert got == ['<effect type="TechStatus" status="active">zpLondonSetup</effect>'] + \
+                ['<effect type="TechStatus" status="active">%s</effect>' % p for p in pair] and s_.count("<effect ") == 3, (n, got)
         s = _text(REPO / "data/techtreemods.xml")
-        assert s.index('name="zpLondonDefenderSetup"') < s.index("<!--TEST TECHS-->") and 'name="zpLondonSetup"' in s     # the old setup stays, unreferenced
+        assert s.index('name="zpLondonDefenderSetup"') < s.index("<!--TEST TECHS-->")
 
 
 class TestBigButtonsGreyed:

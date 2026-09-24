@@ -2818,56 +2818,21 @@ void main(void)
 	rmSetTriggerLoop(false);
 
 	// ---- 14. Parliamentarians (Orthodox pattern): starting techs, the leader choice, the AI roll ----------------
-	// 14.1 starting techs - Paris's Starting Techs (zpparis.xs 1984-2047): per player no standard revolutions and the London
-	// extension of the House of Stuart (zpExtendedStuartLondon: zpExtendedStuart with the London big button zpStuartExpansionSPC,
-	// Paris's zpBourbonExpansionSPC swap; other maps keep zpExtendedStuart), then BY TEAM (Paris 2003-2022): the attackers
-	// (team 0, the Stuart side) get zpLondonAttackerSetup and see the Parliament big button greyed (its DisableShadow strips
-	// the button, its offShadow lights the fake), the defenders (team 1, Parliament) get zpLondonDefenderSetup and the Stuart
-	// pair; both setups = Military Camp + Istanbul's PopulationCap 250 + zpSPCDisableHousesShadow. Then players 0..N
-	// (Paris 2024-2033, gaia included): the Toll Station name and icon on the port socket, the European embassy design.
+	// 14.1 starting techs - Paris's Starting Techs (zpparis.xs 1984-2047), by team (Paris 2003-2022): each player gets ONE tech -
+	// the attackers (team 0, the Stuart side) zpLondonAttackerSetup, the defenders (team 1, Parliament) zpLondonDefenderSetup. Both
+	// activate zpLondonSetup (techtreemods: the Military Camp, PopulationCap 250 and no houses, the cathedral / bank / tower techs,
+	// no standard revolutions, zpExtendedStuartLondon - the House of Stuart extension with the London big button - and the
+	// trade-route plan) and then strip the other side's big button (its DisableShadow) and light its fake (its offShadow).
+	// user 2026-09-24: 'the system is dirty and has duplicities' - the shared effects live once, in zpLondonSetup. Then players
+	// 0..N (Paris 2024-2033, gaia included): the Toll Station name and icon on the port socket, the European embassy design.
 	rmCreateTrigger("LondonStartingTechs");
 	for (k=1; <= cNumberNonGaiaPlayers)
 	{
-		// the trade-route plan (user 2026-09-24): no post offers a route upgrade - the routes move by triggers only
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID", k);
-		rmSetTriggerEffectParam("TechID", "cTechzpDisableAllTradeRouteUpgrades");
-		rmSetTriggerEffectParamInt("Status", 2);
-		// ... the road posts still deliver resources: the vanilla deTradeCrateAll toggle (data/traderoutes.xml, playertechprereq) - the per-resource crates wait for Europe1/EuropeAll1, never researched now
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID", k);
-		rmSetTriggerEffectParam("TechID", "cTechDETradeRouteAllResourcesShadow");
-		rmSetTriggerEffectParamInt("Status", 2);
-		// ... St Paul's / Minster route techs: UNOBTAINABLE in data (St Paul's also stands on Versailles), obtainable here
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID", k);
-		rmSetTriggerEffectParam("TechID", "cTechzpLondonDeptfordStation");
-		rmSetTriggerEffectParamInt("Status", 1);
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID", k);
-		rmSetTriggerEffectParam("TechID", "cTechzpLondonEastIndiaCompany");
-		rmSetTriggerEffectParamInt("Status", 1);
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID", k);
-		rmSetTriggerEffectParam("TechID", "cTechzpForbidRevolutions");
-		rmSetTriggerEffectParamInt("Status", 2);
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID", k);
-		rmSetTriggerEffectParam("TechID", "cTechzpExtendedStuartLondon");
-		rmSetTriggerEffectParamInt("Status", 2);
 		if (rmGetPlayerTeam(k) == 0)
 		{
 			rmAddTriggerEffect("ZP Set Tech Status (XS)");
 			rmSetTriggerEffectParamInt("PlayerID", k);
 			rmSetTriggerEffectParam("TechID", "cTechzpLondonAttackerSetup");
-			rmSetTriggerEffectParamInt("Status", 2);
-			rmAddTriggerEffect("ZP Set Tech Status (XS)");
-			rmSetTriggerEffectParamInt("PlayerID", k);
-			rmSetTriggerEffectParam("TechID", "cTechzpNatParliamentBigbuttonDisableShadow");
-			rmSetTriggerEffectParamInt("Status", 2);
-			rmAddTriggerEffect("ZP Set Tech Status (XS)");
-			rmSetTriggerEffectParamInt("PlayerID", k);
-			rmSetTriggerEffectParam("TechID", "cTechzpNatParliamentoffShadow");
 			rmSetTriggerEffectParamInt("Status", 2);
 		}
 		else
@@ -2875,14 +2840,6 @@ void main(void)
 			rmAddTriggerEffect("ZP Set Tech Status (XS)");
 			rmSetTriggerEffectParamInt("PlayerID", k);
 			rmSetTriggerEffectParam("TechID", "cTechzpLondonDefenderSetup");
-			rmSetTriggerEffectParamInt("Status", 2);
-			rmAddTriggerEffect("ZP Set Tech Status (XS)");
-			rmSetTriggerEffectParamInt("PlayerID", k);
-			rmSetTriggerEffectParam("TechID", "cTechzpNatStuartBigbuttonDisableShadow");
-			rmSetTriggerEffectParamInt("Status", 2);
-			rmAddTriggerEffect("ZP Set Tech Status (XS)");
-			rmSetTriggerEffectParamInt("PlayerID", k);
-			rmSetTriggerEffectParam("TechID", "cTechzpNatStuartoffShadow");
 			rmSetTriggerEffectParamInt("Status", 2);
 		}
 	}

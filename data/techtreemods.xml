@@ -38657,12 +38657,33 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
+      <!-- London's shared setup (user 2026-09-24: 'the system is dirty and has duplicities') - every player gets it through
+           zpLondonAttackerSetup / zpLondonDefenderSetup: the Military Camp, Istanbul's PopulationCap 250 and no houses, the
+           Versailles / Paris cathedral, bank and tower techs, no standard revolutions, the London House of Stuart extension,
+           and the trade-route plan (no post upgrades; the road posts deliver resources; the St Paul's / Minster route techs) -->
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpMilitaryCamp</target>
       </effect>
       <effect type="CommandAdd" proto="zpMilitaryCamp" page="6" column="2">
         <target type="ProtoUnit">Explorer</target>
       </effect>
+      <effect type="Data" amount="250.00" subtype="PopulationCap" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>
+      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
+      <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
+      <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
+      <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
+      <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
+      <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
+      <effect type="TechStatus" status="active">zpForbidRevolutions</effect>
+      <effect type="TechStatus" status="active">zpExtendedStuartLondon</effect>
+      <effect type="TechStatus" status="active">zpDisableAllTradeRouteUpgrades</effect>
+      <effect type="TechStatus" status="active">DETradeRouteAllResourcesShadow</effect>
+      <effect type="TechStatus" status="obtainable">zpLondonDeptfordStation</effect>
+      <effect type="TechStatus" status="obtainable">zpLondonEastIndiaCompany</effect>
     </effects>
   </tech>
   <tech name="zpStuartAbilityBig" type="Normal">
@@ -38915,23 +38936,11 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpMilitaryCamp</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpMilitaryCamp" page="6" column="2">
-        <target type="ProtoUnit">Explorer</target>
-      </effect>
-      <effect type="Data" amount="250.00" subtype="PopulationCap" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>
-      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
-      <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
-      <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
-      <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
-      <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
-      <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
+      <!-- the attackers (team 0, the Stuart side): London's shared setup first (it carries the House of Stuart extension), then the other side's big button
+           stripped (its DisableShadow) and its fake lit (its offShadow) -->
+      <effect type="TechStatus" status="active">zpLondonSetup</effect>
+      <effect type="TechStatus" status="active">zpNatParliamentBigbuttonDisableShadow</effect>
+      <effect type="TechStatus" status="active">zpNatParliamentoffShadow</effect>
     </effects>
   </tech>
   <tech name="zpLondonDefenderSetup" type="Normal">
@@ -38939,23 +38948,11 @@
     <status>UNOBTAINABLE</status>
     <flag>Shadow</flag>
     <effects>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpMilitaryCamp</target>
-      </effect>
-      <effect type="CommandAdd" proto="zpMilitaryCamp" page="6" column="2">
-        <target type="ProtoUnit">Explorer</target>
-      </effect>
-      <effect type="Data" amount="250.00" subtype="PopulationCap" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>
-      <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
-      <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
-      <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
-      <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
-      <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
-      <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
+      <!-- the defenders (team 1, Parliament): London's shared setup first (it carries the House of Stuart extension), then the other side's big button
+           stripped (its DisableShadow) and its fake lit (its offShadow) -->
+      <effect type="TechStatus" status="active">zpLondonSetup</effect>
+      <effect type="TechStatus" status="active">zpNatStuartBigbuttonDisableShadow</effect>
+      <effect type="TechStatus" status="active">zpNatStuartoffShadow</effect>
     </effects>
   </tech>
   <tech name="zpNatParliamentoffShadow" type="Normal">

@@ -843,9 +843,8 @@ class TestBridgeOwnership:
         tt = _text(REPO / "data/techtreemods.xml"); j = tt.index('<tech name="zpSPCLondonAI" type="Normal">'); tech = tt[j:tt.index("</tech>", j)]
         for sock in ("zpSPCSocketCityTowerWooden", "deSPCSocketCityTower"):
             assert ('<effect type="CommandAdd" proto="zpSPCWoodenTowerAIProxy" page="0" column="4">' + chr(10) + '        <target type="ProtoUnit">%s</target>' % sock) in tech
-        for n in ("zpLondonAttackerSetup", "zpLondonDefenderSetup"):
-            k = tt.index('<tech name="%s"' % n); b = tt[k:tt.index("</tech>", k)]
-            assert '<effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>' in b, n     # zpVeniceCitySetup's unlock
+        k = tt.index('<tech name="zpLondonSetup"'); b = tt[k:tt.index("</tech>", k)]     # the shared setup both side techs activate
+        assert '<effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>' in b     # zpVeniceCitySetup's unlock
         st = _text(REPO / "data/strings/english/stringmods.xml"); assert '_locid="503563"' not in st and '_locid="503564"' not in st
         assert not (REPO / "sound/zpspccitytowerflat_snds.xml").exists()
         for f in ("data/protomods.xml", "data/techtreemods.xml"):
