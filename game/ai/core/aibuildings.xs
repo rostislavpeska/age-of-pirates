@@ -1943,29 +1943,46 @@ bool addBuilderToPlan(int planID = -1, int puid = -1, int numberBuilders = 1)
 //==============================================================================
 //==============================================================================
 // londonReadConstructionBlocks - the two construction blocks at the bridge landings (EU_SPC_Block_Constr, zplondon.xs
-// 977-978) by their unique unit zpUnderbrushConstructionJesuitTemple: the forward base goes to the enemy's (owner
-// 2026-09-24: 'the construction block ... target the unique units instead of the map spot, which can differ per
-// amount of players or change in refactoring'). Read once: the unit is DestroyUnderBuilding, a building on the block
-// removes it. Sorted from our town centre: the first is ours, the last the enemy's.
+// 10.2) by the AI marker the map places on each (zpAILondonConstrMarker, zplondon.xs 12.11 - one per player per block,
+// owned by us: the bridge marker's proven pattern). Owner 2026-09-24: 'a new construction marker unit trackable by AI'
+// - the block's own prop (zpUnderbrushConstructionJesuitTemple) is an embellishment the AI never sees (run 30: found
+// 0). Ours = the marker nearest our base, far = the farthest: the forward base goes to the enemy block.
 //==============================================================================
 void londonReadConstructionBlocks(vector from = cInvalidVector)
 {
    int q = -1;
    int n = 0;
+   int unit = -1;
+   float d = 0.0;
+   float nearD = 100000.0;
+   float farD = -1.0;
+   vector v = cInvalidVector;
 
    if (gIsLondon == false)
    {
       return;
    }
-   q = createAdvancedGaiaUnitQuery(cUnitTypezpUnderbrushConstructionJesuitTemple, cUnitStateAny, from, -1.0, true);
+   q = createSimpleUnitQuery(cUnitTypezpAILondonConstrMarker, cMyID, cUnitStateAny);
    n = kbUnitQueryExecute(q);
-   if (n >= 1)
+   for (i = 0; < n)
    {
-      gLondonConstrOurs = kbUnitGetPosition(kbUnitQueryGetResult(q, 0));
+      unit = kbUnitQueryGetResult(q, i);
+      v = kbUnitGetPosition(unit);
+      d = distance(v, from);
+      if (d < nearD)
+      {
+         nearD = d;
+         gLondonConstrOurs = v;
+      }
+      if (d > farD)
+      {
+         farD = d;
+         gLondonConstrFar = v;
+      }
    }
-   if (n >= 2)
+   if (n < 2)
    {
-      gLondonConstrFar = kbUnitGetPosition(kbUnitQueryGetResult(q, n - 1));
+      gLondonConstrFar = cInvalidVector;
    }
    aiEcho("LONDONSETUP p" + cMyID + " construction blocks found " + n + " ours " + xsVectorGetX(gLondonConstrOurs) + "/" + xsVectorGetZ(gLondonConstrOurs)
           + " far " + xsVectorGetX(gLondonConstrFar) + "/" + xsVectorGetZ(gLondonConstrFar));

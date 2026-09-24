@@ -1744,6 +1744,24 @@ void main(void)
 	rmPlaceObjectDefAtLoc(salmonDef, 0, 0.5, 0.5, salmonCount);
 	rmEchoInfo("LONDON fish: " + bassCount + " FishBass + " + salmonCount + " FishSalmon asked, " + fishSpacingM + " m apart");
 
+	// ---- 12.11 AI CONSTRUCTION MARKERS (owner 2026-09-24) - zpAILondonConstrMarker (editor-only, Tracked, the bridge
+	// marker's pattern: owned by the player, so the AI's own query finds it) on both construction blocks at the bridge
+	// landings (10.2: blockConstruction at locX0 x locZs1 / locZn1), one per player per block: the AI's forward base goes to
+	// the enemy block (aibuildings.xs londonReadConstructionBlocks). The block's own prop is invisible to the AI (run 30).
+	// Placed here, AFTER every literal-indexed unit and every instance the triggers read: no index moves. The shared
+	// grouping EU_SPC_Block_Constr (Paris, Versailles) is not touched.
+	int constrMark = rmCreateObjectDef("ai construction marker");
+	rmAddObjectDefItem(constrMark, "zpAILondonConstrMarker", 1, 0.0);
+	rmSetObjectDefAllowOverlap(constrMark, true);
+	rmSetObjectDefMinDistance(constrMark, 0.0);
+	rmSetObjectDefMaxDistance(constrMark, 0.0);
+	for (i = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmPlaceObjectDefAtLoc(constrMark, i, locX0, locZs1);
+		rmPlaceObjectDefAtLoc(constrMark, i, locX0, locZn1);
+	}
+	rmEchoInfo("LONDON construction markers at x " + rmXFractionToMeters(locX0) + " z " + rmZFractionToMeters(locZs1) + " / " + rmZFractionToMeters(locZn1) + " m, 2 per player");
+
 	// 13. TRIGGERS, all at the end (Paris / Istanbul). Ids: object defs = literal unit indices (fix B),
 	//     grouping instances = rmGetGroupingInstanceUnitByType + instanceIdShift; a baked nugget is queried by its
 	//     nuggetmods <nuggetunit>, never by the authored placeholder (Istanbul).

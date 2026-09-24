@@ -833,7 +833,7 @@ class TestBridgeOwnership:
 
     def test_venice_tower_family(self, xmb_current):
         # user 2026-09-22: Venice's own towers, not clones - the vanilla tower techs must apply
-        pm = _text(REPO / "data/protomods.xml"); assert "CityTowerFlat" not in pm and '<unit id="21196" name="zpAILondonBridge">' in pm and 'id="21197"' not in pm   # 21196 = the London AI marker since 2026-09-23
+        pm = _text(REPO / "data/protomods.xml"); assert "CityTowerFlat" not in pm and '<unit id="21196" name="zpAILondonBridge">' in pm and '<unit id="21197" name="zpAILondonConstrMarker">' in pm and 'id="21198"' not in pm   # 21196 = the London AI marker since 2026-09-23, 21197 = the construction marker since 2026-09-24
         lm = _text(REPO / "randmaps/zplondon.mods.xml")
         assert re.search(r'<unit name="deSPCCityTower">\s*<movementtype>air</movementtype>\s*<flag mergeMode="remove">ColorTransformNonGaia</flag>\s*</unit>', lm)
         assert re.search(r'<unit name="deSPCSocketCityTower">\s*<flag mergeMode="remove">ColorTransformNonGaia</flag>\s*</unit>', lm)
