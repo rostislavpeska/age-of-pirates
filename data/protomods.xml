@@ -41215,6 +41215,12 @@
     <train row="0" page="0" column="16">deNMPandour</train>
     <train row="0" page="0" column="17">Boneguard</train>
     <train row="0" page="0" column="18">BoneguardAge2</train>
+    <!-- Poles and Danes (user 2026-09-24 'Military Camps - these should be also able to train Polish and Danish units'):
+         the Polish units only DEAge0Polish enables, the Danish Snaphaner (Minuteman, DESnaphaner); free slots per civ -->
+    <train row="0" page="0" column="2">dePiechur</train>
+    <train row="0" page="0" column="5">deWingedHussar</train>
+    <train row="0" page="0" column="6">deLithuanianRider</train>
+    <train row="0" page="0" column="8">Minuteman</train>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>

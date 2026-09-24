@@ -150,7 +150,12 @@ class TestMapMods:
         lm = _text(REPO / "randmaps/zplondon.mods.xml"); par = _text(REPO / "randmaps/zpparis.mods.xml")
         def rules(s):
             return set(re.findall(r'<unit (?:id="\d+" )?name="([^"]+)">\s*<placementfile>([^<]+)</placementfile>', s))
-        assert rules(lm) == rules(par) and len(rules(lm)) == 41
+        assert rules(lm) == rules(par) and len(rules(lm)) == 51
+        for n, f in (("deHouseDanish", "buildingsmall_city.xml"), ("deChurchDanish", "buildingsmall_city.xml"), ("deCustomsHouse", "buildingsmall_city.xml"),
+                     ("deChurchPolish", "buildinglarge_city.xml"), ("deSejm", "buildinglarge_city.xml"), ("deFolwark", "mill_city.xml"),
+                     ("deFolwarkFarm", "mill_city.xml"), ("deFolwarkLivestock", "mill_city.xml"), ("deFolwarkDefensive", "mill_city.xml"),
+                     ("deFolwarkSich", "mill_city.xml")):      # user 2026-09-24: the Danish and Polish buildings on their vanilla rule's city file
+            assert (n, f) in rules(lm), n
         assert re.search(r'<unit name="deSPCWaterlooHouseProp">\s*<flag>DoNotShowOnMiniMap</flag>\s*<animfile>buildings\\native_settlement\\zp_native_eu_houses_red_nosmoke.xml</animfile>\s*<flag>StartOnNoUpdate</flag>', lm)
         assert re.search(r'<unit name="SPCFortGate">\s*<unittype>ConvertsHerds</unittype>\s*<flag>PlaceAnywhere</flag>\s*<buildpoints>0.0000</buildpoints>', lm)
         assert lm.count('<unit name="FortFrontier">') == 1 and (REPO / "randmaps/zplondon.mods.xml").read_bytes().count(b"\r\n") > 70

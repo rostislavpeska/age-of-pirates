@@ -25813,22 +25813,7 @@
         <target type="ProtoUnit">Manor</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deHouseAfrican</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deTorp</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">HouseAztec</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">deHouseInca</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">ypShrineJapanese</target>
-      </effect>
-      <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">ypVillage</target>
       </effect>
       <effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">ypHouseIndian</target>
@@ -25842,19 +25827,7 @@
       <effect type="CommandRemove" proto="HouseMed">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
-      <effect type="CommandRemove" proto="deHouseAfrican">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="deTorp">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
       <effect type="CommandRemove" proto="HouseAztec">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="deHouseInca">
-        <target type="ProtoUnit">AbstractVillager</target>
-      </effect>
-      <effect type="CommandRemove" proto="ypVillage">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
       <effect type="CommandRemove" proto="ypHouseIndian">
@@ -25863,10 +25836,79 @@
       <effect type="CommandRemove" proto="Manor">
         <target type="ProtoUnit">AbstractVillager</target>
       </effect>
-      <effect type="CommandRemove" proto="ypShrineJapanese">
-        <target type="ProtoUnit">AbstractVillager</target>
+      <!-- Houses that do more than population are LIMITED, not forbidden (user 2026-09-24): Danes 5 (the Minuteman, the
+           Snaphaner / Friskytter upgrades, the house techs), Hausa + Ethiopians 5 (the levies), Haudenosaunee 5 (the
+           Longhouse's upgrades), Inca 5 (dogs, trickle), Chinese 3 (goats, village techs), Swedes 5 (the Torps gather), Japanese 5 with the shrine's
+           gathering +100% (YPHCIncreasedTribute's four WorkRate effects at 2.00). Assign SETS a limit (vanilla Age0French,
+           DEHCTrattoria); Absolute would add. The British Manor stays forbidden ('British have bad luck'). -->
+      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Assign">
+        <target type="ProtoUnit">deHouseDanish</target>
       </effect>
-      <!--  DLC Note: add Danish house-->
+      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Assign">
+        <target type="ProtoUnit">deHouseAfrican</target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Assign">
+        <target type="ProtoUnit">Longhouse</target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Assign">
+        <target type="ProtoUnit">deHouseInca</target>
+      </effect>
+      <effect type="Data" amount="3.00" subtype="BuildLimit" relativity="Assign">
+        <target type="ProtoUnit">ypVillage</target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Assign">
+        <target type="ProtoUnit">deTorp</target>
+      </effect>
+      <!-- the Torps gather +50% (user 2026-09-24 'Torps 50% only'): vanilla DESPCThirtyYeatsWarSetup's eleven ModifyRate
+           BasePercent effects on AbstractTorp (there 0.50), here 1.50 -->
+      <effect type="Data" action="AreaGatherMine" amount="1.50" subtype="ModifyRate" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTorp</target>
+      </effect>
+      <effect type="Data" action="AreaGatherMine2" amount="1.50" subtype="ModifyRate" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTorp</target>
+      </effect>
+      <effect type="Data" action="AreaGatherTree" amount="1.50" subtype="ModifyRate" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTorp</target>
+      </effect>
+      <effect type="Data" action="AreaGatherTree2" amount="1.50" subtype="ModifyRate" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTorp</target>
+      </effect>
+      <effect type="Data" action="AreaGatherHerdable" amount="1.50" subtype="ModifyRate" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTorp</target>
+      </effect>
+      <effect type="Data" action="AreaGatherHuntable" amount="1.50" subtype="ModifyRate" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTorp</target>
+      </effect>
+      <effect type="Data" action="AreaGatherBerryBush" amount="1.50" subtype="ModifyRate" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTorp</target>
+      </effect>
+      <effect type="Data" action="AreaGatherBerryBush2" amount="1.50" subtype="ModifyRate" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTorp</target>
+      </effect>
+      <effect type="Data" action="AreaGatherBlueBerryBush" amount="1.50" subtype="ModifyRate" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTorp</target>
+      </effect>
+      <effect type="Data" action="AreaGatherBerryBuilding" amount="1.50" subtype="ModifyRate" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTorp</target>
+      </effect>
+      <effect type="Data" action="AreaGatherGroveBuilding" amount="1.50" subtype="ModifyRate" relativity="BasePercent">
+        <target type="ProtoUnit">AbstractTorp</target>
+      </effect>
+      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Assign">
+        <target type="ProtoUnit">ypShrineJapanese</target>
+      </effect>
+      <effect type="Data" action="AutoGatherXP" amount="2.00" subtype="WorkRate" unittype="XP" relativity="BasePercent">
+        <target type="ProtoUnit">ypShrineJapanese</target>
+      </effect>
+      <effect type="Data" action="AutoGatherCoin" amount="2.00" subtype="WorkRate" unittype="Gold" relativity="BasePercent">
+        <target type="ProtoUnit">ypShrineJapanese</target>
+      </effect>
+      <effect type="Data" action="AutoGatherFood" amount="2.00" subtype="WorkRate" unittype="Food" relativity="BasePercent">
+        <target type="ProtoUnit">ypShrineJapanese</target>
+      </effect>
+      <effect type="Data" action="AutoGatherWood" amount="2.00" subtype="WorkRate" unittype="Wood" relativity="BasePercent">
+        <target type="ProtoUnit">ypShrineJapanese</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpAztecUnlockGroupingTechs" type="Normal">

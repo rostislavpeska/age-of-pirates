@@ -986,6 +986,35 @@ class TestMapInfo:
         for twin in ("EU_SPC_Player_London_Italian", "EU_SPC_Player_London_Russian"):
             assert not (REPO / "game/randmaps/groupings" / (twin + ".xml")).exists(), twin
 
+    def test_house_limits_per_civ(self, xmb_current):
+        """User 2026-09-24 on zpSPCDisableHousesShadow: Danes 5, both Africans 5, Haudenosaunee 5, Inca 5, Chinese 3, Japanese 5 with
+        the shrine +100%, Swedes 5 ('Swedes need it to gather resources'), the British stripped (Manor forbidden), every other house forbidden. Assign sets, Absolute would add."""
+        t = (REPO / "data/techtreemods.xml").read_text(encoding="utf-8").replace(chr(13), "")
+        i = t.index('<tech name ="zpSPCDisableHousesShadow" type ="Normal">'); b = t[i:t.index("</tech>", i)]
+        N = chr(10)
+        for h, n in (("deHouseDanish", 5), ("deHouseAfrican", 5), ("Longhouse", 5), ("deHouseInca", 5), ("ypVillage", 3), ("ypShrineJapanese", 5), ("deTorp", 5)):
+            assert ('<effect type="Data" amount="%d.00" subtype="BuildLimit" relativity="Assign">' % n + N + '        <target type="ProtoUnit">%s</target>' % h) in b, h
+            assert ('CommandRemove" proto="%s"' % h) not in b and ('subtype="Enable" relativity="Absolute">' + N + '        <target type="ProtoUnit">%s<' % h) not in b, h
+        for act, ut in (("AutoGatherXP", "XP"), ("AutoGatherCoin", "Gold"), ("AutoGatherFood", "Food"), ("AutoGatherWood", "Wood")):
+            assert ('<effect type="Data" action="%s" amount="2.00" subtype="WorkRate" unittype="%s" relativity="BasePercent">' % (act, ut) + N +
+                    '        <target type="ProtoUnit">ypShrineJapanese</target>') in b, act
+        for h in ("House", "HouseEast", "HouseMed", "Manor", "HouseAztec", "ypHouseIndian"):
+            assert ('<effect type="CommandRemove" proto="%s">' % h) in b and ('<effect type="Data" amount="0.00" subtype="Enable" relativity="Absolute">' + N + '        <target type="ProtoUnit">%s</target>' % h) in b, h
+        assert 'subtype="BuildLimit" relativity="Absolute"' not in b
+        for act in ("AreaGatherMine", "AreaGatherMine2", "AreaGatherTree", "AreaGatherTree2", "AreaGatherHerdable", "AreaGatherHuntable",
+                    "AreaGatherBerryBush", "AreaGatherBerryBush2", "AreaGatherBlueBerryBush", "AreaGatherBerryBuilding", "AreaGatherGroveBuilding"):
+            assert ('<effect type="Data" action="%s" amount="1.50" subtype="ModifyRate" relativity="BasePercent">' % act + N +
+                    '        <target type="ProtoUnit">AbstractTorp</target>') in b, act          # 'Torps 50% only' (user 2026-09-24)
+        xmb_current("data/techtreemods.xml")
+
+    def test_military_camp_trains_polish_and_danish_units(self, xmb_current):
+        """User 2026-09-24: 'Military Camps - these should be also able to train Polish and Danish units'."""
+        p = (REPO / "data/protomods.xml").read_text(encoding="utf-8")
+        a = p.index('<unit id="20527" name="zpMilitaryCamp">'); camp = p[a:p.index("</unit>", a)]
+        for col, n in ((2, "dePiechur"), (5, "deWingedHussar"), (6, "deLithuanianRider"), (8, "Minuteman")):
+            assert camp.count('<train row="0" page="0" column="%d">%s</train>' % (col, n)) == 1, n
+        xmb_current("data/protomods.xml")
+
 class TestNewEnglandGroupings:
     """User 2026-09-22: the newengland_grass mix as the pattern - Academy repainted in place, Park / Embassy / Menagerie cloned as
     _London (the Paris / Versailles originals untouched), cypress props -> oak in the two house blocks."""
