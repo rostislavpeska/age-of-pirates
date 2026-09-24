@@ -632,7 +632,7 @@ def main():
         with open(results, "w") as f:
             f.write("run,start,verdict,seconds,events,ai_mtime\n")
     existing = [d for d in os.listdir(runs_dir) if d.startswith("run_")]
-    n0 = max([int(d.split("_")[1]) for d in existing], default=0)
+    n0 = max([int(d.split("_")[1]) for d in existing if d.split("_")[1].isdigit()], default=0)   # run_032b, _loaded: not runs
     lost = 0
     done = 0
 
