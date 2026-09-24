@@ -251,6 +251,19 @@ def evaluate(files, events_path=None):
         add("L9", "a reappeared bridge / Keep gate is tasked or down within 180 s", not bad,
             "failing: %s" % (bad or "none"))
 
+    # F1 (owner 2026-09-24: 'the AI builds the estates far behind'): every field target within 200 m of our base
+    r9 = [p for p in players if any(re.search(r"LONDON p%d build r(9|\d\d)" % p, l) for l in ai[p])]
+    if r9:
+        bad, worst = [], {}
+        for p in r9:
+            ds = [float(m.group(1)) for l in ai[p] for m in [re.search(r"LONDONPLACE p%d field .* dist ([\d.]+)" % p, l)] if m]
+            if ds:
+                worst[p] = max(ds)
+                if max(ds) > 200.0:
+                    bad.append("P%d(%.0f m)" % (p, max(ds)))
+        add("F1", "every field target within 200 m of our base", not bad,
+            "worst: %s; failing: %s" % (", ".join("P%d %.0f m" % kv for kv in sorted(worst.items())) or "no field yet", bad or "none"))
+
     # round 5 - the forward base at our bridgehead (owner 2026-09-24): when the stock AI asks for one, the point is
     # London's; judged only for players whose record shows the ask
     r5 = [p for p in players if any(re.search(r"LONDON p%d build r([5-9])" % p, l) for l in ai[p])]

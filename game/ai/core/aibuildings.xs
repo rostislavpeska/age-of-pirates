@@ -952,7 +952,7 @@ vector londonFieldPoint(void)
       side = -1.0;
    }
    // the gates first, into the array (one shared query object: read it before any other query runs)
-   gateQuery = createSimpleUnitQuery(cUnitTypeSPCFortGate, cPlayerRelationAlly, cUnitStateAlive, tcVec, 400.0);
+   gateQuery = createSimpleUnitQuery(cUnitTypeSPCFortGate, cPlayerRelationAlly, cUnitStateAlive, tcVec, 160.0);   // only the gates behind our own seat (owner 2026-09-24: estates were built far away)
    gateCount = kbUnitQueryExecute(gateQuery);
    for (i = 0; < gateCount)
    {
@@ -978,8 +978,13 @@ vector londonFieldPoint(void)
       gateVec = kbUnitGetPosition(gate);
       point = xsVectorSet(xsVectorGetX(gateVec), 0.0, xsVectorGetZ(gateVec) + side * 40.0);
       crowd = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAlly, cUnitStateABQ, point, 50.0);
-      score = crowd * 30.0;
-      score = score + distance(point, tcVec) / 10.0;
+      // the nearest gate wins; the next nearest only once it holds 4+ buildings (was: crowd x 30 + distance / 10 - a gate
+      // 300 m away cost as much as one building, so the estates drifted to the far end of the bank)
+      score = distance(point, tcVec);
+      if (crowd >= 4)
+      {
+         score = score + 1000.0;
+      }
       if (score < bestScore)
       {
          bestScore = score;
@@ -1025,12 +1030,8 @@ bool londonSelectFieldPosition(int planID = -1, int puid = -1)
    }
    aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, point);
    aiPlanSetVariableFloat(planID, cBuildPlanCenterPositionDistance, 0, 60.0);
-   if (xsGetTime() - gLondonPlaceEcho >= 30000)
-   {
-      gLondonPlaceEcho = xsGetTime();
-      aiEcho("LONDONPLACE p" + cMyID + " field " + kbGetProtoUnitName(puid) + " plan " + planID + " at the countryside "
-             + xsVectorGetX(point) + "/" + xsVectorGetZ(point));
-   }
+   aiEcho("LONDONPLACE p" + cMyID + " field " + kbGetProtoUnitName(puid) + " plan " + planID + " at the countryside "
+          + xsVectorGetX(point) + "/" + xsVectorGetZ(point) + " dist " + distance(point, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID))));
    return (true);
 }
 

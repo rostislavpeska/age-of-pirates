@@ -248,8 +248,8 @@ class TestLondonOnlyPlacement:
                 continue
             assert any("gIsLondon == true" in h for h in enclosing_headers(lines, i)), (i + 1, lines[i])
 
-    def test_build_echo_is_round_eight(self):
-        assert "build r8 2026-09-24" in core("aipiraterules.xs")
+    def test_build_echo_is_round_nine(self):
+        assert "build r9 2026-09-24" in core("aipiraterules.xs")
 
 
 def diag4(t, p=2, baseR=40.0, fails=0, farms=0, plant=0, london=1):
@@ -515,3 +515,20 @@ def test_the_lint_catches_the_run_32_line():
 def test_the_driver_always_takes_the_loaded_screenshot():
     s = open(os.path.join(AITEST, "driver.py"), encoding="utf-8").read()
     assert "LOADED SCREENSHOT" in s and "loaded.png" in s
+
+
+class TestFieldDistance:
+    def base(self):
+        return [l.replace("build r3", "build r9") for l in london_record()]
+
+    def verdicts(self, L):
+        return {r[0]: r[2] for r in criteria_london.evaluate({2: sorted(L, key=criteria_london.gtime)})}
+
+    def test_near_fields_pass_f1(self):
+        L = self.base() + ["00:15:00  (1): LONDONPLACE p2 field Plantation plan 5 at the countryside 1/2 dist 95.2"]
+        assert self.verdicts(L)["F1"] == "PASS"
+
+    def test_a_far_field_fails_f1(self):
+        L = self.base() + ["00:15:00  (1): LONDONPLACE p2 field Plantation plan 5 at the countryside 1/2 dist 95.2",
+                           "00:18:00  (1): LONDONPLACE p2 field Plantation plan 6 at the countryside 1/2 dist 310.0"]
+        assert self.verdicts(L)["F1"] == "FAIL"

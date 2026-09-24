@@ -336,7 +336,7 @@ minInterval 1
       gIsLondon = true;
       xsEnableRule("buildPirateSocketTowers");   // rebuilds the Keep and bridge towers: it already queries both socket protos
       xsEnableRule("londonSetup");
-      aiEcho("LONDON p" + cMyID + " build r8 2026-09-24 - marker found, London rules on");
+      aiEcho("LONDON p" + cMyID + " build r9 2026-09-24 - marker found, London rules on");
    }
 
    // Naval KOTH Maps %%%%%%%%%%%%%%%%%%%%%%%
