@@ -1861,12 +1861,6 @@ bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
             {
                aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, aiRandInt(4));
             }
-            // LONDON: 'front' is the river through the city blocks; the open ground is the countryside behind our
-            // wall, the base's back once it has grown over it (run 23: Barracks / Artillery Depot failures 20-29)
-            if (gIsLondon == true)
-            {
-               aiPlanSetVariableInt(planID, cBuildPlanLocationPreference, 0, cBuildingPlacementPreferenceBack);
-            }
             break;
          }
          aiPlanSetBaseID(planID, baseID);

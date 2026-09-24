@@ -426,3 +426,23 @@ Barracks, Artillery Depot) and forward-base towers.
 buttons as measured on three dialogs. It answers Yes (accept the resignation) and logs an event.
 
 **Next:** run 25 tests military buildings preferring the base's back, the countryside (a0e0c66c).
+
+## Run 25 - military buildings to the base's back - London 3v2, 30 min cap - commit ee6c23f4 (AI a0e0c66c)
+
+The load was clean (hash 00467fa2875a). Game time reached 51 minutes, and no resignation dialog appeared.
+
+**Verdict: FAIL (P1 for P5, P2).** P3 PASSED for the first time: every AI had a countryside field and an eco
+building by 25:00. L0-L8, P0, U1 and U2 PASS.
+
+| Player | Failures at 30:00 / 51:00 (per 10 min) | Military-building failures | Notes |
+|---|---|---|---|
+| P2 | 31 / 44 (8.6) | 65, of which 22 "can't path" | Artillery Depot 21+12, Barracks 11+10 |
+| P3 | 31 / 39 (7.6) | 29 | Barracks 13, Basilica 7 |
+| P4 | 18 / 23 (4.5) | 20 | |
+| P5 | 4 / 21 (4.1) | 7 | its base grew only after 20:00 (P1) |
+
+**Reading:** the "back" preference did not clearly help. P3-P5 are in the earlier range, and P2 shows a new failure
+mode: "can't path" for Barracks and Artillery Depots. The base's back reaches behind the wall hills, where builders
+cannot walk. **Reverted**: one hypothesis per run, and this one did not hold.
+
+**Next:** run 26 tests "no forward base on London" (42952cf7) alone.
