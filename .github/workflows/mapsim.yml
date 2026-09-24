@@ -5,6 +5,9 @@ on:
   push:
     paths:
       - "scripts/mapsim/**"
+      - "scripts/mapview/**"
+      - "scripts/gameio/**"
+      - "sandbox/census/census.py"
       - ".github/workflows/mapsim.yml"
       - "conftest.py"
       - "pytest.ini"
@@ -22,7 +25,7 @@ jobs:
           python-version: "3.x"
       - name: Install pytest
         run: |
-          pip install pytest
+          pip install pytest pillow
       - name: Run Tests
         run: |
-          python -m pytest scripts/mapsim/tests scripts/mapview/tests -q -m "not local"
+          python -m pytest scripts/mapsim/tests scripts/mapview/tests scripts/gameio/tests -q -m "not local"

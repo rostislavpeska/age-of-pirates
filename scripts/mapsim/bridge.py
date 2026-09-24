@@ -18,6 +18,26 @@ def _num(v: Any) -> Optional[float]:
     return None if v is None or isinstance(v, Tainted) else float(v)
 
 
+def _literal_players(raw: List[Any]) -> List[int]:
+    """The literal players 1-8 among a placement record's player args, in
+    call order with repeats (the filter player_id always used); gaia (0)
+    and runtime-dependent players are left out."""
+    return [int(pl) for pl in raw
+            if not isinstance(pl, Tainted) and isinstance(pl, (int, float))
+            and 1 <= int(pl) <= 8]
+
+
+def _item_count(n: Any) -> int:
+    """An rmAddObjectDefItem count: literal -> int; rand -> its HI bound
+    (the placement-count rule below and diff_vs_scene's); runtime -> 1."""
+    if isinstance(n, Tainted):
+        hi = n.hi
+        return int(hi) if isinstance(hi, (int, float)) else 1
+    if isinstance(n, (int, float)):
+        return int(n)
+    return 1
+
+
 def _ring_positions(ex: Extraction) -> Optional[list]:
     """Nominal player positions — single implementation lives in
     xs_extract.ring_positions (shared with the in-extractor
@@ -95,6 +115,10 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
             has_elevation=a.has_elevation,
         ))
 
+    # Defs by HANDLE (2026-09-24, twin review F2): a helper creates many
+    # defs on ONE line (zplondon.xs cityBlock(): 36 groupings at line 207);
+    # the old line-keyed map named every one of them after the last. The
+    # line map stays only for placements recorded without a handle.
     defs_by_line = {d.line: d for d in ex.defs.values()}
     placements: List[ResolvedPlacement] = []
     # Dedup key includes the ANCHOR: branch duplicates (same def, same
@@ -110,14 +134,18 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
         if not p.nominal:
             suppressed += 1
             continue
-        key = (p.def_line,
+        handle = getattr(p, "def_handle", None)
+        ident = ("handle", handle) if handle is not None else ("line", p.def_line)
+        key = (ident,
                round(p.x, 5) if isinstance(p.x, (int, float)) else None,
                round(p.z, 5) if isinstance(p.z, (int, float)) else None,
                tuple(p.area_refs))
         if key in seen:
             continue
         seen.add(key)
-        d: XDef = defs_by_line.get(p.def_line) or XDef(name=p.name, line=p.def_line)
+        d: Optional[XDef] = ex.defs.get(handle) if handle is not None else None
+        if d is None:
+            d = defs_by_line.get(p.def_line) or XDef(name=p.name, line=p.def_line)
         # Grouping file reference: a literal string, or the literal PREFIX
         # of a runtime concat ("maori_hawaii_0"+rand) — the engine resolves
         # variants by prefix, so the prefix is the deterministic identity.
@@ -135,6 +163,7 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
         kind = {"at_loc": "at_loc", "in_area": "in_area", "at_point": "at_point_runtime"}[p.kind]
         count = p.count if not isinstance(p.count, Tainted) else \
             (int(p.count.hi) if p.count.hi is not None else 1)
+        players = _literal_players(p.players)
         placements.append(ResolvedPlacement(
             name=d.name, line=p.def_line, proto=proto_ref, kind=kind,
             x=x, z=z, runtime_expr=runtime, approx=False,
@@ -151,12 +180,12 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
             classes=list(d.classes),
             footprint_tiles=None,
             is_grouping=d.is_grouping,
-            player_id=next((int(pl) for pl in p.players
-                            if not isinstance(pl, Tainted)
-                            and isinstance(pl, (int, float))
-                            and 1 <= int(pl) <= 8), None),
+            player_id=players[0] if players else None,
             items=tuple(str(t) for t, _n in d.items
                         if isinstance(t, str)),
+            players=players,
+            item_counts=tuple((str(t), _item_count(n)) for t, n in d.items
+                              if isinstance(t, str)),
         ))
 
     trade_routes = []

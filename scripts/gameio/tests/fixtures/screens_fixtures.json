@@ -1,0 +1,401 @@
+{
+ "_comment": "Crops of full-screen 2560x1080 shots (borderless game on the primary monitor: screen = client pixels), made 2026-09-24 by scripts/gameio's implementer. A test pastes each crop back at 'box' on a magenta canvas of 'size' and runs the recognisers; every pixel they read lies inside the crops. 'expect' is the recogniser verdict on the FULL original shot; 'gold_rows' is editor_regen.is_menu's count on it.",
+ "fixtures": {
+  "menu_20260920": {
+   "source": "session scratch folder: boot1.png",
+   "taken": "2026-09-20T22:40",
+   "what": "home menu, game v100.19.18309.0 (after the 2026-09-10 build); a scratch-folder shot",
+   "size": [
+    2560,
+    1080
+   ],
+   "crops": {
+    "col": {
+     "file": "menu_20260920_col.png",
+     "box": [
+      424,
+      230,
+      464,
+      750
+     ]
+    },
+    "bar": {
+     "file": "menu_20260920_bar.png",
+     "box": [
+      1270,
+      4,
+      1291,
+      25
+     ]
+    },
+    "box": {
+     "file": "menu_20260920_box.png",
+     "box": [
+      2365,
+      35,
+      2386,
+      56
+     ]
+    }
+   },
+   "expect": {
+    "is_main_menu": true,
+    "is_editor": false
+   },
+   "gold_rows": 21,
+   "frame_lines": 18,
+   "menubar_rgb": [
+    179,
+    207,
+    229
+   ],
+   "playerbox_rgb": [
+    0,
+    0,
+    0
+   ]
+  },
+  "editor_20260917": {
+   "source": "sandbox/census/samples/london/ldn_hb2_generated.png",
+   "taken": "2026-09-17T23:41",
+   "what": "Scenario Editor after a London generation",
+   "size": [
+    2560,
+    1080
+   ],
+   "crops": {
+    "col": {
+     "file": "editor_20260917_col.png",
+     "box": [
+      424,
+      230,
+      464,
+      750
+     ]
+    },
+    "bar": {
+     "file": "editor_20260917_bar.png",
+     "box": [
+      1270,
+      4,
+      1291,
+      25
+     ]
+    },
+    "box": {
+     "file": "editor_20260917_box.png",
+     "box": [
+      2365,
+      35,
+      2386,
+      56
+     ]
+    }
+   },
+   "expect": {
+    "is_main_menu": false,
+    "is_editor": true
+   },
+   "gold_rows": 0,
+   "frame_lines": 0,
+   "menubar_rgb": [
+    28,
+    28,
+    28
+   ],
+   "playerbox_rgb": [
+    0,
+    0,
+    255
+   ]
+  },
+  "editor_newscenario_20260922": {
+   "source": "sandbox/census/samples/regen/ldn3_dialog.png",
+   "taken": "2026-09-22T18:17",
+   "what": "Scenario Editor with the New Scenario dialog open",
+   "size": [
+    2560,
+    1080
+   ],
+   "crops": {
+    "col": {
+     "file": "editor_newscenario_20260922_col.png",
+     "box": [
+      424,
+      230,
+      464,
+      750
+     ]
+    },
+    "bar": {
+     "file": "editor_newscenario_20260922_bar.png",
+     "box": [
+      1270,
+      4,
+      1291,
+      25
+     ]
+    },
+    "box": {
+     "file": "editor_newscenario_20260922_box.png",
+     "box": [
+      2365,
+      35,
+      2386,
+      56
+     ]
+    }
+   },
+   "expect": {
+    "is_main_menu": false,
+    "is_editor": true
+   },
+   "gold_rows": 19,
+   "frame_lines": 0,
+   "menubar_rgb": [
+    28,
+    28,
+    28
+   ],
+   "playerbox_rgb": [
+    0,
+    0,
+    255
+   ]
+  },
+  "editor_savefile_20260920": {
+   "source": "session scratch folder: after_no.png",
+   "taken": "2026-09-20T22:52",
+   "what": "Scenario Editor with the modal Save File dialog (dims the screen); a scratch-folder shot",
+   "size": [
+    2560,
+    1080
+   ],
+   "crops": {
+    "col": {
+     "file": "editor_savefile_20260920_col.png",
+     "box": [
+      424,
+      230,
+      464,
+      750
+     ]
+    },
+    "bar": {
+     "file": "editor_savefile_20260920_bar.png",
+     "box": [
+      1270,
+      4,
+      1291,
+      25
+     ]
+    },
+    "box": {
+     "file": "editor_savefile_20260920_box.png",
+     "box": [
+      2365,
+      35,
+      2386,
+      56
+     ]
+    }
+   },
+   "expect": {
+    "is_main_menu": false,
+    "is_editor": false
+   },
+   "gold_rows": 0,
+   "frame_lines": 0,
+   "menubar_rgb": [
+    29,
+    28,
+    26
+   ],
+   "playerbox_rgb": [
+    12,
+    11,
+    162
+   ]
+  },
+  "vscode_20260922": {
+   "source": "sandbox/census/samples/regen/ldn3_final.png",
+   "taken": "2026-09-22T18:17",
+   "what": "VS Code in front of the game (a failed capture)",
+   "size": [
+    2560,
+    1080
+   ],
+   "crops": {
+    "col": {
+     "file": "vscode_20260922_col.png",
+     "box": [
+      424,
+      230,
+      464,
+      750
+     ]
+    },
+    "bar": {
+     "file": "vscode_20260922_bar.png",
+     "box": [
+      1270,
+      4,
+      1291,
+      25
+     ]
+    },
+    "box": {
+     "file": "vscode_20260922_box.png",
+     "box": [
+      2365,
+      35,
+      2386,
+      56
+     ]
+    }
+   },
+   "expect": {
+    "is_main_menu": false,
+    "is_editor": false
+   },
+   "gold_rows": 0,
+   "frame_lines": 0,
+   "menubar_rgb": [
+    60,
+    60,
+    60
+   ],
+   "playerbox_rgb": [
+    30,
+    30,
+    30
+   ]
+  },
+  "match_20260815": {
+   "source": "sandbox/census/tt_state0.png",
+   "taken": "2026-08-15T00:41",
+   "what": "an Istanbul skirmish in progress, sand terrain (before the 2026-09-10 build)",
+   "size": [
+    2560,
+    1080
+   ],
+   "crops": {
+    "col": {
+     "file": "match_20260815_col.png",
+     "box": [
+      424,
+      230,
+      464,
+      750
+     ]
+    },
+    "bar": {
+     "file": "match_20260815_bar.png",
+     "box": [
+      1270,
+      4,
+      1291,
+      25
+     ]
+    },
+    "box": {
+     "file": "match_20260815_box.png",
+     "box": [
+      2365,
+      35,
+      2386,
+      56
+     ]
+    }
+   },
+   "expect": {
+    "is_main_menu": false,
+    "is_editor": false
+   },
+   "gold_rows": 16,
+   "frame_lines": 0,
+   "menubar_rgb": [
+    184,
+    146,
+    112
+   ],
+   "playerbox_rgb": [
+    36,
+    24,
+    10
+   ]
+  },
+  "menu_20260924": {
+   "source": "session scratch folder: live/01_menu.png",
+   "taken": "2026-09-24T12:02",
+   "what": "home menu captured live by the main session at full resolution, game v100.19.18309.0 after the September patch; pixel-identical to menu_20260920 in the box 330-560 x 240-740",
+   "size": [
+    2560,
+    1080
+   ],
+   "crops": {
+    "col": {
+     "file": "menu_20260924_col.png",
+     "box": [
+      424,
+      230,
+      464,
+      750
+     ]
+    },
+    "skirmish": {
+     "file": "menu_20260924_skirmish.png",
+     "box": [
+      360,
+      424,
+      530,
+      447
+     ]
+    },
+    "editor": {
+     "file": "menu_20260924_editor.png",
+     "box": [
+      360,
+      589,
+      530,
+      612
+     ]
+    },
+    "bar": {
+     "file": "menu_20260924_bar.png",
+     "box": [
+      1270,
+      4,
+      1291,
+      25
+     ]
+    },
+    "box": {
+     "file": "menu_20260924_box.png",
+     "box": [
+      2365,
+      35,
+      2386,
+      56
+     ]
+    }
+   },
+   "expect": {
+    "is_main_menu": true,
+    "is_editor": false
+   },
+   "gold_rows": 21,
+   "frame_lines": 18,
+   "menubar_rgb": [
+    135,
+    144,
+    169
+   ],
+   "playerbox_rgb": [
+    0,
+    0,
+    0
+   ]
+  }
+ }
+}

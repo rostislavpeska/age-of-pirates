@@ -30,44 +30,22 @@ def proto_names():
 
 
 def parse_units(path: Path, size_x: float = 5000.0, size_z: float = 5000.0):
-    """Every 'UN' record with a numeric id. The position is the first float triple INSIDE the record
-    (after the proto id, before the next record) that reads as a map coordinate: x/z inside the map,
-    y a plausible height, and not the unit's (1,1,1) scale vector. Calibrated 2026-09-17 on a London
-    save (build 25040513): 5240/5241 records, command posts on the player spots, AI markers at the
-    map centre. Record layouts differ by unit type (props +186..188, buildings +272..274, starting
-    units +331), which is why the old fixed offset before the marker read garbage. Pass the map size
-    to tighten the test; the defaults accept any DE map."""
-    raw = path.read_bytes()
-    if raw[:4] != b"l33t":
-        raise SystemExit(f"not an l33t-compressed file: {path}")
-    d = zlib.decompress(raw[8:])
-    recs = []
-    i, n = 0, len(d)
-    while i < n - 12:
-        if d[i] == 0x55 and d[i + 1] == 0x4E:      # 'UN'
-            idlen = struct.unpack_from("<I", d, i + 6)[0]
-            if 2 <= idlen <= 12 and i + 14 + idlen <= n:
-                sid = d[i + 10:i + 10 + idlen]
-                if sid[-1] == 0 and all(48 <= c <= 57 for c in sid[:-1]) and i >= 48:
-                    proto = struct.unpack_from("<I", d, i + 10 + idlen)[0]
-                    recs.append((i, idlen, sid[:-1].decode(), proto))
-                    i += 10 + idlen
-                    continue
-        i += 1
-    out = []
-    for k, (i, idlen, sid, proto) in enumerate(recs):
-        end = recs[k + 1][0] if k + 1 < len(recs) else min(n, i + 400)
-        x = y = z = float("nan")
-        for b in range(i + 40, end - 12):
-            px, py, pz = struct.unpack_from("<3f", d, b)
-            if not (0.5 <= px <= size_x and 0.5 <= pz <= size_z and -10 < py < 80):
-                continue
-            if px == 1.0 or pz == 1.0 or (px == py == pz):
-                continue
-            x, y, z = px, py, pz
-            break
-        out.append({"id": sid, "proto_id": proto, "x": x, "y": y, "z": z})
-    return out
+    """Every 'UN' record with a numeric id at its OWN position: [{'id', 'proto_id', 'x', 'y', 'z'}], file order,
+    the first and the last record included; NaN where no header validates (an in-match .age3Ysav: every record).
+    The position is the fixed header BEFORE the tag (xyz at tag-49 on the current build, tag-48 on older ones,
+    followed by an orthonormal 3x3), decoded by scripts/mapview/census_reader.py - see its docstring; a slightly
+    skewed 3x3 (|dot| <= 0.05, 30 records in 15 of 406 saves, 2026-09-24) is read at the save's own offset. Until
+    2026-09-24 this took the first plausible float triple after the tag, which is the NEXT record's header: every
+    position belonged to the next record in file order (wf_twin_review F1). size_x / size_z are kept for callers
+    and ignored: the map size never filters (census_reader.read flags in_map instead)."""
+    if str(REPO) not in sys.path:
+        sys.path.insert(0, str(REPO))
+    from scripts.mapview.census_reader import decode
+    try:
+        recs = decode(Path(path))
+    except ValueError as e:                    # not an l33t container: the CLI's old exit
+        raise SystemExit(str(e))
+    return [{"id": r.census_id, "proto_id": r.proto_id, "x": r.x, "y": r.y, "z": r.z} for r in recs]
 
 
 MOD_BASE_OFFSET = 0     # verified 2026-09-17 (build 25040513) on two observations: zpNatInuitHarpooner
@@ -76,29 +54,19 @@ MOD_BASE_OFFSET = 0     # verified 2026-09-17 (build 25040513) on two observatio
 
 
 def runtime_names():
-    """Runtime proto index -> name. The save stores the engine's proto INDEX, not the XML id:
-    vanilla units by file position in the CURRENT protoy (mapcheck --live cache; snapshot fallback),
-    then every protomods record whose name is not vanilla, in file order, from base = vanilla count +
-    MOD_BASE_OFFSET. Vanilla ids equal positions only for the first ~1460 records, so by_id alone
-    mis-names everything after CrateofCoinLarge400 and every mod unit."""
-    import os
-    live = Path(os.environ.get("LOCALAPPDATA", "")) / "aoe3-mapcheck" / "protoy_live.xml"
-    src = live if live.is_file() else REPO / "scripts" / "source" / "protoy.xml"
-    if not src.is_file():
-        return {}, None
-    text = src.read_text(encoding="utf-8", errors="replace")
-    van = [m.group(1) for m in re.finditer(r'<unit\b[^>]*\bname\s*=\s*"([^"]+)"', text)]
-    vset = set(van)
-    out = {i: n for i, n in enumerate(van)}
-    pm = REPO / "data" / "protomods.xml"
-    if pm.is_file():
-        k = 0
-        base = len(van) + MOD_BASE_OFFSET
-        for m in re.finditer(r'<unit\b[^>]*\bname\s*=\s*"([^"]+)"', pm.read_text(encoding="utf-8", errors="replace")):
-            if m.group(1) not in vset:
-                out[base + k] = m.group(1)
-                k += 1
-    return out, src
+    """(runtime proto index -> name, the vanilla source file or None). The save stores the engine's proto INDEX,
+    not the XML id: vanilla units by file position in the CURRENT protoy (mapcheck --live cache; snapshot fallback),
+    then every mod unit whose name is not vanilla, from base = vanilla count + MOD_BASE_OFFSET, in the order of
+    data/protomods.xml.xmb - what the game loads (the XML through ElementTree as the fallback; comments never count).
+    Built by scripts/mapview/census_reader.py name_table, which also returns both sources with their sha1. Until
+    2026-09-24 a regex over the raw XML counted 79 units inside comments and misnamed 48 indices from 3657 up
+    (wf_twin_review F6). Vanilla ids equal positions only for the first ~1460 records, so by_id alone mis-names
+    everything after CrateofCoinLarge400 and every mod unit."""
+    if str(REPO) not in sys.path:
+        sys.path.insert(0, str(REPO))
+    from scripts.mapview.census_reader import name_table
+    table, info = name_table(MOD_BASE_OFFSET)
+    return table, info["vanilla_source"]
 
 
 def census(path: Path):

@@ -33,32 +33,89 @@ def shot(path):
     subprocess.run([sys.executable, os.path.join(HERE, "probe.py"), "shot", path], timeout=30)
 
 
-def world_targets(out, targets_json, size, screen="ingame"):
+def world_targets(out, targets_json, size=None, screen="ingame", map_ref=None, players=None, teams=2,
+                  unchecked=False):
     """2026-09-24 (minimap-twin skill): photograph a list of WORLD targets through the measured calibration -
-    targets.json = [{"name": ..., "x_m": ..., "z_m": ...}, ...]; needs scripts/mapview/cal/<screen>_<WxH>.json.
-    Each shot verifies the camera trapezoid (camera.py); the colour-cluster mode below stays the fallback."""
+    targets.json = [{"name": ..., "x_m": ..., "z_m": ...}, ...]; needs scripts/mapview/cal/<screen>_<WxH>.json,
+    accepted and checked (unchecked=True drops the check gate). The map size is --size WxL or read from the map
+    script (map_ref + players, through mapsim; both given must agree) and printed. Each target is camera.shot:
+    verified by the camera trapezoid, then photographed; every result carries its target's name and the size, and
+    the list goes to <out>/world_targets.json. Returns 0 only when the list is non-empty and every target was
+    verified and photographed, 1 otherwise, 2 when refused before any target (targets file, map size). The batch
+    stops at an abort (cursor in the top-left corner), a vanished game window, the game leaving the foreground, a
+    cursor that did not land (camera.STOP_BATCH) or a refused calibration; the rest are listed as skipped.
+    Only the target that first reaches the camera's focus step may bring the game to the front; every later one
+    passes focus=False and needs the game still in front, so a batch never pulls the game back over a window the
+    owner switched to (gameio review F1, fix round 2026-09-24). The colour-cluster mode below stays the fallback."""
     sys.path.insert(0, os.path.join(HERE, "..", ".."))
+    from pathlib import Path
     from scripts.mapview import camera
-    sx, sz = (float(x) for x in size.lower().split("x"))
-    targets = json.load(open(targets_json, encoding="utf-8"))
-    os.makedirs(out, exist_ok=True)
-    results = []
-    for t in targets:
+    out = Path(out)
+    try:
+        sx, sz, src = camera.resolve_size(size, map_ref, players, teams)
+    except Exception as e:                      # ValueError, FileNotFoundError, mapsim's ExtractError
+        print("world: map size refused: %s" % e)
+        return 2
+    try:
+        targets = json.loads(Path(targets_json).read_text(encoding="utf-8"))
+    except (OSError, ValueError) as e:
+        print("world: cannot read %s: %s" % (targets_json, e))
+        return 2
+    if not isinstance(targets, list):
+        print("world: %s must hold a JSON list of {name, x_m, z_m}" % targets_json)
+        return 2
+    out.mkdir(parents=True, exist_ok=True)
+    print("world: %d target(s) on %gx%g m (%s), screen %s -> %s" % (len(targets), sx, sz, src, screen, out))
+    results, stop, may_focus = [], None, True
+    for i, t in enumerate(targets):
+        name = t.get("name") if isinstance(t, dict) else None
+        if stop is not None:
+            results.append({"name": name, "ok": False, "state": "skipped", "size_m": [sx, sz],
+                            "error": "batch stopped: %s" % stop})
+            continue
         try:
-            results.append(camera.shot(float(t["x_m"]), float(t["z_m"]), sx, sz, t["name"], out=out, screen=screen))
+            if not isinstance(t, dict) or not name or "x_m" not in t or "z_m" not in t:
+                raise ValueError("target %d needs name, x_m and z_m: %r" % (i, t))
+            res = camera.shot(float(t["x_m"]), float(t["z_m"]), sx, sz, str(name), out=out, screen=screen,
+                              unchecked=unchecked, size_source=src, focus=may_focus)
+            if res.get("focused"):
+                may_focus = False
         except Exception as e:
-            print("%s: %s" % (t.get("name"), e)); results.append({"name": t.get("name"), "error": str(e)})
-    with open(os.path.join(out, "world_targets.json"), "w", encoding="utf-8") as f:
-        json.dump(results, f, indent=1)
-    return 0 if all(r.get("ok") for r in results) else 1
+            if (getattr(e, "camera_result", None) or {}).get("focused"):
+                may_focus = False
+            res = {"ok": False, "state": "error", "size_m": [sx, sz], "error": "%s: %s" % (type(e).__name__, e)}
+            print("%s: %s" % (name, res["error"]))
+            if camera.stops_batch(e):
+                stop = res["error"]
+        res["name"] = name
+        results.append(res)
+    (out / "world_targets.json").write_text(json.dumps(results, indent=1), encoding="utf-8")
+    n_ok = sum(1 for r in results if r.get("ok"))
+    print("world: %d of %d target(s) verified and photographed on %gx%g m -> %s"
+          % (n_ok, len(results), sx, sz, out / "world_targets.json"))
+    if not results:
+        print("world: the target list is empty - nothing photographed")
+        return 1
+    return 0 if n_ok == len(results) else 1
 
 
 def main():
+    if "--world" in sys.argv[1:]:
+        import argparse
+        ap = argparse.ArgumentParser(prog="snapshots.py", description="world-target mode (world_targets)")
+        ap.add_argument("out")
+        ap.add_argument("--world", required=True, metavar="TARGETS_JSON")
+        ap.add_argument("--size", help="map size XxZ in metres, e.g. 360x686 (London 3-5 players, the engine's size)")
+        ap.add_argument("--map", help="map script (path, or a name under randmaps/): the size from mapsim")
+        ap.add_argument("--players", type=int)
+        ap.add_argument("--teams", type=int, default=2)
+        ap.add_argument("--screen", default="ingame", choices=("ingame", "editor"))
+        ap.add_argument("--unchecked", action="store_true")
+        a = ap.parse_args(sys.argv[1:])
+        if not a.size and not a.map:
+            ap.error("the map size is needed: --size WxL, or --map <xs> --players N")
+        return world_targets(a.out, a.world, a.size, a.screen, a.map, a.players, a.teams, a.unchecked)
     out = sys.argv[1]
-    if "--world" in sys.argv:
-        a = sys.argv
-        return world_targets(out, a[a.index("--world") + 1], a[a.index("--size") + 1],
-                             a[a.index("--screen") + 1] if "--screen" in a else "ingame")
     os.makedirs(out, exist_ok=True)
     from PIL import Image
     nav = driver.load_coords()
@@ -129,4 +186,4 @@ def countryside(mm, box, park, out):
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

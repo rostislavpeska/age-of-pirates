@@ -119,3 +119,18 @@ Resolve the world-circle radius (0.455 vs 0.5) as a side result, and write the a
   - calibration JSONs for the builder's resolution;
   - a short skill `.claude/skills/minimap-twin/SKILL.md` (how to calibrate, build a twin, aim a shot);
   - `snapshots.py` migrated to world targets.
+
+## 7. Corrections found while building (2026-09-24, the main session on the owner's device)
+
+- **Census positions:** a unit's own position is the fixed header BEFORE its `UN` tag (x/y/z at tag-49 on the current build,
+  tag-48 on older saves, followed by an orthonormal 3x3). `sandbox/census/census.py` used to read the NEXT record's header
+  (section 2's "position at tag-48" was one byte off on today's build). Fixed in `scripts/mapview/census_reader.py`.
+- **Owner:** not at tag+68 (that is the proto / post-id area). It is the u16 20 bytes before the header start: 1..N on every
+  per-player object, 0 elsewhere (London, Elbe, bench saves).
+- **Map size:** the engine rounds `rmSetMapSize` to whole 2 m tiles (London 4p asks 685 m, the save and the minimap use 686 m);
+  the save's terrain header holds the exact tile counts.
+- **World circle / disc:** measured, the minimap disc's diameter is the map's longer side (editor rim 130.5 px at 2560x1080,
+  centre (2269.33, 920.33)); the drawn map is centred on the ring within 0.2 px. The 0.455 in rm-coordinates is a placement
+  margin, not the disc.
+- **Player stars on the minimap are the EXPLORERS**, not the town centres or command posts.
+- **Camera trapezoid:** its aim point is the intersection of the outline's diagonals, not the outline's centroid (7-10 px apart).

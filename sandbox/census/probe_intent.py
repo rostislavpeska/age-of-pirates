@@ -21,7 +21,7 @@ defs = {d.line: d for d in ex.defs.values()}
 seen = set()
 print("grouping intent in zpelbe.xs:")
 for p in ex.placements:
-    d = defs.get(p.def_line)
+    d = ex.defs.get(p.def_handle) if p.def_handle is not None else defs.get(p.def_line)   # by handle (2026-09-24)
     if not d or not d.is_grouping:
         continue
     ref = d.proto if isinstance(d.proto, str) else getattr(d.proto, "str_prefix", None) or "?"

@@ -1,0 +1,161 @@
+{
+ "_comment": "Editor minimap crop of the main session's live frame london4p_generated_full.png (2560x1080, 2026-09-24 12:06, London zplondon 4 players / 2 teams, random seed, post-September-patch build, camera at player 1's base) and numbers from its save mapview_london4p_live.age3Yscn (12:07:48, 10375 records, header at tag-49 on all; owners from the u16 at header-20). Terrain header: 180 x 343 tiles = 360 x 686 m although rmSetMapSize asks 360 x 685. Stars = player_star on this frame; edges = calibrate.measure_edges with the disc record numbers. Built 2026-09-24 by the calibration fixer.",
+ "image": "london4p_editor_minimap.png",
+ "screen": "editor",
+ "screen_size": [
+  2560,
+  1080
+ ],
+ "crop_offset": [
+  2119,
+  770
+ ],
+ "map": "zplondon",
+ "players": 4,
+ "teams": 2,
+ "size_x_m": 360.0,
+ "size_z_m": 686.0,
+ "size_script_m": [
+  360.0,
+  685.0
+ ],
+ "terrain_tiles": [
+  180,
+  343
+ ],
+ "disc": {
+  "cx": 2269.33,
+  "cy": 920.33,
+  "r_disc": 130.5,
+  "r_line": 136.18,
+  "full_frame": {
+   "cx": 2269.33,
+   "cy": 920.33,
+   "r_disc": 130.5,
+   "r_line": 136.18
+  }
+ },
+ "look_at": [
+  2183.6,
+  908.5
+ ],
+ "look_at_full_frame": [
+  2183.6,
+  908.5
+ ],
+ "trapezoid_clipped": false,
+ "stars": [
+  {
+   "what": "P1 blue Explorer (id 8270)",
+   "player_colour": [
+    0,
+    0,
+    255
+   ],
+   "x_m": 43.0,
+   "z_m": 545.0,
+   "star_px": 2178.5,
+   "star_py": 903.5,
+   "star_score": 1.0,
+   "explorer_err_px": 0.75,
+   "explorer_err_px_at_685": 1.04
+  },
+  {
+   "what": "P2 red Explorer (id 8659)",
+   "player_colour": [
+    255,
+    0,
+    0
+   ],
+   "x_m": 189.0,
+   "z_m": 537.0,
+   "star_px": 2220.5,
+   "star_py": 866.5,
+   "star_score": 1.0,
+   "explorer_err_px": 1.22,
+   "explorer_err_px_at_685": 1.52
+  },
+  {
+   "what": "P3 yellow Explorer (id 9047)",
+   "player_colour": [
+    255,
+    255,
+    0
+   ],
+   "x_m": 55.0,
+   "z_m": 153.0,
+   "star_px": 2287.5,
+   "star_py": 1005.5,
+   "star_score": 0.92,
+   "explorer_err_px": 0.8,
+   "explorer_err_px_at_685": 0.9
+  },
+  {
+   "what": "P4 purple Explorer (id 9436)",
+   "player_colour": [
+    128,
+    0,
+    128
+   ],
+   "x_m": 175.0,
+   "z_m": 153.0,
+   "star_px": 2319.5,
+   "star_py": 973.5,
+   "star_score": 1.0,
+   "explorer_err_px": 0.81,
+   "explorer_err_px_at_685": 0.9
+  }
+ ],
+ "town_centres": [
+  {
+   "what": "P1 TownCenter (id 7884)",
+   "x_m": 40.1,
+   "z_m": 531.76
+  },
+  {
+   "what": "P2 TownCenter (id 8273)",
+   "x_m": 176.1,
+   "z_m": 531.76
+  },
+  {
+   "what": "P3 TownCenter (id 8661)",
+   "x_m": 40.1,
+   "z_m": 145.76
+  },
+  {
+   "what": "P4 TownCenter (id 9050)",
+   "x_m": 176.1,
+   "z_m": 145.76
+  }
+ ],
+ "edges": {
+  "sides": {
+   "a": {
+    "what": "long edge x=0 m",
+    "model_px": 68.484,
+    "measured_px": 67.175,
+    "inset_px": 1.309,
+    "samples": 101,
+    "rays": 101,
+    "spread_px": 0.0
+   },
+   "b": {
+    "what": "long edge x=360 m",
+    "model_px": 68.484,
+    "measured_px": 67.175,
+    "inset_px": 1.309,
+    "samples": 101,
+    "rays": 101,
+    "spread_px": 0.0
+   }
+  },
+  "agree_px": 0.0,
+  "main_session_scan": {
+   "model_half_width_px_at_685": 68.59,
+   "measured_px": [
+    66.83,
+    66.83
+   ]
+  }
+ }
+}

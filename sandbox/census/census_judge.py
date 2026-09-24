@@ -44,7 +44,7 @@ def grouping_intent(xs_path: Path, sc: Scenario):
     defs = {d.line: d for d in ex.defs.values()}
     out = {}
     for p in ex.placements:
-        d = defs.get(p.def_line)
+        d = ex.defs.get(p.def_handle) if p.def_handle is not None else defs.get(p.def_line)   # by handle: a helper line creates many defs (2026-09-24)
         if not d or not d.is_grouping:
             continue
         ref = d.proto if isinstance(d.proto, str) \

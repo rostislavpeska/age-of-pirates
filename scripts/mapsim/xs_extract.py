@@ -463,6 +463,11 @@ class XPlacement:
     count: Any = 1
     variant: str = ""
     nominal: bool = True               # False = alternative spawn-chance arm
+    # The def's HANDLE (Extraction.defs key). def_line is not an identity:
+    # a helper creates every def on one line (zplondon.xs cityBlock():
+    # 36 grouping defs at line 207), so line-keyed lookups labelled all of
+    # them as the last one (twin review F2, 2026-09-24).
+    def_handle: Optional[int] = None
 
 
 @dataclass
@@ -533,7 +538,38 @@ class _Break(Exception):
 
 
 class _Return(Exception):
-    pass
+    """`return <expr>;` unwinding to the user-function call, carrying the
+    value (None for a bare `return;`). Before 2026-09-24 the value was
+    dropped and every user-function call evaluated to 0: zplondon.xs's
+    `int blockTowerS = cityBlock(...)` became handle 0, so its Tower of
+    London, player blocks and ~36 city blocks never placed in mapsim
+    (twin review F2)."""
+
+    def __init__(self, value: Any = None):
+        super().__init__()
+        self.value = value
+
+
+class OpaqueDef(int):
+    """A def handle built by an include helper the extractor models as a
+    no-op (ypMonasteryBuilder: the Asian monastery def, placed per player
+    under the runtime ypIsAsian(i) test). Behaves as 0 everywhere, names no
+    def, and a placement on it is dropped WITHOUT the unknown-handle
+    warning - that absence is the documented model (curated scenes carry
+    it as the pseudo-entry '(ypMonasteryBuilder)'), not a lost placement."""
+
+    def __new__(cls, builder: str):
+        obj = super().__new__(cls, 0)
+        obj.builder = builder
+        return obj
+
+    def __repr__(self) -> str:
+        return f"<{self.builder} def>"
+
+
+# Include helpers that build and return an object def the extractor does not
+# model (see OpaqueDef).
+OPAQUE_DEF_BUILDERS = {"ypMonasteryBuilder"}
 
 
 # Config / cosmetic / trigger calls that are correct to ignore entirely.
@@ -557,7 +593,7 @@ NOOP_FUNCS = {
     "rmSetNuggetDifficulty", "rmSetIgnoreForceToGaia",
     "rmSetTradeRouteWanderDistance",
     "rmAddClosestPointConstraint", "rmClearClosestPointConstraints",
-    "rmSetSubCiv", "rmAddMerc", "chooseMercs", "ypMonasteryBuilder",
+    "rmSetSubCiv", "rmAddMerc", "chooseMercs",
     "rmDisableDefaultMercs", "rmDisableCivTypeMercRestriction",
     "rmEnableMerc", "rmDisableMerc", "rmSetBaseTerrainMix",
     "ypKingsHillPlacer", "rmBuildAllAreas", "rmSetPlacementArea",
@@ -824,23 +860,34 @@ class Extractor:
                 # each compound once, not at both mirror spots).
                 nom_then = (value.nominal_bool
                             if value.nominal_bool is not None else True)
-                self.variant_stack.append(f"{value.expr}@{line}:true")
-                if not nom_then:
-                    self.alt_depth += 1
-                for s in then:
-                    self.exec_stmt(s)
-                if not nom_then:
-                    self.alt_depth -= 1
-                self.variant_stack.pop()
-                if els:
-                    self.variant_stack.append(f"{value.expr}@{line}:false")
-                    if nom_then:
+                # `return` / `break` inside an arm (2026-09-24): BOTH arms
+                # still run (state, as above); the NOMINAL arm's unwinding
+                # decides - re-raised, with its value, after the other arm.
+                # Before, an arm's return/break escaped with its variant
+                # label still pushed (and alt_depth raised), skipped the
+                # other arm and let a non-nominal arm's return win. No
+                # corpus map hit that path at 2/4 players (probe 2026-09-24).
+                unwind: Optional[Exception] = None
+                for arm, is_then in ((then, True), (els, False)):
+                    if not is_then and not els:
+                        break
+                    nominal_arm = is_then == nom_then
+                    self.variant_stack.append(
+                        f"{value.expr}@{line}:{'true' if is_then else 'false'}")
+                    if not nominal_arm:
                         self.alt_depth += 1
-                    for s in els:
-                        self.exec_stmt(s)
-                    if nom_then:
-                        self.alt_depth -= 1
-                    self.variant_stack.pop()
+                    try:
+                        for s in arm:
+                            self.exec_stmt(s)
+                    except (_Return, _Break) as u:
+                        if nominal_arm:
+                            unwind = u
+                    finally:
+                        if not nominal_arm:
+                            self.alt_depth -= 1
+                        self.variant_stack.pop()
+                if unwind is not None:
+                    raise unwind
                 return
             for s in (then if value else els):
                 self.exec_stmt(s)
@@ -878,7 +925,7 @@ class Extractor:
         if op == "break":
             raise _Break()
         if op == "return":
-            raise _Return()
+            raise _Return(self.eval(stmt[1]) if stmt[1] is not None else None)
         raise ExtractError(f"unhandled statement {op!r}")
 
     # -- expression evaluation -----------------------------------------------
@@ -1007,14 +1054,21 @@ class Extractor:
                 local[pname] = args[idx] if idx < len(args) else (
                     self.eval(default) if default is not None else 0)
             self.scopes.append(local)
+            value = None
             try:
                 for s in fdef[4]:
                     self.exec_stmt(s)
-            except _Return:
-                pass
-            self.scopes.pop()
-            return 0
+            except _Return as r:
+                value = r.value
+            finally:
+                self.scopes.pop()
+            # The returned value reaches the caller (2026-09-24, twin review
+            # F2: cityBlock()'s grouping handle). No return / a bare
+            # `return;` keeps the old 0.
+            return 0 if value is None else value
 
+        if name in OPAQUE_DEF_BUILDERS:
+            return OpaqueDef(name)
         if name in NOOP_FUNCS or name in TRIGGER_FUNCS:
             return 0
         if name == "rmGetTradeRouteWayPoint":
@@ -1559,7 +1613,7 @@ class Extractor:
             return 0
         if name in ("rmPlaceObjectDefAtLoc", "rmPlaceGroupingAtLoc",
                     "rmPlaceGroupingInstanceAtLoc"):
-            d = res.defs.get(args[0])
+            d = self._placed_def(name, args[0] if args else None, line)
             if d is None:
                 return 0
             # ARG-ORDER TRAP (guide-documented): the normal methods take
@@ -1576,13 +1630,14 @@ class Extractor:
                 def_line=d.line, name=d.name, kind="at_loc",
                 players=[player], x=x, z=z, count=count,
                 variant="|".join(self.variant_stack),
-                nominal=self.alt_depth == 0))
+                nominal=self.alt_depth == 0,
+                def_handle=int(args[0])))
             return 1
         if name in ("rmPlaceObjectDefInArea", "rmPlaceGroupingInArea"):
             # Third grouping placement method (user 2026-08-10): random
             # placement INSIDE an area — cookislands underwater patches,
             # melanesia villages. Same signature as the object-def form.
-            d = res.defs.get(args[0])
+            d = self._placed_def(name, args[0] if args else None, line)
             if d is None:
                 return 0
             area_name = res.areas[args[2]].name if args[2] in res.areas else "?"
@@ -1591,10 +1646,11 @@ class Extractor:
                 def_line=d.line, name=d.name, kind="in_area",
                 players=[args[1]], area_refs=[area_name], count=count,
                 variant="|".join(self.variant_stack),
-                nominal=self.alt_depth == 0))
+                nominal=self.alt_depth == 0,
+                def_handle=int(args[0])))
             return 1
         if name in ("rmPlaceObjectDefAtPoint", "rmPlaceGroupingAtPoint"):
-            d = res.defs.get(args[0])
+            d = self._placed_def(name, args[0] if args else None, line)
             if d is None:
                 return 0
             vec = args[2]
@@ -1610,7 +1666,8 @@ class Extractor:
                 players=[args[1]], x=x, z=z,
                 count=args[3] if len(args) > 3 else 1,
                 variant="|".join(self.variant_stack),
-                nominal=self.alt_depth == 0))
+                nominal=self.alt_depth == 0,
+                def_handle=int(args[0])))
             return 1
 
         # --- trade routes (per-handle: maps ship several separate routes) ---
@@ -1678,6 +1735,31 @@ class Extractor:
             raise ExtractError("conversion used before rmSetMapSize")
         return self.res.map_size_x, self.res.map_size_z
 
+    def _placed_def(self, fn: str, handle: Any, line: int) -> Optional[XDef]:
+        """The def a placement call names, or None - then nothing is placed
+        and an extraction warning says so (2026-09-24, twin review F2: the
+        London city blocks were dropped silently while cityBlock() returned
+        0). An OpaqueDef (ypMonasteryBuilder) is dropped silently: its
+        absence is the documented model. Probe 2026-09-24 over randmaps/*.xs
+        at 2/4 players, before the return fix: London 90-94 placement calls
+        on handle 0 (every cityBlock/helper-returned def), Istanbul 490 on
+        runtime array picks (xsArrayGetInt(gTreeKinds, rmRandInt(0, 7)),
+        gHouseBlocks), Paris 4-8 on its `?:` ternary (not parsed)."""
+        if isinstance(handle, OpaqueDef):
+            return None
+        try:
+            d = self.res.defs.get(handle)
+        except TypeError:            # unhashable (an xs array value)
+            d = None
+        if d is None:
+            if isinstance(handle, Tainted):
+                self.res.warn(f"line {line}: {fn} on a runtime-dependent def "
+                              f"handle ({handle.expr}); nothing placed")
+            else:
+                self.res.warn(f"line {line}: {fn} on unknown def handle "
+                              f"{handle!r}; nothing placed")
+        return d
+
     # -- postprocessing -------------------------------------------------------
 
     def _collapse(self) -> None:
@@ -1721,10 +1803,15 @@ class Extractor:
                 return (round(float(p.x), 6), round(float(p.z), 6))
             return "runtime"
 
+        # Keyed by def HANDLE (2026-09-24): distinct defs created on one
+        # helper line (cityBlock) are distinct placements even at the same
+        # anchor; the players of the merged calls stay in call order.
         merged: Dict[Tuple, XPlacement] = {}
         out: List[XPlacement] = []
         for p in res.placements:
-            key = (p.def_line, p.kind, p.variant, _coord_key(p))
+            ident = (("handle", p.def_handle) if p.def_handle is not None
+                     else ("line", p.def_line))
+            key = (ident, p.kind, p.variant, _coord_key(p))
             if key in merged:
                 prev = merged[key]
                 prev.players.extend(p.players)

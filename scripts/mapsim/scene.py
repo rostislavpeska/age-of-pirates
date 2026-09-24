@@ -219,6 +219,17 @@ class ResolvedPlacement:
     anchor_z: Optional[float] = None
     solve_unsat: Optional[List[str]] = None
     solve_skipped: Optional[List[str]] = None
+    # Filled by the .xs bridge (2026-09-24, twin review F4; curated scenes
+    # leave the defaults). players = every literal player 1-8 of the
+    # placement calls this record stands for, in call order, repeats kept
+    # (a per-player loop that lands on one spot is collapsed to ONE record:
+    # zplondon.xs 'london bridge marker' at 4 players -> [1, 2, 3, 4]);
+    # [] = gaia (or a runtime-dependent player). player_id == players[0].
+    players: List[int] = field(default_factory=list)
+    # (proto, count) per object-def item, in rmAddObjectDefItem order - the
+    # `items` names with their counts ('strip seat deer' -> (('Deer', 3),));
+    # a rand count is its HI bound (as `count`), a runtime one 1.
+    item_counts: Tuple[Tuple[str, int], ...] = ()
 
 
 @dataclass

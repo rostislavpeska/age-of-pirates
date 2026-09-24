@@ -1,61 +1,70 @@
 ---
 name: minimap-twin
-description: One world coordinate for the map script, the saved generation, the minimap and the in-game camera (scripts/mapview). Use to calibrate a screen's minimap, build the twin of a map (expected objects from mapsim joined with the census of a save, problems circled), aim the camera at a world point and photograph or record it, or convert metres / fractions / minimap pixels either way. Triggers on "minimap pixel", "where on the minimap", "photograph the enemy base", "record at the bridge", "spawn check", "twin", "calibrate the minimap", "world coordinate".
+description: One world coordinate for the map script, the saved generation, the minimap and the in-game camera (scripts/mapview + scripts/gameio). Use to calibrate a screen's minimap from its drawn disc, check it (explorer stars or the map's edges), build the twin of a map (mapsim's expected objects joined with the census of an editor save - key objects, grouping votes, owners, MISSING/moved lists), aim the camera at a world point and photograph or record it, or convert metres / fractions / minimap pixels either way. Triggers on "minimap pixel", "where on the minimap", "photograph the enemy base", "record at the bridge", "spawn check", "did the grouping spawn", "twin", "calibrate the minimap", "world coordinate", "census positions".
 ---
 
-# The minimap digital twin (`scripts/mapview`)
+# The minimap digital twin (`scripts/mapview`, input through `scripts/gameio`)
 
-Specification: `docs/briefs/2026-09-24-minimap-digital-twin-spec.md`. Everything below is offline except the
-camera; the camera moves nothing but the camera.
+Spec: `docs/briefs/2026-09-24-minimap-digital-twin-spec.md` (its section 7 lists what the build corrected).
+Everything is offline except `camera.py` and `python -m scripts.gameio`; those move only the camera / the game's own
+UI, and only on the owner's word.
 
-## Coordinates in one line each
+## Facts the tools rest on (measured 2026-09-24, 2560x1080)
 
-- Metres (x, z) <-> fractions (fx, fz): divide by the map size; London is 360 x 645 / 685 / 765 m by player count
-  (`zplondon.xs` around line 400); 1 tile = 2 m.
-- Fractions -> minimap plane: `u = (dx - a dz) / sqrt2`, `v = (dx + a dz) / sqrt2`, dx = fx - 0.5, dz = fz - 0.5,
-  a = size_z / size_x. Visual top = code (1,1), right = (1,0), left = (0,1). Agrees with mapsim's render and the
-  rm-coordinates skill (tested).
-- The disc: its diameter is the map's longer side (mapsim's world circle 0.5 times max(1, a)); the 0.455 in
-  rm-coordinates is the safe placement margin, not the disc.
-- Pixels: `px = cx + s u`, `py = cy - s v`, s = disc radius in px / disc radius in display units. cx, cy and the
-  radius come only from a **measured** calibration; an unmeasured record is refused.
+- **Rotation:** visual top = code corner (1,1), right = (1,0), left = (0,1); a pure 45 degree rotation (free-affine
+  angle and skew under 1 degree on Paris, Elbe and London pairs). `transform.frac_to_uv` = mapsim's render.
+- **The disc:** its diameter is the map's LONGER side; the drawn map is centred on the ring within 0.2 px. Editor:
+  centre (2269.33, 920.33), drawn rim 130.5 px (unchanged by the September patch). Match HUD: (2399.32, 899.31),
+  rim 147.0 px from a pre-patch frame - re-measure live. The old aitest sheet's `minimap_center` (2320,900) is wrong.
+- **Map size:** the engine rounds `rmSetMapSize` to whole 2 m tiles: London 2p / 3-5p / 6+p = 360 x 646 / 686 / 766 m.
+  `mapinfo.map_size` gives the engine size; `census_reader.map_size(save)` reads it exactly from the save.
+- **Census:** a unit's own position is the header before its `UN` tag (tag-49, older saves tag-48, validated by an
+  orthonormal 3x3); the owner is the u16 20 bytes before the header (`player`). The pre-2026-09-24 census read the
+  next record - old `*_units.json` and position verdicts are wrong.
+- **Minimap stars are EXPLORERS**, not town centres (glyph ~1 px from the explorer's projected position).
+- **Camera outline:** its aim point is the intersection of the diagonals, not the outline's centroid.
 
-`scripts/mapview/transform.py` holds these as pure functions (`world_to_minimap`, `minimap_to_world`, ...).
+## Calibrate a screen (once per screen kind and resolution)
 
-## Calibrate a screen (once per screen kind and resolution; needs the editor or a match)
+1. A full-resolution screenshot with the minimap visible and NO dialog open (a dialog dims the screen: refused).
+2. `python scripts/mapview/calibrate.py disc <png> --screen editor|ingame` - fits the ring, writes
+   `scripts/mapview/cal/<screen>_<W>x<H>.json` as accepted, not checked.
+3. Check it, one of:
+   - editor, with a save of the same generation: `calibrate.py stars <png> --colour 0,0,255 ...` gives the stars;
+     pair them with the save's Explorers (`census_reader.read(save)`, `player` = the colour's slot) in a pairs file
+     (metres + size or --map/--players) and `calibrate.py check <pairs.json> --screen editor --size 2560x1080`
+     (PASS = every pair within 3 px; live London: 0.75-1.22 px);
+   - any screen, no save needed, non-square maps only: `calibrate.py edges <png> --screen ingame --map zplondon
+     --players 4` - the long edges must sit 0.5-2.5 px inside the model edge, both sides within 1 px, and the map must
+     reach the rim at both ends of the long axis (a map drawn off-centre inside the ring leaves a black cap).
+4. `calibrate.py show` lists the records. Aiming refuses anything not accepted and checked (`--unchecked` drops
+   only the check gate, for a first live look).
 
-1. Generate a known map in the editor (rm-census / map-minimap flow). Place three or more distinctive units at
-   known world coordinates: map corners, the centre, one off-axis point. Full-resolution screenshot.
-2. Find their pixels: `python scripts/mapview/calibrate.py blobs <png> --box x0,y0,x1,y1 [--colour R,G,B]`.
-3. Write `pairs.json` (`what`, `x_m`, `z_m`, `px`, `py`, plus `size_x_m`, `size_z_m`) and fit:
-   `python scripts/mapview/calibrate.py fit pairs.json --screen ingame --size 2560x1080`. The record is written
-   only if every pair is within 2 px; a fourth independent pair must pass `check` within 3 px.
-4. Records live in `scripts/mapview/cal/<screen>_<WxH>.json`; `calibrate.py show` lists them. The free-affine
-   diagnostic printed by `fit` should show angle and skew near 0; if not, the screen is not a pure 45 degree
-   rotation and the model needs the owner's decision.
+## Build a twin (editor saves only)
 
-Traps: compute on full-resolution pixels (a downscaled copy is not 1:1); button edges are gradients, measure where
-a probe sits; the in-game minimap is black where unexplored, the transform does not care but colour detection does.
+    python scripts/mapview/twin.py randmaps/zplondon.xs --players 4 --teams 2 --census <save.age3Yscn> \
+        [--team-layout 1,2/3,4] [--out <dir>]
 
-## Build a twin
+Output (default a fresh temp folder): `twin.json` + `twin.png`; the CLI prints the counts, the key objects (Keeps,
+sockets, town centres ...), every grouping's member vote and measured anchor, owner verdicts, and the MISSING /
+unmodelled / unjudged lists with reasons (either-arm random branches, search radii, in-area placements, runtime
+anchors, route-docked neighbours). Live London 4p (2026-09-24): 35/35 key objects, 67/69 groupings, 0 extra,
+0 owner mismatches; the two misses are real - the riverside deco blocks spawn 78 m east of x = 12 m (x = 90 m).
 
-    python scripts/mapview/twin.py randmaps/zplondon.xs --players 2 --teams 2 [--census <save.age3Yscn>]
+## Aim the camera (a running match or the editor, on the owner's word)
 
-Expected = mapsim's placements for that setup (approximate by design: tainted branches run both arms, player
-positions are nominal, per-player loops are not expanded). Actual = the census of the save. Output
-`scripts/mapview/out/<map>_<N>p/twin.json` and `twin.png` (minimap orientation; red circle = expected but not
-spawned within `--tol-m`, orange x = spawned but not expected). The census owner field is **not decoded yet**
-(`census_reader.py` docstring); `--find-owner` locates it from a save whose owners are known.
+    python scripts/mapview/camera.py goto 280 344 --map zplondon --players 4 [--screen ingame] [--dry-run]
+    python scripts/mapview/camera.py shot 280 344 --map zplondon --players 4 --name bridge
+    python scripts/mapview/camera.py record 280 344 --map zplondon --players 4 --name bridge --seconds 60
+    python scripts/aitest/snapshots.py <out> --world targets.json --map zplondon --players 4
 
-## Aim the camera (in a match, on the owner's word)
+The camera clicks only inside the disc (6 px from the rim), only after the ring probes pass on a fresh screenshot,
+with the corner abort and a foreground + window-under-the-cursor check before every event; it verifies the outline's
+aim point within 3 px and stops a batch the moment the game loses the foreground. Output defaults to a temp folder.
 
-    python scripts/mapview/camera.py shot 210 480 --size 360x645 --name enemy_block
-    python scripts/mapview/camera.py record 180 322 --size 360x645 --seconds 60 --name bridge
+## Game UI through `python -m scripts.gameio`
 
-`goto` clicks the minimap pixel, parks the mouse off the minimap (its tooltip covers it), and verifies that the
-white camera trapezoid's centroid is within 3 px of the target; one retry covers the eaten first click after a
-focus change. It refuses without a measured calibration and refuses a target outside the disc. It never selects
-or orders units and never touches the game process.
-
-`scripts/aitest/snapshots.py <out> --world targets.json --size 360x645` photographs a list of world targets the
-same way (the AI's echoed positions, town centres from a census, construction blocks).
+`shot`, `pixel`, `click`, `key`, `type`, `menu <name>` (clicks a main-menu button only when the live layout and the
+button's label probe match), `state`, `where`; `--dry-run` everywhere. Points and their provenance live in
+`scripts/gameio/sheets/2560x1080.json` (derived points are refused). The September patch moved the main menu: the old
+Skirmish point (444,490) now hits Multiplayer.

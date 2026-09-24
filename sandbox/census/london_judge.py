@@ -68,7 +68,11 @@ def main(argv=None):
     ap.add_argument("--players", type=int, default=4)
     ap.add_argument("--size-x", type=float, default=360.0)
     a = ap.parse_args(argv)
-    size_z = 573.0 if a.players < 3 else (653.0 if a.players < 6 else 773.0)
+    # the map length from the script itself (mapinfo: rmSetMapSize for this player count, rounded to whole 2 m tiles as the
+    # engine does - 685 -> 686 for 3-5 players); the old table 573/653/773 predated the current zplondon.xs (2026-09-24)
+    sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+    from scripts.mapview.mapinfo import map_size
+    size_z = map_size(Path(__file__).resolve().parents[2] / "randmaps" / "zplondon.xs", a.players)[1]
     U = [u for u in census(a.save) if u["x"] == u["x"]]
     B = [u for u in U if u["proto"] in BUILDINGS]
     res = []

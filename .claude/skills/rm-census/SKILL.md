@@ -48,9 +48,14 @@ position, or as "the only proto index that appears exactly N times" (N = how man
 (`nugget-targeting`, fix B). Adding N units to anything placed earlier shifts every later index by N:
 re-census after any such change.
 
-**Positions:** `census.py` reads x/y/z from the first plausible float triple inside each record
-(calibrated 2026-09-17 on a London save: record layouts differ by unit type). Check sanity
-(|coord| < map size) before using them; `bench_run.py` judges by names when they are not sane.
+**Positions (fixed 2026-09-24):** each record's own position is the fixed header BEFORE its `UN` tag:
+x/y/z at tag-49 (build 25040513+; tag-48 on older saves), followed by a 3x3 orientation whose rows are
+orthonormal - that is the validity test. `scripts/mapview/census_reader.py` owns the decoding;
+`census.py parse_units` delegates to it. The earlier "first plausible float triple inside the record" read
+the NEXT record's header for nearly every unit (London TCs ~48 m off), so any census verdict or `*_units.json`
+made before 2026-09-24 that used positions must be re-read. The map size is in the save's terrain header
+(`census_reader.map_size`; London 4p = 360 x 686 m, the engine rounds to whole 2 m tiles). The owner is the u16
+20 bytes before the header start (`census_reader.read` returns it as `player`).
 
 ## 3. Criteria (state them BEFORE the generation, then read the census against them)
 

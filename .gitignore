@@ -58,6 +58,9 @@ sandbox/census/samples/regen/
 # Claude skills are tracked source; only device settings stay local
 /.claude/settings.local.json
 
+# minimap twin output when --out points into the repo (twin.py defaults to a fresh temporary folder)
+scripts/mapview/out/
+
 # Images (AGENTS.md hard rule 8): screenshots, captures, renders and plots made by agents never enter the repo.
 # Ignored everywhere; re-included only in the image homes below (runtime art, UI icons, curated docs, skill assets).
 *.png
