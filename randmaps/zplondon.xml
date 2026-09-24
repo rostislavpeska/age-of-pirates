@@ -15,10 +15,10 @@
     </enforcedSettings>
     <recommendedSettings>
         <civilization>British</civilization>
+        <civilization>DEDanish</civilization>
+        <civilization>Dutch</civilization>
         <civilization>French</civilization>
+        <civilization>Portuguese</civilization>
         <civilization>Spanish</civilization>
-        <civilization>DEItalians</civilization>
-        <civilization>Germans</civilization>
-        <civilization>Russians</civilization>
     </recommendedSettings>
 </mapinfo>

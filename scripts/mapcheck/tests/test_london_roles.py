@@ -972,6 +972,20 @@ class TestMapInfo:
         assert "London 1660 Historical Map" in st[st.index('_locid="503558"'):st.index('_locid="503559"')] and "1642" not in st[st.index('_locid="503558"'):st.index('_locid="503559"')]
 
 
+    def test_three_kingdoms_civs_and_the_church_free_seat_block(self):
+        """User 2026-09-24: 'we need basically 1:1 Three Kingdoms War map setup from vanilla with these civs' (screenshot:
+        British, Danes, Dutch, French, Portuguese, Spanish; vanilla bpHMThreeKingdoms.xml is encrypted) and 'London Player
+        start grouping - remove church'. All six enable every building left in the seat block, so it has no per-civ twin."""
+        x = (REPO / "randmaps/zplondon.xml").read_text(encoding="utf-8")
+        rec = x[x.index("<recommendedSettings>"):x.index("</recommendedSettings>")]
+        assert re.findall(r"<civilization>([A-Za-z]+)</civilization>", rec) == ["British", "DEDanish", "Dutch", "French", "Portuguese", "Spanish"]
+        g = (REPO / "game/randmaps/groupings/EU_SPC_Player_London.xml").read_text(encoding="utf-8")
+        assert ">Church</unit>" not in g and g.count("<unit ") == 384
+        for proto in ("TownCenter", "Market", "LivestockPen", "Barracks", "Stable", "deTavern"):
+            assert g.count(">%s</unit>" % proto) == 1, proto
+        for twin in ("EU_SPC_Player_London_Italian", "EU_SPC_Player_London_Russian"):
+            assert not (REPO / "game/randmaps/groupings" / (twin + ".xml")).exists(), twin
+
 class TestNewEnglandGroupings:
     """User 2026-09-22: the newengland_grass mix as the pattern - Academy repainted in place, Park / Embassy / Menagerie cloned as
     _London (the Paris / Versailles originals untouched), cypress props -> oak in the two house blocks."""

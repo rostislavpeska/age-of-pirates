@@ -57,7 +57,6 @@
 		<unit variation="62" posx="11.0000" posz="-30.0000" orientx="-0.6878" orienty="0.0000" orientz="-0.7259">TreeGreatLakes</unit>
 		<unit variation="145" posx="25.0000" posz="-30.0000" orientx="0.5155" orienty="0.0000" orientz="-0.8569">TreeNewEngland</unit>
 		<unit variation="224" posx="-1.1569" posz="-24.3744" orientx="-1.0000" orienty="0.0000" orientz="0.0000">Market</unit>
-		<unit variation="168" posx="-11.8593" posz="-23.1854" orientx="0.3827" orienty="0.0000" orientz="0.9239">Church</unit>
 		<unit variation="141" posx="-23.0000" posz="-27.0000" orientx="-0.8094" orienty="0.0000" orientz="0.5872">TreeNewEngland</unit>
 		<unit variation="185" posx="15.0000" posz="-28.0000" orientx="-0.9974" orienty="0.0000" orientz="-0.0723">TreeNewEngland</unit>
 		<unit variation="254" posx="17.0000" posz="-24.0000" orientx="-0.3995" orienty="0.0000" orientz="0.9167">deMineCoalBuildable</unit>
