@@ -244,7 +244,7 @@ class TestSeats:
         assert fb.count("blockParliament2") == 2 and "rmPlaceGroupingAtLoc(blockParliament2, 0, (xRoad + 0.5) * 0.5, locZdOut);" in fb
         assert fb.count("blockStuart2") == 2 and "rmPlaceGroupingAtLoc(blockStuart2, 0, (xRoad + 0.5) * 0.5, locZaOut);" in fb and "rmPlaceGroupingAtLoc(blockStuart2, 0, (0.5 + xGateMirror) * 0.5, locZaOut);" in fb   # more than four per side: two, both outside
         w = (REPO / "game/randmaps/groupings/EU_Native_Block_Stuart_02.xml").read_bytes()
-        assert w.count(b"zpSPCSocketStuart") == 1 and b"<width>16</width>" in w
+        assert w.count(b"zpSPCSocketStuart") == 1 and b"<width>18</width>" in w   # 16 -> 18: the user's re-export 2026-09-24
         w2 = (REPO / "game/randmaps/groupings/EU_Native_Block_Parlam_02.xml").read_bytes()
         assert w2.count(b"zpSocketParliament") == 1 and b"<width>15</width>" in w2
         s = self._sec(); assert "rmSetGroupingMaxDistance(blockParliament2, 0.00);" in s and "float parl2OffXM = " in s and "float locZdOut = wallS - rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);" in s
@@ -827,7 +827,7 @@ class TestBridgeOwnership:
             head = lines[i][:lines[i].index(">zpInvisibleGateSocket</unit>")]
             assert lines[i + 1] == head + ">" + proto + "</unit>"
         old = (REPO / "sandbox/backups/groupings/EU_SPC_London_Bridge_2026-09-22_flatprops.xml").read_bytes()
-        assert old.count(b">zpSPCFortTowerPropFlat</unit>") == 4 and b.count(b"</unit>") == old.count(b"</unit>") + 2
+        assert old.count(b">zpSPCFortTowerPropFlat</unit>") == 4 and b.count(b"</unit>") == old.count(b"</unit>") + 2 - 1   # + gate sockets E / F, - one Venetian pole (2026-09-24)
         for l in lines[end - 4:end]:
             assert (l.replace(">deSPCSocketCityTower</unit>", ">zpSPCFortTowerPropFlat</unit>") + chr(13) + chr(10)).encode("utf-8") in old
 
@@ -872,7 +872,7 @@ class TestBridgeOwnership:
                      "int bridgeSocket1Unit = bridgeMarkUnit - 4;", "int bridgeSocket4Unit = bridgeMarkUnit - 1;"):
             assert line in t, line
         # the bridge is placed before section 8: its two new sockets and its marker move every guard index by 3
-        assert t.index("int bridgeInst = placeIsland(") < t.index("rmPlaceObjectDefAtLoc(harbourN1GuardDef") and "int harbourN1GuardUnit = 366;" in t and "int harbourS2GuardUnit = 381;" in t
+        assert t.index("int bridgeInst = placeIsland(") < t.index("rmPlaceObjectDefAtLoc(harbourN1GuardDef") and "int harbourN1GuardUnit = 365;" in t and "int harbourS2GuardUnit = 380;" in t   # 2026-09-24: the bridge lost one pole (112 -> 111)
 
     def test_bridge_follows_its_port_socket_paris_shape(self):
         t = _code(_text(LONDON)); s = t[t.index("int bridgePostM = 8;"):t.index('rmCreateTrigger("BridgeTowers_Setup0");')]
@@ -1074,7 +1074,7 @@ class TestScope:
         t = _code(_text(LONDON))
         assert t.count("int instanceIdShift = 3;") == 1 and "instanceIdShiftIndividual" not in t   # grouping shift measured 2026-09-22; the object-def ids are literal indices (fix B)
         assert t.index('rmCreateObjectDef("countryside tin")') < t.index("int instanceIdShift = 3;") < t.index("int harbourN1PostUnit")
-        for s, post, guard in (("N1", 169, 366), ("N2", 170, 371), ("S1", 171, 376), ("S2", 172, 381)):                # fix B: literal indices (census 2026-09-22) + 3 for the bridge's E / F sockets and marker (2026-09-22 late)
+        for s, post, guard in (("N1", 169, 365), ("N2", 170, 370), ("S1", 171, 375), ("S2", 172, 380)):                # fix B: literal indices (census 2026-09-22) + 3 for the bridge's E / F sockets and marker (2026-09-22 late)
             assert ("int harbour%sPostUnit = %d;" % (s, post)) in t and ("int harbour%sGuardUnit = %d;" % (s, guard)) in t and ("rmSetTriggerConditionParam(\"NuggetObject\", \"\" + harbour%sGuardUnit);" % s) in t
         inst = re.findall(r"int \w+ = rmGetGroupingInstanceUnitByType\([^;]*;", t)
         assert len(inst) == 21 and all(r.endswith("+ instanceIdShift;") for r in inst)   # 14 + the four Tower gate sockets + the bridge's port socket and E / F (2026-09-22)

@@ -113,7 +113,6 @@
 		<unit variation="104" posx="5.2797" posz="39.7968" orientx="0.1339" orienty="0.0000" orientz="0.9910">zpSPCEUHouseProp</unit>
 		<unit variation="117" posx="-5.5834" posz="38.0417" orientx="1.0000" orienty="0.0000" orientz="-0.0002">zpBridgeFace</unit>
 		<unit variation="117" posx="3.3858" posz="38.6475" orientx="-1.0000" orienty="0.0000" orientz="0.0001">zpBridgeFace</unit>
-		<unit variation="52" posx="0.7455" posz="39.6545" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="0" posx="-5.1492" posz="41.8878" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="17" posx="-16.5144" posz="-12.0818" orientx="1.0000" orienty="0.0000" orientz="-0.0000">deSPCSocketCityTower</unit>
 		<unit variation="17" posx="11.8247" posz="-12.1401" orientx="-1.0000" orienty="0.0000" orientz="0.0001">deSPCSocketCityTower</unit>

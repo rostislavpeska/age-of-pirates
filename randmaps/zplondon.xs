@@ -1789,16 +1789,19 @@ void main(void)
 	// count (lane stopper + 2 controllers, 6 wall gates x 27, 2 road controllers + socket, 4 ferries, bridge, 4 piers) - any
 	// such change: generate, save, re-census (sandbox/census/census.py <save> --full), update the eight numbers.
 	// 2026-09-22 late: the bridge export grew by two (gate sockets E / F) and its marker follows it: the guards moved
-	// 363 / 368 / 373 / 378 -> 366 / 371 / 376 / 381 (index = placement order; confirm on the next census).
+	// 363 / 368 / 373 / 378 -> 366 / 371 / 376 / 381 (index = placement order; confirmed on the census of
+	// mapview_london4p_live.age3Yscn, 2026-09-24). 2026-09-24 later: one Venetian pole out of the bridge export (the user's
+	// 'London Bridge removed pole' test, unit #106 at (0.7455, 39.6545)): 112 -> 111 units, the guards move -1 ->
+	// 365 / 370 / 375 / 380 (predicted by the same rule; confirm on the next census).
 
 	int harbourN1PostUnit = 169;
 	int harbourN2PostUnit = 170;
 	int harbourS1PostUnit = 171;
 	int harbourS2PostUnit = 172;
-	int harbourN1GuardUnit = 366;
-	int harbourN2GuardUnit = 371;
-	int harbourS1GuardUnit = 376;
-	int harbourS2GuardUnit = 381;
+	int harbourN1GuardUnit = 365;
+	int harbourN2GuardUnit = 370;
+	int harbourS1GuardUnit = 375;
+	int harbourS2GuardUnit = 380;
 	int menagerieSUnit = rmGetGroupingInstanceUnitByType(menagerieSInst, "zpSPCMenagerie") + instanceIdShift;
 	int menagerieNUnit = rmGetGroupingInstanceUnitByType(menagerieNInst, "zpSPCMenagerie") + instanceIdShift;
 	int menagerieSNugUnit = rmGetGroupingInstanceUnitByType(menagerieSInst, "zpNuggetInvisible") + instanceIdShift;   // nuggetmods 98
