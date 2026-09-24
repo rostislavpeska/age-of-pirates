@@ -444,6 +444,7 @@ void main(void)
 	rmDefineClass("classStreet");
 	rmDefineClass("classPlateau");
 	rmDefineClass("classBlock");
+	rmDefineClass("classRamp");      // 8.5 the city ramps: the water flags (12.9) and the fish (12.10) keep off them (user 2026-09-24)
 	int spawnSwitch = 0;   // set in 0.5 from the landmark coin (2026-09-21: no longer a coin of its own): 0 = team 1 north, 1 = team 1 south
 
 	int avoidTradeRouteMin = rmCreateTradeRouteDistanceConstraint("trade route min", 5.0);                            // 5+ player starts
@@ -502,6 +503,9 @@ void main(void)
 	int fishMin = 60;                   // the floor (a lone player) - the ONLY quantity keyed on the overall player count
 	float fishSpacingM = 10.0;          // between fish (Paris: 12)
 	int fishBassPct = 70;               // this share of the fish are FishBass, the rest FishSalmon (user 2026-09-23 '70% bass and 30% salmon +/-')
+	float fishRampClearM = 6.0;        // 12.10: fish this far off 8.5's city ramps (user 2026-09-24 'make fish to avoid these' - they sat partly
+	                                    // over the ramps: the fish avoided only classPlateau, 2 m)
+	float flagRampClearM = 10.0;       // 12.9: water flags this far off the ramps ('and water flags too slightly': 2 m past their 8 m off land)
 	int   harbourGuardDifficulty = 101; // nuggets.xml euNuggetCapturable2: the vanilla European trade-route post guard (ypNuggetTradingPost + four deGuardianMusketeer, maptype westEurope) - zpelbe.xs uses it the same way
 	float harbourGuardInM = 2.5;        // the guard nugget this far INTO the city off the bank's quay wall line = the middle of the 5 m promenade, at the harbour's x (behind the harbour building)
 	float harbourGuardSearchM = 3.0;    // ... and the search radius around that spot: stays on the promenade (6 m let it wander off the harbour - user 2026-09-18)
@@ -511,13 +515,18 @@ void main(void)
 	                                    // with 17 m it keeps ~9.5 m clear of each harbour (a full row, 34 m, would leave it 1 m)
 	float rampXM = 14.0;                // 8.5 the southwest city ramps (slipways): centred this far from the river mouth (x = 0) = half
 	                                    // the width, so the west side sits on the map edge (x 0-28 m) - user 2026-09-24 in game: 'move these a bit
-	                                    // from the water flag, so they're mostly at the map edge' (was 18 m)
+	                                    // from the water flag, so they're mostly at the map edge' (was 18 m); the NORTHEAST pair mirrors it against the
+	                                    // x = 1 edge (x 332-360 m) - user 2026-09-24 'amazing!!! Please add another pair to northeast'
 	float rampWidthM = 28.0;            // ... along the bank (the first cut, a round 100-tile beach, was ~22 m across: 'should be bigger')
 	float rampLenM = 10.0;              // ... from the wall line into the water (user 2026-09-24 in game: 'too long, I want like 1/2 depth' - was 20 m)
 	int   rampStepCount = 5;            // ... steps (2 m = one tile each) from the quay's height down to rampBottomM (the guide's Method 2)
 	float rampTopM = 1.0;               // ... the top step = the quay's height: the ZP City wall stays open over the ramp's width
-	float rampBottomM = -0.6;           // ... the outer step, under the sea level (0 m)
+	float rampBottomM = -0.6;           // ... the outer step; the river's surface is at -1.0 m (census: every floating unit at y -1.0), so all five
+	                                    // steps stand 0.4-2.0 m above the water - the look the user approved in game ('amazing', 2026-09-24)
 	float rampRouteClearM = 3.0;        // ... the box stops this far short of the REAL lane leg (Istanbul's 3 m trade-route clearance)
+	float deco4ShiftM = 18.6;          // 11: the LAST riverside deco (east of the bridge) moved this far southwest (-x) - user 2026-09-24 'move
+	                                    // the deco' (room for the northeast ramps): centred in the free wall line between the bridge's east face near
+	                                    // the banks (286.8 m) and the ramps (332 m); its units (+-19.8 m) keep 2.8 m to each
 
 	// ---- 0.5 THE LOBBY: the coin and the roles - the Florence system (zpflorence.xs 124-155, zpistanbulb.xs 5b),
 	// resolved up front because the gates (3.5) take their owners from them. TEAM 1 DEFENDS, TEAM 0 ATTACKS - Florence's
@@ -822,22 +831,30 @@ void main(void)
 	// SLIPWAY per bank at the river mouth (southwest on the minimap: west = low x): rampSteps rectangular strips in London's
 	// narrow-strip recipe (quaySegment: the box as the ONLY constraint, ask 0.7, an influence segment along the strip,
 	// coherence 1 -> straight edges), stepping from the quay's height at the wall line (no drop there, so the ZP City wall
-	// of 9 opens over exactly the ramp's width) down to just under the water; the city blocks' paving. The trade-route
+	// of 9 opens over exactly the ramp's width) down toward the water; the city blocks' paving. The trade-route
 	// clearance is IN the box (clipped at the real lane leg less rampRouteClearM): a second avoidance on a strip gapped
 	// the bridge (the quay helper's law). Before the quays (the user's order, Istanbul's: beaches before the city cliffs),
 	// after the bridge and the harbours (an area in the river BEFORE the bridge stopped it - the eyot, 2026-09-23).
 	// The guide (docs/random_map_generation_guide_v2.md 14.3, Method 2: controlled ramps) - ramps are areas built BEFORE
 	// the cliff at the cliff top's height; the cliff built after leaves an opening there. Island parameters for the regular
 	// look: the box as the shape (an over-asked box floods to its fences), coherence 1, height blend 0 (the guide's
-	// 'geometric edges': sharp 0.4 m steps and square sides, about 1 m above the water - the river is 3 m deep), no variation.
+	// 'geometric edges': sharp 0.4 m steps and square sides; the river's surface is at -1.0 m, below every step), no variation.
 	// In game (user 2026-09-24): 'Nice, but too long, I want like 1/2 depth' -> 10 m; 'as terrain use the city tiles terrain
 	// used in groupings' -> city\ground1_city_street_ground (the Block tile of every EU_ block grouping); 'move these a bit from
 	// the water flag, so they're mostly at the map edge' -> the west side on the map edge. The steps are one tile deep now, so
 	// each runs from the wall line out: the longest (the lowest) is built first and every shorter, higher step overwrites its
 	// near part - no row between two steps can stay at the river bed, whatever the tile alignment. Areas only: no literal
 	// index moves.
+	// The NORTHEAST pair (user 2026-09-24, after the in-game look: 'amazing!!! Please add another pair to northeast and move
+	// the deco'): the same steps mirrored against the x = 1 edge (rampNEX1..rampNEX2), built in this loop right after each
+	// bank's southwest step; the last riverside deco (11) moves deco4ShiftM southwest to make room. East of the bridge there
+	// is no trade route (the U turns at x ~199 m) and no water flag (12.9 keeps them west of the bridge). Every step joins
+	// classRamp: the fish sat partly over the ramps ('make fish to avoid these and water flags too slightly') - 12.9 and
+	// 12.10 keep flagRampClearM / fishRampClearM off the class.
 	float rampX1 = rmXMetersToFraction(rampXM - 0.5 * rampWidthM);
 	float rampX2 = rmXMetersToFraction(rampXM + 0.5 * rampWidthM);
+	float rampNEX1 = 1.0 - rmXMetersToFraction(rampXM + 0.5 * rampWidthM);   // the northeast pair: the same box mirrored against the x = 1 edge
+	float rampNEX2 = 1.0 - rmXMetersToFraction(rampXM - 0.5 * rampWidthM);
 	float rampEndS = wallS + rmZMetersToFraction(rampLenM);
 	if (rampEndS > zLaneS - rmZMetersToFraction(rampRouteClearM))
 	{
@@ -877,6 +894,24 @@ void main(void)
 		rmSetAreaTerrainType(rampArea, "city\ground1_city_street_ground");
 		rmSetAreaElevationVariation(rampArea, 0.0);
 		rmAddAreaConstraint(rampArea, rampBox);
+		rmAddAreaToClass(rampArea, rmClassID("classRamp"));
+		rmSetAreaObeyWorldCircleConstraint(rampArea, false);
+		rmBuildArea(rampArea);
+		// ... and the northeast step on the same bank, mirrored against the x = 1 edge
+		rampBox = rmCreateBoxConstraint("ramp box NE south " + rampStep, rampNEX1, rampZa, rampNEX2, rampZb);
+		rampArea = rmCreateArea("ramp NE south step " + rampStep);
+		rmSetAreaWarnFailure(rampArea, false);
+		rmSetAreaSize(rampArea, 0.7, 0.7);
+		rmSetAreaLocation(rampArea, (rampNEX1 + rampNEX2) * 0.5, (rampZa + rampZb) * 0.5);
+		rmAddAreaInfluenceSegment(rampArea, rampNEX1, (rampZa + rampZb) * 0.5, rampNEX2, (rampZa + rampZb) * 0.5);
+		rmSetAreaCoherence(rampArea, 1.0);
+		rmSetAreaBaseHeight(rampArea, rampH);
+		rmSetAreaHeightBlend(rampArea, 0);                          // the guide: 0 = geometric edges (built, not natural); 1 = smoothed
+		rmSetAreaSmoothDistance(rampArea, 1);
+		rmSetAreaTerrainType(rampArea, "city\ground1_city_street_ground");
+		rmSetAreaElevationVariation(rampArea, 0.0);
+		rmAddAreaConstraint(rampArea, rampBox);
+		rmAddAreaToClass(rampArea, rmClassID("classRamp"));
 		rmSetAreaObeyWorldCircleConstraint(rampArea, false);
 		rmBuildArea(rampArea);
 		// north bank: the water lies -z of wallN; this step from its outer edge to the wall line
@@ -895,10 +930,29 @@ void main(void)
 		rmSetAreaTerrainType(rampArea, "city\ground1_city_street_ground");
 		rmSetAreaElevationVariation(rampArea, 0.0);
 		rmAddAreaConstraint(rampArea, rampBox);
+		rmAddAreaToClass(rampArea, rmClassID("classRamp"));
+		rmSetAreaObeyWorldCircleConstraint(rampArea, false);
+		rmBuildArea(rampArea);
+		// ... and the northeast step on the same bank, mirrored against the x = 1 edge
+		rampBox = rmCreateBoxConstraint("ramp box NE north " + rampStep, rampNEX1, rampZa, rampNEX2, rampZb);
+		rampArea = rmCreateArea("ramp NE north step " + rampStep);
+		rmSetAreaWarnFailure(rampArea, false);
+		rmSetAreaSize(rampArea, 0.7, 0.7);
+		rmSetAreaLocation(rampArea, (rampNEX1 + rampNEX2) * 0.5, (rampZa + rampZb) * 0.5);
+		rmAddAreaInfluenceSegment(rampArea, rampNEX1, (rampZa + rampZb) * 0.5, rampNEX2, (rampZa + rampZb) * 0.5);
+		rmSetAreaCoherence(rampArea, 1.0);
+		rmSetAreaBaseHeight(rampArea, rampH);
+		rmSetAreaHeightBlend(rampArea, 0);                          // the guide: 0 = geometric edges (built, not natural); 1 = smoothed
+		rmSetAreaSmoothDistance(rampArea, 1);
+		rmSetAreaTerrainType(rampArea, "city\ground1_city_street_ground");
+		rmSetAreaElevationVariation(rampArea, 0.0);
+		rmAddAreaConstraint(rampArea, rampBox);
+		rmAddAreaToClass(rampArea, rmClassID("classRamp"));
 		rmSetAreaObeyWorldCircleConstraint(rampArea, false);
 		rmBuildArea(rampArea);
 	}
 	rmEchoInfo("LONDON city ramps southwest: x " + rampXM + " m, " + rampWidthM + " x " + rmZFractionToMeters(rampEndS - wallS) + " m (south) / " + rmZFractionToMeters(wallN - rampEndN) + " m (north), heights " + rampTopM + " -> " + rampBottomM + " m; harbour pair 1 shifted " + harbour1ShiftM + " m");
+	rmEchoInfo("LONDON city ramps northeast: x " + rmXFractionToMeters(rampNEX1) + " - " + rmXFractionToMeters(rampNEX2) + " m; the last riverside deco moved " + deco4ShiftM + " m southwest");
 
 	// ---- 9. CITY FLOOR: one straight quay per bank (wall line -> the last reserved column's outer edge), streets + the promenade
 	// band (Paris's two quay textures), countryside
@@ -1201,7 +1255,7 @@ void main(void)
 	float decoX1 = rmXMetersToFraction(decoMouthXM);
 	float decoX2 = (harbour1X + harbour2X) * 0.5;
 	float decoX3 = (harbour2X + xRoad + rmXMetersToFraction(bridgeOffX) - rmXMetersToFraction(bridgeWestWallM)) * 0.5;
-	float decoX4 = (xRoad + rmXMetersToFraction(bridgeOffX + bridgeEastWallM) + 1.0) * 0.5;
+	float decoX4 = (xRoad + rmXMetersToFraction(bridgeOffX + bridgeEastWallM) + 1.0) * 0.5 - rmXMetersToFraction(deco4ShiftM);   // user 2026-09-24: southwest, room for the northeast ramps
 	rmPlaceGroupingAtLoc(riversideS, 0, decoX1, decoZs);
 	rmPlaceGroupingAtLoc(riversideS, 0, decoX2, decoZs);
 	rmPlaceGroupingAtLoc(riversideS, 0, decoX3, decoZs);
@@ -1784,11 +1838,13 @@ void main(void)
 	// 8 m off the pier and bridge plateaus (classPlateau, placeIsland's class: the groupings' own footprints - a 40 m
 	// radius around the four ferry posts blanked the river along rows 3-9 on both banks and most 4v4 flags never
 	// spawned) and WEST of London Bridge - the box keeps the river between the bridge and the map edge empty; 1v7 must
-	// seat seven flags on one bank. Placed last: no literal index moves.
+	// seat seven flags on one bank. Placed last: no literal index moves. flagRampClearM off 8.5's city ramps (classRamp; user
+	// 2026-09-24 'and water flags too slightly').
 	int flagLand = rmCreateTerrainDistanceConstraint("flag vs land", "land", true, 8.0);
 	int flagVsFlag = rmCreateTypeDistanceConstraint("flag avoid same", "HomeCityWaterSpawnFlag", 20.0);
 	int flagVsPlateau = rmCreateClassDistanceConstraint("flag avoid piers and bridge", rmClassID("classPlateau"), 8.0);
 	int flagBox = rmCreateBoxConstraint("flag west of the bridge", 0.0, 0.0, xRoad - rmXMetersToFraction(30.0), 1.0, 0.0);
+	int flagVsRamp = rmCreateClassDistanceConstraint("flag avoid the ramps", rmClassID("classRamp"), flagRampClearM);
 	int waterFlag = -1;
 	vector tcLoc = xsVectorSet(0.0, 0.0, 0.0);
 	vector flagLoc = xsVectorSet(0.0, 0.0, 0.0);
@@ -1800,6 +1856,7 @@ void main(void)
 		rmAddClosestPointConstraint(flagVsFlag);
 		rmAddClosestPointConstraint(flagVsPlateau);
 		rmAddClosestPointConstraint(flagBox);
+		rmAddClosestPointConstraint(flagVsRamp);
 		tcLoc = xsVectorSet(rmXFractionToMeters(rmPlayerLocXFraction(i)), 0.0, rmZFractionToMeters(rmPlayerLocZFraction(i)));
 		flagLoc = rmFindClosestPointVector(tcLoc, rmXFractionToMeters(1.0));
 		rmPlaceObjectDefAtLoc(waterFlag, i, rmXMetersToFraction(xsVectorGetX(flagLoc)), rmZMetersToFraction(xsVectorGetZ(flagLoc)));
@@ -1813,7 +1870,9 @@ void main(void)
 	// fishBase + fishPerPlayer x ALL players floored at fishMin - 60 at 2 players, 150 at 8 (Paris 20 x players), split
 	// fishBassPct FishBass / the rest FishSalmon (user: '70% bass and 30% salmon +/-'), each kind kept fishSpacingM off
 	// every fish through AbstractFish (both protos carry it). Placed after the water flags: no literal index moves.
+	// fishRampClearM off 8.5's city ramps (classRamp; user 2026-09-24: 'fishes get placed partially over the ramps').
 	int fishVsPlateau = rmCreateClassDistanceConstraint("fish avoid piers and bridge", rmClassID("classPlateau"), 2.0);
+	int fishVsRamp = rmCreateClassDistanceConstraint("fish avoid the ramps", rmClassID("classRamp"), fishRampClearM);
 	int fishVsFish = rmCreateTypeDistanceConstraint("fish vs other fish", "AbstractFish", fishSpacingM);
 	int fishCount = fishBase + fishPerPlayer * cNumberNonGaiaPlayers;
 	if (fishCount < fishMin)
@@ -1828,6 +1887,7 @@ void main(void)
 	rmSetObjectDefMaxDistance(fishDef, rmXFractionToMeters(0.9));
 	rmAddObjectDefConstraint(fishDef, fishVsFish);
 	rmAddObjectDefConstraint(fishDef, fishVsPlateau);
+	rmAddObjectDefConstraint(fishDef, fishVsRamp);
 	rmAddObjectDefConstraint(fishDef, insideFrame);
 	rmPlaceObjectDefAtLoc(fishDef, 0, 0.5, 0.5, bassCount);
 	int salmonDef = rmCreateObjectDef("salmon");
@@ -1836,6 +1896,7 @@ void main(void)
 	rmSetObjectDefMaxDistance(salmonDef, rmXFractionToMeters(0.9));
 	rmAddObjectDefConstraint(salmonDef, fishVsFish);
 	rmAddObjectDefConstraint(salmonDef, fishVsPlateau);
+	rmAddObjectDefConstraint(salmonDef, fishVsRamp);
 	rmAddObjectDefConstraint(salmonDef, insideFrame);
 	rmPlaceObjectDefAtLoc(salmonDef, 0, 0.5, 0.5, salmonCount);
 	rmEchoInfo("LONDON fish: " + bassCount + " FishBass + " + salmonCount + " FishSalmon asked, " + fishSpacingM + " m apart");

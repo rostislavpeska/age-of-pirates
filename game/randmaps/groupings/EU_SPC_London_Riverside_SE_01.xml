@@ -60,36 +60,5 @@
 		<unit variation="138" posx="17.8542" posz="-2.8461" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNativeUnitVenetian</unit>
 		<unit variation="120" posx="19.7828" posz="-2.0885" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">zpNativeUnitVenetianPoles</unit>
 	</units>
-	<tiles>
-		<tilegroup type="Shoreline" subtype="new_england\shoreline2_ne">
-			<block startx="-11" startz="2" endx="-7" endz="2"></block>
-			<block startx="-11" startz="1" endx="-7" endz="1"></block>
-			<block startx="-11" startz="0" endx="-7" endz="0"></block>
-			<block startx="-6" startz="2" endx="1" endz="2"></block>
-			<block startx="-6" startz="1" endx="1" endz="1"></block>
-			<block startx="-6" startz="0" endx="1" endz="0"></block>
-			<block startx="2" startz="2" endx="9" endz="2"></block>
-			<block startx="2" startz="1" endx="9" endz="1"></block>
-			<block startx="2" startz="0" endx="9" endz="0"></block>
-			<block startx="10" startz="2" endx="10" endz="2"></block>
-			<block startx="10" startz="1" endx="10" endz="1"></block>
-			<block startx="10" startz="0" endx="10" endz="0"></block>
-		</tilegroup>
-		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">
-			<block startx="-11" startz="-1" endx="-7" endz="-1"></block>
-			<block startx="-6" startz="-1" endx="1" endz="-1"></block>
-			<block startx="2" startz="-1" endx="9" endz="-1"></block>
-			<block startx="10" startz="-1" endx="10" endz="-1"></block>
-		</tilegroup>
-		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
-			<block startx="-11" startz="-2" endx="-7" endz="-2"></block>
-			<block startx="-11" startz="-3" endx="-7" endz="-3"></block>
-			<block startx="-6" startz="-2" endx="1" endz="-2"></block>
-			<block startx="2" startz="-2" endx="9" endz="-2"></block>
-			<block startx="2" startz="-3" endx="9" endz="-3"></block>
-			<block startx="-6" startz="-3" endx="1" endz="-3"></block>
-			<block startx="10" startz="-2" endx="10" endz="-2"></block>
-			<block startx="10" startz="-3" endx="10" endz="-3"></block>
-		</tilegroup>
-	</tiles>
+	<tiles></tiles>
 </grouping>

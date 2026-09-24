@@ -1012,7 +1012,8 @@ class TestWaterFlags:
                      "flagLoc = rmFindClosestPointVector(tcLoc, rmXFractionToMeters(1.0));",
                      "rmPlaceObjectDefAtLoc(waterFlag, i, rmXMetersToFraction(xsVectorGetX(flagLoc)), rmZMetersToFraction(xsVectorGetZ(flagLoc)));"):
             assert line in s, line
-        for c in ("flagLand", "flagVsFlag", "flagVsPlateau", "flagBox"):
+        assert 'int flagVsRamp = rmCreateClassDistanceConstraint("flag avoid the ramps", rmClassID("classRamp"), flagRampClearM);' in s   # user 2026-09-24
+        for c in ("flagLand", "flagVsFlag", "flagVsPlateau", "flagBox", "flagVsRamp"):
             assert ("rmAddClosestPointConstraint(%s);" % c) in s, c
         assert s.index("rmAddClosestPointConstraint(flagBox);") < s.index("rmFindClosestPointVector(")
         assert t.index("rmPlaceObjectDefAtLoc(bridgeRevealer") < t.index('int flagLand = ') and t.index("rmPlaceObjectDefAtLoc(harbourS2GuardDef") < t.index("int flagLand = ")
@@ -1040,9 +1041,12 @@ class TestFish:
             assert line in s, line
         for d in ("fishDef", "salmonDef"):        # Paris's shape on both kinds
             for line in ("rmSetObjectDefMinDistance(%s, 0.0);", "rmSetObjectDefMaxDistance(%s, rmXFractionToMeters(0.9));",
-                         "rmAddObjectDefConstraint(%s, fishVsFish);", "rmAddObjectDefConstraint(%s, fishVsPlateau);", "rmAddObjectDefConstraint(%s, insideFrame);"):
+                         "rmAddObjectDefConstraint(%s, fishVsFish);", "rmAddObjectDefConstraint(%s, fishVsPlateau);", "rmAddObjectDefConstraint(%s, insideFrame);",
+                         "rmAddObjectDefConstraint(%s, fishVsRamp);"):
                 assert (line % d) in s, line % d
         assert s.index("rmPlaceObjectDefAtLoc(fishDef, 0, 0.5, 0.5, bassCount);") < s.index('int salmonDef = rmCreateObjectDef("salmon");')
+        assert 'int fishVsRamp = rmCreateClassDistanceConstraint("fish avoid the ramps", rmClassID("classRamp"), fishRampClearM);' in s   # user 2026-09-24
+        assert float(k["fishRampClearM"]) >= 4.0 and float(k["flagRampClearM"]) > 8.0      # fish clear of the ramps; flags 'slightly' past their 8 m off land
         assert t.index("rmPlaceObjectDefAtLoc(waterFlag, i,") < t.index("int fishVsPlateau") < t.index("int instanceIdShift = 3;")
         steam_twin(LONDON, "00000_zplondon.xs")
 
@@ -1054,14 +1058,14 @@ class TestSouthwestCityRamps:
     box; after the bridge /
     harbours / guards, before the quays; the first harbour pair +harbour1ShiftM northeast (the second deco follows)."""
 
-    def test_regular_slipway_order_and_harbour_shift(self):
+    def test_regular_slipway_order_and_harbour_shift(self, steam_twin):
         t = _code(_text(LONDON))
         k = dict(re.findall(r"(?:float |int )?(\w+)\s*=\s*([-\w.]+);", t))
         assert float(k["harbour1ShiftM"]) == 17.0 and float(k["rampWidthM"]) > 22.0 and float(k["rampTopM"]) == 1.0
         assert float(k["rampBottomM"]) < 0.0 and int(k["rampStepCount"]) == 5 and float(k["rampRouteClearM"]) == 3.0
         assert float(k["rampLenM"]) == 10.0 and float(k["rampXM"]) == 0.5 * float(k["rampWidthM"])   # half depth; on the map edge
         s = t[t.index("float rampX1 = "):t.index("rmEchoInfo(\"LONDON city ramps")]
-        assert s.count("rmAddAreaConstraint(") == 2 and s.count("rmAddAreaConstraint(rampArea, rampBox);") == 2   # the box only
+        assert s.count("rmAddAreaConstraint(") == 4 and s.count("rmAddAreaConstraint(rampArea, rampBox);") == 4   # the box only (both pairs)
         for line in ("rmSetAreaSize(rampArea, 0.7, 0.7);", "rmSetAreaCoherence(rampArea, 1.0);", "rmSetAreaBaseHeight(rampArea, rampH);",
                      "rmSetAreaHeightBlend(rampArea, 0);", "rmSetAreaElevationVariation(rampArea, 0.0);",
                      "rmSetAreaTerrainType(rampArea, \"city\\ground1_city_street_ground\");", "rampEndS = zLaneS - rmZMetersToFraction(rampRouteClearM);",
@@ -1073,7 +1077,53 @@ class TestSouthwestCityRamps:
         assert t.index("int bridgeInst = placeIsland(") < t.index("rmPlaceObjectDefAtLoc(harbourS2GuardDef") < t.index("rmCreateArea(\"ramp south step \"") < t.index("quaySegment(0.0, wallS")
         assert "float harbour1X = xRoad - rmXMetersToFraction(rowGapNearM + 6.5 * rowPitchM) + rmXMetersToFraction(harbour1ShiftM);" in t
         assert "float decoX2 = (harbour1X + harbour2X) * 0.5;" in t
-        assert LONDON.read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
+        steam_twin(LONDON, "00000_zplondon.xs")
+
+
+class TestNortheastCityRamps:
+    """8.5 (user 2026-09-24, after the in-game look: 'amazing!!! Please add another pair to northeast and move the deco'):
+    the southwest steps mirrored against the x = 1 edge in the same loop, every step in classRamp; the last riverside deco
+    (11) moves deco4ShiftM southwest and must keep its units clear of the bridge's east face near the banks and of the new
+    ramps (units read from the grouping exports); the London riverside decos paint no terrain (user 2026-09-24)."""
+
+    KNOB = r"(?:float |int )?([A-Za-z_0-9]+)[ ]*=[ ]*([-A-Za-z_0-9.]+);"
+    POS = r'posx="([-0-9.]+)" posz="([-0-9.]+)"'
+
+    def _posx(self, name, near_banks=False):
+        s = (REPO / "game/randmaps/groupings" / (name + ".xml")).read_text(encoding="utf-8", errors="replace")
+        return [float(a) for a, b in re.findall(self.POS, s) if not near_banks or abs(float(b)) >= 30.0]
+
+    def test_mirrored_pair_class_and_the_deco_clearances(self, steam_twin):
+        t = _code(_text(LONDON))
+        k = dict(re.findall(self.KNOB, t))
+        s = t[t.index("float rampX1 = "):t.index('rmEchoInfo("LONDON city ramps southwest')]
+        assert 'rmDefineClass("classRamp");' in t and t.index('rmDefineClass("classRamp");') < t.index("float rampX1 = ")
+        assert "float rampNEX1 = 1.0 - rmXMetersToFraction(rampXM + 0.5 * rampWidthM);" in s
+        assert "float rampNEX2 = 1.0 - rmXMetersToFraction(rampXM - 0.5 * rampWidthM);" in s
+        for bank in ("south", "north"):
+            assert ('rampBox = rmCreateBoxConstraint("ramp box NE %s " + rampStep, rampNEX1, rampZa, rampNEX2, rampZb);' % bank) in s
+            assert ('rampArea = rmCreateArea("ramp NE %s step " + rampStep);' % bank) in s
+            assert s.index('"ramp %s step "' % bank) < s.index('"ramp NE %s step "' % bank)
+        loop = s[s.index("for (rampStep = 0; < rampStepCount)"):]
+        terrain = 'rmSetAreaTerrainType(rampArea, "city' + chr(92) + 'ground1_city_street_ground");'
+        for line, n in (("rmBuildArea(rampArea);", 4), ("rmSetAreaHeightBlend(rampArea, 0);", 4), (terrain, 4),
+                        ('rmAddAreaToClass(rampArea, rmClassID("classRamp"));', 4), ("rmAddAreaConstraint(rampArea, rampBox);", 4)):
+            assert loop.count(line) == n, (line, loop.count(line))
+        assert ("float decoX4 = (xRoad + rmXMetersToFraction(bridgeOffX + bridgeEastWallM) + 1.0) * 0.5 - rmXMetersToFraction(deco4ShiftM);" in t)
+        # metres: London's x side is 360 m at every player count, the road is authored (roadAsk)
+        W = 360.0
+        bridge0 = float(k["roadAsk"]) * W + float(k["bridgeOffX"])
+        deco4 = (bridge0 + float(k["bridgeEastWallM"]) + W) * 0.5 - float(k["deco4ShiftM"])
+        ramp_west = W - float(k["rampXM"]) - 0.5 * float(k["rampWidthM"])
+        assert ramp_west + float(k["rampWidthM"]) == W                                  # flush with the northeast edge
+        deco = self._posx("EU_SPC_London_Riverside_SE_01") + self._posx("EU_SPC_London_Riverside_NW_01")
+        bridge_east = bridge0 + max(self._posx("EU_SPC_London_Bridge", near_banks=True))
+        assert deco4 + max(deco) + 2.0 <= ramp_west, (deco4, max(deco), ramp_west)          # units clear of the ramps
+        assert deco4 + min(deco) - 2.0 >= bridge_east, (deco4, min(deco), bridge_east)      # ... and of the bridge
+        for n in ("EU_SPC_London_Riverside_SE_01", "EU_SPC_London_Riverside_NW_01"):   # user 2026-09-24: 'remove THE RIVER DECO
+            g = (REPO / "game/randmaps/groupings" / (n + ".xml")).read_text(encoding="utf-8", errors="replace")   # TERRAIN'
+            assert "<tiles></tiles>" in g and "<tilegroup" not in g and g.count("<unit ") > 50, n   # its sand painted the ramp
+        steam_twin(LONDON, "00000_zplondon.xs")
 
 
 class TestScope:

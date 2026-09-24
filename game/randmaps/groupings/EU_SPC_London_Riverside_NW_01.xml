@@ -61,40 +61,5 @@
 		<unit variation="67" posx="18.2483" posz="2.0023" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">HarbourPathBlock</unit>
 		<unit variation="46" posx="19.0733" posz="2.1498" orientx="1.0000" orienty="-0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
 	</units>
-	<tiles>
-		<tilegroup type="PassableLand" subtype="city\ground1_city_street_ground">
-			<block startx="-11" startz="3" endx="-7" endz="3"></block>
-			<block startx="-11" startz="2" endx="-7" endz="2"></block>
-			<block startx="-11" startz="1" endx="-7" endz="1"></block>
-			<block startx="-11" startz="0" endx="-7" endz="0"></block>
-			<block startx="-11" startz="-1" endx="-7" endz="-1"></block>
-			<block startx="-11" startz="-2" endx="-7" endz="-2"></block>
-			<block startx="-11" startz="-3" endx="-7" endz="-3"></block>
-			<block startx="-11" startz="-4" endx="-7" endz="-4"></block>
-			<block startx="-6" startz="3" endx="1" endz="3"></block>
-			<block startx="-6" startz="2" endx="1" endz="2"></block>
-			<block startx="-6" startz="1" endx="1" endz="1"></block>
-			<block startx="-6" startz="0" endx="1" endz="0"></block>
-			<block startx="2" startz="3" endx="9" endz="3"></block>
-			<block startx="2" startz="2" endx="9" endz="2"></block>
-			<block startx="2" startz="1" endx="9" endz="1"></block>
-			<block startx="2" startz="0" endx="9" endz="0"></block>
-			<block startx="2" startz="-1" endx="9" endz="-1"></block>
-			<block startx="2" startz="-2" endx="9" endz="-2"></block>
-			<block startx="2" startz="-3" endx="9" endz="-3"></block>
-			<block startx="2" startz="-4" endx="9" endz="-4"></block>
-			<block startx="-6" startz="-1" endx="1" endz="-1"></block>
-			<block startx="-6" startz="-2" endx="1" endz="-2"></block>
-			<block startx="-6" startz="-3" endx="1" endz="-3"></block>
-			<block startx="-6" startz="-4" endx="1" endz="-4"></block>
-			<block startx="10" startz="3" endx="10" endz="3"></block>
-			<block startx="10" startz="2" endx="10" endz="2"></block>
-			<block startx="10" startz="1" endx="10" endz="1"></block>
-			<block startx="10" startz="0" endx="10" endz="0"></block>
-			<block startx="10" startz="-1" endx="10" endz="-1"></block>
-			<block startx="10" startz="-2" endx="10" endz="-2"></block>
-			<block startx="10" startz="-3" endx="10" endz="-3"></block>
-			<block startx="10" startz="-4" endx="10" endz="-4"></block>
-		</tilegroup>
-	</tiles>
+	<tiles></tiles>
 </grouping>
