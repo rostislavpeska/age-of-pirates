@@ -6,6 +6,12 @@ skill.
 
 ## The rules of the process
 
+0. **After EVERY load: look at the post-load screenshot before anything else. No exception** (owner 2026-09-24,
+   after run 32).
+   - The driver always saves `runs/_loaded/loaded.png` (copied into the run folder) and prints `LOADED SCREENSHOT: ... - LOOK AT IT`. Read that image the moment the line appears.
+   - An AI compile error is a modal dialog there, before any log line is read.
+   - Report a dialog to the owner at once, then fix the code, dismiss the dialog, quit the match and rerun.
+   - Runs 19 and 32 each died on an XS syntax error; in run 32 the owner saw the dialog before the agent did.
 1. **Requirements first, as hard numbers, before any run.**
    - Each criterion has an id, a boundary and a source line in the record (`criteria_london.py`,
      `criteria_baseline.py`).

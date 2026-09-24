@@ -3402,10 +3402,17 @@ minInterval 5
    // AI test campaign (echo only, gAITestDiag): the dock decision once a minute - wanted or not, and what plan creation returned
    static int dockDiagTime = -60000;
    bool dockDiag = false;
-   if (gAITestDiag == true && xsGetTime() - dockDiagTime >= 60000)
+   int dockDiagAge = xsGetTime() - dockDiagTime;   // plain steps: XS rejected 'a == true && t - x >= y' (run 32, Error 0308)
+   if (gAITestDiag == true)
+   {
+      if (dockDiagAge >= 60000)
+      {
+         dockDiag = true;
+      }
+   }
+   if (dockDiag == true)
    {
       dockDiagTime = xsGetTime();
-      dockDiag = true;
       if (dockNeeded == true)
       {
          aiEcho("AIDOCK p" + cMyID + " wanted, docks " + dockCount + " age " + kbGetAge() + " existing plan " + aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit));

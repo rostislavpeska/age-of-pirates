@@ -483,3 +483,27 @@ class TestRoundSixCriteria:
     def test_a_reappeared_gate_left_alone_fails(self):
         L = self.base() + ["00:20:00  (1): LONDONGATE p2 gate 900 reappeared kind bridgeFar owner 3 hp 2000 - reserve again"]
         assert self.verdicts(L)["L9"] == "FAIL"
+
+
+def suspect_and_then_subtraction_compare(cond):
+    """Run 32 (2026-09-24): aibuildings.xs(3405) 'if (gAITestDiag == true && xsGetTime() - dockDiagTime >= 60000)'
+    -> XS Error 0308 / 0135, every AI dead. An unparenthesised subtraction compared right after '&&'; the stock core
+    never writes it (0 conditions). Plain steps into a local are the safe form."""
+    return re.search(r"&&\s*[A-Za-z_][\w.]*(\([^()]*\))?\s*-\s*[A-Za-z_]\w*(\([^()]*\))?\s*(<|>|<=|>=|==)", cond) is not None
+
+
+@pytest.mark.parametrize("name", sorted(f for f in os.listdir(CORE) if f.endswith(".xs")))
+def test_no_condition_has_the_run_32_rejected_shape(name):
+    text = re.sub(r"//[^\n]*", "", core(name))
+    bad = [(n, c.strip()[:90]) for n, c in xs_conditions(text) if suspect_and_then_subtraction_compare(c)]
+    assert not bad, bad
+
+
+def test_the_lint_catches_the_run_32_line():
+    assert suspect_and_then_subtraction_compare("gAITestDiag == true && xsGetTime() - dockDiagTime >= 60000")
+    assert not suspect_and_then_subtraction_compare("xsGetTime() - gLastAttackMissionTime < (gAttackMissionInterval * 0.65)")
+
+
+def test_the_driver_always_takes_the_loaded_screenshot():
+    s = open(os.path.join(AITEST, "driver.py"), encoding="utf-8").read()
+    assert "LOADED SCREENSHOT" in s and "loaded.png" in s

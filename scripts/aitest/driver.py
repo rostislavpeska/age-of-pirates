@@ -43,6 +43,7 @@ LOG = os.path.join(USERDIR, "Logs", "Age3Log.txt")
 AI_FILE = os.path.normpath(os.path.join(
     HERE, "..", "..", "game", "ai", "core", "aipiraterules.xs"))
 STEAM_URL = "steam://rungameid/933110"
+LOADED_DIR = os.path.join(HERE, "runs", "_loaded")   # the post-load screenshot; the driver copies it into the run folder
 AI_HASH_AT_PLAY = None
 EXE = "AoE3DE_s.exe"
 
@@ -474,6 +475,16 @@ def start_match(nav, from_lobby=False, blind=False, load_s=150, map_name=None):
             guard(); time.sleep(5)
         # an AI compile error kills every AI player and shows a modal dialog the blind driver cannot see
         # (run 19, 2026-09-23): the game log names it - stop the batch instead of watching dead AIs for 30 minutes
+        # ALWAYS a screenshot right after the load, no exception (owner 2026-09-24): an AI error dialog is visible
+        # there before any log line is read; the agent looks at it every run
+        try:
+            os.makedirs(LOADED_DIR, exist_ok=True)
+            loaded = os.path.join(LOADED_DIR, "loaded.png")
+            subprocess.run([sys.executable, os.path.join(HERE, "probe.py"), "shot", loaded], timeout=30)
+            print("   LOADED SCREENSHOT: %s - LOOK AT IT" % loaded)
+        except Exception as e:
+            print("   LOADED SCREENSHOT FAILED: %s - stopping" % e)
+            return -2
         if ai_files_hash() != AI_HASH_AT_PLAY:
             print("   WARNING: game/ai/core changed during generation + load - this run is AMBIGUOUS (which AI compiled?)")
         else:
@@ -679,6 +690,11 @@ def main():
         secs = int(time.time() - t0)
         rd = os.path.join(runs_dir, "run_%03d" % run_no)
         os.makedirs(rd, exist_ok=True)
+        try:
+            import shutil
+            shutil.copy(os.path.join(LOADED_DIR, "loaded.png"), os.path.join(rd, "loaded.png"))
+        except OSError:
+            pass
         with open(os.path.join(rd, "events.txt"), "w", encoding="utf-8") as f:
             f.write("\n".join(events))
         with open(results, "a") as f:
