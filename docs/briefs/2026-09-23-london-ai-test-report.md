@@ -584,3 +584,23 @@ The reverts are done and verified:
 | T1 | Trading Posts owned at the end (the new AIDIAG field `tps`) | **INFO**: the reverts must show normal claiming |
 
 **Done:** all pass / fail ids PASS on two consecutive runs. Then stop, report and propose. Nothing is added.
+
+## Run 34 - final regression check on Amazonia (build r9, commit 8e55aaf7)
+
+The owner closed the London work on 2026-09-24 ("the AI is good enough"). This is the last check, against the run 18
+floor. The driver selected Amazonia itself; the 5-player lobby held 4 AIs, where the floor had 1. The load was clean
+(loaded screenshot, hash 95f8b3e74018).
+
+**Verdict: PASS, all of B0-B5.**
+
+| Id | Measured |
+|---|---|
+| B0 | every AI echoes AIDIAG |
+| B5 | no AIDIAG says london 1; 0 LONDON lines in all four files |
+| B1 | 33:02 vs floor 18:01 |
+| B2 | Age III vs floor Age III |
+| B3 | worst player has 54 villagers vs floor 85 (bound 51) |
+| B4 | 69.9 failures / 10 min vs floor 48.3 (bound 101.6); 4 AIs on one map, bases stay at the stock 40 m |
+
+**Reading:** the London code, the forward-base swap and the construction markers are inert on a standard map. The
+stock AI behaves as on the floor: stock base size, stock placement failures, no London echo.
