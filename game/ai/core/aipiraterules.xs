@@ -340,29 +340,30 @@ minInterval 1
    }
 
    // London %%%%%%%%%%%%%%%%%%%%%%%
-   // Detected by the map name (owner 2026-09-24); 00000_zplondon is this device's loose copy of the same script. The
-   // London rules are the LONDON section at the end of this file (docs/briefs/2026-09-23-london-ai-plan.md); the
-   // stock handler and forward-base rules are replaced from here, never edited (Istanbul's pattern).
-   if (cRandomMapName == "zplondon" || cRandomMapName == "00000_zplondon")
+   // Detected by the player's OWN bridge marker (zpAILondonBridge, one per player at the bridge middle, zplondon.xs) -
+   // by unit, never by map name (owner 2026-09-24). The London rules are the LONDON section at the end of this file
+   // (docs/briefs/2026-09-23-london-ai-plan.md); the stock handler is replaced from here, never edited.
+   if (kbUnitCount(cMyID, cUnitTypezpAILondonBridge, cUnitStateAny) > 0)
    {
       gIsPirateMap = true;
       gIsLondon = true;
-      gPirateForwardBaseMap = true;
       xsEnableRule("buildPirateSocketTowers");   // rebuilds the Keep and bridge towers: it already queries both socket protos
       xsEnableRule("londonSetup");
       xsEnableRule("londonPlanPlacer");
-      xsEnableRule("pirateForwardBaseWatch");
       aiSetHandler("londonBuildingPlacementFailedHandler", cXSBuildingPlacementFailedHandler);
-      aiEcho("LONDON p" + cMyID + " build r10 2026-09-24 - map " + cRandomMapName + ", London rules on");
+      aiEcho("LONDON p" + cMyID + " build r11 2026-09-24 - marker found, London rules on");
    }
 
-   // Paris %%%%%%%%%%%%%%%%%%%%%%%
-   // owner 2026-09-24: the forward base the same way as London - the construction block on the other shore
-   if (cRandomMapName == "zpparis" || cRandomMapName == "00000_zpparis")
+   // Forward base at the enemy construction block %%%%%%%%%%%%%%%%%%%%%%%
+   // Any map whose script gives the player construction block markers (zpAILondonConstrMarker: London 12.11, Paris) -
+   // by unit (owner 2026-09-24: 'forwarded base - if player has such unit'); the stock forward-base rules are swapped
+   // for the copies by pirateForwardBaseWatch (Istanbul's pattern)
+   if (kbUnitCount(cMyID, cUnitTypezpAILondonConstrMarker, cUnitStateAny) > 0)
    {
       gPirateForwardBaseMap = true;
       xsEnableRule("pirateForwardBaseWatch");
-      aiEcho("PARIS p" + cMyID + " build r10 2026-09-24 - map " + cRandomMapName + ", forward base at the enemy construction block");
+      aiEcho("PIRATEFB p" + cMyID + " build r11 2026-09-24 - " + kbUnitCount(cMyID, cUnitTypezpAILondonConstrMarker, cUnitStateAny)
+             + " construction markers, forward base at the enemy construction block");
    }
 
    // Naval KOTH Maps %%%%%%%%%%%%%%%%%%%%%%%

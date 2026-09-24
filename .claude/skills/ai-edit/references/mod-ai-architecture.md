@@ -15,7 +15,7 @@ says it means.
 
 | Need | Pattern | Example |
 |---|---|---|
-| a map needs its own behaviour | detect by map name in `initializePirateRules`, enable the mod's own rules | `cRandomMapName == "zplondon"` enables `londonSetup`, `londonPlanPlacer` |
+| a map needs its own behaviour | detect by the player's own marker unit in `initializePirateRules`, enable the mod's own rules | `zpAILondonBridge` enables `londonSetup`, `londonPlanPlacer`; `zpAILondonConstrMarker` enables the forward base on any map that places it |
 | a stock rule must behave differently on a map | **switch the stock rule off, run a copy** (Istanbul's pattern). A watch rule disables the stock rule whenever a stock monitor re-enables it. The copy changes only the lines it must, and a test pins the difference. | `pirateForwardBaseWatch` swaps `forwardBaseManager` / `forwardTowerBaseManager` for `pirateForwardBaseManager` / `pirateForwardTowerBaseManager`; only the location line differs |
 | a stock event handler must behave differently | `aiSetHandler("<ours>", cXS...Handler)` from `initializePirateRules`. That runs after the stock `initXSHandlers`, so ours wins. Wrap with a call to the stock function, or use a copy for internal changes. | `aiTestPlacementFailedHandler` (counts, then calls the stock handler), `londonBuildingPlacementFailedHandler` (London copy) |
 | a stock function computes something inside a plan's creation | a rule re-points the plans afterwards | `londonPlanPlacer`: every second, estates and Town Center plans get the countryside point |
@@ -26,10 +26,16 @@ a map name in a stock file.
 
 ## Detection
 
-Detect the map by name (`cRandomMapName`), next to the other pirate map lists in `initializePirateRules`. Also accept
-the device's loose editor copy (`00000_<map>`). Detection in the editor is not needed (owner 2026-09-24). Map markers
-remain the way the AI finds places: the London bridge marker `zpAILondonBridge` and the construction block marker
-`zpAILondonConstrMarker`, which London and Paris both use.
+**By unit, never by map name** (owner 2026-09-24: "all unit based"). A feature switches on when the player owns its
+marker, which the map script places once per player (editor-only, Tracked, owned by the player so the AI's own query
+sees it):
+
+- `zpAILondonBridge`: the London rules (war plan, gate killer, Keep hold, placement).
+- `zpAILondonConstrMarker`: the forward base at the enemy construction block, on any map that places it (London,
+  Paris). The map places it next to the construction block grouping, never inside the shared grouping.
+- `zpAIStartUrbanMap`: the Paris city chain (`cityGateKiller`).
+
+The same markers are how the AI finds the places. A new map gets a feature by placing its marker; no AI change.
 
 ## Enforced by tests (`scripts/aitest/tests/test_aitest.py`)
 

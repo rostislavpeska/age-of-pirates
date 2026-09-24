@@ -69,8 +69,9 @@ Every unrequested change risks a working state. The night's toxic changes were m
 
 ## 3. The map-specific pattern
 
-- **Detection by map name** (owner 2026-09-24) in `initializePirateRules`: `cRandomMapName == "zplondon"` sets
-  `gIsLondon`; `zpparis` enables the shared forward base. Map markers stay the way the AI finds places.
+- **Detection by unit, never by map name** (owner 2026-09-24) in `initializePirateRules`: the player's own
+  `zpAILondonBridge` sets `gIsLondon`; its own `zpAILondonConstrMarker` enables the shared forward base (London,
+  Paris, any map that places it).
 - **Guards:** every helper starts with `if (gIsLondon == false) { return (...); }` (tested). There are no hooks in
   stock functions: a stock rule is switched off and a copy runs (Istanbul's pattern), a stock handler is replaced
   with `aiSetHandler`.
