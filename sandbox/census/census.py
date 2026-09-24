@@ -118,11 +118,7 @@ def main(argv):
         return 2
     path = Path(argv[0])
     full = "--full" in argv
-    by_id, by_dbid = proto_names()
-    units = parse_units(path)
-    for u in units:
-        u["proto"] = by_id.get(u["proto_id"]) or by_dbid.get(u["proto_id"]) \
-            or f"unknown({u['proto_id']})"
+    units = census(path)          # runtime index -> name, as the importable entry point does (2026-09-24)
     print(f"{path.name}: {len(units)} units")
     xs = [u["x"] for u in units]
     zs = [u["z"] for u in units]

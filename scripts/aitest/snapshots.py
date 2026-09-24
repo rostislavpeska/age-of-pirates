@@ -7,6 +7,7 @@ Takes: minimap.png (the minimap crop), full.png, then base_<colour>.png for each
 the camera is moved by clicking the centroid of that colour's pixels on the minimap (the densest cluster = the base).
 Only moves the camera; never selects or orders anything. Measured on the 2880x1800 sheet (minimap_center).
 """
+import json
 import os
 import subprocess
 import sys
@@ -32,8 +33,32 @@ def shot(path):
     subprocess.run([sys.executable, os.path.join(HERE, "probe.py"), "shot", path], timeout=30)
 
 
+def world_targets(out, targets_json, size, screen="ingame"):
+    """2026-09-24 (minimap-twin skill): photograph a list of WORLD targets through the measured calibration -
+    targets.json = [{"name": ..., "x_m": ..., "z_m": ...}, ...]; needs scripts/mapview/cal/<screen>_<WxH>.json.
+    Each shot verifies the camera trapezoid (camera.py); the colour-cluster mode below stays the fallback."""
+    sys.path.insert(0, os.path.join(HERE, "..", ".."))
+    from scripts.mapview import camera
+    sx, sz = (float(x) for x in size.lower().split("x"))
+    targets = json.load(open(targets_json, encoding="utf-8"))
+    os.makedirs(out, exist_ok=True)
+    results = []
+    for t in targets:
+        try:
+            results.append(camera.shot(float(t["x_m"]), float(t["z_m"]), sx, sz, t["name"], out=out, screen=screen))
+        except Exception as e:
+            print("%s: %s" % (t.get("name"), e)); results.append({"name": t.get("name"), "error": str(e)})
+    with open(os.path.join(out, "world_targets.json"), "w", encoding="utf-8") as f:
+        json.dump(results, f, indent=1)
+    return 0 if all(r.get("ok") for r in results) else 1
+
+
 def main():
     out = sys.argv[1]
+    if "--world" in sys.argv:
+        a = sys.argv
+        return world_targets(out, a[a.index("--world") + 1], a[a.index("--size") + 1],
+                             a[a.index("--screen") + 1] if "--screen" in a else "ingame")
     os.makedirs(out, exist_ok=True)
     from PIL import Image
     nav = driver.load_coords()
