@@ -27,6 +27,7 @@ backups/
 #   whichsheet.json  selects the local device's coordinate sheet
 #                    (sheets in coords/ are resolution-keyed and TRACKED)
 scripts/aitest/runs/
+scripts/aitest/last_lobby.png
 scripts/aitest/results.csv
 scripts/aitest/whichsheet.json
 scripts/aitest/recording_tmp.mp4
