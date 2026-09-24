@@ -1,6 +1,6 @@
 ---
 name: rm-groupings-deploy
-description: Groupings on random maps - the three copies (repo game/randmaps/groupings is canonical, only the profile folder is a deploy target; Steam Game\RandMaps\groupings is vanilla-only), the one-way deploy flow, the process-start indexing rule, the grouping XML anatomy (units, tilegroup base terrain, flattener line, variation index, socket-last), and how to prove a grouping spawned. Use when a grouping does not spawn, when editing or cloning a grouping, when two copies differ, or when repainting a grouping's ground. Triggers on "grouping", "rmCreateGrouping", "village does not spawn", "deploy the grouping", "tilegroup", "ground flattener", "variation", "socket last".
+description: Groupings on random maps - the three copies (the repo's game/randmaps/groupings is the source of truth AND what the game reads; the profile folder is an optional mirror, synced only on request; Steam Game\RandMaps\groupings is vanilla-only), the one-way flow, the process-start indexing rule, the grouping XML anatomy (units, tilegroup base terrain, flattener line, variation index, socket-last), and how to prove a grouping spawned. Use when a grouping does not spawn, when editing or cloning a grouping, when two copies differ, or when repainting a grouping's ground. Triggers on "grouping", "rmCreateGrouping", "village does not spawn", "deploy the grouping", "tilegroup", "ground flattener", "variation", "socket last".
 ---
 
 # rm-groupings-deploy
@@ -9,15 +9,19 @@ description: Groupings on random maps - the three copies (repo game/randmaps/gro
 
 | Copy | Role |
 |---|---|
-| `game/randmaps/groupings/<Name>.xml` (repo) | CANONICAL. Edit here only. Shipped by the mod. |
-| `<profile>\RandMaps\groupings\` | the ONLY deploy target - what the game indexes for Skirmish and the editor |
+| `game/randmaps/groupings/<Name>.xml` (repo) | THE SOURCE OF TRUTH, and what the game reads (the mod folder is the live mod). Edit here only; the remote repo is the truth across devices. |
+| `<profile>\RandMaps\groupings\` | NOT needed for spawning. An optional mirror (e.g. for editor re-saves); sync it from the repo only when the user asks. What is there does not matter. |
 | Steam `Game\RandMaps\groupings\` | VANILLA ONLY. Never write, copy, edit or delete there (user rule 2026-09-22). |
 
-Deploy = copy repo -> the profile folder only, then restart the game: the grouping index is built at process
-start (File > New does not re-read it). A grouping the map names that is missing from the index
-spawns NOTHING, silently (IS_Shore harbours, 2026-08-14). Before any transform, diff unit counts
-across the two copies (repo, profile); if they differ, say so and use the repo copy - deployed copies go stale
-and editor re-saves land under new names (`native inuit village 1.xml` vs `Native Inuit Village 01.xml`).
+Proof (2026-09-24, the 2880x1800 test device): the profile folder held none of the London groupings, yet all 67
+London groupings spawned in the editor, and `EU_SPC_London_Bridge` spawned with 111 members - the repo file of that
+morning (one pole removed, 112 -> 111), so the game read the repo copy (twin report
+docs/briefs/2026-09-24-minimap-twin-test-report.md). The older rule here ("the profile folder is the ONLY deploy
+target") was wrong; do not copy groupings to the profile folder to make them spawn. After editing a grouping, restart
+the game before testing (the index is believed to be built at process start; File > New does not re-read it). A
+grouping the map names that exists in no copy spawns NOTHING, silently (IS_Shore harbours, 2026-08-14). If a profile
+copy differs from the repo, the repo copy wins; editor re-saves land there under new names
+(`native inuit village 1.xml` vs `Native Inuit Village 01.xml`) and must be brought back into the repo by hand.
 
 ## The Steam root is off limits (user rule, 2026-09-22)
 
@@ -26,7 +30,7 @@ and the 2026-09-10 DLC update, incl. `european\` and the Stuart/Sami/Inuit villa
 accumulated there (85 files; 46 stale against the repo, the whole Istanbul set a month behind) were stripped
 on 2026-09-22 after verifying a repo copy existed for each. A stale root copy shadows the repo silently, so:
 
-- never deploy, edit or re-save a mod grouping into the Steam root; the profile folder is the deploy target;
+- never deploy, edit or re-save a mod grouping into the Steam root; the repo is where groupings live;
 - never delete anything there either - the two mod files WITHOUT a repo copy (`IS_SPC_Construction`,
   `IS_SPC_Fisherman_Float`, the latter used by the root-only 000_istanbul test copy) stay until the user decides;
 - audit recipe: any top-level file whose mtime is outside the Steam clusters, or whose name exists in the

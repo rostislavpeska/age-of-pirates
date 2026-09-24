@@ -7,8 +7,10 @@ description: Detect and fix out-centred city block groupings (EU_ / IT_ / IS_ bl
 
 The game, the editor and every test map run ONLY on the user's word. Groupings load at game START: after any
 build or apply the game must restart before a test means anything (`workflow.py status` says so). Never write
-into the Steam `Game\RandMaps\groupings` folder; the repo is canonical, the profile `RandMaps\groupings` is the
-only deploy target (`rm-groupings-deploy`).
+into the Steam `Game\RandMaps\groupings` folder; the repo is the source of truth and what the game reads, the
+profile `RandMaps\groupings` is only a mirror (`rm-groupings-deploy`, corrected 2026-09-24). `workflow.py` still
+writes the profile copy too, and its restart check keys on the profile's mtimes - treat the repo file's mtime as
+the one that counts.
 
 ## 1. What "out-centred" is
 

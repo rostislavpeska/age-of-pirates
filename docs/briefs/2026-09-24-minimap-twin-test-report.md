@@ -62,7 +62,8 @@ Every other MISSING line is route-docked or a runtime point, and each carries it
 
 The London groupings are absent from this device's profile `RandMaps\groupings` folder. They spawned anyway, all 67
 of them, so the mod's own `game/randmaps/groupings` is being read. That contradicts the skill `rm-groupings-deploy`
-("the profile folder is the only deploy target"). I did not change the skill; this is for you to confirm.
+("the profile folder is the only deploy target"). **Resolved (owner, 2026-09-24):** the repo is the source
+of truth and what spawns; the profile folder does not matter and is synced only on request. Both skills are corrected.
 
 ## T3: London Bridge ids: PASS (the prediction holds)
 
@@ -183,7 +184,7 @@ says.
    in a match they read 3.5 px and fail. Option A: scale the band with the rim (r / 130.5). Option B: measure a
    match band separately. Option C: leave in-match records unchecked. I did none of these. The in-match record is
    unchecked, with its evidence in its note.
-2. **`rm-groupings-deploy` says the profile folder is the only deploy target.** On this device the London groupings
+2. **RESOLVED - the repo is what spawns; skills corrected.** Originally: `rm-groupings-deploy` said the profile folder is the only deploy target. On this device the London groupings
    are not in the profile folder, yet all 67 spawned. Should the skill say that the mod's `game/randmaps/groupings`
    is read?
 3. **The root copy `00000_zplondon`:** keep it on this device, or remove it after the tests?
