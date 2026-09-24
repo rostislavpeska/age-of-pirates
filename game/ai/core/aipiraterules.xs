@@ -30,7 +30,6 @@ extern int gLondonKeepFar = -1;
 extern int gLondonDiagPass = 0;
 // round 2 (2026-09-23): war plan + gate killer. Run 15 measured kbCanPath2 = 1 across both standing gaia bridge
 // gates and one area group for both banks, so the crossing is judged by the gates' state, not by the pathfinder.
-extern int gLondonWarState = 0;                 // 0 not started, 1 held (crossing closed), 2 released (crossing open)
 extern int gLondonWarPasses = 0;                // passes held
 extern int gLondonGatePlan = -1;                // the gate killer's reserve, pri 90 (Paris cityGateKiller)
 extern int gLondonGateKind = 0;                 // the current target: 1 near Keep gate, 2 our bridge gate, 3 far bridge gate, 4 far Keep gate

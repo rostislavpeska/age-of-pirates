@@ -1941,10 +1941,11 @@ bool addBuilderToPlan(int planID = -1, int puid = -1, int numberBuilders = 1)
 // selectForwardBaseLocation
 //==============================================================================
 //==============================================================================
-// londonForwardBasePoint - London: the forward base at our own bridgehead - on our bank, 50 m from the bridge middle
-// along the road (the EU_SPC_London_Bridge deck runs ~41 m either side of its middle, its gates at -13 / +10 m), so
-// the forward buildings stand next to the bridge the battle crosses (owner 2026-09-24: 'there is a spot next to the
-// bridge perfect for it'). The stock rules still decide when and whether; only the place is London's.
+// londonForwardBasePoint - London: the forward base at the ENEMY bridgehead - on their bank, 50 m from the bridge
+// middle along the road (the EU_SPC_London_Bridge deck runs ~41 m either side of its middle, its gates at -13 / +10 m)
+// - once the London war plan has released the attack (gLondonWarState 2, the crossing open); cInvalidVector before
+// that, and the stock rule simply asks again later (owner 2026-09-24: 'a spot next to the bridge perfect for it ...
+// can be also enemy bridgehead, maybe that one makes more sense'). The stock rules still decide when and whether.
 //==============================================================================
 vector londonForwardBasePoint(void)
 {
@@ -1965,8 +1966,18 @@ vector londonForwardBasePoint(void)
    {
       return (cInvalidVector);
    }
+   if (gLondonWarState != 2)
+   {
+      if (xsGetTime() - lastEcho >= 60000)
+      {
+         lastEcho = xsGetTime();
+         aiEcho("LONDONPLACE p" + cMyID + " forward base asked, crossing still closed (war state " + gLondonWarState + ") - later");
+      }
+      return (cInvalidVector);
+   }
    bridgeVec = kbUnitGetPosition(marker);
-   if (xsVectorGetZ(baseVec) < xsVectorGetZ(bridgeVec))
+   // the enemy bank: the side of the bridge middle opposite our base
+   if (xsVectorGetZ(baseVec) > xsVectorGetZ(bridgeVec))
    {
       side = -1.0;
    }
@@ -1974,7 +1985,7 @@ vector londonForwardBasePoint(void)
    if (xsGetTime() - lastEcho >= 60000)
    {
       lastEcho = xsGetTime();
-      aiEcho("LONDONPLACE p" + cMyID + " forward base next to the bridge at " + xsVectorGetX(point) + "/" + xsVectorGetZ(point));
+      aiEcho("LONDONPLACE p" + cMyID + " forward base next to the bridge at " + xsVectorGetX(point) + "/" + xsVectorGetZ(point) + " (enemy bridgehead)");
    }
    return (point);
 }
@@ -1986,14 +1997,12 @@ vector selectForwardBaseLocation(void)
    vector v = cInvalidVector; // Scratch variable for intermediate calcs.
 
    debugBuildings("Selecting forward base location");
-   // LONDON: the forward base stands at our own bridgehead (londonForwardBasePoint)
+   // LONDON: the forward base stands at the enemy bridgehead once the crossing is open (londonForwardBasePoint);
+   // before that there is none, and the stock rule asks again later
    if (gIsLondon == true)
    {
       vector londonForwardVec = londonForwardBasePoint();
-      if (londonForwardVec != cInvalidVector)
-      {
-         return (londonForwardVec);
-      }
+      return (londonForwardVec);
    }
    // Will be used to determine how far out we should put the fort on the line from our base to enemy TC.
    float distanceMultiplier = 0.5; 

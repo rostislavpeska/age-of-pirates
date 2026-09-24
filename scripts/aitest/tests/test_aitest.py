@@ -142,7 +142,8 @@ def declarations(name):
 
 
 class TestAIFiles:
-    @pytest.mark.parametrize("name", ["gAITestDiag", "gPlacementFailures", "gPlacementFailuresTC", "gIsLondon"])
+    @pytest.mark.parametrize("name", ["gAITestDiag", "gPlacementFailures", "gPlacementFailuresTC", "gIsLondon",
+                                      "gLondonWarState"])
     def test_campaign_globals_are_declared_once_in_aiglobals(self, name):
         assert declarations(name) == ["aiglobals.xs"]
 
