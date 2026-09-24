@@ -3327,6 +3327,8 @@ void main(void)
 	// ====================================================================
 	int foodBack = 4;   // tiles back from the road's far end
 	int foodInS  = 6;   // SOUTH only: 2 more tiles toward the city
+	float foodToSaw = 8.0;   // metres, BOTH: the mill toward its sawmill along Z (2026-09-24,
+	                         // room for the ruined temple; north 3.6 m / south 8.2 m left to the sawmill)
 
 	int foodRoadN = rmCreateGrouping("food road end north", "IS_Resource_Block_Food3");
 	rmSetGroupingMinDistance(foodRoadN, 0.0);
@@ -3334,7 +3336,7 @@ void main(void)
 	rmAddGroupingToClass(foodRoadN, rmClassID("classBlock"));
 	rmPlaceGroupingAtLoc(foodRoadN, 0,
 		nx5 + flankProm + rmXTilesToFraction(rampOut + roadOut) - rmXTilesToFraction(foodBack),
-		(nz5 + nz6) * 0.5 + rmZTilesToFraction(roadEdgeZ));
+		(nz5 + nz6) * 0.5 + rmZTilesToFraction(roadEdgeZ) - rmZMetersToFraction(foodToSaw));
 
 	int foodRoadS = rmCreateGrouping("food road end south", "IS_Resource_Block_Food3");
 	rmSetGroupingMinDistance(foodRoadS, 0.0);
@@ -3344,7 +3346,7 @@ void main(void)
 		sx1 - flankProm - rmXTilesToFraction(rampOutS + roadOut)
 		+ rmXTilesToFraction(roadInS) + rmXTilesToFraction(foodBack)
 		- rmXTilesToFraction(foodInS),
-		(sz5 + sz6) * 0.5 - rmZTilesToFraction(roadEdgeZ));
+		(sz5 + sz6) * 0.5 - rmZTilesToFraction(roadEdgeZ) + rmZMetersToFraction(foodToSaw));
 
 	// ====================================================================
 	//  SAWMILLS - lifted from Istanbul_Sawmills.age3Yscn.
