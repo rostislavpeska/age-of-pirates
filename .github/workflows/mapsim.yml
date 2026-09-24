@@ -25,4 +25,4 @@ jobs:
           pip install pytest
       - name: Run Tests
         run: |
-          python -m pytest scripts/mapsim/tests -q -m "not local"
+          python -m pytest scripts/mapsim/tests scripts/mapview/tests -q -m "not local"
