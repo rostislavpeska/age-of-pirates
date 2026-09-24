@@ -1,5 +1,9 @@
 # AI landing test harness — navigation & operation
 
+> **Current procedure (2026-09-24):** the `ai-edit` skill - `.claude/skills/ai-edit/references/test-environment.md`,
+> `testing-process.md`, `criteria.md`. This file is the Istanbul-era original: its map, test flag and live-log
+> channel are out of date (the per-player files are the record now).
+
 Automates skirmish test runs of the Istanbul landing AI: launch → lobby →
 match → live verdict from `Age3Log.txt` → per-run log archive → restart.
 Built for unattended batches (the 1000-run campaign); a human only intervenes

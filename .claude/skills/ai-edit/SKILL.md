@@ -9,7 +9,9 @@ description: The entry point for ANY change under game/ai (the XS AI scripts) - 
 |---|---|
 | this page | always, first |
 | [references/rules-puzzle.md](references/rules-puzzle.md) | before adding a rule or touching a stock rule's switch: the families, handlers, plan priorities and the London chain |
+| [references/test-environment.md](references/test-environment.md) | setting up a device / session: user.cfg, crash dumps, screen, coordinate sheet, lobby (with the **game-startup** and **ui-calibrate** skills) |
 | [references/testing-process.md](references/testing-process.md) | before and during any in-game test: the phases, the driver, the rules of the cycle |
+| [references/criteria.md](references/criteria.md) | every success criterion, the echo line it reads, its bound; judging a run from the logs; adding a criterion |
 | [references/validation-tests.md](references/validation-tests.md) | before every commit, and when adding a test or lint |
 | [references/findings-2026-09.md](references/findings-2026-09.md) | before any London work: what works, what was reverted and why, engine and harness facts |
 | `docs/ai_scripting_guidelines.md` | the 13 hard-won rules (shared query object, plan priorities, silent engine failures, echo discipline ...) |
