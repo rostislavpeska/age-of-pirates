@@ -267,10 +267,12 @@ class TestLondonOnlyPlacement:
         first_if = body[body.index("{") + 1:].split("if (", 1)[1].split(")", 1)[0]
         assert first_if == self.HELPERS[h], (h, first_if)
 
-    def test_detection_is_by_map_name(self):
+    def test_detection_is_by_the_players_own_marker_unit(self):
+        # owner 2026-09-24: 'all unit based' - London by its bridge marker, the forward base by the construction markers
         s = core("aipiraterules.xs")
-        assert 'cRandomMapName == "zplondon"' in s and 'cRandomMapName == "zpparis"' in s
-        assert "kbUnitCount(cMyID, cUnitTypezpAILondonBridge" not in s
+        assert "if (kbUnitCount(cMyID, cUnitTypezpAILondonBridge, cUnitStateAny) > 0)" in s
+        assert "if (kbUnitCount(cMyID, cUnitTypezpAILondonConstrMarker, cUnitStateAny) > 0)" in s
+        assert not re.search(r'cRandomMapName == "(00000_)?zp(london|paris)"', s)
 
     def test_the_forward_base_copies_differ_from_stock_only_in_the_location(self):
         s = core("aipiraterules.xs")
@@ -286,8 +288,8 @@ class TestLondonOnlyPlacement:
                        ("forwardTowerBaseManager();", "pirateForwardTowerBaseManager();")}
             assert set(diff) <= allowed, (rule, diff)
 
-    def test_build_echo_is_round_ten(self):
-        assert "build r10 2026-09-24" in core("aipiraterules.xs")
+    def test_build_echo_is_round_eleven(self):
+        assert "build r11 2026-09-24" in core("aipiraterules.xs")
 
 
 def diag4(t, p=2, baseR=40.0, fails=0, farms=0, plant=0, london=1):
@@ -448,7 +450,7 @@ class TestRoundFiveCriteria:
 # fails this test; adding it to the list is the explicit approval step (docs/ai_scripting_guidelines.md rule 13).
 APPROVED_LONDON_CODE = {
     # aipiraterules.xs - the plan 'docs/briefs/2026-09-23-london-ai-plan.md', owner 'Go' 2026-09-23 (rounds 1-3)
-    ("aipiraterules.xs", "initializePirateRules"): "detection by map name (owner 2026-09-24) - plan round 1",
+    ("aipiraterules.xs", "initializePirateRules"): "detection by the player's own marker unit - plan round 1",
     ("aipiraterules.xs", "londonSetup"): "plan round 1",
     ("aipiraterules.xs", "londonDiag"): "plan round 1 (test mode only)",
     ("aipiraterules.xs", "londonFarBridgeGate"): "plan round 2",
