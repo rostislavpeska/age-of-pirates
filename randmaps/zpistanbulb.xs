@@ -2484,6 +2484,16 @@ void main(void)
 	rmSetGroupingMaxDistance(wallNE, 0.5);
 	int wallPlacementNE = rmPlaceGroupingInstanceAtLoc(wallNE, wallXS, wallZS, 0);
 
+	// Fake Frouping to fix the auto-grouping TC bug - (user 2026-09-24) RIGHT BEFORE the first player's start units /
+	// start grouping: the city players' start blocks below carry baked Town Centers, so the lock that sat after them
+	// (before the countryside start units) came too late. The land spot stays (the note below). (.claude/skills/rm-players)
+	int fakeLock = rmCreateObjectDef("fake grouping lock");
+	rmAddObjectDefItem(fakeLock, "zpSPCWaterSpawnPoint", 20, 4.0);
+	// ON LAND, like Paris (their 0.5,0.65 is city ground). In water these
+	// 20 points are LIVE water-spawn machinery and hijack the shore-
+	// grouping chain - that broke the pirate camps.
+	rmPlaceObjectDefAtLoc(fakeLock, 0, nx3, nz3);
+
 	// ---- CITY PLAYERS: TC block + 2x2 buildable area ---------------------
 	// Each city player gets IS_SPC_PlayerStart (carries a baked TownCenter,
 	// the Florence way) on row 5 plus THREE IS_SPC_Block_Constr around it:
@@ -3692,12 +3702,7 @@ void main(void)
 	// City players already own a baked TownCenter via their start block; the
 	// countryside players get deSPCCommandPost as their starting TC plus the
 	// Paris hunt/mine/berry set on their clearing.
-	int fakeLock = rmCreateObjectDef("fake grouping lock");
-	rmAddObjectDefItem(fakeLock, "zpSPCWaterSpawnPoint", 20, 4.0);
-	// ON LAND, like Paris (their 0.5,0.65 is city ground). In water these
-	// 20 points are LIVE water-spawn machinery and hijack the shore-
-	// grouping chain - that broke the pirate camps.
-	rmPlaceObjectDefAtLoc(fakeLock, 0, nx3, nz3);
+	// (the fake grouping lock moved up, right before the city players' start blocks - user 2026-09-24)
 
 	int playerStartUnits = rmCreateStartingUnitsObjectDef(5.0);
 	rmSetObjectDefMinDistance(playerStartUnits, 7.0);

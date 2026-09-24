@@ -19,6 +19,7 @@ void main(void) {
    rmSetMapType("<type>"); ...                       // at least one; drives AI, shipments, politicians
    chooseMercs();                                    // missing -> generation aborts (+0xA7508D)
    rmPlacePlayersCircular(...) or rmPlacePlayersLine(...);   // missing -> crash
+   /* the fake grouping lock right before the first player's start units / grouping (rm-players) */
    /* one TownCenter per player at rmPlayerLocXFraction/ZFraction */
    rmSetStatusText("", 1.0);
 }

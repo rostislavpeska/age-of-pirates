@@ -1037,6 +1037,12 @@ void main(void)
 	int eastTeam = 0;
 	if (spawnSwitch == 1)
 		eastTeam = 1;
+	// Fake Frouping to fix the auto-grouping TC bug
+	// (user 2026-09-24) RIGHT BEFORE the first player's start units / start grouping - it prevents the player-selection bug; water is fine (.claude/skills/rm-players)
+	int fakeGroupingLock = rmCreateObjectDef("fake grouping lock");
+	rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
+	rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.5);
+
 	if (useForts == 1)
 	{
 		// Slot tables. 1v1 ONLY: mirror-symmetric face-off straight across the

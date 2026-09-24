@@ -1573,6 +1573,12 @@ void main(void)
 	rmSetObjectDefMinDistance(areaNugget, 0.0);
 	rmSetObjectDefMaxDistance(areaNugget, 3.0);
 
+	// Fake Frouping to fix the auto-grouping TC bug
+	// (user 2026-09-24) RIGHT BEFORE the first player's start units / start grouping - it prevents the player-selection bug; water is fine (.claude/skills/rm-players)
+	int fakeGroupingLock = rmCreateObjectDef("fake grouping lock");
+	rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
+	rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.5);
+
 	// the seated player's kit is the block itself (Istanbul's start block: the export's own Town Center, owner = the
 	// player); its baked treasure is a LEVEL 1 nugget (user 2026-09-21) - the latch Istanbul (2506) and Florence (1266)
 	// set before their start blocks; nuggetmods picks the level-1 entry, the export's placeholder proto is not what

@@ -32,6 +32,22 @@ and the KOTH helpers need the includes (rm-skeleton).
 - `rmPlayerLocXFraction(i)` is only valid after the placement call; read it, never recompute.
 - Team islands: give each team its own area class and constraint, and keep player-area sizes small
   (`rmSetAreaLocPlayer` + `rmSetPlayerArea`) so terrain built later cannot swallow the start.
+- **The fake grouping lock (owner's rule, 2026-09-24):** every map that spawns player start units or a player start
+  grouping places, RIGHT BEFORE the first player's Town Center / start units / start grouping, 20 gaia
+  `zpSPCWaterSpawnPoint` - it prevents the player-selection bug ("auto-grouping TC bug"). Copy it verbatim
+  (zp_mississippi.xs 1224-1227, zpparis.xs):
+  ```cpp
+  // Fake Frouping to fix the auto-grouping TC bug
+  int fakeGroupingLock = rmCreateObjectDef("fake grouping lock");
+  rmAddObjectDefItem(fakeGroupingLock, "zpSPCWaterSpawnPoint", 20, 4.0);
+  rmPlaceObjectDefAtLoc(fakeGroupingLock, 0, 0.5, 0.5);
+  ```
+  Water is fine (London's 0.5, 0.5 is the river); Istanbul keeps a land spot because shore groupings placed after
+  it there were hijacked by the 20 live water spawn points. Player-owned walls, forts or guns placed earlier do not
+  count (Florence); a start grouping with a baked Town Center does - Istanbul's lock sat after its start blocks until
+  2026-09-24. The 20 units shift every later unit index: check a map's literal trigger indices first (London's are
+  all placed before its seats). Maps without the bug need none (Grinch, Winter Wonderland II). Pinned by
+  `scripts/mapcheck/tests/test_grouping_lock.py`; Crown Lands and Aztec City still place player starts before theirs.
 - Starting resources and herds avoid the TC with type distance constraints in metres
   (`avoidTownCenter` 25-40 m in the shipped maps).
 

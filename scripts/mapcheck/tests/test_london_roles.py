@@ -329,7 +329,7 @@ class TestStripSeats:
 
     def test_the_kit_is_the_seat_blocks_protos_laid_out_the_same_way_for_every_seat(self):
         t = _code(_text(LONDON))
-        defs = t[t.index('int areaTC = rmCreateObjectDef("strip seat town center");'):t.index("rmSetNuggetDifficulty(1, 1);")]
+        defs = t[t.index('int areaTC = rmCreateObjectDef("strip seat town center");'):t.index('int fakeGroupingLock = rmCreateObjectDef("fake grouping lock");')]   # the kit ends where the grouping lock (test_grouping_lock.py) begins
         items = re.findall(r'rmAddObjectDefItem\((\w+), (.*?)\);', defs)
         assert items == [("areaTC", '"TownCenter", 1, 0.0'), ("areaMine", '"deMineCoalBuildable", 1, 0.0'), ("areaBerry", '"BerryBush", 6, 4.0'), ("areaDeer", '"Deer", 3, 6.0'),
                          ("areaTrees", '"TreeNewEngland", 14, 9.0'), ("areaTrees", '"TreeGreatLakes", 14, 9.0'), ("areaTrees", '"UnderbrushForest", 8, 8.0'), ("areaNugget", '"Nugget", 1, 0.0')]
