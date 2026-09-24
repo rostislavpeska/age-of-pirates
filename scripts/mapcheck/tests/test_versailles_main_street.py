@@ -23,7 +23,8 @@ def test_main_street_on_the_palace_axis_one_tile_into_the_city(steam_twin):
     for line in ("int mainStreetStartTiles = 1;",
                  'int blockMainStreet = rmCreateGrouping("main street", "EU_Deco_Main_Street");',
                  "rmSetGroupingMaxDistance(blockMainStreet, 0.00);",
-                 "rmPlaceGroupingAtLoc(blockMainStreet, 0, (locX4 + locX5) * 0.5, locZ1 - rmZTilesToFraction(56 + mainStreetStartTiles - 7));"):
+                 "float mainStreetOffXM = 1.0;",
+                 "rmPlaceGroupingAtLoc(blockMainStreet, 0, (locX4 + locX5) * 0.5 + rmXMetersToFraction(mainStreetOffXM), locZ1 - rmZTilesToFraction(56 + mainStreetStartTiles - 7));"):
         assert line in t, line
     i = t.index("rmPlaceGroupingAtLoc(blockMainStreet")
     later = t[i + 1:t.index("//----- Define Variables -----")]

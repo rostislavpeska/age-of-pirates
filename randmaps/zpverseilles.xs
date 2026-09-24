@@ -1679,10 +1679,11 @@ for(i=1; < cNumberNonGaiaPlayers + 1) {
 	// (15-tile blocks), the strip's is its origin + 56 tiles, so the origin sits 56 + mainStreetStartTiles - 7 tiles below
 	// locZ1 (a POSITIVE tile argument: negative ones are ignored silently). Placed last: no earlier unit index moves.
 	int mainStreetStartTiles = 1;
+	float mainStreetOffXM = 1.0;   // user 2026-09-24 in game: '1m offset northeast' - +x (minimap north-east = code +x)
 	int blockMainStreet = rmCreateGrouping("main street", "EU_Deco_Main_Street");
 	rmSetGroupingMinDistance(blockMainStreet, 0.00);
 	rmSetGroupingMaxDistance(blockMainStreet, 0.00);
-	rmPlaceGroupingAtLoc(blockMainStreet, 0, (locX4 + locX5) * 0.5, locZ1 - rmZTilesToFraction(56 + mainStreetStartTiles - 7));
+	rmPlaceGroupingAtLoc(blockMainStreet, 0, (locX4 + locX5) * 0.5 + rmXMetersToFraction(mainStreetOffXM), locZ1 - rmZTilesToFraction(56 + mainStreetStartTiles - 7));
 
 
 
