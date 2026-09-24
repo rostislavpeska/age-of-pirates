@@ -8,7 +8,7 @@ For agent setup and compatibility, see [Shared agent setup](agent-skills.md).
 
 **Edit skills in AoP `.claude/skills/<name>/SKILL.md`.** This is the physical,
 tracked library for Claude, Codex and the other supported agents. It includes all
-43 current skills, their references, scripts and resources. Claude is the primary
+44 current skills, their references, scripts and resources. Claude is the primary
 authoring agent; Codex uses the same files for 3D work and other tasks.
 
 Claude Code discovers that directory directly. `.agents/skills` is a single ignored

@@ -30,7 +30,8 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
 7. **AI changes never change what the AI contests without the owner's approval.** That covers sockets, Trading
    Posts, natives, bridges, objectives, forward bases, targets and where defences stand. Propose, don't commit. Map-
    specific AI code lives only where `scripts/aitest/tests` (`APPROVED_LONDON_CODE`) lists the owner's approval. Run
-   `python -m pytest scripts/aitest/tests -q` before every AI commit. See `docs/ai_scripting_guidelines.md` rule 13.
+   `python -m pytest scripts/aitest/tests -q` before every AI commit. Start every AI change with the
+   `ai-edit` skill; see `docs/ai_scripting_guidelines.md` rule 13.
 
 ## Where things are
 
