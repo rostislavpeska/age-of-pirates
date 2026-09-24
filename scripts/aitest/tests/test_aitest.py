@@ -208,7 +208,8 @@ def enclosing_headers(lines, i):
 
 
 class TestLondonOnlyPlacement:
-    HELPERS = ("londonCountrysidePoint", "londonFieldPoint", "londonSelectFieldPosition", "londonForwardBasePoint")
+    HELPERS = ("londonCountrysidePoint", "londonFieldPoint", "londonSelectFieldPosition", "londonForwardBasePoint",
+               "londonReadConstructionBlocks")
 
     @pytest.mark.parametrize("h", HELPERS)
     def test_helpers_return_at_once_off_london(self, h):
@@ -423,6 +424,8 @@ APPROVED_LONDON_CODE = {
     ("aibuildings.xs", "selectTCBuildPlanPosition"): "Town Center countryside fallback after 2 failures",
     ("aibuildings.xs", "buildingPlacementFailedHandler"): "base growth over river / hills / countryside, 120 m cap",
     # owner 2026-09-24: 'can be also enemy bridgehead, maybe that one makes more sense'
+    # owner 2026-09-24: 'the construction block ... target the unique units instead of the map spot'
+    ("aibuildings.xs", "londonReadConstructionBlocks"): "the construction blocks at the bridge landings, by their unique unit",
     ("aibuildings.xs", "londonForwardBasePoint"): "forward base at the enemy bridgehead once the crossing is open",
     ("aibuildings.xs", "selectForwardBaseLocation"): "forward base at the enemy bridgehead once the crossing is open",
 }

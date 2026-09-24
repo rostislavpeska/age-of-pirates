@@ -8077,6 +8077,7 @@ minInterval 10
       gLondonKeepNear = gLondonKeepFar;
       gLondonKeepFar = swap;
    }
+   londonReadConstructionBlocks(sortFrom);
    aiEcho("LONDONSETUP p" + cMyID + " marker " + xsVectorGetX(gLondonBridgeVec) + "/" + xsVectorGetZ(gLondonBridgeVec) + " socket " + gLondonPortSocket + " gates " + gLondonGateA + " " + gLondonGateB
           + " ours " + gLondonGateOurs + " keepNear " + gLondonKeepNear + " keepFar " + gLondonKeepFar + " pathNear " + nearPath + " pathFar " + farPath
           + " gates found " + gateCount + " keeps found " + keepCount + " tc " + tc);

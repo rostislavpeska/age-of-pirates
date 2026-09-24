@@ -1941,28 +1941,47 @@ bool addBuilderToPlan(int planID = -1, int puid = -1, int numberBuilders = 1)
 // selectForwardBaseLocation
 //==============================================================================
 //==============================================================================
-// londonForwardBasePoint - London: the forward base at the ENEMY bridgehead - on their bank, 50 m from the bridge
-// middle along the road (the EU_SPC_London_Bridge deck runs ~41 m either side of its middle, its gates at -13 / +10 m)
-// - once the London war plan has released the attack (gLondonWarState 2, the crossing open); cInvalidVector before
-// that, and the stock rule simply asks again later (owner 2026-09-24: 'a spot next to the bridge perfect for it ...
-// can be also enemy bridgehead, maybe that one makes more sense'). The stock rules still decide when and whether.
+// londonReadConstructionBlocks - the two construction blocks at the bridge landings (EU_SPC_Block_Constr, zplondon.xs
+// 977-978) by their unique unit zpUnderbrushConstructionJesuitTemple: the forward base goes to the enemy's (owner
+// 2026-09-24: 'the construction block ... target the unique units instead of the map spot, which can differ per
+// amount of players or change in refactoring'). Read once: the unit is DestroyUnderBuilding, a building on the block
+// removes it. Sorted from our town centre: the first is ours, the last the enemy's.
+//==============================================================================
+void londonReadConstructionBlocks(vector from = cInvalidVector)
+{
+   int q = -1;
+   int n = 0;
+
+   if (gIsLondon == false)
+   {
+      return;
+   }
+   q = createAdvancedGaiaUnitQuery(cUnitTypezpUnderbrushConstructionJesuitTemple, cUnitStateAny, from, -1.0, true);
+   n = kbUnitQueryExecute(q);
+   if (n >= 1)
+   {
+      gLondonConstrOurs = kbUnitGetPosition(kbUnitQueryGetResult(q, 0));
+   }
+   if (n >= 2)
+   {
+      gLondonConstrFar = kbUnitGetPosition(kbUnitQueryGetResult(q, n - 1));
+   }
+   aiEcho("LONDONSETUP p" + cMyID + " construction blocks found " + n + " ours " + xsVectorGetX(gLondonConstrOurs) + "/" + xsVectorGetZ(gLondonConstrOurs)
+          + " far " + xsVectorGetX(gLondonConstrFar) + "/" + xsVectorGetZ(gLondonConstrFar));
+}
+
+//==============================================================================
+// londonForwardBasePoint - London: the forward base on the enemy's construction block at their bridge landing
+// (gLondonConstrFar, read in londonSetup from the block's unique unit) once the London war plan has released the attack
+// (gLondonWarState 2); cInvalidVector before, and while the block was not found - the stock rule asks again later.
+// Owner 2026-09-24: the construction block next to the bridge, targeted by its unique unit, not by a map spot.
+// Run 28: a fixed point 50 m past the bridge middle hit the road and city blocks (13 + 28 Forward failures).
 //==============================================================================
 vector londonForwardBasePoint(void)
 {
    static int lastEcho = -60000;
-   int marker = -1;
-   float side = 1.0;
-   vector baseVec = cInvalidVector;
-   vector bridgeVec = cInvalidVector;
-   vector point = cInvalidVector;
 
    if (gIsLondon == false)
-   {
-      return (cInvalidVector);
-   }
-   marker = getUnit(cUnitTypezpAILondonBridge, cMyID, cUnitStateAny);
-   baseVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
-   if (marker < 0 || baseVec == cInvalidVector)
    {
       return (cInvalidVector);
    }
@@ -1975,19 +1994,25 @@ vector londonForwardBasePoint(void)
       }
       return (cInvalidVector);
    }
-   bridgeVec = kbUnitGetPosition(marker);
-   // the enemy bank: the side of the bridge middle opposite our base
-   if (xsVectorGetZ(baseVec) > xsVectorGetZ(bridgeVec))
+   if (gLondonConstrFar == cInvalidVector)
    {
-      side = -1.0;
+      londonReadConstructionBlocks(kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
    }
-   point = xsVectorSet(xsVectorGetX(bridgeVec), 0.0, xsVectorGetZ(bridgeVec) + side * 50.0);
+   if (gLondonConstrFar == cInvalidVector)
+   {
+      if (xsGetTime() - lastEcho >= 60000)
+      {
+         lastEcho = xsGetTime();
+         aiEcho("LONDONPLACE p" + cMyID + " forward base asked, the enemy construction block is not known - later");
+      }
+      return (cInvalidVector);
+   }
    if (xsGetTime() - lastEcho >= 60000)
    {
       lastEcho = xsGetTime();
-      aiEcho("LONDONPLACE p" + cMyID + " forward base next to the bridge at " + xsVectorGetX(point) + "/" + xsVectorGetZ(point) + " (enemy bridgehead)");
+      aiEcho("LONDONPLACE p" + cMyID + " forward base next to the bridge at " + xsVectorGetX(gLondonConstrFar) + "/" + xsVectorGetZ(gLondonConstrFar) + " (enemy construction block)");
    }
-   return (point);
+   return (gLondonConstrFar);
 }
 
 vector selectForwardBaseLocation(void)
