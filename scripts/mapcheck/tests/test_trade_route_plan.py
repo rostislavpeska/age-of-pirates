@@ -18,6 +18,8 @@ UPG = ["TradeRouteUpgrade1", "TradeRouteUpgrade2", "ypTradeRouteUpgrade1", "ypTr
        "DETradeRouteUpgradeEurope1", "DETradeRouteUpgradeEurope2", "DETradeRouteUpgradeRiverAll1", "DETradeRouteUpgradeRiverAll2",
        "DETradeRouteUpgradeEuropeAll1", "DETradeRouteUpgradeEuropeAll2", "DETradeRouteUpgradeWaterAll1", "DETradeRouteUpgradeWaterAll2",
        "DETradeRouteUpgradeArctic1", "DETradeRouteUpgradeArctic2", "DETradeRouteUpgradeArcticWater1", "DETradeRouteUpgradeArcticWater2"]
+ZP6 = ["zpTradeRouteUpgradeTreasure", "zpTradeRouteUpgradeTreasure2", "zpTradeRouteUpgradeWaterNative", "zpTradeRouteUpgradeWaterNative2",
+       "zpTradeRouteUpgradeAustralia1", "zpTradeRouteUpgradeAustralia2"]
 
 
 def _text(p: Path) -> str:
@@ -40,14 +42,14 @@ def _proto_techs(name: str) -> list:
 def test_no_post_offers_an_upgrade(xmb_current):
     b = _tech("zpDisableAllTradeRouteUpgrades")
     assert "<flag>Shadow</flag>" in b and "<dbid>50073</dbid>" in b
-    for u in UPG:
+    for u in UPG + ZP6:
         assert ('<effect type="TechStatus" status="unobtainable">%s</effect>' % u) in b, u
     for proto in ("zpOrientalFerry", "zpTradingPostCaptureNaval"):
         listed = [u for u in _proto_techs(proto) if u in UPG]
         assert len(listed) == 22, proto
         for u in listed:
             assert ('<effect type="CommandRemove" tech="%s">\n        <target type="ProtoUnit">%s</target>' % (u, proto)) in b, (proto, u)
-    assert b.count('<target type="ProtoUnit">TradingPost</target>') == 31
+    assert b.count('<target type="ProtoUnit">TradingPost</target>') == 31 + 6
     for keep in ("deTradeRouteCaptureableEuropean", "ypTradeRouteCaptureable", "deTradeRouteCaptureableAfrican"):
         assert keep not in b.split("-->", 1)[1], keep                    # the capture (resource) techs stay
     xmb_current("data/techtreemods.xml")
@@ -58,7 +60,7 @@ def test_st_pauls_and_minster_route_techs(xmb_current):
                                     ("zpLondonEastIndiaCompany", 50075, "trade" + chr(92) + "trade_fluyt_icon.png", "zpSPCMinster")):
         b = _tech(name)
         for line in ("<dbid>%d</dbid>" % dbid, '<cost resourcetype="Wood">300.0000</cost>', '<cost resourcetype="Gold">400.0000</cost>',
-                     "<researchpoints>60.0000</researchpoints>", "<status>OBTAINABLE</status>", '<techstatus status="Active">Industrialize</techstatus>'):
+                     "<researchpoints>60.0000</researchpoints>", "<status>UNOBTAINABLE</status>", '<techstatus status="Active">Industrialize</techstatus>'):
             assert line in b, (name, line)
         assert b.count(icon) == 1 and "<effects>" not in b, name              # no effect of its own: the triggers raise the route
         assert name in _proto_techs(proto), (proto, name)
@@ -70,14 +72,25 @@ def test_st_pauls_and_minster_route_techs(xmb_current):
 def test_london_capture_type_levels_and_route_triggers(steam_twin):
     t = _text(LONDON)
     assert 'rmSetMapType("euroTradeRouteCapture");' in t and 'rmSetMapType("euroTradeRouteUpgradeAll")' not in t
-    assert t.count('rmSetTriggerEffectParam("TechID", "cTechzpDisableAllTradeRouteUpgrades");') == 1
+    a = t.index('rmCreateTrigger("LondonStartingTechs");')
+    loop = t[t.index("for (k=1; <= cNumberNonGaiaPlayers)", a):t.index("for (i = 0; <= cNumberNonGaiaPlayers)", a)]   # players 1..N, not gaia
+    for tech, st in (("cTechzpDisableAllTradeRouteUpgrades", 2), ("cTechDETradeRouteAllResourcesShadow", 2),
+                     ("cTechzpLondonDeptfordStation", 1), ("cTechzpLondonEastIndiaCompany", 1)):
+        assert ('rmSetTriggerEffectParamInt("PlayerID", k);\n\t\trmSetTriggerEffectParam("TechID", "%s");\n\t\trmSetTriggerEffectParamInt("Status", %d);' % (tech, st)) in loop, tech
+        assert t.count('"TechID", "%s");' % tech) == (1 if st == 2 else 3), tech          # the route techs: grant + condition + take-away
     for trig, tech, route in (("London_Deptford_Plr", "cTechzpLondonDeptfordStation", 2), ("London_EastIndia_Plr", "cTechzpLondonEastIndiaCompany", 1)):
         i = t.index('rmSwitchToTrigger(rmTriggerID("%s" + k));' % trig)
         b = t[i:t.index("rmSetTriggerLoop(false);", i)]
-        for line in ('rmSetTriggerConditionParam("TechID", "%s");' % tech, 'rmSetTriggerEffectParamInt("TradeRoute", %d);' % route,
-                     'rmSetTriggerEffectParamInt("Level", 2);', "if (i != k)", 'rmSetTriggerEffectParamInt("Status", 0);',
-                     'rmSetTriggerEffectParamInt("EventID", rmTriggerID("%s" + i));' % trig):
-            assert line in b, (trig, line)
+        want = ['rmAddTriggerCondition("ZP Tech Status Equals (XS)");', 'rmSetTriggerConditionParamInt("PlayerID", k);',
+                'rmSetTriggerConditionParam("TechID", "%s");' % tech, 'rmSetTriggerConditionParamInt("Status", 2);',
+                'rmAddTriggerEffect("Trade Route Set Level");', 'rmSetTriggerEffectParamInt("TradeRoute", %d);' % route,
+                'rmSetTriggerEffectParamInt("Level", 2);', 'for (i = 1; <= cNumberNonGaiaPlayers)', '{', 'if (i != k)', '{',
+                'rmAddTriggerEffect("ZP Set Tech Status (XS)");', 'rmSetTriggerEffectParamInt("PlayerID", i);',
+                'rmSetTriggerEffectParam("TechID", "%s");' % tech, 'rmSetTriggerEffectParamInt("Status", 0);',
+                'rmAddTriggerEffect("Disable Trigger");', 'rmSetTriggerEffectParamInt("EventID", rmTriggerID("%s" + i));' % trig,
+                '}', '}', 'rmSetTriggerPriority(4);', 'rmSetTriggerActive(true);', 'rmSetTriggerRunImmediately(true);']
+        got = [l.strip() for l in b.split(chr(10))[1:] if l.strip()]
+        assert got == want, (trig, got)                                    # the whole trigger, in order
         assert ('rmCreateTrigger("%s" + k);' % trig) in t and t.index('rmCreateTrigger("%s" + k);' % trig) < i
     steam_twin(LONDON, "00000_zplondon.xs")
 

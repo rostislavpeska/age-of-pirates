@@ -2828,6 +2828,25 @@ void main(void)
 	rmCreateTrigger("LondonStartingTechs");
 	for (k=1; <= cNumberNonGaiaPlayers)
 	{
+		// the trade-route plan (user 2026-09-24): no post offers a route upgrade - the routes move by triggers only
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpDisableAllTradeRouteUpgrades");
+		rmSetTriggerEffectParamInt("Status", 2);
+		// ... the road posts still deliver resources: the vanilla deTradeCrateAll toggle (data/traderoutes.xml, playertechprereq) - the per-resource crates wait for Europe1/EuropeAll1, never researched now
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechDETradeRouteAllResourcesShadow");
+		rmSetTriggerEffectParamInt("Status", 2);
+		// ... St Paul's / Minster route techs: UNOBTAINABLE in data (St Paul's also stands on Versailles), obtainable here
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpLondonDeptfordStation");
+		rmSetTriggerEffectParamInt("Status", 1);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", k);
+		rmSetTriggerEffectParam("TechID", "cTechzpLondonEastIndiaCompany");
+		rmSetTriggerEffectParamInt("Status", 1);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID", k);
 		rmSetTriggerEffectParam("TechID", "cTechzpForbidRevolutions");
@@ -2876,11 +2895,6 @@ void main(void)
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID", i);
 		rmSetTriggerEffectParam("TechID", "cTechdeEUMapUpdateVisuals");
-		rmSetTriggerEffectParamInt("Status", 2);
-		// no post offers a route upgrade (user 2026-09-24 'all buttons removed'): the routes move by triggers only
-		rmAddTriggerEffect("ZP Set Tech Status (XS)");
-		rmSetTriggerEffectParamInt("PlayerID", i);
-		rmSetTriggerEffectParam("TechID", "cTechzpDisableAllTradeRouteUpgrades");
 		rmSetTriggerEffectParamInt("Status", 2);
 	}
 	// both trade routes start at level 1 (user 2026-09-24 'can London upgrade the both trade routes to lvl1 by default?') -

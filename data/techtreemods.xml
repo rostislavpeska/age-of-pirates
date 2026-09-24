@@ -39079,7 +39079,7 @@
     <effects>
       <!-- user 2026-09-24 ('all buttons removed'): no Trading Post, ferry or naval capture post offers any trade-route upgrade -
            the routes move by triggers only (London, Istanbul). zpDisableTradeRouteUpgrade's shape (Versailles) over every
-           upgrade family and the capture posts. The capture techs that switch resources on (deTradeRouteCaptureableEuropean,
+           vanilla upgrade family, the mod's six zp*TradeRouteUpgrade* techs on the TradingPost, and the capture posts. The capture techs that switch resources on (deTradeRouteCaptureableEuropean,
            ypTradeRouteCaptureable, deTradeRouteCaptureableAfrican) are NOT touched. -->
       <effect type="TechStatus" status="unobtainable">TradeRouteUpgrade1</effect>
       <effect type="TechStatus" status="unobtainable">TradeRouteUpgrade2</effect>
@@ -39114,6 +39114,30 @@
       <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeArctic2</effect>
       <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeArcticWater1</effect>
       <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeArcticWater2</effect>
+      <effect type="TechStatus" status="unobtainable">zpTradeRouteUpgradeTreasure</effect>
+      <effect type="TechStatus" status="unobtainable">zpTradeRouteUpgradeTreasure2</effect>
+      <effect type="TechStatus" status="unobtainable">zpTradeRouteUpgradeWaterNative</effect>
+      <effect type="TechStatus" status="unobtainable">zpTradeRouteUpgradeWaterNative2</effect>
+      <effect type="TechStatus" status="unobtainable">zpTradeRouteUpgradeAustralia1</effect>
+      <effect type="TechStatus" status="unobtainable">zpTradeRouteUpgradeAustralia2</effect>
+      <effect type="CommandRemove" tech="zpTradeRouteUpgradeTreasure">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpTradeRouteUpgradeTreasure2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpTradeRouteUpgradeWaterNative">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpTradeRouteUpgradeWaterNative2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpTradeRouteUpgradeAustralia1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="zpTradeRouteUpgradeAustralia2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
       <effect type="CommandRemove" tech="TradeRouteUpgrade1">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
@@ -39341,7 +39365,8 @@
       </effect>
     </effects>
   </tech>
-  <!-- London's route techs (user 2026-09-24): researched at St Paul's / the Minster; no effect of their own - the map's
+  <!-- London's route techs (user 2026-09-24): researched at St Paul's / the Minster (UNOBTAINABLE here - St Paul's also stands on
+       Versailles; London's start trigger makes them obtainable for its players); no effect of their own - the map's
        per-player triggers raise the route (the armored-train shape, zpbluemountains.xs AT_TR_Upgrade_Plr) and take the tech
        away from everyone else. Vanilla level-2 cost (DETradeRouteUpgradeEurope2 / Water2), Industrial like zpArmoredTrainTech. -->
   <tech name="zpLondonDeptfordStation" type="Normal">
@@ -39350,7 +39375,7 @@
     <cost resourcetype="Wood">300.0000</cost>
     <cost resourcetype="Gold">400.0000</cost>
     <researchpoints>60.0000</researchpoints>
-    <status>OBTAINABLE</status>
+    <status>UNOBTAINABLE</status>
     <icon>resources\art\units\trains\train_europe_icon.png</icon>
     <rollovertextid>503595</rollovertextid>
     <flag>CountsTowardEconomicScore</flag>
@@ -39364,7 +39389,7 @@
     <cost resourcetype="Wood">300.0000</cost>
     <cost resourcetype="Gold">400.0000</cost>
     <researchpoints>60.0000</researchpoints>
-    <status>OBTAINABLE</status>
+    <status>UNOBTAINABLE</status>
     <icon>resources\art\units\trade\trade_fluyt_icon.png</icon>
     <rollovertextid>503597</rollovertextid>
     <flag>CountsTowardEconomicScore</flag>
