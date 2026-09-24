@@ -3399,12 +3399,32 @@ minInterval 5
    // Below Hard makes 1 and 2, respectfully
    // No dock building until age2 transition
    bool dockNeeded = shouldBuildDock();
+   // AI test campaign (echo only, gAITestDiag): the dock decision once a minute - wanted or not, and what plan creation returned
+   static int dockDiagTime = -60000;
+   bool dockDiag = false;
+   if (gAITestDiag == true && xsGetTime() - dockDiagTime >= 60000)
+   {
+      dockDiagTime = xsGetTime();
+      dockDiag = true;
+      if (dockNeeded == true)
+      {
+         aiEcho("AIDOCK p" + cMyID + " wanted, docks " + dockCount + " age " + kbGetAge() + " existing plan " + aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit));
+      }
+      else
+      {
+         aiEcho("AIDOCK p" + cMyID + " not wanted, docks " + dockCount + " age " + kbGetAge() + " existing plan " + aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit));
+      }
+   }
    if (dockNeeded == true)
    {
       if ((aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit) < 0) &&
           ((gRevolutionType & cRevolutionFinland) == 0))
       { 
          planID = createSimpleBuildPlan(gDockUnit, 1, 70, false, cMilitaryEscrowID, mainBaseID, 1); 
+         if (dockDiag == true)
+         {
+            aiEcho("AIDOCK p" + cMyID + " plan created " + planID + " (-1 = refused by createSimpleBuildPlan / addBuilderToPlan)");
+         }
          if (gStartOnDifferentIslands == true && dockCount < 1)
          {
             aiPlanSetDesiredResourcePriority(planID, 80); // Docks are high priority on island maps
