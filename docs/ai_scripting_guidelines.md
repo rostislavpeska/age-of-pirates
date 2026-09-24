@@ -5,6 +5,10 @@ landing campaign (2026-08) where each one was proven the expensive way, plus
 the two reference sources below. Every claim here was verified in game or in
 the engine's own dumps — extend this file only with verified material.
 
+**Start every AI change with the `ai-edit` skill** (`.claude/skills/ai-edit/`): the approval gate, the done-rule,
+how the rules fit together, the automated test process, the validation tests and the London campaign's findings.
+This file keeps the hard-won rules; the skill is the working procedure.
+
 ## The reference sources — where to look things up
 
 1. **AOE3 AI Scripting Guide** (alistairJah / aoe3mc) — cloned locally at
