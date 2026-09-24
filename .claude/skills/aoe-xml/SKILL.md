@@ -1,6 +1,6 @@
 ---
 name: aoe-xml
-description: The COMMON layer for every XML in the Age of Pirates mod - the mechanics that make the engine actually load a file (data XML + its .xml.xmb twin, runtime art/sound XML, strings per language), the placement convention for new records (above the TEST section, ids continuing the real sequence), the reference rules (archive assets by path, never copied), and the one verification command, scripts/xmlcheck.py. Read this BEFORE editing protomods, techtreemods, stringmods, tactics, abilities, any animfile, .material or _snds.xml; the specialised recipes (add-unit, add-building, extended-native, native-politician, aoe-building-pipeline ...) assume it and only add their domain content. Triggers on "add to protomods", "new proto", "animfile", "material file", "_snds", "xmb twin", "string id", "where do I put the record", "xml check", "model does not appear".
+description: The COMMON layer for every XML in the Age of Pirates mod - the mechanics that make the engine actually load a file (data XML + its .xml.xmb twin, runtime art/sound XML, strings per language), the placement convention for new records (above the TEST section, ids continuing the real sequence), the reference rules (archive assets by path, never copied), and the one verification command, scripts/xmlcheck.py. Read this BEFORE editing protomods, techtreemods, stringmods, tactics, abilities, any animfile, .material or _snds.xml; the specialised recipes (add-unit, add-building, extended-native, native-politician, aoe-building-pipeline ...) assume it and only add their domain content. Triggers on "add to protomods", "new proto", "animfile", "material file", "_snds", "xmb twin", "string id", "where do I put the record", "xml check", "model does not appear", "flag on the building", "pirate flag", "banner while gaia", "how does unit X do this".
 ---
 
 # aoe-xml - how XML works in this mod (mechanics only, no game design)
@@ -75,7 +75,10 @@ and the **`rm-unit-bench`** skill for a new unit/building (offline pre-flight + 
 
 ## References (read the one you need)
 
-- `references/data-xml.md` - the data files: record families, which twin, id ranges, string sections, mergeMode, the
+- `references/data-xml.md` - PROVEN PATTERNS first when the user describes a behaviour ("works like the X building"):
+  find the mechanism by grepping its tags, never by guessing a unit name - e.g. the capturable-building flag
+  (team-colour banner while gaia, owner's flag once captured: `civflagoverride` + `ApplyFlagOverrideIfGaia`).
+  Also: the data files: record families, which twin, id ranges, string sections, mergeMode, the
   sections of [the shared XML reference](../aoe3de-reference/references/data_xml_guide.md)
   to read for attribute semantics. AoP-specific placement/nugget/map-override
   observations remain in `docs/data_xml_guide.md`.

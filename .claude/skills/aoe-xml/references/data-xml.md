@@ -53,3 +53,30 @@ files | `deadreplacement`, `train`, `tech`, `command`, `unittype` -> names that 
 A vanilla record is replaced whole with `<unit mergeMode='replace' id="1710" name="CommunityPlaza">`; a partial
 change is not possible - copy the vanilla record from `scripts/source/protoy.xml` (or `bar-extract cat`) and edit.
 After a game patch, `vanilla-merge` finds overrides that silently dropped records the patch added.
+
+## Proven patterns - find them by BEHAVIOUR, never ask for a unit name first
+
+The user describes what a unit does in game ("the convertible harbour shows a plain banner while gaia"), not its
+proto name. Find the mechanism by grepping `protomods.xml` for the behaviour's tags and listing every proto that
+carries them; pick the record that matches the description, copy its lines verbatim. Ask for a name only after the
+grep found nothing. (2026-09-24: I guessed `zpSPCPortCenter` from the word "harbour" - wrong unit, wasted a round.)
+
+### Capturable building flag: plain team-colour banner while gaia, the owner's civ flag once captured
+
+Reference record: `zpTradingPostCaptureNaval` (20579). The two lines that do it:
+
+```xml
+    <portraiticon>...</portraiticon>
+    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>   <!-- the banner to show instead of the civ flag -->
+    ...
+    <flag>ApplyFlagOverrideIfGaia</flag>                                <!-- ...but only while the owner is gaia -->
+```
+
+- Guide: `CivFlagOverride` = flag texture used instead of the current civ's flag; `ApplyFlagOverrideIfGaia` = apply
+  that override only while the unit belongs to gaia. BOTH are needed: 38 mod protos carry the flag without an
+  override and it does nothing there; 15 carry the pair (all `teamcolor_flag`), 1 uses `objects\flags\italian`.
+- Without the pair a gaia-owned building shows gaia's own flag - the pirate flag (seen on `zpAcademyReward`, the
+  academy nugget reward, 2026-09-24; the pair was added to it the same day).
+- Find: `grep -n "ApplyFlagOverrideIfGaia\|civflagoverride" data/protomods.xml`. `ColorTransformNonGaia` is NOT this
+  (guide: minimap icon colour after conversion from gaia).
+- `protomods` loads at game start: rebuild the twin, full restart before the test.
