@@ -263,6 +263,22 @@ class ResolvedScene:
         return [a for a in self.areas if a.creates_land and not a.engine_placed]
 
 
+def height_floods(base_is_water: bool, sea_level: float, base_height: Optional[float],
+                  water_type: Optional[str]) -> bool:
+    """Whether an area WITHOUT a water type becomes water through its explicit base height: only on a
+    water-initialized map (rmTerrainInitialize("water")), where a base height at or below the sea level is sea floor
+    (Cook Islands' -0.25 shoals and -5.0 reef rings, Barrier Reef's -0.5 shallows).
+
+    On a land-initialized map the sea level floods nothing: the water there is what water-typed areas, rivers and
+    water masks put down. Evidence (2026-09-25, live Scenario Editor minimaps at 2880x1800): zpdeadsea.xs
+    (rmTerrainInitialize("deccan\ground_grass3_deccan"), rmSetSeaLevel(6.0)) shows land everywhere but its
+    water-typed lake - the 'dead sea valley' (base 0.0) and both players' areas (2.0) are dry ground with the Town
+    Centers on them, 2p and 6p; zpeyrebasin.xs (same setup, pirate sites at 1.0) likewise. Venice's 'bonus island' /
+    'port sites' and Versailles' 'countryside N/S' (base 1.0 = sea 1.0, land base) are named and used as land."""
+    return (water_type is None and base_height is not None and base_height <= sea_level
+            and base_is_water)
+
+
 class Scene:
     """Loader for the branch-keyed scene JSON."""
 

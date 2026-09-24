@@ -9,7 +9,7 @@ from __future__ import annotations
 
 from typing import Any, List, Optional
 
-from scripts.mapsim.scene import ResolvedArea, ResolvedPlacement, ResolvedScene, Scenario
+from scripts.mapsim.scene import ResolvedArea, ResolvedPlacement, ResolvedScene, Scenario, height_floods
 from scripts.mapsim.units import MapGrid
 from scripts.mapsim.xs_extract import Extraction, Tainted, XArea, XDef
 
@@ -53,6 +53,11 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
         raise ValueError("extraction has no map size")
     grid = MapGrid(ex.map_size_x, ex.map_size_z)
     sea = ex.sea_level if ex.sea_level is not None else 0.0
+    from scripts.mapsim.waterdata import is_water_type_name
+    # Missing rmTerrainInitialize is a documented map error (guide:10508);
+    # fall back to the historical water-base assumption.
+    base_is_water = (ex.terrain_init is None
+                     or is_water_type_name(ex.terrain_init))
 
     ring = _ring_positions(ex)
     n_players = ex.scenario.players
@@ -96,8 +101,10 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
             base_height=a.base_height,
             # A water-type area is water even with a raised base height (the
             # Riverina cascade lifts the SURFACE, guide:7772-7783).
-            creates_land=(a.water_type is None
-                          and a.base_height is not None and a.base_height > sea),
+            # On a land base an explicit base height below the sea level is
+            # still land (scene.height_floods: Dead Sea, Eyre Basin).
+            creates_land=(a.water_type is None and a.base_height is not None
+                          and not height_floods(base_is_water, sea, a.base_height, None)),
             obey_world_circle=a.obey_world_circle,
             coherence=a.coherence,
             smooth_distance=a.smooth,
@@ -267,11 +274,6 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
             spec["r_max"] = _num(spec.pop("r_max_m")) or 0.0
         constraints[cname] = spec
 
-    from scripts.mapsim.waterdata import is_water_type_name
-    # Missing rmTerrainInitialize is a documented map error (guide:10508);
-    # fall back to the historical water-base assumption.
-    base_is_water = (ex.terrain_init is None
-                     or is_water_type_name(ex.terrain_init))
     return ResolvedScene(
         suppressed_variants=suppressed,
         scenario=ex.scenario,

@@ -24,7 +24,7 @@ from scripts.mapsim.geometry import (
     dist_point_to_segment,
     dist_range_to_box,
 )
-from scripts.mapsim.scene import ResolvedArea, ResolvedScene, resolve_branch
+from scripts.mapsim.scene import ResolvedArea, ResolvedScene, height_floods, resolve_branch
 
 Disc = Tuple[float, float, float, int]              # cx_m, cz_m, r_m, line
 Rect = Tuple[float, float, float, float, int]       # x0, z0, x1, z1 (m), line
@@ -129,7 +129,7 @@ class FieldContext:
             if a.x is None:
                 continue
             wet = (a.water_type is not None
-                   or (a.base_height is not None and a.base_height <= rs.sea_level)
+                   or height_floods(rs.base_is_water, rs.sea_level, a.base_height, None)
                    or (a.is_invisible() and a.has_elevation
                        and a.height_blend < 2.0 and rs.sea_level >= 0.0))
             if wet:

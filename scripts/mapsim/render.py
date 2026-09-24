@@ -19,7 +19,7 @@ from typing import Dict, List, Optional
 
 from scripts.mapsim.checks import Finding
 from scripts.mapsim.geometry import WORLD_CIRCLE_R
-from scripts.mapsim.scene import ResolvedScene, _check_when
+from scripts.mapsim.scene import ResolvedScene, _check_when, height_floods
 
 # Layer-2 Terrain Standard palette (plan_mapsim_architecture.md B3): four
 # classes, one swatch each — the legend IS the standard. No paint tints, no
@@ -250,8 +250,8 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
             ec, ls, label_col = "#9cc4e4", (0, (2, 3)), "#dbe9f7"
         elif area.is_invisible():
             ec, ls, label_col = "#8f9aa8", (0, (1, 3)), "#aab4c0"
-        elif (area.base_height is not None
-              and area.base_height <= rs.sea_level):  # submerged ground / reef
+        elif height_floods(rs.base_is_water, rs.sea_level, area.base_height,
+                           None):  # submerged ground / reef
             ec, ls, label_col = "#6fa8c9", (0, (2, 3)), "#9fc4da"
         else:
             # Painted land: its grown shape IS the information — an authored
