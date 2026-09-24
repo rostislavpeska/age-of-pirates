@@ -156,9 +156,9 @@ def main(argv=None):
     check("F1", all(got[k] == v for k, v in fixed.items()), f"EU blocks, one per bank each (fixed + Paris zone resources): {got}")
     guards = sum(1 for u in U if u["proto"] == "dePrivateerGuardian"); nugs = sum(1 for u in U if u["proto"] == "zpNuggetInvisibleWater")
     check("H2", guards == 4 and nugs >= 4, f"harbour guards: {guards} dePrivateerGuardian, {nugs} water nuggets (4 each expected; needs the game restarted after the nuggetmods edit)")
-    flags = sum(1 for u in U if u["proto"] == "deSPCCapturableFlagCossack"); redcoats = sum(1 for u in U if u["proto"] == "deSPCHMRedcoat")
+    flags = sum(1 for u in U if u["proto"] == "deSPCCapturableFlagCossack"); redcoats = sum(1 for u in U if u["proto"] in ("zpNatRedcoat", "zpNatWhitecoat"))   # the Keeps' native guards (user 2026-09-24)
     academies = sum(1 for u in U if u["proto"] == "zpAcademyReward")
-    check("T2", flags == 2 and redcoats >= 18 and academies == 2, f"Towers: {flags} capturable flags, {redcoats} Redcoat guards (20 after a restart); Academy rewards {academies} (2)")
+    check("T2", flags == 2 and redcoats >= 18 and academies == 2, f"Towers: {flags} capturable flags, {redcoats} native Redcoat / Whitecoat guards (20 after a restart); Academy rewards {academies} (2)")
     swans = [u for u in U if u["proto"] == "PropSwan"]
     check("D1", len(swans) >= 10, f"riverside decorations: {len(swans)} swans (4 x SW_01 = 4, 4 x NE_01 = 8; the mouth pair may lose some off the edge)")
     intruders = [u for u in U if abs(u["z"] - z_river) < 30 and abs(u["x"] - x_road) > 40 and u["proto"] in BUILDINGS]

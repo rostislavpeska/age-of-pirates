@@ -1078,8 +1078,9 @@ void main(void)
 	// Tower_02 (0.99, 13.4)) takes a nuggetmods record through the latch set before EACH instance (Istanbul's guild
 	// idiom; no grouping between them bakes a nugget) - by the COIN, not by the export (user 2026-09-23 'dynamic per
 	// team spawn site not per grouping type'): the attackers' Keep zpNuggetTowerOfLondon 605 (nuggetunit
-	// zpNuggetInvisible, ten Redcoats, no change), the defenders' Keep zpNuggetTowerOfLondonWhitecoat 610 (the same
-	// record, ten deSPCHMWhitecoat). defenderBank 0 = the south bank = Tower S defends.
+	// zpNuggetInvisible, ten zpNatRedcoat), the defenders' Keep zpNuggetTowerOfLondonWhitecoat 610 (the same
+	// record, ten zpNatWhitecoat; both native since user 2026-09-24 'use the Native redcoats instead... Same with native
+	// whitecoats on the other side' - were deSPCHMRedcoat / deSPCHMWhitecoat). defenderBank 0 = the south bank = Tower S defends.
 	// Neither export carries a capturable flag: the flag-driven conversion family (13.3) is built only when a flag id
 	// exists. Call order = unit ids (header law): unchanged, only the z of the coin-keyed calls moves.
 	rmPlaceGroupingAtLoc(blockStPaul, 0, locX12, locZStPaul);

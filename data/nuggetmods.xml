@@ -3718,34 +3718,34 @@
       <applystringid>66271</applystringid>
       <maptype>piratehistoricalmap</maptype>
       <guardianunit>
-        <unit>deSPCHMRedcoat</unit>
+        <unit>zpNatRedcoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMRedcoat</unit>
+        <unit>zpNatRedcoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMRedcoat</unit>
+        <unit>zpNatRedcoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMRedcoat</unit>
+        <unit>zpNatRedcoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMRedcoat</unit>
+        <unit>zpNatRedcoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMRedcoat</unit>
+        <unit>zpNatRedcoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMRedcoat</unit>
+        <unit>zpNatRedcoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMRedcoat</unit>
+        <unit>zpNatRedcoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMRedcoat</unit>
+        <unit>zpNatRedcoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMRedcoat</unit>
+        <unit>zpNatRedcoat</unit>
       </guardianunit>
       <difficulty>605</difficulty>
     </nugget>
@@ -5203,34 +5203,34 @@
       <applystringid>66271</applystringid>
       <maptype>piratehistoricalmap</maptype>
       <guardianunit>
-        <unit>deSPCHMWhitecoat</unit>
+        <unit>zpNatWhitecoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMWhitecoat</unit>
+        <unit>zpNatWhitecoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMWhitecoat</unit>
+        <unit>zpNatWhitecoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMWhitecoat</unit>
+        <unit>zpNatWhitecoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMWhitecoat</unit>
+        <unit>zpNatWhitecoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMWhitecoat</unit>
+        <unit>zpNatWhitecoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMWhitecoat</unit>
+        <unit>zpNatWhitecoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMWhitecoat</unit>
+        <unit>zpNatWhitecoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMWhitecoat</unit>
+        <unit>zpNatWhitecoat</unit>
       </guardianunit>
       <guardianunit>
-        <unit>deSPCHMWhitecoat</unit>
+        <unit>zpNatWhitecoat</unit>
       </guardianunit>
       <difficulty>610</difficulty>
     </nugget>
