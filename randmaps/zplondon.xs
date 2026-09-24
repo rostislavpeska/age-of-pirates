@@ -1151,7 +1151,7 @@ void main(void)
 	// and more; its own offset knobs
 	int blockParliament2 = cityBlock("parliament 2", "EU_Native_Block_Parlam_02");
 	rmSetGroupingMaxDistance(blockParliament2, 0.00);
-	float parl2OffXM = -3.0;
+	float parl2OffXM = -1.5;   // -3.0 sat too far from the road (user 2026-09-24: 1.5 m toward the road)
 	float parl2OffZM = 0.0;
 	float locXParl2In = locX12 + rmXMetersToFraction(parl2OffXM);
 	float locX56 = (locX5 + locX6) * 0.5;

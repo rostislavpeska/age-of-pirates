@@ -61,7 +61,7 @@
 		<unit variation="196" posx="-2.2986" posz="-4.4933" orientx="0.9239" orienty="0.0000" orientz="-0.3827">deNatEUPropVilFemale</unit>
 		<unit variation="187" posx="14.3286" posz="-6.7011" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="206" posx="5.3365" posz="-0.4834" orientx="0.7071" orienty="-0.0000" orientz="0.7071">zpNatEUScottishPalaces</unit>
-		<unit variation="228" posx="3.8947" posz="-5.3500" orientx="-0.7069" orienty="0.0000" orientz="-0.7073">zpNativePropsCastleGuards</unit>
+		<unit variation="3" posx="3.8947" posz="-5.3500" orientx="-0.7069" orienty="0.0000" orientz="-0.7073">zpNativePropsBritishGuards</unit>
 		<unit variation="26" posx="-9.7517" posz="-5.6074" orientx="1.0000" orienty="0.0000" orientz="0.0002">zpRuinWallSmall</unit>
 		<unit variation="12" posx="-9.9580" posz="-2.7961" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPathBlock3</unit>
 		<unit variation="204" posx="-5.9634" posz="-0.9973" orientx="0.3832" orienty="-0.0000" orientz="-0.9236">NativeTownObstruction</unit>
@@ -75,7 +75,7 @@
 		<unit variation="221" posx="-12.6977" posz="0.0242" orientx="1.0000" orienty="-0.0000" orientz="0.0002">deSocketStuart</unit>
 		<unit variation="173" posx="-8.7300" posz="-2.6830" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
 		<unit variation="51" posx="-8.7087" posz="-1.5224" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
-		<unit variation="228" posx="0.2307" posz="-2.2096" orientx="-0.7069" orienty="0.0000" orientz="-0.7073">zpNativePropsCastleGuards</unit>
+		<unit variation="3" posx="0.2307" posz="-2.2096" orientx="-0.7069" orienty="0.0000" orientz="-0.7073">zpNativePropsBritishGuards</unit>
 		<unit variation="18" posx="-0.6768" posz="5.9658" orientx="1.0000" orienty="-0.0000" orientz="0.0003">zpNatEUScottishPalaces</unit>
 		<unit variation="197" posx="14.1903" posz="1.3842" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpHarbourPathBlock3</unit>
 		<unit variation="204" posx="9.3858" posz="3.3671" orientx="0.3832" orienty="-0.0000" orientz="-0.9236">NativeTownObstruction</unit>

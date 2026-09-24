@@ -246,7 +246,7 @@ class TestSeats:
         w = (REPO / "game/randmaps/groupings/EU_Native_Block_Stuart_02.xml").read_bytes()
         assert w.count(b"zpSPCSocketStuart") == 1 and b"<width>18</width>" in w   # 16 -> 18: the user's re-export 2026-09-24
         w2 = (REPO / "game/randmaps/groupings/EU_Native_Block_Parlam_02.xml").read_bytes()
-        assert w2.count(b"zpSocketParliament") == 1 and b"<width>15</width>" in w2
+        assert w2.count(b"zpSocketParliament") == 1 and b"<width>18</width>" in w2   # 15 -> 22 -> 18: the user's re-exports 2026-09-24
         s = self._sec(); assert "rmSetGroupingMaxDistance(blockParliament2, 0.00);" in s and "float parl2OffXM = " in s and "float locZdOut = wallS - rmZTilesToFraction(cityDepthTiles + stuart2OutTiles);" in s
 
     def test_fallback_fills_all_eight_spots(self):

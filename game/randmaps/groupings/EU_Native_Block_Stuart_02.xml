@@ -53,16 +53,16 @@
 		<unit variation="174" posx="12.1451" posz="-12.4008" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="73" posx="7.8829" posz="-8.2540" orientx="-0.9240" orienty="0.0000" orientz="-0.3825">NativeTownObstruction</unit>
 		<unit variation="235" posx="-14.5979" posz="-10.3222" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="116" posx="-7.7283" posz="-9.7567" orientx="1.0000" orienty="0.0000" orientz="-0.0055">zpNativePropsCastleGuards</unit>
-		<unit variation="116" posx="-8.7083" posz="-9.9667" orientx="1.0000" orienty="0.0000" orientz="-0.0055">zpNativePropsCastleGuards</unit>
+		<unit variation="3" posx="-7.7283" posz="-9.7567" orientx="1.0000" orienty="0.0000" orientz="-0.0055">zpNativePropsBritishGuards</unit>
+		<unit variation="3" posx="-8.7083" posz="-9.9667" orientx="1.0000" orienty="0.0000" orientz="-0.0055">zpNativePropsBritishGuards</unit>
 		<unit variation="7" posx="-7.3244" posz="-10.8878" orientx="-0.0043" orienty="-0.0000" orientz="-1.0000">deNatEUPropFence</unit>
 		<unit variation="10" posx="-9.1443" posz="-10.8650" orientx="0.0040" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
 		<unit variation="125" posx="-11.8134" posz="-10.7833" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="100" posx="-10.7228" posz="-11.7286" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="108" posx="-12.5755" posz="-10.8170" orientx="0.0087" orienty="0.0000" orientz="1.0000">deNatEUPropFence</unit>
 		<unit variation="7" posx="-11.3010" posz="-10.7371" orientx="-0.0042" orienty="-0.0000" orientz="-1.0000">deNatEUPropFence</unit>
-		<unit variation="116" posx="-10.1623" posz="-10.0426" orientx="1.0000" orienty="0.0000" orientz="-0.0054">zpNativePropsCastleGuards</unit>
-		<unit variation="116" posx="-11.3314" posz="-9.9504" orientx="1.0000" orienty="0.0000" orientz="-0.0054">zpNativePropsCastleGuards</unit>
+		<unit variation="3" posx="-10.1623" posz="-10.0426" orientx="1.0000" orienty="0.0000" orientz="-0.0054">zpNativePropsBritishGuards</unit>
+		<unit variation="3" posx="-11.3314" posz="-9.9504" orientx="1.0000" orienty="0.0000" orientz="-0.0054">zpNativePropsBritishGuards</unit>
 		<unit variation="84" posx="-13.3606" posz="-11.6162" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="92" posx="-12.4015" posz="-11.6595" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="110" posx="-11.5848" posz="-11.7769" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
@@ -90,10 +90,10 @@
 		<unit variation="178" posx="-14.5685" posz="-8.4987" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="147" posx="-14.7346" posz="-9.0363" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="59" posx="-14.6844" posz="-9.3765" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="116" posx="-8.9460" posz="-8.8196" orientx="1.0000" orienty="0.0000" orientz="-0.0055">zpNativePropsCastleGuards</unit>
-		<unit variation="116" posx="-7.7758" posz="-8.8447" orientx="1.0000" orienty="0.0000" orientz="-0.0055">zpNativePropsCastleGuards</unit>
-		<unit variation="116" posx="-10.2888" posz="-8.8741" orientx="1.0000" orienty="0.0000" orientz="-0.0054">zpNativePropsCastleGuards</unit>
-		<unit variation="116" posx="-11.4104" posz="-8.9441" orientx="1.0000" orienty="0.0000" orientz="-0.0054">zpNativePropsCastleGuards</unit>
+		<unit variation="3" posx="-8.9460" posz="-8.8196" orientx="1.0000" orienty="0.0000" orientz="-0.0055">zpNativePropsBritishGuards</unit>
+		<unit variation="3" posx="-7.7758" posz="-8.8447" orientx="1.0000" orienty="0.0000" orientz="-0.0055">zpNativePropsBritishGuards</unit>
+		<unit variation="3" posx="-10.2888" posz="-8.8741" orientx="1.0000" orienty="0.0000" orientz="-0.0054">zpNativePropsBritishGuards</unit>
+		<unit variation="3" posx="-11.4104" posz="-8.9441" orientx="1.0000" orienty="0.0000" orientz="-0.0054">zpNativePropsBritishGuards</unit>
 		<unit variation="31" posx="-5.1911" posz="-8.9750" orientx="-1.0000" orienty="-0.0000" orientz="0.0000">deNatEUPropVilLeaders</unit>
 		<unit variation="182" posx="13.4084" posz="-8.6648" orientx="-1.0000" orienty="0.0000" orientz="0.0089">deNatEUPropFence</unit>
 		<unit variation="161" posx="13.9126" posz="-9.4748" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
@@ -134,8 +134,8 @@
 		<unit variation="162" posx="-9.2704" posz="-4.7808" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="137" posx="-9.3571" posz="-5.1228" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="243" posx="-9.3910" posz="-5.4788" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="116" posx="-4.4533" posz="-4.7754" orientx="-0.0053" orienty="0.0000" orientz="-1.0000">zpNativePropsCastleGuards</unit>
-		<unit variation="116" posx="-5.3875" posz="-4.8030" orientx="-0.0053" orienty="0.0000" orientz="-1.0000">zpNativePropsCastleGuards</unit>
+		<unit variation="3" posx="-4.4533" posz="-4.7754" orientx="-0.0053" orienty="0.0000" orientz="-1.0000">zpNativePropsBritishGuards</unit>
+		<unit variation="3" posx="-5.3875" posz="-4.8030" orientx="-0.0053" orienty="0.0000" orientz="-1.0000">zpNativePropsBritishGuards</unit>
 		<unit variation="193" posx="4.8793" posz="-4.2127" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpStuartFlag</unit>
 		<unit variation="182" posx="13.4166" posz="-3.9184" orientx="-1.0000" orienty="0.0000" orientz="0.0089">deNatEUPropFence</unit>
 		<unit variation="193" posx="-6.3054" posz="-3.7088" orientx="-0.0040" orienty="-0.0000" orientz="-1.0000">zpStuartFlag</unit>
@@ -149,8 +149,8 @@
 		<unit variation="74" posx="-15.9052" posz="-3.1666" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="207" posx="-15.5794" posz="-3.5482" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="84" posx="-15.0120" posz="-3.3282" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
-		<unit variation="116" posx="-4.3785" posz="-3.3236" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativePropsCastleGuards</unit>
-		<unit variation="116" posx="-5.3870" posz="-3.4448" orientx="-0.0053" orienty="0.0000" orientz="-1.0000">zpNativePropsCastleGuards</unit>
+		<unit variation="3" posx="-4.3785" posz="-3.3236" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpNativePropsBritishGuards</unit>
+		<unit variation="3" posx="-5.3870" posz="-3.4448" orientx="-0.0053" orienty="0.0000" orientz="-1.0000">zpNativePropsBritishGuards</unit>
 		<unit variation="10" posx="13.4995" posz="-1.8006" orientx="-1.0000" orienty="0.0000" orientz="0.0092">deNatEUPropFence</unit>
 		<unit variation="35" posx="15.2397" posz="-2.0006" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="105" posx="15.0467" posz="-2.8863" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
