@@ -188,3 +188,26 @@ says.
    `config/local-maps.local.json` keep copies such as `00000_zplondon` equal to the repo. The PostToolUse hook runs it
    after map edits, and the post-merge hook after pulls (installed on this device).
 4. **The second Play click:** logged for the AI campaign as I14 in `docs/briefs/2026-09-23-ai-issues-log.md`.
+
+## Owner acceptance test (2026-09-24, 17:30-18:00): PASS
+
+The owner named each target. The camera photographed it in a live 5-player skirmish after the restart, and the owner
+accepted every photo.
+
+| Map | Target | World (m) | Camera |
+|---|---|---|---|
+| London | red Keep, NW bank / other Keep | (42.3, 423.0) / (41.7, 263.0) | verified 1.29 / 0.99 px |
+| London | city wall gates on the trade route, SE / NW | (279.8, 93.4) / (278.2, 592.6) | at the rim: outline not found / clipped, gates in frame |
+| London | London Bridge | (280, 344) | verified 1.77 px |
+| London | St Paul's (rolls between (244, 261) and (244, 425)) | shot both, the dome was north | verified 1.50 / 2.16 px |
+| Paris | Notre Dame / Bastille | (327, 298.8) / (317, 175.4) | verified 1.61 / 0.74 px |
+| Paris | Player 3's base (from the yellow cluster on the minimap) | (48, 96) | clipped (map edge), base in frame |
+| Caribbean Wars | pirate bases (aimed at the socket icons) | (235.3, 495.6) / (496.6, 250.1) | verified 1.71 / 1.54 px |
+
+Targets come from the census (London), the map script (Paris) and minimap icons (P3 base, pirate sockets). Two
+anchors differ from what is photographed:
+- the Bastille building stands about 11 m south of its grouping anchor;
+- `Pirate_CityState_02`'s socket stands about 38 m from its anchor at (0.73, 0.33).
+
+In the lobby the mod maps are only under Select Type = Custom Maps. One Play click with a HUD wait is enough, so no
+second click is needed.
