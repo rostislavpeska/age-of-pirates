@@ -31,7 +31,9 @@ This folder IS the live mod: the game loads it directly. Every byte here ships i
    Posts, natives, bridges, objectives, forward bases, targets and where defences stand. Propose, don't commit. Map-
    specific AI code lives only where `scripts/aitest/tests` (`APPROVED_LONDON_CODE`) lists the owner's approval. Run
    `python -m pytest scripts/aitest/tests -q` before every AI commit. Start every AI change with the
-   `ai-edit` skill; see `docs/ai_scripting_guidelines.md` rule 13.
+   `ai-edit` skill; see `docs/ai_scripting_guidelines.md` rule 13. **Mod AI code lives only in
+   `game/ai/core/aipiraterules.xs`**; the other core files stay the adopted core byte for byte
+   (`.claude/skills/ai-edit/references/mod-ai-architecture.md`).
 
 8. **Images an agent makes never go into the repo.** Screenshots, captures, renders, previews, plots and test
    captures are written to the session scratchpad (or a tool's own temp folder), never next to code, docs or

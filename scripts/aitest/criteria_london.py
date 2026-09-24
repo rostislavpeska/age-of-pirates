@@ -115,7 +115,7 @@ def evaluate(files, events_path=None):
     add("U2", "max gap between LONDON echoes per AI player < 120 s", worst < 120, "worst %ds (%s)" % (worst, worst_p))
 
     # round 2 - applicable once the build echo says r2 or later
-    r2 = [p for p in players if any(re.search(r"LONDON p%d build r([2-9])" % p, l) for l in ai[p])]
+    r2 = [p for p in players if any(re.search(r"LONDON p%d build r([2-9]|\d\d)" % p, l) for l in ai[p])]
     if r2:
         # L4 attacks held: the first LONDONWAR held precedes any released; every released line says the crossing is open
         bad = []
@@ -150,7 +150,7 @@ def evaluate(files, events_path=None):
         add("L6", "no LONDONGATE tasked on a target the same pass skipped as unreachable", n == 0, "count %d" % n)
 
     # round 3 - applicable once the build echo says r3 or later
-    r3 = [p for p in players if any(re.search(r"LONDON p%d build r([3-9])" % p, l) for l in ai[p])]
+    r3 = [p for p in players if any(re.search(r"LONDON p%d build r([3-9]|\d\d)" % p, l) for l in ai[p])]
     if r3:
         # L7 Keep captured by 15:00
         bad = []
@@ -190,7 +190,7 @@ def evaluate(files, events_path=None):
         add("L8", "a lost Keep is held again within 300 s", not bad, "failing: %s" % (bad or "none"))
 
     # round 4 (placement, London only) - applicable once the build echo says r4 or later; reads the AIDIAG line
-    r4 = [p for p in players if any(re.search(r"LONDON p%d build r([4-9])" % p, l) for l in ai[p])]
+    r4 = [p for p in players if any(re.search(r"LONDON p%d build r([4-9]|\d\d)" % p, l) for l in ai[p])]
     if r4:
         diag = re.compile(r"AIDIAG p(\d+) age (-?\d+) .*? farms (-?\d+) plant (-?\d+) bldg (-?\d+) baseR (-?[\d.]+) fails (-?\d+) failsTC (-?\d+) london (\d)")
         rows = {p: [(gtime(l), diag.search(l)) for l in ai[p] if diag.search(l) and gtime(l) is not None] for p in r4}
@@ -234,7 +234,7 @@ def evaluate(files, events_path=None):
 
     # round 6 - no dead end at the bridge (run 31: a rebuilt / converted bridge gate stood unseen after the release):
     # every 'gate <id> reappeared' is followed within 180 s by 'tasked n on <id>' or 'gate <id> down'
-    r6 = [p for p in players if any(re.search(r"LONDON p%d build r([6-9])" % p, l) for l in ai[p])]
+    r6 = [p for p in players if any(re.search(r"LONDON p%d build r([6-9]|\d\d)" % p, l) for l in ai[p])]
     if r6:
         bad = []
         for p in r6:
@@ -266,7 +266,7 @@ def evaluate(files, events_path=None):
 
     # round 5 - the forward base at our bridgehead (owner 2026-09-24): when the stock AI asks for one, the point is
     # London's; judged only for players whose record shows the ask
-    r5 = [p for p in players if any(re.search(r"LONDON p%d build r([5-9])" % p, l) for l in ai[p])]
+    r5 = [p for p in players if any(re.search(r"LONDON p%d build r([5-9]|\d\d)" % p, l) for l in ai[p])]
     if r5:
         asked = [p for p in r5 if any("LONDONPLACE p%d forward base next to the bridge" % p in l for l in ai[p])]
         bad = []

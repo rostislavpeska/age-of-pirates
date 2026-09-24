@@ -120,14 +120,8 @@ minInterval 3
 //==============================================================================
 void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
 {
-   gPlacementFailures = gPlacementFailures + 1;   // AI test campaign counter (aiTestDiag), no behaviour
-   if (puid == cUnitTypeTownCenter)
-   {
-      gPlacementFailuresTC = gPlacementFailuresTC + 1;
-   }
    if (puid == gDockUnit || puid == cUnitTypezpDrydock || puid == cUnitTypezpWaterFort)
    {
-      gPlacementFailuresDock = gPlacementFailuresDock + 1;   // AI test campaign counter (aiTestDiag), no behaviour
       return;
    }
    if ((puid == cUnitTypedeTorp) && (cMyCiv == cCivDESwedish))
@@ -221,13 +215,6 @@ void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
             {
                continue;
             }
-            // LONDON: nothing here is 'another island' - the river, the wall hills, and the countryside behind the city
-            // wall, which the knowledge base keeps as its own land group (run 19: every base froze at 100 m on 'area
-            // type -1 group 5/6/7' while its Plantations stood out there). The 120 m cap below keeps the base on its bank.
-            if (gIsLondon == true)
-            {
-               continue;
-            }
             for (j = 0; < 5)
             {
                if (xsArrayGetInt(basesToAvoid, j) == -1)
@@ -246,20 +233,10 @@ void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
       return;
    }
 
-   // LONDON: the base stays on its own bank - the river is 120 m and more from the seats (zplondon.xs 12.2)
-   if (gIsLondon == true && newDistance > 120.0)
-   {
-      return;
-   }
-
    int time = xsGetTime();
    if ((time - lastExpansionTime) > expansionInterval) // AssertiveWall: old expansionInterval = 60 sec
    {
       debugBuildings("Expanding base " + baseID + " to " + newDistance);
-      if (gIsLondon == true)
-      {
-         aiEcho("LONDONPLACE p" + cMyID + " base " + baseID + " grows to " + newDistance + " m after a " + kbGetProtoUnitName(puid) + " failure");
-      }
       kbBaseSetPositionAndDistance(cMyID, baseID, baseLocation, newDistance);
       lastExpansionTime = time;
    }
@@ -815,226 +792,6 @@ void selectGranaryBuildPlanPosition(int planID = -1, int baseID = -1)
 //==============================================================================
 // selectTCBuildPlanPosition
 //==============================================================================
-//==============================================================================
-// LONDON placement (2026-09-23, docs/briefs/2026-09-23-london-ai-test-report.md) - every line below acts only when
-// gIsLondon is true (the player's own zpAILondonBridge marker, initializePirateRules); other maps never enter it.
-// London's city blocks leave little room inside the 40 m main base, and the placement-failed handler refuses to grow
-// a base that would cover another area group (the river, the wall hills), so the base froze and Barracks, Plantations
-// and Town Centers failed placement for the rest of the game (runs 15-17). The countryside behind the team's own city
-// wall is open ground (owner 2026-09-23: 'AI can absolutely use the space behind the walls ... farms / plantations /
-// mills / Folwarks'): economic buildings go there, a Town Center that failed twice goes there, and the handler may
-// grow the base over water and impassable areas.
-//==============================================================================
-
-//==============================================================================
-// londonCountrysidePoint - 40 m beyond our own city wall gate nearest the main base (the side away from the river),
-// cached while that gate stands; cInvalidVector when the walls are not ours or an ally's (non-2-team lobbies: gaia)
-//==============================================================================
-vector londonCountrysidePoint(void)
-{
-   int marker = -1;
-   int gateQuery = -1;
-   int gateCount = 0;
-   int gate = -1;
-   int best = -1;
-   float bestDist = 100000.0;
-   float side = 1.0;
-   float d = 0.0;
-   float gateOff = 0.0;
-   float tcOff = 0.0;
-   vector tcVec = cInvalidVector;
-   vector bridgeVec = cInvalidVector;
-   vector gateVec = cInvalidVector;
-
-   if (gIsLondon == false)
-   {
-      return (cInvalidVector);
-   }
-   if (gLondonFieldVec != cInvalidVector && gLondonFieldGate >= 0)
-   {
-      if (kbUnitGetCurrentHitpoints(gLondonFieldGate) > 0.0)
-      {
-         return (gLondonFieldVec);
-      }
-   }
-   tcVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
-   marker = getUnit(cUnitTypezpAILondonBridge, cMyID, cUnitStateAny);
-   if (marker < 0 || tcVec == cInvalidVector)
-   {
-      return (cInvalidVector);
-   }
-   bridgeVec = kbUnitGetPosition(marker);
-   // the river runs along x (zplondon.xs 4): our bank is the side of the bridge middle our base is on
-   if (xsVectorGetZ(tcVec) < xsVectorGetZ(bridgeVec))
-   {
-      side = -1.0;
-   }
-   gateQuery = createSimpleUnitQuery(cUnitTypeSPCFortGate, cPlayerRelationAlly, cUnitStateAlive, tcVec, 300.0);
-   gateCount = kbUnitQueryExecute(gateQuery);
-   for (i = 0; < gateCount)
-   {
-      gate = kbUnitQueryGetResult(gateQuery, i);
-      gateVec = kbUnitGetPosition(gate);
-      // the city wall stands beyond the seats, away from the river; the Keeps' and the bridge's gates are riverward
-      // (plain steps: XS rejects '(a - b) * c < ...' in a condition - Error 0308, run 19)
-      gateOff = xsVectorGetZ(gateVec) - xsVectorGetZ(bridgeVec);
-      gateOff = gateOff * side;
-      tcOff = xsVectorGetZ(tcVec) - xsVectorGetZ(bridgeVec);
-      tcOff = tcOff * side + 20.0;
-      if (gateOff < tcOff)
-      {
-         continue;
-      }
-      d = distance(gateVec, tcVec);
-      if (d < bestDist)
-      {
-         bestDist = d;
-         best = gate;
-      }
-   }
-   if (best < 0)
-   {
-      aiEcho("LONDONPLACE p" + cMyID + " no own city wall gate within 300 m - default placement");
-      return (cInvalidVector);
-   }
-   gateVec = kbUnitGetPosition(best);
-   gLondonFieldGate = best;
-   gLondonFieldVec = xsVectorSet(xsVectorGetX(gateVec), 0.0, xsVectorGetZ(gateVec) + side * 40.0);
-   aiEcho("LONDONPLACE p" + cMyID + " countryside " + xsVectorGetX(gLondonFieldVec) + "/" + xsVectorGetZ(gLondonFieldVec)
-          + " behind gate " + best + " (" + bestDist + " m from the base)");
-   return (gLondonFieldVec);
-}
-
-//==============================================================================
-// londonFieldPoint - London: the countryside point for the NEXT economic building - 40 m beyond whichever of our own
-// city wall gates (the side away from the river) has the fewest buildings within 50 m; distance to the base breaks
-// ties. Run 21: one point per player filled up (Plantation / Mill placement failures up to 27 each after ~7 fields).
-//==============================================================================
-vector londonFieldPoint(void)
-{
-   static int gateArr = -1;
-   int marker = -1;
-   int gateQuery = -1;
-   int gateCount = 0;
-   int gate = -1;
-   int n = 0;
-   int crowd = 0;
-   int bestGate = -1;
-   int bestCrowd = 0;
-   float side = 1.0;
-   float gateOff = 0.0;
-   float tcOff = 0.0;
-   float score = 0.0;
-   float bestScore = 1000000.0;
-   vector tcVec = cInvalidVector;
-   vector bridgeVec = cInvalidVector;
-   vector gateVec = cInvalidVector;
-   vector point = cInvalidVector;
-   vector bestPoint = cInvalidVector;
-
-   if (gIsLondon == false)
-   {
-      return (cInvalidVector);
-   }
-   if (gateArr < 0)
-   {
-      gateArr = xsArrayCreateInt(8, -1, "London field gates");
-   }
-   tcVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
-   marker = getUnit(cUnitTypezpAILondonBridge, cMyID, cUnitStateAny);
-   if (marker < 0 || tcVec == cInvalidVector)
-   {
-      return (cInvalidVector);
-   }
-   bridgeVec = kbUnitGetPosition(marker);
-   if (xsVectorGetZ(tcVec) < xsVectorGetZ(bridgeVec))
-   {
-      side = -1.0;
-   }
-   // the gates first, into the array (one shared query object: read it before any other query runs)
-   gateQuery = createSimpleUnitQuery(cUnitTypeSPCFortGate, cPlayerRelationAlly, cUnitStateAlive, tcVec, 160.0);   // only the gates behind our own seat (owner 2026-09-24: estates were built far away)
-   gateCount = kbUnitQueryExecute(gateQuery);
-   for (i = 0; < gateCount)
-   {
-      gate = kbUnitQueryGetResult(gateQuery, i);
-      gateVec = kbUnitGetPosition(gate);
-      gateOff = xsVectorGetZ(gateVec) - xsVectorGetZ(bridgeVec);
-      gateOff = gateOff * side;
-      tcOff = xsVectorGetZ(tcVec) - xsVectorGetZ(bridgeVec);
-      tcOff = tcOff * side + 20.0;
-      if (gateOff < tcOff)
-      {
-         continue;
-      }
-      if (n < 8)
-      {
-         xsArraySetInt(gateArr, n, gate);
-         n = n + 1;
-      }
-   }
-   for (k = 0; < n)
-   {
-      gate = xsArrayGetInt(gateArr, k);
-      gateVec = kbUnitGetPosition(gate);
-      point = xsVectorSet(xsVectorGetX(gateVec), 0.0, xsVectorGetZ(gateVec) + side * 40.0);
-      crowd = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAlly, cUnitStateABQ, point, 50.0);
-      // the nearest gate wins; the next nearest only once it holds 4+ buildings (was: crowd x 30 + distance / 10 - a gate
-      // 300 m away cost as much as one building, so the estates drifted to the far end of the bank)
-      score = distance(point, tcVec);
-      if (crowd >= 4)
-      {
-         score = score + 1000.0;
-      }
-      if (score < bestScore)
-      {
-         bestScore = score;
-         bestGate = gate;
-         bestCrowd = crowd;
-         bestPoint = point;
-      }
-   }
-   if (bestGate < 0)
-   {
-      return (londonCountrysidePoint());
-   }
-   if (xsGetTime() - gLondonPlaceEcho >= 30000)
-   {
-      aiEcho("LONDONPLACE p" + cMyID + " field point behind gate " + bestGate + " of " + n + " gates, " + bestCrowd
-             + " buildings there");
-   }
-   return (bestPoint);
-}
-
-//==============================================================================
-// londonSelectFieldPosition - London: the economic buildings (Mill / Farm / Plantation / Hacienda / Folwark / rice
-// paddy) at the countryside point, the Town Center's centre-position placement; false = not handled (default path)
-//==============================================================================
-bool londonSelectFieldPosition(int planID = -1, int puid = -1)
-{
-   vector point = cInvalidVector;
-
-   if (gIsLondon == false)
-   {
-      return (false);
-   }
-   if (puid != gFarmUnit && puid != gPlantationUnit && puid != cUnitTypeMill && puid != cUnitTypePlantation &&
-       puid != cUnitTypeFarm && puid != cUnitTypedeHacienda && puid != cUnitTypedeFolwark &&
-       puid != cUnitTypedeFolwarkFarm && puid != cUnitTypeypRicePaddy)
-   {
-      return (false);
-   }
-   point = londonFieldPoint();
-   if (point == cInvalidVector)
-   {
-      return (false);
-   }
-   aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, point);
-   aiPlanSetVariableFloat(planID, cBuildPlanCenterPositionDistance, 0, 60.0);
-   aiEcho("LONDONPLACE p" + cMyID + " field " + kbGetProtoUnitName(puid) + " plan " + planID + " at the countryside "
-          + xsVectorGetX(point) + "/" + xsVectorGetZ(point) + " dist " + distance(point, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID))));
-   return (true);
-}
-
 void selectTCBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 {
    // We need to figure out where to put the new TC.  Start with the current main base as an anchor.
@@ -1100,17 +857,6 @@ void selectTCBuildPlanPosition(int buildPlan = -1, int baseID = -1)
             unitID = getUnit(gEconUnit, cMyID, cUnitStateAlive);
          }
          loc = kbUnitGetPosition(unitID);
-      }
-   }
-
-   // LONDON: after two Town Center placement failures the city has no room - the countryside behind our wall
-   if (gIsLondon == true && gPlacementFailuresTC >= 2)
-   {
-      vector londonTCVec = londonCountrysidePoint();
-      if (londonTCVec != cInvalidVector)
-      {
-         loc = londonTCVec;
-         aiEcho("LONDONPLACE p" + cMyID + " town center plan " + buildPlan + " in the countryside after " + gPlacementFailuresTC + " failures");
       }
    }
 
@@ -1531,15 +1277,6 @@ void DEPRICATEDselectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 //==============================================================================
 bool selectBuildPlanPosition(int planID = -1, int puid = -1, int baseID = -1)
 {
-   // LONDON: economic buildings behind our own city wall (londonSelectFieldPosition; false on every other map)
-   if (gIsLondon == true)
-   {
-      if (londonSelectFieldPosition(planID, puid) == true)
-      {
-         return (true);
-      }
-   }
-
    // AssertiveWall: Switch to archipelago version when desired:
    if ((gIsArchipelagoMap == true && kbGetAge() >= cAge2) || (gIsArchipelagoMap == true && kbProtoUnitIsType(cMyID, puid, cUnitTypeAbstractWonder) == true))
    {
@@ -1942,98 +1679,6 @@ bool addBuilderToPlan(int planID = -1, int puid = -1, int numberBuilders = 1)
 //==============================================================================
 // selectForwardBaseLocation
 //==============================================================================
-//==============================================================================
-// londonReadConstructionBlocks - the two construction blocks at the bridge landings (EU_SPC_Block_Constr, zplondon.xs
-// 10.2) by the AI marker the map places on each (zpAILondonConstrMarker, zplondon.xs 12.11 - one per player per block,
-// owned by us: the bridge marker's proven pattern). Owner 2026-09-24: 'a new construction marker unit trackable by AI'
-// - the block's own prop (zpUnderbrushConstructionJesuitTemple) is an embellishment the AI never sees (run 30: found
-// 0). Ours = the marker nearest our base, far = the farthest: the forward base goes to the enemy block.
-//==============================================================================
-void londonReadConstructionBlocks(vector from = cInvalidVector)
-{
-   int q = -1;
-   int n = 0;
-   int unit = -1;
-   float d = 0.0;
-   float nearD = 100000.0;
-   float farD = -1.0;
-   vector v = cInvalidVector;
-
-   if (gIsLondon == false)
-   {
-      return;
-   }
-   q = createSimpleUnitQuery(cUnitTypezpAILondonConstrMarker, cMyID, cUnitStateAny);
-   n = kbUnitQueryExecute(q);
-   for (i = 0; < n)
-   {
-      unit = kbUnitQueryGetResult(q, i);
-      v = kbUnitGetPosition(unit);
-      d = distance(v, from);
-      if (d < nearD)
-      {
-         nearD = d;
-         gLondonConstrOurs = v;
-      }
-      if (d > farD)
-      {
-         farD = d;
-         gLondonConstrFar = v;
-      }
-   }
-   if (n < 2)
-   {
-      gLondonConstrFar = cInvalidVector;
-   }
-   aiEcho("LONDONSETUP p" + cMyID + " construction blocks found " + n + " ours " + xsVectorGetX(gLondonConstrOurs) + "/" + xsVectorGetZ(gLondonConstrOurs)
-          + " far " + xsVectorGetX(gLondonConstrFar) + "/" + xsVectorGetZ(gLondonConstrFar));
-}
-
-//==============================================================================
-// londonForwardBasePoint - London: the forward base on the enemy's construction block at their bridge landing
-// (gLondonConstrFar, read in londonSetup from the block's unique unit) once the London war plan has released the attack
-// (gLondonWarState 2); cInvalidVector before, and while the block was not found - the stock rule asks again later.
-// Owner 2026-09-24: the construction block next to the bridge, targeted by its unique unit, not by a map spot.
-// Run 28: a fixed point 50 m past the bridge middle hit the road and city blocks (13 + 28 Forward failures).
-//==============================================================================
-vector londonForwardBasePoint(void)
-{
-   static int lastEcho = -60000;
-
-   if (gIsLondon == false)
-   {
-      return (cInvalidVector);
-   }
-   if (gLondonWarState != 2)
-   {
-      if (xsGetTime() - lastEcho >= 60000)
-      {
-         lastEcho = xsGetTime();
-         aiEcho("LONDONPLACE p" + cMyID + " forward base asked, crossing still closed (war state " + gLondonWarState + ") - later");
-      }
-      return (cInvalidVector);
-   }
-   if (gLondonConstrFar == cInvalidVector)
-   {
-      londonReadConstructionBlocks(kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID)));
-   }
-   if (gLondonConstrFar == cInvalidVector)
-   {
-      if (xsGetTime() - lastEcho >= 60000)
-      {
-         lastEcho = xsGetTime();
-         aiEcho("LONDONPLACE p" + cMyID + " forward base asked, the enemy construction block is not known - later");
-      }
-      return (cInvalidVector);
-   }
-   if (xsGetTime() - lastEcho >= 60000)
-   {
-      lastEcho = xsGetTime();
-      aiEcho("LONDONPLACE p" + cMyID + " forward base next to the bridge at " + xsVectorGetX(gLondonConstrFar) + "/" + xsVectorGetZ(gLondonConstrFar) + " (enemy construction block)");
-   }
-   return (gLondonConstrFar);
-}
-
 vector selectForwardBaseLocation(void)
 {
    vector retVal = cInvalidVector;
@@ -2041,13 +1686,6 @@ vector selectForwardBaseLocation(void)
    vector v = cInvalidVector; // Scratch variable for intermediate calcs.
 
    debugBuildings("Selecting forward base location");
-   // LONDON: the forward base stands at the enemy bridgehead once the crossing is open (londonForwardBasePoint);
-   // before that there is none, and the stock rule asks again later
-   if (gIsLondon == true)
-   {
-      vector londonForwardVec = londonForwardBasePoint();
-      return (londonForwardVec);
-   }
    // Will be used to determine how far out we should put the fort on the line from our base to enemy TC.
    float distanceMultiplier = 0.5; 
    float dist = 0.0;
@@ -3417,39 +3055,12 @@ minInterval 5
    // Below Hard makes 1 and 2, respectfully
    // No dock building until age2 transition
    bool dockNeeded = shouldBuildDock();
-   // AI test campaign (echo only, gAITestDiag): the dock decision once a minute - wanted or not, and what plan creation returned
-   static int dockDiagTime = -60000;
-   bool dockDiag = false;
-   int dockDiagAge = xsGetTime() - dockDiagTime;   // plain steps: XS rejected 'a == true && t - x >= y' (run 32, Error 0308)
-   if (gAITestDiag == true)
-   {
-      if (dockDiagAge >= 60000)
-      {
-         dockDiag = true;
-      }
-   }
-   if (dockDiag == true)
-   {
-      dockDiagTime = xsGetTime();
-      if (dockNeeded == true)
-      {
-         aiEcho("AIDOCK p" + cMyID + " wanted, docks " + dockCount + " age " + kbGetAge() + " existing plan " + aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit));
-      }
-      else
-      {
-         aiEcho("AIDOCK p" + cMyID + " not wanted, docks " + dockCount + " age " + kbGetAge() + " existing plan " + aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit));
-      }
-   }
    if (dockNeeded == true)
    {
       if ((aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit) < 0) &&
           ((gRevolutionType & cRevolutionFinland) == 0))
       { 
          planID = createSimpleBuildPlan(gDockUnit, 1, 70, false, cMilitaryEscrowID, mainBaseID, 1); 
-         if (dockDiag == true)
-         {
-            aiEcho("AIDOCK p" + cMyID + " plan created " + planID + " (-1 = refused by createSimpleBuildPlan / addBuilderToPlan)");
-         }
          if (gStartOnDifferentIslands == true && dockCount < 1)
          {
             aiPlanSetDesiredResourcePriority(planID, 80); // Docks are high priority on island maps

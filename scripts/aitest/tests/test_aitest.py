@@ -149,9 +149,10 @@ def declarations(name):
 
 class TestAIFiles:
     @pytest.mark.parametrize("name", ["gAITestDiag", "gPlacementFailures", "gPlacementFailuresTC", "gPlacementFailuresDock", "gIsLondon",
-                                      "gLondonWarState"])
-    def test_campaign_globals_are_declared_once_in_aiglobals(self, name):
-        assert declarations(name) == ["aiglobals.xs"]
+                                      "gLondonWarState", "gPirateForwardBaseMap"])
+    def test_campaign_globals_are_declared_once_in_aipiraterules(self, name):
+        # isolation (owner 2026-09-24): no mod global in aiglobals.xs
+        assert declarations(name) == ["aipiraterules.xs"]
 
     def test_the_diag_is_echo_only(self):
         s = core("aipiraterules.xs")
@@ -169,11 +170,17 @@ class TestAIFiles:
         assert "gAITestDiag == true" in s[i - 120:i]
         assert s.count('xsEnableRule("aiTestDiag")') == 1
 
-    def test_the_failure_counter_is_the_handlers_first_statement(self):
-        s = core("aibuildings.xs")
-        i = s.index("void buildingPlacementFailedHandler(")
+    @pytest.mark.parametrize("h", ["aiTestPlacementFailedHandler", "londonBuildingPlacementFailedHandler"])
+    def test_the_failure_counter_is_the_handlers_first_statement(self, h):
+        s = core("aipiraterules.xs")
+        i = s.index("void %s(" % h)
         first = s[s.index("{", i) + 1:].strip().splitlines()[0]
         assert first.startswith("gPlacementFailures = gPlacementFailures + 1;")
+
+    def test_the_handlers_are_registered_from_the_pirate_rules(self):
+        s = core("aipiraterules.xs")
+        assert 'aiSetHandler("aiTestPlacementFailedHandler", cXSBuildingPlacementFailedHandler)' in s
+        assert 'aiSetHandler("londonBuildingPlacementFailedHandler", cXSBuildingPlacementFailedHandler)' in s
 
     @pytest.mark.parametrize("name", ["aiglobals.xs", "aibuildings.xs", "aipiraterules.xs"])
     def test_ai_files_are_crlf(self, name):
@@ -213,43 +220,74 @@ def enclosing_headers(lines, i):
     return heads
 
 
-class TestLondonOnlyPlacement:
-    HELPERS = ("londonCountrysidePoint", "londonFieldPoint", "londonSelectFieldPosition", "londonForwardBasePoint",
-               "londonReadConstructionBlocks")
+BASELINE = "0b2c6aab"   # AI: adopt the Christmas-Release core (2026-09-11) - the stock core every mod path starts from
 
-    @pytest.mark.parametrize("h", HELPERS)
-    def test_helpers_return_at_once_off_london(self, h):
-        s = core("aibuildings.xs")
+
+def _git_show(rev, path):
+    import subprocess
+    r = subprocess.run(["git", "show", "%s:%s" % (rev, path)], cwd=ROOT, capture_output=True)
+    return r.stdout if r.returncode == 0 else None
+
+
+class TestIsolation:
+    """Owner 2026-09-24: 'completely isolated - one line in aiglobals max'. Mod AI lives only in aipiraterules.xs;
+    every other core file is the adopted core byte for byte (Istanbul's pattern: switch stock rules off, run copies)."""
+
+    STOCK = sorted(f for f in os.listdir(CORE) if f.endswith(".xs") and f != "aipiraterules.xs")
+
+    @pytest.mark.parametrize("name", STOCK)
+    def test_stock_file_is_the_adopted_core(self, name):
+        base = _git_show(BASELINE, "game/ai/core/" + name)
+        if base is None:
+            pytest.skip("git or the baseline commit is not available")
+        now = open(os.path.join(CORE, name), "rb").read().replace(b"\r\n", b"\n")   # git stores LF; CRLF is tested apart
+        base = base.replace(b"\r\n", b"\n")
+        if name == "aiglobals.xs":   # the one allowed line
+            a, b = base.splitlines(), now.splitlines()
+            extra = [l for l in b if l not in a]
+            assert len(b) - len(a) <= 1 and len(extra) <= 1 and all(l in b for l in a), extra
+        else:
+            assert now == base, "%s differs from %s - mod AI goes into aipiraterules.xs" % (name, BASELINE)
+
+    @pytest.mark.parametrize("name", STOCK)
+    def test_no_mod_map_name_outside_the_pirate_rules(self, name):
+        assert not re.search(r"london|zpparis", core(name), re.I), name
+
+
+class TestLondonOnlyPlacement:
+    HELPERS = {"londonCountrysidePoint": "gIsLondon == false", "londonFieldPoint": "gIsLondon == false",
+               "londonSelectFieldPosition": "gIsLondon == false", "pirateForwardBasePoint": "gPirateForwardBaseMap == false"}
+
+    @pytest.mark.parametrize("h", sorted(HELPERS))
+    def test_helpers_return_at_once_off_their_map(self, h):
+        s = core("aipiraterules.xs")
         m = re.search(r"^(?:bool|vector|int|void)\s+%s\(" % h, s, re.M)
         assert m, h
         body = s[m.end():]
         first_if = body[body.index("{") + 1:].split("if (", 1)[1].split(")", 1)[0]
-        assert first_if == "gIsLondon == false", (h, first_if)
+        assert first_if == self.HELPERS[h], (h, first_if)
 
-    def test_every_other_london_line_sits_inside_a_gisLondon_guard(self):
-        lines = core("aibuildings.xs").splitlines()
-        # every london* function body is a helper (each starts with 'if (gIsLondon == false) return', tested above)
-        helper_lines = set()
-        for i, l in enumerate(lines):
-            if re.match(r"^(?:bool|vector|int|void)\s+london\w+\(", l):
-                depth, j, opened = 0, i, False
-                while j < len(lines):
-                    depth += lines[j].count("{") - lines[j].count("}")
-                    opened = opened or "{" in lines[j]
-                    helper_lines.add(j)
-                    if opened and depth == 0:
-                        break
-                    j += 1
-        hits = [i for i, l in enumerate(lines)
-                if re.search(r"london|LONDON", l) and i not in helper_lines and not l.strip().startswith("//")]
-        assert hits, "no London code found outside the helpers"
-        for i in hits:
-            if "gIsLondon == true" in lines[i]:
-                continue
-            assert any("gIsLondon == true" in h for h in enclosing_headers(lines, i)), (i + 1, lines[i])
+    def test_detection_is_by_map_name(self):
+        s = core("aipiraterules.xs")
+        assert 'cRandomMapName == "zplondon"' in s and 'cRandomMapName == "zpparis"' in s
+        assert "kbUnitCount(cMyID, cUnitTypezpAILondonBridge" not in s
 
-    def test_build_echo_is_round_nine(self):
-        assert "build r9 2026-09-24" in core("aipiraterules.xs")
+    def test_the_forward_base_copies_differ_from_stock_only_in_the_location(self):
+        s = core("aipiraterules.xs")
+        for rule, src, extra in (("forwardBaseManager", "aibuildings.xs", {"forwardTowerBaseManager();"}),
+                                 ("forwardTowerBaseManager", "aiassertivewall.xs", set())):
+            def body(text, name):
+                i = text.index("rule %s\r\n" % name)
+                return text[i:text.index("\r\n}\r\n", i)].split("\r\n")[1:]
+            a, b = body(core(src), rule), body(s, "pirate" + rule[0].upper() + rule[1:])
+            assert len(a) == len(b), rule
+            diff = [(x.strip(), y.strip()) for x, y in zip(a, b) if x != y]
+            allowed = {("location = selectForwardBaseLocation();", "location = pirateForwardBasePoint();"),
+                       ("forwardTowerBaseManager();", "pirateForwardTowerBaseManager();")}
+            assert set(diff) <= allowed, (rule, diff)
+
+    def test_build_echo_is_round_ten(self):
+        assert "build r10 2026-09-24" in core("aipiraterules.xs")
 
 
 def diag4(t, p=2, baseR=40.0, fails=0, farms=0, plant=0, london=1):
@@ -410,7 +448,7 @@ class TestRoundFiveCriteria:
 # fails this test; adding it to the list is the explicit approval step (docs/ai_scripting_guidelines.md rule 13).
 APPROVED_LONDON_CODE = {
     # aipiraterules.xs - the plan 'docs/briefs/2026-09-23-london-ai-plan.md', owner 'Go' 2026-09-23 (rounds 1-3)
-    ("aipiraterules.xs", "initializePirateRules"): "detection on the player's own marker - plan round 1",
+    ("aipiraterules.xs", "initializePirateRules"): "detection by map name (owner 2026-09-24) - plan round 1",
     ("aipiraterules.xs", "londonSetup"): "plan round 1",
     ("aipiraterules.xs", "londonDiag"): "plan round 1 (test mode only)",
     ("aipiraterules.xs", "londonFarBridgeGate"): "plan round 2",
@@ -425,19 +463,16 @@ APPROVED_LONDON_CODE = {
     # owner 2026-09-24 (option 2: 'good, edit AI'): the army retakes our lost near Keep
     ("aipiraterules.xs", "londonKeepRetake"): "retake our enemy-held near Keep with the gate killer's reserve",
     ("aipiraterules.xs", "aiTestDiag"): "echo-only test diagnostic, owner baseline plan 2026-09-23",
-    # aibuildings.xs - owner 2026-09-23: 'AI can absolutely use the space behind the walls ... farms / plantations /
-    # mills / Folwarks'; the London-only placement fix of the night plan
-    ("aibuildings.xs", "londonCountrysidePoint"): "economic buildings behind the wall",
-    ("aibuildings.xs", "londonFieldPoint"): "economic buildings behind the wall, spread over the gates",
-    ("aibuildings.xs", "londonSelectFieldPosition"): "economic buildings behind the wall",
-    ("aibuildings.xs", "selectBuildPlanPosition"): "dispatch of the economic buildings only",
-    ("aibuildings.xs", "selectTCBuildPlanPosition"): "Town Center countryside fallback after 2 failures",
-    ("aibuildings.xs", "buildingPlacementFailedHandler"): "base growth over river / hills / countryside, 120 m cap",
-    # owner 2026-09-24: 'can be also enemy bridgehead, maybe that one makes more sense'
-    # owner 2026-09-24: 'the construction block ... target the unique units instead of the map spot'
-    ("aibuildings.xs", "londonReadConstructionBlocks"): "the construction blocks at the bridge landings, by their unique unit",
-    ("aibuildings.xs", "londonForwardBasePoint"): "forward base at the enemy bridgehead once the crossing is open",
-    ("aibuildings.xs", "selectForwardBaseLocation"): "forward base at the enemy bridgehead once the crossing is open",
+    # owner 2026-09-23: 'AI can absolutely use the space behind the walls ... farms / plantations / mills / Folwarks';
+    # moved from aibuildings.xs 2026-09-24 (owner: 'completely isolated')
+    ("aipiraterules.xs", "londonCountrysidePoint"): "economic buildings behind the wall",
+    ("aipiraterules.xs", "londonFieldPoint"): "economic buildings behind the wall, spread over the gates",
+    ("aipiraterules.xs", "londonSelectFieldPosition"): "economic buildings behind the wall",
+    ("aipiraterules.xs", "londonPlanPlacer"): "economic buildings + the Town Center fallback behind the wall",
+    ("aipiraterules.xs", "londonBuildingPlacementFailedHandler"): "base growth over river / hills / countryside, 120 m cap",
+    # owner 2026-09-24: 'can be also enemy bridgehead' + 'target the unique units instead of the map spot' +
+    # 'let's try the same with Paris, ideally one rule ... ideally the other shore'
+    ("aipiraterules.xs", "pirateForwardBasePoint"): "forward base at the enemy construction block (London once open, Paris)",
 }
 
 

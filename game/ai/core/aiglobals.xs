@@ -617,19 +617,3 @@ extern int gDebugHCCardsID = -1;
 extern int gDebugChatsID = -1;
 extern int gDebugSetupID = -1;
 extern int gDebugCoreID = -1;
-
-//==============================================================================
-// AI test campaign (2026-09-23, docs/briefs/2026-09-23-london-ai-test-report.md). Declared here because
-// aibuildings.xs (the placement code) is compiled before aipiraterules.xs.
-//==============================================================================
-extern bool gAITestDiag = true;                 // AIDIAG echo once a minute on EVERY map - echo only, no behaviour; false for release
-extern int gPlacementFailures = 0;              // buildingPlacementFailedHandler calls (every building type)
-extern int gPlacementFailuresDock = 0;          // ... of them docks (the handler returns early for docks: otherwise invisible)
-extern int gPlacementFailuresTC = 0;            // ... of them Town Centers
-extern bool gIsLondon = false;                  // set by initializePirateRules on the player's own zpAILondonBridge marker
-extern vector gLondonConstrOurs = cInvalidVector;   // London: the construction block at our bridge landing (its zpAILondonConstrMarker, zplondon.xs 12.11), read once in londonSetup
-extern vector gLondonConstrFar = cInvalidVector;    // ... at the enemy's landing - the forward base spot (owner 2026-09-24)
-extern int gLondonWarState = 0;                 // London war plan (aipiraterules.xs): 0 not started, 1 held (crossing closed), 2 released (crossing open); here for the forward base
-extern vector gLondonFieldVec = cInvalidVector; // London: the countryside point behind our own city wall gate (londonCountrysidePoint)
-extern int gLondonFieldGate = -1;               // ... the wall gate it was taken from (re-found when it dies)
-extern int gLondonPlaceEcho = -60000;           // LONDONPLACE echo throttle

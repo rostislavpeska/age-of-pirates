@@ -8,6 +8,7 @@ description: The entry point for ANY change under game/ai (the XS AI scripts) - 
 | Read | When |
 |---|---|
 | this page | always, first |
+| [references/mod-ai-architecture.md](references/mod-ai-architecture.md) | **before writing any AI code**: mod AI lives only in `aipiraterules.xs`; the stock core stays byte for byte; how to replace a stock rule or handler from there |
 | [references/rules-puzzle.md](references/rules-puzzle.md) | before adding a rule or touching a stock rule's switch: the families, handlers, plan priorities and the London chain |
 | [references/test-environment.md](references/test-environment.md) | setting up a device / session: user.cfg, crash dumps, screen, coordinate sheet, lobby (with the **game-startup** and **ui-calibrate** skills) |
 | [references/testing-process.md](references/testing-process.md) | before and during any in-game test: the phases, the driver, the rules of the cycle |
@@ -58,19 +59,22 @@ Every unrequested change risks a working state. The night's toxic changes were m
   match start. `coreDLC/` is not in lockstep; that is an open owner decision.
 - **The include order is `aicore.xs` 90-104:** globals, utilities, buildorders, waterrules, assertivewall,
   buildings, techs, exploration, economy, military, hccards, chats, **pirate rules**, archipelago, setup.
-- **XS resolves names in file order.** A global that an earlier file needs goes into `aiglobals.xs`, declared once
-  (tested).
+- **Every file except `aipiraterules.xs` is the adopted core `0b2c6aab`, byte for byte** (owner 2026-09-24,
+  tested). Mod globals go at the top of `aipiraterules.xs`; stock rules and handlers are replaced from there, never
+  edited ([references/mod-ai-architecture.md](references/mod-ai-architecture.md)).
+- **XS resolves names in file order:** `aipiraterules.xs` sees every stock function; stock files never see ours.
 - **A `mutable` stub in `aicore.xs`** plus the real body later is the core's forward declaration. Any other double
-  definition is an error.
+  definition is an error. The mod adds no stubs.
 - **AI files are CRLF.** Write them through a script that converts, and check with `file`.
 
 ## 3. The map-specific pattern
 
-- **Detection by object, never by name.** The player's own marker (`zpAILondonBridge`) sets `gIsLondon` in
-  `initializePirateRules`.
-- **Guards:** every helper starts with `if (gIsLondon == false) { return (...); }`, and every hook in a stock
-  function sits inside `if (gIsLondon == true) { ... }`. Both are tested.
-- **Hooks change HOW, not WHAT:** a place, a search radius, a growth limit.
+- **Detection by map name** (owner 2026-09-24) in `initializePirateRules`: `cRandomMapName == "zplondon"` sets
+  `gIsLondon`; `zpparis` enables the shared forward base. Map markers stay the way the AI finds places.
+- **Guards:** every helper starts with `if (gIsLondon == false) { return (...); }` (tested). There are no hooks in
+  stock functions: a stock rule is switched off and a copy runs (Istanbul's pattern), a stock handler is replaced
+  with `aiSetHandler`.
+- **Copies change HOW, not WHAT:** a place, a search radius, a growth limit.
 - **Every rule echoes its refusals** (throttled) and its phase changes with counts. Use one vocabulary per map
   (`LONDONWAR`, `LONDONGATE`, `LONDONKEEP`, `LONDONHOLD`, `LONDONPLACE`).
 - **Test knobs** go behind `gLondonTestMode`. The echo-only `aiTestDiag` goes behind `gAITestDiag`. Both must be

@@ -1857,6 +1857,39 @@ rmSetStatusText("",0.70);
 	rmAddObjectDefConstraint(fishID, playerEdgeConstraint);
 	rmPlaceObjectDefAtLoc(fishID, 0, 0.5, 0.5, 20*cNumberNonGaiaPlayers);
 
+	// AI CONSTRUCTION MARKERS (owner 2026-09-24, London 12.11's pattern) - zpAILondonConstrMarker (editor-only, Tracked,
+	// owned by the player so the AI's own query finds it) on every construction block (Empty Blocks above), one per player
+	// per block: the AI's forward base goes to the block on the other shore nearest its enemy (aipiraterules.xs
+	// pirateForwardBasePoint). Placed after every grouping instance the triggers read: no id moves.
+	int constrMark = rmCreateObjectDef("ai construction marker");
+	rmAddObjectDefItem(constrMark, "zpAILondonConstrMarker", 1, 0.0);
+	rmSetObjectDefAllowOverlap(constrMark, true);
+	rmSetObjectDefMinDistance(constrMark, 0.0);
+	rmSetObjectDefMaxDistance(constrMark, 0.0);
+	for (i = 1; <= cNumberNonGaiaPlayers)
+	{
+		if (cNumberNonGaiaPlayers <= 2)
+		{
+			if (verticalVariation == 1)
+			{
+				rmPlaceObjectDefAtLoc(constrMark, i, locX1, locZ0);
+				rmPlaceObjectDefAtLoc(constrMark, i, locXm1, locZ9);
+			}
+			else
+			{
+				rmPlaceObjectDefAtLoc(constrMark, i, locX1, locZ9);
+				rmPlaceObjectDefAtLoc(constrMark, i, locXm1, locZ0);
+			}
+		}
+		else
+		{
+			rmPlaceObjectDefAtLoc(constrMark, i, locX1, locZ0);
+			rmPlaceObjectDefAtLoc(constrMark, i, locX1, locZ9);
+			rmPlaceObjectDefAtLoc(constrMark, i, locXm1, locZ0);
+			rmPlaceObjectDefAtLoc(constrMark, i, locXm1, locZ9);
+		}
+	}
+
 	//********************* GENERAL SETUP *************************
 
 	// ____________________ LOCAL MERCENARIES ____________________

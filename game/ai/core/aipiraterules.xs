@@ -41,6 +41,18 @@ extern int gLondonArmyFloor = 20;               // units in the reserve before a
 extern int gLondonKeepGarrison = 10;            // units per Keep garrison, pri 101; londonSetup sets 6 in test mode
 extern int gLondonHoldPlanNear = -1;
 extern int gLondonHoldPlanFar = -1;
+// ISOLATION (owner 2026-09-24: 'completely isolated'): every mod AI global lives here, none in aiglobals.xs; the stock
+// files are the adopted core (0b2c6aab) byte for byte. Mod paths replace stock rules / handlers from this file only.
+extern bool gAITestDiag = true;                 // AIDIAG echo once a minute on EVERY map - echo only, no behaviour; false for release
+extern int gPlacementFailures = 0;              // building placement failures (every building type), counted by the mod handlers
+extern int gPlacementFailuresDock = 0;          // ... of them docks
+extern int gPlacementFailuresTC = 0;            // ... of them Town Centers
+extern bool gIsLondon = false;                  // set by initializePirateRules on the map name
+extern int gLondonWarState = 0;                 // London war plan: 0 not started, 1 held (crossing closed), 2 released (crossing open)
+extern vector gLondonFieldVec = cInvalidVector; // London: the countryside point behind our own city wall gate (londonCountrysidePoint)
+extern int gLondonFieldGate = -1;               // ... the wall gate it was taken from (re-found when it dies)
+extern int gLondonPlaceEcho = -60000;           // LONDONPLACE echo throttle
+extern bool gPirateForwardBaseMap = false;      // London / Paris: the forward base goes to the enemy construction block
 
 rule initializePirateRules
 active
@@ -50,6 +62,7 @@ minInterval 1
    if (gAITestDiag == true)
    {
       xsEnableRule("aiTestDiag");
+      aiSetHandler("aiTestPlacementFailedHandler", cXSBuildingPlacementFailedHandler);   // counts, then the stock handler
    }
 
    // Water Maps %%%%%%%%%%%%%%%%%%%%%%%
@@ -327,16 +340,29 @@ minInterval 1
    }
 
    // London %%%%%%%%%%%%%%%%%%%%%%%
-   // Detected by the player's OWN bridge marker (zpAILondonBridge, one per player at the bridge middle, zplondon.xs):
-   // the Paris urban marker is not placed on London, so the Paris gate chain stays off here. The London rules are the
-   // LONDON section at the end of this file (docs/briefs/2026-09-23-london-ai-plan.md).
-   if (kbUnitCount(cMyID, cUnitTypezpAILondonBridge, cUnitStateAny) > 0)
+   // Detected by the map name (owner 2026-09-24); 00000_zplondon is this device's loose copy of the same script. The
+   // London rules are the LONDON section at the end of this file (docs/briefs/2026-09-23-london-ai-plan.md); the
+   // stock handler and forward-base rules are replaced from here, never edited (Istanbul's pattern).
+   if (cRandomMapName == "zplondon" || cRandomMapName == "00000_zplondon")
    {
       gIsPirateMap = true;
       gIsLondon = true;
+      gPirateForwardBaseMap = true;
       xsEnableRule("buildPirateSocketTowers");   // rebuilds the Keep and bridge towers: it already queries both socket protos
       xsEnableRule("londonSetup");
-      aiEcho("LONDON p" + cMyID + " build r9 2026-09-24 - marker found, London rules on");
+      xsEnableRule("londonPlanPlacer");
+      xsEnableRule("pirateForwardBaseWatch");
+      aiSetHandler("londonBuildingPlacementFailedHandler", cXSBuildingPlacementFailedHandler);
+      aiEcho("LONDON p" + cMyID + " build r10 2026-09-24 - map " + cRandomMapName + ", London rules on");
+   }
+
+   // Paris %%%%%%%%%%%%%%%%%%%%%%%
+   // owner 2026-09-24: the forward base the same way as London - the construction block on the other shore
+   if (cRandomMapName == "zpparis" || cRandomMapName == "00000_zpparis")
+   {
+      gPirateForwardBaseMap = true;
+      xsEnableRule("pirateForwardBaseWatch");
+      aiEcho("PARIS p" + cMyID + " build r10 2026-09-24 - map " + cRandomMapName + ", forward base at the enemy construction block");
    }
 
    // Naval KOTH Maps %%%%%%%%%%%%%%%%%%%%%%%
@@ -7984,6 +8010,480 @@ minInterval 90
 }
 
 //==============================================================================
+// LONDON placement (2026-09-23, moved here from aibuildings.xs 2026-09-24 - isolation). London's city blocks leave
+// little room inside the 40 m main base: economic buildings go to the countryside behind our own city wall (owner
+// 2026-09-23: 'AI can absolutely use the space behind the walls ... farms / plantations / mills / Folwarks'), a Town
+// Center that failed twice goes there (londonPlanPlacer), and the base may grow over any area up to 120 m
+// (londonBuildingPlacementFailedHandler).
+//==============================================================================
+
+//==============================================================================
+// londonCountrysidePoint - 40 m beyond our own city wall gate nearest the main base (the side away from the river),
+// cached while that gate stands; cInvalidVector when the walls are not ours or an ally's (non-2-team lobbies: gaia)
+//==============================================================================
+vector londonCountrysidePoint(void)
+{
+   int marker = -1;
+   int gateQuery = -1;
+   int gateCount = 0;
+   int gate = -1;
+   int best = -1;
+   float bestDist = 100000.0;
+   float side = 1.0;
+   float d = 0.0;
+   float gateOff = 0.0;
+   float tcOff = 0.0;
+   vector tcVec = cInvalidVector;
+   vector bridgeVec = cInvalidVector;
+   vector gateVec = cInvalidVector;
+
+   if (gIsLondon == false)
+   {
+      return (cInvalidVector);
+   }
+   if (gLondonFieldVec != cInvalidVector && gLondonFieldGate >= 0)
+   {
+      if (kbUnitGetCurrentHitpoints(gLondonFieldGate) > 0.0)
+      {
+         return (gLondonFieldVec);
+      }
+   }
+   tcVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   marker = getUnit(cUnitTypezpAILondonBridge, cMyID, cUnitStateAny);
+   if (marker < 0 || tcVec == cInvalidVector)
+   {
+      return (cInvalidVector);
+   }
+   bridgeVec = kbUnitGetPosition(marker);
+   // the river runs along x (zplondon.xs 4): our bank is the side of the bridge middle our base is on
+   if (xsVectorGetZ(tcVec) < xsVectorGetZ(bridgeVec))
+   {
+      side = -1.0;
+   }
+   gateQuery = createSimpleUnitQuery(cUnitTypeSPCFortGate, cPlayerRelationAlly, cUnitStateAlive, tcVec, 300.0);
+   gateCount = kbUnitQueryExecute(gateQuery);
+   for (i = 0; < gateCount)
+   {
+      gate = kbUnitQueryGetResult(gateQuery, i);
+      gateVec = kbUnitGetPosition(gate);
+      // the city wall stands beyond the seats, away from the river; the Keeps' and the bridge's gates are riverward
+      // (plain steps: XS rejects '(a - b) * c < ...' in a condition - Error 0308, run 19)
+      gateOff = xsVectorGetZ(gateVec) - xsVectorGetZ(bridgeVec);
+      gateOff = gateOff * side;
+      tcOff = xsVectorGetZ(tcVec) - xsVectorGetZ(bridgeVec);
+      tcOff = tcOff * side + 20.0;
+      if (gateOff < tcOff)
+      {
+         continue;
+      }
+      d = distance(gateVec, tcVec);
+      if (d < bestDist)
+      {
+         bestDist = d;
+         best = gate;
+      }
+   }
+   if (best < 0)
+   {
+      aiEcho("LONDONPLACE p" + cMyID + " no own city wall gate within 300 m - default placement");
+      return (cInvalidVector);
+   }
+   gateVec = kbUnitGetPosition(best);
+   gLondonFieldGate = best;
+   gLondonFieldVec = xsVectorSet(xsVectorGetX(gateVec), 0.0, xsVectorGetZ(gateVec) + side * 40.0);
+   aiEcho("LONDONPLACE p" + cMyID + " countryside " + xsVectorGetX(gLondonFieldVec) + "/" + xsVectorGetZ(gLondonFieldVec)
+          + " behind gate " + best + " (" + bestDist + " m from the base)");
+   return (gLondonFieldVec);
+}
+
+//==============================================================================
+// londonFieldPoint - London: the countryside point for the NEXT economic building - 40 m beyond whichever of our own
+// city wall gates (the side away from the river) has the fewest buildings within 50 m; distance to the base breaks
+// ties. Run 21: one point per player filled up (Plantation / Mill placement failures up to 27 each after ~7 fields).
+//==============================================================================
+vector londonFieldPoint(void)
+{
+   static int gateArr = -1;
+   int marker = -1;
+   int gateQuery = -1;
+   int gateCount = 0;
+   int gate = -1;
+   int n = 0;
+   int crowd = 0;
+   int bestGate = -1;
+   int bestCrowd = 0;
+   float side = 1.0;
+   float gateOff = 0.0;
+   float tcOff = 0.0;
+   float score = 0.0;
+   float bestScore = 1000000.0;
+   vector tcVec = cInvalidVector;
+   vector bridgeVec = cInvalidVector;
+   vector gateVec = cInvalidVector;
+   vector point = cInvalidVector;
+   vector bestPoint = cInvalidVector;
+
+   if (gIsLondon == false)
+   {
+      return (cInvalidVector);
+   }
+   if (gateArr < 0)
+   {
+      gateArr = xsArrayCreateInt(8, -1, "London field gates");
+   }
+   tcVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   marker = getUnit(cUnitTypezpAILondonBridge, cMyID, cUnitStateAny);
+   if (marker < 0 || tcVec == cInvalidVector)
+   {
+      return (cInvalidVector);
+   }
+   bridgeVec = kbUnitGetPosition(marker);
+   if (xsVectorGetZ(tcVec) < xsVectorGetZ(bridgeVec))
+   {
+      side = -1.0;
+   }
+   // the gates first, into the array (one shared query object: read it before any other query runs)
+   gateQuery = createSimpleUnitQuery(cUnitTypeSPCFortGate, cPlayerRelationAlly, cUnitStateAlive, tcVec, 160.0);   // only the gates behind our own seat (owner 2026-09-24: estates were built far away)
+   gateCount = kbUnitQueryExecute(gateQuery);
+   for (i = 0; < gateCount)
+   {
+      gate = kbUnitQueryGetResult(gateQuery, i);
+      gateVec = kbUnitGetPosition(gate);
+      gateOff = xsVectorGetZ(gateVec) - xsVectorGetZ(bridgeVec);
+      gateOff = gateOff * side;
+      tcOff = xsVectorGetZ(tcVec) - xsVectorGetZ(bridgeVec);
+      tcOff = tcOff * side + 20.0;
+      if (gateOff < tcOff)
+      {
+         continue;
+      }
+      if (n < 8)
+      {
+         xsArraySetInt(gateArr, n, gate);
+         n = n + 1;
+      }
+   }
+   for (k = 0; < n)
+   {
+      gate = xsArrayGetInt(gateArr, k);
+      gateVec = kbUnitGetPosition(gate);
+      point = xsVectorSet(xsVectorGetX(gateVec), 0.0, xsVectorGetZ(gateVec) + side * 40.0);
+      crowd = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAlly, cUnitStateABQ, point, 50.0);
+      // the nearest gate wins; the next nearest only once it holds 4+ buildings (was: crowd x 30 + distance / 10 - a gate
+      // 300 m away cost as much as one building, so the estates drifted to the far end of the bank)
+      score = distance(point, tcVec);
+      if (crowd >= 4)
+      {
+         score = score + 1000.0;
+      }
+      if (score < bestScore)
+      {
+         bestScore = score;
+         bestGate = gate;
+         bestCrowd = crowd;
+         bestPoint = point;
+      }
+   }
+   if (bestGate < 0)
+   {
+      return (londonCountrysidePoint());
+   }
+   if (xsGetTime() - gLondonPlaceEcho >= 30000)
+   {
+      aiEcho("LONDONPLACE p" + cMyID + " field point behind gate " + bestGate + " of " + n + " gates, " + bestCrowd
+             + " buildings there");
+   }
+   return (bestPoint);
+}
+
+//==============================================================================
+// londonSelectFieldPosition - London: the economic buildings (Mill / Farm / Plantation / Hacienda / Folwark / rice
+// paddy) at the countryside point, the Town Center's centre-position placement; false = not handled (default path)
+//==============================================================================
+bool londonSelectFieldPosition(int planID = -1, int puid = -1)
+{
+   vector point = cInvalidVector;
+
+   if (gIsLondon == false)
+   {
+      return (false);
+   }
+   if (puid != gFarmUnit && puid != gPlantationUnit && puid != cUnitTypeMill && puid != cUnitTypePlantation &&
+       puid != cUnitTypeFarm && puid != cUnitTypedeHacienda && puid != cUnitTypedeFolwark &&
+       puid != cUnitTypedeFolwarkFarm && puid != cUnitTypeypRicePaddy)
+   {
+      return (false);
+   }
+   point = londonFieldPoint();
+   if (point == cInvalidVector)
+   {
+      return (false);
+   }
+   aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, point);
+   aiPlanSetVariableFloat(planID, cBuildPlanCenterPositionDistance, 0, 60.0);
+   aiEcho("LONDONPLACE p" + cMyID + " field " + kbGetProtoUnitName(puid) + " plan " + planID + " at the countryside "
+          + xsVectorGetX(point) + "/" + xsVectorGetZ(point) + " dist " + distance(point, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID))));
+   return (true);
+}
+
+//==============================================================================
+// londonBuildingPlacementFailedHandler - London's building-placement-failed handler, registered in place of the stock
+// one by initializePirateRules (aiSetHandler) on London only: the stock body (aibuildings.xs) plus the London growth -
+// no area refused (the river, the wall hills and the countryside are separate land groups in the KB; run 19 froze
+// every base at 100 m), capped at 120 m so the base stays on its bank - and the AIDIAG counters.
+//==============================================================================
+void londonBuildingPlacementFailedHandler(int baseID = -1, int puid = -1)
+{
+   gPlacementFailures = gPlacementFailures + 1;   // AI test campaign counter (aiTestDiag), no behaviour
+   if (puid == cUnitTypeTownCenter)
+   {
+      gPlacementFailuresTC = gPlacementFailuresTC + 1;
+   }
+   if (puid == gDockUnit || puid == cUnitTypezpDrydock || puid == cUnitTypezpWaterFort)
+   {
+      gPlacementFailuresDock = gPlacementFailuresDock + 1;   // AI test campaign counter (aiTestDiag), no behaviour
+      return;
+   }
+   if ((puid == cUnitTypedeTorp) && (cMyCiv == cCivDESwedish))
+   {
+      int last = xsArrayGetSize(gTorpPositionsToAvoid);
+      xsArrayResizeVector(gTorpPositionsToAvoid, last + 1);
+      xsArraySetVector(gTorpPositionsToAvoid, last - 1, gTorpPosition);
+      // Queue up a torp again.
+      xsEnableRule("delayTorpMonitor");
+      return;
+   }
+   if (puid == cUnitTypedeField)
+   {
+      int numberFullGranaries = xsArrayGetSize(gFullGranaries);
+      for (i = 0; < numberFullGranaries)
+      {
+         int granaryID = xsArrayGetInt(gFullGranaries, i);
+         if (granaryID == gFieldGranaryID)
+         {
+            break;
+         }
+         if (granaryID >= 0 && kbUnitGetPlayerID(granaryID) == cMyID)
+         {
+            continue;
+         }
+         xsArraySetInt(gFullGranaries, i, gFieldGranaryID);
+         break;
+      }
+   }
+   if (baseID < 0)
+   {
+      // Assuming main base.
+      baseID = kbBaseGetMainID(cMyID);
+   }
+
+   static int basesToAvoid = -1;
+   static int lastExpansionTime = 0;
+   bool expand = true;
+
+   if (basesToAvoid < 0)
+   {
+      basesToAvoid = xsArrayCreateInt(5, -1, "Bases to avoid expanding");
+   }
+
+   for (i = 0; < 5)
+   {
+      if (xsArrayGetInt(basesToAvoid, i) == baseID)
+      {
+         expand = false;
+         break;
+      }
+   }
+
+   float newDistance = 0.0;
+   if (expand == true)
+   {
+      vector baseLocation = kbBaseGetLocation(cMyID, baseID);
+      int baseAreaGroup = kbAreaGroupGetIDByPosition(baseLocation);
+      int numberAreas = kbAreaGetNumber();
+      // AssertiveWall: expand more aggressively based on strategy. Old value was +10
+      int expansionInterval = 1 * 60 * 1000;
+      if (gStrategy == cStrategyGreed || gGetGreedy == true)
+      {
+         newDistance = kbBaseGetDistance(cMyID, baseID) + 30.0;
+         expansionInterval = 20 * 1000;
+      }
+      else
+      {
+         newDistance = kbBaseGetDistance(cMyID, baseID) + 20.0;
+         expansionInterval = 40 * 1000;
+      }
+
+      
+      // AssertiveWall Shrink the wall radius on Island Maps
+      /*if ((puid == cUnitTypeBuilding && puid != cUnitTypeLogicalTypeBuildingsNotWalls) &&
+         gStartOnDifferentIslands == true)
+      {
+         newDistance = newDistance - 50.0;
+      }*/
+
+      // Make sure new areas we cover are in the same area group.
+      // AssertiveWall: Except on Archipelago maps, then allow different area groups
+         for (i = 0; < numberAreas)
+         {
+            vector location = kbAreaGetCenter(i);
+            if (distance(location, baseLocation) > newDistance)
+            {
+               continue;
+            }
+            if (kbAreaGroupGetIDByPosition(location) == baseAreaGroup && gIsArchipelagoMap == false)
+            {
+               continue;
+            }
+            // LONDON: nothing here is 'another island' - the river, the wall hills, and the countryside behind the city
+            // wall, which the knowledge base keeps as its own land group (run 19: every base froze at 100 m on 'area
+            // type -1 group 5/6/7' while its Plantations stood out there). The 120 m cap below keeps the base on its bank.
+            if (gIsLondon == true)
+            {
+               continue;
+            }
+            for (j = 0; < 5)
+            {
+               if (xsArrayGetInt(basesToAvoid, j) == -1)
+               {
+                  xsArraySetInt(basesToAvoid, baseID);
+                  break;
+               }
+            }
+            expand = false;
+            break;
+         }
+   }
+
+   if (expand == false)
+   {
+      return;
+   }
+
+   // LONDON: the base stays on its own bank - the river is 120 m and more from the seats (zplondon.xs 12.2)
+   if (gIsLondon == true && newDistance > 120.0)
+   {
+      return;
+   }
+
+   int time = xsGetTime();
+   if ((time - lastExpansionTime) > expansionInterval) // AssertiveWall: old expansionInterval = 60 sec
+   {
+      debugBuildings("Expanding base " + baseID + " to " + newDistance);
+      if (gIsLondon == true)
+      {
+         aiEcho("LONDONPLACE p" + cMyID + " base " + baseID + " grows to " + newDistance + " m after a " + kbGetProtoUnitName(puid) + " failure");
+      }
+      kbBaseSetPositionAndDistance(cMyID, baseID, baseLocation, newDistance);
+      lastExpansionTime = time;
+   }
+}
+
+//==============================================================================
+// aiTestPlacementFailedHandler - the AIDIAG counters on every map (echo only): count, then the stock handler unchanged
+//==============================================================================
+void aiTestPlacementFailedHandler(int baseID = -1, int puid = -1)
+{
+   gPlacementFailures = gPlacementFailures + 1;
+   if (puid == cUnitTypeTownCenter)
+   {
+      gPlacementFailuresTC = gPlacementFailuresTC + 1;
+   }
+   if (puid == gDockUnit || puid == cUnitTypezpDrydock || puid == cUnitTypezpWaterFort)
+   {
+      gPlacementFailuresDock = gPlacementFailuresDock + 1;
+   }
+   buildingPlacementFailedHandler(baseID, puid);
+}
+
+//==============================================================================
+// pirateOnConstructionBlock - true when pos is within 30 m of one of our construction block markers
+//==============================================================================
+bool pirateOnConstructionBlock(vector pos = cInvalidVector)
+{
+   if (pos == cInvalidVector)
+   {
+      return (false);
+   }
+   return (getUnitCountByLocation(cUnitTypezpAILondonConstrMarker, cMyID, cUnitStateAny, pos, 30.0) > 0);
+}
+
+//==============================================================================
+// pirateForwardBasePoint - London and Paris (owner 2026-09-24): the forward base on the construction block nearest the
+// enemy we attack, on the other shore - found by the zpAILondonConstrMarker the map places on every construction block
+// (one per player per block, owned by us: the AI's own query sees it). London waits until its war plan has opened the
+// crossing (gLondonWarState 2). cInvalidVector = not now; the rule asks again later.
+//==============================================================================
+vector pirateForwardBasePoint(void)
+{
+   static int lastEcho = -60000;
+   string tag = "PARISPLACE";
+   int q = -1;
+   int n = 0;
+   int unit = -1;
+   int enemy = aiGetMostHatedPlayerID();
+   float d = 0.0;
+   float ours = 0.0;
+   float bestD = 100000.0;
+   vector v = cInvalidVector;
+   vector best = cInvalidVector;
+   vector enemyVec = cInvalidVector;
+   vector ourVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+
+   if (gPirateForwardBaseMap == false)
+   {
+      return (cInvalidVector);
+   }
+   if (gIsLondon == true)
+   {
+      tag = "LONDONPLACE";
+      if (gLondonWarState != 2)
+      {
+         if (xsGetTime() - lastEcho >= 60000)
+         {
+            lastEcho = xsGetTime();
+            aiEcho(tag + " p" + cMyID + " forward base asked, crossing still closed (war state " + gLondonWarState + ") - later");
+         }
+         return (cInvalidVector);
+      }
+   }
+   enemyVec = kbGetPlayerStartingPosition(enemy);
+   q = createSimpleUnitQuery(cUnitTypezpAILondonConstrMarker, cMyID, cUnitStateAny);
+   n = kbUnitQueryExecute(q);
+   for (i = 0; < n)
+   {
+      unit = kbUnitQueryGetResult(q, i);
+      v = kbUnitGetPosition(unit);
+      d = distance(v, enemyVec);
+      ours = distance(v, ourVec);
+      // the other shore only: a block nearer the enemy than our own base
+      if (d >= ours)
+      {
+         continue;
+      }
+      if (d < bestD)
+      {
+         bestD = d;
+         best = v;
+      }
+   }
+   if (xsGetTime() - lastEcho >= 60000)
+   {
+      lastEcho = xsGetTime();
+      if (best == cInvalidVector)
+      {
+         aiEcho(tag + " p" + cMyID + " forward base asked, no construction block on the enemy side among " + n + " markers (enemy " + enemy + ") - later");
+      }
+      else
+      {
+         aiEcho(tag + " p" + cMyID + " forward base next to the bridge at " + xsVectorGetX(best) + "/" + xsVectorGetZ(best)
+                + " (enemy construction block, enemy " + enemy + ", " + n + " markers)");
+      }
+   }
+   return (best);
+}
+
+//==============================================================================
 // LONDON - round 1 (2026-09-23): setup + diagnostics. Plan, criteria and the next rounds:
 // docs/briefs/2026-09-23-london-ai-plan.md. Echo vocabulary: LONDON / LONDONSETUP / LONDONDIAG.
 //==============================================================================
@@ -8080,7 +8580,6 @@ minInterval 10
       gLondonKeepNear = gLondonKeepFar;
       gLondonKeepFar = swap;
    }
-   londonReadConstructionBlocks(sortFrom);
    aiEcho("LONDONSETUP p" + cMyID + " marker " + xsVectorGetX(gLondonBridgeVec) + "/" + xsVectorGetZ(gLondonBridgeVec) + " socket " + gLondonPortSocket + " gates " + gLondonGateA + " " + gLondonGateB
           + " ours " + gLondonGateOurs + " keepNear " + gLondonKeepNear + " keepFar " + gLondonKeepFar + " pathNear " + nearPath + " pathFar " + farPath
           + " gates found " + gateCount + " keeps found " + keepCount + " tc " + tc);
@@ -8854,5 +9353,750 @@ minInterval 5
    {
       lastBeat = xsGetTime();
       aiEcho("LONDONKEEP p" + cMyID + " retaking near keep " + gLondonKeepNear + " owner " + owner + " with " + count + " gate " + gate + " foe " + foe);
+   }
+}
+
+//==============================================================================
+// FORWARD BASE on London and Paris (owner 2026-09-24) - Istanbul's pattern: the stock forwardBaseManager and
+// forwardTowerBaseManager (switched on by the age monitors in aicore.xs) are switched off by pirateForwardBaseWatch
+// and their copies below run instead. The copies are the stock rules (aibuildings.xs / aiassertivewall.xs of the
+// adopted core 0b2c6aab) with one change each: the location comes from pirateForwardBasePoint.
+//==============================================================================
+rule pirateForwardTowerBaseManager
+inactive
+minInterval 30
+{
+   if (aiTreatyActive() == true)
+   {
+      return;
+   }
+
+   if (gStartOnDifferentIslands == true)
+   {
+      if (kbUnitCount(cMyID, cUnitTypeAbstractWarShip, cUnitStateAlive) <= 0)
+      {
+         return;
+      }
+   }
+
+   int fortUnitID = -1;
+   int buildingQuery = -1;
+   int numberFound = 0;
+   int numberMilitaryBuildings = 0;
+   int buildingID = -1;
+   int availableTowerWagon = findWagonToBuild(gTowerUnit);
+
+   // AssertiveWall: On island maps, run the forwardtowerbase if we don't have a fort wagon or base already going
+   if (gStartOnDifferentIslands == true && availableTowerWagon < 0 && gForwardBaseState == cForwardBaseStateNone)
+   {
+      if (amphibiousAssault() == true)
+      {
+         xsDisableSelf();
+      }
+      return;
+   }
+
+   // We have a Fort Wagon but also already have a forward base, default the Fort position.
+   if ((availableTowerWagon >= 0) && (gForwardBaseState != cForwardBaseStateNone))
+   {
+      //createSimpleBuildPlan(gTowerUnit, 1, 87, true, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
+      createSimpleBuildPlan(gTowerUnit, 1, 87, true, cMilitaryEscrowID, gForwardBaseID, 1);
+      return;
+   }
+
+   switch (gForwardBaseState)
+   {
+      case cForwardBaseStateNone:
+      {
+         // We don't have a forward base, if we have a suitable Wagon we can start the chain.
+         vector location = cInvalidVector;
+         //if (availableTowerWagon >= 0)
+         if (true == true)
+         {
+            // Get the Fort Wagon, start a build plan, if we go forward we try to defend it.
+            //vector location = cInvalidVector;  AssertiveWall: moved up above
+   
+            // AssertiveWall: Use the forward island
+            if (gStartOnDifferentIslands == true && (gMigrationMap == false))
+            {
+               location = selectForwardBaseBeachHead();
+               if (location == cInvalidVector)
+               {  // We never build in base with the tower forward base
+                  return;
+               }
+               else if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(location), 
+                     kbAreaGroupGetIDByPosition(guessEnemyLocation())) == false)
+               {
+                  // Try again if the FB isn't on the same island as the enemy
+                  return;
+               }
+            }
+            else if (cDifficultyCurrent >= cDifficultyModerate)
+            {
+               location = pirateForwardBasePoint();
+            }
+   
+            if (location == cInvalidVector)
+            {  // We never build in base with the tower forward base
+               return;
+            }
+   
+            gForwardBaseLocation = location;
+            gForwardBaseBuildPlan = aiPlanCreate("Forward Tower build plan ", cPlanBuild);
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanBuildingTypeID, 0, gTowerUnit);
+            aiPlanSetDesiredPriority(gForwardBaseBuildPlan, 87);
+            aiPlanAddUnitType(gForwardBaseBuildPlan, gEconUnit, 1, 2, 2);
+   
+            // Instead of base ID or areas, use a center position.
+            aiPlanSetVariableVector(gForwardBaseBuildPlan, cBuildPlanCenterPosition, 0, location);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanCenterPositionDistance, 0, 50.0);
+   
+            // Weigh it to stay very close to center point.
+            aiPlanSetVariableVector(gForwardBaseBuildPlan, cBuildPlanInfluencePosition, 0, location);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluencePositionDistance, 0, 50.0); // 100m range.
+            // 100 Points for center.
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluencePositionValue, 0, 100.0); 
+            // Linear slope falloff.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); 
+   
+            // Add position influence for nearby Forts.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitTypeID, 0, cUnitTypeFortFrontier); 
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitDistance, 0, 50.0);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitValue, 0, -200.0); // -200 points per fort
+            // Cliff falloff.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitFalloff, 0, cBPIFalloffNone); 
+
+            aiPlanSetActive(gForwardBaseBuildPlan);
+   
+            // Chat to my allies.
+            if (xsGetTime() > (gLastFBMessageSend + 180 * 1000)) // 3 minute buffer
+            {
+               sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+               gLastFBMessageSend = xsGetTime();
+            }
+            gForwardBaseState = cForwardBaseStateBuilding;
+            if (gStartOnDifferentIslands == true)
+            {  // This should no longer be used now that we have the amphibious assault rule
+               establishForwardBeachHead(gForwardBaseLocation); 
+            }
+
+            debugBuildings("");
+            debugBuildings("BUILDING FORWARD BASE, MOVING DEFEND PLANS TO COVER");
+            debugBuildings("PLANNED LOCATION IS " + gForwardBaseLocation);
+            debugBuildings("");
+   
+            if (gDefenseReflex == false)
+            {
+               endDefenseReflex(); // Causes it to move to the new location.
+            }
+         }
+         break;
+      }
+      case cForwardBaseStateBuilding:
+      {
+         fortUnitID = getUnitByLocation(gTowerUnit, cMyID, cUnitStateAlive, gForwardBaseLocation, 30.0);
+         vector fortUnitLoc = kbUnitGetPosition(fortUnitID);
+         if (kbAreAreaGroupsPassableByLand(kbAreaGroupGetIDByPosition(fortUnitLoc), 
+                                          kbAreaGroupGetIDByPosition(gForwardBaseLocation)) == false)
+         {
+            fortUnitID = -1;
+         }
+
+         if (fortUnitID < 0)
+         {
+            // Check for other military buildings.
+            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 30.0);
+            numberFound = kbUnitQueryExecute(buildingQuery);
+            numberMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
+            for (i = 0; < numberFound)
+            {
+               buildingID = kbUnitQueryGetResult(buildingQuery, i);
+               for (j = 0; < numberMilitaryBuildings)
+               {
+                  if (kbUnitIsType(buildingID, xsArrayGetInt(gMilitaryBuildings, j)) == true)
+                  {
+                     fortUnitID = buildingID;
+                     break;
+                  }
+               }
+               if (fortUnitID >= 0)
+               {
+                  break;
+               }
+            }
+         }
+         
+         if (fortUnitID >= 0)
+         { // Building exists and is complete, go to state Active.
+            if (kbUnitGetBaseID(fortUnitID) >= 0)
+            { // Base has been created for it.
+               // AssertiveWall: Now build wall
+               if (gStartOnDifferentIslands == false)
+               {
+                  xsEnableRule("forwardBaseWall"); // AssertiveWall: Chain of rules to build walls and towers
+               }
+               gForwardBaseState = cForwardBaseStateActive;
+               gForwardBaseID = kbUnitGetBaseID(fortUnitID);
+               gForwardBaseLocation = kbUnitGetPosition(fortUnitID);
+               gForwardBaseUpTime = xsGetTime();
+               gForwardBaseShouldDefend = kbUnitIsType(fortUnitID, gTowerUnit);
+               kbBaseSetPositionAndDistance(cMyID, gForwardBaseID, gForwardBaseLocation, 40.0);
+               debugBuildings("Forward base location is " + gForwardBaseLocation + ", Base ID is " + 
+                  gForwardBaseID + ", Unit ID is " + fortUnitID);
+               debugBuildings("");
+               debugBuildings("FORWARD BASE COMPLETED, GOING TO STATE ACTIVE");
+               debugBuildings("");
+
+               // Shift everyone over to the new forward base
+               kbBaseAddUnit(cMyID, gForwardBaseID, fortUnitID);
+               for (i = 0; < numberFound)
+               {
+                  buildingID = kbUnitQueryGetResult(buildingQuery, i);
+                  kbBaseAddUnit(cMyID, gForwardBaseID, buildingID);
+               }
+            }
+            else
+            {
+               debugBuildings("");
+               debugBuildings("FORT COMPLETE, WAITING FOR FORWARD BASE ID");
+               debugBuildings("");
+            }
+         }
+         
+         // Check if plan still exists. If not, go back to state 'none'.
+         if (fortUnitID < 0 && aiPlanGetState(gForwardBaseBuildPlan) < 0)
+         { // It failed?
+            gForwardBaseState = cForwardBaseStateNone;
+            gForwardBaseLocation = cInvalidVector;
+            gForwardBaseID = -1;
+            gForwardBaseBuildPlan = -1;
+            gForwardBaseShouldDefend = false;
+            debugBuildings("");
+            debugBuildings("FORWARD BASE PLAN FAILED, RETURNING TO STATE NONE");
+            debugBuildings("");
+         }
+         break;
+      }
+      case cForwardBaseStateActive:
+      { // Normal state. If fort is destroyed and base overrun, bail.
+         fortUnitID = getUnitByLocation(gTowerUnit, cMyID, cUnitStateAlive, gForwardBaseLocation, 40.0);
+         if (fortUnitID < 0)
+         {
+            // Check for other military buildings.
+            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 30.0);
+            numberFound = kbUnitQueryExecute(buildingQuery);
+            numberMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
+            for (i = 0; < numberFound)
+            {
+               buildingID = kbUnitQueryGetResult(buildingQuery, i);
+               for (j = 0; < numberMilitaryBuildings)
+               {
+                  if (kbUnitIsType(buildingID, xsArrayGetInt(gMilitaryBuildings, j)) == true)
+                  {
+                     fortUnitID = buildingID;
+                     break;
+                  }
+               }
+               if (fortUnitID >= 0)
+               {
+                  break;
+               }
+            }
+         }
+
+         if (fortUnitID < 0)
+         {
+            // Fort is missing, is base still OK?
+            if (((gDefenseReflexBaseID == gForwardBaseID) && (gDefenseReflexPaused == true)) ||
+               (kbBaseGetNumberUnits(cMyID, gForwardBaseID, cPlayerRelationSelf, cUnitTypeBuilding) < 1)) 
+            {  // No, not OK. Get outa Dodge.
+               gForwardBaseState = cForwardBaseStateNone;
+               gForwardBaseID = -1;
+               gForwardBaseLocation = cInvalidVector;
+               gForwardBaseShouldDefend = false;
+
+               endDefenseReflex();
+               debugBuildings("");
+               debugBuildings("ABANDONING FORWARD BASE, RETREATING TO MAIN BASE");
+               debugBuildings("");
+            }
+         }
+         break;
+      }
+   }
+}
+
+rule pirateForwardBaseManager
+inactive
+minInterval 30
+{
+   if (aiTreatyActive() == true)
+   {
+      return;
+   }
+
+   // AssertiveWall: On great turkish war, set the forward base and leave it there, ignoring all other logic
+   if ((cRandomMapName == "eugreatturkishwar" && btOffenseDefense == 0.0) || gDefendingObjective == true)
+   {
+      gForwardBaseState = cForwardBaseStateActive;
+      gForwardBaseLocation = kbUnitGetPosition(getUnit(cUnitTypedeSPCHeadquartersVienna, cPlayerRelationAlly));
+      gForwardBaseUpTime = xsGetTime();
+      gForwardBaseShouldDefend = true;
+      gForwardBaseID = kbBaseCreate(cMyID, "turkish defense base player: " + kbBaseGetNextID(), gForwardBaseLocation, 80.0);
+   
+      vector baseFront = xsVectorNormalize(kbGetMapCenter() - kbGetPlayerStartingPosition(cMyID));
+      kbBaseSetFrontVector(cMyID, gForwardBaseID, baseFront);
+      kbBaseSetMilitary(cMyID, gForwardBaseID, true);
+      xsDisableSelf();
+      return;
+   }
+
+   int fortUnitID = -1;
+   int buildingQuery = -1;
+   int numberFound = 0;
+   int numberMilitaryBuildings = 0;
+   int buildingID = -1;
+   int availableFortWagon = findWagonToBuild(cUnitTypeFortFrontier);
+   
+   // AssertiveWall: On island maps, run the amphibious assault
+   if (gStartOnDifferentIslands == true && availableFortWagon < 0 && gForwardBaseState == cForwardBaseStateNone)
+   {
+      // Try calling it individually
+      //forwardTowerBaseManager();
+
+      //if (xsIsRuleEnabled("forwardTowerBaseManager") == false)
+      //{
+      //   xsEnableRule("forwardTowerBaseManager");
+      //}
+      if (amphibiousAssault() == true)
+      {
+         xsDisableSelf();
+      }
+      return;
+   }
+
+   // AssertiveWall: If we don't have a wagon, try running the tower forward base after waiting a while for the cooldown
+   static int lastFBattempt = -1;
+   static int fbCooldown = -1;
+   if (fbCooldown < 0)
+   {
+      // Logic here is that rushing civs more aggressively try to establish forward bases and map control
+      // I'll admit there isn't much sense to these cooldowns, other than trying to avoid excessive attempts
+      // and making things different for the sake of it
+      if (gStrategy == cStrategyRush) { fbCooldown = 120000; } // 2 mins
+      else if (gStrategy == cStrategyNakedFF) { fbCooldown = 180000; } // 3 mins
+      else if (gStrategy == cStrategySafeFF) { fbCooldown = 300000; } // 5 mins
+      else if (gStrategy == cStrategyFastIndustrial) { fbCooldown = 240000; } // 4 mins
+      else { fbCooldown = 180000; } // 3 min default
+   }
+
+   if (gForwardBaseState == cForwardBaseStateNone && 
+       gStartOnDifferentIslands != true && availableFortWagon < 0 && xsGetTime() > (lastFBattempt + fbCooldown))
+   {
+      // individually try making the tower version
+      pirateForwardTowerBaseManager();
+   }
+   
+
+   // We have a Fort Wagon but also already have a forward base, default the Fort position.
+   if ((availableFortWagon >= 0) && (gForwardBaseState != cForwardBaseStateNone))
+   {
+      createSimpleBuildPlan(cUnitTypeFortFrontier, 1, 87, true, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
+      return;
+   }
+
+   switch (gForwardBaseState)
+   {
+      case cForwardBaseStateNone:
+      {
+         // We don't have a forward base, if we have a suitable Wagon we can start the chain.
+         vector location = cInvalidVector;
+         if (availableFortWagon >= 0)
+         {
+            // Get the Fort Wagon, start a build plan, if we go forward we try to defend it.
+            //vector location = cInvalidVector;  AssertiveWall: moved up above
+   
+            // AssertiveWall: Use the forward island
+            // NOTE: never get here now that the amphibiousAssault runs. Leaving active as a note
+            if (gStartOnDifferentIslands == true && (gMigrationMap == false)) // && (btOffenseDefense >= -10.0)
+            {
+               location = selectForwardBaseBeachHead();
+            }
+            else if ((cDifficultyCurrent >= cDifficultyModerate)) //(btOffenseDefense >= -10.0) && 
+            {
+               location = pirateForwardBasePoint();
+            }
+   
+            if (location == cInvalidVector)
+            {  // AssertiveWall: let the AI try to find a FB location again. No defensive FB's
+               //createSimpleBuildPlan(cUnitTypeFortFrontier, 1, 87, true, cMilitaryEscrowID, kbBaseGetMainID(cMyID), 1);
+               return;
+            }
+   
+            gForwardBaseLocation = location;
+            gForwardBaseBuildPlan = aiPlanCreate("Fort build plan ", cPlanBuild);
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanBuildingTypeID, 0, cUnitTypeFortFrontier);
+            aiPlanSetDesiredPriority(gForwardBaseBuildPlan, 87);
+            aiPlanAddUnitType(gForwardBaseBuildPlan, cUnitTypeFortWagon, 1, 1, 1);
+   
+            // Instead of base ID or areas, use a center position.
+            aiPlanSetVariableVector(gForwardBaseBuildPlan, cBuildPlanCenterPosition, 0, location);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanCenterPositionDistance, 0, 50.0);
+   
+            // Weigh it to stay very close to center point.
+            aiPlanSetVariableVector(gForwardBaseBuildPlan, cBuildPlanInfluencePosition, 0, location);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluencePositionDistance, 0, 50.0); // 100m range.
+            // 100 Points for center.
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluencePositionValue, 0, 100.0); 
+            // Linear slope falloff.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluencePositionFalloff, 0, cBPIFalloffLinear); 
+   
+            // Add position influence for nearby Forts.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitTypeID, 0, cUnitTypeFortFrontier); 
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitDistance, 0, 50.0);
+            aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitValue, 0, -200.0); // -200 points per fort
+            // Cliff falloff.
+            aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitFalloff, 0, cBPIFalloffNone); 
+   
+            // AssertiveWall: Add position influence for forts building near docks on island maps
+            if (gStartOnDifferentIslands == true)
+            {
+               aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitTypeID, 0, gDockUnit); 
+               aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitDistance, 0, 30.0);
+               aiPlanSetVariableFloat(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitValue, 0, 20.0); // 20 points per dock
+               aiPlanSetVariableInt(gForwardBaseBuildPlan, cBuildPlanInfluenceUnitFalloff, 0, cBPIFalloffLinear); 
+            }
+
+            aiPlanSetActive(gForwardBaseBuildPlan);
+   
+            // Chat to my allies.
+            if (xsGetTime() > (gLastFBMessageSend + 180 * 1000)) // 3 minute buffer
+            {
+               sendStatement(cPlayerRelationAllyExcludingSelf, cAICommPromptToAllyIWillBuildMilitaryBase, gForwardBaseLocation);
+               gLastFBMessageSend = xsGetTime();
+            }
+   
+            gForwardBaseState = cForwardBaseStateBuilding;
+            debugBuildings("");
+            debugBuildings("BUILDING FORWARD BASE, MOVING DEFEND PLANS TO COVER");
+            debugBuildings("PLANNED LOCATION IS " + gForwardBaseLocation);
+            debugBuildings("");
+   
+            if (gDefenseReflex == false)
+            {
+               endDefenseReflex(); // Causes it to move to the new location.
+            }
+         }
+         break;
+      }
+      case cForwardBaseStateBuilding:
+      {
+         fortUnitID = getUnitByLocation(cUnitTypeFortFrontier, cMyID, cUnitStateAlive, gForwardBaseLocation, 40.0); 
+         // AssertiveWall: down from 100. It has been grabbing the most random things
+         if (fortUnitID < 0)
+         {
+            // Check for other military buildings.
+            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 20.0);
+            numberFound = kbUnitQueryExecute(buildingQuery);
+            numberMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
+            for (i = 0; < numberFound)
+            {
+               buildingID = kbUnitQueryGetResult(buildingQuery, i);
+
+               if (kbUnitIsType(buildingID, gTowerUnit) == true)
+               {
+                  fortUnitID = buildingID;
+                  break;
+               }
+
+               for (j = 0; < numberMilitaryBuildings)
+               {
+                  if (kbUnitIsType(buildingID, xsArrayGetInt(gMilitaryBuildings, j)) == true)
+                  {
+                     fortUnitID = buildingID;
+                     break;
+                  }
+               }
+
+               if (fortUnitID >= 0)
+               {
+                  break;
+               }
+            }
+         }
+
+         if (fortUnitID >= 0)
+         { // Building exists and is complete, go to state Active.
+            if (kbUnitGetBaseID(fortUnitID) >= 0)
+            { // Base has been created for it.
+               // AssertiveWall: Now build wall
+               if (gStartOnDifferentIslands == false)
+               {
+                  xsEnableRule("forwardBaseWall"); // AssertiveWall: Chain of rules to build walls and towers
+               }
+               gForwardBaseState = cForwardBaseStateActive;
+               gForwardBaseID = kbUnitGetBaseID(fortUnitID);
+               gForwardBaseLocation = kbUnitGetPosition(fortUnitID);
+               gForwardBaseUpTime = xsGetTime();
+               gForwardBaseShouldDefend = kbUnitIsType(fortUnitID, cUnitTypeFortFrontier);
+               kbBaseSetPositionAndDistance(cMyID, gForwardBaseID, gForwardBaseLocation, 40.0);
+               debugBuildings("Forward base location is " + gForwardBaseLocation + ", Base ID is " + 
+                  gForwardBaseID + ", Unit ID is " + fortUnitID);
+               debugBuildings("");
+               debugBuildings("FORWARD BASE COMPLETED, GOING TO STATE ACTIVE");
+               debugBuildings("");
+
+               // Shift everyone over to the new forward base
+               kbBaseAddUnit(cMyID, gForwardBaseID, fortUnitID);
+               for (i = 0; < numberFound)
+               {
+                  buildingID = kbUnitQueryGetResult(buildingQuery, i);
+                  kbBaseAddUnit(cMyID, gForwardBaseID, buildingID);
+               }
+            }
+            else
+            {
+               debugBuildings("");
+               debugBuildings("FORT COMPLETE, WAITING FOR FORWARD BASE ID");
+               debugBuildings("");
+            }
+         }
+         else // Check if plan still exists. If not, go back to state 'none'.
+         {
+            if (aiPlanGetState(gForwardBaseBuildPlan) < 0)
+            { // It failed?
+               gForwardBaseState = cForwardBaseStateNone;
+               gForwardBaseLocation = cInvalidVector;
+               gForwardBaseID = -1;
+               gForwardBaseBuildPlan = -1;
+               gForwardBaseShouldDefend = false;
+               debugBuildings("");
+               debugBuildings("FORWARD BASE PLAN FAILED, RETURNING TO STATE NONE");
+               debugBuildings("");
+            }
+         }
+         break;
+      }
+      case cForwardBaseStateActive:
+      { // Normal state. If fort is destroyed and base overrun, bail.
+         fortUnitID = getUnitByLocation(cUnitTypeFortFrontier, cMyID, cUnitStateAlive, gForwardBaseLocation, 50.0);
+         if (fortUnitID < 0)
+         {
+            // Check for other military buildings.
+            buildingQuery = createSimpleUnitQuery(cUnitTypeMilitaryBuilding, cMyID, cUnitStateAlive, gForwardBaseLocation, 100.0);
+            numberFound = kbUnitQueryExecute(buildingQuery);
+            numberMilitaryBuildings = xsArrayGetSize(gMilitaryBuildings);
+            for (i = 0; < numberFound)
+            {
+               buildingID = kbUnitQueryGetResult(buildingQuery, i);
+
+               if (kbUnitIsType(buildingID, gTowerUnit) == true)
+               {
+                  fortUnitID = buildingID;
+                  break;
+               }
+
+               for (j = 0; < numberMilitaryBuildings)
+               {
+                  if (kbUnitIsType(buildingID, xsArrayGetInt(gMilitaryBuildings, j)) == true)
+                  {
+                     fortUnitID = buildingID;
+                     break;
+                  }
+               }
+               if (fortUnitID >= 0)
+               {
+                  break;
+               }
+            }
+         }
+         if (fortUnitID < 0)
+         {
+            // Fort is missing, is base still OK?
+            if (((gDefenseReflexBaseID == gForwardBaseID) && (gDefenseReflexPaused == true)) ||
+               (kbBaseGetNumberUnits(cMyID, gForwardBaseID, cPlayerRelationSelf, cUnitTypeBuilding) < 1)) 
+            {  // No, not OK. Get outa Dodge.
+               gForwardBaseState = cForwardBaseStateNone;
+               gForwardBaseID = -1;
+               gForwardBaseLocation = cInvalidVector;
+               gForwardBaseShouldDefend = false;
+
+               endDefenseReflex();
+               debugBuildings("");
+               debugBuildings("ABANDONING FORWARD BASE, RETREATING TO MAIN BASE");
+               debugBuildings("");
+            }
+         }
+         break;
+      }
+   }
+}
+
+//==============================================================================
+// pirateForwardBaseWatch - swaps the stock forward-base rules for the copies whenever a stock monitor enables them;
+// once a minute the forward base state (echo: PIRATEFB)
+//==============================================================================
+rule pirateForwardBaseWatch
+inactive
+minInterval 1
+{
+   static int lastEcho = -60000;
+   int fort = -1;
+   vector point = cInvalidVector;
+
+   // the third stock path (run 36, P4 at 12:07 in Age 1): buildingMonitor's 'Forward <building>' plan takes the stock
+   // selectForwardBaseLocation and sets state Building. A forward base being built anywhere but a construction block
+   // is re-pointed to our block, or cancelled while there is none (London: the crossing still closed).
+   if (gForwardBaseState == cForwardBaseStateBuilding && gForwardBaseLocation != cInvalidVector)
+   {
+      if (pirateOnConstructionBlock(gForwardBaseLocation) == false)
+      {
+         point = pirateForwardBasePoint();
+         if (point == cInvalidVector)
+         {
+            aiEcho("PIRATEFB p" + cMyID + " stock forward base at " + xsVectorGetX(gForwardBaseLocation) + "/" + xsVectorGetZ(gForwardBaseLocation)
+                   + " cancelled (plan " + gForwardBaseBuildPlan + ") - no construction block now");
+            if (gForwardBaseBuildPlan >= 0)
+            {
+               aiPlanDestroy(gForwardBaseBuildPlan);
+            }
+            gForwardBaseBuildPlan = -1;
+            gForwardBaseLocation = cInvalidVector;
+            gForwardBaseState = cForwardBaseStateNone;
+         }
+         else
+         {
+            aiEcho("PIRATEFB p" + cMyID + " stock forward base at " + xsVectorGetX(gForwardBaseLocation) + "/" + xsVectorGetZ(gForwardBaseLocation)
+                   + " re-pointed to " + xsVectorGetX(point) + "/" + xsVectorGetZ(point) + " (plan " + gForwardBaseBuildPlan + ")");
+            gForwardBaseLocation = point;
+            if (gForwardBaseBuildPlan >= 0)
+            {
+               aiPlanSetVariableVector(gForwardBaseBuildPlan, cBuildPlanCenterPosition, 0, point);
+               aiPlanSetVariableVector(gForwardBaseBuildPlan, cBuildPlanInfluencePosition, 0, point);
+            }
+         }
+      }
+   }
+
+   if (xsIsRuleEnabled("forwardBaseManager") == true)
+   {
+      xsDisableRule("forwardBaseManager");
+      if (xsIsRuleEnabled("pirateForwardBaseManager") == false)
+      {
+         xsEnableRule("pirateForwardBaseManager");
+         aiEcho("PIRATEFB p" + cMyID + " forwardBaseManager -> pirateForwardBaseManager");
+      }
+   }
+   if (xsIsRuleEnabled("forwardTowerBaseManager") == true)
+   {
+      xsDisableRule("forwardTowerBaseManager");
+      if (xsIsRuleEnabled("pirateForwardTowerBaseManager") == false)
+      {
+         xsEnableRule("pirateForwardTowerBaseManager");
+         aiEcho("PIRATEFB p" + cMyID + " forwardTowerBaseManager -> pirateForwardTowerBaseManager");
+      }
+   }
+   if (xsGetTime() - lastEcho >= 60000)
+   {
+      lastEcho = xsGetTime();
+      if (gForwardBaseLocation != cInvalidVector)
+      {
+         fort = getUnitCountByLocation(cUnitTypeMilitaryBuilding, cMyID, cUnitStateABQ, gForwardBaseLocation, 40.0);
+         aiEcho("PIRATEFB p" + cMyID + " state " + gForwardBaseState + " at " + xsVectorGetX(gForwardBaseLocation) + "/"
+                + xsVectorGetZ(gForwardBaseLocation) + " military buildings there " + fort + " plan " + gForwardBaseBuildPlan);
+      }
+      else
+      {
+         aiEcho("PIRATEFB p" + cMyID + " state " + gForwardBaseState + " no location");
+      }
+   }
+}
+
+//==============================================================================
+// londonPlanPlacer - London (moved out of the stock selectBuildPlanPosition / selectTCBuildPlanPosition, 2026-09-24):
+// every second, our economic build plans get the countryside point behind our own wall (londonSelectFieldPosition),
+// and after two Town Center placement failures a Town Center plan gets the countryside point. A plan is re-pointed
+// again when the stock queue re-positions it. Echo: LONDONPLACE ... field / town center (with the plan state).
+//==============================================================================
+rule londonPlanPlacer
+inactive
+minInterval 1
+{
+   static int planArr = -1;
+   static int vecArr = -1;
+   static int nextSlot = 0;
+   int n = 0;
+   int plan = -1;
+   int puid = -1;
+   int slot = -1;
+   vector point = cInvalidVector;
+   vector centre = cInvalidVector;
+
+   if (gIsLondon == false)
+   {
+      xsDisableSelf();
+      return;
+   }
+   if (planArr < 0)
+   {
+      planArr = xsArrayCreateInt(64, -1, "London placed plans");
+      vecArr = xsArrayCreateVector(64, cInvalidVector, "London placed points");
+   }
+   n = aiPlanGetNumber(cPlanBuild, -1, true);
+   for (i = 0; < n)
+   {
+      plan = aiPlanGetIDByIndex(cPlanBuild, -1, true, i);
+      puid = aiPlanGetVariableInt(plan, cBuildPlanBuildingTypeID, 0);
+      centre = aiPlanGetVariableVector(plan, cBuildPlanCenterPosition, 0);
+      slot = -1;
+      for (k = 0; < 64)
+      {
+         if (xsArrayGetInt(planArr, k) == plan)
+         {
+            slot = k;
+            break;
+         }
+      }
+      if (slot >= 0)
+      {
+         if (centre == xsArrayGetVector(vecArr, slot))
+         {
+            continue;   // placed by us and untouched since
+         }
+      }
+      if (puid == cUnitTypeTownCenter)
+      {
+         if (gPlacementFailuresTC < 2)
+         {
+            continue;
+         }
+         point = londonCountrysidePoint();
+         if (point == cInvalidVector)
+         {
+            continue;
+         }
+         aiPlanSetVariableVector(plan, cBuildPlanCenterPosition, 0, point);
+         aiEcho("LONDONPLACE p" + cMyID + " town center plan " + plan + " in the countryside after " + gPlacementFailuresTC
+                + " failures, state " + aiPlanGetState(plan));
+      }
+      else
+      {
+         if (londonSelectFieldPosition(plan, puid) == false)
+         {
+            continue;
+         }
+         point = aiPlanGetVariableVector(plan, cBuildPlanCenterPosition, 0);
+      }
+      if (slot < 0)
+      {
+         slot = nextSlot;
+         nextSlot = nextSlot + 1;
+         if (nextSlot >= 64)
+         {
+            nextSlot = 0;
+         }
+      }
+      xsArraySetInt(planArr, slot, plan);
+      xsArraySetVector(vecArr, slot, point);
    }
 }

@@ -103,5 +103,25 @@
       34,
       17
     ]
+  },
+  "picker_type": {
+    "x": 486,
+    "y": 306,
+    "rgb": null
+  },
+  "picker_type_all": {
+    "x": 350,
+    "y": 362,
+    "rgb": null
+  },
+  "picker_type_custom": {
+    "x": 390,
+    "y": 400,
+    "rgb": null
+  },
+  "picker_second": {
+    "x": 666,
+    "y": 576,
+    "rgb": null
   }
 }

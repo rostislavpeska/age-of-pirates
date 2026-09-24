@@ -160,7 +160,26 @@ def minimap_signature():
     return tuple(pixel_at(cx + dx * r // 4, cy + dy * r // 4) for dx in range(-4, 5) for dy in range(-4, 5))
 
 
-def select_map(nav, name, shot_path=None):
+# the maps the campaign plays, by SCRIPT name (what the game log's MAP CODE names): the picker search text (part of the
+# display name, unique in its category) and the category - the mod's maps are only under Select Type = Custom Maps.
+# 2026-09-24: '--map Paris' searched All Maps, found no 'Paris' (the map is 'Storming of the Bastille') and started
+# Carolina; the owner: 'learn to control the map selector ... you must use custom maps ... should be automated'.
+MAPS = {
+    "zpparis": ("Bastille", True),       # Storming of the Bastille
+    "zplondon": ("Restoration", True),   # Restoration of the Monarchy
+    "amazonia": ("Amazonia", False),
+}
+
+
+def region_flat(x, y, r=40):
+    """True when the screen around (x, y) is one flat colour: an empty grid slot (a tile has a minimap / artwork)."""
+    px = [pixel_at(x + dx, y + dy) for dx in (-r, 0, r) for dy in (-r, 0, r)]
+    if any(q is None for q in px):
+        return False
+    return max(max(q[c] for q in px) - min(q[c] for q in px) for c in range(3)) <= 25
+
+
+def select_map(nav, name, shot_path=None, custom=False):
     """Lobby -> map picker -> the map whose name matches `name` -> OK (calibrated 2026-09-23 on Amazonia/Carolina).
     The picker's rules, measured: it REMEMBERS its search text and applies it only when it opens (an open picker
     with text shows the filtered list); typing into an open picker filters nothing; emptying the box resets it to
@@ -184,6 +203,21 @@ def select_map(nav, name, shot_path=None):
     if not wait_probe(nav["lobby_probe"], 10):
         print("   the picker did not close on Escape"); return False
     guard(); click(nav["lobby_mapbutton"]["x"], nav["lobby_mapbutton"]["y"]); time.sleep(3.5)   # reopens filtered
+    # the category: a reopened picker is back on 'All Maps', where the mod's maps do not exist (measured 2026-09-24);
+    # set it explicitly every time
+    if custom and "picker_type_custom" in nav:
+        guard(); click(nav["picker_type"]["x"], nav["picker_type"]["y"]); time.sleep(1.2)
+        guard(); click(nav["picker_type_custom"]["x"], nav["picker_type_custom"]["y"]); time.sleep(2.5)
+    elif "picker_type_all" in nav:
+        guard(); click(nav["picker_type"]["x"], nav["picker_type"]["y"]); time.sleep(1.2)
+        guard(); click(nav["picker_type_all"]["x"], nav["picker_type_all"]["y"]); time.sleep(2.5)
+    if "picker_second" in nav:
+        if region_flat(nav["picker_first"]["x"], nav["picker_first"]["y"] - 30):
+            print("   the filtered list is EMPTY for '%s' (custom %s) - not selected" % (name, custom))
+            key_esc(); return False
+        if not region_flat(nav["picker_second"]["x"], nav["picker_second"]["y"]):
+            print("   the filtered list has MORE than one tile for '%s' - the search text is not unique; not selected" % name)
+            key_esc(); return False
     guard(); click(nav["picker_first"]["x"], nav["picker_first"]["y"]); time.sleep(1.5)
     guard(); click(nav["picker_ok"]["x"], nav["picker_ok"]["y"]); time.sleep(3)
     if not wait_probe(nav["lobby_probe"], 15):
@@ -201,7 +235,7 @@ def select_map(nav, name, shot_path=None):
             subprocess.run([sys.executable, os.path.join(HERE, "probe.py"), "shot", shot_path], timeout=30)
         except Exception as e:
             print("   lobby screenshot failed: %s" % e)
-    print("   map selected: %s" % name)
+    print("   map selected: %s (custom maps %s)" % (name, custom))
     return True
 
 
@@ -458,7 +492,8 @@ def start_match(nav, from_lobby=False, blind=False, load_s=150, map_name=None):
     if not wait_probe(nav["lobby_probe"], 30):
         print("   lobby not detected"); return -1
     if map_name:
-        if not select_map(nav, map_name, os.path.join(HERE, "last_lobby.png")):
+        text, custom = MAPS.get(map_name, (map_name, False))
+        if not select_map(nav, text, os.path.join(HERE, "last_lobby.png"), custom):
             return -1
     pos = log_size()
     global AI_HASH_AT_PLAY
@@ -490,6 +525,17 @@ def start_match(nav, from_lobby=False, blind=False, load_s=150, map_name=None):
         else:
             print("   AI files unchanged during the load (hash %s)" % AI_HASH_AT_PLAY)
         _, chunk = new_log_content(pos)
+        # the map the game generated, from its own log - a wrong map is stopped here, not watched for the whole cap
+        if map_name:
+            codes = re.findall(r"MAP CODE: '([^/']+)/", chunk)
+            want = (map_name, "00000_" + map_name)
+            if not codes:
+                print("   no MAP CODE in the log after the load - cannot confirm the map; stopping")
+                return -3
+            if codes[-1].lower() not in want:
+                print("   WRONG MAP: the game generated '%s', wanted '%s' - quitting this match" % (codes[-1], map_name))
+                return -3
+            print("   map confirmed by the log: %s" % codes[-1])
         errs = [ln.strip() for ln in chunk.splitlines() if "XS: Error" in ln]
         if errs:
             print("   AI COMPILE ERROR - stopping; first lines:")
@@ -620,7 +666,8 @@ def main():
     ap.add_argument("--load-s", type=int, default=150, help="--blind: seconds for map generation + load")
     ap.add_argument("--snapshots", action="store_true", help="before the quit: minimap + every AI base (snapshots.py)")
     ap.add_argument("--floor", default=None, help="--criteria baseline: the floor run's metrics.json to judge against")
-    ap.add_argument("--map", default=None, help="select this map in the lobby first (the picker's search text, e.g. Amazonia)")
+    ap.add_argument("--map", default=None, help="select this map in the lobby first, by SCRIPT name (MAPS: zpparis, zplondon,"
+                    " amazonia); the game log's MAP CODE must confirm it after the load")
     ap.add_argument("--criteria", default="istanbul", help="istanbul (criteria.py) or london (criteria_london.py)")
     a = ap.parse_args()
 
@@ -668,6 +715,10 @@ def main():
         pos = start_match(nav, a.from_lobby and done == 0, a.blind, a.load_s, a.map)
         if pos == -2:
             print("   fix the AI file, dismiss the dialog (its OK moves with the error length), quit the match; rerun")
+            break
+        if pos == -3:   # the wrong map (or none confirmed) is running: leave it at once, never watch it
+            end_match(nav)
+            print("   stopped: the map was not confirmed - check MAPS / the picker, then rerun")
             break
         if pos < 0:
             lost += 1
