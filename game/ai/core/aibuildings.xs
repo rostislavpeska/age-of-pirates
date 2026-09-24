@@ -1940,6 +1940,45 @@ bool addBuilderToPlan(int planID = -1, int puid = -1, int numberBuilders = 1)
 //==============================================================================
 // selectForwardBaseLocation
 //==============================================================================
+//==============================================================================
+// londonForwardBasePoint - London: the forward base at our own bridgehead - on our bank, 50 m from the bridge middle
+// along the road (the EU_SPC_London_Bridge deck runs ~41 m either side of its middle, its gates at -13 / +10 m), so
+// the forward buildings stand next to the bridge the battle crosses (owner 2026-09-24: 'there is a spot next to the
+// bridge perfect for it'). The stock rules still decide when and whether; only the place is London's.
+//==============================================================================
+vector londonForwardBasePoint(void)
+{
+   static int lastEcho = -60000;
+   int marker = -1;
+   float side = 1.0;
+   vector baseVec = cInvalidVector;
+   vector bridgeVec = cInvalidVector;
+   vector point = cInvalidVector;
+
+   if (gIsLondon == false)
+   {
+      return (cInvalidVector);
+   }
+   marker = getUnit(cUnitTypezpAILondonBridge, cMyID, cUnitStateAny);
+   baseVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
+   if (marker < 0 || baseVec == cInvalidVector)
+   {
+      return (cInvalidVector);
+   }
+   bridgeVec = kbUnitGetPosition(marker);
+   if (xsVectorGetZ(baseVec) < xsVectorGetZ(bridgeVec))
+   {
+      side = -1.0;
+   }
+   point = xsVectorSet(xsVectorGetX(bridgeVec), 0.0, xsVectorGetZ(bridgeVec) + side * 50.0);
+   if (xsGetTime() - lastEcho >= 60000)
+   {
+      lastEcho = xsGetTime();
+      aiEcho("LONDONPLACE p" + cMyID + " forward base next to the bridge at " + xsVectorGetX(point) + "/" + xsVectorGetZ(point));
+   }
+   return (point);
+}
+
 vector selectForwardBaseLocation(void)
 {
    vector retVal = cInvalidVector;
@@ -1947,6 +1986,15 @@ vector selectForwardBaseLocation(void)
    vector v = cInvalidVector; // Scratch variable for intermediate calcs.
 
    debugBuildings("Selecting forward base location");
+   // LONDON: the forward base stands at our own bridgehead (londonForwardBasePoint)
+   if (gIsLondon == true)
+   {
+      vector londonForwardVec = londonForwardBasePoint();
+      if (londonForwardVec != cInvalidVector)
+      {
+         return (londonForwardVec);
+      }
+   }
    // Will be used to determine how far out we should put the fort on the line from our base to enemy TC.
    float distanceMultiplier = 0.5; 
    float dist = 0.0;

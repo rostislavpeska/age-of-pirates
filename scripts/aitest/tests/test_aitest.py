@@ -206,7 +206,7 @@ def enclosing_headers(lines, i):
 
 
 class TestLondonOnlyPlacement:
-    HELPERS = ("londonCountrysidePoint", "londonFieldPoint", "londonSelectFieldPosition")
+    HELPERS = ("londonCountrysidePoint", "londonFieldPoint", "londonSelectFieldPosition", "londonForwardBasePoint")
 
     @pytest.mark.parametrize("h", HELPERS)
     def test_helpers_return_at_once_off_london(self, h):
@@ -239,8 +239,8 @@ class TestLondonOnlyPlacement:
                 continue
             assert any("gIsLondon == true" in h for h in enclosing_headers(lines, i)), (i + 1, lines[i])
 
-    def test_build_echo_is_round_four(self):
-        assert "build r4 2026-09-23" in core("aipiraterules.xs")
+    def test_build_echo_is_round_five(self):
+        assert "build r5 2026-09-24" in core("aipiraterules.xs")
 
 
 def diag4(t, p=2, baseR=40.0, fails=0, farms=0, plant=0, london=1):
@@ -369,3 +369,25 @@ def test_no_scalar_times_vector():
     bad = [(f, s[:m.start()].count("\n") + 1, m.group(0)) for f, s in files.items()
            for m in re.finditer(r"\b\d+(?:\.\d+)?\s*\*\s*(\w+)\b", s) if m.group(1) in vecs]
     assert not bad, bad
+
+
+class TestRoundFiveCriteria:
+    def base(self):
+        return [l.replace("build r3", "build r5") for l in london_record()]
+
+    def verdicts(self, L):
+        return {r[0]: r[2] for r in criteria_london.evaluate({2: sorted(L, key=criteria_london.gtime)})}
+
+    def test_no_forward_ask_is_not_applicable(self):
+        assert self.verdicts(self.base())["P4"] == "N/A"
+
+    def test_an_ask_with_few_failures_passes(self):
+        L = self.base() + ["00:12:00  (1): LONDONPLACE p2 forward base next to the bridge at 1/2",
+                           "00:12:30  (1): BuildPlan(9: Forward Tower build plan  : 9): failing because building placement failed with state (3)."]
+        assert self.verdicts(L)["P4"] == "PASS"
+
+    def test_repeated_forward_failures_fail(self):
+        L = self.base() + ["00:12:00  (1): LONDONPLACE p2 forward base next to the bridge at 1/2"]
+        L += ["00:13:%02d  (1): BuildPlan(9: Forward Tower build plan  : 9): failing because building placement failed with state (3)." % s
+              for s in range(0, 50, 10)]
+        assert self.verdicts(L)["P4"] == "FAIL"

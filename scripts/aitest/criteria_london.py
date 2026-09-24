@@ -211,6 +211,19 @@ def evaluate(files, events_path=None):
             if rows[p] and rows[p][-1][0] >= 1500 and not (field and eco):
                 bad.append("P%d(field line %s, eco building %s)" % (p, field, eco))
         add("P3", "a countryside field placement and an eco building by 25:00", not bad, "failing: %s" % (bad or "none"))
+
+    # round 5 - the forward base at our bridgehead (owner 2026-09-24): when the stock AI asks for one, the point is
+    # London's; judged only for players whose record shows the ask
+    r5 = [p for p in players if any(re.search(r"LONDON p%d build r([5-9])" % p, l) for l in ai[p])]
+    if r5:
+        asked = [p for p in r5 if any("LONDONPLACE p%d forward base next to the bridge" % p in l for l in ai[p])]
+        bad = []
+        for p in asked:
+            n = sum(1 for l in ai[p] if re.search(r"BuildPlan\(\d+: Forward .*failing because building placement failed", l))
+            if n > 3:
+                bad.append("P%d(%d Forward placement failures)" % (p, n))
+        add("P4", "forward base at the bridgehead: <= 3 Forward placement failures", not bad,
+            "asked by %s; failing: %s" % (asked or "nobody", bad or "none"), na=not asked)
     return results
 
 
