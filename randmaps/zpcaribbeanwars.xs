@@ -999,6 +999,19 @@ string guardianUnit2 = "zpPirateGuard";
 rmCreateTrigger("Starting Techs");
 rmSwitchToTrigger(rmTriggerID("Starting techs"));
 for(i=1; <= cNumberNonGaiaPlayers) {
+// naval KotH - one trigger, so exactly one of the two runs: KotH mode unlocks (every ship captures),
+// any other mode locks (ships capture nothing). Owner 2026-09-25: 'if / else will be better'
+if (rmGetIsKOTH()) {
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
+   rmSetTriggerEffectParamInt("PlayerID",i);
+   rmSetTriggerEffectParam("TechID","cTechzpUnlockNavalKotH"); // naval KotH: every ship captures
+   rmSetTriggerEffectParamInt("Status",2);
+} else {
+   rmAddTriggerEffect("ZP Set Tech Status (XS)");
+   rmSetTriggerEffectParamInt("PlayerID",i);
+   rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+   rmSetTriggerEffectParamInt("Status",2);
+}
 rmAddTriggerEffect("ZP Set Tech Status (XS)");
 rmSetTriggerEffectParamInt("PlayerID",i);
 rmSetTriggerEffectParam("TechID","cTechDEEnableTradeRouteWater"); // DEEneableTradeRouteWater
@@ -1040,11 +1053,11 @@ if (rmGetIsKOTH()){
    //  NAVAL KOTH - the ENGINE owns the capture decision.
    //
    //  zpKingsHillNaval carries zpnavalkingshill.tactics, an AutoConvert
-   //  action at maxrange 25. Warships cannot normally trip it: ZERO of the
-   //  149 water-movement protos carry ConvertsHerds, a deliberate exclusion
-   //  in the base game, so the tech below grants it. That tech is a Shadow
-   //  tech flipped ONLY here and ONLY in KotH mode, so ships on every other
-   //  map are untouched and cannot steal herds.
+   //  action at maxrange 25; a ship trips it only with the ConvertsHerds
+   //  unittype. The base game gives most ships that type since its
+   //  2026-09-10 patch, so every mod map strips it (zpLockShipCapture) and
+   //  this map, in KotH mode, grants zpUnlockNavalKotH instead - both in
+   //  "Starting Techs" (if / else), so exactly one of them runs.
    //
    //  No guardians on this castle, so no AutoConvert suspension - capture is
    //  live from the start, which is what KotH mode wants.
@@ -1055,21 +1068,6 @@ if (rmGetIsKOTH()){
    //  family is gone; the engine has no such edge case.
    //  Identical to the system in zpblacksea.xs.
    // ------------------------------------------------------------------
-   // The grant needs a trigger OF ITS OWN. rmAddTriggerEffect appends to
-   // whatever trigger was last switched to, so bare effects in open code
-   // silently land on the previous trigger.
-   rmCreateTrigger("UnlockNavalKotHTech");
-   rmSwitchToTrigger(rmTriggerID("UnlockNavalKotHTech"));
-   for (k=1; <= cNumberNonGaiaPlayers) {
-      rmAddTriggerEffect("ZP Set Tech Status (XS)");
-      rmSetTriggerEffectParamInt("PlayerID", k);
-      rmSetTriggerEffectParam("TechID", "cTechzpUnlockNavalKotH");
-      rmSetTriggerEffectParamInt("Status", 2);
-   }
-   rmSetTriggerPriority(4);
-   rmSetTriggerActive(true);
-   rmSetTriggerRunImmediately(true);
-   rmSetTriggerLoop(false);
 
    //  FOLLOWERS - no logic, they only read who owns the castle. Exactly one
    //  player can own it, so exactly one of these can ever be true: they need

@@ -4306,10 +4306,9 @@ void main(void)
 	rmSetTriggerEffectParamInt("PlayerID", st);
 	rmSetTriggerEffectParam("TechID", "cTechdeEUMapUpdateVisuals"); // European Embassy - zp_z_zparis.xs 1810
 	rmSetTriggerEffectParamInt("Status", 2);
-	// NAVAL KOTH. Warships carry no ConvertsHerds in the base game - zero of
-	// the 149 water protos do - so a fort with an AutoConvert tactic would be
-	// unclaimable. This grants it, and ONLY on this map: it is a Shadow tech
-	// so ships on every other map are untouched and cannot steal herds.
+	// NAVAL KOTH. A ship captures (AutoConvert) only with the ConvertsHerds
+	// unittype. Every other mod map strips it (zpLockShipCapture); Istanbul
+	// only unlocks (owner 2026-09-25): this grants it to every ship.
 	// Pairs with zpnavalkingshill.tactics on zpKingsHillNavalBlackSea/Medi.
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID", st);
@@ -5256,11 +5255,9 @@ void main(void)
 
 	// ---- CAPTURE: the engine owns it. -------------------------------------
 	// zpnavalkingshill.tactics puts an AutoConvert action (maxrange 25) on the
-	// castle, and cTechzpUnlockNavalKotH grants warships the ConvertsHerds
-	// unittype they otherwise lack - ZERO of the 149 water protos carry it, so
-	// without the tech AutoConvert cannot see a ship at all. The tech is a
-	// Shadow tech flipped only by this map, so ships elsewhere are untouched
-	// and cannot steal herds.
+	// castle, and a ship trips it only with the ConvertsHerds unittype.
+	// cTechzpUnlockNavalKotH (Starting Techs) grants it to every ship here;
+	// the other mod maps strip it with zpLockShipCapture.
 	//
 	// Guardians gate it the same way every other convertible asset on this map
 	// is gated: the action is SUSPENDED at startup and released on
@@ -5378,11 +5375,9 @@ void main(void)
 
 	// ---- CAPTURE: the engine owns it. -------------------------------------
 	// zpnavalkingshill.tactics puts an AutoConvert action (maxrange 25) on the
-	// castle, and cTechzpUnlockNavalKotH grants warships the ConvertsHerds
-	// unittype they otherwise lack - ZERO of the 149 water protos carry it, so
-	// without the tech AutoConvert cannot see a ship at all. The tech is a
-	// Shadow tech flipped only by this map, so ships elsewhere are untouched
-	// and cannot steal herds.
+	// castle, and a ship trips it only with the ConvertsHerds unittype.
+	// cTechzpUnlockNavalKotH (Starting Techs) grants it to every ship here;
+	// the other mod maps strip it with zpLockShipCapture.
 	//
 	// Guardians gate it the same way every other convertible asset on this map
 	// is gated: the action is SUSPENDED at startup and released on

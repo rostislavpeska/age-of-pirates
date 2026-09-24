@@ -1651,6 +1651,10 @@ void main(void)
 	for (x=1; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",x);
+		rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",x);
 		rmSetTriggerEffectParam("TechID","cTechzpColonialEstateNativeSetup"); //operator
 		rmSetTriggerEffectParamInt("Status",2);
 		// Capturable-harbour resource crates: the naval unlock the engine

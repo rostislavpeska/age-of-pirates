@@ -1323,6 +1323,13 @@ void main(void)
 
    rmCreateTrigger("Starting Techs");
 	rmSwitchToTrigger(rmTriggerID("Starting techs"));
+	// players only - gaia keeps its protos (a setup tech on gaia resets AutoConvert suspensions)
+	for(i=1; <= cNumberNonGaiaPlayers) {
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+		rmSetTriggerEffectParamInt("Status",2);	
+	}
 	for(i=0; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);

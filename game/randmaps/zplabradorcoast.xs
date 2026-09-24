@@ -1044,6 +1044,30 @@ if (cNumberNonGaiaPlayers ==8){
 	unitID8 = "358";
 	}
 
+// Starting techs
+
+rmCreateTrigger("Starting Techs");
+rmSwitchToTrigger(rmTriggerID("Starting techs"));
+for(k=1; <= cNumberNonGaiaPlayers) {
+// King of the Hill on a tiny island (owner 2026-09-25): KotH mode unlocks - ships capture the hill - and any other
+// mode locks; one trigger, so exactly one of the two runs
+if (rmGetIsKOTH()) {
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpUnlockNavalKotH"); // KotH on a tiny island: every ship captures
+	rmSetTriggerEffectParamInt("Status",2);
+} else {
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID",k);
+	rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+	rmSetTriggerEffectParamInt("Status",2);
+}
+}
+rmSetTriggerPriority(4);
+rmSetTriggerActive(true);
+rmSetTriggerRunImmediately(true);
+rmSetTriggerLoop(false);
+
 // Italian Vilager Balance
 
 for (k=1; <= cNumberNonGaiaPlayers) {

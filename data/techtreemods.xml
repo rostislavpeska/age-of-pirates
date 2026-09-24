@@ -1,14 +1,16 @@
 <techtreemods>
   <!-- ==================================================================
-       NAVAL KING OF THE HILL - lets warships capture a naval KotH fort.
+       NAVAL KING OF THE HILL - lets ships capture on the maps that want it.
 
-       Ships cannot AutoConvert anything in the base game: ZERO of the 149
-       water-movement protos carry ConvertsHerds, which is a deliberate
-       exclusion, not an oversight. So a naval fort with an AutoConvert
-       tactic would sit there unclaimable. This tech grants the missing
-       unittype, and ONLY on maps that ask for it - which is why it is a
-       map-flipped Shadow tech and not a protomods.xml edit. A permanent
-       edit would let warships steal herds on every map in the mod.
+       A ship trips an AutoConvert action only with the ConvertsHerds
+       unittype. Since its 2026-09-10 patch the base game gives most ships
+       that type (57 water protos), so every mod map strips it with
+       zpLockShipCapture (its "Starting Techs"; London: zpLondonSetup) and
+       the maps that want ship capture grant this tech instead: Istanbul
+       always; in KotH mode (if / else in one trigger, so exactly one runs)
+       Black Sea and Caribbean Wars (naval castle) and the tiny-island KotH
+       maps Eyre Basin, Burma, Dead Sea, Torres Strait, Labrador Coast,
+       Barrier Reef and Cold War. zpunknown keeps the base game's rule.
 
        Vanilla precedent for every part of this:
          AANativeStartingTechs  adds ConvertsHerds to a proto
@@ -17,9 +19,9 @@
          DEHCNavalInfantry      adds a unittype to warships specifically
        59 vanilla techs use subtype="SetUnitType".
 
-       One effect, abstract target: AbstractWarShip covers all 114 warship
-       protos (47 vanilla + 67 this mod adds), so it needs no maintenance
-       when a new ship is added.
+       Abstract targets: Ship (every ship, fishing boats included - owner
+       2026-09-25 'enable globally for all ships') and AbstractWarShip, so it
+       needs no maintenance when a new ship is added.
 
        KEEP THIS TECH AT THE TOP OF THE FILE - see the note below.
 
@@ -34,6 +36,9 @@
     <effects>
       <effect type="Data" amount="1.00" unittype="ConvertsHerds" subtype="SetUnitType" relativity="Absolute">
         <target type="ProtoUnit">AbstractWarShip</target>
+      </effect>
+      <effect type="Data" amount="1.00" unittype="ConvertsHerds" subtype="SetUnitType" relativity="Absolute">
+        <target type="ProtoUnit">Ship</target>
       </effect>
     </effects>
   </tech>
@@ -38681,6 +38686,7 @@
       <effect type="TechStatus" status="obtainable">DESPCTraceItalienne</effect>
       <effect type="TechStatus" status="active">zpForbidRevolutions</effect>
       <effect type="TechStatus" status="active">zpExtendedStuartLondon</effect>
+      <effect type="TechStatus" status="active">zpLockShipCapture</effect>
       <effect type="TechStatus" status="active">zpDisableAllTradeRouteUpgrades</effect>
       <effect type="TechStatus" status="active">DETradeRouteAllResourcesShadow</effect>
       <effect type="TechStatus" status="obtainable">zpLondonDeptfordStation</effect>
@@ -39394,6 +39400,23 @@
     <prereqs>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
+  </tech>
+  <!-- ships capture nothing (owner 2026-09-25: 'the conversion sucks... it converts harbours and on-shore assets'): since
+       its 2026-09-10 patch the base game gives most ships ConvertsHerds, so an AutoConvert post, fort or harbour flips to any
+       ship in range. Every mod map activates this for players 1..N in its "Starting Techs" (London: zpLondonSetup); the
+       naval-KotH maps grant zpUnlockNavalKotH instead (Istanbul always; in KotH mode, if / else: Black Sea, Caribbean Wars
+       and the tiny-island KotH maps Eyre Basin, Burma, Dead Sea, Torres Strait, Labrador Coast, Barrier Reef, Cold War);
+       zpunknown keeps the base game's rule. DESPCDelugeSetup's form (amount 0, Assign) -->
+  <tech name="zpLockShipCapture" type="Normal">
+    <dbid>50076</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <effect type="Data" amount="0.00" subtype="SetUnitType" unittype="ConvertsHerds" relativity="Assign">
+        <target type="ProtoUnit">Ship</target>
+      </effect>
+    </effects>
   </tech>
 <!--TEST TECHS-->
 

@@ -993,6 +993,10 @@ void main(void)
 	for(i=1; <= cNumberNonGaiaPlayers) {
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
 		rmSetTriggerEffectParamInt("PlayerID",i);
+		rmSetTriggerEffectParam("TechID","cTechzpLockShipCapture"); // ships capture nothing: ConvertsHerds off (zpLockShipCapture)
+		rmSetTriggerEffectParamInt("Status",2);
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID",i);
 		rmSetTriggerEffectParam("TechID","cTechdeEUMapUpdateVisuals"); // Europen Map
 		rmSetTriggerEffectParamInt("Status",2);
 		rmAddTriggerEffect("ZP Set Tech Status (XS)");
