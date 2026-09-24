@@ -446,3 +446,25 @@ mode: "can't path" for Barracks and Artillery Depots. The base's back reaches be
 cannot walk. **Reverted**: one hypothesis per run, and this one did not hold.
 
 **Next:** run 26 tests "no forward base on London" (42952cf7) alone.
+
+## Run 26 - no forward base on London - London 3v2, 30 min cap - commit 280f9faa (AI 42952cf7 without the back preference)
+
+The load was clean (hash 3b1dc538ebf3). Game time reached 46 minutes.
+
+**Verdict: FAIL (P2 for P2, P3 and P5; P3 for P2).** L0-L8, P0, P1, U1 and U2 PASS.
+
+| Player | Failures at 30:00 / 46:00 (per 10 min) | Forward failures | Top remaining | Villagers / army |
+|---|---|---|---|---|
+| P2 | 5 / 20 (4.3) | 0 | Barracks 8, Artillery Depot 6 | 80 / 119 |
+| P3 | 8 / 40 (8.7) | 0 | Blockhouse 23 (after the gates are guarded), Trading Post 13 | 97 / 117 |
+| P4 | 7 / 16 (3.5, PASS) | 0 | Trading Post 6, Plantation 5 | 80 / 131 |
+| P5 | 9 / 22 (4.8) | 0 | Trading Post 9 | 91 / 63 |
+
+**Reading:** the forward-base failures are gone, from 6-48 per player to 0. The failures at 30:00 are the lowest of
+the night: 5-9 per player, against 22-36 in runs 20-23 and the vanilla floor of 48 per 10 minutes. The remaining
+failures are:
+- Blockhouses on the stock ring, once every gate has 2 towers;
+- Trading Posts on the own bank (3-13);
+- a few Barracks and Artillery Depots.
+
+**The P2 bound** (<= 4 per 10 minutes, set before any data) is met by P4 and missed by 0.3-4.7 elsewhere.
