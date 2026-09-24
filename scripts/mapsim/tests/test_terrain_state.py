@@ -236,3 +236,65 @@ class TestGoldenGrids:
             (REPO / "scripts" / "mapsim" / "tests" / "goldens"
              / f"independence_war_P{players}T{teams}.json").read_text())
         assert got == golden
+
+
+DEAD_SEA_LIKE = """
+void main(void) {
+   rmSetStatusText("", 0.1);
+   rmSetMapSize(400, 400);
+   rmSetSeaLevel(6.0);
+   rmTerrainInitialize("deccan\ground_grass3_deccan");
+   int lake = rmCreateArea("lake");
+   rmSetAreaSize(lake, 0.05, 0.05);
+   rmSetAreaLocation(lake, 0.5, 0.5);
+   rmSetAreaWaterType(lake, "great lakes");
+   rmSetAreaBaseHeight(lake, 0.0);
+   rmBuildArea(lake);
+   int valley = rmCreateArea("valley");
+   rmSetAreaSize(valley, 0.03, 0.03);
+   rmSetAreaLocation(valley, 0.2, 0.2);
+   rmSetAreaBaseHeight(valley, 0.0);
+   rmBuildArea(valley);
+   int home = rmCreateArea("home");
+   rmSetAreaSize(home, 0.03, 0.03);
+   rmSetAreaLocation(home, 0.8, 0.8);
+   rmSetAreaBaseHeight(home, 2.0);
+   rmBuildArea(home);
+   rmSetStatusText("", 1.0);
+}
+"""
+
+
+class TestSeaLevelOnLandBase:
+    """zpdeadsea.xs / zpeyrebasin.xs (2026-09-25): land-initialized, rmSetSeaLevel(6.0), lakes as water-typed areas at
+    0.0, players on areas at base height 1-2. The live editor minimap (2880x1800, Dead Sea 2p and 6p) shows land
+    everywhere but the lake: the grey 'dead sea valley' (base 0.0) and both players' areas (2.0) are dry. mapsim
+    flooded every area below the sea level (48% minimap agreement, 0/2 Town Centers on land)."""
+
+    def _grid(self, tmp_path):
+        src = tmp_path / "deadsea_like.xs"
+        src.write_text(DEAD_SEA_LIKE, encoding="utf-8")
+        ex = extract(src, Scenario(2, 2))
+        rs = extraction_to_resolved(ex)
+        return rs, terrain_grid(rs)
+
+    def test_low_ground_stays_land(self, tmp_path):
+        rs, tg = self._grid(tmp_path)
+        assert not rs.base_is_water
+        for x, z in ((0.2, 0.2), (0.8, 0.8)):
+            i, j = tg.cell_of_frac(x, z)
+            assert not tg.water[j][i], (x, z)
+
+    def test_the_water_typed_lake_is_the_only_water(self, tmp_path):
+        rs, tg = self._grid(tmp_path)
+        i, j = tg.cell_of_frac(0.5, 0.5)
+        assert tg.water[j][i]
+        wet = sum(1 for row in tg.water for w in row if w)
+        assert wet < 0.08 * tg.nx * tg.nz
+
+    def test_checks_agree(self, tmp_path):
+        from scripts.mapsim.checks import area_is_land
+        rs, _ = self._grid(tmp_path)
+        by = {a.name: a for a in rs.areas}
+        assert area_is_land(rs, by["valley"]) and area_is_land(rs, by["home"])
+        assert not area_is_land(rs, by["lake"])

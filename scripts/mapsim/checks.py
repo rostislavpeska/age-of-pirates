@@ -26,6 +26,7 @@ from scripts.mapsim.geometry import (
     in_world_circle,
 )
 from scripts.mapsim.scene import (
+    height_floods,
     ResolvedArea,
     ResolvedPlacement,
     ResolvedScene,
@@ -93,7 +94,7 @@ def area_is_land(rs: ResolvedScene, a: ResolvedArea) -> bool:
     if a.water_type is not None:
         return False
     if a.base_height is not None:
-        return a.base_height > rs.sea_level
+        return not height_floods(rs.base_is_water, rs.sea_level, a.base_height, None)
     return a.creates_land or not rs.base_is_water
 
 
@@ -107,7 +108,7 @@ def _water_features_m(rs: ResolvedScene, before_line: Optional[int]):
         if a.x is None:
             continue
         wet = (a.water_type is not None
-               or (a.base_height is not None and a.base_height <= rs.sea_level)
+               or height_floods(rs.base_is_water, rs.sea_level, a.base_height, None)
                or (a.is_invisible() and a.has_elevation
                    and a.height_blend < 2.0 and rs.sea_level >= 0.0))
         if not wet:
