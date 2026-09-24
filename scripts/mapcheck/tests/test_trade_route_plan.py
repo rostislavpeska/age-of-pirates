@@ -64,6 +64,11 @@ def test_st_pauls_and_minster_route_techs(xmb_current):
             assert line in b, (name, line)
         assert b.count(icon) == 1 and "<effects>" not in b, name              # no effect of its own: the triggers raise the route
         assert name in _proto_techs(proto), (proto, name)
+        u = re.search(r'<unit[^>]*name="%s"[^>]*>(.*?)</unit>' % proto, _text(REPO / "data/protomods.xml"), re.S).group(1)
+        cols = re.findall(r'page="11" column="([0-9])">([^<]+)</', u)      # the owner's order: singles, team, abilities
+        assert cols == [("0", name), ("1", "DESPCExcommunication"), ("2", "zpSPCArtPatronCathedral"), ("3", "zpSPCBlessedCity"),
+                        ("3", "zpSPCBlessedCitySingle"), ("4", "DESPCPapalLegate"), ("4", "zpSPCPapalLegateSingle"),
+                        ("5", "zpSPCPapalBlessingPrague"), ("6", "Abilities")], (proto, cols)
     s = _text(REPO / "data/strings/english/stringmods.xml")
     assert '<string _locid="503594">London Deptford Station</string>' in s and '<string _locid="503596">East India Trading Company</string>' in s
     xmb_current("data/protomods.xml")

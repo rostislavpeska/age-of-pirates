@@ -74427,14 +74427,15 @@
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
-    <tech row="0" page="11" column="0">zpSPCArtPatronCathedral</tech>
-    <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
-    <tech row="0" page="11" column="1">zpSPCBlessedCitySingle</tech>
-    <tech row="0" page="11" column="2">DESPCPapalLegate</tech>
-    <tech row="0" page="11" column="2">zpSPCPapalLegateSingle</tech>
-    <tech row="0" page="11" column="3">zpSPCPapalBlessingPrague</tech>
-    <tech row="0" page="11" column="4">DESPCExcommunication</tech>
-    <tech row="0" page="11" column="5">zpLondonDeptfordStation</tech>
+    <!-- the owner's order (2026-09-24): single techs (the route tech, Excommunication), then the team techs, then the Abilities command (column 6) -->
+    <tech row="0" page="11" column="0">zpLondonDeptfordStation</tech>
+    <tech row="0" page="11" column="1">DESPCExcommunication</tech>
+    <tech row="0" page="11" column="2">zpSPCArtPatronCathedral</tech>
+    <tech row="0" page="11" column="3">zpSPCBlessedCity</tech>
+    <tech row="0" page="11" column="3">zpSPCBlessedCitySingle</tech>
+    <tech row="0" page="11" column="4">DESPCPapalLegate</tech>
+    <tech row="0" page="11" column="4">zpSPCPapalLegateSingle</tech>
+    <tech row="0" page="11" column="5">zpSPCPapalBlessingPrague</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -74457,7 +74458,7 @@
     <flag>ShowAreaHealRate</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
-    <command page="11" column="4">Abilities</command>
+    <command page="11" column="6">Abilities</command>
     <tactics>notre_dame.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
@@ -74548,14 +74549,15 @@
     <unittype>AbstractCityManison</unittype>
     <unittype>AbstractImportantCityBuilding</unittype>
     <flag>AllowAutoGarrison</flag>
-    <tech row="0" page="11" column="0">zpSPCArtPatronCathedral</tech>
-    <tech row="0" page="11" column="1">zpSPCBlessedCity</tech>
-    <tech row="0" page="11" column="1">zpSPCBlessedCitySingle</tech>
-    <tech row="0" page="11" column="2">DESPCPapalLegate</tech>
-    <tech row="0" page="11" column="2">zpSPCPapalLegateSingle</tech>
-    <tech row="0" page="11" column="3">zpSPCPapalBlessingPrague</tech>
-    <tech row="0" page="11" column="4">DESPCExcommunication</tech>
-    <tech row="0" page="11" column="5">zpLondonEastIndiaCompany</tech>
+    <!-- the owner's order (2026-09-24): single techs (the route tech, Excommunication), then the team techs, then the Abilities command (column 6) -->
+    <tech row="0" page="11" column="0">zpLondonEastIndiaCompany</tech>
+    <tech row="0" page="11" column="1">DESPCExcommunication</tech>
+    <tech row="0" page="11" column="2">zpSPCArtPatronCathedral</tech>
+    <tech row="0" page="11" column="3">zpSPCBlessedCity</tech>
+    <tech row="0" page="11" column="3">zpSPCBlessedCitySingle</tech>
+    <tech row="0" page="11" column="4">DESPCPapalLegate</tech>
+    <tech row="0" page="11" column="4">zpSPCPapalLegateSingle</tech>
+    <tech row="0" page="11" column="5">zpSPCPapalBlessingPrague</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -74578,7 +74580,7 @@
     <flag>ShowAreaHealRate</flag>
     <command page="10" column="3">SetGatherPointMilitary</command>
     <command page="10" column="8">CancelAllQueued</command>
-    <command page="11" column="4">Abilities</command>
+    <command page="11" column="6">Abilities</command>
     <tactics>notre_dame.tactics</tactics>
     <protoaction>
       <name>Autogather</name>
