@@ -145,6 +145,21 @@ class TestAICommonwealthGate:
         assert "<age>Age0</age>" in c[i:i + 1200] and "<tech>zpNativeParliament</tech>" in c[i:i + 1200]     # the post-held gate is the Age0 agetech
 
 
+class TestTradeRouteLevels:
+    def test_both_routes_start_at_level_one(self, steam_twin):
+        # user 2026-09-24: "can London upgrade the both trade routes to lvl1 by default?" - Elbe's starting-trigger effects;
+        # TradeRoute is the creation order from 1: the nautical U first, the land road second
+        t = _text(LONDON)
+        assert t.count("rmCreateTradeRoute()") == 2
+        assert t.index("int waterRouteID = rmCreateTradeRoute();") < t.index("int tradeRouteID = rmCreateTradeRoute();")
+        for r in (1, 2):
+            assert ('rmAddTriggerEffect("Trade Route Set Level");\n\trmSetTriggerEffectParamInt("TradeRoute", %d);\n\trmSetTriggerEffectParamInt("Level", 1);' % r) in t, r
+        assert t.count('"Trade Route Set Level"') == 2
+        i = t.index('rmSetTriggerEffectParam("TechID", "cTechdeEUMapUpdateVisuals");')
+        assert i < t.index('rmSetTriggerEffectParamInt("TradeRoute", 1);') < t.index('rmSetTriggerEffectParam("TechID", "cTechzpConverGate");')
+        steam_twin(LONDON, "00000_zplondon.xs")
+
+
 class TestMapMods:
     def test_paris_city_look(self):
         lm = _text(REPO / "randmaps/zplondon.mods.xml"); par = _text(REPO / "randmaps/zpparis.mods.xml")

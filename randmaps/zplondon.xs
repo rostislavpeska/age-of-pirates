@@ -2878,6 +2878,15 @@ void main(void)
 		rmSetTriggerEffectParam("TechID", "cTechdeEUMapUpdateVisuals");
 		rmSetTriggerEffectParamInt("Status", 2);
 	}
+	// both trade routes start at level 1 (user 2026-09-24 'can London upgrade the both trade routes to lvl1 by default?') -
+	// Elbe's starting trigger (zpelbe.xs 1296-1301); TradeRoute = the creation order from 1: 1 = the nautical U (waterRouteID),
+	// 2 = the land road (tradeRouteID)
+	rmAddTriggerEffect("Trade Route Set Level");
+	rmSetTriggerEffectParamInt("TradeRoute", 1);
+	rmSetTriggerEffectParamInt("Level", 1);
+	rmAddTriggerEffect("Trade Route Set Level");
+	rmSetTriggerEffectParamInt("TradeRoute", 2);
+	rmSetTriggerEffectParamInt("Level", 1);
 	// the bridge's two zpInvisibleGateSocket placeholders become SPCFortGate the moment the game starts: zpConverGate
 	// (techtreemods, shadow: turns every zpInvisibleGateSocket into an SPCFortGate) fired for gaia, the socket's owner -
 	// zpcivilwar.xs 1491-1494 does the same in its starting-techs trigger (user 2026-09-21)
