@@ -19,14 +19,14 @@
 		<unit variation="139" posx="29.6090" posz="-31.0463" orientx="0.0000" orienty="0.0000" orientz="-1.0000">zpPropsColony</unit>
 		<unit variation="0" posx="-5.3948" posz="-26.6173" orientx="-0.7067" orienty="0.0000" orientz="0.7075">PropsPoles</unit>
 		<unit variation="0" posx="-0.3634" posz="-27.2069" orientx="-0.7067" orienty="0.0000" orientz="0.7075">PropsPoles</unit>
-		<unit variation="220" posx="-22.4881" posz="-27.3780" orientx="0.9963" orienty="0.0000" orientz="-0.0862">zpSPCCityHouse</unit>
+		<unit variation="220" posx="-22.4881" posz="-27.3780" orientx="0.9963" orienty="0.0000" orientz="-0.0862">zpSPCEUHouseProp</unit>
 		<unit variation="57" posx="-12.9548" posz="-26.8879" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpSPCCityBuildingMix</unit>
 		<unit variation="4" posx="19.1489" posz="-27.1870" orientx="0.9978" orienty="0.0000" orientz="-0.0669">deSPCWaterlooHouseProp</unit>
 		<unit variation="223" posx="-13.2330" posz="-28.0399" orientx="-0.0001" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
-		<unit variation="220" posx="7.6424" posz="-26.9425" orientx="-0.0862" orienty="0.0000" orientz="-0.9963">zpSPCCityHouse</unit>
+		<unit variation="220" posx="7.6424" posz="-26.9425" orientx="-0.0862" orienty="0.0000" orientz="-0.9963">zpSPCEUHouseProp</unit>
 		<unit variation="57" posx="23.5561" posz="-26.8174" orientx="0.0001" orienty="0.0000" orientz="1.0000">zpSPCCityBuildingMix</unit>
 		<unit variation="223" posx="22.5926" posz="-27.9840" orientx="-0.0000" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
-		<unit variation="159" posx="-18.8903" posz="-27.5094" orientx="0.1807" orienty="0.0000" orientz="-0.9835">zpSPCCityHouse</unit>
+		<unit variation="159" posx="-18.8903" posz="-27.5094" orientx="0.1807" orienty="0.0000" orientz="-0.9835">zpSPCEUHouseProp</unit>
 		<unit variation="35" posx="13.3153" posz="-26.7876" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpSPCCityBuildingMix</unit>
 		<unit variation="223" posx="13.1846" posz="-27.9329" orientx="-0.0001" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="223" posx="-9.4541" posz="-25.0454" orientx="-1.0000" orienty="-0.0000" orientz="-0.0001">SPCPathBlock3</unit>
@@ -49,7 +49,7 @@
 		<unit variation="223" posx="-28.2422" posz="-20.2234" orientx="-1.0000" orienty="-0.0000" orientz="-0.0001">SPCPathBlock3</unit>
 		<unit variation="223" posx="-25.4383" posz="-21.7688" orientx="-1.0000" orienty="-0.0000" orientz="-0.0001">SPCPathBlock3</unit>
 		<unit variation="166" posx="4.5270" posz="-23.0095" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpSPCCityBuildingMix</unit>
-		<unit variation="104" posx="25.3535" posz="-23.3900" orientx="0.9910" orienty="0.0000" orientz="-0.1338">zpSPCCityHouse</unit>
+		<unit variation="104" posx="25.3535" posz="-23.3900" orientx="0.9910" orienty="0.0000" orientz="-0.1338">zpSPCEUHouseProp</unit>
 		<unit variation="0" posx="-30.9318" posz="-21.1030" orientx="0.9233" orienty="0.0000" orientz="-0.3841">PropsPoles</unit>
 		<unit variation="0" posx="-22.2732" posz="-21.9769" orientx="0.7070" orienty="-0.0000" orientz="-0.7072">PropsPoles</unit>
 		<unit variation="0" posx="-12.7660" posz="-21.5571" orientx="0.7070" orienty="-0.0000" orientz="-0.7072">PropsPoles</unit>
@@ -64,7 +64,7 @@
 		<unit variation="0" posx="-0.5962" posz="-19.3993" orientx="-0.7067" orienty="0.0000" orientz="0.7075">PropsPoles</unit>
 		<unit variation="0" posx="11.8083" posz="-20.6802" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpPropMarketStall</unit>
 		<unit variation="1" posx="18.0590" posz="-20.3300" orientx="0.3827" orienty="0.0000" orientz="0.9239">zpPropMarketStall</unit>
-		<unit variation="159" posx="24.9908" posz="-18.5227" orientx="0.9836" orienty="0.0000" orientz="0.1805">zpSPCCityHouse</unit>
+		<unit variation="159" posx="24.9908" posz="-18.5227" orientx="0.9836" orienty="0.0000" orientz="0.1805">zpSPCEUHouseProp</unit>
 		<unit variation="223" posx="-28.3109" posz="-17.2857" orientx="-1.0000" orienty="-0.0000" orientz="-0.0001">SPCPathBlock3</unit>
 		<unit variation="223" posx="-25.9854" posz="-17.8233" orientx="-1.0000" orienty="-0.0000" orientz="-0.0001">SPCPathBlock3</unit>
 		<unit variation="57" posx="-8.3039" posz="-18.4579" orientx="1.0000" orienty="0.0000" orientz="-0.0003">zpSPCCityBuildingMix</unit>
@@ -104,12 +104,12 @@
 		<unit variation="223" posx="21.8635" posz="-9.2116" orientx="-0.0001" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="35" posx="-27.0402" posz="-9.3756" orientx="-1.0000" orienty="0.0000" orientz="0.0002">zpSPCCityBuildingMix</unit>
 		<unit variation="36" posx="22.2282" posz="-9.9443" orientx="0.0006" orienty="0.0000" orientz="1.0000">zpSPCCityBuildingMix</unit>
-		<unit variation="220" posx="16.5118" posz="-9.1141" orientx="-0.9963" orienty="0.0000" orientz="0.0862">zpSPCCityHouse</unit>
+		<unit variation="220" posx="16.5118" posz="-9.1141" orientx="-0.9963" orienty="0.0000" orientz="0.0862">zpSPCEUHouseProp</unit>
 		<unit variation="3" posx="-11.9963" posz="-8.0150" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPottedPlants</unit>
 		<unit variation="3" posx="10.5101" posz="-8.0501" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPottedPlants</unit>
 		<unit variation="2" posx="-11.8021" posz="-9.6228" orientx="-0.7065" orienty="-0.0000" orientz="0.7077">zpPropMarketStall</unit>
 		<unit variation="0" posx="10.7910" posz="-9.6043" orientx="-0.7078" orienty="0.0000" orientz="-0.7065">zpPropMarketStall</unit>
-		<unit variation="104" posx="-18.5360" posz="-7.5204" orientx="0.9910" orienty="-0.0000" orientz="-0.1336">zpSPCCityHouse</unit>
+		<unit variation="104" posx="-18.5360" posz="-7.5204" orientx="0.9910" orienty="-0.0000" orientz="-0.1336">zpSPCEUHouseProp</unit>
 		<unit variation="4" posx="-22.4438" posz="-7.5267" orientx="0.9978" orienty="-0.0000" orientz="-0.0669">deSPCWaterlooHouseProp</unit>
 		<unit variation="223" posx="21.8824" posz="-7.1985" orientx="-0.0001" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="179" posx="-2.2777" posz="-1.1086" orientx="-0.0000" orienty="0.0000" orientz="-1.0000">zpSPCLondonBasilica</unit>
@@ -135,7 +135,7 @@
 		<unit variation="4" posx="25.1150" posz="3.4407" orientx="-0.0670" orienty="-0.0000" orientz="-0.9978">deSPCWaterlooHouseProp</unit>
 		<unit variation="57" posx="21.4136" posz="3.2557" orientx="-0.0000" orienty="0.0000" orientz="1.0000">zpSPCCityBuildingMix</unit>
 		<unit variation="223" posx="21.1713" posz="2.0699" orientx="-0.0000" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
-		<unit variation="104" posx="15.9201" posz="2.9281" orientx="-0.1340" orienty="0.0000" orientz="-0.9910">zpSPCCityHouse</unit>
+		<unit variation="104" posx="15.9201" posz="2.9281" orientx="-0.1340" orienty="0.0000" orientz="-0.9910">zpSPCEUHouseProp</unit>
 		<unit variation="46" posx="-28.5878" posz="4.0496" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpPropsColony</unit>
 		<unit variation="65" posx="-23.3764" posz="4.0351" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpPropsColony</unit>
 		<unit variation="173" posx="11.2105" posz="3.8253" orientx="0.0000" orienty="0.0000" orientz="-1.0000">deNatEUPropVilFemale</unit>
@@ -143,14 +143,14 @@
 		<unit variation="3" posx="10.1015" posz="3.1324" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPottedPlants</unit>
 		<unit variation="223" posx="20.9296" posz="3.1962" orientx="-0.0000" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="223" posx="20.7536" posz="4.5936" orientx="-0.0000" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
-		<unit variation="159" posx="-20.0882" posz="5.8562" orientx="0.1808" orienty="0.0000" orientz="-0.9835">zpSPCCityHouse</unit>
+		<unit variation="159" posx="-20.0882" posz="5.8562" orientx="0.1808" orienty="0.0000" orientz="-0.9835">zpSPCEUHouseProp</unit>
 		<unit variation="222" posx="-13.6424" posz="6.3985" orientx="0.7071" orienty="0.0000" orientz="-0.7071">deNatEUPropVilMale</unit>
 		<unit variation="3" posx="-12.2404" posz="5.6001" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">PropsPottedPlants</unit>
 		<unit variation="49" posx="-7.9093" posz="5.8583" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpPropsColony</unit>
 		<unit variation="0" posx="30.8568" posz="6.5975" orientx="-0.3803" orienty="0.0000" orientz="0.9249">PropsPoles</unit>
 		<unit variation="223" posx="-25.7231" posz="5.5600" orientx="-0.0001" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="199" posx="-25.8152" posz="6.3548" orientx="-0.0002" orienty="0.0000" orientz="-1.0000">zpSPCCityBuildingMix</unit>
-		<unit variation="159" posx="26.0678" posz="7.9980" orientx="0.9835" orienty="0.0000" orientz="0.1807">zpSPCCityHouse</unit>
+		<unit variation="159" posx="26.0678" posz="7.9980" orientx="0.9835" orienty="0.0000" orientz="0.1807">zpSPCEUHouseProp</unit>
 		<unit variation="2" posx="10.2797" posz="7.7005" orientx="-0.7065" orienty="-0.0000" orientz="0.7077">zpPropMarketStall</unit>
 		<unit variation="223" posx="-25.6791" posz="7.6532" orientx="-0.0001" orienty="-0.0000" orientz="1.0000">SPCPathBlock3</unit>
 		<unit variation="0" posx="-12.6295" posz="10.8058" orientx="0.7070" orienty="-0.0000" orientz="-0.7072">PropsPoles</unit>
@@ -163,7 +163,7 @@
 		<unit variation="0" posx="20.2970" posz="9.5262" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">PropsPoles</unit>
 		<unit variation="124" posx="17.4095" posz="9.9308" orientx="1.0000" orienty="-0.0000" orientz="-0.0007">zpNatEUPropFencDarkBrickB</unit>
 		<unit variation="1" posx="-11.3654" posz="8.5036" orientx="0.7076" orienty="0.0000" orientz="0.7066">zpPropMarketStall</unit>
-		<unit variation="104" posx="-27.7525" posz="11.9128" orientx="-0.9910" orienty="0.0000" orientz="0.1336">zpSPCCityHouse</unit>
+		<unit variation="104" posx="-27.7525" posz="11.9128" orientx="-0.9910" orienty="0.0000" orientz="0.1336">zpSPCEUHouseProp</unit>
 		<unit variation="223" posx="-28.7088" posz="13.8593" orientx="-1.0000" orienty="-0.0000" orientz="-0.0001">SPCPathBlock3</unit>
 		<unit variation="223" posx="-25.7749" posz="13.6150" orientx="-1.0000" orienty="-0.0000" orientz="-0.0001">SPCPathBlock3</unit>
 		<unit variation="223" posx="24.6411" posz="12.5955" orientx="-1.0000" orienty="-0.0000" orientz="-0.0000">SPCPathBlock3</unit>
@@ -211,7 +211,7 @@
 		<unit variation="252" posx="12.6494" posz="16.2790" orientx="0.7071" orienty="0.0000" orientz="-0.7071">zpNatEUPropFencDarkBrickB</unit>
 		<unit variation="1" posx="14.4803" posz="16.0966" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="252" posx="18.5242" posz="16.2309" orientx="-0.7074" orienty="0.0000" orientz="-0.7068">zpNatEUPropFencDarkBrickB</unit>
-		<unit variation="220" posx="-8.7870" posz="16.5231" orientx="-0.0863" orienty="0.0000" orientz="-0.9963">zpSPCCityHouse</unit>
+		<unit variation="220" posx="-8.7870" posz="16.5231" orientx="-0.0863" orienty="0.0000" orientz="-0.9963">zpSPCEUHouseProp</unit>
 		<unit variation="0" posx="9.3938" posz="18.5476" orientx="-0.7071" orienty="-0.0000" orientz="-0.7071">PropsPoles</unit>
 		<unit variation="1" posx="16.9857" posz="16.3826" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowersBohemia</unit>
 		<unit variation="124" posx="17.4261" posz="17.2422" orientx="1.0000" orienty="-0.0000" orientz="-0.0006">zpNatEUPropFencDarkBrickB</unit>
