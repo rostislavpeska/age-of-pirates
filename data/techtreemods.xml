@@ -38674,6 +38674,7 @@
       <effect type="TechStatus" status="active">zpSPCDisableHousesShadow</effect>
       <effect type="TechStatus" status="obtainable">DESPCPapalLegate</effect>
       <effect type="TechStatus" status="obtainable">DESPCExcommunication</effect>
+      <effect type="TechStatus" status="obtainable">zpSPCArtPatronCathedral</effect>
       <effect type="TechStatus" status="obtainable">DESPCBankLoan</effect>
       <effect type="TechStatus" status="obtainable">DESPCMercenaryBounties</effect>
       <effect type="TechStatus" status="obtainable">DESPCCannonTowers</effect>
