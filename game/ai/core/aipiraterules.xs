@@ -8661,6 +8661,23 @@ minInterval 60
    float baseRadius = -1.0;
    int score = aiGetScore(cMyID);
    int london = 0;
+   int dockPlan = aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit);
+   int dockState = -1;
+   int navyMap = 0;
+   int fishMap = 0;
+
+   if (dockPlan >= 0)
+   {
+      dockState = aiPlanGetState(dockPlan);
+   }
+   if (gNavyMap == true)
+   {
+      navyMap = 1;
+   }
+   if (gGoodFishingMap == true)
+   {
+      fishMap = 1;
+   }
 
    if (gIsLondon == true)
    {
@@ -8682,5 +8699,7 @@ minInterval 60
           + " plant " + kbUnitCount(cMyID, gPlantationUnit, cUnitStateAlive)
           + " bldg " + kbUnitCount(cMyID, cUnitTypeLogicalTypeBuildingsNotWalls, cUnitStateAlive)
           + " baseR " + baseRadius + " fails " + gPlacementFailures + " failsTC " + gPlacementFailuresTC
-          + " london " + london + " tps " + kbUnitCount(cMyID, cUnitTypeTradingPost, cUnitStateAlive));
+          + " london " + london + " tps " + kbUnitCount(cMyID, cUnitTypeTradingPost, cUnitStateAlive)
+          + " docks " + kbUnitCount(cMyID, gDockUnit, cUnitStateABQ) + " dockplan " + dockPlan + " state " + dockState
+          + " fishers " + kbUnitCount(cMyID, gFishingUnit, cUnitStateAlive) + " navymap " + navyMap + " fishmap " + fishMap);
 }

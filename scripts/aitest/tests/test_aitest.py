@@ -154,7 +154,7 @@ class TestAIFiles:
         for forbidden in ("aiPlanCreate", "aiTask", "aiPlanAdd", "xsEnableRule", "xsDisableRule", "aiPlanSet"):
             assert forbidden not in body, forbidden
         assigned = set(re.findall(r"^\s*(\w+)\s*=", body, re.M))
-        assert assigned <= {"baseRadius", "london"}, assigned
+        assert assigned <= {"baseRadius", "london", "dockState", "navyMap", "fishMap"}, assigned
         assert "cUnitTypeTradingPost" in body   # T1 reads the tps field
 
     def test_the_diag_is_enabled_only_through_its_flag(self):
