@@ -24,6 +24,21 @@ UI, and only on the owner's word.
 - **Minimap stars are EXPLORERS**, not town centres (glyph ~1 px from the explorer's projected position).
 - **Camera outline:** its aim point is the intersection of the diagonals, not the outline's centroid.
 
+## Measured 2026-09-24 on the 2880x1800 test device (report: docs/briefs/2026-09-24-minimap-twin-test-report.md)
+
+- Never scale the 2560 numbers: the UI is 1.5-1.7x larger. Editor disc (2553.25, 1534.21) rim 218.72 px, match disc
+  (2639.24, 1529.19) rim 220.89 px; sheet `scripts/gameio/sheets/2880x1800.json`, records `cal/*_2880x1800.json`.
+- Stars grow with the UI: `minimap_detect.star_radii(r)` scales the template above a 147 px rim.
+- In a match the map's edge inset is 3.5 px (editor 2.3 px on the same map), so `edges` fails there although the
+  scale agrees with the editor record; the in-match record stays unchecked. Camera look-at = target + (-0.32, -3.69) px
+  (`look_offset_px`, sd 0.9 px); every shot then verifies within 2.1 px.
+- Census names need the CURRENT vanilla protoy: `census_reader` builds the `mapcheck --live` cache itself now; with
+  the repo snapshot every mod index shifts (London twin: 6/35 key objects instead of 35/35).
+- The editor's Type list shows only the Steam `Game\RandMaps` root and vanilla: London needs a byte-identical root
+  copy `00000_zplondon.xs` + `.xml` (no `.mods.xml`), seen only after Close + File > New.
+- In the lobby's map picker the mod's maps are only under Select Type = **Custom Maps** (London = "Restoration of
+  the Monarchy"); reopening the picker resets the type to All Maps.
+
 ## Calibrate a screen (once per screen kind and resolution)
 
 1. A full-resolution screenshot with the minimap visible and NO dialog open (a dialog dims the screen: refused).

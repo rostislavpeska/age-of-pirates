@@ -1,0 +1,99 @@
+{
+ "screen": "ingame",
+ "width": 2880,
+ "height": 1800,
+ "cx": 2639.24,
+ "cy": 1529.19,
+ "radius_px": 220.89,
+ "fill": "longer_side",
+ "sign_u": 1,
+ "sign_v": -1,
+ "measured": true,
+ "note": "disc measured 2026-09-24 from 35_match.png (box [2360, 1260, 2880, 1800]): bright line 3252 px, rms 0.886 px, 286 rays, rim spread 1.0 px, line / rim 1.0404; signs +1/-1 as fitted on the Paris editor explorer stars 2026-09-24; look_offset_px measured 2026-09-24 live (London 5p skirmish, 16:15-16:20): the mean of look-at minus target over camera.py shots at the bridge (280, 344), the Keeps (39.72, 262.99) / (42.28, 423.01) and a harbour post (41, 375): (-1.62, -2.50), (-0.69, -4.80), (+0.91, -3.27), (+0.13, -4.21) px, sd 0.94 / 0.88 px; the retry click gave the identical look-at every time. calibrate.py edges FAILED on this frame (insets 3.45 / 3.52 px, band 0.5-2.5, sides within 0.07 px, the map reaches the rim at both ends): the in-match edge inset is thicker than the editor's (2.32 / 2.38 px on the same map at 218.72 px); two static minimap glyphs sit at the same place relative to this record and to the explorer-checked editor record (differences 0.27 / 0.04 and 0.59 / 0.31 px), so the scale agrees with the editor's - checked stays false (no pairs in a match)",
+ "points": [],
+ "residual_px": null,
+ "method": "disc",
+ "accepted": true,
+ "checked": false,
+ "r_line_px": 229.82,
+ "probes": [
+  {
+   "x": 2838,
+   "y": 1414,
+   "rgb": [
+    197,
+    164,
+    76
+   ]
+  },
+  {
+   "x": 2754,
+   "y": 1330,
+   "rgb": [
+    224,
+    184,
+    90
+   ]
+  },
+  {
+   "x": 2639,
+   "y": 1298,
+   "rgb": [
+    232,
+    194,
+    101
+   ]
+  },
+  {
+   "x": 2524,
+   "y": 1330,
+   "rgb": [
+    173,
+    146,
+    66
+   ]
+  },
+  {
+   "x": 2440,
+   "y": 1644,
+   "rgb": [
+    208,
+    174,
+    87
+   ]
+  },
+  {
+   "x": 2524,
+   "y": 1728,
+   "rgb": [
+    225,
+    188,
+    98
+   ]
+  },
+  {
+   "x": 2639,
+   "y": 1759,
+   "rgb": [
+    222,
+    183,
+    90
+   ]
+  },
+  {
+   "x": 2754,
+   "y": 1728,
+   "rgb": [
+    189,
+    162,
+    82
+   ]
+  }
+ ],
+ "check_pairs": [],
+ "check_residual_px": null,
+ "look_offset_px": [
+  -0.32,
+  -3.69
+ ]
+}
