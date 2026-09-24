@@ -607,6 +607,7 @@ def main():
                     help="no live echo channel: after Play wait --load-s, then the cap, then quit;"
                          " the verdict comes from the per-player AI files (criteria module)")
     ap.add_argument("--load-s", type=int, default=150, help="--blind: seconds for map generation + load")
+    ap.add_argument("--snapshots", action="store_true", help="before the quit: minimap + every AI base (snapshots.py)")
     ap.add_argument("--floor", default=None, help="--criteria baseline: the floor run's metrics.json to judge against")
     ap.add_argument("--map", default=None, help="select this map in the lobby first (the picker's search text, e.g. Amazonia)")
     ap.add_argument("--criteria", default="istanbul", help="istanbul (criteria.py) or london (criteria_london.py)")
@@ -707,6 +708,11 @@ def main():
                   " (--allow-restart); dump triage:"
                   " python scripts/aitest/crashdump_triage.py")
             continue
+        if a.snapshots and verdict != "GAME-CRASHED":   # owner 2026-09-24: bases incl. the fields + the minimap
+            try:
+                subprocess.run([sys.executable, os.path.join(HERE, "snapshots.py"), os.path.join(rd, "snapshots")], timeout=120)
+            except Exception as e:
+                print("   snapshots failed: %s" % e)
         try:   # the match as it stands at the cap: score, age, minimap - the visual record of every run
             subprocess.run([sys.executable, os.path.join(HERE, "probe.py"), "shot", os.path.join(rd, "end.png")], timeout=30)
         except Exception as e:
