@@ -1047,6 +1047,35 @@ class TestFish:
         steam_twin(LONDON, "00000_zplondon.xs")
 
 
+class TestSouthwestCityRamps:
+    """8.5 (user 2026-09-24): a paved slipway per bank at the river mouth - rectangular strips in London's narrow-strip
+    recipe stepping from the quay height to under the water (half depth after the in-game look: one-tile steps, each
+    from the wall line out; the city blocks' paving; the west side on the map edge); the trade-route clearance in the
+    box; after the bridge /
+    harbours / guards, before the quays; the first harbour pair +harbour1ShiftM northeast (the second deco follows)."""
+
+    def test_regular_slipway_order_and_harbour_shift(self):
+        t = _code(_text(LONDON))
+        k = dict(re.findall(r"(?:float |int )?(\w+)\s*=\s*([-\w.]+);", t))
+        assert float(k["harbour1ShiftM"]) == 17.0 and float(k["rampWidthM"]) > 22.0 and float(k["rampTopM"]) == 1.0
+        assert float(k["rampBottomM"]) < 0.0 and int(k["rampStepCount"]) == 5 and float(k["rampRouteClearM"]) == 3.0
+        assert float(k["rampLenM"]) == 10.0 and float(k["rampXM"]) == 0.5 * float(k["rampWidthM"])   # half depth; on the map edge
+        s = t[t.index("float rampX1 = "):t.index("rmEchoInfo(\"LONDON city ramps")]
+        assert s.count("rmAddAreaConstraint(") == 2 and s.count("rmAddAreaConstraint(rampArea, rampBox);") == 2   # the box only
+        for line in ("rmSetAreaSize(rampArea, 0.7, 0.7);", "rmSetAreaCoherence(rampArea, 1.0);", "rmSetAreaBaseHeight(rampArea, rampH);",
+                     "rmSetAreaHeightBlend(rampArea, 0);", "rmSetAreaElevationVariation(rampArea, 0.0);",
+                     "rmSetAreaTerrainType(rampArea, \"city\\ground1_city_street_ground\");", "rampEndS = zLaneS - rmZMetersToFraction(rampRouteClearM);",
+                     "rampEndN = zLaneN + rmZMetersToFraction(rampRouteClearM);", "rampK = rampStep;",
+                     "rampH = rampBottomM + rampK * (rampTopM - rampBottomM) / (rampSteps - 1.0);",
+                     "rampZa = wallS;", "rampZb = wallS + (rampSteps - rampK) * rampStepS;",
+                     "rampZa = wallN - (rampSteps - rampK) * rampStepN;", "rampZb = wallN;"):
+            assert line in s, line
+        assert t.index("int bridgeInst = placeIsland(") < t.index("rmPlaceObjectDefAtLoc(harbourS2GuardDef") < t.index("rmCreateArea(\"ramp south step \"") < t.index("quaySegment(0.0, wallS")
+        assert "float harbour1X = xRoad - rmXMetersToFraction(rowGapNearM + 6.5 * rowPitchM) + rmXMetersToFraction(harbour1ShiftM);" in t
+        assert "float decoX2 = (harbour1X + harbour2X) * 0.5;" in t
+        assert LONDON.read_bytes() == (STEAM / "00000_zplondon.xs").read_bytes()
+
+
 class TestScope:
 
     def test_reserved_columns_take_the_berry_mill(self):

@@ -66,7 +66,7 @@ Output (default a fresh temp folder): `twin.json` + `twin.png`; the CLI prints t
 sockets, town centres ...), every grouping's member vote and measured anchor, owner verdicts, and the MISSING /
 unmodelled / unjudged lists with reasons (either-arm random branches, search radii, in-area placements, runtime
 anchors, route-docked neighbours). Live London 4p (2026-09-24): 35/35 key objects, 67/69 groupings, 0 extra,
-0 owner mismatches; the two misses are real - the riverside deco blocks spawn 78 m east of x = 12 m (x = 90 m).
+0 owner mismatches; the two misses are real - the first riverside deco (asked at x = 12 m, 7.5 m off the map edge) never spawns on either bank (the census holds 3 instances per bank, at x = 90 / 198 / 328 m).
 
 ## Aim the camera (a running match or the editor, on the owner's word)
 

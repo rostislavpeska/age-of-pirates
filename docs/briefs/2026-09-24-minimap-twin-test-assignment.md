@@ -117,7 +117,7 @@ four literals (map + `scripts/mapcheck/tests/test_london_roles.py` pins) and rep
 ## 5. Known facts and open items
 
 - REAL map finding (reported to the owner, not changed): both London riverside deco blocks
-  (`EU_SPC_London_Riverside_SE_01` / `_NW_01`) spawn 78 m east of the asked x = 12 m (at x = 90 m).
+  (`EU_SPC_London_Riverside_SE_01` / `_NW_01`): the FIRST instance (asked at x = 12 m, 7.5 m off the map edge) never spawns on either bank - the census holds 3 per bank at x = 90 / 198 / 328 m (corrected 2026-09-24: an earlier '78 m east' reading matched the second deco twice).
 - The minimap star is the EXPLORER, not the town centre.
 - The engine map size is whole 2 m tiles (London 4p 686 m, not 685).
 - Open: the in-match disc on today's build; whether the in-match minimap draws black outside the map; the camera's first

@@ -506,6 +506,18 @@ void main(void)
 	float harbourGuardInM = 2.5;        // the guard nugget this far INTO the city off the bank's quay wall line = the middle of the 5 m promenade, at the harbour's x (behind the harbour building)
 	float harbourGuardSearchM = 3.0;    // ... and the search radius around that spot: stays on the promenade (6 m let it wander off the harbour - user 2026-09-18)
 	float decoMouthXM = 12.0;           // the first riverside deco (40 m) centred this far in: the mouth slot is only 26 m
+	float harbour1ShiftM = 17.0;        // the FIRST harbour pair (N1 / S1) moved this far northeast (+x; half a block row) - user 2026-09-24
+	                                    // 'move the first pair of harbours more northeast'; the second deco (their midpoint with pair 2) follows:
+	                                    // with 17 m it keeps ~9.5 m clear of each harbour (a full row, 34 m, would leave it 1 m)
+	float rampXM = 14.0;                // 8.5 the southwest city ramps (slipways): centred this far from the river mouth (x = 0) = half
+	                                    // the width, so the west side sits on the map edge (x 0-28 m) - user 2026-09-24 in game: 'move these a bit
+	                                    // from the water flag, so they're mostly at the map edge' (was 18 m)
+	float rampWidthM = 28.0;            // ... along the bank (the first cut, a round 100-tile beach, was ~22 m across: 'should be bigger')
+	float rampLenM = 10.0;              // ... from the wall line into the water (user 2026-09-24 in game: 'too long, I want like 1/2 depth' - was 20 m)
+	int   rampStepCount = 5;            // ... steps (2 m = one tile each) from the quay's height down to rampBottomM (the guide's Method 2)
+	float rampTopM = 1.0;               // ... the top step = the quay's height: the ZP City wall stays open over the ramp's width
+	float rampBottomM = -0.6;           // ... the outer step, under the sea level (0 m)
+	float rampRouteClearM = 3.0;        // ... the box stops this far short of the REAL lane leg (Istanbul's 3 m trade-route clearance)
 
 	// ---- 0.5 THE LOBBY: the coin and the roles - the Florence system (zpflorence.xs 124-155, zpistanbulb.xs 5b),
 	// resolved up front because the gates (3.5) take their owners from them. TEAM 1 DEFENDS, TEAM 0 ATTACKS - Florence's
@@ -650,7 +662,7 @@ void main(void)
 	// the bridge (their x kept as its own expression, not locX78: the asked post goes through the lane snap and this
 	// form is the censused one); each bank's grouping origin z = shore edge harbourShoreTiles off the REAL leg, the
 	// export's top edge back to the origin
-	float harbour1X = xRoad - rmXMetersToFraction(rowGapNearM + 6.5 * rowPitchM);
+	float harbour1X = xRoad - rmXMetersToFraction(rowGapNearM + 6.5 * rowPitchM) + rmXMetersToFraction(harbour1ShiftM);   // user 2026-09-24: northeast
 	float harbour2X = xRoad - rmXMetersToFraction(rowGapNearM + 3.5 * rowPitchM);
 	float harbourNZ = zLaneN + rmZTilesToFraction(harbourShoreTiles) - rmZMetersToFraction(hNTopEdgeM);
 	float harbourSZ = zLaneS - rmZTilesToFraction(harbourShoreTiles) + rmZMetersToFraction(hSTopEdgeM);
@@ -803,6 +815,90 @@ void main(void)
 	rmPlaceObjectDefAtLoc(harbourN2GuardDef, 0, harbourN2GuardX, harbourN2GuardZ);
 	rmPlaceObjectDefAtLoc(harbourS1GuardDef, 0, harbourS1GuardX, harbourS1GuardZ);
 	rmPlaceObjectDefAtLoc(harbourS2GuardDef, 0, harbourS2GuardX, harbourS2GuardZ);
+
+	// ---- 8.5 THE SOUTHWEST CITY RAMPS (user 2026-09-24). The first cut - Istanbul's round city beach (zpistanbulb.xs 1677-1734)
+	// at the quay's height on the wall line - punched a round cobbled tongue through the wall ('extremely creepy'); the user
+	// then asked for 'bigger ... more regular like a real city ramp ... more body, the opposite of a natural ramp'. So a paved
+	// SLIPWAY per bank at the river mouth (southwest on the minimap: west = low x): rampSteps rectangular strips in London's
+	// narrow-strip recipe (quaySegment: the box as the ONLY constraint, ask 0.7, an influence segment along the strip,
+	// coherence 1 -> straight edges), stepping from the quay's height at the wall line (no drop there, so the ZP City wall
+	// of 9 opens over exactly the ramp's width) down to just under the water; the city blocks' paving. The trade-route
+	// clearance is IN the box (clipped at the real lane leg less rampRouteClearM): a second avoidance on a strip gapped
+	// the bridge (the quay helper's law). Before the quays (the user's order, Istanbul's: beaches before the city cliffs),
+	// after the bridge and the harbours (an area in the river BEFORE the bridge stopped it - the eyot, 2026-09-23).
+	// The guide (docs/random_map_generation_guide_v2.md 14.3, Method 2: controlled ramps) - ramps are areas built BEFORE
+	// the cliff at the cliff top's height; the cliff built after leaves an opening there. Island parameters for the regular
+	// look: the box as the shape (an over-asked box floods to its fences), coherence 1, height blend 0 (the guide's
+	// 'geometric edges': sharp 0.4 m steps and square sides, about 1 m above the water - the river is 3 m deep), no variation.
+	// In game (user 2026-09-24): 'Nice, but too long, I want like 1/2 depth' -> 10 m; 'as terrain use the city tiles terrain
+	// used in groupings' -> city\ground1_city_street_ground (the Block tile of every EU_ block grouping); 'move these a bit from
+	// the water flag, so they're mostly at the map edge' -> the west side on the map edge. The steps are one tile deep now, so
+	// each runs from the wall line out: the longest (the lowest) is built first and every shorter, higher step overwrites its
+	// near part - no row between two steps can stay at the river bed, whatever the tile alignment. Areas only: no literal
+	// index moves.
+	float rampX1 = rmXMetersToFraction(rampXM - 0.5 * rampWidthM);
+	float rampX2 = rmXMetersToFraction(rampXM + 0.5 * rampWidthM);
+	float rampEndS = wallS + rmZMetersToFraction(rampLenM);
+	if (rampEndS > zLaneS - rmZMetersToFraction(rampRouteClearM))
+	{
+		rampEndS = zLaneS - rmZMetersToFraction(rampRouteClearM);
+	}
+	float rampEndN = wallN - rmZMetersToFraction(rampLenM);
+	if (rampEndN < zLaneN + rmZMetersToFraction(rampRouteClearM))
+	{
+		rampEndN = zLaneN + rmZMetersToFraction(rampRouteClearM);
+	}
+	float rampSteps = rampStepCount;                                   // int -> float before any arithmetic (intVar*floatVar truncates)
+	float rampStepS = (rampEndS - wallS) / rampSteps;
+	float rampStepN = (wallN - rampEndN) / rampSteps;
+	float rampH = 0.0;
+	float rampZa = 0.0;
+	float rampZb = 0.0;
+	float rampK = 0.0;
+	int rampBox = -1;
+	int rampArea = -1;
+	for (rampStep = 0; < rampStepCount)
+	{
+		rampK = rampStep;                                                   // int -> float before any product
+		rampH = rampBottomM + rampK * (rampTopM - rampBottomM) / (rampSteps - 1.0);    // step 0 = the outer (lowest); the last = the quay's height
+		// south bank: the water lies +z of wallS; this step from the wall line out to its outer edge
+		rampZa = wallS;
+		rampZb = wallS + (rampSteps - rampK) * rampStepS;
+		rampBox = rmCreateBoxConstraint("ramp box south " + rampStep, rampX1, rampZa, rampX2, rampZb);
+		rampArea = rmCreateArea("ramp south step " + rampStep);
+		rmSetAreaWarnFailure(rampArea, false);
+		rmSetAreaSize(rampArea, 0.7, 0.7);
+		rmSetAreaLocation(rampArea, (rampX1 + rampX2) * 0.5, (rampZa + rampZb) * 0.5);
+		rmAddAreaInfluenceSegment(rampArea, rampX1, (rampZa + rampZb) * 0.5, rampX2, (rampZa + rampZb) * 0.5);
+		rmSetAreaCoherence(rampArea, 1.0);
+		rmSetAreaBaseHeight(rampArea, rampH);
+		rmSetAreaHeightBlend(rampArea, 0);                          // the guide: 0 = geometric edges (built, not natural); 1 = smoothed
+		rmSetAreaSmoothDistance(rampArea, 1);
+		rmSetAreaTerrainType(rampArea, "city\ground1_city_street_ground");
+		rmSetAreaElevationVariation(rampArea, 0.0);
+		rmAddAreaConstraint(rampArea, rampBox);
+		rmSetAreaObeyWorldCircleConstraint(rampArea, false);
+		rmBuildArea(rampArea);
+		// north bank: the water lies -z of wallN; this step from its outer edge to the wall line
+		rampZa = wallN - (rampSteps - rampK) * rampStepN;
+		rampZb = wallN;
+		rampBox = rmCreateBoxConstraint("ramp box north " + rampStep, rampX1, rampZa, rampX2, rampZb);
+		rampArea = rmCreateArea("ramp north step " + rampStep);
+		rmSetAreaWarnFailure(rampArea, false);
+		rmSetAreaSize(rampArea, 0.7, 0.7);
+		rmSetAreaLocation(rampArea, (rampX1 + rampX2) * 0.5, (rampZa + rampZb) * 0.5);
+		rmAddAreaInfluenceSegment(rampArea, rampX1, (rampZa + rampZb) * 0.5, rampX2, (rampZa + rampZb) * 0.5);
+		rmSetAreaCoherence(rampArea, 1.0);
+		rmSetAreaBaseHeight(rampArea, rampH);
+		rmSetAreaHeightBlend(rampArea, 0);                          // the guide: 0 = geometric edges (built, not natural); 1 = smoothed
+		rmSetAreaSmoothDistance(rampArea, 1);
+		rmSetAreaTerrainType(rampArea, "city\ground1_city_street_ground");
+		rmSetAreaElevationVariation(rampArea, 0.0);
+		rmAddAreaConstraint(rampArea, rampBox);
+		rmSetAreaObeyWorldCircleConstraint(rampArea, false);
+		rmBuildArea(rampArea);
+	}
+	rmEchoInfo("LONDON city ramps southwest: x " + rampXM + " m, " + rampWidthM + " x " + rmZFractionToMeters(rampEndS - wallS) + " m (south) / " + rmZFractionToMeters(wallN - rampEndN) + " m (north), heights " + rampTopM + " -> " + rampBottomM + " m; harbour pair 1 shifted " + harbour1ShiftM + " m");
 
 	// ---- 9. CITY FLOOR: one straight quay per bank (wall line -> the last reserved column's outer edge), streets + the promenade
 	// band (Paris's two quay textures), countryside
