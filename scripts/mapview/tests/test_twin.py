@@ -747,3 +747,44 @@ class TestLiveSave:
         assert rev_report["counts"]["key_objects"] == {"total": 35, "matched": 35}
         tcs = {k["census_id"]: k["census_player"] for k in rev_report["key_objects"] if k["label"] == "town centre"}
         assert tcs == {"7884": 1, "8273": 2, "8661": 3, "9050": 4}
+
+
+
+# EU_SPC_London_Harbour_NW_01 as the XML lists it (2026-09-24): two zpHarbourPlatform 0.54 m apart,
+# (-9.2402, -9.1243) and (-9.7146, -8.8550)
+HARBOUR_NW = [
+    ("zpHarbourShip", -14.7988, -11.6212),
+    ("zpHarbourPlatform", -9.2402, -9.1243),
+    ("zpHarbourPlatform", -1.5160, -9.7194),
+    ("zpHarbourPlatform", -3.5726, -10.0892),
+    ("zpHarbourPlatform", 7.4057, -9.2673),
+    ("zpHarbourPlatform", 7.1765, -9.1928),
+    ("zpHarbourPlatform", 12.1783, -9.0225),
+    ("zpHarbourPlatform", 2.1682, -10.0028),
+    ("zpHarbourPlatform", -14.2435, -8.9938),
+    ("zpHCFisherman", -10.7817, -11.9980),
+    ("NativePirates", 7.0151, -12.7161),
+    ("zpHarbourPlatform", -9.7146, -8.8550),
+    ("zpHarbourPlatform", -10.0714, -1.6820),
+    ("zpHarbourPlatform", 7.6733, -2.4893),
+    ("zpPropMarketStall", 4.9722, 2.0613),
+    ("zpPropMarketStall", -7.9050, 3.5114),
+    ("zpPropMarketStall", -4.2134, 5.1357),
+    ("zpPropMarketStall", 4.6576, 4.5095),
+    ("zpNativeStatueVenetian", 3.9947, 8.0153),
+    ("zpNativeStatueVenetian", -6.2264, 8.1172),
+]
+
+
+def test_a_vote_tie_goes_to_the_exact_anchor():
+    """The 2880x1800 device's London save (2026-09-24): harbour north 1 lay exactly at (40.0, 378.0) (every member's
+    census offset equals its XML offset to 4 decimals), mapsim asked (40.22, 379.0). Pairing one platform's unit with
+    its 0.54 m twin's offset seeded the anchor (39.53, 378.27): with the 1 m member tolerance it also drew 20 votes,
+    and the old tie-break (nearest to the asked spot, by 0.02 m) chose it. The claim then left one platform unclaimed:
+    1 member missing + 1 census unit 'extra' on a grouping that spawned whole. Ties now go to the smallest residual."""
+    g = _gi(HARBOUR_NW, [_spot(40.22, 379.0)], gid="harbour north 1#1")
+    actual = _place(HARBOUR_NW, 40.0, 378.0)
+    counts = TW.join([], actual, 4.0, [g], 1.0)
+    assert g.hyp == pytest.approx((40.0, 378.0), abs=1e-6)
+    assert g.verdict == "matched" and g.votes == g.n_members == 20
+    assert counts["extra"] == 0 and all(m.dist_measured_m == 0.0 for m in g.members)

@@ -323,12 +323,26 @@ def unit_names_xmb(path: Path) -> List[str]:
     return [u.get("name") for u in root.iter("unit") if u.get("name") is not None]
 
 
+SNAPSHOT_PROTOY = REPO / "scripts" / "source" / "protoy.xml"
+
+
 def vanilla_source() -> Optional[Path]:
+    """The vanilla protoy the runtime indices count through: the mapcheck --live cache, else that cache built now
+    from the game's Data.bar (scripts/refdata/catalogs._live_proto_path, the same code), else the repo snapshot.
+    The snapshot lags every DLC: on 2026-09-24 it held 2456 units against the build's 2673, so on a device that had
+    never run mapcheck --live (the 2880x1800 test machine) every mod index read 217 places off and the twin of a
+    correct London save matched 6 of 35 key objects."""
     live = Path(os.environ.get("LOCALAPPDATA", "")) / "aoe3-mapcheck" / "protoy_live.xml"
     if os.environ.get("LOCALAPPDATA") and live.is_file():
         return live
-    snap = REPO / "scripts" / "source" / "protoy.xml"
-    return snap if snap.is_file() else None
+    try:
+        from scripts.refdata import catalogs
+        built = catalogs._live_proto_path(force=True)
+    except Exception:                                            # no game install / no archive tools: the snapshot
+        built = None
+    if built is not None and Path(built).is_file():
+        return Path(built)
+    return SNAPSHOT_PROTOY if SNAPSHOT_PROTOY.is_file() else None
 
 
 def name_table(mod_base_offset: int = 0, vanilla: Optional[Path] = None,
@@ -350,6 +364,10 @@ def name_table(mod_base_offset: int = 0, vanilla: Optional[Path] = None,
         return {}, dict(info, warnings=list(info["warnings"]))
     names = unit_names_xml(van)
     info.update(vanilla_sha1=_sha1(van), vanilla_units=len(names))
+    if van.resolve() == SNAPSHOT_PROTOY.resolve():
+        info["warnings"].append("vanilla names from the repo snapshot %s (%d units), which lags every DLC: every mod "
+                                "index after it reads shifted - run mapcheck --live, or give the game install"
+                                % (SNAPSHOT_PROTOY.name, len(names)))
     table = {i: n for i, n in enumerate(names)}
     vset = set(names)
     mods, src = None, None

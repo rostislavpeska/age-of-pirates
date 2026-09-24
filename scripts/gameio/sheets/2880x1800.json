@@ -1,0 +1,121 @@
+{
+ "_comment": "Game UI points for a 2880x1800 CLIENT area - the owner's test device (created 2026-09-24 by the twin test session, docs/briefs/2026-09-24-minimap-twin-test-assignment.md). The game runs full screen on the only monitor at (0,0): client pixels = screen pixels. The game scales its UI by the height (1800 / 1200 = 1.5x of the 1200-high reference), so nothing here is the 2560x1080 sheet scaled: every point was measured on a full-resolution capture of THIS screen. Provenance format as in 2560x1080.json.",
+ "size": [2880, 1800],
+ "menu": {
+  "_layout": {
+   "x": 186,
+   "scan_y": [360, 1110],
+   "line_rows_min": 1,
+   "dark_gap": 2,
+   "dark_max": 16,
+   "frame_lines": [377, 431, 460, 514, 542, 596, 625, 679, 707, 761, 790, 844, 872, 926, 955, 1009, 1037, 1091],
+   "tol_px": 1,
+   "buttons": {"continue": [377, 432], "load": [460, 514], "campaign": [542, 597], "skirmish": [625, 679],
+               "multiplayer": [707, 762], "home_city": [790, 844], "scenario_editor": [872, 927],
+               "options": [955, 1009], "tools": [1037, 1092]},
+   "provenance": "measured 2026-09-24 live/00_window.png (PrintWindow capture of the home menu at 2880x1800, game v100.19.18309.0, 15:30; its column and probe pixels as numbers in scripts/gameio/tests/fixtures/menu_2880_20260924.json): the button frame (253,228,163) peaks in brightness at column x = 186 (a horizontal gradient: 174,144,67 at x 40, 170,140,63 at x 340), so the column is 186. Frame rows at x = 186: 377-378/431-432, 460/514, 542-543/596-597, 625/679, 707-708/761-762, 790/844, 872-873/926-927, 955/1009, 1037-1038/1091-1092 - nine buttons at an 82.5 px pitch, every second one with 1-row lines (a 2-px line at 1.5x scale); the black outline (max channel <= 11) sits 2 rows outside each line (e.g. 375 above 377, 434 below 432), hence line_rows_min 1 and dark_gap 2; the outline's darkest pixel is max channel 7-11 between buttons and (15,11,7) under Tools (row 1094), hence dark_max 16 (the 2560 rule's 12 misses the last line). 'buttons' = each button's frame rows; frame_lines = each line's first row."
+  },
+  "skirmish": {
+   "x": 188, "y": 651, "rgb": [245, 219, 131],
+   "also": {"x": 186, "y": 625, "rgb": [253, 228, 163]},
+   "space": "client",
+   "provenance": "measured 2026-09-24 live/00_window.png: the Skirmish label's glyph box (R > 150, G > 110, R - B > 60 inside the button) is x 125-248, y 643-662, centre (186.5, 652.5); (188,651) lies inside a vertical glyph stroke (x 187-189 all (245..246,219..220,131..134) on rows 650-651). 'also' = the button's top frame row (186,625). Not yet clicked live."
+  },
+  "scenario_editor": {
+   "x": 181, "y": 899, "rgb": [244, 217, 129],
+   "also": {"x": 186, "y": 873, "rgb": [253, 228, 163]},
+   "space": "client",
+   "provenance": "measured 2026-09-24 live/00_window.png: the Scenario Editor label's glyph box is x 67-307, y 890-909, centre (187.0, 899.5); (181,899) lies in a horizontal glyph stroke (x 180-182, rows 897-901 all (242..246,214..220,123..134)). 'also' = the button's top frame, second row (186,873)."
+  },
+  "tools": {
+   "x": 185, "y": 1065, "rgb": [243, 216, 126],
+   "also": {"x": 186, "y": 1038, "rgb": [253, 228, 163]},
+   "space": "client",
+   "provenance": "measured 2026-09-24 live/00_window.png: the Tools label's glyph box is x 144-228, y 1056-1074, centre (186.0, 1065.0); (185,1065) is in a horizontal glyph stroke (x 185-186 rows 1063-1067 bright). 'also' = the top frame, second row (186,1038). Never clicked."
+  }
+ },
+ "editor": {
+  "file_menu": {
+   "x": 19, "y": 24, "space": "client",
+   "provenance": "measured 2026-09-24 live/01_editor.png (the empty editor, full resolution): the 'File' label (min channel > 150) is x 9-29, y 19-28; clicked live 3 times, the menu opened each time."
+  },
+  "file_new": {
+   "x": 44, "y": 76, "rgb": [255, 255, 255], "space": "client",
+   "provenance": "measured 2026-09-24 live/02_filemenu.png (the File menu open): the 'New' label is x 32-56, y 71-80 on the menu fill (28,28,28); clicked live twice. The New Scenario dialog appears 1-3 s AFTER the click (a shot at +0.8 s still showed the bare editor): wait before looking."
+  },
+  "file_saveas": {
+   "x": 56, "y": 264, "rgb": [255, 255, 255], "space": "client",
+   "provenance": "measured 2026-09-24 live/02_filemenu.png: the 'Save As' label is x 32-81, y 259-268; clicked live, the Save File dialog opened."
+  },
+  "file_return_main": {
+   "x": 96, "y": 499, "space": "client",
+   "provenance": "measured 2026-09-24 live/13_file.png: the 'Return to Main menu' label is x 32-161, y 494-503; clicked live, the home menu came back. 'Exit to Windows' is the NEXT item, label y 541-550: never shift this point down."
+  },
+  "type_arrow": {
+   "x": 1678, "y": 765, "rgb": [196, 160, 45], "space": "client",
+   "provenance": "measured 2026-09-24 live/03b_new.png (New Scenario dialog): the yellow arrow of the Type field (R > 180, G > 150, B < 90) is x 1665-1691, y 748-782; clicked live 3 times, the list opened each time."
+  },
+  "type_list_up": {
+   "x": 1670, "y": 826, "space": "client",
+   "provenance": "measured 2026-09-24 live/04_typelist.png: the Type list's up-arrow button, column x = 1670 rows 812-841 (its frame 807-809 and 842-845); clicked live 39 times, one row per click. Clicks on the scrollbar TRACK jump to that position (1240 -> the end of the list, 880 -> near the top). The list is read when the dialog opens: a map copied into the Steam RandMaps root appears only after Close + File > New."
+  },
+  "generate": {
+   "x": 1575, "y": 1232, "space": "client",
+   "provenance": "measured 2026-09-24 live/03b_new.png: the Generate button is x 1478-1670, y 1203-1258, its black label x 1544-1607, y 1228-1237; clicked live once, London 4p generated in under 10 s."
+  },
+  "close_dialog": {
+   "x": 1800, "y": 1232, "space": "client",
+   "provenance": "measured 2026-09-24 live/06.png: the New Scenario dialog's Close label is x 1782-1819, y 1228-1237; clicked live once, the dialog closed."
+  },
+  "save_name": {
+   "x": 1331, "y": 1426, "space": "client",
+   "provenance": "measured 2026-09-24 live/11b_saveas.png (Save File dialog): the name field (12,10,8) is x 846-1816, y 1400-1453; clicked live, then typed - the text landed in the field (live/11c_named.png)."
+  },
+  "save_button": {
+   "x": 569, "y": 1348, "space": "client",
+   "provenance": "measured 2026-09-24 live/11b_saveas.png: the Save button rows are 1321-1375 at x = 500, its label x 541-597, y 1338-1357; clicked live, Scenario/mapview_london4p_2880x1800.age3Yscn was written."
+  },
+  "menubar": {
+   "x": 1440, "y": 14, "rgb": [29, 29, 29], "space": "client",
+   "provenance": "measured 2026-09-24 live/01_editor.png: column x = 1440 is (27..29, 27..29, 27..29) on every row 3-42 (no menu label crosses it)."
+  },
+  "player_box": {
+   "x": 2673, "y": 76, "rgb": [0, 0, 255], "space": "client",
+   "provenance": "measured 2026-09-24 live/01_editor.png: the blue active-player box is exactly (0,0,255) on x 2646-2701, y 58-94 (2072 px); (2673,76) is its centre; (12,11,162) while the Save File dialog dims the screen (live/11b_saveas.png)."
+  }
+ },
+ "match": {
+  "cog": {
+   "x": 2779, "y": 57, "space": "client",
+   "provenance": "measured 2026-09-24 live/40_prequit.png (London 5p skirmish): the menu cog glyph (grey, min channel > 150) is x 2755-2801, y 41-75, centroid (2779.3, 57.3); clicked live once, the menu opened and paused the game. The aitest sheet's match_cog (2827,48) sits at the button's right edge."
+  },
+  "quit": {
+   "x": 2626, "y": 618, "rgb": [244, 218, 130],
+   "also": {"x": 2560, "y": 615, "rgb": [81, 34, 17]},
+   "space": "client",
+   "provenance": "measured 2026-09-24 live/41_menu.png (the in-match menu): the Quit button's frame rows are 588-644 at x = 2560, its label x 2600-2666, y 607-631; (2626,618) is a label stroke pixel; 'also' = the aitest sheet's menu_live_probe, (81,34,17) on this frame too. Restart is label y 405-423 and Resign 540-558 above it. Clicked live once, the confirmation opened."
+  },
+  "quit_yes": {
+   "x": 1140, "y": 1008, "rgb": [243, 216, 127],
+   "also": {"x": 1100, "y": 1008, "rgb": [82, 34, 17]},
+   "space": "client",
+   "provenance": "measured 2026-09-24 live/42_confirm.png: the Yes label is x 1117-1161, y 999-1017, centroid (1140.1, 1008.2); 'also' = the button fill left of the label. Clicked live twice: the first click was eaten (the dialog stayed, Yes highlighted), the second returned to the home menu."
+  }
+ },
+ "minimap": {
+  "editor_disc": {
+   "x": 2553.25, "y": 1534.21, "r_disc": 218.72, "r_line": 227.52, "space": "client",
+   "provenance": "measured 2026-09-24 live/10_generated.png (London 4p generated, no dialog) by calibrate.py disc: rms 0.878 px, 287 rays, rim spread 1.0 px, 8 probes; checked by the four explorer stars (1.10-1.95 px) and by calibrate.py edges (insets 2.32 / 2.38 px). Record scripts/mapview/cal/editor_2880x1800.json."
+  },
+  "match_disc": {
+   "x": 2639.24, "y": 1529.19, "r_disc": 220.89, "r_line": 229.82, "space": "client",
+   "provenance": "measured 2026-09-24 live/35_match.png (London 5p skirmish, mouse parked mid-screen) by calibrate.py disc --box 2360,1260,2880,1800: rms 0.886 px, 286 rays, rim spread 1.0 px, 8 probes. The aitest sheet's minimap_center (2641,1562) is 33 px below it. Record scripts/mapview/cal/ingame_2880x1800.json (unchecked: edges insets 3.45 / 3.52 px)."
+  }
+ },
+ "_not_entered": {
+  "lobby (no namespace in the contract)": "measured and clicked live 2026-09-24 on the Single Player Skirmish lobby: map button (2455,642) = aitest lobby_mapbutton; in the picker the Select Type dropdown (666,306), its 'Custom Maps' row (388,400) - the MOD maps are only under Custom Maps, All Maps finds no London by any name -, search box (1843,307), first tile (307,590), OK (2294,1604); Play (2471,1708) = aitest lobby_play. The picker applies its search text only when it opens (type, Esc, reopen) and reopening resets Select Type to All Maps: choose Custom Maps AFTER the reopen. London's tile is 'Restoration of the Monarchy'.",
+  "Play (2471,1708) twice": "the first Play click was eaten, the second one landed after the fast load on the in-match FLARE button (the HUD's lower-left minimap button covers that pixel) and armed flare mode ('Left-click in the world or Mini Map to send flare'); Esc cancelled it. Probe the lobby before a second Play click.",
+  "match.park_mouse": "not needed: camera.py's default park point (the ring's outer band at 315 degrees, (2803,1693)) showed no tooltip on any of the 7 in-match photos of 2026-09-24.",
+  "editor type-list rows": "depend on the installed maps and the list's scroll state (00000_zplondon was row 2 at y 876-888 after the root copy)."
+ }
+}

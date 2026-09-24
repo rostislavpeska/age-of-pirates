@@ -377,6 +377,8 @@ class TestDiscGate:
 def _screen_from_crop(fix, tmp_path, name, dim=None):
     """A full 2560x1080 'screenshot' with the fixture crop pasted at its offset (the rest black)."""
     Image = pytest.importorskip("PIL.Image")
+    if not (FIXTURES / fix["image"]).is_file():
+        pytest.skip("capture %s absent: images never enter the repo (AGENTS.md rule 8), the crop lives only where it was made" % fix["image"])
     crop = Image.open(FIXTURES / fix["image"]).convert("RGB")
     if dim is not None:
         crop = crop.point(lambda v: int(v * dim))

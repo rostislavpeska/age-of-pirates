@@ -538,6 +538,8 @@ def _menu_canvas(shift_y=0):
     for c in f["crops"].values():
         box = c["box"]
         dy = shift_y if box[0] < 1000 else 0                 # only the menu column moves
+        if not (fix / c["file"]).is_file():
+            pytest.skip("capture %s absent: images never enter the repo (AGENTS.md rule 8), the crop lives only where it was made" % c["file"])
         can.paste(Image.open(fix / c["file"]).convert("RGB"), (box[0], box[1] + dy))
     return can
 

@@ -24,6 +24,8 @@ def rebuild(name):
     f = MANIFEST[name]
     canvas = Image.new("RGB", tuple(f["size"]), MAGENTA)
     for c in f["crops"].values():
+        if not (FIX / c["file"]).is_file():
+            pytest.skip("capture %s absent: images never enter the repo (AGENTS.md rule 8), the crop lives only where it was made" % c["file"])
         canvas.paste(Image.open(FIX / c["file"]).convert("RGB"), tuple(c["box"][:2]))
     return canvas
 
@@ -168,3 +170,59 @@ def test_probe_ok_and_path_input(tmp_path):
     with pytest.raises(ValueError):
         screens.probe_ok(im, {"x": 1, "y": 1})
     assert screens.is_editor(str(p))[0] is True
+
+
+# The 2880x1800 test device (2026-09-24, the twin test session): its home menu column is x = 186, not the 2560
+# column scaled (500), the buttons are 82.5 px apart and every second frame line is one row, not two (the UI is
+# scaled 1.5x by the game, so a 2-px line lands on 1.5 rows). The live full-resolution capture's column and label
+# probe pixels as numbers (fixtures/menu_2880_20260924.json; rule 8: no screenshots in the repo).
+NINE_BUTTONS_2880 = [377, 431, 460, 514, 542, 596, 625, 679, 707, 761, 790, 844, 872, 926, 955, 1009, 1037, 1091]
+
+
+def rebuild_2880_menu():
+    f = json.loads((FIX / "menu_2880_20260924.json").read_text(encoding="utf-8"))
+    canvas = Image.new("RGB", tuple(f["size"]), MAGENTA)
+    x = f["column_x"]
+    for y0, n, r, g, b in f["column"]:
+        for y in range(y0, y0 + n):
+            canvas.putpixel((x, y), (r, g, b))
+    for px, py, r, g, b in f["pixels"]:
+        canvas.putpixel((px, py), (r, g, b))
+    return canvas
+
+
+def test_menu_2880_uses_the_sheet_geometry():
+    ok, ev = screens.is_main_menu(rebuild_2880_menu())
+    assert ok and ev["x"] == 186 and ev["frame_lines"] == NINE_BUTTONS_2880, ev
+    assert "warning" not in ev
+    ok, ev = screens.menu_layout_ok(rebuild_2880_menu())
+    assert ok and ev["max_diff_px"] == 0, ev
+
+
+def test_menu_2880_probes_hit_the_labels():
+    from scripts.gameio import sheets
+    sh = sheets.load_sheet(2880, 1800)
+    im = rebuild_2880_menu()
+    for name in ("menu.skirmish", "menu.scenario_editor", "menu.tools"):
+        ok, ev = screens.probe_ok(im, sh.point(name))
+        assert ok, (name, ev)
+
+
+def test_menu_2880_layout_refuses_a_one_pitch_shift():
+    im = rebuild_2880_menu()
+    out = Image.new("RGB", im.size, MAGENTA)
+    out.paste(im.crop((0, 0, 1000, 1800)), (0, 82))
+    assert screens.menu_layout_ok(out)[0] is False
+
+
+def test_editor_2880_uses_the_sheet_points():
+    # the 2880x1800 sheet's measured editor.menubar (1440,14) (29,29,29) and editor.player_box (2673,76) (0,0,255)
+    # (live/01_editor.png, 2026-09-24); the 2560 positions scaled read (1440,23) and (2672,75), never measured here
+    im = Image.new("RGB", (2880, 1800), MAGENTA)
+    im.putpixel((1440, 14), (29, 29, 29))
+    im.putpixel((2673, 76), (0, 0, 255))
+    ok, ev = screens.is_editor(im)
+    assert ok and ev["menubar"]["xy"] == [1440, 14] and ev["playerbox"]["xy"] == [2673, 76], ev
+    assert "warning" not in ev
+    im.putpixel((2673, 76), (12, 11, 162))                  # the Save File dialog dims the box
+    assert screens.is_editor(im)[0] is False

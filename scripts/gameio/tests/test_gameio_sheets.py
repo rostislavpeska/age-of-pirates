@@ -138,6 +138,8 @@ def test_skirmish_probe_matches_the_committed_menu_crop():
     from scripts.gameio import screens
     s = sheets.load_sheet(2560, 1080)
     sk = s.point("menu.skirmish")
+    if not (FIX / "menu_20260920_col.png").is_file():
+        pytest.skip("capture %s absent: images never enter the repo (AGENTS.md rule 8), the crop lives only where it was made" % "menu_20260920_col.png")
     col = Image.open(FIX / "menu_20260920_col.png").convert("RGB")      # crop box 424,230 - 464,750
     shifted = dict(sk, x=sk["x"] - 424, y=sk["y"] - 230, also=dict(sk["also"], x=sk["also"]["x"] - 424,
                                                                    y=sk["also"]["y"] - 230))
@@ -152,6 +154,8 @@ def test_every_menu_probe_matches_the_live_menu_crop():
     Image = pytest.importorskip("PIL.Image")
     from scripts.gameio import screens
     s = sheets.load_sheet(2560, 1080)
+    if not (FIX / "menu_20260924_col.png").is_file():
+        pytest.skip("capture %s absent: images never enter the repo (AGENTS.md rule 8), the crop lives only where it was made" % "menu_20260924_col.png")
     col = Image.open(FIX / "menu_20260924_col.png").convert("RGB")
     for n in ("skirmish", "scenario_editor", "tools"):
         p = s.point("menu." + n)

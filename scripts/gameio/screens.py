@@ -74,24 +74,72 @@ def _near(c, ref, tol) -> bool:
     return max(abs(int(a) - int(b)) for a, b in zip(c[:3], ref)) <= tol
 
 
-def is_main_menu(img) -> Tuple[bool, Dict]:
-    im = load(img)
-    sx, sy = _scale(im)
+def _sheet_layout(im) -> Optional[Dict]:
+    """The sheet's menu._layout for the image size, or None (no sheet, no layout, a malformed sheet)."""
+    from . import sheets
+    try:
+        return sheets.load_sheet(*im.size).note("menu", "_layout")
+    except (FileNotFoundError, KeyError, ValueError):
+        return None
+
+
+def _menu_geometry(im, layout: Optional[Dict]) -> Tuple[Dict, bool]:
+    """(column x, gold/frame scan ranges, gold step, line_rows_min, dark_gap, dark_max) and whether it was MEASURED for this
+    size: a layout with 'x' (the sheet's menu._layout) gives the column and its own scan range; without one the
+    2560x1080 constants are scaled proportionally (a warning). The 2880x1800 device (2026-09-24) showed why the
+    scaled fallback is not enough: its menu column is x = 186, the scaled one 500, and its frame lines are 1 or 2
+    rows with the black outline 2 rows out and up to (15, 11, 7) dark (line_rows_min 1, dark_gap 2, dark_max 16)."""
     w, h = im.size
-    x = min(w - 1, round(MENU_COLUMN_X * sx))
-    step = max(1, round(2 * sy))
-    gold = [y for y in range(round(MENU_GOLD_Y[0] * sy), round(MENU_GOLD_Y[1] * sy), step)
-            if _gold(im.getpixel((x, y)))]
+    if layout and "x" in layout:
+        sy = h / CALIBRATION[1]
+        y0, y1 = layout.get("scan_y", (MENU_FRAME_Y[0], MENU_FRAME_Y[1]))
+        g0, g1 = layout.get("scan_y", MENU_GOLD_Y)
+        return {"x": int(layout["x"]), "gold_y": (int(g0), int(g1)), "frame_y": (int(y0), int(y1)),
+                "gold_step": max(1, round(2 * sy)) if "scan_y" in layout else 2,
+                "rows_min": int(layout.get("line_rows_min", 2)), "dark_gap": int(layout.get("dark_gap", 1)),
+                "dark_max": int(layout.get("dark_max", 12))}, True
+    sx, sy = _scale(im)
+    return {"x": min(w - 1, round(MENU_COLUMN_X * sx)),
+            "gold_y": (round(MENU_GOLD_Y[0] * sy), round(MENU_GOLD_Y[1] * sy)),
+            "frame_y": (round(MENU_FRAME_Y[0] * sy), round(MENU_FRAME_Y[1] * sy)),
+            "gold_step": max(1, round(2 * sy)), "rows_min": 2, "dark_gap": 1, "dark_max": 12}, False
+
+
+def is_main_menu(img, layout: Optional[Dict] = None) -> Tuple[bool, Dict]:
+    """layout None = the sheet's menu._layout for the image size when it has a column 'x', else the scaled
+    2560x1080 constants."""
+    im = load(img)
+    w, h = im.size
+    geo, measured = _menu_geometry(im, layout if layout is not None else _sheet_layout(im))
+    x = geo["x"]
+    gold = [y for y in range(geo["gold_y"][0], geo["gold_y"][1], geo["gold_step"]) if _gold(im.getpixel((x, y)))]
     frames = []
-    y0, y1 = max(1, round(MENU_FRAME_Y[0] * sy)), min(h - 3, round(MENU_FRAME_Y[1] * sy))
+    gap = geo["dark_gap"]
+    y0, y1 = max(gap, geo["frame_y"][0]), min(h - 2 - gap, geo["frame_y"][1])
+
+    def frame(y):
+        return _near(im.getpixel((x, y)), MENU_FRAME_RGB, MENU_FRAME_TOL)
+
+    def dark(y):
+        return max(im.getpixel((x, y))) <= geo["dark_max"]
+
     for y in range(y0, y1):
-        if _near(im.getpixel((x, y)), MENU_FRAME_RGB, MENU_FRAME_TOL) and \
-                _near(im.getpixel((x, y + 1)), MENU_FRAME_RGB, MENU_FRAME_TOL):
-            if max(im.getpixel((x, y - 1))) <= 12 or max(im.getpixel((x, y + 2))) <= 12:
+        if geo["rows_min"] >= 2:            # the 2560x1080 rule, unchanged: two frame rows, black on one side
+            if frame(y) and frame(y + 1) and (dark(y - 1) or dark(y + 2)):
+                frames.append(y)
+            continue
+        if frame(y) and not frame(y - 1):   # a line's first row; the line is 1 or 2 rows
+            n = 2 if frame(y + 1) else 1
+            if n == 2 and frame(y + 2):
+                continue
+            if any(dark(y - k) for k in range(1, gap + 1)) or any(dark(y + n - 1 + k) for k in range(1, gap + 1)):
                 frames.append(y)
     ok = len(gold) >= MENU_GOLD_MIN and len(frames) >= MENU_FRAME_MIN
     ev = {"x": x, "gold_rows": len(gold), "gold_need": MENU_GOLD_MIN, "frame_lines": frames,
           "frame_need": MENU_FRAME_MIN, "legacy_is_menu": len(gold) >= MENU_GOLD_MIN}
+    if measured:
+        ev["size"] = list(im.size)
+        return ok, ev
     return ok, _warn(im, ev)
 
 
@@ -108,7 +156,7 @@ def menu_layout_ok(img, layout: Optional[Dict] = None) -> Tuple[bool, Dict]:
             return False, _warn(im, {"error": f"no measured menu layout for {im.size[0]}x{im.size[1]}: {e}"})
     want = [int(v) for v in layout["frame_lines"]]
     tol = int(layout.get("tol_px", 1))
-    menu, mev = is_main_menu(im)
+    menu, mev = is_main_menu(im, layout if "x" in layout else None)
     got = mev["frame_lines"]
     diffs = [abs(a - b) for a, b in zip(got, want)] if len(got) == len(want) else None
     same = diffs is not None and all(d <= tol for d in diffs)
@@ -117,19 +165,39 @@ def menu_layout_ok(img, layout: Optional[Dict] = None) -> Tuple[bool, Dict]:
     return bool(menu and same), _warn(im, ev)
 
 
+def _editor_points(im) -> Optional[Tuple[Tuple[int, int], Tuple[int, int]]]:
+    """The sheet's measured editor.menubar and editor.player_box for the image size, or None."""
+    from . import sheets
+    try:
+        sh = sheets.load_sheet(*im.size)
+        a, b = sh.point("editor.menubar"), sh.point("editor.player_box")
+    except (FileNotFoundError, KeyError, ValueError):
+        return None
+    return (round(a["x"]), round(a["y"])), (round(b["x"]), round(b["y"]))
+
+
 def is_editor(img) -> Tuple[bool, Dict]:
+    """The sheet's measured editor.menubar / editor.player_box for the image size when it has them (2026-09-24: the
+    2880x1800 bar and box are (1440,14) and (2673,76)), else the 2560x1080 positions scaled (a warning)."""
     im = load(img)
     sx, sy = _scale(im)
     w, h = im.size
+    pts = _editor_points(im)
 
-    def at(p):
-        q = (min(w - 1, round(p[0] * sx)), min(h - 1, round(p[1] * sy)))
+    def at(p, scale=True):
+        q = (min(w - 1, round(p[0] * sx)), min(h - 1, round(p[1] * sy))) if scale else p
         return q, im.getpixel(q)[:3]
 
-    (pa, a), (pb, b) = at(EDITOR_MENUBAR), at(EDITOR_PLAYERBOX)
+    if pts:
+        (pa, a), (pb, b) = at(pts[0], False), at(pts[1], False)
+    else:
+        (pa, a), (pb, b) = at(EDITOR_MENUBAR), at(EDITOR_PLAYERBOX)
     bar = abs(a[0] - a[1]) < 12 and a[0] < 60
     box = b[2] > 200 and b[0] < 80
     ev = {"menubar": {"xy": list(pa), "rgb": list(a), "ok": bar}, "playerbox": {"xy": list(pb), "rgb": list(b), "ok": box}}
+    if pts:
+        ev["size"] = list(im.size)
+        return bar and box, ev
     return bar and box, _warn(im, ev)
 
 

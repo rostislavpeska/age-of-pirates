@@ -25,6 +25,8 @@ RIM_TERRAIN = ((70, 80, 30), (90, 72, 32), (80, 75, 40), (100, 80, 35), (60, 50,
 
 
 def _crop(fix):
+    if not (FIXTURES / fix["image"]).is_file():
+        pytest.skip("capture %s absent: images never enter the repo (AGENTS.md rule 8), the crop lives only where it was made" % fix["image"])
     return Image.open(FIXTURES / fix["image"]).convert("RGB")
 
 
@@ -325,3 +327,50 @@ def test_ultimate_cores_of_a_square():
     square = {(x, y) for x in range(9) for y in range(9)}
     cores = MD.ultimate_cores(square)
     assert len(cores) == 1 and cores[0][0] == 4 and cores[0][1] == [(4, 4)]
+
+
+class TestStarsAt2880:
+    """The 2880x1800 test device (2026-09-24): its minimap is drawn 1.68x larger than at 2560x1080 (editor rim
+    218.72 px, not 130.5) and so are the stars (a template fit gives R ~12, not 7.5-8.5). With the fixed 6-11 px
+    template radii every live star scored 0.75-0.82 (R 11, the largest) and player_star returned None for all four."""
+
+    FIX = json.loads((FIXTURES / "editor_2880_stars.json").read_text(encoding="utf-8"))
+    # the Explorers of the same generation (census_reader on mapview_london4p_2880x1800.age3Yscn, 360 x 686 m)
+    EXPLORERS = {"blue": (33.0, 153.0), "red": (163.0, 147.0), "yellow": (49.0, 543.0), "purple": (185.0, 533.0)}
+
+    def _canvas(self):
+        img = Image.new("RGB", tuple(self.FIX["size"]), (0, 0, 0))
+        px = img.load()
+        for p in self.FIX["patches"]:
+            x0, y0 = p["box"][:2]
+            for dy, row in enumerate(p["rows"]):
+                x = x0
+                for n, r, g, b in row:
+                    for k in range(n):
+                        px[x + k, y0 + dy] = (r, g, b)
+                    x += n
+        return img
+
+    def test_live_stars_are_the_explorers(self):
+        img = self._canvas()
+        cx, cy, r = self.FIX["disc"]
+        cal = T.Calibration("editor", 2880, 1800, cx, cy, r)
+        for p in self.FIX["patches"]:
+            star = MD.player_star(img, p["colour"], (cx, cy, r))
+            assert star is not None, p["what"]
+            ex = T.world_to_minimap(*self.EXPLORERS[p["what"]], 360.0, 686.0, cal)
+            assert math.dist(ex, star) < 3.0, (p["what"], star, ex)
+
+    def test_synthetic_star_at_the_larger_ui_scale(self):
+        img = Image.new("RGB", (500, 500), (70, 120, 65))
+        d = ImageDraw.Draw(img)
+        cx, cy = 250.0, 262.0
+        d.polygon(MD._star_polygon(cx, cy, 14.0), fill=(255, 0, 0), outline=(0, 0, 0))   # its fill fits R ~12.6
+        star = MD.player_star(img, (255, 0, 0), (250, 250, 218.72))
+        assert star is not None and math.dist(star, (cx, cy)) <= 1.5
+        assert MD.star_candidates(img, (255, 0, 0), (250, 250, 130.5))[0]["score"] < MD.STAR_MIN_SCORE  # 2560 radii
+
+    def test_the_2560_radii_are_unchanged(self):
+        # both measured 2560x1080 rims (editor 130.5, match 147.0) keep the template radii the tests there pin
+        assert MD.star_radii(130.5) == MD.STAR_RADII == MD.star_radii(147.0)
+        assert min(MD.star_radii(218.72)) > 8.5 and max(MD.star_radii(218.72)) > 14.0

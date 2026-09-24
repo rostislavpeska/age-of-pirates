@@ -909,7 +909,12 @@ class _Index:
 
 def _vote(members: Sequence[Member], sx: float, sz: float, index: _Index, search_m: float,
           member_tol_m: float) -> Tuple[int, Optional[Tuple[float, float]]]:
-    """(votes, hypothesis anchor): the anchor = unit - offset that the most members support within member_tol_m."""
+    """(votes, hypothesis anchor): the anchor = unit - offset that the most members support within member_tol_m.
+    A tie in votes goes to the smaller residual (the summed distance of each supporting member to its nearest
+    same-proto unit), then to the anchor nearer the asked spot. 2026-09-24, the 2880x1800 device's London save: two
+    harbour platforms 0.54 m apart let a hypothesis seeded from the wrong pairing (0.73 m off the exact anchor) draw
+    all 20 votes too, and the nearer-to-the-asked-spot rule alone chose it by 0.02 m - one platform then read missing
+    and its unit 'extra'."""
     rare = []
     for j, (proto, dx, dz) in enumerate(members):
         n = index.near(proto, sx + dx, sz + dz, search_m)
@@ -925,12 +930,17 @@ def _vote(members: Sequence[Member], sx: float, sz: float, index: _Index, search
             hyps.setdefault((round(hx, 1), round(hz, 1)), (hx, hz))
         if len(hyps) >= HYP_CAP:
             break
-    best, best_h = 0, None
+    best, best_key, best_h = 0, None, None
     for hx, hz in list(hyps.values())[:HYP_CAP]:
-        v = sum(1 for proto, dx, dz in members if index.any_near(proto, hx + dx, hz + dz, member_tol_m))
-        if v > best or (v == best and best_h is not None and
-                        math.hypot(hx - sx, hz - sz) < math.hypot(best_h[0] - sx, best_h[1] - sz)):
-            best, best_h = v, (hx, hz)
+        v, res = 0, 0.0
+        for proto, dx, dz in members:
+            n = index.near(proto, hx + dx, hz + dz, member_tol_m)
+            if n:
+                v += 1
+                res += n[0][0]
+        key = (-v, round(res, 6), math.hypot(hx - sx, hz - sz))
+        if v and (best_key is None or key < best_key):
+            best, best_key, best_h = v, key, (hx, hz)
     return best, best_h
 
 

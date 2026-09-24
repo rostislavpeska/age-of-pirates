@@ -649,6 +649,17 @@ _N8 = ((1, 0), (-1, 0), (0, 1), (0, -1), (1, 1), (-1, -1), (1, -1), (-1, 1))
 STAR_RATIO = 0.5                       # inner / outer radius of the template; the drawn star fits R 7.5-8.5 at 2560x1080
 STAR_RADII = tuple(6.0 + 0.5 * k for k in range(11))       # 6 .. 11 px
 STAR_MIN_SCORE = 0.85                  # measured 2026-09-24 on 5 frames (one dimmed): 19 real stars 0.92-1.00, the best non-star 0.806
+STAR_RADII_REF_RIM = 147.0             # the largest rim measured at 2560x1080 (match HUD); radii scale only above it
+
+
+def star_radii(r_disc: float) -> Tuple[float, ...]:
+    """The template radii for a disc of rim r_disc px. The stars are UI art: they grow with the game's UI scale, as
+    the disc does. At 2560x1080 (editor rim 130.5, match 147.0) the radii are STAR_RADII unchanged; above 147 px they
+    scale by r_disc / 147. Measured 2026-09-24 on the 2880x1800 editor (rim 218.72): the four live stars fit R 11.9 and
+    score 0.94-0.995 with the scaled radii (next best core 0.53); with STAR_RADII they scored 0.75-0.82 at R 11, the
+    largest template, and player_star returned None for all four."""
+    k = max(1.0, r_disc / STAR_RADII_REF_RIM)
+    return STAR_RADII if k == 1.0 else tuple(k * r for r in STAR_RADII)
 _STAR_TPL: Dict[Tuple[float, float, float], Tuple[List[Tuple[int, int]], List[Tuple[int, int]]]] = {}
 
 
@@ -797,7 +808,7 @@ def star_candidates(img, colour: Sequence[int], disc, tol: float = 0.08, min_sum
             continue
         mx = sum(p[0] for p in comp) / len(comp)
         my = sum(p[1] for p in comp) / len(comp)
-        s, R, _, _ = star_score(mask, neutral, mx, my)
+        s, R, _, _ = star_score(mask, neutral, mx, my, radii=star_radii(r))
         out.append({"x": round(mx, 2), "y": round(my, 2), "score": round(s, 3), "R": R, "depth": depth,
                     "core_px": len(comp), "mask_px": len(mask)})
     out.sort(key=lambda d: (-d["score"], -d["depth"], -d["core_px"]))

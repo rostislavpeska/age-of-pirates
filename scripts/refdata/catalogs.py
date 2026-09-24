@@ -252,15 +252,16 @@ def _build_water() -> Catalog:
     return Catalog("water", entries)
 
 
-def _live_proto_path() -> Optional[Path]:
+def _live_proto_path(force: bool = False) -> Optional[Path]:
     """The CURRENT game build's protoy, decoded from Data.bar into a temp cache (never the repo).
-    Enabled by MAPCHECK_LIVE_PROTO=1 (mapcheck --live). The repo snapshot in scripts/source lags every
+    Enabled by MAPCHECK_LIVE_PROTO=1 (mapcheck --live) or force=True (scripts/mapview/census_reader, whose runtime
+    proto indices are wrong with any other list). The repo snapshot in scripts/source lags every
     DLC/patch, so without this every new vanilla proto is a false S4 FAIL. Returns None when the
     archives are not reachable (no game install on this machine)."""
     import os
     import sys
     import tempfile
-    if not os.environ.get("MAPCHECK_LIVE_PROTO"):
+    if not force and not os.environ.get("MAPCHECK_LIVE_PROTO"):
         return None
     cache_dir = Path(os.environ.get("LOCALAPPDATA") or tempfile.gettempdir()) / "aoe3-mapcheck"
     cache = cache_dir / "protoy_live.xml"

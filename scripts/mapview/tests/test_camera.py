@@ -636,6 +636,8 @@ def test_import_does_not_touch_the_driver():
 def _fixture(stem):
     Image = pytest.importorskip("PIL.Image")
     fix = json.loads((FIXTURES / (stem + ".json")).read_text(encoding="utf-8"))
+    if not (FIXTURES / fix["image"]).is_file():
+        pytest.skip("capture %s absent: images never enter the repo (AGENTS.md rule 8), the crop lives only where it was made" % fix["image"])
     crop = Image.open(FIXTURES / fix["image"]).convert("RGB")
     can = Image.new("RGB", tuple(fix["screen_size"]), (20, 20, 20))
     can.paste(crop, tuple(fix["crop_offset"]))

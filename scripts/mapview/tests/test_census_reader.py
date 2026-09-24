@@ -456,3 +456,36 @@ def test_bench_names_with_the_protomods_of_their_day(tmp_path):
         got[save] = [(r.proto_id, table.get(r.proto_id), r.x, r.z) for r in recs if r.proto_id >= 2673]
     assert got == {"ub_unitbench_unit_s4242": [(2820, "zpNatInuitHarpooner", 71.0, 77.0)],
                    "bench_000_unitbench_zpSPCLondonBasilica_s4242": [(3631, "zpSPCLondonBasilica", 57.0, 91.0)]}
+
+
+def test_vanilla_source_builds_the_live_cache_before_the_snapshot(tmp_path, monkeypatch):
+    """The 2880x1800 test device (2026-09-24) had never run mapcheck --live: vanilla_source() fell back to the repo
+    snapshot scripts/source/protoy.xml (2456 units against the build's 2673), every mod index shifted by 217 and the
+    twin of a correct London save read 6/35 key objects and 6/69 groupings. It must build the live cache (the same
+    code as mapcheck --live) before it settles for the snapshot."""
+    from scripts.refdata import catalogs
+    monkeypatch.setenv("LOCALAPPDATA", str(tmp_path))                     # no aoe3-mapcheck cache here
+    built = tmp_path / "aoe3-mapcheck" / "protoy_live.xml"
+    calls = []
+
+    def fake_live(force=False):
+        calls.append(force)
+        if not force:
+            return None
+        built.parent.mkdir(parents=True, exist_ok=True)
+        built.write_text("<proto/>", encoding="utf-8")
+        return built
+
+    monkeypatch.setattr(catalogs, "_live_proto_path", fake_live)
+    assert CR.vanilla_source() == built and calls == [True]
+    monkeypatch.setattr(catalogs, "_live_proto_path", lambda force=False: None)   # no game install reachable
+    built.unlink()
+    assert CR.vanilla_source() == REPO / "scripts" / "source" / "protoy.xml"
+
+
+def test_names_from_the_snapshot_say_so():
+    snap = REPO / "scripts" / "source" / "protoy.xml"
+    if not snap.is_file():
+        pytest.skip("no scripts/source/protoy.xml")
+    _table, info = CR.name_table(0, snap)
+    assert any("repo snapshot" in w and "lags" in w for w in info["warnings"]), info["warnings"]
