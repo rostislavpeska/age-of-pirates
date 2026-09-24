@@ -88,9 +88,15 @@ class TestLondonCriteria:
                                "00:05:00  (1): LONDONGATE p2 tasked 8 on 5 nearKeep"]
         assert self.verdicts(L)["L6"] == "FAIL"
 
-    def test_a_garrison_below_three_fails_l8(self):
-        L = [l.replace("6 holding", "2 holding") for l in london_record()]
-        assert self.verdicts(L)["L8"] == "FAIL"
+    def test_a_keep_lost_longer_than_300_s_fails_l8(self):
+        L = london_record() + ["00:11:00  (1): LONDONHOLD p2 6 retaking keep 1764 near owner 5",
+                               "00:17:00  (1): LONDONHOLD p2 6 holding keep 1764 near owner 2"]
+        assert self.verdicts(sorted(L, key=criteria_london.gtime))["L8"] == "FAIL"
+
+    def test_a_keep_retaken_within_300_s_passes_l8(self):
+        L = london_record() + ["00:11:00  (1): LONDONHOLD p2 6 retaking keep 1764 near owner 5",
+                               "00:14:00  (1): LONDONHOLD p2 6 holding keep 1764 near owner 2"]
+        assert self.verdicts(sorted(L, key=criteria_london.gtime))["L8"] == "PASS"
 
     def test_round_two_ids_are_skipped_on_a_round_one_build(self):
         L = [l.replace("build r3", "build r1") for l in london_record()]
@@ -242,8 +248,8 @@ class TestLondonOnlyPlacement:
                 continue
             assert any("gIsLondon == true" in h for h in enclosing_headers(lines, i)), (i + 1, lines[i])
 
-    def test_build_echo_is_round_six(self):
-        assert "build r6 2026-09-24" in core("aipiraterules.xs")
+    def test_build_echo_is_round_seven(self):
+        assert "build r7 2026-09-24" in core("aipiraterules.xs")
 
 
 def diag4(t, p=2, baseR=40.0, fails=0, farms=0, plant=0, london=1):
@@ -416,6 +422,8 @@ APPROVED_LONDON_CODE = {
     ("aipiraterules.xs", "londonGateKiller"): "plan round 2",
     ("aipiraterules.xs", "londonHoldKeep"): "plan round 3",
     ("aipiraterules.xs", "londonKeepHold"): "plan round 3",
+    # owner 2026-09-24 (option 2: 'good, edit AI'): the army retakes our lost near Keep
+    ("aipiraterules.xs", "londonKeepRetake"): "retake our enemy-held near Keep with the gate killer's reserve",
     ("aipiraterules.xs", "aiTestDiag"): "echo-only test diagnostic, owner baseline plan 2026-09-23",
     # aibuildings.xs - owner 2026-09-23: 'AI can absolutely use the space behind the walls ... farms / plantations /
     # mills / Folwarks'; the London-only placement fix of the night plan

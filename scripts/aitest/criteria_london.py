@@ -163,21 +163,31 @@ def evaluate(files, events_path=None):
                 bad.append("P%d(%s)" % (p, "%ds" % l7[p] if p in l7 else "never"))
         add("L7", "LONDONKEEP flag ours by 15:00", not bad, "failing: %s" % (bad or "none"))
 
-        # L8 Keep held: after L7, 'LONDONHOLD <k> holding' with k >= 3 at least every 60 s (retaking lines break it)
+        # L8 (owner 2026-09-24, option 2): the AIs contest the Keeps - a lost Keep ('LONDONHOLD .. retaking keep K') must be
+        # held again ('.. holding keep K') within 300 s; an episode still open less than 300 s before the record ends is fine
         bad = []
         for p in r3:
             if p not in l7:
                 bad.append("P%d(no capture)" % p)
                 continue
-            ts = [(gtime(l), int(m.group(1))) for l in ai[p]
-                  for m in [re.search(r"LONDONHOLD p%d (\d+) holding" % p, l)] if m and gtime(l) is not None]
-            good = [t for t, k in ts if k >= 3 and t >= l7[p]]
             end = max(gtime(l) for l in ai[p] if gtime(l) is not None)
-            marks = [l7[p]] + good + [end]
-            gap = max(b - a for a, b in zip(marks, marks[1:])) if len(marks) > 1 else 0
-            if not good or gap > 60:
-                bad.append("P%d(%d good lines, max gap %ds)" % (p, len(good), gap))
-        add("L8", "LONDONHOLD k>=3 holding every <= 60 s after L7", not bad, "failing: %s" % (bad or "none"))
+            open_since = {}
+            for l in ai[p]:
+                m = re.search(r"LONDONHOLD p%d \d+ (holding|retaking) keep (\d+)" % p, l)
+                t = gtime(l)
+                if not m or t is None:
+                    continue
+                k = m.group(2)
+                if m.group(1) == "retaking":
+                    open_since.setdefault(k, t)
+                elif k in open_since:
+                    if t - open_since[k] > 300:
+                        bad.append("P%d keep %s lost %ds" % (p, k, t - open_since[k]))
+                    del open_since[k]
+            for k, t0 in open_since.items():
+                if end - t0 > 300:
+                    bad.append("P%d keep %s lost %ds (open)" % (p, k, end - t0))
+        add("L8", "a lost Keep is held again within 300 s", not bad, "failing: %s" % (bad or "none"))
 
     # round 4 (placement, London only) - applicable once the build echo says r4 or later; reads the AIDIAG line
     r4 = [p for p in players if any(re.search(r"LONDON p%d build r([4-9])" % p, l) for l in ai[p])]
