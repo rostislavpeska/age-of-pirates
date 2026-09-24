@@ -392,3 +392,71 @@ class TestRoundFiveCriteria:
         L += ["00:13:%02d  (1): BuildPlan(9: Forward Tower build plan  : 9): failing because building placement failed with state (3)." % s
               for s in range(0, 50, 10)]
         assert self.verdicts(L)["P4"] == "FAIL"
+
+
+# ---- GAMEPLAY-SCOPE GATE (owner 2026-09-24: "a heavy violation which should be prevented") ---------------------
+# The night of 2026-09-23/24 shipped three London changes nobody approved: the stock Trading Post rule stopped
+# claiming the bridge's port socket and every far-bank socket, towers moved to the (decorative) wall gates, and the
+# forward base was switched off. They improved the failure metric by removing what the AI contests on the map.
+# Rule: London code may live ONLY in the functions / rules listed here, each with the owner's approval. A new place
+# fails this test; adding it to the list is the explicit approval step (docs/ai_scripting_guidelines.md rule 13).
+APPROVED_LONDON_CODE = {
+    # aipiraterules.xs - the plan 'docs/briefs/2026-09-23-london-ai-plan.md', owner 'Go' 2026-09-23 (rounds 1-3)
+    ("aipiraterules.xs", "initializePirateRules"): "detection on the player's own marker - plan round 1",
+    ("aipiraterules.xs", "londonSetup"): "plan round 1",
+    ("aipiraterules.xs", "londonDiag"): "plan round 1 (test mode only)",
+    ("aipiraterules.xs", "londonFarBridgeGate"): "plan round 2",
+    ("aipiraterules.xs", "londonKeepGate"): "plan round 2",
+    ("aipiraterules.xs", "londonGateTarget"): "plan round 2",
+    ("aipiraterules.xs", "londonWarPlan"): "plan round 2",
+    ("aipiraterules.xs", "londonGateKiller"): "plan round 2",
+    ("aipiraterules.xs", "londonHoldKeep"): "plan round 3",
+    ("aipiraterules.xs", "londonKeepHold"): "plan round 3",
+    ("aipiraterules.xs", "aiTestDiag"): "echo-only test diagnostic, owner baseline plan 2026-09-23",
+    # aibuildings.xs - owner 2026-09-23: 'AI can absolutely use the space behind the walls ... farms / plantations /
+    # mills / Folwarks'; the London-only placement fix of the night plan
+    ("aibuildings.xs", "londonCountrysidePoint"): "economic buildings behind the wall",
+    ("aibuildings.xs", "londonFieldPoint"): "economic buildings behind the wall, spread over the gates",
+    ("aibuildings.xs", "londonSelectFieldPosition"): "economic buildings behind the wall",
+    ("aibuildings.xs", "selectBuildPlanPosition"): "dispatch of the economic buildings only",
+    ("aibuildings.xs", "selectTCBuildPlanPosition"): "Town Center countryside fallback after 2 failures",
+    ("aibuildings.xs", "buildingPlacementFailedHandler"): "base growth over river / hills / countryside, 120 m cap",
+    # owner 2026-09-24: 'can be also enemy bridgehead, maybe that one makes more sense'
+    ("aibuildings.xs", "londonForwardBasePoint"): "forward base at the enemy bridgehead once the crossing is open",
+    ("aibuildings.xs", "selectForwardBaseLocation"): "forward base at the enemy bridgehead once the crossing is open",
+}
+
+
+def _units_with_london_code():
+    found = set()
+    for f in sorted(os.listdir(CORE)):
+        if not f.endswith(".xs"):
+            continue
+        t = _strip_comments(core(f))
+        for m in re.finditer(r"^(?:mutable\s+)?(?:void|int|float|bool|vector|string)\s+(\w+)\s*\([^;{]*\)\s*\{|^rule\s+(\w+)", t, re.M):
+            name = m.group(1) or m.group(2)
+            i = t.index("{", m.start())
+            depth, j = 0, i
+            while j < len(t):
+                depth += {"{": 1, "}": -1}.get(t[j], 0)
+                if depth == 0:
+                    break
+                j += 1
+            if re.search(r"gIsLondon|\blondon\w*\(|\bgLondon", t[i:j + 1]):
+                found.add((f, name))
+    return found
+
+
+def test_london_code_lives_only_where_the_owner_approved_it():
+    unapproved = sorted(_units_with_london_code() - set(APPROVED_LONDON_CODE))
+    assert not unapproved, ("London code in functions / rules the owner has not approved - propose the change, get the "
+                            "approval, then add it to APPROVED_LONDON_CODE with the quote and date: %s" % unapproved)
+
+
+@pytest.mark.parametrize("fn", ["tradingPostMonitor", "forwardTowerBaseManager", "selectTowerBuildPlanPosition", "towerManager"])
+def test_contested_decisions_carry_no_london_branch(fn):
+    body = core("aibuildings.xs") + core("aiassertivewall.xs")
+    assert re.search(r"^rule\s+%s\s*$" % fn, body, re.M) or re.search(r"^(?:void|int|bool|vector)\s+%s\(" % fn, body, re.M), fn
+    # the stock rules that decide WHAT the AI contests (sockets, the bridge post, natives, forward base, towers) never
+    # branch on London; only the forward base's PLACE is approved (selectForwardBaseLocation)
+    assert all(name != fn for _, name in _units_with_london_code()), fn

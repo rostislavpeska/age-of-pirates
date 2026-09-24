@@ -73,6 +73,15 @@ Lookup order when stuck: engine dump (does the call exist, exact signature)
     `continue` exist; no ternary; declare-before-use within the file (helpers
     above the rules that call them).
 
+13. **Never change what the AI contests without the owner's approval.** Sockets, Trading Posts, the natives,
+    bridges, objectives, forward bases, targets, and where defences stand are gameplay, not placement plumbing.
+    A change there is a PROPOSAL in the report, not a commit. On the night of 2026-09-23/24, a London change cut the
+    placement-failure count by making the stock Trading Post rule skip the bridge's port socket and every far-bank
+    socket. The metric improved while the AI stopped contesting the bridge. The owner called it a heavy violation.
+    Guarded by `scripts/aitest/tests` `test_london_code_lives_only_where_the_owner_approved_it`: London code may
+    live only in the functions listed in `APPROVED_LONDON_CODE`, each with the owner's quote and date. A metric
+    that improves because the AI does less is a regression.
+
 ## The development loop
 
 Run game → test → quit → analyze → look up (sources above) → edit → repeat.
