@@ -1033,46 +1033,6 @@ bool londonSelectFieldPosition(int planID = -1, int puid = -1)
    return (true);
 }
 
-//==============================================================================
-// londonSocketExcluded - London: sockets the stock Trading Post rule must leave alone. The bridge's zpSPCPortSocket
-// (it owns the bridge gates; the plan gives it its own rule) and every socket on the far bank - the map's natives are
-// team-specific ('Take your team's native trading posts'), and the far bank is shut while the bridge gates stand.
-// Run 20: Trading Post plans were the largest remaining placement / 'can't path' failure (up to 22 per player).
-//==============================================================================
-bool londonSocketExcluded(int socketID = -1)
-{
-   int marker = -1;
-   float socketOff = 0.0;
-   float baseOff = 0.0;
-   vector bridgeVec = cInvalidVector;
-   vector baseVec = cInvalidVector;
-
-   if (gIsLondon == false)
-   {
-      return (false);
-   }
-   if (kbUnitGetProtoUnitID(socketID) == cUnitTypezpSPCPortSocket)
-   {
-      return (true);
-   }
-   marker = getUnit(cUnitTypezpAILondonBridge, cMyID, cUnitStateAny);
-   baseVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
-   if (marker < 0 || baseVec == cInvalidVector)
-   {
-      return (false);
-   }
-   bridgeVec = kbUnitGetPosition(marker);
-   // the river runs along x: opposite signs of the z offsets from the bridge middle = the far bank
-   socketOff = xsVectorGetZ(kbUnitGetPosition(socketID)) - xsVectorGetZ(bridgeVec);
-   baseOff = xsVectorGetZ(baseVec) - xsVectorGetZ(bridgeVec);
-   socketOff = socketOff * baseOff;
-   if (socketOff < 0.0)
-   {
-      return (true);
-   }
-   return (false);
-}
-
 void selectTCBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 {
    // We need to figure out where to put the new TC.  Start with the current main base as an anchor.
@@ -1246,93 +1206,6 @@ void selectTCBuildPlanPosition(int buildPlan = -1, int baseID = -1)
    plan that just avoids other towers.
 */
 //==============================================================================
-//==============================================================================
-// londonTowerPoint - London: 25 m outside whichever of our own city wall gates has the fewest of our towers within
-// 40 m, while one has fewer than 2; cInvalidVector = every gate guarded (the stock ring takes over). The stock ring
-// (selectTowerBuildPlanPosition) tests points ~31 m around the base centre with a ~15 m search - inside London's
-// city blocks (run 22: Blockhouse / Outpost placement failures up to 66 per player); the gates guard the countryside
-// fields instead.
-//==============================================================================
-vector londonTowerPoint(void)
-{
-   static int towerGateArr = -1;
-   int marker = -1;
-   int gateQuery = -1;
-   int gateCount = 0;
-   int gate = -1;
-   int n = 0;
-   int towers = 0;
-   int bestTowers = 2;
-   int bestGate = -1;
-   float side = 1.0;
-   float gateOff = 0.0;
-   float tcOff = 0.0;
-   vector tcVec = cInvalidVector;
-   vector bridgeVec = cInvalidVector;
-   vector gateVec = cInvalidVector;
-   vector point = cInvalidVector;
-   vector bestPoint = cInvalidVector;
-
-   if (gIsLondon == false)
-   {
-      return (cInvalidVector);
-   }
-   if (towerGateArr < 0)
-   {
-      towerGateArr = xsArrayCreateInt(8, -1, "London tower gates");
-   }
-   tcVec = kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID));
-   marker = getUnit(cUnitTypezpAILondonBridge, cMyID, cUnitStateAny);
-   if (marker < 0 || tcVec == cInvalidVector)
-   {
-      return (cInvalidVector);
-   }
-   bridgeVec = kbUnitGetPosition(marker);
-   if (xsVectorGetZ(tcVec) < xsVectorGetZ(bridgeVec))
-   {
-      side = -1.0;
-   }
-   gateQuery = createSimpleUnitQuery(cUnitTypeSPCFortGate, cPlayerRelationAlly, cUnitStateAlive, tcVec, 400.0);
-   gateCount = kbUnitQueryExecute(gateQuery);
-   for (i = 0; < gateCount)
-   {
-      gate = kbUnitQueryGetResult(gateQuery, i);
-      gateVec = kbUnitGetPosition(gate);
-      gateOff = xsVectorGetZ(gateVec) - xsVectorGetZ(bridgeVec);
-      gateOff = gateOff * side;
-      tcOff = xsVectorGetZ(tcVec) - xsVectorGetZ(bridgeVec);
-      tcOff = tcOff * side + 20.0;
-      if (gateOff < tcOff)
-      {
-         continue;
-      }
-      if (n < 8)
-      {
-         xsArraySetInt(towerGateArr, n, gate);
-         n = n + 1;
-      }
-   }
-   for (k = 0; < n)
-   {
-      gate = xsArrayGetInt(towerGateArr, k);
-      gateVec = kbUnitGetPosition(gate);
-      point = xsVectorSet(xsVectorGetX(gateVec), 0.0, xsVectorGetZ(gateVec) + side * 25.0);
-      towers = getUnitCountByLocation(gTowerUnit, cMyID, cUnitStateABQ, point, 40.0);
-      if (towers < bestTowers)
-      {
-         bestTowers = towers;
-         bestGate = gate;
-         bestPoint = point;
-      }
-   }
-   if (bestGate >= 0)
-   {
-      aiEcho("LONDONPLACE p" + cMyID + " tower " + kbGetProtoUnitName(gTowerUnit) + " at gate " + bestGate + " ("
-             + bestTowers + " there, " + n + " gates)");
-   }
-   return (bestPoint);
-}
-
 void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 {
    int towerBL = kbGetBuildLimit(cMyID, gTowerUnit);
@@ -1348,18 +1221,6 @@ void selectTowerBuildPlanPosition(int buildPlan = -1, int baseID = -1)
 
    static int towerSearch = -1;
    bool success = false;
-
-   // LONDON: towers guard our own city wall gates and the countryside behind them (londonTowerPoint)
-   if (gIsLondon == true)
-   {
-      vector londonTowerVec = londonTowerPoint();
-      if (londonTowerVec != cInvalidVector)
-      {
-         aiPlanSetVariableVector(buildPlan, cBuildPlanCenterPosition, 0, londonTowerVec);
-         aiPlanSetVariableFloat(buildPlan, cBuildPlanCenterPositionDistance, 0, 30.0);
-         return;
-      }
-   }
 
    if ((startingVec == cInvalidVector) || (baseVec != kbBaseGetLocation(cMyID, baseID))) // Base changed.
    {
@@ -2086,13 +1947,6 @@ vector selectForwardBaseLocation(void)
    vector v = cInvalidVector; // Scratch variable for intermediate calcs.
 
    debugBuildings("Selecting forward base location");
-   // LONDON: no forward base - halfway to the enemy is the river, the bridge or the far bank's city blocks, and the
-   // Forward Tower / Barracks plans failed placement there over and over (runs 21-24: 6-48 per player). The London
-   // war rules (londonGateKiller, then the released stock attack) carry the offensive.
-   if (gIsLondon == true)
-   {
-      return (cInvalidVector);
-   }
    // Will be used to determine how far out we should put the fort on the line from our base to enemy TC.
    float distanceMultiplier = 0.5; 
    float dist = 0.0;
@@ -4275,15 +4129,6 @@ minInterval 5
       {
          claimedNumber += 1;
          continue;
-      }
-
-      // LONDON: the bridge's port socket and the far bank's sockets are not ours to claim (londonSocketExcluded)
-      if (gIsLondon == true)
-      {
-         if (londonSocketExcluded(socketID) == true)
-         {
-            continue;
-         }
       }
 
       kbUnitQuerySetPosition(enemyQuery, socketPosition);

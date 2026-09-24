@@ -535,3 +535,23 @@ m and failures run at 0.8-45.7 per 10 minutes, which is stock behaviour. Other m
    - P3's Mill "can't path" at one gate point (run 23);
    - Blockhouses after the gates are guarded (a third gate point, or the stock ring outside the city);
    - Trading Posts on the own bank.
+
+## Owner review, 2026-09-24 morning: three changes reverted
+
+The owner judged three night changes "unintentional and toxic". They were reverted in full: `aibuildings.xs` now
+equals f417f295 minus the socket filter.
+
+1. **Socket filter (runs 22-26).** The bridge's port socket and every Trading Post, the far bank included, must be
+   taken normally. The filter cut failures by removing gameplay.
+2. **Towers at the wall gates (runs 24-26).** The walls are decorative; the whole battle is inside the city.
+3. **No forward base (run 26).** The forward base is situational, and there is a spot next to the bridge that suits
+   it. The next step is to put it there, not to remove it.
+
+**Kept:**
+- countryside fields behind the wall, spread over the gates (owner-approved);
+- the base-growth fix (the London handler refuses no area; 120 m cap);
+- the Town Center countryside fallback;
+- the war, gate, Keep and hold rules.
+
+**Lesson** (also saved as a memory): the placement-failure metric rewarded changes that removed what the AI contests
+on the map. Every London change now gets a first question: does it change what the AI fights over?
