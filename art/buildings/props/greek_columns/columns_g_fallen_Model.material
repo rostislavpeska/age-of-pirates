@@ -1,0 +1,14 @@
+<material>
+  <submaterial name="matA">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\props\greek_columns\textures\columns_mata_basecolor">
+      </texture>
+      <texture name="Normals" override="buildings\props\greek_columns\textures\columns_mata_normals">
+      </texture>
+      <texture name="Masks" override="buildings\props\greek_columns\textures\columns_mata_masks">
+      </texture>
+    </parameters>
+  </submaterial>
+</material>

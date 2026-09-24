@@ -72857,6 +72857,7 @@
     <physicsinfo>house</physicsinfo>
     <icon>resources\art\buildings\academy_icon.png</icon>
     <portraiticon>resources\art\buildings\academy_portrait.png</portraiticon>
+    <civflagoverride>objects\flags\teamcolor_flag</civflagoverride>
     <rollovertextid>500524</rollovertextid>
     <shortrollovertextid>500524</shortrollovertextid>
     <initialhitpoints>4500.0000</initialhitpoints>
@@ -72907,6 +72908,7 @@
     <flag>Tracked</flag>
     <flag>BuildingShowTactics</flag>
     <flag>HasGatherPoint</flag>
+    <flag>ApplyFlagOverrideIfGaia</flag>
     <tactics>zpacademy.tactics</tactics>
     <command page="0" column="1">zpTacticMachinery</command>
     <command page="0" column="2">zpTacticBiology</command>
@@ -76083,6 +76085,31 @@
     <flag>Invulnerable</flag>
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
+  </unit>
+  <unit id="21197" name="zpUnderbrushGreekColumns">
+    <dbid>21197</dbid>
+    <displaynameid>503570</displaynameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\props\greek_columns\greek_columns.xml</animfile>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>NoHPBar</flag>
+    <flag>Immoveable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>VisibleUnderFog</flag>
+    <flag>ForceToGaia</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoUnitAI</flag>
+    <flag>StartOnNoUpdate</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>NoIdleActions</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>RMCanRotate</flag>
+    <flag>NonCollideable</flag>
+    <flag>DestroyUnderBuilding</flag>
   </unit>
 <!--TEST AND TEMPORARY CONTENT-->
 

@@ -10,47 +10,46 @@
 		<unit variation="142" posx="-10.5704" posz="-12.1829" orientx="0.1291" orienty="0.0000" orientz="0.9916">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="148" posx="-10.8054" posz="-12.4476" orientx="-0.0988" orienty="0.0000" orientz="0.9951">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="106" posx="2.6136" posz="-12.7526" orientx="-0.1524" orienty="0.0000" orientz="0.9883">zpUnderbrushConstructionJesuit</unit>
+		<unit variation="136" posx="5.0761" posz="-11.9189" orientx="-0.0227" orienty="0.0000" orientz="-0.9997">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="184" posx="-6.1844" posz="-12.4914" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTemporaryObstruction</unit>
 		<unit variation="184" posx="-1.0814" posz="-13.5335" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTemporaryObstruction</unit>
 		<unit variation="184" posx="-12.2320" posz="-12.7029" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTemporaryObstruction</unit>
 		<unit variation="198" posx="-10.4709" posz="-10.5137" orientx="-0.3455" orienty="0.0000" orientz="-0.9384">zpUnderbrushConstructionJesuit</unit>
+		<unit variation="168" posx="-10.4327" posz="-9.6554" orientx="0.9740" orienty="0.0000" orientz="0.2264">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="35" posx="-1.5068" posz="-10.4764" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpUnderbrushConstructionMine</unit>
-		<unit variation="136" posx="5.0761" posz="-11.9189" orientx="-0.0227" orienty="0.0000" orientz="-0.9997">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="57" posx="5.5736" posz="-9.7303" orientx="-0.8859" orienty="0.0000" orientz="-0.4639">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="26" posx="9.2397" posz="-9.9677" orientx="0.7074" orienty="0.0000" orientz="-0.7068">zpUnderbrushConstructionMine</unit>
-		<unit variation="168" posx="-10.4327" posz="-9.6554" orientx="0.9740" orienty="0.0000" orientz="0.2264">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="35" posx="-12.7593" posz="-8.8343" orientx="-0.9798" orienty="0.0000" orientz="0.2001">zpUnderbrushConstructionJesuit</unit>
-		<unit variation="28" posx="7.4396" posz="-8.3867" orientx="0.9878" orienty="0.0000" orientz="-0.1557">zpUnderbrushConstructionJesuit</unit>
-		<unit variation="184" posx="-11.8684" posz="-5.0062" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTemporaryObstruction</unit>
 		<unit variation="56" posx="-5.5270" posz="-7.7062" orientx="-0.9895" orienty="0.0000" orientz="0.1448">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="247" posx="-7.8076" posz="-7.4751" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpUnderbrushConstructionColony</unit>
-		<unit variation="196" posx="9.8245" posz="-5.8984" orientx="-0.9238" orienty="0.0000" orientz="-0.3830">zpUnderbrushConstructionColony</unit>
+		<unit variation="28" posx="7.4396" posz="-8.3867" orientx="0.9878" orienty="0.0000" orientz="-0.1557">zpUnderbrushConstructionJesuit</unit>
+		<unit variation="184" posx="-11.8684" posz="-5.0062" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTemporaryObstruction</unit>
 		<unit variation="247" posx="10.8348" posz="-4.5217" orientx="0.0003" orienty="0.0000" orientz="-1.0000">zpUnderbrushConstructionColony</unit>
+		<unit variation="39" posx="-0.9799" posz="-3.3671" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpUnderbrushGreekColumns</unit>
+		<unit variation="216" posx="-6.0225" posz="-4.0083" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpUnderbrushGreekColumns</unit>
 		<unit variation="184" posx="5.2466" posz="-1.1148" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTemporaryObstruction</unit>
-		<unit variation="196" posx="-4.1536" posz="-3.6136" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpUnderbrushConstructionColony</unit>
 		<unit variation="184" posx="-11.6431" posz="-0.2095" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTemporaryObstruction</unit>
 		<unit variation="196" posx="14.9505" posz="0.3622" orientx="-0.9238" orienty="0.0000" orientz="-0.3830">zpUnderbrushConstructionColony</unit>
 		<unit variation="196" posx="14.9505" posz="0.3622" orientx="-0.9238" orienty="0.0000" orientz="-0.3830">zpUnderbrushConstructionColony</unit>
+		<unit variation="26" posx="-7.2948" posz="2.6661" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpUnderbrushConstructionMine</unit>
+		<unit variation="67" posx="6.4527" posz="2.3913" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpUnderbrushConstructionColony</unit>
 		<unit variation="2" posx="-10.9761" posz="2.6601" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushConstructionColony</unit>
 		<unit variation="153" posx="-6.2181" posz="4.2202" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushConstructionColony</unit>
-		<unit variation="26" posx="-2.4772" posz="3.8752" orientx="-0.9239" orienty="0.0000" orientz="0.3827">zpUnderbrushConstructionMine</unit>
-		<unit variation="67" posx="6.4527" posz="2.3913" orientx="-0.9239" orienty="0.0000" orientz="-0.3827">zpUnderbrushConstructionColony</unit>
-		<unit variation="209" posx="2.5100" posz="4.1551" orientx="-0.9365" orienty="0.0000" orientz="0.3508">zpUnderbrushConstructionJesuit</unit>
+		<unit variation="216" posx="0.2758" posz="4.8844" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushGreekColumns</unit>
 		<unit variation="174" posx="3.6932" posz="4.1000" orientx="0.8475" orienty="0.0000" orientz="0.5308">zpUnderbrushConstructionJesuit</unit>
+		<unit variation="250" posx="3.9657" posz="4.5645" orientx="0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushGreekColumns</unit>
 		<unit variation="184" posx="-4.6952" posz="6.4262" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpTemporaryObstruction</unit>
+		<unit variation="28" posx="-9.4810" posz="5.5637" orientx="-0.7385" orienty="0.0000" orientz="0.6742">zpUnderbrushConstructionJesuit</unit>
+		<unit variation="39" posx="-1.6037" posz="6.6199" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpUnderbrushGreekColumns</unit>
+		<unit variation="64" posx="-1.8054" posz="6.5977" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushConstructionColony</unit>
+		<unit variation="121" posx="-4.6159" posz="6.3947" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpUnderbrushGreekColumns</unit>
 		<unit variation="225" posx="-12.1509" posz="5.1376" orientx="-0.9993" orienty="0.0000" orientz="0.0372">zpUnderbrushConstructionJesuit</unit>
 		<unit variation="207" posx="-12.5407" posz="6.2698" orientx="-0.4032" orienty="0.0000" orientz="0.9151">zpUnderbrushConstructionJesuit</unit>
-		<unit variation="28" posx="-9.4810" posz="5.5637" orientx="-0.7385" orienty="0.0000" orientz="0.6742">zpUnderbrushConstructionJesuit</unit>
-		<unit variation="154" posx="2.7669" posz="6.1064" orientx="0.2437" orienty="0.0000" orientz="-0.9699">zpUnderbrushConstructionJesuit</unit>
-		<unit variation="44" posx="5.5381" posz="5.8188" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushConstructionColony</unit>
-		<unit variation="137" posx="0.8640" posz="4.3029" orientx="-0.0891" orienty="0.0000" orientz="-0.9960">zpUnderbrushConstructionJesuit</unit>
-		<unit variation="220" posx="0.0436" posz="6.2060" orientx="0.9239" orienty="0.0000" orientz="-0.3827">zpUnderbrushConstructionColony</unit>
-		<unit variation="64" posx="-1.8054" posz="6.5977" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushConstructionColony</unit>
-		<unit variation="12" posx="3.2267" posz="9.2719" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpUnderbrushConstructionColony</unit>
+		<unit variation="44" posx="-6.4883" posz="10.5304" orientx="-0.3827" orienty="0.0000" orientz="-0.9239">zpUnderbrushConstructionColony</unit>
 		<unit variation="50" posx="12.1246" posz="9.3177" orientx="0.9962" orienty="0.0000" orientz="0.0867">zpUnderbrushConstructionJesuit</unit>
-		<unit variation="26" posx="9.6869" posz="10.0611" orientx="-0.7069" orienty="0.0000" orientz="-0.7073">zpUnderbrushConstructionMine</unit>
-		<unit variation="162" posx="9.2052" posz="11.6487" orientx="0.0663" orienty="0.0000" orientz="-0.9978">zpUnderbrushConstructionJesuit</unit>
+		<unit variation="12" posx="3.2267" posz="9.2719" orientx="0.0000" orienty="0.0000" orientz="1.0000">zpUnderbrushConstructionColony</unit>
 		<unit variation="174" posx="-11.7597" posz="10.4955" orientx="0.2236" orienty="0.0000" orientz="0.9747">zpUnderbrushConstructionJesuit</unit>
+		<unit variation="162" posx="9.2052" posz="11.6487" orientx="0.0663" orienty="0.0000" orientz="-0.9978">zpUnderbrushConstructionJesuit</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="props\east_colony">

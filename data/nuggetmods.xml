@@ -2835,7 +2835,7 @@
       <maptype>lostEU</maptype>
       <maptype>mediTurkishWar</maptype>
       <convertunit>
-        <unit>euNuggetLombardReward</unit>
+        <unit>zpAcademyReward</unit>
         <attachdummy>bone_nuggetA</attachdummy>
       </convertunit>
       <guardianunit>

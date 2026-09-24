@@ -3568,7 +3568,8 @@
       <string _locid="503567">Restoration of the Monarchy</string>
       <string _locid="503568">London 1660 Historical Map: \nEleven years without a king have worn the Commonwealth out. General Monck has opened the road from the north and Charles Stuart is sailing home from exile, while Parliament's men dig in behind the Thames. Both teams have the same goal: take both Royal Keeps, the twin castles on the river, and hold them for eight minutes. Both sides can use different native techs. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Royalists which can use special House of Stuart techs \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Parliamentarians which can use special Parliament techs \n\nSettlements: House of Stuart, Parliament, Jewish Quarter \n\nMaximum recommended players: 4</string>
       <string _locid="503569">Achieve a Team Victory by capturing and holding both Royal Keeps for eight minutes. Take your team's native trading posts to get more advanced native improvements. Whoever holds the Toll Station on London Bridge holds the crossing, its gates and its towers. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; House of Stuart natives \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Parliament natives</string>
-      
+      <string _locid="503570">ZP Underbrush Greek Columns</string>
+
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->
       <!-- ======================================== -->
