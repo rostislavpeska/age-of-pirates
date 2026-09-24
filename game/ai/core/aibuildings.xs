@@ -2092,6 +2092,13 @@ vector selectForwardBaseLocation(void)
    vector v = cInvalidVector; // Scratch variable for intermediate calcs.
 
    debugBuildings("Selecting forward base location");
+   // LONDON: no forward base - halfway to the enemy is the river, the bridge or the far bank's city blocks, and the
+   // Forward Tower / Barracks plans failed placement there over and over (runs 21-24: 6-48 per player). The London
+   // war rules (londonGateKiller, then the released stock attack) carry the offensive.
+   if (gIsLondon == true)
+   {
+      return (cInvalidVector);
+   }
    // Will be used to determine how far out we should put the fort on the line from our base to enemy TC.
    float distanceMultiplier = 0.5; 
    float dist = 0.0;
