@@ -74432,6 +74432,7 @@
     <tech row="0" page="11" column="1">zpSPCArtPatronCathedral</tech>
     <tech row="0" page="11" column="2">zpSPCBlessedCity</tech>
     <tech row="0" page="11" column="2">zpSPCBlessedCitySingle</tech>
+    <tech row="0" page="11" column="3">zpIstanbulFerrySystem</tech>
     <tech row="0" page="11" column="3">DESPCPapalLegate</tech>
     <tech row="0" page="11" column="3">zpSPCPapalLegateSingle</tech>
     <tech row="0" page="11" column="4">zpSPCPapalBlessingPrague</tech>
@@ -74554,6 +74555,7 @@
     <tech row="0" page="11" column="1">zpSPCArtPatronCathedral</tech>
     <tech row="0" page="11" column="2">zpSPCBlessedCity</tech>
     <tech row="0" page="11" column="2">zpSPCBlessedCitySingle</tech>
+    <tech row="0" page="11" column="3">zpIstanbulFerrySystem</tech>
     <tech row="0" page="11" column="3">DESPCPapalLegate</tech>
     <tech row="0" page="11" column="3">zpSPCPapalLegateSingle</tech>
     <tech row="0" page="11" column="4">zpSPCPapalBlessingPrague</tech>

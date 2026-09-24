@@ -66,7 +66,8 @@ def test_st_pauls_and_minster_route_techs(xmb_current):
         assert name in _proto_techs(proto), (proto, name)
         u = re.search(r'<unit[^>]*name="%s"[^>]*>(.*?)</unit>' % proto, _text(REPO / "data/protomods.xml"), re.S).group(1)
         cols = re.findall(r'page="11" column="([0-9])">([^<]+)</', u)      # the owner's order: singles, team, abilities
-        assert cols == [("0", name), ("1", "zpSPCArtPatronCathedral"), ("2", "zpSPCBlessedCity"), ("2", "zpSPCBlessedCitySingle"),
+        ferry = [("3", "zpIstanbulFerrySystem")]      # London Ferry System on both cathedrals (owner 2026-09-25)
+        assert cols == [("0", name), ("1", "zpSPCArtPatronCathedral"), ("2", "zpSPCBlessedCity"), ("2", "zpSPCBlessedCitySingle")] + ferry + [
                         ("3", "DESPCPapalLegate"), ("3", "zpSPCPapalLegateSingle"), ("4", "zpSPCPapalBlessingPrague"),
                         ("5", "DESPCExcommunication"), ("6", "Abilities")], (proto, cols)   # by border: gold, green, blue
     s = _text(REPO / "data/strings/english/stringmods.xml")
