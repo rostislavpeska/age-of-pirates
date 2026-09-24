@@ -76768,6 +76768,32 @@
       <rof>3.000000</rof>
     </protoaction>
   </unit>
+  <unit id="21204" name="zpNatBritishCastles">
+    <dbid>21204</dbid>
+    <displaynameid>503592</displaynameid>
+    <editornameid>503593</editornameid>
+    <obstructionradiusx>3.0000</obstructionradiusx>
+    <obstructionradiusz>3.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <movementtype>land</movementtype>
+    <animfile>buildings\native_settlement\british_castles\british_castles.xml</animfile>
+    <portraiticon>resources\art\units\natives\hussite_natives.png</portraiticon>
+    <unittype>EmbellishmentClass</unittype>
+    <unittype>Unattackable</unittype>
+    <flag>NoHPBar</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>Immoveable</flag>
+    <flag>Invulnerable</flag>
+    <flag>ForceToGaia</flag>
+    <flag>VisibleUnderFogIfGaia</flag>
+    <flag>Tracked</flag>
+    <flag>PaintTextureWhenPlacing</flag>
+    <flag>InvulnerableIfGaia</flag>
+    <flag>DoNotDieAtZeroHitpoints</flag>
+    <flag>RMCanRotate</flag>
+  </unit>
 <!--TEST AND TEMPORARY CONTENT-->
 
   <!--<unit mergeMode='replace' id="1710" name="CommunityPlaza">

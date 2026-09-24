@@ -1,0 +1,34 @@
+<material>
+  <submaterial name="mata">
+    <materialdef name="default">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\elector_palace_g_mata_Stuart_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_mata_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_mata_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matd">
+    <materialdef name="default_doublesided_cutout">
+    </materialdef>
+    <parameters>
+      <texture name="BaseColor" override="buildings\native_settlement\medieval_palaces\textures\elector_palace_g_matd_Stuart_BaseColor">
+      </texture>
+      <texture name="Normals" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matd_Normals">
+      </texture>
+      <texture name="Masks" override="buildings\native_settlement\medieval_palaces\textures\medival_palace_matd_Masks">
+      </texture>
+    </parameters>
+  </submaterial>
+  <submaterial name="matb">
+    <materialdef name="default" />
+    <parameters>
+      <texture name="BaseColor" override="buildings\spc\tower_of_london\textures\tower_of_london_matb_basecolor" />
+      <texture name="Normals" override="buildings\spc\tower_of_london\textures\tower_of_london_matb_normals" />
+      <texture name="Masks" override="buildings\spc\tower_of_london\textures\tower_of_london_matb_masks" />
+    </parameters>
+  </submaterial>
+</material>
