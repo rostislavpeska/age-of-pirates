@@ -74434,6 +74434,7 @@
     <tech row="0" page="11" column="2">zpSPCPapalLegateSingle</tech>
     <tech row="0" page="11" column="3">zpSPCPapalBlessingPrague</tech>
     <tech row="0" page="11" column="4">DESPCExcommunication</tech>
+    <tech row="0" page="11" column="5">zpLondonDeptfordStation</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>
@@ -74554,6 +74555,7 @@
     <tech row="0" page="11" column="2">zpSPCPapalLegateSingle</tech>
     <tech row="0" page="11" column="3">zpSPCPapalBlessingPrague</tech>
     <tech row="0" page="11" column="4">DESPCExcommunication</tech>
+    <tech row="0" page="11" column="5">zpLondonEastIndiaCompany</tech>
     <flag>CollidesWithProjectiles</flag>
     <flag>StartsAtFullEfficiency</flag>
     <flag>Immoveable</flag>

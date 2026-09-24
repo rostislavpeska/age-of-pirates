@@ -39072,6 +39072,306 @@
       </effect>
     </effects>
   </tech>
+  <tech name="zpDisableAllTradeRouteUpgrades" type="Normal">
+    <dbid>50073</dbid>
+    <status>UNOBTAINABLE</status>
+    <flag>Shadow</flag>
+    <effects>
+      <!-- user 2026-09-24 ('all buttons removed'): no Trading Post, ferry or naval capture post offers any trade-route upgrade -
+           the routes move by triggers only (London, Istanbul). zpDisableTradeRouteUpgrade's shape (Versailles) over every
+           upgrade family and the capture posts. The capture techs that switch resources on (deTradeRouteCaptureableEuropean,
+           ypTradeRouteCaptureable, deTradeRouteCaptureableAfrican) are NOT touched. -->
+      <effect type="TechStatus" status="unobtainable">TradeRouteUpgrade1</effect>
+      <effect type="TechStatus" status="unobtainable">TradeRouteUpgrade2</effect>
+      <effect type="TechStatus" status="unobtainable">ypTradeRouteUpgrade1</effect>
+      <effect type="TechStatus" status="unobtainable">ypTradeRouteUpgrade2</effect>
+      <effect type="TechStatus" status="unobtainable">ypTradeRouteUpgradeIndia1</effect>
+      <effect type="TechStatus" status="unobtainable">ypTradeRouteUpgradeIndia2</effect>
+      <effect type="TechStatus" status="unobtainable">TradeRouteUpgradeCapturable1</effect>
+      <effect type="TechStatus" status="unobtainable">TradeRouteUpgradeCapturable2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeAll1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeAll2</effect>
+      <effect type="TechStatus" status="unobtainable">deTradeRouteUpgradeAmerica1</effect>
+      <effect type="TechStatus" status="unobtainable">deTradeRouteUpgradeAmerica2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeMaghreb1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeMaghreb2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeAfrica1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeAfrica2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeAfricaRailroad2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWater1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWater2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeRiver1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeRiver2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeEurope1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeEurope2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeRiverAll1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeRiverAll2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeEuropeAll1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeEuropeAll2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWaterAll1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeWaterAll2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeArctic1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeArctic2</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeArcticWater1</effect>
+      <effect type="TechStatus" status="unobtainable">DETradeRouteUpgradeArcticWater2</effect>
+      <effect type="CommandRemove" tech="TradeRouteUpgrade1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="TradeRouteUpgrade2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="ypTradeRouteUpgradeIndia1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="ypTradeRouteUpgrade1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="ypTradeRouteUpgrade2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="ypTradeRouteUpgradeIndia2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeAll1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeAll2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="deTradeRouteUpgradeAmerica1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="deTradeRouteUpgradeAmerica2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeMaghreb1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeMaghreb2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeAfrica1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeAfrica2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeAfricaRailroad2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWater1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWater2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeRiver1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeRiver2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeEurope1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeEurope2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeRiverAll1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeRiverAll2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeEuropeAll1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeEuropeAll2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWaterAll1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWaterAll2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeArctic1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeArctic2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeArcticWater1">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeArcticWater2">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandRemove" tech="ypTradeRouteUpgradeIndia2">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeAll1">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeAll2">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="deTradeRouteUpgradeAmerica1">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="deTradeRouteUpgradeAmerica2">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeMaghreb1">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeMaghreb2">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeAfrica1">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeAfrica2">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeAfricaRailroad2">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWater1">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWater2">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeRiver1">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeRiver2">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeEurope1">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeEurope2">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeRiverAll1">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeRiverAll2">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeEuropeAll1">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeEuropeAll2">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWaterAll1">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWaterAll2">
+        <target type="ProtoUnit">zpOrientalFerry</target>
+      </effect>
+      <effect type="CommandRemove" tech="ypTradeRouteUpgradeIndia2">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeAll1">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeAll2">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="deTradeRouteUpgradeAmerica1">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="deTradeRouteUpgradeAmerica2">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeMaghreb1">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeMaghreb2">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeAfrica1">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeAfrica2">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeAfricaRailroad2">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWater1">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWater2">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeRiver1">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeRiver2">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeEurope1">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeEurope2">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeRiverAll1">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeRiverAll2">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeEuropeAll1">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeEuropeAll2">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWaterAll1">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+      <effect type="CommandRemove" tech="DETradeRouteUpgradeWaterAll2">
+        <target type="ProtoUnit">zpTradingPostCaptureNaval</target>
+      </effect>
+    </effects>
+  </tech>
+  <!-- London's route techs (user 2026-09-24): researched at St Paul's / the Minster; no effect of their own - the map's
+       per-player triggers raise the route (the armored-train shape, zpbluemountains.xs AT_TR_Upgrade_Plr) and take the tech
+       away from everyone else. Vanilla level-2 cost (DETradeRouteUpgradeEurope2 / Water2), Industrial like zpArmoredTrainTech. -->
+  <tech name="zpLondonDeptfordStation" type="Normal">
+    <dbid>50074</dbid>
+    <displaynameid>503594</displaynameid>
+    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <icon>resources\art\units\trains\train_europe_icon.png</icon>
+    <rollovertextid>503595</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+  </tech>
+  <tech name="zpLondonEastIndiaCompany" type="Normal">
+    <dbid>50075</dbid>
+    <displaynameid>503596</displaynameid>
+    <cost resourcetype="Wood">300.0000</cost>
+    <cost resourcetype="Gold">400.0000</cost>
+    <researchpoints>60.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <icon>resources\art\units\trade\trade_fluyt_icon.png</icon>
+    <rollovertextid>503597</rollovertextid>
+    <flag>CountsTowardEconomicScore</flag>
+    <prereqs>
+      <techstatus status="Active">Industrialize</techstatus>
+    </prereqs>
+  </tech>
 <!--TEST TECHS-->
 
   <!--<tech name="zpNativeSaxonKing" type="Normal">

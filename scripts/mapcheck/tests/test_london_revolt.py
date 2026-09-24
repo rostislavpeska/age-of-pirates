@@ -154,7 +154,7 @@ class TestTradeRouteLevels:
         assert t.index("int waterRouteID = rmCreateTradeRoute();") < t.index("int tradeRouteID = rmCreateTradeRoute();")
         for r in (1, 2):
             assert ('rmAddTriggerEffect("Trade Route Set Level");\n\trmSetTriggerEffectParamInt("TradeRoute", %d);\n\trmSetTriggerEffectParamInt("Level", 1);' % r) in t, r
-        assert t.count('"Trade Route Set Level"') == 2
+        assert t.count('"Trade Route Set Level"') == 4      # + the St Paul's / Minster route triggers (test_trade_route_plan.py)
         i = t.index('rmSetTriggerEffectParam("TechID", "cTechdeEUMapUpdateVisuals");')
         assert i < t.index('rmSetTriggerEffectParamInt("TradeRoute", 1);') < t.index('rmSetTriggerEffectParam("TechID", "cTechzpConverGate");')
         steam_twin(LONDON, "00000_zplondon.xs")

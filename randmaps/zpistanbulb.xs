@@ -4297,6 +4297,11 @@ void main(void)
 	rmSetTriggerEffectParamInt("PlayerID", st);
 	rmSetTriggerEffectParam("TechID", "cTechzpBosporusMapSetup");
 	rmSetTriggerEffectParamInt("Status", 2);
+	// no post offers a route upgrade (user 2026-09-24: 'Istanbul naval TRs should start at lvl1 too. But not improvable')
+	rmAddTriggerEffect("ZP Set Tech Status (XS)");
+	rmSetTriggerEffectParamInt("PlayerID", st);
+	rmSetTriggerEffectParam("TechID", "cTechzpDisableAllTradeRouteUpgrades");
+	rmSetTriggerEffectParamInt("Status", 2);
 	rmAddTriggerEffect("ZP Set Tech Status (XS)");
 	rmSetTriggerEffectParamInt("PlayerID", st);
 	rmSetTriggerEffectParam("TechID", "cTechdeEUMapUpdateVisuals"); // European Embassy - zp_z_zparis.xs 1810
@@ -4322,6 +4327,13 @@ void main(void)
 	// and calls itself "City of Paris" (501968); the Bosporus flies the
 	// Sultanate (zpSultanate, data/civmods.xml) and calls itself
 	// "City of Istanbul" (503337).
+	// both naval routes start at level 1 (user 2026-09-24); TradeRoute = the creation order from 1: 1 = tradeRouteN, 2 = tradeRouteS
+	rmAddTriggerEffect("Trade Route Set Level");
+	rmSetTriggerEffectParamInt("TradeRoute", 1);
+	rmSetTriggerEffectParamInt("Level", 1);
+	rmAddTriggerEffect("Trade Route Set Level");
+	rmSetTriggerEffectParamInt("TradeRoute", 2);
+	rmSetTriggerEffectParamInt("Level", 1);
 	rmAddTriggerEffect("Player : Override Civilization for Flag");
 	rmSetTriggerEffectParamInt("Player", 0);
 	rmSetTriggerEffectParam("Civilization", "zpSultanate");

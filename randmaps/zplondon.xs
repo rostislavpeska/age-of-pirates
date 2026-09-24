@@ -423,7 +423,7 @@ void main(void)
 	rmSetMapType("default");
 	rmSetMapType("westEurope");
 	rmSetMapType("piratehistoricalmap");
-	rmSetMapType("euroTradeRouteUpgradeAll");
+	rmSetMapType("euroTradeRouteCapture");   // user 2026-09-24 "use same maptype for London" (Istanbul): forces deTradeRouteCaptureableEuropean, the capture tech that turns the ferries to resources as well as XP; the upgrade-all type upgraded both routes from any post
 	chooseMercs();
 	rmSetWorldCircleConstraint(true);
 
@@ -2877,6 +2877,11 @@ void main(void)
 		rmSetTriggerEffectParamInt("PlayerID", i);
 		rmSetTriggerEffectParam("TechID", "cTechdeEUMapUpdateVisuals");
 		rmSetTriggerEffectParamInt("Status", 2);
+		// no post offers a route upgrade (user 2026-09-24 'all buttons removed'): the routes move by triggers only
+		rmAddTriggerEffect("ZP Set Tech Status (XS)");
+		rmSetTriggerEffectParamInt("PlayerID", i);
+		rmSetTriggerEffectParam("TechID", "cTechzpDisableAllTradeRouteUpgrades");
+		rmSetTriggerEffectParamInt("Status", 2);
 	}
 	// both trade routes start at level 1 (user 2026-09-24 'can London upgrade the both trade routes to lvl1 by default?') -
 	// Elbe's starting trigger (zpelbe.xs 1296-1301); TradeRoute = the creation order from 1: 1 = the nautical U (waterRouteID),
@@ -2906,6 +2911,67 @@ void main(void)
 	rmSetTriggerActive(true);
 	rmSetTriggerRunImmediately(true);
 	rmSetTriggerLoop(false);
+
+	// ---- the ROUTE TECHS (user 2026-09-24): St Paul's researches London Deptford Station (the land road -> trains, TradeRoute 2),
+	// the Minster the East India Trading Company (the river lane -> level 2, TradeRoute 1). The armored-train shape
+	// (zpbluemountains.xs AT_TR_Upgrade_Plr): a trigger per player waits for the tech, sets the level, then takes the tech from
+	// every other player (status 0: 'once discovered by one player - disappear for others') and switches their triggers off.
+	for (k = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmCreateTrigger("London_Deptford_Plr" + k);
+		rmCreateTrigger("London_EastIndia_Plr" + k);
+	}
+	for (k = 1; <= cNumberNonGaiaPlayers)
+	{
+		rmSwitchToTrigger(rmTriggerID("London_Deptford_Plr" + k));
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID", k);
+		rmSetTriggerConditionParam("TechID", "cTechzpLondonDeptfordStation");
+		rmSetTriggerConditionParamInt("Status", 2);
+		rmAddTriggerEffect("Trade Route Set Level");
+		rmSetTriggerEffectParamInt("TradeRoute", 2);
+		rmSetTriggerEffectParamInt("Level", 2);
+		for (i = 1; <= cNumberNonGaiaPlayers)
+		{
+			if (i != k)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID", i);
+				rmSetTriggerEffectParam("TechID", "cTechzpLondonDeptfordStation");
+				rmSetTriggerEffectParamInt("Status", 0);
+				rmAddTriggerEffect("Disable Trigger");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("London_Deptford_Plr" + i));
+			}
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+		rmSwitchToTrigger(rmTriggerID("London_EastIndia_Plr" + k));
+		rmAddTriggerCondition("ZP Tech Status Equals (XS)");
+		rmSetTriggerConditionParamInt("PlayerID", k);
+		rmSetTriggerConditionParam("TechID", "cTechzpLondonEastIndiaCompany");
+		rmSetTriggerConditionParamInt("Status", 2);
+		rmAddTriggerEffect("Trade Route Set Level");
+		rmSetTriggerEffectParamInt("TradeRoute", 1);
+		rmSetTriggerEffectParamInt("Level", 2);
+		for (i = 1; <= cNumberNonGaiaPlayers)
+		{
+			if (i != k)
+			{
+				rmAddTriggerEffect("ZP Set Tech Status (XS)");
+				rmSetTriggerEffectParamInt("PlayerID", i);
+				rmSetTriggerEffectParam("TechID", "cTechzpLondonEastIndiaCompany");
+				rmSetTriggerEffectParamInt("Status", 0);
+				rmAddTriggerEffect("Disable Trigger");
+				rmSetTriggerEffectParamInt("EventID", rmTriggerID("London_EastIndia_Plr" + i));
+			}
+		}
+		rmSetTriggerPriority(4);
+		rmSetTriggerActive(true);
+		rmSetTriggerRunImmediately(true);
+		rmSetTriggerLoop(false);
+	}
 
 	// 14.1b the balance / returner family (zpparis.xs "NATIVE POLITICIANS", map-politician-triggers Rule 0): every
 	// switcher grants cTechzpBigButtonResearchDecrease so its big button researches instantly - Cheat Returner hands
