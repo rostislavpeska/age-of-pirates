@@ -18,6 +18,8 @@ def test_main_street_on_the_palace_axis_one_tile_into_the_city(steam_twin):
     g = _text(GROUPING)
     zs = [int(v) for v in re.findall(r'(?:start|end)z="(-?[0-9]+)"', g)]
     assert max(zs) == 56 and "<ignoreplacementrules>1</ignoreplacementrules>" in g
+    # user 2026-09-24: the flowers from the owner's re-export "Versailles - added flowers" (three clusters of four, frame (1, -2) m)
+    assert g.count(">zpPropsFlowers</unit>") == 31 and g.count("<unit ") == 168 and "zpSPCWaterSpawnPoint" not in g
     assert GROUPING.read_bytes().count(b"\r\n") == GROUPING.read_bytes().count(b"\n")          # runtime XML: CRLF
     t = _text(VERSAILLES)
     for line in ("int mainStreetStartTiles = 1;",

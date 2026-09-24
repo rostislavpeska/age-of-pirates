@@ -163,6 +163,18 @@
 		<unit variation="4" posx="-0.7236" posz="96.6102" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">PropsPottedPlants</unit>
 		<unit variation="4" posx="-0.6060" posz="103.5499" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">PropsPottedPlants</unit>
 		<unit variation="4" posx="0.1396" posz="111.1866" orientx="0.3827" orienty="-0.0000" orientz="-0.9239">PropsPottedPlants</unit>
+		<unit variation="155" posx="-1.1517" posz="-75.9429" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="158" posx="-1.0406" posz="-75.6611" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="146" posx="-1.4292" posz="-74.8767" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="20" posx="-1.3158" posz="-74.8764" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="12" posx="-1.5846" posz="-70.5338" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="214" posx="-1.5661" posz="-70.4295" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="214" posx="-1.6209" posz="-71.2281" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="221" posx="-1.3235" posz="-70.0546" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="252" posx="-1.3295" posz="-69.9242" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="184" posx="-1.8954" posz="-65.4284" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="149" posx="-1.4298" posz="-64.8171" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
+		<unit variation="50" posx="-1.4394" posz="-64.3301" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropsFlowers</unit>
 	</units>
 	<tiles>
 		<tilegroup type="PassableLand" subtype="city\ground1_cob_dark">
