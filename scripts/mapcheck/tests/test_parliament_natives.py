@@ -381,7 +381,9 @@ class TestLondon:
             assert '<unit name="%s">' % w in t, w
         assert t.count("400.0000") == 6 and t.count("550.0000") == 6 and "600.0000" not in t and "800.0000" not in t
         assert r"buildings\wall\barricade\wall_1x2.xml" in t
-        assert re.search(r'<unit name="zpOrientalFerry">\s*<animfile>buildings\\market\\west market standin.xml</animfile>', t)
+        # the owner's own edit (2026-09-24): the ferry in the mod's city market look (art/buildings/market/city_market.xml)
+        assert re.search(r'<unit name="zpOrientalFerry">\s*<animfile>buildings\\market\\city_market.xml</animfile>', t)
+        assert (REPO / "art/buildings/market/city_market.xml").is_file()
 
     def test_map_switched_to_the_new_subciv_with_the_trigger_chain_root_equals_repo(self, steam_twin):
         repo = (REPO / "randmaps/zplondon.xs").read_bytes()

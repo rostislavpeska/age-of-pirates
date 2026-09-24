@@ -72,7 +72,7 @@
 		</unit>
 		<!-- ferry harbour in the European look (the zpSPCHarbour standin) -->
 		<unit name="zpOrientalFerry">
-			<animfile>buildings\market\west market standin.xml</animfile>
+			<animfile>buildings\market\city_market.xml</animfile>
 		</unit>
 		<!-- Paris's city look (zpparis.mods.xml 73-208, user 2026-09-22): the city placement rules for every player building, the
 		     Waterloo house prop off the minimap, the gate rebuilt in no time (ConvertsHerds + PlaceAnywhere for the transform) -->
