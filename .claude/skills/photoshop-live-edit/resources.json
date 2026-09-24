@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "files": [
+    "SKILL.md",
+    "scripts/photoshop.ps1",
+    "scripts/inspect.jsx",
+    "scripts/smoke_test.jsx",
+    "references/connection.md",
+    "references/edit-export.md"
+  ],
+  "skills": [],
+  "external": [
+    {
+      "id": "photoshop",
+      "kind": "application",
+      "requiredFor": ["inspect", "edit", "export", "smoke-test"],
+      "optional": false,
+      "note": "Running, licensed desktop Photoshop on Windows with COM and ExtendScript. The attach-only probe verifies the actual session; installation alone does not."
+    },
+    {
+      "id": "windows-powershell",
+      "kind": "executable",
+      "requiredFor": ["inspect", "edit", "export", "smoke-test"],
+      "optional": false,
+      "commands": ["powershell.exe"],
+      "note": "Windows PowerShell 5.1 in the same desktop user/session, invoked with -STA. The provided runner does not use PowerShell 7 or require Python/pywin32."
+    }
+  ]
+}

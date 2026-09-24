@@ -721,4 +721,10 @@
     <abstractattacktargettype>AbstractTradeRouteBuilding</abstractattacktargettype>
     <unitaction>SpawnArmoredTrain</unitaction>   
   </power>
+  <power name="zpPassiveRupertsHorse" type="UnitAction">
+    <displaynameid>503586</displaynameid>
+    <rolloverid>503587</rolloverid>
+    <icon>resources\images\icons\abilities\passive_chinaco_charge.png</icon>
+    <allowduringnorush>1</allowduringnorush>
+  </power>
 </powermods>

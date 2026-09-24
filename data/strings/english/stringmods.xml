@@ -3481,15 +3481,15 @@
       <string _locid="503478">The Grand Remonstrance</string>
       <string _locid="503479">Pick your leader of Parliament</string>
       <string _locid="503480">Oliver Cromwell (Commonwealth)</string>
-      <string _locid="503481">Military improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nIronside \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nIronside Levy, Team New Model Army</string>
+      <string _locid="503481">Military improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nIronside \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nIronside Levy, New Model Army</string>
       <string _locid="503482">Lord Inchiquin (Munster Protestants)</string>
       <string _locid="503483">Naval and diplomatic improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nBonaght Soldier \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nMunster Levies, Team Adventurers' Act</string>
       <string _locid="503484">Sir Thomas Myddelton (North Wales)</string>
       <string _locid="503485">Economic improvements \n\n&lt;color=1.0, 0.9, 0.5&gt;TRAINING:&lt;/color&gt; \nWelsh Longbowman \n\n&lt;color=1.0, 0.9, 0.5&gt;SPECIAL TECHS:&lt;/color&gt; \nWelsh Drovers, Team New River Company</string>
       <string _locid="503486">Ironside Levy</string>
       <string _locid="503487">Ships 12 Ironsides. Ironside build limit +2.</string>
-      <string _locid="503488">Team New Model Army</string>
-      <string _locid="503489">Ironsides gain 20% attack and hitpoints and train 25% faster; Ironside build limit +5. Ships an Embassy Wagon and allows the whole team to train Ironsides from the Native Embassy.</string>
+      <string _locid="503488">New Model Army</string>
+      <string _locid="503489">Parliament's standing army: Redcoats gain 30% hitpoints and attack, train 25% faster and their build limit rises by 10. Musketeers gain 10% hitpoints and attack.</string>
       <string _locid="503490">Munster Levies</string>
       <string _locid="503491">Ships an Armed Merchantman carrying 12 Bonaght Soldiers. Bonaght build limit +5.</string>
       <string _locid="503492">Team Adventurers' Act</string>
@@ -3533,7 +3533,7 @@
       <string _locid="503530">%s has declared for Parliament and the Commonwealth!</string>
       <string _locid="503531">British Commonwealth</string>
       <string _locid="503532">Sovereign of the Seas</string>
-      <string _locid="503533">Ships the Sovereign of the Seas, the King's Ship Money flagship, carrying 16 Whitecoats. The flagship raises Whitecoats at sea, up to 20, and its crew answers in English.</string>
+      <string _locid="503533">Ships the Sovereign of the Seas, the King's Ship Money flagship. Every Dock builds Regal Ships from now on (up to 2), and Regal Ships train Whitecoats (up to 20).</string>
       <string _locid="503534">Sovereign of the Seas</string>
       <string _locid="503535">Royal Charles</string>
       <string _locid="503536">Prince Royal</string>
@@ -3550,7 +3550,7 @@
       <string _locid="503547">Henrietta Maria</string>
       <string _locid="503548">Merhonour</string>
       <string _locid="503549">Divine Right of Kings</string>
-      <string _locid="503550">Opens the extended House of Stuart: unlocks Sovereign of the Seas.</string>
+      <string _locid="503550">Opens the extended House of Stuart: unlocks The Last Cavalier and Sovereign of the Seas.</string>
       <string _locid="503551">ZP NAT Merc Inuit Harpooner</string>
       <string _locid="503552">Royal Burgh</string>
       <string _locid="503553">Ships a Covered Wagon and raises your Town Centers and Command Posts to royal burghs: +40% hitpoints and +150% attack, walls and guns answering to the crown.</string>
@@ -3564,12 +3564,31 @@
       <string _locid="503561">Team ATTACKERS (Stuart) wins in</string>
       <string _locid="503562">Team DEFENDERS (Parliament) wins in</string>
       <string _locid="503565">Pick your leader of Parliament. \n • Cromwell, Inchiquin or Myddelton: each brings his own regiment and two Parliament techs \n • Raises the Commonwealth's flag over your city&lt;color=1.0, 0.0, 0.0&gt;\n • Available only for the team "DEFENDERS".&lt;/color&gt;</string>
-      <string _locid="503566">Opens the extended House of Stuart. \n • Unlocks Sovereign of the Seas \n • Unlocks the Royal Burgh&lt;color=1.0, 0.0, 0.0&gt;\n • Available only for the team "ATTACKERS".&lt;/color&gt;</string>
+      <string _locid="503566">Opens the extended House of Stuart. \n • Unlocks Sovereign of the Seas \n • Unlocks The Last Cavalier \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Turns every Lowlander into a Whitecoat&lt;color=1.0, 0.0, 0.0&gt;\n • Available only for the team "ATTACKERS".&lt;/color&gt;</string>
       <string _locid="503567">Restoration of the Monarchy</string>
       <string _locid="503568">London 1660 Historical Map: \nEleven years without a king have worn the Commonwealth out. General Monck has opened the road from the north and Charles Stuart is sailing home from exile, while Parliament's men dig in behind the Thames. Both teams have the same goal: take both Royal Keeps, the twin castles on the river, and hold them for eight minutes. Both sides can use different native techs. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; Royalists which can use special House of Stuart techs \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Parliamentarians which can use special Parliament techs \n\nSettlements: House of Stuart, Parliament, Jewish Quarter \n\nMaximum recommended players: 4</string>
       <string _locid="503569">Achieve a Team Victory by capturing and holding both Royal Keeps for eight minutes. Take your team's native trading posts to get more advanced native improvements. Whoever holds the Toll Station on London Bridge holds the crossing, its gates and its towers. \n\n&lt;color=1.0, 1.0, 0.0&gt;ATTACKERS:&lt;/color&gt; House of Stuart natives \n\n&lt;color=1.0, 1.0, 0.0&gt;DEFENDERS:&lt;/color&gt; Parliament natives</string>
       <string _locid="503570">ZP Underbrush Greek Columns</string>
       <string _locid="503571">ZP NAT British Guards</string>
+      <string _locid="503572">ZP NAT Whitecoat</string>
+      <string _locid="503573">Royalist foot of the Marquess of Newcastle's regiment, in coats of undyed white wool. Tougher and better armed than the Lowlander it replaces, with a pike-length reach at close quarters.</string>
+      <string _locid="503574">Veteran Whitecoat</string>
+      <string _locid="503575">Guard Whitecoat</string>
+      <string _locid="503576">Newcastle Lamb</string>
+      <string _locid="503577">ZP NAT Redcoat</string>
+      <string _locid="503578">Parliament's regular foot in the red coat of the New Model Army. Musket and bayonet; good against cavalry.</string>
+      <string _locid="503579">Veteran Redcoat</string>
+      <string _locid="503580">Guard Redcoat</string>
+      <string _locid="503581">Coldstream Guardsman</string>
+      <string _locid="503582">Opens the extended House of Stuart. \n • Unlocks Sovereign of the Seas \n • Unlocks The Last Cavalier \n&lt;color=0.0, 1.0, 0.0&gt;Map Bonus:&lt;/color&gt; \n • Turns every Lowlander into a Whitecoat; the Trading Post trains Whitecoats instead</string>
+      <string _locid="503583">Prince Rupert of the Rhine</string>
+      <string _locid="503584">ZP NAT Prince Rupert</string>
+      <string _locid="503585">The King's nephew and General of Horse. A Royalist cavalry hero: builds Trading Posts, collects treasures and trains Cavaliers. Returns after being defeated.</string>
+      <string _locid="503586">Rupert's Horse</string>
+      <string _locid="503587">Passive: cavalry within 24 metres of Prince Rupert move 15% faster.</string>
+      <string _locid="503588">ZP NAT Merc Redcoat</string>
+      <string _locid="503589">The Last Cavalier</string>
+      <string _locid="503590">Prince Rupert of the Rhine, the King's nephew and General of Horse, joins the army with 10 Cavaliers. Rupert trains Cavaliers to replace the fallen, up to 10.</string>
 
       <!-- ======================================== -->
       <!-- Christmas Strings added by AssertiveWall -->

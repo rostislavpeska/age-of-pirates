@@ -300,12 +300,16 @@ class TestPlacement:
         assert all(d > max(jones) for d in later), "only later (higher-dbid) techs may follow the new techs before the test marker"
 
     def test_side_records_are_last(self):
-        p = _read("politicianmods.xml")
-        assert not re.search(r"<zp\w+ portraitfilename", p[p.find("</zpconsulatepiratesjones>"):])
-        a = _read("abilities/abilitymods.xml")
-        assert not re.search(r"^  <[a-z]+>", a[a.find("</zpspcserapis>"):], re.M)
-        r = _read("randomnamemods.xml")
-        assert "<protounit>" not in r[r.find("<protounit>%s<" % SHIP2):].split("</protounit>", 1)[1]
+        p = _read("politicianmods.xml")     # 2026-09-24: only later leaders may follow (the Parliament cards, 2026-09-19), not "Jones is last"
+        dbid = {n.lower(): int(d) for n, d in re.findall(r'<tech\s+name\s*=\s*"(\w+)"[^>]*>\s*<dbid>(\d+)</dbid>', _read("techtreemods.xml"))}
+        cards = re.findall(r"<(zp\w+) portraitfilename", p[p.find("</zpconsulatepiratesjones>"):])
+        assert all(dbid.get(c, 0) > dbid["zpconsulatepiratesjones"] for c in cards), cards
+        a = _read("abilities/abilitymods.xml")     # 2026-09-24: blocks are appended when an ability is added, not in id order -
+        assert "<zpspcserapis>" in a                # older protos' blocks follow Serapis's (Mutineer, Minster, Lord ...), so no "is last" pin
+        r = _read("randomnamemods.xml")     # 2026-09-24: only later protos' name lists may follow (Lord, Armed Merchantman), not "Serapis is last"
+        ids = {n: int(i) for i, n in re.findall(r'<unit id="(\d+)" name="(\w+)"', _read("protomods.xml"))}
+        after = re.findall(r"<protounit>(\w+)<", r[r.find("<protounit>%s<" % SHIP2):].split("</protounit>", 1)[1])
+        assert all(ids.get(u, 0) > max(ids[n] for n in (SHIP, PROXY, SHIP2)) for u in after), after
         c = _read("civmods.xml")
         civ = re.search(r"<civ>\s*<name>NatPirates</name>.*?</civ>", c, re.S).group(0)
         for bld in ("zpSPCPirateDock", "zpSPCPirateDockB"):

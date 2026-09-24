@@ -78,6 +78,9 @@ Check the live tool connection required by the selected skill before editing ass
 For geometry use `.claude/skills/blender-architecture/SKILL.md`; for UVs and textures use
 `.claude/skills/blender-architecture-texturing/SKILL.md`. Building work in this mod starts with
 `.claude/skills/aoe-building-pipeline/SKILL.md`, which adds the AoP profile to the reusable workflow.
+For live Photoshop documents, layered edits or texture exports, read
+`.claude/skills/photoshop-live-edit/SKILL.md`. It includes the tested Windows COM/JSX
+connection used in this project; absence of Photoshop MCP does not rule out that route.
 Archive/XMB work starts with `.claude/skills/bar-extract/SKILL.md`, then its referenced
 `aoe3de-bar-archives` tools. The reusable packages are implementations, not competing
 AoP entry points. Keep AoP-specific routing out of their public instructions.

@@ -111,8 +111,14 @@ class TestLondonExtension:
         st = _text(REPO / "data/strings/english/stringmods.xml")
         assert 'Available only for the team "DEFENDERS"' in st[st.index('_locid="503565"'):st.index('_locid="503566"')] and 'Available only for the team "ATTACKERS"' in st[st.index('_locid="503566"'):]
         g = _tech("zpStuartExpansion"); l = _tech("zpStuartExpansionSPC")
-        norm = lambda b: re.sub(r"<dbid>\d+</dbid>", "", b).replace("zpStuartExpansionSPC", "zpStuartExpansion")
-        assert norm(g) == norm(l) and "<displaynameid>503549</displaynameid>" in l and "stuartextend_big.png" in l
+        def core(b):     # 2026-09-24 (user): the London button = the generic one + Lowlanders -> Whitecoats, with its own rollover
+            b = re.sub(r"<dbid>\d+</dbid>|<rollovertextid>\d+</rollovertextid>", "", b).replace("zpStuartExpansionSPC", "zpStuartExpansion")
+            for e in re.findall(r"<effect .*?(?:/>|</effect>)", b, re.S):
+                if "Lowlander" in e or "Whitecoat" in e:
+                    b = b.replace(e, "")
+            return re.sub(r"\s+", " ", b)
+        assert core(g) == core(l) and "<displaynameid>503549</displaynameid>" in l and "stuartextend_big.png" in l
+        assert "<rollovertextid>503582</rollovertextid>" in l and "<rollovertextid>503550</rollovertextid>" in g and "Whitecoat" not in g
         assert not any(("cTech%s" % n) in _text(LONDON) for n in ("zpStuartExpansion", "zpStuartExpansionSPC"))     # the buttons come through the extension, not the map
 
 

@@ -107,7 +107,7 @@ class TestProtos:
 
     def test_lord_is_the_agreed_baseline_a_mobile_barracks_and_a_builder(self):
         b = _units()[LORD]
-        assert _c(b, "maxhitpoints") == "650.0000" and _c(b, "buildlimit") == "5" and _c(b, "allowedage") == "1"  # 2026-09-18: 800/3 was too few Lords
+        assert _c(b, "maxhitpoints") == "650.0000" and _c(b, "buildlimit") == "2" and _c(b, "allowedage") == "1"  # 2026-09-18: 800/3 was too few Lords; 2026-09-24: 2 per post - three posts = 6 Lords, not 15
         assert _c(b, "tactics") == "parliamentlord.tactics" and _c(b, "animfile") == r"units\parliament\lord_horse.xml"
         assert re.search(r"<name>MeleeHandAttack</name>\s*<damage>35\.0", b)
         assert "AbstractCavalry</unittype>" in b and "AbstractHandCavalry" in b and "ConstrainOrientation" in b
@@ -189,11 +189,11 @@ class TestTechs:
         for n, (_, _, leg) in TIERS.items():
             assert 'mergemode="add" type="SetName" proto="%s" culture="none" newname="%d"' % (n, leg) in b, n
 
-    def test_hc_card_shadows_ship_merc_lords_and_grant_the_upgrades(self):
-        t = _techs()
-        assert re.search(r'amount="1\.00" subtype="FreeHomeCityUnit" unittype="%s"' % LORD, t["zpNativeTreatyParliament"])
+    def test_hc_card_shadows_ship_merc_redcoats_and_grant_the_upgrades(self):
+        t = _techs()     # 2026-09-24 (user): Merc Redcoats, not Lords - the vanilla Stuart counts (treaty 4, friendship 6)
+        assert re.search(r'amount="4\.00" subtype="FreeHomeCityUnit" unittype="zpNatMercRedcoat"', t["zpNativeTreatyParliament"])
         f = t["zpIndianFriendshipParliament"]
-        assert re.search(r'amount="2\.00" subtype="FreeHomeCityUnit" unittype="%s"' % LORD, f)
+        assert re.search(r'amount="6\.00" subtype="FreeHomeCityUnit" unittype="zpNatMercRedcoat"', f) and LORD not in f
         assert 'status="active">%s<' % VET in f and 'status="active">%s<' % GUARD in f
         assert 'resource="Trade"' in t["zpNativeTradeTreatyParliament"]
 
@@ -248,17 +248,13 @@ class TestTechs:
         assert re.search(r'amount="2\.00" subtype="BuildLimit" relativity="Absolute">\s*<target type="ProtoUnit">%s<' % IRON, levy)
         assert "FreeHomeCityUnitShipped" not in levy and "zpSPCRegalShip" not in levy
         assert "CheckWaterHCGatherPoint" not in levy and levy.count("<effect ") == 2
-        nma = t["zpParliamentNewModelArmy"]  # 2026-09-19: the Cataphract embassy pattern, a team tech; no Lord effect
-        assert "<flag>TeamTech</flag>" in nma and LORD not in nma
-        assert re.search(r'amount="5\.00" subtype="BuildLimit" relativity="Absolute">\s*<target type="ProtoUnit">%s<' % IRON, nma)
-        for u in (IRON, "zpNatMercIronside"):
-            assert re.search(r'amount="0\.75" subtype="TrainPoints"[^>]*>\s*<target type="ProtoUnit">%s<' % u, nma)
-            assert re.search(r'amount="1\.20" subtype="Hitpoints"[^>]*>\s*<target type="ProtoUnit">%s<' % u, nma)
-        assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">zpNatMercIronside<', nma)
-        assert 'proto="zpNatMercIronside" page="0" column="137">' + chr(10) + '        <target type="ProtoUnit">NativeEmbassy<' in nma
-        assert '<effect type="CommandRemove" proto="%s">' % IRON + chr(10) + '        <target type="ProtoUnit">NativeEmbassy<' in nma
-        assert 'amount="1.00" subtype="FreeHomeCityUnit" unittype="zpNativeEmbassyWagon"' in nma and 'amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatMercIronside"' in nma
-        assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">NativeEmbassy<', nma)
+        nma = t["zpParliamentNewModelArmy"]  # 2026-09-24 (user): a full rework - no team tech, no Embassy; Redcoats +30 % hp and attack,
+        assert "TeamTech" not in nma and "Embassy" not in nma and LORD not in nma and IRON not in nma and nma.count("<effect ") == 8   # 25 % faster, limit +10; Musketeers +10 %; the Merc Redcoat too
+        assert re.search(r'amount="10\.00" subtype="BuildLimit" relativity="Absolute">\s*<target type="ProtoUnit">zpNatRedcoat<', nma)
+        assert re.search(r'amount="0\.75" subtype="TrainPoints"[^>]*>\s*<target type="ProtoUnit">zpNatRedcoat<', nma)
+        for sub in ("Hitpoints", "Damage"):
+            assert re.search(r'amount="1\.30" subtype="%s"[^>]*>\s*<target type="ProtoUnit">zpNatRedcoat<' % sub, nma)
+            assert re.search(r'amount="1\.10" subtype="%s"[^>]*>\s*<target type="ProtoUnit">Musketeer<' % sub, nma)
         mun = t["zpParliamentMunsterLevies"]     # the Armed Merchantman, not the French Regal Ship
         assert re.search(r'amount2="12\.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCOstindedr" unittype2="%s"' % BON, mun)
         assert re.search(r'amount="5\.00" subtype="BuildLimit" relativity="Absolute">\s*<target type="ProtoUnit">%s<' % BON, mun)
@@ -493,7 +489,7 @@ class TestTeamIronsides:
         assert 'proto="zpNatMercIronside" culture="none" newname="503457"' in g and 'proto="zpNatMercIronside" culture="none" newname="503458" reqtech="ImpLegendaryNativesShadow"' in g
         assert 'mergemode="add" type="SetName" proto="zpNatMercIronside" culture="none" newname="503458"' in t["ImpLegendaryNativesShadow"]
         st = _read("data/strings/english/stringmods.xml")
-        assert '<string _locid="503488">Team New Model Army</string>' in st and "Ironside Levy, Team New Model Army" in st
+        assert '<string _locid="503488">New Model Army</string>' in st and "Ironside Levy, New Model Army" in st     # 2026-09-24: no longer a team tech
         assert (REPO / "sound/zpnatmercironside_snds.xml").exists()
 
 # ------------------------------------------------------------------- the Commonwealth soft revolution (2026-09-19)
@@ -672,7 +668,8 @@ class TestSovereignOfTheSeas:
         s = _read("data/protomods.xml")
         m = re.search(r'<unit id="%s" name="%s">.*?</unit>' % (self.UID, self.SHIP), s, re.S)
         assert m and m.start() < s.index("<!--TEST AND TEMPORARY CONTENT-->")
-        assert _c(m.group(0), "dbid") == self.UID and _c(m.group(0), "buildlimit") == "3"
+        assert _c(m.group(0), "dbid") == self.UID and _c(m.group(0), "buildlimit") == "2"   # 3 -> 2 (user 2026-09-24)
+        assert _c(m.group(0), "maxhitpoints") == "2350.0000" == _c(m.group(0), "initialhitpoints")   # 2100 -> 2350 = the Dispatch Vessel (user 2026-09-24)
         b = m.group(0)
         BS = chr(92)
         icon = "resources" + BS + "art" + BS + "units" + BS + "naval" + BS + "spc" + BS + "regal_ship_icon.png"
@@ -689,38 +686,54 @@ class TestSovereignOfTheSeas:
         assert "<flag>YPNativeImprovement</flag>" in b and "<flag>CountsTowardMilitaryScore</flag>" in b
         assert '<cost resourcetype="Wood">800.0000</cost>' in b and '<cost resourcetype="Gold">600.0000</cost>' in b
         COAT = "deSPCHMWhitecoat"
-        # the flagship arrives loaded and becomes where more Whitecoats are raised
-        assert 'amount2="16.00" subtype="FreeHomeCityUnitShipped" unittype="%s" unittype2="%s"' % (self.SHIP, COAT) in b
+        # 2026-09-24 (user, the split): the flagship sails alone (the vanilla HCShipFrigates shape), every dock builds
+        # Regal Ships from then on, and the ship raises vanilla Whitecoats; Rupert and the Cavaliers moved to The Last Cavalier
+        assert 'amount="1.00" subtype="FreeHomeCityUnit" unittype="%s"' % self.SHIP in b and "FreeHomeCityUnitShipped" not in b
+        assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">%s<' % self.SHIP, b)
+        # AbstractDock = Dock, YPDockAsian, dePort, deSPCSupplyDepot, deDryDock and the mod's zpDrydock; column 9 is free on all
+        assert '<effect type="CommandAdd" proto="%s" page="0" column="9">\n        <target type="ProtoUnit">AbstractDock</target>' % self.SHIP in b.replace(chr(13), "")
         assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">%s<' % COAT, b)
-        # ships train land units on page 0 (Fluyt / Galleon / Corsair Galley); page 12 is for buildings
-        assert '<effect type="CommandAdd" proto="%s" page="0" column="1">' % COAT in b
+        assert '<effect type="CommandAdd" proto="%s" page="0" column="1">' % COAT in b          # ships train land units on page 0
         assert re.search(r'amount="20.00" subtype="BuildLimit"[^>]*>\s*<target type="ProtoUnit">%s<' % COAT, b)
-        assert "Hitpoints" not in b and 'subtype="FreeHomeCityUnit"' not in b
+        assert "Rupert" not in b and "Cavalier" not in b and "Hitpoints" not in b
         assert "<flag>CheckWaterHCGatherPoint</flag>" in b          # it ships a warship
         icon = "resources" + chr(92) + "images" + chr(92) + "icons" + chr(92) + "techs" + chr(92) + "stuart" + chr(92) + "sovereign_seas.png"
         assert "<icon>" + icon + "</icon>" in b                    # the crown-and-anchor, forged from the user's art
         assert (REPO / "data/wpfg" / icon.replace(chr(92), "/")).exists()
-        assert b.count("<effect ") == 4 and s.index('name="%s"' % self.TECH) < s.index("<!--TEST TECHS-->")
+        assert b.count("<effect ") == 6 and s.index('name="%s"' % self.TECH) < s.index("<!--TEST TECHS-->")
         assert '<effect mergemode="add" type="TechStatus" status="obtainable">%s</effect>' % self.TECH in T["DENativeStuart"]
+        for dock in ("Dock", "YPDockAsian", "dePort", "deDryDock", "zpDrydock"):
+            u = _units().get(dock, "")
+            assert '<train row="0" page="0" column="9">' not in u, dock
 
-    def test_voices_flip_to_english_on_the_tech(self):
-        p = REPO / "sound/zpspcregalship_snds.xml"
-        b = p.read_bytes()
+    def test_battleship_voice_for_each_civ(self):
+        """User 2026-09-24: the vanilla Battleship's lines (deMercBattleship_snds), each civ its own; no tech flip.
+        Where vanilla parks a civ on the French placeholder, the civ's own-language warship voice; revolution civs
+        have no branch (vanilla lists none in any _snds - the engine voices them by the parent civ)."""
+        b = (REPO / "sound/zpspcregalship_snds.xml").read_bytes()
         assert b.count(b"\r\n") == b.count(b"\n") > 0
         s = b.decode("utf-8").replace(chr(13), "")
-        assert '<protounit name="%s">' % self.SHIP in s and s.count("<civlogic>") == 2      # Select + Acknowledge
-        assert s.count("<techlogic>") == s.count("</techlogic>") == 56
-        # every civ that exists has a branch; anything without its own language falls back to French
-        for civ in ("zpRevCommonwealth", "DERevFrance", "Stuart", "Bourbon", "zpCivPirate", "Inuit"):
-            assert '<choice name="%s">' % civ in s, civ
-        assert not re.search(r'<choice name="\w+" />', s)          # no branch left silent
-        assert s.count("FrenchFrigateSelect") > 100
-        gates = re.findall(r'<choice name="%s">\n              <soundset name="(\w+)" />' % self.TECH, s)
-        assert sorted(set(gates)) == ["BritishFrigateAcknowledge", "BritishFrigateSelect"] and len(gates) == 56
-        assert '<choice name="DEHCREVMXTexasNavy">' in s                                     # the vanilla gate is kept
-        for civ, base in (("French", "FrenchFrigateSelect"), ("Spanish", "SpanishFrigateSelect")):
-            i = s.index('<choice name="%s">' % civ)
-            assert base in s[i:i + 300] and self.TECH in s[i:i + 400], civ                   # default stays the civ's own voice
+        assert '<protounit name="%s">' % self.SHIP in s and s.count("<civlogic>") == 2 and "techlogic" not in s
+        assert not re.search(r'<choice name="\w+" />', s) and not re.search(r'<choice name="(DERev|zpRev)\w*">', s)
+        for st, ss in (("Death", "ShipDeath"), ("Creation", "ShipBirth"), ("Exists", "AmbienceShip")):
+            assert '<soundtype name="%s">\n      <soundset name="%s" />' % (st, ss) in s, st
+        sel = s[s.index('<soundtype name="Select">'):s.index('<soundtype name="Death">')]
+        ack = s[s.index('<soundtype name="Acknowledge">'):s.index('<soundtype name="Exists">')]
+        def one(block, civ):
+            return re.search(r'<choice name="%s">\n(.*?)\n        </choice>' % civ, block, re.S).group(1)
+        for civ, se, ac in (("British", "BritishRocketSelect", "BritishBattleshipAcknowledge"),       # vanilla verbatim
+                            ("Spanish", "SpanishMonitorSelect", "SpanishMonitorAcknowledge"),
+                            ("DEDanish", "DanishBattleshipSelect", "DanishBattleshipAcknowledge"),
+                            ("DEItalians", "DEItalianMortarSelect", "DEItalianMonitorAcknowledge"),
+                            ("DEPolish", "PolishHeavyMilitarySelect", "PolishHeavyWarshipAttack"),
+                            ("Japanese", "JapaneseShipsSelect", "JapaneseShipsAttack"),                 # own language
+                            ("XPSioux", "SiouxWarCanoeSelect", "SiouxWarCanoeAcknowlegde"),
+                            ("DEHausa", "DEHausaCannonBoatSelect", "DEHausaCannonBoatAcknowledge"),
+                            ("DEMexicans", "DEMexicanIroncladSelect", "DEMexicanIroncladAcknowledge"),
+                            ("zpCivPirate", "BritishRocketSelect", "BritishBattleshipAcknowledge"),
+                            ("Stuart", "FrenchMonitorSelect", "FrenchMonitorAcknowledge")):
+            assert se in one(sel, civ) and ac in one(ack, civ), civ
+        assert "Frigate" not in s.replace("DEAmericanFrigate", "")        # only the Americans keep a frigate voice (no warship set exists)
 
     def test_british_name_pool(self):
         n = _read("data/randomnamemods.xml")
@@ -737,12 +750,13 @@ class TestSovereignOfTheSeas:
         st = _read("data/strings/english/stringmods.xml")
         assert '<string _locid="503532">Sovereign of the Seas</string>' in st
         roll = re.search(r'<string _locid="503533">([^<]*)</string>', st).group(1)
-        assert "16 Whitecoats" in roll and "up to 20" in roll and "build limit" not in roll
+        assert "Every Dock builds Regal Ships from now on (up to 2)" in roll and "Whitecoats (up to 20)" in roll and "Rupert" not in roll
         assert '<string _locid="503534">Sovereign of the Seas</string>' in st and '<string _locid="503548">Merhonour</string>' in st
 
     def test_royal_burgh(self):
-        """The Scottish land tech at p2 c5: the charter (a Covered Wagon = a free Town Center) plus walls and
-        guns on every Town Center - 6500 -> 9100 hp, above FortFrontier's 9000, cannon 30 -> 75."""
+        """The Scottish land tech: the charter (a Covered Wagon = a free Town Center) plus walls and guns on every
+        Town Center - 6500 -> 9100 hp, above FortFrontier's 9000, cannon 30 -> 75. Off the Trading Post since
+        2026-09-24: The Last Cavalier took its p2 c5 slot (user); the record stays."""
         T = _techs(); b = T["zpStuartRoyalBurgh"]; s = _read("data/techtreemods.xml")
         assert _c(b, "dbid") == "41551" and _c(b, "displaynameid") == "503552" and _c(b, "rollovertextid") == "503553"
         assert "<status>UNOBTAINABLE</status>" in b and ">Fortressize</techstatus>" in b
@@ -758,8 +772,8 @@ class TestSovereignOfTheSeas:
         icon = "resources" + chr(92) + "images" + chr(92) + "icons" + chr(92) + "techs" + chr(92) + "stuart" + chr(92) + "royal_burgh.png"
         assert "<icon>" + icon + "</icon>" in b and (REPO / "data/wpfg" / icon.replace(chr(92), "/")).exists()
         assert s.index('name="zpStuartRoyalBurgh"') < s.index("<!--TEST TECHS-->")
-        assert '<effect mergemode="add" type="TechStatus" status="obtainable">zpStuartRoyalBurgh</effect>' in T["DENativeStuart"]
-        assert '<effect type="CommandAdd" tech="zpStuartRoyalBurgh" page="2" column="5">' in T["zpStuartExpansion"]
+        for n in ("DENativeStuart", "zpStuartExpansion", "zpStuartExpansionSPC"):
+            assert "zpStuartRoyalBurgh" not in T[n], n
         st = _read("data/strings/english/stringmods.xml")
         assert '<string _locid="503552">Royal Burgh</string>' in st
         roll = re.search(r'<string _locid="503553">([^<]*)</string>', st).group(1)
@@ -776,7 +790,180 @@ class TestSovereignOfTheSeas:
         assert (REPO / "data/wpfg" / big.replace(chr(92), "/")).exists()
         assert b.count("<effect ") == 2                                    # nothing but CommandAdds for the new techs
         assert '<effect type="CommandAdd" tech="%s" page="2" column="6">' % self.TECH in b
+        assert '<effect type="CommandAdd" tech="zpStuartLastCavalier" page="2" column="5">' in b
         assert '<effect mergemode="add" type="TechStatus" status="obtainable">zpStuartExpansion</effect>' in T["DENativeStuart"]
         assert s.index('name ="zpStuartExpansion"') < s.index("<!--TEST TECHS-->")
         st = _read("data/strings/english/stringmods.xml")
         assert '<string _locid="503549">Divine Right of Kings</string>' in st
+
+
+# ------------------------------------------------------------------- Whitecoats vs Redcoats (2026-09-24)
+class TestCoats:
+    """User 2026-09-24: the Redcoat is Parliament's base unit (vanilla HM stats, from the start), the London Stuart
+    button turns the Lowlanders into Whitecoats (stronger), each side's Veteran / Guard names them."""
+
+    def test_both_are_natives_with_the_standard_circle(self):
+        u = _units()
+        for n, subciv, anim, limit in (("zpNatWhitecoat", "Stuart", "units@stuart@whitecoat.xml", "15"), ("zpNatRedcoat", "zpParliament", "units@parliament@redcoat.xml", "13")):
+            b = u[n]     # Redcoat 13 (user 2026-09-24: 15 was too strong beside 2 Lords and the leader's unit)
+            assert _c(b, "subciv") == subciv and _c(b, "populationcount") == "0" and _c(b, "buildlimit") == limit, n
+            assert _c(b, "animfile") == anim.replace("@", chr(92)) and "Consulate" not in b and "<unittype>AbstractNativeWarrior</unittype>" in b, n
+            art = (REPO / "art" / anim.replace("@", "/")).read_bytes()
+            assert b"shadow_circle_32x32" in art and b"consulate" not in art and art.count(b"\r\n") == art.count(b"\n"), n
+            assert (REPO / ("sound/%s_snds.xml" % n.lower())).exists(), n
+        w, r = u["zpNatWhitecoat"], u["zpNatRedcoat"]
+        assert _c(w, "maxhitpoints") == "170.0000" and float(_c(w, "maxhitpoints")) > 135     # the Lowlander: 135 hp, 19 ranged
+        assert re.search(r"<name>VolleyRangedAttack</name>\s*<damage>23\.0", w)
+        assert _c(r, "maxhitpoints") == "160.0000" and re.search(r"<name>VolleyRangedAttack</name>\s*<damage>25\.0", r)   # vanilla deSPCHMRedcoat
+
+    def test_redcoat_from_the_start_on_its_own_slot(self):
+        t = _techs()
+        assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">zpNatRedcoat<', t["zpNativeParliament"])
+        pm = (REPO / "data/protomods.xml").read_text(encoding="utf-8")
+        assert '<train row="0" page="0" column="3">zpNatRedcoat</train>' in pm
+        for tech, amt, name in (("zpNatVeteranParliament", "1.20", "503579"), ("zpNatGuardParliament", "1.40", "503580")):
+            b = t[tech]
+            assert re.search(r'amount="%s" subtype="Hitpoints"[^>]*>\s*<target type="ProtoUnit">zpNatRedcoat<' % re.escape(amt), b), tech
+            assert 'proto="zpNatRedcoat" culture="none" newname="%s">' % name in b and 'proto="zpNatRedcoat" culture="none" newname="503581" reqtech="ImpLegendaryNativesShadow">' in b, tech
+
+    def test_london_button_turns_lowlanders_into_whitecoats(self):
+        t = _techs(); b = t["zpStuartExpansionSPC"]
+        for f, to in (("deNatLowlanderInfantry", "zpNatWhitecoat"), ("deNatLowlanderRider", "zpNatWhitecoat")):
+            assert '<effect type="TransformUnit" fromprotoid="%s" toprotoid="%s" />' % (f, to) in b
+        assert re.search(r'amount="0\.00" subtype="Enable" relativity="Assign">\s*<target type="ProtoUnit">deNatLowlanderInfantry<', b)
+        assert re.search(r'amount="1\.00" subtype="Enable"[^>]*>\s*<target type="ProtoUnit">zpNatWhitecoat<', b)
+        assert '<effect type="CommandRemove" proto="deNatLowlanderInfantry">' in b and '<effect type="CommandAdd" proto="zpNatWhitecoat" page="0" column="2">' in b
+        assert "zpNatWhitecoat" not in t["zpStuartExpansion"]     # the Unknown map's button stays the vanilla-unit one
+
+    def test_merc_redcoat_is_the_ironside_merc_shape_and_gets_every_upgrade(self):
+        u = _units(); base, merc = u["zpNatRedcoat"], u["zpNatMercRedcoat"]
+        assert _c(merc, "dbid") == "21203" and "<subciv>" not in merc and _c(merc, "sharedbuildlimitunit") == "zpNatRedcoat"
+        assert "<unittype>MercType1</unittype>" in merc and "MercType1" not in base and "<flag>UseSharedBuildLimit</flag>" in base
+        for tag in ("maxhitpoints", "tactics", "animfile", "displaynameid", "cost", "buildlimit"):
+            assert _c(merc, tag) == _c(base, tag), tag
+        t = _techs()
+        for tech in ("zpNatVeteranParliament", "zpNatGuardParliament", "zpParliamentNewModelArmy"):
+            assert re.search(r'subtype="Hitpoints"[^>]*>@s*<target type="ProtoUnit">zpNatMercRedcoat<'.replace("@", chr(92)), t[tech]), tech
+        assert 'proto="zpNatMercRedcoat" culture="none" newname="503581">' in t["ImpLegendaryNativesShadow"]
+        assert (REPO / "sound/zpnatmercredcoat_snds.xml").exists()
+
+    def test_whitecoat_ranks_ride_on_the_stuart_upgrades(self):
+        t = _techs()
+        for tech, pre, amt, name in (("zpVeteranWhitecoat", "DEVeteranStuart", "1.20", "503574"), ("zpGuardWhitecoat", "DEGuardStuart", "1.40", "503575")):
+            b = t[tech]
+            assert "<flag>Shadow</flag>" in b and "<status>OBTAINABLE</status>" in b, tech
+            assert '<techstatus status="Active">%s</techstatus>' % pre in b and '<techstatus status="Active">zpStuartExpansionSPC</techstatus>' in b, tech
+            assert re.search(r'amount="%s" subtype="Damage"[^>]*>\s*<target type="ProtoUnit">zpNatWhitecoat<' % re.escape(amt), b), tech
+            assert 'newname="%s">' % name in b and 'newname="503576" reqtech="ImpLegendaryNativesShadow">' in b, tech
+        leg = t["ImpLegendaryNativesShadow"]
+        assert 'proto="zpNatWhitecoat" culture="none" newname="503576">' in leg and 'proto="zpNatRedcoat" culture="none" newname="503581">' in leg
+
+
+# ------------------------------------------------------------------- Prince Rupert of the Rhine (2026-09-24)
+class TestPrinceRupert:
+    """User 2026-09-24: the Royalist cavalry hero The Last Cavalier brings - the vanilla Cavalier's design with the
+    hero circle, builds Trading Posts, collects treasures, trains Cavaliers, respawns (the mod's hero pattern)."""
+    HERO = "zpNatPrinceRupert"
+
+    def test_the_hero_record(self):
+        b = _units()[self.HERO]
+        assert _c(b, "dbid") == "21202" and _c(b, "subciv") == "Stuart" and _c(b, "populationcount") == "0" and _c(b, "buildlimit") == "1"
+        for tag in ("<unittype>Hero</unittype>", "<unittype>ExcludeFromRansom</unittype>", "<flag>KnockoutDeath</flag>", "<flag>NotDeleteable</flag>",
+                    '<train row="0" page="0" column="0">TradingPost</train>', '<train row="0" page="0" column="1">deSPCHMCavalier</train>',
+                    '<command page="11" column="0">Abilities</command>', "<name>SwashbucklerAttack</name>"):
+            assert tag in b, tag
+        assert re.search(r'<name>Build</name>\s*<rate type="TradingPost">', b) and "Consulate" not in b
+        # stronger with the split (user 2026-09-24): 1200 hp, pistol 28, sabre 40, trample 32 (cap 120), charge 260
+        assert _c(b, "maxhitpoints") == "1200.0000" and _c(b, "tactics") == "zpprincerupert.tactics"
+        for name, dmg in (("DefendRangedAttack", "28"), ("MeleeHandAttack", "40"), ("TrampleHandAttack", "32"), ("SwashbucklerAttack", "260")):
+            assert re.search(r"<name>%s</name>\s*<damage>%s\.0" % (name, dmg), b), name
+
+    def test_respawns_builds_and_collects_in_every_tactic(self):
+        t = (REPO / "data/tactics/zpprincerupert.tactics").read_bytes()
+        assert t.count(b"\r\n") == t.count(b"\n")
+        s = t.decode("utf-8")
+        assert '<rate type="%s">1.0</rate>' % self.HERO in s and "<restricttoknockout>1</restricttoknockout>" in s
+        assert "<modifyabstracttype>AbstractCavalry</modifyabstracttype>" in s and "<modifymultiplier>1.15</modifymultiplier>" in s
+        for a in ("HeroRespawn", "Build", "Discover", "RupertsHorse", "RecruitGuardian"):
+            assert s.count("<action>%s</action>" % a) == 5, a
+        assert s.count("<tactic>") == 5 and '<action priority="1">SwashbucklerAttack</action>' in s
+
+    def test_cavalier_design_with_the_hero_circle(self):
+        h = (REPO / "art/units/stuart/prince_rupert_horse.xml").read_bytes()
+        r = (REPO / "art/units/stuart/prince_rupert_rider.xml").read_bytes()
+        for f in (h, r):
+            assert f.count(b"\r\n") == f.count(b"\n")
+            for anim in (b"<anim>Pickup", b"<anim>Build", b"<anim>BuildLifting", b"<anim>BuildSaw", b"<anim>BuildStaking"):
+                assert anim in f, anim
+        assert b"selection_hero_64x64" in h and b"consulate" not in h and b"prince_rupert_rider.xml" in h
+        assert b"rieter_age4_rider" in r and b'<materialvariant index="1" />' in r     # the vanilla Cavalier look, by path
+        s = (REPO / "sound/zpnatprincerupert_snds.xml").read_text(encoding="utf-8")
+        # the British Skirmisher's voice (user 2026-09-24), the cavalry grunt kept; no Skirmisher revive line exists
+        assert '<protounit name="%s">' % self.HERO in s and "Explorer" not in s and '<soundset name="CavalryGrunt" />' in s
+        for ss in ("BritishSkirmisherSelect", "BritishSkirmisherAcknowledge", "BritishSkirmisherAttack"):
+            assert '<soundset name="%s" />' % ss in s, ss
+
+    def test_abilities_age_scaling_and_names(self):
+        a = _read("data/abilities/abilitymods.xml"); p = _read("data/abilities/powermods.xml")
+        blk = a[a.index("<zpnatprincerupert>"):a.index("</zpnatprincerupert>")]
+        for ab in ("PowerSwashbuckler<rof>45</rof>", "zpPassiveRupertsHorse", "PowerRecruitGuardian<rof>90</rof>", "deUnitHealthRegen"):
+            assert ab in blk, ab
+        assert re.search(r'<power name="zpPassiveRupertsHorse" type="UnitAction">.*?<displaynameid>503586</displaynameid>', p, re.S)
+        T = _techs()
+        for tech, amt in (("zHeroIndustrializeShadow", "1.20"), ("zpHeroImperializeShadow", "1.30")):
+            for sub in ("Hitpoints", "Damage"):
+                assert re.search(r'amount="%s" subtype="%s"[^>]*>\s*<target type="ProtoUnit">%s<' % (re.escape(amt), sub, self.HERO), T[tech]), (tech, sub)
+        st = _read("data/strings/english/stringmods.xml")
+        assert '<string _locid="503583">Prince Rupert of the Rhine</string>' in st
+
+
+# ------------------------------------------------------------------- The Last Cavalier (2026-09-24)
+class TestLastCavalier:
+    """User 2026-09-24: Rupert split off the Sovereign of the Seas - he arrives with 10 Cavaliers instead of alone on a
+    ship, at p2 c5 of the Stuart Trading Post (the Royal Burgh's slot); the icon is his portrait in the tech frame."""
+    TECH = "zpStuartLastCavalier"
+
+    def test_the_tech(self):
+        T = _techs(); b = T[self.TECH]; s = _read("data/techtreemods.xml")
+        assert _c(b, "dbid") == "41563" and _c(b, "displaynameid") == "503589" and _c(b, "rollovertextid") == "503590"
+        assert "<status>UNOBTAINABLE</status>" in b and ">Fortressize</techstatus>" in b
+        assert '<cost resourcetype="Food">1000.0000</cost>' in b and '<cost resourcetype="Gold">1000.0000</cost>' in b
+        assert 'amount="1.00" subtype="FreeHomeCityUnit" unittype="zpNatPrinceRupert"' in b
+        assert 'amount="10.00" subtype="FreeHomeCityUnit" unittype="deSPCHMCavalier"' in b
+        assert re.search(r'subtype="Enable"[^>]*>\s*<target type="ProtoUnit">deSPCHMCavalier<', b)
+        assert re.search(r'amount="10.00" subtype="BuildLimit"[^>]*>\s*<target type="ProtoUnit">deSPCHMCavalier<', b)
+        assert b.count("<effect ") == 4 and "Shipped" not in b and "CheckWaterHCGatherPoint" not in b    # overland, no ship
+        assert s.index('name="zpGuardWhitecoat"') < s.index('name="%s"' % self.TECH) < s.index("<!--TEST TECHS-->")
+        assert '<effect mergemode="add" type="TechStatus" status="obtainable">%s</effect>' % self.TECH in T["DENativeStuart"]
+        for ext in ("zpStuartExpansion", "zpStuartExpansionSPC"):
+            assert '<effect type="CommandAdd" tech="%s" page="2" column="5">' % self.TECH in T[ext], ext
+
+    def test_icon_is_the_portrait_in_the_tech_frame(self):
+        Image = pytest.importorskip("PIL.Image")      # CI may lack PIL
+        icon = "resources" + chr(92) + "images" + chr(92) + "icons" + chr(92) + "techs" + chr(92) + "stuart" + chr(92) + "last_cavalier.png"
+        assert "<icon>" + icon + "</icon>" in _techs()[self.TECH]
+        a = Image.open(REPO / "data/wpfg" / icon.replace(chr(92), "/")).convert("RGBA")
+        frame = Image.open(REPO / "data/wpfg/resources/images/icons/techs/stuart/sovereign_seas.png").convert("RGBA")
+        assert a.size == (128, 128)
+        assert a.getpixel((2, 64)) == frame.getpixel((2, 64)) and a.getpixel((64, 2)) == frame.getpixel((64, 2))   # the same gold border
+
+    def test_strings(self):
+        st = _read("data/strings/english/stringmods.xml")
+        assert '<string _locid="503589">The Last Cavalier</string>' in st
+        roll = re.search(r'<string _locid="503590">([^<]*)</string>', st).group(1)
+        assert "Prince Rupert" in roll and "10 Cavaliers" in roll and "up to 10" in roll
+        for sid in ("503582", "503566"):
+            line = re.search(r'<string _locid="%s">([^<]*)</string>' % sid, st).group(1)
+            assert "Unlocks The Last Cavalier" in line and "Royal Burgh" not in line, sid
+        assert "The Last Cavalier" in re.search(r'<string _locid="503550">([^<]*)</string>', st).group(1)
+
+    def test_cavalier_speaks_like_the_british_dragoon(self):
+        """User 2026-09-24: vanilla's deSPCHMCavalier sends attack orders to BritishDragoonAttack, a soundset no vanilla
+        file defines (silent); the override is vanilla dragoon_snds with only its British branch, flattened."""
+        b = (REPO / "sound/despchmcavalier_snds.xml").read_bytes()
+        assert b.count(b"\r\n") == b.count(b"\n") > 0
+        s = b.decode("utf-8").replace(chr(13), "")
+        assert '<protounit name="deSPCHMCavalier">' in s and "civlogic" not in s and "BritishDragoonAttack" not in s
+        assert s.count('<soundset name="BritishDragoonAcknowledge" />') == 2 and '<soundset name="BritishDragoonSelect" />' in s
+        for ss in ("CavalryGrunt", "GenericMaleDeath", "MilitaryBirth"):
+            assert '<soundset name="%s" />' % ss in s, ss

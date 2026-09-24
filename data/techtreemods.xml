@@ -6000,6 +6000,12 @@
       </effect>
       <effect mergemode="add" type="SetName" proto="zpNatMercInuitHarpooner" culture="none" newname="500584">
       </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatRedcoat" culture="none" newname="503581">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatWhitecoat" culture="none" newname="503576">
+      </effect>
+      <effect mergemode="add" type="SetName" proto="zpNatMercRedcoat" culture="none" newname="503581">
+      </effect>
     </effects>
   </tech>
   <!--Native upgrade techs activation-->
@@ -13753,6 +13759,12 @@
       <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCHayreddin</target>
       </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatPrinceRupert</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatPrinceRupert</target>
+      </effect>
     </effects>
   </tech>
   <tech name="zpHeroImperializeShadow" type="Normal">
@@ -13844,6 +13856,12 @@
       </effect>
       <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
         <target type="ProtoUnit">zpSPCHayreddin</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatPrinceRupert</target>
+      </effect>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatPrinceRupert</target>
       </effect>
     </effects>
   </tech>
@@ -37793,6 +37811,9 @@
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">zpNatLord</target>
       </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRedcoat</target>
+      </effect>
       <effect type="TechStatus" status="obtainable">zpNatVeteranParliament</effect>
       <effect type="TechStatus" status="obtainable">zpNatGuardParliament</effect>
       <effect type="TechStatus" status="obtainable">zpIndianFriendshipParliament</effect>
@@ -37838,6 +37859,26 @@
       <effect type="SetName" proto="zpNatLord" culture="none" newname="503452">
       </effect>
       <effect type="SetName" proto="zpNatLord" culture="none" newname="503454" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRedcoat</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRedcoat</target>
+      </effect>
+      <effect type="SetName" proto="zpNatRedcoat" culture="none" newname="503579">
+      </effect>
+      <effect type="SetName" proto="zpNatRedcoat" culture="none" newname="503581" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercRedcoat</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercRedcoat</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMercRedcoat" culture="none" newname="503579">
+      </effect>
+      <effect type="SetName" proto="zpNatMercRedcoat" culture="none" newname="503581" reqtech="ImpLegendaryNativesShadow">
       </effect>
     </effects>
   </tech>
@@ -37909,6 +37950,26 @@
       </effect>
       <effect type="SetName" proto="zpNatMercIronside" culture="none" newname="503458" reqtech="ImpLegendaryNativesShadow">
       </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRedcoat</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRedcoat</target>
+      </effect>
+      <effect type="SetName" proto="zpNatRedcoat" culture="none" newname="503580">
+      </effect>
+      <effect type="SetName" proto="zpNatRedcoat" culture="none" newname="503581" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercRedcoat</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercRedcoat</target>
+      </effect>
+      <effect type="SetName" proto="zpNatMercRedcoat" culture="none" newname="503580">
+      </effect>
+      <effect type="SetName" proto="zpNatMercRedcoat" culture="none" newname="503581" reqtech="ImpLegendaryNativesShadow">
+      </effect>
     </effects>
   </tech>
   <tech name="zpNativeTreatyParliament" type="Normal">
@@ -37920,7 +37981,7 @@
       <techstatus status="Active">HCNativeTreaties</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpNatLord" relativity="Absolute">
+      <effect type="Data" amount="4.00" subtype="FreeHomeCityUnit" unittype="zpNatMercRedcoat" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -37935,7 +37996,7 @@
       <techstatus status="Active">DEIndianFriendshipShadow</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="2.00" subtype="FreeHomeCityUnit" unittype="zpNatLord" relativity="Absolute">
+      <effect type="Data" amount="6.00" subtype="FreeHomeCityUnit" unittype="zpNatMercRedcoat" relativity="Absolute">
         <target type="Player">
         </target>
       </effect>
@@ -38234,51 +38295,33 @@
     <rollovertextid>503489</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardMilitaryScore</flag>
-    <flag>TeamTech</flag>
     <prereqs>
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatIronside</target>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRedcoat</target>
       </effect>
-      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatIronside</target>
-      </effect>
-      <effect type="Data" amount="0.75" subtype="TrainPoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatIronside</target>
-      </effect>
-      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatMercIronside</target>
-      </effect>
-      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatMercIronside</target>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatRedcoat</target>
       </effect>
       <effect type="Data" amount="0.75" subtype="TrainPoints" relativity="BasePercent">
-        <target type="ProtoUnit">zpNatMercIronside</target>
+        <target type="ProtoUnit">zpNatRedcoat</target>
       </effect>
-      <effect type="Data" amount="5.00" subtype="BuildLimit" relativity="Absolute">
-        <target type="ProtoUnit">zpNatIronside</target>
+      <effect type="Data" amount="10.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">zpNatRedcoat</target>
       </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">zpNatMercIronside</target>
+      <effect type="Data" amount="1.10" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">Musketeer</target>
       </effect>
-      <effect type="CommandAdd" proto="zpNatMercIronside" page="0" column="137">
-        <target type="ProtoUnit">NativeEmbassy</target>
+      <effect type="Data" amount="1.10" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">Musketeer</target>
       </effect>
-      <effect type="CommandRemove" proto="zpNatIronside">
-        <target type="ProtoUnit">NativeEmbassy</target>
+      <effect type="Data" amount="1.30" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercRedcoat</target>
       </effect>
-      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpNativeEmbassyWagon" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="Data" amount="5.00" subtype="FreeHomeCityUnit" unittype="zpNatMercIronside" relativity="Absolute">
-        <target type="Player">
-        </target>
-      </effect>
-      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
-        <target type="ProtoUnit">NativeEmbassy</target>
+      <effect type="Data" amount="1.30" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatMercRedcoat</target>
       </effect>
     </effects>
   </tech>
@@ -38621,7 +38664,7 @@
       <effect mergemode="add" type="TechStatus" status="obtainable">zpStuartExpansion</effect>
       <effect mergemode="add" type="TechStatus" status="obtainable">zpStuartExpansionSPC</effect>
       <effect mergemode="add" type="TechStatus" status="obtainable">zpStuartSovereignSeas</effect>
-      <effect mergemode="add" type="TechStatus" status="obtainable">zpStuartRoyalBurgh</effect>
+      <effect mergemode="add" type="TechStatus" status="obtainable">zpStuartLastCavalier</effect>
     </effects>
   </tech>
   <tech name="DENativeStuartColonialize">
@@ -38648,9 +38691,15 @@
       <techstatus status="Active">Industrialize</techstatus>
     </prereqs>
     <effects>
-      <effect type="Data2" amount="1.00" amount2="16.00" subtype="FreeHomeCityUnitShipped" unittype="zpSPCRegalShip" unittype2="deSPCHMWhitecoat" relativity="Absolute">
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpSPCRegalShip" relativity="Absolute">
         <target type="Player">
         </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpSPCRegalShip</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpSPCRegalShip" page="0" column="9">
+        <target type="ProtoUnit">AbstractDock</target>
       </effect>
       <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
         <target type="ProtoUnit">deSPCHMWhitecoat</target>
@@ -38685,7 +38734,7 @@
       <effect type="CommandAdd" tech="zpStuartSovereignSeas" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpStuartRoyalBurgh" page="2" column="5">
+      <effect type="CommandAdd" tech="zpStuartLastCavalier" page="2" column="5">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -38789,7 +38838,7 @@
     <cost resourcetype ="Food">250.0000</cost>
     <cost resourcetype ="Wood">250.0000</cost>
     <cost resourcetype ="Gold">250.0000</cost>
-    <rollovertextid>503550</rollovertextid>
+    <rollovertextid>503582</rollovertextid>
     <flag>YPNativeImprovement</flag>
     <flag>CountsTowardEconomicScore</flag>
     <flag>NativeDance</flag>
@@ -38800,7 +38849,21 @@
       <effect type="CommandAdd" tech="zpStuartSovereignSeas" page="2" column="6">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
-      <effect type="CommandAdd" tech="zpStuartRoyalBurgh" page="2" column="5">
+      <effect type="CommandAdd" tech="zpStuartLastCavalier" page="2" column="5">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="TransformUnit" fromprotoid="deNatLowlanderInfantry" toprotoid="zpNatWhitecoat" />
+      <effect type="TransformUnit" fromprotoid="deNatLowlanderRider" toprotoid="zpNatWhitecoat" />
+      <effect type="Data" amount="0.00" subtype="Enable" relativity="Assign">
+        <target type="ProtoUnit">deNatLowlanderInfantry</target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">zpNatWhitecoat</target>
+      </effect>
+      <effect type="CommandRemove" proto="deNatLowlanderInfantry">
+        <target type="ProtoUnit">TradingPost</target>
+      </effect>
+      <effect type="CommandAdd" proto="zpNatWhitecoat" page="0" column="2">
         <target type="ProtoUnit">TradingPost</target>
       </effect>
     </effects>
@@ -38890,6 +38953,81 @@
         <target type="ProtoUnit">TradingPost</target>
       </effect>
       <effect type="TechStatus" status="unobtainable">zpNatStuartBigbuttonDisableShadow</effect>
+    </effects>
+  </tech>
+  <tech name="zpVeteranWhitecoat" type="Normal">
+    <dbid>41561</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEVeteranStuart</techstatus>
+      <techstatus status="Active">zpStuartExpansionSPC</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.20" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatWhitecoat</target>
+      </effect>
+      <effect type="Data" amount="1.20" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatWhitecoat</target>
+      </effect>
+      <effect type="SetName" proto="zpNatWhitecoat" culture="none" newname="503574">
+      </effect>
+      <effect type="SetName" proto="zpNatWhitecoat" culture="none" newname="503576" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpGuardWhitecoat" type="Normal">
+    <dbid>41562</dbid>
+    <researchpoints>0.0000</researchpoints>
+    <status>OBTAINABLE</status>
+    <flag>Shadow</flag>
+    <prereqs>
+      <techstatus status="Active">DEGuardStuart</techstatus>
+      <techstatus status="Active">zpStuartExpansionSPC</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.40" subtype="Hitpoints" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatWhitecoat</target>
+      </effect>
+      <effect type="Data" amount="1.40" subtype="Damage" allactions="1" relativity="BasePercent">
+        <target type="ProtoUnit">zpNatWhitecoat</target>
+      </effect>
+      <effect type="SetName" proto="zpNatWhitecoat" culture="none" newname="503575">
+      </effect>
+      <effect type="SetName" proto="zpNatWhitecoat" culture="none" newname="503576" reqtech="ImpLegendaryNativesShadow">
+      </effect>
+    </effects>
+  </tech>
+  <tech name="zpStuartLastCavalier" type="Normal">
+    <dbid>41563</dbid>
+    <displaynameid>503589</displaynameid>
+    <cost resourcetype="Food">1000.0000</cost>
+    <cost resourcetype="Gold">1000.0000</cost>
+    <researchpoints>40.0000</researchpoints>
+    <status>UNOBTAINABLE</status>
+    <icon>resources\images\icons\techs\stuart\last_cavalier.png</icon>
+    <rollovertextid>503590</rollovertextid>
+    <flag>YPNativeImprovement</flag>
+    <flag>CountsTowardMilitaryScore</flag>
+    <prereqs>
+      <techstatus status="Active">Fortressize</techstatus>
+    </prereqs>
+    <effects>
+      <effect type="Data" amount="1.00" subtype="FreeHomeCityUnit" unittype="zpNatPrinceRupert" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="10.00" subtype="FreeHomeCityUnit" unittype="deSPCHMCavalier" relativity="Absolute">
+        <target type="Player">
+        </target>
+      </effect>
+      <effect type="Data" amount="1.00" subtype="Enable" relativity="Absolute">
+        <target type="ProtoUnit">deSPCHMCavalier</target>
+      </effect>
+      <effect type="Data" amount="10.00" subtype="BuildLimit" relativity="Absolute">
+        <target type="ProtoUnit">deSPCHMCavalier</target>
+      </effect>
     </effects>
   </tech>
 <!--TEST TECHS-->
