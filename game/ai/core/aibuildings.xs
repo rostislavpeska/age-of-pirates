@@ -127,6 +127,7 @@ void buildingPlacementFailedHandler(int baseID = -1, int puid = -1)
    }
    if (puid == gDockUnit || puid == cUnitTypezpDrydock || puid == cUnitTypezpWaterFort)
    {
+      gPlacementFailuresDock = gPlacementFailuresDock + 1;   // AI test campaign counter (aiTestDiag), no behaviour
       return;
    }
    if ((puid == cUnitTypedeTorp) && (cMyCiv == cCivDESwedish))

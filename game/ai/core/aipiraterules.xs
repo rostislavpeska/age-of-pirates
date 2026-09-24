@@ -8700,6 +8700,6 @@ minInterval 60
           + " bldg " + kbUnitCount(cMyID, cUnitTypeLogicalTypeBuildingsNotWalls, cUnitStateAlive)
           + " baseR " + baseRadius + " fails " + gPlacementFailures + " failsTC " + gPlacementFailuresTC
           + " london " + london + " tps " + kbUnitCount(cMyID, cUnitTypeTradingPost, cUnitStateAlive)
-          + " docks " + kbUnitCount(cMyID, gDockUnit, cUnitStateABQ) + " dockplan " + dockPlan + " state " + dockState
+          + " docks " + kbUnitCount(cMyID, gDockUnit, cUnitStateABQ) + " dockfails " + gPlacementFailuresDock + " dockplan " + dockPlan + " state " + dockState
           + " fishers " + kbUnitCount(cMyID, gFishingUnit, cUnitStateAlive) + " navymap " + navyMap + " fishmap " + fishMap);
 }

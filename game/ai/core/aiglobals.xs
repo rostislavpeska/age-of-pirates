@@ -624,6 +624,7 @@ extern int gDebugCoreID = -1;
 //==============================================================================
 extern bool gAITestDiag = true;                 // AIDIAG echo once a minute on EVERY map - echo only, no behaviour; false for release
 extern int gPlacementFailures = 0;              // buildingPlacementFailedHandler calls (every building type)
+extern int gPlacementFailuresDock = 0;          // ... of them docks (the handler returns early for docks: otherwise invisible)
 extern int gPlacementFailuresTC = 0;            // ... of them Town Centers
 extern bool gIsLondon = false;                  // set by initializePirateRules on the player's own zpAILondonBridge marker
 extern vector gLondonConstrOurs = cInvalidVector;   // London: the construction block at our bridge landing (its unique zpUnderbrushConstructionJesuitTemple), read once in londonSetup
