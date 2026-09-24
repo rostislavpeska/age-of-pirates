@@ -88,9 +88,15 @@ class TestLondonCriteria:
                                "00:05:00  (1): LONDONGATE p2 tasked 8 on 5 nearKeep"]
         assert self.verdicts(L)["L6"] == "FAIL"
 
-    def test_a_garrison_below_three_fails_l8(self):
-        L = [l.replace("6 holding", "2 holding") for l in london_record()]
-        assert self.verdicts(L)["L8"] == "FAIL"
+    def test_a_keep_lost_longer_than_300_s_fails_l8(self):
+        L = london_record() + ["00:11:00  (1): LONDONHOLD p2 6 retaking keep 1764 near owner 5",
+                               "00:17:00  (1): LONDONHOLD p2 6 holding keep 1764 near owner 2"]
+        assert self.verdicts(sorted(L, key=criteria_london.gtime))["L8"] == "FAIL"
+
+    def test_a_keep_retaken_within_300_s_passes_l8(self):
+        L = london_record() + ["00:11:00  (1): LONDONHOLD p2 6 retaking keep 1764 near owner 5",
+                               "00:14:00  (1): LONDONHOLD p2 6 holding keep 1764 near owner 2"]
+        assert self.verdicts(sorted(L, key=criteria_london.gtime))["L8"] == "PASS"
 
     def test_round_two_ids_are_skipped_on_a_round_one_build(self):
         L = [l.replace("build r3", "build r1") for l in london_record()]
@@ -242,8 +248,8 @@ class TestLondonOnlyPlacement:
                 continue
             assert any("gIsLondon == true" in h for h in enclosing_headers(lines, i)), (i + 1, lines[i])
 
-    def test_build_echo_is_round_six(self):
-        assert "build r6 2026-09-24" in core("aipiraterules.xs")
+    def test_build_echo_is_round_nine(self):
+        assert "build r9 2026-09-24" in core("aipiraterules.xs")
 
 
 def diag4(t, p=2, baseR=40.0, fails=0, farms=0, plant=0, london=1):
@@ -416,6 +422,8 @@ APPROVED_LONDON_CODE = {
     ("aipiraterules.xs", "londonGateKiller"): "plan round 2",
     ("aipiraterules.xs", "londonHoldKeep"): "plan round 3",
     ("aipiraterules.xs", "londonKeepHold"): "plan round 3",
+    # owner 2026-09-24 (option 2: 'good, edit AI'): the army retakes our lost near Keep
+    ("aipiraterules.xs", "londonKeepRetake"): "retake our enemy-held near Keep with the gate killer's reserve",
     ("aipiraterules.xs", "aiTestDiag"): "echo-only test diagnostic, owner baseline plan 2026-09-23",
     # aibuildings.xs - owner 2026-09-23: 'AI can absolutely use the space behind the walls ... farms / plantations /
     # mills / Folwarks'; the London-only placement fix of the night plan
@@ -483,3 +491,44 @@ class TestRoundSixCriteria:
     def test_a_reappeared_gate_left_alone_fails(self):
         L = self.base() + ["00:20:00  (1): LONDONGATE p2 gate 900 reappeared kind bridgeFar owner 3 hp 2000 - reserve again"]
         assert self.verdicts(L)["L9"] == "FAIL"
+
+
+def suspect_and_then_subtraction_compare(cond):
+    """Run 32 (2026-09-24): aibuildings.xs(3405) 'if (gAITestDiag == true && xsGetTime() - dockDiagTime >= 60000)'
+    -> XS Error 0308 / 0135, every AI dead. An unparenthesised subtraction compared right after '&&'; the stock core
+    never writes it (0 conditions). Plain steps into a local are the safe form."""
+    return re.search(r"&&\s*[A-Za-z_][\w.]*(\([^()]*\))?\s*-\s*[A-Za-z_]\w*(\([^()]*\))?\s*(<|>|<=|>=|==)", cond) is not None
+
+
+@pytest.mark.parametrize("name", sorted(f for f in os.listdir(CORE) if f.endswith(".xs")))
+def test_no_condition_has_the_run_32_rejected_shape(name):
+    text = re.sub(r"//[^\n]*", "", core(name))
+    bad = [(n, c.strip()[:90]) for n, c in xs_conditions(text) if suspect_and_then_subtraction_compare(c)]
+    assert not bad, bad
+
+
+def test_the_lint_catches_the_run_32_line():
+    assert suspect_and_then_subtraction_compare("gAITestDiag == true && xsGetTime() - dockDiagTime >= 60000")
+    assert not suspect_and_then_subtraction_compare("xsGetTime() - gLastAttackMissionTime < (gAttackMissionInterval * 0.65)")
+
+
+def test_the_driver_always_takes_the_loaded_screenshot():
+    s = open(os.path.join(AITEST, "driver.py"), encoding="utf-8").read()
+    assert "LOADED SCREENSHOT" in s and "loaded.png" in s
+
+
+class TestFieldDistance:
+    def base(self):
+        return [l.replace("build r3", "build r9") for l in london_record()]
+
+    def verdicts(self, L):
+        return {r[0]: r[2] for r in criteria_london.evaluate({2: sorted(L, key=criteria_london.gtime)})}
+
+    def test_near_fields_pass_f1(self):
+        L = self.base() + ["00:15:00  (1): LONDONPLACE p2 field Plantation plan 5 at the countryside 1/2 dist 95.2"]
+        assert self.verdicts(L)["F1"] == "PASS"
+
+    def test_a_far_field_fails_f1(self):
+        L = self.base() + ["00:15:00  (1): LONDONPLACE p2 field Plantation plan 5 at the countryside 1/2 dist 95.2",
+                           "00:18:00  (1): LONDONPLACE p2 field Plantation plan 6 at the countryside 1/2 dist 310.0"]
+        assert self.verdicts(L)["F1"] == "FAIL"

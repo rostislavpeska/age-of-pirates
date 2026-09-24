@@ -38,6 +38,12 @@ violation; everything was reverted, and 5 runs were lost.
 - **Map design facts:** read the map's memory and brief first. London: the city is the battlefield, the walls are
   decorative, and the bridge and every Trading Post are claimed normally.
 
+## 0b. After EVERY match load: look at the loaded screenshot. No exception.
+
+The driver saves `loaded.png` right after each load and prints `LOADED SCREENSHOT ... - LOOK AT IT`. Read that
+image before anything else in that run. An AI compile-error dialog appears there before any log is read (runs 19
+and 32; in run 32 the owner saw the dialog first). Report it at once, then fix, dismiss and rerun.
+
 ## 1. The done-rule
 
 When the owner's requirement is met and its criteria pass on two consecutive runs: **stop**.

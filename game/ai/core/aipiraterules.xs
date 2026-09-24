@@ -31,6 +31,7 @@ extern int gLondonDiagPass = 0;
 // round 2 (2026-09-23): war plan + gate killer. Run 15 measured kbCanPath2 = 1 across both standing gaia bridge
 // gates and one area group for both banks, so the crossing is judged by the gates' state, not by the pathfinder.
 extern int gLondonWarPasses = 0;                // passes held
+extern bool gLondonRetaking = false;           // londonKeepRetake owns the gate killer's reserve while our near Keep is enemy-held
 extern int gLondonGateArr = -1;                 // scratch array for the fresh gate query (londonBlockingGate)
 extern int gLondonBlockCount = 0;               // blocking gates the last londonBlockingGate call found
 extern int gLondonGatePlan = -1;                // the gate killer's reserve, pri 90 (Paris cityGateKiller)
@@ -335,7 +336,7 @@ minInterval 1
       gIsLondon = true;
       xsEnableRule("buildPirateSocketTowers");   // rebuilds the Keep and bridge towers: it already queries both socket protos
       xsEnableRule("londonSetup");
-      aiEcho("LONDON p" + cMyID + " build r6 2026-09-24 - marker found, London rules on");
+      aiEcho("LONDON p" + cMyID + " build r9 2026-09-24 - marker found, London rules on");
    }
 
    // Naval KOTH Maps %%%%%%%%%%%%%%%%%%%%%%%
@@ -8091,6 +8092,7 @@ minInterval 10
    }
    xsEnableRule("londonWarPlan");
    xsEnableRule("londonKeepHold");
+   xsEnableRule("londonKeepRetake");
    xsEnableRule("londonGateKiller");
    xsDisableSelf();
 }
@@ -8458,6 +8460,11 @@ minInterval 5
    vector targetLoc = cInvalidVector;
    vector fromLoc = cInvalidVector;
 
+   // the retake (londonKeepRetake) owns the reserve while our near Keep is enemy-held
+   if (gLondonRetaking == true)
+   {
+      return;
+   }
    target = londonGateTarget();
    if (lastTarget >= 0 && target != lastTarget)
    {
@@ -8763,4 +8770,89 @@ minInterval 60
           + " london " + london + " tps " + kbUnitCount(cMyID, cUnitTypeTradingPost, cUnitStateAlive)
           + " docks " + kbUnitCount(cMyID, gDockUnit, cUnitStateABQ) + " dockfails " + gPlacementFailuresDock + " dockplan " + dockPlan + " state " + dockState
           + " fishers " + kbUnitCount(cMyID, gFishingUnit, cUnitStateAlive) + " navymap " + navyMap + " fishmap " + fishMap);
+}
+
+//==============================================================================
+// londonKeepRetake - owner 2026-09-24 (option 2 after runs 32b / 32c): the AIs now fight over the Keeps (a captured
+// Keep's gates change owner and the other team's gate killer attacks them); when OUR near Keep's flag is enemy-held,
+// the gate killer's reserve (the main army after the gates) marches to that flag instead of chasing far-Keep gates -
+// run 32c: P2's near Keep was enemy-held for 3.5 min while its army attacked the far Keep. The Keep hold garrison
+// (londonKeepHold, pri 101) keeps doing its part. Echo: LONDONKEEP p<N> retaking ... / retake done.
+//==============================================================================
+rule londonKeepRetake
+inactive
+minInterval 5
+{
+   static int lastBeat = -60000;
+   int owner = -1;
+   int count = 0;
+   int unit = -1;
+   bool lost = false;
+   int gate = -1;
+   int foe = -1;
+   vector flagLoc = cInvalidVector;
+
+   if (gLondonKeepNear < 0)
+   {
+      return;
+   }
+   owner = londonKeepFlagOwner(gLondonKeepNear);
+   if (owner > 0)
+   {
+      if (kbGetPlayerTeam(owner) != kbGetPlayerTeam(cMyID))
+      {
+         lost = true;
+      }
+   }
+   if (lost == false)
+   {
+      if (gLondonRetaking == true)
+      {
+         gLondonRetaking = false;
+         aiEcho("LONDONKEEP p" + cMyID + " retake done - near keep " + gLondonKeepNear + " owner " + owner);
+      }
+      return;
+   }
+   if (gLondonRetaking == false)
+   {
+      gLondonRetaking = true;
+      lastBeat = -60000;
+   }
+   if (gLondonGatePlan < 0)
+   {
+      gLondonGatePlan = aiPlanCreate("London Gate Killer", cPlanReserve);
+      aiPlanAddUnitType(gLondonGatePlan, cUnitTypeLogicalTypeLandMilitary, 0, 100, 200);
+      aiPlanSetDesiredPriority(gLondonGatePlan, 90);
+      aiPlanSetActive(gLondonGatePlan);
+   }
+   flagLoc = londonKeepFlagLoc(gLondonKeepNear);
+   count = aiPlanGetNumberUnits(gLondonGatePlan, cUnitTypeLogicalTypeLandMilitary);
+   // run 33: a move order does not fight, and a captured Keep is shut by its (now enemy) gates - so: the blocking Keep
+   // gate first, then the enemy soldiers at the flag, then onto the flag
+   gate = londonKeepGate(gLondonKeepNear);
+   if (gate < 0)
+   {
+      foe = getClosestUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia, cUnitStateAlive, flagLoc, 30.0);
+   }
+   for (i = 0; < count)
+   {
+      unit = aiPlanGetUnitByIndex(gLondonGatePlan, i);
+      if (gate >= 0)
+      {
+         aiTaskUnitWork(unit, gate);
+      }
+      else if (foe >= 0)
+      {
+         aiTaskUnitWork(unit, foe);
+      }
+      else
+      {
+         aiTaskUnitMove(unit, getRandomPoint(flagLoc, 8));
+      }
+   }
+   if (xsGetTime() - lastBeat >= 30000)
+   {
+      lastBeat = xsGetTime();
+      aiEcho("LONDONKEEP p" + cMyID + " retaking near keep " + gLondonKeepNear + " owner " + owner + " with " + count + " gate " + gate + " foe " + foe);
+   }
 }

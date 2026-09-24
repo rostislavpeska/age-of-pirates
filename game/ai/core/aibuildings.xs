@@ -952,7 +952,7 @@ vector londonFieldPoint(void)
       side = -1.0;
    }
    // the gates first, into the array (one shared query object: read it before any other query runs)
-   gateQuery = createSimpleUnitQuery(cUnitTypeSPCFortGate, cPlayerRelationAlly, cUnitStateAlive, tcVec, 400.0);
+   gateQuery = createSimpleUnitQuery(cUnitTypeSPCFortGate, cPlayerRelationAlly, cUnitStateAlive, tcVec, 160.0);   // only the gates behind our own seat (owner 2026-09-24: estates were built far away)
    gateCount = kbUnitQueryExecute(gateQuery);
    for (i = 0; < gateCount)
    {
@@ -978,8 +978,13 @@ vector londonFieldPoint(void)
       gateVec = kbUnitGetPosition(gate);
       point = xsVectorSet(xsVectorGetX(gateVec), 0.0, xsVectorGetZ(gateVec) + side * 40.0);
       crowd = getUnitCountByLocation(cUnitTypeBuilding, cPlayerRelationAlly, cUnitStateABQ, point, 50.0);
-      score = crowd * 30.0;
-      score = score + distance(point, tcVec) / 10.0;
+      // the nearest gate wins; the next nearest only once it holds 4+ buildings (was: crowd x 30 + distance / 10 - a gate
+      // 300 m away cost as much as one building, so the estates drifted to the far end of the bank)
+      score = distance(point, tcVec);
+      if (crowd >= 4)
+      {
+         score = score + 1000.0;
+      }
       if (score < bestScore)
       {
          bestScore = score;
@@ -1025,12 +1030,8 @@ bool londonSelectFieldPosition(int planID = -1, int puid = -1)
    }
    aiPlanSetVariableVector(planID, cBuildPlanCenterPosition, 0, point);
    aiPlanSetVariableFloat(planID, cBuildPlanCenterPositionDistance, 0, 60.0);
-   if (xsGetTime() - gLondonPlaceEcho >= 30000)
-   {
-      gLondonPlaceEcho = xsGetTime();
-      aiEcho("LONDONPLACE p" + cMyID + " field " + kbGetProtoUnitName(puid) + " plan " + planID + " at the countryside "
-             + xsVectorGetX(point) + "/" + xsVectorGetZ(point));
-   }
+   aiEcho("LONDONPLACE p" + cMyID + " field " + kbGetProtoUnitName(puid) + " plan " + planID + " at the countryside "
+          + xsVectorGetX(point) + "/" + xsVectorGetZ(point) + " dist " + distance(point, kbBaseGetLocation(cMyID, kbBaseGetMainID(cMyID))));
    return (true);
 }
 
@@ -1943,29 +1944,46 @@ bool addBuilderToPlan(int planID = -1, int puid = -1, int numberBuilders = 1)
 //==============================================================================
 //==============================================================================
 // londonReadConstructionBlocks - the two construction blocks at the bridge landings (EU_SPC_Block_Constr, zplondon.xs
-// 977-978) by their unique unit zpUnderbrushConstructionJesuitTemple: the forward base goes to the enemy's (owner
-// 2026-09-24: 'the construction block ... target the unique units instead of the map spot, which can differ per
-// amount of players or change in refactoring'). Read once: the unit is DestroyUnderBuilding, a building on the block
-// removes it. Sorted from our town centre: the first is ours, the last the enemy's.
+// 10.2) by the AI marker the map places on each (zpAILondonConstrMarker, zplondon.xs 12.11 - one per player per block,
+// owned by us: the bridge marker's proven pattern). Owner 2026-09-24: 'a new construction marker unit trackable by AI'
+// - the block's own prop (zpUnderbrushConstructionJesuitTemple) is an embellishment the AI never sees (run 30: found
+// 0). Ours = the marker nearest our base, far = the farthest: the forward base goes to the enemy block.
 //==============================================================================
 void londonReadConstructionBlocks(vector from = cInvalidVector)
 {
    int q = -1;
    int n = 0;
+   int unit = -1;
+   float d = 0.0;
+   float nearD = 100000.0;
+   float farD = -1.0;
+   vector v = cInvalidVector;
 
    if (gIsLondon == false)
    {
       return;
    }
-   q = createAdvancedGaiaUnitQuery(cUnitTypezpUnderbrushConstructionJesuitTemple, cUnitStateAny, from, -1.0, true);
+   q = createSimpleUnitQuery(cUnitTypezpAILondonConstrMarker, cMyID, cUnitStateAny);
    n = kbUnitQueryExecute(q);
-   if (n >= 1)
+   for (i = 0; < n)
    {
-      gLondonConstrOurs = kbUnitGetPosition(kbUnitQueryGetResult(q, 0));
+      unit = kbUnitQueryGetResult(q, i);
+      v = kbUnitGetPosition(unit);
+      d = distance(v, from);
+      if (d < nearD)
+      {
+         nearD = d;
+         gLondonConstrOurs = v;
+      }
+      if (d > farD)
+      {
+         farD = d;
+         gLondonConstrFar = v;
+      }
    }
-   if (n >= 2)
+   if (n < 2)
    {
-      gLondonConstrFar = kbUnitGetPosition(kbUnitQueryGetResult(q, n - 1));
+      gLondonConstrFar = cInvalidVector;
    }
    aiEcho("LONDONSETUP p" + cMyID + " construction blocks found " + n + " ours " + xsVectorGetX(gLondonConstrOurs) + "/" + xsVectorGetZ(gLondonConstrOurs)
           + " far " + xsVectorGetX(gLondonConstrFar) + "/" + xsVectorGetZ(gLondonConstrFar));
@@ -3402,10 +3420,17 @@ minInterval 5
    // AI test campaign (echo only, gAITestDiag): the dock decision once a minute - wanted or not, and what plan creation returned
    static int dockDiagTime = -60000;
    bool dockDiag = false;
-   if (gAITestDiag == true && xsGetTime() - dockDiagTime >= 60000)
+   int dockDiagAge = xsGetTime() - dockDiagTime;   // plain steps: XS rejected 'a == true && t - x >= y' (run 32, Error 0308)
+   if (gAITestDiag == true)
+   {
+      if (dockDiagAge >= 60000)
+      {
+         dockDiag = true;
+      }
+   }
+   if (dockDiag == true)
    {
       dockDiagTime = xsGetTime();
-      dockDiag = true;
       if (dockNeeded == true)
       {
          aiEcho("AIDOCK p" + cMyID + " wanted, docks " + dockCount + " age " + kbGetAge() + " existing plan " + aiPlanGetIDByTypeAndVariableType(cPlanBuild, cBuildPlanBuildingTypeID, gDockUnit));

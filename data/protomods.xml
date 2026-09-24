@@ -76086,8 +76086,34 @@
     <flag>DoNotShowOnMiniMap</flag>
     <flag>Tracked</flag>
   </unit>
-  <unit id="21197" name="zpUnderbrushGreekColumns">
+  <unit id="21197" name="zpAILondonConstrMarker">
+    <!--AI marker (2026-09-24): the construction blocks (EU_SPC_Block_Constr) at both London Bridge landings; zplondon.xs places one per player on each block (the bridge marker pattern: owned, Tracked, editor-only); the AI reads their positions for the forward base at the enemy block (aibuildings.xs londonReadConstructionBlocks). Owner 2026-09-24: a separate AI-trackable marker instead of the invisible block prop-->
     <dbid>21197</dbid>
+    <displaynameid>502028</displaynameid>
+    <obstructionradiusx>1.0000</obstructionradiusx>
+    <obstructionradiusz>1.0000</obstructionradiusz>
+    <maxvelocity>0.0000</maxvelocity>
+    <maxrunvelocity>0.0000</maxrunvelocity>
+    <movementtype>air</movementtype>
+    <animfile>ui\editor\editor_blocks.xml</animfile>
+    <los>0.0000</los>
+    <unittype>EmbellishmentClass</unittype>
+    <flag>NoUnitAI</flag>
+    <flag>NotSearchable</flag>
+    <flag>Immoveable</flag>
+    <flag>NotSelectable</flag>
+    <flag>NoBloodOnDeath</flag>
+    <flag>NoHPBar</flag>
+    <flag>NonAutoFormedUnit</flag>
+    <flag>NonCollideable</flag>
+    <flag>OnlyInEditor</flag>
+    <flag>DoNotCreateUnitGroupAutomatically</flag>
+    <flag>Invulnerable</flag>
+    <flag>DoNotShowOnMiniMap</flag>
+    <flag>Tracked</flag>
+  </unit>
+  <unit id="21198" name="zpUnderbrushGreekColumns">
+    <dbid>21198</dbid>
     <displaynameid>503570</displaynameid>
     <obstructionradiusx>1.0000</obstructionradiusx>
     <obstructionradiusz>1.0000</obstructionradiusz>
