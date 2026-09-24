@@ -468,3 +468,70 @@ failures are:
 - a few Barracks and Artillery Depots.
 
 **The P2 bound** (<= 4 per 10 minutes, set before any data) is met by P4 and missed by 0.3-4.7 elsewhere.
+
+## Run 27 - REGRESSION check on a standard map - Amazonia, auto-selected by the driver, 15 min cap - AI 3b1dc538ebf3
+
+The driver switched the lobby from London to Amazonia on its own (`--map Amazonia`, confirmed on the lobby
+screenshot). The lobby kept the 3v2 setup: 4 AIs, where the floor run 18 had 1. The load was clean with the same AI
+as run 26.
+
+**Verdict: PASS**, all of B0-B5.
+
+| Id | Measured |
+|---|---|
+| B0 | every AI echoes AIDIAG |
+| B5 | no AIDIAG says london 1; **0 LONDON lines** in all 4 files |
+| B1 | 26:01 vs floor 18:01 |
+| B2 | Age III vs floor Age III |
+| B3 | worst player has 60 villagers vs floor 85 (bound 51) |
+| B4 | 45.7 failures / 10 min vs floor 48.3 (bound 101.6) |
+
+**Reading:** the London code is inert on a vanilla map, and the stock AI behaves as on the floor. Bases stay at 40-60
+m and failures run at 0.8-45.7 per 10 minutes, which is stock behaviour. Other maps are clean.
+
+# Night summary (2026-09-23/24, runs 19-27)
+
+| Run | Change tested | Result |
+|---|---|---|
+| 19 | countryside fields behind the wall, handler skips water / impassable, TC fallback | fields work; the base froze on the countryside's own KB group |
+| 20 | London handler refuses no area (120 m cap) | bases 100-120 m; failures 6-13 / 10 min |
+| 21 | repeat (ambiguous: an edit landed during the load) | Imperial Age, 98-100 villagers; forward and Trading Post failures visible |
+| 22 | Trading Post socket filter (port socket, far bank) | Trading Post failures 19-27 -> 3-9 |
+| 23 | fields spread over every own wall gate | countryside eco failures 27+27 -> 0-4, Mills appear |
+| 24 | towers at the wall gates | tower failures 27-37 -> 0-1 |
+| 25 | military buildings to the base's back | no gain, new "can't path"; **reverted** |
+| 26 | no forward base on London | forward failures -> 0; failures at 30:00 **5-9 per player** |
+| 27 | regression on Amazonia | PASS: London code inert, stock AI as on the floor |
+
+**Where London stands:**
+- L0-L8 (setup, war plan, gates, Keeps, hold) passed in every run from 19 to 26.
+- Every AI reaches the Imperial Age with 80-100 villagers.
+- Placement failures at 30:00 fell from 22-36 (run 20) to 5-9 (run 26). The vanilla floor on Amazonia is about 48
+  per 10 minutes.
+
+**Still failing P2 (<= 4 per 10 min):** P2, P3 and P5 in run 26, at 4.3-8.7. The causes:
+- Blockhouses on the stock ring, once every gate has 2 towers;
+- Trading Posts on the own bank;
+- a few Barracks and Artillery Depots.
+
+## Decisions for the owner
+
+1. **P2 bound.** It was set to <= 4 per 10 minutes before any data. The vanilla floor is 48, and London now runs at
+   3.5-8.7. Keep 4, or set 10? A third of the runs pass at 4; every run from 22 on would pass at 10.
+2. **Release flags.** `gLondonTestMode = true` (aipiraterules.xs: test army floor 8, garrison 6) and `gAITestDiag =
+   true` (aiglobals.xs: the AIDIAG echo on every map) must be `false` before any upload. `mod-deploy-check` should
+   assert both.
+3. **`game/ai/coreDLC`** was not mirrored. Guideline 11 says the two trees move in lockstep, but the build echo proved
+   that `core` compiles, and the owner's memory says the split is obsolete. Should the DLC tree be deleted, or kept in
+   lockstep?
+4. **`randmaps/zplondon.mods.xml`** (issues log I7): a one-line renormalize commit would end the permanent "modified".
+5. **`user.cfg`** was trimmed to the two required lines; the old copy is outside the repo. Keep it trimmed?
+6. **Proposals from the issues log:**
+   - a compile-only probe, about 60 s per AI check;
+   - an `ai-edit` skill (the rules, the include order, the London guard pattern, rejected constructs, "pytest before
+     a match").
+7. **Open technical items:**
+   - the exact trigger of I8;
+   - P3's Mill "can't path" at one gate point (run 23);
+   - Blockhouses after the gates are guarded (a third gate point, or the stock ring outside the city);
+   - Trading Posts on the own bank.
