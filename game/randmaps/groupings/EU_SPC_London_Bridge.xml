@@ -63,7 +63,7 @@
 		<unit variation="154" posx="-10.8661" posz="1.5821" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpSPCPortSocket</unit>
 		<unit variation="95" posx="4.9588" posz="-3.4922" orientx="1.0000" orienty="0.0000" orientz="-0.0000">zpNativeUnitVenetianPoles</unit>
 		<unit variation="252" posx="-13.3198" posz="-0.7952" orientx="1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFace</unit>
-		<unit variation="44" posx="8.0719" posz="-1.6941" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFace</unit>
+		<unit variation="44" posx="7.7240" posz="-0.9376" orientx="-1.0000" orienty="0.0000" orientz="0.0000">zpBridgeFace</unit>
 		<unit variation="2" posx="5.2726" posz="-0.6472" orientx="-0.0000" orienty="-0.0000" orientz="-1.0000">zpPropMarketStall</unit>
 		<unit variation="0" posx="10.7393" posz="5.7434" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
 		<unit variation="0" posx="8.1796" posz="5.5887" orientx="1.0000" orienty="0.0000" orientz="-0.0006">zpHarbourPathBlock3</unit>
