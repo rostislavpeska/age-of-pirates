@@ -183,6 +183,23 @@ class ResolvedArea:
         return grid.x_m_to_frac(self.radius_m)
 
 
+def area_floods(rs: "ResolvedScene", a: ResolvedArea) -> bool:
+    """Whether an area's authored claim is WATER when it builds, for the
+    analytic (disc/capsule) model - the grid (field.terrain_grid) decides
+    per cell. Water types always; an elevation mask (B2.6f); a base height
+    only UNDER the sea plane of a flooded base (strictly below: at the
+    plane is land, B2.4). On a land-initialized map there is no sea plane
+    (vanilla Mexico / Fertile Crescent / Manchuria, owner: Dead Sea and
+    Eyre Basin players at 2.0 under sea 6.0 stand on land), so a base
+    height alone never floods there (2026-09-25)."""
+    if a.water_type is not None:
+        return True
+    if a.base_height is not None:
+        return rs.base_is_water and a.base_height < rs.sea_level
+    return (a.is_invisible() and a.has_elevation
+            and a.height_blend < 2.0 and rs.sea_level >= 0.0)
+
+
 @dataclass
 class ResolvedPlacement:
     name: str
@@ -255,6 +272,10 @@ class ResolvedScene:
     sea_type: Optional[str] = None      # rmSetSeaType water body name
     suppressed_variants: int = 0        # alt-arm placements dropped (Part H4)
     groupings_solved: bool = False      # gsolve.ensure_solved ran (idempotence)
+    # NOMINAL start of each player 1..N in fraction space (.xs bridge: the
+    # ring/line/literal placement, xs_extract.ring_positions); [] when the
+    # placement is runtime-dependent or the scene is curated.
+    player_starts: List[Tuple[float, float]] = field(default_factory=list)
 
     def all_routes(self) -> List[List[Tuple[float, float]]]:
         return self.trade_routes or ([self.trade_route_waypoints] if self.trade_route_waypoints else [])

@@ -161,6 +161,7 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
 
     from scripts.mapsim.field import FieldContext, terrain_grid
     from scripts.mapsim.gsolve import ensure_solved
+    from scripts.mapsim.scene import area_floods
     ensure_solved(rs)
 
     grid = rs.grid
@@ -251,7 +252,7 @@ def render(rs: ResolvedScene, findings: List[Finding], out_path: Path,
         elif area.is_invisible():
             ec, ls, label_col = "#8f9aa8", (0, (1, 3)), "#aab4c0"
         elif (area.base_height is not None
-              and area.base_height <= rs.sea_level):  # submerged ground / reef
+              and area_floods(rs, area)):  # submerged ground / reef
             ec, ls, label_col = "#6fa8c9", (0, (2, 3)), "#9fc4da"
         else:
             # Painted land: its grown shape IS the information — an authored

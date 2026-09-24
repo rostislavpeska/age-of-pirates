@@ -93,42 +93,41 @@ def area_is_land(rs: ResolvedScene, a: ResolvedArea) -> bool:
     if a.water_type is not None:
         return False
     if a.base_height is not None:
-        return a.base_height > rs.sea_level
+        from scripts.mapsim.scene import area_floods
+        return not area_floods(rs, a)
     return a.creates_land or not rs.base_is_water
 
 
 def _water_features_m(rs: ResolvedScene, before_line: Optional[int]):
-    """(kind-tuple, band_m, name) shapes of authored water on a LAND-base
+    """(kind-tuple, band_m, name, line) shapes of authored water on a LAND-base
     map: water-type areas (disc + influence capsules, blob band) and river
     bands (deterministic, zero band)."""
+    from scripts.mapsim.scene import area_floods
     g = rs.grid
     feats = []
     for a in rs.areas:
         if a.x is None:
             continue
-        wet = (a.water_type is not None
-               or (a.base_height is not None and a.base_height <= rs.sea_level)
-               or (a.is_invisible() and a.has_elevation
-                   and a.height_blend < 2.0 and rs.sea_level >= 0.0))
-        if not wet:
+        if not area_floods(rs, a):
             continue
         if before_line is not None and a.line > before_line:
             continue
         band = _area_band_m(a)
         feats.append((("disc", g.x_frac_to_m(a.x), g.z_frac_to_m(a.z), a.radius_m),
-                      band, a.name))
+                      band, a.name, a.line))
         from scripts.mapsim.field import connected_influence_segments
         for x1, z1, x2, z2 in connected_influence_segments(a, g):
             feats.append((("capsule", g.x_frac_to_m(x1), g.z_frac_to_m(z1),
                            g.x_frac_to_m(x2), g.z_frac_to_m(z2), a.radius_m),
-                          band, a.name))
+                          band, a.name, a.line))
     for r in rs.rivers:
         if before_line is not None and int(r.get("line", 0)) > before_line:
             continue
         halfw = float(r["width_m"]) / 2.0
         pts = [(g.x_frac_to_m(x), g.z_frac_to_m(z)) for x, z in r["waypoints"]]
         for (x1, z1), (x2, z2) in zip(pts, pts[1:]):
-            feats.append((("capsule", x1, z1, x2, z2, halfw), 0.0, "river"))
+            feats.append((("capsule", x1, z1, x2, z2, halfw), 0.0, "river",
+                          int(r.get("line", 0))))
     return feats
 
 
@@ -159,15 +158,23 @@ def _land_reach(
         # area (island in a lake) reaches into the annulus either.
         solid = possible = True
         inside_of = None
-        for feat, band, name in _water_features_m(rs, before_line):
+        flood_line = -1
+        for feat, band, name, fline in _water_features_m(rs, before_line):
             d, r = _feat_axis_dist(anchor_m, feat)
             if d + r_max <= r + band:
                 solid = False
                 inside_of = name
+                flood_line = max(flood_line, fline)
             if d + r_max <= max(0.0, r - band):
                 possible = False
+                flood_line = max(flood_line, fline)
         if not solid or not possible:
+            # Only land built AFTER the flooding feature rises out of it
+            # (build order; Dead Sea's valley at 0.0 is built before its
+            # lakes and lies under them, 2026-09-25).
             for area in _land_areas_at(rs, before_line):
+                if area.line <= flood_line:
+                    continue
                 d = dist(anchor_m, (rs.grid.x_frac_to_m(area.x),
                                     rs.grid.z_frac_to_m(area.z)))
                 band = _area_band_m(area)
@@ -201,7 +208,7 @@ def _inside_land(
         # Land-base map: "inside land" means the annulus cannot touch any
         # water feature (annulus geometry incl. the r_min hole).
         conf = expanded = True
-        for feat, band, _name in _water_features_m(rs, before_line):
+        for feat, band, _name, _line in _water_features_m(rs, before_line):
             d, r = _feat_axis_dist(anchor_m, feat)
             if annulus_intersects_disc(d, r_min, r_max, r + band):
                 conf = False
@@ -219,7 +226,8 @@ def _inside_land(
     return conf, expanded
 
 
-def check_placement(p: ResolvedPlacement, rs: ResolvedScene) -> Finding:
+def check_placement(p: ResolvedPlacement, rs: ResolvedScene,
+                    timeline=None) -> Finding:
     if not p.active:
         return Finding("placement", p.name, "INACTIVE", "info",
                        "gated off in this scenario (mode condition)")
@@ -346,6 +354,13 @@ def check_placement(p: ResolvedPlacement, rs: ResolvedScene) -> Finding:
                      grid.x_frac_to_m(x1), grid.z_frac_to_m(z1))
             if not annulus_intersects_box(anchor_m, p.min_dist_m, p.max_dist_m, box_m):
                 unsat.append(cname)
+        elif timeline is not None and spec["kind"] in ("terrain", "terrain_max"):
+            # Terrain constraints against the GROWN grid at this line
+            # (field.TerrainTimeline, 2026-09-25): every annulus cell, not
+            # the authored-disc union.
+            if not timeline.terrain_ok(spec, anchor_m, p.min_dist_m,
+                                       p.max_dist_m, p.line):
+                unsat.append(cname)
         else:
             # Terrain / class / route constraints: deterministic annulus
             # sampling — satisfied if ANY sample point in the search annulus
@@ -358,15 +373,22 @@ def check_placement(p: ResolvedPlacement, rs: ResolvedScene) -> Finding:
             for r in radii:
                 if satisfied:
                     break
-                if r == 0.0:
-                    if point_allowed(field_ctx, anchor_m, spec, p.line) is not False:
-                        satisfied = True
-                    continue
-                for k in range(16):
-                    theta = 2.0 * math.pi * k / 16.0
-                    sample = (anchor_m[0] + r * math.cos(theta),
-                              anchor_m[1] + r * math.sin(theta))
-                    if point_allowed(field_ctx, sample, spec, p.line) is not False:
+                samples = ([anchor_m] if r == 0.0 else
+                           [(anchor_m[0] + r * math.cos(2.0 * math.pi * k / 16.0),
+                             anchor_m[1] + r * math.sin(2.0 * math.pi * k / 16.0))
+                            for k in range(16)])
+                for sample in samples:
+                    if spec["kind"] == "type_distance":
+                        # A placement never avoids ITSELF: its own units
+                        # (registered at its anchor, or inside its grouping)
+                        # are left out - before 2026-09-25 every per-player
+                        # TC with "avoid Town Center Far" (60 m) sat inside
+                        # its own keep-out (zptorresstrait, zpbluemountains).
+                        ok = field_ctx.type_clear(spec, sample, p.line,
+                                                  exclude_owner=id(p))
+                    else:
+                        ok = point_allowed(field_ctx, sample, spec, p.line) is not False
+                    if ok:
                         satisfied = True
                         break
             if not satisfied:
@@ -441,12 +463,18 @@ def check_trade_route(rs: ResolvedScene, blocksize_m: float) -> List[Finding]:
     return findings
 
 
-def check_player_ring(rs: ResolvedScene, samples: int = 256) -> List[Finding]:
+def check_player_ring(rs: ResolvedScene, samples: int = 256,
+                      timeline=None) -> List[Finding]:
     """Land coverage of the circular player ring.
 
     Angular origin/direction of rmSetPlacementSection is NOT documented —
     full-ring coverage is origin-independent and reliable; per-section results
     would need the E3/E4 calibration, so only the full ring is checked here.
+
+    With a TerrainTimeline (run_checks, 2026-09-25) each ring point is read
+    from the GROWN grid at the end of the script: land or walkable shallows
+    (classes 0/1, the buildable ground of the Terrain Standard B3) count.
+    Without one, the authored-disc model decides (curated unit scenes).
     """
     findings = []
     # Branches mirror the map's if / else-if / else: only the FIRST branch
@@ -461,10 +489,17 @@ def check_player_ring(rs: ResolvedScene, samples: int = 256) -> List[Finding]:
             continue
         r_mid = (branch["min"] + branch["max"]) / 2.0
         on_land = maybe_land = 0
+        tg = timeline.tg if timeline is not None else None
         for k in range(samples):
             theta = 2.0 * math.pi * k / samples
             x = 0.5 + r_mid * math.cos(theta)
             z = 0.5 + r_mid * math.sin(theta)
+            if tg is not None:
+                if 0.0 <= x < 1.0 and 0.0 <= z < 1.0:
+                    i, j = tg.cell_of_frac(x, z)
+                    if tg.class_code(i, j) in (0, 1):
+                        on_land += 1
+                continue
             anchor_m = rs.grid.frac_to_m(x, z)
             solid, possible, _ = _land_reach(rs, anchor_m, 0.0, 0.0)
             if solid:
@@ -550,15 +585,158 @@ def check_area_feasibility(rs: ResolvedScene) -> List[Finding]:
     return findings
 
 
+# King of the Hill capture reach: ypKingsHill carries ypkingshill.tactics =
+# AutoConvert, maxrange 12.0 m, no filter; units with the ConvertsHerds
+# unittype capture it (owner, 2026-09-25). Ships capture it from the water
+# only when navigable water comes within this range.
+KOTH_CAPTURE_RANGE_M = 12.0
+KOTH_PROTO = "ypkingshill"
+
+
+def _walk_component(tg, start, classes) -> set:
+    """4-connected component of `start` over the given grid classes (the
+    connectivity mapcheck's G5 reachability uses)."""
+    from collections import deque
+    i0, j0 = start
+    if tg.class_code(i0, j0) not in classes:
+        return set()
+    seen = {(i0, j0)}
+    q = deque([(i0, j0)])
+    while q:
+        i, j = q.popleft()
+        for di, dj in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            ni, nj = i + di, j + dj
+            if (0 <= ni < tg.nx and 0 <= nj < tg.nz and (ni, nj) not in seen
+                    and tg.class_code(ni, nj) in classes):
+                seen.add((ni, nj))
+                q.append((ni, nj))
+    return seen
+
+
+def koth_report(rs: ResolvedScene, tg, p: ResolvedPlacement) -> Dict[str, Any]:
+    """What the King's Hill stands on, from the grown grid (end of script):
+    the hill's cell class, the build step that made its ground, the
+    walkable region around it (land + shallows, and land only) with its
+    size in tiles and the players whose start lies in it, and the distance
+    from the hill to the nearest DEEP (non-walkable) and NAVIGABLE
+    (depth >= 2.0 m, guide:5610) water."""
+    from scripts.mapsim.waterdata import NAVIGABLE_DEPTH_M
+    g = rs.grid
+    step = g.size_x_m / tg.nx
+    tiles_per_cell = (step / g.TILE_M) ** 2
+    hx, hz = g.frac_to_m(p.x, p.z)
+    hi, hj = tg.cell_of_frac(p.x, p.z)
+    code = tg.class_code(hi, hj)
+    names = ("LAND", "SHALLOW", "DEEP", "CLIFF")
+    owner = (tg.owner_names[tg.owner[hj][hi]]
+             if getattr(tg, "owner", None) else "?")
+    walk = _walk_component(tg, (hi, hj), (0, 1))
+    land = _walk_component(tg, (hi, hj), (0,))
+    starts = []
+    for k, (x, z) in enumerate(getattr(rs, "player_starts", []) or [], start=1):
+        if 0.0 <= x < 1.0 and 0.0 <= z < 1.0:
+            starts.append((k, tg.cell_of_frac(x, z)))
+    players_walk = [k for k, c in starts if c in walk]
+    players_land = [k for k, c in starts if c in land]
+    deep = nav = math.inf
+    for j in range(tg.nz):
+        cz = (j + 0.5) * step
+        for i in range(tg.nx):
+            if not tg.water[j][i] or (tg.wwalk and tg.wwalk[j][i]):
+                continue
+            d = math.hypot((i + 0.5) * step - hx, cz - hz)
+            if d < deep:
+                deep = d
+            if tg.wdepth[j][i] >= NAVIGABLE_DEPTH_M and d < nav:
+                nav = d
+    return {
+        "hill": [round(p.x, 4), round(p.z, 4)],
+        "search_radius_m": round(p.max_dist_m, 1),
+        "cell_class": names[code],
+        "ground_from": owner,
+        "walkable_region_tiles": round(len(walk) * tiles_per_cell),
+        "land_region_tiles": round(len(land) * tiles_per_cell),
+        "players_by_land_or_shallows": players_walk,
+        "players_by_land": players_land,
+        "player_starts_known": bool(starts),
+        "deep_water_m": None if deep == math.inf else round(deep, 1),
+        "navigable_water_m": None if nav == math.inf else round(nav, 1),
+        "ship_capture": nav <= KOTH_CAPTURE_RANGE_M,
+    }
+
+
+def check_koth(rs: ResolvedScene, timeline) -> List[Finding]:
+    """KotH finding (mapsim feedback item 2): for every ypKingsHill
+    placement (vanilla ypKingsHillPlacer or a map's own def), say which
+    land the hill sits on and whether ships reach it. ISLAND = the hill's
+    walkable region (land + shallows, 4-connected) holds no player start;
+    MAINLAND = it holds at least one. Descriptive: info severity, except a
+    hill whose own cell is deep water or cliff (an error - it cannot stand
+    there; ypKingsHillPlacer's own constraint avoids impassable land)."""
+    if timeline is None:
+        return []
+    tg = timeline.tg
+    out: List[Finding] = []
+    for p in rs.placements:
+        if not any(str(t).lower() == KOTH_PROTO for t in (p.items or ())):
+            continue
+        if p.x is None or p.z is None or not (0.0 <= p.x < 1.0 and 0.0 <= p.z < 1.0):
+            out.append(Finding("koth", p.name, "KOTH_UNKNOWN", "info",
+                               "King's Hill anchor is runtime-dependent or off "
+                               "the map - not statically checkable"))
+            continue
+        rep = koth_report(rs, tg, p)
+        nav = rep["navigable_water_m"]
+        ships = (f"navigable water {nav} m away - ships "
+                 + ("CAN" if rep["ship_capture"] else "cannot")
+                 + f" capture it (AutoConvert {KOTH_CAPTURE_RANGE_M:.0f} m)"
+                 if nav is not None else "no navigable water on the map")
+        where = (f"hill at ({rep['hill'][0]:.3f}, {rep['hill'][1]:.3f}) on "
+                 f"{rep['cell_class']} ground from '{rep['ground_from']}'")
+        if rep["search_radius_m"] > 0:
+            where += f" (the engine may move it up to {rep['search_radius_m']:.0f} m)"
+        if rep["cell_class"] in ("DEEP", "CLIFF"):
+            out.append(Finding("koth", p.name, "KOTH_ON_IMPASSABLE", "error",
+                               f"{where}: the hill cannot stand on "
+                               f"{rep['cell_class'].lower()}; {ships}",
+                               details=rep))
+            continue
+        region = (f"walkable region {rep['walkable_region_tiles']} tiles "
+                  f"(land {rep['land_region_tiles']})")
+        if not rep["player_starts_known"]:
+            verdict = "KOTH_REGION"
+            msg = (f"{where}; {region}; player starts unknown; {ships}")
+        elif rep["players_by_land_or_shallows"]:
+            verdict = "KOTH_MAINLAND"
+            msg = (f"{where}; {region} reaches players "
+                   f"{rep['players_by_land_or_shallows']} by land or shallows"
+                   + (f" (by land alone: {rep['players_by_land']})"
+                      if rep["players_by_land"] != rep["players_by_land_or_shallows"]
+                      else "")
+                   + f"; {ships}")
+        else:
+            verdict = "KOTH_ISLAND"
+            msg = (f"{where}; ISLAND - {region}, no player reaches it by "
+                   f"land or shallows; {ships}")
+        out.append(Finding("koth", p.name, verdict, "info", msg, details=rep))
+    return out
+
+
 def run_checks(rs: ResolvedScene, blocksize_m: float = 16.0) -> List[Finding]:
     # Groupings solve their constraint-reactive spots ONCE per scene
     # before any verdict is computed (plan Part H3) — checks then judge
     # the SOLVED positions, exactly what the render shows.
+    from scripts.mapsim.field import TerrainTimeline
     from scripts.mapsim.gsolve import ensure_solved
     ensure_solved(rs)
-    findings = [check_placement(p, rs) for p in rs.placements]
+    # One grown grid (with its water log) serves every terrain question
+    # below: placement terrain constraints at each placement's line, the
+    # player ring and the KotH hill (2026-09-25).
+    timeline = TerrainTimeline(rs, cell_tiles=1.0)
+    findings = [check_placement(p, rs, timeline) for p in rs.placements]
     findings += check_area_overlaps(rs)
     findings += check_trade_route(rs, blocksize_m)
-    findings += check_player_ring(rs)
+    findings += check_player_ring(rs, timeline=timeline)
     findings += check_area_feasibility(rs)
+    findings += check_koth(rs, timeline)
     return findings

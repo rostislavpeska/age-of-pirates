@@ -54,6 +54,12 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
     grid = MapGrid(ex.map_size_x, ex.map_size_z)
     sea = ex.sea_level if ex.sea_level is not None else 0.0
 
+    from scripts.mapsim.waterdata import is_water_type_name
+    # Missing rmTerrainInitialize is a documented map error (guide:10508);
+    # fall back to the historical water-base assumption.
+    base_is_water = (ex.terrain_init is None
+                     or is_water_type_name(ex.terrain_init))
+
     ring = _ring_positions(ex)
     n_players = ex.scenario.players
     n_teams = max(1, ex.scenario.teams)
@@ -62,6 +68,12 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
     resolved_anchor: dict = {}   # extraction handle -> (x, z) incl. ring anchors
     for handle, a in ex.areas.items():
         x, z = _num(a.x), _num(a.z)
+        if x is None or z is None:
+            # Half-known anchor (one axis runtime-dependent): the location
+            # is runtime as a whole. Before 2026-09-25 a concrete x with a
+            # None z crashed every consumer (zpnewguinea all scenarios,
+            # zplabradorcoast P6).
+            x = z = None
         approx = False
         if x is None and ring:
             # Player/team-anchored areas (rmSetAreaLocPlayer/LocTeam) get a
@@ -95,9 +107,13 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
             radius_min_m=grid.area_frac_to_radius_m(frac_min if frac_min is not None else frac_max),
             base_height=a.base_height,
             # A water-type area is water even with a raised base height (the
-            # Riverina cascade lifts the SURFACE, guide:7772-7783).
-            creates_land=(a.water_type is None
-                          and a.base_height is not None and a.base_height > sea),
+            # Riverina cascade lifts the SURFACE, guide:7772-7783). A base
+            # height is land at/above the sea plane of a flooded base, and
+            # at any height on a land-initialized base, which has no sea
+            # plane (2026-09-25; scene.area_floods has the evidence) - the
+            # grid still floods it per cell where a lake's plane covers it.
+            creates_land=(a.water_type is None and a.base_height is not None
+                          and (a.base_height >= sea or not base_is_water)),
             obey_world_circle=a.obey_world_circle,
             coherence=a.coherence,
             smooth_distance=a.smooth,
@@ -160,6 +176,8 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
         runtime = None
         if isinstance(p.x, Tainted) or isinstance(p.z, Tainted):
             runtime = getattr(p.x, "expr", None) or getattr(p.z, "expr", None) or "runtime"
+        if x is None or z is None:
+            x = z = None     # half-known anchor = runtime (see the area loop)
         kind = {"at_loc": "at_loc", "in_area": "in_area", "at_point": "at_point_runtime"}[p.kind]
         count = p.count if not isinstance(p.count, Tainted) else \
             (int(p.count.hi) if p.count.hi is not None else 1)
@@ -220,7 +238,8 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
                             "base_height": c.base_height,
                             "x1": x1, "z1": z1, "x2": x2, "z2": z2,
                             "r1_m": grid.area_frac_to_radius_m(r1) if r1 else 0.0,
-                            "r2_m": grid.area_frac_to_radius_m(r2) if r2 else 0.0})
+                            "r2_m": grid.area_frac_to_radius_m(r2) if r2 else 0.0,
+                            "classes": list(getattr(c, "classes", []))})
 
     rivers = []
     # RECT-MAP RIVER UNITS (pinned 2026-08-09): the engine reads river
@@ -267,12 +286,8 @@ def extraction_to_resolved(ex: Extraction) -> ResolvedScene:
             spec["r_max"] = _num(spec.pop("r_max_m")) or 0.0
         constraints[cname] = spec
 
-    from scripts.mapsim.waterdata import is_water_type_name
-    # Missing rmTerrainInitialize is a documented map error (guide:10508);
-    # fall back to the historical water-base assumption.
-    base_is_water = (ex.terrain_init is None
-                     or is_water_type_name(ex.terrain_init))
     return ResolvedScene(
+        player_starts=[(float(x), float(z)) for x, z in (ring or [])],
         suppressed_variants=suppressed,
         scenario=ex.scenario,
         grid=grid,

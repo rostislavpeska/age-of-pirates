@@ -489,6 +489,7 @@ class XConnection:
     base_height: Optional[float] = None
     areas: List[int] = dfield(default_factory=list)
     built: bool = False
+    classes: List[str] = dfield(default_factory=list)   # rmAddConnectionToClass
 
 
 @dataclass
@@ -596,7 +597,7 @@ NOOP_FUNCS = {
     "rmSetSubCiv", "rmAddMerc", "chooseMercs",
     "rmDisableDefaultMercs", "rmDisableCivTypeMercRestriction",
     "rmEnableMerc", "rmDisableMerc", "rmSetBaseTerrainMix",
-    "ypKingsHillPlacer", "rmBuildAllAreas", "rmSetPlacementArea",
+    "rmBuildAllAreas", "rmSetPlacementArea",
     "rmRiverAddShallows", "rmRiverSetBankPercent", "rmRiverSetConnections",
     "rmRiverBuild", "rmRiverReveal", "rmRiverSetFoundationTerrain",
     "rmSetTeamSpacing",
@@ -611,7 +612,42 @@ NOOP_FUNCS = {
     "rmObjectiveAdd", "rmObjectiveSetTeam",
     # victory settings: no geometry
     "rmForbidTradeMonopoly",
+    # 2026-09-25 (mapsim feedback item 3): engine calls the corpus uses that
+    # change no terrain and place nothing - known, so real misses stand out.
+    # Signatures/semantics: .claude/skills/aoe3de-reference/references/
+    # rm_commands_reference.md (lines cited) unless noted.
+    "rmEnableOutlaw",            # saloon outlaw roster (like rmEnableMerc)
+    "rmSetAllMapReveal",         # visibility only
+    "rmSetAreaTerrainLayerVariance",   # ref:345 paint-layer edge variance
+    "rmSetObjectDefGarrisonStartingUnits",   # ref:859 garrison flag
+    "rmSetObjectDefGarrisonSecondaryUnits",  # ref:856 garrison flag
+    "rmAddPlayerResource", "rmSetPlayerResource",   # ref:730/874 resources
+    "rmSetNumberInitialColonies",  # game setup, no geometry
+    "rmAddMapStartingUnit",      # starting-unit roster, no location
+    "rmAddAreaCliffEdgeAvoidClass",  # ref:231 cliff EDGE shape detail (edge
+                                     # breaks are not modelled)
+    "rmPaintAreaTerrainByHeight", "rmAddMapTerrainByHeightInfo",  # paint only
 }
+
+# Constraint creators the model cannot evaluate - every one the RM reference
+# lists besides the evaluable kinds (rm_commands_reference.md:502-559,
+# :739-754). They still get a named catalog entry (see the call handler).
+OPAQUE_CONSTRAINTS = {
+    "rmCreateEdgeConstraint", "rmCreateEdgeDistanceConstraint",
+    "rmCreateEdgeMaxDistanceConstraint",
+    "rmCreateCliffEdgeConstraint", "rmCreateCliffEdgeDistanceConstraint",
+    "rmCreateCliffEdgeMaxDistanceConstraint",
+    "rmCreateCliffRampConstraint", "rmCreateCliffRampDistanceConstraint",
+    "rmCreateCliffRampMaxDistanceConstraint",
+    "rmCreateAreaOverlapConstraint", "rmCreateMaxHeightConstraint",
+    "rmCreateCornerConstraint",
+    "rmCreateHCGPConstraint", "rmCreateHCGPAllyConstraint",
+    "rmCreateHCGPEnemyConstraint", "rmCreateHCGPSelfConstraint",
+}
+
+# Include helpers whose body the extractor replays itself (vanilla
+# Game/RandMaps/ypKOTHInclude.xs; see _koth_placer / _koth_landfill).
+KOTH_HELPERS = {"ypKingsHillPlacer", "ypKingsHillLandfill"}
 
 # Trigger DSL: parse-and-discard (arguments ARE evaluated by the caller).
 TRIGGER_FUNCS = {
@@ -633,6 +669,10 @@ TAINTED_FUNCS = {
     "rmGetPlayerName", "ypIsAsian",
     "rmGetNumberUnitsPlaced", "rmGetHomeCityLevel",
     "rmGetGroupingInstanceUnitByType",
+    # 2026-09-25: a tech's runtime id (trigger parameter only,
+    # docs/trade_routes_guide.md:759) and "which of two areas is closer"
+    # (ref:273) - both depend on data/grown terrain the extractor lacks.
+    "rmGetTechID", "rmFindCloserArea",
 }
 
 
@@ -792,6 +832,58 @@ class Extractor:
         self.res.warn(f"unknown variable {name!r}")
         return Tainted(name)
 
+    def _constraint_name(self, handle: Any) -> str:
+        """Catalog name for a constraint handle passed to rmAdd*Constraint.
+        Unknown handles stay '?', but say WHAT the script passed when the
+        value is another kind of handle - zpbluemountains adds its AREA
+        "south east" (line 613) as a constraint (line 820/1304): in game
+        that id selects whichever constraint has the same index, a map
+        issue the CONFIG finding should name, not hide."""
+        try:
+            hit = self.constraint_handles.get(handle)
+        except TypeError:
+            hit = None
+        if hit is not None:
+            return hit
+        if isinstance(handle, Tainted):
+            return f"? (runtime value {handle.expr})"
+        if handle in self.res.areas:
+            return f"? (area handle {self.res.areas[handle].name!r})"
+        if handle in self.res.defs:
+            return f"? (object def handle {self.res.defs[handle].name!r})"
+        if handle in self.classes:
+            return f"? (class handle {self.classes[handle]!r})"
+        return "?"
+
+    def _hoist(self, body: List[tuple], scope: Dict[str, Any]) -> None:
+        """XS has NO block scope: a variable declared inside an if/loop body
+        lives in the function's namespace and, when that branch never ran,
+        still exists with its type's zero value (.claude/skills/
+        rm-objects-herds/SKILL.md "Vectors declared inside an if block still
+        exist afterwards ... with value zero if the branch did not run";
+        rm-skeleton "XS has no block scope"). Pre-declare every such name
+        with its default so a later read sees the engine's value instead of
+        an 'unknown variable' (zpeyrebasin's ControllerLoc2 at 2 players:
+        the pirate site builds at the map corner in game too). Names that
+        already exist in an enclosing scope (globals, parameters) are left
+        alone."""
+        def walk(stmts):
+            for s in stmts:
+                op = s[0]
+                if op == "decl":
+                    _, _type, name, _expr, _line = s
+                    if name not in scope and not any(
+                            name in sc_ for sc_ in self.scopes[:-1]):
+                        scope[name] = _default(_type)
+                elif op == "block":
+                    walk(s[1])
+                elif op == "if":
+                    walk(s[2])
+                    walk(s[3])
+                elif op == "for":
+                    walk(s[5])
+        walk(body)
+
     def assign(self, name: str, value: Any) -> None:
         for scope in reversed(self.scopes):
             if name in scope:
@@ -816,6 +908,7 @@ class Extractor:
         if main_def is None:
             raise ExtractError("no main() found")
         self.scopes.append({})
+        self._hoist(main_def[4], self.scopes[-1])
         try:
             for stmt in main_def[4]:
                 self.exec_stmt(stmt)
@@ -1054,6 +1147,7 @@ class Extractor:
                 local[pname] = args[idx] if idx < len(args) else (
                     self.eval(default) if default is not None else 0)
             self.scopes.append(local)
+            self._hoist(fdef[4], local)
             value = None
             try:
                 for s in fdef[4]:
@@ -1069,6 +1163,10 @@ class Extractor:
 
         if name in OPAQUE_DEF_BUILDERS:
             return OpaqueDef(name)
+        if name == "ypKingsHillPlacer":
+            return self._koth_placer(args, line)
+        if name == "ypKingsHillLandfill":
+            return self._koth_landfill(args, line)
         if name in NOOP_FUNCS or name in TRIGGER_FUNCS:
             return 0
         if name == "rmGetTradeRouteWayPoint":
@@ -1157,27 +1255,58 @@ class Extractor:
                     sx, sz = self._need_size()
                     return ("vec", anchor[0] * sx, 0.0, anchor[1] * sz)
             return Tainted("rmGetUnitPosition(...)")
-        if name in ("xsArrayCreateInt", "xsArrayCreateFloat", "xsArrayCreateString"):
-            return {"__array__": [args[1]] * int(args[0]) if not isinstance(args[0], Tainted) else []}
-        if name in ("xsArraySetInt", "xsArraySetFloat", "xsArraySetString"):
-            arr, idx, value = args
+        if name == "xsVectorNormalize":
+            # vector xsVectorNormalize(vector v) (ai_reference.xs:73). The
+            # zero vector has no direction: left runtime-dependent rather
+            # than guessing what the engine returns for it.
+            v = args[0] if args else None
+            if isinstance(v, tuple) and len(v) == 4 and v[0] == "vec":
+                n = math.sqrt(v[1] * v[1] + v[2] * v[2] + v[3] * v[3])
+                if n > 0.0:
+                    return ("vec", v[1] / n, v[2] / n, v[3] / n)
+            src = v.expr if isinstance(v, Tainted) else repr(v)
+            return Tainted(f"xsVectorNormalize({src})")
+        # xs arrays (ai_reference.xs:86-110): Int/Float/String/Bool/Vector
+        # share one model - create(size, default, name), set(id, i, v),
+        # get(id, i), getSize(id).
+        if name in ("xsArrayCreateInt", "xsArrayCreateFloat", "xsArrayCreateString",
+                    "xsArrayCreateBool", "xsArrayCreateVector"):
+            default = args[1] if len(args) > 1 else _default(
+                {"xsArrayCreateInt": "int", "xsArrayCreateFloat": "float",
+                 "xsArrayCreateString": "string", "xsArrayCreateBool": "bool",
+                 "xsArrayCreateVector": "vector"}[name])
+            size = args[0] if args else 0
+            return {"__array__": [default] * int(size) if not isinstance(size, Tainted) else []}
+        if name in ("xsArraySetInt", "xsArraySetFloat", "xsArraySetString",
+                    "xsArraySetBool", "xsArraySetVector"):
+            arr, idx, value = args[0], args[1], args[2]
             if isinstance(arr, dict) and not isinstance(idx, Tainted):
                 lst = arr["__array__"]
                 while len(lst) <= int(idx):
                     lst.append(0)
                 lst[int(idx)] = value
             return 0
-        if name in ("xsArrayGetInt", "xsArrayGetFloat", "xsArrayGetString"):
-            arr, idx = args
+        if name in ("xsArrayGetInt", "xsArrayGetFloat", "xsArrayGetString",
+                    "xsArrayGetBool", "xsArrayGetVector"):
+            arr, idx = args[0], args[1]
             if isinstance(arr, dict) and not isinstance(idx, Tainted):
                 lst = arr["__array__"]
                 if int(idx) < len(lst):
                     return lst[int(idx)]
             return Tainted("xsArrayGet(...)")
+        if name == "xsArrayGetSize":
+            arr = args[0] if args else None
+            if isinstance(arr, dict):
+                return len(arr["__array__"])
+            return Tainted("xsArrayGetSize(...)")
 
         # --- scenario-resolved reads ---
         if name == "rmGetIsKOTH":
             return sc.koth
+        if name == "rmGetIsFFA":
+            # ref:55 "true if this map is set to be a FFA game which means
+            # each player on their own team".
+            return sc.teams == sc.players
         if name == "rmGetPlayerTeam":
             # Deterministic team model: players alternate teams in lobby
             # order ((p-1) mod teams). Concrete so per-team placement
@@ -1389,11 +1518,19 @@ class Extractor:
                 spec = {"kind": "opaque", "desc": name, "line": line}
             res.constraints[cname] = spec
             return h
-        if name in ("rmCreateEdgeDistanceConstraint", "rmCreateCliffRampConstraint",
-                    "rmCreateHCGPConstraint"):
+        if name in OPAQUE_CONSTRAINTS:
+            # Known constraint kinds the model cannot evaluate (cliff ramps
+            # and edges, heights, corners, home-city gather points): kept as
+            # NAMED opaque specs so every def that uses one reports it as
+            # skipped - before 2026-09-25 the unknown ones returned handle 0
+            # and surfaced as "constraint '?' not in catalog" CONFIG errors
+            # (zpwinterwonderlandii 30x, zpIceland, zpistanbulb).
             h = self._new_handle()
-            self.constraint_handles[h] = str(args[0])
-            res.constraints[str(args[0])] = {"kind": "opaque", "desc": name, "line": line}
+            cname = str(args[0]) if args else name
+            if cname in res.constraints:
+                cname = f"{cname}#{line}"
+            self.constraint_handles[h] = cname
+            res.constraints[cname] = {"kind": "opaque", "desc": name, "line": line}
             return h
 
         # --- areas ---
@@ -1490,7 +1627,7 @@ class Extractor:
         if name == "rmAddAreaConstraint":
             a = res.areas.get(args[0])
             if a is not None:
-                cname = self.constraint_handles.get(args[1], "?")
+                cname = self._constraint_name(args[1])
                 a.constraints.append(cname)
             return 0
         if name == "rmAddAreaInfluenceSegment":
@@ -1575,6 +1712,15 @@ class Extractor:
             if c is not None:
                 c.built = True
             return True
+        if name == "rmAddConnectionToClass":
+            # ref:376 - the built connection joins the class, so later
+            # class-distance constraints see its band (zpnewguinea's
+            # causeway joins "center").
+            c = res.connections.get(args[0])
+            cid = args[1] if len(args) > 1 else None
+            if c is not None and not isinstance(cid, Tainted):
+                c.classes.append(self.classes.get(cid, "?"))
+            return 0
 
         # --- object defs / groupings ---
         if name in ("rmCreateObjectDef", "rmCreateStartingUnitsObjectDef"):
@@ -1604,7 +1750,7 @@ class Extractor:
         if name in ("rmAddObjectDefConstraint", "rmAddGroupingConstraint"):
             d = res.defs.get(args[0])
             if d is not None:
-                d.constraints.append(self.constraint_handles.get(args[1], "?"))
+                d.constraints.append(self._constraint_name(args[1]))
             return 0
         if name == "rmSetObjectDefTradeRouteID":
             d = res.defs.get(args[0])
@@ -1633,6 +1779,19 @@ class Extractor:
                 nominal=self.alt_depth == 0,
                 def_handle=int(args[0])))
             return 1
+        if name == "rmPlaceObjectDefAtAreaLoc":
+            # (defID, playerID, areaID, count) - ref:443 "at the given
+            # area's location": the at_loc form anchored on the area's
+            # rmSetAreaLocation point (runtime when that is unknown).
+            area = res.areas.get(args[2]) if len(args) > 2 and not isinstance(
+                args[2], Tainted) else None
+            ax = area.x if area is not None and area.x is not None else Tainted(
+                "rmPlaceObjectDefAtAreaLoc(area)")
+            az = area.z if area is not None and area.z is not None else Tainted(
+                "rmPlaceObjectDefAtAreaLoc(area)")
+            return self.call("rmPlaceObjectDefAtLoc",
+                             [args[0], args[1] if len(args) > 1 else 0, ax, az,
+                              args[3] if len(args) > 3 else 1], line)
         if name in ("rmPlaceObjectDefInArea", "rmPlaceGroupingInArea"):
             # Third grouping placement method (user 2026-08-10): random
             # placement INSIDE an area — cookislands underwater patches,
@@ -1735,6 +1894,78 @@ class Extractor:
             raise ExtractError("conversion used before rmSetMapSize")
         return self.res.map_size_x, self.res.map_size_z
 
+    # -- vanilla include helpers replayed call by call ------------------------
+
+    def _koth_placer(self, args: List[Any], line: int) -> int:
+        """ypKingsHillPlacer(xLoc, yLoc, walkDistance, extraConstraint),
+        vanilla Game/RandMaps/ypKOTHInclude.xs lines 4-37, replayed through
+        the ordinary handlers so the hill becomes a real placement with the
+        include's eight constraints (names and distances as in the include)
+        plus the map's extra constraint when it passes one (> 0). Before
+        2026-09-25 the call was a no-op and every --koth run reported the
+        hill as missing (mapsim feedback item 2)."""
+        x = args[0] if len(args) > 0 else 0.0
+        z = args[1] if len(args) > 1 else 0.0
+        walk = args[2] if len(args) > 2 else 0.0
+        extra = args[3] if len(args) > 3 else 0
+        c = self.call
+        cons = [
+            c("rmCreateTerrainDistanceConstraint",
+              ["kings hill avoids impassable land", "Land", False, 4.0], line),
+            c("rmCreateTypeDistanceConstraint",
+              ["kings hill avoids all", "all", 4.0], line),
+            c("rmCreateTypeDistanceConstraint",
+              ["kings hill avoids trade route socket", "socketTradeRoute", 4.0], line),
+            c("rmCreatePieConstraint",
+              ["kings hill edge of map", 0.5, 0.5,
+               c("rmXFractionToMeters", [0.0], line),
+               c("rmXFractionToMeters", [0.48], line),
+               c("rmDegreesToRadians", [0], line),
+               c("rmDegreesToRadians", [360], line)], line),
+            c("rmCreateTypeDistanceConstraint",
+              ["kings hill avoids TCs", "Towncenter", 45.0], line),
+            c("rmCreateTypeDistanceConstraint",
+              ["kings hill avoids CWs", "CoveredWagon", 45.0], line),
+            c("rmCreateTradeRouteDistanceConstraint",
+              ["kings hill avoids trade route", 6.0], line),
+            c("rmCreateTypeDistanceConstraint",
+              ["avoid flag", "HomeCityWaterSpawnFlag", 4.0], line),
+        ]
+        d = c("rmCreateObjectDef", ["KingsHill"], line)
+        c("rmAddObjectDefItem", [d, "ypKingsHill", 1, 0], line)
+        c("rmSetObjectDefMinDistance", [d, 0.0], line)
+        c("rmSetObjectDefMaxDistance", [d, c("rmXFractionToMeters", [walk], line)], line)
+        for k in cons:
+            c("rmAddObjectDefConstraint", [d, k], line)
+        if not isinstance(extra, Tainted) and isinstance(extra, (int, float)) and extra > 0:
+            c("rmAddObjectDefConstraint", [d, extra], line)
+        c("rmPlaceObjectDefAtLoc", [d, 0, x, z, 1], line)
+        return 0
+
+    def _koth_landfill(self, args: List[Any], line: int) -> int:
+        """ypKingsHillLandfill(xLoc, yLoc, fillSize, fillHeight, fillMix,
+        extraConstraint), vanilla ypKOTHInclude.xs lines 39-55: one area
+        "hill placer" at (x, y), size fillSize, base height fillHeight,
+        the mix, coherence 0.9, smooth 5, the extra constraint when > 0."""
+        x = args[0] if len(args) > 0 else 0.0
+        z = args[1] if len(args) > 1 else 0.0
+        size = args[2] if len(args) > 2 else 0.0
+        height = args[3] if len(args) > 3 else 0.0
+        mix = args[4] if len(args) > 4 else ""
+        extra = args[5] if len(args) > 5 else 0
+        c = self.call
+        a = c("rmCreateArea", ["hill placer"], line)
+        c("rmSetAreaLocation", [a, x, z], line)
+        c("rmSetAreaMix", [a, mix], line)
+        c("rmSetAreaSize", [a, size, size], line)
+        c("rmSetAreaCoherence", [a, 0.9], line)
+        c("rmSetAreaBaseHeight", [a, height], line)
+        c("rmSetAreaSmoothDistance", [a, 5], line)
+        if not isinstance(extra, Tainted) and isinstance(extra, (int, float)) and extra > 0:
+            c("rmAddAreaConstraint", [a, extra], line)
+        c("rmBuildArea", [a], line)
+        return 0
+
     def _placed_def(self, fn: str, handle: Any, line: int) -> Optional[XDef]:
         """The def a placement call names, or None - then nothing is placed
         and an extraction warning says so (2026-09-24, twin review F2: the
@@ -1831,6 +2062,11 @@ class Extractor:
 
 
 def _default(_type: str) -> Any:
+    """A declaration's value before any assignment. Vectors are zero
+    (rm-objects-herds skill: a vector declared in an if block that did not
+    run exists "with value zero"); before 2026-09-25 they were tainted."""
+    if _type == "vector":
+        return ("vec", 0.0, 0.0, 0.0)
     return {"int": 0, "float": 0.0, "string": "", "bool": False}.get(_type, Tainted("uninit"))
 
 

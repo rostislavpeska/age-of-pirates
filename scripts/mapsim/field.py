@@ -122,17 +122,15 @@ class FieldContext:
             for a in rs.land_areas()
         ]
         # Authored water features (for land-base maps, where terrain
-        # constraints invert): water-type areas, submerged ground (base
-        # height at/below sea level), and river capsules.
+        # constraints invert): water-type areas, elevation masks and river
+        # capsules (scene.area_floods: a base height alone floods nothing
+        # on a land-initialized map, 2026-09-25).
+        from scripts.mapsim.scene import area_floods
         self.water_shapes: List[Tuple[tuple, int]] = []
         for a in rs.areas:
             if a.x is None:
                 continue
-            wet = (a.water_type is not None
-                   or (a.base_height is not None and a.base_height <= rs.sea_level)
-                   or (a.is_invisible() and a.has_elevation
-                       and a.height_blend < 2.0 and rs.sea_level >= 0.0))
-            if wet:
+            if area_floods(rs, a):
                 for shape in _area_shapes_m(rs, a):
                     self.water_shapes.append((shape, a.line))
         for r in rs.rivers:
@@ -173,6 +171,10 @@ class FieldContext:
         # units enter only AFTER the solver ran (their anchors move);
         # during solving gsolve deposits sequentially itself.
         self.placed_types: List[Tuple[str, float, float, int]] = []
+        # id() of the placement each placed_types entry came from (parallel
+        # list): lets a placement's own units be left out of its own
+        # type-distance test (type_clear).
+        self.placed_owner: List[int] = []
         self._type_match_cache: Dict[str, List[Tuple[float, float, int]]] = {}
         for p in rs.placements:
             if p.x is None:
@@ -190,6 +192,7 @@ class FieldContext:
             else:
                 for t in getattr(p, "items", ()) or ():
                     self.placed_types.append((t.lower(), px, pz, p.line))
+                    self.placed_owner.append(id(p))
         for p in rs.placements:
             if p.x is None or not p.classes:
                 continue
@@ -226,8 +229,31 @@ class FieldContext:
                 for t, dx, dz in units:
                     self.placed_types.append(
                         (t.lower(), px_m + dx, pz_m + dz, p.line))
+                    self.placed_owner.append(id(p))
                 self._type_match_cache.clear()
                 return
+
+    def type_clear(self, spec: Dict[str, Any], p_m: Tuple[float, float],
+                   before_line: Optional[int], exclude_owner: int) -> bool:
+        """type_distance test that leaves out the units of ONE placement
+        (the one being checked: a placement never avoids itself)."""
+        from scripts.refdata.catalogs import proto_counts_as
+        d = float(spec["distance_m"])
+        key = ("owned", spec["type"].lower(), len(self.placed_types))
+        hits = self._type_match_cache.get(key)
+        if hits is None:
+            hits = [(px, pz, ln, own) for (t, px, pz, ln), own
+                    in zip(self.placed_types, self.placed_owner)
+                    if proto_counts_as(t, spec["type"])]
+            self._type_match_cache[key] = hits
+        for px, pz, ln, own in hits:
+            if own == exclude_owner:
+                continue
+            if before_line is not None and ln > before_line:
+                continue
+            if dist(p_m, (px, pz)) < d:
+                return False
+        return True
 
     def type_points(self, type_name: str) -> List[Tuple[float, float, int]]:
         """Registry entries whose proto counts as type_name (cached; the
@@ -545,6 +571,13 @@ class TerrainGrid:
     # grown reality, not authored discs (a mesa's authored disc covers the
     # valleys its grown claim leaves open).
     class_cells: Dict[str, List[Tuple[int, int]]] = dfield(default_factory=dict)
+    # B1 canonical state (2026-09-25): wsurf[z][x] = height of the water
+    # plane over the cell or None (no plane: land-initialized ground outside
+    # lakes/rivers/masks); owner[z][x] = index into owner_names of the build
+    # step that last wrote ground or water there (0 = rmTerrainInitialize).
+    wsurf: List[List[Optional[float]]] = dfield(default_factory=list)
+    owner: List[List[int]] = dfield(default_factory=list)
+    owner_names: List[str] = dfield(default_factory=list)
 
     def cell_of_frac(self, x: float, z: float) -> Tuple[int, int]:
         i = min(self.nx - 1, max(0, int(x * self.nx)))
@@ -596,7 +629,8 @@ class TerrainGrid:
 
 
 def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
-                 cell_tiles: float = 1.0, on_step=None) -> TerrainGrid:
+                 cell_tiles: float = 1.0, on_step=None,
+                 water_log: Optional[list] = None) -> TerrainGrid:
     """Compute every area's shape by BUDGET-DRIVEN GROWTH (priority flood).
 
     Faithful to the researched engine model: each area accretes exactly its
@@ -627,6 +661,23 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
     wdepth = [[base_depth] * nx for _ in range(nz)]
     wwalk = [[base_water and base_depth <= SHALLOW_BUILD_DEPTH_M] * nx
              for _ in range(nz)]
+    # B1 `water_surface` (plan_mapsim_architecture.md part B): the height of
+    # the water plane covering each cell, or None. A flooded base lies under
+    # the sea plane everywhere. A LAND-initialized base has NO plane: the
+    # sea level floods nothing there, water exists only where a water-typed
+    # area, a river or an elevation mask puts it (fix 2026-09-25, mapsim
+    # feedback item 1). Evidence: vanilla Mexico.xs (sea 4.0, land at 2.0,
+    # player areas without a base height, a dry land map), Fertile
+    # Crescent.xs (sea 3.0, land at 0.0, "land" map with rivers),
+    # Manchuria.xs (sea 5.0, land at 4.0, its "spur" at 2.5), and the owner:
+    # zpdeadsea / zpeyrebasin (sea 6.0, land at 1.0, players at 2.0) play
+    # with their players on land.
+    wsurf: List[List[Optional[float]]] = [
+        [rs.sea_level if base_water else None] * nx for _ in range(nz)]
+    # B1 `owner`: the build step that last wrote ground or water in a cell
+    # (index into owner_names; 0 = rmTerrainInitialize).
+    owner = [[0] * nx for _ in range(nz)]
+    owner_names: List[str] = ["(base terrain)"]
     cliff = [[0] * nx for _ in range(nz)]
     cliff_band = [[False] * nx for _ in range(nz)]
     cliff_claims: List[Tuple[str, List[Tuple[int, int]]]] = []
@@ -665,9 +716,25 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
                            cliff_band=[r[:] for r in cliff_band],
                            cliff_order=list(cliff_order),
                            sea_level=rs.sea_level,
-                           shortfalls=dict(shortfalls))
+                           shortfalls=dict(shortfalls),
+                           wsurf=[r[:] for r in wsurf],
+                           owner=[r[:] for r in owner],
+                           owner_names=list(owner_names))
+
+    log_prev = ([r[:] for r in water] if water_log is not None else None)
 
     def _emit(kind: str, name: str, line: int, category: str, cells_) -> None:
+        if water_log is not None:
+            # (line, [(i, j, is_water)]) for every cell this step flipped -
+            # checks replay it to see the terrain at a placement's line.
+            changed = []
+            for i, j in cells_:
+                w = water[j][i]
+                if log_prev[j][i] != w:
+                    log_prev[j][i] = w
+                    changed.append((i, j, w))
+            if changed:
+                water_log.append((line, changed))
         if on_step is not None:
             on_step({"kind": kind, "name": name, "line": line,
                      "category": category, "cells": list(cells_),
@@ -749,6 +816,9 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
             j0 = max(0, int((min(zs) - halfw) / step) - 1)
             j1 = min(nz - 1, int((max(zs) + halfw) / step) + 1)
             step_cells: List[Tuple[int, int]] = []
+            r_name = f"river {item.get('water_type') or ''}".strip()
+            owner_names.append(r_name)
+            r_owner = len(owner_names) - 1
             for j in range(j0, j1 + 1):
                 pz = (j + 0.5) * step
                 for i in range(i0, i1 + 1):
@@ -760,6 +830,11 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
                         water[j][i] = True
                         wdepth[j][i] = r_depth
                         wwalk[j][i] = False
+                        # the sea level IS the river surface ("rmSetSeaLevel
+                        # ... height of river surface compared to surrounding
+                        # land", vanilla Florida/Fertile Crescent/Manchuria)
+                        wsurf[j][i] = rs.sea_level
+                        owner[j][i] = r_owner
                         step_cells.append((i, j))
             # Authored fords (rmRiverAddShallow at length-fraction t): a
             # walkable shallow disc of the river's shallow radius.
@@ -788,8 +863,7 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
                                     wwalk[jj][ii] = True
                         break
                     acc += sl
-            _emit("river", f"river {item.get('water_type') or ''}".strip(),
-                  int(item.get("line", 0)), "river band", step_cells)
+            _emit("river", r_name, int(item.get("line", 0)), "river band", step_cells)
             continue
         if kind_tag == "conn":
             # Causeway between two areas: RAISES the sea floor along its
@@ -812,29 +886,44 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
             p1, p2 = tuple(p1), tuple(p2)
             halfw = float(item["width_m"]) / 2.0
             bh = float(item["base_height"])
-            c_dry = bh >= rs.sea_level
-            c_depth = max(0.0, rs.sea_level - bh)
             i0 = max(0, int((min(p1[0], p2[0]) - halfw) / step) - 1)
             i1 = min(nx - 1, int((max(p1[0], p2[0]) + halfw) / step) + 1)
             j0 = max(0, int((min(p1[1], p2[1]) - halfw) / step) - 1)
             j1 = min(nz - 1, int((max(p1[1], p2[1]) + halfw) / step) + 1)
             step_cells = []
+            band_cells = []
+            n_dry = 0
+            owner_names.append("causeway")
+            c_owner = len(owner_names) - 1
             for j in range(j0, j1 + 1):
                 pz = (j + 0.5) * step
                 for i in range(i0, i1 + 1):
+                    if dist_point_to_segment(((i + 0.5) * step, pz), p1, p2) > halfw:
+                        continue
+                    band_cells.append((i, j))
                     if not water[j][i]:
                         continue    # never dig through existing land
-                    if dist_point_to_segment(((i + 0.5) * step, pz), p1, p2) <= halfw:
-                        step_cells.append((i, j))
-                        cliff[j][i] = 0
-                        cliff_band[j][i] = False
-                        if c_dry:
-                            water[j][i] = False
-                            wdepth[j][i] = 0.0
-                            wwalk[j][i] = False
-                        else:
-                            wdepth[j][i] = min(wdepth[j][i], c_depth)
-                            wwalk[j][i] = wdepth[j][i] <= SHALLOW_BUILD_DEPTH_M
+                    step_cells.append((i, j))
+                    cliff[j][i] = 0
+                    cliff_band[j][i] = False
+                    owner[j][i] = c_owner
+                    # Same elevation rule as terrain, against the plane that
+                    # covers THIS cell (sea on a flooded base, the lake's own
+                    # surface elsewhere): at/above it -> dry strip.
+                    surf = wsurf[j][i] if wsurf[j][i] is not None else rs.sea_level
+                    if bh >= surf:
+                        water[j][i] = False
+                        wdepth[j][i] = 0.0
+                        wwalk[j][i] = False
+                        n_dry += 1
+                    else:
+                        wdepth[j][i] = min(wdepth[j][i], surf - bh)
+                        wwalk[j][i] = wdepth[j][i] <= SHALLOW_BUILD_DEPTH_M
+            # rmAddConnectionToClass (ref:376): the band joins the class for
+            # later class-distance constraints.
+            for cls in item.get("classes", []) or []:
+                class_cells.setdefault(cls.lower(), []).extend(band_cells)
+            c_dry = n_dry == len(step_cells) if step_cells else bh >= rs.sea_level
             _emit("connection", "causeway", int(item.get("line", 0)),
                   "causeway (land)" if c_dry else "causeway (shallow)", step_cells)
             continue
@@ -894,23 +983,35 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
             if found is not None:
                 seeds = [found]
         cells = priority_flood(nx, nz, seeds, budget, allowed_fn)
+        owner_names.append(area.name)
+        a_owner = len(owner_names) - 1
+        writes_ground = False
+        n_wet = 0
         if area.water_type is not None:
             # rmSetAreaWaterType paints REAL water and carves elevation
             # itself (rm_commands_reference.md:354); with a base height the
             # SURFACE rides above sea level (Riverina cascade) — still water.
             step_cat = "water area"
+            writes_ground = True
             a_depth = depth_of(area.water_type)
             a_walk = a_depth <= SHALLOW_BUILD_DEPTH_M
+            a_surf = (area.base_height if area.base_height is not None
+                      else rs.sea_level)
             for i, j in cells:
                 water[j][i] = True
                 wdepth[j][i] = a_depth
                 wwalk[j][i] = a_walk
+                wsurf[j][i] = a_surf
                 marker[j][i] = True
                 land[j][i] = 0
                 cliff[j][i] = 0
                 cliff_band[j][i] = False
-        elif area.creates_land:
+            n_wet = len(cells)
+        elif area.creates_land and area.base_height is None:
+            # Curated scenes may flag land without a height (legacy
+            # creates_land contract): land everywhere, as before.
             step_cat = "land"
+            writes_ground = True
             land_order.append(area.name)
             code = len(land_order)
             for i, j in cells:
@@ -919,28 +1020,57 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
                 wdepth[j][i] = 0.0
                 wwalk[j][i] = False
                 cliff[j][i] = 0
-                # cliff_band DELIBERATELY PERSISTS here: the engine keeps
-                # blocking placements on a cliff's footprint even after a
-                # ramp / later land area builds over it — user-verified
-                # in-game 2026-08-09, an RM generation bug this model must
-                # reproduce for spawn checks to be truthful. Water builds
-                # (river/water-area/mask branches) still clear the band:
-                # flooded ground blocks as WATER, not as cliff.
         elif area.base_height is not None:
-            # Submerged ground: explicit base height at/below sea level
-            # (Cook Islands -0.25 shoals and -5.0 cliff rings, Civil War
-            # -1.5 fords). Water whose depth is sea minus the floor.
-            step_cat = "submerged ground"
-            a_depth = max(0.0, rs.sea_level - area.base_height)
-            a_walk = a_depth <= SHALLOW_BUILD_DEPTH_M
+            # Ground at the area's base height (B2.6b), judged PER CELL
+            # against the water plane that covers the cell (B2.1/B2.4):
+            # water iff the plane is above the ground (depth > 0), with
+            # depth = surface - ground; otherwise land. On a flooded base
+            # the plane is the sea level everywhere - the old rule "base
+            # height <= sea level -> submerged" (Cook Islands -0.25 shoals,
+            # -5.0 reef rings, Hawaii fords) - but at EXACTLY the plane the
+            # cell is land now, as the standard (B2.4 "land iff depth <= 0")
+            # and the connection rule (Tortuga's bh == sea causeways are
+            # dry) already said. On a LAND-initialized base only lakes,
+            # rivers and masks carry a plane: Dead Sea's players (2.0 under
+            # sea 6.0) stand on land, Eyre Basin's King's Island (1.0) is an
+            # island in its 0.0 lake.
+            writes_ground = True
+            bh = float(area.base_height)
+            code = None
             for i, j in cells:
-                water[j][i] = True
-                wdepth[j][i] = a_depth
-                wwalk[j][i] = a_walk
-                marker[j][i] = True
-                land[j][i] = 0
-                cliff[j][i] = 0
-                cliff_band[j][i] = False
+                surf = wsurf[j][i]
+                if surf is not None and bh < surf:
+                    depth = surf - bh
+                    water[j][i] = True
+                    wdepth[j][i] = depth
+                    wwalk[j][i] = depth <= SHALLOW_BUILD_DEPTH_M
+                    marker[j][i] = True
+                    land[j][i] = 0
+                    cliff[j][i] = 0
+                    cliff_band[j][i] = False
+                    n_wet += 1
+                else:
+                    if code is None:
+                        land_order.append(area.name)
+                        code = len(land_order)
+                    land[j][i] = code
+                    water[j][i] = False
+                    wdepth[j][i] = 0.0
+                    wwalk[j][i] = False
+                    cliff[j][i] = 0
+                    # cliff_band DELIBERATELY PERSISTS on dry cells: the
+                    # engine keeps blocking placements on a cliff's
+                    # footprint even after a ramp / later land area builds
+                    # over it — user-verified in-game 2026-08-09, an RM
+                    # generation bug this model must reproduce for spawn
+                    # checks to be truthful. Water builds still clear the
+                    # band: flooded ground blocks as WATER, not as cliff.
+            if not cells or n_wet == 0:
+                step_cat = "land"
+            elif n_wet == len(cells):
+                step_cat = "submerged ground"
+            else:
+                step_cat = "land + submerged ground"
         elif area.cliff_type is not None:
             # Cliff area with no base height: rmSetAreaCliffHeight shapes the
             # interior but the ground stays at its inherited state (Uluru /
@@ -982,15 +1112,21 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
                     water[j][i] = True
                     wdepth[j][i] = depth_of(rs.sea_type)
                     wwalk[j][i] = wdepth[j][i] <= SHALLOW_BUILD_DEPTH_M
+                    wsurf[j][i] = rs.sea_level
+                    owner[j][i] = a_owner
                     land[j][i] = 0
                     cliff[j][i] = 0
                     cliff_band[j][i] = False
+            if stamp_wet:
+                n_wet = len(cells)
+        if writes_ground:
+            for i, j in cells:
+                owner[j][i] = a_owner
         # Did this area's claim end up as WATER? (drives the shore standoff
         # for later land growth — a class whose members stayed land must
-        # not trigger it; review finding 2026-08-08)
-        wet_claim = (area.water_type is not None
-                     or (area.base_height is not None
-                         and not area.creates_land)
+        # not trigger it; review finding 2026-08-08). Read from the cells
+        # the step actually flooded (per-cell rule, 2026-09-25).
+        wet_claim = (area.water_type is not None or n_wet > 0
                      or (area.is_invisible() and area.has_elevation
                          and area.height_blend < 2.0 and rs.sea_level >= 0.0))
         for cls in area.classes:
@@ -1038,7 +1174,8 @@ def terrain_grid(rs: ResolvedScene, ctx: Optional[FieldContext] = None,
                        water=water, wdepth=wdepth, wwalk=wwalk, cliff=cliff,
                        cliff_band=cliff_band, cliff_order=cliff_order,
                        sea_level=rs.sea_level, shortfalls=shortfalls,
-                       cliff_claims=cliff_claims, class_cells=class_cells)
+                       cliff_claims=cliff_claims, class_cells=class_cells,
+                       wsurf=wsurf, owner=owner, owner_names=owner_names)
 
 
 @dataclass
@@ -1128,3 +1265,108 @@ def loop_feasibility(ctx: FieldContext, area: ResolvedArea,
     ratio = feasible_tiles / demand_tiles if demand_tiles > 0 else math.inf
     return LoopFeasibility(area.name, feasible_tiles, demand_tiles, ratio,
                            len(specs), skipped, allowed_points)
+
+
+class TerrainTimeline:
+    """The GROWN terrain as it stands at any script line (2026-09-25).
+
+    Placement checks used to judge terrain constraints ("avoid water",
+    "stay near water") against the authored-disc model only: an island that
+    grows along its influence segments (zptorresstrait's south island) or
+    rises out of a lake (zpdeadsea/zpeyrebasin King's Island) was water
+    there, so TCs and the KotH hill came out CONSTRAINT_UNSAT on maps that
+    place them fine in game. The timeline replays terrain_grid's water log,
+    so a placement at line L sees the land/water state after every build
+    step created up to L (the build-order rule the disc model already used:
+    IW's pirate controllers stand on water that only later becomes land).
+
+    Water = the grid's `water` cells (walkable shallows included), the same
+    set area growth uses for terrain constraints."""
+
+    def __init__(self, rs: ResolvedScene, cell_tiles: float = 1.0):
+        self.rs = rs
+        self.log: list = []
+        self.tg = terrain_grid(rs, cell_tiles=cell_tiles, water_log=self.log)
+        g = rs.grid
+        self.nx, self.nz = self.tg.nx, self.tg.nz
+        self.step_m = cell_tiles * g.TILE_M
+        self._base = rs.base_is_water
+        self._cache: Dict[int, Tuple[List[List[float]], List[List[float]]]] = {}
+
+    def version(self, line: Optional[int]) -> int:
+        """How many logged steps exist at `line` (None = all)."""
+        if line is None:
+            return len(self.log)
+        return sum(1 for ln, _ in self.log if ln <= line)
+
+    def water_mask(self, version: int) -> List[List[bool]]:
+        w = [[self._base] * self.nx for _ in range(self.nz)]
+        for _ln, changed in self.log[:version]:
+            for i, j, v in changed:
+                w[j][i] = v
+        return w
+
+    def fields(self, version: int):
+        """(distance-to-water, distance-to-land) chamfer fields in meters
+        for the state after `version` logged steps; inf where the map has
+        no such cell at all."""
+        hit = self._cache.get(version)
+        if hit is None:
+            w = self.water_mask(version)
+            wc = [(i, j) for j in range(self.nz) for i in range(self.nx) if w[j][i]]
+            lc = [(i, j) for j in range(self.nz) for i in range(self.nx) if not w[j][i]]
+            inf_field = None
+
+            def _fld(cells):
+                nonlocal inf_field
+                if cells:
+                    return _chamfer_dist_m(self.nx, self.nz, self.step_m, cells)
+                if inf_field is None:
+                    inf_field = [[math.inf] * self.nx for _ in range(self.nz)]
+                return inf_field
+            hit = (_fld(wc), _fld(lc))
+            self._cache[version] = hit
+        return hit
+
+    def annulus_cells(self, anchor_m: Tuple[float, float], r_min: float,
+                      r_max: float):
+        """Cells whose centers lie in the [r_min, r_max] annulus around the
+        anchor (the anchor's own cell for a pinned search), inside the map."""
+        s = self.step_m
+        ax, az = anchor_m
+        if r_max <= 0.0:
+            i = min(self.nx - 1, max(0, int(ax / s)))
+            j = min(self.nz - 1, max(0, int(az / s)))
+            return [(i, j)]
+        lo = max(0.0, r_min - s / 2.0)
+        hi = r_max + s / 2.0
+        i0 = max(0, int((ax - hi) / s))
+        i1 = min(self.nx - 1, int((ax + hi) / s))
+        j0 = max(0, int((az - hi) / s))
+        j1 = min(self.nz - 1, int((az + hi) / s))
+        out = []
+        for j in range(j0, j1 + 1):
+            cz = (j + 0.5) * s
+            for i in range(i0, i1 + 1):
+                d = math.hypot((i + 0.5) * s - ax, cz - az)
+                if lo <= d <= hi:
+                    out.append((i, j))
+        return out
+
+    def terrain_ok(self, spec: Dict[str, Any], anchor_m, r_min: float,
+                   r_max: float, line: Optional[int]) -> bool:
+        """Whether ANY cell of the search annulus satisfies a terrain /
+        terrain_max constraint at the placement's line."""
+        to_water, to_land = self.fields(self.version(line))
+        d = float(spec["distance_m"])
+        kind = spec["kind"]
+        for i, j in self.annulus_cells(anchor_m, r_min, r_max):
+            if kind == "terrain":
+                fld = to_water if spec["avoid"] == "water" else to_land
+                if fld[j][i] >= d:
+                    return True
+            else:   # terrain_max: stay within d of the named terrain
+                fld = to_water if spec["near"] == "water" else to_land
+                if fld[j][i] <= d:
+                    return True
+        return False
