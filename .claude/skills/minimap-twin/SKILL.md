@@ -79,6 +79,14 @@ The camera clicks only inside the disc (6 px from the rim), only after the ring 
 with the corner abort and a foreground + window-under-the-cursor check before every event; it verifies the outline's
 aim point within 3 px and stops a batch the moment the game loses the foreground. Output defaults to a temp folder.
 
+## Random spawns: census the scenario, then photograph it (proven 2026-09-24)
+
+Generate in the editor and save; read each object's exact position from the save by its proto
+(`census_reader.read(save)`, e.g. St Paul's = `zpSPCLondonBasilica`) or take the twin's measured grouping anchors;
+load the scenario (editor File > Load Scenario, sheet `editor.file_load`) and shoot with
+`camera.py shot X Z --size <the save's map size> --screen editor`. London 4p: St Paul's read at (241.7, 260.9) - the
+south spot in that generation - photographed there, the Minster on the north spot.
+
 ## Game UI through `python -m scripts.gameio`
 
 `shot`, `pixel`, `click`, `key`, `type`, `menu <name>` (clicks a main-menu button only when the live layout and the
