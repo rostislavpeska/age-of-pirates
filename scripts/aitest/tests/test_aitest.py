@@ -248,8 +248,8 @@ class TestLondonOnlyPlacement:
                 continue
             assert any("gIsLondon == true" in h for h in enclosing_headers(lines, i)), (i + 1, lines[i])
 
-    def test_build_echo_is_round_seven(self):
-        assert "build r7 2026-09-24" in core("aipiraterules.xs")
+    def test_build_echo_is_round_eight(self):
+        assert "build r8 2026-09-24" in core("aipiraterules.xs")
 
 
 def diag4(t, p=2, baseR=40.0, fails=0, farms=0, plant=0, london=1):

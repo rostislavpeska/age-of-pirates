@@ -336,7 +336,7 @@ minInterval 1
       gIsLondon = true;
       xsEnableRule("buildPirateSocketTowers");   // rebuilds the Keep and bridge towers: it already queries both socket protos
       xsEnableRule("londonSetup");
-      aiEcho("LONDON p" + cMyID + " build r7 2026-09-24 - marker found, London rules on");
+      aiEcho("LONDON p" + cMyID + " build r8 2026-09-24 - marker found, London rules on");
    }
 
    // Naval KOTH Maps %%%%%%%%%%%%%%%%%%%%%%%
@@ -8788,6 +8788,8 @@ minInterval 5
    int count = 0;
    int unit = -1;
    bool lost = false;
+   int gate = -1;
+   int foe = -1;
    vector flagLoc = cInvalidVector;
 
    if (gLondonKeepNear < 0)
@@ -8825,14 +8827,32 @@ minInterval 5
    }
    flagLoc = londonKeepFlagLoc(gLondonKeepNear);
    count = aiPlanGetNumberUnits(gLondonGatePlan, cUnitTypeLogicalTypeLandMilitary);
+   // run 33: a move order does not fight, and a captured Keep is shut by its (now enemy) gates - so: the blocking Keep
+   // gate first, then the enemy soldiers at the flag, then onto the flag
+   gate = londonKeepGate(gLondonKeepNear);
+   if (gate < 0)
+   {
+      foe = getClosestUnitByLocation(cUnitTypeLogicalTypeLandMilitary, cPlayerRelationEnemyNotGaia, cUnitStateAlive, flagLoc, 30.0);
+   }
    for (i = 0; < count)
    {
       unit = aiPlanGetUnitByIndex(gLondonGatePlan, i);
-      aiTaskUnitMove(unit, getRandomPoint(flagLoc, 8));
+      if (gate >= 0)
+      {
+         aiTaskUnitWork(unit, gate);
+      }
+      else if (foe >= 0)
+      {
+         aiTaskUnitWork(unit, foe);
+      }
+      else
+      {
+         aiTaskUnitMove(unit, getRandomPoint(flagLoc, 8));
+      }
    }
    if (xsGetTime() - lastBeat >= 30000)
    {
       lastBeat = xsGetTime();
-      aiEcho("LONDONKEEP p" + cMyID + " retaking near keep " + gLondonKeepNear + " owner " + owner + " with " + count);
+      aiEcho("LONDONKEEP p" + cMyID + " retaking near keep " + gLondonKeepNear + " owner " + owner + " with " + count + " gate " + gate + " foe " + foe);
    }
 }
