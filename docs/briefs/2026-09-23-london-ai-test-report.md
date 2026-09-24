@@ -555,3 +555,32 @@ equals f417f295 minus the socket filter.
 
 **Lesson** (also saved as a memory): the placement-failure metric rewarded changes that removed what the AI contests
 on the map. Every London change now gets a first question: does it change what the AI fights over?
+
+# Session 2026-09-24 - the clean London baseline after the reverts
+
+## Requirement
+
+The owner's requirement: remove the toxic changes, then test.
+
+- **The reverts restore normal contesting.** The bridge post and every Trading Post are claimed normally, there are
+  no towers at the wall gates, and the forward base is stock.
+- **They keep what works:** the war, gate and Keep rules, the fields behind the walls, and the base growth.
+- **Round 5 is new:** the forward base at the enemy bridgehead once the crossing is open (owner 2026-09-24).
+
+The reverts are done and verified:
+- `aibuildings.xs` equals f417f295 minus the socket filter;
+- the gate test blocks any return (`APPROVED_LONDON_CODE`, `test_contested_decisions_carry_no_london_branch`).
+
+## Success criteria (set before the runs)
+
+| Id | Criterion | Kind |
+|---|---|---|
+| L0-L8, U1, U2 | setup, war plan, gates, Keeps, hold, process, no stall | pass / fail |
+| P0 | AIDIAG london 1 for every AI | pass / fail |
+| P1 | base radius > 60 m by 20:00 | pass / fail |
+| P3 | a countryside field placement and an eco building by 25:00 | pass / fail |
+| P4 | a forward base at the enemy bridgehead, at most 3 Forward placement failures when asked | pass / fail, N/A when never asked |
+| P2 | placement failures per 10 minutes | **INFO only**, pending the owner's bound (decision 1): the agent's own bound (4) drove the socket filter |
+| T1 | Trading Posts owned at the end (the new AIDIAG field `tps`) | **INFO**: the reverts must show normal claiming |
+
+**Done:** all pass / fail ids PASS on two consecutive runs. Then stop, report and propose. Nothing is added.

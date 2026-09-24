@@ -8681,5 +8681,5 @@ minInterval 60
           + " plant " + kbUnitCount(cMyID, gPlantationUnit, cUnitStateAlive)
           + " bldg " + kbUnitCount(cMyID, cUnitTypeLogicalTypeBuildingsNotWalls, cUnitStateAlive)
           + " baseR " + baseRadius + " fails " + gPlacementFailures + " failsTC " + gPlacementFailuresTC
-          + " london " + london);
+          + " london " + london + " tps " + kbUnitCount(cMyID, cUnitTypeTradingPost, cUnitStateAlive));
 }

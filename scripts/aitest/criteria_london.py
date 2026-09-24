@@ -202,7 +202,17 @@ def evaluate(files, events_path=None):
                 rate = int(m.group(7)) * 600.0 / t if t else 0.0
                 if rate > 4.0:
                     bad.append("P%d(%d fails in %ds = %.1f / 10 min)" % (p, int(m.group(7)), t, rate))
-        add("P2", "placement failures <= 4 per 10 game minutes", not bad, "failing: %s" % (bad or "none"))
+        # INFO since 2026-09-24: the bound was the agent's own metric, not an owner requirement, and chasing it produced the
+        # socket filter the owner reverted (I13); reported, never a verdict, until the owner sets a bound
+        add("P2", "INFO placement failures per 10 game minutes (owner bound pending)", True,
+            "above 4: %s" % (bad or "none"), na=True)
+        # INFO: Trading Posts owned at the last AIDIAG (the reverts must restore normal claiming - bridge post, natives)
+        tp = []
+        for p in r4:
+            last = [l for l in ai[p] if "AIDIAG p%d" % p in l]
+            m = re.search(r" tps (\d+)", last[-1]) if last else None
+            tp.append("P%d %s" % (p, m.group(1) if m else "?"))
+        add("T1", "INFO Trading Posts owned at the end", True, ", ".join(tp), na=True)
         # P3 the economy uses the countryside: a LONDONPLACE field line and a Mill / Plantation / Farm standing by 25:00
         bad = []
         for p in r4:

@@ -155,6 +155,7 @@ class TestAIFiles:
             assert forbidden not in body, forbidden
         assigned = set(re.findall(r"^\s*(\w+)\s*=", body, re.M))
         assert assigned <= {"baseRadius", "london"}, assigned
+        assert "cUnitTypeTradingPost" in body   # T1 reads the tps field
 
     def test_the_diag_is_enabled_only_through_its_flag(self):
         s = core("aipiraterules.xs")
@@ -262,13 +263,13 @@ class TestRoundFourCriteria:
 
     def test_a_growing_base_with_fields_passes(self):
         v = self.verdicts(self.record(baseR=80.0, fails=3, farms=2))
-        assert (v["P0"], v["P1"], v["P2"], v["P3"]) == ("PASS",) * 4, v
+        assert (v["P0"], v["P1"], v["P3"]) == ("PASS",) * 3, v
 
     def test_a_frozen_base_fails_p1(self):
         assert self.verdicts(self.record(baseR=40.0, farms=2))["P1"] == "FAIL"
 
-    def test_failure_spam_fails_p2(self):
-        assert self.verdicts(self.record(baseR=80.0, fails=40, farms=2))["P2"] == "FAIL"
+    def test_p2_is_info_only_until_the_owner_sets_a_bound(self):
+        assert self.verdicts(self.record(baseR=80.0, fails=40, farms=2))["P2"] == "N/A"
 
     def test_no_eco_building_fails_p3(self):
         assert self.verdicts(self.record(baseR=80.0))["P3"] == "FAIL"
