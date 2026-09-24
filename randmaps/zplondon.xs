@@ -825,7 +825,7 @@ void main(void)
 	rmPlaceObjectDefAtLoc(harbourS1GuardDef, 0, harbourS1GuardX, harbourS1GuardZ);
 	rmPlaceObjectDefAtLoc(harbourS2GuardDef, 0, harbourS2GuardX, harbourS2GuardZ);
 
-	// ---- 8.5 THE SOUTHWEST CITY RAMPS (user 2026-09-24). The first cut - Istanbul's round city beach (zpistanbulb.xs 1677-1734)
+	// ---- 8.5 THE CITY RAMPS, SOUTHWEST + NORTHEAST (user 2026-09-24). The first cut - Istanbul's round city beach (zpistanbulb.xs 1677-1734)
 	// at the quay's height on the wall line - punched a round cobbled tongue through the wall ('extremely creepy'); the user
 	// then asked for 'bigger ... more regular like a real city ramp ... more body, the opposite of a natural ramp'. So a paved
 	// SLIPWAY per bank at the river mouth (southwest on the minimap: west = low x): rampSteps rectangular strips in London's

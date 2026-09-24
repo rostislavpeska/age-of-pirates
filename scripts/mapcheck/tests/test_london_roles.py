@@ -1017,6 +1017,7 @@ class TestWaterFlags:
         for c in ("flagLand", "flagVsFlag", "flagVsPlateau", "flagBox", "flagVsRamp"):
             assert ("rmAddClosestPointConstraint(%s);" % c) in s, c
         assert s.index("rmAddClosestPointConstraint(flagBox);") < s.index("rmFindClosestPointVector(")
+        assert s.index("rmAddClosestPointConstraint(flagVsRamp);") < s.index("rmFindClosestPointVector(")
         assert t.index("rmPlaceObjectDefAtLoc(bridgeRevealer") < t.index('int flagLand = ') and t.index("rmPlaceObjectDefAtLoc(harbourS2GuardDef") < t.index("int flagLand = ")
         steam_twin(LONDON, "00000_zplondon.xs")
 
@@ -1047,14 +1048,17 @@ class TestFish:
                 assert (line % d) in s, line % d
         assert s.index("rmPlaceObjectDefAtLoc(fishDef, 0, 0.5, 0.5, bassCount);") < s.index('int salmonDef = rmCreateObjectDef("salmon");')
         assert 'int fishVsRamp = rmCreateClassDistanceConstraint("fish avoid the ramps", rmClassID("classRamp"), fishRampClearM);' in s   # user 2026-09-24
-        assert float(k["fishRampClearM"]) >= 4.0 and float(k["flagRampClearM"]) > 8.0      # fish clear of the ramps; flags 'slightly' past their 8 m off land
+        assert float(k["fishRampClearM"]) >= 5.0 and float(k["flagRampClearM"]) > 8.0      # fish: 3 m obstruction + margin; flags 'slightly' past their 8 m off land
+        for d in ("fishDef", "salmonDef"):
+            assert s.index("rmAddObjectDefConstraint(%s, fishVsRamp);" % d) < s.index("rmPlaceObjectDefAtLoc(%s, 0, 0.5, 0.5," % d), d
         assert t.index("rmPlaceObjectDefAtLoc(waterFlag, i,") < t.index("int fishVsPlateau") < t.index("int instanceIdShift = 3;")
         steam_twin(LONDON, "00000_zplondon.xs")
 
 
 class TestSouthwestCityRamps:
     """8.5 (user 2026-09-24): a paved slipway per bank at the river mouth - rectangular strips in London's narrow-strip
-    recipe stepping from the quay height to under the water (half depth after the in-game look: one-tile steps, each
+    recipe stepping from the quay height toward the water, every step above its -1.0 m plane (half depth after the
+    in-game look: one-tile steps, each
     from the wall line out; the city blocks' paving; the west side on the map edge); the trade-route clearance in the
     box; after the bridge /
     harbours / guards, before the quays; the first harbour pair +harbour1ShiftM northeast (the second deco follows)."""
@@ -1105,6 +1109,13 @@ class TestNortheastCityRamps:
             assert ('rampBox = rmCreateBoxConstraint("ramp box NE %s " + rampStep, rampNEX1, rampZa, rampNEX2, rampZb);' % bank) in s
             assert ('rampArea = rmCreateArea("ramp NE %s step " + rampStep);' % bank) in s
             assert s.index('"ramp %s step "' % bank) < s.index('"ramp NE %s step "' % bank)
+        for bank in ("south", "north"):          # every line of the NE step = the SW step of the bank, mirrored
+            a = s.index('rampBox = rmCreateBoxConstraint("ramp box %s " + rampStep' % bank)
+            b = s.index('rampBox = rmCreateBoxConstraint("ramp box NE %s " + rampStep' % bank)
+            sw, ne = s[a:s.index("rmBuildArea(rampArea);", a)], s[b:s.index("rmBuildArea(rampArea);", b)]
+            mirrored = (sw.replace('"ramp box %s "' % bank, '"ramp box NE %s "' % bank).replace('"ramp %s step "' % bank, '"ramp NE %s step "' % bank)
+                          .replace("rampX1", "rampNEX1").replace("rampX2", "rampNEX2"))
+            assert ne == mirrored and sw.count(chr(10)) >= 14, bank
         loop = s[s.index("for (rampStep = 0; < rampStepCount)"):]
         terrain = 'rmSetAreaTerrainType(rampArea, "city' + chr(92) + 'ground1_city_street_ground");'
         for line, n in (("rmBuildArea(rampArea);", 4), ("rmSetAreaHeightBlend(rampArea, 0);", 4), (terrain, 4),
