@@ -399,3 +399,30 @@ and Mills now stand next to the Plantations. P3 had 9 Mill "can't path" failures
 still needs checking. Towers (Outpost and Blockhouse) are now the largest group everywhere.
 
 **Next:** run 24 tests the towers at the wall gates (4526ea00).
+
+## Run 24 - towers at the wall gates - London 3v2, 30 min cap - commit 15917206 (AI 4526ea00)
+
+The load was clean (hash 9139e4d641b0). The AI players were two Germans with the human, against Frederick the Great
+and Napoleon.
+
+**The game froze at 27:01.** Napoleon (P3), beaten, offered his resignation in a modal Yes/No dialog, which pauses the
+game. The rest of the cap passed frozen, and the quit's Escape dismissed the dialog (issues log I12). The data
+therefore covers 27 minutes.
+
+**Verdict: FAIL (P2; P3 for P3, which was beaten).** L0-L8, P0, P1, U1 and U2 PASS.
+
+| Player | Tower placements at gates | Tower placement failures | Failures (per 10 min) | Top remaining |
+|---|---|---|---|---|
+| P2 | 6 | 1 | 23 (8.5) | Stable 11, Artillery Depot 6 |
+| P3 | 4 | 0 | 15 (5.6), beaten | Forward Tower 9 |
+| P4 | 6 | 0 | 11 (4.1) | Forward Tower 6 |
+| P5 | 7 | 0 | 15 (5.6) | Barracks 5, Artillery Depot 4 |
+
+**Reading:** the towers at the gates work. Tower failures fell from 27-37 per player (run 23) to 0-1, and the overall
+rate is 4.1-8.5 per 10 minutes, with P4 at the P2 bound. The largest group left is military buildings (Stable,
+Barracks, Artillery Depot) and forward-base towers.
+
+**Harness edit:** during the cap, the driver checks every 10 s for the Yes/No dialog, using the left edges of both
+buttons as measured on three dialogs. It answers Yes (accept the resignation) and logs an event.
+
+**Next:** run 25 tests military buildings preferring the base's back, the countryside (a0e0c66c).

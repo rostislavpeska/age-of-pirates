@@ -499,6 +499,17 @@ def start_match(nav, from_lobby=False, blind=False, load_s=150, map_name=None):
     return -1
 
 
+def yes_no_dialog_up():
+    """The game's modal Yes/No dialog (resignation offer, Quit, Restart): the left edges of its Yes and No buttons,
+    measured 2026-09-24 on three dialogs: (960,1008) = (70,29,14) and (1540,1008) = (63,26,13); plain terrain differs."""
+    a = pixel_at(960 * SW // 2880, 1008 * SH // 1800)
+    b = pixel_at(1540 * SW // 2880, 1008 * SH // 1800)
+    if a is None or b is None:
+        return False
+    return (max(abs(x - y) for x, y in zip(a, (70, 29, 14))) <= 10 and
+            max(abs(x - y) for x, y in zip(b, (63, 26, 13))) <= 10)
+
+
 def watch_verdict(pos, cap_s, blind=False):
     t0 = time.time()
     events = []
@@ -510,6 +521,15 @@ def watch_verdict(pos, cap_s, blind=False):
             if not game_running():
                 events.append("GAME PROCESS DIED - blind mode")
                 return "GAME-CRASHED", events
+            # a beaten AI offers its resignation in a modal Yes/No dialog that PAUSES the game (run 24: Napoleon at
+            # 27:01, the rest of the cap frozen); the Yes/No buttons' left edges identify it - accept
+            if yes_no_dialog_up():
+                focus_game()
+                click(1139 * SW // 2880, 1008 * SH // 1800); time.sleep(1.5)
+                if yes_no_dialog_up():          # the first click after a focus change is eaten
+                    click(1139 * SW // 2880, 1008 * SH // 1800); time.sleep(1.5)
+                msg = "AI RESIGNATION DIALOG accepted at %ds of the cap" % int(time.time() - t0)
+                events.append(msg); print("   " + msg)
         return "BLIND-CAP", events
     while True:
         guard()

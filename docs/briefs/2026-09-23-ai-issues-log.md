@@ -20,6 +20,7 @@ implemented.
 | I8 | run 19 | **every AI dead at match start**: `aiBuildings.xs(883) XS Error 0308 illogical or invalid expression / 0135 parseConditionDecl failed`, and a modal dialog on the loading screen | `if ((xsVectorGetZ(g) - xsVectorGetZ(b)) * side < (...) * side + 20.0)`. The exact trigger is not isolated: the stock core compiles `(a - b) * f(x) >= g(y)` and `(a + b) < (c * d)` | rewritten as plain steps into locals; lint `test_no_condition_has_the_run_19_rejected_shape` over every core file flags exactly the old line 883 |
 | I10 | run 20 | "Restart current game?" dialog; the batch stopped | the quit fallback clicked the post-match Quit point blind, and in the LIVE menu that spot is Restart | `end_match` decides the menu from button-background pixels and clicks only the matching Quit; unknown state = Escape |
 | I11 | run 21 | an AI edit saved 60 s after Play; which version compiled is unknown | the AI compiles at match start, after the map generation, and London generates slowly | the driver hashes `game/ai/core/*.xs` at Play and after the load and flags an AMBIGUOUS run; the agent edits AI files only while no match is loading |
+| I12 | run 24 | the game time stopped at 27:01 of a 30-minute cap | a beaten AI offered resignation: a modal Yes/No dialog that pauses the game | the driver watches the cap for the Yes/No button signature and answers Yes |
 | I9 | evening | three `test_london_roles.py` tests fail | they need `sandbox/backups/groupings/*` files that are not on this machine | none (not an AI issue); noted for the owner |
 
 ## Proposals
