@@ -70,30 +70,37 @@ def main():
 
 
 def countryside(mm, box, park, out):
-    """The fields behind the city walls: the map is a rotated rectangle on the minimap with the river along its long
-    axis, so the countryside behind each bank's wall is the strip along the two long outer edges. The axes come from
-    the lit minimap pixels (PCA); three shots per edge at -90 / 0 / +90 px along the long axis, 85 % out along the short."""
+    """The fields behind the city walls, per player: the river runs along the lit minimap's long axis (PCA), so a
+    player's buildings farthest from that axis are the ones behind the wall - the countryside fields. For each colour,
+    the centroid of its outermost 15 % pixels (by distance from the river axis) is clicked and photographed.
+    (Run 29: fixed offsets along the short axis landed on the river - the explored strip is narrower than the map.)"""
     import numpy as np
     im = np.array(mm).astype(int)
     h, w, _ = im.shape
     ys, xs = np.mgrid[0:h, 0:w]
     lit = (((xs - w / 2) ** 2 + (ys - h / 2) ** 2) < (0.82 * w / 2) ** 2) & (im.sum(axis=2) > 90)
-    pts = np.stack([xs[lit], ys[lit]], 1).astype(float)
-    if len(pts) < 500:
-        print("countryside: minimap not readable")
+    # the river: London's water on the minimap is blue-grey, about (72,96,144) - its axis is the river line
+    water = lit & (np.abs(im[:, :, 0] - 72) <= 16) & (np.abs(im[:, :, 1] - 96) <= 16) & (np.abs(im[:, :, 2] - 144) <= 20)
+    pts = np.stack([xs[water], ys[water]], 1).astype(float)
+    if len(pts) < 200:
+        print("countryside: no river on the minimap (%d px)" % len(pts))
         return
     c = pts.mean(0)
     ev, evec = np.linalg.eigh(np.cov((pts - c).T))
-    major, minor = evec[:, 1], evec[:, 0]
-    half_w = np.percentile(np.abs((pts - c) @ minor), 97)
-    for side, sgn in (("a", 1.0), ("b", -1.0)):
-        for k, along in enumerate((-90.0, 0.0, 90.0)):
-            q = c + major * along * w / 400.0 + minor * sgn * 0.85 * half_w
-            driver.click(int(q[0]) + box[0], int(q[1]) + box[1])
-            move(park)
-            time.sleep(2.5)
-            shot(os.path.join(out, "countryside_%s%d.png" % (side, k + 1)))
-    print("countryside: 6 shots along both outer edges")
+    minor = evec[:, 0]   # across the river
+    for name, rgb in COLOURS.items():
+        m = lit & (np.abs(im[:, :, 0] - rgb[0]) <= TOL) & (np.abs(im[:, :, 1] - rgb[1]) <= TOL) & (np.abs(im[:, :, 2] - rgb[2]) <= TOL)
+        cp = np.stack([xs[m], ys[m]], 1).astype(float)
+        if len(cp) < 10:
+            continue
+        off = np.abs((cp - c) @ minor)
+        far = cp[off >= np.percentile(off, 85)]
+        q = far.mean(0)
+        driver.click(int(q[0]) + box[0], int(q[1]) + box[1])
+        move(park)
+        time.sleep(2.5)
+        shot(os.path.join(out, "fields_%s.png" % name))
+        print("fields %s: outermost %d px at %d,%d" % (name, len(far), int(q[0]) + box[0], int(q[1]) + box[1]))
 
 
 if __name__ == "__main__":
