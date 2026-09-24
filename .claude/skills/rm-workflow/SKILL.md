@@ -8,6 +8,12 @@ description: The random-map creation and change workflow for Age of Pirates - ph
 Every phase: edit the repo copy -> sync the Steam `Game\RandMaps` twin by copy -> run the gate ->
 next phase. A phase whose gate is offline never needs the game. Ask before taking the screen.
 
+The sync is automatic (2026-09-24): `python scripts/tools/sync_local_maps.py` keeps this device's local copies
+(the ignored `config/local-maps.local.json`, e.g. `randmaps/zplondon` -> `00000_zplondon`) equal to the repo,
+which is always the source of truth. The PostToolUse hook runs it after an agent edits a registered map, the
+post-merge git hook (`--install-git-hook`, once per device) after every pull; `--add <repo stem> <local stem>`
+registers a new copy, `--check` lists stale ones. Never copy a `.mods.xml` into the game root.
+
 | # | Phase | Skill | Offline gate | In-game gate (only when placement matters) |
 |---|---|---|---|---|
 | 0 | Brief: intent, size, land/water, players, natives, routes | map-profile (`scripts/maps/<stem>.json`) | profile written | - |

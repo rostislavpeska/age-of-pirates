@@ -46,6 +46,9 @@ scripts/havok/converter.local.json
 # Device-specific destinations for exporting/importing public skill repositories
 config/skill-sync.local.json
 
+# This device's local copies of repo maps (scripts/tools/sync_local_maps.py; example tracked)
+config/local-maps.local.json
+
 # unit-bench screenshots are evidence, not repo content (8 MB each); saves + verdict JSON are tracked
 sandbox/census/samples/bench/*.png
 

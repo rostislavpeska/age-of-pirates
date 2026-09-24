@@ -178,16 +178,13 @@ says.
 - The save `Scenario/mapview_london4p_2880x1800.age3Yscn`.
 - The game is running at the home menu. The skirmish lobby now holds London, 5 players.
 
-## Decisions for the owner
+## Decisions (resolved 2026-09-24)
 
-1. **Edge band per screen.** The band is 0.5-2.5 px. In the editor at 2880 the insets read 2.3 px, near the ceiling;
-   in a match they read 3.5 px and fail. Option A: scale the band with the rim (r / 130.5). Option B: measure a
-   match band separately. Option C: leave in-match records unchecked. I did none of these. The in-match record is
-   unchecked, with its evidence in its note.
-2. **RESOLVED - the repo is what spawns; skills corrected.** Originally: `rm-groupings-deploy` said the profile folder is the only deploy target. On this device the London groupings
-   are not in the profile folder, yet all 67 spawned. Should the skill say that the mod's `game/randmaps/groupings`
-   is read?
-3. **The root copy `00000_zplondon`:** keep it on this device, or remove it after the tests?
-4. **The AI driver's second Play click** (`scripts/aitest/driver.py`, not mine to change): on this device a second
-   click after a fast load hits the in-match flare button. Should the AI campaign probe the lobby before clicking
-   again?
+1. **Edge band:** scaled by rim / 130.5 (`calibrate.edge_band`). The in-match record now passes `edges` on the same
+   frame (0.85-4.23 px band) and is checked. A separate in-match band on the main device follows when the owner
+   asks.
+2. **Groupings:** the repo is what spawns. Both skills are corrected.
+3. **Local map copies:** the repo is the source of truth. `scripts/tools/sync_local_maps.py` and the per-device
+   `config/local-maps.local.json` keep copies such as `00000_zplondon` equal to the repo. The PostToolUse hook runs it
+   after map edits, and the post-merge hook after pulls (installed on this device).
+4. **The second Play click:** logged for the AI campaign as I14 in `docs/briefs/2026-09-23-ai-issues-log.md`.

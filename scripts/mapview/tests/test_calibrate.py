@@ -546,3 +546,16 @@ class TestStarsAndBlobsCli:
         assert CB.main(["blobs", str(p), "--colour", "0,0,255", "--box", "0,0,400,300", "--no-disc"]) == 0
         err = capsys.readouterr().err
         assert "clamped" in err and "zero blobs" in err
+
+
+def test_edge_band_scales_with_the_disc():
+    """The 0.5-2.5 px band (and the 1.0 px side agreement) were measured on the 2560x1080 editor, rim 130.5 px. On the
+    2880x1800 device (2026-09-24) everything is drawn ~1.7x larger: editor insets 2.32 / 2.38 px at rim 218.72 sat at
+    the fixed band's ceiling and the match's 3.45 / 3.52 px at rim 220.89 failed it, while the match scale agreed with
+    the explorer-checked editor record."""
+    assert CB.edge_band(130.5) == (CB.EDGE_INSET_MIN_PX, CB.EDGE_INSET_MAX_PX, CB.EDGE_AGREE_PX)
+    assert CB.edge_band(100.0) == CB.edge_band(130.5)                    # never tighter than measured
+    lo, hi, agree = CB.edge_band(218.72)
+    assert lo < 2.32 < 2.38 < hi and agree > 1.5
+    lo, hi, _ = CB.edge_band(220.89)
+    assert lo < 3.45 < 3.52 < hi

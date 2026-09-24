@@ -9,12 +9,12 @@
  "sign_u": 1,
  "sign_v": -1,
  "measured": true,
- "note": "disc measured 2026-09-24 from 35_match.png (box [2360, 1260, 2880, 1800]): bright line 3252 px, rms 0.886 px, 286 rays, rim spread 1.0 px, line / rim 1.0404; signs +1/-1 as fitted on the Paris editor explorer stars 2026-09-24; look_offset_px measured 2026-09-24 live (London 5p skirmish, 16:15-16:20): the mean of look-at minus target over camera.py shots at the bridge (280, 344), the Keeps (39.72, 262.99) / (42.28, 423.01) and a harbour post (41, 375): (-1.62, -2.50), (-0.69, -4.80), (+0.91, -3.27), (+0.13, -4.21) px, sd 0.94 / 0.88 px; the retry click gave the identical look-at every time. calibrate.py edges FAILED on this frame (insets 3.45 / 3.52 px, band 0.5-2.5, sides within 0.07 px, the map reaches the rim at both ends): the in-match edge inset is thicker than the editor's (2.32 / 2.38 px on the same map at 218.72 px); two static minimap glyphs sit at the same place relative to this record and to the explorer-checked editor record (differences 0.27 / 0.04 and 0.59 / 0.31 px), so the scale agrees with the editor's - checked stays false (no pairs in a match)",
+ "note": "disc measured 2026-09-24 from 35_match.png (box [2360, 1260, 2880, 1800]): bright line 3252 px, rms 0.886 px, 286 rays, rim spread 1.0 px, line / rim 1.0404; signs +1/-1 as fitted on the Paris editor explorer stars 2026-09-24; look_offset_px measured 2026-09-24 live (London 5p skirmish, 16:15-16:20): the mean of look-at minus target over camera.py shots at the bridge (280, 344), the Keeps (39.72, 262.99) / (42.28, 423.01) and a harbour post (41, 375): (-1.62, -2.50), (-0.69, -4.80), (+0.91, -3.27), (+0.13, -4.21) px, sd 0.94 / 0.88 px; the retry click gave the identical look-at every time. calibrate.py edges FAILED on this frame under the fixed 0.5-2.5 px band (insets 3.45 / 3.52 px, band 0.5-2.5, sides within 0.07 px, the map reaches the rim at both ends): the in-match edge inset is thicker than the editor's (2.32 / 2.38 px on the same map at 218.72 px); two static minimap glyphs sit at the same place relative to this record and to the explorer-checked editor record (differences 0.27 / 0.04 and 0.59 / 0.31 px), so the scale agrees with the editor's; with the band scaled by rim / 130.5 (calibrate.edge_band, owner 2026-09-24: 0.85-4.23 px, sides within 1.69 px) edges PASSES on the same frame and the record is checked",
  "points": [],
  "residual_px": null,
  "method": "disc",
  "accepted": true,
- "checked": false,
+ "checked": true,
  "r_line_px": 229.82,
  "probes": [
   {
@@ -90,8 +90,55 @@
    ]
   }
  ],
- "check_pairs": [],
- "check_residual_px": null,
+ "check_pairs": [
+  {
+   "kind": "edge",
+   "what": "long edge x=0 m",
+   "size_x_m": 360.0,
+   "size_z_m": 686.0,
+   "model_px": 115.919,
+   "rays": 179,
+   "samples": 179,
+   "measured_px": 112.465,
+   "inset_px": 3.454,
+   "spread_px": 0.707
+  },
+  {
+   "kind": "edge",
+   "what": "long edge x=360 m",
+   "size_x_m": 360.0,
+   "size_z_m": 686.0,
+   "model_px": 115.919,
+   "rays": 179,
+   "samples": 179,
+   "measured_px": 112.395,
+   "inset_px": 3.524,
+   "spread_px": 0.707
+  },
+  {
+   "kind": "end",
+   "what": "long-axis end z=0",
+   "size_x_m": 360.0,
+   "size_z_m": 686.0,
+   "rays": 6,
+   "black_rays": 0,
+   "gap_px": 0.0,
+   "resolution_px": 4.0,
+   "ok": true
+  },
+  {
+   "kind": "end",
+   "what": "long-axis end z=max",
+   "size_x_m": 360.0,
+   "size_z_m": 686.0,
+   "rays": 6,
+   "black_rays": 0,
+   "gap_px": 0.0,
+   "resolution_px": 4.0,
+   "ok": true
+  }
+ ],
+ "check_residual_px": 0.035,
  "look_offset_px": [
   -0.32,
   -3.69

@@ -36,7 +36,8 @@ The method (2026-09-24, replaces the icon fit as the primary route):
 4. `edges`, the icon-free check for a NON-SQUARE map (a match has no save to census): the record and the engine map
    size predict the two long edges of the map rectangle; minimap_detect.first_black_along measures, on every sample
    2 px apart along the long axis, the first black pixel along the normal from the centre line. PASS when each
-   side's median inset (model minus measured) is within 0.5-2.5 px and the two sides agree within 1.0 px: the drawn
+   side's median inset (model minus measured) is within 0.5-2.5 px and the two sides agree within 1.0 px (at the
+   2560x1080 editor's rim, 130.5 px; edge_band scales all three with a larger rim, 2026-09-24): the drawn
    map ends 1-2 px inside the model edge (a darkening vignette), symmetrically, so a centre or scale error shows as
    a disagreement or an inset outside the band. The record then stores checked true with check_pairs entries of
    kind 'edge' (inset, samples, spread) and check_residual_px = half the side disagreement. Square maps (their
@@ -88,6 +89,7 @@ SIZE_TOL_M = 0.5               # a pairs file's map size vs the engine size (who
 EDGE_INSET_MIN_PX = 0.5        # edges: each side's median inset (model edge minus the first black pixel)...
 EDGE_INSET_MAX_PX = 2.5        # ... within this band (measured 1.31 / 1.31 London 4p, 1.59 / 2.07 Paris, 2026-09-24)
 EDGE_AGREE_PX = 1.0            # ... and the two sides within this of each other
+EDGE_REF_RIM_PX = 130.5        # the rim those three were measured at (2560x1080 editor); edge_band scales above it
 EDGE_MIN_SAMPLES = 10          # ... on at least this many samples per side, and half of the side's rays
 EDGE_STEP_PX = 2.0             # samples along the long axis, every this many pixels
 EDGE_SQUARE_MAX = 1.05         # longer / shorter side below this: square, the long edges touch the rim only
@@ -473,12 +475,24 @@ def measure_ends(img, cal, size_x_m, size_z_m):
     return out
 
 
+def edge_band(rim_px):
+    """(inset min, inset max, side agreement) in px for a disc of rim rim_px: the 2560x1080 editor band scaled by
+    rim_px / EDGE_REF_RIM_PX, never tighter. The inset is drawn art (a darkening vignette) and grows with the UI:
+    2026-09-24 on the 2880x1800 device, editor 2.32 / 2.38 px at rim 218.72 and match 3.45 / 3.52 px at rim 220.89
+    (the fixed band failed the match, whose scale agreed with the explorer-checked editor record)."""
+    k = max(1.0, float(rim_px) / EDGE_REF_RIM_PX)
+    if k == 1.0:
+        return EDGE_INSET_MIN_PX, EDGE_INSET_MAX_PX, EDGE_AGREE_PX
+    return EDGE_INSET_MIN_PX * k, EDGE_INSET_MAX_PX * k, EDGE_AGREE_PX * k
+
+
 def measure_edges(img, cal, size_x_m, size_z_m):
     """The edges check on one screenshot: {'sides': [entry a, entry b], 'agree_px', 'ok', 'why'}; each entry is a
     check_pairs record of kind 'edge' (inset_px = model minus the median measured distance, samples, spread_px =
     the interquartile range, model_px, measured_px, rays). ValueError when there is nothing to measure."""
     from scripts.mapview import minimap_detect as MD
     geo = long_edge_rays(cal, size_x_m, size_z_m)
+    band_lo, band_hi, agree_max = edge_band(cal.radius_px)
     sides, why = [], []
     for k in ("a", "b"):
         g = geo[k]
@@ -496,15 +510,14 @@ def measure_edges(img, cal, size_x_m, size_z_m):
             med = hits[len(hits) // 2] if len(hits) % 2 else 0.5 * (hits[len(hits) // 2 - 1] + hits[len(hits) // 2])
             entry.update(measured_px=round(med, 3), inset_px=round(g["model_px"] - med, 3),
                          spread_px=round(hits[(3 * len(hits)) // 4] - hits[len(hits) // 4], 3))
-            if not (EDGE_INSET_MIN_PX <= entry["inset_px"] <= EDGE_INSET_MAX_PX):
-                why.append("%s: inset %.2f px outside %.1f-%.1f" % (g["what"], entry["inset_px"], EDGE_INSET_MIN_PX,
-                                                                   EDGE_INSET_MAX_PX))
+            if not (band_lo <= entry["inset_px"] <= band_hi):
+                why.append("%s: inset %.2f px outside %.2f-%.2f" % (g["what"], entry["inset_px"], band_lo, band_hi))
         sides.append(entry)
     agree = None
     if sides[0]["inset_px"] is not None and sides[1]["inset_px"] is not None:
         agree = abs(sides[0]["inset_px"] - sides[1]["inset_px"])
-        if agree > EDGE_AGREE_PX:
-            why.append("the two sides disagree by %.2f px (limit %.1f): the centre is off across the map" % (agree, EDGE_AGREE_PX))
+        if agree > agree_max:
+            why.append("the two sides disagree by %.2f px (limit %.2f): the centre is off across the map" % (agree, agree_max))
     ends = measure_ends(img, cal, size_x_m, size_z_m)
     for e in ends:
         if not e["ok"]:
@@ -546,8 +559,9 @@ def cmd_edges(a):
               " (median %.1f px)" % e["gap_px"] if e["black_rays"] else " (none: the map reaches the rim)"))
     for w in res["why"]:
         print("  - %s" % w)
-    print("edges: agree %s px -> %s (insets %.1f-%.1f px, sides within %.1f px)"
-          % (res["agree_px"], "PASS" if res["ok"] else "FAIL", EDGE_INSET_MIN_PX, EDGE_INSET_MAX_PX, EDGE_AGREE_PX))
+    lo, hi, agree_max = edge_band(cal.radius_px)
+    print("edges: agree %s px -> %s (insets %.2f-%.2f px, sides within %.2f px, rim %.2f px)"
+          % (res["agree_px"], "PASS" if res["ok"] else "FAIL", lo, hi, agree_max, cal.radius_px))
     residual = (res["agree_px"] or 0.0) / 2.0          # the centre's offset across the map, the vignette cancelled
     return _store_check(cal, res["ok"], res["sides"] + res["ends"], residual, "edges")
 

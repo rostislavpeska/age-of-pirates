@@ -29,13 +29,14 @@ UI, and only on the owner's word.
 - Never scale the 2560 numbers: the UI is 1.5-1.7x larger. Editor disc (2553.25, 1534.21) rim 218.72 px, match disc
   (2639.24, 1529.19) rim 220.89 px; sheet `scripts/gameio/sheets/2880x1800.json`, records `cal/*_2880x1800.json`.
 - Stars grow with the UI: `minimap_detect.star_radii(r)` scales the template above a 147 px rim.
-- In a match the map's edge inset is 3.5 px (editor 2.3 px on the same map), so `edges` fails there although the
-  scale agrees with the editor record; the in-match record stays unchecked. Camera look-at = target + (-0.32, -3.69) px
-  (`look_offset_px`, sd 0.9 px); every shot then verifies within 2.1 px.
+- The edge inset grows with the UI (editor 2.3 px, match 3.5 px at ~220 px rims): `calibrate.edge_band(rim)` scales
+  the 0.5-2.5 px band and the 1 px side agreement by rim / 130.5; both 2880 records are checked. Camera look-at =
+  target + (-0.32, -3.69) px in a match (`look_offset_px`, sd 0.9 px); every shot verified within 2.1 px.
 - Census names need the CURRENT vanilla protoy: `census_reader` builds the `mapcheck --live` cache itself now; with
   the repo snapshot every mod index shifts (London twin: 6/35 key objects instead of 35/35).
-- The editor's Type list shows only the Steam `Game\RandMaps` root and vanilla: London needs a byte-identical root
-  copy `00000_zplondon.xs` + `.xml` (no `.mods.xml`), seen only after Close + File > New.
+- The editor's Type list shows only the Steam `Game\RandMaps` root and vanilla: London is tested as the root
+  copy `00000_zplondon`, kept equal to the repo by `scripts/tools/sync_local_maps.py` (rm-workflow); a copy added
+  while the game runs is seen only after Close + File > New.
 - In the lobby's map picker the mod's maps are only under Select Type = **Custom Maps** (London = "Restoration of
   the Monarchy"); reopening the picker resets the type to All Maps.
 
@@ -50,7 +51,8 @@ UI, and only on the owner's word.
      (metres + size or --map/--players) and `calibrate.py check <pairs.json> --screen editor --size 2560x1080`
      (PASS = every pair within 3 px; live London: 0.75-1.22 px);
    - any screen, no save needed, non-square maps only: `calibrate.py edges <png> --screen ingame --map zplondon
-     --players 4` - the long edges must sit 0.5-2.5 px inside the model edge, both sides within 1 px, and the map must
+     --players 4` - the long edges must sit 0.5-2.5 px inside the model edge, both sides within 1 px (scaled by
+     rim / 130.5 on larger screens, `edge_band`), and the map must
      reach the rim at both ends of the long axis (a map drawn off-centre inside the ring leaves a black cap).
 4. `calibrate.py show` lists the records. Aiming refuses anything not accepted and checked (`--unchecked` drops
    only the check gate, for a first live look).
