@@ -340,5 +340,10 @@
 		<unit name="zpSPCVillageHousePropB">
 			<animfile>buildings\native_settlement\zp_native_village_houses_nosmoke.xml</animfile>
 		</unit>
+		<!-- the Parliament block's camp houses (zpNativeHouseHussites in EU_Native_Block_Parlam_02): named Parliamentarian Camp on
+		     London instead of Hussite Camp (user 2026-09-24); the other maps keep the Hussite name -->
+		<unit name="zpNativeHouseHussites">
+			<displaynameid>503591</displaynameid>
+		</unit>
 	</protomods>
 </mods>

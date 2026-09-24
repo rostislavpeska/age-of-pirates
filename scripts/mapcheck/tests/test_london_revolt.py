@@ -162,6 +162,13 @@ class TestMapMods:
         for f in set(v for _, v in rules(lm)):
             assert (REPO / "data/placementrules" / f).is_file(), f
 
+    def test_parliament_camp_name(self):
+        # user 2026-09-24: "Change hussite camp rollover text to Parliamentarian camp" - London only, the map mods file
+        lm = _text(REPO / "randmaps/zplondon.mods.xml")
+        assert re.search(r'<unit name="zpNativeHouseHussites">\s*<displaynameid>503591</displaynameid>\s*</unit>', lm)
+        assert '<string _locid="503591">Parliamentarian Camp</string>' in _text(REPO / "data/strings/english/stringmods.xml")
+        assert "zpNativeHouseHussites" in _text(REPO / "game/randmaps/groupings/EU_Native_Block_Parlam_02.xml")
+
     def test_prop_overrides_paris_shape(self):
         # user 2026-09-22: Paris's prop blocks verbatim for the protos London uses, London's own props in the same shapes
         lm = _text(REPO / "randmaps/zplondon.mods.xml"); par = _text(REPO / "randmaps/zpparis.mods.xml")
